@@ -1,0 +1,30 @@
+{
+  "name": "eslint-plugin-react",
+  "version": "1.0.0",
+  "description": "React specific linting rules for ESLint",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yannickcr/eslint-plugin-react"
+  },
+  "keywords": [
+    "eslint-plugin",
+    "eslintplugin",
+    "eslint",
+    "react"
+  ],
+  "author": "Yannick Croissant (https://github.com/yannickcr)",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://raw.github.com/yannickcr/eslint-plugin-react/master/LICENSE"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/yannickcr/eslint-plugin-react/issues"
+  },
+  "homepage": "https://github.com/yannickcr/eslint-plugin-react"
+}
