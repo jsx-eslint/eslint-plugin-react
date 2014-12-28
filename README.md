@@ -45,7 +45,8 @@ Finally, enable all of the rules that you would like to use.
   "rules": {
     "react/no-multi-comp": 1,
     "react/prop-types": 1,
-    "react/display-name": 1
+    "react/display-name": 1,
+    "react/wrap-multilines": 1
   }
 }
 ```
@@ -55,6 +56,7 @@ Finally, enable all of the rules that you would like to use.
 * [no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
 * [prop-types](docs/rules/prop-types.md): Prevent missing propTypes in a React component definition
 * [display-name](docs/rules/display-name.md): Prevent missing displayName in a React component definition
+* [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX
 
 ## To Do
 
