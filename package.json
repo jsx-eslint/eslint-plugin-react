@@ -4,7 +4,11 @@
   "description": "React specific linting rules for ESLint",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "npm run lint && npm run unit-test --coverage && npm run check-coverage",
+    "lint": "eslint ./",
+    "unit-test": "istanbul test --dir build/coverage node_modules/mocha/bin/_mocha tests/**/*.js -- --recursive --reporter dot",
+    "check-coverage": "istanbul check-coverage --statement 100 --branch 100 --function 100 --lines 100",
+    "report-coverage-html": "istanbul report --dir  build/coverage html"
   },
   "repository": {
     "type": "git",
@@ -16,6 +20,12 @@
     "eslint",
     "react"
   ],
+  "devDependencies": {
+    "eslint": "^0.11.0-alpha.0",
+    "eslint-tester": "^0.3.0",
+    "istanbul": "0.3.0",
+    "mocha": "1.21.4"
+  },
   "author": "Yannick Croissant (https://github.com/yannickcr)",
   "licenses": [
     {
