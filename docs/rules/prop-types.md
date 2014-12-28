@@ -1,6 +1,6 @@
 # Prevent missing propTypes in a React component definition (prop-types)
 
-PropTypes improve the reusability of your component by validating the reveived data.
+PropTypes improve the reusability of your component by validating the received data.
 
 It can warn other developers if they make a mistake while reusing the component with improper data type.
 
