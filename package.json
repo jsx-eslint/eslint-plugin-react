@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-react",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "React specific linting rules for ESLint",
   "main": "index.js",
   "scripts": {
