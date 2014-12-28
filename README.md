@@ -44,21 +44,23 @@ Finally, enable all of the rules that you would like to use.
 {
   "rules": {
     "react/no-multi-comp": 1,
-    "react/prop-types": 1
+    "react/prop-types": 1,
+    "react/display-name": 1
   }
 }
 ```
 
 # List of supported rules
 
-* no-multi-comp: Prevent multiple component definition per file
-* prop-types: Prevent missing propTypes in a React component definition
+* [no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
+* [prop-types](docs/rules/prop-types.md): Prevent missing propTypes in a React component definition
+* [display-name](docs/rules/display-name.md): Prevent missing displayName in a React component definition
 
-## Not supported yet
+## To Do
 
-* display-name: Prevent missing displayName in a React component definition
 * no-deprecated: Prevent usage of deprecated methods ([React 0.12 Updated API](http://facebook.github.io/react/blog/2014/10/28/react-v0.12.html#new-terminology-amp-updated-apis))
 * no-classic: Prevent usage of "classic" methods ([#2700](https://github.com/facebook/react/pull/2700))
+* [Implement rules from David Chang's React Style Guide](https://reactjsnews.com/react-style-guide-patterns-i-like)
 
 [Any rule idea is welcome !](https://github.com/yannickcr/eslint-plugin-react/issues)
 
