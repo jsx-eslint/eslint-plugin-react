@@ -46,7 +46,8 @@ Finally, enable all of the rules that you would like to use.
     "react/no-multi-comp": 1,
     "react/prop-types": 1,
     "react/display-name": 1,
-    "react/wrap-multilines": 1
+    "react/wrap-multilines": 1,
+    "react/self-closing-comp": 1
   }
 }
 ```
@@ -57,6 +58,7 @@ Finally, enable all of the rules that you would like to use.
 * [prop-types](docs/rules/prop-types.md): Prevent missing propTypes in a React component definition
 * [display-name](docs/rules/display-name.md): Prevent missing displayName in a React component definition
 * [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX
+* [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
 
 ## To Do
 
