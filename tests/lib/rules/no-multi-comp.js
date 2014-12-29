@@ -20,7 +20,13 @@ eslintTester.addRuleTest('lib/rules/no-multi-comp', {
 
     valid: [
         {
-            code: 'var Hello = require(\'./components/Hello\');var HelloJohn = React.createClass({render: function() {return <Hello name="John" />;}});',
+            code: '\
+              var Hello = require(\'./components/Hello\');\
+              var HelloJohn = React.createClass({\
+                render: function() {\
+                  return <Hello name="John" />;\
+                }\
+              });',
             settings: {
                 ecmascript: 6,
                 jsx: true
@@ -30,7 +36,17 @@ eslintTester.addRuleTest('lib/rules/no-multi-comp', {
 
     invalid: [
         {
-            code: 'var Hello = React.createClass({render: function() {return <div>Hello {this.props.name}</div>;}});var HelloJohn = React.createClass({render: function() {return <Hello name="John" />;}});',
+            code: '\
+              var Hello = React.createClass({\
+                render: function() {\
+                  return <div>Hello {this.props.name}</div>;\
+                }\
+              });\
+              var HelloJohn = React.createClass({\
+                render: function() {\
+                  return <Hello name="John" />;\
+                }\
+              });',
             settings: {
                 ecmascript: 6,
                 jsx: true

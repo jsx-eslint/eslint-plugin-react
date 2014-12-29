@@ -20,13 +20,27 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
 
     valid: [
         {
-            code: 'var Hello = React.createClass({render: function() {return <p>Hello {this.props.name}</p>;}});',
+            code: '\
+              var Hello = React.createClass({\
+                render: function() {\
+                  return <p>Hello {this.props.name}</p>;\
+                }\
+              });',
             settings: {
                 ecmascript: 6,
                 jsx: true
             }
         }, {
-            code: 'var Hello = React.createClass({render: function() {return (\n<div>\n<p>Hello {this.props.name}</p>\n</div>\n);}});',
+            code: '\
+              var Hello = React.createClass({\
+                render: function() {\
+                  return (\n\
+                    <div>\n\
+                      <p>Hello {this.props.name}</p>\n\
+                    </div>\n\
+                  );\
+                }\
+              });',
             settings: {
                 ecmascript: 6,
                 jsx: true
@@ -38,13 +52,24 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
                 jsx: true
             }
         }, {
-            code: 'var hello = (\n<div>\n<p>Hello</p>\n</div>\n);',
+            code: '\
+              var hello = (\n\
+                <div>\n\
+                  <p>Hello</p>\n\
+                </div>\n\
+              );',
             settings: {
                 ecmascript: 6,
                 jsx: true
             }
         }, {
-            code: 'var hello; hello = (\n<div>\n<p>Hello</p>\n</div>\n);',
+            code: '\
+              var hello;\
+              hello = (\n\
+                <div>\n\
+                  <p>Hello</p>\n\
+                </div>\n\
+              );',
             settings: {
                 ecmascript: 6,
                 jsx: true
@@ -54,7 +79,14 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
 
     invalid: [
         {
-            code: 'var Hello = React.createClass({render: function() {return <div>\n<p>Hello {this.props.name}</p>\n</div>;}});',
+            code: '\
+              var Hello = React.createClass({\
+                render: function() {\
+                  return <div>\n\
+                    <p>Hello {this.props.name}</p>\n\
+                  </div>;\
+                }\
+              });',
             settings: {
                 ecmascript: 6,
                 jsx: true
@@ -63,7 +95,10 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
                 message: 'Missing parentheses around multilines JSX'
             }]
         }, {
-            code: 'var hello = <div>\n<p>Hello</p>\n</div>;',
+            code: '\
+              var hello = <div>\n\
+                <p>Hello</p>\n\
+              </div>;',
             settings: {
                 ecmascript: 6,
                 jsx: true
@@ -72,7 +107,11 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
                 message: 'Missing parentheses around multilines JSX'
             }]
         }, {
-            code: 'var hello; hello = <div>\n<p>Hello</p>\n</div>;',
+            code: '\
+              var hello;\
+              hello = <div>\n\
+                <p>Hello</p>\n\
+              </div>;',
             settings: {
                 ecmascript: 6,
                 jsx: true

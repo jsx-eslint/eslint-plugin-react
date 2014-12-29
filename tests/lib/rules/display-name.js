@@ -20,7 +20,13 @@ eslintTester.addRuleTest('lib/rules/display-name', {
 
     valid: [
         {
-            code: 'var Hello = React.createClass({displayName: \'Hello\',render: function() {return <div>Hello {this.props.name}</div>;}});',
+            code: '\
+              var Hello = React.createClass({\
+                displayName: \'Hello\',\
+                render: function() {\
+                  return <div>Hello {this.props.name}</div>;\
+                }\
+              });',
             settings: {
                 ecmascript: 6,
                 jsx: true
@@ -30,7 +36,12 @@ eslintTester.addRuleTest('lib/rules/display-name', {
 
     invalid: [
         {
-            code: 'var Hello = React.createClass({render: function() {return <div>Hello {this.props.name}</div>;}});',
+            code: '\
+              var Hello = React.createClass({\
+                render: function() {\
+                  return <div>Hello {this.props.name}</div>;\
+                }\
+              });',
             settings: {
                 ecmascript: 6,
                 jsx: true

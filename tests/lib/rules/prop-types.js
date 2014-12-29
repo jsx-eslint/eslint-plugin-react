@@ -20,7 +20,15 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
 
     valid: [
         {
-            code: 'var Hello = React.createClass({propTypes: {name: React.PropTypes.string.isRequired},render: function() {return <div>Hello {this.props.name}</div>;}});',
+            code: '\
+              var Hello = React.createClass({\
+                propTypes: {\
+                  name: React.PropTypes.string.isRequired\
+                },\
+                render: function() {\
+                  return <div>Hello {this.props.name}</div>;\
+                }\
+              });',
             settings: {
                 ecmascript: 6,
                 jsx: true
@@ -30,7 +38,12 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
 
     invalid: [
         {
-            code: 'var Hello = React.createClass({render: function() {return <div>Hello {this.props.name}</div>;}});',
+            code: '\
+              var Hello = React.createClass({\
+                render: function() {\
+                  return <div>Hello {this.props.name}</div>;\
+                }\
+              });',
             settings: {
                 ecmascript: 6,
                 jsx: true
