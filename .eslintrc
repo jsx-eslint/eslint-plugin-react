@@ -6,6 +6,10 @@
         "ecmascript": 6,
         "jsx": true
     },
+    "globals": {
+    },
+    "plugins": [
+    ],
     "rules": {
         // Possible Errors
         "no-comma-dangle": 2,
@@ -141,10 +145,10 @@
         "wrap-regex": 0,
         // Legacy
         "max-depth": [2, 3],
-        "max-len": 0,
+        "max-len": [2, 120],
         "max-params": [2, 10],
         "max-statements": [2, 10],
         "no-bitwise": 2,
-        "no-plusplus": 0,
+        "no-plusplus": 0
     }
 }
