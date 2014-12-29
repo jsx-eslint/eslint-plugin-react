@@ -31,6 +31,18 @@ eslintTester.addRuleTest('lib/rules/display-name', {
                 ecmascript: 6,
                 jsx: true
             }
+        }, {
+            code: '\
+              var createClass = function() {};\
+              var Hello = createClass({\
+                render: function() {\
+                  return <div>Hello {this.props.name}</div>;\
+                }\
+              });',
+            settings: {
+                ecmascript: 6,
+                jsx: true
+            }
         }
     ],
 
