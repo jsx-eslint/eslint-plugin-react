@@ -25,9 +25,9 @@
   "devDependencies": {
     "coveralls": "2.11.2",
     "eslint": "0.11.0-alpha.0",
-    "eslint-tester": "0.3.0",
-    "istanbul": "0.3.0",
-    "mocha": "1.21.4"
+    "eslint-tester": "0.4.0",
+    "istanbul": "0.3.5",
+    "mocha": "2.1.0"
   },
   "keywords": [
     "eslint-plugin",
