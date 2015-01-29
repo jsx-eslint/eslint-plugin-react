@@ -29,9 +29,8 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
                   return <div>Hello {this.props.name}</div>;\
                 }\
               });',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             }
         }
     ],
@@ -44,9 +43,8 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
                   return <div>Hello {this.props.name}</div>;\
                 }\
               });',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             },
             errors: [{
                 message: 'Component definition is missing props validation'

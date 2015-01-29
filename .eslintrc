@@ -2,9 +2,8 @@
     "env": {
         "node": true
     },
-    "settings": {
-        "ecmascript": 6,
-        "jsx": true
+    ecmaFeatures: {
+        jsx: true
     },
     "globals": {
     },

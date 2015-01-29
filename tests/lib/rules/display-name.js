@@ -27,9 +27,8 @@ eslintTester.addRuleTest('lib/rules/display-name', {
                   return <div>Hello {this.props.name}</div>;\
                 }\
               });',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             }
         }, {
             code: '\
@@ -39,9 +38,8 @@ eslintTester.addRuleTest('lib/rules/display-name', {
                   return <div>Hello {this.props.name}</div>;\
                 }\
               });',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             }
         }
     ],
@@ -54,9 +52,8 @@ eslintTester.addRuleTest('lib/rules/display-name', {
                   return <div>Hello {this.props.name}</div>;\
                 }\
               });',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             },
             errors: [{
                 message: 'Component definition is missing display name'

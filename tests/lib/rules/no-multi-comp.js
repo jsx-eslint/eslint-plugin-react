@@ -27,9 +27,8 @@ eslintTester.addRuleTest('lib/rules/no-multi-comp', {
                   return <Hello name="John" />;\
                 }\
               });',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             }
         }
     ],
@@ -47,9 +46,8 @@ eslintTester.addRuleTest('lib/rules/no-multi-comp', {
                   return <Hello name="John" />;\
                 }\
               });',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             },
             errors: [{
                 message: 'Declare only one React component per file'

@@ -26,9 +26,8 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
                   return <p>Hello {this.props.name}</p>;\
                 }\
               });',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             }
         }, {
             code: '\
@@ -41,15 +40,13 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
                   );\
                 }\
               });',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             }
         }, {
             code: 'var hello = <p>Hello</p>;',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             }
         }, {
             code: '\
@@ -58,9 +55,8 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
                   <p>Hello</p>\n\
                 </div>\n\
               );',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             }
         }, {
             code: '\
@@ -70,9 +66,8 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
                   <p>Hello</p>\n\
                 </div>\n\
               );',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             }
         }
     ],
@@ -87,9 +82,8 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
                   </div>;\
                 }\
               });',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             },
             errors: [{
                 message: 'Missing parentheses around multilines JSX'
@@ -99,9 +93,8 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
               var hello = <div>\n\
                 <p>Hello</p>\n\
               </div>;',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             },
             errors: [{
                 message: 'Missing parentheses around multilines JSX'
@@ -112,9 +105,8 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
               hello = <div>\n\
                 <p>Hello</p>\n\
               </div>;',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             },
             errors: [{
                 message: 'Missing parentheses around multilines JSX'

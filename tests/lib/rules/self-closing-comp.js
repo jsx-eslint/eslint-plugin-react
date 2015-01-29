@@ -21,21 +21,18 @@ eslintTester.addRuleTest('lib/rules/self-closing-comp', {
     valid: [
         {
             code: 'var contentContainer = <div className="content"></div>;',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             }
         }, {
             code: 'var HelloJohn = <Hello name="John" />;',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             }
         }, {
             code: 'var Profile = <Hello name="John"><img src="picture.png" /></Hello>;',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             }
         }
     ],
@@ -43,27 +40,24 @@ eslintTester.addRuleTest('lib/rules/self-closing-comp', {
     invalid: [
         {
             code: 'var HelloJohn = <Hello name="John"></Hello>;',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             },
             errors: [{
                 message: 'Empty components are self-closing'
             }]
         }, {
             code: 'var HelloJohn = <Hello name="John">\n</Hello>;',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             },
             errors: [{
                 message: 'Empty components are self-closing'
             }]
         }, {
             code: 'var HelloJohn = <Hello name="John"> </Hello>;',
-            settings: {
-                ecmascript: 6,
-                jsx: true
+            ecmaFeatures: {
+              jsx: true
             },
             errors: [{
                 message: 'Empty components are self-closing'
