@@ -9,9 +9,7 @@ React specific linting rules for ESLint
 
 Install [ESLint](https://www.github.com/eslint/eslint) either locally or globally.
 
-    npm install eslint@es6jsx
-
-ESLint-plugin-React requires `ESLint` with JSX support which is only available on the `es6jsx` branch for now.
+    npm install eslint
 
 If you installed `ESLint` globally, you have to install React plugin globally too. Otherwise, install it locally.
 
@@ -29,12 +27,11 @@ Add `plugins` section and specify ESLint-plugin-React as a plugin.
 }
 ```
 
-If it is not already the case you must also configure `ESLint` to support ECMAScript 6 and JSX.
+If it is not already the case you must also configure `ESLint` to support JSX.
 
 ```json
 {
-  "settings": {
-    "ecmascript": 6,
+  "ecmaFeatures": {
     "jsx": true
   }
 }
@@ -66,7 +63,8 @@ Finally, enable all of the rules that you would like to use.
 
 * no-deprecated: Prevent usage of deprecated methods ([React 0.12 Updated API](http://facebook.github.io/react/blog/2014/10/28/react-v0.12.html#new-terminology-amp-updated-apis))
 * no-classic: Prevent usage of "classic" methods ([#2700](https://github.com/facebook/react/pull/2700))
-* [Implement rules from David Chang's React Style Guide](https://reactjsnews.com/react-style-guide-patterns-i-like)
+* [Implement relevant rules from David Chang's React Style Guide](https://reactjsnews.com/react-style-guide-patterns-i-like)
+* [Implement relevant rules from John Cobb's best practices and conventions](http://web-design-weekly.com/2015/01/29/opinionated-guide-react-js-best-practices-conventions/)
 
 [Any rule idea is welcome !](https://github.com/yannickcr/eslint-plugin-react/issues)
 
