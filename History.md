@@ -1,3 +1,9 @@
+1.2.1 / 2014-01-29
+==================
+* update Readme
+* update dependencies
+* update wrap-multilines and self-closing-comp rules for ESLint 0.13.0
+
 1.2.0 / 2014-12-29
 ==================
 * add self-closing-comp rule
