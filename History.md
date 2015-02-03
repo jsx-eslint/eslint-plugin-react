@@ -1,4 +1,4 @@
-1.2.1 / 2014-01-29
+1.2.1 / 2015-01-29
 ==================
 * update Readme
 * update dependencies
