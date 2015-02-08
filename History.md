@@ -1,3 +1,10 @@
+1.2.2 / 2015-02-09
+==================
+* update dependencies
+* fix childs detection in self-closing-comp ([#3][])
+
+[#3]: https://github.com/yannickcr/eslint-plugin-react/issues/3
+
 1.2.1 / 2015-01-29
 ==================
 * update Readme
