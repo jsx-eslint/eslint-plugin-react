@@ -34,6 +34,14 @@ eslintTester.addRuleTest('lib/rules/self-closing-comp', {
             ecmaFeatures: {
               jsx: true
             }
+        }, {
+          code: '\
+            <Hello>\
+              <Hello name="John" />\
+            </Hello>',
+          ecmaFeatures: {
+            jsx: true
+          }
         }
     ],
 
