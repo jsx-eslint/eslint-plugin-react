@@ -46,7 +46,9 @@ Finally, enable all of the rules that you would like to use.
     "react/prop-types": 1,
     "react/display-name": 1,
     "react/wrap-multilines": 1,
-    "react/self-closing-comp": 1
+    "react/self-closing-comp": 1,
+    "react/no-did-mount-set-state": 1,
+    "react/no-did-update-set-state": 1
   }
 }
 ```
@@ -58,6 +60,8 @@ Finally, enable all of the rules that you would like to use.
 * [display-name](docs/rules/display-name.md): Prevent missing displayName in a React component definition
 * [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX
 * [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
+* [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of setState in componentDidMount
+* [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of setState in componentDidUpdate
 
 ## To Do
 
@@ -65,6 +69,7 @@ Finally, enable all of the rules that you would like to use.
 * no-classic: Prevent usage of "classic" methods ([#2700](https://github.com/facebook/react/pull/2700))
 * [Implement relevant rules from David Chang's React Style Guide](https://reactjsnews.com/react-style-guide-patterns-i-like)
 * [Implement relevant rules from John Cobb's best practices and conventions](http://web-design-weekly.com/2015/01/29/opinionated-guide-react-js-best-practices-conventions/)
+* [Implement relevant rules from Alexander Early's tips and best practices](http://aeflash.com/2015-02/react-tips-and-best-practices.html)
 
 [Any rule idea is welcome !](https://github.com/yannickcr/eslint-plugin-react/issues)
 
