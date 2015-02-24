@@ -1,3 +1,9 @@
+1.3.0 / 2015-02-24
+==================
+* update dependencies
+* add no-did-mount-set-state rule
+* add no-did-update-set-state rule
+
 1.2.2 / 2015-02-09
 ==================
 * update dependencies
