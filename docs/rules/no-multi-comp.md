@@ -20,7 +20,7 @@ var HelloJohn = React.createClass({
 });
 ```
 
-The following patterns are not warnings:
+The following patterns are not considered warnings:
 
 ```js
 var Hello = require('./components/Hello');

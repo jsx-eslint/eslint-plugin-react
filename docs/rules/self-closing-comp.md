@@ -10,7 +10,7 @@ The following patterns are considered warnings:
 var HelloJohn = <Hello name="John"></Hello>;
 ```
 
-The following patterns are not warnings:
+The following patterns are not considered warnings:
 
 ```js
 var contentContainer = <div className="content"></div>;

@@ -16,7 +16,7 @@ var Hello = React.createClass({
 });
 ```
 
-The following patterns are not warnings:
+The following patterns are not considered warnings:
 
 ```js
 var singleLineJSX = <p>Hello</p>
