@@ -48,7 +48,9 @@ Finally, enable all of the rules that you would like to use.
     "react/wrap-multilines": 1,
     "react/self-closing-comp": 1,
     "react/no-did-mount-set-state": 1,
-    "react/no-did-update-set-state": 1
+    "react/no-did-update-set-state": 1,
+    "react/jsx-uses-react": 1,
+    "react/react-in-jsx-scope": 1
   }
 }
 ```
@@ -56,12 +58,14 @@ Finally, enable all of the rules that you would like to use.
 # List of supported rules
 
 * [no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
-* [prop-types](docs/rules/prop-types.md): Prevent missing propTypes in a React component definition
+* [prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
 * [display-name](docs/rules/display-name.md): Prevent missing displayName in a React component definition
 * [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX
 * [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
 * [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of setState in componentDidMount
 * [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of setState in componentDidUpdate
+* [jsx-uses-react](docs/rules/jsx-uses-react.md): Make JSX count towards use of a declared variable
+* [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent errors from not requiring React when using JSX
 
 ## To Do
 
