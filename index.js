@@ -8,7 +8,8 @@ module.exports = {
     'wrap-multilines': require('./lib/rules/wrap-multilines'),
     'self-closing-comp': require('./lib/rules/self-closing-comp'),
     'no-did-mount-set-state': require('./lib/rules/no-did-mount-set-state'),
-    'no-did-update-set-state': require('./lib/rules/no-did-update-set-state')
+    'no-did-update-set-state': require('./lib/rules/no-did-update-set-state'),
+    'react-in-jsx-scope': require('./lib/rules/react-in-jsx-scope')
   },
   rulesConfig: {
     'no-multi-comp': 0,
@@ -17,6 +18,7 @@ module.exports = {
     'wrap-multilines': 0,
     'self-closing-comp': 0,
     'no-did-mount-set-state': 0,
-    'no-did-update-set-state': 0
+    'no-did-update-set-state': 0,
+    'react-in-jsx-scope': 0
   }
 };
