@@ -1,3 +1,13 @@
+1.4.0 / 2015-02-24
+==================
+* update prop-types to check props usage insead of propTypes presence ([#4][])
+* add react-in-jsx-scope rule ([#5][] @glenjamin)
+* add jsx-uses-react rule ([#6][] @glenjamin)
+
+[#4]: https://github.com/yannickcr/eslint-plugin-react/issues/4
+[#5]: https://github.com/yannickcr/eslint-plugin-react/pull/5
+[#6]: https://github.com/yannickcr/eslint-plugin-react/pull/6
+
 1.3.0 / 2015-02-24
 ==================
 * update dependencies
