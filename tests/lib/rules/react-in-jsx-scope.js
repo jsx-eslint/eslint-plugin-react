@@ -3,7 +3,7 @@
  * @author Glen Mailer
  */
 
-"use strict";
+'use strict';
 
 // -----------------------------------------------------------------------------
 // Requirements
@@ -17,21 +17,21 @@ var ESLintTester = require('eslint-tester');
 // -----------------------------------------------------------------------------
 
 var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest("lib/rules/react-in-jsx-scope", {
+eslintTester.addRuleTest('lib/rules/react-in-jsx-scope', {
     valid: [
-        {code: "var React, App; <App />;", args: [1, {vars: "all"}], ecmaFeatures: {jsx: true}},
-        {code: "var React; <img />;", args: [1, {vars: "all"}], ecmaFeatures: {jsx: true}},
-        {code: "var React; <x-gif />;", args: [1, {vars: "all"}], ecmaFeatures: {jsx: true}},
-        {code: "var React, App, a=1; <App attr={a} />;", ecmaFeatures: {jsx: true}},
-        {code: "var React, App, a=1; function elem() { return <App attr={a} />; }",
+        {code: 'var React, App; <App />;', args: [1, {vars: 'all'}], ecmaFeatures: {jsx: true}},
+        {code: 'var React; <img />;', args: [1, {vars: 'all'}], ecmaFeatures: {jsx: true}},
+        {code: 'var React; <x-gif />;', args: [1, {vars: 'all'}], ecmaFeatures: {jsx: true}},
+        {code: 'var React, App, a=1; <App attr={a} />;', ecmaFeatures: {jsx: true}},
+        {code: 'var React, App, a=1; function elem() { return <App attr={a} />; }',
          ecmaFeatures: {jsx: true}}
     ],
     invalid: [
-        {code: "var App, a = <App />;",
-         errors: [{message: "'React' must be in scope when using JSX"}], ecmaFeatures: {jsx: true}},
-        {code: "var a = <App />;",
-         errors: [{message: "'React' must be in scope when using JSX"}], ecmaFeatures: {jsx: true}},
-        {code: "var a = <img />;",
-         errors: [{message: "'React' must be in scope when using JSX"}], ecmaFeatures: {jsx: true}}
+        {code: 'var App, a = <App />;',
+         errors: [{message: '\'React\' must be in scope when using JSX'}], ecmaFeatures: {jsx: true}},
+        {code: 'var a = <App />;',
+         errors: [{message: '\'React\' must be in scope when using JSX'}], ecmaFeatures: {jsx: true}},
+        {code: 'var a = <img />;',
+         errors: [{message: '\'React\' must be in scope when using JSX'}], ecmaFeatures: {jsx: true}}
     ]
 });

@@ -3,7 +3,7 @@
  * @author Glen Mailer
  */
 
-"use strict";
+'use strict';
 
 // -----------------------------------------------------------------------------
 // Requirements
@@ -18,14 +18,14 @@ var ESLintTester = require('eslint-tester');
 
 var eslintTester = new ESLintTester(eslint);
 eslint.defineRule('jsx-uses-react', require('../../../lib/rules/jsx-uses-react'));
-eslintTester.addRuleTest("node_modules/eslint/lib/rules/no-unused-vars", {
+eslintTester.addRuleTest('node_modules/eslint/lib/rules/no-unused-vars', {
     valid: [
-        {code: "/*eslint jsx-uses-react:1*/ var App, React; <App />;", ecmaFeatures: {jsx: true}},
-        {code: "/*eslint jsx-uses-react:1*/ var React; <div />;", ecmaFeatures: {jsx: true}},
-        {code: "/*eslint jsx-uses-react:1*/ var React; (function () { <div /> })();", ecmaFeatures: {jsx: true}}
+        {code: '/*eslint jsx-uses-react:1*/ var App, React; <App />;', ecmaFeatures: {jsx: true}},
+        {code: '/*eslint jsx-uses-react:1*/ var React; <div />;', ecmaFeatures: {jsx: true}},
+        {code: '/*eslint jsx-uses-react:1*/ var React; (function () { <div /> })();', ecmaFeatures: {jsx: true}}
     ],
     invalid: [
-        {code: "/*eslint jsx-uses-react:1*/ var React;",
-         errors: [{message: "React is defined but never used"}], ecmaFeatures: {jsx: true}}
+        {code: '/*eslint jsx-uses-react:1*/ var React;',
+         errors: [{message: 'React is defined but never used'}], ecmaFeatures: {jsx: true}}
     ]
 });
