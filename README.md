@@ -64,8 +64,8 @@ Finally, enable all of the rules that you would like to use.
 * [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
 * [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of setState in componentDidMount
 * [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of setState in componentDidUpdate
-* [jsx-uses-react](docs/rules/jsx-uses-react.md): Make JSX count towards use of a declared variable
-* [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent errors from not requiring React when using JSX
+* [jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
+* [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing React when using JSX
 
 ## To Do
 

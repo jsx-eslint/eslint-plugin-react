@@ -1,7 +1,7 @@
-# Make JSX count towards use of a declared variable (jsx-uses-react)
+# Prevent React to be incorrectly marked as unused (jsx-uses-react)
 
 JSX expands to a call to `React.createElement`, a file which includes `React`
-but only uses JSX should still consider the `React` variable used.
+but only uses JSX should consider the `React` variable as used.
 
 This rule has no effect if the `no-unused-vars` rule is not enabled.
 
@@ -25,5 +25,4 @@ var elem = <div>Some Stuff</div>;
 
 ## When Not To Use It
 
-If you are not using JSX, or React is delcared as global variable, this rule
-will not be useful.
+If you are not using JSX, if React is declared as global variable or if you do not use the `no-unused-vars` rule then you can disable this rule.

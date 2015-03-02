@@ -1,4 +1,4 @@
-# Prevent errors from not requiring React when using JSX (react-in-jsx-scope)
+# Prevent missing React when using JSX (react-in-jsx-scope)
 
 When using JSX, `<a />` expands to `React.createElement("a")`. Therefore the
 `React` variable must be in scope.
@@ -20,4 +20,4 @@ var Hello = <div>Hello {this.props.name}</div>;
 
 ## When Not To Use It
 
-If you are setting `React` as a global variable, you will not need this rule.
+If you are setting `React` as a global variable you can disable this rule.
