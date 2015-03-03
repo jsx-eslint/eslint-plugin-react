@@ -66,6 +66,7 @@ Finally, enable all of the rules that you would like to use.
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,
     "react/no-danger": 1,
+    "react/no-deprecated": 1,
     "react/no-did-mount-set-state": 1,
     "react/no-did-update-set-state": 1,
     "react/no-direct-mutation-state": 1,
@@ -105,6 +106,7 @@ Finally, enable all of the rules that you would like to use.
 * [jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
 * [jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
 * [no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
+* [no-deprecated](docs/rules/no-deprecated.md): Prevent usage of deprecated methods
 * [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of `setState` in `componentDidMount`
 * [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of `setState` in `componentDidUpdate`
 * [no-direct-mutation-state](docs/rules/no-direct-mutation-state.md): Prevent direct mutation of `this.state`
@@ -118,16 +120,6 @@ Finally, enable all of the rules that you would like to use.
 * [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
 * [sort-comp](docs/rules/sort-comp.md): Enforce component methods order
 * [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX
-
-## To Do
-
-* no-deprecated: Prevent usage of deprecated methods ([React 0.12 Updated API](http://facebook.github.io/react/blog/2014/10/28/react-v0.12.html#new-terminology-amp-updated-apis))
-* no-classic: Prevent usage of "classic" methods ([#2700](https://github.com/facebook/react/pull/2700))
-* [Implement relevant rules from David Chang's React Style Guide](https://reactjsnews.com/react-style-guide-patterns-i-like)
-* [Implement relevant rules from John Cobb's best practices and conventions](http://web-design-weekly.com/2015/01/29/opinionated-guide-react-js-best-practices-conventions/)
-* [Implement relevant rules from Alexander Early's tips and best practices](http://aeflash.com/2015-02/react-tips-and-best-practices.html)
-
-[Any rule idea is welcome !](https://github.com/yannickcr/eslint-plugin-react/issues)
 
 # License
 
