@@ -1,3 +1,11 @@
+1.4.1 / 2015-03-03
+==================
+* fix this.props.children marked as missing in props validation ([#7][])
+* fix usage of this.props without property ([#8][])
+
+[#7]: https://github.com/yannickcr/eslint-plugin-react/issues/7
+[#8]: https://github.com/yannickcr/eslint-plugin-react/issues/8
+
 1.4.0 / 2015-02-24
 ==================
 * update prop-types to check props usage insead of propTypes presence ([#4][])
