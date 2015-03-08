@@ -3,6 +3,7 @@
         "node": true
     },
     ecmaFeatures: {
+        globalReturn: false,
         jsx: true
     },
     "globals": {
