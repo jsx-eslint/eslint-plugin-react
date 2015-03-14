@@ -50,6 +50,7 @@ Finally, enable all of the rules that you would like to use.
     "react/no-did-mount-set-state": 1,
     "react/no-did-update-set-state": 1,
     "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1,
     "react/react-in-jsx-scope": 1
   }
 }
@@ -65,6 +66,7 @@ Finally, enable all of the rules that you would like to use.
 * [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of setState in componentDidMount
 * [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of setState in componentDidUpdate
 * [jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
+* [jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
 * [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing React when using JSX
 
 ## To Do

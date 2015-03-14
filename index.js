@@ -10,7 +10,8 @@ module.exports = {
     'self-closing-comp': require('./lib/rules/self-closing-comp'),
     'no-did-mount-set-state': require('./lib/rules/no-did-mount-set-state'),
     'no-did-update-set-state': require('./lib/rules/no-did-update-set-state'),
-    'react-in-jsx-scope': require('./lib/rules/react-in-jsx-scope')
+    'react-in-jsx-scope': require('./lib/rules/react-in-jsx-scope'),
+    'jsx-uses-vars': require('./lib/rules/jsx-uses-vars')
   },
   rulesConfig: {
     'jsx-uses-react': 0,
@@ -21,6 +22,7 @@ module.exports = {
     'self-closing-comp': 0,
     'no-did-mount-set-state': 0,
     'no-did-update-set-state': 0,
-    'react-in-jsx-scope': 0
+    'react-in-jsx-scope': 0,
+    'jsx-uses-vars': 0
   }
 };
