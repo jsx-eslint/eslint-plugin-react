@@ -1,3 +1,8 @@
+1.5.0 / 2015-03-14
+==================
+* add jsx-uses-vars rule
+* fix jsx-uses-react for ESLint 0.17.0
+
 1.4.1 / 2015-03-03
 ==================
 * fix this.props.children marked as missing in props validation ([#7][])
