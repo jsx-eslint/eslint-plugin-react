@@ -40,6 +40,19 @@ eslintTester.addRuleTest('lib/rules/no-did-mount-set-state', {
             ecmaFeatures: {
               jsx: true
             }
+        }, {
+            code: '\
+              var Hello = React.createClass({\
+                componentDidMount: function() {\
+                  this.someHandler = this.setState;\
+                },\
+                render: function() {\
+                  return <div>Hello {this.props.name}</div>;\
+                }\
+              });',
+            ecmaFeatures: {
+              jsx: true
+            }
         }
     ],
 
