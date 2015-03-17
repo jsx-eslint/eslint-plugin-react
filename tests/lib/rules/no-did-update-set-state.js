@@ -44,6 +44,7 @@ eslintTester.addRuleTest('lib/rules/no-did-update-set-state', {
             code: '\
               var Hello = React.createClass({\
                 componentDidUpdate: function() {\
+                  someNonMemberFunction(arg);\
                   this.someHandler = this.setState;\
                 },\
                 render: function() {\
