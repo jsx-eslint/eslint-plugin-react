@@ -1,3 +1,18 @@
+1.6.0 / 2015-03-22
+==================
+* update dependencies
+* add jsx-no-undef rule
+* add jsx-quotes rule ([#12][]) 
+* add @jsx pragma support ([#23][])
+* fix react-in-jsx-scope in Node.js env
+* fix usage of propTypes with an external object ([#9][])
+* allow this.getState references (not calls) in lifecycle methods ([#22][] @benmosher)
+
+[#12]: https://github.com/yannickcr/eslint-plugin-react/issues/12
+[#23]: https://github.com/yannickcr/eslint-plugin-react/issues/23
+[#9]: https://github.com/yannickcr/eslint-plugin-react/issues/9
+[#22]: https://github.com/yannickcr/eslint-plugin-react/pull/22
+
 1.5.0 / 2015-03-14
 ==================
 * add jsx-uses-vars rule
