@@ -11,7 +11,8 @@ module.exports = {
     'no-did-mount-set-state': require('./lib/rules/no-did-mount-set-state'),
     'no-did-update-set-state': require('./lib/rules/no-did-update-set-state'),
     'react-in-jsx-scope': require('./lib/rules/react-in-jsx-scope'),
-    'jsx-uses-vars': require('./lib/rules/jsx-uses-vars')
+    'jsx-uses-vars': require('./lib/rules/jsx-uses-vars'),
+    'jsx-no-undef': require('./lib/rules/jsx-no-undef')
   },
   rulesConfig: {
     'jsx-uses-react': 0,
@@ -23,6 +24,7 @@ module.exports = {
     'no-did-mount-set-state': 0,
     'no-did-update-set-state': 0,
     'react-in-jsx-scope': 0,
-    'jsx-uses-vars': 0
+    'jsx-uses-vars': 0,
+    'jsx-no-undef': 0
   }
 };

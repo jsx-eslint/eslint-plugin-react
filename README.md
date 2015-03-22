@@ -43,6 +43,7 @@ Finally, enable all of the rules that you would like to use.
 {
   "rules": {
     "react/display-name": 1,
+    "react/jsx-no-undef": 1,
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,
     "react/no-did-mount-set-state": 1,
@@ -59,6 +60,7 @@ Finally, enable all of the rules that you would like to use.
 # List of supported rules
 
 * [display-name](docs/rules/display-name.md): Prevent missing displayName in a React component definition
+* [jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
 * [jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
 * [jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
 * [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of setState in componentDidMount
