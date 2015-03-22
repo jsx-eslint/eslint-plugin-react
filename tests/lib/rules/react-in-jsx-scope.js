@@ -23,8 +23,8 @@ eslintTester.addRuleTest('lib/rules/react-in-jsx-scope', {
         {code: 'var React; <img />;', args: [1, {vars: 'all'}], ecmaFeatures: {jsx: true}},
         {code: 'var React; <x-gif />;', args: [1, {vars: 'all'}], ecmaFeatures: {jsx: true}},
         {code: 'var React, App, a=1; <App attr={a} />;', ecmaFeatures: {jsx: true}},
-        {code: 'var React, App, a=1; function elem() { return <App attr={a} />; }',
-         ecmaFeatures: {jsx: true}}
+        {code: 'var React, App, a=1; function elem() { return <App attr={a} />; }', ecmaFeatures: {jsx: true}},
+        {code: 'var React, App; <App />;', args: [1, {vars: 'all'}], ecmaFeatures: {globalReturn: true, jsx: true}}
     ],
     invalid: [
         {code: 'var App, a = <App />;',
