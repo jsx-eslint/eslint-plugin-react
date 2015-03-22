@@ -3,6 +3,8 @@
 JSX expands to a call to `React.createElement`, a file which includes `React`
 but only uses JSX should consider the `React` variable as used.
 
+If you are using the @jsx pragma this rule will mark the designated variable and not the `React` one.
+
 This rule has no effect if the `no-unused-vars` rule is not enabled.
 
 ## Rule Details
@@ -10,9 +12,16 @@ This rule has no effect if the `no-unused-vars` rule is not enabled.
 The following patterns are considered warnings:
 
 ```js
-var React = require('react'); // and other equivalent imports
+var React = require('react');
 
 // nothing to do with React
+```
+
+```js
+/** @jsx Foo */
+var React = require('react');
+
+var Hello = <div>Hello {this.props.name}</div>;
 ```
 
 The following patterns are not considered warnings:
@@ -20,7 +29,14 @@ The following patterns are not considered warnings:
 ```js
 var React = require('react');
 
-var elem = <div>Some Stuff</div>;
+var Hello = <div>Hello {this.props.name}</div>;
+```
+
+```js
+/** @jsx Foo */
+var Foo = require('foo');
+
+var Hello = <div>Hello {this.props.name}</div>;
 ```
 
 ## When Not To Use It
