@@ -42,4 +42,12 @@ var Hello = React.createClass({
     return <div>Hello {this.props.name}</div>;
   }
 });
+
+// Referencing an external object disable the rule for the component
+var Hello = React.createClass({
+  propTypes: myPropTypes,
+  render: function() {
+    return <div>Hello {this.props.name}</div>;
+  }
+});
 ```
