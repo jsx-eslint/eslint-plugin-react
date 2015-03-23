@@ -17,10 +17,10 @@ var Hello = React.createClass({
 
 var Hello = React.createClass({
   propTypes: {
-    fistname: React.PropTypes.string.isRequired
+    firstname: React.PropTypes.string.isRequired
   },
   render: function() {
-    return <div>Hello {this.props.fistname} {this.props.lastname}</div>; // lastname type is not defined in propTypes
+    return <div>Hello {this.props.firstname} {this.props.lastname}</div>; // lastname type is not defined in propTypes
   }
 });
 ```
