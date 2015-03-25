@@ -1,3 +1,12 @@
+1.6.1 / 2015-03-25
+==================
+* update jsx-quotes documentation
+* fix jsx-no-undef with babel-eslint ([#30][])
+* fix jsx-quotes on Literal childs ([#29][])
+
+[#30]: https://github.com/yannickcr/eslint-plugin-react/issues/30
+[#29]: https://github.com/yannickcr/eslint-plugin-react/issues/29
+
 1.6.0 / 2015-03-22
 ==================
 * update dependencies
