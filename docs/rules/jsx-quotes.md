@@ -9,7 +9,7 @@ var HelloJohn = <Hello name="John" />;
 var HelloJohn = <Hello name='John' />;
 ```
 
-The third parameter enables an exception to the rule to avoid escaping quotes. For example, when `"single"` is the standard, this option allows the use of double quotes to avoid escaping single quotes. This option can have the value `"avoid-escape"` and is off by default.
+The third parameter enables an exception to the rule to allow you to use alternative quotes to get around to impossibility to use escaping in JSX attributes. This option can have the value `"avoid-escape"` and is off by default.
 
 ```js
 [2, "single", "avoid-escape"]
