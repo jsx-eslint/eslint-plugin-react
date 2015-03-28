@@ -18,115 +18,233 @@ var ESLintTester = require('eslint-tester');
 var eslintTester = new ESLintTester(eslint);
 eslintTester.addRuleTest('lib/rules/prop-types', {
 
-    valid: [
-        {
-            code: '\
-              var Hello = React.createClass({\
-                propTypes: {\
-                  name: React.PropTypes.string.isRequired\
-                },\
-                render: function() {\
-                  return <div>Hello {this.props.name}</div>;\
-                }\
-              });',
-            ecmaFeatures: {
-              jsx: true
-            }
-        }, {
-            code: '\
-              var Hello = React.createClass({\
-                propTypes: {\
-                  name: React.PropTypes.object.isRequired\
-                },\
-                render: function() {\
-                  return <div>Hello {this.props.name.firstname}</div>;\
-                }\
-              });',
-            ecmaFeatures: {
-              jsx: true
-            }
-        }, {
-            code: '\
-              var Hello = React.createClass({\
-                render: function() {\
-                  return <div>Hello World</div>;\
-                }\
-              });',
-            ecmaFeatures: {
-              jsx: true
-            }
-        }, {
-            code: '\
-              var Hello = React.createClass({\
-                render: function() {\
-                  return <div>Hello World {this.props.children}</div>;\
-                }\
-              });',
-            ecmaFeatures: {
-              jsx: true
-            }
-        }, {
-            code: '\
-              var Hello = React.createClass({\
-                render: function() {\
-                  var props = this.props;\
-                  return <div>Hello World</div>;\
-                }\
-              });',
-            ecmaFeatures: {
-              jsx: true
-            }
-        }, {
-            code: '\
-              var Hello = React.createClass({\
-                propTypes: externalPropTypes,\
-                render: function() {\
-                  return <div>Hello {this.props.name}</div>;\
-                }\
-              });',
-            ecmaFeatures: {
-              jsx: true
-            }
-        }
-    ],
+  valid: [
+    {
+      code: [
+        'var Hello = React.createClass({',
+        '  propTypes: {',
+        '    name: React.PropTypes.string.isRequired',
+        '  },',
+        '  render: function() {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      ecmaFeatures: {
+        jsx: true
+      }
+    }, {
+      code: [
+        'var Hello = React.createClass({',
+        '  propTypes: {',
+        '    name: React.PropTypes.object.isRequired',
+        '  },',
+        '  render: function() {',
+        '    return <div>Hello {this.props.name.firstname}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      ecmaFeatures: {
+        jsx: true
+      }
+    }, {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() {',
+        '    return <div>Hello World</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      ecmaFeatures: {
+        jsx: true
+      }
+    }, {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() {',
+        '    return <div>Hello World {this.props.children}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      ecmaFeatures: {
+        jsx: true
+      }
+    }, {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() {',
+        '    var props = this.props;',
+        '    return <div>Hello World</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      ecmaFeatures: {
+        jsx: true
+      }
+    }, {
+      code: [
+        'var Hello = React.createClass({',
+        '  propTypes: externalPropTypes,',
+        '  render: function() {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      ecmaFeatures: {
+        jsx: true
+      }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    return <div>Hello World</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    return <div>Hello {this.props.firstname} {this.props.lastname}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  firstname: React.PropTypes.string',
+        '};',
+        'Hello.propTypes.lastname = React.PropTypes.string;'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+    }
+  ],
 
-    invalid: [
-        {
-            code: '\
-              var Hello = React.createClass({\
-                render: function() {\
-                  return <div>Hello {this.props.name}</div>;\
-                }\
-              });',
-            ecmaFeatures: {
-              jsx: true
-            },
-            errors: [{
-                message: '\'name\' is missing in props validation'
-            }]
-        }, {
-            code: '\
-              var Hello = React.createClass({\
-                propTypes: {\
-                  name: React.PropTypes.string.isRequired\
-                },\
-                render: function() {\
-                  return <div>Hello {this.props.name} and {this.props.propWithoutTypeDefinition}</div>;\
-                }\
-              });\
-              var Hello2 = React.createClass({\
-                render: function() {\
-                  return <div>Hello {this.props.name}</div>;\
-                }\
-              });',
-            ecmaFeatures: {
-              jsx: true
-            },
-            errors: [{
-                message: '\'propWithoutTypeDefinition\' is missing in props validation'
-            }, {
-                message: '\'name\' is missing in props validation'
-            }]
-        }
-    ]
+  invalid: [
+    {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      ecmaFeatures: {
+        jsx: true
+      },
+      errors: [{
+        message: '\'name\' is missing in props validation',
+        line: 3,
+        column: 23,
+        type: 'MemberExpression'
+      }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      },
+      errors: [{
+        message: '\'name\' is missing in props validation for Hello',
+        line: 3,
+        column: 23,
+        type: 'MemberExpression'
+      }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    return <div>Hello {this.props.firstname} {this.props.lastname}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  firstname: React.PropTypes.string',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      },
+      errors: [{
+        message: '\'lastname\' is missing in props validation for Hello'
+      }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  name: React.PropTypes.string',
+        '};',
+        'class HelloBis extends React.Component {',
+        '  render() {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      },
+      errors: [{
+        message: '\'name\' is missing in props validation for HelloBis'
+      }]
+    }, {
+      code: [
+        'var Hello = React.createClass({',
+        '  propTypes: {',
+        '    name: React.PropTypes.string.isRequired',
+        '  },',
+        '  render: function() {',
+        '    return <div>Hello {this.props.name} and {this.props.propWithoutTypeDefinition}</div>;',
+        '  }',
+        '});',
+        'var Hello2 = React.createClass({',
+        '  render: function() {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      ecmaFeatures: {
+        jsx: true
+      },
+      errors: [{
+        message: '\'propWithoutTypeDefinition\' is missing in props validation'
+      }, {
+        message: '\'name\' is missing in props validation'
+      }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    var { firstname, lastname } = this.props;',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  firstname: React.PropTypes.string',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        destructuring: true,
+        jsx: true
+      },
+      errors: [{
+        message: '\'lastname\' is missing in props validation for Hello'
+      }]
+    }
+  ]
 });
