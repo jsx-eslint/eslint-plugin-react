@@ -18,46 +18,61 @@ var ESLintTester = require('eslint-tester');
 var eslintTester = new ESLintTester(eslint);
 eslintTester.addRuleTest('lib/rules/display-name', {
 
-    valid: [
-        {
-            code: '\
-              var Hello = React.createClass({\
-                displayName: \'Hello\',\
-                render: function() {\
-                  return <div>Hello {this.props.name}</div>;\
-                }\
-              });',
-            ecmaFeatures: {
-              jsx: true
-            }
-        }, {
-            code: '\
-              var createClass = function() {};\
-              var Hello = createClass({\
-                render: function() {\
-                  return <div>Hello {this.props.name}</div>;\
-                }\
-              });',
-            ecmaFeatures: {
-              jsx: true
-            }
-        }
-    ],
+  valid: [{
+    code: [
+      'var Hello = React.createClass({',
+      '  displayName: \'Hello\',',
+      '  render: function() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    }
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}',
+      'Hello.displayName = \'Hello\''
+    ].join('\n'),
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    }
+  }],
 
-    invalid: [
-        {
-            code: '\
-              var Hello = React.createClass({\
-                render: function() {\
-                  return <div>Hello {this.props.name}</div>;\
-                }\
-              });',
-            ecmaFeatures: {
-              jsx: true
-            },
-            errors: [{
-                message: 'Component definition is missing display name'
-            }]
-        }
-    ]
-});
+  invalid: [{
+    code: [
+      'var Hello = React.createClass({',
+      '  render: function() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    },
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    },
+    errors: [{
+      message: 'Hello component definition is missing display name'
+    }]
+  }
+]});
