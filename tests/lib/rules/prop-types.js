@@ -84,6 +84,18 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
     }, {
       code: [
         'var Hello = React.createClass({',
+        '  render: function() {',
+        '    var propName = "foo";',
+        '    return <div>Hello World {this.props[propName]}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      ecmaFeatures: {
+        jsx: true
+      }
+    }, {
+      code: [
+        'var Hello = React.createClass({',
         '  propTypes: externalPropTypes,',
         '  render: function() {',
         '    return <div>Hello {this.props.name}</div>;',
