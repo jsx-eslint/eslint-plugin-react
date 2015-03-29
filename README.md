@@ -50,6 +50,7 @@ Finally, enable all of the rules that you would like to use.
     "react/no-did-mount-set-state": 1,
     "react/no-did-update-set-state": 1,
     "react/no-multi-comp": 1,
+    "react/no-unknown-property": 1,
     "react/prop-types": 1,
     "react/react-in-jsx-scope": 1,
     "react/self-closing-comp": 1,
@@ -68,6 +69,7 @@ Finally, enable all of the rules that you would like to use.
 * [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of setState in componentDidMount
 * [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of setState in componentDidUpdate
 * [no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
+* [no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property
 * [prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
 * [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing React when using JSX
 * [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
