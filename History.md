@@ -1,3 +1,9 @@
+2.0.1 / 2015-03-30
+==================
+* fix props detection when used in an object ([#41][])
+
+[#41]: https://github.com/yannickcr/eslint-plugin-react/issues/41
+
 2.0.0 / 2015-03-29
 ==================
 * update dependencies
