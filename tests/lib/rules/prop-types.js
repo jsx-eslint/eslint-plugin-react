@@ -66,6 +66,9 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         '  }',
         '});'
       ].join('\n'),
+      args: [1, {
+        ignore: ['children']
+      }],
       ecmaFeatures: {
         jsx: true
       }
