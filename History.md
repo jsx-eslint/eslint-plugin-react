@@ -1,3 +1,23 @@
+2.0.0 / 2015-03-29
+==================
+* update dependencies
+* add jsx-sort-props rule ([#16][])
+* add no-unknown-property rule ([#28][])
+* add ignore option to prop-types rule
+* breaking in prop-types the children prop is no longer ignored
+* fix components are now detected when using ES6 classes ([#24][])
+* fix prop-types now return the right line/column ([#33][])
+* fix props are now detected when destructuring ([#27][])
+* fix only check for computed property names in prop-types ([#36][] @burnnat)
+
+[#16]: https://github.com/yannickcr/eslint-plugin-react/issues/16
+[#28]: https://github.com/yannickcr/eslint-plugin-react/issues/28
+[#24]: https://github.com/yannickcr/eslint-plugin-react/issues/24
+[#33]: https://github.com/yannickcr/eslint-plugin-react/issues/33
+[#27]: https://github.com/yannickcr/eslint-plugin-react/issues/27
+[#36]: https://github.com/yannickcr/eslint-plugin-react/pull/36
+
+
 1.6.1 / 2015-03-25
 ==================
 * update jsx-quotes documentation
