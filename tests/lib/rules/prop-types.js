@@ -136,6 +136,23 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         classes: true,
         jsx: true
       }
+    }, {
+      code: [
+        'var Hello = React.createClass({',
+        '  propTypes: {',
+        '    name: React.PropTypes.object.isRequired',
+        '  },',
+        '  render: function() {',
+        '    var user = {',
+        '      name: this.props.name',
+        '    };',
+        '    return <div>Hello {user.name}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      ecmaFeatures: {
+        jsx: true
+      }
     }
   ],
 
