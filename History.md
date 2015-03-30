@@ -1,3 +1,14 @@
+2.0.2 / 2015-03-31
+==================
+
+* fix ignore rest spread when destructuring props ([#46][])
+* fix component detection in prop-types and display-name ([#45][])
+* fix spread handling in jsx-sort-props ([#42][] @zertosh)
+
+[#46]: https://github.com/yannickcr/eslint-plugin-react/issues/46
+[#45]: https://github.com/yannickcr/eslint-plugin-react/issues/45
+[#42]: https://github.com/yannickcr/eslint-plugin-react/pull/42
+
 2.0.1 / 2015-03-30
 ==================
 * fix props detection when used in an object ([#41][])
