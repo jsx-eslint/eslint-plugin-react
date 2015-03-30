@@ -43,6 +43,18 @@ eslintTester.addRuleTest('lib/rules/display-name', {
       classes: true,
       jsx: true
     }
+  }, {
+    code: [
+      'class Hello {',
+      '  render() {',
+      '    return \'Hello World\';',
+      '  }',
+      '}'
+    ].join('\n'),
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    }
   }],
 
   invalid: [{

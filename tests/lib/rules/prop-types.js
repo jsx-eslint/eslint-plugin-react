@@ -153,6 +153,18 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       ecmaFeatures: {
         jsx: true
       }
+    }, {
+      code: [
+        'class Hello {',
+        '  render() {',
+        '    return \'Hello\' + this.props.name;',
+        '  }',
+        '}'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
     }
   ],
 
