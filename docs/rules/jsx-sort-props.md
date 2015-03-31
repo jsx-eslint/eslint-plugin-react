@@ -4,7 +4,7 @@ Some developers prefer to sort props names alphabetically to be able to find nec
 
 ## Rule Details
 
-This rule checks all JSX components and verifies that all props are sorted alphabetically. This rule is off by default.
+This rule checks all JSX components and verifies that all props are sorted alphabetically. A spread attribute resets the verification. This rule is off by default.
 The default configuration of the rule is case-sensitive.
 
 The following patterns are considered warnings:
@@ -17,6 +17,7 @@ The following patterns are considered okay and do not cause warnings:
 
 ```js
 <Hello firstName="John" lastName="Smith" />;
+<Hello tel={5555555} {...this.props} firstName="John" lastName="Smith" />;
 ```
 
 ## Rule Options

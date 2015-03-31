@@ -35,8 +35,10 @@ eslintTester.addRuleTest('lib/rules/jsx-sort-props', {
     {code: '<App {...this.props} />;', ecmaFeatures: features},
     {code: '<App a b c />;', ecmaFeatures: features},
     {code: '<App {...this.props} a b c />;', ecmaFeatures: features},
+    {code: '<App c {...this.props} a b />;', ecmaFeatures: features},
     {code: '<App a="c" b="b" c="a" />;', ecmaFeatures: features},
     {code: '<App {...this.props} a="c" b="b" c="a" />;', ecmaFeatures: features},
+    {code: '<App c="a" {...this.props} a="c" b="b" />;', ecmaFeatures: features},
     {code: '<App A a />;', ecmaFeatures: features},
     {code: '<App a A />;', args: ignoreCaseArgs, ecmaFeatures: features},
     {code: '<App a B c />;', args: ignoreCaseArgs, ecmaFeatures: features},
@@ -45,10 +47,12 @@ eslintTester.addRuleTest('lib/rules/jsx-sort-props', {
   invalid: [
     {code: '<App b a />;', errors: [expectedError], ecmaFeatures: features},
     {code: '<App {...this.props} b a />;', errors: [expectedError], ecmaFeatures: features},
+    {code: '<App c {...this.props} b a />;', errors: [expectedError], ecmaFeatures: features},
     {code: '<App a A />;', errors: [expectedError], ecmaFeatures: features},
     {code: '<App B a />;', args: ignoreCaseArgs, errors: [expectedError], ecmaFeatures: features},
     {code: '<App B A c />;', args: ignoreCaseArgs, errors: [expectedError], ecmaFeatures: features},
     {code: '<App c="a" a="c" b="b" />;', errors: 2, ecmaFeatures: features},
-    {code: '<App {...this.props} c="a" a="c" b="b" />;', errors: 2, ecmaFeatures: features}
+    {code: '<App {...this.props} c="a" a="c" b="b" />;', errors: 2, ecmaFeatures: features},
+    {code: '<App d="d" b="b" {...this.props} c="a" a="c" />;', errors: 2, ecmaFeatures: features}
   ]
 });
