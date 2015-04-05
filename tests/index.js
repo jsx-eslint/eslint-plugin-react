@@ -12,6 +12,10 @@ var rules = fs.readdirSync(path.resolve(__dirname, '../lib/rules/'))
     return path.basename(f, '.js');
   });
 
+var defaultSettings = {
+  'jsx-uses-vars': 1
+};
+
 describe('all rule files should be exported by the plugin', function() {
   rules.forEach(function(ruleName) {
     it('should export ' + ruleName, function() {
@@ -20,11 +24,22 @@ describe('all rule files should be exported by the plugin', function() {
         require(path.join('../lib/rules', ruleName))
       );
     });
-    it('should configure ' + ruleName + ' off by default', function() {
-      assert.equal(
-        plugin.rulesConfig[ruleName],
-        0
-      );
-    });
+
+    if (defaultSettings.hasOwnProperty(ruleName)) {
+      var val = defaultSettings[ruleName];
+      it('should configure ' + ruleName + ' to ' + val + ' by default', function() {
+        assert.equal(
+          plugin.rulesConfig[ruleName],
+          val
+        );
+      });
+    } else {
+      it('should configure ' + ruleName + ' off by default', function() {
+        assert.equal(
+          plugin.rulesConfig[ruleName],
+          0
+        );
+      });
+    }
   });
 });

@@ -27,7 +27,7 @@ module.exports = {
     'no-did-mount-set-state': 0,
     'no-did-update-set-state': 0,
     'react-in-jsx-scope': 0,
-    'jsx-uses-vars': 0,
+    'jsx-uses-vars': 1,
     'jsx-no-undef': 0,
     'jsx-quotes': 0,
     'no-unknown-property': 0,
