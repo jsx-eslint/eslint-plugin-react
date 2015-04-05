@@ -55,6 +55,21 @@ eslintTester.addRuleTest('lib/rules/display-name', {
       classes: true,
       jsx: true
     }
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  static get displayName() {',
+      '    return \'Hello\';',
+      '  }',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    }
   }],
 
   invalid: [{

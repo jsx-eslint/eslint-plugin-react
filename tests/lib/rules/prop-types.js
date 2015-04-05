@@ -165,6 +165,59 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         classes: true,
         jsx: true
       }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  static get propTypes() {',
+        '    return {',
+        '      name: React.PropTypes.string',
+        '    };',
+        '  }',
+        '  render() {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        destructuring: true,
+        jsx: true
+      }
+/*    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    var { firstname, ...other } = this.props;',
+        '    return <div>Hello {firstname}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  firstname: React.PropTypes.string',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      ecmaFeatures: {
+        classes: true,
+        destructuring: true,
+        jsx: true
+      }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  static propTypes = {',
+        '    name: React.PropTypes.string',
+        '  }',
+        '  render() {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      ecmaFeatures: {
+        classes: true,
+        destructuring: true,
+        jsx: true
+      }*/
     }
   ],
 
