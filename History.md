@@ -1,3 +1,18 @@
+2.1.0 / 2015-04-06
+==================
+
+* update jsx-sort-props to reset the alphabetical verification on spread ([#47][] @zertosh)
+* update jsx-uses-vars to be enabled by default ([#49][] @banderson)
+* add jsx-boolean-value rule ([#11][])
+* add support for static methods in display-name and prop-types ([#48][])
+* fix describing comment for hasSpreadOperator() method ([#53][] @AlexKVal)
+
+[#47]: https://github.com/yannickcr/eslint-plugin-react/pull/47
+[#49]: https://github.com/yannickcr/eslint-plugin-react/pull/49
+[#11]: https://github.com/yannickcr/eslint-plugin-react/issues/11
+[#48]: https://github.com/yannickcr/eslint-plugin-react/issues/48
+[#53]: https://github.com/yannickcr/eslint-plugin-react/pull/53
+
 2.0.2 / 2015-03-31
 ==================
 
