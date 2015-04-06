@@ -43,6 +43,7 @@ Finally, enable all of the rules that you would like to use.
 {
   "rules": {
     "react/display-name": 1,
+    "react/jsx-boolean-value": 1,
     "react/jsx-quotes": 1,
     "react/jsx-no-undef": 1,
     "react/jsx-sort-props": 1,
@@ -63,6 +64,7 @@ Finally, enable all of the rules that you would like to use.
 # List of supported rules
 
 * [display-name](docs/rules/display-name.md): Prevent missing displayName in a React component definition
+* [jsx-boolean-value](docs/rules/jsx-boolean-value.md): Enforce boolean attributes notation in JSX
 * [jsx-quotes](docs/rules/jsx-quotes.md): Enforce quote style for JSX attributes
 * [jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
 * [jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting

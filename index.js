@@ -15,7 +15,8 @@ module.exports = {
     'jsx-no-undef': require('./lib/rules/jsx-no-undef'),
     'jsx-quotes': require('./lib/rules/jsx-quotes'),
     'no-unknown-property': require('./lib/rules/no-unknown-property'),
-    'jsx-sort-props': require('./lib/rules/jsx-sort-props')
+    'jsx-sort-props': require('./lib/rules/jsx-sort-props'),
+    'jsx-boolean-value': require('./lib/rules/jsx-boolean-value')
   },
   rulesConfig: {
     'jsx-uses-react': 0,
@@ -31,6 +32,7 @@ module.exports = {
     'jsx-no-undef': 0,
     'jsx-quotes': 0,
     'no-unknown-property': 0,
-    'jsx-sort-props': 0
+    'jsx-sort-props': 0,
+    'jsx-boolean-value': 0
   }
 };
