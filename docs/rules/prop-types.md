@@ -64,3 +64,20 @@ This rule can take one argument to ignore some specific props during validation.
 
 * `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
 * `ignore`: optional array of props name to ignore during validation.
+
+### As for "exceptions"
+
+It would seem that some common properties such as `props.children` or `props.className`
+(and alike) need to be treated as exceptions.
+
+As it aptly noticed in
+[#7](https://github.com/yannickcr/eslint-plugin-react/issues/7)
+
+> Why should children be an exception?
+> Most components don't need `this.props.children`, so that makes it extra important
+to document `children` in the propTypes.
+
+> If `children` is difficult to figure out which type to use,
+one can always use `React.PropTypes.any`
+
+Since 2.0.0 children is no longer ignored for props validation.
