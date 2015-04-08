@@ -24,10 +24,10 @@
   "bugs": "https://github.com/yannickcr/eslint-plugin-react/issues",
   "devDependencies": {
     "coveralls": "2.11.2",
-    "eslint": "0.18",
+    "eslint": "0.18.0",
     "eslint-tester": "0.6.0",
-    "istanbul": "0.3.11",
-    "mocha": "2.2.1"
+    "istanbul": "0.3.13",
+    "mocha": "2.2.4"
   },
   "keywords": [
     "eslint-plugin",
