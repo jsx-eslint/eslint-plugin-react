@@ -57,6 +57,7 @@ Finally, enable all of the rules that you would like to use.
     "react/prop-types": 1,
     "react/react-in-jsx-scope": 1,
     "react/self-closing-comp": 1,
+    "react/sort-comp": 1,
     "react/wrap-multilines": 1
   }
 }
@@ -79,6 +80,7 @@ Finally, enable all of the rules that you would like to use.
 * [prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
 * [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing React when using JSX
 * [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
+* [sort-comp](docs/rules/sort-comp.md): Enforce component methods order
 * [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX
 
 ## To Do
