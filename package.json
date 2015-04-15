@@ -29,6 +29,9 @@
     "istanbul": "0.3.13",
     "mocha": "2.2.4"
   },
+  "peerDependencies": {
+    "eslint": ">=0.8.0"
+  },
   "keywords": [
     "eslint-plugin",
     "eslintplugin",
