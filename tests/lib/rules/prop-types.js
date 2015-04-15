@@ -11,6 +11,8 @@
 var eslint = require('eslint').linter;
 var ESLintTester = require('eslint-tester');
 
+require('babel-eslint');
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -183,7 +185,7 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         destructuring: true,
         jsx: true
       }
-/*    }, {
+    }, {
       code: [
         'class Hello extends React.Component {',
         '  render() {',
@@ -201,7 +203,7 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         destructuring: true,
         jsx: true
       }
-    }, {
+    }/*, {
       code: [
         'class Hello extends React.Component {',
         '  static propTypes = {',
@@ -217,8 +219,8 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         classes: true,
         destructuring: true,
         jsx: true
-      }*/
-    }
+      }
+    }*/
   ],
 
   invalid: [
