@@ -1,3 +1,13 @@
+2.1.1 / 2015-04-17
+==================
+
+* add support for classes static properties ([#43][])
+* add tests for the babel-eslint parser
+* add ESLint as peerDependency (@AlexKVal)
+* documentation improvements (@AlexKVal, @chriscalo)
+
+[#43]: https://github.com/yannickcr/eslint-plugin-react/issues/43
+
 2.1.0 / 2015-04-06
 ==================
 
