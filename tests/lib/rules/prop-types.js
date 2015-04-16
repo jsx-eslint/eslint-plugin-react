@@ -203,7 +203,7 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         destructuring: true,
         jsx: true
       }
-    }/*, {
+    }, {
       code: [
         'class Hello extends React.Component {',
         '  static propTypes = {',
@@ -220,7 +220,7 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         destructuring: true,
         jsx: true
       }
-    }*/
+    }
   ],
 
   invalid: [

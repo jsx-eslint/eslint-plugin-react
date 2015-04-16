@@ -11,6 +11,8 @@
 var eslint = require('eslint').linter;
 var ESLintTester = require('eslint-tester');
 
+require('babel-eslint');
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -66,6 +68,20 @@ eslintTester.addRuleTest('lib/rules/display-name', {
       '  }',
       '}'
     ].join('\n'),
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    }
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  static displayName = \'Widget\'',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
     ecmaFeatures: {
       classes: true,
       jsx: true
