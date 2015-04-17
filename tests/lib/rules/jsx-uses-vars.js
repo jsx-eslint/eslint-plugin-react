@@ -65,7 +65,18 @@ eslintTester.addRuleTest('node_modules/eslint/lib/rules/no-unused-vars', {
   invalid: [
     {
       code: '/*eslint jsx-uses-vars:1*/ var App;',
-      errors: [{message: 'App is defined but never used'}], ecmaFeatures: {jsx: true}
+      errors: [{message: 'App is defined but never used'}],
+      ecmaFeatures: {jsx: true}
+    }, {
+      code: '\
+        /*eslint jsx-uses-vars:1*/\
+        var App;\
+        var unused;\
+        React.render(<App unused=""/>);',
+      errors: [{message: 'unused is defined but never used'}],
+      ecmaFeatures: {
+        jsx: true
+      }
     }
   ]
 });
