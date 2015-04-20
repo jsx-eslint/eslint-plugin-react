@@ -40,4 +40,4 @@ The following patterns are considered okay and do not cause warnings:
 
 ## When not to use
 
-This rule is a formatting preference and not following it won't negatively affect the quality of your code. If you alphabetizing props isn't a part of your coding standards, then you can leave this rule off.
+This rule is a formatting preference and not following it won't negatively affect the quality of your code. If alphabetizing props isn't a part of your coding standards, then you can leave this rule off.
