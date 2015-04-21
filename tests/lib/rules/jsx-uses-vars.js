@@ -60,6 +60,14 @@ eslintTester.addRuleTest('node_modules/eslint/lib/rules/no-unused-vars', {
       ecmaFeatures: {
         jsx: true
       }
+    }, {
+      code: '\
+        /*eslint jsx-uses-vars:1*/\
+        var App;\
+        <App.Hello />',
+      ecmaFeatures: {
+        jsx: true
+      }
     }
   ],
   invalid: [
