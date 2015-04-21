@@ -1,12 +1,26 @@
+2.2.0 / 2015-04-22
+==================
+
+* add jsx-sort-prop-types rule ([#38][] @AlexKVal)
+* fix variables marked as used when a prop has the same name ([#69][] @burnnat)
+* documentation improvements ([#71][] @AlexKVal)
+
+[#38]: https://github.com/yannickcr/eslint-plugin-react/issues/38
+[#69]: https://github.com/yannickcr/eslint-plugin-react/pull/69
+[#71]: https://github.com/yannickcr/eslint-plugin-react/pull/71
+
 2.1.1 / 2015-04-17
 ==================
 
 * add support for classes static properties ([#43][])
 * add tests for the babel-eslint parser
-* add ESLint as peerDependency (@AlexKVal)
-* documentation improvements (@AlexKVal, @chriscalo)
+* add ESLint as peerDependency ([#63][] @AlexKVal)
+* documentation improvements ([#55][] @AlexKVal, [#60][] @chriscalo)
 
 [#43]: https://github.com/yannickcr/eslint-plugin-react/issues/43
+[#63]: https://github.com/yannickcr/eslint-plugin-react/pull/63
+[#55]: https://github.com/yannickcr/eslint-plugin-react/pull/55
+[#60]: https://github.com/yannickcr/eslint-plugin-react/pull/60
 
 2.1.0 / 2015-04-06
 ==================
