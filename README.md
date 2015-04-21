@@ -47,6 +47,7 @@ Finally, enable all of the rules that you would like to use.
     "react/jsx-quotes": 1,
     "react/jsx-no-undef": 1,
     "react/jsx-sort-props": 1,
+    "react/jsx-sort-prop-types": 1,
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,
     "react/no-did-mount-set-state": 1,
@@ -68,6 +69,7 @@ Finally, enable all of the rules that you would like to use.
 * [jsx-quotes](docs/rules/jsx-quotes.md): Enforce quote style for JSX attributes
 * [jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
 * [jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting
+* [jsx-sort-prop-types](docs/rules/jsx-sort-prop-types.md): Enforce propTypes declarations alphabetical sorting
 * [jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
 * [jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
 * [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of setState in componentDidMount
@@ -111,4 +113,3 @@ ESLint-plugin-React is licensed under the [MIT License](http://www.opensource.or
 
 [status-url]: https://github.com/yannickcr/eslint-plugin-react/pulse
 [status-image]: http://img.shields.io/badge/status-maintained-brightgreen.svg?style=flat-square
-
