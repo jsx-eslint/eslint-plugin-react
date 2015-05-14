@@ -253,8 +253,8 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       errors: [{
         message: '\'name\' is missing in props validation',
         line: 3,
-        column: 23,
-        type: 'MemberExpression'
+        column: 34,
+        type: 'Identifier'
       }]
     }, {
       code: [
@@ -271,8 +271,8 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       errors: [{
         message: '\'name\' is missing in props validation for Hello',
         line: 3,
-        column: 23,
-        type: 'MemberExpression'
+        column: 34,
+        type: 'Identifier'
       }]
     }, {
       code: [
