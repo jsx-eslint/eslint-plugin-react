@@ -1,6 +1,18 @@
-2.2.0 / 2015-04-22
+2.3.0 / 2015-05-14
 ==================
 
+* update dependencies
+* add sort-comp rule ([#39][])
+* fix quoted propTypes in ES6 ([#77][])
+* add allow-in-func option to no-did-mount-set-state ([#56][])
+* improve errors locations for prop-types
+
+[#39]: https://github.com/yannickcr/eslint-plugin-react/issues/39
+[#77]: https://github.com/yannickcr/eslint-plugin-react/issues/77
+[#56]: https://github.com/yannickcr/eslint-plugin-react/issues/56
+
+2.2.0 / 2015-04-22
+==================
 * add jsx-sort-prop-types rule ([#38][] @AlexKVal)
 * fix variables marked as used when a prop has the same name ([#69][] @burnnat)
 * documentation improvements ([#71][] @AlexKVal)
@@ -11,7 +23,6 @@
 
 2.1.1 / 2015-04-17
 ==================
-
 * add support for classes static properties ([#43][])
 * add tests for the babel-eslint parser
 * add ESLint as peerDependency ([#63][] @AlexKVal)
@@ -24,7 +35,6 @@
 
 2.1.0 / 2015-04-06
 ==================
-
 * update jsx-sort-props to reset the alphabetical verification on spread ([#47][] @zertosh)
 * update jsx-uses-vars to be enabled by default ([#49][] @banderson)
 * add jsx-boolean-value rule ([#11][])
@@ -39,7 +49,6 @@
 
 2.0.2 / 2015-03-31
 ==================
-
 * fix ignore rest spread when destructuring props ([#46][])
 * fix component detection in prop-types and display-name ([#45][])
 * fix spread handling in jsx-sort-props ([#42][] @zertosh)
