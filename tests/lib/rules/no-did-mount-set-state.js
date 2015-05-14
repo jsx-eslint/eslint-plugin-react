@@ -11,6 +11,8 @@
 var eslint = require('eslint').linter;
 var ESLintTester = require('eslint-tester');
 
+require('babel-eslint');
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -32,10 +34,7 @@ eslintTester.addRuleTest('lib/rules/no-did-mount-set-state', {
   }, {
     code: [
       'var Hello = React.createClass({',
-      'componentDidMount: function() {},',
-      '  render: function() {',
-      '    return <div>Hello {this.props.name}</div>;',
-      '  }',
+      '  componentDidMount: function() {}',
       '});'
     ].join('\n'),
     ecmaFeatures: {
@@ -47,12 +46,43 @@ eslintTester.addRuleTest('lib/rules/no-did-mount-set-state', {
       '  componentDidMount: function() {',
       '    someNonMemberFunction(arg);',
       '    this.someHandler = this.setState;',
-      '  },',
-      '  render: function() {',
-      '    return <div>Hello {this.props.name}</div>;',
       '  }',
       '});'
     ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    }
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  componentDidMount: function() {',
+      '    someClass.onSomeEvent(function(data) {',
+      '      this.setState({',
+      '        data: data',
+      '      });',
+      '    })',
+      '  }',
+      '});'
+    ].join('\n'),
+    args: [1, 'allow-in-func'],
+    ecmaFeatures: {
+      jsx: true
+    }
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  componentDidMount: function() {',
+      '    function handleEvent(data) {',
+      '      this.setState({',
+      '        data: data',
+      '      });',
+      '    }',
+      '    someClass.onSomeEvent(handleEvent)',
+      '  }',
+      '});'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    args: [1, 'allow-in-func'],
     ecmaFeatures: {
       jsx: true
     }
@@ -62,15 +92,80 @@ eslintTester.addRuleTest('lib/rules/no-did-mount-set-state', {
     code: [
       'var Hello = React.createClass({',
       '  componentDidMount: function() {',
-      '    this.setState({',
-      '      name: this.props.name.toUpperCase()',
-      '    });',
-      '  },',
-      '  render: function() {',
-      '    return <div>Hello {this.state.name}</div>;',
+    '      this.setState({',
+    '        data: data',
+    '      });',
       '  }',
       '});'
     ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    },
+    errors: [{
+      message: 'Do not use setState in componentDidMount'
+    }]
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  componentDidMount: function() {',
+    '      this.setState({',
+    '        data: data',
+    '      });',
+      '  }',
+      '});'
+    ].join('\n'),
+    args: [1, 'allow-in-func'],
+    ecmaFeatures: {
+      jsx: true
+    },
+    errors: [{
+      message: 'Do not use setState in componentDidMount'
+    }]
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  componentDidMount: function() {',
+      '    someClass.onSomeEvent(function(data) {',
+      '      this.setState({',
+      '        data: data',
+      '      });',
+      '    })',
+      '  }',
+      '});'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    },
+    errors: [{
+      message: 'Do not use setState in componentDidMount'
+    }]
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  componentDidMount: function() {',
+      '    if (true) {',
+      '      this.setState({',
+      '        data: data',
+      '      });',
+      '    }',
+      '  }',
+      '});'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    },
+    errors: [{
+      message: 'Do not use setState in componentDidMount'
+    }]
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  componentDidMount: function() {',
+      '    someClass.onSomeEvent((data) => this.setState({data: data}));',
+      '  }',
+      '});'
+    ].join('\n'),
+    parser: 'babel-eslint',
     ecmaFeatures: {
       jsx: true
     },
