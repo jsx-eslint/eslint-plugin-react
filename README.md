@@ -1,6 +1,8 @@
 ESLint-plugin-React
 ===================
 
+[![Join the chat at https://gitter.im/yannickcr/eslint-plugin-react](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/yannickcr/eslint-plugin-react?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][climate-image]][climate-url]
 
 React specific linting rules for ESLint
