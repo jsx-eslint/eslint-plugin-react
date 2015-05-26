@@ -22,7 +22,8 @@ eslintTester.addRuleTest('node_modules/eslint/lib/rules/no-unused-vars', {
     valid: [
         {code: '/*eslint jsx-uses-react:1*/ var React; <div />;', ecmaFeatures: {jsx: true}},
         {code: '/*eslint jsx-uses-react:1*/ var React; (function () { <div /> })();', ecmaFeatures: {jsx: true}},
-        {code: '/*eslint jsx-uses-react:1*/ /** @jsx Foo */ var Foo; <div />;', ecmaFeatures: {jsx: true}}
+        {code: '/*eslint jsx-uses-react:1*/ /** @jsx Foo */ var Foo; <div />;', ecmaFeatures: {jsx: true}},
+        {code: '/*eslint jsx-uses-react:[1,{"pragma":"Foo"}]*/ var Foo; <div />;', ecmaFeatures: {jsx: true}}
     ],
     invalid: [
         {code: '/*eslint jsx-uses-react:1*/ var React;',
