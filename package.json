@@ -39,10 +39,5 @@
     "eslint",
     "react"
   ],
-  "licenses": [
-    {
-      "type": "MIT",
-      "url": "https://raw.github.com/yannickcr/eslint-plugin-react/master/LICENSE"
-    }
-  ]
+  "license": "MIT"
 }
