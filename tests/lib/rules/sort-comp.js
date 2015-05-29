@@ -61,7 +61,7 @@ eslintTester.addRuleTest('lib/rules/sort-comp', {
       jsx: true
     }
   }, {
-    // Must but a custom method in 'everything-else'
+    // Must put a custom method in 'everything-else'
     code: [
       'var Hello = React.createClass({',
       '  onClick: function() {},',
