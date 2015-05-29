@@ -77,7 +77,8 @@ As it aptly noticed in
 > Most components don't need `this.props.children`, so that makes it extra important
 to document `children` in the propTypes.
 
-> If `children` is difficult to figure out which type to use,
-one can always use `React.PropTypes.any`
+Generally, you should use `React.PropTypes.node` for `children`. It accepts
+anything that can be rendered: numbers, strings, elements or an array containing
+these types.
 
 Since 2.0.0 children is no longer ignored for props validation.
