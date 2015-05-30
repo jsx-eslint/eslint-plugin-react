@@ -1,3 +1,21 @@
+2.4.0 / 2015-05-30
+==================
+
+* update dependencies
+* add pragma option to jsx-uses-react ([#82][] @dominicbarnes)
+* add context props to sort-comp ([#89][] @zertosh)
+* fix itemID in no-unknown-property rule ([#85][] @cody)
+* fix license field in package.json ([#90][] @zertosh)
+* fix usage of contructor in sort-comp options ([#88][])
+* documentation improvement ([#91][] @matthewwithanm)
+
+[#82]: https://github.com/yannickcr/eslint-plugin-react/pull/82
+[#89]: https://github.com/yannickcr/eslint-plugin-react/pull/89
+[#85]: https://github.com/yannickcr/eslint-plugin-react/pull/85
+[#90]: https://github.com/yannickcr/eslint-plugin-react/pull/90
+[#88]: https://github.com/yannickcr/eslint-plugin-react/issues/88
+[#91]: https://github.com/yannickcr/eslint-plugin-react/pull/91
+
 2.3.0 / 2015-05-14
 ==================
 
