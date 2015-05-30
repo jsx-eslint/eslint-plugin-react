@@ -166,6 +166,29 @@ eslintTester.addRuleTest('lib/rules/sort-comp', {
       classes: true,
       jsx: true
     }
+  }, {
+    // Must allow us to use 'constructor' as a method name
+    code: [
+      'class Hello extends React.Component {',
+      '  constructor() {}',
+      '  displayName() {}',
+      '  render() {',
+      '    return <div>Hello</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    args: [1, {
+      order: [
+        'constructor',
+        'lifecycle',
+        'everything-else',
+        'render'
+      ]
+    }],
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    }
   }],
 
   invalid: [{
