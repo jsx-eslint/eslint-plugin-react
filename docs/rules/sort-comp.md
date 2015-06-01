@@ -6,7 +6,7 @@ When creating React components it is more convenient to always follow the same o
 
 With default configuration the following organisation must be followed:
 
-  1. lifecycle methods: `displayName` ,`propTypes` ,`contextTypes` ,`childContextTypes` ,`mixins` ,`statics` ,`getDefaultProps` ,`getInitialState` ,`getChildContext` ,`componentWillMount` ,`componentDidMount` ,`componentWillReceiveProps` ,`shouldComponentUpdate` ,`componentWillUpdate` ,`componentDidUpdate` ,`componentWillUnmount` (in this order).
+  1. lifecycle methods: `displayName`, `propTypes`, `contextTypes`, `childContextTypes`, `mixins`, `statics`, `getDefaultProps`, `getInitialState`, `getChildContext`, `componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `componentDidUpdate`, `componentWillUnmount` (in this order).
   2. custom methods
   3. `render` method
 
