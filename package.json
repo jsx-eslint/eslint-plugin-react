@@ -25,8 +25,8 @@
   "devDependencies": {
     "babel-eslint": "3.1.9",
     "coveralls": "2.11.2",
-    "eslint": "0.21.2",
-    "eslint-tester": "eslint/eslint-tester#c2a1f722cd",
+    "eslint": "0.22.1",
+    "eslint-tester": "0.7.0",
     "istanbul": "0.3.14",
     "mocha": "2.2.5"
   },
