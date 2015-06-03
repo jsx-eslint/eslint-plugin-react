@@ -1,6 +1,6 @@
-# Prevent missing parentheses around multilines JSX (wrap-multilines)
+# Prevent missing parentheses around multiline JSX (wrap-multilines)
 
-Wrapping multilines JSX in parentheses can improve readability and/or convenience.
+Wrapping multiline JSX in parentheses can improve readability and/or convenience. It optionally takes a second parameter in the form of an object, containing places to apply the rule. By default, `"declaration"`, `"assignment"`, and `"return"` syntax is checked, but these can be explicitly disabled. Any syntax type missing in the object will follow the default behavior (become enabled).
 
 ## Rule Details
 
@@ -30,4 +30,15 @@ var Hello = React.createClass({
     );
   }
 });
+
+// When [1, {declaration: false}]
+var hello;
+hello = <div>
+  <p>Hello</p>
+</div>
+
+// When [1, {declaration: true, assignment: false, return: true}]
+var world = <div>
+  <p>World</p>
+</div>
 ```
