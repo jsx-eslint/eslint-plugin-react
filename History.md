@@ -1,3 +1,14 @@
+2.5.0 / 2015-06-04
+==================
+
+* update dependencies
+* add option to make wrap-multilines more granular ([#94][] @PiPeep)
+* documentation improvements ([#92][] [#93][] @lencioni)
+
+[#94]: https://github.com/yannickcr/eslint-plugin-react/pull/94
+[#92]: https://github.com/yannickcr/eslint-plugin-react/pull/92
+[#93]: https://github.com/yannickcr/eslint-plugin-react/pull/93
+
 2.4.0 / 2015-05-30
 ==================
 
