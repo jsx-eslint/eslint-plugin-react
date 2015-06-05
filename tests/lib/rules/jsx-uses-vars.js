@@ -68,6 +68,29 @@ eslintTester.addRuleTest('node_modules/eslint/lib/rules/no-unused-vars', {
       ecmaFeatures: {
         jsx: true
       }
+    }, {
+      code: '\
+        /*eslint jsx-uses-vars:1*/\
+        class HelloMessage {}\
+        <HelloMessage />',
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+    }, {
+      code: '\
+        /*eslint jsx-uses-vars:1*/\
+        class HelloMessage {\
+          render() {\
+            var HelloMessage = <div>Hello</div>;\
+            return HelloMessage;\
+          }\
+        }\
+        <HelloMessage />',
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
     }
   ],
   invalid: [
@@ -83,6 +106,32 @@ eslintTester.addRuleTest('node_modules/eslint/lib/rules/no-unused-vars', {
         React.render(<App unused=""/>);',
       errors: [{message: 'unused is defined but never used'}],
       ecmaFeatures: {
+        jsx: true
+      }
+    }, {
+      code: '\
+        /*eslint jsx-uses-vars:1*/\
+        class unused {}',
+      errors: [{message: 'unused is defined but never used'}],
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+    }, {
+      code: '\
+        /*eslint jsx-uses-vars:1*/\
+        class HelloMessage {\
+          render() {\
+            var HelloMessage = <div>Hello</div>;\
+            return HelloMessage;\
+          }\
+        }',
+      errors: [{
+        message: 'HelloMessage is defined but never used',
+        line: 1
+      }],
+      ecmaFeatures: {
+        classes: true,
         jsx: true
       }
     }
