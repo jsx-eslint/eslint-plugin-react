@@ -359,6 +359,25 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       errors: [{
         message: '\'lastname\' is missing in props validation for Hello'
       }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  static propTypes: { ',
+        '    firstname: React.PropTypes.string',
+        '  }',
+        '  render() {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      },
+      errors: [{
+        message: '\'firstname\' is missing in props validation for Hello'
+      }]
     }
   ]
 });
