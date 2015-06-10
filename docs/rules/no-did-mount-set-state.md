@@ -4,7 +4,7 @@ Updating the state after a component mount will trigger a second `render()` call
 
 ## Rule Details
 
-This rule is aimed to forbids the use of `this.setState` in `componentDidMount`.
+This rule is aimed to forbid the use of `this.setState` in `componentDidMount`.
 
 The following patterns are considered warnings:
 
