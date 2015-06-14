@@ -1,3 +1,10 @@
+2.5.2 / 2015-06-14
+==================
+
+* fix regression in jsx-uses-vars with babel-eslint ([#110][])
+
+[#110]: https://github.com/yannickcr/eslint-plugin-react/issues/110
+
 2.5.1 / 2015-06-14
 ==================
 
