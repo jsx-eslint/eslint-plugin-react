@@ -12,6 +12,8 @@
 var eslint = require('eslint').linter;
 var ESLintTester = require('eslint-tester');
 
+require('babel-eslint');
+
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
@@ -32,12 +34,20 @@ eslintTester.addRuleTest('node_modules/eslint/lib/rules/no-unused-vars', {
       ecmaFeatures: {
         jsx: true
       }
-    },
-    {
+    }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
         var App;\
         React.render(<App/>);',
+      ecmaFeatures: {
+        jsx: true
+      }
+    }, {
+      code: '\
+        /*eslint jsx-uses-vars:1*/\
+        var App;\
+        React.render(<App/>);',
+      parser: 'babel-eslint',
       ecmaFeatures: {
         jsx: true
       }
@@ -130,6 +140,24 @@ eslintTester.addRuleTest('node_modules/eslint/lib/rules/no-unused-vars', {
         message: 'HelloMessage is defined but never used',
         line: 1
       }],
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+    }, {
+      code: '\
+        /*eslint jsx-uses-vars:1*/\
+        class HelloMessage {\
+          render() {\
+            var HelloMessage = <div>Hello</div>;\
+            return HelloMessage;\
+          }\
+        }',
+      errors: [{
+        message: 'HelloMessage is defined but never used',
+        line: 1
+      }],
+      parser: 'babel-eslint',
       ecmaFeatures: {
         classes: true,
         jsx: true
