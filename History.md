@@ -1,3 +1,17 @@
+2.5.1 / 2015-06-14
+==================
+
+* update dependencies
+* fix prop-types crash when propTypes definition is invalid ([#95][])
+* fix jsx-uses-vars for ES6 classes ([#96][])
+* fix hasOwnProperty that is taken for a prop ([#102][])
+* documentation improvements ([#99][] @morenoh149)
+
+[#95]: https://github.com/yannickcr/eslint-plugin-react/issues/95
+[#96]: https://github.com/yannickcr/eslint-plugin-react/issues/96
+[#102]: https://github.com/yannickcr/eslint-plugin-react/issues/102
+[#99]: https://github.com/yannickcr/eslint-plugin-react/pull/99
+
 2.5.0 / 2015-06-04
 ==================
 
