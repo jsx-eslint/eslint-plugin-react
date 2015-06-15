@@ -253,6 +253,168 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         classes: true,
         jsx: true
       }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props.a.b',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {};',
+        'Hello.propTypes.a = React.PropTypes.shape({',
+        '  b: React.PropTypes.string',
+        '});'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props.a.b.c;',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  a: React.PropTypes.shape({',
+        '    b: React.PropTypes.shape({',
+        '    })',
+        '  })',
+        '};',
+        'Hello.propTypes.a.b.c = React.PropTypes.number;'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props.a.b.c;',
+        '    this.props.a.__.d.length;',
+        '    this.props.a.anything.e[2];',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  a: React.PropTypes.objectOf(',
+        '    React.PropTypes.shape({',
+        '      c: React.PropTypes.number,',
+        '      d: React.PropTypes.string,',
+        '      e: React.PropTypes.array',
+        '    })',
+        '  )',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    var i = 3;',
+        '    this.props.a[2].c;',
+        '    this.props.a[i].d.length;',
+        '    this.props.a[i + 2].e[2];',
+        '    this.props.a.length;',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  a: React.PropTypes.arrayOf(',
+        '    React.PropTypes.shape({',
+        '      c: React.PropTypes.number,',
+        '      d: React.PropTypes.string,',
+        '      e: React.PropTypes.array',
+        '    })',
+        '  )',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props.a.c;',
+        '    this.props.a[2] === true;',
+        '    this.props.a.e[2];',
+        '    this.props.a.length;',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  a: React.PropTypes.oneOfType([',
+        '    React.PropTypes.shape({',
+        '      c: React.PropTypes.number,',
+        '      e: React.PropTypes.array',
+        '    }).isRequired,',
+        '    React.PropTypes.arrayOf(',
+        '      React.PropTypes.bool',
+        '    )',
+        '  ])',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props.a.render;',
+        '    this.props.a.c;',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  a: React.PropTypes.instanceOf(Hello)',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props.arr;',
+        '    this.props.arr[3];',
+        '    this.props.arr.length;',
+        '    this.props.arr.push(3);',
+        '    this.props.bo;',
+        '    this.props.bo.toString();',
+        '    this.props.fu;',
+        '    this.props.fu.bind(this);',
+        '    this.props.numb;',
+        '    this.props.numb.toFixed();',
+        '    this.props.stri;',
+        '    this.props.stri.length();',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  arr: React.PropTypes.array,',
+        '  bo: React.PropTypes.bool.isRequired,',
+        '  fu: React.PropTypes.func,',
+        '  numb: React.PropTypes.number,',
+        '  stri: React.PropTypes.string',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
     }
   ],
 
@@ -396,6 +558,167 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       errors: [{
         message: '\'firstname\' is missing in props validation for Hello'
       }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props.a.b',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  a: React.PropTypes.shape({',
+        '  })',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      },
+      errors: [{
+        message: '\'a.b\' is missing in props validation for Hello'
+      }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props.a.b.c;',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  a: React.PropTypes.shape({',
+        '    b: React.PropTypes.shape({',
+        '    })',
+        '  })',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      },
+      errors: [{
+        message: '\'a.b.c\' is missing in props validation for Hello'
+      }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props.a.b.c;',
+        '    this.props.a.__.d.length;',
+        '    this.props.a.anything.e[2];',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  a: React.PropTypes.objectOf(',
+        '    React.PropTypes.shape({',
+        '    })',
+        '  )',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      },
+      errors: [
+        {message: '\'a.b.c\' is missing in props validation for Hello'},
+        {message: '\'a.__.d\' is missing in props validation for Hello'},
+        {message: '\'a.__.d.length\' is missing in props validation for Hello'},
+        {message: '\'a.anything.e\' is missing in props validation for Hello'}
+      ]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    var i = 3;',
+        '    this.props.a[2].c;',
+        '    this.props.a[i].d.length;',
+        '    this.props.a[i + 2].e[2];',
+        '    this.props.a.length;',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  a: React.PropTypes.arrayOf(',
+        '    React.PropTypes.shape({',
+        '    })',
+        '  )',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      },
+      errors: [
+        {message: '\'a[].c\' is missing in props validation for Hello'},
+        {message: '\'a[].d\' is missing in props validation for Hello'},
+        {message: '\'a[].d.length\' is missing in props validation for Hello'},
+        {message: '\'a[].e\' is missing in props validation for Hello'}
+      ]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props.a.length;',
+        '    this.props.a.b;',
+        '    this.props.a.e.length;',
+        '    this.props.a.e.anyProp;',
+        '    this.props.a.c.toString();',
+        '    this.props.a.c.someThingElse();',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  a: React.PropTypes.oneOfType([',
+        '    React.PropTypes.shape({',
+        '      c: React.PropTypes.number,',
+        '      e: React.PropTypes.array',
+        '    })',
+        '  ])',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      },
+      errors: [
+        {message: '\'a.length\' is missing in props validation for Hello'},
+        {message: '\'a.b\' is missing in props validation for Hello'},
+        {message: '\'a.e.anyProp\' is missing in props validation for Hello'},
+        {message: '\'a.c.someThingElse\' is missing in props validation for Hello'}
+      ]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props.arr.toFixed();',
+        '    this.props.bo.push();',
+        '    this.props.fu.push();',
+        '    this.props.numb.propX;',
+        '    this.props.stri.tooString();',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  arr: React.PropTypes.array,',
+        '  bo: React.PropTypes.bool,',
+        '  fu: React.PropTypes.func,',
+        '  numb: React.PropTypes.number,',
+        '  stri: React.PropTypes.string',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      },
+      errors: [
+        {message: '\'arr.toFixed\' is missing in props validation for Hello'},
+        {message: '\'bo.push\' is missing in props validation for Hello'},
+        {message: '\'fu.push\' is missing in props validation for Hello'},
+        {message: '\'numb.propX\' is missing in props validation for Hello'},
+        {message: '\'stri.tooString\' is missing in props validation for Hello'}
+      ]
     }
   ]
 });
