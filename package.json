@@ -7,7 +7,7 @@
   "scripts": {
     "test": "npm run lint && npm run unit-test",
     "lint": "eslint ./",
-    "unit-test": "istanbul cover --dir reports/coverage _mocha tests/**/*.js -- --reporter dot",
+    "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/**/*.js -- --reporter dot",
     "coveralls": "cat ./reports/coverage/lcov.info | coveralls"
   },
   "files": [
