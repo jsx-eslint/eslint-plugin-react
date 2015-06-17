@@ -18,7 +18,8 @@ module.exports = {
     'jsx-sort-props': require('./lib/rules/jsx-sort-props'),
     'jsx-sort-prop-types': require('./lib/rules/jsx-sort-prop-types'),
     'jsx-boolean-value': require('./lib/rules/jsx-boolean-value'),
-    'sort-comp': require('./lib/rules/sort-comp')
+    'sort-comp': require('./lib/rules/sort-comp'),
+    'require-extension': require('./lib/rules/require-extension')
   },
   rulesConfig: {
     'jsx-uses-react': 0,
@@ -37,6 +38,7 @@ module.exports = {
     'jsx-sort-props': 0,
     'jsx-sort-prop-types': 0,
     'jsx-boolean-value': 0,
-    'sort-comp': 0
+    'sort-comp': 0,
+    'require-extension': 0
   }
 };
