@@ -415,6 +415,23 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         classes: true,
         jsx: true
       }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    var { ',
+        '      propX,',
+        '      "aria-controls": ariaControls, ',
+        '      ...props } = this.props;',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  "propX": React.PropTypes.string,',
+        '  "aria-controls": React.PropTypes.string',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
@@ -718,6 +735,25 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         {message: '\'fu.push\' is missing in props validation for Hello'},
         {message: '\'numb.propX\' is missing in props validation for Hello'},
         {message: '\'stri.tooString\' is missing in props validation for Hello'}
+      ]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    var { ',
+        '      "aria-controls": ariaControls, ',
+        '      propX,',
+        '      ...props } = this.props;',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  "aria-controls": React.PropTypes.string',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'propX\' is missing in props validation for Hello'}
       ]
     }
   ]
