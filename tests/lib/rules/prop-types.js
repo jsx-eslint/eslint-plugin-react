@@ -432,6 +432,56 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         '};'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props["some.value"];',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  "some.value": React.PropTypes.string',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props["arr"][1];',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  "arr": React.PropTypes.array',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props["arr"][1]["some.value"];',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  "arr": React.PropTypes.arrayOf(',
+        '    React.PropTypes.shape({"some.value": React.PropTypes.string})',
+        '  )',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
     }
   ],
 
@@ -771,6 +821,63 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       parser: 'babel-eslint',
       errors: [
         {message: '\'propX\' is missing in props validation for Hello'}
+      ]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props["some.value"];',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      },
+      errors: [
+        {message: '\'some.value\' is missing in props validation for Hello'}
+      ]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props["arr"][1];',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      },
+      errors: [
+        {message: '\'arr\' is missing in props validation for Hello'}
+      ]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props["arr"][1]["some.value"];',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  "arr": React.PropTypes.arrayOf(',
+        '    React.PropTypes.shape({})',
+        '  )',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      },
+      errors: [
+        {message: '\'arr[].some.value\' is missing in props validation for Hello'}
       ]
     }
   ]
