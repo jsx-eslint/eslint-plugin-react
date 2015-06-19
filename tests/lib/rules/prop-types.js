@@ -423,6 +423,23 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       code: [
         'var Hello = React.createClass({',
         '  render: function() {',
+        '    return React.createElement("div", {}, this.props.name);',
+        '  }',
+        '});'
+      ].join('\n'),
+      ecmaFeatures: {
+        jsx: false
+      },
+      errors: [{
+        message: '\'name\' is missing in props validation',
+        line: 3,
+        column: 53,
+        type: 'Identifier'
+      }]
+    }, {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() {',
         '    return <div>Hello {this.props.name}</div>;',
         '  }',
         '});'

@@ -92,6 +92,20 @@ eslintTester.addRuleTest('lib/rules/display-name', {
     code: [
       'var Hello = React.createClass({',
       '  render: function() {',
+      '    return React.createElement("div", {}, "text content");',
+      '  }',
+      '});'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: false
+    },
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  render: function() {',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
       '});'
