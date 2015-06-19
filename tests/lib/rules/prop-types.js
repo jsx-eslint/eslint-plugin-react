@@ -169,6 +169,17 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       }
     }, {
       code: [
+        'class Hello {',
+        '  method',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+    }, {
+      code: [
         'class Hello extends React.Component {',
         '  static get propTypes() {',
         '    return {',

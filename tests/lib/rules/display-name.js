@@ -59,6 +59,17 @@ eslintTester.addRuleTest('lib/rules/display-name', {
     }
   }, {
     code: [
+      'class Hello {',
+      '  method',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    }
+  }, {
+    code: [
       'class Hello extends React.Component {',
       '  static get displayName() {',
       '    return \'Hello\';',
