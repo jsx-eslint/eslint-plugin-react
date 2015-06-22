@@ -161,6 +161,21 @@ eslintTester.addRuleTest('lib/rules/jsx-sort-prop-types', {
         classes: true,
         jsx: true
       }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  "aria-controls": React.PropTypes.string',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      args: [1, {
+        ignoreCase: true
+      }]
     }
   ],
 
