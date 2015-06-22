@@ -25,6 +25,62 @@ var Hello = React.createClass({
 });
 ```
 
-## When Not To Use It
+## Rule Options
 
-If you are using JSX this value is already automatically set and it is safe for you to disable this rule.
+```js
+...
+"display-name": [<enabled>, { "acceptTranspilerName": <boolean> }]
+...
+```
+
+### `acceptTranspilerName`
+
+When `true` the rule will accept the name set by the transpiler and does not require a `displayName` property in this case.
+
+The following patterns are considered okay and do not cause warnings:
+
+```js
+var Hello = React.createClass({
+  render: function() {
+    return <div>Hello {this.props.name}</div>;
+  }
+});
+module.exports = Hello;
+```
+
+```js
+export default class Hello extends React.Component {
+  render() {
+    return <div>Hello {this.props.name}</div>;
+  }
+}
+```
+
+With the following patterns the transpiler can not assign a name for the component and therefore it will still cause warnings:
+
+```js
+module.exports = React.createClass({
+  render: function() {
+    return <div>Hello {this.props.name}</div>;
+  }
+});
+```
+
+```js
+export default class extends React.Component {
+  render() {
+    return <div>Hello {this.props.name}</div>;
+  }
+}
+```
+
+```js
+function HelloComponent() {
+  return React.createClass({
+    render: function() {
+      return <div>Hello {this.props.name}</div>;
+    }
+  });
+}
+module.exports = HelloComponent();
+```
