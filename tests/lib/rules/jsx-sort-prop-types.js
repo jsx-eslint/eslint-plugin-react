@@ -176,6 +176,21 @@ eslintTester.addRuleTest('lib/rules/jsx-sort-prop-types', {
       args: [1, {
         ignoreCase: true
       }]
+    }, {
+      // Invalid code, should not be validated
+      code: [
+        'class Component extends React.Component {',
+        '  propTypes: {',
+        '    a: React.PropTypes.any,',
+        '    c: React.PropTypes.any,',
+        '    b: React.PropTypes.any',
+        '  }',
+        '  render() {',
+        '    return <div />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
