@@ -6,10 +6,9 @@ When creating React components it is more convenient to always follow the same o
 
 With default configuration the following organisation must be followed:
 
-  1. `constructor` method
-  2. lifecycle methods: `displayName`, `propTypes`, `contextTypes`, `childContextTypes`, `mixins`, `statics`,`defaultProps`, `getDefaultProps`, `getInitialState`, `getChildContext`, `componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `componentDidUpdate`, `componentWillUnmount` (in this order).
-  3. custom methods
-  4. `render` method
+  1. lifecycle methods: `displayName`, `propTypes`, `contextTypes`, `childContextTypes`, `mixins`, `statics`,`defaultProps`, `constructor`, `getDefaultProps`, `getInitialState`, `getChildContext`, `componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `componentDidUpdate`, `componentWillUnmount` (in this order).
+  2. custom methods
+  3. `render` method
 
 The following patterns are considered warnings:
 
@@ -52,7 +51,6 @@ The default configuration is:
 ```js
 {
   order: [
-    'constructor',
     'lifecycle',
     'everything-else',
     'render'
@@ -66,6 +64,7 @@ The default configuration is:
       'mixins',
       'statics',
       'defaultProps',
+      'constructor',
       'getDefaultProps',
       'getInitialState',
       'getChildContext',
@@ -81,7 +80,6 @@ The default configuration is:
 }
 ```
 
-* `constructor` is refering to the `constructor` method.
 * `lifecycle` is refering to the `lifecycle` group defined in `groups`.
 * `everything-else` is a special group that match all the methods that do not match any of the other groups.
 * `render` is refering to the `render` method.
@@ -93,7 +91,6 @@ For example, if you want to place your event handlers (`onClick`, `onSubmit`, et
 ```js
 "react/sort-comp": [1, {
   order: [
-    'constructor',
     'lifecycle',
     '/^on.+$/',
     'render',
@@ -129,7 +126,6 @@ If you want to split your `render` method into smaller ones and keep them just b
 ```js
 "react/sort-comp": [1, {
   order: [
-    'constructor',
     'lifecycle',
     'everything-else',
     'rendering',
