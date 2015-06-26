@@ -139,7 +139,7 @@
         "quotes": [2, "single"],
         "quote-props": [2, "as-needed"],
         "semi": [2, "always"],
-        "sort-vars": [2, "ignoreCase"],
+        "sort-vars": [2, {"ignoreCase": true}],
         "space-after-keywords": 2,
         "space-before-blocks": 2,
         "space-in-brackets": 2,
