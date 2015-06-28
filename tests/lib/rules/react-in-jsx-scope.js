@@ -19,14 +19,14 @@ var ESLintTester = require('eslint-tester');
 var eslintTester = new ESLintTester(eslint);
 eslintTester.addRuleTest('lib/rules/react-in-jsx-scope', {
     valid: [
-        {code: 'var React, App; <App />;', args: [1, {vars: 'all'}], ecmaFeatures: {jsx: true}},
-        {code: 'var React; <img />;', args: [1, {vars: 'all'}], ecmaFeatures: {jsx: true}},
-        {code: 'var React; <x-gif />;', args: [1, {vars: 'all'}], ecmaFeatures: {jsx: true}},
+        {code: 'var React, App; <App />;', ecmaFeatures: {jsx: true}},
+        {code: 'var React; <img />;', ecmaFeatures: {jsx: true}},
+        {code: 'var React; <x-gif />;', ecmaFeatures: {jsx: true}},
         {code: 'var React, App, a=1; <App attr={a} />;', ecmaFeatures: {jsx: true}},
         {code: 'var React, App, a=1; function elem() { return <App attr={a} />; }', ecmaFeatures: {jsx: true}},
-        {code: 'var React, App; <App />;', args: [1, {vars: 'all'}], ecmaFeatures: {globalReturn: true, jsx: true}},
-        {code: '/** @jsx Foo */ var Foo, App; <App />;', args: [1, {vars: 'all'}], ecmaFeatures: {jsx: true}},
-        {code: '/** @jsx Foo.Bar */ var Foo, App; <App />;', args: [1, {vars: 'all'}], ecmaFeatures: {jsx: true}},
+        {code: 'var React, App; <App />;', ecmaFeatures: {globalReturn: true, jsx: true}},
+        {code: '/** @jsx Foo */ var Foo, App; <App />;', ecmaFeatures: {jsx: true}},
+        {code: '/** @jsx Foo.Bar */ var Foo, App; <App />;', ecmaFeatures: {jsx: true}},
         {code: [
             'import React from \'react/addons\';',
             'const Button = React.createClass({',
