@@ -1,3 +1,10 @@
+2.6.2 / 2015-06-28
+==================
+
+* fix props validation when using a prop as an object key (fixes #132)
+
+[#132]: https://github.com/yannickcr/eslint-plugin-react/issues/132
+
 2.6.1 / 2015-06-28
 ==================
 
