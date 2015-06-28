@@ -894,8 +894,10 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       code: [
         'class Hello extends React.Component {',
         '  render() {',
+        '    var text;',
+        '    text = \'Hello \';',
         '    let {props: {firstname}} = this;',
-        '    return <div>Hello {firstname}</div>;',
+        '    return <div>{text} {firstname}</div>;',
         '  }',
         '}'
       ].join('\n'),
