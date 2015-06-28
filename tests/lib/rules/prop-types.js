@@ -890,6 +890,32 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       errors: [
         {message: '\'arr[].some.value\' is missing in props validation for Hello'}
       ]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    let {props: {firstname}} = this;',
+        '    return <div>Hello {firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'firstname\' is missing in props validation for Hello'}
+      ]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    var {\'props\': {firstname}} = this;',
+        '    return <div>Hello {firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'firstname\' is missing in props validation for Hello'}
+      ]
     }
   ]
 });
