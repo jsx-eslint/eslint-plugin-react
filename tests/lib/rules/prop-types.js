@@ -493,6 +493,25 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         classes: true,
         jsx: true
       }
+    }, {
+      code: [
+        'var TestComp1 = React.createClass({',
+        '  propTypes: {',
+        '    size: React.PropTypes.string',
+        '  },',
+        '  render: function() {',
+        '    var foo = {',
+        '      baz: \'bar\'',
+        '    };',
+        '    var icons = foo[this.props.size].salut;',
+        '    return <div>{icons}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
     }
   ],
 
