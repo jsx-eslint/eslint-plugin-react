@@ -1,3 +1,10 @@
+2.6.1 / 2015-06-28
+==================
+
+* fix crash in prop-types when encountering an empty variable declaration ([#130][])
+
+[#130]: https://github.com/yannickcr/eslint-plugin-react/issues/130
+
 2.6.0 / 2015-06-28
 ==================
 
@@ -27,7 +34,6 @@
 [#97]: https://github.com/yannickcr/eslint-plugin-react/issues/97
 [#122]: https://github.com/yannickcr/eslint-plugin-react/issues/122
 [#129]: https://github.com/yannickcr/eslint-plugin-react/issues/129
-
 
 2.5.2 / 2015-06-14
 ==================
