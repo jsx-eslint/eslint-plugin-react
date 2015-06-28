@@ -1,3 +1,34 @@
+2.6.0 / 2015-06-28
+==================
+
+* update dependencies
+* add support for nested prop types ([#62][] [#105][] @Cellule)
+* add require-extension rule ([#117][] @scothis)
+* add support for computed string format in prop-types ([#127][] @Cellule)
+* add ES6 methods to sort-comp default configuration ([#97][] [#122][])
+* add support for props destructuring directly on the this keyword
+* add schema to validate rules options
+* fix test command for Windows ([#114][] @Cellule)
+* fix detection of missing displayName and propTypes when ecmaFeatures.jsx is false ([#119][] @rpl)
+* fix `prop-types` destructuring with properties as string ([#118][] @Cellule)
+* fix `jsx-sort-prop-types` support for keys as string ([#123][] @Cellule)
+* fix crash if a ClassProperty has only one token ([#125][])
+* fix invalid class property handling in jsx-sort-prop-types ([#129][])
+
+[#62]: https://github.com/yannickcr/eslint-plugin-react/issues/62
+[#105]: https://github.com/yannickcr/eslint-plugin-react/issues/105
+[#114]: https://github.com/yannickcr/eslint-plugin-react/pull/114
+[#117]: https://github.com/yannickcr/eslint-plugin-react/pull/117
+[#119]: https://github.com/yannickcr/eslint-plugin-react/pull/119
+[#118]: https://github.com/yannickcr/eslint-plugin-react/issues/118
+[#123]: https://github.com/yannickcr/eslint-plugin-react/pull/123
+[#125]: https://github.com/yannickcr/eslint-plugin-react/issues/125
+[#127]: https://github.com/yannickcr/eslint-plugin-react/pull/127
+[#97]: https://github.com/yannickcr/eslint-plugin-react/issues/97
+[#122]: https://github.com/yannickcr/eslint-plugin-react/issues/122
+[#129]: https://github.com/yannickcr/eslint-plugin-react/issues/129
+
+
 2.5.2 / 2015-06-14
 ==================
 
