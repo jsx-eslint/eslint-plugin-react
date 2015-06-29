@@ -522,6 +522,22 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       ].join('\n'),
       parser: 'babel-eslint',
       args: [1, {ignore: ['name']}]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    const {firstname, lastname} = this.props.name;',
+        '    return <div>{firstname} {lastname}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  name: PropTypes.shape({',
+        '    firstname: PropTypes.string,',
+        '    lastname: PropTypes.string',
+        '  })',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
