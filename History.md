@@ -1,7 +1,16 @@
+2.6.3 / 2015-06-30
+==================
+
+* fix ignore option for prop-types rule ([#135][])
+* fix nested props destructuring ([#136][])
+
+[#135]: https://github.com/yannickcr/eslint-plugin-react/issues/135
+[#136]: https://github.com/yannickcr/eslint-plugin-react/issues/136
+
 2.6.2 / 2015-06-28
 ==================
 
-* fix props validation when using a prop as an object key (fixes #132)
+* fix props validation when using a prop as an object key ([#132][])
 
 [#132]: https://github.com/yannickcr/eslint-plugin-react/issues/132
 
@@ -21,11 +30,12 @@
 * add support for computed string format in prop-types ([#127][] @Cellule)
 * add ES6 methods to sort-comp default configuration ([#97][] [#122][])
 * add support for props destructuring directly on the this keyword
+* add acceptTranspilerName option to display-name rule ([#75][])
 * add schema to validate rules options
 * fix test command for Windows ([#114][] @Cellule)
 * fix detection of missing displayName and propTypes when ecmaFeatures.jsx is false ([#119][] @rpl)
-* fix `prop-types` destructuring with properties as string ([#118][] @Cellule)
-* fix `jsx-sort-prop-types` support for keys as string ([#123][] @Cellule)
+* fix prop-types destructuring with properties as string ([#118][] @Cellule)
+* fix jsx-sort-prop-types support for keys as string ([#123][] @Cellule)
 * fix crash if a ClassProperty has only one token ([#125][])
 * fix invalid class property handling in jsx-sort-prop-types ([#129][])
 
@@ -41,6 +51,7 @@
 [#97]: https://github.com/yannickcr/eslint-plugin-react/issues/97
 [#122]: https://github.com/yannickcr/eslint-plugin-react/issues/122
 [#129]: https://github.com/yannickcr/eslint-plugin-react/issues/129
+[#75]: https://github.com/yannickcr/eslint-plugin-react/issues/75
 
 2.5.2 / 2015-06-14
 ==================
