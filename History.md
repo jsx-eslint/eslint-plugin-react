@@ -1,3 +1,10 @@
+2.6.4 / 2015-07-02
+==================
+
+* fix simple destructuring handling ([#137][])
+
+[#137]: https://github.com/yannickcr/eslint-plugin-react/issues/137
+
 2.6.3 / 2015-06-30
 ==================
 
