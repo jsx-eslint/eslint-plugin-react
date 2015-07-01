@@ -538,6 +538,16 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         '};'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    let {firstname} = this;',
+        '    return <div>{firstname}</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
