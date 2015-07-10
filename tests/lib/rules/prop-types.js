@@ -548,8 +548,23 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         '};'
       ].join('\n'),
       parser: 'babel-eslint'
-    }
-  ],
+    }, {
+      code: [
+        'var Hello = React.createClass({',
+        '  propTypes: {',
+        '    router: React.PropTypes.func',
+        '  },',
+        '  render: function() {',
+        '    var nextPath = this.props.router.getCurrentQuery().nextPath;',
+        '    return <div>{nextPath}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+  }],
 
   invalid: [
     {
@@ -834,40 +849,7 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       },
       errors: [
         {message: '\'a.length\' is missing in props validation for Hello'},
-        {message: '\'a.b\' is missing in props validation for Hello'},
-        {message: '\'a.e.anyProp\' is missing in props validation for Hello'},
-        {message: '\'a.c.someThingElse\' is missing in props validation for Hello'}
-      ]
-    }, {
-      code: [
-        'class Hello extends React.Component {',
-        '  render() {',
-        '    this.props.arr.toFixed();',
-        '    this.props.bo.push();',
-        '    this.props.fu.push();',
-        '    this.props.numb.propX;',
-        '    this.props.stri.tooString();',
-        '    return <div>Hello</div>;',
-        '  }',
-        '}',
-        'Hello.propTypes = {',
-        '  arr: React.PropTypes.array,',
-        '  bo: React.PropTypes.bool,',
-        '  fu: React.PropTypes.func,',
-        '  numb: React.PropTypes.number,',
-        '  stri: React.PropTypes.string',
-        '};'
-      ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      },
-      errors: [
-        {message: '\'arr.toFixed\' is missing in props validation for Hello'},
-        {message: '\'bo.push\' is missing in props validation for Hello'},
-        {message: '\'fu.push\' is missing in props validation for Hello'},
-        {message: '\'numb.propX\' is missing in props validation for Hello'},
-        {message: '\'stri.tooString\' is missing in props validation for Hello'}
+        {message: '\'a.b\' is missing in props validation for Hello'}
       ]
     }, {
       code: [
