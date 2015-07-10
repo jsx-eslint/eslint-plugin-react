@@ -1,3 +1,16 @@
+2.7.0 / 2015-07-11
+==================
+
+* add no-danger rule ([#138][] @scothis)
+* add jsx-curly-spacing rule ([#142][])
+* fix properties limitations on prop types ([#139][])
+* fix component detection ([#144][])
+
+[#138]: https://github.com/yannickcr/eslint-plugin-react/pull/138
+[#142]: https://github.com/yannickcr/eslint-plugin-react/issues/142
+[#139]: https://github.com/yannickcr/eslint-plugin-react/issues/139
+[#144]: https://github.com/yannickcr/eslint-plugin-react/issues/144
+
 2.6.4 / 2015-07-02
 ==================
 
