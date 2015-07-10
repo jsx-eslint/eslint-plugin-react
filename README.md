@@ -68,6 +68,7 @@ Finally, enable all of the rules that you would like to use.
 
 * [display-name](docs/rules/display-name.md): Prevent missing displayName in a React component definition
 * [jsx-boolean-value](docs/rules/jsx-boolean-value.md): Enforce boolean attributes notation in JSX
+* [jsx-curly-spacing](docs/rules/jsx-curly-spacing.md): Enforce or disallow spaces inside of curly braces in JSX attributes
 * [jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
 * [jsx-quotes](docs/rules/jsx-quotes.md): Enforce quote style for JSX attributes
 * [jsx-sort-prop-types](docs/rules/jsx-sort-prop-types.md): Enforce propTypes declarations alphabetical sorting
