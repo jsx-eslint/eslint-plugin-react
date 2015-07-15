@@ -27,6 +27,5 @@ eslintTester.addRuleTest('lib/rules/no-danger', {
     code: '<div dangerouslySetInnerHTML={{ __html: "" }}></div>;',
     errors: [{message: 'Dangerous property \'dangerouslySetInnerHTML\' found'}],
     ecmaFeatures: {jsx: true}
-   }
-  ]
+  }]
 });

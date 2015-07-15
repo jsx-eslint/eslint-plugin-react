@@ -79,69 +79,69 @@ var ASSIGNMENT_NO_PAREN = '\
 var eslintTester = new ESLintTester(eslint);
 eslintTester.addRuleTest('lib/rules/wrap-multilines', {
 
-    valid: [
-        {
-            code: RETURN_SINGLE_LINE,
-            ecmaFeatures: {jsx: true}
-        }, {
-            code: RETURN_PAREN,
-            ecmaFeatures: {jsx: true}
-        }, {
-            code: RETURN_NO_PAREN,
-            args: [1, {return: false}],
-            ecmaFeatures: {jsx: true}
-        }, {
-            code: DECLARATION_SINGLE_LINE,
-            ecmaFeatures: {jsx: true}
-        }, {
-            code: DECLARATION_PAREN,
-            ecmaFeatures: {jsx: true}
-        }, {
-            code: DECLARATION_NO_PAREN,
-            args: [1, {declaration: false}],
-            ecmaFeatures: {jsx: true}
-        }, {
-            code: ASSIGNMENT_SINGLE_LINE,
-            args: [1, {declaration: false}],
-            ecmaFeatures: {jsx: true}
-        }, {
-            code: ASSIGNMENT_PAREN,
-            ecmaFeatures: {jsx: true}
-        }, {
-            code: ASSIGNMENT_NO_PAREN,
-            args: [1, {assignment: false}],
-            ecmaFeatures: {jsx: true}
-        }
-    ],
+  valid: [
+    {
+      code: RETURN_SINGLE_LINE,
+      ecmaFeatures: {jsx: true}
+    }, {
+      code: RETURN_PAREN,
+      ecmaFeatures: {jsx: true}
+    }, {
+      code: RETURN_NO_PAREN,
+      args: [1, {return: false}],
+      ecmaFeatures: {jsx: true}
+    }, {
+      code: DECLARATION_SINGLE_LINE,
+      ecmaFeatures: {jsx: true}
+    }, {
+      code: DECLARATION_PAREN,
+      ecmaFeatures: {jsx: true}
+    }, {
+      code: DECLARATION_NO_PAREN,
+      args: [1, {declaration: false}],
+      ecmaFeatures: {jsx: true}
+    }, {
+      code: ASSIGNMENT_SINGLE_LINE,
+      args: [1, {declaration: false}],
+      ecmaFeatures: {jsx: true}
+    }, {
+      code: ASSIGNMENT_PAREN,
+      ecmaFeatures: {jsx: true}
+    }, {
+      code: ASSIGNMENT_NO_PAREN,
+      args: [1, {assignment: false}],
+      ecmaFeatures: {jsx: true}
+    }
+  ],
 
-    invalid: [
-        {
-            code: RETURN_NO_PAREN,
-            ecmaFeatures: {jsx: true},
-            errors: [{message: 'Missing parentheses around multilines JSX'}]
-        }, {
-            code: RETURN_NO_PAREN,
-            ecmaFeatures: {jsx: true},
-            args: [1, {return: true}],
-            errors: [{message: 'Missing parentheses around multilines JSX'}]
-        }, {
-            code: DECLARATION_NO_PAREN,
-            ecmaFeatures: {jsx: true},
-            errors: [{message: 'Missing parentheses around multilines JSX'}]
-        }, {
-            code: DECLARATION_NO_PAREN,
-            ecmaFeatures: {jsx: true},
-            args: [1, {declaration: true}],
-            errors: [{message: 'Missing parentheses around multilines JSX'}]
-        }, {
-            code: ASSIGNMENT_NO_PAREN,
-            ecmaFeatures: {jsx: true},
-            errors: [{message: 'Missing parentheses around multilines JSX'}]
-        }, {
-            code: ASSIGNMENT_NO_PAREN,
-            ecmaFeatures: {jsx: true},
-            args: [1, {assignment: true}],
-            errors: [{message: 'Missing parentheses around multilines JSX'}]
-        }
-    ]
+  invalid: [
+    {
+      code: RETURN_NO_PAREN,
+      ecmaFeatures: {jsx: true},
+      errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: RETURN_NO_PAREN,
+      ecmaFeatures: {jsx: true},
+      args: [1, {return: true}],
+      errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: DECLARATION_NO_PAREN,
+      ecmaFeatures: {jsx: true},
+      errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: DECLARATION_NO_PAREN,
+      ecmaFeatures: {jsx: true},
+      args: [1, {declaration: true}],
+      errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: ASSIGNMENT_NO_PAREN,
+      ecmaFeatures: {jsx: true},
+      errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: ASSIGNMENT_NO_PAREN,
+      ecmaFeatures: {jsx: true},
+      args: [1, {assignment: true}],
+      errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }
+  ]
 });

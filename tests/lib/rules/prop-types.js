@@ -583,7 +583,8 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         classes: true,
         jsx: true
       }
-  }],
+    }
+  ],
 
   invalid: [
     {
@@ -600,7 +601,7 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       errors: [{
         message: '\'name\' is missing in props validation',
         line: 3,
-        column: 53,
+        column: 54,
         type: 'Identifier'
       }]
     }, {
@@ -617,7 +618,7 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       errors: [{
         message: '\'name\' is missing in props validation',
         line: 3,
-        column: 34,
+        column: 35,
         type: 'Identifier'
       }]
     }, {
@@ -635,7 +636,7 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       errors: [{
         message: '\'name\' is missing in props validation for Hello',
         line: 3,
-        column: 34,
+        column: 35,
         type: 'Identifier'
       }]
     }, {

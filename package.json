@@ -5,10 +5,10 @@
   "description": "React specific linting rules for ESLint",
   "main": "index.js",
   "scripts": {
-    "test": "npm run lint && npm run unit-test",
+    "coveralls": "cat ./reports/coverage/lcov.info | coveralls",
     "lint": "eslint ./",
-    "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/**/*.js -- --reporter dot",
-    "coveralls": "cat ./reports/coverage/lcov.info | coveralls"
+    "test": "npm run lint && npm run unit-test",
+    "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/**/*.js -- --reporter dot"
   },
   "files": [
     "LICENSE",
@@ -23,9 +23,9 @@
   "homepage": "https://github.com/yannickcr/eslint-plugin-react",
   "bugs": "https://github.com/yannickcr/eslint-plugin-react/issues",
   "devDependencies": {
-    "babel-eslint": "3.1.19",
+    "babel-eslint": "3.1.23",
     "coveralls": "2.11.2",
-    "eslint": "0.24.0",
+    "eslint": "1.0.0-rc-1",
     "eslint-tester": "0.8.2",
     "istanbul": "0.3.17",
     "mocha": "2.2.5"
@@ -34,9 +34,9 @@
     "eslint": ">=0.8.0"
   },
   "keywords": [
+    "eslint",
     "eslint-plugin",
     "eslintplugin",
-    "eslint",
     "react"
   ],
   "license": "MIT"

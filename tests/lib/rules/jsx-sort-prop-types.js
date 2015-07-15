@@ -213,7 +213,7 @@ eslintTester.addRuleTest('lib/rules/jsx-sort-prop-types', {
       errors: [{
         message: ERROR_MESSAGE,
         line: 4,
-        column: 4,
+        column: 5,
         type: 'Property'
       }]
     }, {
@@ -234,7 +234,7 @@ eslintTester.addRuleTest('lib/rules/jsx-sort-prop-types', {
       errors: [{
         message: ERROR_MESSAGE,
         line: 4,
-        column: 4,
+        column: 5,
         type: 'Property'
       }]
     }, {
@@ -258,7 +258,7 @@ eslintTester.addRuleTest('lib/rules/jsx-sort-prop-types', {
       errors: [{
         message: ERROR_MESSAGE,
         line: 4,
-        column: 4,
+        column: 5,
         type: 'Property'
       }]
     }, {

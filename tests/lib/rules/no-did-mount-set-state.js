@@ -92,9 +92,9 @@ eslintTester.addRuleTest('lib/rules/no-did-mount-set-state', {
     code: [
       'var Hello = React.createClass({',
       '  componentDidMount: function() {',
-    '      this.setState({',
-    '        data: data',
-    '      });',
+      '    this.setState({',
+      '      data: data',
+      '    });',
       '  }',
       '});'
     ].join('\n'),
@@ -108,9 +108,9 @@ eslintTester.addRuleTest('lib/rules/no-did-mount-set-state', {
     code: [
       'var Hello = React.createClass({',
       '  componentDidMount: function() {',
-    '      this.setState({',
-    '        data: data',
-    '      });',
+      '    this.setState({',
+      '      data: data',
+      '    });',
       '  }',
       '});'
     ].join('\n'),
