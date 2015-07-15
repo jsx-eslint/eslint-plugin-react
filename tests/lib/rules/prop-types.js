@@ -355,6 +355,25 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       code: [
         'class Hello extends React.Component {',
         '  render() {',
+        '    this.props.a.length;',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  a: React.PropTypes.oneOfType([',
+        '    React.PropTypes.array,',
+        '    React.PropTypes.string',
+        '  ])',
+        '};'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        jsx: true
+      }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
         '    this.props.a.c;',
         '    this.props.a[2] === true;',
         '    this.props.a.e[2];',
