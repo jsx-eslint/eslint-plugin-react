@@ -1,3 +1,15 @@
+2.7.1 / 2015-07-16
+==================
+
+* update peerDependencies requirements ([#154][])
+* update codebase for ESLint v1.0.0
+* change oneOfType to actually keep the child types ([#148][] @CalebMorris)
+* documentation improvements ([#147][] @lencioni)
+
+[#154]: https://github.com/yannickcr/eslint-plugin-react/issues/154
+[#148]: https://github.com/yannickcr/eslint-plugin-react/issues/148
+[#147]: https://github.com/yannickcr/eslint-plugin-react/pull/147
+
 2.7.0 / 2015-07-11
 ==================
 
