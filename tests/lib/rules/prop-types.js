@@ -667,6 +667,11 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         line: 3,
         column: 39,
         type: 'Identifier'
+      }, {
+        message: '\'firstname.foo.name\' is missing in props validation for Hello',
+        line: 3,
+        column: 43,
+        type: 'Identifier'
       }]
     }, {
       code: [
