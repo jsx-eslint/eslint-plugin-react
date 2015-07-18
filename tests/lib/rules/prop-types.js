@@ -549,6 +549,49 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       code: [
         'class Hello extends React.Component {',
         '  render() {',
+        '    return <div>{this.props.name.get.foo}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  name: PropTypes.shape({',
+        '    foo: PropTypes.node,',
+        '  }),',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      args: [1, {ignore: ['get']}]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    return <div>{this.props.name.foo.get()}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  name: PropTypes.shape({',
+        '    foo: PropTypes.node,',
+        '  }),',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      args: [1, {ignore: ['get']}]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    return <div>{this.props.name.get()}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  name: PropTypes.object,',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      args: [1, {ignore: ['get']}]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
         '    return <div>{this.props.name.firstname}</div>;',
         '  }',
         '}'
@@ -616,6 +659,32 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         message: '\'name\' is missing in props validation',
         line: 3,
         column: 54,
+        type: 'Identifier'
+      }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    return <div>{this.props.firstname.foo.name}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  firstname : PropTypes.shape({',
+        '    bar: PropTypes.node,',
+        '  }),',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      args: [1, {ignore: ['name']}],
+      errors: [{
+        message: '\'firstname.foo\' is missing in props validation for Hello',
+        line: 3,
+        column: 39,
+        type: 'Identifier'
+      }, {
+        message: '\'firstname.foo.name\' is missing in props validation for Hello',
+        line: 3,
+        column: 43,
         type: 'Identifier'
       }]
     }, {
