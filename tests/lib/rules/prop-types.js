@@ -217,6 +217,20 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
     }, {
       code: [
         'class Hello extends React.Component {',
+        '  render() {',
+        '    var {firstname, lastname} = this.state, something = this.props;',
+        '    return <div>Hello {firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      ecmaFeatures: {
+        classes: true,
+        destructuring: true,
+        jsx: true
+      }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
         '  static propTypes = {',
         '    name: React.PropTypes.string',
         '  }',
