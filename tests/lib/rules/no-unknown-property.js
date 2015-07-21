@@ -45,6 +45,14 @@ eslintTester.addRuleTest('lib/rules/no-unknown-property', {
   }, {
     code: '<div accesskey="bar"></div>;',
     errors: [{message: 'Unknown property \'accesskey\' found, use \'accessKey\' instead'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: '<div onclick="bar"></div>;',
+    errors: [{message: 'Unknown property \'onclick\' found, use \'onClick\' instead'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: '<div onmousedown="bar"></div>;',
+    errors: [{message: 'Unknown property \'onmousedown\' found, use \'onMouseDown\' instead'}],
     ecmaFeatures: {jsx: true}}
   ]
 });
