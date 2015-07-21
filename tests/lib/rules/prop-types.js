@@ -678,6 +678,26 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       ecmaFeatures: {
         jsx: true
       }
+    }, {
+      code: [
+        'class Comp1 extends Component {',
+        '  render() {',
+        '    return <span />;',
+        '  }',
+        '}',
+        'Comp1.propTypes = {',
+        '  prop1: PropTypes.number',
+        '};',
+        'class Comp2 extends Component {',
+        '  render() {',
+        '    return <span />;',
+        '  }',
+        '}',
+        'Comp2.propTypes = {',
+        '  prop2: PropTypes.arrayOf(Comp1.propTypes.prop1)',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 

@@ -1,3 +1,17 @@
+3.0.0 / 2015-07-21
+==================
+
+* add jsx-no-duplicate-props rule ([#161][] @hummlas)
+* add allowMultiline option to the jsx-curly-spacing rule ([#156][] @mathieumg)
+* breaking in jsx-curly-spacing braces spanning multiple lines are now allowed with never option ([#156][] @mathieumg)
+* fix multiple var and destructuring handling in props-types ([#159][])
+* fix crash when retrieving propType name ([#163][])
+
+[#161]: https://github.com/yannickcr/eslint-plugin-react/pull/161
+[#156]: https://github.com/yannickcr/eslint-plugin-react/pull/156
+[#159]: https://github.com/yannickcr/eslint-plugin-react/issues/159
+[#163]: https://github.com/yannickcr/eslint-plugin-react/issues/163
+
 2.7.1 / 2015-07-16
 ==================
 

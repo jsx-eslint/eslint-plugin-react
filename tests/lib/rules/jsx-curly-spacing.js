@@ -30,6 +30,10 @@ eslintTester.addRuleTest('lib/rules/jsx-curly-spacing', {
     args: [1, 'always'],
     ecmaFeatures: {jsx: true}
   }, {
+    code: '<App foo={ bar } />;',
+    args: [1, 'always', {allowMultiline: false}],
+    ecmaFeatures: {jsx: true}
+  }, {
     code: '<App foo={{ bar:baz }} />;',
     args: [1, 'never'],
     ecmaFeatures: {jsx: true}
@@ -45,11 +49,36 @@ eslintTester.addRuleTest('lib/rules/jsx-curly-spacing', {
     ].join('\n'),
     args: [1, 'always'],
     ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<App foo={',
+      'bar',
+      '} />;'
+    ].join('\n'),
+    args: [1, 'always'],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<App foo={',
+      'bar',
+      '} />;'
+    ].join('\n'),
+    args: [1, 'never'],
+    ecmaFeatures: {jsx: true}
   }],
 
   invalid: [{
     code: '<App foo={ bar } />;',
     args: [1, 'never'],
+    errors: [{
+      message: 'There should be no space after \'{\''
+    }, {
+      message: 'There should be no space before \'}\''
+    }],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: '<App foo={ bar } />;',
+    args: [1, 'never', {allowMultiline: false}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -66,6 +95,15 @@ eslintTester.addRuleTest('lib/rules/jsx-curly-spacing', {
     }],
     ecmaFeatures: {jsx: true}
   }, {
+    code: '<App foo={bar} />;',
+    args: [1, 'always', {allowMultiline: false}],
+    errors: [{
+      message: 'A space is required after \'{\''
+    }, {
+      message: 'A space is required before \'}\''
+    }],
+    ecmaFeatures: {jsx: true}
+  }, {
     code: '<App foo={ bar} />;',
     args: [1, 'always'],
     errors: [{
@@ -99,11 +137,24 @@ eslintTester.addRuleTest('lib/rules/jsx-curly-spacing', {
       'bar',
       '} />;'
     ].join('\n'),
-    args: [1, 'never'],
+    args: [1, 'never', {allowMultiline: false}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
       message: 'There should be no space before \'}\''
+    }],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<App foo={',
+      'bar',
+      '} />;'
+    ].join('\n'),
+    args: [1, 'always', {allowMultiline: false}],
+    errors: [{
+      message: 'There should be no newline after \'{\''
+    }, {
+      message: 'There should be no newline before \'}\''
     }],
     ecmaFeatures: {jsx: true}
   }]
