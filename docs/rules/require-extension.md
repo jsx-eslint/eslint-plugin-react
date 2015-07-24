@@ -33,6 +33,14 @@ The set of forbidden extensions is configurable. By default '.jsx' is blocked. I
 }
 ```
 
+To configure WebPack to resolve '.jsx' add the following to `webpack.config.js`:
+
+```js
+resolve: {
+    extensions: ["", ".js", ".jsx"]
+  },
+```
+
 ## When Not To Use It
 
 If you have file in your project with a '.jsx' file extension and do not have `require()` configured to automatically resolve '.jsx' files.
