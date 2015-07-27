@@ -3,6 +3,7 @@
 module.exports = {
   rules: {
     'jsx-uses-react': require('./lib/rules/jsx-uses-react'),
+    'jsx-uses-reactdom': require('./lib/rules/jsx-uses-reactdom'),
     'no-multi-comp': require('./lib/rules/no-multi-comp'),
     'prop-types': require('./lib/rules/prop-types'),
     'display-name': require('./lib/rules/display-name'),
@@ -26,6 +27,7 @@ module.exports = {
   },
   rulesConfig: {
     'jsx-uses-react': 0,
+    'jsx-uses-reactdom': 0,
     'no-multi-comp': 0,
     'prop-types': 0,
     'display-name': 0,
