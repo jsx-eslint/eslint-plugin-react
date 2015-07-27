@@ -1,3 +1,17 @@
+3.1.0 / 2015-07-28
+==================
+
+* update dependencies
+* add event handlers to no-unknown-property ([#164][] @mkenyon)
+* add customValidators option to prop-types ([#145][] @CalebMorris)
+* fix comment handling in jsx-curly-spacing ([#165][])
+* documentation improvements ([#167][] @ngbrown)
+
+[#164]: https://github.com/yannickcr/eslint-plugin-react/pull/164
+[#156]: https://github.com/yannickcr/eslint-plugin-react/issues/145
+[#165]: https://github.com/yannickcr/eslint-plugin-react/issues/165
+[#167]: https://github.com/yannickcr/eslint-plugin-react/pull/167
+
 3.0.0 / 2015-07-21
 ==================
 
