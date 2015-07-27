@@ -10,7 +10,7 @@
 // -----------------------------------------------------------------------------
 
 var eslint = require('eslint').linter;
-var ESLintTester = require('eslint-tester');
+var ESLintTester = require('eslint').ESLintTester;
 
 require('babel-eslint');
 
