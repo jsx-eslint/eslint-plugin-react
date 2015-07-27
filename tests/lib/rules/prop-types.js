@@ -599,6 +599,87 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
       }
     }, {
       code: [
+        'var Hello = React.createClass({',
+        '  propTypes: {',
+        '    firstname: CustomValidator.string',
+        '  },',
+        '  render: function() {',
+        '    return <div>{this.props.firstname}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      args: [1, {customValidators: ['CustomValidator']}],
+      ecmaFeatures: {
+        jsx: true
+      }
+    }, {
+      code: [
+        'var Hello = React.createClass({',
+        '  propTypes: {',
+        '    outer: CustomValidator.shape({',
+        '      inner: CustomValidator.map',
+        '    })',
+        '  },',
+        '  render: function() {',
+        '    return <div>{this.props.outer.inner}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      args: [1, {customValidators: ['CustomValidator']}],
+      ecmaFeatures: {
+        jsx: true
+      }
+    }, {
+      code: [
+        'var Hello = React.createClass({',
+        '  propTypes: {',
+        '    outer: React.PropTypes.shape({',
+        '      inner: CustomValidator.string',
+        '    })',
+        '  },',
+        '  render: function() {',
+        '    return <div>{this.props.outer.inner}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      args: [1, {customValidators: ['CustomValidator']}],
+      ecmaFeatures: {
+        jsx: true
+      }
+    }, {
+      code: [
+        'var Hello = React.createClass({',
+        '  propTypes: {',
+        '    outer: CustomValidator.shape({',
+        '      inner: React.PropTypes.string',
+        '    })',
+        '  },',
+        '  render: function() {',
+        '    return <div>{this.props.outer.inner}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      args: [1, {customValidators: ['CustomValidator']}],
+      ecmaFeatures: {
+        jsx: true
+      }
+    }, {
+      code: [
+        'var Hello = React.createClass({',
+        '  propTypes: {',
+        '    name: React.PropTypes.string',
+        '  },',
+        '  render: function() {',
+        '    return <div>{this.props.name.get("test")}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      args: [1, {customValidators: ['CustomValidator']}],
+      ecmaFeatures: {
+        jsx: true
+      }
+    }, {
+      code: [
         'class Comp1 extends Component {',
         '  render() {',
         '    return <span />;',
