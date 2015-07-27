@@ -65,6 +65,12 @@ eslintTester.addRuleTest('lib/rules/jsx-curly-spacing', {
     ].join('\n'),
     args: [1, 'never'],
     ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<div>{/* comment */}</div>;'
+    ].join('\n'),
+    args: [1, 'never'],
+    ecmaFeatures: {jsx: true}
   }],
 
   invalid: [{
