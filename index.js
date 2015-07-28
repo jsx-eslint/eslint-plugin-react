@@ -22,7 +22,8 @@ module.exports = {
     'jsx-boolean-value': require('./lib/rules/jsx-boolean-value'),
     'sort-comp': require('./lib/rules/sort-comp'),
     'require-extension': require('./lib/rules/require-extension'),
-    'jsx-no-duplicate-props': require('./lib/rules/jsx-no-duplicate-props')
+    'jsx-no-duplicate-props': require('./lib/rules/jsx-no-duplicate-props'),
+    'jsx-max-props-per-line': require('./lib/rules/jsx-max-props-per-line')
   },
   rulesConfig: {
     'jsx-uses-react': 0,
@@ -45,6 +46,7 @@ module.exports = {
     'jsx-boolean-value': 0,
     'sort-comp': 0,
     'require-extension': 0,
-    'jsx-no-duplicate-props': 0
+    'jsx-no-duplicate-props': 0,
+    'jsx-max-props-per-line': 0
   }
 };
