@@ -8,7 +8,7 @@
 * documentation improvements ([#167][] @ngbrown)
 
 [#164]: https://github.com/yannickcr/eslint-plugin-react/pull/164
-[#156]: https://github.com/yannickcr/eslint-plugin-react/issues/145
+[#145]: https://github.com/yannickcr/eslint-plugin-react/issues/145
 [#165]: https://github.com/yannickcr/eslint-plugin-react/issues/165
 [#167]: https://github.com/yannickcr/eslint-plugin-react/pull/167
 
