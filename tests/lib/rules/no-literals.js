@@ -65,6 +65,35 @@ eslintTester.addRuleTest('lib/rules/no-literals', {
       ].join('\n'),
       args: [1],
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Comp1 extends Component {',
+        '  render() {',
+        '    return (',
+        '      <div>',
+        '        {\'asdjfl\'}',
+        '        {\'test\'}',
+        '        {\'foo\'}',
+        '      </div>',
+        '    );',
+        '  }',
+        '}'
+      ].join('\n'),
+      args: [1],
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Comp1 extends Component {',
+        '  render() {',
+        '    return (',
+        '      <div>',
+        '      </div>',
+        '    );',
+        '  }',
+        '}'
+      ].join('\n'),
+      args: [1],
+      parser: 'babel-eslint'
     }
   ],
 
@@ -147,11 +176,24 @@ eslintTester.addRuleTest('lib/rules/no-literals', {
       ].join('\n'),
       args: [1],
       parser: 'babel-eslint',
-      errors: [
-        {message: 'Missing JSX expression container around literal string'},
-        {message: 'Missing JSX expression container around literal string'},
-        {message: 'Missing JSX expression container around literal string'}
-      ]
+      errors: [{message: 'Missing JSX expression container around literal string'}]
+    }, {
+      code: [
+        'class Comp1 extends Component {',
+        '  render() {',
+        '    return (',
+        '      <div>',
+        '        {\'asdjfl\'}',
+        '        test',
+        '        {\'foo\'}',
+        '      </div>',
+        '    );',
+        '  }',
+        '}'
+      ].join('\n'),
+      args: [1],
+      parser: 'babel-eslint',
+      errors: [{message: 'Missing JSX expression container around literal string'}]
     }
   ]
 });
