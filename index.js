@@ -24,7 +24,7 @@ module.exports = {
     'require-extension': require('./lib/rules/require-extension'),
     'jsx-no-duplicate-props': require('./lib/rules/jsx-no-duplicate-props'),
     'jsx-max-props-per-line': require('./lib/rules/jsx-max-props-per-line'),
-    'no-literals': require('./lib/rules/no-literals')
+    'jsx-no-literals': require('./lib/rules/jsx-no-literals')
   },
   rulesConfig: {
     'jsx-uses-react': 0,
@@ -49,6 +49,6 @@ module.exports = {
     'require-extension': 0,
     'jsx-no-duplicate-props': 0,
     'jsx-max-props-per-line': 0,
-    'no-literals': 0
+    'jsx-no-literals': 0
   }
 };

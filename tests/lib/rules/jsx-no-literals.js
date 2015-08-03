@@ -16,7 +16,7 @@ var ESLintTester = require('eslint').ESLintTester;
 // ------------------------------------------------------------------------------
 
 var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/no-literals', {
+eslintTester.addRuleTest('lib/rules/jsx-no-literals', {
 
   valid: [
     {

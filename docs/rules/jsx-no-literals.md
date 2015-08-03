@@ -1,4 +1,4 @@
-# Prevent usage of unwrapped JSX strings (no-literals)
+# Prevent usage of unwrapped JSX strings (jsx-no-literals)
 
 In JSX when using a literal string you can wrap it in a JXS container `{'TEXT'}`.
 This rules requies that you wrap all literal strings.

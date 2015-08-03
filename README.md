@@ -75,6 +75,7 @@ Finally, enable all of the rules that you would like to use.
 * [jsx-curly-spacing](docs/rules/jsx-curly-spacing.md): Enforce or disallow spaces inside of curly braces in JSX attributes
 * [jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md): Limit maximum of props on a single line in JSX
 * [jsx-no-duplicate-props](docs/rules/jsx-no-duplicate-props.md): Prevent duplicate props in JSX
+* [jsx-no-literals](docs/rules/jsx-no-literals.md): Prevent usage of unwrapped JSX strings
 * [jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
 * [jsx-quotes](docs/rules/jsx-quotes.md): Enforce quote style for JSX attributes
 * [jsx-sort-prop-types](docs/rules/jsx-sort-prop-types.md): Enforce propTypes declarations alphabetical sorting
@@ -84,7 +85,6 @@ Finally, enable all of the rules that you would like to use.
 * [no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
 * [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of setState in componentDidMount
 * [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of setState in componentDidUpdate
-* [no-literals](docs/rules/no-literals.md): Prevent usage of unwrapped JSX strings
 * [no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
 * [no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property
 * [prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
