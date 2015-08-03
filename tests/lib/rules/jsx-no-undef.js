@@ -38,5 +38,11 @@ eslintTester.addRuleTest('lib/rules/jsx-no-undef', {
       message: '\'App\' is not defined.'
     }],
     ecmaFeatures: {jsx: true}
+  }, {
+    code: '/*eslint no-undef:1*/ var React; React.render(<Appp.Foo />);',
+    errors: [{
+      message: '\'Appp\' is not defined.'
+    }],
+    ecmaFeatures: {jsx: true}
   }]
 });
