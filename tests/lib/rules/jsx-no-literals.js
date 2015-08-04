@@ -8,15 +8,15 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/jsx-no-literals');
+var RuleTester = require('eslint').RuleTester;
 
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/jsx-no-literals', {
+var ruleTester = new RuleTester();
+ruleTester.run('jsx-no-literals', rule, {
 
   valid: [
     {

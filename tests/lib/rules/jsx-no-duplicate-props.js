@@ -9,21 +9,21 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/jsx-no-duplicate-props');
+var RuleTester = require('eslint').RuleTester;
 
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
+var ruleTester = new RuleTester();
 
 var expectedError = {
   message: 'No duplicate props allowed',
   type: 'JSXAttribute'
 };
 
-var ignoreCaseArgs = [1, {
+var ignoreCaseArgs = [{
   ignoreCase: true
 }];
 
@@ -31,7 +31,7 @@ var features = {
   jsx: true
 };
 
-eslintTester.addRuleTest('lib/rules/jsx-no-duplicate-props', {
+ruleTester.run('jsx-no-duplicate-props', rule, {
   valid: [
     {code: '<App />;', ecmaFeatures: features},
     {code: '<App {...this.props} />;', ecmaFeatures: features},
@@ -50,8 +50,8 @@ eslintTester.addRuleTest('lib/rules/jsx-no-duplicate-props', {
     {code: '<App a a />;', errors: [expectedError], ecmaFeatures: features},
     {code: '<App A b c A />;', errors: [expectedError], ecmaFeatures: features},
     {code: '<App a="a" b="b" a="a" />;', errors: [expectedError], ecmaFeatures: features},
-    {code: '<App A a />;', args: ignoreCaseArgs, errors: [expectedError], ecmaFeatures: features},
-    {code: '<App a b c A />;', args: ignoreCaseArgs, errors: [expectedError], ecmaFeatures: features},
-    {code: '<App A="a" b="b" B="B" />;', args: ignoreCaseArgs, errors: [expectedError], ecmaFeatures: features}
+    {code: '<App A a />;', options: ignoreCaseArgs, errors: [expectedError], ecmaFeatures: features},
+    {code: '<App a b c A />;', options: ignoreCaseArgs, errors: [expectedError], ecmaFeatures: features},
+    {code: '<App A="a" b="b" B="B" />;', options: ignoreCaseArgs, errors: [expectedError], ecmaFeatures: features}
   ]
 });

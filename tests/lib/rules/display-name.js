@@ -8,9 +8,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
-
+var rule = require('../../../lib/rules/display-name');
+var RuleTester = require('eslint').RuleTester;
 
 require('babel-eslint');
 
@@ -18,8 +17,8 @@ require('babel-eslint');
 // Tests
 // ------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/display-name', {
+var ruleTester = new RuleTester();
+ruleTester.run('display-name', rule, {
 
   valid: [{
     code: [
@@ -106,7 +105,7 @@ eslintTester.addRuleTest('lib/rules/display-name', {
       '  }',
       '});'
     ].join('\n'),
-    args: [1, {
+    options: [{
       acceptTranspilerName: true
     }],
     ecmaFeatures: {
@@ -122,7 +121,7 @@ eslintTester.addRuleTest('lib/rules/display-name', {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    args: [1, {
+    options: [{
       acceptTranspilerName: true
     }]
   }, {
@@ -134,7 +133,7 @@ eslintTester.addRuleTest('lib/rules/display-name', {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    args: [1, {
+    options: [{
       acceptTranspilerName: true
     }]
   }, {
@@ -146,7 +145,7 @@ eslintTester.addRuleTest('lib/rules/display-name', {
       '  }',
       '});'
     ].join('\n'),
-    args: [1, {
+    options: [{
       acceptTranspilerName: true
     }],
     ecmaFeatures: {
@@ -208,7 +207,7 @@ eslintTester.addRuleTest('lib/rules/display-name', {
       '}',
       'module.exports = HelloComponent();'
     ].join('\n'),
-    args: [1, {
+    options: [{
       acceptTranspilerName: true
     }],
     ecmaFeatures: {
@@ -227,7 +226,7 @@ eslintTester.addRuleTest('lib/rules/display-name', {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    args: [1, {
+    options: [{
       acceptTranspilerName: true
     }],
     errors: [{

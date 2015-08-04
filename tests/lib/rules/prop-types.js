@@ -8,8 +8,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/prop-types');
+var RuleTester = require('eslint').RuleTester;
 
 require('babel-eslint');
 
@@ -17,8 +17,8 @@ require('babel-eslint');
 // Tests
 // ------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/prop-types', {
+var ruleTester = new RuleTester();
+ruleTester.run('prop-types', rule, {
 
   valid: [
     {
@@ -68,7 +68,7 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         '  }',
         '});'
       ].join('\n'),
-      args: [1, {
+      options: [{
         ignore: ['children']
       }],
       ecmaFeatures: {
@@ -554,7 +554,7 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      args: [1, {ignore: ['name']}]
+      options: [{ignore: ['name']}]
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -608,7 +608,7 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         '  }',
         '});'
       ].join('\n'),
-      args: [1, {customValidators: ['CustomValidator']}],
+      options: [{customValidators: ['CustomValidator']}],
       ecmaFeatures: {
         jsx: true
       }
@@ -625,7 +625,7 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         '  }',
         '});'
       ].join('\n'),
-      args: [1, {customValidators: ['CustomValidator']}],
+      options: [{customValidators: ['CustomValidator']}],
       ecmaFeatures: {
         jsx: true
       }
@@ -642,7 +642,7 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         '  }',
         '});'
       ].join('\n'),
-      args: [1, {customValidators: ['CustomValidator']}],
+      options: [{customValidators: ['CustomValidator']}],
       ecmaFeatures: {
         jsx: true
       }
@@ -659,7 +659,7 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         '  }',
         '});'
       ].join('\n'),
-      args: [1, {customValidators: ['CustomValidator']}],
+      options: [{customValidators: ['CustomValidator']}],
       ecmaFeatures: {
         jsx: true
       }
@@ -674,7 +674,7 @@ eslintTester.addRuleTest('lib/rules/prop-types', {
         '  }',
         '});'
       ].join('\n'),
-      args: [1, {customValidators: ['CustomValidator']}],
+      options: [{customValidators: ['CustomValidator']}],
       ecmaFeatures: {
         jsx: true
       }

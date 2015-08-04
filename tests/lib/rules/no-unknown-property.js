@@ -9,15 +9,15 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/no-unknown-property');
+var RuleTester = require('eslint').RuleTester;
 
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/no-unknown-property', {
+var ruleTester = new RuleTester();
+ruleTester.run('no-unknown-property', rule, {
   valid: [
     {code: '<App class="bar" />;', ecmaFeatures: {jsx: true}},
     {code: '<App for="bar" />;', ecmaFeatures: {jsx: true}},

@@ -10,15 +10,16 @@
 // -----------------------------------------------------------------------------
 
 var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('eslint/lib/rules/no-unused-vars');
+var RuleTester = require('eslint').RuleTester;
 
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
+var ruleTester = new RuleTester();
 eslint.defineRule('jsx-uses-react', require('../../../lib/rules/jsx-uses-react'));
-eslintTester.addRuleTest('node_modules/eslint/lib/rules/no-unused-vars', {
+ruleTester.run('no-unused-vars', rule, {
   valid: [
     {code: '/*eslint jsx-uses-react:1*/ var React; <div />;', ecmaFeatures: {jsx: true}},
     {code: '/*eslint jsx-uses-react:1*/ var React; (function () { <div /> })();', ecmaFeatures: {jsx: true}},

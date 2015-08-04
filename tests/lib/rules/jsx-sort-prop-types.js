@@ -7,8 +7,8 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/jsx-sort-prop-types');
+var RuleTester = require('eslint').RuleTester;
 
 require('babel-eslint');
 
@@ -18,8 +18,8 @@ require('babel-eslint');
 
 var ERROR_MESSAGE = 'Prop types declarations should be sorted alphabetically';
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/jsx-sort-prop-types', {
+var ruleTester = new RuleTester();
+ruleTester.run('jsx-sort-prop-types', rule, {
   valid: [
     {
       code: [
@@ -75,7 +75,7 @@ eslintTester.addRuleTest('lib/rules/jsx-sort-prop-types', {
         '  }',
         '});'
       ].join('\n'),
-      args: [1, {
+      options: [{
         ignoreCase: true
       }],
       ecmaFeatures: {
@@ -136,7 +136,7 @@ eslintTester.addRuleTest('lib/rules/jsx-sort-prop-types', {
         '  Z: React.PropTypes.string',
         '};'
       ].join('\n'),
-      args: [1, {
+      options: [{
         ignoreCase: true
       }],
       ecmaFeatures: {
@@ -173,7 +173,7 @@ eslintTester.addRuleTest('lib/rules/jsx-sort-prop-types', {
         '};'
       ].join('\n'),
       parser: 'babel-eslint',
-      args: [1, {
+      options: [{
         ignoreCase: true
       }]
     }, {
@@ -249,7 +249,7 @@ eslintTester.addRuleTest('lib/rules/jsx-sort-prop-types', {
         '  }',
         '});'
       ].join('\n'),
-      args: [1, {
+      options: [{
         ignoreCase: true
       }],
       ecmaFeatures: {

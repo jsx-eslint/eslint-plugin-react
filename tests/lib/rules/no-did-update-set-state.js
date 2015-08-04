@@ -8,15 +8,15 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/no-did-update-set-state');
+var RuleTester = require('eslint').RuleTester;
 
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/no-did-update-set-state', {
+var ruleTester = new RuleTester();
+ruleTester.run('no-did-update-set-state', rule, {
 
   valid: [{
     code: [

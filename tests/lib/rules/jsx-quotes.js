@@ -9,26 +9,26 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/jsx-quotes');
+var RuleTester = require('eslint').RuleTester;
 
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/jsx-quotes', {
+var ruleTester = new RuleTester();
+ruleTester.run('jsx-quotes', rule, {
   valid: [
-    {code: '<App foo=\'bar\' />;', args: [1, 'single'], ecmaFeatures: {jsx: true}},
-    {code: '<App foo="bar" />;', args: [1, 'double'], ecmaFeatures: {jsx: true}},
-    {code: '<App foo="ba\'r" />;', args: [1, 'single', 'avoid-escape'], ecmaFeatures: {jsx: true}},
-    {code: '<App foo=\'ba"r\' />;', args: [1, 'double', 'avoid-escape'], ecmaFeatures: {jsx: true}},
-    {code: '<App>foo</App>;', args: [1, 'single'], ecmaFeatures: {jsx: true}}
+    {code: '<App foo=\'bar\' />;', options: ['single'], ecmaFeatures: {jsx: true}},
+    {code: '<App foo="bar" />;', options: ['double'], ecmaFeatures: {jsx: true}},
+    {code: '<App foo="ba\'r" />;', options: ['single', 'avoid-escape'], ecmaFeatures: {jsx: true}},
+    {code: '<App foo=\'ba"r\' />;', options: ['double', 'avoid-escape'], ecmaFeatures: {jsx: true}},
+    {code: '<App>foo</App>;', options: ['single'], ecmaFeatures: {jsx: true}}
   ],
   invalid: [
     {code: '<App foo="bar" />;',
-     errors: [{message: 'JSX attributes must use singlequote.'}], args: [1, 'single'], ecmaFeatures: {jsx: true}},
+     errors: [{message: 'JSX attributes must use singlequote.'}], options: ['single'], ecmaFeatures: {jsx: true}},
     {code: '<App foo=\'bar\' />;',
-     errors: [{message: 'JSX attributes must use doublequote.'}], args: [1, 'double'], ecmaFeatures: {jsx: true}}
+     errors: [{message: 'JSX attributes must use doublequote.'}], options: ['double'], ecmaFeatures: {jsx: true}}
   ]
 });

@@ -8,8 +8,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/wrap-multilines');
+var RuleTester = require('eslint').RuleTester;
 
 // ------------------------------------------------------------------------------
 // Code Snippets
@@ -76,8 +76,8 @@ var ASSIGNMENT_NO_PAREN = '\
 // Tests
 // ------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/wrap-multilines', {
+var ruleTester = new RuleTester();
+ruleTester.run('wrap-multilines', rule, {
 
   valid: [
     {
@@ -88,7 +88,7 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
       ecmaFeatures: {jsx: true}
     }, {
       code: RETURN_NO_PAREN,
-      args: [1, {return: false}],
+      options: [{return: false}],
       ecmaFeatures: {jsx: true}
     }, {
       code: DECLARATION_SINGLE_LINE,
@@ -98,18 +98,18 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
       ecmaFeatures: {jsx: true}
     }, {
       code: DECLARATION_NO_PAREN,
-      args: [1, {declaration: false}],
+      options: [{declaration: false}],
       ecmaFeatures: {jsx: true}
     }, {
       code: ASSIGNMENT_SINGLE_LINE,
-      args: [1, {declaration: false}],
+      options: [{declaration: false}],
       ecmaFeatures: {jsx: true}
     }, {
       code: ASSIGNMENT_PAREN,
       ecmaFeatures: {jsx: true}
     }, {
       code: ASSIGNMENT_NO_PAREN,
-      args: [1, {assignment: false}],
+      options: [{assignment: false}],
       ecmaFeatures: {jsx: true}
     }
   ],
@@ -122,7 +122,7 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
     }, {
       code: RETURN_NO_PAREN,
       ecmaFeatures: {jsx: true},
-      args: [1, {return: true}],
+      options: [{return: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: DECLARATION_NO_PAREN,
@@ -131,7 +131,7 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
     }, {
       code: DECLARATION_NO_PAREN,
       ecmaFeatures: {jsx: true},
-      args: [1, {declaration: true}],
+      options: [{declaration: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: ASSIGNMENT_NO_PAREN,
@@ -140,7 +140,7 @@ eslintTester.addRuleTest('lib/rules/wrap-multilines', {
     }, {
       code: ASSIGNMENT_NO_PAREN,
       ecmaFeatures: {jsx: true},
-      args: [1, {assignment: true}],
+      options: [{assignment: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }
   ]

@@ -100,7 +100,7 @@
         "no-use-before-define": 2,
         // Stylistic Issues
         "indent": [2, 2, {
-          "indentSwitchCase": true
+          "SwitchCase": 1
         }],
         "brace-style": 2,
         "camelcase": 0,

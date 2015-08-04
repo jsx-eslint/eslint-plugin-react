@@ -10,7 +10,8 @@
 // -----------------------------------------------------------------------------
 
 var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('eslint/lib/rules/no-unused-vars');
+var RuleTester = require('eslint').RuleTester;
 
 require('babel-eslint');
 
@@ -18,9 +19,9 @@ require('babel-eslint');
 // Tests
 // -----------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
+var ruleTester = new RuleTester();
 eslint.defineRule('jsx-uses-vars', require('../../../lib/rules/jsx-uses-vars'));
-eslintTester.addRuleTest('node_modules/eslint/lib/rules/no-unused-vars', {
+ruleTester.run('no-unused-vars', rule, {
   valid: [
     {
       code: '\

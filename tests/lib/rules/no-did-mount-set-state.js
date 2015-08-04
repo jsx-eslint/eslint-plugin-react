@@ -8,8 +8,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/no-did-mount-set-state');
+var RuleTester = require('eslint').RuleTester;
 
 require('babel-eslint');
 
@@ -17,8 +17,8 @@ require('babel-eslint');
 // Tests
 // ------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/no-did-mount-set-state', {
+var ruleTester = new RuleTester();
+ruleTester.run('no-did-mount-set-state', rule, {
 
   valid: [{
     code: [
@@ -64,7 +64,7 @@ eslintTester.addRuleTest('lib/rules/no-did-mount-set-state', {
       '  }',
       '});'
     ].join('\n'),
-    args: [1, 'allow-in-func'],
+    options: ['allow-in-func'],
     ecmaFeatures: {
       jsx: true
     }
@@ -82,7 +82,7 @@ eslintTester.addRuleTest('lib/rules/no-did-mount-set-state', {
       '});'
     ].join('\n'),
     parser: 'babel-eslint',
-    args: [1, 'allow-in-func'],
+    options: ['allow-in-func'],
     ecmaFeatures: {
       jsx: true
     }
@@ -114,7 +114,7 @@ eslintTester.addRuleTest('lib/rules/no-did-mount-set-state', {
       '  }',
       '});'
     ].join('\n'),
-    args: [1, 'allow-in-func'],
+    options: ['allow-in-func'],
     ecmaFeatures: {
       jsx: true
     },

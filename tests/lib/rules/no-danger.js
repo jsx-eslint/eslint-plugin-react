@@ -9,15 +9,15 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/no-danger');
+var RuleTester = require('eslint').RuleTester;
 
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/no-danger', {
+var ruleTester = new RuleTester();
+ruleTester.run('no-danger', rule, {
   valid: [
     {code: '<App />;', ecmaFeatures: {jsx: true}},
     {code: '<App dangerouslySetInnerHTML={{ __html: "" }} />;', ecmaFeatures: {jsx: true}},

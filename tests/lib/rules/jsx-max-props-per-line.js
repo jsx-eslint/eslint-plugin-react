@@ -8,15 +8,15 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/jsx-max-props-per-line');
+var RuleTester = require('eslint').RuleTester;
 
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/jsx-max-props-per-line', {
+var ruleTester = new RuleTester();
+ruleTester.run('jsx-max-props-per-line', rule, {
   valid: [{
     code: '<App foo />',
     ecmaFeatures: {jsx: true}

@@ -8,38 +8,37 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/jsx-curly-spacing');
+var RuleTester = require('eslint').RuleTester;
 
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/jsx-curly-spacing', {
+var ruleTester = new RuleTester();
+ruleTester.run('jsx-curly-spacing', rule, {
   valid: [{
     code: '<App foo={bar} />;',
-    args: 1,
     ecmaFeatures: {jsx: true}
   }, {
     code: '<App foo={bar} />;',
-    args: [1, 'never'],
+    options: ['never'],
     ecmaFeatures: {jsx: true}
   }, {
     code: '<App foo={ bar } />;',
-    args: [1, 'always'],
+    options: ['always'],
     ecmaFeatures: {jsx: true}
   }, {
     code: '<App foo={ bar } />;',
-    args: [1, 'always', {allowMultiline: false}],
+    options: ['always', {allowMultiline: false}],
     ecmaFeatures: {jsx: true}
   }, {
     code: '<App foo={{ bar:baz }} />;',
-    args: [1, 'never'],
+    options: ['never'],
     ecmaFeatures: {jsx: true}
   }, {
     code: '<App foo={ {bar:baz} } />;',
-    args: [1, 'always'],
+    options: ['always'],
     ecmaFeatures: {jsx: true}
   }, {
     code: [
@@ -47,7 +46,7 @@ eslintTester.addRuleTest('lib/rules/jsx-curly-spacing', {
       'bar',
       '} />;'
     ].join('\n'),
-    args: [1, 'always'],
+    options: ['always'],
     ecmaFeatures: {jsx: true}
   }, {
     code: [
@@ -55,7 +54,7 @@ eslintTester.addRuleTest('lib/rules/jsx-curly-spacing', {
       'bar',
       '} />;'
     ].join('\n'),
-    args: [1, 'always'],
+    options: ['always'],
     ecmaFeatures: {jsx: true}
   }, {
     code: [
@@ -63,19 +62,19 @@ eslintTester.addRuleTest('lib/rules/jsx-curly-spacing', {
       'bar',
       '} />;'
     ].join('\n'),
-    args: [1, 'never'],
+    options: ['never'],
     ecmaFeatures: {jsx: true}
   }, {
     code: [
       '<div>{/* comment */}</div>;'
     ].join('\n'),
-    args: [1, 'never'],
+    options: ['never'],
     ecmaFeatures: {jsx: true}
   }],
 
   invalid: [{
     code: '<App foo={ bar } />;',
-    args: [1, 'never'],
+    options: ['never'],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -84,7 +83,7 @@ eslintTester.addRuleTest('lib/rules/jsx-curly-spacing', {
     ecmaFeatures: {jsx: true}
   }, {
     code: '<App foo={ bar } />;',
-    args: [1, 'never', {allowMultiline: false}],
+    options: ['never', {allowMultiline: false}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -93,7 +92,7 @@ eslintTester.addRuleTest('lib/rules/jsx-curly-spacing', {
     ecmaFeatures: {jsx: true}
   }, {
     code: '<App foo={bar} />;',
-    args: [1, 'always'],
+    options: ['always'],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -102,7 +101,7 @@ eslintTester.addRuleTest('lib/rules/jsx-curly-spacing', {
     ecmaFeatures: {jsx: true}
   }, {
     code: '<App foo={bar} />;',
-    args: [1, 'always', {allowMultiline: false}],
+    options: ['always', {allowMultiline: false}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -111,28 +110,28 @@ eslintTester.addRuleTest('lib/rules/jsx-curly-spacing', {
     ecmaFeatures: {jsx: true}
   }, {
     code: '<App foo={ bar} />;',
-    args: [1, 'always'],
+    options: ['always'],
     errors: [{
       message: 'A space is required before \'}\''
     }],
     ecmaFeatures: {jsx: true}
   }, {
     code: '<App foo={bar } />;',
-    args: [1, 'always'],
+    options: ['always'],
     errors: [{
       message: 'A space is required after \'{\''
     }],
     ecmaFeatures: {jsx: true}
   }, {
     code: '<App foo={ bar} />;',
-    args: [1, 'never'],
+    options: ['never'],
     errors: [{
       message: 'There should be no space after \'{\''
     }],
     ecmaFeatures: {jsx: true}
   }, {
     code: '<App foo={bar } />;',
-    args: [1, 'never'],
+    options: ['never'],
     errors: [{
       message: 'There should be no space before \'}\''
     }],
@@ -143,7 +142,7 @@ eslintTester.addRuleTest('lib/rules/jsx-curly-spacing', {
       'bar',
       '} />;'
     ].join('\n'),
-    args: [1, 'never', {allowMultiline: false}],
+    options: ['never', {allowMultiline: false}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -156,7 +155,7 @@ eslintTester.addRuleTest('lib/rules/jsx-curly-spacing', {
       'bar',
       '} />;'
     ].join('\n'),
-    args: [1, 'always', {allowMultiline: false}],
+    options: ['always', {allowMultiline: false}],
     errors: [{
       message: 'There should be no newline after \'{\''
     }, {

@@ -10,15 +10,16 @@
 // -----------------------------------------------------------------------------
 
 var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/jsx-no-undef');
+var RuleTester = require('eslint').RuleTester;
 
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
+var ruleTester = new RuleTester();
 eslint.defineRule('no-undef', require('eslint/lib/rules/no-undef'));
-eslintTester.addRuleTest('lib/rules/jsx-no-undef', {
+ruleTester.run('jsx-no-undef', rule, {
   valid: [{
     code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);',
     ecmaFeatures: {modules: true, jsx: true}

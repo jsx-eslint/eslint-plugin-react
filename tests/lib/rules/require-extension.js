@@ -8,8 +8,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/require-extension');
+var RuleTester = require('eslint').RuleTester;
 
 // ------------------------------------------------------------------------------
 // Code Snippets
@@ -31,8 +31,8 @@ var REQUIRE_OBJECT = 'require({})';
 // Tests
 // ------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/require-extension', {
+var ruleTester = new RuleTester();
+ruleTester.run('require-extension', rule, {
 
   valid: [
     {
@@ -62,10 +62,10 @@ eslintTester.addRuleTest('lib/rules/require-extension', {
       args: [1]
     }, {
       code: REQUIRE_JSON,
-      args: [1, {extensions: ['.js']}]
+      options: [{extensions: ['.js']}]
     }, {
       code: REQUIRE_JSX,
-      args: [1, {extensions: ['.js']}]
+      options: [{extensions: ['.js']}]
     }
   ],
 
@@ -79,15 +79,15 @@ eslintTester.addRuleTest('lib/rules/require-extension', {
       errors: [{message: 'Unable to require module with extension \'.jsx\''}]
     }, {
       code: REQUIRE_JS,
-      args: [1, {extensions: ['.js']}],
+      options: [{extensions: ['.js']}],
       errors: [{message: 'Unable to require module with extension \'.js\''}]
     }, {
       code: REQUIRE_JS,
-      args: [1, {extensions: ['.js', '.jsx']}],
+      options: [{extensions: ['.js', '.jsx']}],
       errors: [{message: 'Unable to require module with extension \'.js\''}]
     }, {
       code: REQUIRE_JSX,
-      args: [1, {extensions: ['.js', '.jsx']}],
+      options: [{extensions: ['.js', '.jsx']}],
       errors: [{message: 'Unable to require module with extension \'.jsx\''}]
     }
   ]

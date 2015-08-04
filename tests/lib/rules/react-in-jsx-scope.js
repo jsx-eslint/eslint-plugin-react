@@ -9,15 +9,15 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/react-in-jsx-scope');
+var RuleTester = require('eslint').RuleTester;
 
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/react-in-jsx-scope', {
+var ruleTester = new RuleTester();
+ruleTester.run('react-in-jsx-scope', rule, {
   valid: [
     {code: 'var React, App; <App />;', ecmaFeatures: {jsx: true}},
     {code: 'var React; <img />;', ecmaFeatures: {jsx: true}},

@@ -8,8 +8,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var ESLintTester = require('eslint').ESLintTester;
+var rule = require('../../../lib/rules/sort-comp');
+var RuleTester = require('eslint').RuleTester;
 
 require('babel-eslint');
 
@@ -17,8 +17,8 @@ require('babel-eslint');
 // Tests
 // ------------------------------------------------------------------------------
 
-var eslintTester = new ESLintTester(eslint);
-eslintTester.addRuleTest('lib/rules/sort-comp', {
+var ruleTester = new RuleTester();
+ruleTester.run('sort-comp', rule, {
 
   valid: [{
     // Must validate a full class
@@ -84,7 +84,7 @@ eslintTester.addRuleTest('lib/rules/sort-comp', {
       '  onClick: function() {}',
       '});'
     ].join('\n'),
-    args: [1, {
+    options: [{
       order: [
         'lifecycle',
         'render',
@@ -105,7 +105,7 @@ eslintTester.addRuleTest('lib/rules/sort-comp', {
       '  onClick() {}',
       '}'
     ].join('\n'),
-    args: [1, {
+    options: [{
       order: [
         'lifecycle',
         'everything-else',
@@ -128,7 +128,7 @@ eslintTester.addRuleTest('lib/rules/sort-comp', {
       '  onClick() {}',
       '}'
     ].join('\n'),
-    args: [1, {
+    options: [{
       order: [
         'lifecycle',
         'everything-else',
@@ -155,7 +155,7 @@ eslintTester.addRuleTest('lib/rules/sort-comp', {
       '  onClick() {}',
       '}'
     ].join('\n'),
-    args: [1, {
+    options: [{
       order: [
         '/on.*/',
         'render',
@@ -177,7 +177,7 @@ eslintTester.addRuleTest('lib/rules/sort-comp', {
       '  }',
       '}'
     ].join('\n'),
-    args: [1, {
+    options: [{
       order: [
         'constructor',
         'lifecycle',
@@ -230,7 +230,7 @@ eslintTester.addRuleTest('lib/rules/sort-comp', {
       '  }',
       '});'
     ].join('\n'),
-    args: [1, {
+    options: [{
       order: [
         'lifecycle',
         'render'
