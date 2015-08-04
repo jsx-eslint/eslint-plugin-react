@@ -1,3 +1,15 @@
+3.2.0 / 2015-08-04
+==================
+
+* update dependencies
+* add jsx-max-props-per-line rule ([#13][])
+* add jsx-no-literals rule ([#176][] @CalebMorris)
+* fix object access in jsx-no-undef ([#172][])
+
+[#13]: https://github.com/yannickcr/eslint-plugin-react/issues/13
+[#176]: https://github.com/yannickcr/eslint-plugin-react/pull/176
+[#172]: https://github.com/yannickcr/eslint-plugin-react/issues/172
+
 3.1.0 / 2015-07-28
 ==================
 
