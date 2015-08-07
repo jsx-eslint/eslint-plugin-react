@@ -698,6 +698,13 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'const SomeComponent = React.createClass({',
+        '  propTypes: SomeOtherComponent.propTypes',
+        '});'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
