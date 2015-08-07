@@ -1,3 +1,12 @@
+3.2.1 / 2015-08-08
+==================
+
+* fix crash when propTypes don't have any parent ([#182][])
+* fix jsx-no-literals reporting errors outside JSX ([#183][] @CalebMorris)
+
+[#182]: https://github.com/yannickcr/eslint-plugin-react/issues/182
+[#183]: https://github.com/yannickcr/eslint-plugin-react/pull/183
+
 3.2.0 / 2015-08-04
 ==================
 
