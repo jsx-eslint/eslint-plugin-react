@@ -94,6 +94,20 @@ ruleTester.run('jsx-no-literals', rule, {
       ].join('\n'),
       args: [1],
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'var foo = require(\'foo\');'
+      ].join('\n'),
+      args: [1],
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        '<Foo bar=\'test\'>',
+        '  {\'blarg\'}',
+        '</Foo>'
+      ].join('\n'),
+      args: [1],
+      parser: 'babel-eslint'
     }
   ],
 
