@@ -1,3 +1,10 @@
+3.2.2 / 2015-08-11
+==================
+
+* remove peerDependencies ([#178][])
+
+[#178]: https://github.com/yannickcr/eslint-plugin-react/issues/178
+
 3.2.1 / 2015-08-08
 ==================
 
