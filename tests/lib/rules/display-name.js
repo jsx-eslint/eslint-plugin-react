@@ -151,6 +151,24 @@ ruleTester.run('display-name', rule, {
     ecmaFeatures: {
       jsx: true
     }
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  displayName: \'Hello\',',
+      '  render: function() {',
+      '    let { a, ...b } = obj;',
+      '    let c = { ...d };',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    env: {
+      es6: true
+    },
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true,
+      jsx: true
+    }
   }],
 
   invalid: [{
