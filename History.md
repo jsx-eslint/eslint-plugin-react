@@ -1,3 +1,12 @@
+3.2.3 / 2015-08-16
+==================
+
+* update dependencies
+* fix object rest/spread handling ([#187][] @xjamundx, [#189][] @Morantron)
+
+[#187]: https://github.com/yannickcr/eslint-plugin-react/pull/187
+[#189]: https://github.com/yannickcr/eslint-plugin-react/pull/189
+
 3.2.2 / 2015-08-11
 ==================
 
