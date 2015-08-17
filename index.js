@@ -24,7 +24,8 @@ module.exports = {
     'require-extension': require('./lib/rules/require-extension'),
     'jsx-no-duplicate-props': require('./lib/rules/jsx-no-duplicate-props'),
     'jsx-max-props-per-line': require('./lib/rules/jsx-max-props-per-line'),
-    'jsx-no-literals': require('./lib/rules/jsx-no-literals')
+    'jsx-no-literals': require('./lib/rules/jsx-no-literals'),
+    'jsx-indent-props': require('./lib/rules/jsx-indent-props')
   },
   rulesConfig: {
     'jsx-uses-react': 0,
@@ -49,6 +50,7 @@ module.exports = {
     'require-extension': 0,
     'jsx-no-duplicate-props': 0,
     'jsx-max-props-per-line': 0,
-    'jsx-no-literals': 0
+    'jsx-no-literals': 0,
+    'jsx-indent-props': 0
   }
 };
