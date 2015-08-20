@@ -722,6 +722,21 @@ ruleTester.run('prop-types', rule, {
         experimentalObjectRestSpread: true,
         jsx: true
       }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  static get propTypes() {}',
+        '  render() {',
+        '    return <div>Hello World</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      env: {
+        es6: true
+      },
+      ecmaFeatures: {
+        jsx: true
+      }
     }
   ],
 
