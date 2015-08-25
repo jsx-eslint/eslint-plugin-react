@@ -55,6 +55,7 @@ Finally, enable all of the rules that you would like to use.
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,
     "react/no-danger": 1,
+    "react/no-set-state": 1,
     "react/no-did-mount-set-state": 1,
     "react/no-did-update-set-state": 1,
     "react/no-multi-comp": 1,
@@ -85,6 +86,7 @@ Finally, enable all of the rules that you would like to use.
 * [jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
 * [jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
 * [no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
+* [no-set-state](docs/rules/no-set-state.md): Prevent usage of setState
 * [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of setState in componentDidMount
 * [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of setState in componentDidUpdate
 * [no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
