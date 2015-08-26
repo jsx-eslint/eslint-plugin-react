@@ -1,3 +1,19 @@
+3.3.0 / 2015-08-26
+==================
+
+* update dependencies
+* add jsx-indent-props rule ([#15][], [#181][])
+* add no-set-state rule ([#197][] @markdalgleish)
+* add jsx-closing-bracket-location rule ([#14][], [#64][])
+* fix crash on propTypes declarations with an empty body ([#193][] @mattyod)
+
+[#15]: https://github.com/yannickcr/eslint-plugin-react/issues/15
+[#181]: https://github.com/yannickcr/eslint-plugin-react/issues/181
+[#197]: https://github.com/yannickcr/eslint-plugin-react/pull/197
+[#14]: https://github.com/yannickcr/eslint-plugin-react/issues/14
+[#64]: https://github.com/yannickcr/eslint-plugin-react/issues/64
+[#193]: https://github.com/yannickcr/eslint-plugin-react/pull/193
+
 3.2.3 / 2015-08-16
 ==================
 
