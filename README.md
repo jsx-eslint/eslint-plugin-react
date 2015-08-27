@@ -9,11 +9,15 @@ React specific linting rules for ESLint
 
 Install [ESLint](https://www.github.com/eslint/eslint) either locally or globally.
 
-    npm install eslint
+```sh
+$ npm install eslint
+```
 
 If you installed `ESLint` globally, you have to install React plugin globally too. Otherwise, install it locally.
 
-    $ npm install eslint-plugin-react
+```sh
+$ npm install eslint-plugin-react
+```
 
 # Configuration
 
