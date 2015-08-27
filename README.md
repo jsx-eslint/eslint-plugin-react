@@ -77,7 +77,7 @@ Finally, enable all of the rules that you would like to use.
 
 # List of supported rules
 
-* [display-name](docs/rules/display-name.md): Prevent missing displayName in a React component definition
+* [display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
 * [jsx-boolean-value](docs/rules/jsx-boolean-value.md): Enforce boolean attributes notation in JSX
 * [jsx-closing-bracket-location](docs/rules/jsx-closing-bracket-location.md): Validate closing bracket location in JSX
 * [jsx-curly-spacing](docs/rules/jsx-curly-spacing.md): Enforce or disallow spaces inside of curly braces in JSX attributes
@@ -92,13 +92,13 @@ Finally, enable all of the rules that you would like to use.
 * [jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
 * [jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
 * [no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
-* [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of setState in componentDidMount
-* [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of setState in componentDidUpdate
+* [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of `setState` in `componentDidMount`
+* [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of `setState` in `componentDidUpdate`
 * [no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
-* [no-set-state](docs/rules/no-set-state.md): Prevent usage of setState
+* [no-set-state](docs/rules/no-set-state.md): Prevent usage of `setState`
 * [no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property
 * [prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
-* [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing React when using JSX
+* [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing `React` when using JSX
 * [require-extension](docs/rules/require-extension.md): Restrict file extensions that may be required
 * [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
 * [sort-comp](docs/rules/sort-comp.md): Enforce component methods order
