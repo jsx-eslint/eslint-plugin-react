@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
-## [Unreleased]
+## [3.3.1] - 2015-09-01
 ### Changed
 * Update dependencies
 * Update changelog to follow the Keep a CHANGELOG standards
@@ -12,7 +12,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Fixed
 * Fix `jsx-closing-bracket-location` for multiline props ([#199][])
 
-[Unreleased]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.3.0...HEAD
+[3.3.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.3.0...v3.3.1
 [#198]: https://github.com/yannickcr/eslint-plugin-react/pull/198
 [#199]: https://github.com/yannickcr/eslint-plugin-react/issues/199
 
