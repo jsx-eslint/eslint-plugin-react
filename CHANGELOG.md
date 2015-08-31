@@ -5,6 +5,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [Unreleased]
 ### Changed
+* Update dependencies
 * Update changelog to follow the Keep a CHANGELOG standards
 * Documentation improvements ([#198][] @lencioni)
 

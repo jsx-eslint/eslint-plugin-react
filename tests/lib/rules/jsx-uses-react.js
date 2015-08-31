@@ -28,8 +28,8 @@ ruleTester.run('no-unused-vars', rule, {
   ],
   invalid: [
     {code: '/*eslint jsx-uses-react:1*/ var React;',
-     errors: [{message: 'React is defined but never used'}], ecmaFeatures: {jsx: true}},
+     errors: [{message: '"React" is defined but never used'}], ecmaFeatures: {jsx: true}},
     {code: '/*eslint jsx-uses-react:1*/ /** @jsx Foo */ var React; <div />;',
-     errors: [{message: 'React is defined but never used'}], ecmaFeatures: {jsx: true}}
+     errors: [{message: '"React" is defined but never used'}], ecmaFeatures: {jsx: true}}
   ]
 });
