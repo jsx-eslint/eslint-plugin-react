@@ -88,6 +88,35 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{location: 'props-aligned'}],
     ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<App',
+      '  foo={function() {',
+      '    console.log(\'bar\');',
+      '  }} />'
+    ].join('\n'),
+    options: [{location: 'after-props'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<App',
+      '  foo={function() {',
+      '    console.log(\'bar\');',
+      '  }}',
+      '  />'
+    ].join('\n'),
+    options: [{location: 'props-aligned'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<App',
+      '  foo={function() {',
+      '    console.log(\'bar\');',
+      '  }}',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    ecmaFeatures: {jsx: true}
   }],
 
   invalid: [{
