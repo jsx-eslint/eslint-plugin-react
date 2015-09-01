@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [Unreleased]
+### Fixed
+* Fix allowed methods on arrayOf in `prop-types` ([#146][])
+
+[Unreleased]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.3.1...HEAD
+[#146]: https://github.com/yannickcr/eslint-plugin-react/issues/146
+
 ## [3.3.1] - 2015-09-01
 ### Changed
 * Update dependencies

@@ -737,6 +737,25 @@ ruleTester.run('prop-types', rule, {
       ecmaFeatures: {
         jsx: true
       }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  static get propTypes() {}',
+        '  render() {',
+        '    var users = this.props.users.find(user => user.name === \'John\');',
+        '    return <div>Hello you {users.length}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  users: React.PropTypes.arrayOf(React.PropTypes.object)',
+        '};'
+      ].join('\n'),
+      env: {
+        es6: true
+      },
+      ecmaFeatures: {
+        jsx: true
+      }
     }
   ],
 
