@@ -206,6 +206,20 @@ ruleTester.run('sort-comp', rule, {
     },
     errors: [{message: 'render must be placed after displayName'}]
   }, {
+    // Must run rule when render uses createElement instead of JSX
+    code: [
+      'var Hello = React.createClass({',
+      '  render: function() {',
+      '    return React.createElement("div", null, "Hello");',
+      '  },',
+      '  displayName : \'Hello\',',
+      '});'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    },
+    errors: [{message: 'render must be placed after displayName'}]
+  }, {
     // Must force a custom method to be placed before render
     code: [
       'var Hello = React.createClass({',
