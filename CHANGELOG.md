@@ -3,16 +3,16 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
-## [Unreleased]
+## [3.3.2] - 2015-09-10
 ### Changed
-* Add `state` in lifecycle methods for `sort-comp` rule ([#197][])
-* Treat component with render which returns `createElement` as valid ([#206][])
+* Add `state` in lifecycle methods for `sort-comp` rule ([#197][] @mathieudutour)
+* Treat component with render which returns `createElement` as valid ([#206][] @epmatsw)
 
 ### Fixed
 * Fix allowed methods on arrayOf in `prop-types` ([#146][])
 * Fix default configuration for `jsx-boolean-value` ([#210][])
 
-[Unreleased]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.3.1...HEAD
+[3.3.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.3.1...v3.3.2
 [#146]: https://github.com/yannickcr/eslint-plugin-react/issues/146
 [#197]: https://github.com/yannickcr/eslint-plugin-react/pull/197
 [#206]: https://github.com/yannickcr/eslint-plugin-react/pull/206
@@ -64,7 +64,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [3.2.2] - 2015-08-11
 ### Changed
-* remove peerDependencies ([#178][])
+* Remove peerDependencies ([#178][])
 
 [3.2.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.2.1...v3.2.2
 [#178]: https://github.com/yannickcr/eslint-plugin-react/issues/178
