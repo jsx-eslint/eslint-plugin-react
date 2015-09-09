@@ -10,11 +10,13 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Fixed
 * Fix allowed methods on arrayOf in `prop-types` ([#146][])
+* Fix default configuration for `jsx-boolean-value` ([#210][])
 
 [Unreleased]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.3.1...HEAD
 [#146]: https://github.com/yannickcr/eslint-plugin-react/issues/146
 [#197]: https://github.com/yannickcr/eslint-plugin-react/pull/197
 [#206]: https://github.com/yannickcr/eslint-plugin-react/pull/206
+[#210]: https://github.com/yannickcr/eslint-plugin-react/issues/210
 
 ## [3.3.1] - 2015-09-01
 ### Changed
