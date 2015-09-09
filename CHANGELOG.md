@@ -4,11 +4,17 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
 ## [Unreleased]
+### Changed
+* Add `state` in lifecycle methods for `sort-comp` rule ([#197][])
+* Treat component with render which returns `createElement` as valid ([#206][])
+
 ### Fixed
 * Fix allowed methods on arrayOf in `prop-types` ([#146][])
 
 [Unreleased]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.3.1...HEAD
 [#146]: https://github.com/yannickcr/eslint-plugin-react/issues/146
+[#197]: https://github.com/yannickcr/eslint-plugin-react/pull/197
+[#206]: https://github.com/yannickcr/eslint-plugin-react/pull/206
 
 ## [3.3.1] - 2015-09-01
 ### Changed
