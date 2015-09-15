@@ -1,5 +1,7 @@
 # Enforce quote style for JSX attributes (jsx-quotes)
 
+**Deprecation notice**: This rule is deprecated and has been replaced by the ESLint [jsx-quotes](http://eslint.org/docs/rules/jsx-quotes) rule added in ESLint `v1.4.0`.
+
 Enforces coding style that JSX attributes are delimited with single or double quotes.
 
 It takes an option as the second parameter which can be `"double"` or `"single"` for double-quotes or single-quotes respectively. There is no default.
