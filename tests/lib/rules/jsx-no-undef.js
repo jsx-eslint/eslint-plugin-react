@@ -45,5 +45,12 @@ ruleTester.run('jsx-no-undef', rule, {
       message: '\'Appp\' is not defined.'
     }],
     ecmaFeatures: {jsx: true}
+  },
+  {
+    code: '/*eslint no-undef:1*/ var React; React.render(<Apppp:Foo />);',
+    errors: [{
+      message: '\'Apppp\' is not defined.'
+    }],
+    ecmaFeatures: {jsx: true}
   }]
 });
