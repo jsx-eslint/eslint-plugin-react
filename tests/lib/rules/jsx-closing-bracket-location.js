@@ -34,6 +34,13 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ecmaFeatures: {jsx: true}
   }, {
     code: [
+      '<App ',
+      '  foo',
+      '/>'
+    ].join('\n'),
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
       '<App foo />'
     ].join('\n'),
     options: [{location: 'after-props'}],
@@ -43,6 +50,21 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '<App foo />'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<App ',
+      '  foo />'
+    ].join('\n'),
+    options: ['after-props'],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<App ',
+      '  foo',
+      '  />'
+    ].join('\n'),
+    options: ['props-aligned'],
     ecmaFeatures: {jsx: true}
   }, {
     code: [
@@ -116,6 +138,59 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '/>'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<Provider store>',
+      '  <App',
+      '    foo />',
+      '</Provider>'
+    ].join('\n'),
+    options: [{selfClosing: 'after-props'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<Provider ',
+      '  store',
+      '>',
+      '  <App',
+      '    foo />',
+      '</Provider>'
+    ].join('\n'),
+    options: [{selfClosing: 'after-props'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<Provider ',
+      '  store>',
+      '  <App ',
+      '    foo',
+      '  />',
+      '</Provider>'
+    ].join('\n'),
+    options: [{nonEmpty: 'after-props'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<Provider store>',
+      '  <App ',
+      '    foo',
+      '    />',
+      '</Provider>'
+    ].join('\n'),
+    options: [{selfClosing: 'props-aligned'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<Provider',
+      '  store',
+      '  >',
+      '  <App ',
+      '    foo',
+      '  />',
+      '</Provider>'
+    ].join('\n'),
+    options: [{nonEmpty: 'props-aligned'}],
     ecmaFeatures: {jsx: true}
   }],
 
@@ -226,6 +301,54 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  ></App>'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
+    ecmaFeatures: {jsx: true},
+    errors: MESSAGE_TAG_ALIGNED
+  }, {
+    code: [
+      '<Provider ',
+      '  store>', // <--
+      '  <App ',
+      '    foo',
+      '    />',
+      '</Provider>'
+    ].join('\n'),
+    options: [{selfClosing: 'props-aligned'}],
+    ecmaFeatures: {jsx: true},
+    errors: MESSAGE_TAG_ALIGNED
+  }, {
+    code: [
+      '<Provider',
+      '  store',
+      '  >',
+      '  <App ',
+      '    foo',
+      '    />', // <--
+      '</Provider>'
+    ].join('\n'),
+    options: [{nonEmpty: 'props-aligned'}],
+    ecmaFeatures: {jsx: true},
+    errors: MESSAGE_TAG_ALIGNED
+  }, {
+    code: [
+      '<Provider ',
+      '  store>', // <--
+      '  <App',
+      '    foo />',
+      '</Provider>'
+    ].join('\n'),
+    options: [{selfClosing: 'after-props'}],
+    ecmaFeatures: {jsx: true},
+    errors: MESSAGE_TAG_ALIGNED
+  }, {
+    code: [
+      '<Provider ',
+      '  store>',
+      '  <App ',
+      '    foo',
+      '    />', // <--
+      '</Provider>'
+    ].join('\n'),
+    options: [{nonEmpty: 'after-props'}],
     ecmaFeatures: {jsx: true},
     errors: MESSAGE_TAG_ALIGNED
   }]
