@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.4.1] - 2015-09-17
+### Fixed
+* Fix `jsx-quotes` rule deprecation message ([#220][])
+
+[3.4.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.4.0...v3.4.1
+[#220]: https://github.com/yannickcr/eslint-plugin-react/issues/220
+
 ## [3.4.0] - 2015-09-16
 ### Added
 * Add namespaced JSX support to `jsx-no-undef` ([#219][] @zertosh)
