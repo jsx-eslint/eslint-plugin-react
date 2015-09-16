@@ -3,11 +3,17 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
-## [Unreleased]
-### Changed
-* Deprecate `jsx-quotes` rule ([#217][])
+## [3.4.0] - 2015-09-16
+### Added
+* Add namespaced JSX support to `jsx-no-undef` ([#219][] @zertosh)
+* Add option to `jsx-closing-bracket-location` to configure different styles for self-closing and non-empty tags ([#208][] @evocateur)
 
-[Unreleased]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.3.2...HEAD
+### Deprecated
+* Deprecate `jsx-quotes` rule, will now trigger a warning if used ([#217][])
+
+[3.4.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.3.2...v3.4.0
+[#219]: https://github.com/yannickcr/eslint-plugin-react/pull/219
+[#208]: https://github.com/yannickcr/eslint-plugin-react/pull/208
 [#217]: https://github.com/yannickcr/eslint-plugin-react/issues/217
 
 ## [3.3.2] - 2015-09-10
