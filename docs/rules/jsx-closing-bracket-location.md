@@ -32,10 +32,22 @@ The following patterns are not considered warnings:
 
 ## Rule Options
 
+There are two ways to configure this rule.
+
+The first form is a string shortcut corresponding to the `location` values specified below. If omitted, it defaults to `"tag-aligned"`.
+
 ```js
-...
-"jsx-closing-bracket-location": [<enabled>, { "location": <string> }]
-...
+"jsx-closing-bracket-location": <enabled> // -> [<enabled>, "tag-aligned"]
+"jsx-closing-bracket-location": [<enabled>, "<location>"]
+```
+
+The second form allows you to distinguish between non-empty and self-closing tags. Both properties are optional, and both default to `"tag-aligned"`.
+
+```js
+"jsx-closing-bracket-location": [<enabled>, {
+  "nonEmpty": "<location>",
+  "selfClosing": "<location>"
+}]
 ```
 
 ### `location`
@@ -46,48 +58,91 @@ Enforced location for the closing bracket.
 * `after-props`: must be placed right after the last prop.
 * `props-aligned`: must be aligned with the last prop.
 
-Default to `tag-aligned`.
+Defaults to `tag-aligned`.
+
+For backward compatibility, you may pass an object `{ "location": <location> }` that is equivalent to the first string shortcut form.
 
 The following patterns are considered warnings:
 
 ```jsx
-// [1, {location: 'tag-aligned'}]
+// 'jsx-closing-bracket-location': 1
+// 'jsx-closing-bracket-location': [1, 'tag-aligned']
 <Hello 
   firstName="John"
   lastName="Smith"
   />;
 
-// [1, {location: 'after-props'}]
+<Say
+  firstName="John"
+  lastName="Smith">
+  Hello
+</Say>;
+
+// 'jsx-closing-bracket-location': [1, 'after-props']
 <Hello 
   firstName="John"
   lastName="Smith"
   />;
 
-// [1, {location: 'props-aligned'}]
+<Say
+  firstName="John"
+  lastName="Smith"
+>
+  Hello
+</Say>;
+
+// 'jsx-closing-bracket-location': [1, 'props-aligned']
 <Hello 
   firstName="John"
   lastName="Smith" />;
+
+<Say
+  firstName="John"
+  lastName="Smith">
+  Hello
+</Say>;
 ```
 
 The following patterns are not considered warnings:
 
 ```jsx
-// [1, {location: 'tag-aligned'}]
+// 'jsx-closing-bracket-location': 1
+// 'jsx-closing-bracket-location': [1, 'tag-aligned']
 <Hello
   firstName="John"
   lastName="Smith"
 />;
 
-// [1, {location: 'after-props'}]
+<Say
+  firstName="John"
+  lastName="Smith"
+>
+  Hello
+</Say>;
+
+// 'jsx-closing-bracket-location': [1, {selfClosing: 'after-props'}]
 <Hello 
   firstName="John"
   lastName="Smith" />;
 
-// [1, {location: 'props-aligned'}]
+<Say
+  firstName="John"
+  lastName="Smith"
+>
+  Hello
+</Say>;
+
+// 'jsx-closing-bracket-location': [1, {selfClosing: 'props-aligned', nonEmpty: 'after-props'}]
 <Hello 
   firstName="John"
   lastName="Smith"
   />;
+
+<Say
+  firstName="John"
+  lastName="Smith">
+  Hello
+</Say>;
 ```
 
 ## When not to use
