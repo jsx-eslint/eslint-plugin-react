@@ -82,6 +82,14 @@ ruleTester.run('no-unused-vars', rule, {
     }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
+        var App;\
+        <App:Hello />',
+      ecmaFeatures: {
+        jsx: true
+      }
+    }, {
+      code: '\
+        /*eslint jsx-uses-vars:1*/\
         class HelloMessage {}\
         <HelloMessage />',
       ecmaFeatures: {
