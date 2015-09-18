@@ -53,6 +53,7 @@ Finally, enable all of the rules that you would like to use.
     "react/jsx-indent-props": 1,
     "react/jsx-max-props-per-line": 1,
     "react/jsx-no-duplicate-props": 1,
+    "react/jsx-no-literals": 1,
     "react/jsx-no-undef": 1,
     "react/jsx-quotes": 1,
     "react/jsx-sort-prop-types": 1,
