@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.4.2] - 2015-09-18
+### Fixed
+* Only display the `jsx-quotes` deprecation warning with the default formatter ([#221][])
+
+[3.4.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.4.1...v3.4.2
+[#221]: https://github.com/yannickcr/eslint-plugin-react/issues/221
+
 ## [3.4.1] - 2015-09-17
 ### Fixed
 * Fix `jsx-quotes` rule deprecation message ([#220][])
