@@ -44,6 +44,14 @@ ruleTester.run('no-direct-mutation-state', rule, {
     ecmaFeatures: {
       jsx: true
     }
+  }, {
+    code: [
+      'var Hello = "foo";',
+      'module.exports = {};'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    }
   }],
 
   invalid: [{
