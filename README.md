@@ -63,6 +63,7 @@ Finally, enable all of the rules that you would like to use.
     "react/no-danger": 1,
     "react/no-did-mount-set-state": 1,
     "react/no-did-update-set-state": 1,
+    "react/no-direct-mutation-state": 1,
     "react/no-multi-comp": 1,
     "react/no-set-state": 1,
     "react/no-unknown-property": 1,
@@ -95,6 +96,7 @@ Finally, enable all of the rules that you would like to use.
 * [no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
 * [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of `setState` in `componentDidMount`
 * [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of `setState` in `componentDidUpdate`
+* [no-direct-mutation-state](docs/rules/no-direct-mutation-state.md): Prevent direct mutation of `this.state`
 * [no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
 * [no-set-state](docs/rules/no-set-state.md): Prevent usage of `setState`
 * [no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property
