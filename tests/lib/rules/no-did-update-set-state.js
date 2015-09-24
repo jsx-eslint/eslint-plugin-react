@@ -77,5 +77,22 @@ ruleTester.run('no-did-update-set-state', rule, {
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
     }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentDidUpdate() {',
+      '    this.setState({',
+      '      name: this.props.name.toUpperCase()',
+      '    });',
+      '  }',
+      '  render() {',
+      '    return <div>Hello {this.state.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Do not use setState in componentDidUpdate'
+    }]
   }]
 });

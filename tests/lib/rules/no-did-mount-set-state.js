@@ -106,6 +106,20 @@ ruleTester.run('no-did-mount-set-state', rule, {
     }]
   }, {
     code: [
+      'class Hello extends React.Component {',
+      '  componentDidMount() {',
+      '    this.setState({',
+      '      data: data',
+      '    });',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Do not use setState in componentDidMount'
+    }]
+  }, {
+    code: [
       'var Hello = React.createClass({',
       '  componentDidMount: function() {',
       '    this.setState({',
@@ -118,6 +132,21 @@ ruleTester.run('no-did-mount-set-state', rule, {
     ecmaFeatures: {
       jsx: true
     },
+    errors: [{
+      message: 'Do not use setState in componentDidMount'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentDidMount() {',
+      '    this.setState({',
+      '      data: data',
+      '    });',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: ['allow-in-func'],
     errors: [{
       message: 'Do not use setState in componentDidMount'
     }]
@@ -141,6 +170,22 @@ ruleTester.run('no-did-mount-set-state', rule, {
     }]
   }, {
     code: [
+      'class Hello extends React.Component {',
+      '  componentDidMount() {',
+      '    someClass.onSomeEvent(function(data) {',
+      '      this.setState({',
+      '        data: data',
+      '      });',
+      '    })',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Do not use setState in componentDidMount'
+    }]
+  }, {
+    code: [
       'var Hello = React.createClass({',
       '  componentDidMount: function() {',
       '    if (true) {',
@@ -159,6 +204,22 @@ ruleTester.run('no-did-mount-set-state', rule, {
     }]
   }, {
     code: [
+      'class Hello extends React.Component {',
+      '  componentDidMount() {',
+      '    if (true) {',
+      '      this.setState({',
+      '        data: data',
+      '      });',
+      '    }',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Do not use setState in componentDidMount'
+    }]
+  }, {
+    code: [
       'var Hello = React.createClass({',
       '  componentDidMount: function() {',
       '    someClass.onSomeEvent((data) => this.setState({data: data}));',
@@ -169,6 +230,18 @@ ruleTester.run('no-did-mount-set-state', rule, {
     ecmaFeatures: {
       jsx: true
     },
+    errors: [{
+      message: 'Do not use setState in componentDidMount'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentDidMount() {',
+      '    someClass.onSomeEvent((data) => this.setState({data: data}));',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
     errors: [{
       message: 'Do not use setState in componentDidMount'
     }]
