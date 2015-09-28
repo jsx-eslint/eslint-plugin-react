@@ -9,7 +9,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * Add `forbid-prop-types` rule ([#215][] @pwmckenna)
 
 ### Fixed
-* Fix no-did-mount/update-set-state rules for ES6 classes
+* Fix no-did-mount/update-set-state rules, these rules were not working on ES6 classes
 
 ### Changed
 * Update dependencies
