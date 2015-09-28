@@ -23,11 +23,11 @@
   "homepage": "https://github.com/yannickcr/eslint-plugin-react",
   "bugs": "https://github.com/yannickcr/eslint-plugin-react/issues",
   "devDependencies": {
-    "babel-eslint": "4.1.2",
+    "babel-eslint": "4.1.3",
     "coveralls": "2.11.4",
-    "eslint": "1.4.3",
-    "istanbul": "0.3.20",
-    "mocha": "2.3.2"
+    "eslint": "1.5.1",
+    "istanbul": "0.3.21",
+    "mocha": "2.3.3"
   },
   "keywords": [
     "eslint",
