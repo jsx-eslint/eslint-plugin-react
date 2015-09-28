@@ -3,6 +3,24 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.5.0] - 2015-09-28
+### Added
+* Add `no-direct-mutation-state` rule ([#133][], [#201][] @petersendidit)
+* Add `forbid-prop-types` rule ([#215][] @pwmckenna)
+
+### Fixed
+* Fix no-did-mount/update-set-state rules for ES6 classes
+
+### Changed
+* Update dependencies
+* Documentation improvements ([#222][] @Andersos)
+
+[3.5.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.4.2...v3.5.0
+[#133]: https://github.com/yannickcr/eslint-plugin-react/issues/133
+[#201]: https://github.com/yannickcr/eslint-plugin-react/issues/201
+[#215]: https://github.com/yannickcr/eslint-plugin-react/issues/215
+[#222]: https://github.com/yannickcr/eslint-plugin-react/pull/222
+
 ## [3.4.2] - 2015-09-18
 ### Fixed
 * Only display the `jsx-quotes` deprecation warning with the default formatter ([#221][])
