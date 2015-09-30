@@ -3,6 +3,19 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.5.1] - 2015-10-01
+### Fixed
+* Fix `no-direct-mutation-state` to report only in React components ([#229][])
+* Fix `forbid-prop-types` for arrayOf and instanceOf ([#230][])
+
+### Changed
+* Documentation improvements ([#232][] @edge)
+
+[3.5.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.5.0...v3.5.1
+[#229]: https://github.com/yannickcr/eslint-plugin-react/issues/229
+[#230]: https://github.com/yannickcr/eslint-plugin-react/issues/230
+[#232]: https://github.com/yannickcr/eslint-plugin-react/pull/232
+
 ## [3.5.0] - 2015-09-28
 ### Added
 * Add `no-direct-mutation-state` rule ([#133][], [#201][] @petersendidit)
