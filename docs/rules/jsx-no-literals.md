@@ -1,6 +1,6 @@
 # Prevent usage of unwrapped JSX strings (jsx-no-literals)
 
-In JSX when using a literal string you can wrap it in a JXS container `{'TEXT'}`.
+In JSX when using a literal string you can wrap it in a JSX container `{'TEXT'}`.
 This rules requies that you wrap all literal strings.
 Prevents any odd artifacts of highlighters if you unwrapped string contains a enclsoing character like `'` in contractions and enforces consistency.
 
