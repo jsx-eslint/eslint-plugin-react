@@ -176,6 +176,21 @@ ruleTester.run('forbid-prop-types', rule, {
       experimentalObjectRestSpread: true,
       jsx: true
     }
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  propTypes: {',
+      '    retailer: PropTypes.instanceOf(Map).isRequired,',
+      '    requestRetailer: PropTypes.func.isRequired',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    }
   }],
 
   invalid: [{
@@ -421,5 +436,24 @@ ruleTester.run('forbid-prop-types', rule, {
       jsx: true
     },
     errors: 2
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  propTypes: {',
+      '    retailer: PropTypes.instanceOf(Map).isRequired,',
+      '    requestRetailer: PropTypes.func.isRequired',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    },
+    options: [{
+      forbid: ['instanceOf']
+    }],
+    errors: 1
   }]
 });
