@@ -52,6 +52,20 @@ ruleTester.run('no-direct-mutation-state', rule, {
     ecmaFeatures: {
       jsx: true
     }
+  }, {
+    code: [
+      'class Hello {',
+      '  getFoo() {',
+      '    this.state.foo = \'bar\'',
+      '    return this.state.foo;',
+      '  }',
+      '}'
+    ].join('\n'),
+    ecmaFeatures: {
+      classes: true,
+      modules: true,
+      jsx: true
+    }
   }],
 
   invalid: [{
@@ -98,6 +112,28 @@ ruleTester.run('no-direct-mutation-state', rule, {
     },
     errors: [{
       message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  render: function() {',
+      '    this.state.person.name.first = "bar"',
+      '    this.state.person.name.last = "baz"',
+      '    return <div>Hello</div>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    },
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().',
+      line: 3,
+      column: 5
+    }, {
+      message: 'Do not mutate state directly. Use setState().',
+      line: 4,
+      column: 5
     }]
   }
   /**
