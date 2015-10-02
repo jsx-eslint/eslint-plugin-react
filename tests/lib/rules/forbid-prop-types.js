@@ -455,5 +455,24 @@ ruleTester.run('forbid-prop-types', rule, {
       forbid: ['instanceOf']
     }],
     errors: 1
+  }, {
+    code: [
+      'var object = React.PropTypes.object;',
+      'var Hello = React.createClass({',
+      '  propTypes: {',
+      '    retailer: object,',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    },
+    options: [{
+      forbid: ['object']
+    }],
+    errors: 1
   }]
 });
