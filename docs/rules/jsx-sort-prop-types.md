@@ -78,13 +78,32 @@ class Component extends React.Component {
 
 ```js
 ...
-"jsx-sort-prop-types": [<enabled>, { "ignoreCase": <boolean> }]
+"jsx-sort-prop-types": [<enabled>, {
+  "callbacksLast": <boolean>,
+  "ignoreCase": <boolean>
+}]
 ...
 ```
 
 ### `ignoreCase`
 
 When `true` the rule ignores the case-sensitivity of the declarations order.
+
+### `callbacksLast`
+
+When `true`, prop types for props beginning with "on" must be listed after all other props:
+
+```js
+var Component = React.createClass({
+  propTypes: {
+    a: React.PropTypes.number,
+    z: React.PropTypes.string,
+    onBar: React.PropTypes.func,
+    onFoo: React.PropTypes.func,
+  },
+...
+});
+```
 
 ## When not to use
 

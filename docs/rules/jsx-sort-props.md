@@ -24,7 +24,10 @@ The following patterns are considered okay and do not cause warnings:
 
 ```js
 ...
-"jsx-sort-props": [<enabled>, { "ignoreCase": <boolean> }]
+"jsx-sort-props": [<enabled>, {
+  "callbacksLast": <boolean>,
+  "ignoreCase": <boolean>
+}]
 ...
 ```
 
