@@ -38,6 +38,14 @@ The following patterns are considered okay and do not cause warnings:
 <Hello name="John" Number="2" />;
 ```
 
+### `callbacksLast`
+
+When `true`, callbacks must be listed after all other props:
+
+```js
+<Hello tel={5555555} onClick={this._handleClick} />
+```
+
 ## When not to use
 
 This rule is a formatting preference and not following it won't negatively affect the quality of your code. If alphabetizing props isn't a part of your coding standards, then you can leave this rule off.
