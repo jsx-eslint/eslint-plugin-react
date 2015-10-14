@@ -208,6 +208,69 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       experimentalObjectRestSpread: true,
       jsx: true
     }
+  }, {
+    code: [
+      'var First = React.createClass({',
+      '  propTypes: {',
+      '    a: React.PropTypes.any,',
+      '    z: React.PropTypes.string,',
+      '    onBar: React.PropTypes.func,',
+      '    onFoo: React.PropTypes.func',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      callbacksLast: true
+    }],
+    ecmaFeatures: {
+      jsx: true
+    }
+  }, {
+    code: [
+      'class Component extends React.Component {',
+      '  static propTypes = {',
+      '    a: React.PropTypes.any,',
+      '    z: React.PropTypes.string,',
+      '    onBar: React.PropTypes.func,',
+      '    onFoo: React.PropTypes.func',
+      '  }',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{
+      callbacksLast: true
+    }],
+    parser: 'babel-eslint',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    }
+  }, {
+    code: [
+      'class First extends React.Component {',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}',
+      'First.propTypes = {',
+      '    a: React.PropTypes.any,',
+      '    z: React.PropTypes.string,',
+      '    onBar: React.PropTypes.func,',
+      '    onFoo: React.PropTypes.func',
+      '};'
+    ].join('\n'),
+    options: [{
+      callbacksLast: true
+    }],
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    }
   }],
 
   invalid: [{
@@ -364,5 +427,112 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       jsx: true
     },
     errors: 2
+  }, {
+    code: [
+      'var First = React.createClass({',
+      '  propTypes: {',
+      '    a: React.PropTypes.any,',
+      '    z: React.PropTypes.string,',
+      '    onFoo: React.PropTypes.func,',
+      '    onBar: React.PropTypes.func',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      callbacksLast: true
+    }],
+    ecmaFeatures: {
+      jsx: true
+    },
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 6,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'class Component extends React.Component {',
+      '  static propTypes = {',
+      '    a: React.PropTypes.any,',
+      '    z: React.PropTypes.string,',
+      '    onFoo: React.PropTypes.func,',
+      '    onBar: React.PropTypes.func',
+      '  }',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{
+      callbacksLast: true
+    }],
+    parser: 'babel-eslint',
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    },
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 6,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'class First extends React.Component {',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}',
+      'First.propTypes = {',
+      '    a: React.PropTypes.any,',
+      '    z: React.PropTypes.string,',
+      '    onFoo: React.PropTypes.func,',
+      '    onBar: React.PropTypes.func',
+      '};'
+    ].join('\n'),
+    options: [{
+      callbacksLast: true
+    }],
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    },
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 10,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'var First = React.createClass({',
+      '  propTypes: {',
+      '    a: React.PropTypes.any,',
+      '    onBar: React.PropTypes.func,',
+      '    onFoo: React.PropTypes.func,',
+      '    z: React.PropTypes.string',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      callbacksLast: true
+    }],
+    ecmaFeatures: {
+      jsx: true
+    },
+    errors: [{
+      message: 'Callback prop types must be listed after all other prop types',
+      line: 5,
+      column: 5,
+      type: 'Property'
+    }]
   }]
 });

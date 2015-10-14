@@ -24,7 +24,10 @@ The following patterns are considered okay and do not cause warnings:
 
 ```js
 ...
-"jsx-sort-props": [<enabled>, { "ignoreCase": <boolean> }]
+"jsx-sort-props": [<enabled>, {
+  "callbacksLast": <boolean>,
+  "ignoreCase": <boolean>
+}]
 ...
 ```
 
@@ -36,6 +39,14 @@ The following patterns are considered okay and do not cause warnings:
 
 ```js
 <Hello name="John" Number="2" />;
+```
+
+### `callbacksLast`
+
+When `true`, callbacks must be listed after all other props:
+
+```js
+<Hello tel={5555555} onClick={this._handleClick} />
 ```
 
 ## When not to use
