@@ -73,7 +73,8 @@ Finally, enable all of the rules that you would like to use.
     "react/require-extension": 1,
     "react/self-closing-comp": 1,
     "react/sort-comp": 1,
-    "react/wrap-multilines": 1
+    "react/wrap-multilines": 1,
+    "prefer-es6-class": 1,
   }
 }
 ```
@@ -108,6 +109,7 @@ Finally, enable all of the rules that you would like to use.
 * [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
 * [sort-comp](docs/rules/sort-comp.md): Enforce component methods order
 * [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX
+* [prefer-es6-class](docs/rules/prefer-es6-class.md): Prefer es6 class instead of createClass for React Components
 
 ## To Do
 
