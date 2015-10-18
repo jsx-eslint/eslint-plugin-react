@@ -3,6 +3,34 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.6.0] - 2015-10-18
+### Added
+* Add support for stateless function components to `display-name` and `prop-types` ([#237][])
+* Add callbacksLast option to `jsx-sort-props` and `jsx-sort-prop-types` ([#242][] @Daniel15)
+* Add `prefer-es6-class` rule ([#247][] @hamiltondanielb)
+
+### Fixed
+* Fix `forbid-prop-types` crash with destructured PropTypes ([#230][] @epmatsw)
+* Fix `forbid-prop-types` to do not modify AST directly ([#249][] @rhysd)
+* Fix `prop-types` crash with empty destructuring ([#251][])
+* Fix `prop-types` to not validate computed keys in destructuring ([#236][])
+
+### Changed
+* Update dependencies
+* Improve components detection ([#233][])
+* Documentation improvements ([#248][] @dguo)
+
+[3.6.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.5.1...v3.6.0
+[#237]: https://github.com/yannickcr/eslint-plugin-react/issues/237
+[#242]: https://github.com/yannickcr/eslint-plugin-react/pull/242
+[#247]: https://github.com/yannickcr/eslint-plugin-react/issues/247
+[#230]: https://github.com/yannickcr/eslint-plugin-react/issues/230
+[#249]: https://github.com/yannickcr/eslint-plugin-react/issues/249
+[#251]: https://github.com/yannickcr/eslint-plugin-react/issues/251
+[#236]: https://github.com/yannickcr/eslint-plugin-react/issues/236
+[#233]: https://github.com/yannickcr/eslint-plugin-react/issues/233
+[#248]: https://github.com/yannickcr/eslint-plugin-react/pull/248
+
 ## [3.5.1] - 2015-10-01
 ### Fixed
 * Fix `no-direct-mutation-state` to report only in React components ([#229][])
