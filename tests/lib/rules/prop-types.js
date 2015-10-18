@@ -771,6 +771,17 @@ ruleTester.run('prop-types', rule, {
       ecmaFeatures: {
         jsx: true
       }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    var foo = \'fullname\';',
+        '    var { [foo]: firstname } = this.props;',
+        '    return <div>Hello {firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
