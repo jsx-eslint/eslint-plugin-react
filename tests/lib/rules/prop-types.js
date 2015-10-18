@@ -756,6 +756,21 @@ ruleTester.run('prop-types', rule, {
       ecmaFeatures: {
         jsx: true
       }
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    const {} = this.props;',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      env: {
+        es6: true
+      },
+      ecmaFeatures: {
+        jsx: true
+      }
     }
   ],
 
