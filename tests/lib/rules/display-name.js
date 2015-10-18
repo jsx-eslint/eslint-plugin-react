@@ -169,6 +169,15 @@ ruleTester.run('display-name', rule, {
       experimentalObjectRestSpread: true,
       jsx: true
     }
+  }, {
+    code: [
+      'export default class {',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
@@ -237,16 +246,31 @@ ruleTester.run('display-name', rule, {
     }]
   }, {
     code: [
-      'export default class {',
-      '  render() {',
-      '    return <div>Hello {this.props.name}</div>;',
-      '  }',
+      'var Hello = function() {',
+      '  return <div>Hello {this.props.name}</div>;',
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    options: [{
-      acceptTranspilerName: true
-    }],
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: [
+      'function Hello() {',
+      '  return <div>Hello {this.props.name}</div>;',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Hello component definition is missing display name'
+    }]
+  }, {
+    code: [
+      'var Hello = () => {',
+      '  return <div>Hello {this.props.name}</div>;',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
     errors: [{
       message: 'Component definition is missing display name'
     }]

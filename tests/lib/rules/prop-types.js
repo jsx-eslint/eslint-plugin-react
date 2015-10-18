@@ -1167,6 +1167,49 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {message: '\'firstname\' is missing in props validation for Hello'}
       ]
+    }, {
+      code: [
+        'var Hello = function(props) {',
+        '  return <div>Hello {props.name}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'name\' is missing in props validation'
+      }]
+    }, {
+      code: [
+        'function Hello(props) {',
+        '  return <div>Hello {props.name}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'name\' is missing in props validation for Hello'
+      }]
+    }, {
+      code: [
+        'var Hello = (props) => {',
+        '  return <div>Hello {props.name}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'name\' is missing in props validation'
+      }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    var props = {firstname: \'John\'};',
+        '    return <div>Hello {props.firstname} {this.props.lastname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'lastname\' is missing in props validation for Hello'}
+      ]
     }
   ]
 });
