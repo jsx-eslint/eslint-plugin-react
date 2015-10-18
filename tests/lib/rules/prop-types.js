@@ -795,6 +795,16 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // Should not be detected as a component
+      code: [
+        'HelloJohn.prototype.render = function() {',
+        '  return React.createElement(Hello, {',
+        '    name: this.props.firstname',
+        '  });',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
