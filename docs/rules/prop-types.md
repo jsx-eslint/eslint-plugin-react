@@ -83,3 +83,13 @@ anything that can be rendered: numbers, strings, elements or an array containing
 these types.
 
 Since 2.0.0 children is no longer ignored for props validation.
+
+## About component detection
+
+For this rule to work we need to detect React components, this could be very hard since components could be declared in a lot of ways.
+
+For now we should detect components created with:
+
+* `React.createClass()`
+* an ES6 class that inherit from `React.Component` or `Component`
+* a stateless function that return JSX or the result of a `React.createElement` call.
