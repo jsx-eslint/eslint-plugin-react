@@ -29,7 +29,8 @@ module.exports = {
     'jsx-indent-props': require('./lib/rules/jsx-indent-props'),
     'jsx-closing-bracket-location': require('./lib/rules/jsx-closing-bracket-location'),
     'no-direct-mutation-state': require('./lib/rules/no-direct-mutation-state'),
-    'forbid-prop-types': require('./lib/rules/forbid-prop-types')
+    'forbid-prop-types': require('./lib/rules/forbid-prop-types'),
+    'prefer-es6-class': require('./lib/rules/prefer-es6-class')
   },
   rulesConfig: {
     'jsx-uses-react': 0,
@@ -59,6 +60,7 @@ module.exports = {
     'jsx-indent-props': 0,
     'jsx-closing-bracket-location': 0,
     'no-direct-mutation-state': 0,
-    'forbid-prop-types': 0
+    'forbid-prop-types': 0,
+    'prefer-es6-class': 0
   }
 };
