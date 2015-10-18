@@ -134,6 +134,21 @@ ruleTester.run('forbid-prop-types', rule, {
     }
   }, {
     code: [
+      'class First extends React.Component {',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}',
+      'First.propTypes = {',
+      '  elem: PropTypes.instanceOf(HTMLElement)',
+      '};'
+    ].join('\n'),
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    }
+  }, {
+    code: [
       'class Hello extends React.Component {',
       '  render() {',
       '    return <div>Hello</div>;',
