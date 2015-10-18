@@ -782,6 +782,19 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  constructor(props, context) {',
+        '    super(props, context)',
+        '    this.state = { status: props.source.uri }',
+        '  }',
+        '  static propTypes = {',
+        '    source: PropTypes.object',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
@@ -1235,6 +1248,33 @@ ruleTester.run('prop-types', rule, {
       parser: 'babel-eslint',
       errors: [
         {message: '\'lastname\' is missing in props validation for Hello'}
+      ]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  constructor(props, context) {',
+        '    super(props, context)',
+        '    this.state = { status: props.source }',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'source\' is missing in props validation for Hello'}
+      ]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  constructor(props, context) {',
+        '    super(props, context)',
+        '    this.state = { status: props.source.uri }',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'source\' is missing in props validation for Hello'},
+        {message: '\'source.uri\' is missing in props validation for Hello'}
       ]
     }
   ]
