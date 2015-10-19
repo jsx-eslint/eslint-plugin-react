@@ -178,6 +178,124 @@ ruleTester.run('display-name', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint'
+  }, {
+    code: [
+      'var Hello = function() {',
+      '  return <div>Hello {this.props.name}</div>;',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      acceptTranspilerName: true
+    }]
+  }, {
+    code: [
+      'function Hello() {',
+      '  return <div>Hello {this.props.name}</div>;',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      acceptTranspilerName: true
+    }]
+  }, {
+    code: [
+      'var Hello = () => {',
+      '  return <div>Hello {this.props.name}</div>;',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      acceptTranspilerName: true
+    }]
+  }, {
+    code: [
+      'module.exports = function Hello() {',
+      '  return <div>Hello {this.props.name}</div>;',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      acceptTranspilerName: true
+    }]
+  }, {
+    code: [
+      'function Hello() {',
+      '  return <div>Hello {this.props.name}</div>;',
+      '}',
+      'Hello.displayName = \'Hello\';'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      'var Hello = () => {',
+      '  return <div>Hello {this.props.name}</div>;',
+      '}',
+      'Hello.displayName = \'Hello\';'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      'var Hello = function() {',
+      '  return <div>Hello {this.props.name}</div>;',
+      '}',
+      'Hello.displayName = \'Hello\';'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      'var Mixins = {',
+      '  Greetings: {',
+      '    Hello: function() {',
+      '      return <div>Hello {this.props.name}</div>;',
+      '    }',
+      '  }',
+      '}',
+      'Mixins.Greetings.Hello.displayName = \'Hello\';'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  render: function() {',
+      '    return <div>{this._renderHello()}</div>;',
+      '  },',
+      '  _renderHello: function() {',
+      '    return <span>Hello {this.props.name}</span>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      acceptTranspilerName: true
+    }]
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  displayName: \'Hello\',',
+      '  render: function() {',
+      '    return <div>{this._renderHello()}</div>;',
+      '  },',
+      '  _renderHello: function() {',
+      '    return <span>Hello {this.props.name}</span>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      'const Mixin = {',
+      '  Button() {',
+      '    return (',
+      '      <button />',
+      '    );',
+      '  }',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      acceptTranspilerName: true
+    }]
   }],
 
   invalid: [{
@@ -192,7 +310,7 @@ ruleTester.run('display-name', rule, {
       jsx: false
     },
     errors: [{
-      message: 'Component definition is missing display name'
+      message: 'Hello component definition is missing display name'
     }]
   }, {
     code: [
@@ -206,7 +324,7 @@ ruleTester.run('display-name', rule, {
       jsx: true
     },
     errors: [{
-      message: 'Component definition is missing display name'
+      message: 'Hello component definition is missing display name'
     }]
   }, {
     code: [
@@ -242,23 +360,44 @@ ruleTester.run('display-name', rule, {
       jsx: true
     },
     errors: [{
-      message: 'Component definition is missing display name'
+      message: 'HelloComponent component definition is missing display name'
     }]
   }, {
     code: [
-      'var Hello = function() {',
+      'module.exports = () => {',
       '  return <div>Hello {this.props.name}</div>;',
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    options: [{
+      acceptTranspilerName: true
+    }],
     errors: [{
       message: 'Component definition is missing display name'
     }]
   }, {
     code: [
-      'function Hello() {',
+      'module.exports = function() {',
       '  return <div>Hello {this.props.name}</div>;',
       '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      acceptTranspilerName: true
+    }],
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  _renderHello: function() {',
+      '    return <span>Hello {this.props.name}</span>;',
+      '  },',
+      '  render: function() {',
+      '    return <div>{this._renderHello()}</div>;',
+      '  }',
+      '});'
     ].join('\n'),
     parser: 'babel-eslint',
     errors: [{
@@ -266,13 +405,17 @@ ruleTester.run('display-name', rule, {
     }]
   }, {
     code: [
-      'var Hello = () => {',
-      '  return <div>Hello {this.props.name}</div>;',
-      '}'
+      'const Mixin = {',
+      '  Button() {',
+      '    return (',
+      '      <button />',
+      '    );',
+      '  }',
+      '};'
     ].join('\n'),
     parser: 'babel-eslint',
     errors: [{
-      message: 'Component definition is missing display name'
+      message: 'Mixin.Button component definition is missing display name'
     }]
   }
 ]});

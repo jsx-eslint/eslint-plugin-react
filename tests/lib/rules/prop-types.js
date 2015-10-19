@@ -821,7 +821,7 @@ ruleTester.run('prop-types', rule, {
         jsx: false
       },
       errors: [{
-        message: '\'name\' is missing in props validation',
+        message: '\'name\' is missing in props validation for Hello',
         line: 3,
         column: 54,
         type: 'Identifier'
@@ -838,7 +838,7 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [{
-        message: '\'name\' is missing in props validation',
+        message: '\'name\' is missing in props validation for Hello',
         line: 3,
         column: 35,
         type: 'Identifier'
@@ -922,9 +922,9 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [{
-        message: '\'propWithoutTypeDefinition\' is missing in props validation'
+        message: '\'propWithoutTypeDefinition\' is missing in props validation for Hello'
       }, {
-        message: '\'name\' is missing in props validation'
+        message: '\'name\' is missing in props validation for Hello2'
       }]
     }, {
       code: [
@@ -1224,7 +1224,7 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [{
-        message: '\'name\' is missing in props validation'
+        message: '\'name\' is missing in props validation for Hello'
       }]
     }, {
       code: [
@@ -1244,7 +1244,7 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [{
-        message: '\'name\' is missing in props validation'
+        message: '\'name\' is missing in props validation for Hello'
       }]
     }, {
       code: [
