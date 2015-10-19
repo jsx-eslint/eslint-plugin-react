@@ -74,7 +74,7 @@ Finally, enable all of the rules that you would like to use.
     "react/self-closing-comp": 1,
     "react/sort-comp": 1,
     "react/wrap-multilines": 1,
-    "prefer-es6-class": 1,
+    "react/prefer-es6-class": 1,
   }
 }
 ```
