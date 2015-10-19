@@ -68,13 +68,13 @@ Finally, enable all of the rules that you would like to use.
     "react/no-multi-comp": 1,
     "react/no-set-state": 1,
     "react/no-unknown-property": 1,
+    "react/prefer-es6-class": 1,
     "react/prop-types": 1,
     "react/react-in-jsx-scope": 1,
     "react/require-extension": 1,
     "react/self-closing-comp": 1,
     "react/sort-comp": 1,
-    "react/wrap-multilines": 1,
-    "react/prefer-es6-class": 1,
+    "react/wrap-multilines": 1
   }
 }
 ```
@@ -103,13 +103,13 @@ Finally, enable all of the rules that you would like to use.
 * [no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
 * [no-set-state](docs/rules/no-set-state.md): Prevent usage of `setState`
 * [no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property
+* [prefer-es6-class](docs/rules/prefer-es6-class.md): Prefer es6 class instead of createClass for React Components
 * [prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
 * [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing `React` when using JSX
 * [require-extension](docs/rules/require-extension.md): Restrict file extensions that may be required
 * [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
 * [sort-comp](docs/rules/sort-comp.md): Enforce component methods order
 * [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX
-* [prefer-es6-class](docs/rules/prefer-es6-class.md): Prefer es6 class instead of createClass for React Components
 
 ## To Do
 
