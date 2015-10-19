@@ -3,6 +3,17 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.6.3] - 2015-10-20
+### Fixed
+* Fix `display-name` for stateless components ([#256][]) 
+* Fix `prop-types` props validation in constructor ([#259][]) 
+* Fix typo in README ([#261][] @chiedojohn)
+
+[3.6.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.6.2...v3.6.3
+[#256]: https://github.com/yannickcr/eslint-plugin-react/issues/256
+[#259]: https://github.com/yannickcr/eslint-plugin-react/issues/259
+[#261]: https://github.com/yannickcr/eslint-plugin-react/pull/261
+
 ## [3.6.2] - 2015-10-18
 ### Fixed
 * Fix wrong prop-types detection ([#255][])
