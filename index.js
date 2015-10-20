@@ -30,7 +30,8 @@ module.exports = {
     'jsx-closing-bracket-location': require('./lib/rules/jsx-closing-bracket-location'),
     'no-direct-mutation-state': require('./lib/rules/no-direct-mutation-state'),
     'forbid-prop-types': require('./lib/rules/forbid-prop-types'),
-    'prefer-es6-class': require('./lib/rules/prefer-es6-class')
+    'prefer-es6-class': require('./lib/rules/prefer-es6-class'),
+    'state-usage': require('./lib/rules/state-usage')
   },
   rulesConfig: {
     'jsx-uses-react': 0,
@@ -61,6 +62,7 @@ module.exports = {
     'jsx-closing-bracket-location': 0,
     'no-direct-mutation-state': 0,
     'forbid-prop-types': 0,
-    'prefer-es6-class': 0
+    'prefer-es6-class': 0,
+    'state-usage': 0
   }
 };
