@@ -846,6 +846,29 @@ ruleTester.run('prop-types', rule, {
         'module.exports = HelloComponent();'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'class DynamicHello extends Component {',
+        '  render() {',
+        '    const {firstname} = this.props;',
+        '    class Hello extends Component {',
+        '      render() {',
+        '        const {name} = this.props;',
+        '        return <div>Hello {name}</div>;',
+        '      }',
+        '    }',
+        '    Hello.propTypes = {',
+        '      name: PropTypes.string',
+        '    };',
+        '    Hello = connectReduxForm({name: firstname})(Hello);',
+        '    return <Hello />;',
+        '  }',
+        '}',
+        'DynamicHello.propTypes = {',
+        '  firstname: PropTypes.string,',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
@@ -1384,6 +1407,27 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
+        {message: '\'name\' is missing in props validation for Hello'}
+      ]
+    }, {
+      code: [
+        'class DynamicHello extends Component {',
+        '  render() {',
+        '    const {firstname} = this.props;',
+        '    class Hello extends Component {',
+        '      render() {',
+        '        const {name} = this.props;',
+        '        return <div>Hello {name}</div>;',
+        '      }',
+        '    }',
+        '    Hello = connectReduxForm({name: firstname})(Hello);',
+        '    return <Hello />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'firstname\' is missing in props validation for DynamicHello'},
         {message: '\'name\' is missing in props validation for Hello'}
       ]
     }
