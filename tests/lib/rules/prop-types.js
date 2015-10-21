@@ -818,6 +818,34 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'function HelloComponent() {',
+        '  class Hello extends React.Component {',
+        '    render() {',
+        '      return <div>Hello {this.props.name}</div>;',
+        '    }',
+        '  }',
+        '  Hello.propTypes = { name: React.PropTypes.string };',
+        '  return Hello;',
+        '}',
+        'module.exports = HelloComponent();'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'function HelloComponent() {',
+        '  var Hello = React.createClass({',
+        '    propTypes: { name: React.PropTypes.string },',
+        '    render: function() {',
+        '      return <div>Hello {this.props.name}</div>;',
+        '    }',
+        '  });',
+        '  return Hello;',
+        '}',
+        'module.exports = HelloComponent();'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
@@ -1325,6 +1353,38 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {message: '\'source\' is missing in props validation for Hello'},
         {message: '\'source.uri\' is missing in props validation for Hello'}
+      ]
+    }, {
+      code: [
+        'function HelloComponent() {',
+        '  class Hello extends React.Component {',
+        '    render() {',
+        '      return <div>Hello {this.props.name}</div>;',
+        '    }',
+        '  }',
+        '  return Hello;',
+        '}',
+        'module.exports = HelloComponent();'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'name\' is missing in props validation for Hello'}
+      ]
+    }, {
+      code: [
+        'function HelloComponent() {',
+        '  var Hello = React.createClass({',
+        '    render: function() {',
+        '      return <div>Hello {this.props.name}</div>;',
+        '    }',
+        '  });',
+        '  return Hello;',
+        '}',
+        'module.exports = HelloComponent();'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'name\' is missing in props validation for Hello'}
       ]
     }
   ]
