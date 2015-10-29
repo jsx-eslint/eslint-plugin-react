@@ -55,6 +55,7 @@ The second form allows you to distinguish between non-empty and self-closing tag
 Enforced location for the closing bracket.
 
 * `tag-aligned`: must be aligned with the opening tag.
+* `line-aligned`: must be aligned with the line containing the opening tag.
 * `after-props`: must be placed right after the last prop.
 * `props-aligned`: must be aligned with the last prop.
 
@@ -67,6 +68,7 @@ The following patterns are considered warnings:
 ```jsx
 // 'jsx-closing-bracket-location': 1
 // 'jsx-closing-bracket-location': [1, 'tag-aligned']
+// 'jsx-closing-bracket-location': [1, 'line-aligned']
 <Hello 
   firstName="John"
   lastName="Smith"
@@ -77,6 +79,37 @@ The following patterns are considered warnings:
   lastName="Smith">
   Hello
 </Say>;
+
+// 'jsx-closing-bracket-location': 1
+// 'jsx-closing-bracket-location': [1, 'tag-aligned']
+var x = <Hello
+  firstName="John"
+  lastName="Smith"
+/>;
+
+var x = function() {
+  return <Say
+    firstName="John"
+    lastName="Smith"
+  >
+    Hello
+  </Say>;
+};
+
+// 'jsx-closing-bracket-location': [1, 'line-aligned']
+var x = <Hello
+  firstName="John"
+  lastName="Smith"
+        />;
+
+var x = function() {
+  return <Say
+    firstName="John"
+    lastName="Smith"
+         >
+    Hello
+         </Say>;
+};
 
 // 'jsx-closing-bracket-location': [1, 'after-props']
 <Hello 
@@ -108,6 +141,7 @@ The following patterns are not considered warnings:
 ```jsx
 // 'jsx-closing-bracket-location': 1
 // 'jsx-closing-bracket-location': [1, 'tag-aligned']
+// 'jsx-closing-bracket-location': [1, 'line-aligned']
 <Hello
   firstName="John"
   lastName="Smith"
@@ -119,6 +153,37 @@ The following patterns are not considered warnings:
 >
   Hello
 </Say>;
+
+// 'jsx-closing-bracket-location': 1
+// 'jsx-closing-bracket-location': [1, 'tag-aligned']
+var x = <Hello
+  firstName="John"
+  lastName="Smith"
+        />;
+
+var x = function() {
+  return <Say
+    firstName="John"
+    lastName="Smith"
+         >
+    Hello
+         </Say>;
+};
+
+// 'jsx-closing-bracket-location': [1, 'line-aligned']
+var x = <Hello
+  firstName="John"
+  lastName="Smith"
+/>;
+
+var x = function() {
+  return <Say
+    firstName="John"
+    lastName="Smith"
+  >
+    Hello
+  </Say>;
+};
 
 // 'jsx-closing-bracket-location': [1, {selfClosing: 'after-props'}]
 <Hello 
