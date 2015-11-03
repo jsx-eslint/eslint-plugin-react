@@ -296,7 +296,20 @@ ruleTester.run('display-name', rule, {
     options: [{
       acceptTranspilerName: true
     }]
-  }],
+  }, {
+    code: [
+      'var obj = {',
+      '  pouf: function() {',
+      '    return any',
+      '  }',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      acceptTranspilerName: true
+    }]
+  }
+],
 
   invalid: [{
     code: [
@@ -310,7 +323,7 @@ ruleTester.run('display-name', rule, {
       jsx: false
     },
     errors: [{
-      message: 'Hello component definition is missing display name'
+      message: 'Component definition is missing display name'
     }]
   }, {
     code: [
@@ -324,7 +337,7 @@ ruleTester.run('display-name', rule, {
       jsx: true
     },
     errors: [{
-      message: 'Hello component definition is missing display name'
+      message: 'Component definition is missing display name'
     }]
   }, {
     code: [
@@ -339,7 +352,7 @@ ruleTester.run('display-name', rule, {
       jsx: true
     },
     errors: [{
-      message: 'Hello component definition is missing display name'
+      message: 'Component definition is missing display name'
     }]
   }, {
     code: [
@@ -360,7 +373,7 @@ ruleTester.run('display-name', rule, {
       jsx: true
     },
     errors: [{
-      message: 'HelloComponent component definition is missing display name'
+      message: 'Component definition is missing display name'
     }]
   }, {
     code: [
@@ -401,7 +414,7 @@ ruleTester.run('display-name', rule, {
     ].join('\n'),
     parser: 'babel-eslint',
     errors: [{
-      message: 'Hello component definition is missing display name'
+      message: 'Component definition is missing display name'
     }]
   }, {
     code: [
@@ -415,7 +428,7 @@ ruleTester.run('display-name', rule, {
     ].join('\n'),
     parser: 'babel-eslint',
     errors: [{
-      message: 'Mixin.Button component definition is missing display name'
+      message: 'Component definition is missing display name'
     }]
   }
 ]});

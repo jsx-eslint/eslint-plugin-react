@@ -885,7 +885,7 @@ ruleTester.run('prop-types', rule, {
         jsx: false
       },
       errors: [{
-        message: '\'name\' is missing in props validation for Hello',
+        message: '\'name\' is missing in props validation',
         line: 3,
         column: 54,
         type: 'Identifier'
@@ -902,7 +902,7 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [{
-        message: '\'name\' is missing in props validation for Hello',
+        message: '\'name\' is missing in props validation',
         line: 3,
         column: 35,
         type: 'Identifier'
@@ -920,7 +920,7 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [{
-        message: '\'name\' is missing in props validation for Hello',
+        message: '\'name\' is missing in props validation',
         line: 3,
         column: 35,
         type: 'Identifier'
@@ -941,7 +941,7 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [{
-        message: '\'lastname\' is missing in props validation for Hello'
+        message: '\'lastname\' is missing in props validation'
       }]
     }, {
       code: [
@@ -964,7 +964,7 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [{
-        message: '\'name\' is missing in props validation for HelloBis'
+        message: '\'name\' is missing in props validation'
       }]
     }, {
       code: [
@@ -986,9 +986,9 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [{
-        message: '\'propWithoutTypeDefinition\' is missing in props validation for Hello'
+        message: '\'propWithoutTypeDefinition\' is missing in props validation'
       }, {
-        message: '\'name\' is missing in props validation for Hello2'
+        message: '\'name\' is missing in props validation'
       }]
     }, {
       code: [
@@ -1008,7 +1008,7 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [{
-        message: '\'lastname\' is missing in props validation for Hello'
+        message: '\'lastname\' is missing in props validation'
       }]
     }, {
       code: [
@@ -1027,7 +1027,7 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [{
-        message: '\'firstname\' is missing in props validation for Hello'
+        message: '\'firstname\' is missing in props validation'
       }]
     }, {
       code: [
@@ -1047,7 +1047,7 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [{
-        message: '\'a.b\' is missing in props validation for Hello'
+        message: '\'a.b\' is missing in props validation'
       }]
     }, {
       code: [
@@ -1069,7 +1069,7 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [{
-        message: '\'a.b.c\' is missing in props validation for Hello'
+        message: '\'a.b.c\' is missing in props validation'
       }]
     }, {
       code: [
@@ -1093,10 +1093,10 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [
-        {message: '\'a.b.c\' is missing in props validation for Hello'},
-        {message: '\'a.__.d\' is missing in props validation for Hello'},
-        {message: '\'a.__.d.length\' is missing in props validation for Hello'},
-        {message: '\'a.anything.e\' is missing in props validation for Hello'}
+        {message: '\'a.b.c\' is missing in props validation'},
+        {message: '\'a.__.d\' is missing in props validation'},
+        {message: '\'a.__.d.length\' is missing in props validation'},
+        {message: '\'a.anything.e\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1122,10 +1122,10 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [
-        {message: '\'a[].c\' is missing in props validation for Hello'},
-        {message: '\'a[].d\' is missing in props validation for Hello'},
-        {message: '\'a[].d.length\' is missing in props validation for Hello'},
-        {message: '\'a[].e\' is missing in props validation for Hello'}
+        {message: '\'a[].c\' is missing in props validation'},
+        {message: '\'a[].d\' is missing in props validation'},
+        {message: '\'a[].d.length\' is missing in props validation'},
+        {message: '\'a[].e\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1154,8 +1154,8 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [
-        {message: '\'a.length\' is missing in props validation for Hello'},
-        {message: '\'a.b\' is missing in props validation for Hello'}
+        {message: '\'a.length\' is missing in props validation'},
+        {message: '\'a.b\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1174,7 +1174,7 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-        {message: '\'propX\' is missing in props validation for Hello'}
+        {message: '\'propX\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1192,7 +1192,7 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [
-        {message: '\'some.value\' is missing in props validation for Hello'}
+        {message: '\'some.value\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1210,7 +1210,7 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [
-        {message: '\'arr\' is missing in props validation for Hello'}
+        {message: '\'arr\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1231,7 +1231,7 @@ ruleTester.run('prop-types', rule, {
         jsx: true
       },
       errors: [
-        {message: '\'arr[].some.value\' is missing in props validation for Hello'}
+        {message: '\'arr[].some.value\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1246,7 +1246,7 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-        {message: '\'firstname\' is missing in props validation for Hello'}
+        {message: '\'firstname\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1259,7 +1259,7 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-        {message: '\'firstname\' is missing in props validation for Hello'}
+        {message: '\'firstname\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1278,7 +1278,7 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-        {message: '\'firstname\' is missing in props validation for Hello'}
+        {message: '\'firstname\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1288,7 +1288,7 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [{
-        message: '\'name\' is missing in props validation for Hello'
+        message: '\'name\' is missing in props validation'
       }]
     }, {
       code: [
@@ -1298,7 +1298,7 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [{
-        message: '\'name\' is missing in props validation for Hello'
+        message: '\'name\' is missing in props validation'
       }]
     }, {
       code: [
@@ -1308,7 +1308,7 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [{
-        message: '\'name\' is missing in props validation for Hello'
+        message: '\'name\' is missing in props validation'
       }]
     }, {
       code: [
@@ -1321,7 +1321,7 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-        {message: '\'lastname\' is missing in props validation for Hello'}
+        {message: '\'lastname\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1334,7 +1334,7 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-        {message: '\'source\' is missing in props validation for Hello'}
+        {message: '\'source\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1347,8 +1347,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-        {message: '\'source\' is missing in props validation for Hello'},
-        {message: '\'source.uri\' is missing in props validation for Hello'}
+        {message: '\'source\' is missing in props validation'},
+        {message: '\'source.uri\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1361,7 +1361,7 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-        {message: '\'source\' is missing in props validation for Hello'}
+        {message: '\'source\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1374,8 +1374,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-        {message: '\'source\' is missing in props validation for Hello'},
-        {message: '\'source.uri\' is missing in props validation for Hello'}
+        {message: '\'source\' is missing in props validation'},
+        {message: '\'source.uri\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1391,7 +1391,7 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-        {message: '\'name\' is missing in props validation for Hello'}
+        {message: '\'name\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1407,7 +1407,7 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-        {message: '\'name\' is missing in props validation for Hello'}
+        {message: '\'name\' is missing in props validation'}
       ]
     }, {
       code: [
@@ -1427,8 +1427,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-        {message: '\'firstname\' is missing in props validation for DynamicHello'},
-        {message: '\'name\' is missing in props validation for Hello'}
+        {message: '\'firstname\' is missing in props validation'},
+        {message: '\'name\' is missing in props validation'}
       ]
     }
   ]
