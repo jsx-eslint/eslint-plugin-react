@@ -29,6 +29,10 @@ ruleTester.run('jsx-no-bind', rule, {
       code: '<div meaningOfLife={42}></div>',
       parser: 'babel-eslint'
     },
+    {
+      code: '<div onClick={getHandler()}></div>',
+      parser: 'babel-eslint'
+    },
 
     // bind() explicitly allowed
     {
