@@ -3,6 +3,27 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.7.0] - 2015-11-05
+### Added
+* Add `jsx-no-bind` rule ([#184][] @Daniel15)
+* Add line-aligned option to `jsx-closing-bracket-location` ([#243][] @alopatin)
+
+### Fixed
+* Fix a lot of issues about components detection, mostly related to stateless components ([#264][], [#267][], [#268][], [#276][], [#277][], [#280][])
+
+### Changed
+* Update dependencies
+
+[3.7.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.6.3...v3.7.0
+[#184]: https://github.com/yannickcr/eslint-plugin-react/issues/184
+[#243]: https://github.com/yannickcr/eslint-plugin-react/issues/243
+[#264]: https://github.com/yannickcr/eslint-plugin-react/issues/264
+[#267]: https://github.com/yannickcr/eslint-plugin-react/issues/267
+[#268]: https://github.com/yannickcr/eslint-plugin-react/issues/268
+[#276]: https://github.com/yannickcr/eslint-plugin-react/issues/276
+[#277]: https://github.com/yannickcr/eslint-plugin-react/issues/277
+[#280]: https://github.com/yannickcr/eslint-plugin-react/issues/280
+
 ## [3.6.3] - 2015-10-20
 ### Fixed
 * Fix `display-name` for stateless components ([#256][]) 
