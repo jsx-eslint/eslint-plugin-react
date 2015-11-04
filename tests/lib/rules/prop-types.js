@@ -1459,6 +1459,18 @@ ruleTester.run('prop-types', rule, {
         {message: '\'names.map\' is missing in props validation'},
         {message: '\'company\' is missing in props validation'}
       ]
+    }, {
+      code: [
+        'const Annotation = props => (',
+        '  <div>',
+        '    {props.text}',
+        '  </div>',
+        ')'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'text\' is missing in props validation'}
+      ]
     }
   ]
 });
