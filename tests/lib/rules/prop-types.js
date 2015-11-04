@@ -869,6 +869,20 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'const Hello = (props) => {',
+        '  let team = props.names.map((name) => {',
+        '      return <li>{name}, {props.company}</li>;',
+        '    });',
+        '  return <ul>{team}</ul>;',
+        '};',
+        'Hello.propTypes = {',
+        '  names: React.PropTypes.array,',
+        '  company: React.PropTypes.string',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
@@ -1429,6 +1443,21 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {message: '\'firstname\' is missing in props validation'},
         {message: '\'name\' is missing in props validation'}
+      ]
+    }, {
+      code: [
+        'const Hello = (props) => {',
+        '  let team = props.names.map((name) => {',
+        '      return <li>{name}, {props.company}</li>;',
+        '    });',
+        '  return <ul>{team}</ul>;',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'names\' is missing in props validation'},
+        {message: '\'names.map\' is missing in props validation'},
+        {message: '\'company\' is missing in props validation'}
       ]
     }
   ]
