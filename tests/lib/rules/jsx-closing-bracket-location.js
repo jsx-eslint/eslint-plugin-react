@@ -15,6 +15,7 @@ var MESSAGE_AFTER_PROPS = [{message: 'The closing bracket must be placed after t
 var MESSAGE_AFTER_TAG = [{message: 'The closing bracket must be placed after the opening tag'}];
 var MESSAGE_PROPS_ALIGNED = [{message: 'The closing bracket must be aligned with the last prop'}];
 var MESSAGE_TAG_ALIGNED = [{message: 'The closing bracket must be aligned with the opening tag'}];
+var MESSAGE_LINE_ALIGNED = [{message: 'The closing bracket must be aligned with the line containing the opening tag'}];
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -53,6 +54,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ecmaFeatures: {jsx: true}
   }, {
     code: [
+      '<App foo />'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
       '<App ',
       '  foo />'
     ].join('\n'),
@@ -85,6 +92,14 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     code: [
       '<App ',
       '  foo',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<App ',
+      '  foo',
       '  />'
     ].join('\n'),
     options: [{location: 'props-aligned'}],
@@ -101,6 +116,14 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '></App>'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<App',
+      '  foo',
+      '></App>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
     ecmaFeatures: {jsx: true}
   }, {
     code: [
@@ -138,6 +161,16 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '/>'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<App',
+      '  foo={function() {',
+      '    console.log(\'bar\');',
+      '  }}',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
     ecmaFeatures: {jsx: true}
   }, {
     code: [
@@ -192,6 +225,86 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{nonEmpty: 'props-aligned'}],
     ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      'var x = function() {',
+      '  return <App',
+      '    foo',
+      '         >',
+      '      bar',
+      '         </App>',
+      '}'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      'var x = function() {',
+      '  return <App',
+      '    foo',
+      '         />',
+      '}'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      'var x = <App',
+      '  foo',
+      '        />'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      'var x = function() {',
+      '  return <App',
+      '    foo={function() {',
+      '      console.log(\'bar\');',
+      '    }}',
+      '  />',
+      '}'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      'var x = <App',
+      '  foo={function() {',
+      '    console.log(\'bar\');',
+      '  }}',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<Provider',
+      '  store',
+      '>',
+      '  <App',
+      '    foo={function() {',
+      '      console.log(\'bar\');',
+      '    }}',
+      '  />',
+      '</Provider>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<Provider',
+      '  store',
+      '>',
+      '  {baz && <App',
+      '    foo={function() {',
+      '      console.log(\'bar\');',
+      '    }}',
+      '  />}',
+      '</Provider>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    ecmaFeatures: {jsx: true}
   }],
 
   invalid: [{
@@ -234,6 +347,14 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
   }, {
     code: [
       '<App ',
+      '  foo />'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    ecmaFeatures: {jsx: true},
+    errors: MESSAGE_LINE_ALIGNED
+  }, {
+    code: [
+      '<App ',
       '  foo',
       '/>'
     ].join('\n'),
@@ -267,6 +388,15 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     options: [{location: 'tag-aligned'}],
     ecmaFeatures: {jsx: true},
     errors: MESSAGE_TAG_ALIGNED
+  }, {
+    code: [
+      '<App ',
+      '  foo',
+      '  />'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    ecmaFeatures: {jsx: true},
+    errors: MESSAGE_LINE_ALIGNED
   }, {
     code: [
       '<App',
@@ -303,6 +433,15 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     options: [{location: 'tag-aligned'}],
     ecmaFeatures: {jsx: true},
     errors: MESSAGE_TAG_ALIGNED
+  }, {
+    code: [
+      '<App',
+      '  foo',
+      '  ></App>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    ecmaFeatures: {jsx: true},
+    errors: MESSAGE_LINE_ALIGNED
   }, {
     code: [
       '<Provider ',
@@ -351,5 +490,25 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     options: [{nonEmpty: 'after-props'}],
     ecmaFeatures: {jsx: true},
     errors: MESSAGE_TAG_ALIGNED
+  }, {
+    code: [
+      'var x = function() {',
+      '  return <App',
+      '    foo',
+      '         />',
+      '}'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    ecmaFeatures: {jsx: true},
+    errors: MESSAGE_LINE_ALIGNED
+  }, {
+    code: [
+      'var x = <App',
+      '  foo',
+      '        />'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    ecmaFeatures: {jsx: true},
+    errors: MESSAGE_LINE_ALIGNED
   }]
 });
