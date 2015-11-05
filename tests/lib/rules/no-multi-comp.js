@@ -62,6 +62,20 @@ ruleTester.run('no-multi-comp', rule, {
       classes: true,
       jsx: true
     }
+  }, {
+    code: [
+      'export default {',
+      '  renderHello() {',
+      '    let {name} = this.props;',
+      '    return <div>{name}</div>;',
+      '  },',
+      '  renderHello2() {',
+      '    let {name2} = this.props;',
+      '    return <div>{name2}</div>;',
+      '  }',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }],
 
   invalid: [{

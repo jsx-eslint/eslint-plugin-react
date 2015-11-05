@@ -308,6 +308,16 @@ ruleTester.run('display-name', rule, {
     options: [{
       acceptTranspilerName: true
     }]
+  }, {
+    code: [
+      'export default {',
+      '  renderHello() {',
+      '    let {name} = this.props;',
+      '    return <div>{name}</div>;',
+      '  }',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }
 ],
 
@@ -378,7 +388,7 @@ ruleTester.run('display-name', rule, {
   }, {
     code: [
       'module.exports = () => {',
-      '  return <div>Hello {this.props.name}</div>;',
+      '  return <div>Hello {props.name}</div>;',
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
@@ -391,7 +401,7 @@ ruleTester.run('display-name', rule, {
   }, {
     code: [
       'module.exports = function() {',
-      '  return <div>Hello {this.props.name}</div>;',
+      '  return <div>Hello {props.name}</div>;',
       '}'
     ].join('\n'),
     parser: 'babel-eslint',

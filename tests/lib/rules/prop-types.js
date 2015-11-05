@@ -883,6 +883,16 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'export default {',
+        '  renderHello() {',
+        '    let {name} = this.props;',
+        '    return <div>{name}</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
