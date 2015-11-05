@@ -11,6 +11,8 @@
 var rule = require('../../../lib/rules/no-multi-comp');
 var RuleTester = require('eslint').RuleTester;
 
+require('babel-eslint');
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -37,6 +39,24 @@ ruleTester.run('no-multi-comp', rule, {
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
       '}'
+    ].join('\r'),
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    }
+  }, {
+    code: [
+      'var Heading = React.createClass({',
+      '  render: function() {',
+      '    return (',
+      '      <div>',
+      '        {this.props.buttons.map(function(button, index) {',
+      '          return <Button {...button} key={index}/>;',
+      '        })}',
+      '      </div>',
+      '    );',
+      '  }',
+      '});'
     ].join('\r'),
     ecmaFeatures: {
       classes: true,
