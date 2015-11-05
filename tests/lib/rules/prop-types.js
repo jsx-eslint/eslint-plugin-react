@@ -1471,6 +1471,20 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {message: '\'text\' is missing in props validation'}
       ]
+    }, {
+      code: [
+        'for (var key in foo) {',
+        '  var Hello = React.createClass({',
+        '    render: function() {',
+        '      return <div>Hello {this.props.name}</div>;',
+        '    }',
+        '  });',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'name\' is missing in props validation'}
+      ]
     }
   ]
 });
