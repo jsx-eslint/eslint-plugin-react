@@ -3,6 +3,17 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.7.1] - 2015-11-05
+### Fixed
+* Fix `sort-comp` crash on stateless components ([#285][])
+* Fix crash in ES5 components detection ([#286][])
+* Fix ES5 components detection from nested functions ([#287][])
+
+[3.7.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.7.0...v3.7.1
+[#285]: https://github.com/yannickcr/eslint-plugin-react/issues/285
+[#286]: https://github.com/yannickcr/eslint-plugin-react/issues/286
+[#287]: https://github.com/yannickcr/eslint-plugin-react/issues/287
+
 ## [3.7.0] - 2015-11-05
 ### Added
 * Add `jsx-no-bind` rule ([#184][] @Daniel15)
