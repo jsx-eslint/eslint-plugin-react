@@ -189,6 +189,22 @@ ruleTester.run('sort-comp', rule, {
       classes: true,
       jsx: true
     }
+  }, {
+    // Must ignore stateless components
+    code: [
+      'function Hello(props) {',
+      '  return <div>Hello {props.name}</div>',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    // Must ignore stateless components (arrow function with explicit return)
+    code: [
+      'var Hello = props => (',
+      '  <div>Hello {props.name}</div>',
+      ')'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
