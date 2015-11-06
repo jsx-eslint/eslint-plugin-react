@@ -33,7 +33,24 @@ ruleTester.run('prefer-es6-class', rule, {
       classes: true,
       jsx: true
     }
-  }, {
+  },
+  {
+    code: [
+      'export default class Hello extends React.Component {',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}',
+      'Hello.displayName = \'Hello\''
+    ].join('\n'),
+    ecmaFeatures: {
+      classes: true,
+      module: true,
+      modules: true,
+      jsx: true
+    }
+  },
+  {
     code: [
       'var Hello = "foo";',
       'module.exports = {};'
@@ -42,7 +59,6 @@ ruleTester.run('prefer-es6-class', rule, {
       jsx: true
     }
   }
-
   ],
 
   invalid: [{
