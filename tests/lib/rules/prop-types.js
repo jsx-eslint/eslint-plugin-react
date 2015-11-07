@@ -893,6 +893,17 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // Reassigned props are ignored
+      code: [
+        'export class Hello extends Component {',
+        '  render() {',
+        '    const props = this.props;',
+        '    return <div>Hello {props.name.firstname} {props[\'name\'].lastname}</div>',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
