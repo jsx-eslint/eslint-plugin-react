@@ -3,6 +3,22 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.8.0] - 2015-11-07
+### Added
+* Add ignoreStateless option to `no-multi-comp` ([#290][])
+
+### Fixed
+* Fix classes with properties to always be marked as components ([#291][])
+* Fix ES5 class detection when using `createClass` by itself ([#297][])
+* Fix direct props detection ([#298][])
+* Ignore functions containing the keyword `this` during component detection
+
+[3.8.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.7.1...v3.8.0
+[#290]: https://github.com/yannickcr/eslint-plugin-react/issues/290
+[#291]: https://github.com/yannickcr/eslint-plugin-react/issues/291
+[#297]: https://github.com/yannickcr/eslint-plugin-react/issues/297
+[#298]: https://github.com/yannickcr/eslint-plugin-react/issues/298
+
 ## [3.7.1] - 2015-11-05
 ### Fixed
 * Fix `sort-comp` crash on stateless components ([#285][])
