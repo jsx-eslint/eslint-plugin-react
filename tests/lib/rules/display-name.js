@@ -328,6 +328,17 @@ ruleTester.run('display-name', rule, {
       '};'
     ].join('\n'),
     parser: 'babel-eslint'
+  }, {
+    code: [
+      'import React, { createClass } from \'react\';',
+      'export default createClass({',
+      '  displayName: \'Foo\',',
+      '  render() {',
+      '    return <h1>foo</h1>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }
 ],
 
