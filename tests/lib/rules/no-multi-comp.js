@@ -76,6 +76,37 @@ ruleTester.run('no-multi-comp', rule, {
       '};'
     ].join('\n'),
     parser: 'babel-eslint'
+  }, {
+    code: [
+      'function Hello(props) {',
+      '  return <div>Hello {props.name}</div>;',
+      '}',
+      'function HelloAgain(props) {',
+      '  return <div>Hello again {props.name}</div>;',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      ignoreStateless: true
+    }]
+  }, {
+    code: [
+      'function Hello(props) {',
+      '  return <div>Hello {props.name}</div>;',
+      '}',
+      'class HelloJohn extends React.Component {',
+      '  render() {',
+      '    return <Hello name="John" />;',
+      '  }',
+      '}'
+    ].join('\r'),
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    },
+    options: [{
+      ignoreStateless: true
+    }]
   }],
 
   invalid: [{
@@ -126,6 +157,39 @@ ruleTester.run('no-multi-comp', rule, {
     }, {
       message: 'Declare only one React component per file',
       line: 11
+    }]
+  }, {
+    code: [
+      'function Hello(props) {',
+      '  return <div>Hello {props.name}</div>;',
+      '}',
+      'function HelloAgain(props) {',
+      '  return <div>Hello again {props.name}</div>;',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 4
+    }]
+  }, {
+    code: [
+      'function Hello(props) {',
+      '  return <div>Hello {props.name}</div>;',
+      '}',
+      'class HelloJohn extends React.Component {',
+      '  render() {',
+      '    return <Hello name="John" />;',
+      '  }',
+      '}'
+    ].join('\r'),
+    ecmaFeatures: {
+      classes: true,
+      jsx: true
+    },
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 4
     }]
   }]
 });

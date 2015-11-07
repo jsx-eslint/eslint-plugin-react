@@ -32,6 +32,41 @@ var HelloJohn = React.createClass({
 });
 ```
 
+## Rule Options
+
+```js
+...
+"no-multi-comp": [<enabled>, { "ignoreStateless": <boolean> }]
+...
+```
+
+### `ignoreStateless`
+
+When `true` the rule will ignore stateless components and will allow you to have multiple stateless components, or one statefull component and some stateless components in the same file.
+
+The following patterns are considered okay and do not cause warnings:
+
+```js
+function Hello(props) {
+  return <div>Hello {props.name}</div>;
+}
+function HelloAgain(props) {
+  return <div>Hello again {props.name}</div>;
+}
+```
+
+```js
+function Hello(props) {
+  return <div>Hello {props.name}</div>;
+}
+class HelloJohn extends React.Component {
+  render() {
+    return <Hello name="John" />;
+  }
+}
+module.exports = HelloJohn;
+```
+
 ## When Not To Use It
 
 If you prefer to declare multiple components per files you can disable this rule.
