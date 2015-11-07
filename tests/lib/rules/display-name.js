@@ -59,6 +59,16 @@ ruleTester.run('display-name', rule, {
     }
   }, {
     code: [
+      'class Hello extends Greetings {',
+      '  static text = \'Hello World\';',
+      '  render() {',
+      '    return Hello.text;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
       'class Hello {',
       '  method',
       '}'
