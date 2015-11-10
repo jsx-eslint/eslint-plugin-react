@@ -13,9 +13,16 @@ var RuleTester = require('eslint').RuleTester;
 
 var MESSAGE_AFTER_PROPS = [{message: 'The closing bracket must be placed after the last prop'}];
 var MESSAGE_AFTER_TAG = [{message: 'The closing bracket must be placed after the opening tag'}];
-var MESSAGE_PROPS_ALIGNED = [{message: 'The closing bracket must be aligned with the last prop'}];
-var MESSAGE_TAG_ALIGNED = [{message: 'The closing bracket must be aligned with the opening tag'}];
-var MESSAGE_LINE_ALIGNED = [{message: 'The closing bracket must be aligned with the line containing the opening tag'}];
+
+var MESSAGE_PROPS_ALIGNED = 'The closing bracket must be aligned with the last prop';
+var MESSAGE_TAG_ALIGNED = 'The closing bracket must be aligned with the opening tag';
+var MESSAGE_LINE_ALIGNED = 'The closing bracket must be aligned with the line containing the opening tag';
+
+var messageWithDetails = function(message, expectedColumn, expectedNextLine) {
+  var details = ' (expected column ' + expectedColumn +
+    (expectedNextLine ? ' on the next line)' : ')');
+  return message + details;
+};
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -335,7 +342,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{location: 'props-aligned'}],
     ecmaFeatures: {jsx: true},
-    errors: MESSAGE_PROPS_ALIGNED
+    errors: [{
+      message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 3, true),
+      line: 2,
+      column: 7
+    }]
   }, {
     code: [
       '<App ',
@@ -343,7 +354,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
     ecmaFeatures: {jsx: true},
-    errors: MESSAGE_TAG_ALIGNED
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, true),
+      line: 2,
+      column: 7
+    }]
   }, {
     code: [
       '<App ',
@@ -351,7 +366,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{location: 'line-aligned'}],
     ecmaFeatures: {jsx: true},
-    errors: MESSAGE_LINE_ALIGNED
+    errors: [{
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 1, true),
+      line: 2,
+      column: 7
+    }]
   }, {
     code: [
       '<App ',
@@ -369,7 +388,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{location: 'props-aligned'}],
     ecmaFeatures: {jsx: true},
-    errors: MESSAGE_PROPS_ALIGNED
+    errors: [{
+      message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 3, false),
+      line: 3,
+      column: 1
+    }]
   }, {
     code: [
       '<App ',
@@ -387,7 +410,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
     ecmaFeatures: {jsx: true},
-    errors: MESSAGE_TAG_ALIGNED
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, false),
+      line: 3,
+      column: 3
+    }]
   }, {
     code: [
       '<App ',
@@ -396,7 +423,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{location: 'line-aligned'}],
     ecmaFeatures: {jsx: true},
-    errors: MESSAGE_LINE_ALIGNED
+    errors: [{
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 1, false),
+      line: 3,
+      column: 3
+    }]
   }, {
     code: [
       '<App',
@@ -414,7 +445,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{location: 'props-aligned'}],
     ecmaFeatures: {jsx: true},
-    errors: MESSAGE_PROPS_ALIGNED
+    errors: [{
+      message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 3, false),
+      line: 3,
+      column: 1
+    }]
   }, {
     code: [
       '<App',
@@ -432,7 +467,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
     ecmaFeatures: {jsx: true},
-    errors: MESSAGE_TAG_ALIGNED
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, false),
+      line: 3,
+      column: 3
+    }]
   }, {
     code: [
       '<App',
@@ -441,7 +480,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{location: 'line-aligned'}],
     ecmaFeatures: {jsx: true},
-    errors: MESSAGE_LINE_ALIGNED
+    errors: [{
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 1, false),
+      line: 3,
+      column: 3
+    }]
   }, {
     code: [
       '<Provider ',
@@ -453,7 +496,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{selfClosing: 'props-aligned'}],
     ecmaFeatures: {jsx: true},
-    errors: MESSAGE_TAG_ALIGNED
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, true),
+      line: 2,
+      column: 8
+    }]
   }, {
     code: [
       '<Provider',
@@ -466,7 +513,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{nonEmpty: 'props-aligned'}],
     ecmaFeatures: {jsx: true},
-    errors: MESSAGE_TAG_ALIGNED
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 3, false),
+      line: 6,
+      column: 5
+    }]
   }, {
     code: [
       '<Provider ',
@@ -477,7 +528,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{selfClosing: 'after-props'}],
     ecmaFeatures: {jsx: true},
-    errors: MESSAGE_TAG_ALIGNED
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, true),
+      line: 2,
+      column: 8
+    }]
   }, {
     code: [
       '<Provider ',
@@ -489,7 +544,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{nonEmpty: 'after-props'}],
     ecmaFeatures: {jsx: true},
-    errors: MESSAGE_TAG_ALIGNED
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 3, false),
+      line: 5,
+      column: 5
+    }]
   }, {
     code: [
       'var x = function() {',
@@ -500,7 +559,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{location: 'line-aligned'}],
     ecmaFeatures: {jsx: true},
-    errors: MESSAGE_LINE_ALIGNED
+    errors: [{
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 3, false),
+      line: 4,
+      column: 10
+    }]
   }, {
     code: [
       'var x = <App',
@@ -509,6 +572,10 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{location: 'line-aligned'}],
     ecmaFeatures: {jsx: true},
-    errors: MESSAGE_LINE_ALIGNED
+    errors: [{
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 1, false),
+      line: 3,
+      column: 9
+    }]
   }]
 });
