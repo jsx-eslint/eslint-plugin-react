@@ -3,6 +3,30 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.9.0] - 2015-11-17
+### Added
+* Add `jsx-key` rule ([#293][] @benmosher)
+* Add `allow-in-func` option to `no-did-update-set-state` ([#300][])
+* Add option to only enforce `jsx-closing-bracket-location` rule to one type of tag (nonEmpty or selfClosing) ([#307][])
+
+### Fixed
+* Fix crash when destructuring with only the rest spread ([#269][])
+* Fix variables detection when searching for related components ([#303][])
+* Fix `no-unknown-property` to not check custom elements ([#308][] @zertosh)
+
+### Changed
+* Improve `jsx-closing-bracket-location` error message ([#301][] @alopatin)
+* Update dependencies
+
+[3.9.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.8.0...v3.9.0
+[#293]: https://github.com/yannickcr/eslint-plugin-react/pull/293
+[#300]: https://github.com/yannickcr/eslint-plugin-react/issues/300
+[#307]: https://github.com/yannickcr/eslint-plugin-react/issues/307
+[#269]: https://github.com/yannickcr/eslint-plugin-react/issues/269
+[#303]: https://github.com/yannickcr/eslint-plugin-react/issues/303
+[#308]: https://github.com/yannickcr/eslint-plugin-react/pull/308
+[#301]: https://github.com/yannickcr/eslint-plugin-react/pull/301
+
 ## [3.8.0] - 2015-11-07
 ### Added
 * Add ignoreStateless option to `no-multi-comp` ([#290][])
