@@ -904,6 +904,19 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'export default function FooBar(props) {',
+        '  const bar = props.bar;',
+        '  return (<div bar={bar}><div {...props}/></div>);',
+        '}',
+        'if (process.env.NODE_ENV !== \'production\') {',
+        '  FooBar.propTypes = {',
+        '    bar: React.PropTypes.string',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
