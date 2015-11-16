@@ -312,6 +312,38 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{location: 'line-aligned'}],
     ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<App>',
+      '  <Foo',
+      '    bar',
+      '  >',
+      '  </Foo>',
+      '  <Foo',
+      '    bar />',
+      '</App>'
+    ].join('\n'),
+    options: [{
+      nonEmpty: false,
+      selfClosing: 'after-props'
+    }],
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: [
+      '<App>',
+      '  <Foo',
+      '    bar>',
+      '  </Foo>',
+      '  <Foo',
+      '    bar',
+      '  />',
+      '</App>'
+    ].join('\n'),
+    options: [{
+      nonEmpty: 'after-props',
+      selfClosing: false
+    }],
+    ecmaFeatures: {jsx: true}
   }],
 
   invalid: [{

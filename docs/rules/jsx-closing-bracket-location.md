@@ -41,12 +41,12 @@ The first form is a string shortcut corresponding to the `location` values speci
 "jsx-closing-bracket-location": [<enabled>, "<location>"]
 ```
 
-The second form allows you to distinguish between non-empty and self-closing tags. Both properties are optional, and both default to `"tag-aligned"`.
+The second form allows you to distinguish between non-empty and self-closing tags. Both properties are optional, and both default to `"tag-aligned"`. You can also disable the rule for one particular type of tag by setting the value to `false`.
 
 ```js
 "jsx-closing-bracket-location": [<enabled>, {
-  "nonEmpty": "<location>",
-  "selfClosing": "<location>"
+  "nonEmpty": "<location>" || false,
+  "selfClosing": "<location>" || false
 }]
 ```
 
