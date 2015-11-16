@@ -24,7 +24,10 @@ ruleTester.run('no-unknown-property', rule, {
     {code: '<App accept-charset="bar" />;', ecmaFeatures: {jsx: true}},
     {code: '<App http-equiv="bar" />;', ecmaFeatures: {jsx: true}},
     {code: '<div className="bar"></div>;', ecmaFeatures: {jsx: true}},
-    {code: '<div data-foo="bar"></div>;', ecmaFeatures: {jsx: true}}
+    {code: '<div data-foo="bar"></div>;', ecmaFeatures: {jsx: true}},
+    {code: '<div class="foo" is="my-elem"></div>;', ecmaFeatures: {jsx: true}},
+    {code: '<div {...this.props} class="foo" is="my-elem"></div>;', ecmaFeatures: {jsx: true}},
+    {code: '<atom-panel class="foo"></atom-panel>;', ecmaFeatures: {jsx: true}}
   ],
   invalid: [{
     code: '<div class="bar"></div>;',
