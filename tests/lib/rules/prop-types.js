@@ -917,6 +917,24 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() {',
+        '    var {...other} = this.props;',
+        '    return (',
+        '      <div {...other} />',
+        '    );',
+        '  }',
+        '});'
+      ].join('\n'),
+      env: {
+        es6: true
+      },
+      ecmaFeatures: {
+        jsx: true,
+        experimentalObjectRestSpread: true
+      }
     }
   ],
 
