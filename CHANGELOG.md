@@ -3,6 +3,19 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.10.0] - 2015-11-21
+### Added
+* Add `jsx-pascal-case` rule ([#306][] @jakemmarsh)
+
+### Fixed
+* Fix crash on incomplete class property declaration ([#317][] @dapetcu21)
+* Fix crash with ESLint 1.10.0 ([#323][] @lukekarrys)
+
+[3.10.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.9.0...v3.10.0
+[#306]: https://github.com/yannickcr/eslint-plugin-react/pull/306
+[#317]: https://github.com/yannickcr/eslint-plugin-react/issues/317
+[#323]: https://github.com/yannickcr/eslint-plugin-react/issues/323
+
 ## [3.9.0] - 2015-11-17
 ### Added
 * Add `jsx-key` rule ([#293][] @benmosher)
