@@ -23,6 +23,7 @@ ruleTester.run('no-unknown-property', rule, {
     {code: '<App for="bar" />;', ecmaFeatures: {jsx: true}},
     {code: '<App accept-charset="bar" />;', ecmaFeatures: {jsx: true}},
     {code: '<App http-equiv="bar" />;', ecmaFeatures: {jsx: true}},
+    {code: '<App xlink:href="bar" />;', ecmaFeatures: {jsx: true}},
     {code: '<div className="bar"></div>;', ecmaFeatures: {jsx: true}},
     {code: '<div data-foo="bar"></div>;', ecmaFeatures: {jsx: true}},
     {code: '<div class="foo" is="my-elem"></div>;', ecmaFeatures: {jsx: true}},
@@ -56,6 +57,10 @@ ruleTester.run('no-unknown-property', rule, {
   }, {
     code: '<div onmousedown="bar"></div>;',
     errors: [{message: 'Unknown property \'onmousedown\' found, use \'onMouseDown\' instead'}],
-    ecmaFeatures: {jsx: true}}
-  ]
+    ecmaFeatures: {jsx: true}
+  }, {
+    code: '<use xlink:href="bar" />;',
+    errors: [{message: 'Unknown property \'xlink:href\' found, use \'xlinkHref\' instead'}],
+    ecmaFeatures: {jsx: true}
+  }]
 });
