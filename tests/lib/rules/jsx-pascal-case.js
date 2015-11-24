@@ -27,6 +27,22 @@ ruleTester.run('jsx-pascal-case', rule, {
     }
   }, {
     code: [
+      'var CSSTransitionGroup;',
+      '<CSSTransitionGroup />'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    }
+  }, {
+    code: [
+      'var BetterThanCSS;',
+      '<BetterThanCSS />'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    }
+  }, {
+    code: [
       'var TestComponent;',
       '<TestComponent>',
       '  <div />',
@@ -55,6 +71,15 @@ ruleTester.run('jsx-pascal-case', rule, {
       jsx: true
     },
     errors: [{message: 'Imported JSX component test_component must be in PascalCase'}]
+  }, {
+    code: [
+      'var YELLING;',
+      '<YELLING />'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    },
+    errors: [{message: 'Imported JSX component YELLING must be in PascalCase'}]
   }, {
     code: [
       'var testComponent;',
