@@ -20,6 +20,10 @@ The following patterns are considered warnings:
 <test_component />
 ```
 
+```js
+<YELLING />
+```
+
 The following patterns are not considered warnings:
 
 ```js
@@ -30,6 +34,10 @@ The following patterns are not considered warnings:
 <TestComponent>
   <div />
 </TestComponent>
+```
+
+```js
+<CSSTransitionGroup />
 ```
 
 ## When Not To Use It
