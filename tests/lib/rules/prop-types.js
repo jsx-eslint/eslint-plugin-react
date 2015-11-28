@@ -935,6 +935,24 @@ ruleTester.run('prop-types', rule, {
         jsx: true,
         experimentalObjectRestSpread: true
       }
+    }, {
+      code: [
+        'const statelessComponent = (props) => {',
+        '  const subRender = () => {',
+        '    return <span>{props.someProp}</span>;',
+        '  };',
+        '  return <div>{subRender()}</div>;',
+        '};',
+        'statelessComponent.propTypes = {',
+        '  someProp: PropTypes.string',
+        '};'
+      ].join('\n'),
+      env: {
+        es6: true
+      },
+      ecmaFeatures: {
+        jsx: true
+      }
     }
   ],
 
