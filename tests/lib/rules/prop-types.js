@@ -1378,6 +1378,17 @@ ruleTester.run('prop-types', rule, {
       }]
     }, {
       code: [
+        'var Hello = (props) => {',
+        '  const {name} = props;',
+        '  return <div>Hello {name}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'name\' is missing in props validation'
+      }]
+    }, {
+      code: [
         'class Hello extends React.Component {',
         '  render() {',
         '    var props = {firstname: \'John\'};',
