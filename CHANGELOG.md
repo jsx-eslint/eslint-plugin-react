@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.11.1] - 2015-11-29
+### Fixed
+*  Fix SVG attributes support for `no-unknown-property` ([#338][])
+
+[3.11.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.11.0...v3.11.1
+[#338]: https://github.com/yannickcr/eslint-plugin-react/issues/338
+
 ## [3.11.0] - 2015-11-29
 ### Added
 * Add `jsx-handler-names` rule ([#315][] @jakemmarsh)
