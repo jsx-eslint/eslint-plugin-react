@@ -17,6 +17,8 @@ var RuleTester = require('eslint').RuleTester;
 
 var REQUIRE_PACKAGE = 'require(\'eslint\')';
 
+var REQUIRE_PACKAGE_JS = 'require(\'headroom.js\')';
+
 var REQUIRE_JS = 'require(\'./index.js\')';
 
 var REQUIRE_JSX = 'require(\'./index.jsx\')';
@@ -65,6 +67,9 @@ ruleTester.run('require-extension', rule, {
       options: [{extensions: ['.js']}]
     }, {
       code: REQUIRE_JSX,
+      options: [{extensions: ['.js']}]
+    }, {
+      code: REQUIRE_PACKAGE_JS,
       options: [{extensions: ['.js']}]
     }
   ],
