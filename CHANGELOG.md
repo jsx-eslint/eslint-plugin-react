@@ -3,6 +3,30 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.11.0] - 2015-11-29
+### Added
+* Add `jsx-handler-names` rule ([#315][] @jakemmarsh)
+* Add SVG attributes support to `no-unknown-property` ([#318][])
+* Add shorthandFirst option to `jsx-sort-props` ([#336][] @lucasmotta)
+
+### Fixed
+* Fix destructured props detection in stateless components ([#326][])
+* Fix props validation for nested stateless components ([#331][])
+* Fix `require-extension` to ignore extension if it's part of the package name ([#319][])
+
+### Changed
+* Allow consecutive uppercase letters in `jsx-pascal-case` ([#328][] @lencioni)
+* Update dependencies
+
+[3.11.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.10.0...v3.11.0
+[#315]: https://github.com/yannickcr/eslint-plugin-react/pull/315
+[#318]: https://github.com/yannickcr/eslint-plugin-react/issues/318
+[#336]: https://github.com/yannickcr/eslint-plugin-react/pull/336
+[#326]: https://github.com/yannickcr/eslint-plugin-react/issues/326
+[#331]: https://github.com/yannickcr/eslint-plugin-react/issues/331
+[#319]: https://github.com/yannickcr/eslint-plugin-react/issues/319
+[#328]: https://github.com/yannickcr/eslint-plugin-react/issues/328
+
 ## [3.10.0] - 2015-11-21
 ### Added
 * Add `jsx-pascal-case` rule ([#306][] @jakemmarsh)
