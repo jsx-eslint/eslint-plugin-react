@@ -26,8 +26,15 @@ var expectedCallbackError = {
   message: 'Callbacks must be listed after all other props',
   type: 'JSXAttribute'
 };
+var expectedShorthandError = {
+  message: 'Shorthand props must be listed before all other props',
+  type: 'JSXAttribute'
+};
 var callbacksLastArgs = [{
   callbacksLast: true
+}];
+var shorthandFirstArgs = [{
+  shorthandFirst: true
 }];
 var ignoreCaseArgs = [{
   ignoreCase: true
@@ -52,7 +59,11 @@ ruleTester.run('jsx-sort-props', rule, {
     {code: '<App a B c />;', options: ignoreCaseArgs, ecmaFeatures: features},
     {code: '<App A b C />;', options: ignoreCaseArgs, ecmaFeatures: features},
     // Sorting callbacks below all other props
-    {code: '<App a z onBar onFoo />;', options: callbacksLastArgs, ecmaFeatures: features}
+    {code: '<App a z onBar onFoo />;', options: callbacksLastArgs, ecmaFeatures: features},
+    // Sorting shorthand props before others
+    {code: '<App a b="b" />;', options: shorthandFirstArgs, ecmaFeatures: features},
+    {code: '<App z a="a" />;', options: shorthandFirstArgs, ecmaFeatures: features},
+    {code: '<App x y z a="a" b="b" />;', options: shorthandFirstArgs, ecmaFeatures: features}
   ],
   invalid: [
     {code: '<App b a />;', errors: [expectedError], ecmaFeatures: features},
@@ -70,6 +81,8 @@ ruleTester.run('jsx-sort-props', rule, {
       errors: [expectedCallbackError],
       options: callbacksLastArgs,
       ecmaFeatures: features
-    }
+    },
+    {code: '<App a="a" b />;', errors: [expectedShorthandError], options: shorthandFirstArgs, ecmaFeatures: features},
+    {code: '<App z x a="a" />;', errors: [expectedError], options: shorthandFirstArgs, ecmaFeatures: features}
   ]
 });
