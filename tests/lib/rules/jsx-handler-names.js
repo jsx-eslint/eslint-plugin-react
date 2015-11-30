@@ -52,6 +52,13 @@ ruleTester.run('jsx-handler-names', rule, {
     ecmaFeatures: {
       jsx: true
     }
+  }, {
+    code: [
+      '<TestComponent shouldDisplay={arr[0].prop} />'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    }
   }],
 
   invalid: [{
