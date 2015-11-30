@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-react",
-  "version": "3.11.1",
+  "version": "3.11.2",
   "author": "Yannick Croissant <yannick.croissant+npm@gmail.com>",
   "description": "React specific linting rules for ESLint",
   "main": "index.js",

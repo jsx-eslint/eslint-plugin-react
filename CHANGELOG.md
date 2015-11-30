@@ -3,9 +3,21 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.11.2] - 2015-12-01
+### Fixed
+* Allow numbers in `jsx-pascal-case` ([#339][])
+* Fix `jsx-handler-names` crash with arrays ([#340][])
+
+### Changed
+* Add allow-in-func option to `no-did-update-set-state` documentation
+
+[3.11.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.11.1...v3.11.2
+[#339]: https://github.com/yannickcr/eslint-plugin-react/issues/339
+[#340]: https://github.com/yannickcr/eslint-plugin-react/issues/340
+
 ## [3.11.1] - 2015-11-29
 ### Fixed
-*  Fix SVG attributes support for `no-unknown-property` ([#338][])
+* Fix SVG attributes support for `no-unknown-property` ([#338][])
 
 [3.11.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.11.0...v3.11.1
 [#338]: https://github.com/yannickcr/eslint-plugin-react/issues/338
