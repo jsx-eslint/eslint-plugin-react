@@ -31,3 +31,47 @@ var Hello = React.createClass({
   }
 });
 ```
+
+## Rule Options
+
+```js
+...
+"no-did-update-set-state": [<enabled>, <mode>]
+...
+```
+
+### `allow-in-func` mode
+
+By default this rule forbids any call to `this.setState` in `componentDidUpdate`. But in certain cases you may need to perform asynchronous calls in `componentDidUpdate` that may end up with calls to `this.setState`. The `allow-in-func` mode allows you to use `this.setState` in `componentDidUpdate` as long as they are called within a function.
+
+The following patterns are considered warnings:
+
+```js
+var Hello = React.createClass({
+  componentDidUpdate: function() {
+     this.setState({
+        name: this.props.name.toUpperCase()
+      });
+    },
+  render: function() {
+    return <div>Hello {this.state.name}</div>;
+  }
+});
+```
+
+The following patterns are not considered warnings:
+
+```js
+var Hello = React.createClass({
+  componentDidUpdate: function() {
+    this.onUpdate(function callback(newName) {
+      this.setState({
+        name: newName
+      });
+    });
+  },
+  render: function() {
+    return <div>Hello {this.state.name}</div>;
+  }
+});
+```
