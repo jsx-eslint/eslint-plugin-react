@@ -51,6 +51,30 @@ ruleTester.run('jsx-pascal-case', rule, {
     ecmaFeatures: {
       jsx: true
     }
+  }, {
+    code: [
+      'var Test1Component;',
+      '<Test1Component />'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    }
+  }, {
+    code: [
+      'var TestComponent1;',
+      '<TestComponent1 />'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    }
+  }, {
+    code: [
+      'var T3stComp0nent;',
+      '<T3stComp0nent />'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    }
   }],
 
   invalid: [{
