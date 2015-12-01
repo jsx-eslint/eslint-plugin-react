@@ -953,6 +953,38 @@ ruleTester.run('prop-types', rule, {
       ecmaFeatures: {
         jsx: true
       }
+    }, {
+      code: [
+        'var a = function() {',
+        '  var newProps1 = props1;',
+        '  const newProps2 = props2;',
+        '  let newProps3 = props3;',
+        '};',
+        'let b = function() {',
+        '  var newProps4 = props;',
+        '  const newProps5 = props;',
+        '  let newProps6 = props;',
+        '};',
+        'const c = function() {',
+        '  var newProps7 = props;',
+        '  const newProps8 = props;',
+        '  let newProps9 = props;',
+        '};',
+        'function d() {',
+        '  var newProps10 = props;',
+        '  const newProps11 = props;',
+        '  let newProps12 = props;',
+        '};',
+        'const e = () => {',
+        '  var newProps13 = props;',
+        '  const newProps14 = props;',
+        '  let newProps15 = props;',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      env: {
+        es6: true
+      }
     }
   ],
 
