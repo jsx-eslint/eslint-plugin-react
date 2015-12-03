@@ -35,6 +35,26 @@ var Foo = require('foo');
 var Hello = <div>Hello {this.props.name}</div>;
 ```
 
+## Rule Options
+
+```js
+...
+"react-in-jsx-scope": [<enabled>, { "pragma": <string> }]
+...
+```
+
+### `pragma`
+
+As an alternative to specifying the above pragma in each source file, you can specify
+this configuration option:
+
+```js
+var Foo = require('Foo');
+
+var Hello = <div>Hello {this.props.name}</div>;
+```
+
+
 ## When Not To Use It
 
 If you are setting `React` as a global variable you can disable this rule.
