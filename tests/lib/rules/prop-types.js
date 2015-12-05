@@ -953,6 +953,15 @@ ruleTester.run('prop-types', rule, {
       ecmaFeatures: {
         jsx: true
       }
+    }, {
+      // Validation is ignored on reassigned props object
+      code: [
+        'const statelessComponent = (props) => {',
+        '  let newProps = props;',
+        '  return <span>{newProps.someProp}</span>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
