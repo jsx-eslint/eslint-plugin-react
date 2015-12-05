@@ -3,6 +3,19 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.11.3] - 2015-12-05
+### Fixed
+* Fix crash in `prop-types` when reassigning props ([#345][])
+* Fix `jsx-handler-names` for stateless components ([#346][])
+
+### Changed
+* Update `jsx-handler-names` error messages to be less specific ([#348][] @jakemmarsh)
+
+[3.11.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.11.2...v3.11.3
+[#345]: https://github.com/yannickcr/eslint-plugin-react/issues/345
+[#346]: https://github.com/yannickcr/eslint-plugin-react/issues/346
+[#348]: https://github.com/yannickcr/eslint-plugin-react/pull/348
+
 ## [3.11.2] - 2015-12-01
 ### Fixed
 * Allow numbers in `jsx-pascal-case` ([#339][])
