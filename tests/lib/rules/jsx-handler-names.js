@@ -68,7 +68,7 @@ ruleTester.run('jsx-handler-names', rule, {
     ecmaFeatures: {
       jsx: true
     },
-    errors: [{message: 'Handler function for onChange prop key must be named handleChange'}]
+    errors: [{message: 'Handler function for onChange prop key must begin with \'handle\''}]
   }, {
     code: [
       '<TestComponent handleChange={this.handleChange} />'
@@ -76,7 +76,7 @@ ruleTester.run('jsx-handler-names', rule, {
     ecmaFeatures: {
       jsx: true
     },
-    errors: [{message: 'Prop key for handleChange must be named onChange'}]
+    errors: [{message: 'Prop key for handleChange must begin with \'on\''}]
   }, {
     code: [
       '<TestComponent onChange={this.onChange} />'
@@ -84,6 +84,6 @@ ruleTester.run('jsx-handler-names', rule, {
     ecmaFeatures: {
       jsx: true
     },
-    errors: [{message: 'Handler function for onChange prop key must be named handleChange'}]
+    errors: [{message: 'Handler function for onChange prop key must begin with \'handle\''}]
   }]
 });
