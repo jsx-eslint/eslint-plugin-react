@@ -59,6 +59,13 @@ ruleTester.run('jsx-handler-names', rule, {
     ecmaFeatures: {
       jsx: true
     }
+  }, {
+    code: [
+      '<TestComponent onChange={props.onChange} />'
+    ].join('\n'),
+    ecmaFeatures: {
+      jsx: true
+    }
   }],
 
   invalid: [{
