@@ -34,6 +34,7 @@ module.exports = {
     'no-direct-mutation-state': require('./lib/rules/no-direct-mutation-state'),
     'forbid-prop-types': require('./lib/rules/forbid-prop-types'),
     'prefer-es6-class': require('./lib/rules/prefer-es6-class'),
+    'no-deprecated-reactdom': require('./lib/rules/no-deprecated-reactdom'),
     'jsx-key': require('./lib/rules/jsx-key')
   },
   rulesConfig: {
@@ -69,6 +70,7 @@ module.exports = {
     'no-direct-mutation-state': 0,
     'forbid-prop-types': 0,
     'prefer-es6-class': 0,
+    'no-deprecated-reactdom': 0,
     'jsx-key': 0
   }
 };
