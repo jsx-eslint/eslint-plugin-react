@@ -2,29 +2,25 @@
 
 Enforces coding style that user-defined JSX components are defined and referenced in PascalCase.
 
+Note that since React's JSX uses the upper vs. lower case convention to distinguish between local component classes and HTML tags this rule will not warn on components that stats with a lower case letter.
+
 ## Rule Details
 
 The following patterns are considered warnings:
 
 ```js
-<testComponent />
+<Test_component />
 ```
 
 ```js
-<testComponent>
-  <div />
-</testComponent>
-```
-
-```js
-<test_component />
-```
-
-```js
-<YELLING />
+<TEST_COMPONENT />
 ```
 
 The following patterns are not considered warnings:
+
+```js
+<div />
+```
 
 ```js
 <TestComponent />
