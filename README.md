@@ -66,6 +66,7 @@ Finally, enable all of the rules that you would like to use.
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,
     "react/no-danger": 1,
+    "react/no-deprecated-reactdom": 1,
     "react/no-did-mount-set-state": 1,
     "react/no-did-update-set-state": 1,
     "react/no-direct-mutation-state": 1,
@@ -105,6 +106,7 @@ Finally, enable all of the rules that you would like to use.
 * [jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
 * [jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
 * [no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
+* [no-deprecated-reactdom](docs/rules/no-deprecated-reactdom.md): Prevent accessing methods on `React` that have moved to `ReactDOM`
 * [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of `setState` in `componentDidMount`
 * [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of `setState` in `componentDidUpdate`
 * [no-direct-mutation-state](docs/rules/no-direct-mutation-state.md): Prevent direct mutation of `this.state`
