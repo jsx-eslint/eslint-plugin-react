@@ -11,6 +11,13 @@
 var rule = require('../../../lib/rules/jsx-closing-bracket-location');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 var MESSAGE_AFTER_PROPS = [{message: 'The closing bracket must be placed after the last prop'}];
 var MESSAGE_AFTER_TAG = [{message: 'The closing bracket must be placed after the opening tag'}];
 
@@ -34,44 +41,44 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     code: [
       '<App />'
     ].join('\n'),
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App foo />'
     ].join('\n'),
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App ',
       '  foo',
       '/>'
     ].join('\n'),
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App foo />'
     ].join('\n'),
     options: [{location: 'after-props'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App foo />'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App foo />'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App ',
       '  foo />'
     ].join('\n'),
     options: ['after-props'],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App ',
@@ -79,14 +86,14 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  />'
     ].join('\n'),
     options: ['props-aligned'],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App ',
       '  foo />'
     ].join('\n'),
     options: [{location: 'after-props'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App ',
@@ -94,7 +101,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '/>'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App ',
@@ -102,7 +109,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '/>'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App ',
@@ -110,12 +117,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  />'
     ].join('\n'),
     options: [{location: 'props-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App foo></App>'
     ].join('\n'),
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App',
@@ -123,7 +130,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '></App>'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App',
@@ -131,7 +138,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '></App>'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App',
@@ -139,7 +146,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  ></App>'
     ].join('\n'),
     options: [{location: 'props-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App',
@@ -148,7 +155,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  }} />'
     ].join('\n'),
     options: [{location: 'after-props'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App',
@@ -158,7 +165,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  />'
     ].join('\n'),
     options: [{location: 'props-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App',
@@ -168,7 +175,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '/>'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App',
@@ -178,7 +185,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '/>'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<Provider store>',
@@ -187,7 +194,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '</Provider>'
     ].join('\n'),
     options: [{selfClosing: 'after-props'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<Provider ',
@@ -198,7 +205,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '</Provider>'
     ].join('\n'),
     options: [{selfClosing: 'after-props'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<Provider ',
@@ -209,7 +216,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '</Provider>'
     ].join('\n'),
     options: [{nonEmpty: 'after-props'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<Provider store>',
@@ -219,7 +226,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '</Provider>'
     ].join('\n'),
     options: [{selfClosing: 'props-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<Provider',
@@ -231,7 +238,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '</Provider>'
     ].join('\n'),
     options: [{nonEmpty: 'props-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       'var x = function() {',
@@ -243,7 +250,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '}'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       'var x = function() {',
@@ -253,7 +260,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '}'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       'var x = <App',
@@ -261,7 +268,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '        />'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       'var x = function() {',
@@ -273,7 +280,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '}'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       'var x = <App',
@@ -283,7 +290,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '/>'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<Provider',
@@ -297,7 +304,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '</Provider>'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<Provider',
@@ -311,7 +318,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '</Provider>'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App>',
@@ -327,7 +334,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       nonEmpty: false,
       selfClosing: 'after-props'
     }],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App>',
@@ -343,7 +350,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       nonEmpty: 'after-props',
       selfClosing: false
     }],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -351,21 +358,21 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '<App ',
       '/>'
     ].join('\n'),
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: MESSAGE_AFTER_TAG
   }, {
     code: [
       '<App foo ',
       '/>'
     ].join('\n'),
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: MESSAGE_AFTER_PROPS
   }, {
     code: [
       '<App foo',
       '></App>'
     ].join('\n'),
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: MESSAGE_AFTER_PROPS
   }, {
     code: [
@@ -373,7 +380,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  foo />'
     ].join('\n'),
     options: [{location: 'props-aligned'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{
       message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 3, true),
       line: 2,
@@ -385,7 +392,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  foo />'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{
       message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, true),
       line: 2,
@@ -397,7 +404,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  foo />'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{
       message: messageWithDetails(MESSAGE_LINE_ALIGNED, 1, true),
       line: 2,
@@ -410,7 +417,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '/>'
     ].join('\n'),
     options: [{location: 'after-props'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: MESSAGE_AFTER_PROPS
   }, {
     code: [
@@ -419,7 +426,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '/>'
     ].join('\n'),
     options: [{location: 'props-aligned'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{
       message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 3, false),
       line: 3,
@@ -432,7 +439,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  />'
     ].join('\n'),
     options: [{location: 'after-props'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: MESSAGE_AFTER_PROPS
   }, {
     code: [
@@ -441,7 +448,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  />'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{
       message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, false),
       line: 3,
@@ -454,7 +461,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  />'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{
       message: messageWithDetails(MESSAGE_LINE_ALIGNED, 1, false),
       line: 3,
@@ -467,7 +474,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '></App>'
     ].join('\n'),
     options: [{location: 'after-props'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: MESSAGE_AFTER_PROPS
   }, {
     code: [
@@ -476,7 +483,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '></App>'
     ].join('\n'),
     options: [{location: 'props-aligned'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{
       message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 3, false),
       line: 3,
@@ -489,7 +496,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  ></App>'
     ].join('\n'),
     options: [{location: 'after-props'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: MESSAGE_AFTER_PROPS
   }, {
     code: [
@@ -498,7 +505,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  ></App>'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{
       message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, false),
       line: 3,
@@ -511,7 +518,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  ></App>'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{
       message: messageWithDetails(MESSAGE_LINE_ALIGNED, 1, false),
       line: 3,
@@ -527,7 +534,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '</Provider>'
     ].join('\n'),
     options: [{selfClosing: 'props-aligned'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{
       message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, true),
       line: 2,
@@ -544,7 +551,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '</Provider>'
     ].join('\n'),
     options: [{nonEmpty: 'props-aligned'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{
       message: messageWithDetails(MESSAGE_TAG_ALIGNED, 3, false),
       line: 6,
@@ -559,7 +566,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '</Provider>'
     ].join('\n'),
     options: [{selfClosing: 'after-props'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{
       message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, true),
       line: 2,
@@ -575,7 +582,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '</Provider>'
     ].join('\n'),
     options: [{nonEmpty: 'after-props'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{
       message: messageWithDetails(MESSAGE_TAG_ALIGNED, 3, false),
       line: 5,
@@ -590,7 +597,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '}'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{
       message: messageWithDetails(MESSAGE_LINE_ALIGNED, 3, false),
       line: 4,
@@ -603,7 +610,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '        />'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{
       message: messageWithDetails(MESSAGE_LINE_ALIGNED, 1, false),
       line: 3,

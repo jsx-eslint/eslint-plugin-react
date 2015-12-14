@@ -11,6 +11,13 @@
 var rule = require('../../../lib/rules/wrap-multilines');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 // ------------------------------------------------------------------------------
 // Code Snippets
 // ------------------------------------------------------------------------------
@@ -82,64 +89,64 @@ ruleTester.run('wrap-multilines', rule, {
   valid: [
     {
       code: RETURN_SINGLE_LINE,
-      ecmaFeatures: {jsx: true}
+      parserOptions: parserOptions
     }, {
       code: RETURN_PAREN,
-      ecmaFeatures: {jsx: true}
+      parserOptions: parserOptions
     }, {
       code: RETURN_NO_PAREN,
       options: [{return: false}],
-      ecmaFeatures: {jsx: true}
+      parserOptions: parserOptions
     }, {
       code: DECLARATION_SINGLE_LINE,
-      ecmaFeatures: {jsx: true}
+      parserOptions: parserOptions
     }, {
       code: DECLARATION_PAREN,
-      ecmaFeatures: {jsx: true}
+      parserOptions: parserOptions
     }, {
       code: DECLARATION_NO_PAREN,
       options: [{declaration: false}],
-      ecmaFeatures: {jsx: true}
+      parserOptions: parserOptions
     }, {
       code: ASSIGNMENT_SINGLE_LINE,
       options: [{declaration: false}],
-      ecmaFeatures: {jsx: true}
+      parserOptions: parserOptions
     }, {
       code: ASSIGNMENT_PAREN,
-      ecmaFeatures: {jsx: true}
+      parserOptions: parserOptions
     }, {
       code: ASSIGNMENT_NO_PAREN,
       options: [{assignment: false}],
-      ecmaFeatures: {jsx: true}
+      parserOptions: parserOptions
     }
   ],
 
   invalid: [
     {
       code: RETURN_NO_PAREN,
-      ecmaFeatures: {jsx: true},
+      parserOptions: parserOptions,
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: RETURN_NO_PAREN,
-      ecmaFeatures: {jsx: true},
+      parserOptions: parserOptions,
       options: [{return: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: DECLARATION_NO_PAREN,
-      ecmaFeatures: {jsx: true},
+      parserOptions: parserOptions,
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: DECLARATION_NO_PAREN,
-      ecmaFeatures: {jsx: true},
+      parserOptions: parserOptions,
       options: [{declaration: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: ASSIGNMENT_NO_PAREN,
-      ecmaFeatures: {jsx: true},
+      parserOptions: parserOptions,
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: ASSIGNMENT_NO_PAREN,
-      ecmaFeatures: {jsx: true},
+      parserOptions: parserOptions,
       options: [{assignment: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }

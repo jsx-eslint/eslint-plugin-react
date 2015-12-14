@@ -13,6 +13,13 @@ var eslint = require('eslint').linter;
 var rule = require('eslint/lib/rules/no-unused-vars');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 require('babel-eslint');
 
 // -----------------------------------------------------------------------------
@@ -32,34 +39,26 @@ ruleTester.run('no-unused-vars', rule, {
           return bar;\
         };\
         foo()',
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
         var App;\
         React.render(<App/>);',
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
         var App;\
         React.render(<App/>);',
       parser: 'babel-eslint',
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
           var a=1;\
           React.render(<img src={a} />);',
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
@@ -68,34 +67,25 @@ ruleTester.run('no-unused-vars', rule, {
           return <App />;\
         }\
         f();',
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
         var App;\
         <App.Hello />',
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
         var App;\
         <App:Hello />',
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
         class HelloMessage {}\
         <HelloMessage />',
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
@@ -106,17 +96,14 @@ ruleTester.run('no-unused-vars', rule, {
           }\
         }\
         <HelloMessage />',
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }
   ],
   invalid: [
     {
       code: '/*eslint jsx-uses-vars:1*/ var App;',
       errors: [{message: '"App" is defined but never used'}],
-      ecmaFeatures: {jsx: true}
+      parserOptions: parserOptions
     }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
@@ -124,18 +111,13 @@ ruleTester.run('no-unused-vars', rule, {
         var unused;\
         React.render(<App unused=""/>);',
       errors: [{message: '"unused" is defined but never used'}],
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
         class unused {}',
       errors: [{message: '"unused" is defined but never used'}],
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
@@ -149,10 +131,7 @@ ruleTester.run('no-unused-vars', rule, {
         message: '"HelloMessage" is defined but never used',
         line: 1
       }],
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
@@ -167,10 +146,7 @@ ruleTester.run('no-unused-vars', rule, {
         line: 1
       }],
       parser: 'babel-eslint',
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }
   ]
 });

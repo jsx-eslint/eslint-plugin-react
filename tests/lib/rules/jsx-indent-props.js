@@ -11,6 +11,13 @@
 var rule = require('../../../lib/rules/jsx-indent-props');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -22,7 +29,7 @@ ruleTester.run('jsx-indent-props', rule, {
       '<App foo',
       '/>'
     ].join('\n'),
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App',
@@ -30,7 +37,7 @@ ruleTester.run('jsx-indent-props', rule, {
       '/>'
     ].join('\n'),
     options: [2],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App',
@@ -38,7 +45,7 @@ ruleTester.run('jsx-indent-props', rule, {
       '/>'
     ].join('\n'),
     options: [0],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '  <App',
@@ -46,7 +53,7 @@ ruleTester.run('jsx-indent-props', rule, {
       '  />'
     ].join('\n'),
     options: [-2],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App',
@@ -54,7 +61,7 @@ ruleTester.run('jsx-indent-props', rule, {
       '/>'
     ].join('\n'),
     options: ['tab'],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -63,7 +70,7 @@ ruleTester.run('jsx-indent-props', rule, {
       '  foo',
       '/>'
     ].join('\n'),
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 4 space characters but found 2.'}]
   }, {
     code: [
@@ -72,7 +79,7 @@ ruleTester.run('jsx-indent-props', rule, {
       '/>'
     ].join('\n'),
     options: [2],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 2 space characters but found 4.'}]
   }, {
     code: [
@@ -81,7 +88,7 @@ ruleTester.run('jsx-indent-props', rule, {
       '/>'
     ].join('\n'),
     options: ['tab'],
-    ecmaFeatures: {jsx: true},
+    parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 1 tab character but found 0.'}]
   }]
 });

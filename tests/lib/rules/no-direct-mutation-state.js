@@ -11,6 +11,13 @@
 var rule = require('../../../lib/rules/no-direct-mutation-state');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 require('babel-eslint');
 
 // ------------------------------------------------------------------------------
@@ -28,9 +35,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var Hello = React.createClass({',
@@ -41,17 +46,13 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var Hello = "foo";',
       'module.exports = {};'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class Hello {',
@@ -61,11 +62,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n'),
-    ecmaFeatures: {
-      classes: true,
-      modules: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -77,9 +74,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Do not mutate state directly. Use setState().'
     }]
@@ -92,9 +87,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Do not mutate state directly. Use setState().'
     }]
@@ -107,9 +100,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Do not mutate state directly. Use setState().'
     }]
@@ -123,9 +114,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Do not mutate state directly. Use setState().',
       line: 3,
@@ -148,9 +137,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Do not mutate state directly. Use setState().'
     }]

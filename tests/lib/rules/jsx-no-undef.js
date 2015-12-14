@@ -13,6 +13,13 @@ var eslint = require('eslint').linter;
 var rule = require('../../../lib/rules/jsx-no-undef');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
@@ -22,35 +29,35 @@ eslint.defineRule('no-undef', require('eslint/lib/rules/no-undef'));
 ruleTester.run('jsx-no-undef', rule, {
   valid: [{
     code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);',
-    ecmaFeatures: {modules: true, jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);',
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '/*eslint no-undef:1*/ var React; React.render(<img />);',
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '/*eslint no-undef:1*/ var React; React.render(<x-gif />);',
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }],
   invalid: [{
     code: '/*eslint no-undef:1*/ var React; React.render(<App />);',
     errors: [{
       message: '\'App\' is not defined.'
     }],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '/*eslint no-undef:1*/ var React; React.render(<Appp.Foo />);',
     errors: [{
       message: '\'Appp\' is not defined.'
     }],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   },
   {
     code: '/*eslint no-undef:1*/ var React; React.render(<Apppp:Foo />);',
     errors: [{
       message: '\'Apppp\' is not defined.'
     }],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }]
 });

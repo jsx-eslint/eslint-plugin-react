@@ -10,6 +10,14 @@
 var rule = require('../../../lib/rules/forbid-prop-types');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    experimentalObjectRestSpread: true,
+    jsx: true
+  }
+};
+
 require('babel-eslint');
 
 // -----------------------------------------------------------------------------
@@ -32,9 +40,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var First = React.createClass({',
@@ -44,9 +50,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var First = React.createClass({',
@@ -61,9 +65,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var First = React.createClass({',
@@ -78,9 +80,7 @@ ruleTester.run('forbid-prop-types', rule, {
     options: [{
       forbid: ['any', 'object']
     }],
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var First = React.createClass({',
@@ -95,9 +95,7 @@ ruleTester.run('forbid-prop-types', rule, {
     options: [{
       forbid: ['any', 'array']
     }],
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var First = React.createClass({',
@@ -112,9 +110,7 @@ ruleTester.run('forbid-prop-types', rule, {
     options: [{
       forbid: ['any', 'array']
     }],
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class First extends React.Component {',
@@ -128,10 +124,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '};',
       'First.propTypes.justforcheck = React.PropTypes.string;'
     ].join('\n'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class First extends React.Component {',
@@ -143,10 +136,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  elem: PropTypes.instanceOf(HTMLElement)',
       '};'
     ].join('\n'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -184,13 +174,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    env: {
-      es6: true
-    },
-    ecmaFeatures: {
-      experimentalObjectRestSpread: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var Hello = React.createClass({',
@@ -203,9 +187,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -219,9 +201,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: ANY_ERROR_MESSAGE,
       line: 3,
@@ -239,9 +219,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: NUMBER_ERROR_MESSAGE,
       line: 3,
@@ -262,9 +240,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: ANY_ERROR_MESSAGE,
       line: 3,
@@ -282,9 +258,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: ARRAY_ERROR_MESSAGE,
       line: 3,
@@ -302,9 +276,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: ARRAY_ERROR_MESSAGE,
       line: 3,
@@ -322,9 +294,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: OBJECT_ERROR_MESSAGE,
       line: 3,
@@ -342,9 +312,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: OBJECT_ERROR_MESSAGE,
       line: 3,
@@ -363,9 +331,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: 2
   }, {
     code: [
@@ -380,9 +346,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: 1
   }, {
     code: [
@@ -403,9 +367,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: 2
   }, {
     code: [
@@ -428,10 +390,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '    o: React.PropTypes.object',
       '};'
     ].join('\n'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: 4
   }, {
     code: [
@@ -446,10 +405,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: 2
   }, {
     code: [
@@ -463,9 +419,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     options: [{
       forbid: ['instanceOf']
     }],
@@ -482,9 +436,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     options: [{
       forbid: ['object']
     }],

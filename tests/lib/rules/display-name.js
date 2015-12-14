@@ -13,6 +13,14 @@ var RuleTester = require('eslint').RuleTester;
 
 require('babel-eslint');
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    experimentalObjectRestSpread: true,
+    jsx: true
+  }
+};
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -29,9 +37,7 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -41,10 +47,7 @@ ruleTester.run('display-name', rule, {
       '}',
       'Hello.displayName = \'Hello\''
     ].join('\n'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class Hello {',
@@ -53,10 +56,7 @@ ruleTester.run('display-name', rule, {
       '  }',
       '}'
     ].join('\n'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class Hello extends Greetings {',
@@ -74,10 +74,7 @@ ruleTester.run('display-name', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -89,10 +86,7 @@ ruleTester.run('display-name', rule, {
       '  }',
       '}'
     ].join('\n'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -103,10 +97,7 @@ ruleTester.run('display-name', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var Hello = React.createClass({',
@@ -118,10 +109,7 @@ ruleTester.run('display-name', rule, {
     options: [{
       acceptTranspilerName: true
     }],
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -158,9 +146,7 @@ ruleTester.run('display-name', rule, {
     options: [{
       acceptTranspilerName: true
     }],
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var Hello = React.createClass({',
@@ -172,13 +158,7 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
-    env: {
-      es6: true
-    },
-    ecmaFeatures: {
-      experimentalObjectRestSpread: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'export default class {',
@@ -350,9 +330,7 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: false
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -364,9 +342,7 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -378,10 +354,7 @@ ruleTester.run('display-name', rule, {
       '  }',
       '}'
     ].join('\n'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -399,10 +372,7 @@ ruleTester.run('display-name', rule, {
     options: [{
       acceptTranspilerName: true
     }],
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Component definition is missing display name'
     }]

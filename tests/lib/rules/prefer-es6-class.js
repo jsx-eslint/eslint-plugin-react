@@ -11,6 +11,14 @@
 var rule = require('../../../lib/rules/prefer-es6-class');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  sourceType: 'module',
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 require('babel-eslint');
 
 // ------------------------------------------------------------------------------
@@ -29,10 +37,7 @@ ruleTester.run('prefer-es6-class', rule, {
       '}',
       'Hello.displayName = \'Hello\''
     ].join('\n'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   },
   {
     code: [
@@ -43,21 +48,14 @@ ruleTester.run('prefer-es6-class', rule, {
       '}',
       'Hello.displayName = \'Hello\''
     ].join('\n'),
-    ecmaFeatures: {
-      classes: true,
-      module: true,
-      modules: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   },
   {
     code: [
       'var Hello = "foo";',
       'module.exports = {};'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }
   ],
 
@@ -70,10 +68,7 @@ ruleTester.run('prefer-es6-class', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Component should use es6 class instead of createClass'
     }]

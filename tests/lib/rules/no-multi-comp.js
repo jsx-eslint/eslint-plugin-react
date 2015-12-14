@@ -11,6 +11,13 @@
 var rule = require('../../../lib/rules/no-multi-comp');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 require('babel-eslint');
 
 // ------------------------------------------------------------------------------
@@ -29,9 +36,7 @@ ruleTester.run('no-multi-comp', rule, {
       '  }',
       '});'
     ].join('\r'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -40,10 +45,7 @@ ruleTester.run('no-multi-comp', rule, {
       '  }',
       '}'
     ].join('\r'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var Heading = React.createClass({',
@@ -58,10 +60,7 @@ ruleTester.run('no-multi-comp', rule, {
       '  }',
       '});'
     ].join('\r'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'export default {',
@@ -100,10 +99,7 @@ ruleTester.run('no-multi-comp', rule, {
       '  }',
       '}'
     ].join('\r'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
+    parserOptions: parserOptions,
     options: [{
       ignoreStateless: true
     }]
@@ -122,9 +118,7 @@ ruleTester.run('no-multi-comp', rule, {
       '  }',
       '});'
     ].join('\r'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Declare only one React component per file',
       line: 6
@@ -147,10 +141,7 @@ ruleTester.run('no-multi-comp', rule, {
       '  }',
       '}'
     ].join('\r'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Declare only one React component per file',
       line: 6
@@ -183,10 +174,7 @@ ruleTester.run('no-multi-comp', rule, {
       '  }',
       '}'
     ].join('\r'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Declare only one React component per file',
       line: 4

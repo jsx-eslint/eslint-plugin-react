@@ -12,6 +12,13 @@
 var rule = require('../../../lib/rules/jsx-quotes');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
@@ -19,16 +26,16 @@ var RuleTester = require('eslint').RuleTester;
 var ruleTester = new RuleTester();
 ruleTester.run('jsx-quotes', rule, {
   valid: [
-    {code: '<App foo=\'bar\' />;', options: ['single'], ecmaFeatures: {jsx: true}},
-    {code: '<App foo="bar" />;', options: ['double'], ecmaFeatures: {jsx: true}},
-    {code: '<App foo="ba\'r" />;', options: ['single', 'avoid-escape'], ecmaFeatures: {jsx: true}},
-    {code: '<App foo=\'ba"r\' />;', options: ['double', 'avoid-escape'], ecmaFeatures: {jsx: true}},
-    {code: '<App>foo</App>;', options: ['single'], ecmaFeatures: {jsx: true}}
+    {code: '<App foo=\'bar\' />;', options: ['single'], parserOptions: parserOptions},
+    {code: '<App foo="bar" />;', options: ['double'], parserOptions: parserOptions},
+    {code: '<App foo="ba\'r" />;', options: ['single', 'avoid-escape'], parserOptions: parserOptions},
+    {code: '<App foo=\'ba"r\' />;', options: ['double', 'avoid-escape'], parserOptions: parserOptions},
+    {code: '<App>foo</App>;', options: ['single'], parserOptions: parserOptions}
   ],
   invalid: [
     {code: '<App foo="bar" />;',
-     errors: [{message: 'JSX attributes must use singlequote.'}], options: ['single'], ecmaFeatures: {jsx: true}},
+     errors: [{message: 'JSX attributes must use singlequote.'}], options: ['single'], parserOptions: parserOptions},
     {code: '<App foo=\'bar\' />;',
-     errors: [{message: 'JSX attributes must use doublequote.'}], options: ['double'], ecmaFeatures: {jsx: true}}
+     errors: [{message: 'JSX attributes must use doublequote.'}], options: ['double'], parserOptions: parserOptions}
   ]
 });

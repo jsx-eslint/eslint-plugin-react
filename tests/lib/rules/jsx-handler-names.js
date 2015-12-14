@@ -11,6 +11,13 @@
 var rule = require('../../../lib/rules/jsx-handler-names');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -21,76 +28,56 @@ ruleTester.run('jsx-handler-names', rule, {
     code: [
       '<TestComponent onChange={this.handleChange} />'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       '<TestComponent onChange={this.props.onChange} />'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       '<TestComponent onChange={this.props.onFoo} />'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       '<TestComponent isSelected={this.props.isSelected} />'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       '<TestComponent shouldDisplay={this.state.shouldDisplay} />'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       '<TestComponent shouldDisplay={arr[0].prop} />'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       '<TestComponent onChange={props.onChange} />'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }],
 
   invalid: [{
     code: [
       '<TestComponent onChange={this.doSomethingOnChange} />'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{message: 'Handler function for onChange prop key must begin with \'handle\''}]
   }, {
     code: [
       '<TestComponent handleChange={this.handleChange} />'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{message: 'Prop key for handleChange must begin with \'on\''}]
   }, {
     code: [
       '<TestComponent onChange={this.onChange} />'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{message: 'Handler function for onChange prop key must begin with \'handle\''}]
   }]
 });

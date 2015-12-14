@@ -10,6 +10,14 @@
 var rule = require('../../../lib/rules/jsx-sort-prop-types');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    experimentalObjectRestSpread: true,
+    jsx: true
+  }
+};
+
 require('babel-eslint');
 
 // -----------------------------------------------------------------------------
@@ -29,9 +37,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var First = React.createClass({',
@@ -41,9 +47,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var First = React.createClass({',
@@ -58,9 +62,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var First = React.createClass({',
@@ -78,9 +80,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
     options: [{
       ignoreCase: true
     }],
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var First = React.createClass({',
@@ -102,9 +102,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class First extends React.Component {',
@@ -118,10 +116,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '};',
       'First.propTypes.justforcheck = React.PropTypes.string;'
     ].join('\n'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class First extends React.Component {',
@@ -139,10 +134,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
     options: [{
       ignoreCase: true
     }],
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class Component extends React.Component {',
@@ -157,10 +149,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -201,13 +190,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    env: {
-      es6: true
-    },
-    ecmaFeatures: {
-      experimentalObjectRestSpread: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var First = React.createClass({',
@@ -225,9 +208,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
     options: [{
       callbacksLast: true
     }],
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class Component extends React.Component {',
@@ -246,10 +227,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       callbacksLast: true
     }],
     parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'class First extends React.Component {',
@@ -267,10 +245,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
     options: [{
       callbacksLast: true
     }],
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -285,9 +260,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       line: 4,
@@ -306,9 +279,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       line: 4,
@@ -330,9 +301,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
     options: [{
       ignoreCase: true
     }],
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       line: 4,
@@ -353,9 +322,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: 2
   }, {
     code: [
@@ -378,9 +345,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: 2
   }, {
     code: [
@@ -403,10 +368,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '    ZZ: React.PropTypes.string',
       '};'
     ].join('\n'),
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: 2
   }, {
     code: [
@@ -422,10 +384,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: 2
   }, {
     code: [
@@ -444,9 +403,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
     options: [{
       callbacksLast: true
     }],
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       line: 6,
@@ -471,10 +428,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       callbacksLast: true
     }],
     parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       line: 6,
@@ -498,10 +452,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
     options: [{
       callbacksLast: true
     }],
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       line: 10,
@@ -525,9 +476,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
     options: [{
       callbacksLast: true
     }],
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Callback prop types must be listed after all other prop types',
       line: 5,

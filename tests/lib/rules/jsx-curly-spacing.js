@@ -11,6 +11,13 @@
 var rule = require('../../../lib/rules/jsx-curly-spacing');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -19,27 +26,27 @@ var ruleTester = new RuleTester();
 ruleTester.run('jsx-curly-spacing', rule, {
   valid: [{
     code: '<App foo={bar} />;',
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '<App foo={bar} />;',
     options: ['never'],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '<App foo={ bar } />;',
     options: ['always'],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '<App foo={ bar } />;',
     options: ['always', {allowMultiline: false}],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '<App foo={{ bar:baz }} />;',
     options: ['never'],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '<App foo={ {bar:baz} } />;',
     options: ['always'],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App foo={',
@@ -47,7 +54,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     options: ['always'],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App foo={',
@@ -55,7 +62,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     options: ['always'],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App foo={',
@@ -63,13 +70,13 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     options: ['never'],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<div>{/* comment */}</div>;'
     ].join('\n'),
     options: ['never'],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -80,7 +87,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     }, {
       message: 'There should be no space before \'}\''
     }],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '<App foo={ bar } />;',
     options: ['never', {allowMultiline: false}],
@@ -89,7 +96,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     }, {
       message: 'There should be no space before \'}\''
     }],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '<App foo={bar} />;',
     options: ['always'],
@@ -98,7 +105,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     }, {
       message: 'A space is required before \'}\''
     }],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '<App foo={bar} />;',
     options: ['always', {allowMultiline: false}],
@@ -107,35 +114,35 @@ ruleTester.run('jsx-curly-spacing', rule, {
     }, {
       message: 'A space is required before \'}\''
     }],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '<App foo={ bar} />;',
     options: ['always'],
     errors: [{
       message: 'A space is required before \'}\''
     }],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '<App foo={bar } />;',
     options: ['always'],
     errors: [{
       message: 'A space is required after \'{\''
     }],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '<App foo={ bar} />;',
     options: ['never'],
     errors: [{
       message: 'There should be no space after \'{\''
     }],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: '<App foo={bar } />;',
     options: ['never'],
     errors: [{
       message: 'There should be no space before \'}\''
     }],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App foo={',
@@ -148,7 +155,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     }, {
       message: 'There should be no space before \'}\''
     }],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }, {
     code: [
       '<App foo={',
@@ -161,6 +168,6 @@ ruleTester.run('jsx-curly-spacing', rule, {
     }, {
       message: 'There should be no newline before \'}\''
     }],
-    ecmaFeatures: {jsx: true}
+    parserOptions: parserOptions
   }]
 });

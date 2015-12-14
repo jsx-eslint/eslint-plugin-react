@@ -11,6 +11,13 @@
 var rule = require('../../../lib/rules/jsx-pascal-case');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -19,62 +26,40 @@ var ruleTester = new RuleTester();
 ruleTester.run('jsx-pascal-case', rule, {
   valid: [{
     code: '<testComponent />',
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: '<test_component />',
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: '<TestComponent />',
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: '<CSSTransitionGroup />',
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: '<BetterThanCSS />',
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: '<TestComponent><div /></TestComponent>',
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: '<Test1Component />',
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: '<TestComponent1 />',
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: '<T3stComp0nent />',
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }],
 
   invalid: [{
     code: '<Test_component />',
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{message: 'Imported JSX component Test_component must be in PascalCase'}]
   }, {
     code: '<TEST_COMPONENT />',
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{message: 'Imported JSX component TEST_COMPONENT must be in PascalCase'}]
   }]
 });

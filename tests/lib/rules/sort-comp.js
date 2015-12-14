@@ -11,6 +11,13 @@
 var rule = require('../../../lib/rules/sort-comp');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 require('babel-eslint');
 
 // ------------------------------------------------------------------------------
@@ -45,9 +52,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     // Must validate a class with missing groups
     code: [
@@ -57,9 +62,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     // Must put a custom method in 'everything-else'
     code: [
@@ -70,9 +73,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     // Must allow us to re-order the groups
     code: [
@@ -91,9 +92,7 @@ ruleTester.run('sort-comp', rule, {
         'everything-else'
       ]
     }],
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     // Must allow us to create a RegExp-based group
     code: [
@@ -113,10 +112,7 @@ ruleTester.run('sort-comp', rule, {
         '/on.*/'
       ]
     }],
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     // Must allow us to create a named group
     code: [
@@ -141,10 +137,7 @@ ruleTester.run('sort-comp', rule, {
         ]
       }
     }],
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     // Must allow a method to be in different places if it's matches multiple patterns
     code: [
@@ -162,10 +155,7 @@ ruleTester.run('sort-comp', rule, {
         '/.*Click/'
       ]
     }],
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     // Must allow us to use 'constructor' as a method name
     code: [
@@ -185,10 +175,7 @@ ruleTester.run('sort-comp', rule, {
         'render'
       ]
     }],
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     // Must ignore stateless components
     code: [
@@ -217,9 +204,7 @@ ruleTester.run('sort-comp', rule, {
       '  displayName : \'Hello\',',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{message: 'render must be placed after displayName'}]
   }, {
     // Must run rule when render uses createElement instead of JSX
@@ -231,9 +216,7 @@ ruleTester.run('sort-comp', rule, {
       '  displayName : \'Hello\',',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{message: 'render must be placed after displayName'}]
   }, {
     // Must force a custom method to be placed before render
@@ -245,9 +228,7 @@ ruleTester.run('sort-comp', rule, {
       '  onClick: function() {},',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{message: 'render must be placed after onClick'}]
   }, {
     // Must force a custom method to be placed after render if no 'everything-else' group is specified
@@ -266,9 +247,7 @@ ruleTester.run('sort-comp', rule, {
         'render'
       ]
     }],
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{message: 'onClick must be placed after render'}]
   }, {
     // Must validate static properties
@@ -281,10 +260,7 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{message: 'render must be placed after displayName'}]
   }]
 });

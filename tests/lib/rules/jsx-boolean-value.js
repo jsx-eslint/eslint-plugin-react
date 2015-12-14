@@ -11,6 +11,13 @@
 var rule = require('../../../lib/rules/jsx-boolean-value');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -18,16 +25,16 @@ var RuleTester = require('eslint').RuleTester;
 var ruleTester = new RuleTester();
 ruleTester.run('jsx-boolean-value', rule, {
   valid: [
-    {code: '<App foo />;', options: ['never'], ecmaFeatures: {jsx: true}},
-    {code: '<App foo />;', ecmaFeatures: {jsx: true}},
-    {code: '<App foo={true} />;', options: ['always'], ecmaFeatures: {jsx: true}}
+    {code: '<App foo />;', options: ['never'], parserOptions: parserOptions},
+    {code: '<App foo />;', parserOptions: parserOptions},
+    {code: '<App foo={true} />;', options: ['always'], parserOptions: parserOptions}
   ],
   invalid: [
     {code: '<App foo={true} />;', options: ['never'],
-     errors: [{message: 'Value must be omitted for boolean attributes'}], ecmaFeatures: {jsx: true}},
+     errors: [{message: 'Value must be omitted for boolean attributes'}], parserOptions: parserOptions},
     {code: '<App foo={true} />;',
-     errors: [{message: 'Value must be omitted for boolean attributes'}], ecmaFeatures: {jsx: true}},
+     errors: [{message: 'Value must be omitted for boolean attributes'}], parserOptions: parserOptions},
     {code: '<App foo />;', options: ['always'],
-     errors: [{message: 'Value must be set for boolean attributes'}], ecmaFeatures: {jsx: true}}
+     errors: [{message: 'Value must be set for boolean attributes'}], parserOptions: parserOptions}
   ]
 });

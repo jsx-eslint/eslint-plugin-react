@@ -11,6 +11,13 @@
 var rule = require('../../../lib/rules/self-closing-comp');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -21,52 +28,38 @@ ruleTester.run('self-closing-comp', rule, {
   valid: [
     {
       code: 'var contentContainer = <div className="content"></div>;',
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: 'var HelloJohn = <Hello name="John" />;',
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: 'var Profile = <Hello name="John"><img src="picture.png" /></Hello>;',
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: '\
       <Hello>\
         <Hello name="John" />\
       </Hello>',
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }
   ],
 
   invalid: [
     {
       code: 'var HelloJohn = <Hello name="John"></Hello>;',
-      ecmaFeatures: {
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [{
         message: 'Empty components are self-closing'
       }]
     }, {
       code: 'var HelloJohn = <Hello name="John">\n</Hello>;',
-      ecmaFeatures: {
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [{
         message: 'Empty components are self-closing'
       }]
     }, {
       code: 'var HelloJohn = <Hello name="John"> </Hello>;',
-      ecmaFeatures: {
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [{
         message: 'Empty components are self-closing'
       }]

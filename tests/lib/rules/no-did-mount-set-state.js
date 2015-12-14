@@ -11,6 +11,13 @@
 var rule = require('../../../lib/rules/no-did-mount-set-state');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 require('babel-eslint');
 
 // ------------------------------------------------------------------------------
@@ -28,18 +35,14 @@ ruleTester.run('no-did-mount-set-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var Hello = React.createClass({',
       '  componentDidMount: function() {}',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var Hello = React.createClass({',
@@ -49,9 +52,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var Hello = React.createClass({',
@@ -65,9 +66,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       '});'
     ].join('\n'),
     options: ['allow-in-func'],
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }, {
     code: [
       'var Hello = React.createClass({',
@@ -83,9 +82,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
     ].join('\n'),
     parser: 'babel-eslint',
     options: ['allow-in-func'],
-    ecmaFeatures: {
-      jsx: true
-    }
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -98,9 +95,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Do not use setState in componentDidMount'
     }]
@@ -129,9 +124,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       '});'
     ].join('\n'),
     options: ['allow-in-func'],
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Do not use setState in componentDidMount'
     }]
@@ -162,9 +155,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Do not use setState in componentDidMount'
     }]
@@ -196,9 +187,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Do not use setState in componentDidMount'
     }]
@@ -227,9 +216,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       '});'
     ].join('\n'),
     parser: 'babel-eslint',
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Do not use setState in componentDidMount'
     }]

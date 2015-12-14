@@ -11,6 +11,14 @@
 var rule = require('../../../lib/rules/prop-types');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    experimentalObjectRestSpread: true,
+    jsx: true
+  }
+};
+
 require('babel-eslint');
 
 // ------------------------------------------------------------------------------
@@ -32,9 +40,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'var Hello = React.createClass({',
@@ -46,9 +52,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'var Hello = React.createClass({',
@@ -57,9 +61,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'var Hello = React.createClass({',
@@ -71,9 +73,7 @@ ruleTester.run('prop-types', rule, {
       options: [{
         ignore: ['children']
       }],
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'var Hello = React.createClass({',
@@ -83,9 +83,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'var Hello = React.createClass({',
@@ -95,9 +93,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'var Hello = React.createClass({',
@@ -107,9 +103,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -118,10 +112,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -134,10 +125,7 @@ ruleTester.run('prop-types', rule, {
         '};',
         'Hello.propTypes.lastname = React.PropTypes.string;'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'var Hello = React.createClass({',
@@ -152,9 +140,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello {',
@@ -163,10 +149,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello {',
@@ -174,10 +157,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -191,11 +171,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        destructuring: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -209,11 +185,7 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       parser: 'babel-eslint',
-      ecmaFeatures: {
-        classes: true,
-        destructuring: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -223,11 +195,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        destructuring: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -240,11 +208,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      ecmaFeatures: {
-        classes: true,
-        destructuring: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -256,10 +220,7 @@ ruleTester.run('prop-types', rule, {
         '  \'firstname\': React.PropTypes.string',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -274,10 +235,7 @@ ruleTester.run('prop-types', rule, {
         '  \'firstname\': React.PropTypes.string',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -291,10 +249,7 @@ ruleTester.run('prop-types', rule, {
         '  b: React.PropTypes.string',
         '});'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -311,10 +266,7 @@ ruleTester.run('prop-types', rule, {
         '};',
         'Hello.propTypes.a.b.c = React.PropTypes.number;'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -335,10 +287,7 @@ ruleTester.run('prop-types', rule, {
         '  )',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -361,10 +310,7 @@ ruleTester.run('prop-types', rule, {
         '  )',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -380,10 +326,7 @@ ruleTester.run('prop-types', rule, {
         '  ])',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -407,10 +350,7 @@ ruleTester.run('prop-types', rule, {
         '  ])',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -424,10 +364,7 @@ ruleTester.run('prop-types', rule, {
         '  a: React.PropTypes.instanceOf(Hello)',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -455,10 +392,7 @@ ruleTester.run('prop-types', rule, {
         '  stri: React.PropTypes.string',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -488,10 +422,7 @@ ruleTester.run('prop-types', rule, {
         '  "some.value": React.PropTypes.string',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -504,10 +435,7 @@ ruleTester.run('prop-types', rule, {
         '  "arr": React.PropTypes.array',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -522,10 +450,7 @@ ruleTester.run('prop-types', rule, {
         '  )',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'var TestComp1 = React.createClass({',
@@ -541,10 +466,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -593,10 +515,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'var Hello = React.createClass({',
@@ -609,9 +528,7 @@ ruleTester.run('prop-types', rule, {
         '});'
       ].join('\n'),
       options: [{customValidators: ['CustomValidator']}],
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'var Hello = React.createClass({',
@@ -626,9 +543,7 @@ ruleTester.run('prop-types', rule, {
         '});'
       ].join('\n'),
       options: [{customValidators: ['CustomValidator']}],
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'var Hello = React.createClass({',
@@ -643,9 +558,7 @@ ruleTester.run('prop-types', rule, {
         '});'
       ].join('\n'),
       options: [{customValidators: ['CustomValidator']}],
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'var Hello = React.createClass({',
@@ -660,9 +573,7 @@ ruleTester.run('prop-types', rule, {
         '});'
       ].join('\n'),
       options: [{customValidators: ['CustomValidator']}],
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'var Hello = React.createClass({',
@@ -675,9 +586,7 @@ ruleTester.run('prop-types', rule, {
         '});'
       ].join('\n'),
       options: [{customValidators: ['CustomValidator']}],
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Comp1 extends Component {',
@@ -715,13 +624,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      env: {
-        es6: true
-      },
-      ecmaFeatures: {
-        experimentalObjectRestSpread: true,
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -731,12 +634,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      env: {
-        es6: true
-      },
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -750,12 +648,7 @@ ruleTester.run('prop-types', rule, {
         '  users: React.PropTypes.arrayOf(React.PropTypes.object)',
         '};'
       ].join('\n'),
-      env: {
-        es6: true
-      },
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -765,12 +658,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      env: {
-        es6: true
-      },
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -928,13 +816,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      env: {
-        es6: true
-      },
-      ecmaFeatures: {
-        jsx: true,
-        experimentalObjectRestSpread: true
-      }
+      parserOptions: parserOptions
     }, {
       code: [
         'const statelessComponent = (props) => {',
@@ -947,12 +829,7 @@ ruleTester.run('prop-types', rule, {
         '  someProp: PropTypes.string',
         '};'
       ].join('\n'),
-      env: {
-        es6: true
-      },
-      ecmaFeatures: {
-        jsx: true
-      }
+      parserOptions: parserOptions
     }, {
       // Validation is ignored on reassigned props object
       code: [
@@ -991,9 +868,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      ecmaFeatures: {
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [{
         message: '\'name\' is missing in props validation',
         line: 3,
@@ -1008,10 +883,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [{
         message: '\'name\' is missing in props validation',
         line: 3,
@@ -1029,10 +901,7 @@ ruleTester.run('prop-types', rule, {
         '  firstname: React.PropTypes.string',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [{
         message: '\'lastname\' is missing in props validation'
       }]
@@ -1052,10 +921,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [{
         message: '\'name\' is missing in props validation'
       }]
@@ -1075,9 +941,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      ecmaFeatures: {
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [{
         message: '\'propWithoutTypeDefinition\' is missing in props validation'
       }, {
@@ -1095,11 +959,7 @@ ruleTester.run('prop-types', rule, {
         '  firstname: React.PropTypes.string',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        destructuring: true,
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [{
         message: '\'lastname\' is missing in props validation'
       }]
@@ -1115,10 +975,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [{
         message: '\'firstname\' is missing in props validation'
       }]
@@ -1135,10 +992,7 @@ ruleTester.run('prop-types', rule, {
         '  })',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [{
         message: '\'a.b\' is missing in props validation'
       }]
@@ -1157,10 +1011,7 @@ ruleTester.run('prop-types', rule, {
         '  })',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [{
         message: '\'a.b.c\' is missing in props validation'
       }]
@@ -1181,10 +1032,7 @@ ruleTester.run('prop-types', rule, {
         '  )',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [
         {message: '\'a.b.c\' is missing in props validation'},
         {message: '\'a.__.d\' is missing in props validation'},
@@ -1210,10 +1058,7 @@ ruleTester.run('prop-types', rule, {
         '  )',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [
         {message: '\'a[].c\' is missing in props validation'},
         {message: '\'a[].d\' is missing in props validation'},
@@ -1242,10 +1087,7 @@ ruleTester.run('prop-types', rule, {
         '  ])',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [
         {message: '\'a.length\' is missing in props validation'},
         {message: '\'a.b\' is missing in props validation'}
@@ -1280,10 +1122,7 @@ ruleTester.run('prop-types', rule, {
         'Hello.propTypes = {',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [
         {message: '\'some.value\' is missing in props validation'}
       ]
@@ -1298,10 +1137,7 @@ ruleTester.run('prop-types', rule, {
         'Hello.propTypes = {',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [
         {message: '\'arr\' is missing in props validation'}
       ]
@@ -1319,10 +1155,7 @@ ruleTester.run('prop-types', rule, {
         '  )',
         '};'
       ].join('\n'),
-      ecmaFeatures: {
-        classes: true,
-        jsx: true
-      },
+      parserOptions: parserOptions,
       errors: [
         {message: '\'arr[].some.value\' is missing in props validation'}
       ]
