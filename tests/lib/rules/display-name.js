@@ -431,5 +431,71 @@ ruleTester.run('display-name', rule, {
     errors: [{
       message: 'Component definition is missing display name'
     }]
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  displayName: \'Hello\',',
+      '  render: function() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      forbidExplicitDefinition: true
+    }],
+    errors: [{
+      message: 'Explicit display name definition is forbidden'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}',
+      'Hello.displayName = \'Hello\''
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      forbidExplicitDefinition: true
+    }],
+    errors: [{
+      message: 'Explicit display name definition is forbidden'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  static get displayName() {',
+      '    return \'Hello\';',
+      '  }',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      forbidExplicitDefinition: true
+    }],
+    errors: [{
+      message: 'Explicit display name definition is forbidden'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  static displayName = \'Widget\'',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      forbidExplicitDefinition: true
+    }],
+    errors: [{
+      message: 'Explicit display name definition is forbidden'
+    }]
   }
 ]});

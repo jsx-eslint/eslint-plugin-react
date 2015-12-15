@@ -29,7 +29,10 @@ var Hello = React.createClass({
 
 ```js
 ...
-"display-name": [<enabled>, { "acceptTranspilerName": <boolean> }]
+"display-name": [<enabled>, {
+  "acceptTranspilerName": <boolean>,
+  "forbidExplicitDefinition": <boolean>
+}]
 ...
 ```
 
@@ -83,6 +86,54 @@ function HelloComponent() {
   });
 }
 module.exports = HelloComponent();
+```
+
+### `forbidExplicitDefinition`
+
+When `true` the rule will not accept any explicitly defined `displayName` property, allowing for the name to **only** be set by the transpiler.
+
+**Note:** Setting this rule to `true` will also set `acceptTranspilerName` to `true`.
+
+The same patterns accepted when `acceptTranspilerName` is `true` will also be accepted when this rule is on.
+
+The following patterns will cause warnings:
+
+```js
+var Hello = React.createClass({
+  displayName: 'Hello',
+  render: function() {
+    return <div>Hello {this.props.name}</div>;
+  }
+});
+```
+
+```js
+class Hello extends React.Component {
+  render() {
+    return <div>Hello {this.props.name}</div>;
+  }
+}
+Hello.displayName = 'Hello';
+```
+
+```js
+class Hello extends React.Component {
+  static get displayName() {
+    return 'Hello';
+  }
+  render() {
+    return <div>Hello {this.props.name}</div>;
+  },
+}
+```
+
+```js
+class Hello extends React.Component {
+  static displayName = 'Widget'
+  render() {
+    return <div>Hello {this.props.name}</div>;
+  }
+}
 ```
 
 ## About component detection
