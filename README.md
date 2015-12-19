@@ -57,6 +57,7 @@ Finally, enable all of the rules that you would like to use.
     "react/jsx-max-props-per-line": 1,
     "react/jsx-no-bind": 1,
     "react/jsx-no-duplicate-props": 1,
+    "react/jsx-no-is-mounted": 1,
     "react/jsx-no-literals": 1,
     "react/jsx-no-undef": 1,
     "react/jsx-pascal-case": 1,
@@ -110,6 +111,7 @@ Finally, enable all of the rules that you would like to use.
 * [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of `setState` in `componentDidMount`
 * [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of `setState` in `componentDidUpdate`
 * [no-direct-mutation-state](docs/rules/no-direct-mutation-state.md): Prevent direct mutation of `this.state`
+* [no-is-mounted](docs/rules/no-is-mounted.md): Prevent usage of `isMounted`
 * [no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
 * [no-set-state](docs/rules/no-set-state.md): Prevent usage of `setState`
 * [no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property
