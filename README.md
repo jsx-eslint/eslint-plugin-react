@@ -123,6 +123,10 @@ Finally, enable all of the rules that you would like to use.
 * [sort-comp](docs/rules/sort-comp.md): Enforce component methods order
 * [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX
 
+## React Native
+
+If you're searching for React Native specific linting rules, check out [eslint-plugin-react-native](https://github.com/Intellicode/eslint-plugin-react-native).
+
 # License
 
 ESLint-plugin-React is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
