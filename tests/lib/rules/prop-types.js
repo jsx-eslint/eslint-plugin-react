@@ -1408,6 +1408,24 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {message: '\'name\' is missing in props validation'}
       ]
+    }, {
+      code: [
+        'var propTypes = {',
+        '  firstname: React.PropTypes.string',
+        '};',
+        'class Test extends React.Component {',
+        '  render() {',
+        '    return (',
+        '      <div>{this.props.firstname} {this.props.lastname}</div>',
+        '    );',
+        '  }',
+        '}',
+        'Test.propTypes = propTypes;'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'lastname\' is missing in props validation'}
+      ]
     }
   ]
 });
