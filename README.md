@@ -33,10 +33,24 @@ Add `plugins` section and specify ESLint-plugin-React as a plugin.
 
 If it is not already the case you must also configure `ESLint` to support JSX.
 
+With ESLint 1.x.x:
+
 ```json
 {
   "ecmaFeatures": {
     "jsx": true
+  }
+}
+```
+
+With ESLint 2.x.x:
+
+```json
+{
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
   }
 }
 ```
