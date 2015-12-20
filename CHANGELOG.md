@@ -3,6 +3,27 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.12.0] - 2015-12-20
+### Added
+* Add `no-deprecated` rule ([#356][] @graue)
+* Add `no-is-mounted` rule ([#37][] @lencioni)
+* Add `never` option to `prefer-es6-class` rule ([#359][] @pwmckenna)
+
+### Fixed
+* Fix `jsx-pascal-case` to stop checking lower cased components ([#329][])
+* Fix crash in component detection class ([#364][])
+
+### Changed
+* Add link to [eslint-plugin-react-native](https://github.com/Intellicode/eslint-plugin-react-native) in Readme
+* Update dependencies
+
+[3.12.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.11.3...v3.12.0
+[#356]: https://github.com/yannickcr/eslint-plugin-react/pull/356
+[#37]: https://github.com/yannickcr/eslint-plugin-react/issues/37
+[#359]: https://github.com/yannickcr/eslint-plugin-react/pull/359
+[#329]: https://github.com/yannickcr/eslint-plugin-react/issues/329
+[#364]: https://github.com/yannickcr/eslint-plugin-react/issues/364
+
 ## [3.11.3] - 2015-12-05
 ### Fixed
 * Fix crash in `prop-types` when reassigning props ([#345][])
@@ -146,8 +167,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [3.6.3] - 2015-10-20
 ### Fixed
-* Fix `display-name` for stateless components ([#256][]) 
-* Fix `prop-types` props validation in constructor ([#259][]) 
+* Fix `display-name` for stateless components ([#256][])
+* Fix `prop-types` props validation in constructor ([#259][])
 * Fix typo in README ([#261][] @chiedojohn)
 
 [3.6.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.6.2...v3.6.3
@@ -658,7 +679,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [1.6.0] - 2015-03-22
 ### Added
 * Add `jsx-no-undef` rule
-* Add `jsx-quotes` rule ([#12][]) 
+* Add `jsx-quotes` rule ([#12][])
 * Add `@jsx` pragma support ([#23][])
 
 ### Changed
