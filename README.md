@@ -129,7 +129,7 @@ Finally, enable all of the rules that you would like to use.
 * [no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
 * [no-set-state](docs/rules/no-set-state.md): Prevent usage of `setState`
 * [no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property
-* [prefer-es6-class](docs/rules/prefer-es6-class.md): Prefer es6 class instead of createClass for React Components
+* [prefer-es6-class](docs/rules/prefer-es6-class.md): Enforce ES5 or ES6 class for React Components
 * [prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
 * [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing `React` when using JSX
 * [require-extension](docs/rules/require-extension.md): Restrict file extensions that may be required

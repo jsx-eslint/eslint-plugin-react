@@ -1,27 +1,59 @@
-ES6 class bodies are more terse than traditional object literals. Methods do not require a `function` keyword and no commas are needed to separate them. This refactoring looks as such:
+# Enforce ES5 or ES6 class for React Components (prefer-es6-class)
 
-Invalid:
+React offers you two way to create traditional components: using the ES5 `React.createClass` method or the new ES6 class system. This rule allow you to enforce one way or another.
+
+## Rule Options
 
 ```js
-var ExampleComponent = React.createClass({
- render: function() { 
-  return <div onClick={this._handleClick}>Hello, world.</div>;
- },
- _handleClick: function() {
-  console.log(this);
- }
+...
+"prefer-es6-class": [<enabled>, <mode>]
+...
+```
+
+### `always` mode
+
+Will enforce ES6 classes for React Components. This is the default mode.
+
+The following patterns are considered warnings:
+
+```js
+var Hello = React.createClass({
+  render: function() {
+    return <div>Hello {this.props.name}</div>;
+  }
 });
 ```
 
-Valid:
+The following patterns are not considered warnings:
 
 ```js
-class ExampleComponent extends React.Component {
- render() { 
-  return <div onClick={this._handleClick}>Hello, world.</div>;
- }
- _handleClick() {
-  console.log(this);
- }
+class Hello extends React.Component {
+  render() {
+    return <div>Hello {this.props.name}</div>;
+  }
 }
+```
+
+### `never` mode
+
+Will enforce ES5 classes for React Components
+
+The following patterns are considered warnings:
+
+```js
+class Hello extends React.Component {
+  render() {
+    return <div>Hello {this.props.name}</div>;
+  }
+}
+```
+
+The following patterns are not considered warnings:
+
+```js
+var Hello = React.createClass({
+  render: function() {
+    return <div>Hello {this.props.name}</div>;
+  }
+});
 ```
