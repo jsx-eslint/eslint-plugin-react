@@ -3,6 +3,28 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.13.0] - 2015-12-24
+### Added
+* Add `no-string-refs` rule ([#341][] @Intellicode)
+* Add support for propTypes assigned via a variable in `prop-types` ([#355][])
+
+### Fixed
+* Fix `never` option in `prefer-es6-class`
+* Fix `jsx-key` false-positives ([#320][] @silvenon)
+
+### Changed
+* Documentation improvements ([#368][] @lencioni, [#370][] @tmcw, [#371][])
+* Update dependencies
+
+[3.13.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.12.0...v3.13.0
+[#341]: https://github.com/yannickcr/eslint-plugin-react/issues/341
+[#355]: https://github.com/yannickcr/eslint-plugin-react/issues/355
+[#320]: https://github.com/yannickcr/eslint-plugin-react/issues/320
+
+[#368]: https://github.com/yannickcr/eslint-plugin-react/pull/368
+[#370]: https://github.com/yannickcr/eslint-plugin-react/pull/370
+[#371]: https://github.com/yannickcr/eslint-plugin-react/issues/371
+
 ## [3.12.0] - 2015-12-20
 ### Added
 * Add `no-deprecated` rule ([#356][] @graue)
