@@ -25,6 +25,8 @@ var parserOptions = {
 var ruleTester = new RuleTester();
 ruleTester.run('jsx-key', rule, {
   valid: [
+    {code: 'fn()', parserOptions: parserOptions},
+    {code: '[1, 2, 3].map(function () {})', parserOptions: parserOptions},
     {code: '<App />;', parserOptions: parserOptions},
     {code: '[<App key={0} />, <App key={1} />];', parserOptions: parserOptions},
     {code: '[1, 2, 3].map(function(x) { return <App key={x} /> });', parserOptions: parserOptions},
