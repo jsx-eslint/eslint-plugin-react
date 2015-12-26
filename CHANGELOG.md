@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.13.1] - 2015-12-26
+### Fixed
+* Fix crash in `jsx-key` ([#373][] @lukekarrys)
+
+[3.13.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.13.0...v3.13.1
+[#373]: https://github.com/yannickcr/eslint-plugin-react/issues/373
+
 ## [3.13.0] - 2015-12-24
 ### Added
 * Add `no-string-refs` rule ([#341][] @Intellicode)
