@@ -59,6 +59,11 @@ ruleTester.run('jsx-handler-names', rule, {
       '<TestComponent onChange={props.onChange} />'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: [
+      '<TestComponent ref={this.handleRef} />'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
