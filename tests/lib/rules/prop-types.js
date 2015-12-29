@@ -19,6 +19,12 @@ var parserOptions = {
   }
 };
 
+var settings = {
+  react: {
+    pragma: 'Foo'
+  }
+};
+
 require('babel-eslint');
 
 // ------------------------------------------------------------------------------
@@ -1421,6 +1427,42 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}',
         'Test.propTypes = propTypes;'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'lastname\' is missing in props validation'}
+      ]
+    }, {
+      code: [
+        'class Test extends Foo.Component {',
+        '  render() {',
+        '    return (',
+        '      <div>{this.props.firstname} {this.props.lastname}</div>',
+        '    );',
+        '  }',
+        '}',
+        'Test.propTypes = {',
+        '  firstname: React.PropTypes.string',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      settings: settings,
+      errors: [
+        {message: '\'lastname\' is missing in props validation'}
+      ]
+    }, {
+      code: [
+        '/** @jsx Foo */',
+        'class Test extends Foo.Component {',
+        '  render() {',
+        '    return (',
+        '      <div>{this.props.firstname} {this.props.lastname}</div>',
+        '    );',
+        '  }',
+        '}',
+        'Test.propTypes = {',
+        '  firstname: React.PropTypes.string',
+        '};'
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [

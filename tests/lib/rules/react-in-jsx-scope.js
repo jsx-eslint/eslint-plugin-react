@@ -20,6 +20,12 @@ var parserOptions = {
   }
 };
 
+var settings = {
+  react: {
+    pragma: 'Foo'
+  }
+};
+
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
@@ -46,7 +52,8 @@ ruleTester.run('react-in-jsx-scope', rule, {
       '});',
       'export default Button;'
     ].join('\n'),
-    parserOptions: parserOptions}
+    parserOptions: parserOptions},
+    {code: 'var Foo, App; <App />;', settings: settings, parserOptions: parserOptions}
   ],
   invalid: [
     {code: 'var App, a = <App />;',
@@ -58,6 +65,8 @@ ruleTester.run('react-in-jsx-scope', rule, {
     {code: '/** @jsx React.DOM */ var a = <img />;',
      errors: [{message: '\'React\' must be in scope when using JSX'}], parserOptions: parserOptions},
     {code: '/** @jsx Foo.bar */ var React, a = <img />;',
-     errors: [{message: '\'Foo\' must be in scope when using JSX'}], parserOptions: parserOptions}
+     errors: [{message: '\'Foo\' must be in scope when using JSX'}], parserOptions: parserOptions},
+    {code: 'var React, a = <img />;',
+     errors: [{message: '\'Foo\' must be in scope when using JSX'}], settings: settings, parserOptions: parserOptions}
   ]
 });

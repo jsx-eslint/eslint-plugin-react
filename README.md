@@ -31,6 +31,18 @@ Add `plugins` section and specify ESLint-plugin-React as a plugin.
 }
 ```
 
+You can also specify some settings that will be shared across all the plugin rules.
+
+```js
+{
+  "settings": {
+    "react": {
+      "pragma": "React" // Pragma to use, default to "React"
+    }
+  }
+}
+```
+
 If it is not already the case you must also configure `ESLint` to support JSX.
 
 With ESLint 1.x.x:

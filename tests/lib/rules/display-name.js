@@ -21,6 +21,12 @@ var parserOptions = {
   }
 };
 
+var settings = {
+  react: {
+    pragma: 'Foo'
+  }
+};
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -405,6 +411,38 @@ ruleTester.run('display-name', rule, {
   }, {
     code: [
       'var Hello = React.createClass({',
+      '  _renderHello: function() {',
+      '    return <span>Hello {this.props.name}</span>;',
+      '  },',
+      '  render: function() {',
+      '    return <div>{this._renderHello()}</div>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: [
+      'var Hello = Foo.createClass({',
+      '  _renderHello: function() {',
+      '    return <span>Hello {this.props.name}</span>;',
+      '  },',
+      '  render: function() {',
+      '    return <div>{this._renderHello()}</div>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    settings: settings,
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: [
+      '/** @jsx Foo */',
+      'var Hello = Foo.createClass({',
       '  _renderHello: function() {',
       '    return <span>Hello {this.props.name}</span>;',
       '  },',
