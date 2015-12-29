@@ -67,6 +67,7 @@ Finally, enable all of the rules that you would like to use.
     "react/jsx-curly-spacing": 1,
     "react/jsx-handler-names": 1,
     "react/jsx-indent-props": 1,
+    "react/jsx-indent": 1,
     "react/jsx-key": 1,
     "react/jsx-max-props-per-line": 1,
     "react/jsx-no-bind": 1,
@@ -109,6 +110,7 @@ Finally, enable all of the rules that you would like to use.
 * [jsx-curly-spacing](docs/rules/jsx-curly-spacing.md): Enforce or disallow spaces inside of curly braces in JSX attributes
 * [jsx-handler-names](docs/rules/jsx-handler-names.md): Enforce event handler naming conventions in JSX
 * [jsx-indent-props](docs/rules/jsx-indent-props.md): Validate props indentation in JSX
+* [jsx-indent](docs/rules/jsx-indent.md): Validate JSX indentation
 * [jsx-key](docs/rules/jsx-key.md): Validate JSX has key prop when in array or iterator
 * [jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md): Limit maximum of props on a single line in JSX
 * [jsx-no-bind](docs/rules/jsx-no-bind.md): Prevent usage of `.bind()` and arrow functions in JSX props
