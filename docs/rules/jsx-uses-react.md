@@ -50,7 +50,7 @@ var Hello = <div>Hello {this.props.name}</div>;
 
 ### `pragma`
 
-**Deprecation notice**: This option is deprecated, please use the [shared settings](README.md#configuration) to specify a custom pragma.
+**Deprecation notice**: This option is deprecated, please use the [shared settings](/README.md#configuration) to specify a custom pragma.
 
 As an alternative to specifying the above pragma in each source file, you can specify
 this configuration option:
