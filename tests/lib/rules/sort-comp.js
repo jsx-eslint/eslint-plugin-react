@@ -205,7 +205,7 @@ ruleTester.run('sort-comp', rule, {
       '});'
     ].join('\n'),
     parserOptions: parserOptions,
-    errors: [{message: 'render must be placed after displayName'}]
+    errors: [{message: 'render should be placed after displayName'}]
   }, {
     // Must run rule when render uses createElement instead of JSX
     code: [
@@ -217,7 +217,7 @@ ruleTester.run('sort-comp', rule, {
       '});'
     ].join('\n'),
     parserOptions: parserOptions,
-    errors: [{message: 'render must be placed after displayName'}]
+    errors: [{message: 'render should be placed after displayName'}]
   }, {
     // Must force a custom method to be placed before render
     code: [
@@ -229,7 +229,7 @@ ruleTester.run('sort-comp', rule, {
       '});'
     ].join('\n'),
     parserOptions: parserOptions,
-    errors: [{message: 'render must be placed after onClick'}]
+    errors: [{message: 'render should be placed after onClick'}]
   }, {
     // Must force a custom method to be placed after render if no 'everything-else' group is specified
     code: [
@@ -248,7 +248,7 @@ ruleTester.run('sort-comp', rule, {
       ]
     }],
     parserOptions: parserOptions,
-    errors: [{message: 'onClick must be placed after render'}]
+    errors: [{message: 'onClick should be placed after render'}]
   }, {
     // Must validate static properties
     code: [
@@ -261,6 +261,6 @@ ruleTester.run('sort-comp', rule, {
     ].join('\n'),
     parser: 'babel-eslint',
     parserOptions: parserOptions,
-    errors: [{message: 'render must be placed after displayName'}]
+    errors: [{message: 'render should be placed after displayName'}]
   }]
 });
