@@ -3,6 +3,28 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.14.0] - 2016-01-05
+### Added
+* Add `jsx-intent` rule ([#342][])
+* Add shared setting for pragma configuration ([#228][] @NickStefan)
+
+### Fixed
+* Fix crash in `jsx-key` ([#380][] @nfcampos)
+* Fix crash in `forbid-prop-types` ([#377][] @nfcampos)
+* Ignore `ref` in `jsx-handler-names` ([#375][])
+
+### Changed
+* Add AppVeyor CI to run tests on a Windows platform
+* Add `sort-comp` codemod to `sort-comp` documentation ([#381][] @turadg)
+
+[3.14.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.13.1...v3.14.0
+[#342]: https://github.com/yannickcr/eslint-plugin-react/issues/342
+[#228]: https://github.com/yannickcr/eslint-plugin-react/issues/228
+[#380]: https://github.com/yannickcr/eslint-plugin-react/pull/380
+[#377]: https://github.com/yannickcr/eslint-plugin-react/pull/377
+[#375]: https://github.com/yannickcr/eslint-plugin-react/issues/375
+[#381]: https://github.com/yannickcr/eslint-plugin-react/pull/381
+
 ## [3.13.1] - 2015-12-26
 ### Fixed
 * Fix crash in `jsx-key` ([#373][] @lukekarrys)
