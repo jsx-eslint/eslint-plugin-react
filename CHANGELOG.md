@@ -5,7 +5,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [3.14.0] - 2016-01-05
 ### Added
-* Add `jsx-intent` rule ([#342][])
+* Add `jsx-indent` rule ([#342][])
 * Add shared setting for pragma configuration ([#228][] @NickStefan)
 
 ### Fixed
