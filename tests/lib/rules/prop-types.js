@@ -159,7 +159,7 @@ ruleTester.run('prop-types', rule, {
     }, {
       code: [
         'class Hello {',
-        '  method',
+        '  method;',
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
@@ -207,7 +207,7 @@ ruleTester.run('prop-types', rule, {
         'class Hello extends React.Component {',
         '  static propTypes = {',
         '    name: React.PropTypes.string',
-        '  }',
+        '  };',
         '  render() {',
         '    return <div>Hello {this.props.name}</div>;',
         '  }',
@@ -685,7 +685,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '  static propTypes = {',
         '    source: PropTypes.object',
-        '  }',
+        '  };',
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
@@ -698,7 +698,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '  static propTypes = {',
         '    source: PropTypes.object',
-        '  }',
+        '  };',
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
@@ -974,7 +974,7 @@ ruleTester.run('prop-types', rule, {
         'class Hello extends React.Component {',
         '  static propTypes: { ',
         '    firstname: React.PropTypes.string',
-        '  }',
+        '  };',
         '  render() {',
         '    return <div>Hello {this.props.firstname}</div>;',
         '  }',

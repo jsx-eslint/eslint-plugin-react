@@ -76,7 +76,7 @@ ruleTester.run('display-name', rule, {
   }, {
     code: [
       'class Hello {',
-      '  method',
+      '  method;',
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
@@ -96,7 +96,7 @@ ruleTester.run('display-name', rule, {
   }, {
     code: [
       'class Hello extends React.Component {',
-      '  static displayName = \'Widget\'',
+      '  static displayName = \'Widget\';',
       '  render() {',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',

@@ -256,7 +256,7 @@ ruleTester.run('sort-comp', rule, {
       '  render() {',
       '    return <div></div>',
       '  }',
-      '  static displayName = \'Hello\'',
+      '  static displayName = \'Hello\';',
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
