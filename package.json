@@ -25,8 +25,8 @@
   "devDependencies": {
     "babel-eslint": "5.0.0-beta6",
     "coveralls": "2.11.6",
-    "eslint": "2.0.0-alpha-2",
-    "istanbul": "0.4.1",
+    "eslint": "2.0.0-beta.1",
+    "istanbul": "0.4.2",
     "mocha": "2.3.4"
   },
   "keywords": [
