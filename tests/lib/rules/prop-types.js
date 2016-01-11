@@ -1021,6 +1021,23 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // Ignore component validation if propTypes are composed using spread
+      code: [
+        'class Hello extends React.Component {',
+        '    render() {',
+        '        return  <div>Hello {this.props.firstName} {this.props.lastName}</div>;',
+        '    }',
+        '};',
+        'const otherPropTypes = {',
+        '    lastName: React.PropTypes.string',
+        '};',
+        'Hello.propTypes = {',
+        '    ...otherPropTypes,',
+        '    firstName: React.PropTypes.string',
+        '};'
+      ].join('\n'),
+      parserOptions: parserOptions
     }
   ],
 
