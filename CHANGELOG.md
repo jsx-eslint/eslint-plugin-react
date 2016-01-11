@@ -3,6 +3,24 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.15.0] - 2016-01-12
+### Added
+* Add support for flow annotations to `prop-types` ([#382][] @phpnode)
+
+### Fixed
+* Fix `prop-types` crash when initializing class variable with an empty object ([#383][])
+* Fix `prop-types` crash when propTypes are using the spread operator ([#389][])
+
+### Changed
+* Improve `sort-comp` error messages ([#372][] @SystemParadox)
+* Update dependencies
+
+[3.15.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.14.0...v3.15.0
+[#382]: https://github.com/yannickcr/eslint-plugin-react/pull/382
+[#383]: https://github.com/yannickcr/eslint-plugin-react/issues/383
+[#389]: https://github.com/yannickcr/eslint-plugin-react/issues/389
+[#372]: https://github.com/yannickcr/eslint-plugin-react/pull/372
+
 ## [3.14.0] - 2016-01-05
 ### Added
 * Add `jsx-indent` rule ([#342][])
