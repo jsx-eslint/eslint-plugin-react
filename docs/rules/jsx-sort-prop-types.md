@@ -80,7 +80,8 @@ class Component extends React.Component {
 ...
 "jsx-sort-prop-types": [<enabled>, {
   "callbacksLast": <boolean>,
-  "ignoreCase": <boolean>
+  "ignoreCase": <boolean>,
+  "requiredFirst": <boolean>,
 }]
 ...
 ```
@@ -100,6 +101,22 @@ var Component = React.createClass({
     z: React.PropTypes.string,
     onBar: React.PropTypes.func,
     onFoo: React.PropTypes.func,
+  },
+...
+});
+```
+
+### `requiredFirst`
+
+When `true`, prop types for required props must be listed before all other props:
+
+```js
+var Component = React.createClass({
+  propTypes: {
+    barRequired: React.PropTypes.any.isRequired,
+    fooRequired: React.PropTypes.any.isRequired,
+    a: React.PropTypes.number,
+    z: React.PropTypes.string,
   },
 ...
 });
