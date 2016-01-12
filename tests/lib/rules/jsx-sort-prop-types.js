@@ -538,6 +538,29 @@ ruleTester.run('jsx-sort-prop-types', rule, {
     code: [
       'var First = React.createClass({',
       '  propTypes: {',
+      '    fooRequired: React.PropTypes.string.isRequired,',
+      '    barRequired: React.PropTypes.string.isRequired,',
+      '    a: React.PropTypes.any',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      requiredFirst: true
+    }],
+    parserOptions: parserOptions,
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 4,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'var First = React.createClass({',
+      '  propTypes: {',
       '    a: React.PropTypes.any,',
       '    barRequired: React.PropTypes.string.isRequired,',
       '    onFoo: React.PropTypes.func',
@@ -553,7 +576,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
     parserOptions: parserOptions,
     errors: [{
       message: 'Required prop types must be listed before all other prop types',
-      line: 3,
+      line: 4,
       column: 5,
       type: 'Property'
     }]
