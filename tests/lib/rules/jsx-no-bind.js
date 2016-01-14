@@ -34,6 +34,18 @@ ruleTester.run('jsx-no-bind', rule, {
       parser: 'babel-eslint'
     },
 
+    // bind() and arrow functions in refs explicitly ignored
+    {
+      code: '<div ref={c => this._input = c}></div>',
+      options: [{ignoreRefs: true}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: '<div ref={this._refCallback.bind(this)}></div>',
+      options: [{ignoreRefs: true}],
+      parser: 'babel-eslint'
+    },
+
     // bind() explicitly allowed
     {
       code: '<div onClick={this._handleClick.bind(this)}></div>',
@@ -66,6 +78,11 @@ ruleTester.run('jsx-no-bind', rule, {
       errors: [{message: 'JSX props should not use .bind()'}],
       parser: 'babel-eslint'
     },
+    {
+      code: '<div ref={this._refCallback.bind(this)}></div>',
+      errors: [{message: 'JSX props should not use .bind()'}],
+      parser: 'babel-eslint'
+    },
 
     // Arrow functions
     {
@@ -80,6 +97,11 @@ ruleTester.run('jsx-no-bind', rule, {
     },
     {
       code: '<div onClick={param => { first(); second(); }}></div>',
+      errors: [{message: 'JSX props should not use arrow functions'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: '<div ref={c => this._input = c}></div>',
       errors: [{message: 'JSX props should not use arrow functions'}],
       parser: 'babel-eslint'
     }
