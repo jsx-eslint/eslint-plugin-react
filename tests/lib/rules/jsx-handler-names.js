@@ -64,6 +64,11 @@ ruleTester.run('jsx-handler-names', rule, {
       '<TestComponent ref={this.handleRef} />'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: [
+      '<TestComponent ref={this.somethingRef} />'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
