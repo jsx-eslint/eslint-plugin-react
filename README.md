@@ -151,7 +151,7 @@ Finally, enable all of the rules that you would like to use.
 * [require-extension](docs/rules/require-extension.md): Restrict file extensions that may be required
 * [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
 * [sort-comp](docs/rules/sort-comp.md): Enforce component methods order
-* [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX
+* [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX (fixable)
 
 ## React Native
 

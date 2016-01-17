@@ -2,6 +2,8 @@
 
 Wrapping multiline JSX in parentheses can improve readability and/or convenience. It optionally takes a second parameter in the form of an object, containing places to apply the rule. By default, `"declaration"`, `"assignment"`, and `"return"` syntax is checked, but these can be explicitly disabled. Any syntax type missing in the object will follow the default behavior (become enabled).
 
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+
 ## Rule Details
 
 The following patterns are considered warnings:
