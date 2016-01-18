@@ -117,7 +117,7 @@ Finally, enable all of the rules that you would like to use.
 
 * [display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
 * [forbid-prop-types](docs/rules/forbid-prop-types.md): Forbid certain propTypes
-* [jsx-boolean-value](docs/rules/jsx-boolean-value.md): Enforce boolean attributes notation in JSX
+* [jsx-boolean-value](docs/rules/jsx-boolean-value.md): Enforce boolean attributes notation in JSX (fixable)
 * [jsx-closing-bracket-location](docs/rules/jsx-closing-bracket-location.md): Validate closing bracket location in JSX
 * [jsx-curly-spacing](docs/rules/jsx-curly-spacing.md): Enforce or disallow spaces inside of curly braces in JSX attributes
 * [jsx-handler-names](docs/rules/jsx-handler-names.md): Enforce event handler naming conventions in JSX
