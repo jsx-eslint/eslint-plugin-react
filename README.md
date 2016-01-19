@@ -77,6 +77,7 @@ Finally, enable all of the rules that you would like to use.
     "react/jsx-boolean-value": 1,
     "react/jsx-closing-bracket-location": 1,
     "react/jsx-curly-spacing": 1,
+    "react/jsx-equals-spacing": 1,
     "react/jsx-handler-names": 1,
     "react/jsx-indent-props": 1,
     "react/jsx-indent": 1,
@@ -120,6 +121,7 @@ Finally, enable all of the rules that you would like to use.
 * [jsx-boolean-value](docs/rules/jsx-boolean-value.md): Enforce boolean attributes notation in JSX (fixable)
 * [jsx-closing-bracket-location](docs/rules/jsx-closing-bracket-location.md): Validate closing bracket location in JSX
 * [jsx-curly-spacing](docs/rules/jsx-curly-spacing.md): Enforce or disallow spaces inside of curly braces in JSX attributes
+* [jsx-equals-spacing](docs/rules/jsx-equals-spacing.md): Enforce or disallow spaces around equal signs in JSX attributes
 * [jsx-handler-names](docs/rules/jsx-handler-names.md): Enforce event handler naming conventions in JSX
 * [jsx-indent-props](docs/rules/jsx-indent-props.md): Validate props indentation in JSX
 * [jsx-indent](docs/rules/jsx-indent.md): Validate JSX indentation
