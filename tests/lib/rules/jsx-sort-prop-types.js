@@ -284,6 +284,21 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '  }',
       '}',
       'First.propTypes = {',
+      '    fooRequired: MyPropType,',
+      '};'
+    ].join('\n'),
+    options: [{
+      requiredFirst: true
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class First extends React.Component {',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}',
+      'First.propTypes = {',
       '    barRequired: React.PropTypes.string.isRequired,',
       '    fooRequired: React.PropTypes.any.isRequired,',
       '    a: React.PropTypes.any,',
