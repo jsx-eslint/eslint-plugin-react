@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.16.1] - 2016-01-24
+### Fixed
+* Fix `jsx-sort-prop-types` issue with custom propTypes ([#408][] @alitaheri)
+
+[3.16.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.16.0...v3.16.1
+[#408]: https://github.com/yannickcr/eslint-plugin-react/issues/408
+
 ## [3.16.0] - 2016-01-24
 ### Added
 * Add `jsx-equals-spacing` rule ([#394][] @ryym)
