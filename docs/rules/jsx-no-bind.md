@@ -7,7 +7,7 @@ A `bind` call or [arrow function](https://developer.mozilla.org/en-US/docs/Web/J
 The following patterns are considered warnings:
 
 ```js
-<div onClick={this._handleClick.bind(this)}></div>
+<div onClick={this.handleClick.bind(this)}></div>
 ```
 ```js
 <div onClick={() => console.log('Hello!'))}></div>
@@ -15,7 +15,7 @@ The following patterns are considered warnings:
 
 The following patterns are not considered warnings:
 ```js
-<div onClick={this._handleClick}></div>
+<div onClick={this.handleClick}></div>
 ```
 
 ## Rule Options
@@ -34,7 +34,7 @@ When `true` the following are not considered warnings:
 
 ```jsx
 <div ref={c => this._div = c} />
-<div ref={this._refCallback.bind(this)} />
+<div ref={this.refCallback.bind(this)} />
 ```
 
 ### `allowArrowFunctions`
@@ -50,7 +50,7 @@ When `true` the following is not considered a warning:
 When `true` the following is not considered a warning:
 
 ```jsx
-<div onClick={this._handleClick.bind(this)} />
+<div onClick={this.handleClick.bind(this)} />
 ```
 
 ## Protips
@@ -91,15 +91,15 @@ var List = React.createClass({
 });
 
 var ListItem = React.createClass({
+  onClick() {
+    this.props.onItemClick(this.props.item.id);
+  }
   render() {
     return (
-      <li onClick={this._onClick}>
+      <li onClick={this.onClick}>
         ...
       </li>
     );
-  },
-  _onClick() {
-    this.props.onItemClick(this.props.item.id);
   }
 });
 ```
@@ -114,17 +114,17 @@ Unfortunately [React ES6 classes](https://facebook.github.io/react/blog/2015/01/
 class Foo extends React.Component {
   constructor() {
     super();
-    this._onClick = this._onClick.bind(this);
+    this.onClick = this.onClick.bind(this);
+  }
+  onClick() {
+    // Do whatever you like, referencing "this" as appropriate
   }
   render() {
     return (
-      <div onClick={this._onClick}>
+      <div onClick={this.onClick}>
         Hello!
       </div>
     );
-  }
-  _onClick() {
-    // Do whatever you like, referencing "this" as appropriate
   }
 }
 ```
