@@ -1,4 +1,4 @@
-# Restrict certian classNames or classNames which start with a specific prefix. (jsx-restrict-classnames)
+# Restrict classNames or classNames prefixes. (jsx-restrict-classnames)
 
 This rule prevents custom react components from using a pre-defined set of restricted classnames, or classnames which
 start with a certian prefix.
@@ -7,11 +7,9 @@ start with a certian prefix.
 
 This rule is off by default.
 
-The following patterns are considered warnings:
+Consider you have setup a set of restrict rules in your `eslintrc`.
 
 ```js
-.eslint.js
-
 "rules": {
     "react/jsx-restrict-classnames": [2, [{
       "className": "grid",
@@ -30,6 +28,7 @@ The following patterns are considered warnings:
 
 ```
 
+The following patterns are considered warnings:
 ```js
 <div className="btn grid js-grid">Hello!<div>
 ```
