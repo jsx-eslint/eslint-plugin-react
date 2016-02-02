@@ -128,6 +128,7 @@ Finally, enable all of the rules that you would like to use.
 * [jsx-key](docs/rules/jsx-key.md): Validate JSX has key prop when in array or iterator
 * [jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md): Limit maximum of props on a single line in JSX
 * [jsx-no-bind](docs/rules/jsx-no-bind.md): Prevent usage of `.bind()` and arrow functions in JSX props
+* [jsx-restrict-classnames](docs/rules/jsx-restrict-classnames.md): Restrict classNames or classNames prefixes
 * [jsx-no-duplicate-props](docs/rules/jsx-no-duplicate-props.md): Prevent duplicate props in JSX
 * [jsx-no-literals](docs/rules/jsx-no-literals.md): Prevent usage of unwrapped JSX strings
 * [jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
