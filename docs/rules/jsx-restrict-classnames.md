@@ -7,7 +7,7 @@ start with a certian prefix.
 
 This rule is off by default.
 
-Consider you have setup a set of restrict classnames in your `eslintrc`.
+Consider you have setup a set of restricted classnames in your `eslintrc`.
 
 ```js
 "rules": {
