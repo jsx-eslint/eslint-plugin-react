@@ -1,7 +1,7 @@
 # Restrict classNames or classNames prefixes. (jsx-restrict-classnames)
 
 This rule prevents react components from using a pre-defined set of restricted classnames, or classnames which
-start with a certian prefix.
+start with a certain prefix.
 
 ## Rule Details
 
