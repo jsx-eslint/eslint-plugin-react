@@ -44,11 +44,11 @@ The following patterns are considered warnings:
 }]]
 ...
 ```
-Rule options take an array of objects of type `{"className", "isPrefix", "message"}`
+Rule options takes an array of objects of type `{"className", "isPrefix", "message"}`
 
 ### `className`
 
-The className string or a className prefix string that needs to be restricted. When passing in a prefix string, set the isPrefix option to `true`, to do a prefix check.
+The className string or a className prefix string that needs to be restricted. When passing in a prefix string, set the `isPrefix` option to `true` to do a prefix check.
 
 ### `isPrefix`
 
