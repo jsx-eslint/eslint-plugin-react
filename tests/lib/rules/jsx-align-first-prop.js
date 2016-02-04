@@ -26,6 +26,9 @@ var parserOptions = {
 var ruleTester = new RuleTester();
 ruleTester.run('jsx-align-first-prop', rule, {
   valid: [{
+    code: '<App />',
+    parserOptions: parserOptions
+  }, {
     code: '<App foo />',
     parserOptions: parserOptions
   }, {
@@ -76,6 +79,15 @@ ruleTester.run('jsx-align-first-prop', rule, {
       '  bar',
       '/>'
     ].join('\n'),
+    errors: [{message: 'unaligned prop'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App',
+      '  foo bar',
+      '/>'
+    ].join('\n'),
+    options: [{strict: true}],
     errors: [{message: 'unaligned prop'}],
     parserOptions: parserOptions
   }, {
