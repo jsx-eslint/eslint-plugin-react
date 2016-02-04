@@ -325,6 +325,19 @@ ruleTester.run('display-name', rule, {
       '});'
     ].join('\n'),
     parser: 'babel-eslint'
+  },
+  {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      forbidExplicitDefinition: true
+    }]
   }
 ],
 
