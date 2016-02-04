@@ -23,7 +23,7 @@
   "homepage": "https://github.com/yannickcr/eslint-plugin-react",
   "bugs": "https://github.com/yannickcr/eslint-plugin-react/issues",
   "devDependencies": {
-    "babel-eslint": "5.0.0-beta6",
+    "babel-eslint": "5.0.0-beta10",
     "coveralls": "2.11.6",
     "eslint": "2.0.0-beta.2",
     "istanbul": "0.4.2",
