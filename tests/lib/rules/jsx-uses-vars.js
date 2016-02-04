@@ -102,7 +102,7 @@ ruleTester.run('no-unused-vars', rule, {
   invalid: [
     {
       code: '/*eslint jsx-uses-vars:1*/ var App;',
-      errors: [{message: '"App" is defined but never used'}],
+      errors: [{message: '\'App\' is defined but never used'}],
       parserOptions: parserOptions
     }, {
       code: '\
@@ -110,13 +110,13 @@ ruleTester.run('no-unused-vars', rule, {
         var App;\
         var unused;\
         React.render(<App unused=""/>);',
-      errors: [{message: '"unused" is defined but never used'}],
+      errors: [{message: '\'unused\' is defined but never used'}],
       parserOptions: parserOptions
     }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
         class unused {}',
-      errors: [{message: '"unused" is defined but never used'}],
+      errors: [{message: '\'unused\' is defined but never used'}],
       parserOptions: parserOptions
     }, {
       code: '\
@@ -128,7 +128,7 @@ ruleTester.run('no-unused-vars', rule, {
           }\
         }',
       errors: [{
-        message: '"HelloMessage" is defined but never used',
+        message: '\'HelloMessage\' is defined but never used',
         line: 1
       }],
       parserOptions: parserOptions
@@ -142,7 +142,7 @@ ruleTester.run('no-unused-vars', rule, {
           }\
         }',
       errors: [{
-        message: '"HelloMessage" is defined but never used',
+        message: '\'HelloMessage\' is defined but never used',
         line: 1
       }],
       parser: 'babel-eslint',

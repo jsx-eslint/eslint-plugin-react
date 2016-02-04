@@ -40,38 +40,47 @@ ruleTester.run('no-unknown-property', rule, {
   ],
   invalid: [{
     code: '<div class="bar"></div>;',
+    output: '<div className="bar"></div>;',
     errors: [{message: 'Unknown property \'class\' found, use \'className\' instead'}],
     parserOptions: parserOptions
   }, {
     code: '<div for="bar"></div>;',
+    output: '<div htmlFor="bar"></div>;',
     errors: [{message: 'Unknown property \'for\' found, use \'htmlFor\' instead'}],
     parserOptions: parserOptions
   }, {
     code: '<div accept-charset="bar"></div>;',
+    output: '<div acceptCharset="bar"></div>;',
     errors: [{message: 'Unknown property \'accept-charset\' found, use \'acceptCharset\' instead'}],
     parserOptions: parserOptions
   }, {
     code: '<div http-equiv="bar"></div>;',
+    output: '<div httpEquiv="bar"></div>;',
     errors: [{message: 'Unknown property \'http-equiv\' found, use \'httpEquiv\' instead'}],
     parserOptions: parserOptions
   }, {
     code: '<div accesskey="bar"></div>;',
+    output: '<div accessKey="bar"></div>;',
     errors: [{message: 'Unknown property \'accesskey\' found, use \'accessKey\' instead'}],
     parserOptions: parserOptions
   }, {
     code: '<div onclick="bar"></div>;',
+    output: '<div onClick="bar"></div>;',
     errors: [{message: 'Unknown property \'onclick\' found, use \'onClick\' instead'}],
     parserOptions: parserOptions
   }, {
     code: '<div onmousedown="bar"></div>;',
+    output: '<div onMouseDown="bar"></div>;',
     errors: [{message: 'Unknown property \'onmousedown\' found, use \'onMouseDown\' instead'}],
     parserOptions: parserOptions
   }, {
     code: '<use xlink:href="bar" />;',
+    output: '<use xlinkHref="bar" />;',
     errors: [{message: 'Unknown property \'xlink:href\' found, use \'xlinkHref\' instead'}],
     parserOptions: parserOptions
   }, {
     code: '<rect clip-path="bar" />;',
+    output: '<rect clipPath="bar" />;',
     errors: [{message: 'Unknown property \'clip-path\' found, use \'clipPath\' instead'}],
     parserOptions: parserOptions
   }]

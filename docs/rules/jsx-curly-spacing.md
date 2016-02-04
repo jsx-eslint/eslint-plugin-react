@@ -2,6 +2,8 @@
 
 While formatting preferences are very personal, a number of style guides require or disallow spaces between curly braces.
 
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+
 ## Rule Details
 
 This rule aims to maintain consistency around the spacing inside of JSX attributes.
@@ -109,4 +111,3 @@ The following patterns are not warnings:
 ## When Not To Use It
 
 You can turn this rule off if you are not concerned with the consistency around the spacing inside of JSX attributes.
-

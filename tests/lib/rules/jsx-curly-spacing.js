@@ -1,6 +1,7 @@
 /**
  * @fileoverview Enforce or disallow spaces inside of curly braces in JSX attributes.
  * @author Yannick Croissant
+ * @author Erik Wendel
  */
 'use strict';
 
@@ -81,6 +82,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
 
   invalid: [{
     code: '<App foo={ bar } />;',
+    output: '<App foo={bar} />;',
     options: ['never'],
     errors: [{
       message: 'There should be no space after \'{\''
@@ -90,6 +92,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     parserOptions: parserOptions
   }, {
     code: '<App foo={ bar } />;',
+    output: '<App foo={bar} />;',
     options: ['never', {allowMultiline: false}],
     errors: [{
       message: 'There should be no space after \'{\''
@@ -99,6 +102,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     parserOptions: parserOptions
   }, {
     code: '<App foo={bar} />;',
+    output: '<App foo={ bar } />;',
     options: ['always'],
     errors: [{
       message: 'A space is required after \'{\''
@@ -108,6 +112,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     parserOptions: parserOptions
   }, {
     code: '<App foo={bar} />;',
+    output: '<App foo={ bar } />;',
     options: ['always', {allowMultiline: false}],
     errors: [{
       message: 'A space is required after \'{\''
@@ -117,6 +122,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     parserOptions: parserOptions
   }, {
     code: '<App foo={ bar} />;',
+    output: '<App foo={ bar } />;',
     options: ['always'],
     errors: [{
       message: 'A space is required before \'}\''
@@ -124,6 +130,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     parserOptions: parserOptions
   }, {
     code: '<App foo={bar } />;',
+    output: '<App foo={ bar } />;',
     options: ['always'],
     errors: [{
       message: 'A space is required after \'{\''
@@ -131,6 +138,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     parserOptions: parserOptions
   }, {
     code: '<App foo={ bar} />;',
+    output: '<App foo={bar} />;',
     options: ['never'],
     errors: [{
       message: 'There should be no space after \'{\''
@@ -138,6 +146,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     parserOptions: parserOptions
   }, {
     code: '<App foo={bar } />;',
+    output: '<App foo={bar} />;',
     options: ['never'],
     errors: [{
       message: 'There should be no space before \'}\''
@@ -149,6 +158,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       'bar',
       '} />;'
     ].join('\n'),
+    output: '<App foo={bar} />;',
     options: ['never', {allowMultiline: false}],
     errors: [{
       message: 'There should be no space after \'{\''
@@ -162,6 +172,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       'bar',
       '} />;'
     ].join('\n'),
+    output: '<App foo={ bar } />;',
     options: ['always', {allowMultiline: false}],
     errors: [{
       message: 'There should be no newline after \'{\''

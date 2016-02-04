@@ -3,6 +3,126 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [3.16.1] - 2016-01-24
+### Fixed
+* Fix `jsx-sort-prop-types` issue with custom propTypes ([#408][] @alitaheri)
+
+[3.16.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.16.0...v3.16.1
+[#408]: https://github.com/yannickcr/eslint-plugin-react/issues/408
+
+## [3.16.0] - 2016-01-24
+### Added
+* Add `jsx-equals-spacing` rule ([#394][] @ryym)
+* Add auto fix for `wrap-multiline`
+* Add auto fix for `jsx-boolean-value`
+* Add auto fix for `no-unknown-property`
+* Add auto fix for `jsx-curly-spacing` ([#407][] @ewendel)
+* Add `requiredFirst` option to `jsx-sort-prop-types` ([#392][] @chrislaskey)
+* Add `ignoreRefs` option to `jsx-no-bind` ([#330][] @silvenon)
+
+### Fixed
+* Ignore `ref` in `jsx-handler-names` (again) ([#396][])
+
+### Changed
+* Update dependencies
+
+[3.16.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.15.0...v3.16.0
+[#394]: https://github.com/yannickcr/eslint-plugin-react/issues/394
+[#407]: https://github.com/yannickcr/eslint-plugin-react/pull/407
+[#392]: https://github.com/yannickcr/eslint-plugin-react/pull/392
+[#330]: https://github.com/yannickcr/eslint-plugin-react/issues/330
+[#396]: https://github.com/yannickcr/eslint-plugin-react/issues/396
+
+## [3.15.0] - 2016-01-12
+### Added
+* Add support for flow annotations to `prop-types` ([#382][] @phpnode)
+
+### Fixed
+* Fix `prop-types` crash when initializing class variable with an empty object ([#383][])
+* Fix `prop-types` crash when propTypes are using the spread operator ([#389][])
+
+### Changed
+* Improve `sort-comp` error messages ([#372][] @SystemParadox)
+* Update dependencies
+
+[3.15.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.14.0...v3.15.0
+[#382]: https://github.com/yannickcr/eslint-plugin-react/pull/382
+[#383]: https://github.com/yannickcr/eslint-plugin-react/issues/383
+[#389]: https://github.com/yannickcr/eslint-plugin-react/issues/389
+[#372]: https://github.com/yannickcr/eslint-plugin-react/pull/372
+
+## [3.14.0] - 2016-01-05
+### Added
+* Add `jsx-indent` rule ([#342][])
+* Add shared setting for pragma configuration ([#228][] @NickStefan)
+
+### Fixed
+* Fix crash in `jsx-key` ([#380][] @nfcampos)
+* Fix crash in `forbid-prop-types` ([#377][] @nfcampos)
+* Ignore `ref` in `jsx-handler-names` ([#375][])
+
+### Changed
+* Add AppVeyor CI to run tests on a Windows platform
+* Add `sort-comp` codemod to `sort-comp` documentation ([#381][] @turadg)
+
+[3.14.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.13.1...v3.14.0
+[#342]: https://github.com/yannickcr/eslint-plugin-react/issues/342
+[#228]: https://github.com/yannickcr/eslint-plugin-react/issues/228
+[#380]: https://github.com/yannickcr/eslint-plugin-react/pull/380
+[#377]: https://github.com/yannickcr/eslint-plugin-react/pull/377
+[#375]: https://github.com/yannickcr/eslint-plugin-react/issues/375
+[#381]: https://github.com/yannickcr/eslint-plugin-react/pull/381
+
+## [3.13.1] - 2015-12-26
+### Fixed
+* Fix crash in `jsx-key` ([#373][] @lukekarrys)
+
+[3.13.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.13.0...v3.13.1
+[#373]: https://github.com/yannickcr/eslint-plugin-react/issues/373
+
+## [3.13.0] - 2015-12-24
+### Added
+* Add `no-string-refs` rule ([#341][] @Intellicode)
+* Add support for propTypes assigned via a variable in `prop-types` ([#355][])
+
+### Fixed
+* Fix `never` option in `prefer-es6-class`
+* Fix `jsx-key` false-positives ([#320][] @silvenon)
+
+### Changed
+* Documentation improvements ([#368][] @lencioni, [#370][] @tmcw, [#371][])
+* Update dependencies
+
+[3.13.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.12.0...v3.13.0
+[#341]: https://github.com/yannickcr/eslint-plugin-react/issues/341
+[#355]: https://github.com/yannickcr/eslint-plugin-react/issues/355
+[#320]: https://github.com/yannickcr/eslint-plugin-react/issues/320
+
+[#368]: https://github.com/yannickcr/eslint-plugin-react/pull/368
+[#370]: https://github.com/yannickcr/eslint-plugin-react/pull/370
+[#371]: https://github.com/yannickcr/eslint-plugin-react/issues/371
+
+## [3.12.0] - 2015-12-20
+### Added
+* Add `no-deprecated` rule ([#356][] @graue)
+* Add `no-is-mounted` rule ([#37][] @lencioni)
+* Add `never` option to `prefer-es6-class` rule ([#359][] @pwmckenna)
+
+### Fixed
+* Fix `jsx-pascal-case` to stop checking lower cased components ([#329][])
+* Fix crash in component detection class ([#364][])
+
+### Changed
+* Add link to [eslint-plugin-react-native](https://github.com/Intellicode/eslint-plugin-react-native) in Readme
+* Update dependencies
+
+[3.12.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.11.3...v3.12.0
+[#356]: https://github.com/yannickcr/eslint-plugin-react/pull/356
+[#37]: https://github.com/yannickcr/eslint-plugin-react/issues/37
+[#359]: https://github.com/yannickcr/eslint-plugin-react/pull/359
+[#329]: https://github.com/yannickcr/eslint-plugin-react/issues/329
+[#364]: https://github.com/yannickcr/eslint-plugin-react/issues/364
+
 ## [3.11.3] - 2015-12-05
 ### Fixed
 * Fix crash in `prop-types` when reassigning props ([#345][])
@@ -146,8 +266,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [3.6.3] - 2015-10-20
 ### Fixed
-* Fix `display-name` for stateless components ([#256][]) 
-* Fix `prop-types` props validation in constructor ([#259][]) 
+* Fix `display-name` for stateless components ([#256][])
+* Fix `prop-types` props validation in constructor ([#259][])
 * Fix typo in README ([#261][] @chiedojohn)
 
 [3.6.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.6.2...v3.6.3
@@ -658,7 +778,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [1.6.0] - 2015-03-22
 ### Added
 * Add `jsx-no-undef` rule
-* Add `jsx-quotes` rule ([#12][]) 
+* Add `jsx-quotes` rule ([#12][])
 * Add `@jsx` pragma support ([#23][])
 
 ### Changed

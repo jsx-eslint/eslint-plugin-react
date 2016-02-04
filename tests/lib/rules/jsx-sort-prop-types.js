@@ -142,7 +142,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '    a: React.PropTypes.any,',
       '    b: React.PropTypes.any,',
       '    c: React.PropTypes.any',
-      '  }',
+      '  };',
       '  render() {',
       '    return <div />;',
       '  }',
@@ -173,7 +173,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '    a: React.PropTypes.any,',
       '    c: React.PropTypes.any,',
       '    b: React.PropTypes.any',
-      '  }',
+      '  };',
       '  render() {',
       '    return <div />;',
       '  }',
@@ -186,6 +186,20 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '  render: function() {',
       '    let { a, ...b } = obj;',
       '    let c = { ...d };',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'var First = React.createClass({',
+      '  propTypes: {',
+      '    barRequired: React.PropTypes.func.isRequired,',
+      '    onBar: React.PropTypes.func,',
+      '    z: React.PropTypes.any',
+      '  },',
+      '  render: function() {',
       '    return <div />;',
       '  }',
       '});'
@@ -217,7 +231,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '    z: React.PropTypes.string,',
       '    onBar: React.PropTypes.func,',
       '    onFoo: React.PropTypes.func',
-      '  }',
+      '  };',
       '  render() {',
       '    return <div />;',
       '  }',
@@ -243,6 +257,58 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '};'
     ].join('\n'),
     options: [{
+      callbacksLast: true
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class First extends React.Component {',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}',
+      'First.propTypes = {',
+      '    barRequired: React.PropTypes.string.isRequired,',
+      '    a: React.PropTypes.any',
+      '};'
+    ].join('\n'),
+    options: [{
+      requiredFirst: true
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class First extends React.Component {',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}',
+      'First.propTypes = {',
+      '    fooRequired: MyPropType,',
+      '};'
+    ].join('\n'),
+    options: [{
+      requiredFirst: true
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class First extends React.Component {',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}',
+      'First.propTypes = {',
+      '    barRequired: React.PropTypes.string.isRequired,',
+      '    fooRequired: React.PropTypes.any.isRequired,',
+      '    a: React.PropTypes.any,',
+      '    z: React.PropTypes.string,',
+      '    onBar: React.PropTypes.func,',
+      '    onFoo: React.PropTypes.func',
+      '};'
+    ].join('\n'),
+    options: [{
+      requiredFirst: true,
       callbacksLast: true
     }],
     parserOptions: parserOptions
@@ -377,7 +443,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '    z: React.PropTypes.any,',
       '    y: React.PropTypes.any,',
       '    a: React.PropTypes.any',
-      '  }',
+      '  };',
       '  render() {',
       '    return <div />;',
       '  }',
@@ -418,7 +484,7 @@ ruleTester.run('jsx-sort-prop-types', rule, {
       '    z: React.PropTypes.string,',
       '    onFoo: React.PropTypes.func,',
       '    onBar: React.PropTypes.func',
-      '  }',
+      '  };',
       '  render() {',
       '    return <div />;',
       '  }',
@@ -480,6 +546,52 @@ ruleTester.run('jsx-sort-prop-types', rule, {
     errors: [{
       message: 'Callback prop types must be listed after all other prop types',
       line: 5,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'var First = React.createClass({',
+      '  propTypes: {',
+      '    fooRequired: React.PropTypes.string.isRequired,',
+      '    barRequired: React.PropTypes.string.isRequired,',
+      '    a: React.PropTypes.any',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      requiredFirst: true
+    }],
+    parserOptions: parserOptions,
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 4,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'var First = React.createClass({',
+      '  propTypes: {',
+      '    a: React.PropTypes.any,',
+      '    barRequired: React.PropTypes.string.isRequired,',
+      '    onFoo: React.PropTypes.func',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      requiredFirst: true
+    }],
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Required prop types must be listed before all other prop types',
+      line: 4,
       column: 5,
       type: 'Property'
     }]

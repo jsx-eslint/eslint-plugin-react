@@ -32,11 +32,9 @@ var RETURN_SINGLE_LINE = '\
 var RETURN_PAREN = '\
   var Hello = React.createClass({\
     render: function() {\
-      return (\n\
-        <div>\n\
-          <p>Hello {this.props.name}</p>\n\
-        </div>\n\
-      );\
+      return (<div>\n\
+        <p>Hello {this.props.name}</p>\n\
+      </div>);\
     }\
   });';
 
@@ -52,11 +50,9 @@ var RETURN_NO_PAREN = '\
 var DECLARATION_SINGLE_LINE = 'var hello = <p>Hello</p>;';
 
 var DECLARATION_PAREN = '\
-  var hello = (\n\
-    <div>\n\
-      <p>Hello</p>\n\
-    </div>\n\
-  );';
+  var hello = (<div>\n\
+    <p>Hello</p>\n\
+  </div>);';
 
 var DECLARATION_NO_PAREN = '\
   var hello = <div>\n\
@@ -67,11 +63,9 @@ var ASSIGNMENT_SINGLE_LINE = 'var hello; hello = <p>Hello</p>;';
 
 var ASSIGNMENT_PAREN = '\
   var hello;\
-  hello = (\n\
-    <div>\n\
-      <p>Hello</p>\n\
-    </div>\n\
-  );';
+  hello = (<div>\n\
+    <p>Hello</p>\n\
+  </div>);';
 
 var ASSIGNMENT_NO_PAREN = '\
   var hello;\
@@ -124,28 +118,34 @@ ruleTester.run('wrap-multilines', rule, {
   invalid: [
     {
       code: RETURN_NO_PAREN,
+      output: RETURN_PAREN,
       parserOptions: parserOptions,
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: RETURN_NO_PAREN,
+      output: RETURN_PAREN,
       parserOptions: parserOptions,
       options: [{return: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: DECLARATION_NO_PAREN,
+      output: DECLARATION_PAREN,
       parserOptions: parserOptions,
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: DECLARATION_NO_PAREN,
+      output: DECLARATION_PAREN,
       parserOptions: parserOptions,
       options: [{declaration: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: ASSIGNMENT_NO_PAREN,
+      output: ASSIGNMENT_PAREN,
       parserOptions: parserOptions,
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: ASSIGNMENT_NO_PAREN,
+      output: ASSIGNMENT_PAREN,
       parserOptions: parserOptions,
       options: [{assignment: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
