@@ -51,6 +51,23 @@ ruleTester.run('jsx-align-first-prop', rule, {
       '/>'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: [
+      '<App',
+      '  foo bar',
+      '/>'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App',
+      '  foo={',
+      '   "this is a a string"',
+      '  }',
+      '  biz',
+      '/>'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -73,8 +90,18 @@ ruleTester.run('jsx-align-first-prop', rule, {
   }, {
     code: [
       '<App',
-      '  foo {...this.props}',
-      '  baz',
+      '  foo',
+      '  baz {...this.props}',
+      '/>'
+    ].join('\n'),
+    errors: [{message: 'unaligned prop'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App foo={',
+      '   "this is a a string"',
+      '  }',
+      '  biz',
       '/>'
     ].join('\n'),
     errors: [{message: 'unaligned prop'}],
