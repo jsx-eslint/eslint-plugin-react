@@ -86,9 +86,9 @@ The default configuration is:
 ```
 
 * `static-methods` is a special keyword that refers to static class methods.
-* `lifecycle` is refering to the `lifecycle` group defined in `groups`.
+* `lifecycle` is referring to the `lifecycle` group defined in `groups`.
 * `everything-else` is a special group that match all the methods that do not match any of the other groups.
-* `render` is refering to the `render` method.
+* `render` is referring to the `render` method.
 
 You can override this configuration to match your needs.
 
