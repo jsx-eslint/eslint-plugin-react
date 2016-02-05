@@ -8,9 +8,10 @@ When creating React components it is more convenient to always follow the same o
 
 With default configuration the following organisation must be followed:
 
-  1. lifecycle methods: `displayName`, `propTypes`, `contextTypes`, `childContextTypes`, `mixins`, `statics`,`defaultProps`, `constructor`, `getDefaultProps`, `getInitialState`, `state`, `getChildContext`, `componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `componentDidUpdate`, `componentWillUnmount` (in this order).
-  2. custom methods
-  3. `render` method
+  1. static methods
+  2. lifecycle methods: `displayName`, `propTypes`, `contextTypes`, `childContextTypes`, `mixins`, `statics`,`defaultProps`, `constructor`, `getDefaultProps`, `getInitialState`, `state`, `getChildContext`, `componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `componentDidUpdate`, `componentWillUnmount` (in this order).
+  3. custom methods
+  4. `render` method
 
 The following patterns are considered warnings:
 
@@ -53,6 +54,7 @@ The default configuration is:
 ```js
 {
   order: [
+    'static-methods',
     'lifecycle',
     'everything-else',
     'render'
@@ -83,6 +85,7 @@ The default configuration is:
 }
 ```
 
+* `static-methods` is a special keyword that refers to static class methods.
 * `lifecycle` is refering to the `lifecycle` group defined in `groups`.
 * `everything-else` is a special group that match all the methods that do not match any of the other groups.
 * `render` is refering to the `render` method.
@@ -94,6 +97,7 @@ For example, if you want to place your event handlers (`onClick`, `onSubmit`, et
 ```js
 "react/sort-comp": [1, {
   order: [
+    'static-methods',
     'lifecycle',
     '/^on.+$/',
     'render',
@@ -129,6 +133,7 @@ If you want to split your `render` method into smaller ones and keep them just b
 ```js
 "react/sort-comp": [1, {
   order: [
+    'static-methods',
     'lifecycle',
     'everything-else',
     'rendering',
