@@ -837,6 +837,66 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parserOptions: parserOptions
     }, {
+      code: [
+        'const statelessComponent = ({ someProp }) => {',
+        '  const subRender = () => {',
+        '    return <span>{someProp}</span>;',
+        '  };',
+        '  return <div>{subRender()}</div>;',
+        '};',
+        'statelessComponent.propTypes = {',
+        '  someProp: PropTypes.string',
+        '};'
+      ].join('\n'),
+      parserOptions: parserOptions
+    }, {
+      code: [
+        'const statelessComponent = function({ someProp }) {',
+        '  const subRender = () => {',
+        '    return <span>{someProp}</span>;',
+        '  };',
+        '  return <div>{subRender()}</div>;',
+        '};',
+        'statelessComponent.propTypes = {',
+        '  someProp: PropTypes.string',
+        '};'
+      ].join('\n'),
+      parserOptions: parserOptions
+    }, {
+      code: [
+        'function statelessComponent({ someProp }) {',
+        '  const subRender = () => {',
+        '    return <span>{someProp}</span>;',
+        '  };',
+        '  return <div>{subRender()}</div>;',
+        '};',
+        'statelessComponent.propTypes = {',
+        '  someProp: PropTypes.string',
+        '};'
+      ].join('\n'),
+      parserOptions: parserOptions
+    }, {
+      code: [
+        'function notAComponent({ something }) {',
+        '  return something + 1;',
+        '};'
+      ].join('\n'),
+      parserOptions: parserOptions
+    }, {
+      code: [
+        'const notAComponent = function({ something }) {',
+        '  return something + 1;',
+        '};'
+      ].join('\n'),
+      parserOptions: parserOptions
+    }, {
+      code: [
+        'const notAComponent = ({ something }) => {',
+        '  return something + 1;',
+        '};'
+      ].join('\n'),
+      parserOptions: parserOptions
+    }, {
       // Validation is ignored on reassigned props object
       code: [
         'const statelessComponent = (props) => {',
@@ -1439,6 +1499,36 @@ ruleTester.run('prop-types', rule, {
       code: [
         'var Hello = (props) => {',
         '  const {name} = props;',
+        '  return <div>Hello {name}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'name\' is missing in props validation'
+      }]
+    }, {
+      code: [
+        'function Hello({ name }) {',
+        '  return <div>Hello {name}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'name\' is missing in props validation'
+      }]
+    }, {
+      code: [
+        'const Hello = function({ name }) {',
+        '  return <div>Hello {name}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'name\' is missing in props validation'
+      }]
+    }, {
+      code: [
+        'const Hello = ({ name }) => {',
         '  return <div>Hello {name}</div>;',
         '}'
       ].join('\n'),
