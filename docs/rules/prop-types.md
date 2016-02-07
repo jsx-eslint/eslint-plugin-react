@@ -23,6 +23,10 @@ var Hello = React.createClass({
     return <div>Hello {this.props.firstname} {this.props.lastname}</div>; // lastname type is not defined in propTypes
   }
 });
+
+function Hello({ name }) {
+  return <div>Hello {this.props.name}</div>;
+}
 ```
 
 The following patterns are not considered warnings:
@@ -50,6 +54,13 @@ var Hello = React.createClass({
     return <div>Hello {this.props.name}</div>;
   }
 });
+
+function Hello({ name }) {
+  return <div>Hello {this.props.name}</div>;
+}
+Hello.propTypes = {
+  name: React.PropTypes.string.isRequired,
+};
 ```
 
 ## Rule Options
