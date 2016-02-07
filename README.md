@@ -92,6 +92,7 @@ Finally, enable all of the rules that you would like to use.
     "react/jsx-quotes": 1,
     "react/jsx-sort-prop-types": 1,
     "react/jsx-sort-props": 1,
+    "react/jsx-space-before-closing": 1,
     "react/jsx-uses-react": 1,
     "react/jsx-uses-vars": 1,
     "react/no-danger": 1,
@@ -121,7 +122,6 @@ Finally, enable all of the rules that you would like to use.
 * [forbid-prop-types](docs/rules/forbid-prop-types.md): Forbid certain propTypes
 * [jsx-boolean-value](docs/rules/jsx-boolean-value.md): Enforce boolean attributes notation in JSX (fixable)
 * [jsx-closing-bracket-location](docs/rules/jsx-closing-bracket-location.md): Validate closing bracket location in JSX
-* [jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
 * [jsx-curly-spacing](docs/rules/jsx-curly-spacing.md): Enforce or disallow spaces inside of curly braces in JSX attributes (fixable)
 * [jsx-equals-spacing](docs/rules/jsx-equals-spacing.md): Enforce or disallow spaces around equal signs in JSX attributes
 * [jsx-handler-names](docs/rules/jsx-handler-names.md): Enforce event handler naming conventions in JSX
@@ -137,6 +137,7 @@ Finally, enable all of the rules that you would like to use.
 * [jsx-quotes](docs/rules/jsx-quotes.md): Enforce quote style for JSX attributes
 * [jsx-sort-prop-types](docs/rules/jsx-sort-prop-types.md): Enforce propTypes declarations alphabetical sorting
 * [jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting
+* [jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
 * [jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
 * [jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
 * [no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties

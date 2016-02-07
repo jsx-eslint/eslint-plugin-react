@@ -1,5 +1,5 @@
 /**
- * @fileoverview Enforce a space before closing bracket of self-closing JSX elements.
+ * @fileoverview Validate spacing before closing bracket in JSX.
  * @author ryym
  */
 'use strict';
@@ -46,6 +46,34 @@ ruleTester.run('jsx-space-before-closing', rule, {
       '/>'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: '<App/>',
+    options: ['never'],
+    parserOptions: parserOptions
+  }, {
+    code: '<App foo/>',
+    options: ['never'],
+    parserOptions: parserOptions
+  }, {
+    code: '<App foo={bar}/>',
+    options: ['never'],
+    parserOptions: parserOptions
+  }, {
+    code: '<App {...props}/>',
+    options: ['never'],
+    parserOptions: parserOptions
+  }, {
+    code: '<App></App>',
+    options: ['never'],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App',
+      '  foo={bar}',
+      '/>'
+    ].join('\n'),
+    options: ['never'],
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -53,29 +81,60 @@ ruleTester.run('jsx-space-before-closing', rule, {
     output: '<App />',
     parserOptions: parserOptions,
     errors: [
-      {message: 'A space is required before \'/>\''}
+      {message: 'A space is required before closing bracket'}
     ]
   }, {
     code: '<App foo/>',
     output: '<App foo />',
     parserOptions: parserOptions,
     errors: [
-      {message: 'A space is required before \'/>\''}
+      {message: 'A space is required before closing bracket'}
     ]
   }, {
     code: '<App foo={bar}/>',
     output: '<App foo={bar} />',
     parserOptions: parserOptions,
     errors: [
-      {message: 'A space is required before \'/>\''}
+      {message: 'A space is required before closing bracket'}
     ]
   }, {
     code: '<App {...props}/>',
     output: '<App {...props} />',
     parserOptions: parserOptions,
     errors: [
-      {message: 'A space is required before \'/>\''}
+      {message: 'A space is required before closing bracket'}
+    ]
+  }, {
+    code: '<App />',
+    output: '<App/>',
+    options: ['never'],
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'A space is forbidden before closing bracket'}
+    ]
+  }, {
+    code: '<App foo />',
+    output: '<App foo/>',
+    options: ['never'],
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'A space is forbidden before closing bracket'}
+    ]
+  }, {
+    code: '<App foo={bar} />',
+    output: '<App foo={bar}/>',
+    options: ['never'],
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'A space is forbidden before closing bracket'}
+    ]
+  }, {
+    code: '<App {...props} />',
+    output: '<App {...props}/>',
+    options: ['never'],
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'A space is forbidden before closing bracket'}
     ]
   }]
 });
-
