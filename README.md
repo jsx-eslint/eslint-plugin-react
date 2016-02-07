@@ -76,6 +76,7 @@ Finally, enable all of the rules that you would like to use.
     "react/forbid-prop-types": 1,
     "react/jsx-boolean-value": 1,
     "react/jsx-closing-bracket-location": 1,
+    "react/jsx-space-before-closing": 1,
     "react/jsx-curly-spacing": 1,
     "react/jsx-equals-spacing": 1,
     "react/jsx-handler-names": 1,
@@ -120,6 +121,7 @@ Finally, enable all of the rules that you would like to use.
 * [forbid-prop-types](docs/rules/forbid-prop-types.md): Forbid certain propTypes
 * [jsx-boolean-value](docs/rules/jsx-boolean-value.md): Enforce boolean attributes notation in JSX (fixable)
 * [jsx-closing-bracket-location](docs/rules/jsx-closing-bracket-location.md): Validate closing bracket location in JSX
+* [jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
 * [jsx-curly-spacing](docs/rules/jsx-curly-spacing.md): Enforce or disallow spaces inside of curly braces in JSX attributes (fixable)
 * [jsx-equals-spacing](docs/rules/jsx-equals-spacing.md): Enforce or disallow spaces around equal signs in JSX attributes
 * [jsx-handler-names](docs/rules/jsx-handler-names.md): Enforce event handler naming conventions in JSX
