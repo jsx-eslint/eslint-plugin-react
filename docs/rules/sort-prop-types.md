@@ -1,10 +1,10 @@
-# Enforce propTypes declarations alphabetical sorting (jsx-sort-prop-types)
+# Enforce propTypes declarations alphabetical sorting (sort-prop-types)
 
-Some developers prefer to sort propsTypes declarations alphabetically to be able to find necessary declaration easier at the later time. Others feel that it adds complexity and becomes burden to maintain.
+Some developers prefer to sort propTypes declarations alphabetically to be able to find necessary declaration easier at the later time. Others feel that it adds complexity and becomes burden to maintain.
 
 ## Rule Details
 
-This rule checks all JSX components and verifies that all propsTypes declarations are sorted alphabetically.
+This rule checks all components and verifies that all propTypes declarations are sorted alphabetically.
 The default configuration of the rule is case-sensitive.
 This rule is off by default.
 
@@ -78,7 +78,7 @@ class Component extends React.Component {
 
 ```js
 ...
-"jsx-sort-prop-types": [<enabled>, {
+"sort-prop-types": [<enabled>, {
   "callbacksLast": <boolean>,
   "ignoreCase": <boolean>,
   "requiredFirst": <boolean>,
@@ -92,7 +92,7 @@ When `true` the rule ignores the case-sensitivity of the declarations order.
 
 ### `callbacksLast`
 
-When `true`, prop types for props beginning with "on" must be listed after all other props:
+When `true`, propTypes for props beginning with "on" must be listed after all other props:
 
 ```js
 var Component = React.createClass({
