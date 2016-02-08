@@ -76,7 +76,6 @@ Finally, enable all of the rules that you would like to use.
     "react/forbid-prop-types": 1,
     "react/jsx-boolean-value": 1,
     "react/jsx-closing-bracket-location": 1,
-    "react/jsx-space-before-closing": 1,
     "react/jsx-curly-spacing": 1,
     "react/jsx-equals-spacing": 1,
     "react/jsx-handler-names": 1,
