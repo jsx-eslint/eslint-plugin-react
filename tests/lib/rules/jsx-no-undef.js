@@ -52,11 +52,16 @@ ruleTester.run('jsx-no-undef', rule, {
       message: '\'Appp\' is not defined.'
     }],
     parserOptions: parserOptions
-  },
-  {
+  }, {
     code: '/*eslint no-undef:1*/ var React; React.render(<Apppp:Foo />);',
     errors: [{
       message: '\'Apppp\' is not defined.'
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: '/*eslint no-undef:1*/ var React; React.render(<appp.Foo />);',
+    errors: [{
+      message: '\'appp\' is not defined.'
     }],
     parserOptions: parserOptions
   }]
