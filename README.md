@@ -74,6 +74,24 @@ Finally, enable all of the rules that you would like to use.
   "rules": {
     "react/display-name": 1,
     "react/forbid-prop-types": 1,
+    "react/no-danger": 1,
+    "react/no-deprecated": 1,
+    "react/no-did-mount-set-state": 1,
+    "react/no-did-update-set-state": 1,
+    "react/no-direct-mutation-state": 1,
+    "react/no-is-mounted": 1,
+    "react/no-multi-comp": 1,
+    "react/no-set-state": 1,
+    "react/no-string-refs": 1,
+    "react/no-unknown-property": 1,
+    "react/prefer-es6-class": 1,
+    "react/prop-types": 1,
+    "react/react-in-jsx-scope": 1,
+    "react/require-extension": 1,
+    "react/self-closing-comp": 1,
+    "react/sort-comp": 1,
+    "react/wrap-multilines": 1,
+
     "react/jsx-boolean-value": 1,
     "react/jsx-closing-bracket-location": 1,
     "react/jsx-curly-spacing": 1,
@@ -93,24 +111,7 @@ Finally, enable all of the rules that you would like to use.
     "react/jsx-sort-props": 1,
     "react/jsx-space-before-closing": 1,
     "react/jsx-uses-react": 1,
-    "react/jsx-uses-vars": 1,
-    "react/no-danger": 1,
-    "react/no-deprecated": 1,
-    "react/no-did-mount-set-state": 1,
-    "react/no-did-update-set-state": 1,
-    "react/no-direct-mutation-state": 1,
-    "react/no-is-mounted": 1,
-    "react/no-multi-comp": 1,
-    "react/no-set-state": 1,
-    "react/no-string-refs": 1,
-    "react/no-unknown-property": 1,
-    "react/prefer-es6-class": 1,
-    "react/prop-types": 1,
-    "react/react-in-jsx-scope": 1,
-    "react/require-extension": 1,
-    "react/self-closing-comp": 1,
-    "react/sort-comp": 1,
-    "react/wrap-multilines": 1
+    "react/jsx-uses-vars": 1
   }
 }
 ```
@@ -119,6 +120,26 @@ Finally, enable all of the rules that you would like to use.
 
 * [display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
 * [forbid-prop-types](docs/rules/forbid-prop-types.md): Forbid certain propTypes
+* [no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
+* [no-deprecated](docs/rules/no-deprecated.md): Prevent usage of deprecated methods
+* [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of `setState` in `componentDidMount`
+* [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of `setState` in `componentDidUpdate`
+* [no-direct-mutation-state](docs/rules/no-direct-mutation-state.md): Prevent direct mutation of `this.state`
+* [no-is-mounted](docs/rules/no-is-mounted.md): Prevent usage of `isMounted`
+* [no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
+* [no-set-state](docs/rules/no-set-state.md): Prevent usage of `setState`
+* [no-string-refs](docs/rules/no-string-refs.md): Prevent using string references in `ref` attribute.
+* [no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property (fixable)
+* [prefer-es6-class](docs/rules/prefer-es6-class.md): Enforce ES5 or ES6 class for React Components
+* [prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
+* [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing `React` when using JSX
+* [require-extension](docs/rules/require-extension.md): Restrict file extensions that may be required
+* [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
+* [sort-comp](docs/rules/sort-comp.md): Enforce component methods order
+* [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX (fixable)
+
+### JSX-specific rules
+
 * [jsx-boolean-value](docs/rules/jsx-boolean-value.md): Enforce boolean attributes notation in JSX (fixable)
 * [jsx-closing-bracket-location](docs/rules/jsx-closing-bracket-location.md): Validate closing bracket location in JSX
 * [jsx-curly-spacing](docs/rules/jsx-curly-spacing.md): Enforce or disallow spaces inside of curly braces in JSX attributes (fixable)
@@ -139,23 +160,6 @@ Finally, enable all of the rules that you would like to use.
 * [jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
 * [jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
 * [jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
-* [no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
-* [no-deprecated](docs/rules/no-deprecated.md): Prevent usage of deprecated methods
-* [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of `setState` in `componentDidMount`
-* [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of `setState` in `componentDidUpdate`
-* [no-direct-mutation-state](docs/rules/no-direct-mutation-state.md): Prevent direct mutation of `this.state`
-* [no-is-mounted](docs/rules/no-is-mounted.md): Prevent usage of `isMounted`
-* [no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
-* [no-set-state](docs/rules/no-set-state.md): Prevent usage of `setState`
-* [no-string-refs](docs/rules/no-string-refs.md): Prevent using string references in `ref` attribute.
-* [no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property (fixable)
-* [prefer-es6-class](docs/rules/prefer-es6-class.md): Enforce ES5 or ES6 class for React Components
-* [prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
-* [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing `React` when using JSX
-* [require-extension](docs/rules/require-extension.md): Restrict file extensions that may be required
-* [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
-* [sort-comp](docs/rules/sort-comp.md): Enforce component methods order
-* [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX (fixable)
 
 ## React Native
 
