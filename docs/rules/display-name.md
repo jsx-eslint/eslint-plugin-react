@@ -35,7 +35,7 @@ var Hello = React.createClass({
 
 ### `acceptTranspilerName`
 
-When `true` the rule will accept the name set by the transpiler and does not require a `displayName` property in this case.
+When `true` (default) the rule will accept the name set by the transpiler and does not require a `displayName` property in this case.
 
 The following patterns are considered okay and do not cause warnings:
 
