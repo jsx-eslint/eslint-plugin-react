@@ -33,11 +33,40 @@ var Hello = React.createClass({
 ...
 ```
 
-### `acceptTranspilerName`
+### `ignoreTranspilerName`
 
-When `true` the rule will accept the name set by the transpiler and does not require a `displayName` property in this case.
+When `true` the rule will ignore the name set by the transpiler and require a `displayName` property in this case.
 
 The following patterns are considered okay and do not cause warnings:
+
+```js
+var Hello = React.createClass({
+  displayName: 'Hello',
+
+  render: function() {
+    return <div>Hello {this.props.name}</div>;
+  }
+});
+module.exports = Hello;
+```
+
+```js
+export default class Hello extends React.Component {
+  render() {
+    return <div>Hello {this.props.name}</div>;
+  }
+}
+Hello.displayName = 'Hello';
+```
+
+```js
+export default function Hello({ name }) {
+  return <div>Hello {name}</div>;
+}
+Hello.displayName = 'Hello';
+```
+
+The following patterns will cause warnings:
 
 ```js
 var Hello = React.createClass({
@@ -55,8 +84,6 @@ export default class Hello extends React.Component {
   }
 }
 ```
-
-With the following patterns the transpiler can not assign a name for the component and therefore it will still cause warnings:
 
 ```js
 module.exports = React.createClass({
