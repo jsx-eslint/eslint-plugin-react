@@ -43,6 +43,9 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parserOptions: parserOptions
   }, {
     code: [
@@ -53,6 +56,9 @@ ruleTester.run('display-name', rule, {
       '}',
       'Hello.displayName = \'Hello\''
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parserOptions: parserOptions
   }, {
     code: [
@@ -92,6 +98,9 @@ ruleTester.run('display-name', rule, {
       '  }',
       '}'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parserOptions: parserOptions
   }, {
     code: [
@@ -102,6 +111,9 @@ ruleTester.run('display-name', rule, {
       '  }',
       '}'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parser: 'babel-eslint',
     parserOptions: parserOptions
   }, {
@@ -112,9 +124,6 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
-    options: [{
-      acceptTranspilerName: true
-    }],
     parserOptions: parserOptions
   }, {
     code: [
@@ -124,10 +133,7 @@ ruleTester.run('display-name', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
-    options: [{
-      acceptTranspilerName: true
-    }]
+    parser: 'babel-eslint'
   }, {
     code: [
       'export default class Hello {',
@@ -136,10 +142,7 @@ ruleTester.run('display-name', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
-    options: [{
-      acceptTranspilerName: true
-    }]
+    parser: 'babel-eslint'
   }, {
     code: [
       'var Hello;',
@@ -149,9 +152,6 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
-    options: [{
-      acceptTranspilerName: true
-    }],
     parserOptions: parserOptions
   }, {
     code: [
@@ -164,6 +164,9 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parserOptions: parserOptions
   }, {
     code: [
@@ -180,40 +183,28 @@ ruleTester.run('display-name', rule, {
       '  return <div>Hello {this.props.name}</div>;',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
-    options: [{
-      acceptTranspilerName: true
-    }]
+    parser: 'babel-eslint'
   }, {
     code: [
       'function Hello() {',
       '  return <div>Hello {this.props.name}</div>;',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
-    options: [{
-      acceptTranspilerName: true
-    }]
+    parser: 'babel-eslint'
   }, {
     code: [
       'var Hello = () => {',
       '  return <div>Hello {this.props.name}</div>;',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
-    options: [{
-      acceptTranspilerName: true
-    }]
+    parser: 'babel-eslint'
   }, {
     code: [
       'module.exports = function Hello() {',
       '  return <div>Hello {this.props.name}</div>;',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
-    options: [{
-      acceptTranspilerName: true
-    }]
+    parser: 'babel-eslint'
   }, {
     code: [
       'function Hello() {',
@@ -221,6 +212,9 @@ ruleTester.run('display-name', rule, {
       '}',
       'Hello.displayName = \'Hello\';'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parser: 'babel-eslint'
   }, {
     code: [
@@ -229,6 +223,9 @@ ruleTester.run('display-name', rule, {
       '}',
       'Hello.displayName = \'Hello\';'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parser: 'babel-eslint'
   }, {
     code: [
@@ -237,6 +234,9 @@ ruleTester.run('display-name', rule, {
       '}',
       'Hello.displayName = \'Hello\';'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parser: 'babel-eslint'
   }, {
     code: [
@@ -249,6 +249,9 @@ ruleTester.run('display-name', rule, {
       '}',
       'Mixins.Greetings.Hello.displayName = \'Hello\';'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parser: 'babel-eslint'
   }, {
     code: [
@@ -261,10 +264,7 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parser: 'babel-eslint',
-    options: [{
-      acceptTranspilerName: true
-    }]
+    parser: 'babel-eslint'
   }, {
     code: [
       'var Hello = React.createClass({',
@@ -277,6 +277,9 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parser: 'babel-eslint'
   }, {
     code: [
@@ -288,10 +291,7 @@ ruleTester.run('display-name', rule, {
       '  }',
       '};'
     ].join('\n'),
-    parser: 'babel-eslint',
-    options: [{
-      acceptTranspilerName: true
-    }]
+    parser: 'babel-eslint'
   }, {
     code: [
       'var obj = {',
@@ -300,10 +300,19 @@ ruleTester.run('display-name', rule, {
       '  }',
       '};'
     ].join('\n'),
-    parser: 'babel-eslint',
     options: [{
-      acceptTranspilerName: true
-    }]
+      ignoreTranspilerName: true
+    }],
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      'var obj = {',
+      '  pouf: function() {',
+      '    return any',
+      '  }',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }, {
     code: [
       'export default {',
@@ -324,6 +333,9 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parser: 'babel-eslint'
   }
 ],
@@ -336,6 +348,9 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parserOptions: parserOptions,
     errors: [{
       message: 'Component definition is missing display name'
@@ -348,6 +363,9 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parserOptions: parserOptions,
     errors: [{
       message: 'Component definition is missing display name'
@@ -360,6 +378,9 @@ ruleTester.run('display-name', rule, {
       '  }',
       '}'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parserOptions: parserOptions,
     errors: [{
       message: 'Component definition is missing display name'
@@ -376,7 +397,7 @@ ruleTester.run('display-name', rule, {
       'module.exports = HelloComponent();'
     ].join('\n'),
     options: [{
-      acceptTranspilerName: true
+      ignoreTranspilerName: true
     }],
     parserOptions: parserOptions,
     errors: [{
@@ -389,9 +410,6 @@ ruleTester.run('display-name', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    options: [{
-      acceptTranspilerName: true
-    }],
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -402,9 +420,6 @@ ruleTester.run('display-name', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    options: [{
-      acceptTranspilerName: true
-    }],
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -419,6 +434,9 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parser: 'babel-eslint',
     errors: [{
       message: 'Component definition is missing display name'
@@ -434,6 +452,9 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parser: 'babel-eslint',
     settings: settings,
     errors: [{
@@ -451,6 +472,9 @@ ruleTester.run('display-name', rule, {
       '  }',
       '});'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parser: 'babel-eslint',
     errors: [{
       message: 'Component definition is missing display name'
@@ -465,6 +489,9 @@ ruleTester.run('display-name', rule, {
       '  }',
       '};'
     ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
     parser: 'babel-eslint',
     errors: [{
       message: 'Component definition is missing display name'
