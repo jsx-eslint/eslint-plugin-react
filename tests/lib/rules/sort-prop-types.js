@@ -7,7 +7,7 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/jsx-sort-prop-types');
+var rule = require('../../../lib/rules/sort-prop-types');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
