@@ -1098,6 +1098,16 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       parserOptions: parserOptions
+    }, {
+      // Ignore destructured function arguments
+      code: [
+        'class Hello extends React.Component {',
+        '  render () {',
+        '    return ["string"].map(({length}) => <div>{length}</div>);',
+        '  }',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions
     }
   ],
 
@@ -1915,6 +1925,17 @@ ruleTester.run('prop-types', rule, {
       parserOptions: parserOptions,
       errors: [{
         message: '\'name\' is missing in props validation'
+      }]
+    }, {
+      code: [
+        'function Greetings({names}) {',
+        '  names = names.map(({firstname, lastname}) => <div>{firstname} {lastname}</div>);',
+        '  return <Hello>{names}</Hello>;',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'names\' is missing in props validation'
       }]
     }
   ]
