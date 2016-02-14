@@ -69,52 +69,6 @@ With ESLint 2.x.x:
 
 Finally, enable all of the rules that you would like to use.
 
-```json
-{
-  "rules": {
-    "react/display-name": 1,
-    "react/forbid-prop-types": 1,
-    "react/no-danger": 1,
-    "react/no-deprecated": 1,
-    "react/no-did-mount-set-state": 1,
-    "react/no-did-update-set-state": 1,
-    "react/no-direct-mutation-state": 1,
-    "react/no-is-mounted": 1,
-    "react/no-multi-comp": 1,
-    "react/no-set-state": 1,
-    "react/no-string-refs": 1,
-    "react/no-unknown-property": 1,
-    "react/prefer-es6-class": 1,
-    "react/prop-types": 1,
-    "react/react-in-jsx-scope": 1,
-    "react/require-extension": 1,
-    "react/self-closing-comp": 1,
-    "react/sort-comp": 1,
-    "react/wrap-multilines": 1,
-
-    "react/jsx-boolean-value": 1,
-    "react/jsx-closing-bracket-location": 1,
-    "react/jsx-curly-spacing": 1,
-    "react/jsx-equals-spacing": 1,
-    "react/jsx-handler-names": 1,
-    "react/jsx-indent-props": 1,
-    "react/jsx-indent": 1,
-    "react/jsx-key": 1,
-    "react/jsx-max-props-per-line": 1,
-    "react/jsx-no-bind": 1,
-    "react/jsx-no-duplicate-props": 1,
-    "react/jsx-no-literals": 1,
-    "react/jsx-no-undef": 1,
-    "react/jsx-pascal-case": 1,
-    "react/jsx-sort-prop-types": 1,
-    "react/jsx-sort-props": 1,
-    "react/jsx-space-before-closing": 1,
-    "react/jsx-uses-react": 1,
-    "react/jsx-uses-vars": 1
-  }
-}
-```
-
 # List of supported rules
 
 * [display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
@@ -137,7 +91,7 @@ Finally, enable all of the rules that you would like to use.
 * [sort-comp](docs/rules/sort-comp.md): Enforce component methods order
 * [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX (fixable)
 
-### JSX-specific rules
+## JSX-specific rules
 
 * [jsx-boolean-value](docs/rules/jsx-boolean-value.md): Enforce boolean attributes notation in JSX (fixable)
 * [jsx-closing-bracket-location](docs/rules/jsx-closing-bracket-location.md): Validate closing bracket location in JSX
@@ -159,9 +113,45 @@ Finally, enable all of the rules that you would like to use.
 * [jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
 * [jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
 
-## React Native
+## React Native rules
 
 If you're searching for React Native specific linting rules, check out [eslint-plugin-react-native](https://github.com/Intellicode/eslint-plugin-react-native).
+
+# Recommended configuration
+
+This plugin export a `recommended` configuration that enforce React good practices.
+
+To enable this configuration use the `extends` property in your `.eslintrc` config file:
+
+```js
+{
+  "plugins": [
+    "react"
+  ],
+  "extends": "plugin:react/recommended"
+}
+```
+
+See [ESLint documentation](http://eslint.org/docs/user-guide/configuring#extending-configuration-files) for more information about extending configuration files.
+
+The rules enabled in this configuration are:
+
+* [display-name](docs/rules/display-name.md)
+* [jsx-no-duplicate-props](docs/rules/jsx-no-duplicate-props.md)
+* [jsx-no-undef](docs/rules/jsx-no-undef.md)
+* [jsx-uses-react](docs/rules/jsx-uses-react.md)
+* [jsx-uses-vars](docs/rules/jsx-uses-vars.md)
+* [no-danger](docs/rules/no-danger.md)
+* [no-deprecated](docs/rules/no-deprecated.md)
+* [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md) with `allow-in-func` option
+* [no-did-update-set-state](docs/rules/no-did-update-set-state.md) with `allow-in-func` option
+* [no-direct-mutation-state](docs/rules/no-direct-mutation-state.md)
+* [no-is-mounted](docs/rules/no-is-mounted.md)
+* [no-unknown-property](docs/rules/no-unknown-property.md)
+* [prop-types](docs/rules/prop-types.md)
+* [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md)
+
+**Note**: This configuration will also enable JSX in [parser options](http://eslint.org/docs/user-guide/configuring#specifying-parser-options).
 
 # License
 

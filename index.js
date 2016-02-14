@@ -42,45 +42,29 @@ module.exports = {
     'jsx-key': require('./lib/rules/jsx-key'),
     'no-string-refs': require('./lib/rules/no-string-refs')
   },
-  rulesConfig: {
-    'jsx-uses-react': 0,
-    'no-multi-comp': 0,
-    'prop-types': 0,
-    'display-name': 0,
-    'wrap-multilines': 0,
-    'self-closing-comp': 0,
-    'no-deprecated': 0,
-    'no-danger': 0,
-    'no-set-state': 0,
-    'no-is-mounted': 0,
-    'no-did-mount-set-state': 0,
-    'no-did-update-set-state': 0,
-    'react-in-jsx-scope': 0,
-    'jsx-uses-vars': 1,
-    'jsx-handler-names': 0,
-    'jsx-pascal-case': 0,
-    'jsx-no-bind': 0,
-    'jsx-no-undef': 0,
-    'no-unknown-property': 0,
-    'jsx-curly-spacing': 0,
-    'jsx-equals-spacing': 0,
-    'jsx-sort-props': 0,
-    'sort-prop-types': 0,
-    'jsx-sort-prop-types': 0,
-    'jsx-boolean-value': 0,
-    'sort-comp': 0,
-    'require-extension': 0,
-    'jsx-no-duplicate-props': 0,
-    'jsx-max-props-per-line': 0,
-    'jsx-no-literals': 0,
-    'jsx-indent-props': 0,
-    'jsx-indent': 0,
-    'jsx-closing-bracket-location': 0,
-    'jsx-space-before-closing': 0,
-    'no-direct-mutation-state': 0,
-    'forbid-prop-types': 0,
-    'prefer-es6-class': 0,
-    'jsx-key': 0,
-    'no-string-refs': 0
+  configs: {
+    recommended: {
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true
+        }
+      },
+      rules: {
+        'react/display-name': 2,
+        'react/jsx-no-duplicate-props': 2,
+        'react/jsx-no-undef': 2,
+        'react/jsx-uses-react': 2,
+        'react/jsx-uses-vars': 2,
+        'react/no-danger': 2,
+        'react/no-deprecated': 2,
+        'react/no-did-mount-set-state': [2, 'allow-in-func'],
+        'react/no-did-update-set-state': [2, 'allow-in-func'],
+        'react/no-direct-mutation-state': 2,
+        'react/no-is-mounted': 2,
+        'react/no-unknown-property': 2,
+        'react/prop-types': 2,
+        'react/react-in-jsx-scope': 2
+      }
+    }
   }
 };
