@@ -3,6 +3,42 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [4.0.0-rc.0] - 2016-02-14
+### Added
+* Add `jsx-space-before-closing` rule ([#244][] @ryym)
+* Add support for destructing in function signatures to `prop-types` ([#354][] @lencioni)
+
+### Breaking
+* Add support for static methods to `sort-comp`. Static methods must now be declared first, see [rule documentation](docs/rules/sort-comp.md) ([#128][] @lencioni)
+* Add shareable config in place of default configuration. `jsx-uses-vars` is not enabled by default anymore, see [documentation](README.md#recommended-configuration) ([#192][])
+* Rename `jsx-sort-prop-types` to `sort-prop-types`. `jsx-sort-prop-types` still works but will trigger a warning ([#87][] @lencioni)
+* Remove deprecated `jsx-quotes` rule ([#433][] @lencioni)
+* `display-name` now accept the transpiler name by default. You can use the `ignoreTranspilerName` option to get the old behavior, see [rule documentation](docs/rules/display-name.md#ignoretranspilername) ([#440][] @lencioni)
+
+### Fixed
+* Only ignore lowercase JSXIdentifier in `jsx-no-undef` ([#435][])
+
+### Changed
+* Update dependencies ([#426][] @quentin-)
+* Documentation improvements ([#414][] @vkrol, [#370][] @tmcw, [#441][] [#429][] @lencioni, [#432][] @Niler851, [#438][] @jmann6)
+
+[4.0.0-rc.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.16.1...v4.0.0-rc.0
+[#244]: https://github.com/yannickcr/eslint-plugin-react/issues/244
+[#354]: https://github.com/yannickcr/eslint-plugin-react/issues/354
+[#128]: https://github.com/yannickcr/eslint-plugin-react/issues/128
+[#192]: https://github.com/yannickcr/eslint-plugin-react/issues/192
+[#87]: https://github.com/yannickcr/eslint-plugin-react/issues/87
+[#440]: https://github.com/yannickcr/eslint-plugin-react/pull/440
+[#435]: https://github.com/yannickcr/eslint-plugin-react/issues/435
+[#426]: https://github.com/yannickcr/eslint-plugin-react/pull/426
+[#414]: https://github.com/yannickcr/eslint-plugin-react/pull/414
+[#370]: https://github.com/yannickcr/eslint-plugin-react/pull/370
+[#441]: https://github.com/yannickcr/eslint-plugin-react/pull/441
+[#429]: https://github.com/yannickcr/eslint-plugin-react/pull/429
+[#432]: https://github.com/yannickcr/eslint-plugin-react/pull/432
+[#438]: https://github.com/yannickcr/eslint-plugin-react/pull/438
+[#433]: https://github.com/yannickcr/eslint-plugin-react/pull/433
+
 ## [3.16.1] - 2016-01-24
 ### Fixed
 * Fix `jsx-sort-prop-types` issue with custom propTypes ([#408][] @alitaheri)
@@ -489,7 +525,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * Add jsx-no-duplicate-props rule ([#161][] @hummlas)
 * Add allowMultiline option to the `jsx-curly-spacing` rule ([#156][] @mathieumg)
 
-## Breaking
+### Breaking
 * In `jsx-curly-spacing` braces spanning multiple lines are now allowed with `never` option ([#156][] @mathieumg)
 
 ### Fixed
@@ -746,7 +782,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Changed
 * Update dependencies
 
-## Breaking
+### Breaking
 * In `prop-types` the children prop is no longer ignored
 
 ### Fixed
