@@ -3,6 +3,15 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [4.0.0-rc.1] - 2016-02-15
+### Fixed
+* Fix `jsx-handler-names` regex ([#425][])
+* Fix destructured props detection in `prop-types` ([#443][])
+
+[4.0.0-rc.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v4.0.0-rc.0...v4.0.0-rc.1
+[#425]: https://github.com/yannickcr/eslint-plugin-react/issues/425
+[#443]: https://github.com/yannickcr/eslint-plugin-react/issues/443
+
 ## [4.0.0-rc.0] - 2016-02-14
 ### Added
 * Add `jsx-space-before-closing` rule ([#244][] @ryym)
