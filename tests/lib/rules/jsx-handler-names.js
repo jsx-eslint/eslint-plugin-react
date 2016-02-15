@@ -69,6 +69,15 @@ ruleTester.run('jsx-handler-names', rule, {
       '<TestComponent ref={this.somethingRef} />'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: [
+      '<TestComponent test={this.props.content} />'
+    ].join('\n'),
+    options: [{
+      eventHandlerPrefix: 'on',
+      eventHandlerPropPrefix: 'on'
+    }],
+    parserOptions: parserOptions
   }],
 
   invalid: [{
