@@ -89,6 +89,7 @@ Finally, enable all of the rules that you would like to use.
 * [require-extension](docs/rules/require-extension.md): Restrict file extensions that may be required
 * [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
 * [sort-comp](docs/rules/sort-comp.md): Enforce component methods order
+* [sort-prop-types](docs/rules/sort-prop-types.md): Enforce propTypes declarations alphabetical sorting
 * [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX (fixable)
 
 ## JSX-specific rules
@@ -107,7 +108,6 @@ Finally, enable all of the rules that you would like to use.
 * [jsx-no-literals](docs/rules/jsx-no-literals.md): Prevent usage of unwrapped JSX strings
 * [jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
 * [jsx-pascal-case](docs/rules/jsx-pascal-case.md): Enforce PascalCase for user-defined JSX components
-* [jsx-sort-prop-types](docs/rules/jsx-sort-prop-types.md): Enforce propTypes declarations alphabetical sorting
 * [jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting
 * [jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
 * [jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
