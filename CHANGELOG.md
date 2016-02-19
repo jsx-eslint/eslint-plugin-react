@@ -3,16 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
-## [4.0.0-rc.1] - 2016-02-15
-### Fixed
-* Fix `jsx-handler-names` regex ([#425][])
-* Fix destructured props detection in `prop-types` ([#443][])
-
-[4.0.0-rc.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v4.0.0-rc.0...v4.0.0-rc.1
-[#425]: https://github.com/yannickcr/eslint-plugin-react/issues/425
-[#443]: https://github.com/yannickcr/eslint-plugin-react/issues/443
-
-## [4.0.0-rc.0] - 2016-02-14
+## [4.0.0] - 2016-02-19
 ### Added
 * Add `jsx-space-before-closing` rule ([#244][] @ryym)
 * Add support for destructing in function signatures to `prop-types` ([#354][] @lencioni)
@@ -26,12 +17,14 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Fixed
 * Only ignore lowercase JSXIdentifier in `jsx-no-undef` ([#435][])
+* Fix `jsx-handler-names` regex ([#425][])
+* Fix destructured props detection in `prop-types` ([#443][])
 
 ### Changed
 * Update dependencies ([#426][] @quentin-)
 * Documentation improvements ([#414][] @vkrol, [#370][] @tmcw, [#441][] [#429][] @lencioni, [#432][] @Niler851, [#438][] @jmann6)
 
-[4.0.0-rc.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.16.1...v4.0.0-rc.0
+[4.0.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.16.1...v4.0.0
 [#244]: https://github.com/yannickcr/eslint-plugin-react/issues/244
 [#354]: https://github.com/yannickcr/eslint-plugin-react/issues/354
 [#128]: https://github.com/yannickcr/eslint-plugin-react/issues/128
@@ -39,6 +32,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#87]: https://github.com/yannickcr/eslint-plugin-react/issues/87
 [#440]: https://github.com/yannickcr/eslint-plugin-react/pull/440
 [#435]: https://github.com/yannickcr/eslint-plugin-react/issues/435
+[#425]: https://github.com/yannickcr/eslint-plugin-react/issues/425
+[#443]: https://github.com/yannickcr/eslint-plugin-react/issues/443
 [#426]: https://github.com/yannickcr/eslint-plugin-react/pull/426
 [#414]: https://github.com/yannickcr/eslint-plugin-react/pull/414
 [#370]: https://github.com/yannickcr/eslint-plugin-react/pull/370
