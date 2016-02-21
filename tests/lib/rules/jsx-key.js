@@ -34,7 +34,8 @@ ruleTester.run('jsx-key', rule, {
     {code: '[1, 2, 3].map(x => { return <App key={x} /> });', parserOptions: parserOptions},
     {code: '[1, 2, 3].foo(x => <App />);', parserOptions: parserOptions},
     {code: 'var App = () => <div />;', parserOptions: parserOptions},
-    {code: '[1, 2, 3].map(function(x) { return; });', parserOptions: parserOptions}
+    {code: '[1, 2, 3].map(function(x) { return; });', parserOptions: parserOptions},
+    {code: 'foo(() => <div />);', parserOptions: parserOptions}
   ],
   invalid: [
     {code: '[<App />];',
