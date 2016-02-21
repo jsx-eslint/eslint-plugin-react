@@ -1937,6 +1937,16 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'names\' is missing in props validation'
       }]
+    }, {
+      code: [
+        'const MyComponent = props => (',
+        '  <div onClick={() => props.toggle()}></div>',
+        ')'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'toggle\' is missing in props validation'
+      }]
     }
   ]
 });
