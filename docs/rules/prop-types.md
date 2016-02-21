@@ -25,7 +25,7 @@ var Hello = React.createClass({
 });
 
 function Hello({ name }) {
-  return <div>Hello {this.props.name}</div>;
+  return <div>Hello {name}</div>;
 }
 ```
 
@@ -56,7 +56,7 @@ var Hello = React.createClass({
 });
 
 function Hello({ name }) {
-  return <div>Hello {this.props.name}</div>;
+  return <div>Hello {name}</div>;
 }
 Hello.propTypes = {
   name: React.PropTypes.string.isRequired,
