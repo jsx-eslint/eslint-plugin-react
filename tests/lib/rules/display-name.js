@@ -337,6 +337,17 @@ ruleTester.run('display-name', rule, {
       ignoreTranspilerName: true
     }],
     parser: 'babel-eslint'
+  }, {
+    code: [
+      'import React, {Component} from "react";',
+      'function someDecorator(ComposedComponent) {',
+      '  return class MyDecorator extends Component {',
+      '    render() {return <ComposedComponent {...this.props} />;}',
+      '  };',
+      '}',
+      'module.exports = someDecorator;'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }
 ],
 
