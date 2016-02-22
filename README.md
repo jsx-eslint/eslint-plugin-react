@@ -67,6 +67,23 @@ With ESLint 2.x.x:
 }
 ```
 
+# Recommended configuration
+
+This plugin export a `recommended` configuration that enforce React good practices.
+
+To enable this configuration use the `extends` property in your `.eslintrc` config file:
+
+```js
+{
+  "plugins": [
+    "react"
+  ],
+  "extends": "plugin:react/recommended"
+}
+```
+
+See [ESLint documentation](http://eslint.org/docs/user-guide/configuring#extending-configuration-files) for more information about extending configuration files.
+
 Finally, enable all of the rules that you would like to use.
 
 # List of supported rules
@@ -117,22 +134,8 @@ Finally, enable all of the rules that you would like to use.
 
 If you're searching for React Native specific linting rules, check out [eslint-plugin-react-native](https://github.com/Intellicode/eslint-plugin-react-native).
 
-# Recommended configuration
 
-This plugin export a `recommended` configuration that enforce React good practices.
 
-To enable this configuration use the `extends` property in your `.eslintrc` config file:
-
-```js
-{
-  "plugins": [
-    "react"
-  ],
-  "extends": "plugin:react/recommended"
-}
-```
-
-See [ESLint documentation](http://eslint.org/docs/user-guide/configuring#extending-configuration-files) for more information about extending configuration files.
 
 The rules enabled in this configuration are:
 
