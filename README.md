@@ -69,6 +69,19 @@ With ESLint 2.x.x:
 
 Finally, enable all of the rules that you would like to use.
 
+At a minimum you need to include the rule [jsx-uses-vars](docs/rules/jsx-uses-vars.md) as without this
+any imports of JSX components will fail falsely claiming they're defined but not used.
+
+```json
+{
+  "rules": {
+    "react/jsx-uses-vars": 2
+  }
+}
+```
+
+The plugin has a [recommended configuration](#user-content-recommended-configuration) that enforces React good practices.
+
 # List of supported rules
 
 * [display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
@@ -119,7 +132,7 @@ If you're searching for React Native specific linting rules, check out [eslint-p
 
 # Recommended configuration
 
-This plugin export a `recommended` configuration that enforce React good practices.
+This plugin exports a `recommended` configuration that enforce React good practices.
 
 To enable this configuration use the `extends` property in your `.eslintrc` config file:
 
@@ -128,7 +141,7 @@ To enable this configuration use the `extends` property in your `.eslintrc` conf
   "plugins": [
     "react"
   ],
-  "extends": "plugin:react/recommended"
+  "extends": ["eslint:recommended", "plugin:react/recommended"]
 }
 ```
 
