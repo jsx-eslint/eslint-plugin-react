@@ -3,6 +3,24 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [4.1.0] - 2016-02-23
+### Added
+* Add component detection for class expressions
+* Add displayName detection for class expressions in `display-name` ([#419][])
+
+### Fixed
+* Fix used props detection in components for which we are not confident in `prop-types` ([#420][])
+* Fix false positive in `jsx-key` ([#456][] @jkimbo)
+
+### Changed
+* Documentation improvements ([#457][] @wyze)
+
+[4.1.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v4.0.0...v4.1.0
+[#419]: https://github.com/yannickcr/eslint-plugin-react/issues/419
+[#420]: https://github.com/yannickcr/eslint-plugin-react/issues/420
+[#456]: https://github.com/yannickcr/eslint-plugin-react/pull/456
+[#457]: https://github.com/yannickcr/eslint-plugin-react/pull/457
+
 ## [4.0.0] - 2016-02-19
 ### Added
 * Add `jsx-space-before-closing` rule ([#244][] @ryym)
@@ -22,7 +40,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Changed
 * Update dependencies ([#426][] @quentin-)
-* Documentation improvements ([#414][] @vkrol, [#370][] @tmcw, [#441][] [#429][] @lencioni, [#432][] @Niler851, [#438][] @jmann6)
+* Documentation improvements ([#414][] @vkrol, [#370][] @tmcw, [#441][] [#429][] @lencioni, [#432][] @note89, [#438][] @jmann6)
 
 [4.0.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.16.1...v4.0.0
 [#244]: https://github.com/yannickcr/eslint-plugin-react/issues/244
