@@ -20,7 +20,7 @@ There are two main options for the rule:
 Depending on your coding conventions, you can choose either option by specifying it in your configuration:
 
 ```json
-"jsx-curly-spacing": [2, "always"]
+"react/jsx-curly-spacing": [2, "always"]
 ```
 
 #### never
@@ -68,7 +68,7 @@ The following patterns are not warnings:
 By default, braces spanning multiple lines are allowed with either setting. If you want to disallow them you can specify an additional `allowMultiline` property with the value `false`:
 
 ```json
-"jsx-curly-spacing": [2, "never", {"allowMultiline": false}]
+"react/jsx-curly-spacing": [2, "never", {"allowMultiline": false}]
 ```
 
 When `"never"` is used and `allowMultiline` is `false`, the following patterns are considered warnings:
