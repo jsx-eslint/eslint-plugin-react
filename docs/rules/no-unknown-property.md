@@ -1,6 +1,6 @@
 # Prevent usage of unknown DOM property (no-unknown-property)
 
-In JSX all DOM properties and attributes should be camelCased to be consistent with standard JavaScript style. This can be a possible source of error if you are used to write plain HTML.
+In JSX all DOM properties and attributes should be camelCased to be consistent with standard JavaScript style. This can be a possible source of error if you are used to writing plain HTML.
 
 **Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
 
