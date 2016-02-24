@@ -6,7 +6,7 @@ In JSX when using a boolean attribute you can set the attribute value to `true` 
 
 ## Rule Details
 
-This rule takes one argument. If it is `"always"` then it warns whenever an attribute is missing it's value. If `"never"` then it warns if an attribute has a `true` value. The default value of this option is `"never"`.
+This rule takes one argument. If it is `"always"` then it warns whenever an attribute is missing its value. If `"never"` then it warns if an attribute has a `true` value. The default value of this option is `"never"`.
 
 The following patterns are considered warnings when configured `"never"`:
 
