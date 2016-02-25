@@ -1108,6 +1108,43 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parserOptions: parserOptions
+    }, {
+      // Flow annotations on stateless components
+      code: [
+        'type Props = {',
+        '  firstname: string;',
+        '  lastname: string;',
+        '};',
+        'function Hello(props: Props): React.Element {',
+        '  const {firstname, lastname} = props;',
+        '  return <div>Hello {firstname} {lastname}</div>',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Props = {',
+        '  firstname: string;',
+        '  lastname: string;',
+        '};',
+        'const Hello = function(props: Props): React.Element {',
+        '  const {firstname, lastname} = props;',
+        '  return <div>Hello {firstname} {lastname}</div>',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Props = {',
+        '  firstname: string;',
+        '  lastname: string;',
+        '};',
+        'const Hello = (props: Props): React.Element => {',
+        '  const {firstname, lastname} = props;',
+        '  return <div>Hello {firstname} {lastname}</div>',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
