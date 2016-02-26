@@ -39,6 +39,12 @@ ruleTester.run('jsx-no-undef', rule, {
   }, {
     code: '/*eslint no-undef:1*/ var React; React.render(<x-gif />);',
     parserOptions: parserOptions
+  }, {
+    code: '/*eslint no-undef:1*/ var React, app; React.render(<app.Foo />);',
+    parserOptions: parserOptions
+  }, {
+    code: '/*eslint no-undef:1*/ var React, app; React.render(<app.foo.Bar />);',
+    parserOptions: parserOptions
   }],
   invalid: [{
     code: '/*eslint no-undef:1*/ var React; React.render(<App />);',
@@ -60,6 +66,12 @@ ruleTester.run('jsx-no-undef', rule, {
     parserOptions: parserOptions
   }, {
     code: '/*eslint no-undef:1*/ var React; React.render(<appp.Foo />);',
+    errors: [{
+      message: '\'appp\' is not defined.'
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: '/*eslint no-undef:1*/ var React; React.render(<appp.foo.Bar />);',
     errors: [{
       message: '\'appp\' is not defined.'
     }],
