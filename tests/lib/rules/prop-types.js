@@ -1145,6 +1145,20 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'Card.propTypes = {',
+        '  title: PropTypes.string.isRequired,',
+        '  children: PropTypes.element.isRequired,',
+        '  footer: PropTypes.node',
+        '}',
+        'function Card ({ title, children, footer }) {',
+        '  return (',
+        '    <div/>',
+        '  )',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions
     }
   ],
 
