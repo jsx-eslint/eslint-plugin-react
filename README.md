@@ -86,6 +86,7 @@ The plugin has a [recommended configuration](#user-content-recommended-configura
 * [no-string-refs](docs/rules/no-string-refs.md): Prevent using string references in `ref` attribute.
 * [no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property (fixable)
 * [prefer-es6-class](docs/rules/prefer-es6-class.md): Enforce ES5 or ES6 class for React Components
+* [prefer-stateless-function](docs/rules/prefer-stateless-function.md): Enforce stateless React Components to be written as a pure function
 * [prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
 * [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing `React` when using JSX
 * [require-extension](docs/rules/require-extension.md): Restrict file extensions that may be required

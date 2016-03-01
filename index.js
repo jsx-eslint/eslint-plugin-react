@@ -40,7 +40,8 @@ module.exports = {
     'forbid-prop-types': require('./lib/rules/forbid-prop-types'),
     'prefer-es6-class': require('./lib/rules/prefer-es6-class'),
     'jsx-key': require('./lib/rules/jsx-key'),
-    'no-string-refs': require('./lib/rules/no-string-refs')
+    'no-string-refs': require('./lib/rules/no-string-refs'),
+    'prefer-stateless-function': require('./lib/rules/prefer-stateless-function')
   },
   configs: {
     recommended: {
