@@ -8,7 +8,7 @@ When creating React components it is more convenient to always follow the same o
 
 With default configuration the following organisation must be followed:
 
-  1. static methods
+  1. static methods and properties
   2. lifecycle methods: `displayName`, `propTypes`, `contextTypes`, `childContextTypes`, `mixins`, `statics`,`defaultProps`, `constructor`, `getDefaultProps`, `getInitialState`, `state`, `getChildContext`, `componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `componentDidUpdate`, `componentWillUnmount` (in this order).
   3. custom methods
   4. `render` method
