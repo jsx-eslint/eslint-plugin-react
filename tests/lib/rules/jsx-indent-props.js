@@ -70,12 +70,22 @@ ruleTester.run('jsx-indent-props', rule, {
       '  foo',
       '/>'
     ].join('\n'),
+    output: [
+      '<App',
+      '    foo',
+      '/>'
+    ].join('\n'),
     parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 4 space characters but found 2.'}]
   }, {
     code: [
       '<App',
       '    foo',
+      '/>'
+    ].join('\n'),
+    output: [
+      '<App',
+      '  foo',
       '/>'
     ].join('\n'),
     options: [2],
@@ -87,8 +97,27 @@ ruleTester.run('jsx-indent-props', rule, {
       '    foo',
       '/>'
     ].join('\n'),
+    output: [
+      '<App',
+      '\tfoo',
+      '/>'
+    ].join('\n'),
     options: ['tab'],
     parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 1 tab character but found 0.'}]
+  }, {
+    code: [
+      '<App',
+      '\t\t\tfoo',
+      '/>'
+    ].join('\n'),
+    output: [
+      '<App',
+      '\tfoo',
+      '/>'
+    ].join('\n'),
+    options: ['tab'],
+    parserOptions: parserOptions,
+    errors: [{message: 'Expected indentation of 1 tab character but found 3.'}]
   }]
 });
