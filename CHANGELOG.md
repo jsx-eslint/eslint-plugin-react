@@ -3,6 +3,31 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [4.2.0] - 2016-03-05
+### Added
+* Add support for Flow annotations on stateless components ([#467][])
+* Add `prefer-stateless-function` rule ([#214][])
+* Add auto fix for `jsx-indent-props` ([#483][] @shioju)
+
+### Fixed
+* Fix `jsx-no-undef` crash on objects ([#469][])
+* Fix propTypes detection when declared before the component ([#472][])
+
+### Changed
+* Update dependencies
+* Documentation improvements ([#464][] @alex-tan, [#466][] @awong-dev, [#470][] @Gpx; [#462][] @thaggie)
+
+[4.2.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v4.1.0...v4.2.0
+[#467]: https://github.com/yannickcr/eslint-plugin-react/issues/467
+[#214]: https://github.com/yannickcr/eslint-plugin-react/issues/214
+[#483]: https://github.com/yannickcr/eslint-plugin-react/pull/483
+[#469]: https://github.com/yannickcr/eslint-plugin-react/issues/469
+[#472]: https://github.com/yannickcr/eslint-plugin-react/issues/472
+[#464]: https://github.com/yannickcr/eslint-plugin-react/pull/464
+[#466]: https://github.com/yannickcr/eslint-plugin-react/pull/466
+[#470]: https://github.com/yannickcr/eslint-plugin-react/pull/470
+[#462]: https://github.com/yannickcr/eslint-plugin-react/pull/462
+
 ## [4.1.0] - 2016-02-23
 ### Added
 * Add component detection for class expressions
