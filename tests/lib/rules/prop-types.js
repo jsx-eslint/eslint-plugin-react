@@ -1998,6 +1998,14 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'toggle\' is missing in props validation'
       }]
+    }, {
+      code: [
+        'const MyComponent = props => props.test ? <div /> : <span />'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'test\' is missing in props validation'
+      }]
     }
   ]
 });
