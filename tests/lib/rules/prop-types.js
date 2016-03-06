@@ -2006,6 +2006,18 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'test\' is missing in props validation'
       }]
+    }, {
+      code: [
+        'const TestComponent = props =>',
+        '  <div onClick={() => props.test()} />',
+        'const mapStateToProps = (_, props) => ({',
+        '  otherProp: props.otherProp,',
+        '})'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'test\' is missing in props validation'
+      }]
     }
   ]
 });
