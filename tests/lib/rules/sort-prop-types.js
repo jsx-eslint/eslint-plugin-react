@@ -312,6 +312,17 @@ ruleTester.run('sort-prop-types', rule, {
       callbacksLast: true
     }],
     parserOptions: parserOptions
+  }, {
+    code: [
+      'export default class ClassWithSpreadInPropTypes extends BaseClass {',
+      '  static propTypes = {',
+      '    b: PropTypes.string,',
+      '    ...c.propTypes,',
+      '    a: PropTypes.string',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
@@ -592,6 +603,24 @@ ruleTester.run('sort-prop-types', rule, {
     errors: [{
       message: 'Required prop types must be listed before all other prop types',
       line: 4,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'export default class ClassWithSpreadInPropTypes extends BaseClass {',
+      '  static propTypes = {',
+      '    b: PropTypes.string,',
+      '    ...a.propTypes,',
+      '    d: PropTypes.string,',
+      '    c: PropTypes.string',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Prop types declarations should be sorted alphabetically',
+      line: 6,
       column: 5,
       type: 'Property'
     }]

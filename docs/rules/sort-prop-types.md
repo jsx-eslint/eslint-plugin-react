@@ -4,9 +4,7 @@ Some developers prefer to sort propTypes declarations alphabetically to be able 
 
 ## Rule Details
 
-This rule checks all components and verifies that all propTypes declarations are sorted alphabetically.
-The default configuration of the rule is case-sensitive.
-This rule is off by default.
+This rule checks all components and verifies that all propTypes declarations are sorted alphabetically. A spread attribute resets the verification. The default configuration of the rule is case-sensitive.
 
 The following patterns are considered warnings:
 
