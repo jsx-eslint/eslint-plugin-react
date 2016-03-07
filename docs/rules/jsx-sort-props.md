@@ -4,8 +4,7 @@ Some developers prefer to sort props names alphabetically to be able to find nec
 
 ## Rule Details
 
-This rule checks all JSX components and verifies that all props are sorted alphabetically. A spread attribute resets the verification. This rule is off by default.
-The default configuration of the rule is case-sensitive.
+This rule checks all JSX components and verifies that all props are sorted alphabetically. A spread attribute resets the verification. The default configuration of the rule is case-sensitive.
 
 The following patterns are considered warnings:
 
