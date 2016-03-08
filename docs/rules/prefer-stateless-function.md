@@ -6,7 +6,7 @@ Stateless functional components are more simple than class based components and 
 
 This rule will check your class based React components for
 
-* lifecycle methods: `state`, `getInitialState`, `componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `componentDidUpdate` and `componentWillUnmount`
+* lifecycle methods: `state`, `getInitialState`, `getChildContext`, `componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `componentDidUpdate` and `componentWillUnmount`
 * usage of `this.setState`
 * presence of `ref` attribute in JSX
 
