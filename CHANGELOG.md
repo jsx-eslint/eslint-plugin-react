@@ -3,6 +3,19 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [4.2.1] - 2016-03-08
+### Fixed
+* Fix `sort-prop-types` crash with spread operator ([#478][])
+* Fix stateless components detection when conditionally returning JSX ([#486][])
+* Fix case where props were not assigned to the right component ([#485][])
+* Fix missing `getChildContext` lifecycle method in `prefer-stateless-function` ([#492][])
+
+[4.2.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v4.2.0...v4.2.1
+[#478]: https://github.com/yannickcr/eslint-plugin-react/issues/478
+[#486]: https://github.com/yannickcr/eslint-plugin-react/issues/486
+[#485]: https://github.com/yannickcr/eslint-plugin-react/issues/485
+[#492]: https://github.com/yannickcr/eslint-plugin-react/issues/492
+
 ## [4.2.0] - 2016-03-05
 ### Added
 * Add support for Flow annotations on stateless components ([#467][])
