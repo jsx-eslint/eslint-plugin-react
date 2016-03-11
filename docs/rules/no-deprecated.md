@@ -29,6 +29,8 @@ ReactDOM.findDOMNode(this.refs.foo);
 
 ## Rule Options
 
+**Deprecation notice**: This option is deprecated, please use the [shared settings](/README.md#configuration) to specify the React version.
+
 By default this rule will warn to every methods marked as deprecated. You can limit it to an older React version if you are not using the latest one:
 
 ```js

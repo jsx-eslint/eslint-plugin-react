@@ -38,7 +38,8 @@ ruleTester.run('no-deprecated', rule, {
     'ReactDOMServer.renderToString(element);',
     'ReactDOMServer.renderToStaticMarkup(element);',
     // Deprecated in a later version
-    {code: 'React.renderComponent()', options: [{react: '0.11.0'}]}
+    {code: 'React.renderComponent()', options: [{react: '0.11.0'}]},
+    {code: 'React.renderComponent()', settings: {react: {version: '0.11.0'}}}
   ],
 
   invalid: [{
