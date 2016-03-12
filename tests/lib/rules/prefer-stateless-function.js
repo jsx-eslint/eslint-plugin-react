@@ -27,6 +27,7 @@ ruleTester.run('prefer-stateless-function', rule, {
 
   valid: [
     {
+      // Already a stateless function
       code: [
         'const Foo = function(props) {',
         '  return <div>{props.foo}</div>;',
@@ -34,10 +35,15 @@ ruleTester.run('prefer-stateless-function', rule, {
       ].join('\n'),
       parserOptions: parserOptions
     }, {
+      // Already a stateless (arrow) function
+      code: 'const Foo = ({foo}) => <div>{foo}</div>;',
+      parserOptions: parserOptions
+    }, {
+      // Has a lifecyle method
       code: [
         'class Foo extends React.Component {',
         '  shouldComponentUpdate() {',
-        '    return fasle;',
+        '    return false;',
         '  }',
         '  render() {',
         '    return <div>{this.props.foo}</div>;',
@@ -46,9 +52,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       ].join('\n'),
       parserOptions: parserOptions
     }, {
-      code: 'const Foo = ({foo}) => <div>{foo}</div>;',
-      parserOptions: parserOptions
-    }, {
+      // Has a state
       code: [
         'class Foo extends React.Component {',
         '  changeState() {',
@@ -61,6 +65,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       ].join('\n'),
       parserOptions: parserOptions
     }, {
+      // Use refs
       code: [
         'class Foo extends React.Component {',
         '  doStuff() {',
@@ -72,14 +77,240 @@ ruleTester.run('prefer-stateless-function', rule, {
         '}'
       ].join('\n'),
       parserOptions: parserOptions
+    }, {
+      // Has an additional method
+      code: [
+        'class Foo extends React.Component {',
+        '  doStuff() {}',
+        '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions
+    }, {
+      // Has an empty (no super) constructor
+      code: [
+        'class Foo extends React.Component {',
+        '  constructor() {}',
+        '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions
+    }, {
+      // Has a constructor
+      code: [
+        'class Foo extends React.Component {',
+        '  constructor() {',
+        '    doSpecialStuffs();',
+        '  }',
+        '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions
+    }, {
+      // Use this.bar
+      code: [
+        'class Foo extends React.Component {',
+        '  render() {',
+        '    return <div>{this.bar}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Use this.bar (destructuring)
+      code: [
+        'class Foo extends React.Component {',
+        '  render() {',
+        '    let {props:{foo}, bar} = this;',
+        '    return <div>{foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Use this[bar]
+      code: [
+        'class Foo extends React.Component {',
+        '  render() {',
+        '    return <div>{this[bar]}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Use this['bar']
+      code: [
+        'class Foo extends React.Component {',
+        '  render() {',
+        '    return <div>{this[\'bar\']}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Can return null (ES6)
+      code: [
+        'class Foo extends React.Component {',
+        '  render() {',
+        '    if (!this.props.foo) {',
+        '      return null;',
+        '    }',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Can return null (ES5)
+      code: [
+        'var Foo = React.createClass({',
+        '  render: function() {',
+        '    if (!this.props.foo) {',
+        '      return null;',
+        '    }',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      parserOptions: parserOptions
     }
   ],
 
   invalid: [
     {
+      // Only use this.props
       code: [
         'class Foo extends React.Component {',
         '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
+    }, {
+      // Only use this[\'props\']
+      code: [
+        'class Foo extends React.Component {',
+        '  render() {',
+        '    return <div>{this[\'props\'].foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
+    }, {
+      // Has only displayName (method) and render
+      code: [
+        'class Foo extends React.Component {',
+        '  static get displayName() {',
+        '    return \'Foo\';',
+        '  }',
+        '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
+    }, {
+      // Has only displayName (property) and render
+      code: [
+        'class Foo extends React.Component {',
+        '  static displayName = \'Foo\';',
+        '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
+    }, {
+      // Has only propTypes (method) and render
+      code: [
+        'class Foo extends React.Component {',
+        '  static get propTypes() {',
+        '    return {',
+        '      name: React.PropTypes.string',
+        '    };',
+        '  }',
+        '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
+    }, {
+      // Has only propTypes (property) and render
+      code: [
+        'class Foo extends React.Component {',
+        '  static propTypes = {',
+        '    name: React.PropTypes.string',
+        '  };',
+        '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
+    }, {
+      // Has only props (type annotation) and render
+      code: [
+        'class Foo extends React.Component {',
+        '  props: {',
+        '    name: string;',
+        '  };',
+        '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
+    }, {
+      // Has only useless constructor and render
+      code: [
+        'class Foo extends React.Component {',
+        '  constructor() {',
+        '    super();',
+        '  }',
+        '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
+    }, {
+      // Only use this.props and this.context (destructuring)
+      code: [
+        'class Foo extends React.Component {',
+        '  render() {',
+        '    let {props:{foo}, context:{bar}} = this;',
         '    return <div>{this.props.foo}</div>;',
         '  }',
         '}'
