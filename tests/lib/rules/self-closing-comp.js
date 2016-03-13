@@ -45,6 +45,9 @@ ruleTester.run('self-closing-comp', rule, {
       code: 'var HelloJohn = <div>&nbsp;</div>;',
       parserOptions: parserOptions
     }, {
+      code: 'var HelloJohn = <div>{\' \'}</div>;',
+      parserOptions: parserOptions
+    }, {
       code: 'var HelloJohn = <Hello name="John">&nbsp;</Hello>;',
       parserOptions: parserOptions
     }
