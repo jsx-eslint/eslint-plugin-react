@@ -1159,6 +1159,19 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parserOptions: parserOptions
+    }, {
+      code: [
+        'function JobList(props) {',
+        '  props',
+        '  .jobs',
+        '  .forEach(() => {});',
+        '  return <div></div>;',
+        '}',
+        'JobList.propTypes = {',
+        '  jobs: PropTypes.array',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
