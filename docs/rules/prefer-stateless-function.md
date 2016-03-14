@@ -6,13 +6,14 @@ Stateless functional components are more simple than class based components and 
 
 This rule will check your class based React components for
 
-* lifecycle methods: `state`, `getInitialState`, `getChildContext`, `componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `componentDidUpdate` and `componentWillUnmount`
-* usage of `this.setState`
+* methods/properties other than `displayName`, `propTypes`, `render` and useless constructor (same detection as ESLint [no-useless-constructor rule](http://eslint.org/docs/rules/no-useless-constructor))
+* instance property other than `this.props` and `this.context`
+* `render` method that return anything but JSX (`undefined`, `null`, etc.)
 * presence of `ref` attribute in JSX
 
-If none of these 3 elements are found then the rule warn you to write this component as a pure function.
+If none of these 4 elements are found then the rule warn you to write this component as a pure function.
 
-The following patterns are considered warnings:
+The following pattern is considered warnings:
 
 ```js
 var Hello = React.createClass({
@@ -20,17 +21,6 @@ var Hello = React.createClass({
     return <div>Hello {this.props.name}</div>;
   }
 });
-```
-
-```js
-class Hello extends React.Component {
-  sayHello() {
-    alert(`Hello ${this.props.name}`)
-  }
-  render() {
-    return <div onClick={this.sayHello}>Hello {this.props.name}</div>;
-  }
-}
 ```
 
 The following patterns are not considered warnings:
@@ -43,10 +33,10 @@ const Foo = function(props) {
 
 ```js
 class Foo extends React.Component {
-  shouldComponentUpdate() {
-    return false;
-  }
   render() {
+    if (!this.props.foo) {
+      return null
+    }
     return <div>{this.props.foo}</div>;
   }
 }
