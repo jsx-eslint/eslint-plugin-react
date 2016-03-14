@@ -1172,6 +1172,16 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Props = {',
+        '  firstname: ?string,',
+        '};',
+        'function Hello({firstname}: Props): React$Element {',
+        '  return <div>Hello {firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
@@ -2030,6 +2040,19 @@ ruleTester.run('prop-types', rule, {
       parserOptions: parserOptions,
       errors: [{
         message: '\'test\' is missing in props validation'
+      }]
+    }, {
+      code: [
+        'type Props = {',
+        '  firstname: ?string,',
+        '};',
+        'function Hello({firstname, lastname}: Props): React$Element {',
+        '  return <div>Hello {firstname} {lastname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' is missing in props validation'
       }]
     }
   ]
