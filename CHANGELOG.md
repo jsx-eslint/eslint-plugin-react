@@ -3,6 +3,25 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [4.2.2] - 2016-03-14
+### Fixed
+* Rewrite `prefer-stateless-function` rule ([#491][])
+* Fix `self-closing-comp` to treat non-breaking spaces as content ([#496][])
+* Fix detection for direct props in `prop-types` ([#497][])
+* Fix annotated function detection in `prop-types` ([#498][])
+* Fix `this` usage in `jsx-no-undef` ([#489][])
+
+### Changed
+* Update dependencies
+* Add shared setting for React version
+
+[4.2.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v4.2.1...v4.2.2
+[#491]: https://github.com/yannickcr/eslint-plugin-react/issues/491
+[#496]: https://github.com/yannickcr/eslint-plugin-react/issues/496
+[#497]: https://github.com/yannickcr/eslint-plugin-react/issues/497
+[#498]: https://github.com/yannickcr/eslint-plugin-react/issues/498
+[#489]: https://github.com/yannickcr/eslint-plugin-react/issues/489
+
 ## [4.2.1] - 2016-03-08
 ### Fixed
 * Fix `sort-prop-types` crash with spread operator ([#478][])
