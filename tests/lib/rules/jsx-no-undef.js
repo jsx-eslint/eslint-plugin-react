@@ -45,6 +45,17 @@ ruleTester.run('jsx-no-undef', rule, {
   }, {
     code: '/*eslint no-undef:1*/ var React, app; React.render(<app.foo.Bar />);',
     parserOptions: parserOptions
+  }, {
+    code: [
+      '/*eslint no-undef:1*/',
+      'var React;',
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    return <this.props.tag />',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
   invalid: [{
     code: '/*eslint no-undef:1*/ var React; React.render(<App />);',
