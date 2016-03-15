@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [4.2.3] - 2016-03-15
+### Fixed
+* Fix class properties retrieval in `prefer-stateless-function` ([#499][])
+
+[4.2.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v4.2.2...v4.2.3
+[#499]: https://github.com/yannickcr/eslint-plugin-react/issues/499
+
 ## [4.2.2] - 2016-03-14
 ### Fixed
 * Rewrite `prefer-stateless-function` rule ([#491][])
