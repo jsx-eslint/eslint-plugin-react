@@ -179,6 +179,18 @@ ruleTester.run('prefer-stateless-function', rule, {
         '});'
       ].join('\n'),
       parserOptions: parserOptions
+    }, {
+      code: [
+        'export default (Component) => (',
+        '  class Test extends React.Component {',
+        '    componentDidMount() {}',
+        '    render() {',
+        '      return <Component />;',
+        '    }',
+        '  }',
+        ');'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
