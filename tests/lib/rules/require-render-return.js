@@ -37,7 +37,7 @@ ruleTester.run('require-render-return', rule, {
     ].join('\n'),
     parserOptions: parserOptions
   }, {
-     code: [
+    code: [
       'var Hello = React.createClass({',
       '  displayName: \'Hello\',',
       '  render: function() {',
