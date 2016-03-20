@@ -83,6 +83,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
 
   invalid: [{
     code: '<App foo = {bar} />',
+    output: '<App foo={bar} />',
     parserOptions: parserOptions,
     errors: [
       {message: 'There should be no space before \'=\''},
@@ -90,6 +91,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
     ]
   }, {
     code: '<App foo = {bar} />',
+    output: '<App foo={bar} />',
     options: ['never'],
     parserOptions: parserOptions,
     errors: [
@@ -98,6 +100,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
     ]
   }, {
     code: '<App foo ={bar} />',
+    output: '<App foo={bar} />',
     options: ['never'],
     parserOptions: parserOptions,
     errors: [
@@ -105,6 +108,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
     ]
   }, {
     code: '<App foo= {bar} />',
+    output: '<App foo={bar} />',
     options: ['never'],
     parserOptions: parserOptions,
     errors: [
@@ -112,6 +116,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
     ]
   }, {
     code: '<App foo= {bar} bar = {baz} />',
+    output: '<App foo={bar} bar={baz} />',
     options: ['never'],
     parserOptions: parserOptions,
     errors: [
@@ -121,6 +126,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
     ]
   }, {
     code: '<App foo={bar} />',
+    output: '<App foo = {bar} />',
     options: ['always'],
     parserOptions: parserOptions,
     errors: [
@@ -129,6 +135,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
     ]
   }, {
     code: '<App foo ={bar} />',
+    output: '<App foo = {bar} />',
     options: ['always'],
     parserOptions: parserOptions,
     errors: [
@@ -136,6 +143,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
     ]
   }, {
     code: '<App foo= {bar} />',
+    output: '<App foo = {bar} />',
     options: ['always'],
     parserOptions: parserOptions,
     errors: [
@@ -143,6 +151,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
     ]
   }, {
     code: '<App foo={bar} bar ={baz} />',
+    output: '<App foo = {bar} bar = {baz} />',
     options: ['always'],
     parserOptions: parserOptions,
     errors: [
