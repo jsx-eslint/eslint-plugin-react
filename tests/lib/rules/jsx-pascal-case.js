@@ -51,6 +51,10 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<T3stComp0nent />',
     parserOptions: parserOptions
+  },
+  {
+    code: '<T />',
+    parserOptions: parserOptions
   }],
 
   invalid: [{
