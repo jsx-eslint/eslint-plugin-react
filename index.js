@@ -41,7 +41,8 @@ module.exports = {
     'prefer-es6-class': require('./lib/rules/prefer-es6-class'),
     'jsx-key': require('./lib/rules/jsx-key'),
     'no-string-refs': require('./lib/rules/no-string-refs'),
-    'prefer-stateless-function': require('./lib/rules/prefer-stateless-function')
+    'prefer-stateless-function': require('./lib/rules/prefer-stateless-function'),
+    'require-render-return': require('./lib/rules/require-render-return')
   },
   configs: {
     recommended: {
