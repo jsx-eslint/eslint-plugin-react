@@ -358,12 +358,18 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '<App ',
       '/>'
     ].join('\n'),
+    output: [
+      '<App />'
+    ].join('\n'),
     parserOptions: parserOptions,
     errors: MESSAGE_AFTER_TAG
   }, {
     code: [
       '<App foo ',
       '/>'
+    ].join('\n'),
+    output: [
+      '<App foo/>'
     ].join('\n'),
     parserOptions: parserOptions,
     errors: MESSAGE_AFTER_PROPS
@@ -372,12 +378,20 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '<App foo',
       '></App>'
     ].join('\n'),
+    output: [
+      '<App foo></App>'
+    ].join('\n'),
     parserOptions: parserOptions,
     errors: MESSAGE_AFTER_PROPS
   }, {
     code: [
       '<App ',
       '  foo />'
+    ].join('\n'),
+    output: [
+      '<App ',
+      '  foo',
+      '  />'
     ].join('\n'),
     options: [{location: 'props-aligned'}],
     parserOptions: parserOptions,
@@ -391,6 +405,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '<App ',
       '  foo />'
     ].join('\n'),
+    output: [
+      '<App ',
+      '  foo',
+      '/>'
+    ].join('\n'),
     options: [{location: 'tag-aligned'}],
     parserOptions: parserOptions,
     errors: [{
@@ -402,6 +421,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     code: [
       '<App ',
       '  foo />'
+    ].join('\n'),
+    output: [
+      '<App ',
+      '  foo',
+      '/>'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
     parserOptions: parserOptions,
@@ -416,6 +440,10 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  foo',
       '/>'
     ].join('\n'),
+    output: [
+      '<App ',
+      '  foo/>'
+    ].join('\n'),
     options: [{location: 'after-props'}],
     parserOptions: parserOptions,
     errors: MESSAGE_AFTER_PROPS
@@ -424,6 +452,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '<App ',
       '  foo',
       '/>'
+    ].join('\n'),
+    output: [
+      '<App ',
+      '  foo',
+      '  />'
     ].join('\n'),
     options: [{location: 'props-aligned'}],
     parserOptions: parserOptions,
@@ -438,6 +471,10 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  foo',
       '  />'
     ].join('\n'),
+    output: [
+      '<App ',
+      '  foo/>'
+    ].join('\n'),
     options: [{location: 'after-props'}],
     parserOptions: parserOptions,
     errors: MESSAGE_AFTER_PROPS
@@ -446,6 +483,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '<App ',
       '  foo',
       '  />'
+    ].join('\n'),
+    output: [
+      '<App ',
+      '  foo',
+      '/>'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
     parserOptions: parserOptions,
@@ -460,6 +502,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  foo',
       '  />'
     ].join('\n'),
+    output: [
+      '<App ',
+      '  foo',
+      '/>'
+    ].join('\n'),
     options: [{location: 'line-aligned'}],
     parserOptions: parserOptions,
     errors: [{
@@ -473,6 +520,10 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '  foo',
       '></App>'
     ].join('\n'),
+    output: [
+      '<App',
+      '  foo></App>'
+    ].join('\n'),
     options: [{location: 'after-props'}],
     parserOptions: parserOptions,
     errors: MESSAGE_AFTER_PROPS
@@ -481,6 +532,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '<App',
       '  foo',
       '></App>'
+    ].join('\n'),
+    output: [
+      '<App',
+      '  foo',
+      '  ></App>'
     ].join('\n'),
     options: [{location: 'props-aligned'}],
     parserOptions: parserOptions,
@@ -494,6 +550,10 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '<App',
       '  foo',
       '  ></App>'
+    ].join('\n'),
+    output: [
+      '<App',
+      '  foo></App>'
     ].join('\n'),
     options: [{location: 'after-props'}],
     parserOptions: parserOptions,
@@ -596,6 +656,13 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '         />',
       '}'
     ].join('\n'),
+    output: [
+      'var x = function() {',
+      '  return <App',
+      '    foo',
+      '  />',
+      '}'
+    ].join('\n'),
     options: [{location: 'line-aligned'}],
     parserOptions: parserOptions,
     errors: [{
@@ -608,6 +675,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       'var x = <App',
       '  foo',
       '        />'
+    ].join('\n'),
+    output: [
+      'var x = <App',
+      '  foo',
+      '/>'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
     parserOptions: parserOptions,
