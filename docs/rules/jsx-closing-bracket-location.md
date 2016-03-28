@@ -2,6 +2,8 @@
 
 Enforce the closing bracket location for JSX multiline elements.
 
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+
 ## Rule Details
 
 This rule checks all JSX multiline elements and verifies the location of the closing bracket. By default this one must be aligned with the opening tag.
