@@ -180,6 +180,16 @@ ruleTester.run('prefer-stateless-function', rule, {
       ].join('\n'),
       parserOptions: parserOptions
     }, {
+      // Can return null (shorthand if in return)
+      code: [
+        'class Foo extends React.Component {',
+        '  render() {',
+        '    return true ? <div /> : null;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
       code: [
         'export default (Component) => (',
         '  class Test extends React.Component {',
