@@ -11,7 +11,7 @@ This rule will check your class based React components for
 * `render` method that return anything but JSX (`undefined`, `null`, etc.)
 * presence of `ref` attribute in JSX
 
-If none of these 4 elements are found then the rule warn you to write this component as a pure function.
+If none of these 4 elements are found, the rule will warn you to write this component as a pure function.
 
 The following pattern is considered warnings:
 
