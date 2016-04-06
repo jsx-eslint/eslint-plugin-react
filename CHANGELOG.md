@@ -3,6 +3,29 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [4.3.0] - 2016-04-07
+### Added
+* Add `require-render-return` rule ([#482][] @shmuga)
+* Add auto fix for `jsx-equals-spacing` ([#506][] @peet)
+* Add auto fix for `jsx-closing-bracket-location` ([#511][] @KevinGrandon)
+
+### Fixed
+* Fix `prefer-stateless-function` for conditional JSX ([#516][])
+* Fix `jsx-pascal-case` to support single letter component names ([#505][] @dthielman)
+
+### Changed
+* Update dependencies
+* Documentation improvements ([#509][] @coryhouse, [#526][] @ahoym)
+
+[4.3.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v4.2.3...v4.3.0
+[#482]: https://github.com/yannickcr/eslint-plugin-react/issues/482
+[#506]: https://github.com/yannickcr/eslint-plugin-react/pull/506
+[#511]: https://github.com/yannickcr/eslint-plugin-react/pull/511
+[#516]: https://github.com/yannickcr/eslint-plugin-react/issues/516
+[#505]: https://github.com/yannickcr/eslint-plugin-react/issues/505
+[#509]: https://github.com/yannickcr/eslint-plugin-react/pull/509
+[#526]: https://github.com/yannickcr/eslint-plugin-react/pull/526
+
 ## [4.2.3] - 2016-03-15
 ### Fixed
 * Fix class properties retrieval in `prefer-stateless-function` ([#499][])
