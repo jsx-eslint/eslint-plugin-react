@@ -42,7 +42,8 @@ module.exports = {
     'jsx-key': require('./lib/rules/jsx-key'),
     'no-string-refs': require('./lib/rules/no-string-refs'),
     'prefer-stateless-function': require('./lib/rules/prefer-stateless-function'),
-    'require-render-return': require('./lib/rules/require-render-return')
+    'require-render-return': require('./lib/rules/require-render-return'),
+    'jsx-first-prop-new-line': require('./lib/rules/jsx-first-prop-new-line')
   },
   configs: {
     recommended: {
