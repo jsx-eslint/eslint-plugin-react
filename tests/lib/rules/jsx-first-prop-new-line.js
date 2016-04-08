@@ -1,5 +1,5 @@
 /**
- * @fileoverview
+ * @fileoverview Ensure proper position of the first property in JSX
  * @author Joachim Seminck
  */
 'use strict';
