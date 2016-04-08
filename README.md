@@ -102,6 +102,7 @@ The plugin has a [recommended configuration](#user-content-recommended-configura
 * [jsx-closing-bracket-location](docs/rules/jsx-closing-bracket-location.md): Validate closing bracket location in JSX (fixable)
 * [jsx-curly-spacing](docs/rules/jsx-curly-spacing.md): Enforce or disallow spaces inside of curly braces in JSX attributes (fixable)
 * [jsx-equals-spacing](docs/rules/jsx-equals-spacing.md): Enforce or disallow spaces around equal signs in JSX attributes (fixable)
+* [jsx-first-prop-new-line](docs/rules/jsx-first-prop-new-line.md): Enforce position of the first prop in JSX
 * [jsx-handler-names](docs/rules/jsx-handler-names.md): Enforce event handler naming conventions in JSX
 * [jsx-indent-props](docs/rules/jsx-indent-props.md): Validate props indentation in JSX (fixable)
 * [jsx-indent](docs/rules/jsx-indent.md): Validate JSX indentation
@@ -114,6 +115,7 @@ The plugin has a [recommended configuration](#user-content-recommended-configura
 * [jsx-pascal-case](docs/rules/jsx-pascal-case.md): Enforce PascalCase for user-defined JSX components
 * [jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting
 * [jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
+* [jsx-spread-operator-position](docs/rules/jsx-spread-operator-position.md): Enforce position of spread operator when using it to pass props in JSX.
 * [jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
 * [jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
 
