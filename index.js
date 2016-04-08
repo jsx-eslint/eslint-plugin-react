@@ -43,7 +43,8 @@ module.exports = {
     'no-string-refs': require('./lib/rules/no-string-refs'),
     'prefer-stateless-function': require('./lib/rules/prefer-stateless-function'),
     'require-render-return': require('./lib/rules/require-render-return'),
-    'jsx-first-prop-new-line': require('./lib/rules/jsx-first-prop-new-line')
+    'jsx-first-prop-new-line': require('./lib/rules/jsx-first-prop-new-line'),
+    'jsx-spread-operator-position': require('./lib/rules/jsx-spread-operator-position')
   },
   configs: {
     recommended: {
