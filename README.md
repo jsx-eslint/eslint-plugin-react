@@ -115,6 +115,7 @@ The plugin has a [recommended configuration](#user-content-recommended-configura
 * [jsx-pascal-case](docs/rules/jsx-pascal-case.md): Enforce PascalCase for user-defined JSX components
 * [jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting
 * [jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
+* [jsx-spread-operator-position](docs/rules/jsx-spread-operator-position.md): Enforce position of spread operator when using it to pass props in JSX.
 * [jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
 * [jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
 
