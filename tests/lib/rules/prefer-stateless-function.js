@@ -154,7 +154,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       ].join('\n'),
       parser: 'babel-eslint'
     }, {
-      // Can return null (ES6)
+      // Can return null (ES6, React 0.14.0)
       code: [
         'class Foo extends React.Component {',
         '  render() {',
@@ -165,9 +165,14 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: 'babel-eslint',
+      settings: {
+        react: {
+          version: '0.14.0'
+        }
+      }
     }, {
-      // Can return null (ES5)
+      // Can return null (ES5, React 0.14.0)
       code: [
         'var Foo = React.createClass({',
         '  render: function() {',
@@ -178,9 +183,14 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  }',
         '});'
       ].join('\n'),
-      parserOptions: parserOptions
+      parserOptions: parserOptions,
+      settings: {
+        react: {
+          version: '0.14.0'
+        }
+      }
     }, {
-      // Can return null (shorthand if in return)
+      // Can return null (shorthand if in return, React 0.14.0)
       code: [
         'class Foo extends React.Component {',
         '  render() {',
@@ -188,7 +198,12 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: 'babel-eslint',
+      settings: {
+        react: {
+          version: '0.14.0'
+        }
+      }
     }, {
       code: [
         'export default (Component) => (',
@@ -338,6 +353,51 @@ ruleTester.run('prefer-stateless-function', rule, {
         '}'
       ].join('\n'),
       parserOptions: parserOptions,
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
+    }, {
+      // Can return null (ES6)
+      code: [
+        'class Foo extends React.Component {',
+        '  render() {',
+        '    if (!this.props.foo) {',
+        '      return null;',
+        '    }',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
+    }, {
+      // Can return null (ES5)
+      code: [
+        'var Foo = React.createClass({',
+        '  render: function() {',
+        '    if (!this.props.foo) {',
+        '      return null;',
+        '    }',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
+    }, {
+      // Can return null (shorthand if in return)
+      code: [
+        'class Foo extends React.Component {',
+        '  render() {',
+        '    return true ? <div /> : null;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
       errors: [{
         message: 'Component should be written as a pure function'
       }]
