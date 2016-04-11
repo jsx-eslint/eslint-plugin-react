@@ -1,0 +1,37 @@
+# Enforce ES5 or ES6 class for returning value in render function (require-render-return)
+
+When writing the `render` method in a component it could be easy to forgot to return the JSX content. This rule will warn you if the `return` statement is missing.
+
+## Rule Details
+
+The following patterns are considered warnings:
+
+```js
+var Hello = React.createClass({
+  render() {
+    <div>Hello</div>;
+  }
+});
+
+class Hello extends React.Component {
+  render() {
+    <div>Hello</div>;
+  }
+}
+```
+
+The following patterns are not considered warnings:
+
+```js
+var Hello = React.createClass({
+  render() {
+    return <div>Hello</div>;
+  }
+});
+
+class Hello extends React.Component {
+  render() {
+    return <div>Hello</div>;
+  }
+}
+```
