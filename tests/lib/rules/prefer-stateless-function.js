@@ -113,6 +113,19 @@ ruleTester.run('prefer-stateless-function', rule, {
       ].join('\n'),
       parserOptions: parserOptions
     }, {
+      // Has a constructor (2)
+      code: [
+        'class Foo extends React.Component {',
+        '  constructor() {',
+        '    foo;',
+        '  }',
+        '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions
+    }, {
       // Use this.bar
       code: [
         'class Foo extends React.Component {',
