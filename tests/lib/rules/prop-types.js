@@ -1192,6 +1192,20 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'function Greetings() {',
+        '  return <div>{({name}) => <Hello name={name} />}</div>',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'function Greetings() {',
+        '  return <div>{function({name}) { return <Hello name={name} />; }}</div>',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
