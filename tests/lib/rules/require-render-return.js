@@ -49,6 +49,14 @@ ruleTester.run('require-render-return', rule, {
     ].join('\n'),
     parserOptions: parserOptions
   }, {
+    // Stateless function
+    code: [
+      'function Hello() {',
+      '  return <div></div>;',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
     // Return in a switch...case
     code: [
       'var Hello = React.createClass({',
