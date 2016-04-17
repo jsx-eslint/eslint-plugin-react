@@ -112,6 +112,16 @@ ruleTester.run('prop-types', rule, {
       parserOptions: parserOptions
     }, {
       code: [
+        'var Hello = React.createClass({',
+        '  propTypes: externalPropTypes.mySharedPropTypes,',
+        '  render: function() {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      parserOptions: parserOptions
+    }, {
+      code: [
         'class Hello extends React.Component {',
         '  render() {',
         '    return <div>Hello World</div>;',
