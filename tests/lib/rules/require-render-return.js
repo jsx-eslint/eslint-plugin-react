@@ -28,6 +28,7 @@ var ruleTester = new RuleTester();
 ruleTester.run('require-render-return', rule, {
 
   valid: [{
+    // ES6 class
     code: [
       'class Hello extends React.Component {',
       '  render() {',
@@ -37,6 +38,7 @@ ruleTester.run('require-render-return', rule, {
     ].join('\n'),
     parserOptions: parserOptions
   }, {
+    // ES5 class
     code: [
       'var Hello = React.createClass({',
       '  displayName: \'Hello\',',
@@ -46,9 +48,47 @@ ruleTester.run('require-render-return', rule, {
       '});'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    // Return in a switch...case
+    code: [
+      'var Hello = React.createClass({',
+      '  render: function() {',
+      '    switch (this.props.name) {',
+      '      case \'Foo\':',
+      '        return <div>Hello Foo</div>;',
+      '      default:',
+      '        return <div>Hello {this.props.name}</div>;',
+      '    }',
+      '  }',
+      '});'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Return in a if...else
+    code: [
+      'var Hello = React.createClass({',
+      '  render: function() {',
+      '    if (this.props.name === \'Foo\') {',
+      '      return <div>Hello Foo</div>;',
+      '    } else {',
+      '      return <div>Hello {this.props.name}</div>;',
+      '    }',
+      '  }',
+      '});'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Not a React component
+    code: [
+      'class Hello {',
+      '  render() {}',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
+    // Missing return in ES5 class
     code: [
       'var Hello = React.createClass({',
       '  displayName: \'Hello\',',
@@ -60,9 +100,25 @@ ruleTester.run('require-render-return', rule, {
       message: 'Your render method should have return statement'
     }]
   }, {
+    // Missing return in ES6 class
     code: [
       'class Hello extends React.Component {',
       '  render() {} ',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Your render method should have return statement'
+    }]
+  }, {
+    // Missing return (but one is present in a sub-function)
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    const names = this.props.names.map(function(name) {',
+      '      return <div>{name}</div>',
+      '    });',
+      '  } ',
       '}'
     ].join('\n'),
     parserOptions: parserOptions,
