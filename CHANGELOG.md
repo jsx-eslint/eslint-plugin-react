@@ -3,6 +3,37 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [5.0.0] - 2016-04-17
+### Added
+* Add `jsx-first-prop-new-line` rule ([#410][] @jseminck)
+
+### Breaking
+* Update rules for React 15:
+  * Add warnings for `LinkedStateMixin`, `ReactPerf.printDOM` and `ReactPerf.getMeasurementsSummaryMap` in `no-deprecated`
+  * Allow stateless components to return `null` in `prefer-stateless-function`
+  * Remove SVG attributes warnings ([#490][])
+
+If you're still not using React 15 you can keep the old behavior by setting the React version to `0.14` in the [shared settings](README.md#configuration).
+
+### Fixed
+* Rewrite `require-render-return` rule ([#542][], [#543][])
+* Fix `prefer-stateless-function` crash ([#544][])
+* Fix external propTypes handling ([#545][])
+* Do not mark inline functions in JSX as components ([#546][])
+
+### Changed
+* Update dependencies
+* Documentation improvements
+
+[5.0.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v4.3.0...v5.0.0
+[#410]: https://github.com/yannickcr/eslint-plugin-react/issues/410
+[#490]: https://github.com/yannickcr/eslint-plugin-react/issues/490
+[#542]: https://github.com/yannickcr/eslint-plugin-react/issues/542
+[#543]: https://github.com/yannickcr/eslint-plugin-react/issues/543
+[#544]: https://github.com/yannickcr/eslint-plugin-react/issues/544
+[#545]: https://github.com/yannickcr/eslint-plugin-react/issues/545
+[#546]: https://github.com/yannickcr/eslint-plugin-react/issues/546
+
 ## [4.3.0] - 2016-04-07
 ### Added
 * Add `require-render-return` rule ([#482][] @shmuga)
