@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [5.0.1] - 2016-04-18
+### Fixed
+* Fix `require-render-return` to not check stateless functions ([#550][])
+
+[5.0.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v5.0.0...v5.0.1
+[#550]: https://github.com/yannickcr/eslint-plugin-react/issues/550
+
 ## [5.0.0] - 2016-04-17
 ### Added
 * Add `jsx-first-prop-new-line` rule ([#410][] @jseminck)
