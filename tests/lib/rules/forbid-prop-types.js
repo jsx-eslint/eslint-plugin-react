@@ -441,5 +441,25 @@ ruleTester.run('forbid-prop-types', rule, {
       forbid: ['object']
     }],
     errors: 1
+  }, {
+    // Object spread should not cause an error.
+    code: [
+      'const extraPropTypes = {',
+      '  foo: React.PropTypes.string',
+      '};',
+      'class Component extends React.Component {',
+      '  static propTypes = {',
+      '    ...extraPropTypes,',
+      '    a: React.PropTypes.string,',
+      '    c: React.PropTypes.number',
+      '  };',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: 0
   }]
 });
