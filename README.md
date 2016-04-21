@@ -103,6 +103,7 @@ The plugin has a [recommended configuration](#user-content-recommended-configura
 * [jsx-closing-bracket-location](docs/rules/jsx-closing-bracket-location.md): Validate closing bracket location in JSX (fixable)
 * [jsx-curly-spacing](docs/rules/jsx-curly-spacing.md): Enforce or disallow spaces inside of curly braces in JSX attributes (fixable)
 * [jsx-equals-spacing](docs/rules/jsx-equals-spacing.md): Enforce or disallow spaces around equal signs in JSX attributes (fixable)
+* [jsx-filename-extension](docs/rules/jsx-filename-extension.md): Restrict file extensions that may contain JSX
 * [jsx-first-prop-new-line](docs/rules/jsx-first-prop-new-line.md): Enforce position of the first prop in JSX
 * [jsx-handler-names](docs/rules/jsx-handler-names.md): Enforce event handler naming conventions in JSX
 * [jsx-indent](docs/rules/jsx-indent.md): Validate JSX indentation
