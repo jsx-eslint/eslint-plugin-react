@@ -1,6 +1,6 @@
 # Disallow undeclared variables in JSX (jsx-no-undef)
 
-This rules can help you locate potential ReferenceErrors resulting from misspellings or missing components.
+This rule helps locate potential ReferenceErrors resulting from misspellings or missing components.
 
 ## Rule Details
 
