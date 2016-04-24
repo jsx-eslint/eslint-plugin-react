@@ -1,6 +1,6 @@
 # Prevent using string references (no-string-refs)
 
-Currently, two ways are supported by React to refer to components. The first one, providing a string identifier is considered legacy in the official documentation. Referring to components by setting an property on the `this` object in the reference callback is preferred.
+Currently, two ways are supported by React to refer to components. The first one, providing a string identifier is considered legacy in the official documentation. Referring to components by setting a property on the `this` object in the reference callback is preferred.
 
 ## Rule Details
 
