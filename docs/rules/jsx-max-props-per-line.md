@@ -4,7 +4,7 @@ Limiting the maximum of props on a single line can improve readability.
 
 ## Rule Details
 
-This rule checks all JSX elements and verifies that the number of props per line do not exceed the maximum allowed. A spread attribute count as one prop. This rule is off by default and when on the default maximum of props on one line is `1`.
+This rule checks all JSX elements and verifies that the number of props per line do not exceed the maximum allowed. A spread attribute counts as one prop. This rule is off by default and when on the default maximum of props on one line is `1`.
 
 The following patterns are considered warnings:
 
