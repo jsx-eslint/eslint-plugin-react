@@ -1,6 +1,6 @@
 # Enforce ES5 or ES6 class for returning value in render function (require-render-return)
 
-When writing the `render` method in a component it could be easy to forgot to return the JSX content. This rule will warn you if the `return` statement is missing.
+When writing the `render` method in a component it is easy to forget to return the JSX content. This rule will warn if the `return` statement is missing.
 
 ## Rule Details
 
