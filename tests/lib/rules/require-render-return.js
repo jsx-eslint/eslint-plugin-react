@@ -38,6 +38,28 @@ ruleTester.run('require-render-return', rule, {
     ].join('\n'),
     parserOptions: parserOptions
   }, {
+    // ES6 class with render property
+    code: [
+      'class Hello extends React.Component {',
+      '  render = () => {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    // ES6 class with render property (implicit return)
+    code: [
+      'class Hello extends React.Component {',
+      '  render = () => (',
+      '    <div>Hello {this.props.name}</div>',
+      '  )',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
     // ES5 class
     code: [
       'var Hello = React.createClass({',
@@ -146,6 +168,20 @@ ruleTester.run('require-render-return', rule, {
       '  } ',
       '}'
     ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Your render method should have return statement'
+    }]
+  }, {
+    // Missing return ES6 class render property
+    code: [
+      'class Hello extends React.Component {',
+      '  render = () => {',
+      '    <div>Hello {this.props.name}</div>',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
     parserOptions: parserOptions,
     errors: [{
       message: 'Your render method should have return statement'
