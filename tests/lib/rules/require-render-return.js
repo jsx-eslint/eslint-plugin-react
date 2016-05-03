@@ -93,6 +93,23 @@ ruleTester.run('require-render-return', rule, {
       '}'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    // ES6 class without a render method
+    code: 'class Hello extends React.Component {}',
+    parserOptions: parserOptions
+  }, {
+    // ES5 class without a render method
+    code: 'var Hello = React.createClass({});',
+    parserOptions: parserOptions
+  }, {
+    // ES5 class with an imported render method
+    code: [
+      'var render = require(\'./render\');',
+      'var Hello = React.createClass({',
+      '  render',
+      '});'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
