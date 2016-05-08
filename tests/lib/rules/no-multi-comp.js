@@ -63,20 +63,6 @@ ruleTester.run('no-multi-comp', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'export default {',
-      '  renderHello() {',
-      '    let {name} = this.props;',
-      '    return <div>{name}</div>;',
-      '  },',
-      '  renderHello2() {',
-      '    let {name2} = this.props;',
-      '    return <div>{name2}</div>;',
-      '  }',
-      '};'
-    ].join('\n'),
-    parser: 'babel-eslint'
-  }, {
-    code: [
       'function Hello(props) {',
       '  return <div>Hello {props.name}</div>;',
       '}',
@@ -178,6 +164,24 @@ ruleTester.run('no-multi-comp', rule, {
     errors: [{
       message: 'Declare only one React component per file',
       line: 4
+    }]
+  }, {
+    code: [
+      'export default {',
+      '  renderHello(props) {',
+      '    let {name} = props;',
+      '    return <div>{name}</div>;',
+      '  },',
+      '  renderHello2(props) {',
+      '    let {name} = props;',
+      '    return <div>{name}</div>;',
+      '  }',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 6
     }]
   }]
 });
