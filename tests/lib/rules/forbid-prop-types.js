@@ -188,6 +188,17 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    // Proptypes declared with a spread property
+    code: [
+      'class Test extends react.component {',
+      '  static propTypes = {',
+      '    intl: React.propTypes.number,',
+      '    ...propTypes',
+      '  };',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
