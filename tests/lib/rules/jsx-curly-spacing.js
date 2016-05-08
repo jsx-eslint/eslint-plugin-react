@@ -78,6 +78,11 @@ ruleTester.run('jsx-curly-spacing', rule, {
     ].join('\n'),
     options: ['never'],
     parserOptions: parserOptions
+  }, {
+    code: '<App foo={bar/* comment */} />;',
+    options: ['never'],
+    parserOptions: parserOptions,
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
