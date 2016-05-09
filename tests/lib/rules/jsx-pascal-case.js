@@ -51,10 +51,17 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<T3stComp0nent />',
     parserOptions: parserOptions
-  },
-  {
+  }, {
     code: '<T />',
     parserOptions: parserOptions
+  }, {
+    code: '<YMCA />',
+    parserOptions: parserOptions,
+    options: [{allowAllCaps: true}]
+  }, {
+    code: '<IGNORED />',
+    parserOptions: parserOptions,
+    options: [{ignore: ['IGNORED']}]
   }],
 
   invalid: [{
@@ -65,5 +72,9 @@ ruleTester.run('jsx-pascal-case', rule, {
     code: '<TEST_COMPONENT />',
     parserOptions: parserOptions,
     errors: [{message: 'Imported JSX component TEST_COMPONENT must be in PascalCase'}]
+  }, {
+    code: '<YMCA />',
+    parserOptions: parserOptions,
+    errors: [{message: 'Imported JSX component YMCA must be in PascalCase'}]
   }]
 });

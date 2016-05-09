@@ -36,6 +36,18 @@ The following patterns are not considered warnings:
 <CSSTransitionGroup />
 ```
 
+## Rule Options
+
+```js
+...
+"jsx-pascal-case": [<enabled>, { allowAllCaps: <allowAllCaps>, ignore: <ignore> }]
+...
+```
+
+* `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
+* `allowAllCaps`: optional boolean set to `true` to allow components name in all caps (default to `false`).
+* `ignore`: optional array of components name to ignore during validation.
+
 ## When Not To Use It
 
 If you are not using JSX.
