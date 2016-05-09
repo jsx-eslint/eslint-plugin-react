@@ -3,6 +3,36 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [5.1.0] - 2016-05-10
+### Added
+* Add `jsx-no-target-blank` rule ([#582][] @Gasparila)
+* Add `allowAllCaps` and `ignore` options to `jsx-pascal-case` ([#575][])
+* Add class properties support to `require-render-return` ([#564][])
+
+### Fixed
+* Fix `jsx-closing-bracket-location` fixer ([#533][] @dtinth)
+* Fix `require-render-return` to only check valid render methods ([#563][])
+* Fix detection to allow simple `this` usage in fonctional components ([#576][])
+* Fix `forbid-prop-types` crash ([#579][])
+* Fix comment handling in `jsx-curly-spacing` ([#584][])
+
+### Changed
+* Update dependencies
+* Documentation improvements (@coryhouse, [#581][] @scurker, [#588][])
+
+[5.1.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v5.0.1...v5.1.0
+[#582]: https://github.com/yannickcr/eslint-plugin-react/pull/582
+[#575]: https://github.com/yannickcr/eslint-plugin-react/issues/575
+[#564]: https://github.com/yannickcr/eslint-plugin-react/issues/564
+[#533]: https://github.com/yannickcr/eslint-plugin-react/issues/533
+[#563]: https://github.com/yannickcr/eslint-plugin-react/issues/563
+[#576]: https://github.com/yannickcr/eslint-plugin-react/issues/576
+[#579]: https://github.com/yannickcr/eslint-plugin-react/issues/579
+[#584]: https://github.com/yannickcr/eslint-plugin-react/pull/584
+[#559]: https://github.com/yannickcr/eslint-plugin-react/pull/559
+[#581]: https://github.com/yannickcr/eslint-plugin-react/pull/581
+[#588]: https://github.com/yannickcr/eslint-plugin-react/issues/588
+
 ## [5.0.1] - 2016-04-18
 ### Fixed
 * Fix `require-render-return` to not check stateless functions ([#550][])
