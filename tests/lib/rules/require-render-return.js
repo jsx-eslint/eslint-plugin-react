@@ -79,6 +79,15 @@ ruleTester.run('require-render-return', rule, {
     ].join('\n'),
     parserOptions: parserOptions
   }, {
+    // Stateless arrow function
+    code: [
+      'var Hello = () => (',
+      '  <div></div>',
+      ');'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
     // Return in a switch...case
     code: [
       'var Hello = React.createClass({',
