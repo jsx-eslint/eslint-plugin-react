@@ -112,7 +112,7 @@ The plugin has a [recommended configuration](#user-content-recommended-configura
 * [jsx-no-bind](docs/rules/jsx-no-bind.md): Prevent usage of `.bind()` and arrow functions in JSX props
 * [jsx-no-duplicate-props](docs/rules/jsx-no-duplicate-props.md): Prevent duplicate props in JSX
 * [jsx-no-literals](docs/rules/jsx-no-literals.md): Prevent usage of unwrapped JSX strings
-* [jsx-no-target-blank](docs/rules/jsx-no-target-blank.md): Prevent usage of unsafe `target='\_blank'`
+* [jsx-no-target-blank](docs/rules/jsx-no-target-blank.md): Prevent usage of unsafe `target='_blank'`
 * [jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
 * [jsx-pascal-case](docs/rules/jsx-pascal-case.md): Enforce PascalCase for user-defined JSX components
 * [jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting
