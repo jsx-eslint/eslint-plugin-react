@@ -1206,6 +1206,23 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // Should stop at the class when searching for a parent component
+      code: [
+        'export default (ComposedComponent) => class Something extends SomeOtherComponent {',
+        '  someMethod = ({width}) => {}',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Should stop at the decorator when searching for a parent component
+      code: [
+        '@asyncConnect([{',
+        '  promise: ({dispatch}) => {}',
+        '}])',
+        'class Something extends Component {}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
