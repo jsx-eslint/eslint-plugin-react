@@ -105,8 +105,8 @@ The plugin has a [recommended configuration](#user-content-recommended-configura
 * [jsx-equals-spacing](docs/rules/jsx-equals-spacing.md): Enforce or disallow spaces around equal signs in JSX attributes (fixable)
 * [jsx-first-prop-new-line](docs/rules/jsx-first-prop-new-line.md): Enforce position of the first prop in JSX
 * [jsx-handler-names](docs/rules/jsx-handler-names.md): Enforce event handler naming conventions in JSX
-* [jsx-indent-props](docs/rules/jsx-indent-props.md): Validate props indentation in JSX (fixable)
 * [jsx-indent](docs/rules/jsx-indent.md): Validate JSX indentation
+* [jsx-indent-props](docs/rules/jsx-indent-props.md): Validate props indentation in JSX (fixable)
 * [jsx-key](docs/rules/jsx-key.md): Validate JSX has key prop when in array or iterator
 * [jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md): Limit maximum of props on a single line in JSX
 * [jsx-no-bind](docs/rules/jsx-no-bind.md): Prevent usage of `.bind()` and arrow functions in JSX props
