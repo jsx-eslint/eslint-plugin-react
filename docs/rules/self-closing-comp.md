@@ -26,9 +26,9 @@ The rule can take one argument to select types of tags, which should be self-clo
 
 ```js
 ...
-"self-closing-comp": [<enabled>, {
-  "component" <boolean> || true,
-  "html" <boolean> || false
+"self-closing-comp": ["error", {
+  "component": true,
+  "html": false
 }]
 ...
 ```
