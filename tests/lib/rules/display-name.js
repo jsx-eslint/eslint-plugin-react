@@ -155,6 +155,16 @@ ruleTester.run('display-name', rule, {
     parserOptions: parserOptions
   }, {
     code: [
+      'module.exports = React.createClass({',
+      '  "displayName": "Hello",',
+      '  "render": function() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
       'var Hello = React.createClass({',
       '  displayName: \'Hello\',',
       '  render: function() {',
