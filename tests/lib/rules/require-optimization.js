@@ -61,6 +61,22 @@ ruleTester.run('react-require-optimization', rule, {
     ].join('\n'),
     parser: 'babel-eslint',
     parserOptions: parserOptions
+  }, {
+    code: [
+      'const FunctionalComponent = function (props) {' +
+      'return <div />;' +
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'const FunctionalComponent = (props) => {' +
+      'return <div />;' +
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
   }],
 
   invalid: [{
