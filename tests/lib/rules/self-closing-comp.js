@@ -51,6 +51,37 @@ ruleTester.run('self-closing-comp', rule, {
       code: 'var HelloJohn = <Hello name="John">&nbsp;</Hello>;',
       parserOptions: parserOptions
     }, {
+      code: 'var contentContainer = <div className="content"></div>;',
+      options: [],
+      parserOptions: parserOptions
+    }, {
+      code: 'var HelloJohn = <Hello name="John" />;',
+      options: [],
+      parserOptions: parserOptions
+    }, {
+      code: 'var Profile = <Hello name="John"><img src="picture.png" /></Hello>;',
+      options: [],
+      parserOptions: parserOptions
+    }, {
+      code: '\
+      <Hello>\
+        <Hello name="John" />\
+      </Hello>',
+      options: [],
+      parserOptions: parserOptions
+    }, {
+      code: 'var HelloJohn = <div>&nbsp;</div>;',
+      options: [],
+      parserOptions: parserOptions
+    }, {
+      code: 'var HelloJohn = <div>{\' \'}</div>;',
+      options: [],
+      parserOptions: parserOptions
+    }, {
+      code: 'var HelloJohn = <Hello name="John">&nbsp;</Hello>;',
+      options: [],
+      parserOptions: parserOptions
+    }, {
       code: 'var HelloJohn = <Hello name="John"></Hello>;',
       options: [{component: false}],
       parserOptions: parserOptions
@@ -95,6 +126,28 @@ ruleTester.run('self-closing-comp', rule, {
       }]
     }, {
       code: 'var HelloJohn = <Hello name="John"> </Hello>;',
+      parserOptions: parserOptions,
+      errors: [{
+        message: 'Empty components are self-closing'
+      }]
+    },
+    {
+      code: 'var HelloJohn = <Hello name="John"></Hello>;',
+      options: [],
+      parserOptions: parserOptions,
+      errors: [{
+        message: 'Empty components are self-closing'
+      }]
+    }, {
+      code: 'var HelloJohn = <Hello name="John">\n</Hello>;',
+      options: [],
+      parserOptions: parserOptions,
+      errors: [{
+        message: 'Empty components are self-closing'
+      }]
+    }, {
+      code: 'var HelloJohn = <Hello name="John"> </Hello>;',
+      options: [],
       parserOptions: parserOptions,
       errors: [{
         message: 'Empty components are self-closing'
