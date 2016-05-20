@@ -233,6 +233,11 @@ ruleTester.run('jsx-indent', rule, {
       '    <Foo />',
       '</App>'
     ].join('\n'),
+    output: [
+      '<App>',
+      '\t<Foo />',
+      '</App>'
+    ].join('\n'),
     options: ['tab'],
     parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 1 tab character but found 0.'}]
@@ -282,6 +287,19 @@ ruleTester.run('jsx-indent', rule, {
       '  );',
       '}'
     ].join('\n'),
+    // The detection logic only thinks <App> is indented wrong, not the other
+    // two lines following. I *think* because it incorrectly uses <App>'s indention
+    // as the baseline for the next two, instead of the realizing the entire three
+    // lines are wrong together. See #608
+    /* output: [
+      'function App() {',
+      '  return (',
+      '    <App>',
+      '      <Foo />',
+      '    </App>',
+      '  );',
+      '}'
+    ].join('\n'), */
     options: [2],
     parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 4 space characters but found 0.'}]
@@ -289,6 +307,11 @@ ruleTester.run('jsx-indent', rule, {
     code: [
       '<App>',
       '   {test}',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '    {test}',
       '</App>'
     ].join('\n'),
     parserOptions: parserOptions,
@@ -305,6 +328,15 @@ ruleTester.run('jsx-indent', rule, {
       '    ))}',
       '</App>'
     ].join('\n'),
+    output: [
+      '<App>',
+      '    {options.map((option, index) => (',
+      '        <option key={index} value={option.key}>',
+      '            {option.name}',
+      '        </option>',
+      '    ))}',
+      '</App>'
+    ].join('\n'),
     parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 12 space characters but found 11.'}
@@ -313,6 +345,11 @@ ruleTester.run('jsx-indent', rule, {
     code: [
       '<App>',
       '{test}',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '\t{test}',
       '</App>'
     ].join('\n'),
     parserOptions: parserOptions,
@@ -326,6 +363,15 @@ ruleTester.run('jsx-indent', rule, {
       '\t{options.map((option, index) => (',
       '\t\t<option key={index} value={option.key}>',
       '\t\t{option.name}',
+      '\t\t</option>',
+      '\t))}',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '\t{options.map((option, index) => (',
+      '\t\t<option key={index} value={option.key}>',
+      '\t\t\t{option.name}',
       '\t\t</option>',
       '\t))}',
       '</App>'
@@ -369,10 +415,7 @@ ruleTester.run('jsx-indent', rule, {
     errors: [
       {message: 'Expected indentation of 2 space characters but found 4.'}
     ]
-  }
-  // Tests for future work. See the comment on line 42-43 in the rule near to fixable: 'whitespace' meta property,
-  // Right now fixer function doesn't support replacing tabs with whitespaces and vice-versa.
-  /* , {
+  }, {
     code: [
       '<App>\n',
       ' <Foo />\n',
@@ -404,5 +447,5 @@ ruleTester.run('jsx-indent', rule, {
     errors: [
       {message: 'Expected indentation of 2 space characters but found 0.'}
     ]
-  }*/]
+  }]
 });
