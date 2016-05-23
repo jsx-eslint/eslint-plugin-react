@@ -81,8 +81,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={bar/* comment */} />;',
     options: ['never'],
-    parserOptions: parserOptions,
-    parser: 'babel-eslint'
+    parserOptions: parserOptions
   }, {
     code: '<App {...bar} />;',
     parserOptions: parserOptions
@@ -125,8 +124,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App {...bar/* comment */} />;',
     options: ['never'],
-    parserOptions: parserOptions,
-    parser: 'babel-eslint'
+    parserOptions: parserOptions
   }, {
     code: '<App foo={bar} {...baz} />;',
     parserOptions: parserOptions
@@ -163,8 +161,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={bar/* comment */} {...baz/* comment */} />;',
     options: ['never'],
-    parserOptions: parserOptions,
-    parser: 'babel-eslint'
+    parserOptions: parserOptions
   }],
 
   invalid: [{
