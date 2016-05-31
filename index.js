@@ -8,6 +8,7 @@ module.exports = {
     'display-name': require('./lib/rules/display-name'),
     'wrap-multilines': require('./lib/rules/wrap-multilines'),
     'self-closing-comp': require('./lib/rules/self-closing-comp'),
+    'no-comment-textnodes': require('./lib/rules/no-comment-textnodes'),
     'no-danger': require('./lib/rules/no-danger'),
     'no-set-state': require('./lib/rules/no-set-state'),
     'no-is-mounted': require('./lib/rules/no-is-mounted'),
