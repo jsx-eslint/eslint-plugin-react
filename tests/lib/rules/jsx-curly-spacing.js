@@ -84,11 +84,11 @@ ruleTester.run('jsx-curly-spacing', rule, {
     parserOptions: parserOptions
   }, {
     code: '<App foo={ bar } />;',
-    options: ['always', {alternative: true}],
+    options: ['always', {spacing: {default: 'always'}}],
     parserOptions: parserOptions
   }, {
     code: '<App foo={{ bar: true, baz: true }} />;',
-    options: ['always', {alternative: true}],
+    options: ['always', {spacing: {objectLiterals: 'never'}}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -96,7 +96,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       'bar',
       '} />;'
     ].join('\n'),
-    options: ['always', {alternative: true}],
+    options: ['always', {allowMultiline: true}],
     parserOptions: parserOptions
   }, {
     code: '<App {...bar} />;',
@@ -283,7 +283,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={bar} />;',
     output: '<App foo={ bar } />;',
-    options: ['always', {alternative: true}],
+    options: ['always', {spacing: {default: 'always'}}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -293,7 +293,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ bar} />;',
     output: '<App foo={ bar } />;',
-    options: ['always', {alternative: true}],
+    options: ['always', {spacing: {default: 'always'}}],
     errors: [{
       message: 'A space is required before \'}\''
     }],
@@ -301,21 +301,17 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={bar } />;',
     output: '<App foo={ bar } />;',
-    options: ['always', {alternative: true}],
+    options: ['always', {spacing: {default: 'always'}}],
     errors: [{
       message: 'A space is required after \'{\''
     }],
     parserOptions: parserOptions
   }, {
     code: '<App foo={ {bar: true, baz: true} } />;',
-    output: '<App foo={{ bar: true, baz: true }} />;',
-    options: ['always', {alternative: true}],
+    output: '<App foo={{bar: true, baz: true}} />;',
+    options: ['always', {spacing: {objectLiterals: 'never'}}],
     errors: [{
       message: 'There should be no space after \'{\''
-    }, {
-      message: 'A space is required after \'{\''
-    }, {
-      message: 'A space is required before \'}\''
     }, {
       message: 'There should be no space before \'}\''
     }],
