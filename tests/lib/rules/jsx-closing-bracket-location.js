@@ -188,6 +188,38 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     parserOptions: parserOptions
   }, {
     code: [
+      '<App foo={function() {',
+      '  console.log(\'bar\');',
+      '}}/>'
+    ].join('\n'),
+    options: [{location: 'after-props'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App foo={function() {',
+      '  console.log(\'bar\');',
+      '}}/>'
+    ].join('\n'),
+    options: [{location: 'props-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App foo={function() {',
+      '  console.log(\'bar\');',
+      '}}/>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App foo={function() {',
+      '  console.log(\'bar\');',
+      '}}/>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
       '<Provider store>',
       '  <App',
       '    foo />',
