@@ -83,6 +83,22 @@ ruleTester.run('jsx-curly-spacing', rule, {
     options: ['never'],
     parserOptions: parserOptions,
     parser: 'babel-eslint'
+  }, {
+    code: '<App foo={ bar } />;',
+    options: ['always', {alternative: true}],
+    parserOptions: parserOptions
+  }, {
+    code: '<App foo={{ bar: true, baz: true }} />;',
+    options: ['always', {alternative: true}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App foo={',
+      'bar',
+      '} />;'
+    ].join('\n'),
+    options: ['always', {alternative: true}],
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -183,6 +199,42 @@ ruleTester.run('jsx-curly-spacing', rule, {
       message: 'There should be no newline after \'{\''
     }, {
       message: 'There should be no newline before \'}\''
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: '<App foo={bar} />;',
+    options: ['always', {alternative: true}],
+    errors: [{
+      message: 'A space is required after \'{\''
+    }, {
+      message: 'A space is required before \'}\''
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: '<App foo={ bar} />;',
+    options: ['always', {alternative: true}],
+    errors: [{
+      message: 'A space is required before \'}\''
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: '<App foo={bar } />;',
+    options: ['always', {alternative: true}],
+    errors: [{
+      message: 'A space is required after \'{\''
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: '<App foo={ {bar: true, baz: true} } />;',
+    options: ['always', {alternative: true}],
+    errors: [{
+      message: 'There should be no space after \'{\''
+    }, {
+      message: 'A space is required after \'{\''
+    }, {
+      message: 'A space is required before \'}\''
+    }, {
+      message: 'There should be no space before \'}\''
     }],
     parserOptions: parserOptions
   }]
