@@ -92,6 +92,7 @@ The plugin has a [recommended configuration](#user-content-recommended-configura
 * [prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
 * [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing `React` when using JSX
 * [require-extension](docs/rules/require-extension.md): Restrict file extensions that may be required
+* [require-optimization](docs/rules/require-optimization.md): Enforce React components to have a shouldComponentUpdate method
 * [require-render-return](docs/rules/require-render-return.md): Enforce ES5 or ES6 class for returning value in render function
 * [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
 * [sort-comp](docs/rules/sort-comp.md): Enforce component methods order

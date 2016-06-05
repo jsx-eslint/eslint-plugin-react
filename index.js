@@ -46,7 +46,8 @@ module.exports = {
     'require-render-return': require('./lib/rules/require-render-return'),
     'jsx-first-prop-new-line': require('./lib/rules/jsx-first-prop-new-line'),
     'jsx-no-target-blank': require('./lib/rules/jsx-no-target-blank'),
-    'jsx-filename-extension': require('./lib/rules/jsx-filename-extension')
+    'jsx-filename-extension': require('./lib/rules/jsx-filename-extension'),
+    'require-optimization': require('./lib/rules/require-optimization')
   },
   configs: {
     recommended: {
