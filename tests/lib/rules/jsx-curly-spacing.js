@@ -203,6 +203,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     parserOptions: parserOptions
   }, {
     code: '<App foo={bar} />;',
+    output: '<App foo={ bar } />;',
     options: ['always', {alternative: true}],
     errors: [{
       message: 'A space is required after \'{\''
@@ -212,6 +213,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     parserOptions: parserOptions
   }, {
     code: '<App foo={ bar} />;',
+    output: '<App foo={ bar } />;',
     options: ['always', {alternative: true}],
     errors: [{
       message: 'A space is required before \'}\''
@@ -219,6 +221,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     parserOptions: parserOptions
   }, {
     code: '<App foo={bar } />;',
+    output: '<App foo={ bar } />;',
     options: ['always', {alternative: true}],
     errors: [{
       message: 'A space is required after \'{\''
@@ -226,6 +229,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     parserOptions: parserOptions
   }, {
     code: '<App foo={ {bar: true, baz: true} } />;',
+    output: '<App foo={{ bar: true, baz: true }} />;',
     options: ['always', {alternative: true}],
     errors: [{
       message: 'There should be no space after \'{\''
