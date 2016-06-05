@@ -107,6 +107,25 @@ The following patterns are not warnings:
 <Hello name={ {firstname: 'John', lastname: 'Doe'} } />;
 ```
 
+#### Alternative
+
+When setting the `alternative` option to `true` you must collapse the curly braces:
+
+```json
+"jsx-curly-spacing": [2, "always", {"alternative": true}]
+```
+
+When `"always"` is used and `alternative` is `true`, the following pattern is not warnings:
+
+```js
+<App foo={{ bar: true, baz: true }} />;
+```
+
+When `"always"` is used and `alternative` is `true`, the following pattern is considered warnings:
+
+```js
+<App foo={ {bar: true, baz: true} } />;
+```
 
 ## When Not To Use It
 
