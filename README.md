@@ -83,6 +83,7 @@ The plugin has a [recommended configuration](#user-content-recommended-configura
 * [no-direct-mutation-state](docs/rules/no-direct-mutation-state.md): Prevent direct mutation of `this.state`
 * [no-is-mounted](docs/rules/no-is-mounted.md): Prevent usage of `isMounted`
 * [no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
+* [no-render-return-value](docs/rules/no-render-return-value.md): Prevent usage of the return value of `React.render`
 * [no-set-state](docs/rules/no-set-state.md): Prevent usage of `setState`
 * [no-string-refs](docs/rules/no-string-refs.md): Prevent using string references in `ref` attribute.
 * [no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property (fixable)
