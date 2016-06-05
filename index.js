@@ -14,6 +14,7 @@ module.exports = {
     'no-deprecated': require('./lib/rules/no-deprecated'),
     'no-did-mount-set-state': require('./lib/rules/no-did-mount-set-state'),
     'no-did-update-set-state': require('./lib/rules/no-did-update-set-state'),
+    'no-render-return-value': require('./lib/rules/no-render-return-value'),
     'react-in-jsx-scope': require('./lib/rules/react-in-jsx-scope'),
     'jsx-uses-vars': require('./lib/rules/jsx-uses-vars'),
     'jsx-handler-names': require('./lib/rules/jsx-handler-names'),
@@ -67,6 +68,7 @@ module.exports = {
         'react/no-direct-mutation-state': 2,
         'react/no-is-mounted': 2,
         'react/no-unknown-property': 2,
+        'react/no-render-return-value': 2,
         'react/prop-types': 2,
         'react/react-in-jsx-scope': 2
       }
