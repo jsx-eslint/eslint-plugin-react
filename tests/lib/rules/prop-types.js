@@ -1276,6 +1276,22 @@ ruleTester.run('prop-types', rule, {
       }]
     }, {
       code: [
+        '/** @extends React.Component */',
+        'class Hello extends ChildComponent {',
+        '  render() {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'name\' is missing in props validation',
+        line: 4,
+        column: 35,
+        type: 'Identifier'
+      }]
+    }, {
+      code: [
         'class Hello extends React.Component {',
         '  render() {',
         '    return <div>Hello {this.props.firstname} {this.props.lastname}</div>;',
