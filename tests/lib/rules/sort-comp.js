@@ -192,6 +192,17 @@ ruleTester.run('sort-comp', rule, {
       ')'
     ].join('\n'),
     parser: 'babel-eslint'
+  }, {
+    // Must ignore spread operator
+    code: [
+      'var Hello = React.createClass({',
+      '  ...proto,',
+      '  render: function() {',
+      '    return <div>Hello</div>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
