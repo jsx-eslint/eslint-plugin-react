@@ -22,6 +22,17 @@ var React = require('react');
 var Hello = <div className="hello">Hello World</div>;
 ```
 
+## Rule Options
+
+```js
+...
+"no-unknown-property": [<enabled>, { ignore: <ignore> }]
+...
+```
+
+* `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
+* `ignore`: optional array of property and attribute names to ignore during validation.
+
 ## When Not To Use It
 
 If you are not using JSX you can disable this rule.

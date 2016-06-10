@@ -38,7 +38,11 @@ ruleTester.run('no-unknown-property', rule, {
     {code: '<div {...this.props} class="foo" is="my-elem"></div>;', parserOptions: parserOptions},
     {code: '<atom-panel class="foo"></atom-panel>;', parserOptions: parserOptions},
     {code: '<use xlink:href="bar" />;', parserOptions: parserOptions},
-    {code: '<rect clip-path="bar" />;', parserOptions: parserOptions}
+    {code: '<rect clip-path="bar" />;', parserOptions: parserOptions}, {
+      code: '<div class="bar"></div>;',
+      options: [{ignore: ['class']}],
+      parserOptions: parserOptions
+    }
   ],
   invalid: [{
     code: '<div class="bar"></div>;',
