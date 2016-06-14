@@ -72,8 +72,8 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 
 ```json
   "rules": {
-    "react/jsx-uses-react": "warn",
-    "react/jsx-uses-vars": "warn",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
   }
 ```  
 
