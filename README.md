@@ -68,60 +68,65 @@ With ESLint 2.x.x:
 }
 ```
 
-Finally, enable all of the rules that you would like to use.
+Finally, enable all of the rules that you would like to use.  Use [our preset](#user-content-recommended-configuration) to get reasonable defaults quickly, and/or choose your own:
 
-The plugin has a [recommended configuration](#user-content-recommended-configuration) that enforces React good practices.
+```json
+  "rules": {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+  }
+```  
 
 # List of supported rules
 
-* [display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
-* [forbid-prop-types](docs/rules/forbid-prop-types.md): Forbid certain propTypes
-* [no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
-* [no-deprecated](docs/rules/no-deprecated.md): Prevent usage of deprecated methods
-* [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of `setState` in `componentDidMount`
-* [no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of `setState` in `componentDidUpdate`
-* [no-direct-mutation-state](docs/rules/no-direct-mutation-state.md): Prevent direct mutation of `this.state`
-* [no-is-mounted](docs/rules/no-is-mounted.md): Prevent usage of `isMounted`
-* [no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
-* [no-render-return-value](docs/rules/no-render-return-value.md): Prevent usage of the return value of `React.render`
-* [no-set-state](docs/rules/no-set-state.md): Prevent usage of `setState`
-* [no-string-refs](docs/rules/no-string-refs.md): Prevent using string references in `ref` attribute.
-* [no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property (fixable)
-* [prefer-es6-class](docs/rules/prefer-es6-class.md): Enforce ES5 or ES6 class for React Components
-* [prefer-stateless-function](docs/rules/prefer-stateless-function.md): Enforce stateless React Components to be written as a pure function
-* [prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
-* [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing `React` when using JSX
-* [require-extension](docs/rules/require-extension.md): Restrict file extensions that may be required
-* [require-optimization](docs/rules/require-optimization.md): Enforce React components to have a shouldComponentUpdate method
-* [require-render-return](docs/rules/require-render-return.md): Enforce ES5 or ES6 class for returning value in render function
-* [self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
-* [sort-comp](docs/rules/sort-comp.md): Enforce component methods order
-* [sort-prop-types](docs/rules/sort-prop-types.md): Enforce propTypes declarations alphabetical sorting
-* [wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX (fixable)
+* [react/display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
+* [react/forbid-prop-types](docs/rules/forbid-prop-types.md): Forbid certain propTypes
+* [react/no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
+* [react/no-deprecated](docs/rules/no-deprecated.md): Prevent usage of deprecated methods
+* [react/no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of `setState` in `componentDidMount`
+* [react/no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of `setState` in `componentDidUpdate`
+* [react/no-direct-mutation-state](docs/rules/no-direct-mutation-state.md): Prevent direct mutation of `this.state`
+* [react/no-is-mounted](docs/rules/no-is-mounted.md): Prevent usage of `isMounted`
+* [react/no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
+* [react/no-render-return-value](docs/rules/no-render-return-value.md): Prevent usage of the return value of `React.render`
+* [react/no-set-state](docs/rules/no-set-state.md): Prevent usage of `setState`
+* [react/no-string-refs](docs/rules/no-string-refs.md): Prevent using string references in `ref` attribute.
+* [react/no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property (fixable)
+* [react/prefer-es6-class](docs/rules/prefer-es6-class.md): Enforce ES5 or ES6 class for React Components
+* [react/prefer-stateless-function](docs/rules/prefer-stateless-function.md): Enforce stateless React Components to be written as a pure function
+* [react/prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
+* [react/react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing `React` when using JSX
+* [react/require-extension](docs/rules/require-extension.md): Restrict file extensions that may be required
+* [react/require-optimization](docs/rules/require-optimization.md): Enforce React components to have a shouldComponentUpdate method
+* [react/require-render-return](docs/rules/require-render-return.md): Enforce ES5 or ES6 class for returning value in render function
+* [react/self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
+* [react/sort-comp](docs/rules/sort-comp.md): Enforce component methods order
+* [react/sort-prop-types](docs/rules/sort-prop-types.md): Enforce propTypes declarations alphabetical sorting
+* [react/wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX (fixable)
 
 ## JSX-specific rules
 
-* [jsx-boolean-value](docs/rules/jsx-boolean-value.md): Enforce boolean attributes notation in JSX (fixable)
-* [jsx-closing-bracket-location](docs/rules/jsx-closing-bracket-location.md): Validate closing bracket location in JSX (fixable)
-* [jsx-curly-spacing](docs/rules/jsx-curly-spacing.md): Enforce or disallow spaces inside of curly braces in JSX attributes (fixable)
-* [jsx-equals-spacing](docs/rules/jsx-equals-spacing.md): Enforce or disallow spaces around equal signs in JSX attributes (fixable)
-* [jsx-filename-extension](docs/rules/jsx-filename-extension.md): Restrict file extensions that may contain JSX
-* [jsx-first-prop-new-line](docs/rules/jsx-first-prop-new-line.md): Enforce position of the first prop in JSX
-* [jsx-handler-names](docs/rules/jsx-handler-names.md): Enforce event handler naming conventions in JSX
-* [jsx-indent](docs/rules/jsx-indent.md): Validate JSX indentation
-* [jsx-indent-props](docs/rules/jsx-indent-props.md): Validate props indentation in JSX (fixable)
-* [jsx-key](docs/rules/jsx-key.md): Validate JSX has key prop when in array or iterator
-* [jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md): Limit maximum of props on a single line in JSX
-* [jsx-no-bind](docs/rules/jsx-no-bind.md): Prevent usage of `.bind()` and arrow functions in JSX props
-* [jsx-no-duplicate-props](docs/rules/jsx-no-duplicate-props.md): Prevent duplicate props in JSX
-* [jsx-no-literals](docs/rules/jsx-no-literals.md): Prevent usage of unwrapped JSX strings
-* [jsx-no-target-blank](docs/rules/jsx-no-target-blank.md): Prevent usage of unsafe `target='_blank'`
-* [jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
-* [jsx-pascal-case](docs/rules/jsx-pascal-case.md): Enforce PascalCase for user-defined JSX components
-* [jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting
-* [jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
-* [jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
-* [jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
+* [react/jsx-boolean-value](docs/rules/jsx-boolean-value.md): Enforce boolean attributes notation in JSX (fixable)
+* [react/jsx-closing-bracket-location](docs/rules/jsx-closing-bracket-location.md): Validate closing bracket location in JSX (fixable)
+* [react/jsx-curly-spacing](docs/rules/jsx-curly-spacing.md): Enforce or disallow spaces inside of curly braces in JSX attributes (fixable)
+* [react/jsx-equals-spacing](docs/rules/jsx-equals-spacing.md): Enforce or disallow spaces around equal signs in JSX attributes (fixable)
+* [react/jsx-filename-extension](docs/rules/jsx-filename-extension.md): Restrict file extensions that may contain JSX
+* [react/jsx-first-prop-new-line](docs/rules/jsx-first-prop-new-line.md): Enforce position of the first prop in JSX
+* [react/jsx-handler-names](docs/rules/jsx-handler-names.md): Enforce event handler naming conventions in JSX
+* [react/jsx-indent](docs/rules/jsx-indent.md): Validate JSX indentation
+* [react/jsx-indent-props](docs/rules/jsx-indent-props.md): Validate props indentation in JSX (fixable)
+* [react/jsx-key](docs/rules/jsx-key.md): Validate JSX has key prop when in array or iterator
+* [react/jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md): Limit maximum of props on a single line in JSX
+* [react/jsx-no-bind](docs/rules/jsx-no-bind.md): Prevent usage of `.bind()` and arrow functions in JSX props
+* [react/jsx-no-duplicate-props](docs/rules/jsx-no-duplicate-props.md): Prevent duplicate props in JSX
+* [react/jsx-no-literals](docs/rules/jsx-no-literals.md): Prevent usage of unwrapped JSX strings
+* [react/jsx-no-target-blank](docs/rules/jsx-no-target-blank.md): Prevent usage of unsafe `target='_blank'`
+* [react/jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
+* [react/jsx-pascal-case](docs/rules/jsx-pascal-case.md): Enforce PascalCase for user-defined JSX components
+* [react/jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting
+* [react/jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
+* [react/jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
+* [react/jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
 
 ## React Native rules
 
@@ -146,20 +151,20 @@ See [ESLint documentation](http://eslint.org/docs/user-guide/configuring#extendi
 
 The rules enabled in this configuration are:
 
-* [display-name](docs/rules/display-name.md)
-* [jsx-no-duplicate-props](docs/rules/jsx-no-duplicate-props.md)
-* [jsx-no-undef](docs/rules/jsx-no-undef.md)
-* [jsx-uses-react](docs/rules/jsx-uses-react.md)
-* [jsx-uses-vars](docs/rules/jsx-uses-vars.md)
-* [no-danger](docs/rules/no-danger.md)
-* [no-deprecated](docs/rules/no-deprecated.md)
-* [no-did-mount-set-state](docs/rules/no-did-mount-set-state.md) with `allow-in-func` option
-* [no-did-update-set-state](docs/rules/no-did-update-set-state.md) with `allow-in-func` option
-* [no-direct-mutation-state](docs/rules/no-direct-mutation-state.md)
-* [no-is-mounted](docs/rules/no-is-mounted.md)
-* [no-unknown-property](docs/rules/no-unknown-property.md)
-* [prop-types](docs/rules/prop-types.md)
-* [react-in-jsx-scope](docs/rules/react-in-jsx-scope.md)
+* [react/display-name](docs/rules/display-name.md)
+* [react/jsx-no-duplicate-props](docs/rules/jsx-no-duplicate-props.md)
+* [react/jsx-no-undef](docs/rules/jsx-no-undef.md)
+* [react/jsx-uses-react](docs/rules/jsx-uses-react.md)
+* [react/jsx-uses-vars](docs/rules/jsx-uses-vars.md)
+* [react/no-danger](docs/rules/no-danger.md)
+* [react/no-deprecated](docs/rules/no-deprecated.md)
+* [react/no-did-mount-set-state](docs/rules/no-did-mount-set-state.md) with `allow-in-func` option
+* [react/no-did-update-set-state](docs/rules/no-did-update-set-state.md) with `allow-in-func` option
+* [react/no-direct-mutation-state](docs/rules/no-direct-mutation-state.md)
+* [react/no-is-mounted](docs/rules/no-is-mounted.md)
+* [react/no-unknown-property](docs/rules/no-unknown-property.md)
+* [react/prop-types](docs/rules/prop-types.md)
+* [react/react-in-jsx-scope](docs/rules/react-in-jsx-scope.md)
 
 **Note**: This configuration will also enable JSX in [parser options](http://eslint.org/docs/user-guide/configuring#specifying-parser-options).
 
