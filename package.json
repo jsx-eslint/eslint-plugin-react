@@ -23,7 +23,8 @@
   "homepage": "https://github.com/yannickcr/eslint-plugin-react",
   "bugs": "https://github.com/yannickcr/eslint-plugin-react/issues",
   "dependencies": {
-    "doctrine": "^1.2.0"
+    "doctrine": "^1.2.0",
+    "jsx-ast-utils": "^1.1.1"
   },
   "devDependencies": {
     "babel-eslint": "6.0.4",
