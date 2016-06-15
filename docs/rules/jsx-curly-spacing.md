@@ -113,12 +113,10 @@ You can specify an additional `spacing` property that is an object with the foll
 
 ```json
 "jsx-curly-spacing": [2, "always", {"spacing": {
-  "default": "always",
   "objectLiterals": "never"
 }}]
 ```
 
-* `default`: This controls the default behavior for all scenarios, unless a more specific override applies.
 * `objectLiterals`: This controls different spacing requirements when the value inside the jsx curly braces is an object literal.
 
 All spacing options accept either the string `"always"` or the string `"never"`. Note that the default value for all "spacing" options matches the first "always"/"never" option provided.

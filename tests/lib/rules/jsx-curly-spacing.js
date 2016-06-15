@@ -84,7 +84,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     parserOptions: parserOptions
   }, {
     code: '<App foo={ bar } />;',
-    options: ['always', {spacing: {default: 'always'}}],
+    options: ['always', {spacing: {}}],
     parserOptions: parserOptions
   }, {
     code: '<App foo={{ bar: true, baz: true }} />;',
@@ -287,7 +287,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={bar} />;',
     output: '<App foo={ bar } />;',
-    options: ['always', {spacing: {default: 'always'}}],
+    options: ['always', {spacing: {}}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -297,7 +297,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ bar} />;',
     output: '<App foo={ bar } />;',
-    options: ['always', {spacing: {default: 'always'}}],
+    options: ['always', {spacing: {}}],
     errors: [{
       message: 'A space is required before \'}\''
     }],
@@ -305,7 +305,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={bar } />;',
     output: '<App foo={ bar } />;',
-    options: ['always', {spacing: {default: 'always'}}],
+    options: ['always', {spacing: {}}],
     errors: [{
       message: 'A space is required after \'{\''
     }],
