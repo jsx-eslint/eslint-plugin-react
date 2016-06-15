@@ -107,25 +107,33 @@ The following patterns are not warnings:
 <Hello name={ {firstname: 'John', lastname: 'Doe'} } />;
 ```
 
-#### Alternative
+#### Granular spacing controls
 
-When setting the `alternative` option to `true` you must collapse the curly braces:
+You can specify an additional `spacing` property that is an object with the following possible values:
 
 ```json
-"jsx-curly-spacing": [2, "always", {"alternative": true}]
+"jsx-curly-spacing": [2, "always", {"spacing": {
+  "objectLiterals": "never"
+}}]
 ```
 
-When `"always"` is used and `alternative` is `true`, the following pattern is not warnings:
+* `objectLiterals`: This controls different spacing requirements when the value inside the jsx curly braces is an object literal.
+
+All spacing options accept either the string `"always"` or the string `"never"`. Note that the default value for all "spacing" options matches the first "always"/"never" option provided.
+
+When `"always"` is used but `objectLiterals` is `"never"`, the following pattern is not considered a warning:
 
 ```js
-<App foo={{ bar: true, baz: true }} />;
+<App blah={ 3 } foo={{ bar: true, baz: true }} />;
 ```
 
-When `"always"` is used and `alternative` is `true`, the following pattern is considered warnings:
+When `"never"` is used and `objectLiterals` is `"always"`, the following pattern is not considered a warning:
 
 ```js
-<App foo={ {bar: true, baz: true} } />;
+<App blah={3} foo={ {bar: true, baz: true} } />;
 ```
+
+Please note that spacing of the object literal curly braces themselves is controlled by the built-in [`object-curly-spacing`](http://eslint.org/docs/rules/object-curly-spacing) rule.
 
 ## When Not To Use It
 
