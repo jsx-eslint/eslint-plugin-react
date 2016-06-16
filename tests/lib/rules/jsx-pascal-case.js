@@ -59,6 +59,12 @@ ruleTester.run('jsx-pascal-case', rule, {
     parserOptions: parserOptions,
     options: [{allowAllCaps: true}]
   }, {
+    code: '<Modal.Header />',
+    parserOptions: parserOptions
+  }, {
+    code: '<Modal:Header />',
+    parserOptions: parserOptions
+  }, {
     code: '<IGNORED />',
     parserOptions: parserOptions,
     options: [{ignore: ['IGNORED']}]
