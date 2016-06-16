@@ -1223,6 +1223,15 @@ ruleTester.run('prop-types', rule, {
         'class Something extends Component {}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // Should not find any used props
+      code: [
+        'function Hello(props) {',
+        '  const {...rest} = props;',
+        '  return <div>Hello</div>;',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions
     }
   ],
 
