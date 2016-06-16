@@ -81,6 +81,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 
 * [react/display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
 * [react/forbid-prop-types](docs/rules/forbid-prop-types.md): Forbid certain propTypes
+* [react/no-comment-textnodes](docs/rules/no-comment-textnodes.md): Prevent comments from being inserted as text nodes
 * [react/no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
 * [react/no-deprecated](docs/rules/no-deprecated.md): Prevent usage of deprecated methods
 * [react/no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of `setState` in `componentDidMount`
