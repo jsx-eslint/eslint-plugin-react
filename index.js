@@ -63,7 +63,6 @@ module.exports = {
         'react/jsx-no-undef': 2,
         'react/jsx-uses-react': 2,
         'react/jsx-uses-vars': 2,
-        'react/no-danger': 2,
         'react/no-deprecated': 2,
         'react/no-did-mount-set-state': [2, 'allow-in-func'],
         'react/no-did-update-set-state': [2, 'allow-in-func'],
