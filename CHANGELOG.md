@@ -3,6 +3,55 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [5.2.0] - 2016-06-17
+### Added
+* Add `require-optimization` rule ([#240][] @EvNaverniouk)
+* Add `jsx-filename-extension` rule  ([#495][] @lencioni)
+* Add `no-render-return-value` rule ([#531][] @iamdustan)
+* Add `no-comment-textnodes` rule ([#616][] @benvinegar)
+* Add `objectLiterals` option to `jsx-curly-spacing` ([#388][], [#211][] @casesandberg @ljharb)
+* Add option to `self-closing-comp` to check html tags ([#572][] @gitim)
+* Add `ignore` option to `no-unknown-property` rule ([#631][] @insin)
+* Add support for ES7 bind operator to `jsx-handler-names` ([#630][])
+* Add support for explicit declaration that class extends React.Component ([#68][] @gausie)
+
+### Fixed
+* Fix `jsx-closing-bracket-location` multiline prop support ([#493][] @tuures)
+* Fix `prop-types` for props that where not assigned to the right component ([#591][])
+* Fix `display-name` when JSON style is used for defining components ([#590][] @gitim)
+* Fix `jsx-no-bind` for bind detection in render when assigned to a variable ([#474][] @petersendidit)
+* Fix `jsx-curly-spacing` for spread operator ([#606][] @gitim)
+* Fix `sort-comp` crash on spread operator ([#624][])
+* Fix `prop-types` crash when destructuring props with spread only
+
+### Changed
+* Update dependencies
+* Add [doctrine](https://github.com/eslint/doctrine) as a dependency ([#68][] @gausie)
+* Add [jsx-ast-utils](https://github.com/evcohen/jsx-ast-utils) as a dependency ([#634][] @evcohen)
+* Documentation improvements ([#594][] @lencioni, [#598][] @mLuby, [#633][] @appsforartists)
+
+[5.2.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v5.1.1...v5.2.0
+[#68]: https://github.com/yannickcr/eslint-plugin-react/issues/68
+[#211]: https://github.com/yannickcr/eslint-plugin-react/issues/211
+[#240]: https://github.com/yannickcr/eslint-plugin-react/issues/240
+[#388]: https://github.com/yannickcr/eslint-plugin-react/issues/388
+[#474]: https://github.com/yannickcr/eslint-plugin-react/issues/474
+[#493]: https://github.com/yannickcr/eslint-plugin-react/pull/493
+[#495]: https://github.com/yannickcr/eslint-plugin-react/issues/495
+[#531]: https://github.com/yannickcr/eslint-plugin-react/issues/531
+[#572]: https://github.com/yannickcr/eslint-plugin-react/issues/572
+[#590]: https://github.com/yannickcr/eslint-plugin-react/issues/590
+[#591]: https://github.com/yannickcr/eslint-plugin-react/issues/591
+[#594]: https://github.com/yannickcr/eslint-plugin-react/pull/594
+[#598]: https://github.com/yannickcr/eslint-plugin-react/pull/598
+[#606]: https://github.com/yannickcr/eslint-plugin-react/issues/606
+[#616]: https://github.com/yannickcr/eslint-plugin-react/pull/616
+[#624]: https://github.com/yannickcr/eslint-plugin-react/issues/624
+[#630]: https://github.com/yannickcr/eslint-plugin-react/issues/630
+[#631]: https://github.com/yannickcr/eslint-plugin-react/pull/631
+[#633]: https://github.com/yannickcr/eslint-plugin-react/pull/633
+[#634]: https://github.com/yannickcr/eslint-plugin-react/pull/634
+
 ## [5.1.1] - 2016-05-10
 ### Fixed
 * Fix `require-render-return` crash ([#589][])
