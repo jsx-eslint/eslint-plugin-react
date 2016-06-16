@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [5.2.1] - 2016-06-17
+### Fixed
+* Fix `jsx-pascal-case` for namespaced components ([#637][] @evcohen)
+
+[5.2.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v5.2.0...v5.2.1
+[#637]: https://github.com/yannickcr/eslint-plugin-react/issues/637
+
 ## [5.2.0] - 2016-06-17
 ### Added
 * Add `require-optimization` rule ([#240][] @EvNaverniouk)
