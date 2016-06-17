@@ -58,6 +58,20 @@ ruleTester.run('jsx-no-bind', rule, {
       code: '<div onClick={() => alert("1337")}></div>',
       options: [{allowArrowFunctions: true}],
       parser: 'babel-eslint'
+    },
+
+    // Redux connect
+    {
+      code: [
+        'class Hello extends Component {',
+        '  render() {',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'export default connect()(Hello);'
+      ].join('\n'),
+      options: [{allowBind: true}],
+      parser: 'babel-eslint'
     }
   ],
 
