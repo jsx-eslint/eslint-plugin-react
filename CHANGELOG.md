@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [5.2.2] - 2016-06-17
+### Fixed
+* Fix `jsx-no-bind` crash ([#641][])
+
+[5.2.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v5.2.1...v5.2.2
+[#641]: https://github.com/yannickcr/eslint-plugin-react/issues/641
+
 ## [5.2.1] - 2016-06-17
 ### Fixed
 * Fix `jsx-pascal-case` for namespaced components ([#637][] @evcohen)
