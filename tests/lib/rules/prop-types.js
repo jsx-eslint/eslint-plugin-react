@@ -2120,6 +2120,25 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'lastname\' is missing in props validation'
       }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  constructor(props, context) {',
+        '    super(props, context)',
+        '    const firstname = props.firstname;',
+        '    const {lastname} = props;',
+        '    this.state = {',
+        '      firstname,',
+        '      lastname',
+        '    }',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'firstname\' is missing in props validation'},
+        {message: '\'lastname\' is missing in props validation'}
+      ]
     }
   ]
 });
