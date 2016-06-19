@@ -142,6 +142,23 @@ ruleTester.run('jsx-no-bind', rule, {
       code: '<div ref={c => this._input = c}></div>',
       errors: [{message: 'JSX props should not use arrow functions'}],
       parser: 'babel-eslint'
+    },
+
+    // Bind expression
+    {
+      code: '<div foo={::this.onChange} />',
+      errors: [{message: 'JSX props should not use ::'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: '<div foo={foo.bar::baz} />',
+      errors: [{message: 'JSX props should not use ::'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: '<div foo={foo::bar} />',
+      errors: [{message: 'JSX props should not use ::'}],
+      parser: 'babel-eslint'
     }
   ]
 });
