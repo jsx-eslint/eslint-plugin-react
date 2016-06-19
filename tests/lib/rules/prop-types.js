@@ -1232,6 +1232,45 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parserOptions: parserOptions
+    }, {
+      code: [
+        'let Greetings = class extends React.Component {',
+        '  render () {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '};',
+        'Greetings.propTypes = {',
+        '  name: React.PropTypes.string',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions
+    }, {
+      code: [
+        'let Greetings = {',
+        '  Hello: class extends React.Component {',
+        '    render () {',
+        '      return <div>Hello {this.props.name}</div>;',
+        '    }',
+        '  }',
+        '}',
+        'Greetings.Hello.propTypes = {',
+        '  name: React.PropTypes.string',
+        '};'
+      ].join('\n'),
+      parserOptions: parserOptions
+    }, {
+      code: [
+        'let Greetings = {};',
+        'Greetings.Hello = class extends React.Component {',
+        '  render () {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '};',
+        'Greetings.Hello.propTypes = {',
+        '  name: React.PropTypes.string',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions
     }
   ],
 
@@ -2052,6 +2091,34 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {message: '\'result.notok\' is missing in props validation'}
       ]
+    }, {
+      code: [
+        'let Greetings = class extends React.Component {',
+        '  render () {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '}',
+        'Greetings.propTypes = {};'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'name\' is missing in props validation'
+      }]
+    }, {
+      code: [
+        'let Greetings = {',
+        '  Hello: class extends React.Component {',
+        '    render () {',
+        '      return <div>Hello {this.props.name}</div>;',
+        '    }',
+        '  }',
+        '}',
+        'Greetings.Hello.propTypes = {};'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'name\' is missing in props validation'
+      }]
     }, {
       code: [
         'let Greetings = {};',
