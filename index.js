@@ -45,6 +45,7 @@ module.exports = {
     'no-string-refs': require('./lib/rules/no-string-refs'),
     'prefer-stateless-function': require('./lib/rules/prefer-stateless-function'),
     'require-render-return': require('./lib/rules/require-render-return'),
+    'no-render-iteration': require('./lib/rules/no-render-iteration'),
     'jsx-first-prop-new-line': require('./lib/rules/jsx-first-prop-new-line'),
     'jsx-no-target-blank': require('./lib/rules/jsx-no-target-blank'),
     'jsx-filename-extension': require('./lib/rules/jsx-filename-extension'),
