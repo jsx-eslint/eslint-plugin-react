@@ -2206,6 +2206,21 @@ ruleTester.run('prop-types', rule, {
         {message: '\'firstname\' is missing in props validation'},
         {message: '\'lastname\' is missing in props validation'}
       ]
+    }, {
+      code: [
+        'function Hello(props) {',
+        '  return <div>{props.name.constructor.firstname}</div>',
+        '}',
+        'Hello.propTypes = {',
+        '  name: PropTypes.shape({',
+        '    firstname: PropTypes.object',
+        '  })',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'name.constructor.firstname\' is missing in props validation'}
+      ]
     }
   ]
 });
