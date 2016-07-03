@@ -127,15 +127,6 @@ ruleTester.run('display-name', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'class Hello extends React.Component {',
-      '  render() {',
-      '    return <div>Hello {this.props.name}</div>;',
-      '  }',
-      '}'
-    ].join('\n'),
-    parser: 'babel-eslint'
-  }, {
-    code: [
       'export default class Hello {',
       '  render() {',
       '    return <div>Hello {this.props.name}</div>;',
@@ -191,28 +182,32 @@ ruleTester.run('display-name', rule, {
     code: [
       'var Hello = function() {',
       '  return <div>Hello {this.props.name}</div>;',
-      '}'
+      '};',
+      'Hello.displayName = \'Hello\';'
     ].join('\n'),
     parser: 'babel-eslint'
   }, {
     code: [
       'function Hello() {',
       '  return <div>Hello {this.props.name}</div>;',
-      '}'
+      '}',
+      'Hello.displayName = \'Hello\';'
     ].join('\n'),
     parser: 'babel-eslint'
   }, {
     code: [
       'var Hello = () => {',
       '  return <div>Hello {this.props.name}</div>;',
-      '}'
+      '};',
+      'Hello.displayName = \'Hello\';'
     ].join('\n'),
     parser: 'babel-eslint'
   }, {
     code: [
       'module.exports = function Hello() {',
       '  return <div>Hello {this.props.name}</div>;',
-      '}'
+      '}',
+      'Hello.displayName = \'Hello\';'
     ].join('\n'),
     parser: 'babel-eslint'
   }, {
@@ -299,7 +294,8 @@ ruleTester.run('display-name', rule, {
       '      <button />',
       '    );',
       '  }',
-      '};'
+      '};',
+      'Mixin.Button.displayName = \'Button\';'
     ].join('\n'),
     parser: 'babel-eslint'
   }, {
@@ -319,16 +315,6 @@ ruleTester.run('display-name', rule, {
       'var obj = {',
       '  pouf: function() {',
       '    return any',
-      '  }',
-      '};'
-    ].join('\n'),
-    parser: 'babel-eslint'
-  }, {
-    code: [
-      'export default {',
-      '  renderHello() {',
-      '    let {name} = this.props;',
-      '    return <div>{name}</div>;',
       '  }',
       '};'
     ].join('\n'),
@@ -352,6 +338,7 @@ ruleTester.run('display-name', rule, {
       'import React, {Component} from "react";',
       'function someDecorator(ComposedComponent) {',
       '  return class MyDecorator extends Component {',
+      '    static displayName = \'MyDecorator(ComposedComponent.displayName)\';',
       '    render() {return <ComposedComponent {...this.props} />;}',
       '  };',
       '}',
@@ -513,6 +500,45 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: [
+      'import React, {Component} from "react";',
+      'function someDecorator(ComposedComponent) {',
+      '  return class MyDecorator extends Component {',
+      '    render() {return <ComposedComponent {...this.props} />;}',
+      '  };',
+      '}',
+      'module.exports = someDecorator;'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: [
+      'export default {',
+      '  renderHello() {',
+      '    let {name} = this.props;',
+      '    return <div>{name}</div>;',
+      '  }',
+      '};'
+    ].join('\n'),
     parser: 'babel-eslint',
     errors: [{
       message: 'Component definition is missing display name'
