@@ -34,6 +34,11 @@ ruleTester.run('jsx-filename-extension', rule, {
 
   valid: [
     {
+      filename: '<text>',
+      code: withJSX,
+      parserOptions: parserOptions
+    },
+    {
       filename: 'MyComponent.jsx',
       code: withJSX,
       parserOptions: parserOptions
