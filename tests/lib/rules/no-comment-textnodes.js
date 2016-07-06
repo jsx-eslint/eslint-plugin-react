@@ -109,6 +109,15 @@ ruleTester.run('jsx-needs-i18n', rule, {
       args: [1],
       parser: 'babel-eslint'
     },
+    {
+      code: [
+        '<strong>',
+        '  &nbsp;https://www.example.com/attachment/download/1',
+        '</strong>'
+      ].join('\n'),
+      args: [1],
+      parser: 'babel-eslint'
+    },
 
     // inside element declarations
     {
