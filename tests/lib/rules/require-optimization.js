@@ -77,6 +77,17 @@ ruleTester.run('react-require-optimization', rule, {
     ].join('\n'),
     parser: 'babel-eslint',
     parserOptions: parserOptions
+  }, {
+    code: [
+      '@bar',
+      '@pureRender',
+      '@foo',
+      'class DecoratedComponent extends Component {' +
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{allowDecorators: ['renderPure', 'pureRender']}],
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -128,6 +139,20 @@ ruleTester.run('react-require-optimization', rule, {
       message: MESSAGE
     }],
     parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '@bar',
+      '@pure',
+      '@foo',
+      'class DecoratedComponent extends Component {' +
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: MESSAGE
+    }],
+    parser: 'babel-eslint',
+    options: [{allowDecorators: ['renderPure', 'pureRender']}],
     parserOptions: parserOptions
   }]
 });
