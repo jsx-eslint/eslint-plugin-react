@@ -26,6 +26,7 @@ The following patterns are considered okay and do not cause warnings:
 "jsx-sort-props": [<enabled>, {
   "callbacksLast": <boolean>,
   "shorthandFirst": <boolean>,
+  "shorthandLast": <boolean>,
   "ignoreCase": <boolean>
 }]
 ...
@@ -43,7 +44,7 @@ The following patterns are considered okay and do not cause warnings:
 
 ### `callbacksLast`
 
-When `true`, callbacks must be listed after all other props:
+When `true`, callbacks must be listed after all other props, even if `shorthandLast` is set :
 
 ```js
 <Hello tel={5555555} onClick={this._handleClick} />
@@ -55,6 +56,14 @@ When `true`, short hand props must be listed before all other props, but still r
 
 ```js
 <Hello active validate name="John" tel={5555555} />
+```
+
+### `shorthandLast`
+
+When `true`, short hand props must be listed after all other props (unless `callbacksLast` is set), but still respecting the alphabetical order:
+
+```js
+<Hello name="John" tel={5555555} active validate />
 ```
 
 ## When not to use

@@ -33,8 +33,12 @@ var expectedCallbackError = {
   message: 'Callbacks must be listed after all other props',
   type: 'JSXAttribute'
 };
-var expectedShorthandError = {
+var expectedShorthandFirstError = {
   message: 'Shorthand props must be listed before all other props',
+  type: 'JSXAttribute'
+};
+var expectedShorthandLastError = {
+  message: 'Shorthand props must be listed after all other props',
   type: 'JSXAttribute'
 };
 var callbacksLastArgs = [{
@@ -42,6 +46,13 @@ var callbacksLastArgs = [{
 }];
 var shorthandFirstArgs = [{
   shorthandFirst: true
+}];
+var shorthandLastArgs = [{
+  shorthandLast: true
+}];
+var shorthandAndCallbackLastArgs = [{
+  callbacksLast: true,
+  shorthandLast: true
 }];
 var ignoreCaseArgs = [{
   ignoreCase: true
@@ -67,7 +78,13 @@ ruleTester.run('jsx-sort-props', rule, {
     // Sorting shorthand props before others
     {code: '<App a b="b" />;', options: shorthandFirstArgs, parserOptions: parserOptions},
     {code: '<App z a="a" />;', options: shorthandFirstArgs, parserOptions: parserOptions},
-    {code: '<App x y z a="a" b="b" />;', options: shorthandFirstArgs, parserOptions: parserOptions}
+    {code: '<App x y z a="a" b="b" />;', options: shorthandFirstArgs, parserOptions: parserOptions},
+    {code: '<App a="a" b="b" x y z />;', options: shorthandLastArgs, parserOptions: parserOptions},
+    {
+      code: '<App a="a" b="b" x y z onBar onFoo />;',
+      options: shorthandAndCallbackLastArgs,
+      parserOptions: parserOptions
+    }
   ],
   invalid: [
     {code: '<App b a />;', errors: [expectedError], parserOptions: parserOptions},
@@ -91,10 +108,20 @@ ruleTester.run('jsx-sort-props', rule, {
       parserOptions: parserOptions
     }, {
       code: '<App a="a" b />;',
-      errors: [expectedShorthandError],
+      errors: [expectedShorthandFirstError],
       options: shorthandFirstArgs,
       parserOptions: parserOptions
     },
-    {code: '<App z x a="a" />;', errors: [expectedError], options: shorthandFirstArgs, parserOptions: parserOptions}
+    {code: '<App z x a="a" />;', errors: [expectedError], options: shorthandFirstArgs, parserOptions: parserOptions}, {
+      code: '<App b a="a" />;',
+      errors: [expectedShorthandLastError],
+      options: shorthandLastArgs,
+      parserOptions: parserOptions
+    }, {
+      code: '<App a="a" onBar onFoo z x />;',
+      errors: [shorthandAndCallbackLastArgs],
+      options: shorthandLastArgs,
+      parserOptions: parserOptions
+    }
   ]
 });
