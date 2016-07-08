@@ -3,6 +3,26 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.0.0-alpha.1] - 2016-07-08
+### Fixed
+* Fix `prop-types` crash when accessing constructor on props ([#654][])
+* Fix `jsx-filename-extension` to not check filenames on text input ([#662][] @ljharb)
+* Fix `no-comment-textnodes` incorrectly catching urls ([#664][] @petersendidit)
+
+### Breaking
+* Add ESLint as peerDependency ([#657][] @jokeyrhyme)
+* Add Node.js 0.10 as minimum required version ([#657][] @jokeyrhyme)
+
+### Changed
+* Update dependencies
+* Update Travis CI and AppVeyor CI configurations (@ljharb)
+
+[6.0.0-alpha.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v5.2.2...v6.0.0-alpha.1
+[#654]: https://github.com/yannickcr/eslint-plugin-react/issues/654
+[#662]: https://github.com/yannickcr/eslint-plugin-react/issues/662
+[#664]: https://github.com/yannickcr/eslint-plugin-react/issues/664
+[#657]: https://github.com/yannickcr/eslint-plugin-react/pull/657
+
 ## [5.2.2] - 2016-06-17
 ### Fixed
 * Fix `jsx-no-bind` crash ([#641][])
