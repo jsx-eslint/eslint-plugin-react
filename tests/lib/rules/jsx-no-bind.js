@@ -72,6 +72,40 @@ ruleTester.run('jsx-no-bind', rule, {
       ].join('\n'),
       options: [{allowBind: true}],
       parser: 'babel-eslint'
+    },
+    // Backbone view with a bind
+    {
+      code: [
+        'var DocumentRow = Backbone.View.extend({',
+        '  tagName: "li",',
+        '  render: function() {',
+        '    this.onTap.bind(this);',
+        '  }',
+        '});'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'const foo = {',
+        '  render: function() {',
+        '    this.onTap.bind(this);',
+        '    return true;',
+        '  }',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'const foo = {',
+        '  render() {',
+        '    this.onTap.bind(this);',
+        '    return true;',
+        '  }',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
@@ -115,6 +149,30 @@ ruleTester.run('jsx-no-bind', rule, {
         '  render() {',
         '    const click = this.someMethod.bind(this);',
         '    return <div onClick={click}>Hello {this.state.name}</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use .bind()'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'const foo = {',
+        '  render: function() {',
+        '    const click = this.onTap.bind(this);',
+        '    return <div onClick={onClick}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use .bind()'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'const foo = {',
+        '  render() {',
+        '    const click = this.onTap.bind(this);',
+        '    return <div onClick={onClick}>Hello</div>;',
         '  }',
         '};'
       ].join('\n'),
