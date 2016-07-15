@@ -95,6 +95,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/no-render-return-value](docs/rules/no-render-return-value.md): Prevent usage of the return value of `React.render`
 * [react/no-set-state](docs/rules/no-set-state.md): Prevent usage of `setState`
 * [react/no-string-refs](docs/rules/no-string-refs.md): Prevent using string references in `ref` attribute.
+* [react/no-unescaped-entities](docs/rules/no-unescaped-entities.md): Prevent invalid characters from appearing in markup
 * [react/no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property (fixable)
 * [react/no-unused-prop-types](docs/rules/no-unused-prop-types.md): Prevent definitions of unused prop types
 * [react/prefer-es6-class](docs/rules/prefer-es6-class.md): Enforce ES5 or ES6 class for React Components
