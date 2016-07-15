@@ -53,7 +53,7 @@ var rules = {
 var ruleNames = Object.keys(rules);
 var allRules = {};
 for (var i = 0; i < ruleNames.length; i++) {
-  allRules[ruleNames[i]] = 2;
+  allRules['react/' + ruleNames[i]] = 2;
 }
 
 module.exports = {

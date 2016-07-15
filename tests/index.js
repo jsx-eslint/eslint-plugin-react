@@ -26,11 +26,17 @@ describe('all rule files should be exported by the plugin', function() {
 describe('configurations', function() {
   it('should export a \'recommended\' configuration', function() {
     assert(plugin.configs.recommended);
+    Object.keys(plugin.configs.recommended.rules).forEach(function (configName) {
+      assert.equal(configName.indexOf('react/'), 0);
+      var ruleName = configName.substring('react/'.length);
+      assert(plugin.rules[ruleName]);
+    });
   });
   it('should export a \'all\' configuration', function() {
     assert(plugin.configs.all);
-    rules.forEach(function(ruleName) {
-      assert.equal(plugin.configs.all.rules[ruleName], 2);
+    Object.keys(plugin.configs.all.rules).forEach(function(configName) {
+      assert.equal(configName.indexOf('react/'), 0);
+      assert.equal(plugin.configs.all.rules[configName], 2);
     });
   });
 });
