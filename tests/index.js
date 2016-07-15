@@ -30,7 +30,7 @@ describe('configurations', function() {
   it('should export a \'all\' configuration', function() {
     assert(plugin.configs.all);
     rules.forEach(function(ruleName) {
-      assert(plugin.configs.all.rules[ruleName]);
+      assert.equal(plugin.configs.all.rules[ruleName], 2);
     });
   });
 });

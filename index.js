@@ -50,6 +50,12 @@ var rules = {
   'no-find-dom-node': require('./lib/rules/no-find-dom-node')
 };
 
+var ruleNames = Object.keys(rules);
+var allRules = {};
+for (var i = 0; i < ruleNames.length; i++) {
+  allRules[ruleNames[i]] = 2;
+}
+
 module.exports = {
   rules: rules,
   configs: {
@@ -84,7 +90,7 @@ module.exports = {
           jsx: true
         }
       },
-      rules: rules
+      rules: allRules
     }
   }
 };
