@@ -38,5 +38,8 @@ describe('configurations', function() {
       assert.equal(configName.indexOf('react/'), 0);
       assert.equal(plugin.configs.all.rules[configName], 2);
     });
+    rules.forEach(function(ruleName) {
+      assert(plugin.configs.all.rules['react/' + ruleName]);
+    });
   });
 });
