@@ -83,6 +83,16 @@ ruleTester.run('jsx-handler-names', rule, {
       '<TestComponent onChange={props::handleChange} />'
     ].join('\n'),
     parser: 'babel-eslint'
+  }, {
+    code: [
+      '<TestComponent onChange={::props.onChange} />'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      '<TestComponent onChange={props.foo::handleChange} />'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
@@ -106,6 +116,12 @@ ruleTester.run('jsx-handler-names', rule, {
   }, {
     code: [
       '<TestComponent onChange={props::onChange} />'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{message: 'Handler function for onChange prop key must begin with \'handle\''}]
+  }, {
+    code: [
+      '<TestComponent onChange={props.foo::onChange} />'
     ].join('\n'),
     parser: 'babel-eslint',
     errors: [{message: 'Handler function for onChange prop key must begin with \'handle\''}]
