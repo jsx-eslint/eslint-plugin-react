@@ -9,9 +9,10 @@ When creating React components it is more convenient to always follow the same o
 With default configuration the following organisation must be followed:
 
   1. static methods and properties
-  2. lifecycle methods: `displayName`, `propTypes`, `contextTypes`, `childContextTypes`, `mixins`, `statics`,`defaultProps`, `constructor`, `getDefaultProps`, `getInitialState`, `state`, `getChildContext`, `componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `componentDidUpdate`, `componentWillUnmount` (in this order).
-  3. custom methods
-  4. `render` method
+  2. instance properties
+  3. lifecycle methods: `displayName`, `propTypes`, `contextTypes`, `childContextTypes`, `mixins`, `statics`,`defaultProps`, `constructor`, `getDefaultProps`, `getInitialState`, `state`, `getChildContext`, `componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `componentDidUpdate`, `componentWillUnmount` (in this order).
+  4. custom methods
+  5. `render` method
 
 The following patterns are considered warnings:
 
@@ -55,6 +56,7 @@ The default configuration is:
 {
   order: [
     'static-methods',
+    'instance-properties',
     'lifecycle',
     'everything-else',
     'render'
@@ -86,6 +88,7 @@ The default configuration is:
 ```
 
 * `static-methods` is a special keyword that refers to static class methods.
+* `instance-properties` is a special keyword that refers to class instance properties.
 * `lifecycle` is referring to the `lifecycle` group defined in `groups`.
 * `everything-else` is a special group that match all the methods that do not match any of the other groups.
 * `render` is referring to the `render` method.
@@ -98,6 +101,7 @@ For example, if you want to place your event handlers (`onClick`, `onSubmit`, et
 "react/sort-comp": [1, {
   order: [
     'static-methods',
+    'instance-properties',
     'lifecycle',
     '/^on.+$/',
     'render',
@@ -134,6 +138,7 @@ If you want to split your `render` method into smaller ones and keep them just b
 "react/sort-comp": [1, {
   order: [
     'static-methods',
+    'instance-properties',
     'lifecycle',
     'everything-else',
     'rendering',

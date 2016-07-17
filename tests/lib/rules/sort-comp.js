@@ -273,5 +273,32 @@ ruleTester.run('sort-comp', rule, {
     parser: 'babel-eslint',
     parserOptions: parserOptions,
     errors: [{message: 'render should be placed after displayName'}]
+  }, {
+    // Must validate instance properties
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    return <div></div>',
+      '  }',
+      '  count = 2;',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{message: 'render should be placed after count'}]
+  }, {
+    // Must differentiate between instance and static properties
+    code: [
+      'class Hello extends React.Component {',
+      '  count = 2;',
+      '  static displayName = \'Hello\';',
+      '  render() {',
+      '    return <div></div>',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{message: 'count should be placed after displayName'}]
   }]
 });
