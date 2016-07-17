@@ -203,6 +203,18 @@ ruleTester.run('sort-comp', rule, {
       '});'
     ].join('\n'),
     parser: 'babel-eslint'
+  }, {
+    // Must allow non-initialized instance properties
+    code: [
+      'class Hello extends React.Component {',
+      '  count;',
+      '  render() {',
+      '    return <div>Hello</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
   }],
 
   invalid: [{
