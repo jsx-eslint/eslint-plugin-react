@@ -306,7 +306,8 @@ ruleTester.run('sort-comp', rule, {
     parserOptions: parserOptions,
     errors: [{message: 'render should be placed after displayName'}]
   }, {
-    // Must validate instance properties if found if configuration
+    // Must validate instance properties
+    // if `instance-properties` is found in configuration
     code: [
       'class Hello extends React.Component {',
       '  render() {',
@@ -325,7 +326,7 @@ ruleTester.run('sort-comp', rule, {
     parserOptions: parserOptions,
     errors: [{message: 'render should be placed after count'}]
   }, {
-    // Must differentiate between instance and static properties,
+    // Must differentiate between instance and static properties
     // if `instance-properties` is found in configuration
     code: [
       'class Hello extends React.Component {',
