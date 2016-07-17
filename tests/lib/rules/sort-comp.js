@@ -204,6 +204,20 @@ ruleTester.run('sort-comp', rule, {
     ].join('\n'),
     parser: 'babel-eslint'
   }, {
+    // Must consider `instance-properties` part of `everything-else` by default
+    code: [
+      'class Hello extends React.Component {',
+      '  static displayName = \'Hello\';',
+      '  componentDidMount() {}',
+      '  count = 5;',
+      '  render() {',
+      '    return <div>Hello</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
     // Must allow non-initialized instance properties
     code: [
       'class Hello extends React.Component {',
@@ -214,6 +228,12 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    options: [{
+      order: [
+        'instance-properties',
+        'render'
+      ]
+    }],
     parserOptions: parserOptions
   }],
 
@@ -286,7 +306,7 @@ ruleTester.run('sort-comp', rule, {
     parserOptions: parserOptions,
     errors: [{message: 'render should be placed after displayName'}]
   }, {
-    // Must validate instance properties
+    // Must validate instance properties if found if configuration
     code: [
       'class Hello extends React.Component {',
       '  render() {',
@@ -296,10 +316,17 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    options: [{
+      order: [
+        'instance-properties',
+        'render'
+      ]
+    }],
     parserOptions: parserOptions,
     errors: [{message: 'render should be placed after count'}]
   }, {
-    // Must differentiate between instance and static properties
+    // Must differentiate between instance and static properties,
+    // if `instance-properties` is found in configuration
     code: [
       'class Hello extends React.Component {',
       '  count = 2;',
@@ -310,7 +337,36 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    options: [{
+      order: [
+        'static-methods',
+        'instance-properties',
+        'render'
+      ]
+    }],
     parserOptions: parserOptions,
     errors: [{message: 'count should be placed after displayName'}]
+  }, {
+    // Must differentiate between `instance-properties` and instance arrow functions
+    // if `instance-properties` is found in configuration
+    code: [
+      'class Hello extends React.Component {',
+      '  handleClick = () => {}',
+      '  count = 2;',
+      '  render() {',
+      '    return <div></div>',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      order: [
+        'instance-properties',
+        'everything-else',
+        'render'
+      ]
+    }],
+    parserOptions: parserOptions,
+    errors: [{message: 'handleClick should be placed after count'}]
   }]
 });
