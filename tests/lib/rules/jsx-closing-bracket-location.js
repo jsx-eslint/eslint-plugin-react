@@ -685,6 +685,70 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     }]
   }, {
     code: [
+      'const Button = function(props) {',
+      '  return (',
+      '    <Button',
+      '      size={size}',
+      '      onClick={onClick}',
+      '                                    >',
+      '      Button Text',
+      '    </Button>',
+      '  );',
+      '};'
+    ].join('\n'),
+    output: [
+      'const Button = function(props) {',
+      '  return (',
+      '    <Button',
+      '      size={size}',
+      '      onClick={onClick}',
+      '    >',
+      '      Button Text',
+      '    </Button>',
+      '  );',
+      '};'
+    ].join('\n'),
+    options: ['tag-aligned'],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 5, false),
+      line: 6,
+      column: 37
+    }]
+  }, {
+    code: [
+      'const Button = function(props) {',
+      '  return (',
+      '    <Button',
+      '      size={size}',
+      '      onClick={onClick}',
+      '                                    >',
+      '      Button Text',
+      '    </Button>',
+      '  );',
+      '};'
+    ].join('\n'),
+    output: [
+      'const Button = function(props) {',
+      '  return (',
+      '    <Button',
+      '      size={size}',
+      '      onClick={onClick}',
+      '    >',
+      '      Button Text',
+      '    </Button>',
+      '  );',
+      '};'
+    ].join('\n'),
+    options: ['line-aligned'],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 5, false),
+      line: 6,
+      column: 37
+    }]
+  }, {
+    code: [
       '<Provider',
       '  store',
       '  >',
