@@ -30,6 +30,7 @@ var rules = {
   'jsx-boolean-value': require('./lib/rules/jsx-boolean-value'),
   'sort-comp': require('./lib/rules/sort-comp'),
   'require-extension': require('./lib/rules/require-extension'),
+  'jsx-require-extension': require('./lib/rules/jsx-require-extension'),
   'jsx-no-duplicate-props': require('./lib/rules/jsx-no-duplicate-props'),
   'jsx-max-props-per-line': require('./lib/rules/jsx-max-props-per-line'),
   'jsx-no-literals': require('./lib/rules/jsx-no-literals'),
