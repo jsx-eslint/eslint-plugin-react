@@ -8,7 +8,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/wrap-multilines');
+var rule = require('../../../lib/rules/jsx-wrap-multilines');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
@@ -78,7 +78,7 @@ var ASSIGNMENT_NO_PAREN = '\
 // ------------------------------------------------------------------------------
 
 var ruleTester = new RuleTester();
-ruleTester.run('wrap-multilines', rule, {
+ruleTester.run('jsx-wrap-multilines', rule, {
 
   valid: [
     {

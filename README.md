@@ -102,7 +102,6 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
 * [react/sort-comp](docs/rules/sort-comp.md): Enforce component methods order
 * [react/sort-prop-types](docs/rules/sort-prop-types.md): Enforce propTypes declarations alphabetical sorting
-* [react/wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX (fixable)
 
 ## JSX-specific rules
 
@@ -129,6 +128,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
 * [react/jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
 * [react/jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
+* [react/jsx-wrap-multilines](docs/rules/jsx-wrap-multilines.md): Prevent missing parentheses around multilines JSX (fixable)
 
 ## React Native rules
 

@@ -6,6 +6,7 @@ var rules = {
   'prop-types': require('./lib/rules/prop-types'),
   'display-name': require('./lib/rules/display-name'),
   'wrap-multilines': require('./lib/rules/wrap-multilines'),
+  'jsx-wrap-multilines': require('./lib/rules/jsx-wrap-multilines'),
   'self-closing-comp': require('./lib/rules/self-closing-comp'),
   'no-comment-textnodes': require('./lib/rules/no-comment-textnodes'),
   'jsx-no-comment-textnodes': require('./lib/rules/jsx-no-comment-textnodes'),
