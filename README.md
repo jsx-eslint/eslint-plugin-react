@@ -81,7 +81,6 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 
 * [react/display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
 * [react/forbid-prop-types](docs/rules/forbid-prop-types.md): Forbid certain propTypes
-* [react/no-comment-textnodes](docs/rules/no-comment-textnodes.md): Prevent comments from being inserted as text nodes
 * [react/no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
 * [react/no-deprecated](docs/rules/no-deprecated.md): Prevent usage of deprecated methods
 * [react/no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of `setState` in `componentDidMount`
@@ -120,6 +119,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/jsx-key](docs/rules/jsx-key.md): Validate JSX has key prop when in array or iterator
 * [react/jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md): Limit maximum of props on a single line in JSX
 * [react/jsx-no-bind](docs/rules/jsx-no-bind.md): Prevent usage of `.bind()` and arrow functions in JSX props
+* [react/jsx-no-comment-textnodes](docs/rules/jsx-no-comment-textnodes.md): Prevent comments from being inserted as text nodes
 * [react/jsx-no-duplicate-props](docs/rules/jsx-no-duplicate-props.md): Prevent duplicate props in JSX
 * [react/jsx-no-literals](docs/rules/jsx-no-literals.md): Prevent usage of unwrapped JSX strings
 * [react/jsx-no-target-blank](docs/rules/jsx-no-target-blank.md): Prevent usage of unsafe `target='_blank'`

@@ -8,7 +8,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/no-comment-textnodes');
+var rule = require('../../../lib/rules/jsx-no-comment-textnodes');
 var RuleTester = require('eslint').RuleTester;
 
 // ------------------------------------------------------------------------------
@@ -16,7 +16,7 @@ var RuleTester = require('eslint').RuleTester;
 // ------------------------------------------------------------------------------
 
 var ruleTester = new RuleTester();
-ruleTester.run('jsx-needs-i18n', rule, {
+ruleTester.run('jsx-no-comment-textnodes', rule, {
 
   valid: [
     {
