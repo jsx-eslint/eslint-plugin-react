@@ -87,6 +87,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of `setState` in `componentDidMount`
 * [react/no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of `setState` in `componentDidUpdate`
 * [react/no-direct-mutation-state](docs/rules/no-direct-mutation-state.md): Prevent direct mutation of `this.state`
+* [react/no-find-dom-node](docs/rules/no-find-dom-node.md): Prevent usage of `findDOMNode`
 * [react/no-is-mounted](docs/rules/no-is-mounted.md): Prevent usage of `isMounted`
 * [react/no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
 * [react/no-render-return-value](docs/rules/no-render-return-value.md): Prevent usage of the return value of `React.render`
@@ -162,6 +163,7 @@ The rules enabled in this configuration are:
 * [react/no-did-mount-set-state](docs/rules/no-did-mount-set-state.md) with `allow-in-func` option
 * [react/no-did-update-set-state](docs/rules/no-did-update-set-state.md) with `allow-in-func` option
 * [react/no-direct-mutation-state](docs/rules/no-direct-mutation-state.md)
+* [react/no-find-dom-node](docs/rules/no-find-dom-node.md)
 * [react/no-is-mounted](docs/rules/no-is-mounted.md)
 * [react/no-unknown-property](docs/rules/no-unknown-property.md)
 * [react/prop-types](docs/rules/prop-types.md)

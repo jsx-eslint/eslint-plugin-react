@@ -47,7 +47,8 @@ module.exports = {
     'jsx-first-prop-new-line': require('./lib/rules/jsx-first-prop-new-line'),
     'jsx-no-target-blank': require('./lib/rules/jsx-no-target-blank'),
     'jsx-filename-extension': require('./lib/rules/jsx-filename-extension'),
-    'require-optimization': require('./lib/rules/require-optimization')
+    'require-optimization': require('./lib/rules/require-optimization'),
+    'no-find-dom-node': require('./lib/rules/no-find-dom-node')
   },
   configs: {
     recommended: {
@@ -67,6 +68,7 @@ module.exports = {
         'react/no-did-mount-set-state': [2, 'allow-in-func'],
         'react/no-did-update-set-state': [2, 'allow-in-func'],
         'react/no-direct-mutation-state': 2,
+        'react/no-find-dom-node': 2,
         'react/no-is-mounted': 2,
         'react/no-unknown-property': 2,
         'react/no-render-return-value': 2,
