@@ -149,6 +149,18 @@ To enable this configuration use the `extends` property in your `.eslintrc` conf
 }
 ```
 
+This plugin also exports an `all` configuration that includes every available rule.
+This pairs well with the `eslint:all` rule.
+
+```js
+{
+  "plugins": [
+    "react"
+  ],
+  "extends": ["eslint:all", "plugin:react/all"]
+}
+```
+
 See [ESLint documentation](http://eslint.org/docs/user-guide/configuring#extending-configuration-files) for more information about extending configuration files.
 
 The rules enabled in this configuration are:
