@@ -27,4 +27,10 @@ describe('configurations', function() {
   it('should export a \'recommended\' configuration', function() {
     assert(plugin.configs.recommended);
   });
+  it('should export a \'all\' configuration', function() {
+    assert(plugin.configs.all);
+    rules.forEach(function(ruleName) {
+      assert(plugin.configs.all.rules[ruleName]);
+    });
+  });
 });
