@@ -52,6 +52,18 @@ ruleTester.run('no-find-dom-node', rule, {
       '});'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  componentDidMount: function() {',
+      '    React.someFunc(this);',
+      '  },',
+      '  render: function() {',
+      '    return <div>Hello</div>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
