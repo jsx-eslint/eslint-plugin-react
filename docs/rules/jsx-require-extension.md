@@ -1,4 +1,4 @@
-# Restrict file extensions that may be required (require-extension)
+# Restrict file extensions that may be required (jsx-require-extension)
 
 `require()` statements should generally not include a file extension as there is a well defined mechanism for resolving a module ID to a specific file. This rule inspects the module ID being required and creates a warning if the ID contains a '.jsx' file extension.
 
@@ -29,7 +29,7 @@ The set of forbidden extensions is configurable. By default '.jsx' is blocked. I
 
 ```js
 "rules": {
-  "react/require-extension": [1, { "extensions": [".js", ".jsx"] }],
+  "react/jsx-require-extension": [1, { "extensions": [".js", ".jsx"] }],
 }
 ```
 

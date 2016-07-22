@@ -81,7 +81,6 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 
 * [react/display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
 * [react/forbid-prop-types](docs/rules/forbid-prop-types.md): Forbid certain propTypes
-* [react/no-comment-textnodes](docs/rules/no-comment-textnodes.md): Prevent comments from being inserted as text nodes
 * [react/no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
 * [react/no-deprecated](docs/rules/no-deprecated.md): Prevent usage of deprecated methods
 * [react/no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of `setState` in `componentDidMount`
@@ -98,13 +97,11 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/prefer-stateless-function](docs/rules/prefer-stateless-function.md): Enforce stateless React Components to be written as a pure function
 * [react/prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
 * [react/react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing `React` when using JSX
-* [react/require-extension](docs/rules/require-extension.md): Restrict file extensions that may be required
 * [react/require-optimization](docs/rules/require-optimization.md): Enforce React components to have a shouldComponentUpdate method
 * [react/require-render-return](docs/rules/require-render-return.md): Enforce ES5 or ES6 class for returning value in render function
 * [react/self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
 * [react/sort-comp](docs/rules/sort-comp.md): Enforce component methods order
 * [react/sort-prop-types](docs/rules/sort-prop-types.md): Enforce propTypes declarations alphabetical sorting
-* [react/wrap-multilines](docs/rules/wrap-multilines.md): Prevent missing parentheses around multilines JSX (fixable)
 
 ## JSX-specific rules
 
@@ -120,15 +117,18 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/jsx-key](docs/rules/jsx-key.md): Validate JSX has key prop when in array or iterator
 * [react/jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md): Limit maximum of props on a single line in JSX
 * [react/jsx-no-bind](docs/rules/jsx-no-bind.md): Prevent usage of `.bind()` and arrow functions in JSX props
+* [react/jsx-no-comment-textnodes](docs/rules/jsx-no-comment-textnodes.md): Prevent comments from being inserted as text nodes
 * [react/jsx-no-duplicate-props](docs/rules/jsx-no-duplicate-props.md): Prevent duplicate props in JSX
 * [react/jsx-no-literals](docs/rules/jsx-no-literals.md): Prevent usage of unwrapped JSX strings
 * [react/jsx-no-target-blank](docs/rules/jsx-no-target-blank.md): Prevent usage of unsafe `target='_blank'`
 * [react/jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
 * [react/jsx-pascal-case](docs/rules/jsx-pascal-case.md): Enforce PascalCase for user-defined JSX components
+* [react/jsx-require-extension](docs/rules/jsx-require-extension.md): Restrict file extensions that may be required
 * [react/jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting
 * [react/jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
 * [react/jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
 * [react/jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
+* [react/jsx-wrap-multilines](docs/rules/jsx-wrap-multilines.md): Prevent missing parentheses around multilines JSX (fixable)
 
 ## React Native rules
 
