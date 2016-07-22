@@ -2221,6 +2221,17 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {message: '\'name.constructor.firstname\' is missing in props validation'}
       ]
+    }, {
+      code: [
+        'function SomeComponent({bar}) {',
+        '  function f({foo}) {}',
+        '  return <div className={f()}>{bar}</div>;',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [
+        {message: '\'bar\' is missing in props validation'}
+      ]
     }
   ]
 });
