@@ -22,7 +22,7 @@ var parserOptions = {
 // Code Snippets
 // ------------------------------------------------------------------------------
 
-var withJSX = 'module.exports = function MyComponent() { return <div />; }';
+var withJSX = 'module.exports = function MyComponent() { return <div>\n<div />\n</div>; }';
 var withoutJSX = 'module.exports = {}';
 
 // ------------------------------------------------------------------------------
