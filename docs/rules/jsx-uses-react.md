@@ -7,6 +7,7 @@ If you are using the @jsx pragma this rule will mark the designated variable and
 
 This rule has no effect if the `no-unused-vars` rule is not enabled.
 
+You can use the [shared settings](/README.md#configuration) to specify a custom pragma.
 
 ## Rule Details
 
@@ -39,28 +40,6 @@ var Foo = require('foo');
 
 var Hello = <div>Hello {this.props.name}</div>;
 ```
-
-## Rule Options
-
-```js
-...
-"jsx-uses-react": [<enabled>, { "pragma": <string> }]
-...
-```
-
-### `pragma`
-
-**Deprecation notice**: This option is deprecated, please use the [shared settings](/README.md#configuration) to specify a custom pragma.
-
-As an alternative to specifying the above pragma in each source file, you can specify
-this configuration option:
-
-```js
-var Foo = require('Foo');
-
-var Hello = <div>Hello {this.props.name}</div>;
-```
-
 
 ## When Not To Use It
 
