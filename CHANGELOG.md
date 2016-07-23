@@ -3,6 +3,44 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.0.0-alpha.2] - 2016-07-24
+### Added
+* Add an `all` sharable configuration with all rules enabled ([#674][] @pfhayes)
+* Add `no-find-dom-node` rule ([#678][])
+* Add `shorthandFirst` option to `jsx-sort-props` ([#391][] @mathieumg)
+* Add `allowDecorators` option to `require-optimization` ([#669][] @Tom910)
+
+### Fixed
+* Fix `jsx-no-bind` reporting errors on render functions that don't return JSX ([#663][] @petersendidit)
+* Fix `jsx-closing-bracket-location` autofix when `location` is set to `props-aligned` ([#684][] @pfhayes)
+* Fix `prop-types` for destructured arguments being assigned to the parent stateless component in some cases ([#698][])
+* Fix `prop-types` for JSX return being assigned to the parent function in some cases ([#504][])
+* Fix `jsx-curly-spacing` for reporting on JSX content by mistake ([#671][])
+
+### Breaking
+* Remove deprecated `jsx-sort-prop-types` rule, use `sort-prop-types` instead ([#549][] @lencioni)
+* Rename `jsx-no-comment-textnodes` to `no-comment-textnodes`. `jsx-no-comment-textnodes` still works but will trigger a warning ([#668][] @lencioni)
+* Rename `jsx-require-extension` to `require-extension`. `jsx-require-extension` still works but will trigger a warning ([#668][] @lencioni)
+* Rename `jsx-wrap-multilines` to `wrap-multilines`. `jsx-wrap-multilines` still works but will trigger a warning ([#668][] @lencioni)
+
+### Changed
+* Update dependencies
+* Only report `jsx-filename-extension` warning once per file ([#660][] @mathieumg)
+
+[6.0.0-alpha.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.0.0-alpha.1...v6.0.0-alpha.2
+[#674]: https://github.com/yannickcr/eslint-plugin-react/issues/674
+[#678]: https://github.com/yannickcr/eslint-plugin-react/issues/678
+[#391]: https://github.com/yannickcr/eslint-plugin-react/issues/391
+[#669]: https://github.com/yannickcr/eslint-plugin-react/pull/669
+[#663]: https://github.com/yannickcr/eslint-plugin-react/issues/663
+[#684]: https://github.com/yannickcr/eslint-plugin-react/pull/684
+[#698]: https://github.com/yannickcr/eslint-plugin-react/issues/698
+[#504]: https://github.com/yannickcr/eslint-plugin-react/issues/504
+[#671]: https://github.com/yannickcr/eslint-plugin-react/issues/671
+[#549]: https://github.com/yannickcr/eslint-plugin-react/issues/549
+[#668]: https://github.com/yannickcr/eslint-plugin-react/issues/668
+[#660]: https://github.com/yannickcr/eslint-plugin-react/pull/660
+
 ## [6.0.0-alpha.1] - 2016-07-08
 ### Fixed
 * Fix `prop-types` crash when accessing constructor on props ([#654][])
