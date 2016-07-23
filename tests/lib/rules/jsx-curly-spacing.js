@@ -182,6 +182,10 @@ ruleTester.run('jsx-curly-spacing', rule, {
     code: '<App foo={3} bar={ {a: 2} } />',
     options: ['never', {spacing: {objectLiterals: 'always'}}],
     parserOptions: parserOptions
+  }, {
+    code: '<div foo={ bar }>{bar}</div>',
+    options: ['always'],
+    parserOptions: parserOptions
   }],
 
   invalid: [{
