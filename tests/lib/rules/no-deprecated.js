@@ -12,12 +12,6 @@
 var rule = require('../../../lib/rules/no-deprecated');
 var RuleTester = require('eslint').RuleTester;
 
-var settings = {
-  react: {
-    pragma: 'Foo'
-  }
-};
-
 require('babel-eslint');
 
 // ------------------------------------------------------------------------------
@@ -38,26 +32,24 @@ ruleTester.run('no-deprecated', rule, {
     'ReactDOMServer.renderToString(element);',
     'ReactDOMServer.renderToStaticMarkup(element);',
     // Deprecated in a later version
-    {code: 'React.renderComponent()', options: [{react: '0.11.0'}]},
     {code: 'React.renderComponent()', settings: {react: {version: '0.11.0'}}}
   ],
 
   invalid: [{
     code: 'React.renderComponent()',
-    options: [{react: '0.12.0'}],
+    settings: {react: {version: '0.12.0'}},
     errors: [{
       message: 'React.renderComponent is deprecated since React 0.12.0, use React.render instead'
     }]
   }, {
     code: 'Foo.renderComponent()',
-    options: [{react: '0.12.0'}],
-    settings: settings,
+    settings: {react: {pragma: 'Foo', version: '0.12.0'}},
     errors: [{
       message: 'Foo.renderComponent is deprecated since React 0.12.0, use Foo.render instead'
     }]
   }, {
     code: '/** @jsx Foo */ Foo.renderComponent()',
-    options: [{react: '0.12.0'}],
+    settings: {react: {version: '0.12.0'}},
     errors: [{
       message: 'Foo.renderComponent is deprecated since React 0.12.0, use Foo.render instead'
     }]

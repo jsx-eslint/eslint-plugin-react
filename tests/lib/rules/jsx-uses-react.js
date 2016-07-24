@@ -37,7 +37,6 @@ ruleTester.run('no-unused-vars', rule, {
     {code: '/*eslint jsx-uses-react:1*/ var React; <div />;', parserOptions: parserOptions},
     {code: '/*eslint jsx-uses-react:1*/ var React; (function () { <div /> })();', parserOptions: parserOptions},
     {code: '/*eslint jsx-uses-react:1*/ /** @jsx Foo */ var Foo; <div />;', parserOptions: parserOptions},
-    {code: '/*eslint jsx-uses-react:[1,{"pragma":"Foo"}]*/ var Foo; <div />;', parserOptions: parserOptions},
     {code: '/*eslint jsx-uses-react:1*/ var Foo; <div />;', settings: settings, parserOptions: parserOptions}
   ],
   invalid: [
