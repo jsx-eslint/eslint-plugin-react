@@ -33,25 +33,25 @@ ruleTester.run('jsx-closing-bracket-atomic', rule, {
   ],
   invalid: [{
     code: '<App/ >;',
-    errors: [{message: 'JSX tag closing has embedded whitespace'}],
+    errors: [{message: 'Self-closing JSX elements must not have whitespace between the `/` and the `>`'}],
     parserOptions: parserOptions
   }, {
     code: [
       '<App/',
       '>'
     ].join('\n'),
-    errors: [{message: 'JSX tag closing has embedded whitespace'}],
+    errors: [{message: 'Self-closing JSX elements must not have whitespace between the `/` and the `>`'}],
     parserOptions: parserOptions
   }, {
     code: '<div className="bar">< /div>;',
-    errors: [{message: 'JSX tag closing has embedded whitespace'}],
+    errors: [{message: 'JSX closing tags must not have whitespace between the `<` and the `/`'}],
     parserOptions: parserOptions
   }, {
     code: [
       '<div className="bar"><',
       '/div>;'
     ].join('\n'),
-    errors: [{message: 'JSX tag closing has embedded whitespace'}],
+    errors: [{message: 'JSX closing tags must not have whitespace between the `<` and the `/`'}],
     parserOptions: parserOptions
   }]
 });
