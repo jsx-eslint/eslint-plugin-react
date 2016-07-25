@@ -134,7 +134,9 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 
 If you're searching for React Native specific linting rules, check out [eslint-plugin-react-native](https://github.com/Intellicode/eslint-plugin-react-native).
 
-# Recommended configuration
+# Shareable configurations
+
+## Recommended
 
 This plugin exports a `recommended` configuration that enforce React good practices.
 
@@ -170,6 +172,8 @@ The rules enabled in this configuration are:
 * [react/react-in-jsx-scope](docs/rules/react-in-jsx-scope.md)
 
 **Note**: This configuration will also enable JSX in [parser options](http://eslint.org/docs/user-guide/configuring#specifying-parser-options).
+
+## All
 
 This plugin also exports an `all` configuration that includes every available rule.
 This pairs well with the `eslint:all` rule.
