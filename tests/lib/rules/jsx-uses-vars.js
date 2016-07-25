@@ -115,6 +115,22 @@ ruleTester.run('no-unused-vars', rule, {
     }, {
       code: '\
         /*eslint jsx-uses-vars:1*/\
+        var App;\
+        var Hello;\
+        React.render(<App:Hello/>);',
+      errors: [{message: '\'Hello\' is defined but never used'}],
+      parserOptions: parserOptions
+    }, {
+      code: '\
+        /*eslint jsx-uses-vars:1*/\
+        var Button;\
+        var Input;\
+        React.render(<Button.Input unused=""/>);',
+      errors: [{message: '\'Input\' is defined but never used'}],
+      parserOptions: parserOptions
+    }, {
+      code: '\
+        /*eslint jsx-uses-vars:1*/\
         class unused {}',
       errors: [{message: '\'unused\' is defined but never used'}],
       parserOptions: parserOptions
