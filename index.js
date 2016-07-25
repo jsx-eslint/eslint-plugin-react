@@ -55,7 +55,8 @@ var allRules = {
   'no-children-prop': require('./lib/rules/no-children-prop'),
   'no-comment-textnodes': require('./lib/rules/no-comment-textnodes'),
   'require-extension': require('./lib/rules/require-extension'),
-  'wrap-multilines': require('./lib/rules/wrap-multilines')
+  'wrap-multilines': require('./lib/rules/wrap-multilines'),
+  'jsx-tag-spacing': require('./lib/rules/jsx-tag-spacing')
 };
 
 function filterRules(rules, predicate) {
