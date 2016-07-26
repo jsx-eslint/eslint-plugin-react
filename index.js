@@ -53,7 +53,8 @@ var rules = {
   'jsx-no-target-blank': require('./lib/rules/jsx-no-target-blank'),
   'jsx-filename-extension': require('./lib/rules/jsx-filename-extension'),
   'require-optimization': require('./lib/rules/require-optimization'),
-  'no-find-dom-node': require('./lib/rules/no-find-dom-node')
+  'no-find-dom-node': require('./lib/rules/no-find-dom-node'),
+  'no-danger-with-children': require('./lib/rules/no-danger-with-children')
 };
 
 var ruleNames = Object.keys(rules);
