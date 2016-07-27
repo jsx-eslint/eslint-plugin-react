@@ -160,10 +160,7 @@ The rules enabled in this configuration are:
 * [react/jsx-no-undef](docs/rules/jsx-no-undef.md)
 * [react/jsx-uses-react](docs/rules/jsx-uses-react.md)
 * [react/jsx-uses-vars](docs/rules/jsx-uses-vars.md)
-* [react/no-danger](docs/rules/no-danger.md)
 * [react/no-deprecated](docs/rules/no-deprecated.md)
-* [react/no-did-mount-set-state](docs/rules/no-did-mount-set-state.md) with `allow-in-func` option
-* [react/no-did-update-set-state](docs/rules/no-did-update-set-state.md) with `allow-in-func` option
 * [react/no-direct-mutation-state](docs/rules/no-direct-mutation-state.md)
 * [react/no-find-dom-node](docs/rules/no-find-dom-node.md)
 * [react/no-is-mounted](docs/rules/no-is-mounted.md)
