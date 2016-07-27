@@ -55,7 +55,7 @@ var Hello = React.createClass({
 ...
 ```
 
-### `allow-in-func` mode
+### `disallow-in-func` mode
 
 By default this rule forbids any call to `this.setState` in `componentDidUpdate` outside of functions. The `disallow-in-func` mode makes this rule more strict by disallowing calls to `this.setState` even within functions.
 
