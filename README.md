@@ -83,6 +83,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
 * [react/forbid-component-props](docs/rules/forbid-component-props.md): Forbid certain props on Components
 * [react/forbid-prop-types](docs/rules/forbid-prop-types.md): Forbid certain propTypes
+* [react/no-children-prop](docs/rules/no-children-prop.md): Prevent passing children as props
 * [react/no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
 * [react/no-danger-with-children](docs/rules/no-danger-with-children.md): Prevent problem with children and props.dangerouslySetInnerHTML
 * [react/no-deprecated](docs/rules/no-deprecated.md): Prevent usage of deprecated methods
@@ -166,6 +167,7 @@ The rules enabled in this configuration are:
 * [react/jsx-no-undef](docs/rules/jsx-no-undef.md)
 * [react/jsx-uses-react](docs/rules/jsx-uses-react.md)
 * [react/jsx-uses-vars](docs/rules/jsx-uses-vars.md)
+* [react/no-danger](docs/rules/no-danger.md)
 * [react/no-deprecated](docs/rules/no-deprecated.md)
 * [react/no-direct-mutation-state](docs/rules/no-direct-mutation-state.md)
 * [react/no-find-dom-node](docs/rules/no-find-dom-node.md)
