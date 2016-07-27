@@ -32,6 +32,21 @@ var Hello = React.createClass({
 });
 ```
 
+```js
+var Hello = React.createClass({
+  componentDidUpdate: function() {
+    this.onUpdate(function callback(newName) {
+      this.setState({
+        name: newName
+      });
+    });
+  },
+  render: function() {
+    return <div>Hello {this.props.name}</div>;
+  }
+});
+```
+
 ## Rule Options
 
 ```js
@@ -42,7 +57,7 @@ var Hello = React.createClass({
 
 ### `allow-in-func` mode
 
-By default this rule forbids any call to `this.setState` in `componentDidUpdate`. But in certain cases you may need to perform asynchronous calls in `componentDidUpdate` that may end up with calls to `this.setState`. The `allow-in-func` mode allows you to use `this.setState` in `componentDidUpdate` as long as they are called within a function.
+By default this rule forbids any call to `this.setState` in `componentDidUpdate` outside of functions. The `disallow-in-func` mode makes this rule more strict by disallowing calls to `this.setState` even within functions.
 
 The following patterns are considered warnings:
 
@@ -58,8 +73,6 @@ var Hello = React.createClass({
   }
 });
 ```
-
-The following patterns are not considered warnings:
 
 ```js
 var Hello = React.createClass({

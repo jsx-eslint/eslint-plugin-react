@@ -65,7 +65,6 @@ ruleTester.run('no-did-update-set-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    options: ['allow-in-func'],
     parserOptions: parserOptions
   }, {
     code: [
@@ -81,7 +80,6 @@ ruleTester.run('no-did-update-set-state', rule, {
       '});'
     ].join('\n'),
     parser: 'babel-eslint',
-    options: ['allow-in-func'],
     parserOptions: parserOptions
   }],
 
@@ -123,7 +121,7 @@ ruleTester.run('no-did-update-set-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    options: ['allow-in-func'],
+    options: ['disallow-in-func'],
     parserOptions: parserOptions,
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
@@ -139,7 +137,7 @@ ruleTester.run('no-did-update-set-state', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    options: ['allow-in-func'],
+    options: ['disallow-in-func'],
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
     }]
@@ -156,6 +154,7 @@ ruleTester.run('no-did-update-set-state', rule, {
       '});'
     ].join('\n'),
     parserOptions: parserOptions,
+    options: ['disallow-in-func'],
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
     }]
@@ -172,6 +171,7 @@ ruleTester.run('no-did-update-set-state', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    options: ['disallow-in-func'],
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
     }]
@@ -217,6 +217,7 @@ ruleTester.run('no-did-update-set-state', rule, {
     ].join('\n'),
     parser: 'babel-eslint',
     parserOptions: parserOptions,
+    options: ['disallow-in-func'],
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
     }]
@@ -229,6 +230,7 @@ ruleTester.run('no-did-update-set-state', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    options: ['disallow-in-func'],
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
     }]
