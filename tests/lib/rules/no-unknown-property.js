@@ -36,9 +36,7 @@ ruleTester.run('no-unknown-property', rule, {
     {code: '<div data-foo="bar"></div>;', parserOptions: parserOptions},
     {code: '<div class="foo" is="my-elem"></div>;', parserOptions: parserOptions},
     {code: '<div {...this.props} class="foo" is="my-elem"></div>;', parserOptions: parserOptions},
-    {code: '<atom-panel class="foo"></atom-panel>;', parserOptions: parserOptions},
-    {code: '<use xlink:href="bar" />;', parserOptions: parserOptions},
-    {code: '<rect clip-path="bar" />;', parserOptions: parserOptions}, {
+    {code: '<atom-panel class="foo"></atom-panel>;', parserOptions: parserOptions}, {
       code: '<div class="bar"></div>;',
       options: [{ignore: ['class']}],
       parserOptions: parserOptions
@@ -83,21 +81,11 @@ ruleTester.run('no-unknown-property', rule, {
     code: '<use xlink:href="bar" />;',
     output: '<use xlinkHref="bar" />;',
     errors: [{message: 'Unknown property \'xlink:href\' found, use \'xlinkHref\' instead'}],
-    parserOptions: parserOptions,
-    settings: {
-      react: {
-        version: '0.14.0'
-      }
-    }
+    parserOptions: parserOptions
   }, {
     code: '<rect clip-path="bar" />;',
     output: '<rect clipPath="bar" />;',
     errors: [{message: 'Unknown property \'clip-path\' found, use \'clipPath\' instead'}],
-    parserOptions: parserOptions,
-    settings: {
-      react: {
-        version: '0.14.0'
-      }
-    }
+    parserOptions: parserOptions
   }]
 });
