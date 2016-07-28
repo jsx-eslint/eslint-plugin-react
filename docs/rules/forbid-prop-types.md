@@ -50,7 +50,7 @@ class Component extends React.Component {
 
 ### `forbid`
 
-An array of strings, with the names of React.PropType keys that are forbidden.
+An array of strings, with the names of `React.PropTypes` keys that are forbidden.
 
 ## When not to use
 
