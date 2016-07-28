@@ -7,13 +7,13 @@ var assert = require('assert');
 var fs = require('fs');
 var path = require('path');
 
-var rules = fs.readdirSync(path.resolve(__dirname, '../lib/rules/'))
+var ruleFiles = fs.readdirSync(path.resolve(__dirname, '../lib/rules/'))
   .map(function(f) {
     return path.basename(f, '.js');
   });
 
 describe('all rule files should be exported by the plugin', function() {
-  rules.forEach(function(ruleName) {
+  ruleFiles.forEach(function(ruleName) {
     it('should export ' + ruleName, function() {
       assert.equal(
         plugin.rules[ruleName],
@@ -38,8 +38,10 @@ describe('configurations', function() {
       assert.equal(configName.indexOf('react/'), 0);
       assert.equal(plugin.configs.all.rules[configName], 2);
     });
-    rules.forEach(function(ruleName) {
-      assert(plugin.configs.all.rules['react/' + ruleName]);
+    ruleFiles.forEach(function(ruleName) {
+      var inDeprecatedRules = Boolean(plugin.deprecatedRules[ruleName]);
+      var inAllConfig = Boolean(plugin.configs.all.rules['react/' + ruleName]);
+      assert(inDeprecatedRules ^ inAllConfig);
     });
   });
 });

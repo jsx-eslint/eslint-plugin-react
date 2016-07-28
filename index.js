@@ -1,14 +1,18 @@
 'use strict';
 
+var deprecatedRules = {
+  'no-comment-textnodes': require('./lib/rules/no-comment-textnodes'),
+  'require-extension': require('./lib/rules/require-extension'),
+  'wrap-multilines': require('./lib/rules/wrap-multilines')
+};
+
 var rules = {
   'jsx-uses-react': require('./lib/rules/jsx-uses-react'),
   'no-multi-comp': require('./lib/rules/no-multi-comp'),
   'prop-types': require('./lib/rules/prop-types'),
   'display-name': require('./lib/rules/display-name'),
-  'wrap-multilines': require('./lib/rules/wrap-multilines'),
   'jsx-wrap-multilines': require('./lib/rules/jsx-wrap-multilines'),
   'self-closing-comp': require('./lib/rules/self-closing-comp'),
-  'no-comment-textnodes': require('./lib/rules/no-comment-textnodes'),
   'jsx-no-comment-textnodes': require('./lib/rules/jsx-no-comment-textnodes'),
   'no-danger': require('./lib/rules/no-danger'),
   'no-set-state': require('./lib/rules/no-set-state'),
@@ -30,7 +34,6 @@ var rules = {
   'sort-prop-types': require('./lib/rules/sort-prop-types'),
   'jsx-boolean-value': require('./lib/rules/jsx-boolean-value'),
   'sort-comp': require('./lib/rules/sort-comp'),
-  'require-extension': require('./lib/rules/require-extension'),
   'jsx-require-extension': require('./lib/rules/jsx-require-extension'),
   'jsx-no-duplicate-props': require('./lib/rules/jsx-no-duplicate-props'),
   'jsx-max-props-per-line': require('./lib/rules/jsx-max-props-per-line'),
@@ -60,7 +63,8 @@ for (var i = 0; i < ruleNames.length; i++) {
 }
 
 module.exports = {
-  rules: rules,
+  deprecatedRules: deprecatedRules,
+  rules: Object.assign({}, rules, deprecatedRules),
   configs: {
     recommended: {
       parserOptions: {
