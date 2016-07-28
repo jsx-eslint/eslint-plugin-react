@@ -41,4 +41,4 @@ The following patterns are not considered warnings:
 
 ### `forbid`
 
-An array of strings, with the names of props that are forbidden.
+An array of strings, with the names of props that are forbidden. The default value of this option is `['className', 'style']`.
