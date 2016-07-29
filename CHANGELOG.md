@@ -3,6 +3,42 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.0.0-rc.0] - 2016-07-29
+### Fixed
+* Fix spread props cash in `jsx-no-target-blank` ([#679][] @randycoulman)
+* Fix `require-optimization` warning on stateless components ([#687][])
+* Fix `jsx-uses-vars` that incorrectly marked some variables as used ([#694][] @lencioni)
+* Fix `no-unknown-property` check on SVG attributes ([#718][])
+* Fix `all` config to not include deprecated rules ([#723][] @pfhayes)
+
+### Breaking
+* Deprecate `require-extension rule`, use the [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) [`extensions`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md) rule instead
+* Enable `allow-in-func` mode by default in `no-did-mount-set-state` and `no-did-update-set-state` rules ([#702][] @lencioni)
+* Enable html tags check by default in `self-closing-comp`
+* Remove `pragma` option from `jsx-uses-react`, use the [shared settings](README.md#configuration) to specify a custom pragma ([#700][] @lencioni)
+* Remove `react` option from `no-deprecated` rule, use the [shared settings](README.md#configuration) to specify the React version ([#700][] @lencioni)
+* Remove `no-danger` from recommended rules ([#636][] @mjackson)
+* Remove `no-did-mount-set-state` and no-did-update-set-state from recommended rules ([#596][])
+* Add `require-render-return` rule to recommended rules
+
+### Changed
+* Update SVG and DOM attribute list for `no-unknown-property`
+* Update rules to use the new ESLint rule format ([#661][] @petersendidit)
+* Documentation improvements ([#724][] @lencioni)
+
+[6.0.0-rc.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.0.0-alpha.1...v6.0.0-rc.0
+[#679]: https://github.com/yannickcr/eslint-plugin-react/pull/679
+[#687]: https://github.com/yannickcr/eslint-plugin-react/issues/687
+[#694]: https://github.com/yannickcr/eslint-plugin-react/issues/694
+[#718]: https://github.com/yannickcr/eslint-plugin-react/issues/718
+[#723]: https://github.com/yannickcr/eslint-plugin-react/pull/723
+[#702]: https://github.com/yannickcr/eslint-plugin-react/pull/702
+[#700]: https://github.com/yannickcr/eslint-plugin-react/pull/700
+[#636]: https://github.com/yannickcr/eslint-plugin-react/pull/636
+[#596]: https://github.com/yannickcr/eslint-plugin-react/issues/596
+[#661]: https://github.com/yannickcr/eslint-plugin-react/issues/661
+[#724]: https://github.com/yannickcr/eslint-plugin-react/pull/724
+
 ## [6.0.0-alpha.2] - 2016-07-24
 ### Added
 * Add an `all` sharable configuration with all rules enabled ([#674][] @pfhayes)
