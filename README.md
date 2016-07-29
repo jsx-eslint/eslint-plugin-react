@@ -97,6 +97,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/prefer-stateless-function](docs/rules/prefer-stateless-function.md): Enforce stateless React Components to be written as a pure function
 * [react/prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
 * [react/react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing `React` when using JSX
+* [react/require-extension](docs/rules/require-extension.md): Restrict file extensions that may be required
 * [react/require-optimization](docs/rules/require-optimization.md): Enforce React components to have a shouldComponentUpdate method
 * [react/require-render-return](docs/rules/require-render-return.md): Enforce ES5 or ES6 class for returning value in render function
 * [react/self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children
@@ -123,7 +124,6 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/jsx-no-target-blank](docs/rules/jsx-no-target-blank.md): Prevent usage of unsafe `target='_blank'`
 * [react/jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
 * [react/jsx-pascal-case](docs/rules/jsx-pascal-case.md): Enforce PascalCase for user-defined JSX components
-* [react/jsx-require-extension](docs/rules/jsx-require-extension.md): Restrict file extensions that may be required
 * [react/jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting
 * [react/jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
 * [react/jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused

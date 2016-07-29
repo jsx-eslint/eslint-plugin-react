@@ -8,7 +8,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/jsx-require-extension');
+var rule = require('../../../lib/rules/require-extension');
 var RuleTester = require('eslint').RuleTester;
 
 // ------------------------------------------------------------------------------
@@ -34,7 +34,7 @@ var REQUIRE_OBJECT = 'require({})';
 // ------------------------------------------------------------------------------
 
 var ruleTester = new RuleTester();
-ruleTester.run('jsx-require-extension', rule, {
+ruleTester.run('require-extension', rule, {
 
   valid: [
     {
