@@ -167,6 +167,7 @@ The rules enabled in this configuration are:
 * [react/no-unknown-property](docs/rules/no-unknown-property.md)
 * [react/prop-types](docs/rules/prop-types.md)
 * [react/react-in-jsx-scope](docs/rules/react-in-jsx-scope.md)
+* [react/require-render-return](docs/rules/require-render-return.md)
 
 **Note**: This configuration will also enable JSX in [parser options](http://eslint.org/docs/user-guide/configuring#specifying-parser-options).
 

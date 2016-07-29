@@ -84,7 +84,8 @@ module.exports = {
         'react/no-unknown-property': 2,
         'react/no-render-return-value': 2,
         'react/prop-types': 2,
-        'react/react-in-jsx-scope': 2
+        'react/react-in-jsx-scope': 2,
+        'react/require-render-return': 2
       }
     },
     all: {
