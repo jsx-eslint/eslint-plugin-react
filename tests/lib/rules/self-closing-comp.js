@@ -27,9 +27,6 @@ ruleTester.run('self-closing-comp', rule, {
 
   valid: [
     {
-      code: 'var contentContainer = <div className="content"></div>;',
-      parserOptions: parserOptions
-    }, {
       code: 'var HelloJohn = <Hello name="John" />;',
       parserOptions: parserOptions
     }, {
@@ -49,10 +46,6 @@ ruleTester.run('self-closing-comp', rule, {
       parserOptions: parserOptions
     }, {
       code: 'var HelloJohn = <Hello name="John">&nbsp;</Hello>;',
-      parserOptions: parserOptions
-    }, {
-      code: 'var contentContainer = <div className="content"></div>;',
-      options: [],
       parserOptions: parserOptions
     }, {
       code: 'var HelloJohn = <Hello name="John" />;',
@@ -113,6 +106,19 @@ ruleTester.run('self-closing-comp', rule, {
 
   invalid: [
     {
+      code: 'var contentContainer = <div className="content"></div>;',
+      parserOptions: parserOptions,
+      errors: [{
+        message: 'Empty components are self-closing'
+      }]
+    }, {
+      code: 'var contentContainer = <div className="content"></div>;',
+      options: [],
+      parserOptions: parserOptions,
+      errors: [{
+        message: 'Empty components are self-closing'
+      }]
+    }, {
       code: 'var HelloJohn = <Hello name="John"></Hello>;',
       parserOptions: parserOptions,
       errors: [{
