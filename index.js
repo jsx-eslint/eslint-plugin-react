@@ -1,7 +1,6 @@
 'use strict';
 
 var deprecatedRules = {
-  'no-comment-textnodes': require('./lib/rules/no-comment-textnodes'),
   'require-extension': require('./lib/rules/require-extension'),
   'wrap-multilines': require('./lib/rules/wrap-multilines')
 };

@@ -1,5 +1,5 @@
 /**
- * @fileoverview Tests for no-comment-textnodes
+ * @fileoverview Tests for jsx-no-comment-textnodes
  * @author Ben Vinegar
  */
 'use strict';
