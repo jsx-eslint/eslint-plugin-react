@@ -3,6 +3,15 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.0.0-rc.1] - 2016-07-31
+### Fixed
+* Fix `jsx-handler-names` incorrectly flagging `only` ([#571][] @lencioni)
+* Fix `wrap-multilines` rule ([#728][] @akozhemiakin)
+
+[6.0.0-rc.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.0.0-rc.0...v6.0.0-rc.1
+[#571]: https://github.com/yannickcr/eslint-plugin-react/issues/571
+[#728]: https://github.com/yannickcr/eslint-plugin-react/pull/728
+
 ## [6.0.0-rc.0] - 2016-07-29
 ### Fixed
 * Fix spread props cash in `jsx-no-target-blank` ([#679][] @randycoulman)
