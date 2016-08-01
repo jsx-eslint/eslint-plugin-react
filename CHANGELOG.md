@@ -3,39 +3,54 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
-## [6.0.0-rc.1] - 2016-07-31
-### Fixed
-* Fix `jsx-handler-names` incorrectly flagging `only` ([#571][] @lencioni)
-* Fix `wrap-multilines` rule ([#728][] @akozhemiakin)
-
-[6.0.0-rc.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.0.0-rc.0...v6.0.0-rc.1
-[#571]: https://github.com/yannickcr/eslint-plugin-react/issues/571
-[#728]: https://github.com/yannickcr/eslint-plugin-react/pull/728
-
-## [6.0.0-rc.0] - 2016-07-29
-### Fixed
-* Fix spread props cash in `jsx-no-target-blank` ([#679][] @randycoulman)
-* Fix `require-optimization` warning on stateless components ([#687][])
-* Fix `jsx-uses-vars` that incorrectly marked some variables as used ([#694][] @lencioni)
-* Fix `no-unknown-property` check on SVG attributes ([#718][])
-* Fix `all` config to not include deprecated rules ([#723][] @pfhayes)
+## [6.0.0] - 2016-08-01
+### Added
+* Add an `all` sharable configuration with all rules enabled ([#674][] @pfhayes)
+* Add `no-find-dom-node` rule ([#678][])
+* Add `shorthandFirst` option to `jsx-sort-props` ([#391][] @mathieumg)
+* Add `allowDecorators` option to `require-optimization` ([#669][] @Tom910)
 
 ### Breaking
-* Deprecate `require-extension rule`, use the [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) [`extensions`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md) rule instead
+* Deprecate `require-extension` rule, use the [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) [`extensions`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md) rule instead. `require-extension` still works but will trigger a warning
 * Enable `allow-in-func` mode by default in `no-did-mount-set-state` and `no-did-update-set-state` rules ([#702][] @lencioni)
 * Enable html tags check by default in `self-closing-comp`
 * Remove `pragma` option from `jsx-uses-react`, use the [shared settings](README.md#configuration) to specify a custom pragma ([#700][] @lencioni)
 * Remove `react` option from `no-deprecated` rule, use the [shared settings](README.md#configuration) to specify the React version ([#700][] @lencioni)
-* Remove `no-danger` from recommended rules ([#636][] @mjackson)
-* Remove `no-did-mount-set-state` and no-did-update-set-state from recommended rules ([#596][])
 * Add `require-render-return` rule to recommended rules
+* Remove `no-danger` from recommended rules ([#636][] @mjackson)
+* Remove `no-did-mount-set-state` and `no-did-update-set-state` from recommended rules ([#596][])
+* Remove deprecated `jsx-sort-prop-types` rule, use `sort-prop-types` instead ([#549][] @lencioni)
+* Rename `no-comment-textnodes` to `jsx-no-comment-textnodes`. `no-comment-textnodes` still works but will trigger a warning ([#668][] @lencioni)
+* Rename `wrap-multilines` to `jsx-wrap-multilines`. `wrap-multilines` still works but will trigger a warning ([#668][] @lencioni)
+* Add ESLint as peerDependency ([#657][] @jokeyrhyme)
+* Add Node.js 0.10 as minimum required version ([#657][] @jokeyrhyme)
+
+### Fixed
+* Fix `jsx-handler-names` incorrectly flagging `only` ([#571][] @lencioni)
+* Fix spread props cash in `jsx-no-target-blank` ([#679][] @randycoulman)
+* Fix `require-optimization` warning on stateless components ([#687][])
+* Fix `jsx-uses-vars` that incorrectly marked some variables as used ([#694][] @lencioni)
+* Fix `no-unknown-property` check on SVG attributes ([#718][])
+* Fix `jsx-no-bind` reporting errors on render functions that don't return JSX ([#663][] @petersendidit)
+* Fix `jsx-closing-bracket-location` autofix when `location` is set to `props-aligned` ([#684][] @pfhayes)
+* Fix `prop-types` for destructured arguments being assigned to the parent stateless component in some cases ([#698][])
+* Fix `prop-types` for JSX return being assigned to the parent function in some cases ([#504][])
+* Fix `jsx-curly-spacing` for reporting on JSX content by mistake ([#671][])
+* Fix `prop-types` crash when accessing constructor on props ([#654][])
+* Fix `jsx-filename-extension` to not check filenames on text input ([#662][] @ljharb)
+* Fix `jsx-no-comment-textnodes` incorrectly catching urls ([#664][] @petersendidit)
 
 ### Changed
+* Only report `jsx-filename-extension` warning once per file ([#660][] @mathieumg)
 * Update SVG and DOM attribute list for `no-unknown-property`
 * Update rules to use the new ESLint rule format ([#661][] @petersendidit)
+* Update dependencies
 * Documentation improvements ([#724][] @lencioni)
+* Update Travis CI and AppVeyor CI configurations (@ljharb)
 
-[6.0.0-rc.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.0.0-alpha.1...v6.0.0-rc.0
+[6.0.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v5.2.2...v6.0.0
+[#571]: https://github.com/yannickcr/eslint-plugin-react/issues/571
+[#728]: https://github.com/yannickcr/eslint-plugin-react/pull/728
 [#679]: https://github.com/yannickcr/eslint-plugin-react/pull/679
 [#687]: https://github.com/yannickcr/eslint-plugin-react/issues/687
 [#694]: https://github.com/yannickcr/eslint-plugin-react/issues/694
@@ -47,32 +62,6 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#596]: https://github.com/yannickcr/eslint-plugin-react/issues/596
 [#661]: https://github.com/yannickcr/eslint-plugin-react/issues/661
 [#724]: https://github.com/yannickcr/eslint-plugin-react/pull/724
-
-## [6.0.0-alpha.2] - 2016-07-24
-### Added
-* Add an `all` sharable configuration with all rules enabled ([#674][] @pfhayes)
-* Add `no-find-dom-node` rule ([#678][])
-* Add `shorthandFirst` option to `jsx-sort-props` ([#391][] @mathieumg)
-* Add `allowDecorators` option to `require-optimization` ([#669][] @Tom910)
-
-### Fixed
-* Fix `jsx-no-bind` reporting errors on render functions that don't return JSX ([#663][] @petersendidit)
-* Fix `jsx-closing-bracket-location` autofix when `location` is set to `props-aligned` ([#684][] @pfhayes)
-* Fix `prop-types` for destructured arguments being assigned to the parent stateless component in some cases ([#698][])
-* Fix `prop-types` for JSX return being assigned to the parent function in some cases ([#504][])
-* Fix `jsx-curly-spacing` for reporting on JSX content by mistake ([#671][])
-
-### Breaking
-* Remove deprecated `jsx-sort-prop-types` rule, use `sort-prop-types` instead ([#549][] @lencioni)
-* Rename `jsx-no-comment-textnodes` to `no-comment-textnodes`. `jsx-no-comment-textnodes` still works but will trigger a warning ([#668][] @lencioni)
-* Rename `jsx-require-extension` to `require-extension`. `jsx-require-extension` still works but will trigger a warning ([#668][] @lencioni)
-* Rename `jsx-wrap-multilines` to `wrap-multilines`. `jsx-wrap-multilines` still works but will trigger a warning ([#668][] @lencioni)
-
-### Changed
-* Update dependencies
-* Only report `jsx-filename-extension` warning once per file ([#660][] @mathieumg)
-
-[6.0.0-alpha.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.0.0-alpha.1...v6.0.0-alpha.2
 [#674]: https://github.com/yannickcr/eslint-plugin-react/issues/674
 [#678]: https://github.com/yannickcr/eslint-plugin-react/issues/678
 [#391]: https://github.com/yannickcr/eslint-plugin-react/issues/391
@@ -85,22 +74,6 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#549]: https://github.com/yannickcr/eslint-plugin-react/issues/549
 [#668]: https://github.com/yannickcr/eslint-plugin-react/issues/668
 [#660]: https://github.com/yannickcr/eslint-plugin-react/pull/660
-
-## [6.0.0-alpha.1] - 2016-07-08
-### Fixed
-* Fix `prop-types` crash when accessing constructor on props ([#654][])
-* Fix `jsx-filename-extension` to not check filenames on text input ([#662][] @ljharb)
-* Fix `no-comment-textnodes` incorrectly catching urls ([#664][] @petersendidit)
-
-### Breaking
-* Add ESLint as peerDependency ([#657][] @jokeyrhyme)
-* Add Node.js 0.10 as minimum required version ([#657][] @jokeyrhyme)
-
-### Changed
-* Update dependencies
-* Update Travis CI and AppVeyor CI configurations (@ljharb)
-
-[6.0.0-alpha.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v5.2.2...v6.0.0-alpha.1
 [#654]: https://github.com/yannickcr/eslint-plugin-react/issues/654
 [#662]: https://github.com/yannickcr/eslint-plugin-react/issues/662
 [#664]: https://github.com/yannickcr/eslint-plugin-react/issues/664
