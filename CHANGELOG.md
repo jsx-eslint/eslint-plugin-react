@@ -7,7 +7,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Added
 * Add an `all` sharable configuration with all rules enabled ([#674][] @pfhayes)
 * Add `no-find-dom-node` rule ([#678][])
-* Add `shorthandFirst` option to `jsx-sort-props` ([#391][] @mathieumg)
+* Add `shorthandLast` option to `jsx-sort-props` ([#391][] @mathieumg)
 * Add `allowDecorators` option to `require-optimization` ([#669][] @Tom910)
 
 ### Breaking
