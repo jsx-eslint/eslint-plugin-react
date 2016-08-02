@@ -1280,6 +1280,20 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Target = { target: EventTarget }',
+        'class MyComponent extends Component {',
+        '  static propTypes = {',
+        '    children: PropTypes.any,',
+        '  }',
+        '  handler({ target }: Target) {}',
+        '  render() {',
+        '    return <div>{this.props.children}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
