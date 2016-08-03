@@ -14,6 +14,7 @@ var rules = {
   'jsx-wrap-multilines': require('./lib/rules/jsx-wrap-multilines'),
   'self-closing-comp': require('./lib/rules/self-closing-comp'),
   'jsx-no-comment-textnodes': require('./lib/rules/jsx-no-comment-textnodes'),
+  'no-context': require('./lib/rules/no-context'),
   'no-danger': require('./lib/rules/no-danger'),
   'no-set-state': require('./lib/rules/no-set-state'),
   'no-is-mounted': require('./lib/rules/no-is-mounted'),
