@@ -96,6 +96,22 @@ ruleTester.run('react-require-optimization', rule, {
     parser: 'babel-eslint',
     options: [{allowDecorators: ['renderPure', 'pureRender']}],
     parserOptions: parserOptions
+  }, {
+    code: [
+      'import React from "react";' +
+      'class YourComponent extends React.PureComponent {}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{allowDecorators: ['renderPure', 'pureRender']}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'import React, {PureComponent} from "react";' +
+      'class YourComponent extends PureComponent {}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{allowDecorators: ['renderPure', 'pureRender']}],
+    parserOptions: parserOptions
   }],
 
   invalid: [{
