@@ -2255,6 +2255,36 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {message: '\'bar\' is missing in props validation'}
       ]
+    }, {
+      code: [
+        'class Hello extends React.PureComponent {',
+        '  render() {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'name\' is missing in props validation',
+        line: 3,
+        column: 35,
+        type: 'Identifier'
+      }]
+    }, {
+      code: [
+        'class Hello extends PureComponent {',
+        '  render() {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'name\' is missing in props validation',
+        line: 3,
+        column: 35,
+        type: 'Identifier'
+      }]
     }
   ]
 });
