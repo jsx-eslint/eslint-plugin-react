@@ -109,6 +109,43 @@ ruleTester.run('no-context', rule, {
       '});'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    const names = ["foo", "bar"];',
+      '    return (',
+      '      <div>',
+      '        {names.map((e, i) => <p key={i}>{e}</p>)}',
+      '      </div>',
+      '    );',
+      '  }',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  handleClick = (e, i) => i',
+      '  render() {',
+      '    return <div onClick={this.handleClick}>Hello {this.props.name}</div>;',
+      '  }',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    const handleClick = (e, i) => i;',
+      '    return <div onClick={handleClick}>Hello {this.props.name}</div>;',
+      '  }',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -248,6 +285,20 @@ ruleTester.run('no-context', rule, {
       '  return <div>Hello {context.name}</div>;',
       '};'
     ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Using context is not allowed.'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  handleClick = (e, i) => i',
+      '  render() {',
+      '    return <div onClick={this.handleClick}>Hello {this.context.name}</div>;',
+      '  }',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint',
     parserOptions: parserOptions,
     errors: [{
       message: 'Using context is not allowed.'
