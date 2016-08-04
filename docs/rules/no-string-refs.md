@@ -35,7 +35,7 @@ var Hello = React.createClass({
     // ...do something with component
   },
   render() {
-    return <div ref={c => this.hello = c}>Hello, world.</div>;
+    return <div ref={(c) => { this.hello = c; }}>Hello, world.</div>;
   }
 });
 ```
