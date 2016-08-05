@@ -79,7 +79,77 @@ ruleTester.run('no-did-update-set-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class Foo extends React.Component {',
+      '  componentDidUpdate() {',
+      '    this._doNothing();',
+      '  }',
+      '  _doNothing() {}',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class Foo extends React.Component {',
+      '  componentDidUpdate() {',
+      '    if (false) {}',
+      '  }',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class Foo extends React.Component {',
+      '  componentDidUpdate() {',
+      '    this._resetState();',
+      '  }',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: ['allow-in-func', 'allow-via-methods'],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'var Foo = React.createClass({',
+      '  componentDidUpdate() {',
+      '    this._doNothing();',
+      '  },',
+      '  _doNothing() {}',
+      '});'
+    ].join('\n'),
+    parserOptions: parserOptions
+  },
+  {
+    code: [
+      'var Foo = React.createClass({',
+      '  componentDidUpdate() {',
+      '    if (false) {}',
+      '  },',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '});'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'var Foo = React.createClass({',
+      '  componentDidUpdate() {',
+      '    this._resetState();',
+      '  },',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: ['allow-in-func', 'allow-via-methods'],
     parserOptions: parserOptions
   }],
 
@@ -215,7 +285,6 @@ ruleTester.run('no-did-update-set-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parser: 'babel-eslint',
     parserOptions: parserOptions,
     options: ['disallow-in-func'],
     errors: [{
@@ -233,6 +302,75 @@ ruleTester.run('no-did-update-set-state', rule, {
     options: ['disallow-in-func'],
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
+    }]
+  }, {
+    code: [
+      'class Foo extends React.Component {',
+      '  componentDidUpdate() {',
+      '    this._resetState();',
+      '  }',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: ['allow-in-func', 'disallow-via-methods'],
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Do not use `setState` in other methods called in `componentDidUpdate`'
+    }]
+  }, {
+    code: [
+      'class Foo extends React.Component {',
+      '  componentDidUpdate() {',
+      '    if (true) {',
+      '      this._resetState();',
+      '    } else {',
+      '    }',
+      '  }',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: ['allow-in-func', 'disallow-via-methods'],
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Do not use `setState` in other methods called in `componentDidUpdate`'
+    }]
+  }, {
+    code: [
+      'var Foo = React.createClass({',
+      '  componentDidUpdate() {',
+      '    this._resetState();',
+      '  },',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: ['allow-in-func', 'disallow-via-methods'],
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Do not use `setState` in other methods called in `componentDidUpdate`'
+    }]
+  }, {
+    code: [
+      'var Foo = React.createClass({',
+      '  componentDidUpdate() {',
+      '    if (true) {',
+      '      this._resetState();',
+      '    }',
+      '  },',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: ['allow-in-func', 'disallow-via-methods'],
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Do not use `setState` in other methods called in `componentDidUpdate`'
     }]
   }]
 });

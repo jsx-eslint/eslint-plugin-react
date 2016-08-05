@@ -53,7 +53,7 @@ var Hello = React.createClass({
 
 ```js
 ...
-"no-did-mount-set-state": [<enabled>, <mode>]
+"no-did-mount-set-state": [<enabled>, <modeInFunctions>, <modeViaMethods>]
 ...
 ```
 
@@ -83,6 +83,41 @@ var Hello = React.createClass({
       this.setState({
         name: newName
       });
+    });
+  },
+  render: function() {
+    return <div>Hello {this.state.name}</div>;
+  }
+});
+```
+
+### `disallow-via-methods` mode
+
+By default this rule ignores any call to `this.setState` via methods called in `componentDidMount`. The `disallow-via-methods` mode makes this rule more strict by disallowing calls to `this.setState` even within methods.
+
+The following patterns are considered warnings:
+
+```js
+var Hello = React.createClass({
+  componentDidMount: function() {
+     this.setState({
+        name: this.props.name.toUpperCase()
+      });
+    },
+  render: function() {
+    return <div>Hello {this.state.name}</div>;
+  }
+});
+```
+
+```js
+var Hello = React.createClass({
+  componentDidMount: function() {
+    this.doSomethingToState();
+  },
+  doSomethingToState: function() {
+    this.setState({
+      name: newName
     });
   },
   render: function() {
