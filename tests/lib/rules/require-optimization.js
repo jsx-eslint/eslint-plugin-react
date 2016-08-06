@@ -138,9 +138,9 @@ ruleTester.run('react-require-optimization', rule, {
     code: [
       'import React from "react";',
       'class YourComponent extends React.Component {',
-      '  componentDidMount() {}',
+      '  handleClick() {}',
       '  render() {',
-      '    return <div>123</div>',
+      '    return <div onClick={this.handleClick}>123</div>',
       '  }',
       '}'
     ].join('\n'),
