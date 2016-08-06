@@ -15,9 +15,13 @@ The following patterns are not considered warnings:
 ```js
 var contentContainer = <div className="content"></div>;
 
+var intentionalSpace = <div>{' '}</div>;
+
 var HelloJohn = <Hello name="John" />;
 
 var Profile = <Hello name="John"><img src="picture.png" /></Hello>;
+
+var HelloSpace = <Hello>{' '}</Hello>;
 ```
 
 ## Rule Options
