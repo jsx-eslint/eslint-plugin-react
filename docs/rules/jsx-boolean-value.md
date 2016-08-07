@@ -1,6 +1,6 @@
 # Enforce boolean attributes notation in JSX (jsx-boolean-value)
 
-In JSX when using a boolean attribute you can set the attribute value to `true` or omit the value. This rule will enforce one or the other to keep consistency in your code.
+[When using a boolean attribute in JSX](https://facebook.github.io/react/docs/jsx-in-depth.html#boolean-attributes), you can set the attribute value to `true` or omit the value. This rule will enforce one or the other to keep consistency in your code.
 
 **Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
 
