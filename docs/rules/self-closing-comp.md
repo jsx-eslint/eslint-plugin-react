@@ -6,13 +6,13 @@ Components without children can be self-closed to avoid unnecessary extra closin
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 var HelloJohn = <Hello name="John"></Hello>;
 ```
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 var contentContainer = <div className="content"></div>;
 
 var intentionalSpace = <div>{' '}</div>;
@@ -43,14 +43,16 @@ When `true`, custom components tags should be self-closed.
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 var HelloJohn = <Hello name="John"></Hello>;
 ```
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 var contentContainer = <div className="content"></div>;
+
+var intentionalSpace = <div>{' '}</div>;
 
 var HelloJohn = <Hello name="John" />;
 
@@ -63,14 +65,16 @@ When `true`, html components tags should be self-closed.
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 var contentContainer = <div className="content"></div>;
 ```
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 var contentContainer = <div className="content" />;
 
 var contentContainer = <div className="content"><div /></div>;
+
+var intentionalSpace = <div>{' '}</div>;
 ```
