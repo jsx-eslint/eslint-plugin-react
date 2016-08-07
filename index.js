@@ -61,9 +61,23 @@ for (var i = 0; i < ruleNames.length; i++) {
   allRules['react/' + ruleNames[i]] = 2;
 }
 
+var exportedRules = {};
+for (var key in rules) {
+  if (!rules.hasOwnProperty(key)) {
+    continue;
+  }
+  exportedRules[key] = rules[key];
+}
+for (var deprecatedKey in deprecatedRules) {
+  if (!deprecatedRules.hasOwnProperty(deprecatedKey)) {
+    continue;
+  }
+  exportedRules[deprecatedKey] = deprecatedRules[deprecatedKey];
+}
+
 module.exports = {
   deprecatedRules: deprecatedRules,
-  rules: Object.assign({}, rules, deprecatedRules),
+  rules: exportedRules,
   configs: {
     recommended: {
       parserOptions: {
