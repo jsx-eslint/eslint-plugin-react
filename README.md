@@ -130,9 +130,10 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/jsx-uses-vars](docs/rules/jsx-uses-vars.md): Prevent variables used in JSX to be incorrectly marked as unused
 * [react/jsx-wrap-multilines](docs/rules/jsx-wrap-multilines.md): Prevent missing parentheses around multilines JSX (fixable)
 
-## React Native rules
+## Other useful plugins
 
-If you're searching for React Native specific linting rules, check out [eslint-plugin-react-native](https://github.com/Intellicode/eslint-plugin-react-native).
+- JSX accessibility: [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y)
+- React Native: [eslint-plugin-react-native](https://github.com/Intellicode/eslint-plugin-react-native)
 
 # Shareable configurations
 
