@@ -1,22 +1,22 @@
 # Prevent usage of unsafe target='_blank' (jsx-no-target-blank)
 
 When creating a JSX element that has an a tag, it is often desired to have
-the link open in a new tab using the target='_blank' attribute. Using this
-attribute unaccompanied by rel='noreferrer noopener', however, is a severe
+the link open in a new tab using the `target='_blank'` attribute. Using this
+attribute unaccompanied by `rel='noreferrer noopener'`, however, is a severe
 security vulnerability ([see here for more details](https://mathiasbynens.github.io/rel-noopener))
-This rules requires that you accompany all target='_blank' attributes with rel='noreferrer noopener'.
+This rules requires that you accompany all `target='_blank'` attributes with `rel='noreferrer noopener'`.
 
 ## Rule Details
 
 The following patterns are considered errors:
 
-```javascript
+```jsx
 var Hello = <a target='_blank'></a>
 ```
 
 The following patterns are not considered erros:
 
-```javascript
+```jsx
 var Hello = <p target='_blank'></p>
 var Hello = <a target='_blank' rel='noopener noreferrer'></a>
 var Hello = <a></a>
