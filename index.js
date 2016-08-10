@@ -42,6 +42,7 @@ var rules = {
   'jsx-closing-bracket-location': require('./lib/rules/jsx-closing-bracket-location'),
   'jsx-space-before-closing': require('./lib/rules/jsx-space-before-closing'),
   'no-direct-mutation-state': require('./lib/rules/no-direct-mutation-state'),
+  'forbid-component-props': require('./lib/rules/forbid-component-props'),
   'forbid-prop-types': require('./lib/rules/forbid-prop-types'),
   'prefer-es6-class': require('./lib/rules/prefer-es6-class'),
   'jsx-key': require('./lib/rules/jsx-key'),
