@@ -39,6 +39,17 @@ ruleTester.run('react-require-optimization', rule, {
     parserOptions: parserOptions
   }, {
     code: [
+      'import React, {Component} from "react";',
+      '@reactMixin.decorate(PureRenderMixin)',
+      'class YourComponent extends Component {',
+      '  componetnDidMount () {}',
+      '  render() {}',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: [
       'import React from "react";' +
       'React.createClass({' +
       'shouldComponentUpdate: function () {}' +
@@ -119,6 +130,21 @@ ruleTester.run('react-require-optimization', rule, {
       'import React from "react";' +
       'class YourComponent extends React.Component {}'
     ].join('\n'),
+    errors: [{
+      message: MESSAGE
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'import React from "react";',
+      'class YourComponent extends React.Component {',
+      '  handleClick() {}',
+      '  render() {',
+      '    return <div onClick={this.handleClick}>123</div>',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
     errors: [{
       message: MESSAGE
     }],
