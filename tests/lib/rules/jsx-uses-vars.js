@@ -97,6 +97,26 @@ ruleTester.run('no-unused-vars', rule, {
         }\
         <HelloMessage />',
       parserOptions: parserOptions
+    }, {
+      code: '\
+        /*eslint jsx-uses-vars:1*/\
+        function foo() {\
+          var App = { Foo: { Bar: {}}};\
+          var bar = React.render(<App.Foo.Bar/>);\
+          return bar;\
+        };\
+        foo()',
+      parserOptions: parserOptions
+    }, {
+      code: '\
+        /*eslint jsx-uses-vars:1*/\
+        function foo() {\
+          var App = { Foo: { Bar: { Baz: {}}}};\
+          var bar = React.render(<App.Foo.Bar.Baz/>);\
+          return bar;\
+        };\
+        foo()',
+      parserOptions: parserOptions
     }
   ],
   invalid: [
