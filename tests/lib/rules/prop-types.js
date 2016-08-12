@@ -1332,6 +1332,36 @@ ruleTester.run('prop-types', rule, {
       }]
     }, {
       code: [
+        'const thePropsTypes = {a: PropTypes.string.isRequired}',
+        'const Foo = (props) => <div>{props.a}{props.b}</div>',
+        'Foo.propTypes = thePropsTypes'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'b\' is missing in props validation',
+        line: 2,
+        column: 45,
+        type: 'Identifier'
+      }]
+    }, {
+      // validate props when using Higher Order Components like in https://github.com/acdlite/recompose
+      code: [
+        'const setStatic = (key, value) => BaseComponent => {',
+        '  BaseComponent[key] = value',
+        '  return BaseComponent',
+        '}',
+        'const thePropsTypes = {a: PropTypes.string.isRequired}',
+        'const Bar = setStatic("propTypes", thePropsTypes)((props) => <div>{props.a}{props.b}</div>)'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'b\' is missing in props validation',
+        line: 6,
+        column: 83,
+        type: 'Identifier'
+      }]
+    }, {
+      code: [
         'class Hello extends React.Component {',
         '  render() {',
         '    return <div>Hello {this.props.name}</div>;',
