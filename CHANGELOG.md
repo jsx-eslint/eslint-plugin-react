@@ -6,6 +6,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [6.1.0] - 2016-08-14
 ### Added
 * Add `React.PureComponent` support ([#737][])
+* Add `forbid-component-props` rule ([#314][] @lencioni)
 * Add `no-danger-with-children` rule ([#710][] @petersendidit)
 * Add pragma for `createClass` factory method ([#725][] @zurawiki)
 
@@ -35,6 +36,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#731]: https://github.com/yannickcr/eslint-plugin-react/pull/731
 [#745]: https://github.com/yannickcr/eslint-plugin-react/pull/745
 [#659]: https://github.com/yannickcr/eslint-plugin-react/pull/659
+[#314]: https://github.com/yannickcr/eslint-plugin-react/pull/314
 
 ## [6.0.0] - 2016-08-01
 ### Added
