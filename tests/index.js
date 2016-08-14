@@ -31,6 +31,16 @@ describe('configurations', function() {
       var ruleName = configName.substring('react/'.length);
       assert(plugin.rules[ruleName]);
     });
+
+    ruleFiles.forEach(function(ruleName) {
+      var inRecommendedConfig = Boolean(plugin.configs.recommended.rules['react/' + ruleName]);
+      var isRecommended = plugin.rules[ruleName].meta.docs.recommended;
+      if (inRecommendedConfig) {
+        assert(isRecommended, ruleName + ' metadata should mark it as recommended');
+      } else {
+        assert(!isRecommended, ruleName + ' metadata should not mark it as recommended');
+      }
+    });
   });
   it('should export a \'all\' configuration', function() {
     assert(plugin.configs.all);
