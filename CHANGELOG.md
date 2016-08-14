@@ -3,6 +3,39 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.1.0] - 2016-08-14
+### Added
+* Add `React.PureComponent` support ([#737][])
+* Add `no-danger-with-children` rule ([#710][] @petersendidit)
+* Add pragma for `createClass` factory method ([#725][] @zurawiki)
+
+### Fixed
+* Fix Node.js 0.10 support ([#746][])
+* Fix `prop-types` on annotated components ([#729][])
+* Fix `require-optimization` test for function declaration ([#744][] @Tom910)
+* Fix `jsx-uses-var` to handle nested object properties ([#761][] @yayalice)
+* Fix rules metadata
+
+### Changed
+* Update dependencies
+* Documentation improvements ([#759][] @embrown, [#703][] [#753][] @lencioni, [#739][] @ljharb, [#731][] @wKich, [#745][] @petersendidit, [#659][] @dguo)
+
+[6.1.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.0.0...v6.1.0
+[#737]: https://github.com/yannickcr/eslint-plugin-react/issues/737
+[#710]: https://github.com/yannickcr/eslint-plugin-react/issues/710
+[#725]: https://github.com/yannickcr/eslint-plugin-react/pull/725
+[#746]: https://github.com/yannickcr/eslint-plugin-react/issues/746
+[#729]: https://github.com/yannickcr/eslint-plugin-react/issues/729
+[#744]: https://github.com/yannickcr/eslint-plugin-react/pull/744
+[#761]: https://github.com/yannickcr/eslint-plugin-react/pull/761
+[#759]: https://github.com/yannickcr/eslint-plugin-react/pull/759
+[#703]: https://github.com/yannickcr/eslint-plugin-react/pull/703
+[#753]: https://github.com/yannickcr/eslint-plugin-react/pull/753
+[#739]: https://github.com/yannickcr/eslint-plugin-react/issues/739
+[#731]: https://github.com/yannickcr/eslint-plugin-react/pull/731
+[#745]: https://github.com/yannickcr/eslint-plugin-react/pull/745
+[#659]: https://github.com/yannickcr/eslint-plugin-react/pull/659
+
 ## [6.0.0] - 2016-08-01
 ### Added
 * Add an `all` sharable configuration with all rules enabled ([#674][] @pfhayes)
