@@ -29,9 +29,9 @@
   "devDependencies": {
     "babel-eslint": "6.1.2",
     "coveralls": "2.11.12",
-    "eslint": "3.2.0",
+    "eslint": "3.3.0",
     "istanbul": "0.4.4",
-    "mocha": "2.5.3"
+    "mocha": "3.0.2"
   },
   "peerDependencies": {
     "eslint": "^2.0.0 || ^3.0.0"
