@@ -34,6 +34,24 @@ ruleTester.run('no-danger-with-children', rule, {
       parserOptions: parserOptions
     },
     {
+      code: '<div children="Children" />',
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'const props = { dangerouslySetInnerHTML: { __html: "HTML" } };',
+        '<div {...props} />'
+      ].join('\n'),
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'const props = { children: "Children" };',
+        '<div {...props} />'
+      ].join('\n'),
+      parserOptions: parserOptions
+    },
+    {
       code: '<Hello>Children</Hello>',
       parserOptions: parserOptions
     },
@@ -70,6 +88,23 @@ ruleTester.run('no-danger-with-children', rule, {
     },
     {
       code: '<div dangerouslySetInnerHTML={{ __html: "HTML" }} children="Children" />',
+      errors: [{message: 'Only set one of `children` or `props.dangerouslySetInnerHTML`'}],
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'const props = { dangerouslySetInnerHTML: { __html: "HTML" } };',
+        '<div {...props}>Children</div>'
+      ].join('\n'),
+      errors: [{message: 'Only set one of `children` or `props.dangerouslySetInnerHTML`'}],
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'const props = { children: "Children", dangerouslySetInnerHTML: { __html: "HTML" } };',
+        '<div {...props} />',
+        '//foobar'
+      ].join('\n'),
       errors: [{message: 'Only set one of `children` or `props.dangerouslySetInnerHTML`'}],
       parserOptions: parserOptions
     },
@@ -131,6 +166,22 @@ ruleTester.run('no-danger-with-children', rule, {
         '    children: "Children",',
         '  }',
         ');'
+      ].join('\n'),
+      errors: [{message: 'Only set one of `children` or `props.dangerouslySetInnerHTML`'}],
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'const props = { dangerouslySetInnerHTML: { __html: "HTML" } };',
+        'React.createElement("div", props, "Children");'
+      ].join('\n'),
+      errors: [{message: 'Only set one of `children` or `props.dangerouslySetInnerHTML`'}],
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'const props = { children: "Children", dangerouslySetInnerHTML: { __html: "HTML" } };',
+        'React.createElement("div", props);'
       ].join('\n'),
       errors: [{message: 'Only set one of `children` or `props.dangerouslySetInnerHTML`'}],
       parserOptions: parserOptions
