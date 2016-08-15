@@ -2285,6 +2285,22 @@ ruleTester.run('prop-types', rule, {
         column: 35,
         type: 'Identifier'
       }]
+    }, {
+      code: [
+        'type MyComponentProps = {',
+        '  a: number,',
+        '};',
+        'function MyComponent({ a, b }: MyComponentProps) {',
+        '  return <div />;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'b\' is missing in props validation',
+        line: 4,
+        column: 27,
+        type: 'Property'
+      }]
     }
   ]
 });
