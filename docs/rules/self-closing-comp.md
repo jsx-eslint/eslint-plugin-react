@@ -2,6 +2,8 @@
 
 Components without children can be self-closed to avoid unnecessary extra closing tag.
 
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+
 ## Rule Details
 
 The following patterns are considered warnings:
