@@ -57,7 +57,7 @@ With ESLint 1.x.x:
 }
 ```
 
-With ESLint 2.x.x:
+With ESLint 2.x.x or 3.x.x:
 
 ```json
 {
