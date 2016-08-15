@@ -3,6 +3,19 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.1.1] - 2016-08-16
+### Fixed
+* Fix `prop-types` on annotated components ([#766][])
+* Fix `no-danger-with-children` spread support ([#767][] @petersendidit)
+
+### Changed
+* Documentation improvements ([#769][] @daltones)
+
+[6.1.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.1.0...v6.1.1
+[#766]: https://github.com/yannickcr/eslint-plugin-react/issues/766
+[#767]: https://github.com/yannickcr/eslint-plugin-react/issues/767
+[#769]: https://github.com/yannickcr/eslint-plugin-react/pull/769
+
 ## [6.1.0] - 2016-08-14
 ### Added
 * Add `React.PureComponent` support ([#737][])
