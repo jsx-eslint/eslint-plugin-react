@@ -14,6 +14,7 @@ var RuleTester = require('eslint').RuleTester;
 var parserOptions = {
   ecmaVersion: 6,
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -46,8 +47,17 @@ ruleTester.run('no-danger-with-children', rule, {
     },
     {
       code: [
-        'const props = { children: "Children" };',
+        'const moreProps = { className: "eslint" };',
+        'const props = { children: "Children", ...moreProps };',
         '<div {...props} />'
+      ].join('\n'),
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'const otherProps = { children: "Children" };',
+        'const { a, b, ...props } = otherProps;',
+        '<div {...props} />',
       ].join('\n'),
       parserOptions: parserOptions
     },
@@ -103,7 +113,6 @@ ruleTester.run('no-danger-with-children', rule, {
       code: [
         'const props = { children: "Children", dangerouslySetInnerHTML: { __html: "HTML" } };',
         '<div {...props} />',
-        '//foobar'
       ].join('\n'),
       errors: [{message: 'Only set one of `children` or `props.dangerouslySetInnerHTML`'}],
       parserOptions: parserOptions
@@ -181,6 +190,16 @@ ruleTester.run('no-danger-with-children', rule, {
     {
       code: [
         'const props = { children: "Children", dangerouslySetInnerHTML: { __html: "HTML" } };',
+        'React.createElement("div", props);'
+      ].join('\n'),
+      errors: [{message: 'Only set one of `children` or `props.dangerouslySetInnerHTML`'}],
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'const moreProps = { children: "Children" };',
+        'const otherProps = { ...moreProps };',
+        'const props = { ...otherProps, dangerouslySetInnerHTML: { __html: "HTML" } };',
         'React.createElement("div", props);'
       ].join('\n'),
       errors: [{message: 'Only set one of `children` or `props.dangerouslySetInnerHTML`'}],
