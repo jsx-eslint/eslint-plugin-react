@@ -57,7 +57,7 @@ ruleTester.run('no-danger-with-children', rule, {
       code: [
         'const otherProps = { children: "Children" };',
         'const { a, b, ...props } = otherProps;',
-        '<div {...props} />',
+        '<div {...props} />'
       ].join('\n'),
       parserOptions: parserOptions
     },
@@ -112,7 +112,7 @@ ruleTester.run('no-danger-with-children', rule, {
     {
       code: [
         'const props = { children: "Children", dangerouslySetInnerHTML: { __html: "HTML" } };',
-        '<div {...props} />',
+        '<div {...props} />'
       ].join('\n'),
       errors: [{message: 'Only set one of `children` or `props.dangerouslySetInnerHTML`'}],
       parserOptions: parserOptions
