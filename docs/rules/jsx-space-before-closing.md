@@ -2,6 +2,8 @@
 
 Enforce or forbid spaces before the closing bracket of self-closing JSX elements.
 
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+
 ## Rule Details
 
 This rule checks if there is one or more spaces before the closing bracket of self-closing JSX elements.
