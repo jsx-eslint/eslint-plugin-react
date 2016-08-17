@@ -3,6 +3,16 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.1.2] - 2016-08-17
+### Fixed
+* Fix nested spread handling in `no-danger-with-children` ([#771][] @petersendidit)
+
+### Changed
+* Documentation improvements
+
+[6.1.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.1.1...v6.1.2
+[#771]: https://github.com/yannickcr/eslint-plugin-react/issues/771
+
 ## [6.1.1] - 2016-08-16
 ### Fixed
 * Fix `prop-types` on annotated components ([#766][])
