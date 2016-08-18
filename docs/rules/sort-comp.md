@@ -89,6 +89,7 @@ The default configuration is:
 * `lifecycle` is referring to the `lifecycle` group defined in `groups`.
 * `everything-else` is a special group that match all the methods that do not match any of the other groups.
 * `render` is referring to the `render` method.
+* `type-annotations`. This group is not speficied by default, but can be used enforce flow annotations to be at the top.
 
 You can override this configuration to match your needs.
 
@@ -170,6 +171,48 @@ var Hello = React.createClass({
   }
 });
 ```
+
+If you want to flow annotations to be at the top:
+
+```js
+"react/sort-comp": [1, {
+  order: [
+    'type-annotations',
+    'static-methods',
+    'lifecycle',
+    'everything-else',
+    'render',
+  ],
+}]
+```
+
+With the above configuration, the following patterns are considered warnings:
+
+```js
+class Hello extends React.Component<any, Props, void> {
+  onClick() { this._someElem = true; }
+  props: Props;
+  _someElem: bool;
+  render() {
+    return <div>Hello</div>;
+  }
+}
+```
+
+With the above configuration, the following patterns are not considered warnings:
+
+```js
+type Props = {};
+class Hello extends React.Component<any, Props, void> {
+  props: Props;
+  _someElem: bool;
+  onClick() { this._someElem = true; }
+  render() {
+    return <div>Hello</div>;
+  }
+}
+```
+
 
 ## When Not To Use It
 
