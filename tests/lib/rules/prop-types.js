@@ -1294,6 +1294,17 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Hello extends Component {}',
+        'Hello.Foo = ({foo}) => (',
+        '  <div>Hello {foo}</div>',
+        ')',
+        'Hello.Foo.propTypes = {',
+        '  foo: PropTypes.node',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
