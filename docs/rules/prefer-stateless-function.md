@@ -8,12 +8,13 @@ This rule will check your class based React components for
 
 * methods/properties other than `displayName`, `propTypes`, `render` and useless constructor (same detection as ESLint [no-useless-constructor rule](http://eslint.org/docs/rules/no-useless-constructor))
 * instance property other than `this.props` and `this.context`
+* extension of `React.PureComponent` ()
 * presence of `ref` attribute in JSX
 * `render` method that return anything but JSX: `undefined`, `null`, etc. (only in React <15.0.0, see [shared settings](https://github.com/yannickcr/eslint-plugin-react/blob/master/README.md#configuration) for React version configuration)
 
-If none of these 4 elements are found, the rule will warn you to write this component as a pure function.
+If none of these elements are found, the rule will warn you to write this component as a pure function.
 
-The following pattern is considered warnings:
+The following pattern is considered a warning:
 
 ```js
 var Hello = React.createClass({
@@ -23,7 +24,7 @@ var Hello = React.createClass({
 });
 ```
 
-The following pattern is not considered warnings:
+The following pattern is not considered a warning:
 
 ```js
 const Foo = function(props) {
@@ -31,7 +32,7 @@ const Foo = function(props) {
 };
 ```
 
-The following pattern is not considered warning in React <15.0.0:
+The following pattern is not considered a warning in React <15.0.0:
 
 ```js
 class Foo extends React.Component {
@@ -43,3 +44,14 @@ class Foo extends React.Component {
   }
 }
 ```
+
+The following pattern is not considered a warning:
+
+```js
+class Foo extends React.PureComponent {
+  render() {
+    return <div>{this.props.foo}</div>;
+  }
+}
+```
+

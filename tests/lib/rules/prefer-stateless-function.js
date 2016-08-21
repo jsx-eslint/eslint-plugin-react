@@ -39,6 +39,26 @@ ruleTester.run('prefer-stateless-function', rule, {
       code: 'const Foo = ({foo}) => <div>{foo}</div>;',
       parserOptions: parserOptions
     }, {
+      // Extends from PureComponent and uses props
+      code: [
+        'class Foo extends React.PureComponent {',
+        '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions
+    }, {
+      // Extends from PureComponent and uses context
+      code: [
+        'class Foo extends React.PureComponent {',
+        '  render() {',
+        '    return <div>{this.context.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions
+    }, {
       // Has a lifecyle method
       code: [
         'class Foo extends React.Component {',
@@ -252,6 +272,19 @@ ruleTester.run('prefer-stateless-function', rule, {
         'class Foo extends React.Component {',
         '  render() {',
         '    return <div>{this[\'props\'].foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
+    }, {
+      // Only extend PureComponent without use of props or context
+      code: [
+        'class Foo extends React.PureComponent {',
+        '  render() {',
+        '    return <div>foo</div>;',
         '  }',
         '}'
       ].join('\n'),
