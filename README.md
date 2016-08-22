@@ -105,6 +105,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children (fixable)
 * [react/sort-comp](docs/rules/sort-comp.md): Enforce component methods order
 * [react/sort-prop-types](docs/rules/sort-prop-types.md): Enforce propTypes declarations alphabetical sorting
+* [react/style-prop-object](docs/rules/style-prop-object.md): Enforce style prop value being an object
 
 ## JSX-specific rules
 
