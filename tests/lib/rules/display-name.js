@@ -358,6 +358,26 @@ ruleTester.run('display-name', rule, {
       'module.exports = someDecorator;'
     ].join('\n'),
     parser: 'babel-eslint'
+  }, {
+    code: [
+      'const element = (',
+      '  <Media query={query} render={() => {',
+      '    renderWasCalled = true',
+      '    return <div/>',
+      '  }}/>',
+      ')'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      'const element = (',
+      '  <Media query={query} render={function() {',
+      '    renderWasCalled = true',
+      '    return <div/>',
+      '  }}/>',
+      ')'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }
 ],
 
