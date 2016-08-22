@@ -16,7 +16,7 @@ If none of these elements are found, the rule will warn you to write this compon
 
 The following pattern is considered a warning:
 
-```js
+```jsx
 var Hello = React.createClass({
   render: function() {
     return <div>Hello {this.props.name}</div>;
@@ -26,7 +26,7 @@ var Hello = React.createClass({
 
 The following pattern is not considered a warning:
 
-```js
+```jsx
 const Foo = function(props) {
   return <div>{props.foo}</div>;
 };
@@ -34,7 +34,7 @@ const Foo = function(props) {
 
 The following pattern is not considered a warning in React <15.0.0:
 
-```js
+```jsx
 class Foo extends React.Component {
   render() {
     if (!this.props.foo) {
@@ -45,9 +45,25 @@ class Foo extends React.Component {
 }
 ```
 
-The following pattern is not considered a warning:
+
+## Rule Options
 
 ```js
+...
+"prefer-stateless-function": [<enabled>, { "ignorePureComponent": <ignorePureComponent> }]
+...
+```
+
+* `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
+* `ignorePureComponent`: optional boolean set to `true` to ignore components extending from `React.PureComponent` (default to `false`).
+
+### `ignorePureComponent`
+
+When `true` the rule will ignore Components extending from `React.PureComponent` that use `this.props` or `this.context`.
+
+The following patterns is considered okay and does not cause warnings:
+
+```jsx
 class Foo extends React.PureComponent {
   render() {
     return <div>{this.props.foo}</div>;
@@ -55,3 +71,12 @@ class Foo extends React.PureComponent {
 }
 ```
 
+The following pattern is considered a warning because it's not using props or context:
+
+```jsx
+class Foo extends React.PureComponent {
+  render() {
+    return <div>Bar</div>;
+  }
+}
+```
