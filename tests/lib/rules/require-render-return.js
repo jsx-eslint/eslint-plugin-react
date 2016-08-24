@@ -141,6 +141,14 @@ ruleTester.run('require-render-return', rule, {
       '});'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    // Invalid render method (but accepted by Babel)
+    code: [
+      'class Foo extends Component {',
+      '  render',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
