@@ -28,7 +28,7 @@ If it is `"never"`, the check warns whenever a space is separating the two chara
 
 The following patterns are considered warnings when configured `"never"`:
 
-```js
+```jsx
 <App/ >
 <input/
 >
@@ -37,7 +37,7 @@ The following patterns are considered warnings when configured `"never"`:
 
 The following patterns are not considered warnings when configured `"never"`:
 
-```js
+```jsx
 <App/>
 <input/>
 <Provider></Provider>
@@ -45,14 +45,14 @@ The following patterns are not considered warnings when configured `"never"`:
 
 The following patterns are considered warnings when configured `"always"`:
 
-```js
+```jsx
 <Hello/>
 <Goodbye></Goodbye>
 ```
 
 The following patterns are not considered warnings when configured `"never"`:
 
-```js
+```jsx
 <Hello/ >
 <Goodbye>< /Goodbye>
 ```
@@ -65,14 +65,14 @@ If it is `"always"`, the check warns whenever a space is missing before the clos
 
 The following patterns are considered warnings when configured `"always"`:
 
-```js
+```jsx
 <Hello/>
 <Hello firstname="John"/>
 ```
 
 The following patterns are not considered warnings when configured `"always"`:
 
-```js
+```jsx
 <Hello />
 <Hello firstName="John" />
 <Hello
@@ -83,14 +83,14 @@ The following patterns are not considered warnings when configured `"always"`:
 
 The following patterns are considered warnings when configured `"never"`:
 
-```js
+```jsx
 <Hello />
 <Hello firstName="John" />
 ```
 
 The following patterns are not considered warnings when configured `"never"`:
 
-```js
+```jsx
 <Hello/>
 <Hello firstname="John"/>
 <Hello
@@ -107,7 +107,7 @@ If it is `"always"`, the check warns whenever a space is missing after the openi
 
 The following patterns are considered warnings when configured `"always"`:
 
-```js
+```jsx
 <Hello></Hello>
 <Hello firstname="John"/>
 <Hello
@@ -118,7 +118,7 @@ The following patterns are considered warnings when configured `"always"`:
 
 The following patterns are not considered warnings when configured `"always"`:
 
-```js
+```jsx
 < Hello></ Hello>
 < Hello firstName="John"/>
 <
@@ -130,7 +130,7 @@ The following patterns are not considered warnings when configured `"always"`:
 
 The following patterns are considered warnings when configured `"never"`:
 
-```js
+```jsx
 < Hello></ Hello>
 < Hello firstName="John"/>
 <
@@ -142,7 +142,7 @@ The following patterns are considered warnings when configured `"never"`:
 
 The following patterns are not considered warnings when configured `"never"`:
 
-```js
+```jsx
 <Hello></Hello>
 <Hello firstname="John"/>
 <Hello
@@ -153,7 +153,7 @@ The following patterns are not considered warnings when configured `"never"`:
 
 The following patterns are considered warnings when configured `"allow-multiline"`:
 
-```js
+```jsx
 < Hello></ Hello>
 < Hello firstName="John"/>
 < Hello
@@ -164,7 +164,7 @@ The following patterns are considered warnings when configured `"allow-multiline
 
 The following patterns are not considered warnings when configured `"allow-multiline"`:
 
-```js
+```jsx
 <Hello></Hello>
 <Hello firstName="John"/>
 <
