@@ -3,6 +3,34 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.2.0] - 2016-08-28
+### Added
+* Adds `no-unused-prop-types` rule ([#226][] @EvNaverniouk)
+* Add `style-prop-object` rule ([#715][] @petersendidit)
+* Add auto fix for `self-closing-comp` ([#770][] @pl12133)
+* Add support for `typeAnnotations` in `sort-comp` ([#235][] @dozoisch)
+* Add support for `PureComponent` in `prefer-stateless-function` ([#781][] @tiemevanveen)
+
+### Fixed
+* Fix `jsx-uses-vars` to work better with `prefer-const`. You'll need to upgrade to ESLint 3.4.0 to completely fix the compatibility issue ([#716][])
+* Fix `require-render-return` crash ([#784][])
+* Fix related components detection in `prop-types` ([#735][])
+* Fix component detection to ignore functions expression without a parent component
+
+### Changed
+* Update dependencies
+* Documentation improvements (@lencioni)
+
+[6.2.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.1.2...v6.2.0
+[#226]: https://github.com/yannickcr/eslint-plugin-react/issues/226
+[#715]: https://github.com/yannickcr/eslint-plugin-react/issues/715
+[#770]: https://github.com/yannickcr/eslint-plugin-react/pull/770
+[#235]: https://github.com/yannickcr/eslint-plugin-react/issues/235
+[#781]: https://github.com/yannickcr/eslint-plugin-react/pull/781
+[#716]: https://github.com/yannickcr/eslint-plugin-react/issues/716
+[#784]: https://github.com/yannickcr/eslint-plugin-react/issues/784
+[#735]: https://github.com/yannickcr/eslint-plugin-react/issues/735
+
 ## [6.1.2] - 2016-08-17
 ### Fixed
 * Fix nested spread handling in `no-danger-with-children` ([#771][] @petersendidit)
