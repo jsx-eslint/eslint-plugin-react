@@ -10,7 +10,8 @@
 // -----------------------------------------------------------------------------
 
 var eslint = require('eslint').linter;
-var rule = require('eslint/lib/rules/no-unused-vars');
+var ruleNoUnusedVars = require('eslint/lib/rules/no-unused-vars');
+var rulePreferConst = require('eslint/lib/rules/prefer-const');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
@@ -28,7 +29,7 @@ require('babel-eslint');
 
 var ruleTester = new RuleTester();
 eslint.defineRule('jsx-uses-vars', require('../../../lib/rules/jsx-uses-vars'));
-ruleTester.run('no-unused-vars', rule, {
+ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
   valid: [
     {
       code: '\
@@ -185,4 +186,26 @@ ruleTester.run('no-unused-vars', rule, {
       parserOptions: parserOptions
     }
   ]
+});
+
+// Check compatibility with eslint prefer-const rule (#716)
+ruleTester.run('prefer-const', rulePreferConst, {
+  valid: [],
+  invalid: [{
+    code: [
+      '/* eslint jsx-uses-vars:1 */',
+      'let App = <div />;',
+      '<App />;'
+    ].join('\n'),
+    errors: [{message: '\'App\' is never reassigned. Use \'const\' instead.'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '/* eslint jsx-uses-vars:1 */',
+      'let filters = \'foo\';',
+      '<div>{filters}</div>;'
+    ].join('\n'),
+    errors: [{message: '\'filters\' is never reassigned. Use \'const\' instead.'}],
+    parserOptions: parserOptions
+  }]
 });
