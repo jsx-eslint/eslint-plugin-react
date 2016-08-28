@@ -80,6 +80,7 @@ class Component extends React.Component {
   "callbacksLast": <boolean>,
   "ignoreCase": <boolean>,
   "requiredFirst": <boolean>,
+  "noSortAlphabetically": <boolean>,
 }]
 ...
 ```
@@ -113,6 +114,21 @@ var Component = React.createClass({
   propTypes: {
     barRequired: React.PropTypes.any.isRequired,
     fooRequired: React.PropTypes.any.isRequired,
+    a: React.PropTypes.number,
+    z: React.PropTypes.string,
+  },
+...
+});
+```
+
+### `noSortAlphabetically`
+
+When `true`, prop types will not be sorted alphabetically
+
+```js
+var Component = React.createClass({
+  propTypes: {
+    b: React.PropTypes.bool,
     a: React.PropTypes.number,
     z: React.PropTypes.string,
   },

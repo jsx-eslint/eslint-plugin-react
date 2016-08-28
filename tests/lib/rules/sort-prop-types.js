@@ -323,6 +323,53 @@ ruleTester.run('sort-prop-types', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint'
+  }, {
+    code: [
+      'export default class ClassWithSpreadInPropTypes extends BaseClass {',
+      '  static propTypes = {',
+      '    z: PropTypes.string,',
+      '    b: PropTypes.func,',
+      '    a: PropTypes.string,',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{
+      noSortAlphabetically: true
+    }],
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      'export default class ClassWithSpreadInPropTypes extends BaseClass {',
+      '  static propTypes = {',
+      '    z: PropTypes.string.isRequired,',
+      '    b: PropTypes.func,',
+      '    a: PropTypes.string,',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{
+      noSortAlphabetically: true,
+      requiredFirst: true
+    }],
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      'export default class ClassWithSpreadInPropTypes extends BaseClass {',
+      '  static propTypes = {',
+      '    l: PropTypes.bool.isRequired,',
+      '    k: PropTypes.string.isRequired,',
+      '    g: PropTypes.string,',
+      '    b: PropTypes.bool,',
+      '    a: PropTypes.func,',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{
+      noSortAlphabetically: true,
+      requiredFirst: true,
+      callbacksLast: true
+    }],
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
