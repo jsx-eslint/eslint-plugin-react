@@ -73,6 +73,18 @@ var ASSIGNMENT_NO_PAREN = '\
     <p>Hello</p>\n\
   </div>;';
 
+var ARROW_SINGLE_LINE = 'var hello = () => <p>Hello</p>;';
+
+var ARROW_PAREN = '\
+  var hello = () => (<div>\n\
+    <p>Hello</p>\n\
+  </div>);';
+
+var ARROW_NO_PAREN = '\
+  var hello = () => <div>\n\
+    <p>Hello</p>\n\
+  </div>;';
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -112,6 +124,18 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: ASSIGNMENT_NO_PAREN,
       options: [{assignment: false}],
       parserOptions: parserOptions
+    }, {
+      code: ARROW_PAREN,
+      options: [],
+      parserOptions: parserOptions
+    }, {
+      code: ARROW_SINGLE_LINE,
+      options: [],
+      parserOptions: parserOptions
+    }, {
+      code: ARROW_NO_PAREN,
+      options: [{arrow: false}],
+      parserOptions: parserOptions
     }
   ],
 
@@ -148,6 +172,12 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       output: ASSIGNMENT_PAREN,
       parserOptions: parserOptions,
       options: [{assignment: true}],
+      errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: ARROW_NO_PAREN,
+      output: ARROW_PAREN,
+      parserOptions: parserOptions,
+      options: [{arrow: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }
   ]
