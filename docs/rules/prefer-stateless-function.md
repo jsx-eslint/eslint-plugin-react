@@ -50,14 +50,14 @@ class Foo extends React.Component {
 
 ```js
 ...
-"prefer-stateless-function": [<enabled>, { "ignorePureComponent": <ignorePureComponent> }]
+"prefer-stateless-function": [<enabled>, { "ignorePureComponents": <ignorePureComponents> }]
 ...
 ```
 
 * `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
-* `ignorePureComponent`: optional boolean set to `true` to ignore components extending from `React.PureComponent` (default to `false`).
+* `ignorePureComponents`: optional boolean set to `true` to ignore components extending from `React.PureComponent` (default to `false`).
 
-### `ignorePureComponent`
+### `ignorePureComponents`
 
 When `true` the rule will ignore Components extending from `React.PureComponent` that use `this.props` or `this.context`.
 
