@@ -212,7 +212,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
   }, {
     code: '<App/ >;',
     output: '<App/>;',
-    errors: [{message: 'Whitespace is forbidden between `/` and `>`'}],
+    errors: [{message: 'Whitespace is forbidden between `/` and `>`; write `/>`'}],
     options: closingSlashOptions('never')
   }, {
     code: [
@@ -220,12 +220,12 @@ ruleTester.run('jsx-tag-spacing', rule, {
       '>'
     ].join('\n'),
     output: '<App/>',
-    errors: [{message: 'Whitespace is forbidden between `/` and `>`'}],
+    errors: [{message: 'Whitespace is forbidden between `/` and `>`; write `/>`'}],
     options: closingSlashOptions('never')
   }, {
     code: '<div className="bar">< /div>;',
     output: '<div className="bar"></div>;',
-    errors: [{message: 'Whitespace is forbidden between `<` and `/`'}],
+    errors: [{message: 'Whitespace is forbidden between `<` and `/`; write `</`'}],
     options: closingSlashOptions('never')
   }, {
     code: [
@@ -233,17 +233,17 @@ ruleTester.run('jsx-tag-spacing', rule, {
       '/div>;'
     ].join('\n'),
     output: '<div className="bar"></div>;',
-    errors: [{message: 'Whitespace is forbidden between `<` and `/`'}],
+    errors: [{message: 'Whitespace is forbidden between `<` and `/`; write `</`'}],
     options: closingSlashOptions('never')
   }, {
     code: '<App prop="foo"></App>',
     output: '<App prop="foo">< /App>',
-    errors: [{message: 'Whitespace is required between `<` and `/`'}],
+    errors: [{message: 'Whitespace is required between `<` and `/`; write `< /`'}],
     options: closingSlashOptions('always')
   }, {
     code: '<p/>',
     output: '<p/ >',
-    errors: [{message: 'Whitespace is required between `/` and `>`'}],
+    errors: [{message: 'Whitespace is required between `/` and `>`; write `/ >`'}],
     options: closingSlashOptions('always')
   }, {
     code: '< App/>',
