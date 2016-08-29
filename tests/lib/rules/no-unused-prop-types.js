@@ -1208,6 +1208,180 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       options: [{skipShapeProps: true}],
       parser: 'babel-eslint'
+    }, {
+      // Destructured props in componentWillReceiveProps shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    something: PropTypes.bool',
+        '  }',
+        '  componentWillReceiveProps (nextProps) {',
+        '    const {something} = nextProps;',
+        '    doSomething(something);',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Destructured function props in componentWillReceiveProps shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    something: PropTypes.bool',
+        '  }',
+        '  componentWillReceiveProps ({something}) {',
+        '    doSomething(something);',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Destructured props in the constructor shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    something: PropTypes.bool',
+        '  }',
+        '  constructor (props) {',
+        '    super(props);',
+        '    const {something} = props;',
+        '    doSomething(something);',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
+    }, {
+      // Destructured function props in the constructor shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    something: PropTypes.bool',
+        '  }',
+        '  constructor ({something}) {',
+        '    super({something});',
+        '    doSomething(something);',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
+    }, {
+      // Destructured props in the `componentWillReceiveProps` method shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    something: PropTypes.bool',
+        '  }',
+        '  componentWillReceiveProps (nextProps, nextState) {',
+        '    const {something} = nextProps;',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
+    }, {
+      // Destructured function props in the `componentWillReceiveProps` method shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    something: PropTypes.bool',
+        '  }',
+        '  componentWillReceiveProps ({something}, nextState) {',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
+    }, {
+      // Destructured props in the `shouldComponentUpdate` method shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    something: PropTypes.bool',
+        '  }',
+        '  shouldComponentUpdate (nextProps, nextState) {',
+        '    const {something} = nextProps;',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
+    }, {
+      // Destructured function props in the `shouldComponentUpdate` method shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    something: PropTypes.bool',
+        '  }',
+        '  shouldComponentUpdate ({something}, nextState) {',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
+    }, {
+      // Destructured props in the `componentWillUpdate` method shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    something: PropTypes.bool',
+        '  }',
+        '  componentWillUpdate (nextProps, nextState) {',
+        '    const {something} = nextProps;',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
+    }, {
+      // Destructured function props in the `componentWillUpdate` method shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    something: PropTypes.bool',
+        '  }',
+        '  componentWillUpdate ({something}, nextState) {',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
+    }, {
+      // Destructured props in the `componentDidUpdate` method shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    something: PropTypes.bool',
+        '  }',
+        '  componentDidUpdate (prevProps, nextState) {',
+        '    const {something} = prevProps;',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
+    }, {
+      // Destructured function props in the `componentDidUpdate` method shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    something: PropTypes.bool',
+        '  }',
+        '  componentDidUpdate ({something}, nextState) {',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
     }
   ],
 
@@ -1975,6 +2149,193 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: 'babel-eslint',
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    unused: PropTypes.bool',
+        '  }',
+        '  constructor (props) {',
+        '    super(props);',
+        '    const {something} = props;',
+        '    doSomething(something);',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'unused\' PropType is defined but prop is never used',
+        line: 3,
+        column: 13
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    unused: PropTypes.bool',
+        '  }',
+        '  constructor ({something}) {',
+        '    super({something});',
+        '    doSomething(something);',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'unused\' PropType is defined but prop is never used',
+        line: 3,
+        column: 13
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    unused: PropTypes.bool',
+        '  }',
+        '  componentWillReceiveProps (nextProps, nextState) {',
+        '    const {something} = nextProps;',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'unused\' PropType is defined but prop is never used',
+        line: 3,
+        column: 13
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    unused: PropTypes.bool',
+        '  }',
+        '  componentWillReceiveProps ({something}, nextState) {',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'unused\' PropType is defined but prop is never used',
+        line: 3,
+        column: 13
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    unused: PropTypes.bool',
+        '  }',
+        '  shouldComponentUpdate (nextProps, nextState) {',
+        '    const {something} = nextProps;',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'unused\' PropType is defined but prop is never used',
+        line: 3,
+        column: 13
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    unused: PropTypes.bool',
+        '  }',
+        '  shouldComponentUpdate ({something}, nextState) {',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'unused\' PropType is defined but prop is never used',
+        line: 3,
+        column: 13
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    unused: PropTypes.bool',
+        '  }',
+        '  componentWillUpdate (nextProps, nextState) {',
+        '    const {something} = nextProps;',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'unused\' PropType is defined but prop is never used',
+        line: 3,
+        column: 13
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    unused: PropTypes.bool',
+        '  }',
+        '  componentWillUpdate ({something}, nextState) {',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'unused\' PropType is defined but prop is never used',
+        line: 3,
+        column: 13
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    unused: PropTypes.bool',
+        '  }',
+        '  componentDidUpdate (prevProps, prevState) {',
+        '    const {something} = prevProps;',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'unused\' PropType is defined but prop is never used',
+        line: 3,
+        column: 13
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    unused: PropTypes.bool',
+        '  }',
+        '  componentDidUpdate ({something}, prevState) {',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'unused\' PropType is defined but prop is never used',
+        line: 3,
+        column: 13
       }]
     }/* , {
       // Enable this when the following issue is fixed
