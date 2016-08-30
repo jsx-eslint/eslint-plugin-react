@@ -69,7 +69,7 @@ With ESLint 2.x.x or 3.x.x:
 }
 ```
 
-Finally, enable all of the rules that you would like to use.  Use [our preset](#user-content-recommended-configuration) to get reasonable defaults quickly, and/or choose your own:
+Finally, enable all of the rules that you would like to use.  Use [our preset](#recommended) to get reasonable defaults quickly, and/or choose your own:
 
 ```json
   "rules": {
