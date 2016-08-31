@@ -30,7 +30,8 @@ ruleTester.run('jsx-no-target-blank', rule, {
     {code: '<a href="foobar" target="_blank" rel="noopener noreferrer"></a>', parserOptions: parserOptions},
     {code: '<a target="_blank" {...spreadProps} rel="noopener noreferrer"></a>', parserOptions: parserOptions},
     {code: '<a target="_blank" rel="noopener noreferrer" {...spreadProps}></a>', parserOptions: parserOptions},
-    {code: '<p target="_blank"></p>', parserOptions: parserOptions}
+    {code: '<p target="_blank"></p>', parserOptions: parserOptions},
+    {code: '<a href="foobar" target="_BLANK" rel="NOOPENER noreferrer"></a>', parserOptions: parserOptions}
   ],
   invalid: [
     {code: '<a target="_blank"></a>', parserOptions: parserOptions,
@@ -40,6 +41,9 @@ ruleTester.run('jsx-no-target-blank', rule, {
      errors: [{message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
       ' see https://mathiasbynens.github.io/rel-noopener'}]},
     {code: '<a target="_blank" rel="noopenernoreferrer"></a>', parserOptions: parserOptions,
+     errors: [{message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
+      ' see https://mathiasbynens.github.io/rel-noopener'}]},
+    {code: '<a target="_BLANK"></a>', parserOptions: parserOptions,
      errors: [{message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
       ' see https://mathiasbynens.github.io/rel-noopener'}]}
   ]
