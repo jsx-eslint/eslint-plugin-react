@@ -29,6 +29,39 @@ function Hello({ name }) {
 }
 ```
 
+Examples of correct usage without warnings:
+
+```jsx
+var Hello = React.createClass({
+  propTypes: {
+    name: React.PropTypes.string.isRequired,
+  },
+  render: function() {
+    return <div>Hello {this.props.name}</div>;
+  },
+});
+
+// Or in ES6:
+class HelloEs6 extends React.Component {
+  render() {
+    return <div>Hello {this.props.name}</div>;
+  }
+}
+HelloEs6.propTypes = {
+  name: React.PropTypes.string.isRequired,
+};
+
+// ES6 + Public Class Fields (draft: https://tc39.github.io/proposal-class-public-fields/)
+class HelloEs6WithPublicClassField extends React.Component {
+  static propTypes = {
+    name: React.PropTypes.string.isRequired,
+  }
+  render() {
+    return <div>Hello {this.props.name}</div>;
+  }
+}
+```
+
 The following patterns are not considered warnings:
 
 ```jsx
