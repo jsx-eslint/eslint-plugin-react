@@ -47,7 +47,7 @@ This rule can take one argument to ignore some specific props during validation.
 
 ```
 ...
-"prop-types": [<enabled>, { customValidators: <customValidator> }]
+"no-unused-prop-types": [<enabled>, { customValidators: <customValidator>, skipShapeProps: <skipShapeProps> }]
 ...
 ```
 
