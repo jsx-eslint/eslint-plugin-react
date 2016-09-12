@@ -3,6 +3,26 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.2.1] - 2016-09-13
+### Added
+* Fix false positive in `no-unused-prop-types` ([#792][] @EvNaverniouk)
+* Fix `jsx-no-target-blank` to target only anchor elements ([#793][] @aduth)
+* Fix `jsx-no-target-blank` to be case insensitive [#796][] @dmnd)
+* Fix `jsx-uses-vars` shadowed variables handling ([#799][])
+
+### Changed
+* Update dependencies
+* Documentation improvements (@ljharb, [#794][] @dougshamoo, [#813][] @AndiDog, [#815][] @chris-vaszauskas)
+
+[6.2.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.2.0...v6.2.1
+[#792]: https://github.com/yannickcr/eslint-plugin-react/pull/792
+[#793]: https://github.com/yannickcr/eslint-plugin-react/pull/793
+[#794]: https://github.com/yannickcr/eslint-plugin-react/pull/794
+[#796]: https://github.com/yannickcr/eslint-plugin-react/pull/796
+[#799]: https://github.com/yannickcr/eslint-plugin-react/issues/799
+[#813]: https://github.com/yannickcr/eslint-plugin-react/pull/813
+[#815]: https://github.com/yannickcr/eslint-plugin-react/pull/815
+
 ## [6.2.0] - 2016-08-28
 ### Added
 * Adds `no-unused-prop-types` rule ([#226][] @EvNaverniouk)
