@@ -29,7 +29,8 @@ ruleTester.run('jsx-no-target-blank', rule, {
     {code: '<a randomTag></a>', parserOptions: parserOptions},
     {code: '<a href="foobar" target="_blank" rel="noopener noreferrer"></a>', parserOptions: parserOptions},
     {code: '<a target="_blank" {...spreadProps} rel="noopener noreferrer"></a>', parserOptions: parserOptions},
-    {code: '<a target="_blank" rel="noopener noreferrer" {...spreadProps}></a>', parserOptions: parserOptions}
+    {code: '<a target="_blank" rel="noopener noreferrer" {...spreadProps}></a>', parserOptions: parserOptions},
+    {code: '<p target="_blank"></p>', parserOptions: parserOptions}
   ],
   invalid: [
     {code: '<a target="_blank"></a>', parserOptions: parserOptions,
