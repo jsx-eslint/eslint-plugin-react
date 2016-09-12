@@ -184,6 +184,21 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
       }],
       parser: 'babel-eslint',
       parserOptions: parserOptions
+    }, {
+      code: '\
+        /*eslint jsx-uses-vars:1*/\
+        import {Hello} from \'Hello\';\
+        function Greetings() {\
+          const Hello = require(\'Hello\').default;\
+          return <Hello />;\
+        }\
+        Greetings();',
+      errors: [{
+        message: '\'Hello\' is defined but never used.',
+        line: 1
+      }],
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
     }
   ]
 });
