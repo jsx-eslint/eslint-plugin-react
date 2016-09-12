@@ -29,7 +29,7 @@
   "devDependencies": {
     "babel-eslint": "6.1.2",
     "coveralls": "2.11.12",
-    "eslint": "3.4.0",
+    "eslint": "3.5.0",
     "istanbul": "0.4.5",
     "mocha": "3.0.2"
   },
