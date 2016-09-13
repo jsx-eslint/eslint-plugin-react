@@ -1382,6 +1382,33 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       parserOptions: parserOptions
+    }, {
+      // Destructured state props in `componentDidUpdate` [Issue #825]
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    something: PropTypes.bool',
+        '  }',
+        '  componentDidUpdate ({something}, {state1, state2}) {',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
+    }, {
+      // Destructured state props in `componentDidUpdate` without custom parser [Issue #825]
+      code: [
+        'var Hello = React.Component({',
+        '  propTypes: {',
+        '    something: PropTypes.bool',
+        '  },',
+        '  componentDidUpdate: function ({something}, {state1, state2}) {',
+        '    return something;',
+        '  }',
+        '});'
+      ].join('\n'),
+      parserOptions: parserOptions
     }
   ],
 
@@ -2336,6 +2363,41 @@ ruleTester.run('no-unused-prop-types', rule, {
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
         column: 13
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    something: PropTypes.bool',
+        '  }',
+        '  componentDidUpdate (prevProps, {state1, state2}) {',
+        '    return something;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'something\' PropType is defined but prop is never used',
+        line: 3,
+        column: 16
+      }]
+    }, {
+      code: [
+        'var Hello = React.createClass({',
+        '  propTypes: {',
+        '    something: PropTypes.bool',
+        '  },',
+        '  componentDidUpdate: function (prevProps, {state1, state2}) {',
+        '    return something;',
+        '  }',
+        '})'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'something\' PropType is defined but prop is never used',
+        line: 3,
+        column: 16
       }]
     }/* , {
       // Enable this when the following issue is fixed
