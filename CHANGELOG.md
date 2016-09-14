@@ -3,8 +3,17 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.2.2] - 2016-09-15
+### Fixed
+* Fix `no-unused-prop-types` crash ([#825][] @EvNaverniouk)
+* Fix `jsx-no-target-blank` crash ([#821][])
+
+[6.2.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.2.1...v6.2.2
+[#821]: https://github.com/yannickcr/eslint-plugin-react/issues/821
+[#825]: https://github.com/yannickcr/eslint-plugin-react/pull/825
+
 ## [6.2.1] - 2016-09-13
-### Added
+### Fixed
 * Fix false positive in `no-unused-prop-types` ([#792][] @EvNaverniouk)
 * Fix `jsx-no-target-blank` to target only anchor elements ([#793][] @aduth)
 * Fix `jsx-no-target-blank` to be case insensitive [#796][] @dmnd)
