@@ -107,12 +107,22 @@ ruleTester.run('jsx-indent', rule, {
       '  <Foo />',
       '</App>'
     ].join('\n'),
+    output: [
+      '<App>',
+      '    <Foo />',
+      '</App>'
+    ].join('\n'),
     parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 4 space characters but found 2.'}]
   }, {
     code: [
       '<App>',
       '    <Foo />',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '  <Foo />',
       '</App>'
     ].join('\n'),
     options: [2],
@@ -135,6 +145,13 @@ ruleTester.run('jsx-indent', rule, {
       '         </App>;',
       '}'
     ].join('\n'),
+    output: [
+      'function App() {',
+      '  return <App>',
+      '    <Foo />',
+      '  </App>;',
+      '}'
+    ].join('\n'),
     options: [2],
     parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 2 space characters but found 9.'}]
@@ -144,6 +161,13 @@ ruleTester.run('jsx-indent', rule, {
       '  return (<App>',
       '    <Foo />',
       '    </App>);',
+      '}'
+    ].join('\n'),
+    output: [
+      'function App() {',
+      '  return (<App>',
+      '    <Foo />',
+      '  </App>);',
       '}'
     ].join('\n'),
     options: [2],
