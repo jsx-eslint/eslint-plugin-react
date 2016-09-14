@@ -102,6 +102,10 @@ ruleTester.run('style-prop-object', rule, {
         'React.createElement("div", { style: styles });'
       ].join('\n'),
       parserOptions: Object.assign({sourceType: 'module'}, parserOptions)
+    },
+    {
+      code: '<div style></div>',
+      parserOptions: parserOptions
     }
   ],
   invalid: [
