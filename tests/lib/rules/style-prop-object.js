@@ -106,6 +106,14 @@ ruleTester.run('style-prop-object', rule, {
     {
       code: '<div style></div>',
       parserOptions: parserOptions
+    },
+    {
+      code: [
+        'React.createElement(MyCustomElem, {',
+        '  [style]: true',
+        '}, \'My custom Elem\')'
+      ].join('\n'),
+      parserOptions: parserOptions
     }
   ],
   invalid: [
