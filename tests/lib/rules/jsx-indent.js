@@ -162,5 +162,29 @@ ruleTester.run('jsx-indent', rule, {
     options: [2],
     parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 4 space characters but found 0.'}]
+  }, {
+    code: [
+      '<App>',
+      '   {test}',
+      '</App>'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 3.'}
+    ]
+  }, {
+    code: [
+      '<App>',
+      '    {options.map((option, index) => (',
+      '        <option key={index} value={option.key}>',
+      '           {option.name}',
+      '        </option>',
+      '    ))}',
+      '</App>'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'Expected indentation of 12 space characters but found 11.'}
+    ]
   }]
 });
