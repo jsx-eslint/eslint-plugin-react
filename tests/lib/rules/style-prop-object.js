@@ -114,6 +114,86 @@ ruleTester.run('style-prop-object', rule, {
         '}, \'My custom Elem\')'
       ].join('\n'),
       parserOptions: parserOptions
+    },
+    {
+      code: [
+        'let style;',
+        '<div style={style}></div>'
+      ].join('\n'),
+      parserOptions: parserOptions
+    },
+    {
+      code: '<div style={undefined}></div>',
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'const props = { style: undefined };',
+        '<div {...props} />'
+      ].join('\n'),
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'const otherProps = { style: undefined };',
+        'const { a, b, ...props } = otherProps;',
+        '<div {...props} />'
+      ].join('\n'),
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'React.createElement("div", {',
+        '  style: undefined',
+        '})'
+      ].join('\n'),
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'let style;',
+        'React.createElement("div", {',
+        '  style',
+        '})'
+      ].join('\n'),
+      parserOptions: parserOptions
+    },
+    {
+      code: '<div style={null}></div>',
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'const props = { style: null };',
+        '<div {...props} />'
+      ].join('\n'),
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'const otherProps = { style: null };',
+        'const { a, b, ...props } = otherProps;',
+        '<div {...props} />'
+      ].join('\n'),
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'React.createElement("div", {',
+        '  style: null',
+        '})'
+      ].join('\n'),
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'const MyComponent = (props) => {',
+        '  React.createElement(MyCustomElem, {',
+        '    ...props',
+        '  });',
+        '};'
+      ].join('\n'),
+      parserOptions: parserOptions
     }
   ],
   invalid: [
