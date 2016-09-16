@@ -186,5 +186,32 @@ ruleTester.run('jsx-indent', rule, {
     errors: [
       {message: 'Expected indentation of 12 space characters but found 11.'}
     ]
+  }, {
+    code: [
+      '<App>',
+      '{test}',
+      '</App>'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: ['tab'],
+    errors: [
+      {message: 'Expected indentation of 1 tab character but found 0.'}
+    ]
+  }, {
+    code: [
+      '<App>',
+      '\t{options.map((option, index) => (',
+      '\t\t<option key={index} value={option.key}>',
+      '\t\t{option.name}',
+      '\t\t</option>',
+      '\t))}',
+      '</App>'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: ['tab'],
+    errors: [
+      {message: 'Expected indentation of 3 tab characters but found 2.'}
+    ]
   }]
 });
+
