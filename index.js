@@ -57,7 +57,8 @@ var rules = {
   'no-find-dom-node': require('./lib/rules/no-find-dom-node'),
   'no-danger-with-children': require('./lib/rules/no-danger-with-children'),
   'style-prop-object': require('./lib/rules/style-prop-object'),
-  'no-unused-prop-types': require('./lib/rules/no-unused-prop-types')
+  'no-unused-prop-types': require('./lib/rules/no-unused-prop-types'),
+  'no-children-prop': require('./lib/rules/no-children-prop')
 };
 
 var ruleNames = Object.keys(rules);
