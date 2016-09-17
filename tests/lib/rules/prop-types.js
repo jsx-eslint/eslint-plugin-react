@@ -1318,6 +1318,26 @@ ruleTester.run('prop-types', rule, {
     }, {
       code: [
         'var Hello = React.createClass({',
+        '  render: function() {',
+        '    return <div>{this.props.name}</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      options: [{skipUndeclared: true}],
+      parserOptions: parserOptions
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    return <div>{this.props.name}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      options: [{skipUndeclared: true}],
+      parserOptions: parserOptions
+    }, {
+      code: [
+        'var Hello = React.createClass({',
         '  propTypes: {',
         '    name: React.PropTypes.object.isRequired',
         '  },',
@@ -2362,6 +2382,38 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'firstname\' is missing in props validation',
         line: 4,
+        column: 29
+      }]
+    }, {
+      code: [
+        'var Hello = function(props) {',
+        '  return <div>{props.firstname}</div>;',
+        '};',
+        'Hello.propTypes = {}'
+      ].join('\n'),
+      options: [{skipUndeclared: true}],
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'firstname\' is missing in props validation',
+        line: 2,
+        column: 22
+      }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  static get propTypes() {',
+        '    return {};',
+        '  }',
+        '  render() {',
+        '    return <div>{this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      options: [{skipUndeclared: true}],
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'firstname\' is missing in props validation',
+        line: 6,
         column: 29
       }]
     }, {
