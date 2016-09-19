@@ -2418,6 +2418,22 @@ ruleTester.run('prop-types', rule, {
       }]
     }, {
       code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    return <div>{this.props.firstname}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {};'
+      ].join('\n'),
+      options: [{skipUndeclared: true}],
+      parserOptions: parserOptions,
+      errors: [{
+        message: '\'firstname\' is missing in props validation',
+        line: 3,
+        column: 29
+      }]
+    }, {
+      code: [
         'var Hello = React.createClass({',
         '  render: function() {',
         '    return <div>{this.props.firstname}</div>;',
