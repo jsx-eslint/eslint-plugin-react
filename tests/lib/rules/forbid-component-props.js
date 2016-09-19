@@ -116,19 +116,22 @@ ruleTester.run('forbid-component-props', rule, {
     ].join('\n'),
     options: [{forbid: [{property: 'className', allowOnComponents: true, allowOnDOM: true}]}],
     parserOptions: parserOptions
-  },
-    {
-      code: [
-        'var First = React.createClass({',
-        '  propTypes: externalPropTypes,',
-        '  render: function() {',
-        '    return <div className="bar"><Foo className="bar" /></div>;',
-        '  }',
-        '});'
-      ].join('\n'),
-      options: [{forbid: [{property: 'className', allow: ['div', 'Foo']}], defaultAllowOnDOM: false, defaultAllowOnComponents: false}],
-      parserOptions: parserOptions
+  }, {
+    code: [
+      'var First = React.createClass({',
+      '  propTypes: externalPropTypes,',
+      '  render: function() {',
+      '    return <div className="bar"><Foo className="bar" /></div>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      forbid: [{property: 'className', allow: ['div', 'Foo']}],
+      defaultAllowOnDOM: false,
+      defaultAllowOnComponents: false
     }],
+    parserOptions: parserOptions
+  }],
 
   invalid: [{
     code: [
