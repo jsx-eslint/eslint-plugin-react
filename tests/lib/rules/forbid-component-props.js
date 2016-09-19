@@ -37,6 +37,31 @@ ruleTester.run('forbid-component-props', rule, {
 
   valid: [{
     code: [
+      'class First extends React.Component {',
+      '  render() {',
+      '    return <div className="foo" />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'function First(props) {',
+      '  return <div className="foo" />;',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'var First = React.createClass({',
+      '  render: function() {',
+      '    return <div className="foo" />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
       'var First = React.createClass({',
       '  render: function() {',
       '    return <div className="foo" />;',
