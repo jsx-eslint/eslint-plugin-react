@@ -3,6 +3,26 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.3.0] - 2016-09-20
+### Added
+* Add `no-children-prop` rule ([#720][] @benstepp)
+* Add `no-unescaped-entities` rule ([#681][] @pfhayes)
+* Add JSXExpressionContainer support to `jsx-indent` rule ([#838][] @eelyafi)
+
+### Fixed
+* Fix `style-prop-object` crash ([#834][])
+* Fix `style-prop-object` false positive on computed properties ([#820][])
+* Fix `style-prop-object` to deal with null and spread props that can't be resolved ([#809][] [#812][] @petersendidit)
+
+[6.3.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.2.2...v6.3.0
+[#720]: https://github.com/yannickcr/eslint-plugin-react/issues/720
+[#681]: https://github.com/yannickcr/eslint-plugin-react/pull/681
+[#838]: https://github.com/yannickcr/eslint-plugin-react/pull/838
+[#834]: https://github.com/yannickcr/eslint-plugin-react/issues/834
+[#820]: https://github.com/yannickcr/eslint-plugin-react/issues/820
+[#809]: https://github.com/yannickcr/eslint-plugin-react/issues/809
+[#812]: https://github.com/yannickcr/eslint-plugin-react/issues/812
+
 ## [6.2.2] - 2016-09-15
 ### Fixed
 * Fix `no-unused-prop-types` crash ([#825][] @EvNaverniouk)
@@ -34,7 +54,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [6.2.0] - 2016-08-28
 ### Added
-* Adds `no-unused-prop-types` rule ([#226][] @EvNaverniouk)
+* Add `no-unused-prop-types` rule ([#226][] @EvNaverniouk)
 * Add `style-prop-object` rule ([#715][] @petersendidit)
 * Add auto fix for `self-closing-comp` ([#770][] @pl12133)
 * Add support for `typeAnnotations` in `sort-comp` ([#235][] @dozoisch)
