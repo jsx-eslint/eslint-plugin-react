@@ -27,10 +27,10 @@ require('babel-eslint');
 var CLASSNAME_ERROR_MESSAGE = 'Prop `className` is forbidden on Components';
 var STYLE_ERROR_MESSAGE = 'Prop `style` is forbidden on Components';
 var DOM_STYLE_ERROR_MESSAGE = 'Prop `style` is forbidden on DOM nodes';
-var TAG_STYLE_ERROR_MESSAGE = 'Prop `style` is specifically forbidden on tags named i';
-var TAG_CLASSNAME_ERROR_MESSAGE = 'Prop `className` is specifically forbidden on tags named i';
-var DIV_TAG_CLASSNAME_ERROR_MESSAGE = 'Prop `className` is specifically forbidden on tags named div';
-var FOO_TAG_CLASSNAME_ERROR_MESSAGE = 'Prop `className` is specifically forbidden on tags named Foo';
+var TAG_STYLE_ERROR_MESSAGE = 'Prop `style` is specifically forbidden on i DOM nodes';
+var TAG_CLASSNAME_ERROR_MESSAGE = 'Prop `className` is specifically forbidden on i DOM nodes';
+var DIV_TAG_CLASSNAME_ERROR_MESSAGE = 'Prop `className` is specifically forbidden on div DOM nodes';
+var FOO_TAG_CLASSNAME_ERROR_MESSAGE = 'Prop `className` is specifically forbidden on Foo Components';
 
 var ruleTester = new RuleTester();
 ruleTester.run('forbid-component-props', rule, {
