@@ -255,6 +255,19 @@ ruleTester.run('prefer-stateless-function', rule, {
         ');'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // Has childContextTypes
+      code: [
+        'class Foo extends React.Component {',
+        '  render() {',
+        '    return <div>{this.props.children}</div>;',
+        '  }',
+        '}',
+        'Foo.childContextTypes = {',
+        '  color: React.PropTypes.string',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
