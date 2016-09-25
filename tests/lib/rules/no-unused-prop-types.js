@@ -177,15 +177,19 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parserOptions: parserOptions
     }, {
+      // Props validation is ignored when spread is used
       code: [
         'class Hello extends React.Component {',
         '  render() {',
-        '    var { firstname, ...other } = this.props;',
+        '    var { firstname, ...props } = this.props;',
+        '    var { category, icon } = props;',
         '    return <div>Hello {firstname}</div>;',
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  firstname: React.PropTypes.string',
+        '  firstname: React.PropTypes.string,',
+        '  category: React.PropTypes.string,',
+        '  icon: React.PropTypes.bool',
         '};'
       ].join('\n'),
       parser: 'babel-eslint',
@@ -1652,25 +1656,6 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [
         {message: '\'a.unused\' PropType is defined but prop is never used'},
         {message: '\'a.anotherunused\' PropType is defined but prop is never used'}
-      ]
-    }, {
-      code: [
-        'class Hello extends React.Component {',
-        '  render() {',
-        '    var { ',
-        '      "aria-controls": ariaControls, ',
-        '      propX,',
-        '      ...props } = this.props;',
-        '    return <div>Hello</div>;',
-        '  }',
-        '}',
-        'Hello.propTypes = {',
-        '  "aria-unused": React.PropTypes.string',
-        '};'
-      ].join('\n'),
-      parser: 'babel-eslint',
-      errors: [
-        {message: '\'aria-unused\' PropType is defined but prop is never used'}
       ]
     }, {
       code: [
