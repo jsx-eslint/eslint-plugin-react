@@ -107,12 +107,22 @@ ruleTester.run('jsx-indent', rule, {
       '  <Foo />',
       '</App>'
     ].join('\n'),
+    output: [
+      '<App>',
+      '    <Foo />',
+      '</App>'
+    ].join('\n'),
     parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 4 space characters but found 2.'}]
   }, {
     code: [
       '<App>',
       '    <Foo />',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '  <Foo />',
       '</App>'
     ].join('\n'),
     options: [2],
@@ -135,6 +145,13 @@ ruleTester.run('jsx-indent', rule, {
       '         </App>;',
       '}'
     ].join('\n'),
+    output: [
+      'function App() {',
+      '  return <App>',
+      '    <Foo />',
+      '  </App>;',
+      '}'
+    ].join('\n'),
     options: [2],
     parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 2 space characters but found 9.'}]
@@ -144,6 +161,13 @@ ruleTester.run('jsx-indent', rule, {
       '  return (<App>',
       '    <Foo />',
       '    </App>);',
+      '}'
+    ].join('\n'),
+    output: [
+      'function App() {',
+      '  return (<App>',
+      '    <Foo />',
+      '  </App>);',
       '}'
     ].join('\n'),
     options: [2],
@@ -212,6 +236,57 @@ ruleTester.run('jsx-indent', rule, {
     errors: [
       {message: 'Expected indentation of 3 tab characters but found 2.'}
     ]
-  }]
+  }, {
+    code: [
+      '<App>\n',
+      '<Foo />\n',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>\n',
+      '\t<Foo />\n',
+      '</App>'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: ['tab'],
+    errors: [
+      {message: 'Expected indentation of 1 tab character but found 0.'}
+    ]
+  }
+  // Tests for future work. See the comment on line 42-43 in the rule near to fixable: 'whitespace' meta property,
+  // Right now fixer function doesn't support replacing tabs with whitespaces and vice-versa.
+  /* , {
+    code: [
+      '<App>\n',
+      ' <Foo />\n',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>\n',
+      '\t<Foo />\n',
+      '</App>'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: ['tab'],
+    errors: [
+      {message: 'Expected indentation of 1 tab character but found 0.'}
+    ]
+  }, {
+    code: [
+      '<App>\n',
+      '\t<Foo />\n',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>\n',
+      '  <Foo />\n',
+      '</App>'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [2],
+    errors: [
+      {message: 'Expected indentation of 2 space characters but found 0.'}
+    ]
+  }*/]
 });
 

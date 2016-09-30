@@ -2,6 +2,9 @@
 
 This option validates a specific indentation style for JSX.
 
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line. 
+Fixer will fix whitespace and tabs indentation. It won't replace tabs with whitespaces and vice-versa.
+
 ## Rule Details
 
 This rule is aimed to enforce consistent indentation style. The default style is `4 spaces`.

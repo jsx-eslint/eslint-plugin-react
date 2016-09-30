@@ -170,6 +170,17 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: [
         'const foo = {',
+        '  render: ({onClick}) => (',
+        '    <div onClick={onClick.bind(this)}>Hello</div>',
+        '  )',
+        '};'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use .bind()'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'const foo = {',
         '  render() {',
         '    const click = this.onTap.bind(this);',
         '    return <div onClick={onClick}>Hello</div>;',

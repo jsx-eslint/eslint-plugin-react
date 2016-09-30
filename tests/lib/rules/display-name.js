@@ -466,6 +466,18 @@ ruleTester.run('display-name', rule, {
     }]
   }, {
     code: [
+      'module.exports = React.createClass({',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: [
       'var Hello = React.createClass({',
       '  _renderHello: function() {',
       '    return <span>Hello {this.props.name}</span>;',

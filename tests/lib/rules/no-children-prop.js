@@ -15,6 +15,7 @@ var RuleTester = require('eslint').RuleTester;
 var parserOptions = {
   ecmaVersion: 6,
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -170,6 +171,14 @@ ruleTester.run('no-children-prop', rule, {
     {
       code: 'React.createElement(MyComponent, {className: "class-name"}, "Children");',
       parserOptions: parserOptions
+    },
+    {
+      code: '<MyComponent className="class-name" {...props} />;',
+      parserOptions: parserOptions
+    },
+    {
+      code: 'React.createElement(MyComponent, {className: "class-name", ...props});',
+      parserOptions: parserOptions
     }
   ],
   invalid: [
@@ -230,6 +239,16 @@ ruleTester.run('no-children-prop', rule, {
     },
     {
       code: 'React.createElement(MyComponent, {children: "Children", className: "class-name"});',
+      errors: [{message: CREATE_ELEMENT_ERROR}],
+      parserOptions: parserOptions
+    },
+    {
+      code: '<MyComponent {...props} children="Children" />;',
+      errors: [{message: JSX_ERROR}],
+      parserOptions: parserOptions
+    },
+    {
+      code: 'React.createElement(MyComponent, {...props, children: "Children"})',
       errors: [{message: CREATE_ELEMENT_ERROR}],
       parserOptions: parserOptions
     }
