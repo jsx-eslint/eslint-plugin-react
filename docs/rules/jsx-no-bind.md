@@ -1,4 +1,4 @@
-# No `.bind()` or Arrow Functions in JSX Props
+# No `.bind()` or Arrow Functions in JSX Props (jsx-no-bind)
 
 A `bind` call or [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) in a JSX prop will create a brand new function on every single render. This is bad for performance, as it will result in the garbage collector being invoked way more than is necessary.
 
