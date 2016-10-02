@@ -23,6 +23,12 @@ var Hello = <div>Hello {this.props.name}</div>;
 The following patterns are not considered warnings:
 
 ```js
+import React from 'react';
+
+var Hello = <div>Hello {this.props.name}</div>;
+```
+
+```js
 var React = require('react');
 
 var Hello = <div>Hello {this.props.name}</div>;
