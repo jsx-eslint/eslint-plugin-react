@@ -195,6 +195,22 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
     },
     {
       code: [
+        '\t<Foo propOne="one"',
+        '\t\tpropTwo="two"',
+        '\t/>'
+      ].join('\n'),
+      output: [
+        '\t<Foo',
+        '\t\tpropOne="one"',
+        '\t\tpropTwo="two"',
+        '\t/>'
+      ].join('\n'),
+      options: ['always', 'tab'],
+      errors: [{message: 'Property should be placed on a new line'}],
+      parser: parserOptions
+    },
+    {
+      code: [
         '<Foo',
         '  propOne="one"',
         '  propTwo="two"',
