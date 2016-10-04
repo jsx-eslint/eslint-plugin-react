@@ -35,7 +35,7 @@ The following patterns are not considered warnings:
 
 ```js
 ...
-"jsx-max-props-per-line": [<enabled>, { "maximum": <number> }]
+"jsx-max-props-per-line": [<enabled>, { "maximum": <number>, "when": <string> }]
 ...
 ```
 
@@ -58,6 +58,28 @@ The following patterns are not considered warnings:
   firstName="John" lastName="Smith"
   tel={5555555}
 />;
+```
+
+### `when`
+
+Possible values:
+- `always` (default) - Always check for max props per line.
+- `multiline` - Only check for max props per line when jsx tag spans multiple lines.
+
+The following patterns are considered warnings:
+```jsx
+// [1, {when: always}]
+<Hello firstName="John" lastName="Smith" />
+```
+
+The following patterns are not considered warnings:
+```jsx
+// [1, {when: multiline}]
+<Hello firstName="John" lastName="Smith" />
+<Hello 
+  firstName="John" 
+  lastName="Smith" 
+/>
 ```
 
 ## When not to use

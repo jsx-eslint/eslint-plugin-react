@@ -25,11 +25,22 @@ var parserOptions = {
 var ruleTester = new RuleTester();
 ruleTester.run('jsx-max-props-per-line', rule, {
   valid: [{
+    code: '<App />',
+    parserOptions: parserOptions
+  }, {
     code: '<App foo />',
     parserOptions: parserOptions
   }, {
     code: '<App foo bar />',
     options: [{maximum: 2}],
+    parserOptions: parserOptions
+  }, {
+    code: '<App foo bar />',
+    options: [{when: 'multiline'}],
+    parserOptions: parserOptions
+  }, {
+    code: '<App foo bar baz />',
+    options: [{maximum: 2, when: 'multiline'}],
     parserOptions: parserOptions
   }, {
     code: '<App {...this.props} bar />',
