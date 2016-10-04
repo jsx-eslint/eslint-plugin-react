@@ -89,5 +89,24 @@ ruleTester.run('jsx-max-props-per-line', rule, {
     ].join('\n'),
     errors: [{message: 'Prop `this.props` must be placed on a new line'}],
     parserOptions: parserOptions
+  }, {
+    code: [
+      '<App',
+      '  foo={{',
+      '  }} bar',
+      '/>'
+    ].join('\n'),
+    errors: [{message: 'Prop `bar` must be placed on a new line'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App',
+      '  foo={{',
+      '  }} bar baz',
+      '/>'
+    ].join('\n'),
+    options: [{maximum: 2}],
+    errors: [{message: 'Prop `baz` must be placed on a new line'}],
+    parserOptions: parserOptions
   }]
 });
