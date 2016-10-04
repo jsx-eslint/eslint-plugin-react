@@ -91,6 +91,39 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
       parser: parserOptions
     },
     {
+      code: [
+        '<Foo bar />'
+      ].join('\n'),
+      options: ['multiline-multiprop'],
+      parser: parserOptions
+    },
+    {
+      code: [
+        '<Foo bar baz />'
+      ].join('\n'),
+      options: ['multiline-multiprop'],
+      parser: parserOptions
+    },
+    {
+      code: [
+        '<Foo prop={{',
+        '}} />'
+      ].join('\n'),
+      options: ['multiline-multiprop'],
+      parser: parserOptions
+    },
+    {
+      code: [
+        '<Foo ',
+        '  foo={{',
+        '  }}',
+        '  bar',
+        '/>'
+      ].join('\n'),
+      options: ['multiline-multiprop'],
+      parser: parserOptions
+    },
+    {
       code: '<Foo />',
       options: ['always'],
       parser: parserOptions
@@ -143,6 +176,24 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
       ].join('\n'),
       options: ['never'],
       errors: [{message: 'Property should be placed on the same line as the component declaration'}],
+      parser: parserOptions
+    },
+    {
+      code: [
+        '<Foo prop={{',
+        '}} />'
+      ].join('\n'),
+      options: ['multiline'],
+      errors: [{message: 'Property should be placed on a new line'}],
+      parser: parserOptions
+    },
+    {
+      code: [
+        '<Foo bar={{',
+        '}} baz />'
+      ].join('\n'),
+      options: ['multiline-multiprop'],
+      errors: [{message: 'Property should be placed on a new line'}],
       parser: parserOptions
     }
   ]
