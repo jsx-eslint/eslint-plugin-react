@@ -12,7 +12,7 @@ This rule checks whether the first property of all JSX elements is correctly pla
 
 The following patterns are considered warnings when configured `"always"`:
 
-```js
+```jsx
 <Hello personal={true} />
 
 <Hello personal={true}
@@ -22,7 +22,7 @@ The following patterns are considered warnings when configured `"always"`:
 
 The following patterns are not considered warnings when configured `"always"`:
 
-```js
+```jsx
 <Hello
     personal />
 
@@ -33,7 +33,7 @@ The following patterns are not considered warnings when configured `"always"`:
 
 The following patterns are considered warnings when configured `"never"`:
 
-```js
+```jsx
 <Hello
     personal />
 
@@ -44,7 +44,7 @@ The following patterns are considered warnings when configured `"never"`:
 
 The following patterns are not considered warnings when configured `"never"`:
 
-```js
+```jsx
 <Hello personal={true} />
 
 <Hello personal={true}
@@ -54,7 +54,7 @@ The following patterns are not considered warnings when configured `"never"`:
 
 The following patterns are considered warnings when configured `"multiline"`:
 
-```js
+```jsx
 <Hello personal
     prop />
 ```
@@ -66,7 +66,7 @@ The following patterns are considered warnings when configured `"multiline"`:
 
 The following patterns are not considered warnings when configured `"multiline"`:
 
-```js
+```jsx
 <Hello personal={true} />
 
 <Hello
