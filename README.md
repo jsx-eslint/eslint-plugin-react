@@ -82,6 +82,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 
 * [react/display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
 * [react/forbid-component-props](docs/rules/forbid-component-props.md): Forbid certain props on Components
+* [react/forbid-elements](docs/rules/forbid-elements.md): Forbid certain elements
 * [react/forbid-prop-types](docs/rules/forbid-prop-types.md): Forbid certain propTypes
 * [react/no-array-index-key](docs/rules/no-array-index-key.md): Prevent using Array index in `key` props
 * [react/no-children-prop](docs/rules/no-children-prop.md): Prevent passing children as props
