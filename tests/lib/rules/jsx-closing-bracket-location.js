@@ -197,8 +197,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
   }, {
     code: [
       '<App foo={function() {',
-      '  console.log(\'bar\');',
-      '}}/>'
+      '       console.log(\'bar\');',
+      '     }}',
+      '     />'
     ].join('\n'),
     options: [{location: 'props-aligned'}],
     parserOptions: parserOptions
@@ -206,7 +207,8 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     code: [
       '<App foo={function() {',
       '  console.log(\'bar\');',
-      '}}/>'
+      '}}',
+      '/>'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
     parserOptions: parserOptions
@@ -214,7 +216,8 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     code: [
       '<App foo={function() {',
       '  console.log(\'bar\');',
-      '}}/>'
+      '}}',
+      '/>'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
     parserOptions: parserOptions
@@ -382,6 +385,18 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       nonEmpty: 'after-props',
       selfClosing: false
     }],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div className={[',
+      '  "some",',
+      '  "stuff",',
+      '  2 ]}',
+      '>',
+      '  Some text',
+      '</div>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
     parserOptions: parserOptions
   }],
 
@@ -919,5 +934,30 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     options: [{location: 'line-aligned'}],
     parserOptions: parserOptions,
     errors: [MESSAGE_AFTER_TAG]
+  }, {
+    code: [
+      '<div className={[',
+      '  "some",',
+      '  "stuff",',
+      '  2 ]}>',
+      '  Some text',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div className={[',
+      '  "some",',
+      '  "stuff",',
+      '  2 ]}',
+      '>',
+      '  Some text',
+      '</div>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, true),
+      line: 4,
+      column: 7
+    }]
   }]
 });
