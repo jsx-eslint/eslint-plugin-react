@@ -99,6 +99,40 @@ ruleTester.run('jsx-indent', rule, {
     ].join('\n'),
     options: [2],
     parserOptions: parserOptions
+  }, {
+    code: [
+      'it(',
+      '  (',
+      '    <div>',
+      '      <span />',
+      '    </div>',
+      '  )',
+      ')'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [2]
+  }, {
+    code: [
+      'it(',
+      '  (<div>',
+      '    <span />',
+      '    <span />',
+      '    <span />',
+      '  </div>)',
+      ')'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [2]
+  }, {
+    code: [
+      '(',
+      '  <div>',
+      '    <span />',
+      '  </div>',
+      ')'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [2]
   }],
 
   invalid: [{
@@ -289,4 +323,3 @@ ruleTester.run('jsx-indent', rule, {
     ]
   }*/]
 });
-
