@@ -3,6 +3,40 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.4.0] - 2016-10-09
+### Added
+* Add `skipUndeclared` option to `prop-types` ([#846][] @pfhayes)
+
+### Fixed
+* Fix `jsx-no-bind` crash on arrow functions ([#854][])
+* Fix `display-name` false negative on es6-style method in `React.createClass` ([#852][])
+* Fix `prefer-stateless-function` to allow components with `childContextTypes` ([#853][])
+* Fix `no-children-prop` spread support ([#862][] @randycoulman)
+* Fix `no-unused-prop-types` to ignore validation when spread is used ([#840][])
+* Fix `jsx-closing-bracket-location` for multi-line prop ([#889][])
+* Fix `jsx-indent` in multi-line function calls ([#895][])
+* Fix `jsx-indent` in multi-line logical expressions ([#540][])
+
+### Changed
+* Update dependencies
+* Documentation improvements ([#860][] @fson, [#863][] @corydolphin, [#830][] @eelyafi, [#876][] @manovotny, [#877][] @gaearon)
+
+[6.4.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.3.0...v6.4.0
+[#846]: https://github.com/yannickcr/eslint-plugin-react/pull/846
+[#854]: https://github.com/yannickcr/eslint-plugin-react/issues/854
+[#852]: https://github.com/yannickcr/eslint-plugin-react/issues/852
+[#853]: https://github.com/yannickcr/eslint-plugin-react/issues/853
+[#862]: https://github.com/yannickcr/eslint-plugin-react/pull/862
+[#840]: https://github.com/yannickcr/eslint-plugin-react/issues/840
+[#889]: https://github.com/yannickcr/eslint-plugin-react/issues/889
+[#895]: https://github.com/yannickcr/eslint-plugin-react/issues/895
+[#540]: https://github.com/yannickcr/eslint-plugin-react/issues/540
+[#860]: https://github.com/yannickcr/eslint-plugin-react/pull/860
+[#863]: https://github.com/yannickcr/eslint-plugin-react/pull/863
+[#830]: https://github.com/yannickcr/eslint-plugin-react/pull/830
+[#876]: https://github.com/yannickcr/eslint-plugin-react/pull/876
+[#877]: https://github.com/yannickcr/eslint-plugin-react/pull/877
+
 ## [6.3.0] - 2016-09-20
 ### Added
 * Add `no-children-prop` rule ([#720][] @benstepp)
