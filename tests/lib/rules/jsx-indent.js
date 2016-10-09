@@ -167,6 +167,26 @@ ruleTester.run('jsx-indent', rule, {
     ].join('\n'),
     parserOptions: parserOptions,
     options: [2]
+  }, {
+    code: [
+      '{head.title && (',
+      '  <h1>',
+      '    {head.title}',
+      '  </h1>',
+      ')}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [2]
+  }, {
+    code: [
+      '{head.title &&',
+      '  <h1>',
+      '    {head.title}',
+      '  </h1>',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [2]
   }],
 
   invalid: [{
