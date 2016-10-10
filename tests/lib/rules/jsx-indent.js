@@ -167,6 +167,15 @@ ruleTester.run('jsx-indent', rule, {
     ].join('\n'),
     parserOptions: parserOptions,
     options: [2]
+  }, {
+    code: [
+      '[',
+      '  <div />,',
+      '  <div />',
+      ']'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [2]
   }],
 
   invalid: [{
@@ -319,6 +328,24 @@ ruleTester.run('jsx-indent', rule, {
     options: ['tab'],
     errors: [
       {message: 'Expected indentation of 1 tab character but found 0.'}
+    ]
+  }, {
+    code: [
+      '[',
+      '  <div />,',
+      '    <div />',
+      ']'
+    ].join('\n'),
+    output: [
+      '[',
+      '  <div />,',
+      '  <div />',
+      ']'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [2],
+    errors: [
+      {message: 'Expected indentation of 2 space characters but found 4.'}
     ]
   }
   // Tests for future work. See the comment on line 42-43 in the rule near to fixable: 'whitespace' meta property,
