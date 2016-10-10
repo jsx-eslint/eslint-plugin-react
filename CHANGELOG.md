@@ -3,6 +3,16 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.4.1] - 2016-10-10
+### Fixed
+* Fix `jsx-indent` for arrays ([#897][], [#898][])
+* Fix `jsx-indent` to allow multi-line logical expressions with one level of indent ([#896][])
+
+[6.4.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.4.0...v6.4.1
+[#897]: https://github.com/yannickcr/eslint-plugin-react/issues/897
+[#898]: https://github.com/yannickcr/eslint-plugin-react/issues/898
+[#896]: https://github.com/yannickcr/eslint-plugin-react/pull/896
+
 ## [6.4.0] - 2016-10-09
 ### Added
 * Add `skipUndeclared` option to `prop-types` ([#846][] @pfhayes)
