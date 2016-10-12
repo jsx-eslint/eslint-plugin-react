@@ -187,6 +187,17 @@ ruleTester.run('jsx-indent', rule, {
     ].join('\n'),
     parserOptions: parserOptions,
     options: [2]
+  }, {
+    // Literals indentation is not touched
+    code: [
+      '<div>',
+      'bar <div>',
+      '   bar',
+      '   bar {foo}',
+      'bar </div>',
+      '</div>'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
