@@ -101,6 +101,13 @@ ruleTester.run('forbid-component-props', rule, {
     ].join('\n'),
     options: [{forbid: ['style']}],
     parserOptions: parserOptions
+  }, {
+    code: [
+      'const First = (props) => (',
+      '  <this.Foo {...props} />',
+      ');'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
