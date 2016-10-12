@@ -398,6 +398,334 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
     parserOptions: parserOptions
+  }, {
+    code: [
+      '<App ',
+      '\tfoo',
+      '/>'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App ',
+      '\tfoo />'
+    ].join('\n'),
+    options: ['after-props'],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App ',
+      '\tfoo',
+      '\t/>'
+    ].join('\n'),
+    options: ['props-aligned'],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App ',
+      '\tfoo />'
+    ].join('\n'),
+    options: [{location: 'after-props'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App ',
+      '\tfoo',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App ',
+      '\tfoo',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App ',
+      '\tfoo',
+      '\t/>'
+    ].join('\n'),
+    options: [{location: 'props-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App',
+      '\tfoo',
+      '></App>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App',
+      '\tfoo',
+      '></App>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App',
+      '\tfoo',
+      '\t></App>'
+    ].join('\n'),
+    options: [{location: 'props-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App',
+      '\tfoo={function() {',
+      '\t\tconsole.log(\'bar\');',
+      '\t}} />'
+    ].join('\n'),
+    options: [{location: 'after-props'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App',
+      '\tfoo={function() {',
+      '\t\tconsole.log(\'bar\');',
+      '\t}}',
+      '\t/>'
+    ].join('\n'),
+    options: [{location: 'props-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App',
+      '\tfoo={function() {',
+      '\t\tconsole.log(\'bar\');',
+      '\t}}',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App',
+      '\tfoo={function() {',
+      '\t\tconsole.log(\'bar\');',
+      '\t}}',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App foo={function() {',
+      '\tconsole.log(\'bar\');',
+      '}}/>'
+    ].join('\n'),
+    options: [{location: 'after-props'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App foo={function() {',
+      '\t\t\tconsole.log(\'bar\');',
+      '\t\t}}',
+      '\t\t/>'
+    ].join('\n'),
+    options: [{location: 'props-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App foo={function() {',
+      '\tconsole.log(\'bar\');',
+      '}}',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App foo={function() {',
+      '\tconsole.log(\'bar\');',
+      '}}',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<Provider store>',
+      '\t<App',
+      '\t\tfoo />',
+      '</Provider>'
+    ].join('\n'),
+    options: [{selfClosing: 'after-props'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<Provider ',
+      '\tstore',
+      '>',
+      '\t<App',
+      '\t\tfoo />',
+      '</Provider>'
+    ].join('\n'),
+    options: [{selfClosing: 'after-props'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<Provider ',
+      '\tstore>',
+      '\t<App ',
+      '\t\tfoo',
+      '\t/>',
+      '</Provider>'
+    ].join('\n'),
+    options: [{nonEmpty: 'after-props'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<Provider store>',
+      '\t<App ',
+      '\t\tfoo',
+      '\t\t/>',
+      '</Provider>'
+    ].join('\n'),
+    options: [{selfClosing: 'props-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<Provider',
+      '\tstore',
+      '\t>',
+      '\t<App ',
+      '\t\tfoo',
+      '\t/>',
+      '</Provider>'
+    ].join('\n'),
+    options: [{nonEmpty: 'props-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'var x = function() {',
+      '\treturn <App',
+      '\t\tfoo',
+      '\t\t\t\t>',
+      '\t\t\tbar',
+      '\t       </App>',
+      '}'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'var x = function() {',
+      '\treturn <App',
+      '\t\tfoo',
+      '\t       />',
+      '}'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'var x = <App',
+      '\tfoo',
+      '        />'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'var x = function() {',
+      '\treturn <App',
+      '\t\tfoo={function() {',
+      '\t\t\tconsole.log(\'bar\');',
+      '\t\t}}',
+      '\t/>',
+      '}'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'var x = <App',
+      '\tfoo={function() {',
+      '\t\tconsole.log(\'bar\');',
+      '\t}}',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<Provider',
+      '\tstore',
+      '>',
+      '\t<App',
+      '\t\tfoo={function() {',
+      '\t\t\tconsole.log(\'bar\');',
+      '\t\t}}',
+      '\t/>',
+      '</Provider>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<Provider',
+      '\tstore',
+      '>',
+      '\t{baz && <App',
+      '\t\tfoo={function() {',
+      '\t\t\tconsole.log(\'bar\');',
+      '\t\t}}',
+      '\t/>}',
+      '</Provider>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App>',
+      '\t<Foo',
+      '\t\tbar',
+      '\t>',
+      '\t</Foo>',
+      '\t<Foo',
+      '\t\tbar />',
+      '</App>'
+    ].join('\n'),
+    options: [{
+      nonEmpty: false,
+      selfClosing: 'after-props'
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App>',
+      '\t<Foo',
+      '\t\tbar>',
+      '\t</Foo>',
+      '\t<Foo',
+      '\t\tbar',
+      '\t/>',
+      '</App>'
+    ].join('\n'),
+    options: [{
+      nonEmpty: 'after-props',
+      selfClosing: false
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div className={[',
+      '\t"some",',
+      '\t"stuff",',
+      '\t2 ]}',
+      '>',
+      '\tSome text',
+      '</div>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -958,6 +1286,535 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, true),
       line: 4,
       column: 7
+    }]
+  }, {
+    code: [
+      '<App ',
+      '\tfoo />'
+    ].join('\n'),
+    output: [
+      '<App ',
+      '\tfoo',
+      '\t/>'
+    ].join('\n'),
+    options: [{location: 'props-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 3, true),
+      line: 2,
+      column: 6
+    }]
+  }, {
+    code: [
+      '<App ',
+      '\tfoo />'
+    ].join('\n'),
+    output: [
+      '<App ',
+      '\tfoo',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, true),
+      line: 2,
+      column: 6
+    }]
+  }, {
+    code: [
+      '<App ',
+      '\tfoo />'
+    ].join('\n'),
+    output: [
+      '<App ',
+      '\tfoo',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 1, true),
+      line: 2,
+      column: 6
+    }]
+  }, {
+    code: [
+      '<App ',
+      '\tfoo',
+      '/>'
+    ].join('\n'),
+    output: [
+      '<App ',
+      '\tfoo/>'
+    ].join('\n'),
+    options: [{location: 'after-props'}],
+    parserOptions: parserOptions,
+    errors: MESSAGE_AFTER_PROPS
+  }, {
+    code: [
+      '<App ',
+      '\tfoo',
+      '/>'
+    ].join('\n'),
+    output: [
+      '<App ',
+      '\tfoo',
+      '\t/>'
+    ].join('\n'),
+    options: [{location: 'props-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 3, false),
+      line: 3,
+      column: 1
+    }]
+  }, {
+    code: [
+      '<App ',
+      '\tfoo',
+      '\t/>'
+    ].join('\n'),
+    output: [
+      '<App ',
+      '\tfoo/>'
+    ].join('\n'),
+    options: [{location: 'after-props'}],
+    parserOptions: parserOptions,
+    errors: MESSAGE_AFTER_PROPS
+  }, {
+    code: [
+      '<App ',
+      '\tfoo',
+      '\t/>'
+    ].join('\n'),
+    output: [
+      '<App ',
+      '\tfoo',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, false),
+      line: 3,
+      column: 2
+    }]
+  }, {
+    code: [
+      '<App ',
+      '\tfoo',
+      '\t/>'
+    ].join('\n'),
+    output: [
+      '<App ',
+      '\tfoo',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 1, false),
+      line: 3,
+      column: 2
+    }]
+  }, {
+    code: [
+      '<App',
+      '\tfoo',
+      '></App>'
+    ].join('\n'),
+    output: [
+      '<App',
+      '\tfoo></App>'
+    ].join('\n'),
+    options: [{location: 'after-props'}],
+    parserOptions: parserOptions,
+    errors: MESSAGE_AFTER_PROPS
+  }, {
+    code: [
+      '<App',
+      '\tfoo',
+      '></App>'
+    ].join('\n'),
+    output: [
+      '<App',
+      '  foo',
+      '  ></App>'
+    ].join('\n'),
+    options: [{location: 'props-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 3, false),
+      line: 3,
+      column: 1
+    }]
+  }, {
+    code: [
+      '<App',
+      '\tfoo',
+      '\t></App>'
+    ].join('\n'),
+    output: [
+      '<App',
+      '\tfoo></App>'
+    ].join('\n'),
+    options: [{location: 'after-props'}],
+    parserOptions: parserOptions,
+    errors: MESSAGE_AFTER_PROPS
+  }, {
+    code: [
+      '<App',
+      '\tfoo',
+      '\t></App>'
+    ].join('\n'),
+    output: [
+      '<App',
+      '  foo',
+      '></App>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, false),
+      line: 3,
+      column: 2
+    }]
+  }, {
+    code: [
+      '<App',
+      '\tfoo',
+      '\t></App>'
+    ].join('\n'),
+    output: [
+      '<App',
+      '\tfoo',
+      '></App>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 1, false),
+      line: 3,
+      column: 2
+    }]
+  }, {
+    code: [
+      '<Provider ',
+      '\tstore>', // <--
+      '\t<App ',
+      '\t\tfoo',
+      '\t\t/>',
+      '</Provider>'
+    ].join('\n'),
+    output: [
+      '<Provider ',
+      '\tstore',
+      '>',
+      '\t<App ',
+      '\t\tfoo',
+      '\t\t/>',
+      '</Provider>'
+    ].join('\n'),
+    options: [{selfClosing: 'props-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, true),
+      line: 2,
+      column: 7
+    }]
+  }, {
+    code: [
+      'const Button = function(props) {',
+      '\treturn (',
+      '\t\t<Button',
+      '\t\t\tsize={size}',
+      '\t\t\tonClick={onClick}',
+      '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t>',
+      '\t\t\tButton Text',
+      '\t\t</Button>',
+      '\t);',
+      '};'
+    ].join('\n'),
+    output: [
+      'const Button = function(props) {',
+      '\treturn (',
+      '\t\t<Button',
+      '\t\t\tsize={size}',
+      '\t\t\tonClick={onClick}',
+      '\t\t\t>',
+      '\t\t\tButton Text',
+      '\t\t</Button>',
+      '\t);',
+      '};'
+    ].join('\n'),
+    options: ['props-aligned'],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 7, false),
+      line: 6,
+      column: 19
+    }]
+  }, {
+    code: [
+      'const Button = function(props) {',
+      '\treturn (',
+      '\t\t<Button',
+      '\t\t\tsize={size}',
+      '\t\t\tonClick={onClick}',
+      '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t>',
+      '\t\t\tButton Text',
+      '\t\t</Button>',
+      '\t);',
+      '};'
+    ].join('\n'),
+    output: [
+      'const Button = function(props) {',
+      '\treturn (',
+      '\t\t<Button',
+      '\t\t\tsize={size}',
+      '\t\t\tonClick={onClick}',
+      '\t\t>',
+      '\t\t\tButton Text',
+      '\t\t</Button>',
+      '\t);',
+      '};'
+    ].join('\n'),
+    options: ['tag-aligned'],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 5, false),
+      line: 6,
+      column: 19
+    }]
+  }, {
+    code: [
+      'const Button = function(props) {',
+      '\treturn (',
+      '\t\t<Button',
+      '\t\t\tsize={size}',
+      '\t\t\tonClick={onClick}',
+      '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t>',
+      '\t\t\tButton Text',
+      '\t\t</Button>',
+      '\t);',
+      '};'
+    ].join('\n'),
+    output: [
+      'const Button = function(props) {',
+      '\treturn (',
+      '\t\t<Button',
+      '\t\t\tsize={size}',
+      '\t\t\tonClick={onClick}',
+      '\t\t>',
+      '\t\t\tButton Text',
+      '\t\t</Button>',
+      '\t);',
+      '};'
+    ].join('\n'),
+    options: ['line-aligned'],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 5, false),
+      line: 6,
+      column: 19
+    }]
+  }, {
+    code: [
+      '<Provider',
+      '\tstore',
+      '\t>',
+      '\t<App ',
+      '\t\tfoo',
+      '\t\t/>', // <--
+      '</Provider>'
+    ].join('\n'),
+    output: [
+      '<Provider',
+      '\tstore',
+      '\t>',
+      '\t<App ',
+      '\t\tfoo',
+      '\t/>',
+      '</Provider>'
+    ].join('\n'),
+    options: [{nonEmpty: 'props-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 3, false),
+      line: 6,
+      column: 3
+    }]
+  }, {
+    code: [
+      '<Provider ',
+      '\tstore>', // <--
+      '\t<App',
+      '\t\tfoo />',
+      '</Provider>'
+    ].join('\n'),
+    output: [
+      '<Provider ',
+      '\tstore',
+      '>',
+      '\t<App',
+      '\t\tfoo />',
+      '</Provider>'
+    ].join('\n'),
+    options: [{selfClosing: 'after-props'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, true),
+      line: 2,
+      column: 7
+    }]
+  }, {
+    code: [
+      '<Provider ',
+      '\tstore>',
+      '\t<App ',
+      '\t\tfoo',
+      '\t\t/>', // <--
+      '</Provider>'
+    ].join('\n'),
+    output: [
+      '<Provider ',
+      '\tstore>',
+      '\t<App ',
+      '\t\tfoo',
+      '\t/>', // <--
+      '</Provider>'
+    ].join('\n'),
+    options: [{nonEmpty: 'after-props'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 3, false),
+      line: 5,
+      column: 3
+    }]
+  }, {
+    code: [
+      'var x = function() {',
+      '\treturn <App',
+      '\t\tfoo',
+      '\t\t\t\t />',
+      '}'
+    ].join('\n'),
+    output: [
+      'var x = function() {',
+      '\treturn <App',
+      '\t\tfoo',
+      '\t/>',
+      '}'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 3, false),
+      line: 4,
+      column: 6
+    }]
+  }, {
+    code: [
+      'var x = <App',
+      '\tfoo',
+      '        />'
+    ].join('\n'),
+    output: [
+      'var x = <App',
+      '\tfoo',
+      '/>'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 1, false),
+      line: 3,
+      column: 9
+    }]
+  }, {
+    code: [
+      'var x = (',
+      '\t<div',
+      '\t\tclassName="MyComponent"',
+      '\t\t{...props} />',
+      ')'
+    ].join('\n'),
+    output: [
+      'var x = (',
+      '\t<div',
+      '\t\tclassName="MyComponent"',
+      '\t\t{...props}',
+      '\t/>',
+      ')'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 3, true),
+      line: 4,
+      column: 14
+    }]
+  }, {
+    code: [
+      'var x = (',
+      '\t<Something',
+      '\t\tcontent={<Foo />} />',
+      ')'
+    ].join('\n'),
+    output: [
+      'var x = (',
+      '\t<Something',
+      '\t\tcontent={<Foo />}',
+      '\t/>',
+      ')'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 3, true),
+      line: 3,
+      column: 21
+    }]
+  }, {
+    code: [
+      'var x = (',
+      '\t<Something ',
+      '\t\t/>',
+      ')'
+    ].join('\n'),
+    output: [
+      'var x = (',
+      '\t<Something />',
+      ')'
+    ].join('\n'),
+    options: [{location: 'line-aligned'}],
+    parserOptions: parserOptions,
+    errors: [MESSAGE_AFTER_TAG]
+  }, {
+    code: [
+      '<div className={[',
+      '\t"some",',
+      '\t"stuff",',
+      '\t2 ]}>',
+      '\tSome text',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div className={[',
+      '\t"some",',
+      '\t"stuff",',
+      '\t2 ]}',
+      '>',
+      '\tSome text',
+      '</div>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    parserOptions: parserOptions,
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 1, true),
+      line: 4,
+      column: 6
     }]
   }]
 });
