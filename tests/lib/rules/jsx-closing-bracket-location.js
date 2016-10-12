@@ -527,7 +527,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       '<App foo={function() {',
       '\t\t\tconsole.log(\'bar\');',
       '\t\t}}',
-      '\t\t/>'
+      '     />'
     ].join('\n'),
     options: [{location: 'props-aligned'}],
     parserOptions: parserOptions
@@ -607,7 +607,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       'var x = function() {',
       '\treturn <App',
       '\t\tfoo',
-      '\t\t\t\t>',
+      '\t       >',
       '\t\t\tbar',
       '\t       </App>',
       '}'
@@ -1300,7 +1300,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     options: [{location: 'props-aligned'}],
     parserOptions: parserOptions,
     errors: [{
-      message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 3, true),
+      message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 2, true),
       line: 2,
       column: 6
     }]
@@ -1365,7 +1365,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     options: [{location: 'props-aligned'}],
     parserOptions: parserOptions,
     errors: [{
-      message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 3, false),
+      message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 2, false),
       line: 3,
       column: 1
     }]
@@ -1439,13 +1439,13 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     output: [
       '<App',
-      '  foo',
-      '  ></App>'
+      '\tfoo',
+      '\t></App>'
     ].join('\n'),
     options: [{location: 'props-aligned'}],
     parserOptions: parserOptions,
     errors: [{
-      message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 3, false),
+      message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 2, false),
       line: 3,
       column: 1
     }]
@@ -1470,7 +1470,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     ].join('\n'),
     output: [
       '<App',
-      '  foo',
+      '\tfoo',
       '></App>'
     ].join('\n'),
     options: [{location: 'tag-aligned'}],
@@ -1551,7 +1551,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     options: ['props-aligned'],
     parserOptions: parserOptions,
     errors: [{
-      message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 7, false),
+      message: messageWithDetails(MESSAGE_PROPS_ALIGNED, 4, false),
       line: 6,
       column: 19
     }]
@@ -1583,7 +1583,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     options: ['tag-aligned'],
     parserOptions: parserOptions,
     errors: [{
-      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 5, false),
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 3, false),
       line: 6,
       column: 19
     }]
@@ -1615,7 +1615,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     options: ['line-aligned'],
     parserOptions: parserOptions,
     errors: [{
-      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 5, false),
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 3, false),
       line: 6,
       column: 19
     }]
@@ -1641,7 +1641,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     options: [{nonEmpty: 'props-aligned'}],
     parserOptions: parserOptions,
     errors: [{
-      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 3, false),
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 2, false),
       line: 6,
       column: 3
     }]
@@ -1688,7 +1688,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     options: [{nonEmpty: 'after-props'}],
     parserOptions: parserOptions,
     errors: [{
-      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 3, false),
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 2, false),
       line: 5,
       column: 3
     }]
@@ -1710,7 +1710,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     options: [{location: 'line-aligned'}],
     parserOptions: parserOptions,
     errors: [{
-      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 3, false),
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 2, false),
       line: 4,
       column: 6
     }]
@@ -1751,7 +1751,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     options: [{location: 'line-aligned'}],
     parserOptions: parserOptions,
     errors: [{
-      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 3, true),
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 2, true),
       line: 4,
       column: 14
     }]
@@ -1772,7 +1772,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     options: [{location: 'line-aligned'}],
     parserOptions: parserOptions,
     errors: [{
-      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 3, true),
+      message: messageWithDetails(MESSAGE_LINE_ALIGNED, 2, true),
       line: 3,
       column: 21
     }]
