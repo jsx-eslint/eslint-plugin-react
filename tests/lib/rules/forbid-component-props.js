@@ -81,6 +81,17 @@ ruleTester.run('forbid-component-props', rule, {
     ].join('\n'),
     options: [{forbid: ['style', 'foo']}],
     parserOptions: parserOptions
+  }, {
+    code: [
+      'var First = React.createClass({',
+      '  propTypes: externalPropTypes,',
+      '  render: function() {',
+      '    return <this.Foo className="bar" />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{forbid: ['style', 'foo']}],
+    parserOptions: parserOptions
   }],
 
   invalid: [{
