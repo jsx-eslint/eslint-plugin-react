@@ -23,6 +23,20 @@ describe('all rule files should be exported by the plugin', function() {
   });
 });
 
+describe('deprecated rules', function() {
+  it('marks all deprecated rules as deprecated', function() {
+    ruleFiles.forEach(function(ruleName) {
+      var inDeprecatedRules = Boolean(plugin.deprecatedRules[ruleName]);
+      var isDeprecated = plugin.rules[ruleName].meta.deprecated;
+      if (inDeprecatedRules) {
+        assert(isDeprecated, ruleName + ' metadata should mark it as deprecated');
+      } else {
+        assert(!isDeprecated, ruleName + ' metadata should not mark it as deprecated');
+      }
+    });
+  });
+});
+
 describe('configurations', function() {
   it('should export a \'recommended\' configuration', function() {
     assert(plugin.configs.recommended);
