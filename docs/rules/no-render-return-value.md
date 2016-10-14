@@ -8,14 +8,14 @@ Source: [React Top-Level API documentation](http://facebook.github.io/react/docs
 
 This rule will warn you if you try to use the `ReactDOM.render()` return value.
 
-The following pattern is considered warning:
+The following pattern is considered a warning:
 
 ```js
 const inst = ReactDOM.render(<App />, document.body);
 doSomethingWithInst(inst);
 ```
 
-The following patterns are not considered warning:
+The following patterns are not considered warnings:
 
 ```js
 ReactDOM.render(<App ref={doSomethingWithInst} />, document.body);
