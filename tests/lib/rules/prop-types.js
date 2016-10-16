@@ -1277,6 +1277,9 @@ ruleTester.run('prop-types', rule, {
         '  return names.map((name) => {',
         '    return <div>{name}</div>;',
         '  });',
+        '}',
+        'Hello.propTypes = {',
+        '  names: React.PropTypes.string',
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
