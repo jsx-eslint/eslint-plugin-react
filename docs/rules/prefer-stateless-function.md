@@ -8,7 +8,7 @@ This rule will check your class based React components for
 
 * methods/properties other than `displayName`, `propTypes`, `render` and useless constructor (same detection as ESLint [no-useless-constructor rule](http://eslint.org/docs/rules/no-useless-constructor))
 * instance property other than `this.props` and `this.context`
-* extension of `React.PureComponent` ()
+* extension of `React.PureComponent` (if the `ignorePureComponents` flag is true)
 * presence of `ref` attribute in JSX
 * `render` method that return anything but JSX: `undefined`, `null`, etc. (only in React <15.0.0, see [shared settings](https://github.com/yannickcr/eslint-plugin-react/blob/master/README.md#configuration) for React version configuration)
 
