@@ -155,7 +155,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
       code: '<Foo prop="one" />',
       output: [
         '<Foo',
-        '  prop="one" />'
+        'prop="one" />'
       ].join('\n'),
       options: ['always'],
       errors: [{message: 'Property should be placed on a new line'}],
@@ -169,43 +169,11 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
       ].join('\n'),
       output: [
         '<Foo',
-        '  propOne="one"',
+        'propOne="one"',
         '  propTwo="two"',
         '/>'
       ].join('\n'),
       options: ['always'],
-      errors: [{message: 'Property should be placed on a new line'}],
-      parser: parserOptions
-    },
-    {
-      code: [
-        '    <Foo propOne="one"',
-        '        propTwo="two"',
-        '    />'
-      ].join('\n'),
-      output: [
-        '    <Foo',
-        '        propOne="one"',
-        '        propTwo="two"',
-        '    />'
-      ].join('\n'),
-      options: ['always', 4],
-      errors: [{message: 'Property should be placed on a new line'}],
-      parser: parserOptions
-    },
-    {
-      code: [
-        '\t<Foo propOne="one"',
-        '\t\tpropTwo="two"',
-        '\t/>'
-      ].join('\n'),
-      output: [
-        '\t<Foo',
-        '\t\tpropOne="one"',
-        '\t\tpropTwo="two"',
-        '\t/>'
-      ].join('\n'),
-      options: ['always', 'tab'],
       errors: [{message: 'Property should be placed on a new line'}],
       parser: parserOptions
     },
