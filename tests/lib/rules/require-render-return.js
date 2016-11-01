@@ -203,5 +203,5 @@ ruleTester.run('require-render-return', rule, {
     errors: [{
       message: 'Your render method should have return statement'
     }]
-  }
-]});
+  }]
+});

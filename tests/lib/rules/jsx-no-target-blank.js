@@ -35,18 +35,29 @@ ruleTester.run('jsx-no-target-blank', rule, {
     {code: '<a target="_blank" rel={relValue}></a>', parserOptions: parserOptions},
     {code: '<a target={targetValue} rel="noopener noreferrer"></a>', parserOptions: parserOptions}
   ],
-  invalid: [
-    {code: '<a target="_blank"></a>', parserOptions: parserOptions,
-     errors: [{message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
-      ' see https://mathiasbynens.github.io/rel-noopener'}]},
-    {code: '<a target="_blank" rel=""></a>', parserOptions: parserOptions,
-     errors: [{message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
-      ' see https://mathiasbynens.github.io/rel-noopener'}]},
-    {code: '<a target="_blank" rel="noopenernoreferrer"></a>', parserOptions: parserOptions,
-     errors: [{message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
-      ' see https://mathiasbynens.github.io/rel-noopener'}]},
-    {code: '<a target="_BLANK"></a>', parserOptions: parserOptions,
-     errors: [{message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
-      ' see https://mathiasbynens.github.io/rel-noopener'}]}
+  invalid: [{
+    code: '<a target="_blank"></a>', parserOptions: parserOptions,
+    errors: [{
+      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
+      ' see https://mathiasbynens.github.io/rel-noopener'
+    }]
+  }, {
+    code: '<a target="_blank" rel=""></a>', parserOptions: parserOptions,
+    errors: [{
+      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
+      ' see https://mathiasbynens.github.io/rel-noopener'
+    }]
+  }, {
+    code: '<a target="_blank" rel="noopenernoreferrer"></a>', parserOptions: parserOptions,
+    errors: [{
+      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
+      ' see https://mathiasbynens.github.io/rel-noopener'
+    }]
+  }, {
+    code: '<a target="_BLANK"></a>', parserOptions: parserOptions,
+    errors: [{
+      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
+      ' see https://mathiasbynens.github.io/rel-noopener'
+    }]}
   ]
 });

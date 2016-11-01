@@ -51,22 +51,26 @@ ruleTester.run('react-in-jsx-scope', rule, {
       '  }',
       '});',
       'export default Button;'
-    ].join('\n'),
-    parserOptions: parserOptions},
+    ].join('\n'), parserOptions: parserOptions},
     {code: 'var Foo, App; <App />;', settings: settings, parserOptions: parserOptions}
   ],
-  invalid: [
-    {code: 'var App, a = <App />;',
-     errors: [{message: '\'React\' must be in scope when using JSX'}], parserOptions: parserOptions},
-    {code: 'var a = <App />;',
-     errors: [{message: '\'React\' must be in scope when using JSX'}], parserOptions: parserOptions},
-    {code: 'var a = <img />;',
-     errors: [{message: '\'React\' must be in scope when using JSX'}], parserOptions: parserOptions},
-    {code: '/** @jsx React.DOM */ var a = <img />;',
-     errors: [{message: '\'React\' must be in scope when using JSX'}], parserOptions: parserOptions},
-    {code: '/** @jsx Foo.bar */ var React, a = <img />;',
-     errors: [{message: '\'Foo\' must be in scope when using JSX'}], parserOptions: parserOptions},
-    {code: 'var React, a = <img />;',
-     errors: [{message: '\'Foo\' must be in scope when using JSX'}], settings: settings, parserOptions: parserOptions}
-  ]
+  invalid: [{
+    code: 'var App, a = <App />;',
+    errors: [{message: '\'React\' must be in scope when using JSX'}], parserOptions: parserOptions
+  }, {
+    code: 'var a = <App />;',
+    errors: [{message: '\'React\' must be in scope when using JSX'}], parserOptions: parserOptions
+  }, {
+    code: 'var a = <img />;',
+    errors: [{message: '\'React\' must be in scope when using JSX'}], parserOptions: parserOptions
+  }, {
+    code: '/** @jsx React.DOM */ var a = <img />;',
+    errors: [{message: '\'React\' must be in scope when using JSX'}], parserOptions: parserOptions
+  }, {
+    code: '/** @jsx Foo.bar */ var React, a = <img />;',
+    errors: [{message: '\'Foo\' must be in scope when using JSX'}], parserOptions: parserOptions
+  }, {
+    code: 'var React, a = <img />;',
+    errors: [{message: '\'Foo\' must be in scope when using JSX'}], settings: settings, parserOptions: parserOptions
+  }]
 });

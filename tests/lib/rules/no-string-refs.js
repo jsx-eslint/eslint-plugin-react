@@ -110,5 +110,5 @@ ruleTester.run('no-refs', rule, {
     }, {
       message: 'Using string literals in ref attributes is deprecated.'
     }]
-  }
-]});
+  }]
+});

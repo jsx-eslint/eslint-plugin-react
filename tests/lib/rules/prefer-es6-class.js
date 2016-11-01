@@ -115,5 +115,5 @@ ruleTester.run('prefer-es6-class', rule, {
     errors: [{
       message: 'Component should use createClass instead of es6 class'
     }]
-  }
-]});
+  }]
+});

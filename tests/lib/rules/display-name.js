@@ -378,8 +378,7 @@ ruleTester.run('display-name', rule, {
       ')'
     ].join('\n'),
     parser: 'babel-eslint'
-  }
-],
+  }],
 
   invalid: [{
     code: [
@@ -549,5 +548,5 @@ ruleTester.run('display-name', rule, {
     errors: [{
       message: 'Component definition is missing display name'
     }]
-  }
-]});
+  }]
+});

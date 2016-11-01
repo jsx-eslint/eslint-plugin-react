@@ -39,12 +39,14 @@ ruleTester.run('no-unused-vars', rule, {
     {code: '/*eslint jsx-uses-react:1*/ /** @jsx Foo */ var Foo; <div />;', parserOptions: parserOptions},
     {code: '/*eslint jsx-uses-react:1*/ var Foo; <div />;', settings: settings, parserOptions: parserOptions}
   ],
-  invalid: [
-    {code: '/*eslint jsx-uses-react:1*/ var React;',
-     errors: [{message: '\'React\' is defined but never used.'}], parserOptions: parserOptions},
-    {code: '/*eslint jsx-uses-react:1*/ /** @jsx Foo */ var React; <div />;',
-     errors: [{message: '\'React\' is defined but never used.'}], parserOptions: parserOptions},
-    {code: '/*eslint jsx-uses-react:1*/ var React; <div />;',
-     errors: [{message: '\'React\' is defined but never used.'}], settings: settings, parserOptions: parserOptions}
-  ]
+  invalid: [{
+    code: '/*eslint jsx-uses-react:1*/ var React;',
+    errors: [{message: '\'React\' is defined but never used.'}], parserOptions: parserOptions
+  }, {
+    code: '/*eslint jsx-uses-react:1*/ /** @jsx Foo */ var React; <div />;',
+    errors: [{message: '\'React\' is defined but never used.'}], parserOptions: parserOptions
+  }, {
+    code: '/*eslint jsx-uses-react:1*/ var React; <div />;',
+    errors: [{message: '\'React\' is defined but never used.'}], settings: settings, parserOptions: parserOptions
+  }]
 });

@@ -29,14 +29,17 @@ ruleTester.run('jsx-boolean-value', rule, {
     {code: '<App foo />;', parserOptions: parserOptions},
     {code: '<App foo={true} />;', options: ['always'], parserOptions: parserOptions}
   ],
-  invalid: [
-    {code: '<App foo={true} />;', output: '<App foo />;', options: ['never'],
-     errors: [{message: 'Value must be omitted for boolean attributes'}], parserOptions: parserOptions},
-    {code: '<App foo={true} />;', output: '<App foo />;',
-     errors: [{message: 'Value must be omitted for boolean attributes'}], parserOptions: parserOptions},
-    {code: '<App foo = {true} />;', output: '<App foo />;',
-     errors: [{message: 'Value must be omitted for boolean attributes'}], parserOptions: parserOptions},
-    {code: '<App foo />;', output: '<App foo={true} />;', options: ['always'],
-     errors: [{message: 'Value must be set for boolean attributes'}], parserOptions: parserOptions}
-  ]
+  invalid: [{
+    code: '<App foo={true} />;', output: '<App foo />;', options: ['never'],
+    errors: [{message: 'Value must be omitted for boolean attributes'}], parserOptions: parserOptions
+  }, {
+    code: '<App foo={true} />;', output: '<App foo />;',
+    errors: [{message: 'Value must be omitted for boolean attributes'}], parserOptions: parserOptions
+  }, {
+    code: '<App foo = {true} />;', output: '<App foo />;',
+    errors: [{message: 'Value must be omitted for boolean attributes'}], parserOptions: parserOptions
+  }, {
+    code: '<App foo />;', output: '<App foo={true} />;', options: ['always'],
+    errors: [{message: 'Value must be set for boolean attributes'}], parserOptions: parserOptions
+  }]
 });
