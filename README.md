@@ -151,9 +151,6 @@ To enable this configuration use the `extends` property in your `.eslintrc` conf
 
 ```js
 {
-  "plugins": [
-    "react"
-  ],
   "extends": ["eslint:recommended", "plugin:react/recommended"]
 }
 ```
@@ -177,8 +174,6 @@ The rules enabled in this configuration are:
 * [react/react-in-jsx-scope](docs/rules/react-in-jsx-scope.md)
 * [react/require-render-return](docs/rules/require-render-return.md)
 
-**Note**: This configuration will also enable JSX in [parser options](http://eslint.org/docs/user-guide/configuring#specifying-parser-options).
-
 ## All
 
 This plugin also exports an `all` configuration that includes every available rule.
@@ -192,6 +187,8 @@ This pairs well with the `eslint:all` rule.
   "extends": ["eslint:all", "plugin:react/all"]
 }
 ```
+
+**Note**: These configurations will import `eslint-plugin-react` and enable JSX in [parser options](http://eslint.org/docs/user-guide/configuring#specifying-parser-options).
 
 # License
 
