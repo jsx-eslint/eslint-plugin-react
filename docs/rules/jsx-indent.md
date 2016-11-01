@@ -3,7 +3,7 @@
 This option validates a specific indentation style for JSX.
 
 **Fixable:** This rule is automatically fixable using the `--fix` flag on the command line. 
-Fixer will fix whitespace and tabs indentation. It won't replace tabs with whitespaces and vice-versa.
+Fixer will fix whitespace and tabs indentation.
 
 ## Rule Details
 
