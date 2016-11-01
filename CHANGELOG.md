@@ -3,6 +3,35 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.5.0] - 2016-11-01
+### Added
+* Add tab support to [`jsx-closing-bracket-location`] auto fixer ([#909][] @arperry)
+* Add tab and space support to [`jsx-indent`] auto fixer ([#608][] @jayphelps)
+* Add `multiline-multiprop` option to [`jsx-first-prop-new-line`] ([#883][] @kentor)
+
+### Fixed
+* Fix [`forbid-component-props`] crash with self reference JSX element ([#839][] @xeodou)
+* Fix [`jsx-indent`] to ignore lines starting by literals ([#900][])
+* Fix [`no-set-state`] to correctly detect `setState` in arrow functions ([#931][])
+
+### Changed
+* Update dependencies
+* Add `deprecated` metadata to deprecated rules ([#911][] @randycoulman)
+* Auto-enable `eslint-plugin-react` in exported configurations ([#925][] @MoOx)
+* Documentation improvements ([#910][] @Wilfred, [#932][] @gnarf)
+
+[6.5.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.4.1...v6.5.0
+[#909]: https://github.com/yannickcr/eslint-plugin-react/pull/909
+[#608]: https://github.com/yannickcr/eslint-plugin-react/pull/608
+[#883]: https://github.com/yannickcr/eslint-plugin-react/pull/883
+[#839]: https://github.com/yannickcr/eslint-plugin-react/pull/839
+[#900]: https://github.com/yannickcr/eslint-plugin-react/issues/900
+[#931]: https://github.com/yannickcr/eslint-plugin-react/issues/931
+[#911]: https://github.com/yannickcr/eslint-plugin-react/pull/911
+[#925]: https://github.com/yannickcr/eslint-plugin-react/pull/925
+[#910]: https://github.com/yannickcr/eslint-plugin-react/pull/910
+[#932]: https://github.com/yannickcr/eslint-plugin-react/pull/932
+
 ## [6.4.1] - 2016-10-10
 ### Fixed
 * Fix [`jsx-indent`] for arrays ([#897][], [#898][])
