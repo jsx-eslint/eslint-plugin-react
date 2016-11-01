@@ -107,5 +107,34 @@ ruleTester.run('no-set-state', rule, {
     errors: [{
       message: 'Do not use setState'
     }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  someMethod = () => {',
+      '    this.setState({',
+      '      name: this.props.name.toUpperCase()',
+      '    });',
+      '  }',
+      '  render() {',
+      '    return <div onClick={this.someMethod.bind(this)}>Hello {this.state.name}</div>;',
+      '  }',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Do not use setState'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    return <div onMouseEnter={() => this.setState({dropdownIndex: index})} />;',
+      '  }',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Do not use setState'
+    }]
   }]
 });
