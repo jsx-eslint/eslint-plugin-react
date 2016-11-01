@@ -1,12 +1,6 @@
 'use strict';
 
-var deprecatedRules = {
-  'no-comment-textnodes': require('./lib/rules/no-comment-textnodes'),
-  'require-extension': require('./lib/rules/require-extension'),
-  'wrap-multilines': require('./lib/rules/wrap-multilines')
-};
-
-var rules = {
+var allRules = {
   'jsx-uses-react': require('./lib/rules/jsx-uses-react'),
   'no-multi-comp': require('./lib/rules/no-multi-comp'),
   'prop-types': require('./lib/rules/prop-types'),
@@ -58,32 +52,45 @@ var rules = {
   'no-danger-with-children': require('./lib/rules/no-danger-with-children'),
   'style-prop-object': require('./lib/rules/style-prop-object'),
   'no-unused-prop-types': require('./lib/rules/no-unused-prop-types'),
-  'no-children-prop': require('./lib/rules/no-children-prop')
+  'no-children-prop': require('./lib/rules/no-children-prop'),
+  'no-comment-textnodes': require('./lib/rules/no-comment-textnodes'),
+  'require-extension': require('./lib/rules/require-extension'),
+  'wrap-multilines': require('./lib/rules/wrap-multilines')
 };
 
-var ruleNames = Object.keys(rules);
-var allRules = {};
-for (var i = 0; i < ruleNames.length; i++) {
-  allRules['react/' + ruleNames[i]] = 2;
+function filterRules(rules, predicate) {
+  var result = {};
+  for (var key in rules) {
+    if (rules.hasOwnProperty(key) && predicate(rules[key])) {
+      result[key] = rules[key];
+    }
+  }
+  return result;
 }
 
-var exportedRules = {};
-for (var key in rules) {
-  if (!rules.hasOwnProperty(key)) {
-    continue;
+function configureAsError(rules) {
+  var result = {};
+  for (var key in rules) {
+    if (!rules.hasOwnProperty(key)) {
+      continue;
+    }
+    result['react/' + key] = 2;
   }
-  exportedRules[key] = rules[key];
+  return result;
 }
-for (var deprecatedKey in deprecatedRules) {
-  if (!deprecatedRules.hasOwnProperty(deprecatedKey)) {
-    continue;
-  }
-  exportedRules[deprecatedKey] = deprecatedRules[deprecatedKey];
-}
+
+var activeRules = filterRules(allRules, function(rule) {
+  return !rule.meta.deprecated;
+});
+var activeRulesConfig = configureAsError(activeRules);
+
+var deprecatedRules = filterRules(allRules, function(rule) {
+  return rule.meta.deprecated;
+});
 
 module.exports = {
   deprecatedRules: deprecatedRules,
-  rules: exportedRules,
+  rules: allRules,
   configs: {
     recommended: {
       plugin: [
@@ -120,7 +127,7 @@ module.exports = {
           jsx: true
         }
       },
-      rules: allRules
+      rules: activeRulesConfig
     }
   }
 };
