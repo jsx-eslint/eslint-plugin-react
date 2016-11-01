@@ -35,7 +35,7 @@ The following patterns are not considered warnings:
 
 ```js
 ...
-"forbid-component-props": [<enabled>, { "forbid": [<string>], "forbidPatterns": [<string>], ignoreDomNodes: <boolean> }]
+"forbid-component-props": [<enabled>, { "forbid": [<string>], "forbidPatterns": [<string>], checkDomNodes: <boolean>, ignoreComponents: <boolean> }]
 ...
 ```
 
@@ -47,6 +47,10 @@ An array of strings, with the names of props that are forbidden. The default val
 
 An array of strings, with the patterns of props that are forbidden; you can use `*` as a wildcard. e.g: `['data-*', '*-foo-*']`
 
-### `ignoreDomNodes`
+### `checkDomNodes`
 
-Whether to check forbidden props on DOM nodes (div, input, span, etc...). Defaults to true
+Whether to check forbidden props on DOM nodes (div, input, span, etc...). Defaults to false.
+
+### `ignoreComponents`
+
+Whether to skip checking forbidden props on Components (div, input, span, etc...). Defaults to false.

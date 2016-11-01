@@ -119,6 +119,17 @@ ruleTester.run('forbid-component-props', rule, {
     ].join('\n'),
     options: [{forbidPatterns: ['data-*', 'custom-*']}],
     parserOptions: parserOptions
+  }, {
+    code: [
+      'var First = React.createClass({',
+      '  propTypes: externalPropTypes,',
+      '  render: function() {',
+      '    return <Foo bar="baz"/>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{forbid: ['bar'], ignoreComponents: true}],
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -239,7 +250,7 @@ ruleTester.run('forbid-component-props', rule, {
     options: [{
       forbid: ['className', 'style'],
       forbidPatterns: ['data-*', 'custom-*'],
-      ignoreDomNodes: false
+      checkDomNodes: true
     }],
     errors: [{
       message: STYLE_ERROR_MESSAGE,
