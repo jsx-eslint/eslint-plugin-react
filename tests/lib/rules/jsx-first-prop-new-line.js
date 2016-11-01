@@ -198,6 +198,11 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '<Foo prop={{',
         '}} />'
       ].join('\n'),
+      output: [
+        '<Foo',
+        'prop={{',
+        '}} />'
+      ].join('\n'),
       options: ['multiline'],
       errors: [{message: 'Property should be placed on a new line'}],
       parser: parserOptions
@@ -205,6 +210,11 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
     {
       code: [
         '<Foo bar={{',
+        '}} baz />'
+      ].join('\n'),
+      output: [
+        '<Foo',
+        'bar={{',
         '}} baz />'
       ].join('\n'),
       options: ['multiline-multiprop'],
