@@ -86,6 +86,9 @@ module.exports = {
   rules: exportedRules,
   configs: {
     recommended: {
+      plugin: [
+        'react'
+      ],
       parserOptions: {
         ecmaFeatures: {
           jsx: true
@@ -109,6 +112,9 @@ module.exports = {
       }
     },
     all: {
+      plugin: [
+        'react'
+      ],
       parserOptions: {
         ecmaFeatures: {
           jsx: true
