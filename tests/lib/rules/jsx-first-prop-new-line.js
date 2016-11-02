@@ -153,6 +153,10 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
   invalid: [
     {
       code: '<Foo prop="one" />',
+      output: [
+        '<Foo',
+        '  prop="one" />'
+      ].join('\n'),
       options: ['always'],
       errors: [{message: 'Property should be placed on a new line'}],
       parser: parserOptions
@@ -163,15 +167,74 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '  propTwo="two"',
         '/>'
       ].join('\n'),
+      output: [
+        '<Foo',
+        '  propOne="one"',
+        '  propTwo="two"',
+        '/>'
+      ].join('\n'),
       options: ['always'],
       errors: [{message: 'Property should be placed on a new line'}],
       parser: parserOptions
     },
     {
       code: [
+        '<Foo propOne="one" propTwo="two"',
+        '  propThree="three"',
+        '/>'
+      ].join('\n'),
+      output: [
         '<Foo',
-        ' propOne="one"',
-        ' propTwo="two"',
+        '  propOne="one" propTwo="two"',
+        '  propThree="three"',
+        '/>'
+      ].join('\n'),
+      options: ['always'],
+      errors: [{message: 'Property should be placed on a new line'}],
+      parser: parserOptions
+    },
+    {
+      code: [
+        '    <Foo propOne="one"',
+        '        propTwo="two"',
+        '    />'
+      ].join('\n'),
+      output: [
+        '    <Foo',
+        '        propOne="one"',
+        '        propTwo="two"',
+        '    />'
+      ].join('\n'),
+      options: ['always', 4],
+      errors: [{message: 'Property should be placed on a new line'}],
+      parser: parserOptions
+    },
+    {
+      code: [
+        '\t<Foo propOne="one"',
+        '\t\tpropTwo="two"',
+        '\t/>'
+      ].join('\n'),
+      output: [
+        '\t<Foo',
+        '\t\tpropOne="one"',
+        '\t\tpropTwo="two"',
+        '\t/>'
+      ].join('\n'),
+      options: ['always', 'tab'],
+      errors: [{message: 'Property should be placed on a new line'}],
+      parser: parserOptions
+    },
+    {
+      code: [
+        '<Foo',
+        '  propOne="one"',
+        '  propTwo="two"',
+        '/>'
+      ].join('\n'),
+      output: [
+        '<Foo propOne="one"',
+        '  propTwo="two"',
         '/>'
       ].join('\n'),
       options: ['never'],
