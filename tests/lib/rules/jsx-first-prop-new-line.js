@@ -152,7 +152,11 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
 
   invalid: [
     {
-      code: '<Foo prop="one" />',
+      code: '<Foo propOne="one" propTwo="two" />',
+      output: [
+        '<Foo',
+        'propOne="one" propTwo="two" />'
+      ].join('\n'),
       options: ['always'],
       errors: [{message: 'Property should be placed on a new line'}],
       parser: parserOptions
@@ -163,6 +167,12 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '  propTwo="two"',
         '/>'
       ].join('\n'),
+      output: [
+        '<Foo',
+        'propOne="one"',
+        '  propTwo="two"',
+        '/>'
+      ].join('\n'),
       options: ['always'],
       errors: [{message: 'Property should be placed on a new line'}],
       parser: parserOptions
@@ -170,8 +180,13 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
     {
       code: [
         '<Foo',
-        ' propOne="one"',
-        ' propTwo="two"',
+        '  propOne="one"',
+        '  propTwo="two"',
+        '/>'
+      ].join('\n'),
+      output: [
+        '<Foo propOne="one"',
+        '  propTwo="two"',
         '/>'
       ].join('\n'),
       options: ['never'],
@@ -183,6 +198,11 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '<Foo prop={{',
         '}} />'
       ].join('\n'),
+      output: [
+        '<Foo',
+        'prop={{',
+        '}} />'
+      ].join('\n'),
       options: ['multiline'],
       errors: [{message: 'Property should be placed on a new line'}],
       parser: parserOptions
@@ -190,6 +210,11 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
     {
       code: [
         '<Foo bar={{',
+        '}} baz />'
+      ].join('\n'),
+      output: [
+        '<Foo',
+        'bar={{',
         '}} baz />'
       ].join('\n'),
       options: ['multiline-multiprop'],

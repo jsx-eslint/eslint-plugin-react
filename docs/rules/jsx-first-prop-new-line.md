@@ -2,6 +2,8 @@
 
 Ensure correct position of the first property.
 
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line. However, fix does not include indentation. Please rerun lint to correct those errors.
+
 ## Rule Details
 
 This rule checks whether the first property of all JSX elements is correctly placed. There are three possible configurations:
