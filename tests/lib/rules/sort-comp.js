@@ -378,5 +378,28 @@ ruleTester.run('sort-comp', rule, {
         'render'
       ]
     }]
+  }, {
+    code: [
+      'export default class View extends React.Component {',
+      '  componentDidMountOk() {}',
+      '  getB() {}',
+      '  componentWillMount() {}',
+      '  getA() {}',
+      '  render() {}',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{message: 'componentDidMountOk should be placed after getA'}],
+    options: [{
+      order: [
+        'static-methods',
+        'lifecycle',
+        '/^on.+$/',
+        '/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/',
+        'everything-else',
+        '/^render.+$/',
+        'render'
+      ]
+    }]
   }]
 });
