@@ -1413,6 +1413,15 @@ ruleTester.run('no-unused-prop-types', rule, {
         '});'
       ].join('\n'),
       parserOptions: parserOptions
+    }, {
+      // Destructured props in a stateless function
+      code: [
+        'const Hello = (props) => {',
+        '  const {...rest} = props;',
+        '  return <div />;',
+        '};'
+      ].join('\n'),
+      parserOptions: parserOptions
     }
   ],
 
