@@ -198,6 +198,23 @@ ruleTester.run('jsx-indent', rule, {
       '</div>'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: [
+      'this.props.asd.length > 0 ?',
+      '    <Button className="bacon-yay">{this.props.asd.length}</Button> :',
+      '    <span className="bacon-no-trigger">0</span>'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '    {this.props.asd.length > 0 ?',
+      '        <Button className="bacon-yay">{this.props.asd.length}</Button> :',
+      '        <span className="bacon-no-trigger">0</span>',
+      '    }',
+      '</div>'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -447,5 +464,45 @@ ruleTester.run('jsx-indent', rule, {
     errors: [
       {message: 'Expected indentation of 2 space characters but found 0.'}
     ]
+  }, {
+    code: [
+      'this.props.asd.length > 0 ?',
+      '    <Button className="bacon-yay">{this.props.asd.length}</Button> :',
+      '        <span className="bacon-no-trigger">0</span>'
+    ].join('\n'),
+    output: [
+      'this.props.asd.length > 0 ?',
+      '    <Button className="bacon-yay">{this.props.asd.length}</Button> :',
+      '    <span className="bacon-no-trigger">0</span>'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Expected indentation of 4 space characters but found 8.',
+      line: 3,
+      column: 9
+    }]
+  }, {
+    code: [
+      '<div>',
+      '    {this.props.asd.length > 0 ?',
+      '        <Button className="bacon-yay">{this.props.asd.length}</Button> :',
+      '    <span className="bacon-no-trigger">0</span>',
+      '    }',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '    {this.props.asd.length > 0 ?',
+      '        <Button className="bacon-yay">{this.props.asd.length}</Button> :',
+      '        <span className="bacon-no-trigger">0</span>',
+      '    }',
+      '</div>'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Expected indentation of 8 space characters but found 4.',
+      line: 4,
+      column: 5
+    }]
   }]
 });
