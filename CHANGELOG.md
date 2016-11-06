@@ -3,6 +3,26 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.6.0] - 2016-11-06
+### Added
+* Add [`jsx-first-prop-new-line`] auto fix ([#886][] @snowypowers)
+
+### Fixed
+* Fix [`no-unused-prop-types`] crash with destructured prop-types ([#938][])
+* Fix [`jsx-indent`] in multi-line conditional expressions ([#901][], [#907][])
+* Fix [`sort-comp`] bad error message if 2 methods in the same group must be moved ([#507][])
+
+### Changed
+* Documentation improvements ([#941][] @pwmckenna)
+
+[6.6.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.5.0...v6.6.0
+[#886]: https://github.com/yannickcr/eslint-plugin-react/pull/886
+[#938]: https://github.com/yannickcr/eslint-plugin-react/issues/938
+[#901]: https://github.com/yannickcr/eslint-plugin-react/issues/901
+[#907]: https://github.com/yannickcr/eslint-plugin-react/issues/907
+[#507]: https://github.com/yannickcr/eslint-plugin-react/issues/507
+[#941]: https://github.com/yannickcr/eslint-plugin-react/pull/941
+
 ## [6.5.0] - 2016-11-01
 ### Added
 * Add tab support to [`jsx-closing-bracket-location`] auto fixer ([#909][] @arperry)
