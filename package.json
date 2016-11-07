@@ -39,12 +39,6 @@
   "engines": {
     "node": ">=0.10"
   },
-  "peerDependencies": {
-    "eslint": "^2.0.0 || ^3.0.0"
-  },
-  "engines": {
-    "node": ">=0.10"
-  },
   "keywords": [
     "eslint",
     "eslint-plugin",

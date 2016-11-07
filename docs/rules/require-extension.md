@@ -1,4 +1,4 @@
-# Restrict file extensions that may be required (jsx-require-extension)
+# Restrict file extensions that may be required (require-extension)
 
 **Deprecation notice**: This rule is deprecated. Please use the eslint-plugin-import [extensions](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md) rule instead.
 
@@ -31,7 +31,7 @@ The set of forbidden extensions is configurable. By default '.jsx' is blocked. I
 
 ```js
 "rules": {
-  "react/jsx-require-extension": [1, { "extensions": [".js", ".jsx"] }],
+  "react/require-extension": [1, { "extensions": [".js", ".jsx"] }],
 }
 ```
 
