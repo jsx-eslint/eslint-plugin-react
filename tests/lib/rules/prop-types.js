@@ -2183,34 +2183,6 @@ ruleTester.run('prop-types', rule, {
       ]
     }, {
       code: [
-        'let Greetings = class extends React.Component {',
-        '  render () {',
-        '    return <div>Hello {this.props.name}</div>;',
-        '  }',
-        '}',
-        'Greetings.propTypes = {};'
-      ].join('\n'),
-      parserOptions: parserOptions,
-      errors: [{
-        message: '\'name\' is missing in props validation'
-      }]
-    }, {
-      code: [
-        'let Greetings = {',
-        '  Hello: class extends React.Component {',
-        '    render () {',
-        '      return <div>Hello {this.props.name}</div>;',
-        '    }',
-        '  }',
-        '}',
-        'Greetings.Hello.propTypes = {};'
-      ].join('\n'),
-      parserOptions: parserOptions,
-      errors: [{
-        message: '\'name\' is missing in props validation'
-      }]
-    }, {
-      code: [
         'let Greetings = {};',
         'Greetings.Hello = class extends React.Component {',
         '  render () {',
@@ -2447,6 +2419,7 @@ ruleTester.run('prop-types', rule, {
         line: 3,
         column: 29
       }]
+>>>>>>> Merge latest.
     }
   ]
 });

@@ -130,6 +130,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/jsx-no-target-blank](docs/rules/jsx-no-target-blank.md): Prevent usage of unsafe `target='_blank'`
 * [react/jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
 * [react/jsx-pascal-case](docs/rules/jsx-pascal-case.md): Enforce PascalCase for user-defined JSX components
+* [react/jsx-require-extension](docs/rules/jsx-require-extension.md): Restrict file extensions that may be required
 * [react/jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting
 * [react/jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
 * [react/jsx-tag-spacing](docs/rules/jsx-tag-spacing.md): Validate whitespace in and around the JSX opening and closing brackets (fixable)
@@ -190,6 +191,20 @@ This pairs well with the `eslint:all` rule.
 ```
 
 **Note**: These configurations will import `eslint-plugin-react` and enable JSX in [parser options](http://eslint.org/docs/user-guide/configuring#specifying-parser-options).
+
+## All
+
+This plugin also exports an `all` configuration that includes every available rule.
+This pairs well with the `eslint:all` rule.
+
+```js
+{
+  "plugins": [
+    "react"
+  ],
+  "extends": ["eslint:all", "plugin:react/all"]
+}
+```
 
 # License
 

@@ -22,6 +22,7 @@ var allRules = {
   'jsx-pascal-case': require('./lib/rules/jsx-pascal-case'),
   'jsx-no-bind': require('./lib/rules/jsx-no-bind'),
   'jsx-no-undef': require('./lib/rules/jsx-no-undef'),
+  'jsx-no-undef-props': require('./lib/rules/jsx-no-undef-props'),
   'no-unknown-property': require('./lib/rules/no-unknown-property'),
   'jsx-curly-spacing': require('./lib/rules/jsx-curly-spacing'),
   'jsx-equals-spacing': require('./lib/rules/jsx-equals-spacing'),

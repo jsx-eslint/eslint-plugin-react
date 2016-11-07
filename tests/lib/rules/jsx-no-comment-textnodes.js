@@ -1,5 +1,5 @@
 /**
- * @fileoverview Tests for jsx-no-comment-textnodes
+ * @fileoverview Tests for no-comment-textnodes
  * @author Ben Vinegar
  */
 'use strict';
@@ -16,7 +16,7 @@ var RuleTester = require('eslint').RuleTester;
 // ------------------------------------------------------------------------------
 
 var ruleTester = new RuleTester();
-ruleTester.run('jsx-no-comment-textnodes', rule, {
+ruleTester.run('no-comment-textnodes', rule, {
 
   valid: [
     {
