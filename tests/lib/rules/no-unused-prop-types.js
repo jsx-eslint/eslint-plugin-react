@@ -257,6 +257,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  b: React.PropTypes.string',
         '});'
       ].join('\n'),
+      options: [{skipShapeProps: false}],
       parserOptions: parserOptions
     }, {
       code: [
@@ -274,6 +275,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};',
         'Hello.propTypes.a.b.c = React.PropTypes.number;'
       ].join('\n'),
+      options: [{skipShapeProps: false}],
       parserOptions: parserOptions
     }, {
       code: [
@@ -295,6 +297,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  )',
         '};'
       ].join('\n'),
+      options: [{skipShapeProps: false}],
       parserOptions: parserOptions
     }, {
       code: [
@@ -318,6 +321,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  )',
         '};'
       ].join('\n'),
+      options: [{skipShapeProps: false}],
       parserOptions: parserOptions
     }, {
       code: [
@@ -358,6 +362,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  ])',
         '};'
       ].join('\n'),
+      options: [{skipShapeProps: false}],
       parserOptions: parserOptions
     }, {
       code: [
@@ -458,6 +463,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  )',
         '};'
       ].join('\n'),
+      options: [{skipShapeProps: false}],
       parserOptions: parserOptions
     }, {
       code: [
@@ -490,6 +496,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  })',
         '};'
       ].join('\n'),
+      options: [{skipShapeProps: false}],
       parser: 'babel-eslint'
     }, {
       code: [
@@ -540,7 +547,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      options: [{customValidators: ['CustomValidator']}],
+      options: [{customValidators: ['CustomValidator'], skipShapeProps: false}],
       parserOptions: parserOptions
     }, {
       code: [
@@ -555,7 +562,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      options: [{customValidators: ['CustomValidator']}],
+      options: [{customValidators: ['CustomValidator'], skipShapeProps: false}],
       parserOptions: parserOptions
     }, {
       code: [
@@ -570,7 +577,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      options: [{customValidators: ['CustomValidator']}],
+      options: [{customValidators: ['CustomValidator'], skipShapeProps: false}],
       parserOptions: parserOptions
     }, {
       code: [
@@ -1195,7 +1202,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint'
     }, {
-      // Destructured shape props can't be tested, unless we use `skipShapeProps`
+      // Destructured shape props are skipped by default
       code: [
         'class Hello extends Component {',
         '  static propTypes = {',
@@ -1210,7 +1217,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      options: [{skipShapeProps: true}],
       parser: 'babel-eslint'
     }, {
       // Destructured props in componentWillReceiveProps shouldn't throw errors
@@ -1570,6 +1576,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n'),
       parserOptions: parserOptions,
+      options: [{skipShapeProps: false}],
       errors: [{
         message: '\'a.b\' PropType is defined but prop is never used'
       }]
@@ -1590,6 +1597,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n'),
       parserOptions: parserOptions,
+      options: [{skipShapeProps: false}],
       errors: [{
         message: '\'a.b.c\' PropType is defined but prop is never used'
       }]
@@ -1612,6 +1620,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n'),
       parserOptions: parserOptions,
+      options: [{skipShapeProps: false}],
       errors: [
         {message: '\'a.*.unused\' PropType is defined but prop is never used'}
       ]
@@ -1636,6 +1645,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n'),
       parserOptions: parserOptions,
+      options: [{skipShapeProps: false}],
       errors: [
         {message: '\'a.*.unused\' PropType is defined but prop is never used'}
       ]
@@ -1662,6 +1672,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n'),
       parserOptions: parserOptions,
+      options: [{skipShapeProps: false}],
       errors: [
         {message: '\'a.unused\' PropType is defined but prop is never used'},
         {message: '\'a.anotherunused\' PropType is defined but prop is never used'}
@@ -1699,6 +1710,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n'),
       parserOptions: parserOptions,
+      options: [{skipShapeProps: false}],
       errors: [
         {message: '\'arr.*.some.unused\' PropType is defined but prop is never used'}
       ]
