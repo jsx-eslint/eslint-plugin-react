@@ -32,7 +32,8 @@ ruleTester.run('jsx-no-undef-props', rule, {
     {code: '<div foo={42} />', parserOptions: parserOptions},
     {code: '<div foo={obj.prop} />', parserOptions: parserOptions},
     {code: '<div foo={bar ? baz : undefined} />', parserOptions: parserOptions},
-    {code: '<div foo={false && undefined} />', parserOptions: parserOptions}
+    {code: '<div foo={false && undefined} />', parserOptions: parserOptions},
+    {code: '<div {...otherProps} foo={undefined} />', parserOptions: parserOptions}
   ],
   invalid: [
     {
