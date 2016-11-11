@@ -215,6 +215,30 @@ ruleTester.run('jsx-indent', rule, {
       '</div>'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '    { this.props.asd.length > 0 ? <Button className="bacon-yay">{this.props.asd.length}</Button> : (',
+      '        <span className="bacon-no-trigger">0</span>',
+      '    ) }',
+      '</div>'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '    {',
+      '      this.props.asd.length > 0',
+      '        ? (',
+      '            <Button className="bacon-yay">{this.props.asd.length}</Button>',
+      '        )',
+      '        : (',
+      '            <span className="bacon-no-trigger">0</span>',
+      '        )',
+      '    }',
+      '</div>'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -503,6 +527,64 @@ ruleTester.run('jsx-indent', rule, {
       message: 'Expected indentation of 8 space characters but found 4.',
       line: 4,
       column: 5
+    }]
+  }, {
+    code: [
+      '<div>',
+      '    {this.props.asd.length > 0 ? <Button className="bacon-yay">{this.props.asd.length}</Button> : (',
+      '    <span className="bacon-no-trigger">0</span>',
+      '    )}',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '    {this.props.asd.length > 0 ? <Button className="bacon-yay">{this.props.asd.length}</Button> : (',
+      '        <span className="bacon-no-trigger">0</span>',
+      '    )}',
+      '</div>'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Expected indentation of 8 space characters but found 4.',
+      line: 3,
+      column: 5
+    }]
+  }, {
+    code: [
+      '<div>',
+      '    {',
+      '      this.props.asd.length > 0',
+      '        ? (',
+      '        <Button className="bacon-yay">{this.props.asd.length}</Button>',
+      '        )',
+      '        : (',
+      '              <span className="bacon-no-trigger">0</span>',
+      '        )',
+      '    }',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '    {',
+      '      this.props.asd.length > 0',
+      '        ? (',
+      '            <Button className="bacon-yay">{this.props.asd.length}</Button>',
+      '        )',
+      '        : (',
+      '            <span className="bacon-no-trigger">0</span>',
+      '        )',
+      '    }',
+      '</div>'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Expected indentation of 12 space characters but found 8.',
+      line: 5,
+      column: 9
+    }, {
+      message: 'Expected indentation of 12 space characters but found 14.',
+      line: 8,
+      column: 15
     }]
   }]
 });
