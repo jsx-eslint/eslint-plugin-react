@@ -199,44 +199,182 @@ ruleTester.run('jsx-indent', rule, {
     ].join('\n'),
     parserOptions: parserOptions
   }, {
+    // Multiline ternary
+    // (colon at the end of the first expression)
     code: [
-      'this.props.asd.length > 0 ?',
-      '    <Button className="bacon-yay">{this.props.asd.length}</Button> :',
-      '    <span className="bacon-no-trigger">0</span>'
+      'foo ?',
+      '    <Foo /> :',
+      '    <Bar />'
     ].join('\n'),
     parserOptions: parserOptions
   }, {
+    // Multiline ternary
+    // (colon at the start of the second expression)
     code: [
-      '<div>',
-      '    {this.props.asd.length > 0 ?',
-      '        <Button className="bacon-yay">{this.props.asd.length}</Button> :',
-      '        <span className="bacon-no-trigger">0</span>',
-      '    }',
-      '</div>'
+      'foo ?',
+      '    <Foo />',
+      '    : <Bar />'
     ].join('\n'),
     parserOptions: parserOptions
   }, {
+    // Multiline ternary
+    // (colon on its own line)
     code: [
-      '<div>',
-      '    { this.props.asd.length > 0 ? <Button className="bacon-yay">{this.props.asd.length}</Button> : (',
-      '        <span className="bacon-no-trigger">0</span>',
-      '    ) }',
-      '</div>'
+      'foo ?',
+      '    <Foo />',
+      ':',
+      '    <Bar />'
     ].join('\n'),
     parserOptions: parserOptions
   }, {
+    // Multiline ternary
+    // (first expression on test line, colon at the end of the first expression)
     code: [
-      '<div>',
-      '    {',
-      '      this.props.asd.length > 0',
-      '        ? (',
-      '            <Button className="bacon-yay">{this.props.asd.length}</Button>',
-      '        )',
-      '        : (',
-      '            <span className="bacon-no-trigger">0</span>',
-      '        )',
-      '    }',
-      '</div>'
+      'foo ? <Foo /> :',
+      '<Bar />'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Multiline ternary
+    // (first expression on test line, colon at the start of the second expression)
+    code: [
+      'foo ? <Foo />',
+      ': <Bar />'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Multiline ternary
+    // (first expression on test line, colon on its own line)
+    code: [
+      'foo ? <Foo />',
+      ':',
+      '<Bar />'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Multiline ternary
+    // (colon at the end of the first expression, parenthesized first expression)
+    code: [
+      'foo ? (',
+      '    <Foo />',
+      ') :',
+      '    <Bar />'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Multiline ternary
+    // (colon at the start of the second expression, parenthesized first expression)
+    code: [
+      'foo ? (',
+      '    <Foo />',
+      ')',
+      '    : <Bar />'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Multiline ternary
+    // (colon on its own line, parenthesized first expression)
+    code: [
+      'foo ? (',
+      '    <Foo />',
+      ')',
+      ':',
+      '    <Bar />'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Multiline ternary
+    // (colon at the end of the first expression, parenthesized second expression)
+    code: [
+      'foo ?',
+      '    <Foo /> : (',
+      '        <Bar />',
+      '    )'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Multiline ternary
+    // (colon on its own line, parenthesized second expression)
+    code: [
+      'foo ?',
+      '    <Foo />',
+      ': (',
+      '    <Bar />',
+      ')'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Multiline ternary
+    // (colon indented on its own line, parenthesized second expression)
+    code: [
+      'foo ?',
+      '    <Foo />',
+      '    : (',
+      '        <Bar />',
+      '    )'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Multiline ternary
+    // (colon at the end of the first expression, both expression parenthesized)
+    code: [
+      'foo ? (',
+      '    <Foo />',
+      ') : (',
+      '    <Bar />',
+      ')'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Multiline ternary
+    // (colon on its own line, both expression parenthesized)
+    code: [
+      'foo ? (',
+      '    <Foo />',
+      ')',
+      ': (',
+      '    <Bar />',
+      ')'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Multiline ternary
+    // (colon on its own line, both expression parenthesized)
+    code: [
+      'foo ? (',
+      '    <Foo />',
+      ')',
+      ':',
+      '(',
+      '    <Bar />',
+      ')'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Multiline ternary
+    // (first expression on test line, colon at the end of the first expression, parenthesized second expression)
+    code: [
+      'foo ? <Foo /> : (',
+      '    <Bar />',
+      ')'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Multiline ternary
+    // (first expression on test line, colon at the start of the second expression, parenthesized second expression)
+    code: [
+      'foo ? <Foo />',
+      ': (<Bar />)'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Multiline ternary
+    // (first expression on test line, colon on its own line, parenthesized second expression)
+    code: [
+      'foo ? <Foo />',
+      ': (',
+      '    <Bar />',
+      ')'
     ].join('\n'),
     parserOptions: parserOptions
   }],
@@ -489,102 +627,281 @@ ruleTester.run('jsx-indent', rule, {
       {message: 'Expected indentation of 2 space characters but found 0.'}
     ]
   }, {
+    // Multiline ternary
+    // (colon at the end of the first expression)
     code: [
-      'this.props.asd.length > 0 ?',
-      '    <Button className="bacon-yay">{this.props.asd.length}</Button> :',
-      '        <span className="bacon-no-trigger">0</span>'
+      'foo ?',
+      '    <Foo /> :',
+      '<Bar />'
     ].join('\n'),
     output: [
-      'this.props.asd.length > 0 ?',
-      '    <Button className="bacon-yay">{this.props.asd.length}</Button> :',
-      '    <span className="bacon-no-trigger">0</span>'
+      'foo ?',
+      '    <Foo /> :',
+      '    <Bar />'
     ].join('\n'),
     parserOptions: parserOptions,
-    errors: [{
-      message: 'Expected indentation of 4 space characters but found 8.',
-      line: 3,
-      column: 9
-    }]
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
   }, {
+    // Multiline ternary
+    // (colon on its own line)
     code: [
-      '<div>',
-      '    {this.props.asd.length > 0 ?',
-      '        <Button className="bacon-yay">{this.props.asd.length}</Button> :',
-      '    <span className="bacon-no-trigger">0</span>',
-      '    }',
-      '</div>'
+      'foo ?',
+      '    <Foo />',
+      ':',
+      '<Bar />'
     ].join('\n'),
     output: [
-      '<div>',
-      '    {this.props.asd.length > 0 ?',
-      '        <Button className="bacon-yay">{this.props.asd.length}</Button> :',
-      '        <span className="bacon-no-trigger">0</span>',
-      '    }',
-      '</div>'
+      'foo ?',
+      '    <Foo />',
+      ':',
+      '    <Bar />'
     ].join('\n'),
     parserOptions: parserOptions,
-    errors: [{
-      message: 'Expected indentation of 8 space characters but found 4.',
-      line: 4,
-      column: 5
-    }]
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
   }, {
+    // Multiline ternary
+    // (first expression on test line, colon at the end of the first expression)
     code: [
-      '<div>',
-      '    {this.props.asd.length > 0 ? <Button className="bacon-yay">{this.props.asd.length}</Button> : (',
-      '    <span className="bacon-no-trigger">0</span>',
-      '    )}',
-      '</div>'
+      'foo ? <Foo /> :',
+      '    <Bar />'
     ].join('\n'),
     output: [
-      '<div>',
-      '    {this.props.asd.length > 0 ? <Button className="bacon-yay">{this.props.asd.length}</Button> : (',
-      '        <span className="bacon-no-trigger">0</span>',
-      '    )}',
-      '</div>'
+      'foo ? <Foo /> :',
+      '<Bar />'
     ].join('\n'),
     parserOptions: parserOptions,
-    errors: [{
-      message: 'Expected indentation of 8 space characters but found 4.',
-      line: 3,
-      column: 5
-    }]
+    errors: [
+      {message: 'Expected indentation of 0 space characters but found 4.'}
+    ]
   }, {
+    // Multiline ternary
+    // (first expression on test line, colon on its own line)
     code: [
-      '<div>',
-      '    {',
-      '      this.props.asd.length > 0',
-      '        ? (',
-      '        <Button className="bacon-yay">{this.props.asd.length}</Button>',
-      '        )',
-      '        : (',
-      '              <span className="bacon-no-trigger">0</span>',
-      '        )',
-      '    }',
-      '</div>'
+      'foo ? <Foo />',
+      ':',
+      '      <Bar />'
     ].join('\n'),
     output: [
-      '<div>',
-      '    {',
-      '      this.props.asd.length > 0',
-      '        ? (',
-      '            <Button className="bacon-yay">{this.props.asd.length}</Button>',
-      '        )',
-      '        : (',
-      '            <span className="bacon-no-trigger">0</span>',
-      '        )',
-      '    }',
-      '</div>'
+      'foo ? <Foo />',
+      ':',
+      '<Bar />'
     ].join('\n'),
     parserOptions: parserOptions,
-    errors: [{
-      message: 'Expected indentation of 12 space characters but found 8.',
-      line: 5,
-      column: 9
-    }, {
-      message: 'Expected indentation of 12 space characters but found 14.',
-      line: 8,
-      column: 15
-    }]
+    errors: [
+      {message: 'Expected indentation of 0 space characters but found 6.'}
+    ]
+  }, {
+    // Multiline ternary
+    // (colon at the end of the first expression, parenthesized first expression)
+    code: [
+      'foo ? (',
+      '    <Foo />',
+      ') :',
+      '<Bar />'
+    ].join('\n'),
+    output: [
+      'foo ? (',
+      '    <Foo />',
+      ') :',
+      '    <Bar />'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
+    // Multiline ternary
+    // (colon on its own line, parenthesized first expression)
+    code: [
+      'foo ? (',
+      '    <Foo />',
+      ')',
+      ':',
+      '<Bar />'
+    ].join('\n'),
+    output: [
+      'foo ? (',
+      '    <Foo />',
+      ')',
+      ':',
+      '    <Bar />'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
+    // Multiline ternary
+    // (colon at the end of the first expression, parenthesized second expression)
+    code: [
+      'foo ?',
+      '    <Foo /> : (',
+      '    <Bar />',
+      '    )'
+    ].join('\n'),
+    output: [
+      'foo ?',
+      '    <Foo /> : (',
+      '        <Bar />',
+      '    )'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'Expected indentation of 8 space characters but found 4.'}
+    ]
+  }, {
+    // Multiline ternary
+    // (colon on its own line, parenthesized second expression)
+    code: [
+      'foo ?',
+      '    <Foo />',
+      ': (',
+      '<Bar />',
+      ')'
+    ].join('\n'),
+    output: [
+      'foo ?',
+      '    <Foo />',
+      ': (',
+      '    <Bar />',
+      ')'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
+    // Multiline ternary
+    // (colon indented on its own line, parenthesized second expression)
+    code: [
+      'foo ?',
+      '    <Foo />',
+      '    : (',
+      '    <Bar />',
+      '    )'
+    ].join('\n'),
+    output: [
+      'foo ?',
+      '    <Foo />',
+      '    : (',
+      '        <Bar />',
+      '    )'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'Expected indentation of 8 space characters but found 4.'}
+    ]
+  }, {
+    // Multiline ternary
+    // (colon at the end of the first expression, both expression parenthesized)
+    code: [
+      'foo ? (',
+      '<Foo />',
+      ') : (',
+      '<Bar />',
+      ')'
+    ].join('\n'),
+    output: [
+      'foo ? (',
+      '    <Foo />',
+      ') : (',
+      '    <Bar />',
+      ')'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'},
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
+    // Multiline ternary
+    // (colon on its own line, both expression parenthesized)
+    code: [
+      'foo ? (',
+      '<Foo />',
+      ')',
+      ': (',
+      '<Bar />',
+      ')'
+    ].join('\n'),
+    output: [
+      'foo ? (',
+      '    <Foo />',
+      ')',
+      ': (',
+      '    <Bar />',
+      ')'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'},
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
+    // Multiline ternary
+    // (colon on its own line, both expression parenthesized)
+    code: [
+      'foo ? (',
+      '<Foo />',
+      ')',
+      ':',
+      '(',
+      '<Bar />',
+      ')'
+    ].join('\n'),
+    output: [
+      'foo ? (',
+      '    <Foo />',
+      ')',
+      ':',
+      '(',
+      '    <Bar />',
+      ')'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'},
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
+    // Multiline ternary
+    // (first expression on test line, colon at the end of the first expression, parenthesized second expression)
+    code: [
+      'foo ? <Foo /> : (',
+      '<Bar />',
+      ')'
+    ].join('\n'),
+    output: [
+      'foo ? <Foo /> : (',
+      '    <Bar />',
+      ')'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
+    // Multiline ternary
+    // (first expression on test line, colon on its own line, parenthesized second expression)
+    code: [
+      'foo ? <Foo />',
+      ': (',
+      '<Bar />',
+      ')'
+    ].join('\n'),
+    output: [
+      'foo ? <Foo />',
+      ': (',
+      '    <Bar />',
+      ')'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
   }]
 });
