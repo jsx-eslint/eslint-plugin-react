@@ -5,12 +5,12 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [6.6.0] - 2016-11-06
 ### Added
-* Add [`jsx-first-prop-new-line`] auto fix ([#886][] @snowypowers)
+* Add [`jsx-first-prop-new-line`][] auto fix ([#886][] @snowypowers)
 
 ### Fixed
-* Fix [`no-unused-prop-types`] crash with destructured prop-types ([#938][])
-* Fix [`jsx-indent`] in multi-line conditional expressions ([#901][], [#907][])
-* Fix [`sort-comp`] bad error message if 2 methods in the same group must be moved ([#507][])
+* Fix [`no-unused-prop-types`][] crash with destructured prop-types ([#938][])
+* Fix [`jsx-indent`][] in multi-line conditional expressions ([#901][], [#907][])
+* Fix [`sort-comp`][] bad error message if 2 methods in the same group must be moved ([#507][])
 
 ### Changed
 * Documentation improvements ([#941][] @pwmckenna)
@@ -25,14 +25,14 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [6.5.0] - 2016-11-01
 ### Added
-* Add tab support to [`jsx-closing-bracket-location`] auto fixer ([#909][] @arperry)
-* Add tab and space support to [`jsx-indent`] auto fixer ([#608][] @jayphelps)
-* Add `multiline-multiprop` option to [`jsx-first-prop-new-line`] ([#883][] @kentor)
+* Add tab support to [`jsx-closing-bracket-location`][] auto fixer ([#909][] @arperry)
+* Add tab and space support to [`jsx-indent`][] auto fixer ([#608][] @jayphelps)
+* Add `multiline-multiprop` option to [`jsx-first-prop-new-line`][] ([#883][] @kentor)
 
 ### Fixed
-* Fix [`forbid-component-props`] crash with self reference JSX element ([#839][] @xeodou)
-* Fix [`jsx-indent`] to ignore lines starting by literals ([#900][])
-* Fix [`no-set-state`] to correctly detect `setState` in arrow functions ([#931][])
+* Fix [`forbid-component-props`][] crash with self reference JSX element ([#839][] @xeodou)
+* Fix [`jsx-indent`][] to ignore lines starting by literals ([#900][])
+* Fix [`no-set-state`][] to correctly detect `setState` in arrow functions ([#931][])
 
 ### Changed
 * Update dependencies
@@ -54,8 +54,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [6.4.1] - 2016-10-10
 ### Fixed
-* Fix [`jsx-indent`] for arrays ([#897][], [#898][])
-* Fix [`jsx-indent`] to allow multi-line logical expressions with one level of indent ([#896][])
+* Fix [`jsx-indent`][] for arrays ([#897][], [#898][])
+* Fix [`jsx-indent`][] to allow multi-line logical expressions with one level of indent ([#896][])
 
 [6.4.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.4.0...v6.4.1
 [#897]: https://github.com/yannickcr/eslint-plugin-react/issues/897
@@ -64,17 +64,17 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [6.4.0] - 2016-10-09
 ### Added
-* Add `skipUndeclared` option to [`prop-types`] ([#846][] @pfhayes)
+* Add `skipUndeclared` option to [`prop-types`][] ([#846][] @pfhayes)
 
 ### Fixed
-* Fix [`jsx-no-bind`] crash on arrow functions ([#854][])
-* Fix [`display-name`] false negative on es6-style method in `React.createClass` ([#852][])
-* Fix [`prefer-stateless-function`] to allow components with [`childContextTypes`] ([#853][])
-* Fix [`no-children-prop`] spread support ([#862][] @randycoulman)
-* Fix [`no-unused-prop-types`] to ignore validation when spread is used ([#840][])
-* Fix [`jsx-closing-bracket-location`] for multi-line prop ([#889][])
-* Fix [`jsx-indent`] in multi-line function calls ([#895][])
-* Fix [`jsx-indent`] in multi-line logical expressions ([#540][])
+* Fix [`jsx-no-bind`][] crash on arrow functions ([#854][])
+* Fix [`display-name`][] false negative on es6-style method in `React.createClass` ([#852][])
+* Fix [`prefer-stateless-function`][] to allow components with `childContextTypes` ([#853][])
+* Fix [`no-children-prop`][] spread support ([#862][] @randycoulman)
+* Fix [`no-unused-prop-types`][] to ignore validation when spread is used ([#840][])
+* Fix [`jsx-closing-bracket-location`][] for multi-line prop ([#889][])
+* Fix [`jsx-indent`][] in multi-line function calls ([#895][])
+* Fix [`jsx-indent`][] in multi-line logical expressions ([#540][])
 
 ### Changed
 * Update dependencies
@@ -98,14 +98,14 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [6.3.0] - 2016-09-20
 ### Added
-* Add [`no-children-prop`] rule ([#720][] @benstepp)
-* Add [`no-unescaped-entities`] rule ([#681][] @pfhayes)
-* Add JSXExpressionContainer support to [`jsx-indent`] rule ([#838][] @eelyafi)
+* Add [`no-children-prop`][] rule ([#720][] @benstepp)
+* Add [`no-unescaped-entities`][] rule ([#681][] @pfhayes)
+* Add JSXExpressionContainer support to [`jsx-indent`][] rule ([#838][] @eelyafi)
 
 ### Fixed
-* Fix [`style-prop-object`] crash ([#834][])
-* Fix [`style-prop-object`] false positive on computed properties ([#820][])
-* Fix [`style-prop-object`] to deal with null and spread props that can't be resolved ([#809][] [#812][] @petersendidit)
+* Fix [`style-prop-object`][] crash ([#834][])
+* Fix [`style-prop-object`][] false positive on computed properties ([#820][])
+* Fix [`style-prop-object`][] to deal with null and spread props that can't be resolved ([#809][] [#812][] @petersendidit)
 
 [6.3.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.2.2...v6.3.0
 [#720]: https://github.com/yannickcr/eslint-plugin-react/issues/720
@@ -118,8 +118,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [6.2.2] - 2016-09-15
 ### Fixed
-* Fix [`no-unused-prop-types`] crash ([#825][] @EvNaverniouk)
-* Fix [`jsx-no-target-blank`] crash ([#821][])
+* Fix [`no-unused-prop-types`][] crash ([#825][] @EvNaverniouk)
+* Fix [`jsx-no-target-blank`][] crash ([#821][])
 
 [6.2.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.2.1...v6.2.2
 [#821]: https://github.com/yannickcr/eslint-plugin-react/issues/821
@@ -127,10 +127,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [6.2.1] - 2016-09-13
 ### Fixed
-* Fix false positive in [`no-unused-prop-types`] ([#792][] @EvNaverniouk)
-* Fix [`jsx-no-target-blank`] to target only anchor elements ([#793][] @aduth)
-* Fix [`jsx-no-target-blank`] to be case insensitive [#796][] @dmnd)
-* Fix [`jsx-uses-vars`] shadowed variables handling ([#799][])
+* Fix false positive in [`no-unused-prop-types`][] ([#792][] @EvNaverniouk)
+* Fix [`jsx-no-target-blank`][] to target only anchor elements ([#793][] @aduth)
+* Fix [`jsx-no-target-blank`][] to be case insensitive [#796][] @dmnd)
+* Fix [`jsx-uses-vars`][] shadowed variables handling ([#799][])
 
 ### Changed
 * Update dependencies
@@ -147,16 +147,16 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [6.2.0] - 2016-08-28
 ### Added
-* Add [`no-unused-prop-types`] rule ([#226][] @EvNaverniouk)
-* Add [`style-prop-object`] rule ([#715][] @petersendidit)
-* Add auto fix for [`self-closing-comp`] ([#770][] @pl12133)
-* Add support for `typeAnnotations` in [`sort-comp`] ([#235][] @dozoisch)
-* Add support for `PureComponent` in [`prefer-stateless-function`] ([#781][] @tiemevanveen)
+* Add [`no-unused-prop-types`][] rule ([#226][] @EvNaverniouk)
+* Add [`style-prop-object`][] rule ([#715][] @petersendidit)
+* Add auto fix for [`self-closing-comp`][] ([#770][] @pl12133)
+* Add support for `typeAnnotations` in [`sort-comp`][] ([#235][] @dozoisch)
+* Add support for `PureComponent` in [`prefer-stateless-function`][] ([#781][] @tiemevanveen)
 
 ### Fixed
-* Fix [`jsx-uses-vars`] to work better with [`prefer-const`](http://eslint.org/docs/rules/prefer-const). You'll need to upgrade to ESLint 3.4.0 to completely fix the compatibility issue ([#716][])
-* Fix [`require-render-return`] crash ([#784][])
-* Fix related components detection in [`prop-types`] ([#735][])
+* Fix [`jsx-uses-vars`][] to work better with [`prefer-const`](http://eslint.org/docs/rules/prefer-const). You'll need to upgrade to ESLint 3.4.0 to completely fix the compatibility issue ([#716][])
+* Fix [`require-render-return`][] crash ([#784][])
+* Fix related components detection in [`prop-types`][] ([#735][])
 * Fix component detection to ignore functions expression without a parent component
 
 ### Changed
@@ -175,7 +175,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [6.1.2] - 2016-08-17
 ### Fixed
-* Fix nested spread handling in [`no-danger-with-children`] ([#771][] @petersendidit)
+* Fix nested spread handling in [`no-danger-with-children`][] ([#771][] @petersendidit)
 
 ### Changed
 * Documentation improvements
@@ -185,8 +185,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [6.1.1] - 2016-08-16
 ### Fixed
-* Fix [`prop-types`] on annotated components ([#766][])
-* Fix [`no-danger-with-children`] spread support ([#767][] @petersendidit)
+* Fix [`prop-types`][] on annotated components ([#766][])
+* Fix [`no-danger-with-children`][] spread support ([#767][] @petersendidit)
 
 ### Changed
 * Documentation improvements ([#769][] @daltones)
@@ -199,15 +199,15 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [6.1.0] - 2016-08-14
 ### Added
 * Add `React.PureComponent` support ([#737][])
-* Add [`forbid-component-props`] rule ([#314][] @lencioni)
-* Add [`no-danger-with-children`] rule ([#710][] @petersendidit)
+* Add [`forbid-component-props`][] rule ([#314][] @lencioni)
+* Add [`no-danger-with-children`][] rule ([#710][] @petersendidit)
 * Add pragma for `createClass` factory method ([#725][] @zurawiki)
 
 ### Fixed
 * Fix Node.js 0.10 support ([#746][])
-* Fix [`prop-types`] on annotated components ([#729][])
-* Fix [`require-optimization`] test for function declaration ([#744][] @Tom910)
-* Fix [`jsx-uses-vars`] to handle nested object properties ([#761][] @yayalice)
+* Fix [`prop-types`][] on annotated components ([#729][])
+* Fix [`require-optimization`][] test for function declaration ([#744][] @Tom910)
+* Fix [`jsx-uses-vars`][] to handle nested object properties ([#761][] @yayalice)
 * Fix rules metadata
 
 ### Changed
@@ -234,42 +234,42 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [6.0.0] - 2016-08-01
 ### Added
 * Add an `all` shareable configuration with all rules enabled ([#674][] @pfhayes)
-* Add [`no-find-dom-node`] rule ([#678][])
-* Add `shorthandLast` option to [`jsx-sort-props`] ([#391][] @mathieumg)
-* Add `allowDecorators` option to [`require-optimization`] ([#669][] @Tom910)
+* Add [`no-find-dom-node`][] rule ([#678][])
+* Add `shorthandLast` option to [`jsx-sort-props`][] ([#391][] @mathieumg)
+* Add `allowDecorators` option to [`require-optimization`][] ([#669][] @Tom910)
 
 ### Breaking
-* Deprecate [`require-extension`] rule, use the [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) [`extensions`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md) rule instead. [`require-extension`] still works but will trigger a warning
-* Enable `allow-in-func` mode by default in [`no-did-mount-set-state`] and [`no-did-update-set-state`] rules ([#702][] @lencioni)
+* Deprecate [`require-extension`][] rule, use the [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) [`extensions`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md) rule instead. [`require-extension`][] still works but will trigger a warning
+* Enable `allow-in-func` mode by default in [`no-did-mount-set-state`][] and [`no-did-update-set-state`][] rules ([#702][] @lencioni)
 * Enable html tags check by default in `self-closing-comp`
 * Remove `pragma` option from `jsx-uses-react`, use the [shared settings](README.md#configuration) to specify a custom pragma ([#700][] @lencioni)
-* Remove `react` option from [`no-deprecated`] rule, use the [shared settings](README.md#configuration) to specify the React version ([#700][] @lencioni)
-* Add [`require-render-return`] rule to recommended rules
-* Remove [`no-danger`] from recommended rules ([#636][] @mjackson)
-* Remove [`no-did-mount-set-state`] and [`no-did-update-set-state`] from recommended rules ([#596][])
-* Remove deprecated [`jsx-sort-prop-types`] rule, use [`sort-prop-types`] instead ([#549][] @lencioni)
-* Rename [`no-comment-textnodes`] to [`jsx-no-comment-textnodes`]. [`no-comment-textnodes`] still works but will trigger a warning ([#668][] @lencioni)
-* Rename [`wrap-multilines`] to [`jsx-wrap-multilines`]. [`wrap-multilines`] still works but will trigger a warning ([#668][] @lencioni)
+* Remove `react` option from [`no-deprecated`][] rule, use the [shared settings](README.md#configuration) to specify the React version ([#700][] @lencioni)
+* Add [`require-render-return`][] rule to recommended rules
+* Remove [`no-danger`][] from recommended rules ([#636][] @mjackson)
+* Remove [`no-did-mount-set-state`][] and [`no-did-update-set-state`][] from recommended rules ([#596][])
+* Remove deprecated [`jsx-sort-prop-types`][] rule, use [`sort-prop-types`][] instead ([#549][] @lencioni)
+* Rename [`no-comment-textnodes`][] to [`jsx-no-comment-textnodes`][]. [`no-comment-textnodes`][] still works but will trigger a warning ([#668][] @lencioni)
+* Rename [`wrap-multilines`][] to [`jsx-wrap-multilines`][]. [`wrap-multilines`][] still works but will trigger a warning ([#668][] @lencioni)
 * Add ESLint as peerDependency ([#657][] @jokeyrhyme)
 * Add Node.js 0.10 as minimum required version ([#657][] @jokeyrhyme)
 
 ### Fixed
-* Fix [`jsx-handler-names`] incorrectly flagging [`only`] ([#571][] @lencioni)
-* Fix spread props cash in [`jsx-no-target-blank`] ([#679][] @randycoulman)
-* Fix [`require-optimization`] warning on stateless components ([#687][])
-* Fix [`jsx-uses-vars`] that incorrectly marked some variables as used ([#694][] @lencioni)
-* Fix [`no-unknown-property`] check on SVG attributes ([#718][])
-* Fix [`jsx-no-bind`] reporting errors on render functions that don't return JSX ([#663][] @petersendidit)
-* Fix [`jsx-closing-bracket-location`] autofix when `location` is set to `props-aligned` ([#684][] @pfhayes)
-* Fix [`prop-types`] for destructured arguments being assigned to the parent stateless component in some cases ([#698][])
-* Fix [`prop-types`] for JSX return being assigned to the parent function in some cases ([#504][])
-* Fix [`jsx-curly-spacing`] for reporting on JSX content by mistake ([#671][])
-* Fix [`prop-types`] crash when accessing constructor on props ([#654][])
-* Fix [`jsx-filename-extension`] to not check filenames on text input ([#662][] @ljharb)
-* Fix [`jsx-no-comment-textnodes`] incorrectly catching urls ([#664][] @petersendidit)
+* Fix [`jsx-handler-names`][] incorrectly flagging [`only`][] ([#571][] @lencioni)
+* Fix spread props cash in [`jsx-no-target-blank`][] ([#679][] @randycoulman)
+* Fix [`require-optimization`][] warning on stateless components ([#687][])
+* Fix [`jsx-uses-vars`][] that incorrectly marked some variables as used ([#694][] @lencioni)
+* Fix [`no-unknown-property`][] check on SVG attributes ([#718][])
+* Fix [`jsx-no-bind`][] reporting errors on render functions that don't return JSX ([#663][] @petersendidit)
+* Fix [`jsx-closing-bracket-location`][] autofix when `location` is set to `props-aligned` ([#684][] @pfhayes)
+* Fix [`prop-types`][] for destructured arguments being assigned to the parent stateless component in some cases ([#698][])
+* Fix [`prop-types`][] for JSX return being assigned to the parent function in some cases ([#504][])
+* Fix [`jsx-curly-spacing`][] for reporting on JSX content by mistake ([#671][])
+* Fix [`prop-types`][] crash when accessing constructor on props ([#654][])
+* Fix [`jsx-filename-extension`][] to not check filenames on text input ([#662][] @ljharb)
+* Fix [`jsx-no-comment-textnodes`][] incorrectly catching urls ([#664][] @petersendidit)
 
 ### Changed
-* Only report [`jsx-filename-extension`] warning once per file ([#660][] @mathieumg)
+* Only report [`jsx-filename-extension`][] warning once per file ([#660][] @mathieumg)
 * Update SVG and DOM attribute list for `no-unknown-property`
 * Update rules to use the new ESLint rule format ([#661][] @petersendidit)
 * Update dependencies
@@ -309,38 +309,38 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [5.2.2] - 2016-06-17
 ### Fixed
-* Fix [`jsx-no-bind`] crash ([#641][])
+* Fix [`jsx-no-bind`][] crash ([#641][])
 
 [5.2.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v5.2.1...v5.2.2
 [#641]: https://github.com/yannickcr/eslint-plugin-react/issues/641
 
 ## [5.2.1] - 2016-06-17
 ### Fixed
-* Fix [`jsx-pascal-case`] for namespaced components ([#637][] @evcohen)
+* Fix [`jsx-pascal-case`][] for namespaced components ([#637][] @evcohen)
 
 [5.2.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v5.2.0...v5.2.1
 [#637]: https://github.com/yannickcr/eslint-plugin-react/issues/637
 
 ## [5.2.0] - 2016-06-17
 ### Added
-* Add [`require-optimization`] rule ([#240][] @EvNaverniouk)
-* Add [`jsx-filename-extension`] rule  ([#495][] @lencioni)
-* Add [`no-render-return-value`] rule ([#531][] @iamdustan)
-* Add [`no-comment-textnodes`] rule ([#616][] @benvinegar)
-* Add `objectLiterals` option to [`jsx-curly-spacing`] ([#388][], [#211][] @casesandberg @ljharb)
-* Add option to [`self-closing-comp`] to check html tags ([#572][] @gitim)
-* Add `ignore` option to [`no-unknown-property`] rule ([#631][] @insin)
-* Add support for ES7 bind operator to [`jsx-handler-names`] ([#630][])
+* Add [`require-optimization`][] rule ([#240][] @EvNaverniouk)
+* Add [`jsx-filename-extension`][] rule  ([#495][] @lencioni)
+* Add [`no-render-return-value`][] rule ([#531][] @iamdustan)
+* Add [`no-comment-textnodes`][] rule ([#616][] @benvinegar)
+* Add `objectLiterals` option to [`jsx-curly-spacing`][] ([#388][], [#211][] @casesandberg @ljharb)
+* Add option to [`self-closing-comp`][] to check html tags ([#572][] @gitim)
+* Add `ignore` option to [`no-unknown-property`][] rule ([#631][] @insin)
+* Add support for ES7 bind operator to [`jsx-handler-names`][] ([#630][])
 * Add support for explicit declaration that class extends React.Component ([#68][] @gausie)
 
 ### Fixed
-* Fix [`jsx-closing-bracket-location`] multiline prop support ([#493][] @tuures)
-* Fix [`prop-types`] for props that where not assigned to the right component ([#591][])
-* Fix [`display-name`] when JSON style is used for defining components ([#590][] @gitim)
-* Fix [`jsx-no-bind`] for bind detection in render when assigned to a variable ([#474][] @petersendidit)
-* Fix [`jsx-curly-spacing`] for spread operator ([#606][] @gitim)
-* Fix [`sort-comp`] crash on spread operator ([#624][])
-* Fix [`prop-types`] crash when destructuring props with spread only
+* Fix [`jsx-closing-bracket-location`][] multiline prop support ([#493][] @tuures)
+* Fix [`prop-types`][] for props that where not assigned to the right component ([#591][])
+* Fix [`display-name`][] when JSON style is used for defining components ([#590][] @gitim)
+* Fix [`jsx-no-bind`][] for bind detection in render when assigned to a variable ([#474][] @petersendidit)
+* Fix [`jsx-curly-spacing`][] for spread operator ([#606][] @gitim)
+* Fix [`sort-comp`][] crash on spread operator ([#624][])
+* Fix [`prop-types`][] crash when destructuring props with spread only
 
 ### Changed
 * Update dependencies
@@ -372,23 +372,23 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [5.1.1] - 2016-05-10
 ### Fixed
-* Fix [`require-render-return`] crash ([#589][])
+* Fix [`require-render-return`][] crash ([#589][])
 
 [5.1.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v5.1.0...v5.1.1
 [#589]: https://github.com/yannickcr/eslint-plugin-react/issues/589
 
 ## [5.1.0] - 2016-05-10
 ### Added
-* Add [`jsx-no-target-blank`] rule ([#582][] @Gasparila)
-* Add `allowAllCaps` and `ignore` options to [`jsx-pascal-case`] ([#575][])
-* Add class properties support to [`require-render-return`] ([#564][])
+* Add [`jsx-no-target-blank`][] rule ([#582][] @Gasparila)
+* Add `allowAllCaps` and `ignore` options to [`jsx-pascal-case`][] ([#575][])
+* Add class properties support to [`require-render-return`][] ([#564][])
 
 ### Fixed
-* Fix [`jsx-closing-bracket-location`] fixer ([#533][] @dtinth)
-* Fix [`require-render-return`] to only check valid render methods ([#563][])
+* Fix [`jsx-closing-bracket-location`][] fixer ([#533][] @dtinth)
+* Fix [`require-render-return`][] to only check valid render methods ([#563][])
 * Fix detection to allow simple `this` usage in fonctional components ([#576][])
-* Fix [`forbid-prop-types`] crash ([#579][])
-* Fix comment handling in [`jsx-curly-spacing`] ([#584][])
+* Fix [`forbid-prop-types`][] crash ([#579][])
+* Fix comment handling in [`jsx-curly-spacing`][] ([#584][])
 
 ### Changed
 * Update dependencies
@@ -409,26 +409,26 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## [5.0.1] - 2016-04-18
 ### Fixed
-* Fix [`require-render-return`] to not check stateless functions ([#550][])
+* Fix [`require-render-return`][] to not check stateless functions ([#550][])
 
 [5.0.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v5.0.0...v5.0.1
 [#550]: https://github.com/yannickcr/eslint-plugin-react/issues/550
 
 ## [5.0.0] - 2016-04-17
 ### Added
-* Add [`jsx-first-prop-new-line`] rule ([#410][] @jseminck)
+* Add [`jsx-first-prop-new-line`][] rule ([#410][] @jseminck)
 
 ### Breaking
 * Update rules for React 15:
   * Add warnings for `LinkedStateMixin`, `ReactPerf.printDOM` and `ReactPerf.getMeasurementsSummaryMap` in `no-deprecated`
-  * Allow stateless components to return `null` in `prefer-stateless-function`
+  * Allow stateless components to return `null` in [`prefer-stateless-function`][]
   * Remove SVG attributes warnings ([#490][])
 
 If you're still not using React 15 you can keep the old behavior by setting the React version to `0.14` in the [shared settings](README.md#configuration).
 
 ### Fixed
-* Rewrite [`require-render-return`] rule ([#542][], [#543][])
-* Fix [`prefer-stateless-function`] crash ([#544][])
+* Rewrite [`require-render-return`][] rule ([#542][], [#543][])
+* Fix [`prefer-stateless-function`][] crash ([#544][])
 * Fix external propTypes handling ([#545][])
 * Do not mark inline functions in JSX as components ([#546][])
 
@@ -447,13 +447,13 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [4.3.0] - 2016-04-07
 ### Added
-* Add [`require-render-return`] rule ([#482][] @shmuga)
-* Add auto fix for [`jsx-equals-spacing`] ([#506][] @peet)
-* Add auto fix for [`jsx-closing-bracket-location`] ([#511][] @KevinGrandon)
+* Add [`require-render-return`][] rule ([#482][] @shmuga)
+* Add auto fix for [`jsx-equals-spacing`][] ([#506][] @peet)
+* Add auto fix for [`jsx-closing-bracket-location`][] ([#511][] @KevinGrandon)
 
 ### Fixed
-* Fix [`prefer-stateless-function`] for conditional JSX ([#516][])
-* Fix [`jsx-pascal-case`] to support single letter component names ([#505][] @dthielman)
+* Fix [`prefer-stateless-function`][] for conditional JSX ([#516][])
+* Fix [`jsx-pascal-case`][] to support single letter component names ([#505][] @dthielman)
 
 ### Changed
 * Update dependencies
@@ -470,18 +470,18 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [4.2.3] - 2016-03-15
 ### Fixed
-* Fix class properties retrieval in [`prefer-stateless-function`] ([#499][])
+* Fix class properties retrieval in [`prefer-stateless-function`][] ([#499][])
 
 [4.2.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v4.2.2...v4.2.3
 [#499]: https://github.com/yannickcr/eslint-plugin-react/issues/499
 
 ## [4.2.2] - 2016-03-14
 ### Fixed
-* Rewrite [`prefer-stateless-function`] rule ([#491][])
-* Fix [`self-closing-comp`] to treat non-breaking spaces as content ([#496][])
-* Fix detection for direct props in [`prop-types`] ([#497][])
-* Fix annotated function detection in [`prop-types`] ([#498][])
-* Fix `this` usage in [`jsx-no-undef`] ([#489][])
+* Rewrite [`prefer-stateless-function`][] rule ([#491][])
+* Fix [`self-closing-comp`][] to treat non-breaking spaces as content ([#496][])
+* Fix detection for direct props in [`prop-types`][] ([#497][])
+* Fix annotated function detection in [`prop-types`][] ([#498][])
+* Fix `this` usage in [`jsx-no-undef`][] ([#489][])
 
 ### Changed
 * Update dependencies
@@ -496,10 +496,10 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [4.2.1] - 2016-03-08
 ### Fixed
-* Fix [`sort-prop-types`] crash with spread operator ([#478][])
+* Fix [`sort-prop-types`][] crash with spread operator ([#478][])
 * Fix stateless components detection when conditionally returning JSX ([#486][])
 * Fix case where props were not assigned to the right component ([#485][])
-* Fix missing `getChildContext` lifecycle method in [`prefer-stateless-function`] ([#492][])
+* Fix missing `getChildContext` lifecycle method in [`prefer-stateless-function`][] ([#492][])
 
 [4.2.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v4.2.0...v4.2.1
 [#478]: https://github.com/yannickcr/eslint-plugin-react/issues/478
@@ -510,11 +510,11 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 ## [4.2.0] - 2016-03-05
 ### Added
 * Add support for Flow annotations on stateless components ([#467][])
-* Add [`prefer-stateless-function`] rule ([#214][])
-* Add auto fix for [`jsx-indent-props`] ([#483][] @shioju)
+* Add [`prefer-stateless-function`][] rule ([#214][])
+* Add auto fix for [`jsx-indent-props`][] ([#483][] @shioju)
 
 ### Fixed
-* Fix [`jsx-no-undef`] crash on objects ([#469][])
+* Fix [`jsx-no-undef`][] crash on objects ([#469][])
 * Fix propTypes detection when declared before the component ([#472][])
 
 ### Changed
@@ -535,11 +535,11 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 ## [4.1.0] - 2016-02-23
 ### Added
 * Add component detection for class expressions
-* Add displayName detection for class expressions in [`display-name`] ([#419][])
+* Add displayName detection for class expressions in [`display-name`][] ([#419][])
 
 ### Fixed
-* Fix used props detection in components for which we are not confident in [`prop-types`] ([#420][])
-* Fix false positive in [`jsx-key`] ([#456][] @jkimbo)
+* Fix used props detection in components for which we are not confident in [`prop-types`][] ([#420][])
+* Fix false positive in [`jsx-key`][] ([#456][] @jkimbo)
 
 ### Changed
 * Documentation improvements ([#457][] @wyze)
@@ -552,20 +552,20 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [4.0.0] - 2016-02-19
 ### Added
-* Add [`jsx-space-before-closing`] rule ([#244][] @ryym)
-* Add support for destructing in function signatures to [`prop-types`] ([#354][] @lencioni)
+* Add [`jsx-space-before-closing`][] rule ([#244][] @ryym)
+* Add support for destructing in function signatures to [`prop-types`][] ([#354][] @lencioni)
 
 ### Breaking
 * Add support for static methods to `sort-comp`. Static methods must now be declared first, see [rule documentation](docs/rules/sort-comp.md) ([#128][] @lencioni)
-* Add shareable config in place of default configuration. [`jsx-uses-vars`] is not enabled by default anymore, see [documentation](README.md#recommended-configuration) ([#192][])
-* Rename `jsx-sort-prop-types` to [`sort-prop-types`]. `jsx-sort-prop-types` still works but will trigger a warning ([#87][] @lencioni)
+* Add shareable config in place of default configuration. [`jsx-uses-vars`][] is not enabled by default anymore, see [documentation](README.md#recommended-configuration) ([#192][])
+* Rename `jsx-sort-prop-types` to [`sort-prop-types`][]. `jsx-sort-prop-types` still works but will trigger a warning ([#87][] @lencioni)
 * Remove deprecated `jsx-quotes` rule ([#433][] @lencioni)
-* [`display-name`] now accept the transpiler name by default. You can use the `ignoreTranspilerName` option to get the old behavior, see [rule documentation](docs/rules/display-name.md#ignoretranspilername) ([#440][] @lencioni)
+* [`display-name`][] now accept the transpiler name by default. You can use the `ignoreTranspilerName` option to get the old behavior, see [rule documentation](docs/rules/display-name.md#ignoretranspilername) ([#440][] @lencioni)
 
 ### Fixed
-* Only ignore lowercase JSXIdentifier in [`jsx-no-undef`] ([#435][])
-* Fix [`jsx-handler-names`] regex ([#425][])
-* Fix destructured props detection in [`prop-types`] ([#443][])
+* Only ignore lowercase JSXIdentifier in [`jsx-no-undef`][] ([#435][])
+* Fix [`jsx-handler-names`][] regex ([#425][])
+* Fix destructured props detection in [`prop-types`][] ([#443][])
 
 ### Changed
 * Update dependencies ([#426][] @quentin-)
@@ -592,23 +592,23 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.16.1] - 2016-01-24
 ### Fixed
-* Fix [`jsx-sort-prop-types`] issue with custom propTypes ([#408][] @alitaheri)
+* Fix [`jsx-sort-prop-types`][] issue with custom propTypes ([#408][] @alitaheri)
 
 [3.16.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.16.0...v3.16.1
 [#408]: https://github.com/yannickcr/eslint-plugin-react/issues/408
 
 ## [3.16.0] - 2016-01-24
 ### Added
-* Add [`jsx-equals-spacing`] rule ([#394][] @ryym)
+* Add [`jsx-equals-spacing`][] rule ([#394][] @ryym)
 * Add auto fix for `wrap-multiline`
 * Add auto fix for `jsx-boolean-value`
 * Add auto fix for `no-unknown-property`
-* Add auto fix for [`jsx-curly-spacing`] ([#407][] @ewendel)
-* Add `requiredFirst` option to [`jsx-sort-prop-types`] ([#392][] @chrislaskey)
-* Add `ignoreRefs` option to [`jsx-no-bind`] ([#330][] @silvenon)
+* Add auto fix for [`jsx-curly-spacing`][] ([#407][] @ewendel)
+* Add `requiredFirst` option to [`jsx-sort-prop-types`][] ([#392][] @chrislaskey)
+* Add `ignoreRefs` option to [`jsx-no-bind`][] ([#330][] @silvenon)
 
 ### Fixed
-* Ignore `ref` in [`jsx-handler-names`] (again) ([#396][])
+* Ignore `ref` in [`jsx-handler-names`][] (again) ([#396][])
 
 ### Changed
 * Update dependencies
@@ -622,14 +622,14 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.15.0] - 2016-01-12
 ### Added
-* Add support for flow annotations to [`prop-types`] ([#382][] @phpnode)
+* Add support for flow annotations to [`prop-types`][] ([#382][] @phpnode)
 
 ### Fixed
-* Fix [`prop-types`] crash when initializing class variable with an empty object ([#383][])
-* Fix [`prop-types`] crash when propTypes are using the spread operator ([#389][])
+* Fix [`prop-types`][] crash when initializing class variable with an empty object ([#383][])
+* Fix [`prop-types`][] crash when propTypes are using the spread operator ([#389][])
 
 ### Changed
-* Improve [`sort-comp`] error messages ([#372][] @SystemParadox)
+* Improve [`sort-comp`][] error messages ([#372][] @SystemParadox)
 * Update dependencies
 
 [3.15.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.14.0...v3.15.0
@@ -640,17 +640,17 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.14.0] - 2016-01-05
 ### Added
-* Add [`jsx-indent`] rule ([#342][])
+* Add [`jsx-indent`][] rule ([#342][])
 * Add shared setting for pragma configuration ([#228][] @NickStefan)
 
 ### Fixed
-* Fix crash in [`jsx-key`] ([#380][] @nfcampos)
-* Fix crash in [`forbid-prop-types`] ([#377][] @nfcampos)
-* Ignore `ref` in [`jsx-handler-names`] ([#375][])
+* Fix crash in [`jsx-key`][] ([#380][] @nfcampos)
+* Fix crash in [`forbid-prop-types`][] ([#377][] @nfcampos)
+* Ignore `ref` in [`jsx-handler-names`][] ([#375][])
 
 ### Changed
 * Add AppVeyor CI to run tests on a Windows platform
-* Add [`sort-comp`] codemod to [`sort-comp`] documentation ([#381][] @turadg)
+* Add [`sort-comp`][] codemod to [`sort-comp`][] documentation ([#381][] @turadg)
 
 [3.14.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.13.1...v3.14.0
 [#342]: https://github.com/yannickcr/eslint-plugin-react/issues/342
@@ -662,19 +662,19 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.13.1] - 2015-12-26
 ### Fixed
-* Fix crash in [`jsx-key`] ([#373][] @lukekarrys)
+* Fix crash in [`jsx-key`][] ([#373][] @lukekarrys)
 
 [3.13.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.13.0...v3.13.1
 [#373]: https://github.com/yannickcr/eslint-plugin-react/issues/373
 
 ## [3.13.0] - 2015-12-24
 ### Added
-* Add [`no-string-refs`] rule ([#341][] @Intellicode)
-* Add support for propTypes assigned via a variable in [`prop-types`] ([#355][])
+* Add [`no-string-refs`][] rule ([#341][] @Intellicode)
+* Add support for propTypes assigned via a variable in [`prop-types`][] ([#355][])
 
 ### Fixed
-* Fix `never` option in [`prefer-es6-class`]
-* Fix [`jsx-key`] false-positives ([#320][] @silvenon)
+* Fix `never` option in [`prefer-es6-class`][]
+* Fix [`jsx-key`][] false-positives ([#320][] @silvenon)
 
 ### Changed
 * Documentation improvements ([#368][] @lencioni, [#370][] @tmcw, [#371][])
@@ -691,12 +691,12 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.12.0] - 2015-12-20
 ### Added
-* Add [`no-deprecated`] rule ([#356][] @graue)
-* Add [`no-is-mounted`] rule ([#37][] @lencioni)
-* Add `never` option to [`prefer-es6-class`] rule ([#359][] @pwmckenna)
+* Add [`no-deprecated`][] rule ([#356][] @graue)
+* Add [`no-is-mounted`][] rule ([#37][] @lencioni)
+* Add `never` option to [`prefer-es6-class`][] rule ([#359][] @pwmckenna)
 
 ### Fixed
-* Fix [`jsx-pascal-case`] to stop checking lower cased components ([#329][])
+* Fix [`jsx-pascal-case`][] to stop checking lower cased components ([#329][])
 * Fix crash in component detection class ([#364][])
 
 ### Changed
@@ -712,11 +712,11 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.11.3] - 2015-12-05
 ### Fixed
-* Fix crash in [`prop-types`] when reassigning props ([#345][])
-* Fix [`jsx-handler-names`] for stateless components ([#346][])
+* Fix crash in [`prop-types`][] when reassigning props ([#345][])
+* Fix [`jsx-handler-names`][] for stateless components ([#346][])
 
 ### Changed
-* Update [`jsx-handler-names`] error messages to be less specific ([#348][] @jakemmarsh)
+* Update [`jsx-handler-names`][] error messages to be less specific ([#348][] @jakemmarsh)
 
 [3.11.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.11.2...v3.11.3
 [#345]: https://github.com/yannickcr/eslint-plugin-react/issues/345
@@ -725,11 +725,11 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.11.2] - 2015-12-01
 ### Fixed
-* Allow numbers in [`jsx-pascal-case`] ([#339][])
-* Fix [`jsx-handler-names`] crash with arrays ([#340][])
+* Allow numbers in [`jsx-pascal-case`][] ([#339][])
+* Fix [`jsx-handler-names`][] crash with arrays ([#340][])
 
 ### Changed
-* Add `allow-in-func` option to [`no-did-update-set-state`] documentation
+* Add `allow-in-func` option to [`no-did-update-set-state`][] documentation
 
 [3.11.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.11.1...v3.11.2
 [#339]: https://github.com/yannickcr/eslint-plugin-react/issues/339
@@ -737,24 +737,24 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.11.1] - 2015-11-29
 ### Fixed
-* Fix SVG attributes support for [`no-unknown-property`] ([#338][])
+* Fix SVG attributes support for [`no-unknown-property`][] ([#338][])
 
 [3.11.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.11.0...v3.11.1
 [#338]: https://github.com/yannickcr/eslint-plugin-react/issues/338
 
 ## [3.11.0] - 2015-11-29
 ### Added
-* Add [`jsx-handler-names`] rule ([#315][] @jakemmarsh)
-* Add SVG attributes support to [`no-unknown-property`] ([#318][])
-* Add shorthandFirst option to [`jsx-sort-props`] ([#336][] @lucasmotta)
+* Add [`jsx-handler-names`][] rule ([#315][] @jakemmarsh)
+* Add SVG attributes support to [`no-unknown-property`][] ([#318][])
+* Add shorthandFirst option to [`jsx-sort-props`][] ([#336][] @lucasmotta)
 
 ### Fixed
 * Fix destructured props detection in stateless components ([#326][])
 * Fix props validation for nested stateless components ([#331][])
-* Fix [`require-extension`] to ignore extension if it's part of the package name ([#319][])
+* Fix [`require-extension`][] to ignore extension if it's part of the package name ([#319][])
 
 ### Changed
-* Allow consecutive uppercase letters in [`jsx-pascal-case`] ([#328][] @lencioni)
+* Allow consecutive uppercase letters in [`jsx-pascal-case`][] ([#328][] @lencioni)
 * Update dependencies
 
 [3.11.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.10.0...v3.11.0
@@ -768,7 +768,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.10.0] - 2015-11-21
 ### Added
-* Add [`jsx-pascal-case`] rule ([#306][] @jakemmarsh)
+* Add [`jsx-pascal-case`][] rule ([#306][] @jakemmarsh)
 
 ### Fixed
 * Fix crash on incomplete class property declaration ([#317][] @dapetcu21)
@@ -781,17 +781,17 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.9.0] - 2015-11-17
 ### Added
-* Add [`jsx-key`] rule ([#293][] @benmosher)
-* Add `allow-in-func` option to [`no-did-update-set-state`] ([#300][])
-* Add option to only enforce [`jsx-closing-bracket-location`] rule to one type of tag (nonEmpty or selfClosing) ([#307][])
+* Add [`jsx-key`][] rule ([#293][] @benmosher)
+* Add `allow-in-func` option to [`no-did-update-set-state`][] ([#300][])
+* Add option to only enforce [`jsx-closing-bracket-location`][] rule to one type of tag (nonEmpty or selfClosing) ([#307][])
 
 ### Fixed
 * Fix crash when destructuring with only the rest spread ([#269][])
 * Fix variables detection when searching for related components ([#303][])
-* Fix [`no-unknown-property`] to not check custom elements ([#308][] @zertosh)
+* Fix [`no-unknown-property`][] to not check custom elements ([#308][] @zertosh)
 
 ### Changed
-* Improve [`jsx-closing-bracket-location`] error message ([#301][] @alopatin)
+* Improve [`jsx-closing-bracket-location`][] error message ([#301][] @alopatin)
 * Update dependencies
 
 [3.9.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.8.0...v3.9.0
@@ -805,7 +805,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.8.0] - 2015-11-07
 ### Added
-* Add ignoreStateless option to [`no-multi-comp`] ([#290][])
+* Add ignoreStateless option to [`no-multi-comp`][] ([#290][])
 
 ### Fixed
 * Fix classes with properties to always be marked as components ([#291][])
@@ -821,7 +821,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.7.1] - 2015-11-05
 ### Fixed
-* Fix [`sort-comp`] crash on stateless components ([#285][])
+* Fix [`sort-comp`][] crash on stateless components ([#285][])
 * Fix crash in ES5 components detection ([#286][])
 * Fix ES5 components detection from nested functions ([#287][])
 
@@ -832,8 +832,8 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.7.0] - 2015-11-05
 ### Added
-* Add [`jsx-no-bind`] rule ([#184][] @Daniel15)
-* Add line-aligned option to [`jsx-closing-bracket-location`] ([#243][] @alopatin)
+* Add [`jsx-no-bind`][] rule ([#184][] @Daniel15)
+* Add line-aligned option to [`jsx-closing-bracket-location`][] ([#243][] @alopatin)
 
 ### Fixed
 * Fix a lot of issues about components detection, mostly related to stateless components ([#264][], [#267][], [#268][], [#276][], [#277][], [#280][])
@@ -853,8 +853,8 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.6.3] - 2015-10-20
 ### Fixed
-* Fix [`display-name`] for stateless components ([#256][])
-* Fix [`prop-types`] props validation in constructor ([#259][])
+* Fix [`display-name`][] for stateless components ([#256][])
+* Fix [`prop-types`][] props validation in constructor ([#259][])
 * Fix typo in README ([#261][] @chiedojohn)
 
 [3.6.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.6.2...v3.6.3
@@ -878,15 +878,15 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.6.0] - 2015-10-18
 ### Added
-* Add support for stateless function components to [`display-name`] and [`prop-types`] ([#237][])
-* Add callbacksLast option to [`jsx-sort-props`] and [`jsx-sort-prop-types`] ([#242][] @Daniel15)
-* Add [`prefer-es6-class`] rule ([#247][] @hamiltondanielb)
+* Add support for stateless function components to [`display-name`][] and [`prop-types`][] ([#237][])
+* Add callbacksLast option to [`jsx-sort-props`][] and [`jsx-sort-prop-types`][] ([#242][] @Daniel15)
+* Add [`prefer-es6-class`][] rule ([#247][] @hamiltondanielb)
 
 ### Fixed
-* Fix [`forbid-prop-types`] crash with destructured PropTypes ([#230][] @epmatsw)
-* Fix [`forbid-prop-types`] to do not modify AST directly ([#249][] @rhysd)
-* Fix [`prop-types`] crash with empty destructuring ([#251][])
-* Fix [`prop-types`] to not validate computed keys in destructuring ([#236][])
+* Fix [`forbid-prop-types`][] crash with destructured PropTypes ([#230][] @epmatsw)
+* Fix [`forbid-prop-types`][] to do not modify AST directly ([#249][] @rhysd)
+* Fix [`prop-types`][] crash with empty destructuring ([#251][])
+* Fix [`prop-types`][] to not validate computed keys in destructuring ([#236][])
 
 ### Changed
 * Update dependencies
@@ -906,8 +906,8 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.5.1] - 2015-10-01
 ### Fixed
-* Fix [`no-direct-mutation-state`] to report only in React components ([#229][])
-* Fix [`forbid-prop-types`] for arrayOf and instanceOf ([#230][])
+* Fix [`no-direct-mutation-state`][] to report only in React components ([#229][])
+* Fix [`forbid-prop-types`][] for arrayOf and instanceOf ([#230][])
 
 ### Changed
 * Documentation improvements ([#232][] @edge)
@@ -919,8 +919,8 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.5.0] - 2015-09-28
 ### Added
-* Add [`no-direct-mutation-state`] rule ([#133][], [#201][] @petersendidit)
-* Add [`forbid-prop-types`] rule ([#215][] @pwmckenna)
+* Add [`no-direct-mutation-state`][] rule ([#133][], [#201][] @petersendidit)
+* Add [`forbid-prop-types`][] rule ([#215][] @pwmckenna)
 
 ### Fixed
 * Fix no-did-mount/update-set-state rules, these rules were not working on ES6 classes
@@ -951,8 +951,8 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.4.0] - 2015-09-16
 ### Added
-* Add namespaced JSX support to [`jsx-no-undef`] ([#219][] @zertosh)
-* Add option to [`jsx-closing-bracket-location`] to configure different styles for self-closing and non-empty tags ([#208][] @evocateur)
+* Add namespaced JSX support to [`jsx-no-undef`][] ([#219][] @zertosh)
+* Add option to [`jsx-closing-bracket-location`][] to configure different styles for self-closing and non-empty tags ([#208][] @evocateur)
 
 ### Deprecated
 * Deprecate `jsx-quotes` rule, will now trigger a warning if used ([#217][])
@@ -964,12 +964,12 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.3.2] - 2015-09-10
 ### Changed
-* Add `state` in lifecycle methods for [`sort-comp`] rule ([#197][] @mathieudutour)
+* Add `state` in lifecycle methods for [`sort-comp`][] rule ([#197][] @mathieudutour)
 * Treat component with render which returns `createElement` as valid ([#206][] @epmatsw)
 
 ### Fixed
-* Fix allowed methods on arrayOf in [`prop-types`] ([#146][])
-* Fix default configuration for [`jsx-boolean-value`] ([#210][])
+* Fix allowed methods on arrayOf in [`prop-types`][] ([#146][])
+* Fix default configuration for [`jsx-boolean-value`][] ([#210][])
 
 [3.3.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.3.1...v3.3.2
 [#146]: https://github.com/yannickcr/eslint-plugin-react/issues/146
@@ -984,7 +984,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 * Documentation improvements ([#198][] @lencioni)
 
 ### Fixed
-* Fix [`jsx-closing-bracket-location`] for multiline props ([#199][])
+* Fix [`jsx-closing-bracket-location`][] for multiline props ([#199][])
 
 [3.3.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.3.0...v3.3.1
 [#198]: https://github.com/yannickcr/eslint-plugin-react/pull/198
@@ -992,9 +992,9 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.3.0] - 2015-08-26
 ### Added
-* Add [`jsx-indent-props`] rule ([#15][], [#181][])
+* Add [`jsx-indent-props`][] rule ([#15][], [#181][])
 * Add `no-set-state rule` ([#197][] @markdalgleish)
-* Add [`jsx-closing-bracket-location`] rule ([#14][], [#64][])
+* Add [`jsx-closing-bracket-location`][] rule ([#14][], [#64][])
 
 ### Changed
 * Update dependencies
@@ -1039,14 +1039,14 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.2.0] - 2015-08-04
 ### Added
-* Add [`jsx-max-props-per-line`] rule ([#13][])
-* Add [`jsx-no-literals`] rule ([#176][] @CalebMorris)
+* Add [`jsx-max-props-per-line`][] rule ([#13][])
+* Add [`jsx-no-literals`][] rule ([#176][] @CalebMorris)
 
 ### Changed
 * Update dependencies
 
 ### Fixed
-* Fix object access in [`jsx-no-undef`] ([#172][])
+* Fix object access in [`jsx-no-undef`][] ([#172][])
 
 [3.2.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.1.0...v3.2.0
 [#13]: https://github.com/yannickcr/eslint-plugin-react/issues/13
@@ -1055,15 +1055,15 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [3.1.0] - 2015-07-28
 ### Added
-* Add event handlers to [`no-unknown-property`] ([#164][] @mkenyon)
-* Add customValidators option to [`prop-types`] ([#145][] @CalebMorris)
+* Add event handlers to [`no-unknown-property`][] ([#164][] @mkenyon)
+* Add customValidators option to [`prop-types`][] ([#145][] @CalebMorris)
 
 ### Changed
 * Update dependencies
 * Documentation improvements ([#167][] @ngbrown)
 
 ### Fixed
-* Fix comment handling in [`jsx-curly-spacing`] ([#165][])
+* Fix comment handling in [`jsx-curly-spacing`][] ([#165][])
 
 [3.1.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v3.0.0...v3.1.0
 [#164]: https://github.com/yannickcr/eslint-plugin-react/pull/164
@@ -1074,13 +1074,13 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 ## [3.0.0] - 2015-07-21
 ### Added
 * Add jsx-no-duplicate-props rule ([#161][] @hummlas)
-* Add allowMultiline option to the [`jsx-curly-spacing`] rule ([#156][] @mathieumg)
+* Add allowMultiline option to the [`jsx-curly-spacing`][] rule ([#156][] @mathieumg)
 
 ### Breaking
-* In [`jsx-curly-spacing`] braces spanning multiple lines are now allowed with `never` option ([#156][] @mathieumg)
+* In [`jsx-curly-spacing`][] braces spanning multiple lines are now allowed with `never` option ([#156][] @mathieumg)
 
 ### Fixed
-* Fix multiple var and destructuring handling in [`props-types`] ([#159][])
+* Fix multiple var and destructuring handling in [`props-types`][] ([#159][])
 * Fix crash when retrieving propType name ([#163][])
 
 [3.0.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v2.7.1...v3.0.0
@@ -1103,8 +1103,8 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [2.7.0] - 2015-07-11
 ### Added
-* Add [`no-danger`] rule ([#138][] @scothis)
-* Add [`jsx-curly-spacing`] rule ([#142][])
+* Add [`no-danger`][] rule ([#138][] @scothis)
+* Add [`jsx-curly-spacing`][] rule ([#142][])
 
 ### Fixed
 * Fix properties limitations on propTypes ([#139][])
@@ -1125,7 +1125,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [2.6.3] - 2015-06-30
 ### Fixed
-* Fix ignore option for [`prop-types`] rule ([#135][])
+* Fix ignore option for [`prop-types`][] rule ([#135][])
 * Fix nested props destructuring ([#136][])
 
 [2.6.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v2.6.2...v2.6.3
@@ -1141,7 +1141,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [2.6.1] - 2015-06-28
 ### Fixed
-* Fix crash in [`prop-types`] when encountering an empty variable declaration ([#130][])
+* Fix crash in [`prop-types`][] when encountering an empty variable declaration ([#130][])
 
 [2.6.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v2.6.0...v2.6.1
 [#130]: https://github.com/yannickcr/eslint-plugin-react/issues/130
@@ -1149,11 +1149,11 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 ## [2.6.0] - 2015-06-28
 ### Added
 * Add support for nested propTypes ([#62][] [#105][] @Cellule)
-* Add [`require-extension`] rule ([#117][] @scothis)
-* Add support for computed string format in [`prop-types`] ([#127][] @Cellule)
-* Add ES6 methods to [`sort-comp`] default configuration ([#97][] [#122][])
+* Add [`require-extension`][] rule ([#117][] @scothis)
+* Add support for computed string format in [`prop-types`][] ([#127][] @Cellule)
+* Add ES6 methods to [`sort-comp`][] default configuration ([#97][] [#122][])
 * Add support for props destructuring directly on the this keyword
-* Add `acceptTranspilerName` option to [`display-name`] rule ([#75][])
+* Add `acceptTranspilerName` option to [`display-name`][] rule ([#75][])
 * Add schema to validate rules options
 
 ### Changed
@@ -1163,9 +1163,9 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 * Fix test command for Windows ([#114][] @Cellule)
 * Fix detection of missing displayName and propTypes when `ecmaFeatures.jsx` is false ([#119][] @rpl)
 * Fix propTypes destructuring with properties as string ([#118][] @Cellule)
-* Fix [`jsx-sort-prop-types`] support for keys as string ([#123][] @Cellule)
+* Fix [`jsx-sort-prop-types`][] support for keys as string ([#123][] @Cellule)
 * Fix crash if a ClassProperty has only one token ([#125][])
-* Fix invalid class property handling in [`jsx-sort-prop-types`] ([#129][])
+* Fix invalid class property handling in [`jsx-sort-prop-types`][] ([#129][])
 
 [2.6.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v2.5.2...v2.6.0
 [#62]: https://github.com/yannickcr/eslint-plugin-react/issues/62
@@ -1184,7 +1184,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [2.5.2] - 2015-06-14
 ### Fixed
-* Fix regression in [`jsx-uses-vars`] with `babel-eslint` ([#110][])
+* Fix regression in [`jsx-uses-vars`][] with `babel-eslint` ([#110][])
 
 [2.5.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v2.5.1...v2.5.2
 [#110]: https://github.com/yannickcr/eslint-plugin-react/issues/110
@@ -1195,8 +1195,8 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 * Documentation improvements ([#99][] @morenoh149)
 
 ### Fixed
-* Fix [`prop-types`] crash when propTypes definition is invalid ([#95][])
-* Fix [`jsx-uses-vars`] for ES6 classes ([#96][])
+* Fix [`prop-types`][] crash when propTypes definition is invalid ([#95][])
+* Fix [`jsx-uses-vars`][] for ES6 classes ([#96][])
 * Fix hasOwnProperty that is taken for a prop ([#102][])
 
 [2.5.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v2.5.0...v2.5.1
@@ -1207,7 +1207,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [2.5.0] - 2015-06-04
 ### Added
-* Add option to make [`wrap-multilines`] more granular ([#94][] @PiPeep)
+* Add option to make [`wrap-multilines`][] more granular ([#94][] @PiPeep)
 
 ### Changed
 * Update dependencies
@@ -1220,17 +1220,17 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [2.4.0] - 2015-05-30
 ### Added
-* Add pragma option to [`jsx-uses-react`] ([#82][] @dominicbarnes)
-* Add context props to [`sort-comp`] ([#89][] @zertosh)
+* Add pragma option to [`jsx-uses-react`][] ([#82][] @dominicbarnes)
+* Add context props to [`sort-comp`][] ([#89][] @zertosh)
 
 ### Changed
 * Update dependencies
 * Documentation improvement ([#91][] @matthewwithanm)
 
 ### Fixed
-* Fix itemID in [`no-unknown-property`] rule ([#85][] @cody)
+* Fix itemID in [`no-unknown-property`][] rule ([#85][] @cody)
 * Fix license field in package.json ([#90][] @zertosh)
-* Fix usage of contructor in [`sort-comp`] options ([#88][])
+* Fix usage of contructor in [`sort-comp`][] options ([#88][])
 
 [2.4.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v2.3.0...v2.4.0
 [#82]: https://github.com/yannickcr/eslint-plugin-react/pull/82
@@ -1242,8 +1242,8 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [2.3.0] - 2015-05-14
 ### Added
-* Add [`sort-comp`] rule ([#39][])
-* Add `allow-in-func` option to [`no-did-mount-set-state`] ([#56][])
+* Add [`sort-comp`][] rule ([#39][])
+* Add `allow-in-func` option to [`no-did-mount-set-state`][] ([#56][])
 
 ### Changed
 * Update dependencies
@@ -1259,7 +1259,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [2.2.0] - 2015-04-22
 ### Added
-* Add [`jsx-sort-prop-types`] rule ([#38][] @AlexKVal)
+* Add [`jsx-sort-prop-types`][] rule ([#38][] @AlexKVal)
 
 ### Changed
 * Documentation improvements ([#71][] @AlexKVal)
@@ -1289,12 +1289,12 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [2.1.0] - 2015-04-06
 ### Added
-* Add [`jsx-boolean-value`] rule ([#11][])
-* Add support for static methods in [`display-name`] and [`prop-types`] ([#48][])
+* Add [`jsx-boolean-value`][] rule ([#11][])
+* Add support for static methods in [`display-name`][] and [`prop-types`][] ([#48][])
 
 ### Changed
-* Update [`jsx-sort-props`] to reset the alphabetical verification on spread ([#47][] @zertosh)
-* Update [`jsx-uses-vars`] to be enabled by default ([#49][] @banderson)
+* Update [`jsx-sort-props`][] to reset the alphabetical verification on spread ([#47][] @zertosh)
+* Update [`jsx-uses-vars`][] to be enabled by default ([#49][] @banderson)
 
 ### Fixed
 * Fix describing comment for hasSpreadOperator() method ([#53][] @AlexKVal)
@@ -1309,8 +1309,8 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 ## [2.0.2] - 2015-03-31
 ### Fixed
 * Fix ignore rest spread when destructuring props ([#46][])
-* Fix component detection in [`prop-types`] and [`display-name`] ([#45][])
-* Fix spread handling in [`jsx-sort-props`] ([#42][] @zertosh)
+* Fix component detection in [`prop-types`][] and [`display-name`][] ([#45][])
+* Fix spread handling in [`jsx-sort-props`][] ([#42][] @zertosh)
 
 [2.0.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v2.0.1...v2.0.2
 [#46]: https://github.com/yannickcr/eslint-plugin-react/issues/46
@@ -1326,21 +1326,21 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [2.0.0] - 2015-03-29
 ### Added
-* Add [`jsx-sort-props`] rule ([#16][])
-* Add [`no-unknown-property`] rule ([#28][])
-* Add ignore option to [`prop-types`] rule
+* Add [`jsx-sort-props`][] rule ([#16][])
+* Add [`no-unknown-property`][] rule ([#28][])
+* Add ignore option to [`prop-types`][] rule
 
 ### Changed
 * Update dependencies
 
 ### Breaking
-* In [`prop-types`] the children prop is no longer ignored
+* In [`prop-types`][] the children prop is no longer ignored
 
 ### Fixed
 * Fix components are now detected when using ES6 classes ([#24][])
-* Fix [`prop-types`] now return the right line/column ([#33][])
+* Fix [`prop-types`][] now return the right line/column ([#33][])
 * Fix props are now detected when destructuring ([#27][])
-* Fix only check for computed property names in [`prop-types`] ([#36][] @burnnat)
+* Fix only check for computed property names in [`prop-types`][] ([#36][] @burnnat)
 
 [2.0.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v1.6.1...v2.0.0
 [#16]: https://github.com/yannickcr/eslint-plugin-react/issues/16
@@ -1355,7 +1355,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 * Update `jsx-quotes` documentation
 
 ### Fixed
-* Fix [`jsx-no-undef`] with `babel-eslint` ([#30][])
+* Fix [`jsx-no-undef`][] with `babel-eslint` ([#30][])
 * Fix `jsx-quotes` on Literal childs ([#29][])
 
 [1.6.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v1.6.0...v1.6.1
@@ -1364,7 +1364,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [1.6.0] - 2015-03-22
 ### Added
-* Add [`jsx-no-undef`] rule
+* Add [`jsx-no-undef`][] rule
 * Add `jsx-quotes` rule ([#12][])
 * Add `@jsx` pragma support ([#23][])
 
@@ -1373,7 +1373,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 * Update dependencies
 
 ### Fixed
-* Fix [`react-in-jsx-scope`] in Node.js env
+* Fix [`react-in-jsx-scope`][] in Node.js env
 * Fix usage of propTypes with an external object ([#9][])
 
 [1.6.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v1.5.0...v1.6.0
@@ -1384,10 +1384,10 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [1.5.0] - 2015-03-14
 ### Added
-* Add [`jsx-uses-vars`] rule
+* Add [`jsx-uses-vars`][] rule
 
 ### Fixed
-* Fix [`jsx-uses-react`] for ESLint 0.17.0
+* Fix [`jsx-uses-react`][] for ESLint 0.17.0
 
 [1.5.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v1.4.1...v1.5.0
 
@@ -1402,11 +1402,11 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [1.4.0] - 2015-02-24
 ### Added
-* Add [`react-in-jsx-scope`] rule ([#5][] @glenjamin)
-* Add [`jsx-uses-react`] rule ([#6][] @glenjamin)
+* Add [`react-in-jsx-scope`][] rule ([#5][] @glenjamin)
+* Add [`jsx-uses-react`][] rule ([#6][] @glenjamin)
 
 ### Changed
-* Update [`prop-types`] to check props usage insead of propTypes presence ([#4][])
+* Update [`prop-types`][] to check props usage insead of propTypes presence ([#4][])
 
 [1.4.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v1.3.0...v1.4.0
 [#4]: https://github.com/yannickcr/eslint-plugin-react/issues/4
@@ -1415,8 +1415,8 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 ## [1.3.0] - 2015-02-24
 ### Added
-* Add [`no-did-mount-set-state`] rule
-* Add [`no-did-update-set-state`] rule
+* Add [`no-did-mount-set-state`][] rule
+* Add [`no-did-update-set-state`][] rule
 
 ### Changed
 * Update dependencies
@@ -1428,7 +1428,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 * Update dependencies
 
 ### Fixed
-* Fix childs detection in [`self-closing-comp`] ([#3][])
+* Fix childs detection in [`self-closing-comp`][] ([#3][])
 
 [1.2.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v1.2.1...v1.2.2
 [#3]: https://github.com/yannickcr/eslint-plugin-react/issues/3
@@ -1437,23 +1437,23 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 ### Changed
 * Update Readme
 * Update dependencies
-* Update [`wrap-multilines`] and [`self-closing-comp`] rules for ESLint 0.13.0
+* Update [`wrap-multilines`][] and [`self-closing-comp`][] rules for ESLint 0.13.0
 
 [1.2.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v1.2.0...v1.2.1
 
 ## [1.2.0] - 2014-12-29
 ### Added
-* Add [`self-closing-comp`] rule
+* Add [`self-closing-comp`][] rule
 
 ### Fixed
-* Fix [`display-name`] and [`prop-types`] rules
+* Fix [`display-name`][] and [`prop-types`][] rules
 
 [1.2.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v1.1.0...v1.2.0
 
 ## [1.1.0] - 2014-12-28
 ### Added
- * Add [`display-name`] rule
- * Add [`wrap-multilines`] rule
+ * Add [`display-name`][] rule
+ * Add [`wrap-multilines`][] rule
  * Add rules documentation
  * Add rules tests
 
