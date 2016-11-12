@@ -188,6 +188,30 @@ ruleTester.run('jsx-indent', rule, {
     parserOptions: parserOptions,
     options: [2]
   }, {
+    code: [
+      '<div>',
+      '    {',
+      '        [',
+      '            <Foo />,',
+      '            <Bar />',
+      '        ]',
+      '    }',
+      '</div>'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '    {foo &&',
+      '        [',
+      '            <Foo />,',
+      '            <Bar />',
+      '        ]',
+      '    }',
+      '</div>'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
     // Literals indentation is not touched
     code: [
       '<div>',
@@ -625,6 +649,56 @@ ruleTester.run('jsx-indent', rule, {
     options: [2],
     errors: [
       {message: 'Expected indentation of 2 space characters but found 0.'}
+    ]
+  }, {
+    code: [
+      '<div>',
+      '    {',
+      '        [',
+      '            <Foo />,',
+      '        <Bar />',
+      '        ]',
+      '    }',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '    {',
+      '        [',
+      '            <Foo />,',
+      '            <Bar />',
+      '        ]',
+      '    }',
+      '</div>'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'Expected indentation of 12 space characters but found 8.'}
+    ]
+  }, {
+    code: [
+      '<div>',
+      '    {foo &&',
+      '        [',
+      '            <Foo />,',
+      '        <Bar />',
+      '        ]',
+      '    }',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '    {foo &&',
+      '        [',
+      '            <Foo />,',
+      '            <Bar />',
+      '        ]',
+      '    }',
+      '</div>'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'Expected indentation of 12 space characters but found 8.'}
     ]
   }, {
     // Multiline ternary
