@@ -31,6 +31,13 @@ ruleTester.run('no-danger-with-children', rule, {
       parserOptions: parserOptions
     },
     {
+      code: '<div {...props} />',
+      parserOptions: parserOptions,
+      globals: {
+        props: true
+      }
+    },
+    {
       code: '<div dangerouslySetInnerHTML={{ __html: "HTML" }} />',
       parserOptions: parserOptions
     },
