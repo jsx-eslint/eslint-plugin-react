@@ -47,6 +47,40 @@ var RETURN_NO_PAREN = '\
     }\
   });';
 
+var DECLARATION_TERNARY_SINGLE_LINE = 'var hello = foo ? <p>Hello</p> : <p>Hi</p>;';
+
+var DECLARATION_TERNARY_PAREN = '\
+  var hello = foo ? (<div>\n\
+    <p>Hello</p>\n\
+  </div>) : (<div>\n\
+    <p>Hi</p>\n\
+  </div>);';
+
+var DECLARATION_TERNARY_NO_PAREN = '\
+  var hello = foo ? <div>\n\
+    <p>Hello</p>\n\
+  </div> : <div>\n\
+    <p>Hi</p>\n\
+  </div>;';
+
+var ASSIGNMENT_TERNARY_SINGLE_LINE = 'var hello; hello = foo ? <p>Hello</p> : <p>Hi</p>;';
+
+var ASSIGNMENT_TERNARY_PAREN = '\
+  var hello;\n\
+  hello = foo ? (<div>\n\
+    <p>Hello</p>\n\
+  </div>) : (<div>\n\
+    <p>Hi</p>\n\
+  </div>);';
+
+var ASSIGNMENT_TERNARY_NO_PAREN = '\
+  var hello;\n\
+  hello = foo ? <div>\n\
+    <p>Hello</p>\n\
+  </div> : <div>\n\
+    <p>Hi</p>\n\
+  </div>;';
+
 var DECLARATION_SINGLE_LINE = 'var hello = <p>Hello</p>;';
 
 var DECLARATION_PAREN = '\
@@ -92,6 +126,26 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       options: [{return: false}],
       parserOptions: parserOptions
     }, {
+      code: DECLARATION_TERNARY_SINGLE_LINE,
+      parserOptions: parserOptions
+    }, {
+      code: DECLARATION_TERNARY_PAREN,
+      parserOptions: parserOptions
+    }, {
+      code: DECLARATION_TERNARY_NO_PAREN,
+      options: [{declaration: false}],
+      parserOptions: parserOptions
+    }, {
+      code: ASSIGNMENT_TERNARY_SINGLE_LINE,
+      parserOptions: parserOptions
+    }, {
+      code: ASSIGNMENT_TERNARY_PAREN,
+      parserOptions: parserOptions
+    }, {
+      code: ASSIGNMENT_TERNARY_NO_PAREN,
+      options: [{assignment: false}],
+      parserOptions: parserOptions
+    }, {
       code: DECLARATION_SINGLE_LINE,
       parserOptions: parserOptions
     }, {
@@ -127,6 +181,22 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       parserOptions: parserOptions,
       options: [{return: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: DECLARATION_TERNARY_NO_PAREN,
+      output: DECLARATION_TERNARY_PAREN,
+      parserOptions: parserOptions,
+      errors: [
+        {message: 'Missing parentheses around multilines JSX'},
+        {message: 'Missing parentheses around multilines JSX'}
+      ]
+    }, {
+      code: ASSIGNMENT_TERNARY_NO_PAREN,
+      output: ASSIGNMENT_TERNARY_PAREN,
+      parserOptions: parserOptions,
+      errors: [
+        {message: 'Missing parentheses around multilines JSX'},
+        {message: 'Missing parentheses around multilines JSX'}
+      ]
     }, {
       code: DECLARATION_NO_PAREN,
       output: DECLARATION_PAREN,
