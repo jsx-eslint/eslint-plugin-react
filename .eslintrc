@@ -152,6 +152,7 @@
         "max-len": [2, 120],
         "max-params": 0,
         "max-statements": 0,
-        "no-plusplus": 0
+        "no-plusplus": 0,
+        "no-prototype-builtins": 2
     }
 }

@@ -241,7 +241,7 @@ ruleTester.run('prop-types', rule, {
       code: [
         'class Hello extends React.Component {',
         '  render() {',
-        '    if (this.props.hasOwnProperty(\'firstname\')) {',
+        '    if (Object.prototype.hasOwnProperty.call(this.props, \'firstname\')) {',
         '      return <div>Hello {this.props.firstname}</div>;',
         '    }',
         '    return <div>Hello</div>;',
