@@ -3,6 +3,28 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.7.0] - 2016-11-14
+### Added
+* Add [`jsx-tag-spacing`][] rule ([#693][] @Kovensky)
+
+### Fixed
+* Fix [`jsx-indent`][] for parenthesized ternaries ([#945][] @voxpelli)
+* Fix [`jsx-indent`][] for multiline ternaries
+* Fix [`jsx-indent`][] for arrays in jsx ([#947][])
+* Fix [`no-danger-with-children`][] crash with spread on global variables ([#921][])
+* Fix [`jsx-wrap-multilines`][] ternaries handling ([#916][])
+
+### Changed
+* Enable [`no-unused-prop-types`] `skipShapeProps` option by default to limit false positive ([#953][] @everdimension)
+
+[6.7.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.6.0...v6.7.0
+[#693]: https://github.com/yannickcr/eslint-plugin-react/issues/693
+[#945]: https://github.com/yannickcr/eslint-plugin-react/issues/945
+[#947]: https://github.com/yannickcr/eslint-plugin-react/issues/947
+[#921]: https://github.com/yannickcr/eslint-plugin-react/issues/921
+[#916]: https://github.com/yannickcr/eslint-plugin-react/issues/916
+[#953]: https://github.com/yannickcr/eslint-plugin-react/pull/953
+
 ## [6.6.0] - 2016-11-06
 ### Added
 * Add [`jsx-first-prop-new-line`][] auto fix ([#886][] @snowypowers)
@@ -1512,6 +1534,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`jsx-pascal-case`]: docs/rules/jsx-pascal-case.md
 [`jsx-sort-props`]: docs/rules/jsx-sort-props.md
 [`jsx-space-before-closing`]: docs/rules/jsx-space-before-closing.md
+[`jsx-tag-spacing`]: docs/rules/jsx-tag-spacing.md
 [`jsx-uses-react`]: docs/rules/jsx-uses-react.md
 [`jsx-uses-vars`]: docs/rules/jsx-uses-vars.md
 [`jsx-wrap-multilines`]: docs/rules/jsx-wrap-multilines.md
