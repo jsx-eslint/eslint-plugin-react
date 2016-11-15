@@ -58,6 +58,8 @@ var ruleTester = new RuleTester({
 });
 ruleTester.run('jsx-tag-spacing', rule, {
   valid: [{
+    code: '<App />'
+  }, {
     code: '<App />',
     options: beforeSelfClosingOptions('always')
   }, {
