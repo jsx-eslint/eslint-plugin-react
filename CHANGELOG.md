@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.7.1] - 2016-11-15
+### Fixed
+* Fix [`jsx-tag-spacing`][] crash when options object isn't passed ([#955][] @daltones)
+
+[6.7.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.7.0...v6.7.1
+[#955]: https://github.com/yannickcr/eslint-plugin-react/issues/955
+
 ## [6.7.0] - 2016-11-14
 ### Added
 * Add [`jsx-tag-spacing`][] rule ([#693][] @Kovensky)
@@ -15,7 +22,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * Fix [`jsx-wrap-multilines`][] ternaries handling ([#916][])
 
 ### Changed
-* Enable [`no-unused-prop-types`] `skipShapeProps` option by default to limit false positive ([#953][] @everdimension)
+* Enable [`no-unused-prop-types`][] `skipShapeProps` option by default to limit false positive ([#953][] @everdimension)
 
 [6.7.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.6.0...v6.7.0
 [#693]: https://github.com/yannickcr/eslint-plugin-react/issues/693
