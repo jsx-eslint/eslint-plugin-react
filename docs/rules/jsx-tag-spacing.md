@@ -50,7 +50,7 @@ The following patterns are considered warnings when configured `"always"`:
 <Goodbye></Goodbye>
 ```
 
-The following patterns are not considered warnings when configured `"never"`:
+The following patterns are not considered warnings when configured `"always"`:
 
 ```jsx
 <Hello/ >
