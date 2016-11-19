@@ -1029,6 +1029,21 @@ ruleTester.run('require-default-props', rule, {
         line: 8,
         column: 3
       }]
+    },
+    {
+      code: [
+        'var Greetings = ({ foo = "foo" }) => {',
+        '  return <div>Hello {this.props.name}</div>;',
+        '}',
+        'Greetings.propTypes = {',
+        '  foo: React.PropTypes.string',
+        '};'
+      ].join('\n'),
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.',
+        line: 5,
+        column: 3
+      }]
     }
   ]
 });

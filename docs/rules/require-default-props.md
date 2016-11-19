@@ -2,7 +2,8 @@
 
 This rule aims to ensure that any non-required `PropType` declaration of a component has a corresponding `defaultProps` value.
 
-One advantage of `defaultProps` over regular default logic in your code is that `defaultProps` are resolved by React before the `PropTypes` typechecking happens, so typechecking will also apply to your `defaultProps`.
+One advantage of `defaultProps` over custom default logic in your code is that `defaultProps` are resolved by React before the `PropTypes` typechecking happens, so typechecking will also apply to your `defaultProps`.
+The same also holds true for stateless functional components: default function parameters do not behave the same as `defaultProps` and thus using `defaultProps` is still preferred.
 
 To illustrate, consider the following example:
 
