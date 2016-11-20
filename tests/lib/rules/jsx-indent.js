@@ -252,6 +252,21 @@ ruleTester.run('jsx-indent', rule, {
     parserOptions: parserOptions
   }, {
     // Multiline ternary
+    // (multiline JSX, colon on its own line)
+    code: [
+      '{!foo ?',
+      '    <Foo',
+      '        onClick={this.onClick}',
+      '    />',
+      ':',
+      '    <Bar',
+      '        onClick={this.onClick}',
+      '    />',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    // Multiline ternary
     // (first expression on test line, colon at the end of the first expression)
     code: [
       'foo ? <Foo /> :',
