@@ -76,6 +76,42 @@ ruleTester.run('filename-matches-component', rule, {
     parserOptions: parserOptions
   }, {
     code: [
+      'var BearsSpiders = () => (<div>Hello {this.props.name}</div>);'
+    ].join('\n'),
+    options: [{
+      acceptTranspilerName: true
+    }],
+    filename: 'bears_spiders.js',
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'function FolksWolves() { return (<div>Hello {this.props.name}</div>) };'
+    ].join('\n'),
+    options: [{
+      acceptTranspilerName: true
+    }],
+    filename: 'folks_wolves.js',
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'var DontLook = function() { return (<div>Hello {this.props.name}</div>) };'
+    ].join('\n'),
+    options: [{
+      acceptTranspilerName: true
+    }],
+    filename: 'dont_look.js',
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'module.exports.JohnSmith = function() { return (<div>Hello {this.props.name}</div>) };'
+    ].join('\n'),
+    options: [{
+      acceptTranspilerName: true
+    }],
+    filename: 'john_smith.js',
+    parserOptions: parserOptions
+  }, {
+    code: [
       'var Hello = React.createClass({',
       '  render: function() {',
       '    return <div>Hello {this.props.name}</div>;',
