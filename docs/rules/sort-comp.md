@@ -6,7 +6,7 @@ When creating React components it is more convenient to always follow the same o
 
 ## Rule Details
 
-With default configuration the following organisation must be followed:
+The default configuration ensures that the following order must be followed:
 
   1. static methods and properties
   2. lifecycle methods: `displayName`, `propTypes`, `contextTypes`, `childContextTypes`, `mixins`, `statics`,`defaultProps`, `constructor`, `getDefaultProps`, `getInitialState`, `state`, `getChildContext`, `componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `componentDidUpdate`, `componentWillUnmount` (in this order).
@@ -89,7 +89,7 @@ The default configuration is:
 * `lifecycle` is referring to the `lifecycle` group defined in `groups`.
 * `everything-else` is a special group that match all the methods that do not match any of the other groups.
 * `render` is referring to the `render` method.
-* `type-annotations`. This group is not speficied by default, but can be used enforce flow annotations to be at the top.
+* `type-annotations`. This group is not specified by default, but can be used to enforce flow annotations to be at the top.
 
 You can override this configuration to match your needs.
 
