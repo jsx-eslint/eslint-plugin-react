@@ -514,6 +514,98 @@ ruleTester.run('require-default-props', rule, {
         '  bar: "bar"',
         '};'
       ].join('\n')
+    },
+
+    //
+    // with Flow annotations
+    {
+      code: [
+        'function Hello(props: { foo?: string }) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '}',
+
+        'Hello.defaultProps = { foo: "foo" };'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'function Hello(props: { foo: string }) {',
+        '  return <div>Hello {foo}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'const Hello = (props: { foo?: string }) => {',
+        '  return <div>Hello {props.foo}</div>;',
+        '};',
+
+        'Hello.defaultProps = { foo: "foo" };'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'const Hello = (props: { foo: string }) => {',
+        '  return <div>Hello {foo}</div>;',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'const Hello = function(props: { foo?: string }) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '};',
+
+        'Hello.defaultProps = { foo: "foo" };'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'const Hello = function(props: { foo: string }) {',
+        '  return <div>Hello {foo}</div>;',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'type Props = {',
+        '  foo: string,',
+        '  bar?: string',
+        '};',
+
+        'type Props2 = {',
+        '  foo: string,',
+        '  baz?: string',
+        '}',
+
+        'function Hello(props: Props | Props2) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '}',
+
+        'Hello.defaultProps = {',
+        '  bar: "bar",',
+        '  baz: "baz"',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'import type Props from "fake";',
+        'class Hello extends React.Component {',
+        '  props: Props;',
+        '  render () {',
+        '    return <div>Hello {this.props.name.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
@@ -1011,13 +1103,14 @@ ruleTester.run('require-default-props', rule, {
       }]
     },
 
+    //
     // edge cases
     {
       code: [
         'let Greetings = {};',
         'Greetings.Hello = class extends React.Component {',
         '  render () {',
-        '    return <div>Hello {this.props.name}</div>;',
+        '    return <div>Hello {this.props.foo}</div>;',
         '  }',
         '}',
         'Greetings.Hello.propTypes = {',
@@ -1033,7 +1126,7 @@ ruleTester.run('require-default-props', rule, {
     {
       code: [
         'var Greetings = ({ foo = "foo" }) => {',
-        '  return <div>Hello {this.props.name}</div>;',
+        '  return <div>Hello {this.props.foo}</div>;',
         '}',
         'Greetings.propTypes = {',
         '  foo: React.PropTypes.string',
@@ -1044,6 +1137,517 @@ ruleTester.run('require-default-props', rule, {
         line: 5,
         column: 3
       }]
+    },
+
+    //
+    // with Flow annotations
+    {
+      code: [
+        'class Hello extends React.Component {',
+        '  props: {',
+        '    foo?: string,',
+        '    bar?: string',
+        '  };',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}',
+
+        'Hello.defaultProps = {',
+        '  foo: "foo"',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.',
+        line: 4,
+        column: 5
+      }]
+    },
+    {
+      code: [
+        'type Props = {',
+        '  foo: string,',
+        '  bar?: string',
+        '};',
+
+        'class Hello extends React.Component {',
+        '  props: Props;',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.',
+        line: 3,
+        column: 3
+      }]
+    },
+    {
+      code: [
+        'type Props = {',
+        '  foo?: string',
+        '};',
+
+        'class Hello extends React.Component {',
+        '  props: Props;',
+
+        '  static defaultProps: { foo: string };',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.',
+        line: 2,
+        column: 3
+      }]
+    },
+    {
+      code: [
+        'class Hello extends React.Component {',
+        '  props: {',
+        '    foo: string,',
+        '    bar?: string',
+        '  };',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.',
+        line: 4,
+        column: 5
+      }]
+    },
+    {
+      code: [
+        'class Hello extends React.Component {',
+        '  props: {',
+        '    foo?: string,',
+        '    bar?: string',
+        '  };',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {
+          message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.',
+          line: 3,
+          column: 5
+        },
+        {
+          message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.',
+          line: 4,
+          column: 5
+        }
+      ]
+    },
+    {
+      code: [
+        'class Hello extends React.Component {',
+        '  props: {',
+        '    foo?: string',
+        '  };',
+
+        '  static defaultProps: { foo: string };',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.',
+        line: 3,
+        column: 5
+      }]
+    },
+    {
+      code: [
+        'type Props = {',
+        '  foo?: string,',
+        '  bar?: string',
+        '};',
+
+        'class Hello extends React.Component {',
+        '  props: Props;',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}',
+
+        'Hello.defaultProps = {',
+        '  foo: "foo"',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.',
+        line: 3,
+        column: 3
+      }]
+    },
+    {
+      code: [
+        'type Props = {',
+        '  foo?: string,',
+        '  bar?: string',
+        '};',
+
+        'class Hello extends React.Component {',
+        '  props: Props;',
+
+        '  static defaultProps: { foo: string, bar: string };',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}',
+
+        'Hello.defaultProps = {',
+        '  foo: "foo"',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.',
+        line: 3,
+        column: 3
+      }]
+    },
+    {
+      code: [
+        'class Hello extends React.Component {',
+        '  props: {',
+        '    foo?: string,',
+        '    bar?: string',
+        '  };',
+
+        '  static defaultProps: { foo: string, bar: string };',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}',
+
+        'Hello.defaultProps = {',
+        '  foo: "foo"',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.',
+        line: 4,
+        column: 5
+      }]
+    },
+    {
+      code: [
+        'function Hello(props: { foo?: string }) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.',
+        line: 1,
+        column: 25
+      }]
+    },
+    {
+      code: [
+        'function Hello({ foo = "foo" }: { foo?: string }) {',
+        '  return <div>Hello {foo}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.',
+        line: 1,
+        column: 35
+      }]
+    },
+    {
+      code: [
+        'function Hello(props: { foo?: string, bar?: string }) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '}',
+        'Hello.defaultProps = { foo: "foo" };'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.',
+        line: 1,
+        column: 39
+      }]
+    },
+    {
+      code: [
+        'function Hello(props: { foo?: string, bar?: string }) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {
+          message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.',
+          line: 1,
+          column: 25
+        },
+        {
+          message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.',
+          line: 1,
+          column: 39
+        }
+      ]
+    },
+    {
+      code: [
+        'type Props = {',
+        '  foo?: string',
+        '};',
+
+        'function Hello(props: Props) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.',
+        line: 2,
+        column: 3
+      }]
+    },
+    {
+      code: [
+        'const Hello = (props: { foo?: string }) => {',
+        '  return <div>Hello {props.foo}</div>;',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.',
+        line: 1,
+        column: 25
+      }]
+    },
+    {
+      code: [
+        'const Hello = (props: { foo?: string, bar?: string }) => {',
+        '  return <div>Hello {props.foo}</div>;',
+        '};',
+        'Hello.defaultProps = { foo: "foo" };'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.',
+        line: 1,
+        column: 39
+      }]
+    },
+    {
+      code: [
+        'const Hello = function(props: { foo?: string }) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.',
+        line: 1,
+        column: 33
+      }]
+    },
+    {
+      code: [
+        'const Hello = function(props: { foo?: string, bar?: string }) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '};',
+        'Hello.defaultProps = { foo: "foo" };'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.',
+        line: 1,
+        column: 47
+      }]
+    },
+    {
+      code: [
+        'type Props = {',
+        '  foo?: string',
+        '};',
+
+        'function Hello(props: Props) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.',
+        line: 2,
+        column: 3
+      }]
+    },
+    {
+      code: [
+        'type Props = {',
+        '  foo?: string,',
+        '  bar?: string',
+        '};',
+
+        'function Hello(props: Props) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '}',
+        'Hello.defaultProps = { foo: "foo" };'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.',
+        line: 3,
+        column: 3
+      }]
+    },
+
+    // // UnionType
+    {
+      code: [
+        'function Hello(props: { one?: string } | { two?: string }) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {
+          message: 'propType "one" is not required, but has no corresponding defaultProp declaration.',
+          line: 1,
+          column: 25
+        },
+        {
+          message: 'propType "two" is not required, but has no corresponding defaultProp declaration.',
+          line: 1,
+          column: 44
+        }
+      ]
+    },
+    {
+      code: [
+        'type Props = {',
+        '  foo: string,',
+        '  bar?: string',
+        '};',
+
+        'type Props2 = {',
+        '  foo: string,',
+        '  baz?: string',
+        '}',
+
+        'function Hello(props: Props | Props2) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {
+          message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.',
+          line: 3,
+          column: 3
+        },
+        {
+          message: 'propType "baz" is not required, but has no corresponding defaultProp declaration.',
+          line: 7,
+          column: 3
+        }
+      ]
+    },
+    {
+      code: [
+        'type Props = {',
+        '  foo: string,',
+        '  bar?: string',
+        '};',
+
+        'type Props2 = {',
+        '  foo: string,',
+        '  baz?: string',
+        '}',
+
+        'function Hello(props: Props | Props2) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '}',
+
+        'Hello.defaultProps = {',
+        '  bar: "bar"',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {
+          message: 'propType "baz" is not required, but has no corresponding defaultProp declaration.',
+          line: 7,
+          column: 3
+        }
+      ]
+    },
+    {
+      code: [
+        'type HelloProps = {',
+        '  two?: string,',
+        '  three: string',
+        '};',
+        'function Hello(props: { one?: string } | HelloProps) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {
+          message: 'propType "two" is not required, but has no corresponding defaultProp declaration.',
+          line: 2,
+          column: 3
+        },
+        {
+          message: 'propType "one" is not required, but has no corresponding defaultProp declaration.',
+          line: 5,
+          column: 25
+        }
+      ]
+    },
+    {
+      code: [
+        'type HelloProps = {',
+        '  two?: string,',
+        '  three: string',
+        '};',
+        'function Hello(props: ExternalProps | HelloProps) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {
+          message: 'propType "two" is not required, but has no corresponding defaultProp declaration.',
+          line: 2,
+          column: 3
+        }
+      ]
     }
   ]
 });

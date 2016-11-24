@@ -119,6 +119,17 @@ class Greeting extends React.Component {
 }
 ```
 
+```js
+type Props = {
+  foo: string,
+  bar?: string
+};
+
+function MyStatelessComponent(props: Props) {
+  return <div>Hello {props.foo} {props.bar}</div>;
+}
+```
+
 The following patterns are not considered warnings:
 
 ```js
@@ -144,6 +155,21 @@ MyStatelessComponent.propTypes = {
 
 MyStatelessComponent.defaultProps = {
     bar: 'some default'
+};
+```
+
+```js
+type Props = {
+  foo: string,
+  bar?: string
+};
+
+function MyStatelessComponent(props: Props) {
+  return <div>Hello {props.foo} {props.bar}</div>;
+}
+
+MyStatelessComponent.defaultProps = {
+  bar: 'some default'
 };
 ```
 
