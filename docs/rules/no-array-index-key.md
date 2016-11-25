@@ -14,6 +14,26 @@ The following patterns are considered warnings:
 things.map((thing, index) => (
   <Hello key={index} />
 ));
+
+things.forEach((thing, index) => {
+  otherThings.push(<Hello key={index} />);
+});
+
+things.filter((thing, index) => {
+  otherThings.push(<Hello key={index} />);
+});
+
+things.some((thing, index) => {
+  otherThings.push(<Hello key={index} />);
+});
+
+things.every((thing, index) => {
+  otherThings.push(<Hello key={index} />);
+});
+
+things.findIndex((thing, index) => {
+  otherThings.push(<Hello key={index} />);
+});
 ```
 
 The following patterns are not considered warnings:
@@ -22,4 +42,24 @@ The following patterns are not considered warnings:
 things.map((thing) => (
   <Hello key={thing.id} />
 ));
+
+things.forEach((thing) => {
+  otherThings.push(<Hello key={thing.id} />);
+});
+
+things.filter((thing) => {
+  otherThings.push(<Hello key={thing.id} />);
+});
+
+things.some((thing) => {
+  otherThings.push(<Hello key={thing.id} />);
+});
+
+things.every((thing) => {
+  otherThings.push(<Hello key={thing.id} />);
+});
+
+things.findIndex((thing) => {
+  otherThings.push(<Hello key={thing.id} />);
+});
 ```
