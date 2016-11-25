@@ -520,6 +520,76 @@ ruleTester.run('require-default-props', rule, {
     // with Flow annotations
     {
       code: [
+        'type Props = {',
+        '  foo: string',
+        '};',
+
+        'class Hello extends React.Component {',
+        '  props: Props;',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'type Props = {',
+        '  foo: string,',
+        '  bar?: string',
+        '};',
+
+        'class Hello extends React.Component {',
+        '  props: Props;',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}',
+
+        'Hello.defaultProps = {',
+        '  bar: "bar"',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'class Hello extends React.Component {',
+        '  props: {',
+        '    foo: string,',
+        '    bar?: string',
+        '  };',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}',
+
+        'Hello.defaultProps = {',
+        '  bar: "bar"',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'class Hello extends React.Component {',
+        '  props: {',
+        '    foo: string',
+        '  };',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
         'function Hello(props: { foo?: string }) {',
         '  return <div>Hello {props.foo}</div>;',
         '}',
@@ -1526,7 +1596,7 @@ ruleTester.run('require-default-props', rule, {
       }]
     },
 
-    // // UnionType
+    // UnionType
     {
       code: [
         'function Hello(props: { one?: string } | { two?: string }) {',
