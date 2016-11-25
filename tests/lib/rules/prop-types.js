@@ -1385,6 +1385,19 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // Flow annotations with variance
+      code: [
+        'type Props = {',
+        '  +firstname: string;',
+        '  -lastname: string;',
+        '};',
+        'function Hello(props: Props): React.Element {',
+        '  const {firstname, lastname} = props;',
+        '  return <div>Hello {firstname} {lastname}</div>',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
@@ -2471,6 +2484,52 @@ ruleTester.run('prop-types', rule, {
         line: 3,
         column: 29
       }]
+    }, {
+      code: [
+        'type MyComponentProps = {',
+        '  +a: number,',
+        '};',
+        'function MyComponent({ a, b }: MyComponentProps) {',
+        '  return <div />;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'b\' is missing in props validation',
+        line: 4,
+        column: 27,
+        type: 'Property'
+      }]
+    }, {
+      code: [
+        'type MyComponentProps = {',
+        '  -a: number,',
+        '};',
+        'function MyComponent({ a, b }: MyComponentProps) {',
+        '  return <div />;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'b\' is missing in props validation',
+        line: 4,
+        column: 27,
+        type: 'Property'
+      }]
+    }, {
+      code: [
+        'type Props = {+name: Object;};',
+        'class Hello extends React.Component {',
+        '  props: Props;',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'firstname\' is missing in props validation'}
+      ]
     }
   ]
 });
