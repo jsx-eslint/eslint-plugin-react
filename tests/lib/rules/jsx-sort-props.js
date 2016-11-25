@@ -57,6 +57,12 @@ var shorthandAndCallbackLastArgs = [{
 var ignoreCaseArgs = [{
   ignoreCase: true
 }];
+var noSortAlphabeticallyArgs = [{
+  noSortAlphabetically: true
+}];
+var sortAlphabeticallyArgs = [{
+  noSortAlphabetically: false
+}];
 
 ruleTester.run('jsx-sort-props', rule, {
   valid: [
@@ -84,7 +90,10 @@ ruleTester.run('jsx-sort-props', rule, {
       code: '<App a="a" b="b" x y z onBar onFoo />;',
       options: shorthandAndCallbackLastArgs,
       parserOptions: parserOptions
-    }
+    },
+    // noSortAlphabetically
+    {code: '<App a b />;', options: noSortAlphabeticallyArgs, parserOptions: parserOptions},
+    {code: '<App b a />;', options: noSortAlphabeticallyArgs, parserOptions: parserOptions}
   ],
   invalid: [
     {code: '<App b a />;', errors: [expectedError], parserOptions: parserOptions},
@@ -122,6 +131,7 @@ ruleTester.run('jsx-sort-props', rule, {
       errors: [shorthandAndCallbackLastArgs],
       options: shorthandLastArgs,
       parserOptions: parserOptions
-    }
+    },
+    {code: '<App b a />;', errors: [expectedError], options: sortAlphabeticallyArgs, parserOptions: parserOptions}
   ]
 });
