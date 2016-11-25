@@ -1096,6 +1096,30 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: parsers.BABEL_ESLINT
     }, {
       code: [
+        'type Props = {notTarget: string};',
+        'class Hello extends React.Component {',
+        '  props: Props;',
+        '  onEvent({ target }: { target: Object }) {};',
+        '  render () {',
+        '    return <div>Hello {this.props.notTarget}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT
+    }, {
+      code: [
+        'type Props = {notTarget: string};',
+        'class Hello extends React.Component {',
+        '  props: Props;',
+        '  onEvent(infos: { target: Object }) {};',
+        '  render () {',
+        '    return <div>Hello {this.props.notTarget}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT
+    }, {
+      code: [
         'class Hello extends React.Component {',
         '  props = {a: 123};',
         '  render () {',
@@ -5081,6 +5105,21 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'person.lastname\' PropType is defined but prop is never used'
       }]
+    }, {
+      code: [
+        'type Props = {notTarget: string, unused: string};',
+        'class Hello extends React.Component {',
+        '  props: Props;',
+        '  onEvent = ({ target }: { target: Object }) => {};',
+        '  render () {',
+        '    return <div>Hello {this.props.notTarget}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {message: '\'unused\' PropType is defined but prop is never used'}
+      ]
     }, {
       code: `
         import PropTypes from 'prop-types';
