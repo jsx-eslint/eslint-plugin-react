@@ -59,12 +59,30 @@ ruleTester.run('no-array-index-key', rule, {
     {
       code: 'foo.map((baz, i) => <Foo key={\'foo\' + baz.id} />)',
       parserOptions: parserOptions
+    },
+
+    {
+      code: [
+        'foo.map((item, i) => {',
+        '  return React.cloneElement(someChild, {',
+        '    key: item.id',
+        '  })',
+        '})'
+      ].join('\n'),
+      errors: [{message: 'Do not use Array index in keys'}],
+      parserOptions: parserOptions
     }
   ],
 
   invalid: [
     {
       code: 'foo.map((bar, i) => <Foo key={i} />)',
+      errors: [{message: 'Do not use Array index in keys'}],
+      parserOptions: parserOptions
+    },
+
+    {
+      code: '[{}, {}].map((bar, i) => <Foo key={i} />)',
       errors: [{message: 'Do not use Array index in keys'}],
       parserOptions: parserOptions
     },
@@ -89,6 +107,18 @@ ruleTester.run('no-array-index-key', rule, {
 
     {
       code: 'foo.map((bar, i) => <Foo key={\'foo-\' + i + \'-bar\'} />)',
+      errors: [{message: 'Do not use Array index in keys'}],
+      parserOptions: parserOptions
+    },
+
+    {
+      code: [
+        'foo.map((item, i) => {',
+        '  return React.cloneElement(someChild, {',
+        '    key: i',
+        '  })',
+        '})'
+      ].join('\n'),
       errors: [{message: 'Do not use Array index in keys'}],
       parserOptions: parserOptions
     },

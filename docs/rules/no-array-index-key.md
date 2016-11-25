@@ -15,6 +15,10 @@ things.map((thing, index) => (
   <Hello key={index} />
 ));
 
+things.map((thing, index) => (
+  React.cloneElement(thing, { key: index })
+));
+
 things.forEach((thing, index) => {
   otherThings.push(<Hello key={index} />);
 });
@@ -41,6 +45,10 @@ The following patterns are not considered warnings:
 ```jsx
 things.map((thing) => (
   <Hello key={thing.id} />
+));
+
+things.map((thing) => (
+  React.cloneElement(thing, { key: thing.id })
 ));
 
 things.forEach((thing) => {
