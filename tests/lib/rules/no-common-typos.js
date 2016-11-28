@@ -26,6 +26,13 @@ var options = [
   ]
 ];
 
+var parserOptions = {
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
 var ruleTester = new RuleTester();
 ruleTester.run('no-common-typos', rule, {
 
@@ -38,12 +45,8 @@ ruleTester.run('no-common-typos', rule, {
       '});'
     ].join('\n'),
     options: options,
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      jsx: true
-    }
-  }
-  ],
+    parserOptions: parserOptions
+  }],
 
   invalid: [{
     code: [
@@ -54,10 +57,7 @@ ruleTester.run('no-common-typos', rule, {
       '});'
     ].join('\n'),
     options: options,
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      jsx: true
-    },
+    parserOptions: parserOptions,
     errors: [{
       message: 'Using possible incorrect attribute `dangerouslySetInnerHtml`, did you mean `dangerouslySetInnerHTML`?'
     }]
