@@ -18,10 +18,12 @@ require('babel-eslint');
 // ------------------------------------------------------------------------------
 
 var options = [
-  {
-    pattern: /dangerouslySetInnerHTML/i,
-    correct: 'dangerouslySetInnerHTML'
-  }
+  [
+    {
+      pattern: /dangerouslySetInnerHTML/i,
+      correct: 'dangerouslySetInnerHTML'
+    }
+  ]
 ];
 
 var ruleTester = new RuleTester();
