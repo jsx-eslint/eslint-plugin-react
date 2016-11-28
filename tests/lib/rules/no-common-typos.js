@@ -20,7 +20,7 @@ require('babel-eslint');
 var options = [
   [
     {
-      pattern: /dangerouslySetInnerHTML/i,
+      pattern: '/dangerouslySetInnerHTML/i',
       correct: 'dangerouslySetInnerHTML'
     }
   ]
