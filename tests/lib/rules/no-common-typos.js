@@ -56,7 +56,6 @@ ruleTester.run('no-common-typos', rule, {
     options: options,
     parser: 'babel-eslint',
     ecmaFeatures: {
-      classes: true,
       jsx: true
     },
     errors: [{
