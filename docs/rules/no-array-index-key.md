@@ -38,6 +38,14 @@ things.every((thing, index) => {
 things.findIndex((thing, index) => {
   otherThings.push(<Hello key={index} />);
 });
+
+things.reduce((collection, thing, index) => (
+  collection.concat(<Hello key={index} />)
+), []);
+
+things.reduceRight((collection, thing, index) => (
+  collection.concat(<Hello key={index} />)
+), []);
 ```
 
 The following patterns are not considered warnings:
@@ -70,4 +78,12 @@ things.every((thing) => {
 things.findIndex((thing) => {
   otherThings.push(<Hello key={thing.id} />);
 });
+
+things.reduce((collection, thing) => (
+  collection.concat(<Hello key={thing.id} />)
+), []);
+
+things.reduceRight((collection, thing) => (
+  collection.concat(<Hello key={thing.id} />)
+), []);
 ```

@@ -71,6 +71,26 @@ ruleTester.run('no-array-index-key', rule, {
       ].join('\n'),
       errors: [{message: 'Do not use Array index in keys'}],
       parserOptions: parserOptions
+    },
+
+    {
+      code: 'foo.reduce((a, b) => a.concat(<Foo key={b.id} />), [])',
+      parserOptions: parserOptions
+    },
+
+    {
+      code: 'foo.reduce((a, b, i) => a.concat(<Foo key={b.id} />), [])',
+      parserOptions: parserOptions
+    },
+
+    {
+      code: 'foo.reduceRight((a, b) => a.concat(<Foo key={b.id} />), [])',
+      parserOptions: parserOptions
+    },
+
+    {
+      code: 'foo.reduceRight((a, b, i) => a.concat(<Foo key={b.id} />), [])',
+      parserOptions: parserOptions
     }
   ],
 
@@ -155,6 +175,18 @@ ruleTester.run('no-array-index-key', rule, {
 
     {
       code: 'foo.findIndex((bar, i) => { baz.push(<Foo key={i} />); })',
+      errors: [{message: 'Do not use Array index in keys'}],
+      parserOptions: parserOptions
+    },
+
+    {
+      code: 'foo.reduce((a, b, i) => a.concat(<Foo key={i} />), [])',
+      errors: [{message: 'Do not use Array index in keys'}],
+      parserOptions: parserOptions
+    },
+
+    {
+      code: 'foo.reduceRight((a, b, i) => a.concat(<Foo key={i} />), [])',
       errors: [{message: 'Do not use Array index in keys'}],
       parserOptions: parserOptions
     },
