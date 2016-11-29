@@ -119,7 +119,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/jsx-filename-extension](docs/rules/jsx-filename-extension.md): Restrict file extensions that may contain JSX
 * [react/jsx-first-prop-new-line](docs/rules/jsx-first-prop-new-line.md): Enforce position of the first prop in JSX (fixable)
 * [react/jsx-handler-names](docs/rules/jsx-handler-names.md): Enforce event handler naming conventions in JSX
-* [react/jsx-indent](docs/rules/jsx-indent.md): Validate JSX indentation
+* [react/jsx-indent](docs/rules/jsx-indent.md): Validate JSX indentation (fixable)
 * [react/jsx-indent-props](docs/rules/jsx-indent-props.md): Validate props indentation in JSX (fixable)
 * [react/jsx-key](docs/rules/jsx-key.md): Validate JSX has key prop when in array or iterator
 * [react/jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md): Limit maximum of props on a single line in JSX
