@@ -35,6 +35,10 @@ things.every((thing, index) => {
   otherThings.push(<Hello key={index} />);
 });
 
+things.find((thing, index) => {
+  otherThings.push(<Hello key={index} />);
+});
+
 things.findIndex((thing, index) => {
   otherThings.push(<Hello key={index} />);
 });
@@ -72,6 +76,10 @@ things.some((thing) => {
 });
 
 things.every((thing) => {
+  otherThings.push(<Hello key={thing.id} />);
+});
+
+things.find((thing) => {
   otherThings.push(<Hello key={thing.id} />);
 });
 
