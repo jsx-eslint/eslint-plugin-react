@@ -94,7 +94,7 @@ module.exports = {
   rules: allRules,
   configs: {
     recommended: {
-      plugin: [
+      plugins: [
         'react'
       ],
       parserOptions: {
@@ -120,7 +120,7 @@ module.exports = {
       }
     },
     all: {
-      plugin: [
+      plugins: [
         'react'
       ],
       parserOptions: {
