@@ -45,5 +45,8 @@
     "eslintplugin",
     "react"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "decamelize": "^1.1.2"
+  }
 }
