@@ -8,6 +8,7 @@ var allRules = {
   'jsx-wrap-multilines': require('./lib/rules/jsx-wrap-multilines'),
   'self-closing-comp': require('./lib/rules/self-closing-comp'),
   'jsx-no-comment-textnodes': require('./lib/rules/jsx-no-comment-textnodes'),
+  'no-array-index-key': require('./lib/rules/no-array-index-key'),
   'no-danger': require('./lib/rules/no-danger'),
   'no-set-state': require('./lib/rules/no-set-state'),
   'no-is-mounted': require('./lib/rules/no-is-mounted'),
