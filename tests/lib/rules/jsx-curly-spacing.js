@@ -574,5 +574,43 @@ ruleTester.run('jsx-curly-spacing', rule, {
       message: 'A space is required before \'}\''
     }],
     parserOptions: parserOptions
+  }, {
+    code: '<div foo={ foo /* comment */ } />',
+    output: '<div foo={foo /* comment */} />',
+    errors: [{
+      message: 'There should be no space after \'{\''
+    }, {
+      message: 'There should be no space before \'}\''
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: '<div foo={foo /* comment */} />',
+    output: '<div foo={ foo /* comment */ } />',
+    options: ['always'],
+    errors: [{
+      message: 'A space is required after \'{\''
+    }, {
+      message: 'A space is required before \'}\''
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: '<div foo={ /* comment */ foo } />',
+    output: '<div foo={/* comment */ foo} />',
+    errors: [{
+      message: 'There should be no space after \'{\''
+    }, {
+      message: 'There should be no space before \'}\''
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: '<div foo={/* comment */ foo} />',
+    output: '<div foo={ /* comment */ foo } />',
+    options: ['always'],
+    errors: [{
+      message: 'A space is required after \'{\''
+    }, {
+      message: 'A space is required before \'}\''
+    }],
+    parserOptions: parserOptions
   }]
 });
