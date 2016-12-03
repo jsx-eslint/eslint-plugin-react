@@ -1361,6 +1361,30 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       options: [{skipUndeclared: false}],
       parserOptions: parserOptions
+    }, {
+      // Async functions can't be components.
+      code: [
+        'var Hello = async function(props) {',
+        '  return <div>Hello {props.name}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Async functions can't be components.
+      code: [
+        'async function Hello(props) {',
+        '  return <div>Hello {props.name}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Async functions can't be components.
+      code: [
+        'var Hello = async (props) => {',
+        '  return <div>Hello {props.name}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
