@@ -4,6 +4,7 @@ var allRules = {
   'jsx-uses-react': require('./lib/rules/jsx-uses-react'),
   'no-multi-comp': require('./lib/rules/no-multi-comp'),
   'prop-types': require('./lib/rules/prop-types'),
+  'require-default-props': require('./lib/rules/require-default-props'),
   'display-name': require('./lib/rules/display-name'),
   'jsx-wrap-multilines': require('./lib/rules/jsx-wrap-multilines'),
   'self-closing-comp': require('./lib/rules/self-closing-comp'),
