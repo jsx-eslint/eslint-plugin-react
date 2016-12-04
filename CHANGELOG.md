@@ -3,6 +3,34 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.8.0] - 2016-12-05
+### Added
+* Add [`no-array-index-key`][] rule ([#978][] @lencioni)
+* Add [`require-default-props`][] rule ([#528][]  @vitorbal)
+* Add support for flow variance syntax to [`prop-types`][] ([#961][] @ajhyndman)
+
+### Fixed
+* Fix [`jsx-indent`][] with multiline jsx in ternaries ([#966][])
+* Fix component detection to ignore async functions ([#989][] @taion)
+* Fix [`jsx-curly-spacing`][] autofix to not delete comments ([#648][])
+* FIx auto-enabling of `eslint-plugin-react` in exported configurations ([#984][] @jamischarles)
+
+### Changed
+* Update dependencies
+* Documentation improvements ([#960][] @evilebottnawi, [#973][] @JamesWatling, [#982][] @captbaritone)
+
+[6.8.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.7.1...v6.8.0
+[#978]: https://github.com/yannickcr/eslint-plugin-react/pull/978
+[#528]: https://github.com/yannickcr/eslint-plugin-react/issues/528
+[#961]: https://github.com/yannickcr/eslint-plugin-react/issues/961
+[#966]: https://github.com/yannickcr/eslint-plugin-react/issues/966
+[#989]: https://github.com/yannickcr/eslint-plugin-react/pull/989
+[#648]: https://github.com/yannickcr/eslint-plugin-react/issues/648
+[#984]: https://github.com/yannickcr/eslint-plugin-react/pull/984
+[#960]: https://github.com/yannickcr/eslint-plugin-react/pull/960
+[#973]: https://github.com/yannickcr/eslint-plugin-react/pull/973
+[#982]: https://github.com/yannickcr/eslint-plugin-react/pull/982
+
 ## [6.7.1] - 2016-11-15
 ### Fixed
 * Fix [`jsx-tag-spacing`][] crash when options object isn't passed ([#955][] @daltones)
@@ -1495,6 +1523,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`display-name`]: docs/rules/display-name.md
 [`forbid-component-props`]: docs/rules/forbid-component-props.md
 [`forbid-prop-types`]: docs/rules/forbid-prop-types.md
+[`no-array-index-key`]: docs/rules/no-array-index-key.md
 [`no-children-prop`]: docs/rules/no-children-prop.md
 [`no-danger`]: docs/rules/no-danger.md
 [`no-danger-with-children`]: docs/rules/no-danger-with-children.md
@@ -1539,6 +1568,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`jsx-no-target-blank`]: docs/rules/jsx-no-target-blank.md
 [`jsx-no-undef`]: docs/rules/jsx-no-undef.md
 [`jsx-pascal-case`]: docs/rules/jsx-pascal-case.md
+[`require-default-props`]: docs/rules/require-default-props.md
 [`jsx-sort-props`]: docs/rules/jsx-sort-props.md
 [`jsx-space-before-closing`]: docs/rules/jsx-space-before-closing.md
 [`jsx-tag-spacing`]: docs/rules/jsx-tag-spacing.md
