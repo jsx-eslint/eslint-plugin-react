@@ -1398,6 +1398,23 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  async onSelect({ name }) {',
+        '    return null;',
+        '  }',
+        '  render() {',
+        '    return <Greeting onSelect={this.onSelect} />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parserOptions: {
+        ecmaVersion: 8,
+        ecmaFeatures: {
+          jsx: true
+        }
+      }
     }
   ],
 
@@ -2529,6 +2546,21 @@ ruleTester.run('prop-types', rule, {
       parser: 'babel-eslint',
       errors: [
         {message: '\'firstname\' is missing in props validation'}
+      ]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  onSelect = async ({ name }) => {',
+        '    return this.props.foo;',
+        '  }',
+        '  render() {',
+        '    return <Greeting onSelect={this.onSelect} />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'foo\' is missing in props validation'}
       ]
     }
   ]
