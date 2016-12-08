@@ -44,7 +44,7 @@ class Component extends React.Component {
 
 ```js
 ...
-"forbid-prop-types": [<enabled>, { "forbid": [<string>] }]
+"react/forbid-prop-types": [<enabled>, { "forbid": [<string>] }]
 ...
 ```
 
