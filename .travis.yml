@@ -3,5 +3,16 @@ node_js:
   - '6'
   - '5'
   - '4'
+  - 'iojs'
+  - '0.12'
+  - '0.10'
+before_script:
+  - 'if [ "${TRAVIS_NODE_VERSION}" = "iojs" ] || [ "${TRAVIS_NODE_VERSION}" = "0.12" ] || [ "${TRAVIS_NODE_VERSION}" = "0.10" ]; then npm install eslint@2; fi'
 after_success:
   - npm run coveralls
+matrix:
+  fast_finish: true
+  allow_failures:
+    - node_js: "iojs"
+    - node_js: "0.12"
+    - node_js: "0.10"
