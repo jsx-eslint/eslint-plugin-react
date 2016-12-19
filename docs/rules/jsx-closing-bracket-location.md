@@ -116,6 +116,17 @@ var x = function() {
 // 'jsx-closing-bracket-location': [1, 'after-props']
 <Hello 
   firstName="John"
+  lastName="Smith" />;
+
+<Say
+  firstName="John"
+  lastName="Smith">
+  Hello
+</Say>;
+
+// 'jsx-closing-bracket-location': [1, 'props-aligned']
+<Hello 
+  firstName="John"
   lastName="Smith"
   />;
 
@@ -123,17 +134,6 @@ var x = function() {
   firstName="John"
   lastName="Smith"
 >
-  Hello
-</Say>;
-
-// 'jsx-closing-bracket-location': [1, 'props-aligned']
-<Hello 
-  firstName="John"
-  lastName="Smith" />;
-
-<Say
-  firstName="John"
-  lastName="Smith">
   Hello
 </Say>;
 ```
