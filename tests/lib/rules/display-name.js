@@ -572,5 +572,29 @@ ruleTester.run('display-name', rule, {
     errors: [{
       message: 'Component definition is missing display name'
     }]
+  }, {
+    code: [
+      'import React from "react";',
+      'const { createElement } = React;',
+      'export default (props) => {',
+      '  return createElement("div", {}, "hello");',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: [
+      'import React from "react";',
+      'const createElement = React.createElement;',
+      'export default (props) => {',
+      '  return createElement("div", {}, "hello");',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
   }]
 });
