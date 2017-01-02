@@ -378,6 +378,13 @@ ruleTester.run('display-name', rule, {
       ')'
     ].join('\n'),
     parser: 'babel-eslint'
+  }, {
+    code: [
+      'module.exports = {',
+      '  createElement: tagName => document.createElement(tagName)',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
