@@ -323,6 +323,15 @@ ruleTester.run('sort-prop-types', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint'
+  }, {
+    code: [
+      'const propTypes = require(\'./externalPropTypes\')',
+      'const TextFieldLabel = (props) => {',
+      '  return <div />;',
+      '};',
+      'TextFieldLabel.propTypes = propTypes;'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -622,6 +631,24 @@ ruleTester.run('sort-prop-types', rule, {
       message: 'Prop types declarations should be sorted alphabetically',
       line: 6,
       column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'const propTypes = {',
+      '  b: PropTypes.string,',
+      '  a: PropTypes.string,',
+      '};',
+      'const TextFieldLabel = (props) => {',
+      '  return <div />;',
+      '};',
+      'TextFieldLabel.propTypes = propTypes;'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 3,
+      column: 3,
       type: 'Property'
     }]
   }]
