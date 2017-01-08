@@ -3,6 +3,23 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.9.0] - 2016-01-08
+### Added
+* Add support for variable reference to [`sort-prop-types`][] ([#622][])
+
+### Fixed
+* Fix Node.js 0.10 support ([#1000][] @ljharb)
+* Fix [`prop-types`][] to correctly assign props to components ([#991][])
+
+### Changed
+* Documentation improvements ([#995][] @rutsky)
+
+[6.9.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.8.0...v6.9.0
+[#622]: https://github.com/yannickcr/eslint-plugin-react/issues/622
+[#1000]: https://github.com/yannickcr/eslint-plugin-react/pull/1000
+[#991]: https://github.com/yannickcr/eslint-plugin-react/issues/991
+[#995]: https://github.com/yannickcr/eslint-plugin-react/pull/995
+
 ## [6.8.0] - 2016-12-05
 ### Added
 * Add [`no-array-index-key`][] rule ([#978][] @lencioni)
