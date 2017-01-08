@@ -1415,6 +1415,19 @@ ruleTester.run('prop-types', rule, {
           jsx: true
         }
       }
+    }, {
+      code: [
+        'export class Example extends Component {',
+        '  static propTypes = {',
+        '    onDelete: React.PropTypes.func.isRequired',
+        '  }',
+        '  handleDeleteConfirm = () => {',
+        '    this.props.onDelete();',
+        '  };',
+        '  handleSubmit = async ({certificate, key}) => {};',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
