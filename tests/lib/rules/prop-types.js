@@ -2575,6 +2575,47 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {message: '\'foo\' is missing in props validation'}
       ]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    bar: PropTypes.func',
+        '  }',
+        '  componentWillReceiveProps(nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return;',
+        '    }',
+        '  }',
+        '  render() {',
+        '    return <div bar={this.props.bar} />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'foo\' is missing in props validation'}
+      ]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    bar: PropTypes.func',
+        '  }',
+        '  componentWillReceiveProps(nextProps) {',
+        '    const {foo} = nextProps;',
+        '    if (foo) {',
+        '      return;',
+        '    }',
+        '  }',
+        '  render() {',
+        '    return <div bar={this.props.bar} />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'foo\' is missing in props validation'}
+      ]
     }
   ]
 });
