@@ -27,7 +27,11 @@ var Hello = React.createClass({
 The following pattern is not considered a warning:
 
 ```jsx
-const Foo = function(props) {
+const Foo = function(props, context) {
+  const {
+    location
+  } = context.router;
+
   return <div>{props.foo}</div>;
 };
 ```
