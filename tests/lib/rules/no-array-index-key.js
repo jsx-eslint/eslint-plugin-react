@@ -15,6 +15,7 @@ var RuleTester = require('eslint').RuleTester;
 var parserOptions = {
   ecmaVersion: 6,
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -62,6 +63,11 @@ ruleTester.run('no-array-index-key', rule, {
     },
 
     {
+      code: 'foo.map((baz, i) => React.cloneElement(someChild, { ...someChild.props }))',
+      parserOptions: parserOptions
+    },
+
+    {
       code: [
         'foo.map((item, i) => {',
         '  return React.cloneElement(someChild, {',
@@ -69,7 +75,6 @@ ruleTester.run('no-array-index-key', rule, {
         '  })',
         '})'
       ].join('\n'),
-      errors: [{message: 'Do not use Array index in keys'}],
       parserOptions: parserOptions
     },
 
@@ -127,6 +132,12 @@ ruleTester.run('no-array-index-key', rule, {
 
     {
       code: 'foo.map((bar, i) => <Foo key={\'foo-\' + i + \'-bar\'} />)',
+      errors: [{message: 'Do not use Array index in keys'}],
+      parserOptions: parserOptions
+    },
+
+    {
+      code: 'foo.map((baz, i) => React.cloneElement(someChild, { ...someChild.props, key: i }))',
       errors: [{message: 'Do not use Array index in keys'}],
       parserOptions: parserOptions
     },
