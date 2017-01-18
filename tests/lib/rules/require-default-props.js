@@ -1718,6 +1718,26 @@ ruleTester.run('require-default-props', rule, {
           column: 3
         }
       ]
+    },
+    {
+      code: [
+        'class Hello extends React.Component {',
+        '  static propTypes = {',
+        '    foo: PropTypes.string',
+        '  };',
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {
+          message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.',
+          line: 3,
+          column: 5
+        }
+      ]
     }
   ]
 });
