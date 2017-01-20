@@ -2616,6 +2616,22 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {message: '\'foo\' is missing in props validation'}
       ]
+    }, {
+      code: [
+        'type Props = {',
+        '  bar: Props,',
+        '};',
+        'class Hello extends Component {',
+        '  props: Props;',
+        '  render() {',
+        '    return <div bar={this.props.bar} />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'bar\' has invalid props validation'}
+      ]
     }
   ]
 });
