@@ -123,6 +123,20 @@ ruleTester.run('style-prop-object', rule, {
       parserOptions: parserOptions
     },
     {
+      code: [
+        'let style = null;',
+        '<div style={style}></div>'
+      ].join('\n'),
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'let style = undefined;',
+        '<div style={style}></div>'
+      ].join('\n'),
+      parserOptions: parserOptions
+    },
+    {
       code: '<div style={undefined}></div>',
       parserOptions: parserOptions
     },
