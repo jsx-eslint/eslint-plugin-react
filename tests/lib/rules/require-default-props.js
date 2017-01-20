@@ -10,6 +10,7 @@
 
 var rule = require('../../../lib/rules/require-default-props');
 var RuleTester = require('eslint').RuleTester;
+var assign = require('object.assign');
 
 require('babel-eslint');
 
@@ -409,7 +410,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>{foo}{bar}</div>;',
         '}'
       ].join('\n'),
-      parserOptions: Object.assign({sourceType: 'module'}, parserOptions)
+      parserOptions: assign({sourceType: 'module'}, parserOptions)
     },
     {
       code: [
@@ -424,7 +425,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>{foo}{bar}</div>;',
         '}'
       ].join('\n'),
-      parserOptions: Object.assign({sourceType: 'module'}, parserOptions)
+      parserOptions: assign({sourceType: 'module'}, parserOptions)
     },
     // using spread operator
     {

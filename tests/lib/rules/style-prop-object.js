@@ -10,6 +10,7 @@
 
 var rule = require('../../../lib/rules/style-prop-object');
 var RuleTester = require('eslint').RuleTester;
+var assign = require('object.assign');
 
 var parserOptions = {
   ecmaVersion: 6,
@@ -76,7 +77,7 @@ ruleTester.run('style-prop-object', rule, {
         '  return <div style={styles} />;',
         '}'
       ].join('\n'),
-      parserOptions: Object.assign({sourceType: 'module'}, parserOptions)
+      parserOptions: assign({sourceType: 'module'}, parserOptions)
     },
     {
       code: [
@@ -86,7 +87,7 @@ ruleTester.run('style-prop-object', rule, {
         '  return <div style={styles} />;',
         '}'
       ].join('\n'),
-      parserOptions: Object.assign({sourceType: 'module'}, parserOptions)
+      parserOptions: assign({sourceType: 'module'}, parserOptions)
     },
     {
       code: [
@@ -101,7 +102,7 @@ ruleTester.run('style-prop-object', rule, {
         'const styles = Object.assign({ color: \'red\' }, mystyles);',
         'React.createElement("div", { style: styles });'
       ].join('\n'),
-      parserOptions: Object.assign({sourceType: 'module'}, parserOptions)
+      parserOptions: assign({sourceType: 'module'}, parserOptions)
     },
     {
       code: '<div style></div>',
