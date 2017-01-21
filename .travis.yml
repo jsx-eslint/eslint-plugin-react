@@ -1,5 +1,6 @@
 language: node_js
 node_js:
+  - '7'
   - '6'
   - '5'
   - '4'
@@ -13,6 +14,3 @@ after_success:
 matrix:
   fast_finish: true
   allow_failures:
-    - node_js: "iojs"
-    - node_js: "0.12"
-    - node_js: "0.10"
