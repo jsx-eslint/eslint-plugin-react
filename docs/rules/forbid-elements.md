@@ -16,12 +16,12 @@ This rule checks all JSX elements and `React.createElement` calls and verifies t
 
 ### `forbid`
 
-An array of strings and/or objects. An object in this array may have the following properties: 
+An array of strings and/or objects. An object in this array may have the following properties:
 
 * `element` (required): the name of the forbidden element (e.g. `'button'`, `'Modal'`)
 * `message`: additional message that gets reported
 
-A string item in the array is a shorthand for `{ element: string }`. 
+A string item in the array is a shorthand for `{ element: string }`.
 
 The following patterns are not considered warnings:
 
@@ -50,7 +50,7 @@ React.createElement(Namespaced.Element);
 
 // [1, { "forbid": [{ "element": "button", "message": "use <Button> instead" }, "input"] }]
 <div><button /><input /></div>
-React.createElement('div', {}, React.createElemet('button', {}, React.createElement('input')));
+React.createElement('div', {}, React.createElement('button', {}, React.createElement('input')));
 ```
 
 ## When not to use

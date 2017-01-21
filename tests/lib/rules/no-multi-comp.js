@@ -10,7 +10,6 @@
 
 var rule = require('../../../lib/rules/no-multi-comp');
 var RuleTester = require('eslint').RuleTester;
-var assign = require('object.assign');
 
 var parserOptions = {
   ecmaVersion: 6,
@@ -104,7 +103,7 @@ ruleTester.run('no-multi-comp', rule, {
       '  return createElement("img");',
       '};'
     ].join('\n'),
-    parserOptions: assign({sourceType: 'module'}, parserOptions)
+    parserOptions: Object.assign({sourceType: 'module'}, parserOptions)
   }],
 
   invalid: [{

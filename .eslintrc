@@ -2,13 +2,12 @@
     "env": {
         "node": true
     },
+    parserOptions: {
+      ecmaVersion: 2015
+    },
     ecmaFeatures: {
         jsx: true
     },
-    "globals": {
-    },
-    "plugins": [
-    ],
     "rules": {
         // Possible Errors
         "comma-dangle": [2, "never"],
@@ -149,10 +148,16 @@
         "wrap-regex": 0,
         // Legacy
         "max-depth": 0,
-        "max-len": [2, 120],
+        "max-len": [2, 120, {
+          "ignoreStrings": true,
+          "ignoreTemplateLiterals": true,
+          "ignoreComments": true,
+        }],
         "max-params": 0,
         "max-statements": 0,
         "no-plusplus": 0,
-        "no-prototype-builtins": 2
+        "no-prototype-builtins": 2,
+        "prefer-template": 2,
+        "template-curly-spacing": [2, "never"]
     }
 }

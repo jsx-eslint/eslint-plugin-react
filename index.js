@@ -83,7 +83,7 @@ function configureAsError(rules) {
     if (!has(rules, key)) {
       continue;
     }
-    result['react/' + key] = 2;
+    result[`react/${key}`] = 2;
   }
   return result;
 }

@@ -21,7 +21,7 @@ var parserOptions = {
 };
 
 function errorMessage(elementName) {
-  return 'Void DOM element <' + elementName + ' /> cannot receive children.';
+  return `Void DOM element <${elementName} /> cannot receive children.`;
 }
 
 // -----------------------------------------------------------------------------

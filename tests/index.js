@@ -14,7 +14,7 @@ var ruleFiles = fs.readdirSync(path.resolve(__dirname, '../lib/rules/'))
 
 describe('all rule files should be exported by the plugin', function() {
   ruleFiles.forEach(function(ruleName) {
-    it('should export ' + ruleName, function() {
+    it(`should export ${ruleName}`, function() {
       assert.equal(
         plugin.rules[ruleName],
         require(path.join('../lib/rules', ruleName))
@@ -29,9 +29,9 @@ describe('deprecated rules', function() {
       var inDeprecatedRules = Boolean(plugin.deprecatedRules[ruleName]);
       var isDeprecated = plugin.rules[ruleName].meta.deprecated;
       if (inDeprecatedRules) {
-        assert(isDeprecated, ruleName + ' metadata should mark it as deprecated');
+        assert(isDeprecated, `${ruleName} metadata should mark it as deprecated`);
       } else {
-        assert(!isDeprecated, ruleName + ' metadata should not mark it as deprecated');
+        assert(!isDeprecated, `${ruleName} metadata should not mark it as deprecated`);
       }
     });
   });
@@ -47,12 +47,12 @@ describe('configurations', function() {
     });
 
     ruleFiles.forEach(function(ruleName) {
-      var inRecommendedConfig = Boolean(plugin.configs.recommended.rules['react/' + ruleName]);
+      var inRecommendedConfig = Boolean(plugin.configs.recommended.rules[`react/${ruleName}`]);
       var isRecommended = plugin.rules[ruleName].meta.docs.recommended;
       if (inRecommendedConfig) {
-        assert(isRecommended, ruleName + ' metadata should mark it as recommended');
+        assert(isRecommended, `${ruleName} metadata should mark it as recommended`);
       } else {
-        assert(!isRecommended, ruleName + ' metadata should not mark it as recommended');
+        assert(!isRecommended, `${ruleName} metadata should not mark it as recommended`);
       }
     });
   });
@@ -64,7 +64,7 @@ describe('configurations', function() {
     });
     ruleFiles.forEach(function(ruleName) {
       var inDeprecatedRules = Boolean(plugin.deprecatedRules[ruleName]);
-      var inAllConfig = Boolean(plugin.configs.all.rules['react/' + ruleName]);
+      var inAllConfig = Boolean(plugin.configs.all.rules[`react/${ruleName}`]);
       assert(inDeprecatedRules ^ inAllConfig);
     });
   });

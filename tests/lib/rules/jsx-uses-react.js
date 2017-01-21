@@ -12,7 +12,6 @@
 var eslint = require('eslint').linter;
 var rule = require('eslint/lib/rules/no-unused-vars');
 var RuleTester = require('eslint').RuleTester;
-var dot = require('../../eslint-compat').dot;
 
 var parserOptions = {
   ecmaVersion: 6,
@@ -42,12 +41,12 @@ ruleTester.run('no-unused-vars', rule, {
   ],
   invalid: [{
     code: '/*eslint jsx-uses-react:1*/ var React;',
-    errors: [{message: dot('\'React\' is defined but never used')}], parserOptions: parserOptions
+    errors: [{message: '\'React\' is defined but never used.'}], parserOptions: parserOptions
   }, {
     code: '/*eslint jsx-uses-react:1*/ /** @jsx Foo */ var React; <div />;',
-    errors: [{message: dot('\'React\' is defined but never used')}], parserOptions: parserOptions
+    errors: [{message: '\'React\' is defined but never used.'}], parserOptions: parserOptions
   }, {
     code: '/*eslint jsx-uses-react:1*/ var React; <div />;',
-    errors: [{message: dot('\'React\' is defined but never used')}], settings: settings, parserOptions: parserOptions
+    errors: [{message: '\'React\' is defined but never used.'}], settings: settings, parserOptions: parserOptions
   }]
 });

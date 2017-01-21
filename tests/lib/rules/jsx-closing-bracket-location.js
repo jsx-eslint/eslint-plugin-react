@@ -26,8 +26,7 @@ var MESSAGE_TAG_ALIGNED = 'The closing bracket must be aligned with the opening 
 var MESSAGE_LINE_ALIGNED = 'The closing bracket must be aligned with the line containing the opening tag';
 
 var messageWithDetails = function(message, expectedColumn, expectedNextLine) {
-  var details = ' (expected column ' + expectedColumn +
-    (expectedNextLine ? ' on the next line)' : ')');
+  var details = ` (expected column ${expectedColumn}${expectedNextLine ? ' on the next line)' : ')'}`;
   return message + details;
 };
 
