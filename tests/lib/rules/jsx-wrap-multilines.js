@@ -166,6 +166,18 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: ASSIGNMENT_NO_PAREN,
       options: [{assignment: false}],
       parserOptions: parserOptions
+    }, {
+      code: ASSIGNMENT_NO_PAREN,
+      options: [{style: 'never', assignment: true}],
+      parserOptions: parserOptions
+    }, {
+      code: DECLARATION_NO_PAREN,
+      options: [{style: 'never', declaration: true}],
+      parserOptions: parserOptions
+    }, {
+      code: RETURN_NO_PAREN,
+      options: [{style: 'never', return: true}],
+      parserOptions: parserOptions
     }
   ],
 
@@ -219,6 +231,24 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       parserOptions: parserOptions,
       options: [{assignment: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: ASSIGNMENT_PAREN,
+      output: ASSIGNMENT_NO_PAREN,
+      parserOptions: parserOptions,
+      options: [{style: 'never', assignment: true}],
+      errors: [{message: 'Parentheses around JSX are not allowed'}]
+    }, {
+      code: DECLARATION_PAREN,
+      output: DECLARATION_NO_PAREN,
+      parserOptions: parserOptions,
+      options: [{style: 'never', declaration: true}],
+      errors: [{message: 'Parentheses around JSX are not allowed'}]
+    }, {
+      code: RETURN_PAREN,
+      output: RETURN_NO_PAREN,
+      parserOptions: parserOptions,
+      options: [{style: 'never', return: true}],
+      errors: [{message: 'Parentheses around JSX are not allowed'}]
     }
   ]
 });
