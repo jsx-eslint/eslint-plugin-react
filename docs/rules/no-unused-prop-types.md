@@ -53,7 +53,11 @@ This rule can take one argument to ignore some specific props during validation.
 
 * `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
 * `customValidators`: optional array of validators used for propTypes validation.
-* `skipShapeProps`: In some cases it is impossible to accurately detect whether or not a `React.PropTypes.shape`'s values are being used. Setting this option to `true` will skip validation of `PropTypes.shape`.
+* `skipShapeProps`: In some cases it is impossible to accurately detect whether or not a `React.PropTypes.shape`'s values are being used. Setting this option to `true` will skip validation of `PropTypes.shape` (`true` by default).
+
+## Caveats
+
+This rule does not track component props as they move from function to function or during variable renaming (such as in the event of prop object destructuring assignments). As such, it's prone to false positives in situations where the prop use cannot be accurately detected.
 
 ## About component detection
 
