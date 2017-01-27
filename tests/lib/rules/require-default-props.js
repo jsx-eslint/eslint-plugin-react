@@ -677,6 +677,39 @@ ruleTester.run('require-default-props', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'import type ImportedProps from "fake";',
+        'type Props = ImportedProps;',
+        'function Hello(props: Props) {',
+        '  return <div>Hello {props.name.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    // don't error when variable is not in scope
+    {
+      code: [
+        'import type { ImportedType } from "fake";',
+        'type Props = ImportedType;',
+        'function Hello(props: Props) {',
+        '  return <div>Hello {props.name.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    // make sure error is not thrown with multiple assignments
+    {
+      code: [
+        'import type ImportedProps from "fake";',
+        'type NestedProps = ImportedProps;',
+        'type Props = NestedProps;',
+        'function Hello(props: Props) {',
+        '  return <div>Hello {props.name.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
