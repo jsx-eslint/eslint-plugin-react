@@ -22,56 +22,63 @@ var parserOptions = {
 // Code Snippets
 // ------------------------------------------------------------------------------
 
-var RETURN_SINGLE_LINE = '\
-  var Hello = createReactClass({\
-    render: function() {\
-      return <p>Hello {this.props.name}</p>;\
-    }\
-  });';
+var RETURN_SINGLE_LINE = `
+  var Hello = createReactClass({
+    render: function() {
+      return <p>Hello {this.props.name}</p>;
+    }
+  });
+`;
 
-var RETURN_PAREN = '\
-  var Hello = createReactClass({\
-    render: function() {\
-      return (<div>\n\
-        <p>Hello {this.props.name}</p>\n\
-      </div>);\
-    }\
-  });';
+var RETURN_PAREN = `
+  var Hello = createReactClass({
+    render: function() {
+      return (<div>
+        <p>Hello {this.props.name}</p>
+      </div>);
+    }
+  });
+`;
 
-var RETURN_NO_PAREN = '\
-  var Hello = createReactClass({\
-    render: function() {\
-      return <div>\n\
-        <p>Hello {this.props.name}</p>\n\
-      </div>;\
-    }\
-  });';
+var RETURN_NO_PAREN = `
+  var Hello = createReactClass({
+    render: function() {
+      return <div>
+        <p>Hello {this.props.name}</p>
+      </div>;
+    }
+  });
+`;
 
 var DECLARATION_SINGLE_LINE = 'var hello = <p>Hello</p>;';
 
-var DECLARATION_PAREN = '\
-  var hello = (<div>\n\
-    <p>Hello</p>\n\
-  </div>);';
+var DECLARATION_PAREN = `
+  var hello = (<div>
+    <p>Hello</p>
+  </div>);
+`;
 
-var DECLARATION_NO_PAREN = '\
-  var hello = <div>\n\
-    <p>Hello</p>\n\
-  </div>;';
+var DECLARATION_NO_PAREN = `
+  var hello = <div>
+    <p>Hello</p>
+  </div>;
+`;
 
 var ASSIGNMENT_SINGLE_LINE = 'var hello; hello = <p>Hello</p>;';
 
-var ASSIGNMENT_PAREN = '\
-  var hello;\
-  hello = (<div>\n\
-    <p>Hello</p>\n\
-  </div>);';
+var ASSIGNMENT_PAREN = `
+  var hello;
+  hello = (<div>
+    <p>Hello</p>
+  </div>);
+`;
 
-var ASSIGNMENT_NO_PAREN = '\
-  var hello;\
-  hello = <div>\n\
-    <p>Hello</p>\n\
-  </div>;';
+var ASSIGNMENT_NO_PAREN = `
+  var hello;
+  hello = <div>
+    <p>Hello</p>
+  </div>;
+`;
 
 // ------------------------------------------------------------------------------
 // Tests

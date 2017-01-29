@@ -20,10 +20,8 @@ var parserOptions = {
   }
 };
 
-var JSX_ERROR = 'Do not pass children as props. Instead, nest children between \
-the opening and closing tags.';
-var CREATE_ELEMENT_ERROR = 'Do not pass children as props. Instead, pass them \
-as additional arguments to React.createElement.';
+var JSX_ERROR = 'Do not pass children as props. Instead, nest children between the opening and closing tags.';
+var CREATE_ELEMENT_ERROR = 'Do not pass children as props. Instead, pass them as additional arguments to React.createElement.';
 
 // -----------------------------------------------------------------------------
 // Tests

@@ -33,10 +33,11 @@ ruleTester.run('self-closing-comp', rule, {
       code: 'var Profile = <Hello name="John"><img src="picture.png" /></Hello>;',
       parserOptions: parserOptions
     }, {
-      code: '\
-      <Hello>\
-        <Hello name="John" />\
-      </Hello>',
+      code: `
+        <Hello>
+          <Hello name="John" />
+        </Hello>
+      `,
       parserOptions: parserOptions
     }, {
       code: 'var HelloJohn = <div>&nbsp;</div>;',
@@ -56,10 +57,11 @@ ruleTester.run('self-closing-comp', rule, {
       options: [],
       parserOptions: parserOptions
     }, {
-      code: '\
-      <Hello>\
-        <Hello name="John" />\
-      </Hello>',
+      code: `
+        <Hello>
+          <Hello name="John" />
+        </Hello>
+      `,
       options: [],
       parserOptions: parserOptions
     }, {
@@ -95,10 +97,11 @@ ruleTester.run('self-closing-comp', rule, {
       options: [{html: true}],
       parserOptions: parserOptions
     }, {
-      code: '\
-      <div>\
-        <div className="content" />\
-      </div>',
+      code: `
+        <div>
+          <div className="content" />
+        </div>
+      `,
       options: [{html: true}],
       parserOptions: parserOptions
     }

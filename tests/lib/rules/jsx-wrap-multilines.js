@@ -22,90 +22,101 @@ var parserOptions = {
 // Code Snippets
 // ------------------------------------------------------------------------------
 
-var RETURN_SINGLE_LINE = '\
-  var Hello = createReactClass({\
-    render: function() {\
-      return <p>Hello {this.props.name}</p>;\
-    }\
-  });';
+var RETURN_SINGLE_LINE = `
+  var Hello = createReactClass({
+    render: function() {
+      return <p>Hello {this.props.name}</p>;
+    }
+  });
+`;
 
-var RETURN_PAREN = '\
-  var Hello = createReactClass({\
-    render: function() {\
-      return (<div>\n\
-        <p>Hello {this.props.name}</p>\n\
-      </div>);\
-    }\
-  });';
+var RETURN_PAREN = `
+  var Hello = createReactClass({
+    render: function() {
+      return (<div>
+        <p>Hello {this.props.name}</p>
+      </div>);
+    }
+  });
+`;
 
-var RETURN_NO_PAREN = '\
-  var Hello = createReactClass({\
-    render: function() {\
-      return <div>\n\
-        <p>Hello {this.props.name}</p>\n\
-      </div>;\
-    }\
-  });';
+var RETURN_NO_PAREN = `
+  var Hello = createReactClass({
+    render: function() {
+      return <div>
+        <p>Hello {this.props.name}</p>
+      </div>;
+    }
+  });
+`;
 
 var DECLARATION_TERNARY_SINGLE_LINE = 'var hello = foo ? <p>Hello</p> : <p>Hi</p>;';
 
-var DECLARATION_TERNARY_PAREN = '\
-  var hello = foo ? (<div>\n\
-    <p>Hello</p>\n\
-  </div>) : (<div>\n\
-    <p>Hi</p>\n\
-  </div>);';
+var DECLARATION_TERNARY_PAREN = `
+  var hello = foo ? (<div>
+    <p>Hello</p>
+  </div>) : (<div>
+    <p>Hi</p>
+  </div>);
+`;
 
-var DECLARATION_TERNARY_NO_PAREN = '\
-  var hello = foo ? <div>\n\
-    <p>Hello</p>\n\
-  </div> : <div>\n\
-    <p>Hi</p>\n\
-  </div>;';
+var DECLARATION_TERNARY_NO_PAREN = `
+  var hello = foo ? <div>
+    <p>Hello</p>
+  </div> : <div>
+    <p>Hi</p>
+  </div>;
+`;
 
 var ASSIGNMENT_TERNARY_SINGLE_LINE = 'var hello; hello = foo ? <p>Hello</p> : <p>Hi</p>;';
 
-var ASSIGNMENT_TERNARY_PAREN = '\
-  var hello;\n\
-  hello = foo ? (<div>\n\
-    <p>Hello</p>\n\
-  </div>) : (<div>\n\
-    <p>Hi</p>\n\
-  </div>);';
+var ASSIGNMENT_TERNARY_PAREN = `
+  var hello;
+  hello = foo ? (<div>
+    <p>Hello</p>
+  </div>) : (<div>
+    <p>Hi</p>
+  </div>);
+`;
 
-var ASSIGNMENT_TERNARY_NO_PAREN = '\
-  var hello;\n\
-  hello = foo ? <div>\n\
-    <p>Hello</p>\n\
-  </div> : <div>\n\
-    <p>Hi</p>\n\
-  </div>;';
+var ASSIGNMENT_TERNARY_NO_PAREN = `
+  var hello;
+  hello = foo ? <div>
+    <p>Hello</p>
+  </div> : <div>
+    <p>Hi</p>
+  </div>;
+`;
 
 var DECLARATION_SINGLE_LINE = 'var hello = <p>Hello</p>;';
 
-var DECLARATION_PAREN = '\
-  var hello = (<div>\n\
-    <p>Hello</p>\n\
-  </div>);';
+var DECLARATION_PAREN = `
+  var hello = (<div>
+    <p>Hello</p>
+  </div>);
+`;
 
-var DECLARATION_NO_PAREN = '\
-  var hello = <div>\n\
-    <p>Hello</p>\n\
-  </div>;';
+var DECLARATION_NO_PAREN = `
+  var hello = <div>
+    <p>Hello</p>
+  </div>;
+`;
 
 var ASSIGNMENT_SINGLE_LINE = 'var hello; hello = <p>Hello</p>;';
 
-var ASSIGNMENT_PAREN = '\
-  var hello;\
-  hello = (<div>\n\
-    <p>Hello</p>\n\
-  </div>);';
+var ASSIGNMENT_PAREN = `
+  var hello;
+  hello = (<div>
+    <p>Hello</p>
+  </div>);
+`;
 
-var ASSIGNMENT_NO_PAREN = '\
-  var hello;\
-  hello = <div>\n\
-    <p>Hello</p>\n\
-  </div>;';
+var ASSIGNMENT_NO_PAREN = `
+  var hello;
+  hello = <div>
+    <p>Hello</p>
+  </div>;
+`;
 
 // ------------------------------------------------------------------------------
 // Tests
