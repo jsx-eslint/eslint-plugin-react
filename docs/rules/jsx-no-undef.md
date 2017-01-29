@@ -6,13 +6,13 @@ This rule helps locate potential ReferenceErrors resulting from misspellings or 
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 <Hello name="John" />;
 ```
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 var Hello = require('./Hello');
 
 <Hello name="John" />;

@@ -6,21 +6,21 @@ Ensures that any component or prop methods used to handle events are correctly p
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 <MyComponent handleChange={this.handleChange} />
 ```
 
-```js
+```jsx
 <MyComponent onChange={this.componentChanged} />
 ```
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 <MyComponent onChange={this.handleChange} />
 ```
 
-```js
+```jsx
 <MyComponent onChange={this.props.onFoo} />
 ```
 

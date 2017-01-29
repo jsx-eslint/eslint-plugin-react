@@ -25,7 +25,7 @@ Depending on your coding conventions, you can choose either option by specifying
 
 When `"never"` is set, the following patterns are considered warnings:
 
-```js
+```jsx
 <Hello name = {firstname} />;
 <Hello name ={firstname} />;
 <Hello name= {firstname} />;
@@ -33,7 +33,7 @@ When `"never"` is set, the following patterns are considered warnings:
 
 The following patterns are not warnings:
 
-```js
+```jsx
 <Hello name={firstname} />;
 <Hello name />;
 <Hello {...props} />;
@@ -43,7 +43,7 @@ The following patterns are not warnings:
 
 When `"always"` is used, the following patterns are considered warnings:
 
-```js
+```jsx
 <Hello name={firstname} />;
 <Hello name ={firstname} />;
 <Hello name= {firstname} />;
@@ -51,7 +51,7 @@ When `"always"` is used, the following patterns are considered warnings:
 
 The following patterns are not warnings:
 
-```js
+```jsx
 <Hello name = {firstname} />;
 <Hello name />;
 <Hello {...props} />;

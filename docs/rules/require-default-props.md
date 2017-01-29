@@ -8,7 +8,8 @@ The same also holds true for stateless functional components: default function p
 To illustrate, consider the following example:
 
 With `defaultProps`:
-```js
+
+```jsx
 const HelloWorld = ({ name }) => (
   <h1>Hello, {name.first} {name.last}!</h1>
 );
@@ -30,7 +31,8 @@ ReactDOM.render(<HelloWorld />,  document.getElementById('app'));
 ```
 
 Without `defaultProps`:
-```js
+
+```jsx
 const HelloWorld = ({ name = 'John Doe' }) => (
   <h1>Hello, {name.first} {name.last}!</h1>
 );
@@ -51,7 +53,7 @@ ReactDOM.render(<HelloWorld />,  document.getElementById('app'));
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 function MyStatelessComponent({ foo, bar }) {
   return <div>{foo}{bar}</div>;
 }
@@ -62,7 +64,7 @@ MyStatelessComponent.propTypes = {
 };
 ```
 
-```js
+```jsx
 var Greeting = React.createClass({
   render: function() {
     return <div>Hello {this.props.foo} {this.props.bar}</div>;
@@ -81,7 +83,7 @@ var Greeting = React.createClass({
 });
 ```
 
-```js
+```jsx
 class Greeting extends React.Component {
   render() {
     return (
@@ -100,7 +102,7 @@ Greeting.defaultProps = {
 };
 ```
 
-```js
+```jsx
 class Greeting extends React.Component {
   render() {
     return (
@@ -119,7 +121,7 @@ class Greeting extends React.Component {
 }
 ```
 
-```js
+```jsx
 type Props = {
   foo: string,
   bar?: string
@@ -132,7 +134,7 @@ function MyStatelessComponent(props: Props) {
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 function MyStatelessComponent({ foo, bar }) {
   return <div>{foo}{bar}</div>;
 }
@@ -143,7 +145,7 @@ MyStatelessComponent.propTypes = {
 };
 ```
 
-```js
+```jsx
 function MyStatelessComponent({ foo, bar }) {
   return <div>{foo}{bar}</div>;
 }
@@ -158,7 +160,7 @@ MyStatelessComponent.defaultProps = {
 };
 ```
 
-```js
+```jsx
 type Props = {
   foo: string,
   bar?: string

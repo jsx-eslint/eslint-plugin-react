@@ -27,7 +27,7 @@ Depending on your coding conventions, you can choose either option by specifying
 
 When `"never"` is set, the following patterns are considered warnings:
 
-```js
+```jsx
 <Hello name={ firstname } />;
 <Hello name={ firstname} />;
 <Hello name={firstname } />;
@@ -35,7 +35,7 @@ When `"never"` is set, the following patterns are considered warnings:
 
 The following patterns are not warnings:
 
-```js
+```jsx
 <Hello name={firstname} />;
 <Hello name={{ firstname: 'John', lastname: 'Doe' }} />;
 <Hello name={
@@ -47,7 +47,7 @@ The following patterns are not warnings:
 
 When `"always"` is used, the following patterns are considered warnings:
 
-```js
+```jsx
 <Hello name={firstname} />;
 <Hello name={ firstname} />;
 <Hello name={firstname } />;
@@ -55,7 +55,7 @@ When `"always"` is used, the following patterns are considered warnings:
 
 The following patterns are not warnings:
 
-```js
+```jsx
 <Hello name={ firstname } />;
 <Hello name={ {firstname: 'John', lastname: 'Doe'} } />;
 <Hello name={
@@ -73,7 +73,7 @@ By default, braces spanning multiple lines are allowed with either setting. If y
 
 When `"never"` is used and `allowMultiline` is `false`, the following patterns are considered warnings:
 
-```js
+```jsx
 <Hello name={ firstname } />;
 <Hello name={ firstname} />;
 <Hello name={firstname } />;
@@ -84,14 +84,14 @@ When `"never"` is used and `allowMultiline` is `false`, the following patterns a
 
 The following patterns are not warnings:
 
-```js
+```jsx
 <Hello name={firstname} />;
 <Hello name={{ firstname: 'John', lastname: 'Doe' }} />;
 ```
 
 When `"always"` is used and `allowMultiline` is `false`, the following patterns are considered warnings:
 
-```js
+```jsx
 <Hello name={firstname} />;
 <Hello name={ firstname} />;
 <Hello name={firstname } />;
@@ -102,7 +102,7 @@ When `"always"` is used and `allowMultiline` is `false`, the following patterns 
 
 The following patterns are not warnings:
 
-```js
+```jsx
 <Hello name={ firstname } />;
 <Hello name={ {firstname: 'John', lastname: 'Doe'} } />;
 ```
@@ -123,13 +123,13 @@ All spacing options accept either the string `"always"` or the string `"never"`.
 
 When `"always"` is used but `objectLiterals` is `"never"`, the following pattern is not considered a warning:
 
-```js
+```jsx
 <App blah={ 3 } foo={{ bar: true, baz: true }} />;
 ```
 
 When `"never"` is used and `objectLiterals` is `"always"`, the following pattern is not considered a warning:
 
-```js
+```jsx
 <App blah={3} foo={ {bar: true, baz: true} } />;
 ```
 

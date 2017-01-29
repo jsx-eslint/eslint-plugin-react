@@ -6,13 +6,13 @@ Creating JSX elements with duplicate props can cause unexpected behavior in your
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 <Hello name="John" name="John" />;
 ```
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 <Hello firstname="John" lastname="Doe" />;
 ```
 

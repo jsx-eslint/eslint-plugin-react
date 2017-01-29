@@ -14,7 +14,7 @@ var Hello = require('./Hello');
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 var Hello = require('./Hello');
 
 <Hello name="John" />;

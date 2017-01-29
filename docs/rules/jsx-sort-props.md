@@ -8,13 +8,13 @@ This rule checks all JSX components and verifies that all props are sorted alpha
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 <Hello lastName="Smith" firstName="John" />;
 ```
 
 The following patterns are considered okay and do not cause warnings:
 
-```js
+```jsx
 <Hello firstName="John" lastName="Smith" />;
 <Hello tel={5555555} {...this.props} firstName="John" lastName="Smith" />;
 ```
@@ -39,7 +39,7 @@ When `true` the rule ignores the case-sensitivity of the props order.
 
 The following patterns are considered okay and do not cause warnings:
 
-```js
+```jsx
 <Hello name="John" Number="2" />;
 ```
 
@@ -47,7 +47,7 @@ The following patterns are considered okay and do not cause warnings:
 
 When `true`, callbacks must be listed after all other props, even if `shorthandLast` is set :
 
-```js
+```jsx
 <Hello tel={5555555} onClick={this._handleClick} />
 ```
 
@@ -55,7 +55,7 @@ When `true`, callbacks must be listed after all other props, even if `shorthandL
 
 When `true`, short hand props must be listed before all other props, but still respecting the alphabetical order:
 
-```js
+```jsx
 <Hello active validate name="John" tel={5555555} />
 ```
 
@@ -63,7 +63,7 @@ When `true`, short hand props must be listed before all other props, but still r
 
 When `true`, short hand props must be listed after all other props (unless `callbacksLast` is set), but still respecting the alphabetical order:
 
-```js
+```jsx
 <Hello name="John" tel={5555555} active validate />
 ```
 
@@ -71,7 +71,7 @@ When `true`, short hand props must be listed after all other props (unless `call
 
 When `true`, alphabetical order is not enforced:
 
-```js
+```jsx
 <Hello tel={5555555} name="John" />
 ```
 

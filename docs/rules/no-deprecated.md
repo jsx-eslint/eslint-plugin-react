@@ -6,7 +6,7 @@ Several methods are deprecated between React versions. This rule will warn you i
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 React.render(<MyComponent />, root);
 
 React.unmountComponentAtNode(root);
@@ -20,7 +20,7 @@ React.renderToStaticMarkup(<MyComponent />);
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 ReactDOM.render(<MyComponent />, root);
 
 // When [1, {"react": "0.13.0"}]

@@ -33,7 +33,7 @@ Add `plugins` section and specify ESLint-plugin-React as a plugin.
 
 You can also specify some settings that will be shared across all the plugin rules.
 
-```js
+```json
 {
   "settings": {
     "react": {
@@ -152,7 +152,7 @@ This plugin exports a `recommended` configuration that enforce React good practi
 
 To enable this configuration use the `extends` property in your `.eslintrc` config file:
 
-```js
+```json
 {
   "extends": ["eslint:recommended", "plugin:react/recommended"]
 }
@@ -182,7 +182,7 @@ The rules enabled in this configuration are:
 This plugin also exports an `all` configuration that includes every available rule.
 This pairs well with the `eslint:all` rule.
 
-```js
+```json
 {
   "plugins": [
     "react"

@@ -7,7 +7,7 @@ injected as a text node in JSX statements.
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   render: function() {
     return (
@@ -29,7 +29,7 @@ var Hello = React.createClass({
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   displayName: 'Hello',
   render: function() {
@@ -57,7 +57,7 @@ var Hello = React.createClass({
 It's possible you may want to legitimately output comment start characters (`//` or `/*`)
 in a JSX text node. In which case, you can do the following:
 
-```js
+```jsx
 var Hello = React.createClass({
   render: function() {
     return (

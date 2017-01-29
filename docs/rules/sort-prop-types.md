@@ -8,7 +8,7 @@ This rule checks all components and verifies that all propTypes declarations are
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 var Component = React.createClass({
   propTypes: {
     z: React.PropTypes.number,
@@ -41,7 +41,7 @@ class Component extends React.Component {
 
 The following patterns are considered okay and do not cause warnings:
 
-```js
+```jsx
 var Component = React.createClass({
   propTypes: {
     a: React.PropTypes.number,
