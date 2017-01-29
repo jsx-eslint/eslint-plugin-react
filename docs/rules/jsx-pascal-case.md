@@ -8,31 +8,31 @@ Note that since React's JSX uses the upper vs. lower case convention to distingu
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 <Test_component />
 ```
 
-```js
+```jsx
 <TEST_COMPONENT />
 ```
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 <div />
 ```
 
-```js
+```jsx
 <TestComponent />
 ```
 
-```js
+```jsx
 <TestComponent>
   <div />
 </TestComponent>
 ```
 
-```js
+```jsx
 <CSSTransitionGroup />
 ```
 

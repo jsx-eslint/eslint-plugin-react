@@ -6,7 +6,7 @@ Updating the state after a component update will trigger a second `render()` cal
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   componentDidUpdate: function() {
      this.setState({
@@ -21,7 +21,7 @@ var Hello = React.createClass({
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   componentDidUpdate: function() {
     this.props.onUpdate();
@@ -32,7 +32,7 @@ var Hello = React.createClass({
 });
 ```
 
-```js
+```jsx
 var Hello = React.createClass({
   componentDidUpdate: function() {
     this.onUpdate(function callback(newName) {
@@ -61,7 +61,7 @@ By default this rule forbids any call to `this.setState` in `componentDidUpdate`
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   componentDidUpdate: function() {
      this.setState({
@@ -74,7 +74,7 @@ var Hello = React.createClass({
 });
 ```
 
-```js
+```jsx
 var Hello = React.createClass({
   componentDidUpdate: function() {
     this.onUpdate(function callback(newName) {

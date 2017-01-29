@@ -9,11 +9,11 @@ If you are using the @jsx pragma this rule will check the designated variable an
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 var Hello = <div>Hello {this.props.name}</div>;
 ```
 
-```js
+```jsx
 /** @jsx Foo.bar */
 var React = require('react');
 
@@ -22,19 +22,19 @@ var Hello = <div>Hello {this.props.name}</div>;
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 import React from 'react';
 
 var Hello = <div>Hello {this.props.name}</div>;
 ```
 
-```js
+```jsx
 var React = require('react');
 
 var Hello = <div>Hello {this.props.name}</div>;
 ```
 
-```js
+```jsx
 /** @jsx Foo.bar */
 var Foo = require('foo');
 

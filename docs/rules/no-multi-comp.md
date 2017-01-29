@@ -6,7 +6,7 @@ Declaring only one component per file improves readability and reusability of co
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   render: function() {
     return <div>Hello {this.props.name}</div>;
@@ -22,7 +22,7 @@ var HelloJohn = React.createClass({
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 var Hello = require('./components/Hello');
 
 var HelloJohn = React.createClass({
@@ -46,7 +46,7 @@ When `true` the rule will ignore stateless components and will allow you to have
 
 The following patterns are considered okay and do not cause warnings:
 
-```js
+```jsx
 function Hello(props) {
   return <div>Hello {props.name}</div>;
 }
@@ -55,7 +55,7 @@ function HelloAgain(props) {
 }
 ```
 
-```js
+```jsx
 function Hello(props) {
   return <div>Hello {props.name}</div>;
 }

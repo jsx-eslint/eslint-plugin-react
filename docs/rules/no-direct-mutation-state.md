@@ -9,7 +9,7 @@ This rule is aimed to forbid the use of mutating `this.state` directly.
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   componentDidMount: function() {
     this.state.name = this.props.name.toUpperCase();
@@ -23,7 +23,7 @@ var Hello = React.createClass({
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   componentDidMount: function() {
     this.setState({

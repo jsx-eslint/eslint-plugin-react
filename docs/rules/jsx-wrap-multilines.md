@@ -8,7 +8,7 @@ Wrapping multiline JSX in parentheses can improve readability and/or convenience
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   render: function() {
     return <div>
@@ -20,7 +20,7 @@ var Hello = React.createClass({
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 var singleLineJSX = <p>Hello</p>
 
 var Hello = React.createClass({

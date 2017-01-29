@@ -9,7 +9,7 @@ This rule is off by default.
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 var Component = React.createClass({
   propTypes: {
     a: React.PropTypes.any,

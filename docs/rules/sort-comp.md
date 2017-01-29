@@ -15,7 +15,7 @@ The default configuration ensures that the following order must be followed:
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   render: function() {
     return <div>Hello</div>;
@@ -26,7 +26,7 @@ var Hello = React.createClass({
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   displayName : 'Hello',
   render: function() {
@@ -109,7 +109,7 @@ For example, if you want to place your event handlers (`onClick`, `onSubmit`, et
 
 With the above configuration, the following patterns are considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   render: function() {
     return <div>Hello</div>;
@@ -120,7 +120,7 @@ var Hello = React.createClass({
 
 With the above configuration, the following patterns are not considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   onClick: function() {},
   render: function() {
@@ -150,7 +150,7 @@ If you want to split your `render` method into smaller ones and keep them just b
 
 With the above configuration, the following patterns are considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   renderButton: function() {},
   onClick: function() {},
@@ -162,7 +162,7 @@ var Hello = React.createClass({
 
 With the above configuration, the following patterns are not considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   onClick: function() {},
   renderButton: function() {},
@@ -188,7 +188,7 @@ If you want to flow annotations to be at the top:
 
 With the above configuration, the following patterns are considered warnings:
 
-```js
+```jsx
 class Hello extends React.Component<any, Props, void> {
   onClick() { this._someElem = true; }
   props: Props;
@@ -201,7 +201,7 @@ class Hello extends React.Component<any, Props, void> {
 
 With the above configuration, the following patterns are not considered warnings:
 
-```js
+```jsx
 type Props = {};
 class Hello extends React.Component<any, Props, void> {
   props: Props;

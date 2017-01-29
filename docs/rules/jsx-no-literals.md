@@ -8,13 +8,13 @@ Prevents any odd artifacts of highlighters if your unwrapped string contains an 
 
 The following patterns are considered warnings:
 
-```javascript
+```jsx
 var Hello = <div>test</div>;
 ```
 
 The following patterns are not considered warnings:
 
-```javascript
+```jsx
 var Hello = <div>{'test'}</div>;
 ```
 

@@ -6,15 +6,15 @@ A `bind` call or [arrow function](https://developer.mozilla.org/en-US/docs/Web/J
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 <div onClick={this._handleClick.bind(this)}></div>
 ```
-```js
+```jsx
 <div onClick={() => console.log('Hello!'))}></div>
 ```
 
 The following patterns are not considered warnings:
-```js
+```jsx
 <div onClick={this._handleClick}></div>
 ```
 
@@ -59,7 +59,7 @@ When `true` the following is not considered a warning:
 
 A common use case of `bind` in render is when rendering a list, to have a separate callback per list item:
 
-```js
+```jsx
 var List = React.createClass({
   render() {
     return (
@@ -77,7 +77,7 @@ var List = React.createClass({
 
 Rather than doing it this way, pull the repeated section into its own component:
 
-```js
+```jsx
 var List = React.createClass({
   render() {
     return (
@@ -110,7 +110,7 @@ This will speed up rendering, as it avoids the need to create new functions (thr
 
 Unfortunately [React ES6 classes](https://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#es6-classes) do not autobind their methods like components created with the older `React.createClass` syntax. There are several approaches to binding methods for ES6 classes. A basic approach is to just manually bind the methods in the constructor:
 
-```js
+```jsx
 class Foo extends React.Component {
   constructor() {
     super();

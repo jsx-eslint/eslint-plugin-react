@@ -16,7 +16,7 @@ Will enforce ES6 classes for React Components. This is the default mode.
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   render: function() {
     return <div>Hello {this.props.name}</div>;
@@ -26,7 +26,7 @@ var Hello = React.createClass({
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 class Hello extends React.Component {
   render() {
     return <div>Hello {this.props.name}</div>;
@@ -40,7 +40,7 @@ Will enforce ES5 classes for React Components
 
 The following patterns are considered warnings:
 
-```js
+```jsx
 class Hello extends React.Component {
   render() {
     return <div>Hello {this.props.name}</div>;
@@ -50,7 +50,7 @@ class Hello extends React.Component {
 
 The following patterns are not considered warnings:
 
-```js
+```jsx
 var Hello = React.createClass({
   render: function() {
     return <div>Hello {this.props.name}</div>;

@@ -10,25 +10,25 @@ This rule takes one argument. If it is `"always"` then it warns whenever an attr
 
 The following patterns are considered warnings when configured `"never"`:
 
-```js
+```jsx
 var Hello = <Hello personal={true} />;
 ```
 
 The following patterns are not considered warnings when configured `"never"`:
 
-```js
+```jsx
 var Hello = <Hello personal />;
 ```
 
 The following patterns are considered warnings when configured `"always"`:
 
-```js
+```jsx
 var Hello = <Hello personal />;
 ```
 
 The following patterns are not considered warnings when configured `"always"`:
 
-```js
+```jsx
 var Hello = <Hello personal={true} />;
 ```
 
