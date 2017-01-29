@@ -378,6 +378,19 @@ ruleTester.run('display-name', rule, {
       ')'
     ].join('\n'),
     parser: 'babel-eslint'
+  }, {
+    code: [
+      'module.exports = {',
+      '  createElement: tagName => document.createElement(tagName)',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      'const { createElement } = document;',
+      'createElement("a");'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
@@ -544,6 +557,41 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: [
+      'import React, { createElement } from "react";',
+      'export default (props) => {',
+      '  return createElement("div", {}, "hello");',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: [
+      'import React from "react";',
+      'const { createElement } = React;',
+      'export default (props) => {',
+      '  return createElement("div", {}, "hello");',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: [
+      'import React from "react";',
+      'const createElement = React.createElement;',
+      'export default (props) => {',
+      '  return createElement("div", {}, "hello");',
+      '};'
+    ].join('\n'),
     parser: 'babel-eslint',
     errors: [{
       message: 'Component definition is missing display name'
