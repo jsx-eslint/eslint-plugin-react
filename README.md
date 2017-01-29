@@ -33,7 +33,7 @@ Add `plugins` section and specify ESLint-plugin-React as a plugin.
 
 You can also specify some settings that will be shared across all the plugin rules.
 
-```json
+```json5
 {
   "settings": {
     "react": {
