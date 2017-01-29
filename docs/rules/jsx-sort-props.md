@@ -27,7 +27,8 @@ The following patterns are considered okay and do not cause warnings:
   "callbacksLast": <boolean>,
   "shorthandFirst": <boolean>,
   "shorthandLast": <boolean>,
-  "ignoreCase": <boolean>
+  "ignoreCase": <boolean>,
+  "noSortAlphabetically": <boolean>
 }]
 ...
 ```
@@ -64,6 +65,14 @@ When `true`, short hand props must be listed after all other props (unless `call
 
 ```js
 <Hello name="John" tel={5555555} active validate />
+```
+
+### `noSortAlphabetically`
+
+When `true`, alphabetical order is not enforced:
+
+```js
+<Hello tel={5555555} name="John" />
 ```
 
 ## When not to use
