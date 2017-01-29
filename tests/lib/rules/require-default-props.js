@@ -680,6 +680,16 @@ ruleTester.run('require-default-props', rule, {
     },
     {
       code: [
+        'type Props = any;',
+
+        'const Hello = function({ foo }: Props) {',
+        '  return <div>Hello {foo}</div>;',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
         'import type ImportedProps from "fake";',
         'type Props = ImportedProps;',
         'function Hello(props: Props) {',
