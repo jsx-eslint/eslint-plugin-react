@@ -46,14 +46,14 @@ Maximum number of props allowed on a single line. Default to `1`.
 The following patterns are considered warnings:
 
 ```jsx
-// [1, {maximum: 2}]
+// [1, { "maximum": 2 }]
 <Hello firstName="John" lastName="Smith" tel={5555555} />;
 ```
 
 The following patterns are not considered warnings:
 
 ```jsx
-// [1, {maximum: 2}]
+// [1, { "maximum": 2 }]
 <Hello
   firstName="John" lastName="Smith"
   tel={5555555}
@@ -68,13 +68,13 @@ Possible values:
 
 The following patterns are considered warnings:
 ```jsx
-// [1, {when: always}]
+// [1, { "when": "always" }]
 <Hello firstName="John" lastName="Smith" />
 ```
 
 The following patterns are not considered warnings:
 ```jsx
-// [1, {when: multiline}]
+// [1, { "when": "multiline" }]
 <Hello firstName="John" lastName="Smith" />
 <Hello 
   firstName="John" 
