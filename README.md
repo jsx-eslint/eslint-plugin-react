@@ -111,6 +111,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/sort-comp](docs/rules/sort-comp.md): Enforce component methods order
 * [react/sort-prop-types](docs/rules/sort-prop-types.md): Enforce propTypes declarations alphabetical sorting
 * [react/style-prop-object](docs/rules/style-prop-object.md): Enforce style prop value being an object
+* [react/void-dom-elements-no-children](docs/rules/void-dom-elements-no-children.md): Prevent void DOM elements (e.g. `<img />`, `<br />`) from receiving children
 
 ## JSX-specific rules
 
