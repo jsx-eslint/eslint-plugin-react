@@ -77,6 +77,68 @@ The following patterns are not warnings:
 </App>
 ```
 
+#### indentLogicalExpressions
+
+```js
+...
+"react/jsx-indent": [<enabled>, 'tab'|<number>, {indentLogicalExpressions: true}]
+...
+```
+
+By default this is set to false. When enabled, an additional indentation is required when the JSX is the right of a LogicalExpression
+
+The following patterns are considered warnings:
+
+```jsx
+// 2 spaces indentation with indentLogicalExpressions as false
+// [2, 2, {indentLogicalExpressions: false}]
+<App>
+  {
+    condition &&
+      <Container>
+        <Child></Child>
+      </Container>
+  }
+</App>
+
+// 2 spaces indentation with indentLogicalExpressions as true
+// [2, 2, {indentLogicalExpressions: true}]
+<App>
+  {
+    condition &&
+    <Container>
+      <Child></Child>
+    </Container>
+  }
+</App>
+```
+
+The following patterns are not warnings:
+
+```jsx
+// 2 spaces indentation with indentLogicalExpressions as true
+// [2, 2, {indentLogicalExpressions: true}]
+<App>
+  {
+    condition &&
+      <Container>
+        <Child></Child>
+      </Container>
+  }
+</App>
+
+// 2 spaces indentation with indentLogicalExpressions as false
+// [2, 2, {indentLogicalExpressions: false}]
+<App>
+  {
+    condition &&
+    <Container>
+      <Child></Child>
+    </Container>
+  }
+</App>
+```
+
 ## When not to use
 
 If you are not using JSX then you can disable this rule.
