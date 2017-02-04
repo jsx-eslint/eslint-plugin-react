@@ -36,6 +36,7 @@ var allRules = {
   'jsx-no-duplicate-props': require('./lib/rules/jsx-no-duplicate-props'),
   'jsx-max-props-per-line': require('./lib/rules/jsx-max-props-per-line'),
   'jsx-no-literals': require('./lib/rules/jsx-no-literals'),
+  'jsx-no-ref': require('./lib/rules/jsx-no-ref'),
   'jsx-indent-props': require('./lib/rules/jsx-indent-props'),
   'jsx-indent': require('./lib/rules/jsx-indent'),
   'jsx-closing-bracket-location': require('./lib/rules/jsx-closing-bracket-location'),
