@@ -11,7 +11,7 @@
 var rule = require('../../../lib/rules/jsx-no-ref');
 var RuleTester = require('eslint').RuleTester;
 
-var expectedErrorMessage = 'Use of "ref" prop considered smell of non-declarative design';
+var expectedErrorMessage = 'Use of "ref" in user-defined JSX components is considered smell of non-declarative design';
 
 var parserOptions = {
   ecmaVersion: 6,
