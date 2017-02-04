@@ -1,9 +1,10 @@
 # Warn for use of `ref` prop (jsx-no-ref)
 
-Warn if an custom element uses a `ref` prop in user-defined JSX components, as
-this is a smell of non-declarative React component design.  Note that this does
-rule does _not_ warn when a `ref` attribute appears in a standard HTML tag,
-like `<input>`.
+Warn when a `ref` attribute is found in a custom JSX component tag, as this is
+a smell of non-declarative React component design.  Note that this rule does
+_not_ warn when a `ref` attribute appears in built-in component tags, like
+`<input />` or `<button />`.
+
 
 ## Rule Details
 
@@ -22,6 +23,7 @@ The following patterns are not considered warnings:
 
 <div ref="contrived"></div>
 ```
+
 
 ## When not to use
 
