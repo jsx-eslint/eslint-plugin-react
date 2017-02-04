@@ -1,12 +1,13 @@
 # Warn for use of `ref` prop (jsx-no-ref)
 
-Warn if an custom element uses a `ref` prop, as this is considered a smell of
-non-declarative React component design.  Note that this does rule does _not_
-warn a ref attribute is added to a standard HTML tag, like `<input>`.
+Warn if an custom element uses a `ref` prop in user-defined JSX components, as
+this is a smell of non-declarative React component design.  Note that this does
+rule does _not_ warn when a `ref` attribute appears in a standard HTML tag,
+like `<input>`.
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Identifies the following patterns as warnings:
 
 ```jsx
 <App ref={someRef} />
