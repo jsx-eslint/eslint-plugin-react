@@ -43,6 +43,7 @@ var allRules = {
   'no-direct-mutation-state': require('./lib/rules/no-direct-mutation-state'),
   'forbid-component-props': require('./lib/rules/forbid-component-props'),
   'forbid-prop-types': require('./lib/rules/forbid-prop-types'),
+  'forbid-foreign-prop-types': require('./lib/rules/forbid-foreign-prop-types'),
   'prefer-es6-class': require('./lib/rules/prefer-es6-class'),
   'jsx-key': require('./lib/rules/jsx-key'),
   'no-string-refs': require('./lib/rules/no-string-refs'),
