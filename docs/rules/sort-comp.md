@@ -39,7 +39,7 @@ var Hello = createReactClass({
 
 This rule can take one argument to customize the components organisation.
 
-```
+```js
 ...
 "react/sort-comp": [<enabled>, { order: <order>, groups: <groups> }]
 ...

@@ -100,7 +100,7 @@ Hello.propTypes = {
 
 This rule can take one argument to ignore some specific props during validation.
 
-```
+```js
 ...
 "react/prop-types": [<enabled>, { ignore: <ignore>, customValidators: <customValidator> }]
 ...

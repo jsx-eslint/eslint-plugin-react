@@ -76,9 +76,9 @@ The following patterns are not considered warnings:
 ```jsx
 // [1, { "when": "multiline" }]
 <Hello firstName="John" lastName="Smith" />
-<Hello 
-  firstName="John" 
-  lastName="Smith" 
+<Hello
+  firstName="John"
+  lastName="Smith"
 />
 ```
 

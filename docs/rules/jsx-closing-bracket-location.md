@@ -71,7 +71,7 @@ The following patterns are considered warnings:
 // 'jsx-closing-bracket-location': 1
 // 'jsx-closing-bracket-location': [1, 'tag-aligned']
 // 'jsx-closing-bracket-location': [1, 'line-aligned']
-<Hello 
+<Hello
   firstName="John"
   lastName="Smith"
   />;
@@ -114,7 +114,7 @@ var x = function() {
 };
 
 // 'jsx-closing-bracket-location': [1, 'after-props']
-<Hello 
+<Hello
   firstName="John"
   lastName="Smith"
   />;
@@ -127,7 +127,7 @@ var x = function() {
 </Say>;
 
 // 'jsx-closing-bracket-location': [1, 'props-aligned']
-<Hello 
+<Hello
   firstName="John"
   lastName="Smith" />;
 
@@ -188,7 +188,7 @@ var x = function() {
 };
 
 // 'jsx-closing-bracket-location': [1, {selfClosing: 'after-props'}]
-<Hello 
+<Hello
   firstName="John"
   lastName="Smith" />;
 
@@ -200,7 +200,7 @@ var x = function() {
 </Say>;
 
 // 'jsx-closing-bracket-location': [1, {selfClosing: 'props-aligned', nonEmpty: 'after-props'}]
-<Hello 
+<Hello
   firstName="John"
   lastName="Smith"
   />;
