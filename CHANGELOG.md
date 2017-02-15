@@ -3,7 +3,47 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
-## [6.9.0] - 2016-01-08
+## [6.10.0] - 2017-02-16
+### Added
+* Add [`forbid-foreign-prop-types`][] rule ([#696][] @iancmyers)
+* Add [`void-dom-elements-no-children`][] rule ([#709][] @lencioni)
+* Add [`forbid-elements`][] rule ([#887][] @kentor)
+* Add `noSortAlphabetically` option to [`jsx-sort-props`][] ([#541][] [#786][] @markus101)
+* Add `when` option to [`jsx-max-props-per-line`][] ([#878][] @kentor)
+* Add support for `nextProps` to [`prop-types`][] ([#814][])
+
+### Fixed
+* Fix [`require-default-props`][] crash ([#1029][])
+* Fix [`require-default-props`][] rule when using Flow type from assignment ([#1043][] @wyze @CarlRosell)
+* Fix [`style-prop-object`][] to not warn with explicit `null` or `undefined` ([#812][] @ljharb)
+* Fix [`no-unused-prop-types`][] props detection in stateless components ([#885][] @BarryThePenguin)
+* Fix [`display-name`] false positive with `document.createElement` ([#996][] @jomasti)
+* Fix ESLint 2 compatibility (@ljharb)
+
+### Changed
+* Tests improvements (@ljharb)
+* Documentation improvements ([#958][] @Jorundur, [#1010][] @amilajack, [#1041][] @EvNaverniouk, [#1050][] @lencioni, [#1062][] @dguo)
+
+[6.10.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.9.0...v6.10.0
+[#696]: https://github.com/yannickcr/eslint-plugin-react/issues/696
+[#709]: https://github.com/yannickcr/eslint-plugin-react/issues/709
+[#887]: https://github.com/yannickcr/eslint-plugin-react/issues/887
+[#541]: https://github.com/yannickcr/eslint-plugin-react/issues/541
+[#786]: https://github.com/yannickcr/eslint-plugin-react/issues/786
+[#878]: https://github.com/yannickcr/eslint-plugin-react/issues/878
+[#814]: https://github.com/yannickcr/eslint-plugin-react/issues/814
+[#1029]: https://github.com/yannickcr/eslint-plugin-react/issues/1029
+[#1043]: https://github.com/yannickcr/eslint-plugin-react/issues/1043
+[#812]: https://github.com/yannickcr/eslint-plugin-react/issues/812
+[#885]: https://github.com/yannickcr/eslint-plugin-react/issues/885
+[#996]: https://github.com/yannickcr/eslint-plugin-react/issues/996
+[#958]: https://github.com/yannickcr/eslint-plugin-react/pull/958
+[#1010]: https://github.com/yannickcr/eslint-plugin-react/pull/1010
+[#1041]: https://github.com/yannickcr/eslint-plugin-react/pull/1041
+[#1050]: https://github.com/yannickcr/eslint-plugin-react/pull/1050
+[#1062]: https://github.com/yannickcr/eslint-plugin-react/pull/1062
+
+## [6.9.0] - 2017-01-08
 ### Added
 * Add support for variable reference to [`sort-prop-types`][] ([#622][])
 
@@ -1539,6 +1579,8 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 [`display-name`]: docs/rules/display-name.md
 [`forbid-component-props`]: docs/rules/forbid-component-props.md
+[`forbid-elements`]: docs/rules/forbid-elements.md
+[`forbid-foreign-prop-types`]: docs/rules/forbid-foreign-prop-types.md
 [`forbid-prop-types`]: docs/rules/forbid-prop-types.md
 [`no-array-index-key`]: docs/rules/no-array-index-key.md
 [`no-children-prop`]: docs/rules/no-children-prop.md
@@ -1592,6 +1634,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`jsx-uses-react`]: docs/rules/jsx-uses-react.md
 [`jsx-uses-vars`]: docs/rules/jsx-uses-vars.md
 [`jsx-wrap-multilines`]: docs/rules/jsx-wrap-multilines.md
+[`void-dom-elements-no-children`]: docs/rules/void-dom-elements-no-children.md
 
 [`jsx-sort-prop-types`]: docs/rules/sort-prop-types.md
 [`require-extension`]: docs/rules/require-extension.md
