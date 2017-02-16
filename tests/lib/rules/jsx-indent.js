@@ -53,14 +53,6 @@ ruleTester.run('jsx-indent', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      '  <App>',
-      '<Foo />',
-      '  </App>'
-    ].join('\n'),
-    options: [-2],
-    parserOptions: parserOptions
-  }, {
-    code: [
       '<App>',
       '\t<Foo />',
       '</App>'
@@ -208,17 +200,6 @@ ruleTester.run('jsx-indent', rule, {
       '            <Bar />',
       '        ]',
       '    }',
-      '</div>'
-    ].join('\n'),
-    parserOptions: parserOptions
-  }, {
-    // Literals indentation is not touched
-    code: [
-      '<div>',
-      'bar <div>',
-      '   bar',
-      '   bar {foo}',
-      'bar </div>',
       '</div>'
     ].join('\n'),
     parserOptions: parserOptions
@@ -416,6 +397,19 @@ ruleTester.run('jsx-indent', rule, {
       ')'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: [
+      '<App>',
+      '    {',
+      '        condition &&',
+      '            <Container>',
+      '                <Child></Child>',
+      '            </Container>',
+      '    }',
+      '</App>'
+    ].join('\n'),
+    options: [4, {indentLogicalExpressions: true}],
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -459,6 +453,39 @@ ruleTester.run('jsx-indent', rule, {
     options: ['tab'],
     parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 1 tab character but found 0.'}]
+  }, {
+    code: [
+      'function MyComponent(props) {',
+      '\treturn (',
+      '    <div',
+      '\t\t\tclassName="foo-bar"',
+      '\t\t\tid="thing"',
+      '    >',
+      '      Hello world!',
+      '    </div>',
+      '\t)',
+      '}'
+    ].join('\n'),
+    output: [
+      'function MyComponent(props) {',
+      '\treturn (',
+      '\t\t<div',
+      '\t\t\tclassName="foo-bar"',
+      '\t\t\tid="thing"',
+      '\t\t>',
+      '\t\t\tHello world!',
+      '\t\t</div>',
+      '\t)',
+      '}'
+    ].join('\n'),
+    options: ['tab'],
+    parserOptions: parserOptions,
+    errors: [
+      {message: 'Expected indentation of 2 tab characters but found 0.'},
+      {message: 'Expected indentation of 2 tab characters but found 0.'},
+      {message: 'Expected indentation of 3 tab characters but found 0.'},
+      {message: 'Expected indentation of 2 tab characters but found 0.'}
+    ]
   }, {
     code: [
       'function App() {',
@@ -505,11 +532,7 @@ ruleTester.run('jsx-indent', rule, {
       '  );',
       '}'
     ].join('\n'),
-    // The detection logic only thinks <App> is indented wrong, not the other
-    // two lines following. I *think* because it incorrectly uses <App>'s indention
-    // as the baseline for the next two, instead of the realizing the entire three
-    // lines are wrong together. See #608
-    /* output: [
+    output: [
       'function App() {',
       '  return (',
       '    <App>',
@@ -517,10 +540,14 @@ ruleTester.run('jsx-indent', rule, {
       '    </App>',
       '  );',
       '}'
-    ].join('\n'), */
+    ].join('\n'),
     options: [2],
     parserOptions: parserOptions,
-    errors: [{message: 'Expected indentation of 4 space characters but found 0.'}]
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'},
+      {message: 'Expected indentation of 6 space characters but found 2.'},
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
   }, {
     code: [
       '<App>',
