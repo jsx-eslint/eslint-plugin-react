@@ -410,6 +410,47 @@ ruleTester.run('jsx-indent', rule, {
     ].join('\n'),
     options: [4, {indentLogicalExpressions: true}],
     parserOptions: parserOptions
+  }, {
+    code: [
+      '<span>',
+      '  {condition ?',
+      '    <Thing',
+      '      foo={`bar`}',
+      '    /> :',
+      '    <Thing/>',
+      '  }',
+      '</span>'
+    ].join('\n'),
+    options: [2],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<span>',
+      '  {condition ?',
+      '    <Thing',
+      '      foo={"bar"}',
+      '    /> :',
+      '    <Thing/>',
+      '  }',
+      '</span>'
+    ].join('\n'),
+    options: [2],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'function foo() {',
+      '  <span>',
+      '    {condition ?',
+      '      <Thing',
+      '        foo={super}',
+      '      /> :',
+      '      <Thing/>',
+      '    }',
+      '  </span>',
+      '}'
+    ].join('\n'),
+    options: [2],
+    parserOptions: parserOptions
   }],
 
   invalid: [{
