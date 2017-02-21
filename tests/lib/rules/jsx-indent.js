@@ -451,6 +451,14 @@ ruleTester.run('jsx-indent', rule, {
     ].join('\n'),
     options: [2],
     parserOptions: parserOptions
+  }, {
+    code: [
+      'function foo() {',
+      '  <span>Text</span>',
+      '}'
+    ].join('\n'),
+    options: [2],
+    parserOptions: parserOptions
   }],
 
   invalid: [{
