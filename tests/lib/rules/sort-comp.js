@@ -287,6 +287,20 @@ ruleTester.run('sort-comp', rule, {
     parserOptions: parserOptions,
     errors: [{message: 'render should be placed after onClick'}]
   }, {
+    // Must force a custom method to be placed before render, even in function
+    code: [
+      'var Hello = () => {',
+      '  return class Test extends React.Component {',
+      '    render () {',
+      '      return <div>Hello</div>;',
+      '    }',
+      '    onClick () {}',
+      '  }',
+      '};'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{message: 'render should be placed after onClick'}]
+  }, {
     // Must force a custom method to be placed after render if no 'everything-else' group is specified
     code: [
       'var Hello = React.createClass({',
