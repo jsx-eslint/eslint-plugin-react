@@ -248,6 +248,34 @@ ruleTester.run('sort-comp', rule, {
         'render'
       ]
     }]
+  }, {
+    // Non-react classes should be ignored, even in expressions
+    code: [
+      'return class Hello {',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '  props: { text: string };',
+      '  constructor() {}',
+      '  state: Object = {};',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    // Non-react classes should be ignored, even in expressions
+    code: [
+      'return class {',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '  props: { text: string };',
+      '  constructor() {}',
+      '  state: Object = {};',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
   }],
 
   invalid: [{
