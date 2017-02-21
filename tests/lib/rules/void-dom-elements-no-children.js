@@ -54,6 +54,28 @@ ruleTester.run('void-dom-elements-no-children', rule, {
     {
       code: 'React.createElement("div", { dangerouslySetInnerHTML: { __html: "Foo" } });',
       parserOptions: parserOptions
+    }, {
+      code: 'document.createElement("img")',
+      parserOptions: parserOptions
+    }, {
+      code: 'React.createElement("img");',
+      parserOptions: parserOptions
+    }, {
+      code: [
+        'import React from "react";',
+        'const { createElement } = React;',
+        'createElement("div")'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
+    }, {
+      code: [
+        'import React from "react";',
+        'const { createElement } = React;',
+        'createElement("img")'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
     }
   ],
   invalid: [
@@ -90,6 +112,36 @@ ruleTester.run('void-dom-elements-no-children', rule, {
     {
       code: 'React.createElement("br", { dangerouslySetInnerHTML: { __html: "Foo" } });',
       errors: [{message: errorMessage('br')}],
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'import React from "react";',
+        'const createElement = React.createElement;',
+        'createElement("img", {}, "Foo");'
+      ].join('\n'),
+      errors: [{message: errorMessage('img')}],
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'import React from "react";',
+        'const createElement = React.createElement;',
+        'createElement("img", { children: "Foo" });'
+      ].join('\n'),
+      errors: [{message: errorMessage('img')}],
+      parser: 'babel-eslint',
+      parserOptions: parserOptions
+    },
+    {
+      code: [
+        'import React from "react";',
+        'const createElement = React.createElement;',
+        'createElement("img", { dangerouslySetInnerHTML: { __html: "Foo" } });'
+      ].join('\n'),
+      errors: [{message: errorMessage('img')}],
+      parser: 'babel-eslint',
       parserOptions: parserOptions
     }
   ]
