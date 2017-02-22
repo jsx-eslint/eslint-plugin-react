@@ -96,6 +96,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/no-find-dom-node](docs/rules/no-find-dom-node.md): Prevent usage of `findDOMNode`
 * [react/no-is-mounted](docs/rules/no-is-mounted.md): Prevent usage of `isMounted`
 * [react/no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
+* [react/no-redundant-should-component-update](docs/rules/no-redundant-should-component-update.md): Prevent usage of `shouldComponentUpdate` when extending React.PureComponent
 * [react/no-render-return-value](docs/rules/no-render-return-value.md): Prevent usage of the return value of `React.render`
 * [react/no-set-state](docs/rules/no-set-state.md): Prevent usage of `setState`
 * [react/no-string-refs](docs/rules/no-string-refs.md): Prevent using string references in `ref` attribute.
