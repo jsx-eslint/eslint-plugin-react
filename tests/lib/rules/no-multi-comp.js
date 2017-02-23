@@ -10,6 +10,7 @@
 
 var rule = require('../../../lib/rules/no-multi-comp');
 var RuleTester = require('eslint').RuleTester;
+var assign = require('object.assign');
 
 var parserOptions = {
   ecmaVersion: 6,
@@ -89,6 +90,21 @@ ruleTester.run('no-multi-comp', rule, {
     options: [{
       ignoreStateless: true
     }]
+  }, {
+    // multiple non-components
+    code: [
+      'import React, { createElement } from "react"',
+      'const helperFoo = () => {',
+      '  return true;',
+      '};',
+      'function helperBar() {',
+      '  return false;',
+      '};',
+      'function RealComponent() {',
+      '  return createElement("img");',
+      '};'
+    ].join('\n'),
+    parserOptions: assign({sourceType: 'module'}, parserOptions)
   }],
 
   invalid: [{
