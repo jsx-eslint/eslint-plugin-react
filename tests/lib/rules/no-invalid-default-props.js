@@ -887,15 +887,17 @@ ruleTester.run('no-invalid-default-props', rule, {
         '    foo: React.PropTypes.string,',
         '    bar: React.PropTypes.string.isRequired',
         '  },',
-        '  defaultProps: {',
-        '    baz: "baz"',
+        '  getDefaultProps: function() {',
+        '    return {',
+        '      baz: "baz"',
+        '    };',
         '  }',
         '});'
       ].join('\n'),
       errors: [{
         message: 'defaultProp "baz" has no corresponding propTypes declaration.',
-        line: 10,
-        column: 5
+        line: 11,
+        column: 7
       }]
     },
     {
