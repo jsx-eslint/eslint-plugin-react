@@ -1461,6 +1461,21 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n'),
       parserOptions: parserOptions
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    foo: PropTypes.bool,',
+        '    bar: PropTypes.bool',
+        '  }',
+        '  componentWillReceiveProps (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      doSomething(this.props.bar);',
+        '    }',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
