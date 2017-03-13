@@ -30,6 +30,68 @@ function getErrorMessages(unusedFields) {
 eslintTester.run('no-unused-state', rule, {
   valid: [
     [
+      'function StatelessFnUnaffectedTest(props) {',
+      '  return <SomeComponent foo={props.foo} />;',
+      '};'
+    ].join('\n'),
+    [
+      'var NoStateTest = React.createClass({',
+      '  render: function() {',
+      '    return <SomeComponent />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    [
+      'var NoStateMethodTest = React.createClass({',
+      '  render() {',
+      '    return <SomeComponent />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    [
+      'var GetInitialStateTest = React.createClass({',
+      '  getInitialState: function() {',
+      '    return { foo: 0 };',
+      '  },',
+      '  render: function() {',
+      '    return <SomeComponent foo={this.state.foo} />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    [
+      'var GetInitialStateMethodTest = React.createClass({',
+      '  getInitialState() {',
+      '    return { foo: 0 };',
+      '  },',
+      '  render() {',
+      '    return <SomeComponent foo={this.state.foo} />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    [
+      'var SetStateTest = React.createClass({',
+      '  onFooChange(newFoo) {',
+      '    this.setState({ foo: newFoo });',
+      '  },',
+      '  render() {',
+      '    return <SomeComponent foo={this.state.foo} />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    [
+      'var MultipleSetState = React.createClass({',
+      '  getInitialState() {',
+      '    return { foo: 0 };',
+      '  },',
+      '  update() {',
+      '    this.setState({foo: 1});',
+      '  },',
+      '  render() {',
+      '    return <SomeComponent onClick={this.update} foo={this.state.foo} />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    [
       'class NoStateTest extends React.Component {',
       '  render() {',
       '    return <SomeComponent />;',
@@ -262,6 +324,45 @@ eslintTester.run('no-unused-state', rule, {
   ],
 
   invalid: [
+    {
+      code: [
+        'var UnusedGetInitialStateTest = React.createClass({',
+        '  getInitialState: function() {',
+        '    return { foo: 0 };',
+        '  },',
+        '  render: function() {',
+        '    return <SomeComponent />;',
+        '  }',
+        '})'
+      ].join('\n'),
+      errors: getErrorMessages(['foo'])
+    },
+    {
+      code: [
+        'var UnusedGetInitialStateMethodTest = React.createClass({',
+        '  getInitialState() {',
+        '    return { foo: 0 };',
+        '  },',
+        '  render() {',
+        '    return <SomeComponent />;',
+        '  }',
+        '})'
+      ].join('\n'),
+      errors: getErrorMessages(['foo'])
+    },
+    {
+      code: [
+        'var UnusedSetStateTest = React.createClass({',
+        '  onFooChange(newFoo) {',
+        '    this.setState({ foo: newFoo });',
+        '  },',
+        '  render() {',
+        '    return <SomeComponent />;',
+        '  }',
+        '});'
+      ].join('\n'),
+      errors: getErrorMessages(['foo'])
+    },
     {
       code: [
         'class UnusedCtorStateTest extends React.Component {',
