@@ -1117,6 +1117,20 @@ ruleTester.run('prop-types', rule, {
       parser: 'babel-eslint'
     }, {
       code: [
+        'type Props = {',
+        '  name: string,',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Props;',
+        '  render() {',
+        '    const {name} = this.props;',
+        '    return name;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
         'Card.propTypes = {',
         '  title: PropTypes.string.isRequired,',
         '  children: PropTypes.element.isRequired,',
@@ -1405,6 +1419,25 @@ ruleTester.run('prop-types', rule, {
 
   invalid: [
     {
+      code: [
+        'type Props = {',
+        '  name: string,',
+        '};',
+        'class Hello extends React.Component {',
+        '  foo(props: Props) {}',
+        '  render() {',
+        '    return this.props.name;',
+        '  }',
+        '}'
+      ].join('\n'),
+      errors: [{
+        message: '\'name\' is missing in props validation',
+        line: 7,
+        column: 23,
+        type: 'Identifier'
+      }],
+      parser: 'babel-eslint'
+    }, {
       code: [
         'var Hello = createReactClass({',
         '  render: function() {',
