@@ -459,6 +459,22 @@ ruleTester.run('jsx-indent', rule, {
     ].join('\n'),
     options: [2],
     parserOptions: parserOptions
+  }, {
+    code: [
+      'function foo() {',
+      '  return (',
+      '    <div>',
+      '      {bar &&',
+      '        <Div>',
+      '          <span />',
+      '        </Div>',
+      '      }',
+      '    </div>',
+      '  );',
+      '}'
+    ].join('\n'),
+    options: [2],
+    parserOptions: parserOptions
   }],
 
   invalid: [{
