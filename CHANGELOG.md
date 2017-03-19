@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.10.2] - 2017-03-19
+### Fixed
+* Fix [`jsx-indent`][] indentation calculation with nested JSX ([#1117][])
+
+[6.10.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.10.1...v6.10.2
+[#1117]: https://github.com/yannickcr/eslint-plugin-react/issues/1117
+
 ## [6.10.1] - 2017-03-19
 ### Fixed
 * Fix [`jsx-indent`][] auto fix with tabs ([#1057][] @kentcdodds @webOS101)
@@ -12,10 +19,10 @@ React ([#1073][] @jomasti)
 * Fix component detection that caused a false positive in [`no-multi-comp`][] ([#1088][] @benstepp)
 
 [6.10.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.10.0...v6.10.1
-[#696]: https://github.com/yannickcr/eslint-plugin-react/issues/1057
-[#709]: https://github.com/yannickcr/eslint-plugin-react/issues/1061
-[#887]: https://github.com/yannickcr/eslint-plugin-react/issues/1073
-[#541]: https://github.com/yannickcr/eslint-plugin-react/issues/1088
+[#1057]: https://github.com/yannickcr/eslint-plugin-react/issues/1057
+[#1061]: https://github.com/yannickcr/eslint-plugin-react/issues/1061
+[#1073]: https://github.com/yannickcr/eslint-plugin-react/issues/1073
+[#1088]: https://github.com/yannickcr/eslint-plugin-react/issues/1088
 
 ## [6.10.0] - 2017-02-16
 ### Added
