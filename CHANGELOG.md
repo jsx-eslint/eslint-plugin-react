@@ -3,6 +3,20 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.10.1] - 2017-03-19
+### Fixed
+* Fix [`jsx-indent`][] auto fix with tabs ([#1057][] @kentcdodds @webOS101)
+* Fix [`jsx-indent`][] crash ([#1061][] @iancmyers)
+* Fix [`void-dom-elements-no-children`][] crash and fix it to only checks for a createElement call from
+React ([#1073][] @jomasti)
+* Fix component detection that caused a false positive in [`no-multi-comp`][] ([#1088][] @benstepp)
+
+[6.10.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.10.0...v6.10.1
+[#696]: https://github.com/yannickcr/eslint-plugin-react/issues/1057
+[#709]: https://github.com/yannickcr/eslint-plugin-react/issues/1061
+[#887]: https://github.com/yannickcr/eslint-plugin-react/issues/1073
+[#541]: https://github.com/yannickcr/eslint-plugin-react/issues/1088
+
 ## [6.10.0] - 2017-02-16
 ### Added
 * Add [`forbid-foreign-prop-types`][] rule ([#696][] @iancmyers)
@@ -70,7 +84,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * Fix [`jsx-indent`][] with multiline jsx in ternaries ([#966][])
 * Fix component detection to ignore async functions ([#989][] @taion)
 * Fix [`jsx-curly-spacing`][] autofix to not delete comments ([#648][])
-* FIx auto-enabling of `eslint-plugin-react` in exported configurations ([#984][] @jamischarles)
+* Fix auto-enabling of `eslint-plugin-react` in exported configurations ([#984][] @jamischarles)
 
 ### Changed
 * Update dependencies
