@@ -2,6 +2,8 @@
 
 Limiting the maximum of props on a single line can improve readability.
 
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line. However, fix does not include indentation. Please rerun lint to correct those errors.
+
 ## Rule Details
 
 This rule checks all JSX elements and verifies that the number of props per line do not exceed the maximum allowed. Props are considered to be in a new line if there is a line break between the start of the prop and the end of the previous prop. A spread attribute counts as one prop. This rule is off by default and when on the default maximum of props on one line is `1`.
