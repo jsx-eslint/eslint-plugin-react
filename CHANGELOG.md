@@ -3,6 +3,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [6.10.3] - 2017-03-20
+### Fixed
+* Revert [#1057][] due to issues with [`jsx-indent`][] ([#1117][])
+
+[6.10.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.10.2...v6.10.3
+
 ## [6.10.2] - 2017-03-19
 ### Fixed
 * Fix [`jsx-indent`][] indentation calculation with nested JSX ([#1117][])
