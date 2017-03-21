@@ -1,4 +1,4 @@
-# Prevent void DOM elements (e.g. `<img />`, `<br />`) from receiving children
+# Prevent void DOM elements (e.g. `<img />`, `<br />`) from receiving children (react/void-dom-elements-no-children)
 
 There are some HTML elements that are only self-closing (e.g. `img`, `br`, `hr`). These are collectively known as void DOM elements. If you try to give these children, React will give you a warning like:
 
