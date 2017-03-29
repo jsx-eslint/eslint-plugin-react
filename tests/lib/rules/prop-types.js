@@ -1107,6 +1107,16 @@ ruleTester.run('prop-types', rule, {
       parser: 'babel-eslint'
     }, {
       code: [
+        'type Props = {',
+        '  \'completed?\': boolean,',
+        '};',
+        'const Hello = (props: Props): React.Element => {',
+        '  return <div>{props[\'completed?\']}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
         'Card.propTypes = {',
         '  title: PropTypes.string.isRequired,',
         '  children: PropTypes.element.isRequired,',
