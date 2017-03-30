@@ -41,6 +41,16 @@ var expectedShorthandLastError = {
   message: 'Shorthand props must be listed after all other props',
   type: 'JSXAttribute'
 };
+var expectedReservedFirstError = {
+  message: 'Reserved props must be listed before all other props',
+  type: 'JSXAttribute'
+};
+var expectedEmptyReservedFirstError = {
+  message: 'A customized reserved first list must not be empty'
+};
+var expectedInvalidReservedFirstError = {
+  message: 'A customized reserved first list must only contain a subset of React reserved props. Remove: notReserved'
+};
 var callbacksLastArgs = [{
   callbacksLast: true
 }];
@@ -62,6 +72,22 @@ var noSortAlphabeticallyArgs = [{
 }];
 var sortAlphabeticallyArgs = [{
   noSortAlphabetically: false
+}];
+var reservedFirstAsBooleanArgs = [{
+  reservedFirst: true
+}];
+var reservedFirstAsArrayArgs = [{
+  reservedFirst: ['children', 'dangerouslySetInnerHTML', 'key']
+}];
+var reservedFirstWithNoSortAlphabeticallyArgs = [{
+  noSortAlphabetically: true,
+  reservedFirst: true
+}];
+var reservedFirstAsEmptyArrayArgs = [{
+  reservedFirst: []
+}];
+var reservedFirstAsInvalidArrayArgs = [{
+  reservedFirst: ['notReserved']
 }];
 
 ruleTester.run('jsx-sort-props', rule, {
@@ -93,7 +119,38 @@ ruleTester.run('jsx-sort-props', rule, {
     },
     // noSortAlphabetically
     {code: '<App a b />;', options: noSortAlphabeticallyArgs, parserOptions: parserOptions},
-    {code: '<App b a />;', options: noSortAlphabeticallyArgs, parserOptions: parserOptions}
+    {code: '<App b a />;', options: noSortAlphabeticallyArgs, parserOptions: parserOptions},
+    // reservedFirst
+    {
+      code: '<App children={<App />} key={0} ref="r" a b c />',
+      options: reservedFirstAsBooleanArgs,
+      parserOptions: parserOptions
+    },
+    {
+      code: '<App children={<App />} key={0} ref="r" a b c dangerouslySetInnerHTML={{__html: "EPR"}} />',
+      options: reservedFirstAsBooleanArgs,
+      parserOptions: parserOptions
+    },
+    {
+      code: '<App children={<App />} key={0} a ref="r" />',
+      options: reservedFirstAsArrayArgs,
+      parserOptions: parserOptions
+    },
+    {
+      code: '<App children={<App />} key={0} a dangerouslySetInnerHTML={{__html: "EPR"}} ref="r" />',
+      options: reservedFirstAsArrayArgs,
+      parserOptions: parserOptions
+    },
+    {
+      code: '<App ref="r" key={0} children={<App />} b a c />',
+      options: reservedFirstWithNoSortAlphabeticallyArgs,
+      parserOptions: parserOptions
+    },
+    {
+      code: '<div ref="r" dangerouslySetInnerHTML={{__html: "EPR"}} key={0} children={<App />} b a c />',
+      options: reservedFirstWithNoSortAlphabeticallyArgs,
+      parserOptions: parserOptions
+    }
   ],
   invalid: [
     {code: '<App b a />;', errors: [expectedError], parserOptions: parserOptions},
@@ -132,6 +189,55 @@ ruleTester.run('jsx-sort-props', rule, {
       options: shorthandLastArgs,
       parserOptions: parserOptions
     },
-    {code: '<App b a />;', errors: [expectedError], options: sortAlphabeticallyArgs, parserOptions: parserOptions}
+    {code: '<App b a />;', errors: [expectedError], options: sortAlphabeticallyArgs, parserOptions: parserOptions},
+    // reservedFirst
+    {
+      code: '<App a key={1} />',
+      options: reservedFirstAsBooleanArgs,
+      errors: [expectedReservedFirstError],
+      parserOptions: parserOptions
+    },
+    {
+      code: '<div a dangerouslySetInnerHTML={{__html: "EPR"}} />',
+      options: reservedFirstAsBooleanArgs,
+      errors: [expectedReservedFirstError],
+      parserOptions: parserOptions
+    },
+    {
+      code: '<App ref="r" key={2} b />',
+      options: reservedFirstAsBooleanArgs,
+      errors: [expectedError],
+      parserOptions: parserOptions
+    },
+    {
+      code: '<App dangerouslySetInnerHTML={{__html: "EPR"}} key={2} b />',
+      options: reservedFirstAsBooleanArgs,
+      errors: [expectedReservedFirstError],
+      parserOptions: parserOptions
+    },
+    {
+      code: '<App key={3} children={<App />} />',
+      options: reservedFirstAsArrayArgs,
+      errors: [expectedError],
+      parserOptions: parserOptions
+    },
+    {
+      code: '<App z ref="r" />',
+      options: reservedFirstWithNoSortAlphabeticallyArgs,
+      errors: [expectedReservedFirstError],
+      parserOptions: parserOptions
+    },
+    {
+      code: '<App key={4} />',
+      options: reservedFirstAsEmptyArrayArgs,
+      errors: [expectedEmptyReservedFirstError],
+      parserOptions: parserOptions
+    },
+    {
+      code: '<App key={5} />',
+      options: reservedFirstAsInvalidArrayArgs,
+      errors: [expectedInvalidReservedFirstError],
+      parserOptions: parserOptions
+    }
   ]
 });
