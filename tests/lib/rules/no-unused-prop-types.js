@@ -1461,6 +1461,22 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n'),
       parserOptions: parserOptions
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  componentWillReceiveProps (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      doSomething(this.props.bar);',
+        '    }',
+        '  }',
+        '}',
+
+        'Hello.propTypes = {',
+        '  foo: PropTypes.bool,',
+        '  bar: PropTypes.bool',
+        '};'
+      ].join('\n'),
+      parserOptions: parserOptions
     }
   ],
 
