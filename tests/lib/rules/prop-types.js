@@ -938,6 +938,19 @@ ruleTester.run('prop-types', rule, {
       parser: 'babel-eslint'
     }, {
       code: [
+        'type Note = {text: string, children?: Note[]};',
+        'type Props = {',
+        '  notes: Note[];',
+        '};',
+        'class Hello extends React.Component<void, Props, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.notes[0].text}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
         'type Props = {name: Object;};',
         'class Hello extends React.Component<void, Props, void> {',
         '  render () {',
