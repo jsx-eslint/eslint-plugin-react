@@ -81,6 +81,77 @@ ruleTester.run('no-did-mount-set-state', rule, {
     ].join('\n'),
     parser: 'babel-eslint',
     parserOptions: parserOptions
+  }, {
+    code: [
+      'class Foo extends React.Component {',
+      '  componentDidMount() {',
+      '    this._doNothing();',
+      '  }',
+      '  _doNothing() {}',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class Foo extends React.Component {',
+      '  componentDidMount() {',
+      '    if (false) {}',
+      '  }',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class Foo extends React.Component {',
+      '  componentDidMount() {',
+      '    this._resetState();',
+      '  }',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: ['allow-in-func', 'allow-via-methods'],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'var Foo = React.createClass({',
+      '  componentDidMount() {',
+      '    this._doNothing();',
+      '  },',
+      '  _doNothing() {}',
+      '});'
+    ].join('\n'),
+    parserOptions: parserOptions
+  },
+  {
+    code: [
+      'var Foo = React.createClass({',
+      '  componentDidMount() {',
+      '    if (false) {}',
+      '  },',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '});'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'var Foo = React.createClass({',
+      '  componentDidMount() {',
+      '    this._resetState();',
+      '  },',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: ['allow-in-func', 'allow-via-methods'],
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -233,6 +304,75 @@ ruleTester.run('no-did-mount-set-state', rule, {
     options: ['disallow-in-func'],
     errors: [{
       message: 'Do not use setState in componentDidMount'
+    }]
+  }, {
+    code: [
+      'class Foo extends React.Component {',
+      '  componentDidMount() {',
+      '    this._resetState();',
+      '  }',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: ['allow-in-func', 'disallow-via-methods'],
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Do not use `setState` in other methods called in `componentDidMount`'
+    }]
+  }, {
+    code: [
+      'class Foo extends React.Component {',
+      '  componentDidMount() {',
+      '    if (true) {',
+      '      this._resetState();',
+      '    } else {',
+      '    }',
+      '  }',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: ['allow-in-func', 'disallow-via-methods'],
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Do not use `setState` in other methods called in `componentDidMount`'
+    }]
+  }, {
+    code: [
+      'var Foo = React.createClass({',
+      '  componentDidMount() {',
+      '    this._resetState();',
+      '  },',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: ['allow-in-func', 'disallow-via-methods'],
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Do not use `setState` in other methods called in `componentDidMount`'
+    }]
+  }, {
+    code: [
+      'var Foo = React.createClass({',
+      '  componentDidMount() {',
+      '    if (true) {',
+      '      this._resetState();',
+      '    }',
+      '  },',
+      '  _resetState() {',
+      '    this.setState({foo: 123});',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: ['allow-in-func', 'disallow-via-methods'],
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Do not use `setState` in other methods called in `componentDidMount`'
     }]
   }]
 });
