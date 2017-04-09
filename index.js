@@ -124,7 +124,6 @@ module.exports = {
         'react/no-danger-with-children': 2,
         'react/no-deprecated': 2,
         'react/no-direct-mutation-state': 2,
-        'react/no-mutation-props': 2,
         'react/no-find-dom-node': 2,
         'react/no-is-mounted': 2,
         'react/no-render-return-value': 2,

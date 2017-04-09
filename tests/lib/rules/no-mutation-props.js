@@ -76,7 +76,7 @@ ruleTester.run('no-mutation-props', rule, {
     ].join('\n'),
     parserOptions: parserOptions,
     errors: [{
-      message: 'Do not mutate props.'
+      message: 'A component must never modify its own props.'
     }]
   }, {
     code: [
@@ -89,7 +89,7 @@ ruleTester.run('no-mutation-props', rule, {
     ].join('\n'),
     parserOptions: parserOptions,
     errors: [{
-      message: 'Do not mutate props.'
+      message: 'A component must never modify its own props.'
     }]
   }, {
     code: [
@@ -102,7 +102,7 @@ ruleTester.run('no-mutation-props', rule, {
     ].join('\n'),
     parserOptions: parserOptions,
     errors: [{
-      message: 'Do not mutate props.'
+      message: 'A component must never modify its own props.'
     }]
   }, {
     code: [
@@ -116,11 +116,11 @@ ruleTester.run('no-mutation-props', rule, {
     ].join('\n'),
     parserOptions: parserOptions,
     errors: [{
-      message: 'Do not mutate props.',
+      message: 'A component must never modify its own props.',
       line: 3,
       column: 5
     }, {
-      message: 'Do not mutate props.',
+      message: 'A component must never modify its own props.',
       line: 4,
       column: 5
     }]
@@ -139,7 +139,7 @@ ruleTester.run('no-mutation-props', rule, {
       ].join('\n'),
       parserOptions: parserOptions,
       errors: [{
-        message: 'Do not mutate props.'
+        message: 'A component must never modify its own props.'
       }]
     }*/
   ]
