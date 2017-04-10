@@ -1,6 +1,6 @@
 # Forbid certain props on Components (forbid-component-props)
 
-By default this rule prevents passing of [props that add lots of complexity](https://medium.com/brigade-engineering/don-t-pass-css-classes-between-components-e9f7ab192785) (`className`, `style`) to Components. This rule only applies to Components (e.g. `<Foo />`) and not DOM nodes (e.g. `<div />`). The list of forbidden props can be customized with the `forbid` option.
+By default this rule prevents passing of [props that add lots of complexity](https://medium.com/brigade-engineering/don-t-pass-css-classes-between-components-e9f7ab192785) (`className`, `style`) to Components. This rule only applies to Components (e.g. `<Foo />`) and not DOM nodes (e.g. `<div />`). The list of forbidden props can be customized with the `forbid` or `forbidPatterns` options.
 
 ## Rule Details
 
@@ -35,10 +35,22 @@ The following patterns are not considered warnings:
 
 ```js
 ...
-"forbid-component-props": [<enabled>, { "forbid": [<string>] }]
+"forbid-component-props": [<enabled>, { "forbid": [<string>], "forbidPatterns": [<string>], checkDomNodes: <boolean>, ignoreComponents: <boolean> }]
 ...
 ```
 
 ### `forbid`
 
 An array of strings, with the names of props that are forbidden. The default value of this option is `['className', 'style']`.
+
+### `forbidPatterns`
+
+An array of strings, with the patterns of props that are forbidden; you can use `*` as a wildcard. e.g: `['data-*', '*-foo-*']`
+
+### `checkDomNodes`
+
+Whether to check forbidden props on DOM nodes (div, input, span, etc...). Defaults to false.
+
+### `ignoreComponents`
+
+Whether to skip checking forbidden props on Components (div, input, span, etc...). Defaults to false.
