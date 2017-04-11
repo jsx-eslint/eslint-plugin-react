@@ -98,6 +98,11 @@ ruleTester.run('no-deprecated', rule, {
     errors: [{
       message: 'React.createClass is deprecated since React 15.5.0, use the npm module create-react-class instead'
     }]
+  }, {
+    code: 'React.PropTypes',
+    errors: [{
+      message: 'React.PropTypes is deprecated since React 15.5.0, use the npm module prop-types instead'
+    }]
   }]
 
 });
