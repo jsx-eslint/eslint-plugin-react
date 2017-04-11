@@ -23,7 +23,6 @@ ruleTester.run('no-deprecated', rule, {
 
   valid: [
     // Not deprecated
-    'var MyClass = React.createClass({});',
     'var element = React.createElement(\'p\', {}, null);',
     'var clone = React.cloneElement(element);',
     'ReactDOM.render(element, container);',
@@ -93,6 +92,11 @@ ruleTester.run('no-deprecated', rule, {
         'React.renderToStaticMarkup is deprecated since React 0.14.0, ' +
         'use ReactDOMServer.renderToStaticMarkup instead'
       )
+    }]
+  }, {
+    code: 'React.createClass({});',
+    errors: [{
+      message: 'React.createClass is deprecated since React 15.5.0, use the npm module create-react-class instead'
     }]
   }]
 
