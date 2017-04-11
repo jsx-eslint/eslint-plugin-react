@@ -16,6 +16,12 @@ React.findDOMNode(this.refs.foo);
 React.renderToString(<MyComponent />);
 
 React.renderToStaticMarkup(<MyComponent />);
+
+React.createClass({ /* Class object */ });
+
+const propTypes = {
+  foo: React.PropTypes.bar,
+};
 ```
 
 The following patterns are not considered warnings:
