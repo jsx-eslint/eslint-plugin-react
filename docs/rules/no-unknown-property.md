@@ -26,7 +26,7 @@ var Hello = <div className="hello">Hello World</div>;
 
 ```js
 ...
-"no-unknown-property": [<enabled>, { ignore: <ignore> }]
+"react/no-unknown-property": [<enabled>, { ignore: <ignore> }]
 ...
 ```
 

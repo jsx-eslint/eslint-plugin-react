@@ -54,7 +54,7 @@ class Foo extends React.Component {
 
 ```js
 ...
-"prefer-stateless-function": [<enabled>, { "ignorePureComponents": <ignorePureComponents> }]
+"react/prefer-stateless-function": [<enabled>, { "ignorePureComponents": <ignorePureComponents> }]
 ...
 ```
 

@@ -29,7 +29,7 @@ var Hello = React.createClass({
 
 ```js
 ...
-"display-name": [<enabled>, { "ignoreTranspilerName": <boolean> }]
+"react/display-name": [<enabled>, { "ignoreTranspilerName": <boolean> }]
 ...
 ```
 

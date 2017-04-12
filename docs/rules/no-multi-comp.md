@@ -36,7 +36,7 @@ var HelloJohn = React.createClass({
 
 ```js
 ...
-"no-multi-comp": [<enabled>, { "ignoreStateless": <boolean> }]
+"react/no-multi-comp": [<enabled>, { "ignoreStateless": <boolean> }]
 ...
 ```
 

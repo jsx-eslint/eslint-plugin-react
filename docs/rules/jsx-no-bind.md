@@ -21,7 +21,7 @@ The following patterns are not considered warnings:
 ## Rule Options
 
 ```js
-"jsx-no-bind": [<enabled>, {
+"react/jsx-no-bind": [<enabled>, {
   "ignoreRefs": <boolean> || false,
   "allowArrowFunctions": <boolean> || false,
   "allowBind": <boolean> || false

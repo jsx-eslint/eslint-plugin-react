@@ -28,7 +28,7 @@ The following patterns are not considered warnings:
 
 ```js
 ...
-"jsx-handler-names": [<enabled>, {
+"react/jsx-handler-names": [<enabled>, {
   "eventHandlerPrefix": <eventHandlerPrefix>,
   "eventHandlerPropPrefix": <eventHandlerPropPrefix>
 }]

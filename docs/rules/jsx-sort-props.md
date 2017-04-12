@@ -23,7 +23,7 @@ The following patterns are considered okay and do not cause warnings:
 
 ```js
 ...
-"jsx-sort-props": [<enabled>, {
+"react/jsx-sort-props": [<enabled>, {
   "callbacksLast": <boolean>,
   "shorthandFirst": <boolean>,
   "shorthandLast": <boolean>,

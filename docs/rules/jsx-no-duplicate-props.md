@@ -20,7 +20,7 @@ The following patterns are not considered warnings:
 
 ```js
 ...
-"jsx-no-duplicate-props": [<enabled>, { "ignoreCase": <boolean> }]
+"react/jsx-no-duplicate-props": [<enabled>, { "ignoreCase": <boolean> }]
 ...
 ```
 
