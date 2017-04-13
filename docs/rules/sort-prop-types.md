@@ -76,7 +76,7 @@ class Component extends React.Component {
 
 ```js
 ...
-"sort-prop-types": [<enabled>, {
+"react/sort-prop-types": [<enabled>, {
   "callbacksLast": <boolean>,
   "ignoreCase": <boolean>,
   "requiredFirst": <boolean>,

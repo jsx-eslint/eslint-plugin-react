@@ -10,7 +10,7 @@ This rule checks all JSX elements and `React.createElement` calls and verifies t
 
 ```js
 ...
-"forbid-elements": [<enabled>, { "forbid": [<string|object>] }]
+"react/forbid-elements": [<enabled>, { "forbid": [<string|object>] }]
 ...
 ```
 

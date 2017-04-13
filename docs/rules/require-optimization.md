@@ -52,7 +52,7 @@ React.createClass({
 
 ```js
 ...
-"require-optimization": [<enabled>, { allowDecorators: [<allowDecorator>] }]
+"react/require-optimization": [<enabled>, { allowDecorators: [<allowDecorator>] }]
 ...
 ```
 
@@ -76,6 +76,6 @@ class Hello extends React.Component {}
 
 ```js
 ...
-"require-optimization": [2, {allowDecorators: ['customDecorators']}]
+"react/require-optimization": [2, {allowDecorators: ['customDecorators']}]
 ...
 ```

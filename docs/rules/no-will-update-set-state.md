@@ -51,7 +51,7 @@ var Hello = React.createClass({
 
 ```js
 ...
-"no-will-update-set-state": [<enabled>, <mode>]
+"react/no-will-update-set-state": [<enabled>, <mode>]
 ...
 ```
 

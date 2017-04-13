@@ -35,7 +35,7 @@ The following patterns are not considered warnings:
 
 ```js
 ...
-"forbid-component-props": [<enabled>, { "forbid": [<string>] }]
+"react/forbid-component-props": [<enabled>, { "forbid": [<string>] }]
 ...
 ```
 

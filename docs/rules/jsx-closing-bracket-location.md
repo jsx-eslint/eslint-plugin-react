@@ -39,14 +39,14 @@ There are two ways to configure this rule.
 The first form is a string shortcut corresponding to the `location` values specified below. If omitted, it defaults to `"tag-aligned"`.
 
 ```js
-"jsx-closing-bracket-location": <enabled> // -> [<enabled>, "tag-aligned"]
-"jsx-closing-bracket-location": [<enabled>, "<location>"]
+"react/jsx-closing-bracket-location": <enabled> // -> [<enabled>, "tag-aligned"]
+"react/jsx-closing-bracket-location": [<enabled>, "<location>"]
 ```
 
 The second form allows you to distinguish between non-empty and self-closing tags. Both properties are optional, and both default to `"tag-aligned"`. You can also disable the rule for one particular type of tag by setting the value to `false`.
 
 ```js
-"jsx-closing-bracket-location": [<enabled>, {
+"react/jsx-closing-bracket-location": [<enabled>, {
   "nonEmpty": "<location>" || false,
   "selfClosing": "<location>" || false
 }]

@@ -40,7 +40,7 @@ The following patterns are not considered warnings:
 
 ```js
 ...
-"jsx-pascal-case": [<enabled>, { allowAllCaps: <allowAllCaps>, ignore: <ignore> }]
+"react/jsx-pascal-case": [<enabled>, { allowAllCaps: <allowAllCaps>, ignore: <ignore> }]
 ...
 ```
 

@@ -32,7 +32,7 @@ The rule can take one argument to select types of tags, which should be self-clo
 
 ```js
 ...
-"self-closing-comp": ["error", {
+"react/self-closing-comp": ["error", {
   "component": true,
   "html": true
 }]
