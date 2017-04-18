@@ -374,6 +374,28 @@ ruleTester.run('sort-prop-types', rule, {
     }]
   }, {
     code: [
+      'const propTypes = {',
+      '  muiTheme: PropTypes.object.isRequired,',
+      '  className: PropTypes.string,',
+      '};',
+      '',
+      'const TextFieldLabel = (props) => {',
+      '  return (',
+      '    <div />',
+      '  );',
+      '};',
+      '',
+      'TextFieldLabel.propTypes = propTypes;'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 4,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
       'var First = React.createClass({',
       '  propTypes: {',
       '    Z: React.PropTypes.any,',
