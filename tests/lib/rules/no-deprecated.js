@@ -31,7 +31,9 @@ ruleTester.run('no-deprecated', rule, {
     'ReactDOMServer.renderToString(element);',
     'ReactDOMServer.renderToStaticMarkup(element);',
     // Deprecated in a later version
-    {code: 'React.renderComponent()', settings: {react: {version: '0.11.0'}}}
+    {code: 'React.renderComponent()', settings: {react: {version: '0.11.0'}}},
+    {code: 'React.createClass()', settings: {react: {version: '15.4.0'}}},
+    {code: 'React.PropTypes', settings: {react: {version: '15.4.0'}}}
   ],
 
   invalid: [{
@@ -97,6 +99,12 @@ ruleTester.run('no-deprecated', rule, {
     code: 'React.createClass({});',
     errors: [{
       message: 'React.createClass is deprecated since React 15.5.0, use the npm module create-react-class instead'
+    }]
+  }, {
+    code: 'Foo.createClass({});',
+    settings: {react: {pragma: 'Foo'}},
+    errors: [{
+      message: 'Foo.createClass is deprecated since React 15.5.0, use the npm module create-react-class instead'
     }]
   }, {
     code: 'React.PropTypes',
