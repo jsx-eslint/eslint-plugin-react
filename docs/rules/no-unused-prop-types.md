@@ -20,7 +20,7 @@ var Hello = React.createClass({
   propTypes: {
     firstname: React.PropTypes.string.isRequired,
     middlename: React.PropTypes.string.isRequired, // middlename is never used below
-	lastname: React.PropTypes.string.isRequired
+    lastname: React.PropTypes.string.isRequired
   },
   render: function() {
     return <div>Hello {this.props.firstname} {this.props.lastname}</div>;

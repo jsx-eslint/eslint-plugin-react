@@ -20,6 +20,7 @@ var allRules = {
   'no-did-update-set-state': require('./lib/rules/no-did-update-set-state'),
   'no-render-return-value': require('./lib/rules/no-render-return-value'),
   'no-unescaped-entities': require('./lib/rules/no-unescaped-entities'),
+  'no-will-update-set-state': require('./lib/rules/no-will-update-set-state'),
   'react-in-jsx-scope': require('./lib/rules/react-in-jsx-scope'),
   'jsx-uses-vars': require('./lib/rules/jsx-uses-vars'),
   'jsx-handler-names': require('./lib/rules/jsx-handler-names'),

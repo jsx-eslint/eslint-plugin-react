@@ -33,7 +33,7 @@ It takes an option as the second parameter which can be `"tab"` for tab-based in
 
 ```js
 ...
-"jsx-indent-props": [<enabled>, 'tab'|<number>]
+"react/jsx-indent-props": [<enabled>, 'tab'|<number>]
 ...
 ```
 

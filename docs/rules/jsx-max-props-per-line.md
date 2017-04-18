@@ -35,7 +35,7 @@ The following patterns are not considered warnings:
 
 ```js
 ...
-"jsx-max-props-per-line": [<enabled>, { "maximum": <number>, "when": <string> }]
+"react/jsx-max-props-per-line": [<enabled>, { "maximum": <number>, "when": <string> }]
 ...
 ```
 

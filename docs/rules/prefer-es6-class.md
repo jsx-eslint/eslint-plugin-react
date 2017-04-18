@@ -6,7 +6,7 @@ React offers you two way to create traditional components: using the ES5 `React.
 
 ```js
 ...
-"prefer-es6-class": [<enabled>, <mode>]
+"react/prefer-es6-class": [<enabled>, <mode>]
 ...
 ```
 

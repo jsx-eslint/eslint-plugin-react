@@ -281,6 +281,40 @@ ruleTester.run('prefer-stateless-function', rule, {
         '};'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // Uses a decorator
+      code: [
+        '@foo',
+        'class Foo extends React.Component {',
+        '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Uses a called decorator
+      code: [
+        '@foo("bar")',
+        'class Foo extends React.Component {',
+        '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Uses multiple decorators
+      code: [
+        '@foo',
+        '@bar()',
+        'class Foo extends React.Component {',
+        '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 

@@ -1,6 +1,6 @@
-# Prevent usage of setState in componentDidUpdate (no-did-update-set-state)
+# Prevent usage of setState in componentWillUpdate (no-will-update-set-state)
 
-Updating the state after a component update will trigger a second `render()` call and can lead to property/layout thrashing.
+Updating the state during the componentWillUpdate step can lead to indeterminate component state and is not allowed.
 
 ## Rule Details
 
@@ -8,7 +8,7 @@ The following patterns are considered warnings:
 
 ```jsx
 var Hello = React.createClass({
-  componentDidUpdate: function() {
+  componentWillUpdate: function() {
      this.setState({
         name: this.props.name.toUpperCase()
       });
@@ -23,8 +23,8 @@ The following patterns are not considered warnings:
 
 ```jsx
 var Hello = React.createClass({
-  componentDidUpdate: function() {
-    this.props.onUpdate();
+  componentWillUpdate: function() {
+    this.props.prepareHandler();
   },
   render: function() {
     return <div>Hello {this.props.name}</div>;
@@ -34,8 +34,8 @@ var Hello = React.createClass({
 
 ```jsx
 var Hello = React.createClass({
-  componentDidUpdate: function() {
-    this.onUpdate(function callback(newName) {
+  componentWillUpdate: function() {
+    this.prepareHandler(function callback(newName) {
       this.setState({
         name: newName
       });
@@ -51,13 +51,13 @@ var Hello = React.createClass({
 
 ```js
 ...
-"react/no-did-update-set-state": [<enabled>, <mode>]
+"react/no-will-update-set-state": [<enabled>, <mode>]
 ...
 ```
 
 ### `disallow-in-func` mode
 
-By default this rule forbids any call to `this.setState` in `componentDidUpdate` outside of functions. The `disallow-in-func` mode makes this rule more strict by disallowing calls to `this.setState` even within functions.
+By default this rule forbids any call to `this.setState` in `componentWillUpdate` outside of functions. The `disallow-in-func` mode makes this rule more strict by disallowing calls to `this.setState` even within functions.
 
 The following patterns are considered warnings:
 
@@ -77,7 +77,7 @@ var Hello = React.createClass({
 ```jsx
 var Hello = React.createClass({
   componentDidUpdate: function() {
-    this.onUpdate(function callback(newName) {
+    this.prepareHandler(function callback(newName) {
       this.setState({
         name: newName
       });

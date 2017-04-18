@@ -53,7 +53,7 @@ var Hello = React.createClass({
 
 ```js
 ...
-"no-did-mount-set-state": [<enabled>, <mode>]
+"react/no-did-mount-set-state": [<enabled>, <mode>]
 ...
 ```
 
