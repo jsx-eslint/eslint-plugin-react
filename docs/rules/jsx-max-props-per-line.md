@@ -84,4 +84,4 @@ The following patterns are not considered warnings:
 
 ## When not to use
 
-If you are not using JSX then you can disable this rule.
+If you are not using JSX or you already use the [`max-len` rule](http://eslint.org/docs/rules/max-len) then you can disable this rule.
