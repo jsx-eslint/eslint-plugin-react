@@ -2808,3 +2808,4 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`jsx-curly-newline`]: docs/rules/jsx-curly-newline.md
 [`jsx-no-useless-fragment`]: docs/rules/jsx-no-useless-fragment.md
 [`jsx-no-script-url`]: docs/rules/jsx-no-script-url.md
+[`no-adjacent-inline-elements`]: docs/rules/no-adjacent-inline-elements.md
