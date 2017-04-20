@@ -111,6 +111,59 @@ ruleTester.run('no-deprecated', rule, {
     errors: [{
       message: 'React.PropTypes is deprecated since React 15.5.0, use the npm module prop-types instead'
     }]
+  }, {
+    code: 'var {createClass} = require(\'react\');',
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'React.createClass is deprecated since React 15.5.0, use the npm module create-react-class instead'
+    }]
+  }, {
+    code: 'var {createClass, PropTypes} = require(\'react\');',
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'React.createClass is deprecated since React 15.5.0, use the npm module create-react-class instead'
+    }, {
+      message: 'React.PropTypes is deprecated since React 15.5.0, use the npm module prop-types instead'
+    }]
+  }, {
+    code: 'import {createClass} from \'react\';',
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'React.createClass is deprecated since React 15.5.0, use the npm module create-react-class instead'
+    }]
+  }, {
+    code: 'import {createClass, PropTypes} from \'react\';',
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'React.createClass is deprecated since React 15.5.0, use the npm module create-react-class instead'
+    }, {
+      message: 'React.PropTypes is deprecated since React 15.5.0, use the npm module prop-types instead'
+    }]
+  }, {
+    code: [
+      'import React from \'react\';',
+      'const {createClass, PropTypes} = React;'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'React.createClass is deprecated since React 15.5.0, use the npm module create-react-class instead'
+    }, {
+      message: 'React.PropTypes is deprecated since React 15.5.0, use the npm module prop-types instead'
+    }]
+  }, {
+    code: 'import {printDOM} from \'react-addons-perf\';',
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'ReactPerf.printDOM is deprecated since React 15.0.0, use ReactPerf.printOperations instead'
+    }]
+  }, {
+    code: [
+      'import ReactPerf from \'react-addons-perf\';',
+      'const {printDOM} = ReactPerf;'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'ReactPerf.printDOM is deprecated since React 15.0.0, use ReactPerf.printOperations instead'
+    }]
   }]
-
 });
