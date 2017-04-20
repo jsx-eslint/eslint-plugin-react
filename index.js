@@ -26,6 +26,7 @@ var allRules = {
   'jsx-handler-names': require('./lib/rules/jsx-handler-names'),
   'jsx-pascal-case': require('./lib/rules/jsx-pascal-case'),
   'jsx-no-bind': require('./lib/rules/jsx-no-bind'),
+  'jsx-no-new': require('./lib/rules/jsx-no-new'),
   'jsx-no-undef': require('./lib/rules/jsx-no-undef'),
   'no-unknown-property': require('./lib/rules/no-unknown-property'),
   'jsx-curly-spacing': require('./lib/rules/jsx-curly-spacing'),
