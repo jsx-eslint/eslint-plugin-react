@@ -34,8 +34,11 @@ var Hello = React.createClass({
     var component = this.hello;
     // ...do something with component
   },
+  helloRef(c) {
+    this.hello = c;
+  },
   render() {
-    return <div ref={(c) => { this.hello = c; }}>Hello, world.</div>;
+    return <div ref={this.helloRef}>Hello, world.</div>;
   }
 });
 ```
