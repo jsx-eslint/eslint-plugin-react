@@ -33,7 +33,7 @@ ruleTester.run('no-is-mounted', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    return <div>Hello</div>;',
       '  }',
@@ -42,7 +42,7 @@ ruleTester.run('no-is-mounted', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidUpdate: function() {',
       '    someNonMemberFunction(arg);',
       '    this.someFunc = this.isMounted;',
@@ -57,7 +57,7 @@ ruleTester.run('no-is-mounted', rule, {
 
   invalid: [{
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidUpdate: function() {',
       '    if (!this.isMounted()) {',
       '      return;',
@@ -74,7 +74,7 @@ ruleTester.run('no-is-mounted', rule, {
     }]
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  someMethod: function() {',
       '    if (!this.isMounted()) {',
       '      return;',

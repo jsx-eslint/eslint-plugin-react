@@ -213,7 +213,7 @@ ruleTester.run('prefer-stateless-function', rule, {
     }, {
       // Can return null (ES5, React 0.14.0)
       code: [
-        'var Foo = React.createClass({',
+        'var Foo = createReactClass({',
         '  render: function() {',
         '    if (!this.props.foo) {',
         '      return null;',
@@ -490,7 +490,7 @@ ruleTester.run('prefer-stateless-function', rule, {
     }, {
       // Can return null (ES5)
       code: [
-        'var Foo = React.createClass({',
+        'var Foo = createReactClass({',
         '  render: function() {',
         '    if (!this.props.foo) {',
         '      return null;',

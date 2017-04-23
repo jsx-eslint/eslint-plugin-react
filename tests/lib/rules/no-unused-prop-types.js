@@ -37,7 +37,7 @@ ruleTester.run('no-unused-prop-types', rule, {
   valid: [
     {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  propTypes: {',
         '    name: React.PropTypes.string.isRequired',
         '  },',
@@ -49,7 +49,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  propTypes: {',
         '    name: React.PropTypes.object.isRequired',
         '  },',
@@ -61,7 +61,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    return <div>Hello World</div>;',
         '  }',
@@ -70,7 +70,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    var props = this.props;',
         '    return <div>Hello World</div>;',
@@ -80,7 +80,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    var propName = "foo";',
         '    return <div>Hello World {this.props[propName]}</div>;',
@@ -90,7 +90,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  propTypes: externalPropTypes,',
         '  render: function() {',
         '    return <div>Hello {this.props.name}</div>;',
@@ -100,7 +100,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  propTypes: externalPropTypes.mySharedPropTypes,',
         '  render: function() {',
         '    return <div>Hello {this.props.name}</div>;',
@@ -132,7 +132,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  propTypes: {',
         '    name: React.PropTypes.object.isRequired',
         '  },',
@@ -467,7 +467,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var TestComp1 = React.createClass({',
+        'var TestComp1 = createReactClass({',
         '  propTypes: {',
         '    size: React.PropTypes.string',
         '  },',
@@ -510,7 +510,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: 'babel-eslint'
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  propTypes: {',
         '    router: React.PropTypes.func',
         '  },',
@@ -523,7 +523,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  propTypes: {',
         '    firstname: CustomValidator.string',
         '  },',
@@ -536,7 +536,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  propTypes: {',
         '    outer: CustomValidator.shape({',
         '      inner: CustomValidator.map',
@@ -551,7 +551,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  propTypes: {',
         '    outer: React.PropTypes.shape({',
         '      inner: CustomValidator.string',
@@ -566,7 +566,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  propTypes: {',
         '    outer: CustomValidator.shape({',
         '      inner: React.PropTypes.string',
@@ -581,7 +581,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  propTypes: {',
         '    name: React.PropTypes.string',
         '  },',
@@ -614,14 +614,14 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: 'babel-eslint'
     }, {
       code: [
-        'const SomeComponent = React.createClass({',
+        'const SomeComponent = createReactClass({',
         '  propTypes: SomeOtherComponent.propTypes',
         '});'
       ].join('\n'),
       parser: 'babel-eslint'
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    let { a, ...b } = obj;',
         '    let c = { ...d };',
@@ -728,7 +728,7 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       code: [
         'function HelloComponent() {',
-        '  var Hello = React.createClass({',
+        '  var Hello = createReactClass({',
         '    propTypes: { name: React.PropTypes.string },',
         '    render: function() {',
         '      return <div>Hello {this.props.name}</div>;',
@@ -812,7 +812,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: 'babel-eslint'
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    var {...other} = this.props;',
         '    return (',
@@ -1484,7 +1484,7 @@ ruleTester.run('no-unused-prop-types', rule, {
   invalid: [
     {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  propTypes: {',
         '    unused: PropTypes.string',
         '  },',
@@ -1503,7 +1503,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       }]
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  propTypes: {',
         '    name: PropTypes.string',
         '  },',
@@ -1573,7 +1573,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       }]
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  propTypes: {',
         '    unused: React.PropTypes.string.isRequired,',
         '    anotherunused: React.PropTypes.string.isRequired',
@@ -1582,7 +1582,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>Hello {this.props.name} and {this.props.propWithoutTypeDefinition}</div>;',
         '  }',
         '});',
-        'var Hello2 = React.createClass({',
+        'var Hello2 = createReactClass({',
         '  render: function() {',
         '    return <div>Hello {this.props.name}</div>;',
         '  }',
@@ -1923,7 +1923,7 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       code: [
         'function HelloComponent() {',
-        '  var Hello = React.createClass({',
+        '  var Hello = createReactClass({',
         '    propTypes: {unused: PropTypes.string},',
         '    render: function() {',
         '      return <div>Hello {this.props.name}</div>;',
@@ -1967,7 +1967,7 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       code: [
         'for (var key in foo) {',
-        '  var Hello = React.createClass({',
+        '  var Hello = createReactClass({',
         '    propTypes: {unused: PropTypes.string},',
         '    render: function() {',
         '      return <div>Hello {this.props.name}</div>;',
@@ -2439,7 +2439,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       }]
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  propTypes: {',
         '    something: PropTypes.bool',
         '  },',

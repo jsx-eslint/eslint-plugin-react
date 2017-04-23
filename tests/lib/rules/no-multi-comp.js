@@ -31,7 +31,7 @@ ruleTester.run('no-multi-comp', rule, {
   valid: [{
     code: [
       'var Hello = require(\'./components/Hello\');',
-      'var HelloJohn = React.createClass({',
+      'var HelloJohn = createReactClass({',
       '  render: function() {',
       '    return <Hello name="John" />;',
       '  }',
@@ -49,7 +49,7 @@ ruleTester.run('no-multi-comp', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Heading = React.createClass({',
+      'var Heading = createReactClass({',
       '  render: function() {',
       '    return (',
       '      <div>',
@@ -109,12 +109,12 @@ ruleTester.run('no-multi-comp', rule, {
 
   invalid: [{
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
       '});',
-      'var HelloJohn = React.createClass({',
+      'var HelloJohn = createReactClass({',
       '  render: function() {',
       '    return <Hello name="John" />;',
       '  }',

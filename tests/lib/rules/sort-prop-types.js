@@ -31,7 +31,7 @@ ruleTester.run('sort-prop-types', rule, {
 
   valid: [{
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  render: function() {',
       '    return <div />;',
       '  }',
@@ -40,7 +40,7 @@ ruleTester.run('sort-prop-types', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: externalPropTypes,',
       '  render: function() {',
       '    return <div />;',
@@ -50,7 +50,7 @@ ruleTester.run('sort-prop-types', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    A: React.PropTypes.any,',
       '    Z: React.PropTypes.string,',
@@ -65,7 +65,7 @@ ruleTester.run('sort-prop-types', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.any,',
       '    A: React.PropTypes.any,',
@@ -83,7 +83,7 @@ ruleTester.run('sort-prop-types', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.any,',
       '    z: React.PropTypes.string',
@@ -92,7 +92,7 @@ ruleTester.run('sort-prop-types', rule, {
       '    return <div />;',
       '  }',
       '});',
-      'var Second = React.createClass({',
+      'var Second = createReactClass({',
       '  propTypes: {',
       '    AA: React.PropTypes.any,',
       '    ZZ: React.PropTypes.string',
@@ -182,7 +182,7 @@ ruleTester.run('sort-prop-types', rule, {
     parser: 'babel-eslint'
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    let { a, ...b } = obj;',
       '    let c = { ...d };',
@@ -193,7 +193,7 @@ ruleTester.run('sort-prop-types', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    barRequired: React.PropTypes.func.isRequired,',
       '    onBar: React.PropTypes.func,',
@@ -207,7 +207,7 @@ ruleTester.run('sort-prop-types', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.any,',
       '    z: React.PropTypes.string,',
@@ -336,7 +336,7 @@ ruleTester.run('sort-prop-types', rule, {
 
   invalid: [{
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    z: React.PropTypes.string,',
       '    a: React.PropTypes.any',
@@ -355,7 +355,7 @@ ruleTester.run('sort-prop-types', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    z: React.PropTypes.any,',
       '    Z: React.PropTypes.any',
@@ -374,7 +374,7 @@ ruleTester.run('sort-prop-types', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    Z: React.PropTypes.any,',
       '    a: React.PropTypes.any',
@@ -396,7 +396,7 @@ ruleTester.run('sort-prop-types', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.any,',
       '    A: React.PropTypes.any,',
@@ -412,7 +412,7 @@ ruleTester.run('sort-prop-types', rule, {
     errors: 2
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.any,',
       '    Zz: React.PropTypes.string',
@@ -421,7 +421,7 @@ ruleTester.run('sort-prop-types', rule, {
       '    return <div />;',
       '  }',
       '});',
-      'var Second = React.createClass({',
+      'var Second = createReactClass({',
       '  propTypes: {',
       '    aAA: React.PropTypes.any,',
       '    ZZ: React.PropTypes.string',
@@ -474,7 +474,7 @@ ruleTester.run('sort-prop-types', rule, {
     errors: 2
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.any,',
       '    z: React.PropTypes.string,',
@@ -547,7 +547,7 @@ ruleTester.run('sort-prop-types', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.any,',
       '    onBar: React.PropTypes.func,',
@@ -571,7 +571,7 @@ ruleTester.run('sort-prop-types', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    fooRequired: React.PropTypes.string.isRequired,',
       '    barRequired: React.PropTypes.string.isRequired,',
@@ -594,7 +594,7 @@ ruleTester.run('sort-prop-types', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.any,',
       '    barRequired: React.PropTypes.string.isRequired,',

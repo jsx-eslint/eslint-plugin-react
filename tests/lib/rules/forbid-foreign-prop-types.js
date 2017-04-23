@@ -63,7 +63,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
 
   invalid: [{
     code: [
-      'var Foo = React.createClass({',
+      'var Foo = createReactClass({',
       '  propTypes: Bar.propTypes,',
       '  render: function() {',
       '    return <Foo className="bar" />;',
@@ -78,7 +78,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
   },
   {
     code: [
-      'var Foo = React.createClass({',
+      'var Foo = createReactClass({',
       '  propTypes: Bar["propTypes"],',
       '  render: function() {',
       '    return <Foo className="bar" />;',
@@ -94,7 +94,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
   {
     code: [
       'var { propTypes } = SomeComponent',
-      'var Foo = React.createClass({',
+      'var Foo = createReactClass({',
       '  propTypes,',
       '  render: function() {',
       '    return <Foo className="bar" />;',
@@ -110,7 +110,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
   {
     code: [
       'var { propTypes: things, ...foo } = SomeComponent',
-      'var Foo = React.createClass({',
+      'var Foo = createReactClass({',
       '  propTypes,',
       '  render: function() {',
       '    return <Foo className="bar" />;',
@@ -140,7 +140,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
   {
     code: [
       'var { propTypes: typesOfProps } = SomeComponent',
-      'var Foo = React.createClass({',
+      'var Foo = createReactClass({',
       '  propTypes: typesOfProps,',
       '  render: function() {',
       '    return <Foo className="bar" />;',

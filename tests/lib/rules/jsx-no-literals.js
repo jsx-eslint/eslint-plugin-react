@@ -56,7 +56,7 @@ ruleTester.run('jsx-no-literals', rule, {
       parser: 'babel-eslint'
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  foo: (<div>{\'hello\'}</div>),',
         '  render() {',
         '    return this.foo;',
@@ -149,7 +149,7 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [{message: 'Missing JSX expression container around literal string'}]
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  foo: (<div>hello</div>),',
         '  render() {',
         '    return this.foo;',

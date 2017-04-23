@@ -21,12 +21,6 @@ var parserOptions = {
   }
 };
 
-var settings = {
-  react: {
-    pragma: 'Foo'
-  }
-};
-
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -35,6 +29,19 @@ var ruleTester = new RuleTester();
 ruleTester.run('display-name', rule, {
 
   valid: [{
+    code: [
+      'var Hello = createReactClass({',
+      '  displayName: \'Hello\',',
+      '  render: function() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
+    parserOptions: parserOptions
+  }, {
     code: [
       'var Hello = React.createClass({',
       '  displayName: \'Hello\',',
@@ -46,6 +53,11 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
+    settings: {
+      react: {
+        createClass: 'createClass'
+      }
+    },
     parserOptions: parserOptions
   }, {
     code: [
@@ -118,7 +130,7 @@ ruleTester.run('display-name', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
@@ -146,7 +158,7 @@ ruleTester.run('display-name', rule, {
   }, {
     code: [
       'var Hello;',
-      'Hello = React.createClass({',
+      'Hello = createReactClass({',
       '  render: function() {',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
@@ -155,7 +167,7 @@ ruleTester.run('display-name', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'module.exports = React.createClass({',
+      'module.exports = createReactClass({',
       '  "displayName": "Hello",',
       '  "render": function() {',
       '    return <div>Hello {this.props.name}</div>;',
@@ -165,7 +177,7 @@ ruleTester.run('display-name', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  displayName: \'Hello\',',
       '  render: function() {',
       '    let { a, ...b } = obj;',
@@ -265,7 +277,7 @@ ruleTester.run('display-name', rule, {
     parser: 'babel-eslint'
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    return <div>{this._renderHello()}</div>;',
       '  },',
@@ -277,7 +289,7 @@ ruleTester.run('display-name', rule, {
     parser: 'babel-eslint'
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  displayName: \'Hello\',',
       '  render: function() {',
       '    return <div>{this._renderHello()}</div>;',
@@ -346,6 +358,11 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
+    settings: {
+      react: {
+        createClass: 'createClass'
+      }
+    },
     parser: 'babel-eslint'
   }, {
     code: [
@@ -395,7 +412,7 @@ ruleTester.run('display-name', rule, {
 
   invalid: [{
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    return React.createElement("div", {}, "text content");',
       '  }',
@@ -411,6 +428,26 @@ ruleTester.run('display-name', rule, {
   }, {
     code: [
       'var Hello = React.createClass({',
+      '  render: function() {',
+      '    return React.createElement("div", {}, "text content");',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      ignoreTranspilerName: true
+    }],
+    settings: {
+      react: {
+        createClass: 'createClass'
+      }
+    },
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: [
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
@@ -441,7 +478,7 @@ ruleTester.run('display-name', rule, {
   }, {
     code: [
       'function HelloComponent() {',
-      '  return React.createClass({',
+      '  return createReactClass({',
       '    render: function() {',
       '      return <div>Hello {this.props.name}</div>;',
       '    }',
@@ -478,7 +515,7 @@ ruleTester.run('display-name', rule, {
     }]
   }, {
     code: [
-      'module.exports = React.createClass({',
+      'module.exports = createReactClass({',
       '  render() {',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
@@ -490,7 +527,7 @@ ruleTester.run('display-name', rule, {
     }]
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  _renderHello: function() {',
       '    return <span>Hello {this.props.name}</span>;',
       '  },',
@@ -521,7 +558,12 @@ ruleTester.run('display-name', rule, {
       ignoreTranspilerName: true
     }],
     parser: 'babel-eslint',
-    settings: settings,
+    settings: {
+      react: {
+        pragma: 'Foo',
+        createClass: 'createClass'
+      }
+    },
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -540,6 +582,11 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
+    settings: {
+      react: {
+        createClass: 'createClass'
+      }
+    },
     parser: 'babel-eslint',
     errors: [{
       message: 'Component definition is missing display name'

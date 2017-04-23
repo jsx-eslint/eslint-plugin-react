@@ -23,14 +23,14 @@ var parserOptions = {
 // ------------------------------------------------------------------------------
 
 var RETURN_SINGLE_LINE = '\
-  var Hello = React.createClass({\
+  var Hello = createReactClass({\
     render: function() {\
       return <p>Hello {this.props.name}</p>;\
     }\
   });';
 
 var RETURN_PAREN = '\
-  var Hello = React.createClass({\
+  var Hello = createReactClass({\
     render: function() {\
       return (<div>\n\
         <p>Hello {this.props.name}</p>\n\
@@ -39,7 +39,7 @@ var RETURN_PAREN = '\
   });';
 
 var RETURN_NO_PAREN = '\
-  var Hello = React.createClass({\
+  var Hello = createReactClass({\
     render: function() {\
       return <div>\n\
         <p>Hello {this.props.name}</p>\n\

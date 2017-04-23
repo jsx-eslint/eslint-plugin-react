@@ -34,7 +34,7 @@ ruleTester.run('forbid-prop-types', rule, {
 
   valid: [{
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  render: function() {',
       '    return <div />;',
       '  }',
@@ -43,7 +43,7 @@ ruleTester.run('forbid-prop-types', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: externalPropTypes,',
       '  render: function() {',
       '    return <div />;',
@@ -53,7 +53,7 @@ ruleTester.run('forbid-prop-types', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    s: React.PropTypes.string,',
       '    n: React.PropTypes.number,',
@@ -68,7 +68,7 @@ ruleTester.run('forbid-prop-types', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.array',
       '  },',
@@ -83,7 +83,7 @@ ruleTester.run('forbid-prop-types', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    o: React.PropTypes.object',
       '  },',
@@ -98,7 +98,7 @@ ruleTester.run('forbid-prop-types', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    o: React.PropTypes.object,',
       '  },',
@@ -166,7 +166,7 @@ ruleTester.run('forbid-prop-types', rule, {
     parser: 'babel-eslint'
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    let { a, ...b } = obj;',
       '    let c = { ...d };',
@@ -177,7 +177,7 @@ ruleTester.run('forbid-prop-types', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  propTypes: {',
       '    retailer: PropTypes.instanceOf(Map).isRequired,',
       '    requestRetailer: PropTypes.func.isRequired',
@@ -203,7 +203,7 @@ ruleTester.run('forbid-prop-types', rule, {
 
   invalid: [{
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.any',
       '  },',
@@ -221,7 +221,7 @@ ruleTester.run('forbid-prop-types', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    n: React.PropTypes.number',
       '  },',
@@ -242,7 +242,7 @@ ruleTester.run('forbid-prop-types', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.any.isRequired',
       '  },',
@@ -260,7 +260,7 @@ ruleTester.run('forbid-prop-types', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.array',
       '  },',
@@ -278,7 +278,7 @@ ruleTester.run('forbid-prop-types', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.array.isRequired',
       '  },',
@@ -296,7 +296,7 @@ ruleTester.run('forbid-prop-types', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.object',
       '  },',
@@ -314,7 +314,7 @@ ruleTester.run('forbid-prop-types', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.object.isRequired',
       '  },',
@@ -332,7 +332,7 @@ ruleTester.run('forbid-prop-types', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.array,',
       '    o: React.PropTypes.object',
@@ -346,7 +346,7 @@ ruleTester.run('forbid-prop-types', rule, {
     errors: 2
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    s: React.PropTypes.shape({,',
       '      o: React.PropTypes.object',
@@ -361,7 +361,7 @@ ruleTester.run('forbid-prop-types', rule, {
     errors: 1
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: {',
       '    a: React.PropTypes.array',
       '  },',
@@ -369,7 +369,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '    return <div />;',
       '  }',
       '});',
-      'var Second = React.createClass({',
+      'var Second = createReactClass({',
       '  propTypes: {',
       '    o: React.PropTypes.object',
       '  },',
@@ -420,7 +420,7 @@ ruleTester.run('forbid-prop-types', rule, {
     errors: 2
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  propTypes: {',
       '    retailer: PropTypes.instanceOf(Map).isRequired,',
       '    requestRetailer: PropTypes.func.isRequired',
@@ -438,7 +438,7 @@ ruleTester.run('forbid-prop-types', rule, {
   }, {
     code: [
       'var object = React.PropTypes.object;',
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  propTypes: {',
       '    retailer: object,',
       '  },',

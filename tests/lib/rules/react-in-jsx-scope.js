@@ -43,7 +43,7 @@ ruleTester.run('react-in-jsx-scope', rule, {
     {code: '/** @jsx Foo.Bar */ var Foo, App; <App />;', parserOptions: parserOptions},
     {code: [
       'import React from \'react/addons\';',
-      'const Button = React.createClass({',
+      'const Button = createReactClass({',
       '  render() {',
       '    return (',
       '      <button {...this.props}>{this.props.children}</button>',

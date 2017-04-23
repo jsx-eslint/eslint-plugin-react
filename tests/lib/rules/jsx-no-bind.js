@@ -133,7 +133,7 @@ ruleTester.run('jsx-no-bind', rule, {
     },
     {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    const click = this.someMethod.bind(this);',
         '    return <div onClick={click}>Hello {this.state.name}</div>;',

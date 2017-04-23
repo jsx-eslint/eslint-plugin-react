@@ -26,7 +26,7 @@ ruleTester.run('no-unescaped-entities', rule, {
   valid: [
     {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    return (',
         '      <div/>',
@@ -37,7 +37,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    return <div>Here is some text!</div>;',
         '  }',
@@ -46,7 +46,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    return <div>I&rsquo;ve escaped some entities: &gt; &lt; &amp;</div>;',
         '  }',
@@ -55,7 +55,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    return <div>first line is ok',
         '    so is second',
@@ -66,7 +66,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       parserOptions: parserOptions
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    return <div>{">" + "<" + "&" + \'"\'}</div>;',
         '  },',
@@ -79,7 +79,7 @@ ruleTester.run('no-unescaped-entities', rule, {
   invalid: [
     {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    return <div>></div>;',
         '  }',
@@ -89,7 +89,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [{message: 'HTML entities must be escaped.'}]
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    return <div>first line is ok',
         '    so is second',
@@ -101,7 +101,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [{message: 'HTML entities must be escaped.'}]
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    return <div>\'</div>;',
         '  }',
@@ -111,7 +111,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [{message: 'HTML entities must be escaped.'}]
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    return <div>Multiple errors: \'>></div>;',
         '  }',
@@ -125,7 +125,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       ]
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  render: function() {',
         '    return <div>{"Unbalanced braces"}}</div>;',
         '  }',

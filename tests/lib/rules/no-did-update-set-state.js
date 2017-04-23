@@ -29,7 +29,7 @@ ruleTester.run('no-did-update-set-state', rule, {
 
   valid: [{
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
@@ -38,14 +38,14 @@ ruleTester.run('no-did-update-set-state', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidUpdate: function() {}',
       '});'
     ].join('\n'),
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidUpdate: function() {',
       '    someNonMemberFunction(arg);',
       '    this.someHandler = this.setState;',
@@ -55,7 +55,7 @@ ruleTester.run('no-did-update-set-state', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidUpdate: function() {',
       '    someClass.onSomeEvent(function(data) {',
       '      this.setState({',
@@ -68,7 +68,7 @@ ruleTester.run('no-did-update-set-state', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidUpdate: function() {',
       '    function handleEvent(data) {',
       '      this.setState({',
@@ -85,7 +85,7 @@ ruleTester.run('no-did-update-set-state', rule, {
 
   invalid: [{
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidUpdate: function() {',
       '    this.setState({',
       '      data: data',
@@ -113,7 +113,7 @@ ruleTester.run('no-did-update-set-state', rule, {
     }]
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidUpdate: function() {',
       '    this.setState({',
       '      data: data',
@@ -143,7 +143,7 @@ ruleTester.run('no-did-update-set-state', rule, {
     }]
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidUpdate: function() {',
       '    someClass.onSomeEvent(function(data) {',
       '      this.setState({',
@@ -177,7 +177,7 @@ ruleTester.run('no-did-update-set-state', rule, {
     }]
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidUpdate: function() {',
       '    if (true) {',
       '      this.setState({',
@@ -209,7 +209,7 @@ ruleTester.run('no-did-update-set-state', rule, {
     }]
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidUpdate: function() {',
       '    someClass.onSomeEvent((data) => this.setState({data: data}));',
       '  }',

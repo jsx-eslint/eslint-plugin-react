@@ -22,7 +22,7 @@ ruleTester.run('no-refs', rule, {
 
   valid: [{
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidMount: function() {',
       '     var component = this.hello;',
       '  },',
@@ -40,7 +40,7 @@ ruleTester.run('no-refs', rule, {
 
   invalid: [{
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidMount: function() {',
       '     var component = this.refs.hello;',
       '  },',
@@ -59,7 +59,7 @@ ruleTester.run('no-refs', rule, {
     }]
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    return <div ref="hello">Hello {this.props.name}</div>;',
       '  }',
@@ -75,7 +75,7 @@ ruleTester.run('no-refs', rule, {
     }]
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    return <div ref={\'hello\'}>Hello {this.props.name}</div>;',
       '  }',
@@ -91,7 +91,7 @@ ruleTester.run('no-refs', rule, {
     }]
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidMount: function() {',
       '     var component = this.refs.hello;',
       '  },',

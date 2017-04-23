@@ -29,7 +29,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
 
   valid: [{
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
@@ -38,7 +38,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    var obj = {state: {}};',
       '    obj.state.name = "foo";',
@@ -67,7 +67,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
 
   invalid: [{
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    this.state.foo = "bar"',
       '    return <div>Hello {this.props.name}</div>;',
@@ -80,7 +80,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
     }]
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    this.state.person.name= "bar"',
       '    return <div>Hello {this.props.name}</div>;',
@@ -93,7 +93,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
     }]
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    this.state.person.name.first = "bar"',
       '    return <div>Hello</div>;',
@@ -106,7 +106,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
     }]
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    this.state.person.name.first = "bar"',
       '    this.state.person.name.last = "baz"',
@@ -129,7 +129,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
    * Would be nice to prevent this too
   , {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    var that = this;',
       '    that.state.person.name.first = "bar"',

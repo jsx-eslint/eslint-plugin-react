@@ -154,10 +154,10 @@ ruleTester.run('require-default-props', rule, {
     },
 
     //
-    // React.createClass components
+    // createReactClass components
     {
       code: [
-        'var Greeting = React.createClass({',
+        'var Greeting = createReactClass({',
         '  render: function() {',
         '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
         '  },',
@@ -170,7 +170,7 @@ ruleTester.run('require-default-props', rule, {
     },
     {
       code: [
-        'var Greeting = React.createClass({',
+        'var Greeting = createReactClass({',
         '  render: function() {',
         '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
         '  },',
@@ -188,7 +188,7 @@ ruleTester.run('require-default-props', rule, {
     },
     {
       code: [
-        'var Greeting = React.createClass({',
+        'var Greeting = createReactClass({',
         '  render: function() {',
         '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
         '  },',
@@ -207,7 +207,7 @@ ruleTester.run('require-default-props', rule, {
     },
     {
       code: [
-        'var Greeting = React.createClass({',
+        'var Greeting = createReactClass({',
         '  render: function() {',
         '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
         '  }',
@@ -829,10 +829,10 @@ ruleTester.run('require-default-props', rule, {
     },
 
     //
-    // React.createClass components
+    // createReactClass components
     {
       code: [
-        'var Greeting = React.createClass({',
+        'var Greeting = createReactClass({',
         '  render: function() {',
         '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
         '  },',
@@ -850,7 +850,7 @@ ruleTester.run('require-default-props', rule, {
     },
     {
       code: [
-        'var Greeting = React.createClass({',
+        'var Greeting = createReactClass({',
         '  render: function() {',
         '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
         '  },',

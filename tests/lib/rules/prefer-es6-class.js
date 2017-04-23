@@ -56,7 +56,7 @@ ruleTester.run('prefer-es6-class', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
@@ -78,7 +78,7 @@ ruleTester.run('prefer-es6-class', rule, {
 
   invalid: [{
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  displayName: \'Hello\',',
       '  render: function() {',
       '    return <div>Hello {this.props.name}</div>;',
@@ -91,7 +91,7 @@ ruleTester.run('prefer-es6-class', rule, {
     }]
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',

@@ -32,7 +32,7 @@ ruleTester.run('forbid-component-props', rule, {
 
   valid: [{
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  render: function() {',
       '    return <div className="foo" />;',
       '  }',
@@ -41,7 +41,7 @@ ruleTester.run('forbid-component-props', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  render: function() {',
       '    return <div style={{color: "red"}} />;',
       '  }',
@@ -51,7 +51,7 @@ ruleTester.run('forbid-component-props', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: externalPropTypes,',
       '  render: function() {',
       '    return <Foo bar="baz" />;',
@@ -61,7 +61,7 @@ ruleTester.run('forbid-component-props', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: externalPropTypes,',
       '  render: function() {',
       '    return <Foo className="bar" />;',
@@ -72,7 +72,7 @@ ruleTester.run('forbid-component-props', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: externalPropTypes,',
       '  render: function() {',
       '    return <Foo className="bar" />;',
@@ -83,7 +83,7 @@ ruleTester.run('forbid-component-props', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: externalPropTypes,',
       '  render: function() {',
       '    return <this.Foo bar="baz" />;',
@@ -93,7 +93,7 @@ ruleTester.run('forbid-component-props', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'class First extends React.createClass {',
+      'class First extends createReactClass {',
       '  render() {',
       '    return <this.foo className="bar" />;',
       '  }',
@@ -112,7 +112,7 @@ ruleTester.run('forbid-component-props', rule, {
 
   invalid: [{
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: externalPropTypes,',
       '  render: function() {',
       '    return <Foo className="bar" />;',
@@ -128,7 +128,7 @@ ruleTester.run('forbid-component-props', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: externalPropTypes,',
       '  render: function() {',
       '    return <Foo style={{color: "red"}} />;',
@@ -144,7 +144,7 @@ ruleTester.run('forbid-component-props', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: externalPropTypes,',
       '  render: function() {',
       '    return <Foo className="bar" />;',
@@ -161,7 +161,7 @@ ruleTester.run('forbid-component-props', rule, {
     }]
   }, {
     code: [
-      'var First = React.createClass({',
+      'var First = createReactClass({',
       '  propTypes: externalPropTypes,',
       '  render: function() {',
       '    return <Foo style={{color: "red"}} />;',

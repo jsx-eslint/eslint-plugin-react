@@ -56,7 +56,7 @@ ruleTester.run('no-comment-textnodes', rule, {
       parser: 'babel-eslint'
     }, {
       code: [
-        'var Hello = React.createClass({',
+        'var Hello = createReactClass({',
         '  foo: (<div>{/* valid */}</div>),',
         '  render() {',
         '    return this.foo;',

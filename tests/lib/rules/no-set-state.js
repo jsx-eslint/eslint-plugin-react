@@ -34,7 +34,7 @@ ruleTester.run('no-set-state', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
@@ -43,7 +43,7 @@ ruleTester.run('no-set-state', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidUpdate: function() {',
       '    someNonMemberFunction(arg);',
       '    this.someHandler = this.setState;',
@@ -58,7 +58,7 @@ ruleTester.run('no-set-state', rule, {
 
   invalid: [{
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidUpdate: function() {',
       '    this.setState({',
       '      name: this.props.name.toUpperCase()',
@@ -75,7 +75,7 @@ ruleTester.run('no-set-state', rule, {
     }]
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  someMethod: function() {',
       '    this.setState({',
       '      name: this.props.name.toUpperCase()',

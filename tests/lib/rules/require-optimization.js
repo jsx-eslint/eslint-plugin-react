@@ -51,7 +51,7 @@ ruleTester.run('react-require-optimization', rule, {
   }, {
     code: [
       'import React from "react";' +
-      'React.createClass({' +
+      'createReactClass({' +
       'shouldComponentUpdate: function () {}' +
       '})'
     ].join('\n'),
@@ -59,7 +59,7 @@ ruleTester.run('react-require-optimization', rule, {
   }, {
     code: [
       'import React from "react";' +
-      'React.createClass({' +
+      'createReactClass({' +
       'mixins: [PureRenderMixin]' +
       '})'
     ].join('\n'),
@@ -161,7 +161,7 @@ ruleTester.run('react-require-optimization', rule, {
   }, {
     code: [
       'import React from "react";' +
-      'React.createClass({' +
+      'createReactClass({' +
       '})'
     ].join('\n'),
     errors: [{
@@ -171,7 +171,7 @@ ruleTester.run('react-require-optimization', rule, {
   }, {
     code: [
       'import React from "react";' +
-      'React.createClass({' +
+      'createReactClass({' +
       'mixins: [RandomMixin]' +
       '})'
     ].join('\n'),

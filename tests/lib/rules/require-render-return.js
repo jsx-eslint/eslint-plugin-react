@@ -62,7 +62,7 @@ ruleTester.run('require-render-return', rule, {
   }, {
     // ES5 class
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  displayName: \'Hello\',',
       '  render: function() {',
       '    return <div></div>',
@@ -90,7 +90,7 @@ ruleTester.run('require-render-return', rule, {
   }, {
     // Return in a switch...case
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    switch (this.props.name) {',
       '      case \'Foo\':',
@@ -105,7 +105,7 @@ ruleTester.run('require-render-return', rule, {
   }, {
     // Return in a if...else
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    if (this.props.name === \'Foo\') {',
       '      return <div>Hello Foo</div>;',
@@ -130,13 +130,13 @@ ruleTester.run('require-render-return', rule, {
     parserOptions: parserOptions
   }, {
     // ES5 class without a render method
-    code: 'var Hello = React.createClass({});',
+    code: 'var Hello = createReactClass({});',
     parserOptions: parserOptions
   }, {
     // ES5 class with an imported render method
     code: [
       'var render = require(\'./render\');',
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render',
       '});'
     ].join('\n'),
@@ -154,7 +154,7 @@ ruleTester.run('require-render-return', rule, {
   invalid: [{
     // Missing return in ES5 class
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  displayName: \'Hello\',',
       '  render: function() {}',
       '});'

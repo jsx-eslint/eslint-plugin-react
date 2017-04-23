@@ -32,7 +32,7 @@ ruleTester.run('no-find-dom-node', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  render: function() {',
       '    return <div>Hello</div>;',
       '  }',
@@ -41,7 +41,7 @@ ruleTester.run('no-find-dom-node', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidMount: function() {',
       '    someNonMemberFunction(arg);',
       '    this.someFunc = React.findDOMNode;',
@@ -54,7 +54,7 @@ ruleTester.run('no-find-dom-node', rule, {
     parserOptions: parserOptions
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidMount: function() {',
       '    React.someFunc(this);',
       '  },',
@@ -68,7 +68,7 @@ ruleTester.run('no-find-dom-node', rule, {
 
   invalid: [{
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidMount: function() {',
       '    React.findDOMNode(this).scrollIntoView();',
       '  },',
@@ -83,7 +83,7 @@ ruleTester.run('no-find-dom-node', rule, {
     }]
   }, {
     code: [
-      'var Hello = React.createClass({',
+      'var Hello = createReactClass({',
       '  componentDidMount: function() {',
       '    ReactDOM.findDOMNode(this).scrollIntoView();',
       '  },',
