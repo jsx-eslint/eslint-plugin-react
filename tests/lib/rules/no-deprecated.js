@@ -33,7 +33,7 @@ ruleTester.run('no-deprecated', rule, {
     // Deprecated in a later version
     {code: 'React.renderComponent()', settings: {react: {version: '0.11.0'}}},
     {code: 'React.createClass()', settings: {react: {version: '15.4.0'}}},
-    {code: 'React.PropTypes', settings: {react: {version: '15.4.0'}}}
+    {code: 'PropTypes', settings: {react: {version: '15.4.0'}}}
   ],
 
   invalid: [{

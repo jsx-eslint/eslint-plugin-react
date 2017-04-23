@@ -15,9 +15,9 @@ const HelloWorld = ({ name }) => (
 );
 
 HelloWorld.propTypes = {
-  name: React.PropTypes.shape({
-    first: React.PropTypes.string,
-    last: React.PropTypes.string,
+  name: PropTypes.shape({
+    first: PropTypes.string,
+    last: PropTypes.string,
   })
 };
 
@@ -38,9 +38,9 @@ const HelloWorld = ({ name = 'John Doe' }) => (
 );
 
 HelloWorld.propTypes = {
-  name: React.PropTypes.shape({
-    first: React.PropTypes.string,
-    last: React.PropTypes.string,
+  name: PropTypes.shape({
+    first: PropTypes.string,
+    last: PropTypes.string,
   })
 };
 
@@ -59,8 +59,8 @@ function MyStatelessComponent({ foo, bar }) {
 }
 
 MyStatelessComponent.propTypes = {
-  foo: React.PropTypes.string.isRequired,
-  bar: React.PropTypes.string
+  foo: PropTypes.string.isRequired,
+  bar: PropTypes.string
 };
 ```
 
@@ -71,8 +71,8 @@ var Greeting = createReactClass({
   },
 
   propTypes: {
-    foo: React.PropTypes.string,
-    bar: React.PropTypes.string
+    foo: PropTypes.string,
+    bar: PropTypes.string
   },
 
   getDefaultProps: function() {
@@ -93,8 +93,8 @@ class Greeting extends React.Component {
 }
 
 Greeting.propTypes = {
-  foo: React.PropTypes.string,
-  bar: React.PropTypes.string
+  foo: PropTypes.string,
+  bar: PropTypes.string
 };
 
 Greeting.defaultProps = {
@@ -111,8 +111,8 @@ class Greeting extends React.Component {
   }
 
   static propTypes = {
-    foo: React.PropTypes.string,
-    bar: React.PropTypes.string.isRequired
+    foo: PropTypes.string,
+    bar: PropTypes.string.isRequired
   };
 
   static defaultProps = {
@@ -140,8 +140,8 @@ function MyStatelessComponent({ foo, bar }) {
 }
 
 MyStatelessComponent.propTypes = {
-  foo: React.PropTypes.string.isRequired,
-  bar: React.PropTypes.string.isRequired
+  foo: PropTypes.string.isRequired,
+  bar: PropTypes.string.isRequired
 };
 ```
 
@@ -151,8 +151,8 @@ function MyStatelessComponent({ foo, bar }) {
 }
 
 MyStatelessComponent.propTypes = {
-  foo: React.PropTypes.string.isRequired,
-  bar: React.PropTypes.string
+  foo: PropTypes.string.isRequired,
+  bar: PropTypes.string
 };
 
 MyStatelessComponent.defaultProps = {
@@ -179,8 +179,8 @@ MyStatelessComponent.defaultProps = {
 function NotAComponent({ foo, bar }) {}
 
 NotAComponent.propTypes = {
-  foo: React.PropTypes.string,
-  bar: React.PropTypes.string.isRequired
+  foo: PropTypes.string,
+  bar: PropTypes.string.isRequired
 };
 ```
 

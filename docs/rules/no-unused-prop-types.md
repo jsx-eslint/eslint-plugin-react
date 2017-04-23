@@ -9,7 +9,7 @@ The following patterns are considered warnings:
 ```jsx
 var Hello = createReactClass({
   propTypes: {
-    name: React.PropTypes.string
+    name: PropTypes.string
   },
   render: function() {
     return <div>Hello Bob</div>;
@@ -18,9 +18,9 @@ var Hello = createReactClass({
 
 var Hello = createReactClass({
   propTypes: {
-    firstname: React.PropTypes.string.isRequired,
-    middlename: React.PropTypes.string.isRequired, // middlename is never used below
-    lastname: React.PropTypes.string.isRequired
+    firstname: PropTypes.string.isRequired,
+    middlename: PropTypes.string.isRequired, // middlename is never used below
+    lastname: PropTypes.string.isRequired
   },
   render: function() {
     return <div>Hello {this.props.firstname} {this.props.lastname}</div>;
@@ -33,7 +33,7 @@ The following patterns are not considered warnings:
 ```jsx
 var Hello = createReactClass({
   propTypes: {
-    name: React.PropTypes.string
+    name: PropTypes.string
   },
   render: function() {
     return <div>Hello {this.props.name}</div>;
@@ -53,7 +53,7 @@ This rule can take one argument to ignore some specific props during validation.
 
 * `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
 * `customValidators`: optional array of validators used for propTypes validation.
-* `skipShapeProps`: In some cases it is impossible to accurately detect whether or not a `React.PropTypes.shape`'s values are being used. Setting this option to `true` will skip validation of `PropTypes.shape` (`true` by default).
+* `skipShapeProps`: In some cases it is impossible to accurately detect whether or not a `PropTypes.shape`'s values are being used. Setting this option to `true` will skip validation of `PropTypes.shape` (`true` by default).
 
 ## Caveats
 

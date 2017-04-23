@@ -12,9 +12,9 @@ The following patterns are considered warnings:
 ```jsx
 var Component = createReactClass({
   propTypes: {
-    a: React.PropTypes.any,
-    r: React.PropTypes.array,
-    o: React.PropTypes.object
+    a: PropTypes.any,
+    r: PropTypes.array,
+    o: PropTypes.object
   },
 ...
 });
@@ -23,16 +23,16 @@ class Component extends React.Component {
   ...
 }
 Component.propTypes = {
-  a: React.PropTypes.any,
-  r: React.PropTypes.array,
-  o: React.PropTypes.object
+  a: PropTypes.any,
+  r: PropTypes.array,
+  o: PropTypes.object
 };
 
 class Component extends React.Component {
   static propTypes = {
-    a: React.PropTypes.any,
-    r: React.PropTypes.array,
-    o: React.PropTypes.object
+    a: PropTypes.any,
+    r: PropTypes.array,
+    o: PropTypes.object
   }
   render() {
     return <div />;
@@ -50,7 +50,7 @@ class Component extends React.Component {
 
 ### `forbid`
 
-An array of strings, with the names of `React.PropTypes` keys that are forbidden. The default value for this option is `['any', 'array', 'object']`.
+An array of strings, with the names of `PropTypes` keys that are forbidden. The default value for this option is `['any', 'array', 'object']`.
 
 ## When not to use
 

@@ -17,7 +17,7 @@ var Hello = createReactClass({
 
 var Hello = createReactClass({
   propTypes: {
-    firstname: React.PropTypes.string.isRequired
+    firstname: PropTypes.string.isRequired
   },
   render: function() {
     return <div>Hello {this.props.firstname} {this.props.lastname}</div>; // lastname type is not defined in propTypes
@@ -34,7 +34,7 @@ Examples of correct usage without warnings:
 ```jsx
 var Hello = createReactClass({
   propTypes: {
-    name: React.PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
   },
   render: function() {
     return <div>Hello {this.props.name}</div>;
@@ -48,13 +48,13 @@ class HelloEs6 extends React.Component {
   }
 }
 HelloEs6.propTypes = {
-  name: React.PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 
 // ES6 + Public Class Fields (draft: https://tc39.github.io/proposal-class-public-fields/)
 class HelloEs6WithPublicClassField extends React.Component {
   static propTypes = {
-    name: React.PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
   }
   render() {
     return <div>Hello {this.props.name}</div>;
@@ -73,7 +73,7 @@ var Hello = createReactClass({
 
 var Hello = createReactClass({
   propTypes: {
-    name: React.PropTypes.string.isRequired
+    name: PropTypes.string.isRequired
   },
   render: function() {
     return <div>Hello {this.props.name}</div>;
@@ -92,7 +92,7 @@ function Hello({ name }) {
   return <div>Hello {name}</div>;
 }
 Hello.propTypes = {
-  name: React.PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
 };
 ```
 
@@ -123,7 +123,7 @@ As it aptly noticed in
 > Most components don't need `this.props.children`, so that makes it extra important
 to document `children` in the propTypes.
 
-Generally, you should use `React.PropTypes.node` for `children`. It accepts
+Generally, you should use `PropTypes.node` for `children`. It accepts
 anything that can be rendered: numbers, strings, elements or an array containing
 these types.
 

@@ -39,7 +39,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       code: [
         'var Hello = createReactClass({',
         '  propTypes: {',
-        '    name: React.PropTypes.string.isRequired',
+        '    name: PropTypes.string.isRequired',
         '  },',
         '  render: function() {',
         '    return <div>Hello {this.props.name}</div>;',
@@ -51,7 +51,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       code: [
         'var Hello = createReactClass({',
         '  propTypes: {',
-        '    name: React.PropTypes.object.isRequired',
+        '    name: PropTypes.object.isRequired',
         '  },',
         '  render: function() {',
         '    return <div>Hello {this.props.name.firstname}</div>;',
@@ -125,16 +125,16 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  firstname: React.PropTypes.string',
+        '  firstname: PropTypes.string',
         '};',
-        'Hello.propTypes.lastname = React.PropTypes.string;'
+        'Hello.propTypes.lastname = PropTypes.string;'
       ].join('\n'),
       parserOptions: parserOptions
     }, {
       code: [
         'var Hello = createReactClass({',
         '  propTypes: {',
-        '    name: React.PropTypes.object.isRequired',
+        '    name: PropTypes.object.isRequired',
         '  },',
         '  render: function() {',
         '    var user = {',
@@ -167,7 +167,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         'class Hello extends React.Component {',
         '  static get propTypes() {',
         '    return {',
-        '      name: React.PropTypes.string',
+        '      name: PropTypes.string',
         '    };',
         '  }',
         '  render() {',
@@ -187,9 +187,9 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  firstname: React.PropTypes.string,',
-        '  category: React.PropTypes.string,',
-        '  icon: React.PropTypes.bool',
+        '  firstname: PropTypes.string,',
+        '  category: PropTypes.string,',
+        '  icon: PropTypes.bool',
         '};'
       ].join('\n'),
       parser: 'babel-eslint',
@@ -208,7 +208,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       code: [
         'class Hello extends React.Component {',
         '  static propTypes = {',
-        '    name: React.PropTypes.string',
+        '    name: PropTypes.string',
         '  };',
         '  render() {',
         '    return <div>Hello {this.props.name}</div>;',
@@ -225,7 +225,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  \'firstname\': React.PropTypes.string',
+        '  \'firstname\': PropTypes.string',
         '};'
       ].join('\n'),
       parserOptions: parserOptions
@@ -240,7 +240,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  \'firstname\': React.PropTypes.string',
+        '  \'firstname\': PropTypes.string',
         '};'
       ].join('\n'),
       parserOptions: parserOptions
@@ -253,8 +253,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {};',
-        'Hello.propTypes.a = React.PropTypes.shape({',
-        '  b: React.PropTypes.string',
+        'Hello.propTypes.a = PropTypes.shape({',
+        '  b: PropTypes.string',
         '});'
       ].join('\n'),
       options: [{skipShapeProps: false}],
@@ -268,12 +268,12 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  a: React.PropTypes.shape({',
-        '    b: React.PropTypes.shape({',
+        '  a: PropTypes.shape({',
+        '    b: PropTypes.shape({',
         '    })',
         '  })',
         '};',
-        'Hello.propTypes.a.b.c = React.PropTypes.number;'
+        'Hello.propTypes.a.b.c = PropTypes.number;'
       ].join('\n'),
       options: [{skipShapeProps: false}],
       parserOptions: parserOptions
@@ -288,11 +288,11 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  a: React.PropTypes.objectOf(',
-        '    React.PropTypes.shape({',
-        '      c: React.PropTypes.number,',
-        '      d: React.PropTypes.string,',
-        '      e: React.PropTypes.array',
+        '  a: PropTypes.objectOf(',
+        '    PropTypes.shape({',
+        '      c: PropTypes.number,',
+        '      d: PropTypes.string,',
+        '      e: PropTypes.array',
         '    })',
         '  )',
         '};'
@@ -312,11 +312,11 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  a: React.PropTypes.arrayOf(',
-        '    React.PropTypes.shape({',
-        '      c: React.PropTypes.number,',
-        '      d: React.PropTypes.string,',
-        '      e: React.PropTypes.array',
+        '  a: PropTypes.arrayOf(',
+        '    PropTypes.shape({',
+        '      c: PropTypes.number,',
+        '      d: PropTypes.string,',
+        '      e: PropTypes.array',
         '    })',
         '  )',
         '};'
@@ -332,9 +332,9 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  a: React.PropTypes.oneOfType([',
-        '    React.PropTypes.array,',
-        '    React.PropTypes.string',
+        '  a: PropTypes.oneOfType([',
+        '    PropTypes.array,',
+        '    PropTypes.string',
         '  ])',
         '};'
       ].join('\n'),
@@ -351,13 +351,13 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  a: React.PropTypes.oneOfType([',
-        '    React.PropTypes.shape({',
-        '      c: React.PropTypes.number,',
-        '      e: React.PropTypes.array',
+        '  a: PropTypes.oneOfType([',
+        '    PropTypes.shape({',
+        '      c: PropTypes.number,',
+        '      e: PropTypes.array',
         '    }).isRequired,',
-        '    React.PropTypes.arrayOf(',
-        '      React.PropTypes.bool',
+        '    PropTypes.arrayOf(',
+        '      PropTypes.bool',
         '    )',
         '  ])',
         '};'
@@ -374,7 +374,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  a: React.PropTypes.instanceOf(Hello)',
+        '  a: PropTypes.instanceOf(Hello)',
         '};'
       ].join('\n'),
       parserOptions: parserOptions
@@ -398,11 +398,11 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  arr: React.PropTypes.array,',
-        '  bo: React.PropTypes.bool.isRequired,',
-        '  fu: React.PropTypes.func,',
-        '  numb: React.PropTypes.number,',
-        '  stri: React.PropTypes.string',
+        '  arr: PropTypes.array,',
+        '  bo: PropTypes.bool.isRequired,',
+        '  fu: PropTypes.func,',
+        '  numb: PropTypes.number,',
+        '  stri: PropTypes.string',
         '};'
       ].join('\n'),
       parserOptions: parserOptions
@@ -418,8 +418,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  "propX": React.PropTypes.string,',
-        '  "aria-controls": React.PropTypes.string',
+        '  "propX": PropTypes.string,',
+        '  "aria-controls": PropTypes.string',
         '};'
       ].join('\n'),
       parser: 'babel-eslint'
@@ -432,7 +432,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  "some.value": React.PropTypes.string',
+        '  "some.value": PropTypes.string',
         '};'
       ].join('\n'),
       parserOptions: parserOptions
@@ -445,7 +445,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  "arr": React.PropTypes.array',
+        '  "arr": PropTypes.array',
         '};'
       ].join('\n'),
       parserOptions: parserOptions
@@ -458,8 +458,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  "arr": React.PropTypes.arrayOf(',
-        '    React.PropTypes.shape({"some.value": React.PropTypes.string})',
+        '  "arr": PropTypes.arrayOf(',
+        '    PropTypes.shape({"some.value": PropTypes.string})',
         '  )',
         '};'
       ].join('\n'),
@@ -469,7 +469,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       code: [
         'var TestComp1 = createReactClass({',
         '  propTypes: {',
-        '    size: React.PropTypes.string',
+        '    size: PropTypes.string',
         '  },',
         '  render: function() {',
         '    var foo = {',
@@ -512,7 +512,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       code: [
         'var Hello = createReactClass({',
         '  propTypes: {',
-        '    router: React.PropTypes.func',
+        '    router: PropTypes.func',
         '  },',
         '  render: function() {',
         '    var nextPath = this.props.router.getCurrentQuery().nextPath;',
@@ -553,7 +553,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       code: [
         'var Hello = createReactClass({',
         '  propTypes: {',
-        '    outer: React.PropTypes.shape({',
+        '    outer: PropTypes.shape({',
         '      inner: CustomValidator.string',
         '    })',
         '  },',
@@ -569,7 +569,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         'var Hello = createReactClass({',
         '  propTypes: {',
         '    outer: CustomValidator.shape({',
-        '      inner: React.PropTypes.string',
+        '      inner: PropTypes.string',
         '    })',
         '  },',
         '  render: function() {',
@@ -583,7 +583,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       code: [
         'var Hello = createReactClass({',
         '  propTypes: {',
-        '    name: React.PropTypes.string',
+        '    name: PropTypes.string',
         '  },',
         '  render: function() {',
         '    return <div>{this.props.name.get("test")}</div>;',
@@ -650,7 +650,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  users: React.PropTypes.arrayOf(React.PropTypes.object)',
+        '  users: PropTypes.arrayOf(PropTypes.object)',
         '};'
       ].join('\n'),
       parserOptions: parserOptions
@@ -719,7 +719,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '      return <div>Hello {this.props.name}</div>;',
         '    }',
         '  }',
-        '  Hello.propTypes = { name: React.PropTypes.string };',
+        '  Hello.propTypes = { name: PropTypes.string };',
         '  return Hello;',
         '}',
         'module.exports = HelloComponent();'
@@ -729,7 +729,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       code: [
         'function HelloComponent() {',
         '  var Hello = createReactClass({',
-        '    propTypes: { name: React.PropTypes.string },',
+        '    propTypes: { name: PropTypes.string },',
         '    render: function() {',
         '      return <div>Hello {this.props.name}</div>;',
         '    }',
@@ -771,8 +771,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  return <ul>{team}</ul>;',
         '};',
         'Hello.propTypes = {',
-        '  names: React.PropTypes.array,',
-        '  company: React.PropTypes.string',
+        '  names: PropTypes.array,',
+        '  company: PropTypes.string',
         '};'
       ].join('\n'),
       parser: 'babel-eslint'
@@ -805,7 +805,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}',
         'if (process.env.NODE_ENV !== \'production\') {',
         '  FooBar.propTypes = {',
-        '    bar: React.PropTypes.string',
+        '    bar: PropTypes.string',
         '  }',
         '}'
       ].join('\n'),
@@ -1078,11 +1078,11 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    }',
         '};',
         'const otherPropTypes = {',
-        '    lastName: React.PropTypes.string',
+        '    lastName: PropTypes.string',
         '};',
         'Hello.propTypes = {',
         '    ...otherPropTypes,',
-        '    firstName: React.PropTypes.string',
+        '    firstName: PropTypes.string',
         '};'
       ].join('\n'),
       parserOptions: parserOptions
@@ -1441,8 +1441,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};',
 
         'PagingBlock.propTypes = {',
-        '  nextPage: React.PropTypes.func.isRequired,',
-        '  previousPage: React.PropTypes.func.isRequired,',
+        '  nextPage: PropTypes.func.isRequired,',
+        '  previousPage: PropTypes.func.isRequired,',
         '};'
       ].join('\n'),
       parserOptions: parserOptions
@@ -1456,8 +1456,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};',
 
         'PagingBlock.propTypes = {',
-        '  nextPage: React.PropTypes.func.isRequired,',
-        '  previousPage: React.PropTypes.func.isRequired,',
+        '  nextPage: PropTypes.func.isRequired,',
+        '  previousPage: PropTypes.func.isRequired,',
         '};'
       ].join('\n'),
       parserOptions: parserOptions
@@ -1544,7 +1544,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  unused: React.PropTypes.string',
+        '  unused: PropTypes.string',
         '};'
       ].join('\n'),
       parserOptions: parserOptions,
@@ -1559,7 +1559,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  unused: React.PropTypes.string',
+        '  unused: PropTypes.string',
         '};',
         'class HelloBis extends React.Component {',
         '  render() {',
@@ -1575,8 +1575,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       code: [
         'var Hello = createReactClass({',
         '  propTypes: {',
-        '    unused: React.PropTypes.string.isRequired,',
-        '    anotherunused: React.PropTypes.string.isRequired',
+        '    unused: PropTypes.string.isRequired,',
+        '    anotherunused: PropTypes.string.isRequired',
         '  },',
         '  render: function() {',
         '    return <div>Hello {this.props.name} and {this.props.propWithoutTypeDefinition}</div>;',
@@ -1603,7 +1603,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  unused: React.PropTypes.string',
+        '  unused: PropTypes.string',
         '};'
       ].join('\n'),
       parserOptions: parserOptions,
@@ -1619,7 +1619,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  a: React.PropTypes.shape({',
+        '  a: PropTypes.shape({',
         '    b: PropTypes.string',
         '  })',
         '};'
@@ -1638,9 +1638,9 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  a: React.PropTypes.shape({',
-        '    b: React.PropTypes.shape({',
-        '      c: React.PropTypes.string',
+        '  a: PropTypes.shape({',
+        '    b: PropTypes.shape({',
+        '      c: PropTypes.string',
         '    })',
         '  })',
         '};'
@@ -1661,8 +1661,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  a: React.PropTypes.objectOf(',
-        '    React.PropTypes.shape({',
+        '  a: PropTypes.objectOf(',
+        '    PropTypes.shape({',
         '      unused: PropTypes.string',
         '    })',
         '  )',
@@ -1686,8 +1686,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  a: React.PropTypes.arrayOf(',
-        '    React.PropTypes.shape({',
+        '  a: PropTypes.arrayOf(',
+        '    PropTypes.shape({',
         '      unused: PropTypes.string',
         '    })',
         '  )',
@@ -1712,10 +1712,10 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  a: React.PropTypes.oneOfType([',
-        '    React.PropTypes.shape({',
-        '      unused: React.PropTypes.number,',
-        '      anotherunused: React.PropTypes.array',
+        '  a: PropTypes.oneOfType([',
+        '    PropTypes.shape({',
+        '      unused: PropTypes.number,',
+        '      anotherunused: PropTypes.array',
         '    })',
         '  ])',
         '};'
@@ -1735,7 +1735,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  "some.unused": React.PropTypes.string',
+        '  "some.unused": PropTypes.string',
         '};'
       ].join('\n'),
       parserOptions: parserOptions,
@@ -1751,9 +1751,9 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  "arr": React.PropTypes.arrayOf(',
-        '    React.PropTypes.shape({',
-        '      "some.unused": React.PropTypes.string',
+        '  "arr": PropTypes.arrayOf(',
+        '    PropTypes.shape({',
+        '      "some.unused": PropTypes.string',
         '})',
         '  )',
         '};'
@@ -1767,7 +1767,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       code: [
         'class Hello extends React.Component {',
         '  static propTypes = {',
-        '    unused: React.PropTypes.string',
+        '    unused: PropTypes.string',
         '  }',
         '  render() {',
         '    var text;',
@@ -1793,7 +1793,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Hello.propTypes = {',
-        '  unused: React.PropTypes.string',
+        '  unused: PropTypes.string',
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
@@ -1982,7 +1982,7 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       code: [
         'var propTypes = {',
-        '  unused: React.PropTypes.string',
+        '  unused: PropTypes.string',
         '};',
         'class Test extends React.Component {',
         '  render() {',
@@ -2007,7 +2007,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Test.propTypes = {',
-        '  unused: React.PropTypes.string',
+        '  unused: PropTypes.string',
         '};'
       ].join('\n'),
       parser: 'babel-eslint',
@@ -2026,7 +2026,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}',
         'Test.propTypes = {',
-        '  unused: React.PropTypes.string',
+        '  unused: PropTypes.string',
         '};'
       ].join('\n'),
       parser: 'babel-eslint',

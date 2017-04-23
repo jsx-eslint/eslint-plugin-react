@@ -264,7 +264,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  }',
         '}',
         'Foo.childContextTypes = {',
-        '  color: React.PropTypes.string',
+        '  color: PropTypes.string',
         '};'
       ].join('\n'),
       parser: 'babel-eslint'
@@ -397,7 +397,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         'class Foo extends React.Component {',
         '  static get propTypes() {',
         '    return {',
-        '      name: React.PropTypes.string',
+        '      name: PropTypes.string',
         '    };',
         '  }',
         '  render() {',
@@ -414,7 +414,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       code: [
         'class Foo extends React.Component {',
         '  static propTypes = {',
-        '    name: React.PropTypes.string',
+        '    name: PropTypes.string',
         '  };',
         '  render() {',
         '    return <div>{this.props.foo}</div>;',

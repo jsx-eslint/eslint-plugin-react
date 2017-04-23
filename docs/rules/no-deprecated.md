@@ -20,7 +20,7 @@ React.renderToStaticMarkup(<MyComponent />);
 React.createClass({ /* Class object */ });
 
 const propTypes = {
-  foo: React.PropTypes.bar,
+  foo: PropTypes.bar,
 };
 ```
 
