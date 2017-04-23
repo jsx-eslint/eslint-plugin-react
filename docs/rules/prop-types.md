@@ -9,13 +9,13 @@ It can warn other developers if they make a mistake while reusing the component 
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   render: function() {
     return <div>Hello {this.props.name}</div>;
   }
 });
 
-var Hello = React.createClass({
+var Hello = createReactClass({
   propTypes: {
     firstname: React.PropTypes.string.isRequired
   },
@@ -32,7 +32,7 @@ function Hello({ name }) {
 Examples of correct usage without warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   propTypes: {
     name: React.PropTypes.string.isRequired,
   },
@@ -65,13 +65,13 @@ class HelloEs6WithPublicClassField extends React.Component {
 The following patterns are not considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   render: function() {
     return <div>Hello World</div>;
   }
 });
 
-var Hello = React.createClass({
+var Hello = createReactClass({
   propTypes: {
     name: React.PropTypes.string.isRequired
   },
@@ -81,7 +81,7 @@ var Hello = React.createClass({
 });
 
 // Referencing an external object disable the rule for the component
-var Hello = React.createClass({
+var Hello = createReactClass({
   propTypes: myPropTypes,
   render: function() {
     return <div>Hello {this.props.name}</div>;
@@ -135,6 +135,6 @@ For this rule to work we need to detect React components, this could be very har
 
 For now we should detect components created with:
 
-* `React.createClass()`
+* `createReactClass()`
 * an ES6 class that inherit from `React.Component` or `Component`
 * a stateless function that return JSX or the result of a `React.createElement` call.

@@ -7,7 +7,7 @@ When writing the `render` method in a component it is easy to forget to return t
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   render() {
     <div>Hello</div>;
   }
@@ -23,7 +23,7 @@ class Hello extends React.Component {
 The following patterns are not considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   render() {
     return <div>Hello</div>;
   }

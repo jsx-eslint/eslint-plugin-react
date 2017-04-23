@@ -7,7 +7,7 @@ Warns you if you have defined a prop type but it is never being used anywhere.
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   propTypes: {
     name: React.PropTypes.string
   },
@@ -16,7 +16,7 @@ var Hello = React.createClass({
   }
 });
 
-var Hello = React.createClass({
+var Hello = createReactClass({
   propTypes: {
     firstname: React.PropTypes.string.isRequired,
     middlename: React.PropTypes.string.isRequired, // middlename is never used below
@@ -31,7 +31,7 @@ var Hello = React.createClass({
 The following patterns are not considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   propTypes: {
     name: React.PropTypes.string
   },
@@ -65,6 +65,6 @@ For this rule to work we need to detect React components, this could be very har
 
 For now we should detect components created with:
 
-* `React.createClass()`
+* `createReactClass()`
 * an ES6 class that inherit from `React.Component` or `Component`
 * a stateless function that return JSX or the result of a `React.createElement` call.

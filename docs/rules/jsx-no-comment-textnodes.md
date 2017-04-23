@@ -8,7 +8,7 @@ injected as a text node in JSX statements.
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   render: function() {
     return (
       <div>// empty div</div>
@@ -16,7 +16,7 @@ var Hello = React.createClass({
   }
 });
 
-var Hello = React.createClass({
+var Hello = createReactClass({
   render: function() {
     return (
       <div>
@@ -30,21 +30,21 @@ var Hello = React.createClass({
 The following patterns are not considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   displayName: 'Hello',
   render: function() {
     return <div>{/* empty div */}</div>;
   }
 });
 
-var Hello = React.createClass({
+var Hello = createReactClass({
   displayName: 'Hello',
   render: function() {
     return <div /* empty div */></div>;
   }
 });
 
-var Hello = React.createClass({
+var Hello = createReactClass({
   displayName: 'Hello',
   render: function() {
     return <div className={'foo' /* temp class */}</div>;
@@ -58,7 +58,7 @@ It's possible you may want to legitimately output comment start characters (`//`
 in a JSX text node. In which case, you can do the following:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   render: function() {
     return (
       <div>{'/* This will be output as a text node */'}</div>

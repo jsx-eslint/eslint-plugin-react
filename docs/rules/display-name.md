@@ -7,7 +7,7 @@ DisplayName allows you to name your component. This name is used by React in deb
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   render: function() {
     return <div>Hello {this.props.name}</div>;
   }
@@ -17,7 +17,7 @@ var Hello = React.createClass({
 The following patterns are not considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   displayName: 'Hello',
   render: function() {
     return <div>Hello {this.props.name}</div>;
@@ -40,7 +40,7 @@ When `true` the rule will ignore the name set by the transpiler and require a `d
 The following patterns are considered okay and do not cause warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   displayName: 'Hello',
 
   render: function() {
@@ -69,7 +69,7 @@ Hello.displayName = 'Hello';
 The following patterns will cause warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   render: function() {
     return <div>Hello {this.props.name}</div>;
   }
@@ -86,7 +86,7 @@ export default class Hello extends React.Component {
 ```
 
 ```jsx
-module.exports = React.createClass({
+module.exports = createReactClass({
   render: function() {
     return <div>Hello {this.props.name}</div>;
   }
@@ -103,7 +103,7 @@ export default class extends React.Component {
 
 ```jsx
 function HelloComponent() {
-  return React.createClass({
+  return createReactClass({
     render: function() {
       return <div>Hello {this.props.name}</div>;
     }
@@ -118,6 +118,6 @@ For this rule to work we need to detect React components, this could be very har
 
 For now we should detect components created with:
 
-* `React.createClass()`
+* `createReactClass()`
 * an ES6 class that inherit from `React.Component` or `Component`
 * a stateless function that return JSX or the result of a `React.createElement` call.

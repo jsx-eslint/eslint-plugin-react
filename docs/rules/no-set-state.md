@@ -7,7 +7,7 @@ When using an architecture that separates your application state from your UI co
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   getInitialState: function() {
     return {
       name: this.props.name
@@ -27,7 +27,7 @@ var Hello = React.createClass({
 The following patterns are not considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   render: function() {
     return <div onClick={this.props.handleClick}>Hello {this.props.name}</div>;
   }

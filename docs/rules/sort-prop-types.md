@@ -9,7 +9,7 @@ This rule checks all components and verifies that all propTypes declarations are
 The following patterns are considered warnings:
 
 ```jsx
-var Component = React.createClass({
+var Component = createReactClass({
   propTypes: {
     z: React.PropTypes.number,
     a: React.PropTypes.any,
@@ -42,7 +42,7 @@ class Component extends React.Component {
 The following patterns are considered okay and do not cause warnings:
 
 ```jsx
-var Component = React.createClass({
+var Component = createReactClass({
   propTypes: {
     a: React.PropTypes.number,
     b: React.PropTypes.any,
@@ -93,7 +93,7 @@ When `true` the rule ignores the case-sensitivity of the declarations order.
 When `true`, propTypes for props beginning with "on" must be listed after all other props:
 
 ```js
-var Component = React.createClass({
+var Component = createReactClass({
   propTypes: {
     a: React.PropTypes.number,
     z: React.PropTypes.string,
@@ -109,7 +109,7 @@ var Component = React.createClass({
 When `true`, prop types for required props must be listed before all other props:
 
 ```js
-var Component = React.createClass({
+var Component = createReactClass({
   propTypes: {
     barRequired: React.PropTypes.any.isRequired,
     fooRequired: React.PropTypes.any.isRequired,

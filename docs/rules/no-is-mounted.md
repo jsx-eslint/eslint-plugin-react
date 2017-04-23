@@ -9,7 +9,7 @@
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   handleClick: function() {
     setTimeout(function() {
       if (this.isMounted()) {
@@ -26,7 +26,7 @@ var Hello = React.createClass({
 The following patterns are not considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   render: function() {
     return <div onClick={this.props.handleClick}>Hello</div>;
   }

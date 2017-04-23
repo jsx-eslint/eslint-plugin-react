@@ -60,7 +60,7 @@ When `true` the following is not considered a warning:
 A common use case of `bind` in render is when rendering a list, to have a separate callback per list item:
 
 ```jsx
-var List = React.createClass({
+var List = createReactClass({
   render() {
     return (
       <ul>
@@ -78,7 +78,7 @@ var List = React.createClass({
 Rather than doing it this way, pull the repeated section into its own component:
 
 ```jsx
-var List = React.createClass({
+var List = createReactClass({
   render() {
     return (
       <ul>
@@ -90,7 +90,7 @@ var List = React.createClass({
   }
 });
 
-var ListItem = React.createClass({
+var ListItem = createReactClass({
   render() {
     return (
       <li onClick={this._onClick}>
@@ -108,7 +108,7 @@ This will speed up rendering, as it avoids the need to create new functions (thr
 
 ### ES6 Classes
 
-Unfortunately [React ES6 classes](https://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#es6-classes) do not autobind their methods like components created with the older `React.createClass` syntax. There are several approaches to binding methods for ES6 classes. A basic approach is to just manually bind the methods in the constructor:
+Unfortunately [React ES6 classes](https://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#es6-classes) do not autobind their methods like components created with the older `createReactClass` syntax. There are several approaches to binding methods for ES6 classes. A basic approach is to just manually bind the methods in the constructor:
 
 ```jsx
 class Foo extends React.Component {

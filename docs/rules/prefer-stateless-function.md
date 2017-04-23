@@ -18,7 +18,7 @@ If none of these elements are found, the rule will warn you to write this compon
 The following pattern is considered a warning:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   render: function() {
     return <div>Hello {this.props.name}</div>;
   }

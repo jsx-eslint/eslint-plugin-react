@@ -10,7 +10,7 @@ This rule is off by default.
 The following patterns are considered warnings:
 
 ```jsx
-var Component = React.createClass({
+var Component = createReactClass({
   propTypes: {
     a: React.PropTypes.any,
     r: React.PropTypes.array,

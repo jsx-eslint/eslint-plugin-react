@@ -7,7 +7,7 @@ Currently, two ways are supported by React to refer to components. The first way
 Invalid:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
  render: function() {
   return <div ref="hello">Hello, world.</div>;
  }
@@ -15,7 +15,7 @@ var Hello = React.createClass({
 ```
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   componentDidMount: function() {
     var component = this.refs.hello;
     // ...do something with component
@@ -29,7 +29,7 @@ var Hello = React.createClass({
 Valid:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   componentDidMount: function() {
     var component = this.hello;
     // ...do something with component

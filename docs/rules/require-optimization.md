@@ -13,7 +13,7 @@ class YourComponent extends React.Component {
 ```
 
 ```js
-React.createClass({
+createReactClass({
 });
 ```
 
@@ -28,7 +28,7 @@ class YourComponent extends React.Component {
 ```
 
 ```js
-React.createClass({
+createReactClass({
 	shouldComponentUpdate: function () {
 		return false;
 	}
@@ -36,14 +36,14 @@ React.createClass({
 ```
 
 ```js
-React.createClass({
+createReactClass({
 	mixins: [PureRenderMixin]
 });
 ```
 
 ```js
 @reactMixin.decorate(PureRenderMixin)
-React.createClass({
+createReactClass({
 
 });
 ```

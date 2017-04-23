@@ -9,7 +9,7 @@ This rule is aimed to forbid the use of `this.setState` in `componentDidMount` o
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   componentDidMount: function() {
     this.setState({
       name: this.props.name.toUpperCase()
@@ -24,7 +24,7 @@ var Hello = React.createClass({
 The following patterns are not considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   componentDidMount: function() {
     this.onMount(function callback(newName) {
       this.setState({
@@ -39,7 +39,7 @@ var Hello = React.createClass({
 ```
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   componentDidMount: function() {
     this.props.onMount();
   },
@@ -64,7 +64,7 @@ By default this rule forbids any call to `this.setState` in `componentDidMount` 
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   componentDidMount: function() {
     this.setState({
       name: this.props.name.toUpperCase()
@@ -77,7 +77,7 @@ var Hello = React.createClass({
 ```
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   componentDidMount: function() {
     this.onMount(function callback(newName) {
       this.setState({

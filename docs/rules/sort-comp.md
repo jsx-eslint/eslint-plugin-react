@@ -16,7 +16,7 @@ The default configuration ensures that the following order must be followed:
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   render: function() {
     return <div>Hello</div>;
   },
@@ -27,7 +27,7 @@ var Hello = React.createClass({
 The following patterns are not considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   displayName : 'Hello',
   render: function() {
     return <div>Hello</div>;
@@ -110,7 +110,7 @@ For example, if you want to place your event handlers (`onClick`, `onSubmit`, et
 With the above configuration, the following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   render: function() {
     return <div>Hello</div>;
   },
@@ -121,7 +121,7 @@ var Hello = React.createClass({
 With the above configuration, the following patterns are not considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   onClick: function() {},
   render: function() {
     return <div>Hello</div>;
@@ -151,7 +151,7 @@ If you want to split your `render` method into smaller ones and keep them just b
 With the above configuration, the following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   renderButton: function() {},
   onClick: function() {},
   render: function() {
@@ -163,7 +163,7 @@ var Hello = React.createClass({
 With the above configuration, the following patterns are not considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   onClick: function() {},
   renderButton: function() {},
   render: function() {

@@ -9,7 +9,7 @@ Wrapping multiline JSX in parentheses can improve readability and/or convenience
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   render: function() {
     return <div>
       <p>Hello {this.props.name}</p>
@@ -23,7 +23,7 @@ The following patterns are not considered warnings:
 ```jsx
 var singleLineJSX = <p>Hello</p>
 
-var Hello = React.createClass({
+var Hello = createReactClass({
   render: function() {
     return (
       <div>

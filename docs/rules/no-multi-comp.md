@@ -7,13 +7,13 @@ Declaring only one component per file improves readability and reusability of co
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   render: function() {
     return <div>Hello {this.props.name}</div>;
   }
 });
 
-var HelloJohn = React.createClass({
+var HelloJohn = createReactClass({
   render: function() {
     return <Hello name="John" />;
   }
@@ -25,7 +25,7 @@ The following patterns are not considered warnings:
 ```jsx
 var Hello = require('./components/Hello');
 
-var HelloJohn = React.createClass({
+var HelloJohn = createReactClass({
   render: function() {
     return <Hello name="John" />;
   }

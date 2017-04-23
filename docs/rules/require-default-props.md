@@ -65,7 +65,7 @@ MyStatelessComponent.propTypes = {
 ```
 
 ```jsx
-var Greeting = React.createClass({
+var Greeting = createReactClass({
   render: function() {
     return <div>Hello {this.props.foo} {this.props.bar}</div>;
   },

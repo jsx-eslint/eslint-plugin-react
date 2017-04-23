@@ -7,7 +7,7 @@ Updating the state during the componentWillUpdate step can lead to indeterminate
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   componentWillUpdate: function() {
      this.setState({
         name: this.props.name.toUpperCase()
@@ -22,7 +22,7 @@ var Hello = React.createClass({
 The following patterns are not considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   componentWillUpdate: function() {
     this.props.prepareHandler();
   },
@@ -33,7 +33,7 @@ var Hello = React.createClass({
 ```
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   componentWillUpdate: function() {
     this.prepareHandler(function callback(newName) {
       this.setState({
@@ -62,7 +62,7 @@ By default this rule forbids any call to `this.setState` in `componentWillUpdate
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   componentDidUpdate: function() {
      this.setState({
         name: this.props.name.toUpperCase()
@@ -75,7 +75,7 @@ var Hello = React.createClass({
 ```
 
 ```jsx
-var Hello = React.createClass({
+var Hello = createReactClass({
   componentDidUpdate: function() {
     this.prepareHandler(function callback(newName) {
       this.setState({
