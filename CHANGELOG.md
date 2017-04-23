@@ -3,6 +3,36 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.0.0-rc.0] - 2017-04-23
+### Added
+* Add [`no-will-update-set-state`][] rule ([#1139] @ManThursday)
+* Add import and destructuring support to [`no-deprecated`][]
+
+### Breaking
+* Update rules for React 15.5.0:
+  * Add warnings for `React.PropTypes` and `React.createClass` in [`no-deprecated`][] ([#1148][] @Calyhre)
+  * Update `createClass` component factory to `createReactClass`. This is used for React component detection, if you still using `React.createClass` use the [shared settings](README.md#configuration) to specify `createClass` as component factory
+
+### Fixed
+* Fix [`no-unused-prop-types`][] false positive with `nextProps` ([#1079][] @Kerumen)
+* Fix [`prefer-stateless-function`][] to not warn on classes with decorators ([#1034][] @benstepp)
+
+### Changed
+* Update dependencies ([#1119][] @danez)
+* Documentation improvements ([#1121][] @omerzach, [#1130][] @dreid, [#1131][] @shoesandsocks, [#1149][] @Adzz, [#1151][] @MatthewHerbst)
+
+[7.0.0-rc.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.10.3...v7.0.0-rc.0
+[#1139]: https://github.com/yannickcr/eslint-plugin-react/pull/1139
+[#1148]: https://github.com/yannickcr/eslint-plugin-react/pull/1148
+[#1079]: https://github.com/yannickcr/eslint-plugin-react/issues/1079
+[#1034]: https://github.com/yannickcr/eslint-plugin-react/issues/1034
+[#1119]: https://github.com/yannickcr/eslint-plugin-react/pull/1119
+[#1121]: https://github.com/yannickcr/eslint-plugin-react/pull/1121
+[#1130]: https://github.com/yannickcr/eslint-plugin-react/pull/1130
+[#1131]: https://github.com/yannickcr/eslint-plugin-react/pull/1131
+[#1149]: https://github.com/yannickcr/eslint-plugin-react/pull/1149
+[#1151]: https://github.com/yannickcr/eslint-plugin-react/pull/1151
+
 ## [6.10.3] - 2017-03-20
 ### Fixed
 * Revert [#1057][] due to issues with [`jsx-indent`][] ([#1117][])
@@ -1626,6 +1656,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`no-unescaped-entities`]: docs/rules/no-unescaped-entities.md
 [`no-unknown-property`]: docs/rules/no-unknown-property.md
 [`no-unused-prop-types`]: docs/rules/no-unused-prop-types.md
+[`no-will-update-set-state`]: docs/rules/no-will-update-set-state.md
 [`prefer-es6-class`]: docs/rules/prefer-es6-class.md
 [`prefer-stateless-function`]: docs/rules/prefer-stateless-function.md
 [`prop-types`]: docs/rules/prop-types.md
