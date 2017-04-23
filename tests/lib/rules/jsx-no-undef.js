@@ -56,6 +56,26 @@ ruleTester.run('jsx-no-undef', rule, {
       '}'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: 'var React; React.render(<Text />);',
+    parserOptions: parserOptions,
+    globals: {
+      Text: true
+    }
+  }, {
+    code: [
+      'import Text from "cool-module";',
+      'const TextWrapper = function (props) {',
+      '  return (',
+      '    <Text />',
+      '  );',
+      '};'
+    ].join('\n'),
+    options: [{
+      allowGlobals: false
+    }],
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
   }],
   invalid: [{
     code: '/*eslint no-undef:1*/ var React; React.render(<App />);',
@@ -85,6 +105,32 @@ ruleTester.run('jsx-no-undef', rule, {
     code: '/*eslint no-undef:1*/ var React; React.render(<appp.foo.Bar />);',
     errors: [{
       message: '\'appp\' is not defined.'
+    }],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'const TextWrapper = function (props) {',
+      '  return (',
+      '    <Text />',
+      '  );',
+      '};',
+      'export default TextWrapper;'
+    ].join('\n'),
+    errors: [{
+      message: '\'Text\' is not defined.'
+    }],
+    options: [{
+      allowGlobals: false
+    }],
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    globals: {
+      Text: true
+    }
+  }, {
+    code: '/*eslint no-undef:1*/ var React; React.render(<Foo />);',
+    errors: [{
+      message: '\'Foo\' is not defined.'
     }],
     parserOptions: parserOptions
   }]
