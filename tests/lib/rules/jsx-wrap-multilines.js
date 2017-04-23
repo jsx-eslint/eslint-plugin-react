@@ -120,15 +120,17 @@ var ASSIGNMENT_NO_PAREN = `
 
 var ARROW_SINGLE_LINE = 'var hello = () => <p>Hello</p>;';
 
-var ARROW_PAREN = '\
-  var hello = () => (<div>\n\
-    <p>Hello</p>\n\
-  </div>);';
+var ARROW_PAREN = `
+  var hello = () => (<div>
+    <p>Hello</p>
+  </div>);
+`;
 
-var ARROW_NO_PAREN = '\
-  var hello = () => <div>\n\
-    <p>Hello</p>\n\
-  </div>;';
+var ARROW_NO_PAREN = `
+  var hello = () => <div>
+    <p>Hello</p>
+  </div>;
+`;
 
 // ------------------------------------------------------------------------------
 // Tests
