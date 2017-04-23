@@ -62,7 +62,6 @@ var allRules = {
   'no-children-prop': require('./lib/rules/no-children-prop'),
   'void-dom-elements-no-children': require('./lib/rules/void-dom-elements-no-children'),
   'no-comment-textnodes': require('./lib/rules/no-comment-textnodes'),
-  'require-extension': require('./lib/rules/require-extension'),
   'wrap-multilines': require('./lib/rules/wrap-multilines'),
   'jsx-tag-spacing': require('./lib/rules/jsx-tag-spacing')
 };
