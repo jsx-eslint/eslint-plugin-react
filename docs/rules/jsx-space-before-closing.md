@@ -10,7 +10,7 @@ Enforce or forbid spaces before the closing bracket of self-closing JSX elements
 
 This rule checks if there is one or more spaces before the closing bracket of self-closing JSX elements.
 
-This rule takes one argument. If it is `"always"` then it warns whenever a space is missing before the closing bracket. If `"never"` then it warns if a space is present before the closing bracket. The default value of this option is `"always"`.
+This rule takes two arguments. If `[1, "always"]` then it warns whenever a space is missing before the closing bracket. If `[1, "never"]` then it warns if a space is present before the closing bracket. The default value of this option is `[1, "always"]`.
 
 The following patterns are considered warnings when configured `"always"`:
 
