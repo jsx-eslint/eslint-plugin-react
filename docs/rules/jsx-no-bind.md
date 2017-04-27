@@ -99,7 +99,7 @@ var ListItem = createReactClass({
     );
   },
   _onClick() {
-    this.props.onItemClick(this.props.item.id);
+    this.props.onItemClick(this.props.key);
   }
 });
 ```
