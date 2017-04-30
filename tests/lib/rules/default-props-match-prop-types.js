@@ -171,10 +171,10 @@ ruleTester.run('default-props-match-prop-types', rule, {
     },
 
     //
-    // React.createClass components
+    // createReactClass components
     {
       code: [
-        'var Greeting = React.createClass({',
+        'var Greeting = createReactClass({',
         '  render: function() {',
         '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
         '  },',
@@ -187,7 +187,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
     },
     {
       code: [
-        'var Greeting = React.createClass({',
+        'var Greeting = createReactClass({',
         '  render: function() {',
         '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
         '  },',
@@ -205,7 +205,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
     },
     {
       code: [
-        'var Greeting = React.createClass({',
+        'var Greeting = createReactClass({',
         '  render: function() {',
         '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
         '  },',
@@ -224,7 +224,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
     },
     {
       code: [
-        'var Greeting = React.createClass({',
+        'var Greeting = createReactClass({',
         '  render: function() {',
         '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
         '  }',
@@ -876,10 +876,10 @@ ruleTester.run('default-props-match-prop-types', rule, {
     },
 
     //
-    // React.createClass components
+    // createReactClass components
     {
       code: [
-        'var Greeting = React.createClass({',
+        'var Greeting = createReactClass({',
         '  render: function() {',
         '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
         '  },',
@@ -902,7 +902,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
     },
     {
       code: [
-        'var Greeting = React.createClass({',
+        'var Greeting = createReactClass({',
         '  render: function() {',
         '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
         '  },',
