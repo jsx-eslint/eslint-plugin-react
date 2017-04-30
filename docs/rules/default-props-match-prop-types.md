@@ -1,4 +1,4 @@
-# Enforce all defaultProps have a corresponding non-required PropType (no-invalid-default-props)
+# Enforce all defaultProps have a corresponding non-required PropType (default-props-match-prop-types)
 
 This rule aims to ensure that any `defaultProp` has a non-required `PropType` declaration.
 
@@ -154,7 +154,7 @@ NotAComponent.propTypes = {
 
 ```js
 ...
-"no-invalid-default-props": [<enabled>, { "allowRequiredDefaults": <boolean> }]
+"default-props-match-prop-types": [<enabled>, { "allowRequiredDefaults": <boolean> }]
 ...
 ```
 

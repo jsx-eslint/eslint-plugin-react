@@ -9,7 +9,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/no-invalid-default-props');
+var rule = require('../../../lib/rules/default-props-match-prop-types');
 var RuleTester = require('eslint').RuleTester;
 var assign = require('object.assign');
 
@@ -29,7 +29,7 @@ var ruleTester = new RuleTester({parserOptions: parserOptions});
 // Tests
 // ------------------------------------------------------------------------------
 
-ruleTester.run('no-invalid-default-props', rule, {
+ruleTester.run('default-props-match-prop-types', rule, {
 
   valid: [
     //
