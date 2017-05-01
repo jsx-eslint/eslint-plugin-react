@@ -3,6 +3,42 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.0.0-rc.1] - 2017-05-01
+### Added
+* Add `reservedFirst` option to [`jsx-sort-props`][] ([#1134] @MatthewHerbst)
+
+### Breaking
+* Drop Node.js < 4 support ([#1038] @ljharb)
+* Add [`no-danger-with-children`][] rule to recommended rules ([#748] @ljharb)
+* Add [`no-string-refs`][] rule to recommended rules ([#749] @ljharb)
+* Add [`jsx-key`][] rule to recommended rules ([#750] @ljharb)
+* Add [`jsx-no-comment-textnodes`][] rule to recommended rules ([#751] @ljharb)
+* Add [`jsx-no-target-blank`][] rule to recommended rules ([#752] @ljharb)
+* Add [`no-unescaped-entities`][] rule to recommended rules ([#841] @ljharb)
+* Add [`no-children-prop`][] rule to recommended rules ([#842] @ljharb)
+* Remove deprecated [`wrap-multilines`][] rule, use [`jsx-wrap-multilines`][] instead
+* Remove deprecated [`no-comment-textnodes`][] rule, use [`jsx-no-comment-textnodes`][] instead
+* Remove deprecated [`require-extension`][] rule, use the [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) [`extensions`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md) rule instead
+* Deprecate [`jsx-space-before-closing`][] rule, use the [`jsx-tag-spacing`] rule instead. [`jsx-space-before-closing`][] still works but will trigger a warning ([#1070] @afairb)
+* [`jsx-first-prop-new-line`][] default is now `multiline-multiprop` ([#802] @kokarn)
+* [`jsx-wrap-multilines`] now checks arrow functions without block body. It can be deactivated in [rule options](docs/rules/jsx-wrap-multilines.md#rule-details) ([#790] @ColCh)
+* [`jsx-no-undef`] will not check the global scope by default. You can force it with the [`allowGlobals`](docs/rules/jsx-no-undef.md#allowglobals) option ([#1013] @jomasti)
+
+[7.0.0-rc.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.0.0-rc.0...v7.0.0-rc.1
+[#1134]: https://github.com/yannickcr/eslint-plugin-react/pull/1134
+[#1038]: https://github.com/yannickcr/eslint-plugin-react/pull/1038
+[#802]: https://github.com/yannickcr/eslint-plugin-react/pull/802
+[#790]: https://github.com/yannickcr/eslint-plugin-react/issues/790
+[#1013]: https://github.com/yannickcr/eslint-plugin-react/pull/1013
+[#1070]: https://github.com/yannickcr/eslint-plugin-react/pull/1070
+[#748]: https://github.com/yannickcr/eslint-plugin-react/issues/748
+[#749]: https://github.com/yannickcr/eslint-plugin-react/issues/749
+[#750]: https://github.com/yannickcr/eslint-plugin-react/issues/750
+[#751]: https://github.com/yannickcr/eslint-plugin-react/issues/751
+[#752]: https://github.com/yannickcr/eslint-plugin-react/issues/752
+[#841]: https://github.com/yannickcr/eslint-plugin-react/issues/841
+[#842]: https://github.com/yannickcr/eslint-plugin-react/issues/842
+
 ## [7.0.0-rc.0] - 2017-04-23
 ### Added
 * Add [`no-will-update-set-state`][] rule ([#1139] @ManThursday)
