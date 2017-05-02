@@ -11,7 +11,6 @@
 
 var rule = require('../../../lib/rules/default-props-match-prop-types');
 var RuleTester = require('eslint').RuleTester;
-var assign = require('object.assign');
 
 require('babel-eslint');
 
@@ -426,7 +425,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  return <div>{foo}{bar}</div>;',
         '}'
       ].join('\n'),
-      parserOptions: assign({sourceType: 'module'}, parserOptions)
+      parserOptions: Object.assign({sourceType: 'module'}, parserOptions)
     },
     {
       code: [
@@ -441,7 +440,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  return <div>{foo}{bar}</div>;',
         '}'
       ].join('\n'),
-      parserOptions: assign({sourceType: 'module'}, parserOptions)
+      parserOptions: Object.assign({sourceType: 'module'}, parserOptions)
     },
     // using spread operator
     {
