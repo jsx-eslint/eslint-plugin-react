@@ -23,7 +23,7 @@ const propTypes = {
   foo: PropTypes.bar,
 };
 
-import {React PropTypes} from 'react';
+import {React, PropTypes} from 'react';
 ```
 
 The following patterns are not considered warnings:
@@ -34,5 +34,5 @@ ReactDOM.render(<MyComponent />, root);
 // When [1, {"react": "0.13.0"}]
 ReactDOM.findDOMNode(this.refs.foo);
 
-import PropTypes from 'prop-types';
+import { PropTypes } from 'prop-types';
 ```
