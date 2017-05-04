@@ -23,7 +23,7 @@ const propTypes = {
   foo: PropTypes.bar,
 };
 
-import {React, PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 ```
 
 The following patterns are not considered warnings:
