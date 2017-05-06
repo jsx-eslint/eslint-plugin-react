@@ -2616,6 +2616,23 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {message: '\'foo\' is missing in props validation'}
       ]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  static propTypes() {',
+        '    return {',
+        '      name: PropTypes.string',
+        '    };',
+        '  }',
+        '  render() {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      errors: [
+        {message: '\'name\' is missing in props validation'}
+      ]
     }
   ]
 });
