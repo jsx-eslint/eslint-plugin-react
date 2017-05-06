@@ -3,28 +3,41 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
-## [7.0.0-rc.1] - 2017-05-01
+## [7.0.0] - 2017-05-06
 ### Added
-* Add `reservedFirst` option to [`jsx-sort-props`][] ([#1134] @MatthewHerbst)
+* Add [`no-will-update-set-state`][] rule ([#1139][] @ManThursday)
+* Add import and destructuring support to [`no-deprecated`][]
+* Add `reservedFirst` option to [`jsx-sort-props`][] ([#1134][] @MatthewHerbst)
 
 ### Breaking
-* Drop Node.js < 4 support ([#1038] @ljharb)
-* Add [`no-danger-with-children`][] rule to recommended rules ([#748] @ljharb)
-* Add [`no-string-refs`][] rule to recommended rules ([#749] @ljharb)
-* Add [`jsx-key`][] rule to recommended rules ([#750] @ljharb)
-* Add [`jsx-no-comment-textnodes`][] rule to recommended rules ([#751] @ljharb)
-* Add [`jsx-no-target-blank`][] rule to recommended rules ([#752] @ljharb)
-* Add [`no-unescaped-entities`][] rule to recommended rules ([#841] @ljharb)
-* Add [`no-children-prop`][] rule to recommended rules ([#842] @ljharb)
+* Update rules for React 15.5.0:
+  * Add warnings for `React.PropTypes` and `React.createClass` in [`no-deprecated`][] ([#1148][] @Calyhre)
+  * Update `createClass` component factory to `createReactClass`. This is used for React component detection, if you still using `React.createClass` use the [shared settings](README.md#configuration) to specify `createClass` as component factory
+* Drop Node.js < 4 support ([#1038][] @ljharb)
+* Add [`no-danger-with-children`][] rule to recommended rules ([#748][] @ljharb)
+* Add [`no-string-refs`][] rule to recommended rules ([#749][] @ljharb)
+* Add [`jsx-key`][] rule to recommended rules ([#750][] @ljharb)
+* Add [`jsx-no-comment-textnodes`][] rule to recommended rules ([#751][] @ljharb)
+* Add [`jsx-no-target-blank`][] rule to recommended rules ([#752][] @ljharb)
+* Add [`no-unescaped-entities`][] rule to recommended rules ([#841][] @ljharb)
+* Add [`no-children-prop`][] rule to recommended rules ([#842][] @ljharb)
 * Remove deprecated [`wrap-multilines`][] rule, use [`jsx-wrap-multilines`][] instead
 * Remove deprecated [`no-comment-textnodes`][] rule, use [`jsx-no-comment-textnodes`][] instead
 * Remove deprecated [`require-extension`][] rule, use the [eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import) [`extensions`](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md) rule instead
-* Deprecate [`jsx-space-before-closing`][] rule, use the [`jsx-tag-spacing`] rule instead. [`jsx-space-before-closing`][] still works but will trigger a warning ([#1070] @afairb)
-* [`jsx-first-prop-new-line`][] default is now `multiline-multiprop` ([#802] @kokarn)
-* [`jsx-wrap-multilines`] now checks arrow functions without block body. It can be deactivated in [rule options](docs/rules/jsx-wrap-multilines.md#rule-details) ([#790] @ColCh)
-* [`jsx-no-undef`] will not check the global scope by default. You can force it with the [`allowGlobals`](docs/rules/jsx-no-undef.md#allowglobals) option ([#1013] @jomasti)
+* Deprecate [`jsx-space-before-closing`][] rule, use the [`jsx-tag-spacing`][] rule instead. [`jsx-space-before-closing`][] still works but will trigger a warning ([#1070][] @afairb)
+* [`jsx-first-prop-new-line`][] default is now `multiline-multiprop` ([#802][] @kokarn)
+* [`jsx-wrap-multilines`][] now checks arrow functions without block body. It can be deactivated in [rule options](docs/rules/jsx-wrap-multilines.md#rule-details) ([#790][] @ColCh)
+* [`jsx-no-undef`][] will not check the global scope by default. You can force it with the [`allowGlobals`](docs/rules/jsx-no-undef.md#allowglobals) option ([#1013][] @jomasti)
 
-[7.0.0-rc.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.0.0-rc.0...v7.0.0-rc.1
+### Fixed
+* Fix [`no-unused-prop-types`][] false positive with `nextProps` ([#1079][] @Kerumen)
+* Fix [`prefer-stateless-function`][] to not warn on classes with decorators ([#1034][] @benstepp)
+
+### Changed
+* Update dependencies ([#1119][] @danez)
+* Documentation improvements ([#1121][] @omerzach, [#1130][] @dreid, [#1131][] @shoesandsocks, [#1149][] @Adzz, [#1151][] @MatthewHerbst, [#1167][] @Slumber86)
+
+[7.0.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.10.3...v7.0.0
 [#1134]: https://github.com/yannickcr/eslint-plugin-react/pull/1134
 [#1038]: https://github.com/yannickcr/eslint-plugin-react/pull/1038
 [#802]: https://github.com/yannickcr/eslint-plugin-react/pull/802
@@ -38,26 +51,6 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#752]: https://github.com/yannickcr/eslint-plugin-react/issues/752
 [#841]: https://github.com/yannickcr/eslint-plugin-react/issues/841
 [#842]: https://github.com/yannickcr/eslint-plugin-react/issues/842
-
-## [7.0.0-rc.0] - 2017-04-23
-### Added
-* Add [`no-will-update-set-state`][] rule ([#1139] @ManThursday)
-* Add import and destructuring support to [`no-deprecated`][]
-
-### Breaking
-* Update rules for React 15.5.0:
-  * Add warnings for `React.PropTypes` and `React.createClass` in [`no-deprecated`][] ([#1148][] @Calyhre)
-  * Update `createClass` component factory to `createReactClass`. This is used for React component detection, if you still using `React.createClass` use the [shared settings](README.md#configuration) to specify `createClass` as component factory
-
-### Fixed
-* Fix [`no-unused-prop-types`][] false positive with `nextProps` ([#1079][] @Kerumen)
-* Fix [`prefer-stateless-function`][] to not warn on classes with decorators ([#1034][] @benstepp)
-
-### Changed
-* Update dependencies ([#1119][] @danez)
-* Documentation improvements ([#1121][] @omerzach, [#1130][] @dreid, [#1131][] @shoesandsocks, [#1149][] @Adzz, [#1151][] @MatthewHerbst)
-
-[7.0.0-rc.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v6.10.3...v7.0.0-rc.0
 [#1139]: https://github.com/yannickcr/eslint-plugin-react/pull/1139
 [#1148]: https://github.com/yannickcr/eslint-plugin-react/pull/1148
 [#1079]: https://github.com/yannickcr/eslint-plugin-react/issues/1079
@@ -68,6 +61,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#1131]: https://github.com/yannickcr/eslint-plugin-react/pull/1131
 [#1149]: https://github.com/yannickcr/eslint-plugin-react/pull/1149
 [#1151]: https://github.com/yannickcr/eslint-plugin-react/pull/1151
+[#1167]: https://github.com/yannickcr/eslint-plugin-react/pull/1167
 
 ## [6.10.3] - 2017-03-20
 ### Fixed
