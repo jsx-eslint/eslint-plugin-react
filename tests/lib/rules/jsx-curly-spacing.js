@@ -103,6 +103,14 @@ ruleTester.run('jsx-curly-spacing', rule, {
     ].join('\n'),
     options: [{spaces: 'always', spacing: {}}]
   }, {
+    code: [
+      '<App foo={',
+      'bar',
+      '} />;'
+    ].join('\n'),
+    options: [{spaces: 'always', spacing: {}}],
+    parserOptions: parserOptions
+  }, {
     code: '<App foo={{ bar: true, baz: true }} />;',
     options: [{spaces: 'always', spacing: {objectLiterals: 'never'}}]
   }, {
