@@ -44,207 +44,207 @@ ruleTester.run('jsx-curly-spacing', rule, {
     code: '<App foo={{ bar: true, baz: true }} />;'
   }, {
     code: '<App foo={bar} />;',
-    options: [{spaces: 'never'}]
+    options: [{when: 'never'}]
   }, {
     code: [
       '<App foo={',
       '{ bar: true, baz: true }',
       '} />;'
     ].join('\n'),
-    options: [{spaces: 'never', spacing: {objectLiterals: 'never'}}]
+    options: [{when: 'never', spacing: {objectLiterals: 'never'}}]
   }, {
     code: '<App foo={bar} />;',
-    options: [{spaces: 'never', allowMultiline: false}]
+    options: [{when: 'never', allowMultiline: false}]
   }, {
     code: '<App foo={bar} />;',
-    options: [{spaces: 'never', allowMultiline: true}]
+    options: [{when: 'never', allowMultiline: true}]
   }, {
     code: [
       '<App foo={',
       'bar',
       '} />;'
     ].join('\n'),
-    options: [{spaces: 'never', allowMultiline: true}]
+    options: [{when: 'never', allowMultiline: true}]
   }, {
     code: '<App foo={{ bar: true, baz: true }} />;',
-    options: [{spaces: 'never', spacing: {objectLiterals: 'never'}}]
+    options: [{when: 'never', spacing: {objectLiterals: 'never'}}]
   }, {
     code: '<App foo={ bar } />;',
-    options: [{spaces: 'always'}]
+    options: [{when: 'always'}]
   }, {
     code: '<App foo={ bar } />;',
-    options: [{spaces: 'always', allowMultiline: false}]
+    options: [{when: 'always', allowMultiline: false}]
   }, {
     code: '<App foo={ bar } />;',
-    options: [{spaces: 'always', allowMultiline: true}]
+    options: [{when: 'always', allowMultiline: true}]
   }, {
     code: [
       '<App foo={',
       'bar',
       '} />;'
     ].join('\n'),
-    options: [{spaces: 'always', allowMultiline: true}]
+    options: [{when: 'always', allowMultiline: true}]
   }, {
     code: '<App foo={{ bar: true, baz: true }} />;',
-    options: [{spaces: 'always', spacing: {objectLiterals: 'never'}}]
+    options: [{when: 'always', spacing: {objectLiterals: 'never'}}]
   }, {
     code: '<App foo={bar} />;',
-    options: [{attributes: {spaces: 'never'}}]
+    options: [{attributes: {when: 'never'}}]
   }, {
     code: '<App foo={ bar } />;',
-    options: [{attributes: {spaces: 'always'}}]
+    options: [{attributes: {when: 'always'}}]
   }, {
     code: '<App foo={ bar } />;',
-    options: [{attributes: {spaces: 'always', allowMultiline: false}}]
+    options: [{attributes: {when: 'always', allowMultiline: false}}]
   }, {
     code: '<App foo={{ bar:baz }} />;',
-    options: [{attributes: {spaces: 'never'}}]
+    options: [{attributes: {when: 'never'}}]
   }, {
     code: [
       '<App foo={',
       '{ bar: true, baz: true }',
       '} />;'
     ].join('\n'),
-    options: [{spaces: 'never'}]
+    options: [{when: 'never'}]
   }, {
     code: '<App foo={ {bar:baz} } />;',
-    options: [{attributes: {spaces: 'always'}}]
+    options: [{attributes: {when: 'always'}}]
   }, {
     code: [
       '<App foo={',
       '{ bar: true, baz: true }',
       '} />;'
     ].join('\n'),
-    options: [{attributes: {spaces: 'always'}}]
+    options: [{attributes: {when: 'always'}}]
   }, {
     code: [
       '<App foo={',
       'bar',
       '} />;'
     ].join('\n'),
-    options: [{attributes: {spaces: 'always'}}]
+    options: [{attributes: {when: 'always'}}]
   }, {
     code: [
       '<App foo={',
       'bar',
       '} />;'
     ].join('\n'),
-    options: [{attributes: {spaces: 'always', allowMultiline: true}}]
+    options: [{attributes: {when: 'always', allowMultiline: true}}]
   }, {
     code: [
       '<App foo={',
       'bar',
       '} />;'
     ].join('\n'),
-    options: [{attributes: {spaces: 'never'}}]
+    options: [{attributes: {when: 'never'}}]
   }, {
     code: [
       '<App foo={',
       'bar',
       '} />;'
     ].join('\n'),
-    options: [{attributes: {spaces: 'never', allowMultiline: true}}]
+    options: [{attributes: {when: 'never', allowMultiline: true}}]
   }, {
     code: [
       '<div>{/* comment */}</div>;'
     ].join('\n'),
-    options: [{attributes: {spaces: 'never'}}]
+    options: [{attributes: {when: 'never'}}]
   }, {
     code: '<App foo={bar/* comment */} />;',
-    options: [{attributes: {spaces: 'never'}}]
+    options: [{attributes: {when: 'never'}}]
   }, {
     code: '<App foo={ bar } />;',
-    options: [{attributes: {spaces: 'always', spacing: {}}}]
+    options: [{attributes: {when: 'always', spacing: {}}}]
   }, {
     code: [
       '<App foo={',
       'bar',
       '} />;'
     ].join('\n'),
-    options: [{spaces: 'always', spacing: {}}]
+    options: [{when: 'always', spacing: {}}]
   }, {
     code: [
       '<App foo={',
       'bar',
       '} />;'
     ].join('\n'),
-    options: [{attributes: {spaces: 'always', spacing: {}}}]
+    options: [{attributes: {when: 'always', spacing: {}}}]
   }, {
     code: '<App foo={{ bar: true, baz: true }} />;',
-    options: [{attributes: {spaces: 'always', spacing: {objectLiterals: 'never'}}}]
+    options: [{attributes: {when: 'always', spacing: {objectLiterals: 'never'}}}]
   }, {
     code: [
       '<App foo={',
       'bar',
       '} />;'
     ].join('\n'),
-    options: [{spaces: 'always', allowMultiline: true}]
+    options: [{when: 'always', allowMultiline: true}]
   }, {
     code: [
       '<App foo={',
       '{ bar: true, baz: true }',
       '} />;'
     ].join('\n'),
-    options: [{spaces: 'always', spacing: {objectLiterals: 'never'}}]
+    options: [{when: 'always', spacing: {objectLiterals: 'never'}}]
   }, {
     code: '<App {...bar} />;'
   }, {
     code: '<App {...bar} />;',
-    options: [{attributes: {spaces: 'never'}}]
+    options: [{attributes: {when: 'never'}}]
   }, {
     code: '<App { ...bar } />;',
-    options: [{attributes: {spaces: 'always'}}]
+    options: [{attributes: {when: 'always'}}]
   }, {
     code: '<App { ...bar } />;',
-    options: [{attributes: {spaces: 'always', allowMultiline: false}}]
+    options: [{attributes: {when: 'always', allowMultiline: false}}]
   }, {
     code: [
       '<App {',
       '...bar',
       '} />;'
     ].join('\n'),
-    options: [{attributes: {spaces: 'always'}}]
+    options: [{attributes: {when: 'always'}}]
   }, {
     code: [
       '<App {',
       '...bar',
       '} />;'
     ].join('\n'),
-    options: [{attributes: {spaces: 'always', allowMultiline: true}}]
+    options: [{attributes: {when: 'always', allowMultiline: true}}]
   }, {
     code: [
       '<App {',
       '...bar',
       '} />;'
     ].join('\n'),
-    options: [{attributes: {spaces: 'never'}}]
+    options: [{attributes: {when: 'never'}}]
   }, {
     code: [
       '<App {',
       '...bar',
       '} />;'
     ].join('\n'),
-    options: [{attributes: {spaces: 'never', allowMultiline: true}}]
+    options: [{attributes: {when: 'never', allowMultiline: true}}]
   }, {
     code: '<App {...bar/* comment */} />;',
-    options: [{attributes: {spaces: 'never'}}]
+    options: [{attributes: {when: 'never'}}]
   }, {
     code: '<App foo={bar} {...baz} />;'
   }, {
     code: '<App foo={bar} {...baz} />;',
-    options: [{attributes: {spaces: 'never'}}]
+    options: [{attributes: {when: 'never'}}]
   }, {
     code: '<App foo={ bar } { ...baz } />;',
-    options: [{attributes: {spaces: 'always'}}]
+    options: [{attributes: {when: 'always'}}]
   }, {
     code: '<App foo={ bar } { ...baz } />;',
-    options: [{attributes: {spaces: 'always', allowMultiline: false}}]
+    options: [{attributes: {when: 'always', allowMultiline: false}}]
   }, {
     code: '<App foo={{ bar:baz }} {...baz} />;',
-    options: [{attributes: {spaces: 'never'}}]
+    options: [{attributes: {when: 'never'}}]
   }, {
     code: '<App foo={ {bar:baz} } { ...baz } />;',
-    options: [{attributes: {spaces: 'always'}}]
+    options: [{attributes: {when: 'always'}}]
   }, {
     code: [
       '<App foo={',
@@ -253,16 +253,16 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '...bar',
       '}/>;'
     ].join('\n'),
-    options: [{attributes: {spaces: 'always'}}]
+    options: [{attributes: {when: 'always'}}]
   }, {
     code: '<App foo={bar/* comment */} {...baz/* comment */} />;',
-    options: [{attributes: {spaces: 'never'}}]
+    options: [{attributes: {when: 'never'}}]
   }, {
     code: '<App foo={3} bar={ {a: 2} } />',
-    options: [{attributes: {spaces: 'never', spacing: {objectLiterals: 'always'}}}]
+    options: [{attributes: {when: 'never', spacing: {objectLiterals: 'always'}}}]
   }, {
     code: '<div foo={ bar }>{bar}</div>',
-    options: [{attributes: {spaces: 'always'}}]
+    options: [{attributes: {when: 'always'}}]
   }],
 
   invalid: [{
@@ -284,7 +284,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ bar } />;',
     output: '<App foo={bar} />;',
-    options: [{spaces: 'never'}],
+    options: [{when: 'never'}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -297,7 +297,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     output: '<App foo={bar} />;',
-    options: [{spaces: 'never', allowMultiline: false}],
+    options: [{when: 'never', allowMultiline: false}],
     errors: [{
       message: 'There should be no newline after \'{\''
     }, {
@@ -306,7 +306,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ { bar: true, baz: true } } />;',
     output: '<App foo={{ bar: true, baz: true }} />;',
-    options: [{spaces: 'never', spacing: {objectLiterals: 'never'}}],
+    options: [{when: 'never', spacing: {objectLiterals: 'never'}}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -319,7 +319,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     output: '<App foo={{ bar: true, baz: true }} />;',
-    options: [{spaces: 'never', allowMultiline: false, spacing: {objectLiterals: 'never'}}],
+    options: [{when: 'never', allowMultiline: false, spacing: {objectLiterals: 'never'}}],
     errors: [{
       message: 'There should be no newline after \'{\''
     }, {
@@ -332,7 +332,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     output: '<App foo={ { bar: true, baz: true } } />;',
-    options: [{spaces: 'never', allowMultiline: false, spacing: {objectLiterals: 'always'}}],
+    options: [{when: 'never', allowMultiline: false, spacing: {objectLiterals: 'always'}}],
     errors: [{
       message: 'There should be no newline after \'{\''
     }, {
@@ -345,7 +345,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     output: '<App foo={{ bar: true, baz: true }} />;',
-    options: [{spaces: 'always', allowMultiline: false, spacing: {objectLiterals: 'never'}}],
+    options: [{when: 'always', allowMultiline: false, spacing: {objectLiterals: 'never'}}],
     errors: [{
       message: 'There should be no newline after \'{\''
     }, {
@@ -358,7 +358,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     output: '<App foo={ { bar: true, baz: true } } />;',
-    options: [{spaces: 'always', allowMultiline: false, spacing: {objectLiterals: 'always'}}],
+    options: [{when: 'always', allowMultiline: false, spacing: {objectLiterals: 'always'}}],
     errors: [{
       message: 'There should be no newline after \'{\''
     }, {
@@ -367,7 +367,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={{ bar: true, baz: true }} />;',
     output: '<App foo={ { bar: true, baz: true } } />;',
-    options: [{spaces: 'never', spacing: {objectLiterals: 'always'}}],
+    options: [{when: 'never', spacing: {objectLiterals: 'always'}}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -376,7 +376,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={bar} />;',
     output: '<App foo={ bar } />;',
-    options: [{spaces: 'always'}],
+    options: [{when: 'always'}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -389,7 +389,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     output: '<App foo={ bar } />;',
-    options: [{spaces: 'always', allowMultiline: false}],
+    options: [{when: 'always', allowMultiline: false}],
     errors: [{
       message: 'There should be no newline after \'{\''
     }, {
@@ -398,7 +398,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ { bar: true, baz: true } } />;',
     output: '<App foo={{ bar: true, baz: true }} />;',
-    options: [{spaces: 'always', spacing: {objectLiterals: 'never'}}],
+    options: [{when: 'always', spacing: {objectLiterals: 'never'}}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -407,7 +407,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={{ bar: true, baz: true }} />;',
     output: '<App foo={ { bar: true, baz: true } } />;',
-    options: [{spaces: 'always', spacing: {objectLiterals: 'always'}}],
+    options: [{when: 'always', spacing: {objectLiterals: 'always'}}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -416,7 +416,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ bar } />;',
     output: '<App foo={bar} />;',
-    options: [{attributes: {spaces: 'never'}}],
+    options: [{attributes: {when: 'never'}}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -425,7 +425,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ bar } />;',
     output: '<App foo={bar} />;',
-    options: [{attributes: {spaces: 'never', allowMultiline: false}}],
+    options: [{attributes: {when: 'never', allowMultiline: false}}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -434,7 +434,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={bar} />;',
     output: '<App foo={ bar } />;',
-    options: [{attributes: {spaces: 'always'}}],
+    options: [{attributes: {when: 'always'}}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -443,7 +443,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={bar} />;',
     output: '<App foo={ bar } />;',
-    options: [{attributes: {spaces: 'always', allowMultiline: false}}],
+    options: [{attributes: {when: 'always', allowMultiline: false}}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -452,28 +452,28 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ bar} />;',
     output: '<App foo={ bar } />;',
-    options: [{attributes: {spaces: 'always'}}],
+    options: [{attributes: {when: 'always'}}],
     errors: [{
       message: 'A space is required before \'}\''
     }]
   }, {
     code: '<App foo={bar } />;',
     output: '<App foo={ bar } />;',
-    options: [{attributes: {spaces: 'always'}}],
+    options: [{attributes: {when: 'always'}}],
     errors: [{
       message: 'A space is required after \'{\''
     }]
   }, {
     code: '<App foo={ bar} />;',
     output: '<App foo={bar} />;',
-    options: [{attributes: {spaces: 'never'}}],
+    options: [{attributes: {when: 'never'}}],
     errors: [{
       message: 'There should be no space after \'{\''
     }]
   }, {
     code: '<App foo={bar } />;',
     output: '<App foo={bar} />;',
-    options: [{attributes: {spaces: 'never'}}],
+    options: [{attributes: {when: 'never'}}],
     errors: [{
       message: 'There should be no space before \'}\''
     }]
@@ -484,7 +484,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     output: '<App foo={bar} />;',
-    options: [{attributes: {spaces: 'never', allowMultiline: false}}],
+    options: [{attributes: {when: 'never', allowMultiline: false}}],
     errors: [{
       message: 'There should be no newline after \'{\''
     }, {
@@ -497,7 +497,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     output: '<App foo={ bar } />;',
-    options: [{attributes: {spaces: 'always', allowMultiline: false}}],
+    options: [{attributes: {when: 'always', allowMultiline: false}}],
     errors: [{
       message: 'There should be no newline after \'{\''
     }, {
@@ -506,7 +506,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={bar} />;',
     output: '<App foo={ bar } />;',
-    options: [{attributes: {spaces: 'always', spacing: {}}}],
+    options: [{attributes: {when: 'always', spacing: {}}}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -515,21 +515,21 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ bar} />;',
     output: '<App foo={ bar } />;',
-    options: [{attributes: {spaces: 'always', spacing: {}}}],
+    options: [{attributes: {when: 'always', spacing: {}}}],
     errors: [{
       message: 'A space is required before \'}\''
     }]
   }, {
     code: '<App foo={bar } />;',
     output: '<App foo={ bar } />;',
-    options: [{attributes: {spaces: 'always', spacing: {}}}],
+    options: [{attributes: {when: 'always', spacing: {}}}],
     errors: [{
       message: 'A space is required after \'{\''
     }]
   }, {
     code: '<App foo={ {bar: true, baz: true} } />;',
     output: '<App foo={{bar: true, baz: true}} />;',
-    options: [{attributes: {spaces: 'always', spacing: {objectLiterals: 'never'}}}],
+    options: [{attributes: {when: 'always', spacing: {objectLiterals: 'never'}}}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -538,7 +538,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App { ...bar } />;',
     output: '<App {...bar} />;',
-    options: [{attributes: {spaces: 'never'}}],
+    options: [{attributes: {when: 'never'}}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -547,7 +547,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App { ...bar } />;',
     output: '<App {...bar} />;',
-    options: [{attributes: {spaces: 'never', allowMultiline: false}}],
+    options: [{attributes: {when: 'never', allowMultiline: false}}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -556,7 +556,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App {...bar} />;',
     output: '<App { ...bar } />;',
-    options: [{attributes: {spaces: 'always'}}],
+    options: [{attributes: {when: 'always'}}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -565,7 +565,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App {...bar} />;',
     output: '<App { ...bar } />;',
-    options: [{attributes: {spaces: 'always', allowMultiline: false}}],
+    options: [{attributes: {when: 'always', allowMultiline: false}}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -574,28 +574,28 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App { ...bar} />;',
     output: '<App { ...bar } />;',
-    options: [{attributes: {spaces: 'always'}}],
+    options: [{attributes: {when: 'always'}}],
     errors: [{
       message: 'A space is required before \'}\''
     }]
   }, {
     code: '<App {...bar } />;',
     output: '<App { ...bar } />;',
-    options: [{attributes: {spaces: 'always'}}],
+    options: [{attributes: {when: 'always'}}],
     errors: [{
       message: 'A space is required after \'{\''
     }]
   }, {
     code: '<App { ...bar} />;',
     output: '<App {...bar} />;',
-    options: [{attributes: {spaces: 'never'}}],
+    options: [{attributes: {when: 'never'}}],
     errors: [{
       message: 'There should be no space after \'{\''
     }]
   }, {
     code: '<App {...bar } />;',
     output: '<App {...bar} />;',
-    options: [{attributes: {spaces: 'never'}}],
+    options: [{attributes: {when: 'never'}}],
     errors: [{
       message: 'There should be no space before \'}\''
     }]
@@ -606,7 +606,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     output: '<App {...bar} />;',
-    options: [{attributes: {spaces: 'never', allowMultiline: false}}],
+    options: [{attributes: {when: 'never', allowMultiline: false}}],
     errors: [{
       message: 'There should be no newline after \'{\''
     }, {
@@ -619,7 +619,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     output: '<App { ...bar } />;',
-    options: [{attributes: {spaces: 'always', allowMultiline: false}}],
+    options: [{attributes: {when: 'always', allowMultiline: false}}],
     errors: [{
       message: 'There should be no newline after \'{\''
     }, {
@@ -628,7 +628,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ bar } { ...baz } />;',
     output: '<App foo={bar} {...baz} />;',
-    options: [{attributes: {spaces: 'never'}}],
+    options: [{attributes: {when: 'never'}}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -641,7 +641,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ bar } { ...baz } />;',
     output: '<App foo={bar} {...baz} />;',
-    options: [{attributes: {spaces: 'never', allowMultiline: false}}],
+    options: [{attributes: {when: 'never', allowMultiline: false}}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -654,7 +654,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={bar} {...baz} />;',
     output: '<App foo={ bar } { ...baz } />;',
-    options: [{attributes: {spaces: 'always'}}],
+    options: [{attributes: {when: 'always'}}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -667,7 +667,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={bar} {...baz} />;',
     output: '<App foo={ bar } { ...baz } />;',
-    options: [{attributes: {spaces: 'always', allowMultiline: false}}],
+    options: [{attributes: {when: 'always', allowMultiline: false}}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -680,7 +680,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ bar} { ...baz} />;',
     output: '<App foo={ bar } { ...baz } />;',
-    options: [{attributes: {spaces: 'always'}}],
+    options: [{attributes: {when: 'always'}}],
     errors: [{
       message: 'A space is required before \'}\''
     }, {
@@ -689,7 +689,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={bar } {...baz } />;',
     output: '<App foo={ bar } { ...baz } />;',
-    options: [{attributes: {spaces: 'always'}}],
+    options: [{attributes: {when: 'always'}}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -698,7 +698,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ bar} { ...baz} />;',
     output: '<App foo={bar} {...baz} />;',
-    options: [{attributes: {spaces: 'never'}}],
+    options: [{attributes: {when: 'never'}}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -707,7 +707,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={bar } {...baz } />;',
     output: '<App foo={bar} {...baz} />;',
-    options: [{attributes: {spaces: 'never'}}],
+    options: [{attributes: {when: 'never'}}],
     errors: [{
       message: 'There should be no space before \'}\''
     }, {
@@ -722,7 +722,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     output: '<App foo={bar} {...baz} />;',
-    options: [{attributes: {spaces: 'never', allowMultiline: false}}],
+    options: [{attributes: {when: 'never', allowMultiline: false}}],
     errors: [{
       message: 'There should be no newline after \'{\''
     }, {
@@ -741,7 +741,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     output: '<App foo={ bar } { ...baz } />;',
-    options: [{attributes: {spaces: 'always', allowMultiline: false}}],
+    options: [{attributes: {when: 'always', allowMultiline: false}}],
     errors: [{
       message: 'There should be no newline after \'{\''
     }, {
@@ -754,7 +754,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ 3 } bar={{a: 2}} />',
     output: '<App foo={3} bar={ {a: 2} } />',
-    options: [{attributes: {spaces: 'never', spacing: {objectLiterals: 'always'}}}],
+    options: [{attributes: {when: 'never', spacing: {objectLiterals: 'always'}}}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
@@ -775,7 +775,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<div foo={foo /* comment */} />',
     output: '<div foo={ foo /* comment */ } />',
-    options: [{attributes: {spaces: 'always'}}],
+    options: [{attributes: {when: 'always'}}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
@@ -792,7 +792,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<div foo={/* comment */ foo} />',
     output: '<div foo={ /* comment */ foo } />',
-    options: [{attributes: {spaces: 'always'}}],
+    options: [{attributes: {when: 'always'}}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
