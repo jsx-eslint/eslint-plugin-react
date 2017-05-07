@@ -44,6 +44,38 @@ ruleTester.run('jsx-curly-spacing', rule, {
     code: '<App foo={{ bar: true, baz: true }} />;'
   }, {
     code: '<App foo={bar} />;',
+    options: [{attributes: true}]
+  }, {
+    code: [
+      '<App foo={',
+      'bar',
+      '} />;'
+    ].join('\n'),
+    options: [{attributes: true}]
+  }, {
+    code: '<App foo={{ bar: true, baz: true }} />;',
+    options: [{attributes: true}]
+  }, {
+    code: '<App foo={bar} />;',
+    options: [{attributes: false}]
+  }, {
+    code: [
+      '<App foo={',
+      'bar',
+      '} />;'
+    ].join('\n'),
+    options: [{attributes: false}]
+  }, {
+    code: '<App foo={{ bar: true, baz: true }} />;',
+    options: [{attributes: false}]
+  }, {
+    code: '<App foo={ bar } />;',
+    options: [{attributes: false}]
+  }, {
+    code: '<App foo={ { bar: true, baz: true } } />;',
+    options: [{attributes: false}]
+  }, {
+    code: '<App foo={bar} />;',
     options: [{when: 'never'}]
   }, {
     code: [
@@ -284,6 +316,24 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ bar } />;',
     output: '<App foo={bar} />;',
+    options: [{attributes: true}],
+    errors: [{
+      message: 'There should be no space after \'{\''
+    }, {
+      message: 'There should be no space before \'}\''
+    }]
+  }, {
+    code: '<App foo={ { bar: true, baz: true } } />;',
+    output: '<App foo={{ bar: true, baz: true }} />;',
+    options: [{attributes: true}],
+    errors: [{
+      message: 'There should be no space after \'{\''
+    }, {
+      message: 'There should be no space before \'}\''
+    }]
+  }, {
+    code: '<App foo={ bar } />;',
+    output: '<App foo={bar} />;',
     options: [{when: 'never'}],
     errors: [{
       message: 'There should be no space after \'{\''
@@ -408,6 +458,86 @@ ruleTester.run('jsx-curly-spacing', rule, {
     code: '<App foo={{ bar: true, baz: true }} />;',
     output: '<App foo={ { bar: true, baz: true } } />;',
     options: [{when: 'always', spacing: {objectLiterals: 'always'}}],
+    errors: [{
+      message: 'A space is required after \'{\''
+    }, {
+      message: 'A space is required before \'}\''
+    }]
+  }, {
+    code: '<App foo={ bar } />;',
+    output: '<App foo={bar} />;',
+    options: [{attributes: true, when: 'never'}],
+    errors: [{
+      message: 'There should be no space after \'{\''
+    }, {
+      message: 'There should be no space before \'}\''
+    }]
+  }, {
+    code: [
+      '<App foo={',
+      'bar',
+      '} />;'
+    ].join('\n'),
+    output: '<App foo={bar} />;',
+    options: [{attributes: true, when: 'never', allowMultiline: false}],
+    errors: [{
+      message: 'There should be no newline after \'{\''
+    }, {
+      message: 'There should be no newline before \'}\''
+    }]
+  }, {
+    code: '<App foo={ { bar: true, baz: true } } />;',
+    output: '<App foo={{ bar: true, baz: true }} />;',
+    options: [{attributes: true, when: 'never', spacing: {objectLiterals: 'never'}}],
+    errors: [{
+      message: 'There should be no space after \'{\''
+    }, {
+      message: 'There should be no space before \'}\''
+    }]
+  }, {
+    code: '<App foo={{ bar: true, baz: true }} />;',
+    output: '<App foo={ { bar: true, baz: true } } />;',
+    options: [{attributes: true, when: 'never', spacing: {objectLiterals: 'always'}}],
+    errors: [{
+      message: 'A space is required after \'{\''
+    }, {
+      message: 'A space is required before \'}\''
+    }]
+  }, {
+    code: '<App foo={bar} />;',
+    output: '<App foo={ bar } />;',
+    options: [{attributes: true, when: 'always'}],
+    errors: [{
+      message: 'A space is required after \'{\''
+    }, {
+      message: 'A space is required before \'}\''
+    }]
+  }, {
+    code: [
+      '<App foo={',
+      'bar',
+      '} />;'
+    ].join('\n'),
+    output: '<App foo={ bar } />;',
+    options: [{attributes: true, when: 'always', allowMultiline: false}],
+    errors: [{
+      message: 'There should be no newline after \'{\''
+    }, {
+      message: 'There should be no newline before \'}\''
+    }]
+  }, {
+    code: '<App foo={ { bar: true, baz: true } } />;',
+    output: '<App foo={{ bar: true, baz: true }} />;',
+    options: [{attributes: true, when: 'always', spacing: {objectLiterals: 'never'}}],
+    errors: [{
+      message: 'There should be no space after \'{\''
+    }, {
+      message: 'There should be no space before \'}\''
+    }]
+  }, {
+    code: '<App foo={{ bar: true, baz: true }} />;',
+    output: '<App foo={ { bar: true, baz: true } } />;',
+    options: [{attributes: true, when: 'always', spacing: {objectLiterals: 'always'}}],
     errors: [{
       message: 'A space is required after \'{\''
     }, {
