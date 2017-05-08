@@ -3,10 +3,10 @@
         "node": true
     },
     parserOptions: {
-      ecmaVersion: 2015
-    },
-    ecmaFeatures: {
-        jsx: true
+      ecmaVersion: 6,
+      ecmaFeatures: {
+          jsx: true
+      }
     },
     "rules": {
         // Possible Errors
