@@ -1376,6 +1376,20 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Person = {|',
+        '  ...data,',
+        '  lastname: string',
+        '|};',
+        'class Hello extends React.Component {',
+        '  props: Person;',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
