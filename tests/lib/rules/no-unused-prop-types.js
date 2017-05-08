@@ -12,7 +12,8 @@ var rule = require('../../../lib/rules/no-unused-prop-types');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
     experimentalObjectRestSpread: true,
     jsx: true
@@ -31,7 +32,7 @@ require('babel-eslint');
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-unused-prop-types', rule, {
 
   valid: [
@@ -45,8 +46,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>Hello {this.props.name}</div>;',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -57,8 +57,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>Hello {this.props.name.firstname}</div>;',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -66,8 +65,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>Hello World</div>;',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -76,8 +74,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>Hello World</div>;',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -86,8 +83,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>Hello World {this.props[propName]}</div>;',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -96,8 +92,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>Hello {this.props.name}</div>;',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -106,8 +101,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>Hello {this.props.name}</div>;',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -115,8 +109,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>Hello World</div>;',
         '  }',
         '}'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -128,8 +121,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  firstname: PropTypes.string',
         '};',
         'Hello.propTypes.lastname = PropTypes.string;'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -143,8 +135,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>Hello {user.name}</div>;',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello {',
@@ -152,16 +143,14 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return \'Hello\' + this.props.name;',
         '  }',
         '}'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello {',
         '  method;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
-      parserOptions: parserOptions
+      parser: 'babel-eslint'
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -174,8 +163,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>Hello {this.props.name}</div>;',
         '  }',
         '}'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       // Props validation is ignored when spread is used
       code: [
@@ -192,8 +180,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  icon: PropTypes.bool',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
-      parserOptions: parserOptions
+      parser: 'babel-eslint'
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -202,8 +189,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>Hello {firstname}</div>;',
         '  }',
         '}'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -215,8 +201,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
-      parserOptions: parserOptions
+      parser: 'babel-eslint'
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -227,8 +212,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         'Hello.propTypes = {',
         '  \'firstname\': PropTypes.string',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -242,8 +226,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         'Hello.propTypes = {',
         '  \'firstname\': PropTypes.string',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -257,8 +240,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  b: PropTypes.string',
         '});'
       ].join('\n'),
-      options: [{skipShapeProps: false}],
-      parserOptions: parserOptions
+      options: [{skipShapeProps: false}]
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -275,8 +257,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};',
         'Hello.propTypes.a.b.c = PropTypes.number;'
       ].join('\n'),
-      options: [{skipShapeProps: false}],
-      parserOptions: parserOptions
+      options: [{skipShapeProps: false}]
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -297,8 +278,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  )',
         '};'
       ].join('\n'),
-      options: [{skipShapeProps: false}],
-      parserOptions: parserOptions
+      options: [{skipShapeProps: false}]
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -321,8 +301,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  )',
         '};'
       ].join('\n'),
-      options: [{skipShapeProps: false}],
-      parserOptions: parserOptions
+      options: [{skipShapeProps: false}]
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -337,8 +316,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    PropTypes.string',
         '  ])',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -362,8 +340,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  ])',
         '};'
       ].join('\n'),
-      options: [{skipShapeProps: false}],
-      parserOptions: parserOptions
+      options: [{skipShapeProps: false}]
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -376,8 +353,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         'Hello.propTypes = {',
         '  a: PropTypes.instanceOf(Hello)',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -404,8 +380,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  numb: PropTypes.number,',
         '  stri: PropTypes.string',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -434,8 +409,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         'Hello.propTypes = {',
         '  "some.value": PropTypes.string',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -447,8 +421,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         'Hello.propTypes = {',
         '  "arr": PropTypes.array',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -463,8 +436,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  )',
         '};'
       ].join('\n'),
-      options: [{skipShapeProps: false}],
-      parserOptions: parserOptions
+      options: [{skipShapeProps: false}]
     }, {
       code: [
         'var TestComp1 = createReactClass({',
@@ -479,8 +451,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>{icons}</div>;',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -519,8 +490,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>{nextPath}</div>;',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -532,8 +502,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      options: [{customValidators: ['CustomValidator']}],
-      parserOptions: parserOptions
+      options: [{customValidators: ['CustomValidator']}]
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -547,8 +516,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      options: [{customValidators: ['CustomValidator'], skipShapeProps: false}],
-      parserOptions: parserOptions
+      options: [{customValidators: ['CustomValidator'], skipShapeProps: false}]
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -562,8 +530,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      options: [{customValidators: ['CustomValidator'], skipShapeProps: false}],
-      parserOptions: parserOptions
+      options: [{customValidators: ['CustomValidator'], skipShapeProps: false}]
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -577,8 +544,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      options: [{customValidators: ['CustomValidator'], skipShapeProps: false}],
-      parserOptions: parserOptions
+      options: [{customValidators: ['CustomValidator'], skipShapeProps: false}]
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -590,8 +556,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      options: [{customValidators: ['CustomValidator']}],
-      parserOptions: parserOptions
+      options: [{customValidators: ['CustomValidator']}]
     }, {
       code: [
         'class Comp1 extends Component {',
@@ -628,8 +593,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div />;',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -638,8 +602,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>Hello World</div>;',
         '  }',
         '}'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -652,8 +615,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         'Hello.propTypes = {',
         '  users: PropTypes.arrayOf(PropTypes.object)',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -662,8 +624,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>Hello</div>;',
         '  }',
         '}'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -820,8 +781,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    );',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'const statelessComponent = (props) => {',
@@ -833,8 +793,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         'statelessComponent.propTypes = {',
         '  someProp: PropTypes.string',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'const statelessComponent = ({ someProp }) => {',
@@ -846,8 +805,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         'statelessComponent.propTypes = {',
         '  someProp: PropTypes.string',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'const statelessComponent = function({ someProp }) {',
@@ -859,8 +817,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         'statelessComponent.propTypes = {',
         '  someProp: PropTypes.string',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'function statelessComponent({ someProp }) {',
@@ -872,29 +829,25 @@ ruleTester.run('no-unused-prop-types', rule, {
         'statelessComponent.propTypes = {',
         '  someProp: PropTypes.string',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'function notAComponent({ something }) {',
         '  return something + 1;',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'const notAComponent = function({ something }) {',
         '  return something + 1;',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'const notAComponent = ({ something }) => {',
         '  return something + 1;',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       // Validation is ignored on reassigned props object
       code: [
@@ -1084,8 +1037,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    ...otherPropTypes,',
         '    firstName: PropTypes.string',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       // Ignore destructured function arguments
       code: [
@@ -1094,8 +1046,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return ["string"].map(({length}) => <div>{length}</div>);',
         '  }',
         '}'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       // Flow annotations on stateless components
       code: [
@@ -1145,8 +1096,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    <div/>',
         '  )',
         '}'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'function JobList(props) {',
@@ -1259,8 +1209,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
-      parserOptions: parserOptions
+      parser: 'babel-eslint'
     }, {
       // Destructured function props in the constructor shouldn't throw errors
       code: [
@@ -1274,8 +1223,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
-      parserOptions: parserOptions
+      parser: 'babel-eslint'
     }, {
       // Destructured props in the `componentWillReceiveProps` method shouldn't throw errors
       code: [
@@ -1289,8 +1237,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
-      parserOptions: parserOptions
+      parser: 'babel-eslint'
     }, {
       // Destructured function props in the `componentWillReceiveProps` method shouldn't throw errors
       code: [
@@ -1303,8 +1250,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
-      parserOptions: parserOptions
+      parser: 'babel-eslint'
     }, {
       // Destructured props in the `shouldComponentUpdate` method shouldn't throw errors
       code: [
@@ -1318,8 +1264,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
-      parserOptions: parserOptions
+      parser: 'babel-eslint'
     }, {
       // Destructured function props in the `shouldComponentUpdate` method shouldn't throw errors
       code: [
@@ -1332,8 +1277,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
-      parserOptions: parserOptions
+      parser: 'babel-eslint'
     }, {
       // Destructured props in the `componentWillUpdate` method shouldn't throw errors
       code: [
@@ -1347,8 +1291,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
-      parserOptions: parserOptions
+      parser: 'babel-eslint'
     }, {
       // Destructured function props in the `componentWillUpdate` method shouldn't throw errors
       code: [
@@ -1361,8 +1304,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
-      parserOptions: parserOptions
+      parser: 'babel-eslint'
     }, {
       // Destructured props in the `componentDidUpdate` method shouldn't throw errors
       code: [
@@ -1376,8 +1318,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
-      parserOptions: parserOptions
+      parser: 'babel-eslint'
     }, {
       // Destructured function props in the `componentDidUpdate` method shouldn't throw errors
       code: [
@@ -1390,8 +1331,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
-      parserOptions: parserOptions
+      parser: 'babel-eslint'
     }, {
       // Destructured state props in `componentDidUpdate` [Issue #825]
       code: [
@@ -1404,8 +1344,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
-      parserOptions: parserOptions
+      parser: 'babel-eslint'
     }, {
       // Destructured state props in `componentDidUpdate` without custom parser [Issue #825]
       code: [
@@ -1417,8 +1356,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return something;',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       // Destructured props in a stateless function
       code: [
@@ -1426,8 +1364,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  const {...rest} = props;',
         '  return <div />;',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       // `no-unused-prop-types` in jsx expressions - [Issue #885]
       code: [
@@ -1444,8 +1381,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  nextPage: PropTypes.func.isRequired,',
         '  previousPage: PropTypes.func.isRequired,',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       // `no-unused-prop-types` rest param props in jsx expressions - [Issue #885]
       code: [
@@ -1459,8 +1395,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  nextPage: PropTypes.func.isRequired,',
         '  previousPage: PropTypes.func.isRequired,',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'class Hello extends Component {',
@@ -1475,8 +1410,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  foo: PropTypes.bool,',
         '  bar: PropTypes.bool',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }
   ],
 
@@ -1493,9 +1427,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      ecmaFeatures: {
-        jsx: false
-      },
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -1512,7 +1443,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{
         message: '\'name\' PropType is defined but prop is never used',
         line: 3,
@@ -1530,7 +1460,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      parserOptions: parserOptions,
       errors: [{
         message: '\'name\' PropType is defined but prop is never used',
         line: 3,
@@ -1547,7 +1476,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  unused: PropTypes.string',
         '};'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -1567,7 +1495,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -1588,7 +1515,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }, {
@@ -1606,7 +1532,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  unused: PropTypes.string',
         '};'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -1624,7 +1549,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  })',
         '};'
       ].join('\n'),
-      parserOptions: parserOptions,
       options: [{skipShapeProps: false}],
       errors: [{
         message: '\'a.b\' PropType is defined but prop is never used'
@@ -1645,7 +1569,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  })',
         '};'
       ].join('\n'),
-      parserOptions: parserOptions,
       options: [{skipShapeProps: false}],
       errors: [{
         message: '\'a.b.c\' PropType is defined but prop is never used'
@@ -1668,7 +1591,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  )',
         '};'
       ].join('\n'),
-      parserOptions: parserOptions,
       options: [{skipShapeProps: false}],
       errors: [
         {message: '\'a.*.unused\' PropType is defined but prop is never used'}
@@ -1693,7 +1615,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  )',
         '};'
       ].join('\n'),
-      parserOptions: parserOptions,
       options: [{skipShapeProps: false}],
       errors: [
         {message: '\'a.*.unused\' PropType is defined but prop is never used'}
@@ -1720,7 +1641,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  ])',
         '};'
       ].join('\n'),
-      parserOptions: parserOptions,
       options: [{skipShapeProps: false}],
       errors: [
         {message: '\'a.unused\' PropType is defined but prop is never used'},
@@ -1738,7 +1658,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  "some.unused": PropTypes.string',
         '};'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [
         {message: '\'some.unused\' PropType is defined but prop is never used'}
       ]
@@ -1758,7 +1677,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  )',
         '};'
       ].join('\n'),
-      parserOptions: parserOptions,
       options: [{skipShapeProps: false}],
       errors: [
         {message: '\'arr.*.some.unused\' PropType is defined but prop is never used'}
@@ -2119,7 +2037,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-          {message: '\'person.name.unused\' PropType is defined but prop is never used'}
+        {message: '\'person.name.unused\' PropType is defined but prop is never used'}
       ]
     }, {
       code: [
@@ -2133,7 +2051,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-          {message: '\'person.name.unused\' PropType is defined but prop is never used'}
+        {message: '\'person.name.unused\' PropType is defined but prop is never used'}
       ]
     }, {
       code: [
@@ -2151,7 +2069,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-          {message: '\'people.*.name.unused\' PropType is defined but prop is never used'}
+        {message: '\'people.*.name.unused\' PropType is defined but prop is never used'}
       ]
     }, {
       code: [
@@ -2170,7 +2088,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-          {message: '\'people.*.name.unused\' PropType is defined but prop is never used'}
+        {message: '\'people.*.name.unused\' PropType is defined but prop is never used'}
       ]
     }, {
       code: [
@@ -2184,8 +2102,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [
-          {message: '\'result.ok\' PropType is defined but prop is never used'},
-          {message: '\'result.ok\' PropType is defined but prop is never used'}
+        {message: '\'result.ok\' PropType is defined but prop is never used'},
+        {message: '\'result.ok\' PropType is defined but prop is never used'}
       ]
     }, {
       code: [
@@ -2195,7 +2113,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}',
         'Greetings.propTypes = {unused: Object};'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -2206,7 +2123,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         ')',
         'MyComponent.propTypes = {unused: Object};'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -2215,7 +2131,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         'const MyComponent = props => props.test ? <div /> : <span />',
         'MyComponent.propTypes = {unused: Object};'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -2246,7 +2161,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -2265,7 +2179,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -2284,7 +2197,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -2302,7 +2214,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -2321,7 +2232,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -2339,7 +2249,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -2358,7 +2267,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -2376,7 +2284,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -2395,7 +2302,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -2413,7 +2319,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      parserOptions: parserOptions,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -2431,7 +2336,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
-      parserOptions: parserOptions,
       errors: [{
         message: '\'something\' PropType is defined but prop is never used',
         line: 3,
@@ -2448,7 +2352,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '})'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{
         message: '\'something\' PropType is defined but prop is never used',
         line: 3,

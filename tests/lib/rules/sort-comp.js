@@ -12,8 +12,10 @@ var rule = require('../../../lib/rules/sort-comp');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -24,7 +26,7 @@ require('babel-eslint');
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('sort-comp', rule, {
 
   valid: [{
@@ -51,8 +53,7 @@ ruleTester.run('sort-comp', rule, {
       '    return <div>Hello</div>;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Must validate a class with missing groups
     code: [
@@ -61,8 +62,7 @@ ruleTester.run('sort-comp', rule, {
       '    return <div>Hello</div>;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Must put a custom method in 'everything-else'
     code: [
@@ -72,8 +72,7 @@ ruleTester.run('sort-comp', rule, {
       '    return <button onClick={this.onClick}>Hello</button>;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Must allow us to re-order the groups
     code: [
@@ -91,8 +90,7 @@ ruleTester.run('sort-comp', rule, {
         'render',
         'everything-else'
       ]
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     // Must allow us to create a RegExp-based group
     code: [
@@ -111,8 +109,7 @@ ruleTester.run('sort-comp', rule, {
         'render',
         '/on.*/'
       ]
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     // Must allow us to create a named group
     code: [
@@ -136,8 +133,7 @@ ruleTester.run('sort-comp', rule, {
           '/on.*/'
         ]
       }
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     // Must allow a method to be in different places if it's matches multiple patterns
     code: [
@@ -154,8 +150,7 @@ ruleTester.run('sort-comp', rule, {
         'render',
         '/.*Click/'
       ]
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     // Must allow us to use 'constructor' as a method name
     code: [
@@ -174,8 +169,7 @@ ruleTester.run('sort-comp', rule, {
         'everything-else',
         'render'
       ]
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     // Must ignore stateless components
     code: [
@@ -215,7 +209,6 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    parserOptions: parserOptions,
     options: [{
       order: [
         'type-annotations',
@@ -238,7 +231,6 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    parserOptions: parserOptions,
     options: [{
       order: [
         'type-annotations',
@@ -260,7 +252,6 @@ ruleTester.run('sort-comp', rule, {
       '  displayName : \'Hello\',',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{message: 'render should be placed after displayName'}]
   }, {
     // Must run rule when render uses createElement instead of JSX
@@ -272,7 +263,6 @@ ruleTester.run('sort-comp', rule, {
       '  displayName : \'Hello\',',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{message: 'render should be placed after displayName'}]
   }, {
     // Must force a custom method to be placed before render
@@ -284,7 +274,6 @@ ruleTester.run('sort-comp', rule, {
       '  onClick: function() {},',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{message: 'render should be placed after onClick'}]
   }, {
     // Must force a custom method to be placed after render if no 'everything-else' group is specified
@@ -303,7 +292,6 @@ ruleTester.run('sort-comp', rule, {
         'render'
       ]
     }],
-    parserOptions: parserOptions,
     errors: [{message: 'onClick should be placed after render'}]
   }, {
     // Must validate static properties
@@ -316,7 +304,6 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    parserOptions: parserOptions,
     errors: [{message: 'render should be placed after displayName'}]
   }, {
     // Type Annotations should not be at the top by default
@@ -331,7 +318,6 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    parserOptions: parserOptions,
     errors: [{message: 'props should be placed after state'}]
   }, {
     // Type Annotations should be first

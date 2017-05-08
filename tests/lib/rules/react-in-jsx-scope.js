@@ -13,9 +13,10 @@ var rule = require('../../../lib/rules/react-in-jsx-scope');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -30,17 +31,17 @@ var settings = {
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('react-in-jsx-scope', rule, {
   valid: [
-    {code: 'var React, App; <App />;', parserOptions: parserOptions},
-    {code: 'var React; <img />;', parserOptions: parserOptions},
-    {code: 'var React; <x-gif />;', parserOptions: parserOptions},
-    {code: 'var React, App, a=1; <App attr={a} />;', parserOptions: parserOptions},
-    {code: 'var React, App, a=1; function elem() { return <App attr={a} />; }', parserOptions: parserOptions},
-    {code: 'var React, App; <App />;', parserOptions: parserOptions},
-    {code: '/** @jsx Foo */ var Foo, App; <App />;', parserOptions: parserOptions},
-    {code: '/** @jsx Foo.Bar */ var Foo, App; <App />;', parserOptions: parserOptions},
+    {code: 'var React, App; <App />;'},
+    {code: 'var React; <img />;'},
+    {code: 'var React; <x-gif />;'},
+    {code: 'var React, App, a=1; <App attr={a} />;'},
+    {code: 'var React, App, a=1; function elem() { return <App attr={a} />; }'},
+    {code: 'var React, App; <App />;'},
+    {code: '/** @jsx Foo */ var Foo, App; <App />;'},
+    {code: '/** @jsx Foo.Bar */ var Foo, App; <App />;'},
     {code: [
       'import React from \'react/addons\';',
       'const Button = createReactClass({',
@@ -51,26 +52,26 @@ ruleTester.run('react-in-jsx-scope', rule, {
       '  }',
       '});',
       'export default Button;'
-    ].join('\n'), parserOptions: parserOptions},
-    {code: 'var Foo, App; <App />;', settings: settings, parserOptions: parserOptions}
+    ].join('\n')},
+    {code: 'var Foo, App; <App />;', settings: settings}
   ],
   invalid: [{
     code: 'var App, a = <App />;',
-    errors: [{message: '\'React\' must be in scope when using JSX'}], parserOptions: parserOptions
+    errors: [{message: '\'React\' must be in scope when using JSX'}]
   }, {
     code: 'var a = <App />;',
-    errors: [{message: '\'React\' must be in scope when using JSX'}], parserOptions: parserOptions
+    errors: [{message: '\'React\' must be in scope when using JSX'}]
   }, {
     code: 'var a = <img />;',
-    errors: [{message: '\'React\' must be in scope when using JSX'}], parserOptions: parserOptions
+    errors: [{message: '\'React\' must be in scope when using JSX'}]
   }, {
     code: '/** @jsx React.DOM */ var a = <img />;',
-    errors: [{message: '\'React\' must be in scope when using JSX'}], parserOptions: parserOptions
+    errors: [{message: '\'React\' must be in scope when using JSX'}]
   }, {
     code: '/** @jsx Foo.bar */ var React, a = <img />;',
-    errors: [{message: '\'Foo\' must be in scope when using JSX'}], parserOptions: parserOptions
+    errors: [{message: '\'Foo\' must be in scope when using JSX'}]
   }, {
     code: 'var React, a = <img />;',
-    errors: [{message: '\'Foo\' must be in scope when using JSX'}], settings: settings, parserOptions: parserOptions
+    errors: [{message: '\'Foo\' must be in scope when using JSX'}], settings: settings
   }]
 });

@@ -12,8 +12,10 @@ var rule = require('../../../lib/rules/jsx-equals-spacing');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -22,69 +24,53 @@ var parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-equals-spacing', rule, {
   valid: [{
+    code: '<App />'
+  }, {
+    code: '<App foo />'
+  }, {
+    code: '<App foo="bar" />'
+  }, {
+    code: '<App foo={e => bar(e)} />'
+  }, {
+    code: '<App {...props} />'
+  }, {
     code: '<App />',
-    parserOptions: parserOptions
+    options: ['never']
   }, {
     code: '<App foo />',
-    parserOptions: parserOptions
+    options: ['never']
   }, {
     code: '<App foo="bar" />',
-    parserOptions: parserOptions
+    options: ['never']
   }, {
     code: '<App foo={e => bar(e)} />',
-    parserOptions: parserOptions
+    options: ['never']
   }, {
     code: '<App {...props} />',
-    parserOptions: parserOptions
+    options: ['never']
   }, {
     code: '<App />',
-    options: ['never'],
-    parserOptions: parserOptions
+    options: ['always']
   }, {
     code: '<App foo />',
-    options: ['never'],
-    parserOptions: parserOptions
-  }, {
-    code: '<App foo="bar" />',
-    options: ['never'],
-    parserOptions: parserOptions
-  }, {
-    code: '<App foo={e => bar(e)} />',
-    options: ['never'],
-    parserOptions: parserOptions
-  }, {
-    code: '<App {...props} />',
-    options: ['never'],
-    parserOptions: parserOptions
-  }, {
-    code: '<App />',
-    options: ['always'],
-    parserOptions: parserOptions
-  }, {
-    code: '<App foo />',
-    options: ['always'],
-    parserOptions: parserOptions
+    options: ['always']
   }, {
     code: '<App foo = "bar" />',
-    options: ['always'],
-    parserOptions: parserOptions
+    options: ['always']
   }, {
     code: '<App foo = {e => bar(e)} />',
-    options: ['always'],
-    parserOptions: parserOptions
+    options: ['always']
   }, {
     code: '<App {...props} />',
-    options: ['always'],
-    parserOptions: parserOptions
+    options: ['always']
   }],
 
   invalid: [{
     code: '<App foo = {bar} />',
     output: '<App foo={bar} />',
-    parserOptions: parserOptions,
     errors: [
       {message: 'There should be no space before \'=\''},
       {message: 'There should be no space after \'=\''}
@@ -93,7 +79,6 @@ ruleTester.run('jsx-equals-spacing', rule, {
     code: '<App foo = {bar} />',
     output: '<App foo={bar} />',
     options: ['never'],
-    parserOptions: parserOptions,
     errors: [
       {message: 'There should be no space before \'=\''},
       {message: 'There should be no space after \'=\''}
@@ -102,7 +87,6 @@ ruleTester.run('jsx-equals-spacing', rule, {
     code: '<App foo ={bar} />',
     output: '<App foo={bar} />',
     options: ['never'],
-    parserOptions: parserOptions,
     errors: [
       {message: 'There should be no space before \'=\''}
     ]
@@ -110,7 +94,6 @@ ruleTester.run('jsx-equals-spacing', rule, {
     code: '<App foo= {bar} />',
     output: '<App foo={bar} />',
     options: ['never'],
-    parserOptions: parserOptions,
     errors: [
       {message: 'There should be no space after \'=\''}
     ]
@@ -118,7 +101,6 @@ ruleTester.run('jsx-equals-spacing', rule, {
     code: '<App foo= {bar} bar = {baz} />',
     output: '<App foo={bar} bar={baz} />',
     options: ['never'],
-    parserOptions: parserOptions,
     errors: [
       {message: 'There should be no space after \'=\''},
       {message: 'There should be no space before \'=\''},
@@ -128,7 +110,6 @@ ruleTester.run('jsx-equals-spacing', rule, {
     code: '<App foo={bar} />',
     output: '<App foo = {bar} />',
     options: ['always'],
-    parserOptions: parserOptions,
     errors: [
       {message: 'A space is required before \'=\''},
       {message: 'A space is required after \'=\''}
@@ -137,7 +118,6 @@ ruleTester.run('jsx-equals-spacing', rule, {
     code: '<App foo ={bar} />',
     output: '<App foo = {bar} />',
     options: ['always'],
-    parserOptions: parserOptions,
     errors: [
       {message: 'A space is required after \'=\''}
     ]
@@ -145,7 +125,6 @@ ruleTester.run('jsx-equals-spacing', rule, {
     code: '<App foo= {bar} />',
     output: '<App foo = {bar} />',
     options: ['always'],
-    parserOptions: parserOptions,
     errors: [
       {message: 'A space is required before \'=\''}
     ]
@@ -153,7 +132,6 @@ ruleTester.run('jsx-equals-spacing', rule, {
     code: '<App foo={bar} bar ={baz} />',
     output: '<App foo = {bar} bar = {baz} />',
     options: ['always'],
-    parserOptions: parserOptions,
     errors: [
       {message: 'A space is required before \'=\''},
       {message: 'A space is required after \'=\''},

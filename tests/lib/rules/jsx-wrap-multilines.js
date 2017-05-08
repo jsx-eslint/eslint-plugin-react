@@ -12,8 +12,10 @@ var rule = require('../../../lib/rules/jsx-wrap-multilines');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -136,73 +138,55 @@ var ARROW_NO_PAREN = `
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-wrap-multilines', rule, {
 
   valid: [
     {
-      code: RETURN_SINGLE_LINE,
-      parserOptions: parserOptions
+      code: RETURN_SINGLE_LINE
     }, {
-      code: RETURN_PAREN,
-      parserOptions: parserOptions
+      code: RETURN_PAREN
     }, {
       code: RETURN_NO_PAREN,
-      options: [{return: false}],
-      parserOptions: parserOptions
+      options: [{return: false}]
     }, {
-      code: DECLARATION_TERNARY_SINGLE_LINE,
-      parserOptions: parserOptions
+      code: DECLARATION_TERNARY_SINGLE_LINE
     }, {
-      code: DECLARATION_TERNARY_PAREN,
-      parserOptions: parserOptions
+      code: DECLARATION_TERNARY_PAREN
     }, {
       code: DECLARATION_TERNARY_NO_PAREN,
-      options: [{declaration: false}],
-      parserOptions: parserOptions
+      options: [{declaration: false}]
     }, {
-      code: ASSIGNMENT_TERNARY_SINGLE_LINE,
-      parserOptions: parserOptions
+      code: ASSIGNMENT_TERNARY_SINGLE_LINE
     }, {
-      code: ASSIGNMENT_TERNARY_PAREN,
-      parserOptions: parserOptions
+      code: ASSIGNMENT_TERNARY_PAREN
     }, {
       code: ASSIGNMENT_TERNARY_NO_PAREN,
-      options: [{assignment: false}],
-      parserOptions: parserOptions
+      options: [{assignment: false}]
     }, {
-      code: DECLARATION_SINGLE_LINE,
-      parserOptions: parserOptions
+      code: DECLARATION_SINGLE_LINE
     }, {
-      code: DECLARATION_PAREN,
-      parserOptions: parserOptions
+      code: DECLARATION_PAREN
     }, {
       code: DECLARATION_NO_PAREN,
-      options: [{declaration: false}],
-      parserOptions: parserOptions
+      options: [{declaration: false}]
     }, {
       code: ASSIGNMENT_SINGLE_LINE,
-      options: [{declaration: false}],
-      parserOptions: parserOptions
+      options: [{declaration: false}]
     }, {
-      code: ASSIGNMENT_PAREN,
-      parserOptions: parserOptions
+      code: ASSIGNMENT_PAREN
     }, {
       code: ASSIGNMENT_NO_PAREN,
-      options: [{assignment: false}],
-      parserOptions: parserOptions
+      options: [{assignment: false}]
     }, {
       code: ARROW_PAREN,
-      options: [],
-      parserOptions: parserOptions
+      options: []
     }, {
       code: ARROW_SINGLE_LINE,
-      options: [],
-      parserOptions: parserOptions
+      options: []
     }, {
       code: ARROW_NO_PAREN,
-      options: [{arrow: false}],
-      parserOptions: parserOptions
+      options: [{arrow: false}]
     }
   ],
 
@@ -210,18 +194,15 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     {
       code: RETURN_NO_PAREN,
       output: RETURN_PAREN,
-      parserOptions: parserOptions,
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: RETURN_NO_PAREN,
       output: RETURN_PAREN,
-      parserOptions: parserOptions,
       options: [{return: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: DECLARATION_TERNARY_NO_PAREN,
       output: DECLARATION_TERNARY_PAREN,
-      parserOptions: parserOptions,
       errors: [
         {message: 'Missing parentheses around multilines JSX'},
         {message: 'Missing parentheses around multilines JSX'}
@@ -229,7 +210,6 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     }, {
       code: ASSIGNMENT_TERNARY_NO_PAREN,
       output: ASSIGNMENT_TERNARY_PAREN,
-      parserOptions: parserOptions,
       errors: [
         {message: 'Missing parentheses around multilines JSX'},
         {message: 'Missing parentheses around multilines JSX'}
@@ -237,29 +217,24 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     }, {
       code: DECLARATION_NO_PAREN,
       output: DECLARATION_PAREN,
-      parserOptions: parserOptions,
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: DECLARATION_NO_PAREN,
       output: DECLARATION_PAREN,
-      parserOptions: parserOptions,
       options: [{declaration: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: ASSIGNMENT_NO_PAREN,
       output: ASSIGNMENT_PAREN,
-      parserOptions: parserOptions,
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: ASSIGNMENT_NO_PAREN,
       output: ASSIGNMENT_PAREN,
-      parserOptions: parserOptions,
       options: [{assignment: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: ARROW_NO_PAREN,
       output: ARROW_PAREN,
-      parserOptions: parserOptions,
       options: [{arrow: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }

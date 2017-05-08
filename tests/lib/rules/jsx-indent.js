@@ -12,8 +12,10 @@ var rule = require('../../../lib/rules/jsx-indent');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -22,51 +24,45 @@ var parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-indent', rule, {
   valid: [{
     code: [
       '<App></App>'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       '<App>',
       '</App>'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       '<App>',
       '  <Foo />',
       '</App>'
     ].join('\n'),
-    options: [2],
-    parserOptions: parserOptions
+    options: [2]
   }, {
     code: [
       '<App>',
       '<Foo />',
       '</App>'
     ].join('\n'),
-    options: [0],
-    parserOptions: parserOptions
+    options: [0]
   }, {
     code: [
       '  <App>',
       '<Foo />',
       '  </App>'
     ].join('\n'),
-    options: [-2],
-    parserOptions: parserOptions
+    options: [-2]
   }, {
     code: [
       '<App>',
       '\t<Foo />',
       '</App>'
     ].join('\n'),
-    options: ['tab'],
-    parserOptions: parserOptions
+    options: ['tab']
   }, {
     code: [
       'function App() {',
@@ -75,8 +71,7 @@ ruleTester.run('jsx-indent', rule, {
       '  </App>;',
       '}'
     ].join('\n'),
-    options: [2],
-    parserOptions: parserOptions
+    options: [2]
   }, {
     code: [
       'function App() {',
@@ -85,8 +80,7 @@ ruleTester.run('jsx-indent', rule, {
       '  </App>);',
       '}'
     ].join('\n'),
-    options: [2],
-    parserOptions: parserOptions
+    options: [2]
   }, {
     code: [
       'function App() {',
@@ -97,8 +91,7 @@ ruleTester.run('jsx-indent', rule, {
       '  );',
       '}'
     ].join('\n'),
-    options: [2],
-    parserOptions: parserOptions
+    options: [2]
   }, {
     code: [
       'it(',
@@ -109,7 +102,6 @@ ruleTester.run('jsx-indent', rule, {
       '  )',
       ')'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: [2]
   }, {
     code: [
@@ -121,7 +113,6 @@ ruleTester.run('jsx-indent', rule, {
       '  </div>)',
       ')'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: [2]
   }, {
     code: [
@@ -131,7 +122,6 @@ ruleTester.run('jsx-indent', rule, {
       '  </div>',
       ')'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: [2]
   }, {
     code: [
@@ -142,7 +132,6 @@ ruleTester.run('jsx-indent', rule, {
       '  </h1>',
       '}'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: [2]
   }, {
     code: [
@@ -153,7 +142,6 @@ ruleTester.run('jsx-indent', rule, {
       '    </h1>',
       '}'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: [2]
   }, {
     code: [
@@ -164,7 +152,6 @@ ruleTester.run('jsx-indent', rule, {
       '  </h1>)',
       '}'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: [2]
   }, {
     code: [
@@ -176,7 +163,6 @@ ruleTester.run('jsx-indent', rule, {
       '  )',
       '}'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: [2]
   }, {
     code: [
@@ -185,7 +171,6 @@ ruleTester.run('jsx-indent', rule, {
       '  <div />',
       ']'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: [2]
   }, {
     code: [
@@ -197,8 +182,7 @@ ruleTester.run('jsx-indent', rule, {
       '        ]',
       '    }',
       '</div>'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       '<div>',
@@ -209,8 +193,7 @@ ruleTester.run('jsx-indent', rule, {
       '        ]',
       '    }',
       '</div>'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Literals indentation is not touched
     code: [
@@ -220,8 +203,7 @@ ruleTester.run('jsx-indent', rule, {
       '   bar {foo}',
       'bar </div>',
       '</div>'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (colon at the end of the first expression)
@@ -229,8 +211,7 @@ ruleTester.run('jsx-indent', rule, {
       'foo ?',
       '    <Foo /> :',
       '    <Bar />'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (colon at the start of the second expression)
@@ -238,8 +219,7 @@ ruleTester.run('jsx-indent', rule, {
       'foo ?',
       '    <Foo />',
       '    : <Bar />'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (colon on its own line)
@@ -248,8 +228,7 @@ ruleTester.run('jsx-indent', rule, {
       '    <Foo />',
       ':',
       '    <Bar />'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (multiline JSX, colon on its own line)
@@ -263,24 +242,21 @@ ruleTester.run('jsx-indent', rule, {
       '        onClick={this.onClick}',
       '    />',
       '}'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (first expression on test line, colon at the end of the first expression)
     code: [
       'foo ? <Foo /> :',
       '<Bar />'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (first expression on test line, colon at the start of the second expression)
     code: [
       'foo ? <Foo />',
       ': <Bar />'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (first expression on test line, colon on its own line)
@@ -288,8 +264,7 @@ ruleTester.run('jsx-indent', rule, {
       'foo ? <Foo />',
       ':',
       '<Bar />'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (colon at the end of the first expression, parenthesized first expression)
@@ -298,8 +273,7 @@ ruleTester.run('jsx-indent', rule, {
       '    <Foo />',
       ') :',
       '    <Bar />'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (colon at the start of the second expression, parenthesized first expression)
@@ -308,8 +282,7 @@ ruleTester.run('jsx-indent', rule, {
       '    <Foo />',
       ')',
       '    : <Bar />'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (colon on its own line, parenthesized first expression)
@@ -319,8 +292,7 @@ ruleTester.run('jsx-indent', rule, {
       ')',
       ':',
       '    <Bar />'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (colon at the end of the first expression, parenthesized second expression)
@@ -329,8 +301,7 @@ ruleTester.run('jsx-indent', rule, {
       '    <Foo /> : (',
       '        <Bar />',
       '    )'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (colon on its own line, parenthesized second expression)
@@ -340,8 +311,7 @@ ruleTester.run('jsx-indent', rule, {
       ': (',
       '    <Bar />',
       ')'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (colon indented on its own line, parenthesized second expression)
@@ -351,8 +321,7 @@ ruleTester.run('jsx-indent', rule, {
       '    : (',
       '        <Bar />',
       '    )'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (colon at the end of the first expression, both expression parenthesized)
@@ -362,8 +331,7 @@ ruleTester.run('jsx-indent', rule, {
       ') : (',
       '    <Bar />',
       ')'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (colon on its own line, both expression parenthesized)
@@ -374,8 +342,7 @@ ruleTester.run('jsx-indent', rule, {
       ': (',
       '    <Bar />',
       ')'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (colon on its own line, both expression parenthesized)
@@ -387,8 +354,7 @@ ruleTester.run('jsx-indent', rule, {
       '(',
       '    <Bar />',
       ')'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (first expression on test line, colon at the end of the first expression, parenthesized second expression)
@@ -396,16 +362,14 @@ ruleTester.run('jsx-indent', rule, {
       'foo ? <Foo /> : (',
       '    <Bar />',
       ')'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (first expression on test line, colon at the start of the second expression, parenthesized second expression)
     code: [
       'foo ? <Foo />',
       ': (<Bar />)'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Multiline ternary
     // (first expression on test line, colon on its own line, parenthesized second expression)
@@ -414,8 +378,7 @@ ruleTester.run('jsx-indent', rule, {
       ': (',
       '    <Bar />',
       ')'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       '<span>',
@@ -427,8 +390,7 @@ ruleTester.run('jsx-indent', rule, {
       '  }',
       '</span>'
     ].join('\n'),
-    options: [2],
-    parserOptions: parserOptions
+    options: [2]
   }, {
     code: [
       '<span>',
@@ -440,8 +402,7 @@ ruleTester.run('jsx-indent', rule, {
       '  }',
       '</span>'
     ].join('\n'),
-    options: [2],
-    parserOptions: parserOptions
+    options: [2]
   }, {
     code: [
       'function foo() {',
@@ -455,8 +416,7 @@ ruleTester.run('jsx-indent', rule, {
       '  </span>',
       '}'
     ].join('\n'),
-    options: [2],
-    parserOptions: parserOptions
+    options: [2]
   }],
 
   invalid: [{
@@ -470,7 +430,6 @@ ruleTester.run('jsx-indent', rule, {
       '    <Foo />',
       '</App>'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 4 space characters but found 2.'}]
   }, {
     code: [
@@ -484,7 +443,6 @@ ruleTester.run('jsx-indent', rule, {
       '</App>'
     ].join('\n'),
     options: [2],
-    parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 2 space characters but found 4.'}]
   }, {
     code: [
@@ -498,7 +456,6 @@ ruleTester.run('jsx-indent', rule, {
       '</App>'
     ].join('\n'),
     options: ['tab'],
-    parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 1 tab character but found 0.'}]
   }, {
     code: [
@@ -516,7 +473,6 @@ ruleTester.run('jsx-indent', rule, {
       '}'
     ].join('\n'),
     options: [2],
-    parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 2 space characters but found 9.'}]
   }, {
     code: [
@@ -534,7 +490,6 @@ ruleTester.run('jsx-indent', rule, {
       '}'
     ].join('\n'),
     options: [2],
-    parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 2 space characters but found 4.'}]
   }, {
     code: [
@@ -560,7 +515,6 @@ ruleTester.run('jsx-indent', rule, {
       '}'
     ].join('\n'), */
     options: [2],
-    parserOptions: parserOptions,
     errors: [{message: 'Expected indentation of 4 space characters but found 0.'}]
   }, {
     code: [
@@ -573,7 +527,6 @@ ruleTester.run('jsx-indent', rule, {
       '    {test}',
       '</App>'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 4 space characters but found 3.'}
     ]
@@ -596,7 +549,6 @@ ruleTester.run('jsx-indent', rule, {
       '    ))}',
       '</App>'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 12 space characters but found 11.'}
     ]
@@ -611,7 +563,6 @@ ruleTester.run('jsx-indent', rule, {
       '\t{test}',
       '</App>'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: ['tab'],
     errors: [
       {message: 'Expected indentation of 1 tab character but found 0.'}
@@ -635,7 +586,6 @@ ruleTester.run('jsx-indent', rule, {
       '\t))}',
       '</App>'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: ['tab'],
     errors: [
       {message: 'Expected indentation of 3 tab characters but found 2.'}
@@ -651,7 +601,6 @@ ruleTester.run('jsx-indent', rule, {
       '\t<Foo />\n',
       '</App>'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: ['tab'],
     errors: [
       {message: 'Expected indentation of 1 tab character but found 0.'}
@@ -669,7 +618,6 @@ ruleTester.run('jsx-indent', rule, {
       '  <div />',
       ']'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: [2],
     errors: [
       {message: 'Expected indentation of 2 space characters but found 4.'}
@@ -685,7 +633,6 @@ ruleTester.run('jsx-indent', rule, {
       '\t<Foo />\n',
       '</App>'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: ['tab'],
     errors: [
       {message: 'Expected indentation of 1 tab character but found 0.'}
@@ -701,7 +648,6 @@ ruleTester.run('jsx-indent', rule, {
       '  <Foo />\n',
       '</App>'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: [2],
     errors: [
       {message: 'Expected indentation of 2 space characters but found 0.'}
@@ -727,7 +673,6 @@ ruleTester.run('jsx-indent', rule, {
       '    }',
       '</div>'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 12 space characters but found 8.'}
     ]
@@ -752,7 +697,6 @@ ruleTester.run('jsx-indent', rule, {
       '    }',
       '</div>'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 12 space characters but found 8.'}
     ]
@@ -769,7 +713,6 @@ ruleTester.run('jsx-indent', rule, {
       '    <Foo /> :',
       '    <Bar />'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 4 space characters but found 0.'}
     ]
@@ -788,7 +731,6 @@ ruleTester.run('jsx-indent', rule, {
       ':',
       '    <Bar />'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 4 space characters but found 0.'}
     ]
@@ -803,7 +745,6 @@ ruleTester.run('jsx-indent', rule, {
       'foo ? <Foo /> :',
       '<Bar />'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 0 space characters but found 4.'}
     ]
@@ -820,7 +761,6 @@ ruleTester.run('jsx-indent', rule, {
       ':',
       '<Bar />'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 0 space characters but found 6.'}
     ]
@@ -839,7 +779,6 @@ ruleTester.run('jsx-indent', rule, {
       ') :',
       '    <Bar />'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 4 space characters but found 0.'}
     ]
@@ -860,7 +799,6 @@ ruleTester.run('jsx-indent', rule, {
       ':',
       '    <Bar />'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 4 space characters but found 0.'}
     ]
@@ -879,7 +817,6 @@ ruleTester.run('jsx-indent', rule, {
       '        <Bar />',
       '    )'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 8 space characters but found 4.'}
     ]
@@ -900,7 +837,6 @@ ruleTester.run('jsx-indent', rule, {
       '    <Bar />',
       ')'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 4 space characters but found 0.'}
     ]
@@ -921,7 +857,6 @@ ruleTester.run('jsx-indent', rule, {
       '        <Bar />',
       '    )'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 8 space characters but found 4.'}
     ]
@@ -942,7 +877,6 @@ ruleTester.run('jsx-indent', rule, {
       '    <Bar />',
       ')'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 4 space characters but found 0.'},
       {message: 'Expected indentation of 4 space characters but found 0.'}
@@ -966,7 +900,6 @@ ruleTester.run('jsx-indent', rule, {
       '    <Bar />',
       ')'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 4 space characters but found 0.'},
       {message: 'Expected indentation of 4 space characters but found 0.'}
@@ -992,7 +925,6 @@ ruleTester.run('jsx-indent', rule, {
       '    <Bar />',
       ')'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 4 space characters but found 0.'},
       {message: 'Expected indentation of 4 space characters but found 0.'}
@@ -1010,7 +942,6 @@ ruleTester.run('jsx-indent', rule, {
       '    <Bar />',
       ')'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 4 space characters but found 0.'}
     ]
@@ -1029,7 +960,6 @@ ruleTester.run('jsx-indent', rule, {
       '    <Bar />',
       ')'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [
       {message: 'Expected indentation of 4 space characters but found 0.'}
     ]

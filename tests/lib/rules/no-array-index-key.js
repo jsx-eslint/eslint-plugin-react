@@ -13,7 +13,8 @@ var rule = require('../../../lib/rules/no-array-index-key');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
     experimentalObjectRestSpread: true,
     jsx: true
@@ -24,47 +25,40 @@ var parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-array-index-key', rule, {
   valid: [
-    {code: '<Foo key="foo" />;', parserOptions: parserOptions},
-    {code: '<Foo key={i} />;', parserOptions: parserOptions},
-    {code: '<Foo key={`foo-${i}`} />;', parserOptions: parserOptions},
-    {code: '<Foo key={\'foo-\' + i} />;', parserOptions: parserOptions},
+    {code: '<Foo key="foo" />;'},
+    {code: '<Foo key={i} />;'},
+    {code: '<Foo key={`foo-${i}`} />;'},
+    {code: '<Foo key={\'foo-\' + i} />;'},
 
     {
-      code: 'foo.bar((baz, i) => <Foo key={i} />)',
-      parserOptions: parserOptions
+      code: 'foo.bar((baz, i) => <Foo key={i} />)'
     },
 
     {
-      code: 'foo.bar((bar, i) => <Foo key={`foo-${i}`} />)',
-      parserOptions: parserOptions
+      code: 'foo.bar((bar, i) => <Foo key={`foo-${i}`} />)'
     },
 
     {
-      code: 'foo.bar((bar, i) => <Foo key={\'foo-\' + i} />)',
-      parserOptions: parserOptions
+      code: 'foo.bar((bar, i) => <Foo key={\'foo-\' + i} />)'
     },
 
     {
-      code: 'foo.map((baz) => <Foo key={baz.id} />)',
-      parserOptions: parserOptions
+      code: 'foo.map((baz) => <Foo key={baz.id} />)'
     },
 
     {
-      code: 'foo.map((baz, i) => <Foo key={baz.id} />)',
-      parserOptions: parserOptions
+      code: 'foo.map((baz, i) => <Foo key={baz.id} />)'
     },
 
     {
-      code: 'foo.map((baz, i) => <Foo key={\'foo\' + baz.id} />)',
-      parserOptions: parserOptions
+      code: 'foo.map((baz, i) => <Foo key={\'foo\' + baz.id} />)'
     },
 
     {
-      code: 'foo.map((baz, i) => React.cloneElement(someChild, { ...someChild.props }))',
-      parserOptions: parserOptions
+      code: 'foo.map((baz, i) => React.cloneElement(someChild, { ...someChild.props }))'
     },
 
     {
@@ -74,72 +68,60 @@ ruleTester.run('no-array-index-key', rule, {
         '    key: item.id',
         '  })',
         '})'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     },
 
     {
-      code: 'foo.reduce((a, b) => a.concat(<Foo key={b.id} />), [])',
-      parserOptions: parserOptions
+      code: 'foo.reduce((a, b) => a.concat(<Foo key={b.id} />), [])'
     },
 
     {
-      code: 'foo.reduce((a, b, i) => a.concat(<Foo key={b.id} />), [])',
-      parserOptions: parserOptions
+      code: 'foo.reduce((a, b, i) => a.concat(<Foo key={b.id} />), [])'
     },
 
     {
-      code: 'foo.reduceRight((a, b) => a.concat(<Foo key={b.id} />), [])',
-      parserOptions: parserOptions
+      code: 'foo.reduceRight((a, b) => a.concat(<Foo key={b.id} />), [])'
     },
 
     {
-      code: 'foo.reduceRight((a, b, i) => a.concat(<Foo key={b.id} />), [])',
-      parserOptions: parserOptions
+      code: 'foo.reduceRight((a, b, i) => a.concat(<Foo key={b.id} />), [])'
     }
   ],
 
   invalid: [
     {
       code: 'foo.map((bar, i) => <Foo key={i} />)',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: '[{}, {}].map((bar, i) => <Foo key={i} />)',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.map((bar, anything) => <Foo key={anything} />)',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.map((bar, i) => <Foo key={`foo-${i}`} />)',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.map((bar, i) => <Foo key={\'foo-\' + i} />)',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.map((bar, i) => <Foo key={\'foo-\' + i + \'-bar\'} />)',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.map((baz, i) => React.cloneElement(someChild, { ...someChild.props, key: i }))',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
@@ -150,116 +132,97 @@ ruleTester.run('no-array-index-key', rule, {
         '  })',
         '})'
       ].join('\n'),
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.forEach((bar, i) => { baz.push(<Foo key={i} />); })',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.filter((bar, i) => { baz.push(<Foo key={i} />); })',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.some((bar, i) => { baz.push(<Foo key={i} />); })',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.every((bar, i) => { baz.push(<Foo key={i} />); })',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.find((bar, i) => { baz.push(<Foo key={i} />); })',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.findIndex((bar, i) => { baz.push(<Foo key={i} />); })',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.reduce((a, b, i) => a.concat(<Foo key={i} />), [])',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.reduceRight((a, b, i) => a.concat(<Foo key={i} />), [])',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.map((bar, i) => React.createElement(\'Foo\', { key: i }))',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.map((bar, i) => React.createElement(\'Foo\', { key: `foo-${i}` }))',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.map((bar, i) => React.createElement(\'Foo\', { key: \'foo-\' + i }))',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.map((bar, i) => React.createElement(\'Foo\', { key: \'foo-\' + i + \'-bar\' }))',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.forEach((bar, i) => { baz.push(React.createElement(\'Foo\', { key: i })); })',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.filter((bar, i) => { baz.push(React.createElement(\'Foo\', { key: i })); })',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.some((bar, i) => { baz.push(React.createElement(\'Foo\', { key: i })); })',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.every((bar, i) => { baz.push(React.createElement(\'Foo\', { key: i })); })',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.find((bar, i) => { baz.push(React.createElement(\'Foo\', { key: i })); })',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     },
 
     {
       code: 'foo.findIndex((bar, i) => { baz.push(React.createElement(\'Foo\', { key: i })); })',
-      errors: [{message: 'Do not use Array index in keys'}],
-      parserOptions: parserOptions
+      errors: [{message: 'Do not use Array index in keys'}]
     }
   ]
 });

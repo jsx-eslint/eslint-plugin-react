@@ -11,13 +11,22 @@
 var rule = require('../../../lib/rules/no-string-refs');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 8,
+  sourceType: 'module',
+  ecmaFeatures: {
+    experimentalObjectRestSpread: true,
+    jsx: true
+  }
+};
+
 require('babel-eslint');
 
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-refs', rule, {
 
   valid: [{
@@ -31,10 +40,7 @@ ruleTester.run('no-refs', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parser: 'babel-eslint',
-    ecmaFeatures: {
-      jsx: true
-    }
+    parser: 'babel-eslint'
   }
   ],
 
@@ -50,10 +56,6 @@ ruleTester.run('no-refs', rule, {
       '});'
     ].join('\n'),
     parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
     errors: [{
       message: 'Using this.refs is deprecated.'
     }]
@@ -66,10 +68,6 @@ ruleTester.run('no-refs', rule, {
       '});'
     ].join('\n'),
     parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
     errors: [{
       message: 'Using string literals in ref attributes is deprecated.'
     }]
@@ -82,10 +80,6 @@ ruleTester.run('no-refs', rule, {
       '});'
     ].join('\n'),
     parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
     errors: [{
       message: 'Using string literals in ref attributes is deprecated.'
     }]
@@ -101,10 +95,6 @@ ruleTester.run('no-refs', rule, {
       '});'
     ].join('\n'),
     parser: 'babel-eslint',
-    ecmaFeatures: {
-      classes: true,
-      jsx: true
-    },
     errors: [{
       message: 'Using this.refs is deprecated.'
     }, {

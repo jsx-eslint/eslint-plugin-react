@@ -12,8 +12,10 @@ var rule = require('../../../lib/rules/no-find-dom-node');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -22,14 +24,13 @@ var parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-find-dom-node', rule, {
 
   valid: [{
     code: [
       'var Hello = function() {};'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -37,8 +38,7 @@ ruleTester.run('no-find-dom-node', rule, {
       '    return <div>Hello</div>;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -50,8 +50,7 @@ ruleTester.run('no-find-dom-node', rule, {
       '    return <div>Hello</div>;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -62,8 +61,7 @@ ruleTester.run('no-find-dom-node', rule, {
       '    return <div>Hello</div>;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }],
 
   invalid: [{
@@ -77,7 +75,6 @@ ruleTester.run('no-find-dom-node', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: 'Do not use findDOMNode'
     }]
@@ -92,7 +89,6 @@ ruleTester.run('no-find-dom-node', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: 'Do not use findDOMNode'
     }]
@@ -107,7 +103,6 @@ ruleTester.run('no-find-dom-node', rule, {
       '  }',
       '};'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: 'Do not use findDOMNode'
     }]

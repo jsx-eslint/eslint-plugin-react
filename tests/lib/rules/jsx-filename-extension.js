@@ -12,8 +12,10 @@ var rule = require('../../../lib/rules/jsx-filename-extension');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -29,24 +31,21 @@ var withoutJSX = 'module.exports = {}';
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-filename-extension', rule, {
 
   valid: [
     {
       filename: '<text>',
-      code: withJSX,
-      parserOptions: parserOptions
+      code: withJSX
     },
     {
       filename: 'MyComponent.jsx',
-      code: withJSX,
-      parserOptions: parserOptions
+      code: withJSX
     }, {
       filename: 'MyComponent.js',
       options: [{extensions: ['.js', '.jsx']}],
-      code: withJSX,
-      parserOptions: parserOptions
+      code: withJSX
     }, {
       filename: 'notAComponent.js',
       code: withoutJSX
@@ -57,12 +56,10 @@ ruleTester.run('jsx-filename-extension', rule, {
     {
       filename: 'MyComponent.js',
       code: withJSX,
-      parserOptions: parserOptions,
       errors: [{message: 'JSX not allowed in files with extension \'.js\''}]
     }, {
       filename: 'MyComponent.jsx',
       code: withJSX,
-      parserOptions: parserOptions,
       options: [{extensions: ['.js']}],
       errors: [{message: 'JSX not allowed in files with extension \'.jsx\''}]
     }

@@ -12,8 +12,10 @@ var rule = require('../../../lib/rules/jsx-space-before-closing');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -22,85 +24,69 @@ var parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-space-before-closing', rule, {
   valid: [{
-    code: '<App />',
-    parserOptions: parserOptions
+    code: '<App />'
   }, {
-    code: '<App foo />',
-    parserOptions: parserOptions
+    code: '<App foo />'
   }, {
-    code: '<App foo={bar} />',
-    parserOptions: parserOptions
+    code: '<App foo={bar} />'
   }, {
-    code: '<App {...props} />',
-    parserOptions: parserOptions
+    code: '<App {...props} />'
   }, {
-    code: '<App></App>',
-    parserOptions: parserOptions
+    code: '<App></App>'
   }, {
     code: [
       '<App',
       '  foo={bar}',
       '/>'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: '<App/>',
-    options: ['never'],
-    parserOptions: parserOptions
+    options: ['never']
   }, {
     code: '<App foo/>',
-    options: ['never'],
-    parserOptions: parserOptions
+    options: ['never']
   }, {
     code: '<App foo={bar}/>',
-    options: ['never'],
-    parserOptions: parserOptions
+    options: ['never']
   }, {
     code: '<App {...props}/>',
-    options: ['never'],
-    parserOptions: parserOptions
+    options: ['never']
   }, {
     code: '<App></App>',
-    options: ['never'],
-    parserOptions: parserOptions
+    options: ['never']
   }, {
     code: [
       '<App',
       '  foo={bar}',
       '/>'
     ].join('\n'),
-    options: ['never'],
-    parserOptions: parserOptions
+    options: ['never']
   }],
 
   invalid: [{
     code: '<App/>',
     output: '<App />',
-    parserOptions: parserOptions,
     errors: [
       {message: 'A space is required before closing bracket'}
     ]
   }, {
     code: '<App foo/>',
     output: '<App foo />',
-    parserOptions: parserOptions,
     errors: [
       {message: 'A space is required before closing bracket'}
     ]
   }, {
     code: '<App foo={bar}/>',
     output: '<App foo={bar} />',
-    parserOptions: parserOptions,
     errors: [
       {message: 'A space is required before closing bracket'}
     ]
   }, {
     code: '<App {...props}/>',
     output: '<App {...props} />',
-    parserOptions: parserOptions,
     errors: [
       {message: 'A space is required before closing bracket'}
     ]
@@ -108,7 +94,6 @@ ruleTester.run('jsx-space-before-closing', rule, {
     code: '<App />',
     output: '<App/>',
     options: ['never'],
-    parserOptions: parserOptions,
     errors: [
       {message: 'A space is forbidden before closing bracket'}
     ]
@@ -116,7 +101,6 @@ ruleTester.run('jsx-space-before-closing', rule, {
     code: '<App foo />',
     output: '<App foo/>',
     options: ['never'],
-    parserOptions: parserOptions,
     errors: [
       {message: 'A space is forbidden before closing bracket'}
     ]
@@ -124,7 +108,6 @@ ruleTester.run('jsx-space-before-closing', rule, {
     code: '<App foo={bar} />',
     output: '<App foo={bar}/>',
     options: ['never'],
-    parserOptions: parserOptions,
     errors: [
       {message: 'A space is forbidden before closing bracket'}
     ]
@@ -132,7 +115,6 @@ ruleTester.run('jsx-space-before-closing', rule, {
     code: '<App {...props} />',
     output: '<App {...props}/>',
     options: ['never'],
-    parserOptions: parserOptions,
     errors: [
       {message: 'A space is forbidden before closing bracket'}
     ]

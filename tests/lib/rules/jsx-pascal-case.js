@@ -12,8 +12,10 @@ var rule = require('../../../lib/rules/jsx-pascal-case');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -22,65 +24,48 @@ var parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-pascal-case', rule, {
   valid: [{
-    code: '<testComponent />',
-    parserOptions: parserOptions
+    code: '<testComponent />'
   }, {
-    code: '<test_component />',
-    parserOptions: parserOptions
+    code: '<test_component />'
   }, {
-    code: '<TestComponent />',
-    parserOptions: parserOptions
+    code: '<TestComponent />'
   }, {
-    code: '<CSSTransitionGroup />',
-    parserOptions: parserOptions
+    code: '<CSSTransitionGroup />'
   }, {
-    code: '<BetterThanCSS />',
-    parserOptions: parserOptions
+    code: '<BetterThanCSS />'
   }, {
-    code: '<TestComponent><div /></TestComponent>',
-    parserOptions: parserOptions
+    code: '<TestComponent><div /></TestComponent>'
   }, {
-    code: '<Test1Component />',
-    parserOptions: parserOptions
+    code: '<Test1Component />'
   }, {
-    code: '<TestComponent1 />',
-    parserOptions: parserOptions
+    code: '<TestComponent1 />'
   }, {
-    code: '<T3stComp0nent />',
-    parserOptions: parserOptions
+    code: '<T3stComp0nent />'
   }, {
-    code: '<T />',
-    parserOptions: parserOptions
+    code: '<T />'
   }, {
     code: '<YMCA />',
-    parserOptions: parserOptions,
     options: [{allowAllCaps: true}]
   }, {
-    code: '<Modal.Header />',
-    parserOptions: parserOptions
+    code: '<Modal.Header />'
   }, {
-    code: '<Modal:Header />',
-    parserOptions: parserOptions
+    code: '<Modal:Header />'
   }, {
     code: '<IGNORED />',
-    parserOptions: parserOptions,
     options: [{ignore: ['IGNORED']}]
   }],
 
   invalid: [{
     code: '<Test_component />',
-    parserOptions: parserOptions,
     errors: [{message: 'Imported JSX component Test_component must be in PascalCase'}]
   }, {
     code: '<TEST_COMPONENT />',
-    parserOptions: parserOptions,
     errors: [{message: 'Imported JSX component TEST_COMPONENT must be in PascalCase'}]
   }, {
     code: '<YMCA />',
-    parserOptions: parserOptions,
     errors: [{message: 'Imported JSX component YMCA must be in PascalCase'}]
   }]
 });

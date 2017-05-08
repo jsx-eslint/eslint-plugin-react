@@ -12,8 +12,10 @@ var rule = require('../../../lib/rules/require-render-return');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -24,7 +26,7 @@ require('babel-eslint');
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('require-render-return', rule, {
 
   valid: [{
@@ -35,8 +37,7 @@ ruleTester.run('require-render-return', rule, {
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
       '}'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // ES6 class with render property
     code: [
@@ -46,8 +47,7 @@ ruleTester.run('require-render-return', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
-    parserOptions: parserOptions
+    parser: 'babel-eslint'
   }, {
     // ES6 class with render property (implicit return)
     code: [
@@ -57,8 +57,7 @@ ruleTester.run('require-render-return', rule, {
       '  )',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
-    parserOptions: parserOptions
+    parser: 'babel-eslint'
   }, {
     // ES5 class
     code: [
@@ -68,16 +67,14 @@ ruleTester.run('require-render-return', rule, {
       '    return <div></div>',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Stateless function
     code: [
       'function Hello() {',
       '  return <div></div>;',
       '}'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Stateless arrow function
     code: [
@@ -85,8 +82,7 @@ ruleTester.run('require-render-return', rule, {
       '  <div></div>',
       ');'
     ].join('\n'),
-    parser: 'babel-eslint',
-    parserOptions: parserOptions
+    parser: 'babel-eslint'
   }, {
     // Return in a switch...case
     code: [
@@ -100,8 +96,7 @@ ruleTester.run('require-render-return', rule, {
       '    }',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Return in a if...else
     code: [
@@ -114,24 +109,20 @@ ruleTester.run('require-render-return', rule, {
       '    }',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Not a React component
     code: [
       'class Hello {',
       '  render() {}',
       '}'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // ES6 class without a render method
-    code: 'class Hello extends React.Component {}',
-    parserOptions: parserOptions
+    code: 'class Hello extends React.Component {}'
   }, {
     // ES5 class without a render method
-    code: 'var Hello = createReactClass({});',
-    parserOptions: parserOptions
+    code: 'var Hello = createReactClass({});'
   }, {
     // ES5 class with an imported render method
     code: [
@@ -139,8 +130,7 @@ ruleTester.run('require-render-return', rule, {
       'var Hello = createReactClass({',
       '  render',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     // Invalid render method (but accepted by Babel)
     code: [
@@ -159,7 +149,6 @@ ruleTester.run('require-render-return', rule, {
       '  render: function() {}',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: 'Your render method should have return statement'
     }]
@@ -170,7 +159,6 @@ ruleTester.run('require-render-return', rule, {
       '  render() {} ',
       '}'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: 'Your render method should have return statement'
     }]
@@ -185,7 +173,6 @@ ruleTester.run('require-render-return', rule, {
       '  } ',
       '}'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: 'Your render method should have return statement'
     }]
@@ -199,7 +186,6 @@ ruleTester.run('require-render-return', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    parserOptions: parserOptions,
     errors: [{
       message: 'Your render method should have return statement'
     }]

@@ -12,8 +12,10 @@ var rule = require('../../../lib/rules/no-multi-comp');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -24,7 +26,7 @@ require('babel-eslint');
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-multi-comp', rule, {
 
   valid: [{
@@ -35,8 +37,7 @@ ruleTester.run('no-multi-comp', rule, {
       '    return <Hello name="John" />;',
       '  }',
       '});'
-    ].join('\r'),
-    parserOptions: parserOptions
+    ].join('\r')
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -44,8 +45,7 @@ ruleTester.run('no-multi-comp', rule, {
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
       '}'
-    ].join('\r'),
-    parserOptions: parserOptions
+    ].join('\r')
   }, {
     code: [
       'var Heading = createReactClass({',
@@ -59,8 +59,7 @@ ruleTester.run('no-multi-comp', rule, {
       '    );',
       '  }',
       '});'
-    ].join('\r'),
-    parserOptions: parserOptions
+    ].join('\r')
   }, {
     code: [
       'function Hello(props) {',
@@ -85,7 +84,6 @@ ruleTester.run('no-multi-comp', rule, {
       '  }',
       '}'
     ].join('\r'),
-    parserOptions: parserOptions,
     options: [{
       ignoreStateless: true
     }]
@@ -119,7 +117,6 @@ ruleTester.run('no-multi-comp', rule, {
       '  }',
       '});'
     ].join('\r'),
-    parserOptions: parserOptions,
     errors: [{
       message: 'Declare only one React component per file',
       line: 6
@@ -142,7 +139,6 @@ ruleTester.run('no-multi-comp', rule, {
       '  }',
       '}'
     ].join('\r'),
-    parserOptions: parserOptions,
     errors: [{
       message: 'Declare only one React component per file',
       line: 6
@@ -175,7 +171,6 @@ ruleTester.run('no-multi-comp', rule, {
       '  }',
       '}'
     ].join('\r'),
-    parserOptions: parserOptions,
     errors: [{
       message: 'Declare only one React component per file',
       line: 4

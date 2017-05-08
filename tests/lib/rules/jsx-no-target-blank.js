@@ -12,8 +12,10 @@ var rule = require('../../../lib/rules/jsx-no-target-blank');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -22,39 +24,39 @@ var parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-no-target-blank', rule, {
   valid: [
-    {code: '<a href="foobar"></a>', parserOptions: parserOptions},
-    {code: '<a randomTag></a>', parserOptions: parserOptions},
-    {code: '<a href="foobar" target="_blank" rel="noopener noreferrer"></a>', parserOptions: parserOptions},
-    {code: '<a target="_blank" {...spreadProps} rel="noopener noreferrer"></a>', parserOptions: parserOptions},
-    {code: '<a target="_blank" rel="noopener noreferrer" {...spreadProps}></a>', parserOptions: parserOptions},
-    {code: '<p target="_blank"></p>', parserOptions: parserOptions},
-    {code: '<a href="foobar" target="_BLANK" rel="NOOPENER noreferrer"></a>', parserOptions: parserOptions},
-    {code: '<a target="_blank" rel={relValue}></a>', parserOptions: parserOptions},
-    {code: '<a target={targetValue} rel="noopener noreferrer"></a>', parserOptions: parserOptions}
+    {code: '<a href="foobar"></a>'},
+    {code: '<a randomTag></a>'},
+    {code: '<a href="foobar" target="_blank" rel="noopener noreferrer"></a>'},
+    {code: '<a target="_blank" {...spreadProps} rel="noopener noreferrer"></a>'},
+    {code: '<a target="_blank" rel="noopener noreferrer" {...spreadProps}></a>'},
+    {code: '<p target="_blank"></p>'},
+    {code: '<a href="foobar" target="_BLANK" rel="NOOPENER noreferrer"></a>'},
+    {code: '<a target="_blank" rel={relValue}></a>'},
+    {code: '<a target={targetValue} rel="noopener noreferrer"></a>'}
   ],
   invalid: [{
-    code: '<a target="_blank"></a>', parserOptions: parserOptions,
+    code: '<a target="_blank"></a>',
     errors: [{
       message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
       ' see https://mathiasbynens.github.io/rel-noopener'
     }]
   }, {
-    code: '<a target="_blank" rel=""></a>', parserOptions: parserOptions,
+    code: '<a target="_blank" rel=""></a>',
     errors: [{
       message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
       ' see https://mathiasbynens.github.io/rel-noopener'
     }]
   }, {
-    code: '<a target="_blank" rel="noopenernoreferrer"></a>', parserOptions: parserOptions,
+    code: '<a target="_blank" rel="noopenernoreferrer"></a>',
     errors: [{
       message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
       ' see https://mathiasbynens.github.io/rel-noopener'
     }]
   }, {
-    code: '<a target="_BLANK"></a>', parserOptions: parserOptions,
+    code: '<a target="_BLANK"></a>',
     errors: [{
       message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
       ' see https://mathiasbynens.github.io/rel-noopener'

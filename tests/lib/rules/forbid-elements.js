@@ -11,7 +11,8 @@ var rule = require('../../../lib/rules/forbid-elements');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
     experimentalObjectRestSpread: true,
     jsx: true
@@ -24,73 +25,60 @@ require('babel-eslint');
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('forbid-elements', rule, {
   valid: [
     {
       code: '<button />',
-      options: [],
-      parserOptions: parserOptions
+      options: []
     },
     {
       code: '<button />',
-      options: [{forbid: []}],
-      parserOptions: parserOptions
+      options: [{forbid: []}]
     },
     {
       code: '<Button />',
-      options: [{forbid: ['button']}],
-      parserOptions: parserOptions
+      options: [{forbid: ['button']}]
     },
     {
       code: '<Button />',
-      options: [{forbid: [{element: 'button'}]}],
-      parserOptions: parserOptions
+      options: [{forbid: [{element: 'button'}]}]
     },
     {
       code: 'React.createElement(button)',
-      options: [{forbid: ['button']}],
-      parserOptions: parserOptions
+      options: [{forbid: ['button']}]
     },
     {
       code: 'createElement("button")',
-      options: [{forbid: ['button']}],
-      parserOptions: parserOptions
+      options: [{forbid: ['button']}]
     },
     {
       code: 'NotReact.createElement("button")',
-      options: [{forbid: ['button']}],
-      parserOptions: parserOptions
+      options: [{forbid: ['button']}]
     },
     {
       code: 'React.createElement("_thing")',
-      options: [{forbid: ['_thing']}],
-      parserOptions: parserOptions
+      options: [{forbid: ['_thing']}]
     },
     {
       code: 'React.createElement("Modal")',
-      options: [{forbid: ['Modal']}],
-      parserOptions: parserOptions
+      options: [{forbid: ['Modal']}]
     },
     {
       code: 'React.createElement("dotted.component")',
-      options: [{forbid: ['dotted.component']}],
-      parserOptions: parserOptions
+      options: [{forbid: ['dotted.component']}]
     },
     {
       code: 'React.createElement(function() {})',
-      options: [{forbid: ['button']}],
-      parserOptions: parserOptions
+      options: [{forbid: ['button']}]
     },
     {
       code: 'React.createElement({})',
-      options: [{forbid: ['button']}],
-      parserOptions: parserOptions
+      options: [{forbid: ['button']}]
     },
     {
       code: 'React.createElement(1)',
-      options: [{forbid: ['button']}],
-      parserOptions: parserOptions
+      options: [{forbid: ['button']}]
     }
   ],
 
@@ -98,13 +86,11 @@ ruleTester.run('forbid-elements', rule, {
     {
       code: '<button />',
       options: [{forbid: ['button']}],
-      parserOptions: parserOptions,
       errors: [{message: '<button> is forbidden'}]
     },
     {
       code: '[<Modal />, <button />]',
       options: [{forbid: ['button', 'Modal']}],
-      parserOptions: parserOptions,
       errors: [
         {message: '<Modal> is forbidden'},
         {message: '<button> is forbidden'}
@@ -113,7 +99,6 @@ ruleTester.run('forbid-elements', rule, {
     {
       code: '<dotted.component />',
       options: [{forbid: ['dotted.component']}],
-      parserOptions: parserOptions,
       errors: [
         {message: '<dotted.component> is forbidden'}
       ]
@@ -123,7 +108,6 @@ ruleTester.run('forbid-elements', rule, {
       options: [{forbid: [
         {element: 'dotted.Component', message: 'that ain\'t cool'}
       ]}],
-      parserOptions: parserOptions,
       errors: [{message: '<dotted.Component> is forbidden, that ain\'t cool'}]
     },
     {
@@ -131,13 +115,11 @@ ruleTester.run('forbid-elements', rule, {
       options: [{forbid: [
         {element: 'button', message: 'use <Button> instead'}
       ]}],
-      parserOptions: parserOptions,
       errors: [{message: '<button> is forbidden, use <Button> instead'}]
     },
     {
       code: '<button><input /></button>',
       options: [{forbid: [{element: 'button'}, {element: 'input'}]}],
-      parserOptions: parserOptions,
       errors: [
         {message: '<button> is forbidden'},
         {message: '<input> is forbidden'}
@@ -146,7 +128,6 @@ ruleTester.run('forbid-elements', rule, {
     {
       code: '<button><input /></button>',
       options: [{forbid: [{element: 'button'}, 'input']}],
-      parserOptions: parserOptions,
       errors: [
         {message: '<button> is forbidden'},
         {message: '<input> is forbidden'}
@@ -155,7 +136,6 @@ ruleTester.run('forbid-elements', rule, {
     {
       code: '<button><input /></button>',
       options: [{forbid: ['input', {element: 'button'}]}],
-      parserOptions: parserOptions,
       errors: [
         {message: '<button> is forbidden'},
         {message: '<input> is forbidden'}
@@ -167,19 +147,16 @@ ruleTester.run('forbid-elements', rule, {
         {element: 'button', message: 'use <Button> instead'},
         {element: 'button', message: 'use <Button2> instead'}
       ]}],
-      parserOptions: parserOptions,
       errors: [{message: '<button> is forbidden, use <Button2> instead'}]
     },
     {
       code: 'React.createElement("button", {}, child)',
       options: [{forbid: ['button']}],
-      parserOptions: parserOptions,
       errors: [{message: '<button> is forbidden'}]
     },
     {
       code: '[React.createElement(Modal), React.createElement("button")]',
       options: [{forbid: ['button', 'Modal']}],
-      parserOptions: parserOptions,
       errors: [
         {message: '<Modal> is forbidden'},
         {message: '<button> is forbidden'}
@@ -190,13 +167,11 @@ ruleTester.run('forbid-elements', rule, {
       options: [{forbid: [
         {element: 'dotted.Component', message: 'that ain\'t cool'}
       ]}],
-      parserOptions: parserOptions,
       errors: [{message: '<dotted.Component> is forbidden, that ain\'t cool'}]
     },
     {
       code: 'React.createElement(dotted.component)',
       options: [{forbid: ['dotted.component']}],
-      parserOptions: parserOptions,
       errors: [
         {message: '<dotted.component> is forbidden'}
       ]
@@ -204,7 +179,6 @@ ruleTester.run('forbid-elements', rule, {
     {
       code: 'React.createElement(_comp)',
       options: [{forbid: ['_comp']}],
-      parserOptions: parserOptions,
       errors: [
         {message: '<_comp> is forbidden'}
       ]
@@ -214,13 +188,11 @@ ruleTester.run('forbid-elements', rule, {
       options: [{forbid: [
         {element: 'button', message: 'use <Button> instead'}
       ]}],
-      parserOptions: parserOptions,
       errors: [{message: '<button> is forbidden, use <Button> instead'}]
     },
     {
       code: 'React.createElement("button", {}, React.createElement("input"))',
       options: [{forbid: [{element: 'button'}, {element: 'input'}]}],
-      parserOptions: parserOptions,
       errors: [
         {message: '<button> is forbidden'},
         {message: '<input> is forbidden'}

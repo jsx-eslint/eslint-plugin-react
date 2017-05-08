@@ -12,9 +12,10 @@ var rule = require('../../../lib/rules/prefer-es6-class');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -25,7 +26,7 @@ require('babel-eslint');
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('prefer-es6-class', rule, {
 
   valid: [{
@@ -36,8 +37,7 @@ ruleTester.run('prefer-es6-class', rule, {
       '  }',
       '}',
       'Hello.displayName = \'Hello\''
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'export default class Hello extends React.Component {',
@@ -46,14 +46,12 @@ ruleTester.run('prefer-es6-class', rule, {
       '  }',
       '}',
       'Hello.displayName = \'Hello\''
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var Hello = "foo";',
       'module.exports = {};'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -62,8 +60,7 @@ ruleTester.run('prefer-es6-class', rule, {
       '  }',
       '});'
     ].join('\n'),
-    options: ['never'],
-    parserOptions: parserOptions
+    options: ['never']
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -72,8 +69,7 @@ ruleTester.run('prefer-es6-class', rule, {
       '  }',
       '}'
     ].join('\n'),
-    options: ['always'],
-    parserOptions: parserOptions
+    options: ['always']
   }],
 
   invalid: [{
@@ -85,7 +81,6 @@ ruleTester.run('prefer-es6-class', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: 'Component should use es6 class instead of createClass'
     }]
@@ -98,7 +93,6 @@ ruleTester.run('prefer-es6-class', rule, {
       '});'
     ].join('\n'),
     options: ['always'],
-    parserOptions: parserOptions,
     errors: [{
       message: 'Component should use es6 class instead of createClass'
     }]
@@ -111,7 +105,6 @@ ruleTester.run('prefer-es6-class', rule, {
       '}'
     ].join('\n'),
     options: ['never'],
-    parserOptions: parserOptions,
     errors: [{
       message: 'Component should use createClass instead of es6 class'
     }]

@@ -11,17 +11,18 @@
 var rule = require('../../../lib/rules/require-default-props');
 var RuleTester = require('eslint').RuleTester;
 
-require('babel-eslint');
-
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
     experimentalObjectRestSpread: true,
     jsx: true
   }
 };
 
-var ruleTester = new RuleTester({parserOptions: parserOptions});
+require('babel-eslint');
+
+var ruleTester = new RuleTester({parserOptions});
 
 // ------------------------------------------------------------------------------
 // Tests

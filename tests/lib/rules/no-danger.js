@@ -13,8 +13,10 @@ var rule = require('../../../lib/rules/no-danger');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -23,16 +25,15 @@ var parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-danger', rule, {
   valid: [
-    {code: '<App />;', parserOptions: parserOptions},
-    {code: '<App dangerouslySetInnerHTML={{ __html: "" }} />;', parserOptions: parserOptions},
-    {code: '<div className="bar"></div>;', parserOptions: parserOptions}
+    {code: '<App />;'},
+    {code: '<App dangerouslySetInnerHTML={{ __html: "" }} />;'},
+    {code: '<div className="bar"></div>;'}
   ],
   invalid: [{
     code: '<div dangerouslySetInnerHTML={{ __html: "" }}></div>;',
-    errors: [{message: 'Dangerous property \'dangerouslySetInnerHTML\' found'}],
-    parserOptions: parserOptions
+    errors: [{message: 'Dangerous property \'dangerouslySetInnerHTML\' found'}]
   }]
 });

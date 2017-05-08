@@ -14,7 +14,8 @@ var RuleTester = require('eslint').RuleTester;
 require('babel-eslint');
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
     experimentalObjectRestSpread: true,
     jsx: true
@@ -25,7 +26,7 @@ var parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('display-name', rule, {
 
   valid: [{
@@ -39,8 +40,7 @@ ruleTester.run('display-name', rule, {
     ].join('\n'),
     options: [{
       ignoreTranspilerName: true
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       'var Hello = React.createClass({',
@@ -57,8 +57,7 @@ ruleTester.run('display-name', rule, {
       react: {
         createClass: 'createClass'
       }
-    },
-    parserOptions: parserOptions
+    }
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -70,8 +69,7 @@ ruleTester.run('display-name', rule, {
     ].join('\n'),
     options: [{
       ignoreTranspilerName: true
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       'class Hello {',
@@ -79,8 +77,7 @@ ruleTester.run('display-name', rule, {
       '    return \'Hello World\';',
       '  }',
       '}'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'class Hello extends Greetings {',
@@ -97,8 +94,7 @@ ruleTester.run('display-name', rule, {
       '  method;',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
-    parserOptions: parserOptions
+    parser: 'babel-eslint'
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -112,8 +108,7 @@ ruleTester.run('display-name', rule, {
     ].join('\n'),
     options: [{
       ignoreTranspilerName: true
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -126,8 +121,7 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
-    parser: 'babel-eslint',
-    parserOptions: parserOptions
+    parser: 'babel-eslint'
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -135,8 +129,7 @@ ruleTester.run('display-name', rule, {
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -163,8 +156,7 @@ ruleTester.run('display-name', rule, {
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'module.exports = createReactClass({',
@@ -173,8 +165,7 @@ ruleTester.run('display-name', rule, {
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -188,8 +179,7 @@ ruleTester.run('display-name', rule, {
     ].join('\n'),
     options: [{
       ignoreTranspilerName: true
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       'export default class {',
@@ -421,7 +411,6 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
-    parserOptions: parserOptions,
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -441,7 +430,6 @@ ruleTester.run('display-name', rule, {
         createClass: 'createClass'
       }
     },
-    parserOptions: parserOptions,
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -456,7 +444,6 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
-    parserOptions: parserOptions,
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -471,7 +458,6 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
-    parserOptions: parserOptions,
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -489,7 +475,6 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
-    parserOptions: parserOptions,
     errors: [{
       message: 'Component definition is missing display name'
     }]

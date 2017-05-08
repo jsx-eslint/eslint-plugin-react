@@ -11,7 +11,8 @@ var rule = require('../../../lib/rules/sort-prop-types');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
     experimentalObjectRestSpread: true,
     jsx: true
@@ -26,7 +27,7 @@ require('babel-eslint');
 
 var ERROR_MESSAGE = 'Prop types declarations should be sorted alphabetically';
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('sort-prop-types', rule, {
 
   valid: [{
@@ -36,8 +37,7 @@ ruleTester.run('sort-prop-types', rule, {
       '    return <div />;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var First = createReactClass({',
@@ -46,8 +46,7 @@ ruleTester.run('sort-prop-types', rule, {
       '    return <div />;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var First = createReactClass({',
@@ -61,8 +60,7 @@ ruleTester.run('sort-prop-types', rule, {
       '    return <div />;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var First = createReactClass({',
@@ -79,8 +77,7 @@ ruleTester.run('sort-prop-types', rule, {
     ].join('\n'),
     options: [{
       ignoreCase: true
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       'var First = createReactClass({',
@@ -101,8 +98,7 @@ ruleTester.run('sort-prop-types', rule, {
       '    return <div />;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'class First extends React.Component {',
@@ -115,8 +111,7 @@ ruleTester.run('sort-prop-types', rule, {
       '  z: PropTypes.string',
       '};',
       'First.propTypes.justforcheck = PropTypes.string;'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'class First extends React.Component {',
@@ -133,8 +128,7 @@ ruleTester.run('sort-prop-types', rule, {
     ].join('\n'),
     options: [{
       ignoreCase: true
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       'class Component extends React.Component {',
@@ -148,8 +142,7 @@ ruleTester.run('sort-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
-    parserOptions: parserOptions
+    parser: 'babel-eslint'
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -189,8 +182,7 @@ ruleTester.run('sort-prop-types', rule, {
       '    return <div />;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var First = createReactClass({',
@@ -203,8 +195,7 @@ ruleTester.run('sort-prop-types', rule, {
       '    return <div />;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var First = createReactClass({',
@@ -221,8 +212,7 @@ ruleTester.run('sort-prop-types', rule, {
     ].join('\n'),
     options: [{
       callbacksLast: true
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       'class Component extends React.Component {',
@@ -240,8 +230,7 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       callbacksLast: true
     }],
-    parser: 'babel-eslint',
-    parserOptions: parserOptions
+    parser: 'babel-eslint'
   }, {
     code: [
       'class First extends React.Component {',
@@ -258,8 +247,7 @@ ruleTester.run('sort-prop-types', rule, {
     ].join('\n'),
     options: [{
       callbacksLast: true
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       'class First extends React.Component {',
@@ -274,8 +262,7 @@ ruleTester.run('sort-prop-types', rule, {
     ].join('\n'),
     options: [{
       requiredFirst: true
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       'class First extends React.Component {',
@@ -289,8 +276,7 @@ ruleTester.run('sort-prop-types', rule, {
     ].join('\n'),
     options: [{
       requiredFirst: true
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       'class First extends React.Component {',
@@ -310,8 +296,7 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       requiredFirst: true,
       callbacksLast: true
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       'export default class ClassWithSpreadInPropTypes extends BaseClass {',
@@ -330,8 +315,7 @@ ruleTester.run('sort-prop-types', rule, {
       '  return <div />;',
       '};',
       'TextFieldLabel.propTypes = propTypes;'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }],
 
   invalid: [{
@@ -346,7 +330,6 @@ ruleTester.run('sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       line: 4,
@@ -365,7 +348,6 @@ ruleTester.run('sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       line: 4,
@@ -387,7 +369,6 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       ignoreCase: true
     }],
-    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       line: 4,
@@ -408,7 +389,6 @@ ruleTester.run('sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: 2
   }, {
     code: [
@@ -431,7 +411,6 @@ ruleTester.run('sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: 2
   }, {
     code: [
@@ -454,7 +433,6 @@ ruleTester.run('sort-prop-types', rule, {
       '    ZZ: PropTypes.string',
       '};'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: 2
   }, {
     code: [
@@ -470,7 +448,6 @@ ruleTester.run('sort-prop-types', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    parserOptions: parserOptions,
     errors: 2
   }, {
     code: [
@@ -489,7 +466,6 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       callbacksLast: true
     }],
-    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       line: 6,
@@ -514,7 +490,6 @@ ruleTester.run('sort-prop-types', rule, {
       callbacksLast: true
     }],
     parser: 'babel-eslint',
-    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       line: 6,
@@ -538,7 +513,6 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       callbacksLast: true
     }],
-    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       line: 10,
@@ -562,7 +536,6 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       callbacksLast: true
     }],
-    parserOptions: parserOptions,
     errors: [{
       message: 'Callback prop types must be listed after all other prop types',
       line: 5,
@@ -585,7 +558,6 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       requiredFirst: true
     }],
-    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       line: 4,
@@ -608,7 +580,6 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       requiredFirst: true
     }],
-    parserOptions: parserOptions,
     errors: [{
       message: 'Required prop types must be listed before all other prop types',
       line: 4,
@@ -644,7 +615,6 @@ ruleTester.run('sort-prop-types', rule, {
       '};',
       'TextFieldLabel.propTypes = propTypes;'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       line: 3,

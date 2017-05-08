@@ -11,11 +11,20 @@
 var rule = require('../../../lib/rules/jsx-no-literals');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 8,
+  sourceType: 'module',
+  ecmaFeatures: {
+    experimentalObjectRestSpread: true,
+    jsx: true
+  }
+};
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-no-literals', rule, {
 
   valid: [
@@ -31,7 +40,6 @@ ruleTester.run('jsx-no-literals', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }, {
       code: [
@@ -41,7 +49,6 @@ ruleTester.run('jsx-no-literals', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }, {
       code: [
@@ -52,7 +59,6 @@ ruleTester.run('jsx-no-literals', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }, {
       code: [
@@ -63,7 +69,6 @@ ruleTester.run('jsx-no-literals', rule, {
         '  },',
         '});'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }, {
       code: [
@@ -79,7 +84,6 @@ ruleTester.run('jsx-no-literals', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }, {
       code: [
@@ -92,13 +96,11 @@ ruleTester.run('jsx-no-literals', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }, {
       code: [
         'var foo = require(\'foo\');'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }, {
       code: [
@@ -106,7 +108,6 @@ ruleTester.run('jsx-no-literals', rule, {
         '  {\'blarg\'}',
         '</Foo>'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }
   ],
@@ -120,7 +121,6 @@ ruleTester.run('jsx-no-literals', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint',
       errors: [{message: 'Missing JSX expression container around literal string'}]
     }, {
@@ -132,7 +132,6 @@ ruleTester.run('jsx-no-literals', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint',
       errors: [{message: 'Missing JSX expression container around literal string'}]
     }, {
@@ -144,7 +143,6 @@ ruleTester.run('jsx-no-literals', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint',
       errors: [{message: 'Missing JSX expression container around literal string'}]
     }, {
@@ -156,7 +154,6 @@ ruleTester.run('jsx-no-literals', rule, {
         '  },',
         '});'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint',
       errors: [{message: 'Missing JSX expression container around literal string'}]
     }, {
@@ -171,7 +168,6 @@ ruleTester.run('jsx-no-literals', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint',
       errors: [{message: 'Missing JSX expression container around literal string'}]
     }, {
@@ -188,7 +184,6 @@ ruleTester.run('jsx-no-literals', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint',
       errors: [{message: 'Missing JSX expression container around literal string'}]
     }, {
@@ -205,7 +200,6 @@ ruleTester.run('jsx-no-literals', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint',
       errors: [{message: 'Missing JSX expression container around literal string'}]
     }

@@ -11,9 +11,10 @@ var rule = require('../../../lib/rules/forbid-foreign-prop-types');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -26,39 +27,29 @@ require('babel-eslint');
 
 var ERROR_MESSAGE = 'Using another component\'s propTypes is forbidden';
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('forbid-foreign-prop-types', rule, {
 
   valid: [{
-    code: 'import { propTypes } from "SomeComponent";',
-    parserOptions: parserOptions
+    code: 'import { propTypes } from "SomeComponent";'
   }, {
-    code: 'import { propTypes as someComponentPropTypes } from "SomeComponent";',
-    parserOptions: parserOptions
+    code: 'import { propTypes as someComponentPropTypes } from "SomeComponent";'
   }, {
-    code: 'const foo = propTypes',
-    parserOptions: parserOptions
+    code: 'const foo = propTypes'
   }, {
-    code: 'foo(propTypes)',
-    parserOptions: parserOptions
+    code: 'foo(propTypes)'
   }, {
-    code: 'foo + propTypes',
-    parserOptions: parserOptions
+    code: 'foo + propTypes'
   }, {
-    code: 'const foo = [propTypes]',
-    parserOptions: parserOptions
+    code: 'const foo = [propTypes]'
   }, {
-    code: 'const foo = { propTypes }',
-    parserOptions: parserOptions
+    code: 'const foo = { propTypes }'
   }, {
-    code: 'Foo.propTypes = propTypes',
-    parserOptions: parserOptions
+    code: 'Foo.propTypes = propTypes'
   }, {
-    code: 'Foo["propTypes"] = propTypes',
-    parserOptions: parserOptions
+    code: 'Foo["propTypes"] = propTypes'
   }, {
-    code: 'const propTypes = "bar"; Foo[propTypes];',
-    parserOptions: parserOptions
+    code: 'const propTypes = "bar"; Foo[propTypes];'
   }],
 
   invalid: [{
@@ -70,7 +61,6 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       type: 'Identifier'
@@ -85,7 +75,6 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       type: 'Literal'
@@ -101,7 +90,6 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       type: 'Property'
@@ -147,7 +135,6 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE,
       type: 'Property'

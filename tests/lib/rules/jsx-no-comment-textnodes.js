@@ -11,11 +11,20 @@
 var rule = require('../../../lib/rules/jsx-no-comment-textnodes');
 var RuleTester = require('eslint').RuleTester;
 
+var parserOptions = {
+  ecmaVersion: 8,
+  sourceType: 'module',
+  ecmaFeatures: {
+    experimentalObjectRestSpread: true,
+    jsx: true
+  }
+};
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-no-comment-textnodes', rule, {
 
   valid: [
@@ -31,7 +40,6 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }, {
       code: [
@@ -41,7 +49,6 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }, {
       code: [
@@ -52,7 +59,6 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }, {
       code: [
@@ -63,7 +69,6 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         '  },',
         '});'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }, {
       code: [
@@ -79,7 +84,6 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }, {
       code: [
@@ -92,13 +96,11 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }, {
       code: [
         'var foo = require(\'foo\');'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }, {
       code: [
@@ -106,7 +108,6 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         '  {/* valid */}',
         '</Foo>'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     },
     {
@@ -115,7 +116,6 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         '  &nbsp;https://www.example.com/attachment/download/1',
         '</strong>'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     },
 
@@ -124,14 +124,12 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       code: [
         '<Foo /* valid */ placeholder={\'foo\'}/>'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     },
     {
       code: [
         '<Foo title={\'foo\' /* valid */}/>'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint'
     }
   ],
@@ -145,7 +143,6 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint',
       errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
     }, {
@@ -156,7 +153,6 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint',
       errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
     }, {
@@ -171,7 +167,6 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint',
       errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
     }, {
@@ -188,7 +183,6 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint',
       errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
     }, {
@@ -205,7 +199,6 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         '  }',
         '}'
       ].join('\n'),
-      args: [1],
       parser: 'babel-eslint',
       errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
     }

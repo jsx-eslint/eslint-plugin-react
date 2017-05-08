@@ -11,7 +11,8 @@ var rule = require('../../../lib/rules/forbid-component-props');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
     experimentalObjectRestSpread: true,
     jsx: true
@@ -27,7 +28,7 @@ require('babel-eslint');
 var CLASSNAME_ERROR_MESSAGE = 'Prop `className` is forbidden on Components';
 var STYLE_ERROR_MESSAGE = 'Prop `style` is forbidden on Components';
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('forbid-component-props', rule, {
 
   valid: [{
@@ -37,8 +38,7 @@ ruleTester.run('forbid-component-props', rule, {
       '    return <div className="foo" />;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var First = createReactClass({',
@@ -47,8 +47,7 @@ ruleTester.run('forbid-component-props', rule, {
       '  }',
       '});'
     ].join('\n'),
-    options: [{forbid: ['style']}],
-    parserOptions: parserOptions
+    options: [{forbid: ['style']}]
   }, {
     code: [
       'var First = createReactClass({',
@@ -57,8 +56,7 @@ ruleTester.run('forbid-component-props', rule, {
       '    return <Foo bar="baz" />;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var First = createReactClass({',
@@ -68,8 +66,7 @@ ruleTester.run('forbid-component-props', rule, {
       '  }',
       '});'
     ].join('\n'),
-    options: [{forbid: ['style']}],
-    parserOptions: parserOptions
+    options: [{forbid: ['style']}]
   }, {
     code: [
       'var First = createReactClass({',
@@ -79,8 +76,7 @@ ruleTester.run('forbid-component-props', rule, {
       '  }',
       '});'
     ].join('\n'),
-    options: [{forbid: ['style', 'foo']}],
-    parserOptions: parserOptions
+    options: [{forbid: ['style', 'foo']}]
   }, {
     code: [
       'var First = createReactClass({',
@@ -89,8 +85,7 @@ ruleTester.run('forbid-component-props', rule, {
       '    return <this.Foo bar="baz" />;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'class First extends createReactClass {',
@@ -99,15 +94,13 @@ ruleTester.run('forbid-component-props', rule, {
       '  }',
       '}'
     ].join('\n'),
-    options: [{forbid: ['style']}],
-    parserOptions: parserOptions
+    options: [{forbid: ['style']}]
   }, {
     code: [
       'const First = (props) => (',
       '  <this.Foo {...props} />',
       ');'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }],
 
   invalid: [{
@@ -119,7 +112,6 @@ ruleTester.run('forbid-component-props', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: CLASSNAME_ERROR_MESSAGE,
       line: 4,
@@ -135,7 +127,6 @@ ruleTester.run('forbid-component-props', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: STYLE_ERROR_MESSAGE,
       line: 4,
@@ -151,7 +142,6 @@ ruleTester.run('forbid-component-props', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: [{forbid: ['className', 'style']}],
     errors: [{
       message: CLASSNAME_ERROR_MESSAGE,
@@ -168,7 +158,6 @@ ruleTester.run('forbid-component-props', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: [{forbid: ['className', 'style']}],
     errors: [{
       message: STYLE_ERROR_MESSAGE,

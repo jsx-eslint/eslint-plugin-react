@@ -12,8 +12,10 @@ var rule = require('../../../lib/rules/no-did-update-set-state');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -24,7 +26,7 @@ require('babel-eslint');
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-did-update-set-state', rule, {
 
   valid: [{
@@ -34,15 +36,13 @@ ruleTester.run('no-did-update-set-state', rule, {
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var Hello = createReactClass({',
       '  componentDidUpdate: function() {}',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -51,8 +51,7 @@ ruleTester.run('no-did-update-set-state', rule, {
       '    this.someHandler = this.setState;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -64,8 +63,7 @@ ruleTester.run('no-did-update-set-state', rule, {
       '    })',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -79,8 +77,7 @@ ruleTester.run('no-did-update-set-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parser: 'babel-eslint',
-    parserOptions: parserOptions
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
@@ -93,7 +90,6 @@ ruleTester.run('no-did-update-set-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
     }]
@@ -122,7 +118,6 @@ ruleTester.run('no-did-update-set-state', rule, {
       '});'
     ].join('\n'),
     options: ['disallow-in-func'],
-    parserOptions: parserOptions,
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
     }]
@@ -153,7 +148,6 @@ ruleTester.run('no-did-update-set-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     options: ['disallow-in-func'],
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
@@ -187,7 +181,6 @@ ruleTester.run('no-did-update-set-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
     }]
@@ -216,7 +209,6 @@ ruleTester.run('no-did-update-set-state', rule, {
       '});'
     ].join('\n'),
     parser: 'babel-eslint',
-    parserOptions: parserOptions,
     options: ['disallow-in-func'],
     errors: [{
       message: 'Do not use setState in componentDidUpdate'

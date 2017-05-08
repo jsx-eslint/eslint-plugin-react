@@ -12,8 +12,10 @@ var rule = require('../../../lib/rules/self-closing-comp');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -22,88 +24,70 @@ var parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('self-closing-comp', rule, {
 
   valid: [
     {
+      code: 'var HelloJohn = <Hello name="John" />;'
+    }, {
+      code: 'var Profile = <Hello name="John"><img src="picture.png" /></Hello>;'
+    }, {
+      code: `
+        <Hello>
+          <Hello name="John" />
+        </Hello>
+      `
+    }, {
+      code: 'var HelloJohn = <div>&nbsp;</div>;'
+    }, {
+      code: 'var HelloJohn = <div>{\' \'}</div>;'
+    }, {
+      code: 'var HelloJohn = <Hello name="John">&nbsp;</Hello>;'
+    }, {
       code: 'var HelloJohn = <Hello name="John" />;',
-      parserOptions: parserOptions
+      options: []
     }, {
       code: 'var Profile = <Hello name="John"><img src="picture.png" /></Hello>;',
-      parserOptions: parserOptions
+      options: []
     }, {
       code: `
         <Hello>
           <Hello name="John" />
         </Hello>
       `,
-      parserOptions: parserOptions
+      options: []
     }, {
       code: 'var HelloJohn = <div>&nbsp;</div>;',
-      parserOptions: parserOptions
+      options: []
     }, {
       code: 'var HelloJohn = <div>{\' \'}</div>;',
-      parserOptions: parserOptions
+      options: []
     }, {
       code: 'var HelloJohn = <Hello name="John">&nbsp;</Hello>;',
-      parserOptions: parserOptions
-    }, {
-      code: 'var HelloJohn = <Hello name="John" />;',
-      options: [],
-      parserOptions: parserOptions
-    }, {
-      code: 'var Profile = <Hello name="John"><img src="picture.png" /></Hello>;',
-      options: [],
-      parserOptions: parserOptions
-    }, {
-      code: `
-        <Hello>
-          <Hello name="John" />
-        </Hello>
-      `,
-      options: [],
-      parserOptions: parserOptions
-    }, {
-      code: 'var HelloJohn = <div>&nbsp;</div>;',
-      options: [],
-      parserOptions: parserOptions
-    }, {
-      code: 'var HelloJohn = <div>{\' \'}</div>;',
-      options: [],
-      parserOptions: parserOptions
-    }, {
-      code: 'var HelloJohn = <Hello name="John">&nbsp;</Hello>;',
-      options: [],
-      parserOptions: parserOptions
+      options: []
     }, {
       code: 'var HelloJohn = <Hello name="John"></Hello>;',
-      options: [{component: false}],
-      parserOptions: parserOptions
+      options: [{component: false}]
     }, {
       code: 'var HelloJohn = <Hello name="John">\n</Hello>;',
-      options: [{component: false}],
-      parserOptions: parserOptions
+      options: [{component: false}]
     }, {
       code: 'var HelloJohn = <Hello name="John"> </Hello>;',
-      options: [{component: false}],
-      parserOptions: parserOptions
+      options: [{component: false}]
     }, {
       code: 'var contentContainer = <div className="content" />;',
-      options: [{html: true}],
-      parserOptions: parserOptions
+      options: [{html: true}]
     }, {
       code: 'var contentContainer = <div className="content"><img src="picture.png" /></div>;',
-      options: [{html: true}],
-      parserOptions: parserOptions
+      options: [{html: true}]
     }, {
       code: `
         <div>
           <div className="content" />
         </div>
       `,
-      options: [{html: true}],
-      parserOptions: parserOptions
+      options: [{html: true}]
     }
   ],
 
@@ -111,7 +95,6 @@ ruleTester.run('self-closing-comp', rule, {
     {
       code: 'var contentContainer = <div className="content"></div>;',
       output: 'var contentContainer = <div className="content" />;',
-      parserOptions: parserOptions,
       errors: [{
         message: 'Empty components are self-closing'
       }]
@@ -119,28 +102,24 @@ ruleTester.run('self-closing-comp', rule, {
       code: 'var contentContainer = <div className="content"></div>;',
       output: 'var contentContainer = <div className="content" />;',
       options: [],
-      parserOptions: parserOptions,
       errors: [{
         message: 'Empty components are self-closing'
       }]
     }, {
       code: 'var HelloJohn = <Hello name="John"></Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
-      parserOptions: parserOptions,
       errors: [{
         message: 'Empty components are self-closing'
       }]
     }, {
       code: 'var HelloJohn = <Hello name="John">\n</Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
-      parserOptions: parserOptions,
       errors: [{
         message: 'Empty components are self-closing'
       }]
     }, {
       code: 'var HelloJohn = <Hello name="John"> </Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
-      parserOptions: parserOptions,
       errors: [{
         message: 'Empty components are self-closing'
       }]
@@ -149,7 +128,6 @@ ruleTester.run('self-closing-comp', rule, {
       code: 'var HelloJohn = <Hello name="John"></Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
       options: [],
-      parserOptions: parserOptions,
       errors: [{
         message: 'Empty components are self-closing'
       }]
@@ -157,7 +135,6 @@ ruleTester.run('self-closing-comp', rule, {
       code: 'var HelloJohn = <Hello name="John">\n</Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
       options: [],
-      parserOptions: parserOptions,
       errors: [{
         message: 'Empty components are self-closing'
       }]
@@ -165,7 +142,6 @@ ruleTester.run('self-closing-comp', rule, {
       code: 'var HelloJohn = <Hello name="John"> </Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
       options: [],
-      parserOptions: parserOptions,
       errors: [{
         message: 'Empty components are self-closing'
       }]
@@ -173,7 +149,6 @@ ruleTester.run('self-closing-comp', rule, {
       code: 'var contentContainer = <div className="content"></div>;',
       output: 'var contentContainer = <div className="content" />;',
       options: [{html: true}],
-      parserOptions: parserOptions,
       errors: [{
         message: 'Empty components are self-closing'
       }]
@@ -181,7 +156,6 @@ ruleTester.run('self-closing-comp', rule, {
       code: 'var contentContainer = <div className="content">\n</div>;',
       output: 'var contentContainer = <div className="content" />;',
       options: [{html: true}],
-      parserOptions: parserOptions,
       errors: [{
         message: 'Empty components are self-closing'
       }]
@@ -189,7 +163,6 @@ ruleTester.run('self-closing-comp', rule, {
       code: 'var contentContainer = <div className="content"> </div>;',
       output: 'var contentContainer = <div className="content" />;',
       options: [{html: true}],
-      parserOptions: parserOptions,
       errors: [{
         message: 'Empty components are self-closing'
       }]

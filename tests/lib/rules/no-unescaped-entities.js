@@ -10,8 +10,12 @@
 
 var rule = require('../../../lib/rules/no-unescaped-entities');
 var RuleTester = require('eslint').RuleTester;
+
 var parserOptions = {
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -20,7 +24,7 @@ var parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-unescaped-entities', rule, {
 
   valid: [
@@ -33,8 +37,7 @@ ruleTester.run('no-unescaped-entities', rule, {
         '    );',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -42,8 +45,7 @@ ruleTester.run('no-unescaped-entities', rule, {
         '    return <div>Here is some text!</div>;',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -51,8 +53,7 @@ ruleTester.run('no-unescaped-entities', rule, {
         '    return <div>I&rsquo;ve escaped some entities: &gt; &lt; &amp;</div>;',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -62,8 +63,7 @@ ruleTester.run('no-unescaped-entities', rule, {
         '    and here are some escaped entities: &gt; &lt; &amp;</div>;',
         '  }',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -71,8 +71,7 @@ ruleTester.run('no-unescaped-entities', rule, {
         '    return <div>{">" + "<" + "&" + \'"\'}</div>;',
         '  },',
         '});'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }
   ],
 
@@ -85,7 +84,6 @@ ruleTester.run('no-unescaped-entities', rule, {
         '  }',
         '});'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{message: 'HTML entities must be escaped.'}]
     }, {
       code: [
@@ -97,7 +95,6 @@ ruleTester.run('no-unescaped-entities', rule, {
         '  }',
         '});'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{message: 'HTML entities must be escaped.'}]
     }, {
       code: [
@@ -107,7 +104,6 @@ ruleTester.run('no-unescaped-entities', rule, {
         '  }',
         '});'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{message: 'HTML entities must be escaped.'}]
     }, {
       code: [
@@ -117,7 +113,6 @@ ruleTester.run('no-unescaped-entities', rule, {
         '  }',
         '});'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [
         {message: 'HTML entities must be escaped.'},
         {message: 'HTML entities must be escaped.'},
@@ -131,7 +126,6 @@ ruleTester.run('no-unescaped-entities', rule, {
         '  }',
         '});'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{message: 'HTML entities must be escaped.'}]
     }
   ]

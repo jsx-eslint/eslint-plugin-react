@@ -12,8 +12,10 @@ var rule = require('../../../lib/rules/prefer-stateless-function');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -22,7 +24,7 @@ var parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('prefer-stateless-function', rule, {
 
   valid: [
@@ -32,12 +34,10 @@ ruleTester.run('prefer-stateless-function', rule, {
         'const Foo = function(props) {',
         '  return <div>{props.foo}</div>;',
         '};'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       // Already a stateless (arrow) function
-      code: 'const Foo = ({foo}) => <div>{foo}</div>;',
-      parserOptions: parserOptions
+      code: 'const Foo = ({foo}) => <div>{foo}</div>;'
     }, {
       // Extends from PureComponent and uses props
       code: [
@@ -47,7 +47,6 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parserOptions: parserOptions,
       options: [{
         ignorePureComponents: true
       }]
@@ -60,7 +59,6 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parserOptions: parserOptions,
       options: [{
         ignorePureComponents: true
       }]
@@ -75,8 +73,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '    return <div>{this.props.foo}</div>;',
         '  }',
         '}'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       // Has a state
       code: [
@@ -88,8 +85,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '    return <div onClick={this.changeState.bind(this)}>{this.state.foo || "bar"}</div>;',
         '  }',
         '}'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       // Use refs
       code: [
@@ -101,8 +97,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '    return <div ref="foo" onClick={this.doStuff}>{this.props.foo}</div>;',
         '  }',
         '}'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       // Has an additional method
       code: [
@@ -112,8 +107,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '    return <div>{this.props.foo}</div>;',
         '  }',
         '}'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       // Has an empty (no super) constructor
       code: [
@@ -123,8 +117,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '    return <div>{this.props.foo}</div>;',
         '  }',
         '}'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       // Has a constructor
       code: [
@@ -136,8 +129,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '    return <div>{this.props.foo}</div>;',
         '  }',
         '}'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       // Has a constructor (2)
       code: [
@@ -149,8 +141,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '    return <div>{this.props.foo}</div>;',
         '  }',
         '}'
-      ].join('\n'),
-      parserOptions: parserOptions
+      ].join('\n')
     }, {
       // Use this.bar
       code: [
@@ -222,7 +213,6 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  }',
         '});'
       ].join('\n'),
-      parserOptions: parserOptions,
       settings: {
         react: {
           version: '0.14.0'
@@ -315,7 +305,6 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{
         message: 'Component should be written as a pure function'
       }]
@@ -328,7 +317,6 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{
         message: 'Component should be written as a pure function'
       }]
@@ -341,7 +329,6 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parserOptions: parserOptions,
       options: [{
         ignorePureComponents: true
       }],
@@ -357,7 +344,6 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{
         message: 'Component should be written as a pure function'
       }]
@@ -467,7 +453,6 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{
         message: 'Component should be written as a pure function'
       }]
@@ -499,7 +484,6 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  }',
         '});'
       ].join('\n'),
-      parserOptions: parserOptions,
       errors: [{
         message: 'Component should be written as a pure function'
       }]

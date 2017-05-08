@@ -8,35 +8,36 @@ var rule = require('../../../lib/rules/require-optimization');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
-  sourceType: 'module'
+  ecmaVersion: 8,
+  sourceType: 'module',
+  ecmaFeatures: {
+    experimentalObjectRestSpread: true,
+    jsx: true
+  }
 };
 
 var MESSAGE = 'Component is not optimized. Please add a shouldComponentUpdate method.';
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('react-require-optimization', rule, {
   valid: [{
     code: [
       'class A {}'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'import React from "react";' +
       'class YourComponent extends React.Component {' +
       'shouldComponentUpdate () {}' +
       '}'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'import React, {Component} from "react";' +
       'class YourComponent extends Component {' +
       'shouldComponentUpdate () {}' +
       '}'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'import React, {Component} from "react";',
@@ -46,56 +47,49 @@ ruleTester.run('react-require-optimization', rule, {
       '  render() {}',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
-    parserOptions: parserOptions
+    parser: 'babel-eslint'
   }, {
     code: [
       'import React from "react";' +
       'createReactClass({' +
       'shouldComponentUpdate: function () {}' +
       '})'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'import React from "react";' +
       'createReactClass({' +
       'mixins: [PureRenderMixin]' +
       '})'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       '@reactMixin.decorate(PureRenderMixin)',
       'class DecoratedComponent extends Component {' +
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
-    parserOptions: parserOptions
+    parser: 'babel-eslint'
   }, {
     code: [
       'const FunctionalComponent = function (props) {' +
       'return <div />;' +
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
-    parserOptions: parserOptions
+    parser: 'babel-eslint'
   }, {
     code: [
       'function FunctionalComponent(props) {' +
       'return <div />;' +
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
-    parserOptions: parserOptions
+    parser: 'babel-eslint'
   }, {
     code: [
       'const FunctionalComponent = (props) => {' +
       'return <div />;' +
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
-    parserOptions: parserOptions
+    parser: 'babel-eslint'
   }, {
     code: [
       '@bar',
@@ -105,24 +99,21 @@ ruleTester.run('react-require-optimization', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    options: [{allowDecorators: ['renderPure', 'pureRender']}],
-    parserOptions: parserOptions
+    options: [{allowDecorators: ['renderPure', 'pureRender']}]
   }, {
     code: [
       'import React from "react";' +
       'class YourComponent extends React.PureComponent {}'
     ].join('\n'),
     parser: 'babel-eslint',
-    options: [{allowDecorators: ['renderPure', 'pureRender']}],
-    parserOptions: parserOptions
+    options: [{allowDecorators: ['renderPure', 'pureRender']}]
   }, {
     code: [
       'import React, {PureComponent} from "react";' +
       'class YourComponent extends PureComponent {}'
     ].join('\n'),
     parser: 'babel-eslint',
-    options: [{allowDecorators: ['renderPure', 'pureRender']}],
-    parserOptions: parserOptions
+    options: [{allowDecorators: ['renderPure', 'pureRender']}]
   }],
 
   invalid: [{
@@ -132,8 +123,7 @@ ruleTester.run('react-require-optimization', rule, {
     ].join('\n'),
     errors: [{
       message: MESSAGE
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       'import React from "react";',
@@ -147,8 +137,7 @@ ruleTester.run('react-require-optimization', rule, {
     parser: 'babel-eslint',
     errors: [{
       message: MESSAGE
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       'import React, {Component} from "react";' +
@@ -156,8 +145,7 @@ ruleTester.run('react-require-optimization', rule, {
     ].join('\n'),
     errors: [{
       message: MESSAGE
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       'import React from "react";' +
@@ -166,8 +154,7 @@ ruleTester.run('react-require-optimization', rule, {
     ].join('\n'),
     errors: [{
       message: MESSAGE
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       'import React from "react";' +
@@ -177,8 +164,7 @@ ruleTester.run('react-require-optimization', rule, {
     ].join('\n'),
     errors: [{
       message: MESSAGE
-    }],
-    parserOptions: parserOptions
+    }]
   }, {
     code: [
       '@reactMixin.decorate(SomeOtherMixin)',
@@ -188,8 +174,7 @@ ruleTester.run('react-require-optimization', rule, {
     errors: [{
       message: MESSAGE
     }],
-    parser: 'babel-eslint',
-    parserOptions: parserOptions
+    parser: 'babel-eslint'
   }, {
     code: [
       '@bar',
@@ -202,7 +187,6 @@ ruleTester.run('react-require-optimization', rule, {
       message: MESSAGE
     }],
     parser: 'babel-eslint',
-    options: [{allowDecorators: ['renderPure', 'pureRender']}],
-    parserOptions: parserOptions
+    options: [{allowDecorators: ['renderPure', 'pureRender']}]
   }]
 });

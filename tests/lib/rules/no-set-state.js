@@ -12,8 +12,10 @@ var rule = require('../../../lib/rules/no-set-state');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -22,7 +24,7 @@ var parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-set-state', rule, {
 
   valid: [{
@@ -30,8 +32,7 @@ ruleTester.run('no-set-state', rule, {
       'var Hello = function() {',
       '  this.setState({})',
       '};'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -39,8 +40,7 @@ ruleTester.run('no-set-state', rule, {
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -52,8 +52,7 @@ ruleTester.run('no-set-state', rule, {
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
       '});'
-    ].join('\n'),
-    parserOptions: parserOptions
+    ].join('\n')
   }],
 
   invalid: [{
@@ -69,7 +68,6 @@ ruleTester.run('no-set-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: 'Do not use setState'
     }]
@@ -86,7 +84,6 @@ ruleTester.run('no-set-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: 'Do not use setState'
     }]
@@ -103,7 +100,6 @@ ruleTester.run('no-set-state', rule, {
       '  }',
       '};'
     ].join('\n'),
-    parserOptions: parserOptions,
     errors: [{
       message: 'Do not use setState'
     }]

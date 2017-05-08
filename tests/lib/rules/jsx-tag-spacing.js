@@ -13,8 +13,10 @@ var rule = require('../../../lib/rules/jsx-tag-spacing');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 8,
+  sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -53,9 +55,7 @@ function afterOpeningOptions(option) {
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({
-  parserOptions: parserOptions
-});
+var ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-tag-spacing', rule, {
   valid: [{
     code: '<App />'
