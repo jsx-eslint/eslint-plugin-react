@@ -29,8 +29,21 @@ ruleTester.run('jsx-curly-spacing', rule, {
   valid: [{
     code: '<App foo={bar} />;'
   }, {
+    code: [
+      '<App foo={',
+      '{ bar: true, baz: true }',
+      '} />;'
+    ].join('\n')
+  }, {
     code: '<App foo={bar} />;',
     options: ['never']
+  }, {
+    code: [
+      '<App foo={',
+      '{ bar: true, baz: true }',
+      '} />;'
+    ].join('\n'),
+    options: ['never', {spacing: {objectLiterals: 'never'}}]
   }, {
     code: '<App foo={ bar } />;',
     options: ['always']
@@ -41,12 +54,19 @@ ruleTester.run('jsx-curly-spacing', rule, {
     code: '<App foo={{ bar:baz }} />;',
     options: ['never']
   }, {
+    code: [
+      '<App foo={',
+      '{ bar: true, baz: true }',
+      '} />;'
+    ].join('\n'),
+    options: ['never']
+  }, {
     code: '<App foo={ {bar:baz} } />;',
     options: ['always']
   }, {
     code: [
       '<App foo={',
-      'bar',
+      '{ bar: true, baz: true }',
       '} />;'
     ].join('\n'),
     options: ['always']
@@ -92,6 +112,13 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '} />;'
     ].join('\n'),
     options: ['always', {allowMultiline: true}]
+  }, {
+    code: [
+      '<App foo={',
+      '{ bar: true, baz: true }',
+      '} />;'
+    ].join('\n'),
+    options: ['always', {spacing: {objectLiterals: 'never'}}]
   }, {
     code: '<App {...bar} />;'
   }, {
@@ -181,6 +208,58 @@ ruleTester.run('jsx-curly-spacing', rule, {
       message: 'There should be no space after \'{\''
     }, {
       message: 'There should be no space before \'}\''
+    }]
+  }, {
+    code: [
+      '<App foo={',
+      '{ bar: true, baz: true }',
+      '} />;'
+    ].join('\n'),
+    output: '<App foo={{ bar: true, baz: true }} />;',
+    options: ['never', {allowMultiline: false, spacing: {objectLiterals: 'never'}}],
+    errors: [{
+      message: 'There should be no newline after \'{\''
+    }, {
+      message: 'There should be no newline before \'}\''
+    }]
+  }, {
+    code: [
+      '<App foo={',
+      '{ bar: true, baz: true }',
+      '} />;'
+    ].join('\n'),
+    output: '<App foo={ { bar: true, baz: true } } />;',
+    options: ['never', {allowMultiline: false, spacing: {objectLiterals: 'always'}}],
+    errors: [{
+      message: 'There should be no newline after \'{\''
+    }, {
+      message: 'There should be no newline before \'}\''
+    }]
+  }, {
+    code: [
+      '<App foo={',
+      '{ bar: true, baz: true }',
+      '} />;'
+    ].join('\n'),
+    output: '<App foo={{ bar: true, baz: true }} />;',
+    options: ['always', {allowMultiline: false, spacing: {objectLiterals: 'never'}}],
+    errors: [{
+      message: 'There should be no newline after \'{\''
+    }, {
+      message: 'There should be no newline before \'}\''
+    }]
+  }, {
+    code: [
+      '<App foo={',
+      '{ bar: true, baz: true }',
+      '} />;'
+    ].join('\n'),
+    output: '<App foo={ { bar: true, baz: true } } />;',
+    options: ['always', {allowMultiline: false, spacing: {objectLiterals: 'always'}}],
+    errors: [{
+      message: 'There should be no newline after \'{\''
+    }, {
+      message: 'There should be no newline before \'}\''
     }]
   }, {
     code: '<App foo={bar} />;',
