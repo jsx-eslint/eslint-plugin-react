@@ -475,6 +475,43 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App foo={ bar }>{bar}</App>',
     options: [{attributes: {when: 'always'}}]
+  }, {
+    code: '<App foo={ bar }>{bar}</App>',
+    options: [{attributes: {when: 'always'}}]
+  }, {
+    code: [
+      '<App foo={ 42 } { ...bar } baz={{ 4: 2 }}>',
+      '{foo} {{ bar: baz }}',
+      '</App>'
+    ].join('\n'),
+    options: [{
+      when: 'never',
+      attributes: {when: 'always', spacing: {objectLiterals: 'never'}},
+      children: true
+    }]
+  }, {
+    code: [
+      '<App foo={42} {...bar} baz={ { 4: 2 } }>',
+      '{foo} { { bar: baz } }',
+      '</App>'
+    ].join('\n'),
+    options: [{
+      when: 'never',
+      spacing: {objectLiterals: 'always'},
+      attributes: true,
+      children: {when: 'never'}
+    }]
+  }, {
+    code: [
+      '<App foo={42} {...bar} baz={ { 4: 2 } }>',
+      '{foo} { { bar: baz } }',
+      '</App>'
+    ].join('\n'),
+    options: [{
+      spacing: {objectLiterals: 'always'},
+      attributes: {when: 'never', spacing: {objectLiterals: 'always'}},
+      children: {when: 'never'}
+    }]
   }],
 
   invalid: [{
