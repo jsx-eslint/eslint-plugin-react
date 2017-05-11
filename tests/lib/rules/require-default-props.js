@@ -1805,6 +1805,24 @@ ruleTester.run('require-default-props', rule, {
       errors: [{
         message: 'propType "name" is not required, but has no corresponding defaultProp declaration.'
       }]
+    },
+    {
+      code: [
+        'class Hello extends React.Component {',
+        '  static get propTypes() {',
+        '    return {',
+        '      \'first-name\': PropTypes.string',
+        '    };',
+        '  }',
+        '  render() {',
+        '    return <div>Hello {this.props[\'first-name\']}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "first-name" is not required, but has no corresponding defaultProp declaration.'
+      }]
     }
   ]
 });
