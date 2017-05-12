@@ -102,7 +102,7 @@ This rule can take one argument to ignore some specific props during validation.
 
 ```
 ...
-"prop-types": [<enabled>, { ignore: <ignore>, customValidators: <customValidator> }]
+"react/prop-types": [<enabled>, { ignore: <ignore>, customValidators: <customValidator> }]
 ...
 ```
 
