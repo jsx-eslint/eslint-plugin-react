@@ -3,6 +3,29 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.0.1] - 2017-05-13
+### Fixed
+* Fix [`jsx-curly-spacing`][] `allowMultiline` option being undefined in some cases ([#1179][] @fatfisz)
+* Fix [`jsx-curly-spacing`][] newline with object literals bug ([#1180][] @fatfisz)
+* Fix [`prop-types`][] to not mark class static function as valid propTypes definition ([#1174][])
+* Fix [`prop-types`][] crash with Flow spread operator ([#1178][])
+* Fix [`void-dom-elements-no-children`][] crash on faulty `createElement` detection ([#1101][])
+* Fix [`require-default-props`][] error message for quoted props ([#1161][])
+
+### Changed
+* Update dependencies
+* Documentation improvements ([#1173][] @luftywiranda13, [#1192][] @markus-willems)
+
+[7.0.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.0.0...v7.0.1
+[#1179]: https://github.com/yannickcr/eslint-plugin-react/pull/1179
+[#1180]: https://github.com/yannickcr/eslint-plugin-react/pull/1180
+[#1174]: https://github.com/yannickcr/eslint-plugin-react/issues/1174
+[#1178]: https://github.com/yannickcr/eslint-plugin-react/issues/1178
+[#1101]: https://github.com/yannickcr/eslint-plugin-react/issues/1101
+[#1161]: https://github.com/yannickcr/eslint-plugin-react/issues/1161
+[#1173]: https://github.com/yannickcr/eslint-plugin-react/pull/1173
+[#1192]: https://github.com/yannickcr/eslint-plugin-react/pull/1192
+
 ## [7.0.0] - 2017-05-06
 ### Added
 * Add [`no-will-update-set-state`][] rule ([#1139][] @ManThursday)
