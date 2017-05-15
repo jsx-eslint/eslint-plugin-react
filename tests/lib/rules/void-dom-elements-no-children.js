@@ -63,28 +63,25 @@ ruleTester.run('void-dom-elements-no-children', rule, {
         'import React from "react";',
         'const { createElement } = React;',
         'createElement("div")'
-      ].join('\n'),
-      parser: 'babel-eslint'
+      ].join('\n')
     }, {
       code: [
         'import React from "react";',
         'const { createElement } = React;',
         'createElement("img")'
-      ].join('\n'),
-      parser: 'babel-eslint'
+      ].join('\n')
     }, {
       code: [
         'import React, {createElement, PureComponent} from \'react\';',
         'class Button extends PureComponent {',
-        '  handleClick = ev => {',
+        '  handleClick(ev) {',
         '    ev.preventDefault();',
         '  }',
         '  render() {',
         '    return <div onClick={this.handleClick}>Hello</div>;',
         '  }',
         '}'
-      ].join('\n'),
-      parser: 'babel-eslint'
+      ].join('\n')
     }
   ],
   invalid: [
