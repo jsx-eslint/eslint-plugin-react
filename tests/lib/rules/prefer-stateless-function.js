@@ -63,6 +63,19 @@ ruleTester.run('prefer-stateless-function', rule, {
         ignorePureComponents: true
       }]
     }, {
+      // Extends from PureComponent in an expression context.
+      code: [
+        'const Foo = class extends React.PureComponent {',
+        '  render() {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      parserOptions: parserOptions,
+      options: [{
+        ignorePureComponents: true
+      }]
+    }, {
       // Has a lifecyle method
       code: [
         'class Foo extends React.Component {',
