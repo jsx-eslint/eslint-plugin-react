@@ -1,4 +1,4 @@
-# Enforce PascalCase for user-defined JSX components (jsx-pascal-case)
+# Enforce PascalCase for user-defined JSX components (react/jsx-pascal-case)
 
 Enforces coding style that user-defined JSX components are defined and referenced in PascalCase.
 

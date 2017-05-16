@@ -1,4 +1,4 @@
-# Validate whitespace in and around the JSX opening and closing brackets (jsx-tag-spacing)
+# Validate whitespace in and around the JSX opening and closing brackets (react/jsx-tag-spacing)
 
 Enforce or forbid spaces after the opening bracket, before the closing bracket of self-closing elements, and between the angle bracket and slash of JSX closing or self-closing elements.
 

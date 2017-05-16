@@ -1,4 +1,4 @@
-# Enforce stateless React Components to be written as a pure function (prefer-stateless-function)
+# Enforce stateless React Components to be written as a pure function (react/prefer-stateless-function)
 
 Stateless functional components are simpler than class based components and will benefit from future React performance optimizations specific to these components.
 

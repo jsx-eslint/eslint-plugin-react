@@ -1,4 +1,4 @@
-# Enforce style prop value being an object (style-prop-object)
+# Enforce style prop value being an object (react/style-prop-object)
 
 Require that the value of the prop `style` be an object or a variable that is
 an object.

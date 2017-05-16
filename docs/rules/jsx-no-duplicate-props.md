@@ -1,4 +1,4 @@
-# Prevent duplicate properties in JSX (jsx-no-duplicate-props)
+# Prevent duplicate properties in JSX (react/jsx-no-duplicate-props)
 
 Creating JSX elements with duplicate props can cause unexpected behavior in your application.
 

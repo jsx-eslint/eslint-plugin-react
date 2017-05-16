@@ -1,4 +1,4 @@
-# Prevent missing displayName in a React component definition (display-name)
+# Prevent missing displayName in a React component definition (react/display-name)
 
 DisplayName allows you to name your component. This name is used by React in debugging messages.
 

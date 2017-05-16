@@ -1,4 +1,4 @@
-# Forbid foreign propTypes (forbid-foreign-prop-types)
+# Forbid foreign propTypes (react/forbid-foreign-prop-types)
 
 This rule forbids using another component's prop types unless they are explicitly imported/exported. This allows people who want to use [babel-plugin-transform-react-remove-prop-types](https://github.com/oliviertassinari/babel-plugin-transform-react-remove-prop-types) to remove propTypes from their components in production builds, to do so safely.
 

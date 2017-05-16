@@ -1,4 +1,4 @@
-# Enforce or disallow spaces inside of curly braces in JSX attributes. (jsx-curly-spacing)
+# Enforce or disallow spaces inside of curly braces in JSX attributes. (react/jsx-curly-spacing)
 
 While formatting preferences are very personal, a number of style guides require or disallow spaces between curly braces.
 

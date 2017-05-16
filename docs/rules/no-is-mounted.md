@@ -1,4 +1,4 @@
-# Prevent usage of isMounted (no-is-mounted)
+# Prevent usage of isMounted (react/no-is-mounted)
 
 [`isMounted` is an anti-pattern][anti-pattern], is not available when using ES6 classes, and it is on its way to being officially deprecated.
 

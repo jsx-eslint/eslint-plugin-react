@@ -1,4 +1,4 @@
-# Prevent usage of deprecated methods (no-deprecated)
+# Prevent usage of deprecated methods (react/no-deprecated)
 
 Several methods are deprecated between React versions. This rule will warn you if you try to use a deprecated method. Use the [shared settings](/README.md#configuration) to specify the React version.
 

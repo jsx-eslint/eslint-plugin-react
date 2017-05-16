@@ -1,4 +1,4 @@
-# Enforce React components to have a shouldComponentUpdate method (require-optimization)
+# Enforce React components to have a shouldComponentUpdate method (react/require-optimization)
 
 This rule prevents you from creating React components without declaring a `shouldComponentUpdate` method.
 

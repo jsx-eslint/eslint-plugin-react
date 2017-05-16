@@ -1,4 +1,4 @@
-# Forbid certain propTypes (forbid-prop-types)
+# Forbid certain propTypes (react/forbid-prop-types)
 
 By default this rule prevents vague prop types with more specific alternatives available (`any`, `array`, `object`), but any prop type can be disabled if desired. The defaults are chosen because they have obvious replacements. `any` should be replaced with, well, anything. `array` and `object` can be replaced with `arrayOf` and `shape`, respectively.
 

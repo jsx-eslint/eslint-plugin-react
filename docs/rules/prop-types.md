@@ -1,4 +1,4 @@
-# Prevent missing props validation in a React component definition (prop-types)
+# Prevent missing props validation in a React component definition (react/prop-types)
 
 PropTypes improve the reusability of your component by validating the received data.
 
@@ -100,7 +100,7 @@ Hello.propTypes = {
 
 This rule can take one argument to ignore some specific props during validation.
 
-```
+```js
 ...
 "react/prop-types": [<enabled>, { ignore: <ignore>, customValidators: <customValidator> }]
 ...
