@@ -6,11 +6,12 @@ Ensure correct position of the first property.
 
 ## Rule Details
 
-This rule checks whether the first property of all JSX elements is correctly placed. There are three possible configurations:
+This rule checks whether the first property of all JSX elements is correctly placed. There are the possible configurations:
+
 * `always`: The first property should always be placed on a new line.
 * `never` : The first property should never be placed on a new line, e.g. should always be on the same line as the Component opening tag.
 * `multiline`: The first property should always be placed on a new line when the JSX tag takes up multiple lines.
-* `multiline-multiprop`: The first property should always be placed on a new line if the JSX tag takes up multiple lines and there are multiple properties. `default`
+* `multiline-multiprop`: The first property should always be placed on a new line if the JSX tag takes up multiple lines and there are multiple properties. This is the `default` value.
 
 The following patterns are considered warnings when configured `"always"`:
 
