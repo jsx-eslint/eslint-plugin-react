@@ -1,4 +1,4 @@
-# Validate closing bracket location in JSX (jsx-closing-bracket-location)
+# Validate closing bracket location in JSX (react/jsx-closing-bracket-location)
 
 Enforce the closing bracket location for JSX multiline elements.
 

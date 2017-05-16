@@ -1,4 +1,4 @@
-# Enforce component methods order (sort-comp)
+# Enforce component methods order (react/sort-comp)
 
 When creating React components it is more convenient to always follow the same organisation for methods order to helps you to easily find lifecyle methods, event handlers, etc.
 

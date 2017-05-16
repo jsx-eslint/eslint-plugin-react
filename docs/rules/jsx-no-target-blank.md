@@ -1,4 +1,4 @@
-# Prevent usage of unsafe `target='_blank'` (jsx-no-target-blank)
+# Prevent usage of unsafe `target='_blank'` (react/jsx-no-target-blank)
 
 When creating a JSX element that has an a tag, it is often desired to have
 the link open in a new tab using the `target='_blank'` attribute. Using this

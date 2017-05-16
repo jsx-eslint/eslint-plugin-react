@@ -1,4 +1,4 @@
-# Prevent missing props validation in a React component definition (prop-types)
+# Prevent missing props validation in a React component definition (react/prop-types)
 
 PropTypes improve the reusability of your component by validating the received data.
 

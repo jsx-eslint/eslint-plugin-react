@@ -1,4 +1,4 @@
-# Enforce ES5 or ES6 class for React Components (prefer-es6-class)
+# Enforce ES5 or ES6 class for React Components (react/prefer-es6-class)
 
 React offers you two way to create traditional components: using the ES5 `create-react-class` module or the new ES6 class system. This rule allow you to enforce one way or another.
 

@@ -1,4 +1,4 @@
-# Prevent usage of dangerous JSX properties (no-danger)
+# Prevent usage of dangerous JSX properties (react/no-danger)
 
 Dangerous properties in React are those whose behavior is known to be a common source of application vulnerabilities. The properties names clearly indicate they are dangerous and should be avoided unless great care is taken.
 

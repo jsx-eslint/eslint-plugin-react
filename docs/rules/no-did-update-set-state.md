@@ -1,4 +1,4 @@
-# Prevent usage of setState in componentDidUpdate (no-did-update-set-state)
+# Prevent usage of setState in componentDidUpdate (react/no-did-update-set-state)
 
 Updating the state after a component update will trigger a second `render()` call and can lead to property/layout thrashing.
 

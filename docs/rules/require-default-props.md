@@ -1,4 +1,4 @@
-# Enforce a defaultProps definition for every prop that is not a required prop (require-default-props)
+# Enforce a defaultProps definition for every prop that is not a required prop (react/require-default-props)
 
 This rule aims to ensure that any non-required `PropType` declaration of a component has a corresponding `defaultProps` value.
 

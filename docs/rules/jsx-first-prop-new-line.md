@@ -1,4 +1,4 @@
-# Configure the position of the first property (jsx-first-prop-new-line)
+# Configure the position of the first property (react/jsx-first-prop-new-line)
 
 Ensure correct position of the first property.
 

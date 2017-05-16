@@ -1,4 +1,4 @@
-# Enforce or disallow spaces around equal signs in JSX attributes. (jsx-equals-spacing)
+# Enforce or disallow spaces around equal signs in JSX attributes. (react/jsx-equals-spacing)
 
 Some style guides require or disallow spaces around equal signs.
 

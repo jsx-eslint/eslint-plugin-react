@@ -1,4 +1,4 @@
-# Prevent problem with children and props.dangerouslySetInnerHTML (no-danger-with-children)
+# Prevent problem with children and props.dangerouslySetInnerHTML (react/no-danger-with-children)
 
 This rule helps prevent problems caused by using children and the dangerouslySetInnerHTML prop at the same time.
 React will throw a warning if this rule is ignored.

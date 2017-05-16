@@ -1,4 +1,4 @@
-# Prevent usage of setState in componentWillUpdate (no-will-update-set-state)
+# Prevent usage of setState in componentWillUpdate (react/no-will-update-set-state)
 
 Updating the state during the componentWillUpdate step can lead to indeterminate component state and is not allowed.
 

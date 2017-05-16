@@ -1,4 +1,4 @@
-# Prevent passing of children as props (no-children-prop)
+# Prevent passing of children as props (react/no-children-prop)
 
 Children should always be actual children, not passed in as a prop.
 

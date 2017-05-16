@@ -1,4 +1,4 @@
-# Limit maximum of props on a single line in JSX (jsx-max-props-per-line)
+# Limit maximum of props on a single line in JSX (react/jsx-max-props-per-line)
 
 Limiting the maximum of props on a single line can improve readability.
 

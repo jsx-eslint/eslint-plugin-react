@@ -1,4 +1,4 @@
-# Restrict file extensions that may be required (require-extension)
+# Restrict file extensions that may be required (react/require-extension)
 
 **Deprecation notice**: This rule is deprecated. Please use the eslint-plugin-import [extensions](https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md) rule instead.
 

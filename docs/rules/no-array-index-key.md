@@ -1,4 +1,4 @@
-# Prevent usage of Array index in keys
+# Prevent usage of Array index in keys (react/no-array-index-key)
 
 Warn if an element uses an Array index in its `key`.
 
