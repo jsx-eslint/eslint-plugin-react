@@ -720,6 +720,21 @@ ruleTester.run('require-default-props', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    },
+    // make sure defaultProps are correctly detected with quoted properties
+    {
+      code: [
+        'function Hello(props) {',
+        '  return <div>Hello {props.bar}</div>;',
+        '}',
+        'Hello.propTypes = {',
+        '  bar: PropTypes.string',
+        '};',
+        'Hello.defaultProps = {',
+        '  "bar": "bar"',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
