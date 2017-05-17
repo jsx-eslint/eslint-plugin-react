@@ -28,6 +28,7 @@ var allRules = {
   'jsx-no-bind': require('./lib/rules/jsx-no-bind'),
   'jsx-no-undef': require('./lib/rules/jsx-no-undef'),
   'no-unknown-property': require('./lib/rules/no-unknown-property'),
+  'default-props-match-prop-types': require('./lib/rules/default-props-match-prop-types'),
   'jsx-curly-spacing': require('./lib/rules/jsx-curly-spacing'),
   'jsx-equals-spacing': require('./lib/rules/jsx-equals-spacing'),
   'jsx-sort-props': require('./lib/rules/jsx-sort-props'),
