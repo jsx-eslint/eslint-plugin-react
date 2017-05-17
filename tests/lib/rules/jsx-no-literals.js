@@ -109,6 +109,14 @@ ruleTester.run('jsx-no-literals', rule, {
         '</Foo>'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: `
+        <Foo bar="test">
+          {intl.formatText(message)}
+        </Foo>
+      `,
+      parser: 'babel-eslint',
+      options: ['no-strings']
     }
   ],
 
@@ -202,6 +210,24 @@ ruleTester.run('jsx-no-literals', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [{message: 'Missing JSX expression container around literal string'}]
+    }, {
+      code: `
+        <Foo bar="test">
+          {'Test'}
+        </Foo>
+      `,
+      parser: 'babel-eslint',
+      options: ['no-strings'],
+      errors: [{message: 'Strings not allowed in JSX files'}]
+    }, {
+      code: `
+        <Foo bar="test">
+          Test
+        </Foo>
+      `,
+      parser: 'babel-eslint',
+      options: ['no-strings'],
+      errors: [{message: 'Strings not allowed in JSX files'}]
     }
   ]
 });
