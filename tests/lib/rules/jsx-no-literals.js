@@ -117,6 +117,14 @@ ruleTester.run('jsx-no-literals', rule, {
       `,
       parser: 'babel-eslint',
       options: ['no-strings']
+    }, {
+      code: `
+        <Foo bar="test">
+          {translate('my.translate.key')}
+        </Foo>
+      `,
+      parser: 'babel-eslint',
+      options: ['no-strings']
     }
   ],
 
