@@ -1,6 +1,7 @@
 /**
  * @fileoverview Prevent using unwrapped literals in a React component definition
  * @author Caleb morris
+ * @author David Buchan-Swanson
  */
 'use strict';
 
