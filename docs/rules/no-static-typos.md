@@ -56,4 +56,4 @@ class MyComponent extends React.Component {
 class MyComponent extends React.Component {
   static defaultProps = {}
 }
-...
+```
