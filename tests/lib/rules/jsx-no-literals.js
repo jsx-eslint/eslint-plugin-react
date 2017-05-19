@@ -117,7 +117,7 @@ ruleTester.run('jsx-no-literals', rule, {
         </Foo>
       `,
       parser: 'babel-eslint',
-      options: ['no-strings']
+      options: [{noStrings: true}]
     }, {
       code: `
         <Foo bar="test">
@@ -125,21 +125,21 @@ ruleTester.run('jsx-no-literals', rule, {
         </Foo>
       `,
       parser: 'babel-eslint',
-      options: ['no-strings']
+      options: [{noStrings: true}]
     }, {
       code: `
         <Foo bar="test">
           {intl.formatText(message)}
         </Foo>
       `,
-      options: ['no-strings']
+      options: [{noStrings: true}]
     }, {
       code: `
         <Foo bar="test">
           {translate('my.translate.key')}
         </Foo>
       `,
-      options: ['no-strings']
+      options: [{noStrings: true}]
     }
   ],
 
@@ -240,7 +240,7 @@ ruleTester.run('jsx-no-literals', rule, {
         </Foo>
       `,
       parser: 'babel-eslint',
-      options: ['no-strings'],
+      options: [{noStrings: true}],
       errors: [{message: 'Strings not allowed in JSX files'}]
     }, {
       code: `
@@ -248,7 +248,7 @@ ruleTester.run('jsx-no-literals', rule, {
           {'Test'}
         </Foo>
       `,
-      options: ['no-strings'],
+      options: [{noStrings: true}],
       errors: [{message: 'Strings not allowed in JSX files'}]
     }, {
       code: `
@@ -257,7 +257,7 @@ ruleTester.run('jsx-no-literals', rule, {
         </Foo>
       `,
       parser: 'babel-eslint',
-      options: ['no-strings'],
+      options: [{noStrings: true}],
       errors: [{message: 'Strings not allowed in JSX files'}]
     }, {
       code: `
@@ -265,7 +265,7 @@ ruleTester.run('jsx-no-literals', rule, {
           Test
         </Foo>
       `,
-      options: ['no-strings'],
+      options: [{noStrings: true}],
       errors: [{message: 'Strings not allowed in JSX files'}]
     }
   ]

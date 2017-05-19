@@ -23,12 +23,12 @@ var Hello = <div>{'test'}</div>;
 
 There is only one option:
 
-* `no-strings` - Enforces no string literals used as children, wrapped or unwrapped.
+* `noStrings` - Enforces no string literals used as children, wrapped or unwrapped.
 
 To use, you can specify like the following:
 
 ```json
-"react/jsx-no-literals": ["no-strings"]
+"react/jsx-no-literals": [{"noStrings": false}]
 ```
 
 In this configuration, the following are considered warnings:
