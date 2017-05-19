@@ -2,6 +2,8 @@
 
 Ensure no casing typos were made declaring static class properties
 
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+
 ## Rule Details
 
 This rule checks whether the declared static class properties related to React components
@@ -38,7 +40,7 @@ class MyComponent extends React.Component {
 class MyComponent extends React.Component {
   static defaultprops = {}
 }
-...
+```
 
 The following patterns are not considered warnings:
 
