@@ -16,13 +16,14 @@ require('babel-eslint');
 
 var parserOptions = {
   ecmaVersion: 6,
+  sourceType: 'module',
   ecmaFeatures: {
     experimentalObjectRestSpread: true,
     jsx: true
   }
 };
 
-var ruleTester = new RuleTester({parserOptions: parserOptions});
+var ruleTester = new RuleTester({parserOptions});
 
 // ------------------------------------------------------------------------------
 // Tests
