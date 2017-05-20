@@ -9,9 +9,8 @@
 // ------------------------------------------------------------------------------
 
 const rule = require('../../../lib/rules/jsx-closing-tag-location');
-const {RuleTester} = require('eslint');
+const RuleTester = require('eslint').RuleTester;
 const parserOptions = {
-  ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
     experimentalObjectRestSpread: true,
@@ -20,6 +19,7 @@ const parserOptions = {
 };
 
 const MESSAGE_MATCH_INDENTATION = [{message: 'Expected closing tag to match indentation of opening.'}];
+const MESSAGE_OWN_LINE = [{message: 'Closing tag of a multiline JSX expression must be on its own line.'}];
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -45,12 +45,22 @@ ruleTester.run('jsx-closing-tag-location', rule, {
       '  foo',
       '  </App>'
     ].join('\n'),
+    output: [
+      '<App>',
+      '  foo',
+      '</App>'
+    ].join('\n'),
     errors: MESSAGE_MATCH_INDENTATION
   }, {
     code: [
       '<App>',
       '  foo</App>'
     ].join('\n'),
-    errors: MESSAGE_MATCH_INDENTATION
+    output: [
+      '<App>',
+      '  foo',
+      '</App>'
+    ].join('\n'),
+    errors: MESSAGE_OWN_LINE
   }]
 });
