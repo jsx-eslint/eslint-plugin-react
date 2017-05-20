@@ -13,7 +13,6 @@ const RuleTester = require('eslint').RuleTester;
 const parserOptions = {
   sourceType: 'module',
   ecmaFeatures: {
-    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
