@@ -30,6 +30,7 @@ ruleTester.run('no-static-typos', rule, {
       'class First {',
       '  static PropTypes = {key: "myValue"};',
       '  static ContextTypes = {key: "myValue"};',
+      '  static ChildContextTypes = {key: "myValue"};',
       '  static DefaultProps = {key: "myValue"};',
       '}'
     ].join('\n'),
@@ -40,6 +41,7 @@ ruleTester.run('no-static-typos', rule, {
       'class First extends React.Component {',
       '  static propTypes = {key: "myValue"};',
       '  static contextTypes = {key: "myValue"};',
+      '  static childContextTypes = {key: "myValue"};',
       '  static defaultProps = {key: "myValue"};',
       '}'
     ].join('\n'),
@@ -50,6 +52,7 @@ ruleTester.run('no-static-typos', rule, {
       'class MyClass {',
       '  propTypes = {key: "myValue"};',
       '  contextTypes = {key: "myValue"};',
+      '  childContextTypes = {key: "myValue"};',
       '  defaultProps = {key: "myValue"};',
       '}'
     ].join('\n'),
@@ -60,6 +63,7 @@ ruleTester.run('no-static-typos', rule, {
       'class MyClass {',
       '  PropTypes = {key: "myValue"};',
       '  ContextTypes = {key: "myValue"};',
+      '  ChildContextTypes = {key: "myValue"};',
       '  DefaultProps = {key: "myValue"};',
       '}'
     ].join('\n'),
@@ -70,6 +74,7 @@ ruleTester.run('no-static-typos', rule, {
       'class MyClass {',
       '  proptypes = {key: "myValue"};',
       '  contexttypes = {key: "myValue"};',
+      '  childcontextypes = {key: "myValue"};',
       '  defaultprops = {key: "myValue"};',
       '}'
     ].join('\n'),
@@ -80,6 +85,7 @@ ruleTester.run('no-static-typos', rule, {
       'class MyClass {',
       '  static PropTypes() {};',
       '  static ContextTypes() {};',
+      '  static ChildContextTypes() {};',
       '  static DefaultProps() {};',
       '}'
     ].join('\n'),
@@ -90,6 +96,7 @@ ruleTester.run('no-static-typos', rule, {
       'class MyClass {',
       '  static proptypes() {};',
       '  static contexttypes() {};',
+      '  static childcontexttypes() {};',
       '  static defaultprops() {};',
       '}'
     ].join('\n'),
@@ -128,6 +135,24 @@ ruleTester.run('no-static-typos', rule, {
     code: [
       'class Component extends React.Component {',
       '  static contexttypes = {};',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
+      'class Component extends React.Component {',
+      '  static ChildContextTypes = {};',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
+      'class Component extends React.Component {',
+      '  static childcontexttypes = {};',
       '}'
     ].join('\n'),
     parser: 'babel-eslint',

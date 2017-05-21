@@ -10,6 +10,7 @@ no casing typos:
 
 * propTypes
 * contextTypes
+* childContextTypes
 * defaultProps
 
 The following patterns are considered warnings:
@@ -32,6 +33,14 @@ class MyComponent extends React.Component {
 }
 
 class MyComponent extends React.Component {
+  static ChildContextTypes = {}
+}
+
+class MyComponent extends React.Component {
+  static childcontexttypes = {}
+}
+
+class MyComponent extends React.Component {
   static DefaultProps = {}
 }
 
@@ -49,6 +58,10 @@ class MyComponent extends React.Component {
 
 class MyComponent extends React.Component {
   static contextTypes = {}
+}
+
+class MyComponent extends React.Component {
+  static childContextTypes = {}
 }
 
 class MyComponent extends React.Component {
