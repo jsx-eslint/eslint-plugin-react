@@ -103,11 +103,6 @@ ruleTester.run('no-static-typos', rule, {
       '  static PropTypes = {};',
       '}'
     ].join('\n'),
-    output: [
-      'class Component extends React.Component {',
-      '  static propTypes = {};',
-      '}'
-    ].join('\n'),
     parser: 'babel-eslint',
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
@@ -115,11 +110,6 @@ ruleTester.run('no-static-typos', rule, {
     code: [
       'class Component extends React.Component {',
       '  static proptypes = {};',
-      '}'
-    ].join('\n'),
-    output: [
-      'class Component extends React.Component {',
-      '  static propTypes = {};',
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
@@ -131,11 +121,6 @@ ruleTester.run('no-static-typos', rule, {
       '  static ContextTypes = {};',
       '}'
     ].join('\n'),
-    output: [
-      'class Component extends React.Component {',
-      '  static contextTypes = {};',
-      '}'
-    ].join('\n'),
     parser: 'babel-eslint',
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
@@ -143,11 +128,6 @@ ruleTester.run('no-static-typos', rule, {
     code: [
       'class Component extends React.Component {',
       '  static contexttypes = {};',
-      '}'
-    ].join('\n'),
-    output: [
-      'class Component extends React.Component {',
-      '  static contextTypes = {};',
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
@@ -159,11 +139,6 @@ ruleTester.run('no-static-typos', rule, {
       '  static DefaultProps = {};',
       '}'
     ].join('\n'),
-    output: [
-      'class Component extends React.Component {',
-      '  static defaultProps = {};',
-      '}'
-    ].join('\n'),
     parser: 'babel-eslint',
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
@@ -171,11 +146,6 @@ ruleTester.run('no-static-typos', rule, {
     code: [
       'class Component extends React.Component {',
       '  static defaultprops = {};',
-      '}'
-    ].join('\n'),
-    output: [
-      'class Component extends React.Component {',
-      '  static defaultProps = {};',
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
