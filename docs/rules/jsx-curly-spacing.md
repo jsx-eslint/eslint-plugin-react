@@ -1,4 +1,4 @@
-# Enforce or disallow spaces inside of curly braces in JSX attributes. (react/jsx-curly-spacing)
+# Enforce or disallow spaces inside of curly braces in JSX attributes and expressions. (react/jsx-curly-spacing)
 
 While formatting preferences are very personal, a number of style guides require or disallow spaces between curly braces.
 
@@ -6,26 +6,26 @@ While formatting preferences are very personal, a number of style guides require
 
 ## Rule Details
 
-This rule aims to maintain consistency around the spacing inside of JSX attributes.
+This rule aims to maintain consistency around the spacing inside of JSX attributes and expressions inside element children.
 
 It either requires or disallows spaces between those braces and the values inside of them.
 
-### Options
+## Rule Options
 
 There are two main options for the rule:
 
-* `"always"` enforces a space inside of curly braces
-* `"never"` disallows spaces inside of curly braces (default)
+* `{"when": "always"}` enforces a space inside of curly braces
+* `{"when": "never"}` disallows spaces inside of curly braces (default)
 
-Depending on your coding conventions, you can choose either option by specifying it in your configuration:
+There are also two properties that allow specifying how the rule should work with the attributes (`attributes`) and the expressions (`children`). The possible values are:
 
-```json
-"react/jsx-curly-spacing": [2, "always"]
-```
+* `true` enables checking for the spacing using the options (default for `attributes`), e.g. `{"attributes": false}` disables checking the attributes
+* `false` disables checking for the spacing (default for `children`, for backward compatibility), e.g. `{"children": true}` enables checking the expressions
+* an object containing options that override the global options, e.g. `{"when": "always", "children": {"when": "never"}}` enforces a space inside attributes, but disallows spaces inside expressions
 
-#### never
+### never
 
-When `"never"` is set, the following patterns are considered warnings:
+When `{"when": "never"}` is set, the following patterns are considered warnings:
 
 ```jsx
 <Hello name={ firstname } />;
@@ -41,11 +41,39 @@ The following patterns are not warnings:
 <Hello name={
   firstname
 } />;
+<Hello>{firstname}</Hello>;
+<Hello>{ firstname }</Hello>;
+<Hello>{
+  firstname
+}</Hello>;
 ```
 
-#### always
+When `{"when": "never", "children": true}` is set, the following patterns are considered warnings:
 
-When `"always"` is used, the following patterns are considered warnings:
+```jsx
+<Hello name={ firstname } />;
+<Hello name={ firstname} />;
+<Hello name={firstname } />;
+<Hello>{ firstname }</Hello>;
+```
+
+The following patterns are not warnings:
+
+```jsx
+<Hello name={firstname} />;
+<Hello name={{ firstname: 'John', lastname: 'Doe' }} />;
+<Hello name={
+  firstname
+} />;
+<Hello>{firstname}</Hello>;
+<Hello>{
+  firstname
+}</Hello>;
+```
+
+### always
+
+When `{"when": "always"}` is set, the following patterns are considered warnings:
 
 ```jsx
 <Hello name={firstname} />;
@@ -61,14 +89,42 @@ The following patterns are not warnings:
 <Hello name={
   firstname
 } />;
+<Hello>{ firstname }</Hello>;
+<Hello>{firstname}</Hello>;
+<Hello>{
+  firstname
+}</Hello>;
 ```
 
-#### Braces spanning multiple lines
+When `{"when": "always", "children": true}` is set, the following patterns are considered warnings:
+
+```jsx
+<Hello name={firstname} />;
+<Hello name={ firstname} />;
+<Hello name={firstname } />;
+<Hello>{firstname}</Hello>;
+```
+
+The following patterns are not warnings:
+
+```jsx
+<Hello name={ firstname } />;
+<Hello name={ {firstname: 'John', lastname: 'Doe'} } />;
+<Hello name={
+  firstname
+} />;
+<Hello>{ firstname }</Hello>;
+<Hello>{
+  firstname
+}</Hello>;
+```
+
+### Braces spanning multiple lines
 
 By default, braces spanning multiple lines are allowed with either setting. If you want to disallow them you can specify an additional `allowMultiline` property with the value `false`:
 
 ```json
-"react/jsx-curly-spacing": [2, "never", {"allowMultiline": false}]
+"react/jsx-curly-spacing": [2, {"when": "never", "allowMultiline": false}]
 ```
 
 When `"never"` is used and `allowMultiline` is `false`, the following patterns are considered warnings:
@@ -87,6 +143,11 @@ The following patterns are not warnings:
 ```jsx
 <Hello name={firstname} />;
 <Hello name={{ firstname: 'John', lastname: 'Doe' }} />;
+<Hello>{firstname}</Hello>;
+<Hello>{ firstname }</Hello>;
+<Hello>{
+  firstname
+}</Hello>;
 ```
 
 When `"always"` is used and `allowMultiline` is `false`, the following patterns are considered warnings:
@@ -105,14 +166,39 @@ The following patterns are not warnings:
 ```jsx
 <Hello name={ firstname } />;
 <Hello name={ {firstname: 'John', lastname: 'Doe'} } />;
+<Hello>{firstname}</Hello>;
+<Hello>{ firstname }</Hello>;
+<Hello>{
+  firstname
+}</Hello>;
 ```
 
-#### Granular spacing controls
+When `{"when": "never", "attributes": {"allowMultiline": false}, "children": true}` is set, the following patterns are considered warnings:
+
+```jsx
+<Hello name={ firstname } />;
+<Hello name={
+  firstname
+} />;
+<Hello>{ firstname }</Hello>;
+```
+
+The following patterns are not warnings:
+
+```jsx
+<Hello name={firstname} />;
+<Hello>{firstname}</Hello>;
+<Hello>{
+  firstname
+}</Hello>;
+```
+
+### Granular spacing controls
 
 You can specify an additional `spacing` property that is an object with the following possible values:
 
 ```json
-"react/jsx-curly-spacing": [2, "always", {"spacing": {
+"react/jsx-curly-spacing": [2, {"when": "always", "spacing": {
   "objectLiterals": "never"
 }}]
 ```
@@ -135,6 +221,41 @@ When `"never"` is used and `objectLiterals` is `"always"`, the following pattern
 
 Please note that spacing of the object literal curly braces themselves is controlled by the built-in [`object-curly-spacing`](http://eslint.org/docs/rules/object-curly-spacing) rule.
 
+### Shorthand options
+
+To preserve backward compatibility, two additional options are supported:
+
+```json
+"react/jsx-curly-spacing": [2, "always"]
+```
+
+which is a shorthand for
+
+```json
+"react/jsx-curly-spacing": [2, {"when": "always"}]
+```
+
+and
+
+```json
+"react/jsx-curly-spacing": [2, "never"]
+```
+
+which is a shorthand for
+
+```json
+"react/jsx-curly-spacing": [2, {"when": "never"}]
+```
+
+When using the shorthand options, only attributes will be checked. To specify other options, use another argument:
+
+```json
+"react/jsx-curly-spacing": [2, "never", {
+  "allowMultiline": false,
+  "spacing": {"objectLiterals": "always"}
+}]
+```
+
 ## When Not To Use It
 
-You can turn this rule off if you are not concerned with the consistency around the spacing inside of JSX attributes.
+You can turn this rule off if you are not concerned with the consistency around the spacing inside of JSX attributes or expressions.
