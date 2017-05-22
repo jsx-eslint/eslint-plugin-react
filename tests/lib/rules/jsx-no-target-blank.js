@@ -62,6 +62,12 @@ ruleTester.run('jsx-no-target-blank', rule, {
     errors: [{
       message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
       ' see https://mathiasbynens.github.io/rel-noopener'
-    }]}
-  ]
+    }]
+  }, {
+    code: '<a target="_blank" href="//example.com"></a>',
+    errors: [{
+      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
+      ' see https://mathiasbynens.github.io/rel-noopener'
+    }]
+  }]
 });
