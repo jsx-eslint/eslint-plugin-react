@@ -115,6 +115,8 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/sort-prop-types](docs/rules/sort-prop-types.md): Enforce propTypes declarations alphabetical sorting
 * [react/style-prop-object](docs/rules/style-prop-object.md): Enforce style prop value being an object
 * [react/void-dom-elements-no-children](docs/rules/void-dom-elements-no-children.md): Prevent void DOM elements (e.g. `<img />`, `<br />`) from receiving children
+* [react/no-import-prop-types-from-react](docs/rules/no-import-prop-types-from-react.md): Prevent import of propTypes from react package (deprecated in 15.5)
+
 
 ## JSX-specific rules
 
