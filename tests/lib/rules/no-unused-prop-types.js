@@ -1439,6 +1439,51 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // The next two test cases are related to: https://github.com/yannickcr/eslint-plugin-react/issues/1183
+      code: [
+        'export default function SomeComponent(props) {',
+        '    const callback = () => {',
+        '        props.a(props.b);',
+        '    };',
+        '',
+        '    const anotherCallback = () => {};',
+        '',
+        '    return (',
+        '        <SomeOtherComponent',
+        '            name={props.c}',
+        '            callback={callback}',
+        '        />',
+        '    );',
+        '}',
+        '',
+        'SomeComponent.propTypes = {',
+        '    a: React.PropTypes.func.isRequired,',
+        '    b: React.PropTypes.string.isRequired,',
+        '    c: React.PropTypes.string.isRequired,',
+        '};'
+      ].join('\n')
+    }, {
+      code: [
+        'export default function SomeComponent(props) {',
+        '    const callback = () => {',
+        '        props.a(props.b);',
+        '    };',
+        '',
+        '    return (',
+        '        <SomeOtherComponent',
+        '            name={props.c}',
+        '            callback={callback}',
+        '        />',
+        '    );',
+        '}',
+        '',
+        'SomeComponent.propTypes = {',
+        '    a: React.PropTypes.func.isRequired,',
+        '    b: React.PropTypes.string.isRequired,',
+        '    c: React.PropTypes.string.isRequired,',
+        '};'
+      ].join('\n')
     }
   ],
 
