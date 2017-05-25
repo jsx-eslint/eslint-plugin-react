@@ -61,6 +61,14 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n')
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  constructor() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n')
   }],
 
   invalid: [{
@@ -117,6 +125,111 @@ ruleTester.run('no-direct-mutation-state', rule, {
       message: 'Do not mutate state directly. Use setState().',
       line: 4,
       column: 5
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  constructor() {',
+      '    someFn()',
+      '  }',
+      '  someFn() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  constructor(props) {',
+      '    super(props)',
+      '    doSomethingAsync(() => {',
+      '      this.state = "bad";',
+      '    });',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentWillMount() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentDidMount() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentWillReceiveProps() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  shouldComponentUpdate() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentWillUpdate() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentDidUpdate() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentWillUnmount() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
     }]
   }
   /**
