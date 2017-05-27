@@ -53,9 +53,9 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       code: 'document.createElement("img")'
     }, {
       code: 'React.createElement("img");'
-    },{
+    }, {
       code: 'React.createElement();'
-    },{
+    }, {
       code: 'document.createElement();'
     }, {
       code: [
