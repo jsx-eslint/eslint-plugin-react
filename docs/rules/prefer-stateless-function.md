@@ -2,6 +2,8 @@
 
 Stateless functional components are simpler than class based components and will benefit from future React performance optimizations specific to these components.
 
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+
 ## Rule Details
 
 This rule will check your class based React components for
