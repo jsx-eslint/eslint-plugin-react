@@ -677,6 +677,20 @@ ruleTester.run('prefer-stateless-function', rule, {
       errors: [{
         message: 'Component should be written as a pure function'
       }]
+    }, {
+      // should leave as it is when class is not named
+      code: [
+        'let x = class extends Component {',
+        '}'
+      ].join('\n'),
+      output: [
+        'let x = class extends Component {',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
     }
   ]
 });
