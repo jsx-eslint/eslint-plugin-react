@@ -1,4 +1,4 @@
-# Prevent extra closing tags for components without children (self-closing-comp)
+# Prevent extra closing tags for components without children (react/self-closing-comp)
 
 Components without children can be self-closed to avoid unnecessary extra closing tag.
 

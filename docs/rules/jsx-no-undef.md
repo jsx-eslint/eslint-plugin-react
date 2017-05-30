@@ -1,4 +1,4 @@
-# Disallow undeclared variables in JSX (jsx-no-undef)
+# Disallow undeclared variables in JSX (react/jsx-no-undef)
 
 This rule helps locate potential ReferenceErrors resulting from misspellings or missing components.
 

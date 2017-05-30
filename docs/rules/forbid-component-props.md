@@ -1,4 +1,4 @@
-# Forbid certain props on Components (forbid-component-props)
+# Forbid certain props on Components (react/forbid-component-props)
 
 By default this rule prevents passing of [props that add lots of complexity](https://medium.com/brigade-engineering/don-t-pass-css-classes-between-components-e9f7ab192785) (`className`, `style`) to Components. This rule only applies to Components (e.g. `<Foo />`) and not DOM nodes (e.g. `<div />`). The list of forbidden props can be customized with the `forbid` option.
 

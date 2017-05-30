@@ -1,4 +1,4 @@
-# Detect missing `key` prop (jsx-key)
+# Detect missing `key` prop (react/jsx-key)
 
 Warn if an element that likely requires a `key` prop--namely, one present in an
 array literal or an arrow function expression.

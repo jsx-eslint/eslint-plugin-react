@@ -1,4 +1,4 @@
-# Forbid certain elements (forbid-elements)
+# Forbid certain elements (react/forbid-elements)
 
 You may want to forbid usage of certain elements in favor of others, (e.g. forbid all `<div />` and use `<Box />` instead). This rule allows you to configure a list of forbidden elements and to specify their desired replacements.
 

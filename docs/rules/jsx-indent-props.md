@@ -1,4 +1,4 @@
-# Validate props indentation in JSX (jsx-indent-props)
+# Validate props indentation in JSX (react/jsx-indent-props)
 
 This option validates a specific indentation style for props.
 

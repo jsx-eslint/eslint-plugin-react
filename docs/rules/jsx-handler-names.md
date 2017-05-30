@@ -1,4 +1,4 @@
-# Enforce event handler naming conventions in JSX (jsx-handler-names)
+# Enforce event handler naming conventions in JSX (react/jsx-handler-names)
 
 Ensures that any component or prop methods used to handle events are correctly prefixed.
 

@@ -1,4 +1,4 @@
-# Prevent multiple component definition per file (no-multi-comp)
+# Prevent multiple component definition per file (react/no-multi-comp)
 
 Declaring only one component per file improves readability and reusability of components.
 

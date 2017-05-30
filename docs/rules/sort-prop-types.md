@@ -1,4 +1,4 @@
-# Enforce propTypes declarations alphabetical sorting (sort-prop-types)
+# Enforce propTypes declarations alphabetical sorting (react/sort-prop-types)
 
 Some developers prefer to sort propTypes declarations alphabetically to be able to find necessary declaration easier at the later time. Others feel that it adds complexity and becomes burden to maintain.
 

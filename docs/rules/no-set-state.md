@@ -1,4 +1,4 @@
-# Prevent usage of setState (no-set-state)
+# Prevent usage of setState (react/no-set-state)
 
 When using an architecture that separates your application state from your UI components (e.g. Flux), it may be desirable to forbid the use of local component state. This rule is especially helpful in read-only applications (that don't use forms), since local component state should rarely be necessary in such cases.
 

@@ -1,4 +1,4 @@
-# Prevent comments from being inserted as text nodes (jsx-no-comment-textnodes)
+# Prevent comments from being inserted as text nodes (react/jsx-no-comment-textnodes)
 
 This rule prevents comment strings (e.g. beginning with `//` or `/*`) from being accidentally
 injected as a text node in JSX statements.

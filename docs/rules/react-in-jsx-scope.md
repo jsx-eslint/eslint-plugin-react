@@ -1,4 +1,4 @@
-# Prevent missing React when using JSX (react-in-jsx-scope)
+# Prevent missing React when using JSX (react/react-in-jsx-scope)
 
 When using JSX, `<a />` expands to `React.createElement("a")`. Therefore the
 `React` variable must be in scope.

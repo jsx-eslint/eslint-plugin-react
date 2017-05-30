@@ -1,4 +1,4 @@
-# Enforce props alphabetical sorting (jsx-sort-props)
+# Enforce props alphabetical sorting (react/jsx-sort-props)
 
 Some developers prefer to sort props names alphabetically to be able to find necessary props easier at the later time. Others feel that it adds complexity and becomes burden to maintain.
 

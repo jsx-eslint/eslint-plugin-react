@@ -1,4 +1,4 @@
-# Prevent direct mutation of this.state (no-direct-mutation-state)
+# Prevent direct mutation of this.state (react/no-direct-mutation-state)
 
 NEVER mutate `this.state` directly, as calling `setState()` afterwards may replace
 the mutation you made. Treat `this.state` as if it were immutable.

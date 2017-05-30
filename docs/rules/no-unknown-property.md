@@ -1,4 +1,4 @@
-# Prevent usage of unknown DOM property (no-unknown-property)
+# Prevent usage of unknown DOM property (react/no-unknown-property)
 
 In JSX all DOM properties and attributes should be camelCased to be consistent with standard JavaScript style. This can be a possible source of error if you are used to writing plain HTML.
 

@@ -1,4 +1,4 @@
-# Prevent React to be incorrectly marked as unused (jsx-uses-react)
+# Prevent React to be incorrectly marked as unused (react/jsx-uses-react)
 
 JSX expands to a call to `React.createElement`, a file which includes `React`
 but only uses JSX should consider the `React` variable as used.

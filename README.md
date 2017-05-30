@@ -96,6 +96,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/no-find-dom-node](docs/rules/no-find-dom-node.md): Prevent usage of `findDOMNode`
 * [react/no-is-mounted](docs/rules/no-is-mounted.md): Prevent usage of `isMounted`
 * [react/no-multi-comp](docs/rules/no-multi-comp.md): Prevent multiple component definition per file
+* [react/no-redundant-should-component-update](docs/rules/no-redundant-should-component-update.md): Prevent usage of `shouldComponentUpdate` when extending React.PureComponent
 * [react/no-render-return-value](docs/rules/no-render-return-value.md): Prevent usage of the return value of `React.render`
 * [react/no-set-state](docs/rules/no-set-state.md): Prevent usage of `setState`
 * [react/no-string-refs](docs/rules/no-string-refs.md): Prevent using string references in `ref` attribute.
@@ -128,7 +129,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/jsx-indent](docs/rules/jsx-indent.md): Validate JSX indentation (fixable)
 * [react/jsx-indent-props](docs/rules/jsx-indent-props.md): Validate props indentation in JSX (fixable)
 * [react/jsx-key](docs/rules/jsx-key.md): Validate JSX has key prop when in array or iterator
-* [react/jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md): Limit maximum of props on a single line in JSX
+* [react/jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md): Limit maximum of props on a single line in JSX (fixable)
 * [react/jsx-no-bind](docs/rules/jsx-no-bind.md): Prevent usage of `.bind()` and arrow functions in JSX props
 * [react/jsx-no-comment-textnodes](docs/rules/jsx-no-comment-textnodes.md): Prevent comments from being inserted as text nodes
 * [react/jsx-no-duplicate-props](docs/rules/jsx-no-duplicate-props.md): Prevent duplicate props in JSX

@@ -9,10 +9,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
+var eslint = require('eslint');
 var ruleNoUnusedVars = require('eslint/lib/rules/no-unused-vars');
 var rulePreferConst = require('eslint/lib/rules/prefer-const');
-var RuleTester = require('eslint').RuleTester;
+var RuleTester = eslint.RuleTester;
 
 var parserOptions = {
   ecmaVersion: 8,
@@ -30,7 +30,8 @@ require('babel-eslint');
 // -----------------------------------------------------------------------------
 
 var ruleTester = new RuleTester({parserOptions});
-eslint.defineRule('jsx-uses-vars', require('../../../lib/rules/jsx-uses-vars'));
+var linter = ruleTester.linter || eslint.linter;
+linter.defineRule('jsx-uses-vars', require('../../../lib/rules/jsx-uses-vars'));
 ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
   valid: [
     {

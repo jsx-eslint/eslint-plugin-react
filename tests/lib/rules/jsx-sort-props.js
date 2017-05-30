@@ -56,6 +56,10 @@ var expectedInvalidReservedFirstError = {
 var callbacksLastArgs = [{
   callbacksLast: true
 }];
+var ignoreCaseAndCallbackLastArgs = [{
+  callbacksLast: true,
+  ignoreCase: true
+}];
 var shorthandFirstArgs = [{
   shorthandFirst: true
 }];
@@ -109,6 +113,7 @@ ruleTester.run('jsx-sort-props', rule, {
     {code: '<App A b C />;', options: ignoreCaseArgs},
     // Sorting callbacks below all other props
     {code: '<App a z onBar onFoo />;', options: callbacksLastArgs},
+    {code: '<App z onBar onFoo />;', options: ignoreCaseAndCallbackLastArgs},
     // Sorting shorthand props before others
     {code: '<App a b="b" />;', options: shorthandFirstArgs},
     {code: '<App z a="a" />;', options: shorthandFirstArgs},

@@ -1,6 +1,8 @@
-# Limit maximum of props on a single line in JSX (jsx-max-props-per-line)
+# Limit maximum of props on a single line in JSX (react/jsx-max-props-per-line)
 
 Limiting the maximum of props on a single line can improve readability.
+
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line. However, fix does not include indentation. Please rerun lint to correct those errors.
 
 ## Rule Details
 
@@ -76,9 +78,9 @@ The following patterns are not considered warnings:
 ```jsx
 // [1, { "when": "multiline" }]
 <Hello firstName="John" lastName="Smith" />
-<Hello 
-  firstName="John" 
-  lastName="Smith" 
+<Hello
+  firstName="John"
+  lastName="Smith"
 />
 ```
 

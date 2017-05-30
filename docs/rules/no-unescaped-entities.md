@@ -1,6 +1,6 @@
-# Prevent invalid characters from appearing in markup (no-unescaped-entities)
+# Prevent invalid characters from appearing in markup (react/no-unescaped-entities)
 
-This rule prevents characters that you may have meant as JSX escape characters 
+This rule prevents characters that you may have meant as JSX escape characters
 from being accidentally injected as a text node in JSX statements.
 
 For example, if one were to misplace their closing `>` in a tag:
@@ -27,7 +27,7 @@ Another example is when one accidentally includes an extra closing brace.
 
 The extra brace will be rendered, and the body text will be `Text}`.
 
-This rule will also check for `"` and `'`, which might be accidentally included 
+This rule will also check for `"` and `'`, which might be accidentally included
 when the closing `>` is in the wrong place.
 
 ```jsx

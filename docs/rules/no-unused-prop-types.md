@@ -1,4 +1,4 @@
-# Prevent definitions of unused prop types (no-unused-prop-types)
+# Prevent definitions of unused prop types (react/no-unused-prop-types)
 
 Warns you if you have defined a prop type but it is never being used anywhere.
 
@@ -45,7 +45,7 @@ var Hello = createReactClass({
 
 This rule can take one argument to ignore some specific props during validation.
 
-```
+```js
 ...
 "react/no-unused-prop-types": [<enabled>, { customValidators: <customValidator>, skipShapeProps: <skipShapeProps> }]
 ...

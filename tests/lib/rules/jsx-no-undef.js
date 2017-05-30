@@ -9,9 +9,9 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
+var eslint = require('eslint');
 var rule = require('../../../lib/rules/jsx-no-undef');
-var RuleTester = require('eslint').RuleTester;
+var RuleTester = eslint.RuleTester;
 
 var parserOptions = {
   ecmaVersion: 8,
@@ -26,7 +26,8 @@ var parserOptions = {
 // -----------------------------------------------------------------------------
 
 var ruleTester = new RuleTester({parserOptions});
-eslint.defineRule('no-undef', require('eslint/lib/rules/no-undef'));
+var linter = ruleTester.linter || eslint.linter;
+linter.defineRule('no-undef', require('eslint/lib/rules/no-undef'));
 ruleTester.run('jsx-no-undef', rule, {
   valid: [{
     code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);'
