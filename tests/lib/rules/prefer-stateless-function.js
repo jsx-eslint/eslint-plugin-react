@@ -525,7 +525,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       output: [
         'function Foo(props) {',
         '  return false;',
-        '};'
+        '}'
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [{
@@ -547,7 +547,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  const { foo, bar } = props;',
         '',
         '  return <div>{props.test}</div>;',
-        '};'
+        '}'
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [{
@@ -574,7 +574,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  const { foo, bar } = props;',
         '  ',
         '  return <div>{props.test}</div>;',
-        '};',
+        '}',
         'Foo.propTypes = {',
         '  foo: PropTypes.func',
         '};',
@@ -604,7 +604,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  const {foo, bar} = props;',
         '  ',
         '  return <div>{props.test}</div>;',
-        '};',
+        '}',
         'Foo.propTypes={foo: PropTypes.func};',
         'Foo.displayName=\'Bar\';',
         'Foo.foo=\'Baz\';'
@@ -633,7 +633,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  const {foo, bar} = props;',
         '  ',
         '  return <div>{props.test}</div>;',
-        '};',
+        '}',
         'Foo.propTypes={',
         '    foo: PropTypes.func};',
         'Foo.displayName=\'Bar\';',
@@ -666,7 +666,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '    const {foo, bar} = props;',
         '    ',
         '    return <div>{props.test}</div>;',
-        '  };',
+        '  }',
         '  Foo.propTypes={',
         '      foo: PropTypes.func};',
         '  Foo.displayName=\'Bar\';',
@@ -684,7 +684,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '}'
       ].join('\n'),
       output: [
-        'function Foo(props) {};'
+        'function Foo(props) {}'
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [{
@@ -716,7 +716,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       output: [
         'function Foo(props) {',
         '  return false;',
-        '};'
+        '}'
       ].join('\n'),
       errors: [{
         message: 'Component should be written as a pure function'
@@ -737,7 +737,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  const { foo, bar } = props;',
         '',
         '  return <div>{props.test}</div>;',
-        '};'
+        '}'
       ].join('\n'),
       errors: [{
         message: 'Component should be written as a pure function'
@@ -763,7 +763,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '  ',
         '  return <div>',
         '     {props.test}</div>;',
-        '};',
+        '}',
         'Foo.propTypes={foo: PropTypes.func};',
         'Foo.displayName=\'Bar\';',
         'Foo.foo=\'Baz\';'
@@ -778,7 +778,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '}'
       ].join('\n'),
       output: [
-        'function Foo(props) {};'
+        'function Foo(props) {}'
       ].join('\n'),
       errors: [{
         message: 'Component should be written as a pure function'
