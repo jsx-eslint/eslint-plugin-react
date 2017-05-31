@@ -1507,6 +1507,24 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       code: [
         'class Hello extends Component {',
+        '  shouldComponentUpdate (props) {',
+        '    if (props.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n')
+    }, {
+      code: [
+        'class Hello extends Component {',
         '  static propTypes = {',
         '    foo: PropTypes.string,',
         '    bar: PropTypes.string,',
@@ -1524,6 +1542,24 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  componentWillUpdate (props) {',
+        '    if (props.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n')
     }, {
       code: [
         'class Hello extends Component {',
@@ -1548,6 +1584,24 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       code: [
         'class Hello extends Component {',
+        '  componentWillReceiveProps (props) {',
+        '    if (props.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n')
+    }, {
+      code: [
+        'class Hello extends Component {',
         '  static propTypes = {',
         '    foo: PropTypes.string,',
         '    bar: PropTypes.string,',
@@ -1565,6 +1619,24 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  shouldComponentUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n')
     }, {
       code: [
         'class Hello extends Component {',
@@ -1588,6 +1660,24 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       code: [
         'class Hello extends Component {',
+        '  componentWillUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n')
+    }, {
+      code: [
+        'class Hello extends Component {',
         '  static propTypes = {',
         '    foo: PropTypes.string,',
         '    bar: PropTypes.string,',
@@ -1605,6 +1695,24 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  componentDidUpdate (prevProps) {',
+        '    if (prevProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n')
     }
   ],
 
@@ -2575,6 +2683,25 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       code: [
         'class Hello extends Component {',
+        '  componentWillUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n'),
+      errors: [{
+        message: '\'bar\' PropType is defined but prop is never used',
+        line: 19,
+        column: 10
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
         '  static propTypes = {',
         '    foo: PropTypes.string,',
         '    bar: PropTypes.string,',
@@ -2596,6 +2723,25 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       code: [
         'class Hello extends Component {',
+        '  shouldComponentUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n'),
+      errors: [{
+        message: '\'bar\' PropType is defined but prop is never used',
+        line: 19,
+        column: 10
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
         '  static propTypes = {',
         '    foo: PropTypes.string,',
         '    bar: PropTypes.string,',
@@ -2612,6 +2758,25 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'bar\' PropType is defined but prop is never used',
         line: 4,
+        column: 10
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  componentDidUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n'),
+      errors: [{
+        message: '\'bar\' PropType is defined but prop is never used',
+        line: 19,
         column: 10
       }]
     }
