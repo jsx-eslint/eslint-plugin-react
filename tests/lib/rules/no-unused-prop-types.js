@@ -2572,7 +2572,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         line: 4,
         column: 10
       }]
-    }, , {
+    }, {
       code: [
         'class Hello extends Component {',
         '  static propTypes = {',
@@ -2593,7 +2593,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         line: 4,
         column: 10
       }]
-    }, , {
+    }, {
       code: [
         'class Hello extends Component {',
         '  static propTypes = {',
