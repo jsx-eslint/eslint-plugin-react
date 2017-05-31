@@ -523,7 +523,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '}'
       ].join('\n'),
       output: [
-        'let Foo = (props) => {',
+        'function Foo(props) {',
         '  return false;',
         '};'
       ].join('\n'),
@@ -543,7 +543,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '}'
       ].join('\n'),
       output: [
-        'let Foo = (props) => {',
+        'function Foo(props) {',
         '  const { foo, bar } = props;',
         '',
         '  return <div>{props.test}</div>;',
@@ -570,7 +570,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '}'
       ].join('\n'),
       output: [
-        'let Foo = (props) => {',
+        'function Foo(props) {',
         '  const { foo, bar } = props;',
         '  ',
         '  return <div>{props.test}</div>;',
@@ -600,7 +600,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '}'
       ].join('\n'),
       output: [
-        'let Foo = (props) => {',
+        'function Foo(props) {',
         '  const {foo, bar} = props;',
         '  ',
         '  return <div>{props.test}</div>;',
@@ -629,7 +629,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '}'
       ].join('\n'),
       output: [
-        'let Foo = (props) => {',
+        'function Foo(props) {',
         '  const {foo, bar} = props;',
         '  ',
         '  return <div>{props.test}</div>;',
@@ -662,7 +662,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       ].join('\n'),
       output: [
         '{',
-        '  let Foo = (props) => {',
+        '  function Foo(props) {',
         '    const {foo, bar} = props;',
         '    ',
         '    return <div>{props.test}</div>;',
@@ -684,7 +684,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '}'
       ].join('\n'),
       output: [
-        'let Foo = (props) => {};'
+        'function Foo(props) {};'
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [{
@@ -714,7 +714,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '}'
       ].join('\n'),
       output: [
-        'let Foo = (props) => {',
+        'function Foo(props) {',
         '  return false;',
         '};'
       ].join('\n'),
@@ -733,7 +733,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '}'
       ].join('\n'),
       output: [
-        'let Foo = (props) => {',
+        'function Foo(props) {',
         '  const { foo, bar } = props;',
         '',
         '  return <div>{props.test}</div>;',
@@ -758,7 +758,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         'Foo.foo=\'Baz\';'
       ].join('\n'),
       output: [
-        'let Foo = (props) => {',
+        'function Foo(props) {',
         '  const {foo, bar} = props;',
         '  ',
         '  return <div>',
@@ -778,7 +778,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         '}'
       ].join('\n'),
       output: [
-        'let Foo = (props) => {};'
+        'function Foo(props) {};'
       ].join('\n'),
       errors: [{
         message: 'Component should be written as a pure function'
