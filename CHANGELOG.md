@@ -7,6 +7,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Added
 * add [`no-namespace`] rule ([#2640] @yacinehmito @ljharb)
+* [`prefer-stateless-function`]: add fixer ([#1229][], [#1096][], @RiddleMan @golopot)
 
 ### Fixed
 * [`display-name`]: Get rid of false position on component detection ([#2759] @iiison)
@@ -17,6 +18,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#2640]: https://github.com/yannickcr/eslint-plugin-react/pull/2640
 [#2759]: https://github.com/yannickcr/eslint-plugin-react/pull/2759
 [#1873]: https://github.com/yannickcr/eslint-plugin-react/pull/1873
+[#1229]: https://github.com/yannickcr/eslint-plugin-react/pull/1229
+[#1096]: https://github.com/yannickcr/eslint-plugin-react/issues/1096
 
 ## [7.25.3] - 2021.09.19
 
