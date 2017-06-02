@@ -1484,6 +1484,235 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    c: React.PropTypes.string.isRequired,',
         '};'
       ].join('\n')
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    foo: PropTypes.string,',
+        '    bar: PropTypes.string,',
+        '  };',
+        '',
+        '  shouldComponentUpdate (props) {',
+        '    if (props.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  shouldComponentUpdate (props) {',
+        '    if (props.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n')
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    foo: PropTypes.string,',
+        '    bar: PropTypes.string,',
+        '  };',
+        '',
+        '  componentWillUpdate (props) {',
+        '    if (props.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  componentWillUpdate (props) {',
+        '    if (props.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n')
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    foo: PropTypes.string,',
+        '    bar: PropTypes.string,',
+        '  };',
+        '',
+        '  componentWillReceiveProps (nextProps) {',
+        '    const {foo} = nextProps;',
+        '    if (foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  componentWillReceiveProps (props) {',
+        '    if (props.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n')
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    foo: PropTypes.string,',
+        '    bar: PropTypes.string,',
+        '  };',
+        '',
+        '  shouldComponentUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  shouldComponentUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n')
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    foo: PropTypes.string,',
+        '    bar: PropTypes.string,',
+        '  };',
+        '',
+        '  componentWillUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  componentWillUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n')
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    foo: PropTypes.string,',
+        '    bar: PropTypes.string,',
+        '  };',
+        '',
+        '  componentDidUpdate (prevProps) {',
+        '    if (prevProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  componentDidUpdate (prevProps) {',
+        '    if (prevProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '',
+        '  render() {',
+        '    return (<div>{this.props.bar}</div>);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n')
     }
   ],
 
@@ -2430,7 +2659,128 @@ ruleTester.run('no-unused-prop-types', rule, {
         line: 3,
         column: 16
       }]
-    }/* , {
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    foo: PropTypes.string,',
+        '    bar: PropTypes.string,',
+        '  };',
+        '',
+        '  componentWillUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'bar\' PropType is defined but prop is never used',
+        line: 4,
+        column: 10
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  componentWillUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n'),
+      errors: [{
+        message: '\'bar\' PropType is defined but prop is never used',
+        line: 10,
+        column: 8
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    foo: PropTypes.string,',
+        '    bar: PropTypes.string,',
+        '  };',
+        '',
+        '  shouldComponentUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'bar\' PropType is defined but prop is never used',
+        line: 4,
+        column: 10
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  shouldComponentUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n'),
+      errors: [{
+        message: '\'bar\' PropType is defined but prop is never used',
+        line: 10,
+        column: 8
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    foo: PropTypes.string,',
+        '    bar: PropTypes.string,',
+        '  };',
+        '',
+        '  componentDidUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'bar\' PropType is defined but prop is never used',
+        line: 4,
+        column: 10
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  componentDidUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '};'
+      ].join('\n'),
+      errors: [{
+        message: '\'bar\' PropType is defined but prop is never used',
+        line: 10,
+        column: 8
+      }]
+    }
+    /* , {
       // Enable this when the following issue is fixed
       // https://github.com/yannickcr/eslint-plugin-react/issues/296
       code: [
