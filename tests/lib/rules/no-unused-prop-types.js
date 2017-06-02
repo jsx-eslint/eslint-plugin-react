@@ -2696,8 +2696,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       errors: [{
         message: '\'bar\' PropType is defined but prop is never used',
-        line: 19,
-        column: 10
+        line: 10,
+        column: 8
       }]
     }, {
       code: [
@@ -2736,8 +2736,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       errors: [{
         message: '\'bar\' PropType is defined but prop is never used',
-        line: 19,
-        column: 10
+        line: 10,
+        column: 8
       }]
     }, {
       code: [
@@ -2776,8 +2776,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       errors: [{
         message: '\'bar\' PropType is defined but prop is never used',
-        line: 19,
-        column: 10
+        line: 10,
+        column: 8
       }]
     }
     /* , {
