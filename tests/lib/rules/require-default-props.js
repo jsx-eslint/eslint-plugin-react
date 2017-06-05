@@ -178,6 +178,22 @@ ruleTester.run('require-default-props', rule, {
         '    foo: PropTypes.string,',
         '    bar: PropTypes.string.isRequired',
         '  },',
+        '  defaultProps: {',
+        '    foo: "foo"',
+        '  }',
+        '});'
+      ].join('\n')
+    },
+    {
+      code: [
+        'var Greeting = React.createClass({',
+        '  render: function() {',
+        '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
+        '  },',
+        '  propTypes: {',
+        '    foo: React.PropTypes.string,',
+        '    bar: React.PropTypes.string.isRequired',
+        '  },',
         '  getDefaultProps: function() {',
         '    return {',
         '      foo: "foo"',
@@ -313,6 +329,25 @@ ruleTester.run('require-default-props', rule, {
         'Greeting.defaultProps = {};',
         'Greeting.defaultProps.foo = "foo";'
       ].join('\n')
+    },
+    {
+      code: [
+        'class Greeting extends React.Component {',
+        '  render() {',
+        '    return (',
+        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
+        '    );',
+        '  }',
+        '  static propTypes = {',
+        '    foo: React.PropTypes.string,',
+        '    bar: React.PropTypes.string.isRequired',
+        '  };',
+        '  static defaultProps = {',
+        '    foo: "foo"',
+        '  };',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     },
 
     //
