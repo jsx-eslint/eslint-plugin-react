@@ -4,6 +4,7 @@ const has = require('has');
 
 const allRules = {
   'boolean-prop-naming': require('./lib/rules/boolean-prop-naming'),
+  'button-has-type': require('./lib/rules/button-has-type'),
   'default-props-match-prop-types': require('./lib/rules/default-props-match-prop-types'),
   'destructuring-assignment': require('./lib/rules/destructuring-assignment'),
   'display-name': require('./lib/rules/display-name'),
@@ -24,6 +25,7 @@ const allRules = {
   'jsx-indent': require('./lib/rules/jsx-indent'),
   'jsx-indent-props': require('./lib/rules/jsx-indent-props'),
   'jsx-key': require('./lib/rules/jsx-key'),
+  'jsx-max-depth': require('./lib/rules/jsx-max-depth'),
   'jsx-max-props-per-line': require('./lib/rules/jsx-max-props-per-line'),
   'jsx-no-bind': require('./lib/rules/jsx-no-bind'),
   'jsx-no-comment-textnodes': require('./lib/rules/jsx-no-comment-textnodes'),
@@ -31,7 +33,6 @@ const allRules = {
   'jsx-no-literals': require('./lib/rules/jsx-no-literals'),
   'jsx-no-target-blank': require('./lib/rules/jsx-no-target-blank'),
   'jsx-one-expression-per-line': require('./lib/rules/jsx-one-expression-per-line'),
-  'button-has-type': require('./lib/rules/button-has-type'),
   'jsx-no-undef': require('./lib/rules/jsx-no-undef'),
   'jsx-curly-brace-presence': require('./lib/rules/jsx-curly-brace-presence'),
   'jsx-pascal-case': require('./lib/rules/jsx-pascal-case'),
