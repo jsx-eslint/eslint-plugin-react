@@ -11,7 +11,10 @@ var rule = require('../../../lib/rules/no-static-typos');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
-  ecmaVersion: 6
+  ecmaVersion: 6,
+  ecmaFeatures: {
+    jsx: true
+  }
 };
 
 // -----------------------------------------------------------------------------
@@ -34,6 +37,16 @@ ruleTester.run('no-static-typos', rule, {
     ].join('\n'),
     parser: 'babel-eslint',
     parserOptions: parserOptions
+  },
+  {
+    code: [
+      'class First {}',
+      'First.PropTypes = {key: "myValue"};',
+      'First.ContextTypes = {key: "myValue"};',
+      'First.ChildContextTypes = {key: "myValue"};',
+      'First.DefaultProps = {key: "myValue"};'
+    ].join('\n'),
+    parserOptions: parserOptions
   }, {
     code: [
       'class First extends React.Component {',
@@ -44,6 +57,15 @@ ruleTester.run('no-static-typos', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class First extends React.Component {}',
+      'First.propTypes = {key: "myValue"};',
+      'First.contextTypes = {key: "myValue"};',
+      'First.childContextTypes = {key: "myValue"};',
+      'First.defaultProps = {key: "myValue"};'
+    ].join('\n'),
     parserOptions: parserOptions
   }, {
     code: [
@@ -100,6 +122,24 @@ ruleTester.run('no-static-typos', rule, {
     ].join('\n'),
     parser: 'babel-eslint',
     parserOptions: parserOptions
+  }, {
+    code: [
+      'class MyClass {}',
+      'MyClass.prototype.PropTypes = function() {};',
+      'MyClass.prototype.ContextTypes = function() {};',
+      'MyClass.prototype.ChildContextTypes = function() {};',
+      'MyClass.prototype.DefaultProps = function() {};'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class MyClass {}',
+      'MyClass.PropTypes = function() {};',
+      'MyClass.ContextTypes = function() {};',
+      'MyClass.ChildContextTypes = function() {};',
+      'MyClass.DefaultProps = function() {};'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -113,11 +153,25 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
+      'class Component extends React.Component {}',
+      'Component.PropTypes = {}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
       'class Component extends React.Component {',
       '  static proptypes = {};',
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
+      'class Component extends React.Component {}',
+      'Component.proptypes = {}'
+    ].join('\n'),
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
@@ -131,11 +185,25 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
+      'class Component extends React.Component {}',
+      'Component.ContextTypes = {}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
       'class Component extends React.Component {',
       '  static contexttypes = {};',
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
+      'class Component extends React.Component {}',
+      'Component.contexttypes = {}'
+    ].join('\n'),
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
@@ -149,11 +217,25 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
+      'class Component extends React.Component {}',
+      'Component.ChildContextTypes = {}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
       'class Component extends React.Component {',
       '  static childcontexttypes = {};',
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
+      'class Component extends React.Component {}',
+      'Component.childcontexttypes = {}'
+    ].join('\n'),
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
@@ -167,11 +249,25 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
+      'class Component extends React.Component {}',
+      'Component.DefaultProps = {}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
       'class Component extends React.Component {',
       '  static defaultprops = {};',
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
+      'class Component extends React.Component {}',
+      'Component.defaultprops = {}'
+    ].join('\n'),
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }]
