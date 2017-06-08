@@ -40,6 +40,7 @@ var allRules = {
   'jsx-no-literals': require('./lib/rules/jsx-no-literals'),
   'jsx-indent-props': require('./lib/rules/jsx-indent-props'),
   'jsx-indent': require('./lib/rules/jsx-indent'),
+  'jsx-closing-bracket-atomic': require('./lib/rules/jsx-closing-bracket-atomic'),
   'jsx-closing-bracket-location': require('./lib/rules/jsx-closing-bracket-location'),
   'jsx-space-before-closing': require('./lib/rules/jsx-space-before-closing'),
   'no-direct-mutation-state': require('./lib/rules/no-direct-mutation-state'),
