@@ -1,0 +1,65 @@
+/**
+ * @fileoverview Validate closing tag location in JSX
+ * @author Ross Solomon
+ */
+'use strict';
+
+// ------------------------------------------------------------------------------
+// Requirements
+// ------------------------------------------------------------------------------
+
+const rule = require('../../../lib/rules/jsx-closing-tag-location');
+const RuleTester = require('eslint').RuleTester;
+const parserOptions = {
+  sourceType: 'module',
+  ecmaFeatures: {
+    jsx: true
+  }
+};
+
+const MESSAGE_MATCH_INDENTATION = [{message: 'Expected closing tag to match indentation of opening.'}];
+const MESSAGE_OWN_LINE = [{message: 'Closing tag of a multiline JSX expression must be on its own line.'}];
+
+// ------------------------------------------------------------------------------
+// Tests
+// ------------------------------------------------------------------------------
+
+const ruleTester = new RuleTester({parserOptions});
+ruleTester.run('jsx-closing-tag-location', rule, {
+  valid: [{
+    code: [
+      '<App>',
+      '  foo',
+      '</App>'
+    ].join('\n')
+  }, {
+    code: [
+      '<App>foo</App>'
+    ].join('\n')
+  }],
+
+  invalid: [{
+    code: [
+      '<App>',
+      '  foo',
+      '  </App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '  foo',
+      '</App>'
+    ].join('\n'),
+    errors: MESSAGE_MATCH_INDENTATION
+  }, {
+    code: [
+      '<App>',
+      '  foo</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '  foo',
+      '</App>'
+    ].join('\n'),
+    errors: MESSAGE_OWN_LINE
+  }]
+});

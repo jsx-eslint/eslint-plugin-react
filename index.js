@@ -41,6 +41,7 @@ var allRules = {
   'jsx-indent-props': require('./lib/rules/jsx-indent-props'),
   'jsx-indent': require('./lib/rules/jsx-indent'),
   'jsx-closing-bracket-location': require('./lib/rules/jsx-closing-bracket-location'),
+  'jsx-closing-tag-location': require('./lib/rules/jsx-closing-tag-location'),
   'jsx-space-before-closing': require('./lib/rules/jsx-space-before-closing'),
   'no-direct-mutation-state': require('./lib/rules/no-direct-mutation-state'),
   'forbid-component-props': require('./lib/rules/forbid-component-props'),
