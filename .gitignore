@@ -1,3 +1,5 @@
+# gitignore
+
 lib-cov
 *.seed
 *.log
@@ -15,3 +17,7 @@ build
 node_modules
 npm-debug.log
 sftp-config.json
+
+# Only apps should have lockfiles
+yarn.lock
+package-lock.json
