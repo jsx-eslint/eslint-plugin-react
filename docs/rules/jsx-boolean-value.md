@@ -6,27 +6,29 @@
 
 ## Rule Details
 
-This rule takes one argument. If it is `"always"` then it warns whenever an attribute is missing its value. If `"never"` then it warns if an attribute has a `true` value. The default value of this option is `"never"`.
+This rule takes two arguments. If the first argument is `"always"` then it warns whenever an attribute is missing its value. If `"never"` then it warns if an attribute has a `true` value. The default value of this option is `"never"`.
 
-The following patterns are considered warnings when configured `"never"`:
+The second argument is optional: if provided, it must be an object with a `"never"` property (if the first argument is `"always"`), or an `"always"` property (if the first argument is `"never"`). This property’s value must be an array of strings representing prop names.
+
+The following patterns are considered warnings when configured `"never"`, or with `"always", { "never": ["personal"] }`:
 
 ```jsx
 var Hello = <Hello personal={true} />;
 ```
 
-The following patterns are not considered warnings when configured `"never"`:
+The following patterns are not considered warnings when configured `"never"`, or with `"always", { "never": ["personal"] }`:
 
 ```jsx
 var Hello = <Hello personal />;
 ```
 
-The following patterns are considered warnings when configured `"always"`:
+The following patterns are considered warnings when configured `"always"`, or with `"never", { "always": ["personal"] }`:
 
 ```jsx
 var Hello = <Hello personal />;
 ```
 
-The following patterns are not considered warnings when configured `"always"`:
+The following patterns are not considered warnings when configured `"always"`, or with `"never", { "always": ["personal"] }`:
 
 ```jsx
 var Hello = <Hello personal={true} />;
