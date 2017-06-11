@@ -35,7 +35,7 @@
     "mocha": "^3.3.0"
   },
   "peerDependencies": {
-    "eslint": "^3.0.0"
+    "eslint": "^3.0.0 || ^4.0.0"
   },
   "engines": {
     "node": ">=4"
