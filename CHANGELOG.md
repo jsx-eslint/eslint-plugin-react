@@ -3,6 +3,57 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.1.0] - 2017-06-13
+### Added
+* Add [`default-props-match-prop-types`][] rule ([#1022][] @webOS101)
+* Add [`no-redundant-should-component-update`][] rule ([#985][] @jomasti)
+* Add [`jsx-closing-tag-location`][] rule ([#1206][] @rsolomon)
+* Add auto fix for [`jsx-max-props-per-line`][] ([#949][] @snowypowers)
+* Add support for lifecycle methods with `nextProps`/`prevProps` in [`no-unused-prop-types`][] ([#1213][] @jseminck)
+* Add Flow SuperTypeParameters support to [`prop-types`][] ([#1236][] @gpeal)
+* Add `children` option to [`jsx-curly-spacing`][] ([#857][] @fatfisz)
+
+### Fixed
+* Fix [`prefer-stateless-function`][] `ignorePureComponents` option when using class expressions ([#1122][] @dreid)
+* Fix [`void-dom-elements-no-children`][] crash ([#1195][] @oliviertassinari)
+* Fix [`require-default-props`][] quoted `defaultProps` detection ([#1201][])
+* Fix [`jsx-sort-props`][] bug with `ignoreCase` and `callbacksLast` options set to `true` ([#1175][] @jseminck)
+* Fix [`no-unused-prop-types`][] false positive ([#1183][] [#1135][] @jseminck)
+* Fix [`jsx-no-target-blank`][] to not issue errors for non-external URLs ([#1216][] @gfx)
+* Fix [`prop-types`][] quoted Flow types detection ([#1132][] @ethanjgoldberg)
+* Fix [`no-array-index-key`][] crash with `key` without value ([#1242][] @jseminck)
+
+### Changed
+* Set ESLint 4.0.0 as valid peerDependency
+* Dead code removal ([#1227][] @jseminck)
+* Update dependencies (@ljharb)
+* Documentation improvements ([#1071][] @adnasa, [#1199][] @preco21, [#1222][] @alexilyaev, [#1231][] @vonovak, [#1239][] @webOS101, [#1241][] @102)
+
+[7.1.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.0.1...v7.1.0
+[#1022]: https://github.com/yannickcr/eslint-plugin-react/issues/1022
+[#949]: https://github.com/yannickcr/eslint-plugin-react/pull/949
+[#985]: https://github.com/yannickcr/eslint-plugin-react/issues/985
+[#1213]: https://github.com/yannickcr/eslint-plugin-react/issues/1213
+[#1236]: https://github.com/yannickcr/eslint-plugin-react/pull/1236
+[#1206]: https://github.com/yannickcr/eslint-plugin-react/issues/1206
+[#857]: https://github.com/yannickcr/eslint-plugin-react/issues/857
+[#1122]: https://github.com/yannickcr/eslint-plugin-react/pull/1122
+[#1195]: https://github.com/yannickcr/eslint-plugin-react/pull/1195
+[#1201]: https://github.com/yannickcr/eslint-plugin-react/issues/1201
+[#1175]: https://github.com/yannickcr/eslint-plugin-react/issues/1175
+[#1183]: https://github.com/yannickcr/eslint-plugin-react/issues/1183
+[#1135]: https://github.com/yannickcr/eslint-plugin-react/issues/1135
+[#1216]: https://github.com/yannickcr/eslint-plugin-react/pull/1216
+[#1132]: https://github.com/yannickcr/eslint-plugin-react/pull/1132
+[#1242]: https://github.com/yannickcr/eslint-plugin-react/issues/1242
+[#1227]: https://github.com/yannickcr/eslint-plugin-react/pull/1227
+[#1071]: https://github.com/yannickcr/eslint-plugin-react/pull/1071
+[#1199]: https://github.com/yannickcr/eslint-plugin-react/pull/1199
+[#1222]: https://github.com/yannickcr/eslint-plugin-react/pull/1222
+[#1231]: https://github.com/yannickcr/eslint-plugin-react/pull/1231
+[#1239]: https://github.com/yannickcr/eslint-plugin-react/pull/1239
+[#1241]: https://github.com/yannickcr/eslint-plugin-react/pull/1241
+
 ## [7.0.1] - 2017-05-13
 ### Fixed
 * Fix [`jsx-curly-spacing`][] `allowMultiline` option being undefined in some cases ([#1179][] @fatfisz)
@@ -1746,6 +1797,9 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`jsx-uses-vars`]: docs/rules/jsx-uses-vars.md
 [`jsx-wrap-multilines`]: docs/rules/jsx-wrap-multilines.md
 [`void-dom-elements-no-children`]: docs/rules/void-dom-elements-no-children.md
+[`default-props-match-prop-types`]: docs/rules/default-props-match-prop-types.md
+[`no-redundant-should-component-update`]: docs/rules/no-redundant-should-component-update.md
+[`jsx-closing-tag-location`]: docs/rules/jsx-closing-tag-location.md
 
 [`jsx-sort-prop-types`]: docs/rules/sort-prop-types.md
 [`require-extension`]: docs/rules/require-extension.md
