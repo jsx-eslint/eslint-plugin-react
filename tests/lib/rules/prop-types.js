@@ -1463,7 +1463,7 @@ ruleTester.run('prop-types', rule, {
         'import type {BasePerson} from \'./types\'',
         'type Props = {',
         '  person: {',
-        '   ...$Exact<BasePerson>',
+        '   ...$Exact<BasePerson>,',
         '   lastname: string',
         '  }',
         '};',
