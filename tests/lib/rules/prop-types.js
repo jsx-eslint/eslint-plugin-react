@@ -1417,6 +1417,67 @@ ruleTester.run('prop-types', rule, {
     }, {
       code: [
         'type Person = {',
+        '  ...$Exact<data>,',
+        '  lastname: string',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Person;',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'import type {Data} from \'./Data\'',
+        'type Person = {',
+        '  ...Data,',
+        '  lastname: string',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Person;',
+        '  render () {',
+        '    return <div>Hello {this.props.bar}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'import type {Data} from \'some-libdef-like-flow-typed-provides\'',
+        'type Person = {',
+        '  ...Data,',
+        '  lastname: string',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Person;',
+        '  render () {',
+        '    return <div>Hello {this.props.bar}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'import type {BasePerson} from \'./types\'',
+        'type Props = {',
+        '  person: {',
+        '   ...$Exact<BasePerson>,',
+        '   lastname: string',
+        '  }',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Props;',
+        '  render () {',
+        '    return <div>Hello {this.props.person.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Person = {',
         '  firstname: string',
         '};',
         'class Hello extends React.Component<void, Person, void> {',
