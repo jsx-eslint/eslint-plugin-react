@@ -140,6 +140,15 @@ ruleTester.run('no-static-typos', rule, {
       'MyClass.DefaultProps = function() {};'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: [
+      'function MyRandomFunction() {}',
+      'MyRandomFunction.PropTypes = {};',
+      'MyRandomFunction.ContextTypes = {};',
+      'MyRandomFunction.ChildContextTypes = {};',
+      'MyRandomFunction.DefaultProps = {};'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -155,6 +164,13 @@ ruleTester.run('no-static-typos', rule, {
     code: [
       'class Component extends React.Component {}',
       'Component.PropTypes = {}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
+      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'MyComponent.PropTypes = {}'
     ].join('\n'),
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
@@ -176,6 +192,13 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
+      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'MyComponent.proptypes = {}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
       'class Component extends React.Component {',
       '  static ContextTypes = {};',
       '}'
@@ -187,6 +210,13 @@ ruleTester.run('no-static-typos', rule, {
     code: [
       'class Component extends React.Component {}',
       'Component.ContextTypes = {}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
+      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'MyComponent.ContextTypes = {}'
     ].join('\n'),
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
@@ -208,6 +238,13 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
+      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'MyComponent.contexttypes = {}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
       'class Component extends React.Component {',
       '  static ChildContextTypes = {};',
       '}'
@@ -219,6 +256,13 @@ ruleTester.run('no-static-typos', rule, {
     code: [
       'class Component extends React.Component {}',
       'Component.ChildContextTypes = {}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
+      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'MyComponent.ChildContextTypes = {}'
     ].join('\n'),
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
@@ -240,6 +284,13 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
+      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'MyComponent.childcontexttypes = {}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
       'class Component extends React.Component {',
       '  static DefaultProps = {};',
       '}'
@@ -256,6 +307,13 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
+      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'MyComponent.DefaultProps = {}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
       'class Component extends React.Component {',
       '  static defaultprops = {};',
       '}'
@@ -267,6 +325,13 @@ ruleTester.run('no-static-typos', rule, {
     code: [
       'class Component extends React.Component {}',
       'Component.defaultprops = {}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
+      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'MyComponent.defaultprops = {}'
     ].join('\n'),
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
