@@ -80,7 +80,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 
 # List of supported rules
 
-* [react/default-props-match-prop-types](docs/rules/default-props-match-prop-types): Prevent extraneous defaultProps on components
+* [react/default-props-match-prop-types](docs/rules/default-props-match-prop-types.md): Prevent extraneous defaultProps on components
 * [react/display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
 * [react/forbid-component-props](docs/rules/forbid-component-props.md): Forbid certain props on Components
 * [react/forbid-elements](docs/rules/forbid-elements.md): Forbid certain elements
