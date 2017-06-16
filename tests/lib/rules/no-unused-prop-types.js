@@ -2779,6 +2779,47 @@ ruleTester.run('no-unused-prop-types', rule, {
         line: 10,
         column: 8
       }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  componentDidUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '}',
+        'Hello.propTypes = forbidExtraProps({',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string,',
+        '});'
+      ].join('\n'),
+      errors: [{
+        message: '\'bar\' PropType is defined but prop is never used',
+        line: 10,
+        column: 8
+      }],
+      options: [{propWrapperFunctions: ['forbidExtraProps']}]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  propTypes = forbidExtraProps({',
+        '    foo: PropTypes.string,',
+        '    bar: PropTypes.string',
+        '  });',
+        '  componentDidUpdate (nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return true;',
+        '    }',
+        '  }',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'bar\' PropType is defined but prop is never used',
+        line: 4,
+        column: 10
+      }],
+      options: [{propWrapperFunctions: ['forbidExtraProps']}]
     }
     /* , {
       // Enable this when the following issue is fixed
