@@ -64,7 +64,8 @@ var allRules = {
   'no-children-prop': require('./lib/rules/no-children-prop'),
   'void-dom-elements-no-children': require('./lib/rules/void-dom-elements-no-children'),
   'jsx-tag-spacing': require('./lib/rules/jsx-tag-spacing'),
-  'no-redundant-should-component-update': require('./lib/rules/no-redundant-should-component-update')
+  'no-redundant-should-component-update': require('./lib/rules/no-redundant-should-component-update'),
+  'boolean-prop-naming': require('./lib/rules/boolean-prop-naming')
 };
 
 function filterRules(rules, predicate) {
