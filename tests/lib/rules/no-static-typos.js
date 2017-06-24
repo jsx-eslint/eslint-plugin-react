@@ -169,7 +169,7 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
-      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'function MyComponent() { return (<div>{this.props.myProp}</div>) }',
       'MyComponent.PropTypes = {}'
     ].join('\n'),
     parserOptions: parserOptions,
@@ -192,7 +192,7 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
-      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'function MyComponent() { return (<div>{this.props.myProp}</div>) }',
       'MyComponent.proptypes = {}'
     ].join('\n'),
     parserOptions: parserOptions,
@@ -215,7 +215,7 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
-      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'function MyComponent() { return (<div>{this.props.myProp}</div>) }',
       'MyComponent.ContextTypes = {}'
     ].join('\n'),
     parserOptions: parserOptions,
@@ -238,7 +238,7 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
-      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'function MyComponent() { return (<div>{this.props.myProp}</div>) }',
       'MyComponent.contexttypes = {}'
     ].join('\n'),
     parserOptions: parserOptions,
@@ -261,7 +261,7 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
-      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'function MyComponent() { return (<div>{this.props.myProp}</div>) }',
       'MyComponent.ChildContextTypes = {}'
     ].join('\n'),
     parserOptions: parserOptions,
@@ -284,7 +284,7 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
-      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'function MyComponent() { return (<div>{this.props.myProp}</div>) }',
       'MyComponent.childcontexttypes = {}'
     ].join('\n'),
     parserOptions: parserOptions,
@@ -307,7 +307,7 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
-      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'function MyComponent() { return (<div>{this.props.myProp}</div>) }',
       'MyComponent.DefaultProps = {}'
     ].join('\n'),
     parserOptions: parserOptions,
@@ -330,7 +330,7 @@ ruleTester.run('no-static-typos', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: [
-      'function MyComponent() { return (<div>{this.props.myProp</div>) }',
+      'function MyComponent() { return (<div>{this.props.myProp}</div>) }',
       'MyComponent.defaultprops = {}'
     ].join('\n'),
     parserOptions: parserOptions,
