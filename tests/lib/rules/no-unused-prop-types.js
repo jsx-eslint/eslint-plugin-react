@@ -2798,7 +2798,9 @@ ruleTester.run('no-unused-prop-types', rule, {
         line: 10,
         column: 8
       }],
-      options: [{propWrapperFunctions: ['forbidExtraProps']}]
+      settings: {
+        propWrapperFunctions: ['forbidExtraProps']
+      }
     }, {
       code: [
         'class Hello extends Component {',
@@ -2819,7 +2821,9 @@ ruleTester.run('no-unused-prop-types', rule, {
         line: 4,
         column: 10
       }],
-      options: [{propWrapperFunctions: ['forbidExtraProps']}]
+      settings: {
+        propWrapperFunctions: ['forbidExtraProps']
+      }
     }
     /* , {
       // Enable this when the following issue is fixed

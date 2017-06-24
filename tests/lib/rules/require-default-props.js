@@ -772,7 +772,9 @@ ruleTester.run('require-default-props', rule, {
         line: 5,
         column: 3
       }],
-      options: [{propWrapperFunctions: ['forbidExtraProps']}]
+      settings: {
+        propWrapperFunctions: ['forbidExtraProps']
+      }
     },
     {
       code: [
