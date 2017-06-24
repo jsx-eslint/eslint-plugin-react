@@ -762,6 +762,23 @@ ruleTester.run('require-default-props', rule, {
         'function MyStatelessComponent({ foo, bar }) {',
         '  return <div>{foo}{bar}</div>;',
         '}',
+        'MyStatelessComponent.propTypes = forbidExtraProps({',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string.isRequired',
+        '});'
+      ].join('\n'),
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.',
+        line: 5,
+        column: 3
+      }],
+      options: [{propWrapperFunctions: ['forbidExtraProps']}]
+    },
+    {
+      code: [
+        'function MyStatelessComponent({ foo, bar }) {',
+        '  return <div>{foo}{bar}</div>;',
+        '}',
         'MyStatelessComponent.propTypes = {',
         '  foo: PropTypes.string,',
         '  bar: PropTypes.string.isRequired',
