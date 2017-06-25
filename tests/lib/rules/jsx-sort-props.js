@@ -153,15 +153,82 @@ ruleTester.run('jsx-sort-props', rule, {
     }
   ],
   invalid: [
-    {code: '<App b a />;', errors: [expectedError]},
-    {code: '<App {...this.props} b a />;', errors: [expectedError]},
-    {code: '<App c {...this.props} b a />;', errors: [expectedError]},
-    {code: '<App a A />;', errors: [expectedError]},
-    {code: '<App B a />;', options: ignoreCaseArgs, errors: [expectedError]},
-    {code: '<App B A c />;', options: ignoreCaseArgs, errors: [expectedError]},
-    {code: '<App c="a" a="c" b="b" />;', errors: 2},
-    {code: '<App {...this.props} c="a" a="c" b="b" />;', errors: 2},
-    {code: '<App d="d" b="b" {...this.props} c="a" a="c" />;', errors: 2},
+    {
+      code: '<App b a />;',
+      errors: [expectedError],
+      output: '<App a b />;'
+    },
+    {
+      code: '<App {...this.props} b a />;',
+      errors: [expectedError],
+      output: '<App {...this.props} a b />;'
+    },
+    {
+      code: '<App c {...this.props} b a />;',
+      errors: [expectedError],
+      output: '<App c {...this.props} a b />;'
+    },
+    {
+      code: '<App a A />;',
+      errors: [expectedError],
+      output: '<App a A />;'
+    },
+    {
+      code: '<App B a />;',
+      options: ignoreCaseArgs,
+      errors: [expectedError],
+      output: '<App a B />;'
+    },
+    {
+      code: '<App B A c />;',
+      options: ignoreCaseArgs,
+      errors: [expectedError],
+      output: '<App A B c />;'
+    },
+    {
+      code: '<App c="a" a="c" b="b" />;',
+      output: '<App a="c" b="b" c="a" />;',
+      errors: 2
+    },
+    {
+      code: '<App {...this.props} c="a" a="c" b="b" />;',
+      output: '<App {...this.props} a="c" b="b" c="a" />;',
+      errors: 2
+    },
+    {
+      code: '<App d="d" b="b" {...this.props} c="a" a="c" />;',
+      output: '<App b="b" d="d" {...this.props} a="c" c="a" />;',
+      errors: 2
+    },
+    {
+      code: [
+        '<App',
+        'a={true}',
+        'z',
+        'r',
+        '_onClick={function(){}}',
+        'onHandle={function(){}}',
+        '{...this.props}',
+        'b={false}',
+        '{...otherProps}>',
+        '  {test}',
+        '</App>'
+      ].join('\n'),
+      output: [
+        '<App',
+        '_onClick={function(){}}',
+        'a={true}',
+        'onHandle={function(){}}',
+        'r',
+        'z',
+        '{...this.props}',
+        'b={false}',
+        '{...otherProps}>',
+        '  {test}',
+        '</App>'
+      ].join('\n'),
+      errors: 3
+    },
     {
       code: '<App a z onFoo onBar />;',
       errors: [expectedError],
