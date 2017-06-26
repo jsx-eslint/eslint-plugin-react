@@ -133,7 +133,7 @@ var x = function() {
 <Say
   firstName="John"
   lastName="Smith"
->
+  >
   Hello
 </Say>;
 ```
