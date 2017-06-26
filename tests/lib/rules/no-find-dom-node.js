@@ -106,5 +106,19 @@ ruleTester.run('no-find-dom-node', rule, {
     errors: [{
       message: 'Do not use findDOMNode'
     }]
+  }, {
+    code: [
+      'class Hello extends Component {',
+      '  componentDidMount() {',
+      '    this.node = findDOMNode(this);',
+      '  }',
+      '  render() {',
+      '    return <div>Hello</div>;',
+      '  }',
+      '};'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not use findDOMNode'
+    }]
   }]
 });
