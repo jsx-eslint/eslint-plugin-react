@@ -451,6 +451,24 @@ ruleTester.run('sort-prop-types', rule, {
     errors: 2
   }, {
     code: [
+      'class Component extends React.Component {',
+      '  static propTypes = forbidExtraProps({',
+      '    z: PropTypes.any,',
+      '    y: PropTypes.any,',
+      '    a: PropTypes.any',
+      '  });',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    },
+    errors: 2
+  }, {
+    code: [
       'var First = createReactClass({',
       '  propTypes: {',
       '    a: PropTypes.any,',
@@ -513,6 +531,32 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       callbacksLast: true
     }],
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 10,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'class First extends React.Component {',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}',
+      'First.propTypes = forbidExtraProps({',
+      '    a: PropTypes.any,',
+      '    z: PropTypes.string,',
+      '    onFoo: PropTypes.func,',
+      '    onBar: PropTypes.func',
+      '});'
+    ].join('\n'),
+    options: [{
+      callbacksLast: true
+    }],
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    },
     errors: [{
       message: ERROR_MESSAGE,
       line: 10,

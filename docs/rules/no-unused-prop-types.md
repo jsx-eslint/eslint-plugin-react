@@ -47,14 +47,13 @@ This rule can take one argument to ignore some specific props during validation.
 
 ```js
 ...
-"react/no-unused-prop-types": [<enabled>, { customValidators: <customValidator>, skipShapeProps: <skipShapeProps>, propWrapperFunctions: <propWrapperFunctions> }]
+"react/no-unused-prop-types": [<enabled>, { customValidators: <customValidator>, skipShapeProps: <skipShapeProps> }]
 ...
 ```
 
 * `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
 * `customValidators`: optional array of validators used for propTypes validation.
 * `skipShapeProps`: In some cases it is impossible to accurately detect whether or not a `PropTypes.shape`'s values are being used. Setting this option to `true` will skip validation of `PropTypes.shape` (`true` by default).
-* `propWrapperFunctions`: The names of any functions used to wrap the propTypes object, such as `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
 
 ## Caveats
 

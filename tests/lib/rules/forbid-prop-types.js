@@ -385,6 +385,21 @@ ruleTester.run('forbid-prop-types', rule, {
     errors: 4
   }, {
     code: [
+      'class First extends React.Component {',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}',
+      'First.propTypes = forbidExtraProps({',
+      '    a: PropTypes.array',
+      '});'
+    ].join('\n'),
+    errors: 1,
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    }
+  }, {
+    code: [
       'class Component extends React.Component {',
       '  static propTypes = {',
       '    a: PropTypes.array,',
@@ -397,6 +412,23 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     parser: 'babel-eslint',
     errors: 2
+  }, {
+    code: [
+      'class Component extends React.Component {',
+      '  static propTypes = forbidExtraProps({',
+      '    a: PropTypes.array,',
+      '    o: PropTypes.object',
+      '  });',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: 2,
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    }
   }, {
     code: [
       'var Hello = createReactClass({',

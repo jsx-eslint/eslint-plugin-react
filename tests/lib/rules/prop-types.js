@@ -2210,6 +2210,26 @@ ruleTester.run('prop-types', rule, {
       ]
     }, {
       code: [
+        'class Test extends Foo.Component {',
+        '  render() {',
+        '    return (',
+        '      <div>{this.props.firstname} {this.props.lastname}</div>',
+        '    );',
+        '  }',
+        '}',
+        'Test.propTypes = forbidExtraProps({',
+        '  firstname: PropTypes.string',
+        '});'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      settings: Object.assign({}, settings, {
+        propWrapperFunctions: ['forbidExtraProps']
+      }),
+      errors: [
+        {message: '\'lastname\' is missing in props validation'}
+      ]
+    }, {
+      code: [
         '/** @jsx Foo */',
         'class Test extends Foo.Component {',
         '  render() {',
@@ -2686,6 +2706,29 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
+      errors: [
+        {message: '\'foo\' is missing in props validation'}
+      ]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = forbidExtraProps({',
+        '    bar: PropTypes.func',
+        '  })',
+        '  componentWillReceiveProps(nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return;',
+        '    }',
+        '  }',
+        '  render() {',
+        '    return <div bar={this.props.bar} />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      settings: Object.assign({}, settings, {
+        propWrapperFunctions: ['forbidExtraProps']
+      }),
       errors: [
         {message: '\'foo\' is missing in props validation'}
       ]
