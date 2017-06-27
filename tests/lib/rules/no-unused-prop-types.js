@@ -8,10 +8,10 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/no-unused-prop-types');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-unused-prop-types');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -20,7 +20,7 @@ var parserOptions = {
   }
 };
 
-var settings = {
+const settings = {
   react: {
     pragma: 'Foo'
   }
@@ -32,7 +32,7 @@ require('babel-eslint');
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-unused-prop-types', rule, {
 
   valid: [

@@ -7,10 +7,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/sort-prop-types');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/sort-prop-types');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -25,9 +25,9 @@ require('babel-eslint');
 // Tests
 // -----------------------------------------------------------------------------
 
-var ERROR_MESSAGE = 'Prop types declarations should be sorted alphabetically';
+const ERROR_MESSAGE = 'Prop types declarations should be sorted alphabetically';
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('sort-prop-types', rule, {
 
   valid: [{

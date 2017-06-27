@@ -4,10 +4,10 @@
  */
 'use strict';
 
-var rule = require('../../../lib/rules/require-optimization');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/require-optimization');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -16,9 +16,9 @@ var parserOptions = {
   }
 };
 
-var MESSAGE = 'Component is not optimized. Please add a shouldComponentUpdate method.';
+const MESSAGE = 'Component is not optimized. Please add a shouldComponentUpdate method.';
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('react-require-optimization', rule, {
   valid: [{
     code: [

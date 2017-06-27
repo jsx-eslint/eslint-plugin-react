@@ -9,10 +9,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/react-in-jsx-scope');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/react-in-jsx-scope');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -21,7 +21,7 @@ var parserOptions = {
   }
 };
 
-var settings = {
+const settings = {
   react: {
     pragma: 'Foo'
   }
@@ -31,7 +31,7 @@ var settings = {
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('react-in-jsx-scope', rule, {
   valid: [
     {code: 'var React, App; <App />;'},

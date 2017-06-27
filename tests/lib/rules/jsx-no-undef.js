@@ -9,11 +9,11 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var eslint = require('eslint');
-var rule = require('../../../lib/rules/jsx-no-undef');
-var RuleTester = eslint.RuleTester;
+const eslint = require('eslint');
+const rule = require('../../../lib/rules/jsx-no-undef');
+const RuleTester = eslint.RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   ecmaFeatures: {
     experimentalObjectRestSpread: true,
@@ -25,8 +25,8 @@ var parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
-var linter = ruleTester.linter || eslint.linter;
+const ruleTester = new RuleTester({parserOptions});
+const linter = ruleTester.linter || eslint.linter;
 linter.defineRule('no-undef', require('eslint/lib/rules/no-undef'));
 ruleTester.run('jsx-no-undef', rule, {
   valid: [{
