@@ -240,6 +240,34 @@ ruleTester.run('sort-comp', rule, {
         'render'
       ]
     }]
+  }, {
+    // Non-react classes should be ignored, even in expressions
+    code: [
+      'return class Hello {',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '  props: { text: string };',
+      '  constructor() {}',
+      '  state: Object = {};',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    // Non-react classes should be ignored, even in expressions
+    code: [
+      'return class {',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '  props: { text: string };',
+      '  constructor() {}',
+      '  state: Object = {};',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -274,6 +302,20 @@ ruleTester.run('sort-comp', rule, {
       '  onClick: function() {},',
       '});'
     ].join('\n'),
+    errors: [{message: 'render should be placed after onClick'}]
+  }, {
+    // Must force a custom method to be placed before render, even in function
+    code: [
+      'var Hello = () => {',
+      '  return class Test extends React.Component {',
+      '    render () {',
+      '      return <div>Hello</div>;',
+      '    }',
+      '    onClick () {}',
+      '  }',
+      '};'
+    ].join('\n'),
+    parserOptions: parserOptions,
     errors: [{message: 'render should be placed after onClick'}]
   }, {
     // Must force a custom method to be placed after render if no 'everything-else' group is specified
