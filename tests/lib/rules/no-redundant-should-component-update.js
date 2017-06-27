@@ -8,10 +8,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/no-redundant-should-component-update');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-redundant-should-component-update');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 6,
   ecmaFeatures: {
     experimentalObjectRestSpread: true,
@@ -27,7 +27,7 @@ function errorMessage(node) {
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 ruleTester.run('no-redundant-should-component-update', rule, {
   valid: [
     {

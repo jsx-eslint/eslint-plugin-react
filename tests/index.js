@@ -1,13 +1,13 @@
 /* eslint-env mocha */
 'use strict';
 
-var plugin = require('..');
+const plugin = require('..');
 
-var assert = require('assert');
-var fs = require('fs');
-var path = require('path');
+const assert = require('assert');
+const fs = require('fs');
+const path = require('path');
 
-var ruleFiles = fs.readdirSync(path.resolve(__dirname, '../lib/rules/'))
+const ruleFiles = fs.readdirSync(path.resolve(__dirname, '../lib/rules/'))
   .map(function(f) {
     return path.basename(f, '.js');
   });
@@ -26,8 +26,8 @@ describe('all rule files should be exported by the plugin', function() {
 describe('deprecated rules', function() {
   it('marks all deprecated rules as deprecated', function() {
     ruleFiles.forEach(function(ruleName) {
-      var inDeprecatedRules = Boolean(plugin.deprecatedRules[ruleName]);
-      var isDeprecated = plugin.rules[ruleName].meta.deprecated;
+      const inDeprecatedRules = Boolean(plugin.deprecatedRules[ruleName]);
+      const isDeprecated = plugin.rules[ruleName].meta.deprecated;
       if (inDeprecatedRules) {
         assert(isDeprecated, `${ruleName} metadata should mark it as deprecated`);
       } else {
@@ -42,13 +42,13 @@ describe('configurations', function() {
     assert(plugin.configs.recommended);
     Object.keys(plugin.configs.recommended.rules).forEach(function (configName) {
       assert.equal(configName.indexOf('react/'), 0);
-      var ruleName = configName.substring('react/'.length);
+      const ruleName = configName.substring('react/'.length);
       assert(plugin.rules[ruleName]);
     });
 
     ruleFiles.forEach(function(ruleName) {
-      var inRecommendedConfig = Boolean(plugin.configs.recommended.rules[`react/${ruleName}`]);
-      var isRecommended = plugin.rules[ruleName].meta.docs.recommended;
+      const inRecommendedConfig = Boolean(plugin.configs.recommended.rules[`react/${ruleName}`]);
+      const isRecommended = plugin.rules[ruleName].meta.docs.recommended;
       if (inRecommendedConfig) {
         assert(isRecommended, `${ruleName} metadata should mark it as recommended`);
       } else {
@@ -63,8 +63,8 @@ describe('configurations', function() {
       assert.equal(plugin.configs.all.rules[configName], 2);
     });
     ruleFiles.forEach(function(ruleName) {
-      var inDeprecatedRules = Boolean(plugin.deprecatedRules[ruleName]);
-      var inAllConfig = Boolean(plugin.configs.all.rules[`react/${ruleName}`]);
+      const inDeprecatedRules = Boolean(plugin.deprecatedRules[ruleName]);
+      const inAllConfig = Boolean(plugin.configs.all.rules[`react/${ruleName}`]);
       assert(inDeprecatedRules ^ inAllConfig);
     });
   });

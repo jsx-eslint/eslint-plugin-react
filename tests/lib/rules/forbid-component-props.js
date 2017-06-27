@@ -7,10 +7,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/forbid-component-props');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/forbid-component-props');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -25,10 +25,10 @@ require('babel-eslint');
 // Tests
 // -----------------------------------------------------------------------------
 
-var CLASSNAME_ERROR_MESSAGE = 'Prop `className` is forbidden on Components';
-var STYLE_ERROR_MESSAGE = 'Prop `style` is forbidden on Components';
+const CLASSNAME_ERROR_MESSAGE = 'Prop `className` is forbidden on Components';
+const STYLE_ERROR_MESSAGE = 'Prop `style` is forbidden on Components';
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('forbid-component-props', rule, {
 
   valid: [{

@@ -9,10 +9,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/no-danger');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-danger');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -25,7 +25,7 @@ var parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-danger', rule, {
   valid: [
     {code: '<App />;'},

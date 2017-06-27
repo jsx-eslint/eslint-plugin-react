@@ -1,8 +1,8 @@
 'use strict';
 
-var has = require('has');
+const has = require('has');
 
-var allRules = {
+const allRules = {
   'jsx-uses-react': require('./lib/rules/jsx-uses-react'),
   'no-multi-comp': require('./lib/rules/no-multi-comp'),
   'prop-types': require('./lib/rules/prop-types'),
@@ -68,8 +68,8 @@ var allRules = {
 };
 
 function filterRules(rules, predicate) {
-  var result = {};
-  for (var key in rules) {
+  const result = {};
+  for (const key in rules) {
     if (has(rules, key) && predicate(rules[key])) {
       result[key] = rules[key];
     }
@@ -78,8 +78,8 @@ function filterRules(rules, predicate) {
 }
 
 function configureAsError(rules) {
-  var result = {};
-  for (var key in rules) {
+  const result = {};
+  for (const key in rules) {
     if (!has(rules, key)) {
       continue;
     }
@@ -88,12 +88,12 @@ function configureAsError(rules) {
   return result;
 }
 
-var activeRules = filterRules(allRules, function(rule) {
+const activeRules = filterRules(allRules, function(rule) {
   return !rule.meta.deprecated;
 });
-var activeRulesConfig = configureAsError(activeRules);
+const activeRulesConfig = configureAsError(activeRules);
 
-var deprecatedRules = filterRules(allRules, function(rule) {
+const deprecatedRules = filterRules(allRules, function(rule) {
   return rule.meta.deprecated;
 });
 

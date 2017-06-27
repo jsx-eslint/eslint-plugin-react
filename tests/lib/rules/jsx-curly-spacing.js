@@ -9,9 +9,9 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/jsx-curly-spacing');
-var RuleTester = require('eslint').RuleTester;
-var parserOptions = {
+const rule = require('../../../lib/rules/jsx-curly-spacing');
+const RuleTester = require('eslint').RuleTester;
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -24,7 +24,7 @@ var parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-curly-spacing', rule, {
   valid: [{
     code: '<App foo={bar} />;'

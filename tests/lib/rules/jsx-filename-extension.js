@@ -8,10 +8,10 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/jsx-filename-extension');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-filename-extension');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -24,14 +24,14 @@ var parserOptions = {
 // Code Snippets
 // ------------------------------------------------------------------------------
 
-var withJSX = 'module.exports = function MyComponent() { return <div>\n<div />\n</div>; }';
-var withoutJSX = 'module.exports = {}';
+const withJSX = 'module.exports = function MyComponent() { return <div>\n<div />\n</div>; }';
+const withoutJSX = 'module.exports = {}';
 
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-filename-extension', rule, {
 
   valid: [

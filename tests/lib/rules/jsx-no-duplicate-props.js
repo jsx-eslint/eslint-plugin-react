@@ -9,10 +9,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/jsx-no-duplicate-props');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-no-duplicate-props');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -25,14 +25,14 @@ var parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 
-var expectedError = {
+const expectedError = {
   message: 'No duplicate props allowed',
   type: 'JSXAttribute'
 };
 
-var ignoreCaseArgs = [{
+const ignoreCaseArgs = [{
   ignoreCase: true
 }];
 

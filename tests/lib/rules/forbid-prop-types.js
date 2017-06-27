@@ -7,10 +7,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/forbid-prop-types');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/forbid-prop-types');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -25,12 +25,12 @@ require('babel-eslint');
 // Tests
 // -----------------------------------------------------------------------------
 
-var ANY_ERROR_MESSAGE = 'Prop type `any` is forbidden';
-var ARRAY_ERROR_MESSAGE = 'Prop type `array` is forbidden';
-var NUMBER_ERROR_MESSAGE = 'Prop type `number` is forbidden';
-var OBJECT_ERROR_MESSAGE = 'Prop type `object` is forbidden';
+const ANY_ERROR_MESSAGE = 'Prop type `any` is forbidden';
+const ARRAY_ERROR_MESSAGE = 'Prop type `array` is forbidden';
+const NUMBER_ERROR_MESSAGE = 'Prop type `number` is forbidden';
+const OBJECT_ERROR_MESSAGE = 'Prop type `object` is forbidden';
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('forbid-prop-types', rule, {
 
   valid: [{
