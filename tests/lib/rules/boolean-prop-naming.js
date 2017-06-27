@@ -8,12 +8,12 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/boolean-prop-naming');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/boolean-prop-naming');
+const RuleTester = require('eslint').RuleTester;
 
 require('babel-eslint');
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 6,
   sourceType: 'module',
   ecmaFeatures: {
@@ -25,7 +25,7 @@ var parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('boolean-prop-naming', rule, {
 
   valid: [{
