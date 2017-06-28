@@ -7,10 +7,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/no-typos');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-typos');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 6,
   ecmaFeatures: {
     jsx: true
@@ -21,9 +21,9 @@ var parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-var ERROR_MESSAGE = 'Typo in static class property declaration';
+const ERROR_MESSAGE = 'Typo in static class property declaration';
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 ruleTester.run('no-typos', rule, {
 
   valid: [{
