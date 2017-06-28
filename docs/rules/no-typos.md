@@ -1,4 +1,4 @@
-# Prevent casing typos when declaring static class properties (react/no-static-typos)
+# Prevents common casing typos (react/no-typos)
 
 Ensure no casing typos were made declaring static class properties
 

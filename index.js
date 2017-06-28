@@ -66,7 +66,7 @@ const allRules = {
   'jsx-tag-spacing': require('./lib/rules/jsx-tag-spacing'),
   'no-redundant-should-component-update': require('./lib/rules/no-redundant-should-component-update'),
   'boolean-prop-naming': require('./lib/rules/boolean-prop-naming'),
-  'no-static-typos': require('./lib/rules/no-static-typos')
+  'no-typos': require('./lib/rules/no-typos')
 };
 
 function filterRules(rules, predicate) {

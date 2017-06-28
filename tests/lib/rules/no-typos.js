@@ -1,5 +1,5 @@
 /**
- * @fileoverview Tests for no-static-typos
+ * @fileoverview Tests for no-typos
  */
 'use strict';
 
@@ -7,7 +7,7 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/no-static-typos');
+var rule = require('../../../lib/rules/no-typos');
 var RuleTester = require('eslint').RuleTester;
 
 var parserOptions = {
@@ -24,7 +24,7 @@ var parserOptions = {
 var ERROR_MESSAGE = 'Typo in static class property declaration';
 
 var ruleTester = new RuleTester();
-ruleTester.run('no-static-typos', rule, {
+ruleTester.run('no-typos', rule, {
 
   valid: [{
     code: [
