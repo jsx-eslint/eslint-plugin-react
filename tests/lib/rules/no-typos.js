@@ -149,6 +149,15 @@ ruleTester.run('no-typos', rule, {
       'MyRandomFunction.DefaultProps = {};'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: [
+      'class First extends React.Component {}',
+      'First["prop" + "Types"] = {};',
+      'First["context" + "Types"] = {};',
+      'First["childContext" + "Types"] = {};',
+      'First["default" + "Props"] = {};'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
