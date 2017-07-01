@@ -167,6 +167,20 @@ ruleTester.run('no-typos', rule, {
       'First["DEFAULT" + "PROPS"] = {};'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: [ // This case is currently not supported
+      'const propTypes = "PROPTYPES"',
+      'const contextTypes = "CONTEXTTYPES"',
+      'const childContextTypes = "CHILDCONTEXTTYPES"',
+      'const defautProps = "DEFAULTPROPS"',
+      '',
+      'class First extends React.Component {}',
+      'First[propTypes] = {};',
+      'First[contextTypes] = {};',
+      'First[childContextTypes] = {};',
+      'First[defautProps] = {};'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
