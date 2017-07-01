@@ -158,6 +158,15 @@ ruleTester.run('no-typos', rule, {
       'First["default" + "Props"] = {};'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: [ // This case is currently not supported
+      'class First extends React.Component {}',
+      'First["PROP" + "TYPES"] = {};',
+      'First["CONTEXT" + "TYPES"] = {};',
+      'First["CHILDCONTEXT" + "TYPES"] = {};',
+      'First["DEFAULT" + "PROPS"] = {};'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
