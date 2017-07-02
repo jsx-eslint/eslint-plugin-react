@@ -1,6 +1,7 @@
 /**
  * @fileoverview Prevent using unwrapped literals in a React component definition
  * @author Caleb morris
+ * @author David Buchan-Swanson
  */
 'use strict';
 
@@ -109,6 +110,36 @@ ruleTester.run('jsx-no-literals', rule, {
         '</Foo>'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: `
+        <Foo bar="test">
+          {intl.formatText(message)}
+        </Foo>
+      `,
+      parser: 'babel-eslint',
+      options: [{noStrings: true}]
+    }, {
+      code: `
+        <Foo bar="test">
+          {translate('my.translate.key')}
+        </Foo>
+      `,
+      parser: 'babel-eslint',
+      options: [{noStrings: true}]
+    }, {
+      code: `
+        <Foo bar="test">
+          {intl.formatText(message)}
+        </Foo>
+      `,
+      options: [{noStrings: true}]
+    }, {
+      code: `
+        <Foo bar="test">
+          {translate('my.translate.key')}
+        </Foo>
+      `,
+      options: [{noStrings: true}]
     }
   ],
 
@@ -202,6 +233,40 @@ ruleTester.run('jsx-no-literals', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       errors: [{message: 'Missing JSX expression container around literal string'}]
+    }, {
+      code: `
+        <Foo bar="test">
+          {'Test'}
+        </Foo>
+      `,
+      parser: 'babel-eslint',
+      options: [{noStrings: true}],
+      errors: [{message: 'Strings not allowed in JSX files'}]
+    }, {
+      code: `
+        <Foo bar="test">
+          {'Test'}
+        </Foo>
+      `,
+      options: [{noStrings: true}],
+      errors: [{message: 'Strings not allowed in JSX files'}]
+    }, {
+      code: `
+        <Foo bar="test">
+          Test
+        </Foo>
+      `,
+      parser: 'babel-eslint',
+      options: [{noStrings: true}],
+      errors: [{message: 'Strings not allowed in JSX files'}]
+    }, {
+      code: `
+        <Foo bar="test">
+          Test
+        </Foo>
+      `,
+      options: [{noStrings: true}],
+      errors: [{message: 'Strings not allowed in JSX files'}]
     }
   ]
 });
