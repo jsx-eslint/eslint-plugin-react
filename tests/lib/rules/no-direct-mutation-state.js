@@ -8,10 +8,10 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/no-direct-mutation-state');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-direct-mutation-state');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -26,7 +26,7 @@ require('babel-eslint');
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-direct-mutation-state', rule, {
 
   valid: [{
@@ -58,6 +58,14 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  getFoo() {',
       '    this.state.foo = \'bar\'',
       '    return this.state.foo;',
+      '  }',
+      '}'
+    ].join('\n')
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  constructor() {',
+      '    this.state.foo = "bar"',
       '  }',
       '}'
     ].join('\n')
@@ -117,6 +125,111 @@ ruleTester.run('no-direct-mutation-state', rule, {
       message: 'Do not mutate state directly. Use setState().',
       line: 4,
       column: 5
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  constructor() {',
+      '    someFn()',
+      '  }',
+      '  someFn() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  constructor(props) {',
+      '    super(props)',
+      '    doSomethingAsync(() => {',
+      '      this.state = "bad";',
+      '    });',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentWillMount() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentDidMount() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentWillReceiveProps() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  shouldComponentUpdate() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentWillUpdate() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentDidUpdate() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentWillUnmount() {',
+      '    this.state.foo = "bar"',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
     }]
   }
   /**

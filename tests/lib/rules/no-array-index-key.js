@@ -9,10 +9,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/no-array-index-key');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-array-index-key');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -25,11 +25,12 @@ var parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-array-index-key', rule, {
   valid: [
     {code: '<Foo key="foo" />;'},
     {code: '<Foo key={i} />;'},
+    {code: '<Foo key />;'},
     {code: '<Foo key={`foo-${i}`} />;'},
     {code: '<Foo key={\'foo-\' + i} />;'},
 
@@ -69,6 +70,10 @@ ruleTester.run('no-array-index-key', rule, {
         '  })',
         '})'
       ].join('\n')
+    },
+
+    {
+      code: 'foo.map((baz, i) => <Foo key />)'
     },
 
     {

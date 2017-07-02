@@ -8,10 +8,10 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/no-find-dom-node');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-find-dom-node');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -24,7 +24,7 @@ var parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-find-dom-node', rule, {
 
   valid: [{
@@ -97,6 +97,20 @@ ruleTester.run('no-find-dom-node', rule, {
       'class Hello extends Component {',
       '  componentDidMount() {',
       '    findDOMNode(this).scrollIntoView();',
+      '  }',
+      '  render() {',
+      '    return <div>Hello</div>;',
+      '  }',
+      '};'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not use findDOMNode'
+    }]
+  }, {
+    code: [
+      'class Hello extends Component {',
+      '  componentDidMount() {',
+      '    this.node = findDOMNode(this);',
       '  }',
       '  render() {',
       '    return <div>Hello</div>;',

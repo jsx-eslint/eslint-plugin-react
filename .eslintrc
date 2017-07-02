@@ -1,6 +1,7 @@
 {
     "env": {
-        "node": true
+       "es6": true,
+       "node": true
     },
     parserOptions: {
       ecmaVersion: 6,
@@ -11,6 +12,7 @@
     "rules": {
         // Possible Errors
         "comma-dangle": [2, "never"],
+        "computed-property-spacing": [2, "never"],
         "no-cond-assign": 2,
         "no-console": 2,
         "no-constant-condition": 2,
@@ -86,7 +88,9 @@
         // Strict Mode
         "strict": [2, "global"],
         // Variables
+        "prefer-const": 2,
         "no-catch-shadow": 2,
+        "no-const-assign": 2,
         "no-delete-var": 2,
         "no-label-var": 2,
         "no-shadow": 2,
@@ -96,6 +100,7 @@
         "no-undefined": 2,
         "no-unused-vars": 2,
         "no-use-before-define": 2,
+        "no-var": 2,
         // Stylistic Issues
         "indent": [2, 2, {
           "SwitchCase": 1
@@ -132,7 +137,7 @@
         "no-underscore-dangle": 0,
         "one-var": 0,
         "operator-assignment": [2, "always"],
-        "padded-blocks": 0,
+        "padded-blocks": [2, { "blocks": "never", "classes": "never", "switches": "never" }],
         "quotes": [2, "single"],
         "quote-props": [2, "as-needed"],
         "semi": [2, "always"],
@@ -158,6 +163,6 @@
         "no-plusplus": 0,
         "no-prototype-builtins": 2,
         "prefer-template": 2,
-        "template-curly-spacing": [2, "never"]
+        "template-curly-spacing": [2, "never"],
     }
 }

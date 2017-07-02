@@ -1,8 +1,8 @@
 'use strict';
 
-var has = require('has');
+const has = require('has');
 
-var allRules = {
+const allRules = {
   'jsx-uses-react': require('./lib/rules/jsx-uses-react'),
   'no-multi-comp': require('./lib/rules/no-multi-comp'),
   'prop-types': require('./lib/rules/prop-types'),
@@ -41,6 +41,7 @@ var allRules = {
   'jsx-indent-props': require('./lib/rules/jsx-indent-props'),
   'jsx-indent': require('./lib/rules/jsx-indent'),
   'jsx-closing-bracket-location': require('./lib/rules/jsx-closing-bracket-location'),
+  'jsx-closing-tag-location': require('./lib/rules/jsx-closing-tag-location'),
   'jsx-space-before-closing': require('./lib/rules/jsx-space-before-closing'),
   'no-direct-mutation-state': require('./lib/rules/no-direct-mutation-state'),
   'forbid-component-props': require('./lib/rules/forbid-component-props'),
@@ -63,12 +64,14 @@ var allRules = {
   'no-children-prop': require('./lib/rules/no-children-prop'),
   'void-dom-elements-no-children': require('./lib/rules/void-dom-elements-no-children'),
   'jsx-tag-spacing': require('./lib/rules/jsx-tag-spacing'),
-  'no-redundant-should-component-update': require('./lib/rules/no-redundant-should-component-update')
+  'no-redundant-should-component-update': require('./lib/rules/no-redundant-should-component-update'),
+  'boolean-prop-naming': require('./lib/rules/boolean-prop-naming'),
+  'no-typos': require('./lib/rules/no-typos')
 };
 
 function filterRules(rules, predicate) {
-  var result = {};
-  for (var key in rules) {
+  const result = {};
+  for (const key in rules) {
     if (has(rules, key) && predicate(rules[key])) {
       result[key] = rules[key];
     }
@@ -77,8 +80,8 @@ function filterRules(rules, predicate) {
 }
 
 function configureAsError(rules) {
-  var result = {};
-  for (var key in rules) {
+  const result = {};
+  for (const key in rules) {
     if (!has(rules, key)) {
       continue;
     }
@@ -87,12 +90,12 @@ function configureAsError(rules) {
   return result;
 }
 
-var activeRules = filterRules(allRules, function(rule) {
+const activeRules = filterRules(allRules, function(rule) {
   return !rule.meta.deprecated;
 });
-var activeRulesConfig = configureAsError(activeRules);
+const activeRulesConfig = configureAsError(activeRules);
 
-var deprecatedRules = filterRules(allRules, function(rule) {
+const deprecatedRules = filterRules(allRules, function(rule) {
   return rule.meta.deprecated;
 });
 

@@ -9,10 +9,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/jsx-tag-spacing');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-tag-spacing');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -55,7 +55,7 @@ function afterOpeningOptions(option) {
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-tag-spacing', rule, {
   valid: [{
     code: '<App />'

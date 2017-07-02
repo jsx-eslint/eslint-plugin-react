@@ -40,7 +40,8 @@ You can also specify some settings that will be shared across all the plugin rul
       "createClass": "createReactClass", // Regex for Component Factory to use, default to "createReactClass"
       "pragma": "React",  // Pragma to use, default to "React"
       "version": "15.0" // React version, default to the latest React stable release
-    }
+    },
+    "propWrapperFunctions": [ "forbidExtraProps" ] // The names of any functions used to wrap the propTypes object, such as `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
   }
 }
 ```
@@ -80,6 +81,8 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 
 # List of supported rules
 
+* [react/boolean-prop-naming](docs/rules/boolean-prop-naming.md): Enforces consistent naming for boolean props
+* [react/default-props-match-prop-types](docs/rules/default-props-match-prop-types.md): Prevent extraneous defaultProps on components
 * [react/display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
 * [react/forbid-component-props](docs/rules/forbid-component-props.md): Forbid certain props on Components
 * [react/forbid-elements](docs/rules/forbid-elements.md): Forbid certain elements
@@ -99,6 +102,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/no-redundant-should-component-update](docs/rules/no-redundant-should-component-update.md): Prevent usage of `shouldComponentUpdate` when extending React.PureComponent
 * [react/no-render-return-value](docs/rules/no-render-return-value.md): Prevent usage of the return value of `React.render`
 * [react/no-set-state](docs/rules/no-set-state.md): Prevent usage of `setState`
+* [react/no-typos](docs/rules/no-typos.md): Prevent common casing typos
 * [react/no-string-refs](docs/rules/no-string-refs.md): Prevent using string references in `ref` attribute.
 * [react/no-unescaped-entities](docs/rules/no-unescaped-entities.md): Prevent invalid characters from appearing in markup
 * [react/no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property (fixable)
@@ -109,7 +113,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
 * [react/react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing `React` when using JSX
 * [react/require-default-props](docs/rules/require-default-props.md): Enforce a defaultProps definition for every prop that is not a required prop
-* [react/require-optimization](docs/rules/require-optimization.md): Enforce React components to have a shouldComponentUpdate method
+* [react/require-optimization](docs/rules/require-optimization.md): Enforce React components to have a `shouldComponentUpdate` method
 * [react/require-render-return](docs/rules/require-render-return.md): Enforce ES5 or ES6 class for returning value in render function
 * [react/self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children (fixable)
 * [react/sort-comp](docs/rules/sort-comp.md): Enforce component methods order
@@ -121,7 +125,8 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 
 * [react/jsx-boolean-value](docs/rules/jsx-boolean-value.md): Enforce boolean attributes notation in JSX (fixable)
 * [react/jsx-closing-bracket-location](docs/rules/jsx-closing-bracket-location.md): Validate closing bracket location in JSX (fixable)
-* [react/jsx-curly-spacing](docs/rules/jsx-curly-spacing.md): Enforce or disallow spaces inside of curly braces in JSX attributes (fixable)
+* [react/jsx-closing-tag-location](docs/rules/jsx-closing-tag-location.md): Validate closing tag location in JSX (fixable)
+* [react/jsx-curly-spacing](docs/rules/jsx-curly-spacing.md): Enforce or disallow spaces inside of curly braces in JSX attributes and expressions (fixable)
 * [react/jsx-equals-spacing](docs/rules/jsx-equals-spacing.md): Enforce or disallow spaces around equal signs in JSX attributes (fixable)
 * [react/jsx-filename-extension](docs/rules/jsx-filename-extension.md): Restrict file extensions that may contain JSX
 * [react/jsx-first-prop-new-line](docs/rules/jsx-first-prop-new-line.md): Enforce position of the first prop in JSX (fixable)
@@ -153,7 +158,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 
 ## Recommended
 
-This plugin exports a `recommended` configuration that enforce React good practices.
+This plugin exports a `recommended` configuration that enforces React good practices.
 
 To enable this configuration use the `extends` property in your `.eslintrc` config file:
 

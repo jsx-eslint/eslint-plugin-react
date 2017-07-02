@@ -8,10 +8,10 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/jsx-wrap-multilines');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-wrap-multilines');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -24,7 +24,7 @@ var parserOptions = {
 // Code Snippets
 // ------------------------------------------------------------------------------
 
-var RETURN_SINGLE_LINE = `
+const RETURN_SINGLE_LINE = `
   var Hello = createReactClass({
     render: function() {
       return <p>Hello {this.props.name}</p>;
@@ -32,7 +32,7 @@ var RETURN_SINGLE_LINE = `
   });
 `;
 
-var RETURN_PAREN = `
+const RETURN_PAREN = `
   var Hello = createReactClass({
     render: function() {
       return (<div>
@@ -42,7 +42,7 @@ var RETURN_PAREN = `
   });
 `;
 
-var RETURN_NO_PAREN = `
+const RETURN_NO_PAREN = `
   var Hello = createReactClass({
     render: function() {
       return <div>
@@ -52,9 +52,9 @@ var RETURN_NO_PAREN = `
   });
 `;
 
-var DECLARATION_TERNARY_SINGLE_LINE = 'var hello = foo ? <p>Hello</p> : <p>Hi</p>;';
+const DECLARATION_TERNARY_SINGLE_LINE = 'var hello = foo ? <p>Hello</p> : <p>Hi</p>;';
 
-var DECLARATION_TERNARY_PAREN = `
+const DECLARATION_TERNARY_PAREN = `
   var hello = foo ? (<div>
     <p>Hello</p>
   </div>) : (<div>
@@ -62,7 +62,7 @@ var DECLARATION_TERNARY_PAREN = `
   </div>);
 `;
 
-var DECLARATION_TERNARY_NO_PAREN = `
+const DECLARATION_TERNARY_NO_PAREN = `
   var hello = foo ? <div>
     <p>Hello</p>
   </div> : <div>
@@ -70,9 +70,9 @@ var DECLARATION_TERNARY_NO_PAREN = `
   </div>;
 `;
 
-var ASSIGNMENT_TERNARY_SINGLE_LINE = 'var hello; hello = foo ? <p>Hello</p> : <p>Hi</p>;';
+const ASSIGNMENT_TERNARY_SINGLE_LINE = 'var hello; hello = foo ? <p>Hello</p> : <p>Hi</p>;';
 
-var ASSIGNMENT_TERNARY_PAREN = `
+const ASSIGNMENT_TERNARY_PAREN = `
   var hello;
   hello = foo ? (<div>
     <p>Hello</p>
@@ -81,7 +81,7 @@ var ASSIGNMENT_TERNARY_PAREN = `
   </div>);
 `;
 
-var ASSIGNMENT_TERNARY_NO_PAREN = `
+const ASSIGNMENT_TERNARY_NO_PAREN = `
   var hello;
   hello = foo ? <div>
     <p>Hello</p>
@@ -90,45 +90,45 @@ var ASSIGNMENT_TERNARY_NO_PAREN = `
   </div>;
 `;
 
-var DECLARATION_SINGLE_LINE = 'var hello = <p>Hello</p>;';
+const DECLARATION_SINGLE_LINE = 'var hello = <p>Hello</p>;';
 
-var DECLARATION_PAREN = `
+const DECLARATION_PAREN = `
   var hello = (<div>
     <p>Hello</p>
   </div>);
 `;
 
-var DECLARATION_NO_PAREN = `
+const DECLARATION_NO_PAREN = `
   var hello = <div>
     <p>Hello</p>
   </div>;
 `;
 
-var ASSIGNMENT_SINGLE_LINE = 'var hello; hello = <p>Hello</p>;';
+const ASSIGNMENT_SINGLE_LINE = 'var hello; hello = <p>Hello</p>;';
 
-var ASSIGNMENT_PAREN = `
+const ASSIGNMENT_PAREN = `
   var hello;
   hello = (<div>
     <p>Hello</p>
   </div>);
 `;
 
-var ASSIGNMENT_NO_PAREN = `
+const ASSIGNMENT_NO_PAREN = `
   var hello;
   hello = <div>
     <p>Hello</p>
   </div>;
 `;
 
-var ARROW_SINGLE_LINE = 'var hello = () => <p>Hello</p>;';
+const ARROW_SINGLE_LINE = 'var hello = () => <p>Hello</p>;';
 
-var ARROW_PAREN = `
+const ARROW_PAREN = `
   var hello = () => (<div>
     <p>Hello</p>
   </div>);
 `;
 
-var ARROW_NO_PAREN = `
+const ARROW_NO_PAREN = `
   var hello = () => <div>
     <p>Hello</p>
   </div>;
@@ -138,7 +138,7 @@ var ARROW_NO_PAREN = `
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-wrap-multilines', rule, {
 
   valid: [

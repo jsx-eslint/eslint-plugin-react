@@ -8,10 +8,10 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/require-default-props');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/require-default-props');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -22,7 +22,7 @@ var parserOptions = {
 
 require('babel-eslint');
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -756,6 +756,25 @@ ruleTester.run('require-default-props', rule, {
         line: 5,
         column: 3
       }]
+    },
+    {
+      code: [
+        'function MyStatelessComponent({ foo, bar }) {',
+        '  return <div>{foo}{bar}</div>;',
+        '}',
+        'MyStatelessComponent.propTypes = forbidExtraProps({',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string.isRequired',
+        '});'
+      ].join('\n'),
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.',
+        line: 5,
+        column: 3
+      }],
+      settings: {
+        propWrapperFunctions: ['forbidExtraProps']
+      }
     },
     {
       code: [

@@ -9,12 +9,12 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/default-props-match-prop-types');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/default-props-match-prop-types');
+const RuleTester = require('eslint').RuleTester;
 
 require('babel-eslint');
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 6,
   sourceType: 'module',
   ecmaFeatures: {
@@ -23,7 +23,7 @@ var parserOptions = {
   }
 };
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -766,6 +766,28 @@ ruleTester.run('default-props-match-prop-types', rule, {
         'function MyStatelessComponent({ foo, bar }) {',
         '  return <div>{foo}{bar}</div>;',
         '}',
+        'MyStatelessComponent.propTypes = forbidExtraProps({',
+        '  foo: React.PropTypes.string,',
+        '  bar: React.PropTypes.string.isRequired',
+        '})',
+        'MyStatelessComponent.defaultProps = {',
+        '  baz: "baz"',
+        '};'
+      ].join('\n'),
+      settings: {
+        propWrapperFunctions: ['forbidExtraProps']
+      },
+      errors: [{
+        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        line: 9,
+        column: 3
+      }]
+    },
+    {
+      code: [
+        'function MyStatelessComponent({ foo, bar }) {',
+        '  return <div>{foo}{bar}</div>;',
+        '}',
         'MyStatelessComponent.propTypes = {',
         '  foo: React.PropTypes.string,',
         '  bar: React.PropTypes.string.isRequired',
@@ -1217,6 +1239,25 @@ ruleTester.run('default-props-match-prop-types', rule, {
         message: 'defaultProp "bar" defined for isRequired propType.',
         line: 12,
         column: 5
+      }]
+    },
+    {
+      code: [
+        'function MyStatelessComponent({ foo, bar }) {',
+        '  return <div>{foo}{bar}</div>;',
+        '}',
+        'MyStatelessComponent.propTypes = {',
+        '  foo: React.PropTypes.string,',
+        '  bar: React.PropTypes.string.isRequired',
+        '};',
+        'MyStatelessComponent.defaultProps = {',
+        '  baz: "baz"',
+        '};'
+      ].join('\n'),
+      errors: [{
+        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        line: 9,
+        column: 3
       }]
     },
     {
