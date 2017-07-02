@@ -8,9 +8,9 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/jsx-closing-bracket-location');
-var RuleTester = require('eslint').RuleTester;
-var parserOptions = {
+const rule = require('../../../lib/rules/jsx-closing-bracket-location');
+const RuleTester = require('eslint').RuleTester;
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -18,15 +18,15 @@ var parserOptions = {
     jsx: true
   }
 };
-var MESSAGE_AFTER_PROPS = [{message: 'The closing bracket must be placed after the last prop'}];
-var MESSAGE_AFTER_TAG = [{message: 'The closing bracket must be placed after the opening tag'}];
+const MESSAGE_AFTER_PROPS = [{message: 'The closing bracket must be placed after the last prop'}];
+const MESSAGE_AFTER_TAG = [{message: 'The closing bracket must be placed after the opening tag'}];
 
-var MESSAGE_PROPS_ALIGNED = 'The closing bracket must be aligned with the last prop';
-var MESSAGE_TAG_ALIGNED = 'The closing bracket must be aligned with the opening tag';
-var MESSAGE_LINE_ALIGNED = 'The closing bracket must be aligned with the line containing the opening tag';
+const MESSAGE_PROPS_ALIGNED = 'The closing bracket must be aligned with the last prop';
+const MESSAGE_TAG_ALIGNED = 'The closing bracket must be aligned with the opening tag';
+const MESSAGE_LINE_ALIGNED = 'The closing bracket must be aligned with the line containing the opening tag';
 
-var messageWithDetails = function(message, expectedColumn, expectedNextLine) {
-  var details = ` (expected column ${expectedColumn}${expectedNextLine ? ' on the next line)' : ')'}`;
+const messageWithDetails = function(message, expectedColumn, expectedNextLine) {
+  const details = ` (expected column ${expectedColumn}${expectedNextLine ? ' on the next line)' : ')'}`;
   return message + details;
 };
 
@@ -34,7 +34,7 @@ var messageWithDetails = function(message, expectedColumn, expectedNextLine) {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-closing-bracket-location', rule, {
   valid: [{
     code: [

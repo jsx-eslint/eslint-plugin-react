@@ -63,7 +63,7 @@ The following patterns are considered warnings:
 
 ```jsx
 var Hello = createReactClass({
-  componentDidUpdate: function() {
+  componentWillUpdate: function() {
      this.setState({
         name: this.props.name.toUpperCase()
       });
@@ -76,7 +76,7 @@ var Hello = createReactClass({
 
 ```jsx
 var Hello = createReactClass({
-  componentDidUpdate: function() {
+  componentWillUpdate: function() {
     this.prepareHandler(function callback(newName) {
       this.setState({
         name: newName

@@ -7,10 +7,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/forbid-foreign-prop-types');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/forbid-foreign-prop-types');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -25,9 +25,9 @@ require('babel-eslint');
 // Tests
 // -----------------------------------------------------------------------------
 
-var ERROR_MESSAGE = 'Using another component\'s propTypes is forbidden';
+const ERROR_MESSAGE = 'Using another component\'s propTypes is forbidden';
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('forbid-foreign-prop-types', rule, {
 
   valid: [{

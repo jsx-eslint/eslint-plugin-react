@@ -8,10 +8,10 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/prop-types');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/prop-types');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -20,7 +20,7 @@ var parserOptions = {
   }
 };
 
-var settings = {
+const settings = {
   react: {
     pragma: 'Foo'
   }
@@ -32,7 +32,7 @@ require('babel-eslint');
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('prop-types', rule, {
 
   valid: [
@@ -1107,6 +1107,30 @@ ruleTester.run('prop-types', rule, {
       parser: 'babel-eslint'
     }, {
       code: [
+        'type Props = {',
+        '  \'completed?\': boolean,',
+        '};',
+        'const Hello = (props: Props): React.Element => {',
+        '  return <div>{props[\'completed?\']}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Props = {',
+        '  name: string,',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Props;',
+        '  render() {',
+        '    const {name} = this.props;',
+        '    return name;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
         'Card.propTypes = {',
         '  title: PropTypes.string.isRequired,',
         '  children: PropTypes.element.isRequired,',
@@ -1390,11 +1414,173 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Person = {',
+        '  ...$Exact<data>,',
+        '  lastname: string',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Person;',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'import type {Data} from \'./Data\'',
+        'type Person = {',
+        '  ...Data,',
+        '  lastname: string',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Person;',
+        '  render () {',
+        '    return <div>Hello {this.props.bar}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'import type {Data} from \'some-libdef-like-flow-typed-provides\'',
+        'type Person = {',
+        '  ...Data,',
+        '  lastname: string',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Person;',
+        '  render () {',
+        '    return <div>Hello {this.props.bar}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'import type {BasePerson} from \'./types\'',
+        'type Props = {',
+        '  person: {',
+        '   ...$Exact<BasePerson>,',
+        '   lastname: string',
+        '  }',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Props;',
+        '  render () {',
+        '    return <div>Hello {this.props.person.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Person = {',
+        '  firstname: string',
+        '};',
+        'class Hello extends React.Component<void, Person, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Person = {',
+        '  firstname: string',
+        '};',
+        'class Hello extends React.Component<void, Person, void> {',
+        '  render () {',
+        '    const { firstname } = this.props;',
+        '    return <div>Hello {firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Person = {',
+        '  firstname: string',
+        '};',
+        'class Hello extends React.Component<void, Person, void> {',
+        '  render () {',
+        '    const {',
+        '      firstname,',
+        '    } = this.props;',
+        '    return <div>Hello {firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Props = {name: {firstname: string;};};',
+        'class Hello extends React.Component<void, Props, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.name.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'import type Props from "fake";',
+        'class Hello extends React.Component<void, Props, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Person = {',
+        '  firstname: string',
+        '};',
+        'class Hello extends React.Component<void, { person: Person }, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.person.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Props = {result?: {ok?: ?string | boolean;}|{ok?: ?number | Array}};',
+        'class Hello extends React.Component<void, Props, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.result.ok}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
   invalid: [
     {
+      code: [
+        'type Props = {',
+        '  name: string,',
+        '};',
+        'class Hello extends React.Component {',
+        '  foo(props: Props) {}',
+        '  render() {',
+        '    return this.props.name;',
+        '  }',
+        '}'
+      ].join('\n'),
+      errors: [{
+        message: '\'name\' is missing in props validation',
+        line: 7,
+        column: 23,
+        type: 'Identifier'
+      }],
+      parser: 'babel-eslint'
+    }, {
       code: [
         'var Hello = createReactClass({',
         '  render: function() {',
@@ -2024,6 +2210,26 @@ ruleTester.run('prop-types', rule, {
       ]
     }, {
       code: [
+        'class Test extends Foo.Component {',
+        '  render() {',
+        '    return (',
+        '      <div>{this.props.firstname} {this.props.lastname}</div>',
+        '    );',
+        '  }',
+        '}',
+        'Test.propTypes = forbidExtraProps({',
+        '  firstname: PropTypes.string',
+        '});'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      settings: Object.assign({}, settings, {
+        propWrapperFunctions: ['forbidExtraProps']
+      }),
+      errors: [
+        {message: '\'lastname\' is missing in props validation'}
+      ]
+    }, {
+      code: [
         '/** @jsx Foo */',
         'class Test extends Foo.Component {',
         '  render() {',
@@ -2506,6 +2712,29 @@ ruleTester.run('prop-types', rule, {
     }, {
       code: [
         'class Hello extends Component {',
+        '  static propTypes = forbidExtraProps({',
+        '    bar: PropTypes.func',
+        '  })',
+        '  componentWillReceiveProps(nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return;',
+        '    }',
+        '  }',
+        '  render() {',
+        '    return <div bar={this.props.bar} />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      settings: Object.assign({}, settings, {
+        propWrapperFunctions: ['forbidExtraProps']
+      }),
+      errors: [
+        {message: '\'foo\' is missing in props validation'}
+      ]
+    }, {
+      code: [
+        'class Hello extends Component {',
         '  static propTypes = {',
         '    bar: PropTypes.func',
         '  }',
@@ -2560,6 +2789,114 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {message: '\'name\' is missing in props validation'}
       ]
+    }, {
+      code: [
+        'type Person = {',
+        '  firstname: string',
+        '};',
+        'class Hello extends React.Component<void, Person, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.lastname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      errors: [{
+        message: '\'lastname\' is missing in props validation',
+        line: 6,
+        column: 35,
+        type: 'Identifier'
+      }],
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Person = {',
+        '  firstname: string',
+        '};',
+        'class Hello extends React.Component<void, Person, void> {',
+        '  render () {',
+        '    const { lastname } = this.props;',
+        '    return <div>Hello {lastname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      errors: [{
+        message: '\'lastname\' is missing in props validation',
+        line: 6,
+        column: 13,
+        type: 'Property'
+      }],
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Person = {',
+        '  firstname: string',
+        '};',
+        'class Hello extends React.Component<void, Person, void> {',
+        '  render () {',
+        '    const {',
+        '      lastname,',
+        '    } = this.props;',
+        '    return <div>Hello {lastname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      errors: [{
+        message: '\'lastname\' is missing in props validation',
+        line: 7,
+        column: 7,
+        type: 'Property'
+      }],
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Props = {name: {firstname: string;};};',
+        'class Hello extends React.Component<void, Props, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.name.lastname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      errors: [{
+        message: '\'name.lastname\' is missing in props validation',
+        line: 4,
+        column: 40,
+        type: 'Identifier'
+      }],
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Props = {result?: {ok: string | boolean;}|{ok: number | Array}};',
+        'class Hello extends React.Component<void, Props, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.result.notok}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      errors: [{
+        message: '\'result.notok\' is missing in props validation',
+        line: 4,
+        column: 42,
+        type: 'Identifier'
+      }],
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'type Person = {',
+        '  firstname: string',
+        '};',
+        'class Hello extends React.Component<void, { person: Person }, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.person.lastname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      errors: [{
+        message: '\'person.lastname\' is missing in props validation',
+        line: 6,
+        column: 42,
+        type: 'Identifier'
+      }],
+      parser: 'babel-eslint'
     }
   ]
 });

@@ -9,10 +9,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/no-children-prop');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-children-prop');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -21,14 +21,14 @@ var parserOptions = {
   }
 };
 
-var JSX_ERROR = 'Do not pass children as props. Instead, nest children between the opening and closing tags.';
-var CREATE_ELEMENT_ERROR = 'Do not pass children as props. Instead, pass them as additional arguments to React.createElement.';
+const JSX_ERROR = 'Do not pass children as props. Instead, nest children between the opening and closing tags.';
+const CREATE_ELEMENT_ERROR = 'Do not pass children as props. Instead, pass them as additional arguments to React.createElement.';
 
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-children-prop', rule, {
   valid: [
     {

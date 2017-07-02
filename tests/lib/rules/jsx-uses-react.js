@@ -9,11 +9,11 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var eslint = require('eslint').linter;
-var rule = require('eslint/lib/rules/no-unused-vars');
-var RuleTester = require('eslint').RuleTester;
+const eslint = require('eslint');
+const rule = require('eslint/lib/rules/no-unused-vars');
+const RuleTester = eslint.RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -22,7 +22,7 @@ var parserOptions = {
   }
 };
 
-var settings = {
+const settings = {
   react: {
     pragma: 'Foo'
   }
@@ -32,8 +32,9 @@ var settings = {
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
-eslint.defineRule('jsx-uses-react', require('../../../lib/rules/jsx-uses-react'));
+const ruleTester = new RuleTester({parserOptions});
+const linter = ruleTester.linter || eslint.linter;
+linter.defineRule('jsx-uses-react', require('../../../lib/rules/jsx-uses-react'));
 ruleTester.run('no-unused-vars', rule, {
   valid: [
     {code: '/*eslint jsx-uses-react:1*/ var React; <div />;'},

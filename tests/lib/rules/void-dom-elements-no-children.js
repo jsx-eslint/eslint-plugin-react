@@ -9,10 +9,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/void-dom-elements-no-children');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/void-dom-elements-no-children');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -29,7 +29,7 @@ function errorMessage(elementName) {
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('void-dom-elements-no-children', rule, {
   valid: [
     {
@@ -49,39 +49,43 @@ ruleTester.run('void-dom-elements-no-children', rule, {
     },
     {
       code: 'React.createElement("div", { dangerouslySetInnerHTML: { __html: "Foo" } });'
-    }, {
-      code: 'document.createElement("img")'
-    }, {
+    },
+    {
+      code: 'document.createElement("img");'
+    },
+    {
       code: 'React.createElement("img");'
     }, {
-      code: [
-        'const props = {}',
-        'React.createElement("img", props)'
-      ].join('\n')
+      code: 'React.createElement();'
     }, {
-      code: [
-        'import React from "react";',
-        'const { createElement } = React;',
-        'createElement("div")'
-      ].join('\n')
+      code: 'document.createElement();'
     }, {
-      code: [
-        'import React from "react";',
-        'const { createElement } = React;',
-        'createElement("img")'
-      ].join('\n')
+      code: `
+        const props = {};
+        React.createElement("img", props);
+      `
     }, {
-      code: [
-        'import React, {createElement, PureComponent} from \'react\';',
-        'class Button extends PureComponent {',
-        '  handleClick(ev) {',
-        '    ev.preventDefault();',
-        '  }',
-        '  render() {',
-        '    return <div onClick={this.handleClick}>Hello</div>;',
-        '  }',
-        '}'
-      ].join('\n')
+      code: `
+        import React, {createElement} from "react";
+        createElement("div");
+      `
+    }, {
+      code: `
+        import React, {createElement} from "react";
+        createElement("img");
+      `
+    }, {
+      code: `
+        import React, {createElement, PureComponent} from "react";
+        class Button extends PureComponent {
+          handleClick(ev) {
+            ev.preventDefault();
+          }
+          render() {
+            return <div onClick={this.handleClick}>Hello</div>;
+          }
+        }
+      `
     }
   ],
   invalid: [
@@ -114,29 +118,26 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       errors: [{message: errorMessage('br')}]
     },
     {
-      code: [
-        'import React from "react";',
-        'const createElement = React.createElement;',
-        'createElement("img", {}, "Foo");'
-      ].join('\n'),
+      code: `
+        import React, {createElement} from "react";
+        createElement("img", {}, "Foo");
+      `,
       errors: [{message: errorMessage('img')}],
       parser: 'babel-eslint'
     },
     {
-      code: [
-        'import React from "react";',
-        'const createElement = React.createElement;',
-        'createElement("img", { children: "Foo" });'
-      ].join('\n'),
+      code: `
+        import React, {createElement} from "react";
+        createElement("img", { children: "Foo" });
+      `,
       errors: [{message: errorMessage('img')}],
       parser: 'babel-eslint'
     },
     {
-      code: [
-        'import React from "react";',
-        'const createElement = React.createElement;',
-        'createElement("img", { dangerouslySetInnerHTML: { __html: "Foo" } });'
-      ].join('\n'),
+      code: `
+        import React, {createElement} from "react";
+        createElement("img", { dangerouslySetInnerHTML: { __html: "Foo" } });
+      `,
       errors: [{message: errorMessage('img')}],
       parser: 'babel-eslint'
     }

@@ -9,10 +9,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/jsx-sort-props');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-sort-props');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
@@ -25,70 +25,74 @@ var parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-var ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({parserOptions});
 
-var expectedError = {
+const expectedError = {
   message: 'Props should be sorted alphabetically',
   type: 'JSXAttribute'
 };
-var expectedCallbackError = {
+const expectedCallbackError = {
   message: 'Callbacks must be listed after all other props',
   type: 'JSXAttribute'
 };
-var expectedShorthandFirstError = {
+const expectedShorthandFirstError = {
   message: 'Shorthand props must be listed before all other props',
   type: 'JSXAttribute'
 };
-var expectedShorthandLastError = {
+const expectedShorthandLastError = {
   message: 'Shorthand props must be listed after all other props',
   type: 'JSXAttribute'
 };
-var expectedReservedFirstError = {
+const expectedReservedFirstError = {
   message: 'Reserved props must be listed before all other props',
   type: 'JSXAttribute'
 };
-var expectedEmptyReservedFirstError = {
+const expectedEmptyReservedFirstError = {
   message: 'A customized reserved first list must not be empty'
 };
-var expectedInvalidReservedFirstError = {
+const expectedInvalidReservedFirstError = {
   message: 'A customized reserved first list must only contain a subset of React reserved props. Remove: notReserved'
 };
-var callbacksLastArgs = [{
+const callbacksLastArgs = [{
   callbacksLast: true
 }];
-var shorthandFirstArgs = [{
+const ignoreCaseAndCallbackLastArgs = [{
+  callbacksLast: true,
+  ignoreCase: true
+}];
+const shorthandFirstArgs = [{
   shorthandFirst: true
 }];
-var shorthandLastArgs = [{
+const shorthandLastArgs = [{
   shorthandLast: true
 }];
-var shorthandAndCallbackLastArgs = [{
+const shorthandAndCallbackLastArgs = [{
   callbacksLast: true,
   shorthandLast: true
 }];
-var ignoreCaseArgs = [{
+const ignoreCaseArgs = [{
   ignoreCase: true
 }];
-var noSortAlphabeticallyArgs = [{
+const noSortAlphabeticallyArgs = [{
   noSortAlphabetically: true
 }];
-var sortAlphabeticallyArgs = [{
+const sortAlphabeticallyArgs = [{
   noSortAlphabetically: false
 }];
-var reservedFirstAsBooleanArgs = [{
+const reservedFirstAsBooleanArgs = [{
   reservedFirst: true
 }];
-var reservedFirstAsArrayArgs = [{
+const reservedFirstAsArrayArgs = [{
   reservedFirst: ['children', 'dangerouslySetInnerHTML', 'key']
 }];
-var reservedFirstWithNoSortAlphabeticallyArgs = [{
+const reservedFirstWithNoSortAlphabeticallyArgs = [{
   noSortAlphabetically: true,
   reservedFirst: true
 }];
-var reservedFirstAsEmptyArrayArgs = [{
+const reservedFirstAsEmptyArrayArgs = [{
   reservedFirst: []
 }];
-var reservedFirstAsInvalidArrayArgs = [{
+const reservedFirstAsInvalidArrayArgs = [{
   reservedFirst: ['notReserved']
 }];
 
@@ -109,6 +113,7 @@ ruleTester.run('jsx-sort-props', rule, {
     {code: '<App A b C />;', options: ignoreCaseArgs},
     // Sorting callbacks below all other props
     {code: '<App a z onBar onFoo />;', options: callbacksLastArgs},
+    {code: '<App z onBar onFoo />;', options: ignoreCaseAndCallbackLastArgs},
     // Sorting shorthand props before others
     {code: '<App a b="b" />;', options: shorthandFirstArgs},
     {code: '<App z a="a" />;', options: shorthandFirstArgs},
