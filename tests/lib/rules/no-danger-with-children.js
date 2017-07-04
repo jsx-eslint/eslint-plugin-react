@@ -69,6 +69,12 @@ ruleTester.run('no-danger-with-children', rule, {
       code: '<Hello dangerouslySetInnerHTML={{ __html: "HTML" }} />'
     },
     {
+      code: `
+        <Hello dangerouslySetInnerHTML={{ __html: "HTML" }}>
+        </Hello>
+      `
+    },
+    {
       code: 'React.createElement("div", { dangerouslySetInnerHTML: { __html: "HTML" } });'
     },
     {
@@ -118,6 +124,10 @@ ruleTester.run('no-danger-with-children', rule, {
     },
     {
       code: '<Hello dangerouslySetInnerHTML={{ __html: "HTML" }} children="Children" />',
+      errors: [{message: 'Only set one of `children` or `props.dangerouslySetInnerHTML`'}]
+    },
+    {
+      code: '<Hello dangerouslySetInnerHTML={{ __html: "HTML" }}> </Hello>',
       errors: [{message: 'Only set one of `children` or `props.dangerouslySetInnerHTML`'}]
     },
     {
