@@ -2,7 +2,7 @@
 
 This option validates a specific indentation style for JSX.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line. 
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
 Fixer will fix whitespace and tabs indentation.
 
 ## Rule Details
@@ -16,6 +16,12 @@ The following patterns are considered warnings:
 <App>
   <Hello />
 </App>
+
+// ternary
+? <App>
+  <Hello />
+</App>
+: null
 
 // no indentation
 <App>
@@ -63,6 +69,13 @@ The following patterns are not warnings:
 <App>
   <Hello />
 </App>
+
+// ternary
+// [2, 'tab']
+? <App>
+    <Hello />
+  </App>
+: null
 
 // tab indentation
 // [2, 'tab']
