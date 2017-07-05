@@ -134,6 +134,12 @@ const ARROW_NO_PAREN = `
   </div>;
 `;
 
+const CONDITIONAL_SINGLE_LINE = `
+  <div>
+    {unreadMessages.length > 0 && <div>Hello World</div>}
+  </div>
+`;
+
 const CONDITIONAL_PAREN = `
   <div>
     {unreadMessages.length > 0 &&
@@ -211,6 +217,9 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: CONDITIONAL_PAREN
     }, {
       code: CONDITIONAL_PAREN,
+      options: [{conditional: true}]
+    }, {
+      code: CONDITIONAL_SINGLE_LINE,
       options: [{conditional: true}]
     }, {
       code: CONDITIONAL_NO_PAREN
