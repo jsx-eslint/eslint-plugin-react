@@ -142,16 +142,6 @@ const CONDITIONAL_SINGLE_LINE = `
 
 const CONDITIONAL_PAREN = `
   <div>
-    {unreadMessages.length > 0 &&
-      (<h2>
-        You have {unreadMessages.length} unread messages.
-      </h2>)
-    }
-  </div>
-`;
-
-const CONDITIONAL_PAREN_DIFFERENT_LINE = `
-  <div>
     {unreadMessages.length > 0 && (
       <h2>
         You have {unreadMessages.length} unread messages.
@@ -227,9 +217,6 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: CONDITIONAL_PAREN
     }, {
       code: CONDITIONAL_PAREN,
-      options: [{conditional: true}]
-    }, {
-      code: CONDITIONAL_PAREN_DIFFERENT_LINE,
       options: [{conditional: true}]
     }, {
       code: CONDITIONAL_SINGLE_LINE,
