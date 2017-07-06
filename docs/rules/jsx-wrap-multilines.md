@@ -133,7 +133,7 @@ The following patterns are considered warnings when configured `{conditional: tr
 </div>
 ```
 
-The following patterns are not considered warnings when configured `{arrow: true}`.
+The following patterns are not considered warnings when configured `{conditional: true}`.
 
 ```jsx
 <div>
