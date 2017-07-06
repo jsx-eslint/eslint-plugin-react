@@ -154,7 +154,7 @@ NotAComponent.propTypes = {
 
 ```js
 ...
-"default-props-match-prop-types": [<enabled>, { "allowRequiredDefaults": <boolean> }]
+"react/default-props-match-prop-types": [<enabled>, { "allowRequiredDefaults": <boolean> }]
 ...
 ```
 
