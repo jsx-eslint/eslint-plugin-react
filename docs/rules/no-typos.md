@@ -1,17 +1,30 @@
 # Prevents common casing typos (react/no-typos)
 
-Ensure no casing typos were made declaring static class properties
+Ensure no casing typos were made declaring static class properties and lifecycle methods.
 
 ## Rule Details
 
-This rule checks whether the declared static class properties related to React components
-do not contain any typos. It currently makes sure that the following class properties have
+This rule checks whether the declared static class properties and lifecycle methods related to React components
+do not contain any typos.
+
+It currently makes sure that the following class properties have
 no casing typos:
 
 * propTypes
 * contextTypes
 * childContextTypes
 * defaultProps
+
+and the following react lifecycle methods:
+
+* componentWillMount
+* componentDidMount
+* componentWillReceiveProps
+* shouldComponentUpdate
+* componentWillUpdate
+* componentDidUpdate
+* componentWillUnmount
+
 
 The following patterns are considered warnings:
 
@@ -47,6 +60,18 @@ class MyComponent extends React.Component {
 class MyComponent extends React.Component {
   static defaultprops = {}
 }
+
+class MyComponent extends React.Component {
+  componentwillMount() {}
+}
+
+class MyComponent extends React.Component {
+  ComponentWillReceiveProps() {}
+}
+
+class MyComponent extends React.Component {
+  componentdidupdate() {}
+}
 ```
 
 The following patterns are not considered warnings:
@@ -66,5 +91,17 @@ class MyComponent extends React.Component {
 
 class MyComponent extends React.Component {
   static defaultProps = {}
+}
+
+class MyComponent extends React.Component {
+  componentWillMount() {}
+}
+
+class MyComponent extends React.Component {
+  componentWillReceiveProps() {}
+}
+
+class MyComponent extends React.Component {
+  componentDidUpdate() {}
 }
 ```

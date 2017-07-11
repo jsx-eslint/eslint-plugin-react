@@ -22,6 +22,7 @@ const parserOptions = {
 // -----------------------------------------------------------------------------
 
 const ERROR_MESSAGE = 'Typo in static class property declaration';
+const ERROR_MESSAGE_LIFECYCLE_METHOD = 'Typo in component lifecycle method declaration';
 
 const ruleTester = new RuleTester();
 ruleTester.run('no-typos', rule, {
@@ -179,6 +180,49 @@ ruleTester.run('no-typos', rule, {
       'First[contextTypes] = {};',
       'First[childContextTypes] = {};',
       'First[defautProps] = {};'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentDidUpdate() { }',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentWillMount() { }',
+      '  componentDidUpdate() { }',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentWillUnmount() { }',
+      '  componentWillMount() { }',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  shouldComponentUpdate() { }',
+      '  componentWillReceiveProps() { }',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
     ].join('\n'),
     parserOptions: parserOptions
   }],
@@ -367,5 +411,48 @@ ruleTester.run('no-typos', rule, {
     ].join('\n'),
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  ComponentDidUpdate() { }',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentwillreceiveprops() { }',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentWillReceiveProps() { }',
+      '  componentWillupdate() { }',
+      '  render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }]
   }]
 });
