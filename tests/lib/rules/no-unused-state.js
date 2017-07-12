@@ -10,14 +10,12 @@ const RuleTester = require('eslint').RuleTester;
 const parserOptions = {
   ecmaVersion: 6,
   ecmaFeatures: {
-    jsx: true
+    jsx: true,
+    experimentalObjectRestSpread: true
   }
 };
 
-const eslintTester = new RuleTester({
-  parserOptions: parserOptions,
-  parser: 'babel-eslint'
-});
+const eslintTester = new RuleTester({parserOptions});
 
 function getErrorMessages(unusedFields) {
   return unusedFields.map(function(field) {
@@ -98,12 +96,15 @@ eslintTester.run('no-unused-state', rule, {
           return <SomeComponent foo={this.state.foo} />;
         }
       }`,
-    `class ClassPropertyStateTest extends React.Component {
-        state = { foo: 0 };
-        render() {
-          return <SomeComponent foo={this.state.foo} />;
-        }
-      }`,
+    {
+      code: `class ClassPropertyStateTest extends React.Component {
+          state = { foo: 0 };
+          render() {
+            return <SomeComponent foo={this.state.foo} />;
+          }
+        }`,
+      parser: 'babel-eslint'
+    },
     `class VariableDeclarationTest extends React.Component {
         constructor() {
           this.state = { foo: 0 };
@@ -180,13 +181,16 @@ eslintTester.run('no-unused-state', rule, {
           return <SomeComponent foo={foo} bar={others.bar} />;
         }
       }`,
-    `class DeepDestructuringTest extends React.Component {
+    {
+      code: `class DeepDestructuringTest extends React.Component {
         state = { foo: 0, bar: 0 };
         render() {
           const {state: {foo, ...others}} = this;
           return <SomeComponent foo={foo} bar={others.bar} />;
         }
       }`,
+      parser: 'babel-eslint'
+    },
     // A cleverer analysis might recognize that the following should be errors,
     // but they're out of scope for this lint rule.
     `class MethodArgFalseNegativeTest extends React.Component {
@@ -257,14 +261,17 @@ eslintTester.run('no-unused-state', rule, {
           return <SomeComponent foo={foo} />;
         }
       }`,
-    `class TypeCastExpressionSpreadFalseNegativeTest extends React.Component {
+    {
+      code: `class TypeCastExpressionSpreadFalseNegativeTest extends React.Component {
         constructor() {
           this.state = { foo: 0 };
         }
         render() {
           return <SomeComponent {...(this.state: any)} />;
         }
-      }`
+      }`,
+      parser: 'babel-eslint'
+    }
   ],
 
   invalid: [
@@ -330,7 +337,8 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent />;
           }
         }`,
-      errors: getErrorMessages(['foo'])
+      errors: getErrorMessages(['foo']),
+      parser: 'babel-eslint'
     },
     {
       code: `class UnusedStateWhenPropsAreSpreadTest extends React.Component {
@@ -422,7 +430,8 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={foo} bar={bar} baz={baz} />;
           }
         }`,
-      errors: getErrorMessages(['qux'])
+      errors: getErrorMessages(['qux']),
+      parser: 'babel-eslint'
     },
     {
       code: `class UnusedDeepDestructuringTest extends React.Component {
@@ -432,7 +441,8 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={foo} />;
           }
         }`,
-      errors: getErrorMessages(['bar'])
+      errors: getErrorMessages(['bar']),
+      parser: 'babel-eslint'
     }
   ]
 });
