@@ -24,6 +24,7 @@ and the following react lifecycle methods:
 * componentWillUpdate
 * componentDidUpdate
 * componentWillUnmount
+* render
 
 
 The following patterns are considered warnings:
