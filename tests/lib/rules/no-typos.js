@@ -185,43 +185,58 @@ ruleTester.run('no-typos', rule, {
   }, {
     code: [
       'class Hello extends React.Component {',
-      '  componentDidUpdate() { }',
-      '  render() {',
-      '    return <div>Hello {this.props.name}</div>;',
-      '  }',
-      '}'
-    ].join('\n'),
-    parserOptions: parserOptions
-  }, {
-    code: [
-      'class Hello extends React.Component {',
       '  componentWillMount() { }',
-      '  componentDidUpdate() { }',
-      '  render() {',
-      '    return <div>Hello {this.props.name}</div>;',
-      '  }',
-      '}'
-    ].join('\n'),
-    parserOptions: parserOptions
-  }, {
-    code: [
-      'class Hello extends React.Component {',
-      '  componentWillUnmount() { }',
-      '  componentWillMount() { }',
-      '  render() {',
-      '    return <div>Hello {this.props.name}</div>;',
-      '  }',
-      '}'
-    ].join('\n'),
-    parserOptions: parserOptions
-  }, {
-    code: [
-      'class Hello extends React.Component {',
-      '  shouldComponentUpdate() { }',
+      '  componentDidMount() { }',
       '  componentWillReceiveProps() { }',
+      '  shouldComponentUpdate() { }',
+      '  componentWillUpdate() { }',
+      '  componentDidUpdate() { }',
+      '  componentWillUnmount() { }',
       '  render() {',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class MyClass {',
+      '  componentWillMount() { }',
+      '  componentDidMount() { }',
+      '  componentWillReceiveProps() { }',
+      '  shouldComponentUpdate() { }',
+      '  componentWillUpdate() { }',
+      '  componentDidUpdate() { }',
+      '  componentWillUnmount() { }',
+      '  render() { }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class MyClass {',
+      '  componentwillmount() { }',
+      '  componentdidmount() { }',
+      '  componentwillreceiveprops() { }',
+      '  shouldcomponentupdate() { }',
+      '  componentwillupdate() { }',
+      '  componentdidupdate() { }',
+      '  componentwillUnmount() { }',
+      '  render() { }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'class MyClass {',
+      '  Componentwillmount() { }',
+      '  Componentdidmount() { }',
+      '  Componentwillreceiveprops() { }',
+      '  Shouldcomponentupdate() { }',
+      '  Componentwillupdate() { }',
+      '  Componentdidupdate() { }',
+      '  ComponentwillUnmount() { }',
+      '  Render() { }',
       '}'
     ].join('\n'),
     parserOptions: parserOptions
@@ -414,7 +429,13 @@ ruleTester.run('no-typos', rule, {
   }, {
     code: [
       'class Hello extends React.Component {',
+      '  ComponentWillMount() { }',
+      '  ComponentDidMount() { }',
+      '  ComponentWillReceiveProps() { }',
+      '  ShouldComponentUpdate() { }',
+      '  ComponentWillUpdate() { }',
       '  ComponentDidUpdate() { }',
+      '  ComponentWillUnmount() { }',
       '  render() {',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
@@ -424,11 +445,76 @@ ruleTester.run('no-typos', rule, {
     errors: [{
       message: ERROR_MESSAGE_LIFECYCLE_METHOD,
       type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
     }]
   }, {
     code: [
       'class Hello extends React.Component {',
+      '  Componentwillmount() { }',
+      '  Componentdidmount() { }',
+      '  Componentwillreceiveprops() { }',
+      '  Shouldcomponentupdate() { }',
+      '  Componentwillupdate() { }',
+      '  Componentdidupdate() { }',
+      '  Componentwillunmount() { }',
+      '  Render() {',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentwillmount() { }',
+      '  componentdidmount() { }',
       '  componentwillreceiveprops() { }',
+      '  shouldcomponentupdate() { }',
+      '  componentwillupdate() { }',
+      '  componentdidupdate() { }',
+      '  componentwillunmount() { }',
       '  render() {',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
@@ -438,19 +524,22 @@ ruleTester.run('no-typos', rule, {
     errors: [{
       message: ERROR_MESSAGE_LIFECYCLE_METHOD,
       type: 'MethodDefinition'
-    }]
-  }, {
-    code: [
-      'class Hello extends React.Component {',
-      '  componentWillReceiveProps() { }',
-      '  componentWillupdate() { }',
-      '  render() {',
-      '    return <div>Hello {this.props.name}</div>;',
-      '  }',
-      '}'
-    ].join('\n'),
-    parserOptions: parserOptions,
-    errors: [{
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
       message: ERROR_MESSAGE_LIFECYCLE_METHOD,
       type: 'MethodDefinition'
     }]
