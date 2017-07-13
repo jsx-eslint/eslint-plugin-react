@@ -127,6 +127,18 @@ ruleTester.run('jsx-no-literals', rule, {
       parser: 'babel-eslint',
       options: [{noStrings: true}]
     }, {
+      code: '<Foo bar={true} />',
+      parser: 'babel-eslint',
+      options: [{noStrings: true}]
+    }, {
+      code: '<Foo bar={false} />',
+      parser: 'babel-eslint',
+      options: [{noStrings: true}]
+    }, {
+      code: '<Foo bar={100} />',
+      parser: 'babel-eslint',
+      options: [{noStrings: true}]
+    }, {
       code: `
         <Foo bar="test">
           {intl.formatText(message)}
@@ -140,7 +152,17 @@ ruleTester.run('jsx-no-literals', rule, {
         </Foo>
       `,
       options: [{noStrings: true}]
+    }, {
+      code: '<Foo bar={true} />',
+      options: [{noStrings: true}]
+    }, {
+      code: '<Foo bar={false} />',
+      options: [{noStrings: true}]
+    }, {
+      code: '<Foo bar={100} />',
+      options: [{noStrings: true}]
     }
+
   ],
 
   invalid: [
