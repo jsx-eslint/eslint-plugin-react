@@ -3162,6 +3162,34 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'name\' PropType is defined but prop is never used'
       }]
+    }, {
+      code: [
+        'class Comp1 extends Component {',
+        '  render() {',
+        '    return <span />;',
+        '  }',
+        '}',
+        'Comp1.propTypes = {',
+        '  prop1: PropTypes.number',
+        '};',
+        'class Comp2 extends Component {',
+        '  render() {',
+        '    return <span />;',
+        '  }',
+        '}',
+        'Comp2.propTypes = {',
+        '  prop2: PropTypes.arrayOf(Comp1.propTypes.prop1)',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'prop1\' PropType is defined but prop is never used'
+      }, {
+        message: '\'prop2\' PropType is defined but prop is never used'
+      }, {
+        message: '\'prop2.*\' PropType is defined but prop is never used'
+      }]
+
     }
     /* , {
       // Enable this when the following issue is fixed
