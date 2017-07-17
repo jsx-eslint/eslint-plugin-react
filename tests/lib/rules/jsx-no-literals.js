@@ -139,6 +139,36 @@ ruleTester.run('jsx-no-literals', rule, {
       parser: 'babel-eslint',
       options: [{noStrings: true}]
     }, {
+      code: '<Foo bar={null} />',
+      parser: 'babel-eslint',
+      options: [{noStrings: true}]
+    }, {
+      code: '<Foo bar={{}} />',
+      parser: 'babel-eslint',
+      options: [{noStrings: true}]
+    }, {
+      code: [
+        'class Comp1 extends Component {',
+        '  asdf() {}',
+        '  render() {',
+        '    return <Foo bar={this.asdf} />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      options: [{noStrings: true}]
+    }, {
+      code: [
+        'class Comp1 extends Component {',
+        '  render() {',
+        '    let foo = `bar`;',
+        '    return <div />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      options: [{noStrings: true}]
+    }, {
       code: `
         <Foo bar="test">
           {intl.formatText(message)}
@@ -160,6 +190,32 @@ ruleTester.run('jsx-no-literals', rule, {
       options: [{noStrings: true}]
     }, {
       code: '<Foo bar={100} />',
+      options: [{noStrings: true}]
+    }, {
+      code: '<Foo bar={null} />',
+      options: [{noStrings: true}]
+    }, {
+      code: '<Foo bar={{}} />',
+      options: [{noStrings: true}]
+    }, {
+      code: [
+        'class Comp1 extends Component {',
+        '  asdf() {}',
+        '  render() {',
+        '    return <Foo bar={this.asdf} />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      options: [{noStrings: true}]
+    }, {
+      code: [
+        'class Comp1 extends Component {',
+        '  render() {',
+        '    let foo = `bar`;',
+        '    return <div />;',
+        '  }',
+        '}'
+      ].join('\n'),
       options: [{noStrings: true}]
     }
 
@@ -287,6 +343,32 @@ ruleTester.run('jsx-no-literals', rule, {
           Test
         </Foo>
       `,
+      options: [{noStrings: true}],
+      errors: [{message: 'Strings not allowed in JSX files'}]
+    }, {
+      code: [
+        '<Foo>',
+        '  {`Test`}',
+        '</Foo>'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      options: [{noStrings: true}],
+      errors: [{message: 'Strings not allowed in JSX files'}]
+    }, {
+      code: [
+        '<Foo>',
+        '  {`Test`}',
+        '</Foo>'
+      ].join('\n'),
+      options: [{noStrings: true}],
+      errors: [{message: 'Strings not allowed in JSX files'}]
+    }, {
+      code: '<Foo bar={`Test`} />',
+      parser: 'babel-eslint',
+      options: [{noStrings: true}],
+      errors: [{message: 'Strings not allowed in JSX files'}]
+    }, {
+      code: '<Foo bar={`Test`} />',
       options: [{noStrings: true}],
       errors: [{message: 'Strings not allowed in JSX files'}]
     }
