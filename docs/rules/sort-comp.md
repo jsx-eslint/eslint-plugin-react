@@ -90,6 +90,8 @@ The default configuration is:
 * `everything-else` is a special group that match all the methods that do not match any of the other groups.
 * `render` is referring to the `render` method.
 * `type-annotations`. This group is not specified by default, but can be used to enforce flow annotations to be at the top.
+* `getters` This group is not specified by default, but can be used to enforce class getters positioning.
+* `setters` This group is not specified by default, but can be used to enforce class setters positioning.
 
 You can override this configuration to match your needs.
 
