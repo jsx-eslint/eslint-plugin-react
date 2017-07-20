@@ -90,14 +90,10 @@ function configureAsError(rules) {
   return result;
 }
 
-const activeRules = filterRules(allRules, function(rule) {
-  return !rule.meta.deprecated;
-});
+const activeRules = filterRules(allRules, rule => !rule.meta.deprecated);
 const activeRulesConfig = configureAsError(activeRules);
 
-const deprecatedRules = filterRules(allRules, function(rule) {
-  return rule.meta.deprecated;
-});
+const deprecatedRules = filterRules(allRules, rule => rule.meta.deprecated);
 
 module.exports = {
   deprecatedRules: deprecatedRules,
