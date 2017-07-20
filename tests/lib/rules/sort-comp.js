@@ -268,6 +268,48 @@ ruleTester.run('sort-comp', rule, {
     ].join('\n'),
     parser: 'babel-eslint',
     parserOptions: parserOptions
+  }, {
+    // Getters should be at the top
+    code: [
+      'class Hello extends React.Component {',
+      '  get foo() {}',
+      '  constructor() {}',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      order: [
+        'getters',
+        'static-methods',
+        'lifecycle',
+        'everything-else',
+        'render'
+      ]
+    }]
+  }, {
+    // Setters should be at the top
+    code: [
+      'class Hello extends React.Component {',
+      '  set foo(bar) {}',
+      '  constructor() {}',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      order: [
+        'setters',
+        'static-methods',
+        'lifecycle',
+        'everything-else',
+        'render'
+      ]
+    }]
   }],
 
   invalid: [{
@@ -426,6 +468,50 @@ ruleTester.run('sort-comp', rule, {
         '/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/',
         'everything-else',
         '/^render.+$/',
+        'render'
+      ]
+    }]
+  }, {
+    // Getters should at the top
+    code: [
+      'class Hello extends React.Component {',
+      '  constructor() {}',
+      '  get foo() {}',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{message: 'constructor should be placed after getter functions'}],
+    options: [{
+      order: [
+        'getters',
+        'static-methods',
+        'lifecycle',
+        'everything-else',
+        'render'
+      ]
+    }]
+  }, {
+    // Setters should at the top
+    code: [
+      'class Hello extends React.Component {',
+      '  constructor() {}',
+      '  set foo(bar) {}',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{message: 'constructor should be placed after setter functions'}],
+    options: [{
+      order: [
+        'setters',
+        'static-methods',
+        'lifecycle',
+        'everything-else',
         'render'
       ]
     }]
