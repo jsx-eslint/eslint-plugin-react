@@ -49,7 +49,8 @@ ruleTester.run('jsx-no-duplicate-props', rule, {
     {code: '<App c="a" {...this.props} a="c" b="b" />;'},
     {code: '<App A a />;'},
     {code: '<App A b a />;'},
-    {code: '<App A="a" b="b" B="B" />;'}
+    {code: '<App A="a" b="b" B="B" />;'},
+    {code: '<App a:b="c" />;', options: ignoreCaseArgs}
   ],
   invalid: [
     {code: '<App a a />;', errors: [expectedError]},
