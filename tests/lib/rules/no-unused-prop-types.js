@@ -559,26 +559,6 @@ ruleTester.run('no-unused-prop-types', rule, {
       options: [{customValidators: ['CustomValidator']}]
     }, {
       code: [
-        'class Comp1 extends Component {',
-        '  render() {',
-        '    return <span />;',
-        '  }',
-        '}',
-        'Comp1.propTypes = {',
-        '  prop1: PropTypes.number',
-        '};',
-        'class Comp2 extends Component {',
-        '  render() {',
-        '    return <span />;',
-        '  }',
-        '}',
-        'Comp2.propTypes = {',
-        '  prop2: PropTypes.arrayOf(Comp1.propTypes.prop1)',
-        '};'
-      ].join('\n'),
-      parser: 'babel-eslint'
-    }, {
-      code: [
         'const SomeComponent = createReactClass({',
         '  propTypes: SomeOtherComponent.propTypes',
         '});'
@@ -781,54 +761,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    );',
         '  }',
         '});'
-      ].join('\n')
-    }, {
-      code: [
-        'const statelessComponent = (props) => {',
-        '  const subRender = () => {',
-        '    return <span>{props.someProp}</span>;',
-        '  };',
-        '  return <div>{subRender()}</div>;',
-        '};',
-        'statelessComponent.propTypes = {',
-        '  someProp: PropTypes.string',
-        '};'
-      ].join('\n')
-    }, {
-      code: [
-        'const statelessComponent = ({ someProp }) => {',
-        '  const subRender = () => {',
-        '    return <span>{someProp}</span>;',
-        '  };',
-        '  return <div>{subRender()}</div>;',
-        '};',
-        'statelessComponent.propTypes = {',
-        '  someProp: PropTypes.string',
-        '};'
-      ].join('\n')
-    }, {
-      code: [
-        'const statelessComponent = function({ someProp }) {',
-        '  const subRender = () => {',
-        '    return <span>{someProp}</span>;',
-        '  };',
-        '  return <div>{subRender()}</div>;',
-        '};',
-        'statelessComponent.propTypes = {',
-        '  someProp: PropTypes.string',
-        '};'
-      ].join('\n')
-    }, {
-      code: [
-        'function statelessComponent({ someProp }) {',
-        '  const subRender = () => {',
-        '    return <span>{someProp}</span>;',
-        '  };',
-        '  return <div>{subRender()}</div>;',
-        '};',
-        'statelessComponent.propTypes = {',
-        '  someProp: PropTypes.string',
-        '};'
       ].join('\n')
     }, {
       code: [
@@ -3215,6 +3147,49 @@ ruleTester.run('no-unused-prop-types', rule, {
         line: 11,
         column: 8
       }]
+    }, { // None of the props are used issue #1162
+      code: [
+        'import React from "react"; ',
+        'var Hello = React.createReactClass({',
+        ' propTypes: {',
+        '   name: React.PropTypes.string',
+        ' },',
+        ' render: function() {',
+        '   return <div>Hello Bob</div>;',
+        '  }',
+        '});'
+      ].join('\n'),
+      errors: [{
+        message: '\'name\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
+        'class Comp1 extends Component {',
+        '  render() {',
+        '    return <span />;',
+        '  }',
+        '}',
+        'Comp1.propTypes = {',
+        '  prop1: PropTypes.number',
+        '};',
+        'class Comp2 extends Component {',
+        '  render() {',
+        '    return <span />;',
+        '  }',
+        '}',
+        'Comp2.propTypes = {',
+        '  prop2: PropTypes.arrayOf(Comp1.propTypes.prop1)',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'prop1\' PropType is defined but prop is never used'
+      }, {
+        message: '\'prop2\' PropType is defined but prop is never used'
+      }, {
+        message: '\'prop2.*\' PropType is defined but prop is never used'
+      }]
+
     }
     /* , {
       // Enable this when the following issue is fixed
