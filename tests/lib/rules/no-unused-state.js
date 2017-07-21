@@ -18,11 +18,9 @@ const parserOptions = {
 const eslintTester = new RuleTester({parserOptions});
 
 function getErrorMessages(unusedFields) {
-  return unusedFields.map(function(field) {
-    return {
-      message: `Unused state field: '${field}'`
-    };
-  });
+  return unusedFields.map(field => ({
+    message: `Unused state field: '${field}'`
+  }));
 }
 
 eslintTester.run('no-unused-state', rule, {
