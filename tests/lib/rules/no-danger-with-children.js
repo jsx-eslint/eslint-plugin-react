@@ -85,6 +85,12 @@ ruleTester.run('no-danger-with-children', rule, {
     },
     {
       code: 'React.createElement("Hello", {}, "Children");'
+    },
+    {
+      code: '<Hello {...undefined}>Children</Hello>'
+    },
+    {
+      code: 'React.createElement("Hello", undefined, "Children")'
     }
   ],
   invalid: [

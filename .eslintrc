@@ -49,6 +49,7 @@
         "guard-for-in": 2,
         "no-alert": 2,
         "no-caller": 2,
+        "no-confusing-arrow": 2,
         "no-div-regex": 2,
         "no-else-return": 2,
         "no-eq-null": 2,
@@ -81,6 +82,7 @@
         "no-void": 0,
         "no-warning-comments": 2,
         "no-with": 2,
+        "prefer-arrow-callback": 2,
         "radix": 2,
         "vars-on-top": 0,
         "wrap-iife": 2,
@@ -105,6 +107,9 @@
         "indent": [2, 2, {
           "SwitchCase": 1
         }],
+        "arrow-body-style": [2, "as-needed"],
+        "arrow-parens": [2, "as-needed"],
+        "arrow-spacing": 2,
         "brace-style": 2,
         "camelcase": 0,
         "comma-spacing": 2,

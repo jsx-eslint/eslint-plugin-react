@@ -87,7 +87,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
     }, {
       code: `
         /* eslint jsx-uses-vars: 1 */
-        class HelloMessage {}
+        class HelloMessage {};
         <HelloMessage />
       `
     }, {
@@ -98,7 +98,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
             var HelloMessage = <div>Hello</div>;
             return HelloMessage;
           }
-        }
+        };
         <HelloMessage />
       `
     }, {
