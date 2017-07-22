@@ -11,6 +11,7 @@ This rule will check your class based React components for
 * extension of `React.PureComponent` (if the `ignorePureComponents` flag is true)
 * presence of `ref` attribute in JSX
 * the use of decorators
+* methods inside a React Component that return JSX other than the `render()` method (if the `subRenderMethods` flag is true)
 * `render` method that return anything but JSX: `undefined`, `null`, etc. (only in React <15.0.0, see [shared settings](https://github.com/yannickcr/eslint-plugin-react/blob/master/README.md#configuration) for React version configuration)
 
 If none of these elements are found, the rule will warn you to write this component as a pure function.
@@ -55,12 +56,13 @@ class Foo extends React.Component {
 
 ```js
 ...
-"react/prefer-stateless-function": [<enabled>, { "ignorePureComponents": <ignorePureComponents> }]
+"react/prefer-stateless-function": [<enabled>, { "ignorePureComponents": <ignorePureComponents>, "subRenderMethods": <subRenderMethods> }]
 ...
 ```
 
 * `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
 * `ignorePureComponents`: optional boolean set to `true` to ignore components extending from `React.PureComponent` (default to `false`).
+* `subRenderMethods`: optional boolean set to `true` to also warn on methods in React Components that return JSX other than the `render()` method (default to `false`).
 
 ### `ignorePureComponents`
 
@@ -82,6 +84,30 @@ The following pattern is considered a warning because it's not using props or co
 class Foo extends React.PureComponent {
   render() {
     return <div>Bar</div>;
+  }
+}
+```
+
+### `subRenderMethods`
+
+When `true` the rule will warn when you use methods that return JSX in a React Component other than the `render()` method
+
+The following patterns is considered a warning:
+
+```jsx
+class Foo extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {myState: ""}
+  }
+
+  renderFoo() {
+    return <span>{this.state.myState}</span>
+  }
+
+  render() {
+    return <div>{this.renderFoo()}</div>;
   }
 }
 ```

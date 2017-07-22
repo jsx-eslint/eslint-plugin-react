@@ -305,6 +305,33 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: 'babel-eslint'
+    }, {
+      // Methods that do not return JSX are still valid
+      code: `
+        class Foo extends React.Component {
+          renderString() {
+            return "X";
+          }
+
+          renderNumber() {
+            return 42;
+          }
+
+          getSomeData() {
+            return {}
+          }
+
+          render() {
+            return (
+              <div>
+                {this.renderString()}
+                {this.renderNumber()}
+                {this.getSomeData()}
+              </div>
+            )
+          }
+        }
+      `
     }
   ],
 
@@ -594,6 +621,22 @@ ruleTester.run('prefer-stateless-function', rule, {
       `,
       errors: [{
         message: 'Component should be written as a pure function'
+      }]
+    }, {
+      // Sub-render method that returns JSX
+      code: `
+        class Foo extends React.Component {
+          renderFoo() {
+            return <div />;
+          }
+
+          render() {
+            return this.renderFoo();
+          }
+        }
+      `,
+      errors: [{
+        message: 'Method returning JSX should be written as stateless function component'
       }]
     }
   ]
