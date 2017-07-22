@@ -59,6 +59,46 @@ ruleTester.run('jsx-indent-props', rule, {
       '/>'
     ].join('\n'),
     options: ['tab']
+  }, {
+    code: [
+      '{test',
+      '  ? <App',
+      '      foo',
+      '    />',
+      '  : null',
+      '}'
+    ].join('\n'),
+    options: [2]
+  }, {
+    code: [
+      '{test',
+      '  ?',
+      '    <App',
+      '      foo />',
+      '  : null',
+      '}'
+    ].join('\n'),
+    options: [2]
+  }, {
+    code: [
+      '{test',
+      '\t? <App',
+      '\t\t\tfoo',
+      '\t\t/>',
+      '\t: null',
+      '}'
+    ].join('\n'),
+    options: ['tab']
+  }, {
+    code: [
+      '{test',
+      '\t?',
+      '\t\t<App',
+      '\t\t\tfoo />',
+      '\t: null',
+      '}'
+    ].join('\n'),
+    options: ['tab']
   }],
 
   invalid: [{
@@ -112,5 +152,43 @@ ruleTester.run('jsx-indent-props', rule, {
     ].join('\n'),
     options: ['tab'],
     errors: [{message: 'Expected indentation of 1 tab character but found 3.'}]
+  }, {
+    code: [
+      '{test',
+      '  ? <App',
+      '    foo',
+      '    />',
+      '  : null',
+      '}'
+    ].join('\n'),
+    output: [
+      '{test',
+      '  ? <App',
+      '      foo',
+      '    />',
+      '  : null',
+      '}'
+    ].join('\n'),
+    options: [2],
+    errors: [{message: 'Expected indentation of 6 space characters but found 4.'}]
+  }, {
+    code: [
+      '{test',
+      '\t? <App',
+      '\t\tfoo',
+      '\t\t/>',
+      '\t: null',
+      '}'
+    ].join('\n'),
+    output: [
+      '{test',
+      '\t? <App',
+      '\t\t\tfoo',
+      '\t\t/>',
+      '\t: null',
+      '}'
+    ].join('\n'),
+    options: ['tab'],
+    errors: [{message: 'Expected indentation of 3 tab characters but found 2.'}]
   }]
 });
