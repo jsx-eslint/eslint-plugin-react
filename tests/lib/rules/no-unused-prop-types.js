@@ -1858,6 +1858,39 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parserOptions: Object.assign({}, parserOptions, {ecmaVersion: 2017})
+    },
+    {
+      // Destructured assignment with Shape propTypes issue #816
+      code: [
+        'export default class NavigationButton extends React.Component {',
+        ' static propTypes = {',
+        '   route: PropTypes.shape({',
+        '    getBarTintColor: PropTypes.func.isRequired,',
+        '  }).isRequired,',
+        ' };',
+
+        ' renderTitle() {',
+        '  const { route } = this.props;',
+        '   return <Title tintColor={route.getBarTintColor()}>TITLE</Title>;',
+        ' }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Destructured assignment without Shape propTypes issue #816
+      code: [
+        'const Component = ({ children: aNode }) => (',
+        ' <div>{aNode}</div>',
+        ');',
+
+        'Component.defaultProps = {',
+        ' children: null,',
+        '};',
+
+        'Component.propTypes = {',
+        ' children: React.PropTypes.node,',
+        '};'
+      ].join('\n')
     }
   ],
 
@@ -3189,8 +3222,29 @@ ruleTester.run('no-unused-prop-types', rule, {
       }, {
         message: '\'prop2.*\' PropType is defined but prop is never used'
       }]
+    }, {
+      // Destructured assignment with Shape propTypes with skipShapeProps off issue #816
+      code: [
+        'export default class NavigationButton extends React.Component {',
+        ' static propTypes = {',
+        '   route: PropTypes.shape({',
+        '    getBarTintColor: PropTypes.func.isRequired,',
+        '  }).isRequired,',
+        ' };',
 
+        ' renderTitle() {',
+        '  const { route } = this.props;',
+        '   return <Title tintColor={route.getBarTintColor()}>TITLE</Title>;',
+        ' }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      options: [{skipShapeProps: false}],
+      errors: [{
+        message: '\'route.getBarTintColor\' PropType is defined but prop is never used'
+      }]
     }
+
     /* , {
       // Enable this when the following issue is fixed
       // https://github.com/yannickcr/eslint-plugin-react/issues/296
