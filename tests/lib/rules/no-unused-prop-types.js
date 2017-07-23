@@ -1891,6 +1891,28 @@ ruleTester.run('no-unused-prop-types', rule, {
         ' children: React.PropTypes.node,',
         '};'
       ].join('\n')
+    }, {
+      // issue 1309
+      code: [
+        'const Thing = (props) => (',
+        '    <div>',
+        '      {(() => {',
+        '            if(props.enabled){',
+        '                return (',
+        '                    <span>Enabled!</span>',
+        '                )',
+        '            }',
+        '            return (',
+        '                <span>Disabled..</span>',
+        '            )',
+        '        })()}',
+        '    </div>',
+        ');',
+
+        'Thing.propTypes = {',
+        '    enabled: React.PropTypes.bool',
+        '};'
+      ].join('\n')
     }
   ],
 
