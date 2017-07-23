@@ -10,7 +10,7 @@ The following patterns are considered warnings:
 <div onClick={this._handleClick.bind(this)}></div>
 ```
 ```jsx
-<div onClick={() => console.log('Hello!'))}></div>
+<div onClick={() => console.log('Hello!')}></div>
 ```
 
 The following patterns are not considered warnings:
