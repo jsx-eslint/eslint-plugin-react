@@ -1897,7 +1897,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         'const Thing = (props) => (',
         '    <div>',
         '      {(() => {',
-        '            if(props.enabled){',
+        '            if(props.enabled && props.test){',
         '                return (',
         '                    <span>Enabled!</span>',
         '                )',
@@ -1910,7 +1910,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         ');',
 
         'Thing.propTypes = {',
-        '    enabled: React.PropTypes.bool',
+        '    enabled: React.PropTypes.bool,',
+        '    test: React.PropTypes.bool',
         '};'
       ].join('\n')
     }
