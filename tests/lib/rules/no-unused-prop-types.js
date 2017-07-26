@@ -1914,29 +1914,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    test: React.PropTypes.bool',
         '};'
       ].join('\n')
-    }, {
-      // issue 1268
-      code: [
-        'export default function SampleComp(props) {',
-        ' function buildText(text) {',
-        '  return (',
-        '   <span>',
-        '    {text}',
-        '    {props.append}',
-        '   </span>',
-        '  );',
-        ' }',
-        ' return (',
-        '   <div>',
-        '    {buildText(props.text)}',
-        '   </div>',
-        '  );',
-        ' }',
-        'SampleComp.propTypes = {',
-        ' text: PropTypes.string,',
-        ' append: PropTypes.string',
-        '};'
-      ].join('\n')
     }
   ],
 
