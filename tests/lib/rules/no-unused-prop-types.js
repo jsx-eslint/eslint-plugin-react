@@ -1914,6 +1914,21 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    test: React.PropTypes.bool',
         '};'
       ].join('\n')
+    }, {
+      // issue 1107
+      code: [
+        'const Test = props => <div>',
+        '  {someArray.map(l => <div',
+        '    key={l}>',
+        '      {props.property + props.property2}',
+        '    </div>)}',
+        '</div>',
+
+        'Test.propTypes = {',
+        '  property: React.propTypes.string.isRequired,',
+        '  property2: React.propTypes.string.isRequired',
+        '}'
+      ].join('\n')
     }
   ],
 
