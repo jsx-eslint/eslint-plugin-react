@@ -1929,6 +1929,49 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  property2: React.propTypes.string.isRequired',
         '}'
       ].join('\n')
+    }, {
+      // issue 811
+      code: [
+        'const Button = React.createClass({',
+        'displayName: "Button",',
+
+        'propTypes: {',
+        '    name: React.PropTypes.string.isRequired,',
+        '    isEnabled: React.PropTypes.bool.isRequired',
+        '},',
+
+        'render() {',
+        '    const item = this.props;',
+        '    const disabled = !this.props.isEnabled;',
+        '    return (',
+        '        <div>',
+        '            <button type="button" disabled={disabled}>{item.name}</button>',
+        '        </div>',
+        '    );',
+        '}',
+        '});'
+      ].join('\n')
+    }, {
+      // issue 811
+      code: [
+        'class Foo extends React.Component {',
+        ' static propTypes = {',
+        ' foo: PropTypes.func.isRequired,',
+        '}',
+
+        'constructor(props) {',
+        '  super(props);',
+
+        '  const { foo } = props;',
+        '  this.message = foo("blablabla");',
+        '}',
+
+        'render() {',
+        '  return <div>{this.message}</div>;',
+        '}',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
