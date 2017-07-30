@@ -55,16 +55,54 @@ This rule can take one argument to ignore some specific props during validation.
 * `customValidators`: optional array of validators used for propTypes validation.
 * `skipShapeProps`: In some cases it is impossible to accurately detect whether or not a `PropTypes.shape`'s values are being used. Setting this option to `true` will skip validation of `PropTypes.shape` (`true` by default).
 
-## Caveats
+## Known Issues/Limitations
 
-This rule does not track component props as they move from function to function or during variable renaming (such as in the event of prop object destructuring assignments). As such, it's prone to false positives in situations where the prop use cannot be accurately detected.
+***False positives*** for components with Stateless Functional Components;
+SFC is a function that takes prop(s) as an argument and returns a JSX expression.
+Even if this function gets called from a component the props that are only used inside SFC would not be considered used by a component.
 
-## About component detection
 
-For this rule to work we need to detect React components, this could be very hard since components could be declared in a lot of ways.
+Triggers false positive:
+```js
+function AComponent(props) {
+  function helperRenderer(aProp) { // is considered SFC
+    return (
+      <span>{aProp}{props.bProp}</span>
+    );
+  }
 
-For now we should detect components created with:
+  return (
+    <div>
+      {helperRenderer(props.aProp)}
+    </div>
+  );
+}
 
-* `createReactClass()`
-* an ES6 class that inherit from `React.Component` or `Component`
-* a stateless function that return JSX or the result of a `React.createElement` call.
+AComponent.propTypes = {
+  aProp: PropTypes.string,
+  bProp: PropTypes.string // bProp is defined but never used
+};
+```
+A suggested fix is to assign a bProp to a variable outside of the SFC.
+
+```js
+function AComponent(props) {
+  const { bProp } = props
+  function helperRenderer(aProp) { // is considered SFC
+    return (
+      <span>{aProp}{bProp}</span>
+    );
+  }
+
+  return (
+    <div>
+      {helperRenderer(props.aProp)}
+    </div>
+  );
+}
+
+AComponent.propTypes = {
+  aProp: PropTypes.string,
+  bProp: PropTypes.string
+};
+```
