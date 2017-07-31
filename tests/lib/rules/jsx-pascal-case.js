@@ -45,7 +45,7 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<TestComponent1 />'
   }, {
-    code: '<T3stComp0nent />'
+    code: '<T3StComp0Nent />'
   }, {
     code: '<T />'
   }, {
@@ -59,6 +59,8 @@ ruleTester.run('jsx-pascal-case', rule, {
     options: [{allowAllCaps: true}]
   }, {
     code: '<Modal.Header />'
+  }, {
+    code: '<qualification.T3StComp0Nent />'
   }, {
     code: '<Modal:Header />'
   }, {
