@@ -1972,6 +1972,28 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // issue #1097
+      code: [
+        'class HelloGraphQL extends Component {',
+        '  render() {',
+        '      return <div>Hello</div>;',
+        '  }',
+        '}',
+
+        'const HellowQueries = graphql(queryDetails, {',
+        '  options: ownProps => ({',
+        '  variables: ownProps.aProp',
+        '  }),',
+        '})(HelloGraphQL)',
+
+        'HellowQueries.propTypes = {',
+        '  aProp: PropTypes.string.isRequired',
+        '}',
+
+        'export default connect(mapStateToProps, mapDispatchToProps)(HellowQueries)'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
@@ -3322,6 +3344,30 @@ ruleTester.run('no-unused-prop-types', rule, {
       options: [{skipShapeProps: false}],
       errors: [{
         message: '\'route.getBarTintColor\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
+        // issue #1097
+        'class HelloGraphQL extends Component {',
+        '  render() {',
+        '      return <div>Hello</div>;',
+        '  }',
+        '}',
+        'HelloGraphQL.propTypes = {',
+        '  aProp: PropTypes.string.isRequired',
+        '}',
+
+        'const HellowQueries = graphql(queryDetails, {',
+        '  options: ownProps => ({',
+        '  variables: ownProps.aProp',
+        '  }),',
+        '})(HelloGraphQL)',
+
+        'export default connect(mapStateToProps, mapDispatchToProps)(HellowQueries)'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'aProp\' PropType is defined but prop is never used'
       }]
     }
 
