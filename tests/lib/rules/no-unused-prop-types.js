@@ -719,6 +719,21 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: 'babel-eslint'
     }, {
       code: [
+        'const Inner = (props) => <span>{props.innerOne} {props.innerTwo}</span>;',
+        'const Outer = (props) => {',
+        '  let team = props.names.map(() => (',
+        '      <Inner innerOne={props.one} innerTwo={props.two} />',
+        '    ));',
+        '  return <ul>{team}</ul>;',
+        '};',
+        'Outer.propTypes = {',
+        '  names: PropTypes.array,',
+        '  one: PropTypes.string,',
+        '  two: PropTypes.string',
+        '};'
+      ].join('\n')
+    }, {
+      code: [
         'export default {',
         '  renderHello() {',
         '    let {name} = this.props;',
