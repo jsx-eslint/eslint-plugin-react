@@ -271,8 +271,21 @@ ruleTester.run('jsx-sort-props', rule, {
       errors: [expectedError]
     },
     {
-      code: '<App dangerouslySetInnerHTML={{__html: "EPR"}} key={2} b />',
+      code: '<App key={2} b a />',
       options: reservedFirstAsBooleanArgs,
+      output: '<App key={2} a b />',
+      errors: [expectedError]
+    },
+    {
+      code: '<App b a />',
+      options: reservedFirstAsBooleanArgs,
+      output: '<App a b />',
+      errors: [expectedError]
+    },
+    {
+      code: '<App dangerouslySetInnerHTML={{__html: "EPR"}} e key={2} b />',
+      options: reservedFirstAsBooleanArgs,
+      output: '<App key={2} b dangerouslySetInnerHTML={{__html: "EPR"}} e />',
       errors: [expectedReservedFirstError]
     },
     {
