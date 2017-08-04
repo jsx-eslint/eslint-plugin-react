@@ -1994,6 +1994,24 @@ ruleTester.run('no-unused-prop-types', rule, {
         'export default connect(mapStateToProps, mapDispatchToProps)(HellowQueries)'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // issue #1335
+      code: [
+        'type Props = {',
+        ' foo: {',
+        '  bar: boolean',
+        ' }',
+        '};',
+
+        'class DigitalServices extends React.Component {',
+        ' props: Props',
+        ' render() {',
+        '   const { foo } = this.props;',
+        '   return <div>{foo.bar}</div>;',
+        ' }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
@@ -2591,6 +2609,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
+      options: [{skipShapeProps: false}],
       errors: [
         {message: '\'name.unused\' PropType is defined but prop is never used'}
       ]
@@ -2605,6 +2624,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
+      options: [{skipShapeProps: false}],
       errors: [
         {message: '\'name.unused\' PropType is defined but prop is never used'}
       ]
@@ -2618,6 +2638,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
+      options: [{skipShapeProps: false}],
       errors: [
         {message: '\'person.name.unused\' PropType is defined but prop is never used'}
       ]
@@ -2632,6 +2653,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
+      options: [{skipShapeProps: false}],
       errors: [
         {message: '\'person.name.unused\' PropType is defined but prop is never used'}
       ]
@@ -2650,6 +2672,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
+      options: [{skipShapeProps: false}],
       errors: [
         {message: '\'people.*.name.unused\' PropType is defined but prop is never used'}
       ]
@@ -2669,6 +2692,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
+      options: [{skipShapeProps: false}],
       errors: [
         {message: '\'people.*.name.unused\' PropType is defined but prop is never used'}
       ]
@@ -2683,6 +2707,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
+      options: [{skipShapeProps: false}],
       errors: [
         {message: '\'result.ok\' PropType is defined but prop is never used'},
         {message: '\'result.ok\' PropType is defined but prop is never used'}
