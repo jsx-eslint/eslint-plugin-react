@@ -57,10 +57,13 @@ This rule can take one argument to ignore some specific props during validation.
 
 ## Known Issues/Limitations
 
-***False positives*** for components with Stateless Functional Components;
+- [False Positives: SFC (helper render methods)](#false-positives-sfc)
+- [False Positives: Intermediate variables](#false-positives-intermediate-variables)
+
+### False positives SFC
+For components with Stateless Functional Components (often used as helper render methods);
 SFC is a function that takes prop(s) as an argument and returns a JSX expression.
 Even if this function gets called from a component the props that are only used inside SFC would not be considered used by a component.
-
 
 Triggers false positive:
 ```js
@@ -106,3 +109,50 @@ AComponent.propTypes = {
   bProp: PropTypes.string
 };
 ```
+
+### False positives intermediate variables
+when assigning a part or a whole props object to a variable and using it to access a prop value.
+
+```js
+class AComponent extends React.Component {
+  render() {
+    const { props } = this;
+
+    return <div>{props.aProp}</div>;
+  }
+}
+AComponent.propTypes = {
+  aProp: PropTypes.string // aProp PropType is defined but prop is never used
+};
+```
+
+suggested code structure to avoid the issue:
+
+- accessing prop directly
+```js
+class AComponent extends React.Component {
+  render() {
+    return <div>{this.props.aProp}</div>;
+  }
+}
+AComponent.propTypes = {
+  aProp: PropTypes.string
+};
+```
+
+- or assigning a final prop to a variable.
+
+```js
+class AComponent extends React.Component {
+  const { aProp } = this.props;
+  render() {
+    return <div>{aProp}</div>;
+  }
+}
+AComponent.propTypes = {
+  aProp: PropTypes.string
+};
+```
+
+Using Intermediate variables might be desired and unavoidable for more complex props structure.
+Like for shape prop types. To avoid false positive in this case make sure `skipShapeProps` is set to `true`.
