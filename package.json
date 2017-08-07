@@ -8,7 +8,7 @@
     "coveralls": "cat ./reports/coverage/lcov.info | coveralls",
     "lint": "eslint ./",
     "test": "npm run lint && npm run unit-test",
-    "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/lib/rules/jsx-no-unnecessary-curly-brace.js -- --reporter dot"
+    "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/lib/rules/jsx-curly-brace-presence.js -- --reporter dot"
   },
   "files": [
     "LICENSE",
