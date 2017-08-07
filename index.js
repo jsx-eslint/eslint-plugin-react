@@ -28,6 +28,7 @@ const allRules = {
   'jsx-no-literals': require('./lib/rules/jsx-no-literals'),
   'jsx-no-target-blank': require('./lib/rules/jsx-no-target-blank'),
   'jsx-no-undef': require('./lib/rules/jsx-no-undef'),
+  'jsx-no-unnecessary-curly-brace': require('./lib/rules/jsx-no-unnecessary-curly-brace'),
   'jsx-pascal-case': require('./lib/rules/jsx-pascal-case'),
   'jsx-sort-props': require('./lib/rules/jsx-sort-props'),
   'jsx-space-before-closing': require('./lib/rules/jsx-space-before-closing'),
