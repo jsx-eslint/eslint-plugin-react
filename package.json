@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "coveralls": "cat ./reports/coverage/lcov.info | coveralls",
-    "lint": "eslint ./",
+    "lint": "eslint --fix ./",
     "test": "npm run lint && npm run unit-test",
     "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/lib/rules/jsx-curly-brace-presence.js -- --reporter dot"
   },
