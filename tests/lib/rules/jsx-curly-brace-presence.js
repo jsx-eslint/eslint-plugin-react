@@ -37,6 +37,9 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       code: '<App>foo</App>'
     },
     {
+      code: '<App>{"foo"}{<Component>bar</Component>}</App>'
+    },
+    {
       code: '<App prop=\'bar\'>foo</App>'
     },
     {
@@ -57,6 +60,10 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     },
     {
       code: '<MyComponent>foo</MyComponent>',
+      options: [{children: 'never'}]
+    },
+    {
+      code: '<MyComponent>{<App/>}{"123"}</MyComponent>',
       options: [{children: 'never'}]
     },
     {
