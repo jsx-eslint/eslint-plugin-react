@@ -11,10 +11,8 @@
 const rule = require('../../../lib/rules/jsx-curly-brace-presence');
 const RuleTester = require('eslint').RuleTester;
 const parserOptions = {
-  ecmaVersion: 8,
   sourceType: 'module',
   ecmaFeatures: {
-    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -27,7 +25,7 @@ const unnecessaryCurlyMessage = 'Curly braces are unnecessary here.';
 // ------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({parserOptions});
-ruleTester.run('jsx-curly-spacing', rule, {
+ruleTester.run('jsx-curly-brace-presence', rule, {
   valid: [
     {
       code: '<App>{<myApp></myApp>}</App>'
