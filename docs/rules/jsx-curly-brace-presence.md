@@ -25,8 +25,8 @@ You can pass in options to enforce the presence of curly braces on JSX props or 
 For both, the valid values are `always`, `never` and `ignore`.
 
 * `always`: always enforce curly braces inside JSX props or/and children
-* `never`: never allow unnecessary curly braces inside props or/and children
-* `ignore`: ignore the rule for props or/and children
+* `never`: never allow unnecessary curly braces inside JSX props or/and children
+* `ignore`: ignore the rule for JSX props or/and children
 
 For examples:
 
