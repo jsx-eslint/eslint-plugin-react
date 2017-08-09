@@ -1,6 +1,6 @@
 /**
  * @fileoverview Prevent usage of this.state within setState
- * @author Rolf Erik Lekang
+ * @author Rolf Erik Lekang, Jørgen Aaberg
  */
 'use strict';
 
@@ -8,10 +8,10 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-var rule = require('../../../lib/rules/no-access-state-in-setstate');
-var RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-access-state-in-setstate');
+const RuleTester = require('eslint').RuleTester;
 
-var parserOptions = {
+const parserOptions = {
   ecmaVersion: 6,
   ecmaFeatures: {
     jsx: true
@@ -22,13 +22,26 @@ var parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-var ruleTester = new RuleTester();
+const ruleTester = new RuleTester();
 ruleTester.run('no-access-state-in-setstate', rule, {
   valid: [{
     code: [
       'var Hello = React.createClass({',
       '  onClick: function() {',
       '    this.setState(state => ({value: state.value + 1}))',
+      '  }',
+      '});'
+    ].join('\n'),
+    parserOptions: parserOptions
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  multiplyValue: function(obj) {',
+      '    return obj.value*2',
+      '  },',
+      '  onClick: function() {',
+      '    var value = this.state.value',
+      '    this.multiplyValue({ value: value })',
       '  }',
       '});'
     ].join('\n'),
