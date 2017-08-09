@@ -134,7 +134,11 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       options: ['always']
     },
     {
-      code: '<MyComponent prop=\'bar\'>\'foo\'</MyComponent>',
+      code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
+      options: ['never']
+    },
+    {
+      code: '<MyComponent prop={\'bar\\n\'}>{`foo ${word}`}</MyComponent>',
       options: ['never']
     }
   ],
