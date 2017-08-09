@@ -20,9 +20,17 @@ You can pass in options to enforce the presence of curly braces on JSX props or 
 ...
 ```
 
-### `props`, `children`
+or alternatively
 
-For both, the valid values are `always`, `never` and `ignore`.
+```js
+...
+"react/forbid-elements": [<enabled>, <string>]
+...
+```
+
+### Valid options for <string>
+
+They are `always`, `never` and `ignore` for checking on JSX props and children.
 
 * `always`: always enforce curly braces inside JSX props or/and children
 * `never`: never allow unnecessary curly braces inside JSX props or/and children
@@ -56,6 +64,28 @@ If passed in the option to fix, they will be corrected to
 ```jsx
 <App>Hello world</App>;
 <App prop='Hello world' />;
+```
+
+### Alternative syntax
+
+The options are also `always`, `ignore` and `ignore` for the same meanings.
+
+If only a string is provided, the default will be set to that option for checking on both JSX props and children.
+
+For examples:
+
+When `'always'` is set, the following patterns will be given warnings.
+
+```jsx
+<App>Hello world</App>;
+<App prop='Hello world'>Hello world</App>;
+```
+
+And the following will pass.
+
+```jsx
+<App>{'Hello world'}</App>;
+<App prop={'Hello world'}>{'Hello world'}</App>;
 ```
 
 ## When Not To Use It
