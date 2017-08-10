@@ -403,7 +403,7 @@ ruleTester.run('forbid-prop-types', rule, {
       'import { forbidExtraProps } from "airbnb-prop-types";',
       'export const propTypes = {a: PropTypes.any};',
       'export default function Component() {}',
-      'Component.propTypes = forbidExtraProps(propTypes);',
+      'Component.propTypes = forbidExtraProps(propTypes);'
     ].join('\n'),
     // errors: [{message: ANY_ERROR_MESSAGE}], // TODO: make this pass
     errors: [],
