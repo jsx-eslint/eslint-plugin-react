@@ -400,6 +400,18 @@ ruleTester.run('forbid-prop-types', rule, {
     }
   }, {
     code: [
+      'import { forbidExtraProps } from "airbnb-prop-types";',
+      'export const propTypes = {a: PropTypes.any};',
+      'export default function Component() {}',
+      'Component.propTypes = forbidExtraProps(propTypes);',
+    ].join('\n'),
+    // errors: [{message: ANY_ERROR_MESSAGE}], // TODO: make this pass
+    errors: [],
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    }
+  }, {
+    code: [
       'class Component extends React.Component {',
       '  static propTypes = {',
       '    a: PropTypes.array,',
