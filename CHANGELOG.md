@@ -3,6 +3,80 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.2.0] - 2017-08-09
+### Added
+* Add [`no-unused-state`][] rule ([#1103][] @wbinnssmith)
+* Add [`boolean-prop-naming`][] rule ([#1264][] @EvHaus)
+* Add [`no-typos`][] rule ([#1189][] @jseminck, [#1294][] @haridusenadeera)
+* Add auto fix for [`sort-props`][] ([#1273][] @Overload119)
+* Add `getters` and `setters` groups to [`sort-comp`][] ([#100][] @RDGthree)
+* Add `noStrings` option to [`no-literals`][] ([#1202][] @deecewan)
+* Add inverse option for `always`/`never` to [`jsx-boolean-value`][] ([#1249][] @ljharb)
+
+### Fixed
+* Fix [`no-direct-mutation-state`][] to disallow `this.state` mutation in constructor ([#832][] @burabure)
+* Fix [`jsx-no-target-blank`][] crash on empty `rel` attribute ([#1269][] @dustinsoftware)
+* Fix [`sort-comp`][] component detection with `ClassExpression` ([#1076][] @webOS101)
+* Fix [`no-unused-prop-types`][] detection with async class properties and methods ([#1053][] @benstepp)
+* Fix [`void-dom-elements-no-children`][] crash ([#1226][] @kokobeware)
+* Fix [`no-danger-with-children`][] to ignore line breaks ([#1262][])
+* Fix [`no-danger-with-children`][] crash with undefined ([#1287][])
+* Fix [`jsx-no-target-blank`][] crash ([#1296][] @jseminck)
+* Fix [`no-unused-props`][] to no longer ignore components with no used props ([#1303][] @DianaSuvorova)
+* Fix [`jsx-no-duplicate-props`][] crash ([#969][] @marcelmokos)
+* Fix [`no-literals`][] false positives ([#1301][] @davidyorr)
+* Fix [`no-find-dom-node`][] detection with named imports ([#785][] @Hypnosphi)
+* Fix proTypes-related rules detection with wrapped propTypes ([#1266][] @dustinsoftware)
+* Fix [`no-unused-prop-types`][] detection with propTypes wrapped in a function ([#1253][] @dustinsoftware)
+* Fix [`no-unused-prop-types`][] detection with destructured use of properties ([#816][] @DianaSuvorova)
+* Fix [`no-unused-prop-types`][] detection with inline functions ([#1309][] @DianaSuvorova)
+* Fix [`no-unused-prop-types`][] `skipShapeProps` option with Flow annotations ([#1335][] @DianaSuvorova)
+* Fix [`jsx-curly-spacing`][] schema incompatibility with ESLint 4.2.0 ([#1290][] @jseminck)
+
+### Changed
+* Documentation improvements ([#1261][] @mminer, [#1005][] @yooungt13, [#1289][] @konekoya, [#1308][] @xcatliu, [#1306][] @egberts, [#1329][] [#1344][] @DianaSuvorova)
+* ES6-ify codebase ([#1274][] [#1277][] [#1281][] @dfilipidisz)
+* Code refactoring (@ljharb)
+* Update Travis CI and AppVeyor CI configurations (@lencioni)
+
+[7.2.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.1.0...v7.2.0
+[#1103]: https://github.com/yannickcr/eslint-plugin-react/pull/1103
+[#1273]: https://github.com/yannickcr/eslint-plugin-react/pull/1273
+[#1264]: https://github.com/yannickcr/eslint-plugin-react/pull/1264
+[#1189]: https://github.com/yannickcr/eslint-plugin-react/issues/1189
+[#1294]: https://github.com/yannickcr/eslint-plugin-react/pull/1294
+[#100]: https://github.com/yannickcr/eslint-plugin-react/issues/100
+[#1202]: https://github.com/yannickcr/eslint-plugin-react/pull/1202
+[#1249]: https://github.com/yannickcr/eslint-plugin-react/issues/1249
+[#832]: https://github.com/yannickcr/eslint-plugin-react/issues/832
+[#1269]: https://github.com/yannickcr/eslint-plugin-react/issues/1269
+[#1076]: https://github.com/yannickcr/eslint-plugin-react/issues/1076
+[#1053]: https://github.com/yannickcr/eslint-plugin-react/issues/1053
+[#1226]: https://github.com/yannickcr/eslint-plugin-react/pull/1226
+[#1262]: https://github.com/yannickcr/eslint-plugin-react/issues/1262
+[#1287]: https://github.com/yannickcr/eslint-plugin-react/issues/1287
+[#1296]: https://github.com/yannickcr/eslint-plugin-react/issues/1296
+[#1303]: https://github.com/yannickcr/eslint-plugin-react/pull/1303
+[#969]: https://github.com/yannickcr/eslint-plugin-react/issues/969
+[#1301]: https://github.com/yannickcr/eslint-plugin-react/issues/1301
+[#785]: https://github.com/yannickcr/eslint-plugin-react/issues/785
+[#1266]: https://github.com/yannickcr/eslint-plugin-react/issues/1266
+[#1253]: https://github.com/yannickcr/eslint-plugin-react/pull/1253
+[#816]: https://github.com/yannickcr/eslint-plugin-react/issues/816
+[#1309]: https://github.com/yannickcr/eslint-plugin-react/issues/1309
+[#1261]: https://github.com/yannickcr/eslint-plugin-react/pull/1261
+[#1005]: https://github.com/yannickcr/eslint-plugin-react/pull/1005
+[#1289]: https://github.com/yannickcr/eslint-plugin-react/pull/1289
+[#1308]: https://github.com/yannickcr/eslint-plugin-react/pull/1308
+[#1306]: https://github.com/yannickcr/eslint-plugin-react/issues/1306
+[#1329]: https://github.com/yannickcr/eslint-plugin-react/pull/1329
+[#1274]: https://github.com/yannickcr/eslint-plugin-react/pull/1274
+[#1277]: https://github.com/yannickcr/eslint-plugin-react/pull/1277
+[#1281]: https://github.com/yannickcr/eslint-plugin-react/pull/1281
+[#1335]: https://github.com/yannickcr/eslint-plugin-react/issues/1335
+[#1344]: https://github.com/yannickcr/eslint-plugin-react/pull/1344
+[#1290]: https://github.com/yannickcr/eslint-plugin-react/pull/1290
+
 ## [7.1.0] - 2017-06-13
 ### Added
 * Add [`default-props-match-prop-types`][] rule ([#1022][] @webOS101)
@@ -1800,6 +1874,9 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`default-props-match-prop-types`]: docs/rules/default-props-match-prop-types.md
 [`no-redundant-should-component-update`]: docs/rules/no-redundant-should-component-update.md
 [`jsx-closing-tag-location`]: docs/rules/jsx-closing-tag-location.md
+[`no-unused-state`]: docs/rules/no-unused-state.md
+[`boolean-prop-naming`]: docs/rules/boolean-prop-naming.md
+[`no-typos`]: docs/rules/no-typos.md
 
 [`jsx-sort-prop-types`]: docs/rules/sort-prop-types.md
 [`require-extension`]: docs/rules/require-extension.md

@@ -1,13 +1,14 @@
 {
   "name": "eslint-plugin-react",
-  "version": "7.1.0",
+  "version": "7.2.0",
   "author": "Yannick Croissant <yannick.croissant+npm@gmail.com>",
   "description": "React specific linting rules for ESLint",
   "main": "index.js",
   "scripts": {
     "coveralls": "cat ./reports/coverage/lcov.info | coveralls",
     "lint": "eslint ./",
-    "test": "npm run lint && npm run unit-test",
+    "pretest": "npm run lint",
+    "test": "npm run unit-test",
     "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/**/*.js -- --reporter dot"
   },
   "files": [

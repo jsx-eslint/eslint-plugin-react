@@ -2012,6 +2012,23 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // issue #933
+      code: [
+        'type Props = {',
+        ' onMouseOver: Function,',
+        ' onClick: Function,',
+        '};',
+
+        'const MyComponent = (props: Props) => (',
+        '<div>',
+        '  <button onMouseOver={() => props.onMouseOver()} />',
+        '  <button onClick={() => props.onClick()} />',
+        '</div>',
+        ');'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      options: [{skipShapeProps: false}]
     }
   ],
 

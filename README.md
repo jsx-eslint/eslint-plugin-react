@@ -143,7 +143,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
 * [react/jsx-curly-brace-presence](docs/rules/jsx-curly-brace-presence.md): Enforce curly braces or disallow unnecessary curly braces in JSX
 * [react/jsx-pascal-case](docs/rules/jsx-pascal-case.md): Enforce PascalCase for user-defined JSX components
-* [react/jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting
+* [react/jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting (fixable)
 * [react/jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
 * [react/jsx-tag-spacing](docs/rules/jsx-tag-spacing.md): Validate whitespace in and around the JSX opening and closing brackets (fixable)
 * [react/jsx-uses-react](docs/rules/jsx-uses-react.md): Prevent React to be incorrectly marked as unused
