@@ -69,6 +69,17 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n')
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  myMethod() {',
+      '    this.state = {' +
+      '       boo: "bar" ' +
+      '    };' +
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{constructors: ['myMethod']}]
   }],
 
   invalid: [{
@@ -151,6 +162,20 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  myMethod(props) {',
+      '    doSomethingAsync(() => {',
+      '      this.state = "bad";',
+      '    });',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{constructors: ['myMethod']}],
     errors: [{
       message: 'Do not mutate state directly. Use setState().'
     }]
