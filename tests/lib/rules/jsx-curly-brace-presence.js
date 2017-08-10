@@ -180,11 +180,25 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     },
     {
       code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
+      output: '<MyComponent prop={\'bar\'}>foo</MyComponent>',
       options: [{props: 'always'}],
       errors: [{message: missingCurlyMessage}]
     },
     {
-      code: '<MyComponent>foo</MyComponent>',
+      code: '<MyComponent>foo bar </MyComponent>',
+      output: '<MyComponent>{\"foo bar \"}</MyComponent>',
+      options: [{children: 'always'}],
+      errors: [{message: missingCurlyMessage}]
+    },
+    {
+      code: '<MyComponent>foo bar <App/></MyComponent>',
+      output: '<MyComponent>{\"foo bar \"}<App/></MyComponent>',
+      options: [{children: 'always'}],
+      errors: [{message: missingCurlyMessage}]
+    },
+    {
+      code: '<MyComponent>foo\\nbar</MyComponent>',
+      output: '<MyComponent>{\"foo\\nbar\"}</MyComponent>',
       options: [{children: 'always'}],
       errors: [{message: missingCurlyMessage}]
     },
@@ -197,7 +211,8 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       ]
     },
     {
-      code: '<MyComponent prop=\'bar\'>\'foo\'</MyComponent>',
+      code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
+      output: '<MyComponent prop={\'bar\'}>{\"foo\"}</MyComponent>',
       options: ['always'],
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}

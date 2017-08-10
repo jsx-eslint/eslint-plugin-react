@@ -4,7 +4,7 @@ This rule allows you to enforce curly braces or disallow unnecessary curly brace
 
 For situations where JSX expressions are unnecessary, please refer to [the React doc](https://facebook.github.io/react/docs/jsx-in-depth.html) and [this page about JSX gotchas](https://github.com/facebook/react/blob/v15.4.0-rc.3/docs/docs/02.3-jsx-gotchas.md#html-entities).
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line but only for fixing unnecessary curly braces.
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line
 
 ## Rule Details
 
