@@ -79,7 +79,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n'),
-    options: [{ctors: ['myMethod']}]
+    options: [{constructors: ['myMethod']}]
   }],
 
   invalid: [{
@@ -175,7 +175,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n'),
-    options: [{ctors: ['myMethod']}],
+    options: [{constructors: ['myMethod']}],
     errors: [{
       message: 'Do not mutate state directly. Use setState().'
     }]
