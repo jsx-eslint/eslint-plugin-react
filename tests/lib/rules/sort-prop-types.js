@@ -316,6 +316,15 @@ ruleTester.run('sort-prop-types', rule, {
       '};',
       'TextFieldLabel.propTypes = propTypes;'
     ].join('\n')
+  }, {
+    code: [
+      'const First = (props) => <div />;',
+      'export const propTypes = {',
+      '    a: PropTypes.any,',
+      '    z: PropTypes.string,',
+      '};',
+      'First.propTypes = propTypes;'
+    ].join('\n')
   }],
 
   invalid: [{
