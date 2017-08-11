@@ -102,6 +102,16 @@ ruleTester.run('boolean-prop-naming', rule, {
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }]
   }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render () { return <div />; }',
+      '}',
+      'Hello.propTypes = wrap({ a: PropTypes.bool })'
+    ].join('\n'),
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+'
+    }]
+  }, {
     // ES6 components as React.Component with non-boolean PropTypes
     code: [
       'class Hello extends React.Component {',
