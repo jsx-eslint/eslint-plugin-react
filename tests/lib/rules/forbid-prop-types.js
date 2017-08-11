@@ -401,12 +401,19 @@ ruleTester.run('forbid-prop-types', rule, {
   }, {
     code: [
       'import { forbidExtraProps } from "airbnb-prop-types";',
+      'export const propTypes = {dpm: PropTypes.any};',
+      'export default function Component() {}',
+      'Component.propTypes = propTypes;'
+    ].join('\n'),
+    errors: [{message: ANY_ERROR_MESSAGE}]
+  }, {
+    code: [
+      'import { forbidExtraProps } from "airbnb-prop-types";',
       'export const propTypes = {a: PropTypes.any};',
       'export default function Component() {}',
       'Component.propTypes = forbidExtraProps(propTypes);'
     ].join('\n'),
-    // errors: [{message: ANY_ERROR_MESSAGE}], // TODO: make this pass
-    errors: [],
+    errors: [{message: ANY_ERROR_MESSAGE}],
     settings: {
       propWrapperFunctions: ['forbidExtraProps']
     }
