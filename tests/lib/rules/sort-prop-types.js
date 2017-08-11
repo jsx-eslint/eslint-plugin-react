@@ -565,6 +565,42 @@ ruleTester.run('sort-prop-types', rule, {
     }]
   }, {
     code: [
+      'const First = (props) => <div />;',
+      'const propTypes = {',
+      '    z: PropTypes.string,',
+      '    a: PropTypes.any,',
+      '};',
+      'First.propTypes = forbidExtraProps(propTypes);'
+    ].join('\n'),
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    },
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 4,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'const First = (props) => <div />;',
+      'const propTypes = {',
+      '    z: PropTypes.string,',
+      '    a: PropTypes.any,',
+      '};',
+      'First.propTypes = propTypes;'
+    ].join('\n'),
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    },
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 4,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
       'var First = createReactClass({',
       '  propTypes: {',
       '    a: PropTypes.any,',
