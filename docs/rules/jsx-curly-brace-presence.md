@@ -55,7 +55,7 @@ They can be fixed to:
 <App prop={"Hello world"}>{"Hello world"}</App>;
 ```
 
-They will fixed with single, double or original quotes based on the option you passed in. The default is double.
+They will be fixed with single, double or original quotes based on the option you passed in. The default is double.
 
 When `{ props: "never", children: "never" }` is set, the following patterns will be given warnings.
 
@@ -99,6 +99,18 @@ If `'always,single'` is passed, they can be fixed to:
 <App prop={'Hello world'}>{'Hello world'}</App>;
 ```
 
+When `'never'` is set, the following pattern will be given warnings.
+
+```jsx
+<App prop={'foo'}>{'Hello world'}</App>;
+```
+
+It can fixed to:
+
+```jsx
+<App prop='foo'>Hello world</App>;
+```
+
 ## Edge cases
 
 The fix also deals with template literals, strings with quotes and strings with escapes characters.
@@ -109,7 +121,7 @@ The fix also deals with template literals, strings with quotes and strings with 
 <App prop={`Hello world`}>Hello world</App>;
 ```
 
-will warned and fixed to:
+will be warned and fixed to:
 
 ```jsx
 <App prop="Hello world">Hello world</App>;
@@ -128,7 +140,13 @@ will warned and fixed to:
 <App prop={'Hello "foo" world'}>{"Hello 'foo' \"bar\" world"}</App>;
 ```
 
-* If the rule is set to get rid of unnecessary curly braces and the strings will have escaped characters, it will not warn or fix for JSX children because JSX expressions are necessary in this case.
+* If the rule is set to get rid of unnecessary curly braces and the strings have escaped characters, it will not warn or fix for JSX children because JSX expressions are necessary in this case. For instance:
+
+The following pattern will not be given a warning even if `'never'` is passed.
+
+```jsx
+<App>{"Hello \u00b7 world"}</App>;
+```
 
 ## When Not To Use It
 
