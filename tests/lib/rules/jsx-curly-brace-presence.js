@@ -268,7 +268,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
       output: '<MyComponent prop={\'bar\'}>{\'foo\'}</MyComponent>',
-      options: ['always', 'single'],
+      options: ['always,single'],
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ]
@@ -276,7 +276,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
       output: '<MyComponent prop={\"bar\"}>{\"foo\"}</MyComponent>',
-      options: ['always', 'double'],
+      options: ['always,double'],
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ]
@@ -300,7 +300,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: '<MyComponent prop=\"bar\">foo</MyComponent>',
       output: '<MyComponent prop={\'bar\'}>{\"foo\"}</MyComponent>',
-      options: [{props: 'always', children: 'always,double'}, 'single'],
+      options: [{props: 'always,single', children: 'always,double'}],
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ]
@@ -308,7 +308,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: '<MyComponent prop=\"bar\">foo</MyComponent>',
       output: '<MyComponent prop={\'bar\'}>{\'foo\'}</MyComponent>',
-      options: [{props: 'always', children: 'always'}, 'single'],
+      options: [{props: 'always,single', children: 'always,single'}],
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ]
@@ -316,7 +316,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
       output: '<MyComponent prop={\"bar\"}>{\"foo\"}</MyComponent>',
-      options: [{props: 'always,double', children: 'always,double'}, 'single'],
+      options: [{props: 'always,double', children: 'always,double'}],
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ]
@@ -324,7 +324,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: '<MyComponent prop=\'bar\'>foo<App/></MyComponent>',
       output: '<MyComponent prop={\"bar\"}>{\"foo\"}<App/></MyComponent>',
-      options: ['always', 'double'],
+      options: ['always,double'],
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ]
@@ -332,7 +332,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: '<MyComponent prop=\'bar\'><App/>foo</MyComponent>',
       output: '<MyComponent prop={\"bar\"}><App/>{\"foo\"}</MyComponent>',
-      options: ['always', 'double'],
+      options: ['always,double'],
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ]
@@ -362,9 +362,21 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       errors: [{message: missingCurlyMessage}]
     },
     {
+      code: '<MyComponent prop=\'bar \\n bar \"hello\" foo \'>foo</MyComponent>',
+      output: '<MyComponent prop={\'bar \\n bar \"hello\" foo \'}>{"foo"}</MyComponent>',
+      options: ['always,original'],
+      errors: [{message: missingCurlyMessage}, {message: missingCurlyMessage}]
+    },
+    {
+      code: '<MyComponent prop=\'foo\'>foo \\n \'bar\' "foo"</MyComponent>',
+      output: '<MyComponent prop={\'foo\'}>{"foo \\\\n \'bar\' \\"foo\\""}</MyComponent>',
+      options: ['always,original'],
+      errors: [{message: missingCurlyMessage}, {message: missingCurlyMessage}]
+    },
+    {
       code: '<MyComponent prop=\'bar\"bar\"foo\'>foo"bar"</MyComponent>',
       output: '<MyComponent prop={\'bar\"bar\"foo\'}>{\"foo\\"bar\\"\"}</MyComponent>',
-      options: ['always', 'single'],
+      options: ['always,single'],
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ]
@@ -372,7 +384,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: '<MyComponent prop=\'bar\"bar\"foo\'>foo"bar"</MyComponent>',
       output: '<MyComponent prop={\'bar\"bar\"foo\'}>{\"foo\\"bar\\"\"}</MyComponent>',
-      options: ['always', 'double'],
+      options: ['always,double'],
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ]
@@ -380,7 +392,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: '<MyComponent prop="bar\'bar\'foo">foo\'bar\'</MyComponent>',
       output: '<MyComponent prop={"bar\'bar\'foo"}>{"foo\'bar\'"}</MyComponent>',
-      options: ['always', 'single'],
+      options: ['always,single'],
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ]
@@ -388,7 +400,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: '<MyComponent prop="bar\'bar\'foo">foo\'bar\'</MyComponent>',
       output: '<MyComponent prop={"bar\'bar\'foo"}>{"foo\'bar\'"}</MyComponent>',
-      options: ['always', 'double'],
+      options: ['always,double'],
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ]
