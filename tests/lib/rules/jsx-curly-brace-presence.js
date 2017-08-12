@@ -28,22 +28,6 @@ const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-curly-brace-presence', rule, {
   valid: [
     {
-      code: '<App>{\'foo "bar"\'}</App>',
-      options: [{children: 'never'}]
-    },
-    {
-      code: '<App>{\"foo \'bar\'\"}</App>',
-      options: [{children: 'never'}]
-    },
-    {
-      code: '<App prop={\'foo "bar"\'}>foo</App>',
-      options: [{props: 'never'}]
-    },
-    {
-      code: '<App prop={\'foo "bar"\'}>foo</App>',
-      options: [{props: 'never'}]
-    },
-    {
       code: '<App {...props}>foo</App>'
     },
     {
@@ -349,6 +333,30 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ]
+    },
+    {
+      code: '<App>{\'foo "bar"\'}</App>',
+      output: '<App>foo \"bar\"</App>',
+      options: [{children: 'never'}],
+      errors: [{message: unnecessaryCurlyMessage}]
+    },
+    {
+      code: '<App>{\"foo \'bar\'\"}</App>',
+      output: '<App>foo \'bar\'</App>',
+      errors: [{message: unnecessaryCurlyMessage}],
+      options: [{children: 'never'}]
+    },
+    {
+      code: '<App prop={\'foo "bar"\'}>foo</App>',
+      output: '<App prop=\'foo "bar"\'>foo</App>',
+      errors: [{message: unnecessaryCurlyMessage}],
+      options: [{props: 'never'}]
+    },
+    {
+      code: '<App prop={\'foo "bar"\'}>foo</App>',
+      output: '<App prop=\'foo "bar"\'>foo</App>',
+      errors: [{message: unnecessaryCurlyMessage}],
+      options: [{props: 'never'}]
     }
   ]
 });
