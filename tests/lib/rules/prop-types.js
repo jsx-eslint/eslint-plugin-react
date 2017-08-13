@@ -1557,7 +1557,18 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    }
+    },
+    // issue #1288
+    `function Foo() {
+      const props = {}
+      props.bar = 'bar'
+      return <div {...props} />
+    }`,
+    // issue #1288
+    `function Foo(props) {
+      props.bar = 'bar';
+      return <div {...props} />;
+    }`
   ],
 
   invalid: [
