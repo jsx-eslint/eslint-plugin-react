@@ -3,6 +3,23 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.2.1] - 2017-08-14
+### Fixed
+* Fix [`forbid-prop-types`][] crash on identifiers ([#1352][] @ljharb)
+* Fix [`boolean-prop-naming`][] crash with propTypes wrapper ([#1354][] @dustinsoftware)
+* Fix [`prop-types`][] false positive with local variable `props` ([#1288][] @DianaSuvorova)
+* Fix wrapped propTypes detection ([#1366][])
+
+### Changed
+* Documentation improvements ([#1123][] @penx)
+
+[7.2.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.2.0...v7.2.1
+[#1352]: https://github.com/yannickcr/eslint-plugin-react/issues/1352
+[#1354]: https://github.com/yannickcr/eslint-plugin-react/issues/1354
+[#1288]: https://github.com/yannickcr/eslint-plugin-react/issues/1288
+[#1366]: https://github.com/yannickcr/eslint-plugin-react/issues/1366
+[#1123]: https://github.com/yannickcr/eslint-plugin-react/issues/1123
+
 ## [7.2.0] - 2017-08-09
 ### Added
 * Add [`no-unused-state`][] rule ([#1103][] @wbinnssmith)
