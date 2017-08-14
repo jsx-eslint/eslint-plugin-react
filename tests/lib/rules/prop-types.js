@@ -2241,6 +2241,26 @@ ruleTester.run('prop-types', rule, {
       ]
     }, {
       code: [
+        'class Test extends Foo.Component {',
+        '  render() {',
+        '    return (',
+        '      <div>{this.props.firstname} {this.props.lastname}</div>',
+        '    );',
+        '  }',
+        '}',
+        'Test.propTypes = Object.freeze({',
+        '  firstname: PropTypes.string',
+        '});'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      settings: Object.assign({}, settings, {
+        propWrapperFunctions: ['Object.freeze']
+      }),
+      errors: [
+        {message: '\'lastname\' is missing in props validation'}
+      ]
+    }, {
+      code: [
         '/** @jsx Foo */',
         'class Test extends Foo.Component {',
         '  render() {',
