@@ -1,13 +1,13 @@
-# Prevents common casing typos (react/no-typos)
+# Prevents common typos (react/no-typos)
 
 Ensure no casing typos were made declaring static class properties and lifecycle methods.
+Checks that declared `propTypes`, `contextTypes` and `childContextTypes` is supported by [react-props](https://github.com/facebook/prop-types)
 
 ## Rule Details
 
-This rule checks whether the declared static class properties and lifecycle methods related to React components
-do not contain any typos.
+This rule checks whether the declared static class properties and lifecycle methods related to React components do not contain any typos.
 
-It currently makes sure that the following class properties have
+It makes sure that the following class properties have
 no casing typos:
 
 * propTypes
@@ -73,6 +73,13 @@ class MyComponent extends React.Component {
 class MyComponent extends React.Component {
   componentdidupdate() {}
 }
+
+class MyComponent extends React.Component {
+  static propTypes = {
+    a: PropTypes.typo
+  }
+}
+
 ```
 
 The following patterns are not considered warnings:
@@ -104,5 +111,11 @@ class MyComponent extends React.Component {
 
 class MyComponent extends React.Component {
   componentDidUpdate() {}
+}
+
+class MyComponent extends React.Component {
+  static propTypes = {
+    a: PropTypes.bool.isRequired
+  }
 }
 ```
