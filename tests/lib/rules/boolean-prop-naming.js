@@ -1,6 +1,6 @@
 /**
  * @fileoverview Enforces consistent naming for boolean props
- * @author Evgueni Naverniouk
+ * @author Ev Haus
  */
 'use strict';
 
@@ -244,6 +244,16 @@ ruleTester.run('boolean-prop-naming', rule, {
     ].join('\n'),
     options: [{
       propTypeNames: ['bool', 'mutuallyExclusiveTrueProps'],
+      rule: '^is[A-Z]([A-Za-z0-9]?)+'
+    }],
+    parser: 'babel-eslint'
+  }, {
+    // Ensure rule doesn't crash on destructured objects [Issue #1369]
+    code: [
+      'var x = {a: 1}',
+      'var y = {...x}'
+    ].join('\n'),
+    options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
     parser: 'babel-eslint'
