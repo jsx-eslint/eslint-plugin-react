@@ -240,6 +240,15 @@ ruleTester.run('no-typos', rule, {
       '}'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    // https://github.com/yannickcr/eslint-plugin-react/issues/1353
+    code: `
+      function test(b) {
+        return a.bind(b);
+      }
+      function a() {}
+    `,
+    parserOptions: parserOptions
   }],
 
   invalid: [{
