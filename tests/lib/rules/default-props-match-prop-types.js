@@ -788,6 +788,29 @@ ruleTester.run('default-props-match-prop-types', rule, {
         'function MyStatelessComponent({ foo, bar }) {',
         '  return <div>{foo}{bar}</div>;',
         '}',
+        'const propTypes = {',
+        '  foo: React.PropTypes.string,',
+        '  bar: React.PropTypes.string.isRequired',
+        '};',
+        'MyStatelessComponent.propTypes = forbidExtraProps(propTypes);',
+        'MyStatelessComponent.defaultProps = {',
+        '  baz: "baz"',
+        '};'
+      ].join('\n'),
+      settings: {
+        propWrapperFunctions: ['forbidExtraProps']
+      },
+      errors: [{
+        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        line: 10,
+        column: 3
+      }]
+    },
+    {
+      code: [
+        'function MyStatelessComponent({ foo, bar }) {',
+        '  return <div>{foo}{bar}</div>;',
+        '}',
         'MyStatelessComponent.propTypes = {',
         '  foo: React.PropTypes.string,',
         '  bar: React.PropTypes.string.isRequired',

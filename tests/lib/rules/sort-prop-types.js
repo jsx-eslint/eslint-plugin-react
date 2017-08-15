@@ -316,6 +316,15 @@ ruleTester.run('sort-prop-types', rule, {
       '};',
       'TextFieldLabel.propTypes = propTypes;'
     ].join('\n')
+  }, {
+    code: [
+      'const First = (props) => <div />;',
+      'export const propTypes = {',
+      '    a: PropTypes.any,',
+      '    z: PropTypes.string,',
+      '};',
+      'First.propTypes = propTypes;'
+    ].join('\n')
   }],
 
   invalid: [{
@@ -560,6 +569,42 @@ ruleTester.run('sort-prop-types', rule, {
     errors: [{
       message: ERROR_MESSAGE,
       line: 10,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'const First = (props) => <div />;',
+      'const propTypes = {',
+      '    z: PropTypes.string,',
+      '    a: PropTypes.any,',
+      '};',
+      'First.propTypes = forbidExtraProps(propTypes);'
+    ].join('\n'),
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    },
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 4,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'const First = (props) => <div />;',
+      'const propTypes = {',
+      '    z: PropTypes.string,',
+      '    a: PropTypes.any,',
+      '};',
+      'First.propTypes = propTypes;'
+    ].join('\n'),
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    },
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 4,
       column: 5,
       type: 'Property'
     }]
