@@ -55,6 +55,10 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       options: [{props: 'never'}]
     },
     {
+      code: '<App prop={`foo ${word} bar`} />',
+      options: [{props: 'never'}]
+    },
+    {
       code: '<App>{<myApp></myApp>}</App>'
     },
     {
@@ -149,6 +153,12 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
   ],
 
   invalid: [
+    {
+      code: '<App prop={`foo`} />',
+      output: '<App prop="foo" />',
+      options: [{props: 'never'}],
+      errors: [{message: unnecessaryCurlyMessage}]
+    },
     {
       code: '<App prop={\'foo \\u00b7 bar\'}>foo</App>',
       output: '<App prop=\'foo \\u00b7 bar\'>foo</App>',
