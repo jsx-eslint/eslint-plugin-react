@@ -2942,6 +2942,25 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }],
       parser: 'babel-eslint'
+    }, {
+      code: `
+        type Props = {
+          foo: string,
+        };
+
+        class Bar extends React.Component<Props> {
+          render() {
+            return <div>{this.props.bar}</div>
+          }
+        }
+      `,
+      errors: [{
+        message: '\'bar\' is missing in props validation',
+        line: 8,
+        column: 37,
+        type: 'Identifier'
+      }],
+      parser: 'babel-eslint'
     }
   ]
 });
