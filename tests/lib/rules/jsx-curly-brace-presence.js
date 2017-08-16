@@ -107,6 +107,14 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       options: [{children: 'always'}]
     },
     {
+      code: '<MyComponent prop={\"bar\"}>foo</MyComponent>',
+      options: [{props: 'always'}]
+    },
+    {
+      code: '<MyComponent>{\"foo\"}</MyComponent>',
+      options: [{children: 'always'}]
+    },
+    {
       code: '<MyComponent>{\'foo\'}</MyComponent>',
       options: [{children: 'ignore'}]
     },
@@ -225,7 +233,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     },
     {
       code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
-      output: '<MyComponent prop={\"bar\"}>foo</MyComponent>',
+      output: '<MyComponent prop={\'bar\'}>foo</MyComponent>',
       options: [{props: 'always'}],
       errors: [{message: missingCurlyMessage}]
     },
@@ -236,18 +244,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       errors: [{message: missingCurlyMessage}]
     },
     {
-      code: '<MyComponent prop=\"bar\">foo</MyComponent>',
-      output: '<MyComponent prop={\'bar\'}>foo</MyComponent>',
-      options: [{props: 'always,single'}],
-      errors: [{message: missingCurlyMessage}]
-    },
-    {
-      code: '<MyComponent>foo bar </MyComponent>',
-      output: '<MyComponent>{\'foo bar \'}</MyComponent>',
-      options: [{children: 'always,single'}],
-      errors: [{message: missingCurlyMessage}]
-    },
-    {
       code: '<MyComponent>foo bar <App/></MyComponent>',
       output: '<MyComponent>{\"foo bar \"}<App/></MyComponent>',
       options: [{children: 'always'}],
@@ -255,7 +251,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     },
     {
       code: '<MyComponent>foo\\nbar</MyComponent>',
-      output: '<MyComponent>{\"foo\\nbar\"}</MyComponent>',
+      output: '<MyComponent>{\"foo\\\\nbar\"}</MyComponent>',
       options: [{children: 'always'}],
       errors: [{message: missingCurlyMessage}]
     },
@@ -269,148 +265,8 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     },
     {
       code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
-      output: '<MyComponent prop={\"bar\"}>{\"foo\"}</MyComponent>',
+      output: '<MyComponent prop={\'bar\'}>{\"foo\"}</MyComponent>',
       options: ['always'],
-      errors: [
-        {message: missingCurlyMessage}, {message: missingCurlyMessage}
-      ]
-    },
-    {
-      code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
-      output: '<MyComponent prop={\'bar\'}>{\'foo\'}</MyComponent>',
-      options: ['always,single'],
-      errors: [
-        {message: missingCurlyMessage}, {message: missingCurlyMessage}
-      ]
-    },
-    {
-      code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
-      output: '<MyComponent prop={\"bar\"}>{\"foo\"}</MyComponent>',
-      options: ['always,double'],
-      errors: [
-        {message: missingCurlyMessage}, {message: missingCurlyMessage}
-      ]
-    },
-    {
-      code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
-      output: '<MyComponent prop={\"bar\"}>{\'foo\'}</MyComponent>',
-      options: [{props: 'always,double', children: 'always,single'}],
-      errors: [
-        {message: missingCurlyMessage}, {message: missingCurlyMessage}
-      ]
-    },
-    {
-      code: '<MyComponent prop=\"bar\">foo</MyComponent>',
-      output: '<MyComponent prop={\'bar\'}>{\"foo\"}</MyComponent>',
-      options: [{props: 'always,single', children: 'always,double'}],
-      errors: [
-        {message: missingCurlyMessage}, {message: missingCurlyMessage}
-      ]
-    },
-    {
-      code: '<MyComponent prop=\"bar\">foo</MyComponent>',
-      output: '<MyComponent prop={\'bar\'}>{\"foo\"}</MyComponent>',
-      options: [{props: 'always,single', children: 'always,double'}],
-      errors: [
-        {message: missingCurlyMessage}, {message: missingCurlyMessage}
-      ]
-    },
-    {
-      code: '<MyComponent prop=\"bar\">foo</MyComponent>',
-      output: '<MyComponent prop={\'bar\'}>{\'foo\'}</MyComponent>',
-      options: [{props: 'always,single', children: 'always,single'}],
-      errors: [
-        {message: missingCurlyMessage}, {message: missingCurlyMessage}
-      ]
-    },
-    {
-      code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
-      output: '<MyComponent prop={\"bar\"}>{\"foo\"}</MyComponent>',
-      options: [{props: 'always,double', children: 'always,double'}],
-      errors: [
-        {message: missingCurlyMessage}, {message: missingCurlyMessage}
-      ]
-    },
-    {
-      code: '<MyComponent prop=\'bar\'>foo<App/></MyComponent>',
-      output: '<MyComponent prop={\"bar\"}>{\"foo\"}<App/></MyComponent>',
-      options: ['always,double'],
-      errors: [
-        {message: missingCurlyMessage}, {message: missingCurlyMessage}
-      ]
-    },
-    {
-      code: '<MyComponent prop=\'bar\'><App/>foo</MyComponent>',
-      output: '<MyComponent prop={\"bar\"}><App/>{\"foo\"}</MyComponent>',
-      options: ['always,double'],
-      errors: [
-        {message: missingCurlyMessage}, {message: missingCurlyMessage}
-      ]
-    },
-    {
-      code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
-      output: '<MyComponent prop={\'bar\'}>foo</MyComponent>',
-      options: [{props: 'always,original'}],
-      errors: [{message: missingCurlyMessage}]
-    },
-    {
-      code: '<MyComponent prop=\"bar\">foo</MyComponent>',
-      output: '<MyComponent prop={\"bar\"}>foo</MyComponent>',
-      options: [{props: 'always,original'}],
-      errors: [{message: missingCurlyMessage}]
-    },
-    {
-      code: '<MyComponent prop=\'bar \\n "hello" foo\'>foo</MyComponent>',
-      output: '<MyComponent prop={\'bar \\n "hello" foo\'}>foo</MyComponent>',
-      options: [{props: 'always,original'}],
-      errors: [{message: missingCurlyMessage}]
-    },
-    {
-      code: '<MyComponent prop=\"bar \\n bar \'hello\' foo \">foo</MyComponent>',
-      output: '<MyComponent prop={\"bar \\n bar \'hello\' foo \"}>foo</MyComponent>',
-      options: [{props: 'always,original'}],
-      errors: [{message: missingCurlyMessage}]
-    },
-    {
-      code: '<MyComponent prop=\'bar \\n bar \"hello\" foo \'>foo</MyComponent>',
-      output: '<MyComponent prop={\'bar \\n bar \"hello\" foo \'}>{"foo"}</MyComponent>',
-      options: ['always,original'],
-      errors: [{message: missingCurlyMessage}, {message: missingCurlyMessage}]
-    },
-    {
-      code: '<MyComponent prop=\'foo\'>foo \\n \'bar\' "foo"</MyComponent>',
-      output: '<MyComponent prop={\'foo\'}>{"foo \\\\n \'bar\' \\"foo\\""}</MyComponent>',
-      options: ['always,original'],
-      errors: [{message: missingCurlyMessage}, {message: missingCurlyMessage}]
-    },
-    {
-      code: '<MyComponent prop=\'bar\"bar\"foo\'>foo"bar"</MyComponent>',
-      output: '<MyComponent prop={\'bar\"bar\"foo\'}>{\"foo\\"bar\\"\"}</MyComponent>',
-      options: ['always,single'],
-      errors: [
-        {message: missingCurlyMessage}, {message: missingCurlyMessage}
-      ]
-    },
-    {
-      code: '<MyComponent prop=\'bar\"bar\"foo\'>foo"bar"</MyComponent>',
-      output: '<MyComponent prop={\'bar\"bar\"foo\'}>{\"foo\\"bar\\"\"}</MyComponent>',
-      options: ['always,double'],
-      errors: [
-        {message: missingCurlyMessage}, {message: missingCurlyMessage}
-      ]
-    },
-    {
-      code: '<MyComponent prop="bar\'bar\'foo">foo\'bar\'</MyComponent>',
-      output: '<MyComponent prop={"bar\'bar\'foo"}>{"foo\'bar\'"}</MyComponent>',
-      options: ['always,single'],
-      errors: [
-        {message: missingCurlyMessage}, {message: missingCurlyMessage}
-      ]
-    },
-    {
-      code: '<MyComponent prop="bar\'bar\'foo">foo\'bar\'</MyComponent>',
-      output: '<MyComponent prop={"bar\'bar\'foo"}>{"foo\'bar\'"}</MyComponent>',
-      options: ['always,double'],
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ]
