@@ -49,7 +49,7 @@ They can be fixed to:
 
 ```jsx
 <App>{"Hello world"}</App>;
-<App prop={"Hello world"}>{"Hello world"}</App>;
+<App prop={"Hello world"}>{'Hello world'}</App>;
 ```
 
 When `{ props: "never", children: "never" }` is set, the following patterns will be given warnings.
