@@ -16,7 +16,7 @@ You can pass in options to enforce the presence of curly braces on JSX props or 
 
 ```js
 ...
-"react/forbid-elements": [<enabled>, { "props": <string>, "children": <string> }]
+"react/jsx-curly-brace-presence": [<enabled>, { "props": <string>, "children": <string> }]
 ...
 ```
 
@@ -24,7 +24,7 @@ or alternatively
 
 ```js
 ...
-"react/forbid-elements": [<enabled>, <string>]
+"react/jsx-curly-brace-presence": [<enabled>, <string>]
 ...
 ```
 
@@ -49,21 +49,21 @@ They can be fixed to:
 
 ```jsx
 <App>{"Hello world"}</App>;
-<App prop={"Hello world"}>{'Hello world'}</App>;
+<App prop={'Hello world'}>{'Hello world'}</App>;
 ```
 
 When `{ props: "never", children: "never" }` is set, the following patterns will be given warnings.
 
 ```jsx
 <App>{'Hello world'}</App>;
-<App prop={'Hello world'} />;
+<App prop={'Hello world'} attr={"foo"} />;
 ```
 
 They can be fixed to:
 
 ```jsx
 <App>Hello world</App>;
-<App prop='Hello world' />;
+<App prop='Hello world' attr="foo" />;
 ```
 
 ### Alternative syntax
@@ -78,25 +78,25 @@ When `'always'` is set, the following patterns will be given warnings.
 
 ```jsx
 <App>Hello world</App>;
-<App prop='Hello world'>Hello world</App>;
+<App prop='Hello world' attr="foo">Hello world</App>;
 ```
 
 They can be fixed to:
 ```jsx
 <App>{"Hello world"}</App>;
-<App prop={"Hello world"}>{"Hello world"}</App>;
+<App prop={'Hello world'} attr={"foo"}>{"Hello world"}</App>;
 ```
 
 When `'never'` is set, the following pattern will be given warnings.
 
 ```jsx
-<App prop={'foo'}>{'Hello world'}</App>;
+<App prop={'foo'} attr={"bar"}>{'Hello world'}</App>;
 ```
 
 It can fixed to:
 
 ```jsx
-<App prop='foo'>Hello world</App>;
+<App prop='foo' attr="bar">Hello world</App>;
 ```
 
 ## Edge cases
