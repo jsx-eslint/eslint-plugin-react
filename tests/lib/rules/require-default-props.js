@@ -1307,6 +1307,25 @@ ruleTester.run('require-default-props', rule, {
       }]
     },
 
+    // component with no declared props followed by a failing component
+    {
+      code: [
+        'var ComponentWithNoProps = ({ bar = "bar" }) => {',
+        '  return <div>Hello {this.props.foo}</div>;',
+        '}',
+        'var Greetings = ({ foo = "foo" }) => {',
+        '  return <div>Hello {this.props.foo}</div>;',
+        '}',
+        'Greetings.propTypes = {',
+        '  foo: PropTypes.string',
+        '};'
+      ].join('\n'),
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.',
+        line: 8,
+        column: 3
+      }]
+    },
     //
     // with Flow annotations
     {
