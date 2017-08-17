@@ -1572,6 +1572,20 @@ ruleTester.run('prop-types', rule, {
       `,
       parser: 'babel-eslint'
     },
+    {
+      code: `
+        type FancyProps = {
+          foo: string,
+        };
+
+        class Bar extends React.Component<FancyProps> {
+          render() {
+            return <div>{this.props.foo}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    },
     // issue #1288
     `function Foo() {
       const props = {}
