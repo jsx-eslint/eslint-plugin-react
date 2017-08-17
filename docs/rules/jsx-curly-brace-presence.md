@@ -32,9 +32,14 @@ or alternatively
 
 They are `always`, `never` and `ignore` for checking on JSX props and children.
 
-* `always`: always enforce curly braces inside JSX props or/and children and fix with double quotes for JSX children inside the generated JSX expressions
+* `always`: always enforce curly braces inside JSX props or/and children
 * `never`: never allow unnecessary curly braces inside JSX props or/and children
 * `ignore`: ignore the rule for JSX props or/and children
+
+If passed in the option to fix, this is how a style violation will get fixed
+
+* `always`: wrap a JSX attribute in curly braces/JSX expression and/or a JSX child the same way but also with double quotes
+* `never`: get rid of curly braces from a JSX attribute and/or a JSX child
 
 For examples:
 
