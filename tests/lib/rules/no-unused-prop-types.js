@@ -2029,6 +2029,31 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint',
       options: [{skipShapeProps: false}]
+    }, {
+      // issue #106
+      code: `
+      import React from 'react';
+      import SharedPropTypes from './SharedPropTypes';
+
+      export default class A extends React.Component {
+        render() {
+          return (
+            <span
+              a={this.props.a}
+              b={this.props.b}
+              c={this.props.c}>
+              {this.props.children}
+            </span>
+          );
+        }
+      }
+
+      A.propTypes = {
+        a: React.PropTypes.string,
+        ...SharedPropTypes // eslint-disable-line object-shorthand
+      };
+    `,
+      parser: 'babel-eslint'
     }
   ],
 
