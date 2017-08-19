@@ -99,29 +99,41 @@ const ARROW_NO_PAREN = `
 const CONDITION_SINGLE_LINE = 'foo ? <p>Hello</p> : null;';
 
 const CONDITION_PAREN = `
-  foo ? (<div>
-    <p>Hello</p>
-  </div>) : null;
+  <div>
+    {foo ? (<div>
+        <p>Hello</p>
+      </div>) : null}
+  </div>
 `;
 
 const CONDITION_NO_PAREN = `
-  foo ? <div>
-    <p>Hello</p>
-  </div> : null;
+  <div>
+    {foo ? <div>
+        <p>Hello</p>
+      </div> : null}
+  </div>
 `;
 
 const LOGICAL_SINGLE_LINE = 'foo && <p>Hello</p>;';
 
 const LOGICAL_PAREN = `
-  foo && (<div>
-    <p>Hello</p>
-  </div>);
+  <div>
+    {foo &&
+      (<div>
+        <p>Hello World</p>
+      </div>)
+    }
+  </div>
 `;
 
 const LOGICAL_NO_PAREN = `
-  foo && <div>
-    <p>Hello</p>
-  </div>;
+  <div>
+    {foo &&
+      <div>
+        <p>Hello World</p>
+      </div>
+    }
+  </div>
 `;
 
 const ATTR_SINGLE_LINE = '<div attr={<p>Hello</p>}></div>';
