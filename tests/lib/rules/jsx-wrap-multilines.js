@@ -52,44 +52,6 @@ const RETURN_NO_PAREN = `
   });
 `;
 
-const DECLARATION_TERNARY_SINGLE_LINE = 'var hello = foo ? <p>Hello</p> : <p>Hi</p>;';
-
-const DECLARATION_TERNARY_PAREN = `
-  var hello = foo ? (<div>
-    <p>Hello</p>
-  </div>) : (<div>
-    <p>Hi</p>
-  </div>);
-`;
-
-const DECLARATION_TERNARY_NO_PAREN = `
-  var hello = foo ? <div>
-    <p>Hello</p>
-  </div> : <div>
-    <p>Hi</p>
-  </div>;
-`;
-
-const ASSIGNMENT_TERNARY_SINGLE_LINE = 'var hello; hello = foo ? <p>Hello</p> : <p>Hi</p>;';
-
-const ASSIGNMENT_TERNARY_PAREN = `
-  var hello;
-  hello = foo ? (<div>
-    <p>Hello</p>
-  </div>) : (<div>
-    <p>Hi</p>
-  </div>);
-`;
-
-const ASSIGNMENT_TERNARY_NO_PAREN = `
-  var hello;
-  hello = foo ? <div>
-    <p>Hello</p>
-  </div> : <div>
-    <p>Hi</p>
-  </div>;
-`;
-
 const DECLARATION_SINGLE_LINE = 'var hello = <p>Hello</p>;';
 
 const DECLARATION_PAREN = `
@@ -134,6 +96,52 @@ const ARROW_NO_PAREN = `
   </div>;
 `;
 
+const CONDITION_SINGLE_LINE = 'foo ? <p>Hello</p> : null;';
+
+const CONDITION_PAREN = `
+  foo ? (<div>
+    <p>Hello</p>
+  </div>) : null;
+`;
+
+const CONDITION_NO_PAREN = `
+  foo ? <div>
+    <p>Hello</p>
+  </div> : null;
+`;
+
+const LOGICAL_SINGLE_LINE = 'foo && <p>Hello</p>;';
+
+const LOGICAL_PAREN = `
+  foo && (<div>
+    <p>Hello</p>
+  </div>);
+`;
+
+const LOGICAL_NO_PAREN = `
+  foo && <div>
+    <p>Hello</p>
+  </div>;
+`;
+
+const ATTR_SINGLE_LINE = '<div attr={<p>Hello</p>}></div>';
+
+const ATTR_PAREN = `
+  <div attr={(<div>
+      <p>Hello</p>
+    </div>)}>
+    <p>Hello</p>
+  </div>;
+`;
+
+const ATTR_NO_PAREN = `
+  <div attr={<div>
+      <p>Hello</p>
+    </div>}>
+    <p>Hello</p>
+  </div>;
+`;
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -149,20 +157,6 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     }, {
       code: RETURN_NO_PAREN,
       options: [{return: false}]
-    }, {
-      code: DECLARATION_TERNARY_SINGLE_LINE
-    }, {
-      code: DECLARATION_TERNARY_PAREN
-    }, {
-      code: DECLARATION_TERNARY_NO_PAREN,
-      options: [{declaration: false}]
-    }, {
-      code: ASSIGNMENT_TERNARY_SINGLE_LINE
-    }, {
-      code: ASSIGNMENT_TERNARY_PAREN
-    }, {
-      code: ASSIGNMENT_TERNARY_NO_PAREN,
-      options: [{assignment: false}]
     }, {
       code: DECLARATION_SINGLE_LINE
     }, {
@@ -187,6 +181,27 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     }, {
       code: ARROW_NO_PAREN,
       options: [{arrow: false}]
+    }, {
+      code: CONDITION_SINGLE_LINE
+    }, {
+      code: CONDITION_NO_PAREN
+    }, {
+      code: CONDITION_PAREN,
+      options: [{condition: true}]
+    }, {
+      code: LOGICAL_SINGLE_LINE
+    }, {
+      code: LOGICAL_NO_PAREN
+    }, {
+      code: LOGICAL_PAREN,
+      options: [{logical: true}]
+    }, {
+      code: ATTR_SINGLE_LINE
+    }, {
+      code: ATTR_NO_PAREN
+    }, {
+      code: ATTR_PAREN,
+      options: [{attr: true}]
     }
   ],
 
@@ -200,20 +215,6 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       output: RETURN_PAREN,
       options: [{return: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
-    }, {
-      code: DECLARATION_TERNARY_NO_PAREN,
-      output: DECLARATION_TERNARY_PAREN,
-      errors: [
-        {message: 'Missing parentheses around multilines JSX'},
-        {message: 'Missing parentheses around multilines JSX'}
-      ]
-    }, {
-      code: ASSIGNMENT_TERNARY_NO_PAREN,
-      output: ASSIGNMENT_TERNARY_PAREN,
-      errors: [
-        {message: 'Missing parentheses around multilines JSX'},
-        {message: 'Missing parentheses around multilines JSX'}
-      ]
     }, {
       code: DECLARATION_NO_PAREN,
       output: DECLARATION_PAREN,
@@ -236,6 +237,21 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: ARROW_NO_PAREN,
       output: ARROW_PAREN,
       options: [{arrow: true}],
+      errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: CONDITION_NO_PAREN,
+      output: CONDITION_PAREN,
+      options: [{condition: true}],
+      errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: LOGICAL_NO_PAREN,
+      output: LOGICAL_PAREN,
+      options: [{logical: true}],
+      errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: ATTR_NO_PAREN,
+      output: ATTR_PAREN,
+      options: [{attr: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }
   ]
