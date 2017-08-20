@@ -6,7 +6,7 @@ Wrapping multiline JSX in parentheses can improve readability and/or convenience
 
 ## Rule Details
 
-This rule optionally takes a second parameter in the form of an object, containing places to apply the rule. By default, all the syntax listed below will be checked, but these can be explicitly disabled. Any syntax type missing in the object will follow the default behavior (become enabled).
+This rule optionally takes a second parameter in the form of an object, containing places to apply the rule. By default, all the syntax listed below will be checked except the conditional expressions, logical expressions and JSX attributes, but these can be explicitly disabled. Any syntax type missing in the object will follow the default behavior (become enabled).
 
 There are the possible syntax available:
 
@@ -14,6 +14,9 @@ There are the possible syntax available:
 * `assignment`
 * `return`
 * `arrow`
+* `condition` (not enabled by default)
+* `logical` (not enabled by default)
+* `attr` (not enabled by default)
 
 The following patterns are considered warnings:
 
@@ -117,4 +120,63 @@ var hello = () => (
     <p>World</p>
   </div>
 );
+```
+
+The following patterns are considered warnings when configured `{condition: true}`.
+
+```jsx
+<div>
+  {foo ? <div>
+      <p>Hello</p>
+    </div> : null}
+</div>
+```
+
+The following patterns are not considered warnings when configured `{condition: true}`.
+
+```jsx
+<div>
+  {foo ? (<div>
+      <p>Hello</p>
+  </div>) : null}
+</div>
+```
+
+
+The following patterns are considered warnings when configured `{logical: true}`.
+
+```jsx
+<div>
+  {foo &&
+    <div>
+      <p>Hello World</p>
+    </div>
+  }
+</div>
+```
+
+The following patterns are not considered warnings when configured `{logical: true}`.
+
+```jsx
+<div> not
+```
+
+The following patterns are considered warnings when configured `{attr: true}`.
+
+```jsx
+<div attr={<div>
+    <p>Hello</p>
+  </div>}>
+  <p>Hello</p>
+</div>;
+```
+
+The following patterns are not considered warnings when configured `{attr: true}`.
+
+```jsx
+<div attr={(<div>
+    <p>Hello</p>
+  </div>)}>
+  <p>Hello</p>
+</div>;
 ```
