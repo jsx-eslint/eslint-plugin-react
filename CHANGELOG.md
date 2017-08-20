@@ -25,9 +25,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * Add [`no-unused-state`][] rule ([#1103][] @wbinnssmith)
 * Add [`boolean-prop-naming`][] rule ([#1264][] @EvHaus)
 * Add [`no-typos`][] rule ([#1189][] @jseminck, [#1294][] @haridusenadeera)
-* Add auto fix for [`sort-props`][] ([#1273][] @Overload119)
+* Add auto fix for [`jsx-sort-props`][] ([#1273][] @Overload119)
 * Add `getters` and `setters` groups to [`sort-comp`][] ([#100][] @RDGthree)
-* Add `noStrings` option to [`no-literals`][] ([#1202][] @deecewan)
+* Add `noStrings` option to [`jsx-no-literals`][] ([#1202][] @deecewan)
 * Add inverse option for `always`/`never` to [`jsx-boolean-value`][] ([#1249][] @ljharb)
 
 ### Fixed
@@ -39,9 +39,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * Fix [`no-danger-with-children`][] to ignore line breaks ([#1262][])
 * Fix [`no-danger-with-children`][] crash with undefined ([#1287][])
 * Fix [`jsx-no-target-blank`][] crash ([#1296][] @jseminck)
-* Fix [`no-unused-props`][] to no longer ignore components with no used props ([#1303][] @DianaSuvorova)
+* Fix [`no-unused-prop-types`][] to no longer ignore components with no used props ([#1303][] @DianaSuvorova)
 * Fix [`jsx-no-duplicate-props`][] crash ([#969][] @marcelmokos)
-* Fix [`no-literals`][] false positives ([#1301][] @davidyorr)
+* Fix [`jsx-no-literals`][] false positives ([#1301][] @davidyorr)
 * Fix [`no-find-dom-node`][] detection with named imports ([#785][] @Hypnosphi)
 * Fix proTypes-related rules detection with wrapped propTypes ([#1266][] @dustinsoftware)
 * Fix [`no-unused-prop-types`][] detection with propTypes wrapped in a function ([#1253][] @dustinsoftware)
@@ -620,7 +620,7 @@ React ([#1073][] @jomasti)
 * Add Node.js 0.10 as minimum required version ([#657][] @jokeyrhyme)
 
 ### Fixed
-* Fix [`jsx-handler-names`][] incorrectly flagging [`only`][] ([#571][] @lencioni)
+* Fix [`jsx-handler-names`][] incorrectly flagging `only` ([#571][] @lencioni)
 * Fix spread props cash in [`jsx-no-target-blank`][] ([#679][] @randycoulman)
 * Fix [`require-optimization`][] warning on stateless components ([#687][])
 * Fix [`jsx-uses-vars`][] that incorrectly marked some variables as used ([#694][] @lencioni)
@@ -1446,7 +1446,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 * In [`jsx-curly-spacing`][] braces spanning multiple lines are now allowed with `never` option ([#156][] @mathieumg)
 
 ### Fixed
-* Fix multiple var and destructuring handling in [`props-types`][] ([#159][])
+* Fix multiple var and destructuring handling in [`prop-types`][] ([#159][])
 * Fix crash when retrieving propType name ([#163][])
 
 [3.0.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v2.7.1...v3.0.0
@@ -1894,7 +1894,6 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`no-unused-state`]: docs/rules/no-unused-state.md
 [`boolean-prop-naming`]: docs/rules/boolean-prop-naming.md
 [`no-typos`]: docs/rules/no-typos.md
-
 [`jsx-sort-prop-types`]: docs/rules/sort-prop-types.md
 [`require-extension`]: docs/rules/require-extension.md
 [`no-comment-textnodes`]: docs/rules/jsx-no-comment-textnodes.md
