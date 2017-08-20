@@ -69,6 +69,20 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n')
+  }, {
+    code: `
+      class OneComponent extends Component {
+        constructor() {
+          super();
+          class AnotherComponent extends Component {
+            constructor() {
+              super();
+            }
+          }
+          this.state = {};
+        }
+      }
+    `
   }],
 
   invalid: [{
