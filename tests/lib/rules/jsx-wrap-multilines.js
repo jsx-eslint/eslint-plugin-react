@@ -139,19 +139,23 @@ const LOGICAL_NO_PAREN = `
 const ATTR_SINGLE_LINE = '<div attr={<p>Hello</p>}></div>';
 
 const ATTR_PAREN = `
-  <div attr={(<div>
+  <div attr={
+    (<div>
       <p>Hello</p>
-    </div>)}>
+    </div>)
+  }>
     <p>Hello</p>
-  </div>;
+  </div>
 `;
 
 const ATTR_NO_PAREN = `
-  <div attr={<div>
+  <div attr={
+    <div>
       <p>Hello</p>
-    </div>}>
+    </div>
+  }>
     <p>Hello</p>
-  </div>;
+  </div>
 `;
 
 // ------------------------------------------------------------------------------
