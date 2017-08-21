@@ -28,6 +28,10 @@ const settings = {
 
 require('babel-eslint');
 
+function withAndWithoutFlowVersion(flowVersion, test) {
+  return [test, Object.assign({}, test, {settings: {react: {flowVersion}}})];
+}
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -1475,7 +1479,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    }, {
+    }, ...withAndWithoutFlowVersion('0.52', {
       code: [
         'type Person = {',
         '  firstname: string',
@@ -1487,7 +1491,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    }, {
+    }), ...withAndWithoutFlowVersion('0.52', {
       code: [
         'type Person = {',
         '  firstname: string',
@@ -1500,7 +1504,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    }, {
+    }), ...withAndWithoutFlowVersion('0.52', {
       code: [
         'type Person = {',
         '  firstname: string',
@@ -1515,7 +1519,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    }, {
+    }), ...withAndWithoutFlowVersion('0.52', {
       code: [
         'type Props = {name: {firstname: string;};};',
         'class Hello extends React.Component<void, Props, void> {',
@@ -1525,7 +1529,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    }, {
+    }), ...withAndWithoutFlowVersion('0.52', {
       code: [
         'import type Props from "fake";',
         'class Hello extends React.Component<void, Props, void> {',
@@ -1535,7 +1539,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    }, {
+    }), ...withAndWithoutFlowVersion('0.52', {
       code: [
         'type Person = {',
         '  firstname: string',
@@ -1547,7 +1551,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    }, {
+    }), ...withAndWithoutFlowVersion('0.52', {
       code: [
         'type Props = {result?: {ok?: ?string | boolean;}|{ok?: ?number | Array}};',
         'class Hello extends React.Component<void, Props, void> {',
@@ -1557,8 +1561,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    },
-    {
+    }), ...withAndWithoutFlowVersion('0.53', {
       code: `
         type Props = {
           foo: string,
@@ -1571,7 +1574,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: 'babel-eslint'
-    }, {
+    }), ...withAndWithoutFlowVersion('0.53', {
       code: `
         type FancyProps = {
           foo: string,
@@ -1584,7 +1587,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: 'babel-eslint'
-    },
+    }),
     // issue #1288
     `function Foo() {
       const props = {}
@@ -2847,7 +2850,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {message: '\'name\' is missing in props validation'}
       ]
-    }, {
+    }, ...withAndWithoutFlowVersion('0.52', {
       code: [
         'type Person = {',
         '  firstname: string',
@@ -2865,7 +2868,7 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }],
       parser: 'babel-eslint'
-    }, {
+    }), ...withAndWithoutFlowVersion('0.52', {
       code: [
         'type Person = {',
         '  firstname: string',
@@ -2884,7 +2887,7 @@ ruleTester.run('prop-types', rule, {
         type: 'Property'
       }],
       parser: 'babel-eslint'
-    }, {
+    }), ...withAndWithoutFlowVersion('0.52', {
       code: [
         'type Person = {',
         '  firstname: string',
@@ -2905,7 +2908,7 @@ ruleTester.run('prop-types', rule, {
         type: 'Property'
       }],
       parser: 'babel-eslint'
-    }, {
+    }), ...withAndWithoutFlowVersion('0.52', {
       code: [
         'type Props = {name: {firstname: string;};};',
         'class Hello extends React.Component<void, Props, void> {',
@@ -2921,7 +2924,7 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }],
       parser: 'babel-eslint'
-    }, {
+    }), ...withAndWithoutFlowVersion('0.52', {
       code: [
         'type Props = {result?: {ok: string | boolean;}|{ok: number | Array}};',
         'class Hello extends React.Component<void, Props, void> {',
@@ -2937,7 +2940,7 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }],
       parser: 'babel-eslint'
-    }, {
+    }), ...withAndWithoutFlowVersion('0.52', {
       code: [
         'type Person = {',
         '  firstname: string',
@@ -2955,7 +2958,7 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }],
       parser: 'babel-eslint'
-    }, {
+    }), ...withAndWithoutFlowVersion('0.53', {
       code: `
         type Props = {
           foo: string,
@@ -2974,7 +2977,7 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }],
       parser: 'babel-eslint'
-    }, {
+    }), ...withAndWithoutFlowVersion('0.53', {
       code: `
         type FancyProps = {
           foo: string,
@@ -2993,6 +2996,6 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }],
       parser: 'babel-eslint'
-    }
+    })
   ]
 });
