@@ -70,6 +70,14 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '}'
     ].join('\n')
   }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  constructor() {',
+      '    this.state.foo = 1;',
+      '  }',
+      '}'
+    ].join('\n')
+  }, {
     code: `
       class OneComponent extends Component {
         constructor() {
@@ -90,6 +98,18 @@ ruleTester.run('no-direct-mutation-state', rule, {
       'var Hello = createReactClass({',
       '  render: function() {',
       '    this.state.foo = "bar"',
+      '    return <div>Hello {this.props.name}</div>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'var Hello = createReactClass({',
+      '  render: function() {',
+      '    this.state.foo++;',
       '    return <div>Hello {this.props.name}</div>;',
       '  }',
       '});'
