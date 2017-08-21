@@ -3,6 +3,27 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.3.0] - 2017-08-21
+### Added
+* Add checks for `propTypes`, `contextTypes` and `childContextTypes` to [`no-typos`][] ([#213][] @DianaSuvorova)
+
+### Fixed
+* Fix [`boolean-prop-naming`][] crash ([#1369][] @EvHaus)
+* Fix [`no-typos`][] crash ([#1353][] @jseminck)
+* Fix [`require-default-props`][] stopping when it finds a component without props ([#1380][] @brgibson)
+* Fix [`no-direct-mutation-state`][] detection with nested components ([#1382][])
+
+### Changed
+* Documentation improvements ([#1383][] @mjomble)
+
+[7.3.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.2.1...v7.3.0
+[#213]: https://github.com/yannickcr/eslint-plugin-react/issues/213
+[#1369]: https://github.com/yannickcr/eslint-plugin-react/issues/1369
+[#1353]: https://github.com/yannickcr/eslint-plugin-react/issues/1353
+[#1380]: https://github.com/yannickcr/eslint-plugin-react/pull/1380
+[#1382]: https://github.com/yannickcr/eslint-plugin-react/issues/1382
+[#1383]: https://github.com/yannickcr/eslint-plugin-react/pull/1383
+
 ## [7.2.1] - 2017-08-14
 ### Fixed
 * Fix [`forbid-prop-types`][] crash on identifiers ([#1352][] @ljharb)
