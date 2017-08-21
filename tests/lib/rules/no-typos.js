@@ -239,6 +239,15 @@ ruleTester.run('no-typos', rule, {
     ].join('\n'),
     parserOptions: parserOptions
   }, {
+    // PropTypes declared on a component that is detected through JSDoc comments and is
+    // declared AFTER the PropTypes assignment does not work.
+    code: `
+      MyComponent.PROPTYPES = {}
+      /** @extends React.Component */
+      class MyComponent extends BaseComponent {}
+    `,
+    parserOptions: parserOptions
+  }, {
     // https://github.com/yannickcr/eslint-plugin-react/issues/1353
     code: `
       function test(b) {
@@ -511,6 +520,21 @@ ruleTester.run('no-typos', rule, {
       'function MyComponent() { return (<div>{this.props.myProp}</div>) }',
       'MyComponent.defaultprops = {}'
     ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: [
+      'Component.defaultprops = {}',
+      'class Component extends React.Component {}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: `
+      /** @extends React.Component */
+      class MyComponent extends BaseComponent {}
+      MyComponent.PROPTYPES = {}
+    `,
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
