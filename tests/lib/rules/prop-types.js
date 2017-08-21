@@ -1486,7 +1486,6 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      settings: {react: {flowVersion: '0.52.0'}},
       parser: 'babel-eslint'
     }, {
       code: [
@@ -1500,7 +1499,6 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      settings: {react: {flowVersion: '0.52.0'}},
       parser: 'babel-eslint'
     }, {
       code: [
@@ -1516,7 +1514,6 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      settings: {react: {flowVersion: '0.52.0'}},
       parser: 'babel-eslint'
     }, {
       code: [
@@ -1537,7 +1534,6 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      settings: {react: {flowVersion: '0.52.0'}},
       parser: 'babel-eslint'
     }, {
       code: [
@@ -1550,7 +1546,6 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      settings: {react: {flowVersion: '0.52.0'}},
       parser: 'babel-eslint'
     }, {
       code: [
@@ -1561,7 +1556,6 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      settings: {react: {flowVersion: '0.52.0'}},
       parser: 'babel-eslint'
     },
     {
@@ -1576,7 +1570,6 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.53.0'}},
       parser: 'babel-eslint'
     }, {
       code: `
@@ -1590,7 +1583,6 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.53.0'}},
       parser: 'babel-eslint'
     },
     // issue #1288
@@ -2872,7 +2864,6 @@ ruleTester.run('prop-types', rule, {
         column: 35,
         type: 'Identifier'
       }],
-      settings: {react: {flowVersion: '0.52.0'}},
       parser: 'babel-eslint'
     }, {
       code: [
@@ -2892,7 +2883,6 @@ ruleTester.run('prop-types', rule, {
         column: 13,
         type: 'Property'
       }],
-      settings: {react: {flowVersion: '0.52.0'}},
       parser: 'babel-eslint'
     }, {
       code: [
@@ -2914,7 +2904,6 @@ ruleTester.run('prop-types', rule, {
         column: 7,
         type: 'Property'
       }],
-      settings: {react: {flowVersion: '0.52.0'}},
       parser: 'babel-eslint'
     }, {
       code: [
@@ -2931,7 +2920,6 @@ ruleTester.run('prop-types', rule, {
         column: 40,
         type: 'Identifier'
       }],
-      settings: {react: {flowVersion: '0.52.0'}},
       parser: 'babel-eslint'
     }, {
       code: [
@@ -2948,7 +2936,6 @@ ruleTester.run('prop-types', rule, {
         column: 42,
         type: 'Identifier'
       }],
-      settings: {react: {flowVersion: '0.52.0'}},
       parser: 'babel-eslint'
     }, {
       code: [
@@ -2967,7 +2954,6 @@ ruleTester.run('prop-types', rule, {
         column: 42,
         type: 'Identifier'
       }],
-      settings: {react: {flowVersion: '0.52.0'}},
       parser: 'babel-eslint'
     }, {
       code: `
@@ -2987,7 +2973,6 @@ ruleTester.run('prop-types', rule, {
         column: 37,
         type: 'Identifier'
       }],
-      settings: {react: {flowVersion: '0.53.0'}},
       parser: 'babel-eslint'
     }, {
       code: `
@@ -3007,7 +2992,6 @@ ruleTester.run('prop-types', rule, {
         column: 37,
         type: 'Identifier'
       }],
-      settings: {react: {flowVersion: '0.53.0'}},
       parser: 'babel-eslint'
     }
   ]
