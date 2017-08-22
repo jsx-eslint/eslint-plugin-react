@@ -28,10 +28,6 @@ const settings = {
 
 require('babel-eslint');
 
-function withAndWithoutFlowVersion(flowVersion, test) {
-  return [test, Object.assign({}, test, {settings: {react: {flowVersion: flowVersion}}})];
-}
-
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -1479,7 +1475,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    }, ...withAndWithoutFlowVersion('0.52', {
+    }, {
       code: [
         'type Person = {',
         '  firstname: string',
@@ -1491,7 +1487,20 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    }), ...withAndWithoutFlowVersion('0.52', {
+    }, {
+      code: [
+        'type Person = {',
+        '  firstname: string',
+        '};',
+        'class Hello extends React.Component<void, Person, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      settings: {react: {flowVersion: '0.52'}},
+      parser: 'babel-eslint'
+    }, {
       code: [
         'type Person = {',
         '  firstname: string',
@@ -1504,22 +1513,21 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    }), ...withAndWithoutFlowVersion('0.52', {
+    }, {
       code: [
         'type Person = {',
         '  firstname: string',
         '};',
         'class Hello extends React.Component<void, Person, void> {',
         '  render () {',
-        '    const {',
-        '      firstname,',
-        '    } = this.props;',
+        '    const { firstname } = this.props;',
         '    return <div>Hello {firstname}</div>;',
         '  }',
         '}'
       ].join('\n'),
+      settings: {react: {flowVersion: '0.52'}},
       parser: 'babel-eslint'
-    }), ...withAndWithoutFlowVersion('0.52', {
+    }, {
       code: [
         'type Props = {name: {firstname: string;};};',
         'class Hello extends React.Component<void, Props, void> {',
@@ -1529,7 +1537,18 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    }), ...withAndWithoutFlowVersion('0.52', {
+    }, {
+      code: [
+        'type Props = {name: {firstname: string;};};',
+        'class Hello extends React.Component<void, Props, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.name.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      settings: {react: {flowVersion: '0.52'}},
+      parser: 'babel-eslint'
+    }, {
       code: [
         'import type Props from "fake";',
         'class Hello extends React.Component<void, Props, void> {',
@@ -1539,7 +1558,18 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    }), ...withAndWithoutFlowVersion('0.52', {
+    }, {
+      code: [
+        'import type Props from "fake";',
+        'class Hello extends React.Component<void, Props, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      settings: {react: {flowVersion: '0.52'}},
+      parser: 'babel-eslint'
+    }, {
       code: [
         'type Person = {',
         '  firstname: string',
@@ -1551,7 +1581,20 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    }), ...withAndWithoutFlowVersion('0.52', {
+    }, {
+      code: [
+        'type Person = {',
+        '  firstname: string',
+        '};',
+        'class Hello extends React.Component<void, { person: Person }, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.person.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      settings: {react: {flowVersion: '0.52'}},
+      parser: 'babel-eslint'
+    }, {
       code: [
         'type Props = {result?: {ok?: ?string | boolean;}|{ok?: ?number | Array}};',
         'class Hello extends React.Component<void, Props, void> {',
@@ -1561,7 +1604,18 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
-    }), ...withAndWithoutFlowVersion('0.53', {
+    }, {
+      code: [
+        'type Props = {result?: {ok?: ?string | boolean;}|{ok?: ?number | Array}};',
+        'class Hello extends React.Component<void, Props, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.result.ok}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      settings: {react: {flowVersion: '0.52'}},
+      parser: 'babel-eslint'
+    }, {
       code: `
         type Props = {
           foo: string,
@@ -1574,7 +1628,21 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: 'babel-eslint'
-    }), ...withAndWithoutFlowVersion('0.53', {
+    }, {
+      code: `
+        type Props = {
+          foo: string,
+        };
+
+        class Bar extends React.Component<Props> {
+          render() {
+            return <div>{this.props.foo}</div>
+          }
+        }
+      `,
+      settings: {react: {flowVersion: '0.53'}},
+      parser: 'babel-eslint'
+    }, {
       code: `
         type FancyProps = {
           foo: string,
@@ -1587,7 +1655,21 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: 'babel-eslint'
-    }),
+    }, {
+      code: `
+        type FancyProps = {
+          foo: string,
+        };
+
+        class Bar extends React.Component<FancyProps> {
+          render() {
+            return <div>{this.props.foo}</div>
+          }
+        }
+      `,
+      settings: {react: {flowVersion: '0.53'}},
+      parser: 'babel-eslint'
+    },
     // issue #1288
     `function Foo() {
       const props = {}
@@ -2850,7 +2932,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {message: '\'name\' is missing in props validation'}
       ]
-    }, ...withAndWithoutFlowVersion('0.52', {
+    }, {
       code: [
         'type Person = {',
         '  firstname: string',
@@ -2868,26 +2950,26 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }],
       parser: 'babel-eslint'
-    }), ...withAndWithoutFlowVersion('0.52', {
+    }, {
       code: [
         'type Person = {',
         '  firstname: string',
         '};',
         'class Hello extends React.Component<void, Person, void> {',
         '  render () {',
-        '    const { lastname } = this.props;',
-        '    return <div>Hello {lastname}</div>;',
+        '    return <div>Hello {this.props.lastname}</div>;',
         '  }',
         '}'
       ].join('\n'),
       errors: [{
         message: '\'lastname\' is missing in props validation',
         line: 6,
-        column: 13,
-        type: 'Property'
+        column: 35,
+        type: 'Identifier'
       }],
+      settings: {react: {flowVersion: '0.52'}},
       parser: 'babel-eslint'
-    }), ...withAndWithoutFlowVersion('0.52', {
+    }, {
       code: [
         'type Person = {',
         '  firstname: string',
@@ -2908,7 +2990,29 @@ ruleTester.run('prop-types', rule, {
         type: 'Property'
       }],
       parser: 'babel-eslint'
-    }), ...withAndWithoutFlowVersion('0.52', {
+    }, {
+      code: [
+        'type Person = {',
+        '  firstname: string',
+        '};',
+        'class Hello extends React.Component<void, Person, void> {',
+        '  render () {',
+        '    const {',
+        '      lastname,',
+        '    } = this.props;',
+        '    return <div>Hello {lastname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      errors: [{
+        message: '\'lastname\' is missing in props validation',
+        line: 7,
+        column: 7,
+        type: 'Property'
+      }],
+      settings: {react: {flowVersion: '0.52'}},
+      parser: 'babel-eslint'
+    }, {
       code: [
         'type Props = {name: {firstname: string;};};',
         'class Hello extends React.Component<void, Props, void> {',
@@ -2924,7 +3028,24 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }],
       parser: 'babel-eslint'
-    }), ...withAndWithoutFlowVersion('0.52', {
+    }, {
+      code: [
+        'type Props = {name: {firstname: string;};};',
+        'class Hello extends React.Component<void, Props, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.name.lastname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      errors: [{
+        message: '\'name.lastname\' is missing in props validation',
+        line: 4,
+        column: 40,
+        type: 'Identifier'
+      }],
+      settings: {react: {flowVersion: '0.52'}},
+      parser: 'babel-eslint'
+    }, {
       code: [
         'type Props = {result?: {ok: string | boolean;}|{ok: number | Array}};',
         'class Hello extends React.Component<void, Props, void> {',
@@ -2940,7 +3061,24 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }],
       parser: 'babel-eslint'
-    }), ...withAndWithoutFlowVersion('0.52', {
+    }, {
+      code: [
+        'type Props = {result?: {ok: string | boolean;}|{ok: number | Array}};',
+        'class Hello extends React.Component<void, Props, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.result.notok}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      errors: [{
+        message: '\'result.notok\' is missing in props validation',
+        line: 4,
+        column: 42,
+        type: 'Identifier'
+      }],
+      settings: {react: {flowVersion: '0.52'}},
+      parser: 'babel-eslint'
+    }, {
       code: [
         'type Person = {',
         '  firstname: string',
@@ -2958,7 +3096,26 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }],
       parser: 'babel-eslint'
-    }), ...withAndWithoutFlowVersion('0.53', {
+    }, {
+      code: [
+        'type Person = {',
+        '  firstname: string',
+        '};',
+        'class Hello extends React.Component<void, { person: Person }, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.person.lastname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      errors: [{
+        message: '\'person.lastname\' is missing in props validation',
+        line: 6,
+        column: 42,
+        type: 'Identifier'
+      }],
+      settings: {react: {flowVersion: '0.52'}},
+      parser: 'babel-eslint'
+    }, {
       code: `
         type Props = {
           foo: string,
@@ -2977,7 +3134,27 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }],
       parser: 'babel-eslint'
-    }), ...withAndWithoutFlowVersion('0.53', {
+    }, {
+      code: `
+        type Props = {
+          foo: string,
+        };
+
+        class Bar extends React.Component<Props> {
+          render() {
+            return <div>{this.props.bar}</div>
+          }
+        }
+      `,
+      errors: [{
+        message: '\'bar\' is missing in props validation',
+        line: 8,
+        column: 37,
+        type: 'Identifier'
+      }],
+      settings: {react: {flowVersion: '0.53'}},
+      parser: 'babel-eslint'
+    }, {
       code: `
         type FancyProps = {
           foo: string,
@@ -2996,6 +3173,26 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }],
       parser: 'babel-eslint'
-    })
+    }, {
+      code: `
+        type FancyProps = {
+          foo: string,
+        };
+
+        class Bar extends React.Component<FancyProps> {
+          render() {
+            return <div>{this.props.bar}</div>
+          }
+        }
+      `,
+      errors: [{
+        message: '\'bar\' is missing in props validation',
+        line: 8,
+        column: 37,
+        type: 'Identifier'
+      }],
+      settings: {react: {flowVersion: '0.53'}},
+      parser: 'babel-eslint'
+    }
   ]
 });
