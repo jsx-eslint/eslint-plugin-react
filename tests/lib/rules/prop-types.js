@@ -29,7 +29,7 @@ const settings = {
 require('babel-eslint');
 
 function withAndWithoutFlowVersion(flowVersion, test) {
-  return [test, Object.assign({}, test, {settings: {react: {flowVersion}}})];
+  return [test, Object.assign({}, test, {settings: {react: {flowVersion: flowVersion}}})];
 }
 
 // ------------------------------------------------------------------------------
