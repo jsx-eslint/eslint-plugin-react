@@ -158,7 +158,13 @@ The following patterns are considered warnings when configured `{logical: true}`
 The following patterns are not considered warnings when configured `{logical: true}`.
 
 ```jsx
-<div> not
+<div>
+  {foo &&
+    (<div>
+      <p>Hello World</p>
+    </div>)
+  }
+</div>
 ```
 
 The following patterns are considered warnings when configured `{attr: true}`.
