@@ -51,6 +51,7 @@ const RETURN_NO_PAREN = `
     }
   });
 `;
+
 const DECLARATION_TERNARY_SINGLE_LINE = 'var hello = foo ? <p>Hello</p> : <p>Hi</p>;';
 
 const DECLARATION_TERNARY_PAREN = `
@@ -282,6 +283,20 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       output: RETURN_PAREN,
       options: [{return: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: DECLARATION_TERNARY_NO_PAREN,
+      output: DECLARATION_TERNARY_PAREN,
+      errors: [
+        {message: 'Missing parentheses around multilines JSX'},
+        {message: 'Missing parentheses around multilines JSX'}
+      ]
+    }, {
+      code: ASSIGNMENT_TERNARY_NO_PAREN,
+      output: ASSIGNMENT_TERNARY_PAREN,
+      errors: [
+        {message: 'Missing parentheses around multilines JSX'},
+        {message: 'Missing parentheses around multilines JSX'}
+      ]
     }, {
       code: DECLARATION_NO_PAREN,
       output: DECLARATION_PAREN,
