@@ -2067,6 +2067,16 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: 'babel-eslint'
+    }, {
+      code: `
+        type Props = {
+          \'completed?\': boolean,
+        };
+        const Hello = (props: Props): React.Element => {
+          return <div>{props[\'completed?\']}</div>;
+        }
+      `,
+      parser: 'babel-eslint'
     }
   ],
 
