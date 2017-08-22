@@ -41,6 +41,8 @@ If passed in the option to fix, this is how a style violation will get fixed
 * `always`: wrap a JSX attribute in curly braces/JSX expression and/or a JSX child the same way but also with double quotes
 * `never`: get rid of curly braces from a JSX attribute and/or a JSX child
 
+- All fixing operations use double quotes.
+
 For examples:
 
 When `{ props: "always", children: "always" }` is set, the following patterns will be given warnings.
@@ -54,7 +56,7 @@ They can be fixed to:
 
 ```jsx
 <App>{"Hello world"}</App>;
-<App prop={'Hello world'}>{'Hello world'}</App>;
+<App prop={"Hello world"}>{'Hello world'}</App>;
 ```
 
 When `{ props: "never", children: "never" }` is set, the following patterns will be given warnings.
@@ -68,7 +70,7 @@ They can be fixed to:
 
 ```jsx
 <App>Hello world</App>;
-<App prop='Hello world' attr="foo" />;
+<App prop="Hello world" attr="foo" />;
 ```
 
 ### Alternative syntax
@@ -89,7 +91,7 @@ When `'always'` is set, the following patterns will be given warnings.
 They can be fixed to:
 ```jsx
 <App>{"Hello world"}</App>;
-<App prop={'Hello world'} attr={"foo"}>{"Hello world"}</App>;
+<App prop={"Hello world"} attr={"foo"}>{"Hello world"}</App>;
 ```
 
 When `'never'` is set, the following pattern will be given warnings.
@@ -101,7 +103,7 @@ When `'never'` is set, the following pattern will be given warnings.
 It can fixed to:
 
 ```jsx
-<App prop='foo' attr="bar">Hello world</App>;
+<App prop="foo" attr="bar">Hello world</App>;
 ```
 
 ## Edge cases
@@ -132,7 +134,7 @@ For example:
 will warned and fixed to:
 
 ```jsx
-<App prop={'Hello "foo" world'}>{"Hello 'foo' \"bar\" world"}</App>;
+<App prop={"Hello \"foo\" world"}>{"Hello 'foo' \"bar\" world"}</App>;
 ```
 
 * If the rule is set to get rid of unnecessary curly braces and the strings have escaped characters, it will not warn or fix for JSX children because JSX expressions are necessary in this case. For instance:
