@@ -108,7 +108,7 @@ It can fixed to:
 
 ## Edge cases
 
-The fix also deals with template literals, strings with quotes and strings with escapes characters.
+The fix also deals with template literals, strings with quotes, and strings with escapes characters.
 
 * If the rule is set to get rid of unnecessary curly braces and the template literal inside a JSX expression has no expression, it will throw a warning and be fixed with double quotes. For example:
 
