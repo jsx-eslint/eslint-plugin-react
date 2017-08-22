@@ -3193,6 +3193,43 @@ ruleTester.run('prop-types', rule, {
       }],
       settings: {react: {flowVersion: '0.53'}},
       parser: 'babel-eslint'
+    }, {
+      code: `
+        type Person = {
+          firstname: string
+        };
+        class Hello extends React.Component<{ person: Person }> {
+          render () {
+            return <div>Hello {this.props.person.lastname}</div>;
+          }
+        }
+      `,
+      errors: [{
+        message: '\'person.lastname\' is missing in props validation',
+        line: 7,
+        column: 50,
+        type: 'Identifier'
+      }],
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type Person = {
+          firstname: string
+        };
+        class Hello extends React.Component<{ person: Person }> {
+          render () {
+            return <div>Hello {this.props.person.lastname}</div>;
+          }
+        }
+      `,
+      errors: [{
+        message: '\'person.lastname\' is missing in props validation',
+        line: 7,
+        column: 50,
+        type: 'Identifier'
+      }],
+      settings: {react: {flowVersion: '0.53'}},
+      parser: 'babel-eslint'
     }
   ]
 });
