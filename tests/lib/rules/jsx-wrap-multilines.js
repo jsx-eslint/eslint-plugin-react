@@ -51,6 +51,43 @@ const RETURN_NO_PAREN = `
     }
   });
 `;
+const DECLARATION_TERNARY_SINGLE_LINE = 'var hello = foo ? <p>Hello</p> : <p>Hi</p>;';
+
+const DECLARATION_TERNARY_PAREN = `
+  var hello = foo ? (<div>
+    <p>Hello</p>
+  </div>) : (<div>
+    <p>Hi</p>
+  </div>);
+`;
+
+const DECLARATION_TERNARY_NO_PAREN = `
+  var hello = foo ? <div>
+    <p>Hello</p>
+  </div> : <div>
+    <p>Hi</p>
+  </div>;
+`;
+
+const ASSIGNMENT_TERNARY_SINGLE_LINE = 'var hello; hello = foo ? <p>Hello</p> : <p>Hi</p>;';
+
+const ASSIGNMENT_TERNARY_PAREN = `
+  var hello;
+  hello = foo ? (<div>
+    <p>Hello</p>
+  </div>) : (<div>
+    <p>Hi</p>
+  </div>);
+`;
+
+const ASSIGNMENT_TERNARY_NO_PAREN = `
+  var hello;
+  hello = foo ? <div>
+    <p>Hello</p>
+  </div> : <div>
+    <p>Hi</p>
+  </div>;
+`;
 
 const DECLARATION_SINGLE_LINE = 'var hello = <p>Hello</p>;';
 
@@ -173,6 +210,20 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     }, {
       code: RETURN_NO_PAREN,
       options: [{return: false}]
+    }, {
+      code: DECLARATION_TERNARY_SINGLE_LINE
+    }, {
+      code: DECLARATION_TERNARY_PAREN
+    }, {
+      code: DECLARATION_TERNARY_NO_PAREN,
+      options: [{declaration: false}]
+    }, {
+      code: ASSIGNMENT_TERNARY_SINGLE_LINE
+    }, {
+      code: ASSIGNMENT_TERNARY_PAREN
+    }, {
+      code: ASSIGNMENT_TERNARY_NO_PAREN,
+      options: [{assignment: false}]
     }, {
       code: DECLARATION_SINGLE_LINE
     }, {
