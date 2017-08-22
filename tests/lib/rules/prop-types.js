@@ -2961,13 +2961,13 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
+      settings: {react: {flowVersion: '0.52'}},
       errors: [{
         message: '\'lastname\' is missing in props validation',
         line: 6,
         column: 35,
         type: 'Identifier'
       }],
-      settings: {react: {flowVersion: '0.52'}},
       parser: 'babel-eslint'
     }, {
       code: [
@@ -3004,13 +3004,13 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
+      settings: {react: {flowVersion: '0.52'}},
       errors: [{
         message: '\'lastname\' is missing in props validation',
         line: 7,
         column: 7,
         type: 'Property'
       }],
-      settings: {react: {flowVersion: '0.52'}},
       parser: 'babel-eslint'
     }, {
       code: [
@@ -3037,13 +3037,13 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
+      settings: {react: {flowVersion: '0.52'}},
       errors: [{
         message: '\'name.lastname\' is missing in props validation',
         line: 4,
         column: 40,
         type: 'Identifier'
       }],
-      settings: {react: {flowVersion: '0.52'}},
       parser: 'babel-eslint'
     }, {
       code: [
@@ -3070,13 +3070,13 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
+      settings: {react: {flowVersion: '0.52'}},
       errors: [{
         message: '\'result.notok\' is missing in props validation',
         line: 4,
         column: 42,
         type: 'Identifier'
       }],
-      settings: {react: {flowVersion: '0.52'}},
       parser: 'babel-eslint'
     }, {
       code: [
@@ -3107,13 +3107,13 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
+      settings: {react: {flowVersion: '0.52'}},
       errors: [{
         message: '\'person.lastname\' is missing in props validation',
         line: 6,
         column: 42,
         type: 'Identifier'
       }],
-      settings: {react: {flowVersion: '0.52'}},
       parser: 'babel-eslint'
     }, {
       code: `
@@ -3146,13 +3146,13 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
+      settings: {react: {flowVersion: '0.53'}},
       errors: [{
         message: '\'bar\' is missing in props validation',
         line: 8,
         column: 37,
         type: 'Identifier'
       }],
-      settings: {react: {flowVersion: '0.53'}},
       parser: 'babel-eslint'
     }, {
       code: `
@@ -3185,13 +3185,13 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
+      settings: {react: {flowVersion: '0.53'}},
       errors: [{
         message: '\'bar\' is missing in props validation',
         line: 8,
         column: 37,
         type: 'Identifier'
       }],
-      settings: {react: {flowVersion: '0.53'}},
       parser: 'babel-eslint'
     }, {
       code: `
@@ -3222,13 +3222,13 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
+      settings: {react: {flowVersion: '0.53'}},
       errors: [{
         message: '\'person.lastname\' is missing in props validation',
         line: 7,
         column: 50,
         type: 'Identifier'
       }],
-      settings: {react: {flowVersion: '0.53'}},
       parser: 'babel-eslint'
     }
   ]
