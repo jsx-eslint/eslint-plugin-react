@@ -397,7 +397,7 @@ eslintTester.run('no-unused-state', rule, {
       errors: getErrorMessages(['foo'])
     },
     {
-      code: `var UnusedComputedLiteralKeyStateTest = createReactClass({
+      code: `var UnusedComputedStringLiteralKeyStateTest = createReactClass({
           getInitialState: function() {
             return { ['foo']: 0 };
           },
@@ -406,6 +406,28 @@ eslintTester.run('no-unused-state', rule, {
           }
         })`,
       errors: getErrorMessages(['foo'])
+    },
+    {
+      code: `var UnusedComputedNumberLiteralKeyStateTest = createReactClass({
+          getInitialState: function() {
+            return { [123]: 0 };
+          },
+          render: function() {
+            return <SomeComponent />;
+          }
+        })`,
+      errors: getErrorMessages(['123'])
+    },
+    {
+      code: `var UnusedComputedBooleanLiteralKeyStateTest = createReactClass({
+          getInitialState: function() {
+            return { [true]: 0 };
+          },
+          render: function() {
+            return <SomeComponent />;
+          }
+        })`,
+      errors: getErrorMessages(['true'])
     },
     {
       code: `var UnusedGetInitialStateMethodTest = createReactClass({
