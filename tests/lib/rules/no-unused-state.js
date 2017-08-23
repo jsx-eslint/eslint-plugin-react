@@ -102,6 +102,14 @@ eslintTester.run('no-unused-state', rule, {
         return <SomeComponent />;
       }
     });`,
+    `var ComputedKeyFromTemplateLiteralTest = createReactClass({
+      getInitialState: function() {
+        return { [\`foo\`]: 0 };
+      },
+      render: function() {
+        return <SomeComponent foo={this.state['foo']} />;
+      }
+    });`,
     `var GetInitialStateMethodTest = createReactClass({
       getInitialState() {
         return { foo: 0 };
@@ -196,6 +204,14 @@ eslintTester.run('no-unused-state', rule, {
       }
       render() {
         return <SomeComponent />;
+      }
+    }`,
+    `class ComputedKeyFromTemplateLiteralTest extends React.Component {
+      constructor() {
+        this.state = { [\`foo\`]: 0 };
+      }
+      render() {
+        return <SomeComponent foo={this.state.foo} />;
       }
     }`,
     `class SetStateTest extends React.Component {
@@ -408,6 +424,17 @@ eslintTester.run('no-unused-state', rule, {
       errors: getErrorMessages(['foo'])
     },
     {
+      code: `var UnusedComputedTemplateLiteralKeyStateTest = createReactClass({
+          getInitialState: function() {
+            return { [\`foo\`]: 0 };
+          },
+          render: function() {
+            return <SomeComponent />;
+          }
+        })`,
+      errors: getErrorMessages(['foo'])
+    },
+    {
       code: `var UnusedComputedNumberLiteralKeyStateTest = createReactClass({
           getInitialState: function() {
             return { [123]: 0 };
@@ -491,6 +518,26 @@ eslintTester.run('no-unused-state', rule, {
           }
         }`,
       errors: getErrorMessages(['foo']),
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class UnusedComputedTemplateLiteralKeyStateTest extends React.Component {
+          state = { [\`foo\`]: 0 };
+          render() {
+            return <SomeComponent />;
+          }
+        }`,
+      errors: getErrorMessages(['foo']),
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class UnusedComputedTemplateLiteralKeyStateTest extends React.Component {
+          state = { [\`foo \\n bar\`]: 0 };
+          render() {
+            return <SomeComponent />;
+          }
+        }`,
+      errors: getErrorMessages(['foo \\n bar']),
       parser: 'babel-eslint'
     },
     {
