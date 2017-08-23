@@ -46,6 +46,70 @@ eslintTester.run('no-unused-state', rule, {
         return <SomeComponent foo={this.state.foo} />;
       }
     });`,
+    `var ComputedKeyFromVariableTest = createReactClass({
+      getInitialState: function() {
+        return { [foo]: 0 };
+      },
+      render: function() {
+        return <SomeComponent />;
+      }
+    });`,
+    `var ComputedKeyFromBooleanLiteralTest = createReactClass({
+      getInitialState: function() {
+        return { [true]: 0 };
+      },
+      render: function() {
+        return <SomeComponent foo={this.state[true]} />;
+      }
+    });`,
+    `var ComputedKeyFromNumberLiteralTest = createReactClass({
+      getInitialState: function() {
+        return { [123]: 0 };
+      },
+      render: function() {
+        return <SomeComponent foo={this.state[123]} />;
+      }
+    });`,
+    `var ComputedKeyFromExpressionTest = createReactClass({
+      getInitialState: function() {
+        return { [foo + bar]: 0 };
+      },
+      render: function() {
+        return <SomeComponent />;
+      }
+    });`,
+    `var ComputedKeyFromBinaryExpressionTest = createReactClass({
+      getInitialState: function() {
+        return { ['foo' + 'bar' * 8]: 0 };
+      },
+      render: function() {
+        return <SomeComponent />;
+      }
+    });`,
+    `var ComputedKeyFromStringLiteralTest = createReactClass({
+      getInitialState: function() {
+        return { ['foo']: 0 };
+      },
+      render: function() {
+        return <SomeComponent foo={this.state.foo} />;
+      }
+    });`,
+    `var ComputedKeyFromTemplateLiteralTest = createReactClass({
+      getInitialState: function() {
+        return { [\`foo\${bar}\`]: 0 };
+      },
+      render: function() {
+        return <SomeComponent />;
+      }
+    });`,
+    `var ComputedKeyFromTemplateLiteralTest = createReactClass({
+      getInitialState: function() {
+        return { [\`foo\`]: 0 };
+      },
+      render: function() {
+        return <SomeComponent foo={this.state['foo']} />;
+      }
+    });`,
     `var GetInitialStateMethodTest = createReactClass({
       getInitialState() {
         return { foo: 0 };
@@ -81,6 +145,70 @@ eslintTester.run('no-unused-state', rule, {
     `class CtorStateTest extends React.Component {
       constructor() {
         this.state = { foo: 0 };
+      }
+      render() {
+        return <SomeComponent foo={this.state.foo} />;
+      }
+    }`,
+    `class ComputedKeyFromVariableTest extends React.Component {
+      constructor() {
+        this.state = { [foo]: 0 };
+      }
+      render() {
+        return <SomeComponent />;
+      }
+    }`,
+    `class ComputedKeyFromBooleanLiteralTest extends React.Component {
+      constructor() {
+        this.state = { [false]: 0 };
+      }
+      render() {
+        return <SomeComponent foo={this.state['false']} />;
+      }
+    }`,
+    `class ComputedKeyFromNumberLiteralTest extends React.Component {
+      constructor() {
+        this.state = { [345]: 0 };
+      }
+      render() {
+        return <SomeComponent foo={this.state[345]} />;
+      }
+    }`,
+    `class ComputedKeyFromExpressionTest extends React.Component {
+      constructor() {
+        this.state = { [foo + bar]: 0 };
+      }
+      render() {
+        return <SomeComponent />;
+      }
+    }`,
+    `class ComputedKeyFromBinaryExpressionTest extends React.Component {
+      constructor() {
+        this.state = { [1 + 2 * 8]: 0 };
+      }
+      render() {
+        return <SomeComponent />;
+      }
+    }`,
+    `class ComputedKeyFromStringLiteralTest extends React.Component {
+      constructor() {
+        this.state = { ['foo']: 0 };
+      }
+      render() {
+        return <SomeComponent foo={this.state.foo} />;
+      }
+    }`,
+    `class ComputedKeyFromTemplateLiteralTest extends React.Component {
+      constructor() {
+        this.state = { [\`foo\${bar}\`]: 0 };
+      }
+      render() {
+        return <SomeComponent />;
+      }
+    }`,
+    `class ComputedKeyFromTemplateLiteralTest extends React.Component {
+      constructor() {
+        this.state = { [\`foo\`]: 0 };
       }
       render() {
         return <SomeComponent foo={this.state.foo} />;
@@ -285,6 +413,50 @@ eslintTester.run('no-unused-state', rule, {
       errors: getErrorMessages(['foo'])
     },
     {
+      code: `var UnusedComputedStringLiteralKeyStateTest = createReactClass({
+          getInitialState: function() {
+            return { ['foo']: 0 };
+          },
+          render: function() {
+            return <SomeComponent />;
+          }
+        })`,
+      errors: getErrorMessages(['foo'])
+    },
+    {
+      code: `var UnusedComputedTemplateLiteralKeyStateTest = createReactClass({
+          getInitialState: function() {
+            return { [\`foo\`]: 0 };
+          },
+          render: function() {
+            return <SomeComponent />;
+          }
+        })`,
+      errors: getErrorMessages(['foo'])
+    },
+    {
+      code: `var UnusedComputedNumberLiteralKeyStateTest = createReactClass({
+          getInitialState: function() {
+            return { [123]: 0 };
+          },
+          render: function() {
+            return <SomeComponent />;
+          }
+        })`,
+      errors: getErrorMessages(['123'])
+    },
+    {
+      code: `var UnusedComputedBooleanLiteralKeyStateTest = createReactClass({
+          getInitialState: function() {
+            return { [true]: 0 };
+          },
+          render: function() {
+            return <SomeComponent />;
+          }
+        })`,
+      errors: getErrorMessages(['true'])
+    },
+    {
       code: `var UnusedGetInitialStateMethodTest = createReactClass({
           getInitialState() {
             return { foo: 0 };
@@ -336,6 +508,66 @@ eslintTester.run('no-unused-state', rule, {
           }
         }`,
       errors: getErrorMessages(['foo']),
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class UnusedComputedStringLiteralKeyStateTest extends React.Component {
+          state = { ['foo']: 0 };
+          render() {
+            return <SomeComponent />;
+          }
+        }`,
+      errors: getErrorMessages(['foo']),
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class UnusedComputedTemplateLiteralKeyStateTest extends React.Component {
+          state = { [\`foo\`]: 0 };
+          render() {
+            return <SomeComponent />;
+          }
+        }`,
+      errors: getErrorMessages(['foo']),
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class UnusedComputedTemplateLiteralKeyStateTest extends React.Component {
+          state = { [\`foo \\n bar\`]: 0 };
+          render() {
+            return <SomeComponent />;
+          }
+        }`,
+      errors: getErrorMessages(['foo \\n bar']),
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class UnusedComputedBooleanLiteralKeyStateTest extends React.Component {
+          state = { [true]: 0 };
+          render() {
+            return <SomeComponent />;
+          }
+        }`,
+      errors: getErrorMessages(['true']),
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class UnusedComputedNumberLiteralKeyStateTest extends React.Component {
+          state = { [123]: 0 };
+          render() {
+            return <SomeComponent />;
+          }
+        }`,
+      errors: getErrorMessages(['123']),
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class UnusedComputedFloatLiteralKeyStateTest extends React.Component {
+          state = { [123.12]: 0 };
+          render() {
+            return <SomeComponent />;
+          }
+        }`,
+      errors: getErrorMessages(['123.12']),
       parser: 'babel-eslint'
     },
     {
