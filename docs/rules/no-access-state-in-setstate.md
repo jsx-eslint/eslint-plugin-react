@@ -1,7 +1,7 @@
 # Prevent using this.state within a this.setState (no-access-state-in-setstate)
 
-This rule should prevent usage of this.state inside setState calls.
-Such usage of this.state might result in errors when two state calls is
+This rule should prevent usage of `this.state` inside `setState` calls.
+Such usage of `this.state` might result in errors when two state calls are
 called in batch and thus referencing old state and not the current
 state. An example can be an increment function:
 
@@ -11,7 +11,7 @@ function increment() {
 }
 ```
 
-If these two setState operations is grouped together in a batch it will
+If these two `setState` operations is grouped together in a batch it will
 look be something like the following, given that value is 1:
 
 ```
