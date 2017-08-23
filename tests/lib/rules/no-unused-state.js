@@ -46,6 +46,54 @@ eslintTester.run('no-unused-state', rule, {
         return <SomeComponent foo={this.state.foo} />;
       }
     });`,
+    `var ComputedKeyFromVariableTest = createReactClass({
+      getInitialState: function() {
+        return { [foo]: 0 };
+      },
+      render: function() {
+        return <SomeComponent />;
+      }
+    });`,
+    `var ComputedKeyFromBooleanLiteralTest = createReactClass({
+      getInitialState: function() {
+        return { [true]: 0 };
+      },
+      render: function() {
+        return <SomeComponent foo={this.state[true]} />;
+      }
+    });`,
+    `var ComputedKeyFromExpressionTest = createReactClass({
+      getInitialState: function() {
+        return { [foo + bar]: 0 };
+      },
+      render: function() {
+        return <SomeComponent />;
+      }
+    });`,
+    `var ComputedKeyFromBinaryExpressionTest = createReactClass({
+      getInitialState: function() {
+        return { ['foo' + 'bar' * 8]: 0 };
+      },
+      render: function() {
+        return <SomeComponent />;
+      }
+    });`,
+    `var ComputedKeyFromStringLiteralTest = createReactClass({
+      getInitialState: function() {
+        return { ['foo']: 0 };
+      },
+      render: function() {
+        return <SomeComponent foo={this.state.foo} />;
+      }
+    });`,
+    `var ComputedKeyFromTemplateLiteralTest = createReactClass({
+      getInitialState: function() {
+        return { [\`foo\${bar}\`]: 0 };
+      },
+      render: function() {
+        return <SomeComponent />;
+      }
+    });`,
     `var GetInitialStateMethodTest = createReactClass({
       getInitialState() {
         return { foo: 0 };
@@ -84,6 +132,54 @@ eslintTester.run('no-unused-state', rule, {
       }
       render() {
         return <SomeComponent foo={this.state.foo} />;
+      }
+    }`,
+    `class ComputedKeyFromVariableTest extends React.Component {
+      constructor() {
+        this.state = { [foo]: 0 };
+      }
+      render() {
+        return <SomeComponent />;
+      }
+    }`,
+    `class ComputedKeyFromBooleanLiteralTest extends React.Component {
+      constructor() {
+        this.state = { [false]: 0 };
+      }
+      render() {
+        return <SomeComponent foo={this.state['false']} />;
+      }
+    }`,
+    `class ComputedKeyFromExpressionTest extends React.Component {
+      constructor() {
+        this.state = { [foo + bar]: 0 };
+      }
+      render() {
+        return <SomeComponent />;
+      }
+    }`,
+    `class ComputedKeyFromBinaryExpressionTest extends React.Component {
+      constructor() {
+        this.state = { [1 + 2 * 8]: 0 };
+      }
+      render() {
+        return <SomeComponent />;
+      }
+    }`,
+    `class ComputedKeyFromStringLiteralTest extends React.Component {
+      constructor() {
+        this.state = { ['foo']: 0 };
+      }
+      render() {
+        return <SomeComponent foo={this.state.foo} />;
+      }
+    }`,
+    `class ComputedKeyFromTemplateLiteralTest extends React.Component {
+      constructor() {
+        this.state = { [\`foo\${bar}\`]: 0 };
+      }
+      render() {
+        return <SomeComponent />;
       }
     }`,
     `class SetStateTest extends React.Component {
@@ -285,6 +381,17 @@ eslintTester.run('no-unused-state', rule, {
       errors: getErrorMessages(['foo'])
     },
     {
+      code: `var UnusedComputedLiteralKeyStateTest = createReactClass({
+          getInitialState: function() {
+            return { ['foo']: 0 };
+          },
+          render: function() {
+            return <SomeComponent />;
+          }
+        })`,
+      errors: getErrorMessages(['foo'])
+    },
+    {
       code: `var UnusedGetInitialStateMethodTest = createReactClass({
           getInitialState() {
             return { foo: 0 };
@@ -336,6 +443,26 @@ eslintTester.run('no-unused-state', rule, {
           }
         }`,
       errors: getErrorMessages(['foo']),
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class UnusedComputedStringLiteralKeyStateTest extends React.Component {
+          state = { ['foo']: 0 };
+          render() {
+            return <SomeComponent />;
+          }
+        }`,
+      errors: getErrorMessages(['foo']),
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class UnusedComputedBooleanLiteralKeyStateTest extends React.Component {
+          state = { [true]: 0 };
+          render() {
+            return <SomeComponent />;
+          }
+        }`,
+      errors: getErrorMessages(['true']),
       parser: 'babel-eslint'
     },
     {
