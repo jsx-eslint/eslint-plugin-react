@@ -116,7 +116,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/require-optimization](docs/rules/require-optimization.md): Enforce React components to have a `shouldComponentUpdate` method
 * [react/require-render-return](docs/rules/require-render-return.md): Enforce ES5 or ES6 class for returning value in render function
 * [react/self-closing-comp](docs/rules/self-closing-comp.md): Prevent extra closing tags for components without children (fixable)
-* [react/sort-comp](docs/rules/sort-comp.md): Enforce component methods order
+* [react/sort-comp](docs/rules/sort-comp.md): Enforce component methods order (fixable)
 * [react/sort-prop-types](docs/rules/sort-prop-types.md): Enforce propTypes declarations alphabetical sorting
 * [react/style-prop-object](docs/rules/style-prop-object.md): Enforce style prop value being an object
 * [react/void-dom-elements-no-children](docs/rules/void-dom-elements-no-children.md): Prevent void DOM elements (e.g. `<img />`, `<br />`) from receiving children
