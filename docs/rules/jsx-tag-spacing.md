@@ -2,6 +2,8 @@
 
 Enforce or forbid spaces after the opening bracket, before the closing bracket of self-closing elements, and between the angle bracket and slash of JSX closing or self-closing elements.
 
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+
 ## Rule Details
 
 This rule checks the whitespace inside and surrounding the JSX syntactic elements.
