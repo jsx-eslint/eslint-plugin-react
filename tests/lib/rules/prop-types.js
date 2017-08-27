@@ -1669,6 +1669,45 @@ ruleTester.run('prop-types', rule, {
       `,
       settings: {react: {flowVersion: '0.53'}},
       parser: 'babel-eslint'
+    }, {
+      code: `
+        type Props = { foo: string }
+        function higherOrderComponent<Props>() {
+          return class extends React.Component<Props> {
+            render() {
+              return <div>{this.props.foo}</div>
+            }
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        function higherOrderComponent<P: { foo: string }>() {
+          return class extends React.Component<P> {
+            render() {
+              return <div>{this.props.foo}</div>
+            }
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    },
+    {
+      code: `
+        const withOverlayState = <P: {foo: string}>(WrappedComponent: ComponentType<P>): CpmponentType<P> => (
+          class extends React.Component<P> {
+            constructor(props) {
+              super(props);
+              this.state = {foo: props.foo}
+            }
+            render() {
+              return <div>Hello World</div>
+            }
+          }
+        )
+      `,
+      parser: 'babel-eslint'
     },
     // issue #1288
     `function Foo() {
