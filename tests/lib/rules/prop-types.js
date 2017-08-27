@@ -1692,8 +1692,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: 'babel-eslint'
-    },
-    {
+    }, {
       code: `
         const withOverlayState = <P: {foo: string}>(WrappedComponent: ComponentType<P>): CpmponentType<P> => (
           class extends React.Component<P> {
@@ -3319,6 +3318,24 @@ ruleTester.run('prop-types', rule, {
             }
           }
         }
+      `,
+      errors: [{
+        message: '\'bar\' is missing in props validation'
+      }],
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        const withOverlayState = <P: {foo: string}>(WrappedComponent: ComponentType<P>): CpmponentType<P> => (
+          class extends React.Component<P> {
+            constructor(props) {
+              super(props);
+              this.state = {foo: props.foo, bar: props.bar}
+            }
+            render() {
+              return <div>Hello World</div>
+            }
+          }
+        )
       `,
       errors: [{
         message: '\'bar\' is missing in props validation'
