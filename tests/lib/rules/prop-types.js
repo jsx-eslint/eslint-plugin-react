@@ -3295,6 +3295,35 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }],
       parser: 'babel-eslint'
+    }, {
+      code: `
+        type Props = { foo: string }
+        function higherOrderComponent<Props>() {
+          return class extends React.Component<Props> {
+            render() {
+              return <div>{this.props.foo} - {this.props.bar}</div>
+            }
+          }
+        }
+      `,
+      errors: [{
+        message: '\'bar\' is missing in props validation'
+      }],
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        function higherOrderComponent<P: { foo: string }>() {
+          return class extends React.Component<P> {
+            render() {
+              return <div>{this.props.foo} - {this.props.bar}</div>
+            }
+          }
+        }
+      `,
+      errors: [{
+        message: '\'bar\' is missing in props validation'
+      }],
+      parser: 'babel-eslint'
     }
   ]
 });
