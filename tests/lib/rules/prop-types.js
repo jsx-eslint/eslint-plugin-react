@@ -3280,17 +3280,11 @@ ruleTester.run('prop-types', rule, {
       parser: 'babel-eslint'
     }, {
       code: `
-        type PropsA = {
-          foo: string,
-        };
-
-        type PropsB = {
-          bar: string,
-        };
-
+        type PropsA = {foo: string };
+        type PropsB = { bar: string };
         type Props = PropsA & PropsB;
 
-        class Bar extends React.Component {
+        class MyComponent extends React.Component {
           props: Props;
           
           render() {
