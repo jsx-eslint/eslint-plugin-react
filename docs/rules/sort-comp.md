@@ -1,6 +1,6 @@
 # Enforce component methods order (react/sort-comp)
 
-When creating React components it is more convenient to always follow the same organisation for methods order to helps you to easily find lifecyle methods, event handlers, etc.
+When creating React components it is more convenient to always follow the same organisation for method order to help you easily find lifecyle methods, event handlers, etc.
 
 **Fixable:** This rule is automatically fixable using the [`sort-comp` transform](https://github.com/reactjs/react-codemod/blob/master/transforms/sort-comp.js) in [react-codemod](https://www.npmjs.com/package/react-codemod).
 
