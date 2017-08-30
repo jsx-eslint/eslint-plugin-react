@@ -1669,7 +1669,23 @@ ruleTester.run('prop-types', rule, {
       `,
       settings: {react: {flowVersion: '0.53'}},
       parser: 'babel-eslint'
+    }, {
+      code: `
+        type PropsA = { foo: string };
+        type PropsB = { bar: string };
+        type Props = PropsA & PropsB;
+
+        class Bar extends React.Component {
+          props: Props;
+          
+          render() {
+            return <div>{this.props.foo} - {this.props.bar}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
     },
+
     // issue #1288
     `function Foo() {
       const props = {}
@@ -3256,6 +3272,24 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }],
       parser: 'babel-eslint'
+    }, {
+      code: `
+        type PropsA = {foo: string };
+        type PropsB = { bar: string };
+        type Props = PropsA & PropsB;
+
+        class MyComponent extends React.Component {
+          props: Props;
+          
+          render() {
+            return <div>{this.props.foo} - {this.props.bar} - {this.props.fooBar}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'fooBar\' is missing in props validation'
+      }]
     }
   ]
 });

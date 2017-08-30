@@ -825,6 +825,21 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint'
     }, {
+      code: `
+      type PropsA = { a: string }
+      type PropsB = { b: string }
+      type Props = PropsA & PropsB;
+      
+      class MyComponent extends React.Component {
+        props: Props;
+        
+        render() {
+          return <div>{this.props.a} - {this.props.b}</div>
+        }
+      }
+      `,
+      parser: 'babel-eslint'
+    }, {
       code: [
         'import type Props from "fake";',
         'class Hello extends React.Component {',
@@ -2636,6 +2651,24 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: 'babel-eslint',
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
+      ]
+    }, {
+      code: `
+      type PropsA = { a: string }
+      type PropsB = { b: string }
+      type Props = PropsA & PropsB;
+      
+      class MyComponent extends React.Component {
+        props: Props;
+        
+        render() {
+          return <div>{this.props.a}</div>
+        }
+      }
+      `,
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'b\' PropType is defined but prop is never used'}
       ]
     }, {
       code: [
