@@ -336,6 +336,14 @@ ruleTester.run('no-typos', rule, {
    `,
     parser: 'babel-eslint',
     parserOptions: parserOptions
+  }, {
+    code: `
+      const fn = (err, res) => {
+        const { body: data = {} } = { ...res };
+        data.time = data.time || {};
+      };
+    `,
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
