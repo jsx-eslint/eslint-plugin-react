@@ -16,4 +16,41 @@ var Hello = React.createClass({
     return <div>Hello {this.props.name}</div>;
   }
 });
+
+var Hello = React.createClass({
+  render: function() {
+    const {list} = this.props;
+    list.push(2);
+    return <div>{list.length} things</div>;
+  }
+});
+
+var Hello = React.createClass({
+  render: function() {
+    const [firstThing] = this.props.list;
+    firstThing.foo = 'bar';
+    return <div>{firstThing.foo}</div>;
+  }
+});
+
+var Hello = React.createClass({
+  render: function() {
+    delete this.props.foo;
+    return <div>{Object.keys(this.props).length} props</div>;
+  }
+});
+
+var Hello = React.createClass({
+  render: function() {
+    Object.assign(this.props.foo, {bar: 'baz'})
+    return <div>{this.props.foo.bar}</div>;
+  }
+});
+
+var Hello = React.createClass({
+  render: function() {
+    Object.defineProperty(this.props, 'foo')
+    return <div>{this.props.foo}</div>;
+  }
+});
 ```
