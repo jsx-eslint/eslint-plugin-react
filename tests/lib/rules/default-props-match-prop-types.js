@@ -692,7 +692,6 @@ ruleTester.run('default-props-match-prop-types', rule, {
           props: Props;
           static defaultProps = {
             foo: "foo",
-            bar: "bar",
           }
 
           render() {
