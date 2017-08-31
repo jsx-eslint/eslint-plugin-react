@@ -245,6 +245,28 @@ ruleTester.run('no-direct-mutation-state', rule, {
     errors: [{
       message: 'Do not mutate state directly. Use setState().'
     }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentWillUnmount() {',
+      '    this.state.foo++',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  componentWillUnmount() {',
+      '    this.state.foo--',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: [{
+      message: 'Do not mutate state directly. Use setState().'
+    }]
   }
   /**
    * Would be nice to prevent this too
