@@ -16,7 +16,7 @@ There are the possible syntax available:
 * `arrow`
 * `condition`
 * `logical` (not enabled by default)
-* `attr` (not enabled by default)
+* `prop` (not enabled by default)
 
 The following patterns are considered warnings:
 

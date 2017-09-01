@@ -174,10 +174,10 @@ const LOGICAL_NO_PAREN = `
   </div>
 `;
 
-const ATTR_SINGLE_LINE = '<div attr={<p>Hello</p>}></div>';
+const ATTR_SINGLE_LINE = '<div prop={<p>Hello</p>}></div>';
 
 const ATTR_PAREN = `
-  <div attr={
+  <div prop={
     (<div>
       <p>Hello</p>
     </div>)
@@ -187,7 +187,7 @@ const ATTR_PAREN = `
 `;
 
 const ATTR_NO_PAREN = `
-  <div attr={
+  <div prop={
     <div>
       <p>Hello</p>
     </div>
@@ -269,7 +269,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: ATTR_NO_PAREN
     }, {
       code: ATTR_PAREN,
-      options: [{attr: true}]
+      options: [{prop: true}]
     }
   ],
 
@@ -332,7 +332,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     }, {
       code: ATTR_NO_PAREN,
       output: ATTR_PAREN,
-      options: [{attr: true}],
+      options: [{prop: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }
   ]
