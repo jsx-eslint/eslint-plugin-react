@@ -6,7 +6,7 @@ Wrapping multiline JSX in parentheses can improve readability and/or convenience
 
 ## Rule Details
 
-This rule optionally takes a second parameter in the form of an object, containing places to apply the rule. By default, all the syntax listed below will be checked except the logical expressions and JSX attributes, but these can be explicitly disabled. Any syntax type missing in the object will follow the default behavior (become enabled).
+This rule optionally takes a second parameter in the form of an object, containing places to apply the rule. By default, all the syntax listed below will be checked except the conditions out of declaration or assignment, logical expressions and JSX attributes, but these can be explicitly disabled. Any syntax type missing in the object will follow the default behavior (become enabled).
 
 There are the possible syntax available:
 
@@ -14,7 +14,7 @@ There are the possible syntax available:
 * `assignment`
 * `return`
 * `arrow`
-* `condition`
+* `condition` (not enabed by default, by default only conditions in declaraiton or assignment)
 * `logical` (not enabled by default)
 * `prop` (not enabled by default)
 

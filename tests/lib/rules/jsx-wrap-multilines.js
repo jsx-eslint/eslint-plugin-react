@@ -217,14 +217,14 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: DECLARATION_TERNARY_PAREN
     }, {
       code: DECLARATION_TERNARY_NO_PAREN,
-      options: [{condition: false}]
+      options: [{declaration: false}]
     }, {
       code: ASSIGNMENT_TERNARY_SINGLE_LINE
     }, {
       code: ASSIGNMENT_TERNARY_PAREN
     }, {
       code: ASSIGNMENT_TERNARY_NO_PAREN,
-      options: [{condition: false}]
+      options: [{assignment: false}]
     }, {
       code: DECLARATION_SINGLE_LINE
     }, {
@@ -252,10 +252,13 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     }, {
       code: CONDITION_SINGLE_LINE
     }, {
-      code: CONDITION_NO_PAREN,
-      options: [{condition: false}]
+      code: CONDITION_SINGLE_LINE,
+      options: [{condition: true}]
     }, {
-      code: CONDITION_PAREN
+      code: CONDITION_NO_PAREN
+    }, {
+      code: CONDITION_PAREN,
+      options: [{condition: true}]
     }, {
       code: LOGICAL_SINGLE_LINE
     }, {
@@ -323,6 +326,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     }, {
       code: CONDITION_NO_PAREN,
       output: CONDITION_PAREN,
+      options: [{condition: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }, {
       code: LOGICAL_NO_PAREN,
