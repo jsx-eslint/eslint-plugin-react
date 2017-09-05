@@ -2047,27 +2047,50 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       // issue #106
       code: `
-      import React from 'react';
-      import SharedPropTypes from './SharedPropTypes';
+        import React from 'react';
+        import SharedPropTypes from './SharedPropTypes';
 
-      export default class A extends React.Component {
-        render() {
-          return (
-            <span
-              a={this.props.a}
-              b={this.props.b}
-              c={this.props.c}>
-              {this.props.children}
-            </span>
-          );
+        export default class A extends React.Component {
+          render() {
+            return (
+              <span
+                a={this.props.a}
+                b={this.props.b}
+                c={this.props.c}>
+                {this.props.children}
+              </span>
+            );
+          }
         }
-      }
 
-      A.propTypes = {
-        a: React.PropTypes.string,
-        ...SharedPropTypes // eslint-disable-line object-shorthand
-      };
-    `,
+        A.propTypes = {
+          a: React.PropTypes.string,
+          ...SharedPropTypes // eslint-disable-line object-shorthand
+        };
+      `,
+      parser: 'babel-eslint'
+    }, {
+      // issue #933
+      code: `
+        type Props = {
+          +foo: number
+        }
+        class MyComponent extends React.Component {
+          render() {
+            return <div>{this.props.foo}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type Props = {
+          \'completed?\': boolean,
+        };
+        const Hello = (props: Props): React.Element => {
+          return <div>{props[\'completed?\']}</div>;
+        }
+      `,
       parser: 'babel-eslint'
     }, {
       code: `
