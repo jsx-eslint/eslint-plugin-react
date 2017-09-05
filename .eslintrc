@@ -3,10 +3,10 @@
        "es6": true,
        "node": true
     },
-    parserOptions: {
-      ecmaVersion: 6,
-      ecmaFeatures: {
-          jsx: true
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "ecmaFeatures": {
+          "jsx": true
       }
     },
     "rules": {

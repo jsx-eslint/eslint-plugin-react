@@ -825,6 +825,21 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint'
     }, {
+      code: `
+      type PropsA = { a: string }
+      type PropsB = { b: string }
+      type Props = PropsA & PropsB;
+      
+      class MyComponent extends React.Component {
+        props: Props;
+        
+        render() {
+          return <div>{this.props.a} - {this.props.b}</div>
+        }
+      }
+      `,
+      parser: 'babel-eslint'
+    }, {
       code: [
         'import type Props from "fake";',
         'class Hello extends React.Component {',
@@ -2032,27 +2047,100 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       // issue #106
       code: `
-      import React from 'react';
-      import SharedPropTypes from './SharedPropTypes';
+        import React from 'react';
+        import SharedPropTypes from './SharedPropTypes';
 
-      export default class A extends React.Component {
-        render() {
-          return (
-            <span
-              a={this.props.a}
-              b={this.props.b}
-              c={this.props.c}>
-              {this.props.children}
-            </span>
-          );
+        export default class A extends React.Component {
+          render() {
+            return (
+              <span
+                a={this.props.a}
+                b={this.props.b}
+                c={this.props.c}>
+                {this.props.children}
+              </span>
+            );
+          }
         }
-      }
 
-      A.propTypes = {
-        a: React.PropTypes.string,
-        ...SharedPropTypes // eslint-disable-line object-shorthand
-      };
-    `,
+        A.propTypes = {
+          a: React.PropTypes.string,
+          ...SharedPropTypes // eslint-disable-line object-shorthand
+        };
+      `,
+      parser: 'babel-eslint'
+    }, {
+      // issue #933
+      code: `
+        type Props = {
+          +foo: number
+        }
+        class MyComponent extends React.Component {
+          render() {
+            return <div>{this.props.foo}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type Props = {
+          \'completed?\': boolean,
+        };
+        const Hello = (props: Props): React.Element => {
+          return <div>{props[\'completed?\']}</div>;
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type Person = {
+          firstname: string
+        }
+        class MyComponent extends React.Component<void, Props, void> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type Person = {
+          firstname: string
+        }
+        class MyComponent extends React.Component<void, Props, void> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      settings: {react: {flowVersion: '0.52'}},
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type Person = {
+          firstname: string
+        }
+        class MyComponent extends React.Component<Props> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type Person = {
+          firstname: string
+        }
+        class MyComponent extends React.Component<Props> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      settings: {react: {flowVersion: '0.53'}},
       parser: 'babel-eslint'
     }
   ],
@@ -2636,6 +2724,24 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: 'babel-eslint',
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
+      ]
+    }, {
+      code: `
+      type PropsA = { a: string }
+      type PropsB = { b: string }
+      type Props = PropsA & PropsB;
+      
+      class MyComponent extends React.Component {
+        props: Props;
+        
+        render() {
+          return <div>{this.props.a}</div>
+        }
+      }
+      `,
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'b\' PropType is defined but prop is never used'}
       ]
     }, {
       code: [
@@ -3435,6 +3541,72 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: 'babel-eslint',
       errors: [{
         message: '\'aProp\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: `
+        type Props = {
+          firstname: string,
+          lastname: string,
+        }
+        class MyComponent extends React.Component<void, Props, void> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: `
+        type Props = {
+          firstname: string,
+          lastname: string,
+        }
+        class MyComponent extends React.Component<void, Props, void> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      settings: {react: {flowVersion: '0.52'}},
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: `
+        type Props = {
+          firstname: string,
+          lastname: string,
+        }
+        class MyComponent extends React.Component<Props> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: `
+        type Props = {
+          firstname: string,
+          lastname: string,
+        }
+        class MyComponent extends React.Component<Props> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      settings: {react: {flowVersion: '0.53'}},
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
       }]
     }
 

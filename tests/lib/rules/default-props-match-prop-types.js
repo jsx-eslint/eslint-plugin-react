@@ -683,6 +683,25 @@ ruleTester.run('default-props-match-prop-types', rule, {
       parser: 'babel-eslint'
     },
     {
+      code: `
+        type PropsA = { foo?: string };
+        type PropsB = { bar?: string, fooBar: string };
+        type Props = PropsA & PropsB;
+
+        class Bar extends React.Component {
+          props: Props;
+          static defaultProps = {
+            foo: "foo",
+          }
+
+          render() {
+            return <div>{this.props.foo} - {this.props.bar}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    },
+    {
       code: [
         'import type Props from "fake";',
         'class Hello extends React.Component {',
@@ -1507,6 +1526,34 @@ ruleTester.run('default-props-match-prop-types', rule, {
           message: 'defaultProp "frob" has no corresponding propTypes declaration.',
           line: 12,
           column: 36
+        }
+      ]
+    },
+    {
+      code: `
+        type PropsA = { foo: string };
+        type PropsB = { bar: string };
+        type Props = PropsA & PropsB;
+
+        class Bar extends React.Component {
+          props: Props;
+          static defaultProps = {
+            fooBar: "fooBar",
+            foo: "foo",
+          }
+
+          render() {
+            return <div>{this.props.foo} - {this.props.bar}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [
+        {
+          message: 'defaultProp "fooBar" has no corresponding propTypes declaration.'
+        },
+        {
+          message: 'defaultProp "foo" defined for isRequired propType.'
         }
       ]
     }

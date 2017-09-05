@@ -257,6 +257,18 @@ ruleTester.run('boolean-prop-naming', rule, {
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
     parser: 'babel-eslint'
+  }, {
+    // Ensure rule doesn't crash on on components reference old-style Flow props
+    code: [
+      'class Hello extends PureComponent {',
+      '  props: PropsType;',
+      '  render () { return <div /> }',
+      '}'
+    ].join('\n'),
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+'
+    }],
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
