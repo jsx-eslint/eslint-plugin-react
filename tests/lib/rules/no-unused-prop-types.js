@@ -2069,6 +2069,56 @@ ruleTester.run('no-unused-prop-types', rule, {
       };
     `,
       parser: 'babel-eslint'
+    }, {
+      code: `
+        type Person = {
+          firstname: string
+        }
+        class MyComponent extends React.Component<void, Props, void> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type Person = {
+          firstname: string
+        }
+        class MyComponent extends React.Component<void, Props, void> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      settings: {react: {flowVersion: '0.52'}},
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type Person = {
+          firstname: string
+        }
+        class MyComponent extends React.Component<Props> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type Person = {
+          firstname: string
+        }
+        class MyComponent extends React.Component<Props> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      settings: {react: {flowVersion: '0.53'}},
+      parser: 'babel-eslint'
     }
   ],
 
@@ -3468,6 +3518,72 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: 'babel-eslint',
       errors: [{
         message: '\'aProp\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: `
+        type Props = {
+          firstname: string,
+          lastname: string,
+        }
+        class MyComponent extends React.Component<void, Props, void> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: `
+        type Props = {
+          firstname: string,
+          lastname: string,
+        }
+        class MyComponent extends React.Component<void, Props, void> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      settings: {react: {flowVersion: '0.52'}},
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: `
+        type Props = {
+          firstname: string,
+          lastname: string,
+        }
+        class MyComponent extends React.Component<Props> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: `
+        type Props = {
+          firstname: string,
+          lastname: string,
+        }
+        class MyComponent extends React.Component<Props> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      settings: {react: {flowVersion: '0.53'}},
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
       }]
     }
 
