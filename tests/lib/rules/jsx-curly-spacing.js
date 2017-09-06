@@ -2151,6 +2151,40 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: [
       '<App>',
+      '{ /* comment */ }',
+      '</App>;'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '{/* comment */}',
+      '</App>;'
+    ].join('\n'),
+    options: [{when: 'never', children: true}],
+    errors: [{
+      message: 'There should be no space after \'{\''
+    }, {
+      message: 'There should be no space before \'}\''
+    }]
+  }, {
+    code: [
+      '<App>',
+      '{/* comment */}',
+      '</App>;'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '{ /* comment */ }',
+      '</App>;'
+    ].join('\n'),
+    options: [{when: 'always', children: true}],
+    errors: [{
+      message: 'A space is required after \'{\''
+    }, {
+      message: 'A space is required before \'}\''
+    }]
+  }, {
+    code: [
+      '<App>',
       '{/*comment*/',
       '}',
       '</App>'
@@ -2179,6 +2213,48 @@ ruleTester.run('jsx-curly-spacing', rule, {
     options: [{children: {when: 'never', allowMultiline: false}}],
     errors: [{
       message: 'There should be no newline after \'{\''
+    }]
+  }, {
+    code: [
+      '<App>{ /* comment */',
+      'bar',
+      '} {',
+      'baz',
+      '/* comment */ }</App>;'
+    ].join('\n'),
+    output: [
+      '<App>{/* comment */',
+      'bar',
+      '} {',
+      'baz',
+      '/* comment */}</App>;'
+    ].join('\n'),
+    options: [{when: 'never', children: true}],
+    errors: [{
+      message: 'There should be no space after \'{\''
+    }, {
+      message: 'There should be no space before \'}\''
+    }]
+  }, {
+    code: [
+      '<App>{/* comment */',
+      'bar',
+      '} {',
+      'baz',
+      '/* comment */}</App>;'
+    ].join('\n'),
+    output: [
+      '<App>{ /* comment */',
+      'bar',
+      '} {',
+      'baz',
+      '/* comment */ }</App>;'
+    ].join('\n'),
+    options: [{when: 'always', children: true}],
+    errors: [{
+      message: 'A space is required after \'{\''
+    }, {
+      message: 'A space is required before \'}\''
     }]
   }]
 });
