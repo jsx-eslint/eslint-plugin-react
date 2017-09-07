@@ -116,6 +116,38 @@ ruleTester.run('no-mutation-props', rule, {
       '}'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '   this.thing++',
+      '   this.thing--',
+      '   ++this.thing',
+      '   --this.thing',
+      '   const foo = 1',
+      '   foo++',
+      '   foo--',
+      '   ++foo',
+      '   --foo',
+      '   const { bar } = this.props',
+      '   bar++',
+      '   bar--',
+      '   ++bar',
+      '   --bar',
+      '   const [ baz ] = this.props',
+      '   bar++',
+      '   bar--',
+      '   ++bar',
+      '   --bar',
+      '   const bat = this.props.bat',
+      '   bat++',
+      '   bat--',
+      '   ++bat',
+      '   --bat',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -384,6 +416,77 @@ ruleTester.run('no-mutation-props', rule, {
       message: errorMessage,
       line: 10,
       column: 5
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '   this.props.foo++',
+      '   this.props.foo--',
+      '   ++this.props.foo',
+      '   --this.props.foo',
+      '   const { bar } = this.props',
+      '   bar.baz++',
+      '   bar.baz--',
+      '   ++bar.baz',
+      '   --bar.baz',
+      '   const [ baz ] = this.props',
+      '   baz.bat++',
+      '   baz.bat--',
+      '   ++baz.bat',
+      '   --baz.bat',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: errorMessage,
+      line: 3,
+      column: 4
+    }, {
+      message: errorMessage,
+      line: 4,
+      column: 4
+    }, {
+      message: errorMessage,
+      line: 5,
+      column: 4
+    }, {
+      message: errorMessage,
+      line: 6,
+      column: 4
+    }, {
+      message: errorMessage,
+      line: 8,
+      column: 4
+    }, {
+      message: errorMessage,
+      line: 9,
+      column: 4
+    }, {
+      message: errorMessage,
+      line: 10,
+      column: 4
+    }, {
+      message: errorMessage,
+      line: 11,
+      column: 4
+    }, {
+      message: errorMessage,
+      line: 13,
+      column: 4
+    }, {
+      message: errorMessage,
+      line: 14,
+      column: 4
+    }, {
+      message: errorMessage,
+      line: 15,
+      column: 4
+    }, {
+      message: errorMessage,
+      line: 16,
+      column: 4
     }]
   }
     /**

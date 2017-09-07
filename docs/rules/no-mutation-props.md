@@ -53,4 +53,11 @@ var Hello = React.createClass({
     return <div>{this.props.foo}</div>;
   }
 });
+
+var Hello = React.createClass({
+  render: function() {
+    this.props.foo++
+    return <div>{this.props.foo}</div>;
+  }
+});
 ```
