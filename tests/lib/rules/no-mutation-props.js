@@ -384,6 +384,45 @@ ruleTester.run('no-mutation-props', rule, {
       'class Hello extends React.Component {',
       '  render() {',
       '    const {foo} = this.props;',
+      '    Object.defineProperties(foo, {"prop": {value: true}});',
+      '    const [bar] = this.props.thing',
+      '    Object.defineProperties(bar, {"prop": {value: true}});',
+      '    const baz = this.props.baz',
+      '    Object.defineProperties(baz, {"prop": {value: true}});',
+      '    Object.defineProperties(this.props, {"prop": {value: true}});',
+      '    Object.defineProperties(this.props.foo, {"prop": {value: true}});',
+      '    return <div/>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: errorMessage,
+      line: 4,
+      column: 5
+    }, {
+      message: errorMessage,
+      line: 6,
+      column: 5
+    }, {
+      message: errorMessage,
+      line: 8,
+      column: 5
+    }, {
+      message: errorMessage,
+      line: 9,
+      column: 5
+    }, {
+      message: errorMessage,
+      line: 10,
+      column: 5
+    }]
+  },
+  {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    const {foo} = this.props;',
       '    Object.assign(foo, {bar: 1});',
       '    const [bar] = this.props.thing;',
       '    Object.assign(bar, {baz: 1});',
