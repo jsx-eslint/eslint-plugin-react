@@ -83,6 +83,43 @@ ruleTester.run('no-mutation-props', rule, {
     code: [
       'class Hello extends React.Component {',
       '  render() {',
+      '    const {list} = this.props;',
+      '    list.push(1);',
+      '    list.pop();',
+      '    list.shift();',
+      '    list.unshift(1);',
+      '    this.props.foo.push(1);',
+      '    this.props.foo.pop();',
+      '    this.props.foo.shift();',
+      '    this.props.foo.unshift(1);',
+      '    this.props.foo.list.push(1);',
+      '    this.props.foo.list.pop();',
+      '    this.props.foo.list.shift();',
+      '    this.props.foo.list.unshift(1);',
+      '    return <div/>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [{allowArrayMutation: true}]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    const {list} = this.props;',
+      '    list.push(1);',
+      '    this.props.foo.push(1);',
+      '    this.props.foo.list.push(1);',
+      '    return <div/>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [{allowArrayMutation: ['push']}]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
       '   const {foo} = this.thing',
       '   delete foo.bar;',
       '   delete this.thing.foo',

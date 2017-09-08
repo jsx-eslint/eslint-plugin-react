@@ -1,7 +1,7 @@
 # Prevent mutation of this.props (no-mutation-props)
 
 NEVER mutate `this.props`, as all React components must act like pure functions with respect to their props. 
-Treat `this.props` as if it were immutable. More info available at [https://facebook.github.io/react/docs/components-and-props.html#props-are-read-only](https://facebook.github.io/react/docs/components-and-props.html#props-are-read-only)
+Treat `this.props` as if it were immutable. More info available at [props-are-read-only](https://facebook.github.io/react/docs/components-and-props.html#props-are-read-only)
 
 ## Rule Details
 
@@ -61,3 +61,26 @@ var Hello = React.createClass({
   }
 });
 ```
+
+## Rule Options
+
+```js
+...
+"react/no-mutation-props": [<enabled>, {
+  "allowArrayMutation": <boolean>|<array<string>>,
+}]
+...
+```
+
+### `allowArrayMutation`
+
+When `true` the rule ignores [array mutation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Mutator_methods) of props. When an array, specifies the array mutation methods to allow. 
+
+You should only use this option if you have a prop that contains an object with methods that conflict with array mutation methods.
+
+The following patterns are considered okay and do not cause warnings:
+
+```jsx
+this.props.list.push(1)
+```
+
