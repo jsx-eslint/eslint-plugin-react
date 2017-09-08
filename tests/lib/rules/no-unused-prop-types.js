@@ -889,6 +889,23 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: 'babel-eslint'
     }, {
+      code: `
+        type PropsB = { foo: string };
+        type PropsC = { bar: string };
+        type Props = {
+          zap: string 
+        } & PropsB;
+
+        class Bar extends React.Component {
+          props: Props & PropsC;
+          
+          render() {
+            return <div>{this.props.foo} - {this.props.bar} - {this.props.zap}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
       code: [
         'import type Props from "fake";',
         'class Hello extends React.Component {',
@@ -2818,6 +2835,26 @@ ruleTester.run('no-unused-prop-types', rule, {
         type Props = PropsB & {
           zap: string 
         };
+
+        class Bar extends React.Component {
+          props: Props & PropsC;
+          
+          render() {
+            return <div>{this.props.foo} - {this.props.bar}</div>
+          }
+        }
+      `,
+      errors: [
+        {message: '\'zap\' PropType is defined but prop is never used'}
+      ],
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type PropsB = { foo: string };
+        type PropsC = { bar: string };
+        type Props = {
+          zap: string 
+        } & PropsB;
 
         class Bar extends React.Component {
           props: Props & PropsC;
