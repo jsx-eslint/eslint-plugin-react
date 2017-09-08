@@ -42,21 +42,21 @@ var Hello = React.createClass({
 
 var Hello = React.createClass({
   render: function() {
-    Object.assign(this.props.foo, {bar: 'baz'})
+    Object.assign(this.props.foo, {bar: 'baz'});
     return <div>{this.props.foo.bar}</div>;
   }
 });
 
 var Hello = React.createClass({
   render: function() {
-    Object.defineProperty(this.props, 'foo')
+    Object.defineProperty(this.props, 'foo');
     return <div>{this.props.foo}</div>;
   }
 });
 
 var Hello = React.createClass({
   render: function() {
-    this.props.foo++
+    this.props.foo++;
     return <div>{this.props.foo}</div>;
   }
 });
