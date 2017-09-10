@@ -27,39 +27,39 @@ const MESSAGE_OWN_LINE = [{message: 'Closing tag of a multiline JSX expression m
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-closing-tag-location', rule, {
   valid: [{
-    code: [
-      '<App>',
-      '  foo',
-      '</App>'
-    ].join('\n')
+    code: `
+      <App>
+        foo
+      </App>
+    `
   }, {
-    code: [
-      '<App>foo</App>'
-    ].join('\n')
+    code: `
+      <App>foo</App>
+    `
   }],
 
   invalid: [{
-    code: [
-      '<App>',
-      '  foo',
-      '  </App>'
-    ].join('\n'),
-    output: [
-      '<App>',
-      '  foo',
-      '</App>'
-    ].join('\n'),
+    code: `
+      <App>
+        foo
+        </App>
+    `,
+    output: `
+      <App>
+        foo
+      </App>
+    `,
     errors: MESSAGE_MATCH_INDENTATION
   }, {
-    code: [
-      '<App>',
-      '  foo</App>'
-    ].join('\n'),
-    output: [
-      '<App>',
-      '  foo',
-      '</App>'
-    ].join('\n'),
+    code: `
+      <App>
+        foo</App>
+    `,
+    output: `
+      <App>
+        foo
+      </App>
+    `,
     errors: MESSAGE_OWN_LINE
   }]
 });
