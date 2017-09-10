@@ -201,32 +201,34 @@ ruleTester.run('jsx-sort-props', rule, {
       errors: 2
     },
     {
-      code: [
-        '<App',
-        'a={true}',
-        'z',
-        'r',
-        '_onClick={function(){}}',
-        'onHandle={function(){}}',
-        '{...this.props}',
-        'b={false}',
-        '{...otherProps}>',
-        '  {test}',
-        '</App>'
-      ].join('\n'),
-      output: [
-        '<App',
-        '_onClick={function(){}}',
-        'a={true}',
-        'onHandle={function(){}}',
-        'r',
-        'z',
-        '{...this.props}',
-        'b={false}',
-        '{...otherProps}>',
-        '  {test}',
-        '</App>'
-      ].join('\n'),
+      code: `
+      <App
+        a={true}
+        z
+        r
+        _onClick={function(){}}
+        onHandle={function(){}}
+        {...this.props}
+        b={false}
+        {...otherProps}
+      >
+        {test}
+      </App>
+    `,
+      output: `
+      <App
+        _onClick={function(){}}
+        a={true}
+        onHandle={function(){}}
+        r
+        z
+        {...this.props}
+        b={false}
+        {...otherProps}
+      >
+        {test}
+      </App>
+    `,
       errors: 3
     },
     {
