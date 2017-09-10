@@ -67,14 +67,15 @@ var Hello = React.createClass({
 ```js
 ...
 "react/no-mutation-props": [<enabled>, {
-  "allowArrayMutation": <boolean>|<array<string>>,
+  "allowArrayMutations": <boolean>,
+  "allowableArrayMutations": <array<string>>,
 }]
 ...
 ```
 
-### `allowArrayMutation`
+### `allowArrayMutations`
 
-When `true` the rule ignores [array mutation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Mutator_methods) of props. When an array, specifies the array mutation methods to allow. 
+When `true` the rule ignores [array mutation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Mutator_methods) of props.
 
 You should only use this option if you have a prop that contains an object with methods that conflict with array mutation methods.
 
@@ -84,3 +85,8 @@ The following patterns are considered okay and do not cause warnings:
 this.props.list.push(1)
 ```
 
+### `allowablArrayMutations`
+
+When `allowArrayMutation: true` the rule specifies specific [array mutations](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Mutator_methods) of props to allow. Mutations not listed will remain as warnings.
+
+You must used this option in conjunction with `allowArrayMutation`. You should only use this option if you have a prop that contains an object with methods that conflict with array mutation methods.

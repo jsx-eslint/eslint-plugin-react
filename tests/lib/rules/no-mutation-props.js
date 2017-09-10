@@ -101,7 +101,7 @@ ruleTester.run('no-mutation-props', rule, {
       '}'
     ].join('\n'),
     parserOptions: parserOptions,
-    options: [{allowArrayMutation: true}]
+    options: [{allowArrayMutations: true}]
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -115,7 +115,7 @@ ruleTester.run('no-mutation-props', rule, {
       '}'
     ].join('\n'),
     parserOptions: parserOptions,
-    options: [{allowArrayMutation: ['push']}]
+    options: [{allowArrayMutations: true, allowableArrayMutations: ['push']}]
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -563,6 +563,33 @@ ruleTester.run('no-mutation-props', rule, {
       message: errorMessage,
       line: 16,
       column: 4
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    const {list} = this.props;',
+      '    list.push(1);',
+      '    this.props.foo.push(1);',
+      '    this.props.foo.list.push(1);',
+      '    return <div/>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [{allowArrayMutations: true, allowableArrayMutations: ['shift']}],
+    errors: [{
+      message: errorMessage,
+      line: 4,
+      column: 5
+    }, {
+      message: errorMessage,
+      line: 5,
+      column: 5
+    }, {
+      message: errorMessage,
+      line: 6,
+      column: 5
     }]
   }
     /**
