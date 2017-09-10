@@ -42,17 +42,17 @@ ruleTester.run('react-in-jsx-scope', rule, {
     {code: 'var React, App; <App />;'},
     {code: '/** @jsx Foo */ var Foo, App; <App />;'},
     {code: '/** @jsx Foo.Bar */ var Foo, App; <App />;'},
-    {code: [
-      'import React from \'react/addons\';',
-      'const Button = createReactClass({',
-      '  render() {',
-      '    return (',
-      '      <button {...this.props}>{this.props.children}</button>',
-      '    )',
-      '  }',
-      '});',
-      'export default Button;'
-    ].join('\n')},
+    {code: `
+      import React from 'react/addons';
+      const Button = createReactClass({
+        render() {
+          return (
+            <button {...this.props}>{this.props.children}</button>
+          )
+        }
+      });
+      export default Button;
+    `},
     {code: 'var Foo, App; <App />;', settings: settings}
   ],
   invalid: [{
