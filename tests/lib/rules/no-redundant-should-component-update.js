@@ -31,118 +31,119 @@ const ruleTester = new RuleTester();
 ruleTester.run('no-redundant-should-component-update', rule, {
   valid: [
     {
-      code: [
-        'class Foo extends React.Component {',
-        '  shouldComponentUpdate() {',
-        '    return true;',
-        '  }',
-        '}'
-      ].join('\n'),
+      code: `
+        class Foo extends React.Component {
+          shouldComponentUpdate() {
+            return true;
+          }
+        }
+      `,
       parserOptions: parserOptions
     },
     {
-      code: [
-        'class Foo extends React.Component {',
-        '  shouldComponentUpdate = () => {',
-        '    return true;',
-        '  }',
-        '}'
-      ].join('\n'),
+      code: `
+        class Foo extends React.Component {
+          shouldComponentUpdate = () => {
+            return true;
+          }
+        }
+      `,
       parser: 'babel-eslint',
       parserOptions: parserOptions
     },
     {
-      code: [
-        'class Foo extends React.Component {',
-        '  shouldComponentUpdate() {',
-        '    return true;',
-        '  }',
-        '}'
-      ].join('\n'),
+      code: `
+        class Foo extends React.Component {
+          shouldComponentUpdate() {
+            return true;
+          }
+        }
+      `,
       parserOptions: parserOptions
     },
     {
-      code: [
-        'function Foo() {',
-        '  return class Bar extends React.Component {',
-        '    shouldComponentUpdate() {',
-        '      return true;',
-        '    }',
-        '  };',
-        '}'
-      ].join('\n'),
+      code: `
+        function Foo() {
+          return class Bar extends React.Component {
+            shouldComponentUpdate() {
+              return true;
+            }
+          };
+        }
+      `,
       parserOptions: parserOptions
     }
   ],
+
   invalid: [
     {
-      code: [
-        'class Foo extends React.PureComponent {',
-        '  shouldComponentUpdate() {',
-        '    return true;',
-        '  }',
-        '}'
-      ].join('\n'),
+      code: `
+        class Foo extends React.PureComponent {
+          shouldComponentUpdate() {
+            return true;
+          }
+        }
+      `,
       errors: [{message: errorMessage('Foo')}],
       parserOptions: parserOptions
     },
     {
-      code: [
-        'class Foo extends PureComponent {',
-        '  shouldComponentUpdate() {',
-        '    return true;',
-        '  }',
-        '}'
-      ].join('\n'),
+      code: `
+        class Foo extends PureComponent {
+          shouldComponentUpdate() {
+            return true;
+          }
+        }
+      `,
       errors: [{message: errorMessage('Foo')}],
       parserOptions: parserOptions
     },
     {
-      code: [
-        'class Foo extends React.PureComponent {',
-        '  shouldComponentUpdate = () => {',
-        '    return true;',
-        '  }',
-        '}'
-      ].join('\n'),
+      code: `
+        class Foo extends React.PureComponent {
+          shouldComponentUpdate = () => {
+            return true;
+          }
+        }
+      `,
       errors: [{message: errorMessage('Foo')}],
       parser: 'babel-eslint',
       parserOptions: parserOptions
     },
     {
-      code: [
-        'function Foo() {',
-        '  return class Bar extends React.PureComponent {',
-        '    shouldComponentUpdate() {',
-        '      return true;',
-        '    }',
-        '  };',
-        '}'
-      ].join('\n'),
+      code: `
+        function Foo() {
+          return class Bar extends React.PureComponent {
+            shouldComponentUpdate() {
+              return true;
+            }
+          };
+        }
+      `,
       errors: [{message: errorMessage('Bar')}],
       parserOptions: parserOptions
     },
     {
-      code: [
-        'function Foo() {',
-        '  return class Bar extends PureComponent {',
-        '    shouldComponentUpdate() {',
-        '      return true;',
-        '    }',
-        '  };',
-        '}'
-      ].join('\n'),
+      code: `
+        function Foo() {
+          return class Bar extends PureComponent {
+            shouldComponentUpdate() {
+              return true;
+            }
+          };
+        }
+      `,
       errors: [{message: errorMessage('Bar')}],
       parserOptions: parserOptions
     },
     {
-      code: [
-        'var Foo = class extends PureComponent {',
-        '  shouldComponentUpdate() {',
-        '    return true;',
-        '  }',
-        '}'
-      ].join('\n'),
+      code: `
+        var Foo = class extends PureComponent {
+          shouldComponentUpdate() {
+            return true;
+          }
+        }
+      `,
       errors: [{message: errorMessage('Foo')}],
       parserOptions: parserOptions
     }
