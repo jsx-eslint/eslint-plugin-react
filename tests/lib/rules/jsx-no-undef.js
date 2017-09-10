@@ -42,29 +42,29 @@ ruleTester.run('jsx-no-undef', rule, {
   }, {
     code: '/*eslint no-undef:1*/ var React, app; React.render(<app.foo.Bar />);'
   }, {
-    code: [
-      '/*eslint no-undef:1*/',
-      'var React;',
-      'class Hello extends React.Component {',
-      '  render() {',
-      '    return <this.props.tag />',
-      '  }',
-      '}'
-    ].join('\n')
+    code: `
+      /*eslint no-undef:1*/
+      var React;
+      class Hello extends React.Component {
+        render() {
+          return <this.props.tag />
+        }
+      }
+    `
   }, {
     code: 'var React; React.render(<Text />);',
     globals: {
       Text: true
     }
   }, {
-    code: [
-      'import Text from "cool-module";',
-      'const TextWrapper = function (props) {',
-      '  return (',
-      '    <Text />',
-      '  );',
-      '};'
-    ].join('\n'),
+    code: `
+      import Text from "cool-module";
+      const TextWrapper = function (props) {
+        return (
+          <Text />
+        );
+      };
+    `,
     parserOptions: Object.assign({sourceType: 'module'}, parserOptions),
     options: [{
       allowGlobals: false
@@ -97,14 +97,14 @@ ruleTester.run('jsx-no-undef', rule, {
       message: '\'appp\' is not defined.'
     }]
   }, {
-    code: [
-      'const TextWrapper = function (props) {',
-      '  return (',
-      '    <Text />',
-      '  );',
-      '};',
-      'export default TextWrapper;'
-    ].join('\n'),
+    code: `
+      const TextWrapper = function (props) {
+        return (
+          <Text />
+        );
+      };
+      export default TextWrapper;
+    `,
     parserOptions: Object.assign({sourceType: 'module'}, parserOptions),
     errors: [{
       message: '\'Text\' is not defined.'
