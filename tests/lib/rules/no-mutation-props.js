@@ -185,6 +185,63 @@ ruleTester.run('no-mutation-props', rule, {
       '}'
     ].join('\n'),
     parserOptions: parserOptions
+  },
+  {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    const {foo} = this.props;',
+      '    Object.defineProperty(foo, "bar");',
+      '    const [bar] = this.props.thing',
+      '    Object.defineProperty(bar, "baz");',
+      '    const baz = this.props.baz',
+      '    Object.defineProperty(baz, "thing");',
+      '    Object.defineProperty(this.props, "foo");',
+      '    Object.defineProperty(this.props.foo, "foo");',
+      '    return <div/>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [{allowObjectStatics: true}]
+  },
+  {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    const {foo} = this.props;',
+      '    Object.defineProperties(foo, {"prop": {value: true}});',
+      '    const [bar] = this.props.thing',
+      '    Object.defineProperties(bar, {"prop": {value: true}});',
+      '    const baz = this.props.baz',
+      '    Object.defineProperties(baz, {"prop": {value: true}});',
+      '    Object.defineProperties(this.props, {"prop": {value: true}});',
+      '    Object.defineProperties(this.props.foo, {"prop": {value: true}});',
+      '    return <div/>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [{allowObjectStatics: true}]
+  },
+  {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    const {foo} = this.props;',
+      '    Object.assign(foo, {bar: 1});',
+      '    const [bar] = this.props.thing;',
+      '    Object.assign(bar, {baz: 1});',
+      '    const baz = this.props.baz;',
+      '    Object.assign(baz, {bat: 1});',
+      '    Object.assign(this.props, {foo: 1});',
+      '    Object.assign(this.props.baz, {foo: 1});',
+      '    return <div/>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [{allowObjectStatics: true}]
   }],
 
   invalid: [{
@@ -589,6 +646,28 @@ ruleTester.run('no-mutation-props', rule, {
     }, {
       message: errorMessage,
       line: 6,
+      column: 5
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    const {foo} = this.props;',
+      '    Object.assign(foo, {bar: true});',
+      '    Object.assign(this.props.foo, {bar: true});',
+      '    return <div/>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [{allowObjectStatics: true, allowableObjectStatics: ['defineProperty']}],
+    errors: [{
+      message: errorMessage,
+      line: 4,
+      column: 5
+    }, {
+      message: errorMessage,
+      line: 5,
       column: 5
     }]
   }

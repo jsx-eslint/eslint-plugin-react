@@ -69,6 +69,8 @@ var Hello = React.createClass({
 "react/no-mutation-props": [<enabled>, {
   "allowArrayMutations": <boolean>,
   "allowableArrayMutations": <array<string>>,
+  "allowObjectStatics": <boolean>,
+  "allowableObjectStatics": <array<string>>,
 }]
 ...
 ```
@@ -90,3 +92,24 @@ this.props.list.push(1)
 When `allowArrayMutation: true` the rule specifies specific [array mutations](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Mutator_methods) of props to allow. Mutations not listed will remain as warnings.
 
 You must used this option in conjunction with `allowArrayMutation`. You should only use this option if you have a prop that contains an object with methods that conflict with array mutation methods.
+
+### `allowObjectStatics`
+
+When `true` the rule ignores [`Object` methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object#Methods_of_the_Object_constructor) that can mutation props.
+
+You should only use this option if you've overridden the language built-in `Object`.
+
+The following patterns are considered okay and do not cause warnings:
+
+```jsx
+Object.assign(this.props, {foo: true})
+Object.defineProperty(this.props.foo, 'bar')
+Object.defineProperties(this.props.foo, [{foo: {value: 'bar'}}])
+```
+
+### `allowableObjectStatics`
+
+When `allowObjectStatics: true` the rule specifies specific [`Object` methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object#Methods_of_the_Object_constructor) of `Object` to allow. Mutation methods not listed will remain as warnings.
+
+You must used this option in conjunction with `allowObjectStatics`. You should only use this option if you've overridden the language built-in `Object`.
+
