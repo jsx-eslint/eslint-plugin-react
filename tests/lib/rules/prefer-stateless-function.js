@@ -29,6 +29,7 @@ ruleTester.run('prefer-stateless-function', rule, {
 
   valid: [
     {
+      // Already a stateless function
       code: `
         const Foo = function(props) {
           return <div>{props.foo}</div>;
@@ -38,6 +39,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       // Already a stateless (arrow) function
       code: 'const Foo = ({foo}) => <div>{foo}</div>;'
     }, {
+      // Extends from PureComponent and uses props
       code: `
         class Foo extends React.PureComponent {
           render() {
@@ -49,6 +51,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         ignorePureComponents: true
       }]
     }, {
+      // Extends from PureComponent and uses context
       code: `
         class Foo extends React.PureComponent {
           render() {
@@ -60,6 +63,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         ignorePureComponents: true
       }]
     }, {
+      // Extends from PureComponent in an expression context.
       code: `
         const Foo = class extends React.PureComponent {
           render() {
@@ -72,6 +76,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         ignorePureComponents: true
       }]
     }, {
+      // Has a lifecyle method
       code: `
         class Foo extends React.Component {
           shouldComponentUpdate() {
@@ -83,6 +88,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `
     }, {
+      // Has a state
       code: `
         class Foo extends React.Component {
           changeState() {
@@ -94,6 +100,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `
     }, {
+      // Use refs      
       code: `
         class Foo extends React.Component {
           doStuff() {
@@ -105,6 +112,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `
     }, {
+      // Has an additional method
       code: `
         class Foo extends React.Component {
           doStuff() {}
@@ -114,6 +122,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `
     }, {
+      // Has an empty (no super) constructor      
       code: `
         class Foo extends React.Component {
           constructor() {}
@@ -123,6 +132,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `
     }, {
+      // Has a constructor      
       code: `
         class Foo extends React.Component {
           constructor() {
@@ -134,6 +144,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `
     }, {
+      // Has a constructor (2)      
       code: `
         class Foo extends React.Component {
           constructor() {
@@ -145,6 +156,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `
     }, {
+      // Use this.bar      
       code: `
         class Foo extends React.Component {
           render() {
@@ -154,6 +166,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       `,
       parser: 'babel-eslint'
     }, {
+      // Use this.bar (destructuring)
       code: `
         class Foo extends React.Component {
           render() {
@@ -164,6 +177,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       `,
       parser: 'babel-eslint'
     }, {
+      // Use this[bar]
       code: `
         class Foo extends React.Component {
           render() {
@@ -173,6 +187,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       `,
       parser: 'babel-eslint'
     }, {
+      // Use this['bar']
       code: `
         class Foo extends React.Component {
           render() {
@@ -182,6 +197,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       `,
       parser: 'babel-eslint'
     }, {
+      // Can return null (ES6, React 0.14.0)
       code: `
         class Foo extends React.Component {
           render() {
@@ -199,6 +215,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       }
     }, {
+      // Can return null (ES5, React 0.14.0)
       code: `
         var Foo = createReactClass({
           render: function() {
@@ -215,6 +232,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       }
     }, {
+      // Can return null (shorthand if in return, React 0.14.0)
       code: `
         class Foo extends React.Component {
           render() {
@@ -241,6 +259,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       `,
       parser: 'babel-eslint'
     }, {
+      // Has childContextTypes
       code: `
         class Foo extends React.Component {
           render() {
@@ -253,6 +272,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       `,
       parser: 'babel-eslint'
     }, {
+      // Uses a decorator
       code: `
         @foo
         class Foo extends React.Component {
@@ -263,6 +283,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       `,
       parser: 'babel-eslint'
     }, {
+      // Uses a called decorator
       code: `
         @foo("bar")
         class Foo extends React.Component {
@@ -273,6 +294,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       `,
       parser: 'babel-eslint'
     }, {
+      // Uses multiple decorators
       code: `
         @foo
         @bar()
@@ -288,6 +310,7 @@ ruleTester.run('prefer-stateless-function', rule, {
 
   invalid: [
     {
+      // Only use this.props
       code: `
         class Foo extends React.Component {
           render() {

@@ -30,6 +30,7 @@ const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('require-render-return', rule, {
 
   valid: [{
+    // ES6 class
     code: `
       class Hello extends React.Component {
         render() {
@@ -38,6 +39,7 @@ ruleTester.run('require-render-return', rule, {
       }
     `
   }, {
+    // ES6 class with render property
     code: `
       class Hello extends React.Component {
         render = () => {
@@ -47,6 +49,7 @@ ruleTester.run('require-render-return', rule, {
     `,
     parser: 'babel-eslint'
   }, {
+    // ES6 class with render property (implicit return)
     code: `
       class Hello extends React.Component {
         render = () => (
@@ -56,6 +59,7 @@ ruleTester.run('require-render-return', rule, {
     `,
     parser: 'babel-eslint'
   }, {
+    // ES5 class
     code: `
       var Hello = createReactClass({
         displayName: 'Hello',
@@ -65,12 +69,14 @@ ruleTester.run('require-render-return', rule, {
       });
     `
   }, {
+    // Stateless function
     code: `
       function Hello() {
         return <div></div>;
       }
     `
   }, {
+    // Stateless arrow function
     code: `
       var Hello = () => (
         <div></div>
@@ -78,6 +84,7 @@ ruleTester.run('require-render-return', rule, {
     `,
     parser: 'babel-eslint'
   }, {
+    // Return in a switch...case
     code: `
       var Hello = createReactClass({
         render: function() {
@@ -91,6 +98,7 @@ ruleTester.run('require-render-return', rule, {
       });
     `
   }, {
+    // Return in a if...else
     code: `
       var Hello = createReactClass({
         render: function() {
@@ -103,6 +111,7 @@ ruleTester.run('require-render-return', rule, {
       });
     `
   }, {
+    // Not a React component
     code: `
       class Hello {
         render() {}
@@ -115,6 +124,7 @@ ruleTester.run('require-render-return', rule, {
     // ES5 class without a render method
     code: 'var Hello = createReactClass({});'
   }, {
+    // ES5 class with an imported render method
     code: `
       var render = require('./render');
       var Hello = createReactClass({
@@ -122,6 +132,7 @@ ruleTester.run('require-render-return', rule, {
       });
     `
   }, {
+    // Invalid render method (but accepted by Babel)
     code: `
       class Foo extends Component {
         render
@@ -131,6 +142,7 @@ ruleTester.run('require-render-return', rule, {
   }],
 
   invalid: [{
+    // Missing return in ES5 class
     code: `
       var Hello = createReactClass({
         displayName: 'Hello',
@@ -141,6 +153,7 @@ ruleTester.run('require-render-return', rule, {
       message: 'Your render method should have return statement'
     }]
   }, {
+    // Missing return in ES6 class
     code: `
       class Hello extends React.Component {
         render() {} 
@@ -150,6 +163,7 @@ ruleTester.run('require-render-return', rule, {
       message: 'Your render method should have return statement'
     }]
   }, {
+    // Missing return (but one is present in a sub-function)
     code: `
       class Hello extends React.Component {
         render() {
@@ -163,6 +177,7 @@ ruleTester.run('require-render-return', rule, {
       message: 'Your render method should have return statement'
     }]
   }, {
+    // Missing return ES6 class render property
     code: `
       class Hello extends React.Component {
         render = () => {

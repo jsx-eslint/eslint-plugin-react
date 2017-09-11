@@ -29,6 +29,7 @@ const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('boolean-prop-naming', rule, {
 
   valid: [{
+    // Should support both `is` and `has` prefixes by default
     code: `
       var Hello = createReactClass({
         propTypes: {isSomething: PropTypes.bool, hasValue: PropTypes.bool},
@@ -36,6 +37,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       });
     `
   }, {
+    // createReactClass components with PropTypes
     code: `
       var Hello = createReactClass({
         propTypes: {isSomething: PropTypes.bool},
@@ -46,6 +48,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }]
   }, {
+    // createReactClass components with React.PropTypes
     code: `
       var Hello = createReactClass({
         propTypes: {isSomething: React.PropTypes.bool},
@@ -56,6 +59,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }]
   }, {
+    // React.createClass components with PropTypes
     code: `
       var Hello = React.createClass({
         propTypes: {isSomething: PropTypes.bool},
@@ -71,6 +75,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     }
   }, {
+    // React.createClass components with non-boolean PropTypes
     code: `
       var Hello = React.createClass({
         propTypes: {something: PropTypes.any},
@@ -86,6 +91,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     }
   }, {
+    // ES6 components as React.Component with boolean PropTypes
     code: `
       class Hello extends React.Component {
         render () { return <div />; }
@@ -96,6 +102,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }]
   }, {
+    // ES6 components as React.Component with non-boolean PropTypes
     code: `
       class Hello extends React.Component {
         render () { return <div />; }
@@ -116,6 +123,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }]
   }, {
+    // ES6 components as Component with boolean PropTypes
     code: `
       class Hello extends Component {
         render () { return <div />; }
@@ -126,6 +134,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }]
   }, {
+    // ES6 components with static class properties and PropTypes
     code: `
       class Hello extends React.Component {
         static propTypes = {isSomething: PropTypes.bool};
@@ -137,6 +146,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     }],
     parser: 'babel-eslint'
   }, {
+    // ES6 components with static class properties and React.PropTypes
     code: `
       class Hello extends React.Component {
         static propTypes = {isSomething: React.PropTypes.bool};
@@ -148,6 +158,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     }],
     parser: 'babel-eslint'
   }, {
+    // ES6 components with static class properties an non-booleans
     code: `
       class Hello extends React.Component {
         static propTypes = {something: PropTypes.any};
@@ -159,6 +170,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     }],
     parser: 'babel-eslint'
   }, {
+    // ES6 components and Flowtype booleans
     code: `
       class Hello extends React.Component {
         props: {isSomething: boolean};
@@ -170,6 +182,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     }],
     parser: 'babel-eslint'
   }, {
+    // ES6 components and Flowtype non-booleans
     code: `
       class Hello extends React.Component {
         props: {something: any};
@@ -181,6 +194,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     }],
     parser: 'babel-eslint'
   }, {
+    // Stateless components
     code: `
       var Hello = ({isSomething}) => { return <div /> }
       Hello.propTypes = {isSomething: PropTypes.bool};
@@ -190,6 +204,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     }],
     parser: 'babel-eslint'
   }, {
+    // Functional components and Flowtype booleans
     code: `
       type Props = {
         isSomething: boolean;
@@ -201,6 +216,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     }],
     parser: 'babel-eslint'
   }, {
+    // Custom `propTypeNames` option
     code: `
       class Hello extends React.Component {
         static propTypes = {
@@ -216,6 +232,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     }],
     parser: 'babel-eslint'
   }, {
+    // Custom PropTypes that are specified as variables
     code: `
       class Hello extends React.Component {
         static propTypes = {
@@ -231,6 +248,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     }],
     parser: 'babel-eslint'
   }, {
+    // Ensure rule doesn't crash on destructured objects [Issue #1369]
     code: `
       var x = {a: 1}
       var y = {...x}
@@ -240,6 +258,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     }],
     parser: 'babel-eslint'
   }, {
+    // Ensure rule doesn't crash on on components reference old-style Flow props
     code: `
       class Hello extends PureComponent {
         props: PropsType;
@@ -253,6 +272,7 @@ ruleTester.run('boolean-prop-naming', rule, {
   }],
 
   invalid: [{
+    // createReactClass components with PropTypes
     code: `
       var Hello = createReactClass({
         propTypes: {something: PropTypes.bool},
@@ -266,6 +286,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
   }, {
+    // createReactClass components with React.PropTypes
     code: `
       var Hello = createReactClass({
         propTypes: {something: React.PropTypes.bool},
@@ -279,6 +300,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
   }, {
+    // React.createClass components with PropTypes
     code: `
       var Hello = React.createClass({
         propTypes: {something: PropTypes.bool},
@@ -297,6 +319,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
   }, {
+    // ES6 components as React.Component with boolean PropTypes
     code: `
       class Hello extends React.Component {
         render () { return <div />; }
@@ -310,6 +333,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
   }, {
+    // ES6 components as Component with non-boolean PropTypes
     code: `
       class Hello extends Component {
         render () { return <div />; }
@@ -323,6 +347,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
   }, {
+    // ES6 components as React.Component with non-boolean PropTypes
     code: `
       class Hello extends React.Component {
         static propTypes = {something: PropTypes.bool};
@@ -337,6 +362,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
   }, {
+    // ES6 components as React.Component with non-boolean PropTypes
     code: `
       class Hello extends React.Component {
         props: {something: boolean};
@@ -377,6 +403,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
   }, {
+    // ES6 components and Flowtype non-booleans
     code: `
       class Hello extends React.Component {
         static propTypes = {something: PropTypes.mutuallyExclusiveTrueProps};

@@ -149,6 +149,7 @@ ruleTester.run('no-typos', rule, {
     `,
     parserOptions: parserOptions
   }, {
+    // This case is currently not supported
     code: `
       class First extends React.Component {}
       First["prop" + "Types"] = {};
@@ -158,6 +159,7 @@ ruleTester.run('no-typos', rule, {
     `,
     parserOptions: parserOptions
   }, {
+    // This case is currently not supported
     code: `
       class First extends React.Component {}
       First["PROP" + "TYPES"] = {};
