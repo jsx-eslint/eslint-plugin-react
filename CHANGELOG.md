@@ -3,6 +3,17 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.4.0-rc.1] - 2017-09-12
+### Added
+- Add support for increment and decrement operations to [`no-direct-mutation-state`][] ([#1386][] @zpao)
+
+### Fixed
+- Fix [`prop-types`][] and [`no-unused-prop-types`][] crash with IntersectionTypeAnnotation ([#1413][] @jseminck)
+
+[7.4.0-rc.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.4.0-rc.0...v7.4.0-rc.1
+[#1386]: https://github.com/yannickcr/eslint-plugin-react/issues/1386
+[#1413]: https://github.com/yannickcr/eslint-plugin-react/issues/1413
+
 ## [7.4.0-rc.0] - 2017-09-05
 ### Added
 - Add Flow 0.53 support ([#1376][] @jseminck)
@@ -17,7 +28,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 - Fix [`no-unused-state`][] to ignore computed property keys ([#1361][] @jackyho112)
 - Fix [`no-typos`][] crash ([#1406][] @jseminck)
 - Fix [`boolean-prop-naming`][] crash ([#1409][] @EvHaus)
-
+http://i.imgur.com/FcCq9m4.png
 ### Changed
 - Documentation improvements ([#1392][] @xcatliu, [#1403][] @piperchester)
 
