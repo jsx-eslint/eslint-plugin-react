@@ -1686,6 +1686,72 @@ ruleTester.run('prop-types', rule, {
       parser: 'babel-eslint'
     }, {
       code: `
+        type PropsA = { foo: string };
+        type PropsB = { bar: string };
+        type PropsC = { zap: string };
+        type Props = PropsA & PropsB;
+
+        class Bar extends React.Component {
+          props: Props & PropsC;
+          
+          render() {
+            return <div>{this.props.foo} - {this.props.bar} - {this.props.zap}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        import type { PropsA } from "./myPropsA";
+        type PropsB = { bar: string };
+        type PropsC = { zap: string };
+        type Props = PropsA & PropsB;
+
+        class Bar extends React.Component {
+          props: Props & PropsC;
+          
+          render() {
+            return <div>{this.props.foo} - {this.props.bar} - {this.props.zap}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type PropsA = { bar: string };
+        type PropsB = { zap: string };
+        type Props = PropsA & {
+          baz: string 
+        };
+
+        class Bar extends React.Component {
+          props: Props & PropsB;
+          
+          render() {
+            return <div>{this.props.bar} - {this.props.zap} - {this.props.baz}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type PropsA = { bar: string };
+        type PropsB = { zap: string };
+        type Props =  {
+          baz: string 
+        } & PropsA;
+
+        class Bar extends React.Component {
+          props: Props & PropsB;
+          
+          render() {
+            return <div>{this.props.bar} - {this.props.zap} - {this.props.baz}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
         type Props = { foo: string }
         function higherOrderComponent<Props>() {
           return class extends React.Component<Props> {
@@ -3375,6 +3441,65 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'fooBar\' is missing in props validation'
       }]
+    }, {
+      code: `
+        type PropsA = { foo: string };
+        type PropsB = { bar: string };
+        type PropsC = { zap: string };
+        type Props = PropsA & PropsB;
+
+        class Bar extends React.Component {
+          props: Props & PropsC;
+          
+          render() {
+            return <div>{this.props.foo} - {this.props.bar} - {this.props.zap} - {this.props.fooBar}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'fooBar\' is missing in props validation'
+      }]
+    }, {
+      code: `
+        type PropsB = { bar: string };
+        type PropsC = { zap: string };
+        type Props = PropsB & {
+          baz: string 
+        };
+
+        class Bar extends React.Component {
+          props: Props & PropsC;
+          
+          render() {
+            return <div>{this.props.bar} - {this.props.baz} - {this.props.fooBar}</div>
+          }
+        }
+      `,
+      errors: [{
+        message: '\'fooBar\' is missing in props validation'
+      }],
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type PropsB = { bar: string };
+        type PropsC = { zap: string };
+        type Props = {
+          baz: string 
+        } & PropsB;
+
+        class Bar extends React.Component {
+          props: Props & PropsC;
+          
+          render() {
+            return <div>{this.props.bar} - {this.props.baz} - {this.props.fooBar}</div>
+          }
+        }
+      `,
+      errors: [{
+        message: '\'fooBar\' is missing in props validation'
+      }],
+      parser: 'babel-eslint'
     }
   ]
 });
