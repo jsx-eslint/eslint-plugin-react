@@ -113,3 +113,23 @@ When `allowObjectStatics: true` the rule specifies specific [`Object` methods](h
 
 You must used this option in conjunction with `allowObjectStatics`. You should only use this option if you've overridden the language built-in `Object`.
 
+### `allowReflectStatics`
+
+When `true`, will allow [`Reflect` mutation methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Reflects/Reflect#Methods) of props that are objects.  
+
+You should only use this option if you've overridden the language built-in `Reflect`.
+
+The following patterns are considered okay and do not cause warnings:
+
+```jsx
+Reflect.set(this.props.foo, 'bar, true)
+Reflect.defineProperty(this.props.foo, 'bar')
+Reflect.deleteProperty(this.props.foo, 'bar')
+```
+
+### `allowableReflectStatics`
+
+When `allowObjectStatics: true` the rule specifies a whitelist of specified [`Reflect` mutation methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect#Methods). Mutation methods not listed will remain as warnings.
+
+You must used this option in conjunction with `allowReflectStatics`. You should only use this option if you've overridden the language built-in `Reflect`.
+

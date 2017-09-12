@@ -242,6 +242,26 @@ ruleTester.run('no-mutation-props', rule, {
     ].join('\n'),
     parserOptions: parserOptions,
     options: [{allowObjectStatics: true}]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    const {foo} = this.props;',
+      '    Reflect.set(foo, "bar", 1);',
+      '    const [bar] = this.props.thing;',
+      '    Reflect.set(bar, "baz", 1);',
+      '    const baz = this.props.baz;',
+      '    Reflect.set(baz, "bat", 1);',
+      '    Reflect.set(this.props, "foo", 1);',
+      '    Reflect.set(this.props.baz, "foo", 1);',
+      '    Reflect.deleteProperty(this.props, "foo");',
+      '    Reflect.defineProperty(this.props, "foo");',
+      '    return <div/>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [{allowReflectStatics: true}]
   }],
 
   invalid: [{
@@ -668,6 +688,77 @@ ruleTester.run('no-mutation-props', rule, {
     }, {
       message: errorMessage,
       line: 5,
+      column: 5
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    const {foo} = this.props;',
+      '    Reflect.set(foo, "bar", 1);',
+      '    const [bar] = this.props.thing;',
+      '    Reflect.set(bar, "baz", 1);',
+      '    const baz = this.props.baz;',
+      '    Reflect.set(baz, "bat", 1);',
+      '    Reflect.set(this.props, "foo", 1);',
+      '    Reflect.set(this.props.baz, "foo", 1);',
+      '    Reflect.deleteProperty(this.props, "foo");',
+      '    Reflect.defineProperty(this.props, "foo");',
+      '    return <div/>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: errorMessage,
+      line: 4,
+      column: 5
+    }, {
+      message: errorMessage,
+      line: 6,
+      column: 5
+    }, {
+      message: errorMessage,
+      line: 8,
+      column: 5
+    }, {
+      message: errorMessage,
+      line: 9,
+      column: 5
+    }, {
+      message: errorMessage,
+      line: 10,
+      column: 5
+    }, {
+      message: errorMessage,
+      line: 11,
+      column: 5
+    }, {
+      message: errorMessage,
+      line: 12,
+      column: 5
+    }]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    const {foo} = this.props;',
+      '    Reflect.set(foo, "bar", 1);',
+      '    Reflect.deleteProperty(this.props, "foo");',
+      '    Reflect.defineProperty(this.props, "foo");',
+      '    return <div/>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    options: [{allowReflectStatics: true, allowableReflectStatics: ['set']}],
+    errors: [{
+      message: errorMessage,
+      line: 5,
+      column: 5
+    }, {
+      message: errorMessage,
+      line: 6,
       column: 5
     }]
   }
