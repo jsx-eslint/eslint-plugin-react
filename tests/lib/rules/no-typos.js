@@ -239,15 +239,6 @@ ruleTester.run('no-typos', rule, {
     ].join('\n'),
     parserOptions: parserOptions
   }, {
-    // PropTypes declared on a component that is detected through JSDoc comments and is
-    // declared AFTER the PropTypes assignment does not work.
-    code: `
-      MyComponent.PROPTYPES = {}
-      /** @extends React.Component */
-      class MyComponent extends BaseComponent {}
-    `,
-    parserOptions: parserOptions
-  }, {
     // https://github.com/yannickcr/eslint-plugin-react/issues/1353
     code: `
       function test(b) {
@@ -762,6 +753,18 @@ ruleTester.run('no-typos', rule, {
       message: 'Typo in declared prop type: function'
     }, {
       message: 'Typo in declared prop type: objectof'
+    }]
+  }, {
+  // PropTypes declared on a component that is detected through JSDoc comments and is
+  // declared AFTER the PropTypes only works when ESLint version is >= 4.7.0
+    code: `
+      MyComponent.PROPTYPES = {}
+      /** @extends React.Component */
+      class MyComponent extends BaseComponent {}
+    `,
+    parserOptions: parserOptions,
+    errors: [{
+      message: ERROR_MESSAGE
     }]
   }]
 });
