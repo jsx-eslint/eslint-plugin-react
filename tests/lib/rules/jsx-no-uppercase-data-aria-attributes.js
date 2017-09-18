@@ -38,6 +38,18 @@ ruleTester.run('jsx-no-uppercase-data-aria-attributes', rule, {
           ' as per https://facebook.github.io/react/docs/dom-elements.html'
     }]
   }, {
+    code: '<a Data-pop-over={true} href="http://example.com"></a>',
+    errors: [{
+      message: 'In React, data-* and aria-* attributes must be lowercase' +
+          ' as per https://facebook.github.io/react/docs/dom-elements.html'
+    }]
+  }, {
+    code: '<input ARIA-DESCRIBEDBY="error-message"/>',
+    errors: [{
+      message: 'In React, data-* and aria-* attributes must be lowercase' +
+          ' as per https://facebook.github.io/react/docs/dom-elements.html'
+    }]
+  }, {
     code: '<input aria-describedBy="error-message"/>',
     errors: [{
       message: 'In React, data-* and aria-* attributes must be lowercase' +
