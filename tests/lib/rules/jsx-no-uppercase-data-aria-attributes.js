@@ -28,6 +28,7 @@ const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-no-uppercase-data-aria-attributes', rule, {
   valid: [
     {code: '<a data-pop-over={true} href="http://example.com/"></a>'},
+    {code: '<a aNonDataAttribute="yay"></a>'},
     {code: '<input aria-describedby="error-message"/>'}
   ],
   invalid: [{
