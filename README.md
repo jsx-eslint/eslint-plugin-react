@@ -137,7 +137,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/jsx-key](docs/rules/jsx-key.md): Validate JSX has key prop when in array or iterator
 * [react/jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md): Limit maximum of props on a single line in JSX (fixable)
 * [react/jsx-no-bind](docs/rules/jsx-no-bind.md): Prevent usage of `.bind()` and arrow functions in JSX props
-* [react/jsx-no-comment-textnodes](docs/rules/jsx-no-comment-textnodes.md): Prevent comments from being inserted as text 
+* [react/jsx-no-comment-textnodes](docs/rules/jsx-no-comment-textnodes.md): Prevent comments from being inserted as text nodes
 * [react/jsx-no-uppercase-data-aria-attributes](docs/rules/jsx-no-uppercase-data-aria-attributes.md): Forbid data-* and aria-* attribute keys from being uppercase
 * [react/jsx-no-duplicate-props](docs/rules/jsx-no-duplicate-props.md): Prevent duplicate props in JSX
 * [react/jsx-no-literals](docs/rules/jsx-no-literals.md): Prevent usage of unwrapped JSX strings
