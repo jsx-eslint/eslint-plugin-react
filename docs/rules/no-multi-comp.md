@@ -42,7 +42,7 @@ var HelloJohn = createReactClass({
 
 ### `ignoreStateless`
 
-When `true` the rule will ignore stateless components and will allow you to have multiple stateless components, or one statefull component and some stateless components in the same file.
+When `true` the rule will ignore stateless components and will allow you to have multiple stateless components, or one stateful component and some stateless components in the same file.
 
 The following patterns are considered okay and do not cause warnings:
 
@@ -69,4 +69,4 @@ module.exports = HelloJohn;
 
 ## When Not To Use It
 
-If you prefer to declare multiple components per files you can disable this rule.
+If you prefer to declare multiple components per file you can disable this rule.
