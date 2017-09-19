@@ -1,6 +1,6 @@
 # Prevent ignored data-* and aria-* attributes (react/jsx-no-uppercase-data-aria-attributes)
 
-In React, all `aria-*` and `data-*` DOM attribute keys should be lowercase. Otherwise, they will be ignored by React.
+In React, all `aria-*` and `data-*` DOM attribute keys should be lowercase. Otherwise, they will be ignored by React (<16) or throw warnings (16).
 
 ## Rule Details
 
