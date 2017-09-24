@@ -3,36 +3,27 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
-## [7.4.0-rc.1] - 2017-09-12
-### Added
-- Add support for increment and decrement operations to [`no-direct-mutation-state`][] ([#1386][] @zpao)
-
-### Fixed
-- Fix [`prop-types`][] and [`no-unused-prop-types`][] crash with IntersectionTypeAnnotation ([#1413][] @jseminck)
-
-[7.4.0-rc.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.4.0-rc.0...v7.4.0-rc.1
-[#1386]: https://github.com/yannickcr/eslint-plugin-react/issues/1386
-[#1413]: https://github.com/yannickcr/eslint-plugin-react/issues/1413
-
-## [7.4.0-rc.0] - 2017-09-05
+## [7.4.0] - 2017-09-24
 ### Added
 - Add Flow 0.53 support ([#1376][] @jseminck)
 - Add [`jsx-curly-brace-presence`][] rule ([#1310][] @jackyho112)
 - Add support for Flow IntersectionTypeAnnotation to [`prop-types`][] and [`no-unused-prop-types`][] ([#1364][] [#1323][] @jseminck)
-- Add support for Flow TypedArgument to [`no-unsed-prop-types`][] ([#1412][] @jseminck)
+- Add support for Flow TypedArgument to [`no-unused-prop-types`][] ([#1412][] @jseminck)
 - Add support for Flow ClassExpressions to [`prop-types`][] ([#1400][] @jseminck)
 - Add support for Flow read-only props to [`no-unused-prop-types`][] ([#1388][] @jseminck)
 - Add more tests for [`prop-types`][] and [`no-unused-prop-types`][] ([#1381][] @DianaSuvorova)
+- Add support for increment and decrement operations to [`no-direct-mutation-state`][] ([#1386][] @zpao)
 
 ### Fixed
 - Fix [`no-unused-state`][] to ignore computed property keys ([#1361][] @jackyho112)
 - Fix [`no-typos`][] crash ([#1406][] @jseminck)
 - Fix [`boolean-prop-naming`][] crash ([#1409][] @EvHaus)
-http://i.imgur.com/FcCq9m4.png
-### Changed
-- Documentation improvements ([#1392][] @xcatliu, [#1403][] @piperchester)
+- Fix [`prop-types`][] and [`no-unused-prop-types`][] crash with IntersectionTypeAnnotation ([#1413][] @jseminck)
 
-[7.4.0-rc.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.3.0...v7.4.0-rc.0
+### Changed
+- Documentation improvements ([#1392][] @xcatliu, [#1403][] @piperchester, [#1432][] @jneuendorf)
+
+[7.4.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.3.0...v7.4.0
 [#1376]: https://github.com/yannickcr/eslint-plugin-react/issues/1376
 [#1310]: https://github.com/yannickcr/eslint-plugin-react/issues/1310
 [#1364]: https://github.com/yannickcr/eslint-plugin-react/issues/1364
@@ -46,6 +37,9 @@ http://i.imgur.com/FcCq9m4.png
 [#1409]: https://github.com/yannickcr/eslint-plugin-react/pull/1409
 [#1392]: https://github.com/yannickcr/eslint-plugin-react/pull/1392
 [#1403]: https://github.com/yannickcr/eslint-plugin-react/pull/1403
+[#1386]: https://github.com/yannickcr/eslint-plugin-react/issues/1386
+[#1413]: https://github.com/yannickcr/eslint-plugin-react/issues/1413
+[#1432]: https://github.com/yannickcr/eslint-plugin-react/pull/1432
 
 ## [7.3.0] - 2017-08-21
 ### Added
