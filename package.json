@@ -27,7 +27,7 @@
     "doctrine": "^2.0.0",
     "has": "^1.0.1",
     "jsx-ast-utils": "^2.0.0",
-    "prop-types": "^15.5.10"
+    "prop-types": "^15.6.0"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.3",
