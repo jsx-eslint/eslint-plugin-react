@@ -56,13 +56,6 @@ var Hello = React.createClass({
 
 var Hello = React.createClass({
   render: function() {
-    _.assign(this.props, {foo: 'bar'});
-    return <div>{this.props.foo}</div>;
-  }
-});
-
-var Hello = React.createClass({
-  render: function() {
     this.props.foo++;
     return <div>{this.props.foo}</div>;
   }
@@ -101,9 +94,11 @@ You must used this option in conjunction with `allowArrayMutation`. You should o
 
 ### `disabledMethods`
 
-By default, this is set to: `['Object.assign', 'Object.defineProperty', 'Object.defineProperties', 'Reflect.defineProperty', 'Reflect.deleteProperty', 'Reflect.set', '_.fill', '_.reverse', '_.assign', '_.extend', '_.assignIn', '_.assignInWith', '_.extendWith', '_.assignWith', '_.defaults', '_.defaultsDeep', '_.merge', '_.mergeWith', '_.set', '_.setWith']`. This contains language built-ins that can mutate objects (see: [`Object` methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object#Methods_of_the_Object_constructor) and [`Reflect` mutation methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Reflects/Reflect#Methods)) as well as methods on [lodash](https://lodash.com) that will mutate either arrays or objects. You can override this with your own set of object/method pairs.
+By default, this is set to: `['Object.assign', 'Object.defineProperty', 'Object.defineProperties', 'Reflect.defineProperty', 'Reflect.deleteProperty', 'Reflect.set']`. This contains language built-ins that can mutate objects (see: [`Object` methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object#Methods_of_the_Object_constructor) and [`Reflect` mutation methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Reflects/Reflect#Methods)). You can override this with your own set of object/method pairs.
 
 **NOTE**: if you set this option, the defaults are overridden. It's a good idea to add at least the language defaults listed above to your configuration.
+
+You may want to add methods from [lodash](https://lodash.com) that will mutate either arrays or objects. `['_.fill', '_.reverse', '_.assign', '_.extend', '_.assignIn', '_.assignInWith', '_.extendWith', '_.assignWith', '_.defaults', '_.defaultsDeep', '_.merge', '_.mergeWith', '_.set', '_.setWith']`.
 
 If set to an empty array, the following patterns are considered okay and do not cause warnings:
 
@@ -114,8 +109,5 @@ Object.defineProperties(this.props.foo, [{foo: {value: 'bar'}}])
 Reflect.set(this.props.foo, 'bar, true)
 Reflect.defineProperty(this.props.foo, 'bar')
 Reflect.deleteProperty(this.props.foo, 'bar')
-_.assign(this.props, {foo: 'bar'})
-_.fill(this.props.list, 'foo')
-// many more lodash methods
 ```
 
