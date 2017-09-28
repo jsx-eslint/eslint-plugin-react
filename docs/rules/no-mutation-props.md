@@ -56,6 +56,13 @@ var Hello = React.createClass({
 
 var Hello = React.createClass({
   render: function() {
+    _.assign(this.props, {foo: 'bar'});
+    return <div>{this.props.foo}</div>;
+  }
+});
+
+var Hello = React.createClass({
+  render: function() {
     this.props.foo++;
     return <div>{this.props.foo}</div>;
   }
@@ -69,8 +76,7 @@ var Hello = React.createClass({
 "react/no-mutation-props": [<enabled>, {
   "allowArrayMutations": <boolean>,
   "allowableArrayMutations": <array<string>>,
-  "allowObjectStatics": <boolean>,
-  "allowableObjectStatics": <array<string>>,
+  "disabledMethods": <array<string>>,
 }]
 ...
 ```
@@ -87,49 +93,29 @@ The following patterns are considered okay and do not cause warnings:
 this.props.list.push(1)
 ```
 
-### `allowablArrayMutations`
+### `allowableArrayMutations`
 
 When `allowArrayMutation: true` the rule specifies specific [array mutations](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array#Mutator_methods) of props to allow. Mutations not listed will remain as warnings.
 
 You must used this option in conjunction with `allowArrayMutation`. You should only use this option if you have a prop that contains an object with methods that conflict with array mutation methods.
 
-### `allowObjectStatics`
+### `disabledMethods`
 
-When `true` the rule ignores [`Object` methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object#Methods_of_the_Object_constructor) that can mutation props.
+By default, this is set to: `['Object.assign', 'Object.defineProperty', 'Object.defineProperties', 'Reflect.defineProperty', 'Reflect.deleteProperty', 'Reflect.set', '_.fill', '_.reverse', '_.assign', '_.extend', '_.assignIn', '_.assignInWith', '_.extendWith', '_.assignWith', '_.defaults', '_.defaultsDeep', '_.merge', '_.mergeWith', '_.set', '_.setWith']`. This contains language built-ins that can mutate objects (see: [`Object` methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object#Methods_of_the_Object_constructor) and [`Reflect` mutation methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Reflects/Reflect#Methods)) as well as methods on [lodash](https://lodash.com) that will mutate either arrays or objects. You can override this with your own set of object/method pairs.
 
-You should only use this option if you've overridden the language built-in `Object`.
+**NOTE**: if you set this option, the defaults are overridden. It's a good idea to add at least the language defaults listed above to your configuration.
 
-The following patterns are considered okay and do not cause warnings:
+If set to an empty array, the following patterns are considered okay and do not cause warnings:
 
 ```jsx
 Object.assign(this.props, {foo: true})
 Object.defineProperty(this.props.foo, 'bar')
 Object.defineProperties(this.props.foo, [{foo: {value: 'bar'}}])
-```
-
-### `allowableObjectStatics`
-
-When `allowObjectStatics: true` the rule specifies specific [`Object` methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object#Methods_of_the_Object_constructor) of `Object` to allow. Mutation methods not listed will remain as warnings.
-
-You must used this option in conjunction with `allowObjectStatics`. You should only use this option if you've overridden the language built-in `Object`.
-
-### `allowReflectStatics`
-
-When `true`, will allow [`Reflect` mutation methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Reflects/Reflect#Methods) of props that are objects.  
-
-You should only use this option if you've overridden the language built-in `Reflect`.
-
-The following patterns are considered okay and do not cause warnings:
-
-```jsx
 Reflect.set(this.props.foo, 'bar, true)
 Reflect.defineProperty(this.props.foo, 'bar')
 Reflect.deleteProperty(this.props.foo, 'bar')
+_.assign(this.props, {foo: 'bar'})
+_.fill(this.props.list, 'foo')
+// many more lodash methods
 ```
-
-### `allowableReflectStatics`
-
-When `allowObjectStatics: true` the rule specifies a whitelist of specified [`Reflect` mutation methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Reflect#Methods). Mutation methods not listed will remain as warnings.
-
-You must used this option in conjunction with `allowReflectStatics`. You should only use this option if you've overridden the language built-in `Reflect`.
 

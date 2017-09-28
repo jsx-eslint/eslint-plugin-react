@@ -203,7 +203,7 @@ ruleTester.run('no-mutation-props', rule, {
       '}'
     ].join('\n'),
     parserOptions: parserOptions,
-    options: [{allowObjectStatics: true}]
+    options: [{disabledMethods: []}]
   },
   {
     code: [
@@ -222,7 +222,7 @@ ruleTester.run('no-mutation-props', rule, {
       '}'
     ].join('\n'),
     parserOptions: parserOptions,
-    options: [{allowObjectStatics: true}]
+    options: [{disabledMethods: []}]
   },
   {
     code: [
@@ -241,7 +241,7 @@ ruleTester.run('no-mutation-props', rule, {
       '}'
     ].join('\n'),
     parserOptions: parserOptions,
-    options: [{allowObjectStatics: true}]
+    options: [{disabledMethods: []}]
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -261,7 +261,7 @@ ruleTester.run('no-mutation-props', rule, {
       '}'
     ].join('\n'),
     parserOptions: parserOptions,
-    options: [{allowReflectStatics: true}]
+    options: [{disabledMethods: []}]
   }],
 
   invalid: [{
@@ -680,7 +680,7 @@ ruleTester.run('no-mutation-props', rule, {
       '}'
     ].join('\n'),
     parserOptions: parserOptions,
-    options: [{allowObjectStatics: true, allowableObjectStatics: ['defineProperty']}],
+    options: [{disabledMethods: ['Object.assign']}],
     errors: [{
       message: errorMessage,
       line: 4,
@@ -751,7 +751,7 @@ ruleTester.run('no-mutation-props', rule, {
       '}'
     ].join('\n'),
     parserOptions: parserOptions,
-    options: [{allowReflectStatics: true, allowableReflectStatics: ['set']}],
+    options: [{disabledMethods: ['Reflect.deleteProperty', 'Reflect.defineProperty']}],
     errors: [{
       message: errorMessage,
       line: 5,
