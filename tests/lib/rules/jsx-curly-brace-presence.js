@@ -398,6 +398,54 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       output: `<App>foo 'bar'</App>`,
       errors: [{message: unnecessaryCurlyMessage}],
       options: [{children: 'never'}]
+    },
+    {
+      code: [
+        '<App prop="    ',
+        '   a     ',
+        '     b      c',
+        '        d',
+        '">',
+        '  a',
+        '      b     c   ',
+        '         d      ',
+        '</App>'
+      ].join('\n'),
+      output: [
+        '<App prop={"    ',
+        '   a     ',
+        '     b      c',
+        '        d',
+        '"}>{"\\n  a\\n      b     c   \\n         d      \\n"}</App>'
+      ].join('\n'),
+      errors: [
+        {message: missingCurlyMessage}, {message: missingCurlyMessage}
+      ],
+      options: ['always']
+    },
+    {
+      code: [
+        `<App prop='    `,
+        '   a     ',
+        '     b      c',
+        '        d',
+        `'>`,
+        '  a',
+        '      b     c   ',
+        '         d      ',
+        '</App>'
+      ].join('\n'),
+      output: [
+        '<App prop={"    ',
+        '   a     ',
+        '     b      c',
+        '        d',
+        '"}>{"\\n  a\\n      b     c   \\n         d      \\n"}</App>'
+      ].join('\n'),
+      errors: [
+        {message: missingCurlyMessage}, {message: missingCurlyMessage}
+      ],
+      options: ['always']
     }
   ]
 });
