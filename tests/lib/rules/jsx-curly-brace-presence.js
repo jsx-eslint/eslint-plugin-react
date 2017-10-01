@@ -411,13 +411,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
         '         d      ',
         '</App>'
       ].join('\n'),
-      output: [
-        '<App prop={"    ',
-        '   a     ',
-        '     b      c',
-        '        d',
-        '"}>{"\\n  a\\n      b     c   \\n         d      \\n"}</App>'
-      ].join('\n'),
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ],
@@ -434,13 +427,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
         '      b     c   ',
         '         d      ',
         '</App>'
-      ].join('\n'),
-      output: [
-        '<App prop={"    ',
-        '   a     ',
-        '     b      c',
-        '        d',
-        '"}>{"\\n  a\\n      b     c   \\n         d      \\n"}</App>'
       ].join('\n'),
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
