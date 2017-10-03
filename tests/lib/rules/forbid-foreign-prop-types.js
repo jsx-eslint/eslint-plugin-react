@@ -53,58 +53,58 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
   }],
 
   invalid: [{
-    code: [
-      'var Foo = createReactClass({',
-      '  propTypes: Bar.propTypes,',
-      '  render: function() {',
-      '    return <Foo className="bar" />;',
-      '  }',
-      '});'
-    ].join('\n'),
+    code: `
+      var Foo = createReactClass({
+        propTypes: Bar.propTypes,
+        render: function() {
+          return <Foo className="bar" />;
+        }
+      });
+    `,
     errors: [{
       message: ERROR_MESSAGE,
       type: 'Identifier'
     }]
   },
   {
-    code: [
-      'var Foo = createReactClass({',
-      '  propTypes: Bar["propTypes"],',
-      '  render: function() {',
-      '    return <Foo className="bar" />;',
-      '  }',
-      '});'
-    ].join('\n'),
+    code: `
+      var Foo = createReactClass({
+        propTypes: Bar["propTypes"],
+        render: function() {
+          return <Foo className="bar" />;
+        }
+      });
+    `,
     errors: [{
       message: ERROR_MESSAGE,
       type: 'Literal'
     }]
   },
   {
-    code: [
-      'var { propTypes } = SomeComponent',
-      'var Foo = createReactClass({',
-      '  propTypes,',
-      '  render: function() {',
-      '    return <Foo className="bar" />;',
-      '  }',
-      '});'
-    ].join('\n'),
+    code: `
+      var { propTypes } = SomeComponent
+      var Foo = createReactClass({
+        propTypes,
+        render: function() {
+          return <Foo className="bar" />;
+        }
+      });
+    `,
     errors: [{
       message: ERROR_MESSAGE,
       type: 'Property'
     }]
   },
   {
-    code: [
-      'var { propTypes: things, ...foo } = SomeComponent',
-      'var Foo = createReactClass({',
-      '  propTypes,',
-      '  render: function() {',
-      '    return <Foo className="bar" />;',
-      '  }',
-      '});'
-    ].join('\n'),
+    code: `
+      var { propTypes: things, ...foo } = SomeComponent
+      var Foo = createReactClass({
+        propTypes,
+        render: function() {
+          return <Foo className="bar" />;
+        }
+      });
+    `,
     parser: 'babel-eslint',
     errors: [{
       message: ERROR_MESSAGE,
@@ -112,13 +112,13 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
     }]
   },
   {
-    code: [
-      'class MyComponent extends React.Component {',
-      '  static fooBar = {',
-      '    baz: Qux.propTypes.baz',
-      '  };',
-      '}'
-    ].join('\n'),
+    code: `
+      class MyComponent extends React.Component {
+        static fooBar = {
+          baz: Qux.propTypes.baz
+        };
+      }
+    `,
     parser: 'babel-eslint',
     errors: [{
       message: ERROR_MESSAGE,
@@ -126,15 +126,15 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
     }]
   },
   {
-    code: [
-      'var { propTypes: typesOfProps } = SomeComponent',
-      'var Foo = createReactClass({',
-      '  propTypes: typesOfProps,',
-      '  render: function() {',
-      '    return <Foo className="bar" />;',
-      '  }',
-      '});'
-    ].join('\n'),
+    code: `
+      var { propTypes: typesOfProps } = SomeComponent
+      var Foo = createReactClass({
+        propTypes: typesOfProps,
+        render: function() {
+          return <Foo className="bar" />;
+        }
+      });
+    `,
     errors: [{
       message: ERROR_MESSAGE,
       type: 'Property'
