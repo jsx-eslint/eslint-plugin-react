@@ -71,50 +71,50 @@ ruleTester.run('jsx-no-bind', rule, {
 
     // Redux connect
     {
-      code: [
-        'class Hello extends Component {',
-        '  render() {',
-        '    return <div>Hello</div>;',
-        '  }',
-        '}',
-        'export default connect()(Hello);'
-      ].join('\n'),
+      code: `
+        class Hello extends Component {
+          render() {
+            return <div>Hello</div>;
+          }
+        }
+        export default connect()(Hello);
+      `,
       options: [{allowBind: true}],
       parser: 'babel-eslint'
     },
 
     // Backbone view with a bind
     {
-      code: [
-        'var DocumentRow = Backbone.View.extend({',
-        '  tagName: "li",',
-        '  render: function() {',
-        '    this.onTap.bind(this);',
-        '  }',
-        '});'
-      ].join('\n'),
+      code: `
+        var DocumentRow = Backbone.View.extend({
+          tagName: "li",
+          render: function() {
+            this.onTap.bind(this);
+          }
+        });
+      `,
       parser: 'babel-eslint'
     },
     {
-      code: [
-        'const foo = {',
-        '  render: function() {',
-        '    this.onTap.bind(this);',
-        '    return true;',
-        '  }',
-        '};'
-      ].join('\n'),
+      code: `
+        const foo = {
+          render: function() {
+            this.onTap.bind(this);
+            return true;
+          }
+        };
+      `,
       parser: 'babel-eslint'
     },
     {
-      code: [
-        'const foo = {',
-        '  render() {',
-        '    this.onTap.bind(this);',
-        '    return true;',
-        '  }',
-        '};'
-      ].join('\n'),
+      code: `
+        const foo = {
+          render() {
+            this.onTap.bind(this);
+            return true;
+          }
+        };
+      `,
       parser: 'babel-eslint'
     },
 
@@ -246,49 +246,37 @@ ruleTester.run('jsx-no-bind', rule, {
       parser: 'babel-eslint'
     },
     {
-      code: [
-        'var Hello = createReactClass({',
-        '  render: function() {',
-        '    const click = this.someMethod.bind(this);',
-        '    return <div onClick={click}>Hello {this.state.name}</div>;',
-        '  }',
-        '});'
-      ].join('\n'),
+      code: `
+        var Hello = createReactClass({
+          render: function() {
+            const click = this.someMethod.bind(this);
+            return <div onClick={click}>Hello {this.state.name}</div>;
+          }
+        });
+      `,
       errors: [{message: 'JSX props should not use .bind()'}],
       parser: 'babel-eslint'
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  render() {',
-        '    const click = this.someMethod.bind(this);',
-        '    return <div onClick={click}>Hello {this.state.name}</div>;',
-        '  }',
-        '};'
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          render() {
+            const click = this.someMethod.bind(this);
+            return <div onClick={click}>Hello {this.state.name}</div>;
+          }
+        };
+      `,
       errors: [{message: 'JSX props should not use .bind()'}],
       parser: 'babel-eslint'
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv() {',
-        '    const click = this.doSomething.bind(this, "no")',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};'
-      ].join('\n'),
-      errors: [{message: 'JSX props should not use .bind()'}],
-      parser: 'babel-eslint'
-    },
-    {
-      code: [
-        'const foo = {',
-        '  render: ({onClick}) => (',
-        '    <div onClick={onClick.bind(this)}>Hello</div>',
-        '  )',
-        '};'
-      ].join('\n'),
+      code: `
+        const foo = {
+          render: ({onClick}) => (
+            <div onClick={onClick.bind(this)}>Hello</div>
+          )
+        };
+      `,
       errors: [{message: 'JSX props should not use .bind()'}],
       parser: 'babel-eslint'
     },

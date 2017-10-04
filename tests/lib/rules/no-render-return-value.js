@@ -28,14 +28,12 @@ const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-render-return-value', rule, {
 
   valid: [{
-    code: [
-      'ReactDOM.render(<div />, document.body);'
-    ].join('\n')
+    code: 'ReactDOM.render(<div />, document.body);'
   }, {
-    code: [
-      'let node;',
-      'ReactDOM.render(<div ref={ref => node = ref}/>, document.body);'
-    ].join('\n')
+    code: `
+      let node;
+      ReactDOM.render(<div ref={ref => node = ref}/>, document.body);
+    `
   }, {
     code: 'ReactDOM.render(<div ref={ref => this.node = ref}/>, document.body);',
     settings: {
@@ -57,31 +55,28 @@ ruleTester.run('no-render-return-value', rule, {
         version: '0.13.0'
       }
     }
-  }
-  ],
+  }],
 
   invalid: [{
-    code: [
-      'var Hello = ReactDOM.render(<div />, document.body);'
-    ].join('\n'),
+    code: 'var Hello = ReactDOM.render(<div />, document.body);',
     errors: [{
       message: 'Do not depend on the return value from ReactDOM.render'
     }]
   }, {
-    code: [
-      'var o = {',
-      '  inst: ReactDOM.render(<div />, document.body)',
-      '};'
-    ].join('\n'),
+    code: `
+      var o = {
+        inst: ReactDOM.render(<div />, document.body)
+      };
+    `,
     errors: [{
       message: 'Do not depend on the return value from ReactDOM.render'
     }]
   }, {
-    code: [
-      'function render () {',
-      '  return ReactDOM.render(<div />, document.body)',
-      '}'
-    ].join('\n'),
+    code: `
+      function render () {
+        return ReactDOM.render(<div />, document.body)
+      }
+    `,
     errors: [{
       message: 'Do not depend on the return value from ReactDOM.render'
     }]

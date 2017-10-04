@@ -37,11 +37,11 @@ ruleTester.run('jsx-space-before-closing', rule, {
   }, {
     code: '<App></App>'
   }, {
-    code: [
-      '<App',
-      '  foo={bar}',
-      '/>'
-    ].join('\n')
+    code: `
+      <App
+        foo={bar}
+      />
+    `
   }, {
     code: '<App/>',
     options: ['never']
@@ -58,11 +58,11 @@ ruleTester.run('jsx-space-before-closing', rule, {
     code: '<App></App>',
     options: ['never']
   }, {
-    code: [
-      '<App',
-      '  foo={bar}',
-      '/>'
-    ].join('\n'),
+    code: `
+      <App
+        foo={bar}
+      />
+    `,
     options: ['never']
   }],
 

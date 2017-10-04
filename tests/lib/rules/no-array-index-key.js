@@ -63,13 +63,13 @@ ruleTester.run('no-array-index-key', rule, {
     },
 
     {
-      code: [
-        'foo.map((item, i) => {',
-        '  return React.cloneElement(someChild, {',
-        '    key: item.id',
-        '  })',
-        '})'
-      ].join('\n')
+      code: `
+        foo.map((item, i) => {
+          return React.cloneElement(someChild, {
+            key: item.id
+          })
+        })
+      `
     },
 
     {
@@ -130,13 +130,13 @@ ruleTester.run('no-array-index-key', rule, {
     },
 
     {
-      code: [
-        'foo.map((item, i) => {',
-        '  return React.cloneElement(someChild, {',
-        '    key: i',
-        '  })',
-        '})'
-      ].join('\n'),
+      code: `
+        foo.map((item, i) => {
+          return React.cloneElement(someChild, {
+            key: i
+          })
+        })
+      `,
       errors: [{message: 'Do not use Array index in keys'}]
     },
 

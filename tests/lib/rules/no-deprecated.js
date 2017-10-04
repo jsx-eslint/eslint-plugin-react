@@ -149,10 +149,10 @@ ruleTester.run('no-deprecated', rule, {
       message: 'React.PropTypes is deprecated since React 15.5.0, use the npm module prop-types instead'
     }]
   }, {
-    code: [
-      'import React from \'react\';',
-      'const {createClass, PropTypes} = React;'
-    ].join('\n'),
+    code: `
+      import React from 'react';
+      const {createClass, PropTypes} = React;
+    `,
     parser: 'babel-eslint',
     errors: [{
       message: 'React.createClass is deprecated since React 15.5.0, use the npm module create-react-class instead'
@@ -166,10 +166,10 @@ ruleTester.run('no-deprecated', rule, {
       message: 'ReactPerf.printDOM is deprecated since React 15.0.0, use ReactPerf.printOperations instead'
     }]
   }, {
-    code: [
-      'import ReactPerf from \'react-addons-perf\';',
-      'const {printDOM} = ReactPerf;'
-    ].join('\n'),
+    code: `
+      import ReactPerf from 'react-addons-perf';
+      const {printDOM} = ReactPerf;
+    `,
     parser: 'babel-eslint',
     errors: [{
       message: 'ReactPerf.printDOM is deprecated since React 15.0.0, use ReactPerf.printOperations instead'
