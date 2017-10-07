@@ -11,7 +11,7 @@ function MyComponent() {
 }
 ```
 
-The following pattern is not considered a warning:
+The following pattern is **not** considered a warning:
 
 ```jsx
 // filename: MyComponent.jsx

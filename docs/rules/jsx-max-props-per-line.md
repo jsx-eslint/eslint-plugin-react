@@ -18,7 +18,7 @@ The following patterns are considered warnings:
 }} baz />;
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 <Hello
@@ -52,7 +52,7 @@ The following patterns are considered warnings:
 <Hello firstName="John" lastName="Smith" tel={5555555} />;
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 // [1, { "maximum": 2 }]
@@ -74,7 +74,7 @@ The following patterns are considered warnings:
 <Hello firstName="John" lastName="Smith" />
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 ```jsx
 // [1, { "when": "multiline" }]
 <Hello firstName="John" lastName="Smith" />

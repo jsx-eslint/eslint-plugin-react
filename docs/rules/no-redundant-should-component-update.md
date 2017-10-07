@@ -31,7 +31,7 @@ function Bar() {
 }
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 class Foo extends React.Component {

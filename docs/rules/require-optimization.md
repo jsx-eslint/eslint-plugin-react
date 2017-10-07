@@ -17,7 +17,7 @@ createReactClass({
 });
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```js
 class YourComponent extends React.Component {
@@ -64,7 +64,7 @@ createReactClass({
 
 Sets the allowed names of decorators. If the variable is present in the chain of decorators, it validates
 
-The following patterns are not warnings:
+The following patterns are **not** warnings:
 
 ```js
 // ['pureRender']

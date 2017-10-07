@@ -39,7 +39,7 @@ class Component extends React.Component {
 }
 ```
 
-The following patterns are considered okay and do not cause warnings:
+The following patterns are considered okay and do **not** cause warnings:
 
 ```jsx
 var Component = createReactClass({

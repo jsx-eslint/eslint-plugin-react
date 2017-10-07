@@ -26,7 +26,7 @@ const propTypes = {
 import React, { PropTypes } from 'react';
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 ReactDOM.render(<MyComponent />, root);

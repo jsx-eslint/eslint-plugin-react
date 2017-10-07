@@ -12,7 +12,7 @@ The following patterns are considered warnings:
 var Hello = require('./Hello');
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 var Hello = require('./Hello');

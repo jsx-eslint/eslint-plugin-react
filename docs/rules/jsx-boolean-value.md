@@ -16,7 +16,7 @@ The following patterns are considered warnings when configured `"never"`, or wit
 var Hello = <Hello personal={true} />;
 ```
 
-The following patterns are not considered warnings when configured `"never"`, or with `"always", { "never": ["personal"] }`:
+The following patterns are **not** considered warnings when configured `"never"`, or with `"always", { "never": ["personal"] }`:
 
 ```jsx
 var Hello = <Hello personal />;
@@ -28,7 +28,7 @@ The following patterns are considered warnings when configured `"always"`, or wi
 var Hello = <Hello personal />;
 ```
 
-The following patterns are not considered warnings when configured `"always"`, or with `"never", { "always": ["personal"] }`:
+The following patterns are **not** considered warnings when configured `"always"`, or with `"never", { "always": ["personal"] }`:
 
 ```jsx
 var Hello = <Hello personal={true} />;

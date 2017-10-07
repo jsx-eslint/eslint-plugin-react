@@ -24,7 +24,7 @@ var Hello = createReactClass({
 });
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 var Hello = createReactClass({
@@ -120,7 +120,7 @@ var Hello = createReactClass({
 });
 ```
 
-With the above configuration, the following patterns are not considered warnings:
+With the above configuration, the following patterns are **not** considered warnings:
 
 ```jsx
 var Hello = createReactClass({
@@ -162,7 +162,7 @@ var Hello = createReactClass({
 });
 ```
 
-With the above configuration, the following patterns are not considered warnings:
+With the above configuration, the following patterns are **not** considered warnings:
 
 ```jsx
 var Hello = createReactClass({
@@ -201,7 +201,7 @@ class Hello extends React.Component<any, Props, void> {
 }
 ```
 
-With the above configuration, the following patterns are not considered warnings:
+With the above configuration, the following patterns are **not** considered warnings:
 
 ```jsx
 type Props = {};

@@ -33,7 +33,7 @@ When `{"when": "never"}` is set, the following patterns are considered warnings:
 <Hello name={firstname } />;
 ```
 
-The following patterns are not warnings:
+The following patterns are **not** warnings:
 
 ```jsx
 <Hello name={firstname} />;
@@ -57,7 +57,7 @@ When `{"when": "never", "children": true}` is set, the following patterns are co
 <Hello>{ firstname }</Hello>;
 ```
 
-The following patterns are not warnings:
+The following patterns are **not** warnings:
 
 ```jsx
 <Hello name={firstname} />;
@@ -81,7 +81,7 @@ When `{"when": "always"}` is set, the following patterns are considered warnings
 <Hello name={firstname } />;
 ```
 
-The following patterns are not warnings:
+The following patterns are **not** warnings:
 
 ```jsx
 <Hello name={ firstname } />;
@@ -105,7 +105,7 @@ When `{"when": "always", "children": true}` is set, the following patterns are c
 <Hello>{firstname}</Hello>;
 ```
 
-The following patterns are not warnings:
+The following patterns are **not** warnings:
 
 ```jsx
 <Hello name={ firstname } />;
@@ -138,7 +138,7 @@ When `"never"` is used and `allowMultiline` is `false`, the following patterns a
 } />;
 ```
 
-The following patterns are not warnings:
+The following patterns are **not** warnings:
 
 ```jsx
 <Hello name={firstname} />;
@@ -161,7 +161,7 @@ When `"always"` is used and `allowMultiline` is `false`, the following patterns 
 } />;
 ```
 
-The following patterns are not warnings:
+The following patterns are **not** warnings:
 
 ```jsx
 <Hello name={ firstname } />;
@@ -183,7 +183,7 @@ When `{"when": "never", "attributes": {"allowMultiline": false}, "children": tru
 <Hello>{ firstname }</Hello>;
 ```
 
-The following patterns are not warnings:
+The following patterns are **not** warnings:
 
 ```jsx
 <Hello name={firstname} />;
@@ -207,13 +207,13 @@ You can specify an additional `spacing` property that is an object with the foll
 
 All spacing options accept either the string `"always"` or the string `"never"`. Note that the default value for all "spacing" options matches the first "always"/"never" option provided.
 
-When `"always"` is used but `objectLiterals` is `"never"`, the following pattern is not considered a warning:
+When `"always"` is used but `objectLiterals` is `"never"`, the following pattern is **not** considered a warning:
 
 ```jsx
 <App blah={ 3 } foo={{ bar: true, baz: true }} />;
 ```
 
-When `"never"` is used and `objectLiterals` is `"always"`, the following pattern is not considered a warning:
+When `"never"` is used and `objectLiterals` is `"always"`, the following pattern is **not** considered a warning:
 
 ```jsx
 <App blah={3} foo={ {bar: true, baz: true} } />;

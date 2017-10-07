@@ -132,7 +132,7 @@ function MyStatelessComponent(props: Props) {
 }
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 function MyStatelessComponent({ foo, bar }) {

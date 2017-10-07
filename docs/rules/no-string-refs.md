@@ -4,7 +4,7 @@ Currently, two ways are supported by React to refer to components. The first way
 
 ## Rule Details
 
-Invalid:
+The following patterns are considered warnings:
 
 ```jsx
 var Hello = createReactClass({
@@ -26,7 +26,7 @@ var Hello = createReactClass({
 });
 ```
 
-Valid:
+The following patterns are **not** considered warnings:
 
 ```jsx
 var Hello = createReactClass({

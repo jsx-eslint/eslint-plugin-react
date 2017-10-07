@@ -13,7 +13,7 @@ The following patterns are considered warnings:
 <div onClick={() => console.log('Hello!')}></div>
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 ```jsx
 <div onClick={this._handleClick}></div>
 ```
@@ -30,7 +30,7 @@ The following patterns are not considered warnings:
 
 ### `ignoreRefs`
 
-When `true` the following are not considered warnings:
+When `true` the following are **not** considered warnings:
 
 ```jsx
 <div ref={c => this._div = c} />
@@ -39,7 +39,7 @@ When `true` the following are not considered warnings:
 
 ### `allowArrowFunctions`
 
-When `true` the following is not considered a warning:
+When `true` the following is **not** considered a warning:
 
 ```jsx
 <div onClick={() => alert("1337")} />
@@ -47,7 +47,7 @@ When `true` the following is not considered a warning:
 
 ### `allowBind`
 
-When `true` the following is not considered a warning:
+When `true` the following is **not** considered a warning:
 
 ```jsx
 <div onClick={this._handleClick.bind(this)} />

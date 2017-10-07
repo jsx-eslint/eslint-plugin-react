@@ -21,7 +21,7 @@ module.exports = Hello;
 ```
 
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 var Hello = require('./Hello');
@@ -41,7 +41,7 @@ var Hello = require('./Hello');
 
 When `true` the rule will consider the global scope when checking for defined Components.
 
-The following patterns are considered okay and do not cause warnings:
+The following patterns are considered okay and do **not** cause warnings:
 
 ```jsx
 var Text = require('./Text');

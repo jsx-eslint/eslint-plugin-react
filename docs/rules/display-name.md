@@ -14,7 +14,7 @@ var Hello = createReactClass({
 });
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 var Hello = createReactClass({
@@ -37,7 +37,7 @@ var Hello = createReactClass({
 
 When `true` the rule will ignore the name set by the transpiler and require a `displayName` property in this case.
 
-The following patterns are considered okay and do not cause warnings:
+The following patterns are considered okay and do **not** cause warnings:
 
 ```jsx
 var Hello = createReactClass({

@@ -10,7 +10,7 @@ The following patterns are considered warnings:
 <Hello name="John" name="John" />;
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 <Hello firstname="John" lastname="Doe" />;

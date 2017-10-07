@@ -2,7 +2,7 @@
 
 This option validates a specific indentation style for JSX.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line. 
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
 Fixer will fix whitespace and tabs indentation.
 
 ## Rule Details
@@ -54,7 +54,7 @@ The following patterns are considered warnings:
 </App>
 ```
 
-The following patterns are not warnings:
+The following patterns are **not** warnings:
 
 ```jsx
 
