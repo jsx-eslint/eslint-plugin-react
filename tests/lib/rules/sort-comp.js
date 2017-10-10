@@ -316,6 +316,7 @@ ruleTester.run('sort-comp', rule, {
       'class Hello extends React.Component {',
       '  foo = () => {}',
       '  constructor() {}',
+      '  static bar = () => {}',
       '  render() {',
       '    return <div>{this.props.text}</div>;',
       '  }',
@@ -325,7 +326,6 @@ ruleTester.run('sort-comp', rule, {
     options: [{
       order: [
         'instance-methods',
-        'static-methods',
         'lifecycle',
         'everything-else',
         'render'
@@ -335,9 +335,10 @@ ruleTester.run('sort-comp', rule, {
     // Instance variables should be at the top
     code: [
       'class Hello extends React.Component {',
-      '  foo = "bar"',
+      '  foo = \'bar\'',
       '  constructor() {}',
       '  state = {}',
+      '  static bar = \'foo\'',
       '  render() {',
       '    return <div>{this.props.text}</div>;',
       '  }',
@@ -347,7 +348,6 @@ ruleTester.run('sort-comp', rule, {
     options: [{
       order: [
         'instance-variables',
-        'static-methods',
         'lifecycle',
         'everything-else',
         'render'
@@ -563,6 +563,7 @@ ruleTester.run('sort-comp', rule, {
     code: [
       'class Hello extends React.Component {',
       '  constructor() {}',
+      '  static bar = () => {}',
       '  foo = () => {}',
       '  render() {',
       '    return <div>{this.props.text}</div>;',
@@ -570,11 +571,10 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    errors: [{message: 'constructor should be placed after foo'}],
+    errors: [{message: 'foo should be placed before constructor'}],
     options: [{
       order: [
         'instance-methods',
-        'static-methods',
         'lifecycle',
         'everything-else',
         'render'
@@ -586,7 +586,8 @@ ruleTester.run('sort-comp', rule, {
       'class Hello extends React.Component {',
       '  constructor() {}',
       '  state = {}',
-      '  foo = "bar"',
+      '  static bar = {}',
+      '  foo = {}',
       '  render() {',
       '    return <div>{this.props.text}</div>;',
       '  }',
@@ -597,7 +598,6 @@ ruleTester.run('sort-comp', rule, {
     options: [{
       order: [
         'instance-variables',
-        'static-methods',
         'lifecycle',
         'everything-else',
         'render'
