@@ -310,6 +310,49 @@ ruleTester.run('sort-comp', rule, {
         'render'
       ]
     }]
+  }, {
+    // Instance methods should be at the top
+    code: [
+      'class Hello extends React.Component {',
+      '  foo = () => {}',
+      '  constructor() {}',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      order: [
+        'instance-methods',
+        'static-methods',
+        'lifecycle',
+        'everything-else',
+        'render'
+      ]
+    }]
+  }, {
+    // Instance variables should be at the top
+    code: [
+      'class Hello extends React.Component {',
+      '  foo = "bar"',
+      '  constructor() {}',
+      '  state = {}',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      order: [
+        'instance-variables',
+        'static-methods',
+        'lifecycle',
+        'everything-else',
+        'render'
+      ]
+    }]
   }],
 
   invalid: [{
@@ -509,6 +552,51 @@ ruleTester.run('sort-comp', rule, {
     options: [{
       order: [
         'setters',
+        'static-methods',
+        'lifecycle',
+        'everything-else',
+        'render'
+      ]
+    }]
+  }, {
+    // Instance methods should not be at the top
+    code: [
+      'class Hello extends React.Component {',
+      '  constructor() {}',
+      '  foo = () => {}',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{message: 'constructor should be placed after foo'}],
+    options: [{
+      order: [
+        'instance-methods',
+        'static-methods',
+        'lifecycle',
+        'everything-else',
+        'render'
+      ]
+    }]
+  }, {
+    // Instance variables should not be at the top
+    code: [
+      'class Hello extends React.Component {',
+      '  constructor() {}',
+      '  state = {}',
+      '  foo = "bar"',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{message: 'foo should be placed before constructor'}],
+    options: [{
+      order: [
+        'instance-variables',
         'static-methods',
         'lifecycle',
         'everything-else',
