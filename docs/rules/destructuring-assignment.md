@@ -1,7 +1,6 @@
 # Enforce consostent usage of destructuring assignment of props, state and context (react/destructuring-assignment)
 
-Rule can be set to either of `always`, `never`, `ignore` for SFC and to `always` or `ignore` for class components.
-
+Rule can be set to either of `always`, `never`, `ignore` for `class` and `SFC` components.
 ```js
 "react/destructuring-assignment": [<enabled>, { "SFC": "always", "class": "always"}]
 ```
@@ -33,19 +32,42 @@ const MyComponent = ({id}) => {
 ```
 
 ```js
+const MyComponent = (props, context) => {
+  const { id } = props;
+  return (<div id={id} />)
+};
+```
+
+```js
 const Foo = class extends React.PureComponent {
   render() {
-    const { foo } = this.props;
-    return <div>{foo}</div>;
+    const { title } = this.context;
+    return <div>{title}</div>;
   }
 };
 ```
 
-If rule option is set to `never` for SFC, the following pattern is considered warning:
+If rule option is set to `never`, the following patterns are considered warning:
 
 ```js
 const MyComponent = ({id}) => {
   return (<div id={id} />)
+};
+```
+
+```js
+const MyComponent = (props) => {
+  const { id } = props;
+  return (<div id={id} />)
+};
+```
+
+```js
+const Foo = class extends React.PureComponent {
+  render() {
+    const { title } = this.state;
+    return <div>{title}</div>;
+  }
 };
 ```
 
@@ -56,3 +78,10 @@ const MyComponent = (props) => {
   return (<div id={props.id} />)
 };
 ```
+
+```js
+const Foo = class extends React.PureComponent {
+  render() {
+    return <div>{this.state.title}</div>;
+  }
+};

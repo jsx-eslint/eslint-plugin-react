@@ -25,19 +25,19 @@ ruleTester.run('destructuring-assignment', rule, {
         const { foo } = this.props;
         return <div>{foo}</div>;
       }
-    };`
-  }, {
-    code: `const Foo = class extends React.PureComponent {
-      render() {
-        const { foo } = this.props;
-        return <div>{foo}</div>;
-      }
     };`,
-    options: [{SFC: 'always', class: 'always'}]
+    options: [{SFC: 'always', class: 'always'}],
+    parser: 'babel-eslint'
   }, {
     code: `const MyComponent = ({ id, className }) => (
       <div id={id} className={className} />
     );`
+  }, {
+    code: `const MyComponent = (props) => {
+      const { id, className } = props;
+      return <div id={id} className={className} />
+    };`,
+    parser: 'babel-eslint'
   }, {
     code: `const MyComponent = ({ id, className }) => (
       <div id={id} className={className} />
@@ -72,12 +72,6 @@ ruleTester.run('destructuring-assignment', rule, {
       <div id={id} props={props} color={color} />
     );`,
     options: [{SFC: 'always', class: 'always'}]
-  }, {
-    code: `const MyComponent = (props) => {
-      const { id, className } = props;
-      return <div id={id} className={className} />
-    };`,
-    options: [{SFC: 'never'}]
   }, {
     code: `const Foo = class extends React.PureComponent {
       render() {
@@ -107,7 +101,8 @@ ruleTester.run('destructuring-assignment', rule, {
         return <div>{foo}</div>;
       }
     };`,
-    options: [{SFC: 'always', class: 'always'}]
+    options: [{SFC: 'always', class: 'always'}],
+    parser: 'babel-eslint'
   }, {
     code: `const Foo = class extends React.PureComponent {
       render() {
@@ -122,7 +117,15 @@ ruleTester.run('destructuring-assignment', rule, {
         return <div>{foo}</div>;
       }
     };`,
-    options: [{SFC: 'always', class: 'always'}]
+    options: [{SFC: 'always', class: 'always'}],
+    parser: 'babel-eslint'
+  }, {
+    code: `const MyComponent = (props) => {
+      const { h, i } = hi;
+      return <div id={props.id} className={props.className} />
+    };`,
+    options: [{SFC: 'never'}],
+    parser: 'babel-eslint'
   }],
   invalid: [{
     code: `const MyComponent = (props) => {
@@ -202,6 +205,40 @@ ruleTester.run('destructuring-assignment', rule, {
     };`,
     errors: [
       {message: 'Must use destructuring props assignment'}
+    ]
+  }, {
+    code: `const Foo = class extends React.PureComponent {
+      render() {
+        const { foo } = this.props;
+        return <div>{foo}</div>;
+      }
+    };`,
+    options: [{SFC: 'always', class: 'never'}],
+    parser: 'babel-eslint',
+    errors: [
+      {message: 'Must never use destructuring props assignment'}
+    ]
+  }, {
+    code: `const MyComponent = (props) => {
+      const { id, className } = props;
+      return <div id={id} className={className} />
+    };`,
+    options: [{SFC: 'never'}],
+    parser: 'babel-eslint',
+    errors: [
+      {message: 'Must never use destructuring props assignment'}
+    ]
+  }, {
+    code: `const Foo = class extends React.PureComponent {
+      render() {
+        const { foo } = this.state;
+        return <div>{foo}</div>;
+      }
+    };`,
+    options: [{SFC: 'always', class: 'never'}],
+    parser: 'babel-eslint',
+    errors: [
+      {message: 'Must never use destructuring state assignment'}
     ]
   }]
 });
