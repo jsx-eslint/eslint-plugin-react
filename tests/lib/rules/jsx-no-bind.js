@@ -133,6 +133,17 @@ ruleTester.run('jsx-no-bind', rule, {
       code: [
         'class Hello extends Component {',
         '  render() {',
+        '    foo.onClick = this.onTap.bind(this);',
+        '    return <div onClick={onClick}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'class Hello extends Component {',
+        '  render() {',
         '    return (<div>{',
         '      this.props.list.map(this.wrap.bind(this, "span"))',
         '    }</div>);',
@@ -315,6 +326,18 @@ ruleTester.run('jsx-no-bind', rule, {
       errors: [{message: 'JSX props should not use .bind()'}],
       parser: 'babel-eslint'
     },
+    {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() { ',
+        '    doThing = this.doSomething.bind(this, "hey")',
+        '    return <div onClick={doThing} />',
+        '  }',
+        '});'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use .bind()'}],
+      parser: 'babel-eslint'
+    },
 
     // Arrow functions
     {
@@ -372,6 +395,18 @@ ruleTester.run('jsx-no-bind', rule, {
       errors: [{message: 'JSX props should not use arrow functions'}],
       parser: 'babel-eslint'
     },
+    {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() { ',
+        '    doThing = () => true',
+        '    return <div onClick={doThing} />',
+        '  }',
+        '});'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use arrow functions'}],
+      parser: 'babel-eslint'
+    },
 
     // Bind expression
     {
@@ -406,6 +441,18 @@ ruleTester.run('jsx-no-bind', rule, {
         'class Hello23 extends React.Component {',
         '  renderDiv() {',
         '    const click = this.bar::baz',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use ::'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv() {',
+        '    click = this.bar::baz',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
         '};'
