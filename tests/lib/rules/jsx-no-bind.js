@@ -328,14 +328,21 @@ ruleTester.run('jsx-no-bind', rule, {
     },
     {
       code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '    doThing = this.doSomething.bind(this, "hey")',
-        '    return <div onClick={doThing} />',
+        'class Hello23 extends React.Component {',
+        '  renderDiv = () => {',
+        '    const click = () => true',
+        '    const renderStuff = () => {',
+        '      const click = this.doSomething.bind(this, "hey")',
+        '      return <div onClick={click} />',
+        '    }',
+        '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '});'
+        '};'
       ].join('\n'),
-      errors: [{message: 'JSX props should not use .bind()'}],
+      errors: [
+        {message: 'JSX props should not use .bind()'},
+        {message: 'JSX props should not use arrow functions'}
+      ],
       parser: 'babel-eslint'
     },
 
@@ -397,14 +404,21 @@ ruleTester.run('jsx-no-bind', rule, {
     },
     {
       code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '    doThing = () => true',
-        '    return <div onClick={doThing} />',
+        'class Hello23 extends React.Component {',
+        '  renderDiv = () => {',
+        '    const click = ::this.onChange',
+        '    const renderStuff = () => {',
+        '      const click = () => true',
+        '      return <div onClick={click} />',
+        '    }',
+        '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '});'
+        '};'
       ].join('\n'),
-      errors: [{message: 'JSX props should not use arrow functions'}],
+      errors: [
+        {message: 'JSX props should not use arrow functions'},
+        {message: 'JSX props should not use ::'}
+      ],
       parser: 'babel-eslint'
     },
 
@@ -451,8 +465,12 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: [
         'class Hello23 extends React.Component {',
-        '  renderDiv() {',
-        '    click = this.bar::baz',
+        '  renderDiv = () => {',
+        '    const click = true',
+        '    const renderStuff = () => {',
+        '      const click = this.bar::baz',
+        '      return <div onClick={click} />',
+        '    }',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
         '};'
