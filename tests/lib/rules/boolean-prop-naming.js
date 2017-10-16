@@ -17,6 +17,7 @@ const parserOptions = {
   ecmaVersion: 6,
   sourceType: 'module',
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -138,6 +139,19 @@ ruleTester.run('boolean-prop-naming', rule, {
     code: `
       class Hello extends React.Component {
         static propTypes = {isSomething: PropTypes.bool};
+        render () { return <div />; }
+      }
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+'
+    }],
+    parser: 'babel-eslint'
+  }, {
+    // ES6 components with static class properties and Object.spread syntax in PropTypes
+    code: `
+      const spreadProps = { aSpreadProp: PropTypes.string };
+      class Hello extends React.Component {
+        static propTypes = {isSomething: PropTypes.bool, ...spreadProps};
         render () { return <div />; }
       }
     `,
@@ -351,6 +365,22 @@ ruleTester.run('boolean-prop-naming', rule, {
     code: `
       class Hello extends React.Component {
         static propTypes = {something: PropTypes.bool};
+        render () { return <div />; }
+      }
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+'
+    }],
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
+    // ES6 components as React.Component with non-boolean PropTypes and Object.spread syntax
+    code: `
+      const spreadProps = { aSpreadProp: PropTypes.string };
+      class Hello extends React.Component {
+        static propTypes = {something: PropTypes.bool, ...spreadProps};
         render () { return <div />; }
       }
     `,
