@@ -4,6 +4,8 @@
  */
 'use strict';
 
+/* eslint-disable quotes */ // For better readability on tests involving quotes
+
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
@@ -71,7 +73,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       code: '<App>{"foo"}{<Component>bar</Component>}</App>'
     },
     {
-      code: '<App prop=\'bar\'>foo</App>'
+      code: `<App prop='bar'>foo</App>`
     },
     {
       code: '<App prop={true}>foo</App>'
@@ -80,14 +82,14 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       code: '<App prop>foo</App>'
     },
     {
-      code: '<App prop=\'bar\'>{\'foo \\n bar\'}</App>'
+      code: `<App prop='bar'>{'foo \\n bar'}</App>`
     },
     {
-      code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
+      code: `<MyComponent prop='bar'>foo</MyComponent>`,
       options: [{props: 'never'}]
     },
     {
-      code: '<MyComponent prop=\"bar\">foo</MyComponent>',
+      code: `<MyComponent prop="bar">foo</MyComponent>`,
       options: [{props: 'never'}]
     },
     {
@@ -99,31 +101,31 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       options: [{children: 'never'}]
     },
     {
-      code: '<App>{\"foo \'bar\' \\\"foo\\\" bar\"}</App>',
+      code: `<App>{"foo 'bar' \\"foo\\" bar"}</App>`,
       options: [{children: 'never'}]
     },
     {
-      code: '<MyComponent prop={\'bar\'}>foo</MyComponent>',
+      code: `<MyComponent prop={'bar'}>foo</MyComponent>`,
       options: [{props: 'always'}]
     },
     {
-      code: '<MyComponent>{\'foo\'}</MyComponent>',
+      code: `<MyComponent>{'foo'}</MyComponent>`,
       options: [{children: 'always'}]
     },
     {
-      code: '<MyComponent prop={\"bar\"}>foo</MyComponent>',
+      code: `<MyComponent prop={"bar"}>foo</MyComponent>`,
       options: [{props: 'always'}]
     },
     {
-      code: '<MyComponent>{\"foo\"}</MyComponent>',
+      code: `<MyComponent>{"foo"}</MyComponent>`,
       options: [{children: 'always'}]
     },
     {
-      code: '<MyComponent>{\'foo\'}</MyComponent>',
+      code: `<MyComponent>{'foo'}</MyComponent>`,
       options: [{children: 'ignore'}]
     },
     {
-      code: '<MyComponent prop={\'bar\'}>foo</MyComponent>',
+      code: `<MyComponent prop={'bar'}>foo</MyComponent>`,
       options: [{props: 'ignore'}]
     },
     {
@@ -131,43 +133,83 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       options: [{children: 'ignore'}]
     },
     {
-      code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
+      code: `<MyComponent prop='bar'>foo</MyComponent>`,
       options: [{props: 'ignore'}]
     },
     {
-      code: '<MyComponent prop=\"bar\">foo</MyComponent>',
+      code: `<MyComponent prop="bar">foo</MyComponent>`,
       options: [{props: 'ignore'}]
     },
     {
-      code: '<MyComponent prop=\'bar\'>{\'foo\'}</MyComponent>',
+      code: `<MyComponent prop='bar'>{'foo'}</MyComponent>`,
       options: [{children: 'always', props: 'never'}]
     },
     {
-      code: '<MyComponent prop={\'bar\'}>foo</MyComponent>',
+      code: `<MyComponent prop={'bar'}>foo</MyComponent>`,
       options: [{children: 'never', props: 'always'}]
     },
     {
-      code: '<MyComponent prop={\'bar\'}>{\'foo\'}</MyComponent>',
+      code: `<MyComponent prop={'bar'}>{'foo'}</MyComponent>`,
       options: ['always']
     },
     {
-      code: '<MyComponent prop={\"bar\"}>{\"foo\"}</MyComponent>',
+      code: `<MyComponent prop={"bar"}>{"foo"}</MyComponent>`,
       options: ['always']
     },
     {
-      code: '<MyComponent prop={\"bar\"} attr={\'foo\'} />',
+      code: `<MyComponent prop={"bar"} attr={'foo'} />`,
       options: ['always']
     },
     {
-      code: '<MyComponent prop=\"bar\" attr=\'foo\' />',
+      code: `<MyComponent prop="bar" attr='foo' />`,
       options: ['never']
     },
     {
-      code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
+      code: `<MyComponent prop='bar'>foo</MyComponent>`,
       options: ['never']
     },
     {
       code: '<MyComponent prop={`bar ${word} foo`}>{`foo ${word}`}</MyComponent>',
+      options: ['never']
+    },
+    {
+      code: '<MyComponent>{"div { margin-top: 0; }"}</MyComponent>',
+      options: ['never']
+    },
+    {
+      code: '<MyComponent>{"<Foo />"}</MyComponent>',
+      options: ['never']
+    },
+    {
+      code: '<MyComponent prop={"{ style: true }"}>bar</MyComponent>',
+      options: ['never']
+    },
+    {
+      code: '<MyComponent prop={"< style: true >"}>foo</MyComponent>',
+      options: ['never']
+    },
+    {
+      code: '<MyComponent prop={"Hello \\u1026 world"}>bar</MyComponent>',
+      options: ['never']
+    },
+    {
+      code: '<MyComponent>{"Hello \\u1026 world"}</MyComponent>',
+      options: ['never']
+    },
+    {
+      code: '<MyComponent prop={"Hello &middot; world"}>bar</MyComponent>',
+      options: ['never']
+    },
+    {
+      code: '<MyComponent>{"Hello &middot; world"}</MyComponent>',
+      options: ['never']
+    },
+    {
+      code: '<MyComponent>{"Hello \\n world"}</MyComponent>',
+      options: ['never']
+    },
+    {
+      code: ['<a a={"start\\', '\\', 'end"}/>'].join('/n'),
       options: ['never']
     }
   ],
@@ -176,42 +218,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: '<App prop={`foo`} />',
       output: '<App prop="foo" />',
-      options: [{props: 'never'}],
-      errors: [{message: unnecessaryCurlyMessage}]
-    },
-    {
-      code: '<App prop={\'foo \\u00b7 bar\'}>foo</App>',
-      output: '<App prop=\"foo \\u00b7 bar\">foo</App>',
-      options: [{props: 'never'}],
-      errors: [{message: unnecessaryCurlyMessage}]
-    },
-    {
-      code: '<App prop={`foo \\n bar`}>foo</App>',
-      output: '<App prop="foo \\n bar">foo</App>',
-      options: [{props: 'never'}],
-      errors: [{message: unnecessaryCurlyMessage}]
-    },
-    {
-      code: '<App prop={`foo \\u00b7 bar`}>foo</App>',
-      output: '<App prop="foo \\u00b7 bar">foo</App>',
-      options: [{props: 'never'}],
-      errors: [{message: unnecessaryCurlyMessage}]
-    },
-    {
-      code: '<App prop={`foo \\\'foo\\\' bar`}>foo</App>',
-      output: '<App prop="foo \\\'foo\\\' bar">foo</App>',
-      options: [{props: 'never'}],
-      errors: [{message: unnecessaryCurlyMessage}]
-    },
-    {
-      code: '<App prop={`foo \\\"foo\\\" bar`}>foo</App>',
-      output: '<App prop="foo \\\"foo\\\" bar">foo</App>',
-      options: [{props: 'never'}],
-      errors: [{message: unnecessaryCurlyMessage}]
-    },
-    {
-      code: '<App prop={`foo "foo" bar`}>foo</App>',
-      output: '<App prop="foo \\\"foo\\\" bar">foo</App>',
       options: [{props: 'never'}],
       errors: [{message: unnecessaryCurlyMessage}]
     },
@@ -228,166 +234,204 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       errors: [{message: unnecessaryCurlyMessage}]
     },
     {
-      code: '<App>{`foo "foo" bar`}</App>',
-      output: '<App>foo "foo" bar</App>',
-      options: [{children: 'never'}],
-      errors: [{message: unnecessaryCurlyMessage}]
-    },
-    {
-      code: '<MyComponent>{\'foo\'}</MyComponent>',
+      code: `<MyComponent>{'foo'}</MyComponent>`,
       output: '<MyComponent>foo</MyComponent>',
       errors: [{message: unnecessaryCurlyMessage}]
     },
     {
-      code: '<MyComponent prop={\'bar\'}>foo</MyComponent>',
-      output: '<MyComponent prop=\"bar\">foo</MyComponent>',
+      code: `<MyComponent prop={'bar'}>foo</MyComponent>`,
+      output: `<MyComponent prop="bar">foo</MyComponent>`,
       errors: [{message: unnecessaryCurlyMessage}]
     },
     {
-      code: '<MyComponent>{\'foo\'}</MyComponent>',
+      code: `<MyComponent>{'foo'}</MyComponent>`,
       output: '<MyComponent>foo</MyComponent>',
       options: [{children: 'never'}],
       errors: [{message: unnecessaryCurlyMessage}]
     },
     {
-      code: '<MyComponent prop={\'bar\'}>foo</MyComponent>',
-      output: '<MyComponent prop=\"bar\">foo</MyComponent>',
+      code: `<MyComponent prop={'bar'}>foo</MyComponent>`,
+      output: '<MyComponent prop="bar">foo</MyComponent>',
       options: [{props: 'never'}],
       errors: [{message: unnecessaryCurlyMessage}]
     },
     {
-      code: '<MyComponent prop={\"bar \'foo\' \"}>foo</MyComponent>',
-      output: '<MyComponent prop=\"bar \'foo\' \">foo</MyComponent>',
-      options: [{props: 'never'}],
-      errors: [{message: unnecessaryCurlyMessage}]
-    },
-    {
-      code: '<MyComponent prop={\'bar \"foo\" \'}>foo</MyComponent>',
-      output: '<MyComponent prop=\"bar \\\"foo\\\" \">foo</MyComponent>',
-      options: [{props: 'never'}],
-      errors: [{message: unnecessaryCurlyMessage}]
-    },
-    {
-      code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
-      output: '<MyComponent prop={\"bar\"}>foo</MyComponent>',
+      code: `<MyComponent prop='bar'>foo</MyComponent>`,
+      output: '<MyComponent prop={"bar"}>foo</MyComponent>',
       options: [{props: 'always'}],
       errors: [{message: missingCurlyMessage}]
     },
     {
-      code: '<MyComponent prop=\"foo \'bar\'\">foo</MyComponent>',
-      output: '<MyComponent prop={\"foo \'bar\'\"}>foo</MyComponent>',
+      code: `<MyComponent prop="foo 'bar'">foo</MyComponent>`,
+      output: `<MyComponent prop={"foo 'bar'"}>foo</MyComponent>`,
       options: [{props: 'always'}],
       errors: [{message: missingCurlyMessage}]
     },
     {
-      code: '<MyComponent prop=\'foo "bar"\'>foo</MyComponent>',
-      output: '<MyComponent prop={\"foo \\\"bar\\\"\"}>foo</MyComponent>',
+      code: `<MyComponent prop='foo "bar"'>foo</MyComponent>`,
+      output: `<MyComponent prop={"foo \\"bar\\""}>foo</MyComponent>`,
       options: [{props: 'always'}],
       errors: [{message: missingCurlyMessage}]
     },
     {
-      code: '<MyComponent prop=\"foo \'bar\'\">foo</MyComponent>',
-      output: '<MyComponent prop={\"foo \'bar\'\"}>foo</MyComponent>',
+      code: `<MyComponent prop="foo 'bar'">foo</MyComponent>`,
+      output: `<MyComponent prop={"foo 'bar'"}>foo</MyComponent>`,
       options: [{props: 'always'}],
       errors: [{message: missingCurlyMessage}]
     },
     {
       code: '<MyComponent>foo bar </MyComponent>',
-      output: '<MyComponent>{\"foo bar \"}</MyComponent>',
+      output: `<MyComponent>{"foo bar "}</MyComponent>`,
       options: [{children: 'always'}],
       errors: [{message: missingCurlyMessage}]
     },
     {
-      code: '<MyComponent>foo bar \'foo\'</MyComponent>',
-      output: '<MyComponent>{\"foo bar \'foo\'\"}</MyComponent>',
+      code: `<MyComponent prop="foo 'bar' \\n ">foo</MyComponent>`,
+      output: `<MyComponent prop={"foo 'bar' \\\\n "}>foo</MyComponent>`,
+      options: [{props: 'always'}],
+      errors: [{message: missingCurlyMessage}]
+    },
+    {
+      code: '<MyComponent>foo bar \\r </MyComponent>',
+      output: '<MyComponent>{"foo bar \\\\r "}</MyComponent>',
       options: [{children: 'always'}],
       errors: [{message: missingCurlyMessage}]
     },
     {
-      code: '<MyComponent>foo bar \"foo\"</MyComponent>',
-      output: '<MyComponent>{\"foo bar \\\"foo\\\"\"}</MyComponent>',
+      code: `<MyComponent>foo bar 'foo'</MyComponent>`,
+      output: `<MyComponent>{"foo bar 'foo'"}</MyComponent>`,
+      options: [{children: 'always'}],
+      errors: [{message: missingCurlyMessage}]
+    },
+    {
+      code: '<MyComponent>foo bar "foo"</MyComponent>',
+      output: '<MyComponent>{"foo bar \\"foo\\""}</MyComponent>',
       options: [{children: 'always'}],
       errors: [{message: missingCurlyMessage}]
     },
     {
       code: '<MyComponent>foo bar <App/></MyComponent>',
-      output: '<MyComponent>{\"foo bar \"}<App/></MyComponent>',
+      output: '<MyComponent>{"foo bar "}<App/></MyComponent>',
       options: [{children: 'always'}],
       errors: [{message: missingCurlyMessage}]
     },
     {
-      code: '<MyComponent>foo\\nbar</MyComponent>',
-      output: '<MyComponent>{\"foo\\\\nbar\"}</MyComponent>',
+      code: '<MyComponent>foo \\n bar</MyComponent>',
+      output: '<MyComponent>{"foo \\\\n bar"}</MyComponent>',
       options: [{children: 'always'}],
       errors: [{message: missingCurlyMessage}]
     },
     {
-      code: '<MyComponent prop={\'bar\'}>{\'foo\'}</MyComponent>',
-      output: '<MyComponent prop=\"bar\">foo</MyComponent>',
+      code: '<MyComponent>foo \\u1234 bar</MyComponent>',
+      output: '<MyComponent>{"foo \\\\u1234 bar"}</MyComponent>',
+      options: [{children: 'always'}],
+      errors: [{message: missingCurlyMessage}]
+    },
+    {
+      code: `<MyComponent prop='foo \\u1234 bar' />`,
+      output: '<MyComponent prop={"foo \\\\u1234 bar"} />',
+      options: [{props: 'always'}],
+      errors: [{message: missingCurlyMessage}]
+    },
+    {
+      code: `<MyComponent prop={'bar'}>{'foo'}</MyComponent>`,
+      output: '<MyComponent prop="bar">foo</MyComponent>',
       options: ['never'],
       errors: [
         {message: unnecessaryCurlyMessage}, {message: unnecessaryCurlyMessage}
       ]
     },
     {
-      code: '<MyComponent prop=\'bar\'>foo</MyComponent>',
-      output: '<MyComponent prop={\"bar\"}>{\"foo\"}</MyComponent>',
+      code: `<MyComponent prop='bar'>foo</MyComponent>`,
+      output: '<MyComponent prop={"bar"}>{"foo"}</MyComponent>',
       options: ['always'],
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ]
     },
     {
-      code: '<App>{\'foo "bar"\'}</App>',
-      output: '<App>foo \"bar\"</App>',
-      options: [{children: 'never'}],
-      errors: [{message: unnecessaryCurlyMessage}]
-    },
-    {
-      code: '<App>{\"foo \'bar\'\"}</App>',
-      output: '<App>foo \'bar\'</App>',
-      errors: [{message: unnecessaryCurlyMessage}],
-      options: [{children: 'never'}]
-    },
-    {
-      code: '<App prop={\"foo \'bar\' foo \"}>foo</App>',
-      output: '<App prop=\"foo \'bar\' foo \">foo</App>',
-      errors: [{message: unnecessaryCurlyMessage}],
-      options: [{props: 'never'}]
-    },
-    {
-      code: '<App prop={\'foo "bar"\'}>foo</App>',
-      output: '<App prop=\"foo \\\"bar\\\"\">foo</App>',
-      errors: [{message: unnecessaryCurlyMessage}],
-      options: [{props: 'never'}]
-    },
-    {
-      code: '<App prop={\'foo\'} attr={\" foo \"} />',
-      output: '<App prop=\"foo\" attr=\" foo \" />',
+      code: `<App prop={'foo'} attr={" foo "} />`,
+      output: '<App prop="foo" attr=" foo " />',
       errors: [
         {message: unnecessaryCurlyMessage}, {message: unnecessaryCurlyMessage}
       ],
       options: [{props: 'never'}]
     },
     {
-      code: '<App prop=\'foo\' attr=\"bar\" />',
-      output: '<App prop={\"foo\"} attr={\"bar\"} />',
+      code: `<App prop='foo' attr="bar" />`,
+      output: '<App prop={"foo"} attr={"bar"} />',
       errors: [
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ],
       options: [{props: 'always'}]
     },
     {
-      code: '<App prop=\'foo\' attr={\"bar\"} />',
-      output: '<App prop={\"foo\"} attr={\"bar\"} />',
+      code: `<App prop='foo' attr={"bar"} />`,
+      output: `<App prop={"foo"} attr={"bar"} />`,
       errors: [{message: missingCurlyMessage}],
       options: [{props: 'always'}]
     },
     {
-      code: '<App prop={\'foo\'} attr=\'bar\' />',
-      output: '<App prop={\'foo\'} attr={\"bar\"} />',
+      code: `<App prop={'foo'} attr='bar' />`,
+      output: `<App prop={'foo'} attr={"bar"} />`,
       errors: [{message: missingCurlyMessage}],
       options: [{props: 'always'}]
+    },
+    {
+      code: `<App prop='foo &middot; bar' />`,
+      errors: [{message: missingCurlyMessage}],
+      options: [{props: 'always'}]
+    },
+    {
+      code: '<App>foo &middot; bar</App>',
+      errors: [{message: missingCurlyMessage}],
+      options: [{children: 'always'}]
+    },
+    {
+      code: `<App>{'foo "bar"'}</App>`,
+      output: `<App>foo "bar"</App>`,
+      errors: [{message: unnecessaryCurlyMessage}],
+      options: [{children: 'never'}]
+    },
+    {
+      code: `<App>{"foo 'bar'"}</App>`,
+      output: `<App>foo 'bar'</App>`,
+      errors: [{message: unnecessaryCurlyMessage}],
+      options: [{children: 'never'}]
+    },
+    {
+      code: [
+        '<App prop="    ',
+        '   a     ',
+        '     b      c',
+        '        d',
+        '">',
+        '  a',
+        '      b     c   ',
+        '         d      ',
+        '</App>'
+      ].join('\n'),
+      errors: [
+        {message: missingCurlyMessage}, {message: missingCurlyMessage}
+      ],
+      options: ['always']
+    },
+    {
+      code: [
+        `<App prop='    `,
+        '   a     ',
+        '     b      c',
+        '        d',
+        `'>`,
+        '  a',
+        '      b     c   ',
+        '         d      ',
+        '</App>'
+      ].join('\n'),
+      errors: [
+        {message: missingCurlyMessage}, {message: missingCurlyMessage}
+      ],
+      options: ['always']
     }
   ]
 });

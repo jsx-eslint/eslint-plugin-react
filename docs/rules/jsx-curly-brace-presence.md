@@ -122,7 +122,7 @@ will be warned and fixed to:
 <App prop="Hello world">Hello world</App>;
 ```
 
-* If the rule is set to enforce curly braces and the strings have quotes, it will be fixed with double quotes for JSX children and the normal way for JSX attributes.
+* If the rule is set to enforce curly braces and the strings have quotes, it will be fixed with double quotes for JSX children and the normal way for JSX attributes. Also, double quotes will be escaped in the fix.
 
 For example:
 
@@ -137,12 +137,14 @@ will warned and fixed to:
 <App prop={"Hello \"foo\" world"}>{"Hello 'foo' \"bar\" world"}</App>;
 ```
 
-* If the rule is set to get rid of unnecessary curly braces and the strings have escaped characters, it will not warn or fix for JSX children because JSX expressions are necessary in this case. For instance:
+* If the rule is set to get rid of unnecessary curly braces(JSX expression) and there are characters that need to be escaped in its JSX form, such as quote characters, [forbidden JSX text characters](https://facebook.github.io/jsx/), escaped characters and anything that looks like HTML entity names, the code will not be warned because the fix may make the code less readable.
 
 The following pattern will not be given a warning even if `'never'` is passed.
 
 ```jsx
+<Color text={"\u00a0"} />
 <App>{"Hello \u00b7 world"}</App>;
+<style type="text/css">{'.main { margin-top: 0; }'}</style>;
 ```
 
 ## When Not To Use It
