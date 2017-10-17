@@ -344,6 +344,27 @@ ruleTester.run('sort-prop-types', rule, {
         }),
       };
     `
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        a: PropTypes.any,
+        b: PropTypes.any,
+        c: PropTypes.shape({
+          c: PropTypes.any,
+          ...otherPropTypes,
+          a: PropTypes.any,
+          b: PropTypes.bool,
+        }),
+      };
+    `,
+    options: [{
+      sortShapeProp: true
+    }]
   }],
 
   invalid: [{
