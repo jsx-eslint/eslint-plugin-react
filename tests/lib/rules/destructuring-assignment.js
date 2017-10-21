@@ -26,7 +26,7 @@ ruleTester.run('destructuring-assignment', rule, {
         return <div>{foo}</div>;
       }
     };`,
-    options: [{SFC: 'always', class: 'always'}],
+    options: ['always'],
     parser: 'babel-eslint'
   }, {
     code: `const MyComponent = ({ id, className }) => (
@@ -42,7 +42,7 @@ ruleTester.run('destructuring-assignment', rule, {
     code: `const MyComponent = ({ id, className }) => (
       <div id={id} className={className} />
     );`,
-    options: [{SFC: 'always', class: 'always'}]
+    options: ['always']
   }, {
     code: `const MyComponent = (props) => {
       const { id, className } = props;
@@ -53,7 +53,7 @@ ruleTester.run('destructuring-assignment', rule, {
       const { id, className } = props;
       return <div id={id} className={className} />
     };`,
-    options: [{SFC: 'always', class: 'always'}]
+    options: ['always']
   }, {
     code: `const MyComponent = (props) => (
       <div id={id} props={props} />
@@ -62,7 +62,7 @@ ruleTester.run('destructuring-assignment', rule, {
     code: `const MyComponent = (props) => (
       <div id={id} props={props} />
     );`,
-    options: [{SFC: 'always', class: 'always'}]
+    options: ['always']
   }, {
     code: `const MyComponent = (props, { color }) => (
       <div id={id} props={props} color={color} />
@@ -71,14 +71,14 @@ ruleTester.run('destructuring-assignment', rule, {
     code: `const MyComponent = (props, { color }) => (
       <div id={id} props={props} color={color} />
     );`,
-    options: [{SFC: 'always', class: 'always'}]
+    options: ['always']
   }, {
     code: `const Foo = class extends React.PureComponent {
       render() {
         return <div>{this.props.foo}</div>;
       }
     };`,
-    options: [{class: 'ignore'}]
+    options: ['never']
   }, {
     code: `class Foo extends React.Component {
       doStuff() {}
@@ -86,7 +86,7 @@ ruleTester.run('destructuring-assignment', rule, {
         return <div>{this.props.foo}</div>;
       }
     }`,
-    options: [{class: 'ignore'}]
+    options: ['never']
   }, {
     code: `const Foo = class extends React.PureComponent {
       render() {
@@ -101,7 +101,7 @@ ruleTester.run('destructuring-assignment', rule, {
         return <div>{foo}</div>;
       }
     };`,
-    options: [{SFC: 'always', class: 'always'}],
+    options: ['always'],
     parser: 'babel-eslint'
   }, {
     code: `const Foo = class extends React.PureComponent {
@@ -117,14 +117,14 @@ ruleTester.run('destructuring-assignment', rule, {
         return <div>{foo}</div>;
       }
     };`,
-    options: [{SFC: 'always', class: 'always'}],
+    options: ['always'],
     parser: 'babel-eslint'
   }, {
     code: `const MyComponent = (props) => {
       const { h, i } = hi;
       return <div id={props.id} className={props.className} />
     };`,
-    options: [{SFC: 'never'}],
+    options: ['never'],
     parser: 'babel-eslint'
   }],
   invalid: [{
@@ -138,7 +138,7 @@ ruleTester.run('destructuring-assignment', rule, {
     code: `const MyComponent = ({ id, className }) => (
       <div id={id} className={className} />
     );`,
-    options: [{SFC: 'never'}],
+    options: ['never'],
     errors: [
       {message: 'Must never use destructuring props assignment in SFC argument'}
     ]
@@ -146,7 +146,7 @@ ruleTester.run('destructuring-assignment', rule, {
     code: `const MyComponent = (props, { color }) => (
       <div id={props.id} className={props.className} />
     );`,
-    options: [{SFC: 'never'}],
+    options: ['never'],
     errors: [
       {message: 'Must never use destructuring context assignment in SFC argument'}
     ]
@@ -213,7 +213,7 @@ ruleTester.run('destructuring-assignment', rule, {
         return <div>{foo}</div>;
       }
     };`,
-    options: [{SFC: 'always', class: 'never'}],
+    options: ['never'],
     parser: 'babel-eslint',
     errors: [
       {message: 'Must never use destructuring props assignment'}
@@ -223,7 +223,7 @@ ruleTester.run('destructuring-assignment', rule, {
       const { id, className } = props;
       return <div id={id} className={className} />
     };`,
-    options: [{SFC: 'never'}],
+    options: ['never'],
     parser: 'babel-eslint',
     errors: [
       {message: 'Must never use destructuring props assignment'}
@@ -235,7 +235,7 @@ ruleTester.run('destructuring-assignment', rule, {
         return <div>{foo}</div>;
       }
     };`,
-    options: [{SFC: 'always', class: 'never'}],
+    options: ['never'],
     parser: 'babel-eslint',
     errors: [
       {message: 'Must never use destructuring state assignment'}

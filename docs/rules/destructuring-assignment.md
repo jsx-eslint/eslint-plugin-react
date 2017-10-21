@@ -1,8 +1,8 @@
 # Enforce consostent usage of destructuring assignment of props, state and context (react/destructuring-assignment)
 
-Rule can be set to either of `always`, `never`, `ignore` for `class` and `SFC` components.
+Rule can be set to either of `always` or `never`;
 ```js
-"react/destructuring-assignment": [<enabled>, { "SFC": "always", "class": "always"}]
+"react/destructuring-assignment": [<enabled>, 'always']
 ```
 
 ## Rule Details
@@ -47,7 +47,7 @@ const Foo = class extends React.PureComponent {
 };
 ```
 
-If rule option is set to `never`, the following patterns are considered warning:
+If rule is set to `never`, the following patterns are considered warning:
 
 ```js
 const MyComponent = ({id}) => {
