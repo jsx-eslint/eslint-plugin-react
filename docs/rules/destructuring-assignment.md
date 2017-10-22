@@ -1,4 +1,4 @@
-# Enforce consostent usage of destructuring assignment of props, state and context (react/destructuring-assignment)
+# Enforce consistent usage of destructuring assignment of props, state, and context (react/destructuring-assignment)
 
 Rule can be set to either of `always` or `never`;
 ```js
