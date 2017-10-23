@@ -66,7 +66,7 @@ class Foo extends React.Component {
 
 When `true` the rule will ignore Components extending from `React.PureComponent` that use `this.props` or `this.context`.
 
-The following patterns is considered okay and does not cause warnings:
+The following pattern is considered okay and does not cause warnings:
 
 ```jsx
 class Foo extends React.PureComponent {
