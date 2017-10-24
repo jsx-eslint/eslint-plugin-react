@@ -6,7 +6,7 @@ Wrapping multiline JSX in parentheses can improve readability and/or convenience
 
 ## Rule Details
 
-This rule optionally takes a second parameter in the form of an object, containing places to apply the rule. By default, all the syntax listed below will be checked, but these can be explicitly disabled. Any syntax type missing in the object will follow the default behavior (become enabled).
+This rule optionally takes a second parameter in the form of an object, containing places to apply the rule. By default, all the syntax listed below will be checked except the conditionals, but these can be explicitly disabled. Any syntax type missing in the object will follow the default behavior (become enabled).
 
 There are the possible syntax available:
 
@@ -14,6 +14,7 @@ There are the possible syntax available:
 * `assignment`
 * `return`
 * `arrow`
+* `conditional` (not enabled by default)
 
 The following patterns are considered warnings:
 
@@ -101,6 +102,7 @@ function hello() {
   );
 }
 ```
+
 The following patterns are considered warnings when configured `{arrow: true}`.
 
 ```jsx
@@ -117,4 +119,28 @@ var hello = () => (
     <p>World</p>
   </div>
 );
+```
+
+The following patterns are considered warnings when configured `{conditional: true}`.
+
+```jsx
+<div>
+  {myExpression &&
+    <div>
+      <p>Hello World</p>
+    </div>
+  }
+</div>
+```
+
+The following patterns are not considered warnings when configured `{conditional: true}`.
+
+```jsx
+<div>
+  {myExpression && (
+    <div>
+      <p>Hello World</p>
+    </div>
+  )}
+</div>
 ```

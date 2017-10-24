@@ -134,6 +134,32 @@ const ARROW_NO_PAREN = `
   </div>;
 `;
 
+const CONDITIONAL_SINGLE_LINE = `
+  <div>
+    {unreadMessages.length > 0 && <div>Hello World</div>}
+  </div>
+`;
+
+const CONDITIONAL_PAREN = `
+  <div>
+    {unreadMessages.length > 0 && (
+      <h2>
+        You have {unreadMessages.length} unread messages.
+      </h2>
+    )}
+  </div>
+`;
+
+const CONDITIONAL_NO_PAREN = `
+  <div>
+    {unreadMessages.length > 0 &&
+      <h2>
+        You have {unreadMessages.length} unread messages.
+      </h2>
+    }
+  </div>
+`;
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -187,6 +213,16 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     }, {
       code: ARROW_NO_PAREN,
       options: [{arrow: false}]
+    }, {
+      code: CONDITIONAL_PAREN
+    }, {
+      code: CONDITIONAL_PAREN,
+      options: [{conditional: true}]
+    }, {
+      code: CONDITIONAL_SINGLE_LINE,
+      options: [{conditional: true}]
+    }, {
+      code: CONDITIONAL_NO_PAREN
     }
   ],
 
@@ -236,6 +272,11 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: ARROW_NO_PAREN,
       output: ARROW_PAREN,
       options: [{arrow: true}],
+      errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: CONDITIONAL_NO_PAREN,
+      output: CONDITIONAL_PAREN,
+      options: [{conditional: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }
   ]
