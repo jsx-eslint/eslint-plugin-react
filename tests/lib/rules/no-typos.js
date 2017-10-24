@@ -244,7 +244,7 @@ ruleTester.run('no-typos', rule, {
     // PropTypes declared on a component that is detected through JSDoc comments and is
     // declared AFTER the PropTypes assignment does not work.
     code: `
-      MyComponent.PROPTYPES = {}
+      MyComponent.propTypes = {}
       /** @extends React.Component */
       class MyComponent extends BaseComponent {}
     `,
