@@ -242,5 +242,21 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
     ].join('\n'),
     errors: [{message: 'Closing tag for Element `App` must be placed on a new line'}],
     parserOptions: parserOptions
+  }, {
+    code: [
+      '<App>',
+      '  <Foo></',
+      'Foo><Bar />',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '  <Foo></',
+      'Foo>',
+      '<Bar />',
+      '</App>'
+    ].join('\n'),
+    errors: [{message: 'Opening tag for Element `Bar` must be placed on a new line'}],
+    parserOptions: parserOptions
   }]
 });
