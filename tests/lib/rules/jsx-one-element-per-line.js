@@ -101,6 +101,20 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
     parserOptions: parserOptions
   }, {
     code: [
+      '<div>',
+      '  <span />foo<input />',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '  <span />foo',
+      '<input />',
+      '</div>'
+    ].join('\n'),
+    errors: [{message: 'Opening tag for Element `input` must be placed on a new line'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
       '<App>',
       '  <Foo></Foo><Bar></Bar>',
       '</App>'
