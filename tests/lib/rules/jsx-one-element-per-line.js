@@ -59,6 +59,12 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
   }, {
     code: [
       '<App>',
+      '  foo bar baz  whatever  ',
+      '</App>'
+    ].join('\n')
+  }, {
+    code: [
+      '<App>',
       '  <Foo>',
       '  </Foo>',
       '</App>'
@@ -102,16 +108,114 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
   }, {
     code: [
       '<div>',
-      '  <span />foo<input />',
+      '  <span />foo',
       '</div>'
     ].join('\n'),
     output: [
       '<div>',
-      '  <span />foo',
+      '  <span />',
+      'foo',
+      '</div>'
+    ].join('\n'),
+    errors: [{message: 'Literal `foo` must be placed on a new line'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  <span />{"foo"}',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '  <span />',
+      '{"foo"}',
+      '</div>'
+    ].join('\n'),
+    errors: [{message: 'Literal `{"foo"}` must be placed on a new line'}], // TODO: Replace `Literal` with proper term.
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  foo<input />',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '  foo',
       '<input />',
       '</div>'
     ].join('\n'),
     errors: [{message: 'Opening tag for Element `input` must be placed on a new line'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  {"foo"}<span />',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '  {"foo"}',
+      '<span />',
+      '</div>'
+    ].join('\n'),
+    errors: [{message: 'Opening tag for Element `span` must be placed on a new line'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  foo <input />',
+      '</div>'
+    ].join('\n'),
+    errors: [{message: 'Opening tag for Element `input` must be placed on a new line'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  <span /> <input />',
+      '</div>'
+    ].join('\n'),
+    errors: [{message: 'Opening tag for Element `input` must be placed on a new line'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  <input /> foo',
+      '</div>'
+    ].join('\n'),
+    errors: [{message: 'Literal ` foo` must be placed on a new line'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  {"foo"} <input />',
+      '</div>'
+    ].join('\n'),
+    errors: [{message: 'Opening tag for Element `input` must be placed on a new line'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  {"foo"} bar',
+      '</div>'
+    ].join('\n'),
+    errors: [{message: 'Literal `bar` must be placed on a new line'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  foo {"bar"}',
+      '</div>'
+    ].join('\n'),
+    errors: [{message: 'Literal `{"bar"}` must be placed on a new line'}], // TODO: Replace `Literal` with proper term.
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  <input /> {"foo"}',
+      '</div>'
+    ].join('\n'),
+    errors: [{message: 'Literal `{"foo"}` must be placed on a new line'}], // TODO: Replace `Literal` with proper term.
     parserOptions: parserOptions
   }, {
     code: [
