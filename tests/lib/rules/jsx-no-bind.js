@@ -408,6 +408,18 @@ ruleTester.run('jsx-no-bind', rule, {
     },
     {
       code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv = async () => {',
+        '    const click = async () => true',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use arrow functions'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
         'var Hello = React.createClass({',
         '  render: function() { ',
         '   return <div onClick={() => true} />',
@@ -420,7 +432,28 @@ ruleTester.run('jsx-no-bind', rule, {
       code: [
         'var Hello = React.createClass({',
         '  render: function() { ',
+        '   return <div onClick={async () => true} />',
+        '  }',
+        '});'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use arrow functions'}]
+    },
+    {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() { ',
         '    const doThing = () => true',
+        '    return <div onClick={doThing} />',
+        '  }',
+        '});'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use arrow functions'}]
+    },
+    {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() { ',
+        '    const doThing = async () => true',
         '    return <div onClick={doThing} />',
         '  }',
         '});'
