@@ -46,6 +46,13 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
   }, {
     code: [
       '<App>',
+      '  <Foo />',
+      '  <Bar />',
+      '</App>'
+    ].join('\n')
+  }, {
+    code: [
+      '<App>',
       '  <Foo></Foo>',
       '</App>'
     ].join('\n')
