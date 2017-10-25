@@ -213,6 +213,29 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '});'
       ].join('\n')
+    },
+    {
+      code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv = () => {',
+        '    const onClick = this.doSomething.bind(this, "no")',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv = async () => {',
+        '    return (<div>{',
+        '      this.props.list.map(this.wrap.bind(this, "span"))',
+        '    }</div>);',
+        '  }',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
@@ -266,6 +289,30 @@ ruleTester.run('jsx-no-bind', rule, {
         '};'
       ].join('\n'),
       errors: [{message: 'JSX props should not use .bind()'}]
+    },
+    {
+      code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv = () => {',
+        '    const click = this.doSomething.bind(this, "no")',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use .bind()'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv = async () => {',
+        '    const click = this.doSomething.bind(this, "no")',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use .bind()'}],
+      parser: 'babel-eslint'
     },
     {
       code: `
@@ -349,6 +396,18 @@ ruleTester.run('jsx-no-bind', rule, {
     },
     {
       code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv = async () => {',
+        '    const click = () => true',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use arrow functions'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
         'var Hello = React.createClass({',
         '  render: function() { ',
         '   return <div onClick={() => true} />',
@@ -420,6 +479,18 @@ ruleTester.run('jsx-no-bind', rule, {
       code: [
         'class Hello23 extends React.Component {',
         '  renderDiv() {',
+        '    const click = this.bar::baz',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use ::'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv = async () => {',
         '    const click = this.bar::baz',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
