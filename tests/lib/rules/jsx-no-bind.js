@@ -49,6 +49,10 @@ ruleTester.run('jsx-no-bind', rule, {
       code: '<div ref={this._refCallback.bind(this)}></div>',
       options: [{ignoreRefs: true}]
     },
+    {
+      code: '<div ref={function (c) {this._input = c}}></div>',
+      options: [{ignoreRefs: true}]
+    },
 
     // bind() explicitly allowed
     {
@@ -60,6 +64,24 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: '<div onClick={() => alert("1337")}></div>',
       options: [{allowArrowFunctions: true}]
+    },
+    {
+      code: '<div onClick={async () => alert("1337")}></div>',
+      options: [{allowArrowFunctions: true}]
+    },
+
+    // Functions explicitly allowed
+    {
+      code: '<div onClick={function () { alert("1337") }}></div>',
+      options: [{allowFunctions: true}]
+    },
+    {
+      code: '<div onClick={function * () { alert("1337") }}></div>',
+      options: [{allowFunctions: true}]
+    },
+    {
+      code: '<div onClick={async function () { alert("1337") }}></div>',
+      options: [{allowFunctions: true}]
     },
 
     // Redux connect
@@ -371,6 +393,10 @@ ruleTester.run('jsx-no-bind', rule, {
       errors: [{message: 'JSX props should not use arrow functions'}]
     },
     {
+      code: '<div onClick={async () => alert("1337")}></div>',
+      errors: [{message: 'JSX props should not use arrow functions'}]
+    },
+    {
       code: '<div onClick={() => 42}></div>',
       errors: [{message: 'JSX props should not use arrow functions'}]
     },
@@ -475,6 +501,154 @@ ruleTester.run('jsx-no-bind', rule, {
       ].join('\n'),
       errors: [
         {message: 'JSX props should not use arrow functions'},
+        {message: 'JSX props should not use ::'}
+      ],
+      parser: 'babel-eslint'
+    },
+
+    // Functions
+    {
+      code: '<div onClick={function () { alert("1337") }}></div>',
+      errors: [{message: 'JSX props should not use functions'}]
+    },
+    {
+      code: '<div onClick={function * () { alert("1337") }}></div>',
+      errors: [{message: 'JSX props should not use functions'}]
+    },
+    {
+      code: '<div onClick={async function () { alert("1337") }}></div>',
+      errors: [{message: 'JSX props should not use functions'}]
+    },
+    {
+      code: '<div ref={function (c) { this._input = c }}></div>',
+      errors: [{message: 'JSX props should not use functions'}]
+    },
+    {
+      code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv = () => {',
+        '    const click = function () { return true }',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use functions'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv = () => {',
+        '    const click = function * () { return true }',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use functions'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv = async () => {',
+        '    const click = function () { return true }',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use functions'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv = async () => {',
+        '    const click = async function () { return true }',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use functions'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() { ',
+        '   return <div onClick={function () { return true }} />',
+        '  }',
+        '});'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use functions'}]
+    },
+    {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() { ',
+        '   return <div onClick={function * () { return true }} />',
+        '  }',
+        '});'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use functions'}]
+    },
+    {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() { ',
+        '   return <div onClick={async function () { return true }} />',
+        '  }',
+        '});'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use functions'}]
+    },
+    {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() { ',
+        '    const doThing = function () { return true }',
+        '    return <div onClick={doThing} />',
+        '  }',
+        '});'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use functions'}]
+    },
+    {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() { ',
+        '    const doThing = async function () { return true }',
+        '    return <div onClick={doThing} />',
+        '  }',
+        '});'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use functions'}]
+    },
+    {
+      code: [
+        'var Hello = React.createClass({',
+        '  render: function() { ',
+        '    const doThing = function * () { return true }',
+        '    return <div onClick={doThing} />',
+        '  }',
+        '});'
+      ].join('\n'),
+      errors: [{message: 'JSX props should not use functions'}]
+    },
+    {
+      code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv = () => {',
+        '    const click = ::this.onChange',
+        '    const renderStuff = () => {',
+        '      const click = function () { return true }',
+        '      return <div onClick={click} />',
+        '    }',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      errors: [
+        {message: 'JSX props should not use functions'},
         {message: 'JSX props should not use ::'}
       ],
       parser: 'babel-eslint'

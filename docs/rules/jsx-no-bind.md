@@ -24,6 +24,7 @@ The following patterns are not considered warnings:
 "react/jsx-no-bind": [<enabled>, {
   "ignoreRefs": <boolean> || false,
   "allowArrowFunctions": <boolean> || false,
+  "allowFunctions": <boolean> || false,
   "allowBind": <boolean> || false
 }]
 ```
@@ -43,6 +44,14 @@ When `true` the following is not considered a warning:
 
 ```jsx
 <div onClick={() => alert("1337")} />
+```
+
+### `allowFunctions`
+
+When `true` the following is not considered a warning:
+
+```jsx
+<div onClick={function () { alert("1337") }} />
 ```
 
 ### `allowBind`
