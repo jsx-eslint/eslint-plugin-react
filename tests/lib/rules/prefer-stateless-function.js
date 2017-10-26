@@ -100,7 +100,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `
     }, {
-      // Use refs      
+      // Use refs
       code: `
         class Foo extends React.Component {
           doStuff() {
@@ -122,7 +122,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `
     }, {
-      // Has an empty (no super) constructor      
+      // Has an empty (no super) constructor
       code: `
         class Foo extends React.Component {
           constructor() {}
@@ -132,7 +132,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `
     }, {
-      // Has a constructor      
+      // Has a constructor
       code: `
         class Foo extends React.Component {
           constructor() {
@@ -144,7 +144,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `
     }, {
-      // Has a constructor (2)      
+      // Has a constructor (2)
       code: `
         class Foo extends React.Component {
           constructor() {
@@ -156,7 +156,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `
     }, {
-      // Use this.bar      
+      // Use this.bar
       code: `
         class Foo extends React.Component {
           render() {
