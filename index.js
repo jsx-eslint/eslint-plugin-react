@@ -5,6 +5,7 @@ const has = require('has');
 const allRules = {
   'boolean-prop-naming': require('./lib/rules/boolean-prop-naming'),
   'default-props-match-prop-types': require('./lib/rules/default-props-match-prop-types'),
+  'destructuring-assignment': require('./lib/rules/destructuring-assignment'),
   'display-name': require('./lib/rules/display-name'),
   'forbid-component-props': require('./lib/rules/forbid-component-props'),
   'forbid-elements': require('./lib/rules/forbid-elements'),
