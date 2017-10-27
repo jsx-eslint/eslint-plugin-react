@@ -26,15 +26,11 @@ const parserOptions = {
 // ------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({parserOptions});
-ruleTester.run('jsx-max-elements-per-line', rule, {
+ruleTester.run('jsx-one-element-per-line', rule, {
   valid: [{
     code: '<App />'
   }, {
     code: '<App></App>'
-  }, {
-    code: '<App>{"foo"}</App>'
-  }, {
-    code: '<App>foo</App>'
   }, {
     code: '<App foo="bar" />'
   }, {
@@ -92,6 +88,58 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
   }],
 
   invalid: [{
+    code: '<App>{"foo"}</App>',
+    output: [
+      '<App>',
+      '{"foo"}',
+      '</App>'
+    ].join('\n'),
+    errors: [{message: '`{"foo"}` must be placed on a new line'}],
+    parserOptions: parserOptions
+  }, {
+    code: '<App>foo</App>',
+    output: [
+      '<App>',
+      'foo',
+      '</App>'
+    ].join('\n'),
+    errors: [{message: '`foo` must be placed on a new line'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  foo {"bar"}',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '  foo ',
+      '{\' \'}',
+      '{"bar"}',
+      '</div>'
+    ].join('\n'),
+    errors: [
+      {message: '`{"bar"}` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  {"foo"} bar',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '  {"foo"}',
+      '{\' \'}',
+      ' bar',
+      '</div>'
+    ].join('\n'),
+    errors: [
+      {message: '` bar` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
     code: [
       '<App>',
       '  <Foo /><Bar />',
@@ -103,7 +151,7 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '<Bar />',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Opening tag for Element `Bar` must be placed on a new line'}],
+    errors: [{message: '`Bar` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -117,7 +165,7 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       'foo',
       '</div>'
     ].join('\n'),
-    errors: [{message: 'Literal `foo` must be placed on a new line'}],
+    errors: [{message: '`foo` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -131,7 +179,148 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '{"foo"}',
       '</div>'
     ].join('\n'),
-    errors: [{message: 'Literal `{"foo"}` must be placed on a new line'}], // TODO: Replace `Literal` with proper term.
+    errors: [{message: '`{"foo"}` must be placed on a new line'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  {"foo"} { I18n.t(\'baz\') }',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '  {"foo"} ',
+      '{\' \'}',
+      '{ I18n.t(\'baz\') }',
+      '</div>'
+    ].join('\n'),
+    errors: [
+      {message: '`{ I18n.t(\'baz\') }` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<Text style={styles.foo}>{ bar } <Text/> { I18n.t(\'baz\') }</Text>'
+    ].join('\n'),
+    output: [
+      '<Text style={styles.foo}>',
+      '{ bar } ',
+      '{\' \'}',
+      '<Text/> ',
+      '{\' \'}',
+      '{ I18n.t(\'baz\') }',
+      '</Text>'
+    ].join('\n'),
+    errors: [
+      {message: '`{ bar }` must be placed on a new line'},
+      {message: '`Text` must be placed on a new line'},
+      {message: '`{ I18n.t(\'baz\') }` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+
+  }, {
+    code: [
+      '<Text style={styles.foo}> <Bar/> <Baz/></Text>'
+    ].join('\n'),
+    output: [
+      '<Text style={styles.foo}> ',
+      '{\' \'}',
+      '<Bar/> ',
+      '{\' \'}',
+      '<Baz/>',
+      '</Text>'
+    ].join('\n'),
+    errors: [
+      {message: '`Bar` must be placed on a new line'},
+      {message: '`Baz` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<Text style={styles.foo}> <Bar/> <Baz/> <Bunk/> <Bruno/> </Text>'
+    ].join('\n'),
+    output: [
+      '<Text style={styles.foo}> ',
+      '{\' \'}',
+      '<Bar/> ',
+      '{\' \'}',
+      '<Baz/> ',
+      '{\' \'}',
+      '<Bunk/> ',
+      '{\' \'}',
+      '<Bruno/>',
+      '{\' \'}',
+      ' </Text>'
+    ].join('\n'),
+    errors: [
+      {message: '`Bar` must be placed on a new line'},
+      {message: '`Baz` must be placed on a new line'},
+      {message: '`Bunk` must be placed on a new line'},
+      {message: '`Bruno` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<Text style={styles.foo}> <Bar /></Text>'
+    ].join('\n'),
+    output: [
+      '<Text style={styles.foo}> ',
+      '{\' \'}',
+      '<Bar />',
+      '</Text>'
+    ].join('\n'),
+    errors: [
+      {message: '`Bar` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<Text style={styles.foo}> <Bar />',
+      '</Text>'
+    ].join('\n'),
+    output: [
+      '<Text style={styles.foo}> ',
+      '{\' \'}',
+      '<Bar />',
+      '</Text>'
+    ].join('\n'),
+    errors: [
+      {message: '`Bar` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<Text style={styles.foo}>',
+      '  <Bar /> <Baz />',
+      '</Text>'
+    ].join('\n'),
+    output: [
+      '<Text style={styles.foo}>',
+      '  <Bar /> ',
+      '{\' \'}',
+      '<Baz />',
+      '</Text>'
+    ].join('\n'),
+    errors: [
+      {message: '`Baz` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<Text style={styles.foo}>',
+      '  { bar } { I18n.t(\'baz\') }',
+      '</Text>'
+    ].join('\n'),
+    output: [
+      '<Text style={styles.foo}>',
+      '  { bar } ',
+      '{\' \'}',
+      '{ I18n.t(\'baz\') }',
+      '</Text>'
+    ].join('\n'),
+    errors: [
+      {message: '`{ I18n.t(\'baz\') }` must be placed on a new line'}
+    ],
     parserOptions: parserOptions
   }, {
     code: [
@@ -145,7 +334,9 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '<input />',
       '</div>'
     ].join('\n'),
-    errors: [{message: 'Opening tag for Element `input` must be placed on a new line'}],
+    errors: [
+      {message: '`input` must be placed on a new line'}
+    ],
     parserOptions: parserOptions
   }, {
     code: [
@@ -159,7 +350,7 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '<span />',
       '</div>'
     ].join('\n'),
-    errors: [{message: 'Opening tag for Element `span` must be placed on a new line'}],
+    errors: [{message: '`span` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -167,15 +358,14 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '  foo <input />',
       '</div>'
     ].join('\n'),
-    errors: [{message: 'Opening tag for Element `input` must be placed on a new line'}],
-    parserOptions: parserOptions
-  }, {
-    code: [
+    output: [
       '<div>',
-      '  <span /> <input />',
+      '  foo ',
+      '{\' \'}',
+      '<input />',
       '</div>'
     ].join('\n'),
-    errors: [{message: 'Opening tag for Element `input` must be placed on a new line'}],
+    errors: [{message: '`input` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -183,7 +373,49 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '  <input /> foo',
       '</div>'
     ].join('\n'),
-    errors: [{message: 'Literal ` foo` must be placed on a new line'}],
+    output: [
+      '<div>',
+      '  <input />',
+      '{\' \'}',
+      ' foo',
+      '</div>'
+    ].join('\n'),
+    errors: [{message: '` foo` must be placed on a new line'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  <span /> <input />',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '  <span /> ',
+      '{\' \'}',
+      '<input />',
+      '</div>'
+    ].join('\n'),
+    errors: [
+      {message: '`input` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  <span />',
+      '{\' \'}<input />',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '  <span />',
+      '{\' \'}',
+      '<input />',
+      '</div>'
+    ].join('\n'),
+    errors: [
+      {message: '`input` must be placed on a new line'}
+    ],
     parserOptions: parserOptions
   }, {
     code: [
@@ -191,7 +423,16 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '  {"foo"} <input />',
       '</div>'
     ].join('\n'),
-    errors: [{message: 'Opening tag for Element `input` must be placed on a new line'}],
+    output: [
+      '<div>',
+      '  {"foo"} ',
+      '{\' \'}',
+      '<input />',
+      '</div>'
+    ].join('\n'),
+    errors: [
+      {message: '`input` must be placed on a new line'}
+    ],
     parserOptions: parserOptions
   }, {
     code: [
@@ -199,7 +440,14 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '  {"foo"} bar',
       '</div>'
     ].join('\n'),
-    errors: [{message: 'Literal `bar` must be placed on a new line'}],
+    output: [
+      '<div>',
+      '  {"foo"}',
+      '{\' \'}',
+      ' bar',
+      '</div>'
+    ].join('\n'),
+    errors: [{message: '` bar` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -207,7 +455,16 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '  foo {"bar"}',
       '</div>'
     ].join('\n'),
-    errors: [{message: 'Literal `{"bar"}` must be placed on a new line'}], // TODO: Replace `Literal` with proper term.
+    output: [
+      '<div>',
+      '  foo ',
+      '{\' \'}',
+      '{"bar"}',
+      '</div>'
+    ].join('\n'),
+    errors: [
+      {message: '`{"bar"}` must be placed on a new line'}
+    ],
     parserOptions: parserOptions
   }, {
     code: [
@@ -215,7 +472,16 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '  <input /> {"foo"}',
       '</div>'
     ].join('\n'),
-    errors: [{message: 'Literal `{"foo"}` must be placed on a new line'}], // TODO: Replace `Literal` with proper term.
+    output: [
+      '<div>',
+      '  <input /> ',
+      '{\' \'}',
+      '{"foo"}',
+      '</div>'
+    ].join('\n'),
+    errors: [
+      {message: '`{"foo"}` must be placed on a new line'}
+    ],
     parserOptions: parserOptions
   }, {
     code: [
@@ -229,7 +495,7 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '<Bar></Bar>',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Opening tag for Element `Bar` must be placed on a new line'}],
+    errors: [{message: '`Bar` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -241,7 +507,7 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '<Foo></Foo>',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Closing tag for Element `App` must be placed on a new line'}],
+    errors: [{message: '`Foo` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -253,7 +519,7 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '<Foo />',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Opening tag for Element `Foo` must be placed on a new line'}],
+    errors: [{message: '`Foo` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -265,7 +531,7 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '<Foo/>',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Closing tag for Element `App` must be placed on a new line'}],
+    errors: [{message: '`Foo` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -279,7 +545,7 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '/>',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Opening tag for Element `Foo` must be placed on a new line'}],
+    errors: [{message: '`Foo` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -293,7 +559,7 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '<Foo />',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Closing tag for Element `App` must be placed on a new line'}],
+    errors: [{message: '`Foo` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -309,7 +575,7 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '/>',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Closing tag for Element `App` must be placed on a new line'}],
+    errors: [{message: '`Foo` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -323,7 +589,7 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '<Foo />',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Opening tag for Element `Foo` must be placed on a new line'}],
+    errors: [{message: '`Foo` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -337,7 +603,7 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '>',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Closing tag for Element `App` must be placed on a new line'}],
+    errors: [{message: '`Foo` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -351,7 +617,7 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       'Foo>',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Closing tag for Element `App` must be placed on a new line'}],
+    errors: [{message: '`Foo` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -365,7 +631,7 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       'Foo>',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Closing tag for Element `App` must be placed on a new line'}],
+    errors: [{message: '`Foo` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -381,7 +647,7 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '<Bar />',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Opening tag for Element `Bar` must be placed on a new line'}],
+    errors: [{message: '`Bar` must be placed on a new line'}],
     parserOptions: parserOptions
   }, {
     code: [
@@ -397,7 +663,176 @@ ruleTester.run('jsx-max-elements-per-line', rule, {
       '</Foo>',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Closing tag for Element `Foo` must be placed on a new line'}],
+    errors: [{message: '`Bar` must be placed on a new line'}],
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App>',
+      '  <Foo>',
+      '    <Bar> baz </Bar>',
+      '  </Foo>',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '  <Foo>',
+      '    <Bar>',
+      '{\' \'}',
+      ' baz ',
+      '{\' \'}',
+      '</Bar>',
+      '  </Foo>',
+      '</App>'
+    ].join('\n'),
+    errors: [
+      {message: '` baz ` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    // Would be nice to handle in one pass, but multipass works fine.
+    code: [
+      '<App>',
+      '  foo {"bar"} baz',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '  foo ',
+      '{\' \'}',
+      '{"bar"} baz',
+      '</App>'
+    ].join('\n'),
+    errors: [
+      {message: '`{"bar"}` must be placed on a new line'},
+      {message: '` baz` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    // Would be nice to handle in one pass, but multipass works fine.
+    code: [
+      '<App>',
+      '',
+      '  foo {"bar"} baz',
+      '',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '',
+      '  foo ',
+      '{\' \'}',
+      '{"bar"} baz',
+      '',
+      '</App>'
+    ].join('\n'),
+    errors: [
+      {message: '`{"bar"}` must be placed on a new line'},
+      {message: '` baz` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    // Would be nice to handle in one pass, but multipass works fine.
+    code: [
+      '<App>',
+      '',
+      '  foo ',
+      '{\' \'}',
+      '{"bar"} baz',
+      '',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '',
+      '  foo ',
+      '{\' \'}',
+      '{"bar"}',
+      '{\' \'}',
+      ' baz',
+      '',
+      '</App>'
+    ].join('\n'),
+    errors: [
+      {message: '` baz` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    // Would be nice to handle in one pass, but multipass works fine.
+    code: [
+      '<App>{',
+      '  foo',
+      '}</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '{',
+      '  foo',
+      '}</App>'
+    ].join('\n'),
+    errors: [
+      {message: '`{  foo}` must be placed on a new line'},
+      {message: '`{  foo}` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    // Would be nice to handle in one pass, but multipass works fine.
+    code: [
+      '<App>',
+      '{',
+      '  foo',
+      '}</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '{',
+      '  foo',
+      '}',
+      '</App>'
+    ].join('\n'),
+    errors: [
+      {message: '`{  foo}` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    // Would be nice to handle in one pass, but multipass works fine.
+    code: [
+      '<App> {',
+      '  foo',
+      '} </App>'
+    ].join('\n'),
+    output: [
+      '<App> ',
+      '{\' \'}',
+      '{',
+      '  foo',
+      '} </App>'
+    ].join('\n'),
+    errors: [
+      {message: '`{  foo}` must be placed on a new line'},
+      {message: '`{  foo}` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    // Would be nice to handle in one pass, but multipass works fine.
+    code: [
+      '<App> ',
+      '{\' \'}',
+      '{',
+      '  foo',
+      '} </App>'
+    ].join('\n'),
+    output: [
+      '<App> ',
+      '{\' \'}',
+      '{',
+      '  foo',
+      '}',
+      '{\' \'}',
+      ' </App>'
+    ].join('\n'),
+    errors: [
+      {message: '`{  foo}` must be placed on a new line'}
+    ],
     parserOptions: parserOptions
   }]
 });
