@@ -9,7 +9,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-one-element-per-line');
+const rule = require('../../../lib/rules/jsx-one-expression-per-line');
 const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
@@ -26,7 +26,7 @@ const parserOptions = {
 // ------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({parserOptions});
-ruleTester.run('jsx-one-element-per-line', rule, {
+ruleTester.run('jsx-one-expression-per-line', rule, {
   valid: [{
     code: '<App />'
   }, {
