@@ -711,6 +711,28 @@ ruleTester.run('jsx-one-element-per-line', rule, {
     // Would be nice to handle in one pass, but multipass works fine.
     code: [
       '<App>',
+      '  foo ',
+      '{\' \'}',
+      '{"bar"} baz',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '  foo ',
+      '{\' \'}',
+      '{"bar"}',
+      '{\' \'}',
+      ' baz',
+      '</App>'
+    ].join('\n'),
+    errors: [
+      {message: '` baz` must be placed on a new line'}
+    ],
+    parserOptions: parserOptions
+  }, {
+    // Would be nice to handle in one pass, but multipass works fine.
+    code: [
+      '<App>',
       '',
       '  foo {"bar"} baz',
       '',
@@ -757,28 +779,8 @@ ruleTester.run('jsx-one-element-per-line', rule, {
     ],
     parserOptions: parserOptions
   }, {
-    // Would be nice to handle in one pass, but multipass works fine.
     code: [
       '<App>{',
-      '  foo',
-      '}</App>'
-    ].join('\n'),
-    output: [
-      '<App>',
-      '{',
-      '  foo',
-      '}</App>'
-    ].join('\n'),
-    errors: [
-      {message: '`{  foo}` must be placed on a new line'},
-      {message: '`{  foo}` must be placed on a new line'}
-    ],
-    parserOptions: parserOptions
-  }, {
-    // Would be nice to handle in one pass, but multipass works fine.
-    code: [
-      '<App>',
-      '{',
       '  foo',
       '}</App>'
     ].join('\n'),
@@ -794,7 +796,6 @@ ruleTester.run('jsx-one-element-per-line', rule, {
     ],
     parserOptions: parserOptions
   }, {
-    // Would be nice to handle in one pass, but multipass works fine.
     code: [
       '<App> {',
       '  foo',
@@ -805,15 +806,15 @@ ruleTester.run('jsx-one-element-per-line', rule, {
       '{\' \'}',
       '{',
       '  foo',
-      '} </App>'
+      '}',
+      '{\' \'}',
+      ' </App>'
     ].join('\n'),
     errors: [
-      {message: '`{  foo}` must be placed on a new line'},
       {message: '`{  foo}` must be placed on a new line'}
     ],
     parserOptions: parserOptions
   }, {
-    // Would be nice to handle in one pass, but multipass works fine.
     code: [
       '<App> ',
       '{\' \'}',
