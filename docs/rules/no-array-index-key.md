@@ -52,7 +52,7 @@ things.reduceRight((collection, thing, index) => (
 ), []);
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 things.map((thing) => (

@@ -14,7 +14,7 @@ The following patterns are considered warnings:
 <MyComponent onChange={this.componentChanged} />
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 <MyComponent onChange={this.handleChange} />

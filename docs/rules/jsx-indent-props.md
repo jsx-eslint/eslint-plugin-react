@@ -53,7 +53,7 @@ The following patterns are considered warnings:
 />
 ```
 
-The following patterns are not warnings:
+The following patterns are **not** warnings:
 
 ```jsx
 

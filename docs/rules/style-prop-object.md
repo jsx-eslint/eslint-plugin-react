@@ -30,7 +30,7 @@ React.createElement("div", { style: styles });
 ```
 
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 <div style={{ color: "red" }} />

@@ -25,7 +25,7 @@ var Hello = createReactClass({
 });
 ```
 
-The following pattern is not considered a warning:
+The following pattern is **not** considered a warning:
 
 ```jsx
 const Foo = function(props, context) {
@@ -37,7 +37,7 @@ const Foo = function(props, context) {
 };
 ```
 
-The following pattern is not considered a warning in React <15.0.0:
+The following pattern is **not** considered a warning in React <15.0.0:
 
 ```jsx
 class Foo extends React.Component {
@@ -66,7 +66,7 @@ class Foo extends React.Component {
 
 When `true` the rule will ignore Components extending from `React.PureComponent` that use `this.props` or `this.context`.
 
-The following pattern is considered okay and does not cause warnings:
+The following pattern is considered okay and does **not** cause warnings:
 
 ```jsx
 class Foo extends React.PureComponent {

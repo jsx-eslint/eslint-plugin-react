@@ -13,7 +13,7 @@ The following patterns are considered warnings:
 var Hello = <div>test</div>;
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 var Hello = <div>{'test'}</div>;
@@ -41,7 +41,7 @@ var Hello = <div>test</div>;
 var Hello = <div>{'test'}</div>;
 ```
 
-The following are not considered warnings:
+The following are **not** considered warnings:
 
 ```jsx
 // When using something like `react-intl`

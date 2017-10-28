@@ -31,7 +31,7 @@ When `"never"` is set, the following patterns are considered warnings:
 <Hello name= {firstname} />;
 ```
 
-The following patterns are not warnings:
+The following patterns are **not** warnings:
 
 ```jsx
 <Hello name={firstname} />;
@@ -49,7 +49,7 @@ When `"always"` is used, the following patterns are considered warnings:
 <Hello name= {firstname} />;
 ```
 
-The following patterns are not warnings:
+The following patterns are **not** warnings:
 
 ```jsx
 <Hello name = {firstname} />;

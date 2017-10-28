@@ -12,7 +12,7 @@ The following patterns are considered warnings:
 var HelloJohn = <Hello name="John"></Hello>;
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 var contentContainer = <div className="content"></div>;
@@ -49,7 +49,7 @@ The following patterns are considered warnings:
 var HelloJohn = <Hello name="John"></Hello>;
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 var contentContainer = <div className="content"></div>;
@@ -71,7 +71,7 @@ The following patterns are considered warnings:
 var contentContainer = <div className="content"></div>;
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 var contentContainer = <div className="content" />;

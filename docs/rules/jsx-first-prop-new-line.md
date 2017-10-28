@@ -23,7 +23,7 @@ The following patterns are considered warnings when configured `"always"`:
 />
 ```
 
-The following patterns are not considered warnings when configured `"always"`:
+The following patterns are **not** considered warnings when configured `"always"`:
 
 ```jsx
 <Hello
@@ -45,7 +45,7 @@ The following patterns are considered warnings when configured `"never"`:
 />
 ```
 
-The following patterns are not considered warnings when configured `"never"`:
+The following patterns are **not** considered warnings when configured `"never"`:
 
 ```jsx
 <Hello personal={true} />
@@ -67,7 +67,7 @@ The following patterns are considered warnings when configured `"multiline"`:
 }} />
 ```
 
-The following patterns are not considered warnings when configured `"multiline"`:
+The following patterns are **not** considered warnings when configured `"multiline"`:
 
 ```jsx
 <Hello personal={true} />
@@ -86,7 +86,7 @@ The following patterns are considered warnings when configured `"multiline-multi
     bar />
 ```
 
-The following patterns are not considered warnings when configured `"multiline-multiprop"`:
+The following patterns are **not** considered warnings when configured `"multiline-multiprop"`:
 
 ```jsx
 <Hello foo={{

@@ -21,7 +21,7 @@ The following patterns are considered warnings:
   marklar</Hello>
 ```
 
-The following are not considered warnings:
+The following are **not** considered warnings:
 
 ```jsx
 <Hello>

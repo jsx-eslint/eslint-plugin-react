@@ -59,7 +59,7 @@ The following patterns are considered warnings:
 <div> > </div>
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 <div> &gt; </div>

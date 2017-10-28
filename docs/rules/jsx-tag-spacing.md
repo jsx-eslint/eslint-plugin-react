@@ -37,7 +37,7 @@ The following patterns are considered warnings when configured `"never"`:
 <Provider>< /Provider>
 ```
 
-The following patterns are not considered warnings when configured `"never"`:
+The following patterns are **not** considered warnings when configured `"never"`:
 
 ```jsx
 <App/>
@@ -52,7 +52,7 @@ The following patterns are considered warnings when configured `"always"`:
 <Goodbye></Goodbye>
 ```
 
-The following patterns are not considered warnings when configured `"always"`:
+The following patterns are **not** considered warnings when configured `"always"`:
 
 ```jsx
 <Hello/ >
@@ -72,7 +72,7 @@ The following patterns are considered warnings when configured `"always"`:
 <Hello firstname="John"/>
 ```
 
-The following patterns are not considered warnings when configured `"always"`:
+The following patterns are **not** considered warnings when configured `"always"`:
 
 ```jsx
 <Hello />
@@ -90,7 +90,7 @@ The following patterns are considered warnings when configured `"never"`:
 <Hello firstName="John" />
 ```
 
-The following patterns are not considered warnings when configured `"never"`:
+The following patterns are **not** considered warnings when configured `"never"`:
 
 ```jsx
 <Hello/>
@@ -118,7 +118,7 @@ The following patterns are considered warnings when configured `"always"`:
 />
 ```
 
-The following patterns are not considered warnings when configured `"always"`:
+The following patterns are **not** considered warnings when configured `"always"`:
 
 ```jsx
 < Hello></ Hello>
@@ -142,7 +142,7 @@ The following patterns are considered warnings when configured `"never"`:
 />
 ```
 
-The following patterns are not considered warnings when configured `"never"`:
+The following patterns are **not** considered warnings when configured `"never"`:
 
 ```jsx
 <Hello></Hello>
@@ -164,7 +164,7 @@ The following patterns are considered warnings when configured `"allow-multiline
 />
 ```
 
-The following patterns are not considered warnings when configured `"allow-multiline"`:
+The following patterns are **not** considered warnings when configured `"allow-multiline"`:
 
 ```jsx
 <Hello></Hello>

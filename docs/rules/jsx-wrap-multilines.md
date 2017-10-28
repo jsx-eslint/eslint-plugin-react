@@ -27,7 +27,7 @@ var Hello = createReactClass({
 });
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 var singleLineJSX = <p>Hello</p>
@@ -51,7 +51,7 @@ var hello = <div>
 </div>;
 ```
 
-The following patterns are not considered warnings when configured `{declaration: true}`.
+The following patterns are **not** considered warnings when configured `{declaration: true}`.
 
 ```jsx
 var hello = (
@@ -70,7 +70,7 @@ hello = <div>
 </div>;
 ```
 
-The following patterns are not considered warnings when configured `{assignment: true}`.
+The following patterns are **not** considered warnings when configured `{assignment: true}`.
 
 ```jsx
 var hello;
@@ -90,7 +90,7 @@ function hello() {
 }
 ```
 
-The following patterns are not considered warnings when configured `{return: true}`.
+The following patterns are **not** considered warnings when configured `{return: true}`.
 
 ```jsx
 function hello() {
@@ -109,7 +109,7 @@ var hello = () => <div>
 </div>;
 ```
 
-The following patterns are not considered warnings when configured `{arrow: true}`.
+The following patterns are **not** considered warnings when configured `{arrow: true}`.
 
 ```jsx
 var hello = () => (

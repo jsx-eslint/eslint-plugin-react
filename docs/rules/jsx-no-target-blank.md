@@ -14,7 +14,7 @@ The following patterns are considered errors:
 var Hello = <a target='_blank' href="http://example.com/"></a>
 ```
 
-The following patterns are not considered errors:
+The following patterns are **not** considered errors:
 
 ```jsx
 var Hello = <p target='_blank'></p>

@@ -82,7 +82,7 @@ class MyComponent extends React.Component {
 
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```js
 class MyComponent extends React.Component {

@@ -19,7 +19,7 @@ class MyComponent extends Component {
 }
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 class MyComponent extends Component {

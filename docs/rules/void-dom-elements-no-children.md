@@ -18,7 +18,7 @@ React.createElement('br', { children: 'Children' })
 React.createElement('br', { dangerouslySetInnerHTML: { __html: 'HTML' } })
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 <div>Children</div>

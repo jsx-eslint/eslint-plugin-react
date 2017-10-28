@@ -21,7 +21,7 @@ The following patterns are considered warnings:
   />;
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 <Hello firstName="John" lastName="Smith" />;
@@ -138,7 +138,7 @@ var x = function() {
 </Say>;
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 // 'jsx-closing-bracket-location': 1

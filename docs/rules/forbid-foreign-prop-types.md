@@ -19,7 +19,7 @@ var { propTypes } = SomeComponent;
 SomeComponent['propTypes'];
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```js
 import SomeComponent, {propTypes as someComponentPropTypes} from './SomeComponent';

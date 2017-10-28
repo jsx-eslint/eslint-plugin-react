@@ -19,7 +19,7 @@ The following patterns are considered warnings when configured `"always"`:
 <Hello firstname="John"/>
 ```
 
-The following patterns are not considered warnings when configured `"always"`:
+The following patterns are **not** considered warnings when configured `"always"`:
 
 ```jsx
 <Hello />
@@ -37,7 +37,7 @@ The following patterns are considered warnings when configured `"never"`:
 <Hello firstName="John" />
 ```
 
-The following patterns are not considered warnings when configured `"never"`:
+The following patterns are **not** considered warnings when configured `"never"`:
 
 ```jsx
 <Hello/>

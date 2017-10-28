@@ -17,7 +17,7 @@ The following patterns are considered warnings:
 <Hello style={{color: 'red'}} />
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 <Hello name='Joe' />

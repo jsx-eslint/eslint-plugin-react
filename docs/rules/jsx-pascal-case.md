@@ -16,7 +16,7 @@ The following patterns are considered warnings:
 <TEST_COMPONENT />
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 <div />

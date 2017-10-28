@@ -24,7 +24,7 @@ React.createElement("div", { dangerouslySetInnerHTML: { __html: "HTML" } }, "Chi
 React.createElement("Hello", { dangerouslySetInnerHTML: { __html: "HTML" } }, "Children");
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 <div dangerouslySetInnerHTML={{ __html: "HTML" }} />

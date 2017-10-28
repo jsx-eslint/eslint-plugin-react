@@ -15,7 +15,7 @@ const inst = ReactDOM.render(<App />, document.body);
 doSomethingWithInst(inst);
 ```
 
-The following patterns are not considered warnings:
+The following patterns are **not** considered warnings:
 
 ```jsx
 ReactDOM.render(<App ref={doSomethingWithInst} />, document.body);
