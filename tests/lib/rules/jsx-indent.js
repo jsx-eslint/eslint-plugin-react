@@ -409,7 +409,7 @@ ruleTester.run('jsx-indent', rule, {
       '  <span>',
       '    {condition ?',
       '      <Thing',
-      '        foo={super}',
+      '        foo={superFoo}',
       '      /> :',
       '      <Thing/>',
       '    }',
