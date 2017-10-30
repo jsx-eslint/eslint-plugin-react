@@ -134,6 +134,68 @@ const ARROW_NO_PAREN = `
   </div>;
 `;
 
+const CONDITION_SINGLE_LINE = 'foo ? <p>Hello</p> : null;';
+
+const CONDITION_PAREN = `
+  <div>
+    {foo ? (<div>
+        <p>Hello</p>
+      </div>) : null}
+  </div>
+`;
+
+const CONDITION_NO_PAREN = `
+  <div>
+    {foo ? <div>
+        <p>Hello</p>
+      </div> : null}
+  </div>
+`;
+
+const LOGICAL_SINGLE_LINE = 'foo && <p>Hello</p>;';
+
+const LOGICAL_PAREN = `
+  <div>
+    {foo &&
+      (<div>
+        <p>Hello World</p>
+      </div>)
+    }
+  </div>
+`;
+
+const LOGICAL_NO_PAREN = `
+  <div>
+    {foo &&
+      <div>
+        <p>Hello World</p>
+      </div>
+    }
+  </div>
+`;
+
+const ATTR_SINGLE_LINE = '<div prop={<p>Hello</p>}></div>';
+
+const ATTR_PAREN = `
+  <div prop={
+    (<div>
+      <p>Hello</p>
+    </div>)
+  }>
+    <p>Hello</p>
+  </div>
+`;
+
+const ATTR_NO_PAREN = `
+  <div prop={
+    <div>
+      <p>Hello</p>
+    </div>
+  }>
+    <p>Hello</p>
+  </div>
+`;
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -187,6 +249,30 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     }, {
       code: ARROW_NO_PAREN,
       options: [{arrow: false}]
+    }, {
+      code: CONDITION_SINGLE_LINE
+    }, {
+      code: CONDITION_SINGLE_LINE,
+      options: [{condition: true}]
+    }, {
+      code: CONDITION_NO_PAREN
+    }, {
+      code: CONDITION_PAREN,
+      options: [{condition: true}]
+    }, {
+      code: LOGICAL_SINGLE_LINE
+    }, {
+      code: LOGICAL_NO_PAREN
+    }, {
+      code: LOGICAL_PAREN,
+      options: [{logical: true}]
+    }, {
+      code: ATTR_SINGLE_LINE
+    }, {
+      code: ATTR_NO_PAREN
+    }, {
+      code: ATTR_PAREN,
+      options: [{prop: true}]
     }
   ],
 
@@ -236,6 +322,21 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: ARROW_NO_PAREN,
       output: ARROW_PAREN,
       options: [{arrow: true}],
+      errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: CONDITION_NO_PAREN,
+      output: CONDITION_PAREN,
+      options: [{condition: true}],
+      errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: LOGICAL_NO_PAREN,
+      output: LOGICAL_PAREN,
+      options: [{logical: true}],
+      errors: [{message: 'Missing parentheses around multilines JSX'}]
+    }, {
+      code: ATTR_NO_PAREN,
+      output: ATTR_PAREN,
+      options: [{prop: true}],
       errors: [{message: 'Missing parentheses around multilines JSX'}]
     }
   ]
