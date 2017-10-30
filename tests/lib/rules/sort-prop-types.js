@@ -26,6 +26,8 @@ require('babel-eslint');
 // -----------------------------------------------------------------------------
 
 const ERROR_MESSAGE = 'Prop types declarations should be sorted alphabetically';
+const REQUIRED_ERROR_MESSAGE = 'Required prop types must be listed before all other prop types';
+const CALLBACK_ERROR_MESSAGE = 'Callback prop types must be listed after all other prop types';
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('sort-prop-types', rule, {
@@ -154,7 +156,6 @@ ruleTester.run('sort-prop-types', rule, {
       '  "aria-controls": PropTypes.string',
       '};'
     ].join('\n'),
-    parser: 'babel-eslint',
     options: [{
       ignoreCase: true
     }]
@@ -325,6 +326,45 @@ ruleTester.run('sort-prop-types', rule, {
       '};',
       'First.propTypes = propTypes;'
     ].join('\n')
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        x: PropTypes.any,
+        y: PropTypes.any,
+        z: PropTypes.shape({
+          c: PropTypes.any,
+          C: PropTypes.string,
+          a: PropTypes.any,
+          b: PropTypes.bool,
+        }),
+      };
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        a: PropTypes.any,
+        b: PropTypes.any,
+        c: PropTypes.shape({
+          c: PropTypes.any,
+          ...otherPropTypes,
+          a: PropTypes.any,
+          b: PropTypes.bool,
+        }),
+      };
+    `,
+    options: [{
+      sortShapeProp: true
+    }]
   }],
 
   invalid: [{
@@ -626,7 +666,7 @@ ruleTester.run('sort-prop-types', rule, {
       callbacksLast: true
     }],
     errors: [{
-      message: 'Callback prop types must be listed after all other prop types',
+      message: CALLBACK_ERROR_MESSAGE,
       line: 5,
       column: 5,
       type: 'Property'
@@ -670,7 +710,7 @@ ruleTester.run('sort-prop-types', rule, {
       requiredFirst: true
     }],
     errors: [{
-      message: 'Required prop types must be listed before all other prop types',
+      message: REQUIRED_ERROR_MESSAGE,
       line: 4,
       column: 5,
       type: 'Property'
@@ -688,7 +728,7 @@ ruleTester.run('sort-prop-types', rule, {
     ].join('\n'),
     parser: 'babel-eslint',
     errors: [{
-      message: 'Prop types declarations should be sorted alphabetically',
+      message: ERROR_MESSAGE,
       line: 6,
       column: 5,
       type: 'Property'
@@ -708,6 +748,255 @@ ruleTester.run('sort-prop-types', rule, {
       message: ERROR_MESSAGE,
       line: 3,
       column: 3,
+      type: 'Property'
+    }]
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        x: PropTypes.any,
+        y: PropTypes.any,
+        z: PropTypes.shape({
+          c: PropTypes.any,
+          a: PropTypes.any,
+          b: PropTypes.bool,
+        }),
+      };
+    `,
+    options: [{
+      sortShapeProp: true
+    }],
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 12,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 13,
+      column: 11,
+      type: 'Property'
+    }]
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        z: PropTypes.any,
+        y: PropTypes.any,
+        a: PropTypes.shape({
+          c: PropTypes.any,
+          C: PropTypes.string,
+          a: PropTypes.any,
+          b: PropTypes.bool,
+        }),
+      };
+    `,
+    options: [{
+      sortShapeProp: true
+    }],
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 9,
+      column: 9,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 10,
+      column: 9,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 12,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 13,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 14,
+      column: 11,
+      type: 'Property'
+    }]
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        x: PropTypes.any,
+        y: PropTypes.any,
+        z: PropTypes.shape({
+          c: PropTypes.any,
+          C: PropTypes.string,
+          a: PropTypes.any,
+          b: PropTypes.bool,
+        }),
+      };
+    `,
+    options: [{
+      sortShapeProp: true,
+      ignoreCase: true
+    }],
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 13,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 14,
+      column: 11,
+      type: 'Property'
+    }]
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        x: PropTypes.any,
+        y: PropTypes.any,
+        z: PropTypes.shape({
+          a: PropTypes.string,
+          c: PropTypes.number.isRequired,
+          b: PropTypes.any,
+          d: PropTypes.bool,
+        }),
+      };
+    `,
+    options: [{
+      sortShapeProp: true,
+      requiredFirst: true
+    }],
+    errors: [{
+      message: REQUIRED_ERROR_MESSAGE,
+      line: 12,
+      column: 11,
+      type: 'Property'
+    }]
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        x: PropTypes.any,
+        y: PropTypes.any,
+        z: PropTypes.shape({
+          a: PropTypes.string,
+          c: PropTypes.number.isRequired,
+          b: PropTypes.any,
+          onFoo: PropTypes.func,
+          d: PropTypes.bool,
+        }),
+      };
+    `,
+    options: [{
+      sortShapeProp: true,
+      callbacksLast: true
+    }],
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 13,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: CALLBACK_ERROR_MESSAGE,
+      line: 14,
+      column: 11,
+      type: 'Property'
+    }]
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        x: PropTypes.any,
+        y: PropTypes.any,
+        z: PropTypes.shape({
+          a: PropTypes.string,
+          c: PropTypes.number.isRequired,
+          b: PropTypes.any,
+          ...otherPropTypes,
+          f: PropTypes.bool,
+          d: PropTypes.string,
+        }),
+      };
+    `,
+    options: [{
+      sortShapeProp: true
+    }],
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 13,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 16,
+      column: 11,
+      type: 'Property'
+    }]
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          z: PropTypes.any,
+          y: PropTypes.any,
+          a: PropTypes.shape({
+            c: PropTypes.any,
+            a: PropTypes.any,
+            b: PropTypes.bool,
+          }),
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    options: [{
+      sortShapeProp: true
+    }],
+    parser: 'babel-eslint',
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 5,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 6,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 8,
+      column: 13,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 9,
+      column: 13,
       type: 'Property'
     }]
   }]

@@ -80,6 +80,7 @@ class Component extends React.Component {
   "callbacksLast": <boolean>,
   "ignoreCase": <boolean>,
   "requiredFirst": <boolean>,
+  "sortShapeProp": <boolean>
 }]
 ...
 ```
@@ -115,6 +116,25 @@ var Component = createReactClass({
     fooRequired: PropTypes.any.isRequired,
     a: PropTypes.number,
     z: PropTypes.string,
+  },
+...
+});
+```
+
+### `sortShapeProp`
+
+When `true`, props defined in `PropTypes.shape` must be sorted via the same rules as the top-level props:
+
+```js
+var Component = createReactClass({
+  propTypes: {
+    a: PropTypes.number,
+    b: PropTypes.shape({
+      d: PropTypes.number,
+      e: PropTypes.func,
+      f: PropTypes.bool,
+    }),
+    c: PropTypes.string,
   },
 ...
 });
