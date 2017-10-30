@@ -23,6 +23,7 @@ const allRules = {
   'jsx-indent-props': require('./lib/rules/jsx-indent-props'),
   'jsx-key': require('./lib/rules/jsx-key'),
   'jsx-max-props-per-line': require('./lib/rules/jsx-max-props-per-line'),
+  'jsx-one-expression-per-line': require('./lib/rules/jsx-one-expression-per-line'),
   'jsx-no-bind': require('./lib/rules/jsx-no-bind'),
   'jsx-no-comment-textnodes': require('./lib/rules/jsx-no-comment-textnodes'),
   'jsx-no-duplicate-props': require('./lib/rules/jsx-no-duplicate-props'),
