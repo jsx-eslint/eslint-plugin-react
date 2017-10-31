@@ -55,6 +55,7 @@ const allRules = {
   'no-string-refs': require('./lib/rules/no-string-refs'),
   'no-redundant-should-component-update': require('./lib/rules/no-redundant-should-component-update'),
   'no-render-return-value': require('./lib/rules/no-render-return-value'),
+  'no-this-in-sfc': require('./lib/rules/no-this-in-sfc'),
   'no-typos': require('./lib/rules/no-typos'),
   'no-unescaped-entities': require('./lib/rules/no-unescaped-entities'),
   'no-unknown-property': require('./lib/rules/no-unknown-property'),
