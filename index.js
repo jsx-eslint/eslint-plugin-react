@@ -38,6 +38,7 @@ const allRules = {
   'jsx-uses-react': require('./lib/rules/jsx-uses-react'),
   'jsx-uses-vars': require('./lib/rules/jsx-uses-vars'),
   'jsx-wrap-multilines': require('./lib/rules/jsx-wrap-multilines'),
+  'no-access-state-in-setstate': require('./lib/rules/no-access-state-in-setstate'),
   'no-array-index-key': require('./lib/rules/no-array-index-key'),
   'no-children-prop': require('./lib/rules/no-children-prop'),
   'no-danger': require('./lib/rules/no-danger'),
