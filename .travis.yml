@@ -1,14 +1,27 @@
 sudo: false
 language: node_js
 node_js:
+  - '9'
   - '8'
   - '7'
   - '6'
   - '5'
   - '4'
-before_script:
+before_install:
+  - 'nvm install-latest-npm'
+script:
+  - 'if [ -n "${PRETEST-}" ]; then npm run pretest ; fi'
+  - 'if [ -n "${TEST-}" ]; then npm run unit-test ; fi'
+env:
+  - TEST=true
 after_success:
-  - npm run coveralls
+  - 'if [ -n "${TEST-}" ]; then npm run coveralls ; fi'
 matrix:
   fast_finish: true
+  include:
+    - node_js: 'lts/*'
+      env: PRETEST=true
   allow_failures:
+    - node_js: '9'
+    - node_js: '7'
+    - node_js: '5'
