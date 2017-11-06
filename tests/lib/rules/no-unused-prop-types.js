@@ -829,10 +829,10 @@ ruleTester.run('no-unused-prop-types', rule, {
       type PropsA = { a: string }
       type PropsB = { b: string }
       type Props = PropsA & PropsB;
-      
+
       class MyComponent extends React.Component {
         props: Props;
-        
+
         render() {
           return <div>{this.props.a} - {this.props.b}</div>
         }
@@ -848,7 +848,7 @@ ruleTester.run('no-unused-prop-types', rule, {
 
         class Bar extends React.Component {
           props: Props & PropsC;
-          
+
           render() {
             return <div>{this.props.foo} - {this.props.bar} - {this.props.zap}</div>
           }
@@ -864,7 +864,7 @@ ruleTester.run('no-unused-prop-types', rule, {
 
         class Bar extends React.Component {
           props: Props & PropsC;
-          
+
           render() {
             return <div>{this.props.foo} - {this.props.bar} - {this.props.zap}</div>
           }
@@ -876,12 +876,12 @@ ruleTester.run('no-unused-prop-types', rule, {
         type PropsB = { foo: string };
         type PropsC = { bar: string };
         type Props = PropsB & {
-          zap: string 
+          zap: string
         };
 
         class Bar extends React.Component {
           props: Props & PropsC;
-          
+
           render() {
             return <div>{this.props.foo} - {this.props.bar} - {this.props.zap}</div>
           }
@@ -893,12 +893,12 @@ ruleTester.run('no-unused-prop-types', rule, {
         type PropsB = { foo: string };
         type PropsC = { bar: string };
         type Props = {
-          zap: string 
+          zap: string
         } & PropsB;
 
         class Bar extends React.Component {
           props: Props & PropsC;
-          
+
           render() {
             return <div>{this.props.foo} - {this.props.bar} - {this.props.zap}</div>
           }
@@ -2208,6 +2208,78 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       settings: {react: {flowVersion: '0.53'}},
       parser: 'babel-eslint'
+    }, {
+      // Issue #1068
+      code: `
+      class MyComponent extends Component {
+        static propTypes = {
+          validate: PropTypes.bool,
+          options: PropTypes.array,
+          value: ({options, value, validate}) => {
+            if (!validate) return;
+            if (options.indexOf(value) < 0)
+              throw new Errow('oops');
+          }
+        }
+
+        render() {
+          return <ul>
+            {this.props.options.map(option =>
+              <li className={this.props.value == option && "active"}>{option}</li>
+            )}
+          </ul>
+        }
+      }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      // Issue #1068
+      code: `
+      class MyComponent extends Component {
+        static propTypes = {
+          validate: PropTypes.bool,
+          options: PropTypes.array,
+          value: function ({options, value, validate}) {
+            if (!validate) return;
+            if (options.indexOf(value) < 0)
+              throw new Errow('oops');
+          }
+        }
+
+        render() {
+          return <ul>
+            {this.props.options.map(option =>
+              <li className={this.props.value == option && "active"}>{option}</li>
+            )}
+          </ul>
+        }
+      }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      // Issue #1068
+      code: `
+      class MyComponent extends Component {
+        static propTypes = {
+          validate: PropTypes.bool,
+          options: PropTypes.array,
+          value({options, value, validate}) {
+            if (!validate) return;
+            if (options.indexOf(value) < 0)
+              throw new Errow('oops');
+          }
+        }
+
+        render() {
+          return <ul>
+            {this.props.options.map(option =>
+              <li className={this.props.value == option && "active"}>{option}</li>
+            )}
+          </ul>
+        }
+      }
+      `,
+      parser: 'babel-eslint'
     }
   ],
 
@@ -2796,10 +2868,10 @@ ruleTester.run('no-unused-prop-types', rule, {
       type PropsA = { a: string }
       type PropsB = { b: string }
       type Props = PropsA & PropsB;
-      
+
       class MyComponent extends React.Component {
         props: Props;
-        
+
         render() {
           return <div>{this.props.a}</div>
         }
@@ -2818,7 +2890,7 @@ ruleTester.run('no-unused-prop-types', rule, {
 
         class Bar extends React.Component {
           props: Props & PropsC;
-          
+
           render() {
             return <div>{this.props.foo} - {this.props.bar}</div>
           }
@@ -2833,12 +2905,12 @@ ruleTester.run('no-unused-prop-types', rule, {
         type PropsB = { foo: string };
         type PropsC = { bar: string };
         type Props = PropsB & {
-          zap: string 
+          zap: string
         };
 
         class Bar extends React.Component {
           props: Props & PropsC;
-          
+
           render() {
             return <div>{this.props.foo} - {this.props.bar}</div>
           }
@@ -2853,12 +2925,12 @@ ruleTester.run('no-unused-prop-types', rule, {
         type PropsB = { foo: string };
         type PropsC = { bar: string };
         type Props = {
-          zap: string 
+          zap: string
         } & PropsB;
 
         class Bar extends React.Component {
           props: Props & PropsC;
-          
+
           render() {
             return <div>{this.props.foo} - {this.props.bar}</div>
           }
