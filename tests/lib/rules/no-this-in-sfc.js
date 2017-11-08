@@ -35,6 +35,11 @@ ruleTester.run('no-this-in-sfc', rule, {
     }`
   }, {
     code: `
+    function Foo({ foo }) {
+      return <div bar={foo} />;
+    }`
+  }, {
+    code: `
     class Foo extends React.Component {
       render() {
         const { foo } = this.props;
@@ -58,7 +63,7 @@ ruleTester.run('no-this-in-sfc', rule, {
     settings: {react: {createClass: 'createClass'}}
   }, {
     code: `
-    function Foo (bar) {
+    function foo(bar) {
       this.bar = bar;
       this.props = 'baz';
       this.getFoo = function() {
