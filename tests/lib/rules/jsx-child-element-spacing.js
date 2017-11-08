@@ -17,6 +17,26 @@ ruleTester.run('jsx-child-element-spacing', rule, {
     code: `
       <App>
         foo
+      </App>
+    `
+  }, {
+    code: `
+      <App>
+        <a>bar</a>
+      </App>
+    `
+  }, {
+    code: `
+      <App>
+        <a>
+          <b>nested</b>
+        </a>
+      </App>
+    `
+  }, {
+    code: `
+      <App>
+        foo
         bar
       </App>
     `
@@ -46,9 +66,59 @@ ruleTester.run('jsx-child-element-spacing', rule, {
   }, {
     code: `
       <App>
+        foo
+        {' '}<a>bar</a>{' '}
+        baz
+      </App>
+    `
+  }, {
+    code: `
+      <App>
+        foo{' '}
+        <a>bar</a>
+        {' '}baz
+      </App>
+    `
+  }, {
+    code: `
+      <App>
         foo{/*
         */}<a>bar</a>{/*
         */}baz
+      </App>
+    `
+  }, {
+    code: `
+      <App>
+        Please take a look at <a href="https://js.org">this link</a>.
+      </App>
+    `
+  }, {
+    code: `
+      <App>
+        Please take a look at
+        {' '}
+        <a href="https://js.org">this link</a>.
+      </App>
+    `
+  }, {
+    code: `
+      <App>
+        <p>A</p>
+        <p>B</p>
+      </App>
+    `
+  }, {
+    code: `
+      <App>
+        <p>A</p><p>B</p>
+      </App>
+    `
+  }, {
+    code: `
+      <App>
+        A
+        B
       </App>
     `
   }],
@@ -66,6 +136,41 @@ ruleTester.run('jsx-child-element-spacing', rule, {
       <App>
         <a>bar</a>
         baz
+      </App>
+    `,
+    errors: ERROR_MESSAGE
+  }, {
+    code: `
+      <App>
+        {' '}<a>bar</a>
+        baz
+      </App>
+    `,
+    errors: ERROR_MESSAGE
+  }, {
+    code: `
+      <App>
+        Please take a look at
+        <a href="https://js.org">this link</a>.
+      </App>
+    `,
+    errors: ERROR_MESSAGE
+  }, {
+    code: `
+      <App>
+        Here is
+        <a href="https://js.org">a link</a> and here is
+        <a href="https://js.org">another</a>
+      </App>
+    `,
+    errors: ERROR_MESSAGE
+  }, {
+    code: `
+      <App>
+        <a>
+          <b>nested1</b>
+          <b>nested2</b>
+        </a>
       </App>
     `,
     errors: ERROR_MESSAGE
