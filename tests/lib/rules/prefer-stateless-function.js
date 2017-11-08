@@ -547,7 +547,54 @@ ruleTester.run('prefer-stateless-function', rule, {
       errors: [{
         message: 'Component should be written as a pure function'
       }]
-
+    }, {
+      code: `
+        class Foo extends React.Component {
+          static contextTypes = {
+            foo: PropTypes.boolean
+          }
+          render() {
+            const { foo } = this.context;
+            return foo ? <div /> : null;
+          }
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
+    }, {
+      code: `
+        class Foo extends React.Component {
+          static get contextTypes() {
+            return {
+              foo: PropTypes.boolean
+            };
+          }
+          render() {
+            const { foo } = this.context;
+            return foo ? <div /> : null;
+          }
+        }
+      `,
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
+    }, {
+      code: `
+        class Foo extends React.Component {
+          render() {
+            const { foo } = this.context;
+            return foo ? <div /> : null;
+          }
+        }
+        Foo.contextTypes = {
+          foo: PropTypes.boolean
+        };
+      `,
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
     }
   ]
 });
