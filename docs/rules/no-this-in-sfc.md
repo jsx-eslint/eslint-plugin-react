@@ -18,10 +18,31 @@ function Foo(props) {
 ```
 
 ```jsx
+function Foo(props) {
+  const { bar } = this.props;
+  return (
+    <div>{bar}</div>
+  );
+}
+```
+
+```jsx
 function Foo(props, context) {
   return (
     <div>
       {this.context.foo ? this.props.bar : ''}
+    </div>
+  );
+}
+```
+
+```jsx
+function Foo(props, context) {
+  const { foo } = this.context;
+  const { bar } = this.props;
+  return (
+    <div>
+      {foo ? bar : ''}
     </div>
   );
 }
@@ -40,6 +61,21 @@ function Foo(props) {
 }
 ```
 
+```jsx
+function Foo(props) {
+  const { loading } = this.state;
+  const { bar } = this.props;
+  if (loading) {
+    return <Loader />;
+  }
+  return (
+    <div>
+      {bar}
+    </div>
+  );
+}
+```
+
 The following patterns are **not** considered warnings:
 
 ```jsx
@@ -51,10 +87,49 @@ function Foo(props) {
 ```
 
 ```jsx
+function Foo(props) {
+  const { bar } = props;
+  return (
+    <div>{bar}</div>
+  );
+}
+```
+
+```jsx
+function Foo({ bar }) {
+  return (
+    <div>{bar}</div>
+  );
+}
+```
+
+```jsx
 function Foo(props, context) {
   return (
     <div>
       {context.foo ? props.bar : ''}
+    </div>
+  );
+}
+```
+
+```jsx
+function Foo(props, context) {
+  const { foo } = context;
+  const { bar } = props;
+  return (
+    <div>
+      {foo ? bar : ''}
+    </div>
+  );
+}
+```
+
+```jsx
+function Foo({ bar }, { foo }) {
+  return (
+    <div>
+      {foo ? bar : ''}
     </div>
   );
 }
