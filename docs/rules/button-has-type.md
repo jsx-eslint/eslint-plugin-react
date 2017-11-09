@@ -1,7 +1,7 @@
 # Prevent usage of `button` elements without an explicit `type` attribute (react/button-has-type)
 
 The default value of `type` attribute for `button` HTML element is `"submit"` which is often not the desired behavior and may lead to unexpected page reloads.
-This rules enforces an explicit `type` attribute for all the `button` elements.
+This rules enforces an explicit `type` attribute for all the `button` elements and checks that its value is valid per spec (i.e., is one of `"button"`, `"submit"`, and `"reset"`).
 
 ## Rule Details
 
@@ -9,15 +9,48 @@ The following patterns are considered errors:
 
 ```jsx
 var Hello = <button>Hello</button>
+var Hello = <button type="foo">Hello</button>
+
+var Hello = React.createElement('button', {}, 'Hello')
+var Hello = React.createElement('button', {type: 'foo'}, 'Hello')
 ```
 
 The following patterns are **not** considered errors:
 
 ```jsx
 var Hello = <span>Hello</span>
+var Hello = <span type="foo">Hello</span>
 var Hello = <button type="button">Hello</button>
 var Hello = <button type="submit">Hello</button>
 var Hello = <button type="reset">Hello</button>
+
+var Hello = React.createElement('span', {}, 'Hello')
+var Hello = React.createElement('span', {type: 'foo'}, 'Hello')
+var Hello = React.createElement('button', {type: 'button'}, 'Hello')
+var Hello = React.createElement('button', {type: 'submit'}, 'Hello')
+var Hello = React.createElement('button', {type: 'reset'}, 'Hello')
+```
+
+## Rule Options
+
+```js
+...
+"react/default-props-match-prop-types": [<enabled>, {
+  "button": <boolean>,
+  "submit": <boolean>,
+  "reset": <boolean>
+}]
+...
+```
+
+You can forbid particular type attribute values by passing `false` as corresponding option (by default all of them are `true`).
+
+The following patterns are considered errors when using `"react/default-props-match-prop-types": ["error", {reset: false}]`:
+
+```jsx
+var Hello = <button type="reset">Hello</button>
+
+var Hello = React.createElement('button', {type: 'reset'}, 'Hello')
 ```
 
 ## When Not To Use It
