@@ -71,6 +71,35 @@ ruleTester.run('no-this-in-sfc', rule, {
       }
     }
     `
+  }, {
+    code: `
+    function Foo(props) {
+      return props.foo ? <span>{props.bar}</span> : null;
+    }`
+  }, {
+    code: `
+    function Foo(props) {
+      if (props.foo) {
+        return <div>{props.bar}</div>;
+      }
+      return null;
+    }`
+  }, {
+    code: `
+    function Foo(props) {
+      if (props.foo) {
+        something();
+      }
+      return null;
+    }`
+  }, {
+    code: 'const Foo = (props) => <span>{props.foo}</span>'
+  }, {
+    code: 'const Foo = ({ foo }) => <span>{foo}</span>'
+  }, {
+    code: 'const Foo = (props) => props.foo ? <span>{props.bar}</span> : null;'
+  }, {
+    code: 'const Foo = ({ foo, bar }) => foo ? <span>{bar}</span> : null;'
   }],
   invalid: [{
     code: `
@@ -97,6 +126,36 @@ ruleTester.run('no-this-in-sfc', rule, {
       const { foo } = this.state;
       return <div>{foo}</div>;
     }`,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: `
+    function Foo(props) {
+      return props.foo ? <div>{this.props.bar}</div> : null;
+    }`,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: `
+    function Foo(props) {
+      if (props.foo) {
+        return <div>{this.props.bar}</div>;
+      }
+      return null;
+    }`,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: `
+    function Foo(props) {
+      if (this.props.foo) {
+        something();
+      }
+      return null;
+    }`,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: 'const Foo = (props) => <span>{this.props.foo}</span>',
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: 'const Foo = (props) => this.props.foo ? <span>{props.bar}</span> : null;',
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
