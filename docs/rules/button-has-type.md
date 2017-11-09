@@ -1,4 +1,4 @@
-# Prevent usage of `button` elements without an explicit `type` attribute (react/jsx-no-typeless-button)
+# Prevent usage of `button` elements without an explicit `type` attribute (react/button-has-type)
 
 The default value of `type` attribute for `button` HTML element is `"submit"` which is often not the desired behavior and may lead to unexpected page reloads.
 This rules enforces an explicit `type` attribute for all the `button` elements.

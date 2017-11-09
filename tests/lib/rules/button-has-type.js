@@ -8,7 +8,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-no-typeless-button');
+const rule = require('../../../lib/rules/button-has-type');
 const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
@@ -25,7 +25,7 @@ const parserOptions = {
 // ------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({parserOptions});
-ruleTester.run('jsx-no-typeless-button', rule, {
+ruleTester.run('button-has-type', rule, {
   valid: [
     {code: '<span/>'},
     {code: '<button type="button"/>'},
