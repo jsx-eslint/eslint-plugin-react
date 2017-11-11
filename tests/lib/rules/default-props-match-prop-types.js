@@ -755,6 +755,19 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    },
+    // don't error when variable is not in scope with intersection
+    {
+      code: [
+        'import type ImportedProps from "fake";',
+        'type Props = ImportedProps & {',
+        '  foo: string',
+        '};',
+        'function Hello(props: Props) {',
+        '  return <div>Hello {props.name.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
