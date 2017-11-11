@@ -19,8 +19,6 @@ const parserOptions = {
   }
 };
 
-require('babel-eslint');
-
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
@@ -191,6 +189,18 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     parser: 'babel-eslint'
   }, {
+    // Proptypes declared with a spread property
+    code: [
+      'class Test extends react.component {',
+      '  static get propTypes() {',
+      '    return {',
+      '      intl: React.propTypes.number,',
+      '      ...propTypes',
+      '    };',
+      '  };',
+      '}'
+    ].join('\n')
+  }, {
     code: [
       'var First = createReactClass({',
       '  childContextTypes: externalPropTypes,',
@@ -352,6 +362,19 @@ ruleTester.run('forbid-prop-types', rule, {
     parser: 'babel-eslint',
     options: [{checkContextTypes: true}]
   }, {
+    // Proptypes declared with a spread property
+    code: [
+      'class Test extends react.component {',
+      '  static get childContextTypes() {',
+      '    return {',
+      '      intl: React.childContextTypes.number,',
+      '      ...childContextTypes',
+      '    };',
+      '  };',
+      '}'
+    ].join('\n'),
+    options: [{checkContextTypes: true}]
+  }, {
     code: [
       'var First = createReactClass({',
       '  childContextTypes: externalPropTypes,',
@@ -511,6 +534,19 @@ ruleTester.run('forbid-prop-types', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    options: [{checkChildContextTypes: true}]
+  }, {
+    // Proptypes declared with a spread property
+    code: [
+      'class Test extends react.component {',
+      '  static get childContextTypes() {',
+      '    return {',
+      '      intl: React.childContextTypes.number,',
+      '      ...childContextTypes',
+      '    };',
+      '  };',
+      '}'
+    ].join('\n'),
     options: [{checkChildContextTypes: true}]
   }],
 
@@ -756,6 +792,21 @@ ruleTester.run('forbid-prop-types', rule, {
   }, {
     code: [
       'class Component extends React.Component {',
+      '  static get propTypes() {',
+      '    return {',
+      '      a: PropTypes.array,',
+      '      o: PropTypes.object',
+      '    };',
+      '  };',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    errors: 2
+  }, {
+    code: [
+      'class Component extends React.Component {',
       '  static propTypes = forbidExtraProps({',
       '    a: PropTypes.array,',
       '    o: PropTypes.object',
@@ -766,6 +817,24 @@ ruleTester.run('forbid-prop-types', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    errors: 2,
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    }
+  }, {
+    code: [
+      'class Component extends React.Component {',
+      '  static get propTypes() {',
+      '    return forbidExtraProps({',
+      '      a: PropTypes.array,',
+      '      o: PropTypes.object',
+      '    });',
+      '  }',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
     errors: 2,
     settings: {
       propWrapperFunctions: ['forbidExtraProps']
@@ -842,6 +911,26 @@ ruleTester.run('forbid-prop-types', rule, {
   }, {
     code: [
       'class Foo extends Component {',
+      '  static get contextTypes() {',
+      '    return {',
+      '      a: PropTypes.any',
+      '    };',
+      '  }',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{checkContextTypes: true}],
+    errors: [{
+      message: ANY_ERROR_MESSAGE,
+      line: 4,
+      column: 7,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'class Foo extends Component {',
       '  render() {',
       '    return <div />;',
       '  }',
@@ -902,6 +991,25 @@ ruleTester.run('forbid-prop-types', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    errors: 2,
+    options: [{checkContextTypes: true}],
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    }
+  }, {
+    code: [
+      'class Component extends React.Component {',
+      '  static get contextTypes() {',
+      '    return forbidExtraProps({',
+      '      a: PropTypes.array,',
+      '      o: PropTypes.object',
+      '    });',
+      '  }',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
     errors: 2,
     options: [{checkContextTypes: true}],
     settings: {
@@ -984,6 +1092,25 @@ ruleTester.run('forbid-prop-types', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    options: [{
+      forbid: ['instanceOf'],
+      checkContextTypes: true
+    }],
+    errors: 1
+  }, {
+    code: [
+      'class Component extends React.Component {',
+      '  static get contextTypes() {',
+      '    return {',
+      '      retailer: PropTypes.instanceOf(Map).isRequired,',
+      '      requestRetailer: PropTypes.func.isRequired',
+      '    };',
+      '  }',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
     options: [{
       forbid: ['instanceOf'],
       checkContextTypes: true
@@ -1076,6 +1203,26 @@ ruleTester.run('forbid-prop-types', rule, {
   }, {
     code: [
       'class Foo extends Component {',
+      '  static get childContextTypes() {',
+      '    return {',
+      '      a: PropTypes.any',
+      '    };',
+      '  }',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{checkChildContextTypes: true}],
+    errors: [{
+      message: ANY_ERROR_MESSAGE,
+      line: 4,
+      column: 7,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'class Foo extends Component {',
       '  render() {',
       '    return <div />;',
       '  }',
@@ -1136,6 +1283,25 @@ ruleTester.run('forbid-prop-types', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
+    errors: 2,
+    options: [{checkChildContextTypes: true}],
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    }
+  }, {
+    code: [
+      'class Component extends React.Component {',
+      '  static get childContextTypes() {',
+      '    return forbidExtraProps({',
+      '      a: PropTypes.array,',
+      '      o: PropTypes.object',
+      '    });',
+      '  }',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
     errors: 2,
     options: [{checkChildContextTypes: true}],
     settings: {
