@@ -44,7 +44,7 @@ class Component extends React.Component {
 
 ```js
 ...
-"react/forbid-prop-types": [<enabled>, { "forbid": [<string>], checkContextTypes: <boolean> }]
+"react/forbid-prop-types": [<enabled>, { "forbid": [<string>], checkContextTypes: <boolean>, checkChildContextTypes: <boolean> }]
 ...
 ```
 
@@ -55,6 +55,10 @@ An array of strings, with the names of `PropTypes` keys that are forbidden. The 
 ### `checkContextTypes`
 
 Whether or not to check `contextTypes` for forbidden prop types. The default value is false.
+
+### `checkChildContextTypes`
+
+Whether or not to check `childContextTypes` for forbidden prop types. The default value is false.
 
 ## When not to use
 
