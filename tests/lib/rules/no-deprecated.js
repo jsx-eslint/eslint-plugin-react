@@ -174,5 +174,11 @@ ruleTester.run('no-deprecated', rule, {
     errors: [{
       message: 'ReactPerf.printDOM is deprecated since React 15.0.0, use ReactPerf.printOperations instead'
     }]
+  },
+  {
+    code: 'React.DOM.div',
+    errors: [{
+      message: 'React.DOM is deprecated since React 15.6.0, use the npm module react-dom-factories instead'
+    }]
   }]
 });

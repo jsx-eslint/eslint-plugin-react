@@ -23,6 +23,9 @@ const propTypes = {
   foo: PropTypes.bar,
 };
 
+//Any factories under React.DOM
+React.DOM.div();
+
 import React, { PropTypes } from 'react';
 ```
 
