@@ -44,13 +44,17 @@ class Component extends React.Component {
 
 ```js
 ...
-"react/forbid-prop-types": [<enabled>, { "forbid": [<string>] }]
+"react/forbid-prop-types": [<enabled>, { "forbid": [<string>], checkContextTypes: <boolean> }]
 ...
 ```
 
 ### `forbid`
 
 An array of strings, with the names of `PropTypes` keys that are forbidden. The default value for this option is `['any', 'array', 'object']`.
+
+### `checkContextTypes`
+
+Whether or not to check `contextTypes` for forbidden prop types. The default value is false.
 
 ## When not to use
 

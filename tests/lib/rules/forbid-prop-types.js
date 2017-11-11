@@ -190,6 +190,167 @@ ruleTester.run('forbid-prop-types', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint'
+  }, {
+    code: [
+      'var First = createReactClass({',
+      '  contextTypes: externalPropTypes,',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{checkContextTypes: true}]
+  }, {
+    code: [
+      'var First = createReactClass({',
+      '  contextTypes: {',
+      '    s: PropTypes.string,',
+      '    n: PropTypes.number,',
+      '    i: PropTypes.instanceOf,',
+      '    b: PropTypes.bool',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{checkContextTypes: true}]
+  }, {
+    code: [
+      'var First = createReactClass({',
+      '  contextTypes: {',
+      '    a: PropTypes.array',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      forbid: ['any', 'object'],
+      checkContextTypes: true
+    }]
+  }, {
+    code: [
+      'var First = createReactClass({',
+      '  contextTypes: {',
+      '    o: PropTypes.object',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      forbid: ['any', 'array'],
+      checkContextTypes: true
+    }]
+  }, {
+    code: [
+      'var First = createReactClass({',
+      '  contextTypes: {',
+      '    o: PropTypes.object,',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      forbid: ['any', 'array'],
+      checkContextTypes: true
+    }]
+  }, {
+    code: [
+      'class First extends React.Component {',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}',
+      'First.contextTypes = {',
+      '  a: PropTypes.string,',
+      '  b: PropTypes.string',
+      '};',
+      'First.contextTypes.justforcheck = PropTypes.string;'
+    ].join('\n'),
+    options: [{checkContextTypes: true}]
+  }, {
+    code: [
+      'class First extends React.Component {',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}',
+      'First.contextTypes = {',
+      '  elem: PropTypes.instanceOf(HTMLElement)',
+      '};'
+    ].join('\n'),
+    options: [{checkContextTypes: true}]
+  }, {
+    code: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    return <div>Hello</div>;',
+      '  }',
+      '}',
+      'Hello.contextTypes = {',
+      '  "aria-controls": PropTypes.string',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{checkContextTypes: true}]
+  }, {
+    // Invalid code, should not be validated
+    code: [
+      'class Component extends React.Component {',
+      '  contextTypes: {',
+      '    a: PropTypes.any,',
+      '    c: PropTypes.any,',
+      '    b: PropTypes.any',
+      '  };',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{checkContextTypes: true}]
+  }, {
+    code: [
+      'var Hello = createReactClass({',
+      '  render: function() {',
+      '    let { a, ...b } = obj;',
+      '    let c = { ...d };',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{checkContextTypes: true}]
+  }, {
+    code: [
+      'var Hello = createReactClass({',
+      '  contextTypes: {',
+      '    retailer: PropTypes.instanceOf(Map).isRequired,',
+      '    requestRetailer: PropTypes.func.isRequired',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{checkContextTypes: true}]
+  }, {
+    // Proptypes declared with a spread property
+    code: [
+      'class Test extends react.component {',
+      '  static contextTypes = {',
+      '    intl: React.contextTypes.number,',
+      '    ...contextTypes',
+      '  };',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{checkContextTypes: true}]
   }],
 
   invalid: [{
@@ -478,6 +639,240 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     options: [{
       forbid: ['object']
+    }],
+    errors: 1
+  }, {
+    code: [
+      'var First = createReactClass({',
+      '  contextTypes: {',
+      '    a: PropTypes.any',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{checkContextTypes: true}],
+    errors: [{
+      message: ANY_ERROR_MESSAGE,
+      line: 3,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'class Foo extends Component {',
+      '  static contextTypes = {',
+      '    a: PropTypes.any',
+      '  }',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{checkContextTypes: true}],
+    parser: 'babel-eslint',
+    errors: [{
+      message: ANY_ERROR_MESSAGE,
+      line: 3,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'class Foo extends Component {',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}',
+      'Foo.contextTypes = {',
+      '  a: PropTypes.any',
+      '};'
+    ].join('\n'),
+    options: [{checkContextTypes: true}],
+    errors: [{
+      message: ANY_ERROR_MESSAGE,
+      line: 7,
+      column: 3,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'function Foo(props) {',
+      '  return <div />;',
+      '}',
+      'Foo.contextTypes = {',
+      '  a: PropTypes.any',
+      '};'
+    ].join('\n'),
+    options: [{checkContextTypes: true}],
+    errors: [{
+      message: ANY_ERROR_MESSAGE,
+      line: 5,
+      column: 3,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'const Foo = (props) => {',
+      '  return <div />;',
+      '};',
+      'Foo.contextTypes = {',
+      '  a: PropTypes.any',
+      '};'
+    ].join('\n'),
+    options: [{checkContextTypes: true}],
+    errors: [{
+      message: ANY_ERROR_MESSAGE,
+      line: 5,
+      column: 3,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'class Component extends React.Component {',
+      '  static contextTypes = forbidExtraProps({',
+      '    a: PropTypes.array,',
+      '    o: PropTypes.object',
+      '  });',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: 2,
+    options: [{checkContextTypes: true}],
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    }
+  }, {
+    code: [
+      'class Component extends React.Component {',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}',
+      'Component.contextTypes = forbidExtraProps({',
+      '  a: PropTypes.array,',
+      '  o: PropTypes.object',
+      '});'
+    ].join('\n'),
+    errors: 2,
+    options: [{checkContextTypes: true}],
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    }
+  }, {
+    code: [
+      'function Component(props) {',
+      '  return <div />;',
+      '}',
+      'Component.contextTypes = forbidExtraProps({',
+      '  a: PropTypes.array,',
+      '  o: PropTypes.object',
+      '});'
+    ].join('\n'),
+    errors: 2,
+    options: [{checkContextTypes: true}],
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    }
+  }, {
+    code: [
+      'const Component = (props) => {',
+      '  return <div />;',
+      '};',
+      'Component.contextTypes = forbidExtraProps({',
+      '  a: PropTypes.array,',
+      '  o: PropTypes.object',
+      '});'
+    ].join('\n'),
+    errors: 2,
+    options: [{checkContextTypes: true}],
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    }
+  }, {
+    code: [
+      'var Hello = createReactClass({',
+      '  contextTypes: {',
+      '    retailer: PropTypes.instanceOf(Map).isRequired,',
+      '    requestRetailer: PropTypes.func.isRequired',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      forbid: ['instanceOf'],
+      checkContextTypes: true
+    }],
+    errors: 1
+  }, {
+    code: [
+      'class Component extends React.Component {',
+      '  static contextTypes = {',
+      '    retailer: PropTypes.instanceOf(Map).isRequired,',
+      '    requestRetailer: PropTypes.func.isRequired',
+      '  }',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      forbid: ['instanceOf'],
+      checkContextTypes: true
+    }],
+    errors: 1
+  }, {
+    code: [
+      'class Component extends React.Component {',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}',
+      'Component.contextTypes = {',
+      '  retailer: PropTypes.instanceOf(Map).isRequired,',
+      '  requestRetailer: PropTypes.func.isRequired',
+      '}'
+    ].join('\n'),
+    options: [{
+      forbid: ['instanceOf'],
+      checkContextTypes: true
+    }],
+    errors: 1
+  }, {
+    code: [
+      'function Component(props) {',
+      '  return <div />;',
+      '}',
+      'Component.contextTypes = {',
+      '  retailer: PropTypes.instanceOf(Map).isRequired,',
+      '  requestRetailer: PropTypes.func.isRequired',
+      '}'
+    ].join('\n'),
+    options: [{
+      forbid: ['instanceOf'],
+      checkContextTypes: true
+    }],
+    errors: 1
+  }, {
+    code: [
+      'const Component = (props) => {',
+      '  return <div />;',
+      '};',
+      'Component.contextTypes = {',
+      '  retailer: PropTypes.instanceOf(Map).isRequired,',
+      '  requestRetailer: PropTypes.func.isRequired',
+      '}'
+    ].join('\n'),
+    options: [{
+      forbid: ['instanceOf'],
+      checkContextTypes: true
     }],
     errors: 1
   }]
