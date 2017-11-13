@@ -35,7 +35,7 @@ var Hello = React.createElement('button', {type: 'reset'}, 'Hello')
 
 ```js
 ...
-"react/default-props-match-prop-types": [<enabled>, {
+"react/button-has-type": [<enabled>, {
   "button": <boolean>,
   "submit": <boolean>,
   "reset": <boolean>
@@ -45,7 +45,7 @@ var Hello = React.createElement('button', {type: 'reset'}, 'Hello')
 
 You can forbid particular type attribute values by passing `false` as corresponding option (by default all of them are `true`).
 
-The following patterns are considered errors when using `"react/default-props-match-prop-types": ["error", {reset: false}]`:
+The following patterns are considered errors when using `"react/button-has-type": ["error", {reset: false}]`:
 
 ```jsx
 var Hello = <button type="reset">Hello</button>
