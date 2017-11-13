@@ -2111,6 +2111,93 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: 'babel-eslint',
       options: [{skipShapeProps: false}]
     }, {
+      // issue #1506
+      code: [
+        'class MyComponent extends React.Component {',
+        '  onFoo() {',
+        '    this.setState((prevState, props) => {',
+        '      props.doSomething();',
+        '    });',
+        '  }',
+        '  render() {',
+        '    return (',
+        '       <div onClick={this.onFoo}>Test</div>',
+        '    );',
+        '  }',
+        '}',
+        'MyComponent.propTypes = {',
+        '  doSomething: PropTypes.func',
+        '};',
+        'var tempVar2;'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      options: [{skipShapeProps: false}]
+    }, {
+      // issue #1506
+      code: [
+        'class MyComponent extends React.Component {',
+        '  onFoo() {',
+        '    this.setState((prevState, { doSomething }) => {',
+        '      doSomething();',
+        '    });',
+        '  }',
+        '  render() {',
+        '    return (',
+        '       <div onClick={this.onFoo}>Test</div>',
+        '    );',
+        '  }',
+        '}',
+        'MyComponent.propTypes = {',
+        '  doSomething: PropTypes.func',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      options: [{skipShapeProps: false}]
+    }, {
+      // issue #1506
+      code: [
+        'class MyComponent extends React.Component {',
+        '  onFoo() {',
+        '    this.setState((prevState, obj) => {',
+        '      obj.doSomething();',
+        '    });',
+        '  }',
+        '  render() {',
+        '    return (',
+        '       <div onClick={this.onFoo}>Test</div>',
+        '    );',
+        '  }',
+        '}',
+        'MyComponent.propTypes = {',
+        '  doSomething: PropTypes.func',
+        '};',
+        'var tempVar2;'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      options: [{skipShapeProps: false}]
+    }, {
+      // issue #1506
+      code: [
+        'class MyComponent extends React.Component {',
+        '  onFoo() {',
+        '    this.setState(() => {',
+        '      this.props.doSomething();',
+        '    });',
+        '  }',
+        '  render() {',
+        '    return (',
+        '       <div onClick={this.onFoo}>Test</div>',
+        '    );',
+        '  }',
+        '}',
+        'MyComponent.propTypes = {',
+        '  doSomething: PropTypes.func',
+        '};',
+        'var tempVar;'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      options: [{skipShapeProps: false}]
+    }, {
       // issue #106
       code: `
         import React from 'react';
@@ -3787,6 +3874,28 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: 'babel-eslint',
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      // issue #1506
+      code: [
+        'class MyComponent extends React.Component {',
+        '  onFoo() {',
+        '    this.setState(({ doSomething }, props) => {',
+        '      return { doSomething: doSomething + 1 };',
+        '    });',
+        '  }',
+        '  render() {',
+        '    return (',
+        '       <div onClick={this.onFoo}>Test</div>',
+        '    );',
+        '  }',
+        '}',
+        'MyComponent.propTypes = {',
+        '  doSomething: PropTypes.func',
+        '};'
+      ].join('\n'),
+      errors: [{
+        message: '\'doSomething\' PropType is defined but prop is never used'
       }]
     }, {
       code: `
