@@ -3247,6 +3247,23 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  static propTypes = {',
         '    unused: PropTypes.bool',
         '  }',
+        '  constructor(props) {',
+        '    this.state = { something: props.something }',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'unused\' PropType is defined but prop is never used',
+        line: 3,
+        column: 13
+      }]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  static propTypes = {',
+        '    unused: PropTypes.bool',
+        '  }',
         '  componentWillReceiveProps ({something}, nextState) {',
         '    return something;',
         '  }',
