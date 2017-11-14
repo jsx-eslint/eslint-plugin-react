@@ -1677,7 +1677,7 @@ ruleTester.run('prop-types', rule, {
 
         class Bar extends React.Component {
           props: Props;
-          
+
           render() {
             return <div>{this.props.foo} - {this.props.bar}</div>
           }
@@ -1693,7 +1693,7 @@ ruleTester.run('prop-types', rule, {
 
         class Bar extends React.Component {
           props: Props & PropsC;
-          
+
           render() {
             return <div>{this.props.foo} - {this.props.bar} - {this.props.zap}</div>
           }
@@ -1709,7 +1709,7 @@ ruleTester.run('prop-types', rule, {
 
         class Bar extends React.Component {
           props: Props & PropsC;
-          
+
           render() {
             return <div>{this.props.foo} - {this.props.bar} - {this.props.zap}</div>
           }
@@ -1721,12 +1721,12 @@ ruleTester.run('prop-types', rule, {
         type PropsA = { bar: string };
         type PropsB = { zap: string };
         type Props = PropsA & {
-          baz: string 
+          baz: string
         };
 
         class Bar extends React.Component {
           props: Props & PropsB;
-          
+
           render() {
             return <div>{this.props.bar} - {this.props.zap} - {this.props.baz}</div>
           }
@@ -1738,12 +1738,12 @@ ruleTester.run('prop-types', rule, {
         type PropsA = { bar: string };
         type PropsB = { zap: string };
         type Props =  {
-          baz: string 
+          baz: string
         } & PropsA;
 
         class Bar extends React.Component {
           props: Props & PropsB;
-          
+
           render() {
             return <div>{this.props.bar} - {this.props.zap} - {this.props.baz}</div>
           }
@@ -3024,6 +3024,23 @@ ruleTester.run('prop-types', rule, {
     }, {
       code: [
         'class Hello extends Component {',
+        '  shouldComponentUpdate(nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return;',
+        '    }',
+        '  }',
+        '  render() {',
+        '    return <div />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [
+        {message: '\'foo\' is missing in props validation'}
+      ]
+    }, {
+      code: [
+        'class Hello extends Component {',
         '  static propTypes = {',
         '    bar: PropTypes.func',
         '  }',
@@ -3431,7 +3448,7 @@ ruleTester.run('prop-types', rule, {
 
         class MyComponent extends React.Component {
           props: Props;
-          
+
           render() {
             return <div>{this.props.foo} - {this.props.bar} - {this.props.fooBar}</div>
           }
@@ -3450,7 +3467,7 @@ ruleTester.run('prop-types', rule, {
 
         class Bar extends React.Component {
           props: Props & PropsC;
-          
+
           render() {
             return <div>{this.props.foo} - {this.props.bar} - {this.props.zap} - {this.props.fooBar}</div>
           }
@@ -3465,12 +3482,12 @@ ruleTester.run('prop-types', rule, {
         type PropsB = { bar: string };
         type PropsC = { zap: string };
         type Props = PropsB & {
-          baz: string 
+          baz: string
         };
 
         class Bar extends React.Component {
           props: Props & PropsC;
-          
+
           render() {
             return <div>{this.props.bar} - {this.props.baz} - {this.props.fooBar}</div>
           }
@@ -3485,12 +3502,12 @@ ruleTester.run('prop-types', rule, {
         type PropsB = { bar: string };
         type PropsC = { zap: string };
         type Props = {
-          baz: string 
+          baz: string
         } & PropsB;
 
         class Bar extends React.Component {
           props: Props & PropsC;
-          
+
           render() {
             return <div>{this.props.bar} - {this.props.baz} - {this.props.fooBar}</div>
           }
