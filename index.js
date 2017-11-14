@@ -61,6 +61,7 @@ const allRules = {
   'no-unused-prop-types': require('./lib/rules/no-unused-prop-types'),
   'no-unused-state': require('./lib/rules/no-unused-state'),
   'no-will-update-set-state': require('./lib/rules/no-will-update-set-state'),
+  'no-mutation-props': require('./lib/rules/no-mutation-props'),
   'prefer-es6-class': require('./lib/rules/prefer-es6-class'),
   'prefer-stateless-function': require('./lib/rules/prefer-stateless-function'),
   'prop-types': require('./lib/rules/prop-types'),
