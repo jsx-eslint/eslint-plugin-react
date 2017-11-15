@@ -9,7 +9,8 @@ const parserOptions = {
   }
 };
 
-const ERROR_MESSAGE = [{message: 'Ambiguous spacing between child elements.'}];
+// const ERROR_MESSAGE = [{message: 'Ambiguous spacing between child elements.'}];
+const ERROR_MESSAGE = [{}];
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-child-element-spacing', rule, {
@@ -38,13 +39,6 @@ ruleTester.run('jsx-child-element-spacing', rule, {
       <App>
         foo
         bar
-      </App>
-    `
-  }, {
-    code: `
-      <App>
-        <a>foo</a>
-        <a>bar</a>
       </App>
     `
   }, {
@@ -134,6 +128,14 @@ ruleTester.run('jsx-child-element-spacing', rule, {
   }, {
     code: `
       <App>
+        <a>foo</a>
+        <a>bar</a>
+      </App>
+    `,
+    errors: ERROR_MESSAGE
+  }, {
+    code: `
+      <App>
         <a>bar</a>
         baz
       </App>
@@ -163,7 +165,10 @@ ruleTester.run('jsx-child-element-spacing', rule, {
         <a href="https://js.org">another</a>
       </App>
     `,
-    errors: ERROR_MESSAGE
+    errors: [
+      ERROR_MESSAGE,
+      ERROR_MESSAGE,
+    ],
   }, {
     code: `
       <App>
