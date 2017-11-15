@@ -167,8 +167,8 @@ ruleTester.run('jsx-child-element-spacing', rule, {
     `,
     errors: [
       ERROR_MESSAGE,
-      ERROR_MESSAGE,
-    ],
+      ERROR_MESSAGE
+    ]
   }, {
     code: `
       <App>
