@@ -9,9 +9,6 @@ const parserOptions = {
   }
 };
 
-// const ERROR_MESSAGE = [{message: 'Ambiguous spacing between child elements.'}];
-const ERROR_MESSAGE = [{}];
-
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-child-element-spacing', rule, {
   valid: [{
@@ -111,6 +108,22 @@ ruleTester.run('jsx-child-element-spacing', rule, {
   }, {
     code: `
       <App>
+        <a>foo</a>
+        <a>bar</a>
+      </App>
+    `
+  }, {
+    code: `
+      <App>
+        <a>
+          <b>nested1</b>
+          <b>nested2</b>
+        </a>
+      </App>
+    `
+  }, {
+    code: `
+      <App>
         A
         B
       </App>
@@ -124,15 +137,9 @@ ruleTester.run('jsx-child-element-spacing', rule, {
         <a>bar</a>
       </App>
     `,
-    errors: ERROR_MESSAGE
-  }, {
-    code: `
-      <App>
-        <a>foo</a>
-        <a>bar</a>
-      </App>
-    `,
-    errors: ERROR_MESSAGE
+    errors: [
+      {message: 'Ambiguous spacing before next element a'}
+    ]
   }, {
     code: `
       <App>
@@ -140,7 +147,9 @@ ruleTester.run('jsx-child-element-spacing', rule, {
         baz
       </App>
     `,
-    errors: ERROR_MESSAGE
+    errors: [
+      {message: 'Ambiguous spacing after previous element a'}
+    ]
   }, {
     code: `
       <App>
@@ -148,7 +157,9 @@ ruleTester.run('jsx-child-element-spacing', rule, {
         baz
       </App>
     `,
-    errors: ERROR_MESSAGE
+    errors: [
+      {message: 'Ambiguous spacing after previous element a'}
+    ]
   }, {
     code: `
       <App>
@@ -156,7 +167,19 @@ ruleTester.run('jsx-child-element-spacing', rule, {
         <a href="https://js.org">this link</a>.
       </App>
     `,
-    errors: ERROR_MESSAGE
+    errors: [
+      {message: 'Ambiguous spacing before next element a'}
+    ]
+  }, {
+    code: `
+      <App>
+        Some <code>loops</code> and some
+        <code>if</code> statements.
+      </App>
+    `,
+    errors: [
+      {message: 'Ambiguous spacing before next element code'}
+    ]
   }, {
     code: `
       <App>
@@ -166,18 +189,8 @@ ruleTester.run('jsx-child-element-spacing', rule, {
       </App>
     `,
     errors: [
-      ERROR_MESSAGE,
-      ERROR_MESSAGE
+      {message: 'Ambiguous spacing before next element a'},
+      {message: 'Ambiguous spacing before next element a'}
     ]
-  }, {
-    code: `
-      <App>
-        <a>
-          <b>nested1</b>
-          <b>nested2</b>
-        </a>
-      </App>
-    `,
-    errors: ERROR_MESSAGE
   }]
 });
