@@ -103,6 +103,19 @@ Greeting.defaultProps = {
 ```
 
 ```jsx
+type Props = {
+  foo: string,
+  bar?: string
+};
+
+function MyStatelessComponent(props: Props) {
+  return <div>Hello {props.foo} {props.bar}</div>;
+}
+```
+
+The following patterns are **not** considered warnings:
+
+```jsx
 class Greeting extends React.Component {
   render() {
     return (
@@ -120,19 +133,6 @@ class Greeting extends React.Component {
   };
 }
 ```
-
-```jsx
-type Props = {
-  foo: string,
-  bar?: string
-};
-
-function MyStatelessComponent(props: Props) {
-  return <div>Hello {props.foo} {props.bar}</div>;
-}
-```
-
-The following patterns are **not** considered warnings:
 
 ```jsx
 function MyStatelessComponent({ foo, bar }) {
@@ -180,6 +180,91 @@ function NotAComponent({ foo, bar }) {}
 
 NotAComponent.propTypes = {
   foo: PropTypes.string,
+  bar: PropTypes.string.isRequired
+};
+```
+
+## Rule Options
+
+```js
+...
+"react/require-default-props": [<enabled>, { forbidDefaultForRequired: <boolean> }]
+...
+```
+
+* `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
+* `forbidDefaultForRequired`: optional boolean to forbid prop default for a required prop. Defaults to false.
+
+### `forbidDefaultForRequired`
+
+Forbids setting a default for props that are marked as `isRequired`.
+
+The following patterns are warnings:
+
+```jsx
+class Greeting extends React.Component {
+  render() {
+    return (
+      <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+    );
+  }
+
+  static propTypes = {
+    foo: PropTypes.string,
+    bar: PropTypes.string.isRequired
+  };
+
+  static defaultProps = {
+    foo: "foo",
+    bar: "bar"
+  };
+}
+```
+
+```jsx
+function MyStatelessComponent({ foo, bar }) {
+  return <div>{foo}{bar}</div>;
+}
+
+MyStatelessComponent.propTypes = {
+  foo: PropTypes.string.isRequired,
+  bar: PropTypes.string
+};
+
+MyStatelessComponent.defaultProps = {
+  foo: 'foo',
+  bar: 'bar'
+};
+```
+
+The following patterns are **not** warnings:
+
+```jsx
+class Greeting extends React.Component {
+  render() {
+    return (
+      <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+    );
+  }
+
+  static propTypes = {
+    foo: PropTypes.string,
+    bar: PropTypes.string.isRequired
+  };
+
+  static defaultProps = {
+    foo: "foo"
+  };
+}
+```
+
+```jsx
+function MyStatelessComponent({ foo, bar }) {
+  return <div>{foo}{bar}</div>;
+}
+
+MyStatelessComponent.propTypes = {
+  foo: PropTypes.string.isRequired,
   bar: PropTypes.string.isRequired
 };
 ```
