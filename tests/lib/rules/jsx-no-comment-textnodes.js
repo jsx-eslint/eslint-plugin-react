@@ -131,6 +131,20 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       <Foo title={'foo' /* valid */}/>
     `,
       parser: 'babel-eslint'
+    },
+    {
+      code: '<pre>&#x2F;&#x2F; TODO: Write perfect code</pre>'
+    },
+    {
+      code: '<pre>&#x2F;&#x2F; TODO: Write perfect code</pre>',
+      parser: 'babel-eslint'
+    },
+    {
+      code: '<pre>&#x2F;&#42; TODO: Write perfect code &#42;&#x2F;</pre>'
+    },
+    {
+      code: '<pre>&#x2F;&#42; TODO: Write perfect code &#42;&#x2F;</pre>',
+      parser: 'babel-eslint'
     }
   ],
 

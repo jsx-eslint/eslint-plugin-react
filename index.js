@@ -30,6 +30,7 @@ const allRules = {
   'jsx-no-literals': require('./lib/rules/jsx-no-literals'),
   'jsx-no-target-blank': require('./lib/rules/jsx-no-target-blank'),
   'jsx-one-expression-per-line': require('./lib/rules/jsx-one-expression-per-line'),
+  'button-has-type': require('./lib/rules/button-has-type'),
   'jsx-no-undef': require('./lib/rules/jsx-no-undef'),
   'jsx-curly-brace-presence': require('./lib/rules/jsx-curly-brace-presence'),
   'jsx-pascal-case': require('./lib/rules/jsx-pascal-case'),
