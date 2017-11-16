@@ -963,5 +963,16 @@ ruleTester.run('jsx-indent', rule, {
     errors: [
       {message: 'Expected indentation of 4 space characters but found 0.'}
     ]
+  }, {
+    code: [
+      '<p>',
+      '    <div>',
+      '        <SelfClosingTag />Text',
+      '  </div>',
+      '</p>'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 2.'}
+    ]
   }]
 });
