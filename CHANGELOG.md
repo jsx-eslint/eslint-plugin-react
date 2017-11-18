@@ -3,25 +3,95 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
-## [7.4.0] - 2017-09-24
+## [7.5.0] - 2017-11-18
 ### Added
-- Add Flow 0.53 support ([#1376][] @jseminck)
-- Add [`jsx-curly-brace-presence`][] rule ([#1310][] @jackyho112)
-- Add support for Flow IntersectionTypeAnnotation to [`prop-types`][] and [`no-unused-prop-types`][] ([#1364][] [#1323][] @jseminck)
-- Add support for Flow TypedArgument to [`no-unused-prop-types`][] ([#1412][] @jseminck)
-- Add support for Flow ClassExpressions to [`prop-types`][] ([#1400][] @jseminck)
-- Add support for Flow read-only props to [`no-unused-prop-types`][] ([#1388][] @jseminck)
-- Add more tests for [`prop-types`][] and [`no-unused-prop-types`][] ([#1381][] @DianaSuvorova)
-- Add support for increment and decrement operations to [`no-direct-mutation-state`][] ([#1386][] @zpao)
+* Add [`jsx-one-expression-per-line`][] rule ([#1497][] @TSMMark)
+* Add [`destructuring-assignment`][] rule ([#1462][] @DianaSuvorova)
+* Add [`no-access-state-in-setstate`][] rule ([#1374][] @jaaberg)
+* Add [`button-has-type`][] rule ([#1525][] @Hypnosphi)
+* Add warnings for `React.DOM` factories in [`no-deprecated`][] ([#1530][] @backjo)
+* Add `sortShapeProp` option to [`sort-prop-types`][] ([#1476][] @jomasti)
+* Add `parens-new-line` option to [`jsx-wrap-multilines`][] ([#1475][] @jomasti)
+* Add `checkContextTypes` and `checkChildContextTypes` options to [`forbid-prop-types`][] ([#1533][] @jomasti)
+* Add `forbidDefaultForRequired ` option to [`require-default-props`][] ([#1524][] @jomasti)
+* Add new nodes support to [`jsx-wrap-multilines`][] ([#1384][] @evgeny-petukhov)
 
 ### Fixed
-- Fix [`no-unused-state`][] to ignore computed property keys ([#1361][] @jackyho112)
-- Fix [`no-typos`][] crash ([#1406][] @jseminck)
-- Fix [`boolean-prop-naming`][] crash ([#1409][] @EvHaus)
-- Fix [`prop-types`][] and [`no-unused-prop-types`][] crash with IntersectionTypeAnnotation ([#1413][] @jseminck)
+* Fix [`jsx-curly-brace-presence`][] auto fix by bailing out when some chars exist ([#1479][] [#1449][] @jackyho112)
+* Fix [`boolean-prop-naming`][] crash with Object spread ([#1485][] @track0x1)
+* Fix [`no-unused-state`][] to correctly handle arrow function class method ([#1363][] @jackyho112)
+* Fix incompatibility with [`typescript-eslint-parser`](https://github.com/eslint/typescript-eslint-parser) ([#1496][] @timothykang)
+* Fix [`jsx-no-bind`][] to only warn for props and account for variable declaration ([#1444][] [#1395][] [#1417][] @jackyho112)
+* Fix [`no-props-unused-props`][] to handle props usage in custom prop validators ([#1518][] @petersendidit)
+* Fix [`prefer-stateless-function`][] to account for `contextTypes` and `defaultProps` ([#1521][] @jomasti)
+* Fix [`jsx-no-comment-textnodes`][] to not warn when using two slashes via html entities at the beginning of a literal ([#1517][] @jomasti)
+* Fix [`default-props-match-prop-types`][] crash ([#1499][] @jomasti)
+* Fix [`no-unused-prop-types`][] to handle props used in the `setState` update callback ([#1507][] @petersendidit)
+* Fix alignment bug in [`jsx-indent`][] ([#1246][] @jseminck)
 
 ### Changed
-- Documentation improvements ([#1392][] @xcatliu, [#1403][] @piperchester, [#1432][] @jneuendorf)
+* Documentation improvements ([#1438][] @jseminck, [#1464][] @AlaaAttya, [#1494][] @piperchester, [#1467][] @felicio, [#1512][] @adam-golab)
+* Code refactoring ([#1423][] [#1398][] @jseminck, [#1500][] [#1514][] @Aladdin-ADD, [#1502][] @SimenB, [#1508][] [#1526][] @jomasti, @ljharb)
+* Update dependencies ([#1450][] @leebyron, @ljharb)
+
+[7.5.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.4.0...v7.5.0
+[#1497]: https://github.com/yannickcr/eslint-plugin-react/pull/1497
+[#1462]: https://github.com/yannickcr/eslint-plugin-react/pull/1462
+[#1374]: https://github.com/yannickcr/eslint-plugin-react/pull/1374
+[#1525]: https://github.com/yannickcr/eslint-plugin-react/pull/1525
+[#1530]: https://github.com/yannickcr/eslint-plugin-react/pull/1530
+[#1476]: https://github.com/yannickcr/eslint-plugin-react/issues/1476
+[#1475]: https://github.com/yannickcr/eslint-plugin-react/pull/1475
+[#1533]: https://github.com/yannickcr/eslint-plugin-react/pull/1533
+[#1524]: https://github.com/yannickcr/eslint-plugin-react/issues/1524
+[#1384]: https://github.com/yannickcr/eslint-plugin-react/pull/1384
+[#1479]: https://github.com/yannickcr/eslint-plugin-react/issues/1479
+[#1449]: https://github.com/yannickcr/eslint-plugin-react/issues/1449
+[#1485]: https://github.com/yannickcr/eslint-plugin-react/pull/1485
+[#1363]: https://github.com/yannickcr/eslint-plugin-react/issues/1363
+[#1496]: https://github.com/yannickcr/eslint-plugin-react/pull/1496
+[#1444]: https://github.com/yannickcr/eslint-plugin-react/issues/1444
+[#1395]: https://github.com/yannickcr/eslint-plugin-react/issues/1395
+[#1417]: https://github.com/yannickcr/eslint-plugin-react/issues/1417
+[#1518]: https://github.com/yannickcr/eslint-plugin-react/pull/1518
+[#1521]: https://github.com/yannickcr/eslint-plugin-react/issues/1521
+[#1517]: https://github.com/yannickcr/eslint-plugin-react/issues/1517
+[#1499]: https://github.com/yannickcr/eslint-plugin-react/issues/1499
+[#1507]: https://github.com/yannickcr/eslint-plugin-react/pull/1507
+[#1246]: https://github.com/yannickcr/eslint-plugin-react/issues/1246
+[#1438]: https://github.com/yannickcr/eslint-plugin-react/pull/1438
+[#1464]: https://github.com/yannickcr/eslint-plugin-react/pull/1464
+[#1494]: https://github.com/yannickcr/eslint-plugin-react/pull/1494
+[#1467]: https://github.com/yannickcr/eslint-plugin-react/pull/1467
+[#1512]: https://github.com/yannickcr/eslint-plugin-react/pull/1512
+[#1423]: https://github.com/yannickcr/eslint-plugin-react/pull/1423
+[#1500]: https://github.com/yannickcr/eslint-plugin-react/pull/1500
+[#1514]: https://github.com/yannickcr/eslint-plugin-react/pull/1514
+[#1502]: https://github.com/yannickcr/eslint-plugin-react/pull/1502
+[#1508]: https://github.com/yannickcr/eslint-plugin-react/pull/1508
+[#1526]: https://github.com/yannickcr/eslint-plugin-react/pull/1526
+[#1398]: https://github.com/yannickcr/eslint-plugin-react/pull/1398
+[#1450]: https://github.com/yannickcr/eslint-plugin-react/pull/1450
+
+## [7.4.0] - 2017-09-24
+### Added
+* Add Flow 0.53 support ([#1376][] @jseminck)
+* Add [`jsx-curly-brace-presence`][] rule ([#1310][] @jackyho112)
+* Add support for Flow IntersectionTypeAnnotation to [`prop-types`][] and [`no-unused-prop-types`][] ([#1364][] [#1323][] @jseminck)
+* Add support for Flow TypedArgument to [`no-unused-prop-types`][] ([#1412][] @jseminck)
+* Add support for Flow ClassExpressions to [`prop-types`][] ([#1400][] @jseminck)
+* Add support for Flow read-only props to [`no-unused-prop-types`][] ([#1388][] @jseminck)
+* Add more tests for [`prop-types`][] and [`no-unused-prop-types`][] ([#1381][] @DianaSuvorova)
+* Add support for increment and decrement operations to [`no-direct-mutation-state`][] ([#1386][] @zpao)
+
+### Fixed
+* Fix [`no-unused-state`][] to ignore computed property keys ([#1361][] @jackyho112)
+* Fix [`no-typos`][] crash ([#1406][] @jseminck)
+* Fix [`boolean-prop-naming`][] crash ([#1409][] @EvHaus)
+* Fix [`prop-types`][] and [`no-unused-prop-types`][] crash with IntersectionTypeAnnotation ([#1413][] @jseminck)
+
+### Changed
+* Documentation improvements ([#1392][] @xcatliu, [#1403][] @piperchester, [#1432][] @jneuendorf)
 
 [7.4.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.3.0...v7.4.0
 [#1376]: https://github.com/yannickcr/eslint-plugin-react/issues/1376
@@ -1958,3 +2028,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`no-comment-textnodes`]: docs/rules/jsx-no-comment-textnodes.md
 [`wrap-multilines`]: docs/rules/jsx-wrap-multilines.md
 [`jsx-curly-brace-presence`]: docs/rules/jsx-curly-brace-presence.md
+[`jsx-one-expression-per-line`]: docs/rules/jsx-one-expression-per-line.md
+[`destructuring-assignment`]: docs/rules/destructuring-assignment.md
+[`no-access-state-in-setstate`]: docs/rules/no-access-state-in-setstate.md
+[`button-has-type`]: docs/rules/button-has-type.md
