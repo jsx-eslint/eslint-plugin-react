@@ -30,11 +30,11 @@
     "prop-types": "^15.6.0"
   },
   "devDependencies": {
-    "babel-eslint": "^7.2.3",
-    "coveralls": "^2.13.1",
+    "babel-eslint": "^8.0.2",
+    "coveralls": "^3.0.0",
     "eslint": "^4.10.0",
     "istanbul": "0.4.5",
-    "mocha": "^3.5.0"
+    "mocha": "^4.0.1"
   },
   "peerDependencies": {
     "eslint": "^3.0.0 || ^4.0.0"
