@@ -258,6 +258,17 @@ ruleTester.run('jsx-no-bind', rule, {
         '};'
       ].join('\n'),
       parser: 'babel-eslint'
+    },
+    {
+      // issue #1543: don't crash on uninitialized variables
+      code: [
+        'class Hello extends Component {',
+        '  render() {',
+        '    let click;',
+        '    return <div onClick={onClick}>Hello</div>;',
+        '  }',
+        '}'
+      ].join('\n')
     }
   ],
 
