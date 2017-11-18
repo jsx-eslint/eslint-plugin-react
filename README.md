@@ -53,7 +53,9 @@ You should also specify settings that will be shared across all the plugin rules
         // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
         "forbidExtraProps",
         {"property": "freeze", "object": "Object"},
-        {"property": "myFavoriteWrapper"}
+        {"property": "myFavoriteWrapper"},
+        // for rules that check exact prop wrappers
+        {"property": "forbidExtraProps", "exact": true}
     ],
     "componentWrapperFunctions": [
         // The name of any function used to wrap components, e.g. Mobx `observer` function. If this isn't set, components wrapped by these functions will be skipped.

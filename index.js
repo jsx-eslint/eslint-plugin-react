@@ -81,6 +81,7 @@ const allRules = {
   'no-unused-state': require('./lib/rules/no-unused-state'),
   'no-will-update-set-state': require('./lib/rules/no-will-update-set-state'),
   'prefer-es6-class': require('./lib/rules/prefer-es6-class'),
+  'prefer-exact-props': require('./lib/rules/prefer-exact-props'),
   'prefer-read-only-props': require('./lib/rules/prefer-read-only-props'),
   'prefer-stateless-function': require('./lib/rules/prefer-stateless-function'),
   'prop-types': require('./lib/rules/prop-types'),
