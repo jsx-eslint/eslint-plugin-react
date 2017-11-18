@@ -2198,6 +2198,46 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: 'babel-eslint',
       options: [{skipShapeProps: false}]
     }, {
+      // issue #1542
+      code: [
+        'class MyComponent extends React.Component {',
+        '  onFoo() {',
+        '    this.setState((prevState) => {',
+        '      this.props.doSomething();',
+        '    });',
+        '  }',
+        '  render() {',
+        '    return (',
+        '       <div onClick={this.onFoo}>Test</div>',
+        '    );',
+        '  }',
+        '}',
+        'MyComponent.propTypes = {',
+        '  doSomething: PropTypes.func',
+        '};'
+      ].join('\n'),
+      options: [{skipShapeProps: false}]
+    }, {
+      // issue #1542
+      code: [
+        'class MyComponent extends React.Component {',
+        '  onFoo() {',
+        '    this.setState(({ something }) => {',
+        '      this.props.doSomething();',
+        '    });',
+        '  }',
+        '  render() {',
+        '    return (',
+        '       <div onClick={this.onFoo}>Test</div>',
+        '    );',
+        '  }',
+        '}',
+        'MyComponent.propTypes = {',
+        '  doSomething: PropTypes.func',
+        '};'
+      ].join('\n'),
+      options: [{skipShapeProps: false}]
+    }, {
       // issue #106
       code: `
         import React from 'react';
