@@ -1,4 +1,4 @@
-# One JSX Element Per Line (react/jsx-indent)
+# One JSX Element Per Line (react/jsx-one-expression-per-line)
 
 This option limits every line in JSX to one expression each.
 
