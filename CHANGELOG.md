@@ -3,6 +3,19 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.5.1] - 2017-11-19
+### Fixed
+* Fix [`jsx-no-bind`][] crash ([#1543][] @jomasti)
+* Fix [`no-unused-prop-types`][] crash ([#1542][] @jomasti)
+
+### Changed
+* Documentation improvements ([#1546][] @jseminck)
+
+[7.5.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.5.0...v7.5.1
+[#1543]: https://github.com/yannickcr/eslint-plugin-react/issues/1543
+[#1542]: https://github.com/yannickcr/eslint-plugin-react/issues/1542
+[#1546]: https://github.com/yannickcr/eslint-plugin-react/issues/1546
+
 ## [7.5.0] - 2017-11-18
 ### Added
 * Add [`jsx-one-expression-per-line`][] rule ([#1497][] @TSMMark)
