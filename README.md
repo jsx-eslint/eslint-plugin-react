@@ -83,6 +83,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 # List of supported rules
 
 * [react/boolean-prop-naming](docs/rules/boolean-prop-naming.md): Enforces consistent naming for boolean props
+* [react/button-has-type](docs/rules/button-has-type.md): Forbid "button" element without an explicit "type" attribute
 * [react/default-props-match-prop-types](docs/rules/default-props-match-prop-types.md): Prevent extraneous defaultProps on components
 * [react/destructuring-assignment](docs/rules/destructuring-assignment.md): Rule enforces consistent usage of destructuring assignment in component
 * [react/display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
