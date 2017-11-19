@@ -1,5 +1,5 @@
 /**
- * @fileoverview Limit to one element tag per line in JSX
+ * @fileoverview Limit to one expression per line in JSX
  * @author Mark Ivan Allen <Vydia.com>
  */
 
