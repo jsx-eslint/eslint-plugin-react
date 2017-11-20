@@ -1,4 +1,4 @@
-# Prevent using this.state within a this.setState (no-access-state-in-setstate)
+# Prevent using this.state within a this.setState (react/no-access-state-in-setstate)
 
 This rule should prevent usage of `this.state` inside `setState` calls.
 Such usage of `this.state` might result in errors when two state calls are
