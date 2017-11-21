@@ -1,10 +1,10 @@
-# Enforce propTypes declarations alphabetical sorting (react/jsx-sort-default-props)
+# Enforce defaultProps declarations alphabetical sorting (react/jsx-sort-default-props)
 
-Some developers prefer to sort propTypes declarations alphabetically to be able to find necessary declaration easier at the later time. Others feel that it adds complexity and becomes burden to maintain.
+Some developers prefer to sort `defaultProps` declarations alphabetically to be able to find necessary declarations easier at a later time. Others feel that it adds complexity and becomes a burden to maintain.
 
 ## Rule Details
 
-This rule checks all components and verifies that all defaultProps declarations are sorted alphabetically. A spread attribute resets the verification. The default configuration of the rule is case-sensitive.
+This rule checks all components and verifies that all `defaultProps` declarations are sorted alphabetically. A spread attribute resets the verification. The default configuration of the rule is case-sensitive.
 
 The following patterns are considered warnings:
 
@@ -94,4 +94,4 @@ When `true` the rule ignores the case-sensitivity of the declarations order.
 
 ## When not to use
 
-This rule is a formatting preference and not following it won't negatively affect the quality of your code. If alphabetizing defaultProps declarations isn't a part of your coding standards, then you can leave this rule off.
+This rule is a formatting preference and not following it won't negatively affect the quality of your code. If alphabetizing `defaultProps` declarations isn't a part of your coding standards, then you can leave this rule off.
