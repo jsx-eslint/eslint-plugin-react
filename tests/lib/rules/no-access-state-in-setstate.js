@@ -46,6 +46,24 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '});'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    // issue 1559: don't crash
+    code: `
+      var SearchForm = createReactClass({
+        render: function () {
+          return (
+            <div>
+              {(function () {
+                if (this.state.prompt) {
+                  return <div>{this.state.prompt}</div>
+                }
+              }).call(this)}
+            </div>
+          );
+        }
+      });
+    `,
+    parserOptions: parserOptions
   }],
 
   invalid: [{
