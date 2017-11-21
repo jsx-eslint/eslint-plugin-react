@@ -474,5 +474,25 @@ ruleTester.run('jsx-sort-default-props', rule, {
       column: 3,
       type: 'Property'
     }]
+  }, {
+    code: [
+      'const First = (props) => <div />;',
+      'const propTypes = {',
+      '  z: PropTypes.string,',
+      '  a: PropTypes.any,',
+      '};',
+      'const defaultProps = {',
+      '  z: "z",',
+      '  a: "a",',
+      '};',
+      'First.propTypes = propTypes;',
+      'First.defaultProps = defaultProps;'
+    ].join('\n'),
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 8,
+      column: 3,
+      type: 'Property'
+    }]
   }]
 });

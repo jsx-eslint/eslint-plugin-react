@@ -40,6 +40,13 @@ class Component extends React.Component {
     return <div />;
   }
 }
+
+const Component = (props) => (...);
+Component.defaultProps = {
+  z: "z",
+  y: "y",
+  a: "a"
+};
 ```
 
 The following patterns are considered okay and do not cause warnings:
@@ -76,6 +83,13 @@ class Component extends React.Component {
     return <div />;
   }
 }
+
+const Component = (props) => (...);
+Component.defaultProps = {
+  a: "a",
+  y: "y",
+  z: "z"
+};
 ```
 
 ## Rule Options
