@@ -1131,6 +1131,28 @@ ruleTester.run('prop-types', rule, {
       parser: 'babel-eslint'
     }, {
       code: [
+        'type PropsUnionA = {',
+        '  a: string,',
+        '  b?: void,',
+        '};',
+        'type PropsUnionB = {',
+        '  a?: void,',
+        '  b: string,',
+        '};',
+        'type Props = {',
+        '  name: string,',
+        '} & (PropsUnionA | PropsUnionB);',
+        'class Hello extends React.Component {',
+        '  props: Props;',
+        '  render() {',
+        '    const {name} = this.props;',
+        '    return name;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
         'Card.propTypes = {',
         '  title: PropTypes.string.isRequired,',
         '  children: PropTypes.element.isRequired,',
