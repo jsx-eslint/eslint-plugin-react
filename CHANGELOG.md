@@ -35,7 +35,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * Fix [`no-unused-state`][] to correctly handle arrow function class method ([#1363][] @jackyho112)
 * Fix incompatibility with [`typescript-eslint-parser`](https://github.com/eslint/typescript-eslint-parser) ([#1496][] @timothykang)
 * Fix [`jsx-no-bind`][] to only warn for props and account for variable declaration ([#1444][] [#1395][] [#1417][] @jackyho112)
-* Fix [`no-props-unused-props`][] to handle props usage in custom prop validators ([#1518][] @petersendidit)
+* Fix [`no-unused-prop-types`][] to handle props usage in custom prop validators ([#1518][] @petersendidit)
 * Fix [`prefer-stateless-function`][] to account for `contextTypes` and `defaultProps` ([#1521][] @jomasti)
 * Fix [`jsx-no-comment-textnodes`][] to not warn when using two slashes via html entities at the beginning of a literal ([#1517][] @jomasti)
 * Fix [`default-props-match-prop-types`][] crash ([#1499][] @jomasti)
