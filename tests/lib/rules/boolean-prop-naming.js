@@ -578,5 +578,41 @@ ruleTester.run('boolean-prop-naming', rule, {
     errors: [{
       message: 'Prop name (showScore) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)'
     }]
+  }, {
+    code: `
+    function Card(props) {
+      return <div>{props.showScore ? 'yeh' : 'no'}</div>;
+    }
+    Card.propTypes = forbidExtraProps({
+        showScore: PropTypes.bool
+    });`,
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    },
+    options: [{
+      rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'
+    }],
+    errors: [{
+      message: 'Prop name (showScore) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
+    code: `
+    class Card extends React.Component {
+      render() {
+        return <div>{props.showScore ? 'yeh' : 'no'}</div>;
+      }
+    }
+    Card.propTypes = forbidExtraProps({
+        showScore: PropTypes.bool
+    });`,
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    },
+    options: [{
+      rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'
+    }],
+    errors: [{
+      message: 'Prop name (showScore) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)'
+    }]
   }]
 });
