@@ -100,5 +100,33 @@ ruleTester.run('forbid-element-props', rule, {
       column: 17,
       type: 'JSXAttribute'
     }]
+  }, {
+    code: [
+      'class First extends createReactClass {',
+      '  render() {',
+      '    return <div id="bar" />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{forbid: ['id']}],
+    errors: [{
+      message: ID_ERROR_MESSAGE,
+      line: 3,
+      column: 17,
+      type: 'JSXAttribute'
+    }]
+  }, {
+    code: [
+      'const First = (props) => (',
+      '  <div id="foo" />',
+      ');'
+    ].join('\n'),
+    options: [{forbid: ['id']}],
+    errors: [{
+      message: ID_ERROR_MESSAGE,
+      line: 2,
+      column: 8,
+      type: 'JSXAttribute'
+    }]
   }]
 });
