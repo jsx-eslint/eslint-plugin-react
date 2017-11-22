@@ -88,6 +88,7 @@ Finally, enable all of the rules that you would like to use.  Use [our preset](#
 * [react/destructuring-assignment](docs/rules/destructuring-assignment.md): Rule enforces consistent usage of destructuring assignment in component
 * [react/display-name](docs/rules/display-name.md): Prevent missing `displayName` in a React component definition
 * [react/forbid-component-props](docs/rules/forbid-component-props.md): Forbid certain props on Components
+* [react/forbid-dom-props](docs/rules/forbid-dom-props.md): Forbid certain props on DOM Nodes
 * [react/forbid-elements](docs/rules/forbid-elements.md): Forbid certain elements
 * [react/forbid-prop-types](docs/rules/forbid-prop-types.md): Forbid certain propTypes
 * [react/forbid-foreign-prop-types](docs/rules/forbid-foreign-prop-types.md): Forbid foreign propTypes
