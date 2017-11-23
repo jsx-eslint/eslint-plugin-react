@@ -21,7 +21,38 @@ $ npm install eslint-plugin-react --save-dev
 
 # Configuration
 
-Add `plugins` section and specify ESLint-plugin-React as a plugin.
+Use [our preset](#recommended) to get reasonable defaults:
+
+```json
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ]
+```
+
+You should also specify settings that will be shared across all the plugin rules.
+
+```json5
+{
+  "settings": {
+    "react": {
+      "createClass": "createReactClass", // Regex for Component Factory to use,
+                                         // default to "createReactClass"
+      "pragma": "React",  // Pragma to use, default to "React"
+      "version": "15.0", // React version, default to the latest React stable release
+      "flowVersion": "0.53" // Flow version
+    },
+    "propWrapperFunctions": [ "forbidExtraProps" ] // The names of any functions used to wrap the
+                                                   // propTypes object, e.g. `forbidExtraProps`.
+                                                   // If this isn't set, any propTypes wrapped in
+                                                   // a function will be skipped.
+  }
+}
+```
+
+If you do not use a preset you will need to specify individual rules and add extra configuration.
+
+Add "react" to the plugins section.
 
 ```json
 {
@@ -31,35 +62,9 @@ Add `plugins` section and specify ESLint-plugin-React as a plugin.
 }
 ```
 
-You can also specify some settings that will be shared across all the plugin rules.
+Enable JSX support.
 
-```json5
-{
-  "settings": {
-    "react": {
-      "createClass": "createReactClass", // Regex for Component Factory to use, default to "createReactClass"
-      "pragma": "React",  // Pragma to use, default to "React"
-      "version": "15.0", // React version, default to the latest React stable release
-      "flowVersion": "0.53" // Flow version
-    },
-    "propWrapperFunctions": [ "forbidExtraProps" ] // The names of any functions used to wrap the propTypes object, such as `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
-  }
-}
-```
-
-If it is not already the case you must also configure `ESLint` to support JSX.
-
-With ESLint 1.x.x:
-
-```json
-{
-  "ecmaFeatures": {
-    "jsx": true
-  }
-}
-```
-
-With ESLint 2.x.x or 3.x.x:
+With ESLint 2+
 
 ```json
 {
@@ -71,7 +76,7 @@ With ESLint 2.x.x or 3.x.x:
 }
 ```
 
-Finally, enable all of the rules that you would like to use.  Use [our preset](#recommended) to get reasonable defaults quickly, and/or choose your own:
+Enable the rules that you would like to use.
 
 ```json
   "rules": {
