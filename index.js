@@ -42,6 +42,7 @@ const allRules = {
   'no-access-state-in-setstate': require('./lib/rules/no-access-state-in-setstate'),
   'no-array-index-key': require('./lib/rules/no-array-index-key'),
   'no-children-prop': require('./lib/rules/no-children-prop'),
+  'no-constructor-in-component': require('./lib/rules/no-constructor-in-component'),
   'no-danger': require('./lib/rules/no-danger'),
   'no-danger-with-children': require('./lib/rules/no-danger-with-children'),
   'no-deprecated': require('./lib/rules/no-deprecated'),
