@@ -7,46 +7,18 @@ In most cases, we don't need a constructor in React Components instead we can us
 Will enforce not to use a constructor for React Components.
 
 The following patterns are considered bad:
-
 ```jsx
   class OneComponent extends Component {
-    static propTypes = {}
-    state = {}
-  }
-```
-```jsx
-  class OneComponent extends React.Component {
-    static propTypes = {}
-    state = {}
-  }
-```
-```jsx
-  const Component = class OneComponent extends React.Component {
-    static propTypes = {}
-    state = {}
+    constructor(props) {
+      super(props);
+    }
   }
 ```
 
 The following patterns are **not** considered bad:
-
 ```jsx
   class OneComponent extends Component {
-    constructor(props) {
-      super(props);
-    }
-  }
-```
-```jsx
-  class OneComponent extends React.Component {
-    constructor(props) {
-      super(props);
-    }
-  }
-```
-```jsx
-  const Component = class OneComponent extends Component {
-    constructor(props) {
-      super(props);
-    }
+    static propTypes = {}
+    state = {}
   }
 ```
