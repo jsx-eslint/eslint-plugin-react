@@ -1121,6 +1121,17 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: 'babel-eslint'
     }, {
       code: [
+        'import type { FieldProps } from "redux-form"',
+        '',
+        'type Props = {',
+        'label: string,',
+        '  type: string,',
+        '  options: Array<SelectOption>',
+        '} & FieldProps'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
         'Card.propTypes = {',
         '  title: PropTypes.string.isRequired,',
         '  children: PropTypes.element.isRequired,',
