@@ -14,7 +14,8 @@ const parserOptions = {
   ecmaVersion: 6,
   ecmaFeatures: {
     jsx: true
-  }
+  },
+  sourceType: 'module'
 };
 
 // -----------------------------------------------------------------------------
@@ -341,6 +342,34 @@ ruleTester.run('no-typos', rule, {
     code: `
       import PropTypes from "prop-types";
       class Component extends React.Component {};
+      Component.propTypes = {
+        a: PropTypes.oneOf([
+          'hello',
+          'hi'
+        ])
+      }
+   `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: `
+      import PropTypes from "prop-types";
+      class Component extends React.Component {};
+      Component.childContextTypes = {
+        a: PropTypes.string,
+        b: PropTypes.string.isRequired,
+        c: PropTypes.shape({
+          d: PropTypes.string,
+          e: PropTypes.number.isRequired,
+        }).isRequired
+      }
+   `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: `
+      import PropTypes from "prop-types";
+      class Component extends React.Component {};
       Component.contextTypes = {
         a: PropTypes.string,
         b: PropTypes.string.isRequired,
@@ -367,26 +396,22 @@ ruleTester.run('no-typos', rule, {
     parserOptions: parserOptions
   }, {
     code: `
-      const PropTypes = require('prop-types');
-      const MyPropTypes = require('lib/my-prop-types')
+      import PropTypes from "prop-types"
+      import * as MyPropTypes from 'lib/my-prop-types'
       class Component extends React.Component {};
       Component.propTypes = {
-        a: PropTypes.string,
-        b: MyPropTypes.MYSTRING,
-        c: MyPropTypes.MYSTRING.isRequired,
+        b: PropTypes.string,
+        a: MyPropTypes.MYSTRING,
       }
    `,
     parser: 'babel-eslint',
     parserOptions: parserOptions
   }, {
     code: `
-      const RealPropTypes = require('prop-types');
-      const MyPropTypes = require('lib/my-prop-types')
+      import CustomReact from "react"
       class Component extends React.Component {};
       Component.propTypes = {
-        a: RealPropTypes.string,
-        b: MyPropTypes.MYSTRING,
-        c: MyPropTypes.MYSTRING.isRequired,
+        b: CustomReact.PropTypes.string,
       }
    `,
     parser: 'babel-eslint',
@@ -878,7 +903,7 @@ ruleTester.run('no-typos', rule, {
     }]
   }, {
     code: `
-      const PropTypes = require('prop-types');
+      import PropTypes from 'prop-types';
       class Component extends React.Component {};
       Component.childContextTypes = {
         a: PropTypes.bools,
@@ -900,7 +925,7 @@ ruleTester.run('no-typos', rule, {
     }]
   }, {
     code: `
-     const PropTypes = require('prop-types');
+     import PropTypes from 'prop-types';
      class Component extends React.Component {};
      Component.propTypes = {
        a: PropTypes.string.isrequired,
@@ -908,7 +933,7 @@ ruleTester.run('no-typos', rule, {
          c: PropTypes.number
        }).isrequired
      }
-   `,
+    `,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
@@ -917,7 +942,7 @@ ruleTester.run('no-typos', rule, {
     }]
   }, {
     code: `
-     const PropTypes = require('prop-types');
+     import PropTypes from 'prop-types';
      class Component extends React.Component {};
      Component.propTypes = {
        a: PropTypes.string.isrequired,
@@ -935,7 +960,7 @@ ruleTester.run('no-typos', rule, {
     }]
   }, {
     code: `
-      const RealPropTypes = require('prop-types');
+      import RealPropTypes from 'prop-types';
       class Component extends React.Component {};
       Component.childContextTypes = {
         a: RealPropTypes.bools,
@@ -954,6 +979,18 @@ ruleTester.run('no-typos', rule, {
       message: 'Typo in declared prop type: function'
     }, {
       message: 'Typo in declared prop type: objectof'
+    }]
+  }, {
+    code: `
+      import RealReactDifferentName from "react"
+      Component.propTypes = {
+        b: RealReactDifferentName.PropTypes.STRING,
+      }
+   `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Typo in prop type chain qualifier: STRING'
     }]
   }]
 });
