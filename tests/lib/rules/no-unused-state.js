@@ -479,6 +479,18 @@ eslintTester.run('no-unused-state', rule, {
         }
       }`,
       parser: 'babel-eslint'
+    },
+    {
+      code: `class ThisStateAsAnObject extends React.Component {
+        state = {
+          active: true
+        };
+
+        render() {
+          return <div className={classNames('overflowEdgeIndicator', className, this.state)} />;
+        }
+      }`,
+      parser: 'babel-eslint'
     }
   ],
 
