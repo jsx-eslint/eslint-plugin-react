@@ -310,6 +310,50 @@ ruleTester.run('sort-comp', rule, {
         'render'
       ]
     }]
+  }, {
+    // Instance methods should be at the top
+    code: [
+      'class Hello extends React.Component {',
+      '  foo = () => {}',
+      '  constructor() {}',
+      '  classMethod() {}',
+      '  static bar = () => {}',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      order: [
+        'instance-methods',
+        'lifecycle',
+        'everything-else',
+        'render'
+      ]
+    }]
+  }, {
+    // Instance variables should be at the top
+    code: [
+      'class Hello extends React.Component {',
+      '  foo = \'bar\'',
+      '  constructor() {}',
+      '  state = {}',
+      '  static bar = \'foo\'',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{
+      order: [
+        'instance-variables',
+        'lifecycle',
+        'everything-else',
+        'render'
+      ]
+    }]
   }],
 
   invalid: [{
@@ -510,6 +554,52 @@ ruleTester.run('sort-comp', rule, {
       order: [
         'setters',
         'static-methods',
+        'lifecycle',
+        'everything-else',
+        'render'
+      ]
+    }]
+  }, {
+    // Instance methods should not be at the top
+    code: [
+      'class Hello extends React.Component {',
+      '  constructor() {}',
+      '  static bar = () => {}',
+      '  classMethod() {}',
+      '  foo = function() {}',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{message: 'foo should be placed before constructor'}],
+    options: [{
+      order: [
+        'instance-methods',
+        'lifecycle',
+        'everything-else',
+        'render'
+      ]
+    }]
+  }, {
+    // Instance variables should not be at the top
+    code: [
+      'class Hello extends React.Component {',
+      '  constructor() {}',
+      '  state = {}',
+      '  static bar = {}',
+      '  foo = {}',
+      '  render() {',
+      '    return <div>{this.props.text}</div>;',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{message: 'foo should be placed before constructor'}],
+    options: [{
+      order: [
+        'instance-variables',
         'lifecycle',
         'everything-else',
         'render'
