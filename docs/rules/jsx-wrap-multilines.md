@@ -10,13 +10,13 @@ This rule optionally takes a second parameter in the form of an object, containi
 
 ```json
 {
-  "declaration": "parens",
-  "assignment": "parens",
-  "return": "parens",
-  "arrow": "parens",
-  "condition": "ignore",
-  "logical": "ignore",
-  "prop": "ignore"
+  "declaration": true,
+  "assignment": true,
+  "return": true,
+  "arrow": true,
+  "condition": false,
+  "logical": false,
+  "prop": false
 }
 ```
 
