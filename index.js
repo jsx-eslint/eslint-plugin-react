@@ -8,6 +8,7 @@ const allRules = {
   'destructuring-assignment': require('./lib/rules/destructuring-assignment'),
   'display-name': require('./lib/rules/display-name'),
   'forbid-component-props': require('./lib/rules/forbid-component-props'),
+  'forbid-dom-props': require('./lib/rules/forbid-dom-props'),
   'forbid-elements': require('./lib/rules/forbid-elements'),
   'forbid-prop-types': require('./lib/rules/forbid-prop-types'),
   'forbid-foreign-prop-types': require('./lib/rules/forbid-foreign-prop-types'),
