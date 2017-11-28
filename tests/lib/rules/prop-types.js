@@ -34,7 +34,7 @@ require('babel-eslint');
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('prop-types', rule, {
-
+  // valid: [],
   valid: [
     {
       code: [
@@ -1854,14 +1854,13 @@ ruleTester.run('prop-types', rule, {
       }
 
       A.propTypes = {
-        a: React.PropTypes.string,
-        ...SharedPropTypes // eslint-disable-line object-shorthand
-      };
-    `,
+         a: React.PropTypes.string,
+         ...SharedPropTypes // eslint-disable-line object-shorthand
+       };
+     `,
       parser: 'babel-eslint'
     }
   ],
-
   invalid: [
     {
       code: [
@@ -3532,6 +3531,23 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'fooBar\' is missing in props validation'
       }],
+      parser: 'babel-eslint'
+    },
+    {
+      code: `
+        const Foo = ({ a: { b } }) => {
+          const { c } = b
+          return <div>test</div>
+        }
+        Foo.propTypes = {
+          a: PropTypes.object.shape({
+            b: PropTypes.object.shape({
+
+            })
+          }),
+        }
+      `,
+      errors: [],
       parser: 'babel-eslint'
     }
   ]
