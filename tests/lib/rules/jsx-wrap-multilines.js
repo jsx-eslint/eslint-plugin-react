@@ -249,6 +249,16 @@ const LOGICAL_NO_PAREN = `
   </div>
 `;
 
+const LOGICAL_PAREN_NEW_LINE_AUTOFIX = `
+  <div>
+    {foo && (
+<div>
+        <p>Hello World</p>
+      </div>
+)}
+  </div>
+`;
+
 const LOGICAL_PAREN_NEW_LINE = `
   <div>
     {foo && (
@@ -287,6 +297,16 @@ const ATTR_PAREN_NEW_LINE = `
       <p>Hello</p>
     </div>
   )}>
+    <p>Hello</p>
+  </div>
+`;
+
+const ATTR_PAREN_NEW_LINE_AUTOFIX = `
+  <div prop={(
+<div>
+      <p>Hello</p>
+    </div>
+)}>
     <p>Hello</p>
   </div>
 `;
@@ -640,7 +660,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: PARENS_NEW_LINES}]
     }, {
       code: LOGICAL_NO_PAREN,
-      output: addNewLineSymbols(LOGICAL_PAREN),
+      output: LOGICAL_PAREN_NEW_LINE_AUTOFIX,
       options: [{logical: 'parens-new-line'}],
       errors: [{message: MISSING_PARENS}]
     }, {
@@ -650,9 +670,8 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: PARENS_NEW_LINES}]
     }, {
       code: ATTR_NO_PAREN,
-      output: addNewLineSymbols(ATTR_PAREN),
+      output: ATTR_PAREN_NEW_LINE_AUTOFIX,
       options: [{prop: 'parens-new-line'}],
       errors: [{message: MISSING_PARENS}]
-    }
-  ]
+    }]
 });
