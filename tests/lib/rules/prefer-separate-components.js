@@ -29,6 +29,14 @@ ruleTester.run('prefer-separate-components', rule, {
         }
       }
     `
+  }, {
+    code: `
+      createReactClass({
+        render() {
+          return <div>foo</div>;
+        }
+      });
+    `
   }],
   invalid: [{
     code: `
@@ -63,6 +71,41 @@ ruleTester.run('prefer-separate-components', rule, {
           );
         }
       }
+    `,
+    errors: 1
+  }, {
+    code: `
+      createReactClass({
+        renderBars() {
+          const bars = ['bar', 'bar', 'bar'];
+          return bars.map((bar) => <span>{bar}</span>);
+        },
+        render() {
+          return (
+            <div>
+              foo
+              {this.renderBars()}
+            </div>
+          );
+        }
+      });
+    `,
+    errors: 1
+  }, {
+    code: `
+      createReactClass({
+        renderBar() {
+          return <span>bar</span>;
+        },
+        render() {
+          return (
+            <div>
+              foo
+              {this.renderBar()}
+            </div>
+          );
+        }
+      });
     `,
     errors: 1
   }]
