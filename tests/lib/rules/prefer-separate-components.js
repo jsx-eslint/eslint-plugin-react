@@ -47,5 +47,23 @@ ruleTester.run('prefer-separate-components', rule, {
       }
     `,
     errors: 1
+  }, {
+    code: `
+      class Foo extends React.Component {
+        renderBars() {
+          const bars = ['bar', 'bar', 'bar'];
+          return bars.map((bar) => <span>{bar}</span>);
+        }
+        render() {
+          return (
+            <div>
+              foo
+              {this.renderBars()}
+            </div>
+          );
+        }
+      }
+    `,
+    errors: 1
   }]
 });
