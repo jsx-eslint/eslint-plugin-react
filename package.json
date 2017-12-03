@@ -24,9 +24,9 @@
   "homepage": "https://github.com/yannickcr/eslint-plugin-react",
   "bugs": "https://github.com/yannickcr/eslint-plugin-react/issues",
   "dependencies": {
-    "doctrine": "^2.0.0",
+    "doctrine": "^2.0.2",
     "has": "^1.0.1",
-    "jsx-ast-utils": "^2.0.0",
+    "jsx-ast-utils": "^2.0.1",
     "prop-types": "^15.6.0"
   },
   "devDependencies": {
