@@ -30,9 +30,9 @@
     "prop-types": "^15.6.0"
   },
   "devDependencies": {
-    "babel-eslint": "^8.0.2",
+    "babel-eslint": "^8.0.3",
     "coveralls": "^3.0.0",
-    "eslint": "^4.10.0",
+    "eslint": "^4.12.1",
     "istanbul": "0.4.5",
     "mocha": "^4.0.1"
   },
