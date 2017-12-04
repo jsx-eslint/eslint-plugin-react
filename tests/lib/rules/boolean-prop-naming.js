@@ -295,6 +295,18 @@ ruleTester.run('boolean-prop-naming', rule, {
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
     parser: 'babel-eslint'
+  }, {
+    // No propWrapperFunctions setting
+    code: `
+    function Card(props) {
+      return <div>{props.showScore ? 'yeh' : 'no'}</div>;
+    }
+    Card.propTypes = merge({}, Card.propTypes, {
+        showScore: PropTypes.bool
+    });`,
+    options: [{
+      rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'
+    }]
   }],
 
   invalid: [{
@@ -514,6 +526,113 @@ ruleTester.run('boolean-prop-naming', rule, {
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }, {
       message: 'Prop name (somethingElse) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
+    code: `
+    function Card(props) {
+      return <div>{props.showScore ? 'yeh' : 'no'}</div>;
+    }
+    Card.propTypes = merge({}, Card.propTypes, {
+        showScore: PropTypes.bool
+    });`,
+    settings: {
+      propWrapperFunctions: ['merge']
+    },
+    options: [{
+      rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'
+    }],
+    errors: [{
+      message: 'Prop name (showScore) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
+    code: `
+    function Card(props) {
+      return <div>{props.showScore ? 'yeh' : 'no'}</div>;
+    }
+    Card.propTypes = Object.assign({}, Card.propTypes, {
+        showScore: PropTypes.bool
+    });`,
+    settings: {
+      propWrapperFunctions: ['Object.assign']
+    },
+    options: [{
+      rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'
+    }],
+    errors: [{
+      message: 'Prop name (showScore) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
+    code: `
+    function Card(props) {
+      return <div>{props.showScore ? 'yeh' : 'no'}</div>;
+    }
+    Card.propTypes = _.assign({}, Card.propTypes, {
+        showScore: PropTypes.bool
+    });`,
+    settings: {
+      propWrapperFunctions: ['_.assign']
+    },
+    options: [{
+      rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'
+    }],
+    errors: [{
+      message: 'Prop name (showScore) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
+    code: `
+    function Card(props) {
+      return <div>{props.showScore ? 'yeh' : 'no'}</div>;
+    }
+    Card.propTypes = forbidExtraProps({
+        showScore: PropTypes.bool
+    });`,
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    },
+    options: [{
+      rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'
+    }],
+    errors: [{
+      message: 'Prop name (showScore) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
+    code: `
+    class Card extends React.Component {
+      render() {
+        return <div>{props.showScore ? 'yeh' : 'no'}</div>;
+      }
+    }
+    Card.propTypes = forbidExtraProps({
+        showScore: PropTypes.bool
+    });`,
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    },
+    options: [{
+      rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'
+    }],
+    errors: [{
+      message: 'Prop name (showScore) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
+    code: `
+    class Card extends React.Component {
+      static propTypes = forbidExtraProps({
+        showScore: PropTypes.bool
+      });
+      render() {
+        return <div>{props.showScore ? 'yeh' : 'no'}</div>;
+      }
+    }`,
+    parser: 'babel-eslint',
+    settings: {
+      propWrapperFunctions: ['forbidExtraProps']
+    },
+    options: [{
+      rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'
+    }],
+    errors: [{
+      message: 'Prop name (showScore) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)'
     }]
   }]
 });
