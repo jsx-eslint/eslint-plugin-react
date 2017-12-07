@@ -35,20 +35,21 @@ require('babel-eslint');
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('prop-types', rule, {
   valid: [
-
   ],
   invalid: [
     {
       code: `
-        const Foo = ({ a }) => {
-          return <div>{a.c}</div>
+        const Foo = ({ a: renamedA }) => {
+          const { b } = renamedA
+          return <div>test</div>
         }
         Foo.propTypes = {
-          a: PropTypes.object.shape({
-          }),
+          a: PropTypes.object.shape({}),
         }
       `,
-      errors: [],
+      errors: [
+        {message: '\'a.b\' is missing in props validation'}
+      ],
       parser: 'babel-eslint'
     }
   ]

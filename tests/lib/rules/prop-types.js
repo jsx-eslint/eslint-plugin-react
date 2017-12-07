@@ -2444,7 +2444,6 @@ ruleTester.run('prop-types', rule, {
       parser: 'babel-eslint',
       errors: [
         {message: '\'names\' is missing in props validation'},
-        {message: '\'names.map\' is missing in props validation'},
         {message: '\'company\' is missing in props validation'}
       ]
     }, {
@@ -3537,18 +3536,111 @@ ruleTester.run('prop-types', rule, {
       code: `
         const Foo = ({ a: { b } }) => {
           const { c } = b
-          return <div>test</div>
+          return <div>{c.d}</div>
         }
         Foo.propTypes = {
           a: PropTypes.object.shape({
             b: PropTypes.object.shape({
-
+              c: PropTypes.object.shape({})
             })
           }),
         }
       `,
-      errors: [],
+      errors: [
+        {message: '\'a.b.c.d\' is missing in props validation'}
+      ],
       parser: 'babel-eslint'
-    }
+    },
+    {
+      code: `
+        const Foo = props => {
+          const { ignore } = this.props
+          const { b } = props.a
+          return <div>{b}</div>
+        }
+        Foo.propTypes = {
+          a: PropTypes.object.shape({}),
+        }
+      `,
+      errors: [
+        {message: '\'a.b\' is missing in props validation'}
+      ],
+      parser: 'babel-eslint'
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          handler = () => {
+            const { handlerIgnore } = props
+          }
+          render = () => {
+            const { renderIgnore } = props
+            const { a } = this.props
+            const { c } = a.b
+          }
+        }
+        Foo.propTypes = {
+          a: PropTypes.object.shape({
+            b: PropTypes.object.shape({})
+          }),
+        }
+      `,
+      errors: [
+        {message: '\'a.b.c\' is missing in props validation'}
+      ],
+      parser: 'babel-eslint'
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          componentWillReceiveProps = nextProps => {
+            const { b } = nextProps.a
+            const { d } = this.props.c
+          }
+          render = () => {
+            return <div>test</div>
+          }
+        }
+        Foo.propTypes = {
+          a: PropTypes.object.shape({}),
+          c: PropTypes.object.shape({}),
+        }
+      `,
+      errors: [
+        {message: '\'a.b\' is missing in props validation'},
+        {message: '\'c.d\' is missing in props validation'}
+      ],
+      parser: 'babel-eslint'
+    },
+    {
+      code: `
+        const Foo = ({ a: renamedA }) => {
+          const { b } = renamedA
+          return <div>test</div>
+        }
+        Foo.propTypes = {
+          a: PropTypes.object.shape({}),
+        }
+      `,
+      errors: [
+        {message: '\'a.b\' is missing in props validation'}
+      ],
+      parser: 'babel-eslint'
+    },
+    {
+      code: `
+        const Foo = ({ a: renamedA }) => {
+          return <div>{renamedA.b}</div>
+        }
+        Foo.propTypes = {
+          a: PropTypes.object.shape({}),
+        }
+      `,
+      errors: [
+        {message: '\'a.b\' is missing in props validation'}
+      ],
+      parser: 'babel-eslint'
+    },
+
   ]
 });
