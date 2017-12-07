@@ -634,5 +634,20 @@ ruleTester.run('boolean-prop-naming', rule, {
     errors: [{
       message: 'Prop name (showScore) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)'
     }]
+  }, {
+    // If a custom message is provided, use it.
+    code: `
+      class Hello extends React.Component {
+        render () { return <div />; }
+      }
+      Hello.propTypes = {something: PropTypes.bool}
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+',
+      message: 'Boolean prop names must begin with either \'is\' or \'has\'.'
+    }],
+    errors: [{
+      message: 'Boolean prop names must begin with either \'is\' or \'has\'.'
+    }]
   }]
 });

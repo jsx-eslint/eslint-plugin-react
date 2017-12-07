@@ -30,7 +30,7 @@ var Hello = createReactClass({
 
 ```js
 ...
-"react/boolean-prop-naming": [<enabled>, { "propTypeNames": Array<string>, "rule": <string> }]
+"react/boolean-prop-naming": [<enabled>, { "propTypeNames": Array<string>, "rule": <string>, "message": <string> }]
 ...
 ```
 
@@ -65,3 +65,7 @@ For supporting "is" naming:
 ```jsx
 "react/boolean-prop-naming": ["error", { "rule": "^is[A-Z]([A-Za-z0-9]?)+" }]
 ```
+
+### `message`
+
+The custom message to display upon failure to match the rule. This overrides the default message.
