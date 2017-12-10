@@ -8,9 +8,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`no-unknown-property`]: add `dialog` attributes ([#3436][] @ljharb)
 * [`no-arrow-function-lifecycle`]: when converting from an arrow, remove the semi and wrapping parens ([#3337][] @ljharb)
+* [`jsx-key`]: Ignore elements inside `React.Children.toArray()` ([#1591][] @silvenon)
 
 [#3436]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3436
 [#3337]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3337
+[#1591]: https://github.com/jsx-eslint/eslint-plugin-react/pull/1591
 
 ## [7.31.8] - 2022.09.08
 
