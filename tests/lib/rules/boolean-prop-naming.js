@@ -644,10 +644,25 @@ ruleTester.run('boolean-prop-naming', rule, {
     `,
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+',
-      message: 'Boolean prop names must begin with either \'is\' or \'has\'.'
+      message: 'Boolean prop names must begin with either \'is\' or \'has\''
     }],
     errors: [{
-      message: 'Boolean prop names must begin with either \'is\' or \'has\'.'
+      message: 'Boolean prop names must begin with either \'is\' or \'has\''
+    }]
+  }, {
+    // Custom messages use ESLint string templating.
+    code: `
+      class Hello extends React.Component {
+        render () { return <div />; }
+      }
+      Hello.propTypes = {something: PropTypes.bool}
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+',
+      message: 'It is better if your prop ({{ propName }}) matches this pattern: ({{ pattern }})'
+    }],
+    errors: [{
+      message: 'It is better if your prop (something) matches this pattern: (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
   }]
 });
