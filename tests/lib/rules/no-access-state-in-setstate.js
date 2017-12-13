@@ -64,6 +64,17 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       });
     `,
     parserOptions: parserOptions
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  onClick: function() {',
+      '    var nextValueNotUsed = this.state.value + 1',
+      '    var nextValue = 2',
+      '    this.setState({value: nextValue})',
+      '  }',
+      '});'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -96,6 +107,19 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '  onClick: function() {',
       '    var nextValue = this.state.value + 1',
       '    this.setState({value: nextValue})',
+      '  }',
+      '});'
+    ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Use callback in setState when referencing the previous state.'
+    }]
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  onClick: function() {',
+      '    var {state} = this',
+      '    this.setState({value: state.value + 1})',
       '  }',
       '});'
     ].join('\n'),
