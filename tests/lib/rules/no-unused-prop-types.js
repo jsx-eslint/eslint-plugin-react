@@ -2440,6 +2440,17 @@ ruleTester.run('no-unused-prop-types', rule, {
       }
       `,
       parser: 'babel-eslint'
+    },
+    {
+      code: `
+        class MyComponent extends React.Component<Props> {
+          render() {
+            return <div>{ this.props.other }</div>
+          }
+        }
+        MyComponent.propTypes = { other: () => {} };
+      `,
+      parser: 'babel-eslint'
     }
   ],
 
