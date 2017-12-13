@@ -2443,14 +2443,43 @@ ruleTester.run('no-unused-prop-types', rule, {
     },
     {
       code: `
-        class MyComponent extends React.Component<Props> {
+        class MyComponent extends React.Component {
           render() {
             return <div>{ this.props.other }</div>
           }
         }
         MyComponent.propTypes = { other: () => {} };
-      `,
-      parser: 'babel-eslint'
+      `
+    },
+    {
+      code: `
+        class MyComponent extends React.Component {
+          render() {
+            return <div>{ this.props.other }</div>
+          }
+        }
+        MyComponent.propTypes = { other() {} };
+      `
+    },
+    {
+      code: `
+        class MyComponent extends React.Component {
+          render() {
+            return <div>{ this.props.other }</div>
+          }
+        }
+        MyComponent.propTypes = { other: function () {} };
+      `
+    },
+    {
+      code: `
+        class MyComponent extends React.Component {
+          render() {
+            return <div>{ this.props.other }</div>
+          }
+        }
+        MyComponent.propTypes = { * other() {} };
+      `
     }
   ],
 
