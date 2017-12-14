@@ -34,6 +34,7 @@ require('babel-eslint');
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('prop-types', rule, {
+
   valid: [
     {
       code: [
@@ -1853,10 +1854,10 @@ ruleTester.run('prop-types', rule, {
       }
 
       A.propTypes = {
-         a: React.PropTypes.string,
-         ...SharedPropTypes // eslint-disable-line object-shorthand
-       };
-     `,
+        a: React.PropTypes.string,
+        ...SharedPropTypes // eslint-disable-line object-shorthand
+      };
+    `,
       parser: 'babel-eslint'
     }
   ],
