@@ -65,7 +65,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
     `,
     parserOptions: parserOptions
   }, {
-    // issue 1597: allow this.state in callback
+    // issue 1604: allow this.state in callback
     code: `
       var Hello = React.createClass({
         onClick: function() {
