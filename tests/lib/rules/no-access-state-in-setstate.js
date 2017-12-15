@@ -65,6 +65,25 @@ ruleTester.run('no-access-state-in-setstate', rule, {
     `,
     parserOptions: parserOptions
   }, {
+    // issue 1597: allow this.state in callback
+    code: `
+      var Hello = React.createClass({
+        onClick: function() {
+          this.setState({}, () => console.log(this.state));
+        }
+      });
+    `,
+    parserOptions: parserOptions
+  }, {
+    code: `
+      var Hello = React.createClass({
+        onClick: function() {
+          this.setState({}, () => 1 + 1);
+        }
+      });
+    `,
+    parserOptions: parserOptions
+  }, {
     code: [
       'var Hello = React.createClass({',
       '  onClick: function() {',
@@ -138,6 +157,30 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '  }',
       '});'
     ].join('\n'),
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Use callback in setState when referencing the previous state.'
+    }]
+  }, {
+    code: `
+      var Hello = React.createClass({
+        onClick: function() {
+          this.setState(this.state, () => 1 + 1);
+        }
+      });
+    `,
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Use callback in setState when referencing the previous state.'
+    }]
+  }, {
+    code: `
+      var Hello = React.createClass({
+        onClick: function() {
+          this.setState(this.state, () => console.log(this.state));
+        }
+      });
+    `,
     parserOptions: parserOptions,
     errors: [{
       message: 'Use callback in setState when referencing the previous state.'
