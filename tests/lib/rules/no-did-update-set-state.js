@@ -109,6 +109,20 @@ ruleTester.run('no-did-update-set-state', rule, {
     }]
   }, {
     code: `
+      class Hello extends React.Component {
+        componentDidUpdate = () => {
+          this.setState({
+            data: data
+          });
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Do not use setState in componentDidUpdate'
+    }]
+  }, {
+    code: `
       var Hello = createReactClass({
         componentDidUpdate: function() {
           this.setState({

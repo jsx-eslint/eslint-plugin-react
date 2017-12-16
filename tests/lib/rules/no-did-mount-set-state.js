@@ -109,6 +109,20 @@ ruleTester.run('no-did-mount-set-state', rule, {
     }]
   }, {
     code: `
+      class Hello extends React.Component {
+        componentDidMount = () => {
+          this.setState({
+            data: data
+          });
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Do not use setState in componentDidMount'
+    }]
+  }, {
+    code: `
       var Hello = createReactClass({
         componentDidMount: function() {
           this.setState({
