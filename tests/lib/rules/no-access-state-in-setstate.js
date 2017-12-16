@@ -75,6 +75,17 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '});'
     ].join('\n'),
     parserOptions: parserOptions
+  }, {
+    code: [
+      'var Hello = React.createClass({',
+      '  onClick: function() {',
+      '    this.setState(prevState => {}, () => {',
+      '      this.props.doSomething(this.state);',
+      '    });',
+      '  }',
+      '});'
+    ].join('\n'),
+    parserOptions: parserOptions
   }],
 
   invalid: [{
