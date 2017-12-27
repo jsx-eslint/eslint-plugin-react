@@ -2480,6 +2480,22 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
         MyComponent.propTypes = { * other() {} };
       `
+    },
+    {
+      code: `
+        class MyComponent extends React.Component {
+          componentDidMount() {
+            this.helperMethod();
+          }
+          componentWillReceiveProps(nextProps) {
+            this.helperMethod(nextProps);
+          }
+          helperMethod(props = this.props) {
+            const { message } = props;
+          }
+        }
+        MyComponent.propTypes = { message: PropTypes.string };
+      `
     }
   ],
 
