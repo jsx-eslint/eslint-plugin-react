@@ -174,7 +174,7 @@ ruleTester.run('no-typos', rule, {
       const contextTypes = "CONTEXTTYPES"
       const childContextTypes = "CHILDCONTEXTTYPES"
       const defautProps = "DEFAULTPROPS"
-      
+
       class First extends React.Component {}
       First[propTypes] = {};
       First[contextTypes] = {};
@@ -336,6 +336,29 @@ ruleTester.run('no-typos', rule, {
        }).isRequired
      }
    `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    // ensure that an absent arg to PropTypes.shape does not crash
+    code: `class Component extends React.Component {};
+     Component.propTypes = {
+       a: PropTypes.shape(),
+     };
+     Component.contextTypes = {
+       a: PropTypes.shape(),
+     };
+    `,
+    parserOptions: parserOptions
+  }, {
+    // ensure that an absent arg to PropTypes.shape does not crash
+    code: `class Component extends React.Component {};
+     Component.propTypes = {
+       a: PropTypes.shape(),
+     };
+     Component.contextTypes = {
+       a: PropTypes.shape(),
+     };
+    `,
     parser: 'babel-eslint',
     parserOptions: parserOptions
   }, {
