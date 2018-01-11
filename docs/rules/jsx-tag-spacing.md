@@ -1,6 +1,6 @@
 # Validate whitespace in and around the JSX opening and closing brackets (react/jsx-tag-spacing)
 
-Enforce or forbid spaces after the opening bracket, before the closing bracket of self-closing elements, and between the angle bracket and slash of JSX closing or self-closing elements.
+Enforce or forbid spaces after the opening bracket, before the closing bracket, before the closing bracket of self-closing elements, and between the angle bracket and slash of JSX closing or self-closing elements.
 
 **Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
 
@@ -8,7 +8,7 @@ Enforce or forbid spaces after the opening bracket, before the closing bracket o
 
 This rule checks the whitespace inside and surrounding the JSX syntactic elements.
 
-This rule takes one argument, an object with 3 possible keys: `closingSlash`, `beforeSelfClosing` and `afterOpening`. Each key can receive the value `"allow"` to disable that specific check.
+This rule takes one argument, an object with 4 possible keys: `closingSlash`, `beforeSelfClosing`, `afterOpening`, and `beforeClosing`. Each key can receive the value `"allow"` to disable that specific check.
 
 The default values are:
 
@@ -16,7 +16,8 @@ The default values are:
 {
   "closingSlash": "never",
   "beforeSelfClosing": "always",
-  "afterOpening": "never"
+  "afterOpening": "never",
+  "beforeClosing": "never"
 }
 ```
 
@@ -174,6 +175,48 @@ The following patterns are **not** considered warnings when configured `"allow-m
   firstName="John"
   lastName="Smith"
 />
+```
+
+### `beforeClosing`
+
+This check can be set to `"always"`, `"never"`, or `"allow"` (to disable it).
+
+If it is `"always"` the check warns whenever whitespace is missing before the closing bracket of a JSX opening element or whenever a space is missing before the closing bracket closing element. If `"never"`, them it warns if a space is present before the closing bracket of either a JSX opening element or closing element. This rule will never warn for self closing JSX elements. The default value of this check is `"never"`.
+
+The following patterns are considered warnings when configured `"always"`:
+
+```jsx
+<Hello></Hello>
+<Hello></Hello >
+<Hello ></Hello>
+```
+
+The following patterns are **not** considered warnings when configured `"always"`:
+
+```jsx
+<Hello ></Hello >
+<Hello
+  firstName="John"
+>
+</Hello >
+```
+
+The following patterns are considered warnings when configured `"never"`:
+
+```jsx
+<Hello ></Hello>
+<Hello></Hello >
+<Hello ></Hello >
+```
+
+The following patterns are **not** considered warnings when configured `"never"`:
+
+```jsx
+<Hello></Hello>
+<Hello
+  firstName="John"
+>
+</Hello>
 ```
 
 ## When Not To Use It
