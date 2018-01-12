@@ -166,12 +166,28 @@ ruleTester.run('jsx-tag-spacing', rule, {
     ].join('\n'),
     options: beforeClosingOptions('never')
   }, {
+    code: [
+      '<App',
+      '   foo="bar"',
+      '>',
+      '</App>'
+    ].join('\n'),
+    options: beforeClosingOptions('never')
+  }, {
     code: '<App ></App >',
     options: beforeClosingOptions('always')
   }, {
     code: [
       '<App',
       'foo="bar"',
+      '>',
+      '</App >'
+    ].join('\n'),
+    options: beforeClosingOptions('always')
+  }, {
+    code: [
+      '<App',
+      '    foo="bar"',
       '>',
       '</App >'
     ].join('\n'),
