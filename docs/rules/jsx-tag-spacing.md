@@ -17,7 +17,7 @@ The default values are:
   "closingSlash": "never",
   "beforeSelfClosing": "always",
   "afterOpening": "never",
-  "beforeClosing": "never"
+  "beforeClosing": "allow"
 }
 ```
 
@@ -181,7 +181,7 @@ The following patterns are **not** considered warnings when configured `"allow-m
 
 This check can be set to `"always"`, `"never"`, or `"allow"` (to disable it).
 
-If it is `"always"` the check warns whenever whitespace is missing before the closing bracket of a JSX opening element or whenever a space is missing before the closing bracket closing element. If `"never"`, then it warns if a space is present before the closing bracket of either a JSX opening element or closing element. This rule will never warn for self closing JSX elements. The default value of this check is `"never"`.
+If it is `"always"` the check warns whenever whitespace is missing before the closing bracket of a JSX opening element or whenever a space is missing before the closing bracket closing element. If `"never"`, then it warns if a space is present before the closing bracket of either a JSX opening element or closing element. This rule will never warn for self closing JSX elements. The default value of this check is `"allow"`.
 
 The following patterns are considered warnings when configured `"always"`:
 
