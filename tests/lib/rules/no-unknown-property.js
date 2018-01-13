@@ -41,7 +41,8 @@ ruleTester.run('no-unknown-property', rule, {
     {code: '<atom-panel class="foo"></atom-panel>;'}, {
       code: '<div class="bar"></div>;',
       options: [{ignore: ['class']}]
-    }
+    },
+    {code: '<script crossorigin />'}
   ],
   invalid: [{
     code: '<div class="bar"></div>;',
@@ -79,5 +80,14 @@ ruleTester.run('no-unknown-property', rule, {
     code: '<rect clip-path="bar" />;',
     output: '<rect clipPath="bar" />;',
     errors: [{message: 'Unknown property \'clip-path\' found, use \'clipPath\' instead'}]
+  }, {
+    code: '<script crossOrigin />',
+    errors: [{message: 'Unknown property \'crossOrigin\' found, use \'crossorigin\' instead'}]
+  }, {
+    code: '<div crossOrigin />',
+    errors: [{message: 'Unknown property \'crossOrigin\' found, use \'crossorigin\' instead'}]
+  }, {
+    code: '<div crossorigin />',
+    errors: [{message: 'Invalid property \'crossorigin\' found on tag \'div\', but it is only allowed on: script, img, video'}]
   }]
 });
