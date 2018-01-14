@@ -69,6 +69,11 @@ ruleTester.run('no-deprecated', rule, {
       message: 'this.transferPropsTo is deprecated since React 0.12.0, use spread operator ({...}) instead'
     }]
   }, {
+    code: 'React.addons.TestUtils',
+    errors: [{
+      message: 'React.addons.TestUtils is deprecated since React 15.5.0, use ReactDOM.TestUtils instead'
+    }]
+  }, {
     code: 'React.addons.classSet()',
     errors: [{
       message: 'React.addons.classSet is deprecated since React 0.13.0, use the npm module classnames instead'
