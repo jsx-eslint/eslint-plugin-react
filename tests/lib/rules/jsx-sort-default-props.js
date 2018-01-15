@@ -264,6 +264,28 @@ ruleTester.run('jsx-sort-default-props', rule, {
     parser: 'babel-eslint'
   }, {
     code: [
+      'export default class ClassWithSpreadInPropTypes extends BaseClass {',
+      '  static propTypes = {',
+      '    a: PropTypes.string,',
+      '    b: PropTypes.string,',
+      '    c: PropTypes.string,',
+      '    d: PropTypes.string,',
+      '    e: PropTypes.string,',
+      '    f: PropTypes.string',
+      '  }',
+      '  static defaultProps = {',
+      '    a: "a",',
+      '    b: "b",',
+      '    ...c.defaultProps,',
+      '    e: "e",',
+      '    f: "f",',
+      '    ...d.defaultProps',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
       'const defaults = {',
       '  b: "b"',
       '};',
@@ -537,6 +559,29 @@ ruleTester.run('jsx-sort-default-props', rule, {
       column: 5,
       type: 'Property'
     }]
+  }, {
+    code: [
+      'export default class ClassWithSpreadInPropTypes extends BaseClass {',
+      '  static propTypes = {',
+      '    a: PropTypes.string,',
+      '    b: PropTypes.string,',
+      '    c: PropTypes.string,',
+      '    d: PropTypes.string,',
+      '    e: PropTypes.string,',
+      '    f: PropTypes.string',
+      '  }',
+      '  static defaultProps = {',
+      '    b: "b",',
+      '    a: "a",',
+      '    ...c.defaultProps,',
+      '    f: "f",',
+      '    e: "e",',
+      '    ...d.defaultProps',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: 2
   }, {
     code: [
       'const defaults = {',

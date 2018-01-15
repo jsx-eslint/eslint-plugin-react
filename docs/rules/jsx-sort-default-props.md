@@ -65,6 +65,25 @@ StatelessComponentWithSpreadInPropTypes.defaultProps = {
   a: "a",
   ...defaults,
 };
+
+export default class ClassWithSpreadInPropTypes extends BaseClass {
+  static propTypes = {
+    a: PropTypes.string,
+    b: PropTypes.string,
+    c: PropTypes.string,
+    d: PropTypes.string,
+    e: PropTypes.string,
+    f: PropTypes.string
+  }
+  static defaultProps = {
+    b: "b",
+    a: "a",
+    ...c.defaultProps,
+    f: "f",
+    e: "e",
+    ...d.defaultProps
+  }
+}
 ```
 
 The following patterns are considered okay and do **not** cause warnings:
@@ -126,6 +145,25 @@ StatelessComponentWithSpreadInPropTypes.defaultProps = {
   c: "c",
   ...defaults,
 };
+
+export default class ClassWithSpreadInPropTypes extends BaseClass {
+  static propTypes = {
+    a: PropTypes.string,
+    b: PropTypes.string,
+    c: PropTypes.string,
+    d: PropTypes.string,
+    e: PropTypes.string,
+    f: PropTypes.string
+  }
+  static defaultProps = {
+    a: "a",
+    b: "b",
+    ...c.defaultProps,
+    e: "e",
+    f: "f",
+    ...d.defaultProps
+  }
+}
 ```
 
 ## Rule Options
