@@ -47,6 +47,24 @@ Component.defaultProps = {
   y: "y",
   a: "a"
 };
+
+const defaults = {
+  b: "b"
+};
+const types = {
+  a: PropTypes.string,
+  b: PropTypes.string,
+  c: PropTypes.string'
+};
+function StatelessComponentWithSpreadInPropTypes({ a, b, c }) {
+  return <div>{a}{b}{c}</div>;
+}
+StatelessComponentWithSpreadInPropTypes.propTypes = types;
+StatelessComponentWithSpreadInPropTypes.defaultProps = {
+  c: "c",
+  a: "a",
+  ...defaults,
+};
 ```
 
 The following patterns are considered okay and do **not** cause warnings:
@@ -89,6 +107,24 @@ Component.defaultProps = {
   a: "a",
   y: "y",
   z: "z"
+};
+
+const defaults = {
+  b: "b"
+};
+const types = {
+  a: PropTypes.string,
+  b: PropTypes.string,
+  c: PropTypes.string'
+};
+function StatelessComponentWithSpreadInPropTypes({ a, b, c }) {
+  return <div>{a}{b}{c}</div>;
+}
+StatelessComponentWithSpreadInPropTypes.propTypes = types;
+StatelessComponentWithSpreadInPropTypes.defaultProps = {
+  a: "a",
+  c: "c",
+  ...defaults,
 };
 ```
 

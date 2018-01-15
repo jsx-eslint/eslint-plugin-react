@@ -264,6 +264,27 @@ ruleTester.run('jsx-sort-default-props', rule, {
     parser: 'babel-eslint'
   }, {
     code: [
+      'const defaults = {',
+      '  b: "b"',
+      '};',
+      'const types = {',
+      '  a: PropTypes.string,',
+      '  b: PropTypes.string,',
+      '  c: PropTypes.string',
+      '};',
+      'function StatelessComponentWithSpreadInPropTypes({ a, b, c }) {',
+      '  return <div>{a}{b}{c}</div>;',
+      '}',
+      'StatelessComponentWithSpreadInPropTypes.propTypes = types;',
+      'StatelessComponentWithSpreadInPropTypes.defaultProps = {',
+      '  c: "c",',
+      '  ...defaults,',
+      '  a: "a"',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
       'const propTypes = require(\'./externalPropTypes\')',
       'const defaultProps = require(\'./externalDefaultProps\')',
       'const TextFieldLabel = (props) => {',
@@ -491,6 +512,55 @@ ruleTester.run('jsx-sort-default-props', rule, {
     errors: [{
       message: ERROR_MESSAGE,
       line: 8,
+      column: 3,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'export default class ClassWithSpreadInPropTypes extends BaseClass {',
+      '  static propTypes = {',
+      '    b: PropTypes.string,',
+      '    ...c.propTypes,',
+      '    a: PropTypes.string',
+      '  }',
+      '  static defaultProps = {',
+      '    b: "b",',
+      '    a: "a",',
+      '    ...c.defaultProps',
+      '  }',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 9,
+      column: 5,
+      type: 'Property'
+    }]
+  }, {
+    code: [
+      'const defaults = {',
+      '  b: "b"',
+      '};',
+      'const types = {',
+      '  a: PropTypes.string,',
+      '  b: PropTypes.string,',
+      '  c: PropTypes.string',
+      '};',
+      'function StatelessComponentWithSpreadInPropTypes({ a, b, c }) {',
+      '  return <div>{a}{b}{c}</div>;',
+      '}',
+      'StatelessComponentWithSpreadInPropTypes.propTypes = types;',
+      'StatelessComponentWithSpreadInPropTypes.defaultProps = {',
+      '  c: "c",',
+      '  a: "a",',
+      '  ...defaults,',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 15,
       column: 3,
       type: 'Property'
     }]
