@@ -289,6 +289,14 @@ ruleTester.run('jsx-no-literals', rule, {
     }, {
       code: `
         <Foo bar="test">
+          {'Test' + name}
+        </Foo>
+      `,
+      options: [{noStrings: true}],
+      errors: [{message: 'Strings not allowed in JSX files'}]
+    }, {
+      code: `
+        <Foo bar="test">
           Test
         </Foo>
       `,
@@ -315,6 +323,35 @@ ruleTester.run('jsx-no-literals', rule, {
       code: '<Foo bar={`Test`} />',
       options: [{noStrings: true}],
       errors: [{message: 'Strings not allowed in JSX files'}]
+    }, {
+      code: '<Foo bar={`${baz}`} />',
+      options: [{noStrings: true}],
+      errors: [{message: 'Strings not allowed in JSX files'}]
+    }, {
+      code: '<Foo bar={`Test ${baz}`} />',
+      options: [{noStrings: true}],
+      errors: [{message: 'Strings not allowed in JSX files'}]
+    }, {
+      code: '<Foo bar={`foo` + \'bar\'} />',
+      options: [{noStrings: true}],
+      errors: [
+        {message: 'Strings not allowed in JSX files'},
+        {message: 'Strings not allowed in JSX files'}
+      ]
+    }, {
+      code: '<Foo bar={`foo` + `bar`} />',
+      options: [{noStrings: true}],
+      errors: [
+        {message: 'Strings not allowed in JSX files'},
+        {message: 'Strings not allowed in JSX files'}
+      ]
+    }, {
+      code: '<Foo bar={\'foo\' + `bar`} />',
+      options: [{noStrings: true}],
+      errors: [
+        {message: 'Strings not allowed in JSX files'},
+        {message: 'Strings not allowed in JSX files'}
+      ]
     }
   ]
 });
