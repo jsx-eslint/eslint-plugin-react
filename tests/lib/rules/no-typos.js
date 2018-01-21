@@ -378,6 +378,16 @@ ruleTester.run('no-typos', rule, {
        }).isRequired
      }
    `,
+    parserOptions: parserOptions
+  }, {
+    code: `class Component extends React.Component {};
+     Component.propTypes = {
+       b: string.isRequired,
+       c: PropTypes.shape({
+         d: number.isRequired,
+       }).isRequired
+     }
+   `,
     parser: 'babel-eslint',
     parserOptions: parserOptions
   }],
@@ -809,25 +819,32 @@ ruleTester.run('no-typos', rule, {
   }, {
     code: `class Component extends React.Component {};
      Component.propTypes = {
-       b: string.isrequired
+       a: string.isrequired,
+       b: shape({
+         c: number
+       }).isrequired
+     }
+   `,
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Typo in declared prop type: isrequired'
+    }, {
+      message: 'Typo in prop type chain qualifier: isrequired'
+    }]
+  }, {
+    code: `class Component extends React.Component {};
+     Component.propTypes = {
+       a: string.isrequired,
+       b: shape({
+         c: number
+       }).isrequired
      }
    `,
     parser: 'babel-eslint',
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in declared prop type: isrequired'
-    }]
-  }, {
-    code: `class Component extends React.Component {};
-     Component.propTypes = {
-       c: shape({
-         d: number,
-       }).isrequired
-      }
-   `,
-    parser: 'babel-eslint',
-    parserOptions: parserOptions,
-    errors: [{
+    }, {
       message: 'Typo in prop type chain qualifier: isrequired'
     }]
   }]
