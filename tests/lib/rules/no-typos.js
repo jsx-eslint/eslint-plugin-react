@@ -369,6 +369,27 @@ ruleTester.run('no-typos', rule, {
       };
     `,
     parser: 'babel-eslint'
+  }, {
+    code: `class Component extends React.Component {};
+     Component.propTypes = {
+       b: string.isRequired,
+       c: PropTypes.shape({
+         d: number.isRequired,
+       }).isRequired
+     }
+   `,
+    parserOptions: parserOptions
+  }, {
+    code: `class Component extends React.Component {};
+     Component.propTypes = {
+       b: string.isRequired,
+       c: PropTypes.shape({
+         d: number.isRequired,
+       }).isRequired
+     }
+   `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
   }],
 
   invalid: [{
@@ -794,6 +815,37 @@ ruleTester.run('no-typos', rule, {
       message: 'Typo in declared prop type: function'
     }, {
       message: 'Typo in declared prop type: objectof'
+    }]
+  }, {
+    code: `class Component extends React.Component {};
+     Component.propTypes = {
+       a: string.isrequired,
+       b: shape({
+         c: number
+       }).isrequired
+     }
+   `,
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Typo in declared prop type: isrequired'
+    }, {
+      message: 'Typo in prop type chain qualifier: isrequired'
+    }]
+  }, {
+    code: `class Component extends React.Component {};
+     Component.propTypes = {
+       a: string.isrequired,
+       b: shape({
+         c: number
+       }).isrequired
+     }
+   `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Typo in declared prop type: isrequired'
+    }, {
+      message: 'Typo in prop type chain qualifier: isrequired'
     }]
   }]
 });
