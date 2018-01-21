@@ -3117,6 +3117,25 @@ ruleTester.run('prop-types', rule, {
       ]
     }, {
       code: [
+        'class Hello extends Component {',
+        '  componentWillReceiveProps({foo}) {',
+        '    if (foo) {',
+        '      return;',
+        '    }',
+        '  }',
+        '  render() {',
+        '    return <div bar={this.props.bar} />;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '    bar: PropTypes.func',
+        '  }'
+      ].join('\n'),
+      errors: [
+        {message: '\'foo\' is missing in props validation'}
+      ]
+    }, {
+      code: [
         'class Hello extends React.Component {',
         '  static propTypes() {',
         '    return {',
