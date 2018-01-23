@@ -25,7 +25,7 @@ require('babel-eslint');
 // Tests
 // -----------------------------------------------------------------------------
 
-const ERROR_MESSAGE = 'Using another component\'s propTypes is forbidden';
+const ERROR_MESSAGE = 'Using propTypes from another component is not safe because they may be removed in production builds';
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('forbid-foreign-prop-types', rule, {
@@ -50,6 +50,21 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
     code: 'Foo["propTypes"] = propTypes'
   }, {
     code: 'const propTypes = "bar"; Foo[propTypes];'
+  },
+  {
+    code: `
+      const Message = (props) => (<div>{props.message}</div>);
+      Message.propTypes = {
+        message: PropTypes.string
+      };
+      const Hello = (props) => (<Message>Hello {props.name}</Message>);
+      Hello.propTypes = {
+        name: Message.propTypes.message
+      };
+    `,
+    options: [{
+      allowInPropTypes: true
+    }]
   }],
 
   invalid: [{
@@ -138,6 +153,25 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
     errors: [{
       message: ERROR_MESSAGE,
       type: 'Property'
+    }]
+  },
+  {
+    code: `
+      const Message = (props) => (<div>{props.message}</div>);
+      Message.propTypes = {
+        message: PropTypes.string
+      };
+      const Hello = (props) => (<Message>Hello {props.name}</Message>);
+      Hello.propTypes = {
+        name: Message.propTypes.message
+      };
+    `,
+    options: [{
+      allowInPropTypes: false
+    }],
+    errors: [{
+      message: ERROR_MESSAGE,
+      type: 'Identifier'
     }]
   }]
 });
