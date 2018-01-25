@@ -3,6 +3,70 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.6.0] - 2018-01-25
+### Added
+* Add [`forbid-dom-props`][] rule ([#1562][] @davazp)
+* Add [`jsx-child-element-spacing`][] rule ([#1515][] @pfhayes)
+* Add [`no-this-in-sfc`][] rule ([#1435][] @jomasti)
+* Add [`jsx-sort-default-props`][] rule ([#281][] @b0gok)
+* Add `message` option to [`boolean-prop-naming`][] ([#1588][] @louisscruz)
+* Add `beforeClosing` option to [`jsx-tag-spacing`][] ([#1396][] @cjskillingstad)
+* Add `instance-methods` and `instance-variables` to [`sort-comp`][] ([#599][] @RDGthree)
+* Add `propWrapperFunctions` support for [`boolean-prop-naming`][] ([#1478][] @jomasti)
+* Add warning for `React.addons.TestUtils` in [`no-deprecated`][] ([#1644][] @nirnaor)
+* Add URL to rule documentation to the rules metadata ([#1635][] @Arcanemagus)
+
+### Fixed
+* Fix crashes in [`no-access-state-in-setstate`][] ([#1559][] @jomasti, [#1611][] @pfhayes)
+* Fix crash in [`require-optimization`][] when encountering arrays with empty items as values in object ([#1621][] @kamataryo)
+* Fix crash in [`no-unused-prop-types`][] when passing an empty function as a PropType ([#1542][] [#1581][] @kevinzwhuang)
+* Fix crash in [`no-typos`][] when using `PropType.shape` without arguments ([#1471][] @mrichmond)
+* Fix crash when using Unions in flow propTypes ([#1468][] @justinanastos)
+* Fix missing meta in [`jsx-tag-spacing`][] ([#1650][] @flyerhzm)
+* Fix [`no-unused-state`][] to detect usage of `this.state` as an object ([#1572][])
+* Fix [`no-access-state-in-setstate`][] to detect when the `state` variable is destructured from `this.state` ([#1597][] @jaaberg)
+* Fix [`jsx-no-literals`][] to correctly find string literals part of BinaryExpressions ([#1511][] @jaaberg)
+* Fix [`no-typos`][] false positive on custom propTypes with isRequired ([#1607][] @lfades)
+* Fix [`prop-types`][] to check for `nextProps` in `componentWillReceiveProps` ([#1636][] @xjmdoo)
+* Fix [`no-unknown-property`][] to not pascal-casing `crossorigin` attribute and only allow it on script/img/video ([#1642][] @ljharb)
+
+### Changed
+* Improve [`jsx-wrap-multilines`][] auto fix ([#1576][] @sharmilajesupaul)
+* Export `defaultConfig` from [`sort-comp`][] rule for programmatic use ([#1578][] @Andarist)
+* Documentation improvements ([#1552][] @TSMMark, [#1566][] @lukeapage, [#1624][] @alexilyaev, @ljharb)
+* Update dependencies (@ljharb)
+
+[7.6.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.5.1...v7.6.0
+[#1562]: https://github.com/yannickcr/eslint-plugin-react/pull/1562
+[#1515]: https://github.com/yannickcr/eslint-plugin-react/issues/1515
+[#1435]: https://github.com/yannickcr/eslint-plugin-react/issues/1435
+[#281]: https://github.com/yannickcr/eslint-plugin-react/issues/281
+[#1588]: https://github.com/yannickcr/eslint-plugin-react/pull/1588
+[#1396]: https://github.com/yannickcr/eslint-plugin-react/issues/1396
+[#599]: https://github.com/yannickcr/eslint-plugin-react/issues/599
+[#1478]: https://github.com/yannickcr/eslint-plugin-react/pull/1478
+[#1644]: https://github.com/yannickcr/eslint-plugin-react/issues/1644
+[#1635]: https://github.com/yannickcr/eslint-plugin-react/pull/1635
+[#1559]: https://github.com/yannickcr/eslint-plugin-react/issues/1559
+[#1611]: https://github.com/yannickcr/eslint-plugin-react/pull/1611
+[#1621]: https://github.com/yannickcr/eslint-plugin-react/pull/1621
+[#1542]: https://github.com/yannickcr/eslint-plugin-react/issues/1542
+[#1581]: https://github.com/yannickcr/eslint-plugin-react/issues/1581
+[#1471]: https://github.com/yannickcr/eslint-plugin-react/issues/1471
+[#1468]: https://github.com/yannickcr/eslint-plugin-react/issues/1468
+[#1650]: https://github.com/yannickcr/eslint-plugin-react/pull/1650
+[#1572]: https://github.com/yannickcr/eslint-plugin-react/issues/1572
+[#1597]: https://github.com/yannickcr/eslint-plugin-react/issues/1597
+[#1511]: https://github.com/yannickcr/eslint-plugin-react/issues/1511
+[#1607]: https://github.com/yannickcr/eslint-plugin-react/issues/1607
+[#1636]: https://github.com/yannickcr/eslint-plugin-react/issues/1636
+[#1642]: https://github.com/yannickcr/eslint-plugin-react/issues/1642
+[#1576]: https://github.com/yannickcr/eslint-plugin-react/pull/1576
+[#1578]: https://github.com/yannickcr/eslint-plugin-react/pull/1578
+[#1552]: https://github.com/yannickcr/eslint-plugin-react/pull/1552
+[#1566]: https://github.com/yannickcr/eslint-plugin-react/pull/1566
+[#1624]: https://github.com/yannickcr/eslint-plugin-react/pull/1624
+
 ## [7.5.1] - 2017-11-19
 ### Fixed
 * Fix [`jsx-no-bind`][] crash ([#1543][] @jomasti)
@@ -2045,3 +2109,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`destructuring-assignment`]: docs/rules/destructuring-assignment.md
 [`no-access-state-in-setstate`]: docs/rules/no-access-state-in-setstate.md
 [`button-has-type`]: docs/rules/button-has-type.md
+[`forbid-dom-props`]: docs/rules/forbid-dom-props.md
+[`jsx-child-element-spacing`]: docs/rules/jsx-child-element-spacing.md
+[`no-this-in-sfc`]: docs/rules/no-this-in-sfc.md
+[`jsx-sort-default-props`]: docs/rules/jsx-sort-default-props.md
