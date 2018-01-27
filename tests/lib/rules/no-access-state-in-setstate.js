@@ -12,8 +12,9 @@ const rule = require('../../../lib/rules/no-access-state-in-setstate');
 const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 2018,
   ecmaFeatures: {
+    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -125,7 +126,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
     code: [
       'var Hello = React.createClass({',
       '  onClick: function() {',
-      '    var {state} = this',
+      '    var {state, ...rest} = this',
       '    this.setState({value: state.value + 1})',
       '  }',
       '});'
