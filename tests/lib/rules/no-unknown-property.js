@@ -81,6 +81,12 @@ ruleTester.run('no-unknown-property', rule, {
     output: '<rect clipPath="bar" />;',
     errors: [{message: 'Unknown property \'clip-path\' found, use \'clipPath\' instead'}]
   }, {
+    code: '<script crossorigin />',
+    errors: [{message: 'Unknown property \'crossorigin\' found, use \'crossOrigin\' instead'}]
+  }, {
+    code: '<div crossorigin />',
+    errors: [{message: 'Unknown property \'crossorigin\' found, use \'crossOrigin\' instead'}]
+  }, {
     code: '<div crossOrigin />',
     errors: [{message: 'Invalid property \'crossOrigin\' found on tag \'div\', but it is only allowed on: script, img, video, link'}]
   }]
