@@ -42,7 +42,7 @@ ruleTester.run('no-unknown-property', rule, {
       code: '<div class="bar"></div>;',
       options: [{ignore: ['class']}]
     },
-    {code: '<script crossorigin />'}
+    {code: '<script crossOrigin />'}
   ],
   invalid: [{
     code: '<div class="bar"></div>;',
@@ -81,13 +81,13 @@ ruleTester.run('no-unknown-property', rule, {
     output: '<rect clipPath="bar" />;',
     errors: [{message: 'Unknown property \'clip-path\' found, use \'clipPath\' instead'}]
   }, {
-    code: '<script crossOrigin />',
-    errors: [{message: 'Unknown property \'crossOrigin\' found, use \'crossorigin\' instead'}]
-  }, {
-    code: '<div crossOrigin />',
-    errors: [{message: 'Unknown property \'crossOrigin\' found, use \'crossorigin\' instead'}]
+    code: '<script crossorigin />',
+    errors: [{message: 'Unknown property \'crossorigin\' found, use \'crossOrigin\' instead'}]
   }, {
     code: '<div crossorigin />',
-    errors: [{message: 'Invalid property \'crossorigin\' found on tag \'div\', but it is only allowed on: script, img, video'}]
+    errors: [{message: 'Unknown property \'crossorigin\' found, use \'crossOrigin\' instead'}]
+  }, {
+    code: '<div crossOrigin />',
+    errors: [{message: 'Invalid property \'crossOrigin\' found on tag \'div\', but it is only allowed on: script, img, video, link'}]
   }]
 });
