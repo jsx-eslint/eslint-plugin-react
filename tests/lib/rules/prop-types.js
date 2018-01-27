@@ -1583,6 +1583,20 @@ ruleTester.run('prop-types', rule, {
       parser: 'babel-eslint'
     }, {
       code: [
+        'type Note = {text: string, children?: Note[]};',
+        'type Props = {',
+        '  notes: Note[];',
+        '};',
+        'class Hello extends React.Component<void, Props, void> {',
+        '  render () {',
+        '    return <div>Hello {this.props.notes[0].text}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      settings: {react: {flowVersion: '0.52'}},
+      parser: 'babel-eslint'
+    }, {
+      code: [
         'import type Props from "fake";',
         'class Hello extends React.Component<void, Props, void> {',
         '  render () {',
