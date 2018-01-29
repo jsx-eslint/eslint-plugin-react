@@ -3,6 +3,17 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.6.1] - 2018-01-28
+### Fixed
+* Flow: fix crash in [`prop-types`][] with recursive type annotations ([#1653][] @jetpacmonkey)
+* Fix [`no-unknown-property`][] to properly recognize `crossOrigin` instead of `crossorigin`, and allow it on `link` tags. ([#1659][] @jzDev)
+* Fix [`no-access-state-in-setstate`][] to handle object spread ([#1657][] @ljharb)
+
+[7.6.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.6.0...v7.6.1
+[#1659]: https://github.com/yannickcr/eslint-plugin-react/pull/1659
+[#1657]: https://github.com/yannickcr/eslint-plugin-react/issue/1657
+[#1653]: https://github.com/yannickcr/eslint-plugin-react/pull/1653
+
 ## [7.6.0] - 2018-01-25
 ### Added
 * Add [`forbid-dom-props`][] rule ([#1562][] @davazp)
