@@ -132,65 +132,93 @@ ruleTester.run('jsx-child-element-spacing', rule, {
 
   invalid: [{
     code: `
-      <App>
-        foo
-        <a>bar</a>
-      </App>
+<App>
+  foo
+  <a>bar</a>
+</App>
     `,
     errors: [
-      {message: 'Ambiguous spacing before next element a'}
+      {
+        message: 'Ambiguous spacing before next element a',
+        line: 4,
+        column: 3
+      }
     ]
   }, {
     code: `
-      <App>
-        <a>bar</a>
-        baz
-      </App>
+<App>
+  <a>bar</a>
+  baz
+</App>
     `,
     errors: [
-      {message: 'Ambiguous spacing after previous element a'}
+      {
+        message: 'Ambiguous spacing after previous element a',
+        line: 3,
+        column: 13
+      }
     ]
   }, {
     code: `
-      <App>
-        {' '}<a>bar</a>
-        baz
-      </App>
+<App>
+  {' '}<a>bar</a>
+  baz
+</App>
     `,
     errors: [
-      {message: 'Ambiguous spacing after previous element a'}
+      {
+        message: 'Ambiguous spacing after previous element a',
+        line: 3,
+        column: 18
+      }
     ]
   }, {
     code: `
-      <App>
-        Please take a look at
-        <a href="https://js.org">this link</a>.
-      </App>
+<App>
+  Please take a look at
+  <a href="https://js.org">this link</a>.
+</App>
     `,
     errors: [
-      {message: 'Ambiguous spacing before next element a'}
+      {
+        message: 'Ambiguous spacing before next element a',
+        line: 4,
+        column: 3
+      }
     ]
   }, {
     code: `
-      <App>
-        Some <code>loops</code> and some
-        <code>if</code> statements.
-      </App>
+<App>
+  Some <code>loops</code> and some
+  <code>if</code> statements.
+</App>
     `,
     errors: [
-      {message: 'Ambiguous spacing before next element code'}
+      {
+        message: 'Ambiguous spacing before next element code',
+        line: 4,
+        column: 3
+      }
     ]
   }, {
     code: `
-      <App>
-        Here is
-        <a href="https://js.org">a link</a> and here is
-        <a href="https://js.org">another</a>
-      </App>
+<App>
+  Here is
+  <a href="https://js.org">a link</a> and here is
+  <a href="https://js.org">another</a>
+</App>
     `,
     errors: [
-      {message: 'Ambiguous spacing before next element a'},
-      {message: 'Ambiguous spacing before next element a'}
+      {
+        message: 'Ambiguous spacing before next element a',
+        line: 4,
+        column: 3
+      },
+      {
+        message: 'Ambiguous spacing before next element a',
+        line: 5,
+        column: 3
+      }
     ]
   }]
 });
