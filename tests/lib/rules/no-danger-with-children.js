@@ -91,6 +91,12 @@ ruleTester.run('no-danger-with-children', rule, {
     },
     {
       code: 'React.createElement("Hello", undefined, "Children")'
+    },
+    {
+      code: `
+        const props = {...props, scratch: {mode: 'edit'}};
+        const component = shallow(<TaskEditableTitle {...props} />);
+      `
     }
   ],
   invalid: [
