@@ -899,33 +899,37 @@ ruleTester.run('no-typos', rule, {
       message: 'Typo in declared prop type: objectof'
     }]
   }, {
-    code: `class Component extends React.Component {};
+    code: `
+     const PropTypes = require('prop-types');
+     class Component extends React.Component {};
      Component.propTypes = {
-       a: string.isrequired,
-       b: shape({
-         c: number
+       a: PropTypes.string.isrequired,
+       b: PropTypes.shape({
+         c: PropTypes.number
        }).isrequired
      }
    `,
     parserOptions: parserOptions,
     errors: [{
-      message: 'Typo in declared prop type: isrequired'
+      message: 'Typo in prop type chain qualifier: isrequired'
     }, {
       message: 'Typo in prop type chain qualifier: isrequired'
     }]
   }, {
-    code: `class Component extends React.Component {};
+    code: `
+     const PropTypes = require('prop-types');
+     class Component extends React.Component {};
      Component.propTypes = {
-       a: string.isrequired,
-       b: shape({
-         c: number
+       a: PropTypes.string.isrequired,
+       b: PropTypes.shape({
+         c: PropTypes.number
        }).isrequired
      }
    `,
     parser: 'babel-eslint',
     parserOptions: parserOptions,
     errors: [{
-      message: 'Typo in declared prop type: isrequired'
+      message: 'Typo in prop type chain qualifier: isrequired'
     }, {
       message: 'Typo in prop type chain qualifier: isrequired'
     }]
