@@ -980,17 +980,5 @@ ruleTester.run('no-typos', rule, {
     }, {
       message: 'Typo in declared prop type: objectof'
     }]
-  }, {
-    code: `
-      import RealReactDifferentName from "react"
-      Component.propTypes = {
-        b: RealReactDifferentName.PropTypes.STRING,
-      }
-   `,
-    parser: 'babel-eslint',
-    parserOptions: parserOptions,
-    errors: [{
-      message: 'Typo in prop type chain qualifier: STRING'
-    }]
   }]
 });
