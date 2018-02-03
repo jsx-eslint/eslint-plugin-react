@@ -1229,6 +1229,20 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint'
     }, {
+      // Destructured props in componentWillReceiveProps shouldn't throw errors when used createReactClass
+      code: [
+        'var Hello = createReactClass({',
+        '  propTypes: {',
+        '    something: PropTypes.bool,',
+        '  },',
+        '  componentWillReceiveProps (nextProps) {',
+        '    const {something} = nextProps;',
+        '    doSomething(something);',
+        '  }',
+        '})'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
       // Destructured function props in componentWillReceiveProps shouldn't throw errors
       code: [
         'class Hello extends Component {',
