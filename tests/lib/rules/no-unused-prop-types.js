@@ -1229,6 +1229,19 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint'
     }, {
+      // Destructured props in componentWillReceiveProps shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  componentWillReceiveProps (nextProps) {',
+        '    const {something} = nextProps;',
+        '    doSomething(something);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  something: PropTypes.bool,',
+        '};'
+      ].join('\n')
+    }, {
       // Destructured props in componentWillReceiveProps shouldn't throw errors when used createReactClass
       code: [
         'var Hello = createReactClass({',
@@ -1268,6 +1281,18 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // Destructured function props in componentWillReceiveProps shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  componentWillReceiveProps ({something}) {',
+        '    doSomething(something);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  something: PropTypes.bool,',
+        '};'
+      ].join('\n')
     }, {
       // Destructured function props in componentWillReceiveProps shouldn't throw errors when used createReactClass
       code: [
@@ -1309,6 +1334,20 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint'
     }, {
+      // Destructured props in the constructor shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  constructor (props) {',
+        '    super(props);',
+        '    const {something} = props;',
+        '    doSomething(something);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  something: PropTypes.bool,',
+        '};'
+      ].join('\n')
+    }, {
       // Destructured function props in the constructor shouldn't throw errors
       code: [
         'class Hello extends Component {',
@@ -1323,6 +1362,19 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint'
     }, {
+      // Destructured function props in the constructor shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  constructor ({something}) {',
+        '    super({something});',
+        '    doSomething(something);',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  something: PropTypes.bool,',
+        '};'
+      ].join('\n')
+    }, {
       // Destructured props in the `shouldComponentUpdate` method shouldn't throw errors
       code: [
         'class Hello extends Component {',
@@ -1336,6 +1388,19 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // Destructured props in the `shouldComponentUpdate` method shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  shouldComponentUpdate (nextProps, nextState) {',
+        '    const {something} = nextProps;',
+        '    return something;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  something: PropTypes.bool,',
+        '};'
+      ].join('\n')
     }, {
       // Destructured props in `shouldComponentUpdate` shouldn't throw errors when used createReactClass
       code: [
@@ -1377,6 +1442,18 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint'
     }, {
+      // Destructured function props in the `shouldComponentUpdate` method shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  shouldComponentUpdate ({something}, nextState) {',
+        '    return something;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  something: PropTypes.bool,',
+        '};'
+      ].join('\n')
+    }, {
       // Destructured function props in `shouldComponentUpdate` shouldn't throw errors when used createReactClass
       code: [
         'var Hello = createReactClass({',
@@ -1415,6 +1492,19 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // Destructured props in the `componentWillUpdate` method shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  componentWillUpdate (nextProps, nextState) {',
+        '    const {something} = nextProps;',
+        '    return something;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  something: PropTypes.bool,',
+        '};'
+      ].join('\n')
     }, {
       // Destructured props in `componentWillUpdate` shouldn't throw errors when used createReactClass
       code: [
@@ -1456,6 +1546,18 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint'
     }, {
+      // Destructured function props in the `componentWillUpdate` method shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  componentWillUpdate ({something}, nextState) {',
+        '    return something;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  something: PropTypes.bool,',
+        '};'
+      ].join('\n')
+    }, {
       // Destructured function props in the `componentWillUpdate` method shouldn't throw errors when used createReactClass
       code: [
         'var Hello = createReactClass({',
@@ -1494,6 +1596,19 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // Destructured props in the `componentDidUpdate` method shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  componentDidUpdate (prevProps, prevState) {',
+        '    const {something} = prevProps;',
+        '    return something;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  something: PropTypes.bool,',
+        '};'
+      ].join('\n')
     }, {
       // Destructured props in `componentDidUpdate` shouldn't throw errors when used createReactClass
       code: [
@@ -1535,6 +1650,18 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint'
     }, {
+      // Destructured function props in the `componentDidUpdate` method shouldn't throw errors
+      code: [
+        'class Hello extends Component {',
+        '  componentDidUpdate ({something}, prevState) {',
+        '    return something;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  something: PropTypes.bool,',
+        '};'
+      ].join('\n')
+    }, {
       // Destructured function props in the `componentDidUpdate` method shouldn't throw errors when used createReactClass
       code: [
         'var Hello = createReactClass({',
@@ -1572,6 +1699,18 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      // Destructured state props in `componentDidUpdate` [Issue #825]
+      code: [
+        'class Hello extends Component {',
+        '  componentDidUpdate ({something}, {state1, state2}) {',
+        '    return something;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  something: PropTypes.bool,',
+        '};'
+      ].join('\n')
     }, {
       // Destructured state props in `componentDidUpdate` [Issue #825] when used createReactClass
       code: [
