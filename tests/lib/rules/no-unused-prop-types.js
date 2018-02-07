@@ -2825,6 +2825,58 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
         MyComponent.propTypes = { * other() {} };
       `
+    }, {
+      // Sanity test coverage for new UNSAFE_componentWillReceiveProps lifecycles
+      code: [`
+        class Hello extends Component {
+          static propTypes = {
+            something: PropTypes.bool
+          };
+          UNSAFE_componentWillReceiveProps (nextProps) {
+            const {something} = nextProps;
+            doSomething(something);
+          }
+        }
+      `].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Destructured props in the `UNSAFE_componentWillUpdate` method shouldn't throw errors
+      code: [`
+        class Hello extends Component {
+          static propTypes = {
+            something: PropTypes.bool
+          };
+          UNSAFE_componentWillUpdate (nextProps, nextState) {
+            const {something} = nextProps;
+            return something;
+          }
+        }
+      `].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Simple test of new static getDerivedStateFromProps lifecycle
+      code: [`
+        class MyComponent extends React.Component {
+          static propTypes = {
+            defaultValue: 'bar'
+          };
+          state = {
+            currentValue: null
+          };
+          static getDerivedStateFromProps(nextProps, prevState) {
+            if (prevState.currentValue === null) {
+              return {
+                currentValue: nextProps.defaultValue,
+              }
+            }
+            return null;
+          }
+          render() {
+            return <div>{ this.state.currentValue }</div>
+          }
+        }
+      `].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
