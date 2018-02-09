@@ -980,5 +980,85 @@ ruleTester.run('no-typos', rule, {
     }, {
       message: 'Typo in declared prop type: objectof'
     }]
+  }, {
+    code: `
+     import React from 'react';
+     class Component extends React.Component {};
+     Component.propTypes = {
+       a: React.PropTypes.string.isrequired,
+       b: React.PropTypes.shape({
+         c: React.PropTypes.number
+       }).isrequired
+     }
+   `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Typo in prop type chain qualifier: isrequired'
+    }, {
+      message: 'Typo in prop type chain qualifier: isrequired'
+    }]
+  }, {
+    code: `
+      import React from 'react';
+      class Component extends React.Component {};
+      Component.childContextTypes = {
+        a: React.PropTypes.bools,
+        b: React.PropTypes.Array,
+        c: React.PropTypes.function,
+        d: React.PropTypes.objectof,
+      }
+    `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Typo in declared prop type: bools'
+    }, {
+      message: 'Typo in declared prop type: Array'
+    }, {
+      message: 'Typo in declared prop type: function'
+    }, {
+      message: 'Typo in declared prop type: objectof'
+    }]
+  }, {
+    code: `
+     import { PropTypes } from 'react';
+     class Component extends React.Component {};
+     Component.propTypes = {
+       a: PropTypes.string.isrequired,
+       b: PropTypes.shape({
+         c: PropTypes.number
+       }).isrequired
+     }
+   `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Typo in prop type chain qualifier: isrequired'
+    }, {
+      message: 'Typo in prop type chain qualifier: isrequired'
+    }]
+  }, {
+    code: `
+      import { PropTypes } from 'react';
+      class Component extends React.Component {};
+      Component.childContextTypes = {
+        a: PropTypes.bools,
+        b: PropTypes.Array,
+        c: PropTypes.function,
+        d: PropTypes.objectof,
+      }
+    `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Typo in declared prop type: bools'
+    }, {
+      message: 'Typo in declared prop type: Array'
+    }, {
+      message: 'Typo in declared prop type: function'
+    }, {
+      message: 'Typo in declared prop type: objectof'
+    }]
   }]
 });
