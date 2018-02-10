@@ -9,11 +9,13 @@ The following patterns are considered warnings:
 ```jsx
 <div onClick={this._handleClick.bind(this)}></div>
 ```
+
 ```jsx
 <div onClick={() => console.log('Hello!')}></div>
 ```
 
 The following patterns are **not** considered warnings:
+
 ```jsx
 <div onClick={this._handleClick}></div>
 ```
@@ -26,6 +28,7 @@ The following patterns are **not** considered warnings:
   "allowArrowFunctions": <boolean> || false,
   "allowFunctions": <boolean> || false,
   "allowBind": <boolean> || false
+  "customMessage": <string> || undefined
 }]
 ```
 
@@ -61,6 +64,26 @@ When `true` the following is **not** considered a warning:
 ```jsx
 <div onClick={this._handleClick.bind(this)} />
 ```
+
+### `customMessage`
+
+When `customMessage` is set, it will override the default error message for each rule violation,
+for example, with the following config:
+
+```js
+"react/jsx-no-bind": [true, {
+  "customMessage": "A bind call in a JSX prop will cause performance issues related to garbage collection"
+}]
+```
+
+And the below code:
+
+```jsx
+<div onCilck={this._handleClick.bind(this)} />
+```
+
+The default error of `JSX props should not use .bind()` will be replaced by
+`A bind call in a JSX prop will cause performance issues related to garbage collection`.
 
 ## Protips
 

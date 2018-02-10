@@ -279,6 +279,11 @@ ruleTester.run('jsx-no-bind', rule, {
       errors: [{message: 'JSX props should not use .bind()'}]
     },
     {
+      code: '<div onClick={this._handleClick.bind(this)}></div>',
+      options: [{customMessage: 'JSX props should not call bind or use arrow functions for performance reasons'}],
+      errors: [{message: 'JSX props should not call bind or use arrow functions for performance reasons'}]
+    },
+    {
       code: '<div onClick={someGlobalFunction.bind(this)}></div>',
       errors: [{message: 'JSX props should not use .bind()'}]
     },
@@ -397,11 +402,36 @@ ruleTester.run('jsx-no-bind', rule, {
       ],
       parser: 'babel-eslint'
     },
+    {
+      code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv = () => {',
+        '    const click = () => true',
+        '    const renderStuff = () => {',
+        '      const click = this.doSomething.bind(this, "hey")',
+        '      return <div onClick={click} />',
+        '    }',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      options: [{customMessage: 'JSX props should not call bind or use arrow functions for performance reasons'}],
+      errors: [
+        {message: 'JSX props should not call bind or use arrow functions for performance reasons'},
+        {message: 'JSX props should not call bind or use arrow functions for performance reasons'}
+      ],
+      parser: 'babel-eslint'
+    },
 
     // Arrow functions
     {
       code: '<div onClick={() => alert("1337")}></div>',
       errors: [{message: 'JSX props should not use arrow functions'}]
+    },
+    {
+      code: '<div onClick={() => alert("1337")}></div>',
+      options: [{customMessage: 'JSX props should not call bind or use arrow functions for performance reasons'}],
+      errors: [{message: 'JSX props should not call bind or use arrow functions for performance reasons'}]
     },
     {
       code: '<div onClick={async () => alert("1337")}></div>',
@@ -516,11 +546,36 @@ ruleTester.run('jsx-no-bind', rule, {
       ],
       parser: 'babel-eslint'
     },
+    {
+      code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv = () => {',
+        '    const click = ::this.onChange',
+        '    const renderStuff = () => {',
+        '      const click = () => true',
+        '      return <div onClick={click} />',
+        '    }',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      options: [{customMessage: 'JSX props should not call bind or use arrow functions for performance reasons'}],
+      errors: [
+        {message: 'JSX props should not call bind or use arrow functions for performance reasons'},
+        {message: 'JSX props should not call bind or use arrow functions for performance reasons'}
+      ],
+      parser: 'babel-eslint'
+    },
 
     // Functions
     {
       code: '<div onClick={function () { alert("1337") }}></div>',
       errors: [{message: 'JSX props should not use functions'}]
+    },
+    {
+      code: '<div onClick={function () { alert("1337") }}></div>',
+      options: [{customMessage: 'JSX props should not call bind or use functions for performance reasons'}],
+      errors: [{message: 'JSX props should not call bind or use functions for performance reasons'}]
     },
     {
       code: '<div onClick={function * () { alert("1337") }}></div>',
@@ -664,11 +719,37 @@ ruleTester.run('jsx-no-bind', rule, {
       ],
       parser: 'babel-eslint'
     },
+    {
+      code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv = () => {',
+        '    const click = ::this.onChange',
+        '    const renderStuff = () => {',
+        '      const click = function () { return true }',
+        '      return <div onClick={click} />',
+        '    }',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      options: [{customMessage: 'JSX props should not use functions or :: for performance reasons'}],
+      errors: [
+        {message: 'JSX props should not use functions or :: for performance reasons'},
+        {message: 'JSX props should not use functions or :: for performance reasons'}
+      ],
+      parser: 'babel-eslint'
+    },
 
     // Bind expression
     {
       code: '<div foo={::this.onChange} />',
       errors: [{message: 'JSX props should not use ::'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: '<div foo={::this.onChange} />',
+      options: [{customMessage: 'JSX props should not use :: for performance reasons'}],
+      errors: [{message: 'JSX props should not use :: for performance reasons'}],
       parser: 'babel-eslint'
     },
     {
