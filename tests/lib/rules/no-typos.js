@@ -1061,4 +1061,55 @@ ruleTester.run('no-typos', rule, {
       message: 'Typo in declared prop type: objectof'
     }]
   }]
+/*
+// createClass tests below fail, so they're commented out
+// ---------
+  }, {
+    code: `
+      import React from 'react';
+      import PropTypes from 'prop-types';
+      const Component = React.createClass({
+        propTypes: {
+          a: PropTypes.string.isrequired,
+          b: PropTypes.shape({
+            c: PropTypes.number
+          }).isrequired
+        }
+      });
+    `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Typo in prop type chain qualifier: isrequired'
+    }, {
+      message: 'Typo in prop type chain qualifier: isrequired'
+    }]
+  }, {
+    code: `
+      import React from 'react';
+      import PropTypes from 'prop-types';
+      const Component = React.createClass({
+        childContextTypes: {
+          a: PropTypes.bools,
+          b: PropTypes.Array,
+          c: PropTypes.function,
+          d: PropTypes.objectof,
+        }
+      });
+    `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Typo in declared prop type: bools'
+    }, {
+      message: 'Typo in declared prop type: Array'
+    }, {
+      message: 'Typo in declared prop type: function'
+    }, {
+      message: 'Typo in declared prop type: objectof'
+    }]
+  }]
+// ---------
+// createClass tests above fail, so they're commented out
+*/
 });
