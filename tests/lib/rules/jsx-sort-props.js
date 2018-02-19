@@ -235,20 +235,28 @@ ruleTester.run('jsx-sort-props', rule, {
       code: '<App a z onFoo onBar />;',
       errors: [expectedError],
       options: callbacksLastArgs
-    }, {
+    },
+    {
       code: '<App a onBar onFoo z />;',
       errors: [expectedCallbackError],
       options: callbacksLastArgs
-    }, {
+    },
+    {
       code: '<App a="a" b />;',
       errors: [expectedShorthandFirstError],
       options: shorthandFirstArgs
     },
-    {code: '<App z x a="a" />;', errors: [expectedError], options: shorthandFirstArgs}, {
+    {
+      code: '<App z x a="a" />;',
+      errors: [expectedError],
+      options: shorthandFirstArgs
+    },
+    {
       code: '<App b a="a" />;',
       errors: [expectedShorthandLastError],
       options: shorthandLastArgs
-    }, {
+    },
+    {
       code: '<App a="a" onBar onFoo z x />;',
       errors: [shorthandAndCallbackLastArgs],
       options: shorthandLastArgs
