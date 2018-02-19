@@ -3150,6 +3150,48 @@ ruleTester.run('prop-types', rule, {
       ]
     }, {
       code: [
+        'class Hello extends Component {',
+        '  static propTypes = forbidExtraProps({',
+        '    bar: PropTypes.func',
+        '  })',
+        '  shouldComponentUpdate(nextProps) {',
+        '    if (nextProps.foo) {',
+        '      return;',
+        '    }',
+        '  }',
+        '  render() {',
+        '    return <div bar={this.props.bar} />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      settings: Object.assign({}, settings, {
+        propWrapperFunctions: ['forbidExtraProps']
+      }),
+      errors: [
+        {message: '\'foo\' is missing in props validation'}
+      ]
+    }, {
+      code: [
+        'class Hello extends Component {',
+        '  shouldComponentUpdate({foo}) {',
+        '    if (foo) {',
+        '      return;',
+        '    }',
+        '  }',
+        '  render() {',
+        '    return <div bar={this.props.bar} />;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '    bar: PropTypes.func',
+        '  }'
+      ].join('\n'),
+      errors: [
+        {message: '\'foo\' is missing in props validation'}
+      ]
+    }, {
+      code: [
         'class Hello extends React.Component {',
         '  static propTypes() {',
         '    return {',
