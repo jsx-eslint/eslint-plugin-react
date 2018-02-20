@@ -4356,6 +4356,28 @@ ruleTester.run('no-unused-prop-types', rule, {
         message: '\'doSomething\' PropType is defined but prop is never used'
       }]
     }, {
+      // issue #1685
+      code: [
+        'class MyComponent extends React.Component {',
+        '  onFoo() {',
+        '    this.setState(prevState => ({',
+        '      doSomething: prevState.doSomething + 1,',
+        '    }));',
+        '  }',
+        '  render() {',
+        '    return (',
+        '       <div onClick={this.onFoo}>Test</div>',
+        '    );',
+        '  }',
+        '}',
+        'MyComponent.propTypes = {',
+        '  doSomething: PropTypes.func',
+        '};'
+      ].join('\n'),
+      errors: [{
+        message: '\'doSomething\' PropType is defined but prop is never used'
+      }]
+    }, {
       code: `
         type Props = {
           firstname: string,
