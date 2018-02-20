@@ -42,7 +42,8 @@ ruleTester.run('no-unknown-property', rule, {
       code: '<div class="bar"></div>;',
       options: [{ignore: ['class']}]
     },
-    {code: '<script crossOrigin />'}
+    {code: '<script crossOrigin />'},
+    {code: '<audio crossOrigin />'}
   ],
   invalid: [{
     code: '<div class="bar"></div>;',
@@ -88,6 +89,6 @@ ruleTester.run('no-unknown-property', rule, {
     errors: [{message: 'Unknown property \'crossorigin\' found, use \'crossOrigin\' instead'}]
   }, {
     code: '<div crossOrigin />',
-    errors: [{message: 'Invalid property \'crossOrigin\' found on tag \'div\', but it is only allowed on: script, img, video, link'}]
+    errors: [{message: 'Invalid property \'crossOrigin\' found on tag \'div\', but it is only allowed on: script, img, video, audio, link'}]
   }]
 });
