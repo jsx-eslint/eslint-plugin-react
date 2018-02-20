@@ -3,6 +3,35 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.7.0] - 2018-02-19
+### Added
+* [`forbid-foreign-prop-types`][]: add `allowInPropTypes` option ([#1655][] @iansu)
+* Add [`jsx-max-depth`][] rule ([#1260][] @chriswong)
+
+### Fixed
+* [`no-access-state-in-setstate`][]: Exclude references to this.state in setState callback ([#1610][] @pfhayes)
+* [`no-danger-with-children`][]: prevent infinite loop ([#1571][] @ljharb)
+* [`sort-prop-types`][]: Fix sortShapeProp when shape is not an object literal ([#1669][] @justinanastos)
+* [`jsx-child-element-spacing`][]: fix error location ([#1666][] @pfhayes)
+* [`no-unused-prop-types`][]: fix for createClass ([#1675][] @yuri-sakharov)
+* [`prop-types`][]: include nextProps checking in shouldComponentUpdate ([#1690][] @amerryma)
+* [`jsx-curly-spacing`][]: refactor to fix start and end-braces in a single pass ([#1414][] @s-h-a-d-o-w)
+
+### Changed
+* [`jsx-child-element-spacing`][]: add missing docs ([#1665][] @pfhayes); fix docs ([#1670][] @SammyM)
+
+[7.7.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.6.1...v7.7.0
+[#1690]: https://github.com/yannickcr/eslint-plugin-react/pull/1690
+[#1675]: https://github.com/yannickcr/eslint-plugin-react/pull/1675
+[#1670]: https://github.com/yannickcr/eslint-plugin-react/pull/1670
+[#1669]: https://github.com/yannickcr/eslint-plugin-react/pull/1669
+[#1666]: https://github.com/yannickcr/eslint-plugin-react/pull/1666
+[#1655]: https://github.com/yannickcr/eslint-plugin-react/pull/1655
+[#1610]: https://github.com/yannickcr/eslint-plugin-react/pull/1610
+[#1414]: https://github.com/yannickcr/eslint-plugin-react/pull/1414
+[#1260]: https://github.com/yannickcr/eslint-plugin-react/pull/1260
+[#1571]: https://github.com/yannickcr/eslint-plugin-react/issue/1571
+
 ## [7.6.1] - 2018-01-28
 ### Fixed
 * Flow: fix crash in [`prop-types`][] with recursive type annotations ([#1653][] @jetpacmonkey)
@@ -2124,3 +2153,4 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`jsx-child-element-spacing`]: docs/rules/jsx-child-element-spacing.md
 [`no-this-in-sfc`]: docs/rules/no-this-in-sfc.md
 [`jsx-sort-default-props`]: docs/rules/jsx-sort-default-props.md
+[`jsx-max-depth`]: docs/rules/jsx-max-depth.md
