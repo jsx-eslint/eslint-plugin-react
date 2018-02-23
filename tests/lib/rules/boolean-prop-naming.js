@@ -307,6 +307,47 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'
     }]
+  }, {
+    // Ensure the rule does not throw when a prop isRequired when ES5.
+    code: `
+      var Hello = createReactClass({
+        propTypes: {isSomething: PropTypes.bool.isRequired, hasValue: PropTypes.bool.isRequired},
+        render: function() { return <div />; }
+      });
+    `
+  }, {
+    // Ensure the rule does not throw when a prop isRequired when ES6 with static properties.
+    code: `
+      class Hello extends React.Component {
+        static propTypes = {
+          isSomething: PropTypes.bool.isRequired,
+          hasValue: PropTypes.bool.isRequired
+        };
+
+        render() {
+          return (
+            <div />
+          );
+        }
+      }
+    `,
+    parser: 'babel-eslint'
+  }, {
+    // Ensure the rule does not throw when a prop isRequired when ES6 without static properties.
+    code: `
+      class Hello extends React.Component {
+        render() {
+          return (
+            <div />
+          );
+        }
+      }
+
+      Hello.propTypes = {
+        isSomething: PropTypes.bool.isRequired,
+        hasValue: PropTypes.bool.isRequired
+      }
+    `
   }],
 
   invalid: [{
@@ -663,6 +704,63 @@ ruleTester.run('boolean-prop-naming', rule, {
     }],
     errors: [{
       message: 'It is better if your prop (something) matches this pattern: (^is[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
+    // Works when a prop isRequired in ES5.
+    code: `
+      var Hello = createReactClass({
+        propTypes: {something: PropTypes.bool.isRequired},
+        render: function() { return <div />; }
+      });
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+'
+    }],
+    errors: [{
+      message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
+    // Works when a prop isRequired in ES6 with static properties.
+    code: `
+      class Hello extends React.Component {
+        static propTypes = {
+          something: PropTypes.bool.isRequired
+        };
+
+        render() {
+          return (
+            <div />
+          );
+        }
+      }
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+'
+    }],
+    parser: 'babel-eslint',
+    errors: [{
+      message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
+    // Works when a prop isRequired in ES6 without static properties.
+    code: `
+      class Hello extends React.Component {
+        render() {
+          return (
+            <div />
+          );
+        }
+      }
+
+      Hello.propTypes = {
+        something: PropTypes.bool.isRequired
+      }
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+'
+    }],
+    errors: [{
+      message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
   }]
 });
