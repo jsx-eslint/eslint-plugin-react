@@ -351,6 +351,17 @@ ruleTester.run('boolean-prop-naming', rule, {
   }],
 
   invalid: [{
+    // createReactClass components with PropTypes, default config
+    code: `
+      var Hello = createReactClass({
+        propTypes: {something: PropTypes.bool},
+        render: function() { return <div />; }
+      });
+    `,
+    errors: [{
+      message: 'Prop name (something) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
     // createReactClass components with PropTypes
     code: `
       var Hello = createReactClass({
