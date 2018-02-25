@@ -147,6 +147,7 @@ Enable the rules that you would like to use.
 * [react/jsx-indent](docs/rules/jsx-indent.md): Validate JSX indentation (fixable)
 * [react/jsx-indent-props](docs/rules/jsx-indent-props.md): Validate props indentation in JSX (fixable)
 * [react/jsx-key](docs/rules/jsx-key.md): Validate JSX has key prop when in array or iterator
+* [react/jsx-max-depth](docs/rules/jsx-max-depth): Validate JSX maximum depth
 * [react/jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md): Limit maximum of props on a single line in JSX (fixable)
 * [react/jsx-no-bind](docs/rules/jsx-no-bind.md): Prevent usage of `.bind()` and arrow functions in JSX props
 * [react/jsx-no-comment-textnodes](docs/rules/jsx-no-comment-textnodes.md): Prevent comments from being inserted as text nodes
