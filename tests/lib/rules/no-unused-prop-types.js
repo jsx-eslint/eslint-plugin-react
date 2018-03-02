@@ -4394,7 +4394,28 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
       }]
+    }, {
+      // `no-unused-prop-types` with `{...this.state}` - [Issue #1601]
+      code: `
+        class MyComponent extends React.Component {
+          static propTypes = {
+            foo: PropTypes.string,
+          }
+          constructor(props, context) {
+            super(props, context)
+            this.state = { className: 'bar' }
+          }
+          render() {
+            return <div {...this.state}>Hello</div>;
+          }
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'foo\' PropType is defined but prop is never used'
+      }]
     }
+
 
     /* , {
       // Enable this when the following issue is fixed
