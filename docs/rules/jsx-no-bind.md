@@ -121,8 +121,8 @@ Unfortunately [React ES6 classes](https://facebook.github.io/react/blog/2015/01/
 
 ```jsx
 class Foo extends React.Component {
-  constructor() {
-    super();
+  constructor(...args) {
+    super(...args);
     this._onClick = this._onClick.bind(this);
   }
   render() {
