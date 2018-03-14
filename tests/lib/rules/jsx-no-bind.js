@@ -401,7 +401,7 @@ ruleTester.run('jsx-no-bind', rule, {
       code: `
         const foo = {
           render: ({onClick}) => (
-            <div onClick={(true) ? onClick.bind(this) : onClick.bind(this)}>Hello</div>
+            <div onClick={(returningBoolean()) ? onClick.bind(this) : onClick.bind(this)}>Hello</div>
           )
         };
       `,
@@ -411,7 +411,7 @@ ruleTester.run('jsx-no-bind', rule, {
       code: `
         const foo = {
           render: ({onClick}) => (
-            <div onClick={(true) ? onClick.bind(this) : handleClick()}>Hello</div>
+            <div onClick={(returningBoolean()) ? onClick.bind(this) : handleClick()}>Hello</div>
           )
         };
       `,
@@ -421,12 +421,23 @@ ruleTester.run('jsx-no-bind', rule, {
       code: `
         const foo = {
           render: ({onClick}) => (
-            <div onClick={(true) ? handleClick() : onClick.bind(this)}>Hello</div>
+            <div onClick={(returningBoolean()) ? handleClick() : this.onClick.bind(this)}>Hello</div>
           )
         };
       `,
       errors: [{message: 'JSX props should not use .bind()'}]
     },
+    {
+      code: `
+        const foo = {
+          render: ({onClick}) => (
+            <div onClick={returningBoolean.bind(this) ? handleClick() : onClick()}>Hello</div>
+          )
+        };
+      `,
+      errors: [{message: 'JSX props should not use .bind()'}]
+    },
+
 
     // Arrow functions
     {
