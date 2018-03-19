@@ -59,6 +59,51 @@ ruleTester.run('jsx-indent-props', rule, {
       '/>'
     ].join('\n'),
     options: ['tab']
+  }, {
+    code: [
+      '<App/>'
+    ].join('\n'),
+    options: ['aligned']
+  }, {
+    code: [
+      '<App aaa',
+      '     b',
+      '     cc',
+      '/>'
+    ].join('\n'),
+    options: ['aligned']
+  }, {
+    code: [
+      'const test = <App aaa',
+      '                  b',
+      '                  cc',
+      '             />'
+    ].join('\n'),
+    options: ['aligned']
+  }, {
+    code: [
+      '<App aaa',
+      '     b',
+      '>',
+      '    <Child c',
+      '           d/>',
+      '</App>'
+    ].join('\n'),
+    options: ['aligned']
+  }, {
+    code: [
+      '<Fragment>',
+      '  <App aaa',
+      '       b',
+      '       cc',
+      '  />',
+      '  <OtherApp a',
+      '            bbb',
+      '            c',
+      '  />',
+      '</Fragment>'
+    ].join('\n'),
+    options: ['aligned']
   }],
 
   invalid: [{
@@ -112,5 +157,70 @@ ruleTester.run('jsx-indent-props', rule, {
     ].join('\n'),
     options: ['tab'],
     errors: [{message: 'Expected indentation of 1 tab character but found 3.'}]
+  }, {
+    code: [
+      '<App a',
+      '  b',
+      '/>'
+    ].join('\n'),
+    output: [
+      '<App a',
+      '     b',
+      '/>'
+    ].join('\n'),
+    options: ['aligned'],
+    errors: [{message: 'Expected indentation of 5 space characters but found 2.'}]
+  }, {
+    code: [
+      '<App  a',
+      '   b',
+      '/>'
+    ].join('\n'),
+    output: [
+      '<App  a',
+      '      b',
+      '/>'
+    ].join('\n'),
+    options: ['aligned'],
+    errors: [
+      {message: 'Found too much whitespace between tag name and first attribute.'},
+      {message: 'Expected indentation of 6 space characters but found 3.'}
+    ]
+  }, {
+    code: [
+      '<App',
+      '      a',
+      '   b',
+      '/>'
+    ].join('\n'),
+    output: [
+      '<App',
+      '      a',
+      '      b',
+      '/>'
+    ].join('\n'),
+    options: ['aligned'],
+    errors: [
+      {message: 'Found too much whitespace between tag name and first attribute.'},
+      {message: 'Expected indentation of 6 space characters but found 3.'}
+    ]
+  }, {
+    code: [
+      '<App',
+      '  a',
+      '  b',
+      '/>'
+    ].join('\n'),
+    output: [
+      '<App',
+      '     a',
+      '     b',
+      '/>'
+    ].join('\n'),
+    options: ['aligned'],
+    errors: [
+      {message: 'Expected indentation of 5 space characters but found 2.'},
+      {message: 'Expected indentation of 5 space characters but found 2.'}
+    ]
   }]
 });
