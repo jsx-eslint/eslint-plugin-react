@@ -82,6 +82,22 @@ ruleTester.run('jsx-indent-props', rule, {
     options: ['aligned']
   }, {
     code: [
+      '<App aaa x',
+      '     b y',
+      '     cc',
+      '/>'
+    ].join('\n'),
+    options: ['aligned']
+  }, {
+    code: [
+      'const test = <App aaa x',
+      '                  b y',
+      '                  cc',
+      '             />'
+    ].join('\n'),
+    options: ['aligned']
+  }, {
+    code: [
       '<App aaa',
       '     b',
       '>',
@@ -166,6 +182,19 @@ ruleTester.run('jsx-indent-props', rule, {
     output: [
       '<App a',
       '     b',
+      '/>'
+    ].join('\n'),
+    options: ['aligned'],
+    errors: [{message: 'Expected indentation of 5 space characters but found 2.'}]
+  }, {
+    code: [
+      '<App a x',
+      '  b y',
+      '/>'
+    ].join('\n'),
+    output: [
+      '<App a x',
+      '     b y',
       '/>'
     ].join('\n'),
     options: ['aligned'],
