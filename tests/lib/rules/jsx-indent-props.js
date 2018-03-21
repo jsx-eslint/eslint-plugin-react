@@ -63,7 +63,7 @@ ruleTester.run('jsx-indent-props', rule, {
     code: [
       '<App/>'
     ].join('\n'),
-    options: ['aligned']
+    options: ['first']
   }, {
     code: [
       '<App aaa',
@@ -71,7 +71,15 @@ ruleTester.run('jsx-indent-props', rule, {
       '     cc',
       '/>'
     ].join('\n'),
-    options: ['aligned']
+    options: ['first']
+  }, {
+    code: [
+      '<App   aaa',
+      '       b',
+      '       cc',
+      '/>'
+    ].join('\n'),
+    options: ['first']
   }, {
     code: [
       'const test = <App aaa',
@@ -79,7 +87,7 @@ ruleTester.run('jsx-indent-props', rule, {
       '                  cc',
       '             />'
     ].join('\n'),
-    options: ['aligned']
+    options: ['first']
   }, {
     code: [
       '<App aaa x',
@@ -87,7 +95,7 @@ ruleTester.run('jsx-indent-props', rule, {
       '     cc',
       '/>'
     ].join('\n'),
-    options: ['aligned']
+    options: ['first']
   }, {
     code: [
       'const test = <App aaa x',
@@ -95,7 +103,7 @@ ruleTester.run('jsx-indent-props', rule, {
       '                  cc',
       '             />'
     ].join('\n'),
-    options: ['aligned']
+    options: ['first']
   }, {
     code: [
       '<App aaa',
@@ -105,7 +113,7 @@ ruleTester.run('jsx-indent-props', rule, {
       '           d/>',
       '</App>'
     ].join('\n'),
-    options: ['aligned']
+    options: ['first']
   }, {
     code: [
       '<Fragment>',
@@ -119,7 +127,15 @@ ruleTester.run('jsx-indent-props', rule, {
       '  />',
       '</Fragment>'
     ].join('\n'),
-    options: ['aligned']
+    options: ['first']
+  }, {
+    code: [
+      '<App',
+      '  a',
+      '  b',
+      '/>'
+    ].join('\n'),
+    options: ['first']
   }],
 
   invalid: [{
@@ -184,20 +200,7 @@ ruleTester.run('jsx-indent-props', rule, {
       '     b',
       '/>'
     ].join('\n'),
-    options: ['aligned'],
-    errors: [{message: 'Expected indentation of 5 space characters but found 2.'}]
-  }, {
-    code: [
-      '<App a x',
-      '  b y',
-      '/>'
-    ].join('\n'),
-    output: [
-      '<App a x',
-      '     b y',
-      '/>'
-    ].join('\n'),
-    options: ['aligned'],
+    options: ['first'],
     errors: [{message: 'Expected indentation of 5 space characters but found 2.'}]
   }, {
     code: [
@@ -210,11 +213,8 @@ ruleTester.run('jsx-indent-props', rule, {
       '      b',
       '/>'
     ].join('\n'),
-    options: ['aligned'],
-    errors: [
-      {message: 'Found too much whitespace between tag name and first attribute.'},
-      {message: 'Expected indentation of 6 space characters but found 3.'}
-    ]
+    options: ['first'],
+    errors: [{message: 'Expected indentation of 6 space characters but found 3.'}]
   }, {
     code: [
       '<App',
@@ -228,28 +228,27 @@ ruleTester.run('jsx-indent-props', rule, {
       '      b',
       '/>'
     ].join('\n'),
-    options: ['aligned'],
-    errors: [
-      {message: 'Found too much whitespace between tag name and first attribute.'},
-      {message: 'Expected indentation of 6 space characters but found 3.'}
-    ]
+    options: ['first'],
+    errors: [{message: 'Expected indentation of 6 space characters but found 3.'}]
   }, {
     code: [
       '<App',
       '  a',
-      '  b',
+      ' b',
+      '   c',
       '/>'
     ].join('\n'),
     output: [
       '<App',
-      '     a',
-      '     b',
+      '  a',
+      '  b',
+      '  c',
       '/>'
     ].join('\n'),
-    options: ['aligned'],
+    options: ['first'],
     errors: [
-      {message: 'Expected indentation of 5 space characters but found 2.'},
-      {message: 'Expected indentation of 5 space characters but found 2.'}
+      {message: 'Expected indentation of 2 space characters but found 1.'},
+      {message: 'Expected indentation of 2 space characters but found 3.'}
     ]
   }]
 });
