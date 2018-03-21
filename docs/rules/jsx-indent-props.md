@@ -29,11 +29,12 @@ firstName="John"
 
 ## Rule Options
 
-It takes an option as the second parameter which can be `"tab"` for tab-based indentation or a positive number for space indentations.
+It takes an option as the second parameter which can be `"tab"` for tab-based indentation, a positive number for space indentations or `"first"` for aligning the first prop for each line with the tag's first prop.
+Note that using the `"first"` option allows very inconsistent indentation unless you also enable a rule that enforces the position of the first prop.
 
 ```js
 ...
-"react/jsx-indent-props": [<enabled>, 'tab'|<number>]
+"react/jsx-indent-props": [<enabled>, 'tab'|<number>|'first']
 ...
 ```
 
@@ -50,6 +51,13 @@ The following patterns are considered warnings:
 // [2, 'tab']
 <Hello
   firstName="John"
+/>
+
+// aligned with first prop
+// [2, 'first']
+<Hello
+  firstName="John"
+    lastName="Doe"
 />
 ```
 
@@ -77,6 +85,21 @@ The following patterns are **not** warnings:
 <Hello
 firstName="John"
 />
+
+// aligned with first prop
+// [2, 'first']
+<Hello
+  firstName="John"
+  lastName="Doe"
+/>
+
+<Hello
+       firstName="John"
+       lastName="Doe"
+/>
+
+<Hello firstName="Jane"
+       lastName="Doe" />
 ```
 
 ## When not to use
