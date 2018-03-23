@@ -46,7 +46,7 @@ ruleTester.run('destructuring-assignment', rule, {
         componentDidMount() {
           this.props.onMount();
         }
-        
+
         render() {
           const { children } = this.props;
           return children;
@@ -90,7 +90,7 @@ ruleTester.run('destructuring-assignment', rule, {
   }, {
     code: `
       class Component extends React.Component {
-        render() { 
+        render() {
           return this.props.children;
         }
       }
@@ -112,7 +112,7 @@ ruleTester.run('destructuring-assignment', rule, {
       const Component = createReactClass({
         render() {
           const { children } = this.props;
-          
+
           return children;
         }
       });
@@ -124,12 +124,32 @@ ruleTester.run('destructuring-assignment', rule, {
       class Component extends React.Component {
         render() {
           const { children } = this.props;
-          
+
           return children;
         }
       }
     `,
     options: [{class: 'never'}],
     errors: [{message: 'Must never use destructuring props assignment'}]
+  }, {
+    code: `
+      function Component(props) {
+        const { children } = props;
+        
+        return <div>{children}</div>;
+      }
+    `,
+    options: [{SFC: 'never'}],
+    errors: [{message: 'Must never use destructuring props assignment'}]
+  }, {
+    code: `
+      function Component(props, context) {
+        const { onClick } = context;
+        
+        return <div />
+      }
+    `,
+    options: [{SFC: 'never'}],
+    errors: [{message: 'Must never use destructuring context assignment'}]
   }]
 });
