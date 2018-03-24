@@ -5,6 +5,16 @@ Rule can be set to either of `always` or `never`;
 "react/destructuring-assignment": [<enabled>, 'always']
 ```
 
+It also accepts an object as the first option for more granular control for different component types.
+
+```js
+"react/destructuring-assignment": [<enabled>, {
+  SFC: 'always',
+  class: 'always',
+  createClass: 'always',
+}]
+```
+
 ## Rule Details
 
 By default rule is set to `always` enforce destructuring assignment. The following patterns are considered warnings:
