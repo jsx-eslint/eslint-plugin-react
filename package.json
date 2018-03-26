@@ -11,7 +11,9 @@
     "pretest": "npm run lint",
     "test": "npm run unit-test",
     "type-check": "tsc",
-    "unit-test": "istanbul cover node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js"
+    "unit-test": "istanbul cover node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js",
+    "generate-list-of-rules": "md-magic --path README.md",
+    "generate-list-of-rules:check": "npm run generate-list-of-rules && git diff --exit-code README.md"
   },
   "files": [
     "LICENSE",
@@ -47,6 +49,7 @@
     "eslint-plugin-eslint-plugin": "^2.1.0",
     "eslint-plugin-import": "^2.18.2",
     "istanbul": "^0.4.5",
+    "markdown-magic": "^1.0.0",
     "mocha": "^5.2.0",
     "sinon": "^7.5.0",
     "typescript": "^3.7.2",
