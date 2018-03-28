@@ -103,6 +103,7 @@ Enable the rules that you would like to use.
 * [react/no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
 * [react/no-danger-with-children](docs/rules/no-danger-with-children.md): Prevent problem with children and props.dangerouslySetInnerHTML
 * [react/no-deprecated](docs/rules/no-deprecated.md): Prevent usage of deprecated methods
+* [react/no-deprecated-methods](docs/rules/no-deprecated-methods.md): Prevents usage of deprecated component lifecycle methods
 * [react/no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of `setState` in `componentDidMount`
 * [react/no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of `setState` in `componentDidUpdate`
 * [react/no-direct-mutation-state](docs/rules/no-direct-mutation-state.md): Prevent direct mutation of `this.state`
