@@ -84,10 +84,6 @@ ruleTester.run('destructuring-assignment', rule, {
     options: [{SFC: 'always'}],
     errors: [{message: 'Must use destructuring props assignment in SFC argument'}]
   }, {
-    code: 'const Component = ({ color }, context) => <span>{color}</span>;',
-    options: [{SFC: 'always'}],
-    errors: [{message: 'Must use destructuring context assignment in SFC argument'}]
-  }, {
     code: `
       class Component extends React.Component {
         render() {
