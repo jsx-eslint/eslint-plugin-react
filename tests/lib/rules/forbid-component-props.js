@@ -101,6 +101,11 @@ ruleTester.run('forbid-component-props', rule, {
       '  <this.Foo {...props} />',
       ');'
     ].join('\n')
+  }, {
+    code: 'const item = (<ReactModal className="foo" />);',
+    options: [{
+      forbid: [{propName: 'className', allowedFor: ['ReactModal']}]
+    }]
   }],
 
   invalid: [{
@@ -163,6 +168,28 @@ ruleTester.run('forbid-component-props', rule, {
       message: STYLE_ERROR_MESSAGE,
       line: 4,
       column: 17,
+      type: 'JSXAttribute'
+    }]
+  }, {
+    code: 'const item = (<Foo className="foo" />);',
+    options: [{
+      forbid: [{propName: 'className', allowedFor: ['ReactModal']}]
+    }],
+    errors: [{
+      message: CLASSNAME_ERROR_MESSAGE,
+      line: 1,
+      column: 20,
+      type: 'JSXAttribute'
+    }]
+  }, {
+    code: 'const item = (<this.ReactModal className="foo" />);',
+    options: [{
+      forbid: [{propName: 'className', allowedFor: ['ReactModal']}]
+    }],
+    errors: [{
+      message: CLASSNAME_ERROR_MESSAGE,
+      line: 1,
+      column: 32,
       type: 'JSXAttribute'
     }]
   }]

@@ -35,13 +35,21 @@ The following patterns are **not** considered warnings:
 
 ```js
 ...
-"react/forbid-component-props": [<enabled>, { "forbid": [<string>] }]
+"react/forbid-component-props": [<enabled>, { "forbid": [<string>|<object>] }]
 ...
 ```
 
 ### `forbid`
 
-An array of strings, with the names of props that are forbidden. The default value of this option is `['className', 'style']`.
+An array specifying the names of props that are forbidden. The default value of this option is `['className', 'style']`.
+Each array element can either be a string with the property name or object specifying the property name and a component whitelist:
+
+```js
+{
+  "propName": "someProp",
+  "allowedFor": [SomeComponent, AnotherComponent]
+}
+```
 
 
 ### Related rules
