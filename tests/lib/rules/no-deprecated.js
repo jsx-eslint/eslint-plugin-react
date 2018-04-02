@@ -221,18 +221,18 @@ ruleTester.run('no-deprecated', rule, {
       errors: [
         {
           message: errorMessage(
-            'componentWillMount', '16.3.0', 'constructor',
+            'componentWillMount', '16.3.0', 'UNSAFE_componentWillMount',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount'
           )
         },
         {
           message: errorMessage(
-            'componentWillReceiveProps', '16.3.0', 'getDerivedStateFromProps',
+            'componentWillReceiveProps', '16.3.0', 'UNSAFE_componentWillReceiveProps',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops'
           )
         },
         {
-          message: errorMessage('componentWillUpdate', '16.3.0', 'getDerivedStateFromProps',
+          message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate'
           )
         }
@@ -251,18 +251,18 @@ ruleTester.run('no-deprecated', rule, {
       errors: [
         {
           message: errorMessage(
-            'componentWillMount', '16.3.0', 'constructor',
+            'componentWillMount', '16.3.0', 'UNSAFE_componentWillMount',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount'
           )
         },
         {
           message: errorMessage(
-            'componentWillReceiveProps', '16.3.0', 'getDerivedStateFromProps',
+            'componentWillReceiveProps', '16.3.0', 'UNSAFE_componentWillReceiveProps',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops'
           )
         },
         {
-          message: errorMessage('componentWillUpdate', '16.3.0', 'getDerivedStateFromProps',
+          message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate'
           )
         }
@@ -279,18 +279,18 @@ ruleTester.run('no-deprecated', rule, {
       errors: [
         {
           message: errorMessage(
-            'componentWillMount', '16.3.0', 'constructor',
+            'componentWillMount', '16.3.0', 'UNSAFE_componentWillMount',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount'
           )
         },
         {
           message: errorMessage(
-            'componentWillReceiveProps', '16.3.0', 'getDerivedStateFromProps',
+            'componentWillReceiveProps', '16.3.0', 'UNSAFE_componentWillReceiveProps',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops'
           )
         },
         {
-          message: errorMessage('componentWillUpdate', '16.3.0', 'getDerivedStateFromProps',
+          message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate'
           )
         }
@@ -307,18 +307,18 @@ ruleTester.run('no-deprecated', rule, {
       errors: [
         {
           message: errorMessage(
-            'componentWillMount', '16.3.0', 'constructor',
+            'componentWillMount', '16.3.0', 'UNSAFE_componentWillMount',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount'
           )
         },
         {
           message: errorMessage(
-            'componentWillReceiveProps', '16.3.0', 'getDerivedStateFromProps',
+            'componentWillReceiveProps', '16.3.0', 'UNSAFE_componentWillReceiveProps',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops'
           )
         },
         {
-          message: errorMessage('componentWillUpdate', '16.3.0', 'getDerivedStateFromProps',
+          message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate'
           )
         }
@@ -335,18 +335,18 @@ ruleTester.run('no-deprecated', rule, {
       errors: [
         {
           message: errorMessage(
-            'componentWillMount', '16.3.0', 'constructor',
+            'componentWillMount', '16.3.0', 'UNSAFE_componentWillMount',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount'
           )
         },
         {
           message: errorMessage(
-            'componentWillReceiveProps', '16.3.0', 'getDerivedStateFromProps',
+            'componentWillReceiveProps', '16.3.0', 'UNSAFE_componentWillReceiveProps',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops'
           )
         },
         {
-          message: errorMessage('componentWillUpdate', '16.3.0', 'getDerivedStateFromProps',
+          message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate'
           )
         }
@@ -363,18 +363,18 @@ ruleTester.run('no-deprecated', rule, {
       errors: [
         {
           message: errorMessage(
-            'componentWillMount', '16.3.0', 'constructor',
+            'componentWillMount', '16.3.0', 'UNSAFE_componentWillMount',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount'
           )
         },
         {
           message: errorMessage(
-            'componentWillReceiveProps', '16.3.0', 'getDerivedStateFromProps',
+            'componentWillReceiveProps', '16.3.0', 'UNSAFE_componentWillReceiveProps',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops'
           )
         },
         {
-          message: errorMessage('componentWillUpdate', '16.3.0', 'getDerivedStateFromProps',
+          message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate'
           )
         }
