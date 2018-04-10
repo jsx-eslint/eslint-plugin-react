@@ -2263,7 +2263,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: [
       '<div className={this.state.renderInfo ? "infoPanel col-xs-12" : "unToggled col-xs-12"} />'
     ].join('\n'),
-    options: ["never", {"allowMultiline": true}],
+    options: ['never', {allowMultiline: true}],
     errors: [{
       message: 'There should be no space after \'{\''
     }, {
