@@ -2256,5 +2256,18 @@ ruleTester.run('jsx-curly-spacing', rule, {
     }, {
       message: 'A space is required before \'}\''
     }]
+  }, {
+    code: [
+      '<div className={ this.state.renderInfo ? "infoPanel col-xs-12" : "unToggled col-xs-12" } />'
+    ].join('\n'),
+    output: [
+      '<div className={this.state.renderInfo ? "infoPanel col-xs-12" : "unToggled col-xs-12"} />'
+    ].join('\n'),
+    options: ["never", {"allowMultiline": true}],
+    errors: [{
+      message: 'There should be no space after \'{\''
+    }, {
+      message: 'There should be no space before \'}\''
+    }]
   }]
 });
