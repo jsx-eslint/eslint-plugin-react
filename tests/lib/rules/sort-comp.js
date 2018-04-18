@@ -92,6 +92,77 @@ ruleTester.run('sort-comp', rule, {
       ]
     }]
   }, {
+    // Must validate a full React 16.3 createReactClass class
+    code: [
+      'var Hello = createReactClass({',
+      '  displayName : \'\',',
+      '  propTypes: {},',
+      '  contextTypes: {},',
+      '  childContextTypes: {},',
+      '  mixins: [],',
+      '  statics: {},',
+      '  getDefaultProps: function() {},',
+      '  getInitialState: function() {},',
+      '  getChildContext: function() {},',
+      '  UNSAFE_componentWillMount: function() {},',
+      '  componentDidMount: function() {},',
+      '  UNSAFE_componentWillReceiveProps: function() {},',
+      '  shouldComponentUpdate: function() {},',
+      '  UNSAFE_componentWillUpdate: function() {},',
+      '  getSnapshotBeforeUpdate: function() {},',
+      '  componentDidUpdate: function() {},',
+      '  componentDidCatch: function() {},',
+      '  componentWillUnmount: function() {},',
+      '  render: function() {',
+      '    return <div>Hello</div>;',
+      '  }',
+      '});'
+    ].join('\n')
+  }, {
+    // Must validate React 16.3 lifecycle methods with the default parser
+    code: [
+      'class Hello extends React.Component {',
+      '  constructor() {}',
+      '  static getDerivedStateFromProps() {}',
+      '  UNSAFE_componentWillMount() {}',
+      '  componentDidMount() {}',
+      '  UNSAFE_componentWillReceiveProps() {}',
+      '  shouldComponentUpdate() {}',
+      '  UNSAFE_componentWillUpdate() {}',
+      '  getSnapshotBeforeUpdate() {}',
+      '  componentDidUpdate() {}',
+      '  componentDidCatch() {}',
+      '  componentWillUnmount() {}',
+      '  testInstanceMethod() {}',
+      '  render() { return (<div>Hello</div>); }',
+      '}'
+    ].join('\n')
+  }, {
+    // Must validate a full React 16.3 ES6 class
+    code: [
+      'class Hello extends React.Component {',
+      '  static displayName = \'\'',
+      '  static propTypes = {}',
+      '  static defaultProps = {}',
+      '  constructor() {}',
+      '  state = {}',
+      '  static getDerivedStateFromProps = () => {}',
+      '  UNSAFE_componentWillMount = () => {}',
+      '  componentDidMount = () => {}',
+      '  UNSAFE_componentWillReceiveProps = () => {}',
+      '  shouldComponentUpdate = () => {}',
+      '  UNSAFE_componentWillUpdate = () => {}',
+      '  getSnapshotBeforeUpdate = () => {}',
+      '  componentDidUpdate = () => {}',
+      '  componentDidCatch = () => {}',
+      '  componentWillUnmount = () => {}',
+      '  testArrowMethod = () => {}',
+      '  testInstanceMethod() {}',
+      '  render = () => (<div>Hello</div>)',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
     // Must allow us to create a RegExp-based group
     code: [
       'class Hello extends React.Component {',
