@@ -315,8 +315,8 @@ ruleTester.run('sort-comp', rule, {
     code: [
       'class Hello extends React.Component {',
       '  foo = () => {}',
-      '  constructor() {}',
       '  classMethod() {}',
+      '  constructor() {}',
       '  static bar = () => {}',
       '  render() {',
       '    return <div>{this.props.text}</div>;',
@@ -573,7 +573,7 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: 'babel-eslint',
-    errors: [{message: 'foo should be placed before constructor'}],
+    errors: [{message: 'classMethod should be placed before constructor'}],
     options: [{
       order: [
         'instance-methods',
