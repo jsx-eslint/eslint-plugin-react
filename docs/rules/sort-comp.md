@@ -1,6 +1,6 @@
 # Enforce component methods order (react/sort-comp)
 
-When creating React components it is more convenient to always follow the same organisation for method order to help you easily find lifecyle methods, event handlers, etc.
+When creating React components it is more convenient to always follow the same organisation for method order to help you easily find lifecycle methods, event handlers, etc.
 
 **Fixable:** This rule is automatically fixable using the [`sort-comp` transform](https://github.com/reactjs/react-codemod/blob/master/transforms/sort-comp.js) in [react-codemod](https://www.npmjs.com/package/react-codemod).
 
@@ -9,7 +9,7 @@ When creating React components it is more convenient to always follow the same o
 The default configuration ensures that the following order must be followed:
 
   1. static methods and properties
-  2. lifecycle methods: `displayName`, `propTypes`, `contextTypes`, `childContextTypes`, `mixins`, `statics`,`defaultProps`, `constructor`, `getDefaultProps`, `getInitialState`, `state`, `getChildContext`, `componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `componentDidUpdate`, `componentWillUnmount` (in this order).
+  2. lifecycle methods: `displayName`, `propTypes`, `contextTypes`, `childContextTypes`, `mixins`, `statics`, `defaultProps`, `constructor`, `getDefaultProps`, `state`, `getInitialState`, `getChildContext`, `getDerivedStateFromProps`, `componentWillMount`, `UNSAFE_componentWillMount`, `componentDidMount`, `componentWillReceiveProps`, `UNSAFE_componentWillReceiveProps`, `shouldComponentUpdate`, `componentWillUpdate`, `UNSAFE_componentWillUpdate`, `getSnapshotBeforeUpdate`, `componentDidUpdate`, `componentDidCatch`, `componentWillUnmount` (in this order).
   3. custom methods
   4. `render` method
 
@@ -70,15 +70,21 @@ The default configuration is:
       'defaultProps',
       'constructor',
       'getDefaultProps',
-      'getInitialState',
       'state',
+      'getInitialState',
       'getChildContext',
+      'getDerivedStateFromProps',
       'componentWillMount',
+      'UNSAFE_componentWillMount',
       'componentDidMount',
       'componentWillReceiveProps',
+      'UNSAFE_componentWillReceiveProps',
       'shouldComponentUpdate',
       'componentWillUpdate',
+      'UNSAFE_componentWillUpdate',
+      'getSnapshotBeforeUpdate',
       'componentDidUpdate',
+      'componentDidCatch',
       'componentWillUnmount'
     ]
   }
@@ -86,14 +92,14 @@ The default configuration is:
 ```
 
 * `static-methods` is a special keyword that refers to static class methods.
-* `lifecycle` is referring to the `lifecycle` group defined in `groups`.
-* `everything-else` is a special group that match all the methods that do not match any of the other groups.
-* `render` is referring to the `render` method.
-* `type-annotations`. This group is not specified by default, but can be used to enforce flow annotations positioning.
-* `getters` This group is not specified by default, but can be used to enforce class getters positioning.
-* `setters` This group is not specified by default, but can be used to enforce class setters positioning.
-* `instance-variables` This group is not specified by default, but can be used to enforce all other instance variables positioning.
-* `instance-methods` This group is not specified by default, but can be used to enforce all other instance methods positioning.
+* `lifecycle` refers to the `lifecycle` group defined in `groups`.
+* `everything-else` is a special group that matches all of the methods that do not match any of the other groups.
+* `render` refers to the `render` method.
+* `type-annotations`. This group is not specified by default, but can be used to enforce flow annotations' positioning.
+* `getters` This group is not specified by default, but can be used to enforce class getters' positioning.
+* `setters` This group is not specified by default, but can be used to enforce class setters' positioning.
+* `instance-variables` This group is not specified by default, but can be used to enforce all other instance variables' positioning.
+* `instance-methods` This group is not specified by default, but can be used to enforce all other instance methods' positioning.
 
 You can override this configuration to match your needs.
 
@@ -216,7 +222,6 @@ class Hello extends React.Component<any, Props, void> {
   }
 }
 ```
-
 
 ## When Not To Use It
 
