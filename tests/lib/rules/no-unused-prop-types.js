@@ -2880,6 +2880,26 @@ ruleTester.run('no-unused-prop-types', rule, {
       `].join('\n'),
       settings: {react: {version: '16.3.0'}},
       parser: 'babel-eslint'
+    }, {
+      // Simple test of new static getSnapshotBeforeUpdate lifecycle
+      code: [`
+        class MyComponent extends React.Component {
+          static propTypes = {
+            defaultValue: PropTypes.string
+          };
+          getSnapshotBeforeUpdate(prevProps, prevState) {
+            if (prevProps.defaultValue === null) {
+              return 'snapshot';
+            }
+            return null;
+          }
+          render() {
+            return <div />
+          }
+        }
+      `].join('\n'),
+      settings: {react: {version: '16.3.0'}},
+      parser: 'babel-eslint'
     }
   ],
 
@@ -4502,6 +4522,28 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
           render() {
             return <div>{ this.state.currentValue }</div>
+          }
+        }
+      `].join('\n'),
+      settings: {react: {version: '16.2.0'}},
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'defaultValue\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [`
+        class MyComponent extends React.Component {
+          static propTypes = {
+            defaultValue: PropTypes.string
+          };
+          getSnapshotBeforeUpdate(prevProps, prevState) {
+            if (prevProps.defaultValue === null) {
+              return 'snapshot';
+            }
+            return null;
+          }
+          render() {
+            return <div />
           }
         }
       `].join('\n'),
