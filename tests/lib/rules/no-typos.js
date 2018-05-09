@@ -732,12 +732,18 @@ ruleTester.run('no-typos', rule, {
   }, {
     code: `
       class Hello extends React.Component {
+        static GetDerivedStateFromProps()  { }
         ComponentWillMount() { }
+        UNSAFE_ComponentWillMount() { }
         ComponentDidMount() { }
         ComponentWillReceiveProps() { }
+        UNSAFE_ComponentWillReceiveProps() { }
         ShouldComponentUpdate() { }
         ComponentWillUpdate() { }
+        UNSAFE_ComponentWillUpdate() { }
+        GetSnapshotBeforeUpdate() { }
         ComponentDidUpdate() { }
+        ComponentDidCatch() { }
         ComponentWillUnmount() { }
         render() {
           return <div>Hello {this.props.name}</div>;
@@ -766,16 +772,40 @@ ruleTester.run('no-typos', rule, {
     }, {
       message: ERROR_MESSAGE_LIFECYCLE_METHOD,
       type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
     }]
   }, {
     code: `
       class Hello extends React.Component {
+        static Getderivedstatefromprops() { }
         Componentwillmount() { }
+        UNSAFE_Componentwillmount() { }
         Componentdidmount() { }
         Componentwillreceiveprops() { }
+        UNSAFE_Componentwillreceiveprops() { }
         Shouldcomponentupdate() { }
         Componentwillupdate() { }
+        UNSAFE_Componentwillupdate() { }
+        Getsnapshotbeforeupdate() { }
         Componentdidupdate() { }
+        Componentdidcatch() { }
         Componentwillunmount() { }
         Render() {
           return <div>Hello {this.props.name}</div>;
@@ -807,16 +837,40 @@ ruleTester.run('no-typos', rule, {
     }, {
       message: ERROR_MESSAGE_LIFECYCLE_METHOD,
       type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
     }]
   }, {
     code: `
       class Hello extends React.Component {
+        static getderivedstatefromprops() { }
         componentwillmount() { }
+        unsafe_componentwillmount() { }
         componentdidmount() { }
         componentwillreceiveprops() { }
+        unsafe_componentwillreceiveprops() { }
         shouldcomponentupdate() { }
         componentwillupdate() { }
+        unsafe_componentwillupdate() { }
+        getsnapshotbeforeupdate() { }
         componentdidupdate() { }
+        componentdidcatch() { }
         componentwillunmount() { }
         render() {
           return <div>Hello {this.props.name}</div>;
@@ -825,6 +879,24 @@ ruleTester.run('no-typos', rule, {
     `,
     parserOptions: parserOptions,
     errors: [{
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'MethodDefinition'
+    }, {
       message: ERROR_MESSAGE_LIFECYCLE_METHOD,
       type: 'MethodDefinition'
     }, {
