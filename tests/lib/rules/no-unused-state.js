@@ -491,6 +491,49 @@ eslintTester.run('no-unused-state', rule, {
         }
       }`,
       parser: 'babel-eslint'
+    },
+    {
+      code: `class ESLintExample extends Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            id: 123,
+          };
+        }
+        static getDerivedStateFromProps(nextProps, prevState) {
+          if (prevState.id === nextProps.id) {
+            return {
+              selected: true,
+            };
+          }
+          return null;
+        }
+        render() {
+          return (
+            <h1>{this.state.selected ? 'Selected' : 'Not selected'}</h1>
+          );
+        }
+      }`,
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class ESLintExample extends Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            id: 123,
+          };
+        }
+        shouldComponentUpdate(nextProps, nextState) {
+          return nextState.id === nextProps.id;
+        }
+        render() {
+          return (
+            <h1>{this.state.selected ? 'Selected' : 'Not selected'}</h1>
+          );
+        }
+      }`,
+      parser: 'babel-eslint'
     }
   ],
 
