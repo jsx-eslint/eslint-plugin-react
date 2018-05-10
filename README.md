@@ -251,4 +251,4 @@ ESLint-plugin-React is licensed under the [MIT License](http://www.opensource.or
 [climate-image]: https://img.shields.io/codeclimate/maintainability/yannickcr/eslint-plugin-react.svg
 
 [status-url]: https://github.com/yannickcr/eslint-plugin-react/pulse
-[status-image]: https://img.shields.io/badge/status-maintained-brightgreen.svg
+[status-image]: https://img.shields.io/github/last-commit/yannickcr/eslint-plugin-react.svg
