@@ -25,6 +25,7 @@ const parserOptions = {
 // ------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({parserOptions});
+
 ruleTester.run('jsx-no-target-blank', rule, {
   valid: [
     {code: '<a href="foobar"></a>'},
@@ -90,6 +91,12 @@ ruleTester.run('jsx-no-target-blank', rule, {
     }]
   }, {
     code: '<a target="_blank" href="//example.com" rel></a>',
+    errors: [{
+      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
+      ' see https://mathiasbynens.github.io/rel-noopener'
+    }]
+  }, {
+    code: '<a target="_blank" href={ dynamicLink }></a>',
     errors: [{
       message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
       ' see https://mathiasbynens.github.io/rel-noopener'
