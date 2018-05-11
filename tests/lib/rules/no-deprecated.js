@@ -75,6 +75,7 @@ ruleTester.run('no-deprecated', rule, {
     {
       code: `
         class Foo {
+          constructor() {}
           componentWillMount() {}
           componentWillReceiveProps() {}
           componentWillUpdate() {}
@@ -359,6 +360,35 @@ ruleTester.run('no-deprecated', rule, {
           componentWillReceiveProps: function() {},
           componentWillUpdate: function() {}
         })
+      `,
+      errors: [
+        {
+          message: errorMessage(
+            'componentWillMount', '16.3.0', 'UNSAFE_componentWillMount',
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount'
+          )
+        },
+        {
+          message: errorMessage(
+            'componentWillReceiveProps', '16.3.0', 'UNSAFE_componentWillReceiveProps',
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops'
+          )
+        },
+        {
+          message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate'
+          )
+        }
+      ]
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          constructor() {}
+          componentWillMount() {}
+          componentWillReceiveProps() {}
+          componentWillUpdate() {}
+        }
       `,
       errors: [
         {
