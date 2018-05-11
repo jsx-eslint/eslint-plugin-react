@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.8.1] - 2018-05-12
+### Fixed
+* Fix crash in [`no-deprecated`][] when encountering a class constructor ([#1785][] @taddei)
+
+[7.8.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.8.0...v7.8.1
+[#1785]: https://github.com/yannickcr/eslint-plugin-react/issues/1785
+
 ## [7.8.0] - 2018-05-11
 ### Added
 * Add support for fragments to [`react-in-jsx-scope`][] ([#1758][])
