@@ -25,6 +25,10 @@ const parserOptions = {
 // ------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({parserOptions});
+const defaultErrors = [{
+  message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
+  ' see https://mathiasbynens.github.io/rel-noopener'
+}];
 
 ruleTester.run('jsx-no-target-blank', rule, {
   valid: [
@@ -43,63 +47,33 @@ ruleTester.run('jsx-no-target-blank', rule, {
   ],
   invalid: [{
     code: '<a target="_blank" href="http://example.com"></a>',
-    errors: [{
-      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
-      ' see https://mathiasbynens.github.io/rel-noopener'
-    }]
+    errors: defaultErrors
   }, {
     code: '<a target="_blank" rel="" href="http://example.com"></a>',
-    errors: [{
-      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
-      ' see https://mathiasbynens.github.io/rel-noopener'
-    }]
+    errors: defaultErrors
   }, {
     code: '<a target="_blank" rel="noopenernoreferrer" href="http://example.com"></a>',
-    errors: [{
-      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
-      ' see https://mathiasbynens.github.io/rel-noopener'
-    }]
+    errors: defaultErrors
   }, {
     code: '<a target="_BLANK" href="http://example.com"></a>',
-    errors: [{
-      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
-      ' see https://mathiasbynens.github.io/rel-noopener'
-    }]
+    errors: defaultErrors
   }, {
     code: '<a target="_blank" href="//example.com"></a>',
-    errors: [{
-      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
-      ' see https://mathiasbynens.github.io/rel-noopener'
-    }]
+    errors: defaultErrors
   }, {
     code: '<a target="_blank" href="//example.com" rel={true}></a>',
-    errors: [{
-      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
-      ' see https://mathiasbynens.github.io/rel-noopener'
-    }]
+    errors: defaultErrors
   }, {
     code: '<a target="_blank" href="//example.com" rel={3}></a>',
-    errors: [{
-      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
-      ' see https://mathiasbynens.github.io/rel-noopener'
-    }]
+    errors: defaultErrors
   }, {
     code: '<a target="_blank" href="//example.com" rel={null}></a>',
-    errors: [{
-      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
-      ' see https://mathiasbynens.github.io/rel-noopener'
-    }]
+    errors: defaultErrors
   }, {
     code: '<a target="_blank" href="//example.com" rel></a>',
-    errors: [{
-      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
-      ' see https://mathiasbynens.github.io/rel-noopener'
-    }]
+    errors: defaultErrors
   }, {
     code: '<a target="_blank" href={ dynamicLink }></a>',
-    errors: [{
-      message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
-      ' see https://mathiasbynens.github.io/rel-noopener'
-    }]
+    errors: defaultErrors
   }]
 });
