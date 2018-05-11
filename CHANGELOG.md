@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
-## [7.8.0-rc.0] - 2018-05-10
+## [7.8.0] - 2018-05-11
 ### Added
 * Add support for fragments to [`react-in-jsx-scope`][] ([#1758][])
 * Add support for Flow generic PropType to [`require-default-props`][] ([#1724][] @Miziak)
@@ -23,7 +23,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Changed
 * Documentation improvements ([#1699][] @ronanmathew, [#1743][] @ybiquitous, [#1753][] @awthwathje, [#1783][] @chentsulin, [#1703][] @ferhatelmas)
 
-[7.8.0-rc.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.7.0...v7.8.0-rc.0
+[7.8.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.7.0...v7.8.0
 [#1758]: https://github.com/yannickcr/eslint-plugin-react/issues/1758
 [#1724]: https://github.com/yannickcr/eslint-plugin-react/issues/1724
 [#1732]: https://github.com/yannickcr/eslint-plugin-react/issues/1732
