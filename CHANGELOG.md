@@ -3,9 +3,12 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
-## [Unreleased]
+## [7.8.2] - 2018-05-13
 ### Fixed
-* Fix crash in [`boolean-prop-naming`] when encountering a required shape prop type ([#1791][] @pcorpet)
+* Fix crash in [`boolean-prop-naming`][] when encountering a required shape prop type ([#1791][] @pcorpet)
+
+[7.8.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.8.1...v7.8.2
+[#1791]: https://github.com/yannickcr/eslint-plugin-react/issues/1791
 
 ## [7.8.1] - 2018-05-12
 ### Fixed
