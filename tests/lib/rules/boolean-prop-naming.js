@@ -348,6 +348,17 @@ ruleTester.run('boolean-prop-naming', rule, {
         hasValue: PropTypes.bool.isRequired
       }
     `
+  }, {
+    // Ensure the rule does not throw when a shape prop isRequired.
+    code: `
+      var Hello = createReactClass({
+        propTypes: {something: PropTypes.shape({}).isRequired},
+        render: function() { return <div />; }
+      });
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+'
+    }]
   }],
 
   invalid: [{
