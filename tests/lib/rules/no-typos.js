@@ -1172,6 +1172,14 @@ ruleTester.run('no-typos', rule, {
     }]
   }, {
     code: `
+     import 'react';
+     class Component extends React.Component {};
+   `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: []
+  }, {
+    code: `
       import { PropTypes } from 'react';
       class Component extends React.Component {};
       Component.childContextTypes = {
