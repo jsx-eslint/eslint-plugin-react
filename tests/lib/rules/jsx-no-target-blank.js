@@ -43,7 +43,11 @@ ruleTester.run('jsx-no-target-blank', rule, {
     {code: '<a target="_blank" rel={relValue}></a>'},
     {code: '<a target={targetValue} rel="noopener noreferrer"></a>'},
     {code: '<a target={targetValue} href="relative/path"></a>'},
-    {code: '<a target={targetValue} href="/absolute/path"></a>'}
+    {code: '<a target={targetValue} href="/absolute/path"></a>'},
+    {
+      code: '<a target="_blank" href={ dynamicLink }></a>',
+      options: [{enforceDynamicLinks: 'never'}]
+    }
   ],
   invalid: [{
     code: '<a target="_blank" href="http://example.com"></a>',
@@ -74,6 +78,10 @@ ruleTester.run('jsx-no-target-blank', rule, {
     errors: defaultErrors
   }, {
     code: '<a target="_blank" href={ dynamicLink }></a>',
+    errors: defaultErrors
+  }, {
+    code: '<a target="_blank" href={ dynamicLink }></a>',
+    options: [{enforceDynamicLinks: 'always'}],
     errors: defaultErrors
   }]
 });
