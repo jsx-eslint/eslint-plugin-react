@@ -505,6 +505,15 @@ ruleTester.run('sort-comp', rule, {
     parser: 'babel-eslint',
     errors: [{message: 'render should be placed after displayName'}]
   }, {
+    // Must validate static lifecycle methods
+    code: [
+      'class Hello extends React.Component {',
+      '  static getDerivedStateFromProps() {}',
+      '  constructor() {}',
+      '}'
+    ].join('\n'),
+    errors: [{message: 'getDerivedStateFromProps should be placed after constructor'}]
+  }, {
     // Type Annotations should not be at the top by default
     code: [
       'class Hello extends React.Component {',
