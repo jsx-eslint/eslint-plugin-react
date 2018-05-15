@@ -512,7 +512,6 @@ ruleTester.run('sort-comp', rule, {
       '  constructor() {}',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
     errors: [{message: 'getDerivedStateFromProps should be placed after constructor'}]
   }, {
     // Type Annotations should not be at the top by default
