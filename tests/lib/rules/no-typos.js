@@ -11,7 +11,7 @@ const rule = require('../../../lib/rules/no-typos');
 const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 2018,
   ecmaFeatures: {
     jsx: true
   },

@@ -12,10 +12,9 @@ const rule = require('../../../lib/rules/style-prop-object');
 const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
-  ecmaVersion: 8,
+  ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -81,10 +80,9 @@ ruleTester.run('style-prop-object', rule, {
         '}'
       ].join('\n'),
       parserOptions: {
-        ecmaVersion: 8,
+        ecmaVersion: 2018,
         sourceType: 'module',
         ecmaFeatures: {
-          experimentalObjectRestSpread: true,
           jsx: true
         }
       }

@@ -14,9 +14,8 @@ const rule = require('../../../lib/rules/jsx-no-undef');
 const RuleTester = eslint.RuleTester;
 
 const parserOptions = {
-  ecmaVersion: 8,
+  ecmaVersion: 2018,
   ecmaFeatures: {
-    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
