@@ -3,6 +3,30 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.9.0] - 2018-06-03
+### Added
+* Add [`jsx-props-no-multi-spaces`][] rule ([#1755][] @ThiefMaster)
+* Add `first` option to [`jsx-indent-props`][] ([#398][] @ThiefMaster)
+* Add `enforceDynamicLinks` option to [`jsx-no-target-blank`][] ([#1737][] @kenearley)
+
+### Fixed
+* Fix static lifecycle methods validation in [`sort-comp`][] ([#1793][] @lynxtaa)
+* Fix crash in [`no-typos`][] when encountering anonymous react imports ([#1796][] @jsg2021)
+* Fix ESLint 3 support ([#1779][])
+
+### Changed
+* Documentation improvements ([#1794][] @lencioni)
+* Update Travis CI configuration to test on multiple ESLint verions
+
+[7.9.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.8.2...v7.9.0
+[#1755]: https://github.com/yannickcr/eslint-plugin-react/pull/1755
+[#398]: https://github.com/yannickcr/eslint-plugin-react/issues/398
+[#1737]: https://github.com/yannickcr/eslint-plugin-react/issues/1737
+[#1793]: https://github.com/yannickcr/eslint-plugin-react/issues/1793
+[#1796]: https://github.com/yannickcr/eslint-plugin-react/pull/1796
+[#1779]: https://github.com/yannickcr/eslint-plugin-react/issues/1779
+[#1794]: https://github.com/yannickcr/eslint-plugin-react/pull/1794
+
 ## [7.8.2] - 2018-05-13
 ### Fixed
 * Fix crash in [`boolean-prop-naming`][] when encountering a required shape prop type ([#1791][] @pcorpet)
@@ -2205,3 +2229,4 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`no-this-in-sfc`]: docs/rules/no-this-in-sfc.md
 [`jsx-sort-default-props`]: docs/rules/jsx-sort-default-props.md
 [`jsx-max-depth`]: docs/rules/jsx-max-depth.md
+[`jsx-props-no-multi-spaces`]: docs/rules/jsx-props-no-multi-spaces.md
