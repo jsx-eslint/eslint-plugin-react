@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.9.1] - 2018-06-03
+* Nothing was fixed; this is a republish with some updated deps. ([#1804][] @ljharb)
+
+[#1804]: https://github.com/yannickcr/eslint-plugin-react/issues/1804
+
 ## [7.9.0] - 2018-06-03
 ### Added
 * Add [`jsx-props-no-multi-spaces`][] rule ([#1755][] @ThiefMaster)
