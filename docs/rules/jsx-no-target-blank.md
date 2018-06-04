@@ -15,8 +15,8 @@ This rule aims to prevent user generated links from creating security vulerabili
 
 There are two main options for the rule:
 
-* `{"enforceDynamicLinks": "always"}` enforces the rule if the href is a dyanamic link (default)
-* `{"enforceDynamicLinks": "never"}` does not enforce the rule if the href is a dyamic link
+* `{"enforceDynamicLinks": "always"}` enforces the rule if the href is a dynamic link (default)
+* `{"enforceDynamicLinks": "never"}` does not enforce the rule if the href is a dynamic link
 
 
 ### always (default)
