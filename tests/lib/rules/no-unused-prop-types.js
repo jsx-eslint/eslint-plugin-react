@@ -4551,6 +4551,29 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'defaultValue\' PropType is defined but prop is never used'
       }]
+    }, {
+      // Mixed union and intersection types
+      code: `
+        import React from 'react';
+        type OtherProps = {
+          firstname: string,
+          lastname: string,
+        } | {
+          fullname: string
+        };
+        type Props = OtherProps & {
+          age: number
+        };
+        class Test extends React.PureComponent<Props> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'age\' PropType is defined but prop is never used'
+      }]
     }
 
     /* , {
