@@ -2899,6 +2899,20 @@ ruleTester.run('no-unused-prop-types', rule, {
       `].join('\n'),
       settings: {react: {version: '16.3.0'}},
       parser: 'babel-eslint'
+    }, {
+      // Impossible intersection type
+      code: `
+        import React from 'react';
+        type Props = string & {
+          fullname: string
+        };
+        class Test extends React.PureComponent<Props> {
+          render() {
+            return <div>Hello {this.props.fullname}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
     }
   ],
 
