@@ -192,6 +192,22 @@ ruleTester.run('style-prop-object', rule, {
         '  });',
         '};'
       ].join('\n')
+    },
+    {
+      code: '<MyComponent style="myStyle" />',
+      options: [
+        {
+          allow: ['MyComponent']
+        }
+      ]
+    },
+    {
+      code: 'React.createElement(MyComponent, { style: "mySpecialStyle" })',
+      options: [
+        {
+          allow: ['MyComponent']
+        }
+      ]
     }
   ],
   invalid: [
@@ -262,6 +278,34 @@ ruleTester.run('style-prop-object', rule, {
         line: 3,
         column: 22,
         type: 'Identifier'
+      }]
+    },
+    {
+      code: '<MyComponent style="myStyle" />',
+      options: [
+        {
+          allow: ['MyOtherComponent']
+        }
+      ],
+      errors: [{
+        message: 'Style prop value must be an object',
+        line: 1,
+        column: 14,
+        type: 'JSXAttribute'
+      }]
+    },
+    {
+      code: 'React.createElement(MyComponent, { style: "mySpecialStyle" })',
+      options: [
+        {
+          allow: ['MyOtherComponent']
+        }
+      ],
+      errors: [{
+        message: 'Style prop value must be an object',
+        line: 1,
+        column: 43,
+        type: 'Literal'
       }]
     }
   ]
