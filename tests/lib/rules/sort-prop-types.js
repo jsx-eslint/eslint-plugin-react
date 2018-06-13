@@ -428,6 +428,45 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       ignoreCase: true
     }]
+  }, {
+    code: `
+      const shape = {
+        a: PropTypes.any,
+        b: PropTypes.bool,
+        c: PropTypes.any,
+      };
+      class Component extends React.Component {
+        static propTypes = {
+          x: PropTypes.shape(shape),
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    options: [{
+      sortShapeProp: true
+    }],
+    parser: 'babel-eslint'
+  }, {
+    code: `
+      const shape = {
+        a: PropTypes.any,
+        b: PropTypes.bool,
+        c: PropTypes.any,
+      };
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        x: PropTypes.shape(shape)
+      };
+    `,
+    options: [{
+      sortShapeProp: true
+    }]
   }],
 
   invalid: [{
@@ -1613,6 +1652,99 @@ ruleTester.run('sort-prop-types', rule, {
       Component.propTypes = {
         0: PropTypes.any,
         1: PropTypes.any,
+      };
+    `
+  }, {
+    code: `
+      const shape = {
+        c: PropTypes.any,
+        a: PropTypes.any,
+        b: PropTypes.bool,
+      };
+      class Component extends React.Component {
+        static propTypes = {
+          x: PropTypes.shape(shape),
+        };
+
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    options: [{
+      sortShapeProp: true
+    }],
+    parser: 'babel-eslint',
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 4,
+      column: 9,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 5,
+      column: 9,
+      type: 'Property'
+    }],
+    output: `
+      const shape = {
+        a: PropTypes.any,
+        b: PropTypes.bool,
+        c: PropTypes.any,
+      };
+      class Component extends React.Component {
+        static propTypes = {
+          x: PropTypes.shape(shape),
+        };
+
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      const shape = {
+        c: PropTypes.any,
+        a: PropTypes.any,
+        b: PropTypes.bool,
+      };
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        x: PropTypes.shape(shape)
+      };
+    `,
+    options: [{
+      sortShapeProp: true
+    }],
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 4,
+      column: 9,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 5,
+      column: 9,
+      type: 'Property'
+    }],
+    output: `
+      const shape = {
+        a: PropTypes.any,
+        b: PropTypes.bool,
+        c: PropTypes.any,
+      };
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        x: PropTypes.shape(shape)
       };
     `
   }]
