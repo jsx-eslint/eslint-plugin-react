@@ -133,8 +133,7 @@ ruleTester.run('destructuring-assignment', rule, {
         this.state.foo = 'bar';
       }
     };`,
-    options: ['always'],
-    parser: 'babel-eslint'
+    options: ['always']
   }],
 
   invalid: [{
