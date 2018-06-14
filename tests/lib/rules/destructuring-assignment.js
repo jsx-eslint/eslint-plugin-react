@@ -126,7 +126,17 @@ ruleTester.run('destructuring-assignment', rule, {
     };`,
     options: ['never'],
     parser: 'babel-eslint'
+  }, {
+    code: `const Foo = class extends React.PureComponent {
+      constructor() {
+        this.state = {};
+        this.state.foo = 'bar';
+      }
+    };`,
+    options: ['always'],
+    parser: 'babel-eslint'
   }],
+
   invalid: [{
     code: `const MyComponent = (props) => {
       return (<div id={props.id} />)
