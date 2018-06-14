@@ -81,6 +81,19 @@ ruleTester.run('jsx-max-depth', rule, {
     ].join('\n'),
     parser: 'babel-eslint',
     options: [{max: 2}]
+  }, {
+    code: `
+      const x = (
+        <tr>
+          <td>1</td>
+          <td>2</td>
+        </tr>
+      );
+      <tbody>
+        {x}
+      </tbody>
+    `,
+    options: [{max: 2}]
   }],
 
   invalid: [{
@@ -170,6 +183,23 @@ ruleTester.run('jsx-max-depth', rule, {
       '<>{x}-{y}</>'
     ].join('\n'),
     parser: 'babel-eslint',
+    options: [{max: 1}],
+    errors: [
+      {message: 'Expected the depth of nested jsx elements to be <= 1, but found 2.'},
+      {message: 'Expected the depth of nested jsx elements to be <= 1, but found 2.'}
+    ]
+  }, {
+    code: `
+      const x = (
+        <tr>
+          <td>1</td>
+          <td>2</td>
+        </tr>
+      );
+      <tbody>
+        {x}
+      </tbody>
+    `,
     options: [{max: 1}],
     errors: [
       {message: 'Expected the depth of nested jsx elements to be <= 1, but found 2.'},
