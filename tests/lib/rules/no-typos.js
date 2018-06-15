@@ -917,7 +917,6 @@ ruleTester.run('no-typos', rule, {
           a: PropTypes.Number.isRequired
       }
     `,
-    parser: 'babel-eslint',
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in declared prop type: Number'
@@ -930,7 +929,6 @@ ruleTester.run('no-typos', rule, {
           a: PropTypes.number.isrequired
       }
     `,
-    parser: 'babel-eslint',
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
