@@ -117,6 +117,7 @@ Enable the rules that you would like to use.
 * [react/no-this-in-sfc](docs/rules/no-this-in-sfc.md): Prevent using `this` in stateless functional components
 * [react/no-unescaped-entities](docs/rules/no-unescaped-entities.md): Prevent invalid characters from appearing in markup
 * [react/no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property (fixable)
+* [react/no-unsafe](docs/rules/no-unsafe.md): Prevent usage of `UNSAFE_` methods
 * [react/no-unused-prop-types](docs/rules/no-unused-prop-types.md): Prevent definitions of unused prop types
 * [react/no-unused-state](docs/rules/no-unused-state.md): Prevent definitions of unused state properties
 * [react/no-will-update-set-state](docs/rules/no-will-update-set-state.md): Prevent usage of `setState` in `componentWillUpdate`
@@ -208,6 +209,7 @@ The rules enabled in this configuration are:
 * [react/no-string-refs](docs/rules/no-string-refs.md)
 * [react/no-unescaped-entities](docs/rules/no-unescaped-entities.md)
 * [react/no-unknown-property](docs/rules/no-unknown-property.md)
+* [react/no-unsafe](docs/rules/no-unsafe.md)
 * [react/prop-types](docs/rules/prop-types.md)
 * [react/react-in-jsx-scope](docs/rules/react-in-jsx-scope.md)
 * [react/require-render-return](docs/rules/require-render-return.md)
