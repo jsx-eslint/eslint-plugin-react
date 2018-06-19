@@ -142,10 +142,18 @@ ruleTester.run('no-unsafe', rule, {
           endColumn: 10
         },
         {
-          message: errorMessage('UNSAFE_componentWillReceiveProps')
+          message: errorMessage('UNSAFE_componentWillReceiveProps'),
+          line: 2,
+          column: 38,
+          endLine: 6,
+          endColumn: 10
         },
         {
-          message: errorMessage('UNSAFE_componentWillUpdate')
+          message: errorMessage('UNSAFE_componentWillUpdate'),
+          line: 2,
+          column: 38,
+          endLine: 6,
+          endColumn: 10
         }
       ]
     }
