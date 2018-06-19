@@ -105,22 +105,19 @@ ruleTester.run('no-unsafe', rule, {
           message: errorMessage('UNSAFE_componentWillMount'),
           line: 2,
           column: 7,
-          endLine: 6,
-          endColumn: 8
+          type: 'ClassDeclaration'
         },
         {
           message: errorMessage('UNSAFE_componentWillReceiveProps'),
           line: 2,
           column: 7,
-          endLine: 6,
-          endColumn: 8
+          type: 'ClassDeclaration'
         },
         {
           message: errorMessage('UNSAFE_componentWillUpdate'),
           line: 2,
           column: 7,
-          endLine: 6,
-          endColumn: 8
+          type: 'ClassDeclaration'
         }
       ]
     },
@@ -138,22 +135,19 @@ ruleTester.run('no-unsafe', rule, {
           message: errorMessage('UNSAFE_componentWillMount'),
           line: 2,
           column: 38,
-          endLine: 6,
-          endColumn: 10
+          type: 'ObjectExpression'
         },
         {
           message: errorMessage('UNSAFE_componentWillReceiveProps'),
           line: 2,
           column: 38,
-          endLine: 6,
-          endColumn: 10
+          type: 'ObjectExpression'
         },
         {
           message: errorMessage('UNSAFE_componentWillUpdate'),
           line: 2,
           column: 38,
-          endLine: 6,
-          endColumn: 10
+          type: 'ObjectExpression'
         }
       ]
     }
