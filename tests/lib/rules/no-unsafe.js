@@ -19,6 +19,10 @@ const parserOptions = {
   }
 };
 
+function errorMessage(method) {
+  return `${method} is unsafe for use in async rendering, see https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html`;
+}
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -32,7 +36,8 @@ ruleTester.run('no-unsafe', rule, {
           componentDidUpdate() {}
           render() {}
         }
-      `
+      `,
+      settings: {react: {version: '16.4.0'}}
     },
     {
       code: `
@@ -40,7 +45,8 @@ ruleTester.run('no-unsafe', rule, {
           componentDidUpdate: function() {},
           render: function() {}
         });
-      `
+      `,
+      settings: {react: {version: '16.4.0'}}
     },
     {
       code: `
@@ -49,7 +55,8 @@ ruleTester.run('no-unsafe', rule, {
           UNSAFE_componentWillReceiveProps() {}
           UNSAFE_componentWillUpdate() {}
         }
-      `
+      `,
+      settings: {react: {version: '16.4.0'}}
     },
     {
       code: `
@@ -58,7 +65,28 @@ ruleTester.run('no-unsafe', rule, {
           UNSAFE_componentWillReceiveProps: function() {},
           UNSAFE_componentWillUpdate: function() {},
         });
-      `
+      `,
+      settings: {react: {version: '16.4.0'}}
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          UNSAFE_componentWillMount() {}
+          UNSAFE_componentWillReceiveProps() {}
+          UNSAFE_componentWillUpdate() {}
+        }
+      `,
+      settings: {react: {version: '16.2.0'}}
+    },
+    {
+      code: `
+          const Foo = createReactClass({
+            UNSAFE_componentWillMount: function() {},
+            UNSAFE_componentWillReceiveProps: function() {},
+            UNSAFE_componentWillUpdate: function() {},
+          });
+        `,
+      settings: {react: {version: '16.2.0'}}
     }
   ],
 
@@ -71,15 +99,28 @@ ruleTester.run('no-unsafe', rule, {
         UNSAFE_componentWillUpdate() {}
       }
     `,
+      settings: {react: {version: '16.3.0'}},
       errors: [
         {
-          message: 'Do not use UNSAFE_componentWillMount'
+          message: errorMessage('UNSAFE_componentWillMount'),
+          line: 2,
+          column: 7,
+          endLine: 6,
+          endColumn: 8
         },
         {
-          message: 'Do not use UNSAFE_componentWillReceiveProps'
+          message: errorMessage('UNSAFE_componentWillReceiveProps'),
+          line: 2,
+          column: 7,
+          endLine: 6,
+          endColumn: 8
         },
         {
-          message: 'Do not use UNSAFE_componentWillUpdate'
+          message: errorMessage('UNSAFE_componentWillUpdate'),
+          line: 2,
+          column: 7,
+          endLine: 6,
+          endColumn: 8
         }
       ]
     },
@@ -91,15 +132,20 @@ ruleTester.run('no-unsafe', rule, {
           UNSAFE_componentWillUpdate: function() {},
         });
       `,
+      settings: {react: {version: '16.3.0'}},
       errors: [
         {
-          message: 'Do not use UNSAFE_componentWillMount'
+          message: errorMessage('UNSAFE_componentWillMount'),
+          line: 2,
+          column: 38,
+          endLine: 6,
+          endColumn: 10
         },
         {
-          message: 'Do not use UNSAFE_componentWillReceiveProps'
+          message: errorMessage('UNSAFE_componentWillReceiveProps')
         },
         {
-          message: 'Do not use UNSAFE_componentWillUpdate'
+          message: errorMessage('UNSAFE_componentWillUpdate')
         }
       ]
     }
