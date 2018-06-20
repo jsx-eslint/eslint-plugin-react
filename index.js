@@ -140,7 +140,7 @@ module.exports = {
         'react/no-string-refs': 2,
         'react/no-unescaped-entities': 2,
         'react/no-unknown-property': 2,
-        'react/no-unsafe': 2,
+        'react/no-unsafe': 0,
         'react/prop-types': 2,
         'react/react-in-jsx-scope': 2,
         'react/require-render-return': 2

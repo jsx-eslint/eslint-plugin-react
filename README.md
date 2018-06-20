@@ -209,7 +209,6 @@ The rules enabled in this configuration are:
 * [react/no-string-refs](docs/rules/no-string-refs.md)
 * [react/no-unescaped-entities](docs/rules/no-unescaped-entities.md)
 * [react/no-unknown-property](docs/rules/no-unknown-property.md)
-* [react/no-unsafe](docs/rules/no-unsafe.md)
 * [react/prop-types](docs/rules/prop-types.md)
 * [react/react-in-jsx-scope](docs/rules/react-in-jsx-scope.md)
 * [react/require-render-return](docs/rules/require-render-return.md)
