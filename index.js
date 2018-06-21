@@ -64,6 +64,7 @@ const allRules = {
   'no-typos': require('./lib/rules/no-typos'),
   'no-unescaped-entities': require('./lib/rules/no-unescaped-entities'),
   'no-unknown-property': require('./lib/rules/no-unknown-property'),
+  'no-unsafe': require('./lib/rules/no-unsafe'),
   'no-unused-prop-types': require('./lib/rules/no-unused-prop-types'),
   'no-unused-state': require('./lib/rules/no-unused-state'),
   'no-will-update-set-state': require('./lib/rules/no-will-update-set-state'),
@@ -139,6 +140,7 @@ module.exports = {
         'react/no-string-refs': 2,
         'react/no-unescaped-entities': 2,
         'react/no-unknown-property': 2,
+        'react/no-unsafe': 0,
         'react/prop-types': 2,
         'react/react-in-jsx-scope': 2,
         'react/require-render-return': 2
