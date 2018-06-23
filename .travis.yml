@@ -19,6 +19,7 @@ env:
   global:
     - TEST=true
   matrix:
+    - ESLINT=5
     - ESLINT=4
     - ESLINT=3
 after_success:
@@ -28,8 +29,12 @@ matrix:
   include:
     - node_js: 'lts/*'
       env: PRETEST=true
+  exclude:
+    - node_js: '5'
+      env: ESLINT=5
+    - node_js: '4'
+      env: ESLINT=5
   allow_failures:
     - node_js: '9'
     - node_js: '7'
     - node_js: '5'
-    - env: TEST=true ESLINT=next

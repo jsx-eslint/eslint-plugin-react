@@ -19,6 +19,7 @@ matrix:
     - nodejs_version: "9"
     - nodejs_version: "7"
     - nodejs_version: "5"
+    - nodejs_version: "4"
 
 platform:
   - x86
