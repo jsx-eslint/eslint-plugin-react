@@ -15,13 +15,14 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`no-unused-prop-types`][]: Fix crash when encountering mixed union and intersection flow types ([#1806][] @yannickcr)
 
 ### Changed
-* Typo fixes in ['jsx-no-target-blank'][] ([#1805][] @ferhatelmas))
+* Typo fixes in [`jsx-no-target-blank`][] ([#1805][] @ferhatelmas))
 
 [#1845]: https://github.com/yannickcr/eslint-plugin-react/pull/1845
 [#1844]: https://github.com/yannickcr/eslint-plugin-react/issues/1844
 [#1843]: https://github.com/yannickcr/eslint-plugin-react/pull/1843
 [#1831]: https://github.com/yannickcr/eslint-plugin-react/pull/1831
 [#1830]: https://github.com/yannickcr/eslint-plugin-react/issues/1830
+[#1827]: https://github.com/yannickcr/eslint-plugin-react/pull/1827
 [#1825]: https://github.com/yannickcr/eslint-plugin-react/pull/1825
 [#1806]: https://github.com/yannickcr/eslint-plugin-react/issues/1806
 [#1805]: https://github.com/yannickcr/eslint-plugin-react/pull/1805
@@ -131,6 +132,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#1670]: https://github.com/yannickcr/eslint-plugin-react/pull/1670
 [#1669]: https://github.com/yannickcr/eslint-plugin-react/pull/1669
 [#1666]: https://github.com/yannickcr/eslint-plugin-react/pull/1666
+[#1665]: https://github.com/yannickcr/eslint-plugin-react/pull/1665
 [#1655]: https://github.com/yannickcr/eslint-plugin-react/pull/1655
 [#1610]: https://github.com/yannickcr/eslint-plugin-react/pull/1610
 [#1414]: https://github.com/yannickcr/eslint-plugin-react/pull/1414
