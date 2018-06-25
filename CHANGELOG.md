@@ -3,6 +3,31 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.10.0] - 2018-06-24
+### Added
+* Allow eslint ^5 ([#1843][] @papandreou, @ljharb)
+* [`no-unsafe`][] rule ([#1831][], [#1830][] @sergei-startsev)
+* [`no-will-update-set-state`][]: Account for `UNSAFE_` methods ([#1845][], [#1844][] @alexzherdev)
+
+### Fixed
+* [`no-typos`][]: Fix static propTypes handling ([#1827][], [#1677][] @alexzherdev)
+* [`destructuring-assignment`][]: Allow LHS ([#1825][], [#1728][] @alexzherdev)
+* [`no-unused-prop-types`][]: Fix crash when encountering mixed union and intersection flow types ([#1806][] @yannickcr)
+
+### Changed
+* Typo fixes in ['jsx-no-target-blank'][] ([#1805][] @ferhatelmas))
+
+[#1845]: https://github.com/yannickcr/eslint-plugin-react/pull/1845
+[#1844]: https://github.com/yannickcr/eslint-plugin-react/issues/1844
+[#1843]: https://github.com/yannickcr/eslint-plugin-react/pull/1843
+[#1831]: https://github.com/yannickcr/eslint-plugin-react/pull/1831
+[#1830]: https://github.com/yannickcr/eslint-plugin-react/issues/1830
+[#1825]: https://github.com/yannickcr/eslint-plugin-react/pull/1825
+[#1806]: https://github.com/yannickcr/eslint-plugin-react/issues/1806
+[#1805]: https://github.com/yannickcr/eslint-plugin-react/pull/1805
+[#1728]: https://github.com/yannickcr/eslint-plugin-react/issues/1728
+[#1677]: https://github.com/yannickcr/eslint-plugin-react/issues/1677
+
 ## [7.9.1] - 2018-06-03
 * Nothing was fixed; this is a republish with some updated deps. ([#1804][] @ljharb)
 
@@ -2235,3 +2260,4 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`jsx-sort-default-props`]: docs/rules/jsx-sort-default-props.md
 [`jsx-max-depth`]: docs/rules/jsx-max-depth.md
 [`jsx-props-no-multi-spaces`]: docs/rules/jsx-props-no-multi-spaces.md
+[`no-unsafe`]: docs/rules/no-unsafe.md
