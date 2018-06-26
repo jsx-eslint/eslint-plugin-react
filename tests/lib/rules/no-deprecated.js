@@ -226,9 +226,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 3,
-          column: 11,
-          endLine: 3,
-          endColumn: 29
+          column: 11
         },
         {
           message: errorMessage(
@@ -237,9 +235,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 4,
-          column: 11,
-          endLine: 4,
-          endColumn: 36
+          column: 11
         },
         {
           message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
@@ -247,9 +243,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 5,
-          column: 11,
-          endLine: 5,
-          endColumn: 30
+          column: 11
         }
       ]
     },
@@ -271,9 +265,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 4,
-          column: 13,
-          endLine: 4,
-          endColumn: 31
+          column: 13
         },
         {
           message: errorMessage(
@@ -282,9 +274,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 5,
-          column: 13,
-          endLine: 5,
-          endColumn: 38
+          column: 13
         },
         {
           message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
@@ -292,9 +282,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 6,
-          column: 13,
-          endLine: 6,
-          endColumn: 32
+          column: 13
         }
       ]
     },
@@ -314,9 +302,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 3,
-          column: 11,
-          endLine: 3,
-          endColumn: 29
+          column: 11
         },
         {
           message: errorMessage(
@@ -325,9 +311,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 4,
-          column: 11,
-          endLine: 4,
-          endColumn: 36
+          column: 11
         },
         {
           message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
@@ -335,9 +319,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 5,
-          column: 11,
-          endLine: 5,
-          endColumn: 30
+          column: 11
         }
       ]
     },
@@ -357,9 +339,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 3,
-          column: 11,
-          endLine: 3,
-          endColumn: 29
+          column: 11
         },
         {
           message: errorMessage(
@@ -368,9 +348,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 4,
-          column: 11,
-          endLine: 4,
-          endColumn: 36
+          column: 11
         },
         {
           message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
@@ -378,9 +356,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 5,
-          column: 11,
-          endLine: 5,
-          endColumn: 30
+          column: 11
         }
       ]
     },
@@ -400,9 +376,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 3,
-          column: 11,
-          endLine: 3,
-          endColumn: 29
+          column: 11
         },
         {
           message: errorMessage(
@@ -411,9 +385,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 4,
-          column: 11,
-          endLine: 4,
-          endColumn: 36
+          column: 11
         },
         {
           message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
@@ -421,9 +393,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 5,
-          column: 11,
-          endLine: 5,
-          endColumn: 30
+          column: 11
         }
       ]
     },
@@ -443,9 +413,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 3,
-          column: 11,
-          endLine: 3,
-          endColumn: 29
+          column: 11
         },
         {
           message: errorMessage(
@@ -454,9 +422,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 4,
-          column: 11,
-          endLine: 4,
-          endColumn: 36
+          column: 11
         },
         {
           message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
@@ -464,9 +430,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 5,
-          column: 11,
-          endLine: 5,
-          endColumn: 30
+          column: 11
         }
       ]
     },
@@ -487,9 +451,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 4,
-          column: 11,
-          endLine: 4,
-          endColumn: 29
+          column: 11
         },
         {
           message: errorMessage(
@@ -498,9 +460,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 5,
-          column: 11,
-          endLine: 5,
-          endColumn: 36
+          column: 11
         },
         {
           message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
@@ -508,9 +468,7 @@ ruleTester.run('no-deprecated', rule, {
           ),
           type: 'Identifier',
           line: 6,
-          column: 11,
-          endLine: 6,
-          endColumn: 30
+          column: 11
         }
       ]
     }
