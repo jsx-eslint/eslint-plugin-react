@@ -223,18 +223,21 @@ ruleTester.run('no-deprecated', rule, {
           message: errorMessage(
             'componentWillMount', '16.3.0', 'UNSAFE_componentWillMount',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount'
-          )
+          ),
+          type: 'Identifier'
         },
         {
           message: errorMessage(
             'componentWillReceiveProps', '16.3.0', 'UNSAFE_componentWillReceiveProps',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops'
-          )
+          ),
+          type: 'Identifier'
         },
         {
           message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate'
-          )
+          ),
+          type: 'Identifier'
         }
       ]
     },
@@ -253,18 +256,21 @@ ruleTester.run('no-deprecated', rule, {
           message: errorMessage(
             'componentWillMount', '16.3.0', 'UNSAFE_componentWillMount',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount'
-          )
+          ),
+          type: 'Identifier'
         },
         {
           message: errorMessage(
             'componentWillReceiveProps', '16.3.0', 'UNSAFE_componentWillReceiveProps',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops'
-          )
+          ),
+          type: 'Identifier'
         },
         {
           message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate'
-          )
+          ),
+          type: 'Identifier'
         }
       ]
     },
@@ -281,18 +287,21 @@ ruleTester.run('no-deprecated', rule, {
           message: errorMessage(
             'componentWillMount', '16.3.0', 'UNSAFE_componentWillMount',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount'
-          )
+          ),
+          type: 'Identifier'
         },
         {
           message: errorMessage(
             'componentWillReceiveProps', '16.3.0', 'UNSAFE_componentWillReceiveProps',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops'
-          )
+          ),
+          type: 'Identifier'
         },
         {
           message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate'
-          )
+          ),
+          type: 'Identifier'
         }
       ]
     },
@@ -309,18 +318,21 @@ ruleTester.run('no-deprecated', rule, {
           message: errorMessage(
             'componentWillMount', '16.3.0', 'UNSAFE_componentWillMount',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount'
-          )
+          ),
+          type: 'Identifier'
         },
         {
           message: errorMessage(
             'componentWillReceiveProps', '16.3.0', 'UNSAFE_componentWillReceiveProps',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops'
-          )
+          ),
+          type: 'Identifier'
         },
         {
           message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate'
-          )
+          ),
+          type: 'Identifier'
         }
       ]
     },
@@ -337,18 +349,21 @@ ruleTester.run('no-deprecated', rule, {
           message: errorMessage(
             'componentWillMount', '16.3.0', 'UNSAFE_componentWillMount',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount'
-          )
+          ),
+          type: 'Identifier'
         },
         {
           message: errorMessage(
             'componentWillReceiveProps', '16.3.0', 'UNSAFE_componentWillReceiveProps',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops'
-          )
+          ),
+          type: 'Identifier'
         },
         {
           message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate'
-          )
+          ),
+          type: 'Identifier'
         }
       ]
     },
@@ -365,23 +380,26 @@ ruleTester.run('no-deprecated', rule, {
           message: errorMessage(
             'componentWillMount', '16.3.0', 'UNSAFE_componentWillMount',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount'
-          )
+          ),
+          type: 'Identifier'
         },
         {
           message: errorMessage(
             'componentWillReceiveProps', '16.3.0', 'UNSAFE_componentWillReceiveProps',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops'
-          )
+          ),
+          type: 'Identifier'
         },
         {
           message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate'
-          )
+          ),
+          type: 'Identifier'
         }
       ]
     },
     {
-      code: `
+      code: `un
         class Foo extends React.Component {
           constructor() {}
           componentWillMount() {}
@@ -394,18 +412,21 @@ ruleTester.run('no-deprecated', rule, {
           message: errorMessage(
             'componentWillMount', '16.3.0', 'UNSAFE_componentWillMount',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount'
-          )
+          ),
+          type: 'Identifier'
         },
         {
           message: errorMessage(
             'componentWillReceiveProps', '16.3.0', 'UNSAFE_componentWillReceiveProps',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops'
-          )
+          ),
+          type: 'Identifier'
         },
         {
           message: errorMessage('componentWillUpdate', '16.3.0', 'UNSAFE_componentWillUpdate',
             'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate'
-          )
+          ),
+          type: 'Identifier'
         }
       ]
     }
