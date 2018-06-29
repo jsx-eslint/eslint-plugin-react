@@ -88,7 +88,7 @@ ruleTester.run('destructuring-assignment', rule, {
         }
       });
     `,
-    options: [{createClass: 'always'}]
+    options: [{createClass: 'always'}],
     parser: 'babel-eslint'
   }, {
     code: `const MyComponent = (props) => {
