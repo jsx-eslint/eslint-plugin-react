@@ -98,6 +98,7 @@ const allRules = {
   'require-render-return': require('./lib/rules/require-render-return'),
   'self-closing-comp': require('./lib/rules/self-closing-comp'),
   'sort-comp': require('./lib/rules/sort-comp'),
+  'sort-default-props': require('./lib/rules/sort-default-props'),
   'sort-prop-types': require('./lib/rules/sort-prop-types'),
   'state-in-constructor': require('./lib/rules/state-in-constructor'),
   'static-property-placement': require('./lib/rules/static-property-placement'),

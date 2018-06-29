@@ -7,8 +7,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Added
 * [`hook-use-state`]: add `allowDestructuredState` option ([#3449][] @ljharb)
+* add [`sort-default-props`] and deprecate [`jsx-sort-default-props`] ([#1861][] @alexzherdev)
 
 [#3449]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3449
+[#1861]: https://github.com/jsx-eslint/eslint-plugin-react/pull/1861
 
 ## [7.31.9] - 2022.10.09
 
@@ -4023,6 +4025,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`require-render-return`]: docs/rules/require-render-return.md
 [`self-closing-comp`]: docs/rules/self-closing-comp.md
 [`sort-comp`]: docs/rules/sort-comp.md
+[`sort-default-props`]: docs/rules/sort-default-props.md
 [`sort-prop-types`]: docs/rules/sort-prop-types.md
 [`state-in-constructor`]: docs/rules/state-in-constructor.md
 [`static-property-placement`]: docs/rules/static-property-placement.md

@@ -1,6 +1,6 @@
-# Enforce defaultProps declarations alphabetical sorting (react/jsx-sort-default-props)
+# Enforce defaultProps declarations alphabetical sorting (react/sort-default-props)
 
-❌ This rule is deprecated. Please use the [`sort-default-props`](./sort-default-props.md) rule instead.
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
 
 Some developers prefer to sort `defaultProps` declarations alphabetically to be able to find necessary declarations easier at a later time. Others feel that it adds complexity and becomes a burden to maintain.
 
@@ -8,7 +8,7 @@ Some developers prefer to sort `defaultProps` declarations alphabetically to be 
 
 This rule checks all components and verifies that all `defaultProps` declarations are sorted alphabetically. A spread attribute resets the verification. The default configuration of the rule is case-sensitive.
 
-Examples of **incorrect** code for this rule:
+The following patterns are considered warnings:
 
 ```jsx
 var Component = createReactClass({
@@ -88,7 +88,7 @@ export default class ClassWithSpreadInPropTypes extends BaseClass {
 }
 ```
 
-Examples of **correct** code for this rule:
+The following patterns are considered okay and do **not** cause warnings:
 
 ```jsx
 var Component = createReactClass({
@@ -172,7 +172,7 @@ export default class ClassWithSpreadInPropTypes extends BaseClass {
 
 ```js
 ...
-"react/jsx-sort-default-props": [<enabled>, {
+"react/sort-default-props": [<enabled>, {
   "ignoreCase": <boolean>,
 }]
 ...
@@ -182,6 +182,6 @@ export default class ClassWithSpreadInPropTypes extends BaseClass {
 
 When `true` the rule ignores the case-sensitivity of the declarations order.
 
-## When Not To Use It
+## When not to use
 
 This rule is a formatting preference and not following it won't negatively affect the quality of your code. If alphabetizing `defaultProps` declarations isn't a part of your coding standards, then you can leave this rule off.

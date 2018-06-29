@@ -172,6 +172,7 @@ Enable the rules that you would like to use.
 | ✔ |  |  | [react/require-render-return](docs/rules/require-render-return.md) | Enforce ES5 or ES6 class for returning value in render function |
 |  | 🔧 |  | [react/self-closing-comp](docs/rules/self-closing-comp.md) | Disallow extra closing tags for components without children |
 |  |  |  | [react/sort-comp](docs/rules/sort-comp.md) | Enforce component methods order |
+|  |  |  | [react/sort-default-props](docs/rules/sort-default-props.md) | Enforce defaultProps declarations alphabetical sorting |
 |  |  |  | [react/sort-prop-types](docs/rules/sort-prop-types.md) | Enforce propTypes declarations alphabetical sorting |
 |  |  |  | [react/state-in-constructor](docs/rules/state-in-constructor.md) | Enforce class component state initialization style |
 |  |  |  | [react/static-property-placement](docs/rules/static-property-placement.md) | Enforces where React component static properties should be positioned. |
@@ -216,7 +217,7 @@ Enable the rules that you would like to use.
 |  |  |  | [react/jsx-pascal-case](docs/rules/jsx-pascal-case.md) | Enforce PascalCase for user-defined JSX components |
 |  | 🔧 |  | [react/jsx-props-no-multi-spaces](docs/rules/jsx-props-no-multi-spaces.md) | Disallow multiple spaces between inline JSX props |
 |  |  |  | [react/jsx-props-no-spreading](docs/rules/jsx-props-no-spreading.md) | Disallow JSX prop spreading |
-|  |  |  | [react/jsx-sort-default-props](docs/rules/jsx-sort-default-props.md) | Enforce defaultProps declarations alphabetical sorting |
+|  |  |  | [react/jsx-sort-default-props](docs/rules/jsx-sort-default-props.md) | Enforce defaultProps declarations alphabetical sorting. ❌ This rule is deprecated. |
 |  | 🔧 |  | [react/jsx-sort-props](docs/rules/jsx-sort-props.md) | Enforce props alphabetical sorting |
 |  | 🔧 |  | [react/jsx-space-before-closing](docs/rules/jsx-space-before-closing.md) | Enforce spacing before closing bracket in JSX. ❌ This rule is deprecated. |
 |  | 🔧 |  | [react/jsx-tag-spacing](docs/rules/jsx-tag-spacing.md) | Enforce whitespace in and around the JSX opening and closing brackets |
