@@ -3,6 +3,112 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.10.0] - 2018-06-24
+### Added
+* Allow eslint ^5 ([#1843][] @papandreou, @ljharb)
+* [`no-unsafe`][] rule ([#1831][], [#1830][] @sergei-startsev)
+* [`no-will-update-set-state`][]: Account for `UNSAFE_` methods ([#1845][], [#1844][] @alexzherdev)
+
+### Fixed
+* [`no-typos`][]: Fix static propTypes handling ([#1827][], [#1677][] @alexzherdev)
+* [`destructuring-assignment`][]: Allow LHS ([#1825][], [#1728][] @alexzherdev)
+* [`no-unused-prop-types`][]: Fix crash when encountering mixed union and intersection flow types ([#1806][] @yannickcr)
+
+### Changed
+* Typo fixes in [`jsx-no-target-blank`][] ([#1805][] @ferhatelmas))
+
+[#1845]: https://github.com/yannickcr/eslint-plugin-react/pull/1845
+[#1844]: https://github.com/yannickcr/eslint-plugin-react/issues/1844
+[#1843]: https://github.com/yannickcr/eslint-plugin-react/pull/1843
+[#1831]: https://github.com/yannickcr/eslint-plugin-react/pull/1831
+[#1830]: https://github.com/yannickcr/eslint-plugin-react/issues/1830
+[#1827]: https://github.com/yannickcr/eslint-plugin-react/pull/1827
+[#1825]: https://github.com/yannickcr/eslint-plugin-react/pull/1825
+[#1806]: https://github.com/yannickcr/eslint-plugin-react/issues/1806
+[#1805]: https://github.com/yannickcr/eslint-plugin-react/pull/1805
+[#1728]: https://github.com/yannickcr/eslint-plugin-react/issues/1728
+[#1677]: https://github.com/yannickcr/eslint-plugin-react/issues/1677
+
+## [7.9.1] - 2018-06-03
+* Nothing was fixed; this is a republish with some updated deps. ([#1804][] @ljharb)
+
+[#1804]: https://github.com/yannickcr/eslint-plugin-react/issues/1804
+
+## [7.9.0] - 2018-06-03
+### Added
+* Add [`jsx-props-no-multi-spaces`][] rule ([#1755][] @ThiefMaster)
+* Add `first` option to [`jsx-indent-props`][] ([#398][] @ThiefMaster)
+* Add `enforceDynamicLinks` option to [`jsx-no-target-blank`][] ([#1737][] @kenearley)
+
+### Fixed
+* Fix static lifecycle methods validation in [`sort-comp`][] ([#1793][] @lynxtaa)
+* Fix crash in [`no-typos`][] when encountering anonymous react imports ([#1796][] @jsg2021)
+* Fix ESLint 3 support ([#1779][])
+
+### Changed
+* Documentation improvements ([#1794][] @lencioni)
+* Update Travis CI configuration to test on multiple ESLint verions
+
+[7.9.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.8.2...v7.9.0
+[#1755]: https://github.com/yannickcr/eslint-plugin-react/pull/1755
+[#398]: https://github.com/yannickcr/eslint-plugin-react/issues/398
+[#1737]: https://github.com/yannickcr/eslint-plugin-react/issues/1737
+[#1793]: https://github.com/yannickcr/eslint-plugin-react/issues/1793
+[#1796]: https://github.com/yannickcr/eslint-plugin-react/pull/1796
+[#1779]: https://github.com/yannickcr/eslint-plugin-react/issues/1779
+[#1794]: https://github.com/yannickcr/eslint-plugin-react/pull/1794
+
+## [7.8.2] - 2018-05-13
+### Fixed
+* Fix crash in [`boolean-prop-naming`][] when encountering a required shape prop type ([#1791][] @pcorpet)
+
+[7.8.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.8.1...v7.8.2
+[#1791]: https://github.com/yannickcr/eslint-plugin-react/issues/1791
+
+## [7.8.1] - 2018-05-12
+### Fixed
+* Fix crash in [`no-deprecated`][] when encountering a class constructor ([#1785][] @taddei)
+
+[7.8.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.8.0...v7.8.1
+[#1785]: https://github.com/yannickcr/eslint-plugin-react/issues/1785
+
+## [7.8.0] - 2018-05-11
+### Added
+* Add support for fragments to [`react-in-jsx-scope`][] ([#1758][])
+* Add support for Flow generic PropType to [`require-default-props`][] ([#1724][] @Miziak)
+* Add component whitelist option to [`forbid-component-props`][] ([#1732][] @ThiefMaster)
+* Add support for React 16.3 lifecycle methods to [`no-unused-prop-types`][] ([#1681][] @bvaughn)
+* Add support for React 16.3 lifecycle methods to [`sort-comp`][] ([#1767][] @joe-denea)
+* Add support for React 16.3 lifecycle methods to [`no-typos`][]
+* Add support for `prevState` and `nextState` to [`no-unused-state`][] ([#1759][])
+* Add warnings for `componentWillMount`, `componentWillReceiveProps` and `componentWillUpdate` lifecycle methods in [`no-deprecated`][] ([#1750][] @sergei-startsev)
+
+### Fixed
+* Fix [`no-typos`][] false positive on custom `PropType` classes ([#1389][] @brettdh)
+* Fix [`boolean-prop-naming`][] to handle required props ([#1389][] @louisscruz)
+* Fix [`jsx-curly-brace-presence`][] to allow whitespace JSX container ([#1717][] @sharmilajesupaul)
+* Fix [`jsx-no-bind`][] to handle ternary conditions ([#1722][] @gwenaellarmet)
+
+### Changed
+* Documentation improvements ([#1699][] @ronanmathew, [#1743][] @ybiquitous, [#1753][] @awthwathje, [#1783][] @chentsulin, [#1703][] @ferhatelmas)
+
+[7.8.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.7.0...v7.8.0
+[#1758]: https://github.com/yannickcr/eslint-plugin-react/issues/1758
+[#1724]: https://github.com/yannickcr/eslint-plugin-react/issues/1724
+[#1732]: https://github.com/yannickcr/eslint-plugin-react/issues/1732
+[#1681]: https://github.com/yannickcr/eslint-plugin-react/pull/1681
+[#1767]: https://github.com/yannickcr/eslint-plugin-react/issues/1767
+[#1759]: https://github.com/yannickcr/eslint-plugin-react/issues/1759
+[#1750]: https://github.com/yannickcr/eslint-plugin-react/pull/1750
+[#1389]: https://github.com/yannickcr/eslint-plugin-react/issues/1389
+[#1717]: https://github.com/yannickcr/eslint-plugin-react/issues/1717
+[#1722]: https://github.com/yannickcr/eslint-plugin-react/issues/1722
+[#1699]: https://github.com/yannickcr/eslint-plugin-react/pull/1699
+[#1743]: https://github.com/yannickcr/eslint-plugin-react/pull/1743
+[#1753]: https://github.com/yannickcr/eslint-plugin-react/issues/1753
+[#1783]: https://github.com/yannickcr/eslint-plugin-react/pull/1783
+[#1703]: https://github.com/yannickcr/eslint-plugin-react/pull/1703
+
 ## [7.7.0] - 2018-02-19
 ### Added
 * [`forbid-foreign-prop-types`][]: add `allowInPropTypes` option ([#1655][] @iansu)
@@ -26,11 +132,12 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#1670]: https://github.com/yannickcr/eslint-plugin-react/pull/1670
 [#1669]: https://github.com/yannickcr/eslint-plugin-react/pull/1669
 [#1666]: https://github.com/yannickcr/eslint-plugin-react/pull/1666
+[#1665]: https://github.com/yannickcr/eslint-plugin-react/pull/1665
 [#1655]: https://github.com/yannickcr/eslint-plugin-react/pull/1655
 [#1610]: https://github.com/yannickcr/eslint-plugin-react/pull/1610
 [#1414]: https://github.com/yannickcr/eslint-plugin-react/pull/1414
 [#1260]: https://github.com/yannickcr/eslint-plugin-react/pull/1260
-[#1571]: https://github.com/yannickcr/eslint-plugin-react/issue/1571
+[#1571]: https://github.com/yannickcr/eslint-plugin-react/issues/1571
 
 ## [7.6.1] - 2018-01-28
 ### Fixed
@@ -40,7 +147,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 [7.6.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.6.0...v7.6.1
 [#1659]: https://github.com/yannickcr/eslint-plugin-react/pull/1659
-[#1657]: https://github.com/yannickcr/eslint-plugin-react/issue/1657
+[#1657]: https://github.com/yannickcr/eslint-plugin-react/issues/1657
 [#1653]: https://github.com/yannickcr/eslint-plugin-react/pull/1653
 
 ## [7.6.0] - 2018-01-25
@@ -2154,3 +2261,5 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`no-this-in-sfc`]: docs/rules/no-this-in-sfc.md
 [`jsx-sort-default-props`]: docs/rules/jsx-sort-default-props.md
 [`jsx-max-depth`]: docs/rules/jsx-max-depth.md
+[`jsx-props-no-multi-spaces`]: docs/rules/jsx-props-no-multi-spaces.md
+[`no-unsafe`]: docs/rules/no-unsafe.md

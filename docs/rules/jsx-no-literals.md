@@ -27,8 +27,8 @@ There is only one option:
 
 To use, you can specify like the following:
 
-```json
-"react/jsx-no-literals": [{"noStrings": true}]
+```js
+"react/jsx-no-literals": [<enabled>, {"noStrings": true}]
 ```
 
 In this configuration, the following are considered warnings:

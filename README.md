@@ -102,7 +102,7 @@ Enable the rules that you would like to use.
 * [react/no-children-prop](docs/rules/no-children-prop.md): Prevent passing children as props
 * [react/no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
 * [react/no-danger-with-children](docs/rules/no-danger-with-children.md): Prevent problem with children and props.dangerouslySetInnerHTML
-* [react/no-deprecated](docs/rules/no-deprecated.md): Prevent usage of deprecated methods
+* [react/no-deprecated](docs/rules/no-deprecated.md): Prevent usage of deprecated methods, including component lifecyle methods
 * [react/no-did-mount-set-state](docs/rules/no-did-mount-set-state.md): Prevent usage of `setState` in `componentDidMount`
 * [react/no-did-update-set-state](docs/rules/no-did-update-set-state.md): Prevent usage of `setState` in `componentDidUpdate`
 * [react/no-direct-mutation-state](docs/rules/no-direct-mutation-state.md): Prevent direct mutation of `this.state`
@@ -117,6 +117,7 @@ Enable the rules that you would like to use.
 * [react/no-this-in-sfc](docs/rules/no-this-in-sfc.md): Prevent using `this` in stateless functional components
 * [react/no-unescaped-entities](docs/rules/no-unescaped-entities.md): Prevent invalid characters from appearing in markup
 * [react/no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property (fixable)
+* [react/no-unsafe](docs/rules/no-unsafe.md): Prevent usage of `UNSAFE_` methods
 * [react/no-unused-prop-types](docs/rules/no-unused-prop-types.md): Prevent definitions of unused prop types
 * [react/no-unused-state](docs/rules/no-unused-state.md): Prevent definitions of unused state properties
 * [react/no-will-update-set-state](docs/rules/no-will-update-set-state.md): Prevent usage of `setState` in `componentWillUpdate`
@@ -158,6 +159,7 @@ Enable the rules that you would like to use.
 * [react/jsx-one-expression-per-line](docs/rules/jsx-one-expression-per-line.md): Limit to one expression per line in JSX
 * [react/jsx-curly-brace-presence](docs/rules/jsx-curly-brace-presence.md): Enforce curly braces or disallow unnecessary curly braces in JSX
 * [react/jsx-pascal-case](docs/rules/jsx-pascal-case.md): Enforce PascalCase for user-defined JSX components
+* [react/jsx-props-no-multi-spaces](docs/rules/jsx-props-no-multi-spaces.md): Disallow multiple spaces between inline JSX props (fixable)
 * [react/jsx-sort-default-props](docs/rules/jsx-sort-default-props.md): Enforce default props alphabetical sorting
 * [react/jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting (fixable)
 * [react/jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
@@ -248,7 +250,7 @@ ESLint-plugin-React is licensed under the [MIT License](http://www.opensource.or
 [coverage-image]: https://img.shields.io/coveralls/yannickcr/eslint-plugin-react/master.svg
 
 [climate-url]: https://codeclimate.com/github/yannickcr/eslint-plugin-react
-[climate-image]: https://img.shields.io/codeclimate/github/yannickcr/eslint-plugin-react.svg
+[climate-image]: https://img.shields.io/codeclimate/maintainability/yannickcr/eslint-plugin-react.svg
 
 [status-url]: https://github.com/yannickcr/eslint-plugin-react/pulse
-[status-image]: https://img.shields.io/badge/status-maintained-brightgreen.svg
+[status-image]: https://img.shields.io/github/last-commit/yannickcr/eslint-plugin-react.svg

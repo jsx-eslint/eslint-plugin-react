@@ -12,10 +12,9 @@ const rule = require('../../../lib/rules/no-unused-prop-types');
 const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
-  ecmaVersion: 8,
+  ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -2825,6 +2824,95 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
         MyComponent.propTypes = { * other() {} };
       `
+    }, {
+      // Sanity test coverage for new UNSAFE_componentWillReceiveProps lifecycles
+      code: [`
+        class Hello extends Component {
+          static propTypes = {
+            something: PropTypes.bool
+          };
+          UNSAFE_componentWillReceiveProps (nextProps) {
+            const {something} = nextProps;
+            doSomething(something);
+          }
+        }
+      `].join('\n'),
+      settings: {react: {version: '16.3.0'}},
+      parser: 'babel-eslint'
+    }, {
+      // Destructured props in the `UNSAFE_componentWillUpdate` method shouldn't throw errors
+      code: [`
+        class Hello extends Component {
+          static propTypes = {
+            something: PropTypes.bool
+          };
+          UNSAFE_componentWillUpdate (nextProps, nextState) {
+            const {something} = nextProps;
+            return something;
+          }
+        }
+      `].join('\n'),
+      settings: {react: {version: '16.3.0'}},
+      parser: 'babel-eslint'
+    }, {
+      // Simple test of new static getDerivedStateFromProps lifecycle
+      code: [`
+        class MyComponent extends React.Component {
+          static propTypes = {
+            defaultValue: 'bar'
+          };
+          state = {
+            currentValue: null
+          };
+          static getDerivedStateFromProps(nextProps, prevState) {
+            if (prevState.currentValue === null) {
+              return {
+                currentValue: nextProps.defaultValue,
+              }
+            }
+            return null;
+          }
+          render() {
+            return <div>{ this.state.currentValue }</div>
+          }
+        }
+      `].join('\n'),
+      settings: {react: {version: '16.3.0'}},
+      parser: 'babel-eslint'
+    }, {
+      // Simple test of new static getSnapshotBeforeUpdate lifecycle
+      code: [`
+        class MyComponent extends React.Component {
+          static propTypes = {
+            defaultValue: PropTypes.string
+          };
+          getSnapshotBeforeUpdate(prevProps, prevState) {
+            if (prevProps.defaultValue === null) {
+              return 'snapshot';
+            }
+            return null;
+          }
+          render() {
+            return <div />
+          }
+        }
+      `].join('\n'),
+      settings: {react: {version: '16.3.0'}},
+      parser: 'babel-eslint'
+    }, {
+      // Impossible intersection type
+      code: `
+        import React from 'react';
+        type Props = string & {
+          fullname: string
+        };
+        class Test extends React.PureComponent<Props> {
+          render() {
+            return <div>Hello {this.props.fullname}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint'
     }
   ],
 
@@ -4393,6 +4481,112 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: 'babel-eslint',
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [`
+        class Hello extends Component {
+          static propTypes = {
+            something: PropTypes.bool
+          };
+          UNSAFE_componentWillReceiveProps (nextProps) {
+            const {something} = nextProps;
+            doSomething(something);
+          }
+        }
+      `].join('\n'),
+      settings: {react: {version: '16.2.0'}},
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'something\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [`
+        class Hello extends Component {
+          static propTypes = {
+            something: PropTypes.bool
+          };
+          UNSAFE_componentWillUpdate (nextProps, nextState) {
+            const {something} = nextProps;
+            return something;
+          }
+        }
+      `].join('\n'),
+      settings: {react: {version: '16.2.0'}},
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'something\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [`
+        class MyComponent extends React.Component {
+          static propTypes = {
+            defaultValue: 'bar'
+          };
+          state = {
+            currentValue: null
+          };
+          static getDerivedStateFromProps(nextProps, prevState) {
+            if (prevState.currentValue === null) {
+              return {
+                currentValue: nextProps.defaultValue,
+              }
+            }
+            return null;
+          }
+          render() {
+            return <div>{ this.state.currentValue }</div>
+          }
+        }
+      `].join('\n'),
+      settings: {react: {version: '16.2.0'}},
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'defaultValue\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [`
+        class MyComponent extends React.Component {
+          static propTypes = {
+            defaultValue: PropTypes.string
+          };
+          getSnapshotBeforeUpdate(prevProps, prevState) {
+            if (prevProps.defaultValue === null) {
+              return 'snapshot';
+            }
+            return null;
+          }
+          render() {
+            return <div />
+          }
+        }
+      `].join('\n'),
+      settings: {react: {version: '16.2.0'}},
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'defaultValue\' PropType is defined but prop is never used'
+      }]
+    }, {
+      // Mixed union and intersection types
+      code: `
+        import React from 'react';
+        type OtherProps = {
+          firstname: string,
+          lastname: string,
+        } | {
+          fullname: string
+        };
+        type Props = OtherProps & {
+          age: number
+        };
+        class Test extends React.PureComponent<Props> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'age\' PropType is defined but prop is never used'
       }]
     }
 

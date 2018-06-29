@@ -139,12 +139,18 @@ will warned and fixed to:
 
 * If the rule is set to get rid of unnecessary curly braces(JSX expression) and there are characters that need to be escaped in its JSX form, such as quote characters, [forbidden JSX text characters](https://facebook.github.io/jsx/), escaped characters and anything that looks like HTML entity names, the code will not be warned because the fix may make the code less readable.
 
-The following pattern will **not** be given a warning even if `'never'` is passed.
+The following patterns will **not** be given a warning even if `'never'` is passed.
 
 ```jsx
 <Color text={"\u00a0"} />
 <App>{"Hello \u00b7 world"}</App>;
 <style type="text/css">{'.main { margin-top: 0; }'}</style>;
+/**
+ * there's no way to inject a whitespace into jsx without a container so this
+ * will always be allowed.
+ */
+<App>{' '}</App>
+<App>{'     '}</App>
 ```
 
 ## When Not To Use It

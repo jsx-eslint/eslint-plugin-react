@@ -1,23 +1,47 @@
-environment:
-  matrix:
-    - nodejs_version: '4'
-    - nodejs_version: '5'
-    - nodejs_version: '6'
-    - nodejs_version: '7'
-    - nodejs_version: '8'
-install:
-  - ps: Install-Product node $env:nodejs_version
-  - set CI=true
-  - npm -g install npm@latest
-  - set PATH=%APPDATA%\npm;%PATH%
-  - npm install
-matrix:
-  fast_finish: true
-build: off
 version: '{build}'
+skip_branch_with_pr: true
+build: off
 shallow_clone: true
 clone_depth: 1
+
+environment:
+  matrix:
+    - nodejs_version: "10"
+    - nodejs_version: "9"
+    - nodejs_version: "8"
+    - nodejs_version: "7"
+    - nodejs_version: "6"
+    - nodejs_version: "5"
+    - nodejs_version: "4"
+matrix:
+  fast_finish: true
+  allow_failures:
+    - nodejs_version: "9"
+    - nodejs_version: "7"
+    - nodejs_version: "5"
+    - nodejs_version: "4"
+
+platform:
+  - x86
+  - x64
+
+# Install scripts. (runs after repo cloning)
+install:
+ # Get the latest stable version of Node.js or io.js
+ - ps: Install-Product node $env:nodejs_version $env:platform
+ - set CI=true
+ - IF %nodejs_version% EQU 0.6 npm -g install npm@1.3
+ - IF %nodejs_version% EQU 0.8 npm -g install npm@2
+ - IF %nodejs_version% LSS 6 npm -g install npm@5
+ - IF %nodejs_version% GEQ 6 npm -g install npm@6
+ - set PATH=%APPDATA%\npm;%PATH%
+ # install modules
+ - npm install
+
+# Post-install test scripts.
 test_script:
-  - node --version
-  - npm --version
-  - npm test
+ # Output useful info for debugging.
+ - node --version
+ - npm --version
+ # run tests
+ - npm run unit-test

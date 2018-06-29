@@ -36,6 +36,32 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       code: '<App {...props}>foo</App>',
       options: [{props: 'never'}]
     },
+    /*
+     * There is no way to inject the space into JSX without an expression container
+     * so this format should always be allowed regardless of the `children` option.
+     */
+    {
+      code: '<App>{\' \'}</App>'
+    },
+    {
+      code: '<App>{\'     \'}</App>'
+    },
+    {
+      code: '<App>{\' \'}</App>',
+      options: [{children: 'never'}]
+    },
+    {
+      code: '<App>{\'    \'}</App>',
+      options: [{children: 'never'}]
+    },
+    {
+      code: '<App>{\' \'}</App>',
+      options: [{children: 'always'}]
+    },
+    {
+      code: '<App>{\'        \'}</App>',
+      options: [{children: 'always'}]
+    },
     {
       code: '<App {...props}>foo</App>',
       options: [{props: 'always'}]

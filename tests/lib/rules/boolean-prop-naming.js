@@ -14,10 +14,9 @@ const RuleTester = require('eslint').RuleTester;
 require('babel-eslint');
 
 const parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -348,6 +347,17 @@ ruleTester.run('boolean-prop-naming', rule, {
         hasValue: PropTypes.bool.isRequired
       }
     `
+  }, {
+    // Ensure the rule does not throw when a shape prop isRequired.
+    code: `
+      var Hello = createReactClass({
+        propTypes: {something: PropTypes.shape({}).isRequired},
+        render: function() { return <div />; }
+      });
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+'
+    }]
   }],
 
   invalid: [{

@@ -12,10 +12,9 @@ const rule = require('../../../lib/rules/button-has-type');
 const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
-  ecmaVersion: 8,
+  ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -44,6 +43,17 @@ ruleTester.run('button-has-type', rule, {
     {
       code: 'React.createElement("button", {type: "button"})',
       options: [{reset: false}]
+    },
+    {
+      code: 'document.createElement("button")'
+    },
+    {
+      code: 'Foo.createElement("span")',
+      settings: {
+        react: {
+          pragma: 'Foo'
+        }
+      }
     }
   ],
   invalid: [
@@ -84,6 +94,17 @@ ruleTester.run('button-has-type', rule, {
       errors: [{
         message: '"reset" is a forbidden value for button type attribute'
       }]
+    },
+    {
+      code: 'Foo.createElement("button")',
+      errors: [{
+        message: 'Missing an explicit type attribute for button'
+      }],
+      settings: {
+        react: {
+          pragma: 'Foo'
+        }
+      }
     }
   ]
 });

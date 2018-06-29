@@ -11,7 +11,11 @@ The following patterns are considered warnings:
 [<Hello />, <Hello />, <Hello />];
 
 data.map(x => <Hello>{x}</Hello>);
+
+<Hello {...{ key: id, id, caption }} />
 ```
+
+In the last example the key is being spread, which is currently possible, but discouraged in favor of the statically provided key.
 
 The following patterns are **not** considered warnings:
 
@@ -19,6 +23,8 @@ The following patterns are **not** considered warnings:
 [<Hello key="first" />, <Hello key="second" />, <Hello key="third" />];
 
 data.map((x, i) => <Hello key={i}>{x}</Hello>);
+
+<Hello key={id} {...{ id, caption }} />
 ```
 
 ## When not to use

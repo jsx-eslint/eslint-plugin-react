@@ -14,10 +14,9 @@ const rule = require('eslint/lib/rules/no-unused-vars');
 const RuleTester = eslint.RuleTester;
 
 const parserOptions = {
-  ecmaVersion: 8,
+  ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    experimentalObjectRestSpread: true,
     jsx: true
   }
 };

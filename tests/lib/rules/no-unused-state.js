@@ -8,10 +8,9 @@ const rule = require('../../../lib/rules/no-unused-state');
 const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 2018,
   ecmaFeatures: {
-    jsx: true,
-    experimentalObjectRestSpread: true
+    jsx: true
   }
 };
 
@@ -488,6 +487,49 @@ eslintTester.run('no-unused-state', rule, {
 
         render() {
           return <div className={classNames('overflowEdgeIndicator', className, this.state)} />;
+        }
+      }`,
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class ESLintExample extends Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            id: 123,
+          };
+        }
+        static getDerivedStateFromProps(nextProps, prevState) {
+          if (prevState.id === nextProps.id) {
+            return {
+              selected: true,
+            };
+          }
+          return null;
+        }
+        render() {
+          return (
+            <h1>{this.state.selected ? 'Selected' : 'Not selected'}</h1>
+          );
+        }
+      }`,
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class ESLintExample extends Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            id: 123,
+          };
+        }
+        shouldComponentUpdate(nextProps, nextState) {
+          return nextState.id === nextProps.id;
+        }
+        render() {
+          return (
+            <h1>{this.state.selected ? 'Selected' : 'Not selected'}</h1>
+          );
         }
       }`,
       parser: 'babel-eslint'

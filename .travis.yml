@@ -1,6 +1,7 @@
 sudo: false
 language: node_js
 node_js:
+  - '10'
   - '9'
   - '8'
   - '7'
@@ -9,11 +10,18 @@ node_js:
   - '4'
 before_install:
   - 'nvm install-latest-npm'
+before_script:
+  - 'if [ -n "${ESLINT-}" ]; then npm install --no-save "eslint@${ESLINT}" ; fi'
 script:
   - 'if [ -n "${PRETEST-}" ]; then npm run pretest ; fi'
   - 'if [ -n "${TEST-}" ]; then npm run unit-test ; fi'
 env:
-  - TEST=true
+  global:
+    - TEST=true
+  matrix:
+    - ESLINT=5
+    - ESLINT=4
+    - ESLINT=3
 after_success:
   - 'if [ -n "${TEST-}" ]; then npm run coveralls ; fi'
 matrix:
@@ -21,6 +29,11 @@ matrix:
   include:
     - node_js: 'lts/*'
       env: PRETEST=true
+  exclude:
+    - node_js: '5'
+      env: ESLINT=5
+    - node_js: '4'
+      env: ESLINT=5
   allow_failures:
     - node_js: '9'
     - node_js: '7'

@@ -14,7 +14,6 @@ const RuleTester = require('eslint').RuleTester;
 const parserOptions = {
   ecmaVersion: 2018,
   ecmaFeatures: {
-    experimentalObjectRestSpread: true,
     jsx: true
   }
 };

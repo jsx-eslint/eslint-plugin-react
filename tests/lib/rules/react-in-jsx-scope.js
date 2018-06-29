@@ -13,10 +13,9 @@ const rule = require('../../../lib/rules/react-in-jsx-scope');
 const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
-  ecmaVersion: 8,
+  ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -36,6 +35,7 @@ ruleTester.run('react-in-jsx-scope', rule, {
   valid: [
     {code: 'var React, App; <App />;'},
     {code: 'var React; <img />;'},
+    {code: 'var React; <>fragment</>;', parser: 'babel-eslint'},
     {code: 'var React; <x-gif />;'},
     {code: 'var React, App, a=1; <App attr={a} />;'},
     {code: 'var React, App, a=1; function elem() { return <App attr={a} />; }'},
@@ -63,6 +63,10 @@ ruleTester.run('react-in-jsx-scope', rule, {
     errors: [{message: '\'React\' must be in scope when using JSX'}]
   }, {
     code: 'var a = <img />;',
+    errors: [{message: '\'React\' must be in scope when using JSX'}]
+  }, {
+    code: 'var a = <>fragment</>;',
+    parser: 'babel-eslint',
     errors: [{message: '\'React\' must be in scope when using JSX'}]
   }, {
     code: '/** @jsx React.DOM */ var a = <img />;',

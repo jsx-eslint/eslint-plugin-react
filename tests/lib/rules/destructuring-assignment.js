@@ -10,7 +10,7 @@ const RuleTester = require('eslint').RuleTester;
 require('babel-eslint');
 
 const parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true
@@ -89,6 +89,22 @@ ruleTester.run('destructuring-assignment', rule, {
       });
     `,
     options: [{createClass: 'always'}]
+    parser: 'babel-eslint'
+  }, {
+    code: `const MyComponent = (props) => {
+      const { h, i } = hi;
+      return <div id={props.id} className={props.className} />
+    };`,
+    options: ['never'],
+    parser: 'babel-eslint'
+  }, {
+    code: `const Foo = class extends React.PureComponent {
+      constructor() {
+        this.state = {};
+        this.state.foo = 'bar';
+      }
+    };`,
+    options: ['always']
   }],
 
   invalid: [{

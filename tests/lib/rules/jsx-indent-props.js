@@ -12,10 +12,9 @@ const rule = require('../../../lib/rules/jsx-indent-props');
 const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
-  ecmaVersion: 8,
+  ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -59,6 +58,83 @@ ruleTester.run('jsx-indent-props', rule, {
       '/>'
     ].join('\n'),
     options: ['tab']
+  }, {
+    code: [
+      '<App/>'
+    ].join('\n'),
+    options: ['first']
+  }, {
+    code: [
+      '<App aaa',
+      '     b',
+      '     cc',
+      '/>'
+    ].join('\n'),
+    options: ['first']
+  }, {
+    code: [
+      '<App   aaa',
+      '       b',
+      '       cc',
+      '/>'
+    ].join('\n'),
+    options: ['first']
+  }, {
+    code: [
+      'const test = <App aaa',
+      '                  b',
+      '                  cc',
+      '             />'
+    ].join('\n'),
+    options: ['first']
+  }, {
+    code: [
+      '<App aaa x',
+      '     b y',
+      '     cc',
+      '/>'
+    ].join('\n'),
+    options: ['first']
+  }, {
+    code: [
+      'const test = <App aaa x',
+      '                  b y',
+      '                  cc',
+      '             />'
+    ].join('\n'),
+    options: ['first']
+  }, {
+    code: [
+      '<App aaa',
+      '     b',
+      '>',
+      '    <Child c',
+      '           d/>',
+      '</App>'
+    ].join('\n'),
+    options: ['first']
+  }, {
+    code: [
+      '<Fragment>',
+      '  <App aaa',
+      '       b',
+      '       cc',
+      '  />',
+      '  <OtherApp a',
+      '            bbb',
+      '            c',
+      '  />',
+      '</Fragment>'
+    ].join('\n'),
+    options: ['first']
+  }, {
+    code: [
+      '<App',
+      '  a',
+      '  b',
+      '/>'
+    ].join('\n'),
+    options: ['first']
   }],
 
   invalid: [{
@@ -112,5 +188,66 @@ ruleTester.run('jsx-indent-props', rule, {
     ].join('\n'),
     options: ['tab'],
     errors: [{message: 'Expected indentation of 1 tab character but found 3.'}]
+  }, {
+    code: [
+      '<App a',
+      '  b',
+      '/>'
+    ].join('\n'),
+    output: [
+      '<App a',
+      '     b',
+      '/>'
+    ].join('\n'),
+    options: ['first'],
+    errors: [{message: 'Expected indentation of 5 space characters but found 2.'}]
+  }, {
+    code: [
+      '<App  a',
+      '   b',
+      '/>'
+    ].join('\n'),
+    output: [
+      '<App  a',
+      '      b',
+      '/>'
+    ].join('\n'),
+    options: ['first'],
+    errors: [{message: 'Expected indentation of 6 space characters but found 3.'}]
+  }, {
+    code: [
+      '<App',
+      '      a',
+      '   b',
+      '/>'
+    ].join('\n'),
+    output: [
+      '<App',
+      '      a',
+      '      b',
+      '/>'
+    ].join('\n'),
+    options: ['first'],
+    errors: [{message: 'Expected indentation of 6 space characters but found 3.'}]
+  }, {
+    code: [
+      '<App',
+      '  a',
+      ' b',
+      '   c',
+      '/>'
+    ].join('\n'),
+    output: [
+      '<App',
+      '  a',
+      '  b',
+      '  c',
+      '/>'
+    ].join('\n'),
+    options: ['first'],
+    errors: [
+      {message: 'Expected indentation of 2 space characters but found 1.'},
+      {message: 'Expected indentation of 2 space characters but found 3.'}
+    ]
   }]
 });

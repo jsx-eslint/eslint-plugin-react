@@ -12,10 +12,9 @@ const rule = require('../../../lib/rules/no-will-update-set-state');
 const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
-  ecmaVersion: 8,
+  ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -78,6 +77,17 @@ ruleTester.run('no-will-update-set-state', rule, {
       });
     `,
     parser: 'babel-eslint'
+  }, {
+    code: `
+      class Hello extends React.Component {
+        UNSAFE_componentWillUpdate() {
+          this.setState({
+            data: data
+          });
+        }
+      }
+    `,
+    settings: {react: {version: '16.2.0'}}
   }],
 
   invalid: [{
@@ -225,6 +235,34 @@ ruleTester.run('no-will-update-set-state', rule, {
     options: ['disallow-in-func'],
     errors: [{
       message: 'Do not use setState in componentWillUpdate'
+    }]
+  }, {
+    code: `
+      class Hello extends React.Component {
+        UNSAFE_componentWillUpdate() {
+          this.setState({
+            data: data
+          });
+        }
+      }
+    `,
+    settings: {react: {version: '16.3.0'}},
+    errors: [{
+      message: 'Do not use setState in UNSAFE_componentWillUpdate'
+    }]
+  }, {
+    code: `
+      var Hello = createReactClass({
+        UNSAFE_componentWillUpdate: function() {
+          this.setState({
+            data: data
+          });
+        }
+      });
+    `,
+    settings: {react: {version: '16.3.0'}},
+    errors: [{
+      message: 'Do not use setState in UNSAFE_componentWillUpdate'
     }]
   }]
 });

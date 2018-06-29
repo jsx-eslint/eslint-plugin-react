@@ -12,10 +12,9 @@ const rule = require('../../../lib/rules/require-default-props');
 const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
-  ecmaVersion: 8,
+  ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    experimentalObjectRestSpread: true,
     jsx: true
   }
 };
@@ -742,6 +741,92 @@ ruleTester.run('require-default-props', rule, {
         '  static propTypes = {',
         '    foo: PropTypes.string.isRequired',
         '  }',
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      options: [{forbidDefaultForRequired: true}]
+    },
+    // test support for React PropTypes as Component's class generic
+    {
+      code: [
+        'type HelloProps = {',
+        '  foo: string,',
+        '  bar?: string',
+        '};',
+
+        'class Hello extends React.Component<HelloProps> {',
+        '  static defaultProps = {',
+        '    bar: "bar"',
+        '  }',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      options: [{forbidDefaultForRequired: true}]
+    },
+    {
+      code: [
+        'type HelloProps = {',
+        '  foo: string,',
+        '  bar?: string',
+        '};',
+
+        'class Hello extends Component<HelloProps> {',
+        '  static defaultProps = {',
+        '    bar: "bar"',
+        '  }',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      options: [{forbidDefaultForRequired: true}]
+    },
+    {
+      code: [
+        'type HelloProps = {',
+        '  foo: string,',
+        '  bar?: string',
+        '};',
+
+        'type HelloState = {',
+        '  dummyState: string',
+        '};',
+
+        'class Hello extends Component<HelloProps, HelloState> {',
+        '  static defaultProps = {',
+        '    bar: "bar"',
+        '  }',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      options: [{forbidDefaultForRequired: true}]
+    },
+    {
+      code: [
+        'type HelloProps = {',
+        '  foo?: string,',
+        '  bar?: string',
+        '};',
+
+        'class Hello extends Component<HelloProps> {',
+        '  static defaultProps = {',
+        '    foo: "foo",',
+        '    bar: "bar"',
+        '  }',
+
         '  render() {',
         '    return <div>Hello {this.props.foo}</div>;',
         '  }',
@@ -2005,6 +2090,89 @@ ruleTester.run('require-default-props', rule, {
       options: [{forbidDefaultForRequired: true}],
       errors: [{
         message: 'propType "foo" is required and should not have a defaultProp declaration.'
+      }]
+    },
+    // test support for React PropTypes as Component's class generic
+    {
+      code: [
+        'type HelloProps = {',
+        '  foo: string,',
+        '  bar?: string',
+        '};',
+
+        'class Hello extends React.Component<HelloProps> {',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.'
+      }]
+    },
+    {
+      code: [
+        'type HelloProps = {',
+        '  foo: string,',
+        '  bar?: string',
+        '};',
+
+        'class Hello extends Component<HelloProps> {',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.'
+      }]
+    },
+    {
+      code: [
+        'type HelloProps = {',
+        '  foo: string,',
+        '  bar?: string',
+        '};',
+
+        'type HelloState = {',
+        '  dummyState: string',
+        '};',
+
+        'class Hello extends Component<HelloProps, HelloState> {',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.'
+      }]
+    },
+    {
+      code: [
+        'type HelloProps = {',
+        '  foo?: string,',
+        '  bar?: string',
+        '};',
+
+        'class Hello extends Component<HelloProps> {',
+
+        '  render() {',
+        '    return <div>Hello {this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProp declaration.'
+      }, {
+        message: 'propType "bar" is not required, but has no corresponding defaultProp declaration.'
       }]
     }
   ]

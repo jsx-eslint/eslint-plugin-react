@@ -23,7 +23,7 @@ It takes an option as the second parameter which can be a positive number for de
 
 ```js
 ...
-"react/jsx-no-depth": [<enabled>, { "max": <number> }]
+"react/jsx-max-depth": [<enabled>, { "max": <number> }]
 ...
 ```
 
