@@ -7,21 +7,22 @@ A `bind` call or [arrow function](https://developer.mozilla.org/en-US/docs/Web/J
 The following patterns are considered warnings:
 
 ```jsx
-<div onClick={this._handleClick.bind(this)}></div>
+<Foo onClick={this._handleClick.bind(this)}></Foo>
 ```
 ```jsx
-<div onClick={() => console.log('Hello!')}></div>
+<Foo onClick={() => console.log('Hello!')}></Foo>
 ```
 
 The following patterns are **not** considered warnings:
 ```jsx
-<div onClick={this._handleClick}></div>
+<Foo onClick={this._handleClick}></Foo>
 ```
 
 ## Rule Options
 
 ```js
 "react/jsx-no-bind": [<enabled>, {
+  "ignoreDOMComponents": <boolean> || false,
   "ignoreRefs": <boolean> || false,
   "allowArrowFunctions": <boolean> || false,
   "allowFunctions": <boolean> || false,
@@ -29,13 +30,23 @@ The following patterns are **not** considered warnings:
 }]
 ```
 
+### `ignoreDOMComponents`
+
+When `true` the following are **not** considered warnings:
+
+```jsx
+<div onClick={this._handleClick.bind(this) />
+<span onClick={() => console.log("Hello!")} />
+<button onClick={function() { alert("1337") }} />
+```
+
 ### `ignoreRefs`
 
 When `true` the following are **not** considered warnings:
 
 ```jsx
-<div ref={c => this._div = c} />
-<div ref={this._refCallback.bind(this)} />
+<Foo ref={c => this._div = c} />
+<Foo ref={this._refCallback.bind(this)} />
 ```
 
 ### `allowArrowFunctions`
@@ -43,7 +54,7 @@ When `true` the following are **not** considered warnings:
 When `true` the following is **not** considered a warning:
 
 ```jsx
-<div onClick={() => alert("1337")} />
+<Foo onClick={() => alert("1337")} />
 ```
 
 ### `allowFunctions`
@@ -51,7 +62,7 @@ When `true` the following is **not** considered a warning:
 When `true` the following is not considered a warning:
 
 ```jsx
-<div onClick={function () { alert("1337") }} />
+<Foo onClick={function () { alert("1337") }} />
 ```
 
 ### `allowBind`
@@ -59,7 +70,7 @@ When `true` the following is not considered a warning:
 When `true` the following is **not** considered a warning:
 
 ```jsx
-<div onClick={this._handleClick.bind(this)} />
+<Foo onClick={this._handleClick.bind(this)} />
 ```
 
 ## Protips
