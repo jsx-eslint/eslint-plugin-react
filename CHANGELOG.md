@@ -11,8 +11,12 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Fixed
 * [`display-name`]: Get rid of false position on component detection ([#2759] @iiison)
 
+### Changed
+* [`no-access-state-in-setstate`]: passing test for “don't error if it's not a React Component” ([#1873] @kentcdodds)
+
 [#2640]: https://github.com/yannickcr/eslint-plugin-react/pull/2640
 [#2759]: https://github.com/yannickcr/eslint-plugin-react/pull/2759
+[#1873]: https://github.com/yannickcr/eslint-plugin-react/pull/1873
 
 ## [7.25.3] - 2021.09.19
 
