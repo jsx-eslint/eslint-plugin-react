@@ -8,7 +8,7 @@
     "coveralls": "cat ./reports/coverage/lcov.info | coveralls",
     "lint": "eslint ./",
     "pretest": "npm run lint",
-    "test": "npm run unit-test 'tests/**/*.js'",
+    "test": "npm run unit-test tests/**/*.js",
     "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha -- --reporter dot"
   },
   "files": [
