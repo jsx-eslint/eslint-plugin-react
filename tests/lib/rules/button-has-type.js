@@ -70,6 +70,12 @@ ruleTester.run('button-has-type', rule, {
       }]
     },
     {
+      code: '<button type={foo}/>',
+      errors: [{
+        message: '`foo` is an invalid value for button type attribute'
+      }]
+    },
+    {
       code: '<button type="reset"/>',
       options: [{reset: false}],
       errors: [{
