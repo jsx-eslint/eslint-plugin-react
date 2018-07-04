@@ -1872,6 +1872,25 @@ ruleTester.run('prop-types', rule, {
       };
     `,
       parser: 'babel-eslint'
+    },
+    {
+      code: `
+      // @flow
+      import * as React from 'react'
+
+      type Props = {}
+
+      const func = <OP: *>(arg) => arg
+
+      const hoc = <OP>() => () => {
+        class Inner extends React.Component<Props & OP> {
+          render() {
+            return <div />
+          }
+        }
+      }
+    `,
+      parser: 'babel-eslint'
     }
   ],
 
@@ -3625,6 +3644,38 @@ ruleTester.run('prop-types', rule, {
       `,
       errors: [{
         message: '\'fooBar\' is missing in props validation'
+      }],
+      parser: 'babel-eslint'
+    },
+    {
+      code: `
+      type ReduxState = {bar: number};
+
+      const mapStateToProps = (state: ReduxState) => ({
+          foo: state.bar,
+      });
+      // utility to extract the return type from a function
+      type ExtractReturn_<R, Fn: (...args: any[]) => R> = R;
+      type ExtractReturn<T> = ExtractReturn_<*, T>;
+
+      type PropsFromRedux = ExtractReturn<typeof mapStateToProps>;
+
+      type OwnProps = {
+          baz: string,
+      }
+
+      // I want my Props to be {baz: string, foo: number}
+      type Props = PropsFromRedux & OwnProps;
+
+      const Component = (props: Props) => (
+        <div>
+            {props.baz}
+            {props.bad}
+        </div>
+      );
+    `,
+      errors: [{
+        message: '\'bad\' is missing in props validation'
       }],
       parser: 'babel-eslint'
     }
