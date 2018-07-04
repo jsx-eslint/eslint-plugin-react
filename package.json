@@ -24,6 +24,7 @@
   "homepage": "https://github.com/yannickcr/eslint-plugin-react",
   "bugs": "https://github.com/yannickcr/eslint-plugin-react/issues",
   "dependencies": {
+    "array-includes": "^3.0.3",
     "doctrine": "^2.1.0",
     "has": "^1.0.3",
     "jsx-ast-utils": "^2.0.1",
