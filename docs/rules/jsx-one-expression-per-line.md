@@ -20,15 +20,15 @@ The following patterns are considered warnings:
   </Hello></App>
 
 <App>
-  </Hello> World
+  <Hello /> World
 </App>
 
 <App>
-  </Hello> { 'World' }
+  <Hello /> { 'World' }
 </App>
 
 <App>
-  </Hello> { this.world() }
+  <Hello /> { this.world() }
 </App>
 
 <App>
@@ -64,17 +64,17 @@ The following patterns are **not** warnings:
 </App>
 
 <App>
-  </Hello>
+  <Hello />
   World
 </App>
 
 <App>
-  </Hello>
+  <Hello />
   { 'World' }
 </App>
 
 <App>
-  </Hello>
+  <Hello />
   { this.world() }
 </App>
 
