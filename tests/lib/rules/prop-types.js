@@ -1274,15 +1274,6 @@ ruleTester.run('prop-types', rule, {
       ].join('\n')
     }, {
       code: [
-        'function Hello({names}) {',
-        '  return names.map((name) => {',
-        '    return <div>{name}</div>;',
-        '  });',
-        '}'
-      ].join('\n'),
-      parser: 'babel-eslint'
-    }, {
-      code: [
         'type Target = { target: EventTarget }',
         'class MyComponent extends Component {',
         '  static propTypes = {',
@@ -3625,6 +3616,18 @@ ruleTester.run('prop-types', rule, {
       `,
       errors: [{
         message: '\'fooBar\' is missing in props validation'
+      }],
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'function Hello({names}) {',
+        '  return names.map((name) => {',
+        '    return <div>{name}</div>;',
+        '  });',
+        '}'
+      ].join('\n'),
+      errors: [{
+        message: '\'names\' is missing in props validation'
       }],
       parser: 'babel-eslint'
     }

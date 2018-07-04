@@ -69,6 +69,7 @@ const allRules = {
   'no-unused-state': require('./lib/rules/no-unused-state'),
   'no-will-update-set-state': require('./lib/rules/no-will-update-set-state'),
   'prefer-es6-class': require('./lib/rules/prefer-es6-class'),
+  'prefer-separate-components': require('./lib/rules/prefer-separate-components'),
   'prefer-stateless-function': require('./lib/rules/prefer-stateless-function'),
   'prop-types': require('./lib/rules/prop-types'),
   'react-in-jsx-scope': require('./lib/rules/react-in-jsx-scope'),
