@@ -18,106 +18,77 @@ const parserOptions = {
 };
 
 const ruleTester = new RuleTester({parserOptions});
+
 ruleTester.run('destructuring-assignment', rule, {
   valid: [{
-    code: `const Foo = class extends React.PureComponent {
-      render() {
-        const { foo } = this.props;
-        return <div>{foo}</div>;
+    code: `function Component({ color }) {
+      return <span>{color}</span>;
+    }`
+  }, {
+    code: 'const Component = ({ color }) => <span>{color}</span>;'
+  }, {
+    code: 'const Component = ({ color }, { onChange }) => <span>{color}</span>;'
+  }, {
+    code: 'const Component = (props) => <span>{props.color}</span>;',
+    options: [{SFC: 'never'}]
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return this.props.children;
+        }
       }
-    };`,
-    options: ['always'],
-    parser: 'babel-eslint'
+    `,
+    options: [{class: 'never'}]
   }, {
-    code: `const MyComponent = ({ id, className }) => (
-      <div id={id} className={className} />
-    );`
-  }, {
-    code: `const MyComponent = (props) => {
-      const { id, className } = props;
-      return <div id={id} className={className} />
-    };`,
-    parser: 'babel-eslint'
-  }, {
-    code: `const MyComponent = ({ id, className }) => (
-      <div id={id} className={className} />
-    );`,
-    options: ['always']
-  }, {
-    code: `const MyComponent = (props) => {
-      const { id, className } = props;
-      return <div id={id} className={className} />
-    };`
-  }, {
-    code: `const MyComponent = (props) => {
-      const { id, className } = props;
-      return <div id={id} className={className} />
-    };`,
-    options: ['always']
-  }, {
-    code: `const MyComponent = (props) => (
-      <div id={id} props={props} />
-    );`
-  }, {
-    code: `const MyComponent = (props) => (
-      <div id={id} props={props} />
-    );`,
-    options: ['always']
-  }, {
-    code: `const MyComponent = (props, { color }) => (
-      <div id={id} props={props} color={color} />
-    );`
-  }, {
-    code: `const MyComponent = (props, { color }) => (
-      <div id={id} props={props} color={color} />
-    );`,
-    options: ['always']
-  }, {
-    code: `const Foo = class extends React.PureComponent {
-      render() {
-        return <div>{this.props.foo}</div>;
+    code: `
+      class Component extends React.Component {
+        componentDidMount() {
+          this.props.onMount();
+        }
+
+        render() {
+          const { children } = this.props;
+          return children;
+        }
       }
-    };`,
-    options: ['never']
+    `,
+    options: [{class: 'always'}]
   }, {
-    code: `class Foo extends React.Component {
-      doStuff() {}
-      render() {
-        return <div>{this.props.foo}</div>;
-      }
-    }`,
-    options: ['never']
+    code: `
+      const Component = createReactClass({
+        render() {
+          return this.props.children;
+        }
+      });
+    `,
+    options: [{createClass: 'never'}]
   }, {
-    code: `const Foo = class extends React.PureComponent {
-      render() {
-        const { foo } = this.props;
-        return <div>{foo}</div>;
-      }
-    };`
+    code: `
+      const Component = createReactClass({
+        render() {
+          const { children } = this.props;
+          
+          return children;
+        }
+      });
+    `,
+    options: [{createClass: 'always'}]
   }, {
-    code: `const Foo = class extends React.PureComponent {
-      render() {
-        const { foo } = this.props;
-        return <div>{foo}</div>;
-      }
-    };`,
-    options: ['always'],
-    parser: 'babel-eslint'
-  }, {
-    code: `const Foo = class extends React.PureComponent {
-      render() {
-        const { foo } = this.props;
-        return <div>{foo}</div>;
-      }
-    };`
-  }, {
-    code: `const Foo = class extends React.PureComponent {
-      render() {
-        const { foo } = this.props;
-        return <div>{foo}</div>;
-      }
-    };`,
-    options: ['always'],
+    code: `
+      const Component = createReactClass({
+        componentDidMount() {
+          this.props.onMount();
+        },
+        
+        render() {
+          const { children } = this.props;
+          
+          return children;
+        }
+      });
+    `,
+    options: [{createClass: 'always'}],
     parser: 'babel-eslint'
   }, {
     code: `const MyComponent = (props) => {
@@ -137,117 +108,120 @@ ruleTester.run('destructuring-assignment', rule, {
   }],
 
   invalid: [{
-    code: `const MyComponent = (props) => {
-      return (<div id={props.id} />)
-    };`,
-    errors: [
-      {message: 'Must use destructuring props assignment'}
-    ]
-  }, {
-    code: `const MyComponent = ({ id, className }) => (
-      <div id={id} className={className} />
-    );`,
-    options: ['never'],
-    errors: [
-      {message: 'Must never use destructuring props assignment in SFC argument'}
-    ]
-  }, {
-    code: `const MyComponent = (props, { color }) => (
-      <div id={props.id} className={props.className} />
-    );`,
-    options: ['never'],
-    errors: [
-      {message: 'Must never use destructuring context assignment in SFC argument'}
-    ]
-  }, {
-    code: `const Foo = class extends React.PureComponent {
-      render() {
-        return <div>{this.props.foo}</div>;
-      }
-    };`,
-    errors: [
-      {message: 'Must use destructuring props assignment'}
-    ]
-  }, {
-    code: `const Foo = class extends React.PureComponent {
-      render() {
-        return <div>{this.state.foo}</div>;
-      }
-    };`,
-    errors: [
-      {message: 'Must use destructuring state assignment'}
-    ]
-  }, {
-    code: `const Foo = class extends React.PureComponent {
-      render() {
-        return <div>{this.context.foo}</div>;
-      }
-    };`,
-    errors: [
-      {message: 'Must use destructuring context assignment'}
-    ]
-  }, {
-    code: `class Foo extends React.Component {
-      render() { return this.foo(); }
-      foo() {
-        return this.props.children;
-      }
+    code: `function Component({ color }) {
+      return <span>{color}</span>;
     }`,
-    errors: [
-      {message: 'Must use destructuring props assignment'}
-    ]
-  }, {
-    code: `var Hello = React.createClass({
-      render: function() {
-        return <Text>{this.props.foo}</Text>;
-      }
-    });`,
-    errors: [
-      {message: 'Must use destructuring props assignment'}
-    ]
-  }, {
-    code: `const Foo = class extends React.PureComponent {
-      render() {
-        const foo = this.props.foo;
-        return <div>{foo}</div>;
-      }
-    };`,
-    errors: [
-      {message: 'Must use destructuring props assignment'}
-    ]
-  }, {
-    code: `const Foo = class extends React.PureComponent {
-      render() {
-        const { foo } = this.props;
-        return <div>{foo}</div>;
-      }
-    };`,
     options: ['never'],
-    parser: 'babel-eslint',
-    errors: [
-      {message: 'Must never use destructuring props assignment'}
-    ]
+    errors: [{message: 'Must never use destructuring props assignment in SFC argument'}]
   }, {
-    code: `const MyComponent = (props) => {
-      const { id, className } = props;
-      return <div id={id} className={className} />
-    };`,
+    code: 'const Component = ({ color }) => <span>{color}</span>;',
     options: ['never'],
-    parser: 'babel-eslint',
-    errors: [
-      {message: 'Must never use destructuring props assignment'}
-    ]
+    errors: [{message: 'Must never use destructuring props assignment in SFC argument'}]
   }, {
-    code: `const Foo = class extends React.PureComponent {
-      render() {
-        const { foo } = this.state;
-        return <div>{foo}</div>;
+    code: 'const Component = (props) => <span>{props.color}</span>;',
+    options: [{class: 'never'}],
+    errors: [{message: 'Must use destructuring props assignment in SFC argument'}]
+  }, {
+    code: 'const Component = (props) => <span>{props.color.primary}</span>;',
+    options: ['always'],
+    errors: [{message: 'Must use destructuring props assignment in SFC argument'}]
+  }, {
+    code: 'const Component = (props, { onChange }) => <span>{props.color}</span>;',
+    options: ['never'],
+    errors: [{message: 'Must never use destructuring context assignment in SFC argument'}]
+  }, {
+    code: 'const Component = (props) => <span>{props.color}</span>;',
+    options: [{SFC: 'always'}],
+    errors: [{message: 'Must use destructuring props assignment in SFC argument'}]
+  }, {
+    code: 'const Component = (props, context) => <span>{context.color}</span>;',
+    options: [{SFC: 'always'}],
+    errors: [{message: 'Must use destructuring context assignment in SFC argument'}]
+  }, {
+    code: `
+      function Component(props, context) {
+        const { onClick } = context;
+        
+        return <div />
       }
-    };`,
-    options: ['never'],
-    parser: 'babel-eslint',
-    errors: [
-      {message: 'Must never use destructuring state assignment'}
-    ]
+    `,
+    options: [{SFC: 'never'}],
+    errors: [{message: 'Must never use destructuring context assignment'}]
+  }, {
+    code: `
+      function Component(props) {
+        const { children } = props;
+        
+        return <div>{children}</div>;
+      }
+    `,
+    options: [{SFC: 'never'}],
+    errors: [{message: 'Must never use destructuring props assignment'}]
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return this.props.children;
+        }
+      }
+    `,
+    options: [{class: 'always'}],
+    errors: [{message: 'Must use destructuring props assignment'}]
+  }, {
+    code: `
+      const Component = createReactClass({
+        render() {
+          return this.props.children;
+        }
+      });
+    `,
+    options: [{createClass: 'always'}],
+    errors: [{message: 'Must use destructuring props assignment'}]
+  }, {
+    code: `
+      const Component = createReactClass({
+        render() {
+          const { children } = this.props;
+
+          return children;
+        }
+      });
+    `,
+    options: [{createClass: 'never'}],
+    errors: [{message: 'Must never use destructuring props assignment'}]
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          const { children } = this.props;
+
+          return children;
+        }
+      }
+    `,
+    options: [{class: 'never'}],
+    errors: [{message: 'Must never use destructuring props assignment'}]
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          const { value } = this.state;
+
+          return value;
+        }
+      }
+    `,
+    options: [{class: 'never'}],
+    errors: [{message: 'Must never use destructuring state assignment'}]
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return this.state.value;
+        }
+      }
+    `,
+    options: [{class: 'always'}],
+    errors: [{message: 'Must use destructuring state assignment'}]
   }]
 });
