@@ -88,6 +88,10 @@ const reservedFirstWithNoSortAlphabeticallyArgs = [{
   noSortAlphabetically: true,
   reservedFirst: true
 }];
+const reservedFirstWithShorthandLast = [{
+  reservedFirst: true,
+  shorthandLast: true
+}];
 const reservedFirstAsEmptyArrayArgs = [{
   reservedFirst: []
 }];
@@ -149,6 +153,10 @@ ruleTester.run('jsx-sort-props', rule, {
     {
       code: '<div ref="r" dangerouslySetInnerHTML={{__html: "EPR"}} key={0} children={<App />} b a c />',
       options: reservedFirstWithNoSortAlphabeticallyArgs
+    },
+    {
+      code: '<App key="key" c="c" b />',
+      options: reservedFirstWithShorthandLast
     }
   ],
   invalid: [
@@ -231,6 +239,16 @@ ruleTester.run('jsx-sort-props', rule, {
       errors: 3
     },
     {
+      code: '<App key="key" b c="c" />',
+      errors: [expectedShorthandLastError],
+      options: reservedFirstWithShorthandLast
+    },
+    {
+      code: '<App ref="ref" key="key" isShorthand veryLastAttribute="yes" />',
+      errors: [expectedError, expectedShorthandLastError],
+      options: reservedFirstWithShorthandLast
+    },
+    {
       code: '<App a z onFoo onBar />;',
       errors: [expectedError],
       options: callbacksLastArgs
@@ -293,7 +311,7 @@ ruleTester.run('jsx-sort-props', rule, {
       code: '<App dangerouslySetInnerHTML={{__html: "EPR"}} e key={2} b />',
       options: reservedFirstAsBooleanArgs,
       output: '<App key={2} b dangerouslySetInnerHTML={{__html: "EPR"}} e />',
-      errors: [expectedReservedFirstError]
+      errors: [expectedReservedFirstError, expectedError]
     },
     {
       code: '<App key={3} children={<App />} />',
