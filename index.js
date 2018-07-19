@@ -27,6 +27,7 @@ const allRules = {
   'jsx-key': require('./lib/rules/jsx-key'),
   'jsx-max-depth': require('./lib/rules/jsx-max-depth'),
   'jsx-max-props-per-line': require('./lib/rules/jsx-max-props-per-line'),
+  'jsx-no-allocation-in-props': require('./lib/rules/jsx-no-allocation-in-props'),
   'jsx-no-bind': require('./lib/rules/jsx-no-bind'),
   'jsx-no-comment-textnodes': require('./lib/rules/jsx-no-comment-textnodes'),
   'jsx-no-duplicate-props': require('./lib/rules/jsx-no-duplicate-props'),
