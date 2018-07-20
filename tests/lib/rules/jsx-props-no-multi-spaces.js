@@ -58,6 +58,10 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       '  foo {...test}',
       '  bar />'
     ].join('\n')
+  }, {
+    code: '<Foo.Bar baz="quux" />'
+  }, {
+    code: '<Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh xyzzy="thud" />'
   }],
 
   invalid: [{
@@ -105,6 +109,18 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
     errors: [
       {message: 'Expected only one space between "foo" and "test"'},
       {message: 'Expected only one space between "test" and "bar"'}
+    ]
+  }, {
+    code: '<Foo.Bar  baz="quux" />',
+    output: '<Foo.Bar baz="quux" />',
+    errors: [
+      {message: 'Expected only one space between "Foo.Bar" and "baz"'}
+    ]
+  }, {
+    code: '<Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh  xyzzy="thud" />',
+    output: '<Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh xyzzy="thud" />',
+    errors: [
+      {message: 'Expected only one space between "Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh" and "xyzzy"'}
     ]
   }]
 });
