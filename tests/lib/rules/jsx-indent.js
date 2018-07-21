@@ -416,6 +416,20 @@ ruleTester.run('jsx-indent', rule, {
       '}'
     ].join('\n'),
     options: [2]
+  }, {
+    code: `
+      class Test extends React.Component {
+        render() {
+          return (
+            <div>
+              <div />
+              <div />
+            </div>
+          );
+        }
+      }
+    `,
+    options: [2]
   }],
 
   invalid: [{
