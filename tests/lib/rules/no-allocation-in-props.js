@@ -46,6 +46,46 @@ ruleTester.run('no-allocation-in-props', rule, {
       parser: 'babel-eslint'
     },
 
+    // allowArrays
+    {
+      code: '<Foo bar={[1, 2, 3]} />',
+      options: [{allowArrays: true}]
+    },
+    {
+      code: '<Foo bar={[1, 2, 3]} />',
+      options: [{allowArrays: true}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: 'React.createElement(Foo, { bar: [1, 2, 3] })',
+      options: [{allowArrays: true}]
+    },
+    {
+      code: 'React.createElement(Foo, { bar: [1, 2, 3] })',
+      options: [{allowArrays: true}],
+      parser: 'babel-eslint'
+    },
+
+    // allowObjects
+    {
+      code: '<Foo bar={{ foo: 1 }} />',
+      options: [{allowObjects: true}]
+    },
+    {
+      code: '<Foo bar={{ foo: 1 }} />',
+      options: [{allowObjects: true}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: 'React.createElement(Foo, { bar: { foo: 1 }})',
+      options: [{allowObjects: true}]
+    },
+    {
+      code: 'React.createElement(Foo, { bar: { foo: 1 }})',
+      options: [{allowObjects: true}],
+      parser: 'babel-eslint'
+    },
+
     // ignore DOM components
     {
       code: '<div style={{ foo: 1 }}></div>',

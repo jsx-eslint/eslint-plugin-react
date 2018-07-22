@@ -9,7 +9,7 @@
     "lint": "eslint ./",
     "pretest": "npm run lint",
     "test": "npm run unit-test",
-    "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/lib/rules/no-allocation-in-props.js"
+    "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/**/*.js"
   },
   "files": [
     "LICENSE",
