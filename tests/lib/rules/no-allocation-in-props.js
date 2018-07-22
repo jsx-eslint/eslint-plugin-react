@@ -29,10 +29,20 @@ ruleTester.run('no-allocation-in-props', rule, {
   valid: [
     // Not covered by the rule
     {
-      code: '<Foo onClick={foo} />'
+      code: 'React.createElement()'
     },
     {
-      code: '<Foo onClick={foo} />',
+      code: '<Foo bar={foo} />'
+    },
+    {
+      code: '<Foo bar={foo} />',
+      parser: 'babel-eslint'
+    },
+    {
+      code: 'React.createElement(Foo, { bar: foo })'
+    },
+    {
+      code: 'React.createElement(Foo, { bar: foo })',
       parser: 'babel-eslint'
     },
 
@@ -47,6 +57,15 @@ ruleTester.run('no-allocation-in-props', rule, {
       parser: 'babel-eslint'
     },
     {
+      code: 'React.createElement("div", { style: { foo: 1 }})',
+      options: [{ignoreDOMComponents: true}]
+    },
+    {
+      code: 'React.createElement("div", { style: { foo: 1 }})',
+      options: [{ignoreDOMComponents: true}],
+      parser: 'babel-eslint'
+    },
+    {
       code: `
         class Hello extends React.Component {
           render() {
@@ -68,18 +87,50 @@ ruleTester.run('no-allocation-in-props', rule, {
       `,
       options: [{ignoreDOMComponents: true}],
       parser: 'babel-eslint'
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const style = { foo: 1 };
+            return React.createElement('div', { style: style });
+          }
+        };
+      `,
+      options: [{ignoreDOMComponents: true}]
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const style = { foo: 1 };
+            return React.createElement('div', { style: style });
+          }
+        };
+      `,
+      options: [{ignoreDOMComponents: true}],
+      parser: 'babel-eslint'
     }
   ],
 
   invalid: [
     // arrays
     {
-      code: '<Foo onClick={[1, 2, 3]} />',
-      errors: [{message: 'JSX props should not use array allocations'}]
+      code: '<Foo bar={[1, 2, 3]} />',
+      errors: [{message: 'Props should not use array allocations'}]
     },
     {
-      code: '<Foo onClick={[1, 2, 3]} />',
-      errors: [{message: 'JSX props should not use array allocations'}],
+      code: '<Foo bar={[1, 2, 3]} />',
+      errors: [{message: 'Props should not use array allocations'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: 'React.createElement(Foo, { bar: [1, 2, 3] })',
+      errors: [{message: 'Props should not use array allocations'}]
+    },
+    {
+      code: 'React.createElement(Foo, { bar: [1, 2, 3] })',
+      errors: [{message: 'Props should not use array allocations'}],
       parser: 'babel-eslint'
     },
     {
@@ -91,7 +142,7 @@ ruleTester.run('no-allocation-in-props', rule, {
           }
         };
       `,
-      errors: [{message: 'JSX props should not use array allocations'}]
+      errors: [{message: 'Props should not use array allocations'}]
     },
     {
       code: `
@@ -102,7 +153,30 @@ ruleTester.run('no-allocation-in-props', rule, {
           }
         };
       `,
-      errors: [{message: 'JSX props should not use array allocations'}],
+      errors: [{message: 'Props should not use array allocations'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const bar = [1, 2, 3];
+            return React.createElement(Foo, { bar: bar });
+          }
+        };
+      `,
+      errors: [{message: 'Props should not use array allocations'}]
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const bar = [1, 2, 3];
+            return React.createElement(Foo, { bar: bar });
+          }
+        };
+      `,
+      errors: [{message: 'Props should not use array allocations'}],
       parser: 'babel-eslint'
     },
     {
@@ -117,7 +191,7 @@ ruleTester.run('no-allocation-in-props', rule, {
           }
         };
       `,
-      errors: [{message: 'JSX props should not use array allocations'}]
+      errors: [{message: 'Props should not use array allocations'}]
     },
     {
       code: `
@@ -131,18 +205,56 @@ ruleTester.run('no-allocation-in-props', rule, {
           }
         };
       `,
-      errors: [{message: 'JSX props should not use array allocations'}],
+      errors: [{message: 'Props should not use array allocations'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const bar = [1, 2, 3];
+            const renderFoo = () => {
+              return React.createElement(Foo, { bar: bar });
+            };
+            return renderFoo();
+          }
+        };
+      `,
+      errors: [{message: 'Props should not use array allocations'}]
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const bar = [1, 2, 3];
+            const renderFoo = () => {
+              return React.createElement(Foo, { bar: bar });
+            };
+            return renderFoo();
+          }
+        };
+      `,
+      errors: [{message: 'Props should not use array allocations'}],
       parser: 'babel-eslint'
     },
 
     // objects
     {
-      code: '<Foo onClick={{ foo: 1 }} />',
-      errors: [{message: 'JSX props should not use object allocations'}]
+      code: '<Foo bar={{ foo: 1 }} />',
+      errors: [{message: 'Props should not use object allocations'}]
     },
     {
-      code: '<Foo onClick={{ foo: 1 }} />',
-      errors: [{message: 'JSX props should not use object allocations'}],
+      code: '<Foo bar={{ foo: 1 }} />',
+      errors: [{message: 'Props should not use object allocations'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: 'React.createElement(Foo, { bar: { foo: 1 }})',
+      errors: [{message: 'Props should not use object allocations'}]
+    },
+    {
+      code: 'React.createElement(Foo, { bar: { foo: 1 }})',
+      errors: [{message: 'Props should not use object allocations'}],
       parser: 'babel-eslint'
     },
     {
@@ -154,7 +266,7 @@ ruleTester.run('no-allocation-in-props', rule, {
           }
         };
       `,
-      errors: [{message: 'JSX props should not use object allocations'}]
+      errors: [{message: 'Props should not use object allocations'}]
     },
     {
       code: `
@@ -165,7 +277,30 @@ ruleTester.run('no-allocation-in-props', rule, {
           }
         };
       `,
-      errors: [{message: 'JSX props should not use object allocations'}],
+      errors: [{message: 'Props should not use object allocations'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const style = { foo: 1 };
+            return React.createElement('div', { style: style });
+          }
+        };
+      `,
+      errors: [{message: 'Props should not use object allocations'}]
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const style = { foo: 1 };
+            return React.createElement('div', { style: style });
+          }
+        };
+      `,
+      errors: [{message: 'Props should not use object allocations'}],
       parser: 'babel-eslint'
     },
     {
@@ -177,7 +312,7 @@ ruleTester.run('no-allocation-in-props', rule, {
           }
         };
       `,
-      errors: [{message: 'JSX props should not use object allocations'}]
+      errors: [{message: 'Props should not use object allocations'}]
     },
     {
       code: `
@@ -188,7 +323,30 @@ ruleTester.run('no-allocation-in-props', rule, {
           }
         };
       `,
-      errors: [{message: 'JSX props should not use object allocations'}],
+      errors: [{message: 'Props should not use object allocations'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const bar = { foo: 1 };
+            return React.createElement(Foo, { bar: bar });
+          }
+        };
+      `,
+      errors: [{message: 'Props should not use object allocations'}]
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const bar = { foo: 1 };
+            return React.createElement(Foo, { bar: bar });
+          }
+        };
+      `,
+      errors: [{message: 'Props should not use object allocations'}],
       parser: 'babel-eslint'
     },
     {
@@ -203,7 +361,7 @@ ruleTester.run('no-allocation-in-props', rule, {
           }
         };
       `,
-      errors: [{message: 'JSX props should not use object allocations'}]
+      errors: [{message: 'Props should not use object allocations'}]
     },
     {
       code: `
@@ -217,7 +375,36 @@ ruleTester.run('no-allocation-in-props', rule, {
           }
         };
       `,
-      errors: [{message: 'JSX props should not use object allocations'}],
+      errors: [{message: 'Props should not use object allocations'}],
+      parser: 'babel-eslint'
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const bar = { foo: 1 };
+            const renderFoo = () => {
+              return React.createElement(Foo, { bar: bar });
+            };
+            return renderFoo();
+          }
+        };
+      `,
+      errors: [{message: 'Props should not use object allocations'}]
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const bar = { foo: 1 };
+            const renderFoo = () => {
+              return React.createElement(Foo, { bar: bar });
+            };
+            return renderFoo();
+          }
+        };
+      `,
+      errors: [{message: 'Props should not use object allocations'}],
       parser: 'babel-eslint'
     }
   ]
