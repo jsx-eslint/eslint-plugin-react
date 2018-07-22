@@ -1,4 +1,4 @@
-# No Array or Object Allocation in JSX Props (react/jsx-no-allocation-in-props)
+# No Array or Object Allocation in JSX Props (react/no-allocation-in-props)
 
 An array literal `[]` or an object literal `{}` in a JSX prop will create a brand new object on every single render. This is bad for performance, as it will result in the garbage collector being invoked way more than is necessary. It may also cause unnecessary re-renders if a brand new object is passed as a prop to a component that uses reference equality check on the prop to determine if it should update.
 
@@ -16,7 +16,7 @@ The following patterns are considered warnings:
 ## Rule Options
 
 ```js
-"react/jsx-no-allocation-in-props": [<enabled>, {
+"react/no-allocation-in-props": [<enabled>, {
   "ignoreDOMComponents": <boolean> || false
 }]
 ```

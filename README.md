@@ -98,6 +98,7 @@ Enable the rules that you would like to use.
 * [react/forbid-prop-types](docs/rules/forbid-prop-types.md): Forbid certain propTypes
 * [react/forbid-foreign-prop-types](docs/rules/forbid-foreign-prop-types.md): Forbid foreign propTypes
 * [react/no-access-state-in-setstate](docs/rules/no-access-state-in-setstate.md): Prevent using this.state inside this.setState
+* [react/no-allocation-in-props](docs/rules/no-allocation-in-props.md): Prevent usage of `[]` and `{}` in JSX props
 * [react/no-array-index-key](docs/rules/no-array-index-key.md): Prevent using Array index in `key` props
 * [react/no-children-prop](docs/rules/no-children-prop.md): Prevent passing children as props
 * [react/no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
@@ -150,7 +151,6 @@ Enable the rules that you would like to use.
 * [react/jsx-key](docs/rules/jsx-key.md): Validate JSX has key prop when in array or iterator
 * [react/jsx-max-depth](docs/rules/jsx-max-depth.md): Validate JSX maximum depth
 * [react/jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md): Limit maximum of props on a single line in JSX (fixable)
-* [react/jsx-no-allocation-in-props](docs/rules/jsx-no-allocation-in-props.md): Prevent usage of `[]` and `{}` in JSX props
 * [react/jsx-no-bind](docs/rules/jsx-no-bind.md): Prevent usage of `.bind()` and arrow functions in JSX props
 * [react/jsx-no-comment-textnodes](docs/rules/jsx-no-comment-textnodes.md): Prevent comments from being inserted as text nodes
 * [react/jsx-no-duplicate-props](docs/rules/jsx-no-duplicate-props.md): Prevent duplicate props in JSX

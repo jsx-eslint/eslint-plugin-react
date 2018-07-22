@@ -8,7 +8,7 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-no-allocation-in-props');
+const rule = require('../../../lib/rules/no-allocation-in-props');
 const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
@@ -24,7 +24,7 @@ const parserOptions = {
 // -----------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({parserOptions});
-ruleTester.run('jsx-no-allocation-in-props', rule, {
+ruleTester.run('no-allocation-in-props', rule, {
 
   valid: [
     // Not covered by the rule
