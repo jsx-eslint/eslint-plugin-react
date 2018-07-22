@@ -98,7 +98,7 @@ Enable the rules that you would like to use.
 * [react/forbid-prop-types](docs/rules/forbid-prop-types.md): Forbid certain propTypes
 * [react/forbid-foreign-prop-types](docs/rules/forbid-foreign-prop-types.md): Forbid foreign propTypes
 * [react/no-access-state-in-setstate](docs/rules/no-access-state-in-setstate.md): Prevent using this.state inside this.setState
-* [react/no-allocation-in-props](docs/rules/no-allocation-in-props.md): Prevent usage of `[]` and `{}` in JSX props
+* [react/no-allocation-in-props](docs/rules/no-allocation-in-props.md): Prevent usage of `[]` and `{}` in props
 * [react/no-array-index-key](docs/rules/no-array-index-key.md): Prevent using Array index in `key` props
 * [react/no-children-prop](docs/rules/no-children-prop.md): Prevent passing children as props
 * [react/no-danger](docs/rules/no-danger.md): Prevent usage of dangerous JSX properties
