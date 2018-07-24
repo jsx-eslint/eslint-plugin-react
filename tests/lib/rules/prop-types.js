@@ -903,6 +903,14 @@ ruleTester.run('prop-types', rule, {
       parser: 'babel-eslint'
     }, {
       code: [
+        'type Props = {\'data-action\': string};',
+        'function Button({ \'data-action\': dataAction }: Props) {',
+        '  return <div data-action={dataAction} />;',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
         'import type Props from "fake";',
         'class Hello extends React.Component {',
         '  props: Props;',
