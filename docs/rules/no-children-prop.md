@@ -34,3 +34,29 @@ Examples of **correct** code for this rule:
 React.createElement("div", {}, 'Children')
 React.createElement("div", 'Child 1', 'Child 2')
 ```
+
+## Rule Options
+
+```js
+"react/no-children-prop": [<enabled>, {
+  "allowFunctions": <boolean> || false
+}]
+```
+
+### `allowFunctions`
+
+When `true`, and passing a function as `children`, it must be in prop position and not child position.
+
+The following patterns are considered warnings:
+
+```jsx
+<MyComponent>{data => data.value}</MyComponent>
+React.createElement(MyComponent, {}, data => data.value)
+```
+
+The following are **not** considered warnings:
+
+```jsx
+<MyComponent children={data => data.value} />
+React.createElement(MyComponent, { children: data => data.value })
+```

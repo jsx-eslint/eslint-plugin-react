@@ -137,9 +137,61 @@ ruleTester.run('no-children-prop', rule, {
     },
     {
       code: 'React.createElement(MyComponent, {className: "class-name", ...props});'
+    },
+    {
+      code: '<MyComponent children={() => {}} />;',
+      options: [{
+        allowFunctions: true
+      }]
+    },
+    {
+      code: '<MyComponent children={function() {}} />;',
+      options: [{
+        allowFunctions: true
+      }]
+    },
+    {
+      code: '<MyComponent children={async function() {}} />;',
+      options: [{
+        allowFunctions: true
+      }]
+    },
+    {
+      code: '<MyComponent children={function* () {}} />;',
+      options: [{
+        allowFunctions: true
+      }]
+    },
+    {
+      code: 'React.createElement(MyComponent, {children: () => {}});',
+      options: [{
+        allowFunctions: true
+      }]
+    },
+    {
+      code: 'React.createElement(MyComponent, {children: function() {}});',
+      options: [{
+        allowFunctions: true
+      }]
+    },
+    {
+      code: 'React.createElement(MyComponent, {children: async function() {}});',
+      options: [{
+        allowFunctions: true
+      }]
+    },
+    {
+      code: 'React.createElement(MyComponent, {children: function* () {}});',
+      options: [{
+        allowFunctions: true
+      }]
     }
   ],
   invalid: [
+    {
+      code: '<div children />;', // not a valid use case but make sure we don't crash
+      errors: [{messageId: 'nestChildren'}]
+    },
     {
       code: '<div children="Children" />;',
       errors: [{messageId: 'nestChildren'}]
@@ -195,6 +247,62 @@ ruleTester.run('no-children-prop', rule, {
     {
       code: 'React.createElement(MyComponent, {...props, children: "Children"})',
       errors: [{messageId: 'passChildrenAsArgs'}]
+    },
+    {
+      code: '<MyComponent>{() => {}}</MyComponent>;',
+      options: [{
+        allowFunctions: true
+      }],
+      errors: [{messageId: 'nestFunction'}]
+    },
+    {
+      code: '<MyComponent>{function() {}}</MyComponent>;',
+      options: [{
+        allowFunctions: true
+      }],
+      errors: [{messageId: 'nestFunction'}]
+    },
+    {
+      code: '<MyComponent>{async function() {}}</MyComponent>;',
+      options: [{
+        allowFunctions: true
+      }],
+      errors: [{messageId: 'nestFunction'}]
+    },
+    {
+      code: '<MyComponent>{function* () {}}</MyComponent>;',
+      options: [{
+        allowFunctions: true
+      }],
+      errors: [{messageId: 'nestFunction'}]
+    },
+    {
+      code: 'React.createElement(MyComponent, {}, () => {});',
+      options: [{
+        allowFunctions: true
+      }],
+      errors: [{messageId: 'passFunctionAsArgs'}]
+    },
+    {
+      code: 'React.createElement(MyComponent, {}, function() {});',
+      options: [{
+        allowFunctions: true
+      }],
+      errors: [{messageId: 'passFunctionAsArgs'}]
+    },
+    {
+      code: 'React.createElement(MyComponent, {}, async function() {});',
+      options: [{
+        allowFunctions: true
+      }],
+      errors: [{messageId: 'passFunctionAsArgs'}]
+    },
+    {
+      code: 'React.createElement(MyComponent, {}, function* () {});',
+      options: [{
+        allowFunctions: true
+      }],
+      errors: [{messageId: 'passFunctionAsArgs'}]
     }
   ]
 });

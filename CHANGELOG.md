@@ -10,6 +10,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * add [`prefer-exact-props`] rule ([#1547][] @jomasti)
 * [`jsx-no-target-blank`]: add `forms` option ([#1617][] @jaaberg)
 * [`jsx-pascal-case`]: add `allowLeadingUnderscore` option ([#3039][] @pangaeatech)
+* [`no-children-prop`]: Add `allowFunctions` option ([#1903][] @alexzherdev)
 
 ### Fixed
 * component detection: use `estraverse` to improve component detection ([#2992][] @Wesitos)
@@ -39,6 +40,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#2994]: https://github.com/yannickcr/eslint-plugin-react/pull/2994
 [#2992]: https://github.com/yannickcr/eslint-plugin-react/pull/2992
 [#2963]: https://github.com/yannickcr/eslint-plugin-react/pull/2963
+[#1903]: https://github.com/yannickcr/eslint-plugin-react/pull/1903
 [#1617]: https://github.com/yannickcr/eslint-plugin-react/pull/1617
 [#1547]: https://github.com/yannickcr/eslint-plugin-react/pull/1547
 
