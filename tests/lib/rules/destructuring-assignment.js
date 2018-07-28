@@ -134,6 +134,14 @@ ruleTester.run('destructuring-assignment', rule, {
       }
     };`,
     options: ['always']
+  }, {
+    code: [
+      'const div = styled.div`',
+      '  & .button {',
+      '    border-radius: ${props => props.borderRadius}px;',
+      '  }',
+      '`'
+    ].join('\n')
   }],
 
   invalid: [{
