@@ -142,6 +142,29 @@ ruleTester.run('destructuring-assignment', rule, {
       '  }',
       '`'
     ].join('\n')
+  }, {
+    code: `
+      export default (context: $Context) => ({
+        foo: context.bar
+      });
+    `,
+    parser: 'babel-eslint'
+  }, {
+    code: `
+      class Foo {
+        bar(context) {
+          return context.baz;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Foo {
+        bar(props) {
+          return props.baz;
+        }
+      }
+    `
   }],
 
   invalid: [{
