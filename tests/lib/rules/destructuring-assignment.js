@@ -165,6 +165,14 @@ ruleTester.run('destructuring-assignment', rule, {
         }
       }
     `
+  }, {
+    code: `
+      class Foo extends React.Component {
+        bar = this.props.bar
+      }
+    `,
+    options: ['always', {ignoreClassFields: true}],
+    parser: 'babel-eslint'
   }],
 
   invalid: [{

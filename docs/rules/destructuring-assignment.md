@@ -85,3 +85,24 @@ const Foo = class extends React.PureComponent {
     return <div>{this.state.title}</div>;
   }
 };
+```
+
+## Rule Options
+
+```js
+...
+"react/destructuring-assignment": [<enabled>, "always", { "ignoreClassFields": <boolean> }]
+...
+```
+
+### `ignoreClassFields`
+
+When `true` the rule will ignore class field declarations.
+
+The following patterns are then considered okay and do not cause warnings:
+
+```jsx
+class Foo extends React.PureComponent {
+  bar = this.props.bar
+}
+```
