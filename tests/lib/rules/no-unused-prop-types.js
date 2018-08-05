@@ -1802,34 +1802,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n')
     }, {
-      code: [
-        'type Person = {',
-        '  ...data,',
-        '  lastname: string',
-        '};',
-        'class Hello extends React.Component {',
-        '  props: Person;',
-        '  render () {',
-        '    return <div>Hello {this.props.firstname}</div>;',
-        '  }',
-        '}'
-      ].join('\n'),
-      parser: 'babel-eslint'
-    }, {
-      code: [
-        'type Person = {|',
-        '  ...data,',
-        '  lastname: string',
-        '|};',
-        'class Hello extends React.Component {',
-        '  props: Person;',
-        '  render () {',
-        '    return <div>Hello {this.props.firstname}</div>;',
-        '  }',
-        '}'
-      ].join('\n'),
-      parser: 'babel-eslint'
-    }, {
       // The next two test cases are related to: https://github.com/yannickcr/eslint-plugin-react/issues/1183
       code: [
         'export default function SomeComponent(props) {',
@@ -2471,6 +2443,20 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: 'babel-eslint'
     }, {
+      code: [
+        'const foo = {};',
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    const {firstname, lastname} = this.props.name;',
+        '    return <div>{firstname} {lastname}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  name: PropTypes.shape(foo)',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
       // issue #933
       code: [
         'type Props = {',
@@ -2913,6 +2899,23 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'import type {BasePerson} from \'./types\'',
+        'type Props = {',
+        '  person: {',
+        '   ...$Exact<BasePerson>,',
+        '   lastname: string',
+        '  }',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Props;',
+        '  render () {',
+        '    return <div>Hello {this.props.person.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
     }
   ],
 
@@ -4476,6 +4479,48 @@ ruleTester.run('no-unused-prop-types', rule, {
         message: '\'lastname\' PropType is defined but prop is never used'
       }]
     }, {
+      code: `
+        type Person = string;
+        class Hello extends React.Component<{ person: Person }> {
+          render () {
+            return <div />;
+          }
+        }
+      `,
+      settings: {react: {flowVersion: '0.53'}},
+      errors: [{
+        message: '\'person\' PropType is defined but prop is never used'
+      }],
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type Person = string;
+        class Hello extends React.Component<void, { person: Person }, void> {
+          render () {
+            return <div />;
+          }
+        }
+      `,
+      settings: {react: {flowVersion: '0.52'}},
+      errors: [{
+        message: '\'person\' PropType is defined but prop is never used'
+      }],
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        function higherOrderComponent<P: { foo: string }>() {
+          return class extends React.Component<P> {
+            render() {
+              return <div />;
+            }
+          }
+        }
+      `,
+      errors: [{
+        message: '\'foo\' PropType is defined but prop is never used'
+      }],
+      parser: 'babel-eslint'
+    }, {
       // issue #1506
       code: [
         'class MyComponent extends React.Component {',
@@ -4664,6 +4709,163 @@ ruleTester.run('no-unused-prop-types', rule, {
         message: '\'a.b\' PropType is defined but prop is never used'
       }, {
         message: '\'a.b.c\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: `
+        type Props = { foo: string }
+        function higherOrderComponent<Props>() {
+          return class extends React.Component<Props> {
+            render() {
+              return <div />;
+            }
+          }
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'foo\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
+        'type Person = {',
+        '  ...data,',
+        '  lastname: string',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Person;',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
+        'type Person = {|',
+        '  ...data,',
+        '  lastname: string',
+        '|};',
+        'class Hello extends React.Component {',
+        '  props: Person;',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
+        'type Person = {',
+        '  ...$Exact<data>,',
+        '  lastname: string',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Person;',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
+        'import type {Data} from \'./Data\'',
+        'type Person = {',
+        '  ...Data,',
+        '  lastname: string',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Person;',
+        '  render () {',
+        '    return <div>Hello {this.props.bar}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
+        'import type {Data} from \'some-libdef-like-flow-typed-provides\'',
+        'type Person = {',
+        '  ...Data,',
+        '  lastname: string',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Person;',
+        '  render () {',
+        '    return <div>Hello {this.props.bar}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
+        'type Person = {',
+        '  ...data,',
+        '  lastname: string',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Person;',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
+        'type Person = {|',
+        '  ...data,',
+        '  lastname: string',
+        '|};',
+        'class Hello extends React.Component {',
+        '  props: Person;',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
+        'import type {BasePerson} from \'./types\'',
+        'type Props = {',
+        '  person: {',
+        '   ...$Exact<BasePerson>,',
+        '   lastname: string',
+        '  }',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Props;',
+        '  render () {',
+        '    return <div>Hello {this.props.person.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      options: [{skipShapeProps: false}],
+      errors: [{
+        message: '\'person.lastname\' PropType is defined but prop is never used'
       }]
     }
 
