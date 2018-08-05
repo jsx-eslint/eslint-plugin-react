@@ -1,6 +1,7 @@
 # gitignore
 
 lib-cov
+.idea
 *.seed
 *.log
 *.csv
