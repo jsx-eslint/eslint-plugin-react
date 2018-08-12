@@ -78,6 +78,7 @@ const allRules = {
   'self-closing-comp': require('./lib/rules/self-closing-comp'),
   'sort-comp': require('./lib/rules/sort-comp'),
   'sort-prop-types': require('./lib/rules/sort-prop-types'),
+  'state-in-constructor': require('./lib/rules/state-in-constructor'),
   'style-prop-object': require('./lib/rules/style-prop-object'),
   'void-dom-elements-no-children': require('./lib/rules/void-dom-elements-no-children')
 };
