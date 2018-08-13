@@ -2631,5 +2631,52 @@ ruleTester.run('require-default-props', rule, {
         },
       ],
     },
+    {
+      code: `
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = {
+          foo: PropTypes.string,
+          bar: PropTypes.string.isRequired
+        };
+        MyStatelessComponent.propTypes.baz = React.propTypes.string;
+      `,
+      errors: [
+        {
+          messageId: 'shouldHaveDefault',
+          data: { name: 'foo' },
+          line: 6,
+        },
+        {
+          messageId: 'shouldHaveDefault',
+          data: { name: 'baz' },
+          line: 9,
+        },
+      ],
+    },
+
+    {
+      code: `
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        const propTypes = forbidExtraProps({
+          foo: PropTypes.string,
+          bar: PropTypes.string.isRequired
+        });
+        MyStatelessComponent.propTypes = propTypes;
+      `,
+      errors: [
+        {
+          messageId: 'shouldHaveDefault',
+          data: { name: 'foo' },
+          line: 6,
+        },
+      ],
+      settings: {
+        propWrapperFunctions: ['forbidExtraProps'],
+      },
+    },
   ]),
 });

@@ -4602,6 +4602,73 @@ ruleTester.run('prop-types', rule, {
       ],
     },
     {
+      features: ['no-default', 'no-ts', 'no-babel'], // TODO: remove this entire line, and fix the failures
+      code: `
+        class Test extends Foo.Component {
+          render() {
+            return (
+              <div>{this.props.firstname} {this.props.lastname}</div>
+            );
+          }
+        };
+        const propTypes = forbidExtraProps({
+          firstname: PropTypes.string
+        });
+        Test.propTypes = propTypes;
+      `,
+      settings: {
+        propWrapperFunctions: ['forbidExtraProps'],
+      },
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'lastname' },
+          line: 5,
+        },
+      ],
+    },
+    {
+      code: `
+        class Test extends Foo.Component {
+          render() {
+            return (
+              <div>{this.props.firstname} {this.props.lastname}</div>
+            );
+          }
+        }
+        Test.propTypes = {
+          firstname: PropTypes.string
+        };
+      `,
+      settings,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'lastname' },
+          line: 5,
+        },
+      ],
+    },
+    {
+      code: `
+        type MyComponentProps = {
+          a: number,
+        };
+        function MyComponent({ a, b }: MyComponentProps) {
+          return <div />;
+        }
+      `,
+      features: ['types'],
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'b' },
+          line: 5,
+          column: 35,
+        },
+      ],
+    },
+    {
       code: `
         class Hello extends React.Component {
           render() {
