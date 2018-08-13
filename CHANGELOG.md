@@ -33,9 +33,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-indent`][]: add test cases ([#1892][], @alexzherdev)
 * [`prop-types`][]: add test cases ([#1898][], @alexzherdev)
 * Add a helper function for determining function-like expressions ([#1914][], @alexzherdev)
-* [`jsx-props-no-multi-spaces`][]: update docs ([#1918][], @
+* [`jsx-props-no-multi-spaces`][]: update docs ([#1918][], @BenRichter)
 
 [#1924]: https://github.com/yannickcr/eslint-plugin-react/pull/1924
+[#1918]: https://github.com/yannickcr/eslint-plugin-react/pull/1918
 [#1914]: https://github.com/yannickcr/eslint-plugin-react/pull/1914
 [#1911]: https://github.com/yannickcr/eslint-plugin-react/pull/1911
 [#1909]: https://github.com/yannickcr/eslint-plugin-react/pull/1909
