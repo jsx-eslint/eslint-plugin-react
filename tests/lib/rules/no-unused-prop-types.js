@@ -4328,6 +4328,60 @@ ruleTester.run('no-unused-prop-types', rule, {
         message: '\'prop2.*\' PropType is defined but prop is never used'
       }]
     }, {
+      code: [
+        'class Comp1 extends Component {',
+        '  render() {',
+        '    return <span />;',
+        '  }',
+        '}',
+        'Comp1.propTypes = {',
+        '  prop1: PropTypes.number',
+        '};',
+        'class Comp2 extends Component {',
+        '  static propTypes = {',
+        '    prop2: PropTypes.arrayOf(Comp1.propTypes.prop1)',
+        '  }',
+        '  render() {',
+        '    return <span />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'prop1\' PropType is defined but prop is never used'
+      }, {
+        message: '\'prop2\' PropType is defined but prop is never used'
+      }, {
+        message: '\'prop2.*\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
+        'class Comp1 extends Component {',
+        '  render() {',
+        '    return <span />;',
+        '  }',
+        '}',
+        'Comp1.propTypes = {',
+        '  prop1: PropTypes.number',
+        '};',
+        'var Comp2 = createReactClass({',
+        '  propTypes: {',
+        '    prop2: PropTypes.arrayOf(Comp1.propTypes.prop1)',
+        '  },',
+        '  render() {',
+        '    return <span />;',
+        '  }',
+        '});'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'prop1\' PropType is defined but prop is never used'
+      }, {
+        message: '\'prop2\' PropType is defined but prop is never used'
+      }, {
+        message: '\'prop2.*\' PropType is defined but prop is never used'
+      }]
+    }, {
       // Destructured assignment with Shape propTypes with skipShapeProps off issue #816
       code: [
         'export default class NavigationButton extends React.Component {',
