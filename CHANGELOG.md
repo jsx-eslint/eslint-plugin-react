@@ -3,6 +3,60 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.11.0] - 2018-08-13
+### Added
+* [`jsx-one-expression-per-line`][]: add "allow" option ([#1924][], @alexzherdev)
+* [`sort-prop-types`][]: add autofix ([#1891][], @finnp)
+* [`jsx-no-bind`][]: Add ignoreDOMComponents option ([#1868][], @alexzherdev)
+* Output a warning if React version is missing in settings ([#1857][], @alexzherdev)
+
+### Fixed
+* [`destructuring-assignment`][]: Ignore class properties ([#1909][], @alexzherdev)
+* [`destructuring-assignment`][], component detection: ignore components with confidence = 0 ([#1907][], @alexzherdev)
+* [`boolean-prop-naming`][]: Handle inline Flow type ([#1905][], @alexzherdev)
+* [`jsx-props-no-multi-spaces`][]: Handle member expressions ([#1890][], @alexzherdev)
+* [`sort-comp`][]: Allow methods to belong to any matching group ([#1858][], @nosilleg)
+* [`jsx-sort-props`][]: Fix `reservedFirst` ([#1883][], @fleischie)
+* [`prop-types`][]: (flow) Stop crashing on undefined or null properties ([#1860][], @nicholas-l)
+* [`no-unknown-property`][]: Make attribute "charset" valid ([#1863][], @silvenon)
+* [`no-deprecated`][]: report identifier AST node instead of the class node ([#1854][], @jsnajdr)
+* [`button-has-type`][]: Account for pragma ([#1851][], @alexzherdev)
+* [`button-has-type`][]: improve error message when an identifier is used as the value ([#1874][], @ljharb)
+* support JSXText nodes alongside Literal nodes (@ljharb)
+
+### Changed
+* Extract propTypes detection code ([#1911][], @alexzherdev)
+* Fix broken links in changelog ([#1849][], @alexzherdev)
+* [`no-unused-state`][]: combine spread visitors (@ljharb)
+* [`jsx-one-expression-per-line`][]: Fix JSX Syntax in docs ([#1867][], @peter-mouland)
+* [`jsx-max-depth`][], [`jsx-sort-default-props`][]: add missing docs urls ([#1880][], @flyerhzm)
+* [`jsx-indent`][]: add test cases ([#1892][], @alexzherdev)
+* [`prop-types`][]: add test cases ([#1898][], @alexzherdev)
+* Add a helper function for determining function-like expressions ([#1914][], @alexzherdev)
+* [`jsx-props-no-multi-spaces`][]: update docs ([#1918][], @
+
+[#1924]: https://github.com/yannickcr/eslint-plugin-react/pull/1924
+[#1914]: https://github.com/yannickcr/eslint-plugin-react/pull/1914
+[#1911]: https://github.com/yannickcr/eslint-plugin-react/pull/1911
+[#1909]: https://github.com/yannickcr/eslint-plugin-react/pull/1909
+[#1907]: https://github.com/yannickcr/eslint-plugin-react/pull/1907
+[#1905]: https://github.com/yannickcr/eslint-plugin-react/pull/1905
+[#1898]: https://github.com/yannickcr/eslint-plugin-react/pull/1898
+[#1892]: https://github.com/yannickcr/eslint-plugin-react/pull/1892
+[#1891]: https://github.com/yannickcr/eslint-plugin-react/pull/1891
+[#1883]: https://github.com/yannickcr/eslint-plugin-react/pull/1883
+[#1880]: https://github.com/yannickcr/eslint-plugin-react/pull/1880
+[#1874]: https://github.com/yannickcr/eslint-plugin-react/issues/1874
+[#1868]: https://github.com/yannickcr/eslint-plugin-react/pull/1868
+[#1867]: https://github.com/yannickcr/eslint-plugin-react/pull/1867
+[#1863]: https://github.com/yannickcr/eslint-plugin-react/pull/1863
+[#1860]: https://github.com/yannickcr/eslint-plugin-react/pull/1860
+[#1858]: https://github.com/yannickcr/eslint-plugin-react/pull/1858
+[#1857]: https://github.com/yannickcr/eslint-plugin-react/pull/1857
+[#1854]: https://github.com/yannickcr/eslint-plugin-react/pull/1854
+[#1851]: https://github.com/yannickcr/eslint-plugin-react/pull/1851
+[#1849]: https://github.com/yannickcr/eslint-plugin-react/pull/1849
+
 ## [7.10.0] - 2018-06-24
 ### Added
 * Allow eslint ^5 ([#1843][] @papandreou, @ljharb)
