@@ -3,6 +3,18 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.11.1] - 2018-08-14
+### Fixed
+* stop crashing when assigning to propTypes ([#1932][], @alexzherdev)
+
+### Changed
+* Fix changelog links ([#1926][], @ferhatelmas)
+* Fix changelog links ([#1929][], @alexzherdev)
+
+[#1932]: https://github.com/yannickcr/eslint-plugin-react/pull/1932
+[#1929]: https://github.com/yannickcr/eslint-plugin-react/pull/1929
+[#1926]: https://github.com/yannickcr/eslint-plugin-react/pull/1926
+
 ## [7.11.0] - 2018-08-13
 ### Added
 * [`jsx-one-expression-per-line`][]: add "allow" option ([#1924][], @alexzherdev)
