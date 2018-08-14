@@ -45,6 +45,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#1898]: https://github.com/yannickcr/eslint-plugin-react/pull/1898
 [#1892]: https://github.com/yannickcr/eslint-plugin-react/pull/1892
 [#1891]: https://github.com/yannickcr/eslint-plugin-react/pull/1891
+[#1890]: https://github.com/yannickcr/eslint-plugin-react/pull/1890
 [#1883]: https://github.com/yannickcr/eslint-plugin-react/pull/1883
 [#1880]: https://github.com/yannickcr/eslint-plugin-react/pull/1880
 [#1874]: https://github.com/yannickcr/eslint-plugin-react/issues/1874
