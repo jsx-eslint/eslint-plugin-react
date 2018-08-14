@@ -1939,6 +1939,24 @@ ruleTester.run('prop-types', rule, {
       }
     `,
       parser: 'babel-eslint'
+    },
+    {
+      code: `
+        const Slider = props => (
+          <RcSlider {...props} />
+        );
+
+        Slider.propTypes = RcSlider.propTypes;
+      `
+    },
+    {
+      code: `
+        const Slider = props => (
+          <RcSlider foo={props.bar} />
+        );
+
+        Slider.propTypes = RcSlider.propTypes;
+      `
     }
   ],
 
@@ -2133,6 +2151,22 @@ ruleTester.run('prop-types', rule, {
         '    })',
         '  })',
         '};'
+      ].join('\n'),
+      errors: [{
+        message: '\'a.b.c\' is missing in props validation'
+      }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props.a.b.c;',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  a: PropTypes.shape({})',
+        '};',
+        'Hello.propTypes.a.b = PropTypes.shape({});'
       ].join('\n'),
       errors: [{
         message: '\'a.b.c\' is missing in props validation'
