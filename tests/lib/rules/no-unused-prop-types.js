@@ -4642,6 +4642,29 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'age\' PropType is defined but prop is never used'
       }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  a: PropTypes.shape({',
+        '    b: PropTypes.shape({',
+        '    })',
+        '  })',
+        '};',
+        'Hello.propTypes.a.b.c = PropTypes.number;'
+      ].join('\n'),
+      options: [{skipShapeProps: false}],
+      errors: [{
+        message: '\'a\' PropType is defined but prop is never used'
+      }, {
+        message: '\'a.b\' PropType is defined but prop is never used'
+      }, {
+        message: '\'a.b.c\' PropType is defined but prop is never used'
+      }]
     }
 
     /* , {
