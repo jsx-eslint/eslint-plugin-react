@@ -2915,7 +2915,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: 'babel-eslint'
     }
   ],
 
