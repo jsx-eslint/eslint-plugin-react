@@ -2916,6 +2916,21 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: [
+        'import BasePerson from \'./types\'',
+        'class Hello extends React.Component {',
+        '  render () {',
+        '    return <div>Hello {this.props.person.firstname}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  person: ProTypes.shape({',
+        '    ...BasePerson,',
+        '    lastname: PropTypes.string',
+        '  })',
+        '};'
+      ].join('\n')
     }
   ],
 
@@ -4848,6 +4863,22 @@ ruleTester.run('no-unused-prop-types', rule, {
       }]
     }, {
       code: [
+        'class Hello extends React.Component {',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  ...BasePerson,',
+        '  lastname: PropTypes.string',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
         'import type {BasePerson} from \'./types\'',
         'type Props = {',
         '  person: {',
@@ -4863,6 +4894,25 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint',
+      options: [{skipShapeProps: false}],
+      errors: [{
+        message: '\'person.lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
+        'import BasePerson from \'./types\'',
+        'class Hello extends React.Component {',
+        '  render () {',
+        '    return <div>Hello {this.props.person.firstname}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  person: ProTypes.shape({',
+        '    ...BasePerson,',
+        '    lastname: PropTypes.string',
+        '  })',
+        '};'
+      ].join('\n'),
       options: [{skipShapeProps: false}],
       errors: [{
         message: '\'person.lastname\' PropType is defined but prop is never used'
