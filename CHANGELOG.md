@@ -23,7 +23,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * Output a warning if React version is missing in settings ([#1857][], @alexzherdev)
 
 ### Fixed
-* [`destructuring-assignment`][]: Ignore class properties ([#1909][], @alexzherdev)
+* [`destructuring-assignment`][]: Ignore class properties ([#1909][], @alexandernanberg)
 * [`destructuring-assignment`][], component detection: ignore components with confidence = 0 ([#1907][], @alexzherdev)
 * [`boolean-prop-naming`][]: Handle inline Flow type ([#1905][], @alexzherdev)
 * [`jsx-props-no-multi-spaces`][]: Handle member expressions ([#1890][], @alexzherdev)
