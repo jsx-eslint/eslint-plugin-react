@@ -1,5 +1,5 @@
 /**
- * @fileoverview State initialization in an ES6 class component should be in a constructor
+ * @fileoverview Enforce the state initialization style to be either in a constructor or with a class property
  * @author Kanitkorn Sujautra
  */
 'use strict';
@@ -39,6 +39,24 @@ ruleTester.run('state-in-constructor', rule, {
   }, {
     code: `
       class Foo extends React.Component {
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['always']
+  }, {
+    code: `
+      class Foo extends React.Component {
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['never']
+  }, {
+    code: `
+      class Foo extends React.Component {
         constructor(props) {
           super(props)
           this.state = { bar: 0 }
@@ -55,7 +73,46 @@ ruleTester.run('state-in-constructor', rule, {
           super(props)
           this.state = { bar: 0 }
         }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['always']
+  }, {
+    code: `
+      class Foo extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = { bar: 0 }
+        }
         baz = { bar: 0 }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `
+  }, {
+    code: `
+      class Foo extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = { bar: 0 }
+        }
+        baz = { bar: 0 }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['always']
+  }, {
+    code: `
+      class Foo extends React.Component {
+        constructor(props) {
+          super(props)
+          this.baz = { bar: 0 }
+        }
         render() {
           return <div>Foo</div>
         }
@@ -72,7 +129,21 @@ ruleTester.run('state-in-constructor', rule, {
           return <div>Foo</div>
         }
       }
-    `
+    `,
+    options: ['always']
+  }, {
+    code: `
+      class Foo extends React.Component {
+        constructor(props) {
+          super(props)
+          this.baz = { bar: 0 }
+        }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['never']
   }, {
     code: `
       class Foo extends React.Component {
@@ -82,22 +153,160 @@ ruleTester.run('state-in-constructor', rule, {
         }
       }
     `
+  }, {
+    code: `
+      class Foo extends React.Component {
+        baz = { bar: 0 }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['always']
+  }, {
+    code: `
+      class Foo extends React.Component {
+        baz = { bar: 0 }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['never']
   }, {
     code: `
       const Foo = () => <div>Foo</div>
     `
   }, {
     code: `
+      const Foo = () => <div>Foo</div>
+    `,
+    options: ['always']
+  }, {
+    code: `
+      const Foo = () => <div>Foo</div>
+    `,
+    options: ['never']
+  }, {
+    code: `
       function Foo () {
         return <div>Foo</div>
       }
     `
+  }, {
+    code: `
+      function Foo () {
+        return <div>Foo</div>
+      }
+    `,
+    options: ['always']
+  }, {
+    code: `
+      function Foo () {
+        return <div>Foo</div>
+      }
+    `,
+    options: ['never']
+  }, {
+    code: `
+      class Foo extends React.Component {
+        state = { bar: 0 }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['never']
+  }, {
+    code: `
+      class Foo extends React.Component {
+        state = { bar: 0 }
+        baz = { bar: 0 }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['never']
+  }, {
+    code: `
+      class Foo extends React.Component {
+        constructor(props) {
+          super(props)
+          this.baz = { bar: 0 }
+        }
+        state = { baz: 0 }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['never']
   }],
 
   invalid: [{
     code: `
       class Foo extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = { bar: 0 }
+        }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['never'],
+    errors: [{
+      message: 'State initialization should be in a class property'
+    }]
+  }, {
+    code: `
+      class Foo extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = { bar: 0 }
+        }
+        baz = { bar: 0 }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['never'],
+    errors: [{
+      message: 'State initialization should be in a class property'
+    }]
+  }, {
+    code: `
+      class Foo extends React.Component {
         state = { bar: 0 }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    errors: [{
+      message: 'State initialization should be in a constructor'
+    }]
+  }, {
+    code: `
+      class Foo extends React.Component {
+        state = { bar: 0 }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['always'],
+    errors: [{
+      message: 'State initialization should be in a constructor'
+    }]
+  }, {
+    code: `
+      class Foo extends React.Component {
+        state = { bar: 0 }
+        baz = { bar: 0 }
         render() {
           return <div>Foo</div>
         }
@@ -116,6 +325,7 @@ ruleTester.run('state-in-constructor', rule, {
         }
       }
     `,
+    options: ['always'],
     errors: [{
       message: 'State initialization should be in a constructor'
     }]
@@ -140,6 +350,23 @@ ruleTester.run('state-in-constructor', rule, {
       class Foo extends React.Component {
         constructor(props) {
           super(props)
+          this.baz = { bar: 0 }
+        }
+        state = { baz: 0 }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['always'],
+    errors: [{
+      message: 'State initialization should be in a constructor'
+    }]
+  }, {
+    code: `
+      class Foo extends React.Component {
+        constructor(props) {
+          super(props)
           this.state = { bar: 0 }
         }
         state = { baz: 0 }
@@ -150,6 +377,40 @@ ruleTester.run('state-in-constructor', rule, {
     `,
     errors: [{
       message: 'State initialization should be in a constructor'
+    }]
+  }, {
+    code: `
+      class Foo extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = { bar: 0 }
+        }
+        state = { baz: 0 }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['always'],
+    errors: [{
+      message: 'State initialization should be in a constructor'
+    }]
+  }, {
+    code: `
+      class Foo extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = { bar: 0 }
+        }
+        state = { baz: 0 }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['never'],
+    errors: [{
+      message: 'State initialization should be in a class property'
     }]
   }]
 });
