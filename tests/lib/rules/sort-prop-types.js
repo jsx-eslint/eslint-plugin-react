@@ -1565,5 +1565,1330 @@ ruleTester.run('sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n')
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          /** z */
+          z: PropTypes.any,
+          /** a */
+          a: PropTypes.string
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 7,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          /** a */
+          a: PropTypes.string,
+          /** z */
+          z: PropTypes.any
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          /** z */
+          z: PropTypes.any,
+          /** y */
+          y: PropTypes.array,
+          /** b */
+          b: PropTypes.func,
+          /** a */
+          a: PropTypes.string
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 7,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 9,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 11,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          /** a */
+          a: PropTypes.string,
+          /** b */
+          b: PropTypes.func,
+          /** y */
+          y: PropTypes.array,
+          /** z */
+          z: PropTypes.any
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          z: PropTypes.any,
+          /** z */
+          y: PropTypes.array,
+          /** y */
+          b: PropTypes.func,
+          /** b */
+          a: PropTypes.string
+          /** a */
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    settings: {comments: 'below'},
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 6,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 8,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 10,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          a: PropTypes.string,
+          /** a */
+          b: PropTypes.func,
+          /** b */
+          y: PropTypes.array,
+          /** y */
+          z: PropTypes.any
+          /** z */
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          z: PropTypes.any, // z
+          a: PropTypes.string // a
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 5,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          a: PropTypes.string, // a
+          z: PropTypes.any // z
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          z: PropTypes.any, // z
+          y: PropTypes.array, // y
+          b: PropTypes.func, // b
+          a: PropTypes.string // a
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 5,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 6,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 7,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          a: PropTypes.string, // a
+          b: PropTypes.func, // b
+          y: PropTypes.array, // y
+          z: PropTypes.any // z
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          z: PropTypes.any, // z
+          y: PropTypes.array, // y
+          b: PropTypes.func, // b
+          a: PropTypes.string // a
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    settings: {commens: 'below'},
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 5,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 6,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 7,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          a: PropTypes.string, // a
+          b: PropTypes.func, // b
+          y: PropTypes.array, // y
+          z: PropTypes.any // z
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          /** z */
+          z: PropTypes.any,
+          y: PropTypes.array,
+          /** b */
+          b: PropTypes.func,
+          a: PropTypes.string
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 6,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 8,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 9,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          a: PropTypes.string,
+          /** b */
+          b: PropTypes.func,
+          y: PropTypes.array,
+          /** z */
+          z: PropTypes.any
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          z: PropTypes.any,
+          /** y */
+          y: PropTypes.array,
+          b: PropTypes.func,
+          /** a */
+          a: PropTypes.string
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 6,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 7,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 9,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          /** a */
+          a: PropTypes.string,
+          b: PropTypes.func,
+          /** y */
+          y: PropTypes.array,
+          z: PropTypes.any
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          z: PropTypes.any,
+          /** z */
+          y: PropTypes.array,
+          b: PropTypes.func,
+          /** b */
+          a: PropTypes.string
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    settings: {comments: 'below'},
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 6,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 7,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 9,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          a: PropTypes.string,
+          b: PropTypes.func,
+          /** b */
+          y: PropTypes.array,
+          z: PropTypes.any
+          /** z */
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          z: PropTypes.any,
+          y: PropTypes.array,
+          /** y */
+          b: PropTypes.func,
+          a: PropTypes.string
+          /** a */
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    settings: {comments: 'below'},
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 5,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 7,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 8,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          a: PropTypes.string,
+          /** a */
+          b: PropTypes.func,
+          y: PropTypes.array,
+          /** y */
+          z: PropTypes.any
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          /**
+           * z
+           */
+          z: PropTypes.any,
+          /**
+           * y
+           */
+          y: PropTypes.array,
+          /**
+           * b
+           */
+          b: PropTypes.func,
+          /**
+           * a
+           */
+          a: PropTypes.string
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 11,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 15,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 19,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          /**
+           * a
+           */
+          a: PropTypes.string,
+          /**
+           * b
+           */
+          b: PropTypes.func,
+          /**
+           * y
+           */
+          y: PropTypes.array,
+          /**
+           * z
+           */
+          z: PropTypes.any
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          z: PropTypes.any,
+          /**
+           * z
+           */
+          y: PropTypes.array,
+          /**
+           * y
+           */
+          b: PropTypes.func,
+          /**
+           * b
+           */
+          a: PropTypes.string
+          /**
+           * a
+           */
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    settings: {comments: 'below'},
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 8,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 12,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 16,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          a: PropTypes.string,
+          /**
+           * a
+           */
+          b: PropTypes.func,
+          /**
+           * b
+           */
+          y: PropTypes.array,
+          /**
+           * y
+           */
+          z: PropTypes.any
+          /**
+           * z
+           */
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          /* z1 */
+          /* z2 */
+          z: PropTypes.any,
+          /* y1 */
+          /* y2 */
+          y: PropTypes.array,
+          /* b1 */
+          /* b2 */
+          b: PropTypes.func,
+          /* a1 */
+          /* a2 */
+          a: PropTypes.string
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 9,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 12,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 15,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          /* a1 */
+          /* a2 */
+          a: PropTypes.string,
+          /* b1 */
+          /* b2 */
+          b: PropTypes.func,
+          /* y1 */
+          /* y2 */
+          y: PropTypes.array,
+          /* z1 */
+          /* z2 */
+          z: PropTypes.any
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          z: PropTypes.any,
+          /* z1 */
+          /* z2 */
+          y: PropTypes.array,
+          /* y1 */
+          /* y2 */
+          b: PropTypes.func,
+          /* b1 */
+          /* b2 */
+          a: PropTypes.string
+          /* a1 */
+          /* a2 */
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    settings: {comments: 'below'},
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 7,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 10,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 13,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          a: PropTypes.string,
+          /* a1 */
+          /* a2 */
+          b: PropTypes.func,
+          /* b1 */
+          /* b2 */
+          y: PropTypes.array,
+          /* y1 */
+          /* y2 */
+          z: PropTypes.any
+          /* z1 */
+          /* z2 */
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          // z1
+          // z2
+          z: PropTypes.any,
+          // y1
+          // y2
+          y: PropTypes.array,
+          // b1
+          // b2
+          b: PropTypes.func,
+          // a1
+          // a2
+          a: PropTypes.string
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 9,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 12,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 15,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          // a1
+          // a2
+          a: PropTypes.string,
+          // b1
+          // b2
+          b: PropTypes.func,
+          // y1
+          // y2
+          y: PropTypes.array,
+          // z1
+          // z2
+          z: PropTypes.any
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          z: PropTypes.any,
+          // z1
+          // z2
+          y: PropTypes.array,
+          // y1
+          // y2
+          b: PropTypes.func,
+          // b1
+          // b2
+          a: PropTypes.string
+          // a1
+          // a2
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    settings: {comments: 'below'},
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 7,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 10,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 13,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          a: PropTypes.string,
+          // a1
+          // a2
+          b: PropTypes.func,
+          // b1
+          // b2
+          y: PropTypes.array,
+          // y1
+          // y2
+          z: PropTypes.any
+          // z1
+          // z2
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        x: PropTypes.any,
+        y: PropTypes.any,
+        z: PropTypes.shape({
+          /* c */
+          c: PropTypes.any,
+          /* a */
+          a: PropTypes.array,
+          /* b */
+          b: PropTypes.bool
+        }),
+      };
+    `,
+    options: [{
+      sortShapeProp: true
+    }],
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 14,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 16,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        x: PropTypes.any,
+        y: PropTypes.any,
+        z: PropTypes.shape({
+          /* a */
+          a: PropTypes.array,
+          /* b */
+          b: PropTypes.bool,
+          /* c */
+          c: PropTypes.any
+        }),
+      };
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        x: PropTypes.any,
+        y: PropTypes.any,
+        z: PropTypes.shape({
+          c: PropTypes.any,
+          /* c */
+          a: PropTypes.array,
+          /* a */
+          b: PropTypes.bool
+          /* b */
+        }),
+      };
+    `,
+    options: [{
+      sortShapeProp: true
+    }],
+    settings: {comments: 'below'},
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 13,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 15,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        x: PropTypes.any,
+        y: PropTypes.any,
+        z: PropTypes.shape({
+          a: PropTypes.array,
+          /* a */
+          b: PropTypes.bool,
+          /* b */
+          c: PropTypes.any
+          /* c */
+        }),
+      };
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        /* z */
+        z: PropTypes.any,
+        /* y */
+        y: PropTypes.any,
+        /* a */
+        a: PropTypes.shape({
+          /* c */
+          c: PropTypes.any,
+          /* C */
+          C: PropTypes.string,
+          /* a */
+          a: PropTypes.any,
+          /* b */
+          b: PropTypes.bool
+        })
+      };
+    `,
+    options: [{
+      sortShapeProp: true
+    }],
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 11,
+      column: 9,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 13,
+      column: 9,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 17,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 19,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 21,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        /* a */
+        a: PropTypes.shape({
+          /* C */
+          C: PropTypes.string,
+          /* a */
+          a: PropTypes.any,
+          /* b */
+          b: PropTypes.bool,
+          /* c */
+          c: PropTypes.any
+        }),
+        /* y */
+        y: PropTypes.any,
+        /* z */
+        z: PropTypes.any
+      };
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        z: PropTypes.any,
+        /* z */
+        y: PropTypes.any,
+        /* y */
+        a: PropTypes.shape({
+          c: PropTypes.any,
+          /* c */
+          C: PropTypes.string,
+          /* C */
+          a: PropTypes.any,
+          /* a */
+          b: PropTypes.bool
+          /* b */
+        })
+        /* a */
+      };
+    `,
+    options: [{
+      sortShapeProp: true
+    }],
+    settings: {comments: 'below'},
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 10,
+      column: 9,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 12,
+      column: 9,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 15,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 17,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 19,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        a: PropTypes.shape({
+          C: PropTypes.string,
+          /* C */
+          a: PropTypes.any,
+          /* a */
+          b: PropTypes.bool,
+          /* b */
+          c: PropTypes.any
+          /* c */
+        }),
+        /* a */
+        y: PropTypes.any,
+        /* y */
+        z: PropTypes.any
+        /* z */
+      };
+    `
+  }, {
+    code: `
+      export default class ClassWithSpreadInPropTypes extends BaseClass {
+        static propTypes = {
+          /* b */
+          b: PropTypes.string,
+          /* a */
+          ...a.propTypes,
+          /* d */
+          d: PropTypes.string,
+          /* c */
+          c: PropTypes.string
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 11,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      export default class ClassWithSpreadInPropTypes extends BaseClass {
+        static propTypes = {
+          /* b */
+          b: PropTypes.string,
+          /* a */
+          ...a.propTypes,
+          /* c */
+          c: PropTypes.string,
+          /* d */
+          d: PropTypes.string
+        }
+      }
+    `
+  }, {
+    code: `
+      export default class ClassWithSpreadInPropTypes extends BaseClass {
+        static propTypes = {
+          b: PropTypes.string,
+          /* b */
+          ...a.propTypes,
+          /* a */
+          d: PropTypes.string,
+          /* d */
+          c: PropTypes.string
+          /* c */
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    settings: {comments: 'below'},
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 10,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      export default class ClassWithSpreadInPropTypes extends BaseClass {
+        static propTypes = {
+          b: PropTypes.string,
+          /* b */
+          ...a.propTypes,
+          /* a */
+          c: PropTypes.string,
+          /* c */
+          d: PropTypes.string
+          /* d */
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        /* x */
+        x: PropTypes.any,
+        /* y */
+        y: PropTypes.any,
+        /* z */
+        z: PropTypes.shape({
+          /* a */
+          a: PropTypes.string,
+          /* c */
+          c: PropTypes.number.isRequired,
+          /* b */
+          b: PropTypes.any,
+          /* other */
+          ...otherPropTypes,
+          /* f */
+          f: PropTypes.bool,
+          /* d */
+          d: PropTypes.string
+        })
+      };
+    `,
+    options: [{
+      sortShapeProp: true
+    }],
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 19,
+      column: 11,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE,
+      line: 25,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        /* x */
+        x: PropTypes.any,
+        /* y */
+        y: PropTypes.any,
+        /* z */
+        z: PropTypes.shape({
+          /* a */
+          a: PropTypes.string,
+          /* b */
+          b: PropTypes.any,
+          /* c */
+          c: PropTypes.number.isRequired,
+          /* other */
+          ...otherPropTypes,
+          /* d */
+          d: PropTypes.string,
+          /* f */
+          f: PropTypes.bool
+        })
+      };
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          /* a */
+          a: PropTypes.any,
+          /* z */
+          z: PropTypes.string,
+          /* onFoo */
+          onFoo: PropTypes.func,
+          /* onBar */
+          onBar: PropTypes.func
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    options: [{
+      callbacksLast: true
+    }],
+    parser: 'babel-eslint',
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 11,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          /* a */
+          a: PropTypes.any,
+          /* z */
+          z: PropTypes.string,
+          /* onBar */
+          onBar: PropTypes.func,
+          /* onFoo */
+          onFoo: PropTypes.func
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Component extends React.Component {
+        static propTypes = {
+          /* a */
+          a: PropTypes.any,
+          /* bar */
+          barRequired: PropTypes.string.isRequired,
+          /* onFoo */
+          onFoo: PropTypes.func
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    options: [{
+      requiredFirst: true
+    }],
+    errors: [{
+      message: REQUIRED_ERROR_MESSAGE,
+      line: 7,
+      column: 11,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        static propTypes = {
+          /* bar */
+          barRequired: PropTypes.string.isRequired,
+          /* a */
+          a: PropTypes.any,
+          /* onFoo */
+          onFoo: PropTypes.func
+        };
+        render() {
+          return <div />;
+        }
+      }
+    `
   }]
 });
