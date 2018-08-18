@@ -1568,6 +1568,27 @@ ruleTester.run('default-props-match-prop-types', rule, {
           message: 'defaultProp "foo" defined for isRequired propType.'
         }
       ]
+    },
+    {
+      code: `
+        class SomeComponent extends React.Component {
+          render() {
+            return <div />;
+          }
+        }
+        SomeComponent.propTypes = {
+          "firstProperty": PropTypes.string.isRequired,
+        };
+
+        SomeComponent.defaultProps = {
+          "firstProperty": () => undefined
+        };
+      `,
+      errors: [
+        {
+          message: 'defaultProp "firstProperty" defined for isRequired propType.'
+        }
+      ]
     }
   ]
 });
