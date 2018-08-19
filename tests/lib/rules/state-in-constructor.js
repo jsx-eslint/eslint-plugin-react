@@ -198,6 +198,31 @@ ruleTester.run('state-in-constructor', rule, {
         }
       }
     `
+  }, {
+    code: `
+      class Foo extends React.Component {
+        constructor(props) {
+          super(props)
+          foobar = { bar: 0 }
+        }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `
+  }, {
+    code: `
+      class Foo extends React.Component {
+        constructor(props) {
+          super(props)
+          foobar = { bar: 0 }
+        }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['never']
   }],
 
   invalid: [{
