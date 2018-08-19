@@ -184,6 +184,20 @@ ruleTester.run('state-in-constructor', rule, {
       }
     `,
     options: ['never']
+  }, {
+    code: `
+      class Foo extends React.Component {
+        constructor(props) {
+          super(props)
+          if (foobar) {
+            this.state = { bar: 0 }
+          }
+        }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `
   }],
 
   invalid: [{
@@ -284,6 +298,24 @@ ruleTester.run('state-in-constructor', rule, {
           this.state = { bar: 0 }
         }
         state = { baz: 0 }
+        render() {
+          return <div>Foo</div>
+        }
+      }
+    `,
+    options: ['never'],
+    errors: [{
+      message: 'State initialization should be in a class property'
+    }]
+  }, {
+    code: `
+      class Foo extends React.Component {
+        constructor(props) {
+          super(props)
+          if (foobar) {
+            this.state = { bar: 0 }
+          }
+        }
         render() {
           return <div>Foo</div>
         }
