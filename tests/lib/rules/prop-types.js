@@ -3889,7 +3889,7 @@ ruleTester.run('prop-types', rule, {
       `,
       errors: [{
         message: '\'foo.baz\' is missing in props validation'
-      }],
+      }]
     },
     {
       code: `
