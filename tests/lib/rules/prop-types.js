@@ -3852,6 +3852,21 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'foo.baz\' is missing in props validation'
       }]
+    },
+    {
+      code: `
+        const ForAttendees = ({ page }) => (
+          <>
+            <section>{page}</section>
+          </>
+        );
+
+        export default ForAttendees;
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'page\' is missing in props validation'
+      }]
     }
   ]
 });
