@@ -134,6 +134,45 @@ ruleTester.run('destructuring-assignment', rule, {
       }
     };`,
     options: ['always']
+  }, {
+    code: [
+      'const div = styled.div`',
+      '  & .button {',
+      '    border-radius: ${props => props.borderRadius}px;',
+      '  }',
+      '`'
+    ].join('\n')
+  }, {
+    code: `
+      export default (context: $Context) => ({
+        foo: context.bar
+      });
+    `,
+    parser: 'babel-eslint'
+  }, {
+    code: `
+      class Foo {
+        bar(context) {
+          return context.baz;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Foo {
+        bar(props) {
+          return props.baz;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Foo extends React.Component {
+        bar = this.props.bar
+      }
+    `,
+    options: ['always', {ignoreClassFields: true}],
+    parser: 'babel-eslint'
   }],
 
   invalid: [{

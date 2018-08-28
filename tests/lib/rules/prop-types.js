@@ -343,6 +343,51 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n')
     }, {
+      code: `
+        class Component extends React.Component {
+          render() {
+            return <div>{this.props.foo.baz}</div>;
+          }
+        }
+        Component.propTypes = {
+          foo: PropTypes.oneOfType([
+            PropTypes.shape({
+              bar: PropTypes.string
+            }),
+            PropTypes.shape({
+              baz: PropTypes.string
+            })
+          ])
+        };
+      `
+    }, {
+      code: `
+        class Component extends React.Component {
+          render() {
+            return <div>{this.props.foo.baz}</div>;
+          }
+        }
+        Component.propTypes = {
+          foo: PropTypes.oneOfType([
+            PropTypes.shape({
+              bar: PropTypes.string
+            }),
+            PropTypes.instanceOf(Baz)
+          ])
+        };
+      `
+    }, {
+      code: `
+        class Component extends React.Component {
+          render() {
+            return <div>{this.props.foo.baz}</div>;
+          }
+        }
+        Component.propTypes = {
+          foo: PropTypes.oneOf(['bar', 'baz'])
+        };
+      `
+    }, {
       code: [
         'class Hello extends React.Component {',
         '  render() {',
@@ -480,6 +525,20 @@ ruleTester.run('prop-types', rule, {
       parser: 'babel-eslint'
     }, {
       code: [
+        'const foo = {};',
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    const {firstname, lastname} = this.props.name;',
+        '    return <div>{firstname} {lastname}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  name: PropTypes.shape(foo)',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
         'class Hello extends React.Component {',
         '  render() {',
         '    let {firstname} = this;',
@@ -584,6 +643,46 @@ ruleTester.run('prop-types', rule, {
         'Comp2.propTypes = {',
         '  prop2: PropTypes.arrayOf(Comp1.propTypes.prop1)',
         '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Comp1 extends Component {',
+        '  render() {',
+        '    return <span />;',
+        '  }',
+        '}',
+        'Comp1.propTypes = {',
+        '  prop1: PropTypes.number',
+        '};',
+        'class Comp2 extends Component {',
+        '  static propTypes = {',
+        '    prop2: PropTypes.arrayOf(Comp1.propTypes.prop1)',
+        '  }',
+        '  render() {',
+        '    return <span />;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'class Comp1 extends Component {',
+        '  render() {',
+        '    return <span />;',
+        '  }',
+        '}',
+        'Comp1.propTypes = {',
+        '  prop1: PropTypes.number',
+        '};',
+        'var Comp2 = createReactClass({',
+        '  propTypes: {',
+        '    prop2: PropTypes.arrayOf(Comp1.propTypes.prop1)',
+        '  },',
+        '  render() {',
+        '    return <span />;',
+        '  }',
+        '});'
       ].join('\n'),
       parser: 'babel-eslint'
     }, {
@@ -1168,6 +1267,20 @@ ruleTester.run('prop-types', rule, {
         '  options: Array<SelectOption>',
         '} & FieldProps'
       ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Impossible intersection type
+      code: `
+        import React from 'react';
+        type Props = string & {
+          fullname: string
+        };
+        class Test extends React.PureComponent<Props> {
+          render() {
+            return <div>Hello {this.props.fullname}</div>
+          }
+        }
+      `,
       parser: 'babel-eslint'
     }, {
       code: [
@@ -1899,6 +2012,24 @@ ruleTester.run('prop-types', rule, {
       }
     `,
       parser: 'babel-eslint'
+    },
+    {
+      code: `
+        const Slider = props => (
+          <RcSlider {...props} />
+        );
+
+        Slider.propTypes = RcSlider.propTypes;
+      `
+    },
+    {
+      code: `
+        const Slider = props => (
+          <RcSlider foo={props.bar} />
+        );
+
+        Slider.propTypes = RcSlider.propTypes;
+      `
     }
   ],
 
@@ -2093,6 +2224,22 @@ ruleTester.run('prop-types', rule, {
         '    })',
         '  })',
         '};'
+      ].join('\n'),
+      errors: [{
+        message: '\'a.b.c\' is missing in props validation'
+      }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    this.props.a.b.c;',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  a: PropTypes.shape({})',
+        '};',
+        'Hello.propTypes.a.b = PropTypes.shape({});'
       ].join('\n'),
       errors: [{
         message: '\'a.b.c\' is missing in props validation'
@@ -3686,6 +3833,25 @@ ruleTester.run('prop-types', rule, {
         message: '\'bad\' is missing in props validation'
       }],
       parser: 'babel-eslint'
+    },
+    {
+      code: `
+        class Component extends React.Component {
+          render() {
+            return <div>{this.props.foo.baz}</div>;
+          }
+        }
+        Component.propTypes = {
+          foo: PropTypes.oneOfType([
+            PropTypes.shape({
+              bar: PropTypes.string
+            })
+          ])
+        };
+      `,
+      errors: [{
+        message: '\'foo.baz\' is missing in props validation'
+      }]
     }
   ]
 });

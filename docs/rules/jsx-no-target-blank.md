@@ -8,7 +8,7 @@ This rules requires that you accompany `target='_blank'` attributes with `rel='n
 
 ## Rule Details
 
-This rule aims to prevent user generated links from creating security vulerabilities by requiring
+This rule aims to prevent user generated links from creating security vulnerabilities by requiring
 `rel='noreferrer noopener'` for external links, and optionally any dynamically generated links.
 
 ## Rule Options

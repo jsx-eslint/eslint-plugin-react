@@ -358,6 +358,23 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }]
+  }, {
+    // inline Flow type
+    code: `
+      function SomeComponent({
+          isSomething,
+      }: {
+          isSomething: boolean,
+      }) {
+          return (
+              <span>{isSomething}</span>
+          );
+      }
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+'
+    }],
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
@@ -769,6 +786,26 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
+    errors: [{
+      message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
+    // inline Flow type
+    code: `
+      function SomeComponent({
+          something,
+      }: {
+          something: boolean,
+      }) {
+          return (
+              <span>{something}</span>
+          );
+      }
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+'
+    }],
+    parser: 'babel-eslint',
     errors: [{
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]

@@ -382,6 +382,36 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       sortShapeProp: true
     }]
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        a: PropTypes.any,
+        z: PropTypes.any,
+      };
+    `,
+    options: [{
+      noSortAlphabetically: true
+    }]
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        z: PropTypes.any,
+        a: PropTypes.any,
+      };
+    `,
+    options: [{
+      noSortAlphabetically: true
+    }]
   }],
 
   invalid: [{
@@ -1471,5 +1501,37 @@ ruleTester.run('sort-prop-types', rule, {
         }
       }
     `
+  }, {
+    code: [
+      'var First = createReactClass({',
+      '  propTypes: {',
+      '    z: PropTypes.string,',
+      '    a: PropTypes.any',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      noSortAlphabetically: false
+    }],
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 4,
+      column: 5,
+      type: 'Property'
+    }],
+    output: [
+      'var First = createReactClass({',
+      '  propTypes: {',
+      '    a: PropTypes.any,',
+      '    z: PropTypes.string',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n')
   }]
 });
