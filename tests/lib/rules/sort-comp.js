@@ -468,7 +468,7 @@ ruleTester.run('sort-comp', rule, {
     }]
   }, {
     code: [
-      '// static lifecycle methods should be grouped with lifecycle',
+      '// static lifecycle methods should be grouped under lifecycle',
       'class Hello extends React.Component {',
       '  constructor() {}',
       '  static getDerivedStateFromProps() {}',
