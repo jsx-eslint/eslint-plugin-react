@@ -468,15 +468,7 @@ ruleTester.run('sort-comp', rule, {
     }]
   }, {
     code: [
-      '// static lifecycle methods can be grouped (with statics)',
-      'class Hello extends React.Component {',
-      '  static getDerivedStateFromProps() {}',
-      '  constructor() {}',
-      '}'
-    ].join('\n')
-  }, {
-    code: [
-      '// static lifecycle methods can be grouped (with lifecycle)',
+      '// static lifecycle methods should be grouped with lifecycle',
       'class Hello extends React.Component {',
       '  constructor() {}',
       '  static getDerivedStateFromProps() {}',
