@@ -31,15 +31,42 @@ ruleTester.run('jsx-indent', rule, {
     ].join('\n')
   }, {
     code: [
+      '<></>'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
       '<App>',
       '</App>'
     ].join('\n')
+  }, {
+    code: [
+      '<>',
+      '</>'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }, {
     code: [
       '<App>',
       '  <Foo />',
       '</App>'
     ].join('\n'),
+    options: [2]
+  }, {
+    code: [
+      '<App>',
+      '  <></>',
+      '</App>'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [2]
+  }, {
+    code: [
+      '<>',
+      '  <Foo />',
+      '</>'
+    ].join('\n'),
+    parser: 'babel-eslint',
     options: [2]
   }, {
     code: [
@@ -74,11 +101,31 @@ ruleTester.run('jsx-indent', rule, {
   }, {
     code: [
       'function App() {',
+      '  return <App>',
+      '    <></>',
+      '  </App>;',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [2]
+  }, {
+    code: [
+      'function App() {',
       '  return (<App>',
       '    <Foo />',
       '  </App>);',
       '}'
     ].join('\n'),
+    options: [2]
+  }, {
+    code: [
+      'function App() {',
+      '  return (<App>',
+      '    <></>',
+      '  </App>);',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
     options: [2]
   }, {
     code: [
@@ -93,6 +140,18 @@ ruleTester.run('jsx-indent', rule, {
     options: [2]
   }, {
     code: [
+      'function App() {',
+      '  return (',
+      '    <App>',
+      '      <></>',
+      '    </App>',
+      '  );',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [2]
+  }, {
+    code: [
       'it(',
       '  (',
       '    <div>',
@@ -101,6 +160,18 @@ ruleTester.run('jsx-indent', rule, {
       '  )',
       ')'
     ].join('\n'),
+    options: [2]
+  }, {
+    code: [
+      'it(',
+      '  (',
+      '    <div>',
+      '      <></>',
+      '    </div>',
+      '  )',
+      ')'
+    ].join('\n'),
+    parser: 'babel-eslint',
     options: [2]
   }, {
     code: [
@@ -131,6 +202,17 @@ ruleTester.run('jsx-indent', rule, {
       '  </h1>',
       '}'
     ].join('\n'),
+    options: [2]
+  }, {
+    code: [
+      '{',
+      '  head.title &&',
+      '  <>',
+      '    {head.title}',
+      '  </>',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
     options: [2]
   }, {
     code: [
@@ -173,6 +255,15 @@ ruleTester.run('jsx-indent', rule, {
     options: [2]
   }, {
     code: [
+      '[',
+      '  <></>,',
+      '  <></>',
+      ']'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [2]
+  }, {
+    code: [
       '<div>',
       '    {',
       '        [',
@@ -194,6 +285,18 @@ ruleTester.run('jsx-indent', rule, {
       '</div>'
     ].join('\n')
   }, {
+    code: [
+      '<div>',
+      '    {foo &&',
+      '        [',
+      '            <></>,',
+      '            <></>',
+      '        ]',
+      '    }',
+      '</div>'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
     // Literals indentation is not touched
     code: [
       '<div>',
@@ -204,6 +307,16 @@ ruleTester.run('jsx-indent', rule, {
       '</div>'
     ].join('\n')
   }, {
+    code: [
+      '<>',
+      'bar <>',
+      '   bar',
+      '   bar {foo}',
+      'bar </>',
+      '</>'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
     // Multiline ternary
     // (colon at the end of the first expression)
     code: [
@@ -211,6 +324,13 @@ ruleTester.run('jsx-indent', rule, {
       '    <Foo /> :',
       '    <Bar />'
     ].join('\n')
+  }, {
+    code: [
+      'foo ?',
+      '    <></> :',
+      '    <></>'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }, {
     // Multiline ternary
     // (colon at the start of the second expression)
@@ -220,6 +340,13 @@ ruleTester.run('jsx-indent', rule, {
       '    : <Bar />'
     ].join('\n')
   }, {
+    code: [
+      'foo ?',
+      '    <></>',
+      '    : <></>'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
     // Multiline ternary
     // (colon on its own line)
     code: [
@@ -228,6 +355,14 @@ ruleTester.run('jsx-indent', rule, {
       ':',
       '    <Bar />'
     ].join('\n')
+  }, {
+    code: [
+      'foo ?',
+      '    <></>',
+      ':',
+      '    <></>'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }, {
     // Multiline ternary
     // (multiline JSX, colon on its own line)
@@ -250,12 +385,24 @@ ruleTester.run('jsx-indent', rule, {
       '<Bar />'
     ].join('\n')
   }, {
+    code: [
+      'foo ? <></> :',
+      '<></>'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
     // Multiline ternary
     // (first expression on test line, colon at the start of the second expression)
     code: [
       'foo ? <Foo />',
       ': <Bar />'
     ].join('\n')
+  }, {
+    code: [
+      'foo ? <></>',
+      ': <></>'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }, {
     // Multiline ternary
     // (first expression on test line, colon on its own line)
@@ -264,6 +411,13 @@ ruleTester.run('jsx-indent', rule, {
       ':',
       '<Bar />'
     ].join('\n')
+  }, {
+    code: [
+      'foo ? <></>',
+      ':',
+      '<></>'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }, {
     // Multiline ternary
     // (colon at the end of the first expression, parenthesized first expression)
@@ -274,6 +428,14 @@ ruleTester.run('jsx-indent', rule, {
       '    <Bar />'
     ].join('\n')
   }, {
+    code: [
+      'foo ? (',
+      '    <></>',
+      ') :',
+      '    <></>'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
     // Multiline ternary
     // (colon at the start of the second expression, parenthesized first expression)
     code: [
@@ -282,6 +444,14 @@ ruleTester.run('jsx-indent', rule, {
       ')',
       '    : <Bar />'
     ].join('\n')
+  }, {
+    code: [
+      'foo ? (',
+      '    <></>',
+      ')',
+      '    : <></>'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }, {
     // Multiline ternary
     // (colon on its own line, parenthesized first expression)
@@ -293,6 +463,15 @@ ruleTester.run('jsx-indent', rule, {
       '    <Bar />'
     ].join('\n')
   }, {
+    code: [
+      'foo ? (',
+      '    <></>',
+      ')',
+      ':',
+      '    <></>'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
     // Multiline ternary
     // (colon at the end of the first expression, parenthesized second expression)
     code: [
@@ -301,6 +480,14 @@ ruleTester.run('jsx-indent', rule, {
       '        <Bar />',
       '    )'
     ].join('\n')
+  }, {
+    code: [
+      'foo ?',
+      '    <></> : (',
+      '        <></>',
+      '    )'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }, {
     // Multiline ternary
     // (colon on its own line, parenthesized second expression)
@@ -312,6 +499,15 @@ ruleTester.run('jsx-indent', rule, {
       ')'
     ].join('\n')
   }, {
+    code: [
+      'foo ?',
+      '    <></>',
+      ': (',
+      '    <></>',
+      ')'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
     // Multiline ternary
     // (colon indented on its own line, parenthesized second expression)
     code: [
@@ -321,6 +517,15 @@ ruleTester.run('jsx-indent', rule, {
       '        <Bar />',
       '    )'
     ].join('\n')
+  }, {
+    code: [
+      'foo ?',
+      '    <></>',
+      '    : (',
+      '        <></>',
+      '    )'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }, {
     // Multiline ternary
     // (colon at the end of the first expression, both expression parenthesized)
@@ -332,6 +537,15 @@ ruleTester.run('jsx-indent', rule, {
       ')'
     ].join('\n')
   }, {
+    code: [
+      'foo ? (',
+      '    <></>',
+      ') : (',
+      '    <></>',
+      ')'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
     // Multiline ternary
     // (colon on its own line, both expression parenthesized)
     code: [
@@ -342,6 +556,16 @@ ruleTester.run('jsx-indent', rule, {
       '    <Bar />',
       ')'
     ].join('\n')
+  }, {
+    code: [
+      'foo ? (',
+      '    <></>',
+      ')',
+      ': (',
+      '    <></>',
+      ')'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }, {
     // Multiline ternary
     // (colon on its own line, both expression parenthesized)
@@ -355,6 +579,17 @@ ruleTester.run('jsx-indent', rule, {
       ')'
     ].join('\n')
   }, {
+    code: [
+      'foo ? (',
+      '    <></>',
+      ')',
+      ':',
+      '(',
+      '    <></>',
+      ')'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
     // Multiline ternary
     // (first expression on test line, colon at the end of the first expression, parenthesized second expression)
     code: [
@@ -363,12 +598,25 @@ ruleTester.run('jsx-indent', rule, {
       ')'
     ].join('\n')
   }, {
+    code: [
+      'foo ? <></> : (',
+      '    <></>',
+      ')'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
     // Multiline ternary
     // (first expression on test line, colon at the start of the second expression, parenthesized second expression)
     code: [
       'foo ? <Foo />',
       ': (<Bar />)'
     ].join('\n')
+  }, {
+    code: [
+      'foo ? <></>',
+      ': (<></>)'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }, {
     // Multiline ternary
     // (first expression on test line, colon on its own line, parenthesized second expression)
@@ -378,6 +626,14 @@ ruleTester.run('jsx-indent', rule, {
       '    <Bar />',
       ')'
     ].join('\n')
+  }, {
+    code: [
+      'foo ? <></>',
+      ': (',
+      '    <></>',
+      ')'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }, {
     code: [
       '<span>',
@@ -417,6 +673,21 @@ ruleTester.run('jsx-indent', rule, {
     ].join('\n'),
     options: [2]
   }, {
+    code: [
+      'function foo() {',
+      '  <span>',
+      '    {condition ?',
+      '      <Thing',
+      '        foo={superFoo}',
+      '      /> :',
+      '      <></>',
+      '    }',
+      '  </span>',
+      '}'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [2]
+  }, {
     code: `
       class Test extends React.Component {
         render() {
@@ -430,6 +701,21 @@ ruleTester.run('jsx-indent', rule, {
       }
     `,
     options: [2]
+  }, {
+    code: `
+      class Test extends React.Component {
+        render() {
+          return (
+            <>
+              <></>
+              <></>
+            </>
+          );
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    options: [2]
   }],
 
   invalid: [{
@@ -442,6 +728,32 @@ ruleTester.run('jsx-indent', rule, {
       '<App>',
       '    <Foo />',
       '</App>'
+    ].join('\n'),
+    errors: [{message: 'Expected indentation of 4 space characters but found 2.'}]
+  }, {
+    code: [
+      '<App>',
+      '  <></>',
+      '</App>'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    output: [
+      '<App>',
+      '    <></>',
+      '</App>'
+    ].join('\n'),
+    errors: [{message: 'Expected indentation of 4 space characters but found 2.'}]
+  }, {
+    code: [
+      '<>',
+      '  <Foo />',
+      '</>'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    output: [
+      '<>',
+      '    <Foo />',
+      '</>'
     ].join('\n'),
     errors: [{message: 'Expected indentation of 4 space characters but found 2.'}]
   }, {
@@ -637,6 +949,24 @@ ruleTester.run('jsx-indent', rule, {
     ]
   }, {
     code: [
+      '[',
+      '  <div />,',
+      '    <></>',
+      ']'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    output: [
+      '[',
+      '  <div />,',
+      '  <></>',
+      ']'
+    ].join('\n'),
+    options: [2],
+    errors: [
+      {message: 'Expected indentation of 2 space characters but found 4.'}
+    ]
+  }, {
+    code: [
       '<App>\n',
       ' <Foo />\n',
       '</App>'
@@ -730,6 +1060,21 @@ ruleTester.run('jsx-indent', rule, {
       {message: 'Expected indentation of 4 space characters but found 0.'}
     ]
   }, {
+    code: [
+      'foo ?',
+      '    <Foo /> :',
+      '<></>'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    output: [
+      'foo ?',
+      '    <Foo /> :',
+      '    <></>'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
     // Multiline ternary
     // (colon on its own line)
     code: [
@@ -762,6 +1107,23 @@ ruleTester.run('jsx-indent', rule, {
       {message: 'Expected indentation of 0 space characters but found 4.'}
     ]
   }, {
+    code: [
+      'foo ?',
+      '    <Foo />',
+      ':',
+      '<></>'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    output: [
+      'foo ?',
+      '    <Foo />',
+      ':',
+      '    <></>'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
     // Multiline ternary
     // (first expression on test line, colon on its own line)
     code: [
@@ -791,6 +1153,23 @@ ruleTester.run('jsx-indent', rule, {
       '    <Foo />',
       ') :',
       '    <Bar />'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
+    code: [
+      'foo ? (',
+      '    <Foo />',
+      ') :',
+      '<></>'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    output: [
+      'foo ? (',
+      '    <Foo />',
+      ') :',
+      '    <></>'
     ].join('\n'),
     errors: [
       {message: 'Expected indentation of 4 space characters but found 0.'}
@@ -828,6 +1207,23 @@ ruleTester.run('jsx-indent', rule, {
       'foo ?',
       '    <Foo /> : (',
       '        <Bar />',
+      '    )'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 8 space characters but found 4.'}
+    ]
+  }, {
+    code: [
+      'foo ?',
+      '    <Foo /> : (',
+      '    <></>',
+      '    )'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    output: [
+      'foo ?',
+      '    <Foo /> : (',
+      '        <></>',
       '    )'
     ].join('\n'),
     errors: [
@@ -874,6 +1270,25 @@ ruleTester.run('jsx-indent', rule, {
       {message: 'Expected indentation of 8 space characters but found 4.'}
     ]
   }, {
+    code: [
+      'foo ?',
+      '    <Foo />',
+      '    : (',
+      '    <></>',
+      '    )'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    output: [
+      'foo ?',
+      '    <Foo />',
+      '    : (',
+      '        <></>',
+      '    )'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 8 space characters but found 4.'}
+    ]
+  }, {
     // Multiline ternary
     // (colon at the end of the first expression, both expression parenthesized)
     code: [
@@ -895,6 +1310,26 @@ ruleTester.run('jsx-indent', rule, {
       {message: 'Expected indentation of 4 space characters but found 0.'}
     ]
   }, {
+    code: [
+      'foo ? (',
+      '<></>',
+      ') : (',
+      '<></>',
+      ')'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    output: [
+      'foo ? (',
+      '    <></>',
+      ') : (',
+      '    <></>',
+      ')'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'},
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
     // Multiline ternary
     // (colon on its own line, both expression parenthesized)
     code: [
@@ -936,6 +1371,30 @@ ruleTester.run('jsx-indent', rule, {
       ':',
       '(',
       '    <Bar />',
+      ')'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'},
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
+    code: [
+      'foo ? (',
+      '<></>',
+      ')',
+      ':',
+      '(',
+      '<></>',
+      ')'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    output: [
+      'foo ? (',
+      '    <></>',
+      ')',
+      ':',
+      '(',
+      '    <></>',
       ')'
     ].join('\n'),
     errors: [
@@ -959,6 +1418,21 @@ ruleTester.run('jsx-indent', rule, {
       {message: 'Expected indentation of 4 space characters but found 0.'}
     ]
   }, {
+    code: [
+      'foo ? <Foo /> : (',
+      '<></>',
+      ')'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    output: [
+      'foo ? <Foo /> : (',
+      '    <></>',
+      ')'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
     // Multiline ternary
     // (first expression on test line, colon on its own line, parenthesized second expression)
     code: [
@@ -971,6 +1445,23 @@ ruleTester.run('jsx-indent', rule, {
       'foo ? <Foo />',
       ': (',
       '    <Bar />',
+      ')'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
+    code: [
+      'foo ? <Foo />',
+      ': (',
+      '<></>',
+      ')'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    output: [
+      'foo ? <Foo />',
+      ': (',
+      '    <></>',
       ')'
     ].join('\n'),
     errors: [
