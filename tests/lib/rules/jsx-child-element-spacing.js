@@ -19,6 +19,13 @@ ruleTester.run('jsx-child-element-spacing', rule, {
     `
   }, {
     code: `
+      <>
+        foo
+      </>
+    `,
+    parser: 'babel-eslint'
+  }, {
+    code: `
       <App>
         <a>bar</a>
       </App>
@@ -137,6 +144,21 @@ ruleTester.run('jsx-child-element-spacing', rule, {
   <a>bar</a>
 </App>
     `,
+    errors: [
+      {
+        message: 'Ambiguous spacing before next element a',
+        line: 4,
+        column: 3
+      }
+    ]
+  }, {
+    code: `
+<>
+  foo
+  <a>bar</a>
+</>
+    `,
+    parser: 'babel-eslint',
     errors: [
       {
         message: 'Ambiguous spacing before next element a',

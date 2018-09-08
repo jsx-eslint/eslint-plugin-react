@@ -39,7 +39,8 @@ ruleTester.run('no-unused-vars', rule, {
     {code: '/*eslint jsx-uses-react:1*/ var React; <div />;'},
     {code: '/*eslint jsx-uses-react:1*/ var React; (function () { <div /> })();'},
     {code: '/*eslint jsx-uses-react:1*/ /** @jsx Foo */ var Foo; <div />;'},
-    {code: '/*eslint jsx-uses-react:1*/ var Foo; <div />;', settings: settings}
+    {code: '/*eslint jsx-uses-react:1*/ var Foo; <div />;', settings: settings},
+    {code: '/*eslint jsx-uses-react:1*/ var React; <></>;', parser: 'babel-eslint'}
   ],
   invalid: [{
     code: '/*eslint jsx-uses-react:1*/ var React;',
@@ -49,6 +50,12 @@ ruleTester.run('no-unused-vars', rule, {
     errors: [{message: '\'React\' is defined but never used.'}]
   }, {
     code: '/*eslint jsx-uses-react:1*/ var React; <div />;',
-    errors: [{message: '\'React\' is defined but never used.'}], settings: settings
+    errors: [{message: '\'React\' is defined but never used.'}],
+    settings: settings
+  }, {
+    code: '/*eslint jsx-uses-react:1*/ var React; <></>;',
+    parser: 'babel-eslint',
+    errors: [{message: '\'React\' is defined but never used.'}],
+    settings: settings
   }]
 });

@@ -61,6 +61,26 @@ ruleTester.run('jsx-max-depth', rule, {
   }, {
     code: 'const foo = (x) => <div><em>{x}</em></div>;',
     options: [{max: 2}]
+  }, {
+    code: [
+      '<></>'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      '<>',
+      '  <foo />',
+      '</>'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{max: 1}]
+  }, {
+    code: [
+      'const x = <><em>x</em></>;',
+      '<>{x}</>'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{max: 2}]
   }],
 
   invalid: [{
@@ -121,6 +141,39 @@ ruleTester.run('jsx-max-depth', rule, {
       '{<div><div><span /></div></div>}',
       '</div>'
     ].join('\n'),
+    parser: 'babel-eslint',
     errors: [{message: 'Expected the depth of nested jsx elements to be <= 2, but found 3.'}]
+  }, {
+    code: [
+      '<>',
+      '  <foo />',
+      '</>'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{max: 0}],
+    errors: [{message: 'Expected the depth of nested jsx elements to be <= 0, but found 1.'}]
+  }, {
+    code: [
+      '<>',
+      '  <>',
+      '    <bar />',
+      '  </>',
+      '</>'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{max: 1}],
+    errors: [{message: 'Expected the depth of nested jsx elements to be <= 1, but found 2.'}]
+  }, {
+    code: [
+      'const x = <><span /></>;',
+      'let y = x;',
+      '<>{x}-{y}</>'
+    ].join('\n'),
+    parser: 'babel-eslint',
+    options: [{max: 1}],
+    errors: [
+      {message: 'Expected the depth of nested jsx elements to be <= 1, but found 2.'},
+      {message: 'Expected the depth of nested jsx elements to be <= 1, but found 2.'}
+    ]
   }]
 });

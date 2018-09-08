@@ -102,6 +102,24 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
   }, {
     code: '<App><Foo /></App>',
     options: [{allow: 'single-child'}]
+  }, {
+    code: '<></>',
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      '<>',
+      '  <Foo />',
+      '</>'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      '<>',
+      '  <Foo />',
+      '  <Bar />',
+      '</>'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
@@ -949,5 +967,45 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`foobar` must be placed on a new line'}]
+  }, {
+    code: '<>{"foo"}</>',
+    output: [
+      '<>',
+      '{"foo"}',
+      '</>'
+    ].join('\n'),
+    errors: [{message: '`{"foo"}` must be placed on a new line'}],
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App>',
+      '  <Foo /><></>',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '  <Foo />',
+      '<></>',
+      '</App>'
+    ].join('\n'),
+    errors: [{message: '`<></>` must be placed on a new line'}],
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<',
+      '><Foo />',
+      '</>'
+    ].join('\n'),
+    output: [
+      '<',
+      '>',
+      '<Foo />',
+      '</>'
+    ].join('\n'),
+    errors: [{message: '`Foo` must be placed on a new line'}],
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
   }]
 });
