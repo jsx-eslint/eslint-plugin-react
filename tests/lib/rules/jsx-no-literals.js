@@ -45,6 +45,19 @@ ruleTester.run('jsx-no-literals', rule, {
       code: `
         class Comp1 extends Component {
           render() {
+            return (
+              <>
+                {'asdjfl'}
+              </>
+            );
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        class Comp1 extends Component {
+          render() {
             return (<div>{'test'}</div>);
           }
         }
@@ -184,6 +197,16 @@ ruleTester.run('jsx-no-literals', rule, {
         class Comp1 extends Component {
           render() {
             return (<div>test</div>);
+          }
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [{message: 'Missing JSX expression container around literal string'}]
+    }, {
+      code: `
+        class Comp1 extends Component {
+          render() {
+            return (<>test</>);
           }
         }
       `,
