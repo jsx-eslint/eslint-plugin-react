@@ -1533,5 +1533,39 @@ ruleTester.run('sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n')
+  }, {
+    code: [
+      'var First = createReactClass({',
+      '  propTypes: {',
+      '    \'data-letter\': PropTypes.string,',
+      '    a: PropTypes.any,',
+      '    e: PropTypes.any',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      noSortAlphabetically: false
+    }],
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 4,
+      column: 5,
+      type: 'Property'
+    }],
+    output: [
+      'var First = createReactClass({',
+      '  propTypes: {',
+      '    a: PropTypes.any,',
+      '    \'data-letter\': PropTypes.string,',
+      '    e: PropTypes.any',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n')
   }]
 });
