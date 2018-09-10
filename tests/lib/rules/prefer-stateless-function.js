@@ -349,6 +349,20 @@ ruleTester.run('prefer-stateless-function', rule, {
       code: `
         class Foo extends React.PureComponent {
           render() {
+            return <div>this.bar</div>;
+          }
+        }
+      `,
+      options: [{
+        ignorePureComponents: true
+      }],
+      errors: [{
+        message: 'Component should be written as a pure function'
+      }]
+    }, {
+      code: `
+        class Foo extends React.PureComponent {
+          render() {
             return <div>{this.props.foo}</div>;
           }
         }
