@@ -135,6 +135,7 @@ Enable the rules that you would like to use.
 |  |  | [react/no-access-state-in-setstate](docs/rules/no-access-state-in-setstate.md) | Reports when this.state is accessed within setState |
 |  |  | [react/no-adjacent-inline-elements](docs/rules/no-adjacent-inline-elements.md) | Prevent adjacent inline elements not separated by whitespace. |
 |  |  | [react/no-array-index-key](docs/rules/no-array-index-key.md) | Prevent usage of Array index in keys |
+|  | 🔧 | [react/no-arrow-function-lifecycle](docs/rules/no-arrow-function-lifecycle.md) | Lifecycle methods should be methods on the prototype, not class fields |
 | ✔ |  | [react/no-children-prop](docs/rules/no-children-prop.md) | Prevent passing of children as props. |
 |  |  | [react/no-danger](docs/rules/no-danger.md) | Prevent usage of dangerous JSX props |
 | ✔ |  | [react/no-danger-with-children](docs/rules/no-danger-with-children.md) | Report when a DOM element is using both children and dangerouslySetInnerHTML |

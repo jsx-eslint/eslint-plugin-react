@@ -7,8 +7,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Added
 * [`no-unused-class-component-methods`]: Handle unused class component methods ([#2166][] @jakeleventhal @pawelnvk)
+* add [`no-arrow-function-lifecycle`] ([#1980][] @ngtan)
 
 [#2166]: https://github.com/yannickcr/eslint-plugin-react/pull/2166
+[#1980]: https://github.com/yannickcr/eslint-plugin-react/pull/1980
 
 ## [7.26.1] - 2021.09.29
 
@@ -3465,6 +3467,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`no-access-state-in-setstate`]: docs/rules/no-access-state-in-setstate.md
 [`no-adjacent-inline-elements`]: docs/rules/no-adjacent-inline-elements.md
 [`no-array-index-key`]: docs/rules/no-array-index-key.md
+[`no-arrow-function-lifecycle`]: docs/rules/no-arrow-function-lifecycle.md
 [`no-children-prop`]: docs/rules/no-children-prop.md
 [`no-comment-textnodes`]: docs/rules/jsx-no-comment-textnodes.md
 [`no-danger-with-children`]: docs/rules/no-danger-with-children.md

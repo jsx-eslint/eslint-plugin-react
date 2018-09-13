@@ -1745,6 +1745,9 @@ ruleTester.run('no-typos', rule, {
         proptypes: {},
         childcontexttypes: {},
         contexttypes: {},
+        getdefaultProps() { },
+        getinitialState() { },
+        getChildcontext() { },
         ComponentWillMount() { },
         ComponentDidMount() { },
         ComponentWillReceiveProps() { },
@@ -1767,6 +1770,18 @@ ruleTester.run('no-typos', rule, {
     }, {
       messageId: 'typoPropDeclaration',
       type: 'Identifier'
+    }, {
+      messageId: 'typoLifecycleMethod',
+      data: {actual: 'getdefaultProps', expected: 'getDefaultProps'},
+      type: 'Property'
+    }, {
+      messageId: 'typoLifecycleMethod',
+      data: {actual: 'getinitialState', expected: 'getInitialState'},
+      type: 'Property'
+    }, {
+      messageId: 'typoLifecycleMethod',
+      data: {actual: 'getChildcontext', expected: 'getChildContext'},
+      type: 'Property'
     }, {
       messageId: 'typoLifecycleMethod',
       data: {actual: 'ComponentWillMount', expected: 'componentWillMount'},
@@ -1833,6 +1848,9 @@ ruleTester.run('no-typos', rule, {
         proptypes: {},
         childcontexttypes: {},
         contexttypes: {},
+        getdefaultProps() { },
+        getinitialState() { },
+        getChildcontext() { },
         ComponentWillMount() { },
         ComponentDidMount() { },
         ComponentWillReceiveProps() { },
@@ -1856,6 +1874,18 @@ ruleTester.run('no-typos', rule, {
     }, {
       messageId: 'typoPropDeclaration',
       type: 'Identifier'
+    }, {
+      messageId: 'typoLifecycleMethod',
+      data: {actual: 'getdefaultProps', expected: 'getDefaultProps'},
+      type: 'Property'
+    }, {
+      messageId: 'typoLifecycleMethod',
+      data: {actual: 'getinitialState', expected: 'getInitialState'},
+      type: 'Property'
+    }, {
+      messageId: 'typoLifecycleMethod',
+      data: {actual: 'getChildcontext', expected: 'getChildContext'},
+      type: 'Property'
     }, {
       messageId: 'typoLifecycleMethod',
       data: {actual: 'ComponentWillMount', expected: 'componentWillMount'},
