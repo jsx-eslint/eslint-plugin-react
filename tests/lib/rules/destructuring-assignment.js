@@ -173,6 +173,17 @@ ruleTester.run('destructuring-assignment', rule, {
     `,
     options: ['always', {ignoreClassFields: true}],
     parser: 'babel-eslint'
+  }, {
+    code: [
+      'class Input extends React.Component {',
+      '  id = `${this.props.name}`;',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: ['always', {ignoreClassFields: true}],
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
