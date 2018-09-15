@@ -28,17 +28,20 @@ const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-this-in-sfc', rule, {
   valid: [{
     code: `
+    import React from 'react';
     function Foo(props) {
       const { foo } = props;
       return <div bar={foo} />;
     }`
   }, {
     code: `
+    import React from 'react';
     function Foo({ foo }) {
       return <div bar={foo} />;
     }`
   }, {
     code: `
+    import React from 'react';
     class Foo extends React.Component {
       render() {
         const { foo } = this.props;
@@ -47,6 +50,7 @@ ruleTester.run('no-this-in-sfc', rule, {
     }`
   }, {
     code: `
+    import React from 'react';
     const Foo = createReactClass({
       render: function() {
         return <div>{this.props.foo}</div>;
@@ -54,6 +58,7 @@ ruleTester.run('no-this-in-sfc', rule, {
     });`
   }, {
     code: `
+    import React from 'react';
     const Foo = React.createClass({
       render: function() {
         return <div>{this.props.foo}</div>;
@@ -72,11 +77,13 @@ ruleTester.run('no-this-in-sfc', rule, {
     `
   }, {
     code: `
+    import React from 'react';
     function Foo(props) {
       return props.foo ? <span>{props.bar}</span> : null;
     }`
   }, {
     code: `
+    import React from 'react';
     function Foo(props) {
       if (props.foo) {
         return <div>{props.bar}</div>;
@@ -92,16 +99,43 @@ ruleTester.run('no-this-in-sfc', rule, {
       return null;
     }`
   }, {
-    code: 'const Foo = (props) => <span>{props.foo}</span>'
+    code: `
+    import React from 'react';
+    const Foo = (props) => <span>{props.foo}</span>`
   }, {
-    code: 'const Foo = ({ foo }) => <span>{foo}</span>'
+    code: `
+    import React from 'react';
+    const Foo = ({ foo }) => <span>{foo}</span>`
   }, {
-    code: 'const Foo = (props) => props.foo ? <span>{props.bar}</span> : null;'
+    code: `
+    import React from 'react';
+    const Foo = (props) => props.foo ? <span>{props.bar}</span> : null;`
   }, {
-    code: 'const Foo = ({ foo, bar }) => foo ? <span>{bar}</span> : null;'
+    code: `
+    import React from 'react';
+    const Foo = ({ foo, bar }) => foo ? <span>{bar}</span> : null;`
+  }, {
+    code: `
+    function Foo(props) {
+      if (this.props.foo) {
+        something();
+      }
+      return null;
+    }`
+  }, {
+    code: `
+    class Foo {
+      bar() { 
+        return () => {
+          this.reset();
+          return null;
+        };
+      }
+    }`
   }],
   invalid: [{
     code: `
+    import React from 'react';
     function Foo(props) {
       const { foo } = this.props;
       return <div>{foo}</div>;
@@ -109,18 +143,21 @@ ruleTester.run('no-this-in-sfc', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
+    import React from 'react';
     function Foo(props) {
       return <div>{this.props.foo}</div>;
     }`,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
+    import React from 'react';
     function Foo(props) {
       return <div>{this.state.foo}</div>;
     }`,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
+    import React from 'react';
     function Foo(props) {
       const { foo } = this.state;
       return <div>{foo}</div>;
@@ -128,12 +165,14 @@ ruleTester.run('no-this-in-sfc', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
+    import React from 'react';
     function Foo(props) {
       return props.foo ? <div>{this.props.bar}</div> : null;
     }`,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
+    import React from 'react';
     function Foo(props) {
       if (props.foo) {
         return <div>{this.props.bar}</div>;
@@ -143,21 +182,17 @@ ruleTester.run('no-this-in-sfc', rule, {
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
-    function Foo(props) {
-      if (this.props.foo) {
-        something();
-      }
-      return null;
-    }`,
-    errors: [{message: ERROR_MESSAGE}]
-  }, {
-    code: 'const Foo = (props) => <span>{this.props.foo}</span>',
-    errors: [{message: ERROR_MESSAGE}]
-  }, {
-    code: 'const Foo = (props) => this.props.foo ? <span>{props.bar}</span> : null;',
+    import React from 'react';
+    const Foo = (props) => <span>{this.props.foo}</span>`,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
+    import React from 'react';
+    const Foo = (props) => this.props.foo ? <span>{props.bar}</span> : null;`,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: `
+    import React from 'react';
     function Foo(props) {
       function onClick(bar) {
         this.props.onClick();
