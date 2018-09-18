@@ -15,27 +15,35 @@ This rule aims to prevent user generated links from creating security vulnerabil
 
 There are two main options for the rule:
 
-* `{"enforceDynamicLinks": "always"}` enforces the rule if the href is a dynamic link (default)
-* `{"enforceDynamicLinks": "never"}` does not enforce the rule if the href is a dynamic link
+- `{"enforceDynamicLinks": "always"}` enforces the rule if the href is a dynamic link (default)
+- `{"enforceDynamicLinks": "never"}` does not enforce the rule if the href is a dynamic link
 
+```json
+"react/jsx-no-target-blank": [<enabled>, { enforceDynamicLinks: <enforce> }]
+```
+
+- enabled: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
+- enforce: optional string, defaults to "always"
 
 ### always (default)
 
 When {"enforceDynamicLinks": "always"} is set, the following patterns are considered errors:
 
 ```jsx
-var Hello = <a target='_blank' href="http://example.com/"></a>
-var Hello = <a target='_blank' href={ dynamicLink }></a>
+var Hello = <a target="_blank" href="http://example.com/" />;
+var Hello = <a target="_blank" href={dynamicLink} />;
 ```
 
 The following patterns are **not** considered errors:
 
 ```jsx
-var Hello = <p target='_blank'></p>
-var Hello = <a target='_blank' rel='noopener noreferrer' href="http://example.com"></a>
-var Hello = <a target='_blank' href="relative/path/in/the/host"></a>
-var Hello = <a target='_blank' href="/absolute/path/in/the/host"></a>
-var Hello = <a></a>
+var Hello = <p target="_blank" />;
+var Hello = (
+  <a target="_blank" rel="noopener noreferrer" href="http://example.com" />
+);
+var Hello = <a target="_blank" href="relative/path/in/the/host" />;
+var Hello = <a target="_blank" href="/absolute/path/in/the/host" />;
+var Hello = <a />;
 ```
 
 ### never
@@ -43,7 +51,7 @@ var Hello = <a></a>
 When {"enforceDynamicLinks": "never"} is set, the following patterns are **not** considered errors:
 
 ```jsx
-var Hello = <a target='_blank' href={ dynamicLink }></a>
+var Hello = <a target="_blank" href={dynamicLink} />;
 ```
 
 ## When Not To Use It
