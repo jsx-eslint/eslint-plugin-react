@@ -99,6 +99,26 @@ ruleTester.run('no-this-in-sfc', rule, {
     code: 'const Foo = (props) => props.foo ? <span>{props.bar}</span> : null;'
   }, {
     code: 'const Foo = ({ foo, bar }) => foo ? <span>{bar}</span> : null;'
+  }, {
+    code: `
+    class Foo {
+      bar() { 
+        () => {
+          this.something();
+          return null;
+        };
+      }
+    }`
+  }, {
+    code: `
+    class Foo {
+      bar() { 
+        () => () => {
+          this.something();
+          return null;
+        };
+      }
+    }`
   }],
   invalid: [{
     code: `
