@@ -185,5 +185,12 @@ ruleTester.run('no-this-in-sfc', rule, {
       return <div onClick={onClick}>{this.props.foo}</div>;
     }`,
     errors: [{message: ERROR_MESSAGE}, {message: ERROR_MESSAGE}]
+  }, {
+    code: `
+    () => {
+      this.something();
+      return null;
+    }`,
+    errors: [{message: ERROR_MESSAGE}]
   }]
 });
