@@ -2030,6 +2030,44 @@ ruleTester.run('prop-types', rule, {
 
         Slider.propTypes = RcSlider.propTypes;
       `
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          bar() {
+            this.setState((state, props) => ({ current: props.current }));
+          }
+          render() {
+            return <div />;
+          }
+        }
+
+        Foo.propTypes = {
+          current: PropTypes.number.isRequired,
+        };
+      `
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          static getDerivedStateFromProps(props) {
+            const { foo } = props;
+            return {
+              foobar: foo
+            };
+          }
+
+          render() {
+            const { foobar } = this.state;
+            return <div>{foobar}</div>;
+          }
+        }
+
+        Foo.propTypes = {
+          foo: PropTypes.func.isRequired,
+        };
+      `,
+      settings: {react: {version: '16.3.0'}}
     }
   ],
 
@@ -3851,6 +3889,50 @@ ruleTester.run('prop-types', rule, {
       `,
       errors: [{
         message: '\'foo.baz\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          bar() {
+            this.setState((state, props) => ({ current: props.current, bar: props.bar }));
+          }
+          render() {
+            return <div />;
+          }
+        }
+
+        Foo.propTypes = {
+          current: PropTypes.number.isRequired,
+        };
+      `,
+      errors: [{
+        message: '\'bar\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          static getDerivedStateFromProps(props) {
+            const { foo, bar } = props;
+            return {
+              foobar: foo + bar
+            };
+          }
+
+          render() {
+            const { foobar } = this.state;
+            return <div>{foobar}</div>;
+          }
+        }
+
+        Foo.propTypes = {
+          foo: PropTypes.func.isRequired,
+        };
+      `,
+      settings: {react: {version: '16.3.0'}},
+      errors: [{
+        message: '\'bar\' is missing in props validation'
       }]
     },
     {
