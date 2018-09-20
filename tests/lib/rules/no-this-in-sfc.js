@@ -192,5 +192,18 @@ ruleTester.run('no-this-in-sfc', rule, {
       return null;
     }`,
     errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: `
+    class Foo {
+      bar() { 
+        function Bar(){
+          return () => {
+            this.something();
+            return null;
+          }
+        }
+      }
+    }`,
+    errors: [{message: ERROR_MESSAGE}]
   }]
 });
