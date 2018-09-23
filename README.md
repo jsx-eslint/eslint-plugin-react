@@ -158,6 +158,7 @@ Enable the rules that you would like to use.
 * [react/jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
 * [react/jsx-one-expression-per-line](docs/rules/jsx-one-expression-per-line.md): Limit to one expression per line in JSX
 * [react/jsx-curly-brace-presence](docs/rules/jsx-curly-brace-presence.md): Enforce curly braces or disallow unnecessary curly braces in JSX
+* [react/jsx-fragments](docs/rules/jsx-fragments.md): Enforce shorthand or standard form for React fragments
 * [react/jsx-pascal-case](docs/rules/jsx-pascal-case.md): Enforce PascalCase for user-defined JSX components
 * [react/jsx-props-no-multi-spaces](docs/rules/jsx-props-no-multi-spaces.md): Disallow multiple spaces between inline JSX props (fixable)
 * [react/jsx-sort-default-props](docs/rules/jsx-sort-default-props.md): Enforce default props alphabetical sorting
