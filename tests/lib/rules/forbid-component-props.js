@@ -209,7 +209,7 @@ ruleTester.run('forbid-component-props', rule, {
     errors: [{
       message: CLASSNAME_ERROR_MESSAGE,
       line: 1,
-      column: 27,
+      column: 22,
       type: 'JSXAttribute'
     }]
   }, {
@@ -220,7 +220,7 @@ ruleTester.run('forbid-component-props', rule, {
     errors: [{
       message: CLASSNAME_ERROR_MESSAGE,
       line: 1,
-      column: 27,
+      column: 33,
       type: 'JSXAttribute'
     }]
   }]

@@ -47,7 +47,7 @@ Each array element can either be a string with the property name or object speci
 ```js
 {
   "propName": "someProp",
-  "allowedFor": [SomeComponent, "AnotherComponent", "/^Svg/"]
+  "allowedFor": [SomeComponent, "AnotherComponent", "*EndsWith", "StartsWith*"]
 }
 ```
 
