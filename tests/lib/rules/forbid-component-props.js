@@ -108,7 +108,12 @@ ruleTester.run('forbid-component-props', rule, {
   }, {
     code: 'const item = (<SvgFriend className="foo" />);',
     options: [{
-      forbid: [{propName: 'className', allowedFor: ['/^Svg/']}]
+      forbid: [{propName: 'className', allowedFor: ['Svg*']}]
+    }]
+  }, {
+    code: 'const item = (<AllowedExample className="foo" />);',
+    options: [{
+      forbid: [{propName: 'className', allowedFor: ['*Example']}]
     }]
   }],
 
@@ -194,6 +199,28 @@ ruleTester.run('forbid-component-props', rule, {
       message: CLASSNAME_ERROR_MESSAGE,
       line: 1,
       column: 32,
+      type: 'JSXAttribute'
+    }]
+  }, {
+    code: 'const item = (<AnSvg className="foo" />);',
+    options: [{
+      forbid: [{propName: 'className', allowedFor: ['Svg*']}]
+    }],
+    errors: [{
+      message: CLASSNAME_ERROR_MESSAGE,
+      line: 1,
+      column: 27,
+      type: 'JSXAttribute'
+    }]
+  }, {
+    code: 'const item = (<ExampleComponent className="foo" />);',
+    options: [{
+      forbid: [{propName: 'className', allowedFor: ['*Example']}]
+    }],
+    errors: [{
+      message: CLASSNAME_ERROR_MESSAGE,
+      line: 1,
+      column: 27,
       type: 'JSXAttribute'
     }]
   }]
