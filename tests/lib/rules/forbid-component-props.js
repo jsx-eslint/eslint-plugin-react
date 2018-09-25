@@ -105,6 +105,11 @@ ruleTester.run('forbid-component-props', rule, {
     options: [{
       forbid: [{propName: 'className', allowedFor: ['ReactModal']}]
     }]
+  }, {
+    code: 'const item = (<SvgFriend className="foo" />);',
+    options: [{
+      forbid: [{propName: 'className', allowedFor: ['/^Svg/']}]
+    }]
   }],
 
   invalid: [{
