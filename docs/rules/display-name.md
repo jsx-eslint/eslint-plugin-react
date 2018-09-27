@@ -33,7 +33,7 @@ var Hello = createReactClass({
 ...
 ```
 
-### `ignoreTranspilerName`
+### `ignoreTranspilerName` (default: `false`)
 
 When `true` the rule will ignore the name set by the transpiler and require a `displayName` property in this case.
 
