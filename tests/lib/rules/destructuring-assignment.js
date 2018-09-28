@@ -7,8 +7,6 @@
 const rule = require('../../../lib/rules/destructuring-assignment');
 const RuleTester = require('eslint').RuleTester;
 
-require('babel-eslint');
-
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',

@@ -11,8 +11,6 @@
 const rule = require('../../../lib/rules/boolean-prop-naming');
 const RuleTester = require('eslint').RuleTester;
 
-require('babel-eslint');
-
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',

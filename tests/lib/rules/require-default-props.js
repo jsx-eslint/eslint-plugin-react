@@ -19,8 +19,6 @@ const parserOptions = {
   }
 };
 
-require('babel-eslint');
-
 const ruleTester = new RuleTester({parserOptions});
 
 // ------------------------------------------------------------------------------
