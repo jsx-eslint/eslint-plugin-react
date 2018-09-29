@@ -119,6 +119,24 @@ ruleTester.run('no-this-in-sfc', rule, {
         };
       }
     }`
+  }, {
+    code: `
+    class Foo {
+      bar = () => {
+        this.something();
+        return null;
+      };
+    }`,
+    parser: 'babel-eslint'
+  }, {
+    code: `
+    class Foo {
+      bar = () => () => {
+        this.something();
+        return null;
+      };
+    }`,
+    parser: 'babel-eslint'
   }],
   invalid: [{
     code: `
