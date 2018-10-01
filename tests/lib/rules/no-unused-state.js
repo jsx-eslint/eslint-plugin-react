@@ -492,15 +492,15 @@ eslintTester.run('no-unused-state', rule, {
       parser: 'babel-eslint'
     },
     {
-      code: `class ESLintExample extends Component {
+      code: `class GetDerivedStateFromPropsTest extends Component {
         constructor(props) {
           super(props);
           this.state = {
             id: 123,
           };
         }
-        static getDerivedStateFromProps(nextProps, prevState) {
-          if (prevState.id === nextProps.id) {
+        static getDerivedStateFromProps(nextProps, otherState) {
+          if (otherState.id === nextProps.id) {
             return {
               selected: true,
             };
@@ -516,7 +516,29 @@ eslintTester.run('no-unused-state', rule, {
       parser: 'babel-eslint'
     },
     {
-      code: `class ESLintExample extends Component {
+      code: `class ComponentDidUpdateTest extends Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            id: 123,
+          };
+        }
+
+        componentDidUpdate(someProps, someState) {
+          if (someState.id === someProps.id) {
+            doStuff();
+          }
+        }
+        render() {
+          return (
+            <h1>{this.state.selected ? 'Selected' : 'Not selected'}</h1>
+          );
+        }
+      }`,
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class ShouldComponentUpdateTest extends Component {
         constructor(props) {
           super(props);
           this.state = {
@@ -525,6 +547,27 @@ eslintTester.run('no-unused-state', rule, {
         }
         shouldComponentUpdate(nextProps, nextState) {
           return nextState.id === nextProps.id;
+        }
+        render() {
+          return (
+            <h1>{this.state.selected ? 'Selected' : 'Not selected'}</h1>
+          );
+        }
+      }`,
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class NestedScopesTest extends Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            id: 123,
+          };
+        }
+        shouldComponentUpdate(nextProps, nextState) {
+          return (function() {
+            return nextState.id === nextProps.id;
+          })();
         }
         render() {
           return (
@@ -823,6 +866,53 @@ eslintTester.run('no-unused-state', rule, {
           }
         }`,
       errors: getErrorMessages(['bar']),
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class FakePrevStateVariableTest extends Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            id: 123,
+            foo: 456
+          };
+        }
+
+        componentDidUpdate(someProps, someState) {
+          if (someState.id === someProps.id) {
+            const prevState = { foo: 789 };
+            console.log(prevState.foo);
+          }
+        }
+        render() {
+          return (
+            <h1>{this.state.selected ? 'Selected' : 'Not selected'}</h1>
+          );
+        }
+      }`,
+      errors: getErrorMessages(['foo']),
+      parser: 'babel-eslint'
+    },
+    {
+      code: `class MissingStateParameterTest extends Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            id: 123
+          };
+        }
+
+        componentDidUpdate(someProps) {
+          const prevState = { id: 456 };
+          console.log(prevState.id);
+        }
+        render() {
+          return (
+            <h1>{this.state.selected ? 'Selected' : 'Not selected'}</h1>
+          );
+        }
+      }`,
+      errors: getErrorMessages(['id']),
       parser: 'babel-eslint'
     }
   ]
