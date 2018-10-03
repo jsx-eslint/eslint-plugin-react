@@ -25,8 +25,6 @@ const settings = {
   }
 };
 
-require('babel-eslint');
-
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -343,6 +341,51 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n')
     }, {
+      code: `
+        class Component extends React.Component {
+          render() {
+            return <div>{this.props.foo.baz}</div>;
+          }
+        }
+        Component.propTypes = {
+          foo: PropTypes.oneOfType([
+            PropTypes.shape({
+              bar: PropTypes.string
+            }),
+            PropTypes.shape({
+              baz: PropTypes.string
+            })
+          ])
+        };
+      `
+    }, {
+      code: `
+        class Component extends React.Component {
+          render() {
+            return <div>{this.props.foo.baz}</div>;
+          }
+        }
+        Component.propTypes = {
+          foo: PropTypes.oneOfType([
+            PropTypes.shape({
+              bar: PropTypes.string
+            }),
+            PropTypes.instanceOf(Baz)
+          ])
+        };
+      `
+    }, {
+      code: `
+        class Component extends React.Component {
+          render() {
+            return <div>{this.props.foo.baz}</div>;
+          }
+        }
+        Component.propTypes = {
+          foo: PropTypes.oneOf(['bar', 'baz'])
+        };
+      `
+    }, {
       code: [
         'class Hello extends React.Component {',
         '  render() {',
@@ -475,6 +518,20 @@ ruleTester.run('prop-types', rule, {
         '    firstname: PropTypes.string,',
         '    lastname: PropTypes.string',
         '  })',
+        '};'
+      ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      code: [
+        'const foo = {};',
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    const {firstname, lastname} = this.props.name;',
+        '    return <div>{firstname} {lastname}</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  name: PropTypes.shape(foo)',
         '};'
       ].join('\n'),
       parser: 'babel-eslint'
@@ -1208,6 +1265,20 @@ ruleTester.run('prop-types', rule, {
         '  options: Array<SelectOption>',
         '} & FieldProps'
       ].join('\n'),
+      parser: 'babel-eslint'
+    }, {
+      // Impossible intersection type
+      code: `
+        import React from 'react';
+        type Props = string & {
+          fullname: string
+        };
+        class Test extends React.PureComponent<Props> {
+          render() {
+            return <div>Hello {this.props.fullname}</div>
+          }
+        }
+      `,
       parser: 'babel-eslint'
     }, {
       code: [
@@ -1957,6 +2028,44 @@ ruleTester.run('prop-types', rule, {
 
         Slider.propTypes = RcSlider.propTypes;
       `
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          bar() {
+            this.setState((state, props) => ({ current: props.current }));
+          }
+          render() {
+            return <div />;
+          }
+        }
+
+        Foo.propTypes = {
+          current: PropTypes.number.isRequired,
+        };
+      `
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          static getDerivedStateFromProps(props) {
+            const { foo } = props;
+            return {
+              foobar: foo
+            };
+          }
+
+          render() {
+            const { foobar } = this.state;
+            return <div>{foobar}</div>;
+          }
+        }
+
+        Foo.propTypes = {
+          foo: PropTypes.func.isRequired,
+        };
+      `,
+      settings: {react: {version: '16.3.0'}}
     }
   ],
 
@@ -3760,6 +3869,84 @@ ruleTester.run('prop-types', rule, {
         message: '\'bad\' is missing in props validation'
       }],
       parser: 'babel-eslint'
+    },
+    {
+      code: `
+        class Component extends React.Component {
+          render() {
+            return <div>{this.props.foo.baz}</div>;
+          }
+        }
+        Component.propTypes = {
+          foo: PropTypes.oneOfType([
+            PropTypes.shape({
+              bar: PropTypes.string
+            })
+          ])
+        };
+      `,
+      errors: [{
+        message: '\'foo.baz\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          bar() {
+            this.setState((state, props) => ({ current: props.current, bar: props.bar }));
+          }
+          render() {
+            return <div />;
+          }
+        }
+
+        Foo.propTypes = {
+          current: PropTypes.number.isRequired,
+        };
+      `,
+      errors: [{
+        message: '\'bar\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          static getDerivedStateFromProps(props) {
+            const { foo, bar } = props;
+            return {
+              foobar: foo + bar
+            };
+          }
+
+          render() {
+            const { foobar } = this.state;
+            return <div>{foobar}</div>;
+          }
+        }
+
+        Foo.propTypes = {
+          foo: PropTypes.func.isRequired,
+        };
+      `,
+      settings: {react: {version: '16.3.0'}},
+      errors: [{
+        message: '\'bar\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        const ForAttendees = ({ page }) => (
+          <>
+            <section>{page}</section>
+          </>
+        );
+
+        export default ForAttendees;
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'page\' is missing in props validation'
+      }]
     }
   ]
 });

@@ -7,8 +7,6 @@
 const rule = require('../../../lib/rules/destructuring-assignment');
 const RuleTester = require('eslint').RuleTester;
 
-require('babel-eslint');
-
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -171,6 +169,17 @@ ruleTester.run('destructuring-assignment', rule, {
         bar = this.props.bar
       }
     `,
+    options: ['always', {ignoreClassFields: true}],
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      'class Input extends React.Component {',
+      '  id = `${this.props.name}`;',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
     options: ['always', {ignoreClassFields: true}],
     parser: 'babel-eslint'
   }],

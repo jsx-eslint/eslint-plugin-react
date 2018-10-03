@@ -36,6 +36,18 @@ ruleTester.run('jsx-closing-tag-location', rule, {
     code: `
       <App>foo</App>
     `
+  }, {
+    code: `
+      <>
+        foo
+      </>
+    `,
+    parser: 'babel-eslint'
+  }, {
+    code: `
+      <>foo</>
+    `,
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
@@ -59,6 +71,31 @@ ruleTester.run('jsx-closing-tag-location', rule, {
       <App>
         foo
       </App>
+    `,
+    errors: MESSAGE_OWN_LINE
+  }, {
+    code: `
+      <>
+        foo
+        </>
+    `,
+    parser: 'babel-eslint',
+    output: `
+      <>
+        foo
+      </>
+    `,
+    errors: MESSAGE_MATCH_INDENTATION
+  }, {
+    code: `
+      <>
+        foo</>
+    `,
+    parser: 'babel-eslint',
+    output: `
+      <>
+        foo
+      </>
     `,
     errors: MESSAGE_OWN_LINE
   }]

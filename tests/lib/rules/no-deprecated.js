@@ -21,8 +21,6 @@ const parserOptions = {
   }
 };
 
-require('babel-eslint');
-
 function errorMessage(oldMethod, version, newMethod, refs) {
   newMethod = newMethod ? `, use ${newMethod} instead` : '';
   refs = refs ? `, see ${refs}` : '';

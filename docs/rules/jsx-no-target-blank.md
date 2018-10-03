@@ -8,18 +8,21 @@ This rules requires that you accompany `target='_blank'` attributes with `rel='n
 
 ## Rule Details
 
-This rule aims to prevent user generated links from creating security vulerabilities by requiring
+This rule aims to prevent user generated links from creating security vulnerabilities by requiring
 `rel='noreferrer noopener'` for external links, and optionally any dynamically generated links.
 
 ## Rule Options
+```json
+...
+"react/jsx-no-target-blank": [<enabled>, { "enforceDynamicLinks": <enforce> }]
+...
+```
 
-There are two main options for the rule:
-
-* `{"enforceDynamicLinks": "always"}` enforces the rule if the href is a dynamic link (default)
-* `{"enforceDynamicLinks": "never"}` does not enforce the rule if the href is a dynamic link
-
+* enabled: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
+* enforce: optional string, 'always' or 'never'
 
 ### always (default)
+`{"enforceDynamicLinks": "always"}` enforces the rule if the href is a dynamic link (default)
 
 When {"enforceDynamicLinks": "always"} is set, the following patterns are considered errors:
 
@@ -39,6 +42,8 @@ var Hello = <a></a>
 ```
 
 ### never
+
+`{"enforceDynamicLinks": "never"}` does not enforce the rule if the href is a dynamic link
 
 When {"enforceDynamicLinks": "never"} is set, the following patterns are **not** considered errors:
 

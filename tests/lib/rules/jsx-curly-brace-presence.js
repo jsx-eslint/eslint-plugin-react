@@ -33,6 +33,10 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       code: '<App {...props}>foo</App>'
     },
     {
+      code: '<>foo</>',
+      parser: 'babel-eslint'
+    },
+    {
       code: '<App {...props}>foo</App>',
       options: [{props: 'never'}]
     },
@@ -256,6 +260,13 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: '<App>{`foo`}</App>',
       output: '<App>foo</App>',
+      options: [{children: 'never'}],
+      errors: [{message: unnecessaryCurlyMessage}]
+    },
+    {
+      code: '<>{`foo`}</>',
+      output: '<>foo</>',
+      parser: 'babel-eslint',
       options: [{children: 'never'}],
       errors: [{message: unnecessaryCurlyMessage}]
     },
