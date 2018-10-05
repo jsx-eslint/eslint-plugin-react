@@ -86,6 +86,9 @@ class MyComponent extends React.Component {
   }
 }
 
+class MyComponent extends React.Component {
+  getDerivedStateFromProps() {}
+}
 ```
 
 The following patterns are **not** considered warnings:
