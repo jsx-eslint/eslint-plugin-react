@@ -239,6 +239,101 @@ ruleTester.run('jsx-sort-props', rule, {
       errors: 3
     },
     {
+      code: '<App b={2} c={3} d={4} e={5} f={6} g={7} h={8} i={9} j={10} k={11} a={1} />',
+      output: '<App a={1} b={2} c={3} d={4} e={5} f={6} g={7} h={8} i={9} j={10} k={11} />',
+      errors: 1
+    },
+    {
+      code: `<List
+        className={className}
+        onStageAnswer={onStageAnswer}
+        onCommitAnswer={onCommitAnswer}
+        isFocused={isFocused}
+        direction={direction}
+        allowMultipleSelection={allowMultipleSelection}
+        measureLongestChildNode={measureLongestChildNode}
+        layoutItemsSize={layoutItemsSize}
+        handleAppScroll={handleAppScroll}
+        isActive={isActive}
+        resetSelection={resetSelection}
+        onKeyboardChoiceHovered={onKeyboardChoiceHovered}
+        keyboardShortcutType
+      />`,
+      output: `<List
+        allowMultipleSelection={allowMultipleSelection}
+        className={className}
+        direction={direction}
+        handleAppScroll={handleAppScroll}
+        isActive={isActive}
+        isFocused={isFocused}
+        keyboardShortcutType
+        layoutItemsSize={layoutItemsSize}
+        measureLongestChildNode={measureLongestChildNode}
+        onCommitAnswer={onCommitAnswer}
+        onKeyboardChoiceHovered={onKeyboardChoiceHovered}
+        onStageAnswer={onStageAnswer}
+        resetSelection={resetSelection}
+      />`,
+      errors: 10
+    },
+    {
+      code: `<CreateNewJob
+        closed={false}
+        flagOptions={flagOptions}
+        jobHeight={300}
+        jobWidth={200}
+        campaign='Some Campaign name'
+        campaignStart={moment('2018-07-28 00:00:00')}
+        campaignFinish={moment('2018-09-01 00:00:00')}
+        jobNumber={'Job Number can be a String'}
+        jobTemplateOptions={jobTemplateOptions}
+        numberOfPages={30}
+        onChange={onChange}
+        onClose={onClose}
+        spreadSheetTemplateOptions={spreadSheetTemplateOptions}
+        stateMachineOptions={stateMachineOptions}
+        workflowTemplateOptions={workflowTemplateOptions}
+        workflowTemplateSteps={workflowTemplateSteps}
+        description='Some description for this job'
+
+        jobTemplate='1'
+        stateMachine='1'
+        flag='1'
+        spreadSheetTemplate='1'
+        workflowTemplate='1'
+        validation={validation}
+        onSubmit={onSubmit}
+      />`,
+      output: `<CreateNewJob
+        campaign='Some Campaign name'
+        campaignFinish={moment('2018-09-01 00:00:00')}
+        campaignStart={moment('2018-07-28 00:00:00')}
+        closed={false}
+        description='Some description for this job'
+        flag='1'
+        flagOptions={flagOptions}
+        jobHeight={300}
+        jobNumber={'Job Number can be a String'}
+        jobTemplate='1'
+        jobTemplateOptions={jobTemplateOptions}
+        jobWidth={200}
+        numberOfPages={30}
+        onChange={onChange}
+        onClose={onClose}
+        onSubmit={onSubmit}
+        spreadSheetTemplate='1'
+
+        spreadSheetTemplateOptions={spreadSheetTemplateOptions}
+        stateMachine='1'
+        stateMachineOptions={stateMachineOptions}
+        validation={validation}
+        workflowTemplate='1'
+        workflowTemplateOptions={workflowTemplateOptions}
+        workflowTemplateSteps={workflowTemplateSteps}
+      />`,
+      errors: 13
+    },
+    {
       code: '<App key="key" b c="c" />',
       errors: [expectedShorthandLastError],
       options: reservedFirstWithShorthandLast
