@@ -257,6 +257,15 @@ eslintTester.run('no-unused-state', rule, {
           return <SomeComponent foo={foo} />;
         }
       }`,
+    `class ShorthandDestructuringWithTernaryOperatorTest extends React.Component {
+            constructor() {
+              this.state = { foo: 0 };
+            }
+            render() {
+              const {foo} = true ? this.state : {};
+              return <SomeComponent bar={foo} />;
+            }
+          }`,
     `class AliasDeclarationTest extends React.Component {
         constructor() {
           this.state = { foo: 0 };
