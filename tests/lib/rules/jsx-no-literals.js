@@ -24,6 +24,14 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
+function stringsMessage(str) {
+  return `Strings not allowed in JSX files: “${str}”`;
+}
+
+function jsxMessage(str) {
+  return `Missing JSX expression container around literal string: “${str}”`;
+}
+
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-no-literals', rule, {
 
@@ -201,7 +209,7 @@ ruleTester.run('jsx-no-literals', rule, {
         }
       `,
       parser: 'babel-eslint',
-      errors: [{message: 'Missing JSX expression container around literal string'}]
+      errors: [{message: jsxMessage('test')}]
     }, {
       code: `
         class Comp1 extends Component {
@@ -211,7 +219,7 @@ ruleTester.run('jsx-no-literals', rule, {
         }
       `,
       parser: 'babel-eslint',
-      errors: [{message: 'Missing JSX expression container around literal string'}]
+      errors: [{message: jsxMessage('test')}]
     }, {
       code: `
         class Comp1 extends Component {
@@ -222,7 +230,7 @@ ruleTester.run('jsx-no-literals', rule, {
         }
       `,
       parser: 'babel-eslint',
-      errors: [{message: 'Missing JSX expression container around literal string'}]
+      errors: [{message: jsxMessage('test')}]
     }, {
       code: `
         class Comp1 extends Component {
@@ -233,7 +241,7 @@ ruleTester.run('jsx-no-literals', rule, {
         }
       `,
       parser: 'babel-eslint',
-      errors: [{message: 'Missing JSX expression container around literal string'}]
+      errors: [{message: jsxMessage('test')}]
     }, {
       code: `
         var Hello = createReactClass({
@@ -244,7 +252,7 @@ ruleTester.run('jsx-no-literals', rule, {
         });
       `,
       parser: 'babel-eslint',
-      errors: [{message: 'Missing JSX expression container around literal string'}]
+      errors: [{message: jsxMessage('hello')}]
     }, {
       code: `
         class Comp1 extends Component {
@@ -258,7 +266,7 @@ ruleTester.run('jsx-no-literals', rule, {
         }
       `,
       parser: 'babel-eslint',
-      errors: [{message: 'Missing JSX expression container around literal string'}]
+      errors: [{message: jsxMessage('asdjfl')}]
     }, {
       code: `
         class Comp1 extends Component {
@@ -274,7 +282,7 @@ ruleTester.run('jsx-no-literals', rule, {
         }
       `,
       parser: 'babel-eslint',
-      errors: [{message: 'Missing JSX expression container around literal string'}]
+      errors: [{message: jsxMessage('asdjfl\n                test\n                foo')}]
     }, {
       code: `
         class Comp1 extends Component {
@@ -290,7 +298,7 @@ ruleTester.run('jsx-no-literals', rule, {
         }
       `,
       parser: 'babel-eslint',
-      errors: [{message: 'Missing JSX expression container around literal string'}]
+      errors: [{message: jsxMessage('test')}]
     }, {
       code: `
         <Foo bar="test">
@@ -299,7 +307,7 @@ ruleTester.run('jsx-no-literals', rule, {
       `,
       parser: 'babel-eslint',
       options: [{noStrings: true}],
-      errors: [{message: 'Strings not allowed in JSX files'}]
+      errors: [{message: stringsMessage('\'Test\'')}]
     }, {
       code: `
         <Foo bar="test">
@@ -307,7 +315,7 @@ ruleTester.run('jsx-no-literals', rule, {
         </Foo>
       `,
       options: [{noStrings: true}],
-      errors: [{message: 'Strings not allowed in JSX files'}]
+      errors: [{message: stringsMessage('\'Test\'')}]
     }, {
       code: `
         <Foo bar="test">
@@ -315,7 +323,7 @@ ruleTester.run('jsx-no-literals', rule, {
         </Foo>
       `,
       options: [{noStrings: true}],
-      errors: [{message: 'Strings not allowed in JSX files'}]
+      errors: [{message: stringsMessage('\'Test\'')}]
     }, {
       code: `
         <Foo bar="test">
@@ -324,7 +332,7 @@ ruleTester.run('jsx-no-literals', rule, {
       `,
       parser: 'babel-eslint',
       options: [{noStrings: true}],
-      errors: [{message: 'Strings not allowed in JSX files'}]
+      errors: [{message: stringsMessage('Test')}]
     }, {
       code: `
         <Foo bar="test">
@@ -332,7 +340,7 @@ ruleTester.run('jsx-no-literals', rule, {
         </Foo>
       `,
       options: [{noStrings: true}],
-      errors: [{message: 'Strings not allowed in JSX files'}]
+      errors: [{message: stringsMessage('Test')}]
     }, {
       code: `
         <Foo>
@@ -340,39 +348,39 @@ ruleTester.run('jsx-no-literals', rule, {
         </Foo>
       `,
       options: [{noStrings: true}],
-      errors: [{message: 'Strings not allowed in JSX files'}]
+      errors: [{message: stringsMessage('`Test`')}]
     }, {
       code: '<Foo bar={`Test`} />',
       options: [{noStrings: true}],
-      errors: [{message: 'Strings not allowed in JSX files'}]
+      errors: [{message: stringsMessage('`Test`')}]
     }, {
       code: '<Foo bar={`${baz}`} />',
       options: [{noStrings: true}],
-      errors: [{message: 'Strings not allowed in JSX files'}]
+      errors: [{message: stringsMessage('`${baz}`')}]
     }, {
       code: '<Foo bar={`Test ${baz}`} />',
       options: [{noStrings: true}],
-      errors: [{message: 'Strings not allowed in JSX files'}]
+      errors: [{message: stringsMessage('`Test ${baz}`')}]
     }, {
       code: '<Foo bar={`foo` + \'bar\'} />',
       options: [{noStrings: true}],
       errors: [
-        {message: 'Strings not allowed in JSX files'},
-        {message: 'Strings not allowed in JSX files'}
+        {message: stringsMessage('`foo`')},
+        {message: stringsMessage('\'bar\'')}
       ]
     }, {
       code: '<Foo bar={`foo` + `bar`} />',
       options: [{noStrings: true}],
       errors: [
-        {message: 'Strings not allowed in JSX files'},
-        {message: 'Strings not allowed in JSX files'}
+        {message: stringsMessage('`foo`')},
+        {message: stringsMessage('`bar`')}
       ]
     }, {
       code: '<Foo bar={\'foo\' + `bar`} />',
       options: [{noStrings: true}],
       errors: [
-        {message: 'Strings not allowed in JSX files'},
-        {message: 'Strings not allowed in JSX files'}
+        {message: stringsMessage('\'foo\'')},
+        {message: stringsMessage('`bar`')}
       ]
     }
   ]
