@@ -9,7 +9,7 @@
     "lint": "eslint ./",
     "pretest": "npm run lint",
     "test": "npm run unit-test",
-    "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/**/*.js"
+    "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js"
   },
   "files": [
     "LICENSE",
@@ -29,7 +29,8 @@
     "has": "^1.0.3",
     "jsx-ast-utils": "^2.0.1",
     "object.fromentries": "^2.0.0",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "resolve": "^1.8.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.5",
