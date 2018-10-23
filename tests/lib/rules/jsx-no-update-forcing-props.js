@@ -7,7 +7,7 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-update-forcing-props');
+const rule = require('../../../lib/rules/jsx-no-update-forcing-props');
 const RuleTester = require('eslint').RuleTester;
 
 const parserOptions = {
@@ -24,7 +24,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({parserOptions});
 
-ruleTester.run('no-update-forcing-props', rule, {
+ruleTester.run('jsx-no-update-forcing-props', rule, {
   valid: [
     {code: '<App foo />;'},
     {code: '<App foo={true} />;'},
