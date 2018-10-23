@@ -35,7 +35,75 @@ ruleTester.run('jsx-no-update-forcing-props', rule, {
     {code: 'function bar() {}; <App foo={bar} />;'},
     {code: 'var bar = () => {}; <App foo={bar} />;'},
     {code: 'var bar = new Date(); <App foo={bar} />;'},
-    {code: 'var bar = Symbol(\'\'); <App foo={bar} />;'}
+    {code: 'var bar = Symbol(\'\'); <App foo={bar} />;'},
+
+    // object expressions explicitly allowed
+    {
+      code: '<App ref={{}} />',
+      options: [{allowObjectExpressions: true}]
+    },
+
+    // array expressions explicitly allowed
+    {
+      code: '<App ref={[]} />',
+      options: [{allowArrayExpressions: true}]
+    },
+
+    // function expressions explicitly allowed
+    {
+      code: '<App ref={function() {}} />',
+      options: [{allowFunctionExpressions: true}]
+    },
+
+    // arrow function expressions explicitly allowed
+    {
+      code: '<App ref={() => {}} />',
+      options: [{allowArrowFunctionExpressions: true}]
+    },
+
+    // new expressions explicitly allowed
+    {
+      code: '<App ref={new Date()} />',
+      options: [{allowNewExpressions: true}]
+    },
+
+    // call expressions explicitly allowed
+    {
+      code: '<App ref={Symbol(\'\')} />',
+      options: [{allowCallExpressions: true}]
+    },
+
+    // ref explicitly ignored
+    {
+      code: '<App ref={c => this._input = c} />',
+      options: [{ignoreRefs: true}]
+    },
+
+    // ignore DOM components
+    {
+      code: '<div foo={{}} />',
+      options: [{ignoreDOMComponents: true}]
+    },
+    {
+      code: '<div foo={[]} />',
+      options: [{ignoreDOMComponents: true}]
+    },
+    {
+      code: '<div foo={function() {}} />',
+      options: [{ignoreDOMComponents: true}]
+    },
+    {
+      code: '<div foo={() => {}} />',
+      options: [{ignoreDOMComponents: true}]
+    },
+    {
+      code: '<div foo={new Date()} />',
+      options: [{ignoreDOMComponents: true}]
+    },
+    {
+      code: '<div foo={Symbol(\'\')} />',
+      options: [{ignoreDOMComponents: true}]
+    }
   ],
   invalid: [
     {
