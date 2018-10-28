@@ -81,28 +81,22 @@ ruleTester.run('jsx-no-update-forcing-props', rule, {
 
     // ignore DOM components
     {
-      code: '<div foo={{}} />',
-      options: [{ignoreDOMComponents: true}]
+      code: '<div foo={{}} />'
     },
     {
-      code: '<div foo={[]} />',
-      options: [{ignoreDOMComponents: true}]
+      code: '<div foo={[]} />'
     },
     {
-      code: '<div foo={function() {}} />',
-      options: [{ignoreDOMComponents: true}]
+      code: '<div foo={function() {}} />'
     },
     {
-      code: '<div foo={() => {}} />',
-      options: [{ignoreDOMComponents: true}]
+      code: '<div foo={() => {}} />'
     },
     {
-      code: '<div foo={new Date()} />',
-      options: [{ignoreDOMComponents: true}]
+      code: '<div foo={new Date()} />'
     },
     {
-      code: '<div foo={Symbol(\'\')} />',
-      options: [{ignoreDOMComponents: true}]
+      code: '<div foo={Symbol(\'\')} />'
     }
   ],
   invalid: [
