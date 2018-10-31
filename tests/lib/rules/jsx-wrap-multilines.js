@@ -86,6 +86,56 @@ const RETURN_PAREN_NEW_LINE = `
   });
 `;
 
+const RETURN_PAREN_NEW_LINE_OPENING = `
+  var Hello = createReactClass({
+    render: function() {
+      return (
+
+      <div>
+        <p>Hello {this.props.name}</p>
+      </div>);
+    }
+  });
+`;
+
+const RETURN_PAREN_NEW_LINE_OPENING_FIXED = `
+  var Hello = createReactClass({
+    render: function() {
+      return (
+
+      <div>
+        <p>Hello {this.props.name}</p>
+      </div>
+);
+    }
+  });
+`;
+
+const RETURN_PAREN_NEW_LINE_CLOSING = `
+  var Hello = createReactClass({
+    render: function() {
+      return (<div>
+        <p>Hello {this.props.name}</p>
+      </div>
+
+      );
+    }
+  });
+`;
+
+const RETURN_PAREN_NEW_LINE_CLOSING_FIXED = `
+  var Hello = createReactClass({
+    render: function() {
+      return (
+<div>
+        <p>Hello {this.props.name}</p>
+      </div>
+
+      );
+    }
+  });
+`;
+
 const RETURN_PAREN_NEW_LINE_FRAGMENT = `
   var Hello = createReactClass({
     render: function() {
@@ -910,6 +960,16 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     }, {
       code: RETURN_PAREN,
       output: addNewLineSymbols(RETURN_PAREN),
+      options: [{return: 'parens-new-line'}],
+      errors: [{message: PARENS_NEW_LINES}]
+    }, {
+      code: RETURN_PAREN_NEW_LINE_OPENING,
+      output: RETURN_PAREN_NEW_LINE_OPENING_FIXED,
+      options: [{return: 'parens-new-line'}],
+      errors: [{message: PARENS_NEW_LINES}]
+    }, {
+      code: RETURN_PAREN_NEW_LINE_CLOSING,
+      output: RETURN_PAREN_NEW_LINE_CLOSING_FIXED,
       options: [{return: 'parens-new-line'}],
       errors: [{message: PARENS_NEW_LINES}]
     }, {
