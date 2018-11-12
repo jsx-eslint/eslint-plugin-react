@@ -26,8 +26,8 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({parserOptions});
 const defaultErrors = [{
-  message: 'Using target="_blank" without rel="noopener noreferrer" is a security risk:' +
-  ' see https://mathiasbynens.github.io/rel-noopener'
+  message: 'Using target="_blank" without rel="noreferrer" is a security risk:' +
+  ' see https://html.spec.whatwg.org/multipage/links.html#link-type-noopener'
 }];
 
 ruleTester.run('jsx-no-target-blank', rule, {
@@ -36,18 +36,29 @@ ruleTester.run('jsx-no-target-blank', rule, {
     {code: '<a randomTag></a>'},
     {code: '<a target />'},
     {code: '<a href="foobar" target="_blank" rel="noopener noreferrer"></a>'},
+    {code: '<a href="foobar" target="_blank" rel="noreferrer"></a>'},
     {code: '<a href="foobar" target="_blank" rel={"noopener noreferrer"}></a>'},
+    {code: '<a href="foobar" target="_blank" rel={"noreferrer"}></a>'},
     {code: '<a href={"foobar"} target={"_blank"} rel={"noopener noreferrer"}></a>'},
+    {code: '<a href={"foobar"} target={"_blank"} rel={"noreferrer"}></a>'},
     {code: '<a href={\'foobar\'} target={\'_blank\'} rel={\'noopener noreferrer\'}></a>'},
+    {code: '<a href={\'foobar\'} target={\'_blank\'} rel={\'noreferrer\'}></a>'},
     {code: '<a href={`foobar`} target={`_blank`} rel={`noopener noreferrer`}></a>'},
+    {code: '<a href={`foobar`} target={`_blank`} rel={`noreferrer`}></a>'},
     {code: '<a target="_blank" {...spreadProps} rel="noopener noreferrer"></a>'},
+    {code: '<a target="_blank" {...spreadProps} rel="noreferrer"></a>'},
     {code: '<a {...spreadProps} target="_blank" rel="noopener noreferrer" href="http://example.com">s</a>'},
+    {code: '<a {...spreadProps} target="_blank" rel="noreferrer" href="http://example.com">s</a>'},
     {code: '<a target="_blank" rel="noopener noreferrer" {...spreadProps}></a>'},
+    {code: '<a target="_blank" rel="noreferrer" {...spreadProps}></a>'},
     {code: '<p target="_blank"></p>'},
     {code: '<a href="foobar" target="_BLANK" rel="NOOPENER noreferrer"></a>'},
+    {code: '<a href="foobar" target="_BLANK" rel="NOREFERRER"></a>'},
     {code: '<a target="_blank" rel={relValue}></a>'},
     {code: '<a target={targetValue} rel="noopener noreferrer"></a>'},
+    {code: '<a target={targetValue} rel="noreferrer"></a>'},
     {code: '<a target={targetValue} rel={"noopener noreferrer"}></a>'},
+    {code: '<a target={targetValue} rel={"noreferrer"}></a>'},
     {code: '<a target={targetValue} href="relative/path"></a>'},
     {code: '<a target={targetValue} href="/absolute/path"></a>'},
     {code: '<a target={\'targetValue\'} href="/absolute/path"></a>'},
@@ -88,6 +99,9 @@ ruleTester.run('jsx-no-target-blank', rule, {
     errors: defaultErrors
   }, {
     code: '<a target="_blank" rel="noopenernoreferrer" href="http://example.com"></a>',
+    errors: defaultErrors
+  }, {
+    code: '<a target="_blank" rel="no referrer" href="http://example.com"></a>',
     errors: defaultErrors
   }, {
     code: '<a target="_BLANK" href="http://example.com"></a>',

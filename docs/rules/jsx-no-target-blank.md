@@ -2,14 +2,14 @@
 
 When creating a JSX element that has an `a` tag, it is often desired to have
 the link open in a new tab using the `target='_blank'` attribute. Using this
-attribute unaccompanied by `rel='noreferrer noopener'`, however, is a severe
-security vulnerability ([see here for more details](https://mathiasbynens.github.io/rel-noopener))
-This rules requires that you accompany `target='_blank'` attributes with `rel='noreferrer noopener'`.
+attribute unaccompanied by `rel='noreferrer'`, however, is a severe
+security vulnerability ([see here for more details](https://html.spec.whatwg.org/multipage/links.html#link-type-noopener))
+This rules requires that you accompany `target='_blank'` attributes with `rel='noreferrer'`.
 
 ## Rule Details
 
 This rule aims to prevent user generated links from creating security vulnerabilities by requiring
-`rel='noreferrer noopener'` for external links, and optionally any dynamically generated links.
+`rel='noreferrer'` for external links, and optionally any dynamically generated links.
 
 ## Rule Options
 ```json
@@ -39,6 +39,7 @@ The following patterns are **not** considered errors:
 
 ```jsx
 var Hello = <p target="_blank"></p>
+var Hello = <a target="_blank" rel="noreferrer" href="http://example.com"></a>
 var Hello = <a target="_blank" rel="noopener noreferrer" href="http://example.com"></a>
 var Hello = <a target="_blank" href="relative/path/in/the/host"></a>
 var Hello = <a target="_blank" href="/absolute/path/in/the/host"></a>
