@@ -92,7 +92,7 @@ When `reservedFirst` is defined, React reserved props (`children`, `dangerouslyS
 
 If given as an array, the array's values will override the default list of reserved props. **Note**: the values in the array may only be a **subset** of React reserved props.
 
-With `reservedFirst: [2, ["key"]]`, the following will **not** warn:
+With `reservedFirst: ["key"]`, the following will **not** warn:
 
 ```jsx
 <Hello key={'uuid'} name="John" ref="ref" />
