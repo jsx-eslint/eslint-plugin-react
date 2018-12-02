@@ -2066,6 +2066,31 @@ ruleTester.run('prop-types', rule, {
         };
       `,
       settings: {react: {version: '16.3.0'}}
+    },
+    // issue #2051
+    {
+      code: `
+        import React from 'react';
+        import PropTypes from 'prop-types';
+        import makeHoc from './make-hoc';
+        import selectors from './selectors';
+
+        class Foo extends React.Component {
+          render() {
+            return this.props.children;
+          }
+        }
+
+        Foo.propTypes = {
+          children: PropTypes.element.isRequired
+        };
+
+        export const Unconnected = Foo;
+        export default makeHoc(
+          Foo,
+          selectors
+        );
+      `
     }
   ],
 
