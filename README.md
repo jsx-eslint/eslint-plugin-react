@@ -42,10 +42,12 @@ You should also specify settings that will be shared across all the plugin rules
       "version": "15.0", // React version, default to the latest React stable release
       "flowVersion": "0.53" // Flow version
     },
-    "propWrapperFunctions": [ "forbidExtraProps" ] // The names of any functions used to wrap the
-                                                   // propTypes object, e.g. `forbidExtraProps`.
-                                                   // If this isn't set, any propTypes wrapped in
-                                                   // a function will be skipped.
+    "propWrapperFunctions": [
+        // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
+        "forbidExtraProps",
+        {"property": "freeze", "object": "Object"}
+        {"property": "myFavoriteWrapper"}
+    ]
   }
 }
 ```
