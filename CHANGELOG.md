@@ -3,6 +3,100 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.11.1] - 2018-08-14
+### Fixed
+* stop crashing when assigning to propTypes ([#1932][], @alexzherdev)
+
+### Changed
+* Fix changelog links ([#1926][], @ferhatelmas)
+* Fix changelog links ([#1929][], @alexzherdev)
+
+[#1932]: https://github.com/yannickcr/eslint-plugin-react/pull/1932
+[#1929]: https://github.com/yannickcr/eslint-plugin-react/pull/1929
+[#1926]: https://github.com/yannickcr/eslint-plugin-react/pull/1926
+
+## [7.11.0] - 2018-08-13
+### Added
+* [`jsx-one-expression-per-line`][]: add "allow" option ([#1924][], @alexzherdev)
+* [`sort-prop-types`][]: add autofix ([#1891][], @finnp)
+* [`jsx-no-bind`][]: Add ignoreDOMComponents option ([#1868][], @alexzherdev)
+* Output a warning if React version is missing in settings ([#1857][], @alexzherdev)
+
+### Fixed
+* [`destructuring-assignment`][]: Ignore class properties ([#1909][], @alexandernanberg)
+* [`destructuring-assignment`][], component detection: ignore components with confidence = 0 ([#1907][], @alexzherdev)
+* [`boolean-prop-naming`][]: Handle inline Flow type ([#1905][], @alexzherdev)
+* [`jsx-props-no-multi-spaces`][]: Handle member expressions ([#1890][], @alexzherdev)
+* [`sort-comp`][]: Allow methods to belong to any matching group ([#1858][], @nosilleg)
+* [`jsx-sort-props`][]: Fix `reservedFirst` ([#1883][], @fleischie)
+* [`prop-types`][]: (flow) Stop crashing on undefined or null properties ([#1860][], @nicholas-l)
+* [`no-unknown-property`][]: Make attribute "charset" valid ([#1863][], @silvenon)
+* [`no-deprecated`][]: report identifier AST node instead of the class node ([#1854][], @jsnajdr)
+* [`button-has-type`][]: Account for pragma ([#1851][], @alexzherdev)
+* [`button-has-type`][]: improve error message when an identifier is used as the value ([#1874][], @ljharb)
+* support JSXText nodes alongside Literal nodes (@ljharb)
+
+### Changed
+* Extract propTypes detection code ([#1911][], @alexzherdev)
+* Fix broken links in changelog ([#1849][], @alexzherdev)
+* [`no-unused-state`][]: combine spread visitors (@ljharb)
+* [`jsx-one-expression-per-line`][]: Fix JSX Syntax in docs ([#1867][], @peter-mouland)
+* [`jsx-max-depth`][], [`jsx-sort-default-props`][]: add missing docs urls ([#1880][], @flyerhzm)
+* [`jsx-indent`][]: add test cases ([#1892][], @alexzherdev)
+* [`prop-types`][]: add test cases ([#1898][], @alexzherdev)
+* Add a helper function for determining function-like expressions ([#1914][], @alexzherdev)
+* [`jsx-props-no-multi-spaces`][]: update docs ([#1918][], @BenRichter)
+
+[#1924]: https://github.com/yannickcr/eslint-plugin-react/pull/1924
+[#1918]: https://github.com/yannickcr/eslint-plugin-react/pull/1918
+[#1914]: https://github.com/yannickcr/eslint-plugin-react/pull/1914
+[#1911]: https://github.com/yannickcr/eslint-plugin-react/pull/1911
+[#1909]: https://github.com/yannickcr/eslint-plugin-react/pull/1909
+[#1907]: https://github.com/yannickcr/eslint-plugin-react/pull/1907
+[#1905]: https://github.com/yannickcr/eslint-plugin-react/pull/1905
+[#1898]: https://github.com/yannickcr/eslint-plugin-react/pull/1898
+[#1892]: https://github.com/yannickcr/eslint-plugin-react/pull/1892
+[#1891]: https://github.com/yannickcr/eslint-plugin-react/pull/1891
+[#1890]: https://github.com/yannickcr/eslint-plugin-react/pull/1890
+[#1883]: https://github.com/yannickcr/eslint-plugin-react/pull/1883
+[#1880]: https://github.com/yannickcr/eslint-plugin-react/pull/1880
+[#1874]: https://github.com/yannickcr/eslint-plugin-react/issues/1874
+[#1868]: https://github.com/yannickcr/eslint-plugin-react/pull/1868
+[#1867]: https://github.com/yannickcr/eslint-plugin-react/pull/1867
+[#1863]: https://github.com/yannickcr/eslint-plugin-react/pull/1863
+[#1860]: https://github.com/yannickcr/eslint-plugin-react/pull/1860
+[#1858]: https://github.com/yannickcr/eslint-plugin-react/pull/1858
+[#1857]: https://github.com/yannickcr/eslint-plugin-react/pull/1857
+[#1854]: https://github.com/yannickcr/eslint-plugin-react/pull/1854
+[#1851]: https://github.com/yannickcr/eslint-plugin-react/pull/1851
+[#1849]: https://github.com/yannickcr/eslint-plugin-react/pull/1849
+
+## [7.10.0] - 2018-06-24
+### Added
+* Allow eslint ^5 ([#1843][] @papandreou, @ljharb)
+* [`no-unsafe`][] rule ([#1831][], [#1830][] @sergei-startsev)
+* [`no-will-update-set-state`][]: Account for `UNSAFE_` methods ([#1845][], [#1844][] @alexzherdev)
+
+### Fixed
+* [`no-typos`][]: Fix static propTypes handling ([#1827][], [#1677][] @alexzherdev)
+* [`destructuring-assignment`][]: Allow LHS ([#1825][], [#1728][] @alexzherdev)
+* [`no-unused-prop-types`][]: Fix crash when encountering mixed union and intersection flow types ([#1806][] @yannickcr)
+
+### Changed
+* Typo fixes in [`jsx-no-target-blank`][] ([#1805][] @ferhatelmas))
+
+[#1845]: https://github.com/yannickcr/eslint-plugin-react/pull/1845
+[#1844]: https://github.com/yannickcr/eslint-plugin-react/issues/1844
+[#1843]: https://github.com/yannickcr/eslint-plugin-react/pull/1843
+[#1831]: https://github.com/yannickcr/eslint-plugin-react/pull/1831
+[#1830]: https://github.com/yannickcr/eslint-plugin-react/issues/1830
+[#1827]: https://github.com/yannickcr/eslint-plugin-react/pull/1827
+[#1825]: https://github.com/yannickcr/eslint-plugin-react/pull/1825
+[#1806]: https://github.com/yannickcr/eslint-plugin-react/issues/1806
+[#1805]: https://github.com/yannickcr/eslint-plugin-react/pull/1805
+[#1728]: https://github.com/yannickcr/eslint-plugin-react/issues/1728
+[#1677]: https://github.com/yannickcr/eslint-plugin-react/issues/1677
+
 ## [7.9.1] - 2018-06-03
 * Nothing was fixed; this is a republish with some updated deps. ([#1804][] @ljharb)
 
@@ -106,6 +200,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#1670]: https://github.com/yannickcr/eslint-plugin-react/pull/1670
 [#1669]: https://github.com/yannickcr/eslint-plugin-react/pull/1669
 [#1666]: https://github.com/yannickcr/eslint-plugin-react/pull/1666
+[#1665]: https://github.com/yannickcr/eslint-plugin-react/pull/1665
 [#1655]: https://github.com/yannickcr/eslint-plugin-react/pull/1655
 [#1610]: https://github.com/yannickcr/eslint-plugin-react/pull/1610
 [#1414]: https://github.com/yannickcr/eslint-plugin-react/pull/1414
@@ -2235,3 +2330,4 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`jsx-sort-default-props`]: docs/rules/jsx-sort-default-props.md
 [`jsx-max-depth`]: docs/rules/jsx-max-depth.md
 [`jsx-props-no-multi-spaces`]: docs/rules/jsx-props-no-multi-spaces.md
+[`no-unsafe`]: docs/rules/no-unsafe.md

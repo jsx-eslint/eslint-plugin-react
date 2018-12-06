@@ -268,6 +268,25 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '}'
       ].join('\n')
+    },
+
+    // ignore DOM components
+    {
+      code: '<div onClick={this._handleClick.bind(this)}></div>',
+      options: [{ignoreDOMComponents: true}]
+    },
+    {
+      code: '<div onClick={() => alert("1337")}></div>',
+      options: [{ignoreDOMComponents: true}]
+    },
+    {
+      code: '<div onClick={function () { alert("1337") }}></div>',
+      options: [{ignoreDOMComponents: true}]
+    },
+    {
+      code: '<div foo={::this.onChange} />',
+      options: [{ignoreDOMComponents: true}],
+      parser: 'babel-eslint'
     }
   ],
 
@@ -772,6 +791,13 @@ ruleTester.run('jsx-no-bind', rule, {
       ].join('\n'),
       errors: [{message: 'JSX props should not use ::'}],
       parser: 'babel-eslint'
+    },
+
+    // ignore DOM components
+    {
+      code: '<Foo onClick={this._handleClick.bind(this)} />',
+      options: [{ignoreDOMComponents: true}],
+      errors: [{message: 'JSX props should not use .bind()'}]
     }
   ]
 });

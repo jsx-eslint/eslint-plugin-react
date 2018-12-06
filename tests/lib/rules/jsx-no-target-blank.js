@@ -33,6 +33,7 @@ ruleTester.run('jsx-no-target-blank', rule, {
   valid: [
     {code: '<a href="foobar"></a>'},
     {code: '<a randomTag></a>'},
+    {code: '<a target />'},
     {code: '<a href="foobar" target="_blank" rel="noopener noreferrer"></a>'},
     {code: '<a target="_blank" {...spreadProps} rel="noopener noreferrer"></a>'},
     {code: '<a {...spreadProps} target="_blank" rel="noopener noreferrer" href="http://example.com">s</a>'},

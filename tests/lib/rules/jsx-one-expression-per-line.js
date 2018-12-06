@@ -84,6 +84,42 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       'App',
       '>'
     ].join('\n')
+  }, {
+    code: '<App>foo</App>',
+    options: [{allow: 'literal'}]
+  }, {
+    code: '<App>123</App>',
+    options: [{allow: 'literal'}]
+  }, {
+    code: '<App>foo</App>',
+    options: [{allow: 'single-child'}]
+  }, {
+    code: '<App>{"foo"}</App>',
+    options: [{allow: 'single-child'}]
+  }, {
+    code: '<App>{foo && <Bar />}</App>',
+    options: [{allow: 'single-child'}]
+  }, {
+    code: '<App><Foo /></App>',
+    options: [{allow: 'single-child'}]
+  }, {
+    code: '<></>',
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      '<>',
+      '  <Foo />',
+      '</>'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      '<>',
+      '  <Foo />',
+      '  <Bar />',
+      '</>'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
@@ -851,6 +887,125 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`{  foo}` must be placed on a new line'}
     ],
+    parserOptions: parserOptions
+  }, {
+    code: '<App><Foo /></App>',
+    options: [{allow: 'none'}],
+    output: [
+      '<App>',
+      '<Foo />',
+      '</App>'
+    ].join('\n'),
+    errors: [{message: '`Foo` must be placed on a new line'}]
+  }, {
+    code: '<App>foo</App>',
+    options: [{allow: 'none'}],
+    output: [
+      '<App>',
+      'foo',
+      '</App>'
+    ].join('\n'),
+    errors: [{message: '`foo` must be placed on a new line'}]
+  }, {
+    code: '<App>{"foo"}</App>',
+    options: [{allow: 'none'}],
+    output: [
+      '<App>',
+      '{"foo"}',
+      '</App>'
+    ].join('\n'),
+    errors: [{message: '`{"foo"}` must be placed on a new line'}]
+  }, {
+    code: [
+      '<App>foo',
+      '</App>'
+    ].join('\n'),
+    options: [{allow: 'literal'}],
+    output: [
+      '<App>',
+      'foo',
+      '</App>'
+    ].join('\n'),
+    errors: [{message: '`foo` must be placed on a new line'}]
+  }, {
+    code: '<App><Foo /></App>',
+    options: [{allow: 'literal'}],
+    output: [
+      '<App>',
+      '<Foo />',
+      '</App>'
+    ].join('\n'),
+    errors: [{message: '`Foo` must be placed on a new line'}]
+  }, {
+    code: [
+      '<App',
+      '  foo="1"',
+      '  bar="2"',
+      '>baz</App>'
+    ].join('\n'),
+    options: [{allow: 'literal'}],
+    output: [
+      '<App',
+      '  foo="1"',
+      '  bar="2"',
+      '>',
+      'baz',
+      '</App>'
+    ].join('\n'),
+    errors: [{message: '`baz` must be placed on a new line'}]
+  }, {
+    code: [
+      '<App>foo',
+      'bar',
+      '</App>'
+    ].join('\n'),
+    options: [{allow: 'literal'}],
+    output: [
+      '<App>',
+      'foo',
+      'bar',
+      '</App>'
+    ].join('\n'),
+    errors: [{message: '`foobar` must be placed on a new line'}]
+  }, {
+    code: '<>{"foo"}</>',
+    output: [
+      '<>',
+      '{"foo"}',
+      '</>'
+    ].join('\n'),
+    errors: [{message: '`{"foo"}` must be placed on a new line'}],
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<App>',
+      '  <Foo /><></>',
+      '</App>'
+    ].join('\n'),
+    output: [
+      '<App>',
+      '  <Foo />',
+      '<></>',
+      '</App>'
+    ].join('\n'),
+    errors: [{message: '`<></>` must be placed on a new line'}],
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: [
+      '<',
+      '><Foo />',
+      '</>'
+    ].join('\n'),
+    output: [
+      '<',
+      '>',
+      '<Foo />',
+      '</>'
+    ].join('\n'),
+    errors: [{message: '`Foo` must be placed on a new line'}],
+    parser: 'babel-eslint',
     parserOptions: parserOptions
   }]
 });

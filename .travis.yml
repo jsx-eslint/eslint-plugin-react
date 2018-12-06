@@ -1,6 +1,7 @@
 sudo: false
 language: node_js
 node_js:
+  - '10'
   - '9'
   - '8'
   - '7'
@@ -15,7 +16,12 @@ script:
   - 'if [ -n "${PRETEST-}" ]; then npm run pretest ; fi'
   - 'if [ -n "${TEST-}" ]; then npm run unit-test ; fi'
 env:
-  - TEST=true
+  global:
+    - TEST=true
+  matrix:
+    - ESLINT=5
+    - ESLINT=4
+    - ESLINT=3
 after_success:
   - 'if [ -n "${TEST-}" ]; then npm run coveralls ; fi'
 matrix:
@@ -23,28 +29,12 @@ matrix:
   include:
     - node_js: 'lts/*'
       env: PRETEST=true
-    - node_js: '9'
-      env: TEST=true ESLINT=next
-    - node_js: '8'
-      env: TEST=true ESLINT=next
-    - node_js: '7'
-      env: TEST=true ESLINT=next
-    - node_js: '6'
-      env: TEST=true ESLINT=next
-    - node_js: '9'
-      env: TEST=true ESLINT=3
-    - node_js: '8'
-      env: TEST=true ESLINT=3
-    - node_js: '7'
-      env: TEST=true ESLINT=3
-    - node_js: '6'
-      env: TEST=true ESLINT=3
+  exclude:
     - node_js: '5'
-      env: TEST=true ESLINT=3
+      env: ESLINT=5
     - node_js: '4'
-      env: TEST=true ESLINT=3
+      env: ESLINT=5
   allow_failures:
     - node_js: '9'
     - node_js: '7'
     - node_js: '5'
-    - env: TEST=true ESLINT=next

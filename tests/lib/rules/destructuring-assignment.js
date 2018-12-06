@@ -7,8 +7,6 @@
 const rule = require('../../../lib/rules/destructuring-assignment');
 const RuleTester = require('eslint').RuleTester;
 
-require('babel-eslint');
-
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -126,7 +124,66 @@ ruleTester.run('destructuring-assignment', rule, {
     };`,
     options: ['never'],
     parser: 'babel-eslint'
+  }, {
+    code: `const Foo = class extends React.PureComponent {
+      constructor() {
+        this.state = {};
+        this.state.foo = 'bar';
+      }
+    };`,
+    options: ['always']
+  }, {
+    code: [
+      'const div = styled.div`',
+      '  & .button {',
+      '    border-radius: ${props => props.borderRadius}px;',
+      '  }',
+      '`'
+    ].join('\n')
+  }, {
+    code: `
+      export default (context: $Context) => ({
+        foo: context.bar
+      });
+    `,
+    parser: 'babel-eslint'
+  }, {
+    code: `
+      class Foo {
+        bar(context) {
+          return context.baz;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Foo {
+        bar(props) {
+          return props.baz;
+        }
+      }
+    `
+  }, {
+    code: `
+      class Foo extends React.Component {
+        bar = this.props.bar
+      }
+    `,
+    options: ['always', {ignoreClassFields: true}],
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      'class Input extends React.Component {',
+      '  id = `${this.props.name}`;',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: ['always', {ignoreClassFields: true}],
+    parser: 'babel-eslint'
   }],
+
   invalid: [{
     code: `const MyComponent = (props) => {
       return (<div id={props.id} />)

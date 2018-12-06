@@ -43,6 +43,17 @@ ruleTester.run('button-has-type', rule, {
     {
       code: 'React.createElement("button", {type: "button"})',
       options: [{reset: false}]
+    },
+    {
+      code: 'document.createElement("button")'
+    },
+    {
+      code: 'Foo.createElement("span")',
+      settings: {
+        react: {
+          pragma: 'Foo'
+        }
+      }
     }
   ],
   invalid: [
@@ -56,6 +67,12 @@ ruleTester.run('button-has-type', rule, {
       code: '<button type="foo"/>',
       errors: [{
         message: '"foo" is an invalid value for button type attribute'
+      }]
+    },
+    {
+      code: '<button type={foo}/>',
+      errors: [{
+        message: '`foo` is an invalid value for button type attribute'
       }]
     },
     {
@@ -83,6 +100,17 @@ ruleTester.run('button-has-type', rule, {
       errors: [{
         message: '"reset" is a forbidden value for button type attribute'
       }]
+    },
+    {
+      code: 'Foo.createElement("button")',
+      errors: [{
+        message: 'Missing an explicit type attribute for button'
+      }],
+      settings: {
+        react: {
+          pragma: 'Foo'
+        }
+      }
     }
   ]
 });

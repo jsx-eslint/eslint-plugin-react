@@ -677,6 +677,9 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '`}</App>'
     ].join('\n'),
     options: [{children: {when: 'never', allowMultiline: false}}]
+  }, {
+    code: '<>{bar} {baz}</>;',
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
@@ -732,6 +735,16 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App>{ bar }</App>;',
     output: '<App>{bar}</App>;',
+    options: [{children: true}],
+    errors: [{
+      message: 'There should be no space after \'{\''
+    }, {
+      message: 'There should be no space before \'}\''
+    }]
+  }, {
+    code: '<>{ bar }</>;',
+    output: '<>{bar}</>;',
+    parser: 'babel-eslint',
     options: [{children: true}],
     errors: [{
       message: 'There should be no space after \'{\''

@@ -18,8 +18,6 @@ const parserOptions = {
   }
 };
 
-require('babel-eslint');
-
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
@@ -61,6 +59,19 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
         name: Message.propTypes.message
       };
     `,
+    options: [{
+      allowInPropTypes: true
+    }]
+  },
+  {
+    code: `
+      class MyComponent extends React.Component {
+        static propTypes = {
+          baz: Qux.propTypes.baz
+        };
+      }
+    `,
+    parser: 'babel-eslint',
     options: [{
       allowInPropTypes: true
     }]
@@ -165,6 +176,23 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
         name: Message.propTypes.message
       };
     `,
+    options: [{
+      allowInPropTypes: false
+    }],
+    errors: [{
+      message: ERROR_MESSAGE,
+      type: 'Identifier'
+    }]
+  },
+  {
+    code: `
+      class MyComponent extends React.Component {
+        static propTypes = {
+          baz: Qux.propTypes.baz
+        };
+      }
+    `,
+    parser: 'babel-eslint',
     options: [{
       allowInPropTypes: false
     }],

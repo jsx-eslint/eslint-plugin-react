@@ -20,15 +20,15 @@ The following patterns are considered warnings:
   </Hello></App>
 
 <App>
-  </Hello> World
+  <Hello /> World
 </App>
 
 <App>
-  </Hello> { 'World' }
+  <Hello /> { 'World' }
 </App>
 
 <App>
-  </Hello> { this.world() }
+  <Hello /> { this.world() }
 </App>
 
 <App>
@@ -64,17 +64,17 @@ The following patterns are **not** warnings:
 </App>
 
 <App>
-  </Hello>
+  <Hello />
   World
 </App>
 
 <App>
-  </Hello>
+  <Hello />
   { 'World' }
 </App>
 
 <App>
-  </Hello>
+  <Hello />
   { this.world() }
 </App>
 
@@ -101,4 +101,32 @@ The following patterns are **not** warnings:
   <Hello2 />
   <Hello3 />
 </App>
+```
+
+## Rule Options
+
+```js
+...
+"react/jsx-one-expression-per-line": [<enabled>, { "allow": "none"|"literal"|"single-child" }]
+...
+```
+
+### `allow`
+
+Defaults to `none`.
+
+The following pattern is **not** considered a warning when configured as `"literal"`:
+
+```jsx
+<App>Hello</App>
+```
+
+The following patterns are **not** considered warnings when configured as `"single-child"`:
+
+```jsx
+<App>Hello</App>
+
+<App>{"Hello"}</App>
+
+<App><Hello /></App>
 ```

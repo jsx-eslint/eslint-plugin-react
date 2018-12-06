@@ -71,6 +71,35 @@ ruleTester.run('no-unescaped-entities', rule, {
           },
         });
       `
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          render: function() {
+            return <>Here is some text!</>;
+          }
+        });
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        var Hello = createReactClass({
+          render: function() {
+            return <>I&rsquo;ve escaped some entities: &gt; &lt; &amp;</>;
+          }
+        });
+      `,
+      parser: 'babel-eslint'
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          render: function() {
+            return <>{">" + "<" + "&" + '"'}</>;
+          },
+        });
+      `,
+      parser: 'babel-eslint'
     }
   ],
 
@@ -88,12 +117,34 @@ ruleTester.run('no-unescaped-entities', rule, {
       code: `
         var Hello = createReactClass({
           render: function() {
+            return <>></>;
+          }
+        });
+      `,
+      parser: 'babel-eslint',
+      errors: [{message: 'HTML entities must be escaped.'}]
+    }, {
+      code: `
+        var Hello = createReactClass({
+          render: function() {
             return <div>first line is ok
             so is second
             and here are some bad entities: ></div>
           }
         });
       `,
+      errors: [{message: 'HTML entities must be escaped.'}]
+    }, {
+      code: `
+        var Hello = createReactClass({
+          render: function() {
+            return <>first line is ok
+            so is second
+            and here are some bad entities: ></>
+          }
+        });
+      `,
+      parser: 'babel-eslint',
       errors: [{message: 'HTML entities must be escaped.'}]
     }, {
       code: `
@@ -125,6 +176,16 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
+      errors: [{message: 'HTML entities must be escaped.'}]
+    }, {
+      code: `
+        var Hello = createReactClass({
+          render: function() {
+            return <>{"Unbalanced braces"}}</>;
+          }
+        });
+      `,
+      parser: 'babel-eslint',
       errors: [{message: 'HTML entities must be escaped.'}]
     }
   ]

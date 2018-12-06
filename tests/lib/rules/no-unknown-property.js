@@ -30,6 +30,8 @@ ruleTester.run('no-unknown-property', rule, {
     {code: '<App class="bar" />;'},
     {code: '<App for="bar" />;'},
     {code: '<App accept-charset="bar" />;'},
+    {code: '<meta charset="utf-8" />;'},
+    {code: '<meta charSet="utf-8" />;'},
     {code: '<App http-equiv="bar" />;'},
     {code: '<App xlink:href="bar" />;'},
     {code: '<App clip-path="bar" />;'},

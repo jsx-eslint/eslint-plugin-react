@@ -1,6 +1,8 @@
-# Disallow multiple spaces between inline JSX props
+# Disallow multiple spaces between inline JSX props (react/jsx-props-no-multi-spaces)
 
-Enforces that there is exactly one space between two JSX attributes or the JSX tag name and the first JSX attribute in the same line.
+Enforces that there is exactly one space between all attributes and after tag name and the first attribute in the same line.
+
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
 
 ## Rule Details
 
