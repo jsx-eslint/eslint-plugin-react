@@ -27,27 +27,6 @@ const propTypes = {
 React.DOM.div();
 
 import React, { PropTypes } from 'react';
-
-class Foo extends React.Component {
-  componentWillMount() { }
-  componentWillReceiveProps() { }
-  componentWillUpdate() { }
-  // ...
-}
-
-class Foo extends React.PureComponent {
-  componentWillMount() { }
-  componentWillReceiveProps() { }
-  componentWillUpdate() { }
-  // ...
-}
-
-var Foo = createReactClass({
-  componentWillMount: function() {},
-  componentWillReceiveProps: function() {},
-  componentWillUpdate: function() {},
-  // ...
-})
 ```
 
 The following patterns are **not** considered warnings:
@@ -59,10 +38,4 @@ ReactDOM.render(<MyComponent />, root);
 ReactDOM.findDOMNode(this.refs.foo);
 
 import { PropTypes } from 'prop-types';
-
-class Foo {
-  componentWillMount() { }
-  componentWillReceiveProps() { }
-  componentWillUpdate() { }
-}
 ```
