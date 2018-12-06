@@ -21,6 +21,3 @@ sftp-config.json
 # Only apps should have lockfiles
 yarn.lock
 package-lock.json
-
-# Visual Code folder
-.vscode
