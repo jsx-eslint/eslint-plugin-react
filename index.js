@@ -30,6 +30,7 @@ const allRules = {
   'jsx-no-bind': require('./lib/rules/jsx-no-bind'),
   'jsx-no-comment-textnodes': require('./lib/rules/jsx-no-comment-textnodes'),
   'jsx-no-duplicate-props': require('./lib/rules/jsx-no-duplicate-props'),
+  'jsx-no-length-truthiness': require('./lib/rules/jsx-no-length-truthiness'),
   'jsx-no-literals': require('./lib/rules/jsx-no-literals'),
   'jsx-no-target-blank': require('./lib/rules/jsx-no-target-blank'),
   'jsx-one-expression-per-line': require('./lib/rules/jsx-one-expression-per-line'),
