@@ -17,12 +17,6 @@ The following patterns are considered warnings:
 
 ```jsx
 class Foo extends React.Component {
-  componentWillMount() {}
-  componentWillReceiveProps() {}
-  componentWillUpdate() {}
-}
-// or
-class Foo extends React.Component {
   UNSAFE_componentWillMount() {}
   UNSAFE_componentWillReceiveProps() {}
   UNSAFE_componentWillUpdate() {}
@@ -30,12 +24,6 @@ class Foo extends React.Component {
 ```
 
 ```jsx
-const Foo = createReactClass({
-  componentWillMount: function() {},
-  componentWillReceiveProps: function() {},
-  componentWillUpdate: function() {}
-});
-// or
 const Foo = createReactClass({
   UNSAFE_componentWillMount: function() {},
   UNSAFE_componentWillReceiveProps: function() {},
@@ -47,12 +35,6 @@ The following patterns are **not** considered warnings:
 
 ```jsx
 class Foo extends Bar {
-  componentWillMount() {}
-  componentWillReceiveProps() {}
-  componentWillUpdate() {}
-}
-// or
-class Foo extends Bar {
   UNSAFE_componentWillMount() {}
   UNSAFE_componentWillReceiveProps() {}
   UNSAFE_componentWillUpdate() {}
@@ -61,14 +43,55 @@ class Foo extends Bar {
 
 ```jsx
 const Foo = bar({
+  UNSAFE_componentWillMount: function() {},
+  UNSAFE_componentWillReceiveProps: function() {},
+  UNSAFE_componentWillUpdate: function() {}
+});
+```
+
+## Rule Options
+```json
+...
+"react/no-unsafe": [<enabled>, { "checkAliases": <boolean> }]
+...
+```
+
+### `checkAliases` (default: `false`)
+
+When `true` the rule will also check aliases of unsafe methods: `componentWillMount`, `componentWillReceiveProps`, `componentWillUpdate`.
+
+The following patterns are considered warnings:
+
+```jsx
+class Foo extends React.Component {
+  componentWillMount() {}
+  componentWillReceiveProps() {}
+  componentWillUpdate() {}
+}
+```
+
+```jsx
+const Foo = createReactClass({
   componentWillMount: function() {},
   componentWillReceiveProps: function() {},
   componentWillUpdate: function() {}
 });
-// or
+```
+
+The following patterns are **not** considered warnings:
+
+```jsx
+class Foo extends Bar {
+  componentWillMount() {}
+  componentWillReceiveProps() {}
+  componentWillUpdate() {}
+}
+```
+
+```jsx
 const Foo = bar({
-  UNSAFE_componentWillMount: function() {},
-  UNSAFE_componentWillReceiveProps: function() {},
-  UNSAFE_componentWillUpdate: function() {}
+  componentWillMount: function() {},
+  componentWillReceiveProps: function() {},
+  componentWillUpdate: function() {}
 });
 ```

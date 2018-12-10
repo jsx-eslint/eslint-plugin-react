@@ -97,7 +97,7 @@ ruleTester.run('no-unsafe', rule, {
             componentWillUpdate() {}
           }
         `,
-      settings: {react: {version: '16.2.0'}}
+      settings: {react: {version: '16.4.0'}}
     },
     {
       code: `
@@ -118,7 +118,7 @@ ruleTester.run('no-unsafe', rule, {
               componentWillUpdate: function() {},
             });
           `,
-      settings: {react: {version: '16.2.0'}}
+      settings: {react: {version: '16.4.0'}}
     },
     {
       code: `
@@ -142,7 +142,8 @@ ruleTester.run('no-unsafe', rule, {
           componentWillUpdate() {}
         }
       `,
-      settings: {react: {version: '16.3.0'}},
+      options: [{checkAliases: true}],
+      settings: {react: {version: '16.4.0'}},
       errors: [
         {
           message: errorMessage(
@@ -227,6 +228,7 @@ ruleTester.run('no-unsafe', rule, {
             componentWillUpdate: function() {},
           });
         `,
+      options: [{checkAliases: true}],
       settings: {react: {version: '16.3.0'}},
       errors: [
         {
