@@ -50,6 +50,14 @@ things.reduce((collection, thing, index) => (
 things.reduceRight((collection, thing, index) => (
   collection.concat(<Hello key={index} />)
 ), []);
+
+React.Children.map(this.props.children, (child, index) => (
+  React.cloneElement(child, { key: index })
+))
+
+Children.forEach(this.props.children, (child, index) => (
+  React.cloneElement(child, { key: index })
+))
 ```
 
 The following patterns are **not** considered warnings:
