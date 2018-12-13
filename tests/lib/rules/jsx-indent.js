@@ -1478,5 +1478,63 @@ ruleTester.run('jsx-indent', rule, {
     errors: [
       {message: 'Expected indentation of 4 space characters but found 2.'}
     ]
+  }, {
+    code: `
+    const Component = () => (
+      <View
+        ListFooterComponent={(
+          <View
+            rowSpan={3}
+            placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
+          />
+    )}
+      />
+    );
+    `,
+    output: `
+    const Component = () => (
+      <View
+        ListFooterComponent={(
+          <View
+            rowSpan={3}
+            placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
+          />
+        )}
+      />
+    );
+    `,
+    options: [2],
+    errors: [
+      {message: 'Expected indentation of 8 space characters but found 4.'}
+    ]
+  }, {
+    code: `
+const Component = () => (
+\t<View
+\t\tListFooterComponent={(
+\t\t\t<View
+\t\t\t\trowSpan={3}
+\t\t\t\tplaceholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
+\t\t\t/>
+)}
+\t/>
+);
+    `,
+    output: `
+const Component = () => (
+\t<View
+\t\tListFooterComponent={(
+\t\t\t<View
+\t\t\t\trowSpan={3}
+\t\t\t\tplaceholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
+\t\t\t/>
+\t\t)}
+\t/>
+);
+    `,
+    options: ['tab'],
+    errors: [
+      {message: 'Expected indentation of 2 tab characters but found 0.'}
+    ]
   }]
 });
