@@ -89,6 +89,22 @@ ruleTester.run('no-array-index-key', rule, {
 
     {
       code: 'foo.reduceRight((a, b, i) => a.concat(<Foo key={b.id} />), [])'
+    },
+
+    {
+      code: `
+      React.Children.map(this.props.children, (child, index, arr) => {
+        return React.cloneElement(child, { key: child.id });
+      })
+      `
+    },
+
+    {
+      code: `
+      Children.forEach(this.props.children, (child, index, arr) => {
+        return React.cloneElement(child, { key: child.id });
+      })
+      `
     }
   ],
 
@@ -227,6 +243,43 @@ ruleTester.run('no-array-index-key', rule, {
     {
       code: 'foo.findIndex((bar, i) => { baz.push(React.createElement(\'Foo\', { key: i })); })',
       errors: [{message: 'Do not use Array index in keys'}]
+    },
+
+    {
+      code: `
+      Children.map(this.props.children, (child, index) => {
+        return React.cloneElement(child, { key: index });
+      })
+      `,
+      errors: [{message: 'Do not use Array index in keys'}]
+    },
+
+    {
+      code: `
+      React.Children.map(this.props.children, (child, index) => {
+        return React.cloneElement(child, { key: index });
+      })
+      `,
+      errors: [{message: 'Do not use Array index in keys'}]
+    },
+
+    {
+      code: `
+      Children.forEach(this.props.children, (child, index) => {
+        return React.cloneElement(child, { key: index });
+      })
+      `,
+      errors: [{message: 'Do not use Array index in keys'}]
+    },
+
+    {
+      code: `
+      React.Children.forEach(this.props.children, (child, index) => {
+        return React.cloneElement(child, { key: index });
+      })
+      `,
+      errors: [{message: 'Do not use Array index in keys'}]
     }
+
   ]
 });
