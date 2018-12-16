@@ -3947,6 +3947,58 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'page\' is missing in props validation'
       }]
+    },
+    {
+      code: `
+        const HeaderBalance = React.memo(({ cryptoCurrency }) => (
+          <div className="header-balance">
+            <div className="header-balance__balance">
+              BTC
+              {cryptoCurrency}
+            </div>
+          </div>
+        ));
+      `,
+      errors: [{
+        message: '\'cryptoCurrency\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        import React, { memo } from 'react';
+        const HeaderBalance = memo(({ cryptoCurrency }) => (
+          <div className="header-balance">
+            <div className="header-balance__balance">
+              BTC
+              {cryptoCurrency}
+            </div>
+          </div>
+        ));
+      `,
+      errors: [{
+        message: '\'cryptoCurrency\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        const Label = React.forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        });
+      `,
+      errors: [{
+        message: '\'text\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        import React, { forwardRef } from 'react';
+        const Label = forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        });
+      `,
+      errors: [{
+        message: '\'text\' is missing in props validation'
+      }]
     }
   ]
 });
