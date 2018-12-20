@@ -576,6 +576,66 @@ eslintTester.run('no-unused-state', rule, {
         }
       }`,
       parser: 'babel-eslint'
+    }, {
+      code: `
+      class Foo extends Component {
+        state = {
+          initial: 'foo',
+        }
+        handleChange = () => {
+          this.setState(state => ({
+            current: state.initial
+          }));
+        }
+        render() {
+          const { current } = this.state;
+          return <div>{current}</div>
+        }
+      }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+      class Foo extends Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            initial: 'foo',
+          }
+        }
+        handleChange = () => {
+          this.setState(state => ({
+            current: state.initial
+          }));
+        }
+        render() {
+          const { current } = this.state;
+          return <div>{current}</div>
+        }
+      }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+      class Foo extends Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            initial: 'foo',
+          }
+        }
+        handleChange = () => {
+          this.setState((state, props) => ({
+            current: state.initial
+          }));
+        }
+        render() {
+          const { current } = this.state;
+          return <div>{current}</div>
+        }
+      }
+      `,
+      parser: 'babel-eslint'
     }
   ],
 
@@ -914,6 +974,25 @@ eslintTester.run('no-unused-state', rule, {
       }`,
       errors: getErrorMessages(['id']),
       parser: 'babel-eslint'
+    }, {
+      code: `
+      class Foo extends Component {
+        state = {
+          initial: 'foo',
+        }
+        handleChange = () => {
+          this.setState(() => ({
+            current: 'hi'
+          }));
+        }
+        render() {
+          const { current } = this.state;
+          return <div>{current}</div>
+        }
+      }
+      `,
+      parser: 'babel-eslint',
+      errors: getErrorMessages(['initial'])
     }
   ]
 });
