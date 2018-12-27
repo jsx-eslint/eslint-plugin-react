@@ -2066,6 +2066,110 @@ ruleTester.run('prop-types', rule, {
         };
       `,
       settings: {react: {version: '16.3.0'}}
+    },
+    {
+      code: `
+        const HeaderBalance = React.memo(({ cryptoCurrency }) => (
+          <div className="header-balance">
+            <div className="header-balance__balance">
+              BTC
+              {cryptoCurrency}
+            </div>
+          </div>
+        ));
+        HeaderBalance.propTypes = {
+          cryptoCurrency: PropTypes.string
+        };
+      `
+    },
+    {
+      code: `
+        import React, { memo } from 'react';
+        const HeaderBalance = memo(({ cryptoCurrency }) => (
+          <div className="header-balance">
+            <div className="header-balance__balance">
+              BTC
+              {cryptoCurrency}
+            </div>
+          </div>
+        ));
+        HeaderBalance.propTypes = {
+          cryptoCurrency: PropTypes.string
+        };
+      `
+    },
+    {
+      code: `
+        import Foo, { memo } from 'foo';
+        const HeaderBalance = memo(({ cryptoCurrency }) => (
+          <div className="header-balance">
+            <div className="header-balance__balance">
+              BTC
+              {cryptoCurrency}
+            </div>
+          </div>
+        ));
+        HeaderBalance.propTypes = {
+          cryptoCurrency: PropTypes.string
+        };
+      `,
+      settings: {
+        react: {
+          pragma: 'Foo'
+        }
+      }
+    },
+    {
+      code: `
+        const Label = React.forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        });
+        Label.propTypes = {
+          text: PropTypes.string,
+        };
+      `
+    },
+    {
+      code: `
+        const Label = Foo.forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        });
+        Label.propTypes = {
+          text: PropTypes.string,
+        };
+      `,
+      settings: {
+        react: {
+          pragma: 'Foo'
+        }
+      }
+    },
+    {
+      code: `
+        import React, { forwardRef } from 'react';
+        const Label = forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        });
+        Label.propTypes = {
+          text: PropTypes.string,
+        };
+      `
+    },
+    {
+      code: `
+        import Foo, { forwardRef } from 'foo';
+        const Label = forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        });
+        Label.propTypes = {
+          text: PropTypes.string,
+        };
+      `,
+      settings: {
+        react: {
+          pragma: 'Foo'
+        }
+      }
     }
   ],
 
@@ -3946,6 +4050,130 @@ ruleTester.run('prop-types', rule, {
       parser: 'babel-eslint',
       errors: [{
         message: '\'page\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        const HeaderBalance = React.memo(({ cryptoCurrency }) => (
+          <div className="header-balance">
+            <div className="header-balance__balance">
+              BTC
+              {cryptoCurrency}
+            </div>
+          </div>
+        ));
+      `,
+      errors: [{
+        message: '\'cryptoCurrency\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        import React, { memo } from 'react';
+        const HeaderBalance = memo(({ cryptoCurrency }) => (
+          <div className="header-balance">
+            <div className="header-balance__balance">
+              BTC
+              {cryptoCurrency}
+            </div>
+          </div>
+        ));
+      `,
+      errors: [{
+        message: '\'cryptoCurrency\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        const HeaderBalance = Foo.memo(({ cryptoCurrency }) => (
+          <div className="header-balance">
+            <div className="header-balance__balance">
+              BTC
+              {cryptoCurrency}
+            </div>
+          </div>
+        ));
+      `,
+      settings: {
+        react: {
+          pragma: 'Foo'
+        }
+      },
+      errors: [{
+        message: '\'cryptoCurrency\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        import Foo, { memo } from 'foo';
+        const HeaderBalance = memo(({ cryptoCurrency }) => (
+          <div className="header-balance">
+            <div className="header-balance__balance">
+              BTC
+              {cryptoCurrency}
+            </div>
+          </div>
+        ));
+      `,
+      settings: {
+        react: {
+          pragma: 'Foo'
+        }
+      },
+      errors: [{
+        message: '\'cryptoCurrency\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        const Label = React.forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        });
+      `,
+      errors: [{
+        message: '\'text\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        import React, { forwardRef } from 'react';
+        const Label = forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        });
+      `,
+      errors: [{
+        message: '\'text\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        const Label = Foo.forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        });
+      `,
+      settings: {
+        react: {
+          pragma: 'Foo'
+        }
+      },
+      errors: [{
+        message: '\'text\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        import Foo, { forwardRef } from 'foo';
+        const Label = forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        });
+      `,
+      settings: {
+        react: {
+          pragma: 'Foo'
+        }
+      },
+      errors: [{
+        message: '\'text\' is missing in props validation'
       }]
     }
   ]
