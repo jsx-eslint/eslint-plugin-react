@@ -2237,6 +2237,58 @@ ruleTester.run('prop-types', rule, {
       }]
     }, {
       code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    const { name, ...rest } = this.props',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      errors: [{
+        message: '\'name\' is missing in props validation',
+        line: 3,
+        column: 13,
+        type: 'Property'
+      }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  render() {',
+        '    const { name, title, ...rest } = this.props',
+        '    return <div>Hello</div>;',
+        '  }',
+        '}',
+        'Hello.propTypes = {',
+        '  name: PropTypes.string',
+        '}'
+      ].join('\n'),
+      errors: [{
+        message: '\'title\' is missing in props validation',
+        line: 3,
+        column: 19,
+        type: 'Property'
+      }]
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '   renderStuff() {',
+        '    const { name, ...rest } = this.props',
+        '    return (<div {...rest}>{name}</div>);',
+        '  }',
+        '  render() {',
+        '    this.renderStuff()',
+        '  }',
+        '}',
+        'Hello.propTypes = {}'
+      ].join('\n'),
+      errors: [{
+        message: '\'name\' is missing in props validation',
+        line: 3,
+        column: 13,
+        type: 'Property'
+      }]
+    }, {
+      code: [
         '/** @extends React.Component */',
         'class Hello extends ChildComponent {',
         '  render() {',
