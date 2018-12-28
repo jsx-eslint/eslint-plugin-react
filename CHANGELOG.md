@@ -3,6 +3,98 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.12.0] - 2018-12-27
+
+### Added
+* [`no-typos`]: Support createClass ([#1828][], @alexzherdev)
+* Support detecting React.forwardRef/React.memo ([#2089][], @jomasti)
+* [`jsx-indent`][]: add `checkAttributes` option for JSX attribute indentation ([#2086][], @jomasti)
+* Change allowed `propWrapperFunctions` setting values ([#2065][], @jomasti)
+* add [`jsx-fragments`][] rule to enforce fragment syntax ([#1994][], @alexzherdev)
+* Support "detect" option for React version setting ([#1978][], @alexzherdev)
+* Support shorthand fragment syntax in many rules ([#1956][], @alexzherdev)
+* [`jsx-no-literals`][]: print node value in warning message ([#2008][], @jlgonzalezdev)
+
+### Fixed
+* [`jsx-max-depth`][]: Fix depth of JSX siblings in a JSXEpressionContainer ([#1824][], @alexzherdev)
+* [`no-array-index-key`][]: fix in React.Children methods ([#2085][], @himynameisdave)
+* [`no-unused-state`][]: handle functional setState ([#2084][], @jomasti)
+* version errors should log to stderr, not stdout ([#2082][], @ljharb)
+* [`no-deprecated`][]: Disable legacy lifecycle methods linting for now ([#2069][], @sergei-startsev)
+* ensure that react and flow versions can be numbers ([#2056][], @ljharb)
+* [`forbid-foreign-prop-types`][]: ensure `allowInPropTypes` option applies to class fields ([#2040][], @Sheile)
+* [`jsx-wrap-multilines`][]: catch single missing newlines ([#1984][], @MrHen)
+* [`jsx-first-prop-new-line`][]: Fix for parsers (like TypeScript) ([#2026][], @HauptmannEck)
+* [`jsx-sort-comp`][]: Fix fixer in case of more than 10 props ([#2012][], @tihonove)
+* [`no-unused-state`][] Don't depend on state parameter name ([#1829][], @alexzherdev)
+* [`no-this-in-sfc`][] fix for class properties ([#1995][], @sergei-startsev)
+* [`no-this-in-sfc`][] fix rule behavior for arrow functions inside a class field ([#1989][], @sergei-startsev)
+* [`destructuring-assignment`][]: handle nested props usage ([#1983][], @alexzherdev)
+* [`sort-prop-types`][]: fix string property order ([#1977][], @metreniuk)
+* [`jsx-no-target-blank`][]: don’t crash when there’s no value ([#1949][], @ljharb)
+* [`prop-types`][], [`no-unused-prop-types`][]: better handle object spread ([#1939][], @alexzherdev)
+
+### Changed
+* [`jsx-fragments`][]: improve message text ([#2032][], @alexzherdev)
+* [`no-unsafe`][]: handle all unsafe life-cycle methods ([#2075][], @sergei-startsev)
+* [`require-default-props`][]: Change error message naming from singular defaultProp to plural defaultProps ([#2064][], @jseminck)
+* [Refactor] Extract used `propTypes` detection ([#1946][], @alexzherdev)
+* [Refactor] Extract `defaultProps` detection ([#1942][], @alexzherdev)
+* [Refactor] Extract required `propTypes` detection ([#2001][], @alexzherdev)
+* [Docs] [`no-did-mount-set-state`][], [`no-did-update-set-state`][], [`no-will-update-set-state`][]: fix docs URLs ([#2090][], @JBallin)
+* [Docs] Remove statement on GC in jsx-no-bind ([#2067][], @rickhanlonii)
+* [Docs] [`jsx-sort-props`][]: Fix small mistake ([#2044][], @dimitarnestorov)
+* [Docs] [`no-unescaped-entities`][]: add more escape examples ([#2015][], @stevemao)
+* [Docs] [`display-name`][]: mention default `ignoreTranspilerName` value ([#2002][], @OliverJAsh)
+* [Docs] [`jsx-no-target-blank`][]: Add full example ([#1988][], @atomcorp)
+* [Docs] Update [`jsx-no-target-blank`][].md ([#1953][], @brunocoelho)
+* [Changelog] fix "Ignore class properties" contributor ([#1941][], @alexzherdev)
+* [Tests] Remove redundant `require('babel-eslint')` from tests ([#2004][], @sergei-startsev)
+* [Tests] [`prop-types`][]: Add tests for prop-types destructuring ([#2029][], @sstern6)
+* [Tests] [`display-name`][]: add false positive component detection for destructured createElement ([#1098][], @arian)
+
+[#2090]: https://github.com/yannickcr/eslint-plugin-react/pull/2090
+[#2089]: https://github.com/yannickcr/eslint-plugin-react/pull/2089
+[#2086]: https://github.com/yannickcr/eslint-plugin-react/pull/2086
+[#2085]: https://github.com/yannickcr/eslint-plugin-react/pull/2085
+[#2084]: https://github.com/yannickcr/eslint-plugin-react/pull/2084
+[#2082]: https://github.com/yannickcr/eslint-plugin-react/issues/2082
+[#2075]: https://github.com/yannickcr/eslint-plugin-react/pull/2075
+[#2069]: https://github.com/yannickcr/eslint-plugin-react/pull/2069
+[#2067]: https://github.com/yannickcr/eslint-plugin-react/pull/2067
+[#2065]: https://github.com/yannickcr/eslint-plugin-react/pull/2065
+[#2064]: https://github.com/yannickcr/eslint-plugin-react/pull/2064
+[#2056]: https://github.com/yannickcr/eslint-plugin-react/issues/2056
+[#2044]: https://github.com/yannickcr/eslint-plugin-react/pull/2044
+[#2040]: https://github.com/yannickcr/eslint-plugin-react/pull/2040
+[#2032]: https://github.com/yannickcr/eslint-plugin-react/pull/2032
+[#2029]: https://github.com/yannickcr/eslint-plugin-react/pull/2029
+[#2026]: https://github.com/yannickcr/eslint-plugin-react/pull/2026
+[#2015]: https://github.com/yannickcr/eslint-plugin-react/pull/2015
+[#2012]: https://github.com/yannickcr/eslint-plugin-react/pull/2012
+[#2008]: https://github.com/yannickcr/eslint-plugin-react/pull/2008
+[#2004]: https://github.com/yannickcr/eslint-plugin-react/pull/2004
+[#2002]: https://github.com/yannickcr/eslint-plugin-react/pull/2002
+[#2001]: https://github.com/yannickcr/eslint-plugin-react/pull/2001
+[#1995]: https://github.com/yannickcr/eslint-plugin-react/pull/1995
+[#1994]: https://github.com/yannickcr/eslint-plugin-react/pull/1994
+[#1989]: https://github.com/yannickcr/eslint-plugin-react/pull/1989
+[#1988]: https://github.com/yannickcr/eslint-plugin-react/pull/1988
+[#1984]: https://github.com/yannickcr/eslint-plugin-react/pull/1984
+[#1983]: https://github.com/yannickcr/eslint-plugin-react/pull/1983
+[#1978]: https://github.com/yannickcr/eslint-plugin-react/pull/1978
+[#1977]: https://github.com/yannickcr/eslint-plugin-react/pull/1977
+[#1956]: https://github.com/yannickcr/eslint-plugin-react/pull/1956
+[#1953]: https://github.com/yannickcr/eslint-plugin-react/pull/1953
+[#1949]: https://github.com/yannickcr/eslint-plugin-react/issues/1949
+[#1946]: https://github.com/yannickcr/eslint-plugin-react/pull/1946
+[#1942]: https://github.com/yannickcr/eslint-plugin-react/pull/1942
+[#1941]: https://github.com/yannickcr/eslint-plugin-react/pull/1941
+[#1939]: https://github.com/yannickcr/eslint-plugin-react/pull/1939
+[#1828]: https://github.com/yannickcr/eslint-plugin-react/pull/1828
+[#1824]: https://github.com/yannickcr/eslint-plugin-react/pull/1824
+[#1098]: https://github.com/yannickcr/eslint-plugin-react/pull/1098
+
 ## [7.11.1] - 2018-08-14
 ### Fixed
 * stop crashing when assigning to propTypes ([#1932][], @alexzherdev)
@@ -2331,3 +2423,4 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`jsx-max-depth`]: docs/rules/jsx-max-depth.md
 [`jsx-props-no-multi-spaces`]: docs/rules/jsx-props-no-multi-spaces.md
 [`no-unsafe`]: docs/rules/no-unsafe.md
+[`jsx-fragments`]: docs/rules/jsx-fragments.md
