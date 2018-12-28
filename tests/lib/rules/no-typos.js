@@ -23,6 +23,7 @@ const parserOptions = {
 // -----------------------------------------------------------------------------
 
 const ERROR_MESSAGE = 'Typo in static class property declaration';
+const ERROR_MESSAGE_ES5 = 'Typo in property declaration';
 const ERROR_MESSAGE_LIFECYCLE_METHOD = 'Typo in component lifecycle method declaration';
 
 const ruleTester = new RuleTester();
@@ -517,6 +518,105 @@ ruleTester.run('no-typos', rule, {
        }).isRequired
      }
    `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: `
+      import React from 'react';
+      import PropTypes from 'prop-types';
+      const Component = React.createReactClass({
+        propTypes: {
+          a: PropTypes.string.isRequired,
+          b: PropTypes.shape({
+            c: PropTypes.number
+          }).isRequired
+        }
+      });
+    `,
+    parserOptions: parserOptions
+  }, {
+    code: `
+      import React from 'react';
+      import PropTypes from 'prop-types';
+      const Component = React.createReactClass({
+        propTypes: {
+          a: PropTypes.string.isRequired,
+          b: PropTypes.shape({
+            c: PropTypes.number
+          }).isRequired
+        }
+      });
+    `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: `
+      import React from 'react';
+      import PropTypes from 'prop-types';
+      const Component = React.createReactClass({
+        childContextTypes: {
+          a: PropTypes.bool,
+          b: PropTypes.array,
+          c: PropTypes.func,
+          d: PropTypes.object,
+        }
+      });
+    `,
+    parserOptions: parserOptions
+  }, {
+    code: `
+      import React from 'react';
+      import PropTypes from 'prop-types';
+      const Component = React.createReactClass({
+        childContextTypes: {
+          a: PropTypes.bool,
+          b: PropTypes.array,
+          c: PropTypes.func,
+          d: PropTypes.object,
+        }
+      });
+    `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions
+  }, {
+    code: `
+      import React from 'react';
+      const Component = React.createReactClass({
+        propTypes: {},
+        childContextTypes: {},
+        contextTypes: {},
+        componentWillMount() { },
+        componentDidMount() { },
+        componentWillReceiveProps() { },
+        shouldComponentUpdate() { },
+        componentWillUpdate() { },
+        componentDidUpdate() { },
+        componentWillUnmount() { },
+        render() {
+          return <div>Hello {this.props.name}</div>;
+        }
+      });
+    `,
+    parserOptions: parserOptions
+  }, {
+    code: `
+      import React from 'react';
+      const Component = React.createReactClass({
+        propTypes: {},
+        childContextTypes: {},
+        contextTypes: {},
+        componentWillMount() { },
+        componentDidMount() { },
+        componentWillReceiveProps() { },
+        shouldComponentUpdate() { },
+        componentWillUpdate() { },
+        componentDidUpdate() { },
+        componentWillUnmount() { },
+        render() {
+          return <div>Hello {this.props.name}</div>;
+        }
+      });
+    `,
     parser: 'babel-eslint',
     parserOptions: parserOptions
   }],
@@ -1369,111 +1469,207 @@ ruleTester.run('no-typos', rule, {
     }, {
       message: 'Typo in declared prop type: objectof'
     }]
-  }]
-  /*
-  // PropTypes declared on a component that is detected through JSDoc comments and is
-  // declared AFTER the PropTypes assignment
-  // Commented out since it only works with ESLint 5.
-    ,{
-      code: `
-        MyComponent.PROPTYPES = {}
-        \/** @extends React.Component *\/
-        class MyComponent extends BaseComponent {}
-      `,
-      parserOptions: parserOptions
-    },
-  */
-  /*
-  // createClass tests below fail, so they're commented out
-  // ---------
+  }, {
+    code: `
+      import React from 'react';
+      import PropTypes from 'prop-types';
+      const Component = React.createReactClass({
+        propTypes: {
+          a: PropTypes.string.isrequired,
+          b: PropTypes.shape({
+            c: PropTypes.number
+          }).isrequired
+        }
+      });
+    `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Typo in prop type chain qualifier: isrequired'
     }, {
-      code: `
-        import React from 'react';
-        import PropTypes from 'prop-types';
-        const Component = React.createClass({
-          propTypes: {
-            a: PropTypes.string.isrequired,
-            b: PropTypes.shape({
-              c: PropTypes.number
-            }).isrequired
-          }
-        });
-      `,
-      parser: 'babel-eslint',
-      parserOptions: parserOptions,
-      errors: [{
-        message: 'Typo in prop type chain qualifier: isrequired'
-      }, {
-        message: 'Typo in prop type chain qualifier: isrequired'
-      }]
-    }, {
-      code: `
-        import React from 'react';
-        import PropTypes from 'prop-types';
-        const Component = React.createClass({
-          childContextTypes: {
-            a: PropTypes.bools,
-            b: PropTypes.Array,
-            c: PropTypes.function,
-            d: PropTypes.objectof,
-          }
-        });
-      `,
-      parser: 'babel-eslint',
-      parserOptions: parserOptions,
-      errors: [{
-        message: 'Typo in declared prop type: bools'
-      }, {
-        message: 'Typo in declared prop type: Array'
-      }, {
-        message: 'Typo in declared prop type: function'
-      }, {
-        message: 'Typo in declared prop type: objectof'
-      }]
-    }, {
-      code: `
-        import React from 'react';
-        import PropTypes from 'prop-types';
-        const Component = React.createClass({
-          propTypes: {
-            a: PropTypes.string.isrequired,
-            b: PropTypes.shape({
-              c: PropTypes.number
-            }).isrequired
-          }
-        });
-      `,
-      parserOptions: parserOptions,
-      errors: [{
-        message: 'Typo in prop type chain qualifier: isrequired'
-      }, {
-        message: 'Typo in prop type chain qualifier: isrequired'
-      }]
-    }, {
-      code: `
-        import React from 'react';
-        import PropTypes from 'prop-types';
-        const Component = React.createClass({
-          childContextTypes: {
-            a: PropTypes.bools,
-            b: PropTypes.Array,
-            c: PropTypes.function,
-            d: PropTypes.objectof,
-          }
-        });
-      `,
-      parserOptions: parserOptions,
-      errors: [{
-        message: 'Typo in declared prop type: bools'
-      }, {
-        message: 'Typo in declared prop type: Array'
-      }, {
-        message: 'Typo in declared prop type: function'
-      }, {
-        message: 'Typo in declared prop type: objectof'
-      }]
+      message: 'Typo in prop type chain qualifier: isrequired'
     }]
-  // ---------
-  // createClass tests above fail, so they're commented out
-  */
+  }, {
+    code: `
+      import React from 'react';
+      import PropTypes from 'prop-types';
+      const Component = React.createReactClass({
+        childContextTypes: {
+          a: PropTypes.bools,
+          b: PropTypes.Array,
+          c: PropTypes.function,
+          d: PropTypes.objectof,
+        }
+      });
+    `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Typo in declared prop type: bools'
+    }, {
+      message: 'Typo in declared prop type: Array'
+    }, {
+      message: 'Typo in declared prop type: function'
+    }, {
+      message: 'Typo in declared prop type: objectof'
+    }]
+  }, {
+    code: `
+      import React from 'react';
+      import PropTypes from 'prop-types';
+      const Component = React.createReactClass({
+        propTypes: {
+          a: PropTypes.string.isrequired,
+          b: PropTypes.shape({
+            c: PropTypes.number
+          }).isrequired
+        }
+      });
+    `,
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Typo in prop type chain qualifier: isrequired'
+    }, {
+      message: 'Typo in prop type chain qualifier: isrequired'
+    }]
+  }, {
+    code: `
+      import React from 'react';
+      import PropTypes from 'prop-types';
+      const Component = React.createReactClass({
+        childContextTypes: {
+          a: PropTypes.bools,
+          b: PropTypes.Array,
+          c: PropTypes.function,
+          d: PropTypes.objectof,
+        }
+      });
+    `,
+    parserOptions: parserOptions,
+    errors: [{
+      message: 'Typo in declared prop type: bools'
+    }, {
+      message: 'Typo in declared prop type: Array'
+    }, {
+      message: 'Typo in declared prop type: function'
+    }, {
+      message: 'Typo in declared prop type: objectof'
+    }]
+  }, {
+    code: `
+      import React from 'react';
+      const Component = React.createReactClass({
+        proptypes: {},
+        childcontexttypes: {},
+        contexttypes: {},
+        ComponentWillMount() { },
+        ComponentDidMount() { },
+        ComponentWillReceiveProps() { },
+        ShouldComponentUpdate() { },
+        ComponentWillUpdate() { },
+        ComponentDidUpdate() { },
+        ComponentWillUnmount() { },
+        render() {
+          return <div>Hello {this.props.name}</div>;
+        }
+      });
+    `,
+    parserOptions: parserOptions,
+    errors: [{
+      message: ERROR_MESSAGE_ES5,
+      type: 'ObjectExpression'
+    }, {
+      message: ERROR_MESSAGE_ES5,
+      type: 'ObjectExpression'
+    }, {
+      message: ERROR_MESSAGE_ES5,
+      type: 'ObjectExpression'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'Property'
+    }]
+  }, {
+    code: `
+      import React from 'react';
+      const Component = React.createReactClass({
+        proptypes: {},
+        childcontexttypes: {},
+        contexttypes: {},
+        ComponentWillMount() { },
+        ComponentDidMount() { },
+        ComponentWillReceiveProps() { },
+        ShouldComponentUpdate() { },
+        ComponentWillUpdate() { },
+        ComponentDidUpdate() { },
+        ComponentWillUnmount() { },
+        render() {
+          return <div>Hello {this.props.name}</div>;
+        }
+      });
+    `,
+    parser: 'babel-eslint',
+    parserOptions: parserOptions,
+    errors: [{
+      message: ERROR_MESSAGE_ES5,
+      type: 'ObjectExpression'
+    }, {
+      message: ERROR_MESSAGE_ES5,
+      type: 'ObjectExpression'
+    }, {
+      message: ERROR_MESSAGE_ES5,
+      type: 'ObjectExpression'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'Property'
+    }, {
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      type: 'Property'
+    }]
+    /*
+    // PropTypes declared on a component that is detected through JSDoc comments and is
+    // declared AFTER the PropTypes assignment
+    // Commented out since it only works with ESLint 5.
+      ,{
+        code: `
+          MyComponent.PROPTYPES = {}
+          \/** @extends React.Component *\/
+          class MyComponent extends BaseComponent {}
+        `,
+        parserOptions: parserOptions
+      },
+    */
+  }]
 });
