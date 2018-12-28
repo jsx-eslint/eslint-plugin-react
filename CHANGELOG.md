@@ -25,7 +25,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`forbid-foreign-prop-types`][]: ensure `allowInPropTypes` option applies to class fields ([#2040][], @Sheile)
 * [`jsx-wrap-multilines`][]: catch single missing newlines ([#1984][], @MrHen)
 * [`jsx-first-prop-new-line`][]: Fix for parsers (like TypeScript) ([#2026][], @HauptmannEck)
-* [`jsx-sort-comp`][]: Fix fixer in case of more than 10 props ([#2012][], @tihonove)
+* [`sort-comp`][]: Fix fixer in case of more than 10 props ([#2012][], @tihonove)
 * [`no-unused-state`][] Don't depend on state parameter name ([#1829][], @alexzherdev)
 * [`no-this-in-sfc`][] fix for class properties ([#1995][], @sergei-startsev)
 * [`no-this-in-sfc`][] fix rule behavior for arrow functions inside a class field ([#1989][], @sergei-startsev)
@@ -91,6 +91,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#1942]: https://github.com/yannickcr/eslint-plugin-react/pull/1942
 [#1941]: https://github.com/yannickcr/eslint-plugin-react/pull/1941
 [#1939]: https://github.com/yannickcr/eslint-plugin-react/pull/1939
+[#1829]: https://github.com/yannickcr/eslint-plugin-react/pull/1829
 [#1828]: https://github.com/yannickcr/eslint-plugin-react/pull/1828
 [#1824]: https://github.com/yannickcr/eslint-plugin-react/pull/1824
 [#1098]: https://github.com/yannickcr/eslint-plugin-react/pull/1098
