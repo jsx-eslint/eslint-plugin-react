@@ -636,6 +636,64 @@ eslintTester.run('no-unused-state', rule, {
       }
       `,
       parser: 'babel-eslint'
+    }, {
+      code: `
+      var Foo = createReactClass({
+        getInitialState: function() {
+          return { initial: 'foo' };
+        },
+        handleChange: function() {
+          this.setState(state => ({
+            current: state.initial
+          }));
+        },
+        render() {
+          const { current } = this.state;
+          return <div>{current}</div>
+        }
+      });
+      `
+    }, {
+      code: `
+      var Foo = createReactClass({
+        getInitialState: function() {
+          return { initial: 'foo' };
+        },
+        handleChange: function() {
+          this.setState((state, props) => ({
+            current: state.initial
+          }));
+        },
+        render() {
+          const { current } = this.state;
+          return <div>{current}</div>
+        }
+      });
+      `
+    }, {
+      // Don't error out
+      code: `
+      class Foo extends Component {
+        handleChange = function() {
+          this.setState(state => ({ foo: value }));
+        }
+        render() {
+          return <SomeComponent foo={this.state.foo} />;
+        }
+      }`,
+      parser: 'babel-eslint'
+    }, {
+      // Don't error out
+      code: `
+      class Foo extends Component {
+        static handleChange = () => {
+          this.setState(state => ({ foo: value }));
+        }
+        render() {
+          return <SomeComponent foo={this.state.foo} />;
+        }
+      }`,
+      parser: 'babel-eslint'
     }
   ],
 
