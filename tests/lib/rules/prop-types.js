@@ -2170,6 +2170,83 @@ ruleTester.run('prop-types', rule, {
           pragma: 'Foo'
         }
       }
+    },
+    {
+      code: `
+      class Foo extends React.Component {
+        propTypes = {
+          actions: PropTypes.object.isRequired,
+        };
+        componentWillReceiveProps (nextProps) {
+          this.props.actions.doSomething();
+        }
+
+        componentWillUnmount () {
+          this.props.actions.doSomething();
+        }
+
+        render() {
+          return <div>foo</div>;
+        }
+      }
+      `,
+      parser: 'babel-eslint'
+    },
+    {
+      code: `
+      class Foo extends React.Component {
+        componentDidUpdate() { this.inputRef.focus(); }
+        render() {
+          return (
+            <div>
+              <input ref={(node) => { this.inputRef = node; }} />
+            </div>
+          )
+        }
+      }
+      `
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          componentDidUpdate(nextProps, nextState) {
+            const {
+                first_organization,
+                second_organization,
+            } = this.state;
+            return true;
+          }
+          render() {
+            return <div>hi</div>;
+          }
+        }
+      `
+    },
+    {
+      code: `
+      class Foo extends React.Component {
+        shouldComponentUpdate(nextProps) {
+          if (this.props.search !== nextProps.search) {
+            let query = nextProps.query;
+            let result = nextProps.list.filter(item => {
+              return (item.name.toLowerCase().includes(query.trim().toLowerCase()));
+            });
+
+            this.setState({ result });
+
+            return true;
+          }
+        }
+        render() {
+          return <div>foo</div>;
+        }
+      }
+      Foo.propTypes = {
+        search: PropTypes.object,
+        list: PropTypes.array,
+        query: PropTypes.string,
+      };
+      `
     }
   ],
 
