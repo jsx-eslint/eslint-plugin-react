@@ -26,6 +26,16 @@ const parserOptions = {
 const MISSING_PARENS = 'Missing parentheses around multilines JSX';
 const PARENS_NEW_LINES = 'Parentheses around JSX should be on separate lines';
 
+const OPTIONS_ALL_NEW_LINES = {
+  declaration: 'parens-new-line',
+  assignment: 'parens-new-line',
+  return: 'parens-new-line',
+  arrow: 'parens-new-line',
+  condition: 'parens-new-line',
+  logical: 'parens-new-line',
+  prop: 'parens-new-line',
+};
+
 const RETURN_SINGLE_LINE = `
   var Hello = createReactClass({
     render: function() {
@@ -549,6 +559,19 @@ const ATTR_PAREN_NEW_LINE_AUTOFIX_FRAGMENT = `
     <p>Hello</p>
   </div>
 `;
+
+const SFC_NO_PARENS_NO_NEWLINE = `
+export default () =>
+    <div>
+        with newline without parentheses eslint crashes
+    </div>`;
+
+const SFC_NO_PARENS_AUTOFIX = `
+export default () => (
+<div>
+        with newline without parentheses eslint crashes
+    </div>
+)`;
 
 function addNewLineSymbols(code) {
   return code.replace(/\(</g, '(\n<').replace(/>\)/g, '>\n)');
@@ -1156,6 +1179,12 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       parser: 'babel-eslint',
       output: ATTR_PAREN_NEW_LINE_AUTOFIX_FRAGMENT,
       options: [{prop: 'parens-new-line'}],
+      errors: [{message: MISSING_PARENS}]
+    },
+    {
+      code: SFC_NO_PARENS_NO_NEWLINE,
+      output: SFC_NO_PARENS_AUTOFIX,
+      options: [OPTIONS_ALL_NEW_LINES],
       errors: [{message: MISSING_PARENS}]
     }]
 });
