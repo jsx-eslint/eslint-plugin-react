@@ -3,6 +3,23 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.12.1] - 2019-01-01
+
+### Fixed
+* [`no-unused-state`][]: Fix crash with class fields ([#2098][], @jomasti)
+* [`prop-types`][]: Fix false positives inside lifecycle methods ([#2099][], @jomasti)
+* [`jsx-max-depth`][]: avoid a crash ([#2102][], @ljharb)
+* [`jsx-wrap-multilines`][]: avoid crash when no trailing newline ([#2100][], @ljharb)
+
+### Changed
+* Fix CHANGELOG.md ([#2097][], @alexzherdev)
+
+[#2102]: https://github.com/yannickcr/eslint-plugin-react/issues/2102
+[#2100]: https://github.com/yannickcr/eslint-plugin-react/issues/2100
+[#2099]: https://github.com/yannickcr/eslint-plugin-react/pull/2099
+[#2098]: https://github.com/yannickcr/eslint-plugin-react/pull/2098
+[#2097]: https://github.com/yannickcr/eslint-plugin-react/pull/2097
+
 ## [7.12.0] - 2018-12-27
 
 ### Added
