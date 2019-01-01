@@ -94,6 +94,15 @@ ruleTester.run('jsx-max-depth', rule, {
       </tbody>
     `,
     options: [{max: 2}]
+  }, {
+    code: [
+      'const Example = props => {',
+      '  for (let i = 0; i < length; i++) {',
+      '    return <Text key={i} />;',
+      '  }',
+      '};'
+    ].join('\n'),
+    options: [{max: 1}]
   }],
 
   invalid: [{
