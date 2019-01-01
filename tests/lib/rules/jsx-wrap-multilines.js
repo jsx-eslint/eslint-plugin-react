@@ -33,7 +33,7 @@ const OPTIONS_ALL_NEW_LINES = {
   arrow: 'parens-new-line',
   condition: 'parens-new-line',
   logical: 'parens-new-line',
-  prop: 'parens-new-line',
+  prop: 'parens-new-line'
 };
 
 const RETURN_SINGLE_LINE = `
