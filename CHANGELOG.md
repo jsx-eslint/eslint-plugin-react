@@ -3,6 +3,17 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.12.2] - 2019-01-02
+
+### Fixed
+* [`prop-types`][]: avoid crash on used prevProps ([#2095][], @ljharb)
+* Version warning: Link does not end with '.' ([#2103][], @yoyo837))
+* [`forbid-prop-types`][]: fix crash with propWrapper check on MemberExpressions ([#2104][], @ljharb)
+
+[#2104]: https://github.com/yannickcr/eslint-plugin-react/issues/2104
+[#2103]: https://github.com/yannickcr/eslint-plugin-react/pull/2103
+[#2095]: https://github.com/yannickcr/eslint-plugin-react/issues/2095
+
 ## [7.12.1] - 2019-01-01
 
 ### Fixed
