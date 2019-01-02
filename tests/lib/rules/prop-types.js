@@ -2247,6 +2247,36 @@ ruleTester.run('prop-types', rule, {
         query: PropTypes.string,
       };
       `
+    },
+    {
+      code: [
+        'export default class LazyLoader extends Component {',
+        '  static propTypes = {',
+        '    children: PropTypes.node,',
+        '    load: PropTypes.any,',
+        '  };',
+        '  state = { mod: null };',
+        '  shouldComponentUpdate(prevProps) {',
+        '    assert(prevProps.load === this.props.load);',
+        '    return true;',
+        '  }',
+        '  load() {',
+        '    this.props.load(mod => {',
+        '      this.setState({',
+        '        mod: mod.default ? mod.default : mod',
+        '      });',
+        '    });',
+        '  }',
+        '  render() {',
+        '    if (this.state.mod !== null) {',
+        '      return this.props.children(this.state.mod);',
+        '    }',
+        '    this.load();',
+        '    return null;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: 'babel-eslint'
     }
   ],
 
