@@ -31,10 +31,11 @@ The following patterns are considered warnings:
 ## Rule Options
 
 It takes an option as the second parameter which can be `"tab"` for tab-based indentation or a positive number for space indentations.
+To enable checking the indentation of attributes, use the third parameter to turn on the `checkAttributes` option (default is false).
 
 ```js
 ...
-"react/jsx-indent": [<enabled>, 'tab'|<number>]
+"react/jsx-indent": [<enabled>, 'tab'|<number>, {checkAttributes: <boolean>}]
 ...
 ```
 
@@ -51,6 +52,14 @@ The following patterns are considered warnings:
 // [2, 'tab']
 <App>
   <Hello />
+</App>
+
+// [2, 2, {checkAttributes: true}]
+<App render={
+  <Hello render={
+    (bar) => <div>hi</div>
+}
+  />
 </App>
 ```
 
@@ -74,6 +83,14 @@ The following patterns are **not** warnings:
 // [2, 0]
 <App>
 <Hello />
+</App>
+
+// [2, 2, {checkAttributes: false}]
+<App render={
+  <Hello render={
+    (bar) => <div>hi</div>
+}
+  />
 </App>
 ```
 

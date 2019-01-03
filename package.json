@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-react",
-  "version": "7.11.1",
+  "version": "7.12.2",
   "author": "Yannick Croissant <yannick.croissant+npm@gmail.com>",
   "description": "React specific linting rules for ESLint",
   "main": "index.js",
@@ -9,7 +9,7 @@
     "lint": "eslint ./",
     "pretest": "npm run lint",
     "test": "npm run unit-test",
-    "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/**/*.js"
+    "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js"
   },
   "files": [
     "LICENSE",
@@ -29,14 +29,17 @@
     "has": "^1.0.3",
     "jsx-ast-utils": "^2.0.1",
     "object.fromentries": "^2.0.0",
-    "prop-types": "^15.6.2"
+    "prop-types": "^15.6.2",
+    "resolve": "^1.9.0"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.5",
-    "coveralls": "^3.0.1",
+    "babel-eslint": "^8.2.6",
+    "coveralls": "^3.0.2",
     "eslint": "^3.0.0 || ^4.0.0 || ^5.0.0",
     "istanbul": "^0.4.5",
-    "mocha": "^5.2.0"
+    "mocha": "^5.2.0",
+    "typescript": "^3.2.2",
+    "typescript-eslint-parser": "^20.1.1"
   },
   "peerDependencies": {
     "eslint": "^3.0.0 || ^4.0.0 || ^5.0.0"

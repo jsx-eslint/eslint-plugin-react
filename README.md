@@ -42,10 +42,12 @@ You should also specify settings that will be shared across all the plugin rules
       "version": "15.0", // React version, default to the latest React stable release
       "flowVersion": "0.53" // Flow version
     },
-    "propWrapperFunctions": [ "forbidExtraProps" ] // The names of any functions used to wrap the
-                                                   // propTypes object, e.g. `forbidExtraProps`.
-                                                   // If this isn't set, any propTypes wrapped in
-                                                   // a function will be skipped.
+    "propWrapperFunctions": [
+        // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
+        "forbidExtraProps",
+        {"property": "freeze", "object": "Object"}
+        {"property": "myFavoriteWrapper"}
+    ]
   }
 }
 ```
@@ -117,7 +119,7 @@ Enable the rules that you would like to use.
 * [react/no-this-in-sfc](docs/rules/no-this-in-sfc.md): Prevent using `this` in stateless functional components
 * [react/no-unescaped-entities](docs/rules/no-unescaped-entities.md): Prevent invalid characters from appearing in markup
 * [react/no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property (fixable)
-* [react/no-unsafe](docs/rules/no-unsafe.md): Prevent usage of `UNSAFE_` methods
+* [react/no-unsafe](docs/rules/no-unsafe.md): Prevent usage of unsafe lifecycle methods
 * [react/no-unused-prop-types](docs/rules/no-unused-prop-types.md): Prevent definitions of unused prop types
 * [react/no-unused-state](docs/rules/no-unused-state.md): Prevent definitions of unused state properties
 * [react/no-will-update-set-state](docs/rules/no-will-update-set-state.md): Prevent usage of `setState` in `componentWillUpdate`
@@ -158,6 +160,7 @@ Enable the rules that you would like to use.
 * [react/jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
 * [react/jsx-one-expression-per-line](docs/rules/jsx-one-expression-per-line.md): Limit to one expression per line in JSX
 * [react/jsx-curly-brace-presence](docs/rules/jsx-curly-brace-presence.md): Enforce curly braces or disallow unnecessary curly braces in JSX
+* [react/jsx-fragments](docs/rules/jsx-fragments.md): Enforce shorthand or standard form for React fragments
 * [react/jsx-pascal-case](docs/rules/jsx-pascal-case.md): Enforce PascalCase for user-defined JSX components
 * [react/jsx-props-no-multi-spaces](docs/rules/jsx-props-no-multi-spaces.md): Disallow multiple spaces between inline JSX props (fixable)
 * [react/jsx-sort-default-props](docs/rules/jsx-sort-default-props.md): Enforce default props alphabetical sorting

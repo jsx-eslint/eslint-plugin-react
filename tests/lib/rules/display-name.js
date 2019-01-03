@@ -363,6 +363,48 @@ ruleTester.run('display-name', rule, {
     `,
     parser: 'babel-eslint'
   }, {
+    code: [
+      'import React, {createElement} from "react";',
+      'const SomeComponent = (props) => {',
+      '  const {foo, bar} = props;',
+      '  return someComponentFactory({',
+      '    onClick: () => foo(bar("x"))',
+      '  });',
+      '};'
+    ].join('\n')
+  }, {
+    code: [
+      'import React, {createElement} from "react";',
+      'const SomeComponent = (props) => {',
+      '  const {foo, bar} = props;',
+      '  return someComponentFactory({',
+      '    onClick: () => foo(bar("x"))',
+      '  });',
+      '};'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
+    code: [
+      'import React, {Component} from "react";',
+      'function someDecorator(ComposedComponent) {',
+      '  return class MyDecorator extends Component {',
+      '    render() {return <ComposedComponent {...this.props} />;}',
+      '  };',
+      '}',
+      'module.exports = someDecorator;'
+    ].join('\n')
+  }, {
+    code: [
+      'import React, {Component} from "react";',
+      'function someDecorator(ComposedComponent) {',
+      '  return class MyDecorator extends Component {',
+      '    render() {return <ComposedComponent {...this.props} />;}',
+      '  };',
+      '}',
+      'module.exports = someDecorator;'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  }, {
     code: `
       const element = (
         <Media query={query} render={() => {
@@ -395,6 +437,21 @@ ruleTester.run('display-name', rule, {
       createElement("a");
     `,
     parser: 'babel-eslint'
+  }, {
+    code: `
+      import React from 'react'
+      import { string } from 'prop-types'
+
+      function Component({ world }) {
+        return <div>Hello {world}</div>
+      }
+
+      Component.propTypes = {
+        world: string,
+      }
+
+      export default React.memo(Component)
+    `
   }],
 
   invalid: [{

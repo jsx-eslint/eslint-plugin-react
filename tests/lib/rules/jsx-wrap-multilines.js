@@ -26,6 +26,16 @@ const parserOptions = {
 const MISSING_PARENS = 'Missing parentheses around multilines JSX';
 const PARENS_NEW_LINES = 'Parentheses around JSX should be on separate lines';
 
+const OPTIONS_ALL_NEW_LINES = {
+  declaration: 'parens-new-line',
+  assignment: 'parens-new-line',
+  return: 'parens-new-line',
+  arrow: 'parens-new-line',
+  condition: 'parens-new-line',
+  logical: 'parens-new-line',
+  prop: 'parens-new-line'
+};
+
 const RETURN_SINGLE_LINE = `
   var Hello = createReactClass({
     render: function() {
@@ -81,6 +91,56 @@ const RETURN_PAREN_NEW_LINE = `
         <div>
           <p>Hello {this.props.name}</p>
         </div>
+      );
+    }
+  });
+`;
+
+const RETURN_PAREN_NEW_LINE_OPENING = `
+  var Hello = createReactClass({
+    render: function() {
+      return (
+
+      <div>
+        <p>Hello {this.props.name}</p>
+      </div>);
+    }
+  });
+`;
+
+const RETURN_PAREN_NEW_LINE_OPENING_FIXED = `
+  var Hello = createReactClass({
+    render: function() {
+      return (
+
+      <div>
+        <p>Hello {this.props.name}</p>
+      </div>
+);
+    }
+  });
+`;
+
+const RETURN_PAREN_NEW_LINE_CLOSING = `
+  var Hello = createReactClass({
+    render: function() {
+      return (<div>
+        <p>Hello {this.props.name}</p>
+      </div>
+
+      );
+    }
+  });
+`;
+
+const RETURN_PAREN_NEW_LINE_CLOSING_FIXED = `
+  var Hello = createReactClass({
+    render: function() {
+      return (
+<div>
+        <p>Hello {this.props.name}</p>
+      </div>
+
       );
     }
   });
@@ -500,6 +560,19 @@ const ATTR_PAREN_NEW_LINE_AUTOFIX_FRAGMENT = `
   </div>
 `;
 
+const SFC_NO_PARENS_NO_NEWLINE = `
+export default () =>
+    <div>
+        with newline without parentheses eslint crashes
+    </div>`;
+
+const SFC_NO_PARENS_AUTOFIX = `
+export default () => (
+<div>
+        with newline without parentheses eslint crashes
+    </div>
+)`;
+
 function addNewLineSymbols(code) {
   return code.replace(/\(</g, '(\n<').replace(/>\)/g, '>\n)');
 }
@@ -913,6 +986,16 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       options: [{return: 'parens-new-line'}],
       errors: [{message: PARENS_NEW_LINES}]
     }, {
+      code: RETURN_PAREN_NEW_LINE_OPENING,
+      output: RETURN_PAREN_NEW_LINE_OPENING_FIXED,
+      options: [{return: 'parens-new-line'}],
+      errors: [{message: PARENS_NEW_LINES}]
+    }, {
+      code: RETURN_PAREN_NEW_LINE_CLOSING,
+      output: RETURN_PAREN_NEW_LINE_CLOSING_FIXED,
+      options: [{return: 'parens-new-line'}],
+      errors: [{message: PARENS_NEW_LINES}]
+    }, {
       code: RETURN_PAREN_FRAGMENT,
       parser: 'babel-eslint',
       output: addNewLineSymbols(RETURN_PAREN_FRAGMENT),
@@ -1096,6 +1179,12 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       parser: 'babel-eslint',
       output: ATTR_PAREN_NEW_LINE_AUTOFIX_FRAGMENT,
       options: [{prop: 'parens-new-line'}],
+      errors: [{message: MISSING_PARENS}]
+    },
+    {
+      code: SFC_NO_PARENS_NO_NEWLINE,
+      output: SFC_NO_PARENS_AUTOFIX,
+      options: [OPTIONS_ALL_NEW_LINES],
       errors: [{message: MISSING_PARENS}]
     }]
 });

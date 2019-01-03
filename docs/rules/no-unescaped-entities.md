@@ -41,8 +41,8 @@ when the closing `>` is in the wrong place.
 The preferred way to include one of these characters is to use the HTML escape code.
 
 - `>` can be replaced with `&gt;`
-- `"` can be replaced with `&quot;`, `&ldquo;` or `&rdquo;`
-- `'` can be replaced with `&apos;`, `&lsquo;` or `&rsquo;`
+- `"` can be replaced with `&quot;`, `&ldquo;`, `&#34;` or `&rdquo;`
+- `'` can be replaced with `&apos;`, `&lsquo;`, `&#39;` or `&rsquo;`
 - `}` can be replaced with `&#125;`
 
 Alternatively, you can include the literal character inside a subexpression
