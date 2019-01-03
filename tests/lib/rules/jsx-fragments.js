@@ -50,6 +50,10 @@ ruleTester.run('jsx-fragments', rule, {
     options: ['element'],
     settings
   }, {
+    code: '<Act.Frag />',
+    options: ['element'],
+    settings
+  }, {
     code: `
       import Act, { Frag as F } from 'react';
       <F><Foo /></F>;
@@ -81,6 +85,10 @@ ruleTester.run('jsx-fragments', rule, {
     code: '<Act.Frag key="key"><Foo /></Act.Frag>',
     options: ['syntax'],
     settings
+  }, {
+    code: '<Act.Frag key="key" />',
+    options: ['syntax'],
+    settings
   }],
 
   invalid: [{
@@ -93,6 +101,13 @@ ruleTester.run('jsx-fragments', rule, {
     }]
   }, {
     code: '<Act.Frag><Foo /></Act.Frag>',
+    settings: settingsOld,
+    errors: [{
+      message: 'Fragments are only supported starting from React v16.2. '
+        + 'Please disable the `react/jsx-fragments` rule in ESLint settings or upgrade your version of React.'
+    }]
+  }, {
+    code: '<Act.Frag />',
     settings: settingsOld,
     errors: [{
       message: 'Fragments are only supported starting from React v16.2. '
@@ -115,6 +130,28 @@ ruleTester.run('jsx-fragments', rule, {
       message: 'Prefer fragment shorthand over Act.Frag'
     }],
     output: '<><Foo /></>'
+  }, {
+    code: '<Act.Frag />',
+    options: ['syntax'],
+    settings,
+    errors: [{
+      message: 'Prefer fragment shorthand over Act.Frag'
+    }],
+    output: '<></>'
+  }, {
+    code: `
+      import Act, { Frag as F } from 'react';
+      <F />;
+    `,
+    options: ['syntax'],
+    settings,
+    errors: [{
+      message: 'Prefer fragment shorthand over Act.Frag'
+    }],
+    output: `
+      import Act, { Frag as F } from 'react';
+      <></>;
+    `
   }, {
     code: `
       import Act, { Frag as F } from 'react';
