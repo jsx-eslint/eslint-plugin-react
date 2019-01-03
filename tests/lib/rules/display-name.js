@@ -437,6 +437,21 @@ ruleTester.run('display-name', rule, {
       createElement("a");
     `,
     parser: 'babel-eslint'
+  }, {
+    code: `
+      import React from 'react'
+      import { string } from 'prop-types'
+
+      function Component({ world }) {
+        return <div>Hello {world}</div>
+      }
+
+      Component.propTypes = {
+        world: string,
+      }
+
+      export default React.memo(Component)
+    `
   }],
 
   invalid: [{
