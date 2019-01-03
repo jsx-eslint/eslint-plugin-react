@@ -2929,6 +2929,21 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  })',
         '};'
       ].join('\n')
+    }, {
+      code: `
+        type Props = {
+          used: string,
+        }
+        class Hello extends React.Component<Props> {
+          renderHelper = ({unused}: {unused: string}) => {
+            return <div />;
+          }
+          render() {
+            return <div>{this.props.used}</div>;
+          }
+        }
+      `,
+      parser: 'babel-eslint'
     }
   ],
 
