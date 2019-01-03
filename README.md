@@ -39,7 +39,8 @@ You should also specify settings that will be shared across all the plugin rules
       "createClass": "createReactClass", // Regex for Component Factory to use,
                                          // default to "createReactClass"
       "pragma": "React",  // Pragma to use, default to "React"
-      "version": "15.0", // React version, default to the latest React stable release
+      "version": "detect", // React version. "detect" automatically picks the version you have installed.
+                           // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
       "flowVersion": "0.53" // Flow version
     },
     "propWrapperFunctions": [
