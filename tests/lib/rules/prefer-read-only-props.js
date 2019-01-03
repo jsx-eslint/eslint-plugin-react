@@ -81,7 +81,7 @@ ruleTester.run('prefer-read-only-props', rule, {
       parser: 'babel-eslint'
     },
     {
-      // Arrow function component
+      // Arrow function
       code: `
         const Hello = (props: {+name: string}) => (
           <div>Hello {props.name}</div>
@@ -99,7 +99,7 @@ ruleTester.run('prefer-read-only-props', rule, {
       parser: 'babel-eslint'
     },
     {
-      // No error because this is not a component
+      // No error, because this is not a component
       code: `
         const notAComponent = (props: {n: number}) => {
           return props.n + 1;
