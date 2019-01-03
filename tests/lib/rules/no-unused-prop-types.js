@@ -2935,11 +2935,42 @@ ruleTester.run('no-unused-prop-types', rule, {
           used: string,
         }
         class Hello extends React.Component<Props> {
-          renderHelper = ({unused}: {unused: string}) => {
+          renderHelper = ({notAProp}: {notAProp: string}) => {
             return <div />;
           }
           render() {
             return <div>{this.props.used}</div>;
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type Props = {
+          used: string,
+        }
+        class Hello extends React.Component<Props> {
+          componentDidMount() {
+            foo(
+              ({notAProp}: {notAProp: string}) => (<div />)
+            );
+          }
+          render() {
+            return <div>{this.props.used}</div>;
+          }
+        }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      code: `
+        type Props = {
+          used: string,
+        }
+        class Hello extends React.Component<Props> {
+          render() {
+            return <QueryRenderer
+              render={({notAProp}: {notAProp: string}) => <div>{this.props.used}</div>}
+            />;
           }
         }
       `,
