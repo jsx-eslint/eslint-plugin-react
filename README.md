@@ -48,6 +48,11 @@ You should also specify settings that will be shared across all the plugin rules
         "forbidExtraProps",
         {"property": "freeze", "object": "Object"},
         {"property": "myFavoriteWrapper"}
+    ],
+    "linkComponents": [
+      // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
+      "Hyperlink",
+      {"name": "Link", "linkAttribute": "to"}
     ]
   }
 }
