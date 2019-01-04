@@ -820,6 +820,18 @@ const Component = () => (
 );
     `,
     options: ['tab', {checkAttributes: false}]
+  }, {
+    code: `
+    function Foo() {
+      return (
+        <input
+          type="radio"
+          defaultChecked
+        />
+      );
+    }
+    `,
+    options: [2, {checkAttributes: true}]
   }],
 
   invalid: [{
