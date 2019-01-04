@@ -3,6 +3,27 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.12.3] - 2019-01-04
+
+### Fixed
+* [`jsx-indent`][]: Prevent crash on valueless props ([#2120][], @jomasti)
+* [`jsx-fragments`][]: avoid crashing on self-closing fragments ([#2113][], @alexzherdev)
+* [`no-unused-prop-types`][]: Fix propType detection inside class bodies ([#2115][], @drx)
+* [`no-unused-prop-types`][]: fix issue with propTypes misclassifying props ([#2111][], @drx)
+* [`display-name`][]: fix false positive for `React.memo` ([#2109][], @jomasti)
+
+### Changed
+* [Docs] add a missing comma in the JSON settings ([#2117][], @haideralsh)
+* [Docs] update README to document React version detection ([#2114][], @mohsinulhaq)
+
+[#2120]: https://github.com/yannickcr/eslint-plugin-react/issues/2120
+[#2117]: https://github.com/yannickcr/eslint-plugin-react/issues/2117
+[#2115]: https://github.com/yannickcr/eslint-plugin-react/issues/2115
+[#2114]: https://github.com/yannickcr/eslint-plugin-react/issues/2114
+[#2113]: https://github.com/yannickcr/eslint-plugin-react/issues/2113
+[#2111]: https://github.com/yannickcr/eslint-plugin-react/issues/2111
+[#2109]: https://github.com/yannickcr/eslint-plugin-react/issues/2109
+
 ## [7.12.2] - 2019-01-02
 
 ### Fixed
