@@ -4334,6 +4334,25 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'text\' is missing in props validation'
       }]
+    }, {
+      code: `
+        import PropTypes from 'prop-types';
+        import React from 'react';
+
+        const MyComponent = (props) => {
+          switch (props.usedProp) {
+            case 1:
+              return (<div />);
+            default:
+              return <div />;
+          }
+        };
+
+        export default MyComponent;
+      `,
+      errors: [{
+        message: '\'usedProp\' is missing in props validation'
+      }]
     }
   ]
 });

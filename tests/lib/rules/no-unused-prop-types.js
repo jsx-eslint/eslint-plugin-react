@@ -4961,6 +4961,30 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'person.lastname\' PropType is defined but prop is never used'
       }]
+    }, {
+      code: `
+        import PropTypes from 'prop-types';
+        import React from 'react';
+
+        const MyComponent= (props) => {
+          switch (props.usedProp) {
+            case 1:
+              return (<div />);
+            default:
+              return <div />;
+          }
+        };
+
+        MyComponent.propTypes = {
+          usedProp: PropTypes.string,
+          unUsedProp: PropTypes.string,
+        };
+
+        export default MyComponent;
+      `,
+      errors: [{
+        message: '\'unUsedProp\' PropType is defined but prop is never used'
+      }]
     }
 
     /* , {

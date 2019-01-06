@@ -2199,6 +2199,29 @@ ruleTester.run('require-default-props', rule, {
       errors: [{
         message: 'propType "name" is not required, but has no corresponding defaultProps declaration.'
       }]
+    }, {
+      code: `
+        import PropTypes from 'prop-types';
+        import React from 'react';
+
+        const MyComponent= (props) => {
+          switch (props.usedProp) {
+            case 1:
+              return (<div />);
+            default:
+              return <div />;
+          }
+        };
+
+        MyComponent.propTypes = {
+          usedProp: PropTypes.string,
+        };
+
+        export default MyComponent;
+      `,
+      errors: [{
+        message: 'propType "usedProp" is not required, but has no corresponding defaultProps declaration.'
+      }]
     }
   ]
 });
