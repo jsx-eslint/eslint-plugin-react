@@ -2277,6 +2277,25 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       parser: 'babel-eslint'
+    }, {
+      code: `
+        import React from 'react';
+        import PropTypes from 'prop-types';
+        import {connect} from 'react-redux';
+
+        class Foo extends React.Component {
+          render() {
+            return this.props.children;
+          }
+        }
+
+        Foo.propTypes = {
+          children: PropTypes.element.isRequired
+        };
+
+        export const Unconnected = Foo;
+        export default connect(Foo);
+      `
     }
   ],
 
