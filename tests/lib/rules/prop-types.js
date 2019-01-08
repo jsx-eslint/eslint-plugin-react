@@ -2296,6 +2296,13 @@ ruleTester.run('prop-types', rule, {
         export const Unconnected = Foo;
         export default connect(Foo);
       `
+    }, {
+      code: `
+        const a = {};
+        function fn1() {}
+        const b = a::fn1();
+      `,
+      parser: 'babel-eslint'
     }
   ],
 
