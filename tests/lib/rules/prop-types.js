@@ -4379,6 +4379,21 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'usedProp\' is missing in props validation'
       }]
+    },
+    {
+      code: `
+        export default class Controller extends React.Component {
+          handleAdd = id => {
+            this.setState((state, { name }) => {
+                const item = this.buildItem(id);
+            });
+          };
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'name\' is missing in props validation'
+      }]
     }
   ]
 });
