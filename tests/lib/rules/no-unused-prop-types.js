@@ -2975,6 +2975,17 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: 'babel-eslint'
+    },
+    {
+      code: `
+        export default class Foo extends React.Component {
+          render() {
+            return null;
+          }
+        }
+
+        Foo.defaultProps = Object.assign({});
+      `
     }
   ],
 
