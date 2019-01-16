@@ -4394,6 +4394,26 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'name\' is missing in props validation'
       }]
+    },
+    {
+      code: `
+        export default class extends React.Component {
+          onSubmit = () => {
+            this.setState((state, { a }) => {
+              a.b.c();
+              return null;
+            });
+          };
+
+          render() {
+            return null;
+          }
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'a\' is missing in props validation'
+      }]
     }
   ]
 });
