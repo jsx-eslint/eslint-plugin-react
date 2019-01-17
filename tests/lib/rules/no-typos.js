@@ -619,6 +619,20 @@ ruleTester.run('no-typos', rule, {
     `,
     parser: 'babel-eslint',
     parserOptions: parserOptions
+  }, {
+    code: `
+      import { string, element } from "prop-types";
+
+      class Sample extends React.Component {
+         render() { return null; }
+      }
+
+      Sample.propTypes = {
+        title: string.isRequired,
+        body: element.isRequired
+      };
+    `,
+    parserOptions: parserOptions
   }],
 
   invalid: [{
