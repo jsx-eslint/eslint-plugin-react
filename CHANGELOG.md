@@ -3,6 +3,29 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.12.4] - 2019-01-16
+
+### Fixed
+* [`no-unused-prop-types`][]: avoid a crash ([#2131][], @ljharb)
+* [`prop-types`][]: avoid further crashes from nonexistent nodes in unusedPropTypes ([#2127][], @ljharb)
+* [`prop-types`][]: Read name of callee object ([#2125][], @CrOrc)
+* [`prop-types`][]: Ignore reassignments when matching props declarations with components ([#2051][], [#1957][], @yannickcr)
+* [`prop-types`][], [`no-unused-prop-types`][], [`require-default-props`][]: Detect components with return statement in switch/case ([#2118][], @yannickcr)
+
+### Changed
+* [`prop-types`][], [`no-typos`][]: add passing test cases ([#2123][], [#2128][], [#2136][], [#2134][], @ljharb)
+
+[#2136]: https://github.com/yannickcr/eslint-plugin-react/issues/2136
+[#2134]: https://github.com/yannickcr/eslint-plugin-react/issues/2134
+[#2131]: https://github.com/yannickcr/eslint-plugin-react/issues/2131
+[#2128]: https://github.com/yannickcr/eslint-plugin-react/issues/2128
+[#2127]: https://github.com/yannickcr/eslint-plugin-react/issues/2127
+[#2125]: https://github.com/yannickcr/eslint-plugin-react/pull/2125
+[#2123]: https://github.com/yannickcr/eslint-plugin-react/issues/2123
+[#2118]: https://github.com/yannickcr/eslint-plugin-react/issues/2118
+[#2051]: https://github.com/yannickcr/eslint-plugin-react/issues/2051
+[#1957]: https://github.com/yannickcr/eslint-plugin-react/issues/1957
+
 ## [7.12.3] - 2019-01-04
 
 ### Fixed
