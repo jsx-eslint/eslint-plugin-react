@@ -4414,6 +4414,34 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'a\' is missing in props validation'
       }]
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          contructor(props) {
+            super(props);
+            this.initialValues = {
+              test: '',
+            };
+          }
+
+          render = () => {
+            return (
+              <Component
+                initialValues={this.props.initialValues || this.initialValues}
+              >
+                {formikProps => (
+                  <Input {...formikProps} />
+                )}
+              </Component>
+            );
+          }
+        }
+      `,
+      parser: 'babel-eslint',
+      errors: [{
+        message: '\'initialValues\' is missing in props validation'
+      }]
     }
   ]
 });
