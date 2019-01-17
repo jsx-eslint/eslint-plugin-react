@@ -452,6 +452,17 @@ ruleTester.run('display-name', rule, {
 
       export default React.memo(Component)
     `
+  }, {
+    code: `
+      function F() {
+        let items = [];
+        let testData = [{a: "test1", displayName: "test2"}, {a: "test1", displayName: "test2"}];
+        for (let item of testData) {
+            items.push({a: item.a, b: item.displayName});
+        }
+        return <div>{items}</div>;
+      }
+    `
   }],
 
   invalid: [{
