@@ -83,4 +83,14 @@ Overwrite the default forbidden entities array `['>', '"', '\'', '}']` with your
 
 ```js
 "react/no-unescaped-entities": ["error", {"forbid": [">", "}"]}],
+// or
+"react/no-unescaped-entities": ["error", {"forbid": [{
+  char: ">",
+  alternatives: ['&gt;']
+}, {
+  char: "}",
+  alternatives: ['&#125;']
+}]}],
 ```
+
+Where `char` is a special character and `alternatives` is the correct escapes.
