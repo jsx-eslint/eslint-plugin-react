@@ -20,7 +20,6 @@ This rule aims to prevent user generated links from creating security vulnerabil
 
 * enabled: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
 * enforce: optional string, 'always' or 'never'
-* Link components can be something other than an `<a>`, see [shared settings](https://github.com/yannickcr/eslint-plugin-react/blob/master/README.md#configuration) for `linkComponents` configuration)
 
 ### `enforceDynamicLinks`
 
@@ -55,9 +54,9 @@ When {"enforceDynamicLinks": "never"} is set, the following patterns are **not**
 var Hello = <a target='_blank' href={dynamicLink}></a>
 ```
 
-### Link components
+### Custom link components
 
-Link components can be something other than an `<a>`, see [shared settings](https://github.com/yannickcr/eslint-plugin-react/blob/master/README.md#configuration) for `linkComponents` configuration)
+This rule supports the ability to use custom components for links, such as `<Link />` which is popular in libraries like `react-router`, `next.js` and `gatsby`. To enable this, define your custom link components in the global [shared settings](https://github.com/yannickcr/eslint-plugin-react/blob/master/README.md#configuration) under the `linkComponents` configuration area. Once configured, this rule will check those components as if they were `<a />` elements.
 
 The following patterns are considered errors:
 
