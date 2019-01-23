@@ -47,6 +47,16 @@ ruleTester.run('jsx-no-target-blank', rule, {
     {
       code: '<a target="_blank" href={ dynamicLink }></a>',
       options: [{enforceDynamicLinks: 'never'}]
+    },
+    {
+      code: '<Link target="_blank" href={ dynamicLink }></Link>',
+      options: [{enforceDynamicLinks: 'never'}],
+      settings: {linkComponents: ['Link']}
+    },
+    {
+      code: '<Link target="_blank" to={ dynamicLink }></Link>',
+      options: [{enforceDynamicLinks: 'never'}],
+      settings: {linkComponents: {name: 'Link', linkAttribute: 'to'}}
     }
   ],
   invalid: [{
@@ -82,6 +92,16 @@ ruleTester.run('jsx-no-target-blank', rule, {
   }, {
     code: '<a target="_blank" href={ dynamicLink }></a>',
     options: [{enforceDynamicLinks: 'always'}],
+    errors: defaultErrors
+  }, {
+    code: '<Link target="_blank" href={ dynamicLink }></Link>',
+    options: [{enforceDynamicLinks: 'always'}],
+    settings: {linkComponents: ['Link']},
+    errors: defaultErrors
+  }, {
+    code: '<Link target="_blank" to={ dynamicLink }></Link>',
+    options: [{enforceDynamicLinks: 'always'}],
+    settings: {linkComponents: {name: 'Link', linkAttribute: 'to'}},
     errors: defaultErrors
   }]
 });
