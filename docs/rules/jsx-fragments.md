@@ -4,6 +4,8 @@ In JSX, a React fragment is created either with `<React.Fragment>...</React.Frag
 
 Support for fragments was added in React v16.2, so the rule will warn on either of these forms if an older React version is specified in [shared settings][shared_settings].
 
+**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+
 ## Rule Options
 
 ```js
