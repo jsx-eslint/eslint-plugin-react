@@ -99,6 +99,20 @@ ruleTester.run('no-multi-comp', rule, {
       '};'
     ].join('\n'),
     parserOptions: Object.assign({sourceType: 'module'}, parserOptions)
+  }, {
+    code: `
+      const Hello = React.memo(function(props) {
+        return <div>Hello {props.name}</div>;
+      });
+      class HelloJohn extends React.Component {
+        render() {
+          return <Hello name="John" />;
+        }
+      }
+    `,
+    options: [{
+      ignoreStateless: true
+    }]
   }],
 
   invalid: [{
