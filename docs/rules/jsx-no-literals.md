@@ -28,13 +28,14 @@ var Hello = <div>
 
 There are two options:
 
-* `noStrings` - Enforces no string literals used as children, wrapped or unwrapped.
+* `noStrings` (default: `false`) - Enforces no string literals used as children, wrapped or unwrapped.
 * `allowedStrings` - An array of unique string values that would otherwise warn, but will be ignored.
+* `ignoreProps` (default: `false`) - When `true` the rule ignores literals used in props, wrapped or unwrapped.
 
 To use, you can specify as follows:
 
 ```js
-"react/jsx-no-literals": [<enabled>, {"noStrings": true, "allowedStrings": ["allowed"]}]
+"react/jsx-no-literals": [<enabled>, {"noStrings": true, "allowedStrings": ["allowed"], "ignoreProps": false}]
 ```
 
 In this configuration, the following are considered warnings:
@@ -52,6 +53,19 @@ var Hello = <div>
   {'test'}
 </div>;
 ```
+
+```jsx
+var Hello = <div class='xx' />;
+```
+
+```jsx
+var Hello = <div class={'xx'} />;
+```
+
+```jsx
+var Hello = <div class={`xx`} />;
+```
+
 
 The following are **not** considered warnings:
 
@@ -75,6 +89,33 @@ var Hello = <div>allowed</div>
 var Hello = <div>
   allowed
 </div>;
+```
+
+```jsx
+// spread props object
+var Hello = <Text {...props} />
+```
+
+```jsx
+// use variable for prop values
+var Hello = <div class={xx} />
+```
+
+```jsx
+// cache
+class Comp1 extends Component {
+  asdf() {}
+
+  render() {
+    return (
+      <div onClick={this.asdf}>
+        {'asdjfl'}
+        test
+        {'foo'}
+      </div>
+    );
+  }
+}
 ```
 
 ## When Not To Use It

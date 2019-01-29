@@ -35,6 +35,10 @@ function jsxMessage(str) {
   return `Missing JSX expression container around literal string: “${str}”`;
 }
 
+function invalidProp(str) {
+  return `Invalid prop value: “${str}”`;
+}
+
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-no-literals', rule, {
 
@@ -140,7 +144,7 @@ ruleTester.run('jsx-no-literals', rule, {
         </Foo>
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{noStrings: true}]
+      options: [{noStrings: true, ignoreProps: true}]
     }, {
       code: `
         <Foo bar="test">
@@ -148,21 +152,21 @@ ruleTester.run('jsx-no-literals', rule, {
         </Foo>
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{noStrings: true}]
+      options: [{noStrings: true, ignoreProps: true}]
     }, {
       code: `
         <Foo bar="test">
           {intl.formatText(message)}
         </Foo>
       `,
-      options: [{noStrings: true}]
+      options: [{noStrings: true, ignoreProps: true}]
     }, {
       code: `
         <Foo bar="test">
           {translate('my.translate.key')}
         </Foo>
       `,
-      options: [{noStrings: true}]
+      options: [{noStrings: true, ignoreProps: true}]
     }, {
       code: '<Foo bar={true} />',
       options: [{noStrings: true}]
@@ -183,11 +187,11 @@ ruleTester.run('jsx-no-literals', rule, {
         class Comp1 extends Component {
           asdf() {}
           render() {
-            return <Foo bar={this.asdf} />;
+            return <Foo bar={this.asdf} class='xx' />;
           }
         }
       `,
-      options: [{noStrings: true}]
+      options: [{noStrings: true, ignoreProps: true}]
     }, {
       code: `
         class Comp1 extends Component {
@@ -260,6 +264,18 @@ ruleTester.run('jsx-no-literals', rule, {
         }
       `,
       options: [{noStrings: true, allowedStrings: ['   foo   ']}]
+    }, {
+      code: `
+        class Comp1 extends Component {
+          asdf() {}
+          render() {
+            const xx = 'xx';
+
+            return <Foo bar={this.asdf} class={xx} />;
+          }
+        }      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{noStrings: true, ignoreProps: false}]
     }
   ],
 
@@ -369,42 +385,33 @@ ruleTester.run('jsx-no-literals', rule, {
           {'Test'}
         </Foo>
       `,
-      parser: parsers.BABEL_ESLINT,
-      options: [{noStrings: true}],
-      errors: [{message: stringsMessage('\'Test\'')}]
-    }, {
-      code: `
-        <Foo bar="test">
-          {'Test'}
-        </Foo>
-      `,
-      options: [{noStrings: true}],
-      errors: [{message: stringsMessage('\'Test\'')}]
+      options: [{noStrings: true, ignoreProps: false}],
+      errors: [
+        {message: invalidProp('bar="test"')},
+        {message: stringsMessage('\'Test\'')}
+      ]
     }, {
       code: `
         <Foo bar="test">
           {'Test' + name}
         </Foo>
       `,
-      options: [{noStrings: true}],
-      errors: [{message: stringsMessage('\'Test\'')}]
+      options: [{noStrings: true, ignoreProps: false}],
+      errors: [
+        {message: invalidProp('bar="test"')},
+        {message: stringsMessage('\'Test\'')}
+      ]
     }, {
       code: `
         <Foo bar="test">
           Test
         </Foo>
       `,
-      parser: parsers.BABEL_ESLINT,
-      options: [{noStrings: true}],
-      errors: [{message: stringsMessage('Test')}]
-    }, {
-      code: `
-        <Foo bar="test">
-          Test
-        </Foo>
-      `,
-      options: [{noStrings: true}],
-      errors: [{message: stringsMessage('Test')}]
+      options: [{noStrings: true, ignoreProps: false}],
+      errors: [
+        {message: invalidProp('bar="test"')},
+        {message: stringsMessage('Test')}
+      ]
     }, {
       code: `
         <Foo>
@@ -415,33 +422,33 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [{message: stringsMessage('`Test`')}]
     }, {
       code: '<Foo bar={`Test`} />',
-      options: [{noStrings: true}],
+      options: [{noStrings: true, ignoreProps: false}],
       errors: [{message: stringsMessage('`Test`')}]
     }, {
       code: '<Foo bar={`${baz}`} />',
-      options: [{noStrings: true}],
+      options: [{noStrings: true, ignoreProps: false}],
       errors: [{message: stringsMessage('`${baz}`')}]
     }, {
       code: '<Foo bar={`Test ${baz}`} />',
-      options: [{noStrings: true}],
+      options: [{noStrings: true, ignoreProps: false}],
       errors: [{message: stringsMessage('`Test ${baz}`')}]
     }, {
       code: '<Foo bar={`foo` + \'bar\'} />',
-      options: [{noStrings: true}],
+      options: [{noStrings: true, ignoreProps: false}],
       errors: [
         {message: stringsMessage('`foo`')},
         {message: stringsMessage('\'bar\'')}
       ]
     }, {
       code: '<Foo bar={`foo` + `bar`} />',
-      options: [{noStrings: true}],
+      options: [{noStrings: true, ignoreProps: false}],
       errors: [
         {message: stringsMessage('`foo`')},
         {message: stringsMessage('`bar`')}
       ]
     }, {
       code: '<Foo bar={\'foo\' + `bar`} />',
-      options: [{noStrings: true}],
+      options: [{noStrings: true, ignoreProps: false}],
       errors: [
         {message: stringsMessage('\'foo\'')},
         {message: stringsMessage('`bar`')}
@@ -454,10 +461,16 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true, allowedStrings: ['asd']}],
+      options: [{noStrings: true, allowedStrings: ['asd'], ignoreProps: false}],
       errors: [
         {message: stringsMessage('\'foo\'')},
         {message: stringsMessage('asdf')}
+      ]
+    }, {
+      code: '<Foo bar={\'bar\'} />',
+      options: [{noStrings: true, ignoreProps: false}],
+      errors: [
+        {message: stringsMessage('\'bar\'')}
       ]
     }
   ]
