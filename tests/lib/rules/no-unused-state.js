@@ -671,6 +671,52 @@ eslintTester.run('no-unused-state', rule, {
       });
       `
     }, {
+      code: `
+      class SetStateDestructuringCallback extends Component {
+        state = {
+            used: 1, unused: 2
+        }
+        handleChange = () => {
+          this.setState(({unused}) => ({
+            used: unused * unused,
+          }));
+        }
+        render() {
+          return <div>{this.state.used}</div>
+        }
+      }
+      `,
+      parser: 'babel-eslint'
+    },
+    {
+      code: `
+      class SetStateCallbackStateCondition extends Component {
+        state = {
+            isUsed: true,
+            foo: 'foo'
+        }
+        handleChange = () => {
+          this.setState((prevState) => (prevState.isUsed ? {foo: 'bar', isUsed: false} : {}));
+        }
+        render() {
+          return <SomeComponent foo={this.state.foo} />;
+        }
+      }
+      `,
+      parser: 'babel-eslint'
+    }, {
+      // Don't error out
+      code: `
+      class Foo extends Component {
+        handleChange = function() {
+          this.setState(() => ({ foo: value }));
+        }
+        render() {
+          return <SomeComponent foo={this.state.foo} />;
+        }
+      }`,
+      parser: 'babel-eslint'
+    }, {
       // Don't error out
       code: `
       class Foo extends Component {
