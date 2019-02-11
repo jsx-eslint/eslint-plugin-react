@@ -38,6 +38,7 @@ You should also specify settings that will be shared across all the plugin rules
     "react": {
       "createClass": "createReactClass", // Regex for Component Factory to use,
                                          // default to "createReactClass"
+      "localName": "React" // Local name of React import, default to "<setttings.react.pragma>"
       "jsxPragma": "React.createElement" // JSX Pragma to use, default to "<settings.react.pragma>.createElement"
       "jsxFragPragma": "React.Fragment" // JSX Fragment Pragma to use, default to "<settings.react.pragma>.<settings.react.fragment>"
       "pragma": "React",  // *Deprecated* Pragma to use, default to "React"

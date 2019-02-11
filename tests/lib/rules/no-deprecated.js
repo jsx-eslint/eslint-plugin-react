@@ -80,9 +80,30 @@ ruleTester.run('no-deprecated', rule, {
       `
     },
     // Deprecated in a later version
-    {code: 'React.renderComponent()', settings: {react: {version: '0.11.0'}}},
-    {code: 'React.createClass()', settings: {react: {version: '15.4.0'}}},
-    {code: 'PropTypes', settings: {react: {version: '15.4.0'}}},
+    {
+      code: 'React.renderComponent()',
+      settings: {
+        react: {
+          version: '0.11.0'
+        }
+      }
+    },
+    {
+      code: 'React.createClass()',
+      settings: {
+        react: {
+          version: '15.4.0'
+        }
+      }
+    },
+    {
+      code: 'PropTypes',
+      settings: {
+        react: {
+          version: '15.4.0'
+        }
+      }
+    },
     {
       code: `
         class Foo extends React.Component {
@@ -91,8 +112,14 @@ ruleTester.run('no-deprecated', rule, {
           componentWillUpdate() {}
         }
       `,
-      settings: {react: {version: '16.998.0'}}
-    }
+      settings: {
+        react: {
+          version: '16.998.0'
+        }
+      }
+    },
+    // This one was a failed test, but does not compatible with jsx pragma of babel.
+    {code: '/** @jsx Foo */ Foo.renderComponent()'}
   ],
 
   invalid: [
@@ -102,11 +129,11 @@ ruleTester.run('no-deprecated', rule, {
     },
     {
       code: 'Foo.renderComponent()',
-      settings: {react: {pragma: 'Foo'}},
-      errors: [{message: errorMessage('Foo.renderComponent', '0.12.0', 'Foo.render')}]
-    },
-    {
-      code: '/** @jsx Foo */ Foo.renderComponent()',
+      settings: {
+        react: {
+          localName: 'Foo'
+        }
+      },
       errors: [{message: errorMessage('Foo.renderComponent', '0.12.0', 'Foo.render')}]
     },
     {
@@ -147,7 +174,11 @@ ruleTester.run('no-deprecated', rule, {
     },
     {
       code: 'Foo.createClass({});',
-      settings: {react: {pragma: 'Foo'}},
+      settings: {
+        react: {
+          localName: 'Foo'
+        }
+      },
       errors: [{message: errorMessage('Foo.createClass', '15.5.0', 'the npm module create-react-class')}]
     },
     {
