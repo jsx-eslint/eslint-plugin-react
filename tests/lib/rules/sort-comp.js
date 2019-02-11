@@ -466,7 +466,7 @@ ruleTester.run('sort-comp', rule, {
     }]
   }, {
     code: [
-      '// static lifecycle methods can be grouped (with statics)',
+      '// by default static lifecycle methods can be grouped with static',
       'class Hello extends React.Component {',
       '  static getDerivedStateFromProps() {}',
       '  constructor() {}',
@@ -474,12 +474,13 @@ ruleTester.run('sort-comp', rule, {
     ].join('\n')
   }, {
     code: [
-      '// static lifecycle methods can be grouped (with lifecycle)',
+      '// static lifecycle methods should be grouped under lifecycle with the preferLifecycle set to true',
       'class Hello extends React.Component {',
       '  constructor() {}',
       '  static getDerivedStateFromProps() {}',
       '}'
-    ].join('\n')
+    ].join('\n'),
+    options: [{preferLifecycle: true}]
   }],
 
   invalid: [{
@@ -764,5 +765,15 @@ ruleTester.run('sort-comp', rule, {
         'render'
       ]
     }]
+  }, {
+    code: [
+      '// static lifecycle methods should warn if not grouped under the lifecycle group',
+      'class Hello extends React.Component {',
+      '  static getDerivedStateFromProps() {}',
+      '  constructor() {}',
+      '}'
+    ].join('\n'),
+    errors: [{message: 'getDerivedStateFromProps should be placed after constructor'}],
+    options: [{preferLifecycle: true}]
   }]
 });
