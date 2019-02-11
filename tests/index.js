@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ruleFiles = fs.readdirSync(path.resolve(__dirname, '../lib/rules/'))
+  .filter(f => path.extname(f) === '.js')
   .map(f => path.basename(f, '.js'));
 
 describe('all rule files should be exported by the plugin', () => {
