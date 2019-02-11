@@ -3064,7 +3064,6 @@ ruleTester.run('prop-types', rule, {
       ]
     }, {
       code: [
-        '/** @jsx Foo */',
         'class Test extends Foo.Component {',
         '  render() {',
         '    return (',
@@ -3077,6 +3076,11 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       parser: 'babel-eslint',
+      settings: {
+        react: {
+          localName: 'Foo'
+        }
+      },
       errors: [
         {message: '\'lastname\' is missing in props validation'}
       ]

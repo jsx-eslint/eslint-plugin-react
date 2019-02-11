@@ -619,7 +619,6 @@ ruleTester.run('display-name', rule, {
     }]
   }, {
     code: `
-      /** @jsx Foo */
       var Hello = Foo.createClass({
         _renderHello: function() {
           return <span>Hello {this.props.name}</span>;
@@ -634,7 +633,8 @@ ruleTester.run('display-name', rule, {
     }],
     settings: {
       react: {
-        createClass: 'createClass'
+        createClass: 'createClass',
+        localName: 'Foo'
       }
     },
     parser: 'babel-eslint',

@@ -3509,7 +3509,6 @@ ruleTester.run('no-unused-prop-types', rule, {
       ]
     }, {
       code: [
-        '/** @jsx Foo */',
         'class Test extends Foo.Component {',
         '  render() {',
         '    return (',
@@ -3522,6 +3521,11 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n'),
       parser: 'babel-eslint',
+      settings: {
+        react: {
+          localName: 'Foo'
+        }
+      },
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
       ]
