@@ -44,9 +44,24 @@ ruleTester.run('button-has-type', rule, {
       code: 'React.createElement("button", {type: "button"})',
       options: [{reset: false}]
     },
+    {code: 'document.createElement("button")'},
     {
-      code: 'document.createElement("button")'
+      code: 'Foo("button", {type: "button"})',
+      settings: {
+        react: {
+          jsxPragma: 'Foo'
+        }
+      }
     },
+    {
+      code: 'Foo("span")',
+      settings: {
+        react: {
+          jsxPragma: 'Foo'
+        }
+      }
+    },
+    // Cases for deprecated settings
     {
       code: 'Foo.createElement("span")',
       settings: {
@@ -101,6 +116,30 @@ ruleTester.run('button-has-type', rule, {
         message: '"reset" is a forbidden value for button type attribute'
       }]
     },
+    {
+      code: 'Foo("button")',
+      errors: [{
+        message: 'Missing an explicit type attribute for button'
+      }],
+      settings: {
+        react: {
+          jsxPragma: 'Foo'
+        }
+      }
+    },
+    {
+      code: 'Foo("button", {type: "reset"})',
+      options: [{reset: false}],
+      errors: [{
+        message: '"reset" is a forbidden value for button type attribute'
+      }],
+      settings: {
+        react: {
+          jsxPragma: 'Foo'
+        }
+      }
+    },
+    // Cases for deprecated settings
     {
       code: 'Foo.createElement("button")',
       errors: [{
