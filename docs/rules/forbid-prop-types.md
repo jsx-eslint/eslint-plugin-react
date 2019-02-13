@@ -52,6 +52,24 @@ class Component extends React.Component {
 
 An array of strings, with the names of `PropTypes` keys that are forbidden. The default value for this option is `['any', 'array', 'object']`.
 
+You can also specify `empty` to forbid prop types which are functions from being used with no arguments. For example:
+
+```js
+// allowed
+Component.propTypes = {
+  foo: PropTypes.shape({
+    name: PropTypes.string
+  }),
+};
+```
+
+```js
+// forbidden
+Component.propTypes = {
+  foo: PropTypes.shape,
+};
+```
+
 ### `checkContextTypes`
 
 Whether or not to check `contextTypes` for forbidden prop types. The default value is false.
