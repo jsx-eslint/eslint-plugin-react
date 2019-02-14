@@ -213,7 +213,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -230,7 +231,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -245,7 +247,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -263,7 +266,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -281,7 +285,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -296,7 +301,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -311,7 +317,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -328,7 +335,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -1036,7 +1044,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -1051,7 +1060,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -1066,7 +1076,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -1081,7 +1092,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -1096,7 +1108,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -1111,7 +1124,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -1126,7 +1140,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -1141,7 +1156,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -1156,7 +1172,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -1171,7 +1188,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -1186,7 +1204,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -1201,7 +1220,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -1216,7 +1236,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -1231,7 +1252,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
@@ -1246,7 +1268,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     options: [{
-      forbid: ['empty']
+      forbid: [],
+      forbidEmpty: true
     }],
     errors: 1
   }, {
