@@ -26,6 +26,22 @@ var Hello = createReactClass({
 });
 ```
 
+```jsx
+var Hello = createReactClass({
+ render: function() {
+  return <div ref={`hello`}>Hello, world.</div>;
+ }
+});
+```
+
+```jsx
+var Hello = createReactClass({
+ render: function() {
+  return <div ref={`hello${index}`}>Hello, world.</div>;
+ }
+});
+```
+
 The following patterns are **not** considered warnings:
 
 ```jsx
