@@ -39,3 +39,29 @@ var Hello = createReactClass({
   }
 });
 ```
+
+## Rule Options
+
+```js
+"react/no-string-refs": [<enabled>, {"noTemplateLiterals": <boolean>}]
+```
+### `noTemplateLiterals`
+
+When set to `true`, it will give warning when using template literals for refs.
+The following patterns will be considered warnings:
+
+```jsx
+var Hello = createReactClass({
+ render: function() {
+  return <div ref={`hello`}>Hello, world.</div>;
+ }
+});
+```
+
+```jsx
+var Hello = createReactClass({
+ render: function() {
+  return <div ref={`hello${index}`}>Hello, world.</div>;
+ }
+});
+```
