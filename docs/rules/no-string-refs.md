@@ -26,6 +26,30 @@ var Hello = createReactClass({
 });
 ```
 
+The following patterns are **not** considered warnings:
+
+```jsx
+var Hello = createReactClass({
+  componentDidMount: function() {
+    var component = this.hello;
+    // ...do something with component
+  },
+  render() {
+    return <div ref={(c) => { this.hello = c; }}>Hello, world.</div>;
+  }
+});
+```
+
+## Rule Options
+
+```js
+"react/no-string-refs": [<enabled>, {"noTemplateLiterals": <boolean>}]
+```
+### `noTemplateLiterals`
+
+When set to `true`, it will give warning when using template literals for refs.
+The following patterns will be considered warnings:
+
 ```jsx
 var Hello = createReactClass({
  render: function() {
@@ -39,19 +63,5 @@ var Hello = createReactClass({
  render: function() {
   return <div ref={`hello${index}`}>Hello, world.</div>;
  }
-});
-```
-
-The following patterns are **not** considered warnings:
-
-```jsx
-var Hello = createReactClass({
-  componentDidMount: function() {
-    var component = this.hello;
-    // ...do something with component
-  },
-  render() {
-    return <div ref={(c) => { this.hello = c; }}>Hello, world.</div>;
-  }
 });
 ```

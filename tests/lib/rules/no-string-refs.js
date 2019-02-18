@@ -38,6 +38,26 @@ ruleTester.run('no-refs', rule, {
       });
     `,
     parser: 'babel-eslint'
+  },
+  {
+    code: [
+      'var Hello = createReactClass({',
+      '  render: function() {',
+      '    return <div ref={`hello`}>Hello {this.props.name}</div>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parser: 'babel-eslint'
+  },
+  {
+    code: [
+      'var Hello = createReactClass({',
+      '  render: function() {',
+      '    return <div ref={`hello${index}`}>Hello {this.props.name}</div>;',
+      '  }',
+      '});'
+    ].join('\n'),
+    parser: 'babel-eslint'
   }
   ],
 
@@ -110,6 +130,7 @@ ruleTester.run('no-refs', rule, {
       '});'
     ].join('\n'),
     parser: 'babel-eslint',
+    options: [{noTemplateLiterals: true}],
     errors: [{
       message: 'Using this.refs is deprecated.'
     }, {
@@ -128,6 +149,7 @@ ruleTester.run('no-refs', rule, {
       '});'
     ].join('\n'),
     parser: 'babel-eslint',
+    options: [{noTemplateLiterals: true}],
     errors: [{
       message: 'Using this.refs is deprecated.'
     }, {
