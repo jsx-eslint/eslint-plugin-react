@@ -446,6 +446,36 @@ ruleTester.run('forbid-prop-types', rule, {
     }]
   }, {
     code: [
+      'var React = require("react");',
+      'var Hello = createReactClass({',
+      '  propTypes: {',
+      '    retailer: React.PropTypes.shape({ foo: React.PropTypes.string }),',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      forbidEmpty: true
+    }]
+  }, {
+    code: [
+      'import React from "react";',
+      'var Hello = createReactClass({',
+      '  propTypes: {',
+      '    retailer: React.PropTypes.shape({ foo: React.PropTypes.string }),',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      forbidEmpty: true
+    }]
+  }, {
+    code: [
       'var First = createReactClass({',
       '  childContextTypes: externalPropTypes,',
       '  render: function() {',
@@ -1448,6 +1478,40 @@ ruleTester.run('forbid-prop-types', rule, {
       'var Hello = createReactClass({',
       '  propTypes: {',
       '    retailer: shape,',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      forbid: [],
+      forbidEmpty: true
+    }],
+    errors: 1
+  }, {
+    code: [
+      'var React = require("react");',
+      'var Hello = createReactClass({',
+      '  propTypes: {',
+      '    retailer: React.PropTypes.shape,',
+      '  },',
+      '  render: function() {',
+      '    return <div />;',
+      '  }',
+      '});'
+    ].join('\n'),
+    options: [{
+      forbid: [],
+      forbidEmpty: true
+    }],
+    errors: 1
+  }, {
+    code: [
+      'import React from "react";',
+      'var Hello = createReactClass({',
+      '  propTypes: {',
+      '    retailer: React.PropTypes.shape,',
       '  },',
       '  render: function() {',
       '    return <div />;',
