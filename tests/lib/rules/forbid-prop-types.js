@@ -2089,5 +2089,4 @@ ruleTester.run('forbid-prop-types', rule, {
     }],
     errors: 1
   }]
-
 });
