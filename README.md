@@ -30,7 +30,7 @@ Use [our preset](#recommended) to get reasonable defaults:
   ]
 ```
 
-You should also specify settings that will be shared across all the plugin rules.
+You should also specify settings that will be shared across all the plugin rules. ([More about eslint shared settings](https://eslint.org/docs/user-guide/configuring#adding-shared-settings))
 
 ```json5
 {
@@ -41,6 +41,8 @@ You should also specify settings that will be shared across all the plugin rules
       "pragma": "React",  // Pragma to use, default to "React"
       "version": "detect", // React version. "detect" automatically picks the version you have installed.
                            // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
+                           // default to latest and warns if missing
+                           // It will default to "detect" in the future
       "flowVersion": "0.53" // Flow version
     },
     "propWrapperFunctions": [
