@@ -326,6 +326,25 @@ ruleTester.run('jsx-sort-default-props', rule, {
       'First.propTypes = propTypes;',
       'First.defaultProps = defaultProps;'
     ].join('\n')
+  }, {
+    code: [
+      'const defaults = {',
+      '  b: "b"',
+      '};',
+      'const First = (props) => <div />;',
+      'export const propTypes = {',
+      '    a: PropTypes.string,',
+      '    b: PropTypes.string,',
+      '    z: PropTypes.string,',
+      '};',
+      'export const defaultProps = {',
+      '    ...defaults,',
+      '    a: "a",',
+      '    z: "z",',
+      '};',
+      'First.propTypes = propTypes;',
+      'First.defaultProps = defaultProps;'
+    ].join('\n')
   }],
 
   invalid: [{
