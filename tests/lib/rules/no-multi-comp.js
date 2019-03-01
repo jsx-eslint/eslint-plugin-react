@@ -116,6 +116,111 @@ ruleTester.run('no-multi-comp', rule, {
     options: [{
       ignoreStateless: true
     }]
+  }, {
+    code: `
+  class StoreListItem extends React.PureComponent {
+    // A bunch of stuff here
+  }
+  export default React.forwardRef((props, ref) => <StoreListItem {...props} forwardRef={ref} />);
+  `,
+    options: [{
+      ignoreStateless: false
+    }]
+  }, {
+    code: `
+  class StoreListItem extends React.PureComponent {
+    // A bunch of stuff here
+  }
+  export default React.forwardRef((props, ref) => {
+    return <StoreListItem {...props} forwardRef={ref} />
+  });
+  `,
+    options: [{
+      ignoreStateless: false
+    }]
+  }, {
+    code: `
+  const HelloComponent = (props) => {
+    return <div></div>;
+  }
+  export default React.forwardRef((props, ref) => <HelloComponent {...props} forwardRef={ref} />);
+  `,
+    options: [{
+      ignoreStateless: false
+    }]
+  }, {
+    code: `
+  class StoreListItem extends React.PureComponent {
+    // A bunch of stuff here
+  }
+  export default React.forwardRef(
+    function myFunction(props, ref) {
+      return <StoreListItem {...props} forwardedRef={ref} />;
+    }
+  );
+  `,
+    options: [{
+      ignoreStateless: false
+    }]
+  }, {
+    code: `
+  class StoreListItem extends React.PureComponent {
+    // A bunch of stuff here
+  }
+  export default React.forwardRef((props, ref) => <StoreListItem {...props} forwardRef={ref} />);
+  `,
+    options: [{
+      ignoreStateless: true
+    }]
+  }, {
+    code: `
+  class StoreListItem extends React.PureComponent {
+    // A bunch of stuff here
+  }
+  export default React.forwardRef((props, ref) => {
+    return <StoreListItem {...props} forwardRef={ref} />
+  });
+  `,
+    options: [{
+      ignoreStateless: true
+    }]
+  }, {
+    code: `
+  const HelloComponent = (props) => {
+    return <div></div>;
+  }
+  export default React.forwardRef((props, ref) => <HelloComponent {...props} forwardRef={ref} />);
+  `,
+    options: [{
+      ignoreStateless: true
+    }]
+  }, {
+    code: `
+  const HelloComponent = (props) => {
+    return <div></div>;
+  }
+  class StoreListItem extends React.PureComponent {
+    // A bunch of stuff here
+  }
+  export default React.forwardRef(
+    function myFunction(props, ref) {
+      return <StoreListItem {...props} forwardedRef={ref} />;
+    }
+  );
+  `,
+    options: [{
+      ignoreStateless: true
+    }]
+  }, {
+    code: `
+  const HelloComponent = (props) => {
+    return <div></div>;
+  }
+  export default React.memo((props, ref) => <HelloComponent {...props} />);
+  `,
+    options: [{
+      ignoreStateless: false
+    }]
   }],
 
   invalid: [{
@@ -206,6 +311,51 @@ ruleTester.run('no-multi-comp', rule, {
     errors: [{
       message: 'Declare only one React component per file',
       line: 6
+    }]
+  }, {
+    code: `
+  class StoreListItem extends React.PureComponent {
+    // A bunch of stuff here
+  }
+  export default React.forwardRef((props, ref) => <div><StoreListItem {...props} forwardRef={ref} /></div>);
+  `,
+    options: [{
+      ignoreStateless: false
+    }],
+    parser: parsers.BABEL_ESLINT,
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 5
+    }]
+  }, {
+    code: `
+  const HelloComponent = (props) => {
+    return <div></div>;
+  }
+  const HelloComponent2 = React.forwardRef((props, ref) => <div></div>);
+  `,
+    options: [{
+      ignoreStateless: false
+    }],
+    parser: parsers.BABEL_ESLINT,
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 5
+    }]
+  }, {
+    code: `
+  const HelloComponent = (0, (props) => {
+    return <div></div>;
+  });
+  const HelloComponent2 = React.forwardRef((props, ref) => <><HelloComponent></HelloComponent></>);
+  `,
+    options: [{
+      ignoreStateless: false
+    }],
+    parser: parsers.BABEL_ESLINT,
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 5
     }]
   }]
 });
