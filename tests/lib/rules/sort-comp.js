@@ -480,6 +480,29 @@ ruleTester.run('sort-comp', rule, {
       '  static getDerivedStateFromProps() {}',
       '}'
     ].join('\n')
+  }, {
+    code: `
+      class MyComponent extends React.Component {
+        state = {};
+        foo;
+        static propTypes;
+
+        render() {
+          return null;
+        }
+      }
+    `,
+    parser: 'babel-eslint',
+    options: [{
+      order: [
+        'state',
+        'instance-variables',
+        'static-methods',
+        'lifecycle',
+        'render',
+        'everything-else'
+      ]
+    }]
   }],
 
   invalid: [{
