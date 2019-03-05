@@ -137,6 +137,17 @@ ruleTester.run('no-this-in-sfc', rule, {
       };
     }`,
     parser: 'babel-eslint'
+  }, {
+    code: `
+    export const Example = ({ prop }) => {
+      return {
+        handleClick: () => {},
+        renderNode() {
+          return <div onClick={this.handleClick} />;
+        },
+      };
+    };`,
+    parser: 'babel-eslint'
   }],
   invalid: [{
     code: `
