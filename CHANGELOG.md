@@ -2497,3 +2497,4 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`jsx-props-no-multi-spaces`]: docs/rules/jsx-props-no-multi-spaces.md
 [`no-unsafe`]: docs/rules/no-unsafe.md
 [`jsx-fragments`]: docs/rules/jsx-fragments.md
+[`jsx-props-no-spreading`]: docs/rules/jsx-props-no-spreading.md

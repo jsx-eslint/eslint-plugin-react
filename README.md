@@ -172,6 +172,7 @@ Enable the rules that you would like to use.
 * [react/jsx-fragments](docs/rules/jsx-fragments.md): Enforce shorthand or standard form for React fragments
 * [react/jsx-pascal-case](docs/rules/jsx-pascal-case.md): Enforce PascalCase for user-defined JSX components
 * [react/jsx-props-no-multi-spaces](docs/rules/jsx-props-no-multi-spaces.md): Disallow multiple spaces between inline JSX props (fixable)
+* [react/jsx-props-no-spreading](docs/rules/jsx-props-no-spreading.md): Disallow JSX props spreading
 * [react/jsx-sort-default-props](docs/rules/jsx-sort-default-props.md): Enforce default props alphabetical sorting
 * [react/jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting (fixable)
 * [react/jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
