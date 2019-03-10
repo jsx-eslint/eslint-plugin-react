@@ -142,6 +142,7 @@ Enable the rules that you would like to use.
 * [react/sort-comp](docs/rules/sort-comp.md): Enforce component methods order (fixable)
 * [react/sort-prop-types](docs/rules/sort-prop-types.md): Enforce propTypes declarations alphabetical sorting
 * [react/state-in-constructor](docs/rules/state-in-constructor.md): Enforce the state initialization style to be either in a constructor or with a class property
+* [react/static-property-placement](docs/rules/static-property-placement.md): Defines where React component static properties should be positioned.
 * [react/style-prop-object](docs/rules/style-prop-object.md): Enforce style prop value being an object
 * [react/void-dom-elements-no-children](docs/rules/void-dom-elements-no-children.md): Prevent void DOM elements (e.g. `<img />`, `<br />`) from receiving children
 

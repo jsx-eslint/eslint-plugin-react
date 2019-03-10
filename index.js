@@ -82,6 +82,7 @@ const allRules = {
   'sort-comp': require('./lib/rules/sort-comp'),
   'sort-prop-types': require('./lib/rules/sort-prop-types'),
   'state-in-constructor': require('./lib/rules/state-in-constructor'),
+  'static-property-placement': require('./lib/rules/static-property-placement'),
   'style-prop-object': require('./lib/rules/style-prop-object'),
   'void-dom-elements-no-children': require('./lib/rules/void-dom-elements-no-children')
 };
