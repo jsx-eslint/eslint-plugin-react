@@ -29,6 +29,42 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
   valid: [{
     code: '<App />'
   }, {
+    code: `
+\t\t<AllTabs>
+\t\t\tFail
+\t\t</AllTabs>
+    `
+  }, {
+    code: `
+\t\t<TagsWithTabs>
+      Fail
+\t\t</TagsWithTabs>
+    `
+  }, {
+    code: `
+    <ClosedTagWithTabs>
+      Fail
+\t\t</ClosedTagWithTabs>
+    `
+  }, {
+    code: `
+\t\t<OpenTagWithTabs>
+      OK
+    </OpenTagWithTabs>
+    `
+  }, {
+    code: `
+    <TextWithTabs>
+\t\t\tOK
+    </TextWithTabs>
+    `
+  }, {
+    code: `
+    <AllSpaces>
+      OK
+    </AllSpaces>
+    `
+  }, {
     code: '<App></App>'
   }, {
     code: '<App foo="bar" />'
