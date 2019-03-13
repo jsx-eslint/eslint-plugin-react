@@ -691,6 +691,114 @@ ruleTester.run('jsx-indent', rule, {
     parser: parsers.BABEL_ESLINT,
     options: [2]
   }, {
+    code: [
+      '<span>',
+      '    {do {',
+      '        const num = rollDice();',
+      '        <Thing num={num} />;',
+      '    }}',
+      '</span>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT
+  }, {
+    code: [
+      '<span>',
+      '    {(do {',
+      '        const num = rollDice();',
+      '        <Thing num={num} />;',
+      '    })}',
+      '</span>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT
+  }, {
+    code: [
+      '<span>',
+      '    {do {',
+      '        const purposeOfLife = getPurposeOfLife();',
+      '        if (purposeOfLife == 42) {',
+      '            <Thing />;',
+      '        } else {',
+      '            <AnotherThing />;',
+      '        }',
+      '    }}',
+      '</span>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT
+  }, {
+    code: [
+      '<span>',
+      '    {(do {',
+      '        const purposeOfLife = getPurposeOfLife();',
+      '        if (purposeOfLife == 42) {',
+      '            <Thing />;',
+      '        } else {',
+      '            <AnotherThing />;',
+      '        }',
+      '    })}',
+      '</span>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT
+  }, {
+    code: [
+      '<span>',
+      '    {do {',
+      '        <Thing num={rollDice()} />;',
+      '    }}',
+      '</span>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT
+  }, {
+    code: [
+      '<span>',
+      '    {(do {',
+      '        <Thing num={rollDice()} />;',
+      '    })}',
+      '</span>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT
+  }, {
+    code: [
+      '<span>',
+      '    {do {',
+      '        <Thing num={rollDice()} />;',
+      '        <Thing num={rollDice()} />;',
+      '    }}',
+      '</span>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT
+  }, {
+    code: [
+      '<span>',
+      '    {(do {',
+      '        <Thing num={rollDice()} />;',
+      '        <Thing num={rollDice()} />;',
+      '    })}',
+      '</span>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT
+  }, {
+    code: [
+      '<span>',
+      '    {do {',
+      '        const purposeOfLife = 42;',
+      '        <Thing num={purposeOfLife} />;',
+      '        <Thing num={purposeOfLife} />;',
+      '    }}',
+      '</span>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT
+  }, {
+    code: [
+      '<span>',
+      '    {(do {',
+      '        const purposeOfLife = 42;',
+      '        <Thing num={purposeOfLife} />;',
+      '        <Thing num={purposeOfLife} />;',
+      '    })}',
+      '</span>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT
+  }, {
     code: `
       class Test extends React.Component {
         render() {
@@ -1694,6 +1802,86 @@ const Component = () => (
     options: [2, {indentLogicalExpressions: true}],
     errors: [
       {message: 'Expected indentation of 12 space characters but found 10.'}
+    ]
+  }, {
+    code: [
+      '<span>',
+      '    {do {',
+      '        const num = rollDice();',
+      '            <Thing num={num} />;',
+      '    }}',
+      '</span>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT,
+    output: [
+      '<span>',
+      '    {do {',
+      '        const num = rollDice();',
+      '        <Thing num={num} />;',
+      '    }}',
+      '</span>'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 8 space characters but found 12.'}
+    ]
+  }, {
+    code: [
+      '<span>',
+      '    {(do {',
+      '        const num = rollDice();',
+      '            <Thing num={num} />;',
+      '    })}',
+      '</span>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT,
+    output: [
+      '<span>',
+      '    {(do {',
+      '        const num = rollDice();',
+      '        <Thing num={num} />;',
+      '    })}',
+      '</span>'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 8 space characters but found 12.'}
+    ]
+  }, {
+    code: [
+      '<span>',
+      '    {do {',
+      '    <Thing num={getPurposeOfLife()} />;',
+      '    }}',
+      '</span>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT,
+    output: [
+      '<span>',
+      '    {do {',
+      '        <Thing num={getPurposeOfLife()} />;',
+      '    }}',
+      '</span>'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 8 space characters but found 4.'}
+    ]
+  }, {
+    code: [
+      '<span>',
+      '    {(do {',
+      '    <Thing num={getPurposeOfLife()} />;',
+      '    })}',
+      '</span>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT,
+    output: [
+      '<span>',
+      '    {(do {',
+      '        <Thing num={getPurposeOfLife()} />;',
+      '    })}',
+      '</span>'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 8 space characters but found 4.'}
     ]
   }]
 });
