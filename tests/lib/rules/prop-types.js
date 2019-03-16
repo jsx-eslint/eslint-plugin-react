@@ -2303,6 +2303,19 @@ ruleTester.run('prop-types', rule, {
         const b = a::fn1();
       `,
       parser: 'babel-eslint'
+    },
+    {
+      // issue #1259
+      code: `
+        const Hello = props => {
+          const { notInProp } = dict[props.foo];
+          return <div />
+        }
+
+        Hello.propTypes = {
+          foo: PropTypes.number,
+        }
+      `
     }
   ],
 
