@@ -680,6 +680,9 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<>{bar} {baz}</>;',
     parser: 'babel-eslint'
+  }, {
+    code: '<div onLayout={() => { /* dummy callback to fix android bug with component measuring */ }} />',
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
