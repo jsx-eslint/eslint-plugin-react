@@ -241,6 +241,44 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: ['<a a={"start\\', '\\', 'end"}/>'].join('/n'),
       options: ['never']
+    },
+    {
+      code: `
+        <App prop={\`
+          a
+          b
+        \`} />
+      `,
+      options: ['never']
+    },
+    {
+      code: `
+        <App prop={\`
+          a
+          b
+        \`} />
+      `,
+      options: ['always']
+    },
+    {
+      code: `
+        <App>
+          {\`
+            a
+            b
+          \`}
+        </App>
+      `,
+      options: ['never']
+    },
+    {
+      code: `
+        <App>{\`
+          a
+          b
+        \`}</App>
+      `,
+      options: ['always']
     }
   ],
 
