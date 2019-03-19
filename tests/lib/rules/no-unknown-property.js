@@ -29,6 +29,7 @@ ruleTester.run('no-unknown-property', rule, {
   valid: [
     {code: '<App class="bar" />;'},
     {code: '<App for="bar" />;'},
+    {code: '<Foo.bar for="bar" />;'},
     {code: '<App accept-charset="bar" />;'},
     {code: '<meta charset="utf-8" />;'},
     {code: '<meta charSet="utf-8" />;'},
