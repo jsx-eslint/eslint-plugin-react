@@ -38,6 +38,10 @@ ruleTester.run('self-closing-comp', rule, {
         </Hello>
       `
     }, {
+      code: 'var HelloJohn = <Hello name="John"> </Hello>;'
+    }, {
+      code: 'var HelloJohn = <Hello name="John">        </Hello>;'
+    }, {
       code: 'var HelloJohn = <div>&nbsp;</div>;'
     }, {
       code: 'var HelloJohn = <div>{\' \'}</div>;'
@@ -55,6 +59,12 @@ ruleTester.run('self-closing-comp', rule, {
           <Hello name="John" />
         </Hello>
       `,
+      options: []
+    }, {
+      code: 'var HelloJohn = <div> </div>;',
+      options: []
+    }, {
+      code: 'var HelloJohn = <div>        </div>;',
       options: []
     }, {
       code: 'var HelloJohn = <div>&nbsp;</div>;',
@@ -117,13 +127,6 @@ ruleTester.run('self-closing-comp', rule, {
         message: 'Empty components are self-closing'
       }]
     }, {
-      code: 'var HelloJohn = <Hello name="John"> </Hello>;',
-      output: 'var HelloJohn = <Hello name="John" />;',
-      errors: [{
-        message: 'Empty components are self-closing'
-      }]
-    },
-    {
       code: 'var HelloJohn = <Hello name="John"></Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
       options: [],
@@ -138,13 +141,6 @@ ruleTester.run('self-closing-comp', rule, {
         message: 'Empty components are self-closing'
       }]
     }, {
-      code: 'var HelloJohn = <Hello name="John"> </Hello>;',
-      output: 'var HelloJohn = <Hello name="John" />;',
-      options: [],
-      errors: [{
-        message: 'Empty components are self-closing'
-      }]
-    }, {
       code: 'var contentContainer = <div className="content"></div>;',
       output: 'var contentContainer = <div className="content" />;',
       options: [{html: true}],
@@ -153,13 +149,6 @@ ruleTester.run('self-closing-comp', rule, {
       }]
     }, {
       code: 'var contentContainer = <div className="content">\n</div>;',
-      output: 'var contentContainer = <div className="content" />;',
-      options: [{html: true}],
-      errors: [{
-        message: 'Empty components are self-closing'
-      }]
-    }, {
-      code: 'var contentContainer = <div className="content"> </div>;',
       output: 'var contentContainer = <div className="content" />;',
       options: [{html: true}],
       errors: [{
