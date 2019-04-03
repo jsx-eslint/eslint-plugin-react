@@ -31,11 +31,11 @@ The following patterns are considered warnings:
 ## Rule Options
 
 It takes an option as the second parameter which can be `"tab"` for tab-based indentation or a positive number for space indentations.
-To enable checking the indentation of attributes, use the third parameter to turn on the `checkAttributes` option (default is false).
+To enable checking the indentation of attributes or add indentation to logical expressions, use the third parameter to turn on the `checkAttributes` (default is false) and `indentLogicalExpressions` (default is false) respectively.
 
 ```js
 ...
-"react/jsx-indent": [<enabled>, 'tab'|<number>, {checkAttributes: <boolean>}]
+"react/jsx-indent": [<enabled>, 'tab'|<number>, {checkAttributes: <boolean>, indentLogicalExpressions: <boolean>}]
 ...
 ```
 
@@ -60,6 +60,13 @@ The following patterns are considered warnings:
     (bar) => <div>hi</div>
 }
   />
+</App>
+
+// [2, 2, {indentLogicalExpressions: true}]
+<App>
+  {condition && (
+  <Hello />
+  )}
 </App>
 ```
 
@@ -91,6 +98,13 @@ The following patterns are **not** warnings:
     (bar) => <div>hi</div>
 }
   />
+</App>
+
+// [2, 2, {indentLogicalExpressions: true}]
+<App>
+  {condition && (
+    <Hello />
+  )}
 </App>
 ```
 

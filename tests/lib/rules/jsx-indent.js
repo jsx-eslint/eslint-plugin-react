@@ -832,6 +832,19 @@ const Component = () => (
     }
     `,
     options: [2, {checkAttributes: true}]
+  }, {
+    code: `
+    function Foo() {
+      return (
+        <div>
+          {condition && (
+            <p>Bar</p>
+          )}
+        </div>
+      );
+    }
+    `,
+    options: [2, {indentLogicalExpressions: true}]
   }],
 
   invalid: [{
@@ -1651,6 +1664,33 @@ const Component = () => (
     options: ['tab', {checkAttributes: true}],
     errors: [
       {message: 'Expected indentation of 2 tab characters but found 0.'}
+    ]
+  }, {
+    code: `
+    function Foo() {
+      return (
+        <div>
+          {condition && (
+          <p>Bar</p>
+          )}
+        </div>
+      );
+    }
+    `,
+    output: `
+    function Foo() {
+      return (
+        <div>
+          {condition && (
+            <p>Bar</p>
+          )}
+        </div>
+      );
+    }
+    `,
+    options: [2, {indentLogicalExpressions: true}],
+    errors: [
+      {message: 'Expected indentation of 12 space characters but found 10.'}
     ]
   }]
 });
