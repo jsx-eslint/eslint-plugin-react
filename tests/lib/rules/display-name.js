@@ -693,5 +693,65 @@ ruleTester.run('display-name', rule, {
     errors: [{
       message: 'Component definition is missing display name'
     }]
+  }, {
+    code: `
+      module.exports = function () {
+        function a () {}
+        const b = function b () {}
+        const c = function () {}
+        const d = () => {}
+        const obj = {
+          a: function a () {},
+          b: function b () {},
+          c () {},
+          d: () => {},
+        }
+        return React.createElement("div", {}, "text content");
+      }
+    `,
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: `
+      module.exports = () => {
+        function a () {}
+        const b = function b () {}
+        const c = function () {}
+        const d = () => {}
+        const obj = {
+          a: function a () {},
+          b: function b () {},
+          c () {},
+          d: () => {},
+        }
+
+        return React.createElement("div", {}, "text content");
+      }
+    `,
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: `
+      export default class extends React.Component {
+        render() {
+          function a () {}
+          const b = function b () {}
+          const c = function () {}
+          const d = () => {}
+          const obj = {
+            a: function a () {},
+            b: function b () {},
+            c () {},
+            d: () => {},
+          }
+          return <div>Hello {this.props.name}</div>;
+        }
+      }
+    `,
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
   }]
 });
