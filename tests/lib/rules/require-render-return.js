@@ -147,7 +147,8 @@ ruleTester.run('require-render-return', rule, {
       });
     `,
     errors: [{
-      message: 'Your render method should have return statement'
+      message: 'Your render method should have return statement',
+      line: 4
     }]
   }, {
     // Missing return in ES6 class
@@ -171,7 +172,8 @@ ruleTester.run('require-render-return', rule, {
       }
     `,
     errors: [{
-      message: 'Your render method should have return statement'
+      message: 'Your render method should have return statement',
+      line: 3
     }]
   }, {
     // Missing return ES6 class render property
@@ -184,7 +186,8 @@ ruleTester.run('require-render-return', rule, {
     `,
     parser: 'babel-eslint',
     errors: [{
-      message: 'Your render method should have return statement'
+      message: 'Your render method should have return statement',
+      type: 'ClassProperty'
     }]
   }]
 });
