@@ -410,6 +410,21 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       noSortAlphabetically: true
     }]
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        0: PropTypes.any,
+        1: PropTypes.any,
+      };
+    `,
+    options: [{
+      ignoreCase: true
+    }]
   }],
 
   invalid: [{
@@ -1565,5 +1580,37 @@ ruleTester.run('sort-prop-types', rule, {
       '  }',
       '});'
     ].join('\n')
+  }, {
+    code: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        1: PropTypes.any,
+        0: PropTypes.any,
+      };
+    `,
+    options: [{
+      ignoreCase: true
+    }],
+    errors: [{
+      message: ERROR_MESSAGE,
+      line: 9,
+      column: 9,
+      type: 'Property'
+    }],
+    output: `
+      class Component extends React.Component {
+        render() {
+          return <div />;
+        }
+      }
+      Component.propTypes = {
+        0: PropTypes.any,
+        1: PropTypes.any,
+      };
+    `
   }]
 });
