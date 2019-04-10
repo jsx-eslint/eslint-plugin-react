@@ -26,12 +26,13 @@ describe('Version', () => {
   });
 
   describe('Detect version', () => {
-    const context = {settings: {react: {version: 'detect'}}};
+    const context = {settings: {react: {version: 'detect', flowVersion: 'detect'}}};
 
     it('matches detected version', () => {
       process.chdir('detect-version');
       assert.equal(versionUtil.testReactVersion(context, '1.2.3'), true);
       assert.equal(versionUtil.testReactVersion(context, '1.2.4'), false);
+      assert.equal(versionUtil.testFlowVersion(context, '0.92.0'), true);
     });
 
     it('assumes latest version if react is not installed', () => {
@@ -39,6 +40,14 @@ describe('Version', () => {
 
       expectedErrorArgs = [
         ['Warning: React version was set to "detect" in eslint-plugin-react settings, but the "react" package is not installed. Assuming latest React version for linting.']
+      ];
+    });
+
+    it('assumes latest version if flow-bin is not installed', () => {
+      assert.equal(versionUtil.testFlowVersion(context, '999.999.999'), true);
+
+      expectedErrorArgs = [
+        ['Warning: Flow version was set to "detect" in eslint-plugin-react settings, but the "flow-bin" package is not installed. Assuming latest Flow version for linting.']
       ];
     });
   });
