@@ -30,7 +30,12 @@ var Hello = createReactClass({
 
 ```js
 ...
-"react/boolean-prop-naming": [<enabled>, { "propTypeNames": Array<string>, "rule": <string>, "message": <string> }]
+"react/boolean-prop-naming": [<enabled>, { 
+  "propTypeNames": Array<string>, 
+  "rule": <string>, 
+  "message": <string>, 
+  "validateNested": <boolean> 
+}]
 ...
 ```
 
@@ -85,4 +90,12 @@ And the failure would look like so:
 
 ```
 It is better if your prop (something) matches this pattern: (^is[A-Z]([A-Za-z0-9]?)+)
+```
+
+### `validateNested`
+
+This value is boolean. It tells if nested props should be validated as well. By default this is set to false but you can change it to true, to validate deeper layers of object:
+
+```jsx
+"react/boolean-prop-naming": ["error", { "validateNested": true }]
 ```

@@ -373,6 +373,46 @@ ruleTester.run('boolean-prop-naming', rule, {
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
     parser: 'babel-eslint'
+  }, {
+    code: `
+      class Hello extends React.Component {
+        render() {
+          return (
+            <div />
+          );
+        }
+      }
+
+      Hello.propTypes = {
+        isSomething: PropTypes.bool.isRequired,
+        nested: PropTypes.shape({
+          isWorking: PropTypes.bool
+        })
+      };
+    `
+  }, {
+    code: `
+      class Hello extends React.Component {
+        render() {
+          return (
+            <div />
+          );
+        }
+      }
+
+      Hello.propTypes = {
+        isSomething: PropTypes.bool.isRequired,
+        nested: PropTypes.shape({
+          nested: PropTypes.shape({
+            isWorking: PropTypes.bool
+          })
+        })
+      };
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+',
+      validateNested: true
+    }]
   }],
 
   invalid: [{
@@ -806,6 +846,56 @@ ruleTester.run('boolean-prop-naming', rule, {
     parser: 'babel-eslint',
     errors: [{
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
+    code: `
+      class Hello extends React.Component {
+        render() {
+          return (
+            <div />
+          );
+        }
+      }
+
+      Hello.propTypes = {
+        isSomething: PropTypes.bool.isRequired,
+        nested: PropTypes.shape({
+          failingItIs: PropTypes.bool
+        })
+      };
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+',
+      validateNested: true
+    }],
+    errors: [{
+      message: 'Prop name (failingItIs) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
+    code: `
+      class Hello extends React.Component {
+        render() {
+          return (
+            <div />
+          );
+        }
+      }
+
+      Hello.propTypes = {
+        isSomething: PropTypes.bool.isRequired,
+        nested: PropTypes.shape({
+          nested: PropTypes.shape({
+            failingItIs: PropTypes.bool
+          })
+        })
+      };
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+',
+      validateNested: true
+    }],
+    errors: [{
+      message: 'Prop name (failingItIs) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
   }]
 });
