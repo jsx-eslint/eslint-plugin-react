@@ -66,7 +66,7 @@ class Foo extends React.Component {
 
 When `true` the rule will ignore Components extending from `React.PureComponent` that use `this.props` or `this.context`.
 
-The following pattern is considered okay and does **not** cause warnings:
+The following patterns are considered okay and does **not** cause warnings:
 
 ```jsx
 class Foo extends React.PureComponent {
@@ -74,14 +74,10 @@ class Foo extends React.PureComponent {
     return <div>{this.props.foo}</div>;
   }
 }
-```
 
-The following pattern is considered a warning because it's not using props or context:
-
-```jsx
-class Foo extends React.PureComponent {
+class Bar extends React.PureComponent {
   render() {
-    return <div>Bar</div>;
+    return <div>Baz</div>;
   }
 }
 ```

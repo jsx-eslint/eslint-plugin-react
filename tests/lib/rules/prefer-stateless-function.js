@@ -304,6 +304,18 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: 'babel-eslint'
+    },
+    {
+      code: `
+        class Child extends PureComponent {
+          render() {
+            return <h1>I don't</h1>;
+          }
+        }
+      `,
+      options: [{
+        ignorePureComponents: true
+      }]
     }
   ],
 
@@ -339,9 +351,6 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      options: [{
-        ignorePureComponents: true
-      }],
       errors: [{
         message: 'Component should be written as a pure function'
       }]
