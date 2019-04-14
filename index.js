@@ -19,6 +19,7 @@ const allRules = {
   'jsx-closing-bracket-location': require('./lib/rules/jsx-closing-bracket-location'),
   'jsx-closing-tag-location': require('./lib/rules/jsx-closing-tag-location'),
   'jsx-curly-spacing': require('./lib/rules/jsx-curly-spacing'),
+  'jsx-curly-newline': require('./lib/rules/jsx-curly-newline'),
   'jsx-equals-spacing': require('./lib/rules/jsx-equals-spacing'),
   'jsx-filename-extension': require('./lib/rules/jsx-filename-extension'),
   'jsx-first-prop-new-line': require('./lib/rules/jsx-first-prop-new-line'),

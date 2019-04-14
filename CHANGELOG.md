@@ -2576,3 +2576,4 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`state-in-constructor`]: docs/rules/state-in-constructor.md
 [`jsx-props-no-spreading`]: docs/rules/jsx-props-no-spreading.md
 [`static-property-placement`]: docs/rules/static-property-placement.md
+[`jsx-curly-newline`]: docs/rules/jsx-curly-newline.md
