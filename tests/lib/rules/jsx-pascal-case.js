@@ -49,6 +49,9 @@ ruleTester.run('jsx-pascal-case', rule, {
     code: '<YMCA />',
     options: [{allowAllCaps: true}]
   }, {
+    code: '<YMCA />',
+    options: [{ignore: [/^[A-Z]+$/]}]
+  }, {
     code: '<Modal.Header />'
   }, {
     code: '<Modal:Header />'
