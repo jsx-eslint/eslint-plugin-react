@@ -9,20 +9,20 @@ It can warn other developers if they make a mistake while reusing the component 
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = createReactClass({
-  render: function() {
+class Hello extends React.Component {
+  render() {
     return <div>Hello {this.props.name}</div>;
   }
-});
+}
 
-var Hello = createReactClass({
-  propTypes: {
-    firstname: PropTypes.string.isRequired
-  },
-  render: function() {
+class Hello extends React.Component {
+  static propTypes = {
+    firstname: PropTypes.string.isRequired,
+  }
+  render() {
     return <div>Hello {this.props.firstname} {this.props.lastname}</div>; // lastname type is not defined in propTypes
   }
-});
+}
 
 function Hello({ name }) {
   return <div>Hello {name}</div>;
@@ -32,27 +32,18 @@ function Hello({ name }) {
 Examples of correct usage without warnings:
 
 ```jsx
-var Hello = createReactClass({
-  propTypes: {
-    name: PropTypes.string.isRequired,
-  },
-  render: function() {
-    return <div>Hello {this.props.name}</div>;
-  },
-});
-
-// Or in ES6:
-class HelloEs6 extends React.Component {
+class Hello extends React.Component {
   render() {
     return <div>Hello {this.props.name}</div>;
   }
 }
-HelloEs6.propTypes = {
+
+Hello.propTypes = {
   name: PropTypes.string.isRequired,
 };
 
-// ES6 + Public Class Fields (draft: https://tc39.github.io/proposal-class-public-fields/)
-class HelloEs6WithPublicClassField extends React.Component {
+// Public Class Fields (draft: https://tc39.github.io/proposal-class-public-fields/)
+class HelloWithPublicClassField extends React.Component {
   static propTypes = {
     name: PropTypes.string.isRequired,
   }
@@ -65,28 +56,28 @@ class HelloEs6WithPublicClassField extends React.Component {
 The following patterns are **not** considered warnings:
 
 ```jsx
-var Hello = createReactClass({
-  render: function() {
+class Hello extends React.Component {
+  render() {
     return <div>Hello World</div>;
   }
-});
+}
 
-var Hello = createReactClass({
-  propTypes: {
+class Hello extends React.Component {
+  static propTypes = {
     name: PropTypes.string.isRequired
-  },
-  render: function() {
+  }
+  render() {
     return <div>Hello {this.props.name}</div>;
   }
-});
+}
 
 // Referencing an external object disable the rule for the component
-var Hello = createReactClass({
-  propTypes: myPropTypes,
-  render: function() {
+class Hello extends React.Component {
+  static propTypes = myPropTypes;
+  render() {
     return <div>Hello {this.props.name}</div>;
   }
-});
+}
 
 function Hello({ name }) {
   return <div>Hello {name}</div>;
