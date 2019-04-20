@@ -3395,6 +3395,16 @@ ruleTester.run('prop-types', rule, {
       ]
     }, {
       code: [
+        'function SomeComponent({bar} = baz) {',
+        '  function f({foo}) {}',
+        '  return <div className={f()}>{bar}</div>;',
+        '}'
+      ].join('\n'),
+      errors: [
+        {message: '\'bar\' is missing in props validation'}
+      ]
+    }, {
+      code: [
         'class Hello extends React.PureComponent {',
         '  render() {',
         '    return <div>Hello {this.props.name}</div>;',
@@ -4224,6 +4234,21 @@ ruleTester.run('prop-types', rule, {
       `,
       errors: [{
         message: '\'bar\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          setZoo() {
+            this.setState((state, {zoo}) => ({ zoo }));
+          }
+          render() {
+            return <div />;
+          }
+        }
+      `,
+      errors: [{
+        message: '\'zoo\' is missing in props validation'
       }]
     },
     {
