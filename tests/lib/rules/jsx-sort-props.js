@@ -336,59 +336,75 @@ ruleTester.run('jsx-sort-props', rule, {
     {
       code: '<App key="key" b c="c" />',
       errors: [expectedShorthandLastError],
-      options: reservedFirstWithShorthandLast
+      options: reservedFirstWithShorthandLast,
+      output: '<App key="key" c="c" b />'
     },
     {
       code: '<App ref="ref" key="key" isShorthand veryLastAttribute="yes" />',
       errors: [expectedError, expectedShorthandLastError],
-      options: reservedFirstWithShorthandLast
+      options: reservedFirstWithShorthandLast,
+      output: '<App key="key" ref="ref" veryLastAttribute="yes" isShorthand />'
     },
     {
       code: '<App a z onFoo onBar />;',
       errors: [expectedError],
-      options: callbacksLastArgs
+      options: callbacksLastArgs,
+      output: '<App a z onBar onFoo />;'
     },
     {
       code: '<App a onBar onFoo z />;',
       errors: [expectedCallbackError],
-      options: callbacksLastArgs
+      options: callbacksLastArgs,
+      output: '<App a z onBar onFoo />;'
     },
     {
       code: '<App a="a" b />;',
       errors: [expectedShorthandFirstError],
-      options: shorthandFirstArgs
+      options: shorthandFirstArgs,
+      output: '<App b a="a" />;'
     },
     {
       code: '<App z x a="a" />;',
       errors: [expectedError],
-      options: shorthandFirstArgs
+      options: shorthandFirstArgs,
+      output: '<App x z a="a" />;'
     },
     {
       code: '<App b a="a" />;',
       errors: [expectedShorthandLastError],
-      options: shorthandLastArgs
+      options: shorthandLastArgs,
+      output: '<App a="a" b />;'
     },
     {
       code: '<App a="a" onBar onFoo z x />;',
       errors: [shorthandAndCallbackLastArgs],
-      options: shorthandLastArgs
+      options: shorthandLastArgs,
+      output: '<App a="a" onBar onFoo x z />;'
     },
-    {code: '<App b a />;', errors: [expectedError], options: sortAlphabeticallyArgs},
+    {
+      code: '<App b a />;',
+      errors: [expectedError],
+      options: sortAlphabeticallyArgs,
+      output: '<App a b />;'
+    },
     // reservedFirst
     {
       code: '<App a key={1} />',
       options: reservedFirstAsBooleanArgs,
-      errors: [expectedReservedFirstError]
+      errors: [expectedReservedFirstError],
+      output: '<App key={1} a />'
     },
     {
       code: '<div a dangerouslySetInnerHTML={{__html: "EPR"}} />',
       options: reservedFirstAsBooleanArgs,
-      errors: [expectedReservedFirstError]
+      errors: [expectedReservedFirstError],
+      output: '<div dangerouslySetInnerHTML={{__html: "EPR"}} a />'
     },
     {
       code: '<App ref="r" key={2} b />',
       options: reservedFirstAsBooleanArgs,
-      errors: [expectedError]
+      errors: [expectedError],
+      output: '<App key={2} ref="r" b />'
     },
     {
       code: '<App key={2} b a />',
@@ -411,12 +427,14 @@ ruleTester.run('jsx-sort-props', rule, {
     {
       code: '<App key={3} children={<App />} />',
       options: reservedFirstAsArrayArgs,
-      errors: [expectedError]
+      errors: [expectedError],
+      output: '<App children={<App />} key={3} />'
     },
     {
       code: '<App z ref="r" />',
       options: reservedFirstWithNoSortAlphabeticallyArgs,
-      errors: [expectedReservedFirstError]
+      errors: [expectedReservedFirstError],
+      output: '<App ref="r" z />'
     },
     {
       code: '<App key={4} />',
