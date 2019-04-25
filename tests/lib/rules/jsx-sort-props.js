@@ -343,7 +343,7 @@ ruleTester.run('jsx-sort-props', rule, {
       code: '<App ref="ref" key="key" isShorthand veryLastAttribute="yes" />',
       errors: [expectedError, expectedShorthandLastError],
       options: reservedFirstWithShorthandLast,
-      output: '<App ref="ref" key="key" veryLastAttribute="yes" isShorthand />'
+      output: '<App key="key" ref="ref" veryLastAttribute="yes" isShorthand />'
     },
     {
       code: '<App a z onFoo onBar />;',
