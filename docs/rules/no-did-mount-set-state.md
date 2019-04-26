@@ -49,6 +49,20 @@ var Hello = createReactClass({
 });
 ```
 
+```jsx
+var Hello = createReactClass({
+  componentDidMount: async function() {
+    const newName = await getName();
+    this.setState({
+      name: newName
+    });
+  },
+  render: function() {
+    return <div>Hello {this.state.name}</div>;
+  }
+});
+```
+
 ## Rule Options
 
 ```js

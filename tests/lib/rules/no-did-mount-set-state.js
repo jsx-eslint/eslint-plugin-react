@@ -75,6 +75,18 @@ ruleTester.run('no-did-mount-set-state', rule, {
       });
     `,
     parser: 'babel-eslint'
+  }, {
+    code: `
+      var Hello = createReactClass({
+        componentDidMount: async function() {
+          const data = await getFromServer(this.props);
+          this.setState({
+            data: data
+          });
+        }
+      });
+    `,
+    parser: 'babel-eslint'
   }],
 
   invalid: [{
@@ -220,6 +232,24 @@ ruleTester.run('no-did-mount-set-state', rule, {
     `,
     parser: 'babel-eslint',
     options: ['disallow-in-func'],
+    errors: [{
+      message: 'Do not use setState in componentDidMount'
+    }]
+  }, {
+    code: `
+      var Hello = createReactClass({
+        componentDidMount: async function() {
+          this.setState({
+            loading: true
+          });
+          const data = await getFromServer(this.props);
+          this.setState({
+            loading: false,
+            data: data
+          });
+        }
+      });
+    `,
     errors: [{
       message: 'Do not use setState in componentDidMount'
     }]
