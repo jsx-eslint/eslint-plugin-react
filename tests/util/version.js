@@ -2,26 +2,26 @@
 
 const path = require('path');
 const assert = require('assert');
-const sinon = require('sinon');
 const versionUtil = require('../../lib/util/version');
 
 describe('Version', () => {
   const base = path.resolve(__dirname, '..', 'fixtures', 'version');
   let cwd;
   let expectedErrorArgs = [];
+  let spy;
 
   beforeEach(() => {
     cwd = process.cwd();
     process.chdir(base);
-    sinon.stub(console, 'error');
+    spy = jest.spyOn(console, 'error').mockImplementation(() => {});
     expectedErrorArgs = [];
   });
 
   afterEach(() => {
     process.chdir(cwd);
 
-    const actualArgs = console.error.args; // eslint-disable-line no-console
-    console.error.restore(); // eslint-disable-line no-console
+    const actualArgs = console.error.mock.calls; // eslint-disable-line no-console
+    spy.mockRestore();
     assert.deepEqual(actualArgs, expectedErrorArgs);
   });
 

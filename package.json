@@ -9,7 +9,8 @@
     "lint": "eslint ./",
     "pretest": "npm run lint",
     "test": "npm run unit-test",
-    "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js"
+    "test:watch": "jest --watch",
+    "unit-test": "jest --coverage"
   },
   "files": [
     "LICENSE",
@@ -37,9 +38,7 @@
     "babel-eslint": "^10.0.1",
     "coveralls": "^3.0.2",
     "eslint": "^3.0.0 || ^4.0.0 || ^5.0.0",
-    "istanbul": "^0.4.5",
-    "mocha": "^6.1.4",
-    "sinon": "^7.2.2",
+    "jest": "^24.7.1",
     "typescript": "^3.2.2"
   },
   "peerDependencies": {
