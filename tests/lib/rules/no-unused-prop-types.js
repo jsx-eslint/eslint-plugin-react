@@ -11,6 +11,8 @@
 const rule = require('../../../lib/rules/no-unused-prop-types');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -147,7 +149,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  method;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -177,7 +179,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  icon: PropTypes.bool',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -198,7 +200,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -394,7 +396,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  "aria-controls": PropTypes.string',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -465,7 +467,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n'),
       options: [{skipShapeProps: false}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -475,7 +477,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -560,7 +562,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  propTypes: SomeOtherComponent.propTypes',
         '});'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -612,7 +614,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -625,7 +627,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -638,7 +640,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Should not be detected as a component
       code: [
@@ -648,7 +650,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  });',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'function HelloComponent() {',
@@ -662,7 +664,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}',
         'module.exports = HelloComponent();'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'function HelloComponent() {',
@@ -676,7 +678,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}',
         'module.exports = HelloComponent();'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class DynamicHello extends Component {',
@@ -699,7 +701,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  firstname: PropTypes.string,',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'const Hello = (props) => {',
@@ -713,7 +715,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  company: PropTypes.string',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'export default {',
@@ -723,7 +725,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Reassigned props are ignored
       code: [
@@ -734,7 +736,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'export default function FooBar(props) {',
@@ -747,7 +749,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -785,7 +787,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  return <span>{newProps.someProp}</span>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -797,7 +799,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -809,7 +811,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {name: Object;};',
@@ -820,7 +822,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
       type PropsA = { a: string }
@@ -835,7 +837,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type PropsA = { foo: string };
@@ -851,7 +853,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         import type { PropsA } from "./myPropsA";
@@ -867,7 +869,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type PropsB = { foo: string };
@@ -884,7 +886,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type PropsB = { foo: string };
@@ -901,7 +903,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'import type Props from "fake";',
@@ -912,7 +914,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -926,7 +928,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {name: {firstname: string;};};',
@@ -937,7 +939,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {name: {firstname: string;}};',
@@ -952,7 +954,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {name: {firstname: string;}};',
@@ -968,7 +970,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {name: {firstname: string;}};',
@@ -988,7 +990,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {ok: string | boolean;};',
@@ -999,7 +1001,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {result: {ok: string | boolean;}|{ok: number | Array}};',
@@ -1010,7 +1012,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {result?: {ok?: ?string | boolean;}|{ok?: ?number | Array}};',
@@ -1021,7 +1023,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -1031,7 +1033,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Ignore component validation if propTypes are composed using spread
       code: [
@@ -1069,7 +1071,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  return <div>Hello {firstname} {lastname}</div>',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {',
@@ -1081,7 +1083,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  return <div>Hello {firstname} {lastname}</div>',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {',
@@ -1093,7 +1095,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  return <div>Hello {firstname} {lastname}</div>',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type PropsUnionA = {',
@@ -1115,7 +1117,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'import type { FieldProps } from "redux-form"',
@@ -1126,7 +1128,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  options: Array<SelectOption>',
         '} & FieldProps'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'Card.propTypes = {',
@@ -1152,7 +1154,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  jobs: PropTypes.array',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {',
@@ -1162,21 +1164,21 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  return <div>Hello {firstname}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'function Greetings() {',
         '  return <div>{({name}) => <Hello name={name} />}</div>',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'function Greetings() {',
         '  return <div>{function({name}) { return <Hello name={name} />; }}</div>',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Should stop at the class when searching for a parent component
       code: [
@@ -1184,7 +1186,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  someMethod = ({width}) => {}',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Should stop at the decorator when searching for a parent component
       code: [
@@ -1193,7 +1195,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}])',
         'class Something extends Component {}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured shape props are skipped by default
       code: [
@@ -1210,7 +1212,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured props in componentWillReceiveProps shouldn't throw errors
       code: [
@@ -1224,7 +1226,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured props in componentWillReceiveProps shouldn't throw errors
       code: [
@@ -1251,7 +1253,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '})'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured props in componentWillReceiveProps shouldn't throw errors when used createReactClass, with default parser
       code: [
@@ -1277,7 +1279,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured function props in componentWillReceiveProps shouldn't throw errors
       code: [
@@ -1302,7 +1304,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '})'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured function props in componentWillReceiveProps shouldn't throw errors when used createReactClass, with default parser
       code: [
@@ -1329,7 +1331,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured props in the constructor shouldn't throw errors
       code: [
@@ -1357,7 +1359,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured function props in the constructor shouldn't throw errors
       code: [
@@ -1384,7 +1386,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured props in the `shouldComponentUpdate` method shouldn't throw errors
       code: [
@@ -1411,7 +1413,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '})'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured props in `shouldComponentUpdate` shouldn't throw errors when used createReactClass, with default parser
       code: [
@@ -1437,7 +1439,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured function props in the `shouldComponentUpdate` method shouldn't throw errors
       code: [
@@ -1462,7 +1464,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '})'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured function props in `shouldComponentUpdate` shouldn't throw errors when used createReactClass, with default parser
       code: [
@@ -1488,7 +1490,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured props in the `componentWillUpdate` method shouldn't throw errors
       code: [
@@ -1515,7 +1517,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '})'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured props in `componentWillUpdate` shouldn't throw errors when used createReactClass, with default parser
       code: [
@@ -1541,7 +1543,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured function props in the `componentWillUpdate` method shouldn't throw errors
       code: [
@@ -1566,7 +1568,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '})'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured function props in the `componentWillUpdate` method shouldn't throw errors when used createReactClass, with default parser
       code: [
@@ -1592,7 +1594,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured props in the `componentDidUpdate` method shouldn't throw errors
       code: [
@@ -1619,7 +1621,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '})'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured props in `componentDidUpdate` shouldn't throw errors when used createReactClass, with default parser
       code: [
@@ -1645,7 +1647,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured function props in the `componentDidUpdate` method shouldn't throw errors
       code: [
@@ -1670,7 +1672,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '})'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured function props in the `componentDidUpdate` method shouldn't throw errors when used createReactClass, with default parser
       code: [
@@ -1695,7 +1697,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured state props in `componentDidUpdate` [Issue #825]
       code: [
@@ -1720,7 +1722,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '})'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured state props in `componentDidUpdate` without custom parser [Issue #825]
       code: [
@@ -1863,7 +1865,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends Component {',
@@ -1901,7 +1903,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends Component {',
@@ -1940,7 +1942,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Props used inside of an async class property
       code: [
@@ -1953,7 +1955,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Multiple props used inside of an async class property
       code: [
@@ -1970,7 +1972,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends Component {',
@@ -2008,7 +2010,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured props inside of async class property
       code: [
@@ -2022,7 +2024,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Multiple destructured props inside of async class property
       code: [
@@ -2040,7 +2042,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends Component {',
@@ -2078,7 +2080,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Props used inside of an async class method
       code: [
@@ -2091,7 +2093,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Multiple props used inside of an async class method
       code: [
@@ -2108,7 +2110,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destrucuted props inside of async class method
       code: [
@@ -2122,7 +2124,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends Component {',
@@ -2160,7 +2162,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Multiple destructured props inside of async class method
       code: [
@@ -2178,7 +2180,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // factory functions that return async functions
       code: [
@@ -2197,7 +2199,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // factory functions that return async functions
       code: [
@@ -2216,7 +2218,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends Component {',
@@ -2303,7 +2305,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         ' }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured assignment without Shape propTypes issue #816
       code: [
@@ -2399,7 +2401,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // issue #1097
       code: [
@@ -2421,7 +2423,7 @@ ruleTester.run('no-unused-prop-types', rule, {
 
         'export default connect(mapStateToProps, mapDispatchToProps)(HellowQueries)'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // issue #1335
       code: [
@@ -2439,7 +2441,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         ' }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'const foo = {};',
@@ -2453,7 +2455,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  name: PropTypes.shape(foo)',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // issue #933
       code: [
@@ -2469,7 +2471,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '</div>',
         ');'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{skipShapeProps: false}]
     }, {
       // issue #1506
@@ -2491,7 +2493,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};',
         'var tempVar2;'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{skipShapeProps: false}]
     }, {
       // issue #1506
@@ -2512,7 +2514,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  doSomething: PropTypes.func',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{skipShapeProps: false}]
     }, {
       // issue #1506
@@ -2534,7 +2536,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};',
         'var tempVar2;'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{skipShapeProps: false}]
     }, {
       // issue #1506
@@ -2556,7 +2558,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};',
         'var tempVar;'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{skipShapeProps: false}]
     }, {
       // issue #1542
@@ -2622,7 +2624,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           ...SharedPropTypes // eslint-disable-line object-shorthand
         };
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // issue #933
       code: `
@@ -2635,7 +2637,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Props = {
@@ -2645,7 +2647,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           return <div>{props[\'completed?\']}</div>;
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Person = {
@@ -2657,7 +2659,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Person = {
@@ -2670,7 +2672,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.52'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Person = {
@@ -2682,7 +2684,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Person = {
@@ -2695,7 +2697,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.53'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Issue #1068
       code: `
@@ -2719,7 +2721,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Issue #1068
       code: `
@@ -2743,7 +2745,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Issue #1068
       code: `
@@ -2767,7 +2769,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `
@@ -2822,7 +2824,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `].join('\n'),
       settings: {react: {version: '16.3.0'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Destructured props in the `UNSAFE_componentWillUpdate` method shouldn't throw errors
       code: [`
@@ -2837,7 +2839,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `].join('\n'),
       settings: {react: {version: '16.3.0'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Simple test of new static getDerivedStateFromProps lifecycle
       code: [`
@@ -2862,7 +2864,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `].join('\n'),
       settings: {react: {version: '16.3.0'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Simple test of new static getSnapshotBeforeUpdate lifecycle
       code: [`
@@ -2882,7 +2884,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `].join('\n'),
       settings: {react: {version: '16.3.0'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Impossible intersection type
       code: `
@@ -2896,7 +2898,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'import type {BasePerson} from \'./types\'',
@@ -2913,7 +2915,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'import BasePerson from \'./types\'',
@@ -2943,7 +2945,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Props = {
@@ -2960,7 +2962,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Props = {
@@ -2974,7 +2976,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `
@@ -3033,7 +3035,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'name\' PropType is defined but prop is never used',
         line: 3,
@@ -3269,7 +3271,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
       ]
@@ -3288,7 +3290,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  unused: PropTypes.string',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
       ]
@@ -3299,7 +3301,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}',
         'Hello.prototype.propTypes = {unused: PropTypes.string};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -3310,7 +3312,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}',
         'Hello.prototype.propTypes = {unused: PropTypes.string};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -3321,7 +3323,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}',
         'Hello.prototype.propTypes = {unused: PropTypes.string};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -3333,7 +3335,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}',
         'Hello.prototype.propTypes = {unused: PropTypes.string};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -3344,7 +3346,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}',
         'Hello.prototype.propTypes = {unused: PropTypes.string};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -3355,7 +3357,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}',
         'Hello.prototype.propTypes = {unused: PropTypes.string};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -3366,7 +3368,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}',
         'Hello.prototype.propTypes = {unused: PropTypes.string};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -3380,7 +3382,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -3394,7 +3396,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -3408,7 +3410,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -3425,7 +3427,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}',
         'module.exports = HelloComponent();'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -3439,7 +3441,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};',
         'Hello.prototype.propTypes = {unused: PropTypes.string};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -3452,7 +3454,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         ')',
         'Annotation.prototype.propTypes = {unused: PropTypes.string};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
       ]
@@ -3467,7 +3469,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  });',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
       ]
@@ -3485,7 +3487,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}',
         'Test.propTypes = propTypes;'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
       ]
@@ -3502,7 +3504,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  unused: PropTypes.string',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       settings: settings,
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
@@ -3521,7 +3523,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  unused: PropTypes.string',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
       ]
@@ -3536,7 +3538,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
       ]
@@ -3551,7 +3553,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
       ]
@@ -3565,7 +3567,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
       ]
@@ -3583,7 +3585,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       }
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'b\' PropType is defined but prop is never used'}
       ]
@@ -3602,7 +3604,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'zap\' PropType is defined but prop is never used'}
       ]
@@ -3625,7 +3627,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [
         {message: '\'zap\' PropType is defined but prop is never used'}
       ],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type PropsB = { foo: string };
@@ -3645,7 +3647,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [
         {message: '\'zap\' PropType is defined but prop is never used'}
       ],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -3659,7 +3661,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{skipShapeProps: false}],
       errors: [
         {message: '\'name.unused\' PropType is defined but prop is never used'}
@@ -3674,7 +3676,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{skipShapeProps: false}],
       errors: [
         {message: '\'name.unused\' PropType is defined but prop is never used'}
@@ -3688,7 +3690,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{skipShapeProps: false}],
       errors: [
         {message: '\'person.name.unused\' PropType is defined but prop is never used'}
@@ -3703,7 +3705,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{skipShapeProps: false}],
       errors: [
         {message: '\'person.name.unused\' PropType is defined but prop is never used'}
@@ -3722,7 +3724,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{skipShapeProps: false}],
       errors: [
         {message: '\'people.*.name.unused\' PropType is defined but prop is never used'}
@@ -3742,7 +3744,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{skipShapeProps: false}],
       errors: [
         {message: '\'people.*.name.unused\' PropType is defined but prop is never used'}
@@ -3757,7 +3759,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{skipShapeProps: false}],
       errors: [
         {message: '\'result.ok\' PropType is defined but prop is never used'},
@@ -3801,7 +3803,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  return <div>Hello {firstname} {lastname}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used'
       }]
@@ -3818,7 +3820,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -3836,7 +3838,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -3854,7 +3856,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -3871,7 +3873,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -3889,7 +3891,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -3906,7 +3908,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -3924,7 +3926,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -3941,7 +3943,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -3959,7 +3961,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -3976,7 +3978,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'unused\' PropType is defined but prop is never used',
         line: 3,
@@ -3993,7 +3995,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'something\' PropType is defined but prop is never used',
         line: 3,
@@ -4030,7 +4032,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'bar\' PropType is defined but prop is never used',
         line: 4,
@@ -4051,7 +4053,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'baz\' PropType is defined but prop is never used',
         line: 5,
@@ -4091,7 +4093,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'bar\' PropType is defined but prop is never used',
         line: 4,
@@ -4113,7 +4115,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'foo\' PropType is defined but prop is never used'
       }]
@@ -4132,7 +4134,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'bar\' PropType is defined but prop is never used',
         line: 4,
@@ -4172,7 +4174,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'bar\' PropType is defined but prop is never used',
         line: 4,
@@ -4194,7 +4196,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'baz\' PropType is defined but prop is never used',
         line: 5,
@@ -4217,7 +4219,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'baz\' PropType is defined but prop is never used',
         line: 5,
@@ -4278,7 +4280,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'bar\' PropType is defined but prop is never used',
         line: 4,
@@ -4304,7 +4306,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'foo\' PropType is defined but prop is never used',
         line: 3,
@@ -4392,7 +4394,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  prop2: PropTypes.arrayOf(Comp1.propTypes.prop1)',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'prop1\' PropType is defined but prop is never used'
       }, {
@@ -4419,7 +4421,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'prop1\' PropType is defined but prop is never used'
       }, {
@@ -4446,7 +4448,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'prop1\' PropType is defined but prop is never used'
       }, {
@@ -4470,7 +4472,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         ' }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{skipShapeProps: false}],
       errors: [{
         message: '\'route.getBarTintColor\' PropType is defined but prop is never used'
@@ -4495,7 +4497,7 @@ ruleTester.run('no-unused-prop-types', rule, {
 
         'export default connect(mapStateToProps, mapDispatchToProps)(HellowQueries)'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'aProp\' PropType is defined but prop is never used'
       }]
@@ -4511,7 +4513,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
       }]
@@ -4528,7 +4530,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.52'}},
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
       }]
@@ -4544,7 +4546,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
       }]
@@ -4561,7 +4563,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'person\' PropType is defined but prop is never used'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Person = string;
@@ -4575,7 +4577,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'person\' PropType is defined but prop is never used'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         function higherOrderComponent<P: { foo: string }>() {
@@ -4589,7 +4591,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'foo\' PropType is defined but prop is never used'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // issue #1506
       code: [
@@ -4647,7 +4649,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.53'}},
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
       }]
@@ -4664,7 +4666,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `].join('\n'),
       settings: {react: {version: '16.2.0'}},
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'something\' PropType is defined but prop is never used'
       }]
@@ -4681,7 +4683,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `].join('\n'),
       settings: {react: {version: '16.2.0'}},
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'something\' PropType is defined but prop is never used'
       }]
@@ -4708,7 +4710,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `].join('\n'),
       settings: {react: {version: '16.2.0'}},
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'defaultValue\' PropType is defined but prop is never used'
       }]
@@ -4730,7 +4732,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `].join('\n'),
       settings: {react: {version: '16.2.0'}},
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'defaultValue\' PropType is defined but prop is never used'
       }]
@@ -4753,7 +4755,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'age\' PropType is defined but prop is never used'
       }]
@@ -4791,7 +4793,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'foo\' PropType is defined but prop is never used'
       }]
@@ -4808,7 +4810,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
       }]
@@ -4825,7 +4827,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
       }]
@@ -4842,7 +4844,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
       }]
@@ -4860,7 +4862,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
       }]
@@ -4878,7 +4880,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
       }]
@@ -4895,7 +4897,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
       }]
@@ -4912,7 +4914,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
       }]
@@ -4928,7 +4930,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  lastname: PropTypes.string',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
       }]
@@ -4948,7 +4950,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{skipShapeProps: false}],
       errors: [{
         message: '\'person.lastname\' PropType is defined but prop is never used'
@@ -5014,7 +5016,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  }),',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'foo\' PropType is defined but prop is never used'
       }]

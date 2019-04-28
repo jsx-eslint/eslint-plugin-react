@@ -11,8 +11,10 @@
 const rule = require('../../../lib/rules/state-in-constructor');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const ruleTesterConfig = {
-  parser: 'babel-eslint',
+  parser: BABEL_ESLINT,
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',

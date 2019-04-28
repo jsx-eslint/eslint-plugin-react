@@ -11,6 +11,8 @@
 const rule = require('../../../lib/rules/jsx-max-depth');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   sourceType: 'module',
   ecmaFeatures: {
@@ -65,21 +67,21 @@ ruleTester.run('jsx-max-depth', rule, {
     code: [
       '<></>'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       '<>',
       '  <foo />',
       '</>'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{max: 1}]
   }, {
     code: [
       'const x = <><em>x</em></>;',
       '<>{x}</>'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{max: 2}]
   }, {
     code: `
@@ -163,7 +165,7 @@ ruleTester.run('jsx-max-depth', rule, {
       '{<div><div><span /></div></div>}',
       '</div>'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{message: 'Expected the depth of nested jsx elements to be <= 2, but found 3.'}]
   }, {
     code: [
@@ -171,7 +173,7 @@ ruleTester.run('jsx-max-depth', rule, {
       '  <foo />',
       '</>'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{max: 0}],
     errors: [{message: 'Expected the depth of nested jsx elements to be <= 0, but found 1.'}]
   }, {
@@ -182,7 +184,7 @@ ruleTester.run('jsx-max-depth', rule, {
       '  </>',
       '</>'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{max: 1}],
     errors: [{message: 'Expected the depth of nested jsx elements to be <= 1, but found 2.'}]
   }, {
@@ -191,7 +193,7 @@ ruleTester.run('jsx-max-depth', rule, {
       'let y = x;',
       '<>{x}-{y}</>'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{max: 1}],
     errors: [
       {message: 'Expected the depth of nested jsx elements to be <= 1, but found 2.'},

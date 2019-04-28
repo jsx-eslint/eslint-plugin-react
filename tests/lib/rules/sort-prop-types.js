@@ -10,6 +10,8 @@
 const rule = require('../../../lib/rules/sort-prop-types');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -141,7 +143,7 @@ ruleTester.run('sort-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -170,7 +172,7 @@ ruleTester.run('sort-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -228,7 +230,7 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       callbacksLast: true
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       'class First extends React.Component {',
@@ -305,7 +307,7 @@ ruleTester.run('sort-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       'const propTypes = require(\'./externalPropTypes\')',
@@ -642,7 +644,7 @@ ruleTester.run('sort-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: 2,
     output: [
       'class Component extends React.Component {',
@@ -669,7 +671,7 @@ ruleTester.run('sort-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     settings: {
       propWrapperFunctions: ['forbidExtraProps']
     },
@@ -739,7 +741,7 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       callbacksLast: true
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: ERROR_MESSAGE,
       line: 6,
@@ -1001,7 +1003,7 @@ ruleTester.run('sort-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: ERROR_MESSAGE,
       line: 6,
@@ -1031,7 +1033,7 @@ ruleTester.run('sort-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: ERROR_MESSAGE,
       line: 6,
@@ -1476,7 +1478,7 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       sortShapeProp: true
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: ERROR_MESSAGE,
       line: 5,

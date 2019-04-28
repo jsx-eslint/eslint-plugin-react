@@ -11,6 +11,9 @@
 
 const rule = require('../../../lib/rules/jsx-curly-spacing');
 const RuleTester = require('eslint').RuleTester;
+
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -679,10 +682,10 @@ ruleTester.run('jsx-curly-spacing', rule, {
     options: [{children: {when: 'never', allowMultiline: false}}]
   }, {
     code: '<>{bar} {baz}</>;',
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: '<div onLayout={() => { /* dummy callback to fix android bug with component measuring */ }} />',
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }],
 
   invalid: [{
@@ -747,7 +750,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<>{ bar }</>;',
     output: '<>{bar}</>;',
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{children: true}],
     errors: [{
       message: 'There should be no space after \'{\''

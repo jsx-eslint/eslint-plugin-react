@@ -11,6 +11,8 @@
 const rule = require('../../../lib/rules/require-default-props');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -530,7 +532,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -551,7 +553,7 @@ ruleTester.run('require-default-props', rule, {
         '  bar: "bar"',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -570,7 +572,7 @@ ruleTester.run('require-default-props', rule, {
         '  bar: "bar"',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -584,7 +586,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -594,7 +596,7 @@ ruleTester.run('require-default-props', rule, {
 
         'Hello.defaultProps = { foo: "foo" };'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -602,7 +604,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {foo}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -612,7 +614,7 @@ ruleTester.run('require-default-props', rule, {
 
         'Hello.defaultProps = { foo: "foo" };'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -620,7 +622,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {foo}</div>;',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -630,7 +632,7 @@ ruleTester.run('require-default-props', rule, {
 
         'Hello.defaultProps = { foo: "foo" };'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -638,7 +640,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {foo}</div>;',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -661,7 +663,7 @@ ruleTester.run('require-default-props', rule, {
         '  baz: "baz"',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -673,7 +675,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -683,7 +685,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {foo}</div>;',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -693,7 +695,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {props.name.firstname}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     // don't error when variable is not in scope
     {
@@ -704,7 +706,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {props.name.firstname}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     // make sure error is not thrown with multiple assignments
     {
@@ -716,7 +718,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {props.name.firstname}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     // make sure defaultProps are correctly detected with quoted properties
     {
@@ -731,7 +733,7 @@ ruleTester.run('require-default-props', rule, {
         '  "bar": "bar"',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -744,7 +746,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{forbidDefaultForRequired: true}]
     },
     // test support for React PropTypes as Component's class generic
@@ -765,7 +767,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{forbidDefaultForRequired: true}]
     },
     {
@@ -785,7 +787,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{forbidDefaultForRequired: true}]
     },
     {
@@ -809,7 +811,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{forbidDefaultForRequired: true}]
     },
     {
@@ -830,7 +832,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{forbidDefaultForRequired: true}]
     }, {
       code: `
@@ -844,7 +846,7 @@ ruleTester.run('require-default-props', rule, {
           name: 'foo'
         };
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }
   ],
 
@@ -1301,7 +1303,7 @@ ruleTester.run('require-default-props', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
         line: 8,
@@ -1325,7 +1327,7 @@ ruleTester.run('require-default-props', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
         line: 9,
@@ -1347,7 +1349,7 @@ ruleTester.run('require-default-props', rule, {
         '  static propTypes = props;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
         line: 2,
@@ -1373,7 +1375,7 @@ ruleTester.run('require-default-props', rule, {
         '  static defaultProps = defaults;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
         line: 3,
@@ -1455,7 +1457,7 @@ ruleTester.run('require-default-props', rule, {
         '  foo: "foo"',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
         line: 4,
@@ -1477,7 +1479,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
         line: 3,
@@ -1500,7 +1502,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
         line: 2,
@@ -1520,7 +1522,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
         line: 4,
@@ -1540,7 +1542,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {
           message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
@@ -1568,7 +1570,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
         line: 3,
@@ -1594,7 +1596,7 @@ ruleTester.run('require-default-props', rule, {
         '  foo: "foo"',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
         line: 3,
@@ -1622,7 +1624,7 @@ ruleTester.run('require-default-props', rule, {
         '  foo: "foo"',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
         line: 3,
@@ -1648,7 +1650,7 @@ ruleTester.run('require-default-props', rule, {
         '  foo: "foo"',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
         line: 4,
@@ -1661,7 +1663,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {props.foo}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
         line: 1,
@@ -1674,7 +1676,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {foo}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
         line: 1,
@@ -1688,7 +1690,7 @@ ruleTester.run('require-default-props', rule, {
         '}',
         'Hello.defaultProps = { foo: "foo" };'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
         line: 1,
@@ -1701,7 +1703,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {props.foo}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {
           message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
@@ -1725,7 +1727,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {props.foo}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
         line: 2,
@@ -1738,7 +1740,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {props.foo}</div>;',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
         line: 1,
@@ -1752,7 +1754,7 @@ ruleTester.run('require-default-props', rule, {
         '};',
         'Hello.defaultProps = { foo: "foo" };'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
         line: 1,
@@ -1765,7 +1767,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {props.foo}</div>;',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
         line: 1,
@@ -1779,7 +1781,7 @@ ruleTester.run('require-default-props', rule, {
         '};',
         'Hello.defaultProps = { foo: "foo" };'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
         line: 1,
@@ -1796,7 +1798,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {props.foo}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
         line: 2,
@@ -1815,7 +1817,7 @@ ruleTester.run('require-default-props', rule, {
         '}',
         'Hello.defaultProps = { foo: "foo" };'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
         line: 3,
@@ -1830,7 +1832,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {props.foo}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {
           message: 'propType "one" is not required, but has no corresponding defaultProps declaration.',
@@ -1860,7 +1862,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {props.foo}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {
           message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
@@ -1894,7 +1896,7 @@ ruleTester.run('require-default-props', rule, {
         '  bar: "bar"',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {
           message: 'propType "baz" is not required, but has no corresponding defaultProps declaration.',
@@ -1913,7 +1915,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {props.foo}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {
           message: 'propType "two" is not required, but has no corresponding defaultProps declaration.',
@@ -1937,7 +1939,7 @@ ruleTester.run('require-default-props', rule, {
         '  return <div>Hello {props.foo}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {
           message: 'propType "two" is not required, but has no corresponding defaultProps declaration.',
@@ -1957,7 +1959,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {
           message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
@@ -1984,7 +1986,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "name" is not required, but has no corresponding defaultProps declaration.'
       }]
@@ -2002,7 +2004,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "first-name" is not required, but has no corresponding defaultProps declaration.'
       }]
@@ -2074,7 +2076,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{forbidDefaultForRequired: true}],
       errors: [{
         message: 'propType "foo" is required and should not have a defaultProps declaration.'
@@ -2118,7 +2120,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.'
       }]
@@ -2137,7 +2139,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.'
       }]
@@ -2160,7 +2162,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.'
       }]
@@ -2179,7 +2181,7 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.'
       }, {
@@ -2195,7 +2197,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: 'propType "name" is not required, but has no corresponding defaultProps declaration.'
       }]

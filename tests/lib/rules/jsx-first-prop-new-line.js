@@ -11,6 +11,8 @@
 const rule = require('../../../lib/rules/jsx-first-prop-new-line');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT, TYPESCRIPT_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -31,22 +33,22 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
     {
       code: '<Foo />',
       options: ['never'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: '<Foo prop="bar" />',
       options: ['never'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: '<Foo {...this.props} />',
       options: ['never'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: '<Foo a a a />',
       options: ['never'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -55,27 +57,27 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '/>'
       ].join('\n'),
       options: ['never'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: '<Foo />',
       options: ['multiline'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: '<Foo prop="one" />',
       options: ['multiline'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: '<Foo {...this.props} />',
       options: ['multiline'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: '<Foo a a a />',
       options: ['multiline'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -85,7 +87,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '/>'
       ].join('\n'),
       options: ['multiline'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -95,21 +97,21 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '/>'
       ].join('\n'),
       options: ['multiline'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
         '<Foo bar />'
       ].join('\n'),
       options: ['multiline-multiprop'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
         '<Foo bar baz />'
       ].join('\n'),
       options: ['multiline-multiprop'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -117,7 +119,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '}} />'
       ].join('\n'),
       options: ['multiline-multiprop'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -128,7 +130,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '/>'
       ].join('\n'),
       options: ['multiline-multiprop'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -139,12 +141,12 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '/>'
       ].join('\n'),
       options: ['multiline-multiprop'],
-      parser: 'typescript-eslint-parser'
+      parser: TYPESCRIPT_ESLINT
     },
     {
       code: '<Foo />',
       options: ['always'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -154,7 +156,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '/>'
       ].join('\n'),
       options: ['always'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -164,7 +166,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '/>'
       ].join('\n'),
       options: ['always'],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }
   ],
 
@@ -177,7 +179,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
       ].join('\n'),
       options: ['always'],
       errors: [{message: 'Property should be placed on a new line'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: '<Foo propOne="one" propTwo="two" />',
@@ -187,7 +189,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
       ].join('\n'),
       options: ['always'],
       errors: [{message: 'Property should be placed on a new line'}],
-      parser: 'typescript-eslint-parser'
+      parser: TYPESCRIPT_ESLINT
     },
     {
       code: [
@@ -203,7 +205,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
       ].join('\n'),
       options: ['always'],
       errors: [{message: 'Property should be placed on a new line'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -219,7 +221,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
       ].join('\n'),
       options: ['always'],
       errors: [{message: 'Property should be placed on a new line'}],
-      parser: 'typescript-eslint-parser'
+      parser: TYPESCRIPT_ESLINT
     },
     {
       code: [
@@ -235,7 +237,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
       ].join('\n'),
       options: ['never'],
       errors: [{message: 'Property should be placed on the same line as the component declaration'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -251,7 +253,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
       ].join('\n'),
       options: ['never'],
       errors: [{message: 'Property should be placed on the same line as the component declaration'}],
-      parser: 'typescript-eslint-parser'
+      parser: TYPESCRIPT_ESLINT
     },
     {
       code: [
@@ -265,7 +267,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
       ].join('\n'),
       options: ['multiline'],
       errors: [{message: 'Property should be placed on a new line'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -279,7 +281,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
       ].join('\n'),
       options: ['multiline'],
       errors: [{message: 'Property should be placed on a new line'}],
-      parser: 'typescript-eslint-parser'
+      parser: TYPESCRIPT_ESLINT
     },
     {
       code: [
@@ -293,7 +295,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
       ].join('\n'),
       options: ['multiline-multiprop'],
       errors: [{message: 'Property should be placed on a new line'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -307,7 +309,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
       ].join('\n'),
       options: ['multiline-multiprop'],
       errors: [{message: 'Property should be placed on a new line'}],
-      parser: 'typescript-eslint-parser'
+      parser: TYPESCRIPT_ESLINT
     }
   ]
 });

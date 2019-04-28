@@ -2,6 +2,9 @@
 
 const rule = require('../../../lib/rules/jsx-child-element-spacing');
 const RuleTester = require('eslint').RuleTester;
+
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   sourceType: 'module',
   ecmaFeatures: {
@@ -23,7 +26,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
         foo
       </>
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       <App>
@@ -158,7 +161,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
   <a>bar</a>
 </>
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [
       {
         message: 'Ambiguous spacing before next element a',

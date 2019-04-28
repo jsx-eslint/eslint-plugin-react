@@ -11,6 +11,8 @@
 const rule = require('../../../lib/rules/no-did-update-set-state');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -74,7 +76,7 @@ ruleTester.run('no-did-update-set-state', rule, {
         }
       });
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }],
 
   invalid: [{
@@ -100,7 +102,7 @@ ruleTester.run('no-did-update-set-state', rule, {
         }
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
     }]
@@ -128,7 +130,7 @@ ruleTester.run('no-did-update-set-state', rule, {
         }
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: ['disallow-in-func'],
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
@@ -161,7 +163,7 @@ ruleTester.run('no-did-update-set-state', rule, {
         }
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: ['disallow-in-func'],
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
@@ -193,7 +195,7 @@ ruleTester.run('no-did-update-set-state', rule, {
         }
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
     }]
@@ -205,7 +207,7 @@ ruleTester.run('no-did-update-set-state', rule, {
         }
       });
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: ['disallow-in-func'],
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
@@ -218,7 +220,7 @@ ruleTester.run('no-did-update-set-state', rule, {
         }
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: ['disallow-in-func'],
     errors: [{
       message: 'Do not use setState in componentDidUpdate'

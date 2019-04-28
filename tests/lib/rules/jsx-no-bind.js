@@ -12,6 +12,8 @@
 const rule = require('../../../lib/rules/jsx-no-bind');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -189,7 +191,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -201,7 +203,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -223,7 +225,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '});'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -244,7 +246,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -256,7 +258,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       // issue #1543: don't crash on uninitialized variables
@@ -286,7 +288,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: '<div foo={::this.onChange} />',
       options: [{ignoreDOMComponents: true}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }
   ],
 
@@ -351,7 +353,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '};'
       ].join('\n'),
       errors: [{message: 'JSX props should not use .bind()'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -363,7 +365,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '};'
       ].join('\n'),
       errors: [{message: 'JSX props should not use .bind()'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `
@@ -413,7 +415,7 @@ ruleTester.run('jsx-no-bind', rule, {
         {message: 'JSX props should not use .bind()'},
         {message: 'JSX props should not use arrow functions'}
       ],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `
@@ -488,7 +490,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '};'
       ].join('\n'),
       errors: [{message: 'JSX props should not use arrow functions'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -500,7 +502,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '};'
       ].join('\n'),
       errors: [{message: 'JSX props should not use arrow functions'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -512,7 +514,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '};'
       ].join('\n'),
       errors: [{message: 'JSX props should not use arrow functions'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -573,7 +575,7 @@ ruleTester.run('jsx-no-bind', rule, {
         {message: 'JSX props should not use arrow functions'},
         {message: 'JSX props should not use ::'}
       ],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
 
     // Functions
@@ -603,7 +605,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '};'
       ].join('\n'),
       errors: [{message: 'JSX props should not use functions'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -615,7 +617,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '};'
       ].join('\n'),
       errors: [{message: 'JSX props should not use functions'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -627,7 +629,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '};'
       ].join('\n'),
       errors: [{message: 'JSX props should not use functions'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -639,7 +641,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '};'
       ].join('\n'),
       errors: [{message: 'JSX props should not use functions'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -721,24 +723,24 @@ ruleTester.run('jsx-no-bind', rule, {
         {message: 'JSX props should not use functions'},
         {message: 'JSX props should not use ::'}
       ],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
 
     // Bind expression
     {
       code: '<div foo={::this.onChange} />',
       errors: [{message: 'JSX props should not use ::'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: '<div foo={foo.bar::baz} />',
       errors: [{message: 'JSX props should not use ::'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: '<div foo={foo::bar} />',
       errors: [{message: 'JSX props should not use ::'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -750,7 +752,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '};'
       ].join('\n'),
       errors: [{message: 'JSX props should not use ::'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -762,7 +764,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '};'
       ].join('\n'),
       errors: [{message: 'JSX props should not use ::'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -774,7 +776,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '};'
       ].join('\n'),
       errors: [{message: 'JSX props should not use ::'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: [
@@ -790,7 +792,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '};'
       ].join('\n'),
       errors: [{message: 'JSX props should not use ::'}],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
 
     // ignore DOM components

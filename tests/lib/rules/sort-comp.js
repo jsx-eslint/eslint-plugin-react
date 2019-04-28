@@ -11,6 +11,8 @@
 const rule = require('../../../lib/rules/sort-comp');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -158,7 +160,7 @@ ruleTester.run('sort-comp', rule, {
       '  render = () => (<div>Hello</div>)',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       '// Must allow us to create a RegExp-based group',
@@ -245,7 +247,7 @@ ruleTester.run('sort-comp', rule, {
       '  return <div>Hello {props.name}</div>',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       '// Must ignore stateless components (arrow function with explicit return)',
@@ -253,7 +255,7 @@ ruleTester.run('sort-comp', rule, {
       '  <div>Hello {props.name}</div>',
       ')'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       '// Must ignore spread operator',
@@ -264,7 +266,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       '// Type Annotations should be first',
@@ -276,7 +278,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{
       order: [
         'type-annotations',
@@ -298,7 +300,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{
       order: [
         'type-annotations',
@@ -320,7 +322,7 @@ ruleTester.run('sort-comp', rule, {
       '  state: Object = {};',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: [
@@ -334,7 +336,7 @@ ruleTester.run('sort-comp', rule, {
       '  state: Object = {};',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: [
@@ -347,7 +349,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{
       order: [
         'getters',
@@ -368,7 +370,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{
       order: [
         'setters',
@@ -391,7 +393,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{
       order: [
         'instance-methods',
@@ -413,7 +415,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{
       order: [
         'instance-variables',
@@ -492,7 +494,7 @@ ruleTester.run('sort-comp', rule, {
         }
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{
       order: [
         'state',
@@ -580,7 +582,7 @@ ruleTester.run('sort-comp', rule, {
       '  static displayName = \'Hello\';',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{message: 'render should be placed after displayName'}]
   }, {
     code: [
@@ -594,7 +596,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{message: 'props should be placed after state'}]
   }, {
     code: [
@@ -607,7 +609,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{message: 'constructor should be placed after props'}],
     options: [{
       order: [
@@ -630,7 +632,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{message: 'state should be placed after constructor'}],
     options: [{
       order: [
@@ -652,7 +654,7 @@ ruleTester.run('sort-comp', rule, {
       '  render() {}',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{message: 'componentDidMountOk should be placed after getA'}],
     options: [{
       order: [
@@ -676,7 +678,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{message: 'constructor should be placed after getter functions'}],
     options: [{
       order: [
@@ -698,7 +700,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{message: 'constructor should be placed after setter functions'}],
     options: [{
       order: [
@@ -722,7 +724,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{message: 'foo should be placed before constructor'}],
     options: [{
       order: [
@@ -745,7 +747,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{message: 'foo should be placed before constructor'}],
     options: [{
       order: [

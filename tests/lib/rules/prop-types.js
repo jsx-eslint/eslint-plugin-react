@@ -11,6 +11,8 @@
 const rule = require('../../../lib/rules/prop-types');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -158,7 +160,7 @@ ruleTester.run('prop-types', rule, {
         '  method;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -184,7 +186,7 @@ ruleTester.run('prop-types', rule, {
         '  firstname: PropTypes.string',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -205,7 +207,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -441,7 +443,7 @@ ruleTester.run('prop-types', rule, {
         '  "aria-controls": PropTypes.string',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -503,7 +505,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{ignore: ['name']}]
     }, {
       code: [
@@ -520,7 +522,7 @@ ruleTester.run('prop-types', rule, {
         '  })',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'const foo = {};',
@@ -534,7 +536,7 @@ ruleTester.run('prop-types', rule, {
         '  name: PropTypes.shape(foo)',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -544,7 +546,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -642,7 +644,7 @@ ruleTester.run('prop-types', rule, {
         '  prop2: PropTypes.arrayOf(Comp1.propTypes.prop1)',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Comp1 extends Component {',
@@ -662,7 +664,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Comp1 extends Component {',
@@ -682,14 +684,14 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'const SomeComponent = createReactClass({',
         '  propTypes: SomeOtherComponent.propTypes',
         '});'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -741,7 +743,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -754,7 +756,7 @@ ruleTester.run('prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -767,7 +769,7 @@ ruleTester.run('prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Should not be detected as a component
       code: [
@@ -777,7 +779,7 @@ ruleTester.run('prop-types', rule, {
         '  });',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'function HelloComponent() {',
@@ -791,7 +793,7 @@ ruleTester.run('prop-types', rule, {
         '}',
         'module.exports = HelloComponent();'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'function HelloComponent() {',
@@ -805,7 +807,7 @@ ruleTester.run('prop-types', rule, {
         '}',
         'module.exports = HelloComponent();'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class DynamicHello extends Component {',
@@ -828,7 +830,7 @@ ruleTester.run('prop-types', rule, {
         '  firstname: PropTypes.string,',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'const Hello = (props) => {',
@@ -842,7 +844,7 @@ ruleTester.run('prop-types', rule, {
         '  company: PropTypes.string',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'export default {',
@@ -852,7 +854,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Reassigned props are ignored
       code: [
@@ -863,7 +865,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'export default function FooBar(props) {',
@@ -876,7 +878,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -962,7 +964,7 @@ ruleTester.run('prop-types', rule, {
         '  return <span>{newProps.someProp}</span>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -974,7 +976,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -986,7 +988,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {name: Object;};',
@@ -997,7 +999,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {\'data-action\': string};',
@@ -1005,7 +1007,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div data-action={dataAction} />;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'import type Props from "fake";',
@@ -1016,7 +1018,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -1030,7 +1032,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {name: {firstname: string;};};',
@@ -1041,7 +1043,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {name: {firstname: string; lastname: string;};};',
@@ -1052,7 +1054,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {name: {firstname: string;}};',
@@ -1067,7 +1069,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {name: {firstname: string;}};',
@@ -1083,7 +1085,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {name: {firstname: string;}};',
@@ -1103,7 +1105,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {ok: string | boolean;};',
@@ -1114,7 +1116,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {result: {ok: string | boolean;}|{ok: number | Array}};',
@@ -1125,7 +1127,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {result?: {ok?: ?string | boolean;}|{ok?: ?number | Array}};',
@@ -1136,7 +1138,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -1146,7 +1148,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Ignore component validation if propTypes are composed using spread
       code: [
@@ -1184,7 +1186,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {firstname} {lastname}</div>',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {',
@@ -1196,7 +1198,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {firstname} {lastname}</div>',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {',
@@ -1208,7 +1210,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {firstname} {lastname}</div>',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {',
@@ -1218,7 +1220,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>{props[\'completed?\']}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {',
@@ -1232,7 +1234,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type PropsUnionA = {',
@@ -1254,7 +1256,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'import type { FieldProps } from "redux-form"',
@@ -1265,7 +1267,7 @@ ruleTester.run('prop-types', rule, {
         '  options: Array<SelectOption>',
         '} & FieldProps'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Impossible intersection type
       code: `
@@ -1279,7 +1281,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'Card.propTypes = {',
@@ -1305,7 +1307,7 @@ ruleTester.run('prop-types', rule, {
         '  jobs: PropTypes.array',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {',
@@ -1315,21 +1317,21 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {firstname}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'function Greetings() {',
         '  return <div>{({name}) => <Hello name={name} />}</div>',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'function Greetings() {',
         '  return <div>{function({name}) { return <Hello name={name} />; }}</div>',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Should stop at the class when searching for a parent component
       code: [
@@ -1337,7 +1339,7 @@ ruleTester.run('prop-types', rule, {
         '  someMethod = ({width}) => {}',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Should stop at the decorator when searching for a parent component
       code: [
@@ -1346,7 +1348,7 @@ ruleTester.run('prop-types', rule, {
         '}])',
         'class Something extends Component {}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Should not find any used props
       code: [
@@ -1399,7 +1401,7 @@ ruleTester.run('prop-types', rule, {
         '  });',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Target = { target: EventTarget }',
@@ -1413,7 +1415,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends Component {}',
@@ -1424,7 +1426,7 @@ ruleTester.run('prop-types', rule, {
         '  foo: PropTypes.node',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -1483,7 +1485,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {props.name}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Async functions can't be components.
       code: [
@@ -1491,7 +1493,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {props.name}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Async functions can't be components.
       code: [
@@ -1499,7 +1501,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {props.name}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Flow annotations with variance
       code: [
@@ -1512,7 +1514,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {firstname} {lastname}</div>',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -1536,7 +1538,7 @@ ruleTester.run('prop-types', rule, {
         '  handleSubmit = async ({certificate, key}) => {};',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {',
@@ -1550,7 +1552,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {|',
@@ -1564,7 +1566,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {',
@@ -1578,7 +1580,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'import type {Data} from \'./Data\'',
@@ -1593,7 +1595,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'import type {Data} from \'some-libdef-like-flow-typed-provides\'',
@@ -1608,7 +1610,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'import type {BasePerson} from \'./types\'',
@@ -1625,7 +1627,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {',
@@ -1637,7 +1639,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {',
@@ -1650,7 +1652,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       settings: {react: {flowVersion: '0.52'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {',
@@ -1663,7 +1665,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {',
@@ -1677,7 +1679,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       settings: {react: {flowVersion: '0.52'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {name: {firstname: string;};};',
@@ -1687,7 +1689,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {name: {firstname: string;};};',
@@ -1698,7 +1700,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       settings: {react: {flowVersion: '0.52'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Note = {text: string, children?: Note[]};',
@@ -1712,7 +1714,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       settings: {react: {flowVersion: '0.52'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'import type Props from "fake";',
@@ -1722,7 +1724,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'import type Props from "fake";',
@@ -1733,7 +1735,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       settings: {react: {flowVersion: '0.52'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {',
@@ -1745,7 +1747,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {',
@@ -1758,7 +1760,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       settings: {react: {flowVersion: '0.52'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {result?: {ok?: ?string | boolean;}|{ok?: ?number | Array}};',
@@ -1768,7 +1770,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {result?: {ok?: ?string | boolean;}|{ok?: ?number | Array}};',
@@ -1779,7 +1781,7 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       settings: {react: {flowVersion: '0.52'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Props = {
@@ -1792,7 +1794,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Props = {
@@ -1806,7 +1808,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.52'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Props = {
@@ -1820,7 +1822,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.53'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type FancyProps = {
@@ -1833,7 +1835,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type FancyProps = {
@@ -1847,7 +1849,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.53'}},
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type PropsA = { foo: string };
@@ -1862,7 +1864,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type PropsA = { foo: string };
@@ -1878,7 +1880,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         import type { PropsA } from "./myPropsA";
@@ -1894,7 +1896,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type PropsA = { bar: string };
@@ -1911,7 +1913,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type PropsA = { bar: string };
@@ -1928,7 +1930,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Props = { foo: string }
@@ -1940,7 +1942,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         function higherOrderComponent<P: { foo: string }>() {
@@ -1951,7 +1953,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         const withOverlayState = <P: {foo: string}>(WrappedComponent: ComponentType<P>): CpmponentType<P> => (
@@ -1966,7 +1968,7 @@ ruleTester.run('prop-types', rule, {
           }
         )
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
 
     // issue #1288
@@ -2004,7 +2006,7 @@ ruleTester.run('prop-types', rule, {
         ...SharedPropTypes // eslint-disable-line object-shorthand
       };
     `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `
@@ -2023,7 +2025,7 @@ ruleTester.run('prop-types', rule, {
         }
       }
     `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `
@@ -2204,7 +2206,7 @@ ruleTester.run('prop-types', rule, {
         }
       }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `
@@ -2290,7 +2292,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         import React from 'react';
@@ -2316,7 +2318,7 @@ ruleTester.run('prop-types', rule, {
         function fn1() {}
         const b = a::fn1();
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       // issue #1259
@@ -2352,7 +2354,7 @@ ruleTester.run('prop-types', rule, {
         column: 23,
         type: 'Identifier'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'var Hello = createReactClass({',
@@ -2542,7 +2544,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'firstname\' is missing in props validation'
       }]
@@ -2685,7 +2687,7 @@ ruleTester.run('prop-types', rule, {
         '  "aria-controls": PropTypes.string',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'propX\' is missing in props validation'}
       ]
@@ -2745,7 +2747,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'firstname\' is missing in props validation'}
       ]
@@ -2758,7 +2760,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'firstname\' is missing in props validation'}
       ]
@@ -2777,7 +2779,7 @@ ruleTester.run('prop-types', rule, {
         '  lastname: PropTypes.string',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'firstname\' is missing in props validation'}
       ]
@@ -2787,7 +2789,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {props.name}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'name\' is missing in props validation'
       }]
@@ -2797,7 +2799,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {props.name}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'name\' is missing in props validation'
       }]
@@ -2807,7 +2809,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {props.name}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'name\' is missing in props validation'
       }]
@@ -2818,7 +2820,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {name}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'name\' is missing in props validation'
       }]
@@ -2828,7 +2830,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {name}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'name\' is missing in props validation'
       }]
@@ -2838,7 +2840,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {name}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'name\' is missing in props validation'
       }]
@@ -2848,7 +2850,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {name}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'name\' is missing in props validation'
       }]
@@ -2861,7 +2863,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'lastname\' is missing in props validation'}
       ]
@@ -2874,7 +2876,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'source\' is missing in props validation'}
       ]
@@ -2887,7 +2889,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'source\' is missing in props validation'},
         {message: '\'source.uri\' is missing in props validation'}
@@ -2901,7 +2903,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'source\' is missing in props validation'}
       ]
@@ -2914,7 +2916,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'source\' is missing in props validation'},
         {message: '\'source.uri\' is missing in props validation'}
@@ -2931,7 +2933,7 @@ ruleTester.run('prop-types', rule, {
         '}',
         'module.exports = HelloComponent();'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'name\' is missing in props validation'}
       ]
@@ -2947,7 +2949,7 @@ ruleTester.run('prop-types', rule, {
         '}',
         'module.exports = HelloComponent();'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'name\' is missing in props validation'}
       ]
@@ -2967,7 +2969,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'firstname\' is missing in props validation'},
         {message: '\'name\' is missing in props validation'}
@@ -2981,7 +2983,7 @@ ruleTester.run('prop-types', rule, {
         '  return <ul>{team}</ul>;',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'names\' is missing in props validation'},
         {message: '\'names.map\' is missing in props validation'},
@@ -2995,7 +2997,7 @@ ruleTester.run('prop-types', rule, {
         '  </div>',
         ')'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'text\' is missing in props validation'}
       ]
@@ -3009,7 +3011,7 @@ ruleTester.run('prop-types', rule, {
         '  });',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'name\' is missing in props validation'}
       ]
@@ -3027,7 +3029,7 @@ ruleTester.run('prop-types', rule, {
         '}',
         'Test.propTypes = propTypes;'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'lastname\' is missing in props validation'}
       ]
@@ -3044,7 +3046,7 @@ ruleTester.run('prop-types', rule, {
         '  firstname: PropTypes.string',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       settings: settings,
       errors: [
         {message: '\'lastname\' is missing in props validation'}
@@ -3062,7 +3064,7 @@ ruleTester.run('prop-types', rule, {
         '  firstname: PropTypes.string',
         '});'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       settings: Object.assign({}, settings, {
         propWrapperFunctions: ['forbidExtraProps']
       }),
@@ -3082,7 +3084,7 @@ ruleTester.run('prop-types', rule, {
         '  firstname: PropTypes.string',
         '});'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       settings: Object.assign({}, settings, {
         propWrapperFunctions: ['Object.freeze']
       }),
@@ -3103,7 +3105,7 @@ ruleTester.run('prop-types', rule, {
         '  firstname: PropTypes.string',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'lastname\' is missing in props validation'}
       ]
@@ -3116,7 +3118,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'name\' is missing in props validation'}
       ]
@@ -3131,7 +3133,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'firstname\' is missing in props validation'}
       ]
@@ -3145,7 +3147,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'firstname\' is missing in props validation'}
       ]
@@ -3162,7 +3164,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'name.lastname\' is missing in props validation'}
       ]
@@ -3176,7 +3178,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'name.lastname\' is missing in props validation'}
       ]
@@ -3189,7 +3191,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'person.name.lastname\' is missing in props validation'}
       ]
@@ -3203,7 +3205,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'person.name.lastname\' is missing in props validation'}
       ]
@@ -3221,7 +3223,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'people[].name.lastname\' is missing in props validation'}
       ]
@@ -3240,7 +3242,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'people[].name.lastname\' is missing in props validation'}
       ]
@@ -3254,7 +3256,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'result.notok\' is missing in props validation'}
       ]
@@ -3343,7 +3345,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div>Hello {firstname} {lastname}</div>;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'lastname\' is missing in props validation'
       }]
@@ -3361,7 +3363,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'firstname\' is missing in props validation'},
         {message: '\'lastname\' is missing in props validation'}
@@ -3377,7 +3379,7 @@ ruleTester.run('prop-types', rule, {
         '  })',
         '};'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'name.constructor.firstname\' is missing in props validation'}
       ]
@@ -3428,7 +3430,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div />;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'b\' is missing in props validation',
         line: 4,
@@ -3518,7 +3520,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div />;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'b\' is missing in props validation',
         line: 4,
@@ -3534,7 +3536,7 @@ ruleTester.run('prop-types', rule, {
         '  return <div />;',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'b\' is missing in props validation',
         line: 4,
@@ -3551,7 +3553,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'firstname\' is missing in props validation'}
       ]
@@ -3566,7 +3568,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'foo\' is missing in props validation'}
       ]
@@ -3586,7 +3588,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       settings: Object.assign({}, settings, {
         propWrapperFunctions: ['forbidExtraProps']
       }),
@@ -3609,7 +3611,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'foo\' is missing in props validation'}
       ]
@@ -3630,7 +3632,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'foo\' is missing in props validation'}
       ]
@@ -3650,7 +3652,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [
         {message: '\'foo\' is missing in props validation'}
       ]
@@ -3689,7 +3691,7 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       settings: Object.assign({}, settings, {
         propWrapperFunctions: ['forbidExtraProps']
       }),
@@ -3748,7 +3750,7 @@ ruleTester.run('prop-types', rule, {
         column: 35,
         type: 'Identifier'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {',
@@ -3767,7 +3769,7 @@ ruleTester.run('prop-types', rule, {
         column: 35,
         type: 'Identifier'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {',
@@ -3788,7 +3790,7 @@ ruleTester.run('prop-types', rule, {
         column: 7,
         type: 'Property'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {',
@@ -3810,7 +3812,7 @@ ruleTester.run('prop-types', rule, {
         column: 7,
         type: 'Property'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {name: {firstname: string;};};',
@@ -3826,7 +3828,7 @@ ruleTester.run('prop-types', rule, {
         column: 40,
         type: 'Identifier'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {name: {firstname: string;};};',
@@ -3843,7 +3845,7 @@ ruleTester.run('prop-types', rule, {
         column: 40,
         type: 'Identifier'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {result?: {ok: string | boolean;}|{ok: number | Array}};',
@@ -3859,7 +3861,7 @@ ruleTester.run('prop-types', rule, {
         column: 42,
         type: 'Identifier'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Props = {result?: {ok: string | boolean;}|{ok: number | Array}};',
@@ -3876,7 +3878,7 @@ ruleTester.run('prop-types', rule, {
         column: 42,
         type: 'Identifier'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {',
@@ -3894,7 +3896,7 @@ ruleTester.run('prop-types', rule, {
         column: 42,
         type: 'Identifier'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: [
         'type Person = {',
@@ -3913,7 +3915,7 @@ ruleTester.run('prop-types', rule, {
         column: 42,
         type: 'Identifier'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Props = {
@@ -3932,7 +3934,7 @@ ruleTester.run('prop-types', rule, {
         column: 37,
         type: 'Identifier'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Props = {
@@ -3952,7 +3954,7 @@ ruleTester.run('prop-types', rule, {
         column: 37,
         type: 'Identifier'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type FancyProps = {
@@ -3971,7 +3973,7 @@ ruleTester.run('prop-types', rule, {
         column: 37,
         type: 'Identifier'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type FancyProps = {
@@ -3991,7 +3993,7 @@ ruleTester.run('prop-types', rule, {
         column: 37,
         type: 'Identifier'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Person = {
@@ -4009,7 +4011,7 @@ ruleTester.run('prop-types', rule, {
         column: 50,
         type: 'Identifier'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Person = {
@@ -4028,7 +4030,7 @@ ruleTester.run('prop-types', rule, {
         column: 50,
         type: 'Identifier'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type Props = { foo: string }
@@ -4043,7 +4045,7 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'bar\' is missing in props validation'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         function higherOrderComponent<P: { foo: string }>() {
@@ -4057,7 +4059,7 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'bar\' is missing in props validation'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         const withOverlayState = <P: {foo: string}>(WrappedComponent: ComponentType<P>): CpmponentType<P> => (
@@ -4075,7 +4077,7 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'bar\' is missing in props validation'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type PropsA = {foo: string };
@@ -4090,7 +4092,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'fooBar\' is missing in props validation'
       }]
@@ -4109,7 +4111,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'fooBar\' is missing in props validation'
       }]
@@ -4132,7 +4134,7 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'fooBar\' is missing in props validation'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         type PropsB = { bar: string };
@@ -4152,7 +4154,7 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'fooBar\' is missing in props validation'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `
@@ -4184,7 +4186,7 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         message: '\'bad\' is missing in props validation'
       }],
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `
@@ -4259,7 +4261,7 @@ ruleTester.run('prop-types', rule, {
 
         export default ForAttendees;
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'page\' is missing in props validation'
       }]
@@ -4417,7 +4419,7 @@ ruleTester.run('prop-types', rule, {
           };
         }
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'name\' is missing in props validation'
       }]
@@ -4437,7 +4439,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'a\' is missing in props validation'
       }]
@@ -4465,7 +4467,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{
         message: '\'initialValues\' is missing in props validation'
       }]

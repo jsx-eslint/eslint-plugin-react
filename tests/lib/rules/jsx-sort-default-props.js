@@ -11,6 +11,8 @@
 const rule = require('../../../lib/rules/jsx-sort-default-props');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -174,7 +176,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -189,7 +191,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  "aria-controls": "aria-controls"',
       '};'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{
       ignoreCase: true
     }]
@@ -212,7 +214,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -258,7 +260,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       'export default class ClassWithSpreadInPropTypes extends BaseClass {',
@@ -280,7 +282,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       'const defaults = {',
@@ -301,7 +303,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  a: "a"',
       '};'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       'const propTypes = require(\'./externalPropTypes\')',
@@ -365,7 +367,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: ERROR_MESSAGE,
       line: 10,
@@ -390,7 +392,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: 2
   }, {
     code: [
@@ -408,7 +410,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{
       ignoreCase: true
     }],
@@ -434,7 +436,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: ERROR_MESSAGE,
       line: 8,
@@ -457,7 +459,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  "a": "a"',
       '};'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: ERROR_MESSAGE,
       line: 12,
@@ -482,7 +484,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  "a": "a"',
       '};'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: 2
   }, {
     code: [
@@ -500,7 +502,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  "B": "B",',
       '};'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: ERROR_MESSAGE,
       line: 12,
@@ -523,7 +525,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  "a": "a",',
       '};'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{
       ignoreCase: true
     }],
@@ -568,7 +570,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: ERROR_MESSAGE,
       line: 9,
@@ -596,7 +598,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: 2
   }, {
     code: [
@@ -618,7 +620,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '  ...defaults,',
       '};'
     ].join('\n'),
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: ERROR_MESSAGE,
       line: 15,

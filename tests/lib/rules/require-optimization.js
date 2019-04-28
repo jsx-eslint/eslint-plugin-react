@@ -7,6 +7,8 @@
 const rule = require('../../../lib/rules/require-optimization');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -46,7 +48,7 @@ ruleTester.run('react-require-optimization', rule, {
         render() {}
       }
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       import React from "react";
@@ -66,28 +68,28 @@ ruleTester.run('react-require-optimization', rule, {
       @reactMixin.decorate(PureRenderMixin)
       class DecoratedComponent extends Component {}
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       const FunctionalComponent = function (props) {
         return <div />;
       }
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       function FunctionalComponent(props) {
         return <div />;
       }
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       const FunctionalComponent = (props) => {
         return <div />;
       }
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       @bar
@@ -95,21 +97,21 @@ ruleTester.run('react-require-optimization', rule, {
       @foo
       class DecoratedComponent extends Component {}
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{allowDecorators: ['renderPure', 'pureRender']}]
   }, {
     code: `
       import React from "react";
       class YourComponent extends React.PureComponent {}
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{allowDecorators: ['renderPure', 'pureRender']}]
   }, {
     code: `
       import React, {PureComponent} from "react";
       class YourComponent extends PureComponent {}
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{allowDecorators: ['renderPure', 'pureRender']}]
   }, {
     code: `
@@ -135,7 +137,7 @@ ruleTester.run('react-require-optimization', rule, {
         }
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: MESSAGE
     }]
@@ -173,7 +175,7 @@ ruleTester.run('react-require-optimization', rule, {
     errors: [{
       message: MESSAGE
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       @bar
@@ -184,7 +186,7 @@ ruleTester.run('react-require-optimization', rule, {
     errors: [{
       message: MESSAGE
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     options: [{allowDecorators: ['renderPure', 'pureRender']}]
   }]
 });

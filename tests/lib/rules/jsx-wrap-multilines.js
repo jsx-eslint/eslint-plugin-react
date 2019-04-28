@@ -11,6 +11,8 @@
 const rule = require('../../../lib/rules/jsx-wrap-multilines');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -589,18 +591,18 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: RETURN_SINGLE_LINE
     }, {
       code: RETURN_SINGLE_LINE_FRAGMENT,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: RETURN_PAREN
     }, {
       code: RETURN_PAREN,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: RETURN_SINGLE_LINE,
       options: [{return: true}]
     }, {
       code: RETURN_SINGLE_LINE_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{return: true}]
     }, {
       code: RETURN_PAREN,
@@ -615,7 +617,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: DECLARATION_TERNARY_SINGLE_LINE
     }, {
       code: DECLARATION_TERNARY_SINGLE_LINE_FRAGMENT,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: DECLARATION_TERNARY_PAREN
     }, {
@@ -623,7 +625,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       options: [{declaration: true}]
     }, {
       code: DECLARATION_TERNARY_SINGLE_LINE,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{declaration: true}]
     }, {
       code: DECLARATION_TERNARY_PAREN,
@@ -656,7 +658,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: DECLARATION_PAREN
     }, {
       code: DECLARATION_PAREN_FRAGMENT,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: DECLARATION_SINGLE_LINE,
       options: [{declaration: true}]
@@ -668,7 +670,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       options: [{declaration: 'ignore'}]
     }, {
       code: DECLARATION_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{declaration: 'ignore'}]
     }, {
       code: DECLARATION_NO_PAREN,
@@ -683,7 +685,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: ASSIGNMENT_PAREN
     }, {
       code: ASSIGNMENT_PAREN_FRAGMENT,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: ASSIGNMENT_PAREN,
       options: [{assignment: true}]
@@ -692,7 +694,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       options: [{assignment: 'ignore'}]
     }, {
       code: ASSIGNMENT_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{assignment: 'ignore'}]
     }, {
       code: ASSIGNMENT_NO_PAREN,
@@ -701,7 +703,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: ARROW_PAREN
     }, {
       code: ARROW_PAREN_FRAGMENT,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: ARROW_SINGLE_LINE
     }, {
@@ -709,7 +711,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       options: [{arrow: true}]
     }, {
       code: ARROW_PAREN,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{arrow: true}]
     }, {
       code: ARROW_SINGLE_LINE,
@@ -719,7 +721,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       options: [{arrow: 'ignore'}]
     }, {
       code: ARROW_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{arrow: 'ignore'}]
     }, {
       code: ARROW_NO_PAREN,
@@ -736,7 +738,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       options: [{condition: true}]
     }, {
       code: CONDITION_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{condition: true}]
     }, {
       code: LOGICAL_SINGLE_LINE
@@ -747,7 +749,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       options: [{logical: true}]
     }, {
       code: LOGICAL_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{logical: true}]
     }, {
       code: ATTR_SINGLE_LINE
@@ -758,14 +760,14 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       options: [{prop: true}]
     }, {
       code: ATTR_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{prop: true}]
     }, {
       code: RETURN_PAREN_NEW_LINE,
       options: [{return: 'parens-new-line'}]
     }, {
       code: RETURN_PAREN_NEW_LINE_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       options: [{return: 'parens-new-line'}]
     }, {
       code: DECLARATION_TERNARY_PAREN_NEW_LINE,
@@ -801,7 +803,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: MISSING_PARENS}]
     }, {
       code: RETURN_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: RETURN_PAREN_FRAGMENT,
       errors: [{message: MISSING_PARENS}]
     }, {
@@ -811,7 +813,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: MISSING_PARENS}]
     }, {
       code: RETURN_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: RETURN_PAREN_FRAGMENT,
       options: [{return: true}],
       errors: [{message: MISSING_PARENS}]
@@ -824,7 +826,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       ]
     }, {
       code: DECLARATION_TERNARY_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: DECLARATION_TERNARY_PAREN_FRAGMENT,
       errors: [
         {message: MISSING_PARENS},
@@ -840,7 +842,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       ]
     }, {
       code: DECLARATION_TERNARY_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: DECLARATION_TERNARY_PAREN_FRAGMENT,
       options: [{declaration: true}],
       errors: [
@@ -856,7 +858,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       ]
     }, {
       code: ASSIGNMENT_TERNARY_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: ASSIGNMENT_TERNARY_PAREN_FRAGMENT,
       errors: [
         {message: MISSING_PARENS},
@@ -872,7 +874,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       ]
     }, {
       code: ASSIGNMENT_TERNARY_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: ASSIGNMENT_TERNARY_PAREN_FRAGMENT,
       options: [{assignment: true}],
       errors: [
@@ -885,7 +887,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: MISSING_PARENS}]
     }, {
       code: DECLARATION_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: DECLARATION_PAREN_FRAGMENT,
       errors: [{message: MISSING_PARENS}]
     }, {
@@ -899,7 +901,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: MISSING_PARENS}]
     }, {
       code: ASSIGNMENT_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: ASSIGNMENT_PAREN_FRAGMENT,
       errors: [{message: MISSING_PARENS}]
     }, {
@@ -913,7 +915,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: MISSING_PARENS}]
     }, {
       code: ARROW_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: ARROW_PAREN_FRAGMENT,
       errors: [{message: MISSING_PARENS}]
     }, {
@@ -928,7 +930,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: MISSING_PARENS}]
     }, {
       code: CONDITION_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: CONDITION_PAREN_FRAGMENT,
       options: [{condition: 'parens'}],
       errors: [{message: MISSING_PARENS}]
@@ -944,7 +946,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: MISSING_PARENS}]
     }, {
       code: LOGICAL_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: LOGICAL_PAREN_FRAGMENT,
       options: [{logical: 'parens'}],
       errors: [{message: MISSING_PARENS}]
@@ -960,7 +962,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: MISSING_PARENS}]
     }, {
       code: ATTR_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: ATTR_PAREN_FRAGMENT,
       options: [{prop: 'parens'}],
       errors: [{message: MISSING_PARENS}]
@@ -976,7 +978,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: MISSING_PARENS}]
     }, {
       code: RETURN_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: addNewLineSymbols(RETURN_PAREN_FRAGMENT),
       options: [{return: 'parens-new-line'}],
       errors: [{message: MISSING_PARENS}]
@@ -997,7 +999,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: PARENS_NEW_LINES}]
     }, {
       code: RETURN_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: addNewLineSymbols(RETURN_PAREN_FRAGMENT),
       options: [{return: 'parens-new-line'}],
       errors: [{message: PARENS_NEW_LINES}]
@@ -1011,7 +1013,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       ]
     }, {
       code: DECLARATION_TERNARY_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: addNewLineSymbols(DECLARATION_TERNARY_PAREN_FRAGMENT),
       options: [{declaration: 'parens-new-line'}],
       errors: [
@@ -1020,7 +1022,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       ]
     }, {
       code: DECLARATION_TERNARY_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: addNewLineSymbols(DECLARATION_TERNARY_PAREN_FRAGMENT),
       options: [{declaration: 'parens-new-line'}],
       errors: [
@@ -1037,7 +1039,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       ]
     }, {
       code: DECLARATION_TERNARY_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: addNewLineSymbols(DECLARATION_TERNARY_PAREN_FRAGMENT),
       options: [{declaration: 'parens-new-line'}],
       errors: [
@@ -1054,7 +1056,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       ]
     }, {
       code: ASSIGNMENT_TERNARY_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: addNewLineSymbols(ASSIGNMENT_TERNARY_PAREN_FRAGMENT),
       options: [{assignment: 'parens-new-line'}],
       errors: [
@@ -1071,7 +1073,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       ]
     }, {
       code: ASSIGNMENT_TERNARY_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: addNewLineSymbols(ASSIGNMENT_TERNARY_PAREN_FRAGMENT),
       options: [{assignment: 'parens-new-line'}],
       errors: [
@@ -1105,7 +1107,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: PARENS_NEW_LINES}]
     }, {
       code: ARROW_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: addNewLineSymbols(ARROW_PAREN_FRAGMENT),
       options: [{arrow: 'parens-new-line'}],
       errors: [{message: PARENS_NEW_LINES}]
@@ -1116,7 +1118,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: MISSING_PARENS}]
     }, {
       code: ARROW_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: addNewLineSymbols(ARROW_PAREN_FRAGMENT),
       options: [{arrow: 'parens-new-line'}],
       errors: [{message: MISSING_PARENS}]
@@ -1127,7 +1129,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: PARENS_NEW_LINES}]
     }, {
       code: CONDITION_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: addNewLineSymbols(CONDITION_PAREN_FRAGMENT),
       options: [{condition: 'parens-new-line'}],
       errors: [{message: PARENS_NEW_LINES}]
@@ -1138,7 +1140,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: MISSING_PARENS}]
     }, {
       code: CONDITION_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: addNewLineSymbols(CONDITION_PAREN_FRAGMENT),
       options: [{condition: 'parens-new-line'}],
       errors: [{message: MISSING_PARENS}]
@@ -1154,7 +1156,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: MISSING_PARENS}]
     }, {
       code: LOGICAL_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: LOGICAL_PAREN_NEW_LINE_AUTOFIX_FRAGMENT,
       options: [{logical: 'parens-new-line'}],
       errors: [{message: MISSING_PARENS}]
@@ -1165,7 +1167,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: PARENS_NEW_LINES}]
     }, {
       code: ATTR_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: addNewLineSymbols(ATTR_PAREN_FRAGMENT),
       options: [{prop: 'parens-new-line'}],
       errors: [{message: PARENS_NEW_LINES}]
@@ -1176,7 +1178,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       errors: [{message: MISSING_PARENS}]
     }, {
       code: ATTR_NO_PAREN_FRAGMENT,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       output: ATTR_PAREN_NEW_LINE_AUTOFIX_FRAGMENT,
       options: [{prop: 'parens-new-line'}],
       errors: [{message: MISSING_PARENS}]

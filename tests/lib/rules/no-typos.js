@@ -10,6 +10,8 @@
 const rule = require('../../../lib/rules/no-typos');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   ecmaFeatures: {
@@ -37,7 +39,7 @@ ruleTester.run('no-typos', rule, {
         static DefaultProps = {key: "myValue"};
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -57,7 +59,7 @@ ruleTester.run('no-typos', rule, {
         static defaultProps = {key: "myValue"};
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -77,7 +79,7 @@ ruleTester.run('no-typos', rule, {
         defaultProps = {key: "myValue"};
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -88,7 +90,7 @@ ruleTester.run('no-typos', rule, {
         DefaultProps = {key: "myValue"};
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -99,7 +101,7 @@ ruleTester.run('no-typos', rule, {
         defaultprops = {key: "myValue"};
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -110,7 +112,7 @@ ruleTester.run('no-typos', rule, {
         static DefaultProps() {};
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -121,7 +123,7 @@ ruleTester.run('no-typos', rule, {
         static defaultprops() {};
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -250,7 +252,7 @@ ruleTester.run('no-typos', rule, {
       }
       function a() {}
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -260,7 +262,7 @@ ruleTester.run('no-typos', rule, {
         a: PropTypes.number.isRequired
       }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -272,7 +274,7 @@ ruleTester.run('no-typos', rule, {
         })
       }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -287,7 +289,7 @@ ruleTester.run('no-typos', rule, {
         }).isRequired
       }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -300,7 +302,7 @@ ruleTester.run('no-typos', rule, {
         ])
       }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -313,7 +315,7 @@ ruleTester.run('no-typos', rule, {
         ])
       }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -328,7 +330,7 @@ ruleTester.run('no-typos', rule, {
         }).isRequired
       }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -341,7 +343,7 @@ ruleTester.run('no-typos', rule, {
         ])
       }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -416,7 +418,7 @@ ruleTester.run('no-typos', rule, {
         }).isRequired
       }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -431,7 +433,7 @@ ruleTester.run('no-typos', rule, {
         }).isRequired
       }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -444,7 +446,7 @@ ruleTester.run('no-typos', rule, {
         c: MyPropTypes.MYSTRING.isRequired,
       }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -456,7 +458,7 @@ ruleTester.run('no-typos', rule, {
         a: MyPropTypes.MYSTRING,
       }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -466,7 +468,7 @@ ruleTester.run('no-typos', rule, {
         b: CustomReact.PropTypes.string,
       }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     // ensure that an absent arg to PropTypes.shape does not crash
@@ -489,7 +491,7 @@ ruleTester.run('no-typos', rule, {
        a: PropTypes.shape(),
      };
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -498,7 +500,7 @@ ruleTester.run('no-typos', rule, {
         data.time = data.time || {};
       };
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `class Component extends React.Component {};
      Component.propTypes = {
@@ -518,7 +520,7 @@ ruleTester.run('no-typos', rule, {
        }).isRequired
      }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -547,7 +549,7 @@ ruleTester.run('no-typos', rule, {
         }
       });
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -576,7 +578,7 @@ ruleTester.run('no-typos', rule, {
         }
       });
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -617,7 +619,7 @@ ruleTester.run('no-typos', rule, {
         }
       });
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: `
@@ -641,7 +643,7 @@ ruleTester.run('no-typos', rule, {
         static PropTypes = {};
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
@@ -664,7 +666,7 @@ ruleTester.run('no-typos', rule, {
         static proptypes = {};
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
@@ -687,7 +689,7 @@ ruleTester.run('no-typos', rule, {
         static ContextTypes = {};
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
@@ -710,7 +712,7 @@ ruleTester.run('no-typos', rule, {
         static contexttypes = {};
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
@@ -733,7 +735,7 @@ ruleTester.run('no-typos', rule, {
         static ChildContextTypes = {};
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
@@ -756,7 +758,7 @@ ruleTester.run('no-typos', rule, {
         static childcontexttypes = {};
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
@@ -779,7 +781,7 @@ ruleTester.run('no-typos', rule, {
         static DefaultProps = {};
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
@@ -802,7 +804,7 @@ ruleTester.run('no-typos', rule, {
         static defaultprops = {};
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
@@ -1056,7 +1058,7 @@ ruleTester.run('no-typos', rule, {
         }
       };
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
@@ -1070,7 +1072,7 @@ ruleTester.run('no-typos', rule, {
         }
       };
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in declared prop type: Number'
@@ -1083,7 +1085,7 @@ ruleTester.run('no-typos', rule, {
           a: PropTypes.Number
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in declared prop type: Number'
@@ -1099,7 +1101,7 @@ ruleTester.run('no-typos', rule, {
         })
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in declared prop type: String'
@@ -1115,7 +1117,7 @@ ruleTester.run('no-typos', rule, {
         ])
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
@@ -1131,7 +1133,7 @@ ruleTester.run('no-typos', rule, {
         d: PropTypes.objectof,
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
@@ -1153,7 +1155,7 @@ ruleTester.run('no-typos', rule, {
         d: PropTypes.objectof,
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
@@ -1175,7 +1177,7 @@ ruleTester.run('no-typos', rule, {
         d: PropTypes.objectof,
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
@@ -1214,7 +1216,7 @@ ruleTester.run('no-typos', rule, {
        }).isrequired
      }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
@@ -1232,7 +1234,7 @@ ruleTester.run('no-typos', rule, {
         d: RealPropTypes.objectof,
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
@@ -1254,7 +1256,7 @@ ruleTester.run('no-typos', rule, {
        }).isrequired
      }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
@@ -1272,7 +1274,7 @@ ruleTester.run('no-typos', rule, {
         d: React.PropTypes.objectof,
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
@@ -1294,7 +1296,7 @@ ruleTester.run('no-typos', rule, {
        }).isrequired
      }
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
@@ -1306,7 +1308,7 @@ ruleTester.run('no-typos', rule, {
      import 'react';
      class Component extends React.Component {};
    `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: []
   }, {
@@ -1320,7 +1322,7 @@ ruleTester.run('no-typos', rule, {
         d: PropTypes.objectof,
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
@@ -1496,7 +1498,7 @@ ruleTester.run('no-typos', rule, {
         }
       });
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
@@ -1516,7 +1518,7 @@ ruleTester.run('no-typos', rule, {
         }
       });
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
@@ -1639,7 +1641,7 @@ ruleTester.run('no-typos', rule, {
         }
       });
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions,
     errors: [{
       message: ERROR_MESSAGE_ES5,

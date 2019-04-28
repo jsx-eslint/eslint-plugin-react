@@ -12,6 +12,8 @@
 const rule = require('../../../lib/rules/jsx-one-expression-per-line');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -140,14 +142,14 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     options: [{allow: 'single-child'}]
   }, {
     code: '<></>',
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       '<>',
       '  <Foo />',
       '</>'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       '<>',
@@ -155,7 +157,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '  <Bar />',
       '</>'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }],
 
   invalid: [{
@@ -1011,7 +1013,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</>'
     ].join('\n'),
     errors: [{message: '`{"foo"}` must be placed on a new line'}],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: [
@@ -1026,7 +1028,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`<></>` must be placed on a new line'}],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }, {
     code: [
@@ -1041,7 +1043,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</>'
     ].join('\n'),
     errors: [{message: '`Foo` must be placed on a new line'}],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     parserOptions: parserOptions
   }]
 });

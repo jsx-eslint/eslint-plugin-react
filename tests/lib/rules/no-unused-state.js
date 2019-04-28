@@ -7,6 +7,8 @@
 const rule = require('../../../lib/rules/no-unused-state');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   ecmaFeatures: {
@@ -228,7 +230,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state.foo} />;
           }
         }`,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     `class VariableDeclarationTest extends React.Component {
         constructor() {
@@ -314,7 +316,7 @@ eslintTester.run('no-unused-state', rule, {
           return <SomeComponent foo={foo} bar={others.bar} />;
         }
       }`,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     // A cleverer analysis might recognize that the following should be errors,
     // but they're out of scope for this lint rule.
@@ -411,7 +413,7 @@ eslintTester.run('no-unused-state', rule, {
           return <SomeComponent {...(this.state: any)} />;
         }
       }`,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class ArrowFunctionClassMethodDestructuringFalseNegativeTest extends React.Component {
@@ -429,7 +431,7 @@ eslintTester.run('no-unused-state', rule, {
           return <SomeComponent />;
         }
       }`,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class ArrowFunctionClassMethodWithClassPropertyTransformFalseNegativeTest extends React.Component {
@@ -445,7 +447,7 @@ eslintTester.run('no-unused-state', rule, {
           return <SomeComponent />;
         }
       }`,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class ArrowFunctionClassMethodDeepDestructuringFalseNegativeTest extends React.Component {
@@ -461,7 +463,7 @@ eslintTester.run('no-unused-state', rule, {
           return <SomeComponent />;
         }
       }`,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class ArrowFunctionClassMethodDestructuringAssignmentFalseNegativeTest extends React.Component {
@@ -477,7 +479,7 @@ eslintTester.run('no-unused-state', rule, {
           return <SomeComponent />;
         }
       }`,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class ThisStateAsAnObject extends React.Component {
@@ -489,7 +491,7 @@ eslintTester.run('no-unused-state', rule, {
           return <div className={classNames('overflowEdgeIndicator', className, this.state)} />;
         }
       }`,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class GetDerivedStateFromPropsTest extends Component {
@@ -513,7 +515,7 @@ eslintTester.run('no-unused-state', rule, {
           );
         }
       }`,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class ComponentDidUpdateTest extends Component {
@@ -535,7 +537,7 @@ eslintTester.run('no-unused-state', rule, {
           );
         }
       }`,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class ShouldComponentUpdateTest extends Component {
@@ -554,7 +556,7 @@ eslintTester.run('no-unused-state', rule, {
           );
         }
       }`,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class NestedScopesTest extends Component {
@@ -575,7 +577,7 @@ eslintTester.run('no-unused-state', rule, {
           );
         }
       }`,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
       class Foo extends Component {
@@ -593,7 +595,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
       class Foo extends Component {
@@ -614,7 +616,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
       class Foo extends Component {
@@ -635,7 +637,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
       var Foo = createReactClass({
@@ -686,7 +688,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `
@@ -703,7 +705,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       }
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Don't error out
       code: `
@@ -715,7 +717,7 @@ eslintTester.run('no-unused-state', rule, {
           return <SomeComponent foo={this.state.foo} />;
         }
       }`,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Don't error out
       code: `
@@ -727,7 +729,7 @@ eslintTester.run('no-unused-state', rule, {
           return <SomeComponent foo={this.state.foo} />;
         }
       }`,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       // Don't error out
       code: `
@@ -739,7 +741,7 @@ eslintTester.run('no-unused-state', rule, {
           return <SomeComponent foo={this.state.foo} />;
         }
       }`,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }
   ],
 
@@ -851,7 +853,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }`,
       errors: getErrorMessages(['foo']),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class UnusedComputedStringLiteralKeyStateTest extends React.Component {
@@ -861,7 +863,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }`,
       errors: getErrorMessages(['foo']),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class UnusedComputedTemplateLiteralKeyStateTest extends React.Component {
@@ -871,7 +873,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }`,
       errors: getErrorMessages(['foo']),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class UnusedComputedTemplateLiteralKeyStateTest extends React.Component {
@@ -881,7 +883,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }`,
       errors: getErrorMessages(['foo \\n bar']),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class UnusedComputedBooleanLiteralKeyStateTest extends React.Component {
@@ -891,7 +893,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }`,
       errors: getErrorMessages(['true']),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class UnusedComputedNumberLiteralKeyStateTest extends React.Component {
@@ -901,7 +903,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }`,
       errors: getErrorMessages(['123']),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class UnusedComputedFloatLiteralKeyStateTest extends React.Component {
@@ -911,7 +913,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }`,
       errors: getErrorMessages(['123.12']),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class UnusedStateWhenPropsAreSpreadTest extends React.Component {
@@ -998,7 +1000,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }`,
       errors: getErrorMessages(['foo']),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class TypeCastExpressionTest extends React.Component {
@@ -1019,7 +1021,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }`,
       errors: getErrorMessages(['qux']),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class UnusedDeepDestructuringTest extends React.Component {
@@ -1030,7 +1032,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }`,
       errors: getErrorMessages(['bar']),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class FakePrevStateVariableTest extends Component {
@@ -1055,7 +1057,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       }`,
       errors: getErrorMessages(['foo']),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `class MissingStateParameterTest extends Component {
@@ -1077,7 +1079,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       }`,
       errors: getErrorMessages(['id']),
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
       class Foo extends Component {
@@ -1095,7 +1097,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       }
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: getErrorMessages(['initial'])
     }
   ]

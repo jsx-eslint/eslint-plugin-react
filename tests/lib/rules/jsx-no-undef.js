@@ -13,6 +13,8 @@ const eslint = require('eslint');
 const rule = require('../../../lib/rules/jsx-no-undef');
 const RuleTester = eslint.RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   ecmaFeatures: {
@@ -68,7 +70,7 @@ ruleTester.run('jsx-no-undef', rule, {
     options: [{
       allowGlobals: false
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }],
   invalid: [{
     code: '/*eslint no-undef:1*/ var React; React.render(<App />);',
@@ -111,7 +113,7 @@ ruleTester.run('jsx-no-undef', rule, {
     options: [{
       allowGlobals: false
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     globals: {
       Text: true
     }

@@ -10,6 +10,9 @@
 
 const rule = require('../../../lib/rules/jsx-closing-tag-location');
 const RuleTester = require('eslint').RuleTester;
+
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   sourceType: 'module',
   ecmaFeatures: {
@@ -42,12 +45,12 @@ ruleTester.run('jsx-closing-tag-location', rule, {
         foo
       </>
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       <>foo</>
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }],
 
   invalid: [{
@@ -79,7 +82,7 @@ ruleTester.run('jsx-closing-tag-location', rule, {
         foo
         </>
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     output: `
       <>
         foo
@@ -91,7 +94,7 @@ ruleTester.run('jsx-closing-tag-location', rule, {
       <>
         foo</>
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     output: `
       <>
         foo

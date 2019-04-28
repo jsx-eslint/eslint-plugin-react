@@ -11,6 +11,8 @@
 const rule = require('../../../lib/rules/display-name');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -84,14 +86,14 @@ ruleTester.run('display-name', rule, {
         }
       }
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       class Hello {
         method;
       }
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       class Hello extends React.Component {
@@ -118,7 +120,7 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       var Hello = createReactClass({
@@ -135,7 +137,7 @@ ruleTester.run('display-name', rule, {
         }
       }
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       export default class Hello {
@@ -144,7 +146,7 @@ ruleTester.run('display-name', rule, {
         }
       }
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       var Hello;
@@ -185,35 +187,35 @@ ruleTester.run('display-name', rule, {
         }
       }
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       var Hello = function() {
         return <div>Hello {this.props.name}</div>;
       }
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       function Hello() {
         return <div>Hello {this.props.name}</div>;
       }
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       var Hello = () => {
         return <div>Hello {this.props.name}</div>;
       }
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       module.exports = function Hello() {
         return <div>Hello {this.props.name}</div>;
       }
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       function Hello() {
@@ -224,7 +226,7 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       var Hello = () => {
@@ -235,7 +237,7 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       var Hello = function() {
@@ -246,7 +248,7 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       var Mixins = {
@@ -261,7 +263,7 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       var Hello = createReactClass({
@@ -273,7 +275,7 @@ ruleTester.run('display-name', rule, {
         }
       });
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       var Hello = createReactClass({
@@ -289,7 +291,7 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       const Mixin = {
@@ -300,7 +302,7 @@ ruleTester.run('display-name', rule, {
         }
       };
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       var obj = {
@@ -312,7 +314,7 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       var obj = {
@@ -321,7 +323,7 @@ ruleTester.run('display-name', rule, {
         }
       };
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       export default {
@@ -331,7 +333,7 @@ ruleTester.run('display-name', rule, {
         }
       };
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       import React, { createClass } from 'react';
@@ -350,7 +352,7 @@ ruleTester.run('display-name', rule, {
         createClass: 'createClass'
       }
     },
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       import React, {Component} from "react";
@@ -361,7 +363,7 @@ ruleTester.run('display-name', rule, {
       }
       module.exports = someDecorator;
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       'import React, {createElement} from "react";',
@@ -382,7 +384,7 @@ ruleTester.run('display-name', rule, {
       '  });',
       '};'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: [
       'import React, {Component} from "react";',
@@ -403,7 +405,7 @@ ruleTester.run('display-name', rule, {
       '}',
       'module.exports = someDecorator;'
     ].join('\n'),
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       const element = (
@@ -413,7 +415,7 @@ ruleTester.run('display-name', rule, {
         }}/>
       )
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       const element = (
@@ -423,20 +425,20 @@ ruleTester.run('display-name', rule, {
         }}/>
       )
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       module.exports = {
         createElement: tagName => document.createElement(tagName)
       };
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       const { createElement } = document;
       createElement("a");
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       import React from 'react'
@@ -549,7 +551,7 @@ ruleTester.run('display-name', rule, {
         return <div>Hello {props.name}</div>;
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -559,7 +561,7 @@ ruleTester.run('display-name', rule, {
         return <div>Hello {props.name}</div>;
       }
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -571,7 +573,7 @@ ruleTester.run('display-name', rule, {
         }
       });
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -589,7 +591,7 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -607,7 +609,7 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     settings: {
       react: {
         pragma: 'Foo',
@@ -637,7 +639,7 @@ ruleTester.run('display-name', rule, {
         createClass: 'createClass'
       }
     },
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -654,7 +656,7 @@ ruleTester.run('display-name', rule, {
     options: [{
       ignoreTranspilerName: true
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -665,7 +667,7 @@ ruleTester.run('display-name', rule, {
         return createElement("div", {}, "hello");
       };
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -677,7 +679,7 @@ ruleTester.run('display-name', rule, {
         return createElement("div", {}, "hello");
       };
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Component definition is missing display name'
     }]
@@ -689,7 +691,7 @@ ruleTester.run('display-name', rule, {
         return createElement("div", {}, "hello");
       };
     `,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Component definition is missing display name'
     }]

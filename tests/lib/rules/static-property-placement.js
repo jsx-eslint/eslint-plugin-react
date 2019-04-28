@@ -18,8 +18,10 @@ const PROPERTY_ASSIGNMENT = 'property assignment';
 const rule = require('../../../lib/rules/static-property-placement');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const ruleTesterConfig = {
-  parser: 'babel-eslint',
+  parser: BABEL_ESLINT,
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
@@ -51,21 +53,21 @@ ruleTester.run('static-property-placement', rule, {
           childContextTypes: {
             something: PropTypes.bool
           },
-          
+
           contextTypes: {
             something: PropTypes.bool
           },
-          
+
           getDefaultProps: function() {
             name: 'Bob'
           },
-          
+
           displayName: 'Hello',
-          
+
           propTypes: {
             something: PropTypes.bool
           },
-          
+
           render: function() {
             return null;
           },
@@ -80,21 +82,21 @@ ruleTester.run('static-property-placement', rule, {
           childContextTypes: {
             something: PropTypes.bool
           },
-          
+
           contextTypes: {
             something: PropTypes.bool
           },
-          
+
           getDefaultProps: function() {
             name: 'Bob'
           },
-          
+
           displayName: 'Hello',
-          
+
           propTypes: {
             something: PropTypes.bool
           },
-          
+
           render: function() {
             return null;
           },
@@ -105,24 +107,24 @@ ruleTester.run('static-property-placement', rule, {
     {
       // Do not error on SFC arrow function with return
       code: [`
-        const MyComponent = () => {          
+        const MyComponent = () => {
             return <div>Hello</div>;
         };
-        
+
         MyComponent.childContextTypes = {
           something: PropTypes.bool
         };
-        
+
         MyComponent.contextTypes = {
           something: PropTypes.bool
         };
-        
+
         MyComponent.defaultProps = {
           something: 'Bob'
         };
-        
+
         MyComponent.displayName = 'Hello';
-        
+
         MyComponent.propTypes = {
           something: PropTypes.bool
         };
@@ -132,21 +134,21 @@ ruleTester.run('static-property-placement', rule, {
       // Do not error on SFC arrow function with direct return
       code: [`
         const MyComponent = () => (<div>Hello</div>);
-        
+
         MyComponent.childContextTypes = {
           something: PropTypes.bool
         };
-        
+
         MyComponent.contextTypes = {
           something: PropTypes.bool
         };
-        
+
         MyComponent.defaultProps = {
           something: 'Bob'
         };
-        
+
         MyComponent.displayName = 'Hello';
-        
+
         MyComponent.propTypes = {
           something: PropTypes.bool
         };
@@ -155,24 +157,24 @@ ruleTester.run('static-property-placement', rule, {
     {
       // Do not error on SFC as unnamed function
       code: [`
-        export function MyComponent () {          
+        export function MyComponent () {
             return <div>Hello</div>;
         };
-        
+
         MyComponent.childContextTypes = {
           something: PropTypes.bool
         };
-        
+
         MyComponent.contextTypes = {
           something: PropTypes.bool
         };
-        
+
         MyComponent.defaultProps = {
           something: 'Bob'
         };
-        
+
         MyComponent.displayName = 'Hello';
-        
+
         MyComponent.propTypes = {
           something: PropTypes.bool
         };
@@ -220,7 +222,7 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.randomlyNamed = {
           name: 'random'
         }
@@ -235,7 +237,7 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.randomlyNamed = {
           name: 'random'
         }
@@ -305,7 +307,7 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.childContextTypes = {
           name: PropTypes.string.isRequired
         }
@@ -320,7 +322,7 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.childContextTypes = {
           name: PropTypes.string.isRequired
         }
@@ -391,7 +393,7 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.contextTypes = {
           name: PropTypes.string.isRequired
         }
@@ -406,7 +408,7 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.contextTypes = {
           name: PropTypes.string.isRequired
         }
@@ -469,7 +471,7 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.contextType = MyContext;
       `].join('\n'),
       options: [PROPERTY_ASSIGNMENT]
@@ -482,7 +484,7 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.contextType = MyContext;
       `].join('\n'),
       options: [STATIC_PUBLIC_FIELD, {contextType: PROPERTY_ASSIGNMENT}]
@@ -543,7 +545,7 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.displayName = "Hello";
       `].join('\n'),
       options: [PROPERTY_ASSIGNMENT]
@@ -556,7 +558,7 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.displayName = "Hello";
       `].join('\n'),
       options: [STATIC_PUBLIC_FIELD, {displayName: PROPERTY_ASSIGNMENT}]
@@ -625,7 +627,7 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.defaultProps = {
           name: 'Bob'
         }
@@ -640,7 +642,7 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.defaultProps = {
           name: 'Bob'
         }
@@ -711,7 +713,7 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
@@ -726,7 +728,7 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
@@ -743,19 +745,19 @@ ruleTester.run('static-property-placement', rule, {
           static childContextTypes = {
             something: PropTypes.bool
           };
-          
+
           static contextTypes = {
             something: PropTypes.bool
           };
-          
+
           static contextType = MyContext;
-          
+
           static displayName = "Hello";
-          
+
           static defaultProps = {
             something: 'Bob'
           };
-          
+
           static propTypes = {
             something: PropTypes.bool
           };
@@ -769,19 +771,19 @@ ruleTester.run('static-property-placement', rule, {
           static childContextTypes = {
             something: PropTypes.bool
           };
-          
+
           static contextTypes = {
             something: PropTypes.bool
           };
-          
+
           static contextType = MyContext;
-          
+
           static displayName = "Hello";
-          
+
           static defaultProps = {
             something: 'Bob'
           };
-          
+
           static propTypes = {
             something: PropTypes.bool
           };
@@ -808,27 +810,27 @@ ruleTester.run('static-property-placement', rule, {
               something: PropTypes.bool
             };
           }
-          
+
           static get contextTypes() {
             return {
               something: PropTypes.bool
             };
           }
-          
+
           static get contextType() {
             return MyContext;
           }
-          
+
           static get displayName() {
             return "Hello";
           }
-          
+
           static get defaultProps() {
             return {
               something: PropTypes.bool
             };
           }
-          
+
           static get propTypes() {
             return {
               something: PropTypes.bool
@@ -847,27 +849,27 @@ ruleTester.run('static-property-placement', rule, {
               something: PropTypes.bool
             };
           }
-          
+
           static get contextTypes() {
             return {
               something: PropTypes.bool
             };
           }
-          
+
           static get contextType() {
             return MyContext;
           }
-          
+
           static get displayName() {
             return "Hello";
           }
-          
+
           static get defaultProps() {
             return {
               something: PropTypes.bool
             };
           }
-          
+
           static get propTypes() {
             return {
               something: PropTypes.bool
@@ -895,21 +897,21 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.childContextTypes = {
           name: PropTypes.string.isRequired
         }
-        
+
         MyComponent.contextTypes = {
           name: PropTypes.string.isRequired
         }
-        
+
         MyComponent.displayName = "Hello";
-        
+
         MyComponent.defaultProps = {
           name: 'Bob'
         }
-        
+
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
@@ -924,21 +926,21 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.childContextTypes = {
           name: PropTypes.string.isRequired
         }
-        
+
         MyComponent.contextTypes = {
           name: PropTypes.string.isRequired
         }
-        
+
         MyComponent.displayName = "Hello";
-        
+
         MyComponent.defaultProps = {
           name: 'Bob'
         }
-        
+
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
@@ -961,20 +963,20 @@ ruleTester.run('static-property-placement', rule, {
           static childContextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static contextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static get displayName() {
             return "Hello"
           }
-        }     
-        
+        }
+
         MyComponent.defaultProps = {
           name: 'Bob'
         }
-        
+
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
@@ -992,20 +994,20 @@ ruleTester.run('static-property-placement', rule, {
           static childContextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static contextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static get displayName() {
             return "Hello"
           }
-        }     
-        
+        }
+
         MyComponent.defaultProps = {
           name: 'Bob'
         }
-        
+
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
@@ -1026,20 +1028,20 @@ ruleTester.run('static-property-placement', rule, {
           static childContextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static contextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static displayName = "Hello";
-        }     
-        
+        }
+
         const OtherComponent = () => (<div>Hello</div>);
-         
+
         OtherComponent.defaultProps = {
           name: 'Bob'
         }
-        
+
         OtherComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
@@ -1052,23 +1054,23 @@ ruleTester.run('static-property-placement', rule, {
           static childContextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static contextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static displayName = "Hello";
-        }     
-        
+        }
+
         class OtherComponent extends React.Component {
           static defaultProps = {
             name: 'Bob'
           }
-          
+
           static propTypes = {
             name: PropTypes.string.isRequired
           }
-        }       
+        }
       `].join('\n')
     }
   ],
@@ -1085,23 +1087,23 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.childContextTypes = {
           name: PropTypes.string.isRequired
         }
-        
+
         MyComponent.contextTypes = {
           name: PropTypes.string.isRequired
         }
-        
+
         MyComponent.contextType = MyContext;
-        
+
         MyComponent.displayName = "Hello";
-        
+
         MyComponent.defaultProps = {
           name: 'Bob'
         }
-        
+
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
@@ -1123,23 +1125,23 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.childContextTypes = {
           name: PropTypes.string.isRequired
         }
-        
+
         MyComponent.contextTypes = {
           name: PropTypes.string.isRequired
         }
-        
+
         MyComponent.contextType = MyContext;
-        
+
         MyComponent.displayName = "Hello";
-        
+
         MyComponent.defaultProps = {
           name: 'Bob'
         }
-        
+
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
@@ -1173,27 +1175,27 @@ ruleTester.run('static-property-placement', rule, {
               something: PropTypes.bool
             };
           }
-          
+
           static get contextTypes() {
             return {
               something: PropTypes.bool
             };
           }
-          
+
           static get contextType() {
             return MyContext;
           }
-          
+
           static get displayName() {
             return "Hello";
           }
-          
+
           static get defaultProps() {
             return {
               something: PropTypes.bool
             };
           }
-          
+
           static get propTypes() {
             return {
               something: PropTypes.bool
@@ -1219,27 +1221,27 @@ ruleTester.run('static-property-placement', rule, {
               something: PropTypes.bool
             };
           }
-          
+
           static get contextTypes() {
             return {
               something: PropTypes.bool
             };
           }
-          
+
           static get contextType() {
             return MyContext;
           }
-          
+
           static get displayName() {
             return "Hello";
           }
-          
+
           static get defaultProps() {
             return {
               something: PropTypes.bool
             };
           }
-          
+
           static get propTypes() {
             return {
               something: PropTypes.bool
@@ -1274,19 +1276,19 @@ ruleTester.run('static-property-placement', rule, {
           static childContextTypes = {
             something: PropTypes.bool
           };
-          
+
           static contextTypes = {
             something: PropTypes.bool
           };
-          
+
           static contextType = MyContext;
-          
+
           static displayName = "Hello";
-          
+
           static defaultProps = {
             something: 'Bob'
           };
-          
+
           static propTypes = {
             something: PropTypes.bool
           };
@@ -1309,19 +1311,19 @@ ruleTester.run('static-property-placement', rule, {
           static childContextTypes = {
             something: PropTypes.bool
           };
-          
+
           static contextTypes = {
             something: PropTypes.bool
           };
-          
+
           static contextType = MyContext;
-          
+
           static displayName = "Hello";
-          
+
           static defaultProps = {
             something: 'Bob'
           };
-          
+
           static propTypes = {
             something: PropTypes.bool
           };
@@ -1356,27 +1358,27 @@ ruleTester.run('static-property-placement', rule, {
               something: PropTypes.bool
             };
           }
-          
+
           static get contextTypes() {
             return {
               something: PropTypes.bool
             };
           }
-          
+
           static get contextType() {
             return MyContext;
           }
-          
+
           static get displayName() {
             return "Hello";
           }
-          
+
           static get defaultProps() {
             return {
               something: PropTypes.bool
             };
           }
-          
+
           static get propTypes() {
             return {
               something: PropTypes.bool
@@ -1403,27 +1405,27 @@ ruleTester.run('static-property-placement', rule, {
               something: PropTypes.bool
             };
           }
-          
+
           static get contextTypes() {
             return {
               something: PropTypes.bool
             };
           }
-          
+
           static get contextType() {
             return MyContext;
           }
-          
+
           static get displayName() {
             return "Hello";
           }
-          
+
           static get defaultProps() {
             return {
               something: PropTypes.bool
             };
           }
-          
+
           static get propTypes() {
             return {
               something: PropTypes.bool
@@ -1458,19 +1460,19 @@ ruleTester.run('static-property-placement', rule, {
           static childContextTypes = {
             something: PropTypes.bool
           };
-          
+
           static contextTypes = {
             something: PropTypes.bool
           };
-          
+
           static contextType = MyContext;
-          
+
           static displayName = "Hello";
-          
+
           static defaultProps = {
             something: 'Bob'
           };
-          
+
           static propTypes = {
             something: PropTypes.bool
           };
@@ -1493,19 +1495,19 @@ ruleTester.run('static-property-placement', rule, {
           static childContextTypes = {
             something: PropTypes.bool
           };
-          
+
           static contextTypes = {
             something: PropTypes.bool
           };
-          
+
           static contextType = MyContext;
-          
+
           static displayName = "Hello";
-          
+
           static defaultProps = {
             something: 'Bob'
           };
-          
+
           static propTypes = {
             something: PropTypes.bool
           };
@@ -1539,23 +1541,23 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.childContextTypes = {
           name: PropTypes.string.isRequired
         }
-        
+
         MyComponent.contextTypes = {
           name: PropTypes.string.isRequired
         }
-        
+
         MyComponent.contextType = MyContext;
-        
+
         MyComponent.displayName = "Hello";
-        
+
         MyComponent.defaultProps = {
           name: 'Bob'
         }
-        
+
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
@@ -1578,23 +1580,23 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           }
         }
-        
+
         MyComponent.childContextTypes = {
           name: PropTypes.string.isRequired
         }
-        
+
         MyComponent.contextTypes = {
           name: PropTypes.string.isRequired
         }
-        
+
         MyComponent.contextType = MyContext;
-        
+
         MyComponent.displayName = "Hello";
-        
+
         MyComponent.defaultProps = {
           name: 'Bob'
         }
-        
+
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
@@ -1626,22 +1628,22 @@ ruleTester.run('static-property-placement', rule, {
           static childContextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static contextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static contextType = MyContext;
-          
+
           static get displayName() {
             return "Hello";
           }
-        }     
-        
+        }
+
         MyComponent.defaultProps = {
           name: 'Bob'
         }
-        
+
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
@@ -1667,22 +1669,22 @@ ruleTester.run('static-property-placement', rule, {
           static childContextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static contextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static contextType = MyContext;
-          
+
           static get displayName() {
             return "Hello";
           }
-        }     
-        
+        }
+
         MyComponent.defaultProps = {
           name: 'Bob'
         }
-        
+
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
@@ -1712,24 +1714,24 @@ ruleTester.run('static-property-placement', rule, {
           static childContextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static contextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static contextType = MyContext;
-          
+
           static get displayName() {
             return "Hello";
           }
-        }     
-        
+        }
+
         const OtherComponent = () => (<div>Hello</div>);
-         
+
         OtherComponent.defaultProps = {
           name: 'Bob'
         }
-        
+
         OtherComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
@@ -1752,33 +1754,33 @@ ruleTester.run('static-property-placement', rule, {
           static childContextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static contextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static contextType = MyContext;
-          
+
           static displayName = "Hello";
-        }     
-        
+        }
+
         class OtherComponent extends React.Component {
           static contextTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static defaultProps = {
             name: 'Bob'
           }
-          
+
           static propTypes = {
             name: PropTypes.string.isRequired
           }
-          
+
           static get displayName() {
             return "Hello";
           }
-        }       
+        }
       `].join('\n'),
       options: [PROPERTY_ASSIGNMENT],
       errors: [

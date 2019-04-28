@@ -11,6 +11,8 @@
 const rule = require('../../../lib/rules/boolean-prop-naming');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -142,7 +144,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     // ES6 components with static class properties and Object.spread syntax in PropTypes
     code: `
@@ -155,7 +157,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     // ES6 components as Component with boolean PropTypes and Object.spread syntax in PropTypes
     code: `
@@ -179,7 +181,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     // ES6 components with static class properties an non-booleans
     code: `
@@ -191,7 +193,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     // ES6 components and Flowtype booleans
     code: `
@@ -203,7 +205,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     // ES6 components and Flowtype non-booleans
     code: `
@@ -215,7 +217,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     // Stateless components
     code: `
@@ -225,7 +227,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     // Functional components and Flowtype booleans
     code: `
@@ -237,7 +239,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     // Custom `propTypeNames` option
     code: `
@@ -253,7 +255,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       propTypeNames: ['mutuallyExclusiveTrueProps'],
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     // Custom PropTypes that are specified as variables
     code: `
@@ -269,7 +271,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       propTypeNames: ['bool', 'mutuallyExclusiveTrueProps'],
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     // Ensure rule doesn't crash on destructured objects [Issue #1369]
     code: `
@@ -279,7 +281,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     // Ensure rule doesn't crash on on components reference old-style Flow props
     code: `
@@ -291,7 +293,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     // No propWrapperFunctions setting
     code: `
@@ -328,7 +330,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         }
       }
     `,
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     // Ensure the rule does not throw when a prop isRequired when ES6 without static properties.
     code: `
@@ -372,7 +374,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: `
       class Hello extends React.Component {
@@ -501,7 +503,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
@@ -532,7 +534,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
@@ -547,7 +549,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
@@ -559,7 +561,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
@@ -573,7 +575,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
@@ -589,7 +591,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       propTypeNames: ['bool', 'mutuallyExclusiveTrueProps'],
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
@@ -607,7 +609,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       propTypeNames: ['bool', 'mutuallyExclusiveTrueProps'],
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }, {
@@ -627,7 +629,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       propTypeNames: ['bool', 'mutuallyExclusiveTrueProps'],
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }, {
@@ -730,7 +732,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         return <div>{props.showScore ? 'yeh' : 'no'}</div>;
       }
     }`,
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     settings: {
       propWrapperFunctions: ['forbidExtraProps']
     },
@@ -802,7 +804,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
@@ -843,7 +845,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     options: [{
       rule: '^is[A-Z]([A-Za-z0-9]?)+'
     }],
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{
       message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]

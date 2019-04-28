@@ -11,6 +11,8 @@
 const rule = require('../../../lib/rules/jsx-handler-names');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -51,13 +53,13 @@ ruleTester.run('jsx-handler-names', rule, {
     }]
   }, {
     code: '<TestComponent onChange={props::handleChange} />',
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: '<TestComponent onChange={::props.onChange} />',
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: '<TestComponent onChange={props.foo::handleChange} />',
-    parser: 'babel-eslint'
+    parser: BABEL_ESLINT
   }, {
     code: '<TestComponent only={this.only} />'
   }],
@@ -79,11 +81,11 @@ ruleTester.run('jsx-handler-names', rule, {
     errors: [{message: 'Handler function for onChange prop key must begin with \'handle\''}]
   }, {
     code: '<TestComponent onChange={props::onChange} />',
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{message: 'Handler function for onChange prop key must begin with \'handle\''}]
   }, {
     code: '<TestComponent onChange={props.foo::onChange} />',
-    parser: 'babel-eslint',
+    parser: BABEL_ESLINT,
     errors: [{message: 'Handler function for onChange prop key must begin with \'handle\''}]
   }]
 });

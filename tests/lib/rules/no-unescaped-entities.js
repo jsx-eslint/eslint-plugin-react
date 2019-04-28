@@ -11,6 +11,8 @@
 const rule = require('../../../lib/rules/no-unescaped-entities');
 const RuleTester = require('eslint').RuleTester;
 
+const {BABEL_ESLINT} = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -80,7 +82,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }, {
       code: `
         var Hello = createReactClass({
@@ -89,7 +91,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     },
     {
       code: `
@@ -99,7 +101,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           },
         });
       `,
-      parser: 'babel-eslint'
+      parser: BABEL_ESLINT
     }
   ],
 
@@ -121,7 +123,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{message: '`>` can be escaped with `&gt;`.'}]
     }, {
       code: `
@@ -144,7 +146,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{message: '`>` can be escaped with `&gt;`.'}]
     }, {
       code: `
@@ -185,7 +187,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{message: '`}` can be escaped with `&#125;`.'}]
     }, {
       code: `
@@ -195,7 +197,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      parser: 'babel-eslint',
+      parser: BABEL_ESLINT,
       errors: [{message: 'HTML entity, \`&\` , must be escaped.'}],
       options: [{
         forbid: ['&']
