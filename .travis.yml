@@ -16,9 +16,9 @@ env:
   global:
     - TEST=true
   matrix:
+    - ESLINT=next
     - ESLINT=5
     - ESLINT=4
-    - ESLINT=3
 after_success:
   - 'if [ -n "${TEST-}" ]; then npm run coveralls ; fi'
 matrix:
@@ -28,3 +28,4 @@ matrix:
       env: PRETEST=true
   allow_failures:
     - node_js: '11'
+    - env: ESLINT=next
