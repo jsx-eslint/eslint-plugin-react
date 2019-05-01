@@ -13,7 +13,7 @@
 const rule = require('../../../lib/rules/jsx-curly-brace-presence');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   sourceType: 'module',
@@ -37,7 +37,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     },
     {
       code: '<>foo</>',
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: '<App {...props}>foo</App>',
@@ -307,7 +307,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: '<>{`foo`}</>',
       output: '<>foo</>',
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       options: [{children: 'never'}],
       errors: [{message: unnecessaryCurlyMessage}]
     },

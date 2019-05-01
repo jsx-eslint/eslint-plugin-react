@@ -11,7 +11,7 @@
 const rule = require('../../../lib/rules/no-multi-comp');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -68,7 +68,7 @@ ruleTester.run('no-multi-comp', rule, {
       '  return <div>Hello again {props.name}</div>;',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [{
       ignoreStateless: true
     }]
@@ -168,7 +168,7 @@ ruleTester.run('no-multi-comp', rule, {
       '  return <div>Hello again {props.name}</div>;',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [{
       message: 'Declare only one React component per file',
       line: 4
@@ -201,7 +201,7 @@ ruleTester.run('no-multi-comp', rule, {
       '  }',
       '};'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [{
       message: 'Declare only one React component per file',
       line: 6

@@ -18,10 +18,10 @@ const PROPERTY_ASSIGNMENT = 'property assignment';
 const rule = require('../../../lib/rules/static-property-placement');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const ruleTesterConfig = {
-  parser: BABEL_ESLINT,
+  parser: parsers.BABEL_ESLINT,
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',

@@ -11,7 +11,7 @@
 const rule = require('../../../lib/rules/jsx-filename-extension');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -54,17 +54,17 @@ ruleTester.run('jsx-filename-extension', rule, {
     }, {
       filename: '<text>',
       code: withJSXFragment,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       filename: 'MyComponent.jsx',
       code: withJSXFragment,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       filename: 'MyComponent.js',
       options: [{extensions: ['.js', '.jsx']}],
       code: withJSXFragment,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }
   ],
 
@@ -81,12 +81,12 @@ ruleTester.run('jsx-filename-extension', rule, {
     }, {
       filename: 'MyComponent.js',
       code: withJSXFragment,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{message: 'JSX not allowed in files with extension \'.js\''}]
     }, {
       filename: 'MyComponent.jsx',
       code: withJSXFragment,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       options: [{extensions: ['.js']}],
       errors: [{message: 'JSX not allowed in files with extension \'.jsx\''}]
     }

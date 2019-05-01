@@ -11,7 +11,7 @@
 const rule = require('../../../lib/rules/prefer-read-only-props');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -42,7 +42,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       // Class component with typed props property
@@ -57,7 +57,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       // Functional component with typed props argument
@@ -66,7 +66,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       // Functional component with type intersection
@@ -79,7 +79,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return <div>Hello {firstName} {lastName}</div>;
         }
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       // Arrow function
@@ -88,7 +88,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           <div>Hello {props.name}</div>
         );
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       // Destructured props
@@ -97,7 +97,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           <div>Hello {props.name}</div>
         );
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       // No error, because this is not a component
@@ -106,7 +106,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return props.n + 1;
         };
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       // No error, because there is no Props flow type
@@ -147,7 +147,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Prop \'name\' should be read-only.'
       }]
@@ -165,7 +165,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Prop \'name\' should be read-only.'
       }]
@@ -182,7 +182,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Prop \'name\' should be read-only.'
       }]
@@ -193,7 +193,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Prop \'name\' should be read-only.'
       }]
@@ -204,7 +204,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Prop \'name\' should be read-only.'
       }]
@@ -215,7 +215,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Prop \'name\' should be read-only.'
       }]
@@ -230,7 +230,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return <div>Hello {firstName} {lastName}</div>;
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Prop \'firstName\' should be read-only.'
       }, {
@@ -243,7 +243,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           <div>Hello {props.name}</div>
         );
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Prop \'name\' should be read-only.'
       }]

@@ -11,7 +11,7 @@
 const rule = require('../../../lib/rules/prefer-stateless-function');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -165,7 +165,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       // Use this.bar (destructuring)
       code: `
@@ -176,7 +176,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       // Use this[bar]
       code: `
@@ -186,7 +186,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       // Use this['bar']
       code: `
@@ -196,7 +196,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       // Can return null (ES6, React 0.14.0)
       code: `
@@ -209,7 +209,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       settings: {
         react: {
           version: '0.14.0'
@@ -241,7 +241,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       settings: {
         react: {
           version: '0.14.0'
@@ -258,7 +258,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         );
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       // Has childContextTypes
       code: `
@@ -271,7 +271,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           color: PropTypes.string
         };
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       // Uses a decorator
       code: `
@@ -282,7 +282,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       // Uses a called decorator
       code: `
@@ -293,7 +293,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       // Uses multiple decorators
       code: `
@@ -305,7 +305,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: `
@@ -378,7 +378,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Component should be written as a pure function'
       }]
@@ -391,7 +391,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Component should be written as a pure function'
       }]
@@ -408,7 +408,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Component should be written as a pure function'
       }]
@@ -423,7 +423,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Component should be written as a pure function'
       }]
@@ -438,7 +438,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Component should be written as a pure function'
       }]
@@ -453,7 +453,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Component should be written as a pure function'
       }]
@@ -480,7 +480,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Component should be written as a pure function'
       }]
@@ -521,7 +521,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Component should be written as a pure function'
       }]
@@ -569,7 +569,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Component should be written as a pure function'
       }]

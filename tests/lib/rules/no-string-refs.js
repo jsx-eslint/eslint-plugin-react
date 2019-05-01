@@ -11,7 +11,7 @@
 const rule = require('../../../lib/rules/no-string-refs');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -39,7 +39,7 @@ ruleTester.run('no-refs', rule, {
         }
       });
     `,
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   },
   {
     code: [
@@ -49,7 +49,7 @@ ruleTester.run('no-refs', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   },
   {
     code: [
@@ -59,7 +59,7 @@ ruleTester.run('no-refs', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }
   ],
 
@@ -74,7 +74,7 @@ ruleTester.run('no-refs', rule, {
         }
       });
     `,
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [{
       message: 'Using this.refs is deprecated.'
     }]
@@ -86,7 +86,7 @@ ruleTester.run('no-refs', rule, {
         }
       });
     `,
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [{
       message: 'Using string literals in ref attributes is deprecated.'
     }]
@@ -98,7 +98,7 @@ ruleTester.run('no-refs', rule, {
         }
       });
     `,
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [{
       message: 'Using string literals in ref attributes is deprecated.'
     }]
@@ -113,7 +113,7 @@ ruleTester.run('no-refs', rule, {
         }
       });
     `,
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [{
       message: 'Using this.refs is deprecated.'
     }, {
@@ -131,7 +131,7 @@ ruleTester.run('no-refs', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [{noTemplateLiterals: true}],
     errors: [{
       message: 'Using this.refs is deprecated.'
@@ -150,7 +150,7 @@ ruleTester.run('no-refs', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [{noTemplateLiterals: true}],
     errors: [{
       message: 'Using this.refs is deprecated.'

@@ -10,7 +10,7 @@
 const rule = require('../../../lib/rules/forbid-prop-types');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -140,7 +140,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  "aria-controls": PropTypes.string',
       '};'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Invalid code, should not be validated
     code: [
@@ -155,7 +155,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -188,7 +188,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  };',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Proptypes declared with a spread property
     code: [
@@ -308,7 +308,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  "aria-controls": PropTypes.string',
       '};'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [{checkContextTypes: true}]
   }, {
     // Invalid code, should not be validated
@@ -324,7 +324,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [{checkContextTypes: true}]
   }, {
     code: [
@@ -360,7 +360,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  };',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [{checkContextTypes: true}]
   }, {
     // Proptypes declared with a spread property
@@ -482,7 +482,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  "aria-controls": PropTypes.string',
       '};'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [{checkChildContextTypes: true}]
   }, {
     // Invalid code, should not be validated
@@ -498,7 +498,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [{checkChildContextTypes: true}]
   }, {
     code: [
@@ -534,7 +534,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  };',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [{checkChildContextTypes: true}]
   }, {
     // Proptypes declared with a spread property
@@ -560,7 +560,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }();',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     code: [
       'class HeroTeaserList extends React.Component {',
@@ -810,7 +810,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: 2
   }, {
     code: [
@@ -839,7 +839,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: 2,
     settings: {
       propWrapperFunctions: ['forbidExtraProps']
@@ -924,7 +924,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '}'
     ].join('\n'),
     options: [{checkContextTypes: true}],
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [{
       message: ANY_ERROR_MESSAGE,
       line: 3,
@@ -1013,7 +1013,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: 2,
     options: [{checkContextTypes: true}],
     settings: {
@@ -1114,7 +1114,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [{
       forbid: ['instanceOf'],
       checkContextTypes: true
@@ -1216,7 +1216,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '}'
     ].join('\n'),
     options: [{checkChildContextTypes: true}],
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [{
       message: ANY_ERROR_MESSAGE,
       line: 3,
@@ -1305,7 +1305,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: 2,
     options: [{checkChildContextTypes: true}],
     settings: {
@@ -1406,7 +1406,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  }',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [{
       forbid: ['instanceOf'],
       checkChildContextTypes: true

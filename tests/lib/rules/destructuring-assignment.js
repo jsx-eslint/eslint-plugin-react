@@ -7,7 +7,7 @@
 const rule = require('../../../lib/rules/destructuring-assignment');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -27,7 +27,7 @@ ruleTester.run('destructuring-assignment', rule, {
       }
     };`,
     options: ['always'],
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     code: `const MyComponent = ({ id, className }) => (
       <div id={id} className={className} />
@@ -37,7 +37,7 @@ ruleTester.run('destructuring-assignment', rule, {
       const { id, className } = props;
       return <div id={id} className={className} />
     };`,
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     code: `const MyComponent = ({ id, className }) => (
       <div id={id} className={className} />
@@ -102,7 +102,7 @@ ruleTester.run('destructuring-assignment', rule, {
       }
     };`,
     options: ['always'],
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     code: `const Foo = class extends React.PureComponent {
       render() {
@@ -118,14 +118,14 @@ ruleTester.run('destructuring-assignment', rule, {
       }
     };`,
     options: ['always'],
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     code: `const MyComponent = (props) => {
       const { h, i } = hi;
       return <div id={props.id} className={props.className} />
     };`,
     options: ['never'],
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     code: `const Foo = class extends React.PureComponent {
       constructor() {
@@ -148,7 +148,7 @@ ruleTester.run('destructuring-assignment', rule, {
         foo: context.bar
       });
     `,
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     code: `
       class Foo {
@@ -172,7 +172,7 @@ ruleTester.run('destructuring-assignment', rule, {
       }
     `,
     options: ['always', {ignoreClassFields: true}],
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     code: [
       'class Input extends React.Component {',
@@ -183,7 +183,7 @@ ruleTester.run('destructuring-assignment', rule, {
       '}'
     ].join('\n'),
     options: ['always', {ignoreClassFields: true}],
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }],
 
   invalid: [{
@@ -273,7 +273,7 @@ ruleTester.run('destructuring-assignment', rule, {
       }
     };`,
     options: ['never'],
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [
       {message: 'Must never use destructuring props assignment'}
     ]
@@ -283,7 +283,7 @@ ruleTester.run('destructuring-assignment', rule, {
       return <div id={id} className={className} />
     };`,
     options: ['never'],
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [
       {message: 'Must never use destructuring props assignment'}
     ]
@@ -295,7 +295,7 @@ ruleTester.run('destructuring-assignment', rule, {
       }
     };`,
     options: ['never'],
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [
       {message: 'Must never use destructuring state assignment'}
     ]

@@ -11,7 +11,7 @@
 const rule = require('../../../lib/rules/no-set-state');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -117,7 +117,7 @@ ruleTester.run('no-set-state', rule, {
         }
       };
     `,
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [{
       message: 'Do not use setState'
     }]
@@ -129,7 +129,7 @@ ruleTester.run('no-set-state', rule, {
         }
       };
     `,
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [{
       message: 'Do not use setState'
     }]

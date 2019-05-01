@@ -12,7 +12,7 @@
 const rule = require('../../../lib/rules/default-props-match-prop-types');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -548,7 +548,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: [
@@ -569,7 +569,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  bar: "bar"',
         '};'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: [
@@ -588,7 +588,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  bar: "bar"',
         '};'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: [
@@ -602,7 +602,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: [
@@ -612,7 +612,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
 
         'Hello.defaultProps = { foo: "foo" };'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: [
@@ -620,7 +620,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  return <div>Hello {foo}</div>;',
         '}'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: [
@@ -630,7 +630,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
 
         'Hello.defaultProps = { foo: "foo" };'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: [
@@ -638,7 +638,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  return <div>Hello {foo}</div>;',
         '};'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: [
@@ -648,7 +648,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
 
         'Hello.defaultProps = { foo: "foo" };'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: [
@@ -656,7 +656,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  return <div>Hello {foo}</div>;',
         '};'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: [
@@ -679,7 +679,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  baz: "baz"',
         '};'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: `
@@ -698,7 +698,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: [
@@ -710,7 +710,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  }',
         '}'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: [
@@ -720,7 +720,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  return <div>Hello {foo}</div>;',
         '};'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: [
@@ -730,7 +730,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  return <div>Hello {props.name.firstname}</div>;',
         '}'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     // don't error when variable is not in scope
     {
@@ -741,7 +741,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  return <div>Hello {props.name.firstname}</div>;',
         '}'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     // make sure error is not thrown with multiple assignments
     {
@@ -753,7 +753,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  return <div>Hello {props.name.firstname}</div>;',
         '}'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     // don't error when variable is not in scope with intersection
     {
@@ -766,7 +766,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  return <div>Hello {props.name.firstname}</div>;',
         '}'
       ].join('\n'),
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }
   ],
 
@@ -1288,7 +1288,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'defaultProp "bar" defined for isRequired propType.',
         line: 12,
@@ -1331,7 +1331,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  };',
         '}'
       ].join('\n'),
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'defaultProp "baz" has no corresponding propTypes declaration.',
         line: 12,
@@ -1357,7 +1357,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  static defaultProps = defaults;',
         '}'
       ].join('\n'),
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'defaultProp "bar" defined for isRequired propType.',
         line: 6,
@@ -1383,7 +1383,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  static defaultProps = defaults;',
         '}'
       ].join('\n'),
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'defaultProp "baz" has no corresponding propTypes declaration.',
         line: 6,
@@ -1452,7 +1452,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  foo: "foo"',
         '};'
       ].join('\n'),
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'defaultProp "foo" defined for isRequired propType.',
         line: 11,
@@ -1469,7 +1469,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  foo: "foo"',
         '}'
       ].join('\n'),
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'defaultProp "foo" defined for isRequired propType.',
         line: 5,
@@ -1489,7 +1489,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '  foo: "foo"',
         '}'
       ].join('\n'),
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'defaultProp "foo" defined for isRequired propType.',
         line: 8,
@@ -1503,7 +1503,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '};',
         'Hello.defaultProps = { foo: "foo", bar: "bar" };'
       ].join('\n'),
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'defaultProp "foo" defined for isRequired propType.',
         line: 4,
@@ -1527,7 +1527,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '}',
         'Hello.defaultProps = { foo: "foo", frob: "frob" };'
       ].join('\n'),
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           message: 'defaultProp "foo" defined for isRequired propType.',
@@ -1559,7 +1559,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           message: 'defaultProp "fooBar" has no corresponding propTypes declaration.'

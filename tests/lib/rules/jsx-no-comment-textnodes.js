@@ -11,7 +11,7 @@
 const rule = require('../../../lib/rules/jsx-no-comment-textnodes');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -41,7 +41,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       }
     `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       code: `
       class Comp1 extends Component {
@@ -54,7 +54,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       }
     `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       code: `
       class Comp1 extends Component {
@@ -63,7 +63,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       }
     `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       code: `
       class Comp1 extends Component {
@@ -73,7 +73,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       }
     `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       code: `
       var Hello = createReactClass({
@@ -83,7 +83,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         },
       });
     `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       code: `
       class Comp1 extends Component {
@@ -98,7 +98,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       }
     `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       code: `
       class Comp1 extends Component {
@@ -110,19 +110,19 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       }
     `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       code: `
       var foo = require('foo');
     `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       code: `
       <Foo bar='test'>
         {/* valid */}
       </Foo>
     `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: `
@@ -130,7 +130,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         &nbsp;https://www.example.com/attachment/download/1
       </strong>
     `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
 
     // inside element declarations
@@ -138,39 +138,39 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       code: `
       <Foo /* valid */ placeholder={'foo'}/>
     `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: `
       </* valid */></>
     `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: `
       <></* valid *//>
     `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: `
       <Foo title={'foo' /* valid */}/>
     `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: '<pre>&#x2F;&#x2F; TODO: Write perfect code</pre>'
     },
     {
       code: '<pre>&#x2F;&#x2F; TODO: Write perfect code</pre>',
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: '<pre>&#x2F;&#42; TODO: Write perfect code &#42;&#x2F;</pre>'
     },
     {
       code: '<pre>&#x2F;&#42; TODO: Write perfect code &#42;&#x2F;</pre>',
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }
   ],
 
@@ -183,7 +183,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       }
     `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
     }, {
       code: `
@@ -193,7 +193,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       }
     `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
     }, {
       code: `
@@ -203,7 +203,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       }
     `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
     }, {
       code: `
@@ -217,7 +217,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       }
     `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
     }, {
       code: `
@@ -233,7 +233,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       }
     `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
     }, {
       code: `
@@ -249,7 +249,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       }
     `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
     }
   ]

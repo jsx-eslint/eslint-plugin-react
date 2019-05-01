@@ -10,7 +10,7 @@
 const rule = require('../../../lib/rules/forbid-foreign-prop-types');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -73,7 +73,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
         };
       }
     `,
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [{
       allowInPropTypes: true
     }]
@@ -132,7 +132,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
         }
       });
     `,
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [{
       message: ERROR_MESSAGE,
       type: 'Property'
@@ -146,7 +146,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
         };
       }
     `,
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [{
       message: ERROR_MESSAGE,
       type: 'Identifier'
@@ -194,7 +194,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
         };
       }
     `,
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [{
       allowInPropTypes: false
     }],

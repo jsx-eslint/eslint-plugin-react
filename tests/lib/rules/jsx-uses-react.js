@@ -13,7 +13,7 @@ const eslint = require('eslint');
 const rule = require('eslint/lib/rules/no-unused-vars');
 const RuleTester = eslint.RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -42,7 +42,7 @@ ruleTester.run('no-unused-vars', rule, {
     {code: '/*eslint jsx-uses-react:1*/ var React; (function () { <div /> })();'},
     {code: '/*eslint jsx-uses-react:1*/ /** @jsx Foo */ var Foo; <div />;'},
     {code: '/*eslint jsx-uses-react:1*/ var Foo; <div />;', settings: settings},
-    {code: '/*eslint jsx-uses-react:1*/ var React; <></>;', parser: BABEL_ESLINT}
+    {code: '/*eslint jsx-uses-react:1*/ var React; <></>;', parser: parsers.BABEL_ESLINT}
   ],
   invalid: [{
     code: '/*eslint jsx-uses-react:1*/ var React;',
@@ -56,7 +56,7 @@ ruleTester.run('no-unused-vars', rule, {
     settings: settings
   }, {
     code: '/*eslint jsx-uses-react:1*/ var React; <></>;',
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [{message: '\'React\' is defined but never used.'}],
     settings: settings
   }]

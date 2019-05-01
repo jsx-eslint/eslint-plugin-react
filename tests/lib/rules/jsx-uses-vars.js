@@ -14,7 +14,7 @@ const ruleNoUnusedVars = require('eslint/lib/rules/no-unused-vars');
 const rulePreferConst = require('eslint/lib/rules/prefer-const');
 const RuleTester = eslint.RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -55,7 +55,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         var App;
         React.render(<App/>);
       `,
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       code: `
         /* eslint jsx-uses-vars: 1 */
@@ -184,7 +184,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         message: '\'HelloMessage\' is defined but never used.',
         line: 3
       }],
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }, {
       code: `
         /* eslint jsx-uses-vars: 1 */
@@ -199,7 +199,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         message: '\'Hello\' is defined but never used.',
         line: 3
       }],
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }
   ]
 });

@@ -11,7 +11,7 @@
 const rule = require('../../../lib/rules/jsx-indent');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -35,7 +35,7 @@ ruleTester.run('jsx-indent', rule, {
     code: [
       '<></>'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     code: [
       '<App>',
@@ -46,7 +46,7 @@ ruleTester.run('jsx-indent', rule, {
       '<>',
       '</>'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     code: [
       '<App>',
@@ -60,7 +60,7 @@ ruleTester.run('jsx-indent', rule, {
       '  <></>',
       '</App>'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [2]
   }, {
     code: [
@@ -68,7 +68,7 @@ ruleTester.run('jsx-indent', rule, {
       '  <Foo />',
       '</>'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [2]
   }, {
     code: [
@@ -108,7 +108,7 @@ ruleTester.run('jsx-indent', rule, {
       '  </App>;',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [2]
   }, {
     code: [
@@ -127,7 +127,7 @@ ruleTester.run('jsx-indent', rule, {
       '  </App>);',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [2]
   }, {
     code: [
@@ -150,7 +150,7 @@ ruleTester.run('jsx-indent', rule, {
       '  );',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [2]
   }, {
     code: [
@@ -173,7 +173,7 @@ ruleTester.run('jsx-indent', rule, {
       '  )',
       ')'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [2]
   }, {
     code: [
@@ -214,7 +214,7 @@ ruleTester.run('jsx-indent', rule, {
       '  </>',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [2]
   }, {
     code: [
@@ -262,7 +262,7 @@ ruleTester.run('jsx-indent', rule, {
       '  <></>',
       ']'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [2]
   }, {
     code: [
@@ -297,7 +297,7 @@ ruleTester.run('jsx-indent', rule, {
       '    }',
       '</div>'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Literals indentation is not touched
     code: [
@@ -317,7 +317,7 @@ ruleTester.run('jsx-indent', rule, {
       'bar </>',
       '</>'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (colon at the end of the first expression)
@@ -332,7 +332,7 @@ ruleTester.run('jsx-indent', rule, {
       '    <></> :',
       '    <></>'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (colon at the start of the second expression)
@@ -347,7 +347,7 @@ ruleTester.run('jsx-indent', rule, {
       '    <></>',
       '    : <></>'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (colon on its own line)
@@ -364,7 +364,7 @@ ruleTester.run('jsx-indent', rule, {
       ':',
       '    <></>'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (multiline JSX, colon on its own line)
@@ -391,7 +391,7 @@ ruleTester.run('jsx-indent', rule, {
       'foo ? <></> :',
       '<></>'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (first expression on test line, colon at the start of the second expression)
@@ -404,7 +404,7 @@ ruleTester.run('jsx-indent', rule, {
       'foo ? <></>',
       ': <></>'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (first expression on test line, colon on its own line)
@@ -419,7 +419,7 @@ ruleTester.run('jsx-indent', rule, {
       ':',
       '<></>'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (colon at the end of the first expression, parenthesized first expression)
@@ -436,7 +436,7 @@ ruleTester.run('jsx-indent', rule, {
       ') :',
       '    <></>'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (colon at the start of the second expression, parenthesized first expression)
@@ -453,7 +453,7 @@ ruleTester.run('jsx-indent', rule, {
       ')',
       '    : <></>'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (colon on its own line, parenthesized first expression)
@@ -472,7 +472,7 @@ ruleTester.run('jsx-indent', rule, {
       ':',
       '    <></>'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (colon at the end of the first expression, parenthesized second expression)
@@ -489,7 +489,7 @@ ruleTester.run('jsx-indent', rule, {
       '        <></>',
       '    )'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (colon on its own line, parenthesized second expression)
@@ -508,7 +508,7 @@ ruleTester.run('jsx-indent', rule, {
       '    <></>',
       ')'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (colon indented on its own line, parenthesized second expression)
@@ -527,7 +527,7 @@ ruleTester.run('jsx-indent', rule, {
       '        <></>',
       '    )'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (colon at the end of the first expression, both expression parenthesized)
@@ -546,7 +546,7 @@ ruleTester.run('jsx-indent', rule, {
       '    <></>',
       ')'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (colon on its own line, both expression parenthesized)
@@ -567,7 +567,7 @@ ruleTester.run('jsx-indent', rule, {
       '    <></>',
       ')'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (colon on its own line, both expression parenthesized)
@@ -590,7 +590,7 @@ ruleTester.run('jsx-indent', rule, {
       '    <></>',
       ')'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (first expression on test line, colon at the end of the first expression, parenthesized second expression)
@@ -605,7 +605,7 @@ ruleTester.run('jsx-indent', rule, {
       '    <></>',
       ')'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (first expression on test line, colon at the start of the second expression, parenthesized second expression)
@@ -618,7 +618,7 @@ ruleTester.run('jsx-indent', rule, {
       'foo ? <></>',
       ': (<></>)'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Multiline ternary
     // (first expression on test line, colon on its own line, parenthesized second expression)
@@ -635,7 +635,7 @@ ruleTester.run('jsx-indent', rule, {
       '    <></>',
       ')'
     ].join('\n'),
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     code: [
       '<span>',
@@ -687,7 +687,7 @@ ruleTester.run('jsx-indent', rule, {
       '  </span>',
       '}'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [2]
   }, {
     code: `
@@ -716,7 +716,7 @@ ruleTester.run('jsx-indent', rule, {
         }
       }
     `,
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: [2]
   }, {
     code: `
@@ -867,7 +867,7 @@ const Component = () => (
       '  <></>',
       '</App>'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     output: [
       '<App>',
       '    <></>',
@@ -880,7 +880,7 @@ const Component = () => (
       '  <Foo />',
       '</>'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     output: [
       '<>',
       '    <Foo />',
@@ -1085,7 +1085,7 @@ const Component = () => (
       '    <></>',
       ']'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     output: [
       '[',
       '  <div />,',
@@ -1196,7 +1196,7 @@ const Component = () => (
       '    <Foo /> :',
       '<></>'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     output: [
       'foo ?',
       '    <Foo /> :',
@@ -1244,7 +1244,7 @@ const Component = () => (
       ':',
       '<></>'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     output: [
       'foo ?',
       '    <Foo />',
@@ -1295,7 +1295,7 @@ const Component = () => (
       ') :',
       '<></>'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     output: [
       'foo ? (',
       '    <Foo />',
@@ -1350,7 +1350,7 @@ const Component = () => (
       '    <></>',
       '    )'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     output: [
       'foo ?',
       '    <Foo /> : (',
@@ -1408,7 +1408,7 @@ const Component = () => (
       '    <></>',
       '    )'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     output: [
       'foo ?',
       '    <Foo />',
@@ -1448,7 +1448,7 @@ const Component = () => (
       '<></>',
       ')'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     output: [
       'foo ? (',
       '    <></>',
@@ -1518,7 +1518,7 @@ const Component = () => (
       '<></>',
       ')'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     output: [
       'foo ? (',
       '    <></>',
@@ -1554,7 +1554,7 @@ const Component = () => (
       '<></>',
       ')'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     output: [
       'foo ? <Foo /> : (',
       '    <></>',
@@ -1588,7 +1588,7 @@ const Component = () => (
       '<></>',
       ')'
     ].join('\n'),
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     output: [
       'foo ? <Foo />',
       ': (',

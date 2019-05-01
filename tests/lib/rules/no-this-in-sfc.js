@@ -16,7 +16,7 @@ const ERROR_MESSAGE = 'Stateless functional components should not use this';
 const rule = require('../../../lib/rules/no-this-in-sfc');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -129,7 +129,7 @@ ruleTester.run('no-this-in-sfc', rule, {
         return null;
       };
     }`,
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     code: `
     class Foo {
@@ -138,7 +138,7 @@ ruleTester.run('no-this-in-sfc', rule, {
         return null;
       };
     }`,
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     code: `
     export const Example = ({ prop }) => {
@@ -149,7 +149,7 @@ ruleTester.run('no-this-in-sfc', rule, {
         },
       };
     };`,
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }],
   invalid: [{
     code: `

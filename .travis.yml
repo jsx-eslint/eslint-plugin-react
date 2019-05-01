@@ -5,6 +5,8 @@ node_js:
   - '11'
   - '10'
   - '8'
+  - '6'
+  - '4'
 before_install:
   - 'nvm install-latest-npm'
 before_script:
@@ -26,6 +28,13 @@ matrix:
   include:
     - node_js: 'lts/*'
       env: PRETEST=true
+  exclude:
+    - node_js: '4'
+      env: ESLINT=5
+    - node_js: '4'
+      env: ESLINT=next
+    - node_js: '6'
+      env: ESLINT=next
   allow_failures:
     - node_js: '11'
     - env: ESLINT=next

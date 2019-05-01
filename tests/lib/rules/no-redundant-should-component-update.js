@@ -11,7 +11,7 @@
 const rule = require('../../../lib/rules/no-redundant-should-component-update');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -49,7 +49,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       parserOptions: parserOptions
     },
     {
@@ -108,7 +108,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
         }
       `,
       errors: [{message: errorMessage('Foo')}],
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       parserOptions: parserOptions
     },
     {

@@ -13,7 +13,7 @@
 const rule = require('../../../lib/rules/no-deprecated');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -158,12 +158,12 @@ ruleTester.run('no-deprecated', rule, {
     },
     {
       code: 'var {createClass} = require(\'react\');',
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{message: errorMessage('React.createClass', '15.5.0', 'the npm module create-react-class')}]
     },
     {
       code: 'var {createClass, PropTypes} = require(\'react\');',
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [
         {message: errorMessage('React.createClass', '15.5.0', 'the npm module create-react-class')},
         {message: errorMessage('React.PropTypes', '15.5.0', 'the npm module prop-types')}
@@ -171,12 +171,12 @@ ruleTester.run('no-deprecated', rule, {
     },
     {
       code: 'import {createClass} from \'react\';',
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{message: errorMessage('React.createClass', '15.5.0', 'the npm module create-react-class')}]
     },
     {
       code: 'import {createClass, PropTypes} from \'react\';',
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [
         {message: errorMessage('React.createClass', '15.5.0', 'the npm module create-react-class')},
         {message: errorMessage('React.PropTypes', '15.5.0', 'the npm module prop-types')}
@@ -187,7 +187,7 @@ ruleTester.run('no-deprecated', rule, {
       import React from 'react';
       const {createClass, PropTypes} = React;
     `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [
         {message: errorMessage('React.createClass', '15.5.0', 'the npm module create-react-class')},
         {message: errorMessage('React.PropTypes', '15.5.0', 'the npm module prop-types')}
@@ -195,7 +195,7 @@ ruleTester.run('no-deprecated', rule, {
     },
     {
       code: 'import {printDOM} from \'react-addons-perf\';',
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{message: errorMessage('ReactPerf.printDOM', '15.0.0', 'ReactPerf.printOperations')}]
     },
     {
@@ -203,7 +203,7 @@ ruleTester.run('no-deprecated', rule, {
         import ReactPerf from 'react-addons-perf';
         const {printDOM} = ReactPerf;
       `,
-      parser: BABEL_ESLINT,
+      parser: parsers.BABEL_ESLINT,
       errors: [{message: errorMessage('ReactPerf.printDOM', '15.0.0', 'ReactPerf.printOperations')}]
     },
     {

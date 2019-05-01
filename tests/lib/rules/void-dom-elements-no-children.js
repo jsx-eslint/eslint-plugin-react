@@ -12,7 +12,7 @@
 const rule = require('../../../lib/rules/void-dom-elements-no-children');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -124,7 +124,7 @@ ruleTester.run('void-dom-elements-no-children', rule, {
         createElement("img", {}, "Foo");
       `,
       errors: [{message: errorMessage('img')}],
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: `
@@ -132,7 +132,7 @@ ruleTester.run('void-dom-elements-no-children', rule, {
         createElement("img", { children: "Foo" });
       `,
       errors: [{message: errorMessage('img')}],
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     },
     {
       code: `
@@ -140,7 +140,7 @@ ruleTester.run('void-dom-elements-no-children', rule, {
         createElement("img", { dangerouslySetInnerHTML: { __html: "Foo" } });
       `,
       errors: [{message: errorMessage('img')}],
-      parser: BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT
     }
   ]
 });

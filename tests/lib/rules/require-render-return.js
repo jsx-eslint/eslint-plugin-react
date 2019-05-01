@@ -11,7 +11,7 @@
 const rule = require('../../../lib/rules/require-render-return');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -46,7 +46,7 @@ ruleTester.run('require-render-return', rule, {
         }
       }
     `,
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // ES6 class with render property (implicit return)
     code: `
@@ -56,7 +56,7 @@ ruleTester.run('require-render-return', rule, {
         )
       }
     `,
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // ES5 class
     code: `
@@ -81,7 +81,7 @@ ruleTester.run('require-render-return', rule, {
         <div></div>
       );
     `,
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }, {
     // Return in a switch...case
     code: `
@@ -137,7 +137,7 @@ ruleTester.run('require-render-return', rule, {
         render
       }
     `,
-    parser: BABEL_ESLINT
+    parser: parsers.BABEL_ESLINT
   }],
 
   invalid: [{
@@ -186,7 +186,7 @@ ruleTester.run('require-render-return', rule, {
         }
       }
     `,
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     errors: [{
       message: 'Your render method should have return statement',
       type: 'ClassProperty'

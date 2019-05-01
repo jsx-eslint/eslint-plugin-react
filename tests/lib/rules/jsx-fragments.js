@@ -11,7 +11,7 @@
 const rule = require('../../../lib/rules/jsx-fragments');
 const RuleTester = require('eslint').RuleTester;
 
-const {BABEL_ESLINT} = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -45,7 +45,7 @@ const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-fragments', rule, {
   valid: [{
     code: '<><Foo /></>',
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     settings
   }, {
     code: '<Act.Frag><Foo /></Act.Frag>',
@@ -95,7 +95,7 @@ ruleTester.run('jsx-fragments', rule, {
 
   invalid: [{
     code: '<><Foo /></>',
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     settings: settingsOld,
     errors: [{
       message: 'Fragments are only supported starting from React v16.2. '
@@ -117,7 +117,7 @@ ruleTester.run('jsx-fragments', rule, {
     }]
   }, {
     code: '<><Foo /></>',
-    parser: BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT,
     options: ['element'],
     settings,
     errors: [{
