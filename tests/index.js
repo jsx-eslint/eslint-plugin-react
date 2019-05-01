@@ -1,4 +1,4 @@
-/* eslint-env jest */
+/* eslint-env mocha */
 'use strict';
 
 const plugin = require('..');
