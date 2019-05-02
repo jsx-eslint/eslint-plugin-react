@@ -11,6 +11,8 @@
 const rule = require('../../../lib/rules/jsx-props-no-multi-spaces');
 const RuleTester = require('eslint').RuleTester;
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -58,6 +60,9 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       '  foo {...test}',
       '  bar />'
     ].join('\n')
+  }, {
+    code: '<App<T> foo bar />',
+    parser: parsers.TYPESCRIPT_ESLINT
   }, {
     code: '<Foo.Bar baz="quux" />'
   }, {
