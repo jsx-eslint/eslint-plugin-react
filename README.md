@@ -219,7 +219,6 @@ The rules enabled in this configuration are:
 * [react/no-direct-mutation-state](docs/rules/no-direct-mutation-state.md)
 * [react/no-find-dom-node](docs/rules/no-find-dom-node.md)
 * [react/no-is-mounted](docs/rules/no-is-mounted.md)
-* [react/no-render-return-value](docs/rules/no-render-return-value.md)
 * [react/no-string-refs](docs/rules/no-string-refs.md)
 * [react/no-unescaped-entities](docs/rules/no-unescaped-entities.md)
 * [react/no-unknown-property](docs/rules/no-unknown-property.md)

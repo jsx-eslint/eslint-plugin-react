@@ -141,7 +141,6 @@ module.exports = {
         'react/no-direct-mutation-state': 2,
         'react/no-find-dom-node': 2,
         'react/no-is-mounted': 2,
-        'react/no-render-return-value': 2,
         'react/no-string-refs': 2,
         'react/no-unescaped-entities': 2,
         'react/no-unknown-property': 2,
