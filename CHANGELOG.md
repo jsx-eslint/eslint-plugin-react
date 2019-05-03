@@ -3,6 +3,80 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.13.0] - 2019-05-03
+
+### Added
+*  Make [`jsx-sort-props`][] fully fixable ([#2250][], @guliashvili)
+* [`boolean-prop-naming`][]: add `validateNested` option to validate shape prop names ([#2234][], @pawelnvk)
+* add [`static-property-placement`][] rule ([#2193][], @dmason30)
+* add "detect" for flow version ([#2233][], @jedwards1211)
+* [`jsx-indent`][]: Add `indentLogicalExpressions` option ([#2227][], @mdnsk)
+* add [`jsx-props-no-spreading`][] ([#2191][], @ashbhir)
+* [`no-string-refs`][]: Added `noTemplateLiteral` option ([#2167][], @jenil94)
+* add `linkComponents` setting ([#2116][], @gbakernet)
+* [`jsx-no-target-blank`][]: add support for `linkComponents` setting ([#2116][], @gbakernet)
+* Add [`state-in-constructor`][] rule ([#1945][], @lukyth)
+* Add [`prefer-read-only-props`][] rule ([#2110][], @golopot)
+* [`no-unescaped-entities`][]: more friendly error message; add config to adjust ([#2016][], @stevemao)
+
+### Fixed
+* [`jsx-props-no-multi-spaces`][]: support generic components (ts) ([#2256][], @mateuszsokola)
+* [`prop-types`][]: fix case with destructuring and default param ([#2246][], @golopot)
+* [`prefer-stateless-function`][]: Ignoring pure components without props and context usage ([#2238][], @pawelnvk)
+* `propTypes`: resolveSuperParameterPropsType: add null check ([#2232][], @jedwards1211)
+* [`self-closing-comp`][]: stop reporting single-line spaces ([#2210][], @golopot)
+* [`require-render-return`][]: more accurate report location ([#2229][], @golopot)
+* [`sort-prop-types`][]: Fix sorting props with numeric keys ([#2230][], @pawelnvk)
+* [`display-name`][]: fix false negative around nested functions ([#2225][], @dwelle)
+* [`no-unknown-property`][]: fix case like `<Foo.bar>` ([#2207][], @golopot)
+* [`jsx-curly-brace-presence`][]: accept multiline template string ([#2203][], @golopot)
+* [`jsx-one-expression-per-line`][]: fix when using tabs ([#2198][], @Ohar)
+* [`prop-types`][]: Fix false positive on computed member expression ([#2202][], @golopot)
+* [`jsx-sort-default-props`][]: fix case with spread ([#2182][], @VincentLanglet)
+* [`no-this-in-sfc`][]: Fix false positive on SFC defined as object property ([#2147][], @yannickcr)
+* [`sort-comp`][]: correctly recognize instance variables declared without explicit value ([#2183][], @yannickcr)
+* [`no-unused-state`][]: fix set state callback destructing & state use inside callback ([#2151][], @barakyosi)
+* [`no-multi-comp`][]: correctly ignore wrapped stateless components: ([#2145][], @yannickcr)
+* [`display-name`][]: avoid crash on for..of ([#2137][], @ljharb)
+
+### Changed
+* [Docs] [`no-access-state-in-setstate`][]: Use syntax highlighting for examples ([#2160][], @pReya)
+* [Docs] [`jsx-fragments`][]: add "fixable" note ([#2143][], @joshunger)
+* [Docs] Added shared settings info, React version default note ([#2180][], @samsch)
+* [Tests] [`jsx-curly-spacing`][]: add regression test case ([#2206][], @ColCh)
+
+[#2256]: https://github.com/yannickcr/eslint-plugin-react/pull/2256
+[#2250]: https://github.com/yannickcr/eslint-plugin-react/pull/2250
+[#2246]: https://github.com/yannickcr/eslint-plugin-react/pull/2246
+[#2238]: https://github.com/yannickcr/eslint-plugin-react/pull/2238
+[#2234]: https://github.com/yannickcr/eslint-plugin-react/pull/2234
+[#2233]: https://github.com/yannickcr/eslint-plugin-react/pull/2233
+[#2232]: https://github.com/yannickcr/eslint-plugin-react/pull/2232
+[#2230]: https://github.com/yannickcr/eslint-plugin-react/pull/2230
+[#2229]: https://github.com/yannickcr/eslint-plugin-react/pull/2229
+[#2227]: https://github.com/yannickcr/eslint-plugin-react/pull/2227
+[#2225]: https://github.com/yannickcr/eslint-plugin-react/pull/2225
+[#2210]: https://github.com/yannickcr/eslint-plugin-react/pull/2210
+[#2207]: https://github.com/yannickcr/eslint-plugin-react/pull/2207
+[#2206]: https://github.com/yannickcr/eslint-plugin-react/pull/2206
+[#2203]: https://github.com/yannickcr/eslint-plugin-react/pull/2203
+[#2202]: https://github.com/yannickcr/eslint-plugin-react/pull/2202
+[#2198]: https://github.com/yannickcr/eslint-plugin-react/pull/2198
+[#2193]: https://github.com/yannickcr/eslint-plugin-react/pull/2193
+[#2191]: https://github.com/yannickcr/eslint-plugin-react/pull/2191
+[#2183]: https://github.com/yannickcr/eslint-plugin-react/issues/2183
+[#2182]: https://github.com/yannickcr/eslint-plugin-react/pull/2182
+[#2180]: https://github.com/yannickcr/eslint-plugin-react/pull/2180
+[#2167]: https://github.com/yannickcr/eslint-plugin-react/pull/2167
+[#2147]: https://github.com/yannickcr/eslint-plugin-react/issues/2147
+[#2145]: https://github.com/yannickcr/eslint-plugin-react/issues/2145
+[#2143]: https://github.com/yannickcr/eslint-plugin-react/pull/2143
+[#2137]: https://github.com/yannickcr/eslint-plugin-react/issues/2137
+[#2116]: https://github.com/yannickcr/eslint-plugin-react/pull/2116
+[#2110]: https://github.com/yannickcr/eslint-plugin-react/pull/2110
+[#2016]: https://github.com/yannickcr/eslint-plugin-react/pull/2016
+[#1945]: https://github.com/yannickcr/eslint-plugin-react/pull/1945
+
 ## [7.12.4] - 2019-01-16
 
 ### Fixed
@@ -2498,3 +2572,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`no-unsafe`]: docs/rules/no-unsafe.md
 [`jsx-fragments`]: docs/rules/jsx-fragments.md
 [`jsx-props-no-spreading`]: docs/rules/jsx-props-no-spreading.md
+[`prefer-read-only-props`]: docs/rules/prefer-read-only-props.md
+[`state-in-constructor`]: docs/rules/state-in-constructor.md
+[`jsx-props-no-spreading`]: docs/rules/jsx-props-no-spreading.md
+[`static-property-placement`]: docs/rules/static-property-placement.md
