@@ -170,6 +170,7 @@ Enable the rules that you would like to use.
 * [react/jsx-no-literals](docs/rules/jsx-no-literals.md): Prevent usage of unwrapped JSX strings
 * [react/jsx-no-target-blank](docs/rules/jsx-no-target-blank.md): Prevent usage of unsafe `target='_blank'`
 * [react/jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
+* [react/jsx-no-useless-fragment](docs/rules/jsx-no-useless-fragment.md): Disallow unnescessary fragments (fixable)
 * [react/jsx-one-expression-per-line](docs/rules/jsx-one-expression-per-line.md): Limit to one expression per line in JSX
 * [react/jsx-curly-brace-presence](docs/rules/jsx-curly-brace-presence.md): Enforce curly braces or disallow unnecessary curly braces in JSX
 * [react/jsx-fragments](docs/rules/jsx-fragments.md): Enforce shorthand or standard form for React fragments

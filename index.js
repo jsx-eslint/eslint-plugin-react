@@ -35,6 +35,7 @@ const allRules = {
   'jsx-no-duplicate-props': require('./lib/rules/jsx-no-duplicate-props'),
   'jsx-no-literals': require('./lib/rules/jsx-no-literals'),
   'jsx-no-target-blank': require('./lib/rules/jsx-no-target-blank'),
+  'jsx-no-useless-fragment': require('./lib/rules/jsx-no-useless-fragment'),
   'jsx-one-expression-per-line': require('./lib/rules/jsx-one-expression-per-line'),
   'jsx-no-undef': require('./lib/rules/jsx-no-undef'),
   'jsx-curly-brace-presence': require('./lib/rules/jsx-curly-brace-presence'),
