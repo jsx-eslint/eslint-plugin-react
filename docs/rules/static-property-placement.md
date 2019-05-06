@@ -1,4 +1,4 @@
-# Enforces where React component static properties should be positioned. (static-property-placement)
+# Enforces where React component static properties should be positioned. (react/static-property-placement)
 
 This rule allows you to enforce where `childContextTypes`, `contextTypes`, `contextType`, `defaultProps`, `displayName`,
 and `propTypes` are declared in an ES6 class.
