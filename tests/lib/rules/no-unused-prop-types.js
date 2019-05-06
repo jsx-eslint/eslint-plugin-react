@@ -1374,13 +1374,13 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n')
     }, {
-      // Destructured props in the `shouldComponentUpdate` method shouldn't throw errors
       code: [
+        '// Destructured props in the `shouldComponentUpdate` method shouldn’t throw errors',
         'class Hello extends Component {',
         '  static propTypes = {',
         '    something: PropTypes.bool',
         '  }',
-        '  shouldComponentUpdate (nextProps, nextState) {',
+        '  shouldComponentUpdate(nextProps, nextState) {',
         '    const {something} = nextProps;',
         '    return something;',
         '  }',
@@ -1388,10 +1388,10 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT
     }, {
-      // Destructured props in the `shouldComponentUpdate` method shouldn't throw errors
       code: [
+        '// Destructured props in the `shouldComponentUpdate` method shouldn’t throw errors',
         'class Hello extends Component {',
-        '  shouldComponentUpdate (nextProps, nextState) {',
+        '  shouldComponentUpdate(nextProps, nextState) {',
         '    const {something} = nextProps;',
         '    return something;',
         '  }',
@@ -1401,13 +1401,13 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n')
     }, {
-      // Destructured props in `shouldComponentUpdate` shouldn't throw errors when used createReactClass
       code: [
+        '// Destructured props in `shouldComponentUpdate` shouldn’t throw errors when used with createReactClass',
         'var Hello = createReactClass({',
         '  propTypes: {',
         '    something: PropTypes.bool,',
         '  },',
-        '  shouldComponentUpdate (nextProps, nextState) {',
+        '  shouldComponentUpdate(nextProps, nextState) {',
         '    const {something} = nextProps;',
         '    return something;',
         '  }',
@@ -1868,8 +1868,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: parsers.BABEL_ESLINT
     }, {
       code: [
-        'class Hello extends Component {',
-        '  shouldComponentUpdate (props) {',
+        'class HelloFooBar extends Component {',
+        '  shouldComponentUpdate(props) {',
         '    if (props.foo) {',
         '      return true;',
         '    }',
@@ -1879,7 +1879,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return (<div>{this.props.bar}</div>);',
         '  }',
         '}',
-        'Hello.propTypes = {',
+        'HelloFooBar.propTypes = {',
         '  foo: PropTypes.string,',
         '  bar: PropTypes.string,',
         '};'
