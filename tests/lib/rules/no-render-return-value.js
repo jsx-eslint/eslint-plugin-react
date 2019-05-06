@@ -54,6 +54,17 @@ ruleTester.run('no-render-return-value', rule, {
         version: '0.13.0'
       }
     }
+  }, {
+    code: 'var foo = React.render(<div />, root);',
+    settings: {
+      react: {
+        version: '0.0.1'
+      }
+    }
+  }, {
+    code: 'var foo = render(<div />, root)'
+  }, {
+    code: 'var foo = ReactDom.renderder(<div />, root)'
   }],
 
   invalid: [{
