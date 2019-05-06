@@ -132,6 +132,7 @@ Enable the rules that you would like to use.
 * [react/no-unused-state](docs/rules/no-unused-state.md): Prevent definitions of unused state properties
 * [react/no-will-update-set-state](docs/rules/no-will-update-set-state.md): Prevent usage of `setState` in `componentWillUpdate`
 * [react/prefer-es6-class](docs/rules/prefer-es6-class.md): Enforce ES5 or ES6 class for React Components
+* [react/prefer-read-only-props](docs/rules/prefer-read-only-props.md): Enforce that props are read-only
 * [react/prefer-stateless-function](docs/rules/prefer-stateless-function.md): Enforce stateless React Components to be written as a pure function
 * [react/prop-types](docs/rules/prop-types.md): Prevent missing props validation in a React component definition
 * [react/react-in-jsx-scope](docs/rules/react-in-jsx-scope.md): Prevent missing `React` when using JSX
