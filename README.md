@@ -128,7 +128,7 @@ Enable the rules that you would like to use.
 * [react/no-unescaped-entities](docs/rules/no-unescaped-entities.md): Prevent invalid characters from appearing in markup
 * [react/no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property (fixable)
 * [react/no-unsafe](docs/rules/no-unsafe.md): Prevent usage of unsafe lifecycle methods
-* [react/no-unused-prop-types](docs/rules/no-unused-prop-types.md): Prevent definitions of unused prop types
+* [react/no-unused-prop-types](docs/rules/no-unused-prop-types.md): Prevent definitions of unused proptypes
 * [react/no-unused-state](docs/rules/no-unused-state.md): Prevent definitions of unused state properties
 * [react/no-will-update-set-state](docs/rules/no-will-update-set-state.md): Prevent usage of `setState` in `componentWillUpdate`
 * [react/prefer-es6-class](docs/rules/prefer-es6-class.md): Enforce ES5 or ES6 class for React Components
