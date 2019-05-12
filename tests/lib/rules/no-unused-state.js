@@ -1060,6 +1060,26 @@ eslintTester.run('no-unused-state', rule, {
       parser: parsers.BABEL_ESLINT
     },
     {
+      code: `class UseStateParameterOfNonLifecycleTest extends Component {
+        constructor(props) {
+          super(props);
+          this.state = {
+            foo: 123,
+          };
+        }
+        nonLifecycle(someProps, someState) {
+          doStuff(someState.foo)
+        }
+        render() {
+          return (
+            <SomeComponent />
+          );
+        }
+      }`,
+      errors: getErrorMessages(['foo']),
+      parser: parsers.BABEL_ESLINT
+    },
+    {
       code: `class MissingStateParameterTest extends Component {
         constructor(props) {
           super(props);
