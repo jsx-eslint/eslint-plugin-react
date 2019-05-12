@@ -1,44 +1,49 @@
-# Prevent definitions of unused prop types (react/no-unused-prop-types)
+# Prevent definitions of unused propTypes (react/no-unused-prop-types)
 
-Warns you if you have defined a prop type but it is never being used anywhere.
+Warns if a propType isn't being used.
 
 ## Rule Details
 
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = createReactClass({
-  propTypes: {
-    name: PropTypes.string
-  },
-  render: function() {
+class Hello extends React.Component {
+  render() {
     return <div>Hello Bob</div>;
   }
 });
 
-var Hello = createReactClass({
-  propTypes: {
-    firstname: PropTypes.string.isRequired,
-    middlename: PropTypes.string.isRequired, // middlename is never used below
-    lastname: PropTypes.string.isRequired
-  },
-  render: function() {
+Hello.propTypes = {
+  name: PropTypes.string
+},
+```
+
+```jsx
+class Hello extends React.Component {
+  render() {
     return <div>Hello {this.props.firstname} {this.props.lastname}</div>;
   }
-});
+}
+
+Hello.propTypes: {
+  firstname: PropTypes.string.isRequired,
+  middlename: PropTypes.string.isRequired, // middlename is never used above
+  lastname: PropTypes.string.isRequired
+},
 ```
 
 The following patterns are **not** considered warnings:
 
 ```jsx
-var Hello = createReactClass({
-  propTypes: {
-    name: PropTypes.string
-  },
-  render: function() {
+class Hello extends React.Component {
+  render() {
     return <div>Hello {this.props.name}</div>;
   }
-});
+};
+
+Hello.propTypes: {
+  name: PropTypes.string
+},
 ```
 
 ## Rule Options
@@ -59,12 +64,13 @@ This rule can take one argument to ignore some specific props during validation.
 
 - [False Positives: SFC (helper render methods)](#false-positives-sfc)
 
-### False positives SFC
-For components with Stateless Functional Components (often used as helper render methods);
-SFC is a function that takes prop(s) as an argument and returns a JSX expression.
-Even if this function gets called from a component the props that are only used inside SFC would not be considered used by a component.
+### False Positives SFC
+
+Stateless Function Components (SFCs) accept props as an argument and return a JSX expression.
+Even if the function gets called from a component, the props that are only used inside the component are not be considered used by a component.
 
 Triggers false positive:
+
 ```js
 function AComponent(props) {
   function helperRenderer(aProp) { // is considered SFC
