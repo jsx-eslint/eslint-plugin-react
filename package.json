@@ -7,8 +7,10 @@
   "scripts": {
     "coveralls": "cat ./reports/coverage/lcov.info | coveralls",
     "lint": "eslint ./",
+    "postlint": "npm run type-check",
     "pretest": "npm run lint",
     "test": "npm run unit-test",
+    "type-check": "tsc",
     "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js"
   },
   "files": [
@@ -33,6 +35,9 @@
     "resolve": "^1.10.1"
   },
   "devDependencies": {
+    "@types/eslint": "^4.16.6",
+    "@types/estree": "0.0.39",
+    "@types/node": "^12.0.0",
     "babel-eslint": "^8.2.6",
     "coveralls": "^3.0.2",
     "eslint": "^3.0.0 || ^4.0.0 || ^5.0.0",
