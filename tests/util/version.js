@@ -15,6 +15,7 @@ describe('Version', () => {
     process.chdir(base);
     sinon.stub(console, 'error');
     expectedErrorArgs = [];
+    versionUtil.resetWarningFlag();
   });
 
   afterEach(() => {
