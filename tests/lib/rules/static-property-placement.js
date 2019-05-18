@@ -1072,6 +1072,35 @@ ruleTester.run('static-property-placement', rule, {
           }
         }
       `].join('\n')
+    },
+    // ------------------------------------------------------------------------------
+    // edge cases
+    // ------------------------------------------------------------------------------
+    {
+      // Do not error if property assignment is inside a class function
+      code: [`
+        class MyComponent extends React.Component {
+          static displayName = "Hello";
+
+          myMethod() {
+            console.log(MyComponent.displayName);
+          }
+        }
+      `].join('\n'),
+      options: [STATIC_PUBLIC_FIELD]
+    },
+    {
+      // Do not error if display name value changed
+      code: [`
+        class MyComponent extends React.Component {
+          static displayName = "Hello";
+
+          myMethod() {
+            MyComponent.displayName = "Bonjour";
+          }
+        }
+      `].join('\n'),
+      options: [STATIC_PUBLIC_FIELD]
     }
   ],
 

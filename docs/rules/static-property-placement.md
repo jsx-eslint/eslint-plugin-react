@@ -8,7 +8,7 @@ and `propTypes` are declared in an ES6 class.
 
 By default, this rule will check for and warn about declaring any of the above properties outside of the class body.
 
-There are three key options are `static public field`, `static getter`, and `property assignment`. 
+The three key options are `static public field`, `static getter`, and `property assignment`.
 
 ### When `static public field` is enabled (default):
 
@@ -16,11 +16,11 @@ Examples of **incorrect** code for this rule:
 
 ```js
 class MyComponent extends React.Component {
-  static get childContextTypes() { /*...*/ }  
-  static get contextTypes() { /*...*/ }  
-  static get contextType() { /*...*/ }  
-  static get displayName() { /*...*/ }  
-  static get defaultProps() { /*...*/ }   
+  static get childContextTypes() { /*...*/ }
+  static get contextTypes() { /*...*/ }
+  static get contextType() { /*...*/ }
+  static get displayName() { /*...*/ }
+  static get defaultProps() { /*...*/ }
   static get propTypes() { /*...*/ }
 }
 ```
@@ -39,11 +39,11 @@ Examples of **correct** code for this rule:
 
 ```js
 class MyComponent extends React.Component {
-  static childContextTypes = { /*...*/ };  
-  static contextTypes = { /*...*/ };  
-  static contextType = { /*...*/ };  
-  static displayName = "Hello";  
-  static defaultProps = { /*...*/ };  
+  static childContextTypes = { /*...*/ };
+  static contextTypes = { /*...*/ };
+  static contextType = { /*...*/ };
+  static displayName = "Hello";
+  static defaultProps = { /*...*/ };
   static propTypes = { /*...*/ };
 }
 ```
@@ -54,11 +54,11 @@ Examples of **incorrect** code for this rule:
 
 ```js
 class MyComponent extends React.Component {
-  static childContextTypes = { /*...*/ };  
-  static contextTypes = { /*...*/ };  
-  static contextType = { /*...*/ };  
-  static displayName = "Hello";  
-  static defaultProps = { /*...*/ };  
+  static childContextTypes = { /*...*/ };
+  static contextTypes = { /*...*/ };
+  static contextType = { /*...*/ };
+  static displayName = "Hello";
+  static defaultProps = { /*...*/ };
   static propTypes = { /*...*/ };
 }
 ```
@@ -77,11 +77,11 @@ Examples of **correct** code for this rule:
 
 ```js
 class MyComponent extends React.Component {
-  static get childContextTypes() { /*...*/ }  
-  static get contextTypes() { /*...*/ }  
-  static get contextType() { /*...*/ }  
-  static get displayName() { /*...*/ }  
-  static get defaultProps() { /*...*/ }   
+  static get childContextTypes() { /*...*/ }
+  static get contextTypes() { /*...*/ }
+  static get contextType() { /*...*/ }
+  static get displayName() { /*...*/ }
+  static get defaultProps() { /*...*/ }
   static get propTypes() { /*...*/ }
 }
 ```
@@ -92,22 +92,22 @@ Examples of **incorrect** code for this rule:
 
 ```js
 class MyComponent extends React.Component {
-  static childContextTypes = { /*...*/ };  
-  static contextTypes = { /*...*/ };  
-  static contextType = { /*...*/ };  
-  static displayName = "Hello";  
-  static defaultProps = { /*...*/ };  
+  static childContextTypes = { /*...*/ };
+  static contextTypes = { /*...*/ };
+  static contextType = { /*...*/ };
+  static displayName = "Hello";
+  static defaultProps = { /*...*/ };
   static propTypes = { /*...*/ };
 }
 ```
 
 ```js
 class MyComponent extends React.Component {
-  static get childContextTypes() { /*...*/ }  
-  static get contextTypes() { /*...*/ }  
-  static get contextType() { /*...*/ }  
-  static get displayName() { /*...*/ }  
-  static get defaultProps() { /*...*/ }   
+  static get childContextTypes() { /*...*/ }
+  static get contextTypes() { /*...*/ }
+  static get contextType() { /*...*/ }
+  static get displayName() { /*...*/ }
+  static get defaultProps() { /*...*/ }
   static get propTypes() { /*...*/ }
 }
 ```
@@ -159,7 +159,7 @@ The `<string>` value must be one these options:
 * `static getter`
 * `property assignment`
 
-The `options` schema defined above allows you to specify different rules for the different property fields available. 
+The `options` schema defined above allows you to specify different rules for the different property fields available.
 
 ##### Example configuration:
 _This is only an example, we do not recommend this as a configuration._
