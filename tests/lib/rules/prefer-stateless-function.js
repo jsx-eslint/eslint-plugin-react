@@ -73,7 +73,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         };
       `,
-      parserOptions: parserOptions,
+      parserOptions,
       options: [{
         ignorePureComponents: true
       }]

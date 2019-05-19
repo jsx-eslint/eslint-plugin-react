@@ -114,7 +114,7 @@ const activeRulesConfig = configureAsError(activeRules);
 const deprecatedRules = filterRules(allRules, rule => rule.meta.deprecated);
 
 module.exports = {
-  deprecatedRules: deprecatedRules,
+  deprecatedRules,
   rules: allRules,
   configs: {
     recommended: {

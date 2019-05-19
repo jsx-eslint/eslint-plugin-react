@@ -3506,7 +3506,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
-      settings: settings,
+      settings,
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
       ]

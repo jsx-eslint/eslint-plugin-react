@@ -324,7 +324,7 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '// Non-react classes should be ignored, even in expressions',
@@ -338,7 +338,7 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '// Getters should be at the top',
@@ -553,7 +553,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '};'
     ].join('\n'),
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: 'render should be placed after onClick'}]
   }, {
     code: [

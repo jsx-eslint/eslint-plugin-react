@@ -24,7 +24,6 @@
 
         "prefer-destructuring": [2, { "array": false, "object": false }, { "enforceForRenamedProperties": false }],
 
-        "object-shorthand": 1,
         "import/order": 1,
         "no-useless-escape": 1,
         "import/newline-after-import": 1,

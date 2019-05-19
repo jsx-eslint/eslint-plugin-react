@@ -41,7 +41,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       class First {}
@@ -50,7 +50,7 @@ ruleTester.run('no-typos', rule, {
       First.ChildContextTypes = {key: "myValue"};
       First.DefaultProps = {key: "myValue"};
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       class First extends React.Component {
@@ -61,7 +61,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       class First extends React.Component {}
@@ -70,7 +70,7 @@ ruleTester.run('no-typos', rule, {
       First.childContextTypes = {key: "myValue"};
       First.defaultProps = {key: "myValue"};
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       class MyClass {
@@ -81,7 +81,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       class MyClass {
@@ -92,7 +92,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       class MyClass {
@@ -103,7 +103,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       class MyClass {
@@ -114,7 +114,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       class MyClass {
@@ -125,7 +125,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       class MyClass {}
@@ -134,7 +134,7 @@ ruleTester.run('no-typos', rule, {
       MyClass.prototype.ChildContextTypes = function() {};
       MyClass.prototype.DefaultProps = function() {};
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       class MyClass {}
@@ -143,7 +143,7 @@ ruleTester.run('no-typos', rule, {
       MyClass.ChildContextTypes = function() {};
       MyClass.DefaultProps = function() {};
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       function MyRandomFunction() {}
@@ -152,7 +152,7 @@ ruleTester.run('no-typos', rule, {
       MyRandomFunction.ChildContextTypes = {};
       MyRandomFunction.DefaultProps = {};
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     // This case is currently not supported
     code: `
@@ -162,7 +162,7 @@ ruleTester.run('no-typos', rule, {
       First["childContext" + "Types"] = {};
       First["default" + "Props"] = {};
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     // This case is currently not supported
     code: `
@@ -172,7 +172,7 @@ ruleTester.run('no-typos', rule, {
       First["CHILDCONTEXT" + "TYPES"] = {};
       First["DEFAULT" + "PROPS"] = {};
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       const propTypes = "PROPTYPES"
@@ -186,7 +186,7 @@ ruleTester.run('no-typos', rule, {
       First[childContextTypes] = {};
       First[defautProps] = {};
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       class Hello extends React.Component {
@@ -202,7 +202,7 @@ ruleTester.run('no-typos', rule, {
         }
       }
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       class MyClass {
@@ -216,7 +216,7 @@ ruleTester.run('no-typos', rule, {
         render() { }
       }
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       class MyClass {
@@ -230,7 +230,7 @@ ruleTester.run('no-typos', rule, {
         render() { }
       }
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       class MyClass {
@@ -244,7 +244,7 @@ ruleTester.run('no-typos', rule, {
         Render() { }
       }
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     // https://github.com/yannickcr/eslint-plugin-react/issues/1353
     code: `
@@ -254,7 +254,7 @@ ruleTester.run('no-typos', rule, {
       function a() {}
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import PropTypes from "prop-types";
@@ -264,7 +264,7 @@ ruleTester.run('no-typos', rule, {
       }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import PropTypes from "prop-types";
@@ -276,7 +276,7 @@ ruleTester.run('no-typos', rule, {
       }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import PropTypes from "prop-types";
@@ -291,7 +291,7 @@ ruleTester.run('no-typos', rule, {
       }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import PropTypes from "prop-types";
@@ -304,7 +304,7 @@ ruleTester.run('no-typos', rule, {
       }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import PropTypes from "prop-types";
@@ -317,7 +317,7 @@ ruleTester.run('no-typos', rule, {
       }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import PropTypes from "prop-types";
@@ -332,7 +332,7 @@ ruleTester.run('no-typos', rule, {
       }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import PropTypes from "prop-types";
@@ -345,7 +345,7 @@ ruleTester.run('no-typos', rule, {
       }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import PropTypes from "prop-types";
@@ -359,7 +359,7 @@ ruleTester.run('no-typos', rule, {
         }).isRequired
       }
    `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import PropTypes from "prop-types";
@@ -373,7 +373,7 @@ ruleTester.run('no-typos', rule, {
         }).isRequired
       }
    `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import PropTypes from 'prop-types'
@@ -385,7 +385,7 @@ ruleTester.run('no-typos', rule, {
         c: MyPropTypes.MYSTRING.isRequired,
       }
    `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import PropTypes from "prop-types"
@@ -396,7 +396,7 @@ ruleTester.run('no-typos', rule, {
         a: MyPropTypes.MYSTRING,
       }
    `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import CustomReact from "react"
@@ -405,7 +405,7 @@ ruleTester.run('no-typos', rule, {
         b: CustomReact.PropTypes.string,
       }
    `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import PropTypes from "prop-types";
@@ -420,7 +420,7 @@ ruleTester.run('no-typos', rule, {
       }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import PropTypes from "prop-types";
@@ -435,7 +435,7 @@ ruleTester.run('no-typos', rule, {
       }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import PropTypes from 'prop-types'
@@ -448,7 +448,7 @@ ruleTester.run('no-typos', rule, {
       }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import PropTypes from "prop-types"
@@ -460,7 +460,7 @@ ruleTester.run('no-typos', rule, {
       }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import CustomReact from "react"
@@ -470,7 +470,7 @@ ruleTester.run('no-typos', rule, {
       }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     // ensure that an absent arg to PropTypes.shape does not crash
     code: `class Component extends React.Component {};
@@ -481,7 +481,7 @@ ruleTester.run('no-typos', rule, {
        a: PropTypes.shape(),
      };
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     // ensure that an absent arg to PropTypes.shape does not crash
     code: `class Component extends React.Component {};
@@ -493,7 +493,7 @@ ruleTester.run('no-typos', rule, {
      };
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       const fn = (err, res) => {
@@ -511,7 +511,7 @@ ruleTester.run('no-typos', rule, {
        }).isRequired
      }
    `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `class Component extends React.Component {};
      Component.propTypes = {
@@ -522,7 +522,7 @@ ruleTester.run('no-typos', rule, {
      }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import React from 'react';
@@ -536,7 +536,7 @@ ruleTester.run('no-typos', rule, {
         }
       });
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import React from 'react';
@@ -551,7 +551,7 @@ ruleTester.run('no-typos', rule, {
       });
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import React from 'react';
@@ -565,7 +565,7 @@ ruleTester.run('no-typos', rule, {
         }
       });
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import React from 'react';
@@ -580,7 +580,7 @@ ruleTester.run('no-typos', rule, {
       });
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import React from 'react';
@@ -600,7 +600,7 @@ ruleTester.run('no-typos', rule, {
         }
       });
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import React from 'react';
@@ -621,7 +621,7 @@ ruleTester.run('no-typos', rule, {
       });
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       import { string, element } from "prop-types";
@@ -635,7 +635,7 @@ ruleTester.run('no-typos', rule, {
         body: element.isRequired
       };
     `,
-    parserOptions: parserOptions
+    parserOptions
   }],
 
   invalid: [{
@@ -645,21 +645,21 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       class Component extends React.Component {}
       Component.PropTypes = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       function MyComponent() { return (<div>{this.props.myProp}</div>) }
       MyComponent.PropTypes = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
@@ -668,21 +668,21 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       class Component extends React.Component {}
       Component.proptypes = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       function MyComponent() { return (<div>{this.props.myProp}</div>) }
       MyComponent.proptypes = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
@@ -691,21 +691,21 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       class Component extends React.Component {}
       Component.ContextTypes = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       function MyComponent() { return (<div>{this.props.myProp}</div>) }
       MyComponent.ContextTypes = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
@@ -714,21 +714,21 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       class Component extends React.Component {}
       Component.contexttypes = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       function MyComponent() { return (<div>{this.props.myProp}</div>) }
       MyComponent.contexttypes = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
@@ -737,21 +737,21 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       class Component extends React.Component {}
       Component.ChildContextTypes = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       function MyComponent() { return (<div>{this.props.myProp}</div>) }
       MyComponent.ChildContextTypes = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
@@ -760,21 +760,21 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       class Component extends React.Component {}
       Component.childcontexttypes = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       function MyComponent() { return (<div>{this.props.myProp}</div>) }
       MyComponent.childcontexttypes = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
@@ -783,21 +783,21 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       class Component extends React.Component {}
       Component.DefaultProps = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       function MyComponent() { return (<div>{this.props.myProp}</div>) }
       MyComponent.DefaultProps = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
@@ -806,28 +806,28 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       class Component extends React.Component {}
       Component.defaultprops = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       function MyComponent() { return (<div>{this.props.myProp}</div>) }
       MyComponent.defaultprops = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
       Component.defaultprops = {}
       class Component extends React.Component {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
@@ -835,7 +835,7 @@ ruleTester.run('no-typos', rule, {
       class MyComponent extends BaseComponent {}
       MyComponent.PROPTYPES = {}
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: ERROR_MESSAGE}]
   }, {
     code: `
@@ -858,7 +858,7 @@ ruleTester.run('no-typos', rule, {
         }
       }
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: ERROR_MESSAGE_LIFECYCLE_METHOD,
       type: 'MethodDefinition'
@@ -920,7 +920,7 @@ ruleTester.run('no-typos', rule, {
         }
       }
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: ERROR_MESSAGE_LIFECYCLE_METHOD,
       type: 'MethodDefinition'
@@ -985,7 +985,7 @@ ruleTester.run('no-typos', rule, {
         }
       }
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: ERROR_MESSAGE_LIFECYCLE_METHOD,
       type: 'MethodDefinition'
@@ -1034,7 +1034,7 @@ ruleTester.run('no-typos', rule, {
           a: PropTypes.Number.isRequired
       }
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: Number'
     }]
@@ -1046,7 +1046,7 @@ ruleTester.run('no-typos', rule, {
           a: PropTypes.number.isrequired
       }
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
     }]
@@ -1060,7 +1060,7 @@ ruleTester.run('no-typos', rule, {
       };
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
     }]
@@ -1074,7 +1074,7 @@ ruleTester.run('no-typos', rule, {
       };
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: Number'
     }]
@@ -1087,7 +1087,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: Number'
     }]
@@ -1103,7 +1103,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: String'
     }]
@@ -1119,7 +1119,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
     }]
@@ -1135,7 +1135,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
     }, {
@@ -1157,7 +1157,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
     }, {
@@ -1179,7 +1179,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
     }, {
@@ -1200,7 +1200,7 @@ ruleTester.run('no-typos', rule, {
        }).isrequired
      }
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
     }, {
@@ -1218,7 +1218,7 @@ ruleTester.run('no-typos', rule, {
      }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
     }, {
@@ -1236,7 +1236,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
     }, {
@@ -1258,7 +1258,7 @@ ruleTester.run('no-typos', rule, {
      }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
     }, {
@@ -1276,7 +1276,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
     }, {
@@ -1298,7 +1298,7 @@ ruleTester.run('no-typos', rule, {
      }
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
     }, {
@@ -1310,7 +1310,7 @@ ruleTester.run('no-typos', rule, {
      class Component extends React.Component {};
    `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: []
   }, {
     code: `
@@ -1324,7 +1324,7 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
     }, {
@@ -1345,7 +1345,7 @@ ruleTester.run('no-typos', rule, {
         d: PropTypes.objectof,
       }
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
     }, {
@@ -1366,7 +1366,7 @@ ruleTester.run('no-typos', rule, {
        }).isrequired
      }
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
     }, {
@@ -1383,7 +1383,7 @@ ruleTester.run('no-typos', rule, {
        }).isrequired
      }
    `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
     }, {
@@ -1400,7 +1400,7 @@ ruleTester.run('no-typos', rule, {
         d: RealPropTypes.objectof,
       }
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
     }, {
@@ -1421,7 +1421,7 @@ ruleTester.run('no-typos', rule, {
        }).isrequired
      }
    `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
     }, {
@@ -1438,7 +1438,7 @@ ruleTester.run('no-typos', rule, {
         d: React.PropTypes.objectof,
       }
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
     }, {
@@ -1459,7 +1459,7 @@ ruleTester.run('no-typos', rule, {
        }).isrequired
      }
    `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
     }, {
@@ -1476,7 +1476,7 @@ ruleTester.run('no-typos', rule, {
         d: PropTypes.objectof,
       }
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
     }, {
@@ -1500,7 +1500,7 @@ ruleTester.run('no-typos', rule, {
       });
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
     }, {
@@ -1520,7 +1520,7 @@ ruleTester.run('no-typos', rule, {
       });
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
     }, {
@@ -1543,7 +1543,7 @@ ruleTester.run('no-typos', rule, {
         }
       });
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'
     }, {
@@ -1562,7 +1562,7 @@ ruleTester.run('no-typos', rule, {
         }
       });
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Typo in declared prop type: bools'
     }, {
@@ -1591,7 +1591,7 @@ ruleTester.run('no-typos', rule, {
         }
       });
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: ERROR_MESSAGE_ES5,
       type: 'ObjectExpression'
@@ -1643,7 +1643,7 @@ ruleTester.run('no-typos', rule, {
       });
     `,
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: ERROR_MESSAGE_ES5,
       type: 'ObjectExpression'

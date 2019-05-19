@@ -55,7 +55,7 @@ ruleTester.run('react-in-jsx-scope', rule, {
       });
       export default Button;
     `},
-    {code: 'var Foo, App; <App />;', settings: settings}
+    {code: 'var Foo, App; <App />;', settings}
   ],
   invalid: [{
     code: 'var App, a = <App />;',
@@ -78,6 +78,6 @@ ruleTester.run('react-in-jsx-scope', rule, {
     errors: [{message: '\'Foo\' must be in scope when using JSX'}]
   }, {
     code: 'var React, a = <img />;',
-    errors: [{message: '\'Foo\' must be in scope when using JSX'}], settings: settings
+    errors: [{message: '\'Foo\' must be in scope when using JSX'}], settings
   }]
 });

@@ -39,7 +39,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      parserOptions: parserOptions
+      parserOptions
     },
     {
       code: `
@@ -50,7 +50,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions: parserOptions
+      parserOptions
     },
     {
       code: `
@@ -60,7 +60,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      parserOptions: parserOptions
+      parserOptions
     },
     {
       code: `
@@ -72,7 +72,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           };
         }
       `,
-      parserOptions: parserOptions
+      parserOptions
     }
   ],
 
@@ -86,7 +86,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
         }
       `,
       errors: [{message: errorMessage('Foo')}],
-      parserOptions: parserOptions
+      parserOptions
     },
     {
       code: `
@@ -97,7 +97,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
         }
       `,
       errors: [{message: errorMessage('Foo')}],
-      parserOptions: parserOptions
+      parserOptions
     },
     {
       code: `
@@ -109,7 +109,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
       `,
       errors: [{message: errorMessage('Foo')}],
       parser: parsers.BABEL_ESLINT,
-      parserOptions: parserOptions
+      parserOptions
     },
     {
       code: `
@@ -122,7 +122,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
         }
       `,
       errors: [{message: errorMessage('Bar')}],
-      parserOptions: parserOptions
+      parserOptions
     },
     {
       code: `
@@ -135,7 +135,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
         }
       `,
       errors: [{message: errorMessage('Bar')}],
-      parserOptions: parserOptions
+      parserOptions
     },
     {
       code: `
@@ -146,7 +146,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
         }
       `,
       errors: [{message: errorMessage('Foo')}],
-      parserOptions: parserOptions
+      parserOptions
     }
   ]
 });

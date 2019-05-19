@@ -11,7 +11,7 @@ describe('PropWrapperFunctions', () => {
       }];
       const context = {
         settings: {
-          propWrapperFunctions: propWrapperFunctions
+          propWrapperFunctions
         }
       };
       assert.deepStrictEqual(propWrapperUtil.getPropWrapperFunctions(context), new Set(propWrapperFunctions));

@@ -3048,7 +3048,7 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
-      settings: settings,
+      settings,
       errors: [
         {message: '\'lastname\' is missing in props validation'}
       ]
