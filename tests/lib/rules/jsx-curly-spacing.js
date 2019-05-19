@@ -3,6 +3,7 @@
  * @author Yannick Croissant
  * @author Erik Wendel
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

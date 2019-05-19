@@ -2,6 +2,7 @@
  * @fileoverview Enforce React components to have a shouldComponentUpdate method
  * @author Evgueni Naverniouk
  */
+
 'use strict';
 
 const rule = require('../../../lib/rules/require-optimization');

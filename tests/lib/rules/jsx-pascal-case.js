@@ -2,6 +2,7 @@
  * @fileoverview Tests for jsx-pascal-case
  * @author Jake Marsh
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

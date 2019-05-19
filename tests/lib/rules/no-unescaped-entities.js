@@ -2,6 +2,7 @@
  * @fileoverview Tests for no-unescaped-entities
  * @author Patrick Hayes
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

@@ -2,6 +2,7 @@
  * @fileoverview Report missing `key` props in iterators/collection literals.
  * @author Ben Mosher
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

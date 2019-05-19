@@ -1,6 +1,7 @@
 /**
  * @fileoverview Tests for jsx-props-no-spreading
  */
+
 'use strict';
 
 // -----------------------------------------------------------------------------

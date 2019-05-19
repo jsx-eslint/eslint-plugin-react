@@ -2,6 +2,7 @@
  * @fileoverview Tests for jsx-fragments
  * @author Alex Zherdev
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

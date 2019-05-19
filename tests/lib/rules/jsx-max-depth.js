@@ -2,6 +2,7 @@
  * @fileoverview Validate JSX maximum depth
  * @author Chris<wfsr@foxmail.com>
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

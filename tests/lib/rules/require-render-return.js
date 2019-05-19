@@ -2,6 +2,7 @@
  * @fileoverview Enforce ES5 or ES6 class for returning value in render function.
  * @author Mark Orel
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

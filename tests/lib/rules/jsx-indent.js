@@ -2,6 +2,7 @@
  * @fileoverview Validate JSX indentation
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

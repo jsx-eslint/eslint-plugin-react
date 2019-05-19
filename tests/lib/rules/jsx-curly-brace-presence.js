@@ -2,6 +2,7 @@
  * @fileoverview Enforce curly braces or disallow unnecessary curly braces in JSX
  * @author Jacky Ho
  */
+
 'use strict';
 
 /* eslint-disable quotes */ // For better readability on tests involving quotes

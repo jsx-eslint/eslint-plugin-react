@@ -2,6 +2,7 @@
  * @fileoverview Prevent usage of this.state within setState
  * @author Rolf Erik Lekang, Jørgen Aaberg
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

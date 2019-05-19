@@ -2,6 +2,7 @@
 /**
  * @fileoverview Rule to forbid or enforce destructuring assignment consistency.
  **/
+
 'use strict';
 
 const rule = require('../../../lib/rules/destructuring-assignment');

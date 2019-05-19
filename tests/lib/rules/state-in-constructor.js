@@ -2,6 +2,7 @@
  * @fileoverview Enforce the state initialization style to be either in a constructor or with a class property
  * @author Kanitkorn Sujautra
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

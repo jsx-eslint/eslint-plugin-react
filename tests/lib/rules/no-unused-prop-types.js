@@ -2,6 +2,7 @@
  * @fileoverview Warn about unused PropType definitions in React components
  * @author Evgueni Naverniouk
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

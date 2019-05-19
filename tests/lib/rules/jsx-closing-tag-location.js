@@ -2,6 +2,7 @@
  * @fileoverview Validate closing tag location in JSX
  * @author Ross Solomon
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

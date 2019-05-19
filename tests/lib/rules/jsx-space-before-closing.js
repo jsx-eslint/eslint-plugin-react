@@ -2,6 +2,7 @@
  * @fileoverview Validate spacing before closing bracket in JSX.
  * @author ryym
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

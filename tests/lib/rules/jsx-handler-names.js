@@ -2,6 +2,7 @@
  * @fileoverview Tests for jsx-handler-names
  * @author Jake Marsh
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

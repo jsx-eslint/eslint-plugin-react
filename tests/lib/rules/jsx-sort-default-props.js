@@ -2,6 +2,7 @@
  * @fileoverview Tests for jsx-sort-default-props
  * @author Vladimir Kattsov
  */
+
 'use strict';
 
 // -----------------------------------------------------------------------------

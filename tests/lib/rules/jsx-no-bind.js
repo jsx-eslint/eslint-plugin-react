@@ -3,6 +3,7 @@
  *               in React component definition.
  * @author Daniel Lo Nigro <dan.cx>
  */
+
 'use strict';
 
 // -----------------------------------------------------------------------------

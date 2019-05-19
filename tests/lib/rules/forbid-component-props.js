@@ -1,6 +1,7 @@
 /**
  * @fileoverview Tests for forbid-component-props
  */
+
 'use strict';
 
 // -----------------------------------------------------------------------------

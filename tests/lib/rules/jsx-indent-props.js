@@ -2,6 +2,7 @@
  * @fileoverview Validate props indentation in JSX
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

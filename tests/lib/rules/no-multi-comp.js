@@ -2,6 +2,7 @@
  * @fileoverview Prevent multiple component definition per file
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

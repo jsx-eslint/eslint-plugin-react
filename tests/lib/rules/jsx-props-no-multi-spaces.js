@@ -2,6 +2,7 @@
  * @fileoverview Disallow multiple spaces between inline JSX props
  * @author Adrian Moennich
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

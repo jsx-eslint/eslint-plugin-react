@@ -4,6 +4,7 @@
  * @author Scott Feeney
  * @author Sergei Startsev
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

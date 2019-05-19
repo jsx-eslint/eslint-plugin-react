@@ -2,6 +2,7 @@
  * @fileoverview Prevent string definitions for references and prevent referencing this.refs
  * @author Tom Hastjarjanto
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

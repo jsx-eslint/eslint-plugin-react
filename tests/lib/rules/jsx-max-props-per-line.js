@@ -2,6 +2,7 @@
  * @fileoverview Limit maximum of props on a single line in JSX
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

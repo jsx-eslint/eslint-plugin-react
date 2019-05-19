@@ -1,6 +1,7 @@
 /**
  * @fileoverview Tests for forbid-foreign-prop-types
  */
+
 'use strict';
 
 // -----------------------------------------------------------------------------

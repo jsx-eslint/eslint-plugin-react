@@ -2,6 +2,7 @@
  * @fileoverview Prefer es6 class instead of createClass for React Component
  * @author Dan Hamilton
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

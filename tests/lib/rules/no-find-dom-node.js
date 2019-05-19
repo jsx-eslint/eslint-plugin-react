@@ -2,6 +2,7 @@
  * @fileoverview Prevent usage of findDOMNode
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

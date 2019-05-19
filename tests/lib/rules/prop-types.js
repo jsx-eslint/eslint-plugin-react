@@ -2,6 +2,7 @@
  * @fileoverview Prevent missing props validation in a React component definition
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

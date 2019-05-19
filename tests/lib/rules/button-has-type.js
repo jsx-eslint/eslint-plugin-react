@@ -2,6 +2,7 @@
  * @fileoverview Forbid "button" element without an explicit "type" attribute
  * @author Filipp Riabchun
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

@@ -2,6 +2,7 @@
  * @fileoverview Enforce stateless components to be written as a pure function
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

@@ -2,6 +2,7 @@
  * @fileoverview Prevent direct mutation of this.state
  * @author David Petersen
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

@@ -2,6 +2,7 @@
  * @fileoverview Prevent extra closing tags for components without children
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

@@ -2,6 +2,7 @@
  * @fileoverview Report when a DOM element is using both children and dangerouslySetInnerHTML
  * @author David Petersen
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

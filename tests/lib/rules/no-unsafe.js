@@ -2,6 +2,7 @@
  * @fileoverview Prevent usage of unsafe lifecycle methods
  * @author Sergei Startsev
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

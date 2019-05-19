@@ -1,6 +1,7 @@
 /**
  * @fileoverview Report "this" being used in stateless functional components.
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------

@@ -2,6 +2,7 @@
  * @fileoverview Enforce a defaultProps definition for every prop that is not a required prop.
  * @author Vitor Balocco
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
