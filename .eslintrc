@@ -27,7 +27,6 @@
         "object-shorthand": 1,
         "import/order": 1,
         "no-useless-escape": 1,
-        "arrow-parens": 1,
         "import/newline-after-import": 1,
         "operator-linebreak": 1,
         "function-paren-newline": 0,
