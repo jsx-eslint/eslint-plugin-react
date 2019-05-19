@@ -21,12 +21,12 @@
           "ignoreTemplateLiterals": true,
           "ignoreComments": true,
         }],
+        "operator-linebreak": [2, "after"],
 
         "prefer-destructuring": [2, { "array": false, "object": false }, { "enforceForRenamedProperties": false }],
 
         "import/order": 1,
         "no-useless-escape": 1,
-        "operator-linebreak": 1,
         "function-paren-newline": 0,
         "no-plusplus": 1,
         "no-param-reassign": 1,
