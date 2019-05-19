@@ -33,7 +33,6 @@
         "function-paren-newline": 0,
         "no-plusplus": 1,
         "no-param-reassign": 1,
-        "no-else-return": 1,
         "object-curly-newline": 1,
         "object-property-newline": 1,
         "spaced-comment": 1,
