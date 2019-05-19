@@ -5021,6 +5021,6 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'foo\' PropType is defined but prop is never used'
       }]
-    }*/
+    } */
   ]
 });

@@ -279,6 +279,6 @@ ruleTester.run('no-direct-mutation-state', rule, {
     errors: [{
       message: 'Do not mutate state directly. Use setState().'
     }]
-  }*/
+  } */
   ]
 });
