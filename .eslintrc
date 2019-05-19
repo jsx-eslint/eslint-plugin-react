@@ -41,7 +41,6 @@
         "no-case-declarations": 1,
         "no-underscore-dangle": 1,
         "no-mixed-operators": 1,
-        "semi-style": 1,
         "no-void": 1,
         "no-continue": 1,
         "no-tabs": 1,
