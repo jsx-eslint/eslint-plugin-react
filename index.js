@@ -1,6 +1,7 @@
 'use strict';
 
-const has = require('has');
+const fromEntries = require('object.fromentries');
+const entries = require('object.entries');
 
 const allRules = {
   'boolean-prop-naming': require('./lib/rules/boolean-prop-naming'),
@@ -88,24 +89,11 @@ const allRules = {
 };
 
 function filterRules(rules, predicate) {
-  const result = {};
-  for (const key in rules) {
-    if (has(rules, key) && predicate(rules[key])) {
-      result[key] = rules[key];
-    }
-  }
-  return result;
+  return fromEntries(entries(rules).filter(entry => predicate(entry[1])));
 }
 
 function configureAsError(rules) {
-  const result = {};
-  for (const key in rules) {
-    if (!has(rules, key)) {
-      continue;
-    }
-    result[`react/${key}`] = 2;
-  }
-  return result;
+  return fromEntries(Object.keys(rules).map(key => [`react/${key}`, 2]));
 }
 
 const activeRules = filterRules(allRules, rule => !rule.meta.deprecated);
