@@ -10,8 +10,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/default-props-match-prop-types');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/default-props-match-prop-types');
 
 const parsers = require('../../helpers/parsers');
 

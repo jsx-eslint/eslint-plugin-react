@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/prefer-stateless-function');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/prefer-stateless-function');
 
 const parsers = require('../../helpers/parsers');
 

@@ -9,8 +9,8 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-tag-spacing');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-tag-spacing');
 
 const parserOptions = {
   ecmaVersion: 2018,

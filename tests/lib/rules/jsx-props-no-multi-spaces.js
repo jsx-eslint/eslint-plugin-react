@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-props-no-multi-spaces');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-props-no-multi-spaces');
 
 const parsers = require('../../helpers/parsers');
 

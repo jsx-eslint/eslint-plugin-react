@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-max-depth');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-max-depth');
 
 const parsers = require('../../helpers/parsers');
 

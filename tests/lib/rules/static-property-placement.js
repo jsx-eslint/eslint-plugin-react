@@ -16,8 +16,8 @@ const PROPERTY_ASSIGNMENT = 'property assignment';
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/static-property-placement');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/static-property-placement');
 
 const parsers = require('../../helpers/parsers');
 

@@ -10,8 +10,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-curly-spacing');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-curly-spacing');
 
 const parsers = require('../../helpers/parsers');
 

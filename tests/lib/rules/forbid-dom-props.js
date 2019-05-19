@@ -8,8 +8,8 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/forbid-dom-props');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/forbid-dom-props');
 
 const parserOptions = {
   ecmaVersion: 2018,

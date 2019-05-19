@@ -8,8 +8,8 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-redundant-should-component-update');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-redundant-should-component-update');
 
 const parsers = require('../../helpers/parsers');
 

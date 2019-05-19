@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-closing-bracket-location');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-closing-bracket-location');
 
 const parserOptions = {
   ecmaVersion: 2018,

@@ -9,8 +9,8 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-sort-props');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-sort-props');
 
 const parserOptions = {
   ecmaVersion: 2018,

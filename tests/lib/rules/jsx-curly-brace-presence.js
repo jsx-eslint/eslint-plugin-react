@@ -11,8 +11,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-curly-brace-presence');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-curly-brace-presence');
 
 const parsers = require('../../helpers/parsers');
 

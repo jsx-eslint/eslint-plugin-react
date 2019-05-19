@@ -4,8 +4,8 @@
 
 'use strict';
 
-const rule = require('../../../lib/rules/no-unused-state');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-unused-state');
 
 const parsers = require('../../helpers/parsers');
 

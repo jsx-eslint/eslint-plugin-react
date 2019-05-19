@@ -8,8 +8,8 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/forbid-foreign-prop-types');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/forbid-foreign-prop-types');
 
 const parsers = require('../../helpers/parsers');
 

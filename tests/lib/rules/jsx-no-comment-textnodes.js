@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-no-comment-textnodes');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-no-comment-textnodes');
 
 const parsers = require('../../helpers/parsers');
 

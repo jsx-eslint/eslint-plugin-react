@@ -8,8 +8,8 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/forbid-elements');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/forbid-elements');
 
 const parserOptions = {
   ecmaVersion: 2018,

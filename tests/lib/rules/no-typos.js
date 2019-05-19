@@ -8,8 +8,8 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-typos');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-typos');
 
 const parsers = require('../../helpers/parsers');
 

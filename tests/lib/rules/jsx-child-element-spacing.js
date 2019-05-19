@@ -1,7 +1,7 @@
 'use strict';
 
-const rule = require('../../../lib/rules/jsx-child-element-spacing');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-child-element-spacing');
 
 const parsers = require('../../helpers/parsers');
 

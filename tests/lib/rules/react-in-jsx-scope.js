@@ -9,8 +9,8 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/react-in-jsx-scope');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/react-in-jsx-scope');
 
 const parsers = require('../../helpers/parsers');
 

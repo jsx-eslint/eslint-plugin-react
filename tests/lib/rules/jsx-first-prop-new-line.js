@@ -9,8 +9,8 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-first-prop-new-line');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-first-prop-new-line');
 
 const parsers = require('../../helpers/parsers');
 

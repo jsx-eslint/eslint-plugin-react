@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-closing-tag-location');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-closing-tag-location');
 
 const parsers = require('../../helpers/parsers');
 

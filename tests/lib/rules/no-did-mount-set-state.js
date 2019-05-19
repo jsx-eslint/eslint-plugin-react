@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-did-mount-set-state');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-did-mount-set-state');
 
 const parsers = require('../../helpers/parsers');
 

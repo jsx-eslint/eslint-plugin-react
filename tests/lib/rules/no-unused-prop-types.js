@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-unused-prop-types');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-unused-prop-types');
 
 const parsers = require('../../helpers/parsers');
 

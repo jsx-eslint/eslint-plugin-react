@@ -14,8 +14,8 @@ const ERROR_MESSAGE = 'Stateless functional components should not use this';
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-this-in-sfc');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-this-in-sfc');
 
 const parsers = require('../../helpers/parsers');
 

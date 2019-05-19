@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-unsafe');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-unsafe');
 
 const parserOptions = {
   ecmaVersion: 2018,

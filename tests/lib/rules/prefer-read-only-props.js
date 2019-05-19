@@ -9,8 +9,8 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/prefer-read-only-props');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/prefer-read-only-props');
 
 const parsers = require('../../helpers/parsers');
 

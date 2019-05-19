@@ -11,8 +11,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-deprecated');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-deprecated');
 
 const parsers = require('../../helpers/parsers');
 

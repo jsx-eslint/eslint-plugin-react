@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-access-state-in-setstate');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-access-state-in-setstate');
 
 const parserOptions = {
   ecmaVersion: 2018,

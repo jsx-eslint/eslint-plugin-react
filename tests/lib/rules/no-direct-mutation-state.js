@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-direct-mutation-state');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-direct-mutation-state');
 
 const parserOptions = {
   ecmaVersion: 2018,

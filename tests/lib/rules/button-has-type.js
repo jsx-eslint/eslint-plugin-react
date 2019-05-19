@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/button-has-type');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/button-has-type');
 
 const parserOptions = {
   ecmaVersion: 2018,

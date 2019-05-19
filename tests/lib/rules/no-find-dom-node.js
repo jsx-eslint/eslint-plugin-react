@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-find-dom-node');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-find-dom-node');
 
 const parserOptions = {
   ecmaVersion: 2018,
