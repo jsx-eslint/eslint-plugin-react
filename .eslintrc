@@ -47,7 +47,6 @@
         "array-callback-return": 1,
         "no-restricted-syntax": 1,
         "implicit-arrow-linebreak": 1,
-        "no-useless-return": 1,
         "valid-jsdoc": 1,
     },
     "overrides": [
