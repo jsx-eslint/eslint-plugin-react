@@ -22,6 +22,7 @@
           "ignoreComments": true,
         }],
         "operator-linebreak": [2, "after"],
+        "consistent-return": 0,
 
         "prefer-destructuring": [2, { "array": false, "object": false }, { "enforceForRenamedProperties": false }],
 
@@ -31,7 +32,6 @@
         "no-plusplus": 1,
         "no-param-reassign": 1,
         "no-mixed-operators": 1,
-        "no-void": 1,
         "no-continue": 1,
         "global-require": 1,
         "no-restricted-syntax": 1,
