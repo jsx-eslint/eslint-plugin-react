@@ -39,7 +39,6 @@
         "no-void": 1,
         "no-continue": 1,
         "global-require": 1,
-        "array-callback-return": 1,
         "no-restricted-syntax": 1,
         "implicit-arrow-linebreak": 1,
         "valid-jsdoc": 1,
