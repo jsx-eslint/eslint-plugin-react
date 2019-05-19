@@ -55,7 +55,9 @@ ruleTester.run('jsx-boolean-value', rule, {
     output: '<App foo />;',
     errors: [{message: 'Value must be omitted for boolean attributes'}]
   }, {
-    code: '<App foo />;', output: '<App foo={true} />;', options: ['always'],
+    code: '<App foo />;',
+    output: '<App foo={true} />;',
+    options: ['always'],
     errors: [{message: 'Value must be set for boolean attributes'}]
   }, {
     code: '<App foo bar baz />;',

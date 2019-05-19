@@ -44,7 +44,8 @@ ruleTester.run('react-in-jsx-scope', rule, {
     {code: 'var React, App; <App />;'},
     {code: '/** @jsx Foo */ var Foo, App; <App />;'},
     {code: '/** @jsx Foo.Bar */ var Foo, App; <App />;'},
-    {code: `
+    {
+      code: `
       import React from 'react/addons';
       const Button = createReactClass({
         render() {
@@ -54,7 +55,8 @@ ruleTester.run('react-in-jsx-scope', rule, {
         }
       });
       export default Button;
-    `},
+    `
+    },
     {code: 'var Foo, App; <App />;', settings}
   ],
   invalid: [{
@@ -78,6 +80,7 @@ ruleTester.run('react-in-jsx-scope', rule, {
     errors: [{message: '\'Foo\' must be in scope when using JSX'}]
   }, {
     code: 'var React, a = <img />;',
-    errors: [{message: '\'Foo\' must be in scope when using JSX'}], settings
+    errors: [{message: '\'Foo\' must be in scope when using JSX'}],
+    settings
   }]
 });

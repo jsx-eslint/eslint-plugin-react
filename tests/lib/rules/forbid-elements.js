@@ -105,16 +105,20 @@ ruleTester.run('forbid-elements', rule, {
     },
     {
       code: '<dotted.Component />',
-      options: [{forbid: [
-        {element: 'dotted.Component', message: 'that ain\'t cool'}
-      ]}],
+      options: [{
+        forbid: [
+          {element: 'dotted.Component', message: 'that ain\'t cool'}
+        ]
+      }],
       errors: [{message: '<dotted.Component> is forbidden, that ain\'t cool'}]
     },
     {
       code: '<button />',
-      options: [{forbid: [
-        {element: 'button', message: 'use <Button> instead'}
-      ]}],
+      options: [{
+        forbid: [
+          {element: 'button', message: 'use <Button> instead'}
+        ]
+      }],
       errors: [{message: '<button> is forbidden, use <Button> instead'}]
     },
     {
@@ -143,10 +147,12 @@ ruleTester.run('forbid-elements', rule, {
     },
     {
       code: '<button />',
-      options: [{forbid: [
-        {element: 'button', message: 'use <Button> instead'},
-        {element: 'button', message: 'use <Button2> instead'}
-      ]}],
+      options: [{
+        forbid: [
+          {element: 'button', message: 'use <Button> instead'},
+          {element: 'button', message: 'use <Button2> instead'}
+        ]
+      }],
       errors: [{message: '<button> is forbidden, use <Button2> instead'}]
     },
     {
@@ -164,9 +170,11 @@ ruleTester.run('forbid-elements', rule, {
     },
     {
       code: 'React.createElement(dotted.Component)',
-      options: [{forbid: [
-        {element: 'dotted.Component', message: 'that ain\'t cool'}
-      ]}],
+      options: [{
+        forbid: [
+          {element: 'dotted.Component', message: 'that ain\'t cool'}
+        ]
+      }],
       errors: [{message: '<dotted.Component> is forbidden, that ain\'t cool'}]
     },
     {
@@ -185,9 +193,11 @@ ruleTester.run('forbid-elements', rule, {
     },
     {
       code: 'React.createElement("button")',
-      options: [{forbid: [
-        {element: 'button', message: 'use <Button> instead'}
-      ]}],
+      options: [{
+        forbid: [
+          {element: 'button', message: 'use <Button> instead'}
+        ]
+      }],
       errors: [{message: '<button> is forbidden, use <Button> instead'}]
     },
     {
