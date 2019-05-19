@@ -42,7 +42,6 @@
         "no-mixed-operators": 1,
         "no-void": 1,
         "no-continue": 1,
-        "no-tabs": 1,
         "global-require": 1,
         "array-callback-return": 1,
         "no-restricted-syntax": 1,
