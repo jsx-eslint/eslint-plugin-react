@@ -199,7 +199,7 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: 'HTML entity, \`&\` , must be escaped.'}],
+      errors: [{message: 'HTML entity, `&` , must be escaped.'}],
       options: [{
         forbid: ['&']
       }]
@@ -211,7 +211,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      errors: [{message: 'HTML entity, \`&\` , must be escaped.'}],
+      errors: [{message: 'HTML entity, `&` , must be escaped.'}],
       options: [{
         forbid: ['&']
       }]

@@ -2642,10 +2642,10 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       code: `
         type Props = {
-          \'completed?\': boolean,
+          'completed?': boolean,
         };
         const Hello = (props: Props): React.Element => {
-          return <div>{props[\'completed?\']}</div>;
+          return <div>{props['completed?']}</div>;
         }
       `,
       parser: parsers.BABEL_ESLINT
