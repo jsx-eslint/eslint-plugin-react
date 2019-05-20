@@ -9,8 +9,8 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-no-duplicate-props');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-no-duplicate-props');
 
 const parserOptions = {
   ecmaVersion: 2018,

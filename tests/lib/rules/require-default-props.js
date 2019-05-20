@@ -2,14 +2,15 @@
  * @fileoverview Enforce a defaultProps definition for every prop that is not a required prop.
  * @author Vitor Balocco
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/require-default-props');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/require-default-props');
 
 const parsers = require('../../helpers/parsers');
 

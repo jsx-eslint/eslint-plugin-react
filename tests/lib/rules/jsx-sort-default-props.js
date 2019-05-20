@@ -2,14 +2,15 @@
  * @fileoverview Tests for jsx-sort-default-props
  * @author Vladimir Kattsov
  */
+
 'use strict';
 
 // -----------------------------------------------------------------------------
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-sort-default-props');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-sort-default-props');
 
 const parsers = require('../../helpers/parsers');
 

@@ -2,14 +2,15 @@
  * @fileoverview Enforces consistent naming for boolean props
  * @author Ev Haus
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/boolean-prop-naming');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/boolean-prop-naming');
 
 const parsers = require('../../helpers/parsers');
 

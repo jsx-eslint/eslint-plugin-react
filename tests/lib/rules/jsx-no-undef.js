@@ -11,6 +11,7 @@
 
 const eslint = require('eslint');
 const rule = require('../../../lib/rules/jsx-no-undef');
+
 const RuleTester = eslint.RuleTester;
 
 const parsers = require('../../helpers/parsers');
@@ -29,6 +30,7 @@ const parserOptions = {
 const ruleTester = new RuleTester({parserOptions});
 const linter = ruleTester.linter || eslint.linter;
 linter.defineRule('no-undef', require('eslint/lib/rules/no-undef'));
+
 ruleTester.run('jsx-no-undef', rule, {
   valid: [{
     code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);'

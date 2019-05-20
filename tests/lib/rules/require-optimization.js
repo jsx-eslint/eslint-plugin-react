@@ -2,10 +2,11 @@
  * @fileoverview Enforce React components to have a shouldComponentUpdate method
  * @author Evgueni Naverniouk
  */
+
 'use strict';
 
-const rule = require('../../../lib/rules/require-optimization');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/require-optimization');
 
 const parsers = require('../../helpers/parsers');
 

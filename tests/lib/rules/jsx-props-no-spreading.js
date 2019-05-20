@@ -1,14 +1,15 @@
 /**
  * @fileoverview Tests for jsx-props-no-spreading
  */
+
 'use strict';
 
 // -----------------------------------------------------------------------------
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-props-no-spreading');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-props-no-spreading');
 
 const parserOptions = {
   ecmaVersion: 2018,

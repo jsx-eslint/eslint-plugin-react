@@ -2,14 +2,15 @@
  * @fileoverview Prevent usage of this.state within setState
  * @author Rolf Erik Lekang, Jørgen Aaberg
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-access-state-in-setstate');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-access-state-in-setstate');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -32,7 +33,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       'var Hello = React.createClass({',
@@ -45,7 +46,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions
+    parserOptions
   }, {
     // issue 1559: don't crash
     code: `
@@ -63,7 +64,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         }
       });
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     // issue 1604: allow this.state in callback
     code: `
@@ -73,7 +74,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         }
       });
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: `
       var Hello = React.createClass({
@@ -82,7 +83,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         }
       });
     `,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       'var Hello = React.createClass({',
@@ -93,14 +94,14 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions
+    parserOptions
   }, {
     // https://github.com/yannickcr/eslint-plugin-react/pull/1611
     code: `
       function testFunction({a, b}) {
       };
     `,
-    parserOptions: parserOptions
+    parserOptions
   }],
 
   invalid: [{
@@ -111,7 +112,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Use callback in setState when referencing the previous state.'
     }]
@@ -123,7 +124,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Use callback in setState when referencing the previous state.'
     }]
@@ -136,7 +137,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Use callback in setState when referencing the previous state.'
     }]
@@ -149,7 +150,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Use callback in setState when referencing the previous state.'
     }]
@@ -164,7 +165,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Use callback in setState when referencing the previous state.'
     }]
@@ -176,7 +177,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         }
       });
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Use callback in setState when referencing the previous state.'
     }]
@@ -188,7 +189,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         }
       });
     `,
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Use callback in setState when referencing the previous state.'
     }]
@@ -203,7 +204,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '  }',
       '});'
     ].join('\n'),
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{
       message: 'Use callback in setState when referencing the previous state.'
     }]

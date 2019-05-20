@@ -2,14 +2,15 @@
  * @fileoverview Prevent direct mutation of this.state
  * @author David Petersen
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-direct-mutation-state');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-direct-mutation-state');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -278,6 +279,6 @@ ruleTester.run('no-direct-mutation-state', rule, {
     errors: [{
       message: 'Do not mutate state directly. Use setState().'
     }]
-  }*/
+  } */
   ]
 });

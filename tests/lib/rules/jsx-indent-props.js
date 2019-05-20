@@ -2,14 +2,15 @@
  * @fileoverview Validate props indentation in JSX
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-indent-props');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-indent-props');
 
 const parserOptions = {
   ecmaVersion: 2018,

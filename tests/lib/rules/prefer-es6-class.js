@@ -2,14 +2,15 @@
  * @fileoverview Prefer es6 class instead of createClass for React Component
  * @author Dan Hamilton
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/prefer-es6-class');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/prefer-es6-class');
 
 const parserOptions = {
   ecmaVersion: 2018,

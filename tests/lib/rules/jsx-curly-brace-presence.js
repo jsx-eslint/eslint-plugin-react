@@ -2,6 +2,7 @@
  * @fileoverview Enforce curly braces or disallow unnecessary curly braces in JSX
  * @author Jacky Ho
  */
+
 'use strict';
 
 /* eslint-disable quotes */ // For better readability on tests involving quotes
@@ -10,8 +11,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-curly-brace-presence');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-curly-brace-presence');
 
 const parsers = require('../../helpers/parsers');
 

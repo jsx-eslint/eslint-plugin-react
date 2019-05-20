@@ -2,14 +2,15 @@
  * @fileoverview Prevent usage of setState in componentDidMount
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-did-mount-set-state');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-did-mount-set-state');
 
 const parsers = require('../../helpers/parsers');
 

@@ -2,14 +2,15 @@
  * @fileoverview Enforce the state initialization style to be either in a constructor or with a class property
  * @author Kanitkorn Sujautra
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/state-in-constructor');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/state-in-constructor');
 
 const parsers = require('../../helpers/parsers');
 

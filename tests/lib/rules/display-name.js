@@ -2,14 +2,15 @@
  * @fileoverview Prevent missing displayName in a React component definition
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/display-name');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/display-name');
 
 const parsers = require('../../helpers/parsers');
 

@@ -30,7 +30,9 @@
     "doctrine": "^2.1.0",
     "has": "^1.0.3",
     "jsx-ast-utils": "^2.1.0",
+    "object.entries": "^1.1.0",
     "object.fromentries": "^2.0.0",
+    "object.values": "^1.1.0",
     "prop-types": "^15.7.2",
     "resolve": "^1.10.1"
   },
@@ -41,6 +43,8 @@
     "babel-eslint": "^8.2.6",
     "coveralls": "^3.0.2",
     "eslint": "^3.0.0 || ^4.0.0 || ^5.0.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.17.2",
     "istanbul": "^0.4.5",
     "mocha": "^5.2.0",
     "sinon": "^7.2.2",

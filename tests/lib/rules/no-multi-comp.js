@@ -2,14 +2,15 @@
  * @fileoverview Prevent multiple component definition per file
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-multi-comp');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-multi-comp');
 
 const parsers = require('../../helpers/parsers');
 

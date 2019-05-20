@@ -2,14 +2,15 @@
  * @fileoverview Enforce style prop value is an object
  * @author David Petersen
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/style-prop-object');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/style-prop-object');
 
 const parserOptions = {
   ecmaVersion: 2018,

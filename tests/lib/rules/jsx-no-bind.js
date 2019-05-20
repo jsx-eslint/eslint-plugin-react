@@ -3,14 +3,15 @@
  *               in React component definition.
  * @author Daniel Lo Nigro <dan.cx>
  */
+
 'use strict';
 
 // -----------------------------------------------------------------------------
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-no-bind');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-no-bind');
 
 const parsers = require('../../helpers/parsers');
 

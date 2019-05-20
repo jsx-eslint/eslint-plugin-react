@@ -2,14 +2,15 @@
  * @fileoverview Forbid "button" element without an explicit "type" attribute
  * @author Filipp Riabchun
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/button-has-type');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/button-has-type');
 
 const parserOptions = {
   ecmaVersion: 2018,

@@ -9,8 +9,8 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-one-expression-per-line');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-one-expression-per-line');
 
 const parsers = require('../../helpers/parsers');
 
@@ -168,7 +168,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`{"foo"}` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: '<App>foo</App>',
     output: [
@@ -177,7 +177,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`foo` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<div>',
@@ -194,7 +194,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`{"bar"}` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<div>',
@@ -211,7 +211,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '` bar` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App>',
@@ -225,7 +225,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`Bar` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<div>',
@@ -239,7 +239,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</div>'
     ].join('\n'),
     errors: [{message: '`foo` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<div>',
@@ -253,7 +253,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</div>'
     ].join('\n'),
     errors: [{message: '`{"foo"}` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<div>',
@@ -270,7 +270,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`{ I18n.t(\'baz\') }` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<Text style={styles.foo}>{ bar } <Text/> { I18n.t(\'baz\') }</Text>'
@@ -289,7 +289,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       {message: '`Text` must be placed on a new line'},
       {message: '`{ I18n.t(\'baz\') }` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
 
   }, {
     code: [
@@ -307,7 +307,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       {message: '`Bar` must be placed on a new line'},
       {message: '`Baz` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<Text style={styles.foo}> <Bar/> <Baz/> <Bunk/> <Bruno/> </Text>'
@@ -331,7 +331,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       {message: '`Bunk` must be placed on a new line'},
       {message: '`Bruno` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<Text style={styles.foo}> <Bar /></Text>'
@@ -345,7 +345,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`Bar` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<Text style={styles.foo}> <Bar />',
@@ -360,7 +360,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`Bar` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<Text style={styles.foo}>',
@@ -377,7 +377,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`Baz` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<Text style={styles.foo}>',
@@ -394,7 +394,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`{ I18n.t(\'baz\') }` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<div>',
@@ -410,7 +410,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`input` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<div>',
@@ -424,7 +424,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</div>'
     ].join('\n'),
     errors: [{message: '`span` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<div>',
@@ -439,7 +439,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</div>'
     ].join('\n'),
     errors: [{message: '`input` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<div>',
@@ -454,7 +454,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</div>'
     ].join('\n'),
     errors: [{message: '` foo` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<div>',
@@ -471,7 +471,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`input` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<div>',
@@ -489,7 +489,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`input` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<div>',
@@ -506,7 +506,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`input` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<div>',
@@ -521,7 +521,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</div>'
     ].join('\n'),
     errors: [{message: '` bar` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<div>',
@@ -538,7 +538,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`{"bar"}` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<div>',
@@ -555,7 +555,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`{"foo"}` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App>',
@@ -569,7 +569,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`Bar` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App>',
@@ -581,7 +581,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`Foo` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App><Foo />',
@@ -593,7 +593,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`Foo` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App>',
@@ -605,7 +605,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`Foo` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App><Foo',
@@ -619,7 +619,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`Foo` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App',
@@ -633,7 +633,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`Foo` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App',
@@ -649,7 +649,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`Foo` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App',
@@ -663,7 +663,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`Foo` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App>',
@@ -677,7 +677,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`Foo` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App>',
@@ -691,7 +691,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`Foo` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App>',
@@ -705,7 +705,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`Foo` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App>',
@@ -721,7 +721,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`Bar` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App>',
@@ -737,7 +737,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`Bar` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App>',
@@ -760,7 +760,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '` baz ` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     // Would be nice to handle in one pass, but multipass works fine.
     code: [
@@ -779,7 +779,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       {message: '`{"bar"}` must be placed on a new line'},
       {message: '` baz` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     // Would be nice to handle in one pass, but multipass works fine.
     code: [
@@ -797,7 +797,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`{"bar"}` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     // Would be nice to handle in one pass, but multipass works fine.
     code: [
@@ -819,7 +819,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '` baz` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     // Would be nice to handle in one pass, but multipass works fine.
     code: [
@@ -842,7 +842,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       {message: '`{"bar"}` must be placed on a new line'},
       {message: '` baz` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     // Would be nice to handle in one pass, but multipass works fine.
     code: [
@@ -868,7 +868,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '` baz` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App>{',
@@ -885,7 +885,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`{  foo}` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App> {',
@@ -904,7 +904,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`{  foo}` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App> ',
@@ -925,7 +925,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [
       {message: '`{  foo}` must be placed on a new line'}
     ],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: '<App><Foo /></App>',
     options: [{allow: 'none'}],
@@ -1014,7 +1014,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     ].join('\n'),
     errors: [{message: '`{"foo"}` must be placed on a new line'}],
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App>',
@@ -1029,7 +1029,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     ].join('\n'),
     errors: [{message: '`<></>` must be placed on a new line'}],
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<',
@@ -1044,6 +1044,6 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     ].join('\n'),
     errors: [{message: '`Foo` must be placed on a new line'}],
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }]
 });

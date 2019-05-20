@@ -4,8 +4,8 @@
 
 'use strict';
 
-const rule = require('../../../lib/rules/no-unused-state');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-unused-state');
 
 const parsers = require('../../helpers/parsers');
 
@@ -344,7 +344,7 @@ eslintTester.run('no-unused-state', rule, {
           this.state = { foo: 0, bar: 1 };
         }
         render() {
-          const bar = \'bar\';
+          const bar = 'bar';
           return <SomeComponent bar={this.state[bar]} />;
         }
       }`,
@@ -1016,7 +1016,7 @@ eslintTester.run('no-unused-state', rule, {
             const foo = ((this: any).state: any).foo;
             const {bar, ...others} = (this.state: any);
             let baz;
-            baz = (others: any)[\'baz\'];
+            baz = (others: any)['baz'];
             return <SomeComponent foo={foo} bar={bar} baz={baz} />;
           }
         }`,

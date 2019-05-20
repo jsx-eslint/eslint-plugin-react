@@ -2,14 +2,15 @@
  * @fileoverview Prevent usage of isMounted
  * @author Joe Lencioni
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-is-mounted');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-is-mounted');
 
 const parserOptions = {
   ecmaVersion: 2018,

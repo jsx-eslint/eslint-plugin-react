@@ -2,14 +2,15 @@
  * @fileoverview Warn about unused PropType definitions in React components
  * @author Evgueni Naverniouk
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-unused-prop-types');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-unused-prop-types');
 
 const parsers = require('../../helpers/parsers');
 
@@ -2641,10 +2642,10 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       code: `
         type Props = {
-          \'completed?\': boolean,
+          'completed?': boolean,
         };
         const Hello = (props: Props): React.Element => {
-          return <div>{props[\'completed?\']}</div>;
+          return <div>{props['completed?']}</div>;
         }
       `,
       parser: parsers.BABEL_ESLINT
@@ -3505,7 +3506,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
-      settings: settings,
+      settings,
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
       ]
@@ -5020,6 +5021,6 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'foo\' PropType is defined but prop is never used'
       }]
-    }*/
+    } */
   ]
 });

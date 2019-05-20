@@ -2,14 +2,15 @@
  * @fileoverview Report missing `key` props in iterators/collection literals.
  * @author Ben Mosher
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-key');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-key');
 
 const parserOptions = {
   ecmaVersion: 2018,

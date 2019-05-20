@@ -2,14 +2,15 @@
  * @fileoverview Prevent missing parentheses around multilines JSX
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-wrap-multilines');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-wrap-multilines');
 
 const parsers = require('../../helpers/parsers');
 

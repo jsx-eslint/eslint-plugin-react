@@ -1,14 +1,15 @@
 /**
  * @fileoverview Tests for forbid-prop-types
  */
+
 'use strict';
 
 // -----------------------------------------------------------------------------
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/forbid-prop-types');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/forbid-prop-types');
 
 const parsers = require('../../helpers/parsers');
 

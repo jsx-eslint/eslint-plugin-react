@@ -2,14 +2,15 @@
  * @fileoverview Prevent extra closing tags for components without children
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/self-closing-comp');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/self-closing-comp');
 
 const parserOptions = {
   ecmaVersion: 2018,

@@ -2,14 +2,15 @@
  * @fileoverview Prevent missing props validation in a React component definition
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/prop-types');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/prop-types');
 
 const parsers = require('../../helpers/parsers');
 
@@ -3047,7 +3048,7 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
-      settings: settings,
+      settings,
       errors: [
         {message: '\'lastname\' is missing in props validation'}
       ]

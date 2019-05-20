@@ -2,14 +2,15 @@
  * @fileoverview Prevent usage of setState in componentWillUpdate
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-will-update-set-state');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-will-update-set-state');
 
 const parsers = require('../../helpers/parsers');
 

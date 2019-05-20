@@ -2,14 +2,15 @@
  * @fileoverview Validate JSX indentation
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-indent');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-indent');
 
 const parsers = require('../../helpers/parsers');
 

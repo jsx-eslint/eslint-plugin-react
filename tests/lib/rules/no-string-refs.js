@@ -2,14 +2,15 @@
  * @fileoverview Prevent string definitions for references and prevent referencing this.refs
  * @author Tom Hastjarjanto
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-string-refs');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-string-refs');
 
 const parsers = require('../../helpers/parsers');
 

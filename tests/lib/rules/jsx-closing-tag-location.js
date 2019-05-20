@@ -2,14 +2,15 @@
  * @fileoverview Validate closing tag location in JSX
  * @author Ross Solomon
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-closing-tag-location');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-closing-tag-location');
 
 const parsers = require('../../helpers/parsers');
 

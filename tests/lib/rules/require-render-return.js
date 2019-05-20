@@ -2,14 +2,15 @@
  * @fileoverview Enforce ES5 or ES6 class for returning value in render function.
  * @author Mark Orel
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/require-render-return');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/require-render-return');
 
 const parsers = require('../../helpers/parsers');
 

@@ -2,14 +2,15 @@
  * @fileoverview Restrict file extensions that may contain JSX
  * @author Joe Lencioni
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-filename-extension');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-filename-extension');
 
 const parsers = require('../../helpers/parsers');
 

@@ -2,14 +2,15 @@
  * @fileoverview Prevent usage of setState
  * @author Mark Dalgleish
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-render-return-value');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-render-return-value');
 
 const parserOptions = {
   ecmaVersion: 2018,

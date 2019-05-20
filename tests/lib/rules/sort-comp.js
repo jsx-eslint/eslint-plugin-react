@@ -2,14 +2,15 @@
  * @fileoverview Enforce component methods order
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/sort-comp');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/sort-comp');
 
 const parsers = require('../../helpers/parsers');
 
@@ -323,7 +324,7 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '// Non-react classes should be ignored, even in expressions',
@@ -337,7 +338,7 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '// Getters should be at the top',
@@ -552,7 +553,7 @@ ruleTester.run('sort-comp', rule, {
       '  }',
       '};'
     ].join('\n'),
-    parserOptions: parserOptions,
+    parserOptions,
     errors: [{message: 'render should be placed after onClick'}]
   }, {
     code: [

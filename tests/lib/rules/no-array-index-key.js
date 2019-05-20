@@ -9,8 +9,8 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-array-index-key');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-array-index-key');
 
 const parserOptions = {
   ecmaVersion: 2018,

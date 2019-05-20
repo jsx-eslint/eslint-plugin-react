@@ -2,14 +2,15 @@
  * @fileoverview Report when a DOM element is using both children and dangerouslySetInnerHTML
  * @author David Petersen
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-danger-with-children');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-danger-with-children');
 
 const parserOptions = {
   ecmaVersion: 2018,

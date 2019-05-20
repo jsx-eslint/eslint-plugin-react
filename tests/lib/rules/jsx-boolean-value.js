@@ -2,14 +2,15 @@
  * @fileoverview Enforce boolean attributes notation in JSX
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-boolean-value');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-boolean-value');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -54,7 +55,9 @@ ruleTester.run('jsx-boolean-value', rule, {
     output: '<App foo />;',
     errors: [{message: 'Value must be omitted for boolean attributes'}]
   }, {
-    code: '<App foo />;', output: '<App foo={true} />;', options: ['always'],
+    code: '<App foo />;',
+    output: '<App foo={true} />;',
+    options: ['always'],
     errors: [{message: 'Value must be set for boolean attributes'}]
   }, {
     code: '<App foo bar baz />;',

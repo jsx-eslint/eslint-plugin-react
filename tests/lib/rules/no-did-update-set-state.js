@@ -2,14 +2,15 @@
  * @fileoverview Prevent usage of setState in componentDidUpdate
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-did-update-set-state');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-did-update-set-state');
 
 const parsers = require('../../helpers/parsers');
 

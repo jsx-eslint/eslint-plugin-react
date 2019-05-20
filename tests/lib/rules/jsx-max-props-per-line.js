@@ -2,14 +2,15 @@
  * @fileoverview Limit maximum of props on a single line in JSX
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-max-props-per-line');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-max-props-per-line');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -69,7 +70,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
       'baz />;'
     ].join('\n'),
     errors: [{message: 'Prop `bar` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: '<App foo bar baz />;',
     output: [
@@ -85,7 +86,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
       'bar />;'
     ].join('\n'),
     errors: [{message: 'Prop `bar` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: '<App bar {...this.props} />;',
     output: [
@@ -93,7 +94,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
       '{...this.props} />;'
     ].join('\n'),
     errors: [{message: 'Prop `this.props` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App',
@@ -109,7 +110,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
       '/>'
     ].join('\n'),
     errors: [{message: 'Prop `bar` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App',
@@ -125,7 +126,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
       '/>'
     ].join('\n'),
     errors: [{message: 'Prop `this.props` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App',
@@ -141,7 +142,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
       '/>'
     ].join('\n'),
     errors: [{message: 'Prop `bar` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App foo={{',
@@ -153,7 +154,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
       'bar />'
     ].join('\n'),
     errors: [{message: 'Prop `bar` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App foo bar={{',
@@ -177,7 +178,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
       '{...rest} />'
     ].join('\n'),
     errors: [{message: 'Prop `rest` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App {',
@@ -191,7 +192,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
       'bar />'
     ].join('\n'),
     errors: [{message: 'Prop `bar` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App {',
@@ -209,7 +210,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
       '} />'
     ].join('\n'),
     errors: [{message: 'Prop `rest` must be placed on a new line'}],
-    parserOptions: parserOptions
+    parserOptions
   }, {
     code: [
       '<App',

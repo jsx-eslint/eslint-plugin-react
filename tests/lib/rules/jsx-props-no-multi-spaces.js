@@ -2,14 +2,15 @@
  * @fileoverview Disallow multiple spaces between inline JSX props
  * @author Adrian Moennich
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-props-no-multi-spaces');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-props-no-multi-spaces');
 
 const parsers = require('../../helpers/parsers');
 

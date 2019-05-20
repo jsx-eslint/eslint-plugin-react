@@ -22,7 +22,7 @@ describe('linkComponentsFunctions', () => {
       ];
       const context = {
         settings: {
-          linkComponents: linkComponents
+          linkComponents
         }
       };
       assert.deepStrictEqual(linkComponentsUtil.getLinkComponents(context), new Map([

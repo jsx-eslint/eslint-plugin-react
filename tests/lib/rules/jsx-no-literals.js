@@ -3,14 +3,15 @@
  * @author Caleb morris
  * @author David Buchan-Swanson
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-no-literals');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-no-literals');
 
 const parsers = require('../../helpers/parsers');
 

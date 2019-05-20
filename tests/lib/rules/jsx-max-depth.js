@@ -2,14 +2,15 @@
  * @fileoverview Validate JSX maximum depth
  * @author Chris<wfsr@foxmail.com>
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-max-depth');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-max-depth');
 
 const parsers = require('../../helpers/parsers');
 

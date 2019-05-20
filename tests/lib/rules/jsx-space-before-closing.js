@@ -2,14 +2,15 @@
  * @fileoverview Validate spacing before closing bracket in JSX.
  * @author ryym
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-space-before-closing');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-space-before-closing');
 
 const parserOptions = {
   ecmaVersion: 2018,

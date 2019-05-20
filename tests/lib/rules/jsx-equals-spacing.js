@@ -2,14 +2,15 @@
  * @fileoverview Disallow or enforce spaces around equal signs in JSX attributes.
  * @author ryym
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-equals-spacing');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-equals-spacing');
 
 const parserOptions = {
   ecmaVersion: 2018,

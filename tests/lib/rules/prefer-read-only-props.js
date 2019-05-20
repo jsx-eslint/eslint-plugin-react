@@ -2,14 +2,15 @@
  * @fileoverview Require component props to be typed as read-only.
  * @author Luke Zapart
  */
+
 'use strict';
 
 // -----------------------------------------------------------------------------
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/prefer-read-only-props');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/prefer-read-only-props');
 
 const parsers = require('../../helpers/parsers');
 

@@ -2,14 +2,15 @@
  * @fileoverview Tests for jsx-handler-names
  * @author Jake Marsh
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-handler-names');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-handler-names');
 
 const parsers = require('../../helpers/parsers');
 

@@ -2,14 +2,15 @@
  * @fileoverview Enforce stateless components to be written as a pure function
  * @author Yannick Croissant
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/prefer-stateless-function');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/prefer-stateless-function');
 
 const parsers = require('../../helpers/parsers');
 
@@ -72,7 +73,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         };
       `,
-      parserOptions: parserOptions,
+      parserOptions,
       options: [{
         ignorePureComponents: true
       }]

@@ -2,14 +2,15 @@
  * @fileoverview Prevent usage of unsafe lifecycle methods
  * @author Sergei Startsev
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-unsafe');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-unsafe');
 
 const parserOptions = {
   ecmaVersion: 2018,

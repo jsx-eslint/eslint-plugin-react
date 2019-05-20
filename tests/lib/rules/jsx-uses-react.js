@@ -11,6 +11,7 @@
 
 const eslint = require('eslint');
 const rule = require('eslint/lib/rules/no-unused-vars');
+
 const RuleTester = eslint.RuleTester;
 
 const parsers = require('../../helpers/parsers');
@@ -36,12 +37,13 @@ const settings = {
 const ruleTester = new RuleTester({parserOptions});
 const linter = ruleTester.linter || eslint.linter;
 linter.defineRule('jsx-uses-react', require('../../../lib/rules/jsx-uses-react'));
+
 ruleTester.run('no-unused-vars', rule, {
   valid: [
     {code: '/*eslint jsx-uses-react:1*/ var React; <div />;'},
     {code: '/*eslint jsx-uses-react:1*/ var React; (function () { <div /> })();'},
     {code: '/*eslint jsx-uses-react:1*/ /** @jsx Foo */ var Foo; <div />;'},
-    {code: '/*eslint jsx-uses-react:1*/ var Foo; <div />;', settings: settings},
+    {code: '/*eslint jsx-uses-react:1*/ var Foo; <div />;', settings},
     {code: '/*eslint jsx-uses-react:1*/ var React; <></>;', parser: parsers.BABEL_ESLINT}
   ],
   invalid: [{
@@ -53,11 +55,11 @@ ruleTester.run('no-unused-vars', rule, {
   }, {
     code: '/*eslint jsx-uses-react:1*/ var React; <div />;',
     errors: [{message: '\'React\' is defined but never used.'}],
-    settings: settings
+    settings
   }, {
     code: '/*eslint jsx-uses-react:1*/ var React; <></>;',
     parser: parsers.BABEL_ESLINT,
     errors: [{message: '\'React\' is defined but never used.'}],
-    settings: settings
+    settings
   }]
 });

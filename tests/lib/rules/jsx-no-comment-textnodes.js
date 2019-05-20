@@ -2,14 +2,15 @@
  * @fileoverview Tests for jsx-no-comment-textnodes
  * @author Ben Vinegar
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/jsx-no-comment-textnodes');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/jsx-no-comment-textnodes');
 
 const parsers = require('../../helpers/parsers');
 

@@ -2,14 +2,15 @@
  * @fileoverview Tests for no-unescaped-entities
  * @author Patrick Hayes
  */
+
 'use strict';
 
 // ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-unescaped-entities');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-unescaped-entities');
 
 const parsers = require('../../helpers/parsers');
 
@@ -198,7 +199,7 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: 'HTML entity, \`&\` , must be escaped.'}],
+      errors: [{message: 'HTML entity, `&` , must be escaped.'}],
       options: [{
         forbid: ['&']
       }]
@@ -210,7 +211,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      errors: [{message: 'HTML entity, \`&\` , must be escaped.'}],
+      errors: [{message: 'HTML entity, `&` , must be escaped.'}],
       options: [{
         forbid: ['&']
       }]

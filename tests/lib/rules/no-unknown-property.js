@@ -9,8 +9,8 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/no-unknown-property');
 const RuleTester = require('eslint').RuleTester;
+const rule = require('../../../lib/rules/no-unknown-property');
 
 const parserOptions = {
   ecmaVersion: 2018,
