@@ -23,9 +23,8 @@ declare global {
     [k in string]: TypeDeclarationBuilder;
   };
 
-  type UnionTypeDefinitionChildren = unknown[];
   type UnionTypeDefinition = {
     type: 'union' | 'shape';
-    children: UnionTypeDefinitionChildren | true;
+    children: unknown[];
   };
 }
