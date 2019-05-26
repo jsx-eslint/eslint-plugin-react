@@ -484,6 +484,20 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n')
     }, {
+      code: `
+        class ArrayLengthTest extends React.Component {
+          render() {
+            use(this.props.arr.length)
+            use(this.props.arr2.length)
+            return <div />
+          }
+        }
+
+        ArrayLengthTest.propTypes = {
+          arr: PropTypes.array,
+          arr2: PropTypes.arrayOf(PropTypes.number),
+        }`
+    }, {
       code: [
         'var TestComp1 = createReactClass({',
         '  propTypes: {',
