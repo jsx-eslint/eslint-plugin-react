@@ -44,7 +44,7 @@ class Component extends React.Component {
 
 ```js
 ...
-"react/forbid-prop-types": [<enabled>, { "forbid": [<string>], checkContextTypes: <boolean>, checkChildContextTypes: <boolean> }]
+"react/forbid-prop-types": [<enabled>, { "forbid": [<string>], "checkContextTypes": <boolean>, "checkChildContextTypes": <boolean> }]
 ...
 ```
 
