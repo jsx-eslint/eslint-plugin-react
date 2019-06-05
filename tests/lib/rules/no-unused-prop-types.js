@@ -2458,6 +2458,21 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT
     }, {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const {foo: {bar}} = this.props;
+            return <div>{bar}</div>;
+          }
+        }
+        Hello.propTypes = {
+          foo: PropTypes.shape({
+            bar: PropTypes.string,
+          })
+        };
+      `,
+      options: [{skipShapeProps: false}]
+    }, {
       // issue #933
       code: [
         'type Props = {',

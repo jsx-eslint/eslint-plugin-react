@@ -2413,6 +2413,47 @@ ruleTester.run('prop-types', rule, {
         type: 'Identifier'
       }]
     }, {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const { foo: { bar } } = this.props;
+            return <p>{bar}</p>
+          }
+        }
+      `,
+      errors: [
+        {message: "'foo' is missing in props validation"},
+        {message: "'foo.bar' is missing in props validation"}
+      ]
+    }, {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const { foo: { bar } } = this.props;
+            return <p>{bar}</p>
+          }
+        }
+
+        Hello.propTypes = {
+          foo: PropTypes.shape({
+            _: PropTypes.string,
+          })
+        }
+      `,
+      errors: [
+        {message: "'foo.bar' is missing in props validation"}
+      ]
+    }, {
+      code: `
+        function Foo({ foo: { bar } }) {
+          return <p>{bar}</p>
+        }
+      `,
+      errors: [
+        {message: "'foo' is missing in props validation"},
+        {message: "'foo.bar' is missing in props validation"}
+      ]
+    }, {
       code: [
         'class Hello extends React.Component {',
         '  render() {',
