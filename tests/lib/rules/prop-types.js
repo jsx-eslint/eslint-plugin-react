@@ -871,17 +871,6 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT
     }, {
-      // Reassigned props are ignored
-      code: [
-        'export class Hello extends Component {',
-        '  render() {',
-        '    const props = this.props;',
-        '    return <div>Hello {props.name.firstname} {props[\'name\'].lastname}</div>',
-        '  }',
-        '}'
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT
-    }, {
       code: [
         'export default function FooBar(props) {',
         '  const bar = props.bar;',
@@ -2453,6 +2442,82 @@ ruleTester.run('prop-types', rule, {
         {message: "'foo' is missing in props validation"},
         {message: "'foo.bar' is missing in props validation"}
       ]
+    },
+    {
+      code: `
+        function Foo({ a }) {
+          return <p>{ a.nope }</p>
+        }
+
+        Foo.propTypes = {
+          a: PropTypes.shape({
+            _: PropType.string,
+          })
+        }
+      `,
+      errors: [
+        {message: "'a.nope' is missing in props validation"}
+      ]
+    },
+    {
+      code: `
+        function Foo(props) {
+          const { a } = props
+          return <p>{ a.nope }</p>
+        }
+
+        Foo.propTypes = {
+          a: PropTypes.shape({
+            _: PropType.string,
+          })
+        }
+      `,
+      errors: [
+        {message: "'a.nope' is missing in props validation"}
+      ]
+    },
+    {
+      code: `
+        function Foo(props) {
+          const a = props.a
+          return <p>{ a.nope }</p>
+        }
+
+        Foo.propTypes = {
+          a: PropTypes.shape({
+            _: PropType.string,
+          })
+        }
+      `,
+      errors: [
+        {message: "'a.nope' is missing in props validation"}
+      ]
+    },
+    {
+      code: `
+        class Foo extends Component {
+          render() {
+            const props = this.props
+            return <div>{props.cat}</div>
+          }
+        }
+      `,
+      errors: [
+        {message: "'cat' is missing in props validation"}
+      ]
+    },
+    {
+      code: `
+        class Foo extends Component {
+          render() {
+            const {props} = this
+            return <div>{props.cat}</div>
+          }
+        }
+      `,
+      errors: [
+        {message: "'cat' is missing in props validation"}
+      ]
     }, {
       code: [
         'class Hello extends React.Component {',
@@ -3364,6 +3429,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       errors: [{
         message: '\'names\' is missing in props validation'
+      }, {
+        message: '\'names.map\' is missing in props validation'
       }]
     }, {
       code: [
@@ -4521,9 +4588,11 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: '\'a\' is missing in props validation'
-      }]
+      errors: [
+        {message: '\'a\' is missing in props validation'},
+        {message: '\'a.b\' is missing in props validation'},
+        {message: '\'a.b.c\' is missing in props validation'}
+      ]
     },
     {
       code: `
