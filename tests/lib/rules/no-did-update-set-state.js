@@ -117,7 +117,7 @@ ruleTester.run('no-did-update-set-state', rule, {
         }
       }
     `,
-    parser: 'babel-eslint',
+    parser: parsers.BABEL_ESLINT,
     errors: [{
       message: 'Do not use setState in componentDidUpdate'
     }]

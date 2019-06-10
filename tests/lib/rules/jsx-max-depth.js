@@ -16,6 +16,7 @@ const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   sourceType: 'module',
+  ecmaVersion: 2015,
   ecmaFeatures: {
     jsx: true
   }

@@ -447,7 +447,7 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       sortShapeProp: true
     }],
-    parser: 'babel-eslint'
+    parser: parsers.BABEL_ESLINT
   }, {
     code: `
       const shape = {
@@ -1674,7 +1674,7 @@ ruleTester.run('sort-prop-types', rule, {
     options: [{
       sortShapeProp: true
     }],
-    parser: 'babel-eslint',
+    parser: parsers.BABEL_ESLINT,
     errors: [{
       message: ERROR_MESSAGE,
       line: 4,

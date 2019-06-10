@@ -4376,7 +4376,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         line: 11,
         column: 8
       }]
-    }, { // None of the props are used issue #1162
+    }, {
+      // None of the props are used issue #1162
       code: [
         'import React from "react"; ',
         'var Hello = React.createReactClass({',

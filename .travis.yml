@@ -18,7 +18,7 @@ env:
   global:
     - TEST=true
   matrix:
-    - ESLINT=next
+    - ESLINT=^6.0.0-0
     - ESLINT=5
     - ESLINT=4
 after_success:
@@ -32,9 +32,8 @@ matrix:
     - node_js: '4'
       env: ESLINT=5
     - node_js: '4'
-      env: ESLINT=next
+      env: ESLINT=^6.0.0-0
     - node_js: '6'
-      env: ESLINT=next
+      env: ESLINT=^6.0.0-0
   allow_failures:
     - node_js: '11'
-    - env: ESLINT=next
