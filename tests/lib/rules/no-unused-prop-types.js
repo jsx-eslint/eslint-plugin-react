@@ -480,6 +480,59 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT
     }, {
+      code: `
+        function Foo({ a }) {
+          return <>{ a.b }</>
+        }
+        Foo.propTypes = {
+          a: PropTypes.shape({
+            b: PropType.string,
+          })
+        }
+      `,
+      options: [{skipShapeProps: false}],
+      parser: parsers.BABEL_ESLINT
+    }, {
+      // Destructured assignment with Shape propTypes with skipShapeProps off issue #816
+      code: `
+        class Thing extends React.Component {
+          static propTypes = {
+            i18n: PropTypes.shape({
+              gettext: PropTypes.func,
+            }),
+          }
+
+          render() {
+            const { i18n } = this.props;
+            return (
+              <p>{i18n.gettext('Some Text')}</p>
+            );
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{skipShapeProps: false}]
+    },
+    {
+      code: `
+        class Thing extends React.Component {
+          static propTypes = {
+            a: PropTypes.shape({
+              b: PropTypes.string,
+            }),
+          }
+
+          render() {
+            const { a } = this.props;
+            return (
+              <p>{ a.b }</p>
+            );
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{skipShapeProps: false}]
+    }, {
       code: [
         'var Hello = createReactClass({',
         '  propTypes: {',
@@ -4472,27 +4525,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         message: '\'prop2\' PropType is defined but prop is never used'
       }, {
         message: '\'prop2.*\' PropType is defined but prop is never used'
-      }]
-    }, {
-      // Destructured assignment with Shape propTypes with skipShapeProps off issue #816
-      code: [
-        'export default class NavigationButton extends React.Component {',
-        ' static propTypes = {',
-        '   route: PropTypes.shape({',
-        '    getBarTintColor: PropTypes.func.isRequired,',
-        '  }).isRequired,',
-        ' };',
-
-        ' renderTitle() {',
-        '  const { route } = this.props;',
-        '   return <Title tintColor={route.getBarTintColor()}>TITLE</Title>;',
-        ' }',
-        '}'
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
-      options: [{skipShapeProps: false}],
-      errors: [{
-        message: '\'route.getBarTintColor\' PropType is defined but prop is never used'
       }]
     }, {
       code: [
