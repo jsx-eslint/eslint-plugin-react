@@ -28,23 +28,23 @@ const ruleTester = new RuleTester({parserOptions});
 
 const expectedError = {
   message: 'Props should be sorted alphabetically',
-  type: 'JSXAttribute'
+  type: 'JSXIdentifier'
 };
 const expectedCallbackError = {
   message: 'Callbacks must be listed after all other props',
-  type: 'JSXAttribute'
+  type: 'JSXIdentifier'
 };
 const expectedShorthandFirstError = {
   message: 'Shorthand props must be listed before all other props',
-  type: 'JSXAttribute'
+  type: 'JSXIdentifier'
 };
 const expectedShorthandLastError = {
   message: 'Shorthand props must be listed after all other props',
-  type: 'JSXAttribute'
+  type: 'JSXIdentifier'
 };
 const expectedReservedFirstError = {
   message: 'Reserved props must be listed before all other props',
-  type: 'JSXAttribute'
+  type: 'JSXIdentifier'
 };
 const expectedEmptyReservedFirstError = {
   message: 'A customized reserved first list must not be empty'
