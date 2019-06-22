@@ -64,10 +64,12 @@ ruleTester.run('jsx-key', rule, {
   }, {
     code: '[1, 2, 3].map(x => <>{x}</>);',
     parser: parsers.BABEL_ESLINT,
+    options: [{checkFragmentShorthand: true}],
     errors: [{message: 'Missing "key" prop for element in iterator. Shorthand fragment syntax does support providing keys'}]
   }, {
     code: '[<></>];',
     parser: parsers.BABEL_ESLINT,
+    options: [{checkFragmentShorthand: true}],
     errors: [{message: 'Missing "key" prop for element in array. Shorthand fragment syntax does support providing keys'}]
   }]
 });
