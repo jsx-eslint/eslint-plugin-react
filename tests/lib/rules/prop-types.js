@@ -2336,6 +2336,19 @@ ruleTester.run('prop-types', rule, {
           foo: PropTypes.number,
         }
       `
+    },
+    {
+      // issue #2298
+      code: `
+      type Props = {|
+        firstname?: string
+      |};
+
+      function Hello({ firstname = 'John' }: Props = {}) {
+        return <div>Hello {firstname}</div>
+      }
+      `,
+      parser: parsers.BABEL_ESLINT
     }
   ],
 
@@ -4620,6 +4633,22 @@ ruleTester.run('prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [{
         message: '\'initialValues\' is missing in props validation'
+      }]
+    },
+    {
+      // issue #2298
+      code: `
+        type Props = {|
+          firstname?: string
+        |};
+
+        function Hello({ firstname = 'John', lastname = 'Doe' }: Props = {}) {
+          return <div>Hello {firstname} {lastname}</div>
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [{
+        message: '\'lastname\' is missing in props validation'
       }]
     }
   ]
