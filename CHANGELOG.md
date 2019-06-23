@@ -3,10 +3,65 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.14.0] - 2019-06-23
+
+### Added
+* Add [`jsx-curly-newline`][] rule ([#1493][] @golopot)
+* Add support for nested destructuring to [`prop-types`][] ([#296][] [#1422][] @golopot)
+* Add support for variables defined as props to [`prop-types`][] and [`no-unused-prop-types`][] ([#442][] [#833][] [#1002][] [#1116][] [#1257][] [#1764][] @golopot)
+* Add `checkFragmentShorthand` option to [`jsx-key`][] ([#2316][] @kaykayehnn)
+
+### Fixed
+* Fix [`no-did-mount-set-state`][] and [`no-did-update-set-state`][] to handle cDU and cDM defined as class properties ([#1595][] @jaaberg)
+* Fix [`sort-prop-types`][] cash when a shape PropType is defined in a variable ([#1749][] @alexzherdev)
+* Fix [`no-unused-state`][] false positive when using state of non-lifecycle method ([#2274][] @golopot)
+* Fix [`static-property-placement`][] false positive when accessing static property inside method ([#2283][] @dmason30)
+* Fix [`prop-type`][] detection for annotated props with default value ([#2298][] @yannickcr)
+
+### Changed
+* Add ESLint 6.0.0 as valid peerDependency (@yannickcr)
+* Improve [`no-render-return-value`][] performance ([#2259][] @golopot)
+* Change [`jsx-sort-props`][] to report errors only on the identifier ([#2312][] @MrHen)
+* Change to warn only once if react version cannot be detected ([#2276][] @ljharb)
+* Documentation improvements ([#2263][] @dimitropoulos, [#2262][] @ybiquitous, [#2295][] @battaglr, [#2302][] @Jason-Cooke, [#2303][] @golopot)
+* Code refactoring ([#2265][] [#2267][] [#2286][] [#2294][] @golopot, @ljharb)
+* Tests improvements ([#2304][] [#1047][] @golopot, @yannickcr)
+
+[7.14.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.13.0...v7.14.0
+[#296]: https://github.com/yannickcr/eslint-plugin-react/issues/296
+[#442]: https://github.com/yannickcr/eslint-plugin-react/issues/442
+[#833]: https://github.com/yannickcr/eslint-plugin-react/issues/833
+[#1002]: https://github.com/yannickcr/eslint-plugin-react/issues/1002
+[#1047]: https://github.com/yannickcr/eslint-plugin-react/issues/1047
+[#1116]: https://github.com/yannickcr/eslint-plugin-react/issues/1116
+[#1257]: https://github.com/yannickcr/eslint-plugin-react/issues/1257
+[#1422]: https://github.com/yannickcr/eslint-plugin-react/issues/1422
+[#1493]: https://github.com/yannickcr/eslint-plugin-react/issues/1493
+[#1595]: https://github.com/yannickcr/eslint-plugin-react/issues/1595
+[#1749]: https://github.com/yannickcr/eslint-plugin-react/issues/1749
+[#1764]: https://github.com/yannickcr/eslint-plugin-react/issues/1764
+[#2259]: https://github.com/yannickcr/eslint-plugin-react/pull/2259
+[#2262]: https://github.com/yannickcr/eslint-plugin-react/pull/2262
+[#2263]: https://github.com/yannickcr/eslint-plugin-react/pull/2263
+[#2265]: https://github.com/yannickcr/eslint-plugin-react/pull/2265
+[#2267]: https://github.com/yannickcr/eslint-plugin-react/pull/2267
+[#2274]: https://github.com/yannickcr/eslint-plugin-react/pull/2274
+[#2276]: https://github.com/yannickcr/eslint-plugin-react/issues/2276
+[#2283]: https://github.com/yannickcr/eslint-plugin-react/issues/2283
+[#2286]: https://github.com/yannickcr/eslint-plugin-react/pull/2286
+[#2294]: https://github.com/yannickcr/eslint-plugin-react/pull/2294
+[#2295]: https://github.com/yannickcr/eslint-plugin-react/pull/2295
+[#2298]: https://github.com/yannickcr/eslint-plugin-react/issues/2298
+[#2302]: https://github.com/yannickcr/eslint-plugin-react/pull/2302
+[#2303]: https://github.com/yannickcr/eslint-plugin-react/pull/2303
+[#2304]: https://github.com/yannickcr/eslint-plugin-react/pull/2304
+[#2312]: https://github.com/yannickcr/eslint-plugin-react/issues/2312
+[#2316]: https://github.com/yannickcr/eslint-plugin-react/pull/2316
+
 ## [7.13.0] - 2019-05-03
 
 ### Added
-*  Make [`jsx-sort-props`][] fully fixable ([#2250][], @guliashvili)
+* Make [`jsx-sort-props`][] fully fixable ([#2250][], @guliashvili)
 * [`boolean-prop-naming`][]: add `validateNested` option to validate shape prop names ([#2234][], @pawelnvk)
 * add [`static-property-placement`][] rule ([#2193][], @dmason30)
 * add "detect" for flow version ([#2233][], @jedwards1211)
@@ -45,6 +100,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Docs] Added shared settings info, React version default note ([#2180][], @samsch)
 * [Tests] [`jsx-curly-spacing`][]: add regression test case ([#2206][], @ColCh)
 
+[7.13.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.12.4...v7.13.0
 [#2256]: https://github.com/yannickcr/eslint-plugin-react/pull/2256
 [#2250]: https://github.com/yannickcr/eslint-plugin-react/pull/2250
 [#2246]: https://github.com/yannickcr/eslint-plugin-react/pull/2246
@@ -89,6 +145,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Changed
 * [`prop-types`][], [`no-typos`][]: add passing test cases ([#2123][], [#2128][], [#2136][], [#2134][], @ljharb)
 
+[7.12.4]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.12.3...v7.12.4
 [#2136]: https://github.com/yannickcr/eslint-plugin-react/issues/2136
 [#2134]: https://github.com/yannickcr/eslint-plugin-react/issues/2134
 [#2131]: https://github.com/yannickcr/eslint-plugin-react/issues/2131
@@ -113,6 +170,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Docs] add a missing comma in the JSON settings ([#2117][], @haideralsh)
 * [Docs] update README to document React version detection ([#2114][], @mohsinulhaq)
 
+[7.12.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.12.2...v7.12.3
 [#2120]: https://github.com/yannickcr/eslint-plugin-react/issues/2120
 [#2117]: https://github.com/yannickcr/eslint-plugin-react/issues/2117
 [#2115]: https://github.com/yannickcr/eslint-plugin-react/issues/2115
@@ -128,6 +186,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * Version warning: Link does not end with '.' ([#2103][], @yoyo837))
 * [`forbid-prop-types`][]: fix crash with propWrapper check on MemberExpressions ([#2104][], @ljharb)
 
+[7.12.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.12.1...v7.12.2
 [#2104]: https://github.com/yannickcr/eslint-plugin-react/issues/2104
 [#2103]: https://github.com/yannickcr/eslint-plugin-react/pull/2103
 [#2095]: https://github.com/yannickcr/eslint-plugin-react/issues/2095
@@ -143,6 +202,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Changed
 * Fix CHANGELOG.md ([#2097][], @alexzherdev)
 
+[7.12.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.12.0...v7.12.1
 [#2102]: https://github.com/yannickcr/eslint-plugin-react/issues/2102
 [#2100]: https://github.com/yannickcr/eslint-plugin-react/issues/2100
 [#2099]: https://github.com/yannickcr/eslint-plugin-react/pull/2099
@@ -199,6 +259,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Tests] [`prop-types`][]: Add tests for prop-types destructuring ([#2029][], @sstern6)
 * [Tests] [`display-name`][]: add false positive component detection for destructured createElement ([#1098][], @arian)
 
+[7.12.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.11.1...v7.12.0
 [#2090]: https://github.com/yannickcr/eslint-plugin-react/pull/2090
 [#2089]: https://github.com/yannickcr/eslint-plugin-react/pull/2089
 [#2086]: https://github.com/yannickcr/eslint-plugin-react/pull/2086
@@ -250,6 +311,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * Fix changelog links ([#1926][], @ferhatelmas)
 * Fix changelog links ([#1929][], @alexzherdev)
 
+[7.11.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.11.0...v7.11.1
 [#1932]: https://github.com/yannickcr/eslint-plugin-react/pull/1932
 [#1929]: https://github.com/yannickcr/eslint-plugin-react/pull/1929
 [#1926]: https://github.com/yannickcr/eslint-plugin-react/pull/1926
@@ -286,6 +348,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * Add a helper function for determining function-like expressions ([#1914][], @alexzherdev)
 * [`jsx-props-no-multi-spaces`][]: update docs ([#1918][], @BenRichter)
 
+[7.11.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.10.0...v7.11.0
 [#1924]: https://github.com/yannickcr/eslint-plugin-react/pull/1924
 [#1918]: https://github.com/yannickcr/eslint-plugin-react/pull/1918
 [#1914]: https://github.com/yannickcr/eslint-plugin-react/pull/1914
@@ -324,6 +387,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Changed
 * Typo fixes in [`jsx-no-target-blank`][] ([#1805][] @ferhatelmas))
 
+[7.10.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.9.1...v7.10.0
 [#1845]: https://github.com/yannickcr/eslint-plugin-react/pull/1845
 [#1844]: https://github.com/yannickcr/eslint-plugin-react/issues/1844
 [#1843]: https://github.com/yannickcr/eslint-plugin-react/pull/1843
@@ -339,6 +403,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [7.9.1] - 2018-06-03
 * Nothing was fixed; this is a republish with some updated deps. ([#1804][] @ljharb)
 
+[7.9.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.9.0...v7.9.1
 [#1804]: https://github.com/yannickcr/eslint-plugin-react/issues/1804
 
 ## [7.9.0] - 2018-06-03
