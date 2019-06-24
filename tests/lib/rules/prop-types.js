@@ -2474,6 +2474,25 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
+        function Foo({ a }) {
+          const { b } = a
+          return <p>{ b.nope }</p>
+        }
+
+        Foo.propTypes = {
+          a: PropTypes.shape({
+            b: PropType.shape({
+              _: PropType.string,
+            }),
+          })
+        }
+      `,
+      errors: [
+        {message: "'a.b.nope' is missing in props validation"}
+      ]
+    },
+    {
+      code: `
         function Foo(props) {
           const { a } = props
           return <p>{ a.nope }</p>
