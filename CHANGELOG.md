@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.14.2] - 2019-06-24
+
+### Fixed
+* Fix [`prop-types`][] crash on for...of destructuring ([#2326][] @yannickcr)
+
+[7.14.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.14.1...v7.14.2
+[#2326]: https://github.com/yannickcr/eslint-plugin-react/issues/2326
+
 ## [7.14.1] - 2019-06-24
 
 ### Fixed
