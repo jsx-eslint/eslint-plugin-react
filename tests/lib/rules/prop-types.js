@@ -2349,6 +2349,12 @@ ruleTester.run('prop-types', rule, {
       }
       `,
       parser: parsers.BABEL_ESLINT
+    },
+    {
+      // issue #2326
+      code: `
+        for (const {result} of results) {}
+      `
     }
   ],
 
