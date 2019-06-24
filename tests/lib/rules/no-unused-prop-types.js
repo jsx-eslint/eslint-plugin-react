@@ -493,6 +493,22 @@ ruleTester.run('no-unused-prop-types', rule, {
       options: [{skipShapeProps: false}],
       parser: parsers.BABEL_ESLINT
     }, {
+      code: `
+        function Foo({ a }) {
+          const { b } = a
+          return <>{ b.c }</>
+        }
+        Foo.propTypes = {
+          a: PropTypes.shape({
+            b: PropType.shape({
+              c: PropTypes.string,
+            }),
+          })
+        }
+      `,
+      options: [{skipShapeProps: false}],
+      parser: parsers.BABEL_ESLINT
+    }, {
       // Destructured assignment with Shape propTypes with skipShapeProps off issue #816
       code: `
         class Thing extends React.Component {
