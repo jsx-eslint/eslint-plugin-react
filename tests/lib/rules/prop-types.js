@@ -2355,6 +2355,26 @@ ruleTester.run('prop-types', rule, {
       code: `
         for (const {result} of results) {}
       `
+    },
+    {
+      // issue #2330
+      code: `
+        type Props = {
+          user: {
+            [string]: string
+          }
+        };
+
+        export function Bar(props: Props) {
+          return (
+            <div>
+              {props.user}
+              {props.user.name}
+            </div>
+          );
+        }
+      `,
+      parser: parsers.BABEL_ESLINT
     }
   ],
 
@@ -4674,6 +4694,34 @@ ruleTester.run('prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [{
         message: '\'lastname\' is missing in props validation'
+      }]
+    },
+    {
+      // issue #2330
+      code: `
+        type Props = {
+          user: {
+            name: {
+              firstname: string,
+              [string]: string
+            }
+          }
+        };
+
+        export function Bar(props: Props) {
+          return (
+            <div>
+              {props.user}
+              {props.user.name.firstname}
+              {props.user.name.lastname}
+              {props.user.age}
+            </div>
+          );
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [{
+        message: '\'user.age\' is missing in props validation'
       }]
     }
   ]
