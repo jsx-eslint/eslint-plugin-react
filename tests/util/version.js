@@ -44,6 +44,15 @@ describe('Version', () => {
       ];
     });
 
+    it('warns only once for failure to detect react ', () => {
+      assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
+      assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
+
+      expectedErrorArgs = [
+        ['Warning: React version was set to "detect" in eslint-plugin-react settings, but the "react" package is not installed. Assuming latest React version for linting.']
+      ];
+    });
+
     it('assumes latest version if flow-bin is not installed', () => {
       assert.equal(versionUtil.testFlowVersion(context, '999.999.999'), true);
 
