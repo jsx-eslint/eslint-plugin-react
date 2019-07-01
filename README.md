@@ -7,7 +7,7 @@ React specific linting rules for ESLint
 
 # Installation
 
-Install [ESLint](https://www.github.com/eslint/eslint) either locally or globally.
+Install [ESLint](https://www.github.com/eslint/eslint) either locally or globally. (Note that locally, per project, is strongly preferred)
 
 ```sh
 $ npm install eslint --save-dev
