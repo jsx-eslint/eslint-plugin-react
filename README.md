@@ -1,7 +1,7 @@
 ESLint-plugin-React
 ===================
 
-[![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][climate-image]][climate-url]
+[![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][climate-image]][climate-url] [![Tidelift][tidelift-image]][tidelift-url]
 
 React specific linting rules for ESLint
 
@@ -267,3 +267,6 @@ ESLint-plugin-React is licensed under the [MIT License](http://www.opensource.or
 
 [status-url]: https://github.com/yannickcr/eslint-plugin-react/pulse
 [status-image]: https://img.shields.io/github/last-commit/yannickcr/eslint-plugin-react.svg
+
+[tidelift-url]: https://tidelift.com/subscription/pkg/npm-eslint-plugin-react?utm_source=npm-eslint-plugin-react&utm_medium=referral&utm_campaign=readme
+[tidelift-image]: https://tidelift.com/badges/github/yannickcr/eslint-plugin-react?style=flat
