@@ -3,6 +3,22 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.14.3] - 2019-07-23
+
+### Fixed
+* Fix [`prop-types`][] to ignore validation when Flow indexers are used ([#2330][] @yannickcr)
+* Fix error being thrown after the first warning when react version cannot be detected ([#2336][] @abhishekdev)
+* Fix component detection when `memo` and `forwardRef` are used together ([#2349][] @yannickcr)
+
+### Changed
+* Documentation improvements (@ljharb, [#2354][] @golopot)
+
+[7.14.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.14.2...v7.14.3
+[#2330]: https://github.com/yannickcr/eslint-plugin-react/issues/2330
+[#2336]: https://github.com/yannickcr/eslint-plugin-react/pull/2336
+[#2349]: https://github.com/yannickcr/eslint-plugin-react/issues/2349
+[#2354]: https://github.com/yannickcr/eslint-plugin-react/pull/2354
+
 ## [7.14.2] - 2019-06-24
 
 ### Fixed
