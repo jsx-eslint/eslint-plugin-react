@@ -2375,6 +2375,43 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        const Label = React.memo(React.forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        }));
+        Label.propTypes = {
+          text: PropTypes.string
+        };
+      `
+    },
+    {
+      code: `
+        import React, { memo, forwardRef } from 'react';
+        const Label = memo(forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        }));
+        Label.propTypes = {
+          text: PropTypes.string
+        };
+      `
+    },
+    {
+      code: `
+        import Foo, { memo, forwardRef } from 'foo';
+        const Label = memo(forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        }));
+        Label.propTypes = {
+          text: PropTypes.string
+        };
+      `,
+      settings: {
+        react: {
+          pragma: 'Foo'
+        }
+      }
     }
   ],
 
@@ -4722,6 +4759,43 @@ ruleTester.run('prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [{
         message: '\'user.age\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        const Label = React.memo(React.forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        }));
+      `,
+      errors: [{
+        message: '\'text\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        import React, { memo, forwardRef } from 'react';
+        const Label = memo(forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        }));
+      `,
+      errors: [{
+        message: '\'text\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        import Foo, { memo, forwardRef } from 'foo';
+        const Label = memo(forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        }));
+      `,
+      settings: {
+        react: {
+          pragma: 'Foo'
+        }
+      },
+      errors: [{
+        message: '\'text\' is missing in props validation'
       }]
     }
   ]
