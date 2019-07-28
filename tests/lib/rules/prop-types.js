@@ -2068,6 +2068,17 @@ ruleTester.run('prop-types', rule, {
     {
       code: `
         class Foo extends React.Component {
+          bar() {
+            this.setState((state, props) => {
+              function f(_, {aaaaaaa}) {}
+            });
+          }
+        }
+      `
+    },
+    {
+      code: `
+        class Foo extends React.Component {
           static getDerivedStateFromProps(props) {
             const { foo } = props;
             return {
