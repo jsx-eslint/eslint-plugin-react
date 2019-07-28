@@ -2711,6 +2711,17 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT
     }, {
+      code: [
+        'type Props = $ReadOnly<{foo: number}>;',
+        'class Hello extends React.Component {',
+        '  props: Props;',
+        '  render () {',
+        '    return <div>{this.props.foo}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT
+    }, {
       // issue #933
       code: `
         type Props = {
@@ -3645,6 +3656,20 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       code: [
         'type Props = {unused: Object;};',
+        'class Hello extends React.Component {',
+        '  props: Props;',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {message: '\'unused\' PropType is defined but prop is never used'}
+      ]
+    }, {
+      code: [
+        'type Props = $ReadOnly<{unused: Object;}>;',
         'class Hello extends React.Component {',
         '  props: Props;',
         '  render () {',
