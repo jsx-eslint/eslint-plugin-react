@@ -50,6 +50,9 @@ ruleTester.run('jsx-pascal-case', rule, {
     code: '<YMCA />',
     options: [{allowAllCaps: true}]
   }, {
+    code: '<TEST_COMPONENT />',
+    options: [{allowAllCaps: true}]
+  }, {
     code: '<Modal.Header />'
   }, {
     code: '<Modal:Header />'
@@ -67,5 +70,17 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<YMCA />',
     errors: [{message: 'Imported JSX component YMCA must be in PascalCase'}]
+  }, {
+    code: '<_TEST_COMPONENT />',
+    options: [{allowAllCaps: true}],
+    errors: [{message: 'Imported JSX component _TEST_COMPONENT must be in PascalCase or SCREAMING_SNAKE_CASE'}]
+  }, {
+    code: '<TEST_COMPONENT_ />',
+    options: [{allowAllCaps: true}],
+    errors: [{message: 'Imported JSX component TEST_COMPONENT_ must be in PascalCase or SCREAMING_SNAKE_CASE'}]
+  }, {
+    code: '<__ />',
+    options: [{allowAllCaps: true}],
+    errors: [{message: 'Imported JSX component __ must be in PascalCase or SCREAMING_SNAKE_CASE'}]
   }]
 });

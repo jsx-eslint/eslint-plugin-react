@@ -46,7 +46,16 @@ The following patterns are **not** considered warnings:
 
 * `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
 * `allowAllCaps`: optional boolean set to `true` to allow components name in all caps (default to `false`).
-* `ignore`: optional array of components name to ignore during validation.
+* `ignore`: optional string-array of component names to ignore during validation.
+
+### `allowAllCaps`
+
+The following patterns are **not** considered warnings when `allowAllCaps` is `true`:
+
+```jsx
+<ALLOWED />
+<TEST_COMPONENT />
+```
 
 ## When Not To Use It
 
