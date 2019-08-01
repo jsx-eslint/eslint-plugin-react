@@ -27,6 +27,26 @@ data.map((x, i) => <Hello key={i}>{x}</Hello>);
 <Hello key={id} {...{ id, caption }} />
 ```
 
+## Rule Options
+
+```js
+...
+"react/jsx-key": [<enabled>, { "checkFragmentShorthand": <boolean> }]
+...
+```
+
+### `checkFragmentShorthand` (default: `false`)
+
+When `true` the rule will check if usage of the [shorthand fragment syntax][short_syntax] requires a key. This option was added to avoid a breaking change and will be the default in the next major version. 
+
+The following patterns are considered warnings:
+
+```jsx
+[<></>, <></>, <></>];
+
+data.map(x => <>{x}</>);
+```
+
 ## When not to use
 
 If you are not using JSX then you can disable this rule.
@@ -34,3 +54,5 @@ If you are not using JSX then you can disable this rule.
 Also, if you have some prevalent situation where you use arrow functions to
 return JSX that will not be held in an iterable, you may want to disable this
 rule.
+
+[short_syntax]: https://reactjs.org/docs/fragments.html#short-syntax
