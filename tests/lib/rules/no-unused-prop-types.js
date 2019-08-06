@@ -1857,6 +1857,22 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n')
     }, {
+      // issue 2350
+      code: `
+        function Foo(props) {
+          useEffect(() => {
+            const { a } = props;
+            document.title = a;
+          });
+          
+          return <p/>;
+        }
+
+        Foo.propTypes = {
+          a: PropTypes.string,
+        }
+      `
+    }, {
       code: [
         'class Hello extends Component {',
         '  componentWillReceiveProps (nextProps) {',

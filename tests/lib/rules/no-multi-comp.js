@@ -312,7 +312,26 @@ ruleTester.run('no-multi-comp', rule, {
       message: 'Declare only one React component per file',
       line: 6
     }]
-  }, {
+  },
+  {
+    code: `
+      exports.Foo = function Foo() {
+        return <></>
+      }
+
+      exports.createSomeComponent = function createSomeComponent(opts) {
+        return function Foo() {
+          return <>{opts.a}</>
+        }
+      }
+    `,
+    parser: parsers.BABEL_ESLINT,
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 7
+    }]
+  },
+  {
     code: `
   class StoreListItem extends React.PureComponent {
     // A bunch of stuff here

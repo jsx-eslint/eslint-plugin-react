@@ -257,6 +257,29 @@ ruleTester.run('destructuring-assignment', rule, {
       {message: 'Must use destructuring props assignment'}
     ]
   }, {
+    code: `
+      module.exports = {
+        Foo(props) {
+          return <p>{props.a}</p>;
+        }
+      }
+    `,
+    errors: [{message: 'Must use destructuring props assignment'}]
+  }, {
+    code: `
+      export default function Foo(props) {
+        return <p>{props.a}</p>;
+      }
+    `,
+    errors: [{message: 'Must use destructuring props assignment'}]
+  }, {
+    code: `
+      function hof() {
+        return (props) => <p>{props.a}</p>;
+      }
+    `,
+    errors: [{message: 'Must use destructuring props assignment'}]
+  }, {
     code: `const Foo = class extends React.PureComponent {
       render() {
         const foo = this.props.foo;

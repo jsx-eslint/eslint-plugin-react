@@ -2225,6 +2225,20 @@ ruleTester.run('require-default-props', rule, {
       errors: [{
         message: 'propType "usedProp" is not required, but has no corresponding defaultProps declaration.'
       }]
+    },
+    {
+      code: `
+        Foo.propTypes = {
+          a: PropTypes.string,
+        }
+
+        export default function Foo(props) {
+          return <p>{props.a}</p>
+        };
+      `,
+      errors: [{
+        message: 'propType "a" is not required, but has no corresponding defaultProps declaration.'
+      }]
     }
   ]
 });

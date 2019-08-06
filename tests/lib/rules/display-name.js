@@ -663,6 +663,18 @@ ruleTester.run('display-name', rule, {
     }]
   }, {
     code: `
+      function Hof() {
+        return function () {
+          return <div />
+        }
+      }
+    `,
+    parser: parsers.BABEL_ESLINT,
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: `
       import React, { createElement } from "react";
       export default (props) => {
         return createElement("div", {}, "hello");
