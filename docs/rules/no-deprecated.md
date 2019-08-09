@@ -27,6 +27,11 @@ const propTypes = {
 React.DOM.div();
 
 import React, { PropTypes } from 'react';
+
+// old lifecycles (since React 16.9)
+componentWillMount() { }
+componentWillReceiveProps() { }
+componentWillUpdate() { }
 ```
 
 The following patterns are **not** considered warnings:
@@ -38,4 +43,8 @@ ReactDOM.render(<MyComponent />, root);
 ReactDOM.findDOMNode(this.refs.foo);
 
 import { PropTypes } from 'prop-types';
+
+UNSAFE_componentWillMount() { }
+UNSAFE_componentWillReceiveProps() { }
+UNSAFE_componentWillUpdate() { }
 ```
