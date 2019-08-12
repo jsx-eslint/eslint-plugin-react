@@ -198,8 +198,36 @@ ruleTester.run('jsx-no-literals', rule, {
         }
       `,
       options: [{noStrings: true}]
+    }, {
+      code: `
+        class Comp1 extends Component {
+          render() {
+            return <div>asdf</div>
+          }
+        }
+      `,
+      options: [{allowedStrings: ['asdf']}]
+    },
+    {
+      code: `
+        class Comp1 extends Component {
+          render() {
+            return <div>&nbsp;</div>
+          }
+        }
+      `,
+      options: [{noStrings: true, allowedStrings: ['&nbsp;']}]
+    },
+    {
+      code: `
+        class Comp1 extends Component {
+          render() {
+            return <div>foo: {bar}*</div>
+          }
+        }
+      `,
+      options: [{noStrings: true, allowedStrings: ['foo: ', '*']}]
     }
-
   ],
 
   invalid: [
@@ -384,6 +412,19 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {message: stringsMessage('\'foo\'')},
         {message: stringsMessage('`bar`')}
+      ]
+    }, {
+      code: `
+        class Comp1 extends Component {
+          render() {
+            return <div bar={'foo'}>asdf</div>
+          }
+        }
+      `,
+      options: [{noStrings: true, allowedStrings: ['asd']}],
+      errors: [
+        {message: stringsMessage('\'foo\'')},
+        {message: stringsMessage('asdf')}
       ]
     }
   ]

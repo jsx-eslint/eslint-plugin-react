@@ -21,14 +21,15 @@ var Hello = <div>{'test'}</div>;
 
 ### Options
 
-There is only one option:
+There are two options:
 
 * `noStrings` - Enforces no string literals used as children, wrapped or unwrapped.
+* `allowedStrings` - an array of unique string values that would otherwise warn, but will be ignored.
 
 To use, you can specify like the following:
 
 ```js
-"react/jsx-no-literals": [<enabled>, {"noStrings": true}]
+"react/jsx-no-literals": [<enabled>, {"noStrings": true, "allowedStrings": ["allowed"]}]
 ```
 
 In this configuration, the following are considered warnings:
@@ -51,6 +52,11 @@ var Hello = <div><Text {...message} /></div>
 ```jsx
 // When using something similar to Rails translations
 var Hello = <div>{translate('my.translation.key')}</div>
+```
+
+```jsx
+// an allowed string
+var Hello = <div>allowed</div>
 ```
 
 ## When Not To Use It
