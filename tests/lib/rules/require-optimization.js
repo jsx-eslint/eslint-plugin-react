@@ -118,6 +118,23 @@ ruleTester.run('react-require-optimization', rule, {
     code: `
       const obj = { prop: [,,,,,] }
     `
+  }, {
+    code: `
+      import React from "react";
+      class YourComponent extends React.Component {
+        handleClick = () => {}
+        shouldComponentUpdate(){
+          return true;
+        }
+        render() {
+          return <div onClick={this.handleClick}>123</div>
+        }
+      }
+    `,
+    parser: parsers.BABEL_ESLINT,
+    errors: [{
+      message: MESSAGE
+    }]
   }],
 
   invalid: [{
@@ -133,6 +150,20 @@ ruleTester.run('react-require-optimization', rule, {
       import React from "react";
       class YourComponent extends React.Component {
         handleClick() {}
+        render() {
+          return <div onClick={this.handleClick}>123</div>
+        }
+      }
+    `,
+    parser: parsers.BABEL_ESLINT,
+    errors: [{
+      message: MESSAGE
+    }]
+  }, {
+    code: `
+      import React from "react";
+      class YourComponent extends React.Component {
+        handleClick = () => {}
         render() {
           return <div onClick={this.handleClick}>123</div>
         }
