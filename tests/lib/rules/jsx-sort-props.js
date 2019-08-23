@@ -109,7 +109,11 @@ ruleTester.run('jsx-sort-props', rule, {
     {code: '<App a="c" b="b" c="a" />;'},
     {code: '<App {...this.props} a="c" b="b" c="a" />;'},
     {code: '<App c="a" {...this.props} a="c" b="b" />;'},
-    {code: '<App A a />;'},
+    {code: '<App a A />;'},
+    {code: '<App aa aB />;'},
+    {code: '<App aA aB />;'},
+    {code: '<App aaa aB />;'},
+    {code: '<App a aa aB />;'},
     // Ignoring case
     {code: '<App a A />;', options: ignoreCaseArgs},
     {code: '<App a B c />;', options: ignoreCaseArgs},
@@ -166,6 +170,31 @@ ruleTester.run('jsx-sort-props', rule, {
       output: '<App a b />;'
     },
     {
+      code: '<App aB a />;',
+      errors: [expectedError],
+      output: '<App a aB />;'
+    },
+    {
+      code: '<App A a />;',
+      errors: [expectedError],
+      output: '<App a A />;'
+    },
+    {
+      code: '<App aB aA />;',
+      errors: [expectedError],
+      output: '<App aA aB />;'
+    },
+    {
+      code: '<App aaB aA />;',
+      errors: [expectedError],
+      output: '<App aA aaB />;'
+    },
+    {
+      code: '<App aaB aaa aA a />;',
+      errors: [expectedError, expectedError, expectedError],
+      output: '<App a aA aaa aaB />;'
+    },
+    {
       code: '<App {...this.props} b a />;',
       errors: [expectedError],
       output: '<App {...this.props} a b />;'
@@ -174,11 +203,6 @@ ruleTester.run('jsx-sort-props', rule, {
       code: '<App c {...this.props} b a />;',
       errors: [expectedError],
       output: '<App c {...this.props} a b />;'
-    },
-    {
-      code: '<App a A />;',
-      errors: [expectedError],
-      output: '<App a A />;'
     },
     {
       code: '<App B a />;',
