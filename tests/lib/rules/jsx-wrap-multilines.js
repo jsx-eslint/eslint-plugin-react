@@ -464,20 +464,20 @@ const LOGICAL_NO_PAREN_FRAGMENT = `
 const LOGICAL_PAREN_NEW_LINE_AUTOFIX = `
   <div>
     {foo && (
-<div>
+      <div>
         <p>Hello World</p>
       </div>
-)}
+    )}
   </div>
 `;
 
 const LOGICAL_PAREN_NEW_LINE_AUTOFIX_FRAGMENT = `
   <div>
     {foo && (
-<>
+      <>
         <p>Hello World</p>
       </>
-)}
+    )}
   </div>
 `;
 
@@ -545,20 +545,20 @@ const ATTR_PAREN_NEW_LINE = `
 
 const ATTR_PAREN_NEW_LINE_AUTOFIX = `
   <div prop={(
-<div>
+    <div>
       <p>Hello</p>
     </div>
-)}>
+  )}>
     <p>Hello</p>
   </div>
 `;
 
 const ATTR_PAREN_NEW_LINE_AUTOFIX_FRAGMENT = `
   <div prop={(
-<>
+    <>
       <p>Hello</p>
     </>
-)}>
+  )}>
     <p>Hello</p>
   </div>
 `;
@@ -571,10 +571,53 @@ export default () =>
 
 const SFC_NO_PARENS_AUTOFIX = `
 export default () => (
-<div>
+    <div>
         with newline without parentheses eslint crashes
     </div>
-)`;
+  )`;
+
+const ARROW_WITH_EXPORT = `
+  const Component = () =>
+    <div>
+      <p>Some text</p>
+    </div>
+
+  export { Component as default }
+`;
+
+const ARROW_WITH_EXPORT_AUTOFIX = `
+  const Component = () => (
+    <div>
+      <p>Some text</p>
+    </div>
+  )
+
+  export { Component as default }
+`;
+
+const ARROW_WITH_LOGICAL = `
+const Component = props => (
+  <div>
+    {true &&
+      <div>
+        <p>Some text</p>
+      </div>
+    }
+  </div>
+)
+`;
+
+const ARROW_WITH_LOGICAL_AUTOFIX = `
+const Component = props => (
+  <div>
+    {true && (
+      <div>
+        <p>Some text</p>
+      </div>
+    )}
+  </div>
+)
+`;
 
 function addNewLineSymbols(code) {
   return code.replace(/\(</g, '(\n<').replace(/>\)/g, '>\n)');
@@ -1188,6 +1231,24 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: SFC_NO_PARENS_NO_NEWLINE,
       output: SFC_NO_PARENS_AUTOFIX,
       options: [OPTIONS_ALL_NEW_LINES],
+      errors: [{message: MISSING_PARENS}]
+    }, {
+      code: ARROW_WITH_EXPORT,
+      output: ARROW_WITH_EXPORT_AUTOFIX,
+      options: [{
+        declaration: 'parens-new-line',
+        assignment: 'parens-new-line',
+        return: 'parens-new-line',
+        arrow: 'parens-new-line',
+        condition: 'parens-new-line',
+        logical: 'ignore',
+        prop: 'ignore'
+      }],
+      errors: [{message: MISSING_PARENS}]
+    }, {
+      code: ARROW_WITH_LOGICAL,
+      output: ARROW_WITH_LOGICAL_AUTOFIX,
+      options: [{logical: 'parens-new-line'}],
       errors: [{message: MISSING_PARENS}]
     }]
 });
