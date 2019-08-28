@@ -59,6 +59,12 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<IGNORED />',
     options: [{ignore: ['IGNORED']}]
+  }, {
+    code: '<T />'
+  }, {
+    code: '<$ />'
+  }, {
+    code: '<_ />'
   }],
 
   invalid: [{
@@ -82,5 +88,8 @@ ruleTester.run('jsx-pascal-case', rule, {
     code: '<__ />',
     options: [{allowAllCaps: true}],
     errors: [{message: 'Imported JSX component __ must be in PascalCase or SCREAMING_SNAKE_CASE'}]
+  }, {
+    code: '<$a />',
+    errors: [{message: 'Imported JSX component $a must be in PascalCase'}]
   }]
 });
