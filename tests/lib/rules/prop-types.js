@@ -2498,7 +2498,6 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'foo' is missing in props validation"},
         {message: "'foo.bar' is missing in props validation"}
       ]
     }, {
@@ -2526,7 +2525,6 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'foo' is missing in props validation"},
         {message: "'foo.bar' is missing in props validation"}
       ]
     },
@@ -4807,6 +4805,27 @@ ruleTester.run('prop-types', rule, {
       },
       errors: [{
         message: '\'text\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        function Foo({
+          foo: {
+            bar: foo,
+            baz
+          },
+        }) {
+          return <p>{foo.reduce(() => 5)}</p>;
+        }
+
+        Foo.propTypes = {
+          foo: PropTypes.shape({
+            bar: PropTypes.arrayOf(PropTypes.string).isRequired,
+          }).isRequired,
+        };
+      `,
+      errors: [{
+        message: '\'foo.baz\' is missing in props validation'
       }]
     }
   ]
