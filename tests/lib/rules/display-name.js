@@ -457,6 +457,22 @@ ruleTester.run('display-name', rule, {
     `
   }, {
     code: `
+      import React from 'react'
+
+      const ComponentWithMemo = React.memo(function Component({ world }) {
+        return <div>Hello {world}</div>
+      })
+    `
+  }, {
+    code: `
+      import React from 'react'
+
+      const ForwardRefComponentLike = React.forwardRef(function ComponentLike({ world }, ref) {
+        return <div ref={ref}>Hello {world}</div>
+      })
+    `
+  }, {
+    code: `
       function F() {
         let items = [];
         let testData = [{a: "test1", displayName: "test2"}, {a: "test1", displayName: "test2"}];
@@ -681,6 +697,94 @@ ruleTester.run('display-name', rule, {
       };
     `,
     parser: parsers.BABEL_ESLINT,
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: `
+      import React from 'react'
+
+      const ComponentWithMemo = React.memo(({ world }) => {
+        return <div>Hello {world}</div>
+      })
+    `,
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: `
+      import React from 'react'
+
+      const ComponentWithMemo = React.memo(function() {
+        return <div>Hello {world}</div>
+      })
+    `,
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: `
+      import React from 'react'
+
+      const ForwardRefComponentLike = React.forwardRef(({ world }, ref) => {
+        return <div ref={ref}>Hello {world}</div>
+      })
+    `,
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    code: `
+      import React from 'react'
+
+      const ForwardRefComponentLike = React.forwardRef(function({ world }, ref) {
+        return <div ref={ref}>Hello {world}</div>
+      })
+    `,
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    // Only trigger an error for the outer React.memo
+    code: `
+      import React from 'react'
+
+      const MemoizedForwardRefComponentLike = React.memo(
+        React.forwardRef(({ world }, ref) => {
+          return <div ref={ref}>Hello {world}</div>
+        })
+      )
+    `,
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    // Only trigger an error for the outer React.memo
+    code: `
+      import React from 'react'
+
+      const MemoizedForwardRefComponentLike = React.memo(
+        React.forwardRef(function({ world }, ref) {
+          return <div ref={ref}>Hello {world}</div>
+       })
+      )
+    `,
+    errors: [{
+      message: 'Component definition is missing display name'
+    }]
+  }, {
+    // React does not handle the result of forwardRef being passed into memo
+    // ComponentWithMemoAndForwardRef gets shown as Memo(Anonymous)
+    // See https://github.com/facebook/react/issues/16722
+    code: `
+      import React from 'react'
+
+      const MemoizedForwardRefComponentLike = React.memo(
+        React.forwardRef(function ComponentLike({ world }, ref) {
+          return <div ref={ref}>Hello {world}</div>
+        })
+      )
+    `,
     errors: [{
       message: 'Component definition is missing display name'
     }]
