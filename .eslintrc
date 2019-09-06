@@ -31,7 +31,11 @@
         "no-param-reassign": 1,
         "no-mixed-operators": 1,
         "no-restricted-syntax": 1,
-        "valid-jsdoc": 1,
+        "valid-jsdoc": [2, {
+          "requireReturn": false,
+          "requireParamDescription": false,
+          "requireReturnDescription": false,
+        }],
     },
     "overrides": [
       {
