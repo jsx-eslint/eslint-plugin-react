@@ -30,7 +30,6 @@
         "no-plusplus": 1,
         "no-param-reassign": 1,
         "no-mixed-operators": 1,
-        "global-require": 1,
         "no-restricted-syntax": 1,
         "valid-jsdoc": 1,
     },
