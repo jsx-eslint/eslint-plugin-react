@@ -90,7 +90,7 @@ The default configuration is:
   }
 }
 ```
-
+* `static-variables` This group is not specified by default, but can be used to enforce class static variable positioning.
 * `static-methods` is a special keyword that refers to static class methods.
 * `lifecycle` refers to the `lifecycle` group defined in `groups`.
 * `everything-else` is a special group that matches all of the methods that do not match any of the other groups.

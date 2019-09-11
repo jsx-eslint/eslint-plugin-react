@@ -506,6 +506,129 @@ ruleTester.run('sort-comp', rule, {
         'everything-else'
       ]
     }]
+  }, {
+    code: `
+      class MyComponent extends React.Component {
+        static foo;
+        static getDerivedStateFromProps() {}
+
+        render() {
+          return null;
+        }
+      }
+    `,
+    parser: parsers.BABEL_ESLINT,
+    options: [{
+      order: [
+        'static-variables',
+        'static-methods'
+      ]
+    }]
+  }, {
+    code: `
+      class MyComponent extends React.Component {
+        static getDerivedStateFromProps() {}
+        static foo = 'some-str';
+
+        render() {
+          return null;
+        }
+      }
+    `,
+    parser: parsers.BABEL_ESLINT,
+    options: [{
+      order: [
+        'static-methods',
+        'static-variables'
+      ]
+    }]
+  }, {
+    code: `
+      class MyComponent extends React.Component {
+        foo = {};
+        static bar = 0;
+        static getDerivedStateFromProps() {}
+
+        render() {
+          return null;
+        }
+      }
+    `,
+    parser: parsers.BABEL_ESLINT,
+    options: [{
+      order: [
+        'instance-variables',
+        'static-variables',
+        'static-methods'
+      ]
+    }]
+  }, {
+    code: `
+      class MyComponent extends React.Component {
+        static bar = 1;
+        foo = {};
+        static getDerivedStateFromProps() {}
+
+        render() {
+          return null;
+        }
+      }
+    `,
+    parser: parsers.BABEL_ESLINT,
+    options: [{
+      order: [
+        'static-variables',
+        'instance-variables',
+        'static-methods'
+      ]
+    }]
+  }, {
+    code: `
+      class MyComponent extends React.Component {
+        static getDerivedStateFromProps() {}
+        render() {
+          return null;
+        }
+        static bar;
+        foo = {};
+      }
+    `,
+    parser: parsers.BABEL_ESLINT,
+    options: [{
+      order: [
+        'static-methods',
+        'render',
+        'static-variables',
+        'instance-variables'
+      ]
+    }]
+  }, {
+    code: `
+      class MyComponent extends React.Component {
+        static foo = 1;
+        bar;
+
+        constructor() {
+          super(props);
+
+          this.state = {};
+        }
+
+        render() {
+          return null;
+        }
+      }
+    `,
+    parser: parsers.BABEL_ESLINT,
+    options: [{
+      order: [
+        'static-variables',
+        'instance-variables',
+        'constructor',
+        'everything-else',
+        'render'
+      ]
+    }]
   }],
 
   invalid: [{
@@ -788,6 +911,67 @@ ruleTester.run('sort-comp', rule, {
       order: [
         'foo',
         'render'
+      ]
+    }]
+  }, {
+    code: `
+      class MyComponent extends React.Component {
+        static getDerivedStateFromProps() {}
+        static foo;
+
+        render() {
+          return null;
+        }
+      }
+    `,
+    errors: [{message: 'getDerivedStateFromProps should be placed after foo'}],
+    parser: parsers.BABEL_ESLINT,
+    options: [{
+      order: [
+        'static-variables',
+        'static-methods'
+      ]
+    }]
+  }, {
+    code: `
+      class MyComponent extends React.Component {
+        static foo;
+        bar = 'some-str'
+        static getDerivedStateFromProps() {}
+
+        render() {
+          return null;
+        }
+      }
+    `,
+    errors: [{message: 'foo should be placed after bar'}],
+    parser: parsers.BABEL_ESLINT,
+    options: [{
+      order: [
+        'instance-variables',
+        'static-variables',
+        'static-methods'
+      ]
+    }]
+  }, {
+    code: `
+      class MyComponent extends React.Component {
+        static getDerivedStateFromProps() {}
+        static bar;
+        render() {
+          return null;
+        }
+        foo = {};
+      }
+    `,
+    parser: parsers.BABEL_ESLINT,
+    errors: [{message: 'bar should be placed after render'}],
+    options: [{
+      order: [
+        'static-methods',
+        'render',
+        'static-variables',
+        'instance-variables'
       ]
     }]
   }]
