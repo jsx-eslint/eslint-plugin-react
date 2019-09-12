@@ -284,6 +284,25 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
         \`}</App>
       `,
       options: ['always']
+    },
+    {
+      code: `
+        <MyComponent>
+          %
+        </MyComponent>
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{children: 'never'}]
+    },
+    {
+      code: `
+        <MyComponent>
+          foo
+          <div>bar</div>
+        </MyComponent>
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{children: 'never'}]
     }
   ],
 
@@ -334,6 +353,73 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       output: '<MyComponent prop="bar">foo</MyComponent>',
       options: [{props: 'never'}],
       errors: [{message: unnecessaryCurlyMessage}]
+    },
+    {
+      code: `
+        <MyComponent>
+          {'%'}
+        </MyComponent>
+      `,
+      output: `
+        <MyComponent>
+          %
+        </MyComponent>
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{children: 'never'}],
+      errors: [{message: unnecessaryCurlyMessage}]
+    },
+    {
+      code: `
+        <MyComponent>
+          {'foo'}
+          <div>
+            {'bar'}
+          </div>
+          {'baz'}
+        </MyComponent>
+      `,
+      output: `
+        <MyComponent>
+          foo
+          <div>
+            bar
+          </div>
+          baz
+        </MyComponent>
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{children: 'never'}],
+      errors: [
+        {message: unnecessaryCurlyMessage},
+        {message: unnecessaryCurlyMessage},
+        {message: unnecessaryCurlyMessage}
+      ]
+    },
+    {
+      code: `
+        <MyComponent>
+          {'foo'}
+          <div>
+            {'bar'}
+          </div>
+          {'baz'}
+          {'some-complicated-exp'}
+        </MyComponent>
+      `,
+      output: `
+        <MyComponent>
+          foo
+          <div>
+            bar
+          </div>
+          {'baz'}
+          {'some-complicated-exp'}
+        </MyComponent>
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{children: 'never'}],
+      errors: [{message: unnecessaryCurlyMessage}, {message: unnecessaryCurlyMessage}]
     },
     {
       code: `<MyComponent prop='bar'>foo</MyComponent>`,
