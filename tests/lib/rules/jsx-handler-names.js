@@ -63,6 +63,34 @@ ruleTester.run('jsx-handler-names', rule, {
     parser: parsers.BABEL_ESLINT
   }, {
     code: '<TestComponent only={this.only} />'
+  }, {
+    code: '<TestComponent onChange={this.someChange} />',
+    options: [{
+      eventHandlerPrefix: false,
+      eventHandlerPropPrefix: 'on'
+    }]
+  }, {
+    code: '<TestComponent somePrefixChange={this.someChange} />',
+    options: [{
+      eventHandlerPrefix: false,
+      eventHandlerPropPrefix: 'somePrefix'
+    }]
+  }, {
+    code: '<TestComponent someProp={this.handleChange} />',
+    options: [{
+      eventHandlerPropPrefix: false
+    }]
+  }, {
+    code: '<TestComponent someProp={this.somePrefixChange} />',
+    options: [{
+      eventHandlerPrefix: 'somePrefix',
+      eventHandlerPropPrefix: false
+    }]
+  }, {
+    code: '<TestComponent someProp={props.onChange} />',
+    options: [{
+      eventHandlerPropPrefix: false
+    }]
   }],
 
   invalid: [{
