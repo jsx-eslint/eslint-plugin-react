@@ -5,13 +5,13 @@
   "description": "React specific linting rules for ESLint",
   "main": "index.js",
   "scripts": {
-    "coveralls": "cat ./reports/coverage/lcov.info | coveralls",
+    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "lint": "eslint ./",
     "postlint": "npm run type-check",
     "pretest": "npm run lint",
     "test": "npm run unit-test",
     "type-check": "tsc",
-    "unit-test": "istanbul cover --dir reports/coverage node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js"
+    "unit-test": "istanbul cover node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js"
   },
   "files": [
     "LICENSE",
