@@ -12,6 +12,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
  * [`jsx-props-no-spreading`][]: add `explicitSpread` option to allow explicit spread of props ([#2449][] @pawelnvk)
  * [`jsx-no-target-blank`][]: warn on `target={'_blank'}` expressions ([#2451][] @timkraut)
  * [`require-default-props`]: add option to ignore functional components ([#2532][] @RedTn)
+ * [`function-component-definition`]: Enforce a specific function type for function components ([#2414][] @Stefanwullems)
 
 ### Fixed
  * [`sort-prop-types`][], [`jsx-sort-default-props`][]: disable broken autofix ([#2505][] @webOS101)
@@ -56,6 +57,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#2443]: https://github.com/yannickcr/eslint-plugin-react/pull/2443
 [#2438]: https://github.com/yannickcr/eslint-plugin-react/pull/2438
 [#2436]: https://github.com/yannickcr/eslint-plugin-react/pull/2436
+[#2414]: https://github.com/yannickcr/eslint-plugin-react/pull/2414
 [#2273]: https://github.com/yannickcr/eslint-plugin-react/pull/2273
 
 ## [7.16.0] - 2019-10-04
@@ -2811,3 +2813,4 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`jsx-no-useless-fragment`]: docs/rules/jsx-no-useless-fragment.md
 [`jsx-no-script-url`]: docs/rules/jsx-no-script-url.md
 [`no-adjacent-inline-elements`]: docs/rules/no-adjacent-inline-elements.md
+[`function-component-definition`]: docs/rules/function-component-definition.md
