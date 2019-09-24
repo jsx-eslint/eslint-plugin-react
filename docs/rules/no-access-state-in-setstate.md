@@ -11,12 +11,12 @@ function increment() {
 }
 ```
 
-If these two `setState` operations is grouped together in a batch it will
-look be something like the following, given that value is 1:
+If two `setState` operations are grouped together in a batch, they
+both evaluate the old state. Given that `state.value` is 1:
 
 ```javascript
-setState({value: 1 + 1})
-setState({value: 1 + 1})
+setState({value: this.state.value + 1}) // 2
+setState({value: this.state.value + 1}) // 2, not 3
 ```
 
 This can be avoided with using callbacks which takes the previous state
