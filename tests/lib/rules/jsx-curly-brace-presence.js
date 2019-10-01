@@ -304,6 +304,12 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       options: [{children: 'never'}]
+    },
+    {
+      code: `
+        <MyComponent p={<Foo>Bar</Foo>}>
+        </MyComponent>
+      `
     }
   ],
 
