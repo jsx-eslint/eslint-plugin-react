@@ -3,6 +3,58 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.15.0] - 2019-09-30
+
+### Added
+* add [`jsx-no-useless-fragment`][] rule ([#2261][] @golopot)
+* [`jsx-handler-name`][]: allow `false` to disable `eventHandlerPrefix`/`eventHandlerPropPrefix` ([#2410][] @tanmoyopenroot)
+* [`sort-comp`][]: add `static-variables` grouping ([#2408][] @vedadeepta)
+* [`jsx-no-literals`][]: Add `allowedStrings` option ([#2380][] @benhollander)
+* [`no-multi-comp`][]: Added handling for `forwardRef` and `memo` wrapping components declared in the same file ([#2184][] @jenil94)
+* [`jsx-pascal-case`][]: `allowAllCaps` option now allows `SCREAMING_SNAKE_CASE` ([#2364][] @TylerR909)
+
+### Fixed
+* [`jsx-indent`][]: Fix false positive when a jsx element is the last statement within a do expression (with tests) ([#2200][] @Kenneth-KT)
+* [`jsx-curly-brace-presence`][]: fix jsx tags in braces ([#2422][] @tanmoyopenroot)
+* [`display-name`][]: Fix false positives ([#2399][] @BPScott)
+* [`jsx-curly-brace-presence`][]: report unnecessary curly braces with children on next line ([#2409][] @vedadeepta)
+* [`no-unused-prop-types`][]: false positive with callback ([#2375][] @golopot)
+* Fix prop-types detection collision on renamed props ([#2383][] @yannickcr)
+* [`jsx-sort-props`][]: use localeCompare rather than comparison operator ([#2391][] @tanmoyopenroot)
+* [`jsx-pascal-case`][]: allow one-letter-named components ([#2395][] @Haegin)
+* [`jsx-wrap-multilines`][]: fix incorrect formatting ([#2392][] @tanmoyopenroot)
+* [`require-optimization`][]: fix when using arrow function in class components ([#2385][] @jenil94)
+* [`no-deprecated`][]: Deprecate cWM/cWRP/cWU lifecycle methods since React 16.9.0 ([#2378][] @meowtec)
+* [`jsx-key`][]: improve docs and confusing error message ([#2367][] @kaykayehnn)
+* Recognize props wrapped in flow $ReadOnly<> utility type ([#2361][] @lukeapage)
+* [`prop-types`][]: false positive with setState updator ([#2359][] @golopot)
+
+### Changed
+* [Docs] [`no-access-state-in-setstate`][]: update grammar ([#2418][] @neaumusic)
+* [`jsx-curly-brace-presence`][], [`jsx-one-expression-per-line`][], [`no-danger-with-children`][]: add `isWhiteSpaces` to `lib/util/jsx` ([#2409][] @vedadeepta)
+
+[#2422]: https://github.com/yannickcr/eslint-plugin-react/pull/2422
+[#2410]: https://github.com/yannickcr/eslint-plugin-react/pull/2410
+[#2409]: https://github.com/yannickcr/eslint-plugin-react/pull/2409
+[#2408]: https://github.com/yannickcr/eslint-plugin-react/pull/2408
+[#2402]: https://github.com/yannickcr/eslint-plugin-react/pull/2402
+[#2399]: https://github.com/yannickcr/eslint-plugin-react/pull/2399
+[#2395]: https://github.com/yannickcr/eslint-plugin-react/pull/2395
+[#2392]: https://github.com/yannickcr/eslint-plugin-react/pull/2392
+[#2391]: https://github.com/yannickcr/eslint-plugin-react/pull/2391
+[#2385]: https://github.com/yannickcr/eslint-plugin-react/pull/2385
+[#2383]: https://github.com/yannickcr/eslint-plugin-react/issue/2383
+[#2380]: https://github.com/yannickcr/eslint-plugin-react/pull/2380
+[#2378]: https://github.com/yannickcr/eslint-plugin-react/pull/2378
+[#2375]: https://github.com/yannickcr/eslint-plugin-react/pull/2375
+[#2367]: https://github.com/yannickcr/eslint-plugin-react/pull/2367
+[#2364]: https://github.com/yannickcr/eslint-plugin-react/pull/2364
+[#2361]: https://github.com/yannickcr/eslint-plugin-react/pull/2361
+[#2359]: https://github.com/yannickcr/eslint-plugin-react/pull/2359
+[#2261]: https://github.com/yannickcr/eslint-plugin-react/pull/2261
+[#2200]: https://github.com/yannickcr/eslint-plugin-react/pull/2200
+[#2184]: https://github.com/yannickcr/eslint-plugin-react/pull/2184
+
 ## [7.14.3] - 2019-07-23
 
 ### Fixed
@@ -2674,3 +2726,4 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`jsx-props-no-spreading`]: docs/rules/jsx-props-no-spreading.md
 [`static-property-placement`]: docs/rules/static-property-placement.md
 [`jsx-curly-newline`]: docs/rules/jsx-curly-newline.md
+[`jsx-no-useless-fragment`]: docs/rules/jsx-no-useless-fragment.md
