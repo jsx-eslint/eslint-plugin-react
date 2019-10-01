@@ -2498,6 +2498,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
+        {message: "'foo' is missing in props validation"},
         {message: "'foo.bar' is missing in props validation"}
       ]
     }, {
@@ -2525,6 +2526,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
+        {message: "'foo' is missing in props validation"},
         {message: "'foo.bar' is missing in props validation"}
       ]
     },

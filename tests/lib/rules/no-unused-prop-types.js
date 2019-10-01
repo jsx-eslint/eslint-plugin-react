@@ -1826,6 +1826,18 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n')
     }, {
+      // Nested destructuring; issue 2424
+      code: `
+        function SomeComponent(props) {
+          const {aaa: {bbb}} = props;
+          return <p>{bbb}</p>;
+        }
+
+        SomeComponent.propTypes = {
+          aaa: somePropType,
+        };
+      `
+    }, {
       // `no-unused-prop-types` in jsx expressions - [Issue #885]
       code: [
         'const PagingBlock = function(props) {',
@@ -1864,7 +1876,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             const { a } = props;
             document.title = a;
           });
-          
+
           return <p/>;
         }
 
