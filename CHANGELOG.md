@@ -3,6 +3,17 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.15.1] - 2019-10-01
+
+### Fixed
+* `jsx-curly-brace-presence`: bail out checks when JSXElements are passed as props ([#2426][] @vedadeepta)
+
+### Changed
+* [Docs] `prefer-es6-class`: Fix typos ([#2425][] @spencerbyw)
+
+[#2426]: https://github.com/yannickcr/eslint-plugin-react/pull/2426
+[#2425]: https://github.com/yannickcr/eslint-plugin-react/pull/2425
+
 ## [7.15.0] - 2019-09-30
 
 ### Added
