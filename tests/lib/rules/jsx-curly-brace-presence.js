@@ -53,7 +53,13 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       code: '<App>{\' \'}</App>'
     },
     {
+      code: '<App>{\' \'}\n</App>'
+    },
+    {
       code: '<App>{\'     \'}</App>'
+    },
+    {
+      code: '<App>{\'     \'}\n</App>'
     },
     {
       code: '<App>{\' \'}</App>',
