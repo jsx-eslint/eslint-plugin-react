@@ -207,6 +207,15 @@ ruleTester.run('jsx-no-literals', rule, {
         }
       `,
       options: [{allowedStrings: ['asdf']}]
+    }, {
+      code: `
+        class Comp1 extends Component {
+          render() {
+            return <div>asdf</div>
+          }
+        }
+      `,
+      options: [{noStrings: false, allowedStrings: ['asdf']}]
     },
     {
       code: `
@@ -222,11 +231,35 @@ ruleTester.run('jsx-no-literals', rule, {
       code: `
         class Comp1 extends Component {
           render() {
+            return (
+              <div>
+                &nbsp;
+              </div>
+            );
+          }
+        }
+      `,
+      options: [{noStrings: true, allowedStrings: ['&nbsp;']}]
+    },
+    {
+      code: `
+        class Comp1 extends Component {
+          render() {
             return <div>foo: {bar}*</div>
           }
         }
       `,
       options: [{noStrings: true, allowedStrings: ['foo: ', '*']}]
+    },
+    {
+      code: `
+        class Comp1 extends Component {
+          render() {
+            return <div>foo</div>
+          }
+        }
+      `,
+      options: [{noStrings: true, allowedStrings: ['   foo   ']}]
     }
   ],
 
