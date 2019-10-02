@@ -74,6 +74,9 @@ var Hello = <Link target="_blank" to="/absolute/path/in/the/host"></Link>
 var Hello = <Link />
 ```
 
+## When To Override It
+For links to a trusted host (e.g. internal links to your own site, or links to a another host you control, where you can be certain this security vulnerability does not exist), you may want to keep the HTTP Referer header for analytics purposes.
+
 ## When Not To Use It
 
-If you do not have any external links, you can disable this rule
+If you do not have any external links, you can disable this rule.
