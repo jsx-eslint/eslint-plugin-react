@@ -374,7 +374,24 @@ ruleTester.run('jsx-sort-default-props', rule, {
       line: 10,
       column: 5,
       type: 'Property'
-    }]
+    }],
+    output: [
+      'class Component extends React.Component {',
+      '  static propTypes = {',
+      '    a: PropTypes.any,',
+      '    b: PropTypes.any,',
+      '    c: PropTypes.any',
+      '  };',
+      '  static defaultProps = {',
+      '    a: "a",',
+      '    b: "b",',
+      '    c: "c"',
+      '  };',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n')
   }, {
     code: [
       'class Component extends React.Component {',
@@ -394,7 +411,24 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    errors: 2
+    errors: 2,
+    output: [
+      'class Component extends React.Component {',
+      '  static propTypes = {',
+      '    a: PropTypes.any,',
+      '    b: PropTypes.any,',
+      '    c: PropTypes.any',
+      '  };',
+      '  static defaultProps = {',
+      '    a: "a",',
+      '    b: "b",',
+      '    c: "c"',
+      '  };',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n')
   }, {
     code: [
       'class Component extends React.Component {',
@@ -420,7 +454,22 @@ ruleTester.run('jsx-sort-default-props', rule, {
       line: 8,
       column: 5,
       type: 'Property'
-    }]
+    }],
+    output: [
+      'class Component extends React.Component {',
+      '  static propTypes = {',
+      '    a: PropTypes.any,',
+      '    b: PropTypes.any',
+      '  };',
+      '  static defaultProps = {',
+      '    a: "a",',
+      '    Z: "Z",',
+      '  };',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n')
   }, {
     code: [
       'class Component extends React.Component {',
@@ -443,7 +492,22 @@ ruleTester.run('jsx-sort-default-props', rule, {
       line: 8,
       column: 5,
       type: 'Property'
-    }]
+    }],
+    output: [
+      'class Component extends React.Component {',
+      '  static propTypes = {',
+      '    a: PropTypes.any,',
+      '    z: PropTypes.any',
+      '  };',
+      '  static defaultProps = {',
+      '    Z: "Z",',
+      '    a: "a",',
+      '  };',
+      '  render() {',
+      '    return <div />;',
+      '  }',
+      '}'
+    ].join('\n')
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -466,7 +530,22 @@ ruleTester.run('jsx-sort-default-props', rule, {
       line: 12,
       column: 3,
       type: 'Property'
-    }]
+    }],
+    output: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    return <div>Hello</div>;',
+      '  }',
+      '}',
+      'Hello.propTypes = {',
+      '  "a": PropTypes.string,',
+      '  "b": PropTypes.string',
+      '};',
+      'Hello.defaultProps = {',
+      '  "a": "a",',
+      '  "b": "b"',
+      '};'
+    ].join('\n')
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -486,7 +565,24 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '};'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    errors: 2
+    errors: 2,
+    output: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    return <div>Hello</div>;',
+      '  }',
+      '}',
+      'Hello.propTypes = {',
+      '  "a": PropTypes.string,',
+      '  "b": PropTypes.string,',
+      '  "c": PropTypes.string',
+      '};',
+      'Hello.defaultProps = {',
+      '  "a": "a",',
+      '  "b": "b",',
+      '  "c": "c"',
+      '};'
+    ].join('\n')
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -509,7 +605,22 @@ ruleTester.run('jsx-sort-default-props', rule, {
       line: 12,
       column: 3,
       type: 'Property'
-    }]
+    }],
+    output: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    return <div>Hello</div>;',
+      '  }',
+      '}',
+      'Hello.propTypes = {',
+      '  "a": PropTypes.string,',
+      '  "B": PropTypes.string,',
+      '};',
+      'Hello.defaultProps = {',
+      '  "B": "B",',
+      '  "a": "a",',
+      '};'
+    ].join('\n')
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -535,7 +646,22 @@ ruleTester.run('jsx-sort-default-props', rule, {
       line: 12,
       column: 3,
       type: 'Property'
-    }]
+    }],
+    output: [
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    return <div>Hello</div>;',
+      '  }',
+      '}',
+      'Hello.propTypes = {',
+      '  "a": PropTypes.string,',
+      '  "B": PropTypes.string,',
+      '};',
+      'Hello.defaultProps = {',
+      '  "a": "a",',
+      '  "B": "B",',
+      '};'
+    ].join('\n')
   }, {
     code: [
       'const First = (props) => <div />;',
@@ -555,7 +681,20 @@ ruleTester.run('jsx-sort-default-props', rule, {
       line: 8,
       column: 3,
       type: 'Property'
-    }]
+    }],
+    output: [
+      'const First = (props) => <div />;',
+      'const propTypes = {',
+      '  z: PropTypes.string,',
+      '  a: PropTypes.any,',
+      '};',
+      'const defaultProps = {',
+      '  a: "a",',
+      '  z: "z",',
+      '};',
+      'First.propTypes = propTypes;',
+      'First.defaultProps = defaultProps;'
+    ].join('\n')
   }, {
     code: [
       'export default class ClassWithSpreadInPropTypes extends BaseClass {',
@@ -577,7 +716,21 @@ ruleTester.run('jsx-sort-default-props', rule, {
       line: 9,
       column: 5,
       type: 'Property'
-    }]
+    }],
+    output: [
+      'export default class ClassWithSpreadInPropTypes extends BaseClass {',
+      '  static propTypes = {',
+      '    b: PropTypes.string,',
+      '    ...c.propTypes,',
+      '    a: PropTypes.string',
+      '  }',
+      '  static defaultProps = {',
+      '    a: "a",',
+      '    b: "b",',
+      '    ...c.defaultProps',
+      '  }',
+      '}'
+    ].join('\n')
   }, {
     code: [
       'export default class ClassWithSpreadInPropTypes extends BaseClass {',
@@ -600,7 +753,27 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    errors: 2
+    errors: 2,
+    output: [
+      'export default class ClassWithSpreadInPropTypes extends BaseClass {',
+      '  static propTypes = {',
+      '    a: PropTypes.string,',
+      '    b: PropTypes.string,',
+      '    c: PropTypes.string,',
+      '    d: PropTypes.string,',
+      '    e: PropTypes.string,',
+      '    f: PropTypes.string',
+      '  }',
+      '  static defaultProps = {',
+      '    a: "a",',
+      '    b: "b",',
+      '    ...c.defaultProps,',
+      '    e: "e",',
+      '    f: "f",',
+      '    ...d.defaultProps',
+      '  }',
+      '}'
+    ].join('\n')
   }, {
     code: [
       'const defaults = {',
@@ -627,6 +800,25 @@ ruleTester.run('jsx-sort-default-props', rule, {
       line: 15,
       column: 3,
       type: 'Property'
-    }]
+    }],
+    output: [
+      'const defaults = {',
+      '  b: "b"',
+      '};',
+      'const types = {',
+      '  a: PropTypes.string,',
+      '  b: PropTypes.string,',
+      '  c: PropTypes.string',
+      '};',
+      'function StatelessComponentWithSpreadInPropTypes({ a, b, c }) {',
+      '  return <div>{a}{b}{c}</div>;',
+      '}',
+      'StatelessComponentWithSpreadInPropTypes.propTypes = types;',
+      'StatelessComponentWithSpreadInPropTypes.defaultProps = {',
+      '  a: "a",',
+      '  c: "c",',
+      '  ...defaults,',
+      '};'
+    ].join('\n')
   }]
 });
