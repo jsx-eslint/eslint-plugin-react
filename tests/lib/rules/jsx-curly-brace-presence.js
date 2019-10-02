@@ -86,6 +86,25 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       options: [{children: 'never'}]
     },
     {
+      code: `
+      <React.Fragment>
+        foo{' '}
+        <span>bar</span>
+      </React.Fragment>
+    `,
+      options: [{children: 'never'}]
+    },
+    {
+      code: `
+      <>
+        foo{' '}
+        <span>bar</span>
+      </>
+    `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{children: 'never'}]
+    },
+    {
       code: '<App>{`Hello \\n World`}</App>',
       options: [{children: 'never'}]
     },
