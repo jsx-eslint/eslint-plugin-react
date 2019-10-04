@@ -3,13 +3,29 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.16.0] - 2019-10-04
+
+### Added
+* [`jsx-sort-default-props`][]: make rule fixable ([#2429][] @emroussel)
+
+### Fixed
+* [`jsx-no-useless-fragment`][]: use `array-includes` over `.includes` for back compat (@ljharb)
+* [`jsx-curly-brace-presence`][]: allow necessary white-space literal ([#2437][] @uniqname)
+* [`jsx-curly-brace-presence`][]: warns incorrectly on trailing whitespace ([#2431][] @BC-M)
+* [`no-unused-prop-types`][]: false positive when nested destructuring ([#2428][] @golopot)
+
+[#2437]: https://github.com/yannickcr/eslint-plugin-react/pull/2437
+[#2431]: https://github.com/yannickcr/eslint-plugin-react/pull/2431
+[#2429]: https://github.com/yannickcr/eslint-plugin-react/pull/2429
+[#2428]: https://github.com/yannickcr/eslint-plugin-react/pull/2428
+
 ## [7.15.1] - 2019-10-01
 
 ### Fixed
-* `jsx-curly-brace-presence`: bail out checks when JSXElements are passed as props ([#2426][] @vedadeepta)
+* [`jsx-curly-brace-presence`][]: bail out checks when JSXElements are passed as props ([#2426][] @vedadeepta)
 
 ### Changed
-* [Docs] `prefer-es6-class`: Fix typos ([#2425][] @spencerbyw)
+* [Docs] [`prefer-es6-class`][]: Fix typos ([#2425][] @spencerbyw)
 
 [#2426]: https://github.com/yannickcr/eslint-plugin-react/pull/2426
 [#2425]: https://github.com/yannickcr/eslint-plugin-react/pull/2425
