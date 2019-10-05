@@ -82,6 +82,13 @@ ruleTester.run('jsx-props-no-spreading', rule, {
       '</App>'
     ].join('\n'),
     options: [{html: 'ignore'}]
+  }, {
+    code: `
+      <App>
+        <Foo {...{ prop1, prop2, prop3 }} />
+      </App>
+    `,
+    options: [{explicitSpread: 'ignore'}]
   }],
 
   invalid: [{
@@ -153,6 +160,37 @@ ruleTester.run('jsx-props-no-spreading', rule, {
       '</App>'
     ].join('\n'),
     options: [{html: 'ignore'}],
+    errors: [expectedError]
+  }, {
+    code: `
+      <App>
+        <Foo {...{ prop1, prop2, prop3 }} />
+      </App>
+    `,
+    errors: [expectedError]
+  }, {
+    code: `
+      <App>
+        <Foo {...{ prop1, ...rest }} />
+      </App>
+    `,
+    options: [{explicitSpread: 'ignore'}],
+    errors: [expectedError]
+  }, {
+    code: `
+      <App>
+        <Foo {...{ ...props }} />
+      </App>
+    `,
+    options: [{explicitSpread: 'ignore'}],
+    errors: [expectedError]
+  }, {
+    code: `
+      <App>
+        <Foo {...props } />
+      </App>
+    `,
+    options: [{explicitSpread: 'ignore'}],
     errors: [expectedError]
   }]
 });
