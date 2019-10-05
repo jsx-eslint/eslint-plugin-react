@@ -4620,6 +4620,29 @@ ruleTester.run('no-unused-prop-types', rule, {
         message: '\'aProp\' PropType is defined but prop is never used'
       }]
     }, {
+      // issue #2138
+      code: `
+        type UsedProps = {|
+          usedProp: number,
+        |};
+
+        type UnusedProps = {|
+          unusedProp: number,
+        |};
+
+        type Props = {| ...UsedProps, ...UnusedProps |};
+
+        function MyComponent({ usedProp, notOne }: Props) {
+          return <div>{usedProp}</div>;
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [{
+        message: "'unusedProp' PropType is defined but prop is never used",
+        line: 7,
+        column: 23
+      }]
+    }, {
       code: `
         type Props = {
           firstname: string,

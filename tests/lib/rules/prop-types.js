@@ -1634,6 +1634,23 @@ ruleTester.run('prop-types', rule, {
       parser: parsers.BABEL_ESLINT
     }, {
       code: [
+        'type OtherProps = {',
+        '  firstname: string,',
+        '};',
+        'type Props = {',
+        '   ...OtherProps,',
+        '   lastname: string',
+        '};',
+        'class Hello extends React.Component {',
+        '  props: Props;',
+        '  render () {',
+        '    return <div>Hello {this.props.firstname}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT
+    }, {
+      code: [
         'type Person = {',
         '  firstname: string',
         '};',
@@ -2334,6 +2351,30 @@ ruleTester.run('prop-types', rule, {
         const b = a::fn1();
       `,
       parser: parsers.BABEL_ESLINT
+    },
+    {
+      // issue #2138
+      code: `
+        type UsedProps = {|
+          usedProp: number,
+        |};
+
+        type UnusedProps = {|
+          unusedProp: number,
+        |};
+
+        type Props = {| ...UsedProps, ...UnusedProps |};
+
+        function MyComponent({ usedProp }: Props) {
+          return <div>{usedProp}</div>;
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [{
+        message: "'notOne' is missing in props validation",
+        line: 8,
+        column: 34
+      }]
     },
     {
       // issue #1259
@@ -4726,6 +4767,30 @@ ruleTester.run('prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [{
         message: '\'initialValues\' is missing in props validation'
+      }]
+    },
+    {
+      // issue #2138
+      code: `
+        type UsedProps = {|
+          usedProp: number,
+        |};
+
+        type UnusedProps = {|
+          unusedProp: number,
+        |};
+
+        type Props = {| ...UsedProps, ...UnusedProps |};
+
+        function MyComponent({ usedProp, notOne }: Props) {
+          return <div>{usedProp}</div>;
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [{
+        message: "'notOne' is missing in props validation",
+        line: 12,
+        column: 42
       }]
     },
     {

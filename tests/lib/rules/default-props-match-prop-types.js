@@ -733,6 +733,58 @@ ruleTester.run('default-props-match-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT
     },
+    {
+      code: [
+        'type DefaultProps1 = {|',
+        '  bar1?: string',
+        '|};',
+        'type DefaultProps2 = {|',
+        '  ...DefaultProps1,',
+        '  bar2?: string',
+        '|};',
+        'type Props = {',
+        '  foo: string,',
+        '  ...DefaultProps2',
+        '};',
+
+        'function Hello(props: Props) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '}',
+
+        'Hello.defaultProps = {',
+        '  bar1: "bar1",',
+        '  bar2: "bar2",',
+        '};'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: [
+        'type DefaultProps1 = {|',
+        '  bar1?: string',
+        '|};',
+        'type DefaultProps2 = {|',
+        '  ...DefaultProps1,',
+        '  bar2?: string',
+        '|};',
+        'type Props = {',
+        '  foo: string,',
+        '  ...DefaultProps2',
+        '};',
+
+        'class Hello extends React.Component<Props> {',
+        '  render() {',
+        '    return <div>Hello {props.foo}</div>;',
+        '  }',
+        '}',
+
+        'Hello.defaultProps = {',
+        '  bar1: "bar1",',
+        '  bar2: "bar2",',
+        '};'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT
+    },
     // don't error when variable is not in scope
     {
       code: [
@@ -1460,7 +1512,6 @@ ruleTester.run('default-props-match-prop-types', rule, {
         column: 3
       }]
     },
-    // Investigate why this test fails. Flow type not finding foo?
     {
       code: [
         'function Hello(props: { foo: string }) {',
@@ -1588,6 +1639,70 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           message: 'defaultProp "firstProperty" defined for isRequired propType.'
+        }
+      ]
+    },
+    {
+      code: [
+        'type DefaultProps = {',
+        '  baz?: string,',
+        '  bar?: string',
+        '};',
+
+        'type Props = {',
+        '  foo: string,',
+        '  ...DefaultProps',
+        '}',
+
+        'function Hello(props: Props) {',
+        '  return <div>Hello {props.foo}</div>;',
+        '}',
+        'Hello.defaultProps = { foo: "foo", frob: "frob", baz: "bar" };'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          message: 'defaultProp "foo" defined for isRequired propType.',
+          line: 12,
+          column: 24
+        },
+        {
+          message: 'defaultProp "frob" has no corresponding propTypes declaration.',
+          line: 12,
+          column: 36
+        }
+      ]
+    },
+    {
+      code: [
+        'type DefaultProps = {',
+        '  baz?: string,',
+        '  bar?: string',
+        '};',
+
+        'type Props = {',
+        '  foo: string,',
+        '  ...DefaultProps',
+        '}',
+
+        'class Hello extends React.Component<Props> {',
+        '  render() {',
+        '    return <div>Hello {props.foo}</div>;',
+        '  }',
+        '}',
+        'Hello.defaultProps = { foo: "foo", frob: "frob", baz: "bar" };'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          message: 'defaultProp "foo" defined for isRequired propType.',
+          line: 14,
+          column: 24
+        },
+        {
+          message: 'defaultProp "frob" has no corresponding propTypes declaration.',
+          line: 14,
+          column: 36
         }
       ]
     }
