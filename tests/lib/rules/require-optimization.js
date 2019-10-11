@@ -131,10 +131,19 @@ ruleTester.run('react-require-optimization', rule, {
         }
       }
     `,
-    parser: parsers.BABEL_ESLINT,
-    errors: [{
-      message: MESSAGE
-    }]
+    parser: parsers.BABEL_ESLINT
+  }, {
+    code: `
+    import React from "react";
+    class YourComponent extends React.Component {
+      handleClick = () => {}
+      shouldComponentUpdate = () => true;
+      render() {
+        return <div onClick={this.handleClick}>123</div>
+      }
+    }
+    `,
+    parser: parsers.BABEL_ESLINT
   }],
 
   invalid: [{
