@@ -97,6 +97,16 @@ ruleTester.run('no-render-return-value', rule, {
       message: 'Do not depend on the return value from ReactDOM.render'
     }]
   }, {
+    code: 'this.o = ReactDOM.render(<div />, document.body);',
+    errors: [{
+      message: 'Do not depend on the return value from ReactDOM.render'
+    }]
+  }, {
+    code: 'var v; v = ReactDOM.render(<div />, document.body);',
+    errors: [{
+      message: 'Do not depend on the return value from ReactDOM.render'
+    }]
+  }, {
     code: 'var inst = React.render(<div />, document.body);',
     settings: {
       react: {
