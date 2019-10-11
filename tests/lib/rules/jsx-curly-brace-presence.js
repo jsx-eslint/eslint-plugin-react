@@ -146,6 +146,9 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       code: `<App prop='bar'>{'foo \\n bar'}</App>`
     },
     {
+      code: `<App prop={ ' ' }/>`
+    },
+    {
       code: `<MyComponent prop='bar'>foo</MyComponent>`,
       options: [{props: 'never'}]
     },
