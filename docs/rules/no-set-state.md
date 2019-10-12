@@ -33,3 +33,57 @@ var Hello = createReactClass({
   }
 });
 ```
+
+## Rule Options
+
+```js
+"react/no-string-refs": [<enabled>, {"in": <array>}]
+```
+### `in`
+
+Will give warning for the usage of setState in the functions whose name is present in the array.
+When the `in` is not specified it will consider the usage of setState anywhere as warning.
+
+The following patterns will be considered warnings:
+
+The following example will give warning for the usage of setState in constructor.
+```
+no-set-state: [2, {in: ['constructor']}]
+```
+```jsx
+class Hello extends React.Component {
+        constructor(props){
+          super(props)
+          this.setState({
+            name: props.name.toUpperCase()
+          });
+        }
+        render() {
+          return <div onClick={this.someMethod.bind(this)}>Hello {this.state.name}</div>;
+        }
+      };
+```
+
+The following example will give warning for the usage of setState in somemethod only and will not throw warning for constructor.
+
+```
+no-set-state: [2, {in: ['somemethod']}]
+```
+```jsx
+class Hello extends React.Component {
+        constructor(props){
+          super(props)
+          this.setState({
+            name: props.name.toUpperCase()
+          });
+        }
+        somemethod = () => {
+           this.setState({
+            name: props.name.toUpperCase()
+          });
+        }
+        render() {
+          return <div onClick={this.someMethod.bind(this)}>Hello {this.state.name}</div>;
+        }
+      };
+```
