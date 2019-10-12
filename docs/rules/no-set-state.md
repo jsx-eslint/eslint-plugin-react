@@ -44,7 +44,6 @@ var Hello = createReactClass({
 Will give warning for the usage of setState in the functions whose name is present in the array.
 When the `in` is not specified it will consider the usage of setState anywhere as warning.
 
-The following patterns will be considered warnings:
 
 The following example will give warning for the usage of setState in constructor.
 ```
