@@ -99,6 +99,12 @@ The following patterns are **not** considered warnings when configured `"multili
 />
 ```
 
+## Rule Options
+
+...jsx
+"react/jsx-max-props-per-line": `"always" | "never" | "multiline" | "multiline-multiprop"`
+...
+
 ## When not to use
 
 If you are not using JSX then you can disable this rule.
