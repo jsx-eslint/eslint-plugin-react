@@ -618,21 +618,21 @@ ruleTester.run('no-typos', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     parserOptions,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{message: ERROR_MESSAGE, type: 'Identifier'}]
   }, {
     code: `
       class Component extends React.Component {}
       Component.PropTypes = {}
     `,
     parserOptions,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{message: ERROR_MESSAGE, type: 'Identifier'}]
   }, {
     code: `
       function MyComponent() { return (<div>{this.props.myProp}</div>) }
       MyComponent.PropTypes = {}
     `,
     parserOptions,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{message: ERROR_MESSAGE, type: 'Identifier'}]
   }, {
     code: `
       class Component extends React.Component {
@@ -664,7 +664,7 @@ ruleTester.run('no-typos', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     parserOptions,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{message: ERROR_MESSAGE, type: 'Identifier'}]
   }, {
     code: `
       class Component extends React.Component {}
@@ -756,21 +756,21 @@ ruleTester.run('no-typos', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     parserOptions,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{message: ERROR_MESSAGE, type: 'Identifier'}]
   }, {
     code: `
       class Component extends React.Component {}
       Component.DefaultProps = {}
     `,
     parserOptions,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{message: ERROR_MESSAGE, type: 'Identifier'}]
   }, {
     code: `
       function MyComponent() { return (<div>{this.props.myProp}</div>) }
       MyComponent.DefaultProps = {}
     `,
     parserOptions,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{message: ERROR_MESSAGE, type: 'Identifier'}]
   }, {
     code: `
       class Component extends React.Component {
@@ -1567,13 +1567,13 @@ ruleTester.run('no-typos', rule, {
     parserOptions,
     errors: [{
       message: ERROR_MESSAGE_ES5,
-      type: 'ObjectExpression'
+      type: 'Identifier'
     }, {
       message: ERROR_MESSAGE_ES5,
-      type: 'ObjectExpression'
+      type: 'Identifier'
     }, {
       message: ERROR_MESSAGE_ES5,
-      type: 'ObjectExpression'
+      type: 'Identifier'
     }, {
       message: ERROR_MESSAGE_LIFECYCLE_METHOD,
       type: 'Property'
@@ -1619,13 +1619,13 @@ ruleTester.run('no-typos', rule, {
     parserOptions,
     errors: [{
       message: ERROR_MESSAGE_ES5,
-      type: 'ObjectExpression'
+      type: 'Identifier'
     }, {
       message: ERROR_MESSAGE_ES5,
-      type: 'ObjectExpression'
+      type: 'Identifier'
     }, {
       message: ERROR_MESSAGE_ES5,
-      type: 'ObjectExpression'
+      type: 'Identifier'
     }, {
       message: ERROR_MESSAGE_LIFECYCLE_METHOD,
       type: 'Property'
