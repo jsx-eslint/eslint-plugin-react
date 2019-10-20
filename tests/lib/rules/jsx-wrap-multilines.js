@@ -1083,7 +1083,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       ]
     }, {
       code: DECLARATION_TERNARY_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      parser: parsers.TYPESCRIPT_ESLINT,
       output: addNewLineSymbols(DECLARATION_TERNARY_PAREN_FRAGMENT),
       options: [{declaration: 'parens-new-line'}],
       errors: [

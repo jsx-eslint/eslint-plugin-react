@@ -337,19 +337,6 @@ ruleTester.run('no-typos', rule, {
     code: `
       import PropTypes from "prop-types";
       class Component extends React.Component {};
-      Component.propTypes = {
-        a: PropTypes.oneOf([
-          'hello',
-          'hi'
-        ])
-      }
-   `,
-    parser: parsers.BABEL_ESLINT,
-    parserOptions
-  }, {
-    code: `
-      import PropTypes from "prop-types";
-      class Component extends React.Component {};
       Component.childContextTypes = {
         a: PropTypes.string,
         b: PropTypes.string.isRequired,
@@ -405,21 +392,6 @@ ruleTester.run('no-typos', rule, {
         b: CustomReact.PropTypes.string,
       }
    `,
-    parserOptions
-  }, {
-    code: `
-      import PropTypes from "prop-types";
-      class Component extends React.Component {};
-      Component.childContextTypes = {
-        a: PropTypes.string,
-        b: PropTypes.string.isRequired,
-        c: PropTypes.shape({
-          d: PropTypes.string,
-          e: PropTypes.number.isRequired,
-        }).isRequired
-      }
-   `,
-    parser: parsers.BABEL_ESLINT,
     parserOptions
   }, {
     code: `
@@ -1366,6 +1338,7 @@ ruleTester.run('no-typos', rule, {
        }).isrequired
      }
     `,
+    parser: parsers.BABEL_ESLINT,
     parserOptions,
     errors: [{
       message: 'Typo in prop type chain qualifier: isrequired'

@@ -1448,7 +1448,8 @@ ruleTester.run('prop-types', rule, {
         '  }',
         '});'
       ].join('\n'),
-      options: [{skipUndeclared: true}]
+      options: [{skipUndeclared: true}],
+      parser: parsers.BABEL_ESLINT
     }, {
       code: [
         'class Hello extends React.Component {',

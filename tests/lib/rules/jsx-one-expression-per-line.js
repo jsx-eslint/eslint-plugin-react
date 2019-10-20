@@ -525,23 +525,6 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
   }, {
     code: [
       '<div>',
-      '  foo {"bar"}',
-      '</div>'
-    ].join('\n'),
-    output: [
-      '<div>',
-      '  foo ',
-      '{\' \'}',
-      '{"bar"}',
-      '</div>'
-    ].join('\n'),
-    errors: [
-      {message: '`{"bar"}` must be placed on a new line'}
-    ],
-    parserOptions
-  }, {
-    code: [
-      '<div>',
       '  <input /> {"foo"}',
       '</div>'
     ].join('\n'),
@@ -705,7 +688,8 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '</App>'
     ].join('\n'),
     errors: [{message: '`Foo` must be placed on a new line'}],
-    parserOptions
+    parserOptions,
+    parser: parsers.BABEL_ESLINT
   }, {
     code: [
       '<App>',

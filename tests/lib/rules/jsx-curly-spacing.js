@@ -405,7 +405,8 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '...bar',
       '} />;'
     ].join('\n'),
-    options: [{attributes: {when: 'never'}}]
+    options: [{attributes: {when: 'never'}}],
+    parser: parsers.BABEL_ESLINT
   }, {
     code: [
       '<App {',
@@ -483,9 +484,6 @@ ruleTester.run('jsx-curly-spacing', rule, {
   }, {
     code: '<App>{3} { {a: 2} }</App>',
     options: [{children: {when: 'never', spacing: {objectLiterals: 'always'}}}]
-  }, {
-    code: '<App foo={ bar }>{bar}</App>',
-    options: [{attributes: {when: 'always'}}]
   }, {
     code: '<App foo={ bar }>{bar}</App>',
     options: [{attributes: {when: 'always'}}]
@@ -630,7 +628,8 @@ ruleTester.run('jsx-curly-spacing', rule, {
       '...bar',
       '} />;'
     ].join('\n'),
-    options: ['always']
+    options: ['always'],
+    parser: parsers.BABEL_ESLINT
   }, {
     code: [
       '<App {',

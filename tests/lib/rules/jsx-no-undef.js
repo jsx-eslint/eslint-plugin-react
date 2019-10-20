@@ -35,7 +35,8 @@ ruleTester.run('jsx-no-undef', rule, {
   valid: [{
     code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);'
   }, {
-    code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);'
+    code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);',
+    parser: parsers.BABEL_ESLINT
   }, {
     code: '/*eslint no-undef:1*/ var React; React.render(<img />);'
   }, {

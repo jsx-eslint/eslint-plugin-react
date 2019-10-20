@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-pascal-case');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -47,6 +49,9 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<T />'
   }, {
+    code: '<T />',
+    parser: parsers.BABEL_ESLINT
+  }, {
     code: '<YMCA />',
     options: [{allowAllCaps: true}]
   }, {
@@ -59,8 +64,6 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<IGNORED />',
     options: [{ignore: ['IGNORED']}]
-  }, {
-    code: '<T />'
   }, {
     code: '<$ />'
   }, {

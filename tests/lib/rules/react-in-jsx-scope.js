@@ -41,7 +41,10 @@ ruleTester.run('react-in-jsx-scope', rule, {
     {code: 'var React; <x-gif />;'},
     {code: 'var React, App, a=1; <App attr={a} />;'},
     {code: 'var React, App, a=1; function elem() { return <App attr={a} />; }'},
-    {code: 'var React, App; <App />;'},
+    {
+      code: 'var React, App; <App />;',
+      parser: parsers.BABEL_ESLINT
+    },
     {code: '/** @jsx Foo */ var Foo, App; <App />;'},
     {code: '/** @jsx Foo.Bar */ var Foo, App; <App />;'},
     {

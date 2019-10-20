@@ -44,22 +44,23 @@ ruleTester.run('no-redundant-should-component-update', rule, {
     {
       code: `
         class Foo extends React.Component {
+          shouldComponentUpdate() {
+            return true;
+          }
+        }
+      `,
+      parserOptions,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        class Foo extends React.Component {
           shouldComponentUpdate = () => {
             return true;
           }
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
-    },
-    {
-      code: `
-        class Foo extends React.Component {
-          shouldComponentUpdate() {
-            return true;
-          }
-        }
-      `,
       parserOptions
     },
     {

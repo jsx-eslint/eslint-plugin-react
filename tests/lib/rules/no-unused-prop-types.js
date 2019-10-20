@@ -5027,40 +5027,6 @@ ruleTester.run('no-unused-prop-types', rule, {
       }]
     }, {
       code: [
-        'type Person = {',
-        '  ...data,',
-        '  lastname: string',
-        '};',
-        'class Hello extends React.Component {',
-        '  props: Person;',
-        '  render () {',
-        '    return <div>Hello {this.props.firstname}</div>;',
-        '  }',
-        '}'
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: '\'lastname\' PropType is defined but prop is never used'
-      }]
-    }, {
-      code: [
-        'type Person = {|',
-        '  ...data,',
-        '  lastname: string',
-        '|};',
-        'class Hello extends React.Component {',
-        '  props: Person;',
-        '  render () {',
-        '    return <div>Hello {this.props.firstname}</div>;',
-        '  }',
-        '}'
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: '\'lastname\' PropType is defined but prop is never used'
-      }]
-    }, {
-      code: [
         'class Hello extends React.Component {',
         '  render () {',
         '    return <div>Hello {this.props.firstname}</div>;',

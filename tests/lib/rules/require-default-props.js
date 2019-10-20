@@ -514,7 +514,8 @@ ruleTester.run('require-default-props', rule, {
         '  ...defaults,',
         '  bar: "bar"',
         '};'
-      ].join('\n')
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT
     },
 
     //
@@ -1787,23 +1788,6 @@ ruleTester.run('require-default-props', rule, {
         message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
         line: 1,
         column: 47
-      }]
-    },
-    {
-      code: [
-        'type Props = {',
-        '  foo?: string',
-        '};',
-
-        'function Hello(props: Props) {',
-        '  return <div>Hello {props.foo}</div>;',
-        '}'
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
-        line: 2,
-        column: 3
       }]
     },
     {
