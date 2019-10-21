@@ -30,13 +30,15 @@ The following patterns are **not** considered warnings:
 ...
 "react/jsx-handler-names": [<enabled>, {
   "eventHandlerPrefix": <eventHandlerPrefix>,
-  "eventHandlerPropPrefix": <eventHandlerPropPrefix>
+  "eventHandlerPropPrefix": <eventHandlerPropPrefix>,
+  "checkLocalVariables": <boolean>
 }]
 ...
 ```
 
 * `eventHandlerPrefix`: Prefix for component methods used as event handlers. Defaults to `handle`
 * `eventHandlerPropPrefix`: Prefix for props that are used as event handlers. Defaults to `on`
+* `checkLocalVariables`: Determines whether event handlers stored as local variables are checked. Defaults to `false`
 
 ## When Not To Use It
 

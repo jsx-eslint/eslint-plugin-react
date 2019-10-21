@@ -33,6 +33,16 @@ ruleTester.run('jsx-handler-names', rule, {
   }, {
     code: '<TestComponent onChange={this.props.onChange} />'
   }, {
+    code: '<TestComponent onChange={handleChange} />',
+    options: [{
+      checkLocalVariables: true
+    }]
+  }, {
+    code: '<TestComponent onChange={takeCareOfChange} />',
+    options: [{
+      checkLocalVariables: false
+    }]
+  }, {
     code: '<TestComponent onChange={this.props.onFoo} />'
   }, {
     code: '<TestComponent isSelected={this.props.isSelected} />'
@@ -100,11 +110,31 @@ ruleTester.run('jsx-handler-names', rule, {
     code: '<TestComponent onChange={this.handlerChange} />',
     errors: [{message: 'Handler function for onChange prop key must begin with \'handle\''}]
   }, {
+    code: '<TestComponent onChange={takeCareOfChange} />',
+    errors: [{message: 'Handler function for onChange prop key must begin with \'handle\''}],
+    options: [{
+      checkLocalVariables: true
+    }]
+  }, {
     code: '<TestComponent only={this.handleChange} />',
     errors: [{message: 'Prop key for handleChange must begin with \'on\''}]
   }, {
     code: '<TestComponent handleChange={this.handleChange} />',
     errors: [{message: 'Prop key for handleChange must begin with \'on\''}]
+  }, {
+    code: '<TestComponent whenChange={handleChange} />',
+    errors: [{message: 'Prop key for handleChange must begin with \'on\''}],
+    options: [{
+      checkLocalVariables: true
+    }]
+  }, {
+    code: '<TestComponent onChange={handleChange} />',
+    errors: [{message: 'Prop key for handleChange must begin with \'when\''}],
+    options: [{
+      checkLocalVariables: true,
+      eventHandlerPrefix: 'handle',
+      eventHandlerPropPrefix: 'when'
+    }]
   }, {
     code: '<TestComponent onChange={this.onChange} />',
     errors: [{message: 'Handler function for onChange prop key must begin with \'handle\''}]
