@@ -29,3 +29,5 @@ The following patterns are **not** considered warnings:
 ## When Not To Use It
 
 If you are not using JSX or don't care about the space between two props in the same line.
+
+If you have enabled the core rule `no-multi-spaces` with eslint >= 3, you don't need this rule.
