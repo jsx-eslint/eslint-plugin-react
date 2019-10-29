@@ -37,7 +37,7 @@ var Hello = createReactClass({
 ## Rule Options
 
 ```js
-"react/no-string-refs": [<enabled>, {"in": <array>}]
+"react/no-set-state": [<enabled>, {"in": <array>}]
 ```
 ### `in`
 
