@@ -68,6 +68,10 @@ ruleTester.run('jsx-no-target-blank', rule, {
       code: '<Link target="_blank" to={ dynamicLink }></Link>',
       options: [{enforceDynamicLinks: 'never'}],
       settings: {linkComponents: {name: 'Link', linkAttribute: 'to'}}
+    },
+    {
+      code: '<a href="foobar" target="_blank" rel="noopener"></a>',
+      options: [{allowReferrer: true}]
     }
   ],
   invalid: [{

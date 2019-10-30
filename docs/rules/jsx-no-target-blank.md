@@ -14,10 +14,11 @@ This rule aims to prevent user generated links from creating security vulnerabil
 ## Rule Options
 ```json
 ...
-"react/jsx-no-target-blank": [<enabled>, { "enforceDynamicLinks": <enforce> }]
+"react/jsx-no-target-blank": [<enabled>, { "allowReferrer": <allow-referrer>, "enforceDynamicLinks": <enforce> }]
 ...
 ```
 
+* allow-referrer: optional boolean. If `true` does not require `noreferrer`. Defaults to `false`.
 * enabled: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
 * enforce: optional string, 'always' or 'never'
 
