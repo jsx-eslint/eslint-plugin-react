@@ -16,6 +16,7 @@
     "rules": {
         "comma-dangle": [2, "never"],
         "object-curly-spacing": [2, "never"],
+        "object-shorthand": [2, "always"],
         "array-bracket-spacing": [2, "never"],
         "max-len": [2, 120, {
           "ignoreStrings": true,
