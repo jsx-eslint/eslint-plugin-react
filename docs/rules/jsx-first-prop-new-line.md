@@ -101,9 +101,9 @@ The following patterns are **not** considered warnings when configured `"multili
 
 ## Rule Options
 
-...jsx
-"react/jsx-first-prop-new-line": `"always" | "never" | "multiline" | "multiline-multiprop"`
-...
+```jsx
+"react/jsx-first-props-per-line": `"always" | "never" | "multiline" | "multiline-multiprop"`
+```
 
 ## When not to use
 
