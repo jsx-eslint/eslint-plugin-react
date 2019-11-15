@@ -39,6 +39,10 @@ function invalidProp(str) {
   return `Invalid prop value: “${str}”`;
 }
 
+function attributeMessage(str) {
+  return `Strings not allowed in attributes: “${str}”`;
+}
+
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-no-literals', rule, {
 
@@ -331,6 +335,11 @@ ruleTester.run('jsx-no-literals', rule, {
         }      `,
       parser: parsers.BABEL_ESLINT,
       options: [{noStrings: true, ignoreProps: false}]
+    },
+    {
+      code: `
+        <img alt='blank image'></img>
+      `
     }
   ),
 
@@ -527,6 +536,14 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {message: stringsMessage('\'bar\'')}
       ]
+    },
+    {
+      code: `
+        <img alt='blank image'></img>
+      `,
+      options: [{noAttributeStrings: true}],
+      errors: [
+        {message: attributeMessage('\'blank image\'')}]
     }
   ]
 });

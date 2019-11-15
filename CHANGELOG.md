@@ -8,6 +8,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Added
 * [`button-has-type`]: support trivial ternary expressions ([#2748][] @Hypnosphi)
 * [`jsx-handler-names`]: add `checkInlineFunction` option ([#2761][] @dididy)
+* [`jsx-no-literals`]: add `noAttributeStrings` option ([#2782][] @TaLeaMonet)
 
 ### Fixed
 * [`function-component-definition`]: ignore object properties ([#2771][] @stefan-wullems)
@@ -21,6 +22,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#2796]: https://github.com/yannickcr/eslint-plugin-react/pull/2796
 [#2791]: https://github.com/yannickcr/eslint-plugin-react/pull/2791
 [#2789]: https://github.com/yannickcr/eslint-plugin-react/pull/2789
+[#2782]: https://github.com/yannickcr/eslint-plugin-react/pull/2782
 [#2780]: https://github.com/yannickcr/eslint-plugin-react/pull/2780
 [#2779]: https://github.com/yannickcr/eslint-plugin-react/pull/2779
 [#2772]: https://github.com/yannickcr/eslint-plugin-react/pull/2772

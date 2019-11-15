@@ -26,16 +26,17 @@ var Hello = <div>
 
 ## Rule Options
 
-There are two options:
+The supported options are:
 
 * `noStrings` (default: `false`) - Enforces no string literals used as children, wrapped or unwrapped.
 * `allowedStrings` - An array of unique string values that would otherwise warn, but will be ignored.
 * `ignoreProps` (default: `false`) - When `true` the rule ignores literals used in props, wrapped or unwrapped.
+* `noAttributeStrings` (default: `false`) - Enforces no string literals used in attributes when set to `true`.
 
 To use, you can specify as follows:
 
 ```js
-"react/jsx-no-literals": [<enabled>, {"noStrings": true, "allowedStrings": ["allowed"], "ignoreProps": false}]
+"react/jsx-no-literals": [<enabled>, {"noStrings": true, "allowedStrings": ["allowed"], "ignoreProps": false, "noAttributeStrings": true }]
 ```
 
 In this configuration, the following are considered warnings:
@@ -55,6 +56,12 @@ var Hello = <div>
 ```
 
 ```jsx
+var Hello = <div>
+<img alt="test"> </img>
+</div>;
+```
+
+```jsx
 var Hello = <div class='xx' />;
 ```
 
@@ -65,6 +72,7 @@ var Hello = <div class={'xx'} />;
 ```jsx
 var Hello = <div class={`xx`} />;
 ```
+
 
 
 The following are **not** considered warnings:
@@ -88,6 +96,13 @@ var Hello = <div>allowed</div>
 // an allowed string surrounded by only whitespace
 var Hello = <div>
   allowed
+</div>;
+```
+
+```jsx
+// a string value stored within a variable used as an attribute's value
+var Hello = <div>
+<img alt={imageDescription} {...props} />
 </div>;
 ```
 
