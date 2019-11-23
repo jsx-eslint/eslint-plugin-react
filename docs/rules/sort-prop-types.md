@@ -2,9 +2,6 @@
 
 Some developers prefer to sort propTypes declarations alphabetically to be able to find necessary declaration easier at the later time. Others feel that it adds complexity and becomes burden to maintain.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
-
-
 ## Rule Details
 
 This rule checks all components and verifies that all propTypes declarations are sorted alphabetically. A spread attribute resets the verification. The default configuration of the rule is case-sensitive.
