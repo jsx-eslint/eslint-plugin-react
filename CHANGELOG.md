@@ -2807,3 +2807,4 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`static-property-placement`]: docs/rules/static-property-placement.md
 [`jsx-curly-newline`]: docs/rules/jsx-curly-newline.md
 [`jsx-no-useless-fragment`]: docs/rules/jsx-no-useless-fragment.md
+[`jsx-no-script-url`]: docs/rules/jsx-no-script-url.md

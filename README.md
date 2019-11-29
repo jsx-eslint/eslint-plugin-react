@@ -168,6 +168,7 @@ Enable the rules that you would like to use.
 * [react/jsx-no-comment-textnodes](docs/rules/jsx-no-comment-textnodes.md): Prevent comments from being inserted as text nodes
 * [react/jsx-no-duplicate-props](docs/rules/jsx-no-duplicate-props.md): Prevent duplicate props in JSX
 * [react/jsx-no-literals](docs/rules/jsx-no-literals.md): Prevent usage of unwrapped JSX strings
+* [react/jsx-no-script-url](docs/rules/jsx-no-script-url.md): Prevent usage of `javascript:` URLs
 * [react/jsx-no-target-blank](docs/rules/jsx-no-target-blank.md): Prevent usage of unsafe `target='_blank'`
 * [react/jsx-no-undef](docs/rules/jsx-no-undef.md): Disallow undeclared variables in JSX
 * [react/jsx-no-useless-fragment](docs/rules/jsx-no-useless-fragment.md): Disallow unnecessary fragments (fixable)
