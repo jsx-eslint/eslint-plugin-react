@@ -30,12 +30,12 @@
     "doctrine": "^2.1.0",
     "eslint-plugin-eslint-plugin": "^2.1.0",
     "has": "^1.0.3",
-    "jsx-ast-utils": "^2.2.1",
+    "jsx-ast-utils": "^2.2.3",
     "object.entries": "^1.1.0",
-    "object.fromentries": "^2.0.0",
+    "object.fromentries": "^2.0.1",
     "object.values": "^1.1.0",
     "prop-types": "^15.7.2",
-    "resolve": "^1.12.0"
+    "resolve": "^1.13.1"
   },
   "devDependencies": {
     "@types/eslint": "^6.1.3",
