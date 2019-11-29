@@ -281,6 +281,14 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       options: ['never']
     },
     {
+      code: '<MyComponent>{`space after `}</MyComponent>',
+      options: ['never']
+    },
+    {
+      code: '<MyComponent>{` space before`}</MyComponent>',
+      options: ['never']
+    },
+    {
       code: ['<a a={"start\\', '\\', 'end"}/>'].join('/n'),
       options: ['never']
     },
@@ -337,6 +345,17 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
           { 'space after ' }
           <b>foo</b>
           { ' space before' }
+        </MyComponent>
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{children: 'never'}]
+    },
+    {
+      code: `
+        <MyComponent>
+          { \`space after \` }
+          <b>foo</b>
+          { \` space before\` }
         </MyComponent>
       `,
       parser: parsers.BABEL_ESLINT,
