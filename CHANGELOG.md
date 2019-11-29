@@ -3,6 +3,59 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.17.0] - 2019-11-28
+
+### Added
+ * [`jsx-no-target-blank`][]: add `allowReferrer` option ([#2478][] @eps1lon)
+ * [`jsx-handler-names`][]: add `checkLocalVariables` option ([#2470][] @aub)
+ * [`prop-types`][]: Support Flow Type spread ([#2446][] @moroine)
+ * [`jsx-props-no-spreading`][]: add `explicitSpread` option to allow explicit spread of props ([#2449][] @pawelnvk)
+ * [`jsx-no-target-blank`][]: warn on `target={'_blank'}` expressions ([#2451][] @timkraut)
+
+### Fixed
+ * [`sort-prop-types`][], [`jsx-sort-default-props`][]: disable broken autofix ([#2505][] @webOS101)
+ * [`no-typos`][]: improve report location ([#2468][] @golopot)
+ * [`jsx-no-literals`][]: trim whitespace for `allowedStrings` check ([#2436][] @cainlevy)
+ * [`jsx-curly-brace-presence`][]: Fix filter of undefined error with whitespace inside jsx attr curlies ([#2460][] @dustinyoste)
+ * [`no-render-return-value`][]: should warn when used in assignment expression ([#2462][] @jichu4n)
+ * [`jsx-curly-brace-presence`][]: allow trailing spaces in literal ([#2448][] @doochik)
+
+### Changed
+ * [Deps] update `jsx-ast-utils`, `object.fromentries`, `resolve`
+ * [eslint] fix func-names and change object-shorthand to 'always' ([#2483][] @golopot)
+ * [Docs] `jsx-first-prop-new-line`: Fix documentation formatting ([#2489][] @pjg)
+ * [Docs] [`prop-types`][]: Update 'skipUndeclared' in rule options ([#2504][] @cjnickel)
+ * [Docs] [`jsx-first-prop-new-line`][]: fix wrong rule name ([#2500][] @zgayjjf)
+ * [eslint] enable eslint-plugin-eslint-plugin ([#2469][] @golopot)
+ * [Docs] [`jsx-props-no-multi-spaces`][]: suggest using core rule instead ([#2463][] @golopot)
+ * [Docs] [`jsx-first-prop-new-line`][]: add rule options ([#2465][] @SerdarMustafa1)
+ * [Docs] [`jsx-no-target-blank`][]: Add section about overriding for trusted links ([#2438][] @aschriner)
+ * [Docs] fix typo ([#2453][] @cainwatson)
+ * [Docs] [`no-unused-prop-types`][]: clean up prose ([#2273][] @coryhouse)
+ * [Docs] [`jsx-no-bind`][]: add section about React Hooks ([#2443][] @kdex)
+
+[#2505]: https://github.com/yannickcr/eslint-plugin-react/pull/2505
+[#2504]: https://github.com/yannickcr/eslint-plugin-react/pull/2504
+[#2500]: https://github.com/yannickcr/eslint-plugin-react/pull/2500
+[#2489]: https://github.com/yannickcr/eslint-plugin-react/pull/2489
+[#2483]: https://github.com/yannickcr/eslint-plugin-react/pull/2483
+[#2478]: https://github.com/yannickcr/eslint-plugin-react/pull/2478
+[#2470]: https://github.com/yannickcr/eslint-plugin-react/pull/2470
+[#2469]: https://github.com/yannickcr/eslint-plugin-react/pull/2469
+[#2468]: https://github.com/yannickcr/eslint-plugin-react/pull/2468
+[#2465]: https://github.com/yannickcr/eslint-plugin-react/pull/2465
+[#2463]: https://github.com/yannickcr/eslint-plugin-react/pull/2463
+[#2460]: https://github.com/yannickcr/eslint-plugin-react/pull/2460
+[#2453]: https://github.com/yannickcr/eslint-plugin-react/pull/2453
+[#2451]: https://github.com/yannickcr/eslint-plugin-react/pull/2451
+[#2449]: https://github.com/yannickcr/eslint-plugin-react/pull/2449
+[#2448]: https://github.com/yannickcr/eslint-plugin-react/pull/2448
+[#2446]: https://github.com/yannickcr/eslint-plugin-react/pull/2446
+[#2443]: https://github.com/yannickcr/eslint-plugin-react/pull/2443
+[#2438]: https://github.com/yannickcr/eslint-plugin-react/pull/2438
+[#2436]: https://github.com/yannickcr/eslint-plugin-react/pull/2436
+[#2273]: https://github.com/yannickcr/eslint-plugin-react/pull/2273
+
 ## [7.16.0] - 2019-10-04
 
 ### Added
