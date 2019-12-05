@@ -205,6 +205,14 @@ ruleTester.run('no-typos', rule, {
     parserOptions
   }, {
     code: `
+      class Hello extends React.Component {
+        "componentDidMount"() { }
+        "my-method"() { }
+      }
+    `,
+    parserOptions
+  }, {
+    code: `
       class MyClass {
         componentWillMount() { }
         componentDidMount() { }
