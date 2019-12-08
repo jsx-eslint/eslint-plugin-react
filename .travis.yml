@@ -13,7 +13,7 @@ before_script:
   - 'if [ -n "${ESLINT-}" ]; then npm install --no-save "eslint@${ESLINT}" ; fi'
 script:
   - 'if [ -n "${PRETEST-}" ]; then npm run pretest ; fi'
-  - 'if [ -n "${TEST-}" ]; then npm run unit-test ; fi'
+  - 'if [ -z "${PRETEST-}" ] && [ -n "${TEST-}" ]; then npm run unit-test ; fi'
 env:
   global:
     - TEST=true
