@@ -391,6 +391,15 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       options: [{children: 'always'}]
+    },
+    {
+      code: `
+        <App>
+          <Component />&nbsp;
+          &nbsp;
+        </App>
+      `,
+      options: [{children: 'always'}]
     }
   ],
 
@@ -698,6 +707,60 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
         {message: missingCurlyMessage}, {message: missingCurlyMessage}
       ],
       options: ['always']
+    },
+    {
+      code: `
+        <App>
+          foo bar
+          <div>foo bar foo</div>
+          <span>
+            foo bar <i>foo bar</i>
+            <strong>
+              foo bar
+            </strong>
+          </span>
+        </App>
+      `,
+      output: `
+        <App>
+          {"foo bar"}
+          <div>{"foo bar foo"}</div>
+          <span>
+            {"foo bar "}<i>{"foo bar"}</i>
+            <strong>
+              {"foo bar"}
+            </strong>
+          </span>
+        </App>
+      `,
+      errors: [
+        {message: missingCurlyMessage},
+        {message: missingCurlyMessage},
+        {message: missingCurlyMessage},
+        {message: missingCurlyMessage},
+        {message: missingCurlyMessage}
+      ],
+      options: [{children: 'always'}]
+    },
+    {
+      code: `
+        <App>
+          &lt;Component&gt;
+          &nbsp;<Component />&nbsp;
+          &nbsp;
+        </App>
+      `,
+      output: `
+        <App>
+          &lt;{"Component"}&gt;
+          &nbsp;<Component />&nbsp;
+          &nbsp;
+        </App>
+      `,
+      errors: [
+        {message: missingCurlyMessage}
+      ],
+      options: [{children: 'always'}]
     }
   ]
 });
