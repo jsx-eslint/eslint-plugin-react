@@ -1094,6 +1094,28 @@ const Component = () => (
         }
       `,
     },
+    {
+      code: `
+        function App() {
+          return (
+            <App />
+          );
+        }
+      `,
+      options: [2],
+      parserOptions,
+    },
+    {
+      code: `
+        function App() {
+          return <App>
+            <Foo />
+          </App>;
+        }
+      `,
+      options: [2],
+      parserOptions,
+    },
   ]),
 
   invalid: parsers.all([
@@ -1291,6 +1313,17 @@ const Component = () => (
       errors: [
         {
           messageId: 'wrongIndent',
+          line: 3,
+          data: {
+            needed: 10,
+            type: 'space',
+            characters: 'characters',
+            gotten: 17,
+          },
+        },
+        {
+          messageId: 'wrongIndent',
+          line: 5,
           data: {
             needed: 10,
             type: 'space',
@@ -1319,6 +1352,17 @@ const Component = () => (
       errors: [
         {
           messageId: 'wrongIndent',
+          line: 3,
+          data: {
+            needed: 10,
+            type: 'space',
+            characters: 'characters',
+            gotten: 12,
+          },
+        },
+        {
+          messageId: 'wrongIndent',
+          line: 5,
           data: {
             needed: 10,
             type: 'space',
@@ -2770,6 +2814,44 @@ const Component = () => (
           },
         },
       ],
+    },
+    {
+      code: `
+        function App() {
+          return (
+            <App />
+            );
+        }
+      `,
+      output: `
+        function App() {
+          return (
+            <App />
+          );
+        }
+      `,
+      options: [2],
+      parserOptions,
+      errors: [{ message: 'Expected indentation of 10 space characters but found 12.' }],
+    },
+    {
+      code: `
+        function App() {
+          return (
+            <App />
+        );
+        }
+      `,
+      output: `
+        function App() {
+          return (
+            <App />
+          );
+        }
+      `,
+      options: [2],
+      parserOptions,
+      errors: [{ message: 'Expected indentation of 10 space characters but found 8.' }],
     },
   ]),
 });

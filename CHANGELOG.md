@@ -17,6 +17,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`prefer-exact-props`] improve performance for `Identifier` visitor ([#3190][] @meowtec)
 * `propTypes`: Handle TSTypeReference in no-unused-prop-type ([#3195][] @niik)
 * [`sort-prop-types`]: avoid repeated warnings of the same node/reason ([#519][] @ljharb)
+* [`jsx-indent`]: Fix indent handling for closing parentheses ([#620][] @stefanbuck])
 
 ### Changed
 * [readme] change [`jsx-runtime`] link from branch to sha ([#3160][] @tatsushitoji)
@@ -40,6 +41,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3133]: https://github.com/yannickcr/eslint-plugin-react/pull/3133
 [#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
 [#2753]: https://github.com/yannickcr/eslint-plugin-react/pull/2753
+[#620]: https://github.com/yannickcr/eslint-plugin-react/pull/620
 [#519]: https://github.com/yannickcr/eslint-plugin-react/issues/519
 
 ## [7.28.0] - 2021.12.22
