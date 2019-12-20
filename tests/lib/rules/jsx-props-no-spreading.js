@@ -89,6 +89,37 @@ ruleTester.run('jsx-props-no-spreading', rule, {
       </App>
     `,
     options: [{explicitSpread: 'ignore'}]
+  }, {
+    code: [
+      'const props = {};',
+      '<App>',
+      '   <components.Group {...props}/>',
+      '   <Nav.Item {...props}/>',
+      '</App>'
+    ].join('\n'),
+    options: [{exceptions: ['components.Group', 'Nav.Item']}]
+  }, {
+    code: [
+      'const props = {};',
+      '<App>',
+      '   <components.Group {...props}/>',
+      '   <Nav.Item {...props}/>',
+      '</App>'
+    ].join('\n'),
+    options: [{custom: 'ignore'}]
+  }, {
+    code: [
+      'const props = {};',
+      '<App>',
+      '   <components.Group {...props}/>',
+      '   <Nav.Item {...props}/>',
+      '</App>'
+    ].join('\n'),
+    options: [{
+      custom: 'enforce',
+      html: 'ignore',
+      exceptions: ['components.Group', 'Nav.Item']
+    }]
   }],
 
   invalid: [{
@@ -191,6 +222,16 @@ ruleTester.run('jsx-props-no-spreading', rule, {
       </App>
     `,
     options: [{explicitSpread: 'ignore'}],
+    errors: [expectedError]
+  }, {
+    code: [
+      'const props = {};',
+      '<App>',
+      '   <components.Group {...props}/>',
+      '   <Nav.Item {...props}/>',
+      '</App>'
+    ].join('\n'),
+    options: [{exceptions: ['components.DropdownIndicator', 'Nav.Item']}],
     errors: [expectedError]
   }]
 });
