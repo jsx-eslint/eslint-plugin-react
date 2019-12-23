@@ -2465,6 +2465,19 @@ ruleTester.run('prop-types', rule, {
           pragma: 'Foo'
         }
       }
+    },
+    {
+      code: `
+        const Foo = ({length, ordering}) => (
+          length > 0 && (
+            <Paginator items={ordering} pageSize={10} />
+          )
+        );
+        Foo.propTypes = {
+          length: PropTypes.number,
+          ordering: PropTypes.array
+        };
+      `
     }
   ],
 
@@ -4894,6 +4907,21 @@ ruleTester.run('prop-types', rule, {
       `,
       errors: [{
         message: '\'foo.baz\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        const Foo = ({length, ordering}) => (
+          length > 0 && (
+            <Paginator items={ordering} pageSize={10} />
+          )
+        );
+      `,
+      errors: [{
+        message: '\'length\' is missing in props validation'
+      },
+      {
+        message: '\'ordering\' is missing in props validation'
       }]
     }
   ]
