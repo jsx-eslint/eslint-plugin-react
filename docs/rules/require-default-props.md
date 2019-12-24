@@ -188,12 +188,13 @@ NotAComponent.propTypes = {
 
 ```js
 ...
-"react/require-default-props": [<enabled>, { forbidDefaultForRequired: <boolean> }]
+"react/require-default-props": [<enabled>, { forbidDefaultForRequired: <boolean>, ignoreFunctionalComponents: <boolean> }]
 ...
 ```
 
 * `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
 * `forbidDefaultForRequired`: optional boolean to forbid prop default for a required prop. Defaults to false.
+* `ignoreFunctionalComponents`: optional boolean to ignore this rule for functional components. Defaults to false.
 
 ### `forbidDefaultForRequired`
 
@@ -266,6 +267,67 @@ function MyStatelessComponent({ foo, bar }) {
 MyStatelessComponent.propTypes = {
   foo: PropTypes.string.isRequired,
   bar: PropTypes.string.isRequired
+};
+```
+
+### `ignoreFunctionalComponents`
+
+When set to `true`, ignores this rule for all functional components.
+
+The following patterns are warnings:
+
+```jsx
+class Greeting extends React.Component {
+  render() {
+    return (
+      <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+    );
+  }
+
+  static propTypes = {
+    foo: PropTypes.string,
+    bar: PropTypes.string.isRequired
+  };
+
+  static defaultProps = {
+    foo: "foo",
+    bar: "bar"
+  };
+}
+```
+
+The following patterns are **not** warnings:
+
+```jsx
+function MyStatelessComponent({ foo, bar }) {
+  return <div>{foo}{bar}</div>;
+}
+
+MyStatelessComponent.propTypes = {
+  foo: PropTypes.string,
+  bar: PropTypes.string
+};
+```
+
+```jsx
+const MyStatelessComponent = ({ foo, bar }) => {
+  return <div>{foo}{bar}</div>;
+}
+
+MyStatelessComponent.propTypes = {
+  foo: PropTypes.string,
+  bar: PropTypes.string
+};
+```
+
+```jsx
+const MyStatelessComponent = function({ foo, bar }) {
+  return <div>{foo}{bar}</div>;
+}
+
+MyStatelessComponent.propTypes = {
+  foo: PropTypes.string,
+  bar: PropTypes.string
 };
 ```
 

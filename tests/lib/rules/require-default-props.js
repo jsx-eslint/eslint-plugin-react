@@ -32,7 +32,7 @@ ruleTester.run('require-default-props', rule, {
 
   valid: [
     //
-    // stateless components
+    // stateless components as function declarations
     {
       code: [
         'function MyStatelessComponent({ foo, bar }) {',
@@ -152,6 +152,207 @@ ruleTester.run('require-default-props', rule, {
         'MyStatelessComponent.defaultProps = defaults;'
       ].join('\n')
     },
+    {
+      code: [
+        'function MyStatelessComponent({ foo, bar }) {',
+        '  return <div>{foo}{bar}</div>;',
+        '}',
+        'MyStatelessComponent.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string.isRequired',
+        '};'
+      ].join('\n'),
+      options: [{ignoreFunctionalComponents: true}]
+    },
+    {
+      code: [
+        'function MyStatelessComponent({ foo = "test", bar }) {',
+        '  return <div>{foo}{bar}</div>;',
+        '}',
+        'MyStatelessComponent.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string.isRequired',
+        '};'
+      ].join('\n'),
+      options: [{ignoreFunctionalComponents: true}]
+    },
+    {
+      code: [
+        'function MyStatelessComponent({ foo = "test", bar }) {',
+        '  return <div>{foo}{bar}</div>;',
+        '}',
+        'MyStatelessComponent.propTypes = {',
+        '  foo: PropTypes.string,',
+        '};'
+      ].join('\n'),
+      options: [{forbidDefaultForRequired: true, ignoreFunctionalComponents: true}]
+    },
+    {
+      code: [
+        'export function MyStatelessComponent({ foo, bar }) {',
+        '  return <div>{foo}{bar}</div>;',
+        '}',
+        'MyStatelessComponent.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string.isRequired',
+        '};'
+      ].join('\n'),
+      options: [{ignoreFunctionalComponents: true}],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: [
+        'export function MyStatelessComponent({ foo, bar }) {',
+        '  return <div>{foo}{bar}</div>;',
+        '}',
+        'MyStatelessComponent.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string.isRequired',
+        '};'
+      ].join('\n'),
+      options: [{ignoreFunctionalComponents: true}],
+      parser: parsers.TYPESCRIPT_ESLINT
+    },
+    {
+      code: [
+        'export default function MyStatelessComponent({ foo, bar }) {',
+        '  return <div>{foo}{bar}</div>;',
+        '}',
+        'MyStatelessComponent.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string.isRequired',
+        '};'
+      ].join('\n'),
+      options: [{ignoreFunctionalComponents: true}],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: [
+        'export default function MyStatelessComponent({ foo, bar }) {',
+        '  return <div>{foo}{bar}</div>;',
+        '}',
+        'MyStatelessComponent.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string.isRequired',
+        '};'
+      ].join('\n'),
+      options: [{ignoreFunctionalComponents: true}],
+      parser: parsers.TYPESCRIPT_ESLINT
+    },
+
+    //
+    // stateless components as function expressions
+    {
+      code: `
+        import PropTypes from 'prop-types';
+        import React from 'react';
+
+        const MyComponent = function({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        };
+
+        MyComponent.propTypes = {
+          foo: PropTypes.string,
+          bar: PropTypes.string.isRequired
+        };
+
+        export default MyComponent;
+      `,
+      options: [{ignoreFunctionalComponents: true}]
+    },
+    {
+      code: `
+        import PropTypes from 'prop-types';
+        import React from 'react';
+
+        export const MyComponent = function({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        };
+
+        MyComponent.propTypes = {
+          foo: PropTypes.string,
+          bar: PropTypes.string.isRequired
+        };
+      `,
+      options: [{ignoreFunctionalComponents: true}],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        import PropTypes from 'prop-types';
+        import React from 'react';
+
+        export const MyComponent = function({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        };
+
+        MyComponent.propTypes = {
+          foo: PropTypes.string,
+          bar: PropTypes.string.isRequired
+        };
+      `,
+      options: [{ignoreFunctionalComponents: true}],
+      parser: parsers.TYPESCRIPT_ESLINT
+    },
+
+    //
+    // stateless components as arrow function expressions
+    {
+      code: `
+        import PropTypes from 'prop-types';
+        import React from 'react';
+
+        const MyComponent = ({ foo, bar }) => {
+          return <div>{foo}{bar}</div>;
+        };
+
+        MyComponent.propTypes = {
+          foo: PropTypes.string,
+          bar: PropTypes.string.isRequired
+        };
+
+        export default MyComponent;
+      `,
+      options: [{ignoreFunctionalComponents: true}]
+    },
+    {
+      code: `
+        import PropTypes from 'prop-types';
+        import React from 'react';
+
+        export const MyComponent = ({ foo, bar }) => {
+          return <div>{foo}{bar}</div>;
+        };
+
+        MyComponent.propTypes = {
+          foo: PropTypes.string,
+          bar: PropTypes.string.isRequired
+        };
+
+        export default MyComponent;
+      `,
+      options: [{ignoreFunctionalComponents: true}],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        import PropTypes from 'prop-types';
+        import React from 'react';
+
+        export const MyComponent = ({ foo, bar }) => {
+          return <div>{foo}{bar}</div>;
+        };
+
+        MyComponent.propTypes = {
+          foo: PropTypes.string,
+          bar: PropTypes.string.isRequired
+        };
+
+        export default MyComponent;
+      `,
+      options: [{ignoreFunctionalComponents: true}],
+      parser: parsers.TYPESCRIPT_ESLINT
+    },
 
     //
     // createReactClass components
@@ -213,6 +414,26 @@ ruleTester.run('require-default-props', rule, {
         '  }',
         '});'
       ].join('\n')
+    },
+    {
+      code: [
+        'var Greeting = createReactClass({',
+        '  render: function() {',
+        '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
+        '  },',
+        '  propTypes: {',
+        '    foo: PropTypes.string,',
+        '    bar: PropTypes.string',
+        '  },',
+        '  getDefaultProps: function() {',
+        '    return {',
+        '      foo: "foo",',
+        '      bar: "bar"',
+        '    };',
+        '  }',
+        '});'
+      ].join('\n'),
+      options: [{ignoreFunctionalComponents: true}]
     },
 
     //
@@ -313,6 +534,25 @@ ruleTester.run('require-default-props', rule, {
         'Greeting.defaultProps = {};',
         'Greeting.defaultProps.foo = "foo";'
       ].join('\n')
+    },
+    {
+      code: [
+        'class Greeting extends React.Component {',
+        '  render() {',
+        '    return (',
+        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
+        '    );',
+        '  }',
+        '}',
+        'Greeting.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string.isRequired',
+        '};',
+        'Greeting.defaultProps = {',
+        '  foo: "foo"',
+        '};'
+      ].join('\n'),
+      options: [{ignoreFunctionalComponents: true}]
     },
 
     //
@@ -1024,6 +1264,25 @@ ruleTester.run('require-default-props', rule, {
         '  },',
         '  propTypes: {',
         '    foo: PropTypes.string,',
+        '    bar: PropTypes.string.isRequired',
+        '  }',
+        '});'
+      ].join('\n'),
+      options: [{ignoreFunctionalComponents: true}],
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        line: 6,
+        column: 5
+      }]
+    },
+    {
+      code: [
+        'var Greeting = createReactClass({',
+        '  render: function() {',
+        '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
+        '  },',
+        '  propTypes: {',
+        '    foo: PropTypes.string,',
         '    bar: PropTypes.string',
         '  },',
         '  getDefaultProps: function() {',
@@ -1056,6 +1315,27 @@ ruleTester.run('require-default-props', rule, {
         '  bar: PropTypes.string.isRequired',
         '};'
       ].join('\n'),
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        line: 9,
+        column: 3
+      }]
+    },
+    {
+      code: [
+        'class Greeting extends React.Component {',
+        '  render() {',
+        '    return (',
+        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
+        '    );',
+        '  }',
+        '}',
+        'Greeting.propTypes = {',
+        '  foo: PropTypes.string,',
+        '  bar: PropTypes.string.isRequired',
+        '};'
+      ].join('\n'),
+      options: [{ignoreFunctionalComponents: true}],
       errors: [{
         message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
         line: 9,
@@ -1220,6 +1500,26 @@ ruleTester.run('require-default-props', rule, {
         'class Hello extends React.Component {',
         '  static get propTypes() {',
         '    return {',
+        '      name: PropTypes.string',
+        '    };',
+        '  }',
+        '  render() {',
+        '    return <div>Hello {this.props.name}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      options: [{ignoreFunctionalComponents: true}],
+      errors: [{
+        message: 'propType "name" is not required, but has no corresponding defaultProps declaration.',
+        line: 4,
+        column: 7
+      }]
+    },
+    {
+      code: [
+        'class Hello extends React.Component {',
+        '  static get propTypes() {',
+        '    return {',
         '      foo: PropTypes.string,',
         '      bar: PropTypes.string',
         '    };',
@@ -1306,6 +1606,28 @@ ruleTester.run('require-default-props', rule, {
         '}'
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
+      errors: [{
+        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        line: 8,
+        column: 5
+      }]
+    },
+    {
+      code: [
+        'class Greeting extends React.Component {',
+        '  render() {',
+        '    return (',
+        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
+        '    );',
+        '  }',
+        '  static propTypes = {',
+        '    foo: PropTypes.string,',
+        '    bar: PropTypes.string.isRequired',
+        '  };',
+        '}'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT,
+      options: [{ignoreFunctionalComponents: true}],
       errors: [{
         message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
         line: 8,

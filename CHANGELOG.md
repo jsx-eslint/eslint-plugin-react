@@ -11,6 +11,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
  * [`prop-types`][]: Support Flow Type spread ([#2446][] @moroine)
  * [`jsx-props-no-spreading`][]: add `explicitSpread` option to allow explicit spread of props ([#2449][] @pawelnvk)
  * [`jsx-no-target-blank`][]: warn on `target={'_blank'}` expressions ([#2451][] @timkraut)
+ * [`require-default-props`]: add option to ignore functional components ([#2532][] @RedTn)
 
 ### Fixed
  * [`sort-prop-types`][], [`jsx-sort-default-props`][]: disable broken autofix ([#2505][] @webOS101)
@@ -34,6 +35,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
  * [Docs] [`no-unused-prop-types`][]: clean up prose ([#2273][] @coryhouse)
  * [Docs] [`jsx-no-bind`][]: add section about React Hooks ([#2443][] @kdex)
 
+[#2532]: https://github.com/yannickcr/eslint-plugin-react/pull/2532
 [#2505]: https://github.com/yannickcr/eslint-plugin-react/pull/2505
 [#2504]: https://github.com/yannickcr/eslint-plugin-react/pull/2504
 [#2500]: https://github.com/yannickcr/eslint-plugin-react/pull/2500
