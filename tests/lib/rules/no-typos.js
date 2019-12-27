@@ -27,7 +27,7 @@ const parserOptions = {
 
 const ERROR_MESSAGE = 'Typo in static class property declaration';
 const ERROR_MESSAGE_ES5 = 'Typo in property declaration';
-const ERROR_MESSAGE_LIFECYCLE_METHOD = 'Typo in component lifecycle method declaration';
+const ERROR_MESSAGE_LIFECYCLE_METHOD = ({actual, expected}) => `Typo in component lifecycle method declaration: ${actual} should be ${expected}`;
 
 const ruleTester = new RuleTester();
 ruleTester.run('no-typos', rule, {
@@ -840,43 +840,43 @@ ruleTester.run('no-typos', rule, {
     `,
     parserOptions,
     errors: [{
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'GetDerivedStateFromProps', expected: 'getDerivedStateFromProps'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentWillMount', expected: 'componentWillMount'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'UNSAFE_ComponentWillMount', expected: 'UNSAFE_componentWillMount'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentDidMount', expected: 'componentDidMount'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentWillReceiveProps', expected: 'componentWillReceiveProps'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'UNSAFE_ComponentWillReceiveProps', expected: 'UNSAFE_componentWillReceiveProps'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ShouldComponentUpdate', expected: 'shouldComponentUpdate'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentWillUpdate', expected: 'componentWillUpdate'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'UNSAFE_ComponentWillUpdate', expected: 'UNSAFE_componentWillUpdate'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'GetSnapshotBeforeUpdate', expected: 'getSnapshotBeforeUpdate'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentDidUpdate', expected: 'componentDidUpdate'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentDidCatch', expected: 'componentDidCatch'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentWillUnmount', expected: 'componentWillUnmount'}),
       type: 'MethodDefinition'
     }]
   }, {
@@ -902,47 +902,47 @@ ruleTester.run('no-typos', rule, {
     `,
     parserOptions,
     errors: [{
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'Getderivedstatefromprops', expected: 'getDerivedStateFromProps'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'Componentwillmount', expected: 'componentWillMount'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'UNSAFE_Componentwillmount', expected: 'UNSAFE_componentWillMount'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'Componentdidmount', expected: 'componentDidMount'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'Componentwillreceiveprops', expected: 'componentWillReceiveProps'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'UNSAFE_Componentwillreceiveprops', expected: 'UNSAFE_componentWillReceiveProps'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'Shouldcomponentupdate', expected: 'shouldComponentUpdate'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'Componentwillupdate', expected: 'componentWillUpdate'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'UNSAFE_Componentwillupdate', expected: 'UNSAFE_componentWillUpdate'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'Getsnapshotbeforeupdate', expected: 'getSnapshotBeforeUpdate'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'Componentdidupdate', expected: 'componentDidUpdate'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'Componentdidcatch', expected: 'componentDidCatch'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'Componentwillunmount', expected: 'componentWillUnmount'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
-      type: 'MethodDefinition'
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'Render', expected: 'render'}),
+      nodeType: 'MethodDefinition'
     }]
   }, {
     code: `
@@ -967,43 +967,43 @@ ruleTester.run('no-typos', rule, {
     `,
     parserOptions,
     errors: [{
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'getderivedstatefromprops', expected: 'getDerivedStateFromProps'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'componentwillmount', expected: 'componentWillMount'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'unsafe_componentwillmount', expected: 'UNSAFE_componentWillMount'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'componentdidmount', expected: 'componentDidMount'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'componentwillreceiveprops', expected: 'componentWillReceiveProps'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'unsafe_componentwillreceiveprops', expected: 'UNSAFE_componentWillReceiveProps'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'shouldcomponentupdate', expected: 'shouldComponentUpdate'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'componentwillupdate', expected: 'componentWillUpdate'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'unsafe_componentwillupdate', expected: 'UNSAFE_componentWillUpdate'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'getsnapshotbeforeupdate', expected: 'getSnapshotBeforeUpdate'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'componentdidupdate', expected: 'componentDidUpdate'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'componentdidcatch', expected: 'componentDidCatch'}),
       type: 'MethodDefinition'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'componentwillunmount', expected: 'componentWillUnmount'}),
       type: 'MethodDefinition'
     }]
   }, {
@@ -1583,25 +1583,25 @@ ruleTester.run('no-typos', rule, {
       message: ERROR_MESSAGE_ES5,
       type: 'Identifier'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentWillMount', expected: 'componentWillMount'}),
       type: 'Property'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentDidMount', expected: 'componentDidMount'}),
       type: 'Property'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentWillReceiveProps', expected: 'componentWillReceiveProps'}),
       type: 'Property'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ShouldComponentUpdate', expected: 'shouldComponentUpdate'}),
       type: 'Property'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentWillUpdate', expected: 'componentWillUpdate'}),
       type: 'Property'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentDidUpdate', expected: 'componentDidUpdate'}),
       type: 'Property'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentWillUnmount', expected: 'componentWillUnmount'}),
       type: 'Property'
     }]
   }, {
@@ -1635,25 +1635,25 @@ ruleTester.run('no-typos', rule, {
       message: ERROR_MESSAGE_ES5,
       type: 'Identifier'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentWillMount', expected: 'componentWillMount'}),
       type: 'Property'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentDidMount', expected: 'componentDidMount'}),
       type: 'Property'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentWillReceiveProps', expected: 'componentWillReceiveProps'}),
       type: 'Property'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ShouldComponentUpdate', expected: 'shouldComponentUpdate'}),
       type: 'Property'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentWillUpdate', expected: 'componentWillUpdate'}),
       type: 'Property'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentDidUpdate', expected: 'componentDidUpdate'}),
       type: 'Property'
     }, {
-      message: ERROR_MESSAGE_LIFECYCLE_METHOD,
+      message: ERROR_MESSAGE_LIFECYCLE_METHOD({actual: 'ComponentWillUnmount', expected: 'componentWillUnmount'}),
       type: 'Property'
     }]
     /*
