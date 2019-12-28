@@ -742,6 +742,58 @@ eslintTester.run('no-unused-state', rule, {
         }
       }`,
       parser: parsers.BABEL_ESLINT
+    }, {
+      code: `
+      class Foo extends Component {
+        state = {
+          thisStateAliasProp,
+          thisStateAliasRestProp,
+          thisDestructStateAliasProp,
+          thisDestructStateAliasRestProp,
+          thisDestructStateDestructRestProp,
+          thisSetStateProp,
+          thisSetStateRestProp,
+        } as unknown
+
+        constructor() {
+          // other methods of defining state props
+          ((this as unknown).state as unknown) = { thisStateProp } as unknown;
+          ((this as unknown).setState as unknown)({ thisStateDestructProp } as unknown);
+          ((this as unknown).setState as unknown)(state => ({ thisDestructStateDestructProp } as unknown));
+        }
+
+        thisStateAlias() {
+          const state = (this as unknown).state as unknown;
+
+          (state as unknown).thisStateAliasProp as unknown;
+          const { ...thisStateAliasRest } = state as unknown;
+          (thisStateAliasRest as unknown).thisStateAliasRestProp as unknown;
+        }
+
+        thisDestructStateAlias() {
+          const { state } = this as unknown;
+
+          (state as unknown).thisDestructStateAliasProp as unknown;
+          const { ...thisDestructStateAliasRest } = state as unknown;
+          (thisDestructStateAliasRest as unknown).thisDestructStateAliasRestProp as unknown;
+        }
+
+        thisSetState() {
+          ((this as unknown).setState as unknown)(state => (state as unknown).thisSetStateProp as unknown);
+          ((this as unknown).setState as unknown)(({ ...thisSetStateRest }) => (thisSetStateRest as unknown).thisSetStateRestProp as unknown);
+        }
+
+        render() {
+          ((this as unknown).state as unknown).thisStateProp as unknown;
+          const { thisStateDestructProp } = (this as unknown).state as unknown;
+          const { state: { thisDestructStateDestructProp, ...thisDestructStateDestructRest } } = this as unknown;
+          (thisDestructStateDestructRest as unknown).thisDestructStateDestructRestProp as unknown;
+
+          return null;
+        }
+      }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT
     }
   ],
 
@@ -1119,6 +1171,70 @@ eslintTester.run('no-unused-state', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: getErrorMessages(['initial'])
+    }, {
+      code: `
+      class Foo extends Component {
+        state = {
+          thisStateAliasPropUnused,
+          thisStateAliasRestPropUnused,
+          thisDestructStateAliasPropUnused,
+          thisDestructStateAliasRestPropUnused,
+          thisDestructStateDestructRestPropUnused,
+          thisSetStatePropUnused,
+          thisSetStateRestPropUnused,
+        } as unknown
+
+        constructor() {
+          // other methods of defining state props
+          ((this as unknown).state as unknown) = { thisStatePropUnused } as unknown;
+          ((this as unknown).setState as unknown)({ thisStateDestructPropUnused } as unknown);
+          ((this as unknown).setState as unknown)(state => ({ thisDestructStateDestructPropUnused } as unknown));
+        }
+
+        thisStateAlias() {
+          const state = (this as unknown).state as unknown;
+
+          (state as unknown).thisStateAliasProp as unknown;
+          const { ...thisStateAliasRest } = state as unknown;
+          (thisStateAliasRest as unknown).thisStateAliasRestProp as unknown;
+        }
+
+        thisDestructStateAlias() {
+          const { state } = this as unknown;
+
+          (state as unknown).thisDestructStateAliasProp as unknown;
+          const { ...thisDestructStateAliasRest } = state as unknown;
+          (thisDestructStateAliasRest as unknown).thisDestructStateAliasRestProp as unknown;
+        }
+
+        thisSetState() {
+          ((this as unknown).setState as unknown)(state => (state as unknown).thisSetStateProp as unknown);
+          ((this as unknown).setState as unknown)(({ ...thisSetStateRest }) => (thisSetStateRest as unknown).thisSetStateRestProp as unknown);
+        }
+
+        render() {
+          ((this as unknown).state as unknown).thisStateProp as unknown;
+          const { thisStateDestructProp } = (this as unknown).state as unknown;
+          const { state: { thisDestructStateDestructProp, ...thisDestructStateDestructRest } } = this as unknown;
+          (thisDestructStateDestructRest as unknown).thisDestructStateDestructRestProp as unknown;
+
+          return null;
+        }
+      }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: getErrorMessages([
+        'thisStateAliasPropUnused',
+        'thisStateAliasRestPropUnused',
+        'thisDestructStateAliasPropUnused',
+        'thisDestructStateAliasRestPropUnused',
+        'thisDestructStateDestructRestPropUnused',
+        'thisSetStatePropUnused',
+        'thisSetStateRestPropUnused',
+        'thisStatePropUnused',
+        'thisStateDestructPropUnused',
+        'thisDestructStateDestructPropUnused'
+      ])
     }
   ]
 });

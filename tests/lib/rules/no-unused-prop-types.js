@@ -3125,8 +3125,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT
-    },
-    {
+    }, {
       code: `
         export default class Foo extends React.Component {
           render() {
@@ -3136,6 +3135,73 @@ ruleTester.run('no-unused-prop-types', rule, {
 
         Foo.defaultProps = Object.assign({});
       `
+    }, {
+      code: `
+        const Foo = (props) => {
+          const { foo } = props as unknown;
+          (props as unknown).bar as unknown;
+
+          return <></>;
+        };
+
+        Foo.propTypes = {
+          foo,
+          bar,
+        };
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT
+    }, {
+      code: `
+        class Foo extends React.Component {
+          static propTypes = {
+            prevProp,
+            nextProp,
+            setStateProp,
+            thisPropsAliasDestructProp,
+            thisPropsAliasProp,
+            thisDestructPropsAliasDestructProp,
+            thisDestructPropsAliasProp,
+            thisDestructPropsDestructProp,
+            thisPropsDestructProp,
+            thisPropsProp,
+          };
+
+          componentDidUpdate(prevProps) {
+            (prevProps as unknown).prevProp as unknown;
+          }
+
+          shouldComponentUpdate(nextProps) {
+            (nextProps as unknown).nextProp as unknown;
+          }
+
+          stateProps() {
+            ((this as unknown).setState as unknown)((_, props) => (props as unknown).setStateProp as unknown);
+          }
+
+          thisPropsAlias() {
+            const props = (this as unknown).props as unknown;
+
+            const { thisPropsAliasDestructProp } = props as unknown;
+            (props as unknown).thisPropsAliasProp as unknown;
+          }
+
+          thisDestructPropsAlias() {
+            const { props } = this as unknown;
+
+            const { thisDestructPropsAliasDestructProp } = props as unknown;
+            (props as unknown).thisDestructPropsAliasProp as unknown;
+          }
+
+          render() {
+            const { props: { thisDestructPropsDestructProp } } = this as unknown;
+            const { thisPropsDestructProp } = (this as unknown).props as unknown;
+            ((this as unknown).props as unknown).thisPropsProp as unknown;
+
+            return null;
+          }
+        }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT
     }
   ],
 
@@ -5143,6 +5209,99 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       errors: [{
         message: '\'unUsedProp\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: `
+        const Foo = (props) => {
+          const { foo } = props as unknown;
+          (props as unknown).bar as unknown;
+
+          return <></>;
+        };
+
+        Foo.propTypes = {
+          fooUnused,
+          barUnused,
+        };
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [{
+        message: '\'fooUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'barUnused\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: `
+        class Foo extends React.Component {
+          static propTypes = {
+            prevPropUnused,
+            nextPropUnused,
+            setStatePropUnused,
+            thisPropsAliasDestructPropUnused,
+            thisPropsAliasPropUnused,
+            thisDestructPropsAliasDestructPropUnused,
+            thisDestructPropsAliasPropUnused,
+            thisDestructPropsDestructPropUnused,
+            thisPropsDestructPropUnused,
+            thisPropsPropUnused,
+          };
+
+          componentDidUpdate(prevProps) {
+            (prevProps as unknown).prevProp as unknown;
+          }
+
+          shouldComponentUpdate(nextProps) {
+            (nextProps as unknown).nextProp as unknown;
+          }
+
+          stateProps() {
+            ((this as unknown).setState as unknown)((_, props) => (props as unknown).setStateProp as unknown);
+          }
+
+          thisPropsAlias() {
+            const props = (this as unknown).props as unknown;
+
+            const { thisPropsAliasDestructProp } = props as unknown;
+            (props as unknown).thisPropsAliasProp as unknown;
+          }
+
+          thisDestructPropsAlias() {
+            const { props } = this as unknown;
+
+            const { thisDestructPropsAliasDestructProp } = props as unknown;
+            (props as unknown).thisDestructPropsAliasProp as unknown;
+          }
+
+          render() {
+            const { props: { thisDestructPropsDestructProp } } = this as unknown;
+            const { thisPropsDestructProp } = (this as unknown).props as unknown;
+            ((this as unknown).props as unknown).thisPropsProp as unknown;
+
+            return null;
+          }
+        }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [{
+        message: '\'prevPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'nextPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'setStatePropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'thisPropsAliasDestructPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'thisPropsAliasPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'thisDestructPropsAliasDestructPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'thisDestructPropsAliasPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'thisDestructPropsDestructPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'thisPropsDestructPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'thisPropsPropUnused\' PropType is defined but prop is never used'
       }]
     }
 
