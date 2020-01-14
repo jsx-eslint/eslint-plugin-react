@@ -300,22 +300,21 @@ ruleTester.run('jsx-indent', rule, {
     ].join('\n'),
     parser: parsers.BABEL_ESLINT
   }, {
-    // Literals indentation is not touched
     code: [
       '<div>',
-      'bar <div>',
-      '   bar',
-      '   bar {foo}',
-      'bar </div>',
+      '    bar <div>',
+      '        bar',
+      '        bar {foo}',
+      '        bar </div>',
       '</div>'
     ].join('\n')
   }, {
     code: [
       '<>',
-      'bar <>',
-      '   bar',
-      '   bar {foo}',
-      'bar </>',
+      '    bar <>',
+      '        bar',
+      '        bar {foo}',
+      '        bar </>',
       '</>'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT
@@ -956,9 +955,53 @@ const Component = () => (
     }
     `,
     options: [2, {indentLogicalExpressions: true}]
+  }, {
+    code: [
+      '<App>',
+      '    text',
+      '</App>'
+    ].join('\n')
+  }, {
+    code: [
+      '<App>',
+      '    text',
+      '    text',
+      '    text',
+      '</App>'
+    ].join('\n')
+  }, {
+    code: [
+      '<App>',
+      '\ttext',
+      '</App>'
+    ].join('\n'),
+    options: ['tab']
   }],
 
   invalid: [{
+    code: [
+      '<div>',
+      'bar <div>',
+      '   bar',
+      '   bar {foo}',
+      '   bar </div>',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '    bar <div>',
+      '    bar',
+      '    bar {foo}',
+      '    bar </div>',
+      '</div>'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'},
+      {message: 'Expected indentation of 4 space characters but found 3.'},
+      {message: 'Expected indentation of 4 space characters but found 3.'},
+      {message: 'Expected indentation of 4 space characters but found 3.'}
+    ]
+  }, {
     code: [
       '<App>',
       '  <Foo />',
@@ -1882,6 +1925,70 @@ const Component = () => (
     ].join('\n'),
     errors: [
       {message: 'Expected indentation of 8 space characters but found 4.'}
+    ]
+  }, {
+    code: [
+      '<div>',
+      'text',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '    text',
+      '</div>'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
+    code: [
+      '<div>',
+      '  text',
+      'text',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '    text',
+      '    text',
+      '</div>'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 2.'},
+      {message: 'Expected indentation of 4 space characters but found 0.'}
+    ]
+  }, {
+    code: [
+      '<div>',
+      '\t  text',
+      '  \t  text',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '    text',
+      '    text',
+      '</div>'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'},
+      {message: 'Expected indentation of 4 space characters but found 2.'}
+    ]
+  }, {
+    code: [
+      '<div>',
+      '\t\ttext',
+      '</div>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT,
+    options: ['tab'],
+    output: [
+      '<div>',
+      '\ttext',
+      '</div>'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 1 tab character but found 2.'}
     ]
   }]
 });
