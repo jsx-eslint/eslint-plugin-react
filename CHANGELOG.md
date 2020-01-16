@@ -3,6 +3,53 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.18.0] - 2010-01-15
+
+### Added
+ * [`require-default-props`][]: add option to ignore functional components ([#2532][] @RedTn)
+ * [`function-component-definition`][]: Enforce a specific function type for function components ([#2414][] @Stefanwullems)
+ * [`no-adjacent-inline-elements`][]: Prevent adjacent inline elements not separated by whitespace ([#1155][] @SeanHayes)
+ * [`jsx-no-script-url`][]: prevent usage of `javascript:` URLs ([#2419][] @sergei-startsev)
+
+### Fixed
+ * [`jsx-pascal-case`][]: false negative with namespacing ([#1337][] @mfyuce)
+ * [`jsx-curly-brace-presence`][]: Fix `curly-brace-presence` edge cases ([#2523][] @rafbgarcia)
+ * [`prop-types`][]: Does not validate missing propTypes for LogicalExpression ([#2533][] @toshi-toma)
+ * [`no-unknown-property`][]: allowTransparency does not exist in React >= v16.1 ([#1538][] @dawidvdh)
+ * [`jsx-curly-brace-presence`][]: Fix error related to tags line break ([#2521][] @rafbgarcia)
+ * [`no-typos`][]: Compilation error when method name is string instead of identifier ([#2514][] @shijistar)
+ * [`jsx-curly-brace-presence`][]: allow trailing spaces in TemplateLiteral ([#2507][] @doochik)
+ * [`no-unused-prop-types`], [`no-unused-state`]: fix false positives when using TS type assertions ([#2536][] @kdmadej)
+
+### Changed
+ * [Docs] [`no-render-return-value`][]: Fix title ([#2540][] @micnic)
+ * [Refactor]: remove unused codes in util/propTypes ([#2288][] @golopot)
+ * [`no-typos`]: check static lifecycle methods ([#2006][] @bsonntag)
+ * [Docs] [`jsx-first-prop-new-line`][]: Fix rule name in "Rule Options" section ([#2535][] @barreira)
+ * [Tests] [`no-unused-prop-types`][]: Added test cases ([#977][] @dozoisch)
+ * [Tests] avoid running tests on pretest job
+ * [meta] Move eslint-plugin-eslint-plugin to devDeps ([#2510][] @nstepien)
+ * [Deps] update `array-includes`, `object.entries`, `object.fromentries`, `object.values`, `resolve`
+
+[#2540]: https://github.com/yannickcr/eslint-plugin-react/pull/2540
+[#2536]: https://github.com/yannickcr/eslint-plugin-react/pull/2536
+[#2535]: https://github.com/yannickcr/eslint-plugin-react/pull/2535
+[#2533]: https://github.com/yannickcr/eslint-plugin-react/pull/2533
+[#2532]: https://github.com/yannickcr/eslint-plugin-react/pull/2532
+[#2523]: https://github.com/yannickcr/eslint-plugin-react/pull/2523
+[#2521]: https://github.com/yannickcr/eslint-plugin-react/pull/2521
+[#2514]: https://github.com/yannickcr/eslint-plugin-react/pull/2514
+[#2510]: https://github.com/yannickcr/eslint-plugin-react/pull/2510
+[#2507]: https://github.com/yannickcr/eslint-plugin-react/pull/2507
+[#2419]: https://github.com/yannickcr/eslint-plugin-react/pull/2419
+[#2414]: https://github.com/yannickcr/eslint-plugin-react/pull/2414
+[#2288]: https://github.com/yannickcr/eslint-plugin-react/pull/2288
+[#2006]: https://github.com/yannickcr/eslint-plugin-react/pull/2006
+[#1538]: https://github.com/yannickcr/eslint-plugin-react/pull/1538
+[#1337]: https://github.com/yannickcr/eslint-plugin-react/pull/1337
+[#1155]: https://github.com/yannickcr/eslint-plugin-react/pull/1155
+[#977]: https://github.com/yannickcr/eslint-plugin-react/pull/977
+
 ## [7.17.0] - 2019-11-28
 
 ### Added
@@ -11,7 +58,6 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
  * [`prop-types`][]: Support Flow Type spread ([#2446][] @moroine)
  * [`jsx-props-no-spreading`][]: add `explicitSpread` option to allow explicit spread of props ([#2449][] @pawelnvk)
  * [`jsx-no-target-blank`][]: warn on `target={'_blank'}` expressions ([#2451][] @timkraut)
- * [`require-default-props`]: add option to ignore functional components ([#2532][] @RedTn)
  * [`function-component-definition`]: Enforce a specific function type for function components ([#2414][] @Stefanwullems)
 
 ### Fixed
