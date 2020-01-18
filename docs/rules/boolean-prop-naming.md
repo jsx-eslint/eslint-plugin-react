@@ -2,6 +2,10 @@
 
 Allows you to enforce a consistent naming pattern for props which expect a boolean value.
 
+> **Note**: You can provide types in runtime types using [PropTypes] and/or
+statically using [TypeScript] or [Flow]. This rule will validate your prop types
+regardless of how you define them.
+
 ## Rule Details
 
 The following patterns are considered warnings:
@@ -15,6 +19,13 @@ var Hello = createReactClass({
 });
 ```
 
+```jsx
+type Props = {
+  enabled: boolean
+}
+const Hello = (props: Props) => <div />;
+```
+
 The following patterns are **not** considered warnings:
 
 ```jsx
@@ -25,16 +36,22 @@ var Hello = createReactClass({
   render: function() { return <div />; };
 });
 ```
+```jsx
+type Props = {
+  isEnabled: boolean
+}
+const Hello = (props: Props) => <div />
+```
 
 ## Rule Options
 
 ```js
 ...
-"react/boolean-prop-naming": [<enabled>, { 
-  "propTypeNames": Array<string>, 
-  "rule": <string>, 
-  "message": <string>, 
-  "validateNested": <boolean> 
+"react/boolean-prop-naming": [<enabled>, {
+  "propTypeNames": Array<string>,
+  "rule": <string>,
+  "message": <string>,
+  "validateNested": <boolean>
 }]
 ...
 ```
@@ -99,3 +116,7 @@ This value is boolean. It tells if nested props should be validated as well. By 
 ```jsx
 "react/boolean-prop-naming": ["error", { "validateNested": true }]
 ```
+
+[PropTypes]: https://reactjs.org/docs/typechecking-with-proptypes.html
+[TypeScript]: http://www.typescriptlang.org/
+[Flow]: https://flow.org/

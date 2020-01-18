@@ -1,37 +1,66 @@
 # Prevent missing props validation in a React component definition (react/prop-types)
 
-PropTypes improve the reusability of your component by validating the received data.
+Defining types for component props improves reusability of your components by
+validating received data. It can warn other developers if they make a mistake while reusing the component with improper data type.
 
-It can warn other developers if they make a mistake while reusing the component with improper data type.
+> **Note**: You can provide types in runtime types using [PropTypes] and/or
+statically using [TypeScript] or [Flow]. This rule will validate your prop types
+regardless of how you define them.
 
 ## Rule Details
 
 The following patterns are considered warnings:
 
 ```jsx
-var Hello = createReactClass({
-  render: function() {
-    return <div>Hello {this.props.name}</div>;
-  }
-});
+function Hello({ name }) {
+  return <div>Hello {name}</div>;
+  // 'name' is missing in props validation
+}
 
 var Hello = createReactClass({
   propTypes: {
     firstname: PropTypes.string.isRequired
   },
   render: function() {
-    return <div>Hello {this.props.firstname} {this.props.lastname}</div>; // lastname type is not defined in propTypes
+    return <div>Hello {this.props.firstname} {this.props.lastname}</div>;
+    // 'lastname' type is missing in props validation
   }
 });
 
-function Hello({ name }) {
+// Or in ES6
+class Hello extends React.Component {
+  render() {
+    return <div>Hello {this.props.firstname} {this.props.lastname}</div>;
+    // 'lastname' type is missing in props validation
+  }
+}
+Hello.propTypes = {
+  firstname: PropTypes.string.isRequired
+}
+```
+
+In TypeScript:
+
+```tsx
+interface Props = {
+  age: number
+}
+function Hello({ name }: Props) {
   return <div>Hello {name}</div>;
+  // 'name' type is missing in props validation
 }
 ```
 
 Examples of correct usage without warnings:
 
 ```jsx
+function Hello({ name }) {
+  return <div>Hello {name}</div>;
+}
+Hello.propTypes = {
+  name: PropTypes.string.isRequired
+}
+
 var Hello = createReactClass({
   propTypes: {
     name: PropTypes.string.isRequired,
@@ -62,38 +91,31 @@ class HelloEs6WithPublicClassField extends React.Component {
 }
 ```
 
+In Flow:
+
+```tsx
+type Props = {
+  name: string
+}
+class Hello extends React.Component<Props> {
+  render() {
+    return <div>Hello {this.props.name}</div>;
+  }
+}
+```
+
 The following patterns are **not** considered warnings:
 
 ```jsx
-var Hello = createReactClass({
-  render: function() {
-    return <div>Hello World</div>;
-  }
-});
-
-var Hello = createReactClass({
-  propTypes: {
-    name: PropTypes.string.isRequired
-  },
-  render: function() {
-    return <div>Hello {this.props.name}</div>;
-  }
-});
+function Hello() {
+  return <div>Hello World</div>;
+}
 
 // Referencing an external object disable the rule for the component
-var Hello = createReactClass({
-  propTypes: myPropTypes,
-  render: function() {
-    return <div>Hello {this.props.name}</div>;
-  }
-});
-
 function Hello({ name }) {
   return <div>Hello {name}</div>;
 }
-Hello.propTypes = {
-  name: PropTypes.string.isRequired,
-};
+Hello.propTypes = myPropTypes;
 ```
 
 ## Rule Options
@@ -121,11 +143,11 @@ As it aptly noticed in
 
 > Why should children be an exception?
 > Most components don't need `this.props.children`, so that makes it extra important
-to document `children` in the propTypes.
+to document `children` in the prop types.
 
-Generally, you should use `PropTypes.node` for `children`. It accepts
-anything that can be rendered: numbers, strings, elements or an array containing
-these types.
+Generally, you should use `PropTypes.node` or static type `React.Node` for
+`children`. It accepts anything that can be rendered: numbers, strings, elements
+or an array containing these types.
 
 Since 2.0.0 children is no longer ignored for props validation.
 
@@ -135,6 +157,10 @@ For this rule to work we need to detect React components, this could be very har
 
 For now we should detect components created with:
 
+* a function that return JSX or the result of a `React.createElement` call.
 * `createReactClass()`
 * an ES6 class that inherit from `React.Component` or `Component`
-* a stateless function that return JSX or the result of a `React.createElement` call.
+
+[PropTypes]: https://reactjs.org/docs/typechecking-with-proptypes.html
+[TypeScript]: http://www.typescriptlang.org/
+[Flow]: https://flow.org/

@@ -1,6 +1,10 @@
 # Prevent definitions of unused propTypes (react/no-unused-prop-types)
 
-Warns if a propType isn't being used.
+Warns if a prop with a defined type isn't being used.
+
+> **Note**: You can provide types in runtime types using [PropTypes] and/or
+statically using [TypeScript] or [Flow]. This rule will validate your prop types
+regardless of how you define them.
 
 ## Rule Details
 
@@ -19,17 +23,17 @@ Hello.propTypes = {
 ```
 
 ```jsx
-class Hello extends React.Component {
+type Props = {
+  firstname: string,
+  middlename: string, // middlename is never used above
+  lastname: string
+}
+
+class Hello extends React.Component<Props> {
   render() {
     return <div>Hello {this.props.firstname} {this.props.lastname}</div>;
   }
 }
-
-Hello.propTypes: {
-  firstname: PropTypes.string.isRequired,
-  middlename: PropTypes.string.isRequired, // middlename is never used above
-  lastname: PropTypes.string.isRequired
-},
 ```
 
 The following patterns are **not** considered warnings:
@@ -114,3 +118,7 @@ AComponent.propTypes = {
   bProp: PropTypes.string
 };
 ```
+
+[PropTypes]: https://reactjs.org/docs/typechecking-with-proptypes.html
+[TypeScript]: http://www.typescriptlang.org/
+[Flow]: https://flow.org/

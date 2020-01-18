@@ -1,6 +1,6 @@
 # Enforce propTypes declarations alphabetical sorting (react/sort-prop-types)
 
-Some developers prefer to sort propTypes declarations alphabetically to be able to find necessary declaration easier at the later time. Others feel that it adds complexity and becomes burden to maintain.
+Some developers prefer to sort prop type declaratioms alphabetically to be able to find necessary declaration easier at the later time. Others feel that it adds complexity and becomes burden to maintain.
 
 ## Rule Details
 
@@ -17,16 +17,18 @@ var Component = createReactClass({
   },
 ...
 });
-
-class Component extends React.Component {
+```
+```jsx
+type Props = {
+  z: number,
+  a: any,
+  b: string
+}
+class Component extends React.Component<Props> {
   ...
 }
-Component.propTypes = {
-  z: PropTypes.number,
-  a: PropTypes.any,
-  b: PropTypes.string
-};
-
+```
+```jsx
 class Component extends React.Component {
   static propTypes = {
     z: PropTypes.any,
@@ -50,16 +52,18 @@ var Component = createReactClass({
   },
 ...
 });
-
-class Component extends React.Component {
+```
+```jsx
+type Props = {
+  a: string,
+  b: any,
+  c: string,
+}
+class Component extends React.Component<Props> {
   ...
 }
-Component.propTypes = {
-  a: PropTypes.string,
-  b: PropTypes.any,
-  c: PropTypes.string
-};
-
+```
+```jsx
 class Component extends React.Component {
   static propTypes = {
     a: PropTypes.any,

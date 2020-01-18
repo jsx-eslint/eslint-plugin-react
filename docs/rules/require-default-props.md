@@ -1,9 +1,18 @@
 # Enforce a defaultProps definition for every prop that is not a required prop (react/require-default-props)
 
-This rule aims to ensure that any non-required `PropType` declaration of a component has a corresponding `defaultProps` value.
+This rule aims to ensure that any non-required prop types of a component has a
+corresponding `defaultProps` value.
 
-One advantage of `defaultProps` over custom default logic in your code is that `defaultProps` are resolved by React before the `PropTypes` typechecking happens, so typechecking will also apply to your `defaultProps`.
-The same also holds true for stateless functional components: default function parameters do not behave the same as `defaultProps` and thus using `defaultProps` is still preferred.
+> **Note**: You can provide types in runtime types using [PropTypes] and/or
+statically using [TypeScript] or [Flow]. This rule will validate your prop types
+regardless of how you define them.
+
+One advantage of `defaultProps` over custom default logic in your code is that
+`defaultProps` are resolved by React before the `PropTypes` typechecking
+happens, so typechecking will also apply to your `defaultProps`. The same also
+holds true for stateless functional components: default function parameters do
+not behave the same as `defaultProps` and thus using `defaultProps` is still
+preferred.
 
 To illustrate, consider the following example:
 
@@ -337,3 +346,7 @@ If you don't care about using `defaultsProps` for your component's props that ar
 
 # Resources
 - [Official React documentation on defaultProps](https://facebook.github.io/react/docs/typechecking-with-proptypes.html#default-prop-values)
+
+[PropTypes]: https://reactjs.org/docs/typechecking-with-proptypes.html
+[TypeScript]: http://www.typescriptlang.org/
+[Flow]: https://flow.org/

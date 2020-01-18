@@ -1,10 +1,15 @@
 # Enforce all defaultProps have a corresponding non-required PropType (react/default-props-match-prop-types)
 
-This rule aims to ensure that any `defaultProp` has a non-required `PropType` declaration.
+This rule aims to ensure that any prop in `defaultProps` has a non-required type
+definition.
 
-Having `defaultProps` for non-existent `propTypes` is likely the result of errors in refactoring
-or a sign of a missing `propType`. Having a `defaultProp` for a required property similarly
-indicates a possible refactoring problem.
+> **Note**: You can provide types in runtime types using [PropTypes] and/or
+statically using [TypeScript] or [Flow]. This rule will validate your prop types
+regardless of how you define them.
+
+Having `defaultProps` for non-existent prop types is likely the result of errors
+in refactoring or a sign of a missing prop type. Having a `defaultProp` for a
+required property similarly indicates a possible refactoring problem.
 
 ## Rule Details
 
@@ -160,7 +165,7 @@ NotAComponent.propTypes = {
 
 ### `allowRequiredDefaults`
 
-When `true` the rule will ignore `defaultProps` for `isRequired` `propTypes`.
+When `true` the rule will ignore `defaultProps` for required prop types.
 
 The following patterns are considered okay and do not cause warnings:
 
@@ -190,3 +195,6 @@ If you don't care about stray `defaultsProps` in your components, you can disabl
 # Resources
 - [Official React documentation on defaultProps](https://facebook.github.io/react/docs/typechecking-with-proptypes.html#default-prop-values)
 
+[PropTypes]: https://reactjs.org/docs/typechecking-with-proptypes.html
+[TypeScript]: http://www.typescriptlang.org/
+[Flow]: https://flow.org/
