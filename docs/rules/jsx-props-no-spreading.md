@@ -21,12 +21,11 @@ const {one_prop, two_prop} = otherProps;
 <img src={src} alt={alt} />
 ```
 
-
 ## Rule Options
 
 ```js
 ...
-"react/jsx-props-no-spreading": [{
+"react/jsx-props-no-spreading": [<enabled>, {
     "html": "ignore" | "enforce",
     "custom": "ignore" | "enforce",
     "explicitSpread": "ignore" | "enforce",
@@ -62,6 +61,7 @@ The following patterns are **not** considered warnings when `custom` is set to `
 ```
 
 The following patterns are still considered warnings:
+
 ```jsx
 <img {...props} />
 ```
@@ -93,6 +93,7 @@ const {src, alt} = props;
 ```
 
 The following patterns are considered warnings:
+
 ```jsx
 <MyCustomComponent {...props} />
 ```
@@ -111,6 +112,7 @@ const {one_prop, two_prop} = otherProps;
 ```
 
 The following patterns are considered warnings:
+
 ```jsx
 <img {...props} />
 ```
