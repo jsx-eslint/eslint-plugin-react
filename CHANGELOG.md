@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
-## [7.18.0] - 2010-01-15
+## [7.18.0] - 2020-01-15
 
 ### Added
  * [`require-default-props`][]: add option to ignore functional components ([#2532][] @RedTn)
