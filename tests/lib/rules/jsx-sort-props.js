@@ -109,15 +109,18 @@ ruleTester.run('jsx-sort-props', rule, {
     {code: '<App a="c" b="b" c="a" />;'},
     {code: '<App {...this.props} a="c" b="b" c="a" />;'},
     {code: '<App c="a" {...this.props} a="c" b="b" />;'},
-    {code: '<App a A />;'},
-    {code: '<App aa aB />;'},
+    {code: '<App A a />;'},
+    {code: '<App aB aa/>;'},
     {code: '<App aA aB />;'},
-    {code: '<App aaa aB />;'},
-    {code: '<App a aa aB />;'},
+    {code: '<App aB aaa />;'},
+    {code: '<App a aB aa />;'},
+    {code: '<App Number="2" name="John" />;'},
     // Ignoring case
     {code: '<App a A />;', options: ignoreCaseArgs},
+    {code: '<App aa aB />;', options: ignoreCaseArgs},
     {code: '<App a B c />;', options: ignoreCaseArgs},
     {code: '<App A b C />;', options: ignoreCaseArgs},
+    {code: '<App name="John" Number="2" />;', options: ignoreCaseArgs},
     // Sorting callbacks below all other props
     {code: '<App a z onBar onFoo />;', options: callbacksLastArgs},
     {code: '<App z onBar onFoo />;', options: ignoreCaseAndCallbackLastArgs},
@@ -175,9 +178,14 @@ ruleTester.run('jsx-sort-props', rule, {
       output: '<App a aB />;'
     },
     {
-      code: '<App A a />;',
+      code: '<App fistName="John" tel={5555555} name="John Smith" lastName="Smith" Number="2" />;',
+      errors: [expectedError, expectedError, expectedError],
+      output: '<App Number="2" fistName="John" lastName="Smith" name="John Smith" tel={5555555} />;'
+    },
+    {
+      code: '<App aa aB />;',
       errors: [expectedError],
-      output: '<App a A />;'
+      output: '<App aB aa />;'
     },
     {
       code: '<App aB aA />;',
@@ -191,8 +199,8 @@ ruleTester.run('jsx-sort-props', rule, {
     },
     {
       code: '<App aaB aaa aA a />;',
-      errors: [expectedError, expectedError, expectedError],
-      output: '<App a aA aaa aaB />;'
+      errors: [expectedError, expectedError],
+      output: '<App a aA aaB aaa />;'
     },
     {
       code: '<App {...this.props} b a />;',
@@ -203,6 +211,12 @@ ruleTester.run('jsx-sort-props', rule, {
       code: '<App c {...this.props} b a />;',
       errors: [expectedError],
       output: '<App c {...this.props} a b />;'
+    },
+    {
+      code: '<App fistName="John" tel={5555555} name="John Smith" lastName="Smith" Number="2" />;',
+      options: ignoreCaseArgs,
+      errors: [expectedError, expectedError, expectedError],
+      output: '<App fistName="John" lastName="Smith" name="John Smith" Number="2" tel={5555555} />;'
     },
     {
       code: '<App B a />;',
