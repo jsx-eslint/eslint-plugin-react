@@ -37,7 +37,8 @@
     "object.values": "^1.1.1",
     "prop-types": "^15.7.2",
     "resolve": "^1.14.2",
-    "string.prototype.matchall": "^4.0.2"
+    "string.prototype.matchall": "^4.0.2",
+    "xregexp": "^4.2.4"
   },
   "devDependencies": {
     "@types/eslint": "^6.1.3",

@@ -47,7 +47,11 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<T3StComp0Nent />'
   }, {
-    code: '<T />'
+    code: '<Éurströmming />'
+  }, {
+    code: '<Año />'
+  }, {
+    code: '<Søknad />'
   }, {
     code: '<T />',
     parser: parsers.BABEL_ESLINT
