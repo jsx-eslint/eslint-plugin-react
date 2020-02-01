@@ -3,6 +3,24 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.18.1] - 2020-02-01
+
+### Fixed
+ * [`jsx-indent`][]: Does not check indents for JSXText ([#2542][] @toshi-toma)
+ * [`jsx-props-no-spreading`][]: add support for namespaced jsx components ([#2534][] @jonathanpalma)
+ * [`jsx-no-target-blank`][]: allow rel to be an expression ([#2544][] @odinho)
+ * [`sort-comp`][]: `|` isn’t a valid regex flag; `u` and `s` are (@ljharb)
+
+### Changed
+ * [Docs] use `markdown-magic` to automatically sort all rules alphabetically ([#1742][] @ybiquitous)
+ * [Docs] [`jsx-props-no-spreading`][]: fix typo to use correct rule ([#2547][] @jonggyun))
+
+[#2547]: https://github.com/yannickcr/eslint-plugin-react/pull/2547
+[#2544]: https://github.com/yannickcr/eslint-plugin-react/pull/2544
+[#2542]: https://github.com/yannickcr/eslint-plugin-react/pull/2542
+[#2534]: https://github.com/yannickcr/eslint-plugin-react/pull/2534
+[#1742]: https://github.com/yannickcr/eslint-plugin-react/pull/1742
+
 ## [7.18.0] - 2020-01-15
 
 ### Added
