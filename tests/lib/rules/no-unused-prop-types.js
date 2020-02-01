@@ -3202,6 +3202,15 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.TYPESCRIPT_ESLINT
+    },
+    {
+      code: [
+        'declare class Thing {',
+        '  constructor({ id }: { id: string });',
+        '}',
+        'export default Thing;'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT
     }
   ],
 
