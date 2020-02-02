@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.18.2] - 2020-02-01
+
+### Fixed
+ * [`jsx-indent`][]: avoid a crash on non-string literals ([#2561][] @ljharb)
+
+[7.18.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.18.1...v7.18.2
+[#2561]: https://github.com/yannickcr/eslint-plugin-react/issue/2561
+
 ## [7.18.1] - 2020-02-01
 
 ### Fixed
@@ -15,6 +23,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
  * [Docs] use `markdown-magic` to automatically sort all rules alphabetically ([#1742][] @ybiquitous)
  * [Docs] [`jsx-props-no-spreading`][]: fix typo to use correct rule ([#2547][] @jonggyun))
 
+[7.18.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.18.0...v7.18.1
 [#2547]: https://github.com/yannickcr/eslint-plugin-react/pull/2547
 [#2544]: https://github.com/yannickcr/eslint-plugin-react/pull/2544
 [#2542]: https://github.com/yannickcr/eslint-plugin-react/pull/2542
@@ -49,6 +58,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
  * [meta] Move eslint-plugin-eslint-plugin to devDeps ([#2510][] @nstepien)
  * [Deps] update `array-includes`, `object.entries`, `object.fromentries`, `object.values`, `resolve`
 
+[7.18.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.17.0...v7.18.0
 [#2540]: https://github.com/yannickcr/eslint-plugin-react/pull/2540
 [#2536]: https://github.com/yannickcr/eslint-plugin-react/pull/2536
 [#2535]: https://github.com/yannickcr/eslint-plugin-react/pull/2535
@@ -100,6 +110,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
  * [Docs] [`no-unused-prop-types`][]: clean up prose ([#2273][] @coryhouse)
  * [Docs] [`jsx-no-bind`][]: add section about React Hooks ([#2443][] @kdex)
 
+[7.17.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.16.0...v7.17.0
 [#2532]: https://github.com/yannickcr/eslint-plugin-react/pull/2532
 [#2505]: https://github.com/yannickcr/eslint-plugin-react/pull/2505
 [#2504]: https://github.com/yannickcr/eslint-plugin-react/pull/2504
@@ -135,6 +146,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-curly-brace-presence`][]: warns incorrectly on trailing whitespace ([#2431][] @BC-M)
 * [`no-unused-prop-types`][]: false positive when nested destructuring ([#2428][] @golopot)
 
+[7.16.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.15.1...v7.16.0
 [#2437]: https://github.com/yannickcr/eslint-plugin-react/pull/2437
 [#2431]: https://github.com/yannickcr/eslint-plugin-react/pull/2431
 [#2429]: https://github.com/yannickcr/eslint-plugin-react/pull/2429
@@ -148,6 +160,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Changed
 * [Docs] [`prefer-es6-class`][]: Fix typos ([#2425][] @spencerbyw)
 
+[7.15.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.15.0...v7.15.1
 [#2426]: https://github.com/yannickcr/eslint-plugin-react/pull/2426
 [#2425]: https://github.com/yannickcr/eslint-plugin-react/pull/2425
 
@@ -181,6 +194,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Docs] [`no-access-state-in-setstate`][]: update grammar ([#2418][] @neaumusic)
 * [`jsx-curly-brace-presence`][], [`jsx-one-expression-per-line`][], [`no-danger-with-children`][]: add `isWhiteSpaces` to `lib/util/jsx` ([#2409][] @vedadeepta)
 
+[7.15.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.14.3...v7.15.0
 [#2422]: https://github.com/yannickcr/eslint-plugin-react/pull/2422
 [#2410]: https://github.com/yannickcr/eslint-plugin-react/pull/2410
 [#2409]: https://github.com/yannickcr/eslint-plugin-react/pull/2409
