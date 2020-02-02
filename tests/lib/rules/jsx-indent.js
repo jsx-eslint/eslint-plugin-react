@@ -976,6 +976,19 @@ const Component = () => (
       '</App>'
     ].join('\n'),
     options: ['tab']
+  }, {
+    code: [
+      '<App>',
+      '\t{undefined}',
+      '\t{null}',
+      '\t{true}',
+      '\t{false}',
+      '\t{42}',
+      '\t{NaN}',
+      '\t{"foo"}',
+      '</App>'
+    ].join('\n'),
+    options: ['tab']
   }],
 
   invalid: [{
