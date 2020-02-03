@@ -3,6 +3,14 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.18.3] - 2020-02-02
+
+### Fixed
+ * [`jsx-indent`][]: don't check literals not within JSX ([#2564][] @toshi-toma)
+
+[7.18.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.18.2...v7.18.3
+[#2564]: https://github.com/yannickcr/eslint-plugin-react/issue/2564
+
 ## [7.18.2] - 2020-02-01
 
 ### Fixed
