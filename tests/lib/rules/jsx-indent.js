@@ -989,6 +989,14 @@ const Component = () => (
       '</App>'
     ].join('\n'),
     options: ['tab']
+  }, {
+    // don't check literals not within JSX. See #2563
+    code: [
+      'function foo() {',
+      'const a = `aa`;',
+      'const b = `b\nb`;',
+      '}'
+    ].join('\n')
   }],
 
   invalid: [{
@@ -2002,6 +2010,21 @@ const Component = () => (
     ].join('\n'),
     errors: [
       {message: 'Expected indentation of 1 tab character but found 2.'}
+    ]
+  }, {
+    code: [
+      '<>',
+      'aaa',
+      '</>'
+    ].join('\n'),
+    parser: parsers.BABEL_ESLINT,
+    output: [
+      '<>',
+      '    aaa',
+      '</>'
+    ].join('\n'),
+    errors: [
+      {message: 'Expected indentation of 4 space characters but found 0.'}
     ]
   }]
 });
