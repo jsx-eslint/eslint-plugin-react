@@ -482,6 +482,13 @@ ruleTester.run('display-name', rule, {
         return <div>{items}</div>;
       }
     `
+  }, {
+    code: `
+      import {Component} from "react";
+      type LinkProps = {...{}};
+      class Link extends Component<LinkProps> {}
+    `,
+    parser: parsers.BABEL_ESLINT
   }],
 
   invalid: [{
