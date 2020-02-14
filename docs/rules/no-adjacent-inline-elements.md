@@ -1,4 +1,4 @@
-# Prevent adjacent inline elements not separated by whitespace. (no-adjacent-inline-elements)
+# Prevent adjacent inline elements not separated by whitespace. (react/no-adjacent-inline-elements)
 
 Adjacent inline elements not separated by whitespace will bump up against each
 other when viewed in an unstyled manner, which usually isn't desirable.
