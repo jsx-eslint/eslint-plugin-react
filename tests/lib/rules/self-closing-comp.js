@@ -31,7 +31,11 @@ ruleTester.run('self-closing-comp', rule, {
     {
       code: 'var HelloJohn = <Hello name="John" />;'
     }, {
+      code: 'var HelloJohn = <Hello.Compound name="John" />;'
+    }, {
       code: 'var Profile = <Hello name="John"><img src="picture.png" /></Hello>;'
+    }, {
+      code: 'var Profile = <Hello.Compound name="John"><img src="picture.png" /></Hello.Compound>;'
     }, {
       code: `
         <Hello>
@@ -39,9 +43,19 @@ ruleTester.run('self-closing-comp', rule, {
         </Hello>
       `
     }, {
+      code: `
+        <Hello.Compound>
+          <Hello.Compound name="John" />
+        </Hello.Compound>
+      `
+    }, {
       code: 'var HelloJohn = <Hello name="John"> </Hello>;'
     }, {
+      code: 'var HelloJohn = <Hello.Compound name="John"> </Hello.Compound>;'
+    }, {
       code: 'var HelloJohn = <Hello name="John">        </Hello>;'
+    }, {
+      code: 'var HelloJohn = <Hello.Compound name="John">        </Hello.Compound>;'
     }, {
       code: 'var HelloJohn = <div>&nbsp;</div>;'
     }, {
@@ -49,16 +63,31 @@ ruleTester.run('self-closing-comp', rule, {
     }, {
       code: 'var HelloJohn = <Hello name="John">&nbsp;</Hello>;'
     }, {
+      code: 'var HelloJohn = <Hello.Compound name="John">&nbsp;</Hello.Compound>;'
+    }, {
       code: 'var HelloJohn = <Hello name="John" />;',
       options: []
     }, {
+      code: 'var HelloJohn = <Hello.Compound name="John" />;',
+      options: []
+    }, {
       code: 'var Profile = <Hello name="John"><img src="picture.png" /></Hello>;',
+      options: []
+    }, {
+      code: 'var Profile = <Hello.Compound name="John"><img src="picture.png" /></Hello.Compound>;',
       options: []
     }, {
       code: `
         <Hello>
           <Hello name="John" />
         </Hello>
+      `,
+      options: []
+    }, {
+      code: `
+        <Hello.Compound>
+          <Hello.Compound name="John" />
+        </Hello.Compound>
       `,
       options: []
     }, {
@@ -77,13 +106,25 @@ ruleTester.run('self-closing-comp', rule, {
       code: 'var HelloJohn = <Hello name="John">&nbsp;</Hello>;',
       options: []
     }, {
+      code: 'var HelloJohn = <Hello.Compound name="John">&nbsp;</Hello.Compound>;',
+      options: []
+    }, {
       code: 'var HelloJohn = <Hello name="John"></Hello>;',
+      options: [{component: false}]
+    }, {
+      code: 'var HelloJohn = <Hello.Compound name="John"></Hello.Compound>;',
       options: [{component: false}]
     }, {
       code: 'var HelloJohn = <Hello name="John">\n</Hello>;',
       options: [{component: false}]
     }, {
+      code: 'var HelloJohn = <Hello.Compound name="John">\n</Hello.Compound>;',
+      options: [{component: false}]
+    }, {
       code: 'var HelloJohn = <Hello name="John"> </Hello>;',
+      options: [{component: false}]
+    }, {
+      code: 'var HelloJohn = <Hello.Compound name="John"> </Hello.Compound>;',
       options: [{component: false}]
     }, {
       code: 'var contentContainer = <div className="content" />;',
@@ -122,8 +163,20 @@ ruleTester.run('self-closing-comp', rule, {
         message: 'Empty components are self-closing'
       }]
     }, {
+      code: 'var CompoundHelloJohn = <Hello.Compound name="John"></Hello.Compound>;',
+      output: 'var CompoundHelloJohn = <Hello.Compound name="John" />;',
+      errors: [{
+        message: 'Empty components are self-closing'
+      }]
+    }, {
       code: 'var HelloJohn = <Hello name="John">\n</Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
+      errors: [{
+        message: 'Empty components are self-closing'
+      }]
+    }, {
+      code: 'var HelloJohn = <Hello.Compound name="John">\n</Hello.Compound>;',
+      output: 'var HelloJohn = <Hello.Compound name="John" />;',
       errors: [{
         message: 'Empty components are self-closing'
       }]
@@ -135,8 +188,22 @@ ruleTester.run('self-closing-comp', rule, {
         message: 'Empty components are self-closing'
       }]
     }, {
+      code: 'var HelloJohn = <Hello.Compound name="John"></Hello.Compound>;',
+      output: 'var HelloJohn = <Hello.Compound name="John" />;',
+      options: [],
+      errors: [{
+        message: 'Empty components are self-closing'
+      }]
+    }, {
       code: 'var HelloJohn = <Hello name="John">\n</Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
+      options: [],
+      errors: [{
+        message: 'Empty components are self-closing'
+      }]
+    }, {
+      code: 'var HelloJohn = <Hello.Compound name="John">\n</Hello.Compound>;',
+      output: 'var HelloJohn = <Hello.Compound name="John" />;',
       options: [],
       errors: [{
         message: 'Empty components are self-closing'

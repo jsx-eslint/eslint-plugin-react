@@ -10,6 +10,8 @@ The following patterns are considered warnings:
 
 ```jsx
 var HelloJohn = <Hello name="John"></Hello>;
+
+var HelloJohnCompound = <Hello.Compound name="John"></Hello.Compound>;
 ```
 
 The following patterns are **not** considered warnings:
@@ -21,7 +23,11 @@ var intentionalSpace = <div>{' '}</div>;
 
 var HelloJohn = <Hello name="John" />;
 
+var HelloJohnCompound = <Hello.Compound name="John" />;
+
 var Profile = <Hello name="John"><img src="picture.png" /></Hello>;
+
+var ProfileCompound = <Hello.Compound name="John"><img src="picture.png" /></Hello.Compound>;
 
 var HelloSpace = <Hello>{' '}</Hello>;
 ```
@@ -58,7 +64,11 @@ var intentionalSpace = <div>{' '}</div>;
 
 var HelloJohn = <Hello name="John" />;
 
+var HelloJohnCompound = <Hello.Compound name="John" />;
+
 var Profile = <Hello name="John"><img src="picture.png" /></Hello>;
+
+var ProfileCompound = <Hello.Compound name="John"><img src="picture.png" /></Hello.Compound>;
 ```
 
 ### `html`
