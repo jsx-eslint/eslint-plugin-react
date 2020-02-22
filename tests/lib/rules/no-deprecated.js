@@ -223,8 +223,8 @@ ruleTester.run('no-deprecated', rule, {
         {
           message: errorMessage(
             'componentWillMount', '16.9.0', 'UNSAFE_componentWillMount',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 3,
@@ -233,8 +233,8 @@ ruleTester.run('no-deprecated', rule, {
         {
           message: errorMessage(
             'componentWillReceiveProps', '16.9.0', 'UNSAFE_componentWillReceiveProps',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 4,
@@ -242,8 +242,8 @@ ruleTester.run('no-deprecated', rule, {
         },
         {
           message: errorMessage('componentWillUpdate', '16.9.0', 'UNSAFE_componentWillUpdate',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 5,
@@ -265,8 +265,8 @@ ruleTester.run('no-deprecated', rule, {
         {
           message: errorMessage(
             'componentWillMount', '16.9.0', 'UNSAFE_componentWillMount',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 4,
@@ -275,8 +275,8 @@ ruleTester.run('no-deprecated', rule, {
         {
           message: errorMessage(
             'componentWillReceiveProps', '16.9.0', 'UNSAFE_componentWillReceiveProps',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 5,
@@ -284,8 +284,8 @@ ruleTester.run('no-deprecated', rule, {
         },
         {
           message: errorMessage('componentWillUpdate', '16.9.0', 'UNSAFE_componentWillUpdate',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 6,
@@ -305,8 +305,8 @@ ruleTester.run('no-deprecated', rule, {
         {
           message: errorMessage(
             'componentWillMount', '16.9.0', 'UNSAFE_componentWillMount',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 3,
@@ -315,8 +315,8 @@ ruleTester.run('no-deprecated', rule, {
         {
           message: errorMessage(
             'componentWillReceiveProps', '16.9.0', 'UNSAFE_componentWillReceiveProps',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 4,
@@ -324,8 +324,8 @@ ruleTester.run('no-deprecated', rule, {
         },
         {
           message: errorMessage('componentWillUpdate', '16.9.0', 'UNSAFE_componentWillUpdate',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 5,
@@ -345,8 +345,8 @@ ruleTester.run('no-deprecated', rule, {
         {
           message: errorMessage(
             'componentWillMount', '16.9.0', 'UNSAFE_componentWillMount',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 3,
@@ -355,8 +355,8 @@ ruleTester.run('no-deprecated', rule, {
         {
           message: errorMessage(
             'componentWillReceiveProps', '16.9.0', 'UNSAFE_componentWillReceiveProps',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 4,
@@ -364,8 +364,8 @@ ruleTester.run('no-deprecated', rule, {
         },
         {
           message: errorMessage('componentWillUpdate', '16.9.0', 'UNSAFE_componentWillUpdate',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 5,
@@ -385,8 +385,8 @@ ruleTester.run('no-deprecated', rule, {
         {
           message: errorMessage(
             'componentWillMount', '16.9.0', 'UNSAFE_componentWillMount',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 3,
@@ -395,8 +395,8 @@ ruleTester.run('no-deprecated', rule, {
         {
           message: errorMessage(
             'componentWillReceiveProps', '16.9.0', 'UNSAFE_componentWillReceiveProps',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 4,
@@ -404,8 +404,8 @@ ruleTester.run('no-deprecated', rule, {
         },
         {
           message: errorMessage('componentWillUpdate', '16.9.0', 'UNSAFE_componentWillUpdate',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 5,
@@ -425,8 +425,8 @@ ruleTester.run('no-deprecated', rule, {
         {
           message: errorMessage(
             'componentWillMount', '16.9.0', 'UNSAFE_componentWillMount',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 3,
@@ -435,8 +435,8 @@ ruleTester.run('no-deprecated', rule, {
         {
           message: errorMessage(
             'componentWillReceiveProps', '16.9.0', 'UNSAFE_componentWillReceiveProps',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 4,
@@ -444,8 +444,8 @@ ruleTester.run('no-deprecated', rule, {
         },
         {
           message: errorMessage('componentWillUpdate', '16.9.0', 'UNSAFE_componentWillUpdate',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 5,
@@ -466,8 +466,8 @@ ruleTester.run('no-deprecated', rule, {
         {
           message: errorMessage(
             'componentWillMount', '16.9.0', 'UNSAFE_componentWillMount',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 4,
@@ -476,8 +476,8 @@ ruleTester.run('no-deprecated', rule, {
         {
           message: errorMessage(
             'componentWillReceiveProps', '16.9.0', 'UNSAFE_componentWillReceiveProps',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillreceiveprops. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 5,
@@ -485,8 +485,8 @@ ruleTester.run('no-deprecated', rule, {
         },
         {
           message: errorMessage('componentWillUpdate', '16.9.0', 'UNSAFE_componentWillUpdate',
-            'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate. ' +
-            'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
+            'https://reactjs.org/docs/react-component.html#unsafe_componentwillupdate. '
+            + 'Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.'
           ),
           type: 'Identifier',
           line: 6,

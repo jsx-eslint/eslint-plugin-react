@@ -23,7 +23,6 @@
           "ignoreTemplateLiterals": true,
           "ignoreComments": true,
         }],
-        "operator-linebreak": [2, "after"],
         "consistent-return": 0,
 
         "prefer-destructuring": [2, { "array": false, "object": false }, { "enforceForRenamedProperties": false }],

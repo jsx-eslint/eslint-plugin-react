@@ -99,22 +99,22 @@ ruleTester.run('jsx-fragments', rule, {
     parser: parsers.BABEL_ESLINT,
     settings: settingsOld,
     errors: [{
-      message: 'Fragments are only supported starting from React v16.2. ' +
-        'Please disable the `react/jsx-fragments` rule in ESLint settings or upgrade your version of React.'
+      message: 'Fragments are only supported starting from React v16.2. '
+        + 'Please disable the `react/jsx-fragments` rule in ESLint settings or upgrade your version of React.'
     }]
   }, {
     code: '<Act.Frag><Foo /></Act.Frag>',
     settings: settingsOld,
     errors: [{
-      message: 'Fragments are only supported starting from React v16.2. ' +
-        'Please disable the `react/jsx-fragments` rule in ESLint settings or upgrade your version of React.'
+      message: 'Fragments are only supported starting from React v16.2. '
+        + 'Please disable the `react/jsx-fragments` rule in ESLint settings or upgrade your version of React.'
     }]
   }, {
     code: '<Act.Frag />',
     settings: settingsOld,
     errors: [{
-      message: 'Fragments are only supported starting from React v16.2. ' +
-        'Please disable the `react/jsx-fragments` rule in ESLint settings or upgrade your version of React.'
+      message: 'Fragments are only supported starting from React v16.2. '
+        + 'Please disable the `react/jsx-fragments` rule in ESLint settings or upgrade your version of React.'
     }]
   }, {
     code: '<><Foo /></>',
