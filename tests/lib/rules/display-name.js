@@ -465,6 +465,14 @@ ruleTester.run('display-name', rule, {
     `
   }, {
     code: `
+      import React from 'react';
+
+      const Hello = React.memo(function Hello() {
+        return;
+      });
+    `
+  }, {
+    code: `
       import React from 'react'
 
       const ForwardRefComponentLike = React.forwardRef(function ComponentLike({ world }, ref) {
