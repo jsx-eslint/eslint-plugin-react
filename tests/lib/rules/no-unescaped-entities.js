@@ -9,6 +9,14 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
+const semver = require('semver');
+
+let allowsInvalidJSX = false;
+try {
+  // eslint-disable-next-line import/no-extraneous-dependencies, global-require
+  allowsInvalidJSX = semver.satisfies(require('acorn-jsx/package.json').version, '< 5.2');
+} catch (e) { /**/ }
+
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-unescaped-entities');
 
@@ -107,7 +115,7 @@ ruleTester.run('no-unescaped-entities', rule, {
   ],
 
   invalid: [
-    {
+    (allowsInvalidJSX && {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -116,7 +124,7 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       errors: [{message: '`>` can be escaped with `&gt;`.'}]
-    }, {
+    }), {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -126,7 +134,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{message: '`>` can be escaped with `&gt;`.'}]
-    }, {
+    }, (allowsInvalidJSX && {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -137,7 +145,7 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       errors: [{message: '`>` can be escaped with `&gt;`.'}]
-    }, {
+    }), {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -158,7 +166,7 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       errors: [{message: '`\'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.'}]
-    }, {
+    }, (allowsInvalidJSX && {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -171,7 +179,7 @@ ruleTester.run('no-unescaped-entities', rule, {
         {message: '`>` can be escaped with `&gt;`.'},
         {message: '`>` can be escaped with `&gt;`.'}
       ]
-    }, {
+    }), (allowsInvalidJSX && {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -180,7 +188,7 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       errors: [{message: '`}` can be escaped with `&#125;`.'}]
-    }, {
+    }), {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -231,5 +239,5 @@ ruleTester.run('no-unescaped-entities', rule, {
         }]
       }]
     }
-  ]
+  ].filter(Boolean)
 });

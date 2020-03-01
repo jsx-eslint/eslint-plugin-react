@@ -37,6 +37,7 @@
     "object.values": "^1.1.1",
     "prop-types": "^15.7.2",
     "resolve": "^1.15.1",
+    "semver": "^6.3.0",
     "string.prototype.matchall": "^4.0.2",
     "xregexp": "^4.3.0"
   },
@@ -69,5 +70,10 @@
     "eslintplugin",
     "react"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "greenkeeper": {
+    "ignore": [
+      "semver"
+    ]
+  }
 }
