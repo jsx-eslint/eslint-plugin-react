@@ -158,6 +158,18 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `
     }, {
+      // Issue 2187
+      code: `
+        class Foo extends React.Component {
+          constructor(props)
+
+          render() {
+            return <div>{this.props.foo}</div>;
+          }
+        }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT
+    }, {
       // Use this.bar
       code: `
         class Foo extends React.Component {
