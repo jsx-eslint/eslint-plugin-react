@@ -8,6 +8,7 @@ declare global {
   type Scope = eslint.Scope.Scope;
   type Token = eslint.AST.Token;
   type Fixer = eslint.Rule.RuleFixer;
+  type RuleContext = eslint.Rule.RuleContext;
   type JSXAttribute = ASTNode;
   type JSXElement = ASTNode;
   type JSXFragment = ASTNode;
@@ -16,6 +17,8 @@ declare global {
   interface Context extends eslint.SourceCode {
     getFirstTokens(node: estree.Node | ASTNode, options?: eslint.SourceCode.CursorWithCountOptions): eslint.AST.Token[];
   }
+
+  interface Listener extends eslint.Rule.RuleListener { }
 
   type TypeDeclarationBuilder = (annotation: ASTNode, parentName: string, seen: Set<typeof annotation>) => object;
 

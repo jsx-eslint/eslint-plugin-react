@@ -310,15 +310,21 @@ ruleTester.run('function-component-definition', rule, {
     code: [
       'function Hello(props) {',
       '  return <div/>',
+      '}',
+      'function Hello2(props) {',
+      '  return <div/>',
       '}'
     ].join('\n'),
     output: [
       'var Hello = (props) => {',
       '  return <div/>',
+      '}',
+      'var Hello2 = (props) => {',
+      '  return <div/>',
       '}'
     ].join('\n'),
     options: [{namedComponents: 'arrow-function'}],
-    errors: [{messageId: 'arrow-function'}],
+    errors: [{messageId: 'arrow-function'}, {messageId: 'arrow-function'}],
     parser: parsers.BABEL_ESLINT
   }, {
     code: [
