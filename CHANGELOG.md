@@ -3,6 +3,37 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.19.0] - 2020-03-06
+
+### Added
+ * [`style-prop-object`][]: Add `allow` option ([#1819][] @hornta)
+ * [`jsx-pascal-case`][]: Support unicode characters ([#2557][] @Svish)
+
+### Fixed
+ * [`prefer-stateless-function`][]: avoid crash on ts empty constructor ([#2582][] @golopot)
+ * [`no-adjacent-inline-elements`][]: avoid a crash ([#2575] @ljharb)
+ * [`no-unused-prop-types`][]: Change the reporting to point to a more accurate node ([#2292][] @jseminck)
+ * [`self-closing-comp`][]: consider JSXMemberExpression as component too ([#2572][] @Belco90)
+ * [`no-unused-prop-types`][]: make `markPropTypesAsUsed` work with `TSEmptyBodyFunctionExpression` AST node ([#2560][] @guillaumewuip)
+ * [`displayName`][] (but really, `propTypes` detection): do not crash on empty flow type spreads ([#2570][] @ljharb)
+
+### Changed
+ * [readme] Small visual inconsistency ([#2568] @arvigeus)
+ * [docs] add `react/` prefix to rule name, for consistency
+ * [`no-unescaped-entities`][]: skip test cases that are now parsing errors in acorn-jsx@5.2.0 ([#2583] @golopot)
+
+[7.19.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.18.3...v7.19.0
+[#2583]: https://github.com/yannickcr/eslint-plugin-react/pull/2583
+[#2582]: https://github.com/yannickcr/eslint-plugin-react/pull/2582
+[#2575]: https://github.com/yannickcr/eslint-plugin-react/issue/2575
+[#2572]: https://github.com/yannickcr/eslint-plugin-react/pull/2572
+[#2570]: https://github.com/yannickcr/eslint-plugin-react/issue/2570
+[#2568]: https://github.com/yannickcr/eslint-plugin-react/pull/2568
+[#2560]: https://github.com/yannickcr/eslint-plugin-react/pull/2560
+[#2557]: https://github.com/yannickcr/eslint-plugin-react/pull/2557
+[#2292]: https://github.com/yannickcr/eslint-plugin-react/pull/2292
+[#1819]: https://github.com/yannickcr/eslint-plugin-react/pull/1819
+
 ## [7.18.3] - 2020-02-02
 
 ### Fixed
