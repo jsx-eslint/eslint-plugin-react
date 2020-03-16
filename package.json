@@ -37,7 +37,6 @@
     "object.values": "^1.1.1",
     "prop-types": "^15.7.2",
     "resolve": "^1.15.1",
-    "semver": "^6.3.0",
     "string.prototype.matchall": "^4.0.2",
     "xregexp": "^4.3.0"
   },
@@ -54,6 +53,7 @@
     "istanbul": "^0.4.5",
     "markdown-magic": "^1.0.0",
     "mocha": "^5.2.0",
+    "semver": "^6.3.0",
     "sinon": "^7.5.0",
     "typescript": "^3.8.2",
     "typescript-eslint-parser": "^20.1.1"
