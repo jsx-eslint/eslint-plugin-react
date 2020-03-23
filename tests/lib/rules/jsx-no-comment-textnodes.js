@@ -9,10 +9,19 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
+const semver = require('semver');
+const version = require('eslint/package.json').version;
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-no-comment-textnodes');
 
 const parsers = require('../../helpers/parsers');
+
+function TS(tests) {
+  if (semver.satisfies(version, '>= 5')) {
+    return tests;
+  }
+  return [];
+}
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -173,7 +182,133 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       code: '<pre>&#x2F;&#42; TODO: Write perfect code &#42;&#x2F;</pre>',
       parser: parsers.BABEL_ESLINT
     }
-  ],
+  ].concat(TS([
+    {
+      code: `
+      class Comp1 extends Component {
+        render() {
+          return (
+            <div>
+              {/* valid */}
+            </div>
+          );
+        }
+      }
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    }, {
+      code: `
+      class Comp1 extends Component {
+        render() {
+          return (
+            <>
+              {/* valid */}
+            </>
+          );
+        }
+      }
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    }, {
+      code: `
+      class Comp1 extends Component {
+        render() {
+          return (<div>{/* valid */}</div>);
+        }
+      }
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    }, {
+      code: `
+      class Comp1 extends Component {
+        render() {
+          const bar = (<div>{/* valid */}</div>);
+          return bar;
+        }
+      }
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    }, {
+      code: `
+      var Hello = createReactClass({
+        foo: (<div>{/* valid */}</div>),
+        render() {
+          return this.foo;
+        },
+      });
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    }, {
+      code: `
+      class Comp1 extends Component {
+        render() {
+          return (
+            <div>
+              {/* valid */}
+              {/* valid 2 */}
+              {/* valid 3 */}
+            </div>
+          );
+        }
+      }
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    }, {
+      code: `
+      class Comp1 extends Component {
+        render() {
+          return (
+            <div>
+            </div>
+          );
+        }
+      }
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    }, {
+      code: `
+      var foo = require('foo');
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    }, {
+      code: `
+      <Foo bar='test'>
+        {/* valid */}
+      </Foo>
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    },
+    {
+      code: `
+      <strong>
+        &nbsp;https://www.example.com/attachment/download/1
+      </strong>
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    },
+
+    // inside element declarations
+    {
+      code: `
+      <Foo /* valid */ placeholder={'foo'}/>
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    },
+    {
+      code: `
+      <Foo title={'foo' /* valid */}/>
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    },
+    {
+      code: '<pre>&#x2F;&#x2F; TODO: Write perfect code</pre>',
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    },
+    {
+      code: '<pre>&#x2F;&#42; TODO: Write perfect code &#42;&#x2F;</pre>',
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    }
+  ])),
 
   invalid: [
     {
@@ -253,5 +388,83 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
     }
-  ]
+  ].concat(TS([
+    {
+      code: `
+      class Comp1 extends Component {
+        render() {
+          return (<div>// invalid</div>);
+        }
+      }
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+    }, {
+      code: `
+      class Comp1 extends Component {
+        render() {
+          return (<>// invalid</>);
+        }
+      }
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+    }, {
+      code: `
+      class Comp1 extends Component {
+        render() {
+          return (<div>/* invalid */</div>);
+        }
+      }
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+    }, {
+      code: `
+      class Comp1 extends Component {
+        render() {
+          return (
+            <div>
+              // invalid
+            </div>
+          );
+        }
+      }
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+    }, {
+      code: `
+      class Comp1 extends Component {
+        render() {
+          return (
+            <div>
+              asdjfl
+              /* invalid */
+              foo
+            </div>
+          );
+        }
+      }
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+    }, {
+      code: `
+      class Comp1 extends Component {
+        render() {
+          return (
+            <div>
+              {'asdjfl'}
+              // invalid
+              {'foo'}
+            </div>
+          );
+        }
+      }
+    `,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+    }
+  ]))
 });

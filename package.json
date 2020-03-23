@@ -44,6 +44,7 @@
     "@types/eslint": "^6.1.8",
     "@types/estree": "0.0.42",
     "@types/node": "^13.7.4",
+    "@typescript-eslint/parser": "^2.24.0",
     "babel-eslint": "^8.2.6",
     "coveralls": "^3.0.9",
     "eslint": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0",
