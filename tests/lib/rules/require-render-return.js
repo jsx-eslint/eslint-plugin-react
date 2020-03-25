@@ -150,7 +150,7 @@ ruleTester.run('require-render-return', rule, {
       });
     `,
     errors: [{
-      message: 'Your render method should have return statement',
+      message: 'Your render method should have a return statement',
       line: 4
     }]
   }, {
@@ -161,7 +161,7 @@ ruleTester.run('require-render-return', rule, {
       }
     `,
     errors: [{
-      message: 'Your render method should have return statement'
+      message: 'Your render method should have a return statement'
     }]
   }, {
     // Missing return (but one is present in a sub-function)
@@ -175,7 +175,7 @@ ruleTester.run('require-render-return', rule, {
       }
     `,
     errors: [{
-      message: 'Your render method should have return statement',
+      message: 'Your render method should have a return statement',
       line: 3
     }]
   }, {
@@ -189,7 +189,7 @@ ruleTester.run('require-render-return', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Your render method should have return statement',
+      message: 'Your render method should have a return statement',
       type: 'ClassProperty'
     }]
   }]
