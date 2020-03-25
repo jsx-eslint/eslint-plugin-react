@@ -1651,6 +1651,17 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT
     }, {
+      code: `
+        type FooProps = {
+          ...any,
+          ...42,
+        }
+        function Foo(props: FooProps) {
+          return <p />;
+        }
+      `,
+      parser: parsers.BABEL_ESLINT
+    }, {
       code: [
         'type Person = {',
         '  firstname: string',
