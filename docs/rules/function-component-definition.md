@@ -86,7 +86,7 @@ function getComponent () {
 // only arrow functions for unnamed components
 // [2, { "unnamedComponents": "arrow-function" }]
 function getComponent () {
-  return (props) => {
+  return function (props) {
     return <div />;
   };
 }
@@ -118,7 +118,7 @@ var Component = (props) => {
 // only function expressions for unnamed components
 // [2, { "unnamedComponents": "function-expression" }]
 function getComponent () {
-  return (props) => {
+  return function (props) {
     return <div />;
   };
 }
