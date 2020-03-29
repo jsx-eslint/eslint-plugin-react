@@ -9,6 +9,7 @@ describe('Version', () => {
   const base = path.resolve(__dirname, '..', 'fixtures', 'version');
   let cwd;
   let expectedErrorArgs = [];
+  let getCwd = () => cwd
 
   beforeEach(() => {
     cwd = process.cwd();
@@ -27,7 +28,7 @@ describe('Version', () => {
   });
 
   describe('Detect version', () => {
-    const context = {settings: {react: {version: 'detect', flowVersion: 'detect'}}};
+    const context = {settings: {react: {version: 'detect', flowVersion: 'detect'}}, getCwd};
 
     it('matches detected version', () => {
       process.chdir('detect-version');
