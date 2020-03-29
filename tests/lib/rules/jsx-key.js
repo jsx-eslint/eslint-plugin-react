@@ -50,7 +50,7 @@ ruleTester.run('jsx-key', rule, {
     {code: 'foo(() => <></>);', parser: parsers.BABEL_ESLINT},
     {code: '<></>;', parser: parsers.BABEL_ESLINT}
   ],
-  invalid: [{
+  invalid: [].concat({
     code: '[<App />];',
     errors: [{message: 'Missing "key" prop for element in array'}]
   }, {
@@ -69,6 +69,14 @@ ruleTester.run('jsx-key', rule, {
     code: '[1, 2 ,3].map(x => { return <App /> });',
     errors: [{message: 'Missing "key" prop for element in iterator'}]
   }, {
+    code: '[1, 2, 3]?.map(x => <BabelEslintApp />)',
+    parser: parsers.BABEL_ESLINT,
+    errors: [{message: 'Missing "key" prop for element in iterator'}]
+  }, parsers.TS({
+    code: '[1, 2, 3]?.map(x => <TypescriptEslintApp />)',
+    parser: parsers['@TYPESCRIPT_ESLINT'],
+    errors: [{message: 'Missing "key" prop for element in iterator'}]
+  }), {
     code: '[1, 2, 3].map(x => <>{x}</>);',
     parser: parsers.BABEL_ESLINT,
     options: [{checkFragmentShorthand: true}],
@@ -80,5 +88,5 @@ ruleTester.run('jsx-key', rule, {
     options: [{checkFragmentShorthand: true}],
     settings,
     errors: [{message: 'Missing "key" prop for element in array. Shorthand fragment syntax does not support providing keys. Use Act.Frag instead'}]
-  }]
+  })
 });
