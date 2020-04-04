@@ -8,7 +8,7 @@
 // Constants
 // ------------------------------------------------------------------------------
 
-const ERROR_MESSAGE = 'Stateless functional components should not use this';
+const ERROR_MESSAGE = 'Stateless functional components should not use `this`';
 
 // ------------------------------------------------------------------------------
 // Requirements

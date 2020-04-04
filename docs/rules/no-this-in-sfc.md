@@ -1,9 +1,8 @@
 # Prevent `this` from being used in stateless functional components (react/no-this-in-sfc)
 
-When using a stateless functional component (SFC), props/context aren't accessed in the same way as a class component or the `create-react-class` format. Both props and context are passed as separate arguments to the component instead. Also, as the name suggests, a stateless component does not have state on `this.state`.
+In React, there are two styles of component. One is a class component: `class Foo extends React.Component {...}`, which accesses its props, context, and state as properties of `this`: `this.props.foo`, etc. The other are stateless functional components (SFCs): `function Foo(props, context) {...}`. As you can see, there's no `state` (hence the name - hooks do not change this), and the props and context are provided as its two functional arguments. In an SFC, state is usually best implements with a [React hook](https://reactjs.org/docs/hooks-overview.html) such as `React.useState()`.
 
-Attempting to access properties on `this` can be a potential error if someone is unaware of the differences when writing a SFC or missed when converting a class component to a SFC.
-
+Attempting to access properties on `this` can sometimes be valid, but it's very commonly an error caused by unfamiliarity with the differences between the two styles of components, or a missed reference when converting a class component to an SFC.
 
 ## Rule Details
 
