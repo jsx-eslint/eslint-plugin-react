@@ -70,6 +70,10 @@ ruleTester.run('no-adjacent-inline-elements', rule, {
       parserOptions
     },
     {
+      code: 'React.createElement("div", null, "some text");',
+      parserOptions
+    },
+    {
       code: ('React.createElement("div", undefined, [React.createElement("a"), ' +
         '" some text ", React.createElement("a")]);'),
       parserOptions
