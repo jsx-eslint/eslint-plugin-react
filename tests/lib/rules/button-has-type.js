@@ -118,6 +118,12 @@ ruleTester.run('button-has-type', rule, {
           pragma: 'Foo'
         }
       }
+    },
+    {
+      code: 'function Button({ type, ...extraProps }) { const button = type; return <button type={button} {...extraProps} />; }',
+      errors: [{
+        message: 'The button type attribute must be specified by a static string'
+      }]
     }
   ]
 });
