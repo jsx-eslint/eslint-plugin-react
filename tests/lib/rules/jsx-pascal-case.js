@@ -80,10 +80,6 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<div />'
   }, {
-    code: '<svg:path />'
-  }, {
-    code: '<foo.bar />'
-  }, {
     code: '<IGNORED />',
     options: [{ignore: ['IGNORED']}]
   }],
@@ -104,6 +100,9 @@ ruleTester.run('jsx-pascal-case', rule, {
     code: '<$a />',
     errors: [{message: 'Imported JSX component $a must be in PascalCase'}]
   }, {
+    code: '<foo.bar />',
+    errors: [{message: 'Imported JSX component bar must be in PascalCase'}]
+  }, {
     code: '<object.testComponent />',
     errors: [{message: 'Imported JSX component testComponent must be in PascalCase'}]
   }, {
@@ -113,11 +112,14 @@ ruleTester.run('jsx-pascal-case', rule, {
     code: '<__this.testComponent />',
     errors: [{message: 'Imported JSX component testComponent must be in PascalCase'}]
   }, {
+    code: '<svg:path />',
+    errors: [{message: 'Imported JSX component svg:path must be in PascalCase'}]
+  }, {
     code: '<ns:testComponent />',
     errors: [{message: 'Imported JSX component ns:testComponent must be in PascalCase'}]
   }, {
     code: '<Ns:testComponent />',
-    errors: [{message: 'Imported JSX component _Ns:testComponent must be in PascalCase'}]
+    errors: [{message: 'Imported JSX component Ns:testComponent must be in PascalCase'}]
   }, {
     code: '<__ns:testComponent />',
     errors: [{message: 'Imported JSX component __ns:testComponent must be in PascalCase'}]
