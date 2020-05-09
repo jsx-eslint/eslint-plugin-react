@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Added
+* add [`no-namespace`] rule ([#2640] @yacinehmito @ljharb)
+
+[#2640]: https://github.com/yannickcr/eslint-plugin-react/pull/2640
+
 ## [7.25.3] - 2021.09.19
 
 ### Fixed
@@ -3437,6 +3442,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`no-find-dom-node`]: docs/rules/no-find-dom-node.md
 [`no-is-mounted`]: docs/rules/no-is-mounted.md
 [`no-multi-comp`]: docs/rules/no-multi-comp.md
+[`no-namespace`]: docs/rules/no-namespace.md
 [`no-redundant-should-component-update`]: docs/rules/no-redundant-should-component-update.md
 [`no-render-return-value`]: docs/rules/no-render-return-value.md
 [`no-set-state`]: docs/rules/no-set-state.md
