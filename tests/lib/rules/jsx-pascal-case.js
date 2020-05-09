@@ -68,17 +68,23 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<__this.TestComponent />'
   }, {
-    code: '<Modal:Header />'
-  }, {
-    code: '<layout:Header />'
-  }, {
-    code: '<__ns:TestComponent />'
-  }, {
     code: '<$ />'
   }, {
     code: '<_ />'
   }, {
     code: '<div />'
+  }, {
+    code: '<svg:path />'
+  }, {
+    code: '<ns:testComponent />'
+  }, {
+    code: '<Ns:testComponent />'
+  }, {
+    code: '<Modal:Header />'
+  }, {
+    code: '<layout:Header />'
+  }, {
+    code: '<__ns:testComponent />'
   }, {
     code: '<IGNORED />',
     options: [{ignore: ['IGNORED']}]
@@ -111,18 +117,6 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<__this.testComponent />',
     errors: [{message: 'Imported JSX component testComponent must be in PascalCase'}]
-  }, {
-    code: '<svg:path />',
-    errors: [{message: 'Imported JSX component svg:path must be in PascalCase'}]
-  }, {
-    code: '<ns:testComponent />',
-    errors: [{message: 'Imported JSX component ns:testComponent must be in PascalCase'}]
-  }, {
-    code: '<Ns:testComponent />',
-    errors: [{message: 'Imported JSX component Ns:testComponent must be in PascalCase'}]
-  }, {
-    code: '<__ns:testComponent />',
-    errors: [{message: 'Imported JSX component __ns:testComponent must be in PascalCase'}]
   }, {
     code: '<_TEST_COMPONENT />',
     options: [{allowAllCaps: true}],
