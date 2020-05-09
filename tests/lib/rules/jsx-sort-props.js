@@ -401,7 +401,7 @@ ruleTester.run('jsx-sort-props', rule, {
     },
     {
       code: '<App a="a" onBar onFoo z x />;',
-      errors: [shorthandAndCallbackLastArgs],
+      errors: [expectedError],
       options: shorthandLastArgs,
       output: '<App a="a" onBar onFoo x z />;'
     },
