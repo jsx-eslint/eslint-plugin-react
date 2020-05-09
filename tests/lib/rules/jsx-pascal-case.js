@@ -66,17 +66,32 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<qualification.T3StComp0Nent />'
   }, {
+    code: '<__this.TestComponent />'
+  }, {
     code: '<Modal:Header />'
   }, {
-    code: '<IGNORED />',
-    options: [{ignore: ['IGNORED']}]
+    code: '<layout:Header />'
+  }, {
+    code: '<__ns:TestComponent />'
   }, {
     code: '<$ />'
   }, {
     code: '<_ />'
+  }, {
+    code: '<div />'
+  }, {
+    code: '<svg:path />'
+  }, {
+    code: '<foo.bar />'
+  }, {
+    code: '<IGNORED />',
+    options: [{ignore: ['IGNORED']}]
   }],
 
   invalid: [{
+    code: '<testComponent />',
+    errors: [{message: 'Imported JSX component testComponent must be in PascalCase'}]
+  }, {
     code: '<Test_component />',
     errors: [{message: 'Imported JSX component Test_component must be in PascalCase'}]
   }, {
@@ -85,6 +100,27 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<YMCA />',
     errors: [{message: 'Imported JSX component YMCA must be in PascalCase'}]
+  }, {
+    code: '<$a />',
+    errors: [{message: 'Imported JSX component $a must be in PascalCase'}]
+  }, {
+    code: '<object.testComponent />',
+    errors: [{message: 'Imported JSX component testComponent must be in PascalCase'}]
+  }, {
+    code: '<Module.testComponent />',
+    errors: [{message: 'Imported JSX component testComponent must be in PascalCase'}]
+  }, {
+    code: '<__this.testComponent />',
+    errors: [{message: 'Imported JSX component testComponent must be in PascalCase'}]
+  }, {
+    code: '<ns:testComponent />',
+    errors: [{message: 'Imported JSX component ns:testComponent must be in PascalCase'}]
+  }, {
+    code: '<Ns:testComponent />',
+    errors: [{message: 'Imported JSX component _Ns:testComponent must be in PascalCase'}]
+  }, {
+    code: '<__ns:testComponent />',
+    errors: [{message: 'Imported JSX component __ns:testComponent must be in PascalCase'}]
   }, {
     code: '<_TEST_COMPONENT />',
     options: [{allowAllCaps: true}],
@@ -97,8 +133,5 @@ ruleTester.run('jsx-pascal-case', rule, {
     code: '<__ />',
     options: [{allowAllCaps: true}],
     errors: [{message: 'Imported JSX component __ must be in PascalCase or SCREAMING_SNAKE_CASE'}]
-  }, {
-    code: '<$a />',
-    errors: [{message: 'Imported JSX component $a must be in PascalCase'}]
   }]
 });
