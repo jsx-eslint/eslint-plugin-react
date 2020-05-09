@@ -78,28 +78,31 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<_ />'
   }, {
-    code: '<div />'
-  }, {
+    // The rule must not warn on components with a namespace
+    // because this pattern is handled by jsx-no-namespace
     code: '<svg:path />'
   }, {
     code: '<ns:testComponent />'
   }, {
     code: '<Ns:testComponent />'
   }, {
+    code: '<__ns:testComponent />'
+  }, {
+    code: '<ns:TestComponent />'
+  }, {
+    code: '<Ns:TestComponent />'
+  }, {
+    code: '<__ns:TestComponent />'
+  }, {
     code: '<Modal:Header />'
   }, {
     code: '<layout:Header />'
-  }, {
-    code: '<__ns:testComponent />'
   }, {
     code: '<IGNORED />',
     options: [{ignore: ['IGNORED']}]
   }],
 
   invalid: [{
-    code: '<testComponent />',
-    errors: [{message: 'Imported JSX component testComponent must be in PascalCase'}]
-  }, {
     code: '<Test_component />',
     errors: [{message: 'Imported JSX component Test_component must be in PascalCase'}]
   }, {
