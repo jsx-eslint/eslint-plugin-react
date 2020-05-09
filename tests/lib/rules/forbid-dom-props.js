@@ -126,5 +126,70 @@ ruleTester.run('forbid-element-props', rule, {
       column: 8,
       type: 'JSXAttribute'
     }]
+  }, {
+    code: [
+      'const First = (props) => (',
+      '  <div className="foo" />',
+      ');'
+    ].join('\n'),
+    options: [{
+      forbid: [{propName: 'className', message: 'Please use class instead of ClassName'}]
+    }],
+    errors: [{
+      message: 'Please use class instead of ClassName',
+      line: 2,
+      column: 8,
+      type: 'JSXAttribute'
+    }]
+  }, {
+    code: [
+      'const First = (props) => (',
+      '  <div className="foo">',
+      '    <div otherProp="bar" />',
+      '  </div>',
+      ');'
+    ].join('\n'),
+    options: [{
+      forbid: [
+        {propName: 'className', message: 'Please use class instead of ClassName'},
+        {propName: 'otherProp', message: 'Avoid using otherProp'}
+      ]
+    }],
+    errors: [{
+      message: 'Please use class instead of ClassName',
+      line: 2,
+      column: 8,
+      type: 'JSXAttribute'
+    }, {
+      message: 'Avoid using otherProp',
+      line: 3,
+      column: 10,
+      type: 'JSXAttribute'
+    }]
+  }, {
+    code: [
+      'const First = (props) => (',
+      '  <div className="foo">',
+      '    <div otherProp="bar" />',
+      '  </div>',
+      ');'
+    ].join('\n'),
+    options: [{
+      forbid: [
+        {propName: 'className'},
+        {propName: 'otherProp', message: 'Avoid using otherProp'}
+      ]
+    }],
+    errors: [{
+      message: 'Prop `className` is forbidden on DOM Nodes',
+      line: 2,
+      column: 8,
+      type: 'JSXAttribute'
+    }, {
+      message: 'Avoid using otherProp',
+      line: 3,
+      column: 10,
+      type: 'JSXAttribute'
+    }]
   }]
 });

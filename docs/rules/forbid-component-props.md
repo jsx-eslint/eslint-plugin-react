@@ -42,15 +42,16 @@ The following patterns are **not** considered warnings:
 ### `forbid`
 
 An array specifying the names of props that are forbidden. The default value of this option is `['className', 'style']`.
-Each array element can either be a string with the property name or object specifying the property name and a component whitelist:
+Each array element can either be a string with the property name or object specifying the property name, an optional
+custom message, and a component whitelist:
 
 ```js
 {
   "propName": "someProp",
-  "allowedFor": [SomeComponent, AnotherComponent]
+  "allowedFor": [SomeComponent, AnotherComponent],
+  "message": "Avoid using someProp"
 }
 ```
-
 
 ### Related rules
 

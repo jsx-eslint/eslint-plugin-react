@@ -36,14 +36,22 @@ The following patterns are **not** considered warnings:
 
 ```js
 ...
-"react/forbid-dom-props": [<enabled>, { "forbid": [<string>] }]
+"react/forbid-dom-props": [<enabled>, { "forbid": [<string>|<object>] }]
 ...
 ```
 
 ### `forbid`
 
 An array of strings, with the names of props that are forbidden. The default value of this option `[]`.
+Each array element can either be a string with the property name or object specifying the property name and an optional
+custom message:
 
+```js
+{
+  "propName": "someProp",
+  "message": "Avoid using someProp"
+}
+```
 
 ### Related rules
 

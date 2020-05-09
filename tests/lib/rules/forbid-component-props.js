@@ -190,5 +190,66 @@ ruleTester.run('forbid-component-props', rule, {
       column: 32,
       type: 'JSXAttribute'
     }]
+  }, {
+    code: 'const item = (<Foo className="foo" />);',
+    options: [{
+      forbid: [{propName: 'className', message: 'Please use ourCoolClassName instead of ClassName'}]
+    }],
+    errors: [{
+      message: 'Please use ourCoolClassName instead of ClassName',
+      line: 1,
+      column: 20,
+      type: 'JSXAttribute'
+    }]
+  }, {
+    code: [
+      'const item = () => (',
+      '<Foo className="foo">',
+      '  <Bar option="high" />',
+      '</Foo>',
+      ');'
+    ].join('\n'),
+    options: [{
+      forbid: [
+        {propName: 'className', message: 'Please use ourCoolClassName instead of ClassName'},
+        {propName: 'option', message: 'Avoid using option'}
+      ]
+    }],
+    errors: [{
+      message: 'Please use ourCoolClassName instead of ClassName',
+      line: 2,
+      column: 6,
+      type: 'JSXAttribute'
+    }, {
+      message: 'Avoid using option',
+      line: 3,
+      column: 8,
+      type: 'JSXAttribute'
+    }]
+  }, {
+    code: [
+      'const item = () => (',
+      '<Foo className="foo">',
+      '  <Bar option="high" />',
+      '</Foo>',
+      ');'
+    ].join('\n'),
+    options: [{
+      forbid: [
+        {propName: 'className'},
+        {propName: 'option', message: 'Avoid using option'}
+      ]
+    }],
+    errors: [{
+      message: 'Prop `className` is forbidden on Components',
+      line: 2,
+      column: 6,
+      type: 'JSXAttribute'
+    }, {
+      message: 'Avoid using option',
+      line: 3,
+      column: 8,
+      type: 'JSXAttribute'
+    }]
   }]
 });

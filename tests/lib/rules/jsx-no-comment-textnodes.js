@@ -9,19 +9,10 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const semver = require('semver');
-const version = require('eslint/package.json').version;
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-no-comment-textnodes');
 
 const parsers = require('../../helpers/parsers');
-
-function TS(tests) {
-  if (semver.satisfies(version, '>= 5')) {
-    return tests;
-  }
-  return [];
-}
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -182,7 +173,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       code: '<pre>&#x2F;&#42; TODO: Write perfect code &#42;&#x2F;</pre>',
       parser: parsers.BABEL_ESLINT
     }
-  ].concat(TS([
+  ].concat(parsers.TS([
     {
       code: `
       class Comp1 extends Component {
@@ -388,7 +379,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
     }
-  ].concat(TS([
+  ].concat(parsers.TS([
     {
       code: `
       class Comp1 extends Component {
