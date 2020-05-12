@@ -1134,15 +1134,15 @@ const Component = () => (
     // two lines following. I *think* because it incorrectly uses <App>'s indention
     // as the baseline for the next two, instead of the realizing the entire three
     // lines are wrong together. See #608
-    /* output: [
+    output: [
       'function App() {',
       '  return (',
       '    <App>',
-      '      <Foo />',
-      '    </App>',
+      '  <Foo />',
+      '</App>',
       '  );',
       '}'
-    ].join('\n'), */
+    ].join('\n'),
     options: [2],
     errors: [{message: 'Expected indentation of 4 space characters but found 0.'}]
   }, {
@@ -1781,7 +1781,14 @@ const Component = () => (
     ].join('\n'),
     errors: [
       {message: 'Expected indentation of 4 space characters but found 2.'}
-    ]
+    ],
+    output: [
+      '<p>',
+      '    <div>',
+      '        <SelfClosingTag />Text',
+      '    </div>',
+      '</p>'
+    ].join('\n')
   }, {
     code: `
     const Component = () => (

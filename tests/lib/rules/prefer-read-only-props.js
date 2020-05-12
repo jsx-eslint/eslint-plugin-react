@@ -151,13 +151,24 @@ ruleTester.run('prefer-read-only-props', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Prop \'name\' should be read-only.'
-      }]
+      }],
+      output: `
+        type Props = {
+          +name: string,
+        }
+
+        class Hello extends React.Component<Props> {
+          render () {
+            return <div>Hello {this.props.name}</div>;
+          }
+        }
+      `
     },
     {
       // Props.name is contravariant
       code: `
         type Props = {
-         -name: string,
+          -name: string,
         }
 
         class Hello extends React.Component<Props> {
@@ -169,7 +180,18 @@ ruleTester.run('prefer-read-only-props', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Prop \'name\' should be read-only.'
-      }]
+      }],
+      output: `
+        type Props = {
+          +name: string,
+        }
+
+        class Hello extends React.Component<Props> {
+          render () {
+            return <div>Hello {this.props.name}</div>;
+          }
+        }
+      `
     },
     {
       code: `
@@ -186,7 +208,18 @@ ruleTester.run('prefer-read-only-props', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Prop \'name\' should be read-only.'
-      }]
+      }],
+      output: `
+        class Hello extends React.Component {
+          props: {
+            +name: string,
+          }
+
+          render () {
+            return <div>Hello {this.props.name}</div>;
+          }
+        }
+      `
     },
     {
       code: `
@@ -197,7 +230,12 @@ ruleTester.run('prefer-read-only-props', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Prop \'name\' should be read-only.'
-      }]
+      }],
+      output: `
+        function Hello(props: {+name: string}) {
+          return <div>Hello {props.name}</div>;
+        }
+      `
     },
     {
       code: `
@@ -208,7 +246,12 @@ ruleTester.run('prefer-read-only-props', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Prop \'name\' should be read-only.'
-      }]
+      }],
+      output: `
+        function Hello(props: {|+name: string|}) {
+          return <div>Hello {props.name}</div>;
+        }
+      `
     },
     {
       code: `
@@ -219,7 +262,12 @@ ruleTester.run('prefer-read-only-props', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Prop \'name\' should be read-only.'
-      }]
+      }],
+      output: `
+        function Hello({name}: {+name: string}) {
+          return <div>Hello {props.name}</div>;
+        }
+      `
     },
     {
       code: `
@@ -236,7 +284,16 @@ ruleTester.run('prefer-read-only-props', rule, {
         message: 'Prop \'firstName\' should be read-only.'
       }, {
         message: 'Prop \'lastName\' should be read-only.'
-      }]
+      }],
+      output: `
+        type PropsA = {+firstName: string};
+        type PropsB = {+lastName: string};
+        type Props = PropsA & PropsB;
+
+        function Hello({firstName, lastName}: Props) {
+          return <div>Hello {firstName} {lastName}</div>;
+        }
+      `
     },
     {
       code: `
@@ -247,7 +304,12 @@ ruleTester.run('prefer-read-only-props', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [{
         message: 'Prop \'name\' should be read-only.'
-      }]
+      }],
+      output: `
+        const Hello = (props: {+name: string}) => (
+          <div>Hello {props.name}</div>
+        );
+      `
     }
   ]
 });

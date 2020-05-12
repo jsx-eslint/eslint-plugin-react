@@ -1161,7 +1161,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       ')'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
-    errors: [MESSAGE_AFTER_TAG]
+    errors: MESSAGE_AFTER_TAG
   }, {
     code: [
       '<div className={[',
@@ -1664,7 +1664,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       ')'
     ].join('\n'),
     options: [{location: 'line-aligned'}],
-    errors: [MESSAGE_AFTER_TAG]
+    errors: MESSAGE_AFTER_TAG
   }, {
     code: [
       '<div className={[',

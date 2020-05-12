@@ -215,13 +215,23 @@ ruleTester.run('prefer-const', rulePreferConst, {
       let App = <div />;
       <App />;
     `,
-    errors: [{message: '\'App\' is never reassigned. Use \'const\' instead.'}]
+    errors: [{message: '\'App\' is never reassigned. Use \'const\' instead.'}],
+    output: `
+      /* eslint jsx-uses-vars:1 */
+      const App = <div />;
+      <App />;
+    `
   }, {
     code: `
       /* eslint jsx-uses-vars:1 */
       let filters = 'foo';
       <div>{filters}</div>;
     `,
-    errors: [{message: '\'filters\' is never reassigned. Use \'const\' instead.'}]
+    errors: [{message: '\'filters\' is never reassigned. Use \'const\' instead.'}],
+    output: `
+      /* eslint jsx-uses-vars:1 */
+      const filters = 'foo';
+      <div>{filters}</div>;
+    `
   }]
 });
