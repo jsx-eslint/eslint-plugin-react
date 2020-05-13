@@ -3,6 +3,65 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.20.0] - 2020-05-12
+
+### Added
+* support eslint v7 ([#2635][] @ljharb, @toshi-toma)
+* [`forbid-component-props`][]/[`forbid-dom-props`][]: Allow a custom message with forbid props ([#2615][] @mtamhankar1)
+* [`jsx-no-literals`][]: add `ignoreProps` option to ignore props validation ([#2146][] @iiison)
+
+### Fixed
+* [`jsx-sort-props`][]: only use localeCompare when case is ignored ([#2556][] @tanmoyopenroot)
+* [`jsx-key`][]: add a failing test case for optional chaining ([#2610][] @JonathanLee-LX)
+* [`no-unused-state`][]: handle optional chaining ([#2588][] @golopot)
+* [`jsx-pascal-case`][]: Do not consider namespaces when checking for DOM ([#2638][] @yacinehmito)
+* [`jsx-curly-spacing`][], [`jsx-no-bind`][], `usedPropTypes` util: avoid node.start and node.end ([25b1936][] @toshi-toma)
+* [`jsx-no-target-blank`][]: allow `no-referrer` without `noopener` by default ([#2043][] @seancrater)
+* [`button-has-type`][]: improve message when non-static value is used ([aecff62][] @golopot)
+* [`no-adjacent-inline-elements`][]: prevent crash on nullish children ([#2621][] @Rogdham)
+* [`prop-types`][]: avoid crash when spreading any type ([#2606][] @golopot))
+* [`require-render-return`][]: add missing "a" ([#2604][] @leothorp)
+* [`jsx-no-comment-textnodes`][]: fix for `@typescript-eslint/parser` ([#2601][] @Axnyff)
+* [`displayName`][]: avoid a crash when using React.memo ([#2587][] @golopot)
+
+### Docs
+* Clean up examples in rule docs ([#2546][] @silvenon)
+* [readme] Add Rules of Hooks to Other useful plugins section ([#2633][] @petetnt)
+* [`no-this-in-sfc`][]: backtick `this` ([#2616][] @mrflip)
+* [`function-component-definition`][]: Fix unnamedComponents option examples ([#2608][] @vkrol))
+
+### Changed
+* [Deps] Move "semver" to devDependencies ([#2595][] @rajivshah3)
+* [eslint] remove `operator-linebreak` override ([#2578][] @golopot)
+* [Tests] `button-has-type`: ensure no mistakenly allowed identifiers named `button`/`submit`/`reset` ([#2625][] @golopot)
+* [Tests] `displayName`: add a test case ([#2593][] @golopot)
+* [Dev Deps] update `@types/eslint`, `@types/estree`, `@types/node`, `@typescript-eslint/parser`, `coveralls`, `eslint-config-airbnb-base`, `eslint-plugin-import`, `typescript`
+
+[7.20.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.19.0...v7.20.0
+[#2638]: https://github.com/yannickcr/eslint-plugin-react/pull/2638
+[#2635]: https://github.com/yannickcr/eslint-plugin-react/pull/2635
+[#2633]: https://github.com/yannickcr/eslint-plugin-react/pull/2633
+[#2625]: https://github.com/yannickcr/eslint-plugin-react/pull/2625
+[#2621]: https://github.com/yannickcr/eslint-plugin-react/pull/2621
+[#2616]: https://github.com/yannickcr/eslint-plugin-react/pull/2616
+[#2615]: https://github.com/yannickcr/eslint-plugin-react/pull/2615
+[#2610]: https://github.com/yannickcr/eslint-plugin-react/pull/2610
+[#2608]: https://github.com/yannickcr/eslint-plugin-react/pull/2608
+[#2606]: https://github.com/yannickcr/eslint-plugin-react/pull/2606
+[#2604]: https://github.com/yannickcr/eslint-plugin-react/pull/2604
+[#2601]: https://github.com/yannickcr/eslint-plugin-react/pull/2601
+[#2595]: https://github.com/yannickcr/eslint-plugin-react/pull/2595
+[#2593]: https://github.com/yannickcr/eslint-plugin-react/pull/2593
+[#2588]: https://github.com/yannickcr/eslint-plugin-react/pull/2588
+[#2587]: https://github.com/yannickcr/eslint-plugin-react/pull/2587
+[#2578]: https://github.com/yannickcr/eslint-plugin-react/pull/2578
+[#2556]: https://github.com/yannickcr/eslint-plugin-react/pull/2556
+[#2546]: https://github.com/yannickcr/eslint-plugin-react/pull/2546
+[#2146]: https://github.com/yannickcr/eslint-plugin-react/pull/2146
+[#2043]: https://github.com/yannickcr/eslint-plugin-react/pull/2043
+[25b1936]: https://github.com/yannickcr/eslint-plugin-react/commit/25b19365e6cc3f188d6a5ed6cecc70fe6f1af7cd
+[aecff62]: https://github.com/yannickcr/eslint-plugin-react/commit/aecff625bf0590ed4d80ed6b58b81af11901f5f6
+
 ## [7.19.0] - 2020-03-06
 
 ### Added
