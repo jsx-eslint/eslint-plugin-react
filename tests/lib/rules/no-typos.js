@@ -28,7 +28,7 @@ const parserOptions = {
 const ERROR_MESSAGE = 'Typo in static class property declaration';
 const ERROR_MESSAGE_ES5 = 'Typo in property declaration';
 const ERROR_MESSAGE_LIFECYCLE_METHOD = (actual, expected) => `Typo in component lifecycle method declaration: ${actual} should be ${expected}`;
-const ERROR_MESSAGE_STATIC = method => `Lifecycle method should be static: ${method}`;
+const ERROR_MESSAGE_STATIC = (method) => `Lifecycle method should be static: ${method}`;
 
 const ruleTester = new RuleTester();
 ruleTester.run('no-typos', rule, {

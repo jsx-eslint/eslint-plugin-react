@@ -10,8 +10,8 @@ const ruleListItems = Object.keys(rules)
     return `* [react/${id}](docs/rules/${id}.md): ${docs.description}${fixable ? ' (fixable)' : ''}`;
   });
 
-const BASIC_RULES = () => ruleListItems.filter(rule => !rule.includes('react/jsx-')).join('\n');
-const JSX_RULES = () => ruleListItems.filter(rule => rule.includes('react/jsx-')).join('\n');
+const BASIC_RULES = () => ruleListItems.filter((rule) => !rule.includes('react/jsx-')).join('\n');
+const JSX_RULES = () => ruleListItems.filter((rule) => rule.includes('react/jsx-')).join('\n');
 
 module.exports = {
   transforms: {

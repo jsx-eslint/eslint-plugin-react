@@ -26,12 +26,13 @@
         "consistent-return": 0,
 
         "prefer-destructuring": [2, { "array": false, "object": false }, { "enforceForRenamedProperties": false }],
-
+        "prefer-object-spread": 0,
         "function-paren-newline": 0,
         "no-plusplus": 1,
         "no-param-reassign": 1,
         "no-mixed-operators": 1,
         "no-restricted-syntax": 1,
+        "strict": [2, "safe"],
         "valid-jsdoc": [2, {
           "requireReturn": false,
           "requireParamDescription": false,

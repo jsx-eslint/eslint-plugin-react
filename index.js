@@ -96,17 +96,17 @@ const allRules = {
 /* eslint-enable */
 
 function filterRules(rules, predicate) {
-  return fromEntries(entries(rules).filter(entry => predicate(entry[1])));
+  return fromEntries(entries(rules).filter((entry) => predicate(entry[1])));
 }
 
 function configureAsError(rules) {
-  return fromEntries(Object.keys(rules).map(key => [`react/${key}`, 2]));
+  return fromEntries(Object.keys(rules).map((key) => [`react/${key}`, 2]));
 }
 
-const activeRules = filterRules(allRules, rule => !rule.meta.deprecated);
+const activeRules = filterRules(allRules, (rule) => !rule.meta.deprecated);
 const activeRulesConfig = configureAsError(activeRules);
 
-const deprecatedRules = filterRules(allRules, rule => rule.meta.deprecated);
+const deprecatedRules = filterRules(allRules, (rule) => rule.meta.deprecated);
 
 module.exports = {
   deprecatedRules,
