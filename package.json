@@ -51,6 +51,7 @@
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-eslint-plugin": "^2.2.2",
     "eslint-plugin-import": "^2.21.2",
+    "espree": "^3.5.4",
     "istanbul": "^0.4.5",
     "markdown-magic": "^1.0.0",
     "mocha": "^5.2.0",
