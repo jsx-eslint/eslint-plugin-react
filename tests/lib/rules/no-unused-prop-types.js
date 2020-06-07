@@ -3211,6 +3211,42 @@ ruleTester.run('no-unused-prop-types', rule, {
         'export default Thing;'
       ].join('\n'),
       parser: parsers.TYPESCRIPT_ESLINT
+    },
+    // this test checks that there is no crash if no declaration is found (TSTypeLiteral).
+    {
+      code: [
+        'const Hello = (props: {firstname: string, lastname: string}) => {',
+        '    return <div {...props}></div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT
+    },
+    // this test checks that there is no crash if no declaration is found (TSTypeReference).
+    {
+      code: [
+        'const Hello = (props: UnfoundProps) => {',
+        '    return <div {...props}></div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT
+    },
+    {
+      // Omit, etc, cannot be handled, but must not trigger an error
+      code: [
+        'const Hello = (props: Omit<{a: string, b: string, c: string}, "a">) => {',
+        '    return <div>{props.b}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT
+    },
+    {
+      // neither TSTypeReference or TSTypeLiteral, we do nothing. Weird case
+      code: [
+        'const Hello = (props: () => any) => {',
+        '    return <div>{props.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT
     }
   ],
 
@@ -5312,6 +5348,97 @@ ruleTester.run('no-unused-prop-types', rule, {
       }, {
         message: '\'thisPropsPropUnused\' PropType is defined but prop is never used'
       }]
+    }, {
+      code: [
+        'type Person = {',
+        '  lastname: string',
+        '};',
+        'const Hello = (props: Person) => {',
+        '    return <div>Hello {props.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT,
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
+        'type Person = {',
+        '  lastname: string',
+        '};',
+        'const Hello = (props: Person) => {',
+        '    return <div>Hello {props.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [
+        {
+          message: '\'lastname\' PropType is defined but prop is never used'
+        }
+      ]
+    },
+    {
+      code: [
+        'type Person = {',
+        '  lastname?: string',
+        '};',
+        'const Hello = (props: Person) => {',
+        '    return <div>Hello {props.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [
+        {
+          message: '\'lastname\' PropType is defined but prop is never used'
+        }
+      ]
+    },
+    {
+      code: [
+        'type Person = {',
+        '  firstname: string',
+        '  lastname: string',
+        '};',
+        'const Hello = ({firstname}: Person) => {',
+        '    return <div>Hello {firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [
+        {
+          message: '\'lastname\' PropType is defined but prop is never used'
+        }
+      ]
+    },
+    {
+      code: [
+        'interface Person {',
+        '  firstname: string',
+        '  lastname: string',
+        '};',
+        'const Hello = ({firstname}: Person) => {',
+        '    return <div>Hello {firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [
+        {
+          message: '\'lastname\' PropType is defined but prop is never used'
+        }
+      ]
+    },
+    {
+      code: [
+        'const Hello = ({firstname}: {firstname: string, lastname: string}) => {',
+        '    return <div>Hello {firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [
+        {
+          message: '\'lastname\' PropType is defined but prop is never used'
+        }
+      ]
     }
 
     /* , {
