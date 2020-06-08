@@ -39,6 +39,8 @@ ruleTester.run('jsx-key', rule, {
     {code: 'fn()'},
     {code: '[1, 2, 3].map(function () {})'},
     {code: '<App />;'},
+    {code: '[1, 2, 3].map(x => <App {...{ key }} />);'},
+    {code: '[1, 2, 3].map(x => <App {...objectWithKey} />);'},
     {code: '[<App key={0} />, <App key={1} />];'},
     {code: '[1, 2, 3].map(function(x) { return <App key={x} /> });'},
     {code: '[1, 2, 3].map(x => <App key={x} />);'},
