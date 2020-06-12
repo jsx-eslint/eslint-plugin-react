@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview Rule to forbid or enforce destructuring assignment consistency.
  */

@@ -84,7 +84,6 @@ ruleTester.run('jsx-curly-newline', rule, {
       options: CONSISTENT
     },
 
-
     // {singleline: 'consistent', multiline: 'require'} option
 
     {

@@ -459,7 +459,6 @@ ruleTester.run('jsx-no-bind', rule, {
       errors: [{message: 'JSX props should not use .bind()'}]
     },
 
-
     // Arrow functions
     {
       code: '<div onClick={() => alert("1337")}></div>',
