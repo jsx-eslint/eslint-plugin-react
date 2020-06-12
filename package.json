@@ -31,12 +31,12 @@
     "array-includes": "^3.1.1",
     "doctrine": "^2.1.0",
     "has": "^1.0.3",
-    "jsx-ast-utils": "^2.2.3",
-    "object.entries": "^1.1.1",
+    "jsx-ast-utils": "^2.4.1",
+    "object.entries": "^1.1.2",
     "object.fromentries": "^2.0.2",
     "object.values": "^1.1.1",
     "prop-types": "^15.7.2",
-    "resolve": "^1.15.1",
+    "resolve": "^1.17.0",
     "string.prototype.matchall": "^4.0.2"
   },
   "devDependencies": {
