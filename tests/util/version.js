@@ -16,6 +16,7 @@ describe('Version', () => {
     sinon.stub(console, 'error');
     expectedErrorArgs = [];
     versionUtil.resetWarningFlag();
+    versionUtil.resetDetectedVersion();
   });
 
   afterEach(() => {
