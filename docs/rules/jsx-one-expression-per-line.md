@@ -111,6 +111,14 @@ The following patterns are **not** warnings:
 ...
 ```
 
+### Disabled
+
+```js
+...
+"react/jsx-one-expression-per-line": 0
+...
+```
+
 ### `allow`
 
 Defaults to `none`.
