@@ -8,6 +8,8 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
+const semver = require('semver');
+const eslintPkg = require('eslint/package.json');
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-typos');
 
@@ -1286,7 +1288,7 @@ ruleTester.run('no-typos', rule, {
     }, {
       message: 'Typo in prop type chain qualifier: isrequired'
     }]
-  }, {
+  }].concat(semver.satisfies(eslintPkg.version, '>= 7.3') ? [] : {
     code: `
      import 'react';
      class Component extends React.Component {};
@@ -1294,7 +1296,7 @@ ruleTester.run('no-typos', rule, {
     parser: parsers.BABEL_ESLINT,
     parserOptions,
     errors: []
-  }, {
+  }, [{
     code: `
       import { PropTypes } from 'react';
       class Component extends React.Component {};
@@ -1698,5 +1700,5 @@ ruleTester.run('no-typos', rule, {
         parserOptions: parserOptions
       },
     */
-  }]
+  }])
 });
