@@ -3,6 +3,29 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.20.1] - 2020-06-28
+
+### Fixed
+* [`forbid-dom-props`], [`function-component-definition`]: fix schema typos ([#2667][] @mflorence99)
+* [`no-unused-prop-types`]: fix with typescript eslint parser ([#2661][] @eltonio450)
+
+### Changed
+* [`forbid-prop-types`]: warn on destructured values as well ([#2676][] @ajkovar)
+* relax JSX pragma regexp ([#2643][] @gfmio)
+* Cache detected React version ([#2673][] @lencioni)
+* [refactor] [`jsx-pascal-case`]: Remove xregexp ([#2636][] @yacinehmito))
+* [Tests] a [`no-typos`] test fails in eslint v7.3 ([#2678][] @toshi-toma)
+* [Deps] update `jsx-ast-utils`, `object.entries`, `resolve`
+* [Dev Deps] update `@types/eslint`, `@types/estree`, `@types/node`, `@typescript-eslint/parser`, `eslint-config-airbnb-base`, `eslint-plugin-eslint-plugin`, `eslint-plugin-import`, `typescript`
+
+[7.20.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.20.0...v7.20.1
+[#2676]: https://github.com/yannickcr/eslint-plugin-react/pull/2676
+[#2673]: https://github.com/yannickcr/eslint-plugin-react/pull/2673
+[#2667]: https://github.com/yannickcr/eslint-plugin-react/pull/2667
+[#2661]: https://github.com/yannickcr/eslint-plugin-react/pull/2661
+[#2643]: https://github.com/yannickcr/eslint-plugin-react/pull/2643
+[#2636]: https://github.com/yannickcr/eslint-plugin-react/pull/2636
+
 ## [7.20.0] - 2020-05-12
 
 ### Added
