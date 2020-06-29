@@ -80,6 +80,8 @@ ruleTester.run('jsx-pascal-case', rule, {
     code: '<$ />'
   }, {
     code: '<_ />'
+  }, {
+    code: '<H1>Hello!</H1>'
   }],
 
   invalid: [{
