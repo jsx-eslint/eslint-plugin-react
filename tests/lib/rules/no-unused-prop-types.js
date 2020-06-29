@@ -205,6 +205,18 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       code: [
         'class Hello extends React.Component {',
+        '  static propTypes = {',
+        '    name: PropTypes.string',
+        '  };',
+        '  render() {',
+        '    return <div>Hello {this.props?.name}</div>;',
+        '  }',
+        '}'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT
+    }, {
+      code: [
+        'class Hello extends React.Component {',
         '  render() {',
         '    return <div>Hello {this.props.firstname}</div>;',
         '  }',
@@ -703,6 +715,19 @@ ruleTester.run('no-unused-prop-types', rule, {
         'class Hello extends React.Component {',
         '  constructor(props, context) {',
         '    super(props, context)',
+        '    this.state = { status: props?.source?.uri }',
+        '  }',
+        '  static propTypes = {',
+        '    source: PropTypes.object',
+        '  };',
+        '}'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT
+    }, {
+      code: [
+        'class Hello extends React.Component {',
+        '  constructor(props, context) {',
+        '    super(props, context)',
         '    this.state = { status: this.props.source.uri }',
         '  }',
         '  static propTypes = {',
@@ -717,6 +742,16 @@ ruleTester.run('no-unused-prop-types', rule, {
         'HelloJohn.prototype.render = function() {',
         '  return React.createElement(Hello, {',
         '    name: this.props.firstname',
+        '  });',
+        '};'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT
+    }, {
+      // Should not be detected as a component
+      code: [
+        'HelloJohn.prototype.render = function() {',
+        '  return React.createElement(Hello, {',
+        '    name: this.props?.firstname',
         '  });',
         '};'
       ].join('\n'),
@@ -738,10 +773,38 @@ ruleTester.run('no-unused-prop-types', rule, {
     }, {
       code: [
         'function HelloComponent() {',
+        '  class Hello extends React.Component {',
+        '    render() {',
+        '      return <div>Hello {this.props?.name}</div>;',
+        '    }',
+        '  }',
+        '  Hello.propTypes = { name: PropTypes.string };',
+        '  return Hello;',
+        '}',
+        'module.exports = HelloComponent();'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT
+    }, {
+      code: [
+        'function HelloComponent() {',
         '  var Hello = createReactClass({',
         '    propTypes: { name: PropTypes.string },',
         '    render: function() {',
         '      return <div>Hello {this.props.name}</div>;',
+        '    }',
+        '  });',
+        '  return Hello;',
+        '}',
+        'module.exports = HelloComponent();'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT
+    }, {
+      code: [
+        'function HelloComponent() {',
+        '  var Hello = createReactClass({',
+        '    propTypes: { name: PropTypes.string },',
+        '    render: function() {',
+        '      return <div>Hello {this.props?.name}</div>;',
         '    }',
         '  });',
         '  return Hello;',
@@ -777,6 +840,20 @@ ruleTester.run('no-unused-prop-types', rule, {
         'const Hello = (props) => {',
         '  let team = props.names.map((name) => {',
         '      return <li>{name}, {props.company}</li>;',
+        '    });',
+        '  return <ul>{team}</ul>;',
+        '};',
+        'Hello.propTypes = {',
+        '  names: PropTypes.array,',
+        '  company: PropTypes.string',
+        '};'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT
+    }, {
+      code: [
+        'const Hello = (props) => {',
+        '  let team = props?.names.map((name) => {',
+        '      return <li>{name}, {props?.company}</li>;',
         '    });',
         '  return <ul>{team}</ul>;',
         '};',
@@ -3247,6 +3324,15 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: parsers.TYPESCRIPT_ESLINT
+    },
+    {
+      // neither TSTypeReference or TSTypeLiteral, we do nothing. Weird case
+      code: [
+        'const Hello = (props: () => any) => {',
+        '    return <div>{props?.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT
     }
   ],
 
@@ -5367,6 +5453,19 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  lastname: string',
         '};',
         'const Hello = (props: Person) => {',
+        '    return <div>Hello {props?.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.BABEL_ESLINT,
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: [
+        'type Person = {',
+        '  lastname: string',
+        '};',
+        'const Hello = (props: Person) => {',
         '    return <div>Hello {props.firstname}</div>;',
         '}'
       ].join('\n'),
@@ -5376,14 +5475,43 @@ ruleTester.run('no-unused-prop-types', rule, {
           message: '\'lastname\' PropType is defined but prop is never used'
         }
       ]
-    },
-    {
+    }, {
+      code: [
+        'type Person = {',
+        '  lastname: string',
+        '};',
+        'const Hello = (props: Person) => {',
+        '    return <div>Hello {props?.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [
+        {
+          message: '\'lastname\' PropType is defined but prop is never used'
+        }
+      ]
+    }, {
       code: [
         'type Person = {',
         '  lastname?: string',
         '};',
         'const Hello = (props: Person) => {',
         '    return <div>Hello {props.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [
+        {
+          message: '\'lastname\' PropType is defined but prop is never used'
+        }
+      ]
+    }, {
+      code: [
+        'type Person = {',
+        '  lastname?: string',
+        '};',
+        'const Hello = (props: Person) => {',
+        '    return <div>Hello {props?.firstname}</div>;',
         '}'
       ].join('\n'),
       parser: parsers.TYPESCRIPT_ESLINT,
