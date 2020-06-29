@@ -572,6 +572,16 @@ ruleTester.run('forbid-prop-types', rule, {
       '  preview: PropTypes.bool,',
       '}, componentApi, teaserListProps);'
     ].join('\n')
+  }, {
+    code: [
+      'import PropTypes from "prop-types";',
+      'const Foo = {',
+      '  foo: PropTypes.string,',
+      '};',
+      'const Bar = {',
+      '  bar: PropTypes.shape(Foo),',
+      '};'
+    ].join('\n')
   }],
 
   invalid: [{
