@@ -3,6 +3,20 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.20.2] - 2020-06-29
+
+### Fixed
+* [Fix] [`no-unused-prop-types`]: handle optional chaining ([#2679][] @hank121314)
+* [Fix] [`jsx-pascal-case`]: fix a false positive with "H1" ([#2683][] @ljharb)
+* [Fix] [`jsx-no-useless-fragment`]: avoid a crash when autofixing a self-closing React.Fragment ([#2680][] @ljharb)
+* [Fix] [`forbid-prop-types`]: avoid crash ([#2682][] @ljharb)
+
+[7.20.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.20.1...v7.20.2
+[#2683]: https://github.com/yannickcr/eslint-plugin-react/issues/2683
+[#2682]: https://github.com/yannickcr/eslint-plugin-react/issues/2682
+[#2680]: https://github.com/yannickcr/eslint-plugin-react/issues/2680
+[#2679]: https://github.com/yannickcr/eslint-plugin-react/pull/2679
+
 ## [7.20.1] - 2020-06-28
 
 ### Fixed
