@@ -27,7 +27,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({parserOptions});
 
-ruleTester.run('jsx-no-uselses-fragment', rule, {
+ruleTester.run('jsx-no-useless-fragment', rule, {
   valid: [
     {
       code: '<><Foo /><Bar /></>',
@@ -201,6 +201,23 @@ ruleTester.run('jsx-no-uselses-fragment', rule, {
       output: '<div>a {""}{""} a</div>',
       errors: [{messageId: 'ChildOfHtmlElement'}],
       parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        const Comp = () => (
+          <html>
+            <React.Fragment />
+          </html>
+        );
+      `,
+      output: `
+        const Comp = () => (
+          <html>
+            ${/* the trailing whitespace here is intentional */ ''}
+          </html>
+        );
+      `,
+      errors: [{messageId: 'NeedsMoreChidren'}, {messageId: 'ChildOfHtmlElement'}]
     }
   ]
 });
