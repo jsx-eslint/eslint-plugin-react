@@ -3333,6 +3333,99 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: parsers.TYPESCRIPT_ESLINT
+    }, {
+      code: [
+        'interface Props {',
+        ' \'aria-label\': string;',
+        '}',
+        'export default function Component({',
+        ' \'aria-label\': ariaLabel,',
+        '}: Props): JSX.Element {',
+        '  return <div aria-label={ariaLabel} />;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT
+    }, {
+      code: [
+        'interface Props {',
+        ' [\'aria-label\']: string;',
+        '}',
+        'export default function Component({',
+        ' [\'aria-label\']: ariaLabel,',
+        '}: Props): JSX.Element {',
+        '  return <div aria-label={ariaLabel} />;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT
+    }, {
+      code: [
+        'interface Props {',
+        ' [1234]: string;',
+        '}',
+        'export default function Component(',
+        ' props ',
+        ': Props): JSX.Element {',
+        '  return <div aria-label={props[1234]} />;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT
+    }, {
+      code: [
+        'interface Props {',
+        ' [\'1234\']: string;',
+        '}',
+        'export default function Component(',
+        ' props ',
+        ': Props): JSX.Element {',
+        '  return <div aria-label={props[1234]} />;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT
+    }, {
+      code: [
+        'interface Props {',
+        ' [1234]: string;',
+        '}',
+        'export default function Component(',
+        ' props ',
+        ': Props): JSX.Element {',
+        '  return <div aria-label={props[\'1234\']} />;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT
+    },
+    {
+      code: [
+        'interface Props {',
+        ' [1234]: string;',
+        '}',
+        'export default function Component(',
+        ' props ',
+        ': Props): JSX.Element {',
+        'const handleVerifySubmit = ({',
+        '  otp,',
+        ' }) => {',
+        '  dispatch(',
+        '    verifyOTPPhone({',
+        '      otp,',
+        '    }),',
+        '  );',
+        '};',
+        'return <div aria-label={props[\'1234\']} />;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT
+    }, {
+      code: [
+        'interface Props {',
+        ' foo: string;',
+        '}',
+        'const Component = (props: Props) => (',
+        ' <div>{(()=> {return props.foo})()}</div>',
+        ')',
+        'export default Component'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT
     }
   ],
 
@@ -5569,6 +5662,38 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [
         {
           message: '\'foo\' PropType is defined but prop is never used'
+        }
+      ]
+    },
+    {
+      code: [
+        'interface Props {',
+        ' \'aria-label\': string;',
+        '}',
+        'export default function Component(props: Props): JSX.Element {',
+        '  return <div />;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [
+        {
+          message: '\'aria-label\' PropType is defined but prop is never used'
+        }
+      ]
+    },
+    {
+      code: [
+        'interface Props {',
+        ' [1234]: string;',
+        '}',
+        'export default function Component(props: Props): JSX.Element {',
+        '  return <div />;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [
+        {
+          message: '\'1234\' PropType is defined but prop is never used'
         }
       ]
     },

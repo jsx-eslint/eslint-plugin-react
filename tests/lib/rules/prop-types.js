@@ -2489,6 +2489,21 @@ ruleTester.run('prop-types', rule, {
           ordering: PropTypes.array
         };
       `
+    },
+    {
+      code: `
+        interface Props {
+          'aria-label': string // 'undefined' PropType is defined but prop is never used eslint(react/no-unused-prop-types)
+          // 'undefined' PropType is defined but prop is never used eslint(react-redux/no-unused-prop-types)
+        }
+
+        export default function Component({
+          'aria-label': ariaLabel, // 'aria-label' is missing in props validation eslint(react/prop-types)
+        }: Props): JSX.Element {
+          return <div aria-label={ariaLabel} />
+        }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT
     }
   ],
 
