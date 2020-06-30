@@ -3,6 +3,16 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.20.3] - 2020-06-30
+
+### Fixed
+* [Fix] `no-unused-prop-types`/`prop-types`: typescript interface support literal type and only FunctionComponent should have propTypes validation ([#2690][] @hank121314)
+* [Fix] `no-unused-prop-types`/TypeScript: avoid crash on indexable interface ([#2687][] @ljharb)
+
+[7.20.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.20.2...v7.20.3
+[#2690]: https://github.com/yannickcr/eslint-plugin-react/pull/2690
+[#2687]: https://github.com/yannickcr/eslint-plugin-react/issues/2687
+
 ## [7.20.2] - 2020-06-29
 
 ### Fixed
