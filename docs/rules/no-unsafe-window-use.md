@@ -1,0 +1,1 @@
+# Avoid unsafe global window use (react/no-unsafe-window-use)
