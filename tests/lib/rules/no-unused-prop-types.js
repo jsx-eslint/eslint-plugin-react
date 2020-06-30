@@ -5557,6 +5557,23 @@ ruleTester.run('no-unused-prop-types', rule, {
     },
     {
       code: [
+        'interface Foo {',
+        '  foo: string;',
+        '  [blah: string]: number;',
+        '}',
+        'const Hello = ({bar}: Foo) => {',
+        '    return <div>Hello {bar}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [
+        {
+          message: '\'foo\' PropType is defined but prop is never used'
+        }
+      ]
+    },
+    {
+      code: [
         'const Hello = ({firstname}: {firstname: string, lastname: string}) => {',
         '    return <div>Hello {firstname}</div>;',
         '}'
