@@ -900,5 +900,20 @@ ruleTester.run('boolean-prop-naming', rule, {
     errors: [{
       message: 'Prop name (failingItIs) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
+  }, {
+    code: `
+    import { bool } from 'prop-types';
+      var Hello = createReactClass({
+        propTypes: {something: bool},
+        render: function() { return <div />; }
+      });
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+',
+      validateNested: true
+    }],
+    errors: [{
+      message: 'Prop name (something) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
+    }]
   }]
 });
