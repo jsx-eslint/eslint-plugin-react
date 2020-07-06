@@ -1293,7 +1293,9 @@ ruleTester.run('no-typos', rule, {
    `,
     parser: parsers.BABEL_ESLINT,
     parserOptions,
-    errors: []
+    errors: [{
+      message: '`\'react\'` imported without a local `React` binding.'
+    }]
   }, {
     code: `
       import { PropTypes } from 'react';
