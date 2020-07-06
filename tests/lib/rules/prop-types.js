@@ -2524,7 +2524,52 @@ ruleTester.run('prop-types', rule, {
       MyComponent.propTypes = {
         hello: PropTypes.string.isRequired,
       };
-    `
+    `,
+    {
+      code: `
+      interface Props {
+        value?: string;
+      }
+
+      // without the | null, all ok, with it, it is broken
+      function Test ({ value }: Props): React.ReactElement<Props> | null {
+        if (!value) {
+          return null;
+        }
+
+        return <div>{value}</div>;
+      }`,
+      parser: parsers.TYPESCRIPT_ESLINT
+    },
+    {
+      code: `
+      interface Props {
+        value?: string;
+      }
+
+      // without the | null, all ok, with it, it is broken
+      function Test ({ value }: Props): React.ReactElement<Props> | null {
+        if (!value) {
+          return <div>{value}</div>;;
+        }
+
+        return null;
+      }`,
+      parser: parsers.TYPESCRIPT_ESLINT
+    },
+    {
+      code: `
+      interface Props {
+        value?: string;
+      }
+      const Hello = (props: Props) => {
+        if (props.value) {
+          return <div></div>;
+        }
+        return null;
+      }`,
+      parser: parsers.TYPESCRIPT_ESLINT
+    }
   ],
 
   invalid: [
@@ -5100,6 +5145,21 @@ ruleTester.run('prop-types', rule, {
       `,
       errors: [{
         message: '\'foo.baz\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+      interface Props {
+      }
+      const Hello = (props: Props) => {
+        if (props.value) {
+          return <div></div>;
+        }
+        return null;
+      }`,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [{
+        message: '\'value\' is missing in props validation'
       }]
     }
   ]
