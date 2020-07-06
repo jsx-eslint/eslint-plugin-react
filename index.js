@@ -74,6 +74,7 @@ const allRules = {
   'no-unescaped-entities': require('./lib/rules/no-unescaped-entities'),
   'no-unknown-property': require('./lib/rules/no-unknown-property'),
   'no-unsafe': require('./lib/rules/no-unsafe'),
+  'no-unsafe-window-use': require('./lib/rules/no-unsafe-window-use'),
   'no-unused-prop-types': require('./lib/rules/no-unused-prop-types'),
   'no-unused-state': require('./lib/rules/no-unused-state'),
   'no-will-update-set-state': require('./lib/rules/no-will-update-set-state'),
@@ -91,8 +92,7 @@ const allRules = {
   'state-in-constructor': require('./lib/rules/state-in-constructor'),
   'static-property-placement': require('./lib/rules/static-property-placement'),
   'style-prop-object': require('./lib/rules/style-prop-object'),
-  'void-dom-elements-no-children': require('./lib/rules/void-dom-elements-no-children'),
-  'no-unsafe-window-use': require('./lib/rules/no-unsafe-window-use')
+  'void-dom-elements-no-children': require('./lib/rules/void-dom-elements-no-children')
 };
 /* eslint-enable */
 
