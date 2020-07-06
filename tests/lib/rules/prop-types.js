@@ -2504,7 +2504,27 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: parsers.TYPESCRIPT_ESLINT
-    }
+    },
+    // shouldn't trigger this rule since functions stating with a lowercase
+    // letter are not considered components
+    `
+      function noAComponent(props) {
+        return <div>{props.text}</div>
+      }
+    `,
+    // shouldn't trigger this rule for 'render' since functions stating with a lowercase
+    // letter are not considered components
+    `
+      const MyComponent = (props) => {
+        const render = () => {
+          return <test>{props.hello}</test>;
+        }
+        return render();
+      };
+      MyComponent.propTypes = {
+        hello: PropTypes.string.isRequired,
+      };
+    `
   ],
 
   invalid: [

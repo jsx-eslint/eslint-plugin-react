@@ -69,6 +69,32 @@ ruleTester.run('function-component-definition', rule, {
     code: 'var Foo = React.memo(function Foo() { return <p/> })',
     options: [{namedComponents: 'function-declaration'}]
   }, {
+    // shouldn't trigger this rule since functions stating with a lowercase
+    // letter are not considered components
+    code: `
+    const selectAvatarByUserId = (state, id) => {
+      const user = selectUserById(state, id)
+      return null
+    }
+    `,
+    options: [{namedComponents: 'function-declaration'}]
+  }, {
+    // shouldn't trigger this rule since functions stating with a lowercase
+    // letter are not considered components
+    code: `
+      function ensureValidSourceType(sourceType: string) {
+        switch (sourceType) {
+          case 'ALBUM':
+          case 'PLAYLIST':
+            return sourceType;
+          default:
+            return null;
+        }
+      }
+    `,
+    options: [{namedComponents: 'arrow-function'}],
+    parser: parsers.TYPESCRIPT_ESLINT
+  }, {
     code: 'function Hello(props: Test) { return <p/> }',
     options: [{namedComponents: 'function-declaration'}],
     parser: parsers.TYPESCRIPT_ESLINT
