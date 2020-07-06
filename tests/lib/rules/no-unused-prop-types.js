@@ -35,7 +35,7 @@ const settings = {
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-unused-prop-types', rule, {
 
-  valid: [
+  valid: [].concat(
     {
       code: [
         'var Hello = createReactClass({',
@@ -3212,224 +3212,466 @@ ruleTester.run('no-unused-prop-types', rule, {
 
         Foo.defaultProps = Object.assign({});
       `
-    }, {
-      code: `
-        const Foo = (props) => {
-          const { foo } = props as unknown;
-          (props as unknown).bar as unknown;
+    },
+    parsers.TS([
+      {
+        code: `
+          const Foo = (props) => {
+            const { foo } = props as unknown;
+            (props as unknown).bar as unknown;
 
-          return <></>;
-        };
-
-        Foo.propTypes = {
-          foo,
-          bar,
-        };
-      `,
-      parser: parsers.TYPESCRIPT_ESLINT
-    }, {
-      code: `
-        class Foo extends React.Component {
-          static propTypes = {
-            prevProp,
-            nextProp,
-            setStateProp,
-            thisPropsAliasDestructProp,
-            thisPropsAliasProp,
-            thisDestructPropsAliasDestructProp,
-            thisDestructPropsAliasProp,
-            thisDestructPropsDestructProp,
-            thisPropsDestructProp,
-            thisPropsProp,
+            return <></>;
           };
 
-          componentDidUpdate(prevProps) {
-            (prevProps as unknown).prevProp as unknown;
+          Foo.propTypes = {
+            foo,
+            bar,
+          };
+        `,
+        parser: parsers.TYPESCRIPT_ESLINT
+      }, {
+        code: `
+          const Foo = (props) => {
+            const { foo } = props as unknown;
+            (props as unknown).bar as unknown;
+
+            return <></>;
+          };
+
+          Foo.propTypes = {
+            foo,
+            bar,
+          };
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      }, {
+        code: `
+          class Foo extends React.Component {
+            static propTypes = {
+              prevProp,
+              nextProp,
+              setStateProp,
+              thisPropsAliasDestructProp,
+              thisPropsAliasProp,
+              thisDestructPropsAliasDestructProp,
+              thisDestructPropsAliasProp,
+              thisDestructPropsDestructProp,
+              thisPropsDestructProp,
+              thisPropsProp,
+            };
+
+            componentDidUpdate(prevProps) {
+              (prevProps as unknown).prevProp as unknown;
+            }
+
+            shouldComponentUpdate(nextProps) {
+              (nextProps as unknown).nextProp as unknown;
+            }
+
+            stateProps() {
+              ((this as unknown).setState as unknown)((_, props) => (props as unknown).setStateProp as unknown);
+            }
+
+            thisPropsAlias() {
+              const props = (this as unknown).props as unknown;
+
+              const { thisPropsAliasDestructProp } = props as unknown;
+              (props as unknown).thisPropsAliasProp as unknown;
+            }
+
+            thisDestructPropsAlias() {
+              const { props } = this as unknown;
+
+              const { thisDestructPropsAliasDestructProp } = props as unknown;
+              (props as unknown).thisDestructPropsAliasProp as unknown;
+            }
+
+            render() {
+              const { props: { thisDestructPropsDestructProp } } = this as unknown;
+              const { thisPropsDestructProp } = (this as unknown).props as unknown;
+              ((this as unknown).props as unknown).thisPropsProp as unknown;
+
+              return null;
+            }
           }
+        `,
+        parser: parsers.TYPESCRIPT_ESLINT
+      },
+      {
+        code: `
+          class Foo extends React.Component {
+            static propTypes = {
+              prevProp,
+              nextProp,
+              setStateProp,
+              thisPropsAliasDestructProp,
+              thisPropsAliasProp,
+              thisDestructPropsAliasDestructProp,
+              thisDestructPropsAliasProp,
+              thisDestructPropsDestructProp,
+              thisPropsDestructProp,
+              thisPropsProp,
+            };
 
-          shouldComponentUpdate(nextProps) {
-            (nextProps as unknown).nextProp as unknown;
+            componentDidUpdate(prevProps) {
+              (prevProps as unknown).prevProp as unknown;
+            }
+
+            shouldComponentUpdate(nextProps) {
+              (nextProps as unknown).nextProp as unknown;
+            }
+
+            stateProps() {
+              ((this as unknown).setState as unknown)((_, props) => (props as unknown).setStateProp as unknown);
+            }
+
+            thisPropsAlias() {
+              const props = (this as unknown).props as unknown;
+
+              const { thisPropsAliasDestructProp } = props as unknown;
+              (props as unknown).thisPropsAliasProp as unknown;
+            }
+
+            thisDestructPropsAlias() {
+              const { props } = this as unknown;
+
+              const { thisDestructPropsAliasDestructProp } = props as unknown;
+              (props as unknown).thisDestructPropsAliasProp as unknown;
+            }
+
+            render() {
+              const { props: { thisDestructPropsDestructProp } } = this as unknown;
+              const { thisPropsDestructProp } = (this as unknown).props as unknown;
+              ((this as unknown).props as unknown).thisPropsProp as unknown;
+
+              return null;
+            }
           }
-
-          stateProps() {
-            ((this as unknown).setState as unknown)((_, props) => (props as unknown).setStateProp as unknown);
-          }
-
-          thisPropsAlias() {
-            const props = (this as unknown).props as unknown;
-
-            const { thisPropsAliasDestructProp } = props as unknown;
-            (props as unknown).thisPropsAliasProp as unknown;
-          }
-
-          thisDestructPropsAlias() {
-            const { props } = this as unknown;
-
-            const { thisDestructPropsAliasDestructProp } = props as unknown;
-            (props as unknown).thisDestructPropsAliasProp as unknown;
-          }
-
-          render() {
-            const { props: { thisDestructPropsDestructProp } } = this as unknown;
-            const { thisPropsDestructProp } = (this as unknown).props as unknown;
-            ((this as unknown).props as unknown).thisPropsProp as unknown;
-
-            return null;
-          }
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: [
+          'declare class Thing {',
+          '  constructor({ id }: { id: string });',
+          '}',
+          'export default Thing;'
+        ].join('\n'),
+        parser: parsers.TYPESCRIPT_ESLINT
+      },
+      {
+        code: [
+          'declare class Thing {',
+          '  constructor({ id }: { id: string });',
+          '}',
+          'export default Thing;'
+        ].join('\n'),
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      // this test checks that there is no crash if no declaration is found (TSTypeLiteral).
+      {
+        code: [
+          'const Hello = (props: {firstname: string, lastname: string}) => {',
+          '    return <div {...props}></div>;',
+          '}'
+        ].join('\n'),
+        parser: parsers.TYPESCRIPT_ESLINT
+      },
+      {
+        code: [
+          'const Hello = (props: {firstname: string, lastname: string}) => {',
+          '    return <div {...props}></div>;',
+          '}'
+        ].join('\n'),
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      // this test checks that there is no crash if no declaration is found (TSTypeReference).
+      {
+        code: [
+          'const Hello = (props: UnfoundProps) => {',
+          '    return <div {...props}></div>;',
+          '}'
+        ].join('\n'),
+        parser: parsers.TYPESCRIPT_ESLINT
+      },
+      {
+        code: [
+          'const Hello = (props: UnfoundProps) => {',
+          '    return <div {...props}></div>;',
+          '}'
+        ].join('\n'),
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        // Omit, etc, cannot be handled, but must not trigger an error
+        code: [
+          'const Hello = (props: Omit<{a: string, b: string, c: string}, "a">) => {',
+          '    return <div>{props.b}</div>;',
+          '}'
+        ].join('\n'),
+        parser: parsers.TYPESCRIPT_ESLINT
+      },
+      {
+        // Omit, etc, cannot be handled, but must not trigger an error
+        code: [
+          'const Hello = (props: Omit<{a: string, b: string, c: string}, "a">) => {',
+          '    return <div>{props.b}</div>;',
+          '}'
+        ].join('\n'),
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        // neither TSTypeReference or TSTypeLiteral, we do nothing. Weird case
+        code: [
+          'const Hello = (props: () => any) => {',
+          '    return <div>{props.firstname}</div>;',
+          '}'
+        ].join('\n'),
+        parser: parsers.TYPESCRIPT_ESLINT
+      },
+      {
+        // neither TSTypeReference or TSTypeLiteral, we do nothing. Weird case
+        code: [
+          'const Hello = (props: () => any) => {',
+          '    return <div>{props.firstname}</div>;',
+          '}'
+        ].join('\n'),
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        // neither TSTypeReference or TSTypeLiteral, we do nothing. Weird case
+        code: [
+          'const Hello = (props: () => any) => {',
+          '    return <div>{props?.firstname}</div>;',
+          '}'
+        ].join('\n'),
+        parser: parsers.TYPESCRIPT_ESLINT
+      }, {
+        // neither TSTypeReference or TSTypeLiteral, we do nothing. Weird case
+        code: [
+          'const Hello = (props: () => any) => {',
+          '    return <div>{props?.firstname}</div>;',
+          '}'
+        ].join('\n'),
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      }, {
+        code: [
+          'interface Props {',
+          ' \'aria-label\': string;',
+          '}',
+          'export default function Component({',
+          ' \'aria-label\': ariaLabel,',
+          '}: Props): JSX.Element {',
+          '  return <div aria-label={ariaLabel} />;',
+          '}'
+        ].join('\n'),
+        parser: parsers.TYPESCRIPT_ESLINT
+      }, {
+        code: [
+          'interface Props {',
+          ' \'aria-label\': string;',
+          '}',
+          'export default function Component({',
+          ' \'aria-label\': ariaLabel,',
+          '}: Props): JSX.Element {',
+          '  return <div aria-label={ariaLabel} />;',
+          '}'
+        ].join('\n'),
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      }, {
+        code: [
+          'interface Props {',
+          ' [\'aria-label\']: string;',
+          '}',
+          'export default function Component({',
+          ' [\'aria-label\']: ariaLabel,',
+          '}: Props): JSX.Element {',
+          '  return <div aria-label={ariaLabel} />;',
+          '}'
+        ].join('\n'),
+        parser: parsers.TYPESCRIPT_ESLINT
+      }, {
+        code: [
+          'interface Props {',
+          ' [\'aria-label\']: string;',
+          '}',
+          'export default function Component({',
+          ' [\'aria-label\']: ariaLabel,',
+          '}: Props): JSX.Element {',
+          '  return <div aria-label={ariaLabel} />;',
+          '}'
+        ].join('\n'),
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      }, {
+        code: [
+          'interface Props {',
+          ' [1234]: string;',
+          '}',
+          'export default function Component(',
+          ' props ',
+          ': Props): JSX.Element {',
+          '  return <div aria-label={props[1234]} />;',
+          '}'
+        ].join('\n'),
+        parser: parsers.TYPESCRIPT_ESLINT
+      }, {
+        code: [
+          'interface Props {',
+          ' [1234]: string;',
+          '}',
+          'export default function Component(',
+          ' props ',
+          ': Props): JSX.Element {',
+          '  return <div aria-label={props[1234]} />;',
+          '}'
+        ].join('\n'),
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      }, {
+        code: [
+          'interface Props {',
+          ' [\'1234\']: string;',
+          '}',
+          'export default function Component(',
+          ' props ',
+          ': Props): JSX.Element {',
+          '  return <div aria-label={props[1234]} />;',
+          '}'
+        ].join('\n'),
+        parser: parsers.TYPESCRIPT_ESLINT
+      }, {
+        code: [
+          'interface Props {',
+          ' [\'1234\']: string;',
+          '}',
+          'export default function Component(',
+          ' props ',
+          ': Props): JSX.Element {',
+          '  return <div aria-label={props[1234]} />;',
+          '}'
+        ].join('\n'),
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      }, {
+        code: [
+          'interface Props {',
+          ' [1234]: string;',
+          '}',
+          'export default function Component(',
+          ' props ',
+          ': Props): JSX.Element {',
+          '  return <div aria-label={props[\'1234\']} />;',
+          '}'
+        ].join('\n'),
+        parser: parsers.TYPESCRIPT_ESLINT
+      }, {
+        code: [
+          'interface Props {',
+          ' [1234]: string;',
+          '}',
+          'export default function Component(',
+          ' props ',
+          ': Props): JSX.Element {',
+          '  return <div aria-label={props[\'1234\']} />;',
+          '}'
+        ].join('\n'),
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: [
+          'interface Props {',
+          ' [1234]: string;',
+          '}',
+          'export default function Component(',
+          ' props ',
+          ': Props): JSX.Element {',
+          'const handleVerifySubmit = ({',
+          '  otp,',
+          ' }) => {',
+          '  dispatch(',
+          '    verifyOTPPhone({',
+          '      otp,',
+          '    }),',
+          '  );',
+          '};',
+          'return <div aria-label={props[\'1234\']} />;',
+          '}'
+        ].join('\n'),
+        parser: parsers.TYPESCRIPT_ESLINT
+      }, {
+        code: [
+          'interface Props {',
+          ' [1234]: string;',
+          '}',
+          'export default function Component(',
+          ' props ',
+          ': Props): JSX.Element {',
+          'const handleVerifySubmit = ({',
+          '  otp,',
+          ' }) => {',
+          '  dispatch(',
+          '    verifyOTPPhone({',
+          '      otp,',
+          '    }),',
+          '  );',
+          '};',
+          'return <div aria-label={props[\'1234\']} />;',
+          '}'
+        ].join('\n'),
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      }, {
+        code: [
+          'interface Props {',
+          ' foo: string;',
+          '}',
+          'const Component = (props: Props) => (',
+          ' <div>{(()=> {return props.foo})()}</div>',
+          ')',
+          'export default Component'
+        ].join('\n'),
+        parser: parsers.TYPESCRIPT_ESLINT
+      }, {
+        code: [
+          'interface Props {',
+          ' foo: string;',
+          '}',
+          'const Component = (props: Props) => (',
+          ' <div>{(()=> {return props.foo})()}</div>',
+          ')',
+          'export default Component'
+        ].join('\n'),
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+        type User = {
+          user: string;
         }
-      `,
-      parser: parsers.TYPESCRIPT_ESLINT
-    },
-    {
-      code: [
-        'declare class Thing {',
-        '  constructor({ id }: { id: string });',
-        '}',
-        'export default Thing;'
-      ].join('\n'),
-      parser: parsers.TYPESCRIPT_ESLINT
-    },
-    // this test checks that there is no crash if no declaration is found (TSTypeLiteral).
-    {
-      code: [
-        'const Hello = (props: {firstname: string, lastname: string}) => {',
-        '    return <div {...props}></div>;',
-        '}'
-      ].join('\n'),
-      parser: parsers.TYPESCRIPT_ESLINT
-    },
-    // this test checks that there is no crash if no declaration is found (TSTypeReference).
-    {
-      code: [
-        'const Hello = (props: UnfoundProps) => {',
-        '    return <div {...props}></div>;',
-        '}'
-      ].join('\n'),
-      parser: parsers.TYPESCRIPT_ESLINT
-    },
-    {
-      // Omit, etc, cannot be handled, but must not trigger an error
-      code: [
-        'const Hello = (props: Omit<{a: string, b: string, c: string}, "a">) => {',
-        '    return <div>{props.b}</div>;',
-        '}'
-      ].join('\n'),
-      parser: parsers.TYPESCRIPT_ESLINT
-    },
-    {
-      // neither TSTypeReference or TSTypeLiteral, we do nothing. Weird case
-      code: [
-        'const Hello = (props: () => any) => {',
-        '    return <div>{props.firstname}</div>;',
-        '}'
-      ].join('\n'),
-      parser: parsers.TYPESCRIPT_ESLINT
-    },
-    {
-      // neither TSTypeReference or TSTypeLiteral, we do nothing. Weird case
-      code: [
-        'const Hello = (props: () => any) => {',
-        '    return <div>{props?.firstname}</div>;',
-        '}'
-      ].join('\n'),
-      parser: parsers.TYPESCRIPT_ESLINT
-    }, {
-      code: [
-        'interface Props {',
-        ' \'aria-label\': string;',
-        '}',
-        'export default function Component({',
-        ' \'aria-label\': ariaLabel,',
-        '}: Props): JSX.Element {',
-        '  return <div aria-label={ariaLabel} />;',
-        '}'
-      ].join('\n'),
-      parser: parsers.TYPESCRIPT_ESLINT
-    }, {
-      code: [
-        'interface Props {',
-        ' [\'aria-label\']: string;',
-        '}',
-        'export default function Component({',
-        ' [\'aria-label\']: ariaLabel,',
-        '}: Props): JSX.Element {',
-        '  return <div aria-label={ariaLabel} />;',
-        '}'
-      ].join('\n'),
-      parser: parsers.TYPESCRIPT_ESLINT
-    }, {
-      code: [
-        'interface Props {',
-        ' [1234]: string;',
-        '}',
-        'export default function Component(',
-        ' props ',
-        ': Props): JSX.Element {',
-        '  return <div aria-label={props[1234]} />;',
-        '}'
-      ].join('\n'),
-      parser: parsers.TYPESCRIPT_ESLINT
-    }, {
-      code: [
-        'interface Props {',
-        ' [\'1234\']: string;',
-        '}',
-        'export default function Component(',
-        ' props ',
-        ': Props): JSX.Element {',
-        '  return <div aria-label={props[1234]} />;',
-        '}'
-      ].join('\n'),
-      parser: parsers.TYPESCRIPT_ESLINT
-    }, {
-      code: [
-        'interface Props {',
-        ' [1234]: string;',
-        '}',
-        'export default function Component(',
-        ' props ',
-        ': Props): JSX.Element {',
-        '  return <div aria-label={props[\'1234\']} />;',
-        '}'
-      ].join('\n'),
-      parser: parsers.TYPESCRIPT_ESLINT
-    },
-    {
-      code: [
-        'interface Props {',
-        ' [1234]: string;',
-        '}',
-        'export default function Component(',
-        ' props ',
-        ': Props): JSX.Element {',
-        'const handleVerifySubmit = ({',
-        '  otp,',
-        ' }) => {',
-        '  dispatch(',
-        '    verifyOTPPhone({',
-        '      otp,',
-        '    }),',
-        '  );',
-        '};',
-        'return <div aria-label={props[\'1234\']} />;',
-        '}'
-      ].join('\n'),
-      parser: parsers.TYPESCRIPT_ESLINT
-    }, {
-      code: [
-        'interface Props {',
-        ' foo: string;',
-        '}',
-        'const Component = (props: Props) => (',
-        ' <div>{(()=> {return props.foo})()}</div>',
-        ')',
-        'export default Component'
-      ].join('\n'),
-      parser: parsers.TYPESCRIPT_ESLINT
-    }
-  ],
+        
+        type Props = User;
 
-  invalid: [
+        export default (props: Props) => {
+          return <div><span>{props.user}</span></div>;
+        };
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+        type User = {
+          user: string;
+        }
+
+        type Props = User & UserProps;
+
+        export default (props: Props) => {
+          return <div><span>{props.user}</span></div>;
+        };
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      }
+    ])
+  ),
+
+  invalid: [].concat(
     {
       code: [
         'var Hello = createReactClass({',
@@ -5434,7 +5676,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'unUsedProp\' PropType is defined but prop is never used'
       }]
-    }, {
+    }, parsers.TS([{
       code: `
         const Foo = (props) => {
           const { foo } = props as unknown;
@@ -5449,6 +5691,26 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
       parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [{
+        message: '\'fooUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'barUnused\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: `
+        const Foo = (props) => {
+          const { foo } = props as unknown;
+          (props as unknown).bar as unknown;
+
+          return <></>;
+        };
+
+        Foo.propTypes = {
+          fooUnused,
+          barUnused,
+        };
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
       errors: [{
         message: '\'fooUnused\' PropType is defined but prop is never used'
       }, {
@@ -5528,6 +5790,79 @@ ruleTester.run('no-unused-prop-types', rule, {
         message: '\'thisPropsPropUnused\' PropType is defined but prop is never used'
       }]
     }, {
+      code: `
+        class Foo extends React.Component {
+          static propTypes = {
+            prevPropUnused,
+            nextPropUnused,
+            setStatePropUnused,
+            thisPropsAliasDestructPropUnused,
+            thisPropsAliasPropUnused,
+            thisDestructPropsAliasDestructPropUnused,
+            thisDestructPropsAliasPropUnused,
+            thisDestructPropsDestructPropUnused,
+            thisPropsDestructPropUnused,
+            thisPropsPropUnused,
+          };
+
+          componentDidUpdate(prevProps) {
+            (prevProps as unknown).prevProp as unknown;
+          }
+
+          shouldComponentUpdate(nextProps) {
+            (nextProps as unknown).nextProp as unknown;
+          }
+
+          stateProps() {
+            ((this as unknown).setState as unknown)((_, props) => (props as unknown).setStateProp as unknown);
+          }
+
+          thisPropsAlias() {
+            const props = (this as unknown).props as unknown;
+
+            const { thisPropsAliasDestructProp } = props as unknown;
+            (props as unknown).thisPropsAliasProp as unknown;
+          }
+
+          thisDestructPropsAlias() {
+            const { props } = this as unknown;
+
+            const { thisDestructPropsAliasDestructProp } = props as unknown;
+            (props as unknown).thisDestructPropsAliasProp as unknown;
+          }
+
+          render() {
+            const { props: { thisDestructPropsDestructProp } } = this as unknown;
+            const { thisPropsDestructProp } = (this as unknown).props as unknown;
+            ((this as unknown).props as unknown).thisPropsProp as unknown;
+
+            return null;
+          }
+        }
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{
+        message: '\'prevPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'nextPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'setStatePropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'thisPropsAliasDestructPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'thisPropsAliasPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'thisDestructPropsAliasDestructPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'thisDestructPropsAliasPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'thisDestructPropsDestructPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'thisPropsDestructPropUnused\' PropType is defined but prop is never used'
+      }, {
+        message: '\'thisPropsPropUnused\' PropType is defined but prop is never used'
+      }]
+    }]), {
       code: [
         'type Person = {',
         '  lastname: string',
@@ -5553,7 +5888,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'lastname\' PropType is defined but prop is never used'
       }]
-    }, {
+    }, parsers.TS([{
       code: [
         'type Person = {',
         '  lastname: string',
@@ -5574,7 +5909,52 @@ ruleTester.run('no-unused-prop-types', rule, {
         '  lastname: string',
         '};',
         'const Hello = (props: Person) => {',
+        '    return <div>Hello {props.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [
+        {
+          message: '\'lastname\' PropType is defined but prop is never used'
+        }
+      ]
+    }, {
+      code: [
+        'type Person = {',
+        '  lastname: string',
+        '};',
+        'const Hello = (props: Person) => {',
         '    return <div>Hello {props?.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [
+        {
+          message: '\'lastname\' PropType is defined but prop is never used'
+        }
+      ]
+    }, {
+      code: [
+        'type Person = {',
+        '  lastname: string',
+        '};',
+        'const Hello = (props: Person) => {',
+        '    return <div>Hello {props?.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [
+        {
+          message: '\'lastname\' PropType is defined but prop is never used'
+        }
+      ]
+    }, {
+      code: [
+        'type Person = {',
+        '  lastname?: string',
+        '};',
+        'const Hello = (props: Person) => {',
+        '    return <div>Hello {props.firstname}</div>;',
         '}'
       ].join('\n'),
       parser: parsers.TYPESCRIPT_ESLINT,
@@ -5592,7 +5972,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         '    return <div>Hello {props.firstname}</div>;',
         '}'
       ].join('\n'),
-      parser: parsers.TYPESCRIPT_ESLINT,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
       errors: [
         {
           message: '\'lastname\' PropType is defined but prop is never used'
@@ -5617,6 +5997,22 @@ ruleTester.run('no-unused-prop-types', rule, {
     {
       code: [
         'type Person = {',
+        '  lastname?: string',
+        '};',
+        'const Hello = (props: Person) => {',
+        '    return <div>Hello {props?.firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [
+        {
+          message: '\'lastname\' PropType is defined but prop is never used'
+        }
+      ]
+    },
+    {
+      code: [
+        'type Person = {',
         '  firstname: string',
         '  lastname: string',
         '};',
@@ -5625,6 +6021,23 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [
+        {
+          message: '\'lastname\' PropType is defined but prop is never used'
+        }
+      ]
+    },
+    {
+      code: [
+        'type Person = {',
+        '  firstname: string',
+        '  lastname: string',
+        '};',
+        'const Hello = ({firstname}: Person) => {',
+        '    return <div>Hello {firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers['@TYPESCRIPT_ESLINT'],
       errors: [
         {
           message: '\'lastname\' PropType is defined but prop is never used'
@@ -5650,6 +6063,23 @@ ruleTester.run('no-unused-prop-types', rule, {
     },
     {
       code: [
+        'interface Person {',
+        '  firstname: string',
+        '  lastname: string',
+        '};',
+        'const Hello = ({firstname}: Person) => {',
+        '    return <div>Hello {firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [
+        {
+          message: '\'lastname\' PropType is defined but prop is never used'
+        }
+      ]
+    },
+    {
+      code: [
         'interface Foo {',
         '  foo: string;',
         '  [blah: string]: number;',
@@ -5659,6 +6089,23 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [
+        {
+          message: '\'foo\' PropType is defined but prop is never used'
+        }
+      ]
+    },
+    {
+      code: [
+        'interface Foo {',
+        '  foo: string;',
+        '  [blah: string]: number;',
+        '}',
+        'const Hello = ({bar}: Foo) => {',
+        '    return <div>Hello {bar}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers['@TYPESCRIPT_ESLINT'],
       errors: [
         {
           message: '\'foo\' PropType is defined but prop is never used'
@@ -5684,6 +6131,22 @@ ruleTester.run('no-unused-prop-types', rule, {
     {
       code: [
         'interface Props {',
+        ' \'aria-label\': string;',
+        '}',
+        'export default function Component(props: Props): JSX.Element {',
+        '  return <div />;',
+        '}'
+      ].join('\n'),
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [
+        {
+          message: '\'aria-label\' PropType is defined but prop is never used'
+        }
+      ]
+    },
+    {
+      code: [
+        'interface Props {',
         ' [1234]: string;',
         '}',
         'export default function Component(props: Props): JSX.Element {',
@@ -5691,6 +6154,22 @@ ruleTester.run('no-unused-prop-types', rule, {
         '}'
       ].join('\n'),
       parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [
+        {
+          message: '\'1234\' PropType is defined but prop is never used'
+        }
+      ]
+    },
+    {
+      code: [
+        'interface Props {',
+        ' [1234]: string;',
+        '}',
+        'export default function Component(props: Props): JSX.Element {',
+        '  return <div />;',
+        '}'
+      ].join('\n'),
+      parser: parsers['@TYPESCRIPT_ESLINT'],
       errors: [
         {
           message: '\'1234\' PropType is defined but prop is never used'
@@ -5709,7 +6188,488 @@ ruleTester.run('no-unused-prop-types', rule, {
           message: '\'lastname\' PropType is defined but prop is never used'
         }
       ]
-    }
+    },
+    {
+      code: [
+        'const Hello = ({firstname}: {firstname: string, lastname: string}) => {',
+        '    return <div>Hello {firstname}</div>;',
+        '}'
+      ].join('\n'),
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [
+        {
+          message: '\'lastname\' PropType is defined but prop is never used'
+        }
+      ]
+    },
+    {
+      // test same name of interface should be merge
+      code: `
+      interface Foo {
+        x: number;
+      }
+
+      interface Foo {
+        z: string;
+      }
+    
+      interface Bar extends Foo {
+        y: string;
+      }
+    
+      const Baz = ({ x, y }: Bar) => (
+        <span>
+            {x}
+            {y}
+        </span>
+      );`,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{
+        message: '\'z\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      // test same name of interface should be merge
+      code: `
+      interface Foo {
+        x: number;
+      }
+
+      interface Foo {
+        z: string;
+      }
+    
+      interface Bar extends Foo {
+        y: string;
+      }
+    
+      const Baz = ({ x, y }: Bar) => (
+        <span>
+            {x}
+            {y}
+        </span>
+      );`,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [{
+        message: '\'z\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      // test extends
+      code: `
+      interface Foo {
+        x: number;
+      }
+    
+      interface Bar extends Foo {
+        y: string;
+      }
+    
+      const Baz = ({ x }: Bar) => (
+        <span>
+            {x}
+        </span>
+      );`,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{
+        message: '\'y\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      // test extends
+      code: `
+      interface Foo {
+        x: number;
+      }
+    
+      interface Bar {
+        y: string;
+      }
+
+      interface Baz {
+        z:string;
+      }
+    
+      const Baz = ({ x }: Bar & Foo & Baz) => (
+        <span>
+            {x}
+        </span>
+      );`,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{
+        message: '\'y\' PropType is defined but prop is never used'
+      }, {
+        message: '\'z\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      // test extends
+      code: `
+      interface Foo {
+        x: number;
+      }
+    
+      interface Bar {
+        y: string;
+      }
+
+      interface Baz {
+        z:string;
+      }
+    
+      const Baz = ({ x }: Bar & Foo & Baz) => (
+        <span>
+            {x}
+        </span>
+      );`,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [{
+        message: '\'y\' PropType is defined but prop is never used'
+      }, {
+        message: '\'z\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      // test same name merge and extends
+      code: `
+      interface Foo {
+        x: number;
+      }
+
+      interface Foo {
+        z: string;
+      }
+    
+      interface Bar extends Foo {
+        y: string;
+      }
+    
+      const Baz = ({ x }: Bar) => (
+        <span>
+            {x}
+        </span>
+      );`,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{
+        message: '\'z\' PropType is defined but prop is never used'
+      }, {message: '\'y\' PropType is defined but prop is never used'}]
+    },
+    {
+      // test same name merge and extends
+      code: `
+      interface Foo {
+        x: number;
+      }
+
+      interface Foo {
+        z: string;
+      }
+    
+      interface Bar extends Foo {
+        y: string;
+      }
+    
+      const Baz = ({ x }: Bar) => (
+        <span>
+            {x}
+        </span>
+      );`,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [{
+        message: '\'z\' PropType is defined but prop is never used'
+      }, {message: '\'y\' PropType is defined but prop is never used'}]
+    },
+    {
+      // test same name merge and extends
+      code: `
+      interface Foo {
+        x: number;
+      }
+
+      interface Foo {
+        z: string;
+      }
+    
+      interface Foo {
+        y: string;
+      }
+    
+      const Baz = ({ x }: Foo) => (
+        <span>
+            {x}
+        </span>
+      );`,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{
+        message: '\'z\' PropType is defined but prop is never used'
+      }, {message: '\'y\' PropType is defined but prop is never used'}]
+    },
+    {
+      code: `
+      type User = {
+        user: string;
+      }
+
+      type UserProps = {
+        userId: string;
+      }
+
+      type AgeProps = {
+        age: number;
+      }
+      
+      type BirthdayProps = {
+        birthday: string;
+      }
+      
+      type intersectionUserProps = AgeProps & BirthdayProps;
+      
+      type Props = User & UserProps & intersectionUserProps;
+
+      export default (props: Props) => {
+        const { userId, user } = props;
+      
+        if (userId === 0) {
+          return <p>userId is 0</p>;
+        }
+      
+        return null;
+      };
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{
+        message: '\'age\' PropType is defined but prop is never used'
+      }, {
+        message: '\'birthday\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      code: `
+      type User = {
+        user: string;
+      }
+
+      type UserProps = {
+        userId: string;
+      }
+
+      type AgeProps = {
+        age: number;
+      }
+      
+      type BirthdayProps = {
+        birthday: string;
+      }
+      
+      type intersectionUserProps = AgeProps & BirthdayProps;
+      
+      type Props = User & UserProps & intersectionUserProps;
+
+      export default (props: Props) => {
+        const { userId, user } = props;
+      
+        if (userId === 0) {
+          return <p>userId is 0</p>;
+        }
+      
+        return null;
+      };
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [{
+        message: '\'age\' PropType is defined but prop is never used'
+      }, {
+        message: '\'birthday\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      code: `
+      const mapStateToProps = state => ({
+        books: state.books
+      });
+     
+      interface InfoLibTableProps extends ReturnType<typeof mapStateToProps> {
+      }
+     
+      const App = (props: InfoLibTableProps) => {
+        return <div></div>;
+      }
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{
+        message: '\'books\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      code: `
+      const mapStateToProps = state => ({
+        books: state.books
+      });
+     
+      interface InfoLibTableProps extends ReturnType<typeof mapStateToProps> {
+      }
+     
+      const App = (props: InfoLibTableProps) => {
+        return <div></div>;
+      }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [{
+        message: '\'books\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      code: `
+      const mapStateToProps = state => ({
+        books: state.books,
+      });
+           
+      interface BooksTable extends ReturnType<typeof mapStateToProps> {
+        username: string; 
+      }
+           
+      const App = (props: BooksTable) => {
+        return <div />;
+      }
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{
+        message: '\'books\' PropType is defined but prop is never used'
+      }, {
+        message: '\'username\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      code: `
+      const mapStateToProps = state => ({
+        books: state.books,
+      });
+           
+      interface BooksTable extends ReturnType<typeof mapStateToProps> {
+        username: string; 
+      }
+           
+      const App = (props: BooksTable) => {
+        return <div />;
+      }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [{
+        message: '\'books\' PropType is defined but prop is never used'
+      }, {
+        message: '\'username\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      code: `
+      interface BooksTable extends ReturnType<() => {books:Array<string>}> {
+        username: string; 
+      }
+           
+      const App = (props: BooksTable) => {
+        return <div></div>;
+      }
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{
+        message: '\'books\' PropType is defined but prop is never used'
+      }, {
+        message: '\'username\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      code: `
+      interface BooksTable extends ReturnType<() => {books:Array<string>}> {
+        username: string; 
+      }
+           
+      const App = (props: BooksTable) => {
+        return <div></div>;
+      }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [{
+        message: '\'books\' PropType is defined but prop is never used'
+      }, {
+        message: '\'username\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      code: `
+      type BooksTable = ReturnType<() => {books:Array<string>}> & {
+        username: string; 
+      }
+           
+      const App = (props: BooksTable) => {
+        return <div></div>;
+      }
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{
+        message: '\'books\' PropType is defined but prop is never used'
+      }, {
+        message: '\'username\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      code: `
+      type BooksTable = ReturnType<() => {books:Array<string>}> & {
+        username: string; 
+      }
+           
+      const App = (props: BooksTable) => {
+        return <div></div>;
+      }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [{
+        message: '\'books\' PropType is defined but prop is never used'
+      }, {
+        message: '\'username\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      code: `
+      type mapStateToProps = ReturnType<() => {books:Array<string>}>;
+
+      type Props = {
+        username: string; 
+      }
+
+      type BooksTable = mapStateToProps & Props;
+           
+      const App = (props: BooksTable) => {
+        return <div></div>;
+      }
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{
+        message: '\'books\' PropType is defined but prop is never used'
+      }, {
+        message: '\'username\' PropType is defined but prop is never used'
+      }]
+    },
+    {
+      code: `
+      type mapStateToProps = ReturnType<() => {books:Array<string>}>;
+
+      type Props = {
+        username: string; 
+      }
+
+      type BooksTable = mapStateToProps & Props;
+           
+      const App = (props: BooksTable) => {
+        return <div></div>;
+      }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [{
+        message: '\'books\' PropType is defined but prop is never used'
+      }, {
+        message: '\'username\' PropType is defined but prop is never used'
+      }]
+    }])
 
     /* , {
       // Enable this when the following issue is fixed
@@ -5732,5 +6692,5 @@ ruleTester.run('no-unused-prop-types', rule, {
         message: '\'foo\' PropType is defined but prop is never used'
       }]
     } */
-  ]
+  )
 });
