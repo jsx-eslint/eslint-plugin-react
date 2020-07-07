@@ -3,6 +3,8 @@
 Warn if an element that likely requires a `key` prop--namely, one present in an
 array literal or an arrow function expression.
 
+Also validates `key` uniqueness in array literals and JSX sibling elements.
+
 ## Rule Details
 
 The following patterns are considered warnings:
@@ -11,6 +13,13 @@ The following patterns are considered warnings:
 [<Hello />, <Hello />, <Hello />];
 
 data.map(x => <Hello>{x}</Hello>);
+
+[<Hello key="one" />, <Hello key="one" />];
+
+<div>
+  <Hello key="hello" />
+  <Hello key="hello" />
+</div>
 
 <Hello {...{ key: id, id, caption }} />
 ```
@@ -25,19 +34,24 @@ The following patterns are **not** considered warnings:
 data.map((x, i) => <Hello key={i}>{x}</Hello>);
 
 <Hello key={id} {...{ id, caption }} />
+
+<div>
+  <Hello key="hi" />
+  <Hello key="hello" />
+</div>
 ```
 
 ## Rule Options
 
 ```js
 ...
-"react/jsx-key": [<enabled>, { "checkFragmentShorthand": <boolean> }]
+"react/jsx-key": [<enabled>, { "checkFragmentShorthand": <boolean>, "checkUniquePropKey": <boolean> }]
 ...
 ```
 
 ### `checkFragmentShorthand` (default: `false`)
 
-When `true` the rule will check if usage of the [shorthand fragment syntax][short_syntax] requires a key. This option was added to avoid a breaking change and will be the default in the next major version. 
+When `true` the rule will check if usage of the [shorthand fragment syntax][short_syntax] requires a key. This option was added to avoid a breaking change and will be the default in the next major version.
 
 The following patterns are considered warnings:
 
@@ -46,6 +60,10 @@ The following patterns are considered warnings:
 
 data.map(x => <>{x}</>);
 ```
+
+### `checkUniquePropKey` (default: `true`)
+
+When `false` the validation for unique `key` in array literal and sibling JSX elements is disabled.
 
 ## When not to use
 
