@@ -221,6 +221,25 @@ ruleTester.run('no-multi-comp', rule, {
     options: [{
       ignoreStateless: false
     }]
+  }, {
+    code: `
+      import React from 'react';
+      function memo() {
+        var outOfScope = "hello"
+        return null;
+      }
+      class ComponentY extends React.Component {
+        memoCities = memo((cities) => cities.map((v) => ({ label: v })));
+        render() {
+          return (
+            <div>
+              <div>Counter</div>
+            </div>
+          );
+        }
+      }
+    `,
+    parser: parsers.BABEL_ESLINT
   }],
 
   invalid: [{
@@ -375,6 +394,172 @@ ruleTester.run('no-multi-comp', rule, {
     errors: [{
       message: 'Declare only one React component per file',
       line: 5
+    }]
+  }, {
+    code: `
+      const forwardRef = React.forwardRef;
+      const HelloComponent = (0, (props) => {
+        return <div></div>;
+      });
+      const HelloComponent2 = forwardRef((props, ref) => <HelloComponent></HelloComponent>);
+    `,
+    options: [{
+      ignoreStateless: false
+    }],
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 6
+    }]
+  }, {
+    code: `
+      const memo = React.memo;
+      const HelloComponent = (props) => {
+        return <div></div>;
+      };
+      const HelloComponent2 = memo((props) => <HelloComponent></HelloComponent>);
+    `,
+    options: [{
+      ignoreStateless: false
+    }],
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 6
+    }]
+  }, {
+    code: `
+      const {forwardRef} = React;
+      const HelloComponent = (0, (props) => {
+        return <div></div>;
+      });
+      const HelloComponent2 = forwardRef((props, ref) => <HelloComponent></HelloComponent>);
+    `,
+    options: [{
+      ignoreStateless: false
+    }],
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 6
+    }]
+  }, {
+    code: `
+      const {memo} = React;
+      const HelloComponent = (0, (props) => {
+        return <div></div>;
+      });
+      const HelloComponent2 = memo((props) => <HelloComponent></HelloComponent>);
+    `,
+    options: [{
+      ignoreStateless: false
+    }],
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 6
+    }]
+  }, {
+    code: `
+      import React, { memo } from 'react';
+      const HelloComponent = (0, (props) => {
+        return <div></div>;
+      });
+      const HelloComponent2 = memo((props) => <HelloComponent></HelloComponent>);
+    `,
+    options: [{
+      ignoreStateless: false
+    }],
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 6
+    }]
+  }, {
+    code: `
+      import {forwardRef} from 'react';
+      const HelloComponent = (0, (props) => {
+        return <div></div>;
+      });
+      const HelloComponent2 = forwardRef((props, ref) => <HelloComponent></HelloComponent>);
+    `,
+    options: [{
+      ignoreStateless: false
+    }],
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 6
+    }]
+  }, {
+    code: `
+      const { memo } = require('react');
+      const HelloComponent = (0, (props) => {
+        return <div></div>;
+      });
+      const HelloComponent2 = memo((props) => <HelloComponent></HelloComponent>);
+    `,
+    options: [{
+      ignoreStateless: false
+    }],
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 6
+    }]
+  }, {
+    code: `
+      const {forwardRef} = require('react');
+      const HelloComponent = (0, (props) => {
+        return <div></div>;
+      });
+      const HelloComponent2 = forwardRef((props, ref) => <HelloComponent></HelloComponent>);
+    `,
+    options: [{
+      ignoreStateless: false
+    }],
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 6
+    }]
+  }, {
+    code: `
+      const forwardRef = require('react').forwardRef;
+      const HelloComponent = (0, (props) => {
+        return <div></div>;
+      });
+      const HelloComponent2 = forwardRef((props, ref) => <HelloComponent></HelloComponent>);
+    `,
+    options: [{
+      ignoreStateless: false
+    }],
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 6
+    }]
+  }, {
+    code: `
+      const memo = require('react').memo;
+      const HelloComponent = (0, (props) => {
+        return <div></div>;
+      });
+      const HelloComponent2 = memo((props) => <HelloComponent></HelloComponent>);
+    `,
+    options: [{
+      ignoreStateless: false
+    }],
+    errors: [{
+      message: 'Declare only one React component per file',
+      line: 6
+    }]
+  }, {
+    code: `
+        import Foo, { memo, forwardRef } from 'foo';
+        const Text = forwardRef(({ text }, ref) => {
+          return <div ref={ref}>{text}</div>;
+        })
+        const Label = memo(() => <Text />);
+      `,
+    settings: {
+      react: {
+        pragma: 'Foo'
+      }
+    },
+    errors: [{
+      message: 'Declare only one React component per file'
     }]
   }]
 });
