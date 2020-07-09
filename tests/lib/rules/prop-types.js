@@ -4949,6 +4949,138 @@ ruleTester.run('prop-types', rule, {
       {
         message: '\'ordering\' is missing in props validation'
       }]
+    },
+    {
+      code: `
+        const firstType = PropTypes.shape({
+          id: PropTypes.number,
+        });
+        class ComponentX extends React.Component {
+          static propTypes = {
+            first: firstType.isRequired,
+          };
+          render() {
+            return (
+              <div>
+                <div>Counter = {this.props.first.name}</div>
+              </div>
+            );
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [{
+        message: "'first.name' is missing in props validation"
+      }]
+    },
+    {
+      code: `
+        const firstType = PropTypes.shape({
+          id: PropTypes.number,
+        }).isRequired;
+        class ComponentX extends React.Component {
+          static propTypes = {
+            first: firstType,
+          };
+          render() {
+            return (
+              <div>
+                <div>Counter = {this.props.first.name}</div>
+              </div>
+            );
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [{
+        message: "'first.name' is missing in props validation"
+      }]
+    },
+    {
+      code: `
+        const firstType = PropTypes.shape({
+          id: PropTypes.number,
+        });
+        class ComponentX extends React.Component {
+          static propTypes = {
+            first: firstType,
+          };
+          render() {
+            return (
+              <div>
+                <div>Counter = {this.props.first.name}</div>
+              </div>
+            );
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [{
+        message: "'first.name' is missing in props validation"
+      }]
+    },
+    {
+      code: `
+        function Foo({
+          foo: {
+            bar: foo,
+            baz
+          },
+        }) {
+          return <p>{foo.reduce(() => 5)}</p>;
+        }
+        const fooType = PropTypes.shape({
+          bar: PropTypes.arrayOf(PropTypes.string).isRequired,
+        }).isRequired
+        Foo.propTypes = {
+          foo: fooType,
+        };
+      `,
+      errors: [{
+        message: '\'foo.baz\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        function Foo({
+          foo: {
+            bar: foo,
+            baz
+          },
+        }) {
+          return <p>{foo.reduce(() => 5)}</p>;
+        }
+        const fooType = PropTypes.shape({
+          bar: PropTypes.arrayOf(PropTypes.string).isRequired,
+        })
+        Foo.propTypes = {
+          foo: fooType.isRequired,
+        };
+      `,
+      errors: [{
+        message: '\'foo.baz\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        function Foo({
+          foo: {
+            bar: foo,
+            baz
+          },
+        }) {
+          return <p>{foo.reduce(() => 5)}</p>;
+        }
+        const fooType = PropTypes.shape({
+          bar: PropTypes.arrayOf(PropTypes.string).isRequired,
+        })
+        Foo.propTypes = {
+          foo: fooType,
+        };
+      `,
+      errors: [{
+        message: '\'foo.baz\' is missing in props validation'
+      }]
     }
   ]
 });
