@@ -151,6 +151,42 @@ ruleTester.run('no-this-in-sfc', rule, {
       };
     };`,
     parser: parsers.BABEL_ESLINT
+  }, {
+    code: `
+      export const prepareLogin = new ValidatedMethod({
+        name: "user.prepare",
+        validate: new SimpleSchema({
+        }).validator(),
+        run({ remember }) {
+            if (Meteor.isServer) {
+                const connectionId = this.connection.id;
+                return Methods.prepareLogin(connectionId, remember);
+            }
+            return null;
+        },
+      });
+    `
+  }, {
+    // functions returning null are not necessarily components.
+    code: `
+    class Foo {
+      bar() {
+        function Bar(){
+          return () => {
+            this.something();
+            return null;
+          }
+        }
+      }
+    }`
+  }, {
+    code: `
+    function Foo(props) {
+      if (this.props.foo) {
+        something();
+      }
+      return null;
+    }`
   }],
   invalid: [{
     code: `
@@ -194,15 +230,6 @@ ruleTester.run('no-this-in-sfc', rule, {
     }`,
     errors: [{message: ERROR_MESSAGE}]
   }, {
-    code: `
-    function Foo(props) {
-      if (this.props.foo) {
-        something();
-      }
-      return null;
-    }`,
-    errors: [{message: ERROR_MESSAGE}]
-  }, {
     code: 'const Foo = (props) => <span>{this.props.foo}</span>',
     errors: [{message: ERROR_MESSAGE}]
   }, {
@@ -219,16 +246,81 @@ ruleTester.run('no-this-in-sfc', rule, {
     errors: [{message: ERROR_MESSAGE}, {message: ERROR_MESSAGE}]
   }, {
     code: `
-    class Foo {
-      bar() {
-        function Bar(){
-          return () => {
-            this.something();
-            return null;
+      export default class {
+        renderFooter = () => {
+          return () => (
+            <div>{this.value}</div>
+          );
+        }
+      }
+    `,
+    errors: [{message: ERROR_MESSAGE}],
+    parser: parsers.BABEL_ESLINT
+  }, {
+    code: `
+      export default class {
+        renderFooter = () => () => (
+          <div>{this.value}</div>
+        );
+      }
+    `,
+    errors: [{message: ERROR_MESSAGE}],
+    parser: parsers.BABEL_ESLINT
+  }, {
+    code: `
+      class Foo {
+        bar() {
+          function Bar(){
+            return () => {
+              this.something();
+              return null || <div />;
+            }
           }
         }
       }
-    }`,
+    `,
     errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: `
+      class Foo {
+        bar() {
+          function Bar(){
+            return () => {
+              if (this.something()) {
+                return <div />
+              }
+              return null;
+            }
+          }
+        }
+      }
+    `,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: `
+      export default class {
+        renderFooter = () => () => this.value ? (
+          <div>{this.value}</div>
+        ) : null;
+      }
+    `,
+    errors: [
+      {message: ERROR_MESSAGE, line: 3},
+      {message: ERROR_MESSAGE, line: 4}
+    ],
+    parser: parsers.BABEL_ESLINT
+  }, {
+    code: `
+      export default class {
+        renderFooter = () => () => this.value && (
+          <div>{this.value}</div>
+        );
+      }
+    `,
+    errors: [
+      {message: ERROR_MESSAGE, line: 3},
+      {message: ERROR_MESSAGE, line: 4}
+    ],
+    parser: parsers.BABEL_ESLINT
   }]
 });
