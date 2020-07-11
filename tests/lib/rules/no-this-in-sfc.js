@@ -115,26 +115,7 @@ ruleTester.run('no-this-in-sfc', rule, {
   }, {
     code: `
     class Foo {
-      bar() {
-        () => () => {
-          this.something();
-          return null;
-        };
-      }
-    }`
-  }, {
-    code: `
-    class Foo {
       bar = () => {
-        this.something();
-        return null;
-      };
-    }`,
-    parser: parsers.BABEL_ESLINT
-  }, {
-    code: `
-    class Foo {
-      bar = () => () => {
         this.something();
         return null;
       };
@@ -151,6 +132,21 @@ ruleTester.run('no-this-in-sfc', rule, {
       };
     };`,
     parser: parsers.BABEL_ESLINT
+  }, {
+    code: `
+      export const prepareLogin = new ValidatedMethod({
+        name: "user.prepare",
+        validate: new SimpleSchema({
+        }).validator(),
+        run({ remember }) {
+            if (Meteor.isServer) {
+                const connectionId = this.connection.id; // react/no-this-in-sfc
+                return Methods.prepareLogin(connectionId, remember);
+            }
+            return null;
+        },
+      });
+    `
   }],
   invalid: [{
     code: `
@@ -221,12 +217,44 @@ ruleTester.run('no-this-in-sfc', rule, {
     code: `
     class Foo {
       bar() {
+        return () => {
+          this.something();
+          return null;
+        }
+      }
+    }`,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: `
+    class Foo {
+      bar = () => () => {
+        this.something();
+        return null;
+      };
+    }`,
+    parser: parsers.BABEL_ESLINT,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: `
+    class Foo {
+      bar() {
         function Bar(){
           return () => {
             this.something();
             return null;
           }
         }
+      }
+    }`,
+    errors: [{message: ERROR_MESSAGE}]
+  }, {
+    code: `
+    class Foo {
+      bar() {
+        () => () => {
+          this.something();
+          return null;
+        };
       }
     }`,
     errors: [{message: ERROR_MESSAGE}]
