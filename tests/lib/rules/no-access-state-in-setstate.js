@@ -10,8 +10,8 @@
 // ------------------------------------------------------------------------------
 
 const RuleTester = require('eslint').RuleTester;
-const rule = require('../../../lib/rules/no-access-state-in-setstate');
 const parsers = require('../../helpers/parsers');
+const rule = require('../../../lib/rules/no-access-state-in-setstate');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -20,11 +20,17 @@ const parserOptions = {
   }
 };
 
+const settings = {
+  react: {
+    createClass: 'createClass'
+  }
+};
+
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester();
+const ruleTester = new RuleTester({settings});
 ruleTester.run('no-access-state-in-setstate', rule, {
   valid: [{
     code: [
@@ -120,6 +126,17 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT
+  }, {
+    code: `
+      class Foo extends Abstract {
+        update = () => {
+          const result = this.getResult ( this.state.foo );
+          return this.setState ({ result });
+        };
+      }
+    `,
+    parser: parsers.BABEL_ESLINT,
+    parserOptions
   }],
 
   invalid: [{
@@ -222,6 +239,18 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '  }',
       '});'
     ].join('\n'),
+    parserOptions,
+    errors: [{
+      message: 'Use callback in setState when referencing the previous state.'
+    }]
+  }, {
+    code: `
+      class Hello extends React.Component {
+        onClick() {
+          this.setState(this.state, () => console.log(this.state));
+        }
+      }
+    `,
     parserOptions,
     errors: [{
       message: 'Use callback in setState when referencing the previous state.'
