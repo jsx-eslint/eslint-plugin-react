@@ -1195,6 +1195,16 @@ eslintTester.run('no-unused-state', rule, {
       errors: getErrorMessages(['initial'])
     }, {
       code: `
+        wrap(class NotWorking extends React.Component {
+            state = {
+                dummy: null
+            };
+        });
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: getErrorMessages(['dummy'])
+    }, {
+      code: `
       class Foo extends Component {
         state = {
           thisStateAliasPropUnused,
