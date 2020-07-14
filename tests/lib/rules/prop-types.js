@@ -2515,6 +2515,26 @@ ruleTester.run('prop-types', rule, {
         }
       `
     },
+    {
+      code: `
+      const SideMenu = styled(
+        ({ componentId }) => (
+          <S.Container>
+            <S.Head />
+            <UserInfo />
+            <Separator />
+            <MenuList componentId={componentId} />
+          </S.Container>
+        ),
+      );
+      SideMenu.propTypes = {
+        componentId: PropTypes.string.isRequired
+      }
+      `,
+      settings: {
+        componentWrapperFunctions: [{property: 'styled'}]
+      }
+    },
     parsers.TS([
       {
         code: `
@@ -6035,6 +6055,45 @@ ruleTester.run('prop-types', rule, {
       errors: [{
         messageId: 'missingPropType',
         data: {name: 'name'}
+      }]
+    },
+    {
+      code: `
+      const SideMenu = observer(
+        ({ componentId }) => (
+          <S.Container>
+            <S.Head />
+            <UserInfo />
+            <Separator />
+            <MenuList componentId={componentId} />
+          </S.Container>
+        ),
+      );`,
+      settings: {
+        componentWrapperFunctions: ['observer']
+      },
+      errors: [{
+        message: '\'componentId\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+      const SideMenu = Mobx.observer(
+        ({ id }) => (
+          <S.Container>
+            <S.Head />
+            <UserInfo />
+            <Separator />
+            <MenuList componentId={id} />
+          </S.Container>
+        ),
+      );
+      `,
+      settings: {
+        componentWrapperFunctions: [{property: 'observer', object: 'Mobx'}]
+      },
+      errors: [{
+        message: '\'id\' is missing in props validation'
       }]
     },
     parsers.TS([

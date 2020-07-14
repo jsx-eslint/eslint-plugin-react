@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Added
+* component detection: add componentWrapperFunctions setting ([#2713][] @@jzabala @LandonSchropp)
+
+[#2713]: https://github.com/yannickcr/eslint-plugin-react/pull/2713
+
 ## [7.23.2] - 2021.04.08
 
 ### Fixed
