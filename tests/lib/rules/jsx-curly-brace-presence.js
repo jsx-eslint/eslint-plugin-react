@@ -400,6 +400,21 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
         </App>
       `,
       options: [{children: 'always'}]
+    },
+    {
+      code: `
+        const Component2 = () => {
+          return <span>/*</span>;
+        };
+      `
+    },
+    {
+      code: `
+        const Component2 = () => {
+          return <span>/*</span>;
+        };
+      `,
+      options: [{props: 'never', children: 'never'}]
     }
   ],
 
