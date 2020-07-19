@@ -43,6 +43,7 @@ You should also specify settings that will be shared across all the plugin rules
                            // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
                            // default to latest and warns if missing
                            // It will default to "detect" in the future
+                           // You can also set it to `"detect-no-warn"`, which is the same as "detect", but does not give a warning
       "flowVersion": "0.53" // Flow version
     },
     "propWrapperFunctions": [
