@@ -15,8 +15,8 @@ If two `setState` operations are grouped together in a batch, they
 both evaluate the old state. Given that `state.value` is 1:
 
 ```javascript
-setState({value: this.state.value + 1}) // 2
-setState({value: this.state.value + 1}) // 2, not 3
+this.setState({value: this.state.value + 1}) // 2
+this.setState({value: this.state.value + 1}) // 2, not 3
 ```
 
 This can be avoided with using callbacks which takes the previous state
