@@ -3,11 +3,31 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.20.4] - 2020.07.26
+
+### Fixed
+* improve algorithm to check if a variable is coming from the pragma ([#2706][] @jzabala)
+* [`prop-types`]: handle component returning null ([#2696][] @hank121314)
+* [`prop-types`]/[`function-component-definition`]: Add check for first letter capitalization in functional component detection ([#2699][] @jzabala)
+* [`prop-types`]: use variable value in prop type fields defined by variables ([#2704][] @jzabala)
+* [`no-typos`]: warn on a bindingless `react` import
+
+### Changed
+* [Tests] `boolean-prop-naming`: Added test for function invocation of bool ([#2697][] @ajkovar)
+* [Tests] `jsx-curly-brace-presence`, `jsx-no-comment-textnodes`: add passing tests
+* [Refactor] `no-unused-state`: avoid a loop
+
+[7.20.4]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.20.3...v7.20.4
+[#2704]: https://github.com/yannickcr/eslint-plugin-react/pull/2704
+[#2699]: https://github.com/yannickcr/eslint-plugin-react/pull/2699
+[#2697]: https://github.com/yannickcr/eslint-plugin-react/pull/2697
+[#2696]: https://github.com/yannickcr/eslint-plugin-react/pull/2696
+
 ## [7.20.3] - 2020-06-30
 
 ### Fixed
-* [Fix] `no-unused-prop-types`/`prop-types`: typescript interface support literal type and only FunctionComponent should have propTypes validation ([#2690][] @hank121314)
-* [Fix] `no-unused-prop-types`/TypeScript: avoid crash on indexable interface ([#2687][] @ljharb)
+* [`no-unused-prop-types`]/[`prop-types`]: typescript interface support literal type and only FunctionComponent should have propTypes validation ([#2690][] @hank121314)
+* [`no-unused-prop-types`]/TypeScript: avoid crash on indexable interface ([#2687][] @ljharb)
 
 [7.20.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.20.2...v7.20.3
 [#2690]: https://github.com/yannickcr/eslint-plugin-react/pull/2690
@@ -16,10 +36,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## [7.20.2] - 2020-06-29
 
 ### Fixed
-* [Fix] [`no-unused-prop-types`]: handle optional chaining ([#2679][] @hank121314)
-* [Fix] [`jsx-pascal-case`]: fix a false positive with "H1" ([#2683][] @ljharb)
-* [Fix] [`jsx-no-useless-fragment`]: avoid a crash when autofixing a self-closing React.Fragment ([#2680][] @ljharb)
-* [Fix] [`forbid-prop-types`]: avoid crash ([#2682][] @ljharb)
+* [`no-unused-prop-types`]: handle optional chaining ([#2679][] @hank121314)
+* [`jsx-pascal-case`]: fix a false positive with "H1" ([#2683][] @ljharb)
+* [`jsx-no-useless-fragment`]: avoid a crash when autofixing a self-closing React.Fragment ([#2680][] @ljharb)
+* [`forbid-prop-types`]: avoid crash ([#2682][] @ljharb)
 
 [7.20.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.20.1...v7.20.2
 [#2683]: https://github.com/yannickcr/eslint-plugin-react/issues/2683
