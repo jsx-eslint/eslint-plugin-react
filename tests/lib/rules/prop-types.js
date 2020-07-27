@@ -2569,6 +2569,11 @@ ruleTester.run('prop-types', rule, {
         return null;
       }`,
       parser: parsers.TYPESCRIPT_ESLINT
+    },
+    {
+      code: `
+      export default function() {}
+      `
     }
   ],
 
@@ -5158,6 +5163,16 @@ ruleTester.run('prop-types', rule, {
         return null;
       }`,
       parser: parsers.TYPESCRIPT_ESLINT,
+      errors: [{
+        message: '\'value\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        export default function ({ value = 'World' }) {
+          return <h1>Hello {value}</h1>
+        }
+      `,
       errors: [{
         message: '\'value\' is missing in props validation'
       }]
