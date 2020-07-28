@@ -3,6 +3,23 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.20.5] - 2020.07.28
+
+### Fixed
+* [`jsx-curly-brace-presence`]: disable disallowed JSX text chars check in props ([#2710][] @jzabala)
+* [`no-unused-state`]: check for class expression ([#2712][] @jzabala)
+* [`prop-types`]: handle anonymous functions ([#2730][], [#2731][] @odinho @wKich @jzabala)
+
+### Docs
+* [Docs] [`no-access-state-in-setstate`]: fix example ([#2724][] @youngjuning)
+
+[7.20.5]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.20.4...v7.20.5
+[#2731]: https://github.com/yannickcr/eslint-plugin-react/pull/2731
+[#2730]: https://github.com/yannickcr/eslint-plugin-react/pull/2730
+[#2724]: https://github.com/yannickcr/eslint-plugin-react/pull/2724
+[#2712]: https://github.com/yannickcr/eslint-plugin-react/pull/2712
+[#2710]: https://github.com/yannickcr/eslint-plugin-react/pull/2710
+
 ## [7.20.4] - 2020.07.26
 
 ### Fixed
