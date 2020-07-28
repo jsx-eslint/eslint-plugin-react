@@ -11,6 +11,7 @@
 
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-access-state-in-setstate');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -102,6 +103,23 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       };
     `,
     parserOptions
+  }, {
+    code: `
+      class ComponentA extends React.Component {
+        state = {
+          greeting: 'hello',
+        };
+
+        myFunc = () => {
+          this.setState({ greeting: 'hi' }, () => this.doStuff());
+        };
+
+        doStuff = () => {
+          console.log(this.state.greeting);
+        };
+      }
+    `,
+    parser: parsers.BABEL_ESLINT,
   }],
 
   invalid: [{
