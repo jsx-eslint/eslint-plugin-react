@@ -119,7 +119,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         };
       }
     `,
-    parser: parsers.BABEL_ESLINT,
+    parser: parsers.BABEL_ESLINT
   }],
 
   invalid: [{
