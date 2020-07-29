@@ -2574,6 +2574,28 @@ ruleTester.run('prop-types', rule, {
       code: `
       export default function() {}
       `
+    },
+    {
+      code: `
+        import * as React from 'react';
+
+        interface Props {
+          text: string;
+        }
+
+        export const Test: React.FC<Props> = (props: Props) => {
+          const createElement = (text: string) => {
+            return (
+              <div>
+                {text}
+              </div>
+            );
+          };
+
+          return <>{createElement(props.text)}</>;
+        };
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT
     }
   ],
 
