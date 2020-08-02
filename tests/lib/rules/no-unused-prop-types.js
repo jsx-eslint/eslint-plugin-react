@@ -3667,6 +3667,28 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
         `,
         parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+        class App extends Component {
+          static propTypes = {
+            notifications: PropTypes.array.isRequired
+          };
+          customizeNotifications() {
+            const props = this.props;
+            return props.notifications.map((notification) => notification);
+          }
+          render() {
+            const notifications = this.customizeNotifications();
+            return (
+              <View>
+                {notifications.map((notification) => <Text>{notification}</Text>)}
+              </View>
+            );
+          }
+        }
+        `,
+        parser: parsers.BABEL_ESLINT
       }
     ])
   ),
