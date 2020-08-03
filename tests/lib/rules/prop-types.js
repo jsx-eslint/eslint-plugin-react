@@ -5827,6 +5827,70 @@ ruleTester.run('prop-types', rule, {
         errors: [{
           message: '\'dateCreated\' is missing in props validation'
         }]
+      },
+      {
+        code: `
+          function Zoo(props) {
+            return (
+              <>
+                {props.foo.c}
+              </>
+            );
+          }
+
+          Zoo.propTypes = {
+            foo: PropTypes.exact({
+              a: PropTypes.number,
+              b: PropTypes.number,
+            }),
+          };
+        `,
+        errors: [{
+          message: "'foo.c' is missing in props validation"
+        }]
+      },
+      {
+        code: `
+          function Zoo(props) {
+            return (
+              <>
+                {props.foo.c}
+              </>
+            );
+          }
+
+          Zoo.propTypes = {
+            foo: React.PropTypes.exact({
+              a: PropTypes.number,
+              b: PropTypes.number,
+            }),
+          };
+        `,
+        errors: [{
+          message: "'foo.c' is missing in props validation"
+        }]
+      },
+      {
+        code: `
+          function Zoo(props) {
+            return (
+              <>
+                {props.foo.c}
+              </>
+            );
+          }
+
+          Zoo.propTypes = {
+            foo: Foo.PropTypes.exact({
+              a: PropTypes.number,
+              b: PropTypes.number,
+            }),
+          };
+        `,
+        settings,
+        errors: [{
+          message: "'foo.c' is missing in props validation"
+        }]
       }
     ])
   )
