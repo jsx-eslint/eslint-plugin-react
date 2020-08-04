@@ -76,7 +76,7 @@ ruleTester.run('no-find-dom-node', rule, {
       });
     `,
     errors: [{
-      message: 'Do not use findDOMNode'
+      message: 'Do not use findDOMNode. It doesn’t work with function components and is deprecated in StrictMode. See https://reactjs.org/docs/react-dom.html#finddomnode'
     }]
   }, {
     code: `
@@ -90,7 +90,7 @@ ruleTester.run('no-find-dom-node', rule, {
       });
     `,
     errors: [{
-      message: 'Do not use findDOMNode'
+      message: 'Do not use findDOMNode. It doesn’t work with function components and is deprecated in StrictMode. See https://reactjs.org/docs/react-dom.html#finddomnode'
     }]
   }, {
     code: `
@@ -104,7 +104,7 @@ ruleTester.run('no-find-dom-node', rule, {
       };
     `,
     errors: [{
-      message: 'Do not use findDOMNode'
+      message: 'Do not use findDOMNode. It doesn’t work with function components and is deprecated in StrictMode. See https://reactjs.org/docs/react-dom.html#finddomnode'
     }]
   }, {
     code: `
@@ -118,7 +118,7 @@ ruleTester.run('no-find-dom-node', rule, {
       };
     `,
     errors: [{
-      message: 'Do not use findDOMNode'
+      message: 'Do not use findDOMNode. It doesn’t work with function components and is deprecated in StrictMode. See https://reactjs.org/docs/react-dom.html#finddomnode'
     }]
   }]
 });
