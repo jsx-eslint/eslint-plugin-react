@@ -63,11 +63,21 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
     {
       code: '<Fooo content={<>eeee ee eeeeeee eeeeeeee</>} />',
       parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: '<>{foos.map(foo => foo)}</>',
+      parser: parsers.BABEL_ESLINT
     }
   ],
   invalid: [
     {
       code: '<></>',
+      output: null,
+      errors: [{messageId: 'NeedsMoreChidren', type: 'JSXFragment'}],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: '<>{}</>',
       output: null,
       errors: [{messageId: 'NeedsMoreChidren', type: 'JSXFragment'}],
       parser: parsers.BABEL_ESLINT
