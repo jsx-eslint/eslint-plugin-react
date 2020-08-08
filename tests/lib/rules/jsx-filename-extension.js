@@ -47,6 +47,14 @@ ruleTester.run('jsx-filename-extension', rule, {
       code: withJSXElement
     }, {
       filename: 'MyComponent.js',
+      code: withoutJSX,
+      options: [{allow: 'as-needed'}]
+    }, {
+      filename: 'MyComponent.jsx',
+      code: withJSXElement,
+      options: [{allow: 'as-needed'}]
+    }, {
+      filename: 'MyComponent.js',
       options: [{extensions: ['.js', '.jsx']}],
       code: withJSXElement
     }, {
@@ -73,6 +81,16 @@ ruleTester.run('jsx-filename-extension', rule, {
     {
       filename: 'MyComponent.js',
       code: withJSXElement,
+      errors: [{message: 'JSX not allowed in files with extension \'.js\''}]
+    }, {
+      filename: 'MyComponent.jsx',
+      code: withoutJSX,
+      options: [{allow: 'as-needed'}],
+      errors: [{message: 'Only files containing JSX may use the extension \'.jsx\''}]
+    }, {
+      filename: 'notAComponent.js',
+      code: withJSXElement,
+      options: [{allow: 'as-needed'}],
       errors: [{message: 'JSX not allowed in files with extension \'.js\''}]
     }, {
       filename: 'MyComponent.jsx',
