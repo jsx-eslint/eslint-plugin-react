@@ -3,6 +3,13 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## Unreleased
+
+### Added
+* [`button-has-type`]: support trivial ternary expressions ([#2748][] @Hypnosphi)
+
+[#2748]: https://github.com/yannickcr/eslint-plugin-react/pull/2748
+
 ## [7.20.6] - 2020.08.12
 
 ### Fixed

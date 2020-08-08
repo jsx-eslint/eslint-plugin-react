@@ -32,6 +32,12 @@ ruleTester.run('button-has-type', rule, {
     {code: '<button type="button"/>'},
     {code: '<button type="submit"/>'},
     {code: '<button type="reset"/>'},
+    {code: '<button type={"button"}/>'},
+    {code: '<button type={\'button\'}/>'},
+    {code: '<button type={`button`}/>'},
+    {code: '<button type={condition ? "button" : "submit"}/>'},
+    {code: '<button type={condition ? \'button\' : \'submit\'}/>'},
+    {code: '<button type={condition ? `button` : `submit`}/>'},
     {
       code: '<button type="button"/>',
       options: [{reset: false}]
@@ -39,8 +45,17 @@ ruleTester.run('button-has-type', rule, {
     {code: 'React.createElement("span")'},
     {code: 'React.createElement("span", {type: "foo"})'},
     {code: 'React.createElement("button", {type: "button"})'},
+    {code: 'React.createElement("button", {type: \'button\'})'},
+    {code: 'React.createElement("button", {type: `button`})'},
     {code: 'React.createElement("button", {type: "submit"})'},
+    {code: 'React.createElement("button", {type: \'submit\'})'},
+    {code: 'React.createElement("button", {type: `submit`})'},
     {code: 'React.createElement("button", {type: "reset"})'},
+    {code: 'React.createElement("button", {type: \'reset\'})'},
+    {code: 'React.createElement("button", {type: `reset`})'},
+    {code: 'React.createElement("button", {type: condition ? "button" : "submit"})'},
+    {code: 'React.createElement("button", {type: condition ? \'button\' : \'submit\'})'},
+    {code: 'React.createElement("button", {type: condition ? `button` : `submit`})'},
     {
       code: 'React.createElement("button", {type: "button"})',
       options: [{reset: false}]
@@ -73,17 +88,73 @@ ruleTester.run('button-has-type', rule, {
     {
       code: '<button type={foo}/>',
       errors: [{
-        message: 'The button type attribute must be specified by a static string'
+        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
       }]
     },
     {
       code: '<button type={"foo"}/>',
       errors: [{
-        message: 'The button type attribute must be specified by a static string'
+        message: '"foo" is an invalid value for button type attribute'
+      }]
+    },
+    {
+      code: '<button type={\'foo\'}/>',
+      errors: [{
+        message: '"foo" is an invalid value for button type attribute'
+      }]
+    },
+    {
+      code: '<button type={`foo`}/>',
+      errors: [{
+        message: '"foo" is an invalid value for button type attribute'
+      }]
+    },
+    {
+      code: '<button type={`button${foo}`}/>',
+      errors: [{
+        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
       }]
     },
     {
       code: '<button type="reset"/>',
+      options: [{reset: false}],
+      errors: [{
+        message: '"reset" is a forbidden value for button type attribute'
+      }]
+    },
+    {
+      code: '<button type={condition ? "button" : foo}/>',
+      errors: [{
+        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
+      }]
+    },
+    {
+      code: '<button type={condition ? "button" : "foo"}/>',
+      errors: [{
+        message: '"foo" is an invalid value for button type attribute'
+      }]
+    },
+    {
+      code: '<button type={condition ? "button" : "reset"}/>',
+      options: [{reset: false}],
+      errors: [{
+        message: '"reset" is a forbidden value for button type attribute'
+      }]
+    },
+    {
+      code: '<button type={condition ? foo : "button"}/>',
+      errors: [{
+        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
+      }]
+    },
+    {
+      code: '<button type={condition ? "foo" : "button"}/>',
+      errors: [{
+        message: '"foo" is an invalid value for button type attribute'
+      }]
+    },
+    {
+      code: '<button type={condition ? "reset" : "button"}/>',
       options: [{reset: false}],
       errors: [{
         message: '"reset" is a forbidden value for button type attribute'
@@ -96,6 +167,12 @@ ruleTester.run('button-has-type', rule, {
       }]
     },
     {
+      code: 'React.createElement("button", {type: foo})',
+      errors: [{
+        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
+      }]
+    },
+    {
       code: 'React.createElement("button", {type: "foo"})',
       errors: [{
         message: '"foo" is an invalid value for button type attribute'
@@ -103,6 +180,44 @@ ruleTester.run('button-has-type', rule, {
     },
     {
       code: 'React.createElement("button", {type: "reset"})',
+      options: [{reset: false}],
+      errors: [{
+        message: '"reset" is a forbidden value for button type attribute'
+      }]
+    },
+    {
+      code: 'React.createElement("button", {type: condition ? "button" : foo})',
+      errors: [{
+        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
+      }]
+    },
+    {
+      code: 'React.createElement("button", {type: condition ? "button" : "foo"})',
+      errors: [{
+        message: '"foo" is an invalid value for button type attribute'
+      }]
+    },
+    {
+      code: 'React.createElement("button", {type: condition ? "button" : "reset"})',
+      options: [{reset: false}],
+      errors: [{
+        message: '"reset" is a forbidden value for button type attribute'
+      }]
+    },
+    {
+      code: 'React.createElement("button", {type: condition ? foo : "button"})',
+      errors: [{
+        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
+      }]
+    },
+    {
+      code: 'React.createElement("button", {type: condition ? "foo" : "button"})',
+      errors: [{
+        message: '"foo" is an invalid value for button type attribute'
+      }]
+    },
+    {
+      code: 'React.createElement("button", {type: condition ? "reset" : "button"})',
       options: [{reset: false}],
       errors: [{
         message: '"reset" is a forbidden value for button type attribute'
@@ -122,7 +237,7 @@ ruleTester.run('button-has-type', rule, {
     {
       code: 'function Button({ type, ...extraProps }) { const button = type; return <button type={button} {...extraProps} />; }',
       errors: [{
-        message: 'The button type attribute must be specified by a static string'
+        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
       }]
     }
   ]

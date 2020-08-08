@@ -24,12 +24,14 @@ var Hello = <span type="foo">Hello</span>
 var Hello = <button type="button">Hello</button>
 var Hello = <button type="submit">Hello</button>
 var Hello = <button type="reset">Hello</button>
+var Hello = <button type={condition ? "button" : "submit"}>Hello</button>
 
 var Hello = React.createElement('span', {}, 'Hello')
 var Hello = React.createElement('span', {type: 'foo'}, 'Hello')
 var Hello = React.createElement('button', {type: 'button'}, 'Hello')
 var Hello = React.createElement('button', {type: 'submit'}, 'Hello')
 var Hello = React.createElement('button', {type: 'reset'}, 'Hello')
+var Hello = React.createElement('button', {type: condition ? 'button' : 'submit'}, 'Hello')
 ```
 
 ## Rule Options
@@ -50,8 +52,10 @@ The following patterns are considered errors when using `"react/button-has-type"
 
 ```jsx
 var Hello = <button type="reset">Hello</button>
+var Hello = <button type={condition ? "button" : "reset"}>Hello</button>
 
 var Hello = React.createElement('button', {type: 'reset'}, 'Hello')
+var Hello = React.createElement('button', {type: condition ? "button" : "reset"}, 'Hello')
 ```
 
 ## When Not To Use It
