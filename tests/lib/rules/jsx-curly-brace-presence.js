@@ -407,6 +407,16 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
         };
       `,
       options: [{props: 'never', children: 'never'}]
+    },
+    {
+      code: `
+        import React from "react";
+
+        const Component = () => {
+          return <span>{"/*"}</span>;
+        };
+      `,
+      options: [{props: 'never', children: 'never'}]
     }
   ],
 
