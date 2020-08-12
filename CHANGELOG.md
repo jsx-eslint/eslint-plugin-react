@@ -3,6 +3,32 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
 
+## [7.20.6] - 2020.08.12
+
+### Fixed
+* [`jsx-curly-brace-presence`]: fix multiline comment case ([#2716][] @ljharb)
+* [`jsx-no-useless-fragment`]: accept fragments with call expressions ([#2744][] @hasparus)
+* [`jsx-no-literals`] with allowStrings doesn't work in props ([#2736][] @karolina-benitez)
+* [`no-find-dom-node`]: Improve error message ([#2741][] @ecraig12345)
+* [`no-typos`]/[`no-unused-prop-types`]/propType detection: Support typescript props interface extension and TSTypeAliasDeclaration ([#2721][] @hank121314)
+* [`no-this-in-sfc`]/component detection: add arrow function to list of allowed position for component ([#2708][] @jzabala)
+* [`no-access-state-in-setstate`]: add check for class component ([#2711][] @jzabala)
+* [`prop-types`]/component detection: avoid a crash when a local `createElement` identifier exists ([#2733][] @ljharb)
+
+### Changed
+* [`no-unused-prop-types`]: add test assigning this.props to a variable
+
+[7.20.6]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.20.5...v7.20.6
+[#2744]: https://github.com/yannickcr/eslint-plugin-react/pull/2744
+[#2741]: https://github.com/yannickcr/eslint-plugin-react/pull/2741
+[#2737]: https://github.com/yannickcr/eslint-plugin-react/pull/2737
+[#2736]: https://github.com/yannickcr/eslint-plugin-react/pull/2736
+[#2733]: https://github.com/yannickcr/eslint-plugin-react/issues/2733
+[#2721]: https://github.com/yannickcr/eslint-plugin-react/pull/2721
+[#2716]: https://github.com/yannickcr/eslint-plugin-react/issues/2716
+[#2711]: https://github.com/yannickcr/eslint-plugin-react/pull/2711
+[#2708]: https://github.com/yannickcr/eslint-plugin-react/pull/2708
+
 ## [7.20.5] - 2020.07.28
 
 ### Fixed
