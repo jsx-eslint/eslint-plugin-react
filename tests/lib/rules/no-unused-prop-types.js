@@ -3689,6 +3689,80 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
         `,
         parser: parsers.BABEL_ESLINT
+      },
+      {
+        code: `
+        const Home = () => {
+          const renderStaticList = ({
+              item,
+          }: {
+              item: IContent;
+          }) => (
+              <Section
+                  icon={<FlashImage />}
+                  title={item.title}
+                  titleFontSize={theme.typography.FONT_SIZE_24}
+              >
+                  <StaticFlatList
+                      data={item.pointsOfSale}
+                      renderItem={renderStaticItem}
+                      keyExtractor={staticItemKeyExtractor}
+                  />
+              </Section>
+          );
+
+          return (
+              <SafeAreaViewWrapper>
+                  <LightStatusBar />
+                  <HomeFlatList
+                      ListHeaderComponent={listHeaderComponent}
+                      data={home?.static}
+                      renderItem={renderStaticList}
+                      keyExtractor={staticListKeyExtractor}
+                  />
+              </SafeAreaViewWrapper>
+          );
+        };
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+        const Home = () => {
+          const renderStaticList = function({
+              item,
+          }: {
+              item: IContent;
+          }) {
+            return (
+              <Section
+                  icon={<FlashImage />}
+                  title={item.title}
+                  titleFontSize={theme.typography.FONT_SIZE_24}
+              >
+                  <StaticFlatList
+                      data={item.pointsOfSale}
+                      renderItem={renderStaticItem}
+                      keyExtractor={staticItemKeyExtractor}
+                  />
+              </Section>
+            )
+          };
+
+          return (
+              <SafeAreaViewWrapper>
+                  <LightStatusBar />
+                  <HomeFlatList
+                      ListHeaderComponent={listHeaderComponent}
+                      data={home?.static}
+                      renderItem={renderStaticList}
+                      keyExtractor={staticListKeyExtractor}
+                  />
+              </SafeAreaViewWrapper>
+          );
+        };
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
       }
     ])
   ),
