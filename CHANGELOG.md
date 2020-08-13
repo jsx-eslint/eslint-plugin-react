@@ -8,7 +8,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Added
 * add [`no-namespace`] rule ([#2640] @yacinehmito @ljharb)
 
+### Fixed
+* [`display-name`]: Get rid of false position on component detection ([#2759] @iiison)
+
 [#2640]: https://github.com/yannickcr/eslint-plugin-react/pull/2640
+[#2759]: https://github.com/yannickcr/eslint-plugin-react/pull/2759
 
 ## [7.25.3] - 2021.09.19
 

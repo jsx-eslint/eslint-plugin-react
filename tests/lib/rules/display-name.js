@@ -504,6 +504,26 @@ ruleTester.run('display-name', rule, {
       class Link extends Component<LinkProps> {}
     `,
     parser: parsers.BABEL_ESLINT
+  }, {
+    code: `
+      const x = {
+        title: "URL",
+        dataIndex: "url",
+        key: "url",
+        render: url => (
+          <a href={url} target="_blank" rel="noopener noreferrer">
+            <p>lol</p>
+          </a>
+        )
+      }
+    `,
+    parser: parsers.BABEL_ESLINT
+  }, {
+    code: `
+      const renderer = a => function Component(listItem) {
+        return <div>{a} {listItem}</div>;
+      };
+    `
   }],
 
   invalid: [{
@@ -921,5 +941,12 @@ ruleTester.run('display-name', rule, {
       endLine: 11,
       endColumn: 11
     }]
+  }, {
+    code: `
+      const renderer = a => listItem => (
+        <div>{a} {listItem}</div>
+      );
+    `,
+    errors: [{message: 'Component definition is missing display name'}]
   }]
 });
