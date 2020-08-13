@@ -22,11 +22,11 @@ function MyComponent() {
 
 ## Rule Options
 
-The set of allowed extensions is configurable. By default '.jsx' is allowed. If you wanted to allow both '.jsx' and '.js', the configuration would be:
+The set of allowed extensions is configurable. By default '.jsx' and '.tsx' are allowed. If you wanted to allow '.js' and '.ts' alongside the defaults, the configuration would be:
 
 ```js
 "rules": {
-  "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }]
 }
 ```
 
