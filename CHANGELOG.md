@@ -9,6 +9,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * add [`hook-use-state`] rule to enforce symmetric useState hook variable names ([#2921][] @duncanbeevers)
 * [`jsx-no-target-blank`]: Improve fixer with option `allowReferrer` ([#3167][] @apepper)
 * [`jsx-curly-brace-presence`]: add "propElementValues" config option ([#3191][] @ljharb)
+* add [`iframe-missing-sandbox`] rule ([#2753][] @tosmolka @ljharb)
 
 ### Fixed
 * [`prop-types`], `propTypes`: add support for exported type inference ([#3163][] @vedadeepta)
@@ -37,6 +38,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3160]: https://github.com/yannickcr/eslint-plugin-react/pull/3160
 [#3133]: https://github.com/yannickcr/eslint-plugin-react/pull/3133
 [#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
+[#2753]: https://github.com/yannickcr/eslint-plugin-react/pull/2753
 
 ## [7.28.0] - 2021.12.22
 
@@ -3532,6 +3534,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`forbid-prop-types`]: docs/rules/forbid-prop-types.md
 [`function-component-definition`]: docs/rules/function-component-definition.md
 [`hook-use-state`]: docs/rules/hook-use-state.md
+[`iframe-missing-sandbox`]: docs/rules/iframe-missing-sandbox.md
 [`jsx-boolean-value`]: docs/rules/jsx-boolean-value.md
 [`jsx-child-element-spacing`]: docs/rules/jsx-child-element-spacing.md
 [`jsx-closing-bracket-location`]: docs/rules/jsx-closing-bracket-location.md

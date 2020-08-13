@@ -17,6 +17,7 @@ const allRules = {
   'forbid-prop-types': require('./lib/rules/forbid-prop-types'),
   'function-component-definition': require('./lib/rules/function-component-definition'),
   'hook-use-state': require('./lib/rules/hook-use-state'),
+  'iframe-missing-sandbox': require('./lib/rules/iframe-missing-sandbox'),
   'jsx-boolean-value': require('./lib/rules/jsx-boolean-value'),
   'jsx-child-element-spacing': require('./lib/rules/jsx-child-element-spacing'),
   'jsx-closing-bracket-location': require('./lib/rules/jsx-closing-bracket-location'),
