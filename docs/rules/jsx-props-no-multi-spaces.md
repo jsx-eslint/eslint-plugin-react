@@ -16,6 +16,13 @@ The following patterns are considered warnings:
 <App too  spacy />
 ```
 
+```jsx
+<App
+  prop1='abc'
+  
+  prop2='def' />
+```
+
 The following patterns are **not** considered warnings:
 
 ```jsx
@@ -24,6 +31,12 @@ The following patterns are **not** considered warnings:
 
 ```jsx
 <App very cozy />
+```
+
+```jsx
+<App
+  prop1='abc'
+  prop2='def' />
 ```
 
 ## When Not To Use It

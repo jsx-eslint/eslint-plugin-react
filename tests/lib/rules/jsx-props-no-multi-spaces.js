@@ -68,6 +68,23 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
     code: '<Foo.Bar baz="quux" />'
   }, {
     code: '<Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh xyzzy="thud" />'
+  }, {
+    code: `
+      <button
+        title="Some button"
+        type="button"
+      />
+    `
+  }, {
+    code: `
+      <button
+        title="Some button"
+        onClick={(value) => {
+          console.log(value);
+        }}
+        type="button"
+      />
+    `
   }],
 
   invalid: [{
@@ -127,6 +144,31 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
     output: '<Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh xyzzy="thud" />',
     errors: [
       {message: 'Expected only one space between "Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh" and "xyzzy"'}
+    ]
+  }, {
+    code: `
+      <button
+        title='Some button'
+
+        type="button"
+      />
+    `,
+    errors: [{message: 'Expected no line gap between “title” and “type”'}]
+  }, {
+    code: `
+      <button
+        title="Some button"
+
+        onClick={(value) => {
+          console.log(value);
+        }}
+
+        type="button"
+      />
+    `,
+    errors: [
+      {message: 'Expected no line gap between “title” and “onClick”'},
+      {message: 'Expected no line gap between “onClick” and “type”'}
     ]
   }]
 });
