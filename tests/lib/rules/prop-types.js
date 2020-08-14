@@ -2898,6 +2898,73 @@ ruleTester.run('prop-types', rule, {
           ) => (<div />)
         `,
         parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          interface Props extends V2SocialLoginProps {
+            autoLoad: boolean;
+          }
+
+          export const DKFacebookButton = ({
+            autoLoad,
+            authAction,
+            errorHandler,
+            redirectUrl,
+            isSignup,
+          }: Props): JSX.Element | null => {
+            if (!APP_ID) {
+              rollbar.error('Missing Facebook OAuth App Id');
+              return null;
+            }
+
+            const fbButtonText = isSignup ? 'Sign up with Facebook' : 'Log in with Facebook';
+
+            const responseCallback = async ({
+              accessToken,
+              email = '',
+              name = '',
+            }: ReactFacebookLoginInfo) => {
+              const [firstName, lastName] = name.split(' ');
+
+              const requestData: DK.SocialLogin = {
+                accessToken,
+                email,
+                firstName,
+                lastName,
+                intercomUserId: intercomService.getVisitorId(),
+              };
+
+              try {
+                await authAction(requestData, redirectUrl);
+              } catch (err) {
+                errorHandler(err.message);
+              }
+            };
+
+            const FacebookIcon = () => (
+              <img
+                style={{ marginRight: '8px' }}
+                src={facebookIcon}
+                alt='Facebook Login'
+              />
+            );
+
+            return (
+              <FacebookLogin
+                cssClass='ant-btn dk-button dk-facebook-button dk-button--secondary ant-btn-primary ant-btn-lg'
+                autoLoad={autoLoad}
+                textButton={fbButtonText}
+                size='small'
+                icon={<FacebookIcon />}
+                appId={APP_ID}
+                fields='name,email'
+                callback={responseCallback}
+                data-testId='dk-facebook-button'
+              />
+            );
+          };
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
       }
     ])
   ),
