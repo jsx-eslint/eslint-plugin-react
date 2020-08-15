@@ -1689,5 +1689,81 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       line: 4,
       column: 6
     }]
+  }, {
+    code: [
+      '\t\t<div',
+      '\t\t\tclassName={styles}',
+      '  >',
+      '\t\t\t{props}',
+      '\t\t</div>'
+    ].join('\n'),
+    output: [
+      '\t\t<div',
+      '\t\t\tclassName={styles}',
+      '\t\t>',
+      '\t\t\t{props}',
+      '\t\t</div>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 3, false),
+      line: 3,
+      column: 3
+    }]
+  }, {
+    code: [
+      '  <div',
+      '    className={styles}',
+      '\t\t>',
+      '    {props}',
+      '  </div>'
+    ].join('\n'),
+    output: [
+      '  <div',
+      '    className={styles}',
+      '  >',
+      '    {props}',
+      '  </div>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 3, false),
+      line: 3,
+      column: 3
+    }]
+  }, {
+    code: [
+      '  <App',
+      '    foo',
+      '\t\t/>'
+    ].join('\n'),
+    output: [
+      '  <App',
+      '    foo',
+      '  />'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 3, false),
+      line: 3,
+      column: 3
+    }]
+  }, {
+    code: [
+      '\t\t<App',
+      '\t\t\tfoo',
+      '  />'
+    ].join('\n'),
+    output: [
+      '\t\t<App',
+      '\t\t\tfoo',
+      '\t\t/>'
+    ].join('\n'),
+    options: [{location: 'tag-aligned'}],
+    errors: [{
+      message: messageWithDetails(MESSAGE_TAG_ALIGNED, 3, false),
+      line: 3,
+      column: 3
+    }]
   }]
 });
