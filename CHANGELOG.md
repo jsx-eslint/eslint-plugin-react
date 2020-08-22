@@ -8,8 +8,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Added
 * [`jsx-key`]: added `checkKeyMustBeforeSpread` option for new jsx transform ([#2835][] @morlay)
 * [`jsx-newline`]: add new rule ([#2693][] @jzabala)
+* [`jsx-no-constructed-context-values`]: add new rule which checks when the value passed to a Context Provider will cause needless rerenders ([#2763][] @dylanOshima)
 
 [#2835]: https://github.com/yannickcr/eslint-plugin-react/pull/2835
+[#2763]: https://github.com/yannickcr/eslint-plugin-react/pull/2763
 [#2693]: https://github.com/yannickcr/eslint-plugin-react/pull/2693
 
 ## [7.21.5] - 2020.10.19
@@ -3219,3 +3221,4 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`no-adjacent-inline-elements`]: docs/rules/no-adjacent-inline-elements.md
 [`function-component-definition`]: docs/rules/function-component-definition.md
 [`jsx-newline`]: docs/rules/jsx-newline.md
+[`jsx-no-constructed-context-values`]: docs/rules/jsx-no-constructed-context-values.md

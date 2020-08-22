@@ -34,6 +34,7 @@ const allRules = {
   'jsx-newline': require('./lib/rules/jsx-newline'),
   'jsx-no-bind': require('./lib/rules/jsx-no-bind'),
   'jsx-no-comment-textnodes': require('./lib/rules/jsx-no-comment-textnodes'),
+  'jsx-no-constructed-context-values': require('./lib/rules/jsx-no-constructed-context-values'),
   'jsx-no-duplicate-props': require('./lib/rules/jsx-no-duplicate-props'),
   'jsx-no-literals': require('./lib/rules/jsx-no-literals'),
   'jsx-no-script-url': require('./lib/rules/jsx-no-script-url'),
