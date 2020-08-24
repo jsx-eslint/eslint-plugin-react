@@ -11,8 +11,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Fixed
 * [`function-component-definition`]: ignore object properties ([#2771][] @stefan-wullems)
+* [`forbid-component-props`]: Implemented support for "namespaced" components ([#2767][] @mnn)
 
 [#2771]: https://github.com/yannickcr/eslint-plugin-react/pull/2771
+[#2767]: https://github.com/yannickcr/eslint-plugin-react/pull/2767
 [#2761]: https://github.com/yannickcr/eslint-plugin-react/pull/2761
 [#2748]: https://github.com/yannickcr/eslint-plugin-react/pull/2748
 

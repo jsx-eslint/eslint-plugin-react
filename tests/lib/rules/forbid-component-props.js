@@ -104,6 +104,16 @@ ruleTester.run('forbid-component-props', rule, {
     options: [{
       forbid: [{propName: 'className', allowedFor: ['ReactModal']}]
     }]
+  }, {
+    code: 'const item = (<AntdLayout.Content className="antdFoo" />);',
+    options: [{
+      forbid: [{propName: 'className', allowedFor: ['AntdLayout.Content']}]
+    }]
+  }, {
+    code: 'const item = (<this.ReactModal className="foo" />);',
+    options: [{
+      forbid: [{propName: 'className', allowedFor: ['this.ReactModal']}]
+    }]
   }],
 
   invalid: [{
