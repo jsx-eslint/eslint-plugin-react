@@ -7,11 +7,13 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Added
 * [`button-has-type`]: support trivial ternary expressions ([#2748][] @Hypnosphi)
+* [`jsx-handler-names`]: add `checkInlineFunction` option ([#2761][] @dididy)
 
 ### Fixed
 * [`function-component-definition`]: ignore object properties ([#2771][] @stefan-wullems)
 
 [#2771]: https://github.com/yannickcr/eslint-plugin-react/pull/2771
+[#2761]: https://github.com/yannickcr/eslint-plugin-react/pull/2761
 [#2748]: https://github.com/yannickcr/eslint-plugin-react/pull/2748
 
 ## [7.20.6] - 2020.08.12

@@ -43,6 +43,17 @@ ruleTester.run('jsx-handler-names', rule, {
       checkLocalVariables: false
     }]
   }, {
+    code: '<TestComponent onChange={() => handleChange()} />',
+    options: [{
+      checkInlineFunction: true,
+      checkLocalVariables: true
+    }]
+  }, {
+    code: '<TestComponent onChange={() => this.handleChange()} />',
+    options: [{
+      checkInlineFunction: true
+    }]
+  }, {
     code: '<TestComponent onChange={this.props.onFoo} />'
   }, {
     code: '<TestComponent isSelected={this.props.isSelected} />'
@@ -71,6 +82,24 @@ ruleTester.run('jsx-handler-names', rule, {
   }, {
     code: '<TestComponent onChange={props.foo::handleChange} />',
     parser: parsers.BABEL_ESLINT
+  }, {
+    code: '<TestComponent onChange={() => props::handleChange()} />',
+    parser: parsers.BABEL_ESLINT,
+    options: [{
+      checkInlineFunction: true
+    }]
+  }, {
+    code: '<TestComponent onChange={() => ::props.onChange()} />',
+    parser: parsers.BABEL_ESLINT,
+    options: [{
+      checkInlineFunction: true
+    }]
+  }, {
+    code: '<TestComponent onChange={() => props.foo::handleChange()} />',
+    parser: parsers.BABEL_ESLINT,
+    options: [{
+      checkInlineFunction: true
+    }]
   }, {
     code: '<TestComponent only={this.only} />'
   }, {
@@ -116,6 +145,12 @@ ruleTester.run('jsx-handler-names', rule, {
       checkLocalVariables: true
     }]
   }, {
+    code: '<TestComponent onChange={() => this.takeCareOfChange()} />',
+    errors: [{message: 'Handler function for onChange prop key must begin with \'handle\''}],
+    options: [{
+      checkInlineFunction: true
+    }]
+  }, {
     code: '<TestComponent only={this.handleChange} />',
     errors: [{message: 'Prop key for handleChange must begin with \'on\''}]
   }, {
@@ -128,9 +163,25 @@ ruleTester.run('jsx-handler-names', rule, {
       checkLocalVariables: true
     }]
   }, {
+    code: '<TestComponent whenChange={() => handleChange()} />',
+    errors: [{message: 'Prop key for handleChange must begin with \'on\''}],
+    options: [{
+      checkInlineFunction: true,
+      checkLocalVariables: true
+    }]
+  }, {
     code: '<TestComponent onChange={handleChange} />',
     errors: [{message: 'Prop key for handleChange must begin with \'when\''}],
     options: [{
+      checkLocalVariables: true,
+      eventHandlerPrefix: 'handle',
+      eventHandlerPropPrefix: 'when'
+    }]
+  }, {
+    code: '<TestComponent onChange={() => handleChange()} />',
+    errors: [{message: 'Prop key for handleChange must begin with \'when\''}],
+    options: [{
+      checkInlineFunction: true,
       checkLocalVariables: true,
       eventHandlerPrefix: 'handle',
       eventHandlerPropPrefix: 'when'
