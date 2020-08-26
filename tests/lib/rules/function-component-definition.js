@@ -166,6 +166,144 @@ ruleTester.run('function-component-definition', rule, {
     code: 'function Hello(props): ReactNode { return <p/> }',
     options: [{namedComponents: 'function-declaration'}],
     parser: parsers.TYPESCRIPT_ESLINT
+  },
+  // https://github.com/yannickcr/eslint-plugin-react/issues/2765
+  {
+    code: [
+      'const obj = {',
+      '  serialize: (el) => {',
+      '    return <p/>',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{namedComponents: 'function-declaration'}]
+  }, {
+    code: [
+      'const obj = {',
+      '  serialize: (el) => {',
+      '    return <p/>',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{namedComponents: 'arrow-function'}]
+  }, {
+    code: [
+      'const obj = {',
+      '  serialize: (el) => {',
+      '    return <p/>',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{namedComponents: 'function-expression'}]
+  },
+  {
+    code: [
+      'const obj = {',
+      '  serialize: function (el) {',
+      '    return <p/>',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{namedComponents: 'function-declaration'}]
+  }, {
+    code: [
+      'const obj = {',
+      '  serialize: function (el) {',
+      '    return <p/>',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{namedComponents: 'arrow-function'}]
+  }, {
+    code: [
+      'const obj = {',
+      '  serialize: function (el) {',
+      '    return <p/>',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{namedComponents: 'function-expression'}]
+  }, {
+    code: [
+      'const obj = {',
+      '  serialize(el) {',
+      '    return <p/>',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{namedComponents: 'function-declaration'}]
+  }, {
+    code: [
+      'const obj = {',
+      '  serialize(el) {',
+      '    return <p/>',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{namedComponents: 'arrow-function'}]
+  }, {
+    code: [
+      'const obj = {',
+      '  serialize(el) {',
+      '    return <p/>',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{namedComponents: 'function-expression'}]
+  }, {
+    code: [
+      'const obj = {',
+      '  serialize(el) {',
+      '    return <p/>',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{unnamedComponents: 'arrow-function'}]
+  }, {
+    code: [
+      'const obj = {',
+      '  serialize(el) {',
+      '    return <p/>',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{unnamedComponents: 'function-expression'}]
+  }, {
+    code: [
+      'const obj = {',
+      '  serialize: (el) => {',
+      '    return <p/>',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{unnamedComponents: 'arrow-function'}]
+  }, {
+    code: [
+      'const obj = {',
+      '  serialize: (el) => {',
+      '    return <p/>',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{unnamedComponents: 'function-expression'}]
+  }, {
+    code: [
+      'const obj = {',
+      '  serialize: function (el) {',
+      '    return <p/>',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{unnamedComponents: 'arrow-function'}]
+  }, {
+    code: [
+      'const obj = {',
+      '  serialize: function (el) {',
+      '    return <p/>',
+      '  }',
+      '}'
+    ].join('\n'),
+    options: [{unnamedComponents: 'function-expression'}]
   }],
 
   invalid: [{
