@@ -131,6 +131,37 @@ ruleTester.run('prefer-read-only-props', rule, {
           name: PropTypes.string,
         };
       `
+    },
+    {
+      // Class component with typed props argument
+      code: `
+        type Props = $ReadOnly<{
+          name: string,
+        }>
+
+        class Hello extends React.Component<Props> {
+          render () {
+            return <div>Hello {this.props.name}</div>;
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      // Class component with typed props argument
+      code: `
+        type Props = $ReadOnly<{
+          +firstName: string,
+          lastName: string
+        }>
+
+        class Hello extends React.Component<Props> {
+          render () {
+            return <div>Hello {this.props.firstName} {this.props.lastName}</div>;
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT
     }
   ],
 
