@@ -33,7 +33,10 @@
         "no-plusplus": 1,
         "no-param-reassign": 1,
         "no-mixed-operators": 1,
-        "no-restricted-syntax": 1,
+        "no-restricted-syntax": [2, {
+            "selector": "ObjectPattern",
+            "message": "Object destructuring is not compatible with Node v4"
+        }],
         "strict": [2, "safe"],
         "valid-jsdoc": [2, {
           "requireReturn": false,

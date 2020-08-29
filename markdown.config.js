@@ -1,5 +1,7 @@
 'use strict';
 
+/* eslint-disable no-restricted-syntax */
+
 const {rules} = require('./index');
 
 const ruleListItems = Object.keys(rules)
