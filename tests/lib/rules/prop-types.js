@@ -34,7 +34,6 @@ const settings = {
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('prop-types', rule, {
-
   valid: [].concat(
     {
       code: [
@@ -2965,6 +2964,54 @@ ruleTester.run('prop-types', rule, {
           };
         `,
         parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          function Foo({ bar = "" }: { bar: string }): JSX.Element {
+            return <div>{bar}</div>;
+          }
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          function Foo({ foo = "" }): JSX.Element {
+            return <div>{foo}</div>;
+          }
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          function Foo({ bar = "" as string }): JSX.Element {
+            return <div>{bar}</div>;
+          }
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          export default function ({ value = 'World' }) {
+            return <h1>Hello {value}</h1>
+          }
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          const Foo: JSX.Element = ({ bar = "" }) => {
+            return <div>{bar}</div>;
+          }
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          const Foo: JSX.Element = function foo ({ bar = "" }) {
+            return <div>{bar}</div>;
+          }
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
       }
     ])
   ),
@@ -5544,16 +5591,6 @@ ruleTester.run('prop-types', rule, {
         message: '\'foo.baz\' is missing in props validation'
       }]
     },
-    {
-      code: `
-        export default function ({ value = 'World' }) {
-          return <h1>Hello {value}</h1>
-        }
-      `,
-      errors: [{
-        message: '\'value\' is missing in props validation'
-      }]
-    },
     parsers.TS([
       {
         code: `
@@ -5957,6 +5994,30 @@ ruleTester.run('prop-types', rule, {
         settings,
         errors: [{
           message: "'foo.c' is missing in props validation"
+        }]
+      },
+      {
+        code: `
+          const Foo: JSX.Element = ({ bar }) => {
+            return <div>{bar}</div>;
+          }
+        `,
+        settings,
+        parser: parsers['@TYPESCRIPT_ESLINT'],
+        errors: [{
+          message: "'bar' is missing in props validation"
+        }]
+      },
+      {
+        code: `
+          const Foo: JSX.Element = function foo ({ bar }) {
+            return <div>{bar}</div>;
+          }
+        `,
+        settings,
+        parser: parsers['@TYPESCRIPT_ESLINT'],
+        errors: [{
+          message: "'bar' is missing in props validation"
         }]
       }
     ])

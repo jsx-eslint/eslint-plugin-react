@@ -91,6 +91,20 @@ class HelloEs6WithPublicClassField extends React.Component {
 }
 ```
 
+In TypeScript:
+
+```tsx
+// destructured default prop values
+
+function Foo({ bar = "" }): JSX.Element {
+  return <div>{bar}</div>;
+}
+
+function Foo({ bar = "" as string }): JSX.Element {
+  return <div>{bar}</div>;
+}
+```
+
 In Flow:
 
 ```tsx
