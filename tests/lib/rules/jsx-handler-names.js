@@ -32,6 +32,20 @@ ruleTester.run('jsx-handler-names', rule, {
     code: '<TestComponent onChange={this.handleChange} />'
   }, {
     code: '<TestComponent onChange={this.props.onChange} />'
+  },
+  {
+    code: `<TestComponent
+              onChange={
+                this
+                  .handleChange
+              } />`
+  }, {
+    code: `<TestComponent
+              onChange={
+                this
+                  .props
+                  .handleChange
+              } />`
   }, {
     code: '<TestComponent onChange={handleChange} />',
     options: [{

@@ -13,7 +13,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`function-component-definition`]: ignore object properties ([#2771][] @stefan-wullems)
 * [`forbid-component-props`]: Implemented support for "namespaced" components ([#2767][] @mnn)
 * [`prefer-read-only-props`]: support Flow `$ReadOnly` ([#2772][], [#2779][], [#2770][] @karolina-benitez)
+* [`jsx-handler-names`]: handle whitespace ([#2789][] @AriPerkkio)
 
+[#2789]: https://github.com/yannickcr/eslint-plugin-react/pull/2789
 [#2779]: https://github.com/yannickcr/eslint-plugin-react/pull/2779
 [#2772]: https://github.com/yannickcr/eslint-plugin-react/pull/2772
 [#2771]: https://github.com/yannickcr/eslint-plugin-react/pull/2771
