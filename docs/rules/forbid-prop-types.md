@@ -62,4 +62,4 @@ Whether or not to check `childContextTypes` for forbidden prop types. The defaul
 
 ## When not to use
 
-This rule is a formatting/documenting preference and not following it won't negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.
+This rule is a formatting/documenting preference and not following it won't negatively affect the quality of your code or when a prop is used for props-spreading inside HOC. This rule encourages prop types that more specifically document their usage.
