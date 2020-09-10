@@ -15,7 +15,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`prefer-read-only-props`]: support Flow `$ReadOnly` ([#2772][], [#2779][], [#2770][] @karolina-benitez)
 * [`jsx-handler-names`]: handle whitespace ([#2789][] @AriPerkkio)
 * [`prop-types`]: Detect TypeScript types for destructured default prop values ([#2780][] @sunghyunjo)
+* [`jsx-pascal-case`]: Handle single character namespaced component ([#2791][] @daviferreira)
 
+[#2791]: https://github.com/yannickcr/eslint-plugin-react/pull/2791
 [#2789]: https://github.com/yannickcr/eslint-plugin-react/pull/2789
 [#2780]: https://github.com/yannickcr/eslint-plugin-react/pull/2780
 [#2779]: https://github.com/yannickcr/eslint-plugin-react/pull/2779
