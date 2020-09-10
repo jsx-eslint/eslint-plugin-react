@@ -20,6 +20,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-closing-bracket-location`]: In `tag-aligned`, made a distinction between tabs and spaces ([#2796][] @Moong0122)
 * [`jsx-handler-names`]: false positive when handler name begins with number ([#1689][] @jsphstls)
 * [`prop-types`]: Detect JSX returned by sequential expression ([#2801][] @mikol)
+* [`jsx-props-no-multi-spaces`]: "Expected no line gap between" false positive ([#2792][] @karolina-benitez)
 
 ### Changed
 * [Tests] [`jsx-one-expression-per-line`]: add passing tests ([#2799][] @TaLeaMonet)
@@ -27,6 +28,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#2801]: https://github.com/yannickcr/eslint-plugin-react/pull/2801
 [#2799]: https://github.com/yannickcr/eslint-plugin-react/pull/2799
 [#2796]: https://github.com/yannickcr/eslint-plugin-react/pull/2796
+[#2792]: https://github.com/yannickcr/eslint-plugin-react/pull/2792
 [#2791]: https://github.com/yannickcr/eslint-plugin-react/pull/2791
 [#2789]: https://github.com/yannickcr/eslint-plugin-react/pull/2789
 [#2782]: https://github.com/yannickcr/eslint-plugin-react/pull/2782

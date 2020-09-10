@@ -85,6 +85,42 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
         type="button"
       />
     `
+  }, {
+    code: `
+      <button
+        title="Some button"
+        // this is a comment
+        onClick={(value) => {
+          console.log(value);
+        }}
+        type="button"
+      />
+    `
+  }, {
+    code: `
+     <button
+       title="Some button"
+       // this is a comment
+       // this is a second comment
+       onClick={(value) => {
+         console.log(value);
+       }}
+       type="button"
+     />
+   `
+  }, {
+    code: `
+     <button
+       title="Some button"
+       /* this is a multiline comment
+          ...
+          ... */
+       onClick={(value) => {
+         console.log(value);
+       }}
+       type="button"
+     />
+   `
   }],
 
   invalid: [{
@@ -158,6 +194,59 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
     code: `
       <button
         title="Some button"
+
+        onClick={(value) => {
+          console.log(value);
+        }}
+
+        type="button"
+      />
+    `,
+    errors: [
+      {message: 'Expected no line gap between “title” and “onClick”'},
+      {message: 'Expected no line gap between “onClick” and “type”'}
+    ]
+  }, {
+    code: `
+      <button
+        title="Some button"
+        // this is a comment
+        onClick={(value) => {
+          console.log(value);
+        }}
+
+        type="button"
+      />
+    `,
+    errors: [
+      {message: 'Expected no line gap between “onClick” and “type”'}
+    ]
+  }, {
+    code: `
+      <button
+        title="Some button"
+        // this is a comment
+        // second comment
+
+        onClick={(value) => {
+          console.log(value);
+        }}
+
+        type="button"
+      />
+    `,
+    errors: [
+      {message: 'Expected no line gap between “title” and “onClick”'},
+      {message: 'Expected no line gap between “onClick” and “type”'}
+    ]
+  }, {
+    code: `
+      <button
+        title="Some button"
+        /*this is a
+          multiline
+          comment
+        */
 
         onClick={(value) => {
           console.log(value);
