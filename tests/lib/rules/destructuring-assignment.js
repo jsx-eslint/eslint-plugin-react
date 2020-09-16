@@ -176,6 +176,18 @@ ruleTester.run('destructuring-assignment', rule, {
     ].join('\n'),
     options: ['always', {ignoreClassFields: true}],
     parser: parsers.BABEL_ESLINT
+  }, {
+    code: `const MyComponent = (props) => {
+      const {foo} = useContext(aContext);
+      return <div>{foo}</div>
+    };`,
+    options: ['always']
+  }, {
+    code: `const MyComponent = (props) => {
+      const foo = useContext(aContext);
+      return <div>{foo.test}</div>
+    };`,
+    options: ['never']
   }],
 
   invalid: [{
@@ -313,6 +325,24 @@ ruleTester.run('destructuring-assignment', rule, {
     parser: parsers.BABEL_ESLINT,
     errors: [
       {message: 'Must never use destructuring state assignment'}
+    ]
+  }, {
+    code: `const MyComponent = (props) => {
+      const foo = useContext(aContext);
+      return <div>{foo.test}</div>
+    };`,
+    options: ['always'],
+    errors: [
+      {message: 'Must use destructuring foo assignment'}
+    ]
+  }, {
+    code: `const MyComponent = (props) => {
+      const {foo} = useContext(aContext);
+      return <div>{foo}</div>
+    };`,
+    options: ['never'],
+    errors: [
+      {message: 'Must never use destructuring useContext assignment'}
     ]
   }]
 });
