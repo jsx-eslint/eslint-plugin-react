@@ -358,6 +358,70 @@ ruleTester.run('destructuring-assignment', rule, {
       `,
       options: ['always', { destructureInSignature: 'always' }],
     },
+    {
+      code: `
+        import { useContext } from 'react';
+
+        const MyComponent = (props) => {
+          const {foo} = useContext(aContext);
+          return <div>{foo}</div>
+        };
+      `,
+      options: ['always'],
+      settings: { react: { version: '16.9.0' } },
+    },
+    {
+      code: `
+        import { useContext } from 'react';
+
+        const MyComponent = (props) => {
+          const foo = useContext(aContext);
+          return <div>{foo.test}</div>
+        };
+      `,
+      options: ['never'],
+      settings: { react: { version: '16.9.0' } },
+    },
+    {
+      code: `
+        const MyComponent = (props) => {
+          const foo = useContext(aContext);
+          return <div>{foo.test}</div>
+        };
+      `,
+      options: ['always'],
+      settings: { react: { version: '16.8.999' } },
+    },
+    {
+      code: `
+        const MyComponent = (props) => {
+          const {foo} = useContext(aContext);
+          return <div>{foo}</div>
+        };
+      `,
+      options: ['never'],
+      settings: { react: { version: '16.8.999' } },
+    },
+    {
+      code: `
+        const MyComponent = (props) => {
+          const {foo} = useContext(aContext);
+          return <div>{foo}</div>
+        };
+      `,
+      options: ['always'],
+      settings: { react: { version: '16.8.999' } },
+    },
+    {
+      code: `
+        const MyComponent = (props) => {
+          const foo = useContext(aContext);
+          return <div>{foo.test}</div>
+        };
+      `,
+      options: ['never'],
+      settings: { react: { version: '16.8.999' } },
+    },
   ]),
 
   invalid: parsers.all([].concat(
@@ -785,6 +849,36 @@ ruleTester.run('destructuring-assignment', rule, {
         `,
         features: ['ts', 'no-babel'],
       },
-    ] : []
+    ] : [],
+    {
+      code: `
+        import { useContext } from 'react';
+
+        const MyComponent = (props) => {
+          const foo = useContext(aContext);
+          return <div>{foo.test}</div>
+        };
+      `,
+      options: ['always'],
+      settings: { react: { version: '16.9.0' } },
+      errors: [
+        { message: 'Must use destructuring foo assignment' },
+      ],
+    },
+    {
+      code: `
+        import { useContext } from 'react';
+
+        const MyComponent = (props) => {
+          const {foo} = useContext(aContext);
+          return <div>{foo}</div>
+        };
+      `,
+      options: ['never'],
+      settings: { react: { version: '16.9.0' } },
+      errors: [
+        { message: 'Must never use destructuring useContext assignment' },
+      ],
+    }
   )),
 });
