@@ -1029,5 +1029,28 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     errors: [{message: '`Foo` must be placed on a new line'}],
     parser: parsers.BABEL_ESLINT,
     parserOptions
+  }, {
+    code: [
+      '<div>',
+      '<MyComponent>a</MyComponent>',
+      '<MyOther>{a}</MyOther>',
+      '</div>'
+    ].join('\n'),
+    output: [
+      '<div>',
+      '<MyComponent>',
+      'a',
+      '</MyComponent>',
+      '<MyOther>',
+      '{a}',
+      '</MyOther>',
+      '</div>'
+    ].join('\n'),
+    errors: [
+      {message: '`a` must be placed on a new line'},
+      {message: '`{a}` must be placed on a new line'}
+    ],
+    parser: parsers.BABEL_ESLINT,
+    parserOptions
   }]
 });

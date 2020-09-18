@@ -21,7 +21,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-handler-names`]: false positive when handler name begins with number ([#1689][] @jsphstls)
 * [`prop-types`]: Detect JSX returned by sequential expression ([#2801][] @mikol)
 
+### Changed
+* [Tests] [`jsx-one-expression-per-line`]: add passing tests ([#2799][] @TaLeaMonet)
+
 [#2801]: https://github.com/yannickcr/eslint-plugin-react/pull/2801
+[#2799]: https://github.com/yannickcr/eslint-plugin-react/pull/2799
 [#2796]: https://github.com/yannickcr/eslint-plugin-react/pull/2796
 [#2791]: https://github.com/yannickcr/eslint-plugin-react/pull/2791
 [#2789]: https://github.com/yannickcr/eslint-plugin-react/pull/2789
