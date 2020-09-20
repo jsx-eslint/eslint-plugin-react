@@ -18,7 +18,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`prop-types`]: Detect TypeScript types for destructured default prop values ([#2780][] @sunghyunjo)
 * [`jsx-pascal-case`]: Handle single character namespaced component ([#2791][] @daviferreira)
 * [`jsx-closing-bracket-location`]: In `tag-aligned`, made a distinction between tabs and spaces ([#2796][] @Moong0122)
+* [`jsx-handler-names`]: false positive when handler name begins with number ([#2801][] @mikol)
 
+[#2801]: https://github.com/yannickcr/eslint-plugin-react/pull/2801
 [#2796]: https://github.com/yannickcr/eslint-plugin-react/pull/2796
 [#2791]: https://github.com/yannickcr/eslint-plugin-react/pull/2791
 [#2789]: https://github.com/yannickcr/eslint-plugin-react/pull/2789
