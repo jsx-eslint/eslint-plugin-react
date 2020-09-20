@@ -2501,6 +2501,20 @@ ruleTester.run('prop-types', rule, {
       export default function() {}
       `
     },
+    {
+      code: `
+        function Component(props) {
+          return 0,
+          <div>
+            Hello, { props.name }!
+          </div>
+        }
+
+        Component.propTypes = {
+          name: PropTypes.string.isRequired
+        }
+      `
+    },
     parsers.TS([
       {
         code: `
@@ -5589,6 +5603,19 @@ ruleTester.run('prop-types', rule, {
       `,
       errors: [{
         message: '\'foo.baz\' is missing in props validation'
+      }]
+    },
+    {
+      code: `
+        function Component(props) {
+          return 0,
+          <div>
+            Hello, { props.name }!
+          </div>
+        }
+      `,
+      errors: [{
+        message: '\'name\' is missing in props validation'
       }]
     },
     parsers.TS([

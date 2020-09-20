@@ -18,7 +18,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`prop-types`]: Detect TypeScript types for destructured default prop values ([#2780][] @sunghyunjo)
 * [`jsx-pascal-case`]: Handle single character namespaced component ([#2791][] @daviferreira)
 * [`jsx-closing-bracket-location`]: In `tag-aligned`, made a distinction between tabs and spaces ([#2796][] @Moong0122)
-* [`jsx-handler-names`]: false positive when handler name begins with number ([#2801][] @mikol)
+* [`jsx-handler-names`]: false positive when handler name begins with number ([#1689][] @jsphstls)
+* [`prop-types`]: Detect JSX returned by sequential expression ([#2801][] @mikol)
 
 [#2801]: https://github.com/yannickcr/eslint-plugin-react/pull/2801
 [#2796]: https://github.com/yannickcr/eslint-plugin-react/pull/2796
@@ -33,6 +34,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#2767]: https://github.com/yannickcr/eslint-plugin-react/pull/2767
 [#2761]: https://github.com/yannickcr/eslint-plugin-react/pull/2761
 [#2748]: https://github.com/yannickcr/eslint-plugin-react/pull/2748
+[#1689]: https://github.com/yannickcr/eslint-plugin-react/pull/1689
 
 ## [7.20.6] - 2020.08.12
 
