@@ -71,6 +71,8 @@ ruleTester.run('jsx-handler-names', rule, {
       checkInlineFunction: true
     }]
   }, {
+    code: '<TestComponent onChange={() => 42} />'
+  }, {
     code: '<TestComponent onChange={this.props.onFoo} />'
   }, {
     code: '<TestComponent isSelected={this.props.isSelected} />'

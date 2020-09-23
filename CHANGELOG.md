@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Fixed
+* [`jsx-handler-names`]: avoid a crash when an inline prop is not a MemberExpression ([#2803][] @willheslam)
+
+[#2803]: https://github.com/yannickcr/eslint-plugin-react/issues/2803
+
 ## [7.21.0] - 2020.09.22
 
 ### Added
