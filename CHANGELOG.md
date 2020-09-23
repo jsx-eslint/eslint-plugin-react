@@ -9,6 +9,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`button-has-type`]: support trivial ternary expressions ([#2748][] @Hypnosphi)
 * [`jsx-handler-names`]: add `checkInlineFunction` option ([#2761][] @dididy)
 * [`jsx-no-literals`]: add `noAttributeStrings` option ([#2782][] @TaLeaMonet)
+* [`prop-types`]: add support for `PropTypes.exact` ([#2740][] @jzabala)
+* [`jsx-filename-extension`]: Add allow option ([#2746][] @remcohaszing)
 
 ### Fixed
 * [`function-component-definition`]: ignore object properties ([#2771][] @stefan-wullems)
@@ -23,9 +25,13 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-props-no-multi-spaces`]: "Expected no line gap between" false positive ([#2792][] @karolina-benitez)
 * [`no-unknown-property`]: check attributes with any input case ([#2790][] @julienw)
 * [`prop-types`]/[`no-unused-prop-types`]: handle CallExpression in ReturnType ([#2802][] @hank121314)
+* [`jsx-uses-react`]: mark fragment variables as used ([#2775][] @remcohaszing)
+* [`no-unused-prop-types`]: improve component declared props detection ([#2755][] @jzabala)
+* [`jsx-props-no-multi-spaces`]: Show error in multi-line props ([#2756][] @iiison)
 
 ### Changed
 * [Tests] [`jsx-one-expression-per-line`]: add passing tests ([#2799][] @TaLeaMonet)
+* [Tests] [`prop-types`]: add test ([#2757][] @jzabala)
 
 [#2802]: https://github.com/yannickcr/eslint-plugin-react/pull/2802
 [#2801]: https://github.com/yannickcr/eslint-plugin-react/pull/2801
@@ -38,12 +44,17 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#2782]: https://github.com/yannickcr/eslint-plugin-react/pull/2782
 [#2780]: https://github.com/yannickcr/eslint-plugin-react/pull/2780
 [#2779]: https://github.com/yannickcr/eslint-plugin-react/pull/2779
+[#2775]: https://github.com/yannickcr/eslint-plugin-react/pull/2775
 [#2772]: https://github.com/yannickcr/eslint-plugin-react/pull/2772
 [#2771]: https://github.com/yannickcr/eslint-plugin-react/pull/2771
 [#2770]: https://github.com/yannickcr/eslint-plugin-react/pull/2770
 [#2767]: https://github.com/yannickcr/eslint-plugin-react/pull/2767
 [#2761]: https://github.com/yannickcr/eslint-plugin-react/pull/2761
+[#2757]: https://github.com/yannickcr/eslint-plugin-react/pull/2757
+[#2756]: https://github.com/yannickcr/eslint-plugin-react/pull/2756
 [#2748]: https://github.com/yannickcr/eslint-plugin-react/pull/2748
+[#2746]: https://github.com/yannickcr/eslint-plugin-react/pull/2746
+[#2740]: https://github.com/yannickcr/eslint-plugin-react/pull/2740
 [#1689]: https://github.com/yannickcr/eslint-plugin-react/pull/1689
 
 ## [7.20.6] - 2020.08.12
