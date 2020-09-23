@@ -22,10 +22,12 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`prop-types`]: Detect JSX returned by sequential expression ([#2801][] @mikol)
 * [`jsx-props-no-multi-spaces`]: "Expected no line gap between" false positive ([#2792][] @karolina-benitez)
 * [`no-unknown-property`]: check attributes with any input case ([#2790][] @julienw)
+* [`prop-types`]/[`no-unused-prop-types`]: handle CallExpression in ReturnType ([#2802][] @hank121314)
 
 ### Changed
 * [Tests] [`jsx-one-expression-per-line`]: add passing tests ([#2799][] @TaLeaMonet)
 
+[#2802]: https://github.com/yannickcr/eslint-plugin-react/pull/2802
 [#2801]: https://github.com/yannickcr/eslint-plugin-react/pull/2801
 [#2799]: https://github.com/yannickcr/eslint-plugin-react/pull/2799
 [#2796]: https://github.com/yannickcr/eslint-plugin-react/pull/2796

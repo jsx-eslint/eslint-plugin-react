@@ -3026,6 +3026,89 @@ ruleTester.run('prop-types', rule, {
           }
         `,
         parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      // Issue: #2795
+      {
+        code: `
+        type ConnectedProps = DispatchProps &
+          StateProps
+
+        const Component = ({ prop1, prop2, prop3 }: ConnectedProps) => {
+          // Do stuff
+          return (
+            <StyledComponent>...</StyledComponent>
+          )
+        }
+
+        const mapDispatchToProps = (dispatch: ThunkDispatch<State, null, Action>) => ({
+          ...bindActionCreators<{prop1: ()=>void,prop2: ()=>string}>(
+            { prop1: importedAction, prop2: anotherImportedAction },
+            dispatch,
+          ),
+        })
+
+        const mapStateToProps = (state: State) => ({
+          prop3: Selector.value(state),
+        })
+
+        type StateProps = ReturnType<typeof mapStateToProps>
+        type DispatchProps = ReturnType<typeof mapDispatchToProps>`,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      // Issue: #2795
+      {
+        code: `
+        type ConnectedProps = DispatchProps &
+          StateProps
+
+        const Component = ({ prop1, prop2, prop3 }: ConnectedProps) => {
+          // Do stuff
+          return (
+            <StyledComponent>...</StyledComponent>
+          )
+        }
+
+        const mapDispatchToProps = (dispatch: ThunkDispatch<State, null, Action>) => ({
+          ...bindActionCreators<ActionCreatorsMapObject<Types.RootAction>>(
+            { prop1: importedAction, prop2: anotherImportedAction },
+            dispatch,
+          ),
+        })
+
+        const mapStateToProps = (state: State) => ({
+          prop3: Selector.value(state),
+        })
+
+        type StateProps = ReturnType<typeof mapStateToProps>
+        type DispatchProps = ReturnType<typeof mapDispatchToProps>`,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      // Issue: #2795
+      {
+        code: `
+        type ConnectedProps = DispatchProps &
+          StateProps
+
+        const Component = ({ prop1, prop2, prop3 }: ConnectedProps) => {
+          // Do stuff
+          return (
+            <StyledComponent>...</StyledComponent>
+          )
+        }
+
+        const mapDispatchToProps = (dispatch: ThunkDispatch<State, null, Action>) => 
+          bindActionCreators<{prop1: ()=>void,prop2: ()=>string}>(
+            { prop1: importedAction, prop2: anotherImportedAction },
+            dispatch,
+          )
+
+        const mapStateToProps = (state: State) => ({
+          prop3: Selector.value(state),
+        })
+
+        type StateProps = ReturnType<typeof mapStateToProps>
+        type DispatchProps = ReturnType<typeof mapDispatchToProps>`,
+        parser: parsers['@TYPESCRIPT_ESLINT']
       }
     ])
   ),

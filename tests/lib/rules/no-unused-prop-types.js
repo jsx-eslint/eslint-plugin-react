@@ -3645,7 +3645,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         type User = {
           user: string;
         }
-        
+
         type Props = User;
 
         export default (props: Props) => {
@@ -3762,6 +3762,89 @@ ruleTester.run('no-unused-prop-types', rule, {
           );
         };
         `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      // Issue: #2795
+      {
+        code: `
+        type ConnectedProps = DispatchProps &
+          StateProps
+
+        const Component = ({ prop1, prop2, prop3 }: ConnectedProps) => {
+          // Do stuff
+          return (
+            <StyledComponent>...</StyledComponent>
+          )
+        }
+
+        const mapDispatchToProps = (dispatch: ThunkDispatch<State, null, Action>) => ({
+          ...bindActionCreators<ActionCreatorsMapObject<Types.RootAction>>(
+            { prop1: importedAction, prop2: anotherImportedAction },
+            dispatch,
+          ),
+        })
+
+        const mapStateToProps = (state: State) => ({
+          prop3: Selector.value(state),
+        })
+
+        type StateProps = ReturnType<typeof mapStateToProps>
+        type DispatchProps = ReturnType<typeof mapDispatchToProps>`,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      // Issue: #2795
+      {
+        code: `
+        type ConnectedProps = DispatchProps &
+          StateProps
+
+        const Component = ({ prop1, prop2, prop3 }: ConnectedProps) => {
+          // Do stuff
+          return (
+            <StyledComponent>...</StyledComponent>
+          )
+        }
+
+        const mapDispatchToProps = (dispatch: ThunkDispatch<State, null, Action>) => ({
+          ...bindActionCreators(
+            { prop1: importedAction, prop2: anotherImportedAction },
+            dispatch,
+          ),
+        })
+
+        const mapStateToProps = (state: State) => ({
+          prop3: Selector.value(state),
+        })
+
+        type StateProps = ReturnType<typeof mapStateToProps>
+        type DispatchProps = ReturnType<typeof mapDispatchToProps>`,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      // Issue: #2795
+      {
+        code: `
+        type ConnectedProps = DispatchProps &
+          StateProps
+
+        const Component = ({ prop1, prop2, prop3 }: ConnectedProps) => {
+          // Do stuff
+          return (
+            <StyledComponent>...</StyledComponent>
+          )
+        }
+
+        const mapDispatchToProps = (dispatch: ThunkDispatch<State, null, Action>) =>
+          bindActionCreators(
+            { prop1: importedAction, prop2: anotherImportedAction },
+            dispatch,
+          )
+
+        const mapStateToProps = (state: State) => ({
+          prop3: Selector.value(state),
+        })
+
+        type StateProps = ReturnType<typeof mapStateToProps>
+        type DispatchProps = ReturnType<typeof mapDispatchToProps>`,
         parser: parsers['@TYPESCRIPT_ESLINT']
       }
     ])
@@ -6308,11 +6391,11 @@ ruleTester.run('no-unused-prop-types', rule, {
       interface Foo {
         z: string;
       }
-    
+
       interface Bar extends Foo {
         y: string;
       }
-    
+
       const Baz = ({ x, y }: Bar) => (
         <span>
             {x}
@@ -6334,11 +6417,11 @@ ruleTester.run('no-unused-prop-types', rule, {
       interface Foo {
         z: string;
       }
-    
+
       interface Bar extends Foo {
         y: string;
       }
-    
+
       const Baz = ({ x, y }: Bar) => (
         <span>
             {x}
@@ -6356,11 +6439,11 @@ ruleTester.run('no-unused-prop-types', rule, {
       interface Foo {
         x: number;
       }
-    
+
       interface Bar extends Foo {
         y: string;
       }
-    
+
       const Baz = ({ x }: Bar) => (
         <span>
             {x}
@@ -6377,7 +6460,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       interface Foo {
         x: number;
       }
-    
+
       interface Bar {
         y: string;
       }
@@ -6385,7 +6468,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       interface Baz {
         z:string;
       }
-    
+
       const Baz = ({ x }: Bar & Foo & Baz) => (
         <span>
             {x}
@@ -6404,7 +6487,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       interface Foo {
         x: number;
       }
-    
+
       interface Bar {
         y: string;
       }
@@ -6412,7 +6495,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       interface Baz {
         z:string;
       }
-    
+
       const Baz = ({ x }: Bar & Foo & Baz) => (
         <span>
             {x}
@@ -6435,11 +6518,11 @@ ruleTester.run('no-unused-prop-types', rule, {
       interface Foo {
         z: string;
       }
-    
+
       interface Bar extends Foo {
         y: string;
       }
-    
+
       const Baz = ({ x }: Bar) => (
         <span>
             {x}
@@ -6460,11 +6543,11 @@ ruleTester.run('no-unused-prop-types', rule, {
       interface Foo {
         z: string;
       }
-    
+
       interface Bar extends Foo {
         y: string;
       }
-    
+
       const Baz = ({ x }: Bar) => (
         <span>
             {x}
@@ -6485,11 +6568,11 @@ ruleTester.run('no-unused-prop-types', rule, {
       interface Foo {
         z: string;
       }
-    
+
       interface Foo {
         y: string;
       }
-    
+
       const Baz = ({ x }: Foo) => (
         <span>
             {x}
@@ -6513,22 +6596,22 @@ ruleTester.run('no-unused-prop-types', rule, {
       type AgeProps = {
         age: number;
       }
-      
+
       type BirthdayProps = {
         birthday: string;
       }
-      
+
       type intersectionUserProps = AgeProps & BirthdayProps;
-      
+
       type Props = User & UserProps & intersectionUserProps;
 
       export default (props: Props) => {
         const { userId, user } = props;
-      
+
         if (userId === 0) {
           return <p>userId is 0</p>;
         }
-      
+
         return null;
       };
       `,
@@ -6552,22 +6635,22 @@ ruleTester.run('no-unused-prop-types', rule, {
       type AgeProps = {
         age: number;
       }
-      
+
       type BirthdayProps = {
         birthday: string;
       }
-      
+
       type intersectionUserProps = AgeProps & BirthdayProps;
-      
+
       type Props = User & UserProps & intersectionUserProps;
 
       export default (props: Props) => {
         const { userId, user } = props;
-      
+
         if (userId === 0) {
           return <p>userId is 0</p>;
         }
-      
+
         return null;
       };
       `,
@@ -6583,10 +6666,10 @@ ruleTester.run('no-unused-prop-types', rule, {
       const mapStateToProps = state => ({
         books: state.books
       });
-     
+
       interface InfoLibTableProps extends ReturnType<typeof mapStateToProps> {
       }
-     
+
       const App = (props: InfoLibTableProps) => {
         return <div></div>;
       }
@@ -6601,10 +6684,10 @@ ruleTester.run('no-unused-prop-types', rule, {
       const mapStateToProps = state => ({
         books: state.books
       });
-     
+
       interface InfoLibTableProps extends ReturnType<typeof mapStateToProps> {
       }
-     
+
       const App = (props: InfoLibTableProps) => {
         return <div></div>;
       }
@@ -6619,11 +6702,11 @@ ruleTester.run('no-unused-prop-types', rule, {
       const mapStateToProps = state => ({
         books: state.books,
       });
-           
+
       interface BooksTable extends ReturnType<typeof mapStateToProps> {
-        username: string; 
+        username: string;
       }
-           
+
       const App = (props: BooksTable) => {
         return <div />;
       }
@@ -6640,11 +6723,11 @@ ruleTester.run('no-unused-prop-types', rule, {
       const mapStateToProps = state => ({
         books: state.books,
       });
-           
+
       interface BooksTable extends ReturnType<typeof mapStateToProps> {
-        username: string; 
+        username: string;
       }
-           
+
       const App = (props: BooksTable) => {
         return <div />;
       }
@@ -6659,9 +6742,9 @@ ruleTester.run('no-unused-prop-types', rule, {
     {
       code: `
       interface BooksTable extends ReturnType<() => {books:Array<string>}> {
-        username: string; 
+        username: string;
       }
-           
+
       const App = (props: BooksTable) => {
         return <div></div>;
       }
@@ -6676,9 +6759,9 @@ ruleTester.run('no-unused-prop-types', rule, {
     {
       code: `
       interface BooksTable extends ReturnType<() => {books:Array<string>}> {
-        username: string; 
+        username: string;
       }
-           
+
       const App = (props: BooksTable) => {
         return <div></div>;
       }
@@ -6693,9 +6776,9 @@ ruleTester.run('no-unused-prop-types', rule, {
     {
       code: `
       type BooksTable = ReturnType<() => {books:Array<string>}> & {
-        username: string; 
+        username: string;
       }
-           
+
       const App = (props: BooksTable) => {
         return <div></div>;
       }
@@ -6710,9 +6793,9 @@ ruleTester.run('no-unused-prop-types', rule, {
     {
       code: `
       type BooksTable = ReturnType<() => {books:Array<string>}> & {
-        username: string; 
+        username: string;
       }
-           
+
       const App = (props: BooksTable) => {
         return <div></div>;
       }
@@ -6729,11 +6812,11 @@ ruleTester.run('no-unused-prop-types', rule, {
       type mapStateToProps = ReturnType<() => {books:Array<string>}>;
 
       type Props = {
-        username: string; 
+        username: string;
       }
 
       type BooksTable = mapStateToProps & Props;
-           
+
       const App = (props: BooksTable) => {
         return <div></div>;
       }
@@ -6750,11 +6833,11 @@ ruleTester.run('no-unused-prop-types', rule, {
       type mapStateToProps = ReturnType<() => {books:Array<string>}>;
 
       type Props = {
-        username: string; 
+        username: string;
       }
 
       type BooksTable = mapStateToProps & Props;
-           
+
       const App = (props: BooksTable) => {
         return <div></div>;
       }
@@ -6764,6 +6847,37 @@ ruleTester.run('no-unused-prop-types', rule, {
         message: '\'books\' PropType is defined but prop is never used'
       }, {
         message: '\'username\' PropType is defined but prop is never used'
+      }]
+    },
+    // Issue: #2795
+    {
+      code: `
+      type ConnectedProps = DispatchProps &
+        StateProps
+
+      const Component = ({ prop2, prop3 }: ConnectedProps) => {
+        // Do stuff
+        return (
+          <StyledComponent>...</StyledComponent>
+        )
+      }
+
+      const mapDispatchToProps = (dispatch: ThunkDispatch<State, null, Action>) => ({
+        ...bindActionCreators<{prop1: ()=>void,prop2: ()=>string}>(
+          { prop1: importedAction, prop2: anotherImportedAction },
+          dispatch,
+        ),
+      })
+
+      const mapStateToProps = (state: State) => ({
+        prop3: Selector.value(state),
+      })
+
+      type StateProps = ReturnType<typeof mapStateToProps>
+      type DispatchProps = ReturnType<typeof mapDispatchToProps>`,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+      errors: [{
+        message: '\'prop1\' PropType is defined but prop is never used'
       }]
     }])
 
