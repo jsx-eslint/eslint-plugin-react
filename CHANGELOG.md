@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.21.0] - 2020.09.22
+
 ### Added
 * [`button-has-type`]: support trivial ternary expressions ([#2748][] @Hypnosphi)
 * [`jsx-handler-names`]: add `checkInlineFunction` option ([#2761][] @dididy)
