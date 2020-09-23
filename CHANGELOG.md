@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.21.1] - 2020.09.23
+
 ### Fixed
 * [`jsx-handler-names`]: avoid a crash when an inline prop is not a MemberExpression ([#2803][] @willheslam)
 
