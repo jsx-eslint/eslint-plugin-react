@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.21.2] - 2020.09.24
+
 ### Fixed
 * [`prop-types`]: handle RestElement in destructured param ([#2805][] @hank121314)
 
