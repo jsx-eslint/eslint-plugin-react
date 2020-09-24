@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Fixed
+* [`prop-types`]: handle RestElement in destructured param ([#2805][] @hank121314)
+
+[#2805]: https://github.com/yannickcr/eslint-plugin-react/pull/2805
+
 ## [7.21.1] - 2020.09.23
 
 ### Fixed

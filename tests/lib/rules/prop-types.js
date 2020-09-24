@@ -3109,6 +3109,40 @@ ruleTester.run('prop-types', rule, {
         type StateProps = ReturnType<typeof mapStateToProps>
         type DispatchProps = ReturnType<typeof mapDispatchToProps>`,
         parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+        import React from 'react'
+
+        interface Meta {
+          touched: boolean,
+          error: string;
+        }
+
+        interface Props {
+          input: string,
+          meta: Meta,
+          cssClasses: object
+        }
+        const InputField = ({ input, meta: { touched, error }, cssClasses = {}, ...restProps }: Props) => {
+          restProps.className = cssClasses.base
+
+          if (cssClasses.custom) {
+            restProps.className += 'cssClasses.custom'
+          }
+          if (touched && error) {
+            restProps.className += 'cssClasses.error'
+          }
+
+          return(
+            <input
+              {...input}
+              {...restProps}
+            />
+          )
+        }
+        export default InputField`,
+        parser: parsers['@TYPESCRIPT_ESLINT']
       }
     ])
   ),
