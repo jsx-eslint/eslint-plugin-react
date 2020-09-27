@@ -7,8 +7,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Fixed
 * [`no-unused-prop-types`]: Silence false positive on `never` type in TS ([#2815][] @pcorpet)
+* [`jsx-indent-props`]: Apply indentation when operator is used in front of the upper line ([#2808][] @Moong0122)
 
 [#2815]: https://github.com/yannickcr/eslint-plugin-react/pull/2815
+[#2808]: https://github.com/yannickcr/eslint-plugin-react/pull/2808
 
 ## [7.21.3] - 2020.10.02
 

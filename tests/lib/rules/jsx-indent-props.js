@@ -165,6 +165,71 @@ ruleTester.run('jsx-indent-props', rule, {
     errors: [{message: 'Expected indentation of 2 space characters but found 4.'}]
   }, {
     code: [
+      'const test = true',
+      '  ? <span',
+      '    attr="value"',
+      '    />',
+      '  : <span',
+      '    attr="otherValue"',
+      '    />'
+    ].join('\n'),
+    output: [
+      'const test = true',
+      '  ? <span',
+      '      attr="value"',
+      '    />',
+      '  : <span',
+      '      attr="otherValue"',
+      '    />'
+    ].join('\n'),
+    options: [2],
+    errors: [
+      {message: 'Expected indentation of 6 space characters but found 4.'},
+      {message: 'Expected indentation of 6 space characters but found 4.'}
+    ]
+  }, {
+    code: [
+      '{test.isLoading',
+      '  ? <Value/>',
+      '  : <OtherValue',
+      '    some={aaa}/>',
+      '}'
+    ].join('\n'),
+    output: [
+      '{test.isLoading',
+      '  ? <Value/>',
+      '  : <OtherValue',
+      '      some={aaa}/>',
+      '}'
+    ].join('\n'),
+    options: [2],
+    errors: [
+      {message: 'Expected indentation of 6 space characters but found 4.'}
+    ]
+  }, {
+    code: [
+      '{test.isLoading',
+      '  ? <Value/>',
+      '  : <OtherValue',
+      '    some={aaa}',
+      '    other={bbb}/>',
+      '}'
+    ].join('\n'),
+    output: [
+      '{test.isLoading',
+      '  ? <Value/>',
+      '  : <OtherValue',
+      '      some={aaa}',
+      '      other={bbb}/>',
+      '}'
+    ].join('\n'),
+    options: [2],
+    errors: [
+      {message: 'Expected indentation of 6 space characters but found 4.'},
+      {message: 'Expected indentation of 6 space characters but found 4.'}
+    ]
+  }, {
+    code: [
       '<App',
       '    foo',
       '/>'
