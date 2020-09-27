@@ -3096,7 +3096,7 @@ ruleTester.run('prop-types', rule, {
           )
         }
 
-        const mapDispatchToProps = (dispatch: ThunkDispatch<State, null, Action>) => 
+        const mapDispatchToProps = (dispatch: ThunkDispatch<State, null, Action>) =>
           bindActionCreators<{prop1: ()=>void,prop2: ()=>string}>(
             { prop1: importedAction, prop2: anotherImportedAction },
             dispatch,
@@ -6162,6 +6162,28 @@ ruleTester.run('prop-types', rule, {
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [{
           message: "'bar' is missing in props validation"
+        }]
+      },
+      // fix #2804
+      {
+        code: `
+        import React from 'react'
+
+        const InputField = ({ type, ...restProps }) => {
+
+          return(
+            <input
+              type={type}
+              {...restProps}
+            />
+          )
+        }
+
+        export default InputField;
+      `,
+        parser: parsers.BABEL_ESLINT,
+        errors: [{
+          message: "'type' is missing in props validation"
         }]
       }
     ])

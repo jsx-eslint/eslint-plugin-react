@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## Fixed
+* [`prop-types`]: fix Cannot read property 'type' of undefined error when destructured param ([#2807][] @minwe)
+
+[#2807]: https://github.com/yannickcr/eslint-plugin-react/pull/2807
+
 ## [7.21.2] - 2020.09.24
 
 ### Fixed
