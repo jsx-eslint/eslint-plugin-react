@@ -70,6 +70,21 @@ ruleTester.run('no-array-index-key', rule, {
       code: 'foo.reduce((a, b) => a.concat(<Foo key={b.id} />), [])',
     },
     {
+      code: 'foo.map((bar, i) => <Foo key={i.baz.toString()} />)',
+    },
+    {
+      code: 'foo.map((bar, i) => <Foo key={i.toString} />)',
+    },
+    {
+      code: 'foo.map((bar, i) => <Foo key={String()} />)',
+    },
+    {
+      code: 'foo.map((bar, i) => <Foo key={String(baz)} />)',
+    },
+    {
+      code: 'foo.reduce((a, b) => a.concat(<Foo key={b.id} />), [])',
+    },
+    {
       code: 'foo.reduce((a, b, i) => a.concat(<Foo key={b.id} />), [])',
     },
     {
@@ -251,6 +266,30 @@ ruleTester.run('no-array-index-key', rule, {
       parserOptions: {
         ecmaVersion: 2020,
       },
+    },
+    {
+      code: `
+        foo.map((bar, index) => (
+          <Element key={index.toString()} bar={bar} />
+        ))
+      `,
+      errors: [{ messageId: 'noArrayIndex' }],
+    },
+    {
+      code: `
+        foo.map((bar, index) => (
+          <Element key={String(index)} bar={bar} />
+        ))
+      `,
+      errors: [{ messageId: 'noArrayIndex' }],
+    },
+    {
+      code: `
+        foo.map((bar, index) => (
+          <Element key={index} bar={bar} />
+        ))
+      `,
+      errors: [{ messageId: 'noArrayIndex' }],
     }
   )),
 });
