@@ -3670,6 +3670,19 @@ ruleTester.run('no-unused-prop-types', rule, {
       },
       {
         code: `
+        interface Person {
+          firstname: string
+          lastname?: never
+        };
+
+        const Hello = ({firstname}: Person) => {
+          return <div><span>{firstname}</span></div>;
+        };
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
         class App extends Component {
           static propTypes = {
             notifications: PropTypes.array.isRequired

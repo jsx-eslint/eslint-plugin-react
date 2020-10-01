@@ -5,9 +5,14 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Fixed
+* [`no-unused-prop-types`]: Silence false positive on `never` type in TS ([#2815][] @pcorpet)
+
+[#2815]: https://github.com/yannickcr/eslint-plugin-react/pull/2815
+
 ## [7.21.3] - 2020.10.02
 
-## Fixed
+### Fixed
 * [`prop-types`]: fix Cannot read property 'type' of undefined error when destructured param ([#2807][] @minwe)
 * [`no-typos`]: avoid crash on spread syntax in createReactClass object ([#2816][] @ljharb @Songyu-Wang)
 
