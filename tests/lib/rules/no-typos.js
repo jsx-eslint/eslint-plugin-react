@@ -34,6 +34,22 @@ const ruleTester = new RuleTester();
 ruleTester.run('no-typos', rule, {
   valid: [{
     code: `
+        import createReactClass from 'create-react-class'
+        function hello (extra = {}) {
+          return createReactClass({
+            noteType: 'hello',
+            renderItem () {
+              return null
+            },
+            ...extra
+          })
+        }
+    `,
+    parser: parsers.TYPESCRIPT_ESLINT,
+    parserOptions
+  },
+  {
+    code: `
       class First {
         static PropTypes = {key: "myValue"};
         static ContextTypes = {key: "myValue"};

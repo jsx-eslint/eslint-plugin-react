@@ -7,7 +7,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Fixed
 * [`prop-types`]: fix Cannot read property 'type' of undefined error when destructured param ([#2807][] @minwe)
+* [`no-typos`]: avoid crash on spread syntax in createReactClass object ([#2816][] @ljharb @Songyu-Wang)
 
+[#2816]: https://github.com/yannickcr/eslint-plugin-react/issues/2816
 [#2807]: https://github.com/yannickcr/eslint-plugin-react/pull/2807
 
 ## [7.21.2] - 2020.09.24
