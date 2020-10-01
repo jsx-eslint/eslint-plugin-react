@@ -976,3 +976,55 @@ ruleTester.run('sort-comp', rule, {
     }]
   }]
 });
+
+const ruleTesterCustomComponent = new RuleTester({
+  parserOptions,
+  settings: {
+    react: {
+      component: 'MyReactComponent'
+    }
+  }
+});
+ruleTesterCustomComponent.run('sort-comp. Custom component', rule, {
+  valid: [{
+    code: `
+    class MyComponent extends MyReactComponent {
+      static getDerivedStateFromProps() {}
+      render() {
+        return null;
+      }
+      static bar;
+      foo = {};
+    }`,
+    parser: parsers.BABEL_ESLINT,
+    options: [{
+      order: [
+        'static-methods',
+        'render',
+        'static-variables',
+        'instance-variables'
+      ]
+    }]
+  }],
+  invalid: [{
+    code: `
+    class MyComponent extends MyReactComponent {
+      static getDerivedStateFromProps() {}
+      static bar;
+      render() {
+        return null;
+      }
+      foo = {};
+    }`,
+    parser: parsers.BABEL_ESLINT,
+    errors: [{message: 'bar should be placed after render'}],
+    options: [{
+      order: [
+        'static-methods',
+        'render',
+        'static-variables',
+        'instance-variables'
+      ]
+    }]
+  }]
+});
