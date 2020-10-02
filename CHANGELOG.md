@@ -5,10 +5,13 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.21.3] - 2020.10.02
+
 ## Fixed
 * [`prop-types`]: fix Cannot read property 'type' of undefined error when destructured param ([#2807][] @minwe)
 * [`no-typos`]: avoid crash on spread syntax in createReactClass object ([#2816][] @ljharb @Songyu-Wang)
 
+[7.21.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.21.2...v7.21.3
 [#2816]: https://github.com/yannickcr/eslint-plugin-react/issues/2816
 [#2807]: https://github.com/yannickcr/eslint-plugin-react/pull/2807
 
@@ -17,6 +20,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Fixed
 * [`prop-types`]: handle RestElement in destructured param ([#2805][] @hank121314)
 
+[7.21.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.21.1...v7.21.2
 [#2805]: https://github.com/yannickcr/eslint-plugin-react/pull/2805
 
 ## [7.21.1] - 2020.09.23
@@ -24,6 +28,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Fixed
 * [`jsx-handler-names`]: avoid a crash when an inline prop is not a MemberExpression ([#2803][] @willheslam)
 
+[7.21.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.21.0...v7.21.1
 [#2803]: https://github.com/yannickcr/eslint-plugin-react/issues/2803
 
 ## [7.21.0] - 2020.09.22
@@ -56,6 +61,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Tests] [`jsx-one-expression-per-line`]: add passing tests ([#2799][] @TaLeaMonet)
 * [Tests] [`prop-types`]: add test ([#2757][] @jzabala)
 
+[7.21.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.20.6...v7.21.0
 [#2802]: https://github.com/yannickcr/eslint-plugin-react/pull/2802
 [#2801]: https://github.com/yannickcr/eslint-plugin-react/pull/2801
 [#2799]: https://github.com/yannickcr/eslint-plugin-react/pull/2799
