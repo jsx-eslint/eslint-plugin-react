@@ -15,6 +15,7 @@ before_script:
 script:
   - 'if [ -n "${PRETEST-}" ]; then npm run pretest ; fi'
   - 'if [ -n "${TEST-}" ]; then npm run unit-test ; fi'
+  - 'if [ -n "${POSTTEST-}" ]; then npm run posttest ; fi'
   - 'if [ -n "${README-}" ]; then npm run generate-list-of-rules:check ; fi'
 env:
   global:
@@ -31,6 +32,8 @@ matrix:
   include:
     - node_js: 'lts/*'
       env: PRETEST=true
+    - node_js: 'lts/*'
+      env: POSTTEST=true
     - node_js: 'lts/*'
       env: README=true
   exclude:
