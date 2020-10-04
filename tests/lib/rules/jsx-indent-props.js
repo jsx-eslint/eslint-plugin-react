@@ -230,6 +230,28 @@ ruleTester.run('jsx-indent-props', rule, {
     ]
   }, {
     code: [
+      '{this.props.test',
+      '  ? <span',
+      '    className="value"',
+      '    some={{aaa}}',
+      '    />',
+      '  : null}'
+    ].join('\n'),
+    output: [
+      '{this.props.test',
+      '  ? <span',
+      '      className="value"',
+      '      some={{aaa}}',
+      '    />',
+      '  : null}'
+    ].join('\n'),
+    options: [2],
+    errors: [
+      {message: 'Expected indentation of 6 space characters but found 4.'},
+      {message: 'Expected indentation of 6 space characters but found 4.'}
+    ]
+  }, {
+    code: [
       '<App',
       '    foo',
       '/>'
