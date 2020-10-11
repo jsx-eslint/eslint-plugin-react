@@ -206,6 +206,29 @@ ruleTester.run('jsx-indent-props', rule, {
     ]
   }, {
     code: [
+      'const test = true',
+      '  ? <span attr="value" />',
+      '  : (',
+      '    <span',
+      '        attr="otherValue"',
+      '    />',
+      '  )'
+    ].join('\n'),
+    output: [
+      'const test = true',
+      '  ? <span attr="value" />',
+      '  : (',
+      '    <span',
+      '      attr="otherValue"',
+      '    />',
+      '  )'
+    ].join('\n'),
+    options: [2],
+    errors: [
+      {message: 'Expected indentation of 6 space characters but found 8.'}
+    ]
+  }, {
+    code: [
       '{test.isLoading',
       '  ? <Value/>',
       '  : <OtherValue',
