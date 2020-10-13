@@ -40,6 +40,23 @@ ruleTester.run('jsx-indent-props', rule, {
     options: [2]
   }, {
     code: [
+      'const Test = () => ([',
+      '  (x',
+      '    ? <div key="1" />',
+      '    : <div key="2" />),',
+      '  <div',
+      '    key="3"',
+      '    align="left"',
+      '  />,',
+      '  <div',
+      '    key="4"',
+      '    align="left"',
+      '  />,',
+      ']);'
+    ].join('\n'),
+    options: [2]
+  }, {
+    code: [
       '<App',
       'foo',
       '/>'

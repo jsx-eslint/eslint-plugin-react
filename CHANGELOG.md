@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Fixed
+* [`jsx-indent-props`]: Apply indentation when using brackets ([#2826][] @Moong0122)
+
+[#2826]: https://github.com/yannickcr/eslint-plugin-react/issues/2826
+
 ## [7.21.4] - 2020.10.09
 
 ### Fixed
