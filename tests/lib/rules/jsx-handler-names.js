@@ -60,6 +60,11 @@ ruleTester.run('jsx-handler-names', rule, {
       checkLocalVariables: false
     }]
   }, {
+    code: '<TestComponent onChange={event => window.alert(event.target.value)} />',
+    options: [{
+      checkInlineFunction: false
+    }]
+  }, {
     code: '<TestComponent onChange={() => handleChange()} />',
     options: [{
       checkInlineFunction: true,
