@@ -39,6 +39,14 @@ ruleTester.run('jsx-key', rule, {
     {code: 'fn()'},
     {code: '[1, 2, 3].map(function () {})'},
     {code: '<App />;'},
+    {
+      code: '[1, 2, 3].map(x => <App {...{ key }} />);',
+      options: [{allowSpreadKeys: true}]
+    },
+    {
+      code: '[1, 2, 3].map(x => <App {...objectWithKey} />);',
+      options: [{allowSpreadKeys: true}]
+    },
     {code: '[<App key={0} />, <App key={1} />];'},
     {code: '[1, 2, 3].map(function(x) { return <App key={x} /> });'},
     {code: '[1, 2, 3].map(x => <App key={x} />);'},
@@ -88,5 +96,14 @@ ruleTester.run('jsx-key', rule, {
     options: [{checkFragmentShorthand: true}],
     settings,
     errors: [{message: 'Missing "key" prop for element in array. Shorthand fragment syntax does not support providing keys. Use Act.Frag instead'}]
+  }, {
+    code: '[1, 2, 3].map(x => <App {...{ key }} />);',
+    options: [{allowSpreadKeys: false}],
+    errors: [{message: 'Missing "key" prop for element in iterator'}]
+  },
+  {
+    code: '[1, 2, 3].map(x => <App {...objectWithKey} />);',
+    options: [{allowSpreadKeys: false}],
+    errors: [{message: 'Missing "key" prop for element in iterator'}]
   })
 });
