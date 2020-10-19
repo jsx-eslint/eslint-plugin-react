@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Added
+* [`jsx-key`]: added `checkKeyMustBeforeSpread` option for new jsx transform ([#2835][] @morlay)
+
+[#2835]: https://github.com/yannickcr/eslint-plugin-react/pull/2835
+
 ## [7.21.5] - 2020.10.19
 
 ### Fixed

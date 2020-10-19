@@ -48,7 +48,12 @@ ruleTester.run('jsx-key', rule, {
     {code: '[1, 2, 3].map(function(x) { return; });'},
     {code: 'foo(() => <div />);'},
     {code: 'foo(() => <></>);', parser: parsers.BABEL_ESLINT},
-    {code: '<></>;', parser: parsers.BABEL_ESLINT}
+    {code: '<></>;', parser: parsers.BABEL_ESLINT},
+    {code: '<App {...{}} />;', parser: parsers.BABEL_ESLINT},
+    {code: '<App key="keyBeforeSpread" {...{}} />;', parser: parsers.BABEL_ESLINT, options: [{checkKeyMustBeforeSpread: true}]},
+    {code: '<App key="keyBeforeSpread" {...{}} />;', parser: parsers.TYPESCRIPT_ESLINT, options: [{checkKeyMustBeforeSpread: true}]},
+    {code: '<div key="keyBeforeSpread" {...{}} />;', parser: parsers.BABEL_ESLINT, options: [{checkKeyMustBeforeSpread: true}]},
+    {code: '<div key="keyBeforeSpread" {...{}} />;', parser: parsers.TYPESCRIPT_ESLINT, options: [{checkKeyMustBeforeSpread: true}]}
   ],
   invalid: [].concat({
     code: '[<App />];',
@@ -88,5 +93,29 @@ ruleTester.run('jsx-key', rule, {
     options: [{checkFragmentShorthand: true}],
     settings,
     errors: [{message: 'Missing "key" prop for element in array. Shorthand fragment syntax does not support providing keys. Use Act.Frag instead'}]
+  }, {
+    code: '[<App {...obj} key="keyAfterSpread" />];',
+    parser: parsers.BABEL_ESLINT,
+    options: [{checkKeyMustBeforeSpread: true}],
+    settings,
+    errors: [{message: '`key` prop must before any `{...spread}, to avoid conflicting with React’s new JSX transform: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html`'}]
+  }, {
+    code: '[<App {...obj} key="keyAfterSpread" />];',
+    parser: parsers.TYPESCRIPT_ESLINT,
+    options: [{checkKeyMustBeforeSpread: true}],
+    settings,
+    errors: [{message: '`key` prop must before any `{...spread}, to avoid conflicting with React’s new JSX transform: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html`'}]
+  }, {
+    code: '[<div {...obj} key="keyAfterSpread" />];',
+    parser: parsers.BABEL_ESLINT,
+    options: [{checkKeyMustBeforeSpread: true}],
+    settings,
+    errors: [{message: '`key` prop must before any `{...spread}, to avoid conflicting with React’s new JSX transform: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html`'}]
+  }, {
+    code: '[<div {...obj} key="keyAfterSpread" />];',
+    parser: parsers.TYPESCRIPT_ESLINT,
+    options: [{checkKeyMustBeforeSpread: true}],
+    settings,
+    errors: [{message: '`key` prop must before any `{...spread}, to avoid conflicting with React’s new JSX transform: https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html`'}]
   })
 });

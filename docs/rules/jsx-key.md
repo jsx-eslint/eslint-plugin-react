@@ -47,6 +47,16 @@ The following patterns are considered warnings:
 data.map(x => <>{x}</>);
 ```
 
+### `checkKeyMustBeforeSpread` (default: `false`)
+
+When `true` the rule will check if key prop after spread to avoid [createElement fallback](https://github.com/facebook/react/issues/20031#issuecomment-710346866).  
+
+The following patterns are considered warnings:
+
+```jsx
+<span {...spread} key={"key-after-spread"} />;
+```
+
 ## When not to use
 
 If you are not using JSX then you can disable this rule.
