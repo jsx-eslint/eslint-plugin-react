@@ -38,7 +38,7 @@
     "object.fromentries": "^2.0.2",
     "object.values": "^1.1.1",
     "prop-types": "^15.7.2",
-    "resolve": "^1.17.0",
+    "resolve": "^1.18.1",
     "string.prototype.matchall": "^4.0.2"
   },
   "devDependencies": {
