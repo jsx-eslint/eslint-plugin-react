@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.21.5] - 2020.10.19
+
 ### Fixed
 * [`jsx-indent-props`]: Apply indentation when using brackets ([#2826][] @Moong0122)
 * [`jsx-handler-names`]: Skip inline handlers when checkInlineFunction=false ([#2833][] @onigoetz)
@@ -12,6 +14,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Changed
 * [Tests] `jsx-indent-props`: Add passing test ([#2823][] @Hypnosphi)
 
+[7.21.5]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.21.4...v7.21.5
 [#2833]: https://github.com/yannickcr/eslint-plugin-react/pull/2833
 [#2826]: https://github.com/yannickcr/eslint-plugin-react/pull/2826
 [#2823]: https://github.com/yannickcr/eslint-plugin-react/pull/2823
