@@ -159,8 +159,22 @@ As it aptly noticed in
 > Most components don't need `this.props.children`, so that makes it extra important
 to document `children` in the prop types.
 
-Generally, you should use `PropTypes.node` or static type `React.Node` for
-`children`. It accepts anything that can be rendered: numbers, strings, elements
+Generally, you should use `PropTypes.node` or static type `ReactNode` for
+`children`, like this:
+
+```tsx
+import React, { ReactNode } from "react";
+
+type Props = {
+  children: ReactNode;
+};
+
+function Foo({ children }: Props): JSX.Element {
+  return <div>{children}</div>;
+}
+```
+
+It accepts anything that can be rendered: numbers, strings, elements
 or an array containing these types.
 
 Since 2.0.0 children is no longer ignored for props validation.
