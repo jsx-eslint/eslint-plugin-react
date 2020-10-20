@@ -8,14 +8,14 @@ Source: [ReactDOM documentation](https://facebook.github.io/react/docs/react-dom
 
 This rule will warn you if you try to use the `ReactDOM.render()` return value.
 
-The following pattern is considered a warning:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 const inst = ReactDOM.render(<App />, document.body);
 doSomethingWithInst(inst);
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 ReactDOM.render(<App ref={doSomethingWithInst} />, document.body);

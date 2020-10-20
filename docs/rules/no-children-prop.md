@@ -8,7 +8,7 @@ arguments to `React.createElement`.
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <div children='Children' />
@@ -19,7 +19,7 @@ The following patterns are considered warnings:
 React.createElement("div", { children: 'Children' })
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <div>Children</div>

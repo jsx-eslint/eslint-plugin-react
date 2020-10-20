@@ -14,7 +14,7 @@ This rule will enforce the state initialization style to be either in a construc
 
 Will enforce the state initialization style to be in a constructor. This is the default mode.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 class Foo extends React.Component {
@@ -25,7 +25,7 @@ class Foo extends React.Component {
 }
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 class Foo extends React.Component {
@@ -43,7 +43,7 @@ class Foo extends React.Component {
 
 Will enforce the state initialization style to be with a class property.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 class Foo extends React.Component {
@@ -57,7 +57,7 @@ class Foo extends React.Component {
 }
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 class Foo extends React.Component {

@@ -8,13 +8,13 @@ Some developers prefer to sort props names alphabetically to be able to find nec
 
 This rule checks all JSX components and verifies that all props are sorted alphabetically. A spread attribute resets the verification. The default configuration of the rule is case-sensitive.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <Hello lastName="Smith" firstName="John" />;
 ```
 
-The following patterns are considered okay and do **not** cause warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <Hello firstName="John" lastName="Smith" />;
@@ -40,7 +40,7 @@ The following patterns are considered okay and do **not** cause warnings:
 
 When `true` the rule ignores the case-sensitivity of the props order.
 
-The following patterns are considered okay and do not cause warnings:
+Examples of **correct** code for this rule
 
 ```jsx
 <Hello name="John" Number="2" />;

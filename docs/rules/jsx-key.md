@@ -5,7 +5,7 @@ array literal or an arrow function expression.
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 [<Hello />, <Hello />, <Hello />];
@@ -17,7 +17,7 @@ data.map(x => <Hello>{x}</Hello>);
 
 In the last example the key is being spread, which is currently possible, but discouraged in favor of the statically provided key.
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 [<Hello key="first" />, <Hello key="second" />, <Hello key="third" />];
@@ -37,9 +37,9 @@ data.map((x, i) => <Hello key={i}>{x}</Hello>);
 
 ### `checkFragmentShorthand` (default: `false`)
 
-When `true` the rule will check if usage of the [shorthand fragment syntax][short_syntax] requires a key. This option was added to avoid a breaking change and will be the default in the next major version. 
+When `true` the rule will check if usage of the [shorthand fragment syntax][short_syntax] requires a key. This option was added to avoid a breaking change and will be the default in the next major version.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 [<></>, <></>, <></>];
@@ -49,9 +49,9 @@ data.map(x => <>{x}</>);
 
 ### `checkKeyMustBeforeSpread` (default: `false`)
 
-When `true` the rule will check if key prop after spread to avoid [createElement fallback](https://github.com/facebook/react/issues/20031#issuecomment-710346866).  
+When `true` the rule will check if key prop after spread to avoid [createElement fallback](https://github.com/facebook/react/issues/20031#issuecomment-710346866).
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <span {...spread} key={"key-after-spread"} />;

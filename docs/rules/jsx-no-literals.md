@@ -6,13 +6,13 @@ There are a few scenarios where you want to avoid string literals in JSX. You ma
 
 By default this rule requires that you wrap all literal strings in a JSX container `{'TEXT'}`.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Hello = <div>test</div>;
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 var Hello = <div>{'test'}</div>;
@@ -39,7 +39,7 @@ To use, you can specify as follows:
 "react/jsx-no-literals": [<enabled>, {"noStrings": true, "allowedStrings": ["allowed"], "ignoreProps": false, "noAttributeStrings": true }]
 ```
 
-In this configuration, the following are considered warnings:
+Examples of **incorrect** code for this rule, with the above configuration:
 
 ```jsx
 var Hello = <div>test</div>;
@@ -73,9 +73,7 @@ var Hello = <div class={'xx'} />;
 var Hello = <div class={`xx`} />;
 ```
 
-
-
-The following are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 // When using something like `react-intl`

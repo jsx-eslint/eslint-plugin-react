@@ -7,7 +7,7 @@ By default this rule prevents passing of [props that add lots of complexity](htt
 This rule checks all JSX elements and verifies that no forbidden props are used
 on Components. This rule is off by default.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <Hello className='foo' />
@@ -17,7 +17,7 @@ The following patterns are considered warnings:
 <Hello style={{color: 'red'}} />
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <Hello name='Joe' />

@@ -7,7 +7,7 @@ By default this rule prevents vague prop types with more specific alternatives a
 This rule checks all JSX components and verifies that no forbidden propsTypes are used.
 This rule is off by default.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Component = createReactClass({
@@ -54,11 +54,11 @@ An array of strings, with the names of `PropTypes` keys that are forbidden. The 
 
 ### `checkContextTypes`
 
-Whether or not to check `contextTypes` for forbidden prop types. The default value is false.
+Whether or not to check `contextTypes` for forbidden prop types. The default value is `false`.
 
 ### `checkChildContextTypes`
 
-Whether or not to check `childContextTypes` for forbidden prop types. The default value is false.
+Whether or not to check `childContextTypes` for forbidden prop types. The default value is `false`.
 
 ## When not to use
 

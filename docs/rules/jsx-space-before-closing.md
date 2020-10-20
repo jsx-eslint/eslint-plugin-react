@@ -12,14 +12,14 @@ This rule checks if there is one or more spaces before the closing bracket of se
 
 This rule takes one argument. If it is `"always"` then it warns whenever a space is missing before the closing bracket. If `"never"` then it warns if a space is present before the closing bracket. The default value of this option is `"always"`.
 
-The following patterns are considered warnings when configured `"always"`:
+Examples of **incorrect** code for this rule, when configured with `"always"`:
 
 ```jsx
 <Hello/>
 <Hello firstname="John"/>
 ```
 
-The following patterns are **not** considered warnings when configured `"always"`:
+Examples of **correct** code for this rule, when configured with `"always"`:
 
 ```jsx
 <Hello />
@@ -30,14 +30,14 @@ The following patterns are **not** considered warnings when configured `"always"
 />
 ```
 
-The following patterns are considered warnings when configured `"never"`:
+Examples of **incorrect** code for this rule, when configured with `"never"`:
 
 ```jsx
 <Hello />
 <Hello firstName="John" />
 ```
 
-The following patterns are **not** considered warnings when configured `"never"`:
+Examples of **correct** code for this rule, when configured with `"never"`:
 
 ```jsx
 <Hello/>

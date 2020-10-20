@@ -8,7 +8,7 @@ In order to ensure that imports are explicitly exported it is recommended to use
 
 This rule checks all objects and ensures that the `propTypes` property is not used.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```js
 import SomeComponent from './SomeComponent';
@@ -19,7 +19,7 @@ var { propTypes } = SomeComponent;
 SomeComponent['propTypes'];
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```js
 import SomeComponent, {propTypes as someComponentPropTypes} from './SomeComponent';

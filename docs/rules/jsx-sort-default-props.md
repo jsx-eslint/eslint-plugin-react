@@ -6,7 +6,7 @@ Some developers prefer to sort `defaultProps` declarations alphabetically to be 
 
 This rule checks all components and verifies that all `defaultProps` declarations are sorted alphabetically. A spread attribute resets the verification. The default configuration of the rule is case-sensitive.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Component = createReactClass({
@@ -86,7 +86,7 @@ export default class ClassWithSpreadInPropTypes extends BaseClass {
 }
 ```
 
-The following patterns are considered okay and do **not** cause warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 var Component = createReactClass({

@@ -6,7 +6,7 @@ See https://facebook.github.io/react/tips/dangerously-set-inner-html.html
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var React = require('react');
@@ -14,7 +14,7 @@ var React = require('react');
 var Hello = <div dangerouslySetInnerHTML={{ __html: "Hello World" }}></div>;
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 var React = require('react');

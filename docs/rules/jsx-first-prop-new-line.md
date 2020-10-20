@@ -13,7 +13,7 @@ This rule checks whether the first property of all JSX elements is correctly pla
 * `multiline`: The first property should always be placed on a new line when the JSX tag takes up multiple lines.
 * `multiline-multiprop`: The first property should always be placed on a new line if the JSX tag takes up multiple lines and there are multiple properties. This is the `default` value.
 
-The following patterns are considered warnings when configured `"always"`:
+Examples of **incorrect** code for this rule, when configured with `"always"`:
 
 ```jsx
 <Hello personal={true} />
@@ -23,7 +23,7 @@ The following patterns are considered warnings when configured `"always"`:
 />
 ```
 
-The following patterns are **not** considered warnings when configured `"always"`:
+Examples of **correct** code for this rule, when configured with `"always"`:
 
 ```jsx
 <Hello
@@ -34,7 +34,7 @@ The following patterns are **not** considered warnings when configured `"always"
 />
 ```
 
-The following patterns are considered warnings when configured `"never"`:
+Examples of **incorrect** code for this rule, when configured with `"never"`:
 
 ```jsx
 <Hello
@@ -45,7 +45,7 @@ The following patterns are considered warnings when configured `"never"`:
 />
 ```
 
-The following patterns are **not** considered warnings when configured `"never"`:
+Examples of **correct** code for this rule, when configured with `"never"`:
 
 ```jsx
 <Hello personal={true} />
@@ -55,7 +55,7 @@ The following patterns are **not** considered warnings when configured `"never"`
 />
 ```
 
-The following patterns are considered warnings when configured `"multiline"`:
+Examples of **incorrect** code for this rule, when configured with `"multiline"`:
 
 ```jsx
 <Hello personal
@@ -67,7 +67,7 @@ The following patterns are considered warnings when configured `"multiline"`:
 }} />
 ```
 
-The following patterns are **not** considered warnings when configured `"multiline"`:
+Examples of **correct** code for this rule, when configured with `"multiline"`:
 
 ```jsx
 <Hello personal={true} />
@@ -78,7 +78,7 @@ The following patterns are **not** considered warnings when configured `"multili
 />
 ```
 
-The following patterns are considered warnings when configured `"multiline-multiprop"`:
+Examples of **incorrect** code for this rule, when configured with `"multiline-multiprop"`:
 
 ```jsx
 <Hello foo={{
@@ -86,7 +86,7 @@ The following patterns are considered warnings when configured `"multiline-multi
     bar />
 ```
 
-The following patterns are **not** considered warnings when configured `"multiline-multiprop"`:
+Examples of **correct** code for this rule, when configured with `"multiline-multiprop"`:
 
 ```jsx
 <Hello foo={{

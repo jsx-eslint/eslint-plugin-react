@@ -6,7 +6,7 @@
 
 This is a stylistic rule intended to make JSX code more readable by enforcing spaces between adjacent JSX elements and expressions.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <div>
@@ -33,7 +33,7 @@ The following patterns are considered warnings:
 </div>
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <div>

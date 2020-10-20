@@ -18,13 +18,13 @@ Support for fragments was added in React v16.2, so the rule will warn on either 
 
 This is the default mode. It will enforce the shorthand syntax for React fragments, with one exception. [Keys or attributes are not supported by the shorthand syntax][short_syntax], so the rule will not warn on standard-form fragments that use those.
 
-The following pattern is considered a warning:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <React.Fragment><Foo /></React.Fragment>
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <><Foo /></>
@@ -38,13 +38,13 @@ The following patterns are **not** considered warnings:
 
 This mode enforces the standard form for React fragments.
 
-The following pattern is considered a warning:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <><Foo /></>
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <React.Fragment><Foo /></React.Fragment>

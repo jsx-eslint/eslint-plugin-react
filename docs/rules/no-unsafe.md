@@ -6,14 +6,14 @@ Certain legacy lifecycle methods are [unsafe for use in async React applications
 [strict_mode]: https://reactjs.org/docs/strict-mode.html#identifying-unsafe-lifecycles
 [component_lifecycle_changes]: https://reactjs.org/blog/2018/03/29/react-v-16-3.html#component-lifecycle-changes
 
-The rule checks the following methods: 
+The rule checks the following methods:
 - `componentWillMount` (and `UNSAFE_componentWillMount` alias)
 - `componentWillReceiveProps` (and `UNSAFE_componentWillReceiveProps` alias)
 - `componentWillUpdate` (and `UNSAFE_componentWillUpdate` alias)
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 class Foo extends React.Component {
@@ -31,7 +31,7 @@ const Foo = createReactClass({
 });
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 class Foo extends Bar {
@@ -60,7 +60,7 @@ const Foo = bar({
 
 When `true` the rule will also check aliases of unsafe methods: `componentWillMount`, `componentWillReceiveProps`, `componentWillUpdate`.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 class Foo extends React.Component {
@@ -78,7 +78,7 @@ const Foo = createReactClass({
 });
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 class Foo extends Bar {

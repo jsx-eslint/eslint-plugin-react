@@ -4,7 +4,7 @@ This option validates a specific depth for JSX.
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <App>
@@ -27,7 +27,7 @@ It takes an option as the second parameter which can be a positive number for de
 ...
 ```
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 // [2, { "max": 1 }]
@@ -53,7 +53,7 @@ const foobar = <Foo><Bar /></Foo>;
 </App>
 ```
 
-The following patterns are not warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 

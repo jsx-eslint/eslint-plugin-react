@@ -22,7 +22,7 @@ This rule optionally takes a second parameter in the form of an object, containi
 
 Note: conditions are checked by default in declarations or assignments.
 
-The following patterns are considered warnings when using `parens` or `parens-new-line`:
+Examples of **incorrect** code for this rule, when configured with `parens` or `parens-new-line`:
 
 ```jsx
 var Hello = createReactClass({
@@ -34,7 +34,7 @@ var Hello = createReactClass({
 });
 ```
 
-The following patterns are considered warnings when using `parens-new-line`:
+Examples of **incorrect** code for this rule, when configured with `parens-new-line`:
 
 ```jsx
 var Hello = createReactClass({
@@ -46,7 +46,7 @@ var Hello = createReactClass({
 });
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 var singleLineJSX = <p>Hello</p>
@@ -64,7 +64,7 @@ var Hello = createReactClass({
 
 ### `declaration`
 
-The following patterns are considered warnings when configured `{declaration: "parens"}`.
+Examples of **incorrect** code for this rule, when configured with `{ declaration: "parens" }`:
 
 ```jsx
 var hello = <div>
@@ -72,8 +72,7 @@ var hello = <div>
 </div>;
 ```
 
-
-The following patterns are **not** considered warnings when configured `{declaration: "parens"}`.
+Examples of **correct** code for this rule, when configured with `{ declaration: "parens" }`:
 
 ```jsx
 var hello = (
@@ -89,7 +88,7 @@ var hello = (<div>
 </div>);
 ```
 
-The following patterns are considered warnings when configured `{declaration: "parens-new-line"}`.
+Examples of **incorrect** code for this rule, when configured with `{ declaration: "parens-new-line" }`:
 
 ```jsx
 var hello = <div>
@@ -103,7 +102,7 @@ var hello = (<div>
 </div>);
 ```
 
-The following patterns are **not** considered warnings when configured `{declaration: "parens-new-line"}`.
+Examples of **correct** code for this rule, when configured with `{ declaration: "parens-new-line" }`.
 
 ```jsx
 var hello = (
@@ -115,7 +114,7 @@ var hello = (
 
 ### `assignment`
 
-The following patterns are considered warnings when configured `{assignment: "parens"}`.
+Examples of **incorrect** code for this rule, when configured with `{ assignment: "parens" }`.
 
 ```jsx
 var hello;
@@ -125,7 +124,7 @@ hello = <div>
 ```
 
 
-The following patterns are **not** considered warnings when configured `{assignment: "parens"}`.
+Examples of **correct** code for this rule, when configured with `{ assignment: "parens" }`.
 
 ```jsx
 var hello;
@@ -143,7 +142,7 @@ hello = (<div>
 </div>);
 ```
 
-The following patterns are considered warnings when configured `{assignment: "parens-new-line"}`.
+Examples of **incorrect** code for this rule, when configured with `{ assignment: "parens-new-line" }`.
 
 ```jsx
 var hello;
@@ -159,7 +158,7 @@ hello = (<div>
 </div>);
 ```
 
-The following patterns are **not** considered warnings when configured `{assignment: "parens-new-line"}`.
+Examples of **correct** code for this rule, when configured with `{ assignment: "parens-new-line" }`.
 
 ```jsx
 var hello;
@@ -172,7 +171,7 @@ hello = (
 
 ### `return`
 
-The following patterns are considered warnings when configured `{return: "parens"}`.
+Examples of **incorrect** code for this rule, when configured with `{ return: "parens" }`.
 
 ```jsx
 function hello() {
@@ -182,7 +181,7 @@ function hello() {
 }
 ```
 
-The following patterns are **not** considered warnings when configured `{return: "parens"}`.
+Examples of **correct** code for this rule, when configured with `{ return: "parens" }`.
 
 ```jsx
 function hello() {
@@ -202,7 +201,7 @@ function hello() {
 }
 ```
 
-The following patterns are considered warnings when configured `{return: "parens-new-line"}`.
+Examples of **incorrect** code for this rule, when configured with `{ return: "parens-new-line" }`.
 
 ```jsx
 function hello() {
@@ -220,7 +219,7 @@ function hello() {
 }
 ```
 
-The following patterns are **not** considered warnings when configured `{return: "parens-new-line"}`.
+Examples of **correct** code for this rule, when configured with `{ return: "parens-new-line" }`.
 
 ```jsx
 function hello() {
@@ -234,7 +233,7 @@ function hello() {
 
 ### `arrow`
 
-The following patterns are considered warnings when configured `{arrow: "parens"}`.
+Examples of **incorrect** code for this rule, when configured with `{ arrow: "parens" }`.
 
 ```jsx
 var hello = () => <div>
@@ -243,7 +242,7 @@ var hello = () => <div>
 ```
 
 
-The following patterns are **not** considered warnings when configured `{arrow: "parens"}`.
+Examples of **correct** code for this rule, when configured `{ arrow: "parens" }`.
 
 ```jsx
 var hello = () => (
@@ -259,7 +258,7 @@ var hello = () => (<div>
 </div>);
 ```
 
-The following patterns are considered warnings when configured `{arrow: "parens-new-line"}`.
+Examples of **incorrect** code for this rule, when configured with `{ arrow: "parens-new-line" }`.
 
 ```jsx
 var hello = () => <div>
@@ -273,7 +272,7 @@ var hello = () => (<div>
 </div>);
 ```
 
-The following patterns are **not** considered warnings when configured `{arrow: "parens-new-line"}`.
+Examples of **correct** code for this rule, when configured with `{ arrow: "parens-new-line" }`.
 
 ```jsx
 var hello = () => (
@@ -285,7 +284,7 @@ var hello = () => (
 
 ### `condition`
 
-The following patterns are considered warnings when configured `{condition: "parens"}`.
+Examples of **incorrect** code for this rule, when configured with `{ condition: "parens" }`.
 
 ```jsx
 <div>
@@ -296,7 +295,7 @@ The following patterns are considered warnings when configured `{condition: "par
 ```
 
 
-The following patterns are **not** considered warnings when configured `{condition: "parens"}`.
+Examples of **correct** code for this rule, when configured with `{ condition: "parens" }`.
 
 ```jsx
 <div>
@@ -316,7 +315,7 @@ The following patterns are **not** considered warnings when configured `{conditi
 </div>
 ```
 
-The following patterns are considered warnings when configured `{condition: "parens-new-line"}`.
+Examples of **incorrect** code for this rule, when configured with `{ condition: "parens-new-line" }`.
 
 ```jsx
 <div>
@@ -334,7 +333,7 @@ The following patterns are considered warnings when configured `{condition: "par
 </div>
 ```
 
-The following patterns are **not** considered warnings when configured `{condition: "parens-new-line"}`.
+Examples of **correct** code for this rule, when configured with `{ condition: "parens-new-line" }`.
 
 ```jsx
 <div>
@@ -348,7 +347,7 @@ The following patterns are **not** considered warnings when configured `{conditi
 
 ### `logical`
 
-The following patterns are considered warnings when configured `{logical: "parens"}`.
+Examples of **incorrect** code for this rule, when configured with `{ logical: "parens" }`.
 
 ```jsx
 <div>
@@ -360,7 +359,7 @@ The following patterns are considered warnings when configured `{logical: "paren
 </div>
 ```
 
-The following patterns are **not** considered warnings when configured `{logical: "parens"}`.
+Examples of **correct** code for this rule, when configured with `{ logical: "parens" }`.
 
 ```jsx
 <div>
@@ -382,7 +381,7 @@ The following patterns are **not** considered warnings when configured `{logical
 </div>
 ```
 
-The following patterns are considered warnings when configured `{logical: "parens-new-line"}`.
+Examples of **incorrect** code for this rule, when configured with `{ logical: "parens-new-line" }`.
 
 ```jsx
 <div>
@@ -404,7 +403,7 @@ The following patterns are considered warnings when configured `{logical: "paren
 </div>
 ```
 
-The following patterns are **not** considered warnings when configured `{logical: "parens-new-line"}`.
+Examples of **correct** code for this rule, when configured with `{ logical: "parens-new-line" }`.
 
 ```jsx
 <div>
@@ -418,7 +417,7 @@ The following patterns are **not** considered warnings when configured `{logical
 
 ### `prop`
 
-The following patterns are considered warnings when configured `{prop: "parens"}`.
+Examples of **incorrect** code for this rule, when configured with `{ prop: "parens" }`.
 
 ```jsx
 <div foo={<div>
@@ -428,7 +427,7 @@ The following patterns are considered warnings when configured `{prop: "parens"}
 </div>;
 ```
 
-The following patterns are **not** considered warnings when configured `{prop: "parens"}`.
+Examples of **correct** code for this rule, when configured with `{ prop: "parens" }`.
 
 ```jsx
 <div foo={(<div>
@@ -448,7 +447,7 @@ The following patterns are **not** considered warnings when configured `{prop: "
 </div>;
 ```
 
-The following patterns are considered warnings when configured `{prop: "parens-new-line"}`.
+Examples of **incorrect** code for this rule, when configured with `{ prop: "parens-new-line" }`.
 
 ```jsx
 <div foo={<div>
@@ -466,7 +465,7 @@ The following patterns are considered warnings when configured `{prop: "parens-n
 </div>;
 ```
 
-The following patterns are **not** considered warnings when configured `{prop: "parens-new-line"}`.
+Examples of **correct** code for this rule, when configured with `{ prop: "parens-new-line" }`.
 
 ```jsx
 <div foo={(

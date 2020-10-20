@@ -13,7 +13,7 @@ required property similarly indicates a possible refactoring problem.
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 function MyStatelessComponent({ foo, bar }) {
@@ -103,7 +103,7 @@ MyStatelessComponent.defaultProps = {
 }
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 function MyStatelessComponent({ foo, bar }) {
@@ -167,7 +167,7 @@ NotAComponent.propTypes = {
 
 When `true` the rule will ignore `defaultProps` for required prop types.
 
-The following patterns are considered okay and do not cause warnings:
+Examples of **correct** code for this rule, when configured with `{ "allowRequiredDefaults": true }`:
 
 ```jsx
 function MyStatelessComponent({ foo, bar }) {

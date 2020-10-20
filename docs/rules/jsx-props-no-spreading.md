@@ -4,7 +4,7 @@ Enforces that there is no spreading for any JSX attribute. This enhances readabi
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <App {...props} />
@@ -12,7 +12,7 @@ The following patterns are considered warnings:
 <img {...props} />
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 const {src, alt} = props;
@@ -38,13 +38,13 @@ const {one_prop, two_prop} = otherProps;
 
 `html` set to `ignore` will ignore all html jsx tags like `div`, `img` etc. Default is set to `enforce`.
 
-The following patterns are **not** considered warnings when `html` is set to `ignore`:
+Examples of **correct** code for this rule, when `html` is set to `ignore`:
 
 ```jsx
 <img {...props} />
 ```
 
-The following patterns are still considered warnings:
+Examples of **incorrect** code for this rule, when `html` is set to `ignore`:
 
 ```jsx
 <MyCustomComponent {...props} />
@@ -54,13 +54,13 @@ The following patterns are still considered warnings:
 
 `custom` set to `ignore` will ignore all custom jsx tags like `App`, `MyCustomComponent` etc. Default is set to `enforce`.
 
-The following patterns are **not** considered warnings when `custom` is set to `ignore`:
+Examples of **correct** code for this rule, when `custom` is set to `ignore`:
 
 ```jsx
 <MyCustomComponent {...props} />
 ```
 
-The following patterns are still considered warnings:
+Examples of **incorrect** code for this rule, when `custom` is set to `ignore`:
 
 ```jsx
 <img {...props} />
@@ -70,7 +70,7 @@ The following patterns are still considered warnings:
 
 `explicitSpread` set to `ignore` will ignore spread operators that are explicilty listing all object properties within that spread. Default is set to `enforce`.
 
-The following pattern is **not** considered warning when `explicitSpread` is set to `ignore`:
+Examples of **correct** code for this rule, when `explicitSpread` is set to `ignore`:
 
 ```jsx
 <img {...{ prop1, prop2, prop3 }} />
@@ -84,7 +84,7 @@ An "exception" will always flip the resulting html or custom setting for that co
 { "exceptions": ["Image", "img"] }
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 const {src, alt} = props;
@@ -92,7 +92,7 @@ const {src, alt} = props;
 <img {...props} />
 ```
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <MyCustomComponent {...props} />
@@ -102,7 +102,7 @@ The following patterns are considered warnings:
 { "html": "ignore", "exceptions": ["MyCustomComponent", "img"] }
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 const {src, alt} = props;
@@ -111,7 +111,7 @@ const {one_prop, two_prop} = otherProps;
 <MyCustomComponent {...otherProps} />
 ```
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <img {...props} />

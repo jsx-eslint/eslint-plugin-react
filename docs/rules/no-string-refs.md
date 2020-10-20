@@ -4,7 +4,7 @@ Currently, two ways are supported by React to refer to components. The first way
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Hello = createReactClass({
@@ -26,7 +26,7 @@ var Hello = createReactClass({
 });
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 var Hello = createReactClass({
@@ -48,7 +48,7 @@ var Hello = createReactClass({
 ### `noTemplateLiterals`
 
 When set to `true`, it will give warning when using template literals for refs.
-The following patterns will be considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Hello = createReactClass({

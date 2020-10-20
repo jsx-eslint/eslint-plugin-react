@@ -60,7 +60,7 @@ ReactDOM.render(<HelloWorld />,  document.getElementById('app'));
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 function MyStatelessComponent({ foo, bar }) {
@@ -122,7 +122,7 @@ function MyStatelessComponent(props: Props) {
 }
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 class Greeting extends React.Component {
@@ -209,7 +209,7 @@ NotAComponent.propTypes = {
 
 Forbids setting a default for props that are marked as `isRequired`.
 
-The following patterns are warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 class Greeting extends React.Component {
@@ -247,7 +247,7 @@ MyStatelessComponent.defaultProps = {
 };
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 class Greeting extends React.Component {
@@ -283,7 +283,7 @@ MyStatelessComponent.propTypes = {
 
 When set to `true`, ignores this rule for all functional components.
 
-The following patterns are warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 class Greeting extends React.Component {
@@ -305,7 +305,7 @@ class Greeting extends React.Component {
 }
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 function MyStatelessComponent({ foo, bar }) {

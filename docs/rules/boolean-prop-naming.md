@@ -8,7 +8,7 @@ regardless of how you define them.
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Hello = createReactClass({
@@ -26,7 +26,7 @@ type Props = {
 const Hello = (props: Props) => <div />;
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 var Hello = createReactClass({

@@ -7,7 +7,7 @@ There are some HTML elements that are only self-closing (e.g. `img`, `br`, `hr`)
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <br>Children</br>
@@ -18,7 +18,7 @@ React.createElement('br', { children: 'Children' })
 React.createElement('br', { dangerouslySetInnerHTML: { __html: 'HTML' } })
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <div>Children</div>

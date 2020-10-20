@@ -29,7 +29,7 @@ This check can be set to `"always"`, `"never"` or `"allow"` (to disable it).
 
 If it is `"never"`, the check warns whenever a space is separating the two characters in the JSX tokens `</` and `/>`. If it is `"always"` then it warns whenever a space is missing separating the mentioned two characters. The default value of this check is `"never"`.
 
-The following patterns are considered warnings when configured `"never"`:
+Examples of **incorrect** code for this rule, when configured with `{ "closingSlash": "never" }`:
 
 ```jsx
 <App/ >
@@ -38,7 +38,7 @@ The following patterns are considered warnings when configured `"never"`:
 <Provider>< /Provider>
 ```
 
-The following patterns are **not** considered warnings when configured `"never"`:
+Examples of **correct** code for this rule, when configured with `{ "closingSlash": "never" }`:
 
 ```jsx
 <App/>
@@ -46,14 +46,14 @@ The following patterns are **not** considered warnings when configured `"never"`
 <Provider></Provider>
 ```
 
-The following patterns are considered warnings when configured `"always"`:
+Examples of **incorrect** code for this rule, when configured with `{ "closingSlash": "always" }`:
 
 ```jsx
 <Hello/>
 <Goodbye></Goodbye>
 ```
 
-The following patterns are **not** considered warnings when configured `"always"`:
+Examples of **correct** code for this rule, when configured with `{ "closingSlash": "always" }`:
 
 ```jsx
 <Hello/ >
@@ -66,14 +66,14 @@ This check can be set to `"always"`, `"never"` or `"allow"` (to disable it).
 
 If it is `"always"`, the check warns whenever a space is missing before the closing bracket. If `"never"` then it warns if a space is present before the closing bracket. The default value of this check is `"always"`.
 
-The following patterns are considered warnings when configured `"always"`:
+Examples of **incorrect** code for this rule, when configured with `{ "beforeSelfClosing": "always" }`:
 
 ```jsx
 <Hello/>
 <Hello firstname="John"/>
 ```
 
-The following patterns are **not** considered warnings when configured `"always"`:
+Examples of **correct** code for this rule, when configured with `{ "beforeSelfClosing": "always" }`:
 
 ```jsx
 <Hello />
@@ -84,14 +84,14 @@ The following patterns are **not** considered warnings when configured `"always"
 />
 ```
 
-The following patterns are considered warnings when configured `"never"`:
+Examples of **incorrect** code for this rule, when configured with `{ "beforeSelfClosing": "never" }`:
 
 ```jsx
 <Hello />
 <Hello firstName="John" />
 ```
 
-The following patterns are **not** considered warnings when configured `"never"`:
+Examples of **correct** code for this rule, when configured with `{ "beforeSelfClosing": "never" }`:
 
 ```jsx
 <Hello/>
@@ -108,7 +108,7 @@ This check can be set to `"always"`, `"never"`, `"allow-multiline"` or `"allow"`
 
 If it is `"always"`, the check warns whenever a space is missing after the opening bracket of either a JSX opening element or closing element. If `"never"` then it warns if a space is present after the opening bracket of either a JSX opening element or closing element. If `"allow-multiline"` then it behaves like `"never"`, but allows if the separator includes a newline character. The default value of this check is `"never"`.
 
-The following patterns are considered warnings when configured `"always"`:
+Examples of **incorrect** code for this rule, when configured with `{ "afterOpening": "always" }`:
 
 ```jsx
 <Hello></Hello>
@@ -119,7 +119,7 @@ The following patterns are considered warnings when configured `"always"`:
 />
 ```
 
-The following patterns are **not** considered warnings when configured `"always"`:
+Examples of **correct** code for this rule, when configured with `{ "afterOpening": "always" }`:
 
 ```jsx
 < Hello></ Hello>
@@ -131,7 +131,7 @@ The following patterns are **not** considered warnings when configured `"always"
 />
 ```
 
-The following patterns are considered warnings when configured `"never"`:
+Examples of **incorrect** code for this rule, when configured with `{ "afterOpening": "never" }`:
 
 ```jsx
 < Hello></ Hello>
@@ -143,7 +143,7 @@ The following patterns are considered warnings when configured `"never"`:
 />
 ```
 
-The following patterns are **not** considered warnings when configured `"never"`:
+Examples of **correct** code for this rule, when configured with `{ "afterOpening": "never" }`:
 
 ```jsx
 <Hello></Hello>
@@ -154,7 +154,7 @@ The following patterns are **not** considered warnings when configured `"never"`
 />
 ```
 
-The following patterns are considered warnings when configured `"allow-multiline"`:
+Examples of **incorrect** code for this rule, when configured with `{ "afterOpening": "allow-multiline" }`:
 
 ```jsx
 < Hello></ Hello>
@@ -165,7 +165,7 @@ The following patterns are considered warnings when configured `"allow-multiline
 />
 ```
 
-The following patterns are **not** considered warnings when configured `"allow-multiline"`:
+Examples of **correct** code for this rule, when configured with `{ "afterOpening": "allow-multiline" }`:
 
 ```jsx
 <Hello></Hello>
@@ -183,7 +183,7 @@ This check can be set to `"always"`, `"never"`, or `"allow"` (to disable it).
 
 If it is `"always"` the check warns whenever whitespace is missing before the closing bracket of a JSX opening element or whenever a space is missing before the closing bracket closing element. If `"never"`, then it warns if a space is present before the closing bracket of either a JSX opening element or closing element. This rule will never warn for self closing JSX elements. The default value of this check is `"allow"`.
 
-The following patterns are considered warnings when configured `"always"`:
+Examples of **incorrect** code for this rule, when configured with `{ "beforeClosing": "always" }`:
 
 ```jsx
 <Hello></Hello>
@@ -191,7 +191,7 @@ The following patterns are considered warnings when configured `"always"`:
 <Hello ></Hello>
 ```
 
-The following patterns are **not** considered warnings when configured `"always"`:
+Examples of **correct** code for this rule, when configured with `{ "beforeClosing": "always" }`:
 
 ```jsx
 <Hello ></Hello >
@@ -201,7 +201,7 @@ The following patterns are **not** considered warnings when configured `"always"
 </Hello >
 ```
 
-The following patterns are considered warnings when configured `"never"`:
+Examples of **incorrect** code for this rule, when configured with `{ "beforeClosing": "never" }`:
 
 ```jsx
 <Hello ></Hello>
@@ -209,7 +209,7 @@ The following patterns are considered warnings when configured `"never"`:
 <Hello ></Hello >
 ```
 
-The following patterns are **not** considered warnings when configured `"never"`:
+Examples of **correct** code for this rule, when configured with `{ "beforeClosing": "never" }`:
 
 ```jsx
 <Hello></Hello>

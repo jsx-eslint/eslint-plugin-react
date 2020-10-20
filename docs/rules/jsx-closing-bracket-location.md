@@ -8,7 +8,7 @@ Enforce the closing bracket location for JSX multiline elements.
 
 This rule checks all JSX multiline elements and verifies the location of the closing bracket. By default this one must be aligned with the opening tag.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <Hello
@@ -21,7 +21,7 @@ The following patterns are considered warnings:
   />;
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <Hello firstName="John" lastName="Smith" />;
@@ -65,7 +65,7 @@ Defaults to `tag-aligned`.
 
 For backward compatibility, you may pass an object `{ "location": <location> }` that is equivalent to the first string shortcut form.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 // 'jsx-closing-bracket-location': 1
@@ -138,7 +138,7 @@ var x = function() {
 </Say>;
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 // 'jsx-closing-bracket-location': 1

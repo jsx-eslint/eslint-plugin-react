@@ -45,7 +45,7 @@ If passed in the option to fix, this is how a style violation will get fixed
 
 For examples:
 
-When `{ props: "always", children: "always" }` is set, the following patterns will be given warnings.
+Examples of **incorrect** code for this rule, when configured with `{ props: "always", children: "always" }`:
 
 ```jsx
 <App>Hello world</App>;
@@ -59,7 +59,7 @@ They can be fixed to:
 <App prop={"Hello world"}>{'Hello world'}</App>;
 ```
 
-When `{ props: "never", children: "never" }` is set, the following patterns will be given warnings.
+Examples of **incorrect** code for this rule, when configured with `{ props: "never", children: "never" }`:
 
 ```jsx
 <App>{'Hello world'}</App>;
@@ -81,7 +81,7 @@ In this syntax, only a string is provided and the default will be set to that op
 
 For examples:
 
-When `'always'` is set, the following patterns will be given warnings.
+Examples of **incorrect** code for this rule, when configured with `"always"`:
 
 ```jsx
 <App>Hello world</App>;
@@ -94,7 +94,7 @@ They can be fixed to:
 <App prop={"Hello world"} attr={"foo"}>{"Hello world"}</App>;
 ```
 
-When `'never'` is set, the following pattern will be given warnings.
+Examples of **incorrect** code for this rule, when configured with `"never"`:
 
 ```jsx
 <App prop={'foo'} attr={"bar"}>{'Hello world'}</App>;
@@ -139,7 +139,7 @@ will warned and fixed to:
 
 * If the rule is set to get rid of unnecessary curly braces(JSX expression) and there are characters that need to be escaped in its JSX form, such as quote characters, [forbidden JSX text characters](https://facebook.github.io/jsx/), escaped characters and anything that looks like HTML entity names, the code will not be warned because the fix may make the code less readable.
 
-The following patterns will **not** be given a warning even if `'never'` is passed.
+Examples of **correct** code for this rule, even when configured with `"never"`:
 
 ```jsx
 <Color text={"\u00a0"} />

@@ -5,7 +5,7 @@ other when viewed in an unstyled manner, which usually isn't desirable.
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <div><a></a><a></a></div>
@@ -14,7 +14,7 @@ The following patterns are considered warnings:
 React.createElement("div", undefined, [React.createElement("a"), React.createElement("span")]);
 ```
 
-The following patterns are not considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <div><div></div><div></div></div>

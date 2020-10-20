@@ -8,7 +8,7 @@ Limiting the maximum of props on a single line can improve readability.
 
 This rule checks all JSX elements and verifies that the number of props per line do not exceed the maximum allowed. Props are considered to be in a new line if there is a line break between the start of the prop and the end of the previous prop. A spread attribute counts as one prop. This rule is off by default and when on the default maximum of props on one line is `1`.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <Hello lastName="Smith" firstName="John" />;
@@ -18,7 +18,7 @@ The following patterns are considered warnings:
 }} baz />;
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <Hello
@@ -45,14 +45,14 @@ The following patterns are **not** considered warnings:
 
 Maximum number of props allowed on a single line. Default to `1`.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 // [1, { "maximum": 2 }]
 <Hello firstName="John" lastName="Smith" tel={5555555} />;
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 // [1, { "maximum": 2 }]
@@ -68,13 +68,13 @@ Possible values:
 - `always` (default) - Always check for max props per line.
 - `multiline` - Only check for max props per line when jsx tag spans multiple lines.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 ```jsx
 // [1, { "when": "always" }]
 <Hello firstName="John" lastName="Smith" />
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 ```jsx
 // [1, { "when": "multiline" }]
 <Hello firstName="John" lastName="Smith" />

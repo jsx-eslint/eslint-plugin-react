@@ -25,7 +25,7 @@ There are also two properties that allow specifying how the rule should work wit
 
 ### never
 
-When `{"when": "never"}` is set, the following patterns are considered warnings:
+Examples of **incorrect** code for this rule, when configured with `{ "when": "never" }`:
 
 ```jsx
 <Hello name={ firstname } />;
@@ -33,7 +33,7 @@ When `{"when": "never"}` is set, the following patterns are considered warnings:
 <Hello name={firstname } />;
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <Hello name={firstname} />;
@@ -48,7 +48,7 @@ The following patterns are **not** warnings:
 }</Hello>;
 ```
 
-When `{"when": "never", "children": true}` is set, the following patterns are considered warnings:
+Examples of **incorrect** code for this rule, when configured with `{ "when": "never", "children": true }`:
 
 ```jsx
 <Hello name={ firstname } />;
@@ -57,7 +57,7 @@ When `{"when": "never", "children": true}` is set, the following patterns are co
 <Hello>{ firstname }</Hello>;
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <Hello name={firstname} />;
@@ -73,7 +73,7 @@ The following patterns are **not** warnings:
 
 ### always
 
-When `{"when": "always"}` is set, the following patterns are considered warnings:
+Examples of **incorrect** code for this rule, when configured with `{ "when": "always" }`:
 
 ```jsx
 <Hello name={firstname} />;
@@ -81,7 +81,7 @@ When `{"when": "always"}` is set, the following patterns are considered warnings
 <Hello name={firstname } />;
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <Hello name={ firstname } />;
@@ -96,7 +96,7 @@ The following patterns are **not** warnings:
 }</Hello>;
 ```
 
-When `{"when": "always", "children": true}` is set, the following patterns are considered warnings:
+Examples of **incorrect** code for this rule, when configured with `{ "when": "always", "children": true }`:
 
 ```jsx
 <Hello name={firstname} />;
@@ -105,7 +105,7 @@ When `{"when": "always", "children": true}` is set, the following patterns are c
 <Hello>{firstname}</Hello>;
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <Hello name={ firstname } />;
@@ -127,7 +127,7 @@ By default, braces spanning multiple lines are allowed with either setting. If y
 "react/jsx-curly-spacing": [2, {"when": "never", "allowMultiline": false}]
 ```
 
-When `"never"` is used and `allowMultiline` is `false`, the following patterns are considered warnings:
+Examples of **incorrect** code for this rule, when configured with `"never"` and `"allowMultiline": false`:
 
 ```jsx
 <Hello name={ firstname } />;
@@ -138,7 +138,7 @@ When `"never"` is used and `allowMultiline` is `false`, the following patterns a
 } />;
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <Hello name={firstname} />;
@@ -150,7 +150,7 @@ The following patterns are **not** warnings:
 }</Hello>;
 ```
 
-When `"always"` is used and `allowMultiline` is `false`, the following patterns are considered warnings:
+Examples of **incorrect** code for this rule, when configured with `"always"` and `"allowMultiline": false`:
 
 ```jsx
 <Hello name={firstname} />;
@@ -161,7 +161,7 @@ When `"always"` is used and `allowMultiline` is `false`, the following patterns 
 } />;
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <Hello name={ firstname } />;
@@ -173,7 +173,7 @@ The following patterns are **not** warnings:
 }</Hello>;
 ```
 
-When `{"when": "never", "attributes": {"allowMultiline": false}, "children": true}` is set, the following patterns are considered warnings:
+Examples of **incorrect** code for this rule, when configured with `{ "when": "never", "attributes": { "allowMultiline": false }, "children": true }`:
 
 ```jsx
 <Hello name={ firstname } />;
@@ -183,7 +183,7 @@ When `{"when": "never", "attributes": {"allowMultiline": false}, "children": tru
 <Hello>{ firstname }</Hello>;
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <Hello name={firstname} />;
@@ -207,13 +207,13 @@ You can specify an additional `spacing` property that is an object with the foll
 
 All spacing options accept either the string `"always"` or the string `"never"`. Note that the default value for all "spacing" options matches the first "always"/"never" option provided.
 
-When `"always"` is used but `objectLiterals` is `"never"`, the following pattern is **not** considered a warning:
+Examples of **correct** code for this rule, when configured with `"always"` and `{ "objectLiterals": "never" }`:
 
 ```jsx
 <App blah={ 3 } foo={{ bar: true, baz: true }} />;
 ```
 
-When `"never"` is used and `objectLiterals` is `"always"`, the following pattern is **not** considered a warning:
+Examples of **correct** code for this rule, when configured with `"never"` and `{ "objectLiterals": "always" }`:
 
 ```jsx
 <App blah={3} foo={ {bar: true, baz: true} } />;

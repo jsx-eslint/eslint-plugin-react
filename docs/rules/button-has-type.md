@@ -5,7 +5,7 @@ This rules enforces an explicit `type` attribute for all the `button` elements a
 
 ## Rule Details
 
-The following patterns are considered errors:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Hello = <button>Hello</button>
@@ -16,7 +16,7 @@ var Hello = React.createElement('button', {}, 'Hello')
 var Hello = React.createElement('button', {type: 'foo'}, 'Hello')
 ```
 
-The following patterns are **not** considered errors:
+Examples of **correct** code for this rule:
 
 ```jsx
 var Hello = <span>Hello</span>
@@ -48,7 +48,7 @@ var Hello = React.createElement('button', {type: condition ? 'button' : 'submit'
 
 You can forbid particular type attribute values by passing `false` as corresponding option (by default all of them are `true`).
 
-The following patterns are considered errors when using `"react/button-has-type": ["error", {reset: false}]`:
+Examples of **incorrect** code for this rule, when configured with `{ "reset": false }`:
 
 ```jsx
 var Hello = <button type="reset">Hello</button>

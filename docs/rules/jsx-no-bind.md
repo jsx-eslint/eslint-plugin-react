@@ -4,7 +4,7 @@ A `bind` call or [arrow function](https://developer.mozilla.org/en-US/docs/Web/J
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <Foo onClick={this._handleClick.bind(this)}></Foo>
@@ -13,7 +13,7 @@ The following patterns are considered warnings:
 <Foo onClick={() => console.log('Hello!')}></Foo>
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 ```jsx
 <Foo onClick={this._handleClick}></Foo>
 ```
@@ -32,7 +32,7 @@ The following patterns are **not** considered warnings:
 
 ### `ignoreDOMComponents`
 
-When `true` the following are **not** considered warnings:
+Examples of **correct** code for this rule, when `ignoreDOMComponents` is `true`:
 
 ```jsx
 <div onClick={this._handleClick.bind(this) />
@@ -42,7 +42,7 @@ When `true` the following are **not** considered warnings:
 
 ### `ignoreRefs`
 
-When `true` the following are **not** considered warnings:
+Examples of **correct** code for this rule, when `ignoreRefs` is `true`:
 
 ```jsx
 <Foo ref={c => this._div = c} />
@@ -51,7 +51,7 @@ When `true` the following are **not** considered warnings:
 
 ### `allowArrowFunctions`
 
-When `true` the following is **not** considered a warning:
+Examples of **correct** code for this rule, when `allowArrowFunctions` is `true`:
 
 ```jsx
 <Foo onClick={() => alert("1337")} />
@@ -59,7 +59,7 @@ When `true` the following is **not** considered a warning:
 
 ### `allowFunctions`
 
-When `true` the following is not considered a warning:
+Examples of **correct** code for this rule, when `allowFunctions` is `true`:
 
 ```jsx
 <Foo onClick={function () { alert("1337") }} />
@@ -67,7 +67,7 @@ When `true` the following is not considered a warning:
 
 ### `allowBind`
 
-When `true` the following is **not** considered a warning:
+Examples of **correct** code for this rule, when `allowBind` is `true`:
 
 ```jsx
 <Foo onClick={this._handleClick.bind(this)} />

@@ -6,7 +6,7 @@ React considers the pattern as a dangerous attack surface, see [details](https:/
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <a href="javascript:"></a>
@@ -14,7 +14,7 @@ The following patterns are considered warnings:
 <a href="j\n\n\na\rv\tascript:"></a>
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <Foo href="javascript:"></Foo>
@@ -48,7 +48,7 @@ Component name.
 ### props
 List of properties that should be validated.
 
-The following patterns are considered warnings with the options listed above:
+Examples of **incorrect** code for this rule, when configured with the above options:
 
 ```jsx
 <Link to="javascript:void(0)"></Link>

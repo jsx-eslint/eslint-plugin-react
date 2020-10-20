@@ -9,7 +9,7 @@ The only place that's acceptable to assign this.state is in a ES6 `class` compon
 
 This rule is aimed to forbid the use of mutating `this.state` directly.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Hello = createReactClass({
@@ -34,7 +34,7 @@ class Hello extends React.Component {
 ```
 
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 var Hello = createReactClass({

@@ -4,7 +4,7 @@ Declaring only one component per file improves readability and reusability of co
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Hello = createReactClass({
@@ -20,7 +20,7 @@ var HelloJohn = createReactClass({
 });
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 var Hello = require('./components/Hello');
@@ -44,7 +44,7 @@ var HelloJohn = createReactClass({
 
 When `true` the rule will ignore stateless components and will allow you to have multiple stateless components, or one stateful component and some stateless components in the same file.
 
-The following patterns are considered okay and do **not** cause warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 function Hello(props) {

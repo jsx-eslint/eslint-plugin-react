@@ -8,7 +8,7 @@ Enforce the closing tag location for multiline JSX elements.
 
 This rule checks all JSX multiline elements with children (non-self-closing) and verifies the location of the closing tag. The expectation is that the closing tag is aligned with the opening tag on its own line.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <Hello>
@@ -21,7 +21,7 @@ The following patterns are considered warnings:
   marklar</Hello>
 ```
 
-The following are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <Hello>

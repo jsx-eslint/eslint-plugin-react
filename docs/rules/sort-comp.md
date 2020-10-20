@@ -13,7 +13,7 @@ The default configuration ensures that the following order must be followed:
   3. custom methods
   4. `render` method
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Hello = createReactClass({
@@ -24,7 +24,7 @@ var Hello = createReactClass({
 });
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 var Hello = createReactClass({
@@ -117,7 +117,7 @@ For example, if you want to place your event handlers (`onClick`, `onSubmit`, et
 }]
 ```
 
-With the above configuration, the following patterns are considered warnings:
+Examples of **incorrect** code for this rule, with the above configuration:
 
 ```jsx
 var Hello = createReactClass({
@@ -128,7 +128,7 @@ var Hello = createReactClass({
 });
 ```
 
-With the above configuration, the following patterns are **not** considered warnings:
+Examples of **correct** code for this rule, with the above configuration:
 
 ```jsx
 var Hello = createReactClass({
@@ -158,7 +158,7 @@ If you want to split your `render` method into smaller ones and keep them just b
 }]
 ```
 
-With the above configuration, the following patterns are considered warnings:
+Examples of **incorrect** code for this rule, with the above configuration:
 
 ```jsx
 var Hello = createReactClass({
@@ -170,7 +170,7 @@ var Hello = createReactClass({
 });
 ```
 
-With the above configuration, the following patterns are **not** considered warnings:
+Examples of **correct** code for this rule, with the above configuration:
 
 ```jsx
 var Hello = createReactClass({
@@ -196,7 +196,7 @@ If you want to flow annotations to be at the top:
 }]
 ```
 
-With the above configuration, the following patterns are considered warnings:
+Examples of **incorrect** code for this rule, with the above configuration:
 
 ```jsx
 class Hello extends React.Component<any, Props, void> {
@@ -209,7 +209,7 @@ class Hello extends React.Component<any, Props, void> {
 }
 ```
 
-With the above configuration, the following patterns are **not** considered warnings:
+Examples of **correct** code for this rule, with the above configuration:
 
 ```jsx
 type Props = {};

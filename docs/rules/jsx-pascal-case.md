@@ -6,7 +6,7 @@ Note that since React's JSX uses the upper vs. lower case convention to distingu
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <Test_component />
@@ -16,7 +16,7 @@ The following patterns are considered warnings:
 <TEST_COMPONENT />
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <div />
@@ -50,7 +50,7 @@ The following patterns are **not** considered warnings:
 
 ### `allowAllCaps`
 
-The following patterns are **not** considered warnings when `allowAllCaps` is `true`:
+Examples of **correct** code for this rule, when `allowAllCaps` is `true`:
 
 ```jsx
 <ALLOWED />

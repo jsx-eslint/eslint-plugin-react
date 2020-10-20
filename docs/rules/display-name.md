@@ -4,7 +4,7 @@ DisplayName allows you to name your component. This name is used by React in deb
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Hello = createReactClass({
@@ -14,7 +14,7 @@ var Hello = createReactClass({
 });
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 var Hello = createReactClass({
@@ -37,7 +37,7 @@ var Hello = createReactClass({
 
 When `true` the rule will ignore the name set by the transpiler and require a `displayName` property in this case.
 
-The following patterns are considered okay and do **not** cause warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 var Hello = createReactClass({
@@ -66,7 +66,7 @@ export default function Hello({ name }) {
 Hello.displayName = 'Hello';
 ```
 
-The following patterns will cause warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Hello = createReactClass({

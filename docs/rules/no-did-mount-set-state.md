@@ -6,7 +6,7 @@ Updating the state after a component mount will trigger a second `render()` call
 
 This rule is aimed to forbid the use of `this.setState` in `componentDidMount` outside of functions, such as callbacks.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Hello = createReactClass({
@@ -21,7 +21,7 @@ var Hello = createReactClass({
 });
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 var Hello = createReactClass({
@@ -61,7 +61,7 @@ var Hello = createReactClass({
 
 By default this rule forbids any call to `this.setState` in `componentDidMount` outside of functions. The `disallow-in-func` mode makes this rule more strict by disallowing calls to `this.setState` even within functions.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Hello = createReactClass({

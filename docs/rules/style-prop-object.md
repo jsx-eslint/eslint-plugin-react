@@ -5,7 +5,7 @@ an object.
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <div style="color: 'red'" />
@@ -30,7 +30,7 @@ React.createElement("div", { style: styles });
 ```
 
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <div style={{ color: "red" }} />
@@ -68,13 +68,13 @@ A list of elements that are allowed to have a non-object value in their style at
   "allow": ["MyComponent"]
 }
 ```
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 ```js
 <Hello style="a string">
 React.createElement(Hello, { style: "some styling" });
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 ```js
 <MyComponent style="a string">
 React.createElement(MyComponent, { style: "some styling" });

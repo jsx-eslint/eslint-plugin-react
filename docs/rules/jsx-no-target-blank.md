@@ -28,14 +28,14 @@ This rule aims to prevent user generated links from creating security vulnerabil
 
 `{"enforceDynamicLinks": "always"}` enforces the rule if the href is a dynamic link (default)
 
-When {"enforceDynamicLinks": "always"} is set, the following patterns are considered errors:
+Examples of **incorrect** code for this rule, when configured with `{ "enforceDynamicLinks": "always" }`:
 
 ```jsx
 var Hello = <a target='_blank' href="http://example.com/"></a>
 var Hello = <a target='_blank' href={dynamicLink}></a>
 ```
 
-The following patterns are **not** considered errors:
+Examples of **correct** code for this rule:
 
 ```jsx
 var Hello = <p target="_blank"></p>
@@ -50,7 +50,7 @@ var Hello = <a></a>
 
 `{"enforceDynamicLinks": "never"}` does not enforce the rule if the href is a dynamic link
 
-When {"enforceDynamicLinks": "never"} is set, the following patterns are **not** considered errors:
+Examples of **correct** code for this rule, when configured with `{ "enforceDynamicLinks": "never" }`:
 
 ```jsx
 var Hello = <a target='_blank' href={dynamicLink}></a>
@@ -60,14 +60,14 @@ var Hello = <a target='_blank' href={dynamicLink}></a>
 
 This rule supports the ability to use custom components for links, such as `<Link />` which is popular in libraries like `react-router`, `next.js` and `gatsby`. To enable this, define your custom link components in the global [shared settings](https://github.com/yannickcr/eslint-plugin-react/blob/master/README.md#configuration) under the `linkComponents` configuration area. Once configured, this rule will check those components as if they were `<a />` elements.
 
-The following patterns are considered errors:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Hello = <Link target="_blank" to="http://example.com/"></Link>
 var Hello = <Link target="_blank" to={dynamicLink}></Link>
 ```
 
-The following patterns are **not** considered errors:
+Examples of **correct** code for this rule:
 
 ```jsx
 var Hello = <Link target="_blank" rel="noopener noreferrer" to="http://example.com"></Link>

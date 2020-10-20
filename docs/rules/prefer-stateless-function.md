@@ -15,7 +15,7 @@ This rule will check your class based React components for
 
 If none of these elements are found, the rule will warn you to write this component as a pure function.
 
-The following pattern is considered a warning:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Hello = createReactClass({
@@ -25,7 +25,7 @@ var Hello = createReactClass({
 });
 ```
 
-The following pattern is **not** considered a warning:
+Examples of **correct** code for this rule:
 
 ```jsx
 const Foo = function(props, context) {
@@ -37,7 +37,7 @@ const Foo = function(props, context) {
 };
 ```
 
-The following pattern is **not** considered a warning in React <15.0.0:
+Examples of **correct** code for this rule, in React <15.0.0:
 
 ```jsx
 class Foo extends React.Component {
@@ -66,7 +66,7 @@ class Foo extends React.Component {
 
 When `true` the rule will ignore Components extending from `React.PureComponent` that use `this.props` or `this.context`.
 
-The following patterns are considered okay and does **not** cause warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 class Foo extends React.PureComponent {

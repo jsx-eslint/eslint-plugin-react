@@ -7,7 +7,7 @@ Rule can be set to either of `always` or `never`;
 
 ## Rule Details
 
-By default rule is set to `always` enforce destructuring assignment. The following patterns are considered warnings:
+By default rule is set to `always` enforce destructuring assignment. Examples of **incorrect** code for this rule:
 
 ```js
 const MyComponent = (props) => {
@@ -47,7 +47,7 @@ const Foo = class extends React.PureComponent {
 };
 ```
 
-If rule is set to `never`, the following patterns are considered warning:
+Examples of **incorrect** code for this rule, when configured with `"never"`:
 
 ```js
 const MyComponent = ({id}) => {
@@ -97,9 +97,7 @@ const Foo = class extends React.PureComponent {
 
 ### `ignoreClassFields`
 
-When `true` the rule will ignore class field declarations.
-
-The following patterns are then considered okay and do not cause warnings:
+When configured with `true`, the rule will ignore class field declarations. Examples of **correct** code for this rule:
 
 ```jsx
 class Foo extends React.PureComponent {

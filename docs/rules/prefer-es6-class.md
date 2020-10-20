@@ -14,7 +14,7 @@ React offers you two ways to create traditional components: using the ES5 `creat
 
 Will enforce ES6 classes for React Components. This is the default mode.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 var Hello = createReactClass({
@@ -24,7 +24,7 @@ var Hello = createReactClass({
 });
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 class Hello extends React.Component {
@@ -38,7 +38,7 @@ class Hello extends React.Component {
 
 Will enforce ES5 classes for React Components.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 class Hello extends React.Component {
@@ -48,7 +48,7 @@ class Hello extends React.Component {
 }
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 var Hello = createReactClass({

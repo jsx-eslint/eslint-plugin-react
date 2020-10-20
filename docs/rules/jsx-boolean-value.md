@@ -10,25 +10,25 @@ This rule takes two arguments. If the first argument is `"always"` then it warns
 
 The second argument is optional: if provided, it must be an object with a `"never"` property (if the first argument is `"always"`), or an `"always"` property (if the first argument is `"never"`). This property’s value must be an array of strings representing prop names.
 
-The following patterns are considered warnings when configured `"never"`, or with `"always", { "never": ["personal"] }`:
+Examples of **incorrect** code for this rule, when configured with `"never"`, or with `"always", { "never": ["personal"] }`:
 
 ```jsx
 var Hello = <Hello personal={true} />;
 ```
 
-The following patterns are **not** considered warnings when configured `"never"`, or with `"always", { "never": ["personal"] }`:
+Examples of **correct** code for this rule, when configured with `"never"`, or with `"always", { "never": ["personal"] }`:
 
 ```jsx
 var Hello = <Hello personal />;
 ```
 
-The following patterns are considered warnings when configured `"always"`, or with `"never", { "always": ["personal"] }`:
+Examples of **incorrect** code for this rule, when configured with `"always"`, or with `"never", { "always": ["personal"] }`:
 
 ```jsx
 var Hello = <Hello personal />;
 ```
 
-The following patterns are **not** considered warnings when configured `"always"`, or with `"never", { "always": ["personal"] }`:
+Examples of **correct** code for this rule, when configured with `"always"`, or with `"never", { "always": ["personal"] }`:
 
 ```jsx
 var Hello = <Hello personal={true} />;

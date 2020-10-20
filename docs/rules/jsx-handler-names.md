@@ -4,7 +4,7 @@ Ensures that any component or prop methods used to handle events are correctly p
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <MyComponent handleChange={this.handleChange} />
@@ -14,7 +14,7 @@ The following patterns are considered warnings:
 <MyComponent onChange={this.componentChanged} />
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <MyComponent onChange={this.handleChange} />

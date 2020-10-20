@@ -6,7 +6,7 @@ Enforces that there is exactly one space between all attributes and after tag na
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <App  spacy />
@@ -19,11 +19,11 @@ The following patterns are considered warnings:
 ```jsx
 <App
   prop1='abc'
-  
+
   prop2='def' />
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <App cozy />

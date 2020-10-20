@@ -11,16 +11,14 @@ function increment() {
 }
 ```
 
-If two `setState` operations are grouped together in a batch, they
-both evaluate the old state. Given that `state.value` is 1:
+If two `setState` operations are grouped together in a batch, they both evaluate the old state. Given that `state.value` is 1:
 
 ```javascript
 this.setState({value: this.state.value + 1}) // 2
 this.setState({value: this.state.value + 1}) // 2, not 3
 ```
 
-This can be avoided with using callbacks which takes the previous state
-as first argument:
+This can be avoided with using callbacks which takes the previous state as first argument:
 
 ```javascript
 function increment() {
@@ -28,10 +26,7 @@ function increment() {
 }
 ```
 
-Then react will call the argument with the correct and updated  state,
-even when things happen in batches. And the example above will be
-something like:
-
+Then react will call the argument with the correct and updated state, even when things happen in batches. And the example above will be something like:
 
 ```javascript
 setState({value: 1 + 1})

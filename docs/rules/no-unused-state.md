@@ -4,7 +4,7 @@ Warns you if you have defined a property on the state, but it is not being used 
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 class MyComponent extends React.Component {
@@ -24,7 +24,7 @@ var UnusedGetInitialStateTest = createReactClass({
 })
 ```
 
-The following patterns are not considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 class MyComponent extends React.Component {

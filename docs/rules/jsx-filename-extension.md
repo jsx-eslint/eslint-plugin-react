@@ -2,7 +2,7 @@
 
 ## Rule Details
 
-The following pattern is considered a warning:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 // filename: MyComponent.js
@@ -11,7 +11,7 @@ function MyComponent() {
 }
 ```
 
-The following pattern is **not** considered a warning:
+Examples of **correct** code for this rule:
 
 ```jsx
 // filename: MyComponent.jsx

@@ -35,7 +35,7 @@ or an
 
 ### consistent (default)
 
-When `consistent` or `{ multiline: "consistent", singleline: "consistent" }` is set, the following patterns are considered warnings:
+Examples of **incorrect** code for this rule, when configured with `consistent` or `{ multiline: "consistent", singleline: "consistent" }`:
 
 ```jsx
 <div>
@@ -55,7 +55,7 @@ When `consistent` or `{ multiline: "consistent", singleline: "consistent" }` is 
 </div>
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <div>
@@ -71,7 +71,7 @@ The following patterns are **not** warnings:
 
 ### never
 
-When `never` or `{ multiline: "forbid", singleline: "forbid" }` is set, the following patterns are considered warnings:
+Examples of **incorrect** code for this rule, when configured with `never` or `{ multiline: "forbid", singleline: "forbid" }`:
 
 ```jsx
 <div>
@@ -93,7 +93,7 @@ When `never` or `{ multiline: "forbid", singleline: "forbid" }` is set, the foll
 </div>
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <div>
@@ -108,7 +108,7 @@ The following patterns are **not** warnings:
 
 ## require
 
-When `{ multiline: "require", singleline: "require" }` is set, the following patterns are considered warnings:
+Examples of **incorrect** code for this rule, when configured with `{ multiline: "require", singleline: "require" }`:
 
 ```jsx
 <div>
@@ -126,7 +126,7 @@ When `{ multiline: "require", singleline: "require" }` is set, the following pat
 </div>
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <div>

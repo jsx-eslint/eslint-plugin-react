@@ -4,7 +4,7 @@ Using Flow, one can define types for props. This rule enforces that prop types a
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 type Props = {
@@ -25,7 +25,7 @@ const Hello = (props: {|name: string|}) => (
 );
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 type Props = {

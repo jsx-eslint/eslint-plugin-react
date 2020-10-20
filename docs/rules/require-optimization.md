@@ -4,7 +4,7 @@ This rule prevents you from creating React components without declaring a `shoul
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```js
 class YourComponent extends React.Component {
@@ -17,7 +17,7 @@ createReactClass({
 });
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```js
 class YourComponent extends React.Component {
@@ -64,7 +64,7 @@ createReactClass({
 
 Sets the allowed names of decorators. If the variable is present in the chain of decorators, it validates
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule:
 
 ```js
 // ['pureRender']

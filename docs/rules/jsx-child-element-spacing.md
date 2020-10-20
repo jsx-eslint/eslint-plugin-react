@@ -6,7 +6,7 @@ Since React removes extraneous new lines between elements when possible,
 it is possible to end up with inline elements that are not rendered with spaces between them and adjacent text.
 This is often indicative of an error, so this rule attempts to detect
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <div>
@@ -22,7 +22,7 @@ The following patterns are considered warnings:
 </div>
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <div>

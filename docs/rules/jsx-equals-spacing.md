@@ -23,7 +23,7 @@ Depending on your coding conventions, you can choose either option by specifying
 
 #### never
 
-When `"never"` is set, the following patterns are considered warnings:
+Examples of **incorrect** code for this rule, when configured with `"never"`:
 
 ```jsx
 <Hello name = {firstname} />;
@@ -31,7 +31,7 @@ When `"never"` is set, the following patterns are considered warnings:
 <Hello name= {firstname} />;
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule, when configured with `"never"`:
 
 ```jsx
 <Hello name={firstname} />;
@@ -41,7 +41,7 @@ The following patterns are **not** warnings:
 
 #### always
 
-When `"always"` is used, the following patterns are considered warnings:
+Examples of **incorrect** code for this rule, when configured with `"always"`:
 
 ```jsx
 <Hello name={firstname} />;
@@ -49,7 +49,7 @@ When `"always"` is used, the following patterns are considered warnings:
 <Hello name= {firstname} />;
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule, when configured with `"always"`:
 
 ```jsx
 <Hello name = {firstname} />;
@@ -60,4 +60,3 @@ The following patterns are **not** warnings:
 ## When Not To Use It
 
 You can turn this rule off if you are not concerned with the consistency of spacing around equal signs in JSX attributes.
-

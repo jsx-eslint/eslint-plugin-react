@@ -8,7 +8,7 @@ This option validates a specific indentation style for props.
 
 This rule is aimed to enforce consistent indentation style. The default style is `4 spaces`.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 // 2 spaces indentation
@@ -38,7 +38,7 @@ Note that using the `"first"` option allows very inconsistent indentation unless
 ...
 ```
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 // 2 spaces indentation
@@ -61,7 +61,7 @@ The following patterns are considered warnings:
 />
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 

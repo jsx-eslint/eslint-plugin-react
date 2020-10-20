@@ -23,7 +23,7 @@ An array of strings and/or objects. An object in this array may have the followi
 
 A string item in the array is a shorthand for `{ element: string }`.
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 // [1, { "forbid": ["button"] }]
@@ -33,7 +33,7 @@ The following patterns are **not** considered warnings:
 <Button />
 ```
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 // [1, { "forbid": ["button"] }]

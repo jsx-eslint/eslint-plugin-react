@@ -6,7 +6,7 @@ A fragment is redundant if it contains only one child, or if it is the child of 
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 <>{foo}</>
@@ -29,7 +29,7 @@ The following patterns are considered warnings:
 </section>
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 <>

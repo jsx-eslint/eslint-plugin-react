@@ -4,7 +4,7 @@ Several methods are deprecated between React versions. This rule will warn you i
 
 ## Rule Details
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 React.render(<MyComponent />, root);
@@ -34,7 +34,7 @@ componentWillReceiveProps() { }
 componentWillUpdate() { }
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 ReactDOM.render(<MyComponent />, root);

@@ -33,7 +33,7 @@ and the following react lifecycle methods:
 * render
 
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```js
 class MyComponent extends React.Component {
@@ -91,7 +91,7 @@ class MyComponent extends React.Component {
 }
 ```
 
-The following patterns are **not** considered warnings:
+Examples of **correct** code for this rule:
 
 ```js
 class MyComponent extends React.Component {

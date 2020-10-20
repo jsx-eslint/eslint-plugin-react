@@ -8,7 +8,7 @@ This option enforces a specific function type for function components.
 
 This rule is aimed to enforce consistent function types for function components. By default it prefers function declarations for named components and function expressions for unnamed components.
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 // function expression for named component
@@ -42,7 +42,7 @@ This rule takes an options object as a second parameter where the preferred func
 ...
 ```
 
-The following patterns are considered warnings:
+Examples of **incorrect** code for this rule:
 
 ```jsx
 // only function declarations for named components
@@ -93,7 +93,7 @@ function getComponent () {
 
 ```
 
-The following patterns are **not** warnings:
+Examples of **correct** code for this rule:
 
 ```jsx
 
