@@ -160,7 +160,7 @@ As it aptly noticed in
 to document `children` in the prop types.
 
 Generally, you should use `PropTypes.node` or static type `ReactNode` for
-`children`, like this:
+`children`, like this in TypeScript:
 
 ```tsx
 import React, { ReactNode } from "react";
