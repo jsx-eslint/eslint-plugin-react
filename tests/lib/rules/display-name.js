@@ -894,5 +894,32 @@ ruleTester.run('display-name', rule, {
     errors: [{
       message: 'Component definition is missing display name'
     }]
+  }, {
+    code: `
+      export default class extends React.PureComponent {
+        render() {
+          return <Card />;
+        }
+      }
+
+      const Card = (() => {
+        return React.memo(({ }) => (
+          <div />
+        ));
+      })();
+    `,
+    errors: [{
+      message: 'Component definition is missing display name',
+      line: 2,
+      column: 22,
+      endLine: 6,
+      endColumn: 8
+    }, {
+      message: 'Component definition is missing display name',
+      line: 9,
+      column: 16,
+      endLine: 11,
+      endColumn: 11
+    }]
   }]
 });

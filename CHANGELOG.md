@@ -10,6 +10,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-newline`]: add new rule ([#2693][] @jzabala)
 * [`jsx-no-constructed-context-values`]: add new rule which checks when the value passed to a Context Provider will cause needless rerenders ([#2763][] @dylanOshima)
 
+### Fixed
+* [`display-name`]/component detection: avoid a crash on anonymous components ([#2840][] @ljharb)
+
+[#2840]: https://github.com/yannickcr/eslint-plugin-react/issues/2840
 [#2835]: https://github.com/yannickcr/eslint-plugin-react/pull/2835
 [#2763]: https://github.com/yannickcr/eslint-plugin-react/pull/2763
 [#2693]: https://github.com/yannickcr/eslint-plugin-react/pull/2693
