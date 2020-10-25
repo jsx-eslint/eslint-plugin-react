@@ -3143,6 +3143,37 @@ ruleTester.run('prop-types', rule, {
         }
         export default InputField`,
         parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          import React from 'react'
+
+          class Factory {
+            getRenderFunction() {
+              return function renderFunction({ name }) {
+                return <div>Hello {name}</div>
+              }
+            }
+          }
+        `
+      },
+      {
+        code: `
+          import React from 'react'
+
+          type ComponentProps = {
+            name: string
+          }
+
+          class Factory {
+            getComponent() {
+              return function Component({ name }: ComponentProps) {
+                return <div>Hello {name}</div>
+              }
+            }
+          }
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
       }
     ])
   ),

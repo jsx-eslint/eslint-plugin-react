@@ -12,7 +12,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Fixed
 * [`display-name`]/component detection: avoid a crash on anonymous components ([#2840][] @ljharb)
+* [`prop-types`]: function in class that returns a component causes false warning in typescript ([#2843][] @SyMind)
 
+[#2843]: https://github.com/yannickcr/eslint-plugin-react/pull/2843
 [#2840]: https://github.com/yannickcr/eslint-plugin-react/issues/2840
 [#2835]: https://github.com/yannickcr/eslint-plugin-react/pull/2835
 [#2763]: https://github.com/yannickcr/eslint-plugin-react/pull/2763
