@@ -265,7 +265,7 @@ ruleTester.run('destructuring-assignment', rule, {
     errors: [{message: 'Must use destructuring props assignment'}]
   }, {
     code: `
-      function hof() {
+      function HOF() {
         return (props) => <p>{props.a}</p>;
       }
     `,
