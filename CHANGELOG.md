@@ -10,6 +10,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-newline`]: add new rule ([#2693][] @jzabala)
 * [`jsx-no-constructed-context-values`]: add new rule which checks when the value passed to a Context Provider will cause needless rerenders ([#2763][] @dylanOshima)
 * [`jsx-wrap-multilines`]: fix crash with `declaration`s that are on a new line after `=` ([#2875][] @ljharb)
+* [`jsx-indent-props`]: add `ignoreTernaryOperator` option ([#2846][] @SebastianZimmer)
 
 ### Fixed
 * [`display-name`]/component detection: avoid a crash on anonymous components ([#2840][] @ljharb)
@@ -36,6 +37,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#2869]: https://github.com/yannickcr/eslint-plugin-react/issues/2869
 [#2852]: https://github.com/yannickcr/eslint-plugin-react/pull/2852
 [#2851]: https://github.com/yannickcr/eslint-plugin-react/issues/2851
+[#2846]: https://github.com/yannickcr/eslint-plugin-react/pull/2846
 [#2843]: https://github.com/yannickcr/eslint-plugin-react/pull/2843
 [#2840]: https://github.com/yannickcr/eslint-plugin-react/issues/2840
 [#2835]: https://github.com/yannickcr/eslint-plugin-react/pull/2835

@@ -153,6 +153,48 @@ ruleTester.run('jsx-indent-props', rule, {
       '/>'
     ].join('\n'),
     options: ['first']
+  }, {
+    code: [
+      '{this.props.ignoreTernaryOperatorFalse',
+      '  ? <span',
+      '      className="value"',
+      '      some={{aaa}}',
+      '    />',
+      '  : null}'
+    ].join('\n'),
+    output: [
+      '{this.props.ignoreTernaryOperatorFalse',
+      '  ? <span',
+      '    className="value"',
+      '    some={{aaa}}',
+      '  />',
+      '  : null}'
+    ].join('\n'),
+    options: [{
+      indentMode: 2,
+      ignoreTernaryOperator: false
+    }]
+  }, {
+    code: [
+      '{this.props.ignoreTernaryOperatorTrue',
+      '  ? <span',
+      '    className="value"',
+      '    some={{aaa}}',
+      '    />',
+      '  : null}'
+    ].join('\n'),
+    output: [
+      '{this.props.ignoreTernaryOperatorTrue',
+      '  ? <span',
+      '    className="value"',
+      '    some={{aaa}}',
+      '  />',
+      '  : null}'
+    ].join('\n'),
+    options: [{
+      indentMode: 2,
+      ignoreTernaryOperator: true
+    }]
   }],
 
   invalid: [{
