@@ -9,6 +9,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * support new config system ([#3429][] @jjangga0214)
 * [`hook-use-state`]: add `allowDestructuredState` option ([#3449][] @ljharb)
 * add [`sort-default-props`] and deprecate [`jsx-sort-default-props`] ([#1861][] @alexzherdev)
+* add [`no-object-type-as-default-prop`] rule ([#2848][] @cyan33 @fengkx)
 
 ### Changed
 * [Perf] component detection: improve performance by avoiding traversing parents unnecessarily ([#3459][] @golopot)
@@ -16,6 +17,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3459]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3459
 [#3449]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3449
 [#3424]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3429
+[#2848]: https://github.com/jsx-eslint/eslint-plugin-react/pull/2848
 [#1861]: https://github.com/jsx-eslint/eslint-plugin-react/pull/1861
 
 ### Fixed
@@ -4011,6 +4013,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`no-is-mounted`]: docs/rules/no-is-mounted.md
 [`no-multi-comp`]: docs/rules/no-multi-comp.md
 [`no-namespace`]: docs/rules/no-namespace.md
+[`no-object-type-as-default-prop`]: docs/rules/no-object-type-as-default-prop.md
 [`no-redundant-should-component-update`]: docs/rules/no-redundant-should-component-update.md
 [`no-render-return-value`]: docs/rules/no-render-return-value.md
 [`no-set-state`]: docs/rules/no-set-state.md

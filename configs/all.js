@@ -88,6 +88,7 @@ const allRules = {
   'no-unused-class-component-methods': require('../lib/rules/no-unused-class-component-methods'),
   'no-unused-prop-types': require('../lib/rules/no-unused-prop-types'),
   'no-unused-state': require('../lib/rules/no-unused-state'),
+  'no-object-type-as-default-prop': require('../lib/rules/no-object-type-as-default-prop'),
   'no-will-update-set-state': require('../lib/rules/no-will-update-set-state'),
   'prefer-es6-class': require('../lib/rules/prefer-es6-class'),
   'prefer-exact-props': require('../lib/rules/prefer-exact-props'),
