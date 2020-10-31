@@ -65,6 +65,22 @@ ruleTester.run('jsx-no-target-blank', rule, {
     {code: '<a target={"targetValue"} href="/absolute/path"></a>'},
     {code: '<a target={null} href="//example.com"></a>'},
     {
+      code: '<a {...someObject} href="/absolute/path"></a>',
+      options: [{enforceDynamicLinks: 'always', warnOnSpreadAttributes: true}]
+    },
+    {
+      code: '<a {...someObject} rel="noreferrer"></a>',
+      options: [{enforceDynamicLinks: 'always', warnOnSpreadAttributes: true}]
+    },
+    {
+      code: '<a {...someObject} rel="noreferrer" target="_blank"></a>',
+      options: [{enforceDynamicLinks: 'always', warnOnSpreadAttributes: true}]
+    },
+    {
+      code: '<a {...someObject} href="foobar" target="_blank"></a>',
+      options: [{enforceDynamicLinks: 'always', warnOnSpreadAttributes: true}]
+    },
+    {
       code: '<a target="_blank" href={ dynamicLink }></a>',
       options: [{enforceDynamicLinks: 'never'}]
     },
@@ -142,6 +158,26 @@ ruleTester.run('jsx-no-target-blank', rule, {
   }, {
     code: '<a target="_blank" href={ dynamicLink }></a>',
     options: [{enforceDynamicLinks: 'always'}],
+    errors: defaultErrors
+  }, {
+    code: '<a {...someObject}></a>',
+    options: [{enforceDynamicLinks: 'always', warnOnSpreadAttributes: true}],
+    errors: defaultErrors
+  }, {
+    code: '<a {...someObject} target="_blank"></a>',
+    options: [{enforceDynamicLinks: 'always', warnOnSpreadAttributes: true}],
+    errors: defaultErrors
+  }, {
+    code: '<a href="foobar" {...someObject} target="_blank"></a>',
+    options: [{enforceDynamicLinks: 'always', warnOnSpreadAttributes: true}],
+    errors: defaultErrors
+  }, {
+    code: '<a href="foobar" target="_blank" {...someObject}></a>',
+    options: [{enforceDynamicLinks: 'always', warnOnSpreadAttributes: true}],
+    errors: defaultErrors
+  }, {
+    code: '<a href="foobar" target="_blank" rel="noreferrer" {...someObject}></a>',
+    options: [{enforceDynamicLinks: 'always', warnOnSpreadAttributes: true}],
     errors: defaultErrors
   }, {
     code: '<Link target="_blank" href={ dynamicLink }></Link>',
