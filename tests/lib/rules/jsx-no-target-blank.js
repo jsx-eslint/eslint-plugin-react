@@ -89,6 +89,9 @@ ruleTester.run('jsx-no-target-blank', rule, {
     {
       code: '<a href="foobar" target="_blank" rel="noopener"></a>',
       options: [{allowReferrer: true}]
+    },
+    {
+      code: '<a target={3} />'
     }
   ],
   invalid: [{
