@@ -22,6 +22,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`prop-types`]: default argument does not count as props-types declaration ([#2877][] @golopot)
 * [`jsx-props-no-multi-spaces`]: fix a false positive for beside comments ([#2878][] @golopot)
 
+### Docs
+* [`no-unused-prop-types`]: Add new example to rule ([#2852][] @thehereward)
+
 [#2879]: https://github.com/yannickcr/eslint-plugin-react/issues/2879
 [#2878]: https://github.com/yannickcr/eslint-plugin-react/pull/2878
 [#2877]: https://github.com/yannickcr/eslint-plugin-react/pull/2877
@@ -29,6 +32,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#2871]: https://github.com/yannickcr/eslint-plugin-react/issues/2871
 [#2870]: https://github.com/yannickcr/eslint-plugin-react/issues/2870
 [#2869]: https://github.com/yannickcr/eslint-plugin-react/issues/2869
+[#2852]: https://github.com/yannickcr/eslint-plugin-react/pull/2852
 [#2851]: https://github.com/yannickcr/eslint-plugin-react/issues/2851
 [#2843]: https://github.com/yannickcr/eslint-plugin-react/pull/2843
 [#2840]: https://github.com/yannickcr/eslint-plugin-react/issues/2840

@@ -25,13 +25,32 @@ Hello.propTypes = {
 ```jsx
 type Props = {
   firstname: string,
-  middlename: string, // middlename is never used above
+  middlename: string, // middlename is never used by the Hello component
   lastname: string
 }
 
 class Hello extends React.Component<Props> {
   render() {
     return <div>Hello {this.props.firstname} {this.props.lastname}</div>;
+  }
+}
+```
+
+```jsx
+type Props = {
+  firstname: string;
+  lastname: string;  // lastname isn't used by the Hello component
+};
+
+class Hello extends React.Component<Props> {
+  render() {
+    return <div>Hello {this.props.firstname}</div>;
+  }
+}
+
+class Greetings extends React.Component<Props> {
+  render() {
+    return <div>Greetings  {this.props.firstname} {this.props.lastname}</div>;
   }
 }
 ```
