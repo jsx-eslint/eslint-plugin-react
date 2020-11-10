@@ -48,6 +48,7 @@ const allRules = {
   'jsx-props-no-multi-spaces': require('./lib/rules/jsx-props-no-multi-spaces'),
   'jsx-props-no-spreading': require('./lib/rules/jsx-props-no-spreading'),
   'jsx-sort-default-props': require('./lib/rules/jsx-sort-default-props'),
+  'jsx-sort-functional-props': require('./lib/rules/jsx-sort-functional-props'),
   'jsx-sort-props': require('./lib/rules/jsx-sort-props'),
   'jsx-space-before-closing': require('./lib/rules/jsx-space-before-closing'),
   'jsx-tag-spacing': require('./lib/rules/jsx-tag-spacing'),

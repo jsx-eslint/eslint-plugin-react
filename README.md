@@ -187,6 +187,7 @@ Enable the rules that you would like to use.
 * [react/jsx-props-no-multi-spaces](docs/rules/jsx-props-no-multi-spaces.md): Disallow multiple spaces between inline JSX props (fixable)
 * [react/jsx-props-no-spreading](docs/rules/jsx-props-no-spreading.md): Prevent JSX prop spreading
 * [react/jsx-sort-default-props](docs/rules/jsx-sort-default-props.md): Enforce default props alphabetical sorting
+* [react/jsx-sort-functional-props](docs/rules/jsx-sort-functional-props.md): Enforce props of functional components to be sorted alphabetically
 * [react/jsx-sort-props](docs/rules/jsx-sort-props.md): Enforce props alphabetical sorting (fixable)
 * [react/jsx-space-before-closing](docs/rules/jsx-space-before-closing.md): Validate spacing before closing bracket in JSX (fixable)
 * [react/jsx-tag-spacing](docs/rules/jsx-tag-spacing.md): Validate whitespace in and around the JSX opening and closing brackets (fixable)
