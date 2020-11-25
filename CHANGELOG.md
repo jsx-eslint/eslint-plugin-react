@@ -5,6 +5,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Added
+* [`jsx-no-target-blank`]: add fixer ([#2862][] @Nokel81)
+
 ### Fixed
 * [`jsx-no-constructed-context-values`]: avoid a crash with `as X` TS code ([#2894][] @ljharb)
 * [`jsx-no-constructed-context-values`]: avoid a crash with boolean shorthand ([#2895][] @ljharb)
@@ -15,6 +18,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#2895]: https://github.com/yannickcr/eslint-plugin-react/issues/2895
 [#2894]: https://github.com/yannickcr/eslint-plugin-react/issues/2894
 [#2893]: https://github.com/yannickcr/eslint-plugin-react/pull/2893
+[#2862]: https://github.com/yannickcr/eslint-plugin-react/pull/2862
 
 ## [7.22.0] - 2020.12.29
 
