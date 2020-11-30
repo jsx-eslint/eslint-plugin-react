@@ -9,6 +9,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`no-unused-class-component-methods`]: Handle unused class component methods ([#2166][] @jakeleventhal @pawelnvk)
 * add [`no-arrow-function-lifecycle`] ([#1980][] @ngtan)
 * add support for `@typescript-eslint/parser` v5 (@ljharb)
+* [`no-invalid-html-attribute`]: add rule ([#2863][] @Nokel81)
 
 ### Fixed
 * `propTypes`: add `VoidFunctionComponent` to react generic list ([#3092][] @vedadeepta)
@@ -30,6 +31,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#3110]: https://github.com/yannickcr/eslint-plugin-react/pull/3110
 [#3102]: https://github.com/yannickcr/eslint-plugin-react/issue/3102
 [#3092]: https://github.com/yannickcr/eslint-plugin-react/pull/3092
+[#2863]: https://github.com/yannickcr/eslint-plugin-react/pull/2863
 [#2166]: https://github.com/yannickcr/eslint-plugin-react/pull/2166
 [#1980]: https://github.com/yannickcr/eslint-plugin-react/pull/1980
 
@@ -3533,3 +3535,4 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`style-prop-object`]: docs/rules/style-prop-object.md
 [`void-dom-elements-no-children`]: docs/rules/void-dom-elements-no-children.md
 [`wrap-multilines`]: docs/rules/jsx-wrap-multilines.md
+[`no-invalid-html-attribute`]: docs/rules/no-invalid-html-attribute.md

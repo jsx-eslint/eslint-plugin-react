@@ -144,6 +144,7 @@ Enable the rules that you would like to use.
 |  |  | [react/no-did-update-set-state](docs/rules/no-did-update-set-state.md) | Prevent usage of setState in componentDidUpdate |
 | ✔ |  | [react/no-direct-mutation-state](docs/rules/no-direct-mutation-state.md) | Prevent direct mutation of this.state |
 | ✔ |  | [react/no-find-dom-node](docs/rules/no-find-dom-node.md) | Prevent usage of findDOMNode |
+|  | 🔧 | [react/no-invalid-html-attribute](docs/rules/no-invalid-html-attribute.md) | Forbid attribute with an invalid values` |
 | ✔ |  | [react/no-is-mounted](docs/rules/no-is-mounted.md) | Prevent usage of isMounted |
 |  |  | [react/no-multi-comp](docs/rules/no-multi-comp.md) | Prevent multiple component definition per file |
 |  |  | [react/no-namespace](docs/rules/no-namespace.md) | Enforce that namespaces are not used in React elements |

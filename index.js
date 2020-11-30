@@ -54,6 +54,7 @@ const allRules = {
   'jsx-uses-react': require('./lib/rules/jsx-uses-react'),
   'jsx-uses-vars': require('./lib/rules/jsx-uses-vars'),
   'jsx-wrap-multilines': require('./lib/rules/jsx-wrap-multilines'),
+  'no-invalid-html-attribute': require('./lib/rules/no-invalid-html-attribute'),
   'no-access-state-in-setstate': require('./lib/rules/no-access-state-in-setstate'),
   'no-adjacent-inline-elements': require('./lib/rules/no-adjacent-inline-elements'),
   'no-array-index-key': require('./lib/rules/no-array-index-key'),
