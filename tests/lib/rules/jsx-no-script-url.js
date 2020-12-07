@@ -37,7 +37,8 @@ ruleTester.run('jsx-no-script-url', rule, {
     {code: '<a href=""></a>'},
     {code: '<a name="foo"></a>'},
     {code: '<a href={"javascript:"}></a>'},
-    {code: '<Foo href="javascript:"></Foo>'}
+    {code: '<Foo href="javascript:"></Foo>'},
+    {code: '<a href />'}
   ],
   invalid: [{
     code: '<a href="javascript:"></a>',
