@@ -107,6 +107,13 @@ ruleTester.run('jsx-max-depth', rule, {
       '};'
     ].join('\n'),
     options: [{max: 1}]
+  }, {
+    code: [
+      'export function MyComponent() {',
+      '  const A = <>{<div />}</>;',
+      '  return <div>{A}</div>;',
+      '}'
+    ].join('\n')
   }],
 
   invalid: [{
