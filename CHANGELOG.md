@@ -14,9 +14,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`display-name`]/component detection: avoid a crash on anonymous components ([#2840][] @ljharb)
 * [`prop-types`]: function in class that returns a component causes false warning in typescript ([#2843][] @SyMind)
 * [`jsx-no-target-blank`]: avoid a crash with a non-string literal ([#2851][] @ljharb)
-* [`jsx-no-script-url`]: avoid crash with boolean `href` ([#2871][] @ljharb)
+* [`jsx-no-script-url`]: avoid crash with boolean `href` ([#2871][] @ljharb, @AriPerkkio)
+* [`no-typos`]: avoid crash with computed method name ([#2870][] @ljharb, @AriPerkkio)
 
 [#2871]: https://github.com/yannickcr/eslint-plugin-react/issues/2871
+[#2870]: https://github.com/yannickcr/eslint-plugin-react/issues/2870
 [#2851]: https://github.com/yannickcr/eslint-plugin-react/issues/2851
 [#2843]: https://github.com/yannickcr/eslint-plugin-react/pull/2843
 [#2840]: https://github.com/yannickcr/eslint-plugin-react/issues/2840

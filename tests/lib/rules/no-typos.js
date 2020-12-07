@@ -634,6 +634,19 @@ ruleTester.run('no-typos', rule, {
       };
     `,
     parserOptions
+  }, {
+    code: `
+      import React from 'react';
+
+      const A = { B: 'C' };
+
+      export default class MyComponent extends React.Component {
+        [A.B] () {
+          return null
+        }
+      }
+    `,
+    parserOptions
   }],
 
   invalid: [{
