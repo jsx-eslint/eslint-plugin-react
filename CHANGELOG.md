@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Added
+* add [`hook-use-state`] rule to enforce symmetric useState hook variable names ([#2921][] @duncanbeevers)
+
+[#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
+
 ## [7.28.0] - 2021.12.22
 
 ### Added
@@ -3498,6 +3503,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`forbid-foreign-prop-types`]: docs/rules/forbid-foreign-prop-types.md
 [`forbid-prop-types`]: docs/rules/forbid-prop-types.md
 [`function-component-definition`]: docs/rules/function-component-definition.md
+[`hook-use-state`]: docs/rules/hook-use-state.md
 [`jsx-boolean-value`]: docs/rules/jsx-boolean-value.md
 [`jsx-child-element-spacing`]: docs/rules/jsx-child-element-spacing.md
 [`jsx-closing-bracket-location`]: docs/rules/jsx-closing-bracket-location.md
@@ -3551,6 +3557,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`no-did-update-set-state`]: docs/rules/no-did-update-set-state.md
 [`no-direct-mutation-state`]: docs/rules/no-direct-mutation-state.md
 [`no-find-dom-node`]: docs/rules/no-find-dom-node.md
+[`no-invalid-html-attribute`]: docs/rules/no-invalid-html-attribute.md
 [`no-is-mounted`]: docs/rules/no-is-mounted.md
 [`no-multi-comp`]: docs/rules/no-multi-comp.md
 [`no-namespace`]: docs/rules/no-namespace.md
@@ -3586,4 +3593,3 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`style-prop-object`]: docs/rules/style-prop-object.md
 [`void-dom-elements-no-children`]: docs/rules/void-dom-elements-no-children.md
 [`wrap-multilines`]: docs/rules/jsx-wrap-multilines.md
-[`no-invalid-html-attribute`]: docs/rules/no-invalid-html-attribute.md
