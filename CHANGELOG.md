@@ -19,8 +19,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`no-typos`]: avoid crash with computed method name ([#2870][] @ljharb, @AriPerkkio)
 * [`jsx-max-depth`]: avoid crash with childless jsx child ([#2869][] @ljharb, @AriPerkkio)
 * [`no-unknown-property`]: avoid crash with prop named with Object.prototype key ([#2879][] @ljharb, @AriPerkkio)
+* [`prop-types`]: default argument does not count as props-types declaration ([#2877][] @golopot)
 
 [#2879]: https://github.com/yannickcr/eslint-plugin-react/issues/2879
+[#2877]: https://github.com/yannickcr/eslint-plugin-react/pull/2877
 [#2875]: https://github.com/yannickcr/eslint-plugin-react/issues/2875
 [#2871]: https://github.com/yannickcr/eslint-plugin-react/issues/2871
 [#2870]: https://github.com/yannickcr/eslint-plugin-react/issues/2870

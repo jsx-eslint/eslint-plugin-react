@@ -2987,46 +2987,6 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT']
       },
-      {
-        code: `
-          function Foo({ foo = "" }): JSX.Element {
-            return <div>{foo}</div>;
-          }
-        `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
-      },
-      {
-        code: `
-          function Foo({ bar = "" as string }): JSX.Element {
-            return <div>{bar}</div>;
-          }
-        `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
-      },
-      {
-        code: `
-          export default function ({ value = 'World' }) {
-            return <h1>Hello {value}</h1>
-          }
-        `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
-      },
-      {
-        code: `
-          const Foo: JSX.Element = ({ bar = "" }) => {
-            return <div>{bar}</div>;
-          }
-        `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
-      },
-      {
-        code: `
-          const Foo: JSX.Element = function foo ({ bar = "" }) {
-            return <div>{bar}</div>;
-          }
-        `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
-      },
       // Issue: #2795
       {
         code: `
@@ -4364,7 +4324,19 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {message: '\'name.constructor.firstname\' is missing in props validation'}
       ]
-    }, {
+    },
+    {
+      code: `
+      function Hello({ foo = '' }) {
+        return <p>{foo}</p>
+      }
+    `,
+      errors: [
+        {message: '\'foo\' is missing in props validation'}
+      ],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
       code: [
         'function SomeComponent({bar}) {',
         '  function f({foo}) {}',
@@ -6216,6 +6188,50 @@ ruleTester.run('prop-types', rule, {
         errors: [{
           message: "'type' is missing in props validation"
         }]
+      },
+      {
+        code: `
+        const Foo: JSX.Element = ({ bar = "" }) => {
+          return <div>{bar}</div>;
+        }
+      `,
+        errors: [
+          {message: '\'bar\' is missing in props validation'}
+        ],
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+        function Foo({ foo = "" }): JSX.Element {
+          return <div>{foo}</div>;
+        }
+      `,
+        errors: [
+          {message: '\'foo\' is missing in props validation'}
+        ],
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+        const Foo: JSX.Element = function foo ({ bar = "" }) {
+          return <div>{bar}</div>;
+        }
+      `,
+        errors: [
+          {message: '\'bar\' is missing in props validation'}
+        ],
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+        function Foo({ bar = "" as string }): JSX.Element {
+          return <div>{bar}</div>;
+        }
+      `,
+        errors: [
+          {message: '\'bar\' is missing in props validation'}
+        ],
+        parser: parsers['@TYPESCRIPT_ESLINT']
       }
     ])
   )
