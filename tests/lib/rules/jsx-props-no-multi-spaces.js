@@ -110,6 +110,14 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
    `
   }, {
     code: `
+     <App
+       foo="Some button" // comment
+       // comment
+       bar=""
+     />
+   `
+  }, {
+    code: `
      <button
        title="Some button"
        /* this is a multiline comment

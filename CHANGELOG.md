@@ -20,8 +20,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-max-depth`]: avoid crash with childless jsx child ([#2869][] @ljharb, @AriPerkkio)
 * [`no-unknown-property`]: avoid crash with prop named with Object.prototype key ([#2879][] @ljharb, @AriPerkkio)
 * [`prop-types`]: default argument does not count as props-types declaration ([#2877][] @golopot)
+* [`jsx-props-no-multi-spaces`]: fix a false positive for beside comments ([#2878][] @golopot)
 
 [#2879]: https://github.com/yannickcr/eslint-plugin-react/issues/2879
+[#2878]: https://github.com/yannickcr/eslint-plugin-react/pull/2878
 [#2877]: https://github.com/yannickcr/eslint-plugin-react/pull/2877
 [#2875]: https://github.com/yannickcr/eslint-plugin-react/issues/2875
 [#2871]: https://github.com/yannickcr/eslint-plugin-react/issues/2871
