@@ -9,6 +9,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-key`]: added `checkKeyMustBeforeSpread` option for new jsx transform ([#2835][] @morlay)
 * [`jsx-newline`]: add new rule ([#2693][] @jzabala)
 * [`jsx-no-constructed-context-values`]: add new rule which checks when the value passed to a Context Provider will cause needless rerenders ([#2763][] @dylanOshima)
+* [`jsx-wrap-multilines`]: fix crash with `declaration`s that are on a new line after `=` ([#2875][] @ljharb)
 
 ### Fixed
 * [`display-name`]/component detection: avoid a crash on anonymous components ([#2840][] @ljharb)
@@ -18,6 +19,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`no-typos`]: avoid crash with computed method name ([#2870][] @ljharb, @AriPerkkio)
 * [`jsx-max-depth`]: avoid crash with childless jsx child ([#2869][] @ljharb, @AriPerkkio)
 
+[#2871]: https://github.com/yannickcr/eslint-plugin-react/issues/2875
 [#2871]: https://github.com/yannickcr/eslint-plugin-react/issues/2871
 [#2870]: https://github.com/yannickcr/eslint-plugin-react/issues/2870
 [#2869]: https://github.com/yannickcr/eslint-plugin-react/issues/2869

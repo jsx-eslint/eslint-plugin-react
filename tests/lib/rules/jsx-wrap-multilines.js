@@ -1250,5 +1250,25 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       output: ARROW_WITH_LOGICAL_AUTOFIX,
       options: [{logical: 'parens-new-line'}],
       errors: [{message: MISSING_PARENS}]
+    }, {
+      code: [
+        'import React from \'react\';',
+        '',
+        'const A =',
+        '<div>',
+        '    B',
+        '</div>;'
+      ].join('\n'),
+      output: [
+        'import React from \'react\';',
+        '',
+        'const A = (',
+        '<div>',
+        '    B',
+        '</div>',
+        ');'
+      ].join('\n'),
+      options: [{declaration: 'parens-new-line'}],
+      errors: [{message: MISSING_PARENS}]
     }]
 });
