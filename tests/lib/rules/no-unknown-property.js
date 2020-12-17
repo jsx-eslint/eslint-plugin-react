@@ -46,7 +46,8 @@ ruleTester.run('no-unknown-property', rule, {
       options: [{ignore: ['class']}]
     },
     {code: '<script crossOrigin />'},
-    {code: '<audio crossOrigin />'}
+    {code: '<audio crossOrigin />'},
+    {code: '<div hasOwnProperty="should not be allowed tag" />'}
   ],
   invalid: [{
     code: '<div class="bar"></div>;',
