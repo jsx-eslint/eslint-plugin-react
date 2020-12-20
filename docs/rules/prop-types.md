@@ -42,7 +42,7 @@ Hello.propTypes = {
 In TypeScript:
 
 ```tsx
-interface Props = {
+interface Props {
   age: number
 }
 function Hello({ name }: Props) {
