@@ -3213,6 +3213,25 @@ ruleTester.run('no-unused-prop-types', rule, {
         Foo.defaultProps = Object.assign({});
       `
     },
+    {
+      code: `
+        const Hello = ({a}) => (
+          <div>
+            {a.map(({b}) => (
+              <div>{b}</div>
+            ))}
+          </div>
+        );
+        Hello.propTypes = {
+          a: PropTypes.arrayOf(
+            PropTypes.exact({
+              b: PropTypes.string,
+            })
+          ),
+        };
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
     parsers.TS([
       {
         code: `
