@@ -1,0 +1,16 @@
+name: 'Tests: readme'
+
+on: [pull_request, push]
+
+jobs:
+  readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ljharb/actions/node/run@main
+        name: 'npm install && npm run generate-list-of-rules'
+        with:
+          node-version: 'lts/*'
+          command: 'generate-list-of-rules'
+          skip-ls-check: true
