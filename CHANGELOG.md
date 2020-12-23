@@ -21,10 +21,12 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`no-unknown-property`]: avoid crash with prop named with Object.prototype key ([#2879][] @ljharb, @AriPerkkio)
 * [`prop-types`]: default argument does not count as props-types declaration ([#2877][] @golopot)
 * [`jsx-props-no-multi-spaces`]: fix a false positive for beside comments ([#2878][] @golopot)
+* [`jsx-no-undef`]: handle the TS parser combined with an invalid ecmaVersion ([#2882][] @ljharb)
 
 ### Docs
 * [`no-unused-prop-types`]: Add new example to rule ([#2852][] @thehereward)
 
+[#2882]: https://github.com/yannickcr/eslint-plugin-react/issues/2882
 [#2879]: https://github.com/yannickcr/eslint-plugin-react/issues/2879
 [#2878]: https://github.com/yannickcr/eslint-plugin-react/pull/2878
 [#2877]: https://github.com/yannickcr/eslint-plugin-react/pull/2877
