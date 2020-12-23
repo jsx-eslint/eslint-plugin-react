@@ -9,7 +9,6 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-key`]: added `checkKeyMustBeforeSpread` option for new jsx transform ([#2835][] @morlay)
 * [`jsx-newline`]: add new rule ([#2693][] @jzabala)
 * [`jsx-no-constructed-context-values`]: add new rule which checks when the value passed to a Context Provider will cause needless rerenders ([#2763][] @dylanOshima)
-* [`jsx-wrap-multilines`]: fix crash with `declaration`s that are on a new line after `=` ([#2875][] @ljharb)
 * [`jsx-indent-props`]: add `ignoreTernaryOperator` option ([#2846][] @SebastianZimmer)
 * [`jsx-no-target-blank`]: Add `warnOnSpreadAttributes` option ([#2855][] @michael-yx-wu)
 
@@ -20,6 +19,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-no-script-url`]: avoid crash with boolean `href` ([#2871][] @ljharb, @AriPerkkio)
 * [`no-typos`]: avoid crash with computed method name ([#2870][] @ljharb, @AriPerkkio)
 * [`jsx-max-depth`]: avoid crash with childless jsx child ([#2869][] @ljharb, @AriPerkkio)
+* [`jsx-wrap-multilines`]: fix crash with `declaration`s that are on a new line after `=` ([#2875][] @ljharb)
 * [`no-unknown-property`]: avoid crash with prop named with Object.prototype key ([#2879][] @ljharb, @AriPerkkio)
 * [`prop-types`]: default argument does not count as props-types declaration ([#2877][] @golopot)
 * [`jsx-props-no-multi-spaces`]: fix a false positive for beside comments ([#2878][] @golopot)
