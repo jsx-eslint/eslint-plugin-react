@@ -2596,7 +2596,8 @@ ruleTester.run('prop-types', rule, {
       },
       // shouldn't trigger this rule for 'render' since functions stating with a lowercase
       // letter are not considered components
-      `
+      {
+        code: `
         const MyComponent = (props) => {
           const render = () => {
             return <test>{props.hello}</test>;
@@ -2606,7 +2607,9 @@ ruleTester.run('prop-types', rule, {
         MyComponent.propTypes = {
           hello: PropTypes.string.isRequired,
         };
-      `,
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
       {
         code: `
           interface Props {
@@ -3108,19 +3111,6 @@ ruleTester.run('prop-types', rule, {
         code: `
           import React from 'react'
 
-          class Factory {
-            getRenderFunction() {
-              return function renderFunction({ name }) {
-                return <div>Hello {name}</div>
-              }
-            }
-          }
-        `
-      },
-      {
-        code: `
-          import React from 'react'
-
           type ComponentProps = {
             name: string
           }
@@ -3135,7 +3125,20 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT']
       }
-    ])
+    ]),
+    {
+      code: `
+        import React from 'react'
+
+        class Factory {
+          getRenderFunction() {
+            return function renderFunction({ name }) {
+              return <div>Hello {name}</div>
+            }
+          }
+        }
+      `
+    }
   ),
 
   invalid: [].concat(

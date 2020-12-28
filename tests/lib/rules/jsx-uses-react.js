@@ -62,10 +62,26 @@ ruleTester.run('no-unused-vars', rule, {
   }, parsers.TS([{
     code: '/*eslint jsx-uses-react:1*/ var Frag; <></>;',
     errors: [{message: '\'Frag\' is defined but never used.'}],
+    parser: parsers.TYPESCRIPT_ESLINT,
+    settings: {react: {fragment: 'Fragment'}}
+  }, {
+    code: '/*eslint jsx-uses-react:1*/ var Frag; <></>;',
+    errors: [{message: '\'Frag\' is defined but never used.'}],
+    parser: parsers['@TYPESCRIPT_ESLINT'],
     settings: {react: {fragment: 'Fragment'}}
   }, {
     code: '/*eslint jsx-uses-react:1*/ var React; <></>;',
     parser: parsers.BABEL_ESLINT,
+    errors: [{message: '\'React\' is defined but never used.'}],
+    settings
+  }, {
+    code: '/*eslint jsx-uses-react:1*/ var React; <></>;',
+    parser: parsers.TYPESCRIPT_ESLINT,
+    errors: [{message: '\'React\' is defined but never used.'}],
+    settings
+  }, {
+    code: '/*eslint jsx-uses-react:1*/ var React; <></>;',
+    parser: parsers['@TYPESCRIPT_ESLINT'],
     errors: [{message: '\'React\' is defined but never used.'}],
     settings
   }]))
