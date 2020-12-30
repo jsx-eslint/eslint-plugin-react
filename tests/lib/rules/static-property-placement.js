@@ -181,6 +181,26 @@ ruleTester.run('static-property-placement', rule, {
         };
       `].join('\n')
     },
+
+    {
+      // Do not error on non-component classes #2884
+      code: `
+        class Foo {
+          static get propTypes() {}
+        }
+      `
+    },
+
+    {
+      // Do not error on non-component classes #2884
+      code: `
+        class Foo {
+          static propTypes = {}
+        }
+      `,
+      options: [PROPERTY_ASSIGNMENT]
+    },
+
     // ------------------------------------------------------------------------------
     // no properties
     // ------------------------------------------------------------------------------
