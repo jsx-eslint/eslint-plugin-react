@@ -10,6 +10,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-pascal-case`]: support minimatch `ignore` option ([#2906][] @bcherny)
 * [`jsx-pascal-case`]: support `allowNamespace` option ([#2917][] @kev-y-huang)
 * [`jsx-newline`]: Add prevent option ([#2935][] @jsphstls)
+* [`no-unstable-nested-components`]: Prevent creating unstable components inside components ([#2750][] @AriPerkkio)
 
 ### Fixed
 * [`jsx-no-constructed-context-values`]: avoid a crash with `as X` TS code ([#2894][] @ljharb)
@@ -47,6 +48,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#2894]: https://github.com/yannickcr/eslint-plugin-react/issues/2894
 [#2893]: https://github.com/yannickcr/eslint-plugin-react/pull/2893
 [#2862]: https://github.com/yannickcr/eslint-plugin-react/pull/2862
+[#2750]: https://github.com/yannickcr/eslint-plugin-react/pull/2750
 
 ## [7.22.0] - 2020.12.29
 
@@ -3306,3 +3308,4 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`function-component-definition`]: docs/rules/function-component-definition.md
 [`jsx-newline`]: docs/rules/jsx-newline.md
 [`jsx-no-constructed-context-values`]: docs/rules/jsx-no-constructed-context-values.md
+[`no-unstable-nested-components`]: docs/rules/no-unstable-nested-components.md

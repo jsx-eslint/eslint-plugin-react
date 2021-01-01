@@ -137,6 +137,7 @@ Enable the rules that you would like to use.
 | ✔ |  | [react/no-unescaped-entities](docs/rules/no-unescaped-entities.md) | Detect unescaped HTML entities, which might represent malformed tags |
 | ✔ | 🔧 | [react/no-unknown-property](docs/rules/no-unknown-property.md) | Prevent usage of unknown DOM property |
 |  |  | [react/no-unsafe](docs/rules/no-unsafe.md) | Prevent usage of unsafe lifecycle methods |
+|  |  | [react/no-unstable-nested-components](docs/rules/no-unstable-nested-components.md) | Prevent creating unstable components inside components |
 |  |  | [react/no-unused-prop-types](docs/rules/no-unused-prop-types.md) | Prevent definitions of unused prop types |
 |  |  | [react/no-unused-state](docs/rules/no-unused-state.md) | Prevent definition of unused state fields |
 |  |  | [react/no-will-update-set-state](docs/rules/no-will-update-set-state.md) | Prevent usage of setState in componentWillUpdate |
@@ -179,7 +180,7 @@ Enable the rules that you would like to use.
 | ✔ |  | [react/jsx-key](docs/rules/jsx-key.md) | Report missing `key` props in iterators/collection literals |
 |  |  | [react/jsx-max-depth](docs/rules/jsx-max-depth.md) | Validate JSX maximum depth |
 |  | 🔧 | [react/jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md) | Limit maximum of props on a single line in JSX |
-|  | 🔧 | [react/jsx-newline](docs/rules/jsx-newline.md) | Require or prevent a new line after jsx elements and expressions |
+|  | 🔧 | [react/jsx-newline](docs/rules/jsx-newline.md) | Require or prevent a new line after jsx elements and expressions. |
 |  |  | [react/jsx-no-bind](docs/rules/jsx-no-bind.md) | Prevents usage of Function.prototype.bind and arrow functions in React component props |
 | ✔ |  | [react/jsx-no-comment-textnodes](docs/rules/jsx-no-comment-textnodes.md) | Comments inside children section of tag should be placed inside braces |
 |  |  | [react/jsx-no-constructed-context-values](docs/rules/jsx-no-constructed-context-values.md) | Prevents JSX context provider values from taking values that will cause needless rerenders. |
