@@ -80,29 +80,25 @@ const tests = {
       code: 'const [, , extra1] = useState()',
       errors: [{
         message: 'setState call is not destructured into value + setter pair'
-      }],
-      output: 'const [state, setState] = useState()'
+      }]
     },
     {
       code: 'const [, setColor] = useState()',
       errors: [{
         message: 'setState call is not destructured into value + setter pair'
-      }],
-      output: 'const [state, setState] = useState()'
+      }]
     },
     {
       code: 'const [] = useState()',
       errors: [{
         message: 'setState call is not destructured into value + setter pair'
-      }],
-      output: 'const [state, setState] = useState()'
+      }]
     },
     {
       code: 'const [, , , ,] = useState()',
       errors: [{
         message: 'setState call is not destructured into value + setter pair'
-      }],
-      output: 'const [state, setState] = useState()'
+      }]
     },
     {
       code: 'const [color] = useState()',
@@ -129,8 +125,7 @@ const tests = {
       code: 'const [, makeColor] = useState()',
       errors: [{
         message: 'setState call is not destructured into value + setter pair'
-      }],
-      output: 'const [state, setState] = useState()'
+      }]
     },
     {
       code: 'const [color, setFlavor, extraneous] = useState()',
