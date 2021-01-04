@@ -39,9 +39,6 @@ const tests = {
       code: 'const [color1, setColor1] = useState()'
     },
     {
-      code: 'const [, setColor] = useState()'
-    },
-    {
       code: 'const [color, setColor] = useState<string>()',
       parser: parsers.TYPESCRIPT_ESLINT
     },
@@ -83,7 +80,43 @@ const tests = {
       code: 'const [, , extra1] = useState()',
       errors: [{
         message: 'setState call is not destructured into value + setter pair'
-      }]
+      }],
+      output: 'const [state, setState] = useState()'
+    },
+    {
+      code: 'const [, setColor] = useState()',
+      errors: [{
+        message: 'setState call is not destructured into value + setter pair'
+      }],
+      output: 'const [state, setState] = useState()'
+    },
+    {
+      code: 'const [] = useState()',
+      errors: [{
+        message: 'setState call is not destructured into value + setter pair'
+      }],
+      output: 'const [state, setState] = useState()'
+    },
+    {
+      code: 'const [, , , ,] = useState()',
+      errors: [{
+        message: 'setState call is not destructured into value + setter pair'
+      }],
+      output: 'const [state, setState] = useState()'
+    },
+    {
+      code: 'const [color] = useState()',
+      errors: [{
+        message: 'setState call is not destructured into value + setter pair'
+      }],
+      output: 'const [color, setColor] = useState()'
+    },
+    {
+      code: 'const [color, , extra1] = useState()',
+      errors: [{
+        message: 'setState call is not destructured into value + setter pair'
+      }],
+      output: 'const [color, setColor] = useState()'
     },
     {
       code: 'const [color, setColor, extra1, extra2, extra3] = useState()',
@@ -95,20 +128,28 @@ const tests = {
     {
       code: 'const [, makeColor] = useState()',
       errors: [{
-        message: 'setState setter variable name should begin with set'
-      }]
+        message: 'setState call is not destructured into value + setter pair'
+      }],
+      output: 'const [state, setState] = useState()'
+    },
+    {
+      code: 'const [color, setFlavor, extraneous] = useState()',
+      errors: [{
+        message: 'setState call is not destructured into value + setter pair'
+      }],
+      output: 'const [color, setColor] = useState()'
     },
     {
       code: 'const [color, setFlavor] = useState()',
       errors: [{
-        message: 'setState variable names are not symmetric, setter should be setColor'
+        message: 'setState call is not destructured into value + setter pair'
       }],
       output: 'const [color, setColor] = useState()'
     },
     {
       code: 'const [color, setFlavor] = useState<string>()',
       errors: [{
-        message: 'setState variable names are not symmetric, setter should be setColor'
+        message: 'setState call is not destructured into value + setter pair'
       }],
       output: 'const [color, setColor] = useState<string>()',
       parser: parsers.TYPESCRIPT_ESLINT
@@ -118,7 +159,7 @@ const tests = {
       {
         code: 'const [color, setFlavor] = useState<string>()',
         errors: [{
-          message: 'setState variable names are not symmetric, setter should be setColor'
+          message: 'setState call is not destructured into value + setter pair'
         }],
         output: 'const [color, setColor] = useState<string>()',
         parser: parsers['@TYPESCRIPT_ESLINT']
