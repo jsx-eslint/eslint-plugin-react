@@ -10,6 +10,7 @@
 // -----------------------------------------------------------------------------
 
 const RuleTester = require('eslint').RuleTester;
+const parsers = require('../../helpers/parsers');
 const rule = require('../../../lib/rules/no-array-index-key');
 
 const parserOptions = {
@@ -26,7 +27,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-array-index-key', rule, {
-  valid: [
+  valid: [].concat(
     {code: '<Foo key="foo" />;'},
     {code: '<Foo key={i} />;'},
     {code: '<Foo key />;'},
@@ -105,10 +106,26 @@ ruleTester.run('no-array-index-key', rule, {
         return React.cloneElement(child, { key: child.id });
       })
       `
-    }
-  ],
+    },
 
-  invalid: [
+    parsers.ES2020({
+      code: 'foo?.map(child => <Foo key={child.i} />)',
+      parserOptions: {
+        ecmaVersion: 2020
+      }
+    }, {
+      code: 'foo?.map(child => <Foo key={child.i} />)',
+      parser: parsers.BABEL_ESLINT
+    }, {
+      code: 'foo?.map(child => <Foo key={child.i} />)',
+      parser: parsers.TYPESCRIPT_ESLINT
+    }, {
+      code: 'foo?.map(child => <Foo key={child.i} />)',
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    })
+  ),
+
+  invalid: [].concat(
     {
       code: 'foo.map((bar, i) => <Foo key={i} />)',
       errors: [{message: 'Do not use Array index in keys'}]
@@ -279,7 +296,26 @@ ruleTester.run('no-array-index-key', rule, {
       })
       `,
       errors: [{message: 'Do not use Array index in keys'}]
-    }
+    },
 
-  ]
+    parsers.ES2020({
+      code: 'foo?.map((child, i) => <Foo key={i} />)',
+      errors: [{message: 'Do not use Array index in keys'}],
+      parserOptions: {
+        ecmaVersion: 2020
+      }
+    }, {
+      code: 'foo?.map((child, i) => <Foo key={i} />)',
+      errors: [{message: 'Do not use Array index in keys'}],
+      parser: parsers.BABEL_ESLINT
+    }, {
+      code: 'foo?.map((child, i) => <Foo key={i} />)',
+      errors: [{message: 'Do not use Array index in keys'}],
+      parser: parsers.TYPESCRIPT_ESLINT
+    }, {
+      code: 'foo?.map((child, i) => <Foo key={i} />)',
+      errors: [{message: 'Do not use Array index in keys'}],
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    })
+  )
 });

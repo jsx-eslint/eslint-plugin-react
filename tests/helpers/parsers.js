@@ -15,5 +15,11 @@ module.exports = {
       return tests;
     }
     return [];
+  },
+  ES2020: function ES2020(tests) {
+    if (semver.satisfies(version, '>= 6')) {
+      return tests;
+    }
+    return [];
   }
 };
