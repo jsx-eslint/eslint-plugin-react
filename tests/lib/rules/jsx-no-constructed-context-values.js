@@ -29,7 +29,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('react-no-constructed-context-values', rule, {
-  valid: [
+  valid: [].concat(
     {
       code: '<Context.Provider value={props}></Context.Provider>'
     },
@@ -105,8 +105,44 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           return (<Context.Provider value={a}></Context.Provider>);
         }
       `
-    }
-  ],
+    },
+    parsers.TS(
+      {
+        code: `
+          import React from 'react';
+          import MyContext from './MyContext';
+
+          const value = '';
+
+          function ContextProvider(props) {
+              return (
+                  <MyContext.Provider value={value as any}>
+                      {props.children}
+                  </MyContext.Provider>
+              )
+          }
+        `,
+        parser: parsers.TYPESCRIPT_ESLINT
+      },
+      {
+        code: `
+          import React from 'react';
+          import MyContext from './MyContext';
+
+          const value = '';
+
+          function ContextProvider(props) {
+              return (
+                  <MyContext.Provider value={value as any}>
+                      {props.children}
+                  </MyContext.Provider>
+              )
+          }
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      }
+    )
+  ),
   invalid: [
     {
       // Invalid because object construction creates a new identity

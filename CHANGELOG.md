@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Fixed
+* [`jsx-no-constructed-context-values`]: avoid a crash with `as X` TS code ([#2894][] @ljharb)
+
+[#2894]: https://github.com/yannickcr/eslint-plugin-react/issues/2894
+
 ## [7.22.0] - 2020.12.29
 
 ### Added
