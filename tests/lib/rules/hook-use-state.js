@@ -89,6 +89,12 @@ const tests = {
       }]
     },
     {
+      code: 'const { color } = useState()',
+      errors: [{
+        message: 'setState call is not destructured into value + setter pair'
+      }]
+    },
+    {
       code: 'const [] = useState()',
       errors: [{
         message: 'setState call is not destructured into value + setter pair'
