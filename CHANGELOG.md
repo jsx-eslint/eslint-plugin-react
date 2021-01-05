@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.22.0] - 2020.12.29
+
 ### Added
 * [`jsx-key`]: added `checkKeyMustBeforeSpread` option for new jsx transform ([#2835][] @morlay)
 * [`jsx-newline`]: add new rule ([#2693][] @jzabala)
@@ -31,6 +33,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`no-unused-prop-types`]: Add new example to rule ([#2852][] @thehereward)
 * [`prop-types`]: fix example ([#2881][] @technote-space)
 
+[7.22.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.21.5...v7.22.0
 [#2891]: https://github.com/yannickcr/eslint-plugin-react/pull/2891
 [#2883]: https://github.com/yannickcr/eslint-plugin-react/pull/2883
 [#2882]: https://github.com/yannickcr/eslint-plugin-react/issues/2882
