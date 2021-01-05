@@ -141,7 +141,21 @@ ruleTester.run('react-no-constructed-context-values', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT']
       }
-    )
+    ),
+    {
+      code: `
+        import React from 'react';
+        import BooleanContext from './BooleanContext';
+        
+        function ContextProvider(props) {
+            return (
+                <BooleanContext.Provider value>
+                    {props.children}
+                </BooleanContext.Provider>
+            )
+        }
+      `
+    }
   ),
   invalid: [
     {

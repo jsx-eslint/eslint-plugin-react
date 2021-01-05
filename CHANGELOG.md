@@ -7,7 +7,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Fixed
 * [`jsx-no-constructed-context-values`]: avoid a crash with `as X` TS code ([#2894][] @ljharb)
+* [`jsx-no-constructed-context-values`]: avoid a crash with boolean shorthand ([#2895][] @ljharb)
 
+[#2895]: https://github.com/yannickcr/eslint-plugin-react/issues/2895
 [#2894]: https://github.com/yannickcr/eslint-plugin-react/issues/2894
 
 ## [7.22.0] - 2020.12.29
