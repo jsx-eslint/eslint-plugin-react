@@ -32,7 +32,7 @@ const ERROR_MESSAGE_STATIC = (method) => `Lifecycle method should be static: ${m
 
 const ruleTester = new RuleTester();
 ruleTester.run('no-typos', rule, {
-  valid: [{
+  valid: [].concat({
     code: `
         import createReactClass from 'create-react-class'
         function hello (extra = {}) {
@@ -647,9 +647,9 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parserOptions
-  }],
+  }),
 
-  invalid: [{
+  invalid: [].concat({
     code: `
       class Component extends React.Component {
         static PropTypes = {};
@@ -1729,5 +1729,23 @@ ruleTester.run('no-typos', rule, {
         parserOptions: parserOptions
       },
     */
-  }]
+  }, parsers.TS({
+    code: `
+      import 'prop-types'
+    `,
+    parser: parsers.TYPESCRIPT_ESLINT,
+    parserOptions,
+    errors: [{
+      message: '`\'prop-types\'` imported without a local `PropTypes` binding.'
+    }]
+  }, {
+    code: `
+      import 'prop-types'
+    `,
+    parser: parsers['@TYPESCRIPT_ESLINT'],
+    parserOptions,
+    errors: [{
+      message: '`\'prop-types\'` imported without a local `PropTypes` binding.'
+    }]
+  }))
 });
