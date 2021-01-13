@@ -14,7 +14,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`static-property-placement`]: do not report non-components ([#2893][] @golopot)
 * [`no-array-index-key`]: support optional chaining ([#2897][] @SyMind)
 * [`no-typos`]: avoid a crash on bindingless `prop-types` import; add warning ([#2899][] @ljharb)
+* [`jsx-curly-brace-presence`]: ignore containers with comments ([#2900][] @golopot)
 
+[#2900]: https://github.com/yannickcr/eslint-plugin-react/pull/2900
 [#2899]: https://github.com/yannickcr/eslint-plugin-react/issues/2899
 [#2897]: https://github.com/yannickcr/eslint-plugin-react/pull/2897
 [#2895]: https://github.com/yannickcr/eslint-plugin-react/issues/2895

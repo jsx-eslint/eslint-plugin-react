@@ -417,6 +417,28 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
         };
       `,
       options: [{props: 'never', children: 'never'}]
+    },
+    {
+      code: `<App>{/* comment */}</App>`
+    },
+    {
+      code: `<App>{/* comment */ <Foo />}</App>`
+    },
+    {
+      code: `<App>{/* comment */ 'foo'}</App>`
+    },
+    {
+      code: `<App prop={/* comment */ 'foo'} />`
+    },
+    {
+      code: `
+        <App>
+          {
+            // comment
+            <Foo />
+          }
+        </App>
+      `
     }
   ],
 

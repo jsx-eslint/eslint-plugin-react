@@ -151,6 +151,7 @@ Examples of **correct** code for this rule, even when configured with `"never"`:
  */
 <App>{' '}</App>
 <App>{'     '}</App>
+<App>{/* comment */ <Bpp />}</App> // the comment makes the container necessary 
 ```
 
 ## When Not To Use It
