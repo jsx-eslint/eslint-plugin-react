@@ -32,10 +32,16 @@ const tests = {
       code: 'const partial = <div />'
     },
     {
+      code: 'const partial = React.createElement(\'div\', {}, \'\')'
+    },
+    {
       code: '() => <div />'
     },
     {
-      code: 'const partial = React.createElement(\'div\', {}, \'\')'
+      code: '() => condition ? <div /> : <span />'
+    },
+    {
+      code: 'function MyComponent() { return condition ? <div /> : <span /> }'
     }
   ],
   invalid: [
@@ -49,6 +55,32 @@ const tests = {
       code: 'React.createElement(\'div\', {}, \'\')',
       errors: [{
         message: 'Unused React element'
+      }]
+    },
+    {
+      code: 'condition ? <div /> : <span />',
+      errors: [{
+        message: 'Unused React element',
+        line: 1,
+        column: 13
+      },
+      {
+        message: 'Unused React element',
+        line: 1,
+        column: 23
+      }]
+    },
+    {
+      code: 'condition ? React.createElement(\'div\', {}, \'\') : React.createElement(\'span\', {}, \'\')',
+      errors: [{
+        message: 'Unused React element',
+        line: 1,
+        column: 13
+      },
+      {
+        message: 'Unused React element',
+        line: 1,
+        column: 50
       }]
     },
     {
