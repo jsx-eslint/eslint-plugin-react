@@ -77,6 +77,12 @@ ruleTester.run('jsx-pascal-case', rule, {
     code: '<IGNORED />',
     options: [{ignore: ['IGNORED']}]
   }, {
+    code: '<Foo_DEPRECATED />',
+    options: [{ignore: ['*_D*D']}]
+  }, {
+    code: '<Foo_DEPRECATED />',
+    options: [{ignore: ['*_+(DEPRECATED|IGNORED)']}]
+  }, {
     code: '<$ />'
   }, {
     code: '<_ />'
@@ -110,5 +116,9 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<$a />',
     errors: [{message: 'Imported JSX component $a must be in PascalCase'}]
+  }, {
+    code: '<Foo_DEPRECATED />',
+    options: [{ignore: ['*_FOO']}],
+    errors: [{message: 'Imported JSX component Foo_DEPRECATED must be in PascalCase'}]
   }]
 });

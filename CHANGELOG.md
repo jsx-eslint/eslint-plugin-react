@@ -7,6 +7,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Added
 * [`jsx-no-target-blank`]: add fixer ([#2862][] @Nokel81)
+* [`jsx-pascal-case`]: support minimatch `ignore` option ([#2906][] @bcherny)
 
 ### Fixed
 * [`jsx-no-constructed-context-values`]: avoid a crash with `as X` TS code ([#2894][] @ljharb)
@@ -16,6 +17,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`no-typos`]: avoid a crash on bindingless `prop-types` import; add warning ([#2899][] @ljharb)
 * [`jsx-curly-brace-presence`]: ignore containers with comments ([#2900][] @golopot)
 
+[#2906]: https://github.com/yannickcr/eslint-plugin-react/pull/2906
 [#2900]: https://github.com/yannickcr/eslint-plugin-react/pull/2900
 [#2899]: https://github.com/yannickcr/eslint-plugin-react/issues/2899
 [#2897]: https://github.com/yannickcr/eslint-plugin-react/pull/2897
