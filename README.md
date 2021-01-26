@@ -132,6 +132,7 @@ Enable the rules that you would like to use.
 * [react/no-unescaped-entities](docs/rules/no-unescaped-entities.md): Detect unescaped HTML entities, which might represent malformed tags
 * [react/no-unknown-property](docs/rules/no-unknown-property.md): Prevent usage of unknown DOM property (fixable)
 * [react/no-unsafe](docs/rules/no-unsafe.md): Prevent usage of unsafe lifecycle methods
+* [react/no-unsafe-window-use](docs/rules/no-unsafe-window-use.md): Prevent unsafe window use
 * [react/no-unused-prop-types](docs/rules/no-unused-prop-types.md): Prevent definitions of unused prop types
 * [react/no-unused-state](docs/rules/no-unused-state.md): Prevent definition of unused state fields
 * [react/no-will-update-set-state](docs/rules/no-will-update-set-state.md): Prevent usage of setState in componentWillUpdate
