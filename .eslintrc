@@ -50,5 +50,11 @@
           "no-template-curly-in-string": 1,
         },
       },
+      {
+        "files": "markdown.config.js",
+        "rules": {
+          "no-console": 0,
+        },
+      },
     ],
 }

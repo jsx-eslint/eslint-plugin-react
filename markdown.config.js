@@ -4,16 +4,30 @@
 
 const {rules} = require('./index');
 
-const ruleListItems = Object.keys(rules)
+const ruleTableRows = Object.keys(rules)
   .sort()
   .map((id) => {
     const {meta} = rules[id];
     const {fixable, docs} = meta;
-    return `* [react/${id}](docs/rules/${id}.md): ${docs.description}${fixable ? ' (fixable)' : ''}`;
+    return [
+      docs.recommended ? '✔' : '',
+      fixable ? '🔧' : '',
+      `[react/${id}](docs/rules/${id}.md)`,
+      docs.description
+    ].join(' | ');
   });
 
-const BASIC_RULES = () => ruleListItems.filter((rule) => !rule.includes('react/jsx-')).join('\n');
-const JSX_RULES = () => ruleListItems.filter((rule) => rule.includes('react/jsx-')).join('\n');
+const buildRulesTable = (rows) => {
+  const header = '✔ | 🔧 | Rule | Description';
+  const separator = ':---: | :---: | :--- | :---';
+
+  return [header, separator, ...rows]
+    .map((row) => `| ${row} |`)
+    .join('\n');
+};
+
+const BASIC_RULES = () => buildRulesTable(ruleTableRows.filter((rule) => !rule.includes('react/jsx-')));
+const JSX_RULES = () => buildRulesTable(ruleTableRows.filter((rule) => rule.includes('react/jsx-')));
 
 module.exports = {
   transforms: {
@@ -21,7 +35,6 @@ module.exports = {
     JSX_RULES
   },
   callback: () => {
-    // eslint-disable-next-line no-console
     console.log('The auto-generating of rules finished!');
   }
 };
