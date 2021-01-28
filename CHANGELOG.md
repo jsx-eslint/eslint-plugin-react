@@ -17,6 +17,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`no-typos`]: avoid a crash on bindingless `prop-types` import; add warning ([#2899][] @ljharb)
 * [`jsx-curly-brace-presence`]: ignore containers with comments ([#2900][] @golopot)
 
+### Changed
+* [Docs] [`jsx-no-constructed-context-values`][]: fix invalid example syntax ([#2910][] @kud)
+
+[#2910]: https://github.com/yannickcr/eslint-plugin-react/pull/2910
 [#2906]: https://github.com/yannickcr/eslint-plugin-react/pull/2906
 [#2900]: https://github.com/yannickcr/eslint-plugin-react/pull/2900
 [#2899]: https://github.com/yannickcr/eslint-plugin-react/issues/2899

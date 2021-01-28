@@ -23,7 +23,7 @@ return (
 Examples of **correct** code for this rule:
 
 ```
-const foo = useMemo(() => {foo: 'bar'}, []);
+const foo = useMemo(() => ({foo: 'bar'}), []);
 return (
     <SomeContext.Provider value={foo}>
         ...
