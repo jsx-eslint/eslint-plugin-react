@@ -1,0 +1,25 @@
+# gitignore
+
+lib-cov
+*.seed
+*.log
+*.csv
+*.dat
+*.out
+*.pid
+*.gz
+*.sublime-project
+*.sublime-workspace
+pids
+logs
+reports
+coverage
+build
+node_modules
+!tests/**/node_modules
+npm-debug.log
+sftp-config.json
+
+# Only apps should have lockfiles
+yarn.lock
+package-lock.json
