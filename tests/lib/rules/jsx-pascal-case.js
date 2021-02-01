@@ -90,6 +90,9 @@ ruleTester.run('jsx-pascal-case', rule, {
     code: '<H1>Hello!</H1>'
   }, {
     code: '<Typography.P />'
+  }, {
+    code: '<Styled.h1 />',
+    options: [{allowNamespace: true}]
   }],
 
   invalid: [{
@@ -143,6 +146,25 @@ ruleTester.run('jsx-pascal-case', rule, {
     errors: [{
       messageId: 'usePascalCase',
       data: {name: 'Foo_DEPRECATED'}
+    }]
+  }, {
+    code: '<Styled.h1 />',
+    errors: [{
+      messageId: 'usePascalCase',
+      data: {name: 'h1'}
+    }]
+  }, {
+    code: '<$Typography.P />',
+    errors: [{
+      messageId: 'usePascalCase',
+      data: {name: '$Typography'}
+    }]
+  }, {
+    code: '<STYLED.h1 />',
+    options: [{allowNamespace: true}],
+    errors: [{
+      messageId: 'usePascalCase',
+      data: {name: 'STYLED'}
     }]
   }]
 });

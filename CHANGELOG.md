@@ -8,6 +8,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Added
 * [`jsx-no-target-blank`]: add fixer ([#2862][] @Nokel81)
 * [`jsx-pascal-case`]: support minimatch `ignore` option ([#2906][] @bcherny)
+* [`jsx-pascal-case`]: support `allowNamespace` option ([#2917][] @kev-y-huang)
 
 ### Fixed
 * [`jsx-no-constructed-context-values`]: avoid a crash with `as X` TS code ([#2894][] @ljharb)
@@ -29,6 +30,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#2929]: https://github.com/yannickcr/eslint-plugin-react/pull/2929
 [#2925]: https://github.com/yannickcr/eslint-plugin-react/pull/2925
 [#2923]: https://github.com/yannickcr/eslint-plugin-react/pull/2923
+[#2917]: https://github.com/yannickcr/eslint-plugin-react/pull/2917
 [#2910]: https://github.com/yannickcr/eslint-plugin-react/pull/2910
 [#2908]: https://github.com/yannickcr/eslint-plugin-react/pull/2908
 [#2906]: https://github.com/yannickcr/eslint-plugin-react/pull/2906

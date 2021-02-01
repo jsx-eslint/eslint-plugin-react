@@ -40,12 +40,13 @@ Examples of **correct** code for this rule:
 
 ```js
 ...
-"react/jsx-pascal-case": [<enabled>, { allowAllCaps: <allowAllCaps>, ignore: <ignore> }]
+"react/jsx-pascal-case": [<enabled>, { allowAllCaps: <allowAllCaps>, allowNamespace: <allowNamespace>, ignore: <ignore> }]
 ...
 ```
 
 * `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
 * `allowAllCaps`: optional boolean set to `true` to allow components name in all caps (default to `false`).
+* `allowNamespace`: optional boolean set to `true` to ignore namespaced components (default to `false`).
 * `ignore`: optional string-array of component names to ignore during validation (supports [minimatch](https://github.com/isaacs/minimatch)-style globs).
 
 ### `allowAllCaps`
@@ -55,6 +56,15 @@ Examples of **correct** code for this rule, when `allowAllCaps` is `true`:
 ```jsx
 <ALLOWED />
 <TEST_COMPONENT />
+```
+
+### `allowNamespace`
+
+Examples of **correct** code for this rule, when `allowNamespace` is `true`:
+
+```jsx
+<Allowed.div />
+<TestComponent.p />
 ```
 
 ## When Not To Use It
