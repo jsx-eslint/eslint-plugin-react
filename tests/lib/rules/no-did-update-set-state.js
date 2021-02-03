@@ -91,7 +91,8 @@ ruleTester.run('no-did-update-set-state', rule, {
       });
     `,
     errors: [{
-      message: 'Do not use setState in componentDidUpdate'
+      messageId: 'noSetState',
+      data: {name: 'componentDidUpdate'}
     }]
   }, {
     code: `
@@ -105,7 +106,8 @@ ruleTester.run('no-did-update-set-state', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Do not use setState in componentDidUpdate'
+      messageId: 'noSetState',
+      data: {name: 'componentDidUpdate'}
     }]
   }, {
     code: `
@@ -119,7 +121,8 @@ ruleTester.run('no-did-update-set-state', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Do not use setState in componentDidUpdate'
+      messageId: 'noSetState',
+      data: {name: 'componentDidUpdate'}
     }]
   }, {
     code: `
@@ -133,7 +136,8 @@ ruleTester.run('no-did-update-set-state', rule, {
     `,
     options: ['disallow-in-func'],
     errors: [{
-      message: 'Do not use setState in componentDidUpdate'
+      messageId: 'noSetState',
+      data: {name: 'componentDidUpdate'}
     }]
   }, {
     code: `
@@ -148,7 +152,8 @@ ruleTester.run('no-did-update-set-state', rule, {
     parser: parsers.BABEL_ESLINT,
     options: ['disallow-in-func'],
     errors: [{
-      message: 'Do not use setState in componentDidUpdate'
+      messageId: 'noSetState',
+      data: {name: 'componentDidUpdate'}
     }]
   }, {
     code: `
@@ -164,7 +169,8 @@ ruleTester.run('no-did-update-set-state', rule, {
     `,
     options: ['disallow-in-func'],
     errors: [{
-      message: 'Do not use setState in componentDidUpdate'
+      messageId: 'noSetState',
+      data: {name: 'componentDidUpdate'}
     }]
   }, {
     code: `
@@ -181,7 +187,8 @@ ruleTester.run('no-did-update-set-state', rule, {
     parser: parsers.BABEL_ESLINT,
     options: ['disallow-in-func'],
     errors: [{
-      message: 'Do not use setState in componentDidUpdate'
+      messageId: 'noSetState',
+      data: {name: 'componentDidUpdate'}
     }]
   }, {
     code: `
@@ -196,7 +203,8 @@ ruleTester.run('no-did-update-set-state', rule, {
       });
     `,
     errors: [{
-      message: 'Do not use setState in componentDidUpdate'
+      messageId: 'noSetState',
+      data: {name: 'componentDidUpdate'}
     }]
   }, {
     code: `
@@ -212,7 +220,8 @@ ruleTester.run('no-did-update-set-state', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Do not use setState in componentDidUpdate'
+      messageId: 'noSetState',
+      data: {name: 'componentDidUpdate'}
     }]
   }, {
     code: `
@@ -225,7 +234,8 @@ ruleTester.run('no-did-update-set-state', rule, {
     parser: parsers.BABEL_ESLINT,
     options: ['disallow-in-func'],
     errors: [{
-      message: 'Do not use setState in componentDidUpdate'
+      messageId: 'noSetState',
+      data: {name: 'componentDidUpdate'}
     }]
   }, {
     code: `
@@ -238,7 +248,8 @@ ruleTester.run('no-did-update-set-state', rule, {
     parser: parsers.BABEL_ESLINT,
     options: ['disallow-in-func'],
     errors: [{
-      message: 'Do not use setState in componentDidUpdate'
+      messageId: 'noSetState',
+      data: {name: 'componentDidUpdate'}
     }]
   }]
 });

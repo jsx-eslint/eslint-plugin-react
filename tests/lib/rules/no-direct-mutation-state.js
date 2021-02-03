@@ -100,9 +100,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    errors: [{
-      message: 'Do not mutate state directly. Use setState().'
-    }]
+    errors: [{messageId: 'noDirectMutation'}]
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -112,9 +110,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    errors: [{
-      message: 'Do not mutate state directly. Use setState().'
-    }]
+    errors: [{messageId: 'noDirectMutation'}]
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -124,9 +120,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    errors: [{
-      message: 'Do not mutate state directly. Use setState().'
-    }]
+    errors: [{messageId: 'noDirectMutation'}]
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -136,9 +130,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    errors: [{
-      message: 'Do not mutate state directly. Use setState().'
-    }]
+    errors: [{messageId: 'noDirectMutation'}]
   }, {
     code: [
       'var Hello = createReactClass({',
@@ -169,9 +161,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n'),
-    errors: [{
-      message: 'Do not mutate state directly. Use setState().'
-    }]
+    errors: [{messageId: 'noDirectMutation'}]
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -183,9 +173,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n'),
-    errors: [{
-      message: 'Do not mutate state directly. Use setState().'
-    }]
+    errors: [{messageId: 'noDirectMutation'}]
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -194,9 +182,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n'),
-    errors: [{
-      message: 'Do not mutate state directly. Use setState().'
-    }]
+    errors: [{messageId: 'noDirectMutation'}]
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -205,9 +191,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n'),
-    errors: [{
-      message: 'Do not mutate state directly. Use setState().'
-    }]
+    errors: [{messageId: 'noDirectMutation'}]
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -216,9 +200,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n'),
-    errors: [{
-      message: 'Do not mutate state directly. Use setState().'
-    }]
+    errors: [{messageId: 'noDirectMutation'}]
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -227,9 +209,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n'),
-    errors: [{
-      message: 'Do not mutate state directly. Use setState().'
-    }]
+    errors: [{messageId: 'noDirectMutation'}]
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -238,9 +218,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n'),
-    errors: [{
-      message: 'Do not mutate state directly. Use setState().'
-    }]
+    errors: [{messageId: 'noDirectMutation'}]
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -249,9 +227,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n'),
-    errors: [{
-      message: 'Do not mutate state directly. Use setState().'
-    }]
+    errors: [{messageId: 'noDirectMutation'}]
   }, {
     code: [
       'class Hello extends React.Component {',
@@ -260,9 +236,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '}'
     ].join('\n'),
-    errors: [{
-      message: 'Do not mutate state directly. Use setState().'
-    }]
+    errors: [{messageId: 'noDirectMutation'}]
   }
   /**
    * Would be nice to prevent this too
@@ -276,9 +250,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
       '  }',
       '});'
     ].join('\n'),
-    errors: [{
-      message: 'Do not mutate state directly. Use setState().'
-    }]
+    errors: [{messageId: 'noDirectMutation'}]
   } */
   ]
 });

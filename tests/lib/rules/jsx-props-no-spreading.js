@@ -24,7 +24,7 @@ const parserOptions = {
 // -----------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({parserOptions});
-const expectedError = {message: 'Prop spreading is forbidden'};
+const expectedError = {messageId: 'noSpreading'};
 
 ruleTester.run('jsx-props-no-spreading', rule, {
   valid: [{

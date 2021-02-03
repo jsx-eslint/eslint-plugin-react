@@ -182,52 +182,56 @@ ruleTester.run('destructuring-assignment', rule, {
     code: `const MyComponent = (props) => {
       return (<div id={props.id} />)
     };`,
-    errors: [
-      {message: 'Must use destructuring props assignment'}
-    ]
+    errors: [{
+      messageId: 'useDestructAssignment',
+      data: {type: 'props'}
+    }]
   }, {
     code: `const MyComponent = ({ id, className }) => (
       <div id={id} className={className} />
     );`,
     options: ['never'],
-    errors: [
-      {message: 'Must never use destructuring props assignment in SFC argument'}
-    ]
+    errors: [{
+      messageId: 'noDestructPropsInSFCArg'
+    }]
   }, {
     code: `const MyComponent = (props, { color }) => (
       <div id={props.id} className={props.className} />
     );`,
     options: ['never'],
-    errors: [
-      {message: 'Must never use destructuring context assignment in SFC argument'}
-    ]
+    errors: [{
+      messageId: 'noDestructContextInSFCArg'
+    }]
   }, {
     code: `const Foo = class extends React.PureComponent {
       render() {
         return <div>{this.props.foo}</div>;
       }
     };`,
-    errors: [
-      {message: 'Must use destructuring props assignment'}
-    ]
+    errors: [{
+      messageId: 'useDestructAssignment',
+      data: {type: 'props'}
+    }]
   }, {
     code: `const Foo = class extends React.PureComponent {
       render() {
         return <div>{this.state.foo}</div>;
       }
     };`,
-    errors: [
-      {message: 'Must use destructuring state assignment'}
-    ]
+    errors: [{
+      messageId: 'useDestructAssignment',
+      data: {type: 'state'}
+    }]
   }, {
     code: `const Foo = class extends React.PureComponent {
       render() {
         return <div>{this.context.foo}</div>;
       }
     };`,
-    errors: [
-      {message: 'Must use destructuring context assignment'}
-    ]
+    errors: [{
+      messageId: 'useDestructAssignment',
+      data: {type: 'context'}
+    }]
   }, {
     code: `class Foo extends React.Component {
       render() { return this.foo(); }
@@ -235,18 +239,20 @@ ruleTester.run('destructuring-assignment', rule, {
         return this.props.children;
       }
     }`,
-    errors: [
-      {message: 'Must use destructuring props assignment'}
-    ]
+    errors: [{
+      messageId: 'useDestructAssignment',
+      data: {type: 'props'}
+    }]
   }, {
     code: `var Hello = React.createClass({
       render: function() {
         return <Text>{this.props.foo}</Text>;
       }
     });`,
-    errors: [
-      {message: 'Must use destructuring props assignment'}
-    ]
+    errors: [{
+      messageId: 'useDestructAssignment',
+      data: {type: 'props'}
+    }]
   }, {
     code: `
       module.exports = {
@@ -255,21 +261,30 @@ ruleTester.run('destructuring-assignment', rule, {
         }
       }
     `,
-    errors: [{message: 'Must use destructuring props assignment'}]
+    errors: [{
+      messageId: 'useDestructAssignment',
+      data: {type: 'props'}
+    }]
   }, {
     code: `
       export default function Foo(props) {
         return <p>{props.a}</p>;
       }
     `,
-    errors: [{message: 'Must use destructuring props assignment'}]
+    errors: [{
+      messageId: 'useDestructAssignment',
+      data: {type: 'props'}
+    }]
   }, {
     code: `
       function hof() {
         return (props) => <p>{props.a}</p>;
       }
     `,
-    errors: [{message: 'Must use destructuring props assignment'}]
+    errors: [{
+      messageId: 'useDestructAssignment',
+      data: {type: 'props'}
+    }]
   }, {
     code: `const Foo = class extends React.PureComponent {
       render() {
@@ -277,9 +292,10 @@ ruleTester.run('destructuring-assignment', rule, {
         return <div>{foo}</div>;
       }
     };`,
-    errors: [
-      {message: 'Must use destructuring props assignment'}
-    ]
+    errors: [{
+      messageId: 'useDestructAssignment',
+      data: {type: 'props'}
+    }]
   }, {
     code: `const Foo = class extends React.PureComponent {
       render() {
@@ -289,9 +305,10 @@ ruleTester.run('destructuring-assignment', rule, {
     };`,
     options: ['never'],
     parser: parsers.BABEL_ESLINT,
-    errors: [
-      {message: 'Must never use destructuring props assignment'}
-    ]
+    errors: [{
+      messageId: 'noDestructAssignment',
+      data: {type: 'props'}
+    }]
   }, {
     code: `const MyComponent = (props) => {
       const { id, className } = props;
@@ -299,9 +316,10 @@ ruleTester.run('destructuring-assignment', rule, {
     };`,
     options: ['never'],
     parser: parsers.BABEL_ESLINT,
-    errors: [
-      {message: 'Must never use destructuring props assignment'}
-    ]
+    errors: [{
+      messageId: 'noDestructAssignment',
+      data: {type: 'props'}
+    }]
   }, {
     code: `const Foo = class extends React.PureComponent {
       render() {
@@ -311,8 +329,9 @@ ruleTester.run('destructuring-assignment', rule, {
     };`,
     options: ['never'],
     parser: parsers.BABEL_ESLINT,
-    errors: [
-      {message: 'Must never use destructuring state assignment'}
-    ]
+    errors: [{
+      messageId: 'noDestructAssignment',
+      data: {type: 'state'}
+    }]
   }]
 });

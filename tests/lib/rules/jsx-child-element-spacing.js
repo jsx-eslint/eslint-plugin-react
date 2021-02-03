@@ -150,7 +150,8 @@ ruleTester.run('jsx-child-element-spacing', rule, {
     `,
     errors: [
       {
-        message: 'Ambiguous spacing before next element a',
+        messageId: 'spacingBeforeNext',
+        data: {element: 'a'},
         line: 4,
         column: 3
       }
@@ -165,7 +166,8 @@ ruleTester.run('jsx-child-element-spacing', rule, {
     parser: parsers.BABEL_ESLINT,
     errors: [
       {
-        message: 'Ambiguous spacing before next element a',
+        messageId: 'spacingBeforeNext',
+        data: {element: 'a'},
         line: 4,
         column: 3
       }
@@ -179,7 +181,8 @@ ruleTester.run('jsx-child-element-spacing', rule, {
     `,
     errors: [
       {
-        message: 'Ambiguous spacing after previous element a',
+        messageId: 'spacingAfterPrev',
+        data: {element: 'a'},
         line: 3,
         column: 13
       }
@@ -193,7 +196,8 @@ ruleTester.run('jsx-child-element-spacing', rule, {
     `,
     errors: [
       {
-        message: 'Ambiguous spacing after previous element a',
+        messageId: 'spacingAfterPrev',
+        data: {element: 'a'},
         line: 3,
         column: 18
       }
@@ -207,7 +211,8 @@ ruleTester.run('jsx-child-element-spacing', rule, {
     `,
     errors: [
       {
-        message: 'Ambiguous spacing before next element a',
+        messageId: 'spacingBeforeNext',
+        data: {element: 'a'},
         line: 4,
         column: 3
       }
@@ -221,7 +226,8 @@ ruleTester.run('jsx-child-element-spacing', rule, {
     `,
     errors: [
       {
-        message: 'Ambiguous spacing before next element code',
+        messageId: 'spacingBeforeNext',
+        data: {element: 'code'},
         line: 4,
         column: 3
       }
@@ -236,12 +242,14 @@ ruleTester.run('jsx-child-element-spacing', rule, {
     `,
     errors: [
       {
-        message: 'Ambiguous spacing before next element a',
+        messageId: 'spacingBeforeNext',
+        data: {element: 'a'},
         line: 4,
         column: 3
       },
       {
-        message: 'Ambiguous spacing before next element a',
+        messageId: 'spacingBeforeNext',
+        data: {element: 'a'},
         line: 5,
         column: 3
       }

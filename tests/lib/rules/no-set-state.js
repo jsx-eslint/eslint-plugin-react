@@ -70,9 +70,7 @@ ruleTester.run('no-set-state', rule, {
         }
       });
     `,
-    errors: [{
-      message: 'Do not use setState'
-    }]
+    errors: [{messageId: 'noSetState'}]
   }, {
     code: `
       var Hello = createReactClass({
@@ -86,9 +84,7 @@ ruleTester.run('no-set-state', rule, {
         }
       });
     `,
-    errors: [{
-      message: 'Do not use setState'
-    }]
+    errors: [{messageId: 'noSetState'}]
   }, {
     code: `
       class Hello extends React.Component {
@@ -102,9 +98,7 @@ ruleTester.run('no-set-state', rule, {
         }
       };
     `,
-    errors: [{
-      message: 'Do not use setState'
-    }]
+    errors: [{messageId: 'noSetState'}]
   }, {
     code: `
       class Hello extends React.Component {
@@ -119,9 +113,7 @@ ruleTester.run('no-set-state', rule, {
       };
     `,
     parser: parsers.BABEL_ESLINT,
-    errors: [{
-      message: 'Do not use setState'
-    }]
+    errors: [{messageId: 'noSetState'}]
   }, {
     code: `
       class Hello extends React.Component {
@@ -131,8 +123,6 @@ ruleTester.run('no-set-state', rule, {
       };
     `,
     parser: parsers.BABEL_ESLINT,
-    errors: [{
-      message: 'Do not use setState'
-    }]
+    errors: [{messageId: 'noSetState'}]
   }]
 });

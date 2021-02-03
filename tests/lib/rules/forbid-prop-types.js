@@ -25,11 +25,6 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ANY_ERROR_MESSAGE = 'Prop type `any` is forbidden';
-const ARRAY_ERROR_MESSAGE = 'Prop type `array` is forbidden';
-const NUMBER_ERROR_MESSAGE = 'Prop type `number` is forbidden';
-const OBJECT_ERROR_MESSAGE = 'Prop type `object` is forbidden';
-
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('forbid-prop-types', rule, {
 
@@ -596,7 +591,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     errors: [{
-      message: ANY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'},
       line: 3,
       column: 5,
       type: 'Property'
@@ -613,7 +609,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     errors: [{
-      message: NUMBER_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'number'},
       line: 3,
       column: 5,
       type: 'Property'
@@ -633,7 +630,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     errors: [{
-      message: ANY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'},
       line: 3,
       column: 5,
       type: 'Property'
@@ -650,7 +648,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     errors: [{
-      message: ARRAY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'array'},
       line: 3,
       column: 5,
       type: 'Property'
@@ -667,7 +666,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     errors: [{
-      message: ARRAY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'array'},
       line: 3,
       column: 5,
       type: 'Property'
@@ -684,7 +684,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     errors: [{
-      message: OBJECT_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'object'},
       line: 3,
       column: 5,
       type: 'Property'
@@ -701,7 +702,8 @@ ruleTester.run('forbid-prop-types', rule, {
       '});'
     ].join('\n'),
     errors: [{
-      message: OBJECT_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'object'},
       line: 3,
       column: 5,
       type: 'Property'
@@ -783,7 +785,10 @@ ruleTester.run('forbid-prop-types', rule, {
       'export default function Component() {}',
       'Component.propTypes = propTypes;'
     ].join('\n'),
-    errors: [{message: ANY_ERROR_MESSAGE}]
+    errors: [{
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'}
+    }]
   }, {
     code: [
       'import { forbidExtraProps } from "airbnb-prop-types";',
@@ -791,7 +796,10 @@ ruleTester.run('forbid-prop-types', rule, {
       'export default function Component() {}',
       'Component.propTypes = forbidExtraProps(propTypes);'
     ].join('\n'),
-    errors: [{message: ANY_ERROR_MESSAGE}],
+    errors: [{
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'}
+    }],
     settings: {
       propWrapperFunctions: ['forbidExtraProps']
     }
@@ -904,7 +912,8 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     options: [{checkContextTypes: true}],
     errors: [{
-      message: ANY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'},
       line: 3,
       column: 5,
       type: 'Property'
@@ -923,7 +932,8 @@ ruleTester.run('forbid-prop-types', rule, {
     options: [{checkContextTypes: true}],
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: ANY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'},
       line: 3,
       column: 5,
       type: 'Property'
@@ -943,7 +953,8 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     options: [{checkContextTypes: true}],
     errors: [{
-      message: ANY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'},
       line: 4,
       column: 7,
       type: 'Property'
@@ -961,7 +972,8 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     options: [{checkContextTypes: true}],
     errors: [{
-      message: ANY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'},
       line: 7,
       column: 3,
       type: 'Property'
@@ -977,7 +989,8 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     options: [{checkContextTypes: true}],
     errors: [{
-      message: ANY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'},
       line: 5,
       column: 3,
       type: 'Property'
@@ -993,7 +1006,8 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     options: [{checkContextTypes: true}],
     errors: [{
-      message: ANY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'},
       line: 5,
       column: 3,
       type: 'Property'
@@ -1196,7 +1210,8 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     options: [{checkChildContextTypes: true}],
     errors: [{
-      message: ANY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'},
       line: 3,
       column: 5,
       type: 'Property'
@@ -1215,7 +1230,8 @@ ruleTester.run('forbid-prop-types', rule, {
     options: [{checkChildContextTypes: true}],
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: ANY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'},
       line: 3,
       column: 5,
       type: 'Property'
@@ -1235,7 +1251,8 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     options: [{checkChildContextTypes: true}],
     errors: [{
-      message: ANY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'},
       line: 4,
       column: 7,
       type: 'Property'
@@ -1253,7 +1270,8 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     options: [{checkChildContextTypes: true}],
     errors: [{
-      message: ANY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'},
       line: 7,
       column: 3,
       type: 'Property'
@@ -1269,7 +1287,8 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     options: [{checkChildContextTypes: true}],
     errors: [{
-      message: ANY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'},
       line: 5,
       column: 3,
       type: 'Property'
@@ -1285,7 +1304,8 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     options: [{checkChildContextTypes: true}],
     errors: [{
-      message: ANY_ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
+      data: {target: 'any'},
       line: 5,
       column: 3,
       type: 'Property'

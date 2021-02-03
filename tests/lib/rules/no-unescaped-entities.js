@@ -125,7 +125,10 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      errors: [{message: '`>` can be escaped with `&gt;`.'}]
+      errors: [{
+        messageId: 'unescapedEntityAlts',
+        data: {entity: '>', alts: '`&gt;`'}
+      }]
     }), {
       code: `
         var Hello = createReactClass({
@@ -135,7 +138,10 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '`>` can be escaped with `&gt;`.'}]
+      errors: [{
+        messageId: 'unescapedEntityAlts',
+        data: {entity: '>', alts: '`&gt;`'}
+      }]
     }, (allowsInvalidJSX && {
       code: `
         var Hello = createReactClass({
@@ -146,7 +152,10 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      errors: [{message: '`>` can be escaped with `&gt;`.'}]
+      errors: [{
+        messageId: 'unescapedEntityAlts',
+        data: {entity: '>', alts: '`&gt;`'}
+      }]
     }), {
       code: `
         var Hello = createReactClass({
@@ -158,7 +167,10 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '`>` can be escaped with `&gt;`.'}]
+      errors: [{
+        messageId: 'unescapedEntityAlts',
+        data: {entity: '>', alts: '`&gt;`'}
+      }]
     }, {
       code: `
         var Hello = createReactClass({
@@ -167,7 +179,10 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      errors: [{message: '`\'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.'}]
+      errors: [{
+        messageId: 'unescapedEntityAlts',
+        data: {entity: '\'', alts: '`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`'}
+      }]
     }, (allowsInvalidJSX && {
       code: `
         var Hello = createReactClass({
@@ -177,9 +192,18 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       errors: [
-        {message: '`\'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`.'},
-        {message: '`>` can be escaped with `&gt;`.'},
-        {message: '`>` can be escaped with `&gt;`.'}
+        {
+          messageId: 'unescapedEntityAlts',
+          data: {entity: '\'', alts: '`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`'}
+        },
+        {
+          messageId: 'unescapedEntityAlts',
+          data: {entity: '>', alts: '`&gt;`'}
+        },
+        {
+          messageId: 'unescapedEntityAlts',
+          data: {entity: '>', alts: '`&gt;`'}
+        }
       ]
     }), (allowsInvalidJSX && {
       code: `
@@ -189,7 +213,10 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      errors: [{message: '`}` can be escaped with `&#125;`.'}]
+      errors: [{
+        messageId: 'unescapedEntityAlts',
+        data: {entity: '}', alts: '`&#125;`'}
+      }]
     }), {
       code: `
         var Hello = createReactClass({
@@ -199,7 +226,10 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '`}` can be escaped with `&#125;`.'}]
+      errors: [{
+        messageId: 'unescapedEntityAlts',
+        data: {entity: '}', alts: '`&#125;`'}
+      }]
     }, {
       code: `
         var Hello = createReactClass({
@@ -209,7 +239,10 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: 'HTML entity, `&` , must be escaped.'}],
+      errors: [{
+        messageId: 'unescapedEntity',
+        data: {entity: '&'}
+      }],
       options: [{
         forbid: ['&']
       }]
@@ -221,7 +254,10 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      errors: [{message: 'HTML entity, `&` , must be escaped.'}],
+      errors: [{
+        messageId: 'unescapedEntity',
+        data: {entity: '&'}
+      }],
       options: [{
         forbid: ['&']
       }]
@@ -233,7 +269,10 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      errors: [{message: '`&` can be escaped with `&amp;`.'}],
+      errors: [{
+        messageId: 'unescapedEntityAlts',
+        data: {entity: '&', alts: '`&amp;`'}
+      }],
       options: [{
         forbid: [{
           char: '&',

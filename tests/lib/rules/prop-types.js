@@ -3155,7 +3155,8 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: '\'name\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'name'},
         line: 7,
         column: 23,
         type: 'Identifier'
@@ -3170,7 +3171,8 @@ ruleTester.run('prop-types', rule, {
         '});'
       ].join('\n'),
       errors: [{
-        message: '\'name\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'name'},
         line: 3,
         column: 54,
         type: 'Identifier'
@@ -3184,7 +3186,8 @@ ruleTester.run('prop-types', rule, {
         '});'
       ].join('\n'),
       errors: [{
-        message: '\'name\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'name'},
         line: 3,
         column: 35,
         type: 'Identifier'
@@ -3198,7 +3201,8 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: '\'name\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'name'},
         line: 3,
         column: 35,
         type: 'Identifier'
@@ -3349,7 +3353,8 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: '\'name\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'name'},
         line: 3,
         column: 13,
         type: 'Property'
@@ -3367,7 +3372,8 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: '\'title\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'title'},
         line: 3,
         column: 19,
         type: 'Property'
@@ -3386,7 +3392,8 @@ ruleTester.run('prop-types', rule, {
         'Hello.propTypes = {}'
       ].join('\n'),
       errors: [{
-        message: '\'name\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'name'},
         line: 3,
         column: 13,
         type: 'Property'
@@ -3401,7 +3408,8 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: '\'name\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'name'},
         line: 4,
         column: 35,
         type: 'Identifier'
@@ -3418,7 +3426,8 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: '\'lastname\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'lastname'}
       }]
     }, {
       code: [
@@ -3437,7 +3446,8 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: '\'name\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'name'}
       }]
     }, {
       code: [
@@ -3456,9 +3466,11 @@ ruleTester.run('prop-types', rule, {
         '});'
       ].join('\n'),
       errors: [{
-        message: '\'propWithoutTypeDefinition\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'propWithoutTypeDefinition'}
       }, {
-        message: '\'name\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'name'}
       }]
     }, {
       code: [
@@ -3473,7 +3485,8 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: '\'lastname\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'lastname'}
       }]
     }, {
       code: [
@@ -3488,7 +3501,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'firstname\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'firstname'}
       }]
     }, {
       code: [
@@ -3504,7 +3518,8 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: '\'a.b\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'a.b'}
       }]
     }, {
       code: [
@@ -3522,7 +3537,8 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: '\'a.b.c\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'a.b.c'}
       }]
     }, {
       code: [
@@ -3538,7 +3554,8 @@ ruleTester.run('prop-types', rule, {
         'Hello.propTypes.a.b = PropTypes.shape({});'
       ].join('\n'),
       errors: [{
-        message: '\'a.b.c\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'a.b.c'}
       }]
     }, {
       code: [
@@ -3558,10 +3575,22 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [
-        {message: '\'a.b.c\' is missing in props validation'},
-        {message: '\'a.__.d\' is missing in props validation'},
-        {message: '\'a.__.d.length\' is missing in props validation'},
-        {message: '\'a.anything.e\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'a.b.c'}
+        },
+        {
+          messageId: 'missingPropType',
+          data: {name: 'a.__.d'}
+        },
+        {
+          messageId: 'missingPropType',
+          data: {name: 'a.__.d.length'}
+        },
+        {
+          messageId: 'missingPropType',
+          data: {name: 'a.anything.e'}
+        }
       ]
     }, {
       code: [
@@ -3583,10 +3612,22 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [
-        {message: '\'a[].c\' is missing in props validation'},
-        {message: '\'a[].d\' is missing in props validation'},
-        {message: '\'a[].d.length\' is missing in props validation'},
-        {message: '\'a[].e\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'a[].c'}
+        },
+        {
+          messageId: 'missingPropType',
+          data: {name: 'a[].d'}
+        },
+        {
+          messageId: 'missingPropType',
+          data: {name: 'a[].d.length'}
+        },
+        {
+          messageId: 'missingPropType',
+          data: {name: 'a[].e'}
+        }
       ]
     }, {
       code: [
@@ -3611,8 +3652,14 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [
-        {message: '\'a.length\' is missing in props validation'},
-        {message: '\'a.b\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'a.length'}
+        },
+        {
+          messageId: 'missingPropType',
+          data: {name: 'a.b'}
+        }
       ]
     }, {
       code: [
@@ -3631,7 +3678,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'propX\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'propX'}
+        }
       ]
     }, {
       code: [
@@ -3645,7 +3695,10 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [
-        {message: '\'some.value\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'some.value'}
+        }
       ]
     }, {
       code: [
@@ -3659,7 +3712,10 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [
-        {message: '\'arr\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'arr'}
+        }
       ]
     }, {
       code: [
@@ -3676,7 +3732,10 @@ ruleTester.run('prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [
-        {message: '\'arr[].some.value\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'arr[].some.value'}
+        }
       ]
     }, {
       code: [
@@ -3691,7 +3750,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'firstname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'firstname'}
+        }
       ]
     }, {
       code: [
@@ -3704,7 +3766,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'firstname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'firstname'}
+        }
       ]
     }, {
       code: [
@@ -3723,7 +3788,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'firstname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'firstname'}
+        }
       ]
     }, {
       code: [
@@ -3733,7 +3801,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'name\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'name'}
       }]
     }, {
       code: [
@@ -3743,7 +3812,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'name\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'name'}
       }]
     }, {
       code: [
@@ -3753,7 +3823,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'name\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'name'}
       }]
     }, {
       code: [
@@ -3764,7 +3835,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'name\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'name'}
       }]
     }, {
       code: [
@@ -3774,7 +3846,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'name\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'name'}
       }]
     }, {
       code: [
@@ -3784,7 +3857,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'name\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'name'}
       }]
     }, {
       code: [
@@ -3794,7 +3868,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'name\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'name'}
       }]
     }, {
       code: [
@@ -3807,7 +3882,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'lastname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'lastname'}
+        }
       ]
     }, {
       code: [
@@ -3820,7 +3898,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'source\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'source'}
+        }
       ]
     }, {
       code: [
@@ -3833,8 +3914,14 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'source\' is missing in props validation'},
-        {message: '\'source.uri\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'source'}
+        },
+        {
+          messageId: 'missingPropType',
+          data: {name: 'source.uri'}
+        }
       ]
     }, {
       code: [
@@ -3847,7 +3934,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'source\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'source'}
+        }
       ]
     }, {
       code: [
@@ -3860,8 +3950,14 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'source\' is missing in props validation'},
-        {message: '\'source.uri\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'source'}
+        },
+        {
+          messageId: 'missingPropType',
+          data: {name: 'source.uri'}
+        }
       ]
     }, {
       code: [
@@ -3877,7 +3973,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'name\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'name'}
+        }
       ]
     }, {
       code: [
@@ -3893,7 +3992,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'name\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'name'}
+        }
       ]
     }, {
       code: [
@@ -3913,8 +4015,14 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'firstname\' is missing in props validation'},
-        {message: '\'name\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'firstname'}
+        },
+        {
+          messageId: 'missingPropType',
+          data: {name: 'name'}
+        }
       ]
     }, {
       code: [
@@ -3927,9 +4035,18 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'names\' is missing in props validation'},
-        {message: '\'names.map\' is missing in props validation'},
-        {message: '\'company\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'names'}
+        },
+        {
+          messageId: 'missingPropType',
+          data: {name: 'names.map'}
+        },
+        {
+          messageId: 'missingPropType',
+          data: {name: 'company'}
+        }
       ]
     }, {
       code: [
@@ -3941,7 +4058,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'text\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'text'}
+        }
       ]
     }, {
       code: [
@@ -3955,7 +4075,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'name\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'name'}
+        }
       ]
     }, {
       code: [
@@ -3973,7 +4096,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'lastname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'lastname'}
+        }
       ]
     }, {
       code: [
@@ -3991,7 +4117,10 @@ ruleTester.run('prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       settings,
       errors: [
-        {message: '\'lastname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'lastname'}
+        }
       ]
     }, {
       code: [
@@ -4011,7 +4140,10 @@ ruleTester.run('prop-types', rule, {
         propWrapperFunctions: ['forbidExtraProps']
       }),
       errors: [
-        {message: '\'lastname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'lastname'}
+        }
       ]
     }, {
       code: [
@@ -4031,7 +4163,10 @@ ruleTester.run('prop-types', rule, {
         propWrapperFunctions: ['Object.freeze']
       }),
       errors: [
-        {message: '\'lastname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'lastname'}
+        }
       ]
     }, {
       code: [
@@ -4049,7 +4184,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'lastname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'lastname'}
+        }
       ]
     }, {
       code: [
@@ -4062,7 +4200,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'name\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'name'}
+        }
       ]
     }, {
       code: [
@@ -4077,7 +4218,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'firstname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'firstname'}
+        }
       ]
     }, {
       code: [
@@ -4091,7 +4235,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'firstname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'firstname'}
+        }
       ]
     }, {
       code: [
@@ -4108,7 +4255,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'name.lastname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'name.lastname'}
+        }
       ]
     }, {
       code: [
@@ -4122,7 +4272,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'name.lastname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'name.lastname'}
+        }
       ]
     }, {
       code: [
@@ -4135,7 +4288,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'person.name.lastname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'person.name.lastname'}
+        }
       ]
     }, {
       code: [
@@ -4149,7 +4305,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'person.name.lastname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'person.name.lastname'}
+        }
       ]
     }, {
       code: [
@@ -4167,7 +4326,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'people[].name.lastname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'people[].name.lastname'}
+        }
       ]
     }, {
       code: [
@@ -4186,7 +4348,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'people[].name.lastname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'people[].name.lastname'}
+        }
       ]
     }, {
       code: [
@@ -4200,7 +4365,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'result.notok\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'result.notok'}
+        }
       ]
     }, {
       code: [
@@ -4212,7 +4380,8 @@ ruleTester.run('prop-types', rule, {
         'Greetings.propTypes = {};'
       ].join('\n'),
       errors: [{
-        message: '\'name\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'name'}
       }]
     }, {
       code: [
@@ -4226,7 +4395,8 @@ ruleTester.run('prop-types', rule, {
         'Greetings.Hello.propTypes = {};'
       ].join('\n'),
       errors: [{
-        message: '\'name\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'name'}
       }]
     }, {
       code: [
@@ -4239,7 +4409,8 @@ ruleTester.run('prop-types', rule, {
         'Greetings.Hello.propTypes = {};'
       ].join('\n'),
       errors: [{
-        message: '\'name\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'name'}
       }]
     }, {
       code: [
@@ -4249,9 +4420,11 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: '\'names\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'names'}
       }, {
-        message: '\'names.map\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'names.map'}
       }]
     }, {
       code: [
@@ -4260,14 +4433,16 @@ ruleTester.run('prop-types', rule, {
         ')'
       ].join('\n'),
       errors: [{
-        message: '\'toggle\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'toggle'}
       }]
     }, {
       code: [
         'const MyComponent = props => props.test ? <div /> : <span />'
       ].join('\n'),
       errors: [{
-        message: '\'test\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'test'}
       }]
     }, {
       code: [
@@ -4278,7 +4453,8 @@ ruleTester.run('prop-types', rule, {
         '})'
       ].join('\n'),
       errors: [{
-        message: '\'test\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'test'}
       }]
     }, {
       code: [
@@ -4291,7 +4467,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'lastname\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'lastname'}
       }]
     }, {
       code: [
@@ -4309,8 +4486,14 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'firstname\' is missing in props validation'},
-        {message: '\'lastname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'firstname'}
+        },
+        {
+          messageId: 'missingPropType',
+          data: {name: 'lastname'}
+        }
       ]
     }, {
       code: [
@@ -4325,7 +4508,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'name.constructor.firstname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'name.constructor.firstname'}
+        }
       ]
     },
     {
@@ -4335,7 +4521,10 @@ ruleTester.run('prop-types', rule, {
       }
     `,
       errors: [
-        {message: '\'foo\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'foo'}
+        }
       ],
       parser: parsers.BABEL_ESLINT
     },
@@ -4347,7 +4536,10 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [
-        {message: '\'bar\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'bar'}
+        }
       ]
     }, {
       code: [
@@ -4357,7 +4549,10 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [
-        {message: '\'bar\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'bar'}
+        }
       ]
     }, {
       code: [
@@ -4368,7 +4563,8 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: '\'name\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'name'},
         line: 3,
         column: 35,
         type: 'Identifier'
@@ -4382,7 +4578,8 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: '\'name\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'name'},
         line: 3,
         column: 35,
         type: 'Identifier'
@@ -4398,7 +4595,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'b\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'b'},
         line: 4,
         column: 27,
         type: 'Property'
@@ -4414,7 +4612,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       options: [{skipUndeclared: true}],
       errors: [{
-        message: '\'firstname\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'firstname'},
         line: 4,
         column: 29
       }]
@@ -4427,7 +4626,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       options: [{skipUndeclared: true}],
       errors: [{
-        message: '\'firstname\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'firstname'},
         line: 2,
         column: 22
       }]
@@ -4444,7 +4644,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       options: [{skipUndeclared: true}],
       errors: [{
-        message: '\'firstname\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'firstname'},
         line: 6,
         column: 29
       }]
@@ -4459,7 +4660,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       options: [{skipUndeclared: true}],
       errors: [{
-        message: '\'firstname\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'firstname'},
         line: 3,
         column: 29
       }]
@@ -4473,7 +4675,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       options: [{skipUndeclared: false}],
       errors: [{
-        message: '\'firstname\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'firstname'},
         line: 3,
         column: 29
       }]
@@ -4488,7 +4691,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'b\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'b'},
         line: 4,
         column: 27,
         type: 'Property'
@@ -4504,7 +4708,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'b\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'b'},
         line: 4,
         column: 27,
         type: 'Property'
@@ -4521,7 +4726,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'firstname\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'firstname'}
+        }
       ]
     }, {
       code: [
@@ -4536,7 +4744,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'foo\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'foo'}
+        }
       ]
     }, {
       code: [
@@ -4559,7 +4770,10 @@ ruleTester.run('prop-types', rule, {
         propWrapperFunctions: ['forbidExtraProps']
       }),
       errors: [
-        {message: '\'foo\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'foo'}
+        }
       ]
     }, {
       code: [
@@ -4579,7 +4793,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'foo\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'foo'}
+        }
       ]
     }, {
       code: [
@@ -4600,7 +4817,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'foo\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'foo'}
+        }
       ]
     }, {
       code: [
@@ -4620,7 +4840,10 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'foo\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'foo'}
+        }
       ]
     }, {
       code: [
@@ -4639,7 +4862,10 @@ ruleTester.run('prop-types', rule, {
         '  }'
       ].join('\n'),
       errors: [
-        {message: '\'foo\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'foo'}
+        }
       ]
     }, {
       code: [
@@ -4662,7 +4888,10 @@ ruleTester.run('prop-types', rule, {
         propWrapperFunctions: ['forbidExtraProps']
       }),
       errors: [
-        {message: '\'foo\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'foo'}
+        }
       ]
     }, {
       code: [
@@ -4681,7 +4910,10 @@ ruleTester.run('prop-types', rule, {
         '  }'
       ].join('\n'),
       errors: [
-        {message: '\'foo\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'foo'}
+        }
       ]
     }, {
       code: [
@@ -4697,7 +4929,10 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [
-        {message: '\'name\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'name'}
+        }
       ]
     }, {
       code: [
@@ -4711,7 +4946,8 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: '\'lastname\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'lastname'},
         line: 6,
         column: 35,
         type: 'Identifier'
@@ -4730,7 +4966,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       settings: {react: {flowVersion: '0.52'}},
       errors: [{
-        message: '\'lastname\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'lastname'},
         line: 6,
         column: 35,
         type: 'Identifier'
@@ -4751,7 +4988,8 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: '\'lastname\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'lastname'},
         line: 7,
         column: 7,
         type: 'Property'
@@ -4773,7 +5011,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       settings: {react: {flowVersion: '0.52'}},
       errors: [{
-        message: '\'lastname\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'lastname'},
         line: 7,
         column: 7,
         type: 'Property'
@@ -4789,7 +5028,8 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: '\'name.lastname\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'name.lastname'},
         line: 4,
         column: 40,
         type: 'Identifier'
@@ -4806,7 +5046,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       settings: {react: {flowVersion: '0.52'}},
       errors: [{
-        message: '\'name.lastname\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'name.lastname'},
         line: 4,
         column: 40,
         type: 'Identifier'
@@ -4822,7 +5063,8 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: '\'result.notok\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'result.notok'},
         line: 4,
         column: 42,
         type: 'Identifier'
@@ -4839,7 +5081,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       settings: {react: {flowVersion: '0.52'}},
       errors: [{
-        message: '\'result.notok\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'result.notok'},
         line: 4,
         column: 42,
         type: 'Identifier'
@@ -4857,7 +5100,8 @@ ruleTester.run('prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: '\'person.lastname\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'person.lastname'},
         line: 6,
         column: 42,
         type: 'Identifier'
@@ -4876,7 +5120,8 @@ ruleTester.run('prop-types', rule, {
       ].join('\n'),
       settings: {react: {flowVersion: '0.52'}},
       errors: [{
-        message: '\'person.lastname\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'person.lastname'},
         line: 6,
         column: 42,
         type: 'Identifier'
@@ -4895,7 +5140,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [{
-        message: '\'bar\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'bar'},
         line: 8,
         column: 37,
         type: 'Identifier'
@@ -4915,7 +5161,8 @@ ruleTester.run('prop-types', rule, {
       `,
       settings: {react: {flowVersion: '0.53'}},
       errors: [{
-        message: '\'bar\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'bar'},
         line: 8,
         column: 37,
         type: 'Identifier'
@@ -4934,7 +5181,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [{
-        message: '\'bar\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'bar'},
         line: 8,
         column: 37,
         type: 'Identifier'
@@ -4954,7 +5202,8 @@ ruleTester.run('prop-types', rule, {
       `,
       settings: {react: {flowVersion: '0.53'}},
       errors: [{
-        message: '\'bar\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'bar'},
         line: 8,
         column: 37,
         type: 'Identifier'
@@ -4972,7 +5221,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [{
-        message: '\'person.lastname\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'person.lastname'},
         line: 7,
         column: 50,
         type: 'Identifier'
@@ -4991,7 +5241,8 @@ ruleTester.run('prop-types', rule, {
       `,
       settings: {react: {flowVersion: '0.53'}},
       errors: [{
-        message: '\'person.lastname\' is missing in props validation',
+        messageId: 'missingPropType',
+        data: {name: 'person.lastname'},
         line: 7,
         column: 50,
         type: 'Identifier'
@@ -5009,7 +5260,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [{
-        message: '\'bar\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'bar'}
       }],
       parser: parsers.BABEL_ESLINT
     }, {
@@ -5023,7 +5275,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [{
-        message: '\'bar\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'bar'}
       }],
       parser: parsers.BABEL_ESLINT
     }, {
@@ -5041,7 +5294,8 @@ ruleTester.run('prop-types', rule, {
         )
       `,
       errors: [{
-        message: '\'bar\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'bar'}
       }],
       parser: parsers.BABEL_ESLINT
     }, {
@@ -5060,7 +5314,8 @@ ruleTester.run('prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'fooBar\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'fooBar'}
       }]
     }, {
       code: `
@@ -5079,7 +5334,8 @@ ruleTester.run('prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'fooBar\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'fooBar'}
       }]
     }, {
       code: `
@@ -5098,7 +5354,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [{
-        message: '\'fooBar\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'fooBar'}
       }],
       parser: parsers.BABEL_ESLINT
     }, {
@@ -5118,7 +5375,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [{
-        message: '\'fooBar\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'fooBar'}
       }],
       parser: parsers.BABEL_ESLINT
     },
@@ -5150,7 +5408,8 @@ ruleTester.run('prop-types', rule, {
       );
     `,
       errors: [{
-        message: '\'bad\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'bad'}
       }],
       parser: parsers.BABEL_ESLINT
     },
@@ -5170,7 +5429,8 @@ ruleTester.run('prop-types', rule, {
         };
       `,
       errors: [{
-        message: '\'foo.baz\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'foo.baz'}
       }]
     },
     {
@@ -5189,7 +5449,8 @@ ruleTester.run('prop-types', rule, {
         };
       `,
       errors: [{
-        message: '\'bar\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'bar'}
       }]
     },
     {
@@ -5204,7 +5465,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [{
-        message: '\'zoo\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'zoo'}
       }]
     },
     {
@@ -5229,7 +5491,8 @@ ruleTester.run('prop-types', rule, {
       `,
       settings: {react: {version: '16.3.0'}},
       errors: [{
-        message: '\'bar\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'bar'}
       }]
     },
     {
@@ -5244,7 +5507,8 @@ ruleTester.run('prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'page\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'page'}
       }]
     },
     {
@@ -5259,7 +5523,8 @@ ruleTester.run('prop-types', rule, {
         ));
       `,
       errors: [{
-        message: '\'cryptoCurrency\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'cryptoCurrency'}
       }]
     },
     {
@@ -5275,7 +5540,8 @@ ruleTester.run('prop-types', rule, {
         ));
       `,
       errors: [{
-        message: '\'cryptoCurrency\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'cryptoCurrency'}
       }]
     },
     {
@@ -5295,7 +5561,8 @@ ruleTester.run('prop-types', rule, {
         }
       },
       errors: [{
-        message: '\'cryptoCurrency\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'cryptoCurrency'}
       }]
     },
     {
@@ -5316,7 +5583,8 @@ ruleTester.run('prop-types', rule, {
         }
       },
       errors: [{
-        message: '\'cryptoCurrency\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'cryptoCurrency'}
       }]
     },
     {
@@ -5326,7 +5594,8 @@ ruleTester.run('prop-types', rule, {
         });
       `,
       errors: [{
-        message: '\'text\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'text'}
       }]
     },
     {
@@ -5337,7 +5606,8 @@ ruleTester.run('prop-types', rule, {
         });
       `,
       errors: [{
-        message: '\'text\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'text'}
       }]
     },
     {
@@ -5352,7 +5622,8 @@ ruleTester.run('prop-types', rule, {
         }
       },
       errors: [{
-        message: '\'text\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'text'}
       }]
     },
     {
@@ -5368,7 +5639,8 @@ ruleTester.run('prop-types', rule, {
         }
       },
       errors: [{
-        message: '\'text\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'text'}
       }]
     }, {
       code: `
@@ -5387,7 +5659,8 @@ ruleTester.run('prop-types', rule, {
         export default MyComponent;
       `,
       errors: [{
-        message: '\'usedProp\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'usedProp'}
       }]
     },
     {
@@ -5402,7 +5675,8 @@ ruleTester.run('prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'name\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'name'}
       }]
     },
     {
@@ -5422,9 +5696,18 @@ ruleTester.run('prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'a\' is missing in props validation'},
-        {message: '\'a.b\' is missing in props validation'},
-        {message: '\'a.b.c\' is missing in props validation'}
+        {
+          messageId: 'missingPropType',
+          data: {name: 'a'}
+        },
+        {
+          messageId: 'missingPropType',
+          data: {name: 'a.b'}
+        },
+        {
+          messageId: 'missingPropType',
+          data: {name: 'a.b.c'}
+        }
       ]
     },
     {
@@ -5452,7 +5735,8 @@ ruleTester.run('prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'initialValues\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'initialValues'}
       }]
     },
     {
@@ -5492,7 +5776,8 @@ ruleTester.run('prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'lastname\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'lastname'}
       }]
     },
     {
@@ -5520,7 +5805,8 @@ ruleTester.run('prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'user.age\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'user.age'}
       }]
     },
     {
@@ -5530,7 +5816,8 @@ ruleTester.run('prop-types', rule, {
         }));
       `,
       errors: [{
-        message: '\'text\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'text'}
       }]
     },
     {
@@ -5541,7 +5828,8 @@ ruleTester.run('prop-types', rule, {
         }));
       `,
       errors: [{
-        message: '\'text\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'text'}
       }]
     },
     {
@@ -5557,7 +5845,8 @@ ruleTester.run('prop-types', rule, {
         }
       },
       errors: [{
-        message: '\'text\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'text'}
       }]
     },
     {
@@ -5578,7 +5867,8 @@ ruleTester.run('prop-types', rule, {
         };
       `,
       errors: [{
-        message: '\'foo.baz\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'foo.baz'}
       }]
     },
     {
@@ -5590,10 +5880,12 @@ ruleTester.run('prop-types', rule, {
         );
       `,
       errors: [{
-        message: '\'length\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'length'}
       },
       {
-        message: '\'ordering\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'ordering'}
       }]
     },
     {
@@ -5683,7 +5975,8 @@ ruleTester.run('prop-types', rule, {
         };
       `,
       errors: [{
-        message: '\'foo.baz\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'foo.baz'}
       }]
     },
     {
@@ -5704,7 +5997,8 @@ ruleTester.run('prop-types', rule, {
         };
       `,
       errors: [{
-        message: '\'foo.baz\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'foo.baz'}
       }]
     },
     {
@@ -5725,7 +6019,8 @@ ruleTester.run('prop-types', rule, {
         };
       `,
       errors: [{
-        message: '\'foo.baz\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'foo.baz'}
       }]
     },
     {
@@ -5738,7 +6033,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [{
-        message: '\'name\' is missing in props validation'
+        messageId: 'missingPropType',
+        data: {name: 'name'}
       }]
     },
     parsers.TS([
@@ -5755,7 +6051,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [{
-          message: '\'value\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'value'}
         }]
       },
       {
@@ -5771,7 +6068,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [{
-          message: '\'value\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'value'}
         }]
       },
       {
@@ -5795,7 +6093,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [{
-          message: '\'userId\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'userId'}
         }]
       },
       {
@@ -5819,7 +6118,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [{
-          message: '\'userId\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'userId'}
         }]
       },
       {
@@ -5843,7 +6143,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [{
-          message: '\'user\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'user'}
         }]
       },
       {
@@ -5867,7 +6168,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [{
-          message: '\'user\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'user'}
         }]
       },
       {
@@ -5892,7 +6194,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [{
-          message: '\'userId\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'userId'}
         }]
       },
       {
@@ -5917,7 +6220,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [{
-          message: '\'userId\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'userId'}
         }]
       },
       {
@@ -5938,7 +6242,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [{
-          message: '\'onClick\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'onClick'}
         }]
       },
       {
@@ -5959,7 +6264,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [{
-          message: '\'onClick\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'onClick'}
         }]
       },
       {
@@ -5978,7 +6284,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [{
-          message: '\'books\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'books'}
         }]
       },
       {
@@ -5997,7 +6304,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [{
-          message: '\'books\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'books'}
         }]
       },
       {
@@ -6016,7 +6324,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [{
-          message: '\'username\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'username'}
         }]
       },
       {
@@ -6035,7 +6344,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [{
-          message: '\'username\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'username'}
         }]
       },
       {
@@ -6057,7 +6367,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [{
-          message: '\'dateCreated\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'dateCreated'}
         }]
       },
       {
@@ -6079,7 +6390,8 @@ ruleTester.run('prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [{
-          message: '\'dateCreated\' is missing in props validation'
+          messageId: 'missingPropType',
+          data: {name: 'dateCreated'}
         }]
       },
       {
@@ -6199,7 +6511,10 @@ ruleTester.run('prop-types', rule, {
         }
       `,
         errors: [
-          {message: '\'bar\' is missing in props validation'}
+          {
+            messageId: 'missingPropType',
+            data: {name: 'bar'}
+          }
         ],
         parser: parsers['@TYPESCRIPT_ESLINT']
       },
@@ -6210,7 +6525,10 @@ ruleTester.run('prop-types', rule, {
         }
       `,
         errors: [
-          {message: '\'foo\' is missing in props validation'}
+          {
+            messageId: 'missingPropType',
+            data: {name: 'foo'}
+          }
         ],
         parser: parsers['@TYPESCRIPT_ESLINT']
       },
@@ -6221,7 +6539,10 @@ ruleTester.run('prop-types', rule, {
         }
       `,
         errors: [
-          {message: '\'bar\' is missing in props validation'}
+          {
+            messageId: 'missingPropType',
+            data: {name: 'bar'}
+          }
         ],
         parser: parsers['@TYPESCRIPT_ESLINT']
       },
@@ -6232,7 +6553,10 @@ ruleTester.run('prop-types', rule, {
         }
       `,
         errors: [
-          {message: '\'bar\' is missing in props validation'}
+          {
+            messageId: 'missingPropType',
+            data: {name: 'bar'}
+          }
         ],
         parser: parsers['@TYPESCRIPT_ESLINT']
       }

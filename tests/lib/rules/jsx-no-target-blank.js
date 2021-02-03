@@ -25,10 +25,7 @@ const parserOptions = {
 // ------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({parserOptions});
-const defaultErrors = [{
-  message: 'Using target="_blank" without rel="noreferrer" is a security risk:'
-  + ' see https://html.spec.whatwg.org/multipage/links.html#link-type-noopener'
-}];
+const defaultErrors = [{messageId: 'noTargetBlank'}];
 
 ruleTester.run('jsx-no-target-blank', rule, {
   valid: [

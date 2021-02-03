@@ -75,9 +75,7 @@ ruleTester.run('no-find-dom-node', rule, {
         }
       });
     `,
-    errors: [{
-      message: 'Do not use findDOMNode. It doesn’t work with function components and is deprecated in StrictMode. See https://reactjs.org/docs/react-dom.html#finddomnode'
-    }]
+    errors: [{messageId: 'noFindDOMNode'}]
   }, {
     code: `
       var Hello = createReactClass({
@@ -89,9 +87,7 @@ ruleTester.run('no-find-dom-node', rule, {
         }
       });
     `,
-    errors: [{
-      message: 'Do not use findDOMNode. It doesn’t work with function components and is deprecated in StrictMode. See https://reactjs.org/docs/react-dom.html#finddomnode'
-    }]
+    errors: [{messageId: 'noFindDOMNode'}]
   }, {
     code: `
       class Hello extends Component {
@@ -103,9 +99,7 @@ ruleTester.run('no-find-dom-node', rule, {
         }
       };
     `,
-    errors: [{
-      message: 'Do not use findDOMNode. It doesn’t work with function components and is deprecated in StrictMode. See https://reactjs.org/docs/react-dom.html#finddomnode'
-    }]
+    errors: [{messageId: 'noFindDOMNode'}]
   }, {
     code: `
       class Hello extends Component {
@@ -117,8 +111,6 @@ ruleTester.run('no-find-dom-node', rule, {
         }
       };
     `,
-    errors: [{
-      message: 'Do not use findDOMNode. It doesn’t work with function components and is deprecated in StrictMode. See https://reactjs.org/docs/react-dom.html#finddomnode'
-    }]
+    errors: [{messageId: 'noFindDOMNode'}]
   }]
 });

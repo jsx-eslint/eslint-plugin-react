@@ -1159,12 +1159,30 @@ ruleTester.run('static-property-placement', rule, {
         }
       `].join('\n'),
       errors: [
-        {message: '\'childContextTypes\' should be declared as a static class property.'},
-        {message: '\'contextTypes\' should be declared as a static class property.'},
-        {message: '\'contextType\' should be declared as a static class property.'},
-        {message: '\'displayName\' should be declared as a static class property.'},
-        {message: '\'defaultProps\' should be declared as a static class property.'},
-        {message: '\'propTypes\' should be declared as a static class property.'}
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'displayName'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'defaultProps'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'propTypes'}
+        }
       ]
     },
     {
@@ -1205,12 +1223,30 @@ ruleTester.run('static-property-placement', rule, {
         propTypes: STATIC_PUBLIC_FIELD
       }],
       errors: [
-        {message: '\'childContextTypes\' should be declared as a static class property.'},
-        {message: '\'contextTypes\' should be declared as a static class property.'},
-        {message: '\'contextType\' should be declared as a static class property.'},
-        {message: '\'displayName\' should be declared as a static class property.'},
-        {message: '\'defaultProps\' should be declared as a static class property.'},
-        {message: '\'propTypes\' should be declared as a static class property.'}
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'displayName'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'defaultProps'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'propTypes'}
+        }
       ]
     },
     // ------------------------------------------------------------------------------
@@ -1254,12 +1290,30 @@ ruleTester.run('static-property-placement', rule, {
         }
       `].join('\n'),
       errors: [
-        {message: '\'childContextTypes\' should be declared as a static class property.'},
-        {message: '\'contextTypes\' should be declared as a static class property.'},
-        {message: '\'contextType\' should be declared as a static class property.'},
-        {message: '\'displayName\' should be declared as a static class property.'},
-        {message: '\'defaultProps\' should be declared as a static class property.'},
-        {message: '\'propTypes\' should be declared as a static class property.'}
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'displayName'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'defaultProps'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'propTypes'}
+        }
       ]
     },
     {
@@ -1308,12 +1362,30 @@ ruleTester.run('static-property-placement', rule, {
         propTypes: STATIC_PUBLIC_FIELD
       }],
       errors: [
-        {message: '\'childContextTypes\' should be declared as a static class property.'},
-        {message: '\'contextTypes\' should be declared as a static class property.'},
-        {message: '\'contextType\' should be declared as a static class property.'},
-        {message: '\'displayName\' should be declared as a static class property.'},
-        {message: '\'defaultProps\' should be declared as a static class property.'},
-        {message: '\'propTypes\' should be declared as a static class property.'}
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'displayName'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'defaultProps'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'propTypes'}
+        }
       ]
     },
     // ------------------------------------------------------------------------------
@@ -1346,12 +1418,30 @@ ruleTester.run('static-property-placement', rule, {
       `].join('\n'),
       options: [PROPERTY_ASSIGNMENT],
       errors: [
-        {message: '\'childContextTypes\' should be declared outside the class body.'},
-        {message: '\'contextTypes\' should be declared outside the class body.'},
-        {message: '\'contextType\' should be declared outside the class body.'},
-        {message: '\'displayName\' should be declared outside the class body.'},
-        {message: '\'defaultProps\' should be declared outside the class body.'},
-        {message: '\'propTypes\' should be declared outside the class body.'}
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'displayName'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'defaultProps'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'propTypes'}
+        }
       ]
     },
     {
@@ -1388,12 +1478,30 @@ ruleTester.run('static-property-placement', rule, {
         propTypes: PROPERTY_ASSIGNMENT
       }],
       errors: [
-        {message: '\'childContextTypes\' should be declared outside the class body.'},
-        {message: '\'contextTypes\' should be declared outside the class body.'},
-        {message: '\'contextType\' should be declared outside the class body.'},
-        {message: '\'displayName\' should be declared outside the class body.'},
-        {message: '\'defaultProps\' should be declared outside the class body.'},
-        {message: '\'propTypes\' should be declared outside the class body.'}
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'displayName'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'defaultProps'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'propTypes'}
+        }
       ]
     },
     // ------------------------------------------------------------------------------
@@ -1438,12 +1546,30 @@ ruleTester.run('static-property-placement', rule, {
       `].join('\n'),
       options: [PROPERTY_ASSIGNMENT],
       errors: [
-        {message: '\'childContextTypes\' should be declared outside the class body.'},
-        {message: '\'contextTypes\' should be declared outside the class body.'},
-        {message: '\'contextType\' should be declared outside the class body.'},
-        {message: '\'displayName\' should be declared outside the class body.'},
-        {message: '\'defaultProps\' should be declared outside the class body.'},
-        {message: '\'propTypes\' should be declared outside the class body.'}
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'displayName'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'defaultProps'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'propTypes'}
+        }
       ]
     },
     {
@@ -1492,12 +1618,30 @@ ruleTester.run('static-property-placement', rule, {
         propTypes: PROPERTY_ASSIGNMENT
       }],
       errors: [
-        {message: '\'childContextTypes\' should be declared outside the class body.'},
-        {message: '\'contextTypes\' should be declared outside the class body.'},
-        {message: '\'contextType\' should be declared outside the class body.'},
-        {message: '\'displayName\' should be declared outside the class body.'},
-        {message: '\'defaultProps\' should be declared outside the class body.'},
-        {message: '\'propTypes\' should be declared outside the class body.'}
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'displayName'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'defaultProps'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'propTypes'}
+        }
       ]
     },
     // ------------------------------------------------------------------------------
@@ -1530,12 +1674,30 @@ ruleTester.run('static-property-placement', rule, {
       `].join('\n'),
       options: [STATIC_GETTER],
       errors: [
-        {message: '\'childContextTypes\' should be declared as a static getter class function.'},
-        {message: '\'contextTypes\' should be declared as a static getter class function.'},
-        {message: '\'contextType\' should be declared as a static getter class function.'},
-        {message: '\'displayName\' should be declared as a static getter class function.'},
-        {message: '\'defaultProps\' should be declared as a static getter class function.'},
-        {message: '\'propTypes\' should be declared as a static getter class function.'}
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'displayName'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'defaultProps'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'propTypes'}
+        }
       ]
     },
     {
@@ -1572,12 +1734,30 @@ ruleTester.run('static-property-placement', rule, {
         propTypes: STATIC_GETTER
       }],
       errors: [
-        {message: '\'childContextTypes\' should be declared as a static getter class function.'},
-        {message: '\'contextTypes\' should be declared as a static getter class function.'},
-        {message: '\'contextType\' should be declared as a static getter class function.'},
-        {message: '\'displayName\' should be declared as a static getter class function.'},
-        {message: '\'defaultProps\' should be declared as a static getter class function.'},
-        {message: '\'propTypes\' should be declared as a static getter class function.'}
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'displayName'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'defaultProps'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'propTypes'}
+        }
       ]
     },
     // ------------------------------------------------------------------------------
@@ -1614,12 +1794,30 @@ ruleTester.run('static-property-placement', rule, {
       `].join('\n'),
       options: [STATIC_GETTER],
       errors: [
-        {message: '\'childContextTypes\' should be declared as a static getter class function.'},
-        {message: '\'contextTypes\' should be declared as a static getter class function.'},
-        {message: '\'contextType\' should be declared as a static getter class function.'},
-        {message: '\'displayName\' should be declared as a static getter class function.'},
-        {message: '\'defaultProps\' should be declared as a static getter class function.'},
-        {message: '\'propTypes\' should be declared as a static getter class function.'}
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'displayName'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'defaultProps'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'propTypes'}
+        }
       ]
     },
     {
@@ -1660,12 +1858,30 @@ ruleTester.run('static-property-placement', rule, {
         propTypes: STATIC_GETTER
       }],
       errors: [
-        {message: '\'childContextTypes\' should be declared as a static getter class function.'},
-        {message: '\'contextTypes\' should be declared as a static getter class function.'},
-        {message: '\'contextType\' should be declared as a static getter class function.'},
-        {message: '\'displayName\' should be declared as a static getter class function.'},
-        {message: '\'defaultProps\' should be declared as a static getter class function.'},
-        {message: '\'propTypes\' should be declared as a static getter class function.'}
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'displayName'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'defaultProps'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'propTypes'}
+        }
       ]
     },
     // ------------------------------------------------------------------------------
@@ -1704,12 +1920,30 @@ ruleTester.run('static-property-placement', rule, {
         displayName: STATIC_PUBLIC_FIELD
       }],
       errors: [
-        {message: '\'childContextTypes\' should be declared outside the class body.'},
-        {message: '\'contextTypes\' should be declared outside the class body.'},
-        {message: '\'contextType\' should be declared outside the class body.'},
-        {message: '\'displayName\' should be declared as a static class property.'},
-        {message: '\'defaultProps\' should be declared as a static getter class function.'},
-        {message: '\'propTypes\' should be declared as a static class property.'}
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'displayName'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'defaultProps'}
+        },
+        {
+          messageId: 'notStaticClassProp',
+          data: {name: 'propTypes'}
+        }
       ]
     },
     {
@@ -1746,12 +1980,30 @@ ruleTester.run('static-property-placement', rule, {
         displayName: PROPERTY_ASSIGNMENT
       }],
       errors: [
-        {message: '\'childContextTypes\' should be declared outside the class body.'},
-        {message: '\'contextTypes\' should be declared outside the class body.'},
-        {message: '\'contextType\' should be declared outside the class body.'},
-        {message: '\'displayName\' should be declared outside the class body.'},
-        {message: '\'defaultProps\' should be declared as a static getter class function.'},
-        {message: '\'propTypes\' should be declared as a static getter class function.'}
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'displayName'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'defaultProps'}
+        },
+        {
+          messageId: 'notGetterClassFunc',
+          data: {name: 'propTypes'}
+        }
       ]
     },
     // ------------------------------------------------------------------------------
@@ -1791,10 +2043,22 @@ ruleTester.run('static-property-placement', rule, {
         propTypes: STATIC_GETTER
       }],
       errors: [
-        {message: '\'childContextTypes\' should be declared outside the class body.'},
-        {message: '\'contextTypes\' should be declared outside the class body.'},
-        {message: '\'contextType\' should be declared outside the class body.'},
-        {message: '\'displayName\' should be declared outside the class body.'}
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'displayName'}
+        }
       ]
     },
     {
@@ -1834,14 +2098,38 @@ ruleTester.run('static-property-placement', rule, {
       `].join('\n'),
       options: [PROPERTY_ASSIGNMENT],
       errors: [
-        {message: '\'childContextTypes\' should be declared outside the class body.'},
-        {message: '\'contextTypes\' should be declared outside the class body.'},
-        {message: '\'contextType\' should be declared outside the class body.'},
-        {message: '\'displayName\' should be declared outside the class body.'},
-        {message: '\'contextTypes\' should be declared outside the class body.'},
-        {message: '\'defaultProps\' should be declared outside the class body.'},
-        {message: '\'propTypes\' should be declared outside the class body.'},
-        {message: '\'displayName\' should be declared outside the class body.'}
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'childContextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextType'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'displayName'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'contextTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'defaultProps'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'propTypes'}
+        },
+        {
+          messageId: 'declareOutsideClass',
+          data: {name: 'displayName'}
+        }
       ]
 
     }

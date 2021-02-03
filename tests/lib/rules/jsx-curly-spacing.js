@@ -692,60 +692,74 @@ ruleTester.run('jsx-curly-spacing', rule, {
     code: '<App foo={ bar }>{bar}</App>;',
     output: '<App foo={bar}>{bar}</App>;',
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar }>{ bar }</App>;',
     output: '<App foo={bar}>{ bar }</App>;',
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ { bar: true, baz: true } }>{{ bar: true, baz: true }}</App>;',
     output: '<App foo={{ bar: true, baz: true }}>{{ bar: true, baz: true }}</App>;',
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ { bar: true, baz: true } }>{ { bar: true, baz: true } }</App>;',
     output: '<App foo={{ bar: true, baz: true }}>{ { bar: true, baz: true } }</App>;',
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar } />;',
     output: '<App foo={bar} />;',
     options: [{attributes: true}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ { bar: true, baz: true } } />;',
     output: '<App foo={{ bar: true, baz: true }} />;',
     options: [{attributes: true}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{ bar }</App>;',
     output: '<App>{bar}</App>;',
     options: [{children: true}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<>{ bar }</>;',
@@ -753,27 +767,33 @@ ruleTester.run('jsx-curly-spacing', rule, {
     parser: parsers.BABEL_ESLINT,
     options: [{children: true}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{ { bar: true, baz: true } }</App>;',
     output: '<App>{{ bar: true, baz: true }}</App>;',
     options: [{children: true}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar } />;',
     output: '<App foo={bar} />;',
     options: [{when: 'never'}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -784,18 +804,22 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={bar} />;',
     options: [{when: 'never', allowMultiline: false}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ { bar: true, baz: true } } />;',
     output: '<App foo={{ bar: true, baz: true }} />;',
     options: [{when: 'never', spacing: {objectLiterals: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -806,18 +830,22 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={{ bar: true, baz: true }} />;',
     options: [{when: 'never', allowMultiline: false, spacing: {objectLiterals: 'never'}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={{ bar: true, baz: true }} />;',
     output: '<App foo={ { bar: true, baz: true } } />;',
     options: [{when: 'never', spacing: {objectLiterals: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -828,18 +856,22 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={ { bar: true, baz: true } } />;',
     options: [{when: 'never', allowMultiline: false, spacing: {objectLiterals: 'always'}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar} />;',
     output: '<App foo={ bar } />;',
     options: [{when: 'always'}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -850,18 +882,22 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={ bar } />;',
     options: [{when: 'always', allowMultiline: false}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ { bar: true, baz: true } } />;',
     output: '<App foo={{ bar: true, baz: true }} />;',
     options: [{when: 'always', spacing: {objectLiterals: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -872,18 +908,22 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={{ bar: true, baz: true }} />;',
     options: [{when: 'always', allowMultiline: false, spacing: {objectLiterals: 'never'}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={{ bar: true, baz: true }} />;',
     output: '<App foo={ { bar: true, baz: true } } />;',
     options: [{when: 'always', spacing: {objectLiterals: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -894,18 +934,22 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={ { bar: true, baz: true } } />;',
     options: [{when: 'always', allowMultiline: false, spacing: {objectLiterals: 'always'}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar } />;',
     output: '<App foo={bar} />;',
     options: [{attributes: true, when: 'never'}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -916,36 +960,44 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={bar} />;',
     options: [{attributes: true, when: 'never', allowMultiline: false}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ { bar: true, baz: true } } />;',
     output: '<App foo={{ bar: true, baz: true }} />;',
     options: [{attributes: true, when: 'never', spacing: {objectLiterals: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={{ bar: true, baz: true }} />;',
     output: '<App foo={ { bar: true, baz: true } } />;',
     options: [{attributes: true, when: 'never', spacing: {objectLiterals: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar} />;',
     output: '<App foo={ bar } />;',
     options: [{attributes: true, when: 'always'}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -956,91 +1008,109 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={ bar } />;',
     options: [{attributes: true, when: 'always', allowMultiline: false}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ { bar: true, baz: true } } />;',
     output: '<App foo={{ bar: true, baz: true }} />;',
     options: [{attributes: true, when: 'always', spacing: {objectLiterals: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={{ bar: true, baz: true }} />;',
     output: '<App foo={ { bar: true, baz: true } } />;',
     options: [{attributes: true, when: 'always', spacing: {objectLiterals: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar } />;',
     output: '<App foo={bar} />;',
     options: [{attributes: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar } />;',
     output: '<App foo={bar} />;',
     options: [{attributes: {when: 'never', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar} />;',
     output: '<App foo={ bar } />;',
     options: [{attributes: {when: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar} />;',
     output: '<App foo={ bar } />;',
     options: [{attributes: {when: 'always', allowMultiline: false}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar} />;',
     output: '<App foo={ bar } />;',
     options: [{attributes: {when: 'always'}}],
     errors: [{
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar } />;',
     output: '<App foo={ bar } />;',
     options: [{attributes: {when: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App foo={ bar} />;',
     output: '<App foo={bar} />;',
     options: [{attributes: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App foo={bar } />;',
     output: '<App foo={bar} />;',
     options: [{attributes: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1051,9 +1121,11 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={bar} />;',
     options: [{attributes: {when: 'never', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1064,50 +1136,60 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={ bar } />;',
     options: [{attributes: {when: 'always', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar} />;',
     output: '<App foo={ bar } />;',
     options: [{attributes: {when: 'always', spacing: {}}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar} />;',
     output: '<App foo={ bar } />;',
     options: [{attributes: {when: 'always', spacing: {}}}],
     errors: [{
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar } />;',
     output: '<App foo={ bar } />;',
     options: [{attributes: {when: 'always', spacing: {}}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App foo={ {bar: true, baz: true} } />;',
     output: '<App foo={{bar: true, baz: true}} />;',
     options: [{attributes: {when: 'always', spacing: {objectLiterals: 'never'}}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{ bar }</App>;',
     output: '<App>{bar}</App>;',
     options: [{children: true, when: 'never'}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1118,36 +1200,44 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App>{bar}</App>;',
     options: [{children: true, when: 'never', allowMultiline: false}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{ { bar: true, baz: true } }</App>;',
     output: '<App>{{ bar: true, baz: true }}</App>;',
     options: [{children: true, when: 'never', spacing: {objectLiterals: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{{ bar: true, baz: true }}</App>;',
     output: '<App>{ { bar: true, baz: true } }</App>;',
     options: [{children: true, when: 'never', spacing: {objectLiterals: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{bar}</App>;',
     output: '<App>{ bar }</App>;',
     options: [{children: true, when: 'always'}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1158,91 +1248,109 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App>{ bar }</App>;',
     options: [{children: true, when: 'always', allowMultiline: false}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{ { bar: true, baz: true } }</App>;',
     output: '<App>{{ bar: true, baz: true }}</App>;',
     options: [{children: true, when: 'always', spacing: {objectLiterals: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{{ bar: true, baz: true }}</App>;',
     output: '<App>{ { bar: true, baz: true } }</App>;',
     options: [{children: true, when: 'always', spacing: {objectLiterals: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{ bar }</App>;',
     output: '<App>{bar}</App>;',
     options: [{children: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{ bar }</App>;',
     output: '<App>{bar}</App>;',
     options: [{children: {when: 'never', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{bar}</App>;',
     output: '<App>{ bar }</App>;',
     options: [{children: {when: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{bar}</App>;',
     output: '<App>{ bar }</App>;',
     options: [{children: {when: 'always', allowMultiline: false}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{ bar}</App>;',
     output: '<App>{ bar }</App>;',
     options: [{children: {when: 'always'}}],
     errors: [{
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{bar }</App>;',
     output: '<App>{ bar }</App>;',
     options: [{children: {when: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App>{ bar}</App>;',
     output: '<App>{bar}</App>;',
     options: [{children: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App>{bar }</App>;',
     output: '<App>{bar}</App>;',
     options: [{children: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1253,9 +1361,11 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App>{bar}</App>;',
     options: [{children: {when: 'never', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1266,105 +1376,125 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App>{ bar }</App>;',
     options: [{children: {when: 'always', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{bar}</App>;',
     output: '<App>{ bar }</App>;',
     options: [{children: {when: 'always', spacing: {}}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{ bar}</App>;',
     output: '<App>{ bar }</App>;',
     options: [{children: {when: 'always', spacing: {}}}],
     errors: [{
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{bar }</App>;',
     output: '<App>{ bar }</App>;',
     options: [{children: {when: 'always', spacing: {}}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App>{ {bar: true, baz: true} }</App>;',
     output: '<App>{{bar: true, baz: true}}</App>;',
     options: [{children: {when: 'always', spacing: {objectLiterals: 'never'}}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App { ...bar } />;',
     output: '<App {...bar} />;',
     options: [{attributes: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App { ...bar } />;',
     output: '<App {...bar} />;',
     options: [{attributes: {when: 'never', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App {...bar} />;',
     output: '<App { ...bar } />;',
     options: [{attributes: {when: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App {...bar} />;',
     output: '<App { ...bar } />;',
     options: [{attributes: {when: 'always', allowMultiline: false}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App { ...bar} />;',
     output: '<App { ...bar } />;',
     options: [{attributes: {when: 'always'}}],
     errors: [{
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App {...bar } />;',
     output: '<App { ...bar } />;',
     options: [{attributes: {when: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App { ...bar} />;',
     output: '<App {...bar} />;',
     options: [{attributes: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App {...bar } />;',
     output: '<App {...bar} />;',
     options: [{attributes: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1375,9 +1505,11 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App {...bar} />;',
     options: [{attributes: {when: 'never', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1388,97 +1520,123 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App { ...bar } />;',
     options: [{attributes: {when: 'always', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar } { ...baz } />;',
     output: '<App foo={bar} {...baz} />;',
     options: [{attributes: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }, {
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar } { ...baz } />;',
     output: '<App foo={bar} {...baz} />;',
     options: [{attributes: {when: 'never', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }, {
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar} {...baz} />;',
     output: '<App foo={ bar } { ...baz } />;',
     options: [{attributes: {when: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }, {
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar} {...baz} />;',
     output: '<App foo={ bar } { ...baz } />;',
     options: [{attributes: {when: 'always', allowMultiline: false}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }, {
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar} { ...baz} />;',
     output: '<App foo={ bar } { ...baz } />;',
     options: [{attributes: {when: 'always'}}],
     errors: [{
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar } {...baz } />;',
     output: '<App foo={ bar } { ...baz } />;',
     options: [{attributes: {when: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App foo={ bar} { ...baz} />;',
     output: '<App foo={bar} {...baz} />;',
     options: [{attributes: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App foo={bar } {...baz } />;',
     output: '<App foo={bar} {...baz} />;',
     options: [{attributes: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1491,13 +1649,17 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={bar} {...baz} />;',
     options: [{attributes: {when: 'never', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }, {
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1510,148 +1672,188 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={ bar } { ...baz } />;',
     options: [{attributes: {when: 'always', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }, {
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ 3 } bar={{a: 2}} />',
     output: '<App foo={3} bar={ {a: 2} } />',
     options: [{attributes: {when: 'never', spacing: {objectLiterals: 'always'}}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }, {
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ foo /* comment 16 */ } />',
     output: '<App foo={foo /* comment 16 */} />',
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={foo /* comment 17 */} />',
     output: '<App foo={ foo /* comment 17 */ } />',
     options: [{attributes: {when: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ /* comment 18 */ foo } />',
     output: '<App foo={/* comment 18 */ foo} />',
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={/* comment 19 */ foo} />',
     output: '<App foo={ /* comment 19 */ foo } />',
     options: [{attributes: {when: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{ bar } { baz }</App>;',
     output: '<App>{bar} {baz}</App>;',
     options: [{children: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }, {
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{ bar } { baz }</App>;',
     output: '<App>{bar} {baz}</App>;',
     options: [{children: {when: 'never', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }, {
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{bar} {baz}</App>;',
     output: '<App>{ bar } { baz }</App>;',
     options: [{children: {when: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }, {
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{bar} {baz}</App>;',
     output: '<App>{ bar } { baz }</App>;',
     options: [{children: {when: 'always', allowMultiline: false}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }, {
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{ bar} { baz}</App>;',
     output: '<App>{ bar } { baz }</App>;',
     options: [{children: {when: 'always'}}],
     errors: [{
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{bar } {baz }</App>;',
     output: '<App>{ bar } { baz }</App>;',
     options: [{children: {when: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App>{ bar} { baz}</App>;',
     output: '<App>{bar} {baz}</App>;',
     options: [{children: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App>{bar } {baz }</App>;',
     output: '<App>{bar} {baz}</App>;',
     options: [{children: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1664,13 +1866,17 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App>{bar} {baz}</App>;',
     options: [{children: {when: 'never', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }, {
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1683,62 +1889,78 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App>{ bar } { baz }</App>;',
     options: [{children: {when: 'always', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }, {
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{ 3 } bar={{a: 2}}</App>',
     output: '<App>{3} bar={ {a: 2} }</App>',
     options: [{children: {when: 'never', spacing: {objectLiterals: 'always'}}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }, {
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{foo /* comment 20 */}</App>',
     output: '<App>{ foo /* comment 20 */ }</App>',
     options: [{children: {when: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{/* comment 21 */ foo}</App>',
     output: '<App>{ /* comment 21 */ foo }</App>',
     options: [{children: {when: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar } />;',
     output: '<App foo={bar} />;',
     options: ['never'],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar } />;',
     output: '<App foo={bar} />;',
     options: ['never', {allowMultiline: false}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1749,9 +1971,11 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={{ bar: true, baz: true }} />;',
     options: ['never', {allowMultiline: false, spacing: {objectLiterals: 'never'}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1762,9 +1986,11 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={ { bar: true, baz: true } } />;',
     options: ['never', {allowMultiline: false, spacing: {objectLiterals: 'always'}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1775,9 +2001,11 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={{ bar: true, baz: true }} />;',
     options: ['always', {allowMultiline: false, spacing: {objectLiterals: 'never'}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1788,55 +2016,65 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={ { bar: true, baz: true } } />;',
     options: ['always', {allowMultiline: false, spacing: {objectLiterals: 'always'}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar} />;',
     output: '<App foo={ bar } />;',
     options: ['always'],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar} />;',
     output: '<App foo={ bar } />;',
     options: ['always', {allowMultiline: false}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar} />;',
     output: '<App foo={ bar } />;',
     options: ['always'],
     errors: [{
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar } />;',
     output: '<App foo={ bar } />;',
     options: ['always'],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App foo={ bar} />;',
     output: '<App foo={bar} />;',
     options: ['never'],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App foo={bar } />;',
     output: '<App foo={bar} />;',
     options: ['never'],
     errors: [{
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1847,9 +2085,11 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={bar} />;',
     options: ['never', {allowMultiline: false}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1860,105 +2100,125 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={ bar } />;',
     options: ['always', {allowMultiline: false}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar} />;',
     output: '<App foo={ bar } />;',
     options: ['always', {spacing: {}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar} />;',
     output: '<App foo={ bar } />;',
     options: ['always', {spacing: {}}],
     errors: [{
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar } />;',
     output: '<App foo={ bar } />;',
     options: ['always', {spacing: {}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App foo={ {bar: true, baz: true} } />;',
     output: '<App foo={{bar: true, baz: true}} />;',
     options: ['always', {spacing: {objectLiterals: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App { ...bar } />;',
     output: '<App {...bar} />;',
     options: ['never'],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App { ...bar } />;',
     output: '<App {...bar} />;',
     options: ['never', {allowMultiline: false}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App {...bar} />;',
     output: '<App { ...bar } />;',
     options: ['always'],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App {...bar} />;',
     output: '<App { ...bar } />;',
     options: ['always', {allowMultiline: false}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App { ...bar} />;',
     output: '<App { ...bar } />;',
     options: ['always'],
     errors: [{
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App {...bar } />;',
     output: '<App { ...bar } />;',
     options: ['always'],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App { ...bar} />;',
     output: '<App {...bar} />;',
     options: ['never'],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App {...bar } />;',
     output: '<App {...bar} />;',
     options: ['never'],
     errors: [{
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1969,9 +2229,11 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App {...bar} />;',
     options: ['never', {allowMultiline: false}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -1982,97 +2244,123 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App { ...bar } />;',
     options: ['always', {allowMultiline: false}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar } { ...baz } />;',
     output: '<App foo={bar} {...baz} />;',
     options: ['never'],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }, {
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar } { ...baz } />;',
     output: '<App foo={bar} {...baz} />;',
     options: ['never', {allowMultiline: false}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }, {
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar} {...baz} />;',
     output: '<App foo={ bar } { ...baz } />;',
     options: ['always'],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }, {
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar} {...baz} />;',
     output: '<App foo={ bar } { ...baz } />;',
     options: ['always', {allowMultiline: false}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }, {
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ bar} { ...baz} />;',
     output: '<App foo={ bar } { ...baz } />;',
     options: ['always'],
     errors: [{
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={bar } {...baz } />;',
     output: '<App foo={ bar } { ...baz } />;',
     options: ['always'],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App foo={ bar} { ...baz} />;',
     output: '<App foo={bar} {...baz} />;',
     options: ['never'],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App foo={bar } {...baz } />;',
     output: '<App foo={bar} {...baz} />;',
     options: ['never'],
     errors: [{
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -2085,13 +2373,17 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={bar} {...baz} />;',
     options: ['never', {allowMultiline: false}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }, {
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -2104,67 +2396,83 @@ ruleTester.run('jsx-curly-spacing', rule, {
     output: '<App foo={ bar } { ...baz } />;',
     options: ['always', {allowMultiline: false}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }, {
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={ 3 } bar={{a: 2}} />',
     output: '<App foo={3} bar={ {a: 2} } />',
     options: ['never', {spacing: {objectLiterals: 'always'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }, {
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={foo /* comment 22 */} />',
     output: '<App foo={ foo /* comment 22 */ } />',
     options: ['always'],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App foo={/* comment 23 */ foo} />',
     output: '<App foo={ /* comment 23 */ foo } />',
     options: ['always'],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{/*comment24*/ }</App>',
     output: '<App>{/*comment24*/}</App>',
     options: [{children: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: '<App>{ /*comment25*/}</App>',
     output: '<App>{/*comment25*/}</App>',
     options: [{children: {when: 'never'}}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }]
   }, {
     code: '<App>{/*comment26*/}</App>',
     output: '<App>{ /*comment26*/ }</App>',
     options: [{children: {when: 'always'}}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -2179,9 +2487,11 @@ ruleTester.run('jsx-curly-spacing', rule, {
     ].join('\n'),
     options: [{when: 'never', children: true}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -2196,9 +2506,11 @@ ruleTester.run('jsx-curly-spacing', rule, {
     ].join('\n'),
     options: [{when: 'always', children: true}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -2214,7 +2526,8 @@ ruleTester.run('jsx-curly-spacing', rule, {
     ].join('\n'),
     options: [{children: {when: 'never', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no newline before \'}\''
+      messageId: 'noNewlineBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -2230,7 +2543,8 @@ ruleTester.run('jsx-curly-spacing', rule, {
     ].join('\n'),
     options: [{children: {when: 'never', allowMultiline: false}}],
     errors: [{
-      message: 'There should be no newline after \'{\''
+      messageId: 'noNewlineAfter',
+      data: {token: '{'}
     }]
   }, {
     code: [
@@ -2249,9 +2563,11 @@ ruleTester.run('jsx-curly-spacing', rule, {
     ].join('\n'),
     options: [{when: 'never', children: true}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -2270,9 +2586,11 @@ ruleTester.run('jsx-curly-spacing', rule, {
     ].join('\n'),
     options: [{when: 'always', children: true}],
     errors: [{
-      message: 'A space is required after \'{\''
+      messageId: 'spaceNeededAfter',
+      data: {token: '{'}
     }, {
-      message: 'A space is required before \'}\''
+      messageId: 'spaceNeededBefore',
+      data: {token: '}'}
     }]
   }, {
     code: [
@@ -2283,9 +2601,11 @@ ruleTester.run('jsx-curly-spacing', rule, {
     ].join('\n'),
     options: ['never', {allowMultiline: true}],
     errors: [{
-      message: 'There should be no space after \'{\''
+      messageId: 'noSpaceAfter',
+      data: {token: '{'}
     }, {
-      message: 'There should be no space before \'}\''
+      messageId: 'noSpaceBefore',
+      data: {token: '}'}
     }]
   }]
 });

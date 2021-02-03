@@ -242,7 +242,7 @@ ruleTester.run('state-in-constructor', rule, {
     `,
     options: ['never'],
     errors: [{
-      message: 'State initialization should be in a class property'
+      messageId: 'stateInitClassProp'
     }]
   }, {
     code: `
@@ -259,7 +259,7 @@ ruleTester.run('state-in-constructor', rule, {
     `,
     options: ['never'],
     errors: [{
-      message: 'State initialization should be in a class property'
+      messageId: 'stateInitClassProp'
     }]
   }, {
     code: `
@@ -271,7 +271,7 @@ ruleTester.run('state-in-constructor', rule, {
       }
     `,
     errors: [{
-      message: 'State initialization should be in a constructor'
+      messageId: 'stateInitConstructor'
     }]
   }, {
     code: `
@@ -284,7 +284,7 @@ ruleTester.run('state-in-constructor', rule, {
       }
     `,
     errors: [{
-      message: 'State initialization should be in a constructor'
+      messageId: 'stateInitConstructor'
     }]
   }, {
     code: `
@@ -300,7 +300,7 @@ ruleTester.run('state-in-constructor', rule, {
       }
     `,
     errors: [{
-      message: 'State initialization should be in a constructor'
+      messageId: 'stateInitConstructor'
     }]
   }, {
     code: `
@@ -316,7 +316,7 @@ ruleTester.run('state-in-constructor', rule, {
       }
     `,
     errors: [{
-      message: 'State initialization should be in a constructor'
+      messageId: 'stateInitConstructor'
     }]
   }, {
     code: `
@@ -333,7 +333,7 @@ ruleTester.run('state-in-constructor', rule, {
     `,
     options: ['never'],
     errors: [{
-      message: 'State initialization should be in a class property'
+      messageId: 'stateInitClassProp'
     }]
   }, {
     code: `
@@ -351,7 +351,7 @@ ruleTester.run('state-in-constructor', rule, {
     `,
     options: ['never'],
     errors: [{
-      message: 'State initialization should be in a class property'
+      messageId: 'stateInitClassProp'
     }]
   }]
 });

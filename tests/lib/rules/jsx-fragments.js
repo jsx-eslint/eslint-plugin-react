@@ -99,22 +99,19 @@ ruleTester.run('jsx-fragments', rule, {
     parser: parsers.BABEL_ESLINT,
     settings: settingsOld,
     errors: [{
-      message: 'Fragments are only supported starting from React v16.2. '
-        + 'Please disable the `react/jsx-fragments` rule in ESLint settings or upgrade your version of React.'
+      messageId: 'fragmentsNotSupported'
     }]
   }, {
     code: '<Act.Frag><Foo /></Act.Frag>',
     settings: settingsOld,
     errors: [{
-      message: 'Fragments are only supported starting from React v16.2. '
-        + 'Please disable the `react/jsx-fragments` rule in ESLint settings or upgrade your version of React.'
+      messageId: 'fragmentsNotSupported'
     }]
   }, {
     code: '<Act.Frag />',
     settings: settingsOld,
     errors: [{
-      message: 'Fragments are only supported starting from React v16.2. '
-        + 'Please disable the `react/jsx-fragments` rule in ESLint settings or upgrade your version of React.'
+      messageId: 'fragmentsNotSupported'
     }]
   }, {
     code: '<><Foo /></>',
@@ -122,7 +119,8 @@ ruleTester.run('jsx-fragments', rule, {
     options: ['element'],
     settings,
     errors: [{
-      message: 'Prefer Act.Frag over fragment shorthand'
+      messageId: 'preferPragma',
+      data: {react: 'Act', fragment: 'Frag'}
     }],
     output: '<Act.Frag><Foo /></Act.Frag>'
   }, {
@@ -130,7 +128,8 @@ ruleTester.run('jsx-fragments', rule, {
     options: ['syntax'],
     settings,
     errors: [{
-      message: 'Prefer fragment shorthand over Act.Frag'
+      messageId: 'preferFragment',
+      data: {react: 'Act', fragment: 'Frag'}
     }],
     output: '<><Foo /></>'
   }, {
@@ -138,7 +137,8 @@ ruleTester.run('jsx-fragments', rule, {
     options: ['syntax'],
     settings,
     errors: [{
-      message: 'Prefer fragment shorthand over Act.Frag'
+      messageId: 'preferFragment',
+      data: {react: 'Act', fragment: 'Frag'}
     }],
     output: '<></>'
   }, {
@@ -149,7 +149,8 @@ ruleTester.run('jsx-fragments', rule, {
     options: ['syntax'],
     settings,
     errors: [{
-      message: 'Prefer fragment shorthand over Act.Frag'
+      messageId: 'preferFragment',
+      data: {react: 'Act', fragment: 'Frag'}
     }],
     output: `
       import Act, { Frag as F } from 'react';
@@ -163,7 +164,8 @@ ruleTester.run('jsx-fragments', rule, {
     options: ['syntax'],
     settings,
     errors: [{
-      message: 'Prefer fragment shorthand over Act.Frag'
+      messageId: 'preferFragment',
+      data: {react: 'Act', fragment: 'Frag'}
     }],
     output: `
       import Act, { Frag as F } from 'react';
@@ -177,7 +179,8 @@ ruleTester.run('jsx-fragments', rule, {
     options: ['syntax'],
     settings,
     errors: [{
-      message: 'Prefer fragment shorthand over Act.Frag'
+      messageId: 'preferFragment',
+      data: {react: 'Act', fragment: 'Frag'}
     }],
     output: `
       import Act, { Frag } from 'react';
@@ -191,7 +194,8 @@ ruleTester.run('jsx-fragments', rule, {
     options: ['syntax'],
     settings,
     errors: [{
-      message: 'Prefer fragment shorthand over Act.Frag'
+      messageId: 'preferFragment',
+      data: {react: 'Act', fragment: 'Frag'}
     }],
     output: `
       const F = Act.Frag;
@@ -205,7 +209,8 @@ ruleTester.run('jsx-fragments', rule, {
     options: ['syntax'],
     settings,
     errors: [{
-      message: 'Prefer fragment shorthand over Act.Frag'
+      messageId: 'preferFragment',
+      data: {react: 'Act', fragment: 'Frag'}
     }],
     output: `
       const { Frag } = Act;
@@ -219,7 +224,8 @@ ruleTester.run('jsx-fragments', rule, {
     options: ['syntax'],
     settings,
     errors: [{
-      message: 'Prefer fragment shorthand over Act.Frag'
+      messageId: 'preferFragment',
+      data: {react: 'Act', fragment: 'Frag'}
     }],
     output: `
       const { Frag } = require('react');

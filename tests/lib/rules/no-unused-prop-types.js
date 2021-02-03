@@ -3895,7 +3895,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         '});'
       ].join('\n'),
       errors: [{
-        message: '\'unused\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'unused'},
         line: 3,
         column: 5
       }]
@@ -3911,7 +3912,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         '});'
       ].join('\n'),
       errors: [{
-        message: '\'name\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'name'},
         line: 3,
         column: 5
       }]
@@ -3928,7 +3930,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'name\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'name'},
         line: 3,
         column: 5
       }]
@@ -4727,7 +4730,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'unused\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'unused'},
         line: 3,
         column: 5
       }]
@@ -4745,7 +4749,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'unused\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'unused'},
         line: 3,
         column: 5
       }]
@@ -4763,7 +4768,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'unused\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'unused'},
         line: 3,
         column: 5
       }]
@@ -4780,7 +4786,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'unused\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'unused'},
         line: 3,
         column: 5
       }]
@@ -4798,7 +4805,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'unused\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'unused'},
         line: 3,
         column: 5
       }]
@@ -4815,7 +4823,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'unused\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'unused'},
         line: 3,
         column: 5
       }]
@@ -4833,7 +4842,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'unused\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'unused'},
         line: 3,
         column: 5
       }]
@@ -4850,7 +4860,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'unused\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'unused'},
         line: 3,
         column: 5
       }]
@@ -4868,7 +4879,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'unused\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'unused'},
         line: 3,
         column: 5
       }]
@@ -4885,7 +4897,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'unused\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'unused'},
         line: 3,
         column: 5
       }]
@@ -4902,7 +4915,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'something\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'something'},
         line: 3,
         column: 5
       }]
@@ -4918,7 +4932,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         '})'
       ].join('\n'),
       errors: [{
-        message: '\'something\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'something'},
         line: 3,
         column: 5
       }]
@@ -4939,7 +4954,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'bar\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'bar'},
         line: 4,
         column: 5
       }]
@@ -4960,7 +4976,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'baz\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'baz'},
         line: 5,
         column: 5
       }]
@@ -4979,7 +4996,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: '\'bar\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'bar'},
         line: 10,
         column: 3
       }]
@@ -5000,7 +5018,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'bar\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'bar'},
         line: 4,
         column: 5
       }]
@@ -5041,7 +5060,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'bar\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'bar'},
         line: 4,
         column: 5
       }]
@@ -5060,7 +5080,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: '\'bar\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'bar'},
         line: 10,
         column: 3
       }]
@@ -5081,7 +5102,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'bar\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'bar'},
         line: 4,
         column: 5
       }]
@@ -5103,7 +5125,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'baz\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'baz'},
         line: 5,
         column: 5
       }]
@@ -5126,7 +5149,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'baz\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'baz'},
         line: 5,
         column: 5
       }]
@@ -5145,7 +5169,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: '\'bar\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'bar'},
         line: 10,
         column: 3
       }]
@@ -5164,7 +5189,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         '});'
       ].join('\n'),
       errors: [{
-        message: '\'bar\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'bar'},
         line: 10,
         column: 3
       }],
@@ -5187,7 +5213,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'bar\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'bar'},
         line: 4,
         column: 5
       }],
@@ -5213,7 +5240,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: '\'foo\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'foo'},
         line: 3,
         column: 5
       }]
@@ -5237,7 +5265,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parserOptions: Object.assign({}, parserOptions, {ecmaVersion: 2017}),
       errors: [{
-        message: '\'baz\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'baz'},
         line: 13,
         column: 3
       }]
@@ -5261,7 +5290,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       ].join('\n'),
       parserOptions: Object.assign({}, parserOptions, {ecmaVersion: 2017}),
       errors: [{
-        message: '\'foo\' PropType is defined but prop is never used',
+        messageId: 'unusedPropType',
+        data: {name: 'foo'},
         line: 11,
         column: 3
       }]

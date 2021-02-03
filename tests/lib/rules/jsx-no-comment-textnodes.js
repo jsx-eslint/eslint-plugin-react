@@ -311,7 +311,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       }
     `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+      errors: [{messageId: 'putCommentInBraces'}]
     }, {
       code: `
       class Comp1 extends Component {
@@ -321,7 +321,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       }
     `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+      errors: [{messageId: 'putCommentInBraces'}]
     }, {
       code: `
       class Comp1 extends Component {
@@ -331,7 +331,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       }
     `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+      errors: [{messageId: 'putCommentInBraces'}]
     }, {
       code: `
       class Comp1 extends Component {
@@ -345,7 +345,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       }
     `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+      errors: [{messageId: 'putCommentInBraces'}]
     }, {
       code: `
       class Comp1 extends Component {
@@ -361,7 +361,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       }
     `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+      errors: [{messageId: 'putCommentInBraces'}]
     }, {
       code: `
       class Comp1 extends Component {
@@ -377,7 +377,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       }
     `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+      errors: [{messageId: 'putCommentInBraces'}]
     },
     {
       code: `
@@ -385,7 +385,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           return <span>/*</span>;
         };
       `,
-      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+      errors: [{messageId: 'putCommentInBraces'}]
     }
   ].concat(parsers.TS([
     {
@@ -397,7 +397,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+      errors: [{messageId: 'putCommentInBraces'}]
     }, {
       code: `
       class Comp1 extends Component {
@@ -407,7 +407,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       }
     `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+      errors: [{messageId: 'putCommentInBraces'}]
     }, {
       code: `
       class Comp1 extends Component {
@@ -417,7 +417,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       }
     `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+      errors: [{messageId: 'putCommentInBraces'}]
     }, {
       code: `
       class Comp1 extends Component {
@@ -431,7 +431,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       }
     `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+      errors: [{messageId: 'putCommentInBraces'}]
     }, {
       code: `
       class Comp1 extends Component {
@@ -447,7 +447,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       }
     `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+      errors: [{messageId: 'putCommentInBraces'}]
     }, {
       code: `
       class Comp1 extends Component {
@@ -463,7 +463,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       }
     `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{message: 'Comments inside children section of tag should be placed inside braces'}]
+      errors: [{messageId: 'putCommentInBraces'}]
     }
   ]))
 });

@@ -214,61 +214,61 @@ ruleTester.run('jsx-tag-spacing', rule, {
     output: '<App />',
     options: beforeSelfClosingOptions('always'),
     errors: [
-      {message: 'A space is required before closing bracket'}
+      {messageId: 'beforeSelfCloseNeedSpace'}
     ]
   }, {
     code: '<App foo/>',
     output: '<App foo />',
     options: beforeSelfClosingOptions('always'),
     errors: [
-      {message: 'A space is required before closing bracket'}
+      {messageId: 'beforeSelfCloseNeedSpace'}
     ]
   }, {
     code: '<App foo={bar}/>',
     output: '<App foo={bar} />',
     options: beforeSelfClosingOptions('always'),
     errors: [
-      {message: 'A space is required before closing bracket'}
+      {messageId: 'beforeSelfCloseNeedSpace'}
     ]
   }, {
     code: '<App {...props}/>',
     output: '<App {...props} />',
     options: beforeSelfClosingOptions('always'),
     errors: [
-      {message: 'A space is required before closing bracket'}
+      {messageId: 'beforeSelfCloseNeedSpace'}
     ]
   }, {
     code: '<App />',
     output: '<App/>',
     options: beforeSelfClosingOptions('never'),
     errors: [
-      {message: 'A space is forbidden before closing bracket'}
+      {messageId: 'beforeSelfCloseNoSpace'}
     ]
   }, {
     code: '<App foo />',
     output: '<App foo/>',
     options: beforeSelfClosingOptions('never'),
     errors: [
-      {message: 'A space is forbidden before closing bracket'}
+      {messageId: 'beforeSelfCloseNoSpace'}
     ]
   }, {
     code: '<App foo={bar} />',
     output: '<App foo={bar}/>',
     options: beforeSelfClosingOptions('never'),
     errors: [
-      {message: 'A space is forbidden before closing bracket'}
+      {messageId: 'beforeSelfCloseNoSpace'}
     ]
   }, {
     code: '<App {...props} />',
     output: '<App {...props}/>',
     options: beforeSelfClosingOptions('never'),
     errors: [
-      {message: 'A space is forbidden before closing bracket'}
+      {messageId: 'beforeSelfCloseNoSpace'}
     ]
   }, {
     code: '<App/ >;',
     output: '<App/>;',
-    errors: [{message: 'Whitespace is forbidden between `/` and `>`; write `/>`'}],
+    errors: [{messageId: 'selfCloseSlashNoSpace'}],
     options: closingSlashOptions('never')
   }, {
     code: [
@@ -276,12 +276,12 @@ ruleTester.run('jsx-tag-spacing', rule, {
       '>'
     ].join('\n'),
     output: '<App/>',
-    errors: [{message: 'Whitespace is forbidden between `/` and `>`; write `/>`'}],
+    errors: [{messageId: 'selfCloseSlashNoSpace'}],
     options: closingSlashOptions('never')
   }, {
     code: '<div className="bar">< /div>;',
     output: '<div className="bar"></div>;',
-    errors: [{message: 'Whitespace is forbidden between `<` and `/`; write `</`'}],
+    errors: [{messageId: 'closeSlashNoSpace'}],
     options: closingSlashOptions('never')
   }, {
     code: [
@@ -289,39 +289,39 @@ ruleTester.run('jsx-tag-spacing', rule, {
       '/div>;'
     ].join('\n'),
     output: '<div className="bar"></div>;',
-    errors: [{message: 'Whitespace is forbidden between `<` and `/`; write `</`'}],
+    errors: [{messageId: 'closeSlashNoSpace'}],
     options: closingSlashOptions('never')
   }, {
     code: '<App prop="foo"></App>',
     output: '<App prop="foo">< /App>',
-    errors: [{message: 'Whitespace is required between `<` and `/`; write `< /`'}],
+    errors: [{messageId: 'closeSlashNeedSpace'}],
     options: closingSlashOptions('always')
   }, {
     code: '<p/>',
     output: '<p/ >',
-    errors: [{message: 'Whitespace is required between `/` and `>`; write `/ >`'}],
+    errors: [{messageId: 'selfCloseSlashNeedSpace'}],
     options: closingSlashOptions('always')
   }, {
     code: '< App/>',
     output: '<App/>',
-    errors: [{message: 'A space is forbidden after opening bracket'}],
+    errors: [{messageId: 'afterOpenNoSpace'}],
     options: afterOpeningOptions('never')
   }, {
     code: '< App></App>',
     output: '<App></App>',
-    errors: [{message: 'A space is forbidden after opening bracket'}],
+    errors: [{messageId: 'afterOpenNoSpace'}],
     options: afterOpeningOptions('never')
   }, {
     code: '<App></ App>',
     output: '<App></App>',
-    errors: [{message: 'A space is forbidden after opening bracket'}],
+    errors: [{messageId: 'afterOpenNoSpace'}],
     options: afterOpeningOptions('never')
   }, {
     code: '< App></ App>',
     output: '<App></App>',
     errors: [
-      {message: 'A space is forbidden after opening bracket'},
-      {message: 'A space is forbidden after opening bracket'}
+      {messageId: 'afterOpenNoSpace'},
+      {messageId: 'afterOpenNoSpace'}
     ],
     options: afterOpeningOptions('never')
   }, {
@@ -330,45 +330,45 @@ ruleTester.run('jsx-tag-spacing', rule, {
       'App/>'
     ].join('\n'),
     output: '<App/>',
-    errors: [{message: 'A space is forbidden after opening bracket'}],
+    errors: [{messageId: 'afterOpenNoSpace'}],
     options: afterOpeningOptions('never')
   }, {
     code: '<App></ App>',
     output: '< App></ App>',
-    errors: [{message: 'A space is required after opening bracket'}],
+    errors: [{messageId: 'afterOpenNeedSpace'}],
     options: afterOpeningOptions('always')
   }, {
     code: '< App></App>',
     output: '< App></ App>',
-    errors: [{message: 'A space is required after opening bracket'}],
+    errors: [{messageId: 'afterOpenNeedSpace'}],
     options: afterOpeningOptions('always')
   }, {
     code: '<App></App>',
     output: '< App></ App>',
     errors: [
-      {message: 'A space is required after opening bracket'},
-      {message: 'A space is required after opening bracket'}
+      {messageId: 'afterOpenNeedSpace'},
+      {messageId: 'afterOpenNeedSpace'}
     ],
     options: afterOpeningOptions('always')
   }, {
     code: '<App/>',
     output: '< App/>',
-    errors: [{message: 'A space is required after opening bracket'}],
+    errors: [{messageId: 'afterOpenNeedSpace'}],
     options: afterOpeningOptions('always')
   }, {
     code: '< App/>',
     output: '<App/>',
-    errors: [{message: 'A space is forbidden after opening bracket'}],
+    errors: [{messageId: 'afterOpenNoSpace'}],
     options: afterOpeningOptions('allow-multiline')
   }, {
     code: '<App ></App>',
     output: '<App></App>',
-    errors: [{message: 'A space is forbidden before closing bracket'}],
+    errors: [{messageId: 'beforeCloseNoSpace'}],
     options: beforeClosingOptions('never')
   }, {
     code: '<App></App >',
     output: '<App></App>',
-    errors: [{message: 'A space is forbidden before closing bracket'}],
+    errors: [{messageId: 'beforeCloseNoSpace'}],
     options: beforeClosingOptions('never')
   }, {
     code: [
@@ -383,17 +383,17 @@ ruleTester.run('jsx-tag-spacing', rule, {
       '>',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'A space is forbidden before closing bracket'}],
+    errors: [{messageId: 'beforeCloseNoSpace'}],
     options: beforeClosingOptions('never')
   }, {
     code: '<App></App >',
     output: '<App ></App >',
-    errors: [{message: 'Whitespace is required before closing bracket'}],
+    errors: [{messageId: 'beforeCloseNeedSpace'}],
     options: beforeClosingOptions('always')
   }, {
     code: '<App ></App>',
     output: '<App ></App >',
-    errors: [{message: 'Whitespace is required before closing bracket'}],
+    errors: [{messageId: 'beforeCloseNeedSpace'}],
     options: beforeClosingOptions('always')
   }, {
     code: [
@@ -408,7 +408,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
       '>',
       '</App >'
     ].join('\n'),
-    errors: [{message: 'Whitespace is required before closing bracket'}],
+    errors: [{messageId: 'beforeCloseNeedSpace'}],
     options: beforeClosingOptions('always')
   }]
 });

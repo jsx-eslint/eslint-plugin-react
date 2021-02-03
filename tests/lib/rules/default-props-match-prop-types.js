@@ -842,7 +842,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        messageId: 'defaultHasNoType',
+        data: {name: 'baz'},
         line: 9,
         column: 3
       }]
@@ -861,7 +862,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        messageId: 'defaultHasNoType',
+        data: {name: 'baz'},
         line: 9,
         column: 3
       }],
@@ -884,7 +886,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         propWrapperFunctions: ['forbidExtraProps']
       },
       errors: [{
-        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        messageId: 'defaultHasNoType',
+        data: {name: 'baz'},
         line: 9,
         column: 3
       }]
@@ -907,7 +910,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         propWrapperFunctions: ['forbidExtraProps']
       },
       errors: [{
-        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        messageId: 'defaultHasNoType',
+        data: {name: 'baz'},
         line: 10,
         column: 3
       }]
@@ -926,7 +930,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        messageId: 'defaultHasNoType',
+        data: {name: 'baz'},
         line: 9,
         column: 3
       }],
@@ -950,12 +955,14 @@ ruleTester.run('default-props-match-prop-types', rule, {
       ].join('\n'),
       errors: [
         {
-          message: 'defaultProp "bar" defined for isRequired propType.',
+          messageId: 'requiredHasDefault',
+          data: {name: 'bar'},
           line: 9,
           column: 3
         },
         {
-          message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+          messageId: 'defaultHasNoType',
+          data: {name: 'baz'},
           line: 11,
           column: 1
         }
@@ -977,7 +984,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "bar" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'bar'},
         line: 10,
         column: 3
       }]
@@ -998,7 +1006,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         'MyStatelessComponent.defaultProps = defaults;'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "foo" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'foo'},
         line: 2,
         column: 3
       }]
@@ -1020,7 +1029,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         'MyStatelessComponent.defaultProps = defaults;'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "foo" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'foo'},
         line: 2,
         column: 3
       }]
@@ -1046,7 +1056,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '});'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        messageId: 'defaultHasNoType',
+        data: {name: 'baz'},
         line: 11,
         column: 7
       }]
@@ -1069,7 +1080,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '});'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "foo" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'foo'},
         line: 11,
         column: 7
       }]
@@ -1095,7 +1107,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        messageId: 'defaultHasNoType',
+        data: {name: 'baz'},
         line: 13,
         column: 3
       }]
@@ -1118,7 +1131,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "foo" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'foo'},
         line: 13,
         column: 3
       }]
@@ -1140,7 +1154,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         'Greeting.defaultProps.foo = "foo";'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "foo" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'foo'},
         line: 13,
         column: 1
       }]
@@ -1162,7 +1177,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         'Greeting.defaultProps.baz = "baz";'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        messageId: 'defaultHasNoType',
+        data: {name: 'baz'},
         line: 13,
         column: 1
       }]
@@ -1182,7 +1198,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         'Greeting.defaultProps.foo = "foo";'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "foo" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'foo'},
         line: 11,
         column: 1
       }]
@@ -1207,7 +1224,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         'Greeting.defaultProps = defaults;'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "bar" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'bar'},
         line: 14,
         column: 3
       }]
@@ -1232,7 +1250,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         'Greeting.defaultProps = defaults;'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        messageId: 'defaultHasNoType',
+        data: {name: 'baz'},
         line: 13,
         column: 3
       }]
@@ -1259,7 +1278,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "name" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'name'},
         line: 9,
         column: 7
       }]
@@ -1284,7 +1304,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        messageId: 'defaultHasNoType',
+        data: {name: 'baz'},
         line: 10,
         column: 7
       }]
@@ -1311,7 +1332,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        messageId: 'defaultHasNoType',
+        data: {name: 'baz'},
         line: 5,
         column: 3
       }]
@@ -1338,7 +1360,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "bar" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'bar'},
         line: 2,
         column: 3
       }]
@@ -1365,7 +1388,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'defaultProp "bar" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'bar'},
         line: 12,
         column: 5
       }]
@@ -1389,7 +1413,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        messageId: 'defaultHasNoType',
+        data: {name: 'baz'},
         line: 12,
         column: 5
       }]
@@ -1415,7 +1440,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'defaultProp "bar" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'bar'},
         line: 6,
         column: 3
       }]
@@ -1441,7 +1467,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'defaultProp "baz" has no corresponding propTypes declaration.',
+        messageId: 'defaultHasNoType',
+        data: {name: 'baz'},
         line: 6,
         column: 3
       }]
@@ -1465,7 +1492,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "foo" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'foo'},
         line: 11,
         column: 3
       }]
@@ -1483,7 +1511,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: 'defaultProp "foo" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'foo'},
         line: 8,
         column: 3
       }]
@@ -1510,7 +1539,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'defaultProp "foo" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'foo'},
         line: 11,
         column: 3
       }]
@@ -1526,7 +1556,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'defaultProp "foo" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'foo'},
         line: 5,
         column: 3
       }]
@@ -1546,7 +1577,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'defaultProp "foo" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'foo'},
         line: 8,
         column: 3
       }]
@@ -1560,7 +1592,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'defaultProp "foo" defined for isRequired propType.',
+        messageId: 'requiredHasDefault',
+        data: {name: 'foo'},
         line: 4,
         column: 24
       }]
@@ -1585,12 +1618,14 @@ ruleTester.run('default-props-match-prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
-          message: 'defaultProp "foo" defined for isRequired propType.',
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'},
           line: 12,
           column: 24
         },
         {
-          message: 'defaultProp "frob" has no corresponding propTypes declaration.',
+          messageId: 'defaultHasNoType',
+          data: {name: 'frob'},
           line: 12,
           column: 36
         }
@@ -1617,10 +1652,12 @@ ruleTester.run('default-props-match-prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
-          message: 'defaultProp "fooBar" has no corresponding propTypes declaration.'
+          messageId: 'defaultHasNoType',
+          data: {name: 'fooBar'}
         },
         {
-          message: 'defaultProp "foo" defined for isRequired propType.'
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'}
         }
       ]
     },
@@ -1641,7 +1678,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
       `,
       errors: [
         {
-          message: 'defaultProp "firstProperty" defined for isRequired propType.'
+          messageId: 'requiredHasDefault',
+          data: {name: 'firstProperty'}
         }
       ]
     },
@@ -1665,12 +1703,14 @@ ruleTester.run('default-props-match-prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
-          message: 'defaultProp "foo" defined for isRequired propType.',
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'},
           line: 12,
           column: 24
         },
         {
-          message: 'defaultProp "frob" has no corresponding propTypes declaration.',
+          messageId: 'defaultHasNoType',
+          data: {name: 'frob'},
           line: 12,
           column: 36
         }
@@ -1698,12 +1738,14 @@ ruleTester.run('default-props-match-prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
-          message: 'defaultProp "foo" defined for isRequired propType.',
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'},
           line: 14,
           column: 24
         },
         {
-          message: 'defaultProp "frob" has no corresponding propTypes declaration.',
+          messageId: 'defaultHasNoType',
+          data: {name: 'frob'},
           line: 14,
           column: 36
         }

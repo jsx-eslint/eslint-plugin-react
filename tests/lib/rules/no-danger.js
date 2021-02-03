@@ -33,6 +33,9 @@ ruleTester.run('no-danger', rule, {
   ],
   invalid: [{
     code: '<div dangerouslySetInnerHTML={{ __html: "" }}></div>;',
-    errors: [{message: 'Dangerous property \'dangerouslySetInnerHTML\' found'}]
+    errors: [{
+      messageId: 'dangerousProp',
+      data: {name: 'dangerouslySetInnerHTML'}
+    }]
   }]
 });

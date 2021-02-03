@@ -72,70 +72,70 @@ ruleTester.run('jsx-equals-spacing', rule, {
     code: '<App foo = {bar} />',
     output: '<App foo={bar} />',
     errors: [
-      {message: 'There should be no space before \'=\''},
-      {message: 'There should be no space after \'=\''}
+      {messageId: 'noSpaceBefore'},
+      {messageId: 'noSpaceAfter'}
     ]
   }, {
     code: '<App foo = {bar} />',
     output: '<App foo={bar} />',
     options: ['never'],
     errors: [
-      {message: 'There should be no space before \'=\''},
-      {message: 'There should be no space after \'=\''}
+      {messageId: 'noSpaceBefore'},
+      {messageId: 'noSpaceAfter'}
     ]
   }, {
     code: '<App foo ={bar} />',
     output: '<App foo={bar} />',
     options: ['never'],
     errors: [
-      {message: 'There should be no space before \'=\''}
+      {messageId: 'noSpaceBefore'}
     ]
   }, {
     code: '<App foo= {bar} />',
     output: '<App foo={bar} />',
     options: ['never'],
     errors: [
-      {message: 'There should be no space after \'=\''}
+      {messageId: 'noSpaceAfter'}
     ]
   }, {
     code: '<App foo= {bar} bar = {baz} />',
     output: '<App foo={bar} bar={baz} />',
     options: ['never'],
     errors: [
-      {message: 'There should be no space after \'=\''},
-      {message: 'There should be no space before \'=\''},
-      {message: 'There should be no space after \'=\''}
+      {messageId: 'noSpaceAfter'},
+      {messageId: 'noSpaceBefore'},
+      {messageId: 'noSpaceAfter'}
     ]
   }, {
     code: '<App foo={bar} />',
     output: '<App foo = {bar} />',
     options: ['always'],
     errors: [
-      {message: 'A space is required before \'=\''},
-      {message: 'A space is required after \'=\''}
+      {messageId: 'needSpaceBefore'},
+      {messageId: 'needSpaceAfter'}
     ]
   }, {
     code: '<App foo ={bar} />',
     output: '<App foo = {bar} />',
     options: ['always'],
     errors: [
-      {message: 'A space is required after \'=\''}
+      {messageId: 'needSpaceAfter'}
     ]
   }, {
     code: '<App foo= {bar} />',
     output: '<App foo = {bar} />',
     options: ['always'],
     errors: [
-      {message: 'A space is required before \'=\''}
+      {messageId: 'needSpaceBefore'}
     ]
   }, {
     code: '<App foo={bar} bar ={baz} />',
     output: '<App foo = {bar} bar = {baz} />',
     options: ['always'],
     errors: [
-      {message: 'A space is required before \'=\''},
-      {message: 'A space is required after \'=\''},
-      {message: 'A space is required after \'=\''}
+      {messageId: 'needSpaceBefore'},
+      {messageId: 'needSpaceAfter'},
+      {messageId: 'needSpaceAfter'}
     ]
   }]
 });

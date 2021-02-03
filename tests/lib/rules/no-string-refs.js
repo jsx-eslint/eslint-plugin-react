@@ -76,9 +76,7 @@ ruleTester.run('no-refs', rule, {
       });
     `,
     parser: parsers.BABEL_ESLINT,
-    errors: [{
-      message: 'Using this.refs is deprecated.'
-    }]
+    errors: [{messageId: 'thisRefsDeprecated'}]
   }, {
     code: `
       var Hello = createReactClass({
@@ -88,9 +86,7 @@ ruleTester.run('no-refs', rule, {
       });
     `,
     parser: parsers.BABEL_ESLINT,
-    errors: [{
-      message: 'Using string literals in ref attributes is deprecated.'
-    }]
+    errors: [{messageId: 'stringInRefDeprecated'}]
   }, {
     code: `
       var Hello = createReactClass({
@@ -100,9 +96,7 @@ ruleTester.run('no-refs', rule, {
       });
     `,
     parser: parsers.BABEL_ESLINT,
-    errors: [{
-      message: 'Using string literals in ref attributes is deprecated.'
-    }]
+    errors: [{messageId: 'stringInRefDeprecated'}]
   }, {
     code: `
       var Hello = createReactClass({
@@ -116,9 +110,9 @@ ruleTester.run('no-refs', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Using this.refs is deprecated.'
+      messageId: 'thisRefsDeprecated'
     }, {
-      message: 'Using string literals in ref attributes is deprecated.'
+      messageId: 'stringInRefDeprecated'
     }]
   },
   {
@@ -135,9 +129,9 @@ ruleTester.run('no-refs', rule, {
     parser: parsers.BABEL_ESLINT,
     options: [{noTemplateLiterals: true}],
     errors: [{
-      message: 'Using this.refs is deprecated.'
+      messageId: 'thisRefsDeprecated'
     }, {
-      message: 'Using string literals in ref attributes is deprecated.'
+      messageId: 'stringInRefDeprecated'
     }]
   },
   {
@@ -154,9 +148,9 @@ ruleTester.run('no-refs', rule, {
     parser: parsers.BABEL_ESLINT,
     options: [{noTemplateLiterals: true}],
     errors: [{
-      message: 'Using this.refs is deprecated.'
+      messageId: 'thisRefsDeprecated'
     }, {
-      message: 'Using string literals in ref attributes is deprecated.'
+      messageId: 'stringInRefDeprecated'
     }]
   }]
 });

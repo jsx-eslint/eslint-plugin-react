@@ -208,7 +208,12 @@ ruleTester.run('jsx-indent-props', rule, {
       '    foo',
       '/>'
     ].join('\n'),
-    errors: [{message: 'Expected indentation of 4 space characters but found 2.'}]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 2
+      }
+    }]
   }, {
     code: [
       '<App',
@@ -221,7 +226,12 @@ ruleTester.run('jsx-indent-props', rule, {
       '/>'
     ].join('\n'),
     options: [2],
-    errors: [{message: 'Expected indentation of 2 space characters but found 4.'}]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 2, type: 'space', characters: 'characters', gotten: 4
+      }
+    }]
   }, {
     code: [
       'const test = true',
@@ -243,8 +253,17 @@ ruleTester.run('jsx-indent-props', rule, {
     ].join('\n'),
     options: [2],
     errors: [
-      {message: 'Expected indentation of 6 space characters but found 4.'},
-      {message: 'Expected indentation of 6 space characters but found 4.'}
+      {
+        messageId: 'wrongIndent',
+        data: {
+          needed: 6, type: 'space', characters: 'characters', gotten: 4
+        }
+      }, {
+        messageId: 'wrongIndent',
+        data: {
+          needed: 6, type: 'space', characters: 'characters', gotten: 4
+        }
+      }
     ]
   }, {
     code: [
@@ -266,9 +285,12 @@ ruleTester.run('jsx-indent-props', rule, {
       '  )'
     ].join('\n'),
     options: [2],
-    errors: [
-      {message: 'Expected indentation of 6 space characters but found 8.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 6, type: 'space', characters: 'characters', gotten: 8
+      }
+    }]
   }, {
     code: [
       '{test.isLoading',
@@ -285,9 +307,12 @@ ruleTester.run('jsx-indent-props', rule, {
       '}'
     ].join('\n'),
     options: [2],
-    errors: [
-      {message: 'Expected indentation of 6 space characters but found 4.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 6, type: 'space', characters: 'characters', gotten: 4
+      }
+    }]
   }, {
     code: [
       '{test.isLoading',
@@ -307,8 +332,18 @@ ruleTester.run('jsx-indent-props', rule, {
     ].join('\n'),
     options: [2],
     errors: [
-      {message: 'Expected indentation of 6 space characters but found 4.'},
-      {message: 'Expected indentation of 6 space characters but found 4.'}
+      {
+        messageId: 'wrongIndent',
+        data: {
+          needed: 6, type: 'space', characters: 'characters', gotten: 4
+        }
+      },
+      {
+        messageId: 'wrongIndent',
+        data: {
+          needed: 6, type: 'space', characters: 'characters', gotten: 4
+        }
+      }
     ]
   }, {
     code: [
@@ -329,8 +364,17 @@ ruleTester.run('jsx-indent-props', rule, {
     ].join('\n'),
     options: [2],
     errors: [
-      {message: 'Expected indentation of 6 space characters but found 4.'},
-      {message: 'Expected indentation of 6 space characters but found 4.'}
+      {
+        messageId: 'wrongIndent',
+        data: {
+          needed: 6, type: 'space', characters: 'characters', gotten: 4
+        }
+      }, {
+        messageId: 'wrongIndent',
+        data: {
+          needed: 6, type: 'space', characters: 'characters', gotten: 4
+        }
+      }
     ]
   }, {
     code: [
@@ -344,7 +388,12 @@ ruleTester.run('jsx-indent-props', rule, {
       '/>'
     ].join('\n'),
     options: ['tab'],
-    errors: [{message: 'Expected indentation of 1 tab character but found 0.'}]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 1, type: 'tab', characters: 'character', gotten: 0
+      }
+    }]
   }, {
     code: [
       '<App',
@@ -357,7 +406,12 @@ ruleTester.run('jsx-indent-props', rule, {
       '/>'
     ].join('\n'),
     options: ['tab'],
-    errors: [{message: 'Expected indentation of 1 tab character but found 3.'}]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 1, type: 'tab', characters: 'character', gotten: 3
+      }
+    }]
   }, {
     code: [
       '<App a',
@@ -370,7 +424,12 @@ ruleTester.run('jsx-indent-props', rule, {
       '/>'
     ].join('\n'),
     options: ['first'],
-    errors: [{message: 'Expected indentation of 5 space characters but found 2.'}]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 5, type: 'space', characters: 'characters', gotten: 2
+      }
+    }]
   }, {
     code: [
       '<App  a',
@@ -383,7 +442,12 @@ ruleTester.run('jsx-indent-props', rule, {
       '/>'
     ].join('\n'),
     options: ['first'],
-    errors: [{message: 'Expected indentation of 6 space characters but found 3.'}]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 6, type: 'space', characters: 'characters', gotten: 3
+      }
+    }]
   }, {
     code: [
       '<App',
@@ -398,7 +462,12 @@ ruleTester.run('jsx-indent-props', rule, {
       '/>'
     ].join('\n'),
     options: ['first'],
-    errors: [{message: 'Expected indentation of 6 space characters but found 3.'}]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 6, type: 'space', characters: 'characters', gotten: 3
+      }
+    }]
   }, {
     code: [
       '<App',
@@ -416,8 +485,18 @@ ruleTester.run('jsx-indent-props', rule, {
     ].join('\n'),
     options: ['first'],
     errors: [
-      {message: 'Expected indentation of 2 space characters but found 1.'},
-      {message: 'Expected indentation of 2 space characters but found 3.'}
+      {
+        messageId: 'wrongIndent',
+        data: {
+          needed: 2, type: 'space', characters: 'characters', gotten: 1
+        }
+      },
+      {
+        messageId: 'wrongIndent',
+        data: {
+          needed: 2, type: 'space', characters: 'characters', gotten: 3
+        }
+      }
     ]
   }]
 });

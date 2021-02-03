@@ -518,7 +518,7 @@ ruleTester.run('display-name', rule, {
       ignoreTranspilerName: true
     }],
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -537,7 +537,7 @@ ruleTester.run('display-name', rule, {
       }
     },
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -551,7 +551,7 @@ ruleTester.run('display-name', rule, {
       ignoreTranspilerName: true
     }],
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -565,7 +565,7 @@ ruleTester.run('display-name', rule, {
       ignoreTranspilerName: true
     }],
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -582,7 +582,7 @@ ruleTester.run('display-name', rule, {
       ignoreTranspilerName: true
     }],
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -592,7 +592,7 @@ ruleTester.run('display-name', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -602,7 +602,7 @@ ruleTester.run('display-name', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -614,7 +614,7 @@ ruleTester.run('display-name', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -632,7 +632,7 @@ ruleTester.run('display-name', rule, {
     }],
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -656,7 +656,7 @@ ruleTester.run('display-name', rule, {
       }
     },
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -680,7 +680,7 @@ ruleTester.run('display-name', rule, {
     },
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -697,7 +697,7 @@ ruleTester.run('display-name', rule, {
     }],
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -709,7 +709,7 @@ ruleTester.run('display-name', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -720,7 +720,7 @@ ruleTester.run('display-name', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -731,7 +731,7 @@ ruleTester.run('display-name', rule, {
       })
     `,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -742,7 +742,7 @@ ruleTester.run('display-name', rule, {
       })
     `,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -753,7 +753,7 @@ ruleTester.run('display-name', rule, {
       })
     `,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -764,7 +764,7 @@ ruleTester.run('display-name', rule, {
       })
     `,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     // Only trigger an error for the outer React.memo
@@ -778,7 +778,7 @@ ruleTester.run('display-name', rule, {
       )
     `,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     // Only trigger an error for the outer React.memo
@@ -792,7 +792,7 @@ ruleTester.run('display-name', rule, {
       )
     `,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     // React does not handle the result of forwardRef being passed into memo
@@ -808,7 +808,7 @@ ruleTester.run('display-name', rule, {
       )
     `,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -820,7 +820,7 @@ ruleTester.run('display-name', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -832,7 +832,7 @@ ruleTester.run('display-name', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -851,7 +851,7 @@ ruleTester.run('display-name', rule, {
       }
     `,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -871,7 +871,7 @@ ruleTester.run('display-name', rule, {
       }
     `,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -892,7 +892,7 @@ ruleTester.run('display-name', rule, {
       }
     `,
     errors: [{
-      message: 'Component definition is missing display name'
+      messageId: 'noDisplayName'
     }]
   }, {
     code: `
@@ -909,13 +909,13 @@ ruleTester.run('display-name', rule, {
       })();
     `,
     errors: [{
-      message: 'Component definition is missing display name',
+      messageId: 'noDisplayName',
       line: 2,
       column: 22,
       endLine: 6,
       endColumn: 8
     }, {
-      message: 'Component definition is missing display name',
+      messageId: 'noDisplayName',
       line: 9,
       column: 16,
       endLine: 11,

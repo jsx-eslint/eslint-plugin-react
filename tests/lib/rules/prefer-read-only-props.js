@@ -181,7 +181,8 @@ ruleTester.run('prefer-read-only-props', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'Prop \'name\' should be read-only.'
+        messageId: 'readOnlyProp',
+        data: {name: 'name'}
       }],
       output: `
         type Props = {
@@ -210,7 +211,8 @@ ruleTester.run('prefer-read-only-props', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'Prop \'name\' should be read-only.'
+        messageId: 'readOnlyProp',
+        data: {name: 'name'}
       }],
       output: `
         type Props = {
@@ -238,7 +240,8 @@ ruleTester.run('prefer-read-only-props', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'Prop \'name\' should be read-only.'
+        messageId: 'readOnlyProp',
+        data: {name: 'name'}
       }],
       output: `
         class Hello extends React.Component {
@@ -260,7 +263,8 @@ ruleTester.run('prefer-read-only-props', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'Prop \'name\' should be read-only.'
+        messageId: 'readOnlyProp',
+        data: {name: 'name'}
       }],
       output: `
         function Hello(props: {+name: string}) {
@@ -276,7 +280,8 @@ ruleTester.run('prefer-read-only-props', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'Prop \'name\' should be read-only.'
+        messageId: 'readOnlyProp',
+        data: {name: 'name'}
       }],
       output: `
         function Hello(props: {|+name: string|}) {
@@ -292,7 +297,8 @@ ruleTester.run('prefer-read-only-props', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'Prop \'name\' should be read-only.'
+        messageId: 'readOnlyProp',
+        data: {name: 'name'}
       }],
       output: `
         function Hello({name}: {+name: string}) {
@@ -312,9 +318,11 @@ ruleTester.run('prefer-read-only-props', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'Prop \'firstName\' should be read-only.'
+        messageId: 'readOnlyProp',
+        data: {name: 'firstName'}
       }, {
-        message: 'Prop \'lastName\' should be read-only.'
+        messageId: 'readOnlyProp',
+        data: {name: 'lastName'}
       }],
       output: `
         type PropsA = {+firstName: string};
@@ -334,7 +342,8 @@ ruleTester.run('prefer-read-only-props', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'Prop \'name\' should be read-only.'
+        messageId: 'readOnlyProp',
+        data: {name: 'name'}
       }],
       output: `
         const Hello = (props: {+name: string}) => (

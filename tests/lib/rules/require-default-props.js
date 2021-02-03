@@ -1106,7 +1106,8 @@ ruleTester.run('require-default-props', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 5,
         column: 3
       }]
@@ -1122,7 +1123,8 @@ ruleTester.run('require-default-props', rule, {
         '});'
       ].join('\n'),
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 5,
         column: 3
       }],
@@ -1142,7 +1144,8 @@ ruleTester.run('require-default-props', rule, {
         'MyStatelessComponent.propTypes = forbidExtraProps(propTypes);'
       ].join('\n'),
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 5,
         column: 3
       }],
@@ -1163,12 +1166,14 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       errors: [
         {
-          message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+          messageId: 'shouldHaveDefault',
+          data: {name: 'foo'},
           line: 5,
           column: 3
         },
         {
-          message: 'propType "baz" is not required, but has no corresponding defaultProps declaration.',
+          messageId: 'shouldHaveDefault',
+          data: {name: 'baz'},
           line: 8,
           column: 1
         }
@@ -1187,7 +1192,8 @@ ruleTester.run('require-default-props', rule, {
         'MyStatelessComponent.propTypes = types;'
       ].join('\n'),
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 2,
         column: 3
       }]
@@ -1208,7 +1214,8 @@ ruleTester.run('require-default-props', rule, {
         'MyStatelessComponent.defaultProps = defaults;'
       ].join('\n'),
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 9,
         column: 3
       }]
@@ -1230,7 +1237,8 @@ ruleTester.run('require-default-props', rule, {
         'MyStatelessComponent.defaultProps = defaults;'
       ].join('\n'),
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 6,
         column: 3
       }]
@@ -1251,7 +1259,8 @@ ruleTester.run('require-default-props', rule, {
         '});'
       ].join('\n'),
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 6,
         column: 5
       }]
@@ -1270,7 +1279,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       options: [{ignoreFunctionalComponents: true}],
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 6,
         column: 5
       }]
@@ -1293,7 +1303,8 @@ ruleTester.run('require-default-props', rule, {
         '});'
       ].join('\n'),
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 7,
         column: 5
       }]
@@ -1316,7 +1327,8 @@ ruleTester.run('require-default-props', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 9,
         column: 3
       }]
@@ -1337,7 +1349,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       options: [{ignoreFunctionalComponents: true}],
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 9,
         column: 3
       }]
@@ -1360,7 +1373,8 @@ ruleTester.run('require-default-props', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 10,
         column: 3
       }]
@@ -1380,7 +1394,8 @@ ruleTester.run('require-default-props', rule, {
         'Greeting.propTypes.foo = PropTypes.string;'
       ].join('\n'),
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 11,
         column: 1
       }]
@@ -1402,7 +1417,8 @@ ruleTester.run('require-default-props', rule, {
         'Greeting.defaultProps.foo = "foo";'
       ].join('\n'),
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 9,
         column: 3
       }]
@@ -1422,7 +1438,8 @@ ruleTester.run('require-default-props', rule, {
         'Greeting.defaultProps.bar = "bar";'
       ].join('\n'),
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 9,
         column: 1
       }]
@@ -1443,7 +1460,8 @@ ruleTester.run('require-default-props', rule, {
         'Greeting.propTypes = props;'
       ].join('\n'),
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 9,
         column: 3
       }]
@@ -1468,7 +1486,8 @@ ruleTester.run('require-default-props', rule, {
         'Greeting.defaultProps = defaults;'
       ].join('\n'),
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 10,
         column: 3
       }]
@@ -1490,7 +1509,8 @@ ruleTester.run('require-default-props', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: 'propType "name" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'name'},
         line: 4,
         column: 7
       }]
@@ -1510,7 +1530,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       options: [{ignoreFunctionalComponents: true}],
       errors: [{
-        message: 'propType "name" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'name'},
         line: 4,
         column: 7
       }]
@@ -1535,7 +1556,8 @@ ruleTester.run('require-default-props', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 4,
         column: 7
       }]
@@ -1556,7 +1578,8 @@ ruleTester.run('require-default-props', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 2,
         column: 3
       }]
@@ -1583,7 +1606,8 @@ ruleTester.run('require-default-props', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 7,
         column: 7
       }]
@@ -1607,7 +1631,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 8,
         column: 5
       }]
@@ -1629,7 +1654,8 @@ ruleTester.run('require-default-props', rule, {
       parser: parsers.BABEL_ESLINT,
       options: [{ignoreFunctionalComponents: true}],
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 8,
         column: 5
       }]
@@ -1653,7 +1679,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 9,
         column: 5
       }]
@@ -1675,7 +1702,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 2,
         column: 3
       }]
@@ -1701,7 +1729,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 3,
         column: 3
       }]
@@ -1722,7 +1751,8 @@ ruleTester.run('require-default-props', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 8,
         column: 3
       }]
@@ -1737,7 +1767,8 @@ ruleTester.run('require-default-props', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 5,
         column: 3
       }]
@@ -1757,7 +1788,8 @@ ruleTester.run('require-default-props', rule, {
         '};'
       ].join('\n'),
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 8,
         column: 3
       }]
@@ -1783,7 +1815,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 4,
         column: 5
       }]
@@ -1805,7 +1838,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 3,
         column: 3
       }]
@@ -1828,7 +1862,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 2,
         column: 3
       }]
@@ -1848,7 +1883,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 4,
         column: 5
       }]
@@ -1869,12 +1905,14 @@ ruleTester.run('require-default-props', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
-          message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+          messageId: 'shouldHaveDefault',
+          data: {name: 'foo'},
           line: 3,
           column: 5
         },
         {
-          message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+          messageId: 'shouldHaveDefault',
+          data: {name: 'bar'},
           line: 4,
           column: 5
         }
@@ -1896,7 +1934,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 3,
         column: 5
       }]
@@ -1922,7 +1961,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 3,
         column: 3
       }]
@@ -1950,7 +1990,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 3,
         column: 3
       }]
@@ -1976,7 +2017,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 4,
         column: 5
       }]
@@ -1989,7 +2031,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 1,
         column: 25
       }]
@@ -2002,7 +2045,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 1,
         column: 35
       }]
@@ -2016,7 +2060,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 1,
         column: 39
       }]
@@ -2030,12 +2075,14 @@ ruleTester.run('require-default-props', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
-          message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+          messageId: 'shouldHaveDefault',
+          data: {name: 'foo'},
           line: 1,
           column: 25
         },
         {
-          message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+          messageId: 'shouldHaveDefault',
+          data: {name: 'bar'},
           line: 1,
           column: 39
         }
@@ -2053,7 +2100,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 2,
         column: 3
       }]
@@ -2066,7 +2114,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 1,
         column: 25
       }]
@@ -2080,7 +2129,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 1,
         column: 39
       }]
@@ -2093,7 +2143,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'},
         line: 1,
         column: 33
       }]
@@ -2107,7 +2158,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 1,
         column: 47
       }]
@@ -2126,7 +2178,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'},
         line: 3,
         column: 3
       }]
@@ -2142,12 +2195,14 @@ ruleTester.run('require-default-props', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
-          message: 'propType "one" is not required, but has no corresponding defaultProps declaration.',
+          messageId: 'shouldHaveDefault',
+          data: {name: 'one'},
           line: 1,
           column: 25
         },
         {
-          message: 'propType "two" is not required, but has no corresponding defaultProps declaration.',
+          messageId: 'shouldHaveDefault',
+          data: {name: 'two'},
           line: 1,
           column: 44
         }
@@ -2172,12 +2227,14 @@ ruleTester.run('require-default-props', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
-          message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.',
+          messageId: 'shouldHaveDefault',
+          data: {name: 'bar'},
           line: 3,
           column: 3
         },
         {
-          message: 'propType "baz" is not required, but has no corresponding defaultProps declaration.',
+          messageId: 'shouldHaveDefault',
+          data: {name: 'baz'},
           line: 7,
           column: 3
         }
@@ -2206,7 +2263,8 @@ ruleTester.run('require-default-props', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
-          message: 'propType "baz" is not required, but has no corresponding defaultProps declaration.',
+          messageId: 'shouldHaveDefault',
+          data: {name: 'baz'},
           line: 7,
           column: 3
         }
@@ -2225,12 +2283,14 @@ ruleTester.run('require-default-props', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
-          message: 'propType "two" is not required, but has no corresponding defaultProps declaration.',
+          messageId: 'shouldHaveDefault',
+          data: {name: 'two'},
           line: 2,
           column: 3
         },
         {
-          message: 'propType "one" is not required, but has no corresponding defaultProps declaration.',
+          messageId: 'shouldHaveDefault',
+          data: {name: 'one'},
           line: 5,
           column: 25
         }
@@ -2249,7 +2309,8 @@ ruleTester.run('require-default-props', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
-          message: 'propType "two" is not required, but has no corresponding defaultProps declaration.',
+          messageId: 'shouldHaveDefault',
+          data: {name: 'two'},
           line: 2,
           column: 3
         }
@@ -2269,7 +2330,8 @@ ruleTester.run('require-default-props', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
-          message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.',
+          messageId: 'shouldHaveDefault',
+          data: {name: 'foo'},
           line: 3,
           column: 5
         }
@@ -2295,7 +2357,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "name" is not required, but has no corresponding defaultProps declaration.'
+        messageId: 'shouldHaveDefault',
+        data: {name: 'name'}
       }]
     },
     {
@@ -2313,7 +2376,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "first-name" is not required, but has no corresponding defaultProps declaration.'
+        messageId: 'shouldHaveDefault',
+        data: {name: 'first-name'}
       }]
     },
     {
@@ -2332,7 +2396,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       options: [{forbidDefaultForRequired: true}],
       errors: [{
-        message: 'propType "foo" is required and should not have a defaultProps declaration.'
+        messageId: 'noDefaultWithRequired',
+        data: {name: 'foo'}
       }]
     },
     {
@@ -2349,7 +2414,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       options: [{forbidDefaultForRequired: true}],
       errors: [{
-        message: 'propType "foo" is required and should not have a defaultProps declaration.'
+        messageId: 'noDefaultWithRequired',
+        data: {name: 'foo'}
       }]
     },
     {
@@ -2366,7 +2432,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       options: [{forbidDefaultForRequired: true}],
       errors: [{
-        message: 'propType "foo" is required and should not have a defaultProps declaration.'
+        messageId: 'noDefaultWithRequired',
+        data: {name: 'foo'}
       }]
     },
     {
@@ -2386,7 +2453,8 @@ ruleTester.run('require-default-props', rule, {
       parser: parsers.BABEL_ESLINT,
       options: [{forbidDefaultForRequired: true}],
       errors: [{
-        message: 'propType "foo" is required and should not have a defaultProps declaration.'
+        messageId: 'noDefaultWithRequired',
+        data: {name: 'foo'}
       }]
     },
     {
@@ -2409,7 +2477,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       options: [{forbidDefaultForRequired: true}],
       errors: [{
-        message: 'propType "foo" is required and should not have a defaultProps declaration.'
+        messageId: 'noDefaultWithRequired',
+        data: {name: 'foo'}
       }]
     },
     // test support for React PropTypes as Component's class generic
@@ -2429,7 +2498,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.'
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'}
       }]
     },
     {
@@ -2448,7 +2518,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.'
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'}
       }]
     },
     {
@@ -2471,7 +2542,8 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.'
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'}
       }]
     },
     {
@@ -2490,9 +2562,11 @@ ruleTester.run('require-default-props', rule, {
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "foo" is not required, but has no corresponding defaultProps declaration.'
+        messageId: 'shouldHaveDefault',
+        data: {name: 'foo'}
       }, {
-        message: 'propType "bar" is not required, but has no corresponding defaultProps declaration.'
+        messageId: 'shouldHaveDefault',
+        data: {name: 'bar'}
       }]
     },
     {
@@ -2506,7 +2580,8 @@ ruleTester.run('require-default-props', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [{
-        message: 'propType "name" is not required, but has no corresponding defaultProps declaration.'
+        messageId: 'shouldHaveDefault',
+        data: {name: 'name'}
       }]
     }, {
       code: `
@@ -2529,7 +2604,8 @@ ruleTester.run('require-default-props', rule, {
         export default MyComponent;
       `,
       errors: [{
-        message: 'propType "usedProp" is not required, but has no corresponding defaultProps declaration.'
+        messageId: 'shouldHaveDefault',
+        data: {name: 'usedProp'}
       }]
     },
     {
@@ -2543,7 +2619,8 @@ ruleTester.run('require-default-props', rule, {
         };
       `,
       errors: [{
-        message: 'propType "a" is not required, but has no corresponding defaultProps declaration.'
+        messageId: 'shouldHaveDefault',
+        data: {name: 'a'}
       }]
     }
   ]

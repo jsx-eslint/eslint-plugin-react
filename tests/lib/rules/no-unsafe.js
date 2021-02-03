@@ -20,10 +20,6 @@ const parserOptions = {
   }
 };
 
-function errorMessage(method, newMethod, details) {
-  return `${method} is unsafe for use in async rendering. Update the component to use ${newMethod} instead. ${details}`;
-}
-
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -147,31 +143,34 @@ ruleTester.run('no-unsafe', rule, {
       settings: {react: {version: '16.4.0'}},
       errors: [
         {
-          message: errorMessage(
-            'componentWillMount',
-            'componentDidMount',
-            'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
-          ),
+          messageId: 'unsafeMethod',
+          data: {
+            method: 'componentWillMount',
+            newMethod: 'componentDidMount',
+            details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
+          },
           line: 2,
           column: 9,
           type: 'ClassDeclaration'
         },
         {
-          message: errorMessage(
-            'componentWillReceiveProps',
-            'getDerivedStateFromProps',
-            'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
-          ),
+          messageId: 'unsafeMethod',
+          data: {
+            method: 'componentWillReceiveProps',
+            newMethod: 'getDerivedStateFromProps',
+            details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
+          },
           line: 2,
           column: 9,
           type: 'ClassDeclaration'
         },
         {
-          message: errorMessage(
-            'componentWillUpdate',
-            'componentDidUpdate',
-            'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
-          ),
+          messageId: 'unsafeMethod',
+          data: {
+            method: 'componentWillUpdate',
+            newMethod: 'componentDidUpdate',
+            details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
+          },
           line: 2,
           column: 9,
           type: 'ClassDeclaration'
@@ -189,31 +188,34 @@ ruleTester.run('no-unsafe', rule, {
       settings: {react: {version: '16.3.0'}},
       errors: [
         {
-          message: errorMessage(
-            'UNSAFE_componentWillMount',
-            'componentDidMount',
-            'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
-          ),
+          messageId: 'unsafeMethod',
+          data: {
+            method: 'UNSAFE_componentWillMount',
+            newMethod: 'componentDidMount',
+            details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
+          },
           line: 2,
           column: 7,
           type: 'ClassDeclaration'
         },
         {
-          message: errorMessage(
-            'UNSAFE_componentWillReceiveProps',
-            'getDerivedStateFromProps',
-            'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
-          ),
+          messageId: 'unsafeMethod',
+          data: {
+            method: 'UNSAFE_componentWillReceiveProps',
+            newMethod: 'getDerivedStateFromProps',
+            details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
+          },
           line: 2,
           column: 7,
           type: 'ClassDeclaration'
         },
         {
-          message: errorMessage(
-            'UNSAFE_componentWillUpdate',
-            'componentDidUpdate',
-            'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
-          ),
+          messageId: 'unsafeMethod',
+          data: {
+            method: 'UNSAFE_componentWillUpdate',
+            newMethod: 'componentDidUpdate',
+            details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
+          },
           line: 2,
           column: 7,
           type: 'ClassDeclaration'
@@ -233,31 +235,34 @@ ruleTester.run('no-unsafe', rule, {
       settings: {react: {version: '16.3.0'}},
       errors: [
         {
-          message: errorMessage(
-            'componentWillMount',
-            'componentDidMount',
-            'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
-          ),
+          messageId: 'unsafeMethod',
+          data: {
+            method: 'componentWillMount',
+            newMethod: 'componentDidMount',
+            details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
+          },
           line: 2,
           column: 40,
           type: 'ObjectExpression'
         },
         {
-          message: errorMessage(
-            'componentWillReceiveProps',
-            'getDerivedStateFromProps',
-            'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
-          ),
+          messageId: 'unsafeMethod',
+          data: {
+            method: 'componentWillReceiveProps',
+            newMethod: 'getDerivedStateFromProps',
+            details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
+          },
           line: 2,
           column: 40,
           type: 'ObjectExpression'
         },
         {
-          message: errorMessage(
-            'componentWillUpdate',
-            'componentDidUpdate',
-            'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
-          ),
+          messageId: 'unsafeMethod',
+          data: {
+            method: 'componentWillUpdate',
+            newMethod: 'componentDidUpdate',
+            details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
+          },
           line: 2,
           column: 40,
           type: 'ObjectExpression'
@@ -275,31 +280,34 @@ ruleTester.run('no-unsafe', rule, {
       settings: {react: {version: '16.3.0'}},
       errors: [
         {
-          message: errorMessage(
-            'UNSAFE_componentWillMount',
-            'componentDidMount',
-            'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
-          ),
+          messageId: 'unsafeMethod',
+          data: {
+            method: 'UNSAFE_componentWillMount',
+            newMethod: 'componentDidMount',
+            details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
+          },
           line: 2,
           column: 38,
           type: 'ObjectExpression'
         },
         {
-          message: errorMessage(
-            'UNSAFE_componentWillReceiveProps',
-            'getDerivedStateFromProps',
-            'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
-          ),
+          messageId: 'unsafeMethod',
+          data: {
+            method: 'UNSAFE_componentWillReceiveProps',
+            newMethod: 'getDerivedStateFromProps',
+            details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
+          },
           line: 2,
           column: 38,
           type: 'ObjectExpression'
         },
         {
-          message: errorMessage(
-            'UNSAFE_componentWillUpdate',
-            'componentDidUpdate',
-            'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
-          ),
+          messageId: 'unsafeMethod',
+          data: {
+            method: 'UNSAFE_componentWillUpdate',
+            newMethod: 'componentDidUpdate',
+            details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.'
+          },
           line: 2,
           column: 38,
           type: 'ObjectExpression'

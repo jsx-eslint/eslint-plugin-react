@@ -23,8 +23,6 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ID_ERROR_MESSAGE = 'Prop `id` is forbidden on DOM Nodes';
-
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('forbid-element-props', rule, {
 
@@ -93,7 +91,8 @@ ruleTester.run('forbid-element-props', rule, {
     ].join('\n'),
     options: [{forbid: ['id']}],
     errors: [{
-      message: ID_ERROR_MESSAGE,
+      messageId: 'propIsForbidden',
+      data: {prop: 'id'},
       line: 4,
       column: 17,
       type: 'JSXAttribute'
@@ -108,7 +107,8 @@ ruleTester.run('forbid-element-props', rule, {
     ].join('\n'),
     options: [{forbid: ['id']}],
     errors: [{
-      message: ID_ERROR_MESSAGE,
+      messageId: 'propIsForbidden',
+      data: {prop: 'id'},
       line: 3,
       column: 17,
       type: 'JSXAttribute'
@@ -121,7 +121,8 @@ ruleTester.run('forbid-element-props', rule, {
     ].join('\n'),
     options: [{forbid: ['id']}],
     errors: [{
-      message: ID_ERROR_MESSAGE,
+      messageId: 'propIsForbidden',
+      data: {prop: 'id'},
       line: 2,
       column: 8,
       type: 'JSXAttribute'
@@ -181,7 +182,8 @@ ruleTester.run('forbid-element-props', rule, {
       ]
     }],
     errors: [{
-      message: 'Prop `className` is forbidden on DOM Nodes',
+      messageId: 'propIsForbidden',
+      data: {prop: 'className'},
       line: 2,
       column: 8,
       type: 'JSXAttribute'

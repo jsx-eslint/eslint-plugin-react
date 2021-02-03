@@ -1016,12 +1016,27 @@ const Component = () => (
       '    bar </div>',
       '</div>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'},
-      {message: 'Expected indentation of 4 space characters but found 3.'},
-      {message: 'Expected indentation of 4 space characters but found 3.'},
-      {message: 'Expected indentation of 4 space characters but found 3.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }, {
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 3
+      }
+    }, {
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 3
+      }
+    }, {
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 3
+      }
+    }]
   }, {
     code: [
       '<App>',
@@ -1033,7 +1048,12 @@ const Component = () => (
       '    <Foo />',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Expected indentation of 4 space characters but found 2.'}]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 2
+      }
+    }]
   }, {
     code: [
       '<App>',
@@ -1046,7 +1066,12 @@ const Component = () => (
       '    <></>',
       '</App>'
     ].join('\n'),
-    errors: [{message: 'Expected indentation of 4 space characters but found 2.'}]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 2
+      }
+    }]
   }, {
     code: [
       '<>',
@@ -1059,7 +1084,12 @@ const Component = () => (
       '    <Foo />',
       '</>'
     ].join('\n'),
-    errors: [{message: 'Expected indentation of 4 space characters but found 2.'}]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 2
+      }
+    }]
   }, {
     code: [
       '<App>',
@@ -1072,7 +1102,12 @@ const Component = () => (
       '</App>'
     ].join('\n'),
     options: [2],
-    errors: [{message: 'Expected indentation of 2 space characters but found 4.'}]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 2, type: 'space', characters: 'characters', gotten: 4
+      }
+    }]
   }, {
     code: [
       '<App>',
@@ -1085,7 +1120,12 @@ const Component = () => (
       '</App>'
     ].join('\n'),
     options: ['tab'],
-    errors: [{message: 'Expected indentation of 1 tab character but found 0.'}]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 1, type: 'tab', characters: 'character', gotten: 0
+      }
+    }]
   }, {
     code: [
       'function App() {',
@@ -1102,7 +1142,12 @@ const Component = () => (
       '}'
     ].join('\n'),
     options: [2],
-    errors: [{message: 'Expected indentation of 2 space characters but found 9.'}]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 2, type: 'space', characters: 'characters', gotten: 9
+      }
+    }]
   }, {
     code: [
       'function App() {',
@@ -1119,7 +1164,12 @@ const Component = () => (
       '}'
     ].join('\n'),
     options: [2],
-    errors: [{message: 'Expected indentation of 2 space characters but found 4.'}]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 2, type: 'space', characters: 'characters', gotten: 4
+      }
+    }]
   }, {
     code: [
       'function App() {',
@@ -1144,7 +1194,12 @@ const Component = () => (
       '}'
     ].join('\n'),
     options: [2],
-    errors: [{message: 'Expected indentation of 4 space characters but found 0.'}]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     code: [
       '<App>',
@@ -1156,9 +1211,12 @@ const Component = () => (
       '    {test}',
       '</App>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 3.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 3
+      }
+    }]
   }, {
     code: [
       '<App>',
@@ -1178,9 +1236,12 @@ const Component = () => (
       '    ))}',
       '</App>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 12 space characters but found 11.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 12, type: 'space', characters: 'characters', gotten: 11
+      }
+    }]
   }, {
     code: [
       '<App>',
@@ -1193,9 +1254,12 @@ const Component = () => (
       '</App>'
     ].join('\n'),
     options: ['tab'],
-    errors: [
-      {message: 'Expected indentation of 1 tab character but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 1, type: 'tab', characters: 'character', gotten: 0
+      }
+    }]
   }, {
     code: [
       '<App>',
@@ -1216,9 +1280,12 @@ const Component = () => (
       '</App>'
     ].join('\n'),
     options: ['tab'],
-    errors: [
-      {message: 'Expected indentation of 3 tab characters but found 2.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 3, type: 'tab', characters: 'characters', gotten: 2
+      }
+    }]
   }, {
     code: [
       '<App>\n',
@@ -1231,9 +1298,12 @@ const Component = () => (
       '</App>'
     ].join('\n'),
     options: ['tab'],
-    errors: [
-      {message: 'Expected indentation of 1 tab character but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 1, type: 'tab', characters: 'character', gotten: 0
+      }
+    }]
   }, {
     code: [
       '[',
@@ -1248,9 +1318,12 @@ const Component = () => (
       ']'
     ].join('\n'),
     options: [2],
-    errors: [
-      {message: 'Expected indentation of 2 space characters but found 4.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 2, type: 'space', characters: 'characters', gotten: 4
+      }
+    }]
   }, {
     code: [
       '[',
@@ -1266,9 +1339,12 @@ const Component = () => (
       ']'
     ].join('\n'),
     options: [2],
-    errors: [
-      {message: 'Expected indentation of 2 space characters but found 4.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 2, type: 'space', characters: 'characters', gotten: 4
+      }
+    }]
   }, {
     code: [
       '<App>\n',
@@ -1281,9 +1357,12 @@ const Component = () => (
       '</App>'
     ].join('\n'),
     options: ['tab'],
-    errors: [
-      {message: 'Expected indentation of 1 tab character but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 1, type: 'tab', characters: 'character', gotten: 0
+      }
+    }]
   }, {
     code: [
       '<App>\n',
@@ -1296,9 +1375,12 @@ const Component = () => (
       '</App>'
     ].join('\n'),
     options: [2],
-    errors: [
-      {message: 'Expected indentation of 2 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 2, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     code: [
       '<div>',
@@ -1320,9 +1402,12 @@ const Component = () => (
       '    }',
       '</div>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 12 space characters but found 8.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 12, type: 'space', characters: 'characters', gotten: 8
+      }
+    }]
   }, {
     code: [
       '<div>',
@@ -1344,9 +1429,12 @@ const Component = () => (
       '    }',
       '</div>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 12 space characters but found 8.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 12, type: 'space', characters: 'characters', gotten: 8
+      }
+    }]
   }, {
     // Multiline ternary
     // (colon at the end of the first expression)
@@ -1360,9 +1448,12 @@ const Component = () => (
       '    <Foo /> :',
       '    <Bar />'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     code: [
       'foo ?',
@@ -1375,9 +1466,12 @@ const Component = () => (
       '    <Foo /> :',
       '    <></>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     // Multiline ternary
     // (colon on its own line)
@@ -1393,9 +1487,12 @@ const Component = () => (
       ':',
       '    <Bar />'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     // Multiline ternary
     // (first expression on test line, colon at the end of the first expression)
@@ -1407,9 +1504,12 @@ const Component = () => (
       'foo ? <Foo /> :',
       '<Bar />'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 0 space characters but found 4.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 0, type: 'space', characters: 'characters', gotten: 4
+      }
+    }]
   }, {
     code: [
       'foo ?',
@@ -1424,9 +1524,12 @@ const Component = () => (
       ':',
       '    <></>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     // Multiline ternary
     // (first expression on test line, colon on its own line)
@@ -1440,9 +1543,12 @@ const Component = () => (
       ':',
       '<Bar />'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 0 space characters but found 6.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 0, type: 'space', characters: 'characters', gotten: 6
+      }
+    }]
   }, {
     // Multiline ternary
     // (colon at the end of the first expression, parenthesized first expression)
@@ -1458,9 +1564,12 @@ const Component = () => (
       ') :',
       '    <Bar />'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     code: [
       'foo ? (',
@@ -1475,9 +1584,12 @@ const Component = () => (
       ') :',
       '    <></>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     // Multiline ternary
     // (colon on its own line, parenthesized first expression)
@@ -1495,9 +1607,12 @@ const Component = () => (
       ':',
       '    <Bar />'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     // Multiline ternary
     // (colon at the end of the first expression, parenthesized second expression)
@@ -1513,9 +1628,12 @@ const Component = () => (
       '        <Bar />',
       '    )'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 8 space characters but found 4.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 8, type: 'space', characters: 'characters', gotten: 4
+      }
+    }]
   }, {
     code: [
       'foo ?',
@@ -1530,9 +1648,12 @@ const Component = () => (
       '        <></>',
       '    )'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 8 space characters but found 4.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 8, type: 'space', characters: 'characters', gotten: 4
+      }
+    }]
   }, {
     // Multiline ternary
     // (colon on its own line, parenthesized second expression)
@@ -1550,9 +1671,12 @@ const Component = () => (
       '    <Bar />',
       ')'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     // Multiline ternary
     // (colon indented on its own line, parenthesized second expression)
@@ -1570,9 +1694,12 @@ const Component = () => (
       '        <Bar />',
       '    )'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 8 space characters but found 4.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 8, type: 'space', characters: 'characters', gotten: 4
+      }
+    }]
   }, {
     code: [
       'foo ?',
@@ -1589,9 +1716,12 @@ const Component = () => (
       '        <></>',
       '    )'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 8 space characters but found 4.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 8, type: 'space', characters: 'characters', gotten: 4
+      }
+    }]
   }, {
     // Multiline ternary
     // (colon at the end of the first expression, both expression parenthesized)
@@ -1609,10 +1739,18 @@ const Component = () => (
       '    <Bar />',
       ')'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'},
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    },
+    {
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     code: [
       'foo ? (',
@@ -1629,10 +1767,18 @@ const Component = () => (
       '    <></>',
       ')'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'},
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    },
+    {
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     // Multiline ternary
     // (colon on its own line, both expression parenthesized)
@@ -1652,10 +1798,18 @@ const Component = () => (
       '    <Bar />',
       ')'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'},
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    },
+    {
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     // Multiline ternary
     // (colon on its own line, both expression parenthesized)
@@ -1677,10 +1831,18 @@ const Component = () => (
       '    <Bar />',
       ')'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'},
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    },
+    {
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     code: [
       'foo ? (',
@@ -1701,10 +1863,18 @@ const Component = () => (
       '    <></>',
       ')'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'},
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    },
+    {
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     // Multiline ternary
     // (first expression on test line, colon at the end of the first expression, parenthesized second expression)
@@ -1718,9 +1888,12 @@ const Component = () => (
       '    <Bar />',
       ')'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     code: [
       'foo ? <Foo /> : (',
@@ -1733,9 +1906,12 @@ const Component = () => (
       '    <></>',
       ')'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     // Multiline ternary
     // (first expression on test line, colon on its own line, parenthesized second expression)
@@ -1751,9 +1927,12 @@ const Component = () => (
       '    <Bar />',
       ')'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     code: [
       'foo ? <Foo />',
@@ -1768,9 +1947,12 @@ const Component = () => (
       '    <></>',
       ')'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     code: [
       '<p>',
@@ -1779,9 +1961,12 @@ const Component = () => (
       '  </div>',
       '</p>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 2.'}
-    ],
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 2
+      }
+    }],
     output: [
       '<p>',
       '    <div>',
@@ -1815,9 +2000,12 @@ const Component = () => (
     );
     `,
     options: [2, {checkAttributes: true}],
-    errors: [
-      {message: 'Expected indentation of 8 space characters but found 4.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 8, type: 'space', characters: 'characters', gotten: 4
+      }
+    }]
   }, {
     code: `
 const Component = () => (
@@ -1844,9 +2032,12 @@ const Component = () => (
 );
     `,
     options: ['tab', {checkAttributes: true}],
-    errors: [
-      {message: 'Expected indentation of 2 tab characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 2, type: 'tab', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     code: `
     function Foo() {
@@ -1871,9 +2062,12 @@ const Component = () => (
     }
     `,
     options: [2, {indentLogicalExpressions: true}],
-    errors: [
-      {message: 'Expected indentation of 12 space characters but found 10.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 12, type: 'space', characters: 'characters', gotten: 10
+      }
+    }]
   }, {
     code: [
       '<span>',
@@ -1892,9 +2086,12 @@ const Component = () => (
       '    }}',
       '</span>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 8 space characters but found 12.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 8, type: 'space', characters: 'characters', gotten: 12
+      }
+    }]
   }, {
     code: [
       '<span>',
@@ -1913,9 +2110,12 @@ const Component = () => (
       '    })}',
       '</span>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 8 space characters but found 12.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 8, type: 'space', characters: 'characters', gotten: 12
+      }
+    }]
   }, {
     code: [
       '<span>',
@@ -1932,9 +2132,12 @@ const Component = () => (
       '    }}',
       '</span>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 8 space characters but found 4.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 8, type: 'space', characters: 'characters', gotten: 4
+      }
+    }]
   }, {
     code: [
       '<span>',
@@ -1951,9 +2154,12 @@ const Component = () => (
       '    })}',
       '</span>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 8 space characters but found 4.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 8, type: 'space', characters: 'characters', gotten: 4
+      }
+    }]
   }, {
     code: [
       '<div>',
@@ -1965,9 +2171,12 @@ const Component = () => (
       '    text',
       '</div>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     code: [
       '<div>',
@@ -1981,10 +2190,18 @@ const Component = () => (
       '    text',
       '</div>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 2.'},
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 2
+      }
+    },
+    {
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }, {
     code: [
       '<div>',
@@ -1998,10 +2215,18 @@ const Component = () => (
       '    text',
       '</div>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'},
-      {message: 'Expected indentation of 4 space characters but found 2.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    },
+    {
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 2
+      }
+    }]
   }, {
     code: [
       '<div>',
@@ -2015,9 +2240,12 @@ const Component = () => (
       '\ttext',
       '</div>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 1 tab character but found 2.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 1, type: 'tab', characters: 'character', gotten: 2
+      }
+    }]
   }, {
     code: [
       '<>',
@@ -2030,8 +2258,11 @@ const Component = () => (
       '    aaa',
       '</>'
     ].join('\n'),
-    errors: [
-      {message: 'Expected indentation of 4 space characters but found 0.'}
-    ]
+    errors: [{
+      messageId: 'wrongIndent',
+      data: {
+        needed: 4, type: 'space', characters: 'characters', gotten: 0
+      }
+    }]
   }]
 });

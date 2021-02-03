@@ -86,22 +86,29 @@ ruleTester.run('forbid-elements', rule, {
     {
       code: '<button />',
       options: [{forbid: ['button']}],
-      errors: [{message: '<button> is forbidden'}]
+      errors: [{
+        messageId: 'forbiddenElement',
+        data: {element: 'button'}
+      }]
     },
     {
       code: '[<Modal />, <button />]',
       options: [{forbid: ['button', 'Modal']}],
-      errors: [
-        {message: '<Modal> is forbidden'},
-        {message: '<button> is forbidden'}
-      ]
+      errors: [{
+        messageId: 'forbiddenElement',
+        data: {element: 'Modal'}
+      }, {
+        messageId: 'forbiddenElement',
+        data: {element: 'button'}
+      }]
     },
     {
       code: '<dotted.component />',
       options: [{forbid: ['dotted.component']}],
-      errors: [
-        {message: '<dotted.component> is forbidden'}
-      ]
+      errors: [{
+        messageId: 'forbiddenElement',
+        data: {element: 'dotted.component'}
+      }]
     },
     {
       code: '<dotted.Component />',
@@ -110,7 +117,10 @@ ruleTester.run('forbid-elements', rule, {
           {element: 'dotted.Component', message: 'that ain\'t cool'}
         ]
       }],
-      errors: [{message: '<dotted.Component> is forbidden, that ain\'t cool'}]
+      errors: [{
+        messageId: 'forbiddenElement_message',
+        data: {element: 'dotted.Component', message: 'that ain\'t cool'}
+      }]
     },
     {
       code: '<button />',
@@ -119,31 +129,43 @@ ruleTester.run('forbid-elements', rule, {
           {element: 'button', message: 'use <Button> instead'}
         ]
       }],
-      errors: [{message: '<button> is forbidden, use <Button> instead'}]
+      errors: [{
+        messageId: 'forbiddenElement_message',
+        data: {element: 'button', message: 'use <Button> instead'}
+      }]
     },
     {
       code: '<button><input /></button>',
       options: [{forbid: [{element: 'button'}, {element: 'input'}]}],
-      errors: [
-        {message: '<button> is forbidden'},
-        {message: '<input> is forbidden'}
-      ]
+      errors: [{
+        messageId: 'forbiddenElement',
+        data: {element: 'button'}
+      }, {
+        messageId: 'forbiddenElement',
+        data: {element: 'input'}
+      }]
     },
     {
       code: '<button><input /></button>',
       options: [{forbid: [{element: 'button'}, 'input']}],
-      errors: [
-        {message: '<button> is forbidden'},
-        {message: '<input> is forbidden'}
-      ]
+      errors: [{
+        messageId: 'forbiddenElement',
+        data: {element: 'button'}
+      }, {
+        messageId: 'forbiddenElement',
+        data: {element: 'input'}
+      }]
     },
     {
       code: '<button><input /></button>',
       options: [{forbid: ['input', {element: 'button'}]}],
-      errors: [
-        {message: '<button> is forbidden'},
-        {message: '<input> is forbidden'}
-      ]
+      errors: [{
+        messageId: 'forbiddenElement',
+        data: {element: 'button'}
+      }, {
+        messageId: 'forbiddenElement',
+        data: {element: 'input'}
+      }]
     },
     {
       code: '<button />',
@@ -153,20 +175,29 @@ ruleTester.run('forbid-elements', rule, {
           {element: 'button', message: 'use <Button2> instead'}
         ]
       }],
-      errors: [{message: '<button> is forbidden, use <Button2> instead'}]
+      errors: [{
+        messageId: 'forbiddenElement_message',
+        data: {element: 'button', message: 'use <Button2> instead'}
+      }]
     },
     {
       code: 'React.createElement("button", {}, child)',
       options: [{forbid: ['button']}],
-      errors: [{message: '<button> is forbidden'}]
+      errors: [{
+        messageId: 'forbiddenElement',
+        data: {element: 'button'}
+      }]
     },
     {
       code: '[React.createElement(Modal), React.createElement("button")]',
       options: [{forbid: ['button', 'Modal']}],
-      errors: [
-        {message: '<Modal> is forbidden'},
-        {message: '<button> is forbidden'}
-      ]
+      errors: [{
+        messageId: 'forbiddenElement',
+        data: {element: 'Modal'}
+      }, {
+        messageId: 'forbiddenElement',
+        data: {element: 'button'}
+      }]
     },
     {
       code: 'React.createElement(dotted.Component)',
@@ -175,21 +206,26 @@ ruleTester.run('forbid-elements', rule, {
           {element: 'dotted.Component', message: 'that ain\'t cool'}
         ]
       }],
-      errors: [{message: '<dotted.Component> is forbidden, that ain\'t cool'}]
+      errors: [{
+        messageId: 'forbiddenElement_message',
+        data: {element: 'dotted.Component', message: 'that ain\'t cool'}
+      }]
     },
     {
       code: 'React.createElement(dotted.component)',
       options: [{forbid: ['dotted.component']}],
-      errors: [
-        {message: '<dotted.component> is forbidden'}
-      ]
+      errors: [{
+        messageId: 'forbiddenElement',
+        data: {element: 'dotted.component'}
+      }]
     },
     {
       code: 'React.createElement(_comp)',
       options: [{forbid: ['_comp']}],
-      errors: [
-        {message: '<_comp> is forbidden'}
-      ]
+      errors: [{
+        messageId: 'forbiddenElement',
+        data: {element: '_comp'}
+      }]
     },
     {
       code: 'React.createElement("button")',
@@ -198,15 +234,21 @@ ruleTester.run('forbid-elements', rule, {
           {element: 'button', message: 'use <Button> instead'}
         ]
       }],
-      errors: [{message: '<button> is forbidden, use <Button> instead'}]
+      errors: [{
+        messageId: 'forbiddenElement_message',
+        data: {element: 'button', message: 'use <Button> instead'}
+      }]
     },
     {
       code: 'React.createElement("button", {}, React.createElement("input"))',
       options: [{forbid: [{element: 'button'}, {element: 'input'}]}],
-      errors: [
-        {message: '<button> is forbidden'},
-        {message: '<input> is forbidden'}
-      ]
+      errors: [{
+        messageId: 'forbiddenElement',
+        data: {element: 'button'}
+      }, {
+        messageId: 'forbiddenElement',
+        data: {element: 'input'}
+      }]
     }
   ]
 });

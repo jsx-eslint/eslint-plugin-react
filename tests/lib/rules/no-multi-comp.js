@@ -256,7 +256,7 @@ ruleTester.run('no-multi-comp', rule, {
       '});'
     ].join('\r'),
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 6
     }]
   }, {
@@ -278,10 +278,10 @@ ruleTester.run('no-multi-comp', rule, {
       '}'
     ].join('\r'),
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 6
     }, {
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 11
     }]
   }, {
@@ -295,7 +295,7 @@ ruleTester.run('no-multi-comp', rule, {
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 4
     }]
   }, {
@@ -310,7 +310,7 @@ ruleTester.run('no-multi-comp', rule, {
       '}'
     ].join('\r'),
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 4
     }]
   }, {
@@ -328,7 +328,7 @@ ruleTester.run('no-multi-comp', rule, {
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 6
     }]
   },
@@ -346,7 +346,7 @@ ruleTester.run('no-multi-comp', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 7
     }]
   },
@@ -362,7 +362,7 @@ ruleTester.run('no-multi-comp', rule, {
     }],
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 5
     }]
   }, {
@@ -377,7 +377,7 @@ ruleTester.run('no-multi-comp', rule, {
     }],
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 5
     }]
   }, {
@@ -392,7 +392,7 @@ ruleTester.run('no-multi-comp', rule, {
     }],
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 5
     }]
   }, {
@@ -407,7 +407,7 @@ ruleTester.run('no-multi-comp', rule, {
       ignoreStateless: false
     }],
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 6
     }]
   }, {
@@ -422,7 +422,7 @@ ruleTester.run('no-multi-comp', rule, {
       ignoreStateless: false
     }],
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 6
     }]
   }, {
@@ -437,7 +437,7 @@ ruleTester.run('no-multi-comp', rule, {
       ignoreStateless: false
     }],
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 6
     }]
   }, {
@@ -452,7 +452,7 @@ ruleTester.run('no-multi-comp', rule, {
       ignoreStateless: false
     }],
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 6
     }]
   }, {
@@ -467,7 +467,7 @@ ruleTester.run('no-multi-comp', rule, {
       ignoreStateless: false
     }],
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 6
     }]
   }, {
@@ -482,7 +482,7 @@ ruleTester.run('no-multi-comp', rule, {
       ignoreStateless: false
     }],
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 6
     }]
   }, {
@@ -497,7 +497,7 @@ ruleTester.run('no-multi-comp', rule, {
       ignoreStateless: false
     }],
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 6
     }]
   }, {
@@ -512,7 +512,7 @@ ruleTester.run('no-multi-comp', rule, {
       ignoreStateless: false
     }],
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 6
     }]
   }, {
@@ -527,7 +527,7 @@ ruleTester.run('no-multi-comp', rule, {
       ignoreStateless: false
     }],
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 6
     }]
   }, {
@@ -542,7 +542,7 @@ ruleTester.run('no-multi-comp', rule, {
       ignoreStateless: false
     }],
     errors: [{
-      message: 'Declare only one React component per file',
+      messageId: 'onlyOneComponent',
       line: 6
     }]
   }, {
@@ -558,8 +558,6 @@ ruleTester.run('no-multi-comp', rule, {
         pragma: 'Foo'
       }
     },
-    errors: [{
-      message: 'Declare only one React component per file'
-    }]
+    errors: [{messageId: 'onlyOneComponent'}]
   }]
 });

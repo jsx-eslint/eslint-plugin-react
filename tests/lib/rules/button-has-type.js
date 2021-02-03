@@ -76,157 +76,172 @@ ruleTester.run('button-has-type', rule, {
     {
       code: '<button/>',
       errors: [{
-        message: 'Missing an explicit type attribute for button'
+        messageId: 'missingType'
       }]
     },
     {
       code: '<button type="foo"/>',
       errors: [{
-        message: '"foo" is an invalid value for button type attribute'
+        messageId: 'invalidValue',
+        data: {value: 'foo'}
       }]
     },
     {
       code: '<button type={foo}/>',
       errors: [{
-        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
+        messageId: 'complexType'
       }]
     },
     {
       code: '<button type={"foo"}/>',
       errors: [{
-        message: '"foo" is an invalid value for button type attribute'
+        messageId: 'invalidValue',
+        data: {value: 'foo'}
       }]
     },
     {
       code: '<button type={\'foo\'}/>',
       errors: [{
-        message: '"foo" is an invalid value for button type attribute'
+        messageId: 'invalidValue',
+        data: {value: 'foo'}
       }]
     },
     {
       code: '<button type={`foo`}/>',
       errors: [{
-        message: '"foo" is an invalid value for button type attribute'
+        messageId: 'invalidValue',
+        data: {value: 'foo'}
       }]
     },
     {
       code: '<button type={`button${foo}`}/>',
       errors: [{
-        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
+        messageId: 'complexType'
       }]
     },
     {
       code: '<button type="reset"/>',
       options: [{reset: false}],
       errors: [{
-        message: '"reset" is a forbidden value for button type attribute'
+        messageId: 'forbiddenValue',
+        data: {value: 'reset'}
       }]
     },
     {
       code: '<button type={condition ? "button" : foo}/>',
       errors: [{
-        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
+        messageId: 'complexType'
       }]
     },
     {
       code: '<button type={condition ? "button" : "foo"}/>',
       errors: [{
-        message: '"foo" is an invalid value for button type attribute'
+        messageId: 'invalidValue',
+        data: {value: 'foo'}
       }]
     },
     {
       code: '<button type={condition ? "button" : "reset"}/>',
       options: [{reset: false}],
       errors: [{
-        message: '"reset" is a forbidden value for button type attribute'
+        messageId: 'forbiddenValue',
+        data: {value: 'reset'}
       }]
     },
     {
       code: '<button type={condition ? foo : "button"}/>',
       errors: [{
-        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
+        messageId: 'complexType'
       }]
     },
     {
       code: '<button type={condition ? "foo" : "button"}/>',
       errors: [{
-        message: '"foo" is an invalid value for button type attribute'
+        messageId: 'invalidValue',
+        data: {value: 'foo'}
       }]
     },
     {
       code: '<button type={condition ? "reset" : "button"}/>',
       options: [{reset: false}],
       errors: [{
-        message: '"reset" is a forbidden value for button type attribute'
+        messageId: 'forbiddenValue',
+        data: {value: 'reset'}
       }]
     },
     {
       code: 'React.createElement("button")',
       errors: [{
-        message: 'Missing an explicit type attribute for button'
+        messageId: 'missingType'
       }]
     },
     {
       code: 'React.createElement("button", {type: foo})',
       errors: [{
-        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
+        messageId: 'complexType'
       }]
     },
     {
       code: 'React.createElement("button", {type: "foo"})',
       errors: [{
-        message: '"foo" is an invalid value for button type attribute'
+        messageId: 'invalidValue',
+        data: {value: 'foo'}
       }]
     },
     {
       code: 'React.createElement("button", {type: "reset"})',
       options: [{reset: false}],
       errors: [{
-        message: '"reset" is a forbidden value for button type attribute'
+        messageId: 'forbiddenValue',
+        data: {value: 'reset'}
       }]
     },
     {
       code: 'React.createElement("button", {type: condition ? "button" : foo})',
       errors: [{
-        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
+        messageId: 'complexType'
       }]
     },
     {
       code: 'React.createElement("button", {type: condition ? "button" : "foo"})',
       errors: [{
-        message: '"foo" is an invalid value for button type attribute'
+        messageId: 'invalidValue',
+        data: {value: 'foo'}
       }]
     },
     {
       code: 'React.createElement("button", {type: condition ? "button" : "reset"})',
       options: [{reset: false}],
       errors: [{
-        message: '"reset" is a forbidden value for button type attribute'
+        messageId: 'forbiddenValue',
+        data: {value: 'reset'}
       }]
     },
     {
       code: 'React.createElement("button", {type: condition ? foo : "button"})',
       errors: [{
-        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
+        messageId: 'complexType'
       }]
     },
     {
       code: 'React.createElement("button", {type: condition ? "foo" : "button"})',
       errors: [{
-        message: '"foo" is an invalid value for button type attribute'
+        messageId: 'invalidValue',
+        data: {value: 'foo'}
       }]
     },
     {
       code: 'React.createElement("button", {type: condition ? "reset" : "button"})',
       options: [{reset: false}],
       errors: [{
-        message: '"reset" is a forbidden value for button type attribute'
+        messageId: 'forbiddenValue',
+        data: {value: 'reset'}
       }]
     },
     {
       code: 'Foo.createElement("button")',
       errors: [{
-        message: 'Missing an explicit type attribute for button'
+        messageId: 'missingType'
       }],
       settings: {
         react: {
@@ -237,7 +252,7 @@ ruleTester.run('button-has-type', rule, {
     {
       code: 'function Button({ type, ...extraProps }) { const button = type; return <button type={button} {...extraProps} />; }',
       errors: [{
-        message: 'The button type attribute must be specified by a static string or a trivial ternary expression'
+        messageId: 'complexType'
       }]
     }
   ]

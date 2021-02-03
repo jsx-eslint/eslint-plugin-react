@@ -12,8 +12,6 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-adjacent-inline-elements');
 
-const ERROR = rule.ERROR;
-
 const parserOptions = {
   ecmaVersion: 6,
   ecmaFeatures: {
@@ -90,17 +88,17 @@ ruleTester.run('no-adjacent-inline-elements', rule, {
   invalid: [
     {
       code: '<div><a></a><a></a></div>;',
-      errors: [{message: ERROR}],
+      errors: [{messageId: 'inlineElement'}],
       parserOptions
     },
     {
       code: '<div><a></a><span></span></div>;',
-      errors: [{message: ERROR}],
+      errors: [{messageId: 'inlineElement'}],
       parserOptions
     },
     {
       code: 'React.createElement("div", undefined, [React.createElement("a"), React.createElement("span")]);',
-      errors: [{message: ERROR}],
+      errors: [{messageId: 'inlineElement'}],
       parserOptions
     }
   ]

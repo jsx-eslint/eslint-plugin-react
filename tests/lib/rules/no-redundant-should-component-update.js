@@ -20,10 +20,6 @@ const parserOptions = {
   }
 };
 
-function errorMessage(node) {
-  return `${node} does not need shouldComponentUpdate when extending React.PureComponent.`;
-}
-
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
@@ -86,7 +82,10 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      errors: [{message: errorMessage('Foo')}],
+      errors: [{
+        messageId: 'noShouldCompUpdate',
+        data: {component: 'Foo'}
+      }],
       parserOptions
     },
     {
@@ -97,7 +96,10 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      errors: [{message: errorMessage('Foo')}],
+      errors: [{
+        messageId: 'noShouldCompUpdate',
+        data: {component: 'Foo'}
+      }],
       parserOptions
     },
     {
@@ -108,7 +110,10 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      errors: [{message: errorMessage('Foo')}],
+      errors: [{
+        messageId: 'noShouldCompUpdate',
+        data: {component: 'Foo'}
+      }],
       parser: parsers.BABEL_ESLINT,
       parserOptions
     },
@@ -122,7 +127,10 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           };
         }
       `,
-      errors: [{message: errorMessage('Bar')}],
+      errors: [{
+        messageId: 'noShouldCompUpdate',
+        data: {component: 'Bar'}
+      }],
       parserOptions
     },
     {
@@ -135,7 +143,10 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           };
         }
       `,
-      errors: [{message: errorMessage('Bar')}],
+      errors: [{
+        messageId: 'noShouldCompUpdate',
+        data: {component: 'Bar'}
+      }],
       parserOptions
     },
     {
@@ -146,7 +157,10 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      errors: [{message: errorMessage('Foo')}],
+      errors: [{
+        messageId: 'noShouldCompUpdate',
+        data: {component: 'Foo'}
+      }],
       parserOptions
     }
   ]

@@ -179,7 +179,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         'propOne="one" propTwo="two" />'
       ].join('\n'),
       options: ['always'],
-      errors: [{message: 'Property should be placed on a new line'}],
+      errors: [{messageId: 'propOnNewLine'}],
       parser: parsers.BABEL_ESLINT
     },
     {
@@ -189,7 +189,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         'propOne="one" propTwo="two" />'
       ].join('\n'),
       options: ['always'],
-      errors: [{message: 'Property should be placed on a new line'}],
+      errors: [{messageId: 'propOnNewLine'}],
       parser: parsers.TYPESCRIPT_ESLINT
     },
     {
@@ -205,7 +205,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '/>'
       ].join('\n'),
       options: ['always'],
-      errors: [{message: 'Property should be placed on a new line'}],
+      errors: [{messageId: 'propOnNewLine'}],
       parser: parsers.BABEL_ESLINT
     },
     {
@@ -221,7 +221,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '/>'
       ].join('\n'),
       options: ['always'],
-      errors: [{message: 'Property should be placed on a new line'}],
+      errors: [{messageId: 'propOnNewLine'}],
       parser: parsers.TYPESCRIPT_ESLINT
     },
     {
@@ -237,7 +237,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '/>'
       ].join('\n'),
       options: ['never'],
-      errors: [{message: 'Property should be placed on the same line as the component declaration'}],
+      errors: [{messageId: 'propOnSameLine'}],
       parser: parsers.BABEL_ESLINT
     },
     {
@@ -253,7 +253,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '/>'
       ].join('\n'),
       options: ['never'],
-      errors: [{message: 'Property should be placed on the same line as the component declaration'}],
+      errors: [{messageId: 'propOnSameLine'}],
       parser: parsers.TYPESCRIPT_ESLINT
     },
     {
@@ -267,7 +267,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '}} />'
       ].join('\n'),
       options: ['multiline'],
-      errors: [{message: 'Property should be placed on a new line'}],
+      errors: [{messageId: 'propOnNewLine'}],
       parser: parsers.BABEL_ESLINT
     },
     {
@@ -281,7 +281,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '}} />'
       ].join('\n'),
       options: ['multiline'],
-      errors: [{message: 'Property should be placed on a new line'}],
+      errors: [{messageId: 'propOnNewLine'}],
       parser: parsers.TYPESCRIPT_ESLINT
     },
     {
@@ -295,7 +295,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '}} baz />'
       ].join('\n'),
       options: ['multiline-multiprop'],
-      errors: [{message: 'Property should be placed on a new line'}],
+      errors: [{messageId: 'propOnNewLine'}],
       parser: parsers.BABEL_ESLINT
     },
     {
@@ -309,7 +309,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
         '}} baz />'
       ].join('\n'),
       options: ['multiline-multiprop'],
-      errors: [{message: 'Property should be placed on a new line'}],
+      errors: [{messageId: 'propOnNewLine'}],
       parser: parsers.TYPESCRIPT_ESLINT
     }
   ]

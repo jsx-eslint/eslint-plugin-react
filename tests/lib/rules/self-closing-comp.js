@@ -147,80 +147,80 @@ ruleTester.run('self-closing-comp', rule, {
       code: 'var contentContainer = <div className="content"></div>;',
       output: 'var contentContainer = <div className="content" />;',
       errors: [{
-        message: 'Empty components are self-closing'
+        messageId: 'notSelfClosing'
       }]
     }, {
       code: 'var contentContainer = <div className="content"></div>;',
       output: 'var contentContainer = <div className="content" />;',
       options: [],
       errors: [{
-        message: 'Empty components are self-closing'
+        messageId: 'notSelfClosing'
       }]
     }, {
       code: 'var HelloJohn = <Hello name="John"></Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
       errors: [{
-        message: 'Empty components are self-closing'
+        messageId: 'notSelfClosing'
       }]
     }, {
       code: 'var CompoundHelloJohn = <Hello.Compound name="John"></Hello.Compound>;',
       output: 'var CompoundHelloJohn = <Hello.Compound name="John" />;',
       errors: [{
-        message: 'Empty components are self-closing'
+        messageId: 'notSelfClosing'
       }]
     }, {
       code: 'var HelloJohn = <Hello name="John">\n</Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
       errors: [{
-        message: 'Empty components are self-closing'
+        messageId: 'notSelfClosing'
       }]
     }, {
       code: 'var HelloJohn = <Hello.Compound name="John">\n</Hello.Compound>;',
       output: 'var HelloJohn = <Hello.Compound name="John" />;',
       errors: [{
-        message: 'Empty components are self-closing'
+        messageId: 'notSelfClosing'
       }]
     }, {
       code: 'var HelloJohn = <Hello name="John"></Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
       options: [],
       errors: [{
-        message: 'Empty components are self-closing'
+        messageId: 'notSelfClosing'
       }]
     }, {
       code: 'var HelloJohn = <Hello.Compound name="John"></Hello.Compound>;',
       output: 'var HelloJohn = <Hello.Compound name="John" />;',
       options: [],
       errors: [{
-        message: 'Empty components are self-closing'
+        messageId: 'notSelfClosing'
       }]
     }, {
       code: 'var HelloJohn = <Hello name="John">\n</Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
       options: [],
       errors: [{
-        message: 'Empty components are self-closing'
+        messageId: 'notSelfClosing'
       }]
     }, {
       code: 'var HelloJohn = <Hello.Compound name="John">\n</Hello.Compound>;',
       output: 'var HelloJohn = <Hello.Compound name="John" />;',
       options: [],
       errors: [{
-        message: 'Empty components are self-closing'
+        messageId: 'notSelfClosing'
       }]
     }, {
       code: 'var contentContainer = <div className="content"></div>;',
       output: 'var contentContainer = <div className="content" />;',
       options: [{html: true}],
       errors: [{
-        message: 'Empty components are self-closing'
+        messageId: 'notSelfClosing'
       }]
     }, {
       code: 'var contentContainer = <div className="content">\n</div>;',
       output: 'var contentContainer = <div className="content" />;',
       options: [{html: true}],
       errors: [{
-        message: 'Empty components are self-closing'
+        messageId: 'notSelfClosing'
       }]
     }
   ]

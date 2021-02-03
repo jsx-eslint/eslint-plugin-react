@@ -22,9 +22,6 @@ const parserOptions = {
   }
 };
 
-const MESSAGE_MATCH_INDENTATION = [{message: 'Expected closing tag to match indentation of opening.'}];
-const MESSAGE_OWN_LINE = [{message: 'Closing tag of a multiline JSX expression must be on its own line.'}];
-
 // ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
@@ -66,7 +63,7 @@ ruleTester.run('jsx-closing-tag-location', rule, {
         foo
       </App>
     `,
-    errors: MESSAGE_MATCH_INDENTATION
+    errors: [{messageId: 'matchIndent'}]
   }, {
     code: `
       <App>
@@ -77,7 +74,7 @@ ruleTester.run('jsx-closing-tag-location', rule, {
         foo
       </App>
     `,
-    errors: MESSAGE_OWN_LINE
+    errors: [{messageId: 'onOwnLine'}]
   }, {
     code: `
       <>
@@ -90,7 +87,7 @@ ruleTester.run('jsx-closing-tag-location', rule, {
         foo
       </>
     `,
-    errors: MESSAGE_MATCH_INDENTATION
+    errors: [{messageId: 'matchIndent'}]
   }, {
     code: `
       <>
@@ -102,6 +99,6 @@ ruleTester.run('jsx-closing-tag-location', rule, {
         foo
       </>
     `,
-    errors: MESSAGE_OWN_LINE
+    errors: [{messageId: 'onOwnLine'}]
   }]
 });

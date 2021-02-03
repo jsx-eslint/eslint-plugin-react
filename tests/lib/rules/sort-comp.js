@@ -641,7 +641,10 @@ ruleTester.run('sort-comp', rule, {
       '  displayName : \'Hello\',',
       '});'
     ].join('\n'),
-    errors: [{message: 'render should be placed after displayName'}]
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'render', position: 'after', propB: 'displayName'}
+    }]
   }, {
     code: [
       '// Must run rule when render uses createElement instead of JSX',
@@ -652,7 +655,10 @@ ruleTester.run('sort-comp', rule, {
       '  displayName : \'Hello\',',
       '});'
     ].join('\n'),
-    errors: [{message: 'render should be placed after displayName'}]
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'render', position: 'after', propB: 'displayName'}
+    }]
   }, {
     code: [
       '// Must force a custom method to be placed before render',
@@ -663,7 +669,10 @@ ruleTester.run('sort-comp', rule, {
       '  onClick: function() {},',
       '});'
     ].join('\n'),
-    errors: [{message: 'render should be placed after onClick'}]
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'render', position: 'after', propB: 'onClick'}
+    }]
   }, {
     code: [
       '// Must force a custom method to be placed before render, even in function',
@@ -677,7 +686,10 @@ ruleTester.run('sort-comp', rule, {
       '};'
     ].join('\n'),
     parserOptions,
-    errors: [{message: 'render should be placed after onClick'}]
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'render', position: 'after', propB: 'onClick'}
+    }]
   }, {
     code: [
       '// Must force a custom method to be placed after render if no \'everything-else\' group is specified',
@@ -695,7 +707,10 @@ ruleTester.run('sort-comp', rule, {
         'render'
       ]
     }],
-    errors: [{message: 'onClick should be placed after render'}]
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'onClick', position: 'after', propB: 'render'}
+    }]
   }, {
     code: [
       '// Must validate static properties',
@@ -707,7 +722,10 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    errors: [{message: 'render should be placed after displayName'}]
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'render', position: 'after', propB: 'displayName'}
+    }]
   }, {
     code: [
       '// Type Annotations should not be at the top by default',
@@ -721,7 +739,10 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    errors: [{message: 'props should be placed after state'}]
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'props', position: 'after', propB: 'state'}
+    }]
   }, {
     code: [
       '// Type Annotations should be first',
@@ -734,7 +755,10 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    errors: [{message: 'constructor should be placed after props'}],
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'constructor', position: 'after', propB: 'props'}
+    }],
     options: [{
       order: [
         'type-annotations',
@@ -757,7 +781,10 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    errors: [{message: 'state should be placed after constructor'}],
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'state', position: 'after', propB: 'constructor'}
+    }],
     options: [{
       order: [
         'type-annotations',
@@ -779,7 +806,10 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    errors: [{message: 'componentDidMountOk should be placed after getA'}],
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'componentDidMountOk', position: 'after', propB: 'getA'}
+    }],
     options: [{
       order: [
         'static-methods',
@@ -803,7 +833,10 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    errors: [{message: 'constructor should be placed after getter functions'}],
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'constructor', position: 'after getter', propB: 'functions'}
+    }],
     options: [{
       order: [
         'getters',
@@ -825,7 +858,10 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    errors: [{message: 'constructor should be placed after setter functions'}],
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'constructor', position: 'after setter', propB: 'functions'}
+    }],
     options: [{
       order: [
         'setters',
@@ -849,7 +885,10 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    errors: [{message: 'foo should be placed before constructor'}],
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'foo', position: 'before', propB: 'constructor'}
+    }],
     options: [{
       order: [
         'instance-methods',
@@ -872,7 +911,10 @@ ruleTester.run('sort-comp', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
-    errors: [{message: 'foo should be placed before constructor'}],
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'foo', position: 'before', propB: 'constructor'}
+    }],
     options: [{
       order: [
         'instance-variables',
@@ -890,7 +932,10 @@ ruleTester.run('sort-comp', rule, {
       '  render() {}',
       '}'
     ].join('\n'),
-    errors: [{message: 'setters should be placed after render'}],
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'setters', position: 'after', propB: 'render'}
+    }],
     options: [{
       order: [
         'setters',
@@ -906,7 +951,10 @@ ruleTester.run('sort-comp', rule, {
       '  foo() {}',
       '}'
     ].join('\n'),
-    errors: [{message: 'render should be placed after foo'}],
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'render', position: 'after', propB: 'foo'}
+    }],
     options: [{
       order: [
         'foo',
@@ -924,7 +972,10 @@ ruleTester.run('sort-comp', rule, {
         }
       }
     `,
-    errors: [{message: 'getDerivedStateFromProps should be placed after foo'}],
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'getDerivedStateFromProps', position: 'after', propB: 'foo'}
+    }],
     parser: parsers.BABEL_ESLINT,
     options: [{
       order: [
@@ -944,7 +995,10 @@ ruleTester.run('sort-comp', rule, {
         }
       }
     `,
-    errors: [{message: 'foo should be placed after bar'}],
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'foo', position: 'after', propB: 'bar'}
+    }],
     parser: parsers.BABEL_ESLINT,
     options: [{
       order: [
@@ -965,7 +1019,10 @@ ruleTester.run('sort-comp', rule, {
       }
     `,
     parser: parsers.BABEL_ESLINT,
-    errors: [{message: 'bar should be placed after render'}],
+    errors: [{
+      messageId: 'unsortedProps',
+      data: {propA: 'bar', position: 'after', propB: 'render'}
+    }],
     options: [{
       order: [
         'static-methods',

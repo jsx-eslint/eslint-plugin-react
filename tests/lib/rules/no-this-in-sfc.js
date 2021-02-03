@@ -5,12 +5,6 @@
 'use strict';
 
 // ------------------------------------------------------------------------------
-// Constants
-// ------------------------------------------------------------------------------
-
-const ERROR_MESSAGE = 'Stateless functional components should not use `this`';
-
-// ------------------------------------------------------------------------------
 // Requirements
 // ------------------------------------------------------------------------------
 
@@ -154,32 +148,32 @@ ruleTester.run('no-this-in-sfc', rule, {
       const { foo } = this.props;
       return <div>{foo}</div>;
     }`,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{messageId: 'noThisInSFC'}]
   }, {
     code: `
     function Foo(props) {
       return <div>{this.props.foo}</div>;
     }`,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{messageId: 'noThisInSFC'}]
   }, {
     code: `
     function Foo(props) {
       return <div>{this.state.foo}</div>;
     }`,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{messageId: 'noThisInSFC'}]
   }, {
     code: `
     function Foo(props) {
       const { foo } = this.state;
       return <div>{foo}</div>;
     }`,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{messageId: 'noThisInSFC'}]
   }, {
     code: `
     function Foo(props) {
       return props.foo ? <div>{this.props.bar}</div> : null;
     }`,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{messageId: 'noThisInSFC'}]
   }, {
     code: `
     function Foo(props) {
@@ -188,7 +182,7 @@ ruleTester.run('no-this-in-sfc', rule, {
       }
       return null;
     }`,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{messageId: 'noThisInSFC'}]
   }, {
     code: `
     function Foo(props) {
@@ -197,13 +191,13 @@ ruleTester.run('no-this-in-sfc', rule, {
       }
       return null;
     }`,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{messageId: 'noThisInSFC'}]
   }, {
     code: 'const Foo = (props) => <span>{this.props.foo}</span>',
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{messageId: 'noThisInSFC'}]
   }, {
     code: 'const Foo = (props) => this.props.foo ? <span>{props.bar}</span> : null;',
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{messageId: 'noThisInSFC'}]
   }, {
     code: `
     function Foo(props) {
@@ -212,7 +206,7 @@ ruleTester.run('no-this-in-sfc', rule, {
       }
       return <div onClick={onClick}>{this.props.foo}</div>;
     }`,
-    errors: [{message: ERROR_MESSAGE}, {message: ERROR_MESSAGE}]
+    errors: [{messageId: 'noThisInSFC'}, {messageId: 'noThisInSFC'}]
   }, {
     code: `
     class Foo {
@@ -223,7 +217,7 @@ ruleTester.run('no-this-in-sfc', rule, {
         }
       }
     }`,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{messageId: 'noThisInSFC'}]
   }, {
     code: `
     class Foo {
@@ -233,7 +227,7 @@ ruleTester.run('no-this-in-sfc', rule, {
       };
     }`,
     parser: parsers.BABEL_ESLINT,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{messageId: 'noThisInSFC'}]
   }, {
     code: `
     class Foo {
@@ -246,7 +240,7 @@ ruleTester.run('no-this-in-sfc', rule, {
         }
       }
     }`,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{messageId: 'noThisInSFC'}]
   }, {
     code: `
     class Foo {
@@ -257,6 +251,6 @@ ruleTester.run('no-this-in-sfc', rule, {
         };
       }
     }`,
-    errors: [{message: ERROR_MESSAGE}]
+    errors: [{messageId: 'noThisInSFC'}]
   }]
 });

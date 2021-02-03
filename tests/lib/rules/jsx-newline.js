@@ -68,7 +68,7 @@ const tests = {
         </div>
       `,
       errors: [{
-        message: 'JSX element should start in a new line'
+        messageId: 'newLine'
       }]
     },
     {
@@ -86,7 +86,7 @@ const tests = {
         </div>
       `,
       errors: [{
-        message: 'JSX element should start in a new line'
+        messageId: 'newLine'
       }]
     },
     {
@@ -104,7 +104,7 @@ const tests = {
         </div>
       `,
       errors: [{
-        message: 'JSX element should start in a new line'
+        messageId: 'newLine'
       }]
     },
     {
@@ -130,7 +130,7 @@ const tests = {
         </div>
       `,
       errors: [{
-        message: 'JSX element should start in a new line'
+        messageId: 'newLine'
       }]
     },
     {
@@ -162,9 +162,9 @@ const tests = {
         </div>
       `,
       errors: [
-        {message: 'JSX element should start in a new line'},
-        {message: 'JSX element should start in a new line'},
-        {message: 'JSX element should start in a new line'}
+        {messageId: 'newLine'},
+        {messageId: 'newLine'},
+        {messageId: 'newLine'}
       ]
     }
   ]
@@ -201,7 +201,7 @@ const advanceFeatTest = {
         </>
       `,
       errors: [
-        {message: 'JSX element should start in a new line'}
+        {messageId: 'newLine'}
       ]
     }
   ]

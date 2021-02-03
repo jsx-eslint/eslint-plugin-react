@@ -148,9 +148,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '});'
     ].join('\n'),
     parserOptions,
-    errors: [{
-      message: 'Use callback in setState when referencing the previous state.'
-    }]
+    errors: [{messageId: 'useCallback'}]
   }, {
     code: [
       'var Hello = React.createClass({',
@@ -160,9 +158,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '});'
     ].join('\n'),
     parserOptions,
-    errors: [{
-      message: 'Use callback in setState when referencing the previous state.'
-    }]
+    errors: [{messageId: 'useCallback'}]
   }, {
     code: [
       'var Hello = React.createClass({',
@@ -173,9 +169,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '});'
     ].join('\n'),
     parserOptions,
-    errors: [{
-      message: 'Use callback in setState when referencing the previous state.'
-    }]
+    errors: [{messageId: 'useCallback'}]
   }, {
     code: [
       'var Hello = React.createClass({',
@@ -186,9 +180,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '});'
     ].join('\n'),
     parserOptions,
-    errors: [{
-      message: 'Use callback in setState when referencing the previous state.'
-    }]
+    errors: [{messageId: 'useCallback'}]
   }, {
     code: [
       'function nextState(state) {',
@@ -201,9 +193,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '});'
     ].join('\n'),
     parserOptions,
-    errors: [{
-      message: 'Use callback in setState when referencing the previous state.'
-    }]
+    errors: [{messageId: 'useCallback'}]
   }, {
     code: `
       var Hello = React.createClass({
@@ -213,9 +203,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       });
     `,
     parserOptions,
-    errors: [{
-      message: 'Use callback in setState when referencing the previous state.'
-    }]
+    errors: [{messageId: 'useCallback'}]
   }, {
     code: `
       var Hello = React.createClass({
@@ -225,9 +213,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       });
     `,
     parserOptions,
-    errors: [{
-      message: 'Use callback in setState when referencing the previous state.'
-    }]
+    errors: [{messageId: 'useCallback'}]
   }, {
     code: [
       'var Hello = React.createClass({',
@@ -240,9 +226,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       '});'
     ].join('\n'),
     parserOptions,
-    errors: [{
-      message: 'Use callback in setState when referencing the previous state.'
-    }]
+    errors: [{messageId: 'useCallback'}]
   }, {
     code: `
       class Hello extends React.Component {
@@ -252,8 +236,6 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       }
     `,
     parserOptions,
-    errors: [{
-      message: 'Use callback in setState when referencing the previous state.'
-    }]
+    errors: [{messageId: 'useCallback'}]
   }]
 });

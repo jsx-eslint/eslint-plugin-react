@@ -214,7 +214,7 @@ ruleTester.run('style-prop-object', rule, {
     {
       code: '<div style="color: \'red\'" />',
       errors: [{
-        message: 'Style prop value must be an object',
+        messageId: 'stylePropNotObject',
         line: 1,
         column: 6,
         type: 'JSXAttribute'
@@ -223,7 +223,7 @@ ruleTester.run('style-prop-object', rule, {
     {
       code: '<Hello style="color: \'red\'" />',
       errors: [{
-        message: 'Style prop value must be an object',
+        messageId: 'stylePropNotObject',
         line: 1,
         column: 8,
         type: 'JSXAttribute'
@@ -232,7 +232,7 @@ ruleTester.run('style-prop-object', rule, {
     {
       code: '<div style={true} />',
       errors: [{
-        message: 'Style prop value must be an object',
+        messageId: 'stylePropNotObject',
         line: 1,
         column: 6,
         type: 'JSXAttribute'
@@ -246,7 +246,7 @@ ruleTester.run('style-prop-object', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: 'Style prop value must be an object',
+        messageId: 'stylePropNotObject',
         line: 3,
         column: 22,
         type: 'Identifier'
@@ -260,7 +260,7 @@ ruleTester.run('style-prop-object', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: 'Style prop value must be an object',
+        messageId: 'stylePropNotObject',
         line: 3,
         column: 24,
         type: 'Identifier'
@@ -274,7 +274,7 @@ ruleTester.run('style-prop-object', rule, {
         '}'
       ].join('\n'),
       errors: [{
-        message: 'Style prop value must be an object',
+        messageId: 'stylePropNotObject',
         line: 3,
         column: 22,
         type: 'Identifier'
@@ -288,7 +288,7 @@ ruleTester.run('style-prop-object', rule, {
         }
       ],
       errors: [{
-        message: 'Style prop value must be an object',
+        messageId: 'stylePropNotObject',
         line: 1,
         column: 14,
         type: 'JSXAttribute'
@@ -302,7 +302,7 @@ ruleTester.run('style-prop-object', rule, {
         }
       ],
       errors: [{
-        message: 'Style prop value must be an object',
+        messageId: 'stylePropNotObject',
         line: 1,
         column: 43,
         type: 'Literal'

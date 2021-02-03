@@ -80,7 +80,7 @@ ruleTester.run('prefer-es6-class', rule, {
       });
     `,
     errors: [{
-      message: 'Component should use es6 class instead of createClass'
+      messageId: 'shouldUseES6Class'
     }]
   }, {
     code: `
@@ -92,7 +92,7 @@ ruleTester.run('prefer-es6-class', rule, {
     `,
     options: ['always'],
     errors: [{
-      message: 'Component should use es6 class instead of createClass'
+      messageId: 'shouldUseES6Class'
     }]
   }, {
     code: `
@@ -104,7 +104,7 @@ ruleTester.run('prefer-es6-class', rule, {
     `,
     options: ['never'],
     errors: [{
-      message: 'Component should use createClass instead of es6 class'
+      messageId: 'shouldUseCreateClass'
     }]
   }]
 });

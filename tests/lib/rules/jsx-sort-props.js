@@ -27,30 +27,31 @@ const parserOptions = {
 const ruleTester = new RuleTester({parserOptions});
 
 const expectedError = {
-  message: 'Props should be sorted alphabetically',
+  messageId: 'sortPropsByAlpha',
   type: 'JSXIdentifier'
 };
 const expectedCallbackError = {
-  message: 'Callbacks must be listed after all other props',
+  messageId: 'listCallbacksLast',
   type: 'JSXIdentifier'
 };
 const expectedShorthandFirstError = {
-  message: 'Shorthand props must be listed before all other props',
+  messageId: 'listShorthandFirst',
   type: 'JSXIdentifier'
 };
 const expectedShorthandLastError = {
-  message: 'Shorthand props must be listed after all other props',
+  messageId: 'listShorthandLast',
   type: 'JSXIdentifier'
 };
 const expectedReservedFirstError = {
-  message: 'Reserved props must be listed before all other props',
+  messageId: 'listReservedPropsFirst',
   type: 'JSXIdentifier'
 };
 const expectedEmptyReservedFirstError = {
-  message: 'A customized reserved first list must not be empty'
+  messageId: 'listIsEmpty'
 };
 const expectedInvalidReservedFirstError = {
-  message: 'A customized reserved first list must only contain a subset of React reserved props. Remove: notReserved'
+  messageId: 'noUnreservedProps',
+  data: {unreservedWords: 'notReserved'}
 };
 const callbacksLastArgs = [{
   callbacksLast: true

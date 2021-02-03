@@ -52,53 +52,92 @@ ruleTester.run('no-unknown-property', rule, {
   invalid: [{
     code: '<div class="bar"></div>;',
     output: '<div className="bar"></div>;',
-    errors: [{message: 'Unknown property \'class\' found, use \'className\' instead'}]
+    errors: [{
+      messageId: 'unknownProp',
+      data: {name: 'class', standardName: 'className'}
+    }]
   }, {
     code: '<div for="bar"></div>;',
     output: '<div htmlFor="bar"></div>;',
-    errors: [{message: 'Unknown property \'for\' found, use \'htmlFor\' instead'}]
+    errors: [{
+      messageId: 'unknownProp',
+      data: {name: 'for', standardName: 'htmlFor'}
+    }]
   }, {
     code: '<div accept-charset="bar"></div>;',
     output: '<div acceptCharset="bar"></div>;',
-    errors: [{message: 'Unknown property \'accept-charset\' found, use \'acceptCharset\' instead'}]
+    errors: [{
+      messageId: 'unknownProp',
+      data: {name: 'accept-charset', standardName: 'acceptCharset'}
+    }]
   }, {
     code: '<div http-equiv="bar"></div>;',
     output: '<div httpEquiv="bar"></div>;',
-    errors: [{message: 'Unknown property \'http-equiv\' found, use \'httpEquiv\' instead'}]
+    errors: [{
+      messageId: 'unknownProp',
+      data: {name: 'http-equiv', standardName: 'httpEquiv'}
+    }]
   }, {
     code: '<div accesskey="bar"></div>;',
     output: '<div accessKey="bar"></div>;',
-    errors: [{message: 'Unknown property \'accesskey\' found, use \'accessKey\' instead'}]
+    errors: [{
+      messageId: 'unknownProp',
+      data: {name: 'accesskey', standardName: 'accessKey'}
+    }]
   }, {
     code: '<div onclick="bar"></div>;',
     output: '<div onClick="bar"></div>;',
-    errors: [{message: 'Unknown property \'onclick\' found, use \'onClick\' instead'}]
+    errors: [{
+      messageId: 'unknownProp',
+      data: {name: 'onclick', standardName: 'onClick'}
+    }]
   }, {
     code: '<div onmousedown="bar"></div>;',
     output: '<div onMouseDown="bar"></div>;',
-    errors: [{message: 'Unknown property \'onmousedown\' found, use \'onMouseDown\' instead'}]
+    errors: [{
+      messageId: 'unknownProp',
+      data: {name: 'onmousedown', standardName: 'onMouseDown'}
+    }]
   }, {
     code: '<div onMousedown="bar"></div>;',
     output: '<div onMouseDown="bar"></div>;',
-    errors: [{message: 'Unknown property \'onMousedown\' found, use \'onMouseDown\' instead'}]
+    errors: [{
+      messageId: 'unknownProp',
+      data: {name: 'onMousedown', standardName: 'onMouseDown'}
+    }]
   }, {
     code: '<use xlink:href="bar" />;',
     output: '<use xlinkHref="bar" />;',
-    errors: [{message: 'Unknown property \'xlink:href\' found, use \'xlinkHref\' instead'}]
+    errors: [{
+      messageId: 'unknownProp',
+      data: {name: 'xlink:href', standardName: 'xlinkHref'}
+    }]
   }, {
     code: '<rect clip-path="bar" />;',
     output: '<rect clipPath="bar" />;',
-    errors: [{message: 'Unknown property \'clip-path\' found, use \'clipPath\' instead'}]
+    errors: [{
+      messageId: 'unknownProp',
+      data: {name: 'clip-path', standardName: 'clipPath'}
+    }]
   }, {
     code: '<script crossorigin />',
-    errors: [{message: 'Unknown property \'crossorigin\' found, use \'crossOrigin\' instead'}],
+    errors: [{
+      messageId: 'unknownProp',
+      data: {name: 'crossorigin', standardName: 'crossOrigin'}
+    }],
     output: '<script crossOrigin />'
   }, {
     code: '<div crossorigin />',
-    errors: [{message: 'Unknown property \'crossorigin\' found, use \'crossOrigin\' instead'}],
+    errors: [{
+      messageId: 'unknownProp',
+      data: {name: 'crossorigin', standardName: 'crossOrigin'}
+    }],
     output: '<div crossOrigin />'
   }, {
     code: '<div crossOrigin />',
-    errors: [{message: 'Invalid property \'crossOrigin\' found on tag \'div\', but it is only allowed on: script, img, video, audio, link'}]
+    errors: [{
+      messageId: 'invalidPropOnTag',
+      data: {name: 'crossOrigin', tagName: 'div', allowedTags: 'script, img, video, audio, link'}
+    }]
   }]
 });

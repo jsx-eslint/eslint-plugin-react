@@ -25,8 +25,6 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ERROR_MESSAGE = 'Using propTypes from another component is not safe because they may be removed in production builds';
-
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('forbid-foreign-prop-types', rule, {
 
@@ -90,7 +88,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       });
     `,
     errors: [{
-      message: ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
       type: 'Identifier'
     }]
   },
@@ -104,7 +102,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       });
     `,
     errors: [{
-      message: ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
       type: 'Literal'
     }]
   },
@@ -119,7 +117,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       });
     `,
     errors: [{
-      message: ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
       type: 'Property'
     }]
   },
@@ -135,7 +133,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
       type: 'Property'
     }]
   },
@@ -149,7 +147,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
       type: 'Identifier'
     }]
   },
@@ -164,7 +162,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       });
     `,
     errors: [{
-      message: ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
       type: 'Property'
     }]
   },
@@ -183,7 +181,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       allowInPropTypes: false
     }],
     errors: [{
-      message: ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
       type: 'Identifier'
     }]
   },
@@ -200,7 +198,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       allowInPropTypes: false
     }],
     errors: [{
-      message: ERROR_MESSAGE,
+      messageId: 'forbiddenPropType',
       type: 'Identifier'
     }]
   }]

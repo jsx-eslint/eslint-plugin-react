@@ -18,8 +18,6 @@ const parserOptions = {
   }
 };
 
-const MESSAGE = 'Component is not optimized. Please add a shouldComponentUpdate method.';
-
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('react-require-optimization', rule, {
   valid: [{
@@ -133,7 +131,7 @@ ruleTester.run('react-require-optimization', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: MESSAGE
+      messageId: 'noShouldComponentUpdate'
     }]
   }],
 
@@ -143,7 +141,7 @@ ruleTester.run('react-require-optimization', rule, {
       class YourComponent extends React.Component {}
     `,
     errors: [{
-      message: MESSAGE
+      messageId: 'noShouldComponentUpdate'
     }]
   }, {
     code: `
@@ -157,7 +155,7 @@ ruleTester.run('react-require-optimization', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: MESSAGE
+      messageId: 'noShouldComponentUpdate'
     }]
   }, {
     code: `
@@ -171,7 +169,7 @@ ruleTester.run('react-require-optimization', rule, {
     `,
     parser: parsers.BABEL_ESLINT,
     errors: [{
-      message: MESSAGE
+      messageId: 'noShouldComponentUpdate'
     }]
   }, {
     code: `
@@ -179,7 +177,7 @@ ruleTester.run('react-require-optimization', rule, {
       class YourComponent extends Component {}
     `,
     errors: [{
-      message: MESSAGE
+      messageId: 'noShouldComponentUpdate'
     }]
   }, {
     code: `
@@ -187,7 +185,7 @@ ruleTester.run('react-require-optimization', rule, {
       createReactClass({})
     `,
     errors: [{
-      message: MESSAGE
+      messageId: 'noShouldComponentUpdate'
     }]
   }, {
     code: `
@@ -197,7 +195,7 @@ ruleTester.run('react-require-optimization', rule, {
       })
     `,
     errors: [{
-      message: MESSAGE
+      messageId: 'noShouldComponentUpdate'
     }]
   }, {
     code: `
@@ -205,7 +203,7 @@ ruleTester.run('react-require-optimization', rule, {
       class DecoratedComponent extends Component {}
     `,
     errors: [{
-      message: MESSAGE
+      messageId: 'noShouldComponentUpdate'
     }],
     parser: parsers.BABEL_ESLINT
   }, {
@@ -216,7 +214,7 @@ ruleTester.run('react-require-optimization', rule, {
       class DecoratedComponent extends Component {}
     `,
     errors: [{
-      message: MESSAGE
+      messageId: 'noShouldComponentUpdate'
     }],
     parser: parsers.BABEL_ESLINT,
     options: [{allowDecorators: ['renderPure', 'pureRender']}]

@@ -81,33 +81,51 @@ ruleTester.run('jsx-filename-extension', rule, {
     {
       filename: 'MyComponent.js',
       code: withJSXElement,
-      errors: [{message: 'JSX not allowed in files with extension \'.js\''}]
+      errors: [{
+        messageId: 'noJSXWithExtension',
+        data: {ext: '.js'}
+      }]
     }, {
       filename: 'MyComponent.jsx',
       code: withoutJSX,
       options: [{allow: 'as-needed'}],
-      errors: [{message: 'Only files containing JSX may use the extension \'.jsx\''}]
+      errors: [{
+        messageId: 'extensionOnlyForJSX',
+        data: {ext: '.jsx'}
+      }]
     }, {
       filename: 'notAComponent.js',
       code: withJSXElement,
       options: [{allow: 'as-needed'}],
-      errors: [{message: 'JSX not allowed in files with extension \'.js\''}]
+      errors: [{
+        messageId: 'noJSXWithExtension',
+        data: {ext: '.js'}
+      }]
     }, {
       filename: 'MyComponent.jsx',
       code: withJSXElement,
       options: [{extensions: ['.js']}],
-      errors: [{message: 'JSX not allowed in files with extension \'.jsx\''}]
+      errors: [{
+        messageId: 'noJSXWithExtension',
+        data: {ext: '.jsx'}
+      }]
     }, {
       filename: 'MyComponent.js',
       code: withJSXFragment,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: 'JSX not allowed in files with extension \'.js\''}]
+      errors: [{
+        messageId: 'noJSXWithExtension',
+        data: {ext: '.js'}
+      }]
     }, {
       filename: 'MyComponent.jsx',
       code: withJSXFragment,
       parser: parsers.BABEL_ESLINT,
       options: [{extensions: ['.js']}],
-      errors: [{message: 'JSX not allowed in files with extension \'.jsx\''}]
+      errors: [{
+        messageId: 'noJSXWithExtension',
+        data: {ext: '.jsx'}
+      }]
     }
   ]
 

@@ -27,7 +27,7 @@ const parserOptions = {
 const ruleTester = new RuleTester({parserOptions});
 
 const expectedError = {
-  message: 'No duplicate props allowed',
+  messageId: 'noDuplicateProps',
   type: 'JSXAttribute'
 };
 

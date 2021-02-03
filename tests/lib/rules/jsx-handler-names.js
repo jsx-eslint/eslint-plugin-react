@@ -158,56 +158,95 @@ ruleTester.run('jsx-handler-names', rule, {
 
   invalid: [{
     code: '<TestComponent onChange={this.doSomethingOnChange} />',
-    errors: [{message: 'Handler function for onChange prop key must be a camelCase name beginning with \'handle\' only'}]
+    errors: [{
+      messageId: 'badHandlerName',
+      data: {propKey: 'onChange', handlerPrefix: 'handle'}
+    }]
   }, {
     code: '<TestComponent onChange={this.handlerChange} />',
-    errors: [{message: 'Handler function for onChange prop key must be a camelCase name beginning with \'handle\' only'}]
+    errors: [{
+      messageId: 'badHandlerName',
+      data: {propKey: 'onChange', handlerPrefix: 'handle'}
+    }]
   }, {
     code: '<TestComponent onChange={this.handle} />',
-    errors: [{message: 'Handler function for onChange prop key must be a camelCase name beginning with \'handle\' only'}]
+    errors: [{
+      messageId: 'badHandlerName',
+      data: {propKey: 'onChange', handlerPrefix: 'handle'}
+    }]
   }, {
     code: '<TestComponent onChange={this.handle2} />',
-    errors: [{message: 'Handler function for onChange prop key must be a camelCase name beginning with \'handle\' only'}]
+    errors: [{
+      messageId: 'badHandlerName',
+      data: {propKey: 'onChange', handlerPrefix: 'handle'}
+    }]
   }, {
     code: '<TestComponent onChange={this.handl3Change} />',
-    errors: [{message: 'Handler function for onChange prop key must be a camelCase name beginning with \'handle\' only'}]
+    errors: [{
+      messageId: 'badHandlerName',
+      data: {propKey: 'onChange', handlerPrefix: 'handle'}
+    }]
   }, {
     code: '<TestComponent onChange={this.handle4change} />',
-    errors: [{message: 'Handler function for onChange prop key must be a camelCase name beginning with \'handle\' only'}]
+    errors: [{
+      messageId: 'badHandlerName',
+      data: {propKey: 'onChange', handlerPrefix: 'handle'}
+    }]
   }, {
     code: '<TestComponent onChange={takeCareOfChange} />',
-    errors: [{message: 'Handler function for onChange prop key must be a camelCase name beginning with \'handle\' only'}],
+    errors: [{
+      messageId: 'badHandlerName',
+      data: {propKey: 'onChange', handlerPrefix: 'handle'}
+    }],
     options: [{
       checkLocalVariables: true
     }]
   }, {
     code: '<TestComponent onChange={() => this.takeCareOfChange()} />',
-    errors: [{message: 'Handler function for onChange prop key must be a camelCase name beginning with \'handle\' only'}],
+    errors: [{
+      messageId: 'badHandlerName',
+      data: {propKey: 'onChange', handlerPrefix: 'handle'}
+    }],
     options: [{
       checkInlineFunction: true
     }]
   }, {
     code: '<TestComponent only={this.handleChange} />',
-    errors: [{message: 'Prop key for handleChange must begin with \'on\''}]
+    errors: [{
+      messageId: 'badPropKey',
+      data: {propValue: 'handleChange', handlerPropPrefix: 'on'}
+    }]
   }, {
     code: '<TestComponent handleChange={this.handleChange} />',
-    errors: [{message: 'Prop key for handleChange must begin with \'on\''}]
+    errors: [{
+      messageId: 'badPropKey',
+      data: {propValue: 'handleChange', handlerPropPrefix: 'on'}
+    }]
   }, {
     code: '<TestComponent whenChange={handleChange} />',
-    errors: [{message: 'Prop key for handleChange must begin with \'on\''}],
+    errors: [{
+      messageId: 'badPropKey',
+      data: {propValue: 'handleChange', handlerPropPrefix: 'on'}
+    }],
     options: [{
       checkLocalVariables: true
     }]
   }, {
     code: '<TestComponent whenChange={() => handleChange()} />',
-    errors: [{message: 'Prop key for handleChange must begin with \'on\''}],
+    errors: [{
+      messageId: 'badPropKey',
+      data: {propValue: 'handleChange', handlerPropPrefix: 'on'}
+    }],
     options: [{
       checkInlineFunction: true,
       checkLocalVariables: true
     }]
   }, {
     code: '<TestComponent onChange={handleChange} />',
-    errors: [{message: 'Prop key for handleChange must begin with \'when\''}],
+    errors: [{
+      messageId: 'badPropKey',
+      data: {propValue: 'handleChange', handlerPropPrefix: 'when'}
+    }],
     options: [{
       checkLocalVariables: true,
       eventHandlerPrefix: 'handle',
@@ -215,7 +254,10 @@ ruleTester.run('jsx-handler-names', rule, {
     }]
   }, {
     code: '<TestComponent onChange={() => handleChange()} />',
-    errors: [{message: 'Prop key for handleChange must begin with \'when\''}],
+    errors: [{
+      messageId: 'badPropKey',
+      data: {propValue: 'handleChange', handlerPropPrefix: 'when'}
+    }],
     options: [{
       checkInlineFunction: true,
       checkLocalVariables: true,
@@ -224,14 +266,23 @@ ruleTester.run('jsx-handler-names', rule, {
     }]
   }, {
     code: '<TestComponent onChange={this.onChange} />',
-    errors: [{message: 'Handler function for onChange prop key must be a camelCase name beginning with \'handle\' only'}]
+    errors: [{
+      messageId: 'badHandlerName',
+      data: {propKey: 'onChange', handlerPrefix: 'handle'}
+    }]
   }, {
     code: '<TestComponent onChange={props::onChange} />',
     parser: parsers.BABEL_ESLINT,
-    errors: [{message: 'Handler function for onChange prop key must be a camelCase name beginning with \'handle\' only'}]
+    errors: [{
+      messageId: 'badHandlerName',
+      data: {propKey: 'onChange', handlerPrefix: 'handle'}
+    }]
   }, {
     code: '<TestComponent onChange={props.foo::onChange} />',
     parser: parsers.BABEL_ESLINT,
-    errors: [{message: 'Handler function for onChange prop key must be a camelCase name beginning with \'handle\' only'}]
+    errors: [{
+      messageId: 'badHandlerName',
+      data: {propKey: 'onChange', handlerPrefix: 'handle'}
+    }]
   }]
 });
