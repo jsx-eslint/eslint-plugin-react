@@ -55,6 +55,38 @@ ruleTester.run('no-set-state', rule, {
         }
       });
     `
+  }, {
+    code: `
+      class Hello extends React.Component {
+        somemethod(){
+          this.setState({
+            name: this.props.name.toUpperCase()
+          });
+        }
+        render() {
+          return <div onClick={this.someMethod.bind(this)}>Hello {this.state.name}</div>;
+        }
+      };
+    `,
+    options: [{
+      in: ['somemethod1']
+    }],
+    parser: parsers.BABEL_ESLINT
+  }, {
+    code: `
+      class Hello extends React.Component {
+        somemethod(){
+          const {a} = this.state;
+        }
+        render() {
+          return <div onClick={this.someMethod.bind(this)}>Hello {this.state.name}</div>;
+        }
+      };
+    `,
+    options: [{
+      in: ['somemethod']
+    }],
+    parser: parsers.BABEL_ESLINT
   }],
 
   invalid: [{
@@ -131,6 +163,94 @@ ruleTester.run('no-set-state', rule, {
       };
     `,
     parser: parsers.BABEL_ESLINT,
+    errors: [{
+      message: 'Do not use setState'
+    }]
+  }, {
+    code: `
+      class Hello extends React.Component {
+        somemethod(){
+          this.setState({
+            name: this.props.name.toUpperCase()
+          });
+        }
+        render() {
+          return <div onClick={this.someMethod.bind(this)}>Hello {this.state.name}</div>;
+        }
+      };
+    `,
+    options: [{
+      in: ['somemethod']
+    }],
+    parser: parsers.BABEL_ESLINT,
+    errors: [{
+      message: 'Do not use setState'
+    }]
+  }, {
+    code: `
+      class Hello extends React.Component {
+        constructor(props){
+          super(props)
+          this.setState({
+            name: props.name.toUpperCase()
+          });
+        }
+        render() {
+          return <div onClick={this.someMethod.bind(this)}>Hello {this.state.name}</div>;
+        }
+      };
+    `,
+    options: [{
+      in: ['constructor']
+    }],
+    parser: parsers.BABEL_ESLINT,
+    errors: [{
+      message: 'Do not use setState'
+    }]
+  }, {
+    code: `
+      class Hello extends React.Component {
+        constructor(props){
+          super(props)
+          this.setState({
+            name: props.name.toUpperCase()
+          });
+        }
+        somemethod(){
+          this.setState({
+            name: this.props.name.toUpperCase()
+          });
+        }
+        render() {
+          return <div onClick={this.someMethod.bind(this)}>Hello {this.state.name}</div>;
+        }
+      };
+    `,
+    options: [{
+      in: ['constructor', 'somemethod']
+    }],
+    parser: parsers.BABEL_ESLINT,
+    errors: [{
+      message: 'Do not use setState'
+    }, {
+      message: 'Do not use setState'
+    }]
+  }, {
+    code: `
+      var Hello = createReactClass({
+        somemethod: function() {
+          this.setState({
+            name: this.props.name.toUpperCase()
+          });
+        },
+        render: function() {
+          return <div>Hello {this.props.name}</div>;
+        }
+      });
+    `,
+    options: [{
+      in: ['somemethod']
+    }],
     errors: [{
       message: 'Do not use setState'
     }]
