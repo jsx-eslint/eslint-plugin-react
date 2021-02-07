@@ -10,11 +10,13 @@
 // ------------------------------------------------------------------------------
 
 const semver = require('semver');
+const path = require('path');
+const resolve = require('resolve');
 
 let allowsInvalidJSX = false;
 try {
-  // eslint-disable-next-line import/no-extraneous-dependencies, global-require
-  allowsInvalidJSX = semver.satisfies(require('acorn-jsx/package.json').version, '< 5.2');
+  // eslint-disable-next-line import/no-extraneous-dependencies, global-require, import/no-dynamic-require
+  allowsInvalidJSX = semver.satisfies(require(resolve.sync('acorn-jsx/package.json', {basedir: path.dirname(require.resolve('eslint'))})).version, '< 5.2');
 } catch (e) { /**/ }
 
 const RuleTester = require('eslint').RuleTester;
@@ -119,7 +121,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       code: `
         var Hello = createReactClass({
           render: function() {
-            return <div>></div>;
+            return <div>> default parser</div>;
           }
         });
       `,
@@ -128,7 +130,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       code: `
         var Hello = createReactClass({
           render: function() {
-            return <>></>;
+            return <>> babel-eslint</>;
           }
         });
       `,
@@ -170,7 +172,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       code: `
         var Hello = createReactClass({
           render: function() {
-            return <div>Multiple errors: '>></div>;
+            return <div>Multiple errors: '>> default parser</div>;
           }
         });
       `,
@@ -183,7 +185,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       code: `
         var Hello = createReactClass({
           render: function() {
-            return <div>{"Unbalanced braces"}}</div>;
+            return <div>{"Unbalanced braces - default parser"}}</div>;
           }
         });
       `,
@@ -192,7 +194,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       code: `
         var Hello = createReactClass({
           render: function() {
-            return <>{"Unbalanced braces"}}</>;
+            return <>{"Unbalanced braces - babel-eslint"}}</>;
           }
         });
       `,
