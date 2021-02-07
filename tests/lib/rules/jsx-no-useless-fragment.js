@@ -223,7 +223,7 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       output: `
         const Comp = () => (
           <html>
-            ${/* the trailing whitespace here is intentional */ ''}
+            ${/* the trailing whitespace here is intentional */''}
           </html>
         );
       `,
