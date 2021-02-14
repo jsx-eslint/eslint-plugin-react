@@ -20,7 +20,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Changed
 * [Docs] [`jsx-no-constructed-context-values`][]: fix invalid example syntax ([#2910][] @kud)
 * [readme] Replace lists of rules with tables in readme ([#2908][] @motato1)
+* [Docs] added missing curly braces ([#2923][] @Muditxofficial)
 
+[#2923]: https://github.com/yannickcr/eslint-plugin-react/pull/2923
 [#2910]: https://github.com/yannickcr/eslint-plugin-react/pull/2910
 [#2908]: https://github.com/yannickcr/eslint-plugin-react/pull/2908
 [#2906]: https://github.com/yannickcr/eslint-plugin-react/pull/2906

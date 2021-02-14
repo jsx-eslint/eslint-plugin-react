@@ -60,6 +60,7 @@ Examples of **incorrect** code for this rule:
     (bar) => <div>hi</div>
 }
   />
+  }>
 </App>
 
 // [2, 2, {indentLogicalExpressions: true}]
@@ -98,6 +99,7 @@ Examples of **correct** code for this rule:
     (bar) => <div>hi</div>
 }
   />
+  }>
 </App>
 
 // [2, 2, {indentLogicalExpressions: true}]
