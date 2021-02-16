@@ -104,6 +104,10 @@ ruleTester.run('jsx-no-target-blank', rule, {
       options: [{allowReferrer: true}]
     },
     {
+      code: '<a href="foobar" target="_blank" rel="noreferrer"></a>',
+      options: [{allowReferrer: true}]
+    },
+    {
       code: '<a target={3} />'
     }
   ],
@@ -210,6 +214,12 @@ ruleTester.run('jsx-no-target-blank', rule, {
     {
       code: '<a target={"_blank"} href="//example.com/19"></a>',
       output: '<a target={"_blank"} href="//example.com/19" rel="noreferrer"></a>',
+      errors: defaultErrors
+    },
+    {
+      code: '<a href="http://example.com/20" target="_blank"></a>',
+      output: '<a href="http://example.com/20" target="_blank" rel="noreferrer"></a>',
+      options: [{allowReferrer: true}],
       errors: defaultErrors
     },
     {

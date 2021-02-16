@@ -17,6 +17,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`no-typos`]: avoid a crash on bindingless `prop-types` import; add warning ([#2899][] @ljharb)
 * [`jsx-curly-brace-presence`]: ignore containers with comments ([#2900][] @golopot)
 * [`destructuring-assignment`]: fix a false positive for local prop named `context` in SFC ([#2929][] @SyMind)
+* [`jsx-no-target-blank`]: Allow rel="noreferrer" when `allowReferrer` is true ([#2925][] @edemaine)
 
 ### Changed
 * [Docs] [`jsx-no-constructed-context-values`][]: fix invalid example syntax ([#2910][] @kud)
@@ -24,6 +25,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Docs] added missing curly braces ([#2923][] @Muditxofficial)
 
 [#2929]: https://github.com/yannickcr/eslint-plugin-react/pull/2929
+[#2925]: https://github.com/yannickcr/eslint-plugin-react/pull/2925
 [#2923]: https://github.com/yannickcr/eslint-plugin-react/pull/2923
 [#2910]: https://github.com/yannickcr/eslint-plugin-react/pull/2910
 [#2908]: https://github.com/yannickcr/eslint-plugin-react/pull/2908
