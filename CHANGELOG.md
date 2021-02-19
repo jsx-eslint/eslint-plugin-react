@@ -16,12 +16,14 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`no-array-index-key`]: support optional chaining ([#2897][] @SyMind)
 * [`no-typos`]: avoid a crash on bindingless `prop-types` import; add warning ([#2899][] @ljharb)
 * [`jsx-curly-brace-presence`]: ignore containers with comments ([#2900][] @golopot)
+* [`destructuring-assignment`]: fix a false positive for local prop named `context` in SFC ([#2929][] @SyMind)
 
 ### Changed
 * [Docs] [`jsx-no-constructed-context-values`][]: fix invalid example syntax ([#2910][] @kud)
 * [readme] Replace lists of rules with tables in readme ([#2908][] @motato1)
 * [Docs] added missing curly braces ([#2923][] @Muditxofficial)
 
+[#2929]: https://github.com/yannickcr/eslint-plugin-react/pull/2929
 [#2923]: https://github.com/yannickcr/eslint-plugin-react/pull/2923
 [#2910]: https://github.com/yannickcr/eslint-plugin-react/pull/2910
 [#2908]: https://github.com/yannickcr/eslint-plugin-react/pull/2908

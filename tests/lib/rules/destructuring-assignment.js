@@ -176,6 +176,17 @@ ruleTester.run('destructuring-assignment', rule, {
     ].join('\n'),
     options: ['always', {ignoreClassFields: true}],
     parser: parsers.BABEL_ESLINT
+  },
+  // https://github.com/yannickcr/eslint-plugin-react/issues/2911
+  {
+    code: `
+      function Foo({context}) {
+        const d = context.describe()
+        return <div>{d}</div>
+      }
+    `,
+    options: ['always'],
+    parser: parsers.BABEL_ESLINT
   }],
 
   invalid: [{
