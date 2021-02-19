@@ -32,6 +32,7 @@ const allRules = {
   'jsx-max-depth': require('./lib/rules/jsx-max-depth'),
   'jsx-max-props-per-line': require('./lib/rules/jsx-max-props-per-line'),
   'jsx-newline': require('./lib/rules/jsx-newline'),
+  'jsx-no-newline': require('./lib/rules/jsx-no-newline'),
   'jsx-no-bind': require('./lib/rules/jsx-no-bind'),
   'jsx-no-comment-textnodes': require('./lib/rules/jsx-no-comment-textnodes'),
   'jsx-no-constructed-context-values': require('./lib/rules/jsx-no-constructed-context-values'),
