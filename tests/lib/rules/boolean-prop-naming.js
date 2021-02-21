@@ -29,7 +29,7 @@ const parserOptions = {
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('boolean-prop-naming', rule, {
 
-  valid: [{
+  valid: [].concat({
     // Should support both `is` and `has` prefixes by default
     code: `
       var Hello = createReactClass({
@@ -416,9 +416,21 @@ ruleTester.run('boolean-prop-naming', rule, {
       rule: '^is[A-Z]([A-Za-z0-9]?)+',
       validateNested: true
     }]
-  }],
+  }, parsers.TS({
+    code: `
+    type TestFNType = {
+      isEnabled: boolean
+    }
+    const HelloNew = (props: TestFNType) => { return <div /> };
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+'
+    }],
+    parser: parsers['@TYPESCRIPT_ESLINT'],
+    errors: []
+  })),
 
-  invalid: [{
+  invalid: [].concat({
     // createReactClass components with PropTypes
     code: `
       var Hello = createReactClass({
@@ -944,5 +956,33 @@ ruleTester.run('boolean-prop-naming', rule, {
       messageId: 'patternMismatch',
       data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'}
     }]
-  }]
+  }, parsers.TS({
+    code: `
+    type TestConstType = {
+      enabled: boolean
+    }
+    const HelloNew = (props: TestConstType) => { return <div /> };
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+'
+    }],
+    parser: parsers['@TYPESCRIPT_ESLINT'],
+    errors: [{
+      message: 'Prop name (enabled) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }, {
+    code: `
+    type TestFNType = {
+      enabled: boolean
+    }
+    const HelloNew = (props: TestFNType) => { return <div /> };
+    `,
+    options: [{
+      rule: '^is[A-Z]([A-Za-z0-9]?)+'
+    }],
+    parser: parsers['@TYPESCRIPT_ESLINT'],
+    errors: [{
+      message: 'Prop name (enabled) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
+    }]
+  }))
 });

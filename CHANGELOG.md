@@ -18,12 +18,14 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-curly-brace-presence`]: ignore containers with comments ([#2900][] @golopot)
 * [`destructuring-assignment`]: fix a false positive for local prop named `context` in SFC ([#2929][] @SyMind)
 * [`jsx-no-target-blank`]: Allow rel="noreferrer" when `allowReferrer` is true ([#2925][] @edemaine)
+* [`boolean-prop-naming`]: add check for typescript "boolean" type ([#2930][] @vedadeepta)
 
 ### Changed
 * [Docs] [`jsx-no-constructed-context-values`][]: fix invalid example syntax ([#2910][] @kud)
 * [readme] Replace lists of rules with tables in readme ([#2908][] @motato1)
 * [Docs] added missing curly braces ([#2923][] @Muditxofficial)
 
+[#2930]: https://github.com/yannickcr/eslint-plugin-react/pull/2930
 [#2929]: https://github.com/yannickcr/eslint-plugin-react/pull/2929
 [#2925]: https://github.com/yannickcr/eslint-plugin-react/pull/2925
 [#2923]: https://github.com/yannickcr/eslint-plugin-react/pull/2923
