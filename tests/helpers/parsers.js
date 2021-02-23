@@ -11,6 +11,9 @@ module.exports = {
   TYPESCRIPT_ESLINT: path.join(__dirname, NODE_MODULES, 'typescript-eslint-parser'),
   '@TYPESCRIPT_ESLINT': path.join(__dirname, NODE_MODULES, '@typescript-eslint/parser'),
   TS: function TS(tests) {
+    if (!Array.isArray(tests) || arguments.length > 1) {
+      throw new SyntaxError('parsers.TS() takes a single array argument');
+    }
     if (semver.satisfies(version, '>= 5')) {
       return tests;
     }

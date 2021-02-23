@@ -416,7 +416,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       rule: '^is[A-Z]([A-Za-z0-9]?)+',
       validateNested: true
     }]
-  }, parsers.TS({
+  }, parsers.TS([{
     code: `
     type TestFNType = {
       isEnabled: boolean
@@ -428,7 +428,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     }],
     parser: parsers['@TYPESCRIPT_ESLINT'],
     errors: []
-  })),
+  }])),
 
   invalid: [].concat({
     // createReactClass components with PropTypes
@@ -956,7 +956,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       messageId: 'patternMismatch',
       data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'}
     }]
-  }, parsers.TS({
+  }, parsers.TS([{
     code: `
     type TestConstType = {
       enabled: boolean
@@ -984,5 +984,5 @@ ruleTester.run('boolean-prop-naming', rule, {
     errors: [{
       message: 'Prop name (enabled) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)'
     }]
-  }))
+  }]))
 });

@@ -1856,7 +1856,7 @@ ruleTester.run('no-typos', rule, {
         parserOptions: parserOptions
       },
     */
-  }, parsers.TS({
+  }, parsers.TS([{
     code: `
       import 'prop-types'
     `,
@@ -1874,5 +1874,5 @@ ruleTester.run('no-typos', rule, {
     errors: [{
       messageId: 'noPropTypesBinding'
     }]
-  }))
+  }]))
 });
