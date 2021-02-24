@@ -166,6 +166,26 @@ const tests = {
         {messageId: 'newLine'},
         {messageId: 'newLine'}
       ]
+    },
+    {
+      code: `
+        <div>
+
+        <Button>{data.label}</Button>
+
+        </div>
+      `,
+      output: `
+        <div>
+        <Button>{data.label}</Button>
+        </div>
+      `,
+      options: [{
+        removeNewLines: true
+      }],
+      errors: [{
+        messageId: 'noNewLine'
+      }]
     }
   ]
 };
