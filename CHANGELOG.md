@@ -22,6 +22,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-no-target-blank`]: Allow rel="noreferrer" when `allowReferrer` is true ([#2925][] @edemaine)
 * [`boolean-prop-naming`]: add check for typescript "boolean" type ([#2930][] @vedadeepta)
 * version detection: Add tests that verify versioning works for sibling and child projects ([#2943][] @jcrosetto)
+* [`jsx-curly-newline`]: Update error messages ([#2933][] @jbrower2)
 
 ### Changed
 * [Docs] [`jsx-no-constructed-context-values`][]: fix invalid example syntax ([#2910][] @kud)
@@ -30,6 +31,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 [#2943]: https://github.com/yannickcr/eslint-plugin-react/pull/2943
 [#2935]: https://github.com/yannickcr/eslint-plugin-react/pull/2935
+[#2933]: https://github.com/yannickcr/eslint-plugin-react/pull/2933
 [#2930]: https://github.com/yannickcr/eslint-plugin-react/pull/2930
 [#2929]: https://github.com/yannickcr/eslint-plugin-react/pull/2929
 [#2925]: https://github.com/yannickcr/eslint-plugin-react/pull/2925
