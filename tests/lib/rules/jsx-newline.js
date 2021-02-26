@@ -169,16 +169,11 @@ const tests = {
     },
     {
       code: `
-        <div>
+      <div>
 
-        <Button>{data.label}</Button>
-
-        </div>
-      `,
-      output: `
-        <div>
-        <Button>{data.label}</Button>
-        </div>
+       <button></button>
+       
+      </div>
       `,
       options: [{
         removeNewLines: true
