@@ -9,6 +9,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-no-target-blank`]: add fixer ([#2862][] @Nokel81)
 * [`jsx-pascal-case`]: support minimatch `ignore` option ([#2906][] @bcherny)
 * [`jsx-pascal-case`]: support `allowNamespace` option ([#2917][] @kev-y-huang)
+* [`jsx-newline`]: Add prevent option ([#2935][] @jsphstls)
 
 ### Fixed
 * [`jsx-no-constructed-context-values`]: avoid a crash with `as X` TS code ([#2894][] @ljharb)
@@ -28,6 +29,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Docs] added missing curly braces ([#2923][] @Muditxofficial)
 
 [#2943]: https://github.com/yannickcr/eslint-plugin-react/pull/2943
+[#2935]: https://github.com/yannickcr/eslint-plugin-react/pull/2935
 [#2930]: https://github.com/yannickcr/eslint-plugin-react/pull/2930
 [#2929]: https://github.com/yannickcr/eslint-plugin-react/pull/2929
 [#2925]: https://github.com/yannickcr/eslint-plugin-react/pull/2925

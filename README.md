@@ -179,7 +179,7 @@ Enable the rules that you would like to use.
 | ✔ |  | [react/jsx-key](docs/rules/jsx-key.md) | Report missing `key` props in iterators/collection literals |
 |  |  | [react/jsx-max-depth](docs/rules/jsx-max-depth.md) | Validate JSX maximum depth |
 |  | 🔧 | [react/jsx-max-props-per-line](docs/rules/jsx-max-props-per-line.md) | Limit maximum of props on a single line in JSX |
-|  | 🔧 | [react/jsx-newline](docs/rules/jsx-newline.md) | Enforce a new line after jsx elements and expressions |
+|  | 🔧 | [react/jsx-newline](docs/rules/jsx-newline.md) | Require or prevent a new line after jsx elements and expressions |
 |  |  | [react/jsx-no-bind](docs/rules/jsx-no-bind.md) | Prevents usage of Function.prototype.bind and arrow functions in React component props |
 | ✔ |  | [react/jsx-no-comment-textnodes](docs/rules/jsx-no-comment-textnodes.md) | Comments inside children section of tag should be placed inside braces |
 |  |  | [react/jsx-no-constructed-context-values](docs/rules/jsx-no-constructed-context-values.md) | Prevents JSX context provider values from taking values that will cause needless rerenders. |
