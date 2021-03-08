@@ -20,12 +20,14 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`destructuring-assignment`]: fix a false positive for local prop named `context` in SFC ([#2929][] @SyMind)
 * [`jsx-no-target-blank`]: Allow rel="noreferrer" when `allowReferrer` is true ([#2925][] @edemaine)
 * [`boolean-prop-naming`]: add check for typescript "boolean" type ([#2930][] @vedadeepta)
+* version detection: Add tests that verify versioning works for sibling and child projects ([#2943][] @jcrosetto)
 
 ### Changed
 * [Docs] [`jsx-no-constructed-context-values`][]: fix invalid example syntax ([#2910][] @kud)
 * [readme] Replace lists of rules with tables in readme ([#2908][] @motato1)
 * [Docs] added missing curly braces ([#2923][] @Muditxofficial)
 
+[#2943]: https://github.com/yannickcr/eslint-plugin-react/pull/2943
 [#2930]: https://github.com/yannickcr/eslint-plugin-react/pull/2930
 [#2929]: https://github.com/yannickcr/eslint-plugin-react/pull/2929
 [#2925]: https://github.com/yannickcr/eslint-plugin-react/pull/2925
