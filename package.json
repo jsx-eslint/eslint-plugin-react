@@ -43,9 +43,9 @@
     "string.prototype.matchall": "^4.0.4"
   },
   "devDependencies": {
-    "@types/eslint": "^7.2.6",
-    "@types/estree": "0.0.45",
-    "@types/node": "^14.14.31",
+    "@types/eslint": "^7.2.7",
+    "@types/estree": "^0.0.45",
+    "@types/node": "^14.14.35",
     "@typescript-eslint/parser": "^2.34.0",
     "aud": "^1.1.4",
     "babel-eslint": "^8.2.6",
