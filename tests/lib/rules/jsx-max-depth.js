@@ -267,5 +267,30 @@ ruleTester.run('jsx-max-depth', rule, {
         data: {needed: 1, found: 2}
       }
     ]
+  }, {
+    code: `
+      <div className="custom_modal">
+        <Modal className={classes.modal} open={isOpen} closeAfterTransition>
+          <Fade in={isOpen}>
+            <DialogContent>
+              <Icon icon="cancel" onClick={onClose} popoverText="Close Modal" />
+              <div className="modal_content">{children}</div>
+              <div className={clxs('modal_buttons', classes.buttons)}>
+                <Button className="modal_buttons--cancel" onClick={onCancel}>
+                  {cancelMsg ? cancelMsg : 'Cancel'}
+                </Button>
+              </div>
+            </DialogContent>
+          </Fade>
+        </Modal>
+      </div>
+    `,
+    options: [{max: 4}],
+    errors: [
+      {
+        messageId: 'wrongDepth',
+        data: {needed: 4, found: 5}
+      }
+    ]
   }]
 });
