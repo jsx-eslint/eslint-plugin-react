@@ -5,6 +5,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Fixed
+* version detection: support processor virtual filename ([#2949][] @JounQin)
+
 ## [7.23.0] - 2021.03.22
 
 ### Added
@@ -33,6 +36,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [readme] Replace lists of rules with tables in readme ([#2908][] @motato1)
 * [Docs] added missing curly braces ([#2923][] @Muditxofficial)
 
+[#2949]: https://github.com/yannickcr/eslint-plugin-react/pull/2949
 [#2943]: https://github.com/yannickcr/eslint-plugin-react/pull/2943
 [#2935]: https://github.com/yannickcr/eslint-plugin-react/pull/2935
 [#2933]: https://github.com/yannickcr/eslint-plugin-react/pull/2933

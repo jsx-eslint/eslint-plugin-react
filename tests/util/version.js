@@ -79,6 +79,14 @@ describe('Version', () => {
         ['Warning: Flow version was set to "detect" in eslint-plugin-react settings, but the "flow-bin" package is not installed. Assuming latest Flow version for linting.']
       ];
     });
+
+    it('works with virtual filename', () => {
+      sinon.stub(context, 'getFilename').callsFake(() => path.resolve(base, 'detect-version-sibling', 'test.js/0_fake.js'));
+
+      assert.equal(versionUtil.testReactVersion(context, '2.3.4'), true);
+      assert.equal(versionUtil.testReactVersion(context, '2.3.5'), false);
+      assert.equal(versionUtil.testFlowVersion(context, '2.92.0'), true);
+    });
   });
 
   describe('string version', () => {
