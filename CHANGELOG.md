@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.23.0] - 2021.03.22
+
 ### Added
 * [`jsx-no-target-blank`]: add fixer ([#2862][] @Nokel81)
 * [`jsx-pascal-case`]: support minimatch `ignore` option ([#2906][] @bcherny)
