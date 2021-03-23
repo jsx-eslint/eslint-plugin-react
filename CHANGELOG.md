@@ -11,6 +11,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-pascal-case`]: support `allowNamespace` option ([#2917][] @kev-y-huang)
 * [`jsx-newline`]: Add prevent option ([#2935][] @jsphstls)
 * [`no-unstable-nested-components`]: Prevent creating unstable components inside components ([#2750][] @AriPerkkio)
+* added `jsx-runtime` config, for the modern JSX runtime transform (@ljharb)
 
 ### Fixed
 * [`jsx-no-constructed-context-values`]: avoid a crash with `as X` TS code ([#2894][] @ljharb)
