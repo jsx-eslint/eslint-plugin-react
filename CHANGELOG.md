@@ -5,12 +5,17 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Changed
+* Fix CHANGELOG.md ([#2950][] @JounQin)
+
+[#2950]: https://github.com/yannickcr/eslint-plugin-react/pull/2950
+
 ## [7.23.1] - 2021.03.23
 
 ### Fixed
 * version detection: support processor virtual filename ([#2949][] @JounQin)
 
-[7.23.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.23.0...v7.23.1
+[7.23.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.23.0...v7.23.1
 [#2949]: https://github.com/yannickcr/eslint-plugin-react/pull/2949
 
 ## [7.23.0] - 2021.03.22
