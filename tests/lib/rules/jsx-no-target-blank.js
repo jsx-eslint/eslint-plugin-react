@@ -109,6 +109,12 @@ ruleTester.run('jsx-no-target-blank', rule, {
     },
     {
       code: '<a target={3} />'
+    },
+    {
+      code: '<a href="some-link" {...otherProps} target="some-non-blank-target"></a>'
+    },
+    {
+      code: '<a href="some-link" target="some-non-blank-target" {...otherProps}></a>'
     }
   ],
   invalid: [
@@ -266,6 +272,20 @@ ruleTester.run('jsx-no-target-blank', rule, {
       options: [{enforceDynamicLinks: 'always'}],
       settings: {linkComponents: {name: 'Link', linkAttribute: 'to'}},
       errors: defaultErrors
+    },
+    {
+      code: '<a href="some-link" {...otherProps} target="some-non-blank-target"></a>',
+      errors: defaultErrors,
+      options: [{
+        warnOnSpreadAttributes: true
+      }]
+    },
+    {
+      code: '<a href="some-link" target="some-non-blank-target" {...otherProps}></a>',
+      errors: defaultErrors,
+      options: [{
+        warnOnSpreadAttributes: true
+      }]
     }
   ]
 });
