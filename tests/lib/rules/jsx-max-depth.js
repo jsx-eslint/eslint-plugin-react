@@ -114,6 +114,33 @@ ruleTester.run('jsx-max-depth', rule, {
       '  return <div>{A}</div>;',
       '}'
     ].join('\n')
+  }, {
+    // Validates circular references don't get rule stuck
+    code: `
+      function Component() {
+        let first = "";
+        const second = first;
+        first = second;
+        return <div id={first} />;
+      };
+    `
+  },
+  {
+    // Validates circular references are checked at multiple levels
+    code: `
+      function Component() {
+        let first = "";
+        let second = "";
+        let third = "";
+        let fourth = "";
+        const fifth = first;
+        first = second;
+        second = third;
+        third = fourth;
+        fourth = fifth;
+        return <div id={first} />;
+      };
+    `
   }],
 
   invalid: [{

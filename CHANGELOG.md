@@ -5,9 +5,13 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Fixed
+* [`jsx-max-depth`]: Prevent getting stuck in circular references ([#2957][] @AriPerkkio)
+
 ### Changed
 * Fix CHANGELOG.md ([#2950][] @JounQin)
 
+[#2957]: https://github.com/yannickcr/eslint-plugin-react/pull/2957
 [#2950]: https://github.com/yannickcr/eslint-plugin-react/pull/2950
 
 ## [7.23.1] - 2021.03.23
