@@ -8,10 +8,12 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Fixed
 * [`jsx-max-depth`]: Prevent getting stuck in circular references ([#2957][] @AriPerkkio)
 * [`jsx-no-target-blank`]: fix handling of `warnOnSpreadAttributes` being false ([#2953][] @Nokel81)
+* [`forbid-dom-props`]: support `JSXNamespacedName` [#2961][] @mrtnzlml)
 
 ### Changed
 * Fix CHANGELOG.md ([#2950][] @JounQin)
 
+[#2961]: https://github.com/yannickcr/eslint-plugin-react/pull/2961
 [#2953]: https://github.com/yannickcr/eslint-plugin-react/pull/2953
 [#2957]: https://github.com/yannickcr/eslint-plugin-react/pull/2957
 [#2950]: https://github.com/yannickcr/eslint-plugin-react/pull/2950

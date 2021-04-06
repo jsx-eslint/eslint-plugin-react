@@ -74,6 +74,13 @@ ruleTester.run('forbid-element-props', rule, {
   }, {
     code: [
       'const First = (props) => (',
+      '  <fbt:param name="name">{props.name}</fbt:param>',
+      ');'
+    ].join('\n'),
+    options: [{forbid: ['id']}]
+  }, {
+    code: [
+      'const First = (props) => (',
       '  <div name="foo" />',
       ');'
     ].join('\n'),
