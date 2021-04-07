@@ -1,7 +1,7 @@
 ESLint-plugin-React
 ===================
 
-[![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url] [![Coverage Status][coverage-image]][coverage-url] [![Code Climate][climate-image]][climate-url] [![Tidelift][tidelift-image]][tidelift-url]
+[![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url] [![Code Climate][climate-image]][climate-url] [![Tidelift][tidelift-image]][tidelift-url]
 
 React specific linting rules for ESLint
 
@@ -254,9 +254,6 @@ ESLint-plugin-React is licensed under the [MIT License](http://www.opensource.or
 
 [deps-url]: https://david-dm.org/yannickcr/eslint-plugin-react
 [deps-image]: https://img.shields.io/david/dev/yannickcr/eslint-plugin-react.svg
-
-[coverage-url]: https://coveralls.io/r/yannickcr/eslint-plugin-react?branch=master
-[coverage-image]: https://img.shields.io/coveralls/yannickcr/eslint-plugin-react/master.svg
 
 [climate-url]: https://codeclimate.com/github/yannickcr/eslint-plugin-react
 [climate-image]: https://img.shields.io/codeclimate/maintainability/yannickcr/eslint-plugin-react.svg

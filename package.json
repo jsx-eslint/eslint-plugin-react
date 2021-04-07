@@ -5,7 +5,6 @@
   "description": "React specific linting rules for ESLint",
   "main": "index.js",
   "scripts": {
-    "coveralls": "cat ./coverage/lcov.info | coveralls",
     "lint": "eslint ./",
     "postlint": "npm run type-check",
     "pretest": "npm run lint",
@@ -49,7 +48,6 @@
     "@typescript-eslint/parser": "^2.34.0",
     "aud": "^1.1.4",
     "babel-eslint": "^8.2.6",
-    "coveralls": "^3.1.0",
     "eslint": "^3 || ^4 || ^5 || ^6 || ^7",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-eslint-plugin": "^2.3.0",
