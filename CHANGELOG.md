@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.23.2] - 2021.04.08
+
 ### Fixed
 * [`jsx-max-depth`]: Prevent getting stuck in circular references ([#2957][] @AriPerkkio)
 * [`jsx-no-target-blank`]: fix handling of `warnOnSpreadAttributes` being false ([#2953][] @Nokel81)
@@ -14,6 +16,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Changed
 * Fix CHANGELOG.md ([#2950][] @JounQin)
 
+[7.23.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.23.1...v7.23.2
 [#2961]: https://github.com/yannickcr/eslint-plugin-react/pull/2961
 [#2953]: https://github.com/yannickcr/eslint-plugin-react/pull/2953
 [#2957]: https://github.com/yannickcr/eslint-plugin-react/pull/2957
