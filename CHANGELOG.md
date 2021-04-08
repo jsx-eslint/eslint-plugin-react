@@ -8,7 +8,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Fixed
 * [`jsx-max-depth`]: Prevent getting stuck in circular references ([#2957][] @AriPerkkio)
 * [`jsx-no-target-blank`]: fix handling of `warnOnSpreadAttributes` being false ([#2953][] @Nokel81)
-* [`forbid-dom-props`]: support `JSXNamespacedName` [#2961][] @mrtnzlml)
+* [`forbid-dom-props`]: support `JSXNamespacedName` ([#2961][] @mrtnzlml)
+* [`forbid-component-props`]: support `JSXNamespacedName` (@ljharb)
 
 ### Changed
 * Fix CHANGELOG.md ([#2950][] @JounQin)

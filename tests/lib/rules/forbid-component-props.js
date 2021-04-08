@@ -111,6 +111,8 @@ ruleTester.run('forbid-component-props', rule, {
     options: [{
       forbid: [{propName: 'className', allowedFor: ['this.ReactModal']}]
     }]
+  }, {
+    code: '<fbt:param name="Total number of files" number={true} />'
   }],
 
   invalid: [{
