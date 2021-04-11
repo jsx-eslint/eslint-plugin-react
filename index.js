@@ -1,8 +1,5 @@
 'use strict';
 
-const fromEntries = require('object.fromentries');
-const entries = require('object.entries');
-
 /* eslint-disable global-require */
 const allRules = {
   'boolean-prop-naming': require('./lib/rules/boolean-prop-naming'),
@@ -98,8 +95,14 @@ const allRules = {
 };
 /* eslint-enable */
 
+const fromEntries = Object.fromEntries || function fromEntries(entries) {
+  const obj = {};
+  for (const [key, value] of entries) obj[key] = value;
+  return obj;
+}
+
 function filterRules(rules, predicate) {
-  return fromEntries(entries(rules).filter((entry) => predicate(entry[1])));
+  return fromEntries(Object.entries(rules).filter((entry) => predicate(entry[1])));
 }
 
 function configureAsError(rules) {
