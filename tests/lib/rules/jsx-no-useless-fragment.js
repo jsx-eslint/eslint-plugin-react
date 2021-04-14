@@ -73,7 +73,7 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       code: '<></>',
       output: null,
       options: [{
-        ignoreNeedsMoreChildren: true
+        ignoreUnsafeChildren: true
       }],
       parser: parsers.BABEL_ESLINT
     },
@@ -82,7 +82,7 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       code: '<>{children}</>',
       output: null,
       options: [{
-        ignoreNeedsMoreChildren: true
+        ignoreUnsafeChildren: true
       }],
       parser: parsers.BABEL_ESLINT
     },
@@ -91,7 +91,7 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       code: '<>{props.children}</>',
       output: null,
       options: [{
-        ignoreNeedsMoreChildren: true
+        ignoreUnsafeChildren: true
       }],
       parser: parsers.BABEL_ESLINT
     },
@@ -100,7 +100,7 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       code: '<>{foo && <Foo/>}</>',
       output: null,
       options: [{
-        ignoreNeedsMoreChildren: true
+        ignoreUnsafeChildren: true
       }],
       parser: parsers.BABEL_ESLINT
     },
@@ -109,7 +109,7 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       code: '<>{foo?.map(x => <Bar id={x.id}/>)}</>',
       output: null,
       options: [{
-        ignoreNeedsMoreChildren: true
+        ignoreUnsafeChildren: true
       }],
       parser: parsers.BABEL_ESLINT
     }
@@ -149,7 +149,7 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       code: '<p><>{meow}</></p>',
       output: '<p>{meow}</p>',
       options: [{
-        ignoreNeedsMoreChildren: true
+        ignoreUnsafeChildren: true
       }],
       errors: [{messageId: 'NeedsMoreChidren'}, {messageId: 'ChildOfHtmlElement'}],
       parser: parsers.BABEL_ESLINT
@@ -164,7 +164,7 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       code: '<><div/></>',
       output: '<div/>',
       options: [{
-        ignoreNeedsMoreChildren: true
+        ignoreUnsafeChildren: true
       }],
       errors: [{messageId: 'NeedsMoreChidren'}],
       parser: parsers.BABEL_ESLINT
@@ -191,7 +191,7 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
         <div/>
       `,
       options: [{
-        ignoreNeedsMoreChildren: true
+        ignoreUnsafeChildren: true
       }],
       errors: [{messageId: 'NeedsMoreChidren'}],
       parser: parsers.BABEL_ESLINT
@@ -221,7 +221,7 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
         <Foo />
       `,
       options: [{
-        ignoreNeedsMoreChildren: true
+        ignoreUnsafeChildren: true
       }],
       errors: [{messageId: 'NeedsMoreChidren'}]
     },

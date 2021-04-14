@@ -57,14 +57,14 @@ const cat = <>meow</>
 
 ```js
 ...
-"react/jsx-no-useless-fragments": [<enabled>, { "ignoreNeedsMoreChildren": <boolean> }]
+"react/jsx-no-useless-fragments": [<enabled>, { "ignoreUnsafeChildren": <boolean> }]
 ...
 ```
 
-### `ignoreNeedsMoreChildren` (default: `false`)
+### `ignoreUnsafeChildren` (default: `false`)
 
 When `true` the rule will ignore errors related to fragments having enough
-children.
+children when removing the fragment could result in a runtime error.
 
 Examples of **correct** code for this rule:
 
