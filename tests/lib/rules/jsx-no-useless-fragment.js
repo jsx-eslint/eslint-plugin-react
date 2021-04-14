@@ -67,6 +67,51 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
     {
       code: '<>{foos.map(foo => foo)}</>',
       parser: parsers.BABEL_ESLINT
+    },
+    {
+      // component could require a ReactNode
+      code: '<></>',
+      output: null,
+      options: [{
+        ignoreNeedsMoreChildren: true
+      }],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      // children could be undefined
+      code: '<>{children}</>',
+      output: null,
+      options: [{
+        ignoreNeedsMoreChildren: true
+      }],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      // props.children could be undefined
+      code: '<>{props.children}</>',
+      output: null,
+      options: [{
+        ignoreNeedsMoreChildren: true
+      }],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      // foo could be undefined
+      code: '<>{foo && <Foo/>}</>',
+      output: null,
+      options: [{
+        ignoreNeedsMoreChildren: true
+      }],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      // foo could be undefined
+      code: '<>{foo?.map(x => <Bar id={x.id}/>)}</>',
+      output: null,
+      options: [{
+        ignoreNeedsMoreChildren: true
+      }],
+      parser: parsers.BABEL_ESLINT
     }
   ],
   invalid: [
