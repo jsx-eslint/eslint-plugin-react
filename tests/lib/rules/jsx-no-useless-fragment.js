@@ -146,8 +146,26 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       parser: parsers.BABEL_ESLINT
     },
     {
+      code: '<p><>{meow}</></p>',
+      output: '<p>{meow}</p>',
+      options: [{
+        ignoreNeedsMoreChildren: true
+      }],
+      errors: [{messageId: 'NeedsMoreChidren'}, {messageId: 'ChildOfHtmlElement'}],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
       code: '<><div/></>',
       output: '<div/>',
+      errors: [{messageId: 'NeedsMoreChidren'}],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: '<><div/></>',
+      output: '<div/>',
+      options: [{
+        ignoreNeedsMoreChildren: true
+      }],
       errors: [{messageId: 'NeedsMoreChidren'}],
       parser: parsers.BABEL_ESLINT
     },
