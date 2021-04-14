@@ -164,6 +164,21 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       parser: parsers.BABEL_ESLINT
     },
     {
+      code: `
+        <>
+          <div/>
+        </>
+      `,
+      output: `
+        <div/>
+      `,
+      options: [{
+        ignoreNeedsMoreChildren: true
+      }],
+      errors: [{messageId: 'NeedsMoreChidren'}],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
       code: '<Fragment />',
       errors: [{messageId: 'NeedsMoreChidren'}]
     },
@@ -176,6 +191,20 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       output: `
         <Foo />
       `,
+      errors: [{messageId: 'NeedsMoreChidren'}]
+    },
+    {
+      code: `
+        <React.Fragment>
+          <Foo />
+        </React.Fragment>
+      `,
+      output: `
+        <Foo />
+      `,
+      options: [{
+        ignoreNeedsMoreChildren: true
+      }],
       errors: [{messageId: 'NeedsMoreChidren'}]
     },
     {
