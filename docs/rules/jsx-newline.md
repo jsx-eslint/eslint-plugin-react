@@ -9,7 +9,7 @@ This is a stylistic rule intended to make JSX code more readable by requiring or
 ## Rule Options
 ```json
 ...
-"react/jsx-new-line": [<enabled>, { "prevent": <boolean> }]
+"react/jsx-newline": [<enabled>, { "prevent": <boolean> }]
 ...
 ```
 

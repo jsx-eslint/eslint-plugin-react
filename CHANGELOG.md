@@ -11,7 +11,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Fixed
 * [`jsx-handler-names`]: properly substitute value into message ([#2975][] @G-Rath)
 
+### Changed
+* [Docs] [`jsx-newline`]: Fix minor spelling error on rule name ([#2974][] @DennisSkoko)
+
 [#2975]: https://github.com/yannickcr/eslint-plugin-react/pull/2975
+[#2974]: https://github.com/yannickcr/eslint-plugin-react/pull/2974
 [#2713]: https://github.com/yannickcr/eslint-plugin-react/pull/2713
 
 ## [7.23.2] - 2021.04.08
