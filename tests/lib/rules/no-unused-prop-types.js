@@ -3204,6 +3204,33 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: parsers.BABEL_ESLINT
     }, {
       code: `
+        class Hello extends React.Component {
+          render() {
+            return <div>{this.props.used}</div>;
+          }
+        }
+        Hello.propTypes = {
+          used: PropTypes.string,
+          foo: PropTypes.string
+        };
+      `,
+      options: [{ignore: ['foo']}]
+    }, {
+      code: `
+        type Props = {
+          used: string,
+          foo: string,
+        }
+        class Hello extends React.Component<Props> {
+          render() {
+            return <div>{this.props.used}</div>;
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{ignore: ['foo']}]
+    }, {
+      code: `
         export default class Foo extends React.Component {
           render() {
             return null;
@@ -5490,6 +5517,41 @@ ruleTester.run('no-unused-prop-types', rule, {
       }]
     }, {
       code: `
+        class MyComponent extends React.Component {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+        MyComponent.propTypes = {
+          firstname: PropTypes.string,
+          lastname: PropTypes.string,
+          foo: PropTypes.string,
+        };
+      `,
+      options: [{ignore: ['foo']}],
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: `
+        type Props = {
+          firstname: string,
+          lastname: string,
+          foo: string,
+        }
+        class MyComponent extends React.Component<Props> {
+          render() {
+            return <div>Hello {this.props.firstname}</div>
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{ignore: ['foo']}],
+      errors: [{
+        message: '\'lastname\' PropType is defined but prop is never used'
+      }]
+    }, {
+      code: `
         type Person = string;
         class Hello extends React.Component<{ person: Person }> {
           render () {
@@ -6941,11 +7003,9 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'prop1\' PropType is defined but prop is never used'
       }]
-    }])
-
-    /* , {
-      // Enable this when the following issue is fixed
-      // https://github.com/yannickcr/eslint-plugin-react/issues/296
+    }]),
+    // Issue: #296
+    {
       code: [
         'function Foo(props) {',
         '  const { bar: { nope } } = props;',
@@ -6963,6 +7023,6 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [{
         message: '\'foo\' PropType is defined but prop is never used'
       }]
-    } */
+    }
   )
 });

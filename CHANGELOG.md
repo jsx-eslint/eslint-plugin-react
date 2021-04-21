@@ -7,6 +7,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Added
 * component detection: add componentWrapperFunctions setting ([#2713][] @@jzabala @LandonSchropp)
+* [`no-unused-prop-types`]: add ignore option ([#2972][] @grit96)
 
 ### Fixed
 * [`jsx-handler-names`]: properly substitute value into message ([#2975][] @G-Rath)
@@ -16,6 +17,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 [#2975]: https://github.com/yannickcr/eslint-plugin-react/pull/2975
 [#2974]: https://github.com/yannickcr/eslint-plugin-react/pull/2974
+[#2972]: https://github.com/yannickcr/eslint-plugin-react/pull/2972
 [#2713]: https://github.com/yannickcr/eslint-plugin-react/pull/2713
 
 ## [7.23.2] - 2021.04.08
