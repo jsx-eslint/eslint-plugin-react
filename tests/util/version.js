@@ -56,6 +56,8 @@ describe('Version', () => {
     });
 
     it('assumes latest version if react is not installed', () => {
+      sinon.stub(context, 'getFilename').callsFake(() => path.resolve(base, 'detect-version-missing', 'test.js'));
+
       assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
 
       expectedErrorArgs = [
@@ -64,6 +66,8 @@ describe('Version', () => {
     });
 
     it('warns only once for failure to detect react ', () => {
+      sinon.stub(context, 'getFilename').callsFake(() => path.resolve(base, 'detect-version-missing', 'test.js'));
+
       assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
       assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
 
