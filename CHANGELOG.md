@@ -8,6 +8,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Added
 * component detection: add componentWrapperFunctions setting ([#2713][] @@jzabala @LandonSchropp)
 
+### Fixed
+* [`jsx-handler-names`]: properly substitute value into message ([#2975][] @G-Rath)
+
+[#2975]: https://github.com/yannickcr/eslint-plugin-react/pull/2975
 [#2713]: https://github.com/yannickcr/eslint-plugin-react/pull/2713
 
 ## [7.23.2] - 2021.04.08
