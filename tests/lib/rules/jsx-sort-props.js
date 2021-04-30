@@ -99,6 +99,9 @@ const reservedFirstAsEmptyArrayArgs = [{
 const reservedFirstAsInvalidArrayArgs = [{
   reservedFirst: ['notReserved']
 }];
+const ignoreTagsApp = [{
+  ignoreTags: ['App']
+}];
 
 ruleTester.run('jsx-sort-props', rule, {
   valid: [
@@ -165,6 +168,10 @@ ruleTester.run('jsx-sort-props', rule, {
     {
       code: '<App key="key" c="c" b />',
       options: reservedFirstWithShorthandLast
+    },
+    {
+      code: '<App c b a />;',
+      options: ignoreTagsApp
     }
   ],
   invalid: [
@@ -484,6 +491,12 @@ ruleTester.run('jsx-sort-props', rule, {
       code: '<App key={5} />',
       options: reservedFirstAsInvalidArrayArgs,
       errors: [expectedInvalidReservedFirstError]
+    },
+    {
+      code: '<NoApp c b a />;',
+      options: ignoreTagsApp,
+      errors: [expectedError],
+      output: '<NoApp a b c />;'
     }
   ]
 });
