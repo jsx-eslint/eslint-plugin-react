@@ -20,4 +20,11 @@ describe('isFirstLetterCapitalized', () => {
     assert.equal(isFirstLetterCapitalized('IsCapitalized'), true);
     assert.equal(isFirstLetterCapitalized('UPPERCASE'), true);
   });
+
+  it('should return false for non-letters', () => {
+    assert.strictEqual(isFirstLetterCapitalized('42'), false);
+    assert.strictEqual(isFirstLetterCapitalized('!'), false);
+    assert.strictEqual(isFirstLetterCapitalized('$$$'), false);
+    assert.strictEqual(isFirstLetterCapitalized(' Space'), false);
+  });
 });
