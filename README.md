@@ -55,9 +55,9 @@ You should also specify settings that will be shared across all the plugin rules
     "componentWrapperFunctions": [
         // The name of any function used to wrap components, e.g. Mobx `observer` function. If this isn't set, components wrapped by these functions will be skipped.
         "observer", // `property`
-        {"property": "styled"} // `object` is optional
+        {"property": "styled"}, // `object` is optional
         {"property": "observer", "object": "Mobx"},
-        {"property": "observer", "object": "<pragma>"}, // sets `object` to whatever value `settings.react.pragma` is set to
+        {"property": "observer", "object": "<pragma>"} // sets `object` to whatever value `settings.react.pragma` is set to
     ],
     "linkComponents": [
       // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
