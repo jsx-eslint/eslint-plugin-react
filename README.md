@@ -30,7 +30,7 @@ Use [our preset](#recommended) to get reasonable defaults:
   ]
 ```
 
-You should also specify settings that will be shared across all the plugin rules. ([More about eslint shared settings](https://eslint.org/docs/user-guide/configuring#adding-shared-settings))
+You should also specify settings that will be shared across all the plugin rules. ([More about eslint shared settings](https://eslint.org/docs/user-guide/configuring/configuration-files#adding-shared-settings))
 
 ```json5
 {

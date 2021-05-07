@@ -16,7 +16,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Docs] [`jsx-newline`]: Fix minor spelling error on rule name ([#2974][] @DennisSkoko)
 * [Refactor] [`void-dom-elements-no-children`]: improve performance
 * [readme] fix missing trailing commas ([#2980][] @sugardon)
+* [readme] fix broken anchor link ([#2982][] @vzvu3k6k)
 
+[#2982]: https://github.com/yannickcr/eslint-plugin-react/pull/2982
 [#2980]: https://github.com/yannickcr/eslint-plugin-react/pull/2980
 [#2977]: https://github.com/yannickcr/eslint-plugin-react/pull/2977
 [#2975]: https://github.com/yannickcr/eslint-plugin-react/pull/2975
