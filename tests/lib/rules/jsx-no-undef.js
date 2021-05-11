@@ -46,6 +46,8 @@ ruleTester.run('jsx-no-undef', rule, {
   }, {
     code: '/*eslint no-undef:1*/ var React, app; React.render(<app.foo.Bar />);'
   }, {
+    code: '/*eslint no-undef:1*/ var React; React.render(<Apppp:Foo />);'
+  }, {
     code: `
       /*eslint no-undef:1*/
       var React;
@@ -86,12 +88,6 @@ ruleTester.run('jsx-no-undef', rule, {
     errors: [{
       messageId: 'undefined',
       data: {identifier: 'Appp'}
-    }]
-  }, {
-    code: '/*eslint no-undef:1*/ var React; React.render(<Apppp:Foo />);',
-    errors: [{
-      messageId: 'undefined',
-      data: {identifier: 'Apppp'}
     }]
   }, {
     code: '/*eslint no-undef:1*/ var React; React.render(<appp.Foo />);',
