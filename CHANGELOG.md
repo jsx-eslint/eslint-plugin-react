@@ -11,6 +11,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Fixed
 * [`jsx-handler-names`]: properly substitute value into message ([#2975][] @G-Rath)
+* [`jsx-uses-vars`]: ignore namespaces ([#2985][] @remcohaszing)
 
 ### Changed
 * [Docs] [`jsx-newline`]: Fix minor spelling error on rule name ([#2974][] @DennisSkoko)
@@ -18,6 +19,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [readme] fix missing trailing commas ([#2980][] @sugardon)
 * [readme] fix broken anchor link ([#2982][] @vzvu3k6k)
 
+[#2985]: https://github.com/yannickcr/eslint-plugin-react/pull/2985
 [#2982]: https://github.com/yannickcr/eslint-plugin-react/pull/2982
 [#2980]: https://github.com/yannickcr/eslint-plugin-react/pull/2980
 [#2977]: https://github.com/yannickcr/eslint-plugin-react/pull/2977

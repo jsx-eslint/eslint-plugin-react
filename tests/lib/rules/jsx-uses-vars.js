@@ -82,12 +82,6 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
     }, {
       code: `
         /* eslint jsx-uses-vars: 1 */
-        var App;
-        <App:Hello />
-      `
-    }, {
-      code: `
-        /* eslint jsx-uses-vars: 1 */
         class HelloMessage {};
         <HelloMessage />
       `
@@ -143,7 +137,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         var Hello;
         React.render(<App:Hello/>);
       `,
-      errors: [{message: '\'Hello\' is defined but never used.'}]
+      errors: [{message: '\'App\' is defined but never used.'}, {message: '\'Hello\' is defined but never used.'}]
     }, {
       code: `
         /* eslint jsx-uses-vars: 1 */
