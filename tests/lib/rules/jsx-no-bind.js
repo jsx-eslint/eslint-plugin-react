@@ -42,18 +42,15 @@ ruleTester.run('jsx-no-bind', rule, {
       code: '<div onClick={getHandler()}></div>'
     },
 
-    // bind() and arrow functions in refs explicitly ignored
+    // bind() and arrow functions in refs explicitly allowed
     {
-      code: '<div ref={c => this._input = c}></div>',
-      options: [{ignoreRefs: true}]
+      code: '<div ref={c => this._input = c}></div>'
     },
     {
-      code: '<div ref={this._refCallback.bind(this)}></div>',
-      options: [{ignoreRefs: true}]
+      code: '<div ref={this._refCallback.bind(this)}></div>'
     },
     {
-      code: '<div ref={function (c) {this._input = c}}></div>',
-      options: [{ignoreRefs: true}]
+      code: '<div ref={function (c) {this._input = c}}></div>'
     },
 
     // bind() explicitly allowed
@@ -309,6 +306,7 @@ ruleTester.run('jsx-no-bind', rule, {
     },
     {
       code: '<div ref={this._refCallback.bind(this)}></div>',
+      options: [{ignoreRefs: false}],
       errors: [{messageId: 'bindCall'}]
     },
     {
@@ -478,6 +476,7 @@ ruleTester.run('jsx-no-bind', rule, {
     },
     {
       code: '<div ref={c => this._input = c}></div>',
+      options: [{ignoreRefs: false}],
       errors: [{messageId: 'arrowFunc'}]
     },
     {
@@ -593,6 +592,7 @@ ruleTester.run('jsx-no-bind', rule, {
     },
     {
       code: '<div ref={function (c) { this._input = c }}></div>',
+      options: [{ignoreRefs: false}],
       errors: [{messageId: 'func'}]
     },
     {

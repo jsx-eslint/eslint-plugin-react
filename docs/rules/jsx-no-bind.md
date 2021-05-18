@@ -23,7 +23,7 @@ Examples of **correct** code for this rule:
 ```js
 "react/jsx-no-bind": [<enabled>, {
   "ignoreDOMComponents": <boolean> || false,
-  "ignoreRefs": <boolean> || false,
+  "ignoreRefs": <boolean> || true,
   "allowArrowFunctions": <boolean> || false,
   "allowFunctions": <boolean> || false,
   "allowBind": <boolean> || false
