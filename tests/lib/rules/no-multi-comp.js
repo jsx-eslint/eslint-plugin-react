@@ -31,6 +31,80 @@ ruleTester.run('no-multi-comp', rule, {
 
   valid: [{
     code: [
+      'import { FormattedMessage } from \'react-intl\';',
+      'export function App() {',
+      '  return (',
+      '    <FormattedMessage',
+      '      values={{',
+      '        link:',
+      '        (text) => <a>{text}</a>,',
+      '      }}',
+      '    />',
+      '  );',
+      '}'
+    ].join('\r')
+  }, {
+    code: [
+      'import { FormattedMessage } from \'react-intl\';',
+      'const App = () => {',
+      '  return (',
+      '    <FormattedMessage',
+      '      values={{',
+      '        link:',
+      '        (text) => <a>{text}</a>,',
+      '      }}',
+      '    />',
+      '  );',
+      '}'
+    ].join('\r')
+  }, {
+    code: [
+      'import { FormattedMessage } from \'react-intl\';',
+      'const App = function() {',
+      '  return (',
+      '    <FormattedMessage',
+      '      values={{',
+      '        link:',
+      '        (text) => <a>{text}</a>,',
+      '      }}',
+      '    />',
+      '  );',
+      '}'
+    ].join('\r')
+  }, {
+    code: [
+      'import { FormattedMessage } from \'react-intl\';',
+      'class Hello extends React.Component {',
+      '  render() {',
+      '    return (',
+      '      <FormattedMessage',
+      '        values={{',
+      '          link:',
+      '          (text) => <a>{text}</a>,',
+      '        }}',
+      '      />',
+      '    );',
+      '  }',
+      '};'
+    ].join('\r')
+  }, {
+    code: [
+      'import { FormattedMessage } from \'react-intl\';',
+      'var HelloJohn = createReactClass({',
+      '  render: function() {',
+      '    return (',
+      '      <FormattedMessage',
+      '        values={{',
+      '          link:',
+      '          (text) => <a>{text}</a>,',
+      '        }}',
+      '      />',
+      '    );',
+      '  }',
+      '});'
+    ].join('\r')
+  }, {
+    code: [
       'var Hello = require(\'./components/Hello\');',
       'var HelloJohn = createReactClass({',
       '  render: function() {',

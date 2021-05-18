@@ -288,7 +288,7 @@ ruleTester.run('destructuring-assignment', rule, {
     }]
   }, {
     code: `
-      function hof() {
+      function HOF() {
         return (props) => <p>{props.a}</p>;
       }
     `,
