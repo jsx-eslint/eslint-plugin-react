@@ -139,6 +139,31 @@ ruleTester.run('jsx-child-element-spacing', rule, {
         B
       </App>
     `
+  }, {
+    code: `
+      <App>
+        A
+        <br/>
+        B
+      </App>
+    `
+  }, {
+    code: `
+      <App>
+        A<br/>
+        B
+      </App>
+    `
+  }, {
+    code: `
+      <App>
+        A<br/>B
+      </App>
+    `
+  }, {
+    code: `
+      <App>A<br/>B</App>
+    `
   }],
 
   invalid: [{
