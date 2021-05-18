@@ -20,7 +20,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Refactor] [`void-dom-elements-no-children`]: improve performance
 * [readme] fix missing trailing commas ([#2980][] @sugardon)
 * [readme] fix broken anchor link ([#2982][] @vzvu3k6k)
+* [Docs] [`jsx-child-element-spacing`]: fixes sentence which ends abruptly ([#2990][] @pascalpp)
 
+[#2990]: https://github.com/yannickcr/eslint-plugin-react/pull/2990
 [#2989]: https://github.com/yannickcr/eslint-plugin-react/pull/2989
 [#2986]: https://github.com/yannickcr/eslint-plugin-react/pull/2986
 [#2985]: https://github.com/yannickcr/eslint-plugin-react/pull/2985
