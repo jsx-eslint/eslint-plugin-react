@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Fixed
+*  component detection: use `estraverse` to improve component detection ([#2992][] @Wesitos)
+
+[#2992]: https://github.com/yannickcr/eslint-plugin-react/pull/2992
+
 ## [7.24.0] - 2021.05.27
 
 ### Added

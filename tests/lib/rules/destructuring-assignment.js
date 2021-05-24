@@ -187,6 +187,15 @@ ruleTester.run('destructuring-assignment', rule, {
     `,
     options: ['always'],
     parser: parsers.BABEL_ESLINT
+  }, {
+    code: `
+      const obj = {
+        foo(arg) {
+          const a = arg.func();
+          return null;
+       },
+      };
+     `
   }],
 
   invalid: [{
