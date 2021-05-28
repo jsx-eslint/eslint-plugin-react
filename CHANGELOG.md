@@ -18,6 +18,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Docs] [`jsx-no-bind`]: updates discussion of refs ([#2998][] @dimitropoulos)
 * [Refactor] `utils/Components`: correct spelling and delete unused code ([#3026][] @ohhoney1)
 * [Docs] [`jsx-uses-react`], [`react-in-jsx-scope`]: document [`react/jsx-runtime`] config ([#3018][] @pkuczynski @ljharb)
+* [Docs] [`require-default-props`]: fix small typo ([#2994][] @evsasse)
 
 [#3026]: https://github.com/yannickcr/eslint-plugin-react/pull/3026
 [#3025]: https://github.com/yannickcr/eslint-plugin-react/pull/3025
@@ -26,6 +27,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#3006]: https://github.com/yannickcr/eslint-plugin-react/pull/3006
 [#3001]: https://github.com/yannickcr/eslint-plugin-react/pull/3001
 [#2998]: https://github.com/yannickcr/eslint-plugin-react/pull/2998
+[#2994]: https://github.com/yannickcr/eslint-plugin-react/pull/2994
 [#2992]: https://github.com/yannickcr/eslint-plugin-react/pull/2992
 
 ## [7.24.0] - 2021.05.27
