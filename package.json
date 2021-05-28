@@ -42,7 +42,7 @@
     "string.prototype.matchall": "^4.0.4"
   },
   "devDependencies": {
-    "@types/eslint": "^7.2.8",
+    "@types/eslint": "=7.2.10",
     "@types/estree": "^0.0.47",
     "@types/node": "^14.14.37",
     "@typescript-eslint/parser": "^2.34.0",
