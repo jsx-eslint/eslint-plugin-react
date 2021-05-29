@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.24.0] - 2021.05.27
+
 ### Added
 * component detection: add componentWrapperFunctions setting ([#2713][] @@jzabala @LandonSchropp)
 * [`no-unused-prop-types`]: add ignore option ([#2972][] @grit96)
@@ -23,6 +25,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [readme] fix broken anchor link ([#2982][] @vzvu3k6k)
 * [Docs] [`jsx-child-element-spacing`]: fixes sentence which ends abruptly ([#2990][] @pascalpp)
 
+[7.24.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.23.2...v7.24.0
 [#2990]: https://github.com/yannickcr/eslint-plugin-react/pull/2990
 [#2989]: https://github.com/yannickcr/eslint-plugin-react/pull/2989
 [#2986]: https://github.com/yannickcr/eslint-plugin-react/pull/2986
