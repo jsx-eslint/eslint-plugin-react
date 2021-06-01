@@ -8,6 +8,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Fixed
 *  component detection: use `estraverse` to improve component detection ([#2992][] @Wesitos)
 
+### Changed
+* [Docs] [`jsx-no-bind`]: updates discussion of refs ([#2998][] @dimitropoulos)
+
+[#2998]: https://github.com/yannickcr/eslint-plugin-react/pull/2998
 [#2992]: https://github.com/yannickcr/eslint-plugin-react/pull/2992
 
 ## [7.24.0] - 2021.05.27
