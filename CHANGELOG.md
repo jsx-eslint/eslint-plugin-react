@@ -6,11 +6,13 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## Unreleased
 
 ### Fixed
-*  component detection: use `estraverse` to improve component detection ([#2992][] @Wesitos)
+* component detection: use `estraverse` to improve component detection ([#2992][] @Wesitos)
+* [`destructuring-assignment`], [`no-multi-comp`], [`no-unstable-nested-components`], component detection: improve component detection ([#3001][] @vedadeepta)
 
 ### Changed
 * [Docs] [`jsx-no-bind`]: updates discussion of refs ([#2998][] @dimitropoulos)
 
+[#3001]: https://github.com/yannickcr/eslint-plugin-react/pull/3001
 [#2998]: https://github.com/yannickcr/eslint-plugin-react/pull/2998
 [#2992]: https://github.com/yannickcr/eslint-plugin-react/pull/2992
 

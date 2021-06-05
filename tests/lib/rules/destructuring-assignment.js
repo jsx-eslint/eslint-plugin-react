@@ -196,6 +196,43 @@ ruleTester.run('destructuring-assignment', rule, {
        },
       };
      `
+  }, {
+    code: `
+      const columns = [
+        {
+          render: (val) => {
+            if (val.url) {
+              return (
+                <a href={val.url}>
+                  {val.test}
+                </a>
+              );
+            }
+            return null;
+          },
+        },
+      ];
+    `
+  }, {
+    code: `
+      const columns = [
+        {
+          render: val => <span>{val}</span>,
+        },
+        {
+          someRenderFunc: function(val) {
+            if (val.url) {
+              return (
+                <a href={val.url}>
+                  {val.test}
+                </a>
+              );
+            }
+            return null;
+          },
+        },
+      ];
+    `
   }],
 
   invalid: [{
@@ -352,6 +389,28 @@ ruleTester.run('destructuring-assignment', rule, {
     errors: [{
       messageId: 'noDestructAssignment',
       data: {type: 'state'}
+    }]
+  }, {
+    code: `
+      const columns = [
+        {
+          CustomComponentName: function(props) {
+            if (props.url) {
+              return (
+                <a href={props.url}>
+                  {props.test}
+                </a>
+              );
+            }
+            return null;
+          },
+        },
+      ];
+    `,
+    parser: parsers.BABEL_ESLINT,
+    errors: [{
+      messageId: 'useDestructAssignment',
+      data: {type: 'props'}
     }]
   }]
 });

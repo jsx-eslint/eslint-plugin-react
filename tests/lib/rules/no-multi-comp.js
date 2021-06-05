@@ -316,11 +316,11 @@ ruleTester.run('no-multi-comp', rule, {
   }, {
     code: [
       'export default {',
-      '  renderHello(props) {',
+      '  RenderHello(props) {',
       '    let {name} = props;',
       '    return <div>{name}</div>;',
       '  },',
-      '  renderHello2(props) {',
+      '  RenderHello2(props) {',
       '    let {name} = props;',
       '    return <div>{name}</div>;',
       '  }',

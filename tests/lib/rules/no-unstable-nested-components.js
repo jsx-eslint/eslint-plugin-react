@@ -490,6 +490,20 @@ ruleTester.run('no-unstable-nested-components', rule, {
         },
       });
       `
+    },
+    {
+      code: `
+      function ParentComponent() {
+        const rows = [
+          {
+            name: 'A',
+            notPrefixedWithRender: (props) => <Row {...props} />
+          },
+        ];
+
+        return <Table rows={rows} />;
+      }
+      `
     }
     /* TODO These minor cases are currently falsely marked due to component detection
     {
@@ -1009,21 +1023,6 @@ ruleTester.run('no-unstable-nested-components', rule, {
       }
       `,
       errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}]
-    },
-    {
-      code: `
-      function ParentComponent() {
-        const rows = [
-          {
-            name: 'A',
-            notPrefixedWithRender: (props) => <Row {...props} />
-          },
-        ];
-
-        return <Table rows={rows} />;
-      }
-      `,
-      errors: [{message: ERROR_MESSAGE}]
     },
     {
       code: `
