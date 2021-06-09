@@ -52,3 +52,28 @@ const cat = <>meow</>
 
 <Fragment key={item.id}>{item.value}</Fragment>
 ```
+
+## Rule Options
+
+```js
+...
+"react/jsx-no-useless-fragments": [<enabled>, { "ignoreUnsafeChildren": <boolean> }]
+...
+```
+
+### `ignoreUnsafeChildren` (default: `false`)
+
+When `true` the rule will ignore errors related to fragments having enough
+children when removing the fragment could result in a runtime error.
+
+Examples of **correct** code for this rule:
+
+```jsx
+<></>
+
+<>{children}</>
+
+<>{foo && <Foo/>}</>
+
+<>{foo?.map(x => <Bar x={x}/>)}</>
+```

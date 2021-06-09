@@ -67,6 +67,51 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
     {
       code: '<>{foos.map(foo => foo)}</>',
       parser: parsers.BABEL_ESLINT
+    },
+    {
+      // component could require a ReactNode
+      code: '<></>',
+      output: null,
+      options: [{
+        ignoreUnsafeChildren: true
+      }],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      // children could be undefined
+      code: '<>{children}</>',
+      output: null,
+      options: [{
+        ignoreUnsafeChildren: true
+      }],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      // props.children could be undefined
+      code: '<>{props.children}</>',
+      output: null,
+      options: [{
+        ignoreUnsafeChildren: true
+      }],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      // foo could be undefined
+      code: '<>{foo && <Foo/>}</>',
+      output: null,
+      options: [{
+        ignoreUnsafeChildren: true
+      }],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      // foo could be undefined
+      code: '<>{foo?.map(x => <Bar id={x.id}/>)}</>',
+      output: null,
+      options: [{
+        ignoreUnsafeChildren: true
+      }],
+      parser: parsers.BABEL_ESLINT
     }
   ],
   invalid: [
@@ -101,8 +146,26 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       parser: parsers.BABEL_ESLINT
     },
     {
+      code: '<p><>{meow}</></p>',
+      output: '<p>{meow}</p>',
+      options: [{
+        ignoreUnsafeChildren: true
+      }],
+      errors: [{messageId: 'NeedsMoreChidren'}, {messageId: 'ChildOfHtmlElement'}],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
       code: '<><div/></>',
       output: '<div/>',
+      errors: [{messageId: 'NeedsMoreChidren'}],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: '<><div/></>',
+      output: '<div/>',
+      options: [{
+        ignoreUnsafeChildren: true
+      }],
       errors: [{messageId: 'NeedsMoreChidren'}],
       parser: parsers.BABEL_ESLINT
     },
@@ -119,6 +182,21 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       parser: parsers.BABEL_ESLINT
     },
     {
+      code: `
+        <>
+          <div/>
+        </>
+      `,
+      output: `
+        <div/>
+      `,
+      options: [{
+        ignoreUnsafeChildren: true
+      }],
+      errors: [{messageId: 'NeedsMoreChidren'}],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
       code: '<Fragment />',
       errors: [{messageId: 'NeedsMoreChidren'}]
     },
@@ -131,6 +209,20 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       output: `
         <Foo />
       `,
+      errors: [{messageId: 'NeedsMoreChidren'}]
+    },
+    {
+      code: `
+        <React.Fragment>
+          <Foo />
+        </React.Fragment>
+      `,
+      output: `
+        <Foo />
+      `,
+      options: [{
+        ignoreUnsafeChildren: true
+      }],
       errors: [{messageId: 'NeedsMoreChidren'}]
     },
     {
