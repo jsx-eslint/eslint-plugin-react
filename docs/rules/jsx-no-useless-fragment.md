@@ -52,3 +52,16 @@ const cat = <>meow</>
 
 <Fragment key={item.id}>{item.value}</Fragment>
 ```
+
+### `allowExpressions`
+
+When `true` single expressions in a fragment will be allowed. This is useful in
+places like Typescript where `string` does not satisfy the expected return type
+of `JSX.Element`. A common workaround is to wrap the variable holding a string
+in a fragment and expression.
+
+Examples of **correct** code for the rule, when `"allowExpressions"` is `true`:
+
+```jsx
+<>{foo}</>
+```

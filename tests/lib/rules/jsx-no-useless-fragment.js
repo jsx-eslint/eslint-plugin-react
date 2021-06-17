@@ -67,43 +67,48 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
     {
       code: '<>{foos.map(foo => foo)}</>',
       parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: '<>{moo}</>',
+      parser: parsers.BABEL_ESLINT,
+      options: [{allowExpressions: true}]
     }
   ],
   invalid: [
     {
       code: '<></>',
       output: null,
-      errors: [{messageId: 'NeedsMoreChidren', type: 'JSXFragment'}],
+      errors: [{messageId: 'NeedsMoreChildren', type: 'JSXFragment'}],
       parser: parsers.BABEL_ESLINT
     },
     {
       code: '<>{}</>',
       output: null,
-      errors: [{messageId: 'NeedsMoreChidren', type: 'JSXFragment'}],
+      errors: [{messageId: 'NeedsMoreChildren', type: 'JSXFragment'}],
       parser: parsers.BABEL_ESLINT
     },
     {
       code: '<p>moo<>foo</></p>',
       output: '<p>moofoo</p>',
-      errors: [{messageId: 'NeedsMoreChidren'}, {messageId: 'ChildOfHtmlElement'}],
+      errors: [{messageId: 'NeedsMoreChildren'}, {messageId: 'ChildOfHtmlElement'}],
       parser: parsers.BABEL_ESLINT
     },
     {
       code: '<>{meow}</>',
       output: null,
-      errors: [{messageId: 'NeedsMoreChidren'}],
+      errors: [{messageId: 'NeedsMoreChildren'}],
       parser: parsers.BABEL_ESLINT
     },
     {
       code: '<p><>{meow}</></p>',
       output: '<p>{meow}</p>',
-      errors: [{messageId: 'NeedsMoreChidren'}, {messageId: 'ChildOfHtmlElement'}],
+      errors: [{messageId: 'NeedsMoreChildren'}, {messageId: 'ChildOfHtmlElement'}],
       parser: parsers.BABEL_ESLINT
     },
     {
       code: '<><div/></>',
       output: '<div/>',
-      errors: [{messageId: 'NeedsMoreChidren'}],
+      errors: [{messageId: 'NeedsMoreChildren'}],
       parser: parsers.BABEL_ESLINT
     },
     {
@@ -115,12 +120,12 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       output: `
         <div/>
       `,
-      errors: [{messageId: 'NeedsMoreChidren'}],
+      errors: [{messageId: 'NeedsMoreChildren'}],
       parser: parsers.BABEL_ESLINT
     },
     {
       code: '<Fragment />',
-      errors: [{messageId: 'NeedsMoreChidren'}]
+      errors: [{messageId: 'NeedsMoreChildren'}]
     },
     {
       code: `
@@ -131,7 +136,7 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       output: `
         <Foo />
       `,
-      errors: [{messageId: 'NeedsMoreChidren'}]
+      errors: [{messageId: 'NeedsMoreChildren'}]
     },
     {
       code: `
@@ -145,19 +150,19 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
           fragment: 'SomeFragment'
         }
       },
-      errors: [{messageId: 'NeedsMoreChidren'}]
+      errors: [{messageId: 'NeedsMoreChildren'}]
     },
     {
       // Not safe to fix this case because `Eeee` might require child be ReactElement
       code: '<Eeee><>foo</></Eeee>',
       output: null,
-      errors: [{messageId: 'NeedsMoreChidren'}],
+      errors: [{messageId: 'NeedsMoreChildren'}],
       parser: parsers.BABEL_ESLINT
     },
     {
       code: '<div><>foo</></div>',
       output: '<div>foo</div>',
-      errors: [{messageId: 'NeedsMoreChidren'}, {messageId: 'ChildOfHtmlElement'}],
+      errors: [{messageId: 'NeedsMoreChildren'}, {messageId: 'ChildOfHtmlElement'}],
       parser: parsers.BABEL_ESLINT
     },
     {
@@ -227,7 +232,15 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
           </html>
         );
       `,
-      errors: [{messageId: 'NeedsMoreChidren'}, {messageId: 'ChildOfHtmlElement'}]
+      errors: [{messageId: 'NeedsMoreChildren'}, {messageId: 'ChildOfHtmlElement'}]
+    },
+    // Ensure allowExpressions still catches expected violations
+    {
+      code: '<><Foo>{moo}</Foo></>',
+      options: [{allowExpressions: true}],
+      errors: [{messageId: 'NeedsMoreChildren'}],
+      output: '<Foo>{moo}</Foo>',
+      parser: parsers.BABEL_ESLINT
     }
   ]
 });
