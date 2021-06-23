@@ -13,6 +13,8 @@ jobs:
         with:
           node-version: 'lts/*'
           skip-ls-check: true
+        env:
+          NPM_CONFIG_LEGACY_PEER_DEPS: true
       - run: npm run pretest
 
   posttest:
@@ -25,4 +27,7 @@ jobs:
         with:
           node-version: 'lts/*'
           skip-ls-check: true
+        env:
+          NPM_CONFIG_LEGACY_PEER_DEPS: true
+      - run: echo 'legacy-peer-deps=true' >> .npmrc
       - run: npm run posttest

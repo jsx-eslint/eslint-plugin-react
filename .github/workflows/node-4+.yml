@@ -62,8 +62,10 @@ jobs:
         name: 'nvm install ${{ matrix.node-version }} && npm install'
         with:
           node-version: ${{ matrix.node-version }}
-          after_install: NPM_CONFIG_LEGACY_PEER_DEPS=true npm install --no-save "eslint@${{ matrix.eslint }}"
+          after_install: npm install --no-save "eslint@${{ matrix.eslint }}"
           skip-ls-check: true
+        env:
+          NPM_CONFIG_LEGACY_PEER_DEPS: true
       - run: npm run unit-test
       - uses: codecov/codecov-action@v1
 
