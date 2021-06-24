@@ -290,6 +290,54 @@ ruleTester.run('jsx-no-bind', rule, {
       code: '<div foo={::this.onChange} />',
       options: [{ignoreDOMComponents: true}],
       parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        const Foo = ({list}) => {
+          return (
+            <div>
+              {
+                list.map(item => (
+                  <div key={item.id} onClick={() => alert(item.text)}>click me</div>
+                ))
+              }
+            </div>
+          )
+        };
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        const Foo = ({list}) => {
+          return (
+            <div>
+              {
+                list.map(item => (
+                  <div key={item.id} onClick={alert.bind(null, item.text)}>click me</div>
+                ))
+              }
+            </div>
+          )
+        };
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        const Foo = ({list}) => {
+          return (
+            <div>
+              {
+                list.map(item => (
+                  <div key={item.id} onClick={function () { alert(item.text) }}>click me</div>
+                ))
+              }
+            </div>
+          )
+        };
+      `,
+      parser: parsers.BABEL_ESLINT
     }
   ],
 
