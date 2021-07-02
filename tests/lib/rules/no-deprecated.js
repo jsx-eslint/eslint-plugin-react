@@ -103,6 +103,13 @@ ruleTester.run('no-deprecated', rule, {
         }
       `,
       settings: {react: {version: '16.8.0'}}
+    },
+    {
+      code: `
+        import React from "react";
+
+        let { default: defaultReactExport, ...allReactExports } = React;
+      `
     }
   ],
 
