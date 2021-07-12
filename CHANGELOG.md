@@ -17,9 +17,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Changed
 * [Docs] [`jsx-no-bind`]: updates discussion of refs ([#2998][] @dimitropoulos)
 * [Refactor] `utils/Components`: correct spelling and delete unused code ([#3026][] @ohhoney1)
+* [Docs] [`jsx-uses-react`], [`react-in-jsx-scope`]: document [`react/jsx-runtime`] config ([#3018][] @pkuczynski @ljharb)
 
 [#3026]: https://github.com/yannickcr/eslint-plugin-react/pull/3026
 [#3025]: https://github.com/yannickcr/eslint-plugin-react/pull/3025
+[#3018]: https://github.com/yannickcr/eslint-plugin-react/pull/3018
 [#3016]: https://github.com/yannickcr/eslint-plugin-react/issues/3016
 [#3006]: https://github.com/yannickcr/eslint-plugin-react/pull/3006
 [#3001]: https://github.com/yannickcr/eslint-plugin-react/pull/3001
@@ -3297,6 +3299,8 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 ## 1.0.0 - 2014-12-16
 ### Added
  * First revision
+
+[`react/jsx-runtime`]: https://github.com/yannickcr/eslint-plugin-react/blob/HEAD/index.js#L163-L176
 
 [`display-name`]: docs/rules/display-name.md
 [`forbid-component-props`]: docs/rules/forbid-component-props.md

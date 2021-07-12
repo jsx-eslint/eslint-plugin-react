@@ -21,6 +21,7 @@ $ npm install eslint-plugin-react --save-dev
 
 # Configuration
 
+
 Use [our preset](#recommended) to get reasonable defaults:
 
 ```json
@@ -29,6 +30,8 @@ Use [our preset](#recommended) to get reasonable defaults:
     "plugin:react/recommended"
   ]
 ```
+
+If you are using the [new JSX transform from React 17](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#removing-unused-react-imports), extend [`react/jsx-runtime`](https://github.com/yannickcr/eslint-plugin-react/blob/HEAD/index.js#L163-L176) in your eslint config to disable the relevant rules.
 
 You should also specify settings that will be shared across all the plugin rules. ([More about eslint shared settings](https://eslint.org/docs/user-guide/configuring/configuration-files#adding-shared-settings))
 

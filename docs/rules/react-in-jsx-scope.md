@@ -1,7 +1,6 @@
 # Prevent missing React when using JSX (react/react-in-jsx-scope)
 
-When using JSX, `<a />` expands to `React.createElement("a")`. Therefore the
-`React` variable must be in scope.
+When using JSX, `<a />` expands to `React.createElement("a")`. Therefore the `React` variable must be in scope.
 
 If you are using the @jsx pragma this rule will check the designated variable and not the `React` one.
 
@@ -43,4 +42,6 @@ var Hello = <div>Hello {this.props.name}</div>;
 
 ## When Not To Use It
 
-If you are setting `React` as a global variable you can disable this rule.
+If you are not using JSX, or if you are setting `React` as a global variable.
+
+If you are using the [new JSX transform from React 17](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#removing-unused-react-imports), you should disable this rule by extending [`react/jsx-runtime`](https://github.com/yannickcr/eslint-plugin-react/blob/HEAD/index.js#L163-L176) in your eslint config.
