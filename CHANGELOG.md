@@ -15,7 +15,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Changed
 * [Docs] [`jsx-no-bind`]: updates discussion of refs ([#2998][] @dimitropoulos)
+* [Refactor] `utils/Components`: correct spelling and delete unused code ([#3026][] @ohhoney1)
 
+[#3026]: https://github.com/yannickcr/eslint-plugin-react/pull/3026
 [#3016]: https://github.com/yannickcr/eslint-plugin-react/issues/3016
 [#3006]: https://github.com/yannickcr/eslint-plugin-react/pull/3006
 [#3001]: https://github.com/yannickcr/eslint-plugin-react/pull/3001
