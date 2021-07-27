@@ -180,9 +180,9 @@ ruleTester.run('destructuring-assignment', rule, {
   // https://github.com/yannickcr/eslint-plugin-react/issues/2911
   {
     code: `
-      function Foo({context}) {
-        const d = context.describe()
-        return <div>{d}</div>
+      function Foo({ context }) {
+        const d = context.describe();
+        return <div>{d}</div>;
       }
     `,
     options: ['always'],
@@ -411,6 +411,19 @@ ruleTester.run('destructuring-assignment', rule, {
     errors: [{
       messageId: 'useDestructAssignment',
       data: {type: 'props'}
+    }]
+  }, {
+    code: `
+      function Foo(props, context) {
+        const d = context.describe();
+        return <div>{d}</div>;
+      }
+    `,
+    options: ['always'],
+    parser: parsers.BABEL_ESLINT,
+    errors: [{
+      messageId: 'useDestructAssignment',
+      data: {type: 'context'}
     }]
   }]
 });
