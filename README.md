@@ -154,6 +154,7 @@ Enable the rules that you would like to use.
 |  |  | [react/no-unused-state](docs/rules/no-unused-state.md) | Prevent definition of unused state fields |
 |  |  | [react/no-will-update-set-state](docs/rules/no-will-update-set-state.md) | Prevent usage of setState in componentWillUpdate |
 |  |  | [react/prefer-es6-class](docs/rules/prefer-es6-class.md) | Enforce ES5 or ES6 class for React Components |
+|  |  | [react/prefer-exact-props](docs/rules/prefer-exact-props.md) | Prefer exact proptype definitions |
 |  | 🔧 | [react/prefer-read-only-props](docs/rules/prefer-read-only-props.md) | Require read-only props. |
 |  |  | [react/prefer-stateless-function](docs/rules/prefer-stateless-function.md) | Enforce stateless components to be written as a pure function |
 | ✔ |  | [react/prop-types](docs/rules/prop-types.md) | Prevent missing props validation in a React component definition |
