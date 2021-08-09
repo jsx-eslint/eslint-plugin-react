@@ -18,6 +18,8 @@ const parseCode = (code) => {
   return ASTnode.body[0];
 };
 
+const mockContext = {};
+
 describe('ast', () => {
   describe('traverseReturnStatements', () => {
     it('Correctly traverses function declarations', () => {
@@ -26,7 +28,7 @@ describe('ast', () => {
         function foo({prop}) {
           return;
         }
-      `), spy);
+      `), mockContext, spy);
 
       assert(spy.calledOnce);
     });
@@ -37,7 +39,7 @@ describe('ast', () => {
         const foo = function({prop}) {
           return;
         }
-      `).declarations[0].init, spy);
+      `).declarations[0].init, mockContext, spy);
 
       assert(spy.calledOnce);
     });
@@ -48,7 +50,7 @@ describe('ast', () => {
         ({prop}) => {
           return;
         }
-      `).expression, spy);
+      `).expression, mockContext, spy);
 
       assert(spy.calledOnce);
 
@@ -56,7 +58,7 @@ describe('ast', () => {
 
       traverseReturns(parseCode(`
         ({prop}) => 'someething'
-      `).expression, spy);
+      `).expression, mockContext, spy);
 
       assert(spy.calledOnce);
     });
@@ -88,7 +90,7 @@ describe('ast', () => {
 
           const foo = () => 'not valid';
         }
-      `), spy);
+      `), mockContext, spy);
 
       const enterCalls = spy.getCalls();
 

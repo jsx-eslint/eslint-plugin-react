@@ -14,6 +14,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`destructuring-assignment`], [`no-multi-comp`], [`no-unstable-nested-components`], component detection: improve component detection ([#3001][] @vedadeepta)
 * [`no-deprecated`]: fix crash on rest elements ([#3016][] @ljharb)
 * [`destructuring-assignment`]: get the contextName correctly ([#3025][] @ohhoney1)
+* [`no-typos`]: prevent crash on styled components and forwardRefs ([#3036][] @ljharb)
 
 ### Changed
 * [Docs] [`jsx-no-bind`]: updates discussion of refs ([#2998][] @dimitropoulos)
@@ -21,6 +22,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Docs] [`jsx-uses-react`], [`react-in-jsx-scope`]: document [`react/jsx-runtime`] config ([#3018][] @pkuczynski @ljharb)
 * [Docs] [`require-default-props`]: fix small typo ([#2994][] @evsasse)
 
+[#3036]: https://github.com/yannickcr/eslint-plugin-react/issues/3036
 [#3026]: https://github.com/yannickcr/eslint-plugin-react/pull/3026
 [#3025]: https://github.com/yannickcr/eslint-plugin-react/pull/3025
 [#3018]: https://github.com/yannickcr/eslint-plugin-react/pull/3018

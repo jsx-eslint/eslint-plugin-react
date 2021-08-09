@@ -20,13 +20,15 @@ const parseCode = (code) => {
   return ASTnode.body[0];
 };
 
+const mockContext = {};
+
 describe('jsxUtil', () => {
   describe('isReturningJSX', () => {
     const assertValid = (codeStr) => assert(
-      isReturningJSX(() => false, parseCode(codeStr))
+      isReturningJSX(() => false, parseCode(codeStr), mockContext)
     );
     const assertInValid = (codeStr) => assert(
-      !!isReturningJSX(() => false, parseCode(codeStr))
+      !!isReturningJSX(() => false, parseCode(codeStr), mockContext)
     );
     it('Works when returning JSX', () => {
       assertValid(`

@@ -642,6 +642,20 @@ ruleTester.run('no-typos', rule, {
       }
     `,
     parserOptions
+  }, {
+    code: `
+    const MyComponent = React.forwardRef((props, ref) => <div />);
+    MyComponent.defaultProps = { value: "" };
+    `,
+    parserOptions
+  }, {
+    code: `
+    import styled from "styled-components";
+
+    const MyComponent = styled.div;
+    MyComponent.defaultProps = { value: "" };
+    `,
+    parserOptions
   }),
 
   invalid: [].concat({
