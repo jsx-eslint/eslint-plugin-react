@@ -233,6 +233,17 @@ ruleTester.run('destructuring-assignment', rule, {
         },
       ];
     `
+  }, {
+    code: `
+    export default (fileName) => {
+      const match = fileName.match(/some expression/);
+      if (match) {
+        return fn;
+      }
+      return null;
+    };
+  `
+
   }],
 
   invalid: [{
@@ -424,6 +435,22 @@ ruleTester.run('destructuring-assignment', rule, {
     errors: [{
       messageId: 'useDestructAssignment',
       data: {type: 'context'}
+    }]
+  }, {
+    code: `
+      export default (props) => {
+        const match = props.str.match(/some expression/);
+        if (match) {
+          return <span>jsx</span>;
+        }
+        return null;
+      };
+    `,
+    options: ['always'],
+    parser: parsers.BABEL_ESLINT,
+    errors: [{
+      messageId: 'useDestructAssignment',
+      data: {type: 'props'}
     }]
   }]
 });
