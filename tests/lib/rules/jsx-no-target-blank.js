@@ -115,6 +115,26 @@ ruleTester.run('jsx-no-target-blank', rule, {
     },
     {
       code: '<a href="some-link" target="some-non-blank-target" {...otherProps}></a>'
+    },
+    {
+      code: '<a target="_blank" href="/absolute/path"></a>',
+      options: [{forms: false}]
+    },
+    {
+      code: '<a target="_blank" href="/absolute/path"></a>',
+      options: [{forms: false, links: true}]
+    },
+    {
+      code: '<form action="http://example.com" target="_blank"></form>',
+      options: []
+    },
+    {
+      code: '<form action="http://example.com" target="_blank" rel="noopener noreferrer"></form>',
+      options: [{forms: true}]
+    },
+    {
+      code: '<form action="http://example.com" target="_blank" rel="noopener noreferrer"></form>',
+      options: [{forms: true, links: false}]
     }
   ],
   invalid: [
@@ -286,6 +306,44 @@ ruleTester.run('jsx-no-target-blank', rule, {
       options: [{
         warnOnSpreadAttributes: true
       }]
+    },
+    {
+      code: '<a target="_blank" href="//example.com" rel></a>',
+      output: '<a target="_blank" href="//example.com" rel="noreferrer"></a>',
+      options: [{links: true}],
+      errors: defaultErrors
+    },
+    {
+      code: '<a target="_blank" href="//example.com" rel></a>',
+      output: '<a target="_blank" href="//example.com" rel="noreferrer"></a>',
+      options: [{links: true, forms: true}],
+      errors: defaultErrors
+    },
+    {
+      code: '<a target="_blank" href="//example.com" rel></a>',
+      output: '<a target="_blank" href="//example.com" rel="noreferrer"></a>',
+      options: [{links: true, forms: false}],
+      errors: defaultErrors
+    },
+    {
+      code: '<form method="POST" action="http://example.com" target="_blank"></form>',
+      options: [{forms: true}],
+      errors: defaultErrors
+    },
+    {
+      code: '<form method="POST" action="http://example.com" rel="" target="_blank"></form>',
+      options: [{forms: true}],
+      errors: defaultErrors
+    },
+    {
+      code: '<form method="POST" action="http://example.com" rel="noopenernoreferrer" target="_blank"></form>',
+      options: [{forms: true}],
+      errors: defaultErrors
+    },
+    {
+      code: '<form method="POST" action="http://example.com" rel="noopenernoreferrer" target="_blank"></form>',
+      options: [{forms: true, links: false}],
+      errors: defaultErrors
     }
   ]
 });

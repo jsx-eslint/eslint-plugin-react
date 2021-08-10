@@ -8,6 +8,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Added
 * [`jsx-no-useless-fragments`]: add option to allow single expressions in fragments ([#3006][] @mattdarveniza)
 * add [`prefer-exact-props`] rule ([#1547][] @jomasti)
+* [`jsx-no-target-blank`]: add `forms` option ([#1617][] @jaaberg)
 
 ### Fixed
 * component detection: use `estraverse` to improve component detection ([#2992][] @Wesitos)
@@ -32,6 +33,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#2998]: https://github.com/yannickcr/eslint-plugin-react/pull/2998
 [#2994]: https://github.com/yannickcr/eslint-plugin-react/pull/2994
 [#2992]: https://github.com/yannickcr/eslint-plugin-react/pull/2992
+[#1617]: https://github.com/yannickcr/eslint-plugin-react/pull/1617
 [#1547]: https://github.com/yannickcr/eslint-plugin-react/pull/1547
 
 ## [7.24.0] - 2021.05.27

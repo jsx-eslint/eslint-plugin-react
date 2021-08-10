@@ -5,19 +5,28 @@ This rules requires that you accompany `target='_blank'` attributes with `rel='n
 
 ## Rule Details
 
-This rule aims to prevent user generated links from creating security vulnerabilities by requiring `rel='noreferrer'` for external links, and optionally any dynamically generated links.
+This rule aims to prevent user generated link hrefs and form actions from creating security vulnerabilities by requiring `rel='noreferrer'` for external link hrefs and form actions, and optionally any dynamically generated link hrefs and form actions.
 
 ## Rule Options
+
 ```json
 ...
-"react/jsx-no-target-blank": [<enabled>, { "allowReferrer": <allow-referrer>, "enforceDynamicLinks": <enforce> }]
+"react/jsx-no-target-blank": [<enabled>, {
+  "allowReferrer": <allow-referrer>,
+  "enforceDynamicLinks": <enforce>,
+  "links": <boolean>,
+  "forms": <boolean>,
+}]
 ...
 ```
 
-* allow-referrer: optional boolean. If `true` does not require `noreferrer`. Defaults to `false`.
-* enabled: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
-* enforceDynamicLinks: optional string, 'always' or 'never'
-* warnOnSpreadAttributes: optional boolean. Defaults to `false`.
+* `allowReferrer`: optional boolean. If `true` does not require `noreferrer`. Defaults to `false`.
+* `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
+* `enforceDynamicLinks`: optional string, 'always' or 'never'
+* `warnOnSpreadAttributes`: optional boolean. Defaults to `false`.
+* `enforceDynamicLinks` - enforce: optional string, 'always' or 'never'
+* `links` - Prevent usage of unsafe `target='_blank'` inside links, defaults to `true`
+* `forms` - Prevent usage of unsafe `target='_blank'` inside forms, defaults to `false`
 
 ### `enforceDynamicLinks`
 
@@ -74,6 +83,20 @@ Defaults to false. If false, this rule will ignore all spread attributes. If tru
 <a {...unsafeProps} href="/some-page"></a>
 ```
 
+### `links` / `forms`
+
+When option `forms` is set to `true`, the following is considered an error:
+
+```jsx
+var Hello = <form target="_blank" action="http://example.com/"></form>;
+```
+
+When option `links` is set to `true`, the following is considered an error:
+
+```jsx
+var Hello = <a target='_blank' href="http://example.com/"></form>
+```
+
 ### Custom link components
 
 This rule supports the ability to use custom components for links, such as `<Link />` which is popular in libraries like `react-router`, `next.js` and `gatsby`. To enable this, define your custom link components in the global [shared settings](https://github.com/yannickcr/eslint-plugin-react/blob/master/README.md#configuration) under the `linkComponents` configuration area. Once configured, this rule will check those components as if they were `<a />` elements.
@@ -94,9 +117,14 @@ var Hello = <Link target="_blank" to="/absolute/path/in/the/host"></Link>
 var Hello = <Link />
 ```
 
+### Custom form components
+
+This rule supports the ability to use custom components for forms. To enable this, define your custom form components in the global [shared settings](https://github.com/yannickcr/eslint-plugin-react/blob/master/README.md#configuration) under the `formComponents` configuration area. Once configured, this rule will check those components as if they were `<form />` elements.
+
 ## When To Override It
+
 For links to a trusted host (e.g. internal links to your own site, or links to a another host you control, where you can be certain this security vulnerability does not exist), you may want to keep the HTTP Referer header for analytics purposes.
 
 ## When Not To Use It
 
-If you do not have any external links, you can disable this rule.
+If you do not have any external links or forms, you can disable this rule.
