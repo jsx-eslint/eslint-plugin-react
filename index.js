@@ -42,6 +42,7 @@ const allRules = {
   'jsx-no-useless-fragment': require('./lib/rules/jsx-no-useless-fragment'),
   'jsx-one-expression-per-line': require('./lib/rules/jsx-one-expression-per-line'),
   'jsx-no-undef': require('./lib/rules/jsx-no-undef'),
+  'jsx-no-update-forcing-props': require('./lib/rules/jsx-no-update-forcing-props'),
   'jsx-curly-brace-presence': require('./lib/rules/jsx-curly-brace-presence'),
   'jsx-pascal-case': require('./lib/rules/jsx-pascal-case'),
   'jsx-fragments': require('./lib/rules/jsx-fragments'),
