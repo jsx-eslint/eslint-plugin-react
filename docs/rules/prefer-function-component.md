@@ -1,4 +1,4 @@
-# Forbid class Components (react/prefer-function-component)
+# Prefer function components over class components (react/prefer-function-component)
 
 This rule prevents the use of class components.
 
