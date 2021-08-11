@@ -46,7 +46,7 @@
     "@types/eslint": "=7.2.10",
     "@types/estree": "^0.0.47",
     "@types/node": "^14.14.37",
-    "@typescript-eslint/parser": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0 || ^3.10.1",
     "aud": "^1.1.5",
     "babel-eslint": "^8.2.6",
     "eslint": "^3 || ^4 || ^5 || ^6 || ^7",

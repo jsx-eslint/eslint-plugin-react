@@ -62,7 +62,7 @@ jobs:
         name: 'nvm install ${{ matrix.node-version }} && npm install'
         with:
           node-version: ${{ matrix.node-version }}
-          after_install: npm install --no-save "eslint@${{ matrix.eslint }}"
+          after_install: npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.node-version >= 10 && '3' || '2' }}"
           skip-ls-check: true
         env:
           NPM_CONFIG_LEGACY_PEER_DEPS: true
