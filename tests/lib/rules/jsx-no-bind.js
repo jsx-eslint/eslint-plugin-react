@@ -36,6 +36,17 @@ ruleTester.run('jsx-no-bind', rule, {
       code: '<div onClick={this._handleClick}></div>'
     },
     {
+      code: '<div onClick={this._handleClick}></div>',
+      options: [{}]
+    },
+    {
+      code: '<Foo onClick={this._handleClick} />'
+    },
+    {
+      code: '<Foo onClick={this._handleClick} />',
+      options: [{}]
+    },
+    {
       code: '<div meaningOfLife={42}></div>'
     },
     {
