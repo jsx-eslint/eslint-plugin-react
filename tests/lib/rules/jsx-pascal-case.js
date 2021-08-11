@@ -93,6 +93,12 @@ ruleTester.run('jsx-pascal-case', rule, {
   }, {
     code: '<Styled.h1 />',
     options: [{allowNamespace: true}]
+  }, {
+    code: '<_TEST_COMPONENT />',
+    options: [{allowAllCaps: true, allowLeadingUnderscore: true}]
+  }, {
+    code: '<_TestComponent />',
+    options: [{allowLeadingUnderscore: true}]
   }],
 
   invalid: [{
@@ -128,8 +134,29 @@ ruleTester.run('jsx-pascal-case', rule, {
       data: {name: 'TEST_COMPONENT_'}
     }]
   }, {
+    code: '<TEST-COMPONENT />',
+    options: [{allowAllCaps: true}],
+    errors: [{
+      messageId: 'usePascalOrSnakeCase',
+      data: {name: 'TEST-COMPONENT'}
+    }]
+  }, {
     code: '<__ />',
     options: [{allowAllCaps: true}],
+    errors: [{
+      messageId: 'usePascalOrSnakeCase',
+      data: {name: '__'}
+    }]
+  }, {
+    code: '<_div />',
+    options: [{allowLeadingUnderscore: true}],
+    errors: [{
+      messageId: 'usePascalCase',
+      data: {name: '_div'}
+    }]
+  }, {
+    code: '<__ />',
+    options: [{allowAllCaps: true, allowLeadingUnderscore: true}],
     errors: [{
       messageId: 'usePascalOrSnakeCase',
       data: {name: '__'}

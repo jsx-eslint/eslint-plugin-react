@@ -9,6 +9,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-no-useless-fragments`]: add option to allow single expressions in fragments ([#3006][] @mattdarveniza)
 * add [`prefer-exact-props`] rule ([#1547][] @jomasti)
 * [`jsx-no-target-blank`]: add `forms` option ([#1617][] @jaaberg)
+* [`jsx-pascal-case`]: add `allowLeadingUnderscore` option ([#3039][] @pangaeatech)
 
 ### Fixed
 * component detection: use `estraverse` to improve component detection ([#2992][] @Wesitos)
@@ -25,6 +26,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Docs] [`require-default-props`]: fix small typo ([#2994][] @evsasse)
 * [Tests] add weekly scheduled smoke tests ([#2963][] @AriPerkkio)
 
+[#3039]: https://github.com/yannickcr/eslint-plugin-react/pull/3039
 [#3038]: https://github.com/yannickcr/eslint-plugin-react/pull/3038
 [#3036]: https://github.com/yannickcr/eslint-plugin-react/issues/3036
 [#3026]: https://github.com/yannickcr/eslint-plugin-react/pull/3026
