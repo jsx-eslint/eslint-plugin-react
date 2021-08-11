@@ -23,6 +23,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Refactor] `utils/Components`: correct spelling and delete unused code ([#3026][] @ohhoney1)
 * [Docs] [`jsx-uses-react`], [`react-in-jsx-scope`]: document [`react/jsx-runtime`] config ([#3018][] @pkuczynski @ljharb)
 * [Docs] [`require-default-props`]: fix small typo ([#2994][] @evsasse)
+* [Tests] add weekly scheduled smoke tests ([#2963][] @AriPerkkio)
 
 [#3038]: https://github.com/yannickcr/eslint-plugin-react/pull/3038
 [#3036]: https://github.com/yannickcr/eslint-plugin-react/issues/3036
@@ -35,6 +36,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#2998]: https://github.com/yannickcr/eslint-plugin-react/pull/2998
 [#2994]: https://github.com/yannickcr/eslint-plugin-react/pull/2994
 [#2992]: https://github.com/yannickcr/eslint-plugin-react/pull/2992
+[#2963]: https://github.com/yannickcr/eslint-plugin-react/pull/2963
 [#1617]: https://github.com/yannickcr/eslint-plugin-react/pull/1617
 [#1547]: https://github.com/yannickcr/eslint-plugin-react/pull/1547
 
