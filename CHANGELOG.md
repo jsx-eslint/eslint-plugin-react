@@ -19,6 +19,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`destructuring-assignment`]: get the contextName correctly ([#3025][] @ohhoney1)
 * [`no-typos`]: prevent crash on styled components and forwardRefs ([#3036][] @ljharb)
 * [`destructuring-assignment`], component detection: handle default exports edge case ([#3038][] @vedadeepta)
+* [`no-typos`]: fix crash on private methods ([#3043][] @ljharb)
 
 ### Changed
 * [Docs] [`jsx-no-bind`]: updates discussion of refs ([#2998][] @dimitropoulos)
@@ -27,6 +28,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Docs] [`require-default-props`]: fix small typo ([#2994][] @evsasse)
 * [Tests] add weekly scheduled smoke tests ([#2963][] @AriPerkkio)
 
+[#3043]: https://github.com/yannickcr/eslint-plugin-react/issues/3043
 [#3039]: https://github.com/yannickcr/eslint-plugin-react/pull/3039
 [#3038]: https://github.com/yannickcr/eslint-plugin-react/pull/3038
 [#3036]: https://github.com/yannickcr/eslint-plugin-react/issues/3036

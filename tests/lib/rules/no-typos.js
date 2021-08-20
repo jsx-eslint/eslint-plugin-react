@@ -8,7 +8,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
+const babelEslintVersion = require('babel-eslint/package.json').version;
+const semver = require('semver');
 const RuleTester = require('eslint').RuleTester;
+
 const rule = require('../../../lib/rules/no-typos');
 
 const parsers = require('../../helpers/parsers');
@@ -656,7 +659,32 @@ ruleTester.run('no-typos', rule, {
     MyComponent.defaultProps = { value: "" };
     `,
     parserOptions
-  }),
+  }, semver.satisfies(babelEslintVersion, '>= 9') ? {
+    code: `
+      class Editor extends React.Component {
+          #somethingPrivate() {
+            // ...
+          }
+      
+          render() {
+          const { value = '' } = this.props;
+      
+          return (
+            <textarea>
+              {value}
+            </textarea>
+          );
+        }
+      }
+    `,
+    parser: require.resolve('babel-eslint'),
+    parserOptions: {
+      babelOptions: {
+        classPrivateMethods: true
+      },
+      shippedProposals: true
+    }
+  } : []),
 
   invalid: [].concat({
     code: `
