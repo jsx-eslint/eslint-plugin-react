@@ -9,7 +9,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
+const babelEslintVersion = require('babel-eslint/package.json').version;
+const semver = require('semver');
 const RuleTester = require('eslint').RuleTester;
+
 const rule = require('../../../lib/rules/jsx-sort-default-props');
 
 const parsers = require('../../helpers/parsers');
@@ -28,7 +31,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-sort-default-props', rule, {
-  valid: [{
+  valid: [].concat({
     code: [
       'var First = createReactClass({',
       '  render: function() {',
@@ -194,7 +197,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
     options: [{
       ignoreCase: true
     }]
-  }, {
+  }, semver.satisfies(babelEslintVersion, '< 9') ? {
     // Invalid code, should not be validated
     code: [
       'class Component extends React.Component {',
@@ -214,7 +217,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT
-  }, {
+  } : [], {
     code: [
       'var Hello = createReactClass({',
       '  render: function() {',
@@ -346,7 +349,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
       'First.propTypes = propTypes;',
       'First.defaultProps = defaultProps;'
     ].join('\n')
-  }],
+  }),
 
   invalid: [{
     code: [

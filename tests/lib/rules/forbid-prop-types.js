@@ -8,7 +8,10 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
+const babelEslintVersion = require('babel-eslint/package.json').version;
+const semver = require('semver');
 const RuleTester = require('eslint').RuleTester;
+
 const rule = require('../../../lib/rules/forbid-prop-types');
 
 const parsers = require('../../helpers/parsers');
@@ -28,7 +31,7 @@ const parserOptions = {
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('forbid-prop-types', rule, {
 
-  valid: [{
+  valid: [].concat({
     code: [
       'var First = createReactClass({',
       '  render: function() {',
@@ -137,7 +140,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '};'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT
-  }, {
+  }, semver.satisfies(babelEslintVersion, '< 9') ? {
     // Invalid code, should not be validated
     code: [
       'class Component extends React.Component {',
@@ -152,7 +155,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '}'
     ].join('\n'),
     parser: parsers.BABEL_ESLINT
-  }, {
+  } : [], {
     code: [
       'var Hello = createReactClass({',
       '  render: function() {',
@@ -306,7 +309,7 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
     options: [{checkContextTypes: true}]
-  }, {
+  }, semver.satisfies(babelEslintVersion, '< 9') ? {
     // Invalid code, should not be validated
     code: [
       'class Component extends React.Component {',
@@ -322,7 +325,7 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
     options: [{checkContextTypes: true}]
-  }, {
+  } : [], {
     code: [
       'var Hello = createReactClass({',
       '  render: function() {',
@@ -480,7 +483,7 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
     options: [{checkChildContextTypes: true}]
-  }, {
+  }, semver.satisfies(babelEslintVersion, '< 9') ? {
     // Invalid code, should not be validated
     code: [
       'class Component extends React.Component {',
@@ -496,7 +499,7 @@ ruleTester.run('forbid-prop-types', rule, {
     ].join('\n'),
     parser: parsers.BABEL_ESLINT,
     options: [{checkChildContextTypes: true}]
-  }, {
+  } : [], {
     code: [
       'var Hello = createReactClass({',
       '  render: function() {',
@@ -577,7 +580,7 @@ ruleTester.run('forbid-prop-types', rule, {
       '  bar: PropTypes.shape(Foo),',
       '};'
     ].join('\n')
-  }],
+  }),
 
   invalid: [{
     code: [

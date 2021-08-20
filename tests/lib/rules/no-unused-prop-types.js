@@ -9,7 +9,10 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
+const babelEslintVersion = require('babel-eslint/package.json').version;
+const semver = require('semver');
 const RuleTester = require('eslint').RuleTester;
+
 const rule = require('../../../lib/rules/no-unused-prop-types');
 
 const parsers = require('../../helpers/parsers');
@@ -4452,7 +4455,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       code: [
         'class Hello extends React.Component {',
         '  props: {',
-        '    unused: PropTypes.string',
+        '    unused: string',
         '  };',
         '  render () {',
         '    return <div>Hello {this.props.name}</div>;',
@@ -4463,7 +4466,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
       ]
-    }, {
+    }, semver.satisfies(babelEslintVersion, '< 9') ? [{
       code: [
         'class Hello extends React.Component {',
         '  props: {',
@@ -4478,7 +4481,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'}
       ]
-    }, {
+    }] : [], {
       code: [
         'type Props = {unused: Object;};',
         'class Hello extends React.Component {',
