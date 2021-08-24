@@ -243,7 +243,24 @@ ruleTester.run('destructuring-assignment', rule, {
       return null;
     };
   `
+  }, {
+    code: `
+      class C extends React.Component {
+        componentDidMount() {
+          const { forwardRef } = this.props;
 
+          this.ref.current.focus();
+
+          if (typeof forwardRef === 'function') {
+            forwardRef(this.ref);
+          }
+        }
+        render() {
+          return <div />;
+        }
+      }
+    `,
+    parser: parsers.BABEL_ESLINT
   }],
 
   invalid: [{
