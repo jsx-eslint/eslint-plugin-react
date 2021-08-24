@@ -301,6 +301,19 @@ ruleTester.run('jsx-no-bind', rule, {
       code: '<div foo={::this.onChange} />',
       options: [{ignoreDOMComponents: true}],
       parser: parsers.BABEL_ESLINT
+    },
+
+    // Local function declaration
+    {
+      code: [
+        'function click() { return true; }',
+        'class Hello23 extends React.Component {',
+        '  renderDiv() {',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      errors: []
     }
   ],
 
@@ -804,6 +817,21 @@ ruleTester.run('jsx-no-bind', rule, {
       ].join('\n'),
       errors: [{messageId: 'bindExpression'}],
       parser: parsers.BABEL_ESLINT
+    },
+
+    // Local function declaration
+    {
+      code: [
+        'class Hello23 extends React.Component {',
+        '  renderDiv() {',
+        '    function click() { return true; }',
+        '    return <div onClick={click}>Hello</div>;',
+        '  }',
+        '};'
+      ].join('\n'),
+      errors: [
+        {messageId: 'func'}
+      ]
     },
 
     // ignore DOM components

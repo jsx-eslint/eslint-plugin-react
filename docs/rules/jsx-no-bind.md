@@ -14,6 +14,10 @@ Examples of **incorrect** code for this rule:
 ```jsx
 <Foo onClick={() => console.log('Hello!')}></Foo>
 ```
+```jsx
+function onClick() { console.log('Hello!'); }
+<Foo onClick={onClick} />
+```
 
 Examples of **correct** code for this rule:
 ```jsx
@@ -74,6 +78,11 @@ Examples of **correct** code for this rule, when `allowFunctions` is `true`:
 
 ```jsx
 <Foo onClick={function () { alert("1337") }} />
+```
+
+```jsx
+function onClick() { alert("1337"); }
+<Foo onClick={onClick} />
 ```
 
 ### `allowBind`
