@@ -168,7 +168,8 @@ module.exports = {
       parserOptions: {
         ecmaFeatures: {
           jsx: true
-        }
+        },
+        jsxPragma: null // for @typescript/eslint-parser
       },
       rules: {
         'react/react-in-jsx-scope': 0,

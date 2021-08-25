@@ -11,6 +11,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-no-target-blank`]: add `forms` option ([#1617][] @jaaberg)
 * [`jsx-pascal-case`]: add `allowLeadingUnderscore` option ([#3039][] @pangaeatech)
 * [`no-children-prop`]: Add `allowFunctions` option ([#1903][] @alexzherdev)
+* [`jsx-runtime`]: set `parserOptions.jsxPragma` for `@typescript-eslint/parser` ([e382d3d3][] @ljharb)
 
 ### Fixed
 * component detection: use `estraverse` to improve component detection ([#2992][] @Wesitos)
@@ -32,6 +33,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Tests] add weekly scheduled smoke tests ([#2963][] @AriPerkkio)
 * [Docs] improve instructions for `jsx-runtime` config ([#3052][] @ljharb)
 
+[e382d3d3]: https://github.com/yannickcr/eslint-plugin-react/commit/e382d3d3283fcdaf0ae34662554bfee157a2fc3b
 [#3052]: https://github.com/yannickcr/eslint-plugin-react/issues/3052
 [#3051]: https://github.com/yannickcr/eslint-plugin-react/pull/3051
 [#3049]: https://github.com/yannickcr/eslint-plugin-react/pull/3049
