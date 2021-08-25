@@ -21,6 +21,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`destructuring-assignment`], component detection: handle default exports edge case ([#3038][] @vedadeepta)
 * [`no-typos`]: fix crash on private methods ([#3043][] @ljharb)
 * [`jsx-no-bind`]: handle local function declarations ([#3048][] @p7g)
+* [`prop-types`], `propTypes`: handle React.* TypeScript types ([#3049][] @vedadeepta)
 
 ### Changed
 * [Docs] [`jsx-no-bind`]: updates discussion of refs ([#2998][] @dimitropoulos)
@@ -29,6 +30,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Docs] [`require-default-props`]: fix small typo ([#2994][] @evsasse)
 * [Tests] add weekly scheduled smoke tests ([#2963][] @AriPerkkio)
 
+[#3049]: https://github.com/yannickcr/eslint-plugin-react/pull/3049
 [#3048]: https://github.com/yannickcr/eslint-plugin-react/pull/3048
 [#3043]: https://github.com/yannickcr/eslint-plugin-react/issues/3043
 [#3039]: https://github.com/yannickcr/eslint-plugin-react/pull/3039
