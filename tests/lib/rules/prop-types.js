@@ -3150,6 +3150,8 @@ ruleTester.run('prop-types', rule, {
       },
       {
         code: `
+          import React from 'react';
+
           interface PersonProps {
               username: string;
           }
@@ -3161,6 +3163,8 @@ ruleTester.run('prop-types', rule, {
       },
       {
         code: `
+          import React from 'react';
+
           const Person: React.FunctionComponent<PersonProps> = (props): React.ReactElement => (
               <div>{props.username}</div>
           );
@@ -3169,6 +3173,8 @@ ruleTester.run('prop-types', rule, {
       },
       {
         code: `
+          import React from 'react';
+
           interface PersonProps {
               username: string;
           }
@@ -3180,6 +3186,7 @@ ruleTester.run('prop-types', rule, {
       },
       {
         code: `
+          import React from 'react';
           const Person: React.FunctionComponent<{ username: string }> = (props): React.ReactElement => (
               <div>{props.username}</div>
           );
@@ -3188,12 +3195,89 @@ ruleTester.run('prop-types', rule, {
       },
       {
         code: `
+          import React from 'react';
           type PersonProps = {
               username: string;
           }
           const Person: React.FunctionComponent<PersonProps> = (props): React.ReactElement => (
               <div>{props.username}</div>
           );
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          import { FunctionComponent } from 'react';
+
+          type PersonProps = {
+              username: string;
+          }
+          const Person: FunctionComponent<PersonProps> = (props): React.ReactElement => (
+              <div>{props.username}</div>
+          );
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          import { FC } from 'react';
+          type PersonProps = {
+              username: string;
+          }
+          const Person: FC<PersonProps> = (props): React.ReactElement => (
+              <div>{props.username}</div>
+          );
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          import type { FC } from 'react';
+          type PersonProps = {
+              username: string;
+          }
+          const Person: FC<PersonProps> = (props): React.ReactElement => (
+              <div>{props.username}</div>
+          );
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          import { FC as X } from 'react';
+          interface PersonProps {
+              username: string;
+          }
+          const Person: X<PersonProps> = (props): React.ReactElement => (
+              <div>{props.username}</div>
+          );
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          import * as X from 'react';
+          interface PersonProps {
+              username: string;
+          }
+          const Person: X.FC<PersonProps> = (props): React.ReactElement => (
+              <div>{props.username}</div>
+          );
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        // issue: https://github.com/yannickcr/eslint-plugin-react/issues/2786
+        code: `
+          import React from 'react';
+
+          interface Props {
+            item: any;
+          }
+
+          const SomeComponent: React.FC<Props> = ({ item }: Props) => {
+            return item ? <></> : <></>;
+          };
         `,
         parser: parsers['@TYPESCRIPT_ESLINT']
       }
@@ -6703,6 +6787,58 @@ ruleTester.run('prop-types', rule, {
           {
             messageId: 'missingPropType',
             data: {name: 'test'}
+          }
+        ],
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          import React from 'react';
+          interface PersonProps {
+              username: string;
+          }
+          const Person: FunctionComponent<PersonProps> = (props): React.ReactElement => (
+              <div>{props.test}</div>
+          );
+        `,
+        errors: [
+          {
+            messageId: 'missingPropType',
+            data: {name: 'test'}
+          }
+        ],
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          interface PersonProps {
+              username: string;
+          }
+          const Person: X.FC<PersonProps> = (props): React.ReactElement => (
+              <div>{props.username}</div>
+          );
+        `,
+        errors: [
+          {
+            messageId: 'missingPropType',
+            data: {name: 'username'}
+          }
+        ],
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          interface PersonProps {
+              username: string;
+          }
+          const Person: FC<PersonProps> = (props): React.ReactElement => (
+              <div>{props.username}</div>
+          );
+        `,
+        errors: [
+          {
+            messageId: 'missingPropType',
+            data: {name: 'username'}
           }
         ],
         parser: parsers['@TYPESCRIPT_ESLINT']
