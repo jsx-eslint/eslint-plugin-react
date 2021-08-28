@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.25.0] - 2021.08.27
+
 ### Added
 * [`jsx-no-useless-fragments`]: add option to allow single expressions in fragments ([#3006][] @mattdarveniza)
 * add [`prefer-exact-props`] rule ([#1547][] @jomasti)
@@ -34,6 +36,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Tests] add weekly scheduled smoke tests ([#2963][] @AriPerkkio)
 * [Docs] improve instructions for `jsx-runtime` config ([#3052][] @ljharb)
 
+[7.25.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.24.0...v7.25.0
 [bb64df65]: https://github.com/yannickcr/eslint-plugin-react/commit/bb64df6505b3e9a01da5b61626ab9f544caea438
 [#3053]: https://github.com/yannickcr/eslint-plugin-react/issues/3053
 [#3052]: https://github.com/yannickcr/eslint-plugin-react/issues/3052
