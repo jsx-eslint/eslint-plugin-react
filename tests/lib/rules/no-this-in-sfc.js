@@ -23,7 +23,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-this-in-sfc', rule, {
-  valid: [{
+  valid: [].concat({
     code: `
     function Foo(props) {
       const { foo } = props;
@@ -141,7 +141,21 @@ ruleTester.run('no-this-in-sfc', rule, {
         },
       });
     `
-  }],
+  }, {
+    code: `
+      obj.notAComponent = function () {
+        return this.a || null;
+      };`
+  }, parsers.TS([{
+    code: `
+      $.fn.getValueAsStringWeak = function (): string | null {
+        const val = this.length === 1 ? this.val() : null;
+      
+        return typeof val === 'string' ? val : null;
+      };
+    `,
+    parser: parsers['@TYPESCRIPT_ESLINT']
+  }])),
   invalid: [{
     code: `
     function Foo(props) {

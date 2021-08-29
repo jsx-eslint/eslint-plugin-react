@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Fixed
+* [`no-this-in-sfc`], component detection: Improve stateless component detection ([#3056][] @Wesitos)
+
+[#3056]: https://github.com/yannickcr/eslint-plugin-react/pull/3056
+
 ## [7.25.0] - 2021.08.27
 
 ### Added
