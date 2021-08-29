@@ -3280,6 +3280,18 @@ ruleTester.run('prop-types', rule, {
           };
         `,
         parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          export const EuiSuperSelectControl: <T extends string>(
+            props: EuiSuperSelectControlProps<T>
+          ) => ReturnType<FunctionComponent<EuiSuperSelectControlProps<T>>> = ({
+            ...rest
+          }) => {
+            return null;
+          }
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
       }
     ]),
     {

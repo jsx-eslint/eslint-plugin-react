@@ -24,6 +24,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-no-bind`]: handle local function declarations ([#3048][] @p7g)
 * [`prop-types`], `propTypes`: handle React.* TypeScript types ([#3049][] @vedadeepta)
 * [`prop-types`], `propTypes`: add handling for `FC<Props>`, improve tests ([#3051][] @vedadeepta)
+* [`prop-types`], `propTypes`: prevent crash introduced in [#3051][] ([#3053][] @ljharb)
 
 ### Changed
 * [Docs] [`jsx-no-bind`]: updates discussion of refs ([#2998][] @dimitropoulos)
@@ -34,6 +35,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Docs] improve instructions for `jsx-runtime` config ([#3052][] @ljharb)
 
 [bb64df65]: https://github.com/yannickcr/eslint-plugin-react/commit/bb64df6505b3e9a01da5b61626ab9f544caea438
+[#3053]: https://github.com/yannickcr/eslint-plugin-react/issues/3053
 [#3052]: https://github.com/yannickcr/eslint-plugin-react/issues/3052
 [#3051]: https://github.com/yannickcr/eslint-plugin-react/pull/3051
 [#3049]: https://github.com/yannickcr/eslint-plugin-react/pull/3049
