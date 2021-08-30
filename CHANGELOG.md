@@ -7,7 +7,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Fixed
 * [`jsx-no-useless-fragments`]: Handle insignificant whitespace correctly when `allowExpressions` is `true` ([#3061][] @benj-dobs)
+* [`prop-types`], `propTypes`: handle implicit `children` prop in react's generic types ([#3064][] @vedadeepta)
 
+[#3064]: https://github.com/yannickcr/eslint-plugin-react/pull/3064
 [#3061]: https://github.com/yannickcr/eslint-plugin-react/pull/3061
 
 ## [7.25.1] - 2021.08.29

@@ -3292,6 +3292,17 @@ ruleTester.run('prop-types', rule, {
           }
         `,
         parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          import React from 'react';
+
+          const MyComponent = (props: React.PropsWithChildren<{ username: string }>): React.ReactElement => {
+            return <>{props.children}{props.username}</>;
+          };
+
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
       }
     ]),
     {
