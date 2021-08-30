@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Fixed
+* [`jsx-no-useless-fragments`]: Handle insignificant whitespace correctly when `allowExpressions` is `true` ([#3061][] @benj-dobs)
+
+[#3061]: https://github.com/yannickcr/eslint-plugin-react/pull/3061
+
 ## [7.25.1] - 2021.08.29
 
 ### Fixed

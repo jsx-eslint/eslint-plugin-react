@@ -72,6 +72,15 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       code: '<>{moo}</>',
       parser: parsers.BABEL_ESLINT,
       options: [{allowExpressions: true}]
+    },
+    {
+      code: `
+        <>
+          {moo}
+        </>
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{allowExpressions: true}]
     }
   ],
   invalid: [

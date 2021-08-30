@@ -64,4 +64,8 @@ Examples of **correct** code for the rule, when `"allowExpressions"` is `true`:
 
 ```jsx
 <>{foo}</>
+
+<>
+  {foo}
+</>
 ```
