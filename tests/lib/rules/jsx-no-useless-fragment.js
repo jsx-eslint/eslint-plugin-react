@@ -8,11 +8,9 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const eslint = require('eslint');
+const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-no-useless-fragment');
 const parsers = require('../../helpers/parsers');
-
-const RuleTester = eslint.RuleTester;
 
 const parserOptions = {
   ecmaVersion: 2018,

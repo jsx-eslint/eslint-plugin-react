@@ -104,7 +104,14 @@ const parsers = {
       const tsNew = !skipTS && !features.has('no-ts-new');
 
       return [].concat(
-        skipBase ? [] : addComment(test, 'default'),
+        skipBase ? [] : addComment(
+          Object.assign({}, test, features.has('class fields') && {
+            parserOptions: Object.assign({}, test.parserOptions, {
+              ecmaVersion: Math.max((test.parserOptions && test.parserOptions.ecmaVersion) || 0, 2022),
+            }),
+          }),
+          'default'
+        ),
         skipOldBabel ? [] : addComment(Object.assign({}, test, {
           parser: parsers.BABEL_ESLINT,
           parserOptions: parsers.babelParserOptions(test, features),

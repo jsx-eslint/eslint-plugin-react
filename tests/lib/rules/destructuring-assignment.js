@@ -646,7 +646,6 @@ ruleTester.run('destructuring-assignment', rule, {
           );
         };
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'useDestructAssignment',
@@ -675,7 +674,6 @@ ruleTester.run('destructuring-assignment', rule, {
             },
         };
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'useDestructAssignment',
@@ -704,7 +702,6 @@ ruleTester.run('destructuring-assignment', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'useDestructAssignment',

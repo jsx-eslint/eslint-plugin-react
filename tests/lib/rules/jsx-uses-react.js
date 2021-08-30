@@ -10,7 +10,7 @@
 // -----------------------------------------------------------------------------
 
 const eslint = require('eslint');
-const rule = require('eslint/lib/rules/no-unused-vars');
+const rule = require('../../helpers/getESLintCoreRule')('no-unused-vars');
 
 const RuleTester = eslint.RuleTester;
 
@@ -35,7 +35,7 @@ const settings = {
 // -----------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({ parserOptions });
-const linter = ruleTester.linter || eslint.linter;
+const linter = ruleTester.linter || eslint.linter || eslint.Linter;
 linter.defineRule('jsx-uses-react', require('../../../lib/rules/jsx-uses-react'));
 
 ruleTester.run('no-unused-vars', rule, {

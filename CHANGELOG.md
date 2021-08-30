@@ -6,6 +6,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ## Unreleased
 
 ### Added
+* support eslint 8.x ([#3059][] @MichaelDeBoey @ljharb)
 * [`no-unused-class-component-methods`]: Handle unused class component methods ([#2166][] @jakeleventhal @pawelnvk)
 * add [`no-arrow-function-lifecycle`] ([#1980][] @ngtan)
 * add support for `@typescript-eslint/parser` v5 (@ljharb)
@@ -37,6 +38,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 [#3110]: https://github.com/yannickcr/eslint-plugin-react/pull/3110
 [#3102]: https://github.com/yannickcr/eslint-plugin-react/issue/3102
 [#3092]: https://github.com/yannickcr/eslint-plugin-react/pull/3092
+[#3059]: https://github.com/yannickcr/eslint-plugin-react/pull/3059
 [#2863]: https://github.com/yannickcr/eslint-plugin-react/pull/2863
 [#2166]: https://github.com/yannickcr/eslint-plugin-react/pull/2166
 [#1980]: https://github.com/yannickcr/eslint-plugin-react/pull/1980

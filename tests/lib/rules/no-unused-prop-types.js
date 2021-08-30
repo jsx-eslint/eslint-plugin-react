@@ -234,9 +234,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       features: ['class fields', 'optional chaining'],
-      parserOptions: {
-        ecmaVersion: 2020,
-      },
     },
     {
       code: `
@@ -775,9 +772,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       features: ['class fields', 'optional chaining'],
-      parserOptions: {
-        ecmaVersion: 2020,
-      },
     },
     {
       code: `
