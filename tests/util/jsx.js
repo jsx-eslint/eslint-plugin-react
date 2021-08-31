@@ -27,9 +27,7 @@ describe('jsxUtil', () => {
     const assertValid = (codeStr) => assert(
       isReturningJSX(() => false, parseCode(codeStr), mockContext)
     );
-    const assertInValid = (codeStr) => assert(
-      !!isReturningJSX(() => false, parseCode(codeStr), mockContext)
-    );
+
     it('Works when returning JSX', () => {
       assertValid(`
         function Test() {
@@ -71,11 +69,27 @@ describe('jsxUtil', () => {
     });
 
     it('Can ignore null', () => {
-      assertInValid(`
+      assertValid(`
         function Test() {
           return null;
         }
       `);
+    });
+
+    it('Ignores JSX arguments to function calls used as return value of arrow functions', () => {
+      let astNode = parseCode(`const obj = {
+        prop: () => test(<a>something</a>)
+      }`);
+      let arrowFunctionExpression = astNode.declarations[0].init.properties[0].value;
+
+      assert(!isReturningJSX(() => false, arrowFunctionExpression, mockContext));
+
+      astNode = parseCode(`const obj = {
+        prop: () => { return test(<a>something</a>); }
+      }`);
+      arrowFunctionExpression = astNode.declarations[0].init.properties[0].value;
+
+      assert(!isReturningJSX(() => false, arrowFunctionExpression, mockContext));
     });
   });
 });
