@@ -8,8 +8,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Fixed
 * [`jsx-no-useless-fragments`]: Handle insignificant whitespace correctly when `allowExpressions` is `true` ([#3061][] @benj-dobs)
 * [`prop-types`], `propTypes`: handle implicit `children` prop in react's generic types ([#3064][] @vedadeepta)
-* [`display-name`]: fix arrow function returning result of function call with JSX arguments being interpreted as component ([#3065][], @danielfinke)
+* [`display-name`]: fix arrow function returning result of function call with JSX arguments being interpreted as component ([#3065][] @danielfinke)
+* [`jsx-no-target-blank`]: avoid crash on attr-only href ([#3066][] @ljharb @gaz77a)
 
+[#3066]: https://github.com/yannickcr/eslint-plugin-react/issue/3066
 [#3065]: https://github.com/yannickcr/eslint-plugin-react/pull/3065
 [#3064]: https://github.com/yannickcr/eslint-plugin-react/pull/3064
 [#3061]: https://github.com/yannickcr/eslint-plugin-react/pull/3061

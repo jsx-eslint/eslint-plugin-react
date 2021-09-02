@@ -135,6 +135,9 @@ ruleTester.run('jsx-no-target-blank', rule, {
     {
       code: '<form action="http://example.com" target="_blank" rel="noopener noreferrer"></form>',
       options: [{forms: true, links: false}]
+    },
+    {
+      code: '<a href target="_blank"/>'
     }
   ],
   invalid: [
