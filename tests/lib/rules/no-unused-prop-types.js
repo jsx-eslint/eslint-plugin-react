@@ -3908,6 +3908,22 @@ ruleTester.run('no-unused-prop-types', rule, {
         type StateProps = ReturnType<typeof mapStateToProps>
         type DispatchProps = ReturnType<typeof mapDispatchToProps>`,
         parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: [
+          'import React from "react";',
+          '',
+          'interface Props {',
+          '  name: string;',
+          '}',
+          '',
+          'const MyComponent: React.FC<Props> = ({ name }) => {',
+          '  return <div>{name}</div>;',
+          '};',
+          '',
+          'export default MyComponent;'
+        ].join('\n'),
+        parser: parsers['@TYPESCRIPT_ESLINT']
       }
     ])
   ),
