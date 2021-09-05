@@ -29,7 +29,7 @@ const parserOptions = {
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('prefer-read-only-props', rule, {
 
-  valid: [
+  valid: [].concat(
     {
       // Class component with type parameter
       code: `
@@ -162,8 +162,39 @@ ruleTester.run('prefer-read-only-props', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT
-    }
-  ],
+    },
+    parsers.TS([{
+      code: `
+        import React from "react";
+
+        interface Props {
+          name: string;
+        }
+        
+        const MyComponent: React.FC<Props> = ({ name }) => {
+          return <div>{name}</div>;
+        };
+        
+        export default MyComponent;
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT
+    }, {
+      code: `
+        import React from "react";
+
+        interface Props {
+          name: string;
+        }
+        
+        const MyComponent: React.FC<Props> = ({ name }) => {
+          return <div>{name}</div>;
+        };
+        
+        export default MyComponent;
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    }])
+  ),
 
   invalid: [
     {
