@@ -30,7 +30,7 @@ const ruleTester = new RuleTester({parserOptions});
 
 ruleTester.run('require-default-props', rule, {
 
-  valid: [
+  valid: [].concat(
     //
     // stateless components as function declarations
     {
@@ -1089,8 +1089,39 @@ ruleTester.run('require-default-props', rule, {
         };
       `,
       parser: parsers.BABEL_ESLINT
-    }
-  ],
+    },
+    parsers.TS([{
+      code: `
+        import React from "react";
+
+        interface Props {
+          name: string;
+        }
+        
+        const MyComponent: React.FC<Props> = ({ name }) => {
+          return <div>{name}</div>;
+        };
+        
+        export default MyComponent;
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT
+    }, {
+      code: `
+        import React from "react";
+
+        interface Props {
+          name: string;
+        }
+        
+        const MyComponent: React.FC<Props> = ({ name }) => {
+          return <div>{name}</div>;
+        };
+        
+        export default MyComponent;
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    }])
+  ),
 
   invalid: [
     //
