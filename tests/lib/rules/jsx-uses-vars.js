@@ -116,6 +116,18 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         };
         foo()
       `
+    }, {
+      code: `
+        /* eslint jsx-uses-vars: 1 */
+        var object;
+        React.render(<object.Tag />);
+      `
+    }, {
+      code: `
+        /* eslint jsx-uses-vars: 1 */
+        var object;
+        React.render(<object.tag />);
+      `
     }
   ],
   invalid: [
@@ -196,6 +208,13 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         line: 3
       }],
       parser: parsers.BABEL_ESLINT
+    }, {
+      code: `
+        /* eslint jsx-uses-vars: 1 */
+        var lowercase;
+        React.render(<lowercase />);
+      `,
+      errors: [{message: '\'lowercase\' is defined but never used.'}]
     }
   ]
 });
