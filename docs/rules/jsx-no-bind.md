@@ -193,7 +193,7 @@ const Button = () => {
   const [text, setText] = useState("Before click");
   const onClick = useCallback(() => {
     setText("After click");
-  }, [setText]); // Array of dependencies for which the memoization should update
+  }, [text]); // Array of dependencies for which the memoization should update
   return (
     <button type="button" onClick={onClick}>{text}</button>
   );
