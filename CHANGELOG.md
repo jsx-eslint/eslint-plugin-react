@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.25.2] - 2021.09.16
+
 ### Fixed
 * [`jsx-no-useless-fragments`]: Handle insignificant whitespace correctly when `allowExpressions` is `true` ([#3061][] @benj-dobs)
 * [`prop-types`], `propTypes`: handle implicit `children` prop in react's generic types ([#3064][] @vedadeepta)
@@ -12,6 +14,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`jsx-no-target-blank`]: avoid crash on attr-only href ([#3066][] @ljharb @gaz77a)
 * [`jsx-uses-vars`]: ignore lowercase tag names ([#3070][] @alanorozco)
 
+[7.25.2]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.25.1...v7.25.2
 [#3070]: https://github.com/yannickcr/eslint-plugin-react/pull/3070
 [#3066]: https://github.com/yannickcr/eslint-plugin-react/issue/3066
 [#3065]: https://github.com/yannickcr/eslint-plugin-react/pull/3065
