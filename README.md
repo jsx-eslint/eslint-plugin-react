@@ -156,6 +156,7 @@ Enable the rules that you would like to use.
 | ✔ | 🔧 | [react/no-unknown-property](docs/rules/no-unknown-property.md) | Prevent usage of unknown DOM property |
 |  |  | [react/no-unsafe](docs/rules/no-unsafe.md) | Prevent usage of unsafe lifecycle methods |
 |  |  | [react/no-unstable-nested-components](docs/rules/no-unstable-nested-components.md) | Prevent creating unstable components inside components |
+|  |  | [react/no-unused-class-component-methods](docs/rules/no-unused-class-component-methods.md) | Prevent declaring unused methods of component class |
 |  |  | [react/no-unused-prop-types](docs/rules/no-unused-prop-types.md) | Prevent definitions of unused prop types |
 |  |  | [react/no-unused-state](docs/rules/no-unused-state.md) | Prevent definition of unused state fields |
 |  |  | [react/no-will-update-set-state](docs/rules/no-will-update-set-state.md) | Prevent usage of setState in componentWillUpdate |

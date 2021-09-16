@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Added
+* [`no-unused-class-component-methods`]: Handle unused class component methods ([#2166][] @jakeleventhal @pawelnvk)
+
+[#2166]: https://github.com/yannickcr/eslint-plugin-react/pull/2166
+
 ## [7.26.1] - 2021.09.29
 
 ### Fixed
@@ -3482,6 +3487,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`no-unknown-property`]: docs/rules/no-unknown-property.md
 [`no-unsafe`]: docs/rules/no-unsafe.md
 [`no-unstable-nested-components`]: docs/rules/no-unstable-nested-components.md
+[`no-unused-class-component-methods`]: docs/rules/no-unused-class-component-methods.md
 [`no-unused-prop-types`]: docs/rules/no-unused-prop-types.md
 [`no-unused-state`]: docs/rules/no-unused-state.md
 [`no-will-update-set-state`]: docs/rules/no-will-update-set-state.md
