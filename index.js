@@ -67,6 +67,7 @@ const allRules = {
   'no-find-dom-node': require('./lib/rules/no-find-dom-node'),
   'no-is-mounted': require('./lib/rules/no-is-mounted'),
   'no-multi-comp': require('./lib/rules/no-multi-comp'),
+  'named-import': require('./lib/rules/named-import'),
   'no-set-state': require('./lib/rules/no-set-state'),
   'no-string-refs': require('./lib/rules/no-string-refs'),
   'no-redundant-should-component-update': require('./lib/rules/no-redundant-should-component-update'),
@@ -172,6 +173,7 @@ module.exports = {
         jsxPragma: null // for @typescript/eslint-parser
       },
       rules: {
+        'react/named-import': [2, 'import'],
         'react/react-in-jsx-scope': 0,
         'react/jsx-uses-react': 0
       }

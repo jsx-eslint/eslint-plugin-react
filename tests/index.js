@@ -80,7 +80,11 @@ describe('configurations', () => {
 
     Object.keys(plugin.configs[configName].rules).forEach((ruleName) => {
       assert.ok(ruleName.startsWith('react/'));
-      assert.equal(plugin.configs[configName].rules[ruleName], 0);
+      const config = plugin.configs[configName].rules[ruleName];
+      if (config !== 0) {
+        assert.ok(Array.isArray(config));
+        assert.equal(config[0], 2);
+      }
 
       const inDeprecatedRules = Boolean(plugin.deprecatedRules[ruleName]);
       const inConfig = typeof plugin.configs[configName].rules[ruleName] !== 'undefined';
