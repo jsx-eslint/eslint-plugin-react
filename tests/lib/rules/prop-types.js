@@ -3303,6 +3303,19 @@ ruleTester.run('prop-types', rule, {
 
         `,
         parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          type Props<ValueType> = {
+            value: ValueType;
+            onClick: (value: ValueType) => void;
+          };
+
+          const Button = <T,>({ onClick, value }: Props<T>) => {
+            return <button onClick={() => onClick(value)}>BUTTON</button>;
+          };
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
       }
     ]),
     {
@@ -6855,6 +6868,23 @@ ruleTester.run('prop-types', rule, {
               username: string;
           }
           const Person: FC<PersonProps> = (props): React.ReactElement => (
+              <div>{props.username}</div>
+          );
+        `,
+        errors: [
+          {
+            messageId: 'missingPropType',
+            data: {name: 'username'}
+          }
+        ],
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+          type PersonProps<T> = {
+              x: T;
+          }
+          const Person = (props: PersonProps<string>): React.ReactElement => (
               <div>{props.username}</div>
           );
         `,
