@@ -5,10 +5,17 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.25.3] - 2021.09.19
+
 ### Fixed
 * [`prop-types`], `propTypes`: bail out unknown generic types inside func params ([#3076] @vedadeepta)
 
+### Changed
+* [readme] Update broken link for configuration files ([#3071] @prateek3255)
+
+[7.25.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.25.2...v7.25.3
 [#3076]: https://github.com/yannickcr/eslint-plugin-react/pull/3076
+[#3071]: https://github.com/yannickcr/eslint-plugin-react/pull/3071
 
 ## [7.25.2] - 2021.09.16
 
