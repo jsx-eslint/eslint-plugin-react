@@ -12,6 +12,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Changed
 * [readme] Update broken link for configuration files ([#3071] @prateek3255)
+* [Refactor] create/extract `isCreateElement` and `isDestructuredFromPragmaImport` utils (@ljharb)
 
 [7.25.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.25.2...v7.25.3
 [#3076]: https://github.com/yannickcr/eslint-plugin-react/pull/3076
