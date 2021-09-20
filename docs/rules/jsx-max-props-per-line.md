@@ -39,6 +39,12 @@ Examples of **correct** code for this rule:
 ...
 "react/jsx-max-props-per-line": [<enabled>, { "maximum": <number>, "when": <string> }]
 ...
+
+// OR
+
+...
+"react/jsx-max-props-per-line": [<enabled>, { "maximum": { single <number> multi: <number> } }]
+...
 ```
 
 ### `maximum`
@@ -62,7 +68,11 @@ Examples of **correct** code for this rule:
 />;
 ```
 
+Maximum can be specified as object `{ single: 1, multi: 1 }` to specify maximum allowed number of props for single line and multiple line tags.
+
 ### `when`
+
+ _when only applied if `maximum` is specified as number._
 
 Possible values:
 - `always` (default) - Always check for max props per line.
