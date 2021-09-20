@@ -25,7 +25,7 @@ const parserOptions = {
 // ------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({parserOptions});
-ruleTester.run('jsx-no-namespace', rule, {
+ruleTester.run('no-namespace', rule, {
   valid: [{
     code: '<testcomponent />'
   }, {
@@ -78,51 +78,51 @@ ruleTester.run('jsx-no-namespace', rule, {
 
   invalid: [{
     code: '<ns:testcomponent />',
-    errors: [{message: 'React component ns:testcomponent must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component ns:testcomponent must not be in a namespace, as React does not support them'}]
   }, {
     code: 'React.createElement("ns:testcomponent")',
-    errors: [{message: 'React component ns:testcomponent must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component ns:testcomponent must not be in a namespace, as React does not support them'}]
   }, {
     code: '<ns:testComponent />',
-    errors: [{message: 'React component ns:testComponent must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component ns:testComponent must not be in a namespace, as React does not support them'}]
   }, {
     code: 'React.createElement("ns:testComponent")',
-    errors: [{message: 'React component ns:testComponent must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component ns:testComponent must not be in a namespace, as React does not support them'}]
   }, {
     code: '<ns:test_component />',
-    errors: [{message: 'React component ns:test_component must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component ns:test_component must not be in a namespace, as React does not support them'}]
   }, {
     code: 'React.createElement("ns:test_component")',
-    errors: [{message: 'React component ns:test_component must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component ns:test_component must not be in a namespace, as React does not support them'}]
   }, {
     code: '<ns:TestComponent />',
-    errors: [{message: 'React component ns:TestComponent must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component ns:TestComponent must not be in a namespace, as React does not support them'}]
   }, {
     code: 'React.createElement("ns:TestComponent")',
-    errors: [{message: 'React component ns:TestComponent must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component ns:TestComponent must not be in a namespace, as React does not support them'}]
   }, {
     code: '<Ns:testcomponent />',
-    errors: [{message: 'React component Ns:testcomponent must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component Ns:testcomponent must not be in a namespace, as React does not support them'}]
   }, {
     code: 'React.createElement("Ns:testcomponent")',
-    errors: [{message: 'React component Ns:testcomponent must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component Ns:testcomponent must not be in a namespace, as React does not support them'}]
   }, {
     code: '<Ns:testComponent />',
-    errors: [{message: 'React component Ns:testComponent must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component Ns:testComponent must not be in a namespace, as React does not support them'}]
   }, {
     code: 'React.createElement("Ns:testComponent")',
-    errors: [{message: 'React component Ns:testComponent must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component Ns:testComponent must not be in a namespace, as React does not support them'}]
   }, {
     code: '<Ns:test_component />',
-    errors: [{message: 'React component Ns:test_component must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component Ns:test_component must not be in a namespace, as React does not support them'}]
   }, {
     code: 'React.createElement("Ns:test_component")',
-    errors: [{message: 'React component Ns:test_component must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component Ns:test_component must not be in a namespace, as React does not support them'}]
   }, {
     code: '<Ns:TestComponent />',
-    errors: [{message: 'React component Ns:TestComponent must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component Ns:TestComponent must not be in a namespace, as React does not support them'}]
   }, {
     code: 'React.createElement("Ns:TestComponent")',
-    errors: [{message: 'React component Ns:TestComponent must not be in a namespace as React does not support them'}]
+    errors: [{message: 'React component Ns:TestComponent must not be in a namespace, as React does not support them'}]
   }]
 });

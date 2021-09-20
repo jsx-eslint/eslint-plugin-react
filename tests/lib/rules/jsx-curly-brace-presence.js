@@ -12,6 +12,8 @@
 // ------------------------------------------------------------------------------
 
 const RuleTester = require('eslint').RuleTester;
+const semver = require('semver');
+const eslintPkg = require('eslint/package.json');
 const rule = require('../../../lib/rules/jsx-curly-brace-presence');
 
 const parsers = require('../../helpers/parsers');
@@ -30,7 +32,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-curly-brace-presence', rule, {
-  valid: [
+  valid: [].concat(
     {
       code: '<App {...props}>foo</App>'
     },
@@ -418,26 +420,28 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: `<App>{/* comment */}</App>`
     },
-    {
-      code: `<App>{/* comment */ <Foo />}</App>`
-    },
-    {
-      code: `<App>{/* comment */ 'foo'}</App>`
-    },
-    {
-      code: `<App prop={/* comment */ 'foo'} />`
-    },
-    {
-      code: `
-        <App>
-          {
-            // comment
-            <Foo />
-          }
-        </App>
-      `
-    }
-  ],
+    (semver.satisfies(eslintPkg.version, '> 3') ? [
+      {
+        code: `<App>{/* comment */ <Foo />}</App>`
+      },
+      {
+        code: `<App>{/* comment */ 'foo'}</App>`
+      },
+      {
+        code: `<App prop={/* comment */ 'foo'} />`
+      },
+      {
+        code: `
+          <App>
+            {
+              // comment
+              <Foo />
+            }
+          </App>
+        `
+      }
+    ] : [])
+  ),
 
   invalid: [
     {

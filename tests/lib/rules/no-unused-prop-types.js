@@ -9,8 +9,9 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const babelEslintVersion = require('babel-eslint/package.json').version;
 const semver = require('semver');
+const eslintPkg = require('eslint/package.json');
+const babelEslintVersion = require('babel-eslint/package.json').version;
 const RuleTester = require('eslint').RuleTester;
 
 const rule = require('../../../lib/rules/no-unused-prop-types');
@@ -5597,7 +5598,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         message: '\'person\' PropType is defined but prop is never used'
       }],
       parser: parsers.BABEL_ESLINT
-    }, {
+    }, (semver.satisfies(eslintPkg.version, '> 3') ? [{
       code: `
         function higherOrderComponent<P: { foo: string }>() {
           return class extends React.Component<P> {
@@ -5611,7 +5612,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         message: '\'foo\' PropType is defined but prop is never used'
       }],
       parser: parsers.BABEL_ESLINT
-    }, {
+    }] : []), {
       // issue #1506
       code: [
         'class MyComponent extends React.Component {',

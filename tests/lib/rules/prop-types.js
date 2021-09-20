@@ -9,8 +9,9 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const babelEslintVersion = require('babel-eslint/package.json').version;
 const semver = require('semver');
+const eslintPkg = require('eslint/package.json').version;
+const babelEslintVersion = require('babel-eslint/package.json').version;
 const RuleTester = require('eslint').RuleTester;
 
 const rule = require('../../../lib/rules/prop-types');
@@ -5456,7 +5457,7 @@ ruleTester.run('prop-types', rule, {
         data: {name: 'bar'}
       }],
       parser: parsers.BABEL_ESLINT
-    }, {
+    }, (semver.satisfies(eslintPkg.version, '> 3') ? [{
       code: `
         function higherOrderComponent<P: { foo: string }>() {
           return class extends React.Component<P> {
@@ -5490,7 +5491,7 @@ ruleTester.run('prop-types', rule, {
         data: {name: 'bar'}
       }],
       parser: parsers.BABEL_ESLINT
-    }, {
+    }] : []), {
       code: `
         type PropsA = {foo: string };
         type PropsB = { bar: string };

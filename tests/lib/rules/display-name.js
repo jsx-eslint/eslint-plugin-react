@@ -931,15 +931,11 @@ ruleTester.run('display-name', rule, {
     errors: [{
       messageId: 'noDisplayName',
       line: 2,
-      column: 22,
-      endLine: 6,
-      endColumn: 8
+      column: 22
     }, {
       messageId: 'noDisplayName',
       line: 9,
-      column: 16,
-      endLine: 11,
-      endColumn: 11
+      column: 16
     }]
   }, {
     code: `

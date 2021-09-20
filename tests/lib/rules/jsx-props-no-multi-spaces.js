@@ -10,6 +10,8 @@
 // ------------------------------------------------------------------------------
 
 const RuleTester = require('eslint').RuleTester;
+const semver = require('semver');
+const eslintPkg = require('eslint/package.json');
 const rule = require('../../../lib/rules/jsx-props-no-multi-spaces');
 
 const parsers = require('../../helpers/parsers');
@@ -28,7 +30,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-props-no-multi-spaces', rule, {
-  valid: [{
+  valid: [].concat({
     code: [
       '<App />'
     ].join('\n')
@@ -85,7 +87,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
         type="button"
       />
     `
-  }, {
+  }, (semver.satisfies(eslintPkg.version, '> 3') ? [{
     code: `
       <button
         title="Some button"
@@ -129,9 +131,9 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
        type="button"
      />
    `
-  }],
+  }] : [])),
 
-  invalid: [{
+  invalid: [].concat({
     code: [
       '<App  foo />'
     ].join('\n'),
@@ -240,7 +242,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       messageId: 'noLineGap',
       data: {prop1: 'onClick', prop2: 'type'}
     }]
-  }, {
+  }, (semver.satisfies(eslintPkg.version, '> 3') ? [{
     code: `
       <button
         title="Some button"
@@ -302,5 +304,5 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       messageId: 'noLineGap',
       data: {prop1: 'onClick', prop2: 'type'}
     }]
-  }]
+  }] : []))
 });

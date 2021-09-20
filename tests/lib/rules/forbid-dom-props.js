@@ -24,7 +24,7 @@ const parserOptions = {
 // -----------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({parserOptions});
-ruleTester.run('forbid-element-props', rule, {
+ruleTester.run('forbid-dom-props', rule, {
 
   valid: [{
     code: [

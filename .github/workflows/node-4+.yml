@@ -30,6 +30,8 @@ jobs:
           - 6
           - 5
           - 4
+          - 4.14 # last version without messageId
+          - 3
         babel-eslint:
           - 10
           - 9
