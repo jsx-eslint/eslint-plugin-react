@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.26.0] - 2021.09.20
+
 ### Added
 * add [`no-namespace`] rule ([#2640] @yacinehmito @ljharb)
 * [`jsx-max-props-per-line`]: add `single` and `multi` options ([#3078] @SIL0RAK)
@@ -15,6 +17,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Changed
 * [`no-access-state-in-setstate`]: passing test for “don't error if it's not a React Component” ([#1873] @kentcdodds)
 
+[7.26.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.25.3...v7.26.0
 [#3078]: https://github.com/yannickcr/eslint-plugin-react/pull/3078
 [#2640]: https://github.com/yannickcr/eslint-plugin-react/pull/2640
 [#2759]: https://github.com/yannickcr/eslint-plugin-react/pull/2759
