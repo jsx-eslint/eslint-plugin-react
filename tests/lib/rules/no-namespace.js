@@ -74,6 +74,8 @@ ruleTester.run('no-namespace', rule, {
     code: '<Object.TestComponent />'
   }, {
     code: 'React.createElement("Object.TestComponent")'
+  }, {
+    code: 'React.createElement(null)'
   }],
 
   invalid: [{

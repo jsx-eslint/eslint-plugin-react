@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Fixed
+* [`no-namespace`]: fix crash on non-string React.createElement name ([#3082] @ljharb)
+
+[#3082]: https://github.com/yannickcr/eslint-plugin-react/pull/3082
+
 ## [7.26.0] - 2021.09.20
 
 ### Added
