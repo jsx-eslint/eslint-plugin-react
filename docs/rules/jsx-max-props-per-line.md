@@ -43,7 +43,7 @@ Examples of **correct** code for this rule:
 // OR
 
 ...
-"react/jsx-max-props-per-line": [<enabled>, { "maximum": { single <number> multi: <number> } }]
+"react/jsx-max-props-per-line": [<enabled>, { "maximum": { "single": <number>, "multi": <number> } }]
 ...
 ```
 
