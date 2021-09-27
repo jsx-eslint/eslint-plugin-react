@@ -86,6 +86,7 @@ const allRules = {
   'prefer-read-only-props': require('./lib/rules/prefer-read-only-props'),
   'prefer-stateless-function': require('./lib/rules/prefer-stateless-function'),
   'prop-types': require('./lib/rules/prop-types'),
+  'props-destructuring': require('./lib/rules/props-destructuring'),
   'react-in-jsx-scope': require('./lib/rules/react-in-jsx-scope'),
   'require-default-props': require('./lib/rules/require-default-props'),
   'require-optimization': require('./lib/rules/require-optimization'),
