@@ -164,7 +164,7 @@ Enable the rules that you would like to use.
 |  | 🔧 | [react/prefer-read-only-props](docs/rules/prefer-read-only-props.md) | Require read-only props. |
 |  |  | [react/prefer-stateless-function](docs/rules/prefer-stateless-function.md) | Enforce stateless components to be written as a pure function |
 | ✔ |  | [react/prop-types](docs/rules/prop-types.md) | Prevent missing props validation in a React component definition |
-| ✔ |  | [react/props-destructuring](docs/rules/props-destructuring.md) | Prevent multiline props destructuring in a React component definition |
+|  |  | [react/props-destructuring](docs/rules/props-destructuring.md) | Prevent multiline props destructuring in a React component definition |
 | ✔ |  | [react/react-in-jsx-scope](docs/rules/react-in-jsx-scope.md) | Prevent missing React when using JSX |
 |  |  | [react/require-default-props](docs/rules/require-default-props.md) | Enforce a defaultProps definition for every prop that is not a required prop. |
 |  |  | [react/require-optimization](docs/rules/require-optimization.md) | Enforce React components to have a shouldComponentUpdate method |

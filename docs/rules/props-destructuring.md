@@ -34,14 +34,6 @@ const Component = ({
 );
 ```
 
-```jsx
-
-```
-
-```jsx
-
-```
-
 Examples of **correct** code for this rule:
 
 ```jsx
