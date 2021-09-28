@@ -4,7 +4,7 @@ Destructuring Component props on multiple line may confuse the reader where the 
 
 ## Rule Details
 
-This rule checks all React Component and verifies that props are not destructuring on multiple lines at component declaration. This rule is off by default.
+This rule checks all React Component and verifies that props are not destructuring on multiple lines at component declaration.
 
 Examples of **incorrect** code for this rule:
 
