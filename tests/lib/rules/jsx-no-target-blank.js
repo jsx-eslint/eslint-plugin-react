@@ -25,7 +25,7 @@ const parserOptions = {
 // ------------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({parserOptions});
-const defaultErrors = [{messageId: 'noTargetBlank'}];
+const defaultErrors = [{messageId: 'noTargetBlankWithoutNoreferrer'}];
 
 ruleTester.run('jsx-no-target-blank', rule, {
   valid: [
@@ -249,7 +249,7 @@ ruleTester.run('jsx-no-target-blank', rule, {
       code: '<a href="http://example.com/20" target="_blank"></a>',
       output: '<a href="http://example.com/20" target="_blank" rel="noreferrer"></a>',
       options: [{allowReferrer: true}],
-      errors: defaultErrors
+      errors: [{messageId: 'noTargetBlankWithoutNoopener'}]
     },
     {
       code: '<a target="_blank" href={ dynamicLink }></a>',

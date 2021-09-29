@@ -20,8 +20,8 @@ This rule aims to prevent user generated link hrefs and form actions from creati
 ...
 ```
 
-* `allowReferrer`: optional boolean. If `true` does not require `noreferrer`. Defaults to `false`.
-* `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
+* `allowReferrer`: optional boolean. If `true` does not require `noreferrer` (i. e. `noopener` alone is enough, this leaves IE vulnerable). Defaults to `false`.
+* `enabled`: for enabling the rule.
 * `enforceDynamicLinks`: optional string, 'always' or 'never'
 * `warnOnSpreadAttributes`: optional boolean. Defaults to `false`.
 * `enforceDynamicLinks` - enforce: optional string, 'always' or 'never'
@@ -124,6 +124,8 @@ This rule supports the ability to use custom components for forms. To enable thi
 ## When To Override It
 
 For links to a trusted host (e.g. internal links to your own site, or links to a another host you control, where you can be certain this security vulnerability does not exist), you may want to keep the HTTP Referer header for analytics purposes.
+
+If you do not support Internet Explorer (any version), Chrome < 49, Opera < 36, Firefox < 52, desktop Safari < 10.1 or iOS Safari < 10.3, you may set `allowReferrer` to `true`, keep the HTTP Referer header and only add `rel="noopener"` to your links.
 
 ## When Not To Use It
 
