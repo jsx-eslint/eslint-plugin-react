@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.26.1] - 2021.09.29
+
 ### Fixed
 * [`no-namespace`]: fix crash on non-string React.createElement name ([#3082] @ljharb)
 * [`no-namespace`]: avoid crash on non-string createElement values ([#3085] @ljharb)
@@ -13,6 +15,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Changed
 * [Docs] [`jsx-max-props-per-line`]: fix options example ([#3083] @MrRaiter)
 
+[7.26.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.26.0...v7.26.1
 [#3088]: https://github.com/yannickcr/eslint-plugin-react/pull/3088
 [#3085]: https://github.com/yannickcr/eslint-plugin-react/issue/3085
 [#3083]: https://github.com/yannickcr/eslint-plugin-react/pull/3083
