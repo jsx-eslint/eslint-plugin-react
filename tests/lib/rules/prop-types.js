@@ -3317,6 +3317,36 @@ ruleTester.run('prop-types', rule, {
           };
         `,
         parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+           import React, { VoidFunctionComponent } from 'react'
+
+           interface Props {
+            age: number
+           }
+           const Hello: VoidFunctionComponent<Props> = function Hello(props) {
+            const { age } = props;
+
+            return <div>Hello {age}</div>;
+           }
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+           import React from 'react'
+
+           interface Props {
+            age: number
+           }
+           const Hello: React.VoidFunctionComponent<Props> = function Hello(props) {
+            const { age } = props;
+
+            return <div>Hello {age}</div>;
+           }
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT']
       }
     ]),
     {
@@ -6893,6 +6923,48 @@ ruleTester.run('prop-types', rule, {
           {
             messageId: 'missingPropType',
             data: {name: 'username'}
+          }
+        ],
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+           import React, { VoidFunctionComponent } from 'react'
+
+           interface Props {
+            age: number
+           }
+           const Hello: VoidFunctionComponent<Props> = function Hello(props) {
+            const { test } = props;
+
+            return <div>Hello {name}</div>;
+           }
+        `,
+        errors: [
+          {
+            messageId: 'missingPropType',
+            data: {name: 'test'}
+          }
+        ],
+        parser: parsers['@TYPESCRIPT_ESLINT']
+      },
+      {
+        code: `
+           import React from 'react'
+
+           interface Props {
+            age: number
+           }
+           const Hello: React.VoidFunctionComponent<Props> = function Hello(props) {
+            const { test } = props;
+
+            return <div>Hello {name}</div>;
+           }
+        `,
+        errors: [
+          {
+            messageId: 'missingPropType',
+            data: {name: 'test'}
           }
         ],
         parser: parsers['@TYPESCRIPT_ESLINT']
