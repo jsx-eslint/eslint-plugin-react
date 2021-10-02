@@ -80,6 +80,18 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     code: [
       '<App>',
       '  <Foo />',
+      '</App>'
+    ].join('\r\n')
+  }, {
+    code: [
+      '<App>',
+      '  <Foo />',
+      '</App>'
+    ].join('\r')
+  }, {
+    code: [
+      '<App>',
+      '  <Foo />',
       '  <Bar />',
       '</App>'
     ].join('\n')
@@ -110,6 +122,22 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       '<Foo />',
       '</App>'
     ].join('\n')
+  }, {
+    code: [
+      '<App',
+      '  foo="bar"',
+      '>',
+      '<Foo />',
+      '</App>'
+    ].join('\r\n')
+  }, {
+    code: [
+      '<App',
+      '  foo="bar"',
+      '>',
+      '<Foo />',
+      '</App>'
+    ].join('\r')
   }, {
     code: [
       '<',
@@ -1249,6 +1277,26 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       }
     ],
     parser: parsers.BABEL_ESLINT,
+    parserOptions
+  }, {
+    code: [
+      '<div>',
+      '  foo {"bar"}',
+      '</div>'
+    ].join('\r\n'),
+    output: [
+      '<div>\r\n',
+      '  foo \n',
+      '{\' \'}\n',
+      '{"bar"}\r\n',
+      '</div>'
+    ].join(''),
+    errors: [
+      {
+        messageId: 'moveToNewLine',
+        data: {descriptor: '{"bar"}'}
+      }
+    ],
     parserOptions
   }]
 });
