@@ -424,6 +424,42 @@ ruleTester.run('no-deprecated', rule, {
           {type: 'Identifier', line: 6, column: 11}
         )
       ]
+    },
+    {
+      code: `
+        class MessageList extends React.Component {
+          static childContextTypes = {};
+          static contextTypes = {};
+          getChildContext() {
+            return {color: "purple"};
+          }
+        
+          render() {
+            return <div>1</div>;
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          message: errorMessage('childContextTypes', '16.6.0', 'https://reactjs.org/docs/legacy-context.html Use new context api https://reactjs.org/docs/context.html'),
+          type: 'Identifier',
+          line: 3,
+          column: 18
+        },
+        {
+          message: errorMessage('contextTypes', '16.6.0', 'https://reactjs.org/docs/legacy-context.html Use new context api https://reactjs.org/docs/context.html'),
+          type: 'Identifier',
+          line: 4,
+          column: 18
+        },
+        {
+          message: errorMessage('getChildContext', '16.6.0', 'https://reactjs.org/docs/legacy-context.html Use new context api https://reactjs.org/docs/context.html'),
+          type: 'Identifier',
+          line: 5,
+          column: 11
+        }
+      ]
     }
   ]
 });
