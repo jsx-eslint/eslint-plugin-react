@@ -348,7 +348,18 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
         });
       `,
     },
-  ],
+  ].concat(
+    parsers.TS([
+      {
+        code: `
+          class MyComponent extends React.Component {
+            onChange: () => void;
+          }
+        `,
+        parser: parsers['@TYPESCRIPT_ESLINT'],
+      },
+    ])
+  ),
 
   invalid: [
     {
