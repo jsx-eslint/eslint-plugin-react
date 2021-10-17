@@ -44,192 +44,232 @@ const settingsOld = {
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-fragments', rule, {
-  valid: [{
-    code: '<><Foo /></>',
-    parser: parsers.BABEL_ESLINT,
-    settings
-  }, {
-    code: '<Act.Frag><Foo /></Act.Frag>',
-    options: ['element'],
-    settings
-  }, {
-    code: '<Act.Frag />',
-    options: ['element'],
-    settings
-  }, {
-    code: `
-      import Act, { Frag as F } from 'react';
-      <F><Foo /></F>;
-    `,
-    options: ['element'],
-    settings
-  }, {
-    code: `
-      const F = Act.Frag;
-      <F><Foo /></F>;
-    `,
-    options: ['element'],
-    settings
-  }, {
-    code: `
-      const { Frag } = Act;
-      <Frag><Foo /></Frag>;
-    `,
-    options: ['element'],
-    settings
-  }, {
-    code: `
-      const { Frag } = require('react');
-      <Frag><Foo /></Frag>;
-    `,
-    options: ['element'],
-    settings
-  }, {
-    code: '<Act.Frag key="key"><Foo /></Act.Frag>',
-    options: ['syntax'],
-    settings
-  }, {
-    code: '<Act.Frag key="key" />',
-    options: ['syntax'],
-    settings
-  }],
+  valid: [
+    {
+      code: '<><Foo /></>',
+      parser: parsers.BABEL_ESLINT,
+      settings
+    },
+    {
+      code: '<Act.Frag><Foo /></Act.Frag>',
+      options: ['element'],
+      settings
+    },
+    {
+      code: '<Act.Frag />',
+      options: ['element'],
+      settings
+    },
+    {
+      code: `
+        import Act, { Frag as F } from 'react';
+        <F><Foo /></F>;
+      `,
+      options: ['element'],
+      settings
+    },
+    {
+      code: `
+        const F = Act.Frag;
+        <F><Foo /></F>;
+      `,
+      options: ['element'],
+      settings
+    },
+    {
+      code: `
+        const { Frag } = Act;
+        <Frag><Foo /></Frag>;
+      `,
+      options: ['element'],
+      settings
+    },
+    {
+      code: `
+        const { Frag } = require('react');
+        <Frag><Foo /></Frag>;
+      `,
+      options: ['element'],
+      settings
+    },
+    {
+      code: '<Act.Frag key="key"><Foo /></Act.Frag>',
+      options: ['syntax'],
+      settings
+    },
+    {
+      code: '<Act.Frag key="key" />',
+      options: ['syntax'],
+      settings
+    }
+  ],
 
-  invalid: [{
-    code: '<><Foo /></>',
-    parser: parsers.BABEL_ESLINT,
-    settings: settingsOld,
-    errors: [{
-      messageId: 'fragmentsNotSupported'
+  invalid: [
+    {
+      code: '<><Foo /></>',
+      parser: parsers.BABEL_ESLINT,
+      settings: settingsOld,
+      errors: [
+        {messageId: 'fragmentsNotSupported'}
+      ]
+    },
+    {
+      code: '<Act.Frag><Foo /></Act.Frag>',
+      settings: settingsOld,
+      errors: [
+        {messageId: 'fragmentsNotSupported'}
+      ]
+    },
+    {
+      code: '<Act.Frag />',
+      settings: settingsOld,
+      errors: [
+        {messageId: 'fragmentsNotSupported'}
+      ]
+    },
+    {
+      code: '<><Foo /></>',
+      output: '<Act.Frag><Foo /></Act.Frag>',
+      parser: parsers.BABEL_ESLINT,
+      options: ['element'],
+      settings,
+      errors: [
+        {
+          messageId: 'preferPragma',
+          data: {react: 'Act', fragment: 'Frag'}
+        }
+      ]
+    },
+    {
+      code: '<Act.Frag><Foo /></Act.Frag>',
+      output: '<><Foo /></>',
+      options: ['syntax'],
+      settings,
+      errors: [
+        {
+          messageId: 'preferFragment',
+          data: {react: 'Act', fragment: 'Frag'}
+        }
+      ]
+    },
+    {
+      code: '<Act.Frag />',
+      output: '<></>',
+      options: ['syntax'],
+      settings,
+      errors: [
+        {
+          messageId: 'preferFragment',
+          data: {react: 'Act', fragment: 'Frag'}
+        }
+      ]
+    },
+    {
+      code: `
+        import Act, { Frag as F } from 'react';
+        <F />;
+      `,
+      output: `
+        import Act, { Frag as F } from 'react';
+        <></>;
+      `,
+      options: ['syntax'],
+      settings,
+      errors: [
+        {
+          messageId: 'preferFragment',
+          data: {react: 'Act', fragment: 'Frag'}
+        }
+      ]
+    },
+    {
+      code: `
+        import Act, { Frag as F } from 'react';
+        <F><Foo /></F>;
+      `,
+      output: `
+        import Act, { Frag as F } from 'react';
+        <><Foo /></>;
+      `,
+      options: ['syntax'],
+      settings,
+      errors: [
+        {
+          messageId: 'preferFragment',
+          data: {react: 'Act', fragment: 'Frag'}
+        }
+      ]
+    },
+    {
+      code: `
+        import Act, { Frag } from 'react';
+        <Frag><Foo /></Frag>;
+      `,
+      output: `
+        import Act, { Frag } from 'react';
+        <><Foo /></>;
+      `,
+      options: ['syntax'],
+      settings,
+      errors: [
+        {
+          messageId: 'preferFragment',
+          data: {react: 'Act', fragment: 'Frag'}
+        }
+      ]
+    },
+    {
+      code: `
+        const F = Act.Frag;
+        <F><Foo /></F>;
+      `,
+      output: `
+        const F = Act.Frag;
+        <><Foo /></>;
+      `,
+      options: ['syntax'],
+      settings,
+      errors: [
+        {
+          messageId: 'preferFragment',
+          data: {react: 'Act', fragment: 'Frag'}
+        }
+      ]
+    },
+    {
+      code: `
+        const { Frag } = Act;
+        <Frag><Foo /></Frag>;
+      `,
+      output: `
+        const { Frag } = Act;
+        <><Foo /></>;
+      `,
+      options: ['syntax'],
+      settings,
+      errors: [
+        {
+          messageId: 'preferFragment',
+          data: {react: 'Act', fragment: 'Frag'}
+        }
+      ]
+    },
+    {
+      code: `
+        const { Frag } = require('react');
+        <Frag><Foo /></Frag>;
+      `,
+      output: `
+        const { Frag } = require('react');
+        <><Foo /></>;
+      `,
+      options: ['syntax'],
+      settings,
+      errors: [
+        {
+          messageId: 'preferFragment',
+          data: {react: 'Act', fragment: 'Frag'}
+        }
+      ]
     }]
-  }, {
-    code: '<Act.Frag><Foo /></Act.Frag>',
-    settings: settingsOld,
-    errors: [{
-      messageId: 'fragmentsNotSupported'
-    }]
-  }, {
-    code: '<Act.Frag />',
-    settings: settingsOld,
-    errors: [{
-      messageId: 'fragmentsNotSupported'
-    }]
-  }, {
-    code: '<><Foo /></>',
-    parser: parsers.BABEL_ESLINT,
-    options: ['element'],
-    settings,
-    errors: [{
-      messageId: 'preferPragma',
-      data: {react: 'Act', fragment: 'Frag'}
-    }],
-    output: '<Act.Frag><Foo /></Act.Frag>'
-  }, {
-    code: '<Act.Frag><Foo /></Act.Frag>',
-    options: ['syntax'],
-    settings,
-    errors: [{
-      messageId: 'preferFragment',
-      data: {react: 'Act', fragment: 'Frag'}
-    }],
-    output: '<><Foo /></>'
-  }, {
-    code: '<Act.Frag />',
-    options: ['syntax'],
-    settings,
-    errors: [{
-      messageId: 'preferFragment',
-      data: {react: 'Act', fragment: 'Frag'}
-    }],
-    output: '<></>'
-  }, {
-    code: `
-      import Act, { Frag as F } from 'react';
-      <F />;
-    `,
-    options: ['syntax'],
-    settings,
-    errors: [{
-      messageId: 'preferFragment',
-      data: {react: 'Act', fragment: 'Frag'}
-    }],
-    output: `
-      import Act, { Frag as F } from 'react';
-      <></>;
-    `
-  }, {
-    code: `
-      import Act, { Frag as F } from 'react';
-      <F><Foo /></F>;
-    `,
-    options: ['syntax'],
-    settings,
-    errors: [{
-      messageId: 'preferFragment',
-      data: {react: 'Act', fragment: 'Frag'}
-    }],
-    output: `
-      import Act, { Frag as F } from 'react';
-      <><Foo /></>;
-    `
-  }, {
-    code: `
-      import Act, { Frag } from 'react';
-      <Frag><Foo /></Frag>;
-    `,
-    options: ['syntax'],
-    settings,
-    errors: [{
-      messageId: 'preferFragment',
-      data: {react: 'Act', fragment: 'Frag'}
-    }],
-    output: `
-      import Act, { Frag } from 'react';
-      <><Foo /></>;
-    `
-  }, {
-    code: `
-      const F = Act.Frag;
-      <F><Foo /></F>;
-    `,
-    options: ['syntax'],
-    settings,
-    errors: [{
-      messageId: 'preferFragment',
-      data: {react: 'Act', fragment: 'Frag'}
-    }],
-    output: `
-      const F = Act.Frag;
-      <><Foo /></>;
-    `
-  }, {
-    code: `
-      const { Frag } = Act;
-      <Frag><Foo /></Frag>;
-    `,
-    options: ['syntax'],
-    settings,
-    errors: [{
-      messageId: 'preferFragment',
-      data: {react: 'Act', fragment: 'Frag'}
-    }],
-    output: `
-      const { Frag } = Act;
-      <><Foo /></>;
-    `
-  }, {
-    code: `
-      const { Frag } = require('react');
-      <Frag><Foo /></Frag>;
-    `,
-    options: ['syntax'],
-    settings,
-    errors: [{
-      messageId: 'preferFragment',
-      data: {react: 'Act', fragment: 'Frag'}
-    }],
-    output: `
-      const { Frag } = require('react');
-      <><Foo /></>;
-    `
-  }]
 });

@@ -49,7 +49,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error on createReactClass pragma
-      code: [`
+      code: `
         var MyComponent = createReactClass({
           childContextTypes: {
             something: PropTypes.bool
@@ -73,12 +73,12 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           },
         });
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT]
     },
     {
       // Do not error on createClass pragma
-      code: [`
+      code: `
         var MyComponent = React.createClass({
           childContextTypes: {
             something: PropTypes.bool
@@ -102,12 +102,12 @@ ruleTester.run('static-property-placement', rule, {
             return null;
           },
         });
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT]
     },
     {
       // Do not error on SFC arrow function with return
-      code: [`
+      code: `
         const MyComponent = () => {
             return <div>Hello</div>;
         };
@@ -129,11 +129,11 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.propTypes = {
           something: PropTypes.bool
         };
-      `].join('\n')
+      `
     },
     {
       // Do not error on SFC arrow function with direct return
-      code: [`
+      code: `
         const MyComponent = () => (<div>Hello</div>);
 
         MyComponent.childContextTypes = {
@@ -153,11 +153,11 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.propTypes = {
           something: PropTypes.bool
         };
-      `].join('\n')
+      `
     },
     {
       // Do not error on SFC as unnamed function
-      code: [`
+      code: `
         export function MyComponent () {
             return <div>Hello</div>;
         };
@@ -179,7 +179,7 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.propTypes = {
           something: PropTypes.bool
         };
-      `].join('\n')
+      `
     },
 
     {
@@ -206,38 +206,38 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if no properties defined
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
           }
         }
-      `].join('\n')
+      `
     },
     {
       // Do not error if unchecked properties defined
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static randomlyNamed = {
             name: 'random'
           }
         }
-      `].join('\n')
+      `
     },
     {
       // Do not error if unchecked static properties defined and assignment rule enabled
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static randomlyNamed = {
             name: 'random'
           }
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT]
     },
     {
       // Do not error if unchecked assignment properties defined and assignment rule enabled
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -247,12 +247,12 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.randomlyNamed = {
           name: 'random'
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT]
     },
     {
       // Do not error if unchecked assignment properties defined and static rule enabled
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -262,30 +262,30 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.randomlyNamed = {
           name: 'random'
         }
-      `].join('\n')
+      `
     },
     // ------------------------------------------------------------------------------
     // childContextTypes - static field
     // ------------------------------------------------------------------------------
     {
       // Do not error if childContextTypes correctly defined - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             something: PropTypes.bool
           };
         }
-      `].join('\n')
+      `
     },
     {
       // Do not error if childContextTypes correctly defined - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             something: PropTypes.bool
           };
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {childContextTypes: STATIC_PUBLIC_FIELD}]
     },
     // ------------------------------------------------------------------------------
@@ -293,7 +293,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if childContextTypes correctly defined - static getter
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get childContextTypes() {
             return {
@@ -301,12 +301,12 @@ ruleTester.run('static-property-placement', rule, {
             };
           }
         }
-      `].join('\n'),
+      `,
       options: [STATIC_GETTER]
     },
     {
       // Do not error if contextTypes correctly defined - static getter
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get childContextTypes() {
             return {
@@ -314,7 +314,7 @@ ruleTester.run('static-property-placement', rule, {
             };
           }
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {childContextTypes: STATIC_GETTER}]
     },
     // ------------------------------------------------------------------------------
@@ -322,7 +322,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if childContextTypes correctly defined - assignment
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -332,12 +332,12 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.childContextTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT]
     },
     {
       // Do not error if childContextTypes correctly defined - assignment
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -347,7 +347,7 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.childContextTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
+      `,
       options: [STATIC_PUBLIC_FIELD, {childContextTypes: PROPERTY_ASSIGNMENT}]
     },
     // ------------------------------------------------------------------------------
@@ -355,23 +355,23 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if contextTypes correctly defined - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static contextTypes = {
             something: PropTypes.bool
           };
         }
-      `].join('\n')
+      `
     },
     {
       // Do not error if contextTypes correctly defined - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static contextTypes = {
             something: PropTypes.bool
           };
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {contextTypes: STATIC_PUBLIC_FIELD}]
     },
     // ------------------------------------------------------------------------------
@@ -379,7 +379,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if contextTypes correctly defined - static getter
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get contextTypes() {
             return {
@@ -387,12 +387,12 @@ ruleTester.run('static-property-placement', rule, {
             };
           }
         }
-      `].join('\n'),
+      `,
       options: [STATIC_GETTER]
     },
     {
       // Do not error if contextTypes correctly defined - static getter
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get contextTypes() {
             return {
@@ -400,7 +400,7 @@ ruleTester.run('static-property-placement', rule, {
             };
           }
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {contextTypes: STATIC_GETTER}]
     },
     // ------------------------------------------------------------------------------
@@ -408,7 +408,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if contextTypes correctly defined - assignment
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -418,12 +418,12 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.contextTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT]
     },
     {
       // Do not error if contextTypes correctly defined - assignment
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -433,7 +433,7 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.contextTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
+      `,
       options: [STATIC_PUBLIC_FIELD, {contextTypes: PROPERTY_ASSIGNMENT}]
     },
     // ------------------------------------------------------------------------------
@@ -441,19 +441,19 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if contextType correctly defined - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static contextType = MyContext;
         }
-      `].join('\n')
+      `
     },
     {
       // Do not error if contextType correctly defined - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static contextType = MyContext;
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {contextType: STATIC_PUBLIC_FIELD}]
     },
     // ------------------------------------------------------------------------------
@@ -461,24 +461,24 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if contextType correctly defined - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get contextType() {
              return MyContext;
           }
         }
-      `].join('\n'),
+      `,
       options: [STATIC_GETTER]
     },
     {
       // Do not error if contextType correctly defined - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get contextType() {
              return MyContext;
           }
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {contextType: STATIC_GETTER}]
     },
     // ------------------------------------------------------------------------------
@@ -486,7 +486,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if contextType correctly defined - assignment
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -494,12 +494,12 @@ ruleTester.run('static-property-placement', rule, {
         }
 
         MyComponent.contextType = MyContext;
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT]
     },
     {
       // Do not error if contextType correctly defined - assignment
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -507,7 +507,7 @@ ruleTester.run('static-property-placement', rule, {
         }
 
         MyComponent.contextType = MyContext;
-      `].join('\n'),
+      `,
       options: [STATIC_PUBLIC_FIELD, {contextType: PROPERTY_ASSIGNMENT}]
     },
     // ------------------------------------------------------------------------------
@@ -515,19 +515,19 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if displayName correctly defined - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static displayName = "Hello";
         }
-      `].join('\n')
+      `
     },
     {
       // Do not error if displayName correctly defined - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static displayName = "Hello";
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {displayName: STATIC_PUBLIC_FIELD}]
     },
     // ------------------------------------------------------------------------------
@@ -535,24 +535,24 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if displayName correctly defined - static getter
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get displayName() {
             return "Hello";
           }
         }
-      `].join('\n'),
+      `,
       options: [STATIC_GETTER]
     },
     {
       // Do not error if contextTypes correctly defined - static getter
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get displayName() {
             return "Hello";
           }
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {displayName: STATIC_GETTER}]
     },
     // ------------------------------------------------------------------------------
@@ -560,7 +560,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if displayName correctly defined - assignment
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -568,12 +568,12 @@ ruleTester.run('static-property-placement', rule, {
         }
 
         MyComponent.displayName = "Hello";
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT]
     },
     {
       // Do not error if displayName correctly defined - assignment
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -581,7 +581,7 @@ ruleTester.run('static-property-placement', rule, {
         }
 
         MyComponent.displayName = "Hello";
-      `].join('\n'),
+      `,
       options: [STATIC_PUBLIC_FIELD, {displayName: PROPERTY_ASSIGNMENT}]
     },
     // ------------------------------------------------------------------------------
@@ -589,23 +589,23 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if defaultProps correctly defined - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static defaultProps = {
             something: 'Bob'
           };
         }
-      `].join('\n')
+      `
     },
     {
       // Do not error if defaultProps correctly defined - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static defaultProps = {
             something: 'Bob'
           };
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {defaultProps: STATIC_PUBLIC_FIELD}]
     },
     // ------------------------------------------------------------------------------
@@ -613,7 +613,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if defaultProps correctly defined - static getter
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get defaultProps() {
             return {
@@ -621,12 +621,12 @@ ruleTester.run('static-property-placement', rule, {
             };
           }
         }
-      `].join('\n'),
+      `,
       options: [STATIC_GETTER]
     },
     {
       // Do not error if contextTypes correctly defined - static getter
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get defaultProps() {
             return {
@@ -634,7 +634,7 @@ ruleTester.run('static-property-placement', rule, {
             };
           }
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {defaultProps: STATIC_GETTER}]
     },
     // ------------------------------------------------------------------------------
@@ -642,7 +642,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if defaultProps correctly defined - assignment
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -652,12 +652,12 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.defaultProps = {
           name: 'Bob'
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT]
     },
     {
       // Do not error if defaultProps correctly defined - assignment
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -667,7 +667,7 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.defaultProps = {
           name: 'Bob'
         }
-      `].join('\n'),
+      `,
       options: [STATIC_PUBLIC_FIELD, {defaultProps: PROPERTY_ASSIGNMENT}]
     },
     // ------------------------------------------------------------------------------
@@ -675,23 +675,23 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if propTypes correctly defined - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static propTypes = {
             something: PropTypes.bool
           };
         }
-      `].join('\n')
+      `
     },
     {
       // Do not error if propTypes correctly defined - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static propTypes = {
             something: PropTypes.bool
           };
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {propTypes: STATIC_PUBLIC_FIELD}]
     },
     // ------------------------------------------------------------------------------
@@ -699,7 +699,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if propTypes correctly defined - static getter
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get propTypes() {
             return {
@@ -707,12 +707,12 @@ ruleTester.run('static-property-placement', rule, {
             };
           }
         }
-      `].join('\n'),
+      `,
       options: [STATIC_GETTER]
     },
     {
       // Do not error if contextTypes correctly defined - static getter
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get propTypes() {
             return {
@@ -720,7 +720,7 @@ ruleTester.run('static-property-placement', rule, {
             };
           }
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {propTypes: STATIC_GETTER}]
     },
     // ------------------------------------------------------------------------------
@@ -728,7 +728,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if propTypes correctly defined - assignment
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -738,12 +738,12 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT]
     },
     {
       // Do not error if propTypes correctly defined - assignment
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -753,7 +753,7 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
+      `,
       options: [STATIC_PUBLIC_FIELD, {propTypes: PROPERTY_ASSIGNMENT}]
     },
     // ------------------------------------------------------------------------------
@@ -761,7 +761,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if multiple properties and match config - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             something: PropTypes.bool
@@ -783,11 +783,11 @@ ruleTester.run('static-property-placement', rule, {
             something: PropTypes.bool
           };
         }
-      `].join('\n')
+      `
     },
     {
       // Do not error if multiple properties and match config - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             something: PropTypes.bool
@@ -809,7 +809,7 @@ ruleTester.run('static-property-placement', rule, {
             something: PropTypes.bool
           };
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {
         childContextTypes: STATIC_PUBLIC_FIELD,
         contextTypes: STATIC_PUBLIC_FIELD,
@@ -824,7 +824,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if childContextTypes correctly defined - static getter
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get childContextTypes() {
             return {
@@ -858,12 +858,12 @@ ruleTester.run('static-property-placement', rule, {
             };
           }
         }
-      `].join('\n'),
+      `,
       options: [STATIC_GETTER]
     },
     {
       // Do not error if contextTypes correctly defined - static getter
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get childContextTypes() {
             return {
@@ -897,7 +897,7 @@ ruleTester.run('static-property-placement', rule, {
             };
           }
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {
         childContextTypes: STATIC_GETTER,
         contextTypes: STATIC_GETTER,
@@ -912,7 +912,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if multiple properties and match config - assignment
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -936,12 +936,12 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT]
     },
     {
       // Do not error if multiple properties and match config - static field
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -965,7 +965,7 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
+      `,
       options: [STATIC_PUBLIC_FIELD, {
         childContextTypes: PROPERTY_ASSIGNMENT,
         contextTypes: PROPERTY_ASSIGNMENT,
@@ -979,7 +979,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Do not error if mixed property positions and match config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             name: PropTypes.string.isRequired
@@ -1001,7 +1001,7 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
+      `,
       options: [STATIC_PUBLIC_FIELD, {
         displayName: STATIC_GETTER,
         defaultProps: PROPERTY_ASSIGNMENT,
@@ -1010,7 +1010,7 @@ ruleTester.run('static-property-placement', rule, {
     },
     {
       // Do not error if mixed property positions and match config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             name: PropTypes.string.isRequired
@@ -1032,7 +1032,7 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {
         childContextTypes: STATIC_PUBLIC_FIELD,
         contextTypes: STATIC_PUBLIC_FIELD,
@@ -1044,7 +1044,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // SFC ignored and component is valid
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             name: PropTypes.string.isRequired
@@ -1066,11 +1066,11 @@ ruleTester.run('static-property-placement', rule, {
         OtherComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n')
+      `
     },
     {
       // Multiple components validated
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             name: PropTypes.string.isRequired
@@ -1092,14 +1092,14 @@ ruleTester.run('static-property-placement', rule, {
             name: PropTypes.string.isRequired
           }
         }
-      `].join('\n')
+      `
     },
     // ------------------------------------------------------------------------------
     // edge cases
     // ------------------------------------------------------------------------------
     {
       // Do not error if property assignment is inside a class function
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static displayName = "Hello";
 
@@ -1107,12 +1107,12 @@ ruleTester.run('static-property-placement', rule, {
             console.log(MyComponent.displayName);
           }
         }
-      `].join('\n'),
+      `,
       options: [STATIC_PUBLIC_FIELD]
     },
     {
       // Do not error if display name value changed
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static displayName = "Hello";
 
@@ -1120,7 +1120,7 @@ ruleTester.run('static-property-placement', rule, {
             MyComponent.displayName = "Bonjour";
           }
         }
-      `].join('\n'),
+      `,
       options: [STATIC_PUBLIC_FIELD]
     }
   ],
@@ -1131,7 +1131,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Error if multiple properties are incorrectly positioned according to config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -1157,7 +1157,7 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
+      `,
       errors: [
         {
           messageId: 'notStaticClassProp',
@@ -1187,7 +1187,7 @@ ruleTester.run('static-property-placement', rule, {
     },
     {
       // Error if multiple properties are incorrectly positioned according to config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -1213,7 +1213,7 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT, {
         childContextTypes: STATIC_PUBLIC_FIELD,
         contextTypes: STATIC_PUBLIC_FIELD,
@@ -1254,7 +1254,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Error if multiple properties are incorrectly positioned according to config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get childContextTypes() {
             return {
@@ -1288,7 +1288,7 @@ ruleTester.run('static-property-placement', rule, {
             };
           }
         }
-      `].join('\n'),
+      `,
       errors: [
         {
           messageId: 'notStaticClassProp',
@@ -1318,7 +1318,7 @@ ruleTester.run('static-property-placement', rule, {
     },
     {
       // Error if multiple properties are incorrectly positioned according to config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get childContextTypes() {
             return {
@@ -1352,15 +1352,18 @@ ruleTester.run('static-property-placement', rule, {
             };
           }
         }
-      `].join('\n'),
-      options: [PROPERTY_ASSIGNMENT, {
-        childContextTypes: STATIC_PUBLIC_FIELD,
-        contextTypes: STATIC_PUBLIC_FIELD,
-        contextType: STATIC_PUBLIC_FIELD,
-        displayName: STATIC_PUBLIC_FIELD,
-        defaultProps: STATIC_PUBLIC_FIELD,
-        propTypes: STATIC_PUBLIC_FIELD
-      }],
+      `,
+      options: [
+        PROPERTY_ASSIGNMENT,
+        {
+          childContextTypes: STATIC_PUBLIC_FIELD,
+          contextTypes: STATIC_PUBLIC_FIELD,
+          contextType: STATIC_PUBLIC_FIELD,
+          displayName: STATIC_PUBLIC_FIELD,
+          defaultProps: STATIC_PUBLIC_FIELD,
+          propTypes: STATIC_PUBLIC_FIELD
+        }
+      ],
       errors: [
         {
           messageId: 'notStaticClassProp',
@@ -1393,7 +1396,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Error if multiple properties are incorrectly positioned according to config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             something: PropTypes.bool
@@ -1415,7 +1418,7 @@ ruleTester.run('static-property-placement', rule, {
             something: PropTypes.bool
           };
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT],
       errors: [
         {
@@ -1446,7 +1449,7 @@ ruleTester.run('static-property-placement', rule, {
     },
     {
       // Error if multiple properties are incorrectly positioned according to config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             something: PropTypes.bool
@@ -1468,15 +1471,18 @@ ruleTester.run('static-property-placement', rule, {
             something: PropTypes.bool
           };
         }
-      `].join('\n'),
-      options: [STATIC_PUBLIC_FIELD, {
-        childContextTypes: PROPERTY_ASSIGNMENT,
-        contextTypes: PROPERTY_ASSIGNMENT,
-        contextType: PROPERTY_ASSIGNMENT,
-        displayName: PROPERTY_ASSIGNMENT,
-        defaultProps: PROPERTY_ASSIGNMENT,
-        propTypes: PROPERTY_ASSIGNMENT
-      }],
+      `,
+      options: [
+        STATIC_PUBLIC_FIELD,
+        {
+          childContextTypes: PROPERTY_ASSIGNMENT,
+          contextTypes: PROPERTY_ASSIGNMENT,
+          contextType: PROPERTY_ASSIGNMENT,
+          displayName: PROPERTY_ASSIGNMENT,
+          defaultProps: PROPERTY_ASSIGNMENT,
+          propTypes: PROPERTY_ASSIGNMENT
+        }
+      ],
       errors: [
         {
           messageId: 'declareOutsideClass',
@@ -1509,7 +1515,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Error if multiple properties are incorrectly positioned according to config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get childContextTypes() {
             return {
@@ -1543,7 +1549,7 @@ ruleTester.run('static-property-placement', rule, {
             };
           }
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT],
       errors: [
         {
@@ -1574,7 +1580,7 @@ ruleTester.run('static-property-placement', rule, {
     },
     {
       // Error if multiple properties are incorrectly positioned according to config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static get childContextTypes() {
             return {
@@ -1608,15 +1614,18 @@ ruleTester.run('static-property-placement', rule, {
             };
           }
         }
-      `].join('\n'),
-      options: [STATIC_GETTER, {
-        childContextTypes: PROPERTY_ASSIGNMENT,
-        contextTypes: PROPERTY_ASSIGNMENT,
-        contextType: PROPERTY_ASSIGNMENT,
-        displayName: PROPERTY_ASSIGNMENT,
-        defaultProps: PROPERTY_ASSIGNMENT,
-        propTypes: PROPERTY_ASSIGNMENT
-      }],
+      `,
+      options: [
+        STATIC_GETTER,
+        {
+          childContextTypes: PROPERTY_ASSIGNMENT,
+          contextTypes: PROPERTY_ASSIGNMENT,
+          contextType: PROPERTY_ASSIGNMENT,
+          displayName: PROPERTY_ASSIGNMENT,
+          defaultProps: PROPERTY_ASSIGNMENT,
+          propTypes: PROPERTY_ASSIGNMENT
+        }
+      ],
       errors: [
         {
           messageId: 'declareOutsideClass',
@@ -1649,7 +1658,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Error if multiple properties are incorrectly positioned according to config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             something: PropTypes.bool
@@ -1671,7 +1680,7 @@ ruleTester.run('static-property-placement', rule, {
             something: PropTypes.bool
           };
         }
-      `].join('\n'),
+      `,
       options: [STATIC_GETTER],
       errors: [
         {
@@ -1702,7 +1711,7 @@ ruleTester.run('static-property-placement', rule, {
     },
     {
       // Error if multiple properties are incorrectly positioned according to config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             something: PropTypes.bool
@@ -1724,15 +1733,18 @@ ruleTester.run('static-property-placement', rule, {
             something: PropTypes.bool
           };
         }
-      `].join('\n'),
-      options: [STATIC_PUBLIC_FIELD, {
-        childContextTypes: STATIC_GETTER,
-        contextTypes: STATIC_GETTER,
-        contextType: STATIC_GETTER,
-        displayName: STATIC_GETTER,
-        defaultProps: STATIC_GETTER,
-        propTypes: STATIC_GETTER
-      }],
+      `,
+      options: [
+        STATIC_PUBLIC_FIELD,
+        {
+          childContextTypes: STATIC_GETTER,
+          contextTypes: STATIC_GETTER,
+          contextType: STATIC_GETTER,
+          displayName: STATIC_GETTER,
+          defaultProps: STATIC_GETTER,
+          propTypes: STATIC_GETTER
+        }
+      ],
       errors: [
         {
           messageId: 'notGetterClassFunc',
@@ -1765,7 +1777,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Error if multiple properties are incorrectly positioned according to config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -1791,7 +1803,7 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
+      `,
       options: [STATIC_GETTER],
       errors: [
         {
@@ -1822,7 +1834,7 @@ ruleTester.run('static-property-placement', rule, {
     },
     {
       // Error if multiple properties are incorrectly positioned according to config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           render() {
             return null;
@@ -1848,15 +1860,18 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
-      options: [PROPERTY_ASSIGNMENT, {
-        childContextTypes: STATIC_GETTER,
-        contextTypes: STATIC_GETTER,
-        contextType: STATIC_GETTER,
-        displayName: STATIC_GETTER,
-        defaultProps: STATIC_GETTER,
-        propTypes: STATIC_GETTER
-      }],
+      `,
+      options: [
+        PROPERTY_ASSIGNMENT,
+        {
+          childContextTypes: STATIC_GETTER,
+          contextTypes: STATIC_GETTER,
+          contextType: STATIC_GETTER,
+          displayName: STATIC_GETTER,
+          defaultProps: STATIC_GETTER,
+          propTypes: STATIC_GETTER
+        }
+      ],
       errors: [
         {
           messageId: 'notGetterClassFunc',
@@ -1889,7 +1904,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // Error if mixed property positions but dont match config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             name: PropTypes.string.isRequired
@@ -1913,12 +1928,15 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
-      options: [PROPERTY_ASSIGNMENT, {
-        defaultProps: STATIC_GETTER,
-        propTypes: STATIC_PUBLIC_FIELD,
-        displayName: STATIC_PUBLIC_FIELD
-      }],
+      `,
+      options: [
+        PROPERTY_ASSIGNMENT,
+        {
+          defaultProps: STATIC_GETTER,
+          propTypes: STATIC_PUBLIC_FIELD,
+          displayName: STATIC_PUBLIC_FIELD
+        }
+      ],
       errors: [
         {
           messageId: 'declareOutsideClass',
@@ -1948,7 +1966,7 @@ ruleTester.run('static-property-placement', rule, {
     },
     {
       // Error if mixed property positions but dont match config
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             name: PropTypes.string.isRequired
@@ -1972,13 +1990,16 @@ ruleTester.run('static-property-placement', rule, {
         MyComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
-      options: [STATIC_GETTER, {
-        childContextTypes: PROPERTY_ASSIGNMENT,
-        contextTypes: PROPERTY_ASSIGNMENT,
-        contextType: PROPERTY_ASSIGNMENT,
-        displayName: PROPERTY_ASSIGNMENT
-      }],
+      `,
+      options: [
+        STATIC_GETTER,
+        {
+          childContextTypes: PROPERTY_ASSIGNMENT,
+          contextTypes: PROPERTY_ASSIGNMENT,
+          contextType: PROPERTY_ASSIGNMENT,
+          displayName: PROPERTY_ASSIGNMENT
+        }
+      ],
       errors: [
         {
           messageId: 'declareOutsideClass',
@@ -2011,7 +2032,7 @@ ruleTester.run('static-property-placement', rule, {
     // ------------------------------------------------------------------------------
     {
       // SFC ignored and component is invalid
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             name: PropTypes.string.isRequired
@@ -2037,11 +2058,14 @@ ruleTester.run('static-property-placement', rule, {
         OtherComponent.propTypes = {
           name: PropTypes.string.isRequired
         }
-      `].join('\n'),
-      options: [PROPERTY_ASSIGNMENT, {
-        defaultProps: STATIC_PUBLIC_FIELD,
-        propTypes: STATIC_GETTER
-      }],
+      `,
+      options: [
+        PROPERTY_ASSIGNMENT,
+        {
+          defaultProps: STATIC_PUBLIC_FIELD,
+          propTypes: STATIC_GETTER
+        }
+      ],
       errors: [
         {
           messageId: 'declareOutsideClass',
@@ -2063,7 +2087,7 @@ ruleTester.run('static-property-placement', rule, {
     },
     {
       // Multiple components validated
-      code: [`
+      code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
             name: PropTypes.string.isRequired
@@ -2095,7 +2119,7 @@ ruleTester.run('static-property-placement', rule, {
             return "Hello";
           }
         }
-      `].join('\n'),
+      `,
       options: [PROPERTY_ASSIGNMENT],
       errors: [
         {
@@ -2131,7 +2155,6 @@ ruleTester.run('static-property-placement', rule, {
           data: {name: 'displayName'}
         }
       ]
-
     }
   ]
 });

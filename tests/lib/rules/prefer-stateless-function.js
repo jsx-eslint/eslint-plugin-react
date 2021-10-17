@@ -28,7 +28,6 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('prefer-stateless-function', rule, {
-
   valid: [
     {
       // Already a stateless function
@@ -37,10 +36,12 @@ ruleTester.run('prefer-stateless-function', rule, {
           return <div>{props.foo}</div>;
         };
       `
-    }, {
+    },
+    {
       // Already a stateless (arrow) function
       code: 'const Foo = ({foo}) => <div>{foo}</div>;'
-    }, {
+    },
+    {
       // Extends from PureComponent and uses props
       code: `
         class Foo extends React.PureComponent {
@@ -49,10 +50,9 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      options: [{
-        ignorePureComponents: true
-      }]
-    }, {
+      options: [{ignorePureComponents: true}]
+    },
+    {
       // Extends from PureComponent and uses context
       code: `
         class Foo extends React.PureComponent {
@@ -61,10 +61,9 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      options: [{
-        ignorePureComponents: true
-      }]
-    }, {
+      options: [{ignorePureComponents: true}]
+    },
+    {
       // Extends from PureComponent in an expression context.
       code: `
         const Foo = class extends React.PureComponent {
@@ -74,10 +73,9 @@ ruleTester.run('prefer-stateless-function', rule, {
         };
       `,
       parserOptions,
-      options: [{
-        ignorePureComponents: true
-      }]
-    }, {
+      options: [{ignorePureComponents: true}]
+    },
+    {
       // Has a lifecyle method
       code: `
         class Foo extends React.Component {
@@ -89,7 +87,8 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `
-    }, {
+    },
+    {
       // Has a state
       code: `
         class Foo extends React.Component {
@@ -101,7 +100,8 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `
-    }, {
+    },
+    {
       // Use refs
       code: `
         class Foo extends React.Component {
@@ -113,7 +113,8 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `
-    }, {
+    },
+    {
       // Has an additional method
       code: `
         class Foo extends React.Component {
@@ -123,7 +124,8 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `
-    }, {
+    },
+    {
       // Has an empty (no super) constructor
       code: `
         class Foo extends React.Component {
@@ -133,7 +135,8 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `
-    }, {
+    },
+    {
       // Has a constructor
       code: `
         class Foo extends React.Component {
@@ -145,7 +148,8 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `
-    }, {
+    },
+    {
       // Has a constructor (2)
       code: `
         class Foo extends React.Component {
@@ -157,7 +161,8 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `
-    }, {
+    },
+    {
       // Issue 2187
       code: `
         class Foo extends React.Component {
@@ -169,7 +174,8 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.TYPESCRIPT_ESLINT
-    }, {
+    },
+    {
       // Use this.bar
       code: `
         class Foo extends React.Component {
@@ -179,7 +185,8 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT
-    }, {
+    },
+    {
       // Use this.bar (destructuring)
       code: `
         class Foo extends React.Component {
@@ -190,7 +197,8 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT
-    }, {
+    },
+    {
       // Use this[bar]
       code: `
         class Foo extends React.Component {
@@ -200,7 +208,8 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT
-    }, {
+    },
+    {
       // Use this['bar']
       code: `
         class Foo extends React.Component {
@@ -210,7 +219,8 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT
-    }, {
+    },
+    {
       // Can return null (ES6, React 0.14.0)
       code: `
         class Foo extends React.Component {
@@ -228,7 +238,8 @@ ruleTester.run('prefer-stateless-function', rule, {
           version: '0.14.0'
         }
       }
-    }, {
+    },
+    {
       // Can return null (ES5, React 0.14.0)
       code: `
         var Foo = createReactClass({
@@ -245,7 +256,8 @@ ruleTester.run('prefer-stateless-function', rule, {
           version: '0.14.0'
         }
       }
-    }, {
+    },
+    {
       // Can return null (shorthand if in return, React 0.14.0)
       code: `
         class Foo extends React.Component {
@@ -260,7 +272,8 @@ ruleTester.run('prefer-stateless-function', rule, {
           version: '0.14.0'
         }
       }
-    }, {
+    },
+    {
       code: `
         export default (Component) => (
           class Test extends React.Component {
@@ -272,7 +285,8 @@ ruleTester.run('prefer-stateless-function', rule, {
         );
       `,
       parser: parsers.BABEL_ESLINT
-    }, {
+    },
+    {
       // Has childContextTypes
       code: `
         class Foo extends React.Component {
@@ -285,7 +299,8 @@ ruleTester.run('prefer-stateless-function', rule, {
         };
       `,
       parser: parsers.BABEL_ESLINT
-    }, {
+    },
+    {
       // Uses a decorator
       code: `
         @foo
@@ -296,7 +311,8 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT
-    }, {
+    },
+    {
       // Uses a called decorator
       code: `
         @foo("bar")
@@ -307,7 +323,8 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT
-    }, {
+    },
+    {
       // Uses multiple decorators
       code: `
         @foo
@@ -328,9 +345,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      options: [{
-        ignorePureComponents: true
-      }]
+      options: [{ignorePureComponents: true}]
     }
   ],
 
@@ -344,10 +359,9 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           render() {
@@ -355,10 +369,9 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.PureComponent {
           render() {
@@ -366,10 +379,9 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.PureComponent {
           render() {
@@ -377,10 +389,9 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           static get displayName() {
@@ -392,10 +403,9 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           static displayName = 'Foo';
@@ -405,10 +415,9 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           static get propTypes() {
@@ -422,10 +431,9 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           static propTypes = {
@@ -437,10 +445,9 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           props: {
@@ -452,10 +459,9 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           constructor() {
@@ -467,10 +473,9 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           render() {
@@ -479,10 +484,9 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           render() {
@@ -494,10 +498,9 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         var Foo = createReactClass({
           render: function() {
@@ -508,10 +511,9 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         });
       `,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           render() {
@@ -519,10 +521,9 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           static defaultProps = {
@@ -535,10 +536,9 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           static get defaultProps() {
@@ -552,10 +552,9 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           render() {
@@ -567,10 +566,9 @@ ruleTester.run('prefer-stateless-function', rule, {
           foo: true
         };
       `,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           static contextTypes = {
@@ -583,10 +581,9 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           static get contextTypes() {
@@ -600,10 +597,9 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
-    }, {
+      errors: [{messageId: 'componentShouldBePure'}]
+    },
+    {
       code: `
         class Foo extends React.Component {
           render() {
@@ -615,9 +611,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           foo: PropTypes.boolean
         };
       `,
-      errors: [{
-        messageId: 'componentShouldBePure'
-      }]
+      errors: [{messageId: 'componentShouldBePure'}]
     }
   ]
 });

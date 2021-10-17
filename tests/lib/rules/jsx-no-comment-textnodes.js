@@ -28,135 +28,142 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-no-comment-textnodes', rule, {
-
   valid: [
     {
       code: `
-      class Comp1 extends Component {
-        render() {
-          return (
-            <div>
-              {/* valid */}
-            </div>
-          );
+        class Comp1 extends Component {
+          render() {
+            return (
+              <div>
+                {/* valid */}
+              </div>
+            );
+          }
         }
-      }
-    `,
-      parser: parsers.BABEL_ESLINT
-    }, {
-      code: `
-      class Comp1 extends Component {
-        render() {
-          return (
-            <>
-              {/* valid */}
-            </>
-          );
-        }
-      }
-    `,
-      parser: parsers.BABEL_ESLINT
-    }, {
-      code: `
-      class Comp1 extends Component {
-        render() {
-          return (<div>{/* valid */}</div>);
-        }
-      }
-    `,
-      parser: parsers.BABEL_ESLINT
-    }, {
-      code: `
-      class Comp1 extends Component {
-        render() {
-          const bar = (<div>{/* valid */}</div>);
-          return bar;
-        }
-      }
-    `,
-      parser: parsers.BABEL_ESLINT
-    }, {
-      code: `
-      var Hello = createReactClass({
-        foo: (<div>{/* valid */}</div>),
-        render() {
-          return this.foo;
-        },
-      });
-    `,
-      parser: parsers.BABEL_ESLINT
-    }, {
-      code: `
-      class Comp1 extends Component {
-        render() {
-          return (
-            <div>
-              {/* valid */}
-              {/* valid 2 */}
-              {/* valid 3 */}
-            </div>
-          );
-        }
-      }
-    `,
-      parser: parsers.BABEL_ESLINT
-    }, {
-      code: `
-      class Comp1 extends Component {
-        render() {
-          return (
-            <div>
-            </div>
-          );
-        }
-      }
-    `,
-      parser: parsers.BABEL_ESLINT
-    }, {
-      code: `
-      var foo = require('foo');
-    `,
-      parser: parsers.BABEL_ESLINT
-    }, {
-      code: `
-      <Foo bar='test'>
-        {/* valid */}
-      </Foo>
-    `,
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
       code: `
-      <strong>
-        &nbsp;https://www.example.com/attachment/download/1
-      </strong>
-    `,
+        class Comp1 extends Component {
+          render() {
+            return (
+              <>
+                {/* valid */}
+              </>
+            );
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        class Comp1 extends Component {
+          render() {
+            return (<div>{/* valid */}</div>);
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        class Comp1 extends Component {
+          render() {
+            const bar = (<div>{/* valid */}</div>);
+            return bar;
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          foo: (<div>{/* valid */}</div>),
+          render() {
+            return this.foo;
+          },
+        });
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        class Comp1 extends Component {
+          render() {
+            return (
+              <div>
+                {/* valid */}
+                {/* valid 2 */}
+                {/* valid 3 */}
+              </div>
+            );
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        class Comp1 extends Component {
+          render() {
+            return (
+              <div>
+              </div>
+            );
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        var foo = require('foo');
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        <Foo bar='test'>
+          {/* valid */}
+        </Foo>
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        <strong>
+          &nbsp;https://www.example.com/attachment/download/1
+        </strong>
+      `,
       parser: parsers.BABEL_ESLINT
     },
 
     // inside element declarations
     {
       code: `
-      <Foo /* valid */ placeholder={'foo'}/>
-    `,
+        <Foo /* valid */ placeholder={'foo'}/>
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
       code: `
-      </* valid */></>
-    `,
+        </* valid */></>
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
       code: `
-      <></* valid *//>
-    `,
+        <></* valid *//>
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
       code: `
-      <Foo title={'foo' /* valid */}/>
-    `,
+        <Foo title={'foo' /* valid */}/>
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
@@ -176,119 +183,127 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
   ].concat(parsers.TS([
     {
       code: `
-      class Comp1 extends Component {
-        render() {
-          return (
-            <div>
-              {/* valid */}
-            </div>
-          );
+        class Comp1 extends Component {
+          render() {
+            return (
+              <div>
+                {/* valid */}
+              </div>
+            );
+          }
         }
-      }
-    `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
-    }, {
-      code: `
-      class Comp1 extends Component {
-        render() {
-          return (
-            <>
-              {/* valid */}
-            </>
-          );
-        }
-      }
-    `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
-    }, {
-      code: `
-      class Comp1 extends Component {
-        render() {
-          return (<div>{/* valid */}</div>);
-        }
-      }
-    `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
-    }, {
-      code: `
-      class Comp1 extends Component {
-        render() {
-          const bar = (<div>{/* valid */}</div>);
-          return bar;
-        }
-      }
-    `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
-    }, {
-      code: `
-      var Hello = createReactClass({
-        foo: (<div>{/* valid */}</div>),
-        render() {
-          return this.foo;
-        },
-      });
-    `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
-    }, {
-      code: `
-      class Comp1 extends Component {
-        render() {
-          return (
-            <div>
-              {/* valid */}
-              {/* valid 2 */}
-              {/* valid 3 */}
-            </div>
-          );
-        }
-      }
-    `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
-    }, {
-      code: `
-      class Comp1 extends Component {
-        render() {
-          return (
-            <div>
-            </div>
-          );
-        }
-      }
-    `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
-    }, {
-      code: `
-      var foo = require('foo');
-    `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
-    }, {
-      code: `
-      <Foo bar='test'>
-        {/* valid */}
-      </Foo>
-    `,
+      `,
       parser: parsers['@TYPESCRIPT_ESLINT']
     },
     {
       code: `
-      <strong>
-        &nbsp;https://www.example.com/attachment/download/1
-      </strong>
-    `,
+        class Comp1 extends Component {
+          render() {
+            return (
+              <>
+                {/* valid */}
+              </>
+            );
+          }
+        }
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    },
+    {
+      code: `
+        class Comp1 extends Component {
+          render() {
+            return (<div>{/* valid */}</div>);
+          }
+        }
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    },
+    {
+      code: `
+        class Comp1 extends Component {
+          render() {
+            const bar = (<div>{/* valid */}</div>);
+            return bar;
+          }
+        }
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          foo: (<div>{/* valid */}</div>),
+          render() {
+            return this.foo;
+          },
+        });
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    },
+    {
+      code: `
+        class Comp1 extends Component {
+          render() {
+            return (
+              <div>
+                {/* valid */}
+                {/* valid 2 */}
+                {/* valid 3 */}
+              </div>
+            );
+          }
+        }
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    },
+    {
+      code: `
+        class Comp1 extends Component {
+          render() {
+            return (
+              <div>
+              </div>
+            );
+          }
+        }
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    },
+    {
+      code: `
+        var foo = require('foo');
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    },
+    {
+      code: `
+        <Foo bar='test'>
+          {/* valid */}
+        </Foo>
+      `,
+      parser: parsers['@TYPESCRIPT_ESLINT']
+    },
+    {
+      code: `
+        <strong>
+          &nbsp;https://www.example.com/attachment/download/1
+        </strong>
+      `,
       parser: parsers['@TYPESCRIPT_ESLINT']
     },
 
     // inside element declarations
     {
       code: `
-      <Foo /* valid */ placeholder={'foo'}/>
-    `,
+        <Foo /* valid */ placeholder={'foo'}/>
+      `,
       parser: parsers['@TYPESCRIPT_ESLINT']
     },
     {
       code: `
-      <Foo title={'foo' /* valid */}/>
-    `,
+        <Foo title={'foo' /* valid */}/>
+      `,
       parser: parsers['@TYPESCRIPT_ESLINT']
     },
     {
@@ -304,78 +319,83 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
   invalid: [
     {
       code: `
-      class Comp1 extends Component {
-        render() {
-          return (<div>// invalid</div>);
+        class Comp1 extends Component {
+          render() {
+            return (<div>// invalid</div>);
+          }
         }
-      }
-    `,
+      `,
       parser: parsers.BABEL_ESLINT,
       errors: [{messageId: 'putCommentInBraces'}]
-    }, {
+    },
+    {
       code: `
-      class Comp1 extends Component {
-        render() {
-          return (<>// invalid</>);
+        class Comp1 extends Component {
+          render() {
+            return (<>// invalid</>);
+          }
         }
-      }
-    `,
+      `,
       parser: parsers.BABEL_ESLINT,
       errors: [{messageId: 'putCommentInBraces'}]
-    }, {
+    },
+    {
       code: `
-      class Comp1 extends Component {
-        render() {
-          return (<div>/* invalid */</div>);
+        class Comp1 extends Component {
+          render() {
+            return (<div>/* invalid */</div>);
+          }
         }
-      }
-    `,
+      `,
       parser: parsers.BABEL_ESLINT,
       errors: [{messageId: 'putCommentInBraces'}]
-    }, {
+    },
+    {
       code: `
-      class Comp1 extends Component {
-        render() {
-          return (
-            <div>
-              // invalid
-            </div>
-          );
+        class Comp1 extends Component {
+          render() {
+            return (
+              <div>
+                // invalid
+              </div>
+            );
+          }
         }
-      }
-    `,
+      `,
       parser: parsers.BABEL_ESLINT,
       errors: [{messageId: 'putCommentInBraces'}]
-    }, {
+    },
+    {
       code: `
-      class Comp1 extends Component {
-        render() {
-          return (
-            <div>
-              asdjfl
-              /* invalid */
-              foo
-            </div>
-          );
+        class Comp1 extends Component {
+          render() {
+            return (
+              <div>
+                asdjfl
+                /* invalid */
+                foo
+              </div>
+            );
+          }
         }
-      }
-    `,
+      `,
       parser: parsers.BABEL_ESLINT,
       errors: [{messageId: 'putCommentInBraces'}]
-    }, {
+    },
+    {
       code: `
-      class Comp1 extends Component {
-        render() {
-          return (
-            <div>
-              {'asdjfl'}
-              // invalid
-              {'foo'}
-            </div>
-          );
+        class Comp1 extends Component {
+          render() {
+            return (
+              <div>
+                {'asdjfl'}
+                // invalid
+                {'foo'}
+              </div>
+            );
+          }
         }
-      }
-    `,
+      `,
       parser: parsers.BABEL_ESLINT,
       errors: [{messageId: 'putCommentInBraces'}]
     },
@@ -398,70 +418,75 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
       errors: [{messageId: 'putCommentInBraces'}]
-    }, {
+    },
+    {
       code: `
-      class Comp1 extends Component {
-        render() {
-          return (<>// invalid</>);
+        class Comp1 extends Component {
+          render() {
+            return (<>// invalid</>);
+          }
         }
-      }
-    `,
+      `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
       errors: [{messageId: 'putCommentInBraces'}]
-    }, {
+    },
+    {
       code: `
-      class Comp1 extends Component {
-        render() {
-          return (<div>/* invalid */</div>);
+        class Comp1 extends Component {
+          render() {
+            return (<div>/* invalid */</div>);
+          }
         }
-      }
-    `,
+      `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
       errors: [{messageId: 'putCommentInBraces'}]
-    }, {
+    },
+    {
       code: `
-      class Comp1 extends Component {
-        render() {
-          return (
-            <div>
-              // invalid
-            </div>
-          );
+        class Comp1 extends Component {
+          render() {
+            return (
+              <div>
+                // invalid
+              </div>
+            );
+          }
         }
-      }
-    `,
+      `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
       errors: [{messageId: 'putCommentInBraces'}]
-    }, {
+    },
+    {
       code: `
-      class Comp1 extends Component {
-        render() {
-          return (
-            <div>
-              asdjfl
-              /* invalid */
-              foo
-            </div>
-          );
+        class Comp1 extends Component {
+          render() {
+            return (
+              <div>
+                asdjfl
+                /* invalid */
+                foo
+              </div>
+            );
+          }
         }
-      }
-    `,
+      `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
       errors: [{messageId: 'putCommentInBraces'}]
-    }, {
+    },
+    {
       code: `
-      class Comp1 extends Component {
-        render() {
-          return (
-            <div>
-              {'asdjfl'}
-              // invalid
-              {'foo'}
-            </div>
-          );
+        class Comp1 extends Component {
+          render() {
+            return (
+              <div>
+                {'asdjfl'}
+                // invalid
+                {'foo'}
+              </div>
+            );
+          }
         }
-      }
-    `,
+      `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
       errors: [{messageId: 'putCommentInBraces'}]
     }

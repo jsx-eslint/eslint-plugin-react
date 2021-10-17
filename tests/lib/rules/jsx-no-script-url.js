@@ -37,31 +37,50 @@ ruleTester.run('jsx-no-script-url', rule, {
     {code: '<Foo href="javascript:"></Foo>'},
     {code: '<a href />'}
   ],
-  invalid: [{
-    code: '<a href="javascript:"></a>',
-    errors: [{messageId: 'noScriptURL'}]
-  }, {
-    code: '<a href="javascript:void(0)"></a>',
-    errors: [{messageId: 'noScriptURL'}]
-  }, {
-    code: '<a href="j\n\n\na\rv\tascript:"></a>',
-    errors: [{messageId: 'noScriptURL'}]
-  }, {
-    code: '<Foo to="javascript:"></Foo>',
-    errors: [{messageId: 'noScriptURL'}],
-    options: [[{name: 'Foo', props: ['to', 'href']}]]
-  }, {
-    code: '<Foo href="javascript:"></Foo>',
-    errors: [{messageId: 'noScriptURL'}],
-    options: [[{name: 'Foo', props: ['to', 'href']}]]
-  }, {
-    code: `
+  invalid: [
+    {
+      code: '<a href="javascript:"></a>',
+      errors: [{messageId: 'noScriptURL'}]
+    },
+    {
+      code: '<a href="javascript:void(0)"></a>',
+      errors: [{messageId: 'noScriptURL'}]
+    },
+    {
+      code: '<a href="j\n\n\na\rv\tascript:"></a>',
+      errors: [{messageId: 'noScriptURL'}]
+    },
+    {
+      code: '<Foo to="javascript:"></Foo>',
+      errors: [{messageId: 'noScriptURL'}],
+      options: [
+        [{name: 'Foo', props: ['to', 'href']}]
+      ]
+    },
+    {
+      code: '<Foo href="javascript:"></Foo>',
+      errors: [{messageId: 'noScriptURL'}],
+      options: [
+        [{name: 'Foo', props: ['to', 'href']}]
+      ]
+    },
+    {
+      code: `
       <div>
         <Foo href="javascript:"></Foo>
         <Bar link="javascript:"></Bar>
       </div>
     `,
-    errors: [{messageId: 'noScriptURL'}, {messageId: 'noScriptURL'}],
-    options: [[{name: 'Foo', props: ['to', 'href']}, {name: 'Bar', props: ['link']}]]
-  }]
+      errors: [
+        {messageId: 'noScriptURL'},
+        {messageId: 'noScriptURL'}
+      ],
+      options: [
+        [
+          {name: 'Foo', props: ['to', 'href']},
+          {name: 'Bar', props: ['link']}
+        ]
+      ]
+    }
+  ]
 });

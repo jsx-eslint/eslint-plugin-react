@@ -45,26 +45,30 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         };
         foo()
       `
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         var App;
         React.render(<App/>);
       `
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         var App;
         React.render(<App/>);
       `,
       parser: parsers.BABEL_ESLINT
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         var a = 1;
         React.render(<img src={a} />);
       `
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         var App;
@@ -73,19 +77,22 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         }
         f();
       `
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         var App;
         <App.Hello />
       `
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         class HelloMessage {};
         <HelloMessage />
       `
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         class HelloMessage {
@@ -96,7 +103,8 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         };
         <HelloMessage />
       `
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         function foo() {
@@ -106,7 +114,8 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         };
         foo()
       `
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         function foo() {
@@ -116,13 +125,15 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         };
         foo()
       `
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         var object;
         React.render(<object.Tag />);
       `
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         var object;
@@ -134,7 +145,8 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
     {
       code: '/* eslint jsx-uses-vars: 1 */ var App;',
       errors: [{message: '\'App\' is defined but never used.'}]
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         var App;
@@ -142,7 +154,8 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         React.render(<App unused=""/>);
       `,
       errors: [{message: '\'unused\' is defined but never used.'}]
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         var App;
@@ -150,7 +163,8 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         React.render(<App:Hello/>);
       `,
       errors: [{message: '\'App\' is defined but never used.'}, {message: '\'Hello\' is defined but never used.'}]
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         var Button;
@@ -158,13 +172,15 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         React.render(<Button.Input unused=""/>);
       `,
       errors: [{message: '\'Input\' is defined but never used.'}]
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         class unused {}
       `,
       errors: [{message: '\'unused\' is defined but never used.'}]
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         class HelloMessage {
@@ -174,11 +190,14 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
           }
         }
       `,
-      errors: [{
-        message: '\'HelloMessage\' is defined but never used.',
-        line: 3
-      }]
-    }, {
+      errors: [
+        {
+          message: '\'HelloMessage\' is defined but never used.',
+          line: 3
+        }
+      ]
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         class HelloMessage {
@@ -188,12 +207,15 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
           }
         }
       `,
-      errors: [{
-        message: '\'HelloMessage\' is defined but never used.',
-        line: 3
-      }],
+      errors: [
+        {
+          message: '\'HelloMessage\' is defined but never used.',
+          line: 3
+        }
+      ],
       parser: parsers.BABEL_ESLINT
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         import {Hello} from 'Hello';
@@ -203,19 +225,23 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         }
         Greetings();
       `,
-      errors: [{
-        message: '\'Hello\' is defined but never used.',
-        line: 3
-      }],
+      errors: [
+        {
+          message: '\'Hello\' is defined but never used.',
+          line: 3
+        }
+      ],
       parser: parsers.BABEL_ESLINT
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         var lowercase;
         React.render(<lowercase />);
       `,
       errors: [{message: '\'lowercase\' is defined but never used.'}]
-    }, {
+    },
+    {
       code: `
         /* eslint jsx-uses-vars: 1 */
         function Greetings(div) {
@@ -223,10 +249,12 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         }
         Greetings();
       `,
-      errors: [{
-        message: '\'div\' is defined but never used.',
-        line: 3
-      }],
+      errors: [
+        {
+          message: '\'div\' is defined but never used.',
+          line: 3
+        }
+      ],
       parser: parsers.BABEL_ESLINT
     }
   ]
@@ -235,29 +263,32 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
 // Check compatibility with eslint prefer-const rule (#716)
 ruleTester.run('prefer-const', rulePreferConst, {
   valid: [],
-  invalid: [{
-    code: `
-      /* eslint jsx-uses-vars:1 */
-      let App = <div />;
-      <App />;
-    `,
-    errors: [{message: '\'App\' is never reassigned. Use \'const\' instead.'}],
-    output: `
-      /* eslint jsx-uses-vars:1 */
-      const App = <div />;
-      <App />;
-    `
-  }, {
-    code: `
-      /* eslint jsx-uses-vars:1 */
-      let filters = 'foo';
-      <div>{filters}</div>;
-    `,
-    errors: [{message: '\'filters\' is never reassigned. Use \'const\' instead.'}],
-    output: `
-      /* eslint jsx-uses-vars:1 */
-      const filters = 'foo';
-      <div>{filters}</div>;
-    `
-  }]
+  invalid: [
+    {
+      code: `
+        /* eslint jsx-uses-vars:1 */
+        let App = <div />;
+        <App />;
+      `,
+      errors: [{message: '\'App\' is never reassigned. Use \'const\' instead.'}],
+      output: `
+        /* eslint jsx-uses-vars:1 */
+        const App = <div />;
+        <App />;
+      `
+    },
+    {
+      code: `
+        /* eslint jsx-uses-vars:1 */
+        let filters = 'foo';
+        <div>{filters}</div>;
+      `,
+      errors: [{message: '\'filters\' is never reassigned. Use \'const\' instead.'}],
+      output: `
+        /* eslint jsx-uses-vars:1 */
+        const filters = 'foo';
+        <div>{filters}</div>;
+      `
+    }
+  ]
 });

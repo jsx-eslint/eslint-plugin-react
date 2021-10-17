@@ -28,254 +28,297 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-will-update-set-state', rule, {
+  valid: [
+    {
+      code: `
+        var Hello = createReactClass({
+          render: function() {
+            return <div>Hello {this.props.name}</div>;
+          }
+        });
+      `
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          componentWillUpdate: function() {}
+        });
+      `
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          componentWillUpdate: function() {
+            someNonMemberFunction(arg);
+            this.someHandler = this.setState;
+          }
+        });
+      `
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          componentWillUpdate: function() {
+            someClass.onSomeEvent(function(data) {
+              this.setState({
+                data: data
+              });
+            })
+          }
+        });
+      `
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          componentWillUpdate: function() {
+            function handleEvent(data) {
+              this.setState({
+                data: data
+              });
+            }
+            someClass.onSomeEvent(handleEvent)
+          }
+        });
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          UNSAFE_componentWillUpdate() {
+            this.setState({
+              data: data
+            });
+          }
+        }
+      `,
+      settings: {react: {version: '16.2.0'}}
+    }
+  ],
 
-  valid: [{
-    code: `
-      var Hello = createReactClass({
-        render: function() {
-          return <div>Hello {this.props.name}</div>;
-        }
-      });
-    `
-  }, {
-    code: `
-      var Hello = createReactClass({
-        componentWillUpdate: function() {}
-      });
-    `
-  }, {
-    code: `
-      var Hello = createReactClass({
-        componentWillUpdate: function() {
-          someNonMemberFunction(arg);
-          this.someHandler = this.setState;
-        }
-      });
-    `
-  }, {
-    code: `
-      var Hello = createReactClass({
-        componentWillUpdate: function() {
-          someClass.onSomeEvent(function(data) {
-            this.setState({
-              data: data
-            });
-          })
-        }
-      });
-    `
-  }, {
-    code: `
-      var Hello = createReactClass({
-        componentWillUpdate: function() {
-          function handleEvent(data) {
+  invalid: [
+    {
+      code: `
+        var Hello = createReactClass({
+          componentWillUpdate: function() {
             this.setState({
               data: data
             });
           }
-          someClass.onSomeEvent(handleEvent)
+        });
+      `,
+      errors: [
+        {
+          messageId: 'noSetState',
+          data: {name: 'componentWillUpdate'}
         }
-      });
-    `,
-    parser: parsers.BABEL_ESLINT
-  }, {
-    code: `
-      class Hello extends React.Component {
-        UNSAFE_componentWillUpdate() {
-          this.setState({
-            data: data
-          });
-        }
-      }
-    `,
-    settings: {react: {version: '16.2.0'}}
-  }],
-
-  invalid: [{
-    code: `
-      var Hello = createReactClass({
-        componentWillUpdate: function() {
-          this.setState({
-            data: data
-          });
-        }
-      });
-    `,
-    errors: [{
-      messageId: 'noSetState',
-      data: {name: 'componentWillUpdate'}
-    }]
-  }, {
-    code: `
-      class Hello extends React.Component {
-        componentWillUpdate() {
-          this.setState({
-            data: data
-          });
-        }
-      }
-    `,
-    parser: parsers.BABEL_ESLINT,
-    errors: [{
-      messageId: 'noSetState',
-      data: {name: 'componentWillUpdate'}
-    }]
-  }, {
-    code: `
-      var Hello = createReactClass({
-        componentWillUpdate: function() {
-          this.setState({
-            data: data
-          });
-        }
-      });
-    `,
-    options: ['disallow-in-func'],
-    errors: [{
-      messageId: 'noSetState',
-      data: {name: 'componentWillUpdate'}
-    }]
-  }, {
-    code: `
-      class Hello extends React.Component {
-        componentWillUpdate() {
-          this.setState({
-            data: data
-          });
-        }
-      }
-    `,
-    parser: parsers.BABEL_ESLINT,
-    options: ['disallow-in-func'],
-    errors: [{
-      messageId: 'noSetState',
-      data: {name: 'componentWillUpdate'}
-    }]
-  }, {
-    code: `
-      var Hello = createReactClass({
-        componentWillUpdate: function() {
-          someClass.onSomeEvent(function(data) {
-            this.setState({
-              data: data
-            });
-          })
-        }
-      });
-    `,
-    options: ['disallow-in-func'],
-    errors: [{
-      messageId: 'noSetState',
-      data: {name: 'componentWillUpdate'}
-    }]
-  }, {
-    code: `
-      class Hello extends React.Component {
-        componentWillUpdate() {
-          someClass.onSomeEvent(function(data) {
-            this.setState({
-              data: data
-            });
-          })
-        }
-      }
-    `,
-    parser: parsers.BABEL_ESLINT,
-    options: ['disallow-in-func'],
-    errors: [{
-      messageId: 'noSetState',
-      data: {name: 'componentWillUpdate'}
-    }]
-  }, {
-    code: `
-      var Hello = createReactClass({
-        componentWillUpdate: function() {
-          if (true) {
+      ]
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          componentWillUpdate() {
             this.setState({
               data: data
             });
           }
         }
-      });
-    `,
-    errors: [{
-      messageId: 'noSetState',
-      data: {name: 'componentWillUpdate'}
-    }]
-  }, {
-    code: `
-      class Hello extends React.Component {
-        componentWillUpdate() {
-          if (true) {
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'noSetState',
+          data: {name: 'componentWillUpdate'}
+        }
+      ]
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          componentWillUpdate: function() {
+            this.setState({
+              data: data
+            });
+          }
+        });
+      `,
+      options: ['disallow-in-func'],
+      errors: [
+        {
+          messageId: 'noSetState',
+          data: {name: 'componentWillUpdate'}
+        }
+      ]
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          componentWillUpdate() {
             this.setState({
               data: data
             });
           }
         }
-      }
-    `,
-    parser: parsers.BABEL_ESLINT,
-    errors: [{
-      messageId: 'noSetState',
-      data: {name: 'componentWillUpdate'}
-    }]
-  }, {
-    code: `
-      var Hello = createReactClass({
-        componentWillUpdate: function() {
-          someClass.onSomeEvent((data) => this.setState({data: data}));
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: ['disallow-in-func'],
+      errors: [
+        {
+          messageId: 'noSetState',
+          data: {name: 'componentWillUpdate'}
         }
-      });
-    `,
-    parser: parsers.BABEL_ESLINT,
-    options: ['disallow-in-func'],
-    errors: [{
-      messageId: 'noSetState',
-      data: {name: 'componentWillUpdate'}
-    }]
-  }, {
-    code: `
-      class Hello extends React.Component {
-        componentWillUpdate() {
-          someClass.onSomeEvent((data) => this.setState({data: data}));
+      ]
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          componentWillUpdate: function() {
+            someClass.onSomeEvent(function(data) {
+              this.setState({
+                data: data
+              });
+            })
+          }
+        });
+      `,
+      options: ['disallow-in-func'],
+      errors: [
+        {
+          messageId: 'noSetState',
+          data: {name: 'componentWillUpdate'}
         }
-      }
-    `,
-    parser: parsers.BABEL_ESLINT,
-    options: ['disallow-in-func'],
-    errors: [{
-      messageId: 'noSetState',
-      data: {name: 'componentWillUpdate'}
-    }]
-  }, {
-    code: `
-      class Hello extends React.Component {
-        UNSAFE_componentWillUpdate() {
-          this.setState({
-            data: data
-          });
+      ]
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          componentWillUpdate() {
+            someClass.onSomeEvent(function(data) {
+              this.setState({
+                data: data
+              });
+            })
+          }
         }
-      }
-    `,
-    settings: {react: {version: '16.3.0'}},
-    errors: [{
-      messageId: 'noSetState',
-      data: {name: 'UNSAFE_componentWillUpdate'}
-    }]
-  }, {
-    code: `
-      var Hello = createReactClass({
-        UNSAFE_componentWillUpdate: function() {
-          this.setState({
-            data: data
-          });
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: ['disallow-in-func'],
+      errors: [
+        {
+          messageId: 'noSetState',
+          data: {name: 'componentWillUpdate'}
         }
-      });
-    `,
-    settings: {react: {version: '16.3.0'}},
-    errors: [{
-      messageId: 'noSetState',
-      data: {name: 'UNSAFE_componentWillUpdate'}
-    }]
-  }]
+      ]
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          componentWillUpdate: function() {
+            if (true) {
+              this.setState({
+                data: data
+              });
+            }
+          }
+        });
+      `,
+      errors: [
+        {
+          messageId: 'noSetState',
+          data: {name: 'componentWillUpdate'}
+        }
+      ]
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          componentWillUpdate() {
+            if (true) {
+              this.setState({
+                data: data
+              });
+            }
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'noSetState',
+          data: {name: 'componentWillUpdate'}
+        }
+      ]
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          componentWillUpdate: function() {
+            someClass.onSomeEvent((data) => this.setState({data: data}));
+          }
+        });
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: ['disallow-in-func'],
+      errors: [
+        {
+          messageId: 'noSetState',
+          data: {name: 'componentWillUpdate'}
+        }
+      ]
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          componentWillUpdate() {
+            someClass.onSomeEvent((data) => this.setState({data: data}));
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: ['disallow-in-func'],
+      errors: [
+        {
+          messageId: 'noSetState',
+          data: {name: 'componentWillUpdate'}
+        }
+      ]
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          UNSAFE_componentWillUpdate() {
+            this.setState({
+              data: data
+            });
+          }
+        }
+      `,
+      settings: {react: {version: '16.3.0'}},
+      errors: [
+        {
+          messageId: 'noSetState',
+          data: {name: 'UNSAFE_componentWillUpdate'}
+        }
+      ]
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          UNSAFE_componentWillUpdate: function() {
+            this.setState({
+              data: data
+            });
+          }
+        });
+      `,
+      settings: {react: {version: '16.3.0'}},
+      errors: [
+        {
+          messageId: 'noSetState',
+          data: {name: 'UNSAFE_componentWillUpdate'}
+        }
+      ]
+    }
+  ]
 });

@@ -6,9 +6,12 @@ const propWrapperUtil = require('../../lib/util/propWrapper');
 describe('PropWrapperFunctions', () => {
   describe('getPropWrapperFunctions', () => {
     it('returns set of functions if setting exists', () => {
-      const propWrapperFunctions = ['Object.freeze', {
-        property: 'forbidExtraProps'
-      }];
+      const propWrapperFunctions = [
+        'Object.freeze',
+        {
+          property: 'forbidExtraProps'
+        }
+      ];
       const context = {
         settings: {
           propWrapperFunctions
@@ -38,10 +41,12 @@ describe('PropWrapperFunctions', () => {
     it('with Object with object and property keys', () => {
       const context = {
         settings: {
-          propWrapperFunctions: [{
-            property: 'freeze',
-            object: 'Object'
-          }]
+          propWrapperFunctions: [
+            {
+              property: 'freeze',
+              object: 'Object'
+            }
+          ]
         }
       };
       assert.equal(propWrapperUtil.isPropWrapperFunction(context, 'Object.freeze'), true);
@@ -50,9 +55,11 @@ describe('PropWrapperFunctions', () => {
     it('with Object with only property key', () => {
       const context = {
         settings: {
-          propWrapperFunctions: [{
-            property: 'forbidExtraProps'
-          }]
+          propWrapperFunctions: [
+            {
+              property: 'forbidExtraProps'
+            }
+          ]
         }
       };
       assert.equal(propWrapperUtil.isPropWrapperFunction(context, 'forbidExtraProps'), true);
@@ -61,10 +68,13 @@ describe('PropWrapperFunctions', () => {
 
   describe('getExactPropWrapperFunctions', () => {
     it('returns set of functions if setting exists', () => {
-      const propWrapperFunctions = ['Object.freeze', {
-        property: 'forbidExtraProps',
-        exact: true
-      }];
+      const propWrapperFunctions = [
+        'Object.freeze',
+        {
+          property: 'forbidExtraProps',
+          exact: true
+        }
+      ];
       const context = {
         settings: {
           propWrapperFunctions
@@ -77,9 +87,12 @@ describe('PropWrapperFunctions', () => {
     });
 
     it('returns empty set if no exact prop wrappers', () => {
-      const propWrapperFunctions = ['Object.freeze', {
-        property: 'forbidExtraProps'
-      }];
+      const propWrapperFunctions = [
+        'Object.freeze',
+        {
+          property: 'forbidExtraProps'
+        }
+      ];
       const context = {
         settings: {
           propWrapperFunctions
@@ -109,11 +122,13 @@ describe('PropWrapperFunctions', () => {
     it('with Object with object and property keys', () => {
       const context = {
         settings: {
-          propWrapperFunctions: [{
-            property: 'freeze',
-            object: 'Object',
-            exact: true
-          }]
+          propWrapperFunctions: [
+            {
+              property: 'freeze',
+              object: 'Object',
+              exact: true
+            }
+          ]
         }
       };
       assert.equal(propWrapperUtil.isExactPropWrapperFunction(context, 'Object.freeze'), true);
@@ -122,10 +137,12 @@ describe('PropWrapperFunctions', () => {
     it('with Object with only property key', () => {
       const context = {
         settings: {
-          propWrapperFunctions: [{
-            property: 'forbidExtraProps',
-            exact: true
-          }]
+          propWrapperFunctions: [
+            {
+              property: 'forbidExtraProps',
+              exact: true
+            }
+          ]
         }
       };
       assert.equal(propWrapperUtil.isExactPropWrapperFunction(context, 'forbidExtraProps'), true);
@@ -139,13 +156,17 @@ describe('PropWrapperFunctions', () => {
     });
 
     it('with all allowed values', () => {
-      const propWrappers = new Set(['Object.freeze', {
-        property: 'exact',
-        exact: true
-      }, {
-        property: 'bar',
-        object: 'foo'
-      }]);
+      const propWrappers = new Set([
+        'Object.freeze',
+        {
+          property: 'exact',
+          exact: true
+        },
+        {
+          property: 'bar',
+          object: 'foo'
+        }
+      ]);
       assert.equal(propWrapperUtil.formatPropWrapperFunctions(propWrappers), '\'Object.freeze\', \'exact\', \'foo.bar\'');
     });
   });

@@ -38,8 +38,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('no-unescaped-entities', rule, {
-
-  valid: [
+  valid: [].concat(
     {
       code: `
         var Hello = createReactClass({
@@ -50,7 +49,8 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `
-    }, {
+    },
+    {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -58,7 +58,8 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `
-    }, {
+    },
+    {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -66,7 +67,8 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `
-    }, {
+    },
+    {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -76,7 +78,8 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `
-    }, {
+    },
+    {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -94,7 +97,8 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT
-    }, {
+    },
+    {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -114,22 +118,82 @@ ruleTester.run('no-unescaped-entities', rule, {
       `,
       parser: parsers.BABEL_ESLINT
     }
-  ],
+  ),
 
-  invalid: [
-    (allowsInvalidJSX && {
-      code: `
-        var Hello = createReactClass({
-          render: function() {
-            return <div>> default parser</div>;
+  invalid: [].concat(
+    allowsInvalidJSX ? [
+      {
+        code: `
+          var Hello = createReactClass({
+            render: function() {
+              return <div>> default parser</div>;
+            }
+          });
+        `,
+        errors: [
+          {
+            messageId: 'unescapedEntityAlts',
+            data: {entity: '>', alts: '`&gt;`'}
           }
-        });
-      `,
-      errors: [{
-        messageId: 'unescapedEntityAlts',
-        data: {entity: '>', alts: '`&gt;`'}
-      }]
-    }), {
+        ]
+      },
+      {
+        code: `
+          var Hello = createReactClass({
+            render: function() {
+              return <div>first line is ok
+              so is second
+              and here are some bad entities: ></div>
+            }
+          });
+        `,
+        errors: [
+          {
+            messageId: 'unescapedEntityAlts',
+            data: {entity: '>', alts: '`&gt;`'}
+          }
+        ]
+      },
+      {
+        code: `
+          var Hello = createReactClass({
+            render: function() {
+              return <div>Multiple errors: '>> default parser</div>;
+            }
+          });
+        `,
+        errors: [
+          {
+            messageId: 'unescapedEntityAlts',
+            data: {entity: '\'', alts: '`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`'}
+          },
+          {
+            messageId: 'unescapedEntityAlts',
+            data: {entity: '>', alts: '`&gt;`'}
+          },
+          {
+            messageId: 'unescapedEntityAlts',
+            data: {entity: '>', alts: '`&gt;`'}
+          }
+        ]
+      },
+      {
+        code: `
+          var Hello = createReactClass({
+            render: function() {
+              return <div>{"Unbalanced braces - default parser"}}</div>;
+            }
+          });
+        `,
+        errors: [
+          {
+            messageId: 'unescapedEntityAlts',
+            data: {entity: '}', alts: '`&#125;`'}
+          }
+        ]
+      }
+    ] : [],
+    {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -138,25 +202,14 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'unescapedEntityAlts',
-        data: {entity: '>', alts: '`&gt;`'}
-      }]
-    }, (allowsInvalidJSX && {
-      code: `
-        var Hello = createReactClass({
-          render: function() {
-            return <div>first line is ok
-            so is second
-            and here are some bad entities: ></div>
-          }
-        });
-      `,
-      errors: [{
-        messageId: 'unescapedEntityAlts',
-        data: {entity: '>', alts: '`&gt;`'}
-      }]
-    }), {
+      errors: [
+        {
+          messageId: 'unescapedEntityAlts',
+          data: {entity: '>', alts: '`&gt;`'}
+        }
+      ]
+    },
+    {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -167,11 +220,14 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'unescapedEntityAlts',
-        data: {entity: '>', alts: '`&gt;`'}
-      }]
-    }, {
+      errors: [
+        {
+          messageId: 'unescapedEntityAlts',
+          data: {entity: '>', alts: '`&gt;`'}
+        }
+      ]
+    },
+    {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -179,45 +235,14 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      errors: [{
-        messageId: 'unescapedEntityAlts',
-        data: {entity: '\'', alts: '`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`'}
-      }]
-    }, (allowsInvalidJSX && {
-      code: `
-        var Hello = createReactClass({
-          render: function() {
-            return <div>Multiple errors: '>> default parser</div>;
-          }
-        });
-      `,
       errors: [
         {
           messageId: 'unescapedEntityAlts',
           data: {entity: '\'', alts: '`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`'}
-        },
-        {
-          messageId: 'unescapedEntityAlts',
-          data: {entity: '>', alts: '`&gt;`'}
-        },
-        {
-          messageId: 'unescapedEntityAlts',
-          data: {entity: '>', alts: '`&gt;`'}
         }
       ]
-    }), (allowsInvalidJSX && {
-      code: `
-        var Hello = createReactClass({
-          render: function() {
-            return <div>{"Unbalanced braces - default parser"}}</div>;
-          }
-        });
-      `,
-      errors: [{
-        messageId: 'unescapedEntityAlts',
-        data: {entity: '}', alts: '`&#125;`'}
-      }]
-    }), {
+    },
+    {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -226,11 +251,14 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'unescapedEntityAlts',
-        data: {entity: '}', alts: '`&#125;`'}
-      }]
-    }, {
+      errors: [
+        {
+          messageId: 'unescapedEntityAlts',
+          data: {entity: '}', alts: '`&#125;`'}
+        }
+      ]
+    },
+    {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -239,14 +267,15 @@ ruleTester.run('no-unescaped-entities', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'unescapedEntity',
-        data: {entity: '&'}
-      }],
-      options: [{
-        forbid: ['&']
-      }]
-    }, {
+      errors: [
+        {
+          messageId: 'unescapedEntity',
+          data: {entity: '&'}
+        }
+      ],
+      options: [{forbid: ['&']}]
+    },
+    {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -254,14 +283,15 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      errors: [{
-        messageId: 'unescapedEntity',
-        data: {entity: '&'}
-      }],
-      options: [{
-        forbid: ['&']
-      }]
-    }, {
+      errors: [
+        {
+          messageId: 'unescapedEntity',
+          data: {entity: '&'}
+        }
+      ],
+      options: [{forbid: ['&']}]
+    },
+    {
       code: `
         var Hello = createReactClass({
           render: function() {
@@ -269,16 +299,21 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      errors: [{
-        messageId: 'unescapedEntityAlts',
-        data: {entity: '&', alts: '`&amp;`'}
-      }],
-      options: [{
-        forbid: [{
-          char: '&',
-          alternatives: ['&amp;']
-        }]
-      }]
+      errors: [
+        {
+          messageId: 'unescapedEntityAlts',
+          data: {entity: '&', alts: '`&amp;`'}
+        }],
+      options: [
+        {
+          forbid: [
+            {
+              char: '&',
+              alternatives: ['&amp;']
+            }
+          ]
+        }
+      ]
     }
-  ].filter(Boolean)
+  ).filter(Boolean)
 });

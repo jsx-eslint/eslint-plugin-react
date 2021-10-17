@@ -52,26 +52,32 @@ ruleTester.run('void-dom-elements-no-children', rule, {
     },
     {
       code: 'React.createElement("img");'
-    }, {
+    },
+    {
       code: 'React.createElement();'
-    }, {
+    },
+    {
       code: 'document.createElement();'
-    }, {
+    },
+    {
       code: `
         const props = {};
         React.createElement("img", props);
       `
-    }, {
+    },
+    {
       code: `
         import React, {createElement} from "react";
         createElement("div");
       `
-    }, {
+    },
+    {
       code: `
         import React, {createElement} from "react";
         createElement("img");
       `
-    }, {
+    },
+    {
       code: `
         import React, {createElement, PureComponent} from "react";
         class Button extends PureComponent {
@@ -88,62 +94,78 @@ ruleTester.run('void-dom-elements-no-children', rule, {
   invalid: [
     {
       code: '<br>Foo</br>;',
-      errors: [{
-        messageId: 'noChildrenInVoidEl',
-        data: {element: 'br'}
-      }]
+      errors: [
+        {
+          messageId: 'noChildrenInVoidEl',
+          data: {element: 'br'}
+        }
+      ]
     },
     {
       code: '<br children="Foo" />;',
-      errors: [{
-        messageId: 'noChildrenInVoidEl',
-        data: {element: 'br'}
-      }]
+      errors: [
+        {
+          messageId: 'noChildrenInVoidEl',
+          data: {element: 'br'}
+        }
+      ]
     },
     {
       code: '<img {...props} children="Foo" />;',
-      errors: [{
-        messageId: 'noChildrenInVoidEl',
-        data: {element: 'img'}
-      }]
+      errors: [
+        {
+          messageId: 'noChildrenInVoidEl',
+          data: {element: 'img'}
+        }
+      ]
     },
     {
       code: '<br dangerouslySetInnerHTML={{ __html: "Foo" }} />;',
-      errors: [{
-        messageId: 'noChildrenInVoidEl',
-        data: {element: 'br'}
-      }]
+      errors: [
+        {
+          messageId: 'noChildrenInVoidEl',
+          data: {element: 'br'}
+        }
+      ]
     },
     {
       code: 'React.createElement("br", {}, "Foo");',
-      errors: [{
-        messageId: 'noChildrenInVoidEl',
-        data: {element: 'br'}
-      }]
+      errors: [
+        {
+          messageId: 'noChildrenInVoidEl',
+          data: {element: 'br'}
+        }
+      ]
     },
     {
       code: 'React.createElement("br", { children: "Foo" });',
-      errors: [{
-        messageId: 'noChildrenInVoidEl',
-        data: {element: 'br'}
-      }]
+      errors: [
+        {
+          messageId: 'noChildrenInVoidEl',
+          data: {element: 'br'}
+        }
+      ]
     },
     {
       code: 'React.createElement("br", { dangerouslySetInnerHTML: { __html: "Foo" } });',
-      errors: [{
-        messageId: 'noChildrenInVoidEl',
-        data: {element: 'br'}
-      }]
+      errors: [
+        {
+          messageId: 'noChildrenInVoidEl',
+          data: {element: 'br'}
+        }
+      ]
     },
     {
       code: `
         import React, {createElement} from "react";
         createElement("img", {}, "Foo");
       `,
-      errors: [{
-        messageId: 'noChildrenInVoidEl',
-        data: {element: 'img'}
-      }],
+      errors: [
+        {
+          messageId: 'noChildrenInVoidEl',
+          data: {element: 'img'}
+        }
+      ],
       parser: parsers.BABEL_ESLINT
     },
     {
@@ -151,10 +173,12 @@ ruleTester.run('void-dom-elements-no-children', rule, {
         import React, {createElement} from "react";
         createElement("img", { children: "Foo" });
       `,
-      errors: [{
-        messageId: 'noChildrenInVoidEl',
-        data: {element: 'img'}
-      }],
+      errors: [
+        {
+          messageId: 'noChildrenInVoidEl',
+          data: {element: 'img'}
+        }
+      ],
       parser: parsers.BABEL_ESLINT
     },
     {
@@ -162,10 +186,12 @@ ruleTester.run('void-dom-elements-no-children', rule, {
         import React, {createElement} from "react";
         createElement("img", { dangerouslySetInnerHTML: { __html: "Foo" } });
       `,
-      errors: [{
-        messageId: 'noChildrenInVoidEl',
-        data: {element: 'img'}
-      }],
+      errors: [
+        {
+          messageId: 'noChildrenInVoidEl',
+          data: {element: 'img'}
+        }
+      ],
       parser: parsers.BABEL_ESLINT
     }
   ]

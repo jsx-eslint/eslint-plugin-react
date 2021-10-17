@@ -75,174 +75,204 @@ ruleTester.run('button-has-type', rule, {
   invalid: [
     {
       code: '<button/>',
-      errors: [{
-        messageId: 'missingType'
-      }]
+      errors: [
+        {messageId: 'missingType'}
+      ]
     },
     {
       code: '<button type="foo"/>',
-      errors: [{
-        messageId: 'invalidValue',
-        data: {value: 'foo'}
-      }]
+      errors: [
+        {
+          messageId: 'invalidValue',
+          data: {value: 'foo'}
+        }
+      ]
     },
     {
       code: '<button type={foo}/>',
-      errors: [{
-        messageId: 'complexType'
-      }]
+      errors: [
+        {messageId: 'complexType'}
+      ]
     },
     {
       code: '<button type={"foo"}/>',
-      errors: [{
-        messageId: 'invalidValue',
-        data: {value: 'foo'}
-      }]
+      errors: [
+        {
+          messageId: 'invalidValue',
+          data: {value: 'foo'}
+        }
+      ]
     },
     {
       code: '<button type={\'foo\'}/>',
-      errors: [{
-        messageId: 'invalidValue',
-        data: {value: 'foo'}
-      }]
+      errors: [
+        {
+          messageId: 'invalidValue',
+          data: {value: 'foo'}
+        }
+      ]
     },
     {
       code: '<button type={`foo`}/>',
-      errors: [{
-        messageId: 'invalidValue',
-        data: {value: 'foo'}
-      }]
+      errors: [
+        {
+          messageId: 'invalidValue',
+          data: {value: 'foo'}
+        }
+      ]
     },
     {
       code: '<button type={`button${foo}`}/>',
-      errors: [{
-        messageId: 'complexType'
-      }]
+      errors: [
+        {messageId: 'complexType'}
+      ]
     },
     {
       code: '<button type="reset"/>',
       options: [{reset: false}],
-      errors: [{
-        messageId: 'forbiddenValue',
-        data: {value: 'reset'}
-      }]
+      errors: [
+        {
+          messageId: 'forbiddenValue',
+          data: {value: 'reset'}
+        }
+      ]
     },
     {
       code: '<button type={condition ? "button" : foo}/>',
-      errors: [{
-        messageId: 'complexType'
-      }]
+      errors: [
+        {messageId: 'complexType'}
+      ]
     },
     {
       code: '<button type={condition ? "button" : "foo"}/>',
-      errors: [{
-        messageId: 'invalidValue',
-        data: {value: 'foo'}
-      }]
+      errors: [
+        {
+          messageId: 'invalidValue',
+          data: {value: 'foo'}
+        }
+      ]
     },
     {
       code: '<button type={condition ? "button" : "reset"}/>',
       options: [{reset: false}],
-      errors: [{
-        messageId: 'forbiddenValue',
-        data: {value: 'reset'}
-      }]
+      errors: [
+        {
+          messageId: 'forbiddenValue',
+          data: {value: 'reset'}
+        }
+      ]
     },
     {
       code: '<button type={condition ? foo : "button"}/>',
-      errors: [{
-        messageId: 'complexType'
-      }]
+      errors: [
+        {messageId: 'complexType'}
+      ]
     },
     {
       code: '<button type={condition ? "foo" : "button"}/>',
-      errors: [{
-        messageId: 'invalidValue',
-        data: {value: 'foo'}
-      }]
+      errors: [
+        {
+          messageId: 'invalidValue',
+          data: {value: 'foo'}
+        }
+      ]
     },
     {
       code: '<button type={condition ? "reset" : "button"}/>',
       options: [{reset: false}],
-      errors: [{
-        messageId: 'forbiddenValue',
-        data: {value: 'reset'}
-      }]
+      errors: [
+        {
+          messageId: 'forbiddenValue',
+          data: {value: 'reset'}
+        }
+      ]
     },
     {
       code: 'React.createElement("button")',
-      errors: [{
-        messageId: 'missingType'
-      }]
+      errors: [
+        {messageId: 'missingType'}
+      ]
     },
     {
       code: 'React.createElement("button", {type: foo})',
-      errors: [{
-        messageId: 'complexType'
-      }]
+      errors: [
+        {messageId: 'complexType'}
+      ]
     },
     {
       code: 'React.createElement("button", {type: "foo"})',
-      errors: [{
-        messageId: 'invalidValue',
-        data: {value: 'foo'}
-      }]
+      errors: [
+        {
+          messageId: 'invalidValue',
+          data: {value: 'foo'}
+        }
+      ]
     },
     {
       code: 'React.createElement("button", {type: "reset"})',
       options: [{reset: false}],
-      errors: [{
-        messageId: 'forbiddenValue',
-        data: {value: 'reset'}
-      }]
+      errors: [
+        {
+          messageId: 'forbiddenValue',
+          data: {value: 'reset'}
+        }
+      ]
     },
     {
       code: 'React.createElement("button", {type: condition ? "button" : foo})',
-      errors: [{
-        messageId: 'complexType'
-      }]
+      errors: [
+        {messageId: 'complexType'}
+      ]
     },
     {
       code: 'React.createElement("button", {type: condition ? "button" : "foo"})',
-      errors: [{
-        messageId: 'invalidValue',
-        data: {value: 'foo'}
-      }]
+      errors: [
+        {
+          messageId: 'invalidValue',
+          data: {value: 'foo'}
+        }
+      ]
     },
     {
       code: 'React.createElement("button", {type: condition ? "button" : "reset"})',
       options: [{reset: false}],
-      errors: [{
-        messageId: 'forbiddenValue',
-        data: {value: 'reset'}
-      }]
+      errors: [
+        {
+          messageId: 'forbiddenValue',
+          data: {value: 'reset'}
+        }
+      ]
     },
     {
       code: 'React.createElement("button", {type: condition ? foo : "button"})',
-      errors: [{
-        messageId: 'complexType'
-      }]
+      errors: [
+        {messageId: 'complexType'}
+      ]
     },
     {
       code: 'React.createElement("button", {type: condition ? "foo" : "button"})',
-      errors: [{
-        messageId: 'invalidValue',
-        data: {value: 'foo'}
-      }]
+      errors: [
+        {
+          messageId: 'invalidValue',
+          data: {value: 'foo'}
+        }
+      ]
     },
     {
       code: 'React.createElement("button", {type: condition ? "reset" : "button"})',
       options: [{reset: false}],
-      errors: [{
-        messageId: 'forbiddenValue',
-        data: {value: 'reset'}
-      }]
+      errors: [
+        {
+          messageId: 'forbiddenValue',
+          data: {value: 'reset'}
+        }
+      ]
     },
     {
       code: 'Foo.createElement("button")',
-      errors: [{
-        messageId: 'missingType'
-      }],
+      errors: [
+        {messageId: 'missingType'}
+      ],
       settings: {
         react: {
           pragma: 'Foo'
@@ -251,9 +281,9 @@ ruleTester.run('button-has-type', rule, {
     },
     {
       code: 'function Button({ type, ...extraProps }) { const button = type; return <button type={button} {...extraProps} />; }',
-      errors: [{
-        messageId: 'complexType'
-      }]
+      errors: [
+        {messageId: 'complexType'}
+      ]
     }
   ]
 });

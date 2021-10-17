@@ -20,203 +20,210 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('react-require-optimization', rule, {
-  valid: [{
-    code: `
-      class A {}
-    `
-  }, {
-    code: `
-      import React from "react";
-      class YourComponent extends React.Component {
-        shouldComponentUpdate () {}
-      }
-    `
-  }, {
-    code: `
-      import React, {Component} from "react";
-      class YourComponent extends Component {
-        shouldComponentUpdate () {}
-      }
-    `
-  }, {
-    code: `
-      import React, {Component} from "react";
-      @reactMixin.decorate(PureRenderMixin)
-      class YourComponent extends Component {
-        componetnDidMount () {}
-        render() {}
-      }
-    `,
-    parser: parsers.BABEL_ESLINT
-  }, {
-    code: `
-      import React from "react";
-      createReactClass({
-        shouldComponentUpdate: function () {}
-      })
-    `
-  }, {
-    code: `
-      import React from "react";
-      createReactClass({
-        mixins: [PureRenderMixin]
-      })
-    `
-  }, {
-    code: `
-      @reactMixin.decorate(PureRenderMixin)
-      class DecoratedComponent extends Component {}
-    `,
-    parser: parsers.BABEL_ESLINT
-  }, {
-    code: `
-      const FunctionalComponent = function (props) {
-        return <div />;
-      }
-    `,
-    parser: parsers.BABEL_ESLINT
-  }, {
-    code: `
-      function FunctionalComponent(props) {
-        return <div />;
-      }
-    `,
-    parser: parsers.BABEL_ESLINT
-  }, {
-    code: `
-      const FunctionalComponent = (props) => {
-        return <div />;
-      }
-    `,
-    parser: parsers.BABEL_ESLINT
-  }, {
-    code: `
-      @bar
-      @pureRender
-      @foo
-      class DecoratedComponent extends Component {}
-    `,
-    parser: parsers.BABEL_ESLINT,
-    options: [{allowDecorators: ['renderPure', 'pureRender']}]
-  }, {
-    code: `
-      import React from "react";
-      class YourComponent extends React.PureComponent {}
-    `,
-    parser: parsers.BABEL_ESLINT,
-    options: [{allowDecorators: ['renderPure', 'pureRender']}]
-  }, {
-    code: `
-      import React, {PureComponent} from "react";
-      class YourComponent extends PureComponent {}
-    `,
-    parser: parsers.BABEL_ESLINT,
-    options: [{allowDecorators: ['renderPure', 'pureRender']}]
-  }, {
-    code: `
-      const obj = { prop: [,,,,,] }
-    `
-  }, {
-    code: `
-      import React from "react";
-      class YourComponent extends React.Component {
-        handleClick = () => {}
-        shouldComponentUpdate(){
-          return true;
+  valid: [
+    {
+      code: `
+        class A {}
+      `
+    },
+    {
+      code: `
+        import React from "react";
+        class YourComponent extends React.Component {
+          shouldComponentUpdate () {}
         }
-        render() {
-          return <div onClick={this.handleClick}>123</div>
+      `
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        class YourComponent extends Component {
+          shouldComponentUpdate () {}
         }
-      }
-    `,
-    parser: parsers.BABEL_ESLINT,
-    errors: [{
-      messageId: 'noShouldComponentUpdate'
-    }]
-  }],
+      `
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        @reactMixin.decorate(PureRenderMixin)
+        class YourComponent extends Component {
+          componetnDidMount () {}
+          render() {}
+        }
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        import React from "react";
+        createReactClass({
+          shouldComponentUpdate: function () {}
+        })
+      `
+    },
+    {
+      code: `
+        import React from "react";
+        createReactClass({
+          mixins: [PureRenderMixin]
+        })
+      `
+    },
+    {
+      code: `
+        @reactMixin.decorate(PureRenderMixin)
+        class DecoratedComponent extends Component {}
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        const FunctionalComponent = function (props) {
+          return <div />;
+        }
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        function FunctionalComponent(props) {
+          return <div />;
+        }
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        const FunctionalComponent = (props) => {
+          return <div />;
+        }
+      `,
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        @bar
+        @pureRender
+        @foo
+        class DecoratedComponent extends Component {}
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{allowDecorators: ['renderPure', 'pureRender']}]
+    },
+    {
+      code: `
+        import React from "react";
+        class YourComponent extends React.PureComponent {}
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{allowDecorators: ['renderPure', 'pureRender']}]
+    },
+    {
+      code: `
+        import React, {PureComponent} from "react";
+        class YourComponent extends PureComponent {}
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [{allowDecorators: ['renderPure', 'pureRender']}]
+    },
+    {
+      code: `
+        const obj = { prop: [,,,,,] }
+      `
+    },
+    {
+      code: `
+        import React from "react";
+        class YourComponent extends React.Component {
+          handleClick = () => {}
+          shouldComponentUpdate(){
+            return true;
+          }
+          render() {
+            return <div onClick={this.handleClick}>123</div>
+          }
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [{messageId: 'noShouldComponentUpdate'}]
+    }
+  ],
 
-  invalid: [{
-    code: `
-      import React from "react";
-      class YourComponent extends React.Component {}
-    `,
-    errors: [{
-      messageId: 'noShouldComponentUpdate'
-    }]
-  }, {
-    code: `
-      import React from "react";
-      class YourComponent extends React.Component {
-        handleClick() {}
-        render() {
-          return <div onClick={this.handleClick}>123</div>
+  invalid: [
+    {
+      code: `
+        import React from "react";
+        class YourComponent extends React.Component {}
+      `,
+      errors: [{messageId: 'noShouldComponentUpdate'}]
+    },
+    {
+      code: `
+        import React from "react";
+        class YourComponent extends React.Component {
+          handleClick() {}
+          render() {
+            return <div onClick={this.handleClick}>123</div>
+          }
         }
-      }
-    `,
-    parser: parsers.BABEL_ESLINT,
-    errors: [{
-      messageId: 'noShouldComponentUpdate'
-    }]
-  }, {
-    code: `
-      import React from "react";
-      class YourComponent extends React.Component {
-        handleClick = () => {}
-        render() {
-          return <div onClick={this.handleClick}>123</div>
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [{messageId: 'noShouldComponentUpdate'}]
+    },
+    {
+      code: `
+        import React from "react";
+        class YourComponent extends React.Component {
+          handleClick = () => {}
+          render() {
+            return <div onClick={this.handleClick}>123</div>
+          }
         }
-      }
-    `,
-    parser: parsers.BABEL_ESLINT,
-    errors: [{
-      messageId: 'noShouldComponentUpdate'
-    }]
-  }, {
-    code: `
-      import React, {Component} from "react";
-      class YourComponent extends Component {}
-    `,
-    errors: [{
-      messageId: 'noShouldComponentUpdate'
-    }]
-  }, {
-    code: `
-      import React from "react";
-      createReactClass({})
-    `,
-    errors: [{
-      messageId: 'noShouldComponentUpdate'
-    }]
-  }, {
-    code: `
-      import React from "react";
-      createReactClass({
-        mixins: [RandomMixin]
-      })
-    `,
-    errors: [{
-      messageId: 'noShouldComponentUpdate'
-    }]
-  }, {
-    code: `
-      @reactMixin.decorate(SomeOtherMixin)
-      class DecoratedComponent extends Component {}
-    `,
-    errors: [{
-      messageId: 'noShouldComponentUpdate'
-    }],
-    parser: parsers.BABEL_ESLINT
-  }, {
-    code: `
-      @bar
-      @pure
-      @foo
-      class DecoratedComponent extends Component {}
-    `,
-    errors: [{
-      messageId: 'noShouldComponentUpdate'
-    }],
-    parser: parsers.BABEL_ESLINT,
-    options: [{allowDecorators: ['renderPure', 'pureRender']}]
-  }]
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [{messageId: 'noShouldComponentUpdate'}]
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        class YourComponent extends Component {}
+      `,
+      errors: [{messageId: 'noShouldComponentUpdate'}]
+    },
+    {
+      code: `
+        import React from "react";
+        createReactClass({})
+      `,
+      errors: [{messageId: 'noShouldComponentUpdate'}]
+    },
+    {
+      code: `
+        import React from "react";
+        createReactClass({
+          mixins: [RandomMixin]
+        })
+      `,
+      errors: [{messageId: 'noShouldComponentUpdate'}]
+    },
+    {
+      code: `
+        @reactMixin.decorate(SomeOtherMixin)
+        class DecoratedComponent extends Component {}
+      `,
+      errors: [{messageId: 'noShouldComponentUpdate'}],
+      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        @bar
+        @pure
+        @foo
+        class DecoratedComponent extends Component {}
+      `,
+      errors: [{messageId: 'noShouldComponentUpdate'}],
+      parser: parsers.BABEL_ESLINT,
+      options: [{allowDecorators: ['renderPure', 'pureRender']}]
+    }
+  ]
 });

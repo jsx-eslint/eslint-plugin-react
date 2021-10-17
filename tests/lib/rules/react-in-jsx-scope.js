@@ -37,7 +37,10 @@ ruleTester.run('react-in-jsx-scope', rule, {
   valid: [
     {code: 'var React, App; <App />;'},
     {code: 'var React; <img />;'},
-    {code: 'var React; <>fragment</>;', parser: parsers.BABEL_ESLINT},
+    {
+      code: 'var React; <>fragment</>;',
+      parser: parsers.BABEL_ESLINT
+    },
     {code: 'var React; <x-gif />;'},
     {code: 'var React, App, a=1; <App attr={a} />;'},
     {code: 'var React, App, a=1; function elem() { return <App attr={a} />; }'},
@@ -49,62 +52,86 @@ ruleTester.run('react-in-jsx-scope', rule, {
     {code: '/** @jsx Foo.Bar */ var Foo, App; <App />;'},
     {
       code: `
-      import React from 'react/addons';
-      const Button = createReactClass({
-        render() {
-          return (
-            <button {...this.props}>{this.props.children}</button>
-          )
-        }
-      });
-      export default Button;
-    `
+        import React from 'react/addons';
+        const Button = createReactClass({
+          render() {
+            return (
+              <button {...this.props}>{this.props.children}</button>
+            )
+          }
+        });
+        export default Button;
+      `
     },
-    {code: 'var Foo, App; <App />;', settings}
+    {
+      code: 'var Foo, App; <App />;',
+      settings
+    }
   ],
-  invalid: [{
-    code: 'var App, a = <App />;',
-    errors: [{
-      messageId: 'notInScope',
-      data: {name: 'React'}
+  invalid: [
+    {
+      code: 'var App, a = <App />;',
+      errors: [
+        {
+          messageId: 'notInScope',
+          data: {name: 'React'}
+        }
+      ]
+    },
+    {
+      code: 'var a = <App />;',
+      errors: [
+        {
+          messageId: 'notInScope',
+          data: {name: 'React'}
+        }
+      ]
+    },
+    {
+      code: 'var a = <img />;',
+      errors: [
+        {
+          messageId: 'notInScope',
+          data: {name: 'React'}
+        }
+      ]
+    },
+    {
+      code: 'var a = <>fragment</>;',
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'notInScope',
+          data: {name: 'React'}
+        }
+      ]
+    },
+    {
+      code: '/** @jsx React.DOM */ var a = <img />;',
+      errors: [
+        {
+          messageId: 'notInScope',
+          data: {name: 'React'}
+        }
+      ]
+    },
+    {
+      code: '/** @jsx Foo.bar */ var React, a = <img />;',
+      errors: [
+        {
+          messageId: 'notInScope',
+          data: {name: 'Foo'}
+        }
+      ]
+    },
+    {
+      code: 'var React, a = <img />;',
+      settings,
+      errors: [
+        {
+          messageId: 'notInScope',
+          data: {name: 'Foo'}
+        }
+      ]
     }]
-  }, {
-    code: 'var a = <App />;',
-    errors: [{
-      messageId: 'notInScope',
-      data: {name: 'React'}
-    }]
-  }, {
-    code: 'var a = <img />;',
-    errors: [{
-      messageId: 'notInScope',
-      data: {name: 'React'}
-    }]
-  }, {
-    code: 'var a = <>fragment</>;',
-    parser: parsers.BABEL_ESLINT,
-    errors: [{
-      messageId: 'notInScope',
-      data: {name: 'React'}
-    }]
-  }, {
-    code: '/** @jsx React.DOM */ var a = <img />;',
-    errors: [{
-      messageId: 'notInScope',
-      data: {name: 'React'}
-    }]
-  }, {
-    code: '/** @jsx Foo.bar */ var React, a = <img />;',
-    errors: [{
-      messageId: 'notInScope',
-      data: {name: 'Foo'}
-    }]
-  }, {
-    code: 'var React, a = <img />;',
-    errors: [{
-      messageId: 'notInScope',
-      data: {name: 'Foo'}
-    }],
-    settings
-  }]
 });

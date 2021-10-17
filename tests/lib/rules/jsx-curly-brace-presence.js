@@ -717,60 +717,60 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       options: [{children: 'never'}]
     },
     {
-      code: [
-        '<App prop="    ',
-        '   a     ',
-        '     b      c',
-        '        d',
-        '">',
-        '  a',
-        '      b     c   ',
-        '         d      ',
-        '</App>'
-      ].join('\n'),
+      code: `
+        <App prop="    
+           a     
+             b      c
+                d
+        ">
+          a
+              b     c   
+                 d      
+        </App>
+      `,
       errors: [
         {messageId: 'missingCurly'}, {messageId: 'missingCurly'}
       ],
       options: ['always'],
-      output: [
-        '<App prop="    ',
-        '   a     ',
-        '     b      c',
-        '        d',
-        '">',
-        '  {"a"}',
-        '      {"b     c   "}',
-        '         {"d      "}',
-        '</App>'
-      ].join('\n')
+      output: `
+        <App prop="    
+           a     
+             b      c
+                d
+        ">
+          {"a"}
+              {"b     c   "}
+                 {"d      "}
+        </App>
+      `
     },
     {
-      code: [
-        `<App prop='    `,
-        '   a     ',
-        '     b      c',
-        '        d',
-        `'>`,
-        '  a',
-        '      b     c   ',
-        '         d      ',
-        '</App>'
-      ].join('\n'),
+      code: `
+        <App prop='    
+           a     
+             b      c
+                d
+        '>
+          a
+              b     c   
+                 d      
+        </App>
+      `,
       errors: [
         {messageId: 'missingCurly'}, {messageId: 'missingCurly'}
       ],
       options: ['always'],
-      output: [
-        `<App prop='    `,
-        '   a     ',
-        '     b      c',
-        '        d',
-        `'>`,
-        '  {"a"}',
-        '      {"b     c   "}',
-        '         {"d      "}',
-        '</App>'
-      ].join('\n')
+      output: `
+        <App prop='    
+           a     
+             b      c
+                d
+        '>
+          {"a"}
+              {"b     c   "}
+                 {"d      "}
+        </App>
+      `
     },
     {
       code: `

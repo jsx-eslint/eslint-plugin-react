@@ -27,179 +27,211 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('forbid-foreign-prop-types', rule, {
+  valid: [
+    {
+      code: 'import { propTypes } from "SomeComponent";'
+    },
+    {
+      code: 'import { propTypes as someComponentPropTypes } from "SomeComponent";'
+    },
+    {
+      code: 'const foo = propTypes'
+    },
+    {
+      code: 'foo(propTypes)'
+    },
+    {
+      code: 'foo + propTypes'
+    },
+    {
+      code: 'const foo = [propTypes]'
+    },
+    {
+      code: 'const foo = { propTypes }'
+    },
+    {
+      code: 'Foo.propTypes = propTypes'
+    },
+    {
+      code: 'Foo["propTypes"] = propTypes'
+    },
+    {
+      code: 'const propTypes = "bar"; Foo[propTypes];'
+    },
+    {
+      code: `
+        const Message = (props) => (<div>{props.message}</div>);
+        Message.propTypes = {
+          message: PropTypes.string
+        };
+        const Hello = (props) => (<Message>Hello {props.name}</Message>);
+        Hello.propTypes = {
+          name: Message.propTypes.message
+        };
+      `,
+      options: [
+        {allowInPropTypes: true}
+      ]
+    },
+    {
+      code: `
+        class MyComponent extends React.Component {
+          static propTypes = {
+            baz: Qux.propTypes.baz
+          };
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [
+        {allowInPropTypes: true}
+      ]
+    }
+  ],
 
-  valid: [{
-    code: 'import { propTypes } from "SomeComponent";'
-  }, {
-    code: 'import { propTypes as someComponentPropTypes } from "SomeComponent";'
-  }, {
-    code: 'const foo = propTypes'
-  }, {
-    code: 'foo(propTypes)'
-  }, {
-    code: 'foo + propTypes'
-  }, {
-    code: 'const foo = [propTypes]'
-  }, {
-    code: 'const foo = { propTypes }'
-  }, {
-    code: 'Foo.propTypes = propTypes'
-  }, {
-    code: 'Foo["propTypes"] = propTypes'
-  }, {
-    code: 'const propTypes = "bar"; Foo[propTypes];'
-  },
-  {
-    code: `
-      const Message = (props) => (<div>{props.message}</div>);
-      Message.propTypes = {
-        message: PropTypes.string
-      };
-      const Hello = (props) => (<Message>Hello {props.name}</Message>);
-      Hello.propTypes = {
-        name: Message.propTypes.message
-      };
-    `,
-    options: [{
-      allowInPropTypes: true
-    }]
-  },
-  {
-    code: `
-      class MyComponent extends React.Component {
-        static propTypes = {
-          baz: Qux.propTypes.baz
+  invalid: [
+    {
+      code: `
+        var Foo = createReactClass({
+          propTypes: Bar.propTypes,
+          render: function() {
+            return <Foo className="bar" />;
+          }
+        });
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenPropType',
+          type: 'Identifier'
+        }
+      ]
+    },
+    {
+      code: `
+        var Foo = createReactClass({
+          propTypes: Bar["propTypes"],
+          render: function() {
+            return <Foo className="bar" />;
+          }
+        });
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenPropType',
+          type: 'Literal'
+        }
+      ]
+    },
+    {
+      code: `
+        var { propTypes } = SomeComponent
+        var Foo = createReactClass({
+          propTypes,
+          render: function() {
+            return <Foo className="bar" />;
+          }
+        });
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenPropType',
+          type: 'Property'
+        }
+      ]
+    },
+    {
+      code: `
+        var { propTypes: things, ...foo } = SomeComponent
+        var Foo = createReactClass({
+          propTypes,
+          render: function() {
+            return <Foo className="bar" />;
+          }
+        });
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'forbiddenPropType',
+          type: 'Property'
+        }
+      ]
+    },
+    {
+      code: `
+        class MyComponent extends React.Component {
+          static fooBar = {
+            baz: Qux.propTypes.baz
+          };
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'forbiddenPropType',
+          type: 'Identifier'
+        }
+      ]
+    },
+    {
+      code: `
+        var { propTypes: typesOfProps } = SomeComponent
+        var Foo = createReactClass({
+          propTypes: typesOfProps,
+          render: function() {
+            return <Foo className="bar" />;
+          }
+        });
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenPropType',
+          type: 'Property'
+        }
+      ]
+    },
+    {
+      code: `
+        const Message = (props) => (<div>{props.message}</div>);
+        Message.propTypes = {
+          message: PropTypes.string
         };
-      }
-    `,
-    parser: parsers.BABEL_ESLINT,
-    options: [{
-      allowInPropTypes: true
-    }]
-  }],
-
-  invalid: [{
-    code: `
-      var Foo = createReactClass({
-        propTypes: Bar.propTypes,
-        render: function() {
-          return <Foo className="bar" />;
-        }
-      });
-    `,
-    errors: [{
-      messageId: 'forbiddenPropType',
-      type: 'Identifier'
-    }]
-  },
-  {
-    code: `
-      var Foo = createReactClass({
-        propTypes: Bar["propTypes"],
-        render: function() {
-          return <Foo className="bar" />;
-        }
-      });
-    `,
-    errors: [{
-      messageId: 'forbiddenPropType',
-      type: 'Literal'
-    }]
-  },
-  {
-    code: `
-      var { propTypes } = SomeComponent
-      var Foo = createReactClass({
-        propTypes,
-        render: function() {
-          return <Foo className="bar" />;
-        }
-      });
-    `,
-    errors: [{
-      messageId: 'forbiddenPropType',
-      type: 'Property'
-    }]
-  },
-  {
-    code: `
-      var { propTypes: things, ...foo } = SomeComponent
-      var Foo = createReactClass({
-        propTypes,
-        render: function() {
-          return <Foo className="bar" />;
-        }
-      });
-    `,
-    parser: parsers.BABEL_ESLINT,
-    errors: [{
-      messageId: 'forbiddenPropType',
-      type: 'Property'
-    }]
-  },
-  {
-    code: `
-      class MyComponent extends React.Component {
-        static fooBar = {
-          baz: Qux.propTypes.baz
+        const Hello = (props) => (<Message>Hello {props.name}</Message>);
+        Hello.propTypes = {
+          name: Message.propTypes.message
         };
-      }
-    `,
-    parser: parsers.BABEL_ESLINT,
-    errors: [{
-      messageId: 'forbiddenPropType',
-      type: 'Identifier'
-    }]
-  },
-  {
-    code: `
-      var { propTypes: typesOfProps } = SomeComponent
-      var Foo = createReactClass({
-        propTypes: typesOfProps,
-        render: function() {
-          return <Foo className="bar" />;
+      `,
+      options: [
+        {
+          allowInPropTypes: false
         }
-      });
-    `,
-    errors: [{
-      messageId: 'forbiddenPropType',
-      type: 'Property'
-    }]
-  },
-  {
-    code: `
-      const Message = (props) => (<div>{props.message}</div>);
-      Message.propTypes = {
-        message: PropTypes.string
-      };
-      const Hello = (props) => (<Message>Hello {props.name}</Message>);
-      Hello.propTypes = {
-        name: Message.propTypes.message
-      };
-    `,
-    options: [{
-      allowInPropTypes: false
-    }],
-    errors: [{
-      messageId: 'forbiddenPropType',
-      type: 'Identifier'
-    }]
-  },
-  {
-    code: `
-      class MyComponent extends React.Component {
-        static propTypes = {
-          baz: Qux.propTypes.baz
-        };
-      }
-    `,
-    parser: parsers.BABEL_ESLINT,
-    options: [{
-      allowInPropTypes: false
-    }],
-    errors: [{
-      messageId: 'forbiddenPropType',
-      type: 'Identifier'
-    }]
-  }]
+      ],
+      errors: [
+        {
+          messageId: 'forbiddenPropType',
+          type: 'Identifier'
+        }
+      ]
+    },
+    {
+      code: `
+        class MyComponent extends React.Component {
+          static propTypes = {
+            baz: Qux.propTypes.baz
+          };
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      options: [
+        {
+          allowInPropTypes: false
+        }
+      ],
+      errors: [
+        {
+          messageId: 'forbiddenPropType',
+          type: 'Identifier'
+        }
+      ]
+    }
+  ]
 });

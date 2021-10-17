@@ -37,1956 +37,1892 @@ function details(expectedColumn, expectedNextLine) {
 
 const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-closing-bracket-location', rule, {
-  valid: [{
-    code: [
-      '<App />'
-    ].join('\n')
-  }, {
-    code: [
-      '<App foo />'
-    ].join('\n')
-  }, {
-    code: [
-      '<App ',
-      '  foo',
-      '/>'
-    ].join('\n')
-  }, {
-    code: [
-      '<App foo />'
-    ].join('\n'),
-    options: [{location: 'after-props'}]
-  }, {
-    code: [
-      '<App foo />'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      '<App foo />'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      '<App ',
-      '  foo />'
-    ].join('\n'),
-    options: ['after-props']
-  }, {
-    code: [
-      '<App ',
-      '  foo',
-      '  />'
-    ].join('\n'),
-    options: ['props-aligned']
-  }, {
-    code: [
-      '<App ',
-      '  foo />'
-    ].join('\n'),
-    options: [{location: 'after-props'}]
-  }, {
-    code: [
-      '<App ',
-      '  foo',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      '<App ',
-      '  foo',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      '<App ',
-      '  foo',
-      '  />'
-    ].join('\n'),
-    options: [{location: 'props-aligned'}]
-  }, {
-    code: [
-      '<App foo></App>'
-    ].join('\n')
-  }, {
-    code: [
-      '<App',
-      '  foo',
-      '></App>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      '<App',
-      '  foo',
-      '></App>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      '<App',
-      '  foo',
-      '  ></App>'
-    ].join('\n'),
-    options: [{location: 'props-aligned'}]
-  }, {
-    code: [
-      '<App',
-      '  foo={function() {',
-      '    console.log(\'bar\');',
-      '  }} />'
-    ].join('\n'),
-    options: [{location: 'after-props'}]
-  }, {
-    code: [
-      '<App',
-      '  foo={function() {',
-      '    console.log(\'bar\');',
-      '  }}',
-      '  />'
-    ].join('\n'),
-    options: [{location: 'props-aligned'}]
-  }, {
-    code: [
-      '<App',
-      '  foo={function() {',
-      '    console.log(\'bar\');',
-      '  }}',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      '<App',
-      '  foo={function() {',
-      '    console.log(\'bar\');',
-      '  }}',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      '<App foo={function() {',
-      '  console.log(\'bar\');',
-      '}}/>'
-    ].join('\n'),
-    options: [{location: 'after-props'}]
-  }, {
-    code: [
-      '<App foo={function() {',
-      '       console.log(\'bar\');',
-      '     }}',
-      '     />'
-    ].join('\n'),
-    options: [{location: 'props-aligned'}]
-  }, {
-    code: [
-      '<App foo={function() {',
-      '  console.log(\'bar\');',
-      '}}',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      '<App foo={function() {',
-      '  console.log(\'bar\');',
-      '}}',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      '<Provider store>',
-      '  <App',
-      '    foo />',
-      '</Provider>'
-    ].join('\n'),
-    options: [{selfClosing: 'after-props'}]
-  }, {
-    code: [
-      '<Provider ',
-      '  store',
-      '>',
-      '  <App',
-      '    foo />',
-      '</Provider>'
-    ].join('\n'),
-    options: [{selfClosing: 'after-props'}]
-  }, {
-    code: [
-      '<Provider ',
-      '  store>',
-      '  <App ',
-      '    foo',
-      '  />',
-      '</Provider>'
-    ].join('\n'),
-    options: [{nonEmpty: 'after-props'}]
-  }, {
-    code: [
-      '<Provider store>',
-      '  <App ',
-      '    foo',
-      '    />',
-      '</Provider>'
-    ].join('\n'),
-    options: [{selfClosing: 'props-aligned'}]
-  }, {
-    code: [
-      '<Provider',
-      '  store',
-      '  >',
-      '  <App ',
-      '    foo',
-      '  />',
-      '</Provider>'
-    ].join('\n'),
-    options: [{nonEmpty: 'props-aligned'}]
-  }, {
-    code: [
-      'var x = function() {',
-      '  return <App',
-      '    foo',
-      '         >',
-      '      bar',
-      '         </App>',
-      '}'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      'var x = function() {',
-      '  return <App',
-      '    foo',
-      '         />',
-      '}'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      'var x = <App',
-      '  foo',
-      '        />'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      'var x = function() {',
-      '  return <App',
-      '    foo={function() {',
-      '      console.log(\'bar\');',
-      '    }}',
-      '  />',
-      '}'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      'var x = <App',
-      '  foo={function() {',
-      '    console.log(\'bar\');',
-      '  }}',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      '<Provider',
-      '  store',
-      '>',
-      '  <App',
-      '    foo={function() {',
-      '      console.log(\'bar\');',
-      '    }}',
-      '  />',
-      '</Provider>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      '<Provider',
-      '  store',
-      '>',
-      '  {baz && <App',
-      '    foo={function() {',
-      '      console.log(\'bar\');',
-      '    }}',
-      '  />}',
-      '</Provider>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      '<App>',
-      '  <Foo',
-      '    bar',
-      '  >',
-      '  </Foo>',
-      '  <Foo',
-      '    bar />',
-      '</App>'
-    ].join('\n'),
-    options: [{
-      nonEmpty: false,
-      selfClosing: 'after-props'
-    }]
-  }, {
-    code: [
-      '<App>',
-      '  <Foo',
-      '    bar>',
-      '  </Foo>',
-      '  <Foo',
-      '    bar',
-      '  />',
-      '</App>'
-    ].join('\n'),
-    options: [{
-      nonEmpty: 'after-props',
-      selfClosing: false
-    }]
-  }, {
-    code: [
-      '<div className={[',
-      '  "some",',
-      '  "stuff",',
-      '  2 ]}',
-      '>',
-      '  Some text',
-      '</div>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      '<App ',
-      '\tfoo',
-      '/>'
-    ].join('\n')
-  }, {
-    code: [
-      '<App ',
-      '\tfoo />'
-    ].join('\n'),
-    options: ['after-props']
-  }, {
-    code: [
-      '<App ',
-      '\tfoo',
-      '\t/>'
-    ].join('\n'),
-    options: ['props-aligned']
-  }, {
-    code: [
-      '<App ',
-      '\tfoo />'
-    ].join('\n'),
-    options: [{location: 'after-props'}]
-  }, {
-    code: [
-      '<App ',
-      '\tfoo',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      '<App ',
-      '\tfoo',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      '<App ',
-      '\tfoo',
-      '\t/>'
-    ].join('\n'),
-    options: [{location: 'props-aligned'}]
-  }, {
-    code: [
-      '<App',
-      '\tfoo',
-      '></App>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      '<App',
-      '\tfoo',
-      '></App>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      '<App',
-      '\tfoo',
-      '\t></App>'
-    ].join('\n'),
-    options: [{location: 'props-aligned'}]
-  }, {
-    code: [
-      '<App',
-      '\tfoo={function() {',
-      '\t\tconsole.log(\'bar\');',
-      '\t}} />'
-    ].join('\n'),
-    options: [{location: 'after-props'}]
-  }, {
-    code: [
-      '<App',
-      '\tfoo={function() {',
-      '\t\tconsole.log(\'bar\');',
-      '\t}}',
-      '\t/>'
-    ].join('\n'),
-    options: [{location: 'props-aligned'}]
-  }, {
-    code: [
-      '<App',
-      '\tfoo={function() {',
-      '\t\tconsole.log(\'bar\');',
-      '\t}}',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      '<App',
-      '\tfoo={function() {',
-      '\t\tconsole.log(\'bar\');',
-      '\t}}',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      '<App foo={function() {',
-      '\tconsole.log(\'bar\');',
-      '}}/>'
-    ].join('\n'),
-    options: [{location: 'after-props'}]
-  }, {
-    code: [
-      '<App foo={function() {',
-      '\t\t\tconsole.log(\'bar\');',
-      '\t\t}}',
-      '     />'
-    ].join('\n'),
-    options: [{location: 'props-aligned'}]
-  }, {
-    code: [
-      '<App foo={function() {',
-      '\tconsole.log(\'bar\');',
-      '}}',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      '<App foo={function() {',
-      '\tconsole.log(\'bar\');',
-      '}}',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      '<Provider store>',
-      '\t<App',
-      '\t\tfoo />',
-      '</Provider>'
-    ].join('\n'),
-    options: [{selfClosing: 'after-props'}]
-  }, {
-    code: [
-      '<Provider ',
-      '\tstore',
-      '>',
-      '\t<App',
-      '\t\tfoo />',
-      '</Provider>'
-    ].join('\n'),
-    options: [{selfClosing: 'after-props'}]
-  }, {
-    code: [
-      '<Provider ',
-      '\tstore>',
-      '\t<App ',
-      '\t\tfoo',
-      '\t/>',
-      '</Provider>'
-    ].join('\n'),
-    options: [{nonEmpty: 'after-props'}]
-  }, {
-    code: [
-      '<Provider store>',
-      '\t<App ',
-      '\t\tfoo',
-      '\t\t/>',
-      '</Provider>'
-    ].join('\n'),
-    options: [{selfClosing: 'props-aligned'}]
-  }, {
-    code: [
-      '<Provider',
-      '\tstore',
-      '\t>',
-      '\t<App ',
-      '\t\tfoo',
-      '\t/>',
-      '</Provider>'
-    ].join('\n'),
-    options: [{nonEmpty: 'props-aligned'}]
-  }, {
-    code: [
-      'var x = function() {',
-      '\treturn <App',
-      '\t\tfoo',
-      '\t       >',
-      '\t\t\tbar',
-      '\t       </App>',
-      '}'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      'var x = function() {',
-      '\treturn <App',
-      '\t\tfoo',
-      '\t       />',
-      '}'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      'var x = <App',
-      '\tfoo',
-      '        />'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }, {
-    code: [
-      'var x = function() {',
-      '\treturn <App',
-      '\t\tfoo={function() {',
-      '\t\t\tconsole.log(\'bar\');',
-      '\t\t}}',
-      '\t/>',
-      '}'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      'var x = <App',
-      '\tfoo={function() {',
-      '\t\tconsole.log(\'bar\');',
-      '\t}}',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      '<Provider',
-      '\tstore',
-      '>',
-      '\t<App',
-      '\t\tfoo={function() {',
-      '\t\t\tconsole.log(\'bar\');',
-      '\t\t}}',
-      '\t/>',
-      '</Provider>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      '<Provider',
-      '\tstore',
-      '>',
-      '\t{baz && <App',
-      '\t\tfoo={function() {',
-      '\t\t\tconsole.log(\'bar\');',
-      '\t\t}}',
-      '\t/>}',
-      '</Provider>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}]
-  }, {
-    code: [
-      '<App>',
-      '\t<Foo',
-      '\t\tbar',
-      '\t>',
-      '\t</Foo>',
-      '\t<Foo',
-      '\t\tbar />',
-      '</App>'
-    ].join('\n'),
-    options: [{
-      nonEmpty: false,
-      selfClosing: 'after-props'
-    }]
-  }, {
-    code: [
-      '<App>',
-      '\t<Foo',
-      '\t\tbar>',
-      '\t</Foo>',
-      '\t<Foo',
-      '\t\tbar',
-      '\t/>',
-      '</App>'
-    ].join('\n'),
-    options: [{
-      nonEmpty: 'after-props',
-      selfClosing: false
-    }]
-  }, {
-    code: [
-      '<div className={[',
-      '\t"some",',
-      '\t"stuff",',
-      '\t2 ]}',
-      '>',
-      '\tSome text',
-      '</div>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}]
-  }],
+  valid: [
+    {
+      code: `
+         <App />
+       `
+    },
+    {
+      code: `
+         <App foo />
+       `
+    },
+    {
+      code: `
+         <App
+           foo
+         />
+       `
+    },
+    {
+      code: `
+         <App foo />
+       `,
+      options: [{location: 'after-props'}]
+    },
+    {
+      code: `
+         <App foo />
+       `,
+      options: [{location: 'tag-aligned'}]
+    },
+    {
+      code: `
+         <App foo />
+       `,
+      options: [{location: 'line-aligned'}]
+    },
+    {
+      code: `
+         <App
+           foo />
+       `,
+      options: ['after-props']
+    },
+    {
+      code: `
+         <App
+           foo
+           />
+       `,
+      options: ['props-aligned']
+    },
+    {
+      code: `
+         <App
+           foo />
+       `,
+      options: [{location: 'after-props'}]
+    },
+    {
+      code: `
+         <App
+           foo
+         />
+       `,
+      options: [{location: 'tag-aligned'}]
+    },
+    {
+      code: `
+         <App
+           foo
+         />
+       `,
+      options: [{location: 'line-aligned'}]
+    },
+    {
+      code: `
+         <App
+           foo
+           />
+       `,
+      options: [{location: 'props-aligned'}]
+    },
+    {
+      code: `
+         <App foo></App>
+       `
+    },
+    {
+      code: `
+         <App
+           foo
+         ></App>
+       `,
+      options: [{location: 'tag-aligned'}]
+    },
+    {
+      code: `
+         <App
+           foo
+         ></App>
+       `,
+      options: [{location: 'line-aligned'}]
+    },
+    {
+      code: `
+         <App
+           foo
+           ></App>
+       `,
+      options: [{location: 'props-aligned'}]
+    },
+    {
+      code: `
+         <App
+           foo={function() {
+             console.log('bar');
+           }} />
+       `,
+      options: [{location: 'after-props'}]
+    },
+    {
+      code: `
+         <App
+           foo={function() {
+             console.log('bar');
+           }}
+           />
+       `,
+      options: [{location: 'props-aligned'}]
+    },
+    {
+      code: `
+         <App
+           foo={function() {
+             console.log('bar');
+           }}
+         />
+       `,
+      options: [{location: 'tag-aligned'}]
+    },
+    {
+      code: `
+         <App
+           foo={function() {
+             console.log('bar');
+           }}
+         />
+       `,
+      options: [{location: 'line-aligned'}]
+    },
+    {
+      code: `
+         <App foo={function() {
+           console.log('bar');
+         }}/>
+       `,
+      options: [{location: 'after-props'}]
+    },
+    {
+      code: `
+         <App foo={function() {
+                console.log('bar');
+              }}
+              />
+       `,
+      options: [{location: 'props-aligned'}]
+    },
+    {
+      code: `
+         <App foo={function() {
+           console.log('bar');
+         }}
+         />
+       `,
+      options: [{location: 'tag-aligned'}]
+    },
+    {
+      code: `
+         <App foo={function() {
+           console.log('bar');
+         }}
+         />
+       `,
+      options: [{location: 'line-aligned'}]
+    },
+    {
+      code: `
+         <Provider store>
+           <App
+             foo />
+         </Provider>
+       `,
+      options: [{selfClosing: 'after-props'}]
+    },
+    {
+      code: `
+         <Provider
+           store
+         >
+           <App
+             foo />
+         </Provider>
+       `,
+      options: [{selfClosing: 'after-props'}]
+    },
+    {
+      code: `
+         <Provider
+           store>
+           <App
+             foo
+           />
+         </Provider>
+       `,
+      options: [{nonEmpty: 'after-props'}]
+    },
+    {
+      code: `
+         <Provider store>
+           <App
+             foo
+             />
+         </Provider>
+       `,
+      options: [{selfClosing: 'props-aligned'}]
+    },
+    {
+      code: `
+         <Provider
+           store
+           >
+           <App
+             foo
+           />
+         </Provider>
+       `,
+      options: [{nonEmpty: 'props-aligned'}]
+    },
+    {
+      code: `
+         var x = function() {
+           return <App
+             foo
+                  >
+               bar
+                  </App>
+         }
+       `,
+      options: [{location: 'tag-aligned'}]
+    },
+    {
+      code: `
+         var x = function() {
+           return <App
+             foo
+                  />
+         }
+       `,
+      options: [{location: 'tag-aligned'}]
+    },
+    {
+      code: `
+         var x = <App
+           foo
+                 />
+       `,
+      options: [{location: 'tag-aligned'}]
+    },
+    {
+      code: `
+         var x = function() {
+           return <App
+             foo={function() {
+               console.log('bar');
+             }}
+           />
+         }
+       `,
+      options: [{location: 'line-aligned'}]
+    },
+    {
+      code: `
+         var x = <App
+           foo={function() {
+             console.log('bar');
+           }}
+         />
+       `,
+      options: [{location: 'line-aligned'}]
+    },
+    {
+      code: `
+         <Provider
+           store
+         >
+           <App
+             foo={function() {
+               console.log('bar');
+             }}
+           />
+         </Provider>
+       `,
+      options: [{location: 'line-aligned'}]
+    },
+    {
+      code: `
+         <Provider
+           store
+         >
+           {baz && <App
+             foo={function() {
+               console.log('bar');
+             }}
+           />}
+         </Provider>
+       `,
+      options: [{location: 'line-aligned'}]
+    },
+    {
+      code: `
+         <App>
+           <Foo
+             bar
+           >
+           </Foo>
+           <Foo
+             bar />
+         </App>
+       `,
+      options: [
+        {
+          nonEmpty: false,
+          selfClosing: 'after-props'
+        }
+      ]
+    },
+    {
+      code: `
+         <App>
+           <Foo
+             bar>
+           </Foo>
+           <Foo
+             bar
+           />
+         </App>
+       `,
+      options: [
+        {
+          nonEmpty: 'after-props',
+          selfClosing: false
+        }
+      ]
+    },
+    {
+      code: `
+         <div className={[
+           "some",
+           "stuff",
+           2 ]}
+         >
+           Some text
+         </div>
+       `,
+      options: [{location: 'tag-aligned'}]
+    },
+    {
+      code: `
+         <App foo={function() {
+               console.log('bar');
+             }}
+              />
+       `,
+      options: [{location: 'props-aligned'}]
+    }
+  ],
 
-  invalid: [{
-    code: [
-      '<App ',
-      '/>'
-    ].join('\n'),
-    output: [
-      '<App />'
-    ].join('\n'),
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {location: MESSAGE_AFTER_TAG}
-    }]
-  }, {
-    code: [
-      '<App foo ',
-      '/>'
-    ].join('\n'),
-    output: [
-      '<App foo/>'
-    ].join('\n'),
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {location: MESSAGE_AFTER_PROPS}
-    }]
-  }, {
-    code: [
-      '<App foo',
-      '></App>'
-    ].join('\n'),
-    output: [
-      '<App foo></App>'
-    ].join('\n'),
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {location: MESSAGE_AFTER_PROPS}
-    }]
-  }, {
-    code: [
-      '<App ',
-      '  foo />'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '  foo',
-      '  />'
-    ].join('\n'),
-    options: [{location: 'props-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_PROPS_ALIGNED,
-        details: details(3, true)
-      },
-      line: 2,
-      column: 7
-    }]
-  }, {
-    code: [
-      '<App ',
-      '  foo />'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '  foo',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(1, true)
-      },
-      line: 2,
-      column: 7
-    }]
-  }, {
-    code: [
-      '<App ',
-      '  foo />'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '  foo',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(1, true)
-      },
-      line: 2,
-      column: 7
-    }]
-  }, {
-    code: [
-      '<App ',
-      '  foo',
-      '/>'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '  foo/>'
-    ].join('\n'),
-    options: [{location: 'after-props'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {location: MESSAGE_AFTER_PROPS}
-    }]
-  }, {
-    code: [
-      '<App ',
-      '  foo',
-      '/>'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '  foo',
-      '  />'
-    ].join('\n'),
-    options: [{location: 'props-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_PROPS_ALIGNED,
-        details: details(3, false)
-      },
-      line: 3,
-      column: 1
-    }]
-  }, {
-    code: [
-      '<App ',
-      '  foo',
-      '  />'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '  foo/>'
-    ].join('\n'),
-    options: [{location: 'after-props'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {location: MESSAGE_AFTER_PROPS}
-    }]
-  }, {
-    code: [
-      '<App ',
-      '  foo',
-      '  />'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '  foo',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(1, false)
-      },
-      line: 3,
-      column: 3
-    }]
-  }, {
-    code: [
-      '<App ',
-      '  foo',
-      '  />'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '  foo',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(1, false)
-      },
-      line: 3,
-      column: 3
-    }]
-  }, {
-    code: [
-      '<App',
-      '  foo',
-      '></App>'
-    ].join('\n'),
-    output: [
-      '<App',
-      '  foo></App>'
-    ].join('\n'),
-    options: [{location: 'after-props'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {location: MESSAGE_AFTER_PROPS}
-    }]
-  }, {
-    code: [
-      '<App',
-      '  foo',
-      '></App>'
-    ].join('\n'),
-    output: [
-      '<App',
-      '  foo',
-      '  ></App>'
-    ].join('\n'),
-    options: [{location: 'props-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_PROPS_ALIGNED,
-        details: details(3, false)
-      },
-      line: 3,
-      column: 1
-    }]
-  }, {
-    code: [
-      '<App',
-      '  foo',
-      '  ></App>'
-    ].join('\n'),
-    output: [
-      '<App',
-      '  foo></App>'
-    ].join('\n'),
-    options: [{location: 'after-props'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {location: MESSAGE_AFTER_PROPS}
-    }]
-  }, {
-    code: [
-      '<App',
-      '  foo',
-      '  ></App>'
-    ].join('\n'),
-    output: [
-      '<App',
-      '  foo',
-      '></App>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(1, false)
-      },
-      line: 3,
-      column: 3
-    }]
-  }, {
-    code: [
-      '<App',
-      '  foo',
-      '  ></App>'
-    ].join('\n'),
-    output: [
-      '<App',
-      '  foo',
-      '></App>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(1, false)
-      },
-      line: 3,
-      column: 3
-    }]
-  }, {
-    code: [
-      '<Provider ',
-      '  store>', // <--
-      '  <App ',
-      '    foo',
-      '    />',
-      '</Provider>'
-    ].join('\n'),
-    output: [
-      '<Provider ',
-      '  store',
-      '>',
-      '  <App ',
-      '    foo',
-      '    />',
-      '</Provider>'
-    ].join('\n'),
-    options: [{selfClosing: 'props-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(1, true)
-      },
-      line: 2,
-      column: 8
-    }]
-  }, {
-    code: [
-      'const Button = function(props) {',
-      '  return (',
-      '    <Button',
-      '      size={size}',
-      '      onClick={onClick}',
-      '                                    >',
-      '      Button Text',
-      '    </Button>',
-      '  );',
-      '};'
-    ].join('\n'),
-    output: [
-      'const Button = function(props) {',
-      '  return (',
-      '    <Button',
-      '      size={size}',
-      '      onClick={onClick}',
-      '      >',
-      '      Button Text',
-      '    </Button>',
-      '  );',
-      '};'
-    ].join('\n'),
-    options: ['props-aligned'],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_PROPS_ALIGNED,
-        details: details(7, false)
-      },
-      line: 6,
-      column: 37
-    }]
-  }, {
-    code: [
-      'const Button = function(props) {',
-      '  return (',
-      '    <Button',
-      '      size={size}',
-      '      onClick={onClick}',
-      '                                    >',
-      '      Button Text',
-      '    </Button>',
-      '  );',
-      '};'
-    ].join('\n'),
-    output: [
-      'const Button = function(props) {',
-      '  return (',
-      '    <Button',
-      '      size={size}',
-      '      onClick={onClick}',
-      '    >',
-      '      Button Text',
-      '    </Button>',
-      '  );',
-      '};'
-    ].join('\n'),
-    options: ['tag-aligned'],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(5, false)
-      },
-      line: 6,
-      column: 37
-    }]
-  }, {
-    code: [
-      'const Button = function(props) {',
-      '  return (',
-      '    <Button',
-      '      size={size}',
-      '      onClick={onClick}',
-      '                                    >',
-      '      Button Text',
-      '    </Button>',
-      '  );',
-      '};'
-    ].join('\n'),
-    output: [
-      'const Button = function(props) {',
-      '  return (',
-      '    <Button',
-      '      size={size}',
-      '      onClick={onClick}',
-      '    >',
-      '      Button Text',
-      '    </Button>',
-      '  );',
-      '};'
-    ].join('\n'),
-    options: ['line-aligned'],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(5, false)
-      },
-      line: 6,
-      column: 37
-    }]
-  }, {
-    code: [
-      '<Provider',
-      '  store',
-      '  >',
-      '  <App ',
-      '    foo',
-      '    />', // <--
-      '</Provider>'
-    ].join('\n'),
-    output: [
-      '<Provider',
-      '  store',
-      '  >',
-      '  <App ',
-      '    foo',
-      '  />',
-      '</Provider>'
-    ].join('\n'),
-    options: [{nonEmpty: 'props-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(3, false)
-      },
-      line: 6,
-      column: 5
-    }]
-  }, {
-    code: [
-      '<Provider ',
-      '  store>', // <--
-      '  <App',
-      '    foo />',
-      '</Provider>'
-    ].join('\n'),
-    output: [
-      '<Provider ',
-      '  store',
-      '>',
-      '  <App',
-      '    foo />',
-      '</Provider>'
-    ].join('\n'),
-    options: [{selfClosing: 'after-props'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(1, true)
-      },
-      line: 2,
-      column: 8
-    }]
-  }, {
-    code: [
-      '<Provider ',
-      '  store>',
-      '  <App ',
-      '    foo',
-      '    />', // <--
-      '</Provider>'
-    ].join('\n'),
-    output: [
-      '<Provider ',
-      '  store>',
-      '  <App ',
-      '    foo',
-      '  />', // <--
-      '</Provider>'
-    ].join('\n'),
-    options: [{nonEmpty: 'after-props'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(3, false)
-      },
-      line: 5,
-      column: 5
-    }]
-  }, {
-    code: [
-      'var x = function() {',
-      '  return <App',
-      '    foo',
-      '         />',
-      '}'
-    ].join('\n'),
-    output: [
-      'var x = function() {',
-      '  return <App',
-      '    foo',
-      '  />',
-      '}'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(3, false)
-      },
-      line: 4,
-      column: 10
-    }]
-  }, {
-    code: [
-      'var x = <App',
-      '  foo',
-      '        />'
-    ].join('\n'),
-    output: [
-      'var x = <App',
-      '  foo',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(1, false)
-      },
-      line: 3,
-      column: 9
-    }]
-  }, {
-    code: [
-      'var x = (',
-      '  <div',
-      '    className="MyComponent"',
-      '    {...props} />',
-      ')'
-    ].join('\n'),
-    output: [
-      'var x = (',
-      '  <div',
-      '    className="MyComponent"',
-      '    {...props}',
-      '  />',
-      ')'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(3, true)
-      },
-      line: 4,
-      column: 16
-    }]
-  }, {
-    code: [
-      'var x = (',
-      '  <Something',
-      '    content={<Foo />} />',
-      ')'
-    ].join('\n'),
-    output: [
-      'var x = (',
-      '  <Something',
-      '    content={<Foo />}',
-      '  />',
-      ')'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(3, true)
-      },
-      line: 3,
-      column: 23
-    }]
-  }, {
-    code: [
-      'var x = (',
-      '  <Something ',
-      '    />',
-      ')'
-    ].join('\n'),
-    output: [
-      'var x = (',
-      '  <Something />',
-      ')'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {location: MESSAGE_AFTER_TAG}
-    }]
-  }, {
-    code: [
-      '<div className={[',
-      '  "some",',
-      '  "stuff",',
-      '  2 ]}>',
-      '  Some text',
-      '</div>'
-    ].join('\n'),
-    output: [
-      '<div className={[',
-      '  "some",',
-      '  "stuff",',
-      '  2 ]}',
-      '>',
-      '  Some text',
-      '</div>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(1, true)
-      },
-      line: 4,
-      column: 7
-    }]
-  }, {
-    code: [
-      '<App ',
-      '\tfoo />'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '\tfoo',
-      '\t/>'
-    ].join('\n'),
-    options: [{location: 'props-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_PROPS_ALIGNED,
-        details: details(2, true)
-      },
-      line: 2,
-      column: 6
-    }]
-  }, {
-    code: [
-      '<App ',
-      '\tfoo />'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '\tfoo',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(1, true)
-      },
-      line: 2,
-      column: 6
-    }]
-  }, {
-    code: [
-      '<App ',
-      '\tfoo />'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '\tfoo',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(1, true)
-      },
-      line: 2,
-      column: 6
-    }]
-  }, {
-    code: [
-      '<App ',
-      '\tfoo',
-      '/>'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '\tfoo/>'
-    ].join('\n'),
-    options: [{location: 'after-props'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {location: MESSAGE_AFTER_PROPS}
-    }]
-  }, {
-    code: [
-      '<App ',
-      '\tfoo',
-      '/>'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '\tfoo',
-      '\t/>'
-    ].join('\n'),
-    options: [{location: 'props-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_PROPS_ALIGNED,
-        details: details(2, false)
-      },
-      line: 3,
-      column: 1
-    }]
-  }, {
-    code: [
-      '<App ',
-      '\tfoo',
-      '\t/>'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '\tfoo/>'
-    ].join('\n'),
-    options: [{location: 'after-props'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {location: MESSAGE_AFTER_PROPS}
-    }]
-  }, {
-    code: [
-      '<App ',
-      '\tfoo',
-      '\t/>'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '\tfoo',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(1, false)
-      },
-      line: 3,
-      column: 2
-    }]
-  }, {
-    code: [
-      '<App ',
-      '\tfoo',
-      '\t/>'
-    ].join('\n'),
-    output: [
-      '<App ',
-      '\tfoo',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(1, false)
-      },
-      line: 3,
-      column: 2
-    }]
-  }, {
-    code: [
-      '<App',
-      '\tfoo',
-      '></App>'
-    ].join('\n'),
-    output: [
-      '<App',
-      '\tfoo></App>'
-    ].join('\n'),
-    options: [{location: 'after-props'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {location: MESSAGE_AFTER_PROPS}
-    }]
-  }, {
-    code: [
-      '<App',
-      '\tfoo',
-      '></App>'
-    ].join('\n'),
-    output: [
-      '<App',
-      '\tfoo',
-      '\t></App>'
-    ].join('\n'),
-    options: [{location: 'props-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_PROPS_ALIGNED,
-        details: details(2, false)
-      },
-      line: 3,
-      column: 1
-    }]
-  }, {
-    code: [
-      '<App',
-      '\tfoo',
-      '\t></App>'
-    ].join('\n'),
-    output: [
-      '<App',
-      '\tfoo></App>'
-    ].join('\n'),
-    options: [{location: 'after-props'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {location: MESSAGE_AFTER_PROPS}
-    }]
-  }, {
-    code: [
-      '<App',
-      '\tfoo',
-      '\t></App>'
-    ].join('\n'),
-    output: [
-      '<App',
-      '\tfoo',
-      '></App>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(1, false)
-      },
-      line: 3,
-      column: 2
-    }]
-  }, {
-    code: [
-      '<App',
-      '\tfoo',
-      '\t></App>'
-    ].join('\n'),
-    output: [
-      '<App',
-      '\tfoo',
-      '></App>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(1, false)
-      },
-      line: 3,
-      column: 2
-    }]
-  }, {
-    code: [
-      '<Provider ',
-      '\tstore>', // <--
-      '\t<App ',
-      '\t\tfoo',
-      '\t\t/>',
-      '</Provider>'
-    ].join('\n'),
-    output: [
-      '<Provider ',
-      '\tstore',
-      '>',
-      '\t<App ',
-      '\t\tfoo',
-      '\t\t/>',
-      '</Provider>'
-    ].join('\n'),
-    options: [{selfClosing: 'props-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(1, true)
-      },
-      line: 2,
-      column: 7
-    }]
-  }, {
-    code: [
-      'const Button = function(props) {',
-      '\treturn (',
-      '\t\t<Button',
-      '\t\t\tsize={size}',
-      '\t\t\tonClick={onClick}',
-      '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t>',
-      '\t\t\tButton Text',
-      '\t\t</Button>',
-      '\t);',
-      '};'
-    ].join('\n'),
-    output: [
-      'const Button = function(props) {',
-      '\treturn (',
-      '\t\t<Button',
-      '\t\t\tsize={size}',
-      '\t\t\tonClick={onClick}',
-      '\t\t\t>',
-      '\t\t\tButton Text',
-      '\t\t</Button>',
-      '\t);',
-      '};'
-    ].join('\n'),
-    options: ['props-aligned'],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_PROPS_ALIGNED,
-        details: details(4, false)
-      },
-      line: 6,
-      column: 19
-    }]
-  }, {
-    code: [
-      'const Button = function(props) {',
-      '\treturn (',
-      '\t\t<Button',
-      '\t\t\tsize={size}',
-      '\t\t\tonClick={onClick}',
-      '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t>',
-      '\t\t\tButton Text',
-      '\t\t</Button>',
-      '\t);',
-      '};'
-    ].join('\n'),
-    output: [
-      'const Button = function(props) {',
-      '\treturn (',
-      '\t\t<Button',
-      '\t\t\tsize={size}',
-      '\t\t\tonClick={onClick}',
-      '\t\t>',
-      '\t\t\tButton Text',
-      '\t\t</Button>',
-      '\t);',
-      '};'
-    ].join('\n'),
-    options: ['tag-aligned'],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(3, false)
-      },
-      line: 6,
-      column: 19
-    }]
-  }, {
-    code: [
-      'const Button = function(props) {',
-      '\treturn (',
-      '\t\t<Button',
-      '\t\t\tsize={size}',
-      '\t\t\tonClick={onClick}',
-      '\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t>',
-      '\t\t\tButton Text',
-      '\t\t</Button>',
-      '\t);',
-      '};'
-    ].join('\n'),
-    output: [
-      'const Button = function(props) {',
-      '\treturn (',
-      '\t\t<Button',
-      '\t\t\tsize={size}',
-      '\t\t\tonClick={onClick}',
-      '\t\t>',
-      '\t\t\tButton Text',
-      '\t\t</Button>',
-      '\t);',
-      '};'
-    ].join('\n'),
-    options: ['line-aligned'],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(3, false)
-      },
-      line: 6,
-      column: 19
-    }]
-  }, {
-    code: [
-      '<Provider',
-      '\tstore',
-      '\t>',
-      '\t<App ',
-      '\t\tfoo',
-      '\t\t/>', // <--
-      '</Provider>'
-    ].join('\n'),
-    output: [
-      '<Provider',
-      '\tstore',
-      '\t>',
-      '\t<App ',
-      '\t\tfoo',
-      '\t/>',
-      '</Provider>'
-    ].join('\n'),
-    options: [{nonEmpty: 'props-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(2, false)
-      },
-      line: 6,
-      column: 3
-    }]
-  }, {
-    code: [
-      '<Provider ',
-      '\tstore>', // <--
-      '\t<App',
-      '\t\tfoo />',
-      '</Provider>'
-    ].join('\n'),
-    output: [
-      '<Provider ',
-      '\tstore',
-      '>',
-      '\t<App',
-      '\t\tfoo />',
-      '</Provider>'
-    ].join('\n'),
-    options: [{selfClosing: 'after-props'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(1, true)
-      },
-      line: 2,
-      column: 7
-    }]
-  }, {
-    code: [
-      '<Provider ',
-      '\tstore>',
-      '\t<App ',
-      '\t\tfoo',
-      '\t\t/>', // <--
-      '</Provider>'
-    ].join('\n'),
-    output: [
-      '<Provider ',
-      '\tstore>',
-      '\t<App ',
-      '\t\tfoo',
-      '\t/>', // <--
-      '</Provider>'
-    ].join('\n'),
-    options: [{nonEmpty: 'after-props'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(2, false)
-      },
-      line: 5,
-      column: 3
-    }]
-  }, {
-    code: [
-      'var x = function() {',
-      '\treturn <App',
-      '\t\tfoo',
-      '\t\t\t\t />',
-      '}'
-    ].join('\n'),
-    output: [
-      'var x = function() {',
-      '\treturn <App',
-      '\t\tfoo',
-      '\t/>',
-      '}'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(2, false)
-      },
-      line: 4,
-      column: 6
-    }]
-  }, {
-    code: [
-      'var x = <App',
-      '\tfoo',
-      '        />'
-    ].join('\n'),
-    output: [
-      'var x = <App',
-      '\tfoo',
-      '/>'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(1, false)
-      },
-      line: 3,
-      column: 9
-    }]
-  }, {
-    code: [
-      'var x = (',
-      '\t<div',
-      '\t\tclassName="MyComponent"',
-      '\t\t{...props} />',
-      ')'
-    ].join('\n'),
-    output: [
-      'var x = (',
-      '\t<div',
-      '\t\tclassName="MyComponent"',
-      '\t\t{...props}',
-      '\t/>',
-      ')'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(2, true)
-      },
-      line: 4,
-      column: 14
-    }]
-  }, {
-    code: [
-      'var x = (',
-      '\t<Something',
-      '\t\tcontent={<Foo />} />',
-      ')'
-    ].join('\n'),
-    output: [
-      'var x = (',
-      '\t<Something',
-      '\t\tcontent={<Foo />}',
-      '\t/>',
-      ')'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_LINE_ALIGNED,
-        details: details(2, true)
-      },
-      line: 3,
-      column: 21
-    }]
-  }, {
-    code: [
-      'var x = (',
-      '\t<Something ',
-      '\t\t/>',
-      ')'
-    ].join('\n'),
-    output: [
-      'var x = (',
-      '\t<Something />',
-      ')'
-    ].join('\n'),
-    options: [{location: 'line-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {location: MESSAGE_AFTER_TAG}
-    }]
-  }, {
-    code: [
-      '<div className={[',
-      '\t"some",',
-      '\t"stuff",',
-      '\t2 ]}>',
-      '\tSome text',
-      '</div>'
-    ].join('\n'),
-    output: [
-      '<div className={[',
-      '\t"some",',
-      '\t"stuff",',
-      '\t2 ]}',
-      '>',
-      '\tSome text',
-      '</div>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(1, true)
-      },
-      line: 4,
-      column: 6
-    }]
-  }, {
-    code: [
-      '\t\t<div',
-      '\t\t\tclassName={styles}',
-      '  >',
-      '\t\t\t{props}',
-      '\t\t</div>'
-    ].join('\n'),
-    output: [
-      '\t\t<div',
-      '\t\t\tclassName={styles}',
-      '\t\t>',
-      '\t\t\t{props}',
-      '\t\t</div>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(3, false)
-      },
-      line: 3,
-      column: 3
-    }]
-  }, {
-    code: [
-      '  <div',
-      '    className={styles}',
-      '\t\t>',
-      '    {props}',
-      '  </div>'
-    ].join('\n'),
-    output: [
-      '  <div',
-      '    className={styles}',
-      '  >',
-      '    {props}',
-      '  </div>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(3, false)
-      },
-      line: 3,
-      column: 3
-    }]
-  }, {
-    code: [
-      '  <App',
-      '    foo',
-      '\t\t/>'
-    ].join('\n'),
-    output: [
-      '  <App',
-      '    foo',
-      '  />'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(3, false)
-      },
-      line: 3,
-      column: 3
-    }]
-  }, {
-    code: [
-      '\t\t<App',
-      '\t\t\tfoo',
-      '  />'
-    ].join('\n'),
-    output: [
-      '\t\t<App',
-      '\t\t\tfoo',
-      '\t\t/>'
-    ].join('\n'),
-    options: [{location: 'tag-aligned'}],
-    errors: [{
-      messageId: 'bracketLocation',
-      data: {
-        location: MESSAGE_TAG_ALIGNED,
-        details: details(3, false)
-      },
-      line: 3,
-      column: 3
-    }]
-  }]
+  invalid: [
+    {
+      code: `
+        <App
+        />
+      `,
+      output: `
+        <App />
+      `,
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {location: MESSAGE_AFTER_TAG}
+        }
+      ]
+    },
+    {
+      code: `
+        <App foo
+        />
+      `,
+      output: `
+        <App foo/>
+      `,
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {location: MESSAGE_AFTER_PROPS}
+        }
+      ]
+    },
+    {
+      code: `
+        <App foo
+        ></App>
+      `,
+      output: `
+        <App foo></App>
+      `,
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {location: MESSAGE_AFTER_PROPS}
+        }
+      ]
+    },
+    {
+      code: `
+        <App
+          foo />
+      `,
+      output: `
+        <App
+          foo
+          />
+      `,
+      options: [{location: 'props-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_PROPS_ALIGNED,
+            details: details(11, true)
+          },
+          line: 3,
+          column: 15
+        }
+      ]
+    },
+    {
+      code: `
+        <App
+          foo />
+      `,
+      output: `
+        <App
+          foo
+        />
+      `,
+      options: [{location: 'tag-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(9, true)
+          },
+          line: 3,
+          column: 15
+        }
+      ]
+    },
+    {
+      code: `
+        <App
+          foo />
+      `,
+      output: `
+        <App
+          foo
+        />
+      `,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(9, true)
+          },
+          line: 3,
+          column: 15
+        }
+      ]
+    },
+    {
+      code: `
+        <App
+          foo
+        />
+      `,
+      output: `
+        <App
+          foo/>
+      `,
+      options: [{location: 'after-props'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {location: MESSAGE_AFTER_PROPS}
+        }
+      ]
+    },
+    {
+      code: `
+        <App
+          foo
+        />
+      `,
+      output: `
+        <App
+          foo
+          />
+      `,
+      options: [{location: 'props-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_PROPS_ALIGNED,
+            details: details(11, false)
+          },
+          line: 4,
+          column: 9
+        }
+      ]
+    },
+    {
+      code: `
+        <App
+          foo
+          />
+      `,
+      output: `
+        <App
+          foo/>
+      `,
+      options: [{location: 'after-props'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {location: MESSAGE_AFTER_PROPS}
+        }
+      ]
+    },
+    {
+      code: `
+        <App
+          foo
+          />
+      `,
+      output: `
+        <App
+          foo
+        />
+      `,
+      options: [{location: 'tag-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(9, false)
+          },
+          line: 4,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        <App
+          foo
+          />
+      `,
+      output: `
+        <App
+          foo
+        />
+      `,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(9, false)
+          },
+          line: 4,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        <App
+          foo
+        ></App>
+      `,
+      output: `
+        <App
+          foo></App>
+      `,
+      options: [{location: 'after-props'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {location: MESSAGE_AFTER_PROPS}
+        }
+      ]
+    },
+    {
+      code: `
+        <App
+          foo
+        ></App>
+      `,
+      output: `
+        <App
+          foo
+          ></App>
+      `,
+      options: [{location: 'props-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_PROPS_ALIGNED,
+            details: details(11, false)
+          },
+          line: 4,
+          column: 9
+        }
+      ]
+    },
+    {
+      code: `
+        <App
+          foo
+          ></App>
+      `,
+      output: `
+        <App
+          foo></App>
+      `,
+      options: [{location: 'after-props'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {location: MESSAGE_AFTER_PROPS}
+        }
+      ]
+    },
+    {
+      code: `
+        <App
+          foo
+          ></App>
+      `,
+      output: `
+        <App
+          foo
+        ></App>
+      `,
+      options: [{location: 'tag-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(9, false)
+          },
+          line: 4,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        <App
+          foo
+          ></App>
+      `,
+      output: `
+        <App
+          foo
+        ></App>
+      `,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(9, false)
+          },
+          line: 4,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        <Provider
+          store>${/* <-- */''}
+          <App
+            foo
+            />
+        </Provider>
+      `,
+      output: `
+        <Provider
+          store
+        >
+          <App
+            foo
+            />
+        </Provider>
+      `,
+      options: [{selfClosing: 'props-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(9, true)
+          },
+          line: 3,
+          column: 16
+        }
+      ]
+    },
+    {
+      code: `
+        const Button = function(props) {
+          return (
+            <Button
+              size={size}
+              onClick={onClick}
+                                            >
+              Button Text
+            </Button>
+          );
+        };
+      `,
+      output: `
+        const Button = function(props) {
+          return (
+            <Button
+              size={size}
+              onClick={onClick}
+              >
+              Button Text
+            </Button>
+          );
+        };
+      `,
+      options: ['props-aligned'],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_PROPS_ALIGNED,
+            details: details(15, false)
+          },
+          line: 7,
+          column: 45
+        }
+      ]
+    },
+    {
+      code: `
+        const Button = function(props) {
+          return (
+            <Button
+              size={size}
+              onClick={onClick}
+                                            >
+              Button Text
+            </Button>
+          );
+        };
+      `,
+      output: `
+        const Button = function(props) {
+          return (
+            <Button
+              size={size}
+              onClick={onClick}
+            >
+              Button Text
+            </Button>
+          );
+        };
+      `,
+      options: ['tag-aligned'],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(13, false)
+          },
+          line: 7,
+          column: 45
+        }
+      ]
+    },
+    {
+      code: `
+        const Button = function(props) {
+          return (
+            <Button
+              size={size}
+              onClick={onClick}
+                                            >
+              Button Text
+            </Button>
+          );
+        };
+      `,
+      output: `
+        const Button = function(props) {
+          return (
+            <Button
+              size={size}
+              onClick={onClick}
+            >
+              Button Text
+            </Button>
+          );
+        };
+      `,
+      options: ['line-aligned'],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(13, false)
+          },
+          line: 7,
+          column: 45
+        }
+      ]
+    },
+    {
+      code: `
+        <Provider
+          store
+          >
+          <App
+            foo
+            />${''/* <-- */}
+        </Provider>
+      `,
+      output: `
+        <Provider
+          store
+          >
+          <App
+            foo
+          />
+        </Provider>
+      `,
+      options: [{nonEmpty: 'props-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(11, false)
+          },
+          line: 7,
+          column: 13
+        }
+      ]
+    },
+    {
+      code: `
+        <Provider
+          store>${''/* <-- */}
+          <App
+            foo />
+        </Provider>
+      `,
+      output: `
+        <Provider
+          store
+        >
+          <App
+            foo />
+        </Provider>
+      `,
+      options: [{selfClosing: 'after-props'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(9, true)
+          },
+          line: 3,
+          column: 16
+        }
+      ]
+    },
+    {
+      code: `
+        <Provider
+          store>
+          <App
+            foo
+            />${''/* <--*/}
+        </Provider>
+      `,
+      output: `
+        <Provider
+          store>
+          <App
+            foo
+          />
+        </Provider>
+      `,
+      options: [{nonEmpty: 'after-props'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(11, false)
+          },
+          line: 6,
+          column: 13
+        }
+      ]
+    },
+    {
+      code: `
+        var x = function() {
+          return <App
+            foo
+                />
+        }
+      `,
+      output: `
+        var x = function() {
+          return <App
+            foo
+          />
+        }
+      `,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(11, false)
+          },
+          line: 5,
+          column: 17
+        }
+      ]
+    },
+    {
+      code: `
+        var x = <App
+          foo
+                />
+      `,
+      output: `
+        var x = <App
+          foo
+        />
+      `,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(9, false)
+          },
+          line: 4,
+          column: 17
+        }
+      ]
+    },
+    {
+      code: `
+        var x = (
+          <div
+            className="MyComponent"
+            {...props} />
+        )
+      `,
+      output: `
+        var x = (
+          <div
+            className="MyComponent"
+            {...props}
+          />
+        )
+      `,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(11, true)
+          },
+          line: 5,
+          column: 24
+        }
+      ]
+    },
+    {
+      code: `
+        var x = (
+          <Something
+            content={<Foo />} />
+        )
+      `,
+      output: `
+        var x = (
+          <Something
+            content={<Foo />}
+          />
+        )
+      `,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(11, true)
+          },
+          line: 4,
+          column: 31
+        }
+      ]
+    },
+    {
+      code: `
+        var x = (
+          <Something
+            />
+        )
+      `,
+      output: `
+        var x = (
+          <Something />
+        )
+      `,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {location: MESSAGE_AFTER_TAG}
+        }
+      ]
+    },
+    {
+      code: `
+        <div className={[
+          "some",
+          "stuff",
+          2 ]}>
+          Some text
+        </div>
+      `,
+      output: `
+        <div className={[
+          "some",
+          "stuff",
+          2 ]}
+        >
+          Some text
+        </div>
+      `,
+      options: [{location: 'tag-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(9, true)
+          },
+          line: 5,
+          column: 15
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<App
+\t\t\t\t\tfoo />
+\t\t\t`,
+      output: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t\t/>
+\t\t\t`,
+      options: [{location: 'props-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_PROPS_ALIGNED,
+            details: details(6, true)
+          },
+          line: 3,
+          column: 10
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<App
+\t\t\t\t\tfoo />
+\t\t\t`,
+      output: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t/>
+\t\t\t`,
+      options: [{location: 'tag-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(5, true)
+          },
+          line: 3,
+          column: 10
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<App
+\t\t\t\t\tfoo />
+\t\t\t`,
+      output: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t/>
+\t\t\t`,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(5, true)
+          },
+          line: 3,
+          column: 10
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t/>
+\t\t\t`,
+      output: `
+\t\t\t\t<App
+\t\t\t\t\tfoo/>
+\t\t\t`,
+      options: [{location: 'after-props'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {location: MESSAGE_AFTER_PROPS}
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t/>
+\t\t\t`,
+      output: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t\t/>
+\t\t\t`,
+      options: [{location: 'props-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_PROPS_ALIGNED,
+            details: details(6, false)
+          },
+          line: 4,
+          column: 5
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t\t/>
+\t\t\t`,
+      output: `
+\t\t\t\t<App
+\t\t\t\t\tfoo/>
+\t\t\t`,
+      options: [{location: 'after-props'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {location: MESSAGE_AFTER_PROPS}
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t\t/>
+\t\t\t`,
+      output: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t/>
+\t\t\t`,
+      options: [{location: 'tag-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(5, false)
+          },
+          line: 4,
+          column: 6
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t\t/>
+\t\t\t`,
+      output: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t/>
+\t\t\t`,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(5, false)
+          },
+          line: 4,
+          column: 6
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t></App>
+\t\t\t`,
+      output: `
+\t\t\t\t<App
+\t\t\t\t\tfoo></App>
+\t\t\t`,
+      options: [{location: 'after-props'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {location: MESSAGE_AFTER_PROPS}
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t></App>
+\t\t\t`,
+      output: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t\t></App>
+\t\t\t`,
+      options: [{location: 'props-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_PROPS_ALIGNED,
+            details: details(6, false)
+          },
+          line: 4,
+          column: 5
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t\t></App>
+\t\t\t`,
+      output: `
+\t\t\t\t<App
+\t\t\t\t\tfoo></App>
+\t\t\t`,
+      options: [{location: 'after-props'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {location: MESSAGE_AFTER_PROPS}
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t\t></App>
+\t\t\t`,
+      output: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t></App>
+\t\t\t`,
+      options: [{location: 'tag-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(5, false)
+          },
+          line: 4,
+          column: 6
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t\t></App>
+\t\t\t`,
+      output: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t></App>
+\t\t\t`,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(5, false)
+          },
+          line: 4,
+          column: 6
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<Provider
+\t\t\t\t\tstore>
+\t\t\t\t\t<App
+\t\t\t\t\t\tfoo
+\t\t\t\t\t\t/>
+\t\t\t\t</Provider>
+\t\t\t`,
+      output: `
+\t\t\t\t<Provider
+\t\t\t\t\tstore
+\t\t\t\t>
+\t\t\t\t\t<App
+\t\t\t\t\t\tfoo
+\t\t\t\t\t\t/>
+\t\t\t\t</Provider>
+\t\t\t`,
+      options: [{selfClosing: 'props-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(5, true)
+          },
+          line: 3,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\tconst Button = function(props) {
+\t\t\t\t\treturn (
+\t\t\t\t\t\t<Button
+\t\t\t\t\t\t\tsize={size}
+\t\t\t\t\t\t\tonClick={onClick}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t>
+\t\t\t\t\t\t\tButton Text
+\t\t\t\t\t\t</Button>
+\t\t\t\t\t);
+\t\t\t\t};
+\t\t\t`,
+      output: `
+\t\t\t\tconst Button = function(props) {
+\t\t\t\t\treturn (
+\t\t\t\t\t\t<Button
+\t\t\t\t\t\t\tsize={size}
+\t\t\t\t\t\t\tonClick={onClick}
+\t\t\t\t\t\t\t>
+\t\t\t\t\t\t\tButton Text
+\t\t\t\t\t\t</Button>
+\t\t\t\t\t);
+\t\t\t\t};
+\t\t\t`,
+      options: ['props-aligned'],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_PROPS_ALIGNED,
+            details: details(8, false)
+          },
+          line: 7,
+          column: 23
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\tconst Button = function(props) {
+\t\t\t\t\treturn (
+\t\t\t\t\t\t<Button
+\t\t\t\t\t\t\tsize={size}
+\t\t\t\t\t\t\tonClick={onClick}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t>
+\t\t\t\t\t\t\tButton Text
+\t\t\t\t\t\t</Button>
+\t\t\t\t\t);
+\t\t\t\t};
+\t\t\t`,
+      output: `
+\t\t\t\tconst Button = function(props) {
+\t\t\t\t\treturn (
+\t\t\t\t\t\t<Button
+\t\t\t\t\t\t\tsize={size}
+\t\t\t\t\t\t\tonClick={onClick}
+\t\t\t\t\t\t>
+\t\t\t\t\t\t\tButton Text
+\t\t\t\t\t\t</Button>
+\t\t\t\t\t);
+\t\t\t\t};
+\t\t\t`,
+      options: ['tag-aligned'],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(7, false)
+          },
+          line: 7,
+          column: 23
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\tconst Button = function(props) {
+\t\t\t\t\treturn (
+\t\t\t\t\t\t<Button
+\t\t\t\t\t\t\tsize={size}
+\t\t\t\t\t\t\tonClick={onClick}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t>
+\t\t\t\t\t\t\tButton Text
+\t\t\t\t\t\t</Button>
+\t\t\t\t\t);
+\t\t\t\t};
+\t\t\t`,
+      output: `
+\t\t\t\tconst Button = function(props) {
+\t\t\t\t\treturn (
+\t\t\t\t\t\t<Button
+\t\t\t\t\t\t\tsize={size}
+\t\t\t\t\t\t\tonClick={onClick}
+\t\t\t\t\t\t>
+\t\t\t\t\t\t\tButton Text
+\t\t\t\t\t\t</Button>
+\t\t\t\t\t);
+\t\t\t\t};
+\t\t\t`,
+      options: ['line-aligned'],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(7, false)
+          },
+          line: 7,
+          column: 23
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<Provider
+\t\t\t\t\tstore
+\t\t\t\t\t>
+\t\t\t\t\t<App
+\t\t\t\t\t\tfoo
+\t\t\t\t\t\t/>
+\t\t\t\t</Provider>
+\t\t\t`,
+      output: `
+\t\t\t\t<Provider
+\t\t\t\t\tstore
+\t\t\t\t\t>
+\t\t\t\t\t<App
+\t\t\t\t\t\tfoo
+\t\t\t\t\t/>
+\t\t\t\t</Provider>
+\t\t\t`,
+      options: [{nonEmpty: 'props-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(6, false)
+          },
+          line: 7,
+          column: 7
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<Provider
+\t\t\t\t\tstore>
+\t\t\t\t\t<App
+\t\t\t\t\t\tfoo />
+\t\t\t\t</Provider>
+\t\t\t`,
+      output: `
+\t\t\t\t<Provider
+\t\t\t\t\tstore
+\t\t\t\t>
+\t\t\t\t\t<App
+\t\t\t\t\t\tfoo />
+\t\t\t\t</Provider>
+\t\t\t`,
+      options: [{selfClosing: 'after-props'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(5, true)
+          },
+          line: 3,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<Provider
+\t\t\t\t\tstore>
+\t\t\t\t\t<App
+\t\t\t\t\t\tfoo
+\t\t\t\t\t\t/>
+\t\t\t\t</Provider>
+\t\t\t`,
+      output: `
+\t\t\t\t<Provider
+\t\t\t\t\tstore>
+\t\t\t\t\t<App
+\t\t\t\t\t\tfoo
+\t\t\t\t\t/>
+\t\t\t\t</Provider>
+\t\t\t`,
+      options: [{nonEmpty: 'after-props'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(6, false)
+          },
+          line: 6,
+          column: 7
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\tvar x = function() {
+\t\t\t\t\treturn <App
+\t\t\t\t\t\tfoo
+\t\t\t\t\t\t\t\t/>
+\t\t\t\t}
+\t\t\t`,
+      output: `
+\t\t\t\tvar x = function() {
+\t\t\t\t\treturn <App
+\t\t\t\t\t\tfoo
+\t\t\t\t\t/>
+\t\t\t\t}
+\t\t\t`,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(6, false)
+          },
+          line: 5,
+          column: 9
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\tvar x = <App
+\t\t\t\t\tfoo
+\t\t\t\t\t\t\t\t/>
+\t\t\t`,
+      output: `
+\t\t\t\tvar x = <App
+\t\t\t\t\tfoo
+\t\t\t\t/>
+\t\t\t`,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(5, false)
+          },
+          line: 4,
+          column: 9
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\tvar x = (
+\t\t\t\t\t<div
+\t\t\t\t\t\tclassName="MyComponent"
+\t\t\t\t\t\t{...props} />
+\t\t\t\t)
+\t\t\t`,
+      output: `
+\t\t\t\tvar x = (
+\t\t\t\t\t<div
+\t\t\t\t\t\tclassName="MyComponent"
+\t\t\t\t\t\t{...props}
+\t\t\t\t\t/>
+\t\t\t\t)
+\t\t\t`,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(6, true)
+          },
+          line: 5,
+          column: 18
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\tvar x = (
+\t\t\t\t\t<Something
+\t\t\t\t\t\tcontent={<Foo />} />
+\t\t\t\t)
+\t\t\t`,
+      output: `
+\t\t\t\tvar x = (
+\t\t\t\t\t<Something
+\t\t\t\t\t\tcontent={<Foo />}
+\t\t\t\t\t/>
+\t\t\t\t)
+\t\t\t`,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(6, true)
+          },
+          line: 4,
+          column: 25
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\tvar x = (
+\t\t\t\t\t<Something
+\t\t\t\t\t\t/>
+\t\t\t\t)
+\t\t\t`,
+      output: `
+\t\t\t\tvar x = (
+\t\t\t\t\t<Something />
+\t\t\t\t)
+\t\t\t`,
+      options: [{location: 'line-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {location: MESSAGE_AFTER_TAG}
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t<div className={[
+\t\t\t\t\t"some",
+\t\t\t\t\t"stuff",
+\t\t\t\t\t2 ]}>
+\t\t\t\t\tSome text
+\t\t\t\t</div>
+\t\t\t`,
+      output: `
+\t\t\t\t<div className={[
+\t\t\t\t\t"some",
+\t\t\t\t\t"stuff",
+\t\t\t\t\t2 ]}
+\t\t\t\t>
+\t\t\t\t\tSome text
+\t\t\t\t</div>
+\t\t\t`,
+      options: [{location: 'tag-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(5, true)
+          },
+          line: 5,
+          column: 10
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t\t\t\t<div
+\t\t\t\t\t\t\t\tclassName={styles}
+\t\t\t\t\t >
+\t\t\t\t\t\t\t\t{props}
+\t\t\t\t\t\t\t</div>
+\t\t\t`,
+      output: `
+\t\t\t\t\t\t\t<div
+\t\t\t\t\t\t\t\tclassName={styles}
+\t\t\t\t\t\t\t>
+\t\t\t\t\t\t\t\t{props}
+\t\t\t\t\t\t\t</div>
+\t\t\t`,
+      options: [{location: 'tag-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(8, false)
+          },
+          line: 4,
+          column: 7
+        }
+      ]
+    },
+    {
+      code: `
+          <div
+            className={styles}
+            >
+            {props}
+          </div>
+      `,
+      output: `
+          <div
+            className={styles}
+          >
+            {props}
+          </div>
+      `,
+      options: [{location: 'tag-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(11, false)
+          },
+          line: 4,
+          column: 13
+        }
+      ]
+    },
+    {
+      code: `
+          <App
+            foo
+            />
+      `,
+      output: `
+          <App
+            foo
+          />
+      `,
+      options: [{location: 'tag-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(11, false)
+          },
+          line: 4,
+          column: 13
+        }
+      ]
+    },
+    {
+      code: `
+\t\t\t\t\t\t<App
+\t\t\t\t\t\t\tfoo
+\t\t\t\t\t/>
+\t\t\t`,
+      output: `
+\t\t\t\t\t\t<App
+\t\t\t\t\t\t\tfoo
+\t\t\t\t\t\t/>
+\t\t\t`,
+      options: [{location: 'tag-aligned'}],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(7, false)
+          },
+          line: 4,
+          column: 6
+        }
+      ]
+    }
+  ]
 });

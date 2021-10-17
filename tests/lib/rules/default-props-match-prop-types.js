@@ -30,658 +30,652 @@ const ruleTester = new RuleTester({parserOptions});
 // ------------------------------------------------------------------------------
 
 ruleTester.run('default-props-match-prop-types', rule, {
-
   valid: [
-    //
     // stateless components
     {
-      code: [
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = {',
-        '  foo: React.PropTypes.string.isRequired,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};'
-      ].join('\n')
+      code: `
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = {
+          foo: React.PropTypes.string.isRequired,
+          bar: React.PropTypes.string.isRequired
+        };
+      `
     },
     {
-      code: [
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'MyStatelessComponent.defaultProps = {',
-        '  foo: "foo"',
-        '};'
-      ].join('\n')
+      code: `
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
+        MyStatelessComponent.defaultProps = {
+          foo: "foo"
+        };
+      `
     },
     {
-      code: [
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}'
-      ].join('\n')
+      code: `
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+      `
     },
     {
-      code: [
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = {',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'MyStatelessComponent.propTypes.foo = React.PropTypes.string;',
-        'MyStatelessComponent.defaultProps = {',
-        '  foo: "foo"',
-        '};'
-      ].join('\n')
+      code: `
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = {
+          bar: React.PropTypes.string.isRequired
+        };
+        MyStatelessComponent.propTypes.foo = React.PropTypes.string;
+        MyStatelessComponent.defaultProps = {
+          foo: "foo"
+        };
+      `
     },
     {
-      code: [
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = {',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'MyStatelessComponent.defaultProps = {',
-        '  bar: "bar"',
-        '};'
-      ].join('\n'),
-      options: [{
-        allowRequiredDefaults: true
-      }]
+      code: `
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = {
+          bar: React.PropTypes.string.isRequired
+        };
+        MyStatelessComponent.defaultProps = {
+          bar: "bar"
+        };
+      `,
+      options: [
+        {allowRequiredDefaults: true}
+      ]
     },
     {
-      code: [
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = {',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'MyStatelessComponent.propTypes.foo = React.PropTypes.string;',
-        'MyStatelessComponent.defaultProps = {};',
-        'MyStatelessComponent.defaultProps.foo = "foo";'
-      ].join('\n')
+      code: `
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = {
+          bar: React.PropTypes.string.isRequired
+        };
+        MyStatelessComponent.propTypes.foo = React.PropTypes.string;
+        MyStatelessComponent.defaultProps = {};
+        MyStatelessComponent.defaultProps.foo = "foo";
+      `
     },
     {
-      code: [
-        'function MyStatelessComponent({ foo }) {',
-        '  return <div>{foo}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = {};',
-        'MyStatelessComponent.propTypes.foo = React.PropTypes.string;',
-        'MyStatelessComponent.defaultProps = {};',
-        'MyStatelessComponent.defaultProps.foo = "foo";'
-      ].join('\n')
+      code: `
+        function MyStatelessComponent({ foo }) {
+          return <div>{foo}</div>;
+        }
+        MyStatelessComponent.propTypes = {};
+        MyStatelessComponent.propTypes.foo = React.PropTypes.string;
+        MyStatelessComponent.defaultProps = {};
+        MyStatelessComponent.defaultProps.foo = "foo";
+      `
     },
     {
-      code: [
-        'const types = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
+      code: `
+        const types = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
 
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = types;',
-        'MyStatelessComponent.defaultProps = {',
-        '  foo: "foo"',
-        '};'
-      ].join('\n')
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = types;
+        MyStatelessComponent.defaultProps = {
+          foo: "foo"
+        };
+      `
     },
     {
-      code: [
-        'const defaults = {',
-        '  foo: "foo"',
-        '};',
+      code: `
+        const defaults = {
+          foo: "foo"
+        };
 
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'MyStatelessComponent.defaultProps = defaults;'
-      ].join('\n')
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
+        MyStatelessComponent.defaultProps = defaults;
+      `
     },
     {
-      code: [
-        'const defaults = {',
-        '  foo: "foo"',
-        '};',
-        'const types = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
+      code: `
+        const defaults = {
+          foo: "foo"
+        };
+        const types = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
 
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = types;',
-        'MyStatelessComponent.defaultProps = defaults;'
-      ].join('\n')
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = types;
+        MyStatelessComponent.defaultProps = defaults;
+      `
     },
 
-    //
     // createReactClass components
     {
-      code: [
-        'var Greeting = createReactClass({',
-        '  render: function() {',
-        '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
-        '  },',
-        '  propTypes: {',
-        '    foo: React.PropTypes.string.isRequired,',
-        '    bar: React.PropTypes.string.isRequired',
-        '  }',
-        '});'
-      ].join('\n')
+      code: `
+        var Greeting = createReactClass({
+          render: function() {
+            return <div>Hello {this.props.foo} {this.props.bar}</div>;
+          },
+          propTypes: {
+            foo: React.PropTypes.string.isRequired,
+            bar: React.PropTypes.string.isRequired
+          }
+        });
+      `
     },
     {
-      code: [
-        'var Greeting = createReactClass({',
-        '  render: function() {',
-        '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
-        '  },',
-        '  propTypes: {',
-        '    foo: React.PropTypes.string,',
-        '    bar: React.PropTypes.string.isRequired',
-        '  },',
-        '  getDefaultProps: function() {',
-        '    return {',
-        '      foo: "foo"',
-        '    };',
-        '  }',
-        '});'
-      ].join('\n')
+      code: `
+        var Greeting = createReactClass({
+          render: function() {
+            return <div>Hello {this.props.foo} {this.props.bar}</div>;
+          },
+          propTypes: {
+            foo: React.PropTypes.string,
+            bar: React.PropTypes.string.isRequired
+          },
+          getDefaultProps: function() {
+            return {
+              foo: "foo"
+            };
+          }
+        });
+      `
     },
     {
-      code: [
-        'var Greeting = createReactClass({',
-        '  render: function() {',
-        '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
-        '  },',
-        '  propTypes: {',
-        '    foo: React.PropTypes.string,',
-        '    bar: React.PropTypes.string',
-        '  },',
-        '  getDefaultProps: function() {',
-        '    return {',
-        '      foo: "foo",',
-        '      bar: "bar"',
-        '    };',
-        '  }',
-        '});'
-      ].join('\n')
+      code: `
+        var Greeting = createReactClass({
+          render: function() {
+            return <div>Hello {this.props.foo} {this.props.bar}</div>;
+          },
+          propTypes: {
+            foo: React.PropTypes.string,
+            bar: React.PropTypes.string
+          },
+          getDefaultProps: function() {
+            return {
+              foo: "foo",
+              bar: "bar"
+            };
+          }
+        });
+      `
     },
     {
-      code: [
-        'var Greeting = createReactClass({',
-        '  render: function() {',
-        '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
-        '  }',
-        '});'
-      ].join('\n')
+      code: `
+        var Greeting = createReactClass({
+          render: function() {
+            return <div>Hello {this.props.foo} {this.props.bar}</div>;
+          }
+        });
+      `
     },
 
-    //
     // ES6 class component
     {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'Greeting.propTypes = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'Greeting.defaultProps = {',
-        '  foo: "foo"',
-        '};'
-      ].join('\n')
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
+        Greeting.defaultProps = {
+          foo: "foo"
+        };
+      `
     },
     {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'Greeting.propTypes = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'Greeting.defaultProps = {',
-        '  foo: "foo"',
-        '};'
-      ].join('\n'),
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
+        Greeting.defaultProps = {
+          foo: "foo"
+        };
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}'
-      ].join('\n')
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+      `
     },
     {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'Greeting.propTypes = {',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'Greeting.propTypes.foo = React.PropTypes.string;',
-        'Greeting.defaultProps = {',
-        '  foo: "foo"',
-        '};'
-      ].join('\n')
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {
+          bar: React.PropTypes.string.isRequired
+        };
+        Greeting.propTypes.foo = React.PropTypes.string;
+        Greeting.defaultProps = {
+          foo: "foo"
+        };
+      `
     },
     {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'Greeting.propTypes = {',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'Greeting.propTypes.foo = React.PropTypes.string;',
-        'Greeting.defaultProps = {};',
-        'Greeting.defaultProps.foo = "foo";'
-      ].join('\n')
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {
+          bar: React.PropTypes.string.isRequired
+        };
+        Greeting.propTypes.foo = React.PropTypes.string;
+        Greeting.defaultProps = {};
+        Greeting.defaultProps.foo = "foo";
+      `
     },
     {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'Greeting.propTypes = {};',
-        'Greeting.propTypes.foo = React.PropTypes.string;',
-        'Greeting.defaultProps = {};',
-        'Greeting.defaultProps.foo = "foo";'
-      ].join('\n')
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {};
+        Greeting.propTypes.foo = React.PropTypes.string;
+        Greeting.defaultProps = {};
+        Greeting.defaultProps.foo = "foo";
+      `
     },
 
-    //
     // edge cases
 
     // not a react component
     {
-      code: [
-        'function NotAComponent({ foo, bar }) {}',
-        'NotAComponent.defaultProps = {',
-        '  bar: "bar"',
-        '};'
-      ].join('\n')
+      code: `
+        function NotAComponent({ foo, bar }) {}
+        NotAComponent.defaultProps = {
+          bar: "bar"
+        };
+      `
     },
     {
-      code: [
-        'class Greeting {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'Greeting.defaulProps = {',
-        '  bar: "bar"',
-        '};'
-      ].join('\n')
+      code: `
+        class Greeting {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.defaulProps = {
+          bar: "bar"
+        };
+      `
     },
     // external references
     {
-      code: [
-        'const defaults = require("./defaults");',
-        'const types = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string',
-        '};',
+      code: `
+        const defaults = require("./defaults");
+        const types = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string
+        };
 
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = types;',
-        'MyStatelessComponent.defaultProps = defaults;'
-      ].join('\n')
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = types;
+        MyStatelessComponent.defaultProps = defaults;
+      `
     },
     {
-      code: [
-        'const defaults = {',
-        '  foo: "foo"',
-        '};',
-        'const types = require("./propTypes");',
+      code: `
+        const defaults = {
+          foo: "foo"
+        };
+        const types = require("./propTypes");
 
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = types;',
-        'MyStatelessComponent.defaultProps = defaults;'
-      ].join('\n')
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = types;
+        MyStatelessComponent.defaultProps = defaults;
+      `
     },
     {
-      code: [
-        'MyStatelessComponent.propTypes = {',
-        '  foo: React.PropTypes.string',
-        '};',
-        'MyStatelessComponent.defaultProps = require("./defaults").foo;',
+      code: `
+        MyStatelessComponent.propTypes = {
+          foo: React.PropTypes.string
+        };
+        MyStatelessComponent.defaultProps = require("./defaults").foo;
 
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}'
-      ].join('\n')
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+      `
     },
     {
-      code: [
-        'MyStatelessComponent.propTypes = {',
-        '  foo: React.PropTypes.string',
-        '};',
-        'MyStatelessComponent.defaultProps = require("./defaults").foo;',
-        'MyStatelessComponent.defaultProps.bar = "bar";',
+      code: `
+        MyStatelessComponent.propTypes = {
+          foo: React.PropTypes.string
+        };
+        MyStatelessComponent.defaultProps = require("./defaults").foo;
+        MyStatelessComponent.defaultProps.bar = "bar";
 
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}'
-      ].join('\n')
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+      `
     },
     {
-      code: [
-        'import defaults from "./defaults";',
+      code: `
+        import defaults from "./defaults";
 
-        'MyStatelessComponent.propTypes = {',
-        '  foo: React.PropTypes.string',
-        '};',
-        'MyStatelessComponent.defaultProps = defaults;',
+        MyStatelessComponent.propTypes = {
+          foo: React.PropTypes.string
+        };
+        MyStatelessComponent.defaultProps = defaults;
 
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}'
-      ].join('\n'),
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+      `,
       parserOptions: Object.assign({sourceType: 'module'}, parserOptions)
     },
     {
-      code: [
-        'import { foo } from "./defaults";',
+      code: `
+        import { foo } from "./defaults";
 
-        'MyStatelessComponent.propTypes = {',
-        '  foo: React.PropTypes.string',
-        '};',
-        'MyStatelessComponent.defaultProps = foo;',
+        MyStatelessComponent.propTypes = {
+          foo: React.PropTypes.string
+        };
+        MyStatelessComponent.defaultProps = foo;
 
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}'
-      ].join('\n'),
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+      `,
       parserOptions: Object.assign({sourceType: 'module'}, parserOptions)
     },
     // using spread operator
     {
-      code: [
-        'const component = rowsOfType(GuestlistEntry, (rowData, ownProps) => ({',
-        '    ...rowData,',
-        '    onPress: () => ownProps.onPress(rowData.id),',
-        '}));'
-      ].join('\n')
+      code: `
+        const component = rowsOfType(GuestlistEntry, (rowData, ownProps) => ({
+            ...rowData,
+            onPress: () => ownProps.onPress(rowData.id),
+        }));
+      `
     },
     {
-      code: [
-        'MyStatelessComponent.propTypes = {',
-        '  ...stuff,',
-        '  foo: React.PropTypes.string',
-        '};',
-        'MyStatelessComponent.defaultProps = {',
-        ' foo: "foo"',
-        '};',
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}'
-      ].join('\n')
+      code: `
+        MyStatelessComponent.propTypes = {
+          ...stuff,
+          foo: React.PropTypes.string
+        };
+        MyStatelessComponent.defaultProps = {
+         foo: "foo"
+        };
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+      `
     },
     {
-      code: [
-        'MyStatelessComponent.propTypes = {',
-        '  foo: React.PropTypes.string',
-        '};',
-        'MyStatelessComponent.defaultProps = {',
-        ' ...defaults,',
-        '};',
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}'
-      ].join('\n')
+      code: `
+        MyStatelessComponent.propTypes = {
+          foo: React.PropTypes.string
+        };
+        MyStatelessComponent.defaultProps = {
+         ...defaults,
+        };
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+      `
     },
     {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'Greeting.propTypes = {',
-        '  ...someProps,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};'
-      ].join('\n')
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {
+          ...someProps,
+          bar: React.PropTypes.string.isRequired
+        };
+      `
     },
     {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'Greeting.propTypes = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'Greeting.defaultProps = {',
-        '  ...defaults,',
-        '  bar: "bar"',
-        '};'
-      ].join('\n')
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
+        Greeting.defaultProps = {
+          ...defaults,
+          bar: "bar"
+        };
+      `
     },
     {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'Greeting.propTypes = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'Greeting.defaultProps = {',
-        '  ...defaults,',
-        '  bar: "bar"',
-        '};'
-      ].join('\n'),
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
+        Greeting.defaultProps = {
+          ...defaults,
+          bar: "bar"
+        };
+      `,
       parser: parsers.BABEL_ESLINT
     },
 
-    //
     // with Flow annotations
     {
-      code: [
-        'type Props = {',
-        '  foo: string',
-        '};',
+      code: `
+        type Props = {
+          foo: string
+        };
 
-        'class Hello extends React.Component {',
-        '  props: Props;',
+        class Hello extends React.Component {
+          props: Props;
 
-        '  render() {',
-        '    return <div>Hello {this.props.foo}</div>;',
-        '  }',
-        '}'
-      ].join('\n'),
+          render() {
+            return <div>Hello {this.props.foo}</div>;
+          }
+        }
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'type Props = {',
-        '  foo: string,',
-        '  bar?: string',
-        '};',
+      code: `
+        type Props = {
+          foo: string,
+          bar?: string
+        };
 
-        'class Hello extends React.Component {',
-        '  props: Props;',
+        class Hello extends React.Component {
+          props: Props;
 
-        '  render() {',
-        '    return <div>Hello {this.props.foo}</div>;',
-        '  }',
-        '}',
+          render() {
+            return <div>Hello {this.props.foo}</div>;
+          }
+        }
 
-        'Hello.defaultProps = {',
-        '  bar: "bar"',
-        '};'
-      ].join('\n'),
+        Hello.defaultProps = {
+          bar: "bar"
+        };
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'class Hello extends React.Component {',
-        '  props: {',
-        '    foo: string,',
-        '    bar?: string',
-        '  };',
+      code: `
+        class Hello extends React.Component {
+          props: {
+            foo: string,
+            bar?: string
+          };
 
-        '  render() {',
-        '    return <div>Hello {this.props.foo}</div>;',
-        '  }',
-        '}',
+          render() {
+            return <div>Hello {this.props.foo}</div>;
+          }
+        }
 
-        'Hello.defaultProps = {',
-        '  bar: "bar"',
-        '};'
-      ].join('\n'),
+        Hello.defaultProps = {
+          bar: "bar"
+        };
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'class Hello extends React.Component {',
-        '  props: {',
-        '    foo: string',
-        '  };',
+      code: `
+        class Hello extends React.Component {
+          props: {
+            foo: string
+          };
 
-        '  render() {',
-        '    return <div>Hello {this.props.foo}</div>;',
-        '  }',
-        '}'
-      ].join('\n'),
+          render() {
+            return <div>Hello {this.props.foo}</div>;
+          }
+        }
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'function Hello(props: { foo?: string }) {',
-        '  return <div>Hello {props.foo}</div>;',
-        '}',
+      code: `
+        function Hello(props: { foo?: string }) {
+          return <div>Hello {props.foo}</div>;
+        }
 
-        'Hello.defaultProps = { foo: "foo" };'
-      ].join('\n'),
+        Hello.defaultProps = { foo: "foo" };
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'function Hello(props: { foo: string }) {',
-        '  return <div>Hello {foo}</div>;',
-        '}'
-      ].join('\n'),
+      code: `
+        function Hello(props: { foo: string }) {
+          return <div>Hello {foo}</div>;
+        }
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'const Hello = (props: { foo?: string }) => {',
-        '  return <div>Hello {props.foo}</div>;',
-        '};',
+      code: `
+        const Hello = (props: { foo?: string }) => {
+          return <div>Hello {props.foo}</div>;
+        };
 
-        'Hello.defaultProps = { foo: "foo" };'
-      ].join('\n'),
+        Hello.defaultProps = { foo: "foo" };
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'const Hello = (props: { foo: string }) => {',
-        '  return <div>Hello {foo}</div>;',
-        '};'
-      ].join('\n'),
+      code: `
+        const Hello = (props: { foo: string }) => {
+          return <div>Hello {foo}</div>;
+        };
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'const Hello = function(props: { foo?: string }) {',
-        '  return <div>Hello {props.foo}</div>;',
-        '};',
+      code: `
+        const Hello = function(props: { foo?: string }) {
+          return <div>Hello {props.foo}</div>;
+        };
 
-        'Hello.defaultProps = { foo: "foo" };'
-      ].join('\n'),
+        Hello.defaultProps = { foo: "foo" };
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'const Hello = function(props: { foo: string }) {',
-        '  return <div>Hello {foo}</div>;',
-        '};'
-      ].join('\n'),
+      code: `
+        const Hello = function(props: { foo: string }) {
+          return <div>Hello {foo}</div>;
+        };
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'type Props = {',
-        '  foo: string,',
-        '  bar?: string',
-        '};',
+      code: `
+        type Props = {
+          foo: string,
+          bar?: string
+        };
 
-        'type Props2 = {',
-        '  foo: string,',
-        '  baz?: string',
-        '}',
+        type Props2 = {
+          foo: string,
+          baz?: string
+        }
 
-        'function Hello(props: Props | Props2) {',
-        '  return <div>Hello {props.foo}</div>;',
-        '}',
+        function Hello(props: Props | Props2) {
+          return <div>Hello {props.foo}</div>;
+        }
 
-        'Hello.defaultProps = {',
-        '  bar: "bar",',
-        '  baz: "baz"',
-        '};'
-      ].join('\n'),
+        Hello.defaultProps = {
+          bar: "bar",
+          baz: "baz"
+        };
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
@@ -704,930 +698,983 @@ ruleTester.run('default-props-match-prop-types', rule, {
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'import type Props from "fake";',
-        'class Hello extends React.Component {',
-        '  props: Props;',
-        '  render () {',
-        '    return <div>Hello {this.props.name.firstname}</div>;',
-        '  }',
-        '}'
-      ].join('\n'),
+      code: `
+        import type Props from "fake";
+        class Hello extends React.Component {
+          props: Props;
+          render () {
+            return <div>Hello {this.props.name.firstname}</div>;
+          }
+        }
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'type Props = any;',
+      code: `
+        type Props = any;
 
-        'const Hello = function({ foo }: Props) {',
-        '  return <div>Hello {foo}</div>;',
-        '};'
-      ].join('\n'),
+        const Hello = function({ foo }: Props) {
+          return <div>Hello {foo}</div>;
+        };
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'import type ImportedProps from "fake";',
-        'type Props = ImportedProps;',
-        'function Hello(props: Props) {',
-        '  return <div>Hello {props.name.firstname}</div>;',
-        '}'
-      ].join('\n'),
+      code: `
+        import type ImportedProps from "fake";
+        type Props = ImportedProps;
+        function Hello(props: Props) {
+          return <div>Hello {props.name.firstname}</div>;
+        }
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'type DefaultProps1 = {|',
-        '  bar1?: string',
-        '|};',
-        'type DefaultProps2 = {|',
-        '  ...DefaultProps1,',
-        '  bar2?: string',
-        '|};',
-        'type Props = {',
-        '  foo: string,',
-        '  ...DefaultProps2',
-        '};',
+      code: `
+        type DefaultProps1 = {|
+          bar1?: string
+        |};
+        type DefaultProps2 = {|
+          ...DefaultProps1,
+          bar2?: string
+        |};
+        type Props = {
+          foo: string,
+          ...DefaultProps2
+        };
 
-        'function Hello(props: Props) {',
-        '  return <div>Hello {props.foo}</div>;',
-        '}',
+        function Hello(props: Props) {
+          return <div>Hello {props.foo}</div>;
+        }
 
-        'Hello.defaultProps = {',
-        '  bar1: "bar1",',
-        '  bar2: "bar2",',
-        '};'
-      ].join('\n'),
+        Hello.defaultProps = {
+          bar1: "bar1",
+          bar2: "bar2",
+        };
+      `,
       parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'type DefaultProps1 = {|',
-        '  bar1?: string',
-        '|};',
-        'type DefaultProps2 = {|',
-        '  ...DefaultProps1,',
-        '  bar2?: string',
-        '|};',
-        'type Props = {',
-        '  foo: string,',
-        '  ...DefaultProps2',
-        '};',
+      code: `
+        type DefaultProps1 = {|
+          bar1?: string
+        |};
+        type DefaultProps2 = {|
+          ...DefaultProps1,
+          bar2?: string
+        |};
+        type Props = {
+          foo: string,
+          ...DefaultProps2
+        };
 
-        'class Hello extends React.Component<Props> {',
-        '  render() {',
-        '    return <div>Hello {props.foo}</div>;',
-        '  }',
-        '}',
+        class Hello extends React.Component<Props> {
+          render() {
+            return <div>Hello {props.foo}</div>;
+          }
+        }
 
-        'Hello.defaultProps = {',
-        '  bar1: "bar1",',
-        '  bar2: "bar2",',
-        '};'
-      ].join('\n'),
+        Hello.defaultProps = {
+          bar1: "bar1",
+          bar2: "bar2",
+        };
+      `,
       parser: parsers.BABEL_ESLINT
     },
     // don't error when variable is not in scope
     {
-      code: [
-        'import type { ImportedType } from "fake";',
-        'type Props = ImportedType;',
-        'function Hello(props: Props) {',
-        '  return <div>Hello {props.name.firstname}</div>;',
-        '}'
-      ].join('\n'),
+      code: `
+        import type { ImportedType } from "fake";
+        type Props = ImportedType;
+        function Hello(props: Props) {
+          return <div>Hello {props.name.firstname}</div>;
+        }
+      `,
       parser: parsers.BABEL_ESLINT
     },
     // make sure error is not thrown with multiple assignments
     {
-      code: [
-        'import type ImportedProps from "fake";',
-        'type NestedProps = ImportedProps;',
-        'type Props = NestedProps;',
-        'function Hello(props: Props) {',
-        '  return <div>Hello {props.name.firstname}</div>;',
-        '}'
-      ].join('\n'),
+      code: `
+        import type ImportedProps from "fake";
+        type NestedProps = ImportedProps;
+        type Props = NestedProps;
+        function Hello(props: Props) {
+          return <div>Hello {props.name.firstname}</div>;
+        }
+      `,
       parser: parsers.BABEL_ESLINT
     },
     // don't error when variable is not in scope with intersection
     {
-      code: [
-        'import type ImportedProps from "fake";',
-        'type Props = ImportedProps & {',
-        '  foo: string',
-        '};',
-        'function Hello(props: Props) {',
-        '  return <div>Hello {props.name.firstname}</div>;',
-        '}'
-      ].join('\n'),
+      code: `
+        import type ImportedProps from "fake";
+        type Props = ImportedProps & {
+          foo: string
+        };
+        function Hello(props: Props) {
+          return <div>Hello {props.name.firstname}</div>;
+        }
+      `,
       parser: parsers.BABEL_ESLINT
     }
   ],
 
   invalid: [
-    //
     // stateless components
     {
-      code: [
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'MyStatelessComponent.defaultProps = {',
-        '  baz: "baz"',
-        '};'
-      ].join('\n'),
-      errors: [{
-        messageId: 'defaultHasNoType',
-        data: {name: 'baz'},
-        line: 9,
-        column: 3
-      }]
-    },
-    {
-      code: [
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'MyStatelessComponent.defaultProps = {',
-        '  baz: "baz"',
-        '};'
-      ].join('\n'),
-      errors: [{
-        messageId: 'defaultHasNoType',
-        data: {name: 'baz'},
-        line: 9,
-        column: 3
-      }],
-      parser: parsers.BABEL_ESLINT
-    },
-    {
-      code: [
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = forbidExtraProps({',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '})',
-        'MyStatelessComponent.defaultProps = {',
-        '  baz: "baz"',
-        '};'
-      ].join('\n'),
-      settings: {
-        propWrapperFunctions: ['forbidExtraProps']
-      },
-      errors: [{
-        messageId: 'defaultHasNoType',
-        data: {name: 'baz'},
-        line: 9,
-        column: 3
-      }]
-    },
-    {
-      code: [
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'const propTypes = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'MyStatelessComponent.propTypes = forbidExtraProps(propTypes);',
-        'MyStatelessComponent.defaultProps = {',
-        '  baz: "baz"',
-        '};'
-      ].join('\n'),
-      settings: {
-        propWrapperFunctions: ['forbidExtraProps']
-      },
-      errors: [{
-        messageId: 'defaultHasNoType',
-        data: {name: 'baz'},
-        line: 10,
-        column: 3
-      }]
-    },
-    {
-      code: [
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'MyStatelessComponent.defaultProps = {',
-        '  baz: "baz"',
-        '};'
-      ].join('\n'),
-      errors: [{
-        messageId: 'defaultHasNoType',
-        data: {name: 'baz'},
-        line: 9,
-        column: 3
-      }],
-      options: [{
-        allowRequiredDefaults: true
-      }]
-    },
-    {
-      code: [
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'MyStatelessComponent.defaultProps = {',
-        '  bar: "bar"',
-        '};',
-        'MyStatelessComponent.defaultProps.baz = "baz";'
-      ].join('\n'),
+      code: `
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
+        MyStatelessComponent.defaultProps = {
+          baz: "baz"
+        };
+      `,
       errors: [
-        {
-          messageId: 'requiredHasDefault',
-          data: {name: 'bar'},
-          line: 9,
-          column: 3
-        },
         {
           messageId: 'defaultHasNoType',
           data: {name: 'baz'},
-          line: 11,
-          column: 1
+          line: 10,
+          column: 11
         }
       ]
     },
     {
-      code: [
-        'const types = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = types;',
-        'MyStatelessComponent.defaultProps = {',
-        '  bar: "bar"',
-        '};'
-      ].join('\n'),
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'bar'},
-        line: 10,
-        column: 3
-      }]
+      code: `
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
+        MyStatelessComponent.defaultProps = {
+          baz: "baz"
+        };
+      `,
+      errors: [
+        {
+          messageId: 'defaultHasNoType',
+          data: {name: 'baz'},
+          line: 10,
+          column: 11
+        }
+      ],
+      parser: parsers.BABEL_ESLINT
     },
     {
-      code: [
-        'const defaults = {',
-        '  foo: "foo"',
-        '};',
-
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = {',
-        '  foo: React.PropTypes.string.isRequired,',
-        '  bar: React.PropTypes.string',
-        '};',
-        'MyStatelessComponent.defaultProps = defaults;'
-      ].join('\n'),
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'foo'},
-        line: 2,
-        column: 3
-      }]
+      code: `
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = forbidExtraProps({
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        })
+        MyStatelessComponent.defaultProps = {
+          baz: "baz"
+        };
+      `,
+      settings: {
+        propWrapperFunctions: ['forbidExtraProps']
+      },
+      errors: [
+        {
+          messageId: 'defaultHasNoType',
+          data: {name: 'baz'},
+          line: 10,
+          column: 11
+        }
+      ]
     },
     {
-      code: [
-        'const defaults = {',
-        '  foo: "foo"',
-        '};',
-        'const types = {',
-        '  foo: React.PropTypes.string.isRequired,',
-        '  bar: React.PropTypes.string',
-        '};',
+      code: `
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        const propTypes = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
+        MyStatelessComponent.propTypes = forbidExtraProps(propTypes);
+        MyStatelessComponent.defaultProps = {
+          baz: "baz"
+        };
+      `,
+      settings: {
+        propWrapperFunctions: ['forbidExtraProps']
+      },
+      errors: [
+        {
+          messageId: 'defaultHasNoType',
+          data: {name: 'baz'},
+          line: 11,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
+        MyStatelessComponent.defaultProps = {
+          baz: "baz"
+        };
+      `,
+      errors: [
+        {
+          messageId: 'defaultHasNoType',
+          data: {name: 'baz'},
+          line: 10,
+          column: 11
+        }
+      ],
+      options: [{allowRequiredDefaults: true}]
+    },
+    {
+      code: `
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
+        MyStatelessComponent.defaultProps = {
+          bar: "bar"
+        };
+        MyStatelessComponent.defaultProps.baz = "baz";
+      `,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'bar'},
+          line: 10,
+          column: 11
+        },
+        {
+          messageId: 'defaultHasNoType',
+          data: {name: 'baz'},
+          line: 12,
+          column: 9
+        }
+      ]
+    },
+    {
+      code: `
+        const types = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
 
-        'function MyStatelessComponent({ foo, bar }) {',
-        '  return <div>{foo}{bar}</div>;',
-        '}',
-        'MyStatelessComponent.propTypes = types;',
-        'MyStatelessComponent.defaultProps = defaults;'
-      ].join('\n'),
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'foo'},
-        line: 2,
-        column: 3
-      }]
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = types;
+        MyStatelessComponent.defaultProps = {
+          bar: "bar"
+        };
+      `,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'bar'},
+          line: 12,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        const defaults = {
+          foo: "foo"
+        };
+
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = {
+          foo: React.PropTypes.string.isRequired,
+          bar: React.PropTypes.string
+        };
+        MyStatelessComponent.defaultProps = defaults;
+      `,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'},
+          line: 3,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        const defaults = {
+          foo: "foo"
+        };
+        const types = {
+          foo: React.PropTypes.string.isRequired,
+          bar: React.PropTypes.string
+        };
+
+        function MyStatelessComponent({ foo, bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = types;
+        MyStatelessComponent.defaultProps = defaults;
+      `,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'},
+          line: 3,
+          column: 11
+        }
+      ]
     },
 
-    //
     // createReactClass components
     {
-      code: [
-        'var Greeting = createReactClass({',
-        '  render: function() {',
-        '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
-        '  },',
-        '  propTypes: {',
-        '    foo: React.PropTypes.string,',
-        '    bar: React.PropTypes.string.isRequired',
-        '  },',
-        '  getDefaultProps: function() {',
-        '    return {',
-        '      baz: "baz"',
-        '    };',
-        '  }',
-        '});'
-      ].join('\n'),
-      errors: [{
-        messageId: 'defaultHasNoType',
-        data: {name: 'baz'},
-        line: 11,
-        column: 7
-      }]
+      code: `
+        var Greeting = createReactClass({
+          render: function() {
+            return <div>Hello {this.props.foo} {this.props.bar}</div>;
+          },
+          propTypes: {
+            foo: React.PropTypes.string,
+            bar: React.PropTypes.string.isRequired
+          },
+          getDefaultProps: function() {
+            return {
+              baz: "baz"
+            };
+          }
+        });
+      `,
+      errors: [
+        {
+          messageId: 'defaultHasNoType',
+          data: {name: 'baz'},
+          line: 12,
+          column: 15
+        }
+      ]
     },
     {
-      code: [
-        'var Greeting = createReactClass({',
-        '  render: function() {',
-        '    return <div>Hello {this.props.foo} {this.props.bar}</div>;',
-        '  },',
-        '  propTypes: {',
-        '    foo: React.PropTypes.string.isRequired,',
-        '    bar: React.PropTypes.string',
-        '  },',
-        '  getDefaultProps: function() {',
-        '    return {',
-        '      foo: "foo"',
-        '    };',
-        '  }',
-        '});'
-      ].join('\n'),
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'foo'},
-        line: 11,
-        column: 7
-      }]
-    },
-
-    //
-    // ES6 class component
-    {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'Greeting.propTypes = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'Greeting.defaultProps = {',
-        '  baz: "baz"',
-        '};'
-      ].join('\n'),
-      errors: [{
-        messageId: 'defaultHasNoType',
-        data: {name: 'baz'},
-        line: 13,
-        column: 3
-      }]
-    },
-    {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'Greeting.propTypes = {',
-        '  foo: React.PropTypes.string.isRequired,',
-        '  bar: React.PropTypes.string',
-        '};',
-        'Greeting.defaultProps = {',
-        '  foo: "foo"',
-        '};'
-      ].join('\n'),
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'foo'},
-        line: 13,
-        column: 3
-      }]
-    },
-    {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'Greeting.propTypes = {',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'Greeting.propTypes.foo = React.PropTypes.string.isRequired;',
-        'Greeting.defaultProps = {};',
-        'Greeting.defaultProps.foo = "foo";'
-      ].join('\n'),
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'foo'},
-        line: 13,
-        column: 1
-      }]
-    },
-    {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'Greeting.propTypes = {',
-        '  bar: React.PropTypes.string',
-        '};',
-        'Greeting.propTypes.foo = React.PropTypes.string;',
-        'Greeting.defaultProps = {};',
-        'Greeting.defaultProps.baz = "baz";'
-      ].join('\n'),
-      errors: [{
-        messageId: 'defaultHasNoType',
-        data: {name: 'baz'},
-        line: 13,
-        column: 1
-      }]
-    },
-    {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'Greeting.propTypes = {};',
-        'Greeting.propTypes.foo = React.PropTypes.string.isRequired;',
-        'Greeting.defaultProps = {};',
-        'Greeting.defaultProps.foo = "foo";'
-      ].join('\n'),
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'foo'},
-        line: 11,
-        column: 1
-      }]
-    },
-    {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'const props = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'Greeting.propTypes = props;',
-        'const defaults = {',
-        '  bar: "bar"',
-        '};',
-        'Greeting.defaultProps = defaults;'
-      ].join('\n'),
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'bar'},
-        line: 14,
-        column: 3
-      }]
-    },
-    {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '}',
-        'const props = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string',
-        '};',
-        'const defaults = {',
-        '  baz: "baz"',
-        '};',
-        'Greeting.propTypes = props;',
-        'Greeting.defaultProps = defaults;'
-      ].join('\n'),
-      errors: [{
-        messageId: 'defaultHasNoType',
-        data: {name: 'baz'},
-        line: 13,
-        column: 3
-      }]
-    },
-
-    //
-    // ES6 classes with static getter methods
-    {
-      code: [
-        'class Hello extends React.Component {',
-        '  static get propTypes() {',
-        '    return {',
-        '      name: React.PropTypes.string.isRequired',
-        '    };',
-        '  }',
-        '  static get defaultProps() {',
-        '    return {',
-        '      name: "name"',
-        '    };',
-        '  }',
-        '  render() {',
-        '    return <div>Hello {this.props.name}</div>;',
-        '  }',
-        '}'
-      ].join('\n'),
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'name'},
-        line: 9,
-        column: 7
-      }]
-    },
-    {
-      code: [
-        'class Hello extends React.Component {',
-        '  static get propTypes() {',
-        '    return {',
-        '      foo: React.PropTypes.string,',
-        '      bar: React.PropTypes.string',
-        '    };',
-        '  }',
-        '  static get defaultProps() {',
-        '    return {',
-        '      baz: "world"',
-        '    };',
-        '  }',
-        '  render() {',
-        '    return <div>Hello {this.props.bar}</div>;',
-        '  }',
-        '}'
-      ].join('\n'),
-      errors: [{
-        messageId: 'defaultHasNoType',
-        data: {name: 'baz'},
-        line: 10,
-        column: 7
-      }]
-    },
-    {
-      code: [
-        'const props = {',
-        '  foo: React.PropTypes.string',
-        '};',
-        'const defaults = {',
-        '  baz: "baz"',
-        '};',
-
-        'class Hello extends React.Component {',
-        '  static get propTypes() {',
-        '    return props;',
-        '  }',
-        '  static get defaultProps() {',
-        '    return defaults;',
-        '  }',
-        '  render() {',
-        '    return <div>Hello {this.props.foo}</div>;',
-        '  }',
-        '}'
-      ].join('\n'),
-      errors: [{
-        messageId: 'defaultHasNoType',
-        data: {name: 'baz'},
-        line: 5,
-        column: 3
-      }]
-    },
-    {
-      code: [
-        'const defaults = {',
-        '  bar: "world"',
-        '};',
-
-        'class Hello extends React.Component {',
-        '  static get propTypes() {',
-        '    return {',
-        '      foo: React.PropTypes.string,',
-        '      bar: React.PropTypes.string.isRequired',
-        '    };',
-        '  }',
-        '  static get defaultProps() {',
-        '    return defaults;',
-        '  }',
-        '  render() {',
-        '    return <div>Hello {this.props.bar}</div>;',
-        '  }',
-        '}'
-      ].join('\n'),
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'bar'},
-        line: 2,
-        column: 3
-      }]
-    },
-
-    //
-    // ES6 classes with property initializers
-    {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '  static propTypes = {',
-        '    foo: React.PropTypes.string,',
-        '    bar: React.PropTypes.string.isRequired',
-        '  };',
-        '  static defaultProps = {',
-        '    bar: "bar"',
-        '  };',
-        '}'
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'bar'},
-        line: 12,
-        column: 5
-      }]
-    },
-    {
-      code: [
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '  static propTypes = {',
-        '    foo: React.PropTypes.string,',
-        '    bar: React.PropTypes.string',
-        '  };',
-        '  static defaultProps = {',
-        '    baz: "baz"',
-        '  };',
-        '}'
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'defaultHasNoType',
-        data: {name: 'baz'},
-        line: 12,
-        column: 5
-      }]
-    },
-    {
-      code: [
-        'const props = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string.isRequired',
-        '};',
-        'const defaults = {',
-        '  bar: "bar"',
-        '};',
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '  static propTypes = props;',
-        '  static defaultProps = defaults;',
-        '}'
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'bar'},
-        line: 6,
-        column: 3
-      }]
-    },
-    {
-      code: [
-        'const props = {',
-        '  foo: React.PropTypes.string,',
-        '  bar: React.PropTypes.string',
-        '};',
-        'const defaults = {',
-        '  baz: "baz"',
-        '};',
-        'class Greeting extends React.Component {',
-        '  render() {',
-        '    return (',
-        '      <h1>Hello, {this.props.foo} {this.props.bar}</h1>',
-        '    );',
-        '  }',
-        '  static propTypes = props;',
-        '  static defaultProps = defaults;',
-        '}'
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'defaultHasNoType',
-        data: {name: 'baz'},
-        line: 6,
-        column: 3
-      }]
-    },
-
-    //
-    // edge cases
-    {
-      code: [
-        'let Greetings = {};',
-        'Greetings.Hello = class extends React.Component {',
-        '  render () {',
-        '    return <div>Hello {this.props.foo}</div>;',
-        '  }',
-        '}',
-        'Greetings.Hello.propTypes = {',
-        '  foo: React.PropTypes.string.isRequired',
-        '};',
-        'Greetings.Hello.defaultProps = {',
-        '  foo: "foo"',
-        '};'
-      ].join('\n'),
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'foo'},
-        line: 11,
-        column: 3
-      }]
-    },
-    {
-      code: [
-        'var Greetings = ({ foo = "foo" }) => {',
-        '  return <div>Hello {this.props.foo}</div>;',
-        '}',
-        'Greetings.propTypes = {',
-        '  foo: React.PropTypes.string.isRequired',
-        '};',
-        'Greetings.defaultProps = {',
-        '  foo: "foo"',
-        '};'
-      ].join('\n'),
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'foo'},
-        line: 8,
-        column: 3
-      }]
-    },
-
-    //
-    // with Flow annotations
-    {
-      code: [
-        'class Hello extends React.Component {',
-        '  props: {',
-        '    foo: string,',
-        '    bar?: string',
-        '  };',
-
-        '  render() {',
-        '    return <div>Hello {this.props.foo}</div>;',
-        '  }',
-        '}',
-
-        'Hello.defaultProps = {',
-        '  foo: "foo"',
-        '};'
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'foo'},
-        line: 11,
-        column: 3
-      }]
-    },
-    {
-      code: [
-        'function Hello(props: { foo: string }) {',
-        '  return <div>Hello {props.foo}</div>;',
-        '}',
-        'Hello.defaultProps = {',
-        '  foo: "foo"',
-        '}'
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'foo'},
-        line: 5,
-        column: 3
-      }]
-    },
-    {
-      code: [
-        'type Props = {',
-        '  foo: string',
-        '};',
-
-        'function Hello(props: Props) {',
-        '  return <div>Hello {props.foo}</div>;',
-        '}',
-        'Hello.defaultProps = {',
-        '  foo: "foo"',
-        '}'
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'foo'},
-        line: 8,
-        column: 3
-      }]
-    },
-    {
-      code: [
-        'const Hello = (props: { foo: string, bar?: string }) => {',
-        '  return <div>Hello {props.foo}</div>;',
-        '};',
-        'Hello.defaultProps = { foo: "foo", bar: "bar" };'
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        messageId: 'requiredHasDefault',
-        data: {name: 'foo'},
-        line: 4,
-        column: 24
-      }]
-    },
-    {
-      code: [
-        'type Props = {',
-        '  foo: string,',
-        '  bar?: string',
-        '};',
-
-        'type Props2 = {',
-        '  foo: string,',
-        '  baz?: string',
-        '}',
-
-        'function Hello(props: Props | Props2) {',
-        '  return <div>Hello {props.foo}</div>;',
-        '}',
-        'Hello.defaultProps = { foo: "foo", frob: "frob" };'
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
+      code: `
+        var Greeting = createReactClass({
+          render: function() {
+            return <div>Hello {this.props.foo} {this.props.bar}</div>;
+          },
+          propTypes: {
+            foo: React.PropTypes.string.isRequired,
+            bar: React.PropTypes.string
+          },
+          getDefaultProps: function() {
+            return {
+              foo: "foo"
+            };
+          }
+        });
+      `,
       errors: [
         {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 12,
-          column: 24
+          column: 15
+        }
+      ]
+    },
+
+    // ES6 class component
+    {
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
+        Greeting.defaultProps = {
+          baz: "baz"
+        };
+      `,
+      errors: [
+        {
+          messageId: 'defaultHasNoType',
+          data: {name: 'baz'},
+          line: 14,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {
+          foo: React.PropTypes.string.isRequired,
+          bar: React.PropTypes.string
+        };
+        Greeting.defaultProps = {
+          foo: "foo"
+        };
+      `,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'},
+          line: 14,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {
+          bar: React.PropTypes.string.isRequired
+        };
+        Greeting.propTypes.foo = React.PropTypes.string.isRequired;
+        Greeting.defaultProps = {};
+        Greeting.defaultProps.foo = "foo";
+      `,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'},
+          line: 14,
+          column: 9
+        }
+      ]
+    },
+    {
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {
+          bar: React.PropTypes.string
+        };
+        Greeting.propTypes.foo = React.PropTypes.string;
+        Greeting.defaultProps = {};
+        Greeting.defaultProps.baz = "baz";
+      `,
+      errors: [
+        {
+          messageId: 'defaultHasNoType',
+          data: {name: 'baz'},
+          line: 14,
+          column: 9
+        }
+      ]
+    },
+    {
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {};
+        Greeting.propTypes.foo = React.PropTypes.string.isRequired;
+        Greeting.defaultProps = {};
+        Greeting.defaultProps.foo = "foo";
+      `,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'},
+          line: 12,
+          column: 9
+        }
+      ]
+    },
+    {
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        const props = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
+        Greeting.propTypes = props;
+        const defaults = {
+          bar: "bar"
+        };
+        Greeting.defaultProps = defaults;
+      `,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'bar'},
+          line: 15,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        const props = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string
+        };
+        const defaults = {
+          baz: "baz"
+        };
+        Greeting.propTypes = props;
+        Greeting.defaultProps = defaults;
+      `,
+      errors: [
+        {
+          messageId: 'defaultHasNoType',
+          data: {name: 'baz'},
+          line: 14,
+          column: 11
+        }
+      ]
+    },
+
+    // ES6 classes with static getter methods
+    {
+      code: `
+        class Hello extends React.Component {
+          static get propTypes() {
+            return {
+              name: React.PropTypes.string.isRequired
+            };
+          }
+          static get defaultProps() {
+            return {
+              name: "name"
+            };
+          }
+          render() {
+            return <div>Hello {this.props.name}</div>;
+          }
+        }
+      `,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'name'},
+          line: 10,
+          column: 15
+        }
+      ]
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          static get propTypes() {
+            return {
+              foo: React.PropTypes.string,
+              bar: React.PropTypes.string
+            };
+          }
+          static get defaultProps() {
+            return {
+              baz: "world"
+            };
+          }
+          render() {
+            return <div>Hello {this.props.bar}</div>;
+          }
+        }
+      `,
+      errors: [
+        {
+          messageId: 'defaultHasNoType',
+          data: {name: 'baz'},
+          line: 11,
+          column: 15
+        }
+      ]
+    },
+    {
+      code: `
+        const props = {
+          foo: React.PropTypes.string
+        };
+        const defaults = {
+          baz: "baz"
+        };
+
+        class Hello extends React.Component {
+          static get propTypes() {
+            return props;
+          }
+          static get defaultProps() {
+            return defaults;
+          }
+          render() {
+            return <div>Hello {this.props.foo}</div>;
+          }
+        }
+      `,
+      errors: [
+        {
+          messageId: 'defaultHasNoType',
+          data: {name: 'baz'},
+          line: 6,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        const defaults = {
+          bar: "world"
+        };
+
+        class Hello extends React.Component {
+          static get propTypes() {
+            return {
+              foo: React.PropTypes.string,
+              bar: React.PropTypes.string.isRequired
+            };
+          }
+          static get defaultProps() {
+            return defaults;
+          }
+          render() {
+            return <div>Hello {this.props.bar}</div>;
+          }
+        }
+      `,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'bar'},
+          line: 3,
+          column: 11
+        }
+      ]
+    },
+
+    // ES6 classes with property initializers
+    {
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+          static propTypes = {
+            foo: React.PropTypes.string,
+            bar: React.PropTypes.string.isRequired
+          };
+          static defaultProps = {
+            bar: "bar"
+          };
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'bar'},
+          line: 13,
+          column: 13
+        }
+      ]
+    },
+    {
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+          static propTypes = {
+            foo: React.PropTypes.string,
+            bar: React.PropTypes.string
+          };
+          static defaultProps = {
+            baz: "baz"
+          };
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'defaultHasNoType',
+          data: {name: 'baz'},
+          line: 13,
+          column: 13
+        }
+      ]
+    },
+    {
+      code: `
+        const props = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
+        const defaults = {
+          bar: "bar"
+        };
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+          static propTypes = props;
+          static defaultProps = defaults;
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'bar'},
+          line: 7,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        const props = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string
+        };
+        const defaults = {
+          baz: "baz"
+        };
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+          static propTypes = props;
+          static defaultProps = defaults;
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'defaultHasNoType',
+          data: {name: 'baz'},
+          line: 7,
+          column: 11
+        }
+      ]
+    },
+
+    // edge cases
+    {
+      code: `
+        let Greetings = {};
+        Greetings.Hello = class extends React.Component {
+          render () {
+            return <div>Hello {this.props.foo}</div>;
+          }
+        }
+        Greetings.Hello.propTypes = {
+          foo: React.PropTypes.string.isRequired
+        };
+        Greetings.Hello.defaultProps = {
+          foo: "foo"
+        };
+      `,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'},
+          line: 12,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        var Greetings = ({ foo = "foo" }) => {
+          return <div>Hello {this.props.foo}</div>;
+        }
+        Greetings.propTypes = {
+          foo: React.PropTypes.string.isRequired
+        };
+        Greetings.defaultProps = {
+          foo: "foo"
+        };
+      `,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'},
+          line: 9,
+          column: 11
+        }
+      ]
+    },
+
+    // with Flow annotations
+    {
+      code: `
+        class Hello extends React.Component {
+          props: {
+            foo: string,
+            bar?: string
+          };
+
+          render() {
+            return <div>Hello {this.props.foo}</div>;
+          }
+        }
+
+        Hello.defaultProps = {
+          foo: "foo"
+        };
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'},
+          line: 14,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        function Hello(props: { foo: string }) {
+          return <div>Hello {props.foo}</div>;
+        }
+        Hello.defaultProps = {
+          foo: "foo"
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'},
+          line: 6,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        type Props = {
+          foo: string
+        };
+
+        function Hello(props: Props) {
+          return <div>Hello {props.foo}</div>;
+        }
+        Hello.defaultProps = {
+          foo: "foo"
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'},
+          line: 10,
+          column: 11
+        }
+      ]
+    },
+    {
+      code: `
+        const Hello = (props: { foo: string, bar?: string }) => {
+          return <div>Hello {props.foo}</div>;
+        };
+        Hello.defaultProps = { foo: "foo", bar: "bar" };
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'},
+          line: 5,
+          column: 32
+        }
+      ]
+    },
+    {
+      code: `
+        type Props = {
+          foo: string,
+          bar?: string
+        };
+
+        type Props2 = {
+          foo: string,
+          baz?: string
+        }
+
+        function Hello(props: Props | Props2) {
+          return <div>Hello {props.foo}</div>;
+        }
+        Hello.defaultProps = { foo: "foo", frob: "frob" };
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {name: 'foo'},
+          line: 15,
+          column: 32
         },
         {
           messageId: 'defaultHasNoType',
           data: {name: 'frob'},
-          line: 12,
-          column: 36
+          line: 15,
+          column: 44
         }
       ]
     },
@@ -1684,70 +1731,70 @@ ruleTester.run('default-props-match-prop-types', rule, {
       ]
     },
     {
-      code: [
-        'type DefaultProps = {',
-        '  baz?: string,',
-        '  bar?: string',
-        '};',
+      code: `
+        type DefaultProps = {
+          baz?: string,
+          bar?: string
+        };
 
-        'type Props = {',
-        '  foo: string,',
-        '  ...DefaultProps',
-        '}',
+        type Props = {
+          foo: string,
+          ...DefaultProps
+        }
 
-        'function Hello(props: Props) {',
-        '  return <div>Hello {props.foo}</div>;',
-        '}',
-        'Hello.defaultProps = { foo: "foo", frob: "frob", baz: "bar" };'
-      ].join('\n'),
+        function Hello(props: Props) {
+          return <div>Hello {props.foo}</div>;
+        }
+        Hello.defaultProps = { foo: "foo", frob: "frob", baz: "bar" };
+      `,
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
-          line: 12,
-          column: 24
+          line: 15,
+          column: 32
         },
         {
           messageId: 'defaultHasNoType',
           data: {name: 'frob'},
-          line: 12,
-          column: 36
+          line: 15,
+          column: 44
         }
       ]
     },
     {
-      code: [
-        'type DefaultProps = {',
-        '  baz?: string,',
-        '  bar?: string',
-        '};',
+      code: `
+        type DefaultProps = {
+          baz?: string,
+          bar?: string
+        };
 
-        'type Props = {',
-        '  foo: string,',
-        '  ...DefaultProps',
-        '}',
+        type Props = {
+          foo: string,
+          ...DefaultProps
+        }
 
-        'class Hello extends React.Component<Props> {',
-        '  render() {',
-        '    return <div>Hello {props.foo}</div>;',
-        '  }',
-        '}',
-        'Hello.defaultProps = { foo: "foo", frob: "frob", baz: "bar" };'
-      ].join('\n'),
+        class Hello extends React.Component<Props> {
+          render() {
+            return <div>Hello {props.foo}</div>;
+          }
+        }
+        Hello.defaultProps = { foo: "foo", frob: "frob", baz: "bar" };
+      `,
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
-          line: 14,
-          column: 24
+          line: 17,
+          column: 32
         },
         {
           messageId: 'defaultHasNoType',
           data: {name: 'frob'},
-          line: 14,
-          column: 36
+          line: 17,
+          column: 44
         }
       ]
     }
