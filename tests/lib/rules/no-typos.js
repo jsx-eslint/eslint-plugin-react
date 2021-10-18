@@ -10,6 +10,7 @@
 
 const babelEslintVersion = require('babel-eslint/package.json').version;
 const semver = require('semver');
+const version = require('eslint/package.json').version;
 const RuleTester = require('eslint').RuleTester;
 
 const rule = require('../../../lib/rules/no-typos');
@@ -714,7 +715,8 @@ ruleTester.run('no-typos', rule, {
         MyComponent.defaultProps = { value: "" };
       `,
       parserOptions,
-    }, semver.satisfies(babelEslintVersion, '>= 9') ? {
+    },
+    semver.satisfies(babelEslintVersion, '>= 9') ? {
       code: `
         class Editor extends React.Component {
             #somethingPrivate() {
@@ -2413,20 +2415,24 @@ ruleTester.run('no-typos', rule, {
           type: 'Property',
         },
       ],
-      /*
+    },
+    semver.satisfies(version, '^5') ? {
       // PropTypes declared on a component that is detected through JSDoc comments and is
       // declared AFTER the PropTypes assignment
-      // Commented out since it only works with eslint 5.
-        ,{
-          code: `
-            MyComponent.PROPTYPES = {}
-            \/** @extends React.Component *\/
-            class MyComponent extends BaseComponent {}
-          `,
-          parserOptions: parserOptions
+      code: `
+        MyComponent.PROPTYPES = {}
+        /** @extends React.Component */
+        class MyComponent extends BaseComponent {}
+      `,
+      parserOptions,
+      errors: [
+        {
+          ruleId: 'no-typos',
+          messageId: 'typoStaticClassProp',
         },
-      */
-    }, parsers.TS([
+      ],
+    } : [],
+    parsers.TS([
       {
         code: `
           import 'prop-types'
