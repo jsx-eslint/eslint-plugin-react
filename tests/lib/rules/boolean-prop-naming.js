@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('boolean-prop-naming', rule, {
   valid: [].concat(
     {
@@ -47,7 +47,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       });
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
     },
     {
@@ -59,7 +59,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       });
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
     },
     {
@@ -71,7 +71,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       });
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
       settings: {
         react: {
@@ -88,7 +88,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       });
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
       settings: {
         react: {
@@ -105,7 +105,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       Hello.propTypes = {isSomething: PropTypes.bool}
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
     },
     {
@@ -117,7 +117,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       Hello.propTypes = wrap({ a: PropTypes.bool })
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
     },
     {
@@ -128,7 +128,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       Hello.propTypes = {something: PropTypes.any}
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
     },
     {
@@ -140,7 +140,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       Hello.propTypes = {isSomething: PropTypes.bool}
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
     },
     {
@@ -152,7 +152,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
       parser: parsers.BABEL_ESLINT,
     },
@@ -166,7 +166,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
       parser: parsers.BABEL_ESLINT,
     },
@@ -180,7 +180,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       Hello.propTypes = {isSomething: PropTypes.bool, ...spreadProps}
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
     },
     {
@@ -192,7 +192,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
       parser: parsers.BABEL_ESLINT,
     },
@@ -205,7 +205,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
       parser: parsers.BABEL_ESLINT,
     },
@@ -218,7 +218,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
       parser: parsers.BABEL_ESLINT,
     },
@@ -231,7 +231,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
       parser: parsers.BABEL_ESLINT,
     },
@@ -242,7 +242,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       Hello.propTypes = {isSomething: PropTypes.bool};
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
       parser: parsers.BABEL_ESLINT,
     },
@@ -255,7 +255,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       function Hello(props: Props): React.Element { return <div /> }
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
       parser: parsers.BABEL_ESLINT,
     },
@@ -304,7 +304,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       var y = {...x}
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
       parser: parsers.BABEL_ESLINT,
     },
@@ -317,7 +317,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
       parser: parsers.BABEL_ESLINT,
     },
@@ -331,7 +331,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         showScore: PropTypes.bool
     });`,
       options: [
-        {rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
       ],
     },
     {
@@ -387,7 +387,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       });
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
     },
     {
@@ -404,7 +404,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
       parser: parsers.BABEL_ESLINT,
     },
@@ -460,7 +460,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     const HelloNew = (props: TestFNType) => { return <div /> };
     `,
         options: [
-          {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+          { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
         ],
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [],
@@ -476,12 +476,12 @@ ruleTester.run('boolean-prop-naming', rule, {
       });
     `,
     options: [
-      {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
     ],
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -494,12 +494,12 @@ ruleTester.run('boolean-prop-naming', rule, {
       });
     `,
     options: [
-      {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
     ],
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -512,7 +512,7 @@ ruleTester.run('boolean-prop-naming', rule, {
       });
     `,
     options: [
-      {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
     ],
     settings: {
       react: {
@@ -522,7 +522,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -535,12 +535,12 @@ ruleTester.run('boolean-prop-naming', rule, {
       Hello.propTypes = {something: PropTypes.bool}
     `,
     options: [
-      {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
     ],
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -553,12 +553,12 @@ ruleTester.run('boolean-prop-naming', rule, {
       Hello.propTypes = {something: PropTypes.bool}
     `,
     options: [
-      {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
     ],
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -571,13 +571,13 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     `,
     options: [
-      {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
     ],
     parser: parsers.BABEL_ESLINT,
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -591,12 +591,12 @@ ruleTester.run('boolean-prop-naming', rule, {
       Hello.propTypes = {something: PropTypes.bool, ...spreadProps}
     `,
     options: [
-      {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
     ],
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -610,13 +610,13 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     `,
     options: [
-      {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
     ],
     parser: parsers.BABEL_ESLINT,
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -629,13 +629,13 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     `,
     options: [
-      {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
     ],
     parser: parsers.BABEL_ESLINT,
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -645,13 +645,13 @@ ruleTester.run('boolean-prop-naming', rule, {
       Hello.propTypes = {something: PropTypes.bool};
     `,
     options: [
-      {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
     ],
     parser: parsers.BABEL_ESLINT,
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -663,13 +663,13 @@ ruleTester.run('boolean-prop-naming', rule, {
       function Hello(props: Props): React.Element { return <div /> }
     `,
     options: [
-      {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
     ],
     parser: parsers.BABEL_ESLINT,
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -691,7 +691,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -715,11 +715,11 @@ ruleTester.run('boolean-prop-naming', rule, {
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
       {
         messageId: 'patternMismatch',
-        data: {propName: 'somethingElse', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'somethingElse', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -743,11 +743,11 @@ ruleTester.run('boolean-prop-naming', rule, {
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
       {
         messageId: 'patternMismatch',
-        data: {propName: 'somethingElse', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'somethingElse', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -763,12 +763,12 @@ ruleTester.run('boolean-prop-naming', rule, {
       propWrapperFunctions: ['merge'],
     },
     options: [
-      {rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
     ],
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'showScore', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'showScore', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -784,12 +784,12 @@ ruleTester.run('boolean-prop-naming', rule, {
       propWrapperFunctions: ['Object.assign'],
     },
     options: [
-      {rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
     ],
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'showScore', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'showScore', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -805,12 +805,12 @@ ruleTester.run('boolean-prop-naming', rule, {
       propWrapperFunctions: ['_.assign'],
     },
     options: [
-      {rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
     ],
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'showScore', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'showScore', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -826,12 +826,12 @@ ruleTester.run('boolean-prop-naming', rule, {
       propWrapperFunctions: ['forbidExtraProps'],
     },
     options: [
-      {rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
     ],
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'showScore', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'showScore', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -849,12 +849,12 @@ ruleTester.run('boolean-prop-naming', rule, {
       propWrapperFunctions: ['forbidExtraProps'],
     },
     options: [
-      {rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
     ],
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'showScore', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'showScore', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -873,12 +873,12 @@ ruleTester.run('boolean-prop-naming', rule, {
       propWrapperFunctions: ['forbidExtraProps'],
     },
     options: [
-      {rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
     ],
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'showScore', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'showScore', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -931,12 +931,12 @@ ruleTester.run('boolean-prop-naming', rule, {
       });
     `,
     options: [
-      {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
     ],
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -956,13 +956,13 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     `,
     options: [
-      {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
     ],
     parser: parsers.BABEL_ESLINT,
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -982,12 +982,12 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     `,
     options: [
-      {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
     ],
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -1005,13 +1005,13 @@ ruleTester.run('boolean-prop-naming', rule, {
       }
     `,
     options: [
-      {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+      { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
     ],
     parser: parsers.BABEL_ESLINT,
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -1041,7 +1041,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'failingItIs', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'failingItIs', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -1073,7 +1073,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'failingItIs', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'failingItIs', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   },
@@ -1094,7 +1094,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     errors: [
       {
         messageId: 'patternMismatch',
-        data: {propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+'},
+        data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
       },
     ],
   }, parsers.TS([
@@ -1106,7 +1106,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         const HelloNew = (props: TestConstType) => { return <div /> };
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
       parser: parsers['@TYPESCRIPT_ESLINT'],
       errors: [
@@ -1123,7 +1123,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         const HelloNew = (props: TestFNType) => { return <div /> };
     `,
       options: [
-        {rule: '^is[A-Z]([A-Za-z0-9]?)+'},
+        { rule: '^is[A-Z]([A-Za-z0-9]?)+' },
       ],
       parser: parsers['@TYPESCRIPT_ESLINT'],
       errors: [

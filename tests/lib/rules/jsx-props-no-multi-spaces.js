@@ -28,7 +28,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-props-no-multi-spaces', rule, {
   valid: [].concat(
     {
@@ -162,7 +162,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'App', prop2: 'foo'},
+          data: { prop1: 'App', prop2: 'foo' },
         },
       ],
     },
@@ -176,7 +176,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'foo', prop2: 'bar'},
+          data: { prop1: 'foo', prop2: 'bar' },
         },
       ],
     },
@@ -190,7 +190,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'foo', prop2: 'bar'},
+          data: { prop1: 'foo', prop2: 'bar' },
         },
       ],
     },
@@ -204,11 +204,11 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'App', prop2: 'foo'},
+          data: { prop1: 'App', prop2: 'foo' },
         },
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'foo', prop2: 'bar'},
+          data: { prop1: 'foo', prop2: 'bar' },
         },
       ],
     },
@@ -222,11 +222,11 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'foo', prop2: 'test'},
+          data: { prop1: 'foo', prop2: 'test' },
         },
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'test', prop2: 'bar'},
+          data: { prop1: 'test', prop2: 'bar' },
         },
       ],
     },
@@ -236,7 +236,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'Foo.Bar', prop2: 'baz'},
+          data: { prop1: 'Foo.Bar', prop2: 'baz' },
         },
       ],
     },
@@ -246,7 +246,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh', prop2: 'xyzzy'},
+          data: { prop1: 'Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh', prop2: 'xyzzy' },
         },
       ],
     },
@@ -261,7 +261,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'noLineGap',
-          data: {prop1: 'title', prop2: 'type'},
+          data: { prop1: 'title', prop2: 'type' },
         },
       ],
     },
@@ -280,11 +280,11 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'noLineGap',
-          data: {prop1: 'title', prop2: 'onClick'},
+          data: { prop1: 'title', prop2: 'onClick' },
         },
         {
           messageId: 'noLineGap',
-          data: {prop1: 'onClick', prop2: 'type'},
+          data: { prop1: 'onClick', prop2: 'type' },
         },
       ],
     }, (semver.satisfies(eslintPkg.version, '> 3') ? [
@@ -303,7 +303,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
         errors: [
           {
             messageId: 'noLineGap',
-            data: {prop1: 'onClick', prop2: 'type'},
+            data: { prop1: 'onClick', prop2: 'type' },
           },
         ],
       },
@@ -324,11 +324,11 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
         errors: [
           {
             messageId: 'noLineGap',
-            data: {prop1: 'title', prop2: 'onClick'},
+            data: { prop1: 'title', prop2: 'onClick' },
           },
           {
             messageId: 'noLineGap',
-            data: {prop1: 'onClick', prop2: 'type'},
+            data: { prop1: 'onClick', prop2: 'type' },
           },
         ],
       },
@@ -351,11 +351,11 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
         errors: [
           {
             messageId: 'noLineGap',
-            data: {prop1: 'title', prop2: 'onClick'},
+            data: { prop1: 'title', prop2: 'onClick' },
           },
           {
             messageId: 'noLineGap',
-            data: {prop1: 'onClick', prop2: 'type'},
+            data: { prop1: 'onClick', prop2: 'type' },
           },
         ],
       },

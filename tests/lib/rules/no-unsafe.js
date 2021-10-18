@@ -24,7 +24,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-unsafe', rule, {
   valid: [
     {
@@ -34,7 +34,7 @@ ruleTester.run('no-unsafe', rule, {
           render() {}
         }
       `,
-      settings: {react: {version: '16.4.0'}},
+      settings: { react: { version: '16.4.0' } },
     },
     {
       code: `
@@ -43,7 +43,7 @@ ruleTester.run('no-unsafe', rule, {
           render: function() {}
         });
       `,
-      settings: {react: {version: '16.4.0'}},
+      settings: { react: { version: '16.4.0' } },
     },
     {
       code: `
@@ -53,7 +53,7 @@ ruleTester.run('no-unsafe', rule, {
             componentWillUpdate() {}
           }
         `,
-      settings: {react: {version: '16.4.0'}},
+      settings: { react: { version: '16.4.0' } },
     },
     {
       code: `
@@ -63,7 +63,7 @@ ruleTester.run('no-unsafe', rule, {
           UNSAFE_componentWillUpdate() {}
         }
       `,
-      settings: {react: {version: '16.4.0'}},
+      settings: { react: { version: '16.4.0' } },
     },
     {
       code: `
@@ -73,7 +73,7 @@ ruleTester.run('no-unsafe', rule, {
             componentWillUpdate: function() {},
           });
         `,
-      settings: {react: {version: '16.4.0'}},
+      settings: { react: { version: '16.4.0' } },
     },
     {
       code: `
@@ -83,7 +83,7 @@ ruleTester.run('no-unsafe', rule, {
           UNSAFE_componentWillUpdate: function() {},
         });
       `,
-      settings: {react: {version: '16.4.0'}},
+      settings: { react: { version: '16.4.0' } },
     },
     // React.Component
     {
@@ -94,7 +94,7 @@ ruleTester.run('no-unsafe', rule, {
             componentWillUpdate() {}
           }
         `,
-      settings: {react: {version: '16.4.0'}},
+      settings: { react: { version: '16.4.0' } },
     },
     {
       code: `
@@ -104,7 +104,7 @@ ruleTester.run('no-unsafe', rule, {
           UNSAFE_componentWillUpdate() {}
         }
       `,
-      settings: {react: {version: '16.2.0'}},
+      settings: { react: { version: '16.2.0' } },
     },
     // createReactClass
     {
@@ -115,7 +115,7 @@ ruleTester.run('no-unsafe', rule, {
               componentWillUpdate: function() {},
             });
           `,
-      settings: {react: {version: '16.4.0'}},
+      settings: { react: { version: '16.4.0' } },
     },
     {
       code: `
@@ -125,7 +125,7 @@ ruleTester.run('no-unsafe', rule, {
             UNSAFE_componentWillUpdate: function() {},
           });
         `,
-      settings: {react: {version: '16.2.0'}},
+      settings: { react: { version: '16.2.0' } },
     },
   ],
 
@@ -139,8 +139,8 @@ ruleTester.run('no-unsafe', rule, {
           componentWillUpdate() {}
         }
       `,
-      options: [{checkAliases: true}],
-      settings: {react: {version: '16.4.0'}},
+      options: [{ checkAliases: true }],
+      settings: { react: { version: '16.4.0' } },
       errors: [
         {
           messageId: 'unsafeMethod',
@@ -185,7 +185,7 @@ ruleTester.run('no-unsafe', rule, {
         UNSAFE_componentWillUpdate() {}
       }
     `,
-      settings: {react: {version: '16.3.0'}},
+      settings: { react: { version: '16.3.0' } },
       errors: [
         {
           messageId: 'unsafeMethod',
@@ -231,8 +231,8 @@ ruleTester.run('no-unsafe', rule, {
             componentWillUpdate: function() {},
           });
         `,
-      options: [{checkAliases: true}],
-      settings: {react: {version: '16.3.0'}},
+      options: [{ checkAliases: true }],
+      settings: { react: { version: '16.3.0' } },
       errors: [
         {
           messageId: 'unsafeMethod',
@@ -277,7 +277,7 @@ ruleTester.run('no-unsafe', rule, {
           UNSAFE_componentWillUpdate: function() {},
         });
       `,
-      settings: {react: {version: '16.3.0'}},
+      settings: { react: { version: '16.3.0' } },
       errors: [
         {
           messageId: 'unsafeMethod',

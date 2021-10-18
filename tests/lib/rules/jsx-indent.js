@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-indent', rule, {
   valid: [
     {
@@ -991,7 +991,7 @@ const Component = () => (
           />
         );
       `,
-      options: [2, {checkAttributes: false}],
+      options: [2, { checkAttributes: false }],
     },
     {
       code: `
@@ -1018,7 +1018,7 @@ const Component = () => (
 \t/>
 );
     `,
-      options: ['tab', {checkAttributes: false}],
+      options: ['tab', { checkAttributes: false }],
     },
     {
       code: `
@@ -1031,7 +1031,7 @@ const Component = () => (
           );
         }
       `,
-      options: [2, {checkAttributes: true}],
+      options: [2, { checkAttributes: true }],
     },
     {
       code: `
@@ -1045,7 +1045,7 @@ const Component = () => (
           );
         }
       `,
-      options: [2, {indentLogicalExpressions: true}],
+      options: [2, { indentLogicalExpressions: true }],
     },
     {
       code: `
@@ -2388,7 +2388,7 @@ const Component = () => (
           />
         );
       `,
-      options: [2, {checkAttributes: true}],
+      options: [2, { checkAttributes: true }],
       errors: [
         {
           messageId: 'wrongIndent',
@@ -2426,7 +2426,7 @@ const Component = () => (
 \t/>
 );
     `,
-      options: ['tab', {checkAttributes: true}],
+      options: ['tab', { checkAttributes: true }],
       errors: [
         {
           messageId: 'wrongIndent',
@@ -2462,7 +2462,7 @@ const Component = () => (
           );
         }
       `,
-      options: [2, {indentLogicalExpressions: true}],
+      options: [2, { indentLogicalExpressions: true }],
       errors: [
         {
           messageId: 'wrongIndent',

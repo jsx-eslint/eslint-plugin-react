@@ -24,30 +24,30 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-unknown-property', rule, {
   valid: [
-    {code: '<App class="bar" />;'},
-    {code: '<App for="bar" />;'},
-    {code: '<Foo.bar for="bar" />;'},
-    {code: '<App accept-charset="bar" />;'},
-    {code: '<meta charset="utf-8" />;'},
-    {code: '<meta charSet="utf-8" />;'},
-    {code: '<App http-equiv="bar" />;'},
-    {code: '<App xlink:href="bar" />;'},
-    {code: '<App clip-path="bar" />;'},
-    {code: '<div className="bar"></div>;'},
-    {code: '<div onMouseDown={this._onMouseDown}></div>;'},
-    {code: '<div data-foo="bar"></div>;'},
-    {code: '<div class="foo" is="my-elem"></div>;'},
-    {code: '<div {...this.props} class="foo" is="my-elem"></div>;'},
-    {code: '<atom-panel class="foo"></atom-panel>;'}, {
+    { code: '<App class="bar" />;' },
+    { code: '<App for="bar" />;' },
+    { code: '<Foo.bar for="bar" />;' },
+    { code: '<App accept-charset="bar" />;' },
+    { code: '<meta charset="utf-8" />;' },
+    { code: '<meta charSet="utf-8" />;' },
+    { code: '<App http-equiv="bar" />;' },
+    { code: '<App xlink:href="bar" />;' },
+    { code: '<App clip-path="bar" />;' },
+    { code: '<div className="bar"></div>;' },
+    { code: '<div onMouseDown={this._onMouseDown}></div>;' },
+    { code: '<div data-foo="bar"></div>;' },
+    { code: '<div class="foo" is="my-elem"></div>;' },
+    { code: '<div {...this.props} class="foo" is="my-elem"></div>;' },
+    { code: '<atom-panel class="foo"></atom-panel>;' }, {
       code: '<div class="bar"></div>;',
-      options: [{ignore: ['class']}],
+      options: [{ ignore: ['class'] }],
     },
-    {code: '<script crossOrigin />'},
-    {code: '<audio crossOrigin />'},
-    {code: '<div hasOwnProperty="should not be allowed tag" />'},
+    { code: '<script crossOrigin />' },
+    { code: '<audio crossOrigin />' },
+    { code: '<div hasOwnProperty="should not be allowed tag" />' },
   ],
   invalid: [
     {

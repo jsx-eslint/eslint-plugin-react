@@ -25,7 +25,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('forbid-foreign-prop-types', rule, {
   valid: [
     {
@@ -70,7 +70,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
         };
       `,
       options: [
-        {allowInPropTypes: true},
+        { allowInPropTypes: true },
       ],
     },
     {
@@ -83,7 +83,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       options: [
-        {allowInPropTypes: true},
+        { allowInPropTypes: true },
       ],
     },
   ],

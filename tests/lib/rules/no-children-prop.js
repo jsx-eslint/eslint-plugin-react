@@ -24,7 +24,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-children-prop', rule, {
   valid: [
     {
@@ -190,119 +190,119 @@ ruleTester.run('no-children-prop', rule, {
   invalid: [
     {
       code: '<div children />;', // not a valid use case but make sure we don't crash
-      errors: [{messageId: 'nestChildren'}],
+      errors: [{ messageId: 'nestChildren' }],
     },
     {
       code: '<div children="Children" />;',
-      errors: [{messageId: 'nestChildren'}],
+      errors: [{ messageId: 'nestChildren' }],
     },
     {
       code: '<div children={<div />} />;',
-      errors: [{messageId: 'nestChildren'}],
+      errors: [{ messageId: 'nestChildren' }],
     },
     {
       code: '<div children={[<div />, <div />]} />;',
-      errors: [{messageId: 'nestChildren'}],
+      errors: [{ messageId: 'nestChildren' }],
     },
     {
       code: '<div children="Children">Children</div>;',
-      errors: [{messageId: 'nestChildren'}],
+      errors: [{ messageId: 'nestChildren' }],
     },
     {
       code: 'React.createElement("div", {children: "Children"});',
-      errors: [{messageId: 'passChildrenAsArgs'}],
+      errors: [{ messageId: 'passChildrenAsArgs' }],
     },
     {
       code: 'React.createElement("div", {children: "Children"}, "Children");',
-      errors: [{messageId: 'passChildrenAsArgs'}],
+      errors: [{ messageId: 'passChildrenAsArgs' }],
     },
     {
       code: 'React.createElement("div", {children: React.createElement("div")});',
-      errors: [{messageId: 'passChildrenAsArgs'}],
+      errors: [{ messageId: 'passChildrenAsArgs' }],
     },
     {
       code: 'React.createElement("div", {children: [React.createElement("div"), React.createElement("div")]});',
-      errors: [{messageId: 'passChildrenAsArgs'}],
+      errors: [{ messageId: 'passChildrenAsArgs' }],
     },
     {
       code: '<MyComponent children="Children" />',
-      errors: [{messageId: 'nestChildren'}],
+      errors: [{ messageId: 'nestChildren' }],
     },
     {
       code: 'React.createElement(MyComponent, {children: "Children"});',
-      errors: [{messageId: 'passChildrenAsArgs'}],
+      errors: [{ messageId: 'passChildrenAsArgs' }],
     },
     {
       code: '<MyComponent className="class-name" children="Children" />;',
-      errors: [{messageId: 'nestChildren'}],
+      errors: [{ messageId: 'nestChildren' }],
     },
     {
       code: 'React.createElement(MyComponent, {children: "Children", className: "class-name"});',
-      errors: [{messageId: 'passChildrenAsArgs'}],
+      errors: [{ messageId: 'passChildrenAsArgs' }],
     },
     {
       code: '<MyComponent {...props} children="Children" />;',
-      errors: [{messageId: 'nestChildren'}],
+      errors: [{ messageId: 'nestChildren' }],
     },
     {
       code: 'React.createElement(MyComponent, {...props, children: "Children"})',
-      errors: [{messageId: 'passChildrenAsArgs'}],
+      errors: [{ messageId: 'passChildrenAsArgs' }],
     },
     {
       code: '<MyComponent>{() => {}}</MyComponent>;',
       options: [{
         allowFunctions: true,
       }],
-      errors: [{messageId: 'nestFunction'}],
+      errors: [{ messageId: 'nestFunction' }],
     },
     {
       code: '<MyComponent>{function() {}}</MyComponent>;',
       options: [{
         allowFunctions: true,
       }],
-      errors: [{messageId: 'nestFunction'}],
+      errors: [{ messageId: 'nestFunction' }],
     },
     {
       code: '<MyComponent>{async function() {}}</MyComponent>;',
       options: [{
         allowFunctions: true,
       }],
-      errors: [{messageId: 'nestFunction'}],
+      errors: [{ messageId: 'nestFunction' }],
     },
     {
       code: '<MyComponent>{function* () {}}</MyComponent>;',
       options: [{
         allowFunctions: true,
       }],
-      errors: [{messageId: 'nestFunction'}],
+      errors: [{ messageId: 'nestFunction' }],
     },
     {
       code: 'React.createElement(MyComponent, {}, () => {});',
       options: [{
         allowFunctions: true,
       }],
-      errors: [{messageId: 'passFunctionAsArgs'}],
+      errors: [{ messageId: 'passFunctionAsArgs' }],
     },
     {
       code: 'React.createElement(MyComponent, {}, function() {});',
       options: [{
         allowFunctions: true,
       }],
-      errors: [{messageId: 'passFunctionAsArgs'}],
+      errors: [{ messageId: 'passFunctionAsArgs' }],
     },
     {
       code: 'React.createElement(MyComponent, {}, async function() {});',
       options: [{
         allowFunctions: true,
       }],
-      errors: [{messageId: 'passFunctionAsArgs'}],
+      errors: [{ messageId: 'passFunctionAsArgs' }],
     },
     {
       code: 'React.createElement(MyComponent, {}, function* () {});',
       options: [{
         allowFunctions: true,
       }],
-      errors: [{messageId: 'passFunctionAsArgs'}],
+      errors: [{ messageId: 'passFunctionAsArgs' }],
     },
   ],
 });

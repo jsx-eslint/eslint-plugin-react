@@ -163,9 +163,9 @@ const tests = {
         </div>
       `,
       errors: [
-        {messageId: 'require'},
-        {messageId: 'require'},
-        {messageId: 'require'},
+        { messageId: 'require' },
+        { messageId: 'require' },
+        { messageId: 'require' },
       ],
     },
   ],
@@ -202,26 +202,26 @@ const advanceFeatTest = {
         </>
       `,
       errors: [
-        {messageId: 'require'},
+        { messageId: 'require' },
       ],
     },
   ],
 };
 
 // Run tests with default parser
-new RuleTester({parserOptions}).run('jsx-newline', rule, tests);
+new RuleTester({ parserOptions }).run('jsx-newline', rule, tests);
 
 // Run tests with babel parser
-let ruleTester = new RuleTester({parserOptions, parser: parsers.BABEL_ESLINT});
+let ruleTester = new RuleTester({ parserOptions, parser: parsers.BABEL_ESLINT });
 ruleTester.run('jsx-newline', rule, tests);
 ruleTester.run('jsx-newline', rule, advanceFeatTest);
 
 // Run tests with typescript parser
-ruleTester = new RuleTester({parserOptions, parser: parsers.TYPESCRIPT_ESLINT});
+ruleTester = new RuleTester({ parserOptions, parser: parsers.TYPESCRIPT_ESLINT });
 ruleTester.run('jsx-newline', rule, tests);
 ruleTester.run('jsx-newline', rule, advanceFeatTest);
 
-ruleTester = new RuleTester({parserOptions, parser: parsers['@TYPESCRIPT_ESLINT']});
+ruleTester = new RuleTester({ parserOptions, parser: parsers['@TYPESCRIPT_ESLINT'] });
 ruleTester.run('jsx-newline', rule, {
   valid: parsers.TS(tests.valid),
   invalid: parsers.TS(tests.invalid),
@@ -383,9 +383,9 @@ const preventionTests = {
         </div>
       `,
       errors: [
-        {messageId: 'prevent'},
-        {messageId: 'prevent'},
-        {messageId: 'prevent'},
+        { messageId: 'prevent' },
+        { messageId: 'prevent' },
+        { messageId: 'prevent' },
       ],
       options: [{
         prevent: true,
@@ -427,7 +427,7 @@ const preventionAdvanceFeatTest = {
         </>
       `,
       errors: [
-        {messageId: 'prevent'},
+        { messageId: 'prevent' },
       ],
       options: [{
         prevent: true,
@@ -437,19 +437,19 @@ const preventionAdvanceFeatTest = {
 };
 
 // // Run tests with default parser
-new RuleTester({parserOptions}).run('jsx-newline', rule, preventionTests);
+new RuleTester({ parserOptions }).run('jsx-newline', rule, preventionTests);
 
 // // Run tests with babel parser
-ruleTester = new RuleTester({parserOptions, parser: parsers.BABEL_ESLINT});
+ruleTester = new RuleTester({ parserOptions, parser: parsers.BABEL_ESLINT });
 ruleTester.run('jsx-newline', rule, preventionTests);
 ruleTester.run('jsx-newline', rule, preventionAdvanceFeatTest);
 
 // // Run tests with typescript parser
-ruleTester = new RuleTester({parserOptions, parser: parsers.TYPESCRIPT_ESLINT});
+ruleTester = new RuleTester({ parserOptions, parser: parsers.TYPESCRIPT_ESLINT });
 ruleTester.run('jsx-newline', rule, preventionTests);
 ruleTester.run('jsx-newline', rule, preventionAdvanceFeatTest);
 
-ruleTester = new RuleTester({parserOptions, parser: parsers['@TYPESCRIPT_ESLINT']});
+ruleTester = new RuleTester({ parserOptions, parser: parsers['@TYPESCRIPT_ESLINT'] });
 ruleTester.run('jsx-newline', rule, {
   valid: parsers.TS(preventionTests.valid),
   invalid: parsers.TS(preventionTests.invalid),

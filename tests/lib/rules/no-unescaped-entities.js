@@ -16,7 +16,7 @@ const resolve = require('resolve');
 let allowsInvalidJSX = false;
 try {
   // eslint-disable-next-line import/no-extraneous-dependencies, global-require, import/no-dynamic-require
-  allowsInvalidJSX = semver.satisfies(require(resolve.sync('acorn-jsx/package.json', {basedir: path.dirname(require.resolve('eslint'))})).version, '< 5.2');
+  allowsInvalidJSX = semver.satisfies(require(resolve.sync('acorn-jsx/package.json', { basedir: path.dirname(require.resolve('eslint')) })).version, '< 5.2');
 } catch (e) { /**/ }
 
 const RuleTester = require('eslint').RuleTester;
@@ -36,7 +36,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-unescaped-entities', rule, {
   valid: [].concat(
     {
@@ -133,7 +133,7 @@ ruleTester.run('no-unescaped-entities', rule, {
         errors: [
           {
             messageId: 'unescapedEntityAlts',
-            data: {entity: '>', alts: '`&gt;`'},
+            data: { entity: '>', alts: '`&gt;`' },
           },
         ],
       },
@@ -150,7 +150,7 @@ ruleTester.run('no-unescaped-entities', rule, {
         errors: [
           {
             messageId: 'unescapedEntityAlts',
-            data: {entity: '>', alts: '`&gt;`'},
+            data: { entity: '>', alts: '`&gt;`' },
           },
         ],
       },
@@ -165,15 +165,15 @@ ruleTester.run('no-unescaped-entities', rule, {
         errors: [
           {
             messageId: 'unescapedEntityAlts',
-            data: {entity: '\'', alts: '`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`'},
+            data: { entity: '\'', alts: '`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`' },
           },
           {
             messageId: 'unescapedEntityAlts',
-            data: {entity: '>', alts: '`&gt;`'},
+            data: { entity: '>', alts: '`&gt;`' },
           },
           {
             messageId: 'unescapedEntityAlts',
-            data: {entity: '>', alts: '`&gt;`'},
+            data: { entity: '>', alts: '`&gt;`' },
           },
         ],
       },
@@ -188,7 +188,7 @@ ruleTester.run('no-unescaped-entities', rule, {
         errors: [
           {
             messageId: 'unescapedEntityAlts',
-            data: {entity: '}', alts: '`&#125;`'},
+            data: { entity: '}', alts: '`&#125;`' },
           },
         ],
       },
@@ -205,7 +205,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [
         {
           messageId: 'unescapedEntityAlts',
-          data: {entity: '>', alts: '`&gt;`'},
+          data: { entity: '>', alts: '`&gt;`' },
         },
       ],
     },
@@ -223,7 +223,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [
         {
           messageId: 'unescapedEntityAlts',
-          data: {entity: '>', alts: '`&gt;`'},
+          data: { entity: '>', alts: '`&gt;`' },
         },
       ],
     },
@@ -238,7 +238,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [
         {
           messageId: 'unescapedEntityAlts',
-          data: {entity: '\'', alts: '`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`'},
+          data: { entity: '\'', alts: '`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`' },
         },
       ],
     },
@@ -254,7 +254,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [
         {
           messageId: 'unescapedEntityAlts',
-          data: {entity: '}', alts: '`&#125;`'},
+          data: { entity: '}', alts: '`&#125;`' },
         },
       ],
     },
@@ -270,10 +270,10 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [
         {
           messageId: 'unescapedEntity',
-          data: {entity: '&'},
+          data: { entity: '&' },
         },
       ],
-      options: [{forbid: ['&']}],
+      options: [{ forbid: ['&'] }],
     },
     {
       code: `
@@ -286,10 +286,10 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [
         {
           messageId: 'unescapedEntity',
-          data: {entity: '&'},
+          data: { entity: '&' },
         },
       ],
-      options: [{forbid: ['&']}],
+      options: [{ forbid: ['&'] }],
     },
     {
       code: `
@@ -302,7 +302,7 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [
         {
           messageId: 'unescapedEntityAlts',
-          data: {entity: '&', alts: '`&amp;`'},
+          data: { entity: '&', alts: '`&amp;`' },
         }],
       options: [
         {

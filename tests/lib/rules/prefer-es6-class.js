@@ -24,7 +24,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('prefer-es6-class', rule, {
   valid: [
     {
@@ -85,7 +85,7 @@ ruleTester.run('prefer-es6-class', rule, {
           }
         });
       `,
-      errors: [{messageId: 'shouldUseES6Class'}],
+      errors: [{ messageId: 'shouldUseES6Class' }],
     },
     {
       code: `
@@ -96,7 +96,7 @@ ruleTester.run('prefer-es6-class', rule, {
         });
       `,
       options: ['always'],
-      errors: [{messageId: 'shouldUseES6Class'}],
+      errors: [{ messageId: 'shouldUseES6Class' }],
     },
     {
       code: `
@@ -107,7 +107,7 @@ ruleTester.run('prefer-es6-class', rule, {
         }
       `,
       options: ['never'],
-      errors: [{messageId: 'shouldUseCreateClass'}],
+      errors: [{ messageId: 'shouldUseCreateClass' }],
     },
   ],
 });

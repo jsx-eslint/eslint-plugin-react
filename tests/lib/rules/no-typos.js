@@ -752,7 +752,7 @@ ruleTester.run('no-typos', rule, {
       parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
-        {messageId: 'typoStaticClassProp', type: 'Identifier'},
+        { messageId: 'typoStaticClassProp', type: 'Identifier' },
       ],
     },
     {
@@ -762,7 +762,7 @@ ruleTester.run('no-typos', rule, {
       `,
       parserOptions,
       errors: [
-        {messageId: 'typoStaticClassProp', type: 'Identifier'},
+        { messageId: 'typoStaticClassProp', type: 'Identifier' },
       ],
     },
     {
@@ -772,7 +772,7 @@ ruleTester.run('no-typos', rule, {
       `,
       parserOptions,
       errors: [
-        {messageId: 'typoStaticClassProp', type: 'Identifier'},
+        { messageId: 'typoStaticClassProp', type: 'Identifier' },
       ],
     },
     {
@@ -783,7 +783,7 @@ ruleTester.run('no-typos', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -791,7 +791,7 @@ ruleTester.run('no-typos', rule, {
         Component.proptypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -799,7 +799,7 @@ ruleTester.run('no-typos', rule, {
         MyComponent.proptypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -810,7 +810,7 @@ ruleTester.run('no-typos', rule, {
       parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
-        {messageId: 'typoStaticClassProp', type: 'Identifier'},
+        { messageId: 'typoStaticClassProp', type: 'Identifier' },
       ],
     },
     {
@@ -819,7 +819,7 @@ ruleTester.run('no-typos', rule, {
         Component.ContextTypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -827,7 +827,7 @@ ruleTester.run('no-typos', rule, {
         MyComponent.ContextTypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -837,7 +837,7 @@ ruleTester.run('no-typos', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -845,7 +845,7 @@ ruleTester.run('no-typos', rule, {
         Component.contexttypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -853,7 +853,7 @@ ruleTester.run('no-typos', rule, {
         MyComponent.contexttypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -863,7 +863,7 @@ ruleTester.run('no-typos', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -871,7 +871,7 @@ ruleTester.run('no-typos', rule, {
         Component.ChildContextTypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -879,7 +879,7 @@ ruleTester.run('no-typos', rule, {
         MyComponent.ChildContextTypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -889,7 +889,7 @@ ruleTester.run('no-typos', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -897,7 +897,7 @@ ruleTester.run('no-typos', rule, {
         Component.childcontexttypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -905,7 +905,7 @@ ruleTester.run('no-typos', rule, {
         MyComponent.childcontexttypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -916,7 +916,7 @@ ruleTester.run('no-typos', rule, {
       parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
-        {messageId: 'typoStaticClassProp', type: 'Identifier'},
+        { messageId: 'typoStaticClassProp', type: 'Identifier' },
       ],
     },
     {
@@ -926,7 +926,7 @@ ruleTester.run('no-typos', rule, {
       `,
       parserOptions,
       errors: [
-        {messageId: 'typoStaticClassProp', type: 'Identifier'},
+        { messageId: 'typoStaticClassProp', type: 'Identifier' },
       ],
     },
     {
@@ -936,7 +936,7 @@ ruleTester.run('no-typos', rule, {
       `,
       parserOptions,
       errors: [
-        {messageId: 'typoStaticClassProp', type: 'Identifier'},
+        { messageId: 'typoStaticClassProp', type: 'Identifier' },
       ],
     },
     {
@@ -947,7 +947,7 @@ ruleTester.run('no-typos', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -955,7 +955,7 @@ ruleTester.run('no-typos', rule, {
         Component.defaultprops = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -963,7 +963,7 @@ ruleTester.run('no-typos', rule, {
         MyComponent.defaultprops = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -971,7 +971,7 @@ ruleTester.run('no-typos', rule, {
         class Component extends React.Component {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -980,7 +980,7 @@ ruleTester.run('no-typos', rule, {
         MyComponent.PROPTYPES = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}],
+      errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
       code: `
@@ -1389,7 +1389,7 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'Number'},
+          data: { name: 'Number' },
         },
       ],
     },
@@ -1405,7 +1405,7 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
       ],
     },
@@ -1423,7 +1423,7 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
       ],
     },
@@ -1441,7 +1441,7 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'Number'},
+          data: { name: 'Number' },
         },
       ],
     },
@@ -1458,7 +1458,7 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'Number'},
+          data: { name: 'Number' },
         },
       ],
     },
@@ -1478,7 +1478,7 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'String'},
+          data: { name: 'String' },
         },
       ],
     },
@@ -1498,7 +1498,7 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'},
+          data: { name: 'bools' },
         },
       ],
     },
@@ -1518,19 +1518,19 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'},
+          data: { name: 'bools' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'},
+          data: { name: 'Array' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'},
+          data: { name: 'function' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'},
+          data: { name: 'objectof' },
         },
       ],
     },
@@ -1550,19 +1550,19 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'},
+          data: { name: 'bools' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'},
+          data: { name: 'Array' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'},
+          data: { name: 'function' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'},
+          data: { name: 'objectof' },
         },
       ],
     },
@@ -1582,19 +1582,19 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'},
+          data: { name: 'bools' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'},
+          data: { name: 'Array' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'},
+          data: { name: 'function' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'},
+          data: { name: 'objectof' },
         },
       ],
     },
@@ -1613,11 +1613,11 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
       ],
     },
@@ -1637,11 +1637,11 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
       ],
     },
@@ -1661,19 +1661,19 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'},
+          data: { name: 'bools' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'},
+          data: { name: 'Array' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'},
+          data: { name: 'function' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'},
+          data: { name: 'objectof' },
         },
       ],
     },
@@ -1693,11 +1693,11 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
       ],
     },
@@ -1717,19 +1717,19 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'},
+          data: { name: 'bools' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'},
+          data: { name: 'Array' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'},
+          data: { name: 'function' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'},
+          data: { name: 'objectof' },
         },
       ],
     },
@@ -1749,11 +1749,11 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
       ],
     },
@@ -1786,19 +1786,19 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'},
+          data: { name: 'bools' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'},
+          data: { name: 'Array' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'},
+          data: { name: 'function' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'},
+          data: { name: 'objectof' },
         },
       ],
     },
@@ -1817,19 +1817,19 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'},
+          data: { name: 'bools' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'},
+          data: { name: 'Array' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'},
+          data: { name: 'function' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'},
+          data: { name: 'objectof' },
         },
       ],
     },
@@ -1849,11 +1849,11 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
       ],
     },
@@ -1872,11 +1872,11 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
       ],
     },
@@ -1895,19 +1895,19 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'},
+          data: { name: 'bools' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'},
+          data: { name: 'Array' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'},
+          data: { name: 'function' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'},
+          data: { name: 'objectof' },
         },
       ],
     },
@@ -1926,11 +1926,11 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
       ],
     },
@@ -1949,19 +1949,19 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'},
+          data: { name: 'bools' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'},
+          data: { name: 'Array' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'},
+          data: { name: 'function' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'},
+          data: { name: 'objectof' },
         },
       ],
     },
@@ -1980,11 +1980,11 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
       ],
     },
@@ -2003,19 +2003,19 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'},
+          data: { name: 'bools' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'},
+          data: { name: 'Array' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'},
+          data: { name: 'function' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'},
+          data: { name: 'objectof' },
         },
       ],
     },
@@ -2037,11 +2037,11 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
       ],
     },
@@ -2063,19 +2063,19 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'},
+          data: { name: 'bools' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'},
+          data: { name: 'Array' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'},
+          data: { name: 'function' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'},
+          data: { name: 'objectof' },
         },
       ],
     },
@@ -2096,11 +2096,11 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'},
+          data: { name: 'isrequired' },
         },
       ],
     },
@@ -2121,19 +2121,19 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'},
+          data: { name: 'bools' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'},
+          data: { name: 'Array' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'},
+          data: { name: 'function' },
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'},
+          data: { name: 'objectof' },
         },
       ],
     },
@@ -2266,7 +2266,7 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'staticLifecycleMethod',
-          data: {method: 'getDerivedStateFromProps'},
+          data: { method: 'getDerivedStateFromProps' },
           type: 'MethodDefinition',
         },
       ],
@@ -2282,7 +2282,7 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'staticLifecycleMethod',
-          data: {method: 'GetDerivedStateFromProps'},
+          data: { method: 'GetDerivedStateFromProps' },
           type: 'MethodDefinition',
         },
         {
@@ -2433,7 +2433,7 @@ ruleTester.run('no-typos', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         parserOptions,
-        errors: [{messageId: 'noPropTypesBinding'}],
+        errors: [{ messageId: 'noPropTypesBinding' }],
       },
       {
         code: `
@@ -2441,7 +2441,7 @@ ruleTester.run('no-typos', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         parserOptions,
-        errors: [{messageId: 'noPropTypesBinding'}],
+        errors: [{ messageId: 'noPropTypesBinding' }],
       },
     ])
   ),

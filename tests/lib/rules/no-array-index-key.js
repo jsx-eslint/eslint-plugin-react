@@ -25,14 +25,14 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-array-index-key', rule, {
   valid: [].concat(
-    {code: '<Foo key="foo" />;'},
-    {code: '<Foo key={i} />;'},
-    {code: '<Foo key />;'},
-    {code: '<Foo key={`foo-${i}`} />;'},
-    {code: '<Foo key={\'foo-\' + i} />;'},
+    { code: '<Foo key="foo" />;' },
+    { code: '<Foo key={i} />;' },
+    { code: '<Foo key />;' },
+    { code: '<Foo key={`foo-${i}`} />;' },
+    { code: '<Foo key={\'foo-\' + i} />;' },
     {
       code: 'foo.bar((baz, i) => <Foo key={i} />)',
     },
@@ -117,31 +117,31 @@ ruleTester.run('no-array-index-key', rule, {
   invalid: [].concat(
     {
       code: 'foo.map((bar, i) => <Foo key={i} />)',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: '[{}, {}].map((bar, i) => <Foo key={i} />)',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.map((bar, anything) => <Foo key={anything} />)',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.map((bar, i) => <Foo key={`foo-${i}`} />)',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.map((bar, i) => <Foo key={\'foo-\' + i} />)',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.map((bar, i) => <Foo key={\'foo-\' + i + \'-bar\'} />)',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.map((baz, i) => React.cloneElement(someChild, { ...someChild.props, key: i }))',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: `
@@ -151,79 +151,79 @@ ruleTester.run('no-array-index-key', rule, {
           })
         })
       `,
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.forEach((bar, i) => { baz.push(<Foo key={i} />); })',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.filter((bar, i) => { baz.push(<Foo key={i} />); })',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.some((bar, i) => { baz.push(<Foo key={i} />); })',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.every((bar, i) => { baz.push(<Foo key={i} />); })',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.find((bar, i) => { baz.push(<Foo key={i} />); })',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.findIndex((bar, i) => { baz.push(<Foo key={i} />); })',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.reduce((a, b, i) => a.concat(<Foo key={i} />), [])',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.reduceRight((a, b, i) => a.concat(<Foo key={i} />), [])',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.map((bar, i) => React.createElement(\'Foo\', { key: i }))',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.map((bar, i) => React.createElement(\'Foo\', { key: `foo-${i}` }))',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.map((bar, i) => React.createElement(\'Foo\', { key: \'foo-\' + i }))',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.map((bar, i) => React.createElement(\'Foo\', { key: \'foo-\' + i + \'-bar\' }))',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.forEach((bar, i) => { baz.push(React.createElement(\'Foo\', { key: i })); })',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.filter((bar, i) => { baz.push(React.createElement(\'Foo\', { key: i })); })',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.some((bar, i) => { baz.push(React.createElement(\'Foo\', { key: i })); })',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.every((bar, i) => { baz.push(React.createElement(\'Foo\', { key: i })); })',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.find((bar, i) => { baz.push(React.createElement(\'Foo\', { key: i })); })',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: 'foo.findIndex((bar, i) => { baz.push(React.createElement(\'Foo\', { key: i })); })',
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: `
@@ -231,7 +231,7 @@ ruleTester.run('no-array-index-key', rule, {
         return React.cloneElement(child, { key: index });
       })
       `,
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: `
@@ -239,7 +239,7 @@ ruleTester.run('no-array-index-key', rule, {
         return React.cloneElement(child, { key: index });
       })
       `,
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: `
@@ -247,7 +247,7 @@ ruleTester.run('no-array-index-key', rule, {
         return React.cloneElement(child, { key: index });
       })
       `,
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: `
@@ -255,29 +255,29 @@ ruleTester.run('no-array-index-key', rule, {
         return React.cloneElement(child, { key: index });
       })
       `,
-      errors: [{messageId: 'noArrayIndex'}],
+      errors: [{ messageId: 'noArrayIndex' }],
     },
     parsers.ES2020(
       {
         code: 'foo?.map((child, i) => <Foo key={i} />)',
-        errors: [{messageId: 'noArrayIndex'}],
+        errors: [{ messageId: 'noArrayIndex' }],
         parserOptions: {
           ecmaVersion: 2020,
         },
       },
       {
         code: 'foo?.map((child, i) => <Foo key={i} />)',
-        errors: [{messageId: 'noArrayIndex'}],
+        errors: [{ messageId: 'noArrayIndex' }],
         parser: parsers.BABEL_ESLINT,
       },
       {
         code: 'foo?.map((child, i) => <Foo key={i} />)',
-        errors: [{messageId: 'noArrayIndex'}],
+        errors: [{ messageId: 'noArrayIndex' }],
         parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: 'foo?.map((child, i) => <Foo key={i} />)',
-        errors: [{messageId: 'noArrayIndex'}],
+        errors: [{ messageId: 'noArrayIndex' }],
         parser: parsers['@TYPESCRIPT_ESLINT'],
       }
     )

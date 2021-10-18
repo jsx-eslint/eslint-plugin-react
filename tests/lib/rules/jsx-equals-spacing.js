@@ -24,7 +24,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-equals-spacing', rule, {
   valid: [
     {
@@ -89,8 +89,8 @@ ruleTester.run('jsx-equals-spacing', rule, {
       code: '<App foo = {bar} />',
       output: '<App foo={bar} />',
       errors: [
-        {messageId: 'noSpaceBefore'},
-        {messageId: 'noSpaceAfter'},
+        { messageId: 'noSpaceBefore' },
+        { messageId: 'noSpaceAfter' },
       ],
     },
     {
@@ -98,8 +98,8 @@ ruleTester.run('jsx-equals-spacing', rule, {
       output: '<App foo={bar} />',
       options: ['never'],
       errors: [
-        {messageId: 'noSpaceBefore'},
-        {messageId: 'noSpaceAfter'},
+        { messageId: 'noSpaceBefore' },
+        { messageId: 'noSpaceAfter' },
       ],
     },
     {
@@ -107,7 +107,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
       output: '<App foo={bar} />',
       options: ['never'],
       errors: [
-        {messageId: 'noSpaceBefore'},
+        { messageId: 'noSpaceBefore' },
       ],
     },
     {
@@ -115,7 +115,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
       output: '<App foo={bar} />',
       options: ['never'],
       errors: [
-        {messageId: 'noSpaceAfter'},
+        { messageId: 'noSpaceAfter' },
       ],
     },
     {
@@ -123,9 +123,9 @@ ruleTester.run('jsx-equals-spacing', rule, {
       output: '<App foo={bar} bar={baz} />',
       options: ['never'],
       errors: [
-        {messageId: 'noSpaceAfter'},
-        {messageId: 'noSpaceBefore'},
-        {messageId: 'noSpaceAfter'},
+        { messageId: 'noSpaceAfter' },
+        { messageId: 'noSpaceBefore' },
+        { messageId: 'noSpaceAfter' },
       ],
     },
     {
@@ -133,8 +133,8 @@ ruleTester.run('jsx-equals-spacing', rule, {
       output: '<App foo = {bar} />',
       options: ['always'],
       errors: [
-        {messageId: 'needSpaceBefore'},
-        {messageId: 'needSpaceAfter'},
+        { messageId: 'needSpaceBefore' },
+        { messageId: 'needSpaceAfter' },
       ],
     },
     {
@@ -142,7 +142,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
       output: '<App foo = {bar} />',
       options: ['always'],
       errors: [
-        {messageId: 'needSpaceAfter'},
+        { messageId: 'needSpaceAfter' },
       ],
     },
     {
@@ -150,7 +150,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
       output: '<App foo = {bar} />',
       options: ['always'],
       errors: [
-        {messageId: 'needSpaceBefore'},
+        { messageId: 'needSpaceBefore' },
       ],
     },
     {
@@ -158,9 +158,9 @@ ruleTester.run('jsx-equals-spacing', rule, {
       output: '<App foo = {bar} bar = {baz} />',
       options: ['always'],
       errors: [
-        {messageId: 'needSpaceBefore'},
-        {messageId: 'needSpaceAfter'},
-        {messageId: 'needSpaceAfter'},
+        { messageId: 'needSpaceBefore' },
+        { messageId: 'needSpaceAfter' },
+        { messageId: 'needSpaceAfter' },
       ],
     },
   ],

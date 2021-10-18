@@ -24,7 +24,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-boolean-value', rule, {
   valid: [
     {
@@ -33,7 +33,7 @@ ruleTester.run('jsx-boolean-value', rule, {
     },
     {
       code: '<App foo bar={true} />;',
-      options: ['always', {never: ['foo']}],
+      options: ['always', { never: ['foo'] }],
     },
     {
       code: '<App foo />;',
@@ -44,7 +44,7 @@ ruleTester.run('jsx-boolean-value', rule, {
     },
     {
       code: '<App foo={true} bar />;',
-      options: ['never', {always: ['foo']}],
+      options: ['never', { always: ['foo'] }],
     },
   ],
   invalid: [
@@ -53,21 +53,21 @@ ruleTester.run('jsx-boolean-value', rule, {
       output: '<App foo />;',
       options: ['never'],
       errors: [
-        {messageId: 'omitBoolean_noMessage'},
+        { messageId: 'omitBoolean_noMessage' },
       ],
     },
     {
       code: '<App foo={true} bar={true} baz={true} />;',
       output: '<App foo bar baz={true} />;',
-      options: ['always', {never: ['foo', 'bar']}],
+      options: ['always', { never: ['foo', 'bar'] }],
       errors: [
         {
           messageId: 'omitBoolean',
-          data: {exceptionsMessage: ' for the following props: `foo`, `bar`'},
+          data: { exceptionsMessage: ' for the following props: `foo`, `bar`' },
         },
         {
           messageId: 'omitBoolean',
-          data: {exceptionsMessage: ' for the following props: `foo`, `bar`'},
+          data: { exceptionsMessage: ' for the following props: `foo`, `bar`' },
         },
       ],
     },
@@ -75,14 +75,14 @@ ruleTester.run('jsx-boolean-value', rule, {
       code: '<App foo={true} />;',
       output: '<App foo />;',
       errors: [
-        {messageId: 'omitBoolean_noMessage'},
+        { messageId: 'omitBoolean_noMessage' },
       ],
     },
     {
       code: '<App foo = {true} />;',
       output: '<App foo />;',
       errors: [
-        {messageId: 'omitBoolean_noMessage'},
+        { messageId: 'omitBoolean_noMessage' },
       ],
     },
     {
@@ -90,21 +90,21 @@ ruleTester.run('jsx-boolean-value', rule, {
       output: '<App foo={true} />;',
       options: ['always'],
       errors: [
-        {messageId: 'setBoolean_noMessage'},
+        { messageId: 'setBoolean_noMessage' },
       ],
     },
     {
       code: '<App foo bar baz />;',
       output: '<App foo={true} bar={true} baz />;',
-      options: ['never', {always: ['foo', 'bar']}],
+      options: ['never', { always: ['foo', 'bar'] }],
       errors: [
         {
           messageId: 'setBoolean',
-          data: {exceptionsMessage: ' for the following props: `foo`, `bar`'},
+          data: { exceptionsMessage: ' for the following props: `foo`, `bar`' },
         },
         {
           messageId: 'setBoolean',
-          data: {exceptionsMessage: ' for the following props: `foo`, `bar`'},
+          data: { exceptionsMessage: ' for the following props: `foo`, `bar`' },
         },
       ],
     },

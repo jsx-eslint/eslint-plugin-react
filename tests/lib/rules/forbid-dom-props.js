@@ -23,7 +23,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('forbid-dom-props', rule, {
   valid: [
     {
@@ -34,7 +34,7 @@ ruleTester.run('forbid-dom-props', rule, {
           }
         });
       `,
-      options: [{forbid: ['id']}],
+      options: [{ forbid: ['id'] }],
     },
     {
       code: `
@@ -45,7 +45,7 @@ ruleTester.run('forbid-dom-props', rule, {
           }
         });
       `,
-      options: [{forbid: ['style', 'id']}],
+      options: [{ forbid: ['style', 'id'] }],
     },
     {
       code: `
@@ -56,7 +56,7 @@ ruleTester.run('forbid-dom-props', rule, {
           }
         });
       `,
-      options: [{forbid: ['id']}],
+      options: [{ forbid: ['id'] }],
     },
     {
       code: `
@@ -66,7 +66,7 @@ ruleTester.run('forbid-dom-props', rule, {
           }
         }
       `,
-      options: [{forbid: ['id']}],
+      options: [{ forbid: ['id'] }],
     },
     {
       code: `
@@ -74,7 +74,7 @@ ruleTester.run('forbid-dom-props', rule, {
           <this.Foo {...props} />
         );
       `,
-      options: [{forbid: ['id']}],
+      options: [{ forbid: ['id'] }],
     },
     {
       code: `
@@ -82,7 +82,7 @@ ruleTester.run('forbid-dom-props', rule, {
           <fbt:param name="name">{props.name}</fbt:param>
         );
       `,
-      options: [{forbid: ['id']}],
+      options: [{ forbid: ['id'] }],
     },
     {
       code: `
@@ -90,7 +90,7 @@ ruleTester.run('forbid-dom-props', rule, {
           <div name="foo" />
         );
       `,
-      options: [{forbid: ['id']}],
+      options: [{ forbid: ['id'] }],
     },
   ],
 
@@ -104,11 +104,11 @@ ruleTester.run('forbid-dom-props', rule, {
           }
         });
       `,
-      options: [{forbid: ['id']}],
+      options: [{ forbid: ['id'] }],
       errors: [
         {
           messageId: 'propIsForbidden',
-          data: {prop: 'id'},
+          data: { prop: 'id' },
           line: 5,
           column: 25,
           type: 'JSXAttribute',
@@ -123,11 +123,11 @@ ruleTester.run('forbid-dom-props', rule, {
           }
         }
       `,
-      options: [{forbid: ['id']}],
+      options: [{ forbid: ['id'] }],
       errors: [
         {
           messageId: 'propIsForbidden',
-          data: {prop: 'id'},
+          data: { prop: 'id' },
           line: 4,
           column: 25,
           type: 'JSXAttribute',
@@ -140,11 +140,11 @@ ruleTester.run('forbid-dom-props', rule, {
           <div id="foo" />
         );
       `,
-      options: [{forbid: ['id']}],
+      options: [{ forbid: ['id'] }],
       errors: [
         {
           messageId: 'propIsForbidden',
-          data: {prop: 'id'},
+          data: { prop: 'id' },
           line: 3,
           column: 16,
           type: 'JSXAttribute',
@@ -159,7 +159,7 @@ ruleTester.run('forbid-dom-props', rule, {
       `,
       options: [
         {
-          forbid: [{propName: 'className', message: 'Please use class instead of ClassName'}],
+          forbid: [{ propName: 'className', message: 'Please use class instead of ClassName' }],
         },
       ],
       errors: [
@@ -182,8 +182,8 @@ ruleTester.run('forbid-dom-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className', message: 'Please use class instead of ClassName'},
-            {propName: 'otherProp', message: 'Avoid using otherProp'},
+            { propName: 'className', message: 'Please use class instead of ClassName' },
+            { propName: 'otherProp', message: 'Avoid using otherProp' },
           ],
         },
       ],
@@ -213,15 +213,15 @@ ruleTester.run('forbid-dom-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className'},
-            {propName: 'otherProp', message: 'Avoid using otherProp'},
+            { propName: 'className' },
+            { propName: 'otherProp', message: 'Avoid using otherProp' },
           ],
         },
       ],
       errors: [
         {
           messageId: 'propIsForbidden',
-          data: {prop: 'className'},
+          data: { prop: 'className' },
           line: 3,
           column: 16,
           type: 'JSXAttribute',

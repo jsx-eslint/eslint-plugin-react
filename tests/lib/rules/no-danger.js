@@ -24,18 +24,18 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-danger', rule, {
   valid: [
-    {code: '<App />;'},
-    {code: '<App dangerouslySetInnerHTML={{ __html: "" }} />;'},
-    {code: '<div className="bar"></div>;'},
+    { code: '<App />;' },
+    { code: '<App dangerouslySetInnerHTML={{ __html: "" }} />;' },
+    { code: '<div className="bar"></div>;' },
   ],
   invalid: [{
     code: '<div dangerouslySetInnerHTML={{ __html: "" }}></div>;',
     errors: [{
       messageId: 'dangerousProp',
-      data: {name: 'dangerouslySetInnerHTML'},
+      data: { name: 'dangerouslySetInnerHTML' },
     }],
   }],
 });

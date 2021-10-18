@@ -24,7 +24,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('self-closing-comp', rule, {
   valid: [
     {
@@ -135,35 +135,35 @@ ruleTester.run('self-closing-comp', rule, {
     },
     {
       code: 'var HelloJohn = <Hello name="John"></Hello>;',
-      options: [{component: false}],
+      options: [{ component: false }],
     },
     {
       code: 'var HelloJohn = <Hello.Compound name="John"></Hello.Compound>;',
-      options: [{component: false}],
+      options: [{ component: false }],
     },
     {
       code: 'var HelloJohn = <Hello name="John">\n</Hello>;',
-      options: [{component: false}],
+      options: [{ component: false }],
     },
     {
       code: 'var HelloJohn = <Hello.Compound name="John">\n</Hello.Compound>;',
-      options: [{component: false}],
+      options: [{ component: false }],
     },
     {
       code: 'var HelloJohn = <Hello name="John"> </Hello>;',
-      options: [{component: false}],
+      options: [{ component: false }],
     },
     {
       code: 'var HelloJohn = <Hello.Compound name="John"> </Hello.Compound>;',
-      options: [{component: false}],
+      options: [{ component: false }],
     },
     {
       code: 'var contentContainer = <div className="content" />;',
-      options: [{html: true}],
+      options: [{ html: true }],
     },
     {
       code: 'var contentContainer = <div className="content"><img src="picture.png" /></div>;',
-      options: [{html: true}],
+      options: [{ html: true }],
     },
     {
       code: `
@@ -171,7 +171,7 @@ ruleTester.run('self-closing-comp', rule, {
           <div className="content" />
         </div>
       `,
-      options: [{html: true}],
+      options: [{ html: true }],
     },
   ],
 
@@ -179,69 +179,69 @@ ruleTester.run('self-closing-comp', rule, {
     {
       code: 'var contentContainer = <div className="content"></div>;',
       output: 'var contentContainer = <div className="content" />;',
-      errors: [{messageId: 'notSelfClosing'}],
+      errors: [{ messageId: 'notSelfClosing' }],
     },
     {
       code: 'var contentContainer = <div className="content"></div>;',
       output: 'var contentContainer = <div className="content" />;',
       options: [],
-      errors: [{messageId: 'notSelfClosing'}],
+      errors: [{ messageId: 'notSelfClosing' }],
     },
     {
       code: 'var HelloJohn = <Hello name="John"></Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
-      errors: [{messageId: 'notSelfClosing'}],
+      errors: [{ messageId: 'notSelfClosing' }],
     },
     {
       code: 'var CompoundHelloJohn = <Hello.Compound name="John"></Hello.Compound>;',
       output: 'var CompoundHelloJohn = <Hello.Compound name="John" />;',
-      errors: [{messageId: 'notSelfClosing'}],
+      errors: [{ messageId: 'notSelfClosing' }],
     },
     {
       code: 'var HelloJohn = <Hello name="John">\n</Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
-      errors: [{messageId: 'notSelfClosing'}],
+      errors: [{ messageId: 'notSelfClosing' }],
     },
     {
       code: 'var HelloJohn = <Hello.Compound name="John">\n</Hello.Compound>;',
       output: 'var HelloJohn = <Hello.Compound name="John" />;',
-      errors: [{messageId: 'notSelfClosing'}],
+      errors: [{ messageId: 'notSelfClosing' }],
     },
     {
       code: 'var HelloJohn = <Hello name="John"></Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
       options: [],
-      errors: [{messageId: 'notSelfClosing'}],
+      errors: [{ messageId: 'notSelfClosing' }],
     },
     {
       code: 'var HelloJohn = <Hello.Compound name="John"></Hello.Compound>;',
       output: 'var HelloJohn = <Hello.Compound name="John" />;',
       options: [],
-      errors: [{messageId: 'notSelfClosing'}],
+      errors: [{ messageId: 'notSelfClosing' }],
     },
     {
       code: 'var HelloJohn = <Hello name="John">\n</Hello>;',
       output: 'var HelloJohn = <Hello name="John" />;',
       options: [],
-      errors: [{messageId: 'notSelfClosing'}],
+      errors: [{ messageId: 'notSelfClosing' }],
     },
     {
       code: 'var HelloJohn = <Hello.Compound name="John">\n</Hello.Compound>;',
       output: 'var HelloJohn = <Hello.Compound name="John" />;',
       options: [],
-      errors: [{messageId: 'notSelfClosing'}],
+      errors: [{ messageId: 'notSelfClosing' }],
     },
     {
       code: 'var contentContainer = <div className="content"></div>;',
       output: 'var contentContainer = <div className="content" />;',
-      options: [{html: true}],
-      errors: [{messageId: 'notSelfClosing'}],
+      options: [{ html: true }],
+      errors: [{ messageId: 'notSelfClosing' }],
     },
     {
       code: 'var contentContainer = <div className="content">\n</div>;',
       output: 'var contentContainer = <div className="content" />;',
-      options: [{html: true}],
-      errors: [{messageId: 'notSelfClosing'}],
+      options: [{ html: true }],
+      errors: [{ messageId: 'notSelfClosing' }],
     },
   ],
 });

@@ -23,7 +23,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('forbid-component-props', rule, {
   valid: [
     {
@@ -44,7 +44,7 @@ ruleTester.run('forbid-component-props', rule, {
         });
       `,
       options: [
-        {forbid: ['style']},
+        { forbid: ['style'] },
       ],
     },
     {
@@ -67,7 +67,7 @@ ruleTester.run('forbid-component-props', rule, {
         });
       `,
       options: [
-        {forbid: ['style']},
+        { forbid: ['style'] },
       ],
     },
     {
@@ -80,7 +80,7 @@ ruleTester.run('forbid-component-props', rule, {
         });
       `,
       options: [
-        {forbid: ['style', 'foo']},
+        { forbid: ['style', 'foo'] },
       ],
     },
     {
@@ -101,7 +101,7 @@ ruleTester.run('forbid-component-props', rule, {
           }
         }
       `,
-      options: [{forbid: ['style']}],
+      options: [{ forbid: ['style'] }],
     },
     {
       code: `
@@ -117,7 +117,7 @@ ruleTester.run('forbid-component-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className', allowedFor: ['ReactModal']},
+            { propName: 'className', allowedFor: ['ReactModal'] },
           ],
         },
       ],
@@ -129,7 +129,7 @@ ruleTester.run('forbid-component-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className', allowedFor: ['AntdLayout.Content']},
+            { propName: 'className', allowedFor: ['AntdLayout.Content'] },
           ],
         },
       ],
@@ -141,7 +141,7 @@ ruleTester.run('forbid-component-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className', allowedFor: ['this.ReactModal']},
+            { propName: 'className', allowedFor: ['this.ReactModal'] },
           ],
         },
       ],
@@ -166,7 +166,7 @@ ruleTester.run('forbid-component-props', rule, {
       errors: [
         {
           messageId: 'propIsForbidden',
-          data: {prop: 'className'},
+          data: { prop: 'className' },
           line: 5,
           type: 'JSXAttribute',
         },
@@ -184,7 +184,7 @@ ruleTester.run('forbid-component-props', rule, {
       errors: [
         {
           messageId: 'propIsForbidden',
-          data: {prop: 'style'},
+          data: { prop: 'style' },
           line: 5,
           type: 'JSXAttribute',
         },
@@ -200,12 +200,12 @@ ruleTester.run('forbid-component-props', rule, {
         });
       `,
       options: [
-        {forbid: ['className', 'style']},
+        { forbid: ['className', 'style'] },
       ],
       errors: [
         {
           messageId: 'propIsForbidden',
-          data: {prop: 'className'},
+          data: { prop: 'className' },
           line: 5,
           column: 25,
           type: 'JSXAttribute',
@@ -222,12 +222,12 @@ ruleTester.run('forbid-component-props', rule, {
         });
       `,
       options: [
-        {forbid: ['className', 'style']},
+        { forbid: ['className', 'style'] },
       ],
       errors: [
         {
           messageId: 'propIsForbidden',
-          data: {prop: 'style'},
+          data: { prop: 'style' },
           line: 5,
           type: 'JSXAttribute',
         },
@@ -240,14 +240,14 @@ ruleTester.run('forbid-component-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className', allowedFor: ['ReactModal']},
+            { propName: 'className', allowedFor: ['ReactModal'] },
           ],
         },
       ],
       errors: [
         {
           messageId: 'propIsForbidden',
-          data: {prop: 'className'},
+          data: { prop: 'className' },
           line: 2,
           type: 'JSXAttribute',
         },
@@ -260,14 +260,14 @@ ruleTester.run('forbid-component-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className', allowedFor: ['ReactModal']},
+            { propName: 'className', allowedFor: ['ReactModal'] },
           ],
         },
       ],
       errors: [
         {
           messageId: 'propIsForbidden',
-          data: {prop: 'className'},
+          data: { prop: 'className' },
           line: 2,
           column: 40,
           type: 'JSXAttribute',
@@ -281,7 +281,7 @@ ruleTester.run('forbid-component-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className', message: 'Please use ourCoolClassName instead of ClassName'},
+            { propName: 'className', message: 'Please use ourCoolClassName instead of ClassName' },
           ],
         },
       ],
@@ -305,8 +305,8 @@ ruleTester.run('forbid-component-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className', message: 'Please use ourCoolClassName instead of ClassName'},
-            {propName: 'option', message: 'Avoid using option'},
+            { propName: 'className', message: 'Please use ourCoolClassName instead of ClassName' },
+            { propName: 'option', message: 'Avoid using option' },
           ],
         },
       ],
@@ -336,15 +336,15 @@ ruleTester.run('forbid-component-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className'},
-            {propName: 'option', message: 'Avoid using option'},
+            { propName: 'className' },
+            { propName: 'option', message: 'Avoid using option' },
           ],
         },
       ],
       errors: [
         {
           messageId: 'propIsForbidden',
-          data: {prop: 'className'},
+          data: { prop: 'className' },
           line: 3,
           column: 16,
           type: 'JSXAttribute',

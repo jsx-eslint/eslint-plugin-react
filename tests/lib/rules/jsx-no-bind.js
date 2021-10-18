@@ -27,7 +27,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-no-bind', rule, {
 
   valid: [
@@ -56,45 +56,45 @@ ruleTester.run('jsx-no-bind', rule, {
     // bind() and arrow functions in refs explicitly ignored
     {
       code: '<div ref={c => this._input = c}></div>',
-      options: [{ignoreRefs: true}],
+      options: [{ ignoreRefs: true }],
     },
     {
       code: '<div ref={this._refCallback.bind(this)}></div>',
-      options: [{ignoreRefs: true}],
+      options: [{ ignoreRefs: true }],
     },
     {
       code: '<div ref={function (c) {this._input = c}}></div>',
-      options: [{ignoreRefs: true}],
+      options: [{ ignoreRefs: true }],
     },
 
     // bind() explicitly allowed
     {
       code: '<div onClick={this._handleClick.bind(this)}></div>',
-      options: [{allowBind: true}],
+      options: [{ allowBind: true }],
     },
 
     // Arrow functions explicitly allowed
     {
       code: '<div onClick={() => alert("1337")}></div>',
-      options: [{allowArrowFunctions: true}],
+      options: [{ allowArrowFunctions: true }],
     },
     {
       code: '<div onClick={async () => alert("1337")}></div>',
-      options: [{allowArrowFunctions: true}],
+      options: [{ allowArrowFunctions: true }],
     },
 
     // Functions explicitly allowed
     {
       code: '<div onClick={function () { alert("1337") }}></div>',
-      options: [{allowFunctions: true}],
+      options: [{ allowFunctions: true }],
     },
     {
       code: '<div onClick={function * () { alert("1337") }}></div>',
-      options: [{allowFunctions: true}],
+      options: [{ allowFunctions: true }],
     },
     {
       code: '<div onClick={async function () { alert("1337") }}></div>',
-      options: [{allowFunctions: true}],
+      options: [{ allowFunctions: true }],
     },
 
     // Redux connect
@@ -107,7 +107,7 @@ ruleTester.run('jsx-no-bind', rule, {
         }
         export default connect()(Hello);
       `,
-      options: [{allowBind: true}],
+      options: [{ allowBind: true }],
     },
 
     // Backbone view with a bind
@@ -287,19 +287,19 @@ ruleTester.run('jsx-no-bind', rule, {
     // ignore DOM components
     {
       code: '<div onClick={this._handleClick.bind(this)}></div>',
-      options: [{ignoreDOMComponents: true}],
+      options: [{ ignoreDOMComponents: true }],
     },
     {
       code: '<div onClick={() => alert("1337")}></div>',
-      options: [{ignoreDOMComponents: true}],
+      options: [{ ignoreDOMComponents: true }],
     },
     {
       code: '<div onClick={function () { alert("1337") }}></div>',
-      options: [{ignoreDOMComponents: true}],
+      options: [{ ignoreDOMComponents: true }],
     },
     {
       code: '<div foo={::this.onChange} />',
-      options: [{ignoreDOMComponents: true}],
+      options: [{ ignoreDOMComponents: true }],
       parser: parsers.BABEL_ESLINT,
     },
 
@@ -321,19 +321,19 @@ ruleTester.run('jsx-no-bind', rule, {
     // .bind()
     {
       code: '<div onClick={this._handleClick.bind(this)}></div>',
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
     },
     {
       code: '<div onClick={someGlobalFunction.bind(this)}></div>',
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
     },
     {
       code: '<div onClick={window.lol.bind(this)}></div>',
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
     },
     {
       code: '<div ref={this._refCallback.bind(this)}></div>',
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
     },
     {
       code: `
@@ -344,7 +344,7 @@ ruleTester.run('jsx-no-bind', rule, {
           }
         });
       `,
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
     },
     {
       code: `
@@ -355,7 +355,7 @@ ruleTester.run('jsx-no-bind', rule, {
           }
         };
       `,
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
     },
     {
       code: [
@@ -366,7 +366,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};',
       ].join('\n'),
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
     },
     {
       code: [
@@ -377,7 +377,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};',
       ].join('\n'),
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -389,7 +389,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};',
       ].join('\n'),
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -400,7 +400,7 @@ ruleTester.run('jsx-no-bind', rule, {
           )
         };
       `,
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
     },
     {
       code: [
@@ -410,7 +410,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '});',
       ].join('\n'),
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
     },
     {
       code: [
@@ -421,7 +421,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '});',
       ].join('\n'),
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
     },
     {
       code: [
@@ -437,8 +437,8 @@ ruleTester.run('jsx-no-bind', rule, {
         '};',
       ].join('\n'),
       errors: [
-        {messageId: 'bindCall'},
-        {messageId: 'arrowFunc'},
+        { messageId: 'bindCall' },
+        { messageId: 'arrowFunc' },
       ],
       parser: parsers.BABEL_ESLINT,
     },
@@ -450,7 +450,7 @@ ruleTester.run('jsx-no-bind', rule, {
           )
         };
       `,
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
     },
     {
       code: `
@@ -460,7 +460,7 @@ ruleTester.run('jsx-no-bind', rule, {
           )
         };
       `,
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
     },
     {
       code: `
@@ -470,7 +470,7 @@ ruleTester.run('jsx-no-bind', rule, {
           )
         };
       `,
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
     },
     {
       code: `
@@ -480,29 +480,29 @@ ruleTester.run('jsx-no-bind', rule, {
           )
         };
       `,
-      errors: [{messageId: 'bindCall'}],
+      errors: [{ messageId: 'bindCall' }],
     },
 
     // Arrow functions
     {
       code: '<div onClick={() => alert("1337")}></div>',
-      errors: [{messageId: 'arrowFunc'}],
+      errors: [{ messageId: 'arrowFunc' }],
     },
     {
       code: '<div onClick={async () => alert("1337")}></div>',
-      errors: [{messageId: 'arrowFunc'}],
+      errors: [{ messageId: 'arrowFunc' }],
     },
     {
       code: '<div onClick={() => 42}></div>',
-      errors: [{messageId: 'arrowFunc'}],
+      errors: [{ messageId: 'arrowFunc' }],
     },
     {
       code: '<div onClick={param => { first(); second(); }}></div>',
-      errors: [{messageId: 'arrowFunc'}],
+      errors: [{ messageId: 'arrowFunc' }],
     },
     {
       code: '<div ref={c => this._input = c}></div>',
-      errors: [{messageId: 'arrowFunc'}],
+      errors: [{ messageId: 'arrowFunc' }],
     },
     {
       code: [
@@ -513,7 +513,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};',
       ].join('\n'),
-      errors: [{messageId: 'arrowFunc'}],
+      errors: [{ messageId: 'arrowFunc' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -525,7 +525,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};',
       ].join('\n'),
-      errors: [{messageId: 'arrowFunc'}],
+      errors: [{ messageId: 'arrowFunc' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -537,7 +537,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};',
       ].join('\n'),
-      errors: [{messageId: 'arrowFunc'}],
+      errors: [{ messageId: 'arrowFunc' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -548,7 +548,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '});',
       ].join('\n'),
-      errors: [{messageId: 'arrowFunc'}],
+      errors: [{ messageId: 'arrowFunc' }],
     },
     {
       code: [
@@ -558,7 +558,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '});',
       ].join('\n'),
-      errors: [{messageId: 'arrowFunc'}],
+      errors: [{ messageId: 'arrowFunc' }],
     },
     {
       code: [
@@ -569,7 +569,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '});',
       ].join('\n'),
-      errors: [{messageId: 'arrowFunc'}],
+      errors: [{ messageId: 'arrowFunc' }],
     },
     {
       code: [
@@ -580,7 +580,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '});',
       ].join('\n'),
-      errors: [{messageId: 'arrowFunc'}],
+      errors: [{ messageId: 'arrowFunc' }],
     },
     {
       code: [
@@ -596,8 +596,8 @@ ruleTester.run('jsx-no-bind', rule, {
         '};',
       ].join('\n'),
       errors: [
-        {messageId: 'arrowFunc'},
-        {messageId: 'bindExpression'},
+        { messageId: 'arrowFunc' },
+        { messageId: 'bindExpression' },
       ],
       parser: parsers.BABEL_ESLINT,
     },
@@ -605,19 +605,19 @@ ruleTester.run('jsx-no-bind', rule, {
     // Functions
     {
       code: '<div onClick={function () { alert("1337") }}></div>',
-      errors: [{messageId: 'func'}],
+      errors: [{ messageId: 'func' }],
     },
     {
       code: '<div onClick={function * () { alert("1337") }}></div>',
-      errors: [{messageId: 'func'}],
+      errors: [{ messageId: 'func' }],
     },
     {
       code: '<div onClick={async function () { alert("1337") }}></div>',
-      errors: [{messageId: 'func'}],
+      errors: [{ messageId: 'func' }],
     },
     {
       code: '<div ref={function (c) { this._input = c }}></div>',
-      errors: [{messageId: 'func'}],
+      errors: [{ messageId: 'func' }],
     },
     {
       code: [
@@ -628,7 +628,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};',
       ].join('\n'),
-      errors: [{messageId: 'func'}],
+      errors: [{ messageId: 'func' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -640,7 +640,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};',
       ].join('\n'),
-      errors: [{messageId: 'func'}],
+      errors: [{ messageId: 'func' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -652,7 +652,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};',
       ].join('\n'),
-      errors: [{messageId: 'func'}],
+      errors: [{ messageId: 'func' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -664,7 +664,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};',
       ].join('\n'),
-      errors: [{messageId: 'func'}],
+      errors: [{ messageId: 'func' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -675,7 +675,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '});',
       ].join('\n'),
-      errors: [{messageId: 'func'}],
+      errors: [{ messageId: 'func' }],
     },
     {
       code: [
@@ -685,7 +685,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '});',
       ].join('\n'),
-      errors: [{messageId: 'func'}],
+      errors: [{ messageId: 'func' }],
     },
     {
       code: [
@@ -695,7 +695,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '});',
       ].join('\n'),
-      errors: [{messageId: 'func'}],
+      errors: [{ messageId: 'func' }],
     },
     {
       code: [
@@ -706,7 +706,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '});',
       ].join('\n'),
-      errors: [{messageId: 'func'}],
+      errors: [{ messageId: 'func' }],
     },
     {
       code: [
@@ -717,7 +717,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '});',
       ].join('\n'),
-      errors: [{messageId: 'func'}],
+      errors: [{ messageId: 'func' }],
     },
     {
       code: [
@@ -728,7 +728,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '});',
       ].join('\n'),
-      errors: [{messageId: 'func'}],
+      errors: [{ messageId: 'func' }],
     },
     {
       code: [
@@ -744,8 +744,8 @@ ruleTester.run('jsx-no-bind', rule, {
         '};',
       ].join('\n'),
       errors: [
-        {messageId: 'func'},
-        {messageId: 'bindExpression'},
+        { messageId: 'func' },
+        { messageId: 'bindExpression' },
       ],
       parser: parsers.BABEL_ESLINT,
     },
@@ -753,17 +753,17 @@ ruleTester.run('jsx-no-bind', rule, {
     // Bind expression
     {
       code: '<div foo={::this.onChange} />',
-      errors: [{messageId: 'bindExpression'}],
+      errors: [{ messageId: 'bindExpression' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
       code: '<div foo={foo.bar::baz} />',
-      errors: [{messageId: 'bindExpression'}],
+      errors: [{ messageId: 'bindExpression' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
       code: '<div foo={foo::bar} />',
-      errors: [{messageId: 'bindExpression'}],
+      errors: [{ messageId: 'bindExpression' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -775,7 +775,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};',
       ].join('\n'),
-      errors: [{messageId: 'bindExpression'}],
+      errors: [{ messageId: 'bindExpression' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -787,7 +787,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};',
       ].join('\n'),
-      errors: [{messageId: 'bindExpression'}],
+      errors: [{ messageId: 'bindExpression' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -799,7 +799,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};',
       ].join('\n'),
-      errors: [{messageId: 'bindExpression'}],
+      errors: [{ messageId: 'bindExpression' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -815,7 +815,7 @@ ruleTester.run('jsx-no-bind', rule, {
         '  }',
         '};',
       ].join('\n'),
-      errors: [{messageId: 'bindExpression'}],
+      errors: [{ messageId: 'bindExpression' }],
       parser: parsers.BABEL_ESLINT,
     },
 
@@ -830,15 +830,15 @@ ruleTester.run('jsx-no-bind', rule, {
         '};',
       ].join('\n'),
       errors: [
-        {messageId: 'func'},
+        { messageId: 'func' },
       ],
     },
 
     // ignore DOM components
     {
       code: '<Foo onClick={this._handleClick.bind(this)} />',
-      options: [{ignoreDOMComponents: true}],
-      errors: [{messageId: 'bindCall'}],
+      options: [{ ignoreDOMComponents: true }],
+      errors: [{ messageId: 'bindCall' }],
     },
   ],
 });

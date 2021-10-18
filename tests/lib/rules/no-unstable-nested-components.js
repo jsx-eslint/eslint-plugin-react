@@ -28,7 +28,7 @@ const ERROR_MESSAGE_COMPONENT_AS_PROPS = `${ERROR_MESSAGE} If you want to allow 
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-unstable-nested-components', rule, {
   valid: [
     {
@@ -545,7 +545,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -561,7 +561,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -577,7 +577,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -593,7 +593,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -609,7 +609,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -625,7 +625,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -641,7 +641,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE_WITHOUT_NAME}],
+      errors: [{ message: ERROR_MESSAGE_WITHOUT_NAME }],
     },
     {
       code: `
@@ -657,7 +657,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       };
       `,
-      errors: [{message: ERROR_MESSAGE_WITHOUT_NAME}],
+      errors: [{ message: ERROR_MESSAGE_WITHOUT_NAME }],
     },
     {
       code: `
@@ -673,7 +673,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -689,7 +689,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -707,7 +707,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -725,7 +725,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -745,7 +745,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         }
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -765,7 +765,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         }
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -783,7 +783,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         }
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -801,7 +801,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         }
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -819,7 +819,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         }
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -837,7 +837,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         }
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -857,7 +857,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -873,7 +873,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         return React.createElement("div", null, getComponent());
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -892,7 +892,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}],
+      errors: [{ message: ERROR_MESSAGE_COMPONENT_AS_PROPS }],
     },
     {
       code: `
@@ -908,7 +908,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         });
       }
       `,
-      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}],
+      errors: [{ message: ERROR_MESSAGE_COMPONENT_AS_PROPS }],
     },
     {
       code: `
@@ -922,7 +922,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           );
       }
       `,
-      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}],
+      errors: [{ message: ERROR_MESSAGE_COMPONENT_AS_PROPS }],
     },
     {
       code: `
@@ -936,7 +936,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         });
       }
       `,
-      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}],
+      errors: [{ message: ERROR_MESSAGE_COMPONENT_AS_PROPS }],
     },
     {
       code: `
@@ -958,7 +958,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -984,7 +984,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
     {
       code: `
@@ -998,7 +998,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}],
+      errors: [{ message: ERROR_MESSAGE_COMPONENT_AS_PROPS }],
     },
     {
       code: `
@@ -1012,7 +1012,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         });
       }
       `,
-      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}],
+      errors: [{ message: ERROR_MESSAGE_COMPONENT_AS_PROPS }],
     },
     {
       code: `
@@ -1022,7 +1022,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}],
+      errors: [{ message: ERROR_MESSAGE_COMPONENT_AS_PROPS }],
     },
     {
       code: `
@@ -1044,7 +1044,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
       }
       `,
       // Only a single error should be shown. This can get easily marked twice.
-      errors: [{message: ERROR_MESSAGE}],
+      errors: [{ message: ERROR_MESSAGE }],
     },
   ],
 });

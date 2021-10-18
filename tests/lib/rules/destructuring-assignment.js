@@ -17,7 +17,7 @@ const parserOptions = {
   },
 };
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('destructuring-assignment', rule, {
   valid: [
     {
@@ -219,7 +219,7 @@ ruleTester.run('destructuring-assignment', rule, {
           bar = this.props.bar
         }
       `,
-      options: ['always', {ignoreClassFields: true}],
+      options: ['always', { ignoreClassFields: true }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -231,7 +231,7 @@ ruleTester.run('destructuring-assignment', rule, {
           }
         }
       `,
-      options: ['always', {ignoreClassFields: true}],
+      options: ['always', { ignoreClassFields: true }],
       parser: parsers.BABEL_ESLINT,
     },
     // https://github.com/yannickcr/eslint-plugin-react/issues/2911
@@ -335,7 +335,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'useDestructAssignment',
-          data: {type: 'props'},
+          data: { type: 'props' },
         },
       ],
     },
@@ -347,7 +347,7 @@ ruleTester.run('destructuring-assignment', rule, {
       `,
       options: ['never'],
       errors: [
-        {messageId: 'noDestructPropsInSFCArg'},
+        { messageId: 'noDestructPropsInSFCArg' },
       ],
     },
     {
@@ -358,7 +358,7 @@ ruleTester.run('destructuring-assignment', rule, {
       `,
       options: ['never'],
       errors: [
-        {messageId: 'noDestructContextInSFCArg'},
+        { messageId: 'noDestructContextInSFCArg' },
       ],
     },
     {
@@ -372,7 +372,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'useDestructAssignment',
-          data: {type: 'props'},
+          data: { type: 'props' },
         },
       ],
     },
@@ -387,7 +387,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'useDestructAssignment',
-          data: {type: 'state'},
+          data: { type: 'state' },
         },
       ],
     },
@@ -402,7 +402,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'useDestructAssignment',
-          data: {type: 'context'},
+          data: { type: 'context' },
         },
       ],
     },
@@ -418,7 +418,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'useDestructAssignment',
-          data: {type: 'props'},
+          data: { type: 'props' },
         },
       ],
     },
@@ -433,7 +433,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'useDestructAssignment',
-          data: {type: 'props'},
+          data: { type: 'props' },
         },
       ],
     },
@@ -448,7 +448,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'useDestructAssignment',
-          data: {type: 'props'},
+          data: { type: 'props' },
         },
       ],
     },
@@ -461,7 +461,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'useDestructAssignment',
-          data: {type: 'props'},
+          data: { type: 'props' },
         },
       ],
     },
@@ -474,7 +474,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'useDestructAssignment',
-          data: {type: 'props'},
+          data: { type: 'props' },
         },
       ],
     },
@@ -490,7 +490,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'useDestructAssignment',
-          data: {type: 'props'},
+          data: { type: 'props' },
         },
       ],
     },
@@ -508,7 +508,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'noDestructAssignment',
-          data: {type: 'props'},
+          data: { type: 'props' },
         },
       ],
     },
@@ -524,7 +524,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'noDestructAssignment',
-          data: {type: 'props'},
+          data: { type: 'props' },
         },
       ],
     },
@@ -542,7 +542,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'noDestructAssignment',
-          data: {type: 'state'},
+          data: { type: 'state' },
         },
       ],
     },
@@ -567,7 +567,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'useDestructAssignment',
-          data: {type: 'props'},
+          data: { type: 'props' },
         },
       ],
     },
@@ -583,7 +583,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'useDestructAssignment',
-          data: {type: 'context'},
+          data: { type: 'context' },
         },
       ],
     },
@@ -602,7 +602,7 @@ ruleTester.run('destructuring-assignment', rule, {
       errors: [
         {
           messageId: 'useDestructAssignment',
-          data: {type: 'props'},
+          data: { type: 'props' },
         },
       ],
     }],

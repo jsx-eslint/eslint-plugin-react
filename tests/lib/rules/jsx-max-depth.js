@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-max-depth', rule, {
   valid: [
     {
@@ -40,7 +40,7 @@ ruleTester.run('jsx-max-depth', rule, {
           <foo />
         </App>
       `,
-      options: [{max: 1}],
+      options: [{ max: 1 }],
     },
     {
       code: `
@@ -59,18 +59,18 @@ ruleTester.run('jsx-max-depth', rule, {
           </foo>
         </App>
       `,
-      options: [{max: 2}],
+      options: [{ max: 2 }],
     },
     {
       code: `
         const x = <div><em>x</em></div>;
         <div>{x}</div>
       `,
-      options: [{max: 2}],
+      options: [{ max: 2 }],
     },
     {
       code: 'const foo = (x) => <div><em>{x}</em></div>;',
-      options: [{max: 2}],
+      options: [{ max: 2 }],
     },
     {
       code: `
@@ -85,7 +85,7 @@ ruleTester.run('jsx-max-depth', rule, {
         </>
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{max: 1}],
+      options: [{ max: 1 }],
     },
     {
       code: `
@@ -93,7 +93,7 @@ ruleTester.run('jsx-max-depth', rule, {
         <>{x}</>
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{max: 2}],
+      options: [{ max: 2 }],
     },
     {
       code: `
@@ -107,7 +107,7 @@ ruleTester.run('jsx-max-depth', rule, {
           {x}
         </tbody>
       `,
-      options: [{max: 2}],
+      options: [{ max: 2 }],
     },
     {
       code: `
@@ -117,7 +117,7 @@ ruleTester.run('jsx-max-depth', rule, {
           }
         };
       `,
-      options: [{max: 1}],
+      options: [{ max: 1 }],
     },
     {
       code: `
@@ -164,11 +164,11 @@ ruleTester.run('jsx-max-depth', rule, {
           <foo />
         </App>
       `,
-      options: [{max: 0}],
+      options: [{ max: 0 }],
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 0, found: 1},
+          data: { needed: 0, found: 1 },
         },
       ],
     },
@@ -178,11 +178,11 @@ ruleTester.run('jsx-max-depth', rule, {
           <foo>{bar}</foo>
         </App>
       `,
-      options: [{max: 0}],
+      options: [{ max: 0 }],
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 0, found: 1},
+          data: { needed: 0, found: 1 },
         },
       ],
     },
@@ -194,11 +194,11 @@ ruleTester.run('jsx-max-depth', rule, {
           </foo>
         </App>
       `,
-      options: [{max: 1}],
+      options: [{ max: 1 }],
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2},
+          data: { needed: 1, found: 2 },
         },
       ],
     },
@@ -207,11 +207,11 @@ ruleTester.run('jsx-max-depth', rule, {
         const x = <div><span /></div>;
         <div>{x}</div>
       `,
-      options: [{max: 1}],
+      options: [{ max: 1 }],
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2},
+          data: { needed: 1, found: 2 },
         },
       ],
     },
@@ -221,11 +221,11 @@ ruleTester.run('jsx-max-depth', rule, {
         let y = x;
         <div>{y}</div>
       `,
-      options: [{max: 1}],
+      options: [{ max: 1 }],
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2},
+          data: { needed: 1, found: 2 },
         },
       ],
     },
@@ -235,15 +235,15 @@ ruleTester.run('jsx-max-depth', rule, {
         let y = x;
         <div>{x}-{y}</div>
       `,
-      options: [{max: 1}],
+      options: [{ max: 1 }],
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2},
+          data: { needed: 1, found: 2 },
         },
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2},
+          data: { needed: 1, found: 2 },
         },
       ],
     },
@@ -257,7 +257,7 @@ ruleTester.run('jsx-max-depth', rule, {
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 2, found: 3},
+          data: { needed: 2, found: 3 },
         },
       ],
     },
@@ -268,11 +268,11 @@ ruleTester.run('jsx-max-depth', rule, {
         </>
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{max: 0}],
+      options: [{ max: 0 }],
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 0, found: 1},
+          data: { needed: 0, found: 1 },
         },
       ],
     },
@@ -285,11 +285,11 @@ ruleTester.run('jsx-max-depth', rule, {
         </>
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{max: 1}],
+      options: [{ max: 1 }],
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2},
+          data: { needed: 1, found: 2 },
         },
       ],
     },
@@ -300,15 +300,15 @@ ruleTester.run('jsx-max-depth', rule, {
         <>{x}-{y}</>
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{max: 1}],
+      options: [{ max: 1 }],
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2},
+          data: { needed: 1, found: 2 },
         },
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2},
+          data: { needed: 1, found: 2 },
         },
       ],
     },
@@ -324,15 +324,15 @@ ruleTester.run('jsx-max-depth', rule, {
           {x}
         </tbody>
       `,
-      options: [{max: 1}],
+      options: [{ max: 1 }],
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2},
+          data: { needed: 1, found: 2 },
         },
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2},
+          data: { needed: 1, found: 2 },
         },
       ],
     },
@@ -354,11 +354,11 @@ ruleTester.run('jsx-max-depth', rule, {
           </Modal>
         </div>
       `,
-      options: [{max: 4}],
+      options: [{ max: 4 }],
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 4, found: 5},
+          data: { needed: 4, found: 5 },
         },
       ],
     },

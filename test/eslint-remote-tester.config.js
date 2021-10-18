@@ -3,7 +3,7 @@
 const eslintRemoteTesterRepositories = require('eslint-remote-tester-repositories');
 
 module.exports = {
-  repositories: eslintRemoteTesterRepositories.getRepositories({randomize: true}),
+  repositories: eslintRemoteTesterRepositories.getRepositories({ randomize: true }),
 
   pathIgnorePattern: eslintRemoteTesterRepositories.getPathIgnorePattern(),
 

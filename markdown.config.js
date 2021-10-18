@@ -2,13 +2,13 @@
 
 /* eslint-disable no-restricted-syntax */
 
-const {rules} = require('./index');
+const { rules } = require('./index');
 
 const ruleTableRows = Object.keys(rules)
   .sort()
   .map((id) => {
-    const {meta} = rules[id];
-    const {fixable, docs} = meta;
+    const { meta } = rules[id];
+    const { fixable, docs } = meta;
     return [
       docs.recommended ? '✔' : '',
       fixable ? '🔧' : '',

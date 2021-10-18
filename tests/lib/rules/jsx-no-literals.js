@@ -27,7 +27,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-no-literals', rule, {
   valid: [].concat(
     {
@@ -42,7 +42,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true, allowedStrings: ['button', 'submit']}],
+      options: [{ noStrings: true, allowedStrings: ['button', 'submit'] }],
     },
     {
       code: `
@@ -56,7 +56,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true, allowedStrings: ['button', 'submit']}],
+      options: [{ noStrings: true, allowedStrings: ['button', 'submit'] }],
       parser: parsers.BABEL_ESLINT,
     }, parsers.TS([
       {
@@ -71,7 +71,7 @@ ruleTester.run('jsx-no-literals', rule, {
             }
           }
         `,
-        options: [{noStrings: true, allowedStrings: ['button', 'submit']}],
+        options: [{ noStrings: true, allowedStrings: ['button', 'submit'] }],
         parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
@@ -86,7 +86,7 @@ ruleTester.run('jsx-no-literals', rule, {
             }
           }
         `,
-        options: [{noStrings: true, allowedStrings: ['button', 'submit']}],
+        options: [{ noStrings: true, allowedStrings: ['button', 'submit'] }],
         parser: parsers['@TYPESCRIPT_ESLINT'],
       },
     ]),
@@ -200,7 +200,7 @@ ruleTester.run('jsx-no-literals', rule, {
         </Foo>
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{noStrings: true, ignoreProps: true}],
+      options: [{ noStrings: true, ignoreProps: true }],
     },
     {
       code: `
@@ -209,7 +209,7 @@ ruleTester.run('jsx-no-literals', rule, {
         </Foo>
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{noStrings: true, ignoreProps: true}],
+      options: [{ noStrings: true, ignoreProps: true }],
     },
     {
       code: `
@@ -217,7 +217,7 @@ ruleTester.run('jsx-no-literals', rule, {
           {intl.formatText(message)}
         </Foo>
       `,
-      options: [{noStrings: true, ignoreProps: true}],
+      options: [{ noStrings: true, ignoreProps: true }],
     },
     {
       code: `
@@ -225,27 +225,27 @@ ruleTester.run('jsx-no-literals', rule, {
           {translate('my.translate.key')}
         </Foo>
       `,
-      options: [{noStrings: true, ignoreProps: true}],
+      options: [{ noStrings: true, ignoreProps: true }],
     },
     {
       code: '<Foo bar={true} />',
-      options: [{noStrings: true}],
+      options: [{ noStrings: true }],
     },
     {
       code: '<Foo bar={false} />',
-      options: [{noStrings: true}],
+      options: [{ noStrings: true }],
     },
     {
       code: '<Foo bar={100} />',
-      options: [{noStrings: true}],
+      options: [{ noStrings: true }],
     },
     {
       code: '<Foo bar={null} />',
-      options: [{noStrings: true}],
+      options: [{ noStrings: true }],
     },
     {
       code: '<Foo bar={{}} />',
-      options: [{noStrings: true}],
+      options: [{ noStrings: true }],
     },
     {
       code: `
@@ -256,7 +256,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true, ignoreProps: true}],
+      options: [{ noStrings: true, ignoreProps: true }],
     },
     {
       code: `
@@ -267,7 +267,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true}],
+      options: [{ noStrings: true }],
     },
     {
       code: `
@@ -277,7 +277,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{allowedStrings: ['asdf']}],
+      options: [{ allowedStrings: ['asdf'] }],
     },
     {
       code: `
@@ -287,7 +287,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: false, allowedStrings: ['asdf']}],
+      options: [{ noStrings: false, allowedStrings: ['asdf'] }],
     },
     {
       code: `
@@ -297,7 +297,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true, allowedStrings: ['&nbsp;']}],
+      options: [{ noStrings: true, allowedStrings: ['&nbsp;'] }],
     },
     {
       code: `
@@ -311,7 +311,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true, allowedStrings: ['&nbsp;']}],
+      options: [{ noStrings: true, allowedStrings: ['&nbsp;'] }],
     },
     {
       code: `
@@ -321,7 +321,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true, allowedStrings: ['foo: ', '*']}],
+      options: [{ noStrings: true, allowedStrings: ['foo: ', '*'] }],
     },
     {
       code: `
@@ -331,7 +331,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true, allowedStrings: ['   foo   ']}],
+      options: [{ noStrings: true, allowedStrings: ['   foo   '] }],
     },
     {
       code: `
@@ -344,7 +344,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }      `,
       parser: parsers.BABEL_ESLINT,
-      options: [{noStrings: true, ignoreProps: false}],
+      options: [{ noStrings: true, ignoreProps: false }],
     },
     {
       code: `
@@ -366,7 +366,7 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
-          data: {text: 'test'},
+          data: { text: 'test' },
         },
       ],
     },
@@ -382,7 +382,7 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
-          data: {text: 'test'},
+          data: { text: 'test' },
         },
       ],
     },
@@ -399,7 +399,7 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
-          data: {text: 'test'},
+          data: { text: 'test' },
         },
       ],
     },
@@ -416,7 +416,7 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
-          data: {text: 'test'},
+          data: { text: 'test' },
         },
       ],
     },
@@ -433,7 +433,7 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
-          data: {text: 'hello'},
+          data: { text: 'hello' },
         },
       ],
     },
@@ -453,7 +453,7 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
-          data: {text: 'asdjfl'},
+          data: { text: 'asdjfl' },
         },
       ],
     },
@@ -499,7 +499,7 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
-          data: {text: 'test'},
+          data: { text: 'test' },
         },
       ],
     },
@@ -509,15 +509,15 @@ ruleTester.run('jsx-no-literals', rule, {
           {'Test'}
         </Foo>
       `,
-      options: [{noStrings: true, ignoreProps: false}],
+      options: [{ noStrings: true, ignoreProps: false }],
       errors: [
         {
           messageId: 'invalidPropValue',
-          data: {text: 'bar="test"'},
+          data: { text: 'bar="test"' },
         },
         {
           messageId: 'noStringsInJSX',
-          data: {text: '\'Test\''},
+          data: { text: '\'Test\'' },
         },
       ],
     },
@@ -527,15 +527,15 @@ ruleTester.run('jsx-no-literals', rule, {
           {'Test' + name}
         </Foo>
       `,
-      options: [{noStrings: true, ignoreProps: false}],
+      options: [{ noStrings: true, ignoreProps: false }],
       errors: [
         {
           messageId: 'invalidPropValue',
-          data: {text: 'bar="test"'},
+          data: { text: 'bar="test"' },
         },
         {
           messageId: 'noStringsInJSX',
-          data: {text: '\'Test\''},
+          data: { text: '\'Test\'' },
         },
       ],
     },
@@ -545,15 +545,15 @@ ruleTester.run('jsx-no-literals', rule, {
           Test
         </Foo>
       `,
-      options: [{noStrings: true, ignoreProps: false}],
+      options: [{ noStrings: true, ignoreProps: false }],
       errors: [
         {
           messageId: 'invalidPropValue',
-          data: {text: 'bar="test"'},
+          data: { text: 'bar="test"' },
         },
         {
           messageId: 'noStringsInJSX',
-          data: {text: 'Test'},
+          data: { text: 'Test' },
         },
       ],
     },
@@ -563,83 +563,83 @@ ruleTester.run('jsx-no-literals', rule, {
           {\`Test\`}
         </Foo>
       `,
-      options: [{noStrings: true}],
+      options: [{ noStrings: true }],
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`Test`'},
+          data: { text: '`Test`' },
         },
       ],
     },
     {
       code: '<Foo bar={`Test`} />',
-      options: [{noStrings: true, ignoreProps: false}],
+      options: [{ noStrings: true, ignoreProps: false }],
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`Test`'},
+          data: { text: '`Test`' },
         },
       ],
     },
     {
       code: '<Foo bar={`${baz}`} />',
-      options: [{noStrings: true, ignoreProps: false}],
+      options: [{ noStrings: true, ignoreProps: false }],
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`${baz}`'},
+          data: { text: '`${baz}`' },
         },
       ],
     },
     {
       code: '<Foo bar={`Test ${baz}`} />',
-      options: [{noStrings: true, ignoreProps: false}],
+      options: [{ noStrings: true, ignoreProps: false }],
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`Test ${baz}`'},
+          data: { text: '`Test ${baz}`' },
         },
       ],
     },
     {
       code: '<Foo bar={`foo` + \'bar\'} />',
-      options: [{noStrings: true, ignoreProps: false}],
+      options: [{ noStrings: true, ignoreProps: false }],
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`foo`'},
+          data: { text: '`foo`' },
         },
         {
           messageId: 'noStringsInJSX',
-          data: {text: '\'bar\''},
+          data: { text: '\'bar\'' },
         },
       ],
     },
     {
       code: '<Foo bar={`foo` + `bar`} />',
-      options: [{noStrings: true, ignoreProps: false}],
+      options: [{ noStrings: true, ignoreProps: false }],
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`foo`'},
+          data: { text: '`foo`' },
         },
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`bar`'},
+          data: { text: '`bar`' },
         },
       ],
     },
     {
       code: '<Foo bar={\'foo\' + `bar`} />',
-      options: [{noStrings: true, ignoreProps: false}],
+      options: [{ noStrings: true, ignoreProps: false }],
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '\'foo\''},
+          data: { text: '\'foo\'' },
         },
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`bar`'},
+          data: { text: '`bar`' },
         },
       ],
     },
@@ -651,25 +651,25 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true, allowedStrings: ['asd'], ignoreProps: false}],
+      options: [{ noStrings: true, allowedStrings: ['asd'], ignoreProps: false }],
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '\'foo\''},
+          data: { text: '\'foo\'' },
         },
         {
           messageId: 'noStringsInJSX',
-          data: {text: 'asdf'},
+          data: { text: 'asdf' },
         },
       ],
     },
     {
       code: '<Foo bar={\'bar\'} />',
-      options: [{noStrings: true, ignoreProps: false}],
+      options: [{ noStrings: true, ignoreProps: false }],
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '\'bar\''},
+          data: { text: '\'bar\'' },
         },
       ],
     },
@@ -677,11 +677,11 @@ ruleTester.run('jsx-no-literals', rule, {
       code: `
         <img alt='blank image'></img>
       `,
-      options: [{noAttributeStrings: true}],
+      options: [{ noAttributeStrings: true }],
       errors: [
         {
           messageId: 'noStringsInAttributes',
-          data: {text: '\'blank image\''},
+          data: { text: '\'blank image\'' },
         },
       ],
     },

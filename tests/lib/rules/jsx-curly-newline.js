@@ -23,17 +23,17 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const LEFT_MISSING_ERROR = {messageId: 'expectedAfter', type: 'Punctuator'};
-const LEFT_UNEXPECTED_ERROR = {messageId: 'unexpectedAfter', type: 'Punctuator'};
-const RIGHT_MISSING_ERROR = {messageId: 'expectedBefore', type: 'Punctuator'};
-const RIGHT_UNEXPECTED_ERROR = {messageId: 'unexpectedBefore', type: 'Punctuator'};
+const LEFT_MISSING_ERROR = { messageId: 'expectedAfter', type: 'Punctuator' };
+const LEFT_UNEXPECTED_ERROR = { messageId: 'unexpectedAfter', type: 'Punctuator' };
+const RIGHT_MISSING_ERROR = { messageId: 'expectedBefore', type: 'Punctuator' };
+const RIGHT_UNEXPECTED_ERROR = { messageId: 'unexpectedBefore', type: 'Punctuator' };
 // const EXPECTED_BETWEEN = {messageId: 'expectedBetween', type: 'Identifier'};
 
 const CONSISTENT = ['consistent'];
 const NEVER = ['never'];
-const MULTILINE_REQUIRE = [{singleline: 'consistent', multiline: 'require'}];
+const MULTILINE_REQUIRE = [{ singleline: 'consistent', multiline: 'require' }];
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('jsx-curly-newline', rule, {
 

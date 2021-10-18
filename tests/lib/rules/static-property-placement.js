@@ -286,7 +286,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
-      options: [PROPERTY_ASSIGNMENT, {childContextTypes: STATIC_PUBLIC_FIELD}],
+      options: [PROPERTY_ASSIGNMENT, { childContextTypes: STATIC_PUBLIC_FIELD }],
     },
     // ------------------------------------------------------------------------------
     // childContextTypes - static getter
@@ -315,7 +315,7 @@ ruleTester.run('static-property-placement', rule, {
           }
         }
       `,
-      options: [PROPERTY_ASSIGNMENT, {childContextTypes: STATIC_GETTER}],
+      options: [PROPERTY_ASSIGNMENT, { childContextTypes: STATIC_GETTER }],
     },
     // ------------------------------------------------------------------------------
     // childContextTypes - assignment
@@ -348,7 +348,7 @@ ruleTester.run('static-property-placement', rule, {
           name: PropTypes.string.isRequired
         }
       `,
-      options: [STATIC_PUBLIC_FIELD, {childContextTypes: PROPERTY_ASSIGNMENT}],
+      options: [STATIC_PUBLIC_FIELD, { childContextTypes: PROPERTY_ASSIGNMENT }],
     },
     // ------------------------------------------------------------------------------
     // contextTypes - static field
@@ -372,7 +372,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
-      options: [PROPERTY_ASSIGNMENT, {contextTypes: STATIC_PUBLIC_FIELD}],
+      options: [PROPERTY_ASSIGNMENT, { contextTypes: STATIC_PUBLIC_FIELD }],
     },
     // ------------------------------------------------------------------------------
     // contextTypes - static getter
@@ -401,7 +401,7 @@ ruleTester.run('static-property-placement', rule, {
           }
         }
       `,
-      options: [PROPERTY_ASSIGNMENT, {contextTypes: STATIC_GETTER}],
+      options: [PROPERTY_ASSIGNMENT, { contextTypes: STATIC_GETTER }],
     },
     // ------------------------------------------------------------------------------
     // contextTypes - assignment
@@ -434,7 +434,7 @@ ruleTester.run('static-property-placement', rule, {
           name: PropTypes.string.isRequired
         }
       `,
-      options: [STATIC_PUBLIC_FIELD, {contextTypes: PROPERTY_ASSIGNMENT}],
+      options: [STATIC_PUBLIC_FIELD, { contextTypes: PROPERTY_ASSIGNMENT }],
     },
     // ------------------------------------------------------------------------------
     // contextType - static field
@@ -454,7 +454,7 @@ ruleTester.run('static-property-placement', rule, {
           static contextType = MyContext;
         }
       `,
-      options: [PROPERTY_ASSIGNMENT, {contextType: STATIC_PUBLIC_FIELD}],
+      options: [PROPERTY_ASSIGNMENT, { contextType: STATIC_PUBLIC_FIELD }],
     },
     // ------------------------------------------------------------------------------
     // contextType - static getter
@@ -479,7 +479,7 @@ ruleTester.run('static-property-placement', rule, {
           }
         }
       `,
-      options: [PROPERTY_ASSIGNMENT, {contextType: STATIC_GETTER}],
+      options: [PROPERTY_ASSIGNMENT, { contextType: STATIC_GETTER }],
     },
     // ------------------------------------------------------------------------------
     // contextType - assignment
@@ -508,7 +508,7 @@ ruleTester.run('static-property-placement', rule, {
 
         MyComponent.contextType = MyContext;
       `,
-      options: [STATIC_PUBLIC_FIELD, {contextType: PROPERTY_ASSIGNMENT}],
+      options: [STATIC_PUBLIC_FIELD, { contextType: PROPERTY_ASSIGNMENT }],
     },
     // ------------------------------------------------------------------------------
     // displayName - static field
@@ -528,7 +528,7 @@ ruleTester.run('static-property-placement', rule, {
           static displayName = "Hello";
         }
       `,
-      options: [PROPERTY_ASSIGNMENT, {displayName: STATIC_PUBLIC_FIELD}],
+      options: [PROPERTY_ASSIGNMENT, { displayName: STATIC_PUBLIC_FIELD }],
     },
     // ------------------------------------------------------------------------------
     // displayName - static getter
@@ -553,7 +553,7 @@ ruleTester.run('static-property-placement', rule, {
           }
         }
       `,
-      options: [PROPERTY_ASSIGNMENT, {displayName: STATIC_GETTER}],
+      options: [PROPERTY_ASSIGNMENT, { displayName: STATIC_GETTER }],
     },
     // ------------------------------------------------------------------------------
     // displayName - assignment
@@ -582,7 +582,7 @@ ruleTester.run('static-property-placement', rule, {
 
         MyComponent.displayName = "Hello";
       `,
-      options: [STATIC_PUBLIC_FIELD, {displayName: PROPERTY_ASSIGNMENT}],
+      options: [STATIC_PUBLIC_FIELD, { displayName: PROPERTY_ASSIGNMENT }],
     },
     // ------------------------------------------------------------------------------
     // defaultProps - static field
@@ -606,7 +606,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
-      options: [PROPERTY_ASSIGNMENT, {defaultProps: STATIC_PUBLIC_FIELD}],
+      options: [PROPERTY_ASSIGNMENT, { defaultProps: STATIC_PUBLIC_FIELD }],
     },
     // ------------------------------------------------------------------------------
     // defaultProps - static getter
@@ -635,7 +635,7 @@ ruleTester.run('static-property-placement', rule, {
           }
         }
       `,
-      options: [PROPERTY_ASSIGNMENT, {defaultProps: STATIC_GETTER}],
+      options: [PROPERTY_ASSIGNMENT, { defaultProps: STATIC_GETTER }],
     },
     // ------------------------------------------------------------------------------
     // defaultProps - assignment
@@ -668,7 +668,7 @@ ruleTester.run('static-property-placement', rule, {
           name: 'Bob'
         }
       `,
-      options: [STATIC_PUBLIC_FIELD, {defaultProps: PROPERTY_ASSIGNMENT}],
+      options: [STATIC_PUBLIC_FIELD, { defaultProps: PROPERTY_ASSIGNMENT }],
     },
     // ------------------------------------------------------------------------------
     // propTypes - static field
@@ -692,7 +692,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
-      options: [PROPERTY_ASSIGNMENT, {propTypes: STATIC_PUBLIC_FIELD}],
+      options: [PROPERTY_ASSIGNMENT, { propTypes: STATIC_PUBLIC_FIELD }],
     },
     // ------------------------------------------------------------------------------
     // propTypes - static getter
@@ -721,7 +721,7 @@ ruleTester.run('static-property-placement', rule, {
           }
         }
       `,
-      options: [PROPERTY_ASSIGNMENT, {propTypes: STATIC_GETTER}],
+      options: [PROPERTY_ASSIGNMENT, { propTypes: STATIC_GETTER }],
     },
     // ------------------------------------------------------------------------------
     // propTypes - assignment
@@ -754,7 +754,7 @@ ruleTester.run('static-property-placement', rule, {
           name: PropTypes.string.isRequired
         }
       `,
-      options: [STATIC_PUBLIC_FIELD, {propTypes: PROPERTY_ASSIGNMENT}],
+      options: [STATIC_PUBLIC_FIELD, { propTypes: PROPERTY_ASSIGNMENT }],
     },
     // ------------------------------------------------------------------------------
     // multiple - static field
@@ -1161,27 +1161,27 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'defaultProps'},
+          data: { name: 'defaultProps' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'propTypes'},
+          data: { name: 'propTypes' },
         },
       ],
     },
@@ -1225,27 +1225,27 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'defaultProps'},
+          data: { name: 'defaultProps' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'propTypes'},
+          data: { name: 'propTypes' },
         },
       ],
     },
@@ -1292,27 +1292,27 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'defaultProps'},
+          data: { name: 'defaultProps' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'propTypes'},
+          data: { name: 'propTypes' },
         },
       ],
     },
@@ -1367,27 +1367,27 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'defaultProps'},
+          data: { name: 'defaultProps' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'propTypes'},
+          data: { name: 'propTypes' },
         },
       ],
     },
@@ -1423,27 +1423,27 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'defaultProps'},
+          data: { name: 'defaultProps' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'propTypes'},
+          data: { name: 'propTypes' },
         },
       ],
     },
@@ -1486,27 +1486,27 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'defaultProps'},
+          data: { name: 'defaultProps' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'propTypes'},
+          data: { name: 'propTypes' },
         },
       ],
     },
@@ -1554,27 +1554,27 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'defaultProps'},
+          data: { name: 'defaultProps' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'propTypes'},
+          data: { name: 'propTypes' },
         },
       ],
     },
@@ -1629,27 +1629,27 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'defaultProps'},
+          data: { name: 'defaultProps' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'propTypes'},
+          data: { name: 'propTypes' },
         },
       ],
     },
@@ -1685,27 +1685,27 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'defaultProps'},
+          data: { name: 'defaultProps' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'propTypes'},
+          data: { name: 'propTypes' },
         },
       ],
     },
@@ -1748,27 +1748,27 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'defaultProps'},
+          data: { name: 'defaultProps' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'propTypes'},
+          data: { name: 'propTypes' },
         },
       ],
     },
@@ -1808,27 +1808,27 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'defaultProps'},
+          data: { name: 'defaultProps' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'propTypes'},
+          data: { name: 'propTypes' },
         },
       ],
     },
@@ -1875,27 +1875,27 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'defaultProps'},
+          data: { name: 'defaultProps' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'propTypes'},
+          data: { name: 'propTypes' },
         },
       ],
     },
@@ -1940,27 +1940,27 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'defaultProps'},
+          data: { name: 'defaultProps' },
         },
         {
           messageId: 'notStaticClassProp',
-          data: {name: 'propTypes'},
+          data: { name: 'propTypes' },
         },
       ],
     },
@@ -2003,27 +2003,27 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'defaultProps'},
+          data: { name: 'defaultProps' },
         },
         {
           messageId: 'notGetterClassFunc',
-          data: {name: 'propTypes'},
+          data: { name: 'propTypes' },
         },
       ],
     },
@@ -2069,19 +2069,19 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
       ],
     },
@@ -2124,35 +2124,35 @@ ruleTester.run('static-property-placement', rule, {
       errors: [
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'childContextTypes'},
+          data: { name: 'childContextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextType'},
+          data: { name: 'contextType' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'contextTypes'},
+          data: { name: 'contextTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'defaultProps'},
+          data: { name: 'defaultProps' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'propTypes'},
+          data: { name: 'propTypes' },
         },
         {
           messageId: 'declareOutsideClass',
-          data: {name: 'displayName'},
+          data: { name: 'displayName' },
         },
       ],
     },

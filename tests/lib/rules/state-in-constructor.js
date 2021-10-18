@@ -262,7 +262,7 @@ ruleTester.run('state-in-constructor', rule, {
         }
       `,
       options: ['never'],
-      errors: [{messageId: 'stateInitClassProp'}],
+      errors: [{ messageId: 'stateInitClassProp' }],
     },
     {
       code: `
@@ -278,7 +278,7 @@ ruleTester.run('state-in-constructor', rule, {
         }
       `,
       options: ['never'],
-      errors: [{messageId: 'stateInitClassProp'}],
+      errors: [{ messageId: 'stateInitClassProp' }],
     },
     {
       code: `
@@ -289,7 +289,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      errors: [{messageId: 'stateInitConstructor'}],
+      errors: [{ messageId: 'stateInitConstructor' }],
     },
     {
       code: `
@@ -301,7 +301,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      errors: [{messageId: 'stateInitConstructor'}],
+      errors: [{ messageId: 'stateInitConstructor' }],
     },
     {
       code: `
@@ -316,7 +316,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      errors: [{messageId: 'stateInitConstructor'}],
+      errors: [{ messageId: 'stateInitConstructor' }],
     },
     {
       code: `
@@ -331,7 +331,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      errors: [{messageId: 'stateInitConstructor'}],
+      errors: [{ messageId: 'stateInitConstructor' }],
     },
     {
       code: `
@@ -347,7 +347,7 @@ ruleTester.run('state-in-constructor', rule, {
         }
       `,
       options: ['never'],
-      errors: [{messageId: 'stateInitClassProp'}],
+      errors: [{ messageId: 'stateInitClassProp' }],
     },
     {
       code: `
@@ -364,7 +364,7 @@ ruleTester.run('state-in-constructor', rule, {
         }
       `,
       options: ['never'],
-      errors: [{messageId: 'stateInitClassProp'}],
+      errors: [{ messageId: 'stateInitClassProp' }],
     },
   ],
 });

@@ -34,7 +34,7 @@ const withoutJSX = 'module.exports = {}';
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-filename-extension', rule, {
   valid: [
     {
@@ -48,16 +48,16 @@ ruleTester.run('jsx-filename-extension', rule, {
     {
       filename: 'MyComponent.js',
       code: withoutJSX,
-      options: [{allow: 'as-needed'}],
+      options: [{ allow: 'as-needed' }],
     },
     {
       filename: 'MyComponent.jsx',
       code: withJSXElement,
-      options: [{allow: 'as-needed'}],
+      options: [{ allow: 'as-needed' }],
     },
     {
       filename: 'MyComponent.js',
-      options: [{extensions: ['.js', '.jsx']}],
+      options: [{ extensions: ['.js', '.jsx'] }],
       code: withJSXElement,
     },
     {
@@ -76,7 +76,7 @@ ruleTester.run('jsx-filename-extension', rule, {
     },
     {
       filename: 'MyComponent.js',
-      options: [{extensions: ['.js', '.jsx']}],
+      options: [{ extensions: ['.js', '.jsx'] }],
       code: withJSXFragment,
       parser: parsers.BABEL_ESLINT,
     },
@@ -89,40 +89,40 @@ ruleTester.run('jsx-filename-extension', rule, {
       errors: [
         {
           messageId: 'noJSXWithExtension',
-          data: {ext: '.js'},
+          data: { ext: '.js' },
         },
       ],
     },
     {
       filename: 'MyComponent.jsx',
       code: withoutJSX,
-      options: [{allow: 'as-needed'}],
+      options: [{ allow: 'as-needed' }],
       errors: [
         {
           messageId: 'extensionOnlyForJSX',
-          data: {ext: '.jsx'},
+          data: { ext: '.jsx' },
         },
       ],
     },
     {
       filename: 'notAComponent.js',
       code: withJSXElement,
-      options: [{allow: 'as-needed'}],
+      options: [{ allow: 'as-needed' }],
       errors: [
         {
           messageId: 'noJSXWithExtension',
-          data: {ext: '.js'},
+          data: { ext: '.js' },
         },
       ],
     },
     {
       filename: 'MyComponent.jsx',
       code: withJSXElement,
-      options: [{extensions: ['.js']}],
+      options: [{ extensions: ['.js'] }],
       errors: [
         {
           messageId: 'noJSXWithExtension',
-          data: {ext: '.jsx'},
+          data: { ext: '.jsx' },
         },
       ],
     },
@@ -133,7 +133,7 @@ ruleTester.run('jsx-filename-extension', rule, {
       errors: [
         {
           messageId: 'noJSXWithExtension',
-          data: {ext: '.js'},
+          data: { ext: '.js' },
         },
       ],
     },
@@ -141,11 +141,11 @@ ruleTester.run('jsx-filename-extension', rule, {
       filename: 'MyComponent.jsx',
       code: withJSXFragment,
       parser: parsers.BABEL_ESLINT,
-      options: [{extensions: ['.js']}],
+      options: [{ extensions: ['.js'] }],
       errors: [
         {
           messageId: 'noJSXWithExtension',
-          data: {ext: '.jsx'},
+          data: { ext: '.jsx' },
         },
       ],
     },

@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-closing-tag-location', rule, {
   valid: [
     {
@@ -69,7 +69,7 @@ ruleTester.run('jsx-closing-tag-location', rule, {
           foo
         </App>
       `,
-      errors: [{messageId: 'matchIndent'}],
+      errors: [{ messageId: 'matchIndent' }],
     },
     {
       code: `
@@ -81,7 +81,7 @@ ruleTester.run('jsx-closing-tag-location', rule, {
           foo
         </App>
       `,
-      errors: [{messageId: 'onOwnLine'}],
+      errors: [{ messageId: 'onOwnLine' }],
     },
     {
       code: `
@@ -95,7 +95,7 @@ ruleTester.run('jsx-closing-tag-location', rule, {
           foo
         </>
       `,
-      errors: [{messageId: 'matchIndent'}],
+      errors: [{ messageId: 'matchIndent' }],
     },
     {
       code: `
@@ -108,7 +108,7 @@ ruleTester.run('jsx-closing-tag-location', rule, {
           foo
         </>
       `,
-      errors: [{messageId: 'onOwnLine'}],
+      errors: [{ messageId: 'onOwnLine' }],
     },
   ],
 });

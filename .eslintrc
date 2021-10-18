@@ -15,9 +15,10 @@
     },
     "rules": {
         "comma-dangle": [2, "always-multiline"],
-        "object-curly-spacing": [2, "never"],
-        "object-shorthand": [2, "always"],
-        "array-bracket-spacing": [2, "never"],
+        "object-shorthand": [2, "always", {
+          "ignoreConstructors": false,
+          "avoidQuotes": false, // this is the override vs airbnb
+        }],
         "max-len": [2, 120, {
           "ignoreStrings": true,
           "ignoreTemplateLiterals": true,

@@ -42,7 +42,7 @@ const settingsOld = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-fragments', rule, {
   valid: [
     {
@@ -110,21 +110,21 @@ ruleTester.run('jsx-fragments', rule, {
       parser: parsers.BABEL_ESLINT,
       settings: settingsOld,
       errors: [
-        {messageId: 'fragmentsNotSupported'},
+        { messageId: 'fragmentsNotSupported' },
       ],
     },
     {
       code: '<Act.Frag><Foo /></Act.Frag>',
       settings: settingsOld,
       errors: [
-        {messageId: 'fragmentsNotSupported'},
+        { messageId: 'fragmentsNotSupported' },
       ],
     },
     {
       code: '<Act.Frag />',
       settings: settingsOld,
       errors: [
-        {messageId: 'fragmentsNotSupported'},
+        { messageId: 'fragmentsNotSupported' },
       ],
     },
     {
@@ -136,7 +136,7 @@ ruleTester.run('jsx-fragments', rule, {
       errors: [
         {
           messageId: 'preferPragma',
-          data: {react: 'Act', fragment: 'Frag'},
+          data: { react: 'Act', fragment: 'Frag' },
         },
       ],
     },
@@ -148,7 +148,7 @@ ruleTester.run('jsx-fragments', rule, {
       errors: [
         {
           messageId: 'preferFragment',
-          data: {react: 'Act', fragment: 'Frag'},
+          data: { react: 'Act', fragment: 'Frag' },
         },
       ],
     },
@@ -160,7 +160,7 @@ ruleTester.run('jsx-fragments', rule, {
       errors: [
         {
           messageId: 'preferFragment',
-          data: {react: 'Act', fragment: 'Frag'},
+          data: { react: 'Act', fragment: 'Frag' },
         },
       ],
     },
@@ -178,7 +178,7 @@ ruleTester.run('jsx-fragments', rule, {
       errors: [
         {
           messageId: 'preferFragment',
-          data: {react: 'Act', fragment: 'Frag'},
+          data: { react: 'Act', fragment: 'Frag' },
         },
       ],
     },
@@ -196,7 +196,7 @@ ruleTester.run('jsx-fragments', rule, {
       errors: [
         {
           messageId: 'preferFragment',
-          data: {react: 'Act', fragment: 'Frag'},
+          data: { react: 'Act', fragment: 'Frag' },
         },
       ],
     },
@@ -214,7 +214,7 @@ ruleTester.run('jsx-fragments', rule, {
       errors: [
         {
           messageId: 'preferFragment',
-          data: {react: 'Act', fragment: 'Frag'},
+          data: { react: 'Act', fragment: 'Frag' },
         },
       ],
     },
@@ -232,7 +232,7 @@ ruleTester.run('jsx-fragments', rule, {
       errors: [
         {
           messageId: 'preferFragment',
-          data: {react: 'Act', fragment: 'Frag'},
+          data: { react: 'Act', fragment: 'Frag' },
         },
       ],
     },
@@ -250,7 +250,7 @@ ruleTester.run('jsx-fragments', rule, {
       errors: [
         {
           messageId: 'preferFragment',
-          data: {react: 'Act', fragment: 'Frag'},
+          data: { react: 'Act', fragment: 'Frag' },
         },
       ],
     },
@@ -268,7 +268,7 @@ ruleTester.run('jsx-fragments', rule, {
       errors: [
         {
           messageId: 'preferFragment',
-          data: {react: 'Act', fragment: 'Frag'},
+          data: { react: 'Act', fragment: 'Frag' },
         },
       ],
     }],

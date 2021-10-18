@@ -18,7 +18,7 @@ const parserOptions = {
   },
 };
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('react-require-optimization', rule, {
   valid: [
     {
@@ -108,7 +108,7 @@ ruleTester.run('react-require-optimization', rule, {
         class DecoratedComponent extends Component {}
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{allowDecorators: ['renderPure', 'pureRender']}],
+      options: [{ allowDecorators: ['renderPure', 'pureRender'] }],
     },
     {
       code: `
@@ -116,7 +116,7 @@ ruleTester.run('react-require-optimization', rule, {
         class YourComponent extends React.PureComponent {}
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{allowDecorators: ['renderPure', 'pureRender']}],
+      options: [{ allowDecorators: ['renderPure', 'pureRender'] }],
     },
     {
       code: `
@@ -124,7 +124,7 @@ ruleTester.run('react-require-optimization', rule, {
         class YourComponent extends PureComponent {}
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{allowDecorators: ['renderPure', 'pureRender']}],
+      options: [{ allowDecorators: ['renderPure', 'pureRender'] }],
     },
     {
       code: `
@@ -145,7 +145,7 @@ ruleTester.run('react-require-optimization', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'noShouldComponentUpdate'}],
+      errors: [{ messageId: 'noShouldComponentUpdate' }],
     },
   ],
 
@@ -155,7 +155,7 @@ ruleTester.run('react-require-optimization', rule, {
         import React from "react";
         class YourComponent extends React.Component {}
       `,
-      errors: [{messageId: 'noShouldComponentUpdate'}],
+      errors: [{ messageId: 'noShouldComponentUpdate' }],
     },
     {
       code: `
@@ -168,7 +168,7 @@ ruleTester.run('react-require-optimization', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'noShouldComponentUpdate'}],
+      errors: [{ messageId: 'noShouldComponentUpdate' }],
     },
     {
       code: `
@@ -181,21 +181,21 @@ ruleTester.run('react-require-optimization', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'noShouldComponentUpdate'}],
+      errors: [{ messageId: 'noShouldComponentUpdate' }],
     },
     {
       code: `
         import React, {Component} from "react";
         class YourComponent extends Component {}
       `,
-      errors: [{messageId: 'noShouldComponentUpdate'}],
+      errors: [{ messageId: 'noShouldComponentUpdate' }],
     },
     {
       code: `
         import React from "react";
         createReactClass({})
       `,
-      errors: [{messageId: 'noShouldComponentUpdate'}],
+      errors: [{ messageId: 'noShouldComponentUpdate' }],
     },
     {
       code: `
@@ -204,14 +204,14 @@ ruleTester.run('react-require-optimization', rule, {
           mixins: [RandomMixin]
         })
       `,
-      errors: [{messageId: 'noShouldComponentUpdate'}],
+      errors: [{ messageId: 'noShouldComponentUpdate' }],
     },
     {
       code: `
         @reactMixin.decorate(SomeOtherMixin)
         class DecoratedComponent extends Component {}
       `,
-      errors: [{messageId: 'noShouldComponentUpdate'}],
+      errors: [{ messageId: 'noShouldComponentUpdate' }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -221,9 +221,9 @@ ruleTester.run('react-require-optimization', rule, {
         @foo
         class DecoratedComponent extends Component {}
       `,
-      errors: [{messageId: 'noShouldComponentUpdate'}],
+      errors: [{ messageId: 'noShouldComponentUpdate' }],
       parser: parsers.BABEL_ESLINT,
-      options: [{allowDecorators: ['renderPure', 'pureRender']}],
+      options: [{ allowDecorators: ['renderPure', 'pureRender'] }],
     },
   ],
 });

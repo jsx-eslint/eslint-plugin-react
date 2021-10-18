@@ -27,7 +27,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 const linter = ruleTester.linter || eslint.linter;
 linter.defineRule('no-undef', require('eslint/lib/rules/no-undef'));
 
@@ -81,9 +81,9 @@ ruleTester.run('jsx-no-undef', rule, {
           );
         };
       `,
-      parserOptions: Object.assign({sourceType: 'module'}, parserOptions),
+      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
       options: [
-        {allowGlobals: false},
+        { allowGlobals: false },
       ],
       parser: parsers.BABEL_ESLINT,
     },
@@ -94,28 +94,28 @@ ruleTester.run('jsx-no-undef', rule, {
       code: '/*eslint no-undef:1*/ var React; React.render(<App />);',
       errors: [{
         messageId: 'undefined',
-        data: {identifier: 'App'},
+        data: { identifier: 'App' },
       }],
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<Appp.Foo />);',
       errors: [{
         messageId: 'undefined',
-        data: {identifier: 'Appp'},
+        data: { identifier: 'Appp' },
       }],
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<appp.Foo />);',
       errors: [{
         messageId: 'undefined',
-        data: {identifier: 'appp'},
+        data: { identifier: 'appp' },
       }],
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<appp.foo.Bar />);',
       errors: [{
         messageId: 'undefined',
-        data: {identifier: 'appp'},
+        data: { identifier: 'appp' },
       }],
     },
     {
@@ -127,13 +127,13 @@ ruleTester.run('jsx-no-undef', rule, {
         };
         export default TextWrapper;
       `,
-      parserOptions: Object.assign({sourceType: 'module'}, parserOptions),
+      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
       errors: [{
         messageId: 'undefined',
-        data: {identifier: 'Text'},
+        data: { identifier: 'Text' },
       }],
       options: [
-        {allowGlobals: false},
+        { allowGlobals: false },
       ],
       parser: parsers.BABEL_ESLINT,
       globals: {
@@ -145,7 +145,7 @@ ruleTester.run('jsx-no-undef', rule, {
       errors: [
         {
           messageId: 'undefined',
-          data: {identifier: 'Foo'},
+          data: { identifier: 'Foo' },
         },
       ],
     },

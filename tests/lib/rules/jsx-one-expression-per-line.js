@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-one-expression-per-line', rule, {
   valid: [
     {
@@ -141,27 +141,27 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     },
     {
       code: '<App>foo</App>',
-      options: [{allow: 'literal'}],
+      options: [{ allow: 'literal' }],
     },
     {
       code: '<App>123</App>',
-      options: [{allow: 'literal'}],
+      options: [{ allow: 'literal' }],
     },
     {
       code: '<App>foo</App>',
-      options: [{allow: 'single-child'}],
+      options: [{ allow: 'single-child' }],
     },
     {
       code: '<App>{"foo"}</App>',
-      options: [{allow: 'single-child'}],
+      options: [{ allow: 'single-child' }],
     },
     {
       code: '<App>{foo && <Bar />}</App>',
-      options: [{allow: 'single-child'}],
+      options: [{ allow: 'single-child' }],
     },
     {
       code: '<App><Foo /></App>',
-      options: [{allow: 'single-child'}],
+      options: [{ allow: 'single-child' }],
     },
     {
       code: '<></>',
@@ -199,7 +199,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{"foo"}'},
+          data: { descriptor: '{"foo"}' },
         },
       ],
       parserOptions,
@@ -216,7 +216,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'foo'},
+          data: { descriptor: 'foo' },
         },
       ],
       parserOptions,
@@ -237,7 +237,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{"bar"}'},
+          data: { descriptor: '{"bar"}' },
         },
       ],
       parserOptions,
@@ -258,7 +258,7 @@ bar
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: ' bar        '},
+          data: { descriptor: ' bar        ' },
         },
       ],
       parserOptions,
@@ -277,7 +277,7 @@ bar
       `,
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Bar'},
+        data: { descriptor: 'Bar' },
       }],
       parserOptions,
     },
@@ -295,7 +295,7 @@ foo
       `,
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'foo        '},
+        data: { descriptor: 'foo        ' },
       }],
       parserOptions,
     },
@@ -313,7 +313,7 @@ foo
       `,
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: '{"foo"}'},
+        data: { descriptor: '{"foo"}' },
       }],
       parserOptions,
     },
@@ -333,7 +333,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{ I18n.t(\'baz\') }'},
+          data: { descriptor: '{ I18n.t(\'baz\') }' },
         },
       ],
       parserOptions,
@@ -354,15 +354,15 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{ bar }'},
+          data: { descriptor: '{ bar }' },
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Text'},
+          data: { descriptor: 'Text' },
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{ I18n.t(\'baz\') }'},
+          data: { descriptor: '{ I18n.t(\'baz\') }' },
         },
       ],
       parserOptions,
@@ -383,11 +383,11 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Bar'},
+          data: { descriptor: 'Bar' },
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Baz'},
+          data: { descriptor: 'Baz' },
         },
       ],
       parserOptions,
@@ -412,19 +412,19 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Bar'},
+          data: { descriptor: 'Bar' },
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Baz'},
+          data: { descriptor: 'Baz' },
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Bunk'},
+          data: { descriptor: 'Bunk' },
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Bruno'},
+          data: { descriptor: 'Bruno' },
         },
       ],
       parserOptions,
@@ -442,7 +442,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Bar'},
+          data: { descriptor: 'Bar' },
         },
       ],
       parserOptions,
@@ -461,7 +461,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Bar'},
+          data: { descriptor: 'Bar' },
         },
       ],
       parserOptions,
@@ -482,7 +482,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Baz'},
+          data: { descriptor: 'Baz' },
         },
       ],
       parserOptions,
@@ -503,7 +503,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{ I18n.t(\'baz\') }'},
+          data: { descriptor: '{ I18n.t(\'baz\') }' },
         },
       ],
       parserOptions,
@@ -523,7 +523,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'input'},
+          data: { descriptor: 'input' },
         },
       ],
       parserOptions,
@@ -542,7 +542,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'span'},
+        data: { descriptor: 'span' },
       }],
       parserOptions,
     },
@@ -561,7 +561,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'input'},
+        data: { descriptor: 'input' },
       }],
       parserOptions,
     },
@@ -580,7 +580,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: ' foo'},
+        data: { descriptor: ' foo' },
       }],
       parserOptions,
     },
@@ -600,7 +600,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'input'},
+          data: { descriptor: 'input' },
         },
       ],
       parserOptions,
@@ -622,7 +622,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'input'},
+          data: { descriptor: 'input' },
         },
       ],
       parserOptions,
@@ -643,7 +643,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'input'},
+          data: { descriptor: 'input' },
         },
       ],
       parserOptions,
@@ -663,7 +663,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: ' bar'},
+        data: { descriptor: ' bar' },
       }],
       parserOptions,
     },
@@ -683,7 +683,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{"foo"}'},
+          data: { descriptor: '{"foo"}' },
         },
       ],
       parserOptions,
@@ -702,7 +702,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Bar'},
+        data: { descriptor: 'Bar' },
       }],
       parserOptions,
     },
@@ -718,7 +718,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'},
+        data: { descriptor: 'Foo' },
       }],
       parserOptions,
     },
@@ -734,7 +734,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'},
+        data: { descriptor: 'Foo' },
       }],
       parserOptions,
     },
@@ -750,7 +750,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'},
+        data: { descriptor: 'Foo' },
       }],
       parserOptions,
     },
@@ -768,7 +768,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'},
+        data: { descriptor: 'Foo' },
       }],
       parserOptions,
     },
@@ -786,7 +786,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'},
+        data: { descriptor: 'Foo' },
       }],
       parserOptions,
     },
@@ -806,7 +806,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'},
+        data: { descriptor: 'Foo' },
       }],
       parserOptions,
     },
@@ -824,7 +824,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'},
+        data: { descriptor: 'Foo' },
       }],
       parserOptions,
     },
@@ -842,7 +842,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'},
+        data: { descriptor: 'Foo' },
       }],
       parserOptions,
     },
@@ -860,7 +860,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'},
+        data: { descriptor: 'Foo' },
       }],
       parserOptions,
     },
@@ -878,7 +878,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'},
+        data: { descriptor: 'Foo' },
       }],
       parserOptions,
       parser: parsers.BABEL_ESLINT,
@@ -899,7 +899,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Bar'},
+        data: { descriptor: 'Bar' },
       }],
       parserOptions,
     },
@@ -919,7 +919,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Bar'},
+        data: { descriptor: 'Bar' },
       }],
       parserOptions,
     },
@@ -945,7 +945,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: ' baz '},
+          data: { descriptor: ' baz ' },
         },
       ],
       parserOptions,
@@ -967,11 +967,11 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{"bar"}'},
+          data: { descriptor: '{"bar"}' },
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: ' baz'},
+          data: { descriptor: ' baz' },
         },
       ],
       parserOptions,
@@ -993,7 +993,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{"bar"}'},
+          data: { descriptor: '{"bar"}' },
         },
       ],
       parserOptions,
@@ -1019,7 +1019,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: ' baz'},
+          data: { descriptor: ' baz' },
         },
       ],
       parserOptions,
@@ -1045,11 +1045,11 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{"bar"}'},
+          data: { descriptor: '{"bar"}' },
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: ' baz'},
+          data: { descriptor: ' baz' },
         },
       ],
       parserOptions,
@@ -1079,7 +1079,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: ' baz'},
+          data: { descriptor: ' baz' },
         },
       ],
       parserOptions,
@@ -1100,7 +1100,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{  foo}'},
+          data: { descriptor: '{  foo}' },
         },
       ],
       parserOptions,
@@ -1123,7 +1123,7 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{  foo}'},
+          data: { descriptor: '{  foo}' },
         },
       ],
       parserOptions,
@@ -1148,14 +1148,14 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{  foo}'},
+          data: { descriptor: '{  foo}' },
         },
       ],
       parserOptions,
     },
     {
       code: '<App><Foo /></App>',
-      options: [{allow: 'none'}],
+      options: [{ allow: 'none' }],
       output: [
         '<App>',
         '<Foo />',
@@ -1163,12 +1163,12 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'},
+        data: { descriptor: 'Foo' },
       }],
     },
     {
       code: '<App>foo</App>',
-      options: [{allow: 'none'}],
+      options: [{ allow: 'none' }],
       output: [
         '<App>',
         'foo',
@@ -1176,12 +1176,12 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'foo'},
+        data: { descriptor: 'foo' },
       }],
     },
     {
       code: '<App>{"foo"}</App>',
-      options: [{allow: 'none'}],
+      options: [{ allow: 'none' }],
       output: [
         '<App>',
         '{"foo"}',
@@ -1189,7 +1189,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: '{"foo"}'},
+        data: { descriptor: '{"foo"}' },
       }],
     },
     {
@@ -1197,7 +1197,7 @@ foo
         '<App>foo',
         '</App>',
       ].join('\n'),
-      options: [{allow: 'literal'}],
+      options: [{ allow: 'literal' }],
       output: [
         '<App>',
         'foo',
@@ -1205,12 +1205,12 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'foo'},
+        data: { descriptor: 'foo' },
       }],
     },
     {
       code: '<App><Foo /></App>',
-      options: [{allow: 'literal'}],
+      options: [{ allow: 'literal' }],
       output: [
         '<App>',
         '<Foo />',
@@ -1218,7 +1218,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'},
+        data: { descriptor: 'Foo' },
       }],
     },
     {
@@ -1228,7 +1228,7 @@ foo
         '  bar="2"',
         '>baz</App>',
       ].join('\n'),
-      options: [{allow: 'literal'}],
+      options: [{ allow: 'literal' }],
       output: [
         '<App',
         '  foo="1"',
@@ -1239,7 +1239,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'baz'},
+        data: { descriptor: 'baz' },
       }],
     },
     {
@@ -1248,7 +1248,7 @@ foo
         'bar',
         '</App>',
       ].join('\n'),
-      options: [{allow: 'literal'}],
+      options: [{ allow: 'literal' }],
       output: [
         '<App>',
         'foo',
@@ -1257,7 +1257,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'foobar'},
+        data: { descriptor: 'foobar' },
       }],
     },
     {
@@ -1269,7 +1269,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: '{"foo"}'},
+        data: { descriptor: '{"foo"}' },
       }],
       parser: parsers.BABEL_ESLINT,
       parserOptions,
@@ -1288,7 +1288,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: '<></>'},
+        data: { descriptor: '<></>' },
       }],
       parser: parsers.BABEL_ESLINT,
       parserOptions,
@@ -1307,7 +1307,7 @@ foo
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'},
+        data: { descriptor: 'Foo' },
       }],
       parser: parsers.BABEL_ESLINT,
       parserOptions,
@@ -1332,11 +1332,11 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'a'},
+          data: { descriptor: 'a' },
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{a}'},
+          data: { descriptor: '{a}' },
         },
       ],
       parser: parsers.BABEL_ESLINT,

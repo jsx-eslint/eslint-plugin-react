@@ -29,7 +29,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-sort-default-props', rule, {
   valid: [].concat(
     {
@@ -86,7 +86,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
           }
         });
       `,
-      options: [{ignoreCase: true}],
+      options: [{ ignoreCase: true }],
     },
     {
       code: `
@@ -161,7 +161,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
           Z: "Z"
         };
       `,
-      options: [{ignoreCase: true}],
+      options: [{ ignoreCase: true }],
     },
     {
       code: `
@@ -198,7 +198,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
         };
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{ignoreCase: true}],
+      options: [{ ignoreCase: true }],
     }, semver.satisfies(babelEslintVersion, '< 9') ? {
     // Invalid code, should not be validated
       code: `
@@ -478,7 +478,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
         }
       `, */
       parser: parsers.BABEL_ESLINT,
-      options: [{ignoreCase: true}],
+      options: [{ ignoreCase: true }],
       errors: [
         {
           messageId: 'propsNotSorted',
@@ -727,7 +727,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
         };
       `, */
       parser: parsers.BABEL_ESLINT,
-      options: [{ignoreCase: true}],
+      options: [{ ignoreCase: true }],
       errors: [
         {
           messageId: 'propsNotSorted',

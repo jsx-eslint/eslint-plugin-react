@@ -28,7 +28,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('sort-prop-types', rule, {
   valid: [].concat(
     {
@@ -79,7 +79,7 @@ ruleTester.run('sort-prop-types', rule, {
           }
         });
       `,
-      options: [{ignoreCase: true}],
+      options: [{ ignoreCase: true }],
     },
     {
       code: `
@@ -131,7 +131,7 @@ ruleTester.run('sort-prop-types', rule, {
           Z: PropTypes.string
         };
       `,
-      options: [{ignoreCase: true}],
+      options: [{ ignoreCase: true }],
     },
     {
       code: `
@@ -159,7 +159,7 @@ ruleTester.run('sort-prop-types', rule, {
           "aria-controls": PropTypes.string
         };
       `,
-      options: [{ignoreCase: true}],
+      options: [{ ignoreCase: true }],
     },
     semver.satisfies(babelEslintVersion, '< 9') ? {
       // Invalid code, should not be validated
@@ -216,7 +216,7 @@ ruleTester.run('sort-prop-types', rule, {
           }
         });
       `,
-      options: [{callbacksLast: true}],
+      options: [{ callbacksLast: true }],
     },
     {
       code: `
@@ -232,7 +232,7 @@ ruleTester.run('sort-prop-types', rule, {
           }
         }
       `,
-      options: [{callbacksLast: true}],
+      options: [{ callbacksLast: true }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -249,7 +249,7 @@ ruleTester.run('sort-prop-types', rule, {
             onFoo: PropTypes.func
         };
       `,
-      options: [{callbacksLast: true}],
+      options: [{ callbacksLast: true }],
     },
     {
       code: `
@@ -263,7 +263,7 @@ ruleTester.run('sort-prop-types', rule, {
             a: PropTypes.any
         };
       `,
-      options: [{requiredFirst: true}],
+      options: [{ requiredFirst: true }],
     },
     {
       code: `
@@ -276,7 +276,7 @@ ruleTester.run('sort-prop-types', rule, {
             fooRequired: MyPropType,
         };
       `,
-      options: [{requiredFirst: true}],
+      options: [{ requiredFirst: true }],
     },
     {
       code: `
@@ -369,7 +369,7 @@ ruleTester.run('sort-prop-types', rule, {
           }),
         };
       `,
-      options: [{sortShapeProp: true}],
+      options: [{ sortShapeProp: true }],
     },
     {
       code: `
@@ -386,7 +386,7 @@ ruleTester.run('sort-prop-types', rule, {
           ),
         };
       `,
-      options: [{sortShapeProp: true}],
+      options: [{ sortShapeProp: true }],
     },
     {
       code: `
@@ -400,7 +400,7 @@ ruleTester.run('sort-prop-types', rule, {
           z: PropTypes.any,
         };
       `,
-      options: [{noSortAlphabetically: true}],
+      options: [{ noSortAlphabetically: true }],
     },
     {
       code: `
@@ -414,7 +414,7 @@ ruleTester.run('sort-prop-types', rule, {
           a: PropTypes.any,
         };
       `,
-      options: [{noSortAlphabetically: true}],
+      options: [{ noSortAlphabetically: true }],
     },
     {
       code: `
@@ -428,7 +428,7 @@ ruleTester.run('sort-prop-types', rule, {
           1: PropTypes.any,
         };
       `,
-      options: [{ignoreCase: true}],
+      options: [{ ignoreCase: true }],
     },
     {
       code: `
@@ -446,7 +446,7 @@ ruleTester.run('sort-prop-types', rule, {
           }
         }
       `,
-      options: [{sortShapeProp: true}],
+      options: [{ sortShapeProp: true }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -465,7 +465,7 @@ ruleTester.run('sort-prop-types', rule, {
           x: PropTypes.shape(shape)
         };
       `,
-      options: [{sortShapeProp: true}],
+      options: [{ sortShapeProp: true }],
     }
   ),
 
@@ -594,7 +594,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     }
       //   });
       // `,
-      options: [{ignoreCase: true}],
+      options: [{ ignoreCase: true }],
       errors: [
         {
           messageId: 'propsNotSorted',
@@ -805,7 +805,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     }
       //   });
       // `,
-      options: [{callbacksLast: true}],
+      options: [{ callbacksLast: true }],
       errors: [
         {
           messageId: 'propsNotSorted',
@@ -842,7 +842,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     }
       //   }
       // `,
-      options: [{callbacksLast: true}],
+      options: [{ callbacksLast: true }],
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
@@ -880,7 +880,7 @@ ruleTester.run('sort-prop-types', rule, {
       //       onFoo: PropTypes.func
       //   };
       // `,
-      options: [{callbacksLast: true}],
+      options: [{ callbacksLast: true }],
       errors: [
         {
           messageId: 'propsNotSorted',
@@ -917,7 +917,7 @@ ruleTester.run('sort-prop-types', rule, {
       //       onFoo: PropTypes.func
       //   });
       // `,
-      options: [{callbacksLast: true}],
+      options: [{ callbacksLast: true }],
       settings: {
         propWrapperFunctions: ['forbidExtraProps'],
       },
@@ -1017,7 +1017,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     }
       //   });
       // `
-      options: [{callbacksLast: true}],
+      options: [{ callbacksLast: true }],
       errors: [
         {
           messageId: 'callbackPropsLast',
@@ -1052,7 +1052,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     }
       //   });
       // `,
-      options: [{requiredFirst: true}],
+      options: [{ requiredFirst: true }],
       errors: [
         {
           messageId: 'propsNotSorted',
@@ -1087,7 +1087,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     }
       //   });
       // `
-      options: [{requiredFirst: true}],
+      options: [{ requiredFirst: true }],
       errors: [
         {
           messageId: 'requiredPropsFirst',
@@ -1226,7 +1226,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     }),
       //   };
       // `
-      options: [{sortShapeProp: true}],
+      options: [{ sortShapeProp: true }],
       errors: [
         {
           messageId: 'propsNotSorted',
@@ -1267,7 +1267,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     z: PropTypes.shape(),
       //   };
       // `,
-      options: [{sortShapeProp: true}],
+      options: [{ sortShapeProp: true }],
       errors: [
         {
           messageId: 'propsNotSorted',
@@ -1302,7 +1302,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     z: PropTypes.shape(someType),
       //   };
       // `,
-      options: [{sortShapeProp: true}],
+      options: [{ sortShapeProp: true }],
       errors: [
         {
           messageId: 'propsNotSorted',
@@ -1347,7 +1347,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     z: PropTypes.any,
       //   };
       // `,
-      options: [{sortShapeProp: true}],
+      options: [{ sortShapeProp: true }],
       errors: [
         {
           messageId: 'propsNotSorted',
@@ -1584,7 +1584,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     }),
       //   };
       // `,
-      options: [{sortShapeProp: true}],
+      options: [{ sortShapeProp: true }],
       errors: [
         {
           messageId: 'propsNotSorted',
@@ -1633,7 +1633,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     }
       //   }
       // `,
-      options: [{sortShapeProp: true}],
+      options: [{ sortShapeProp: true }],
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
@@ -1685,7 +1685,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     }
       //   });
       // `,
-      options: [{noSortAlphabetically: false}],
+      options: [{ noSortAlphabetically: false }],
       errors: [
         {
           messageId: 'propsNotSorted',
@@ -1720,7 +1720,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     }
       //   });
       // `,
-      options: [{noSortAlphabetically: false}],
+      options: [{ noSortAlphabetically: false }],
       errors: [
         {
           messageId: 'propsNotSorted',
@@ -1753,7 +1753,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     1: PropTypes.any,
       //   };
       // `,
-      options: [{ignoreCase: true}],
+      options: [{ ignoreCase: true }],
       errors: [
         {
           messageId: 'propsNotSorted',
@@ -1796,7 +1796,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     }
       //   }
       // `,
-      options: [{sortShapeProp: true}],
+      options: [{ sortShapeProp: true }],
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
@@ -1844,7 +1844,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     x: PropTypes.shape(shape)
       //   };
       // `,
-      options: [{sortShapeProp: true}],
+      options: [{ sortShapeProp: true }],
       errors: [
         {
           messageId: 'propsNotSorted',

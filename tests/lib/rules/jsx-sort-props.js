@@ -24,7 +24,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 
 const expectedError = {
   messageId: 'sortPropsByAlpha',
@@ -51,7 +51,7 @@ const expectedEmptyReservedFirstError = {
 };
 const expectedInvalidReservedFirstError = {
   messageId: 'noUnreservedProps',
-  data: {unreservedWords: 'notReserved'},
+  data: { unreservedWords: 'notReserved' },
 };
 const callbacksLastArgs = [{
   callbacksLast: true,
@@ -102,41 +102,41 @@ const reservedFirstAsInvalidArrayArgs = [{
 
 ruleTester.run('jsx-sort-props', rule, {
   valid: [
-    {code: '<App />;'},
-    {code: '<App {...this.props} />;'},
-    {code: '<App a b c />;'},
-    {code: '<App {...this.props} a b c />;'},
-    {code: '<App c {...this.props} a b />;'},
-    {code: '<App a="c" b="b" c="a" />;'},
-    {code: '<App {...this.props} a="c" b="b" c="a" />;'},
-    {code: '<App c="a" {...this.props} a="c" b="b" />;'},
-    {code: '<App A a />;'},
-    {code: '<App aB aa/>;'},
-    {code: '<App aA aB />;'},
-    {code: '<App aB aaa />;'},
-    {code: '<App a aB aa />;'},
-    {code: '<App Number="2" name="John" />;'},
+    { code: '<App />;' },
+    { code: '<App {...this.props} />;' },
+    { code: '<App a b c />;' },
+    { code: '<App {...this.props} a b c />;' },
+    { code: '<App c {...this.props} a b />;' },
+    { code: '<App a="c" b="b" c="a" />;' },
+    { code: '<App {...this.props} a="c" b="b" c="a" />;' },
+    { code: '<App c="a" {...this.props} a="c" b="b" />;' },
+    { code: '<App A a />;' },
+    { code: '<App aB aa/>;' },
+    { code: '<App aA aB />;' },
+    { code: '<App aB aaa />;' },
+    { code: '<App a aB aa />;' },
+    { code: '<App Number="2" name="John" />;' },
     // Ignoring case
-    {code: '<App a A />;', options: ignoreCaseArgs},
-    {code: '<App aa aB />;', options: ignoreCaseArgs},
-    {code: '<App a B c />;', options: ignoreCaseArgs},
-    {code: '<App A b C />;', options: ignoreCaseArgs},
-    {code: '<App name="John" Number="2" />;', options: ignoreCaseArgs},
+    { code: '<App a A />;', options: ignoreCaseArgs },
+    { code: '<App aa aB />;', options: ignoreCaseArgs },
+    { code: '<App a B c />;', options: ignoreCaseArgs },
+    { code: '<App A b C />;', options: ignoreCaseArgs },
+    { code: '<App name="John" Number="2" />;', options: ignoreCaseArgs },
     // Sorting callbacks below all other props
-    {code: '<App a z onBar onFoo />;', options: callbacksLastArgs},
-    {code: '<App z onBar onFoo />;', options: ignoreCaseAndCallbackLastArgs},
+    { code: '<App a z onBar onFoo />;', options: callbacksLastArgs },
+    { code: '<App z onBar onFoo />;', options: ignoreCaseAndCallbackLastArgs },
     // Sorting shorthand props before others
-    {code: '<App a b="b" />;', options: shorthandFirstArgs},
-    {code: '<App z a="a" />;', options: shorthandFirstArgs},
-    {code: '<App x y z a="a" b="b" />;', options: shorthandFirstArgs},
-    {code: '<App a="a" b="b" x y z />;', options: shorthandLastArgs},
+    { code: '<App a b="b" />;', options: shorthandFirstArgs },
+    { code: '<App z a="a" />;', options: shorthandFirstArgs },
+    { code: '<App x y z a="a" b="b" />;', options: shorthandFirstArgs },
+    { code: '<App a="a" b="b" x y z />;', options: shorthandLastArgs },
     {
       code: '<App a="a" b="b" x y z onBar onFoo />;',
       options: shorthandAndCallbackLastArgs,
     },
     // noSortAlphabetically
-    {code: '<App a b />;', options: noSortAlphabeticallyArgs},
-    {code: '<App b a />;', options: noSortAlphabeticallyArgs},
+    { code: '<App a b />;', options: noSortAlphabeticallyArgs },
+    { code: '<App b a />;', options: noSortAlphabeticallyArgs },
     // reservedFirst
     {
       code: '<App children={<App />} key={0} ref="r" a b c />',

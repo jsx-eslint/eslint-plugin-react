@@ -23,7 +23,7 @@ const parserOptions = {
   },
 };
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -91,7 +91,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         };
       `,
       options: [
-        {allowRequiredDefaults: true},
+        { allowRequiredDefaults: true },
       ],
     },
     {
@@ -422,7 +422,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>{foo}{bar}</div>;
         }
       `,
-      parserOptions: Object.assign({sourceType: 'module'}, parserOptions),
+      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
     },
     {
       code: `
@@ -437,7 +437,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>{foo}{bar}</div>;
         }
       `,
-      parserOptions: Object.assign({sourceType: 'module'}, parserOptions),
+      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
     },
     // using spread operator
     {
@@ -837,7 +837,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 10,
           column: 11,
         },
@@ -859,7 +859,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 10,
           column: 11,
         },
@@ -885,7 +885,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 10,
           column: 11,
         },
@@ -911,7 +911,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 11,
           column: 11,
         },
@@ -933,12 +933,12 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 10,
           column: 11,
         },
       ],
-      options: [{allowRequiredDefaults: true}],
+      options: [{ allowRequiredDefaults: true }],
     },
     {
       code: `
@@ -957,13 +957,13 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 10,
           column: 11,
         },
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 12,
           column: 9,
         },
@@ -987,7 +987,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 12,
           column: 11,
         },
@@ -1011,7 +1011,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 3,
           column: 11,
         },
@@ -1036,7 +1036,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 3,
           column: 11,
         },
@@ -1064,7 +1064,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 12,
           column: 15,
         },
@@ -1090,7 +1090,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 12,
           column: 15,
         },
@@ -1118,7 +1118,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 14,
           column: 11,
         },
@@ -1144,7 +1144,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 14,
           column: 11,
         },
@@ -1169,7 +1169,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 14,
           column: 9,
         },
@@ -1194,7 +1194,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 14,
           column: 9,
         },
@@ -1217,7 +1217,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 12,
           column: 9,
         },
@@ -1245,7 +1245,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 15,
           column: 11,
         },
@@ -1273,7 +1273,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 14,
           column: 11,
         },
@@ -1302,7 +1302,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'name'},
+          data: { name: 'name' },
           line: 10,
           column: 15,
         },
@@ -1330,7 +1330,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 11,
           column: 15,
         },
@@ -1360,7 +1360,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 6,
           column: 11,
         },
@@ -1390,7 +1390,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 3,
           column: 11,
         },
@@ -1419,7 +1419,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 13,
           column: 13,
         },
@@ -1446,7 +1446,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 13,
           column: 13,
         },
@@ -1475,7 +1475,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 7,
           column: 11,
         },
@@ -1504,7 +1504,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 7,
           column: 11,
         },
@@ -1530,7 +1530,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 12,
           column: 11,
         },
@@ -1551,7 +1551,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 9,
           column: 11,
         },
@@ -1580,7 +1580,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 14,
           column: 11,
         },
@@ -1599,7 +1599,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 6,
           column: 11,
         },
@@ -1622,7 +1622,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 10,
           column: 11,
         },
@@ -1639,7 +1639,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 5,
           column: 32,
         },
@@ -1666,13 +1666,13 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 15,
           column: 32,
         },
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'frob'},
+          data: { name: 'frob' },
           line: 15,
           column: 44,
         },
@@ -1700,11 +1700,11 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'fooBar'},
+          data: { name: 'fooBar' },
         },
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
       ],
     },
@@ -1726,7 +1726,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'firstProperty'},
+          data: { name: 'firstProperty' },
         },
       ],
     },
@@ -1751,13 +1751,13 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 15,
           column: 32,
         },
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'frob'},
+          data: { name: 'frob' },
           line: 15,
           column: 44,
         },
@@ -1786,13 +1786,13 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 17,
           column: 32,
         },
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'frob'},
+          data: { name: 'frob' },
           line: 17,
           column: 44,
         },

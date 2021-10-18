@@ -22,7 +22,7 @@ const parserOptions = {
   },
 };
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -157,7 +157,7 @@ ruleTester.run('require-default-props', rule, {
           bar: PropTypes.string.isRequired
         };
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
     },
     {
       code: `
@@ -169,7 +169,7 @@ ruleTester.run('require-default-props', rule, {
           bar: PropTypes.string.isRequired
         };
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
     },
     {
       code: `
@@ -197,7 +197,7 @@ ruleTester.run('require-default-props', rule, {
           bar: PropTypes.string.isRequired
         };
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -210,7 +210,7 @@ ruleTester.run('require-default-props', rule, {
           bar: PropTypes.string.isRequired
         };
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
       parser: parsers.TYPESCRIPT_ESLINT,
     },
     {
@@ -223,7 +223,7 @@ ruleTester.run('require-default-props', rule, {
           bar: PropTypes.string.isRequired
         };
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -236,7 +236,7 @@ ruleTester.run('require-default-props', rule, {
           bar: PropTypes.string.isRequired
         };
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
       parser: parsers.TYPESCRIPT_ESLINT,
     },
 
@@ -257,7 +257,7 @@ ruleTester.run('require-default-props', rule, {
 
         export default MyComponent;
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
     },
     {
       code: `
@@ -273,7 +273,7 @@ ruleTester.run('require-default-props', rule, {
           bar: PropTypes.string.isRequired
         };
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -290,7 +290,7 @@ ruleTester.run('require-default-props', rule, {
           bar: PropTypes.string.isRequired
         };
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
       parser: parsers.TYPESCRIPT_ESLINT,
     },
 
@@ -311,7 +311,7 @@ ruleTester.run('require-default-props', rule, {
 
         export default MyComponent;
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
     },
     {
       code: `
@@ -329,7 +329,7 @@ ruleTester.run('require-default-props', rule, {
 
         export default MyComponent;
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -348,7 +348,7 @@ ruleTester.run('require-default-props', rule, {
 
         export default MyComponent;
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
       parser: parsers.TYPESCRIPT_ESLINT,
     },
 
@@ -430,7 +430,7 @@ ruleTester.run('require-default-props', rule, {
           }
         });
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
     },
 
     // ES6 class component
@@ -548,7 +548,7 @@ ruleTester.run('require-default-props', rule, {
           foo: "foo"
         };
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
     },
 
     // edge cases
@@ -639,7 +639,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>{foo}{bar}</div>;
         }
       `,
-      parserOptions: Object.assign({sourceType: 'module'}, parserOptions),
+      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
     },
     {
       code: `
@@ -652,7 +652,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>{foo}{bar}</div>;
         }
       `,
-      parserOptions: Object.assign({sourceType: 'module'}, parserOptions),
+      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
     },
     // using spread operator
     {
@@ -960,7 +960,7 @@ ruleTester.run('require-default-props', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{forbidDefaultForRequired: true}],
+      options: [{ forbidDefaultForRequired: true }],
     },
     // test support for React PropTypes as Component's class generic
     {
@@ -979,7 +979,7 @@ ruleTester.run('require-default-props', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{forbidDefaultForRequired: true}],
+      options: [{ forbidDefaultForRequired: true }],
     },
     {
       code: `
@@ -997,7 +997,7 @@ ruleTester.run('require-default-props', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{forbidDefaultForRequired: true}],
+      options: [{ forbidDefaultForRequired: true }],
     },
     {
       code: `
@@ -1018,7 +1018,7 @@ ruleTester.run('require-default-props', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{forbidDefaultForRequired: true}],
+      options: [{ forbidDefaultForRequired: true }],
     },
     {
       code: `
@@ -1037,7 +1037,7 @@ ruleTester.run('require-default-props', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{forbidDefaultForRequired: true}],
+      options: [{ forbidDefaultForRequired: true }],
     },
     {
       code: `
@@ -1104,7 +1104,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 6,
           column: 11,
         },
@@ -1123,7 +1123,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 6,
           column: 11,
         },
@@ -1146,7 +1146,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 6,
           column: 11,
         },
@@ -1169,13 +1169,13 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 6,
           column: 11,
         },
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 9,
           column: 9,
         },
@@ -1195,7 +1195,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 3,
           column: 11,
         },
@@ -1218,7 +1218,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 10,
           column: 11,
         },
@@ -1242,7 +1242,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 7,
           column: 11,
         },
@@ -1265,7 +1265,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 7,
           column: 13,
         },
@@ -1283,11 +1283,11 @@ ruleTester.run('require-default-props', rule, {
           }
         });
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 7,
           column: 13,
         },
@@ -1313,7 +1313,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 8,
           column: 13,
         },
@@ -1338,7 +1338,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 10,
           column: 11,
         },
@@ -1358,11 +1358,11 @@ ruleTester.run('require-default-props', rule, {
           bar: PropTypes.string.isRequired
         };
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 10,
           column: 11,
         },
@@ -1388,7 +1388,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 11,
           column: 11,
         },
@@ -1411,7 +1411,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 12,
           column: 9,
         },
@@ -1436,7 +1436,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 10,
           column: 11,
         },
@@ -1459,7 +1459,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 10,
           column: 9,
         },
@@ -1483,7 +1483,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 10,
           column: 11,
         },
@@ -1511,7 +1511,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 11,
           column: 11,
         },
@@ -1535,7 +1535,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'name'},
+          data: { name: 'name' },
           line: 5,
           column: 15,
         },
@@ -1554,11 +1554,11 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'name'},
+          data: { name: 'name' },
           line: 5,
           column: 15,
         },
@@ -1586,7 +1586,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 5,
           column: 15,
         },
@@ -1609,7 +1609,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 3,
           column: 11,
         },
@@ -1638,7 +1638,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 8,
           column: 15,
         },
@@ -1664,7 +1664,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 9,
           column: 13,
         },
@@ -1685,11 +1685,11 @@ ruleTester.run('require-default-props', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{ignoreFunctionalComponents: true}],
+      options: [{ ignoreFunctionalComponents: true }],
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 9,
           column: 13,
         },
@@ -1716,7 +1716,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 10,
           column: 13,
         },
@@ -1741,7 +1741,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 3,
           column: 11,
         },
@@ -1770,7 +1770,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 4,
           column: 11,
         },
@@ -1793,7 +1793,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 9,
           column: 11,
         },
@@ -1811,7 +1811,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 6,
           column: 11,
         },
@@ -1834,7 +1834,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 9,
           column: 11,
         },
@@ -1861,7 +1861,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 5,
           column: 13,
         },
@@ -1884,7 +1884,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 4,
           column: 11,
         },
@@ -1907,7 +1907,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 3,
           column: 11,
         },
@@ -1929,7 +1929,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 5,
           column: 13,
         },
@@ -1951,13 +1951,13 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 4,
           column: 13,
         },
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 5,
           column: 13,
         },
@@ -1979,7 +1979,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 4,
           column: 13,
         },
@@ -2005,7 +2005,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 4,
           column: 11,
         },
@@ -2032,7 +2032,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 4,
           column: 11,
         },
@@ -2058,7 +2058,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 5,
           column: 13,
         },
@@ -2074,7 +2074,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 2,
           column: 33,
         },
@@ -2090,7 +2090,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 2,
           column: 43,
         },
@@ -2107,7 +2107,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 2,
           column: 47,
         },
@@ -2123,13 +2123,13 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 2,
           column: 33,
         },
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 2,
           column: 47,
         },
@@ -2148,7 +2148,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 3,
           column: 11,
         },
@@ -2164,7 +2164,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 2,
           column: 33,
         },
@@ -2181,7 +2181,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 2,
           column: 47,
         },
@@ -2197,7 +2197,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 2,
           column: 41,
         },
@@ -2214,7 +2214,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 2,
           column: 55,
         },
@@ -2235,7 +2235,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 4,
           column: 11,
         },
@@ -2253,13 +2253,13 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'one'},
+          data: { name: 'one' },
           line: 2,
           column: 33,
         },
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'two'},
+          data: { name: 'two' },
           line: 2,
           column: 52,
         },
@@ -2283,13 +2283,13 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 4,
           column: 11,
         },
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 8,
           column: 11,
         },
@@ -2316,7 +2316,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'baz'},
+          data: { name: 'baz' },
           line: 8,
           column: 11,
         },
@@ -2336,13 +2336,13 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'two'},
+          data: { name: 'two' },
           line: 3,
           column: 11,
         },
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'one'},
+          data: { name: 'one' },
           line: 6,
           column: 33,
         },
@@ -2362,7 +2362,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'two'},
+          data: { name: 'two' },
           line: 3,
           column: 11,
         },
@@ -2383,7 +2383,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
           line: 4,
           column: 13,
         },
@@ -2411,7 +2411,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -2432,7 +2432,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'first-name'},
+          data: { name: 'first-name' },
         },
       ],
     },
@@ -2450,11 +2450,11 @@ ruleTester.run('require-default-props', rule, {
           foo: 'bar'
         };
       `,
-      options: [{forbidDefaultForRequired: true}],
+      options: [{ forbidDefaultForRequired: true }],
       errors: [
         {
           messageId: 'noDefaultWithRequired',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
       ],
     },
@@ -2470,11 +2470,11 @@ ruleTester.run('require-default-props', rule, {
           foo: 'bar'
         };
       `,
-      options: [{forbidDefaultForRequired: true}],
+      options: [{ forbidDefaultForRequired: true }],
       errors: [
         {
           messageId: 'noDefaultWithRequired',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
       ],
     },
@@ -2490,11 +2490,11 @@ ruleTester.run('require-default-props', rule, {
           foo: 'bar'
         };
       `,
-      options: [{forbidDefaultForRequired: true}],
+      options: [{ forbidDefaultForRequired: true }],
       errors: [
         {
           messageId: 'noDefaultWithRequired',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
       ],
     },
@@ -2513,11 +2513,11 @@ ruleTester.run('require-default-props', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{forbidDefaultForRequired: true}],
+      options: [{ forbidDefaultForRequired: true }],
       errors: [
         {
           messageId: 'noDefaultWithRequired',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
       ],
     },
@@ -2539,11 +2539,11 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      options: [{forbidDefaultForRequired: true}],
+      options: [{ forbidDefaultForRequired: true }],
       errors: [
         {
           messageId: 'noDefaultWithRequired',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
       ],
     },
@@ -2564,7 +2564,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
         },
       ],
     },
@@ -2584,7 +2584,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
         },
       ],
     },
@@ -2607,7 +2607,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
         },
       ],
     },
@@ -2627,11 +2627,11 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
         },
       ],
     },
@@ -2648,7 +2648,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -2675,7 +2675,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'usedProp'},
+          data: { name: 'usedProp' },
         },
       ],
     },
@@ -2692,7 +2692,7 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'shouldHaveDefault',
-          data: {name: 'a'},
+          data: { name: 'a' },
         },
       ],
     },

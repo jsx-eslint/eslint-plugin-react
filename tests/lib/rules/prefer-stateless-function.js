@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('prefer-stateless-function', rule, {
   valid: [
     {
@@ -50,7 +50,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      options: [{ignorePureComponents: true}],
+      options: [{ ignorePureComponents: true }],
     },
     {
       // Extends from PureComponent and uses context
@@ -61,7 +61,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      options: [{ignorePureComponents: true}],
+      options: [{ ignorePureComponents: true }],
     },
     {
       // Extends from PureComponent in an expression context.
@@ -73,7 +73,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         };
       `,
       parserOptions,
-      options: [{ignorePureComponents: true}],
+      options: [{ ignorePureComponents: true }],
     },
     {
       // Has a lifecyle method
@@ -345,7 +345,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      options: [{ignorePureComponents: true}],
+      options: [{ ignorePureComponents: true }],
     },
   ],
 
@@ -359,7 +359,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -369,7 +369,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -379,7 +379,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -389,7 +389,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -403,7 +403,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -415,7 +415,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -431,7 +431,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -445,7 +445,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -459,7 +459,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -473,7 +473,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -484,7 +484,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -498,7 +498,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -511,7 +511,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         });
       `,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -521,7 +521,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -536,7 +536,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -552,7 +552,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -566,7 +566,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           foo: true
         };
       `,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -581,7 +581,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -597,7 +597,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
       code: `
@@ -611,7 +611,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           foo: PropTypes.boolean
         };
       `,
-      errors: [{messageId: 'componentShouldBePure'}],
+      errors: [{ messageId: 'componentShouldBePure' }],
     },
   ],
 });

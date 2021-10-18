@@ -24,7 +24,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-find-dom-node', rule, {
 
   valid: [
@@ -81,7 +81,7 @@ ruleTester.run('no-find-dom-node', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noFindDOMNode'}],
+      errors: [{ messageId: 'noFindDOMNode' }],
     },
     {
       code: `
@@ -94,7 +94,7 @@ ruleTester.run('no-find-dom-node', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noFindDOMNode'}],
+      errors: [{ messageId: 'noFindDOMNode' }],
     },
     {
       code: `
@@ -107,7 +107,7 @@ ruleTester.run('no-find-dom-node', rule, {
           }
         };
       `,
-      errors: [{messageId: 'noFindDOMNode'}],
+      errors: [{ messageId: 'noFindDOMNode' }],
     },
     {
       code: `
@@ -120,7 +120,7 @@ ruleTester.run('no-find-dom-node', rule, {
           }
         };
       `,
-      errors: [{messageId: 'noFindDOMNode'}],
+      errors: [{ messageId: 'noFindDOMNode' }],
     },
   ],
 });

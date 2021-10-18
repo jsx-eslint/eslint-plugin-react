@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-no-comment-textnodes', rule, {
   valid: [
     {
@@ -326,7 +326,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'putCommentInBraces'}],
+      errors: [{ messageId: 'putCommentInBraces' }],
     },
     {
       code: `
@@ -337,7 +337,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'putCommentInBraces'}],
+      errors: [{ messageId: 'putCommentInBraces' }],
     },
     {
       code: `
@@ -348,7 +348,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'putCommentInBraces'}],
+      errors: [{ messageId: 'putCommentInBraces' }],
     },
     {
       code: `
@@ -363,7 +363,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'putCommentInBraces'}],
+      errors: [{ messageId: 'putCommentInBraces' }],
     },
     {
       code: `
@@ -380,7 +380,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'putCommentInBraces'}],
+      errors: [{ messageId: 'putCommentInBraces' }],
     },
     {
       code: `
@@ -397,7 +397,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'putCommentInBraces'}],
+      errors: [{ messageId: 'putCommentInBraces' }],
     },
     {
       code: `
@@ -405,7 +405,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           return <span>/*</span>;
         };
       `,
-      errors: [{messageId: 'putCommentInBraces'}],
+      errors: [{ messageId: 'putCommentInBraces' }],
     },
   ].concat(parsers.TS([
     {
@@ -417,7 +417,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{messageId: 'putCommentInBraces'}],
+      errors: [{ messageId: 'putCommentInBraces' }],
     },
     {
       code: `
@@ -428,7 +428,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{messageId: 'putCommentInBraces'}],
+      errors: [{ messageId: 'putCommentInBraces' }],
     },
     {
       code: `
@@ -439,7 +439,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{messageId: 'putCommentInBraces'}],
+      errors: [{ messageId: 'putCommentInBraces' }],
     },
     {
       code: `
@@ -454,7 +454,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{messageId: 'putCommentInBraces'}],
+      errors: [{ messageId: 'putCommentInBraces' }],
     },
     {
       code: `
@@ -471,7 +471,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{messageId: 'putCommentInBraces'}],
+      errors: [{ messageId: 'putCommentInBraces' }],
     },
     {
       code: `
@@ -488,7 +488,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{messageId: 'putCommentInBraces'}],
+      errors: [{ messageId: 'putCommentInBraces' }],
     },
   ])),
 });

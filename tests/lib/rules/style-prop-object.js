@@ -24,7 +24,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('style-prop-object', rule, {
   valid: [
     {
@@ -100,7 +100,7 @@ ruleTester.run('style-prop-object', rule, {
         'const styles = Object.assign({ color: \'red\' }, mystyles);',
         'React.createElement("div", { style: styles });',
       ].join('\n'),
-      parserOptions: Object.assign({sourceType: 'module'}, parserOptions),
+      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
     },
     {
       code: '<div style></div>',

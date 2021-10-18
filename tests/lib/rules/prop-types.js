@@ -36,7 +36,7 @@ const settings = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('prop-types', rule, {
   valid: [].concat(
     {
@@ -80,7 +80,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{ignore: ['children']}],
+      options: [{ ignore: ['children'] }],
     },
     {
       code: `
@@ -558,7 +558,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{ignore: ['name']}],
+      options: [{ ignore: ['name'] }],
     },
     {
       code: `
@@ -627,7 +627,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{customValidators: ['CustomValidator']}],
+      options: [{ customValidators: ['CustomValidator'] }],
     },
     {
       code: `
@@ -642,7 +642,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{customValidators: ['CustomValidator']}],
+      options: [{ customValidators: ['CustomValidator'] }],
     },
     {
       code: `
@@ -657,7 +657,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{customValidators: ['CustomValidator']}],
+      options: [{ customValidators: ['CustomValidator'] }],
     },
     {
       code: `
@@ -672,7 +672,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{customValidators: ['CustomValidator']}],
+      options: [{ customValidators: ['CustomValidator'] }],
     },
     {
       code: `
@@ -685,7 +685,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{customValidators: ['CustomValidator']}],
+      options: [{ customValidators: ['CustomValidator'] }],
     },
     {
       code: `
@@ -1555,7 +1555,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{skipUndeclared: true}],
+      options: [{ skipUndeclared: true }],
     },
     {
       code: `
@@ -1565,7 +1565,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{skipUndeclared: true}],
+      options: [{ skipUndeclared: true }],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -1576,7 +1576,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      options: [{skipUndeclared: true}],
+      options: [{ skipUndeclared: true }],
     },
     {
       code: `
@@ -1589,7 +1589,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{skipUndeclared: true}],
+      options: [{ skipUndeclared: true }],
     },
     {
       code: `
@@ -1602,7 +1602,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{skipUndeclared: false}],
+      options: [{ skipUndeclared: false }],
     },
     {
       // Async functions can't be components.
@@ -1820,7 +1820,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.52'}},
+      settings: { react: { flowVersion: '0.52' } },
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -1849,7 +1849,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.52'}},
+      settings: { react: { flowVersion: '0.52' } },
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -1872,7 +1872,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.52'}},
+      settings: { react: { flowVersion: '0.52' } },
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -1887,7 +1887,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.52'}},
+      settings: { react: { flowVersion: '0.52' } },
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -1910,7 +1910,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.52'}},
+      settings: { react: { flowVersion: '0.52' } },
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -1937,7 +1937,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.52'}},
+      settings: { react: { flowVersion: '0.52' } },
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -1960,7 +1960,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.52'}},
+      settings: { react: { flowVersion: '0.52' } },
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -1989,7 +1989,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.52'}},
+      settings: { react: { flowVersion: '0.52' } },
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -2004,7 +2004,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.53'}},
+      settings: { react: { flowVersion: '0.53' } },
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -2033,7 +2033,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.53'}},
+      settings: { react: { flowVersion: '0.53' } },
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -2285,7 +2285,7 @@ ruleTester.run('prop-types', rule, {
           foo: PropTypes.func.isRequired,
         };
       `,
-      settings: {react: {version: '16.3.0'}},
+      settings: { react: { version: '16.3.0' } },
     },
     {
       code: `
@@ -2697,7 +2697,7 @@ ruleTester.run('prop-types', rule, {
       }
       `,
       settings: {
-        componentWrapperFunctions: [{property: 'styled'}],
+        componentWrapperFunctions: [{ property: 'styled' }],
       },
     },
     parsers.TS([
@@ -3541,7 +3541,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
           line: 8,
           column: 31,
           type: 'Identifier',
@@ -3560,7 +3560,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
           line: 4,
           column: 62,
           type: 'Identifier',
@@ -3578,7 +3578,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
           line: 4,
           column: 43,
           type: 'Identifier',
@@ -3596,7 +3596,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
           line: 4,
           column: 43,
           type: 'Identifier',
@@ -3613,8 +3613,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'foo' is missing in props validation"},
-        {message: "'foo.bar' is missing in props validation"},
+        { message: "'foo' is missing in props validation" },
+        { message: "'foo.bar' is missing in props validation" },
       ],
     },
     {
@@ -3633,7 +3633,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'foo.bar' is missing in props validation"},
+        { message: "'foo.bar' is missing in props validation" },
       ],
     },
     {
@@ -3643,8 +3643,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'foo' is missing in props validation"},
-        {message: "'foo.bar' is missing in props validation"},
+        { message: "'foo' is missing in props validation" },
+        { message: "'foo.bar' is missing in props validation" },
       ],
     },
     {
@@ -3660,7 +3660,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'a.nope' is missing in props validation"},
+        { message: "'a.nope' is missing in props validation" },
       ],
     },
     {
@@ -3679,7 +3679,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'a.b.nope' is missing in props validation"},
+        { message: "'a.b.nope' is missing in props validation" },
       ],
     },
     {
@@ -3696,7 +3696,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'a.nope' is missing in props validation"},
+        { message: "'a.nope' is missing in props validation" },
       ],
     },
     {
@@ -3713,7 +3713,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'a.nope' is missing in props validation"},
+        { message: "'a.nope' is missing in props validation" },
       ],
     },
     {
@@ -3726,7 +3726,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'cat' is missing in props validation"},
+        { message: "'cat' is missing in props validation" },
       ],
     },
     {
@@ -3739,7 +3739,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'cat' is missing in props validation"},
+        { message: "'cat' is missing in props validation" },
       ],
     },
     {
@@ -3754,7 +3754,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
           line: 4,
           column: 21,
           type: 'Property',
@@ -3776,7 +3776,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'title'},
+          data: { name: 'title' },
           line: 4,
           column: 27,
           type: 'Property',
@@ -3799,7 +3799,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
           line: 4,
           column: 21,
           type: 'Property',
@@ -3818,7 +3818,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
           line: 5,
           column: 43,
           type: 'Identifier',
@@ -3839,7 +3839,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'},
+          data: { name: 'lastname' },
         },
       ],
     },
@@ -3862,7 +3862,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -3885,11 +3885,11 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'propWithoutTypeDefinition'},
+          data: { name: 'propWithoutTypeDefinition' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -3908,7 +3908,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'},
+          data: { name: 'lastname' },
         },
       ],
     },
@@ -3927,7 +3927,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'},
+          data: { name: 'firstname' },
         },
       ],
     } : [],
@@ -3947,7 +3947,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'a.b'},
+          data: { name: 'a.b' },
         },
       ],
     },
@@ -3969,7 +3969,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'a.b.c'},
+          data: { name: 'a.b.c' },
         },
       ],
     },
@@ -3989,7 +3989,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'a.b.c'},
+          data: { name: 'a.b.c' },
         },
       ],
     },
@@ -4013,19 +4013,19 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'a.b.c'},
+          data: { name: 'a.b.c' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a.__.d'},
+          data: { name: 'a.__.d' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a.__.d.length'},
+          data: { name: 'a.__.d.length' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a.anything.e'},
+          data: { name: 'a.anything.e' },
         },
       ],
     },
@@ -4051,19 +4051,19 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'a[].c'},
+          data: { name: 'a[].c' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a[].d'},
+          data: { name: 'a[].d' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a[].d.length'},
+          data: { name: 'a[].d.length' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a[].e'},
+          data: { name: 'a[].e' },
         },
       ],
     },
@@ -4092,11 +4092,11 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'a.length'},
+          data: { name: 'a.length' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a.b'},
+          data: { name: 'a.b' },
         },
       ],
     },
@@ -4119,7 +4119,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'propX'},
+          data: { name: 'propX' },
         },
       ],
     },
@@ -4137,7 +4137,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'some.value'},
+          data: { name: 'some.value' },
         },
       ],
     },
@@ -4155,7 +4155,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'arr'},
+          data: { name: 'arr' },
         },
       ],
     },
@@ -4176,7 +4176,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'arr[].some.value'},
+          data: { name: 'arr[].some.value' },
         },
       ],
     },
@@ -4195,7 +4195,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'},
+          data: { name: 'firstname' },
         },
       ],
     },
@@ -4212,7 +4212,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'},
+          data: { name: 'firstname' },
         },
       ],
     },
@@ -4235,7 +4235,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'},
+          data: { name: 'firstname' },
         },
       ],
     },
@@ -4249,7 +4249,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -4263,7 +4263,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -4277,7 +4277,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -4292,7 +4292,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -4306,7 +4306,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -4320,7 +4320,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -4334,7 +4334,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -4351,7 +4351,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'},
+          data: { name: 'lastname' },
         },
       ],
     },
@@ -4368,7 +4368,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'source'},
+          data: { name: 'source' },
         },
       ],
     },
@@ -4385,11 +4385,11 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'source'},
+          data: { name: 'source' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'source.uri'},
+          data: { name: 'source.uri' },
         },
       ],
     },
@@ -4406,7 +4406,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'source'},
+          data: { name: 'source' },
         },
       ],
     },
@@ -4423,11 +4423,11 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'source'},
+          data: { name: 'source' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'source.uri'},
+          data: { name: 'source.uri' },
         },
       ],
     },
@@ -4447,7 +4447,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -4467,7 +4467,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -4491,11 +4491,11 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'},
+          data: { name: 'firstname' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -4512,15 +4512,15 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'names'},
+          data: { name: 'names' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'names.map'},
+          data: { name: 'names.map' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'company'},
+          data: { name: 'company' },
         },
       ],
     },
@@ -4536,7 +4536,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'},
+          data: { name: 'text' },
         },
       ],
     },
@@ -4554,7 +4554,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -4576,7 +4576,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'},
+          data: { name: 'lastname' },
         },
       ],
     },
@@ -4598,7 +4598,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'},
+          data: { name: 'lastname' },
         },
       ],
     },
@@ -4622,7 +4622,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'},
+          data: { name: 'lastname' },
         },
       ],
     },
@@ -4646,7 +4646,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'},
+          data: { name: 'lastname' },
         },
       ],
     },
@@ -4668,7 +4668,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'},
+          data: { name: 'lastname' },
         },
       ],
     },
@@ -4685,7 +4685,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -4704,7 +4704,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'},
+          data: { name: 'firstname' },
         },
       ],
     },
@@ -4722,7 +4722,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'},
+          data: { name: 'firstname' },
         },
       ],
     },
@@ -4743,7 +4743,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name.lastname'},
+          data: { name: 'name.lastname' },
         },
       ],
     },
@@ -4761,7 +4761,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name.lastname'},
+          data: { name: 'name.lastname' },
         },
       ],
     },
@@ -4778,7 +4778,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'person.name.lastname'},
+          data: { name: 'person.name.lastname' },
         },
       ],
     },
@@ -4796,7 +4796,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'person.name.lastname'},
+          data: { name: 'person.name.lastname' },
         },
       ],
     },
@@ -4819,7 +4819,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'people[].name.lastname'},
+          data: { name: 'people[].name.lastname' },
         },
       ],
     },
@@ -4843,7 +4843,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'people[].name.lastname'},
+          data: { name: 'people[].name.lastname' },
         },
       ],
     },
@@ -4861,7 +4861,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'result.notok'},
+          data: { name: 'result.notok' },
         },
       ],
     },
@@ -4877,7 +4877,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -4895,7 +4895,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -4912,7 +4912,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -4926,11 +4926,11 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'names'},
+          data: { name: 'names' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'names.map'},
+          data: { name: 'names.map' },
         },
       ],
     },
@@ -4943,7 +4943,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'toggle'},
+          data: { name: 'toggle' },
         },
       ],
     },
@@ -4954,7 +4954,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'test'},
+          data: { name: 'test' },
         },
       ],
     },
@@ -4969,7 +4969,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'test'},
+          data: { name: 'test' },
         },
       ],
     },
@@ -4986,7 +4986,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'},
+          data: { name: 'lastname' },
         },
       ],
     },
@@ -5008,11 +5008,11 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'},
+          data: { name: 'firstname' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'},
+          data: { name: 'lastname' },
         },
       ],
     },
@@ -5031,7 +5031,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name.constructor.firstname'},
+          data: { name: 'name.constructor.firstname' },
         },
       ],
     },
@@ -5044,7 +5044,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
       ],
       parser: parsers.BABEL_ESLINT,
@@ -5059,7 +5059,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
         },
       ],
     },
@@ -5073,7 +5073,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
         },
       ],
     },
@@ -5088,7 +5088,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
           line: 4,
           column: 43,
           type: 'Identifier',
@@ -5106,7 +5106,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
           line: 4,
           column: 43,
           type: 'Identifier',
@@ -5126,7 +5126,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'b'},
+          data: { name: 'b' },
           line: 5,
           column: 35,
           type: 'Property',
@@ -5142,11 +5142,11 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{skipUndeclared: true}],
+      options: [{ skipUndeclared: true }],
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'},
+          data: { name: 'firstname' },
           line: 5,
           column: 37,
         },
@@ -5159,11 +5159,11 @@ ruleTester.run('prop-types', rule, {
         };
         Hello.propTypes = {}
       `,
-      options: [{skipUndeclared: true}],
+      options: [{ skipUndeclared: true }],
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'},
+          data: { name: 'firstname' },
           line: 3,
           column: 30,
         },
@@ -5180,11 +5180,11 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      options: [{skipUndeclared: true}],
+      options: [{ skipUndeclared: true }],
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'},
+          data: { name: 'firstname' },
           line: 7,
           column: 37,
         },
@@ -5199,11 +5199,11 @@ ruleTester.run('prop-types', rule, {
         }
         Hello.propTypes = {};
       `,
-      options: [{skipUndeclared: true}],
+      options: [{ skipUndeclared: true }],
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'},
+          data: { name: 'firstname' },
           line: 4,
           column: 37,
         },
@@ -5217,11 +5217,11 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{skipUndeclared: false}],
+      options: [{ skipUndeclared: false }],
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'},
+          data: { name: 'firstname' },
           line: 4,
           column: 37,
         },
@@ -5240,7 +5240,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'b'},
+          data: { name: 'b' },
           line: 5,
           column: 35,
           type: 'Property',
@@ -5260,7 +5260,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'b'},
+          data: { name: 'b' },
           line: 5,
           column: 35,
           type: 'Property',
@@ -5281,7 +5281,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'},
+          data: { name: 'firstname' },
         },
       ],
     },
@@ -5300,7 +5300,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
       ],
     },
@@ -5327,7 +5327,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
       ],
     },
@@ -5351,7 +5351,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
       ],
     },
@@ -5376,7 +5376,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
       ],
     },
@@ -5400,7 +5400,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
       ],
     },
@@ -5423,7 +5423,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
       ],
     },
@@ -5450,7 +5450,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
       ],
     },
@@ -5473,7 +5473,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'},
+          data: { name: 'foo' },
         },
       ],
     },
@@ -5493,7 +5493,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -5511,7 +5511,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'},
+          data: { name: 'lastname' },
           line: 7,
           column: 43,
           type: 'Identifier',
@@ -5530,11 +5530,11 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.52'}},
+      settings: { react: { flowVersion: '0.52' } },
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'},
+          data: { name: 'lastname' },
           line: 7,
           column: 43,
           type: 'Identifier',
@@ -5559,7 +5559,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'},
+          data: { name: 'lastname' },
           line: 8,
           column: 15,
           type: 'Property',
@@ -5581,11 +5581,11 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.52'}},
+      settings: { react: { flowVersion: '0.52' } },
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'},
+          data: { name: 'lastname' },
           line: 8,
           column: 15,
           type: 'Property',
@@ -5605,7 +5605,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name.lastname'},
+          data: { name: 'name.lastname' },
           line: 5,
           column: 48,
           type: 'Identifier',
@@ -5622,11 +5622,11 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.52'}},
+      settings: { react: { flowVersion: '0.52' } },
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name.lastname'},
+          data: { name: 'name.lastname' },
           line: 5,
           column: 48,
           type: 'Identifier',
@@ -5646,7 +5646,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'result.notok'},
+          data: { name: 'result.notok' },
           line: 5,
           column: 50,
           type: 'Identifier',
@@ -5663,11 +5663,11 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.52'}},
+      settings: { react: { flowVersion: '0.52' } },
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'result.notok'},
+          data: { name: 'result.notok' },
           line: 5,
           column: 50,
           type: 'Identifier',
@@ -5689,7 +5689,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'person.lastname'},
+          data: { name: 'person.lastname' },
           line: 7,
           column: 50,
           type: 'Identifier',
@@ -5708,11 +5708,11 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.52'}},
+      settings: { react: { flowVersion: '0.52' } },
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'person.lastname'},
+          data: { name: 'person.lastname' },
           line: 7,
           column: 50,
           type: 'Identifier',
@@ -5735,7 +5735,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 8,
           column: 37,
           type: 'Identifier',
@@ -5755,11 +5755,11 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.53'}},
+      settings: { react: { flowVersion: '0.53' } },
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 8,
           column: 37,
           type: 'Identifier',
@@ -5782,7 +5782,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 8,
           column: 37,
           type: 'Identifier',
@@ -5802,11 +5802,11 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.53'}},
+      settings: { react: { flowVersion: '0.53' } },
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
           line: 8,
           column: 37,
           type: 'Identifier',
@@ -5828,7 +5828,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'person.lastname'},
+          data: { name: 'person.lastname' },
           line: 7,
           column: 50,
           type: 'Identifier',
@@ -5847,11 +5847,11 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      settings: {react: {flowVersion: '0.53'}},
+      settings: { react: { flowVersion: '0.53' } },
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'person.lastname'},
+          data: { name: 'person.lastname' },
           line: 7,
           column: 50,
           type: 'Identifier',
@@ -5873,7 +5873,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
         },
       ],
       parser: parsers.BABEL_ESLINT,
@@ -5892,7 +5892,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'bar'},
+            data: { name: 'bar' },
           },
         ],
         parser: parsers.BABEL_ESLINT,
@@ -5914,7 +5914,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'bar'},
+            data: { name: 'bar' },
           },
         ],
         parser: parsers.BABEL_ESLINT,
@@ -5938,7 +5938,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'fooBar'},
+          data: { name: 'fooBar' },
         },
       ],
     },
@@ -5961,7 +5961,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'fooBar'},
+          data: { name: 'fooBar' },
         },
       ],
     },
@@ -5984,7 +5984,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'fooBar'},
+          data: { name: 'fooBar' },
         },
       ],
       parser: parsers.BABEL_ESLINT,
@@ -6008,7 +6008,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'fooBar'},
+          data: { name: 'fooBar' },
         },
       ],
       parser: parsers.BABEL_ESLINT,
@@ -6043,7 +6043,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bad'},
+          data: { name: 'bad' },
         },
       ],
       parser: parsers.BABEL_ESLINT,
@@ -6066,7 +6066,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo.baz'},
+          data: { name: 'foo.baz' },
         },
       ],
     },
@@ -6088,7 +6088,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
         },
       ],
     },
@@ -6106,7 +6106,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'zoo'},
+          data: { name: 'zoo' },
         },
       ],
     },
@@ -6130,11 +6130,11 @@ ruleTester.run('prop-types', rule, {
           foo: PropTypes.func.isRequired,
         };
       `,
-      settings: {react: {version: '16.3.0'}},
+      settings: { react: { version: '16.3.0' } },
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bar'},
+          data: { name: 'bar' },
         },
       ],
     },
@@ -6152,7 +6152,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'page'},
+          data: { name: 'page' },
         },
       ],
     },
@@ -6170,7 +6170,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'cryptoCurrency'},
+          data: { name: 'cryptoCurrency' },
         },
       ],
     },
@@ -6189,7 +6189,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'cryptoCurrency'},
+          data: { name: 'cryptoCurrency' },
         },
       ],
     },
@@ -6212,7 +6212,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'cryptoCurrency'},
+          data: { name: 'cryptoCurrency' },
         },
       ],
     },
@@ -6236,7 +6236,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'cryptoCurrency'},
+          data: { name: 'cryptoCurrency' },
         },
       ],
     },
@@ -6249,7 +6249,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'},
+          data: { name: 'text' },
         },
       ],
     },
@@ -6263,7 +6263,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'},
+          data: { name: 'text' },
         },
       ],
     },
@@ -6281,7 +6281,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'},
+          data: { name: 'text' },
         },
       ],
     },
@@ -6300,7 +6300,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'},
+          data: { name: 'text' },
         },
       ],
     },
@@ -6323,7 +6323,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'usedProp'},
+          data: { name: 'usedProp' },
         },
       ],
     },
@@ -6341,7 +6341,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -6364,15 +6364,15 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'a'},
+          data: { name: 'a' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a.b'},
+          data: { name: 'a.b' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a.b.c'},
+          data: { name: 'a.b.c' },
         },
       ],
     },
@@ -6403,7 +6403,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'initialValues'},
+          data: { name: 'initialValues' },
         },
       ],
     },
@@ -6448,7 +6448,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'},
+          data: { name: 'lastname' },
         },
       ],
     },
@@ -6479,7 +6479,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'user.age'},
+          data: { name: 'user.age' },
         },
       ],
     },
@@ -6492,7 +6492,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'},
+          data: { name: 'text' },
         },
       ],
     },
@@ -6506,7 +6506,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'},
+          data: { name: 'text' },
         },
       ],
     },
@@ -6525,7 +6525,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'},
+          data: { name: 'text' },
         },
       ],
     },
@@ -6549,7 +6549,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo.baz'},
+          data: { name: 'foo.baz' },
         },
       ],
     },
@@ -6564,11 +6564,11 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'length'},
+          data: { name: 'length' },
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'ordering'},
+          data: { name: 'ordering' },
         },
       ],
     },
@@ -6591,7 +6591,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: "'first.name' is missing in props validation"}],
+      errors: [{ message: "'first.name' is missing in props validation" }],
     },
     {
       code: `
@@ -6612,7 +6612,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: "'first.name' is missing in props validation"}],
+      errors: [{ message: "'first.name' is missing in props validation" }],
     },
     {
       code: `
@@ -6633,7 +6633,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: "'first.name' is missing in props validation"}],
+      errors: [{ message: "'first.name' is missing in props validation" }],
     },
     {
       code: `
@@ -6655,7 +6655,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo.baz'},
+          data: { name: 'foo.baz' },
         },
       ],
     },
@@ -6679,7 +6679,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo.baz'},
+          data: { name: 'foo.baz' },
         },
       ],
     },
@@ -6703,7 +6703,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo.baz'},
+          data: { name: 'foo.baz' },
         },
       ],
     },
@@ -6719,7 +6719,7 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -6738,7 +6738,7 @@ ruleTester.run('prop-types', rule, {
       settings: {
         componentWrapperFunctions: ['observer'],
       },
-      errors: [{message: '\'componentId\' is missing in props validation'}],
+      errors: [{ message: '\'componentId\' is missing in props validation' }],
     },
     {
       code: `
@@ -6754,9 +6754,9 @@ ruleTester.run('prop-types', rule, {
       );
       `,
       settings: {
-        componentWrapperFunctions: [{property: 'observer', object: 'Mobx'}],
+        componentWrapperFunctions: [{ property: 'observer', object: 'Mobx' }],
       },
-      errors: [{message: '\'id\' is missing in props validation'}],
+      errors: [{ message: '\'id\' is missing in props validation' }],
     },
     parsers.TS([
       {
@@ -6774,7 +6774,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'value'},
+            data: { name: 'value' },
           },
         ],
       },
@@ -6793,7 +6793,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'value'},
+            data: { name: 'value' },
           },
         ],
       },
@@ -6820,7 +6820,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'userId'},
+            data: { name: 'userId' },
           },
         ],
       },
@@ -6847,7 +6847,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'userId'},
+            data: { name: 'userId' },
           },
         ],
       },
@@ -6874,7 +6874,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'user'},
+            data: { name: 'user' },
           },
         ],
       },
@@ -6901,7 +6901,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'user'},
+            data: { name: 'user' },
           },
         ],
       },
@@ -6929,7 +6929,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'userId'},
+            data: { name: 'userId' },
           },
         ],
       },
@@ -6957,7 +6957,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'userId'},
+            data: { name: 'userId' },
           },
         ],
       },
@@ -6981,7 +6981,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'onClick'},
+            data: { name: 'onClick' },
           },
         ],
       },
@@ -7005,7 +7005,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'onClick'},
+            data: { name: 'onClick' },
           },
         ],
       },
@@ -7027,7 +7027,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'books'},
+            data: { name: 'books' },
           },
         ],
       },
@@ -7049,7 +7049,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'books'},
+            data: { name: 'books' },
           },
         ],
       },
@@ -7071,7 +7071,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'username'},
+            data: { name: 'username' },
           },
         ],
       },
@@ -7093,7 +7093,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'username'},
+            data: { name: 'username' },
           },
         ],
       },
@@ -7118,7 +7118,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'dateCreated'},
+            data: { name: 'dateCreated' },
           },
         ],
       },
@@ -7143,7 +7143,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'dateCreated'},
+            data: { name: 'dateCreated' },
           },
         ],
       },
@@ -7164,7 +7164,7 @@ ruleTester.run('prop-types', rule, {
             }),
           };
         `,
-        errors: [{message: "'foo.c' is missing in props validation"}],
+        errors: [{ message: "'foo.c' is missing in props validation" }],
       },
       {
         code: `
@@ -7183,7 +7183,7 @@ ruleTester.run('prop-types', rule, {
             }),
           };
         `,
-        errors: [{message: "'foo.c' is missing in props validation"}],
+        errors: [{ message: "'foo.c' is missing in props validation" }],
       },
       {
         code: `
@@ -7203,7 +7203,7 @@ ruleTester.run('prop-types', rule, {
           };
         `,
         settings,
-        errors: [{message: "'foo.c' is missing in props validation"}],
+        errors: [{ message: "'foo.c' is missing in props validation" }],
       },
       {
         code: `
@@ -7213,7 +7213,7 @@ ruleTester.run('prop-types', rule, {
         `,
         settings,
         parser: parsers['@TYPESCRIPT_ESLINT'],
-        errors: [{message: "'bar' is missing in props validation"}],
+        errors: [{ message: "'bar' is missing in props validation" }],
       },
       {
         code: `
@@ -7223,7 +7223,7 @@ ruleTester.run('prop-types', rule, {
         `,
         settings,
         parser: parsers['@TYPESCRIPT_ESLINT'],
-        errors: [{message: "'bar' is missing in props validation"}],
+        errors: [{ message: "'bar' is missing in props validation" }],
       },
       // fix #2804
       {
@@ -7243,7 +7243,7 @@ ruleTester.run('prop-types', rule, {
           export default InputField;
         `,
         parser: parsers.BABEL_ESLINT,
-        errors: [{message: "'type' is missing in props validation"}],
+        errors: [{ message: "'type' is missing in props validation" }],
       },
       {
         code: `
@@ -7254,7 +7254,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'bar'},
+            data: { name: 'bar' },
           },
         ],
         parser: parsers['@TYPESCRIPT_ESLINT'],
@@ -7268,7 +7268,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'foo'},
+            data: { name: 'foo' },
           },
         ],
         parser: parsers['@TYPESCRIPT_ESLINT'],
@@ -7282,7 +7282,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'bar'},
+            data: { name: 'bar' },
           },
         ],
         parser: parsers['@TYPESCRIPT_ESLINT'],
@@ -7296,7 +7296,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'bar'},
+            data: { name: 'bar' },
           },
         ],
         parser: parsers['@TYPESCRIPT_ESLINT'],
@@ -7314,7 +7314,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'username'},
+            data: { name: 'username' },
           },
         ],
         parser: parsers['@TYPESCRIPT_ESLINT'],
@@ -7332,7 +7332,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'test'},
+            data: { name: 'test' },
           },
         ],
         parser: parsers['@TYPESCRIPT_ESLINT'],
@@ -7350,7 +7350,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'test'},
+            data: { name: 'test' },
           },
         ],
         parser: parsers['@TYPESCRIPT_ESLINT'],
@@ -7367,7 +7367,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'username'},
+            data: { name: 'username' },
           },
         ],
         parser: parsers['@TYPESCRIPT_ESLINT'],
@@ -7384,7 +7384,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'username'},
+            data: { name: 'username' },
           },
         ],
         parser: parsers['@TYPESCRIPT_ESLINT'],
@@ -7401,7 +7401,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'username'},
+            data: { name: 'username' },
           },
         ],
         parser: parsers['@TYPESCRIPT_ESLINT'],
@@ -7422,7 +7422,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'test'},
+            data: { name: 'test' },
           },
         ],
         parser: parsers['@TYPESCRIPT_ESLINT'],
@@ -7443,7 +7443,7 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'test'},
+            data: { name: 'test' },
           },
         ],
         parser: parsers['@TYPESCRIPT_ESLINT'],

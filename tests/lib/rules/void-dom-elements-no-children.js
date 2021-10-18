@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('void-dom-elements-no-children', rule, {
   valid: [
     {
@@ -97,7 +97,7 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'br'},
+          data: { element: 'br' },
         },
       ],
     },
@@ -106,7 +106,7 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'br'},
+          data: { element: 'br' },
         },
       ],
     },
@@ -115,7 +115,7 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'img'},
+          data: { element: 'img' },
         },
       ],
     },
@@ -124,7 +124,7 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'br'},
+          data: { element: 'br' },
         },
       ],
     },
@@ -133,7 +133,7 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'br'},
+          data: { element: 'br' },
         },
       ],
     },
@@ -142,7 +142,7 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'br'},
+          data: { element: 'br' },
         },
       ],
     },
@@ -151,7 +151,7 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'br'},
+          data: { element: 'br' },
         },
       ],
     },
@@ -163,7 +163,7 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'img'},
+          data: { element: 'img' },
         },
       ],
       parser: parsers.BABEL_ESLINT,
@@ -176,7 +176,7 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'img'},
+          data: { element: 'img' },
         },
       ],
       parser: parsers.BABEL_ESLINT,
@@ -189,7 +189,7 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'img'},
+          data: { element: 'img' },
         },
       ],
       parser: parsers.BABEL_ESLINT,

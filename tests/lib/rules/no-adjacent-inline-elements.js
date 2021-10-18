@@ -88,17 +88,17 @@ ruleTester.run('no-adjacent-inline-elements', rule, {
   invalid: [
     {
       code: '<div><a></a><a></a></div>;',
-      errors: [{messageId: 'inlineElement'}],
+      errors: [{ messageId: 'inlineElement' }],
       parserOptions,
     },
     {
       code: '<div><a></a><span></span></div>;',
-      errors: [{messageId: 'inlineElement'}],
+      errors: [{ messageId: 'inlineElement' }],
       parserOptions,
     },
     {
       code: 'React.createElement("div", undefined, [React.createElement("a"), React.createElement("span")]);',
-      errors: [{messageId: 'inlineElement'}],
+      errors: [{ messageId: 'inlineElement' }],
       parserOptions,
     },
   ],

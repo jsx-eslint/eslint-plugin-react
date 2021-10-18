@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('require-render-return', rule, {
   valid: [
     {
@@ -177,7 +177,7 @@ ruleTester.run('require-render-return', rule, {
           render() {}
         }
       `,
-      errors: [{messageId: 'noRenderReturn'}],
+      errors: [{ messageId: 'noRenderReturn' }],
     },
     {
       // Missing return (but one is present in a sub-function)

@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-refs', rule, {
   valid: [
     {
@@ -77,7 +77,7 @@ ruleTester.run('no-refs', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'thisRefsDeprecated'}],
+      errors: [{ messageId: 'thisRefsDeprecated' }],
     },
     {
       code: `
@@ -88,7 +88,7 @@ ruleTester.run('no-refs', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'stringInRefDeprecated'}],
+      errors: [{ messageId: 'stringInRefDeprecated' }],
     },
     {
       code: `
@@ -99,7 +99,7 @@ ruleTester.run('no-refs', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'stringInRefDeprecated'}],
+      errors: [{ messageId: 'stringInRefDeprecated' }],
     },
     {
       code: `
@@ -114,8 +114,8 @@ ruleTester.run('no-refs', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {messageId: 'thisRefsDeprecated'},
-        {messageId: 'stringInRefDeprecated'},
+        { messageId: 'thisRefsDeprecated' },
+        { messageId: 'stringInRefDeprecated' },
       ],
     },
     {
@@ -130,10 +130,10 @@ ruleTester.run('no-refs', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{noTemplateLiterals: true}],
+      options: [{ noTemplateLiterals: true }],
       errors: [
-        {messageId: 'thisRefsDeprecated'},
-        {messageId: 'stringInRefDeprecated'},
+        { messageId: 'thisRefsDeprecated' },
+        { messageId: 'stringInRefDeprecated' },
       ],
     },
     {
@@ -148,10 +148,10 @@ ruleTester.run('no-refs', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{noTemplateLiterals: true}],
+      options: [{ noTemplateLiterals: true }],
       errors: [
-        {messageId: 'thisRefsDeprecated'},
-        {messageId: 'stringInRefDeprecated'},
+        { messageId: 'thisRefsDeprecated' },
+        { messageId: 'stringInRefDeprecated' },
       ],
     },
   ],

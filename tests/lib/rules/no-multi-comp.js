@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-multi-comp', rule, {
   valid: [
     {
@@ -73,7 +73,7 @@ ruleTester.run('no-multi-comp', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{ignoreStateless: true}],
+      options: [{ ignoreStateless: true }],
     },
     {
       code: `
@@ -86,7 +86,7 @@ ruleTester.run('no-multi-comp', rule, {
           }
         }
       `,
-      options: [{ignoreStateless: true}],
+      options: [{ ignoreStateless: true }],
     },
     {
     // multiple non-components
@@ -102,7 +102,7 @@ ruleTester.run('no-multi-comp', rule, {
           return createElement("img");
         };
       `,
-      parserOptions: Object.assign({sourceType: 'module'}, parserOptions),
+      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
     },
     {
       code: `
@@ -115,7 +115,7 @@ ruleTester.run('no-multi-comp', rule, {
           }
         }
       `,
-      options: [{ignoreStateless: true}],
+      options: [{ ignoreStateless: true }],
     },
     {
       code: `
@@ -124,7 +124,7 @@ ruleTester.run('no-multi-comp', rule, {
         }
         export default React.forwardRef((props, ref) => <StoreListItem {...props} forwardRef={ref} />);
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
     },
     {
       code: `
@@ -135,7 +135,7 @@ ruleTester.run('no-multi-comp', rule, {
           return <StoreListItem {...props} forwardRef={ref} />
         });
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
     },
     {
       code: `
@@ -144,7 +144,7 @@ ruleTester.run('no-multi-comp', rule, {
         }
         export default React.forwardRef((props, ref) => <HelloComponent {...props} forwardRef={ref} />);
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
     },
     {
       code: `
@@ -157,7 +157,7 @@ ruleTester.run('no-multi-comp', rule, {
           }
         );
       `,
-      options: [{ignoreStateless: true}],
+      options: [{ ignoreStateless: true }],
     },
     {
       code: `
@@ -173,7 +173,7 @@ ruleTester.run('no-multi-comp', rule, {
           }
         );
       `,
-      options: [{ignoreStateless: true}],
+      options: [{ ignoreStateless: true }],
     },
     {
       code: `
@@ -182,7 +182,7 @@ ruleTester.run('no-multi-comp', rule, {
         }
         export default React.memo((props, ref) => <HelloComponent {...props} />);
       `,
-      options: [{ignoreStateless: true}],
+      options: [{ ignoreStateless: true }],
     },
     {
       code: `
@@ -339,7 +339,7 @@ ruleTester.run('no-multi-comp', rule, {
         }
         export default React.forwardRef((props, ref) => <div><StoreListItem {...props} forwardRef={ref} /></div>);
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
@@ -355,7 +355,7 @@ ruleTester.run('no-multi-comp', rule, {
         }
         const HelloComponent2 = React.forwardRef((props, ref) => <div></div>);
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
@@ -371,7 +371,7 @@ ruleTester.run('no-multi-comp', rule, {
         });
         const HelloComponent2 = React.forwardRef((props, ref) => <><HelloComponent></HelloComponent></>);
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
@@ -388,7 +388,7 @@ ruleTester.run('no-multi-comp', rule, {
         });
         const HelloComponent2 = forwardRef((props, ref) => <HelloComponent></HelloComponent>);
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -404,7 +404,7 @@ ruleTester.run('no-multi-comp', rule, {
         };
         const HelloComponent2 = memo((props) => <HelloComponent></HelloComponent>);
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -419,7 +419,7 @@ ruleTester.run('no-multi-comp', rule, {
         });
         const HelloComponent2 = forwardRef((props, ref) => <HelloComponent></HelloComponent>);
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -434,7 +434,7 @@ ruleTester.run('no-multi-comp', rule, {
         });
         const HelloComponent2 = memo((props) => <HelloComponent></HelloComponent>);
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -449,7 +449,7 @@ ruleTester.run('no-multi-comp', rule, {
         });
         const HelloComponent2 = memo((props) => <HelloComponent></HelloComponent>);
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -464,7 +464,7 @@ ruleTester.run('no-multi-comp', rule, {
         });
         const HelloComponent2 = forwardRef((props, ref) => <HelloComponent></HelloComponent>);
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -479,7 +479,7 @@ ruleTester.run('no-multi-comp', rule, {
         });
         const HelloComponent2 = memo((props) => <HelloComponent></HelloComponent>);
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -494,7 +494,7 @@ ruleTester.run('no-multi-comp', rule, {
         });
         const HelloComponent2 = forwardRef((props, ref) => <HelloComponent></HelloComponent>);
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -509,7 +509,7 @@ ruleTester.run('no-multi-comp', rule, {
         });
         const HelloComponent2 = forwardRef((props, ref) => <HelloComponent></HelloComponent>);
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -524,7 +524,7 @@ ruleTester.run('no-multi-comp', rule, {
         });
         const HelloComponent2 = memo((props) => <HelloComponent></HelloComponent>);
       `,
-      options: [{ignoreStateless: false}],
+      options: [{ ignoreStateless: false }],
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -544,7 +544,7 @@ ruleTester.run('no-multi-comp', rule, {
           pragma: 'Foo',
         },
       },
-      errors: [{messageId: 'onlyOneComponent'}],
+      errors: [{ messageId: 'onlyOneComponent' }],
     },
   ],
 });

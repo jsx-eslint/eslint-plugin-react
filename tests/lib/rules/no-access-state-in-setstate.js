@@ -30,7 +30,7 @@ const settings = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({settings});
+const ruleTester = new RuleTester({ settings });
 ruleTester.run('no-access-state-in-setstate', rule, {
   valid: [
     {
@@ -169,7 +169,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}],
+      errors: [{ messageId: 'useCallback' }],
     },
     {
       code: `
@@ -180,7 +180,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}],
+      errors: [{ messageId: 'useCallback' }],
     },
     {
       code: `
@@ -192,7 +192,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}],
+      errors: [{ messageId: 'useCallback' }],
     },
     {
       code: `
@@ -204,7 +204,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}],
+      errors: [{ messageId: 'useCallback' }],
     },
     {
       code: `
@@ -218,7 +218,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}],
+      errors: [{ messageId: 'useCallback' }],
     },
     {
       code: `
@@ -229,7 +229,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}],
+      errors: [{ messageId: 'useCallback' }],
     },
     {
       code: `
@@ -240,7 +240,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}],
+      errors: [{ messageId: 'useCallback' }],
     },
     {
       code: `
@@ -254,7 +254,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}],
+      errors: [{ messageId: 'useCallback' }],
     },
     {
       code: `
@@ -265,7 +265,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         }
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}],
+      errors: [{ messageId: 'useCallback' }],
     },
   ],
 });

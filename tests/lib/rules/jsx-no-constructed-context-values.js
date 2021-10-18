@@ -27,7 +27,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('react-no-constructed-context-values', rule, {
   valid: [].concat(
     {
@@ -41,7 +41,7 @@ ruleTester.run('react-no-constructed-context-values', rule, {
     },
     {
       code: 'function Component() { const foo = useMemo(() => { return {} }, []); return (<Context.Provider value={foo}></Context.Provider>)}',
-      options: [{allowArrowFunctions: true}],
+      options: [{ allowArrowFunctions: true }],
     },
     {
       code: `

@@ -23,7 +23,7 @@ describe('Version', () => {
   });
 
   describe('Detect version', () => {
-    const context = {settings: {react: {version: 'detect', flowVersion: 'detect'}}, getFilename: () => path.resolve(base, 'test.js')};
+    const context = { settings: { react: { version: 'detect', flowVersion: 'detect' } }, getFilename: () => path.resolve(base, 'test.js') };
 
     afterEach(() => {
       if (context.getFilename.restore) {
@@ -102,7 +102,7 @@ describe('Version', () => {
   });
 
   describe('string version', () => {
-    const context = {settings: {react: {version: '15.0', flowVersion: '1.2'}}};
+    const context = { settings: { react: { version: '15.0', flowVersion: '1.2' } } };
 
     it('works with react', () => {
       assert.equal(versionUtil.testReactVersion(context, '0.14.0'), true);
@@ -118,7 +118,7 @@ describe('Version', () => {
   });
 
   describe('non-string version', () => {
-    const context = {settings: {react: {version: 15.0, flowVersion: 1.2}}};
+    const context = { settings: { react: { version: 15.0, flowVersion: 1.2 } } };
 
     it('works with react', () => {
       assert.equal(versionUtil.testReactVersion(context, '0.14.0'), true);

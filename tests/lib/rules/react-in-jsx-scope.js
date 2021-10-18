@@ -32,24 +32,24 @@ const settings = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('react-in-jsx-scope', rule, {
   valid: [
-    {code: 'var React, App; <App />;'},
-    {code: 'var React; <img />;'},
+    { code: 'var React, App; <App />;' },
+    { code: 'var React; <img />;' },
     {
       code: 'var React; <>fragment</>;',
       parser: parsers.BABEL_ESLINT,
     },
-    {code: 'var React; <x-gif />;'},
-    {code: 'var React, App, a=1; <App attr={a} />;'},
-    {code: 'var React, App, a=1; function elem() { return <App attr={a} />; }'},
+    { code: 'var React; <x-gif />;' },
+    { code: 'var React, App, a=1; <App attr={a} />;' },
+    { code: 'var React, App, a=1; function elem() { return <App attr={a} />; }' },
     {
       code: 'var React, App; <App />;',
       parser: parsers.BABEL_ESLINT,
     },
-    {code: '/** @jsx Foo */ var Foo, App; <App />;'},
-    {code: '/** @jsx Foo.Bar */ var Foo, App; <App />;'},
+    { code: '/** @jsx Foo */ var Foo, App; <App />;' },
+    { code: '/** @jsx Foo.Bar */ var Foo, App; <App />;' },
     {
       code: `
         import React from 'react/addons';
@@ -74,7 +74,7 @@ ruleTester.run('react-in-jsx-scope', rule, {
       errors: [
         {
           messageId: 'notInScope',
-          data: {name: 'React'},
+          data: { name: 'React' },
         },
       ],
     },
@@ -83,7 +83,7 @@ ruleTester.run('react-in-jsx-scope', rule, {
       errors: [
         {
           messageId: 'notInScope',
-          data: {name: 'React'},
+          data: { name: 'React' },
         },
       ],
     },
@@ -92,7 +92,7 @@ ruleTester.run('react-in-jsx-scope', rule, {
       errors: [
         {
           messageId: 'notInScope',
-          data: {name: 'React'},
+          data: { name: 'React' },
         },
       ],
     },
@@ -102,7 +102,7 @@ ruleTester.run('react-in-jsx-scope', rule, {
       errors: [
         {
           messageId: 'notInScope',
-          data: {name: 'React'},
+          data: { name: 'React' },
         },
       ],
     },
@@ -111,7 +111,7 @@ ruleTester.run('react-in-jsx-scope', rule, {
       errors: [
         {
           messageId: 'notInScope',
-          data: {name: 'React'},
+          data: { name: 'React' },
         },
       ],
     },
@@ -120,7 +120,7 @@ ruleTester.run('react-in-jsx-scope', rule, {
       errors: [
         {
           messageId: 'notInScope',
-          data: {name: 'Foo'},
+          data: { name: 'Foo' },
         },
       ],
     },
@@ -130,7 +130,7 @@ ruleTester.run('react-in-jsx-scope', rule, {
       errors: [
         {
           messageId: 'notInScope',
-          data: {name: 'Foo'},
+          data: { name: 'Foo' },
         },
       ],
     }],

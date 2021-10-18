@@ -24,7 +24,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-max-props-per-line', rule, {
   valid: [
     {
@@ -35,23 +35,23 @@ ruleTester.run('jsx-max-props-per-line', rule, {
     },
     {
       code: '<App foo bar />',
-      options: [{maximum: 2}],
+      options: [{ maximum: 2 }],
     },
     {
       code: '<App foo bar />',
-      options: [{when: 'multiline'}],
+      options: [{ when: 'multiline' }],
     },
     {
       code: '<App foo {...this.props} />',
-      options: [{when: 'multiline'}],
+      options: [{ when: 'multiline' }],
     },
     {
       code: '<App foo bar baz />',
-      options: [{maximum: 2, when: 'multiline'}],
+      options: [{ maximum: 2, when: 'multiline' }],
     },
     {
       code: '<App {...this.props} bar />',
-      options: [{maximum: 2}],
+      options: [{ maximum: 2 }],
     },
     {
       code: `
@@ -68,7 +68,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           baz
         />
       `,
-      options: [{maximum: 2}],
+      options: [{ maximum: 2 }],
     },
     {
       code: `
@@ -77,7 +77,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           baz
         />
       `,
-      options: [{maximum: {multi: 2}}],
+      options: [{ maximum: { multi: 2 } }],
     },
     {
       code: `
@@ -86,15 +86,15 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           baz
         />
       `,
-      options: [{maximum: {multi: 2, single: 1}}],
+      options: [{ maximum: { multi: 2, single: 1 } }],
     },
     {
       code: '<App foo baz bar />',
-      options: [{maximum: {multi: 2, single: 3}}],
+      options: [{ maximum: { multi: 2, single: 3 } }],
     },
     {
       code: '<App {...this.props} bar />',
-      options: [{maximum: {single: 2}}],
+      options: [{ maximum: { single: 2 } }],
     },
     {
       code: `
@@ -103,11 +103,11 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           baz bor
         />
       `,
-      options: [{maximum: {multi: 2, single: 1}}],
+      options: [{ maximum: { multi: 2, single: 1 } }],
     },
     {
       code: '<App foo baz bar />',
-      options: [{maximum: {multi: 2}}],
+      options: [{ maximum: { multi: 2 } }],
     },
     {
       code: `
@@ -116,7 +116,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           baz bor
         />
       `,
-      options: [{maximum: {single: 1}}],
+      options: [{ maximum: { single: 1 } }],
     },
     {
       code: `
@@ -124,7 +124,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           baz bor
         />
       `,
-      options: [{maximum: {single: 2, multi: 2}}],
+      options: [{ maximum: { single: 2, multi: 2 } }],
     },
     {
       code: `
@@ -132,7 +132,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           baz bor
         />
       `,
-      options: [{maximum: 2}],
+      options: [{ maximum: 2 }],
     },
     {
       code: `
@@ -140,7 +140,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           bar
         />
       `,
-      options: [{maximum: 1, when: 'multiline'}],
+      options: [{ maximum: 1, when: 'multiline' }],
     },
   ],
 
@@ -157,7 +157,7 @@ baz />;
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'},
+          data: { prop: 'bar' },
         },
       ],
       parserOptions,
@@ -170,11 +170,11 @@ baz />;
         <App foo bar
 baz />;
       `,
-      options: [{maximum: 2}],
+      options: [{ maximum: 2 }],
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'baz'},
+          data: { prop: 'baz' },
         },
       ],
     },
@@ -189,7 +189,7 @@ bar />;
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'},
+          data: { prop: 'bar' },
         },
       ],
       parserOptions,
@@ -205,7 +205,7 @@ bar />;
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'this.props'},
+          data: { prop: 'this.props' },
         },
       ],
       parserOptions,
@@ -227,7 +227,7 @@ bar
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'},
+          data: { prop: 'bar' },
         },
       ],
       parserOptions,
@@ -249,7 +249,7 @@ bar
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'this.props'},
+          data: { prop: 'this.props' },
         },
       ],
       parserOptions,
@@ -271,7 +271,7 @@ bar
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'},
+          data: { prop: 'bar' },
         },
       ],
       parserOptions,
@@ -289,7 +289,7 @@ bar />
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'},
+          data: { prop: 'bar' },
         },
       ],
       parserOptions,
@@ -304,11 +304,11 @@ bar />
         }}
 baz />
       `,
-      options: [{maximum: 2}],
+      options: [{ maximum: 2 }],
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'baz'},
+          data: { prop: 'baz' },
         },
       ],
     },
@@ -325,7 +325,7 @@ baz />
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'rest'},
+          data: { prop: 'rest' },
         },
       ],
       parserOptions,
@@ -345,7 +345,7 @@ bar />
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'},
+          data: { prop: 'bar' },
         },
       ],
       parserOptions,
@@ -369,7 +369,7 @@ bar />
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'rest'},
+          data: { prop: 'rest' },
         },
       ],
       parserOptions,
@@ -388,11 +388,11 @@ bar />
 baz bor
         />
       `,
-      options: [{maximum: 2}],
+      options: [{ maximum: 2 }],
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'baz'},
+          data: { prop: 'baz' },
         },
       ],
     },
@@ -405,11 +405,11 @@ baz bor
 bar
 baz />
       `,
-      options: [{maximum: {single: 1, multi: 1}}],
+      options: [{ maximum: { single: 1, multi: 1 } }],
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'},
+          data: { prop: 'bar' },
         },
       ],
     },
@@ -426,11 +426,11 @@ bar
 baz
         />
       `,
-      options: [{maximum: {single: 1, multi: 1}}],
+      options: [{ maximum: { single: 1, multi: 1 } }],
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'},
+          data: { prop: 'bar' },
         },
       ],
     },
@@ -446,11 +446,11 @@ baz
 baz
         />
       `,
-      options: [{maximum: {single: 1, multi: 1}}],
+      options: [{ maximum: { single: 1, multi: 1 } }],
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'baz'},
+          data: { prop: 'baz' },
         },
       ],
     },
@@ -466,11 +466,11 @@ baz
 bor
         />
       `,
-      options: [{maximum: {single: 1, multi: 2}}],
+      options: [{ maximum: { single: 1, multi: 2 } }],
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bor'},
+          data: { prop: 'bor' },
         },
       ],
     },
@@ -482,11 +482,11 @@ bor
         <App foo bar baz
 bor />
       `,
-      options: [{maximum: {single: 3, multi: 2}}],
+      options: [{ maximum: { single: 3, multi: 2 } }],
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bor'},
+          data: { prop: 'bor' },
         }],
     },
     {
@@ -503,11 +503,11 @@ bor />
 baz bor
         />
       `,
-      options: [{maximum: {multi: 2}}],
+      options: [{ maximum: { multi: 2 } }],
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'baz'},
+          data: { prop: 'baz' },
         },
       ],
     },
@@ -525,11 +525,11 @@ baz bor
 baz bor
         />
       `,
-      options: [{maximum: {multi: 2, single: 1}}],
+      options: [{ maximum: { multi: 2, single: 1 } }],
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'baz'},
+          data: { prop: 'baz' },
         },
       ],
     }],

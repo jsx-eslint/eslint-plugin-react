@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('prefer-read-only-props', rule, {
   valid: [].concat(
     {
@@ -227,7 +227,7 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -259,7 +259,7 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -290,7 +290,7 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -309,7 +309,7 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -328,7 +328,7 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -347,7 +347,7 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },
@@ -374,11 +374,11 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'firstName'},
+          data: { name: 'firstName' },
         },
         {
           messageId: 'readOnlyProp',
-          data: {name: 'lastName'},
+          data: { name: 'lastName' },
         },
       ],
     },
@@ -397,7 +397,7 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'name'},
+          data: { name: 'name' },
         },
       ],
     },

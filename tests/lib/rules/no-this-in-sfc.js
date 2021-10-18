@@ -21,7 +21,7 @@ const parserOptions = {
   },
 };
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-this-in-sfc', rule, {
   valid: [].concat(
     {
@@ -66,7 +66,7 @@ ruleTester.run('no-this-in-sfc', rule, {
           }
         });
       `,
-      settings: {react: {createClass: 'createClass'}},
+      settings: { react: { createClass: 'createClass' } },
     },
     {
       code: `
@@ -198,7 +198,7 @@ ruleTester.run('no-this-in-sfc', rule, {
           return <div>{foo}</div>;
         }
       `,
-      errors: [{messageId: 'noThisInSFC'}],
+      errors: [{ messageId: 'noThisInSFC' }],
     },
     {
       code: `
@@ -206,7 +206,7 @@ ruleTester.run('no-this-in-sfc', rule, {
           return <div>{this.props.foo}</div>;
         }
       `,
-      errors: [{messageId: 'noThisInSFC'}],
+      errors: [{ messageId: 'noThisInSFC' }],
     },
     {
       code: `
@@ -214,7 +214,7 @@ ruleTester.run('no-this-in-sfc', rule, {
           return <div>{this.state.foo}</div>;
         }
       `,
-      errors: [{messageId: 'noThisInSFC'}],
+      errors: [{ messageId: 'noThisInSFC' }],
     },
     {
       code: `
@@ -223,7 +223,7 @@ ruleTester.run('no-this-in-sfc', rule, {
           return <div>{foo}</div>;
         }
       `,
-      errors: [{messageId: 'noThisInSFC'}],
+      errors: [{ messageId: 'noThisInSFC' }],
     },
     {
       code: `
@@ -231,7 +231,7 @@ ruleTester.run('no-this-in-sfc', rule, {
           return props.foo ? <div>{this.props.bar}</div> : null;
         }
       `,
-      errors: [{messageId: 'noThisInSFC'}],
+      errors: [{ messageId: 'noThisInSFC' }],
     },
     {
       code: `
@@ -242,7 +242,7 @@ ruleTester.run('no-this-in-sfc', rule, {
           return null;
         }
       `,
-      errors: [{messageId: 'noThisInSFC'}],
+      errors: [{ messageId: 'noThisInSFC' }],
     },
     {
       code: `
@@ -253,15 +253,15 @@ ruleTester.run('no-this-in-sfc', rule, {
           return null;
         }
       `,
-      errors: [{messageId: 'noThisInSFC'}],
+      errors: [{ messageId: 'noThisInSFC' }],
     },
     {
       code: 'const Foo = (props) => <span>{this.props.foo}</span>',
-      errors: [{messageId: 'noThisInSFC'}],
+      errors: [{ messageId: 'noThisInSFC' }],
     },
     {
       code: 'const Foo = (props) => this.props.foo ? <span>{props.bar}</span> : null;',
-      errors: [{messageId: 'noThisInSFC'}],
+      errors: [{ messageId: 'noThisInSFC' }],
     },
     {
       code: `
@@ -272,7 +272,7 @@ ruleTester.run('no-this-in-sfc', rule, {
           return <div onClick={onClick}>{this.props.foo}</div>;
         }
       `,
-      errors: [{messageId: 'noThisInSFC'}, {messageId: 'noThisInSFC'}],
+      errors: [{ messageId: 'noThisInSFC' }, { messageId: 'noThisInSFC' }],
     },
     {
       code: `
@@ -285,7 +285,7 @@ ruleTester.run('no-this-in-sfc', rule, {
           }
         }
       `,
-      errors: [{messageId: 'noThisInSFC'}],
+      errors: [{ messageId: 'noThisInSFC' }],
     },
     {
       code: `
@@ -297,7 +297,7 @@ ruleTester.run('no-this-in-sfc', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'noThisInSFC'}],
+      errors: [{ messageId: 'noThisInSFC' }],
     },
     {
       code: `
@@ -312,7 +312,7 @@ ruleTester.run('no-this-in-sfc', rule, {
           }
         }
       `,
-      errors: [{messageId: 'noThisInSFC'}],
+      errors: [{ messageId: 'noThisInSFC' }],
     },
     {
       code: `
@@ -325,7 +325,7 @@ ruleTester.run('no-this-in-sfc', rule, {
           }
         }
       `,
-      errors: [{messageId: 'noThisInSFC'}],
+      errors: [{ messageId: 'noThisInSFC' }],
     },
   ],
 });

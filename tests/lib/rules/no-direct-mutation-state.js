@@ -24,7 +24,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-direct-mutation-state', rule, {
   valid: [
     {
@@ -108,7 +108,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noDirectMutation'}],
+      errors: [{ messageId: 'noDirectMutation' }],
     },
     {
       code: `
@@ -119,7 +119,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noDirectMutation'}],
+      errors: [{ messageId: 'noDirectMutation' }],
     },
     {
       code: `
@@ -130,7 +130,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noDirectMutation'}],
+      errors: [{ messageId: 'noDirectMutation' }],
     },
     {
       code: `
@@ -141,7 +141,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noDirectMutation'}],
+      errors: [{ messageId: 'noDirectMutation' }],
     },
     {
       code: `
@@ -177,7 +177,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
           }
         }
       `,
-      errors: [{messageId: 'noDirectMutation'}],
+      errors: [{ messageId: 'noDirectMutation' }],
     },
     {
       code: `
@@ -190,7 +190,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
           }
         }
       `,
-      errors: [{messageId: 'noDirectMutation'}],
+      errors: [{ messageId: 'noDirectMutation' }],
     },
     {
       code: `
@@ -200,7 +200,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
           }
         }
       `,
-      errors: [{messageId: 'noDirectMutation'}],
+      errors: [{ messageId: 'noDirectMutation' }],
     },
     {
       code: `
@@ -210,7 +210,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
           }
         }
       `,
-      errors: [{messageId: 'noDirectMutation'}],
+      errors: [{ messageId: 'noDirectMutation' }],
     },
     {
       code: `
@@ -220,7 +220,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
           }
         }
       `,
-      errors: [{messageId: 'noDirectMutation'}],
+      errors: [{ messageId: 'noDirectMutation' }],
     },
     {
       code: `
@@ -230,7 +230,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
           }
         }
       `,
-      errors: [{messageId: 'noDirectMutation'}],
+      errors: [{ messageId: 'noDirectMutation' }],
     },
     {
       code: `
@@ -240,7 +240,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
           }
         }
       `,
-      errors: [{messageId: 'noDirectMutation'}],
+      errors: [{ messageId: 'noDirectMutation' }],
     },
     {
       code: `
@@ -250,7 +250,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
           }
         }
       `,
-      errors: [{messageId: 'noDirectMutation'}],
+      errors: [{ messageId: 'noDirectMutation' }],
     },
     {
       code: `
@@ -260,7 +260,7 @@ ruleTester.run('no-direct-mutation-state', rule, {
           }
         }
       `,
-      errors: [{messageId: 'noDirectMutation'}],
+      errors: [{ messageId: 'noDirectMutation' }],
     },
   /**
    * Would be nice to prevent this too

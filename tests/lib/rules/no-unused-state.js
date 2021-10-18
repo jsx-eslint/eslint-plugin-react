@@ -16,12 +16,12 @@ const parserOptions = {
   },
 };
 
-const eslintTester = new RuleTester({parserOptions});
+const eslintTester = new RuleTester({ parserOptions });
 
 function getErrorMessages(unusedFields) {
   return unusedFields.map((field) => ({
     messageId: 'unusedStateField',
-    data: {name: field},
+    data: { name: field },
   }));
 }
 

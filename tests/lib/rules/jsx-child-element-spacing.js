@@ -13,7 +13,7 @@ const parserOptions = {
   },
 };
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-child-element-spacing', rule, {
   valid: [
     {
@@ -199,7 +199,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
       errors: [
         {
           messageId: 'spacingBeforeNext',
-          data: {element: 'a'},
+          data: { element: 'a' },
           line: 4,
           column: 11,
         },
@@ -216,7 +216,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
       errors: [
         {
           messageId: 'spacingBeforeNext',
-          data: {element: 'a'},
+          data: { element: 'a' },
           line: 4,
           column: 11,
         },
@@ -232,7 +232,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
       errors: [
         {
           messageId: 'spacingAfterPrev',
-          data: {element: 'a'},
+          data: { element: 'a' },
           line: 3,
           column: 21,
         },
@@ -248,7 +248,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
       errors: [
         {
           messageId: 'spacingAfterPrev',
-          data: {element: 'a'},
+          data: { element: 'a' },
           line: 3,
           column: 26,
         },
@@ -264,7 +264,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
       errors: [
         {
           messageId: 'spacingBeforeNext',
-          data: {element: 'a'},
+          data: { element: 'a' },
           line: 4,
           column: 11,
         },
@@ -280,7 +280,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
       errors: [
         {
           messageId: 'spacingBeforeNext',
-          data: {element: 'code'},
+          data: { element: 'code' },
           line: 4,
           column: 11,
         },
@@ -297,13 +297,13 @@ ruleTester.run('jsx-child-element-spacing', rule, {
       errors: [
         {
           messageId: 'spacingBeforeNext',
-          data: {element: 'a'},
+          data: { element: 'a' },
           line: 4,
           column: 11,
         },
         {
           messageId: 'spacingBeforeNext',
-          data: {element: 'a'},
+          data: { element: 'a' },
           line: 5,
           column: 11,
         },

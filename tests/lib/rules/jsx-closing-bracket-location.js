@@ -35,7 +35,7 @@ function details(expectedColumn, expectedNextLine) {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-closing-bracket-location', rule, {
   valid: [
     {
@@ -59,19 +59,19 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       code: `
          <App foo />
        `,
-      options: [{location: 'after-props'}],
+      options: [{ location: 'after-props' }],
     },
     {
       code: `
          <App foo />
        `,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
          <App foo />
        `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
     },
     {
       code: `
@@ -93,7 +93,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
          <App
            foo />
        `,
-      options: [{location: 'after-props'}],
+      options: [{ location: 'after-props' }],
     },
     {
       code: `
@@ -101,7 +101,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            foo
          />
        `,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
@@ -109,7 +109,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            foo
          />
        `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
     },
     {
       code: `
@@ -117,7 +117,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            foo
            />
        `,
-      options: [{location: 'props-aligned'}],
+      options: [{ location: 'props-aligned' }],
     },
     {
       code: `
@@ -130,7 +130,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            foo
          ></App>
        `,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
@@ -138,7 +138,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            foo
          ></App>
        `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
     },
     {
       code: `
@@ -146,7 +146,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            foo
            ></App>
        `,
-      options: [{location: 'props-aligned'}],
+      options: [{ location: 'props-aligned' }],
     },
     {
       code: `
@@ -155,7 +155,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
              console.log('bar');
            }} />
        `,
-      options: [{location: 'after-props'}],
+      options: [{ location: 'after-props' }],
     },
     {
       code: `
@@ -165,7 +165,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            }}
            />
        `,
-      options: [{location: 'props-aligned'}],
+      options: [{ location: 'props-aligned' }],
     },
     {
       code: `
@@ -175,7 +175,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            }}
          />
        `,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
@@ -185,7 +185,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            }}
          />
        `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
     },
     {
       code: `
@@ -193,7 +193,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            console.log('bar');
          }}/>
        `,
-      options: [{location: 'after-props'}],
+      options: [{ location: 'after-props' }],
     },
     {
       code: `
@@ -202,7 +202,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
               }}
               />
        `,
-      options: [{location: 'props-aligned'}],
+      options: [{ location: 'props-aligned' }],
     },
     {
       code: `
@@ -211,7 +211,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
          }}
          />
        `,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
@@ -220,7 +220,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
          }}
          />
        `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
     },
     {
       code: `
@@ -229,7 +229,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
              foo />
          </Provider>
        `,
-      options: [{selfClosing: 'after-props'}],
+      options: [{ selfClosing: 'after-props' }],
     },
     {
       code: `
@@ -240,7 +240,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
              foo />
          </Provider>
        `,
-      options: [{selfClosing: 'after-props'}],
+      options: [{ selfClosing: 'after-props' }],
     },
     {
       code: `
@@ -251,7 +251,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            />
          </Provider>
        `,
-      options: [{nonEmpty: 'after-props'}],
+      options: [{ nonEmpty: 'after-props' }],
     },
     {
       code: `
@@ -261,7 +261,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
              />
          </Provider>
        `,
-      options: [{selfClosing: 'props-aligned'}],
+      options: [{ selfClosing: 'props-aligned' }],
     },
     {
       code: `
@@ -273,7 +273,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            />
          </Provider>
        `,
-      options: [{nonEmpty: 'props-aligned'}],
+      options: [{ nonEmpty: 'props-aligned' }],
     },
     {
       code: `
@@ -285,7 +285,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
                   </App>
          }
        `,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
@@ -295,7 +295,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
                   />
          }
        `,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
@@ -303,7 +303,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            foo
                  />
        `,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
@@ -315,7 +315,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            />
          }
        `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
     },
     {
       code: `
@@ -325,7 +325,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            }}
          />
        `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
     },
     {
       code: `
@@ -339,7 +339,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            />
          </Provider>
        `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
     },
     {
       code: `
@@ -353,7 +353,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            />}
          </Provider>
        `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
     },
     {
       code: `
@@ -401,7 +401,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            Some text
          </div>
        `,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
@@ -410,7 +410,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
              }}
               />
        `,
-      options: [{location: 'props-aligned'}],
+      options: [{ location: 'props-aligned' }],
     },
   ],
 
@@ -426,7 +426,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_TAG},
+          data: { location: MESSAGE_AFTER_TAG },
         },
       ],
     },
@@ -441,7 +441,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS},
+          data: { location: MESSAGE_AFTER_PROPS },
         },
       ],
     },
@@ -456,7 +456,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS},
+          data: { location: MESSAGE_AFTER_PROPS },
         },
       ],
     },
@@ -470,7 +470,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           foo
           />
       `,
-      options: [{location: 'props-aligned'}],
+      options: [{ location: 'props-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -493,7 +493,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           foo
         />
       `,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -516,7 +516,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           foo
         />
       `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -539,11 +539,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
         <App
           foo/>
       `,
-      options: [{location: 'after-props'}],
+      options: [{ location: 'after-props' }],
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS},
+          data: { location: MESSAGE_AFTER_PROPS },
         },
       ],
     },
@@ -558,7 +558,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           foo
           />
       `,
-      options: [{location: 'props-aligned'}],
+      options: [{ location: 'props-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -581,11 +581,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
         <App
           foo/>
       `,
-      options: [{location: 'after-props'}],
+      options: [{ location: 'after-props' }],
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS},
+          data: { location: MESSAGE_AFTER_PROPS },
         },
       ],
     },
@@ -600,7 +600,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           foo
         />
       `,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -624,7 +624,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           foo
         />
       `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -647,11 +647,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
         <App
           foo></App>
       `,
-      options: [{location: 'after-props'}],
+      options: [{ location: 'after-props' }],
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS},
+          data: { location: MESSAGE_AFTER_PROPS },
         },
       ],
     },
@@ -666,7 +666,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           foo
           ></App>
       `,
-      options: [{location: 'props-aligned'}],
+      options: [{ location: 'props-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -689,11 +689,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
         <App
           foo></App>
       `,
-      options: [{location: 'after-props'}],
+      options: [{ location: 'after-props' }],
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS},
+          data: { location: MESSAGE_AFTER_PROPS },
         },
       ],
     },
@@ -708,7 +708,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           foo
         ></App>
       `,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -732,7 +732,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           foo
         ></App>
       `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -763,7 +763,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
             />
         </Provider>
       `,
-      options: [{selfClosing: 'props-aligned'}],
+      options: [{ selfClosing: 'props-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -909,7 +909,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           />
         </Provider>
       `,
-      options: [{nonEmpty: 'props-aligned'}],
+      options: [{ nonEmpty: 'props-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -938,7 +938,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
             foo />
         </Provider>
       `,
-      options: [{selfClosing: 'after-props'}],
+      options: [{ selfClosing: 'after-props' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -968,7 +968,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           />
         </Provider>
       `,
-      options: [{nonEmpty: 'after-props'}],
+      options: [{ nonEmpty: 'after-props' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -996,7 +996,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           />
         }
       `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1020,7 +1020,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           foo
         />
       `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1049,7 +1049,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           />
         )
       `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1076,7 +1076,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           />
         )
       `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1101,11 +1101,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           <Something />
         )
       `,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_TAG},
+          data: { location: MESSAGE_AFTER_TAG },
         },
       ],
     },
@@ -1127,7 +1127,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           Some text
         </div>
       `,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1150,7 +1150,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\tfoo
 \t\t\t\t\t/>
 \t\t\t`,
-      options: [{location: 'props-aligned'}],
+      options: [{ location: 'props-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1173,7 +1173,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\tfoo
 \t\t\t\t/>
 \t\t\t`,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1196,7 +1196,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\tfoo
 \t\t\t\t/>
 \t\t\t`,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1219,11 +1219,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t<App
 \t\t\t\t\tfoo/>
 \t\t\t`,
-      options: [{location: 'after-props'}],
+      options: [{ location: 'after-props' }],
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS},
+          data: { location: MESSAGE_AFTER_PROPS },
         },
       ],
     },
@@ -1238,7 +1238,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\tfoo
 \t\t\t\t\t/>
 \t\t\t`,
-      options: [{location: 'props-aligned'}],
+      options: [{ location: 'props-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1261,11 +1261,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t<App
 \t\t\t\t\tfoo/>
 \t\t\t`,
-      options: [{location: 'after-props'}],
+      options: [{ location: 'after-props' }],
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS},
+          data: { location: MESSAGE_AFTER_PROPS },
         },
       ],
     },
@@ -1280,7 +1280,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\tfoo
 \t\t\t\t/>
 \t\t\t`,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1304,7 +1304,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\tfoo
 \t\t\t\t/>
 \t\t\t`,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1327,11 +1327,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t<App
 \t\t\t\t\tfoo></App>
 \t\t\t`,
-      options: [{location: 'after-props'}],
+      options: [{ location: 'after-props' }],
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS},
+          data: { location: MESSAGE_AFTER_PROPS },
         },
       ],
     },
@@ -1346,7 +1346,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\tfoo
 \t\t\t\t\t></App>
 \t\t\t`,
-      options: [{location: 'props-aligned'}],
+      options: [{ location: 'props-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1369,11 +1369,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t<App
 \t\t\t\t\tfoo></App>
 \t\t\t`,
-      options: [{location: 'after-props'}],
+      options: [{ location: 'after-props' }],
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS},
+          data: { location: MESSAGE_AFTER_PROPS },
         },
       ],
     },
@@ -1388,7 +1388,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\tfoo
 \t\t\t\t></App>
 \t\t\t`,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1412,7 +1412,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\tfoo
 \t\t\t\t></App>
 \t\t\t`,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1443,7 +1443,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\t\t/>
 \t\t\t\t</Provider>
 \t\t\t`,
-      options: [{selfClosing: 'props-aligned'}],
+      options: [{ selfClosing: 'props-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1589,7 +1589,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\t/>
 \t\t\t\t</Provider>
 \t\t\t`,
-      options: [{nonEmpty: 'props-aligned'}],
+      options: [{ nonEmpty: 'props-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1618,7 +1618,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\t\tfoo />
 \t\t\t\t</Provider>
 \t\t\t`,
-      options: [{selfClosing: 'after-props'}],
+      options: [{ selfClosing: 'after-props' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1648,7 +1648,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\t/>
 \t\t\t\t</Provider>
 \t\t\t`,
-      options: [{nonEmpty: 'after-props'}],
+      options: [{ nonEmpty: 'after-props' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1676,7 +1676,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\t/>
 \t\t\t\t}
 \t\t\t`,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1700,7 +1700,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\tfoo
 \t\t\t\t/>
 \t\t\t`,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1729,7 +1729,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\t/>
 \t\t\t\t)
 \t\t\t`,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1756,7 +1756,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\t/>
 \t\t\t\t)
 \t\t\t`,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1781,11 +1781,11 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\t<Something />
 \t\t\t\t)
 \t\t\t`,
-      options: [{location: 'line-aligned'}],
+      options: [{ location: 'line-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_TAG},
+          data: { location: MESSAGE_AFTER_TAG },
         },
       ],
     },
@@ -1807,7 +1807,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\tSome text
 \t\t\t\t</div>
 \t\t\t`,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1835,7 +1835,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\t\t\t\t{props}
 \t\t\t\t\t\t\t</div>
 \t\t\t`,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1863,7 +1863,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
             {props}
           </div>
       `,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1887,7 +1887,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
             foo
           />
       `,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -1911,7 +1911,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
 \t\t\t\t\t\t\tfoo
 \t\t\t\t\t\t/>
 \t\t\t`,
-      options: [{location: 'tag-aligned'}],
+      options: [{ location: 'tag-aligned' }],
       errors: [
         {
           messageId: 'bracketLocation',

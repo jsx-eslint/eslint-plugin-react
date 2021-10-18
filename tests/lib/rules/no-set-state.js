@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-set-state', rule, {
   valid: [
     {
@@ -74,7 +74,7 @@ ruleTester.run('no-set-state', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noSetState'}],
+      errors: [{ messageId: 'noSetState' }],
     },
     {
       code: `
@@ -89,7 +89,7 @@ ruleTester.run('no-set-state', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noSetState'}],
+      errors: [{ messageId: 'noSetState' }],
     },
     {
       code: `
@@ -104,7 +104,7 @@ ruleTester.run('no-set-state', rule, {
           }
         };
       `,
-      errors: [{messageId: 'noSetState'}],
+      errors: [{ messageId: 'noSetState' }],
     },
     {
       code: `
@@ -120,7 +120,7 @@ ruleTester.run('no-set-state', rule, {
         };
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'noSetState'}],
+      errors: [{ messageId: 'noSetState' }],
     },
     {
       code: `
@@ -131,7 +131,7 @@ ruleTester.run('no-set-state', rule, {
         };
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'noSetState'}],
+      errors: [{ messageId: 'noSetState' }],
     },
   ],
 });

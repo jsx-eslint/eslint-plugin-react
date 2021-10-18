@@ -24,7 +24,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-is-mounted', rule, {
 
   valid: [
@@ -72,7 +72,7 @@ ruleTester.run('no-is-mounted', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noIsMounted'}],
+      errors: [{ messageId: 'noIsMounted' }],
     },
     {
       code: `
@@ -87,7 +87,7 @@ ruleTester.run('no-is-mounted', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noIsMounted'}],
+      errors: [{ messageId: 'noIsMounted' }],
     },
     {
       code: `
@@ -102,7 +102,7 @@ ruleTester.run('no-is-mounted', rule, {
           }
         };
       `,
-      errors: [{messageId: 'noIsMounted'}],
+      errors: [{ messageId: 'noIsMounted' }],
     },
   ],
 });

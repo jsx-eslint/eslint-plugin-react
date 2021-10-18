@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-did-mount-set-state', rule, {
   valid: [
     {
@@ -99,7 +99,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidMount'},
+          data: { name: 'componentDidMount' },
         },
       ],
     },
@@ -117,7 +117,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidMount'},
+          data: { name: 'componentDidMount' },
         },
       ],
     },
@@ -135,7 +135,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidMount'},
+          data: { name: 'componentDidMount' },
         },
       ],
     },
@@ -153,7 +153,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidMount'},
+          data: { name: 'componentDidMount' },
         },
       ],
     },
@@ -172,7 +172,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidMount'},
+          data: { name: 'componentDidMount' },
         },
       ],
     },
@@ -192,7 +192,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidMount'},
+          data: { name: 'componentDidMount' },
         },
       ],
     },
@@ -213,7 +213,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidMount'},
+          data: { name: 'componentDidMount' },
         },
       ],
     },
@@ -232,7 +232,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidMount'},
+          data: { name: 'componentDidMount' },
         },
       ],
     },
@@ -252,7 +252,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidMount'},
+          data: { name: 'componentDidMount' },
         },
       ],
     },
@@ -269,7 +269,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidMount'},
+          data: { name: 'componentDidMount' },
         },
       ],
     },
@@ -286,7 +286,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidMount'},
+          data: { name: 'componentDidMount' },
         },
       ],
     },

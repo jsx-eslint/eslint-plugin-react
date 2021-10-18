@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-pascal-case', rule, {
   valid: [
     {
@@ -79,11 +79,11 @@ ruleTester.run('jsx-pascal-case', rule, {
     },
     {
       code: '<YMCA />',
-      options: [{allowAllCaps: true}],
+      options: [{ allowAllCaps: true }],
     },
     {
       code: '<TEST_COMPONENT />',
-      options: [{allowAllCaps: true}],
+      options: [{ allowAllCaps: true }],
     },
     {
       code: '<Modal.Header />',
@@ -96,15 +96,15 @@ ruleTester.run('jsx-pascal-case', rule, {
     },
     {
       code: '<IGNORED />',
-      options: [{ignore: ['IGNORED']}],
+      options: [{ ignore: ['IGNORED'] }],
     },
     {
       code: '<Foo_DEPRECATED />',
-      options: [{ignore: ['*_D*D']}],
+      options: [{ ignore: ['*_D*D'] }],
     },
     {
       code: '<Foo_DEPRECATED />',
-      options: [{ignore: ['*_+(DEPRECATED|IGNORED)']}],
+      options: [{ ignore: ['*_+(DEPRECATED|IGNORED)'] }],
     },
     {
       code: '<$ />',
@@ -120,15 +120,15 @@ ruleTester.run('jsx-pascal-case', rule, {
     },
     {
       code: '<Styled.h1 />',
-      options: [{allowNamespace: true}],
+      options: [{ allowNamespace: true }],
     },
     {
       code: '<_TEST_COMPONENT />',
-      options: [{allowAllCaps: true, allowLeadingUnderscore: true}],
+      options: [{ allowAllCaps: true, allowLeadingUnderscore: true }],
     },
     {
       code: '<_TestComponent />',
-      options: [{allowLeadingUnderscore: true}],
+      options: [{ allowLeadingUnderscore: true }],
     },
   ],
 
@@ -138,7 +138,7 @@ ruleTester.run('jsx-pascal-case', rule, {
       errors: [
         {
           messageId: 'usePascalCase',
-          data: {name: 'Test_component'},
+          data: { name: 'Test_component' },
         },
       ],
     },
@@ -147,7 +147,7 @@ ruleTester.run('jsx-pascal-case', rule, {
       errors: [
         {
           messageId: 'usePascalCase',
-          data: {name: 'TEST_COMPONENT'},
+          data: { name: 'TEST_COMPONENT' },
         },
       ],
     },
@@ -156,67 +156,67 @@ ruleTester.run('jsx-pascal-case', rule, {
       errors: [
         {
           messageId: 'usePascalCase',
-          data: {name: 'YMCA'},
+          data: { name: 'YMCA' },
         },
       ],
     },
     {
       code: '<_TEST_COMPONENT />',
-      options: [{allowAllCaps: true}],
+      options: [{ allowAllCaps: true }],
       errors: [
         {
           messageId: 'usePascalOrSnakeCase',
-          data: {name: '_TEST_COMPONENT'},
+          data: { name: '_TEST_COMPONENT' },
         },
       ],
     },
     {
       code: '<TEST_COMPONENT_ />',
-      options: [{allowAllCaps: true}],
+      options: [{ allowAllCaps: true }],
       errors: [
         {
           messageId: 'usePascalOrSnakeCase',
-          data: {name: 'TEST_COMPONENT_'},
+          data: { name: 'TEST_COMPONENT_' },
         },
       ],
     },
     {
       code: '<TEST-COMPONENT />',
-      options: [{allowAllCaps: true}],
+      options: [{ allowAllCaps: true }],
       errors: [
         {
           messageId: 'usePascalOrSnakeCase',
-          data: {name: 'TEST-COMPONENT'},
+          data: { name: 'TEST-COMPONENT' },
         },
       ],
     },
     {
       code: '<__ />',
-      options: [{allowAllCaps: true}],
+      options: [{ allowAllCaps: true }],
       errors: [
         {
           messageId: 'usePascalOrSnakeCase',
-          data: {name: '__'},
+          data: { name: '__' },
         },
       ],
     },
     {
       code: '<_div />',
-      options: [{allowLeadingUnderscore: true}],
+      options: [{ allowLeadingUnderscore: true }],
       errors: [
         {
           messageId: 'usePascalCase',
-          data: {name: '_div'},
+          data: { name: '_div' },
         },
       ],
     },
     {
       code: '<__ />',
-      options: [{allowAllCaps: true, allowLeadingUnderscore: true}],
+      options: [{ allowAllCaps: true, allowLeadingUnderscore: true }],
       errors: [
         {
           messageId: 'usePascalOrSnakeCase',
-          data: {name: '__'},
+          data: { name: '__' },
         },
       ],
     },
@@ -225,17 +225,17 @@ ruleTester.run('jsx-pascal-case', rule, {
       errors: [
         {
           messageId: 'usePascalCase',
-          data: {name: '$a'},
+          data: { name: '$a' },
         },
       ],
     },
     {
       code: '<Foo_DEPRECATED />',
-      options: [{ignore: ['*_FOO']}],
+      options: [{ ignore: ['*_FOO'] }],
       errors: [
         {
           messageId: 'usePascalCase',
-          data: {name: 'Foo_DEPRECATED'},
+          data: { name: 'Foo_DEPRECATED' },
         },
       ],
     },
@@ -244,7 +244,7 @@ ruleTester.run('jsx-pascal-case', rule, {
       errors: [
         {
           messageId: 'usePascalCase',
-          data: {name: 'h1'},
+          data: { name: 'h1' },
         },
       ],
     },
@@ -253,17 +253,17 @@ ruleTester.run('jsx-pascal-case', rule, {
       errors: [
         {
           messageId: 'usePascalCase',
-          data: {name: '$Typography'},
+          data: { name: '$Typography' },
         },
       ],
     },
     {
       code: '<STYLED.h1 />',
-      options: [{allowNamespace: true}],
+      options: [{ allowNamespace: true }],
       errors: [
         {
           messageId: 'usePascalCase',
-          data: {name: 'STYLED'},
+          data: { name: 'STYLED' },
         },
       ],
     },

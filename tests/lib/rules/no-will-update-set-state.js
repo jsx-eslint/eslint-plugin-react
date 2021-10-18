@@ -26,7 +26,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-will-update-set-state', rule, {
   valid: [
     {
@@ -93,7 +93,7 @@ ruleTester.run('no-will-update-set-state', rule, {
           }
         }
       `,
-      settings: {react: {version: '16.2.0'}},
+      settings: { react: { version: '16.2.0' } },
     },
   ],
 
@@ -111,7 +111,7 @@ ruleTester.run('no-will-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentWillUpdate'},
+          data: { name: 'componentWillUpdate' },
         },
       ],
     },
@@ -129,7 +129,7 @@ ruleTester.run('no-will-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentWillUpdate'},
+          data: { name: 'componentWillUpdate' },
         },
       ],
     },
@@ -147,7 +147,7 @@ ruleTester.run('no-will-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentWillUpdate'},
+          data: { name: 'componentWillUpdate' },
         },
       ],
     },
@@ -166,7 +166,7 @@ ruleTester.run('no-will-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentWillUpdate'},
+          data: { name: 'componentWillUpdate' },
         },
       ],
     },
@@ -186,7 +186,7 @@ ruleTester.run('no-will-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentWillUpdate'},
+          data: { name: 'componentWillUpdate' },
         },
       ],
     },
@@ -207,7 +207,7 @@ ruleTester.run('no-will-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentWillUpdate'},
+          data: { name: 'componentWillUpdate' },
         },
       ],
     },
@@ -226,7 +226,7 @@ ruleTester.run('no-will-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentWillUpdate'},
+          data: { name: 'componentWillUpdate' },
         },
       ],
     },
@@ -246,7 +246,7 @@ ruleTester.run('no-will-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentWillUpdate'},
+          data: { name: 'componentWillUpdate' },
         },
       ],
     },
@@ -263,7 +263,7 @@ ruleTester.run('no-will-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentWillUpdate'},
+          data: { name: 'componentWillUpdate' },
         },
       ],
     },
@@ -280,7 +280,7 @@ ruleTester.run('no-will-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentWillUpdate'},
+          data: { name: 'componentWillUpdate' },
         },
       ],
     },
@@ -294,11 +294,11 @@ ruleTester.run('no-will-update-set-state', rule, {
           }
         }
       `,
-      settings: {react: {version: '16.3.0'}},
+      settings: { react: { version: '16.3.0' } },
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'UNSAFE_componentWillUpdate'},
+          data: { name: 'UNSAFE_componentWillUpdate' },
         },
       ],
     },
@@ -312,11 +312,11 @@ ruleTester.run('no-will-update-set-state', rule, {
           }
         });
       `,
-      settings: {react: {version: '16.3.0'}},
+      settings: { react: { version: '16.3.0' } },
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'UNSAFE_componentWillUpdate'},
+          data: { name: 'UNSAFE_componentWillUpdate' },
         },
       ],
     },

@@ -24,7 +24,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-render-return-value', rule, {
   valid: [
     {
@@ -82,7 +82,7 @@ ruleTester.run('no-render-return-value', rule, {
       errors: [
         {
           messageId: 'noReturnValue',
-          data: {node: 'ReactDOM'},
+          data: { node: 'ReactDOM' },
         },
       ],
     },
@@ -95,7 +95,7 @@ ruleTester.run('no-render-return-value', rule, {
       errors: [
         {
           messageId: 'noReturnValue',
-          data: {node: 'ReactDOM'},
+          data: { node: 'ReactDOM' },
         },
       ],
     },
@@ -108,7 +108,7 @@ ruleTester.run('no-render-return-value', rule, {
       errors: [
         {
           messageId: 'noReturnValue',
-          data: {node: 'ReactDOM'},
+          data: { node: 'ReactDOM' },
         },
       ],
     },
@@ -117,7 +117,7 @@ ruleTester.run('no-render-return-value', rule, {
       errors: [
         {
           messageId: 'noReturnValue',
-          data: {node: 'ReactDOM'},
+          data: { node: 'ReactDOM' },
         },
       ],
     },
@@ -126,7 +126,7 @@ ruleTester.run('no-render-return-value', rule, {
       errors: [
         {
           messageId: 'noReturnValue',
-          data: {node: 'ReactDOM'},
+          data: { node: 'ReactDOM' },
         },
       ],
     },
@@ -135,7 +135,7 @@ ruleTester.run('no-render-return-value', rule, {
       errors: [
         {
           messageId: 'noReturnValue',
-          data: {node: 'ReactDOM'},
+          data: { node: 'ReactDOM' },
         },
       ],
     },
@@ -149,7 +149,7 @@ ruleTester.run('no-render-return-value', rule, {
       errors: [
         {
           messageId: 'noReturnValue',
-          data: {node: 'React'},
+          data: { node: 'React' },
         },
       ],
     },
@@ -163,7 +163,7 @@ ruleTester.run('no-render-return-value', rule, {
       errors: [
         {
           messageId: 'noReturnValue',
-          data: {node: 'ReactDOM'},
+          data: { node: 'ReactDOM' },
         },
       ],
     },
@@ -177,7 +177,7 @@ ruleTester.run('no-render-return-value', rule, {
       errors: [
         {
           messageId: 'noReturnValue',
-          data: {node: 'React'},
+          data: { node: 'React' },
         },
       ],
     },

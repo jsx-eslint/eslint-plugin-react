@@ -72,7 +72,7 @@ function beforeClosingOptions(option) {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({parserOptions});
+const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-tag-spacing', rule, {
   valid: [
     {
@@ -258,7 +258,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
       output: '<App />',
       options: beforeSelfClosingOptions('always'),
       errors: [
-        {messageId: 'beforeSelfCloseNeedSpace'},
+        { messageId: 'beforeSelfCloseNeedSpace' },
       ],
     },
     {
@@ -266,7 +266,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
       output: '<App foo />',
       options: beforeSelfClosingOptions('always'),
       errors: [
-        {messageId: 'beforeSelfCloseNeedSpace'},
+        { messageId: 'beforeSelfCloseNeedSpace' },
       ],
     },
     {
@@ -274,7 +274,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
       output: '<App foo={bar} />',
       options: beforeSelfClosingOptions('always'),
       errors: [
-        {messageId: 'beforeSelfCloseNeedSpace'},
+        { messageId: 'beforeSelfCloseNeedSpace' },
       ],
     },
     {
@@ -282,7 +282,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
       output: '<App {...props} />',
       options: beforeSelfClosingOptions('always'),
       errors: [
-        {messageId: 'beforeSelfCloseNeedSpace'},
+        { messageId: 'beforeSelfCloseNeedSpace' },
       ],
     },
     {
@@ -290,7 +290,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
       output: '<App/>',
       options: beforeSelfClosingOptions('never'),
       errors: [
-        {messageId: 'beforeSelfCloseNoSpace'},
+        { messageId: 'beforeSelfCloseNoSpace' },
       ],
     },
     {
@@ -298,7 +298,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
       output: '<App foo/>',
       options: beforeSelfClosingOptions('never'),
       errors: [
-        {messageId: 'beforeSelfCloseNoSpace'},
+        { messageId: 'beforeSelfCloseNoSpace' },
       ],
     },
     {
@@ -306,7 +306,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
       output: '<App foo={bar}/>',
       options: beforeSelfClosingOptions('never'),
       errors: [
-        {messageId: 'beforeSelfCloseNoSpace'},
+        { messageId: 'beforeSelfCloseNoSpace' },
       ],
     },
     {
@@ -314,13 +314,13 @@ ruleTester.run('jsx-tag-spacing', rule, {
       output: '<App {...props}/>',
       options: beforeSelfClosingOptions('never'),
       errors: [
-        {messageId: 'beforeSelfCloseNoSpace'},
+        { messageId: 'beforeSelfCloseNoSpace' },
       ],
     },
     {
       code: '<App/ >;',
       output: '<App/>;',
-      errors: [{messageId: 'selfCloseSlashNoSpace'}],
+      errors: [{ messageId: 'selfCloseSlashNoSpace' }],
       options: closingSlashOptions('never'),
     },
     {
@@ -331,13 +331,13 @@ ruleTester.run('jsx-tag-spacing', rule, {
       output: `
         <App_selfCloseSlashNoSpace/>
       `,
-      errors: [{messageId: 'selfCloseSlashNoSpace'}],
+      errors: [{ messageId: 'selfCloseSlashNoSpace' }],
       options: closingSlashOptions('never'),
     },
     {
       code: '<div className="bar">< /div>;',
       output: '<div className="bar"></div>;',
-      errors: [{messageId: 'closeSlashNoSpace'}],
+      errors: [{ messageId: 'closeSlashNoSpace' }],
       options: closingSlashOptions('never'),
     },
     {
@@ -348,45 +348,45 @@ ruleTester.run('jsx-tag-spacing', rule, {
       output: `
         <div className="bar"></div>;
       `,
-      errors: [{messageId: 'closeSlashNoSpace'}],
+      errors: [{ messageId: 'closeSlashNoSpace' }],
       options: closingSlashOptions('never'),
     },
     {
       code: '<App prop="foo"></App>',
       output: '<App prop="foo">< /App>',
-      errors: [{messageId: 'closeSlashNeedSpace'}],
+      errors: [{ messageId: 'closeSlashNeedSpace' }],
       options: closingSlashOptions('always'),
     },
     {
       code: '<p/>',
       output: '<p/ >',
-      errors: [{messageId: 'selfCloseSlashNeedSpace'}],
+      errors: [{ messageId: 'selfCloseSlashNeedSpace' }],
       options: closingSlashOptions('always'),
     },
     {
       code: '< App/>',
       output: '<App/>',
-      errors: [{messageId: 'afterOpenNoSpace'}],
+      errors: [{ messageId: 'afterOpenNoSpace' }],
       options: afterOpeningOptions('never'),
     },
     {
       code: '< App></App>',
       output: '<App></App>',
-      errors: [{messageId: 'afterOpenNoSpace'}],
+      errors: [{ messageId: 'afterOpenNoSpace' }],
       options: afterOpeningOptions('never'),
     },
     {
       code: '<App></ App>',
       output: '<App></App>',
-      errors: [{messageId: 'afterOpenNoSpace'}],
+      errors: [{ messageId: 'afterOpenNoSpace' }],
       options: afterOpeningOptions('never'),
     },
     {
       code: '< App></ App>',
       output: '<App></App>',
       errors: [
-        {messageId: 'afterOpenNoSpace'},
-        {messageId: 'afterOpenNoSpace'},
+        { messageId: 'afterOpenNoSpace' },
+        { messageId: 'afterOpenNoSpace' },
       ],
       options: afterOpeningOptions('never'),
     },
@@ -398,52 +398,52 @@ ruleTester.run('jsx-tag-spacing', rule, {
       output: `
         <App1/>
       `,
-      errors: [{messageId: 'afterOpenNoSpace'}],
+      errors: [{ messageId: 'afterOpenNoSpace' }],
       options: afterOpeningOptions('never'),
     },
     {
       code: '<App2></ App2>',
       output: '< App2></ App2>',
-      errors: [{messageId: 'afterOpenNeedSpace'}],
+      errors: [{ messageId: 'afterOpenNeedSpace' }],
       options: afterOpeningOptions('always'),
     },
     {
       code: '< App3></App3>',
       output: '< App3></ App3>',
-      errors: [{messageId: 'afterOpenNeedSpace'}],
+      errors: [{ messageId: 'afterOpenNeedSpace' }],
       options: afterOpeningOptions('always'),
     },
     {
       code: '<App4></App4>',
       output: '< App4></ App4>',
       errors: [
-        {messageId: 'afterOpenNeedSpace'},
-        {messageId: 'afterOpenNeedSpace'},
+        { messageId: 'afterOpenNeedSpace' },
+        { messageId: 'afterOpenNeedSpace' },
       ],
       options: afterOpeningOptions('always'),
     },
     {
       code: '<App5/>',
       output: '< App5/>',
-      errors: [{messageId: 'afterOpenNeedSpace'}],
+      errors: [{ messageId: 'afterOpenNeedSpace' }],
       options: afterOpeningOptions('always'),
     },
     {
       code: '< App6/>',
       output: '<App6/>',
-      errors: [{messageId: 'afterOpenNoSpace'}],
+      errors: [{ messageId: 'afterOpenNoSpace' }],
       options: afterOpeningOptions('allow-multiline'),
     },
     {
       code: '<App7 ></App7>',
       output: '<App7></App7>',
-      errors: [{messageId: 'beforeCloseNoSpace'}],
+      errors: [{ messageId: 'beforeCloseNoSpace' }],
       options: beforeClosingOptions('never'),
     },
     {
       code: '<App8></App8 >',
       output: '<App8></App8>',
-      errors: [{messageId: 'beforeCloseNoSpace'}],
+      errors: [{ messageId: 'beforeCloseNoSpace' }],
       options: beforeClosingOptions('never'),
     },
     {
@@ -459,19 +459,19 @@ ruleTester.run('jsx-tag-spacing', rule, {
         >
         </App9>
       `,
-      errors: [{messageId: 'beforeCloseNoSpace'}],
+      errors: [{ messageId: 'beforeCloseNoSpace' }],
       options: beforeClosingOptions('never'),
     },
     {
       code: '<App10></App10 >',
       output: '<App10 ></App10 >',
-      errors: [{messageId: 'beforeCloseNeedSpace'}],
+      errors: [{ messageId: 'beforeCloseNeedSpace' }],
       options: beforeClosingOptions('always'),
     },
     {
       code: '<App11 ></App11>',
       output: '<App11 ></App11 >',
-      errors: [{messageId: 'beforeCloseNeedSpace'}],
+      errors: [{ messageId: 'beforeCloseNeedSpace' }],
       options: beforeClosingOptions('always'),
     },
     {
@@ -487,7 +487,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
         >
         </App12 >
       `,
-      errors: [{messageId: 'beforeCloseNeedSpace'}],
+      errors: [{ messageId: 'beforeCloseNeedSpace' }],
       options: beforeClosingOptions('always'),
     },
   ],
