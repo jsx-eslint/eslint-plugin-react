@@ -109,7 +109,8 @@ ruleTester.run('jsx-key', rule, {
       code: '[1, 2, 3]?.map(x => <BabelEslintApp />)',
       parser: parsers.BABEL_ESLINT,
       errors: [{ messageId: 'missingIterKey' }],
-    }, parsers.TS([
+    },
+    parsers.TS([
       {
         code: '[1, 2, 3]?.map(x => <TypescriptEslintApp />)',
         parser: parsers['@TYPESCRIPT_ESLINT'],

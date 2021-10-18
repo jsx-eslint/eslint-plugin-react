@@ -274,41 +274,41 @@ ruleTester.run('no-multi-comp', rule, {
       ],
     },
     {
-      code: [
-        'function Hello(props) {',
-        '  return <div>Hello {props.name}</div>;',
-        '}',
-        'class HelloJohn extends React.Component {',
-        '  render() {',
-        '    return <Hello name="John" />;',
-        '  }',
-        '}',
-      ].join('\r'),
+      code: `
+        function Hello(props) {
+          return <div>Hello {props.name}</div>;
+        }
+        class HelloJohn extends React.Component {
+          render() {
+            return <Hello name="John" />;
+          }
+        }
+      `,
       errors: [
         {
           messageId: 'onlyOneComponent',
-          line: 4,
+          line: 5,
         },
       ],
     },
     {
-      code: [
-        'export default {',
-        '  RenderHello(props) {',
-        '    let {name} = props;',
-        '    return <div>{name}</div>;',
-        '  },',
-        '  RenderHello2(props) {',
-        '    let {name} = props;',
-        '    return <div>{name}</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        export default {
+          RenderHello(props) {
+            let {name} = props;
+            return <div>{name}</div>;
+          },
+          RenderHello2(props) {
+            let {name} = props;
+            return <div>{name}</div>;
+          }
+        };
+      `,
       parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'onlyOneComponent',
-          line: 6,
+          line: 7,
         },
       ],
     },
@@ -411,7 +411,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         const {forwardRef} = React;
         const HelloComponent = (0, (props) => {
@@ -426,7 +427,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         const {memo} = React;
         const HelloComponent = (0, (props) => {
@@ -441,7 +443,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         import React, { memo } from 'react';
         const HelloComponent = (0, (props) => {
@@ -456,7 +459,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         import {forwardRef} from 'react';
         const HelloComponent = (0, (props) => {
@@ -471,7 +475,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         const { memo } = require('react');
         const HelloComponent = (0, (props) => {
@@ -486,7 +491,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         const {forwardRef} = require('react');
         const HelloComponent = (0, (props) => {
@@ -501,7 +507,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         const forwardRef = require('react').forwardRef;
         const HelloComponent = (0, (props) => {
@@ -516,7 +523,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         const memo = require('react').memo;
         const HelloComponent = (0, (props) => {
@@ -531,7 +539,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         import Foo, { memo, forwardRef } from 'foo';
         const Text = forwardRef(({ text }, ref) => {

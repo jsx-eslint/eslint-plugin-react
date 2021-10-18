@@ -303,7 +303,8 @@ ruleTester.run('no-unescaped-entities', rule, {
         {
           messageId: 'unescapedEntityAlts',
           data: { entity: '&', alts: '`&amp;`' },
-        }],
+        },
+      ],
       options: [
         {
           forbid: [

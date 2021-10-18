@@ -82,9 +82,7 @@ ruleTester.run('jsx-no-undef', rule, {
         };
       `,
       parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
-      options: [
-        { allowGlobals: false },
-      ],
+      options: [{ allowGlobals: false }],
       parser: parsers.BABEL_ESLINT,
     },
   ],
@@ -92,31 +90,39 @@ ruleTester.run('jsx-no-undef', rule, {
   invalid: [
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<App />);',
-      errors: [{
-        messageId: 'undefined',
-        data: { identifier: 'App' },
-      }],
+      errors: [
+        {
+          messageId: 'undefined',
+          data: { identifier: 'App' },
+        },
+      ],
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<Appp.Foo />);',
-      errors: [{
-        messageId: 'undefined',
-        data: { identifier: 'Appp' },
-      }],
+      errors: [
+        {
+          messageId: 'undefined',
+          data: { identifier: 'Appp' },
+        },
+      ],
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<appp.Foo />);',
-      errors: [{
-        messageId: 'undefined',
-        data: { identifier: 'appp' },
-      }],
+      errors: [
+        {
+          messageId: 'undefined',
+          data: { identifier: 'appp' },
+        },
+      ],
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<appp.foo.Bar />);',
-      errors: [{
-        messageId: 'undefined',
-        data: { identifier: 'appp' },
-      }],
+      errors: [
+        {
+          messageId: 'undefined',
+          data: { identifier: 'appp' },
+        },
+      ],
     },
     {
       code: `
@@ -128,13 +134,13 @@ ruleTester.run('jsx-no-undef', rule, {
         export default TextWrapper;
       `,
       parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
-      errors: [{
-        messageId: 'undefined',
-        data: { identifier: 'Text' },
-      }],
-      options: [
-        { allowGlobals: false },
+      errors: [
+        {
+          messageId: 'undefined',
+          data: { identifier: 'Text' },
+        },
       ],
+      options: [{ allowGlobals: false }],
       parser: parsers.BABEL_ESLINT,
       globals: {
         Text: true,

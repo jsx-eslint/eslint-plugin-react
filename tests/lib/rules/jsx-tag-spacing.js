@@ -49,12 +49,14 @@ function beforeSelfClosingOptions(option) {
 }
 
 function afterOpeningOptions(option) {
-  return [{
-    closingSlash: 'allow',
-    beforeSelfClosing: 'allow',
-    afterOpening: option,
-    beforeClosing: 'allow',
-  }];
+  return [
+    {
+      closingSlash: 'allow',
+      beforeSelfClosing: 'allow',
+      afterOpening: option,
+      beforeClosing: 'allow',
+    },
+  ];
 }
 
 function beforeClosingOptions(option) {
@@ -250,72 +252,57 @@ ruleTester.run('jsx-tag-spacing', rule, {
           beforeClosing: 'always',
         },
       ],
-    }],
+    },
+  ],
 
   invalid: [
     {
       code: '<App/>',
       output: '<App />',
       options: beforeSelfClosingOptions('always'),
-      errors: [
-        { messageId: 'beforeSelfCloseNeedSpace' },
-      ],
+      errors: [{ messageId: 'beforeSelfCloseNeedSpace' }],
     },
     {
       code: '<App foo/>',
       output: '<App foo />',
       options: beforeSelfClosingOptions('always'),
-      errors: [
-        { messageId: 'beforeSelfCloseNeedSpace' },
-      ],
+      errors: [{ messageId: 'beforeSelfCloseNeedSpace' }],
     },
     {
       code: '<App foo={bar}/>',
       output: '<App foo={bar} />',
       options: beforeSelfClosingOptions('always'),
-      errors: [
-        { messageId: 'beforeSelfCloseNeedSpace' },
-      ],
+      errors: [{ messageId: 'beforeSelfCloseNeedSpace' }],
     },
     {
       code: '<App {...props}/>',
       output: '<App {...props} />',
       options: beforeSelfClosingOptions('always'),
-      errors: [
-        { messageId: 'beforeSelfCloseNeedSpace' },
-      ],
+      errors: [{ messageId: 'beforeSelfCloseNeedSpace' }],
     },
     {
       code: '<App />',
       output: '<App/>',
       options: beforeSelfClosingOptions('never'),
-      errors: [
-        { messageId: 'beforeSelfCloseNoSpace' },
-      ],
+      errors: [{ messageId: 'beforeSelfCloseNoSpace' }],
     },
     {
       code: '<App foo />',
       output: '<App foo/>',
       options: beforeSelfClosingOptions('never'),
-      errors: [
-        { messageId: 'beforeSelfCloseNoSpace' },
-      ],
+      errors: [{ messageId: 'beforeSelfCloseNoSpace' }],
     },
     {
       code: '<App foo={bar} />',
       output: '<App foo={bar}/>',
       options: beforeSelfClosingOptions('never'),
-      errors: [
-        { messageId: 'beforeSelfCloseNoSpace' },
-      ],
+      errors: [{ messageId: 'beforeSelfCloseNoSpace' }],
     },
     {
       code: '<App {...props} />',
       output: '<App {...props}/>',
       options: beforeSelfClosingOptions('never'),
-      errors: [
-        { messageId: 'beforeSelfCloseNoSpace' },
-      ],
+      errors: [{ messageId: 'beforeSelfCloseNoSpace' }],
     },
     {
       code: '<App/ >;',

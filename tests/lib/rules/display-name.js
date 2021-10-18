@@ -31,29 +31,25 @@ ruleTester.run('display-name', rule, {
   valid: [
     {
       code: `
-      var Hello = createReactClass({
-        displayName: 'Hello',
-        render: function() {
-          return <div>Hello {this.props.name}</div>;
-        }
-      });
-    `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
+        var Hello = createReactClass({
+          displayName: 'Hello',
+          render: function() {
+            return <div>Hello {this.props.name}</div>;
+          }
+        });
+      `,
+      options: [{ ignoreTranspilerName: true }],
     },
     {
       code: `
-      var Hello = React.createClass({
-        displayName: 'Hello',
-        render: function() {
-          return <div>Hello {this.props.name}</div>;
-        }
-      });
-    `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
+        var Hello = React.createClass({
+          displayName: 'Hello',
+          render: function() {
+            return <div>Hello {this.props.name}</div>;
+          }
+        });
+      `,
+      options: [{ ignoreTranspilerName: true }],
       settings: {
         react: {
           createClass: 'createClass',
@@ -62,329 +58,307 @@ ruleTester.run('display-name', rule, {
     },
     {
       code: `
-      class Hello extends React.Component {
-        render() {
-          return <div>Hello {this.props.name}</div>;
-        }
-      }
-      Hello.displayName = 'Hello'
-    `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
-    },
-    {
-      code: `
-      class Hello {
-        render() {
-          return 'Hello World';
-        }
-      }
-    `,
-    },
-    {
-      code: `
-      class Hello extends Greetings {
-        static text = 'Hello World';
-        render() {
-          return Hello.text;
-        }
-      }
-    `,
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-      class Hello {
-        method;
-      }
-    `,
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-      class Hello extends React.Component {
-        static get displayName() {
-          return 'Hello';
-        }
-        render() {
-          return <div>Hello {this.props.name}</div>;
-        }
-      }
-    `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
-    },
-    {
-      code: `
-      class Hello extends React.Component {
-        static displayName = 'Widget';
-        render() {
-          return <div>Hello {this.props.name}</div>;
-        }
-      }
-    `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-      var Hello = createReactClass({
-        render: function() {
-          return <div>Hello {this.props.name}</div>;
-        }
-      });
-    `,
-    },
-    {
-      code: `
-      class Hello extends React.Component {
-        render() {
-          return <div>Hello {this.props.name}</div>;
-        }
-      }
-    `,
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-      export default class Hello {
-        render() {
-          return <div>Hello {this.props.name}</div>;
-        }
-      }
-    `,
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-      var Hello;
-      Hello = createReactClass({
-        render: function() {
-          return <div>Hello {this.props.name}</div>;
-        }
-      });
-    `,
-    },
-    {
-      code: `
-      module.exports = createReactClass({
-        "displayName": "Hello",
-        "render": function() {
-          return <div>Hello {this.props.name}</div>;
-        }
-      });
-    `,
-    },
-    {
-      code: `
-      var Hello = createReactClass({
-        displayName: 'Hello',
-        render: function() {
-          let { a, ...b } = obj;
-          let c = { ...d };
-          return <div />;
-        }
-      });
-    `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
-    },
-    {
-      code: `
-      export default class {
-        render() {
-          return <div>Hello {this.props.name}</div>;
-        }
-      }
-    `,
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-      export const Hello = React.memo(function Hello() {
-        return <p />;
-      })
-    `,
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-      var Hello = function() {
-        return <div>Hello {this.props.name}</div>;
-      }
-    `,
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-      function Hello() {
-        return <div>Hello {this.props.name}</div>;
-      }
-    `,
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-      var Hello = () => {
-        return <div>Hello {this.props.name}</div>;
-      }
-    `,
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-      module.exports = function Hello() {
-        return <div>Hello {this.props.name}</div>;
-      }
-    `,
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-      function Hello() {
-        return <div>Hello {this.props.name}</div>;
-      }
-      Hello.displayName = 'Hello';
-    `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-      var Hello = () => {
-        return <div>Hello {this.props.name}</div>;
-      }
-      Hello.displayName = 'Hello';
-    `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-      var Hello = function() {
-        return <div>Hello {this.props.name}</div>;
-      }
-      Hello.displayName = 'Hello';
-    `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-      var Mixins = {
-        Greetings: {
-          Hello: function() {
+        class Hello extends React.Component {
+          render() {
             return <div>Hello {this.props.name}</div>;
           }
         }
-      }
-      Mixins.Greetings.Hello.displayName = 'Hello';
-    `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
+        Hello.displayName = 'Hello'
+      `,
+      options: [{ ignoreTranspilerName: true }],
+    },
+    {
+      code: `
+        class Hello {
+          render() {
+            return 'Hello World';
+          }
+        }
+      `,
+    },
+    {
+      code: `
+        class Hello extends Greetings {
+          static text = 'Hello World';
+          render() {
+            return Hello.text;
+          }
+        }
+      `,
       parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
-      var Hello = createReactClass({
-        render: function() {
-          return <div>{this._renderHello()}</div>;
-        },
-        _renderHello: function() {
-          return <span>Hello {this.props.name}</span>;
+        class Hello {
+          method;
         }
-      });
-    `,
+      `,
       parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
-      var Hello = createReactClass({
-        displayName: 'Hello',
-        render: function() {
-          return <div>{this._renderHello()}</div>;
-        },
-        _renderHello: function() {
-          return <span>Hello {this.props.name}</span>;
+        class Hello extends React.Component {
+          static get displayName() {
+            return 'Hello';
+          }
+          render() {
+            return <div>Hello {this.props.name}</div>;
+          }
         }
-      });
-    `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
+      `,
+      options: [{ ignoreTranspilerName: true }],
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          static displayName = 'Widget';
+          render() {
+            return <div>Hello {this.props.name}</div>;
+          }
+        }
+      `,
+      options: [{ ignoreTranspilerName: true }],
       parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
-      const Mixin = {
-        Button() {
-          return (
-            <button />
-          );
+        var Hello = createReactClass({
+          render: function() {
+            return <div>Hello {this.props.name}</div>;
+          }
+        });
+      `,
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            return <div>Hello {this.props.name}</div>;
+          }
         }
-      };
-    `,
+      `,
       parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
-      var obj = {
-        pouf: function() {
-          return any
+        export default class Hello {
+          render() {
+            return <div>Hello {this.props.name}</div>;
+          }
         }
-      };
-    `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
+      `,
       parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
-      var obj = {
-        pouf: function() {
-          return any
+        var Hello;
+        Hello = createReactClass({
+          render: function() {
+            return <div>Hello {this.props.name}</div>;
+          }
+        });
+      `,
+    },
+    {
+      code: `
+        module.exports = createReactClass({
+          "displayName": "Hello",
+          "render": function() {
+            return <div>Hello {this.props.name}</div>;
+          }
+        });
+      `,
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          displayName: 'Hello',
+          render: function() {
+            let { a, ...b } = obj;
+            let c = { ...d };
+            return <div />;
+          }
+        });
+      `,
+      options: [{ ignoreTranspilerName: true }],
+    },
+    {
+      code: `
+        export default class {
+          render() {
+            return <div>Hello {this.props.name}</div>;
+          }
         }
-      };
-    `,
+      `,
       parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
-      export default {
-        renderHello() {
-          let {name} = this.props;
-          return <div>{name}</div>;
-        }
-      };
-    `,
+        export const Hello = React.memo(function Hello() {
+          return <p />;
+        })
+      `,
       parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
-      import React, { createClass } from 'react';
-      export default createClass({
-        displayName: 'Foo',
-        render() {
-          return <h1>foo</h1>;
+        var Hello = function() {
+          return <div>Hello {this.props.name}</div>;
         }
-      });
-    `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
+      `,
+      parser: parsers.BABEL_ESLINT,
+    },
+    {
+      code: `
+        function Hello() {
+          return <div>Hello {this.props.name}</div>;
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+    },
+    {
+      code: `
+        var Hello = () => {
+          return <div>Hello {this.props.name}</div>;
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+    },
+    {
+      code: `
+        module.exports = function Hello() {
+          return <div>Hello {this.props.name}</div>;
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+    },
+    {
+      code: `
+        function Hello() {
+          return <div>Hello {this.props.name}</div>;
+        }
+        Hello.displayName = 'Hello';
+      `,
+      options: [{ ignoreTranspilerName: true }],
+      parser: parsers.BABEL_ESLINT,
+    },
+    {
+      code: `
+        var Hello = () => {
+          return <div>Hello {this.props.name}</div>;
+        }
+        Hello.displayName = 'Hello';
+      `,
+      options: [{ ignoreTranspilerName: true }],
+      parser: parsers.BABEL_ESLINT,
+    },
+    {
+      code: `
+        var Hello = function() {
+          return <div>Hello {this.props.name}</div>;
+        }
+        Hello.displayName = 'Hello';
+      `,
+      options: [{ ignoreTranspilerName: true }],
+      parser: parsers.BABEL_ESLINT,
+    },
+    {
+      code: `
+        var Mixins = {
+          Greetings: {
+            Hello: function() {
+              return <div>Hello {this.props.name}</div>;
+            }
+          }
+        }
+        Mixins.Greetings.Hello.displayName = 'Hello';
+      `,
+      options: [{ ignoreTranspilerName: true }],
+      parser: parsers.BABEL_ESLINT,
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          render: function() {
+            return <div>{this._renderHello()}</div>;
+          },
+          _renderHello: function() {
+            return <span>Hello {this.props.name}</span>;
+          }
+        });
+      `,
+      parser: parsers.BABEL_ESLINT,
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          displayName: 'Hello',
+          render: function() {
+            return <div>{this._renderHello()}</div>;
+          },
+          _renderHello: function() {
+            return <span>Hello {this.props.name}</span>;
+          }
+        });
+      `,
+      options: [{ ignoreTranspilerName: true }],
+      parser: parsers.BABEL_ESLINT,
+    },
+    {
+      code: `
+        const Mixin = {
+          Button() {
+            return (
+              <button />
+            );
+          }
+        };
+      `,
+      parser: parsers.BABEL_ESLINT,
+    },
+    {
+      code: `
+        var obj = {
+          pouf: function() {
+            return any
+          }
+        };
+      `,
+      options: [{ ignoreTranspilerName: true }],
+      parser: parsers.BABEL_ESLINT,
+    },
+    {
+      code: `
+        var obj = {
+          pouf: function() {
+            return any
+          }
+        };
+      `,
+      parser: parsers.BABEL_ESLINT,
+    },
+    {
+      code: `
+        export default {
+          renderHello() {
+            let {name} = this.props;
+            return <div>{name}</div>;
+          }
+        };
+      `,
+      parser: parsers.BABEL_ESLINT,
+    },
+    {
+      code: `
+        import React, { createClass } from 'react';
+        export default createClass({
+          displayName: 'Foo',
+          render() {
+            return <h1>foo</h1>;
+          }
+        });
+      `,
+      options: [{ ignoreTranspilerName: true }],
       settings: {
         react: {
           createClass: 'createClass',
@@ -394,14 +368,14 @@ ruleTester.run('display-name', rule, {
     },
     {
       code: `
-      import React, {Component} from "react";
-      function someDecorator(ComposedComponent) {
-        return class MyDecorator extends Component {
-          render() {return <ComposedComponent {...this.props} />;}
-        };
-      }
-      module.exports = someDecorator;
-    `,
+        import React, {Component} from "react";
+        function someDecorator(ComposedComponent) {
+          return class MyDecorator extends Component {
+            render() {return <ComposedComponent {...this.props} />;}
+          };
+        }
+        module.exports = someDecorator;
+      `,
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -437,18 +411,6 @@ ruleTester.run('display-name', rule, {
         }
         module.exports = someDecorator;
       `,
-    },
-    {
-      code: `
-        import React, {Component} from "react";
-        function someDecorator(ComposedComponent) {
-          return class MyDecorator extends Component {
-            render() {return <ComposedComponent {...this.props} />;}
-          };
-        }
-        module.exports = someDecorator;
-      `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -572,7 +534,8 @@ ruleTester.run('display-name', rule, {
           return <div>{a} {listItem}</div>;
         };
       `,
-    }],
+    },
+  ],
 
   invalid: [
     {
@@ -583,9 +546,7 @@ ruleTester.run('display-name', rule, {
           }
         });
       `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
+      options: [{ ignoreTranspilerName: true }],
       errors: [
         {
           messageId: 'noDisplayName',
@@ -599,17 +560,13 @@ ruleTester.run('display-name', rule, {
           }
         });
       `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
+      options: [{ ignoreTranspilerName: true }],
       settings: {
         react: {
           createClass: 'createClass',
         },
       },
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -619,12 +576,8 @@ ruleTester.run('display-name', rule, {
           }
         });
       `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      options: [{ ignoreTranspilerName: true }],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -634,12 +587,8 @@ ruleTester.run('display-name', rule, {
           }
         }
       `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      options: [{ ignoreTranspilerName: true }],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -652,12 +601,8 @@ ruleTester.run('display-name', rule, {
         }
         module.exports = HelloComponent();
       `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      options: [{ ignoreTranspilerName: true }],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -666,9 +611,7 @@ ruleTester.run('display-name', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -677,9 +620,7 @@ ruleTester.run('display-name', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -690,9 +631,7 @@ ruleTester.run('display-name', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -705,13 +644,9 @@ ruleTester.run('display-name', rule, {
           }
         });
       `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
+      options: [{ ignoreTranspilerName: true }],
       parser: parsers.BABEL_ESLINT,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -724,9 +659,7 @@ ruleTester.run('display-name', rule, {
           }
         });
       `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
+      options: [{ ignoreTranspilerName: true }],
       parser: parsers.BABEL_ESLINT,
       settings: {
         react: {
@@ -734,9 +667,7 @@ ruleTester.run('display-name', rule, {
           createClass: 'createClass',
         },
       },
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -750,18 +681,14 @@ ruleTester.run('display-name', rule, {
           }
         });
       `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
+      options: [{ ignoreTranspilerName: true }],
       settings: {
         react: {
           createClass: 'createClass',
         },
       },
       parser: parsers.BABEL_ESLINT,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -773,26 +700,20 @@ ruleTester.run('display-name', rule, {
           }
         };
       `,
-      options: [
-        { ignoreTranspilerName: true },
-      ],
+      options: [{ ignoreTranspilerName: true }],
       parser: parsers.BABEL_ESLINT,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
-      function Hof() {
-        return function () {
-          return <div />
+        function Hof() {
+          return function () {
+            return <div />
+          }
         }
-      }
-    `,
+      `,
       parser: parsers.BABEL_ESLINT,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -802,9 +723,7 @@ ruleTester.run('display-name', rule, {
         };
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -814,9 +733,7 @@ ruleTester.run('display-name', rule, {
           return <div>Hello {world}</div>
         })
       `,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -826,9 +743,7 @@ ruleTester.run('display-name', rule, {
           return <div>Hello {world}</div>
         })
       `,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -838,9 +753,7 @@ ruleTester.run('display-name', rule, {
           return <div ref={ref}>Hello {world}</div>
         })
       `,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -850,9 +763,7 @@ ruleTester.run('display-name', rule, {
           return <div ref={ref}>Hello {world}</div>
         })
       `,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
     // Only trigger an error for the outer React.memo
@@ -881,9 +792,7 @@ ruleTester.run('display-name', rule, {
         })
         )
       `,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
     // React does not handle the result of forwardRef being passed into memo
@@ -898,9 +807,7 @@ ruleTester.run('display-name', rule, {
           })
         )
       `,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -911,9 +818,7 @@ ruleTester.run('display-name', rule, {
         };
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -924,9 +829,7 @@ ruleTester.run('display-name', rule, {
         };
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -944,9 +847,7 @@ ruleTester.run('display-name', rule, {
           return React.createElement("div", {}, "text content");
         }
       `,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -965,9 +866,7 @@ ruleTester.run('display-name', rule, {
           return React.createElement("div", {}, "text content");
         }
       `,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -987,9 +886,7 @@ ruleTester.run('display-name', rule, {
           }
         }
       `,
-      errors: [
-        { messageId: 'noDisplayName' },
-      ],
+      errors: [{ messageId: 'noDisplayName' }],
     },
     {
       code: `
@@ -1027,5 +924,6 @@ ruleTester.run('display-name', rule, {
       errors: [
         { message: 'Component definition is missing display name' },
       ],
-    }],
+    },
+  ],
 });

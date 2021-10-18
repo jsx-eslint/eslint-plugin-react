@@ -199,7 +199,8 @@ ruleTester.run('jsx-sort-default-props', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       options: [{ ignoreCase: true }],
-    }, semver.satisfies(babelEslintVersion, '< 9') ? {
+    },
+    semver.satisfies(babelEslintVersion, '< 9') ? {
     // Invalid code, should not be validated
       code: `
         class Component extends React.Component {

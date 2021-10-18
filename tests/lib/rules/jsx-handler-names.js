@@ -33,7 +33,7 @@ ruleTester.run('jsx-handler-names', rule, {
       code: '<TestComponent onChange={this.handleChange} />',
     },
     {
-    // TODO: make this an invalid test
+      // TODO: make this an invalid test
       code: '<TestComponent onChange={this.handle123Change} />',
     },
     {
@@ -180,7 +180,8 @@ ruleTester.run('jsx-handler-names', rule, {
     {
       code: '<TestComponent someProp={props.onChange} />',
       options: [{ eventHandlerPropPrefix: false }],
-    }],
+    },
+  ],
 
   invalid: [
     {
@@ -367,5 +368,6 @@ ruleTester.run('jsx-handler-names', rule, {
           data: { propKey: 'onChange', handlerPrefix: 'handle' },
         },
       ],
-    }],
+    },
+  ],
 });

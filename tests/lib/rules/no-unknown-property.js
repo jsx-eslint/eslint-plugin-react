@@ -99,7 +99,8 @@ ruleTester.run('no-unknown-property', rule, {
             name: 'http-equiv',
             standardName: 'httpEquiv',
           },
-        }],
+        },
+      ],
     },
     {
       code: '<div accesskey="bar"></div>;',

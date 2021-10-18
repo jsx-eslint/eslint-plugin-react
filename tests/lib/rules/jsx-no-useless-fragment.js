@@ -45,9 +45,15 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       code: '<>{"moo"} </>',
       parser: parsers.BABEL_ESLINT,
     },
-    '<NotFragment />',
-    '<React.NotFragment />',
-    '<NotReact.Fragment />',
+    {
+      code: '<NotFragment />',
+    },
+    {
+      code: '<React.NotFragment />',
+    },
+    {
+      code: '<NotReact.Fragment />',
+    },
     {
       code: '<Foo><><div /><div /></></Foo>',
       parser: parsers.BABEL_ESLINT,

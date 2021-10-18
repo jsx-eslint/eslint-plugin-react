@@ -40,159 +40,159 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
   valid: [
     {
       code: `
-         <App />
-       `,
+        <App />
+      `,
     },
     {
       code: `
-         <App foo />
-       `,
+        <App foo />
+      `,
     },
     {
       code: `
-         <App
-           foo
-         />
-       `,
+        <App
+          foo
+        />
+      `,
     },
     {
       code: `
-         <App foo />
-       `,
+        <App foo />
+      `,
       options: [{ location: 'after-props' }],
     },
     {
       code: `
-         <App foo />
-       `,
+        <App foo />
+      `,
       options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
-         <App foo />
-       `,
+        <App foo />
+      `,
       options: [{ location: 'line-aligned' }],
     },
     {
       code: `
-         <App
-           foo />
-       `,
+        <App
+          foo />
+      `,
       options: ['after-props'],
     },
     {
       code: `
-         <App
-           foo
-           />
-       `,
+        <App
+          foo
+          />
+      `,
       options: ['props-aligned'],
     },
     {
       code: `
-         <App
-           foo />
-       `,
+        <App
+          foo />
+      `,
       options: [{ location: 'after-props' }],
     },
     {
       code: `
-         <App
-           foo
-         />
-       `,
+        <App
+          foo
+        />
+      `,
       options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
-         <App
-           foo
-         />
-       `,
+        <App
+          foo
+        />
+      `,
       options: [{ location: 'line-aligned' }],
     },
     {
       code: `
-         <App
-           foo
-           />
-       `,
+        <App
+          foo
+          />
+      `,
       options: [{ location: 'props-aligned' }],
     },
     {
       code: `
-         <App foo></App>
-       `,
+        <App foo></App>
+      `,
     },
     {
       code: `
-         <App
-           foo
-         ></App>
-       `,
+        <App
+          foo
+        ></App>
+      `,
       options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
-         <App
-           foo
-         ></App>
-       `,
+        <App
+          foo
+        ></App>
+      `,
       options: [{ location: 'line-aligned' }],
     },
     {
       code: `
-         <App
-           foo
-           ></App>
-       `,
+        <App
+          foo
+          ></App>
+      `,
       options: [{ location: 'props-aligned' }],
     },
     {
       code: `
-         <App
-           foo={function() {
-             console.log('bar');
-           }} />
-       `,
+        <App
+          foo={function() {
+            console.log('bar');
+          }} />
+      `,
       options: [{ location: 'after-props' }],
     },
     {
       code: `
-         <App
-           foo={function() {
-             console.log('bar');
-           }}
-           />
-       `,
+        <App
+          foo={function() {
+            console.log('bar');
+          }}
+          />
+      `,
       options: [{ location: 'props-aligned' }],
     },
     {
       code: `
-         <App
-           foo={function() {
-             console.log('bar');
-           }}
-         />
-       `,
+        <App
+          foo={function() {
+            console.log('bar');
+          }}
+        />
+      `,
       options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
-         <App
-           foo={function() {
-             console.log('bar');
-           }}
-         />
-       `,
+        <App
+          foo={function() {
+            console.log('bar');
+          }}
+        />
+      `,
       options: [{ location: 'line-aligned' }],
     },
     {
       code: `
-         <App foo={function() {
-           console.log('bar');
-         }}/>
-       `,
+        <App foo={function() {
+          console.log('bar');
+        }}/>
+      `,
       options: [{ location: 'after-props' }],
     },
     {
@@ -201,171 +201,171 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
                 console.log('bar');
               }}
               />
-       `,
+      `,
       options: [{ location: 'props-aligned' }],
     },
     {
       code: `
-         <App foo={function() {
-           console.log('bar');
-         }}
-         />
-       `,
+        <App foo={function() {
+          console.log('bar');
+        }}
+        />
+      `,
       options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
-         <App foo={function() {
-           console.log('bar');
-         }}
-         />
-       `,
+        <App foo={function() {
+          console.log('bar');
+        }}
+        />
+      `,
       options: [{ location: 'line-aligned' }],
     },
     {
       code: `
-         <Provider store>
-           <App
-             foo />
-         </Provider>
-       `,
+        <Provider store>
+          <App
+            foo />
+        </Provider>
+      `,
       options: [{ selfClosing: 'after-props' }],
     },
     {
       code: `
-         <Provider
-           store
-         >
-           <App
-             foo />
-         </Provider>
-       `,
+        <Provider
+          store
+        >
+          <App
+            foo />
+        </Provider>
+      `,
       options: [{ selfClosing: 'after-props' }],
     },
     {
       code: `
-         <Provider
-           store>
-           <App
-             foo
-           />
-         </Provider>
-       `,
+        <Provider
+          store>
+          <App
+            foo
+          />
+        </Provider>
+      `,
       options: [{ nonEmpty: 'after-props' }],
     },
     {
       code: `
-         <Provider store>
-           <App
-             foo
-             />
-         </Provider>
-       `,
+        <Provider store>
+          <App
+            foo
+            />
+        </Provider>
+      `,
       options: [{ selfClosing: 'props-aligned' }],
     },
     {
       code: `
-         <Provider
-           store
-           >
-           <App
-             foo
-           />
-         </Provider>
-       `,
+        <Provider
+          store
+          >
+          <App
+            foo
+          />
+        </Provider>
+      `,
       options: [{ nonEmpty: 'props-aligned' }],
     },
     {
       code: `
-         var x = function() {
-           return <App
-             foo
-                  >
-               bar
-                  </App>
-         }
-       `,
+        var x = function() {
+          return <App
+            foo
+                 >
+              bar
+                 </App>
+        }
+      `,
       options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
-         var x = function() {
-           return <App
-             foo
-                  />
-         }
-       `,
-      options: [{ location: 'tag-aligned' }],
-    },
-    {
-      code: `
-         var x = <App
-           foo
+        var x = function() {
+          return <App
+            foo
                  />
-       `,
+        }
+      `,
       options: [{ location: 'tag-aligned' }],
     },
     {
       code: `
-         var x = function() {
-           return <App
-             foo={function() {
-               console.log('bar');
-             }}
-           />
-         }
-       `,
+        var x = <App
+          foo
+                />
+      `,
+      options: [{ location: 'tag-aligned' }],
+    },
+    {
+      code: `
+        var x = function() {
+          return <App
+            foo={function() {
+              console.log('bar');
+            }}
+          />
+        }
+      `,
       options: [{ location: 'line-aligned' }],
     },
     {
       code: `
-         var x = <App
-           foo={function() {
-             console.log('bar');
-           }}
-         />
-       `,
+        var x = <App
+          foo={function() {
+            console.log('bar');
+          }}
+        />
+      `,
       options: [{ location: 'line-aligned' }],
     },
     {
       code: `
-         <Provider
-           store
-         >
-           <App
-             foo={function() {
-               console.log('bar');
-             }}
-           />
-         </Provider>
-       `,
+        <Provider
+          store
+        >
+          <App
+            foo={function() {
+              console.log('bar');
+            }}
+          />
+        </Provider>
+      `,
       options: [{ location: 'line-aligned' }],
     },
     {
       code: `
-         <Provider
-           store
-         >
-           {baz && <App
-             foo={function() {
-               console.log('bar');
-             }}
-           />}
-         </Provider>
-       `,
+        <Provider
+          store
+        >
+          {baz && <App
+            foo={function() {
+              console.log('bar');
+            }}
+          />}
+        </Provider>
+      `,
       options: [{ location: 'line-aligned' }],
     },
     {
       code: `
-         <App>
-           <Foo
-             bar
-           >
-           </Foo>
-           <Foo
-             bar />
-         </App>
-       `,
+        <App>
+          <Foo
+            bar
+          >
+          </Foo>
+          <Foo
+            bar />
+        </App>
+      `,
       options: [
         {
           nonEmpty: false,
@@ -375,15 +375,15 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     },
     {
       code: `
-         <App>
-           <Foo
-             bar>
-           </Foo>
-           <Foo
-             bar
-           />
-         </App>
-       `,
+        <App>
+          <Foo
+            bar>
+          </Foo>
+          <Foo
+            bar
+          />
+        </App>
+      `,
       options: [
         {
           nonEmpty: 'after-props',
@@ -393,24 +393,15 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     },
     {
       code: `
-         <div className={[
-           "some",
-           "stuff",
-           2 ]}
-         >
-           Some text
-         </div>
-       `,
+        <div className={[
+          "some",
+          "stuff",
+          2 ]}
+        >
+          Some text
+        </div>
+      `,
       options: [{ location: 'tag-aligned' }],
-    },
-    {
-      code: `
-         <App foo={function() {
-               console.log('bar');
-             }}
-              />
-       `,
-      options: [{ location: 'props-aligned' }],
     },
   ],
 

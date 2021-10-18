@@ -38,8 +38,8 @@ ruleTester.run('jsx-closing-tag-location', rule, {
     },
     {
       code: `
-      <App>foo</App>
-    `,
+        <App>foo</App>
+      `,
     },
     {
       code: `

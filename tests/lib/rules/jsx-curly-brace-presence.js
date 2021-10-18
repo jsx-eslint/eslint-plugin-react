@@ -86,20 +86,20 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     },
     {
       code: `
-      <React.Fragment>
-        foo{' '}
-        <span>bar</span>
-      </React.Fragment>
-    `,
+        <React.Fragment>
+          foo{' '}
+          <span>bar</span>
+        </React.Fragment>
+      `,
       options: [{ children: 'never' }],
     },
     {
       code: `
-      <>
-        foo{' '}
-        <span>bar</span>
-      </>
-    `,
+        <>
+          foo{' '}
+          <span>bar</span>
+        </>
+      `,
       parser: parsers.BABEL_ESLINT,
       options: [{ children: 'never' }],
     },

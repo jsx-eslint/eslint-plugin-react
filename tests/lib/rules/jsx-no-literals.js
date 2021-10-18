@@ -42,7 +42,12 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{ noStrings: true, allowedStrings: ['button', 'submit'] }],
+      options: [
+        {
+          noStrings: true,
+          allowedStrings: ['button', 'submit'],
+        },
+      ],
     },
     {
       code: `
@@ -56,9 +61,15 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{ noStrings: true, allowedStrings: ['button', 'submit'] }],
+      options: [
+        {
+          noStrings: true,
+          allowedStrings: ['button', 'submit'],
+        },
+      ],
       parser: parsers.BABEL_ESLINT,
-    }, parsers.TS([
+    },
+    parsers.TS([
       {
         code: `
           class Comp1 extends Component {
@@ -476,7 +487,9 @@ ruleTester.run('jsx-no-literals', rule, {
         {
           messageId: 'literalNotInJSXExpression',
           data: {
-            text: 'asdjfl\n                test\n                foo',
+            text: `asdjfl
+                test
+                foo`,
           },
         },
       ],

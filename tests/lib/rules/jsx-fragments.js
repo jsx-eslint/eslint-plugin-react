@@ -271,5 +271,6 @@ ruleTester.run('jsx-fragments', rule, {
           data: { react: 'Act', fragment: 'Frag' },
         },
       ],
-    }],
+    },
+  ],
 });

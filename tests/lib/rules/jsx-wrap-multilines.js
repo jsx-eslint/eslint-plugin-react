@@ -1365,15 +1365,17 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     {
       code: ARROW_WITH_EXPORT,
       output: ARROW_WITH_EXPORT_AUTOFIX,
-      options: [{
-        declaration: 'parens-new-line',
-        assignment: 'parens-new-line',
-        return: 'parens-new-line',
-        arrow: 'parens-new-line',
-        condition: 'parens-new-line',
-        logical: 'ignore',
-        prop: 'ignore',
-      }],
+      options: [
+        {
+          declaration: 'parens-new-line',
+          assignment: 'parens-new-line',
+          return: 'parens-new-line',
+          arrow: 'parens-new-line',
+          condition: 'parens-new-line',
+          logical: 'ignore',
+          prop: 'ignore',
+        },
+      ],
       errors: [{ messageId: 'missingParens' }],
     },
     {
@@ -1402,5 +1404,6 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       `,
       options: [{ declaration: 'parens-new-line' }],
       errors: [{ messageId: 'missingParens' }],
-    }],
+    },
+  ],
 });

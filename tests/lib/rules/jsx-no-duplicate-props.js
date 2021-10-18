@@ -49,14 +49,38 @@ ruleTester.run('jsx-no-duplicate-props', rule, {
     { code: '<App A a />;' },
     { code: '<App A b a />;' },
     { code: '<App A="a" b="b" B="B" />;' },
-    { code: '<App a:b="c" />;', options: ignoreCaseArgs },
+    {
+      code: '<App a:b="c" />;',
+      options: ignoreCaseArgs,
+    },
   ],
   invalid: [
-    { code: '<App a a />;', errors: [expectedError] },
-    { code: '<App A b c A />;', errors: [expectedError] },
-    { code: '<App a="a" b="b" a="a" />;', errors: [expectedError] },
-    { code: '<App A a />;', options: ignoreCaseArgs, errors: [expectedError] },
-    { code: '<App a b c A />;', options: ignoreCaseArgs, errors: [expectedError] },
-    { code: '<App A="a" b="b" B="B" />;', options: ignoreCaseArgs, errors: [expectedError] },
+    {
+      code: '<App a a />;',
+      errors: [expectedError],
+    },
+    {
+      code: '<App A b c A />;',
+      errors: [expectedError],
+    },
+    {
+      code: '<App a="a" b="b" a="a" />;',
+      errors: [expectedError],
+    },
+    {
+      code: '<App A a />;',
+      options: ignoreCaseArgs,
+      errors: [expectedError],
+    },
+    {
+      code: '<App a b c A />;',
+      options: ignoreCaseArgs,
+      errors: [expectedError],
+    },
+    {
+      code: '<App A="a" b="b" B="B" />;',
+      options: ignoreCaseArgs,
+      errors: [expectedError],
+    },
   ],
 });

@@ -329,12 +329,14 @@ eslintTester.run('no-unused-state', rule, {
       `,
     },
     {
-      code: `class ClassPropertyStateTest extends React.Component {
+      code: `
+        class ClassPropertyStateTest extends React.Component {
           state = { foo: 0 };
           render() {
             return <SomeComponent foo={this.state.foo} />;
           }
-        }`,
+        }
+      `,
       parser: parsers.BABEL_ESLINT,
     },
     parsers.TS([
@@ -361,7 +363,8 @@ eslintTester.run('no-unused-state', rule, {
           render() {
             return <SomeComponent foo={this.state?.foo} />;
           }
-        }`,
+        }
+      `,
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -377,7 +380,8 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
     },
-    `class DestructuringTest extends React.Component {
+    `
+      class DestructuringTest extends React.Component {
         constructor() {
           this.state = { foo: 0 };
         }
@@ -385,8 +389,10 @@ eslintTester.run('no-unused-state', rule, {
           const {foo: myFoo} = this.state;
           return <SomeComponent foo={myFoo} />;
         }
-      }`,
-    `class ShorthandDestructuringTest extends React.Component {
+      }
+    `,
+    `
+      class ShorthandDestructuringTest extends React.Component {
         constructor() {
           this.state = { foo: 0 };
         }
@@ -394,8 +400,10 @@ eslintTester.run('no-unused-state', rule, {
           const {foo} = this.state;
           return <SomeComponent foo={foo} />;
         }
-      }`,
-    `class AliasDeclarationTest extends React.Component {
+      }
+    `,
+    `
+      class AliasDeclarationTest extends React.Component {
         constructor() {
           this.state = { foo: 0 };
         }
@@ -403,8 +411,10 @@ eslintTester.run('no-unused-state', rule, {
           const state = this.state;
           return <SomeComponent foo={state.foo} />;
         }
-      }`,
-    `class AliasAssignmentTest extends React.Component {
+      }
+    `,
+    `
+      class AliasAssignmentTest extends React.Component {
         constructor() {
           this.state = { foo: 0 };
         }
@@ -413,8 +423,10 @@ eslintTester.run('no-unused-state', rule, {
           state = this.state;
           return <SomeComponent foo={state.foo} />;
         }
-      }`,
-    `class DestructuringAliasTest extends React.Component {
+      }
+    `,
+    `
+      class DestructuringAliasTest extends React.Component {
         constructor() {
           this.state = { foo: 0 };
         }
@@ -422,8 +434,10 @@ eslintTester.run('no-unused-state', rule, {
           const {state: myState} = this;
           return <SomeComponent foo={myState.foo} />;
         }
-      }`,
-    `class ShorthandDestructuringAliasTest extends React.Component {
+      }
+    `,
+    `
+      class ShorthandDestructuringAliasTest extends React.Component {
         constructor() {
           this.state = { foo: 0 };
         }
@@ -431,8 +445,10 @@ eslintTester.run('no-unused-state', rule, {
           const {state} = this;
           return <SomeComponent foo={state.foo} />;
         }
-      }`,
-    `class RestPropertyTest extends React.Component {
+      }
+    `,
+    `
+      class RestPropertyTest extends React.Component {
         constructor() {
           this.state = {
             foo: 0,
@@ -443,7 +459,8 @@ eslintTester.run('no-unused-state', rule, {
           const {foo, ...others} = this.state;
           return <SomeComponent foo={foo} bar={others.bar} />;
         }
-      }`,
+      }
+    `,
     {
       code: `
         class DeepDestructuringTest extends React.Component {
@@ -458,7 +475,8 @@ eslintTester.run('no-unused-state', rule, {
     },
     // A cleverer analysis might recognize that the following should be errors,
     // but they're out of scope for this lint rule.
-    `class MethodArgFalseNegativeTest extends React.Component {
+    `
+      class MethodArgFalseNegativeTest extends React.Component {
         constructor() {
           this.state = { foo: 0 };
         }
@@ -467,8 +485,10 @@ eslintTester.run('no-unused-state', rule, {
           this.consumeFoo(this.state.foo);
           return <SomeComponent />;
         }
-      }`,
-    `class AssignedToObjectFalseNegativeTest extends React.Component {
+      }
+    `,
+    `
+      class AssignedToObjectFalseNegativeTest extends React.Component {
         constructor() {
           this.state = { foo: 0 };
         }
@@ -476,8 +496,10 @@ eslintTester.run('no-unused-state', rule, {
           const obj = { foo: this.state.foo, bar: 0 };
           return <SomeComponent bar={obj.bar} />;
         }
-      }`,
-    `class ComputedAccessFalseNegativeTest extends React.Component {
+      }
+    `,
+    `
+      class ComputedAccessFalseNegativeTest extends React.Component {
         constructor() {
           this.state = { foo: 0, bar: 1 };
         }
@@ -485,16 +507,20 @@ eslintTester.run('no-unused-state', rule, {
           const bar = 'bar';
           return <SomeComponent bar={this.state[bar]} />;
         }
-      }`,
-    `class JsxSpreadFalseNegativeTest extends React.Component {
+      }
+    `,
+    `
+      class JsxSpreadFalseNegativeTest extends React.Component {
         constructor() {
           this.state = { foo: 0 };
         }
         render() {
           return <SomeComponent {...this.state} />;
         }
-      }`,
-    `class AliasedJsxSpreadFalseNegativeTest extends React.Component {
+      }
+    `,
+    `
+      class AliasedJsxSpreadFalseNegativeTest extends React.Component {
         constructor() {
           this.state = { foo: 0 };
         }
@@ -502,8 +528,10 @@ eslintTester.run('no-unused-state', rule, {
           const state = this.state;
           return <SomeComponent {...state} />;
         }
-      }`,
-    `class ObjectSpreadFalseNegativeTest extends React.Component {
+      }
+    `,
+    `
+      class ObjectSpreadFalseNegativeTest extends React.Component {
         constructor() {
           this.state = { foo: 0 };
         }
@@ -511,8 +539,10 @@ eslintTester.run('no-unused-state', rule, {
           const attrs = { ...this.state, foo: 1 };
           return <SomeComponent foo={attrs.foo} />;
         }
-      }`,
-    `class ShadowingFalseNegativeTest extends React.Component {
+      }
+    `,
+    `
+      class ShadowingFalseNegativeTest extends React.Component {
         constructor() {
           this.state = { foo: 0 };
         }
@@ -525,8 +555,10 @@ eslintTester.run('no-unused-state', rule, {
           }
           return <SomeComponent foo={foo} />;
         }
-      }`,
-    `class NonRenderClassMethodFalseNegativeTest extends React.Component {
+      }
+    `,
+    `
+      class NonRenderClassMethodFalseNegativeTest extends React.Component {
         constructor() {
           this.state = { foo: 0, bar: 0 };
         }
@@ -541,7 +573,8 @@ eslintTester.run('no-unused-state', rule, {
         render() {
           return <SomeComponent />;
         }
-      }`,
+      }
+    `,
     {
       code: `
         class TypeCastExpressionSpreadFalseNegativeTest extends React.Component {
@@ -1035,14 +1068,16 @@ eslintTester.run('no-unused-state', rule, {
       errors: getErrorMessages(['true']),
     },
     {
-      code: `var UnusedGetInitialStateMethodTest = createReactClass({
+      code: `
+        var UnusedGetInitialStateMethodTest = createReactClass({
           getInitialState() {
             return { foo: 0 };
           },
           render() {
             return <SomeComponent />;
           }
-        })`,
+        })
+      `,
       errors: getErrorMessages(['foo']),
     },
     {

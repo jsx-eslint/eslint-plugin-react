@@ -2414,16 +2414,16 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-      class Foo extends React.Component {
-        componentDidUpdate() { this.inputRef.focus(); }
-        render() {
-          return (
-            <div>
-              <input ref={(node) => { this.inputRef = node; }} />
-            </div>
-          )
+        class Foo extends React.Component {
+          componentDidUpdate() { this.inputRef.focus(); }
+          render() {
+            return (
+              <div>
+                <input ref={(node) => { this.inputRef = node; }} />
+              </div>
+            )
+          }
         }
-      }
       `,
     },
     {

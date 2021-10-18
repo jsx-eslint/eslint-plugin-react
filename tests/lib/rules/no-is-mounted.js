@@ -26,7 +26,6 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-is-mounted', rule, {
-
   valid: [
     {
       code: `

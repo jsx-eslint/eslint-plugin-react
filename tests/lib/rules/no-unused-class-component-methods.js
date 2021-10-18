@@ -733,11 +733,13 @@ ruleTester.run('no-unused-class-component-methods', rule, {
            }
          }
        `,
-      errors: [{
-        message: 'Unused method or property "foo" of class "ClassAssignPropertyInMethodTest"',
-        line: 4,
-        column: 19,
-      }],
+      errors: [
+        {
+          message: 'Unused method or property "foo" of class "ClassAssignPropertyInMethodTest"',
+          line: 4,
+          column: 19,
+        },
+      ],
     },
     {
       code: `
@@ -748,11 +750,13 @@ ruleTester.run('no-unused-class-component-methods', rule, {
            }
          }
        `,
-      errors: [{
-        message: 'Unused method or property "foo" of class "Foo"',
-        line: 3,
-        column: 12,
-      }],
+      errors: [
+        {
+          message: 'Unused method or property "foo" of class "Foo"',
+          line: 3,
+          column: 12,
+        },
+      ],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -764,11 +768,13 @@ ruleTester.run('no-unused-class-component-methods', rule, {
            }
          }
        `,
-      errors: [{
-        message: 'Unused method or property "foo" of class "Foo"',
-        line: 3,
-        column: 12,
-      }],
+      errors: [
+        {
+          message: 'Unused method or property "foo" of class "Foo"',
+          line: 3,
+          column: 12,
+        },
+      ],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -780,11 +786,13 @@ ruleTester.run('no-unused-class-component-methods', rule, {
            }
          }
        `,
-      errors: [{
-        message: 'Unused method or property "foo" of class "Foo"',
-        line: 3,
-        column: 13,
-      }],
+      errors: [
+        {
+          message: 'Unused method or property "foo" of class "Foo"',
+          line: 3,
+          column: 13,
+        },
+      ],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -796,11 +804,13 @@ ruleTester.run('no-unused-class-component-methods', rule, {
            }
          }
        `,
-      errors: [{
-        message: 'Unused method or property "foo" of class "Foo"',
-        line: 3,
-        column: 13,
-      }],
+      errors: [
+        {
+          message: 'Unused method or property "foo" of class "Foo"',
+          line: 3,
+          column: 13,
+        },
+      ],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -812,11 +822,13 @@ ruleTester.run('no-unused-class-component-methods', rule, {
            }
          }
        `,
-      errors: [{
-        message: 'Unused method or property "foo" of class "Foo"',
-        line: 3,
-        column: 12,
-      }],
+      errors: [
+        {
+          message: 'Unused method or property "foo" of class "Foo"',
+          line: 3,
+          column: 12,
+        },
+      ],
       parser: parsers.BABEL_ESLINT,
     },
     {
@@ -846,11 +858,13 @@ ruleTester.run('no-unused-class-component-methods', rule, {
            }
          }
        `,
-      errors: [{
-        message: 'Unused method or property "foo" of class "Foo"',
-        line: 3,
-        column: 20,
-      }],
+      errors: [
+        {
+          message: 'Unused method or property "foo" of class "Foo"',
+          line: 3,
+          column: 20,
+        },
+      ],
       parser: parsers.TYPESCRIPT_ESLINT,
     },
     {
@@ -862,11 +876,13 @@ ruleTester.run('no-unused-class-component-methods', rule, {
            }
          }
        `,
-      errors: [{
-        message: 'Unused method or property "foo" of class "Foo"',
-        line: 3,
-        column: 20,
-      }],
+      errors: [
+        {
+          message: 'Unused method or property "foo" of class "Foo"',
+          line: 3,
+          column: 20,
+        },
+      ],
       parser: parsers.TYPESCRIPT_ESLINT,
     },
   ],

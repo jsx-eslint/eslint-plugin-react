@@ -29,28 +29,28 @@ const parserOptions = {
 const tests = {
   valid: [
     `
-    <div>
-      <Button>{data.label}</Button>
+      <div>
+        <Button>{data.label}</Button>
 
-      <List />
+        <List />
 
-      <Button>
-        <IconPreview />
-        Button 2
+        <Button>
+          <IconPreview />
+          Button 2
 
-        <span></span>
-      </Button>
+          <span></span>
+        </Button>
 
-      {showSomething === true && <Something />}
+        {showSomething === true && <Something />}
 
-      <Button>Button 3</Button>
+        <Button>Button 3</Button>
 
-      {showSomethingElse === true ? (
-        <SomethingElse />
-      ) : (
-        <ErrorMessage />
-      )}
-    </div>
+        {showSomethingElse === true ? (
+          <SomethingElse />
+        ) : (
+          <ErrorMessage />
+        )}
+      </div>
     `,
   ],
   invalid: [
@@ -86,9 +86,7 @@ const tests = {
           {showSomething === true && <Something />}
         </div>
       `,
-      errors: [{
-        messageId: 'require',
-      }],
+      errors: [{ messageId: 'require' }],
     },
     {
       code: `
@@ -104,9 +102,7 @@ const tests = {
           <Button>{data.label}</Button>
         </div>
       `,
-      errors: [{
-        messageId: 'require',
-      }],
+      errors: [{ messageId: 'require' }],
     },
     {
       code: `
@@ -130,9 +126,7 @@ const tests = {
           )}
         </div>
       `,
-      errors: [{
-        messageId: 'require',
-      }],
+      errors: [{ messageId: 'require' }],
     },
     {
       code: `
@@ -201,9 +195,7 @@ const advanceFeatTest = {
           <span>Should be in new line</span>
         </>
       `,
-      errors: [
-        { messageId: 'require' },
-      ],
+      errors: [{ messageId: 'require' }],
     },
   ],
 };
@@ -256,9 +248,7 @@ const preventionTests = {
           )}
         </div>
       `,
-      options: [{
-        prevent: true,
-      }],
+      options: [{ prevent: true }],
     },
   ],
   invalid: [
@@ -276,12 +266,8 @@ const preventionTests = {
           <List />
         </div>
       `,
-      errors: [{
-        messageId: 'prevent',
-      }],
-      options: [{
-        prevent: true,
-      }],
+      errors: [{ messageId: 'prevent' }],
+      options: [{ prevent: true }],
     },
     {
       output: `
@@ -297,12 +283,8 @@ const preventionTests = {
           {showSomething === true && <Something />}
         </div>
       `,
-      errors: [{
-        messageId: 'prevent',
-      }],
-      options: [{
-        prevent: true,
-      }],
+      errors: [{ messageId: 'prevent' }],
+      options: [{ prevent: true }],
     },
     {
       output: `
@@ -318,12 +300,8 @@ const preventionTests = {
           <Button>{data.label}</Button>
         </div>
       `,
-      errors: [{
-        messageId: 'prevent',
-      }],
-      options: [{
-        prevent: true,
-      }],
+      errors: [{ messageId: 'prevent' }],
+      options: [{ prevent: true }],
     },
     {
       output: `
@@ -347,12 +325,8 @@ const preventionTests = {
           )}
         </div>
       `,
-      errors: [{
-        messageId: 'prevent',
-      }],
-      options: [{
-        prevent: true,
-      }],
+      errors: [{ messageId: 'prevent' }],
+      options: [{ prevent: true }],
     },
     {
       output: `
@@ -387,9 +361,7 @@ const preventionTests = {
         { messageId: 'prevent' },
         { messageId: 'prevent' },
       ],
-      options: [{
-        prevent: true,
-      }],
+      options: [{ prevent: true }],
     },
   ],
 };
@@ -404,9 +376,7 @@ const preventionAdvanceFeatTest = {
           <span>Should be in new line</span>
         </>
       `,
-      options: [{
-        prevent: true,
-      }],
+      options: [{ prevent: true }],
     },
   ],
   invalid: [
@@ -426,12 +396,8 @@ const preventionAdvanceFeatTest = {
           <span>Should be in new line</span>
         </>
       `,
-      errors: [
-        { messageId: 'prevent' },
-      ],
-      options: [{
-        prevent: true,
-      }],
+      errors: [{ messageId: 'prevent' }],
+      options: [{ prevent: true }],
     },
   ],
 };

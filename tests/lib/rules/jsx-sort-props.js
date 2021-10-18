@@ -53,52 +53,40 @@ const expectedInvalidReservedFirstError = {
   messageId: 'noUnreservedProps',
   data: { unreservedWords: 'notReserved' },
 };
-const callbacksLastArgs = [{
-  callbacksLast: true,
-}];
-const ignoreCaseAndCallbackLastArgs = [{
-  callbacksLast: true,
-  ignoreCase: true,
-}];
-const shorthandFirstArgs = [{
-  shorthandFirst: true,
-}];
-const shorthandLastArgs = [{
-  shorthandLast: true,
-}];
-const shorthandAndCallbackLastArgs = [{
-  callbacksLast: true,
-  shorthandLast: true,
-}];
-const ignoreCaseArgs = [{
-  ignoreCase: true,
-}];
-const noSortAlphabeticallyArgs = [{
-  noSortAlphabetically: true,
-}];
-const sortAlphabeticallyArgs = [{
-  noSortAlphabetically: false,
-}];
-const reservedFirstAsBooleanArgs = [{
-  reservedFirst: true,
-}];
-const reservedFirstAsArrayArgs = [{
-  reservedFirst: ['children', 'dangerouslySetInnerHTML', 'key'],
-}];
-const reservedFirstWithNoSortAlphabeticallyArgs = [{
-  noSortAlphabetically: true,
-  reservedFirst: true,
-}];
-const reservedFirstWithShorthandLast = [{
-  reservedFirst: true,
-  shorthandLast: true,
-}];
-const reservedFirstAsEmptyArrayArgs = [{
-  reservedFirst: [],
-}];
-const reservedFirstAsInvalidArrayArgs = [{
-  reservedFirst: ['notReserved'],
-}];
+const callbacksLastArgs = [{ callbacksLast: true }];
+const ignoreCaseAndCallbackLastArgs = [
+  {
+    callbacksLast: true,
+    ignoreCase: true,
+  },
+];
+const shorthandFirstArgs = [{ shorthandFirst: true }];
+const shorthandLastArgs = [{ shorthandLast: true }];
+const shorthandAndCallbackLastArgs = [
+  {
+    callbacksLast: true,
+    shorthandLast: true,
+  },
+];
+const ignoreCaseArgs = [{ ignoreCase: true }];
+const noSortAlphabeticallyArgs = [{ noSortAlphabetically: true }];
+const sortAlphabeticallyArgs = [{ noSortAlphabetically: false }];
+const reservedFirstAsBooleanArgs = [{ reservedFirst: true }];
+const reservedFirstAsArrayArgs = [{ reservedFirst: ['children', 'dangerouslySetInnerHTML', 'key'] }];
+const reservedFirstWithNoSortAlphabeticallyArgs = [
+  {
+    noSortAlphabetically: true,
+    reservedFirst: true,
+  },
+];
+const reservedFirstWithShorthandLast = [
+  {
+    reservedFirst: true,
+    shorthandLast: true,
+  },
+];
+const reservedFirstAsEmptyArrayArgs = [{ reservedFirst: [] }];
+const reservedFirstAsInvalidArrayArgs = [{ reservedFirst: ['notReserved'] }];
 
 ruleTester.run('jsx-sort-props', rule, {
   valid: [
@@ -248,33 +236,33 @@ ruleTester.run('jsx-sort-props', rule, {
     },
     {
       code: `
-      <App
-        a={true}
-        z
-        r
-        _onClick={function(){}}
-        onHandle={function(){}}
-        {...this.props}
-        b={false}
-        {...otherProps}
-      >
-        {test}
-      </App>
-    `,
+        <App
+          a={true}
+          z
+          r
+          _onClick={function(){}}
+          onHandle={function(){}}
+          {...this.props}
+          b={false}
+          {...otherProps}
+        >
+          {test}
+        </App>
+      `,
       output: `
-      <App
-        _onClick={function(){}}
-        a={true}
-        onHandle={function(){}}
-        r
-        z
-        {...this.props}
-        b={false}
-        {...otherProps}
-      >
-        {test}
-      </App>
-    `,
+        <App
+          _onClick={function(){}}
+          a={true}
+          onHandle={function(){}}
+          r
+          z
+          {...this.props}
+          b={false}
+          {...otherProps}
+        >
+          {test}
+        </App>
+      `,
       errors: 3,
     },
     {
@@ -283,93 +271,101 @@ ruleTester.run('jsx-sort-props', rule, {
       errors: 1,
     },
     {
-      code: `<List
-        className={className}
-        onStageAnswer={onStageAnswer}
-        onCommitAnswer={onCommitAnswer}
-        isFocused={isFocused}
-        direction={direction}
-        allowMultipleSelection={allowMultipleSelection}
-        measureLongestChildNode={measureLongestChildNode}
-        layoutItemsSize={layoutItemsSize}
-        handleAppScroll={handleAppScroll}
-        isActive={isActive}
-        resetSelection={resetSelection}
-        onKeyboardChoiceHovered={onKeyboardChoiceHovered}
-        keyboardShortcutType
-      />`,
-      output: `<List
-        allowMultipleSelection={allowMultipleSelection}
-        className={className}
-        direction={direction}
-        handleAppScroll={handleAppScroll}
-        isActive={isActive}
-        isFocused={isFocused}
-        keyboardShortcutType
-        layoutItemsSize={layoutItemsSize}
-        measureLongestChildNode={measureLongestChildNode}
-        onCommitAnswer={onCommitAnswer}
-        onKeyboardChoiceHovered={onKeyboardChoiceHovered}
-        onStageAnswer={onStageAnswer}
-        resetSelection={resetSelection}
-      />`,
+      code: `
+        <List
+          className={className}
+          onStageAnswer={onStageAnswer}
+          onCommitAnswer={onCommitAnswer}
+          isFocused={isFocused}
+          direction={direction}
+          allowMultipleSelection={allowMultipleSelection}
+          measureLongestChildNode={measureLongestChildNode}
+          layoutItemsSize={layoutItemsSize}
+          handleAppScroll={handleAppScroll}
+          isActive={isActive}
+          resetSelection={resetSelection}
+          onKeyboardChoiceHovered={onKeyboardChoiceHovered}
+          keyboardShortcutType
+        />
+      `,
+      output: `
+        <List
+          allowMultipleSelection={allowMultipleSelection}
+          className={className}
+          direction={direction}
+          handleAppScroll={handleAppScroll}
+          isActive={isActive}
+          isFocused={isFocused}
+          keyboardShortcutType
+          layoutItemsSize={layoutItemsSize}
+          measureLongestChildNode={measureLongestChildNode}
+          onCommitAnswer={onCommitAnswer}
+          onKeyboardChoiceHovered={onKeyboardChoiceHovered}
+          onStageAnswer={onStageAnswer}
+          resetSelection={resetSelection}
+        />
+      `,
       errors: 10,
     },
     {
-      code: `<CreateNewJob
-        closed={false}
-        flagOptions={flagOptions}
-        jobHeight={300}
-        jobWidth={200}
-        campaign='Some Campaign name'
-        campaignStart={moment('2018-07-28 00:00:00')}
-        campaignFinish={moment('2018-09-01 00:00:00')}
-        jobNumber={'Job Number can be a String'}
-        jobTemplateOptions={jobTemplateOptions}
-        numberOfPages={30}
-        onChange={onChange}
-        onClose={onClose}
-        spreadSheetTemplateOptions={spreadSheetTemplateOptions}
-        stateMachineOptions={stateMachineOptions}
-        workflowTemplateOptions={workflowTemplateOptions}
-        workflowTemplateSteps={workflowTemplateSteps}
-        description='Some description for this job'
+      code: `
+        <CreateNewJob
+          closed={false}
+          flagOptions={flagOptions}
+          jobHeight={300}
+          jobWidth={200}
+          campaign='Some Campaign name'
+          campaignStart={moment('2018-07-28 00:00:00')}
+          campaignFinish={moment('2018-09-01 00:00:00')}
+          jobNumber={'Job Number can be a String'}
+          jobTemplateOptions={jobTemplateOptions}
+          numberOfPages={30}
+          onChange={onChange}
+          onClose={onClose}
+          spreadSheetTemplateOptions={spreadSheetTemplateOptions}
+          stateMachineOptions={stateMachineOptions}
+          workflowTemplateOptions={workflowTemplateOptions}
+          workflowTemplateSteps={workflowTemplateSteps}
+          description='Some description for this job'
 
-        jobTemplate='1'
-        stateMachine='1'
-        flag='1'
-        spreadSheetTemplate='1'
-        workflowTemplate='1'
-        validation={validation}
-        onSubmit={onSubmit}
-      />`,
-      output: `<CreateNewJob
-        campaign='Some Campaign name'
-        campaignFinish={moment('2018-09-01 00:00:00')}
-        campaignStart={moment('2018-07-28 00:00:00')}
-        closed={false}
-        description='Some description for this job'
-        flag='1'
-        flagOptions={flagOptions}
-        jobHeight={300}
-        jobNumber={'Job Number can be a String'}
-        jobTemplate='1'
-        jobTemplateOptions={jobTemplateOptions}
-        jobWidth={200}
-        numberOfPages={30}
-        onChange={onChange}
-        onClose={onClose}
-        onSubmit={onSubmit}
-        spreadSheetTemplate='1'
+          jobTemplate='1'
+          stateMachine='1'
+          flag='1'
+          spreadSheetTemplate='1'
+          workflowTemplate='1'
+          validation={validation}
+          onSubmit={onSubmit}
+        />
+      `,
+      output: `
+        <CreateNewJob
+          campaign='Some Campaign name'
+          campaignFinish={moment('2018-09-01 00:00:00')}
+          campaignStart={moment('2018-07-28 00:00:00')}
+          closed={false}
+          description='Some description for this job'
+          flag='1'
+          flagOptions={flagOptions}
+          jobHeight={300}
+          jobNumber={'Job Number can be a String'}
+          jobTemplate='1'
+          jobTemplateOptions={jobTemplateOptions}
+          jobWidth={200}
+          numberOfPages={30}
+          onChange={onChange}
+          onClose={onClose}
+          onSubmit={onSubmit}
+          spreadSheetTemplate='1'
 
-        spreadSheetTemplateOptions={spreadSheetTemplateOptions}
-        stateMachine='1'
-        stateMachineOptions={stateMachineOptions}
-        validation={validation}
-        workflowTemplate='1'
-        workflowTemplateOptions={workflowTemplateOptions}
-        workflowTemplateSteps={workflowTemplateSteps}
-      />`,
+          spreadSheetTemplateOptions={spreadSheetTemplateOptions}
+          stateMachine='1'
+          stateMachineOptions={stateMachineOptions}
+          validation={validation}
+          workflowTemplate='1'
+          workflowTemplateOptions={workflowTemplateOptions}
+          workflowTemplateSteps={workflowTemplateSteps}
+        />
+      `,
       errors: 13,
     },
     {

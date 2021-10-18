@@ -233,11 +233,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      settings: {
-        react: {
-          version: '0.14.0',
-        },
-      },
+      settings: { react: { version: '0.14.0' } },
     },
     {
       // Can return null (ES5, React 0.14.0)
@@ -251,11 +247,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         });
       `,
-      settings: {
-        react: {
-          version: '0.14.0',
-        },
-      },
+      settings: { react: { version: '0.14.0' } },
     },
     {
       // Can return null (shorthand if in return, React 0.14.0)
@@ -267,11 +259,7 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      settings: {
-        react: {
-          version: '0.14.0',
-        },
-      },
+      settings: { react: { version: '0.14.0' } },
     },
     {
       code: `

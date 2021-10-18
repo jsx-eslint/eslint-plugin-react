@@ -36,11 +36,8 @@ const MULTILINE_REQUIRE = [{ singleline: 'consistent', multiline: 'require' }];
 const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('jsx-curly-newline', rule, {
-
   valid: [
-
     // consistent option (default)
-
     {
       code: '<div>{foo}</div>',
       options: ['consistent'],
@@ -52,7 +49,8 @@ ruleTester.run('jsx-curly-newline', rule, {
           {
             foo
           }
-        </div>`,
+        </div>
+      `,
       options: CONSISTENT,
     },
 
@@ -61,7 +59,8 @@ ruleTester.run('jsx-curly-newline', rule, {
         <div>
           { foo &&
             foo.bar }
-        </div>`,
+        </div>
+      `,
       options: CONSISTENT,
     },
 
@@ -72,7 +71,8 @@ ruleTester.run('jsx-curly-newline', rule, {
             foo &&
             foo.bar
           }
-        </div>`,
+        </div>
+      `,
       options: CONSISTENT,
     },
 
@@ -80,12 +80,12 @@ ruleTester.run('jsx-curly-newline', rule, {
       code: `
         <div foo={
           bar
-        } />`,
+        } />
+      `,
       options: CONSISTENT,
     },
 
     // {singleline: 'consistent', multiline: 'require'} option
-
     {
       code: '<div>{foo}</div>',
       options: MULTILINE_REQUIRE,
@@ -101,7 +101,8 @@ ruleTester.run('jsx-curly-newline', rule, {
             foo &&
             foo.bar
           }
-        </div>`,
+        </div>
+      `,
       options: MULTILINE_REQUIRE,
     },
     {
@@ -110,7 +111,8 @@ ruleTester.run('jsx-curly-newline', rule, {
           {
             foo
           }
-        </div>`,
+        </div>
+      `,
       options: MULTILINE_REQUIRE,
     },
 
@@ -128,28 +130,28 @@ ruleTester.run('jsx-curly-newline', rule, {
 
     {
       code: `
-      <div>
-        { foo &&
-          foo.bar }
-      </div>`,
-
+        <div>
+          { foo &&
+            foo.bar }
+        </div>
+      `,
       options: NEVER,
     },
   ],
 
   invalid: [
-
-    // conistent option (default)
-
+    // consistent option (default)
     {
       code: `
         <div>
           { foo \n}
-        </div>`,
+        </div>
+      `,
       output: `
         <div>
           { foo}
-        </div>`,
+        </div>
+      `,
       options: CONSISTENT,
       errors: [RIGHT_UNEXPECTED_ERROR],
     },
@@ -159,12 +161,14 @@ ruleTester.run('jsx-curly-newline', rule, {
         <div>
           { foo &&
             foo.bar \n}
-        </div>`,
+        </div>
+      `,
       output: `
         <div>
           { foo &&
             foo.bar}
-        </div>`,
+        </div>
+      `,
       options: CONSISTENT,
       errors: [RIGHT_UNEXPECTED_ERROR],
     },
@@ -174,12 +178,14 @@ ruleTester.run('jsx-curly-newline', rule, {
           { foo &&
             bar
           }
-        </div>`,
+        </div>
+      `,
       output: `
         <div>
           { foo &&
             bar}
-        </div>`,
+        </div>
+      `,
       options: CONSISTENT,
       errors: [RIGHT_UNEXPECTED_ERROR],
     },
@@ -202,12 +208,14 @@ ruleTester.run('jsx-curly-newline', rule, {
         <div>
           { foo &&
             bar }
-        </div>`,
+        </div>
+      `,
       output: `
         <div>
           {\n foo &&
             bar \n}
-        </div>`,
+        </div>
+      `,
       errors: [LEFT_MISSING_ERROR, RIGHT_MISSING_ERROR],
       options: MULTILINE_REQUIRE,
     },
@@ -215,26 +223,29 @@ ruleTester.run('jsx-curly-newline', rule, {
       code: `
         <div style={foo &&
           foo.bar
-        } />`,
+        } />
+      `,
       output: `
         <div style={\nfoo &&
           foo.bar
-        } />`,
+        } />
+      `,
       errors: [LEFT_MISSING_ERROR],
       options: MULTILINE_REQUIRE,
     },
 
     // never options
-
     {
       code: `
         <div>
           {\nfoo\n}
-        </div>`,
+        </div>
+      `,
       output: `
         <div>
           {foo}
-        </div>`,
+        </div>
+      `,
       options: NEVER,
       errors: [LEFT_UNEXPECTED_ERROR, RIGHT_UNEXPECTED_ERROR],
     },
@@ -246,12 +257,14 @@ ruleTester.run('jsx-curly-newline', rule, {
             foo &&
             foo.bar
           }
-        </div>`,
+        </div>
+      `,
       output: `
         <div>
           {foo &&
             foo.bar}
-        </div>`,
+        </div>
+      `,
       options: NEVER,
       errors: [LEFT_UNEXPECTED_ERROR, RIGHT_UNEXPECTED_ERROR],
     },
@@ -262,12 +275,14 @@ ruleTester.run('jsx-curly-newline', rule, {
           { foo &&
             foo.bar
           }
-        </div>`,
+        </div>
+      `,
       output: `
         <div>
           { foo &&
             foo.bar}
-        </div>`,
+        </div>
+      `,
       options: NEVER,
       errors: [RIGHT_UNEXPECTED_ERROR],
     },
@@ -277,7 +292,8 @@ ruleTester.run('jsx-curly-newline', rule, {
         <div>
           { /* not fixed due to comment */
             foo }
-        </div>`,
+        </div>
+      `,
       output: null,
       options: NEVER,
       errors: [LEFT_UNEXPECTED_ERROR],
@@ -288,7 +304,8 @@ ruleTester.run('jsx-curly-newline', rule, {
         <div>
           { foo
             /* not fixed due to comment */}
-        </div>`,
+        </div>
+      `,
       output: null,
       options: NEVER,
       errors: [RIGHT_UNEXPECTED_ERROR],

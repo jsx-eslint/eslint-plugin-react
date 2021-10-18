@@ -133,5 +133,6 @@ ruleTester.run('react-in-jsx-scope', rule, {
           data: { name: 'Foo' },
         },
       ],
-    }],
+    },
+  ],
 });

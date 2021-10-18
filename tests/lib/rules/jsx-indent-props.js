@@ -76,11 +76,11 @@ ruleTester.run('jsx-indent-props', rule, {
       options: [-2],
     },
     {
-      code: [
-        '<App',
-        '\tfoo',
-        '/>',
-      ].join('\n'),
+      code: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t/>
+\t\t\t`,
       options: ['tab'],
     },
     {
@@ -447,16 +447,16 @@ ruleTester.run('jsx-indent-props', rule, {
       ],
     },
     {
-      code: [
-        '<App',
-        '    foo',
-        '/>',
-      ].join('\n'),
-      output: [
-        '<App',
-        '\tfoo',
-        '/>',
-      ].join('\n'),
+      code: `
+        <App1
+            foo
+        />
+      `,
+      output: `
+        <App1
+\tfoo
+        />
+      `,
       options: ['tab'],
       errors: [
         {
@@ -471,25 +471,25 @@ ruleTester.run('jsx-indent-props', rule, {
       ],
     },
     {
-      code: [
-        '<App',
-        '\t\t\tfoo',
-        '/>',
-      ].join('\n'),
-      output: [
-        '<App',
-        '\tfoo',
-        '/>',
-      ].join('\n'),
+      code: `
+\t\t\t\t<App
+\t\t\t\t\t\t\tfoo
+\t\t\t\t/>
+\t\t\t`,
+      output: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t/>
+\t\t\t`,
       options: ['tab'],
       errors: [
         {
           messageId: 'wrongIndent',
           data: {
-            needed: 1,
+            needed: 5,
             type: 'tab',
-            characters: 'character',
-            gotten: 3,
+            characters: 'characters',
+            gotten: 7,
           },
         },
       ],

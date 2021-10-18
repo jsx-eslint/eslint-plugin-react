@@ -83,62 +83,46 @@ ruleTester.run('jsx-space-before-closing', rule, {
     {
       code: '<App/>',
       output: '<App />',
-      errors: [
-        { messageId: 'needSpaceBeforeClose' },
-      ],
+      errors: [{ messageId: 'needSpaceBeforeClose' }],
     },
     {
       code: '<App foo/>',
       output: '<App foo />',
-      errors: [
-        { messageId: 'needSpaceBeforeClose' },
-      ],
+      errors: [{ messageId: 'needSpaceBeforeClose' }],
     },
     {
       code: '<App foo={bar}/>',
       output: '<App foo={bar} />',
-      errors: [
-        { messageId: 'needSpaceBeforeClose' },
-      ],
+      errors: [{ messageId: 'needSpaceBeforeClose' }],
     },
     {
       code: '<App {...props}/>',
       output: '<App {...props} />',
-      errors: [
-        { messageId: 'needSpaceBeforeClose' },
-      ],
+      errors: [{ messageId: 'needSpaceBeforeClose' }],
     },
     {
       code: '<App />',
       output: '<App/>',
       options: ['never'],
-      errors: [
-        { messageId: 'noSpaceBeforeClose' },
-      ],
+      errors: [{ messageId: 'noSpaceBeforeClose' }],
     },
     {
       code: '<App foo />',
       output: '<App foo/>',
       options: ['never'],
-      errors: [
-        { messageId: 'noSpaceBeforeClose' },
-      ],
+      errors: [{ messageId: 'noSpaceBeforeClose' }],
     },
     {
       code: '<App foo={bar} />',
       output: '<App foo={bar}/>',
       options: ['never'],
-      errors: [
-        { messageId: 'noSpaceBeforeClose' },
-      ],
+      errors: [{ messageId: 'noSpaceBeforeClose' }],
     },
     {
       code: '<App {...props} />',
       output: '<App {...props}/>',
       options: ['never'],
-      errors: [
-        { messageId: 'noSpaceBeforeClose' },
-      ],
+      errors: [{ messageId: 'noSpaceBeforeClose' }],
     },
   ],
 });

@@ -44,7 +44,6 @@ function errorMessage(oldMethod, version, newMethod, refs, extraProps) {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-deprecated', rule, {
-
   valid: [
     // Not deprecated
     'var element = React.createElement(\'p\', {}, null);',
@@ -91,9 +90,18 @@ ruleTester.run('no-deprecated', rule, {
       `,
     },
     // Deprecated in a later version
-    { code: 'React.renderComponent()', settings: { react: { version: '0.11.0' } } },
-    { code: 'React.createClass()', settings: { react: { version: '15.4.0' } } },
-    { code: 'PropTypes', settings: { react: { version: '15.4.0' } } },
+    {
+      code: 'React.renderComponent()',
+      settings: { react: { version: '0.11.0' } },
+    },
+    {
+      code: 'React.createClass()',
+      settings: { react: { version: '15.4.0' } },
+    },
+    {
+      code: 'PropTypes',
+      settings: { react: { version: '15.4.0' } },
+    },
     {
       code: `
         class Foo extends React.Component {

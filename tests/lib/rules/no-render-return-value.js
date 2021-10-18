@@ -32,41 +32,25 @@ ruleTester.run('no-render-return-value', rule, {
     },
     {
       code: `
-      let node;
-      ReactDOM.render(<div ref={ref => node = ref}/>, document.body);
-    `,
+        let node;
+        ReactDOM.render(<div ref={ref => node = ref}/>, document.body);
+      `,
     },
     {
       code: 'ReactDOM.render(<div ref={ref => this.node = ref}/>, document.body);',
-      settings: {
-        react: {
-          version: '0.14.0',
-        },
-      },
+      settings: { react: { version: '0.14.0' } },
     },
     {
       code: 'React.render(<div ref={ref => this.node = ref}/>, document.body);',
-      settings: {
-        react: {
-          version: '0.14.0',
-        },
-      },
+      settings: { react: { version: '0.14.0' } },
     },
     {
       code: 'React.render(<div ref={ref => this.node = ref}/>, document.body);',
-      settings: {
-        react: {
-          version: '0.13.0',
-        },
-      },
+      settings: { react: { version: '0.13.0' } },
     },
     {
       code: 'var foo = React.render(<div />, root);',
-      settings: {
-        react: {
-          version: '0.0.1',
-        },
-      },
+      settings: { react: { version: '0.0.1' } },
     },
     {
       code: 'var foo = render(<div />, root)',
@@ -88,10 +72,10 @@ ruleTester.run('no-render-return-value', rule, {
     },
     {
       code: `
-      var o = {
-        inst: ReactDOM.render(<div />, document.body)
-      };
-    `,
+        var o = {
+          inst: ReactDOM.render(<div />, document.body)
+        };
+      `,
       errors: [
         {
           messageId: 'noReturnValue',
@@ -101,10 +85,10 @@ ruleTester.run('no-render-return-value', rule, {
     },
     {
       code: `
-      function render () {
-        return ReactDOM.render(<div />, document.body)
-      }
-    `,
+        function render () {
+          return ReactDOM.render(<div />, document.body)
+        }
+      `,
       errors: [
         {
           messageId: 'noReturnValue',
@@ -141,11 +125,7 @@ ruleTester.run('no-render-return-value', rule, {
     },
     {
       code: 'var inst = React.render(<div />, document.body);',
-      settings: {
-        react: {
-          version: '0.14.0',
-        },
-      },
+      settings: { react: { version: '0.14.0' } },
       errors: [
         {
           messageId: 'noReturnValue',
@@ -155,11 +135,7 @@ ruleTester.run('no-render-return-value', rule, {
     },
     {
       code: 'var inst = ReactDOM.render(<div />, document.body);',
-      settings: {
-        react: {
-          version: '0.14.0',
-        },
-      },
+      settings: { react: { version: '0.14.0' } },
       errors: [
         {
           messageId: 'noReturnValue',
@@ -169,11 +145,7 @@ ruleTester.run('no-render-return-value', rule, {
     },
     {
       code: 'var inst = React.render(<div />, document.body);',
-      settings: {
-        react: {
-          version: '0.13.0',
-        },
-      },
+      settings: { react: { version: '0.13.0' } },
       errors: [
         {
           messageId: 'noReturnValue',

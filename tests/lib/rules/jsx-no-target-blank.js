@@ -299,16 +299,12 @@ ruleTester.run('jsx-no-target-blank', rule, {
     {
       code: '<a href="some-link" {...otherProps} target="some-non-blank-target"></a>',
       errors: defaultErrors,
-      options: [{
-        warnOnSpreadAttributes: true,
-      }],
+      options: [{ warnOnSpreadAttributes: true }],
     },
     {
       code: '<a href="some-link" target="some-non-blank-target" {...otherProps}></a>',
       errors: defaultErrors,
-      options: [{
-        warnOnSpreadAttributes: true,
-      }],
+      options: [{ warnOnSpreadAttributes: true }],
     },
     {
       code: '<a target="_blank" href="//example.com" rel></a>',

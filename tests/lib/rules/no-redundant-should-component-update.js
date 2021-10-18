@@ -82,10 +82,12 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'noShouldCompUpdate',
-        data: { component: 'Foo' },
-      }],
+      errors: [
+        {
+          messageId: 'noShouldCompUpdate',
+          data: { component: 'Foo' },
+        },
+      ],
       parserOptions,
     },
     {
@@ -96,10 +98,12 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'noShouldCompUpdate',
-        data: { component: 'Foo' },
-      }],
+      errors: [
+        {
+          messageId: 'noShouldCompUpdate',
+          data: { component: 'Foo' },
+        },
+      ],
       parserOptions,
     },
     {
@@ -110,10 +114,12 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'noShouldCompUpdate',
-        data: { component: 'Foo' },
-      }],
+      errors: [
+        {
+          messageId: 'noShouldCompUpdate',
+          data: { component: 'Foo' },
+        },
+      ],
       parser: parsers.BABEL_ESLINT,
       parserOptions,
     },
@@ -127,10 +133,12 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           };
         }
       `,
-      errors: [{
-        messageId: 'noShouldCompUpdate',
-        data: { component: 'Bar' },
-      }],
+      errors: [
+        {
+          messageId: 'noShouldCompUpdate',
+          data: { component: 'Bar' },
+        },
+      ],
       parserOptions,
     },
     {
@@ -143,10 +151,12 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           };
         }
       `,
-      errors: [{
-        messageId: 'noShouldCompUpdate',
-        data: { component: 'Bar' },
-      }],
+      errors: [
+        {
+          messageId: 'noShouldCompUpdate',
+          data: { component: 'Bar' },
+        },
+      ],
       parserOptions,
     },
     {
@@ -157,10 +167,12 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'noShouldCompUpdate',
-        data: { component: 'Foo' },
-      }],
+      errors: [
+        {
+          messageId: 'noShouldCompUpdate',
+          data: { component: 'Foo' },
+        },
+      ],
       parserOptions,
     },
   ],

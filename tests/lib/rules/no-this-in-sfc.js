@@ -272,7 +272,10 @@ ruleTester.run('no-this-in-sfc', rule, {
           return <div onClick={onClick}>{this.props.foo}</div>;
         }
       `,
-      errors: [{ messageId: 'noThisInSFC' }, { messageId: 'noThisInSFC' }],
+      errors: [
+        { messageId: 'noThisInSFC' },
+        { messageId: 'noThisInSFC' },
+      ],
     },
     {
       code: `

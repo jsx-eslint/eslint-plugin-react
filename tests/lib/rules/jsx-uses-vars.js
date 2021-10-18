@@ -162,7 +162,10 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         var Hello;
         React.render(<App:Hello/>);
       `,
-      errors: [{ message: '\'App\' is defined but never used.' }, { message: '\'Hello\' is defined but never used.' }],
+      errors: [
+        { message: '\'App\' is defined but never used.' },
+        { message: '\'Hello\' is defined but never used.' },
+      ],
     },
     {
       code: `

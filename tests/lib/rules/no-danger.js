@@ -31,11 +31,15 @@ ruleTester.run('no-danger', rule, {
     { code: '<App dangerouslySetInnerHTML={{ __html: "" }} />;' },
     { code: '<div className="bar"></div>;' },
   ],
-  invalid: [{
-    code: '<div dangerouslySetInnerHTML={{ __html: "" }}></div>;',
-    errors: [{
-      messageId: 'dangerousProp',
-      data: { name: 'dangerouslySetInnerHTML' },
-    }],
-  }],
+  invalid: [
+    {
+      code: '<div dangerouslySetInnerHTML={{ __html: "" }}></div>;',
+      errors: [
+        {
+          messageId: 'dangerousProp',
+          data: { name: 'dangerouslySetInnerHTML' },
+        },
+      ],
+    },
+  ],
 });

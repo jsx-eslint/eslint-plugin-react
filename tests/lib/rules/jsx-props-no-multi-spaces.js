@@ -99,7 +99,8 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
           type="button"
         />
       `,
-    }, (semver.satisfies(eslintPkg.version, '> 3') ? [
+    },
+    (semver.satisfies(eslintPkg.version, '> 3') ? [
       {
         code: `
           <button
@@ -287,7 +288,8 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
           data: { prop1: 'onClick', prop2: 'type' },
         },
       ],
-    }, (semver.satisfies(eslintPkg.version, '> 3') ? [
+    },
+    (semver.satisfies(eslintPkg.version, '> 3') ? [
       {
         code: `
           <button

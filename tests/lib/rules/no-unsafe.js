@@ -47,12 +47,12 @@ ruleTester.run('no-unsafe', rule, {
     },
     {
       code: `
-          class Foo extends Bar {
-            componentWillMount() {}
-            componentWillReceiveProps() {}
-            componentWillUpdate() {}
-          }
-        `,
+        class Foo extends Bar {
+          componentWillMount() {}
+          componentWillReceiveProps() {}
+          componentWillUpdate() {}
+        }
+      `,
       settings: { react: { version: '16.4.0' } },
     },
     {
@@ -67,12 +67,12 @@ ruleTester.run('no-unsafe', rule, {
     },
     {
       code: `
-          const Foo = bar({
-            componentWillMount: function() {},
-            componentWillReceiveProps: function() {},
-            componentWillUpdate: function() {},
-          });
-        `,
+        const Foo = bar({
+          componentWillMount: function() {},
+          componentWillReceiveProps: function() {},
+          componentWillUpdate: function() {},
+        });
+      `,
       settings: { react: { version: '16.4.0' } },
     },
     {
@@ -88,12 +88,12 @@ ruleTester.run('no-unsafe', rule, {
     // React.Component
     {
       code: `
-          class Foo extends React.Component {
-            componentWillMount() {}
-            componentWillReceiveProps() {}
-            componentWillUpdate() {}
-          }
-        `,
+        class Foo extends React.Component {
+          componentWillMount() {}
+          componentWillReceiveProps() {}
+          componentWillUpdate() {}
+        }
+      `,
       settings: { react: { version: '16.4.0' } },
     },
     {
@@ -109,22 +109,22 @@ ruleTester.run('no-unsafe', rule, {
     // createReactClass
     {
       code: `
-            const Foo = createReactClass({
-              componentWillMount: function() {},
-              componentWillReceiveProps: function() {},
-              componentWillUpdate: function() {},
-            });
-          `,
+        const Foo = createReactClass({
+          componentWillMount: function() {},
+          componentWillReceiveProps: function() {},
+          componentWillUpdate: function() {},
+        });
+      `,
       settings: { react: { version: '16.4.0' } },
     },
     {
       code: `
-          const Foo = createReactClass({
-            UNSAFE_componentWillMount: function() {},
-            UNSAFE_componentWillReceiveProps: function() {},
-            UNSAFE_componentWillUpdate: function() {},
-          });
-        `,
+        const Foo = createReactClass({
+          UNSAFE_componentWillMount: function() {},
+          UNSAFE_componentWillReceiveProps: function() {},
+          UNSAFE_componentWillUpdate: function() {},
+        });
+      `,
       settings: { react: { version: '16.2.0' } },
     },
   ],
@@ -179,12 +179,12 @@ ruleTester.run('no-unsafe', rule, {
     },
     {
       code: `
-      class Foo extends React.Component {
-        UNSAFE_componentWillMount() {}
-        UNSAFE_componentWillReceiveProps() {}
-        UNSAFE_componentWillUpdate() {}
-      }
-    `,
+        class Foo extends React.Component {
+          UNSAFE_componentWillMount() {}
+          UNSAFE_componentWillReceiveProps() {}
+          UNSAFE_componentWillUpdate() {}
+        }
+      `,
       settings: { react: { version: '16.3.0' } },
       errors: [
         {
@@ -195,7 +195,7 @@ ruleTester.run('no-unsafe', rule, {
             details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.',
           },
           line: 2,
-          column: 7,
+          column: 9,
           type: 'ClassDeclaration',
         },
         {
@@ -206,7 +206,7 @@ ruleTester.run('no-unsafe', rule, {
             details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.',
           },
           line: 2,
-          column: 7,
+          column: 9,
           type: 'ClassDeclaration',
         },
         {
@@ -217,7 +217,7 @@ ruleTester.run('no-unsafe', rule, {
             details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.',
           },
           line: 2,
-          column: 7,
+          column: 9,
           type: 'ClassDeclaration',
         },
       ],
@@ -225,12 +225,12 @@ ruleTester.run('no-unsafe', rule, {
     // createReactClass
     {
       code: `
-          const Foo = createReactClass({
-            componentWillMount: function() {},
-            componentWillReceiveProps: function() {},
-            componentWillUpdate: function() {},
-          });
-        `,
+        const Foo = createReactClass({
+          componentWillMount: function() {},
+          componentWillReceiveProps: function() {},
+          componentWillUpdate: function() {},
+        });
+      `,
       options: [{ checkAliases: true }],
       settings: { react: { version: '16.3.0' } },
       errors: [
@@ -242,7 +242,7 @@ ruleTester.run('no-unsafe', rule, {
             details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.',
           },
           line: 2,
-          column: 40,
+          column: 38,
           type: 'ObjectExpression',
         },
         {
@@ -253,7 +253,7 @@ ruleTester.run('no-unsafe', rule, {
             details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.',
           },
           line: 2,
-          column: 40,
+          column: 38,
           type: 'ObjectExpression',
         },
         {
@@ -264,7 +264,7 @@ ruleTester.run('no-unsafe', rule, {
             details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.',
           },
           line: 2,
-          column: 40,
+          column: 38,
           type: 'ObjectExpression',
         },
       ],

@@ -1602,14 +1602,14 @@ ruleTester.run('no-typos', rule, {
     },
     {
       code: `
-      import PropTypes from 'prop-types';
-      class Component extends React.Component {};
-      Component.propTypes = {
-        a: PropTypes.string.isrequired,
-        b: PropTypes.shape({
-          c: PropTypes.number
-        }).isrequired
-      }
+        import PropTypes from 'prop-types';
+        class Component extends React.Component {};
+        Component.propTypes = {
+          a: PropTypes.string.isrequired,
+          b: PropTypes.shape({
+            c: PropTypes.number
+          }).isrequired
+        }
       `,
       parserOptions,
       errors: [
@@ -1625,15 +1625,15 @@ ruleTester.run('no-typos', rule, {
     },
     {
       code: `
-      import PropTypes from 'prop-types';
-      class Component extends React.Component {};
-      Component.propTypes = {
-        a: PropTypes.string.isrequired,
-        b: PropTypes.shape({
-          c: PropTypes.number
-        }).isrequired
-      }
-    `,
+        import PropTypes from 'prop-types';
+        class Component extends React.Component {};
+        Component.propTypes = {
+          a: PropTypes.string.isrequired,
+          b: PropTypes.shape({
+            c: PropTypes.number
+          }).isrequired
+        }
+      `,
       parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
