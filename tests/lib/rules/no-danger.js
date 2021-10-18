@@ -16,8 +16,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // -----------------------------------------------------------------------------
@@ -29,13 +29,13 @@ ruleTester.run('no-danger', rule, {
   valid: [
     {code: '<App />;'},
     {code: '<App dangerouslySetInnerHTML={{ __html: "" }} />;'},
-    {code: '<div className="bar"></div>;'}
+    {code: '<div className="bar"></div>;'},
   ],
   invalid: [{
     code: '<div dangerouslySetInnerHTML={{ __html: "" }}></div>;',
     errors: [{
       messageId: 'dangerousProp',
-      data: {name: 'dangerouslySetInnerHTML'}
-    }]
-  }]
+      data: {name: 'dangerouslySetInnerHTML'},
+    }],
+  }],
 });

@@ -15,8 +15,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // -----------------------------------------------------------------------------
@@ -33,7 +33,7 @@ ruleTester.run('forbid-component-props', rule, {
             return <div className="foo" />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -44,8 +44,8 @@ ruleTester.run('forbid-component-props', rule, {
         });
       `,
       options: [
-        {forbid: ['style']}
-      ]
+        {forbid: ['style']},
+      ],
     },
     {
       code: `
@@ -55,7 +55,7 @@ ruleTester.run('forbid-component-props', rule, {
             return <Foo bar="baz" />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -67,8 +67,8 @@ ruleTester.run('forbid-component-props', rule, {
         });
       `,
       options: [
-        {forbid: ['style']}
-      ]
+        {forbid: ['style']},
+      ],
     },
     {
       code: `
@@ -80,8 +80,8 @@ ruleTester.run('forbid-component-props', rule, {
         });
       `,
       options: [
-        {forbid: ['style', 'foo']}
-      ]
+        {forbid: ['style', 'foo']},
+      ],
     },
     {
       code: `
@@ -91,7 +91,7 @@ ruleTester.run('forbid-component-props', rule, {
             return <this.Foo bar="baz" />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -101,14 +101,14 @@ ruleTester.run('forbid-component-props', rule, {
           }
         }
       `,
-      options: [{forbid: ['style']}]
+      options: [{forbid: ['style']}],
     },
     {
       code: `
         const First = (props) => (
           <this.Foo {...props} />
         );
-      `
+      `,
     },
     {
       code: `
@@ -117,10 +117,10 @@ ruleTester.run('forbid-component-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className', allowedFor: ['ReactModal']}
-          ]
-        }
-      ]
+            {propName: 'className', allowedFor: ['ReactModal']},
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -129,10 +129,10 @@ ruleTester.run('forbid-component-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className', allowedFor: ['AntdLayout.Content']}
-          ]
-        }
-      ]
+            {propName: 'className', allowedFor: ['AntdLayout.Content']},
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -141,16 +141,16 @@ ruleTester.run('forbid-component-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className', allowedFor: ['this.ReactModal']}
-          ]
-        }
-      ]
+            {propName: 'className', allowedFor: ['this.ReactModal']},
+          ],
+        },
+      ],
     },
     {
       code: `
         <fbt:param name="Total number of files" number={true} />
-      `
-    }
+      `,
+    },
   ],
 
   invalid: [
@@ -168,9 +168,9 @@ ruleTester.run('forbid-component-props', rule, {
           messageId: 'propIsForbidden',
           data: {prop: 'className'},
           line: 5,
-          type: 'JSXAttribute'
-        }
-      ]
+          type: 'JSXAttribute',
+        },
+      ],
     },
     {
       code: `
@@ -186,9 +186,9 @@ ruleTester.run('forbid-component-props', rule, {
           messageId: 'propIsForbidden',
           data: {prop: 'style'},
           line: 5,
-          type: 'JSXAttribute'
-        }
-      ]
+          type: 'JSXAttribute',
+        },
+      ],
     },
     {
       code: `
@@ -200,7 +200,7 @@ ruleTester.run('forbid-component-props', rule, {
         });
       `,
       options: [
-        {forbid: ['className', 'style']}
+        {forbid: ['className', 'style']},
       ],
       errors: [
         {
@@ -208,9 +208,9 @@ ruleTester.run('forbid-component-props', rule, {
           data: {prop: 'className'},
           line: 5,
           column: 25,
-          type: 'JSXAttribute'
-        }
-      ]
+          type: 'JSXAttribute',
+        },
+      ],
     },
     {
       code: `
@@ -222,16 +222,16 @@ ruleTester.run('forbid-component-props', rule, {
         });
       `,
       options: [
-        {forbid: ['className', 'style']}
+        {forbid: ['className', 'style']},
       ],
       errors: [
         {
           messageId: 'propIsForbidden',
           data: {prop: 'style'},
           line: 5,
-          type: 'JSXAttribute'
-        }
-      ]
+          type: 'JSXAttribute',
+        },
+      ],
     },
     {
       code: `
@@ -240,18 +240,18 @@ ruleTester.run('forbid-component-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className', allowedFor: ['ReactModal']}
-          ]
-        }
+            {propName: 'className', allowedFor: ['ReactModal']},
+          ],
+        },
       ],
       errors: [
         {
           messageId: 'propIsForbidden',
           data: {prop: 'className'},
           line: 2,
-          type: 'JSXAttribute'
-        }
-      ]
+          type: 'JSXAttribute',
+        },
+      ],
     },
     {
       code: `
@@ -260,9 +260,9 @@ ruleTester.run('forbid-component-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className', allowedFor: ['ReactModal']}
-          ]
-        }
+            {propName: 'className', allowedFor: ['ReactModal']},
+          ],
+        },
       ],
       errors: [
         {
@@ -270,9 +270,9 @@ ruleTester.run('forbid-component-props', rule, {
           data: {prop: 'className'},
           line: 2,
           column: 40,
-          type: 'JSXAttribute'
-        }
-      ]
+          type: 'JSXAttribute',
+        },
+      ],
     },
     {
       code: `
@@ -281,18 +281,18 @@ ruleTester.run('forbid-component-props', rule, {
       options: [
         {
           forbid: [
-            {propName: 'className', message: 'Please use ourCoolClassName instead of ClassName'}
-          ]
-        }
+            {propName: 'className', message: 'Please use ourCoolClassName instead of ClassName'},
+          ],
+        },
       ],
       errors: [
         {
           message: 'Please use ourCoolClassName instead of ClassName',
           line: 2,
           column: 28,
-          type: 'JSXAttribute'
-        }
-      ]
+          type: 'JSXAttribute',
+        },
+      ],
     },
     {
       code: `
@@ -306,24 +306,24 @@ ruleTester.run('forbid-component-props', rule, {
         {
           forbid: [
             {propName: 'className', message: 'Please use ourCoolClassName instead of ClassName'},
-            {propName: 'option', message: 'Avoid using option'}
-          ]
-        }
+            {propName: 'option', message: 'Avoid using option'},
+          ],
+        },
       ],
       errors: [
         {
           message: 'Please use ourCoolClassName instead of ClassName',
           line: 3,
           column: 16,
-          type: 'JSXAttribute'
+          type: 'JSXAttribute',
         },
         {
           message: 'Avoid using option',
           line: 4,
           column: 18,
-          type: 'JSXAttribute'
-        }
-      ]
+          type: 'JSXAttribute',
+        },
+      ],
     },
     {
       code: `
@@ -337,9 +337,9 @@ ruleTester.run('forbid-component-props', rule, {
         {
           forbid: [
             {propName: 'className'},
-            {propName: 'option', message: 'Avoid using option'}
-          ]
-        }
+            {propName: 'option', message: 'Avoid using option'},
+          ],
+        },
       ],
       errors: [
         {
@@ -347,14 +347,14 @@ ruleTester.run('forbid-component-props', rule, {
           data: {prop: 'className'},
           line: 3,
           column: 16,
-          type: 'JSXAttribute'
+          type: 'JSXAttribute',
         },
         {
           message: 'Avoid using option',
           line: 4,
           column: 18,
-          type: 'JSXAttribute'
-        }
-      ]
-    }]
+          type: 'JSXAttribute',
+        },
+      ],
+    }],
 });

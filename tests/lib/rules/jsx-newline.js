@@ -18,8 +18,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -51,7 +51,7 @@ const tests = {
         <ErrorMessage />
       )}
     </div>
-    `
+    `,
   ],
   invalid: [
     {
@@ -69,8 +69,8 @@ const tests = {
         </div>
       `,
       errors: [{
-        messageId: 'require'
-      }]
+        messageId: 'require',
+      }],
     },
     {
       code: `
@@ -87,8 +87,8 @@ const tests = {
         </div>
       `,
       errors: [{
-        messageId: 'require'
-      }]
+        messageId: 'require',
+      }],
     },
     {
       code: `
@@ -105,8 +105,8 @@ const tests = {
         </div>
       `,
       errors: [{
-        messageId: 'require'
-      }]
+        messageId: 'require',
+      }],
     },
     {
       code: `
@@ -131,8 +131,8 @@ const tests = {
         </div>
       `,
       errors: [{
-        messageId: 'require'
-      }]
+        messageId: 'require',
+      }],
     },
     {
       code: `
@@ -165,10 +165,10 @@ const tests = {
       errors: [
         {messageId: 'require'},
         {messageId: 'require'},
-        {messageId: 'require'}
-      ]
-    }
-  ]
+        {messageId: 'require'},
+      ],
+    },
+  ],
 };
 
 const advanceFeatTest = {
@@ -181,8 +181,8 @@ const advanceFeatTest = {
 
           <span>Should be in new line</span>
         </>
-      `
-    }
+      `,
+    },
   ],
   invalid: [
     {
@@ -202,10 +202,10 @@ const advanceFeatTest = {
         </>
       `,
       errors: [
-        {messageId: 'require'}
-      ]
-    }
-  ]
+        {messageId: 'require'},
+      ],
+    },
+  ],
 };
 
 // Run tests with default parser
@@ -224,11 +224,11 @@ ruleTester.run('jsx-newline', rule, advanceFeatTest);
 ruleTester = new RuleTester({parserOptions, parser: parsers['@TYPESCRIPT_ESLINT']});
 ruleTester.run('jsx-newline', rule, {
   valid: parsers.TS(tests.valid),
-  invalid: parsers.TS(tests.invalid)
+  invalid: parsers.TS(tests.invalid),
 });
 ruleTester.run('jsx-newline', rule, {
   valid: parsers.TS(advanceFeatTest.valid),
-  invalid: parsers.TS(advanceFeatTest.invalid)
+  invalid: parsers.TS(advanceFeatTest.invalid),
 });
 
 // ------------------------------------------------------------------------------
@@ -257,9 +257,9 @@ const preventionTests = {
         </div>
       `,
       options: [{
-        prevent: true
-      }]
-    }
+        prevent: true,
+      }],
+    },
   ],
   invalid: [
     {
@@ -277,11 +277,11 @@ const preventionTests = {
         </div>
       `,
       errors: [{
-        messageId: 'prevent'
+        messageId: 'prevent',
       }],
       options: [{
-        prevent: true
-      }]
+        prevent: true,
+      }],
     },
     {
       output: `
@@ -298,11 +298,11 @@ const preventionTests = {
         </div>
       `,
       errors: [{
-        messageId: 'prevent'
+        messageId: 'prevent',
       }],
       options: [{
-        prevent: true
-      }]
+        prevent: true,
+      }],
     },
     {
       output: `
@@ -319,11 +319,11 @@ const preventionTests = {
         </div>
       `,
       errors: [{
-        messageId: 'prevent'
+        messageId: 'prevent',
       }],
       options: [{
-        prevent: true
-      }]
+        prevent: true,
+      }],
     },
     {
       output: `
@@ -348,11 +348,11 @@ const preventionTests = {
         </div>
       `,
       errors: [{
-        messageId: 'prevent'
+        messageId: 'prevent',
       }],
       options: [{
-        prevent: true
-      }]
+        prevent: true,
+      }],
     },
     {
       output: `
@@ -385,13 +385,13 @@ const preventionTests = {
       errors: [
         {messageId: 'prevent'},
         {messageId: 'prevent'},
-        {messageId: 'prevent'}
+        {messageId: 'prevent'},
       ],
       options: [{
-        prevent: true
-      }]
-    }
-  ]
+        prevent: true,
+      }],
+    },
+  ],
 };
 
 const preventionAdvanceFeatTest = {
@@ -405,9 +405,9 @@ const preventionAdvanceFeatTest = {
         </>
       `,
       options: [{
-        prevent: true
-      }]
-    }
+        prevent: true,
+      }],
+    },
   ],
   invalid: [
     {
@@ -427,13 +427,13 @@ const preventionAdvanceFeatTest = {
         </>
       `,
       errors: [
-        {messageId: 'prevent'}
+        {messageId: 'prevent'},
       ],
       options: [{
-        prevent: true
-      }]
-    }
-  ]
+        prevent: true,
+      }],
+    },
+  ],
 };
 
 // // Run tests with default parser
@@ -452,9 +452,9 @@ ruleTester.run('jsx-newline', rule, preventionAdvanceFeatTest);
 ruleTester = new RuleTester({parserOptions, parser: parsers['@TYPESCRIPT_ESLINT']});
 ruleTester.run('jsx-newline', rule, {
   valid: parsers.TS(preventionTests.valid),
-  invalid: parsers.TS(preventionTests.invalid)
+  invalid: parsers.TS(preventionTests.invalid),
 });
 ruleTester.run('jsx-newline', rule, {
   valid: parsers.TS(preventionAdvanceFeatTest.valid),
-  invalid: parsers.TS(preventionAdvanceFeatTest.invalid)
+  invalid: parsers.TS(preventionAdvanceFeatTest.invalid),
 });

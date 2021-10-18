@@ -21,8 +21,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // -----------------------------------------------------------------------------
@@ -44,14 +44,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
           return bar;
         };
         foo()
-      `
-    },
-    {
-      code: `
-        /* eslint jsx-uses-vars: 1 */
-        var App;
-        React.render(<App/>);
-      `
+      `,
     },
     {
       code: `
@@ -59,14 +52,21 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         var App;
         React.render(<App/>);
       `,
-      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        /* eslint jsx-uses-vars: 1 */
+        var App;
+        React.render(<App/>);
+      `,
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
         /* eslint jsx-uses-vars: 1 */
         var a = 1;
         React.render(<img src={a} />);
-      `
+      `,
     },
     {
       code: `
@@ -76,21 +76,21 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
           return <App />;
         }
         f();
-      `
+      `,
     },
     {
       code: `
         /* eslint jsx-uses-vars: 1 */
         var App;
         <App.Hello />
-      `
+      `,
     },
     {
       code: `
         /* eslint jsx-uses-vars: 1 */
         class HelloMessage {};
         <HelloMessage />
-      `
+      `,
     },
     {
       code: `
@@ -102,7 +102,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
           }
         };
         <HelloMessage />
-      `
+      `,
     },
     {
       code: `
@@ -113,7 +113,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
           return bar;
         };
         foo()
-      `
+      `,
     },
     {
       code: `
@@ -124,27 +124,27 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
           return bar;
         };
         foo()
-      `
+      `,
     },
     {
       code: `
         /* eslint jsx-uses-vars: 1 */
         var object;
         React.render(<object.Tag />);
-      `
+      `,
     },
     {
       code: `
         /* eslint jsx-uses-vars: 1 */
         var object;
         React.render(<object.tag />);
-      `
-    }
+      `,
+    },
   ],
   invalid: [
     {
       code: '/* eslint jsx-uses-vars: 1 */ var App;',
-      errors: [{message: '\'App\' is defined but never used.'}]
+      errors: [{message: '\'App\' is defined but never used.'}],
     },
     {
       code: `
@@ -153,7 +153,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         var unused;
         React.render(<App unused=""/>);
       `,
-      errors: [{message: '\'unused\' is defined but never used.'}]
+      errors: [{message: '\'unused\' is defined but never used.'}],
     },
     {
       code: `
@@ -162,7 +162,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         var Hello;
         React.render(<App:Hello/>);
       `,
-      errors: [{message: '\'App\' is defined but never used.'}, {message: '\'Hello\' is defined but never used.'}]
+      errors: [{message: '\'App\' is defined but never used.'}, {message: '\'Hello\' is defined but never used.'}],
     },
     {
       code: `
@@ -171,14 +171,14 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         var Input;
         React.render(<Button.Input unused=""/>);
       `,
-      errors: [{message: '\'Input\' is defined but never used.'}]
+      errors: [{message: '\'Input\' is defined but never used.'}],
     },
     {
       code: `
         /* eslint jsx-uses-vars: 1 */
         class unused {}
       `,
-      errors: [{message: '\'unused\' is defined but never used.'}]
+      errors: [{message: '\'unused\' is defined but never used.'}],
     },
     {
       code: `
@@ -193,27 +193,27 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
       errors: [
         {
           message: '\'HelloMessage\' is defined but never used.',
-          line: 3
-        }
-      ]
-    },
-    {
-      code: `
-        /* eslint jsx-uses-vars: 1 */
-        class HelloMessage {
-          render() {
-            var HelloMessage = <div>Hello</div>;
-            return HelloMessage;
-          }
-        }
-      `,
-      errors: [
-        {
-          message: '\'HelloMessage\' is defined but never used.',
-          line: 3
-        }
+          line: 3,
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        /* eslint jsx-uses-vars: 1 */
+        class HelloMessage {
+          render() {
+            var HelloMessage = <div>Hello</div>;
+            return HelloMessage;
+          }
+        }
+      `,
+      errors: [
+        {
+          message: '\'HelloMessage\' is defined but never used.',
+          line: 3,
+        },
+      ],
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -228,10 +228,10 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
       errors: [
         {
           message: '\'Hello\' is defined but never used.',
-          line: 3
-        }
+          line: 3,
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -239,7 +239,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         var lowercase;
         React.render(<lowercase />);
       `,
-      errors: [{message: '\'lowercase\' is defined but never used.'}]
+      errors: [{message: '\'lowercase\' is defined but never used.'}],
     },
     {
       code: `
@@ -252,12 +252,12 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
       errors: [
         {
           message: '\'div\' is defined but never used.',
-          line: 3
-        }
+          line: 3,
+        },
       ],
-      parser: parsers.BABEL_ESLINT
-    }
-  ]
+      parser: parsers.BABEL_ESLINT,
+    },
+  ],
 });
 
 // Check compatibility with eslint prefer-const rule (#716)
@@ -275,7 +275,7 @@ ruleTester.run('prefer-const', rulePreferConst, {
         /* eslint jsx-uses-vars:1 */
         const App = <div />;
         <App />;
-      `
+      `,
     },
     {
       code: `
@@ -288,7 +288,7 @@ ruleTester.run('prefer-const', rulePreferConst, {
         /* eslint jsx-uses-vars:1 */
         const filters = 'foo';
         <div>{filters}</div>;
-      `
-    }
-  ]
+      `,
+    },
+  ],
 });

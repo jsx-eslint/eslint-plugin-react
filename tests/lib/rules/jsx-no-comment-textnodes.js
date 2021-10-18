@@ -18,8 +18,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -55,7 +55,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -65,7 +65,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -76,7 +76,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -87,7 +87,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           },
         });
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -103,7 +103,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -116,13 +116,13 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
         var foo = require('foo');
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -130,7 +130,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           {/* valid */}
         </Foo>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -138,7 +138,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           &nbsp;https://www.example.com/attachment/download/1
         </strong>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
 
     // inside element declarations
@@ -146,40 +146,40 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       code: `
         <Foo /* valid */ placeholder={'foo'}/>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
         </* valid */></>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
         <></* valid *//>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
         <Foo title={'foo' /* valid */}/>
       `,
-      parser: parsers.BABEL_ESLINT
-    },
-    {
-      code: '<pre>&#x2F;&#x2F; TODO: Write perfect code</pre>'
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: '<pre>&#x2F;&#x2F; TODO: Write perfect code</pre>',
-      parser: parsers.BABEL_ESLINT
     },
     {
-      code: '<pre>&#x2F;&#42; TODO: Write perfect code &#42;&#x2F;</pre>'
+      code: '<pre>&#x2F;&#x2F; TODO: Write perfect code</pre>',
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: '<pre>&#x2F;&#42; TODO: Write perfect code &#42;&#x2F;</pre>',
-      parser: parsers.BABEL_ESLINT
-    }
+    },
+    {
+      code: '<pre>&#x2F;&#42; TODO: Write perfect code &#42;&#x2F;</pre>',
+      parser: parsers.BABEL_ESLINT,
+    },
   ].concat(parsers.TS([
     {
       code: `
@@ -193,7 +193,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           }
         }
       `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
+      parser: parsers['@TYPESCRIPT_ESLINT'],
     },
     {
       code: `
@@ -207,7 +207,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           }
         }
       `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
+      parser: parsers['@TYPESCRIPT_ESLINT'],
     },
     {
       code: `
@@ -217,7 +217,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           }
         }
       `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
+      parser: parsers['@TYPESCRIPT_ESLINT'],
     },
     {
       code: `
@@ -228,7 +228,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           }
         }
       `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
+      parser: parsers['@TYPESCRIPT_ESLINT'],
     },
     {
       code: `
@@ -239,7 +239,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           },
         });
       `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
+      parser: parsers['@TYPESCRIPT_ESLINT'],
     },
     {
       code: `
@@ -255,7 +255,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           }
         }
       `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
+      parser: parsers['@TYPESCRIPT_ESLINT'],
     },
     {
       code: `
@@ -268,13 +268,13 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           }
         }
       `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
+      parser: parsers['@TYPESCRIPT_ESLINT'],
     },
     {
       code: `
         var foo = require('foo');
       `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
+      parser: parsers['@TYPESCRIPT_ESLINT'],
     },
     {
       code: `
@@ -282,7 +282,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           {/* valid */}
         </Foo>
       `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
+      parser: parsers['@TYPESCRIPT_ESLINT'],
     },
     {
       code: `
@@ -290,7 +290,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           &nbsp;https://www.example.com/attachment/download/1
         </strong>
       `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
+      parser: parsers['@TYPESCRIPT_ESLINT'],
     },
 
     // inside element declarations
@@ -298,22 +298,22 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
       code: `
         <Foo /* valid */ placeholder={'foo'}/>
       `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
+      parser: parsers['@TYPESCRIPT_ESLINT'],
     },
     {
       code: `
         <Foo title={'foo' /* valid */}/>
       `,
-      parser: parsers['@TYPESCRIPT_ESLINT']
+      parser: parsers['@TYPESCRIPT_ESLINT'],
     },
     {
       code: '<pre>&#x2F;&#x2F; TODO: Write perfect code</pre>',
-      parser: parsers['@TYPESCRIPT_ESLINT']
+      parser: parsers['@TYPESCRIPT_ESLINT'],
     },
     {
       code: '<pre>&#x2F;&#42; TODO: Write perfect code &#42;&#x2F;</pre>',
-      parser: parsers['@TYPESCRIPT_ESLINT']
-    }
+      parser: parsers['@TYPESCRIPT_ESLINT'],
+    },
   ])),
 
   invalid: [
@@ -326,7 +326,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'putCommentInBraces'}]
+      errors: [{messageId: 'putCommentInBraces'}],
     },
     {
       code: `
@@ -337,7 +337,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'putCommentInBraces'}]
+      errors: [{messageId: 'putCommentInBraces'}],
     },
     {
       code: `
@@ -348,7 +348,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'putCommentInBraces'}]
+      errors: [{messageId: 'putCommentInBraces'}],
     },
     {
       code: `
@@ -363,7 +363,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'putCommentInBraces'}]
+      errors: [{messageId: 'putCommentInBraces'}],
     },
     {
       code: `
@@ -380,7 +380,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'putCommentInBraces'}]
+      errors: [{messageId: 'putCommentInBraces'}],
     },
     {
       code: `
@@ -397,7 +397,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'putCommentInBraces'}]
+      errors: [{messageId: 'putCommentInBraces'}],
     },
     {
       code: `
@@ -405,8 +405,8 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
           return <span>/*</span>;
         };
       `,
-      errors: [{messageId: 'putCommentInBraces'}]
-    }
+      errors: [{messageId: 'putCommentInBraces'}],
+    },
   ].concat(parsers.TS([
     {
       code: `
@@ -417,7 +417,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{messageId: 'putCommentInBraces'}]
+      errors: [{messageId: 'putCommentInBraces'}],
     },
     {
       code: `
@@ -428,7 +428,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{messageId: 'putCommentInBraces'}]
+      errors: [{messageId: 'putCommentInBraces'}],
     },
     {
       code: `
@@ -439,7 +439,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{messageId: 'putCommentInBraces'}]
+      errors: [{messageId: 'putCommentInBraces'}],
     },
     {
       code: `
@@ -454,7 +454,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{messageId: 'putCommentInBraces'}]
+      errors: [{messageId: 'putCommentInBraces'}],
     },
     {
       code: `
@@ -471,7 +471,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{messageId: 'putCommentInBraces'}]
+      errors: [{messageId: 'putCommentInBraces'}],
     },
     {
       code: `
@@ -488,7 +488,7 @@ ruleTester.run('jsx-no-comment-textnodes', rule, {
         }
       `,
       parser: parsers['@TYPESCRIPT_ESLINT'],
-      errors: [{messageId: 'putCommentInBraces'}]
-    }
-  ]))
+      errors: [{messageId: 'putCommentInBraces'}],
+    },
+  ])),
 });

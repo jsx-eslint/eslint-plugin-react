@@ -16,8 +16,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ ruleTester.run('no-find-dom-node', rule, {
     {
       code: `
         var Hello = function() {};
-      `
+      `,
     },
     {
       code: `
@@ -40,7 +40,7 @@ ruleTester.run('no-find-dom-node', rule, {
             return <div>Hello</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -53,7 +53,7 @@ ruleTester.run('no-find-dom-node', rule, {
             return <div>Hello</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -65,8 +65,8 @@ ruleTester.run('no-find-dom-node', rule, {
             return <div>Hello</div>;
           }
         });
-      `
-    }
+      `,
+    },
   ],
 
   invalid: [
@@ -81,7 +81,7 @@ ruleTester.run('no-find-dom-node', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noFindDOMNode'}]
+      errors: [{messageId: 'noFindDOMNode'}],
     },
     {
       code: `
@@ -94,7 +94,7 @@ ruleTester.run('no-find-dom-node', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noFindDOMNode'}]
+      errors: [{messageId: 'noFindDOMNode'}],
     },
     {
       code: `
@@ -107,7 +107,7 @@ ruleTester.run('no-find-dom-node', rule, {
           }
         };
       `,
-      errors: [{messageId: 'noFindDOMNode'}]
+      errors: [{messageId: 'noFindDOMNode'}],
     },
     {
       code: `
@@ -120,7 +120,7 @@ ruleTester.run('no-find-dom-node', rule, {
           }
         };
       `,
-      errors: [{messageId: 'noFindDOMNode'}]
-    }
-  ]
+      errors: [{messageId: 'noFindDOMNode'}],
+    },
+  ],
 });

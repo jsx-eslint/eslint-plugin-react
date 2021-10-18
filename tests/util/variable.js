@@ -8,7 +8,7 @@ describe('variable', () => {
   describe('getLatestVariableDefinition', () => {
     it('should return undefined for empty definitions', () => {
       const variable = {
-        defs: []
+        defs: [],
       };
       assert.equal(getLatestVariableDefinition(variable), undefined);
     });
@@ -18,8 +18,8 @@ describe('variable', () => {
         defs: [
           'one',
           'two',
-          'latest'
-        ]
+          'latest',
+        ],
       };
       assert.equal(getLatestVariableDefinition(variable), 'latest');
     });

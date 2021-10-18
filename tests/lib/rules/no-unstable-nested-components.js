@@ -16,8 +16,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 const ERROR_MESSAGE = 'Declare this component outside parent component "ParentComponent" or memoize it.';
@@ -40,7 +40,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           </div>
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -51,7 +51,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           React.createElement(OutsideDefinedFunctionComponent, null)
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -63,7 +63,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
             />
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -73,7 +73,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           header: React.createElement("div", null)
         });
       }
-      `
+      `,
     },
     {
       code: `
@@ -86,7 +86,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           </div>
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -102,7 +102,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           React.createElement(MemoizedNestedComponent, null)
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -120,7 +120,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           </div>
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -138,7 +138,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           React.createElement(MemoizedNestedFunctionComponent, null)
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -174,7 +174,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           </div>
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -189,7 +189,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           </div>
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -200,7 +200,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
 
         return React.createElement("div", null, getComponent());
       }
-      `
+      `,
     },
     {
       code: `
@@ -211,7 +211,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
             </RenderPropComponent>
           );
       }
-      `
+      `,
     },
     {
       code: `
@@ -220,7 +220,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
             <RenderPropComponent children={() => <div />} />
           );
       }
-      `
+      `,
     },
     {
       code: `
@@ -240,7 +240,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           />
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -251,7 +251,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
             () => React.createElement("div", null)
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -266,7 +266,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           </ul>
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -282,7 +282,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           />
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -299,7 +299,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           )
         )
       }
-      `
+      `,
     },
     {
       code: `
@@ -316,7 +316,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           </ul>
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -333,7 +333,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           })
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -342,14 +342,14 @@ ruleTester.run('no-unstable-nested-components', rule, {
           <div />
         );
       }
-      `
+      `,
     },
     {
       code: `
       function createTestComponent(props) {
         return React.createElement("div", null);
       }
-      `
+      `,
     },
     {
       code: `
@@ -360,8 +360,8 @@ ruleTester.run('no-unstable-nested-components', rule, {
       }
       `,
       options: [{
-        allowAsProps: true
-      }]
+        allowAsProps: true,
+      }],
     },
     {
       code: `
@@ -372,8 +372,8 @@ ruleTester.run('no-unstable-nested-components', rule, {
       }
       `,
       options: [{
-        allowAsProps: true
-      }]
+        allowAsProps: true,
+      }],
     },
     {
       code: `
@@ -384,8 +384,8 @@ ruleTester.run('no-unstable-nested-components', rule, {
       }
       `,
       options: [{
-        allowAsProps: true
-      }]
+        allowAsProps: true,
+      }],
     },
     {
       code: `
@@ -394,7 +394,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           <ComponentForProps renderFooter={() => <div />} />
         );
       }
-      `
+      `,
     },
     {
       code: `
@@ -403,7 +403,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           renderFooter: () => React.createElement("div", null)
         });
       }
-      `
+      `,
     },
     {
       code: `
@@ -414,7 +414,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
 
         return <div />;
       }
-      `
+      `,
     },
     {
       code: `
@@ -423,7 +423,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           <SomeComponent renderers={{ Header: () => <div /> }} />
         )
       }
-      `
+      `,
     },
     {
       code: `
@@ -438,7 +438,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           )} />
         )
       }
-      `
+      `,
     },
     {
       code: `
@@ -453,7 +453,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           ]}
         />
       );
-     `
+     `,
     },
     {
       code: `
@@ -467,14 +467,14 @@ ruleTester.run('no-unstable-nested-components', rule, {
 
         return <Table rows={rows} />;
       }
-      `
+      `,
     },
     {
       code: `
       function ParentComponent() {
         return <SomeComponent renderers={{ notComponent: () => null }} />;
       }
-      `
+      `,
     },
     {
       code: `
@@ -489,7 +489,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           return <div />;
         },
       });
-      `
+      `,
     },
     {
       code: `
@@ -503,8 +503,8 @@ ruleTester.run('no-unstable-nested-components', rule, {
 
         return <Table rows={rows} />;
       }
-      `
-    }
+      `,
+    },
     /* TODO These minor cases are currently falsely marked due to component detection
     {
       code: `
@@ -545,7 +545,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -561,7 +561,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -577,7 +577,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -593,7 +593,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -609,7 +609,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -625,7 +625,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -641,7 +641,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE_WITHOUT_NAME}]
+      errors: [{message: ERROR_MESSAGE_WITHOUT_NAME}],
     },
     {
       code: `
@@ -657,7 +657,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       };
       `,
-      errors: [{message: ERROR_MESSAGE_WITHOUT_NAME}]
+      errors: [{message: ERROR_MESSAGE_WITHOUT_NAME}],
     },
     {
       code: `
@@ -673,7 +673,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -689,7 +689,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -707,7 +707,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -725,7 +725,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -745,7 +745,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         }
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -765,7 +765,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         }
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -783,7 +783,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         }
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -801,7 +801,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         }
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -819,7 +819,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         }
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -837,7 +837,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         }
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -857,7 +857,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -873,7 +873,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         return React.createElement("div", null, getComponent());
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -892,7 +892,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}]
+      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}],
     },
     {
       code: `
@@ -908,7 +908,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         });
       }
       `,
-      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}]
+      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}],
     },
     {
       code: `
@@ -922,7 +922,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           );
       }
       `,
-      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}]
+      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}],
     },
     {
       code: `
@@ -936,7 +936,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         });
       }
       `,
-      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}]
+      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}],
     },
     {
       code: `
@@ -958,7 +958,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
           );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -984,7 +984,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE}]
+      errors: [{message: ERROR_MESSAGE}],
     },
     {
       code: `
@@ -998,7 +998,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}]
+      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}],
     },
     {
       code: `
@@ -1012,7 +1012,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         });
       }
       `,
-      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}]
+      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}],
     },
     {
       code: `
@@ -1022,7 +1022,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
         );
       }
       `,
-      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}]
+      errors: [{message: ERROR_MESSAGE_COMPONENT_AS_PROPS}],
     },
     {
       code: `
@@ -1044,7 +1044,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
       }
       `,
       // Only a single error should be shown. This can get easily marked twice.
-      errors: [{message: ERROR_MESSAGE}]
-    }
-  ]
+      errors: [{message: ERROR_MESSAGE}],
+    },
+  ],
 });

@@ -22,14 +22,14 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 const settings = {
   react: {
-    pragma: 'Foo'
-  }
+    pragma: 'Foo',
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div>Hello {this.props.name}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -61,7 +61,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div>Hello {this.props.name.firstname}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -70,7 +70,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div>Hello World</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -80,7 +80,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div>Hello World</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -90,7 +90,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div>Hello World {this.props[propName]}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -100,7 +100,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div>Hello {this.props.name}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -110,7 +110,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div>Hello {this.props.name}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -119,7 +119,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div>Hello World</div>;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -132,7 +132,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           firstname: PropTypes.string
         };
         Hello.propTypes.lastname = PropTypes.string;
-      `
+      `,
     },
     {
       code: `
@@ -147,7 +147,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div>Hello {user.name}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -156,7 +156,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return 'Hello' + this.props.name;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -164,7 +164,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           method;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -178,7 +178,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div>Hello {this.props.name}</div>;
           }
         }
-      `
+      `,
     },
     {
       // Props validation is ignored when spread is used
@@ -196,7 +196,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           icon: PropTypes.bool
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -206,7 +206,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div>Hello {firstname}</div>;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -219,7 +219,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -232,7 +232,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -244,7 +244,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           'firstname': PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -259,7 +259,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           'firstname': PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -274,7 +274,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           b: PropTypes.string
         });
       `,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       code: `
@@ -292,7 +292,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
         Hello.propTypes.a.b.c = PropTypes.number;
       `,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       code: `
@@ -314,7 +314,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           )
         };
       `,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       code: `
@@ -338,7 +338,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           )
         };
       `,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       code: `
@@ -354,7 +354,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             PropTypes.string
           ])
         };
-      `
+      `,
     },
     {
       code: `
@@ -379,7 +379,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           ])
         };
       `,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       code: `
@@ -393,7 +393,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           a: PropTypes.instanceOf(Hello)
         };
-      `
+      `,
     },
     {
       code: `
@@ -421,7 +421,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           numb: PropTypes.number,
           stri: PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -439,7 +439,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           "aria-controls": PropTypes.string
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -452,7 +452,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           "some.value": PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -465,7 +465,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           "arr": PropTypes.array
         };
-      `
+      `,
     },
     {
       code: `
@@ -481,7 +481,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           )
         };
       `,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       code: `
@@ -497,7 +497,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div>{icons}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -515,7 +515,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
       options: [{skipShapeProps: false}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -526,7 +526,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -540,7 +540,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       options: [{skipShapeProps: false}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -557,7 +557,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       options: [{skipShapeProps: false}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured assignment with Shape propTypes with skipShapeProps off issue #816
@@ -578,7 +578,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       code: `
@@ -598,7 +598,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       code: `
@@ -611,7 +611,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div>{nextPath}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -624,7 +624,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         });
       `,
-      options: [{customValidators: ['CustomValidator']}]
+      options: [{customValidators: ['CustomValidator']}],
     },
     {
       code: `
@@ -639,7 +639,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         });
       `,
-      options: [{customValidators: ['CustomValidator'], skipShapeProps: false}]
+      options: [{customValidators: ['CustomValidator'], skipShapeProps: false}],
     },
     {
       code: `
@@ -654,7 +654,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         });
       `,
-      options: [{customValidators: ['CustomValidator'], skipShapeProps: false}]
+      options: [{customValidators: ['CustomValidator'], skipShapeProps: false}],
     },
     {
       code: `
@@ -669,7 +669,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         });
       `,
-      options: [{customValidators: ['CustomValidator'], skipShapeProps: false}]
+      options: [{customValidators: ['CustomValidator'], skipShapeProps: false}],
     },
     {
       code: `
@@ -682,7 +682,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         });
       `,
-      options: [{customValidators: ['CustomValidator']}]
+      options: [{customValidators: ['CustomValidator']}],
     },
     {
       code: `
@@ -690,7 +690,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           propTypes: SomeOtherComponent.propTypes
         });
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -701,7 +701,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -711,7 +711,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div>Hello World</div>;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -725,7 +725,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           users: PropTypes.arrayOf(PropTypes.object)
         };
-      `
+      `,
     },
     {
       code: `
@@ -735,7 +735,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div>Hello</div>;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -747,7 +747,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -761,7 +761,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -775,7 +775,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -789,7 +789,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Should not be detected as a component
@@ -800,7 +800,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           });
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Should not be detected as a component
@@ -811,7 +811,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           });
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -826,7 +826,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
         module.exports = HelloComponent();
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -841,7 +841,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
         module.exports = HelloComponent();
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -856,7 +856,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
         module.exports = HelloComponent();
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -871,7 +871,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
         module.exports = HelloComponent();
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -895,7 +895,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           firstname: PropTypes.string,
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -910,7 +910,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           company: PropTypes.string
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -925,7 +925,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           company: PropTypes.string
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -936,7 +936,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Reassigned props are ignored
@@ -948,7 +948,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -962,7 +962,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -974,28 +974,28 @@ ruleTester.run('no-unused-prop-types', rule, {
             );
           }
         });
-      `
+      `,
     },
     {
       code: `
         function notAComponent({ something }) {
           return something + 1;
         };
-      `
+      `,
     },
     {
       code: `
         const notAComponent = function({ something }) {
           return something + 1;
         };
-      `
+      `,
     },
     {
       code: `
         const notAComponent = ({ something }) => {
           return something + 1;
         };
-      `
+      `,
     },
     {
       // Validation is ignored on reassigned props object
@@ -1005,7 +1005,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           return <span>{newProps.someProp}</span>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1018,7 +1018,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1031,7 +1031,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1043,7 +1043,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1059,7 +1059,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1076,7 +1076,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1093,7 +1093,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1111,7 +1111,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1129,7 +1129,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1141,7 +1141,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1156,7 +1156,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1168,7 +1168,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1184,7 +1184,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1201,7 +1201,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1222,7 +1222,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1234,7 +1234,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1246,7 +1246,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1258,7 +1258,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1271,7 +1271,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1284,7 +1284,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1295,7 +1295,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Ignore component validation if propTypes are composed using spread
@@ -1312,7 +1312,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             ...otherPropTypes,
             firstName: PropTypes.string
         };
-      `
+      `,
     },
     {
       // Ignore destructured function arguments
@@ -1322,7 +1322,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return ["string"].map(({length}) => <div>{length}</div>);
           }
         }
-      `
+      `,
     },
     {
       // Flow annotations on stateless components
@@ -1336,7 +1336,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           return <div>Hello {firstname} {lastname}</div>
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1349,7 +1349,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           return <div>Hello {firstname} {lastname}</div>
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1362,7 +1362,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           return <div>Hello {firstname} {lastname}</div>
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1385,7 +1385,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1397,7 +1397,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           options: Array<SelectOption>
         } & FieldProps
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1411,7 +1411,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             <div/>
           )
         }
-      `
+      `,
     },
     {
       code: `
@@ -1425,7 +1425,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           jobs: PropTypes.array
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1436,7 +1436,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           return <div>Hello {firstname}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1444,7 +1444,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           return <div>{({name}) => <Hello name={name} />}</div>
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1452,7 +1452,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           return <div>{function({name}) { return <Hello name={name} />; }}</div>
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Should stop at the class when searching for a parent component
@@ -1461,7 +1461,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           someMethod = ({width}) => {}
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Should stop at the decorator when searching for a parent component
@@ -1471,7 +1471,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }])
         class Something extends Component {}
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured shape props are skipped by default
@@ -1489,7 +1489,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured props in componentWillReceiveProps shouldn't throw errors
@@ -1504,7 +1504,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured props in componentWillReceiveProps shouldn't throw errors
@@ -1518,7 +1518,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           something: PropTypes.bool,
         };
-      `
+      `,
     },
     {
       // Destructured props in componentWillReceiveProps shouldn't throw errors when used createReactClass
@@ -1533,7 +1533,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         })
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured props in componentWillReceiveProps shouldn't throw errors when used createReactClass, with default parser
@@ -1547,7 +1547,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             doSomething(something);
           }
         })
-      `
+      `,
     },
     {
       // Destructured function props in componentWillReceiveProps shouldn't throw errors
@@ -1561,7 +1561,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured function props in componentWillReceiveProps shouldn't throw errors
@@ -1574,7 +1574,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           something: PropTypes.bool,
         };
-      `
+      `,
     },
     {
       // Destructured function props in componentWillReceiveProps shouldn't throw errors when used createReactClass
@@ -1588,7 +1588,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         })
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured function props in componentWillReceiveProps shouldn't throw errors when used createReactClass, with default parser
@@ -1601,7 +1601,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             doSomething(something);
           }
         })
-      `
+      `,
     },
     {
       // Destructured props in the constructor shouldn't throw errors
@@ -1617,7 +1617,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured props in the constructor shouldn't throw errors
@@ -1632,7 +1632,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           something: PropTypes.bool,
         };
-      `
+      `,
     },
     {
       // Destructured function props in the constructor shouldn't throw errors
@@ -1647,7 +1647,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured function props in the constructor shouldn't throw errors
@@ -1661,7 +1661,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           something: PropTypes.bool,
         };
-      `
+      `,
     },
     {
       code: `
@@ -1676,7 +1676,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1690,7 +1690,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           something: PropTypes.bool,
         };
-      `
+      `,
     },
     {
       code: `
@@ -1705,7 +1705,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         })
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured props in `shouldComponentUpdate` shouldn't throw errors when used createReactClass, with default parser
@@ -1719,7 +1719,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return something;
           }
         })
-      `
+      `,
     },
     {
       // Destructured function props in the `shouldComponentUpdate` method shouldn't throw errors
@@ -1733,7 +1733,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured function props in the `shouldComponentUpdate` method shouldn't throw errors
@@ -1746,7 +1746,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           something: PropTypes.bool,
         };
-      `
+      `,
     },
     {
       // Destructured function props in `shouldComponentUpdate` shouldn't throw errors when used createReactClass
@@ -1760,7 +1760,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         })
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured function props in `shouldComponentUpdate` shouldn't throw errors when used createReactClass, with default parser
@@ -1773,7 +1773,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return something;
           }
         })
-      `
+      `,
     },
     {
       // Destructured props in the `componentWillUpdate` method shouldn't throw errors
@@ -1788,7 +1788,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured props in the `componentWillUpdate` method shouldn't throw errors
@@ -1802,7 +1802,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           something: PropTypes.bool,
         };
-      `
+      `,
     },
     {
       // Destructured props in `componentWillUpdate` shouldn't throw errors when used createReactClass
@@ -1817,7 +1817,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         })
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured props in `componentWillUpdate` shouldn't throw errors when used createReactClass, with default parser
@@ -1831,7 +1831,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return something;
           }
         })
-      `
+      `,
     },
     {
       // Destructured function props in the `componentWillUpdate` method shouldn't throw errors
@@ -1845,7 +1845,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured function props in the `componentWillUpdate` method shouldn't throw errors
@@ -1858,7 +1858,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           something: PropTypes.bool,
         };
-      `
+      `,
     },
     {
       // Destructured function props in the `componentWillUpdate` method shouldn't throw errors when used createReactClass
@@ -1872,7 +1872,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         })
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured function props in the `componentWillUpdate` method shouldn't throw errors when used createReactClass, with default parser
@@ -1885,7 +1885,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return something;
           }
         })
-      `
+      `,
     },
     {
       // Destructured props in the `componentDidUpdate` method shouldn't throw errors
@@ -1900,7 +1900,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured props in the `componentDidUpdate` method shouldn't throw errors
@@ -1914,7 +1914,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           something: PropTypes.bool,
         };
-      `
+      `,
     },
     {
       // Destructured props in `componentDidUpdate` shouldn't throw errors when used createReactClass
@@ -1929,7 +1929,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         })
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured props in `componentDidUpdate` shouldn't throw errors when used createReactClass, with default parser
@@ -1943,7 +1943,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return something;
           }
         })
-      `
+      `,
     },
     {
       // Destructured function props in the `componentDidUpdate` method shouldn't throw errors
@@ -1957,7 +1957,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured function props in the `componentDidUpdate` method shouldn't throw errors
@@ -1970,7 +1970,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           something: PropTypes.bool,
         };
-      `
+      `,
     },
     {
       // Destructured function props in the `componentDidUpdate` method shouldn't throw errors when used createReactClass
@@ -1984,7 +1984,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         })
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured function props in the `componentDidUpdate` method shouldn't throw errors when used createReactClass, with default parser
@@ -1997,7 +1997,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return something;
           }
         })
-      `
+      `,
     },
     {
       // Destructured state props in `componentDidUpdate` [Issue #825]
@@ -2011,7 +2011,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured state props in `componentDidUpdate` [Issue #825]
@@ -2024,7 +2024,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.propTypes = {
           something: PropTypes.bool,
         };
-      `
+      `,
     },
     {
       // Destructured state props in `componentDidUpdate` [Issue #825] when used createReactClass
@@ -2038,7 +2038,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         })
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured state props in `componentDidUpdate` without custom parser [Issue #825]
@@ -2051,7 +2051,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return something;
           }
         });
-      `
+      `,
     },
     {
       // Destructured state props in `componentDidUpdate` without custom parser [Issue #825] when used createReactClass
@@ -2064,7 +2064,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return something;
           }
         })
-      `
+      `,
     },
     {
       // Destructured props in a stateless function
@@ -2073,7 +2073,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           const {...rest} = props;
           return <div />;
         };
-      `
+      `,
     },
     {
       // Nested destructuring; issue 2424
@@ -2086,7 +2086,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         SomeComponent.propTypes = {
           aaa: somePropType,
         };
-      `
+      `,
     },
     {
       // `no-unused-prop-types` in jsx expressions - [Issue #885]
@@ -2104,7 +2104,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           nextPage: PropTypes.func.isRequired,
           previousPage: PropTypes.func.isRequired,
         };
-      `
+      `,
     },
     {
       // `no-unused-prop-types` rest param props in jsx expressions - [Issue #885]
@@ -2119,7 +2119,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           nextPage: PropTypes.func.isRequired,
           previousPage: PropTypes.func.isRequired,
         };
-      `
+      `,
     },
     {
       // issue 2350
@@ -2136,7 +2136,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Foo.propTypes = {
           a: PropTypes.string,
         }
-      `
+      `,
     },
     {
       code: `
@@ -2152,7 +2152,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           foo: PropTypes.bool,
           bar: PropTypes.bool
         };
-      `
+      `,
     },
     {
       // The next two test cases are related to: https://github.com/yannickcr/eslint-plugin-react/issues/1183
@@ -2177,7 +2177,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             b: React.PropTypes.string.isRequired,
             c: React.PropTypes.string.isRequired,
         };
-      `
+      `,
     },
     {
       code: `
@@ -2199,7 +2199,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             b: React.PropTypes.string.isRequired,
             c: React.PropTypes.string.isRequired,
         };
-      `
+      `,
     },
     {
       code: `
@@ -2220,7 +2220,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2239,7 +2239,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           foo: PropTypes.string,
           bar: PropTypes.string,
         };
-      `
+      `,
     },
     {
       code: `
@@ -2260,7 +2260,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2279,7 +2279,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           foo: PropTypes.string,
           bar: PropTypes.string,
         };
-      `
+      `,
     },
     {
       code: `
@@ -2301,7 +2301,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Props used inside of an async class property
@@ -2315,7 +2315,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Multiple props used inside of an async class property
@@ -2333,7 +2333,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2352,7 +2352,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           foo: PropTypes.string,
           bar: PropTypes.string,
         };
-      `
+      `,
     },
     {
       code: `
@@ -2373,7 +2373,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured props inside of async class property
@@ -2388,7 +2388,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Multiple destructured props inside of async class property
@@ -2407,7 +2407,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2426,7 +2426,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           foo: PropTypes.string,
           bar: PropTypes.string,
         };
-      `
+      `,
     },
     {
       code: `
@@ -2447,7 +2447,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Props used inside of an async class method
@@ -2461,7 +2461,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Multiple props used inside of an async class method
@@ -2479,7 +2479,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destrucuted props inside of async class method
@@ -2494,7 +2494,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2513,7 +2513,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           foo: PropTypes.string,
           bar: PropTypes.string,
         };
-      `
+      `,
     },
     {
       code: `
@@ -2534,7 +2534,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Multiple destructured props inside of async class method
@@ -2553,7 +2553,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // factory functions that return async functions
@@ -2573,7 +2573,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // factory functions that return async functions
@@ -2593,7 +2593,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2612,7 +2612,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           foo: PropTypes.string,
           bar: PropTypes.string,
         };
-      `
+      `,
     },
     {
       // Multiple props used inside of an async method
@@ -2628,7 +2628,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           bar: PropTypes.func,
         }
       `,
-      parserOptions: Object.assign({}, parserOptions, {ecmaVersion: 2017})
+      parserOptions: Object.assign({}, parserOptions, {ecmaVersion: 2017}),
     },
     {
       // Multiple props used inside of an async function
@@ -2647,7 +2647,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           bar: PropTypes.func,
         }
       `,
-      parserOptions: Object.assign({}, parserOptions, {ecmaVersion: 2017})
+      parserOptions: Object.assign({}, parserOptions, {ecmaVersion: 2017}),
     },
     {
       // Multiple props used inside of an async arrow function
@@ -2666,7 +2666,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           bar: PropTypes.func,
         }
       `,
-      parserOptions: Object.assign({}, parserOptions, {ecmaVersion: 2017})
+      parserOptions: Object.assign({}, parserOptions, {ecmaVersion: 2017}),
     },
     {
       // Destructured assignment with Shape propTypes issue #816
@@ -2684,7 +2684,7 @@ ruleTester.run('no-unused-prop-types', rule, {
          }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured assignment without Shape propTypes issue #816
@@ -2700,7 +2700,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Component.propTypes = {
          children: React.PropTypes.node,
         };
-      `
+      `,
     },
     {
       // issue 1309
@@ -2724,7 +2724,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             enabled: React.PropTypes.bool,
             test: React.PropTypes.bool
         };
-      `
+      `,
     },
     {
       // issue 1107
@@ -2740,7 +2740,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           property: React.propTypes.string.isRequired,
           property2: React.propTypes.string.isRequired
         }
-      `
+      `,
     },
     {
       // issue 811
@@ -2763,7 +2763,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             );
         }
         });
-      `
+      `,
     },
     {
       // issue 811
@@ -2785,7 +2785,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // issue #1097
@@ -2808,7 +2808,7 @@ ruleTester.run('no-unused-prop-types', rule, {
 
         export default connect(mapStateToProps, mapDispatchToProps)(HellowQueries)
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // issue #1335
@@ -2827,7 +2827,7 @@ ruleTester.run('no-unused-prop-types', rule, {
          }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2842,7 +2842,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           name: PropTypes.shape(foo)
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2858,7 +2858,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           })
         };
       `,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       // issue #933
@@ -2876,7 +2876,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         );
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       // issue #1506
@@ -2899,7 +2899,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         var tempVar2;
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       // issue #1506
@@ -2921,7 +2921,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       // issue #1506
@@ -2944,7 +2944,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         var tempVar2;
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       // issue #1506
@@ -2967,7 +2967,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         var tempVar;
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       // issue #1542
@@ -2988,7 +2988,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           doSomething: PropTypes.func
         };
       `,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       // issue #1542
@@ -3009,7 +3009,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           doSomething: PropTypes.func
         };
       `,
-      options: [{skipShapeProps: false}]
+      options: [{skipShapeProps: false}],
     },
     {
       // issue #106
@@ -3035,7 +3035,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           ...SharedPropTypes // eslint-disable-line object-shorthand
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -3047,7 +3047,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // issue #933
@@ -3061,7 +3061,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -3072,7 +3072,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           return <div>{props['completed?']}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -3085,7 +3085,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -3099,7 +3099,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.52'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -3112,7 +3112,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -3126,7 +3126,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.53'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Issue #1068
@@ -3151,7 +3151,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Issue #1068
@@ -3176,7 +3176,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Issue #1068
@@ -3201,7 +3201,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -3211,7 +3211,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
         MyComponent.propTypes = { other: () => {} };
-      `
+      `,
     },
     {
       code: `
@@ -3221,7 +3221,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
         MyComponent.propTypes = { other() {} };
-      `
+      `,
     },
     {
       code: `
@@ -3231,7 +3231,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
         MyComponent.propTypes = { other: function () {} };
-      `
+      `,
     },
     {
       code: `
@@ -3241,7 +3241,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
         MyComponent.propTypes = { * other() {} };
-      `
+      `,
     },
     {
       // Sanity test coverage for new UNSAFE_componentWillReceiveProps lifecycles
@@ -3257,7 +3257,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       settings: {react: {version: '16.3.0'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured props in the `UNSAFE_componentWillUpdate` method shouldn't throw errors
@@ -3273,7 +3273,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       settings: {react: {version: '16.3.0'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Simple test of new static getDerivedStateFromProps lifecycle
@@ -3299,7 +3299,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       settings: {react: {version: '16.3.0'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Simple test of new static getSnapshotBeforeUpdate lifecycle
@@ -3320,7 +3320,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       settings: {react: {version: '16.3.0'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Impossible intersection type
@@ -3335,7 +3335,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -3353,7 +3353,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -3369,7 +3369,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             lastname: PropTypes.string
           })
         };
-      `
+      `,
     },
     {
       code: `
@@ -3385,7 +3385,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -3403,7 +3403,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -3418,7 +3418,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -3432,7 +3432,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           foo: PropTypes.string
         };
       `,
-      options: [{ignore: ['foo']}]
+      options: [{ignore: ['foo']}],
     },
     {
       code: `
@@ -3447,7 +3447,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{ignore: ['foo']}]
+      options: [{ignore: ['foo']}],
     },
     {
       code: `
@@ -3458,7 +3458,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
 
         Foo.defaultProps = Object.assign({});
-      `
+      `,
     },
     {
       code: `
@@ -3477,7 +3477,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           ),
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     parsers.TS([
       {
@@ -3494,7 +3494,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             bar,
           };
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -3510,7 +3510,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             bar,
           };
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3563,7 +3563,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             }
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -3616,7 +3616,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             }
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3625,7 +3625,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
           export default Thing;
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -3634,7 +3634,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
           export default Thing;
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       // this test checks that there is no crash if no declaration is found (TSTypeLiteral).
       {
@@ -3643,7 +3643,7 @@ ruleTester.run('no-unused-prop-types', rule, {
               return <div {...props}></div>;
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -3651,7 +3651,7 @@ ruleTester.run('no-unused-prop-types', rule, {
               return <div {...props}></div>;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       // this test checks that there is no crash if no declaration is found (TSTypeReference).
       {
@@ -3660,7 +3660,7 @@ ruleTester.run('no-unused-prop-types', rule, {
               return <div {...props}></div>;
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -3668,7 +3668,7 @@ ruleTester.run('no-unused-prop-types', rule, {
               return <div {...props}></div>;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         // Omit, etc, cannot be handled, but must not trigger an error
@@ -3677,7 +3677,7 @@ ruleTester.run('no-unused-prop-types', rule, {
               return <div>{props.b}</div>;
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         // Omit, etc, cannot be handled, but must not trigger an error
@@ -3686,7 +3686,7 @@ ruleTester.run('no-unused-prop-types', rule, {
               return <div>{props.b}</div>;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         // neither TSTypeReference or TSTypeLiteral, we do nothing. Weird case
@@ -3695,7 +3695,7 @@ ruleTester.run('no-unused-prop-types', rule, {
               return <div>{props.firstname}</div>;
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         // neither TSTypeReference or TSTypeLiteral, we do nothing. Weird case
@@ -3704,7 +3704,7 @@ ruleTester.run('no-unused-prop-types', rule, {
               return <div>{props.firstname}</div>;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         // neither TSTypeReference or TSTypeLiteral, we do nothing. Weird case
@@ -3713,7 +3713,7 @@ ruleTester.run('no-unused-prop-types', rule, {
               return <div>{props?.firstname}</div>;
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         // neither TSTypeReference or TSTypeLiteral, we do nothing. Weird case
@@ -3722,7 +3722,7 @@ ruleTester.run('no-unused-prop-types', rule, {
               return <div>{props?.firstname}</div>;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3735,7 +3735,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div aria-label={ariaLabel} />;
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -3748,7 +3748,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div aria-label={ariaLabel} />;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3761,7 +3761,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div aria-label={ariaLabel} />;
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -3774,7 +3774,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div aria-label={ariaLabel} />;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3787,7 +3787,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div aria-label={props[1234]} />;
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -3800,7 +3800,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div aria-label={props[1234]} />;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3813,7 +3813,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div aria-label={props[1234]} />;
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -3826,7 +3826,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div aria-label={props[1234]} />;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3839,7 +3839,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div aria-label={props['1234']} />;
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -3852,7 +3852,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div aria-label={props['1234']} />;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3874,7 +3874,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           return <div aria-label={props['1234']} />;
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -3896,7 +3896,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           return <div aria-label={props['1234']} />;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3908,7 +3908,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           )
           export default Component
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -3920,7 +3920,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           )
           export default Component
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3934,7 +3934,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div><span>{props.user}</span></div>;
           };
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3948,7 +3948,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div><span>{props.user}</span></div>;
           };
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3961,7 +3961,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             return <div><span>{firstname}</span></div>;
           };
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3983,7 +3983,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             }
           }
         `,
-        parser: parsers.BABEL_ESLINT
+        parser: parsers.BABEL_ESLINT,
       },
       {
         code: `
@@ -4019,7 +4019,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             );
           };
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -4057,7 +4057,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             );
           };
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       // Issue: #2795
       {
@@ -4086,7 +4086,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           type StateProps = ReturnType<typeof mapStateToProps>
           type DispatchProps = ReturnType<typeof mapDispatchToProps>
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       // Issue: #2795
       {
@@ -4115,7 +4115,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           type StateProps = ReturnType<typeof mapStateToProps>
           type DispatchProps = ReturnType<typeof mapDispatchToProps>
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       // Issue: #2795
       {
@@ -4143,7 +4143,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           type StateProps = ReturnType<typeof mapStateToProps>
           type DispatchProps = ReturnType<typeof mapDispatchToProps>
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -4159,8 +4159,8 @@ ruleTester.run('no-unused-prop-types', rule, {
 
           export default MyComponent;
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
-      }
+        parser: parsers['@TYPESCRIPT_ESLINT'],
+      },
     ])
   ),
 
@@ -4181,9 +4181,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'unused'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -4201,9 +4201,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'name'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -4222,9 +4222,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'name'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -4237,7 +4237,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           unused: PropTypes.string
         };
       `,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4255,7 +4255,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4276,8 +4276,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       errors: [
         {message: '\'unused\' PropType is defined but prop is never used'},
-        {message: '\'anotherunused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'anotherunused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4291,7 +4291,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           unused: PropTypes.string
         };
       `,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4308,7 +4308,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
       options: [{skipShapeProps: false}],
-      errors: [{message: '\'a.b\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'a.b\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4327,7 +4327,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
       options: [{skipShapeProps: false}],
-      errors: [{message: '\'a.b.c\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'a.b.c\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4349,8 +4349,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       options: [{skipShapeProps: false}],
       errors: [
-        {message: '\'a.*.unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'a.*.unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4374,8 +4374,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       options: [{skipShapeProps: false}],
       errors: [
-        {message: '\'a.*.unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'a.*.unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4402,8 +4402,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       options: [{skipShapeProps: false}],
       errors: [
         {message: '\'a.unused\' PropType is defined but prop is never used'},
-        {message: '\'a.anotherunused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'a.anotherunused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4418,8 +4418,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
       errors: [
-        {message: '\'some.unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'some.unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4439,8 +4439,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       options: [{skipShapeProps: false}],
       errors: [
-        {message: '\'arr.*.some.unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'arr.*.some.unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4458,8 +4458,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4478,8 +4478,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4489,7 +4489,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.prototype.propTypes = {unused: PropTypes.string};
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4499,7 +4499,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.prototype.propTypes = {unused: PropTypes.string};
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4509,7 +4509,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.prototype.propTypes = {unused: PropTypes.string};
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4520,7 +4520,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.prototype.propTypes = {unused: PropTypes.string};
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4530,7 +4530,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.prototype.propTypes = {unused: PropTypes.string};
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4540,7 +4540,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.prototype.propTypes = {unused: PropTypes.string};
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4550,7 +4550,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.prototype.propTypes = {unused: PropTypes.string};
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4563,7 +4563,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4576,7 +4576,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4589,7 +4589,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4605,7 +4605,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         module.exports = HelloComponent();
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4618,7 +4618,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         Hello.prototype.propTypes = {unused: PropTypes.string};
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4631,8 +4631,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4647,8 +4647,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4666,8 +4666,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4685,8 +4685,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       settings,
       errors: [
-        {message: '\'unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4704,8 +4704,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4720,8 +4720,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'unused\' PropType is defined but prop is never used'},
+      ],
     },
     semver.satisfies(babelEslintVersion, '< 9') ? [
       {
@@ -4737,9 +4737,9 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers.BABEL_ESLINT,
         errors: [
-          {message: '\'unused\' PropType is defined but prop is never used'}
-        ]
-      }
+          {message: '\'unused\' PropType is defined but prop is never used'},
+        ],
+      },
     ] : [],
     {
       code: `
@@ -4753,8 +4753,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4768,8 +4768,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4787,8 +4787,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'b\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'b\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4807,8 +4807,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'zap\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'zap\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4827,9 +4827,9 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       errors: [
-        {message: '\'zap\' PropType is defined but prop is never used'}
+        {message: '\'zap\' PropType is defined but prop is never used'},
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -4848,9 +4848,9 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       errors: [
-        {message: '\'zap\' PropType is defined but prop is never used'}
+        {message: '\'zap\' PropType is defined but prop is never used'},
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -4868,8 +4868,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       options: [{skipShapeProps: false}],
       errors: [
-        {message: '\'name.unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'name.unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4884,8 +4884,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       options: [{skipShapeProps: false}],
       errors: [
-        {message: '\'name.unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'name.unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4899,8 +4899,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       options: [{skipShapeProps: false}],
       errors: [
-        {message: '\'person.name.unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'person.name.unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4915,8 +4915,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       options: [{skipShapeProps: false}],
       errors: [
-        {message: '\'person.name.unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'person.name.unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4935,8 +4935,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       options: [{skipShapeProps: false}],
       errors: [
-        {message: '\'people.*.name.unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'people.*.name.unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4956,8 +4956,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       options: [{skipShapeProps: false}],
       errors: [
-        {message: '\'people.*.name.unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'people.*.name.unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4973,8 +4973,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       options: [{skipShapeProps: false}],
       errors: [
         {message: '\'result.ok\' PropType is defined but prop is never used'},
-        {message: '\'result.ok\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'result.ok\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -4984,7 +4984,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
         Greetings.propTypes = {unused: Object};
       `,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -4993,14 +4993,14 @@ ruleTester.run('no-unused-prop-types', rule, {
         )
         MyComponent.propTypes = {unused: Object};
       `,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
         const MyComponent = props => props.test ? <div /> : <span />
         MyComponent.propTypes = {unused: Object};
       `,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -5012,7 +5012,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'unused\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unused\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -5033,9 +5033,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'unused'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -5055,9 +5055,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'unused'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -5077,9 +5077,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'unused'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -5098,9 +5098,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'unused'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -5120,9 +5120,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'unused'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -5141,9 +5141,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'unused'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -5163,9 +5163,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'unused'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -5184,9 +5184,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'unused'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -5206,9 +5206,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'unused'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -5227,9 +5227,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'unused'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -5248,9 +5248,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'something'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -5268,9 +5268,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'something'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -5293,9 +5293,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'bar'},
           line: 5,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       // Multiple props used inside of an async class property
@@ -5318,9 +5318,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'baz'},
           line: 6,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -5341,9 +5341,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'bar'},
           line: 11,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -5366,9 +5366,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'bar'},
           line: 5,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       // Multiple destructured props inside of async class property
@@ -5387,7 +5387,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'foo\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'foo\' PropType is defined but prop is never used'}],
     },
     {
       // Multiple props used inside of an async class method
@@ -5410,9 +5410,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'bar'},
           line: 5,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -5433,9 +5433,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'bar'},
           line: 11,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -5458,9 +5458,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'bar'},
           line: 5,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       // Multiple destructured props inside of async class method
@@ -5484,9 +5484,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'baz'},
           line: 6,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       // factory functions that return async functions
@@ -5511,9 +5511,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'baz'},
           line: 6,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -5534,9 +5534,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'bar'},
           line: 11,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -5557,12 +5557,12 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'bar'},
           line: 11,
-          column: 11
-        }
+          column: 11,
+        },
       ],
       settings: {
-        propWrapperFunctions: ['forbidExtraProps']
-      }
+        propWrapperFunctions: ['forbidExtraProps'],
+      },
     },
     {
       code: `
@@ -5584,12 +5584,12 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'bar'},
           line: 5,
-          column: 13
-        }
+          column: 13,
+        },
       ],
       settings: {
-        propWrapperFunctions: ['forbidExtraProps']
-      }
+        propWrapperFunctions: ['forbidExtraProps'],
+      },
     },
     {
       // factory functions that return async functions
@@ -5614,9 +5614,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'foo'},
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       // Multiple props used inside of an async function
@@ -5642,9 +5642,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'baz'},
           line: 14,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       // Multiple props used inside of an async arrow function
@@ -5670,9 +5670,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           messageId: 'unusedPropType',
           data: {name: 'foo'},
           line: 12,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       // None of the props are used issue #1162
@@ -5687,7 +5687,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         });
       `,
-      errors: [{message: '\'name\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'name\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -5712,8 +5712,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [
         {message: '\'prop1\' PropType is defined but prop is never used'},
         {message: '\'prop2\' PropType is defined but prop is never used'},
-        {message: '\'prop2.*\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'prop2.*\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -5738,8 +5738,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [
         {message: '\'prop1\' PropType is defined but prop is never used'},
         {message: '\'prop2\' PropType is defined but prop is never used'},
-        {message: '\'prop2.*\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'prop2.*\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -5764,8 +5764,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [
         {message: '\'prop1\' PropType is defined but prop is never used'},
         {message: '\'prop2\' PropType is defined but prop is never used'},
-        {message: '\'prop2.*\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'prop2.*\' PropType is defined but prop is never used'},
+      ],
     },
     {
       // issue #1097
@@ -5788,7 +5788,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         export default connect(mapStateToProps, mapDispatchToProps)(HellowQueries)
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'aProp\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'aProp\' PropType is defined but prop is never used'}],
     },
     {
       // issue #2138
@@ -5812,9 +5812,9 @@ ruleTester.run('no-unused-prop-types', rule, {
         {
           message: "'unusedProp' PropType is defined but prop is never used",
           line: 7,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -5829,7 +5829,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -5845,7 +5845,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       settings: {react: {flowVersion: '0.52'}},
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -5860,7 +5860,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -5876,7 +5876,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
       options: [{ignore: ['foo']}],
-      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -5893,7 +5893,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       options: [{ignore: ['foo']}],
-      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -5906,7 +5906,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       settings: {react: {flowVersion: '0.53'}},
       errors: [{message: '\'person\' PropType is defined but prop is never used'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5919,7 +5919,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       settings: {react: {flowVersion: '0.52'}},
       errors: [{message: '\'person\' PropType is defined but prop is never used'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     (semver.satisfies(eslintPkg.version, '> 3') ? [
       {
@@ -5933,8 +5933,8 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         `,
         errors: [{message: '\'foo\' PropType is defined but prop is never used'}],
-        parser: parsers.BABEL_ESLINT
-      }
+        parser: parsers.BABEL_ESLINT,
+      },
     ] : []),
     {
       // issue #1506
@@ -5955,7 +5955,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           doSomething: PropTypes.func
         };
       `,
-      errors: [{message: '\'doSomething\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'doSomething\' PropType is defined but prop is never used'}],
     },
     {
       // issue #1685
@@ -5976,7 +5976,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           doSomething: PropTypes.func
         };
       `,
-      errors: [{message: '\'doSomething\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'doSomething\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -5992,7 +5992,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       settings: {react: {flowVersion: '0.53'}},
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -6008,7 +6008,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       settings: {react: {version: '16.2.0'}},
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'something\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'something\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -6024,7 +6024,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       settings: {react: {version: '16.2.0'}},
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'something\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'something\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -6050,7 +6050,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       settings: {react: {version: '16.2.0'}},
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'defaultValue\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'defaultValue\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -6071,7 +6071,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       settings: {react: {version: '16.2.0'}},
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'defaultValue\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'defaultValue\' PropType is defined but prop is never used'}],
     },
     {
       // Mixed union and intersection types
@@ -6093,7 +6093,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'age\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'age\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -6114,8 +6114,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [
         {message: '\'a\' PropType is defined but prop is never used'},
         {message: '\'a.b\' PropType is defined but prop is never used'},
-        {message: '\'a.b.c\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'a.b.c\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -6129,7 +6129,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'foo\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'foo\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -6145,7 +6145,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -6161,7 +6161,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -6177,7 +6177,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -6194,7 +6194,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -6211,7 +6211,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -6226,7 +6226,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'lastname\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -6246,7 +6246,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       options: [{skipShapeProps: false}],
-      errors: [{message: '\'person.lastname\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'person.lastname\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -6264,7 +6264,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
       options: [{skipShapeProps: false}],
-      errors: [{message: '\'person.lastname\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'person.lastname\' PropType is defined but prop is never used'}],
     },
     {
       code: `
@@ -6279,8 +6279,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'unused\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'unused\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -6303,7 +6303,7 @@ ruleTester.run('no-unused-prop-types', rule, {
 
         export default MyComponent;
       `,
-      errors: [{message: '\'unUsedProp\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'unUsedProp\' PropType is defined but prop is never used'}],
     },
     parsers.TS([
       {
@@ -6323,8 +6323,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
           {message: '\'fooUnused\' PropType is defined but prop is never used'},
-          {message: '\'barUnused\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'barUnused\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6343,8 +6343,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
           {message: '\'fooUnused\' PropType is defined but prop is never used'},
-          {message: '\'barUnused\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'barUnused\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6408,8 +6408,8 @@ ruleTester.run('no-unused-prop-types', rule, {
           {message: '\'thisDestructPropsAliasPropUnused\' PropType is defined but prop is never used'},
           {message: '\'thisDestructPropsDestructPropUnused\' PropType is defined but prop is never used'},
           {message: '\'thisPropsDestructPropUnused\' PropType is defined but prop is never used'},
-          {message: '\'thisPropsPropUnused\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'thisPropsPropUnused\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6473,9 +6473,9 @@ ruleTester.run('no-unused-prop-types', rule, {
           {message: '\'thisDestructPropsAliasPropUnused\' PropType is defined but prop is never used'},
           {message: '\'thisDestructPropsDestructPropUnused\' PropType is defined but prop is never used'},
           {message: '\'thisPropsDestructPropUnused\' PropType is defined but prop is never used'},
-          {message: '\'thisPropsPropUnused\' PropType is defined but prop is never used'}
-        ]
-      }
+          {message: '\'thisPropsPropUnused\' PropType is defined but prop is never used'},
+        ],
+      },
     ]),
     {
       code: `
@@ -6488,8 +6488,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'lastname\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'lastname\' PropType is defined but prop is never used'},
+      ],
     },
     {
       code: `
@@ -6502,8 +6502,8 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {message: '\'lastname\' PropType is defined but prop is never used'}
-      ]
+        {message: '\'lastname\' PropType is defined but prop is never used'},
+      ],
     },
     parsers.TS([
       {
@@ -6517,8 +6517,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
-          {message: '\'lastname\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'lastname\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6531,8 +6531,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
-          {message: '\'lastname\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'lastname\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6545,8 +6545,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
-          {message: '\'lastname\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'lastname\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6559,8 +6559,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
-          {message: '\'lastname\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'lastname\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6573,8 +6573,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
-          {message: '\'lastname\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'lastname\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6587,8 +6587,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
-          {message: '\'lastname\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'lastname\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6601,8 +6601,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
-          {message: '\'lastname\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'lastname\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6615,8 +6615,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
-          {message: '\'lastname\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'lastname\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6630,8 +6630,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
-          {message: '\'lastname\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'lastname\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6645,8 +6645,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
-          {message: '\'lastname\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'lastname\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6660,8 +6660,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
-          {message: '\'lastname\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'lastname\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6675,8 +6675,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
-          {message: '\'lastname\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'lastname\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6690,8 +6690,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
-          {message: '\'foo\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'foo\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6705,8 +6705,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
-          {message: '\'foo\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'foo\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6719,8 +6719,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
-          {message: '\'aria-label\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'aria-label\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6733,8 +6733,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
-          {message: '\'aria-label\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'aria-label\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6747,8 +6747,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
-          {message: '\'1234\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'1234\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6761,8 +6761,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
-          {message: '\'1234\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'1234\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6772,8 +6772,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
-          {message: '\'lastname\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'lastname\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -6783,8 +6783,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
-          {message: '\'lastname\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'lastname\' PropType is defined but prop is never used'},
+        ],
       },
       {
       // test same name of interface should be merge
@@ -6810,8 +6810,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
-          {message: '\'z\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'z\' PropType is defined but prop is never used'},
+        ],
       },
       {
       // test same name of interface should be merge
@@ -6837,8 +6837,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
-          {message: '\'z\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'z\' PropType is defined but prop is never used'},
+        ],
       },
       {
       // test extends
@@ -6859,8 +6859,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
-          {message: '\'y\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'y\' PropType is defined but prop is never used'},
+        ],
       },
       {
       // test extends
@@ -6886,8 +6886,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
           {message: '\'y\' PropType is defined but prop is never used'},
-          {message: '\'z\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'z\' PropType is defined but prop is never used'},
+        ],
       },
       {
       // test extends
@@ -6913,8 +6913,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
           {message: '\'y\' PropType is defined but prop is never used'},
-          {message: '\'z\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'z\' PropType is defined but prop is never used'},
+        ],
       },
       {
       // test same name merge and extends
@@ -6940,8 +6940,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
           {message: '\'z\' PropType is defined but prop is never used'},
-          {message: '\'y\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'y\' PropType is defined but prop is never used'},
+        ],
       },
       {
       // test same name merge and extends
@@ -6967,8 +6967,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
           {message: '\'z\' PropType is defined but prop is never used'},
-          {message: '\'y\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'y\' PropType is defined but prop is never used'},
+        ],
       },
       {
       // test same name merge and extends
@@ -6994,8 +6994,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
           {message: '\'z\' PropType is defined but prop is never used'},
-          {message: '\'y\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'y\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -7032,8 +7032,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
           {message: '\'age\' PropType is defined but prop is never used'},
-          {message: '\'birthday\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'birthday\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -7070,8 +7070,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
           {message: '\'age\' PropType is defined but prop is never used'},
-          {message: '\'birthday\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'birthday\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -7088,8 +7088,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
-          {message: '\'books\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'books\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -7106,8 +7106,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
-          {message: '\'books\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'books\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -7126,8 +7126,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
           {message: '\'books\' PropType is defined but prop is never used'},
-          {message: '\'username\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'username\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -7146,8 +7146,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
           {message: '\'books\' PropType is defined but prop is never used'},
-          {message: '\'username\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'username\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -7162,8 +7162,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
           {message: '\'books\' PropType is defined but prop is never used'},
-          {message: '\'username\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'username\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -7178,8 +7178,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
           {message: '\'books\' PropType is defined but prop is never used'},
-          {message: '\'username\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'username\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -7194,8 +7194,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
           {message: '\'books\' PropType is defined but prop is never used'},
-          {message: '\'username\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'username\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -7210,8 +7210,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
           {message: '\'books\' PropType is defined but prop is never used'},
-          {message: '\'username\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'username\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -7230,8 +7230,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers['@TYPESCRIPT_ESLINT'],
         errors: [
           {message: '\'books\' PropType is defined but prop is never used'},
-          {message: '\'username\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'username\' PropType is defined but prop is never used'},
+        ],
       },
       {
         code: `
@@ -7250,8 +7250,8 @@ ruleTester.run('no-unused-prop-types', rule, {
         parser: parsers.TYPESCRIPT_ESLINT,
         errors: [
           {message: '\'books\' PropType is defined but prop is never used'},
-          {message: '\'username\' PropType is defined but prop is never used'}
-        ]
+          {message: '\'username\' PropType is defined but prop is never used'},
+        ],
       },
       // Issue: #2795
       {
@@ -7281,8 +7281,8 @@ ruleTester.run('no-unused-prop-types', rule, {
           type DispatchProps = ReturnType<typeof mapDispatchToProps>
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
-        errors: [{message: '\'prop1\' PropType is defined but prop is never used'}]
-      }
+        errors: [{message: '\'prop1\' PropType is defined but prop is never used'}],
+      },
     ]),
     // Issue: #296
     {
@@ -7300,7 +7300,7 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: '\'foo\' PropType is defined but prop is never used'}]
+      errors: [{message: '\'foo\' PropType is defined but prop is never used'}],
     }
-  )
+  ),
 });

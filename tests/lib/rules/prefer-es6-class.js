@@ -16,8 +16,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -35,7 +35,7 @@ ruleTester.run('prefer-es6-class', rule, {
           }
         }
         Hello.displayName = 'Hello'
-      `
+      `,
     },
     {
       code: `
@@ -45,13 +45,13 @@ ruleTester.run('prefer-es6-class', rule, {
           }
         }
         Hello.displayName = 'Hello'
-      `
+      `,
     },
     {
       code: `
         var Hello = "foo";
         module.exports = {};
-      `
+      `,
     },
     {
       code: `
@@ -61,7 +61,7 @@ ruleTester.run('prefer-es6-class', rule, {
           }
         });
       `,
-      options: ['never']
+      options: ['never'],
     },
     {
       code: `
@@ -71,8 +71,8 @@ ruleTester.run('prefer-es6-class', rule, {
           }
         }
       `,
-      options: ['always']
-    }
+      options: ['always'],
+    },
   ],
 
   invalid: [
@@ -85,7 +85,7 @@ ruleTester.run('prefer-es6-class', rule, {
           }
         });
       `,
-      errors: [{messageId: 'shouldUseES6Class'}]
+      errors: [{messageId: 'shouldUseES6Class'}],
     },
     {
       code: `
@@ -96,7 +96,7 @@ ruleTester.run('prefer-es6-class', rule, {
         });
       `,
       options: ['always'],
-      errors: [{messageId: 'shouldUseES6Class'}]
+      errors: [{messageId: 'shouldUseES6Class'}],
     },
     {
       code: `
@@ -107,7 +107,7 @@ ruleTester.run('prefer-es6-class', rule, {
         }
       `,
       options: ['never'],
-      errors: [{messageId: 'shouldUseCreateClass'}]
-    }
-  ]
+      errors: [{messageId: 'shouldUseCreateClass'}],
+    },
+  ],
 });

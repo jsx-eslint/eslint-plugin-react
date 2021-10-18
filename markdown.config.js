@@ -13,7 +13,7 @@ const ruleTableRows = Object.keys(rules)
       docs.recommended ? '✔' : '',
       fixable ? '🔧' : '',
       `[react/${id}](docs/rules/${id}.md)`,
-      docs.description
+      docs.description,
     ].join(' | ');
   });
 
@@ -32,9 +32,9 @@ const JSX_RULES = () => buildRulesTable(ruleTableRows.filter((rule) => rule.incl
 module.exports = {
   transforms: {
     BASIC_RULES,
-    JSX_RULES
+    JSX_RULES,
   },
   callback: () => {
     console.log('The auto-generating of rules finished!');
-  }
+  },
 };

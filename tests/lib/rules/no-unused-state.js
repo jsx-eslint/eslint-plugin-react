@@ -12,8 +12,8 @@ const parsers = require('../../helpers/parsers');
 const parserOptions = {
   ecmaVersion: 2018,
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 const eslintTester = new RuleTester({parserOptions});
@@ -21,7 +21,7 @@ const eslintTester = new RuleTester({parserOptions});
 function getErrorMessages(unusedFields) {
   return unusedFields.map((field) => ({
     messageId: 'unusedStateField',
-    data: {name: field}
+    data: {name: field},
   }));
 }
 
@@ -32,7 +32,7 @@ eslintTester.run('no-unused-state', rule, {
         function StatelessFnUnaffectedTest(props) {
           return <SomeComponent foo={props.foo} />;
         };
-      `
+      `,
     },
     {
       code: `
@@ -41,7 +41,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -50,7 +50,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -62,7 +62,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state.foo} />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -74,7 +74,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -86,7 +86,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state[true]} />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -98,7 +98,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state[123]} />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -110,7 +110,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -122,7 +122,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -134,7 +134,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state.foo} />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -146,7 +146,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -158,7 +158,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state['foo']} />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -170,7 +170,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state.foo} />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -182,7 +182,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state.foo} />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -197,7 +197,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent onClick={this.update} foo={this.state.foo} />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -206,7 +206,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -218,7 +218,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state.foo} />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -230,7 +230,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -242,7 +242,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state['false']} />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -254,7 +254,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state[345]} />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -266,7 +266,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -278,7 +278,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -290,7 +290,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state.foo} />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -302,7 +302,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -314,7 +314,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state.foo} />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -326,7 +326,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state.foo} />;
           }
         }
-      `
+      `,
     },
     {
       code: `class ClassPropertyStateTest extends React.Component {
@@ -335,7 +335,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state.foo} />;
           }
         }`,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     parsers.TS([
       {
@@ -349,8 +349,8 @@ eslintTester.run('no-unused-state', rule, {
             }
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
-      }
+        parser: parsers['@TYPESCRIPT_ESLINT'],
+      },
     ]),
     {
       code: `
@@ -362,7 +362,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={this.state?.foo} />;
           }
         }`,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -375,7 +375,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent foo={foo} />;
           }
         }
-      `
+      `,
     },
     `class DestructuringTest extends React.Component {
         constructor() {
@@ -454,7 +454,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     // A cleverer analysis might recognize that the following should be errors,
     // but they're out of scope for this lint rule.
@@ -553,7 +553,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -573,7 +573,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -591,7 +591,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -609,7 +609,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -627,7 +627,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -641,7 +641,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -667,7 +667,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -691,7 +691,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -712,7 +712,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -735,7 +735,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -754,7 +754,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -776,7 +776,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -798,7 +798,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -816,7 +816,7 @@ eslintTester.run('no-unused-state', rule, {
             return <div>{current}</div>
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -834,7 +834,7 @@ eslintTester.run('no-unused-state', rule, {
             return <div>{current}</div>
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -852,7 +852,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -869,7 +869,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Don't error out
@@ -883,7 +883,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Don't error out
@@ -897,7 +897,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Don't error out
@@ -911,7 +911,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -964,7 +964,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.TYPESCRIPT_ESLINT
+      parser: parsers.TYPESCRIPT_ESLINT,
     }
   ),
 
@@ -980,7 +980,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         })
       `,
-      errors: getErrorMessages(['foo'])
+      errors: getErrorMessages(['foo']),
     },
     {
       code: `
@@ -993,7 +993,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         })
       `,
-      errors: getErrorMessages(['foo'])
+      errors: getErrorMessages(['foo']),
     },
     {
       code: `
@@ -1006,7 +1006,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         })
       `,
-      errors: getErrorMessages(['foo'])
+      errors: getErrorMessages(['foo']),
     },
     {
       code: `
@@ -1019,7 +1019,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         })
       `,
-      errors: getErrorMessages(['123'])
+      errors: getErrorMessages(['123']),
     },
     {
       code: `
@@ -1032,7 +1032,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         })
       `,
-      errors: getErrorMessages(['true'])
+      errors: getErrorMessages(['true']),
     },
     {
       code: `var UnusedGetInitialStateMethodTest = createReactClass({
@@ -1043,7 +1043,7 @@ eslintTester.run('no-unused-state', rule, {
             return <SomeComponent />;
           }
         })`,
-      errors: getErrorMessages(['foo'])
+      errors: getErrorMessages(['foo']),
     },
     {
       code: `
@@ -1056,7 +1056,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         });
       `,
-      errors: getErrorMessages(['foo'])
+      errors: getErrorMessages(['foo']),
     },
     {
       code: `
@@ -1069,7 +1069,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      errors: getErrorMessages(['foo'])
+      errors: getErrorMessages(['foo']),
     },
     {
       code: `
@@ -1082,7 +1082,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      errors: getErrorMessages(['foo'])
+      errors: getErrorMessages(['foo']),
     },
     {
       code: `
@@ -1094,7 +1094,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['foo']),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1106,7 +1106,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['foo']),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1118,7 +1118,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['foo']),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1130,7 +1130,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['foo \\n bar']),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1142,7 +1142,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['true']),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1154,7 +1154,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['123']),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1166,7 +1166,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['123.12']),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1179,7 +1179,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      errors: getErrorMessages(['foo'])
+      errors: getErrorMessages(['foo']),
     },
     {
       code: `
@@ -1196,7 +1196,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      errors: getErrorMessages(['foo'])
+      errors: getErrorMessages(['foo']),
     },
     {
       code: `
@@ -1215,7 +1215,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      errors: getErrorMessages(['foo', 'bar'])
+      errors: getErrorMessages(['foo', 'bar']),
     },
     {
       code: `
@@ -1231,7 +1231,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      errors: getErrorMessages(['foo', 'foo'])
+      errors: getErrorMessages(['foo', 'foo']),
     },
     {
       code: `
@@ -1248,7 +1248,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      errors: getErrorMessages(['foo'])
+      errors: getErrorMessages(['foo']),
     },
     {
       code: `
@@ -1265,7 +1265,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['foo']),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1288,7 +1288,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['qux']),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1301,7 +1301,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['bar']),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1328,7 +1328,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['foo']),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1350,7 +1350,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['foo']),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1374,7 +1374,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['id']),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1394,7 +1394,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: getErrorMessages(['initial'])
+      errors: getErrorMessages(['initial']),
     },
     {
       code: `
@@ -1405,7 +1405,7 @@ eslintTester.run('no-unused-state', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: getErrorMessages(['dummy'])
+      errors: getErrorMessages(['dummy']),
     },
     {
       code: `
@@ -1469,8 +1469,8 @@ eslintTester.run('no-unused-state', rule, {
         'thisSetStateRestPropUnused',
         'thisStatePropUnused',
         'thisStateDestructPropUnused',
-        'thisDestructStateDestructPropUnused'
-      ])
-    }
-  ]
+        'thisDestructStateDestructPropUnused',
+      ]),
+    },
+  ],
 });

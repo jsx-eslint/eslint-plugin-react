@@ -19,8 +19,8 @@ const parsers = require('../../helpers/parsers');
 const parserOptions = {
   ecmaVersion: 2018,
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // -----------------------------------------------------------------------------
@@ -34,26 +34,26 @@ linter.defineRule('no-undef', require('eslint/lib/rules/no-undef'));
 ruleTester.run('jsx-no-undef', rule, {
   valid: [
     {
-      code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);'
+      code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);',
     },
     {
       code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);',
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
-      code: '/*eslint no-undef:1*/ var React; React.render(<img />);'
+      code: '/*eslint no-undef:1*/ var React; React.render(<img />);',
     },
     {
-      code: '/*eslint no-undef:1*/ var React; React.render(<x-gif />);'
+      code: '/*eslint no-undef:1*/ var React; React.render(<x-gif />);',
     },
     {
-      code: '/*eslint no-undef:1*/ var React, app; React.render(<app.Foo />);'
+      code: '/*eslint no-undef:1*/ var React, app; React.render(<app.Foo />);',
     },
     {
-      code: '/*eslint no-undef:1*/ var React, app; React.render(<app.foo.Bar />);'
+      code: '/*eslint no-undef:1*/ var React, app; React.render(<app.foo.Bar />);',
     },
     {
-      code: '/*eslint no-undef:1*/ var React; React.render(<Apppp:Foo />);'
+      code: '/*eslint no-undef:1*/ var React; React.render(<Apppp:Foo />);',
     },
     {
       code: `
@@ -64,13 +64,13 @@ ruleTester.run('jsx-no-undef', rule, {
             return <this.props.tag />
           }
         }
-      `
+      `,
     },
     {
       code: 'var React; React.render(<Text />);',
       globals: {
-        Text: true
-      }
+        Text: true,
+      },
     },
     {
       code: `
@@ -83,10 +83,10 @@ ruleTester.run('jsx-no-undef', rule, {
       `,
       parserOptions: Object.assign({sourceType: 'module'}, parserOptions),
       options: [
-        {allowGlobals: false}
+        {allowGlobals: false},
       ],
-      parser: parsers.BABEL_ESLINT
-    }
+      parser: parsers.BABEL_ESLINT,
+    },
   ],
 
   invalid: [
@@ -94,29 +94,29 @@ ruleTester.run('jsx-no-undef', rule, {
       code: '/*eslint no-undef:1*/ var React; React.render(<App />);',
       errors: [{
         messageId: 'undefined',
-        data: {identifier: 'App'}
-      }]
+        data: {identifier: 'App'},
+      }],
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<Appp.Foo />);',
       errors: [{
         messageId: 'undefined',
-        data: {identifier: 'Appp'}
-      }]
+        data: {identifier: 'Appp'},
+      }],
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<appp.Foo />);',
       errors: [{
         messageId: 'undefined',
-        data: {identifier: 'appp'}
-      }]
+        data: {identifier: 'appp'},
+      }],
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<appp.foo.Bar />);',
       errors: [{
         messageId: 'undefined',
-        data: {identifier: 'appp'}
-      }]
+        data: {identifier: 'appp'},
+      }],
     },
     {
       code: `
@@ -130,24 +130,24 @@ ruleTester.run('jsx-no-undef', rule, {
       parserOptions: Object.assign({sourceType: 'module'}, parserOptions),
       errors: [{
         messageId: 'undefined',
-        data: {identifier: 'Text'}
+        data: {identifier: 'Text'},
       }],
       options: [
-        {allowGlobals: false}
+        {allowGlobals: false},
       ],
       parser: parsers.BABEL_ESLINT,
       globals: {
-        Text: true
-      }
+        Text: true,
+      },
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<Foo />);',
       errors: [
         {
           messageId: 'undefined',
-          data: {identifier: 'Foo'}
-        }
-      ]
-    }
-  ]
+          data: {identifier: 'Foo'},
+        },
+      ],
+    },
+  ],
 });

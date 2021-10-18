@@ -19,8 +19,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // -----------------------------------------------------------------------------
@@ -31,17 +31,17 @@ const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('react-no-constructed-context-values', rule, {
   valid: [].concat(
     {
-      code: '<Context.Provider value={props}></Context.Provider>'
+      code: '<Context.Provider value={props}></Context.Provider>',
     },
     {
-      code: '<Context.Provider value={100}></Context.Provider>'
+      code: '<Context.Provider value={100}></Context.Provider>',
     },
     {
-      code: '<Context.Provider value="Some string"></Context.Provider>'
+      code: '<Context.Provider value="Some string"></Context.Provider>',
     },
     {
       code: 'function Component() { const foo = useMemo(() => { return {} }, []); return (<Context.Provider value={foo}></Context.Provider>)}',
-      options: [{allowArrowFunctions: true}]
+      options: [{allowArrowFunctions: true}],
     },
     {
       code: `
@@ -50,7 +50,7 @@ ruleTester.run('react-no-constructed-context-values', rule, {
             <NewContext.Provider value={twoProp}></NewContext.Provider>
           );
         }
-      `
+      `,
     },
     {
       code: `
@@ -62,7 +62,7 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           )
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -72,7 +72,7 @@ ruleTester.run('react-no-constructed-context-values', rule, {
             <Context.Provider value={foo.something}></Context.Provider>
           )
         }
-      `
+      `,
     },
     {
       code: `
@@ -83,7 +83,7 @@ ruleTester.run('react-no-constructed-context-values', rule, {
             <Context.Provider {...foo}></Context.Provider>
           )
         }
-      `
+      `,
     },
     {
       code: `
@@ -96,7 +96,7 @@ ruleTester.run('react-no-constructed-context-values', rule, {
             <Context.Provider value={foo}></Context.Provider>
           )
         }
-      `
+      `,
     },
     {
       code: `
@@ -104,7 +104,7 @@ ruleTester.run('react-no-constructed-context-values', rule, {
         function Component({ a = {} }) {
           return (<Context.Provider value={a}></Context.Provider>);
         }
-      `
+      `,
     },
     parsers.TS([
       {
@@ -122,7 +122,7 @@ ruleTester.run('react-no-constructed-context-values', rule, {
               )
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -139,8 +139,8 @@ ruleTester.run('react-no-constructed-context-values', rule, {
               )
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
-      }
+        parser: parsers['@TYPESCRIPT_ESLINT'],
+      },
     ]),
     {
       code: `
@@ -154,7 +154,7 @@ ruleTester.run('react-no-constructed-context-values', rule, {
                 </BooleanContext.Provider>
             )
         }
-      `
+      `,
     }
   ),
   invalid: [
@@ -168,9 +168,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'foo',
           type: 'object',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // Invalid because array construction creates a new identity
@@ -182,9 +182,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'foo',
           type: 'array',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // Invalid because arrow Function creates a new identity
@@ -196,9 +196,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'foo',
           type: 'function expression',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // Invalid because function expression creates a new identity
@@ -210,9 +210,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'foo',
           type: 'function expression',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // Invalid because class expression creates a new identity
@@ -224,9 +224,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'foo',
           type: 'class expression',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // Invalid because new expression creates a new identity
@@ -238,9 +238,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'foo',
           type: 'new expression',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // // Invalid because function declaration creates a new identity
@@ -252,9 +252,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'foo',
           type: 'function declaration',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // Invalid because the object value of the ternrary will create a new identity
@@ -266,9 +266,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'foo',
           type: 'object',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // Invalid because the object value of the logical OR will create a new identity
@@ -280,9 +280,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'foo',
           type: 'object',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // Invalid because the object value of the logical AND will create a new identity
@@ -294,9 +294,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'foo',
           type: 'object',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // Invalid because the object value of the nested ternary will create a new identity
@@ -308,9 +308,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'foo',
           type: 'object',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // Invalid because the object value will create a new identity
@@ -322,9 +322,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'foo',
           type: 'object',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // Invalid because the object value will create a new identity
@@ -336,9 +336,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'foo',
           type: 'object',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // Valid, but currently not handled at the moment.
@@ -355,9 +355,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'a',
           type: 'object',
           nodeLine: '3',
-          usageLine: '5'
-        }
-      }]
+          usageLine: '5',
+        },
+      }],
     },
     {
       // Invalid variable reassignment from parameter because bar is an object identity
@@ -374,9 +374,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'bar',
           type: 'object',
           nodeLine: '3',
-          usageLine: '5'
-        }
-      }]
+          usageLine: '5',
+        },
+      }],
     },
     {
       // Invalid because the object expression possibly returned from the ternary will create a new identity
@@ -392,10 +392,10 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'bar',
           type: 'object',
           nodeLine: '3',
-          usageLine: '4'
-        }
+          usageLine: '4',
+        },
       }],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Invalid because inline object construction will create a new identity
@@ -405,9 +405,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
         data: {
           type: 'object',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // Invalid because Wrapper returns JSX which has a new identity
@@ -418,9 +418,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'Wrapper',
           type: 'JSX element',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // Invalid because RegEx returns a new object which has will be a new identity
@@ -431,9 +431,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'someRegex',
           type: 'regular expression',
           nodeLine: '1',
-          usageLine: '1'
-        }
-      }]
+          usageLine: '1',
+        },
+      }],
     },
     {
       // Invalid because the right hand side of the assignment expression contains a function which will create a new identity
@@ -450,9 +450,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           variableName: 'bar',
           type: 'assignment expression',
           nodeLine: '4',
-          usageLine: '5'
-        }
-      }]
-    }
-  ]
+          usageLine: '5',
+        },
+      }],
+    },
+  ],
 });

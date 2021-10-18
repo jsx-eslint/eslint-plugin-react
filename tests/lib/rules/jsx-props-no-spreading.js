@@ -15,8 +15,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // -----------------------------------------------------------------------------
@@ -32,19 +32,19 @@ ruleTester.run('jsx-props-no-spreading', rule, {
       code: `
         const {one_prop, two_prop} = props;
         <App one_prop={one_prop} two_prop={two_prop}/>
-      `
+      `,
     },
     {
       code: `
         const {one_prop, two_prop} = props;
         <div one_prop={one_prop} two_prop={two_prop}></div>
-      `
+      `,
     },
     {
       code: `
         const newProps = {...props};
         <App one_prop={newProps.one_prop} two_prop={newProps.two_prop} style={{...styles}}/>
-      `
+      `,
     },
     {
       code: `
@@ -54,7 +54,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
            <img {...props}/>
         </App>
       `,
-      options: [{exceptions: ['Image', 'img']}]
+      options: [{exceptions: ['Image', 'img']}],
     },
     {
       code: `
@@ -65,7 +65,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
            <img src={src} alt={alt}/>
         </App>
       `,
-      options: [{custom: 'ignore'}]
+      options: [{custom: 'ignore'}],
     },
     {
       code: `
@@ -76,7 +76,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
            <img {...props}/>
         </App>
       `,
-      options: [{custom: 'enforce', html: 'ignore', exceptions: ['Image']}]
+      options: [{custom: 'enforce', html: 'ignore', exceptions: ['Image']}],
     },
     {
       code: `
@@ -88,7 +88,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
            <div {...someOtherProps}/>
         </App>
       `,
-      options: [{html: 'ignore'}]
+      options: [{html: 'ignore'}],
     },
     {
       code: `
@@ -96,7 +96,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
           <Foo {...{ prop1, prop2, prop3 }} />
         </App>
       `,
-      options: [{explicitSpread: 'ignore'}]
+      options: [{explicitSpread: 'ignore'}],
     },
     {
       code: `
@@ -106,7 +106,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
            <Nav.Item {...props}/>
         </App>
       `,
-      options: [{exceptions: ['components.Group', 'Nav.Item']}]
+      options: [{exceptions: ['components.Group', 'Nav.Item']}],
     },
     {
       code: `
@@ -116,7 +116,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
            <Nav.Item {...props}/>
         </App>
       `,
-      options: [{custom: 'ignore'}]
+      options: [{custom: 'ignore'}],
     },
     {
       code: `
@@ -130,10 +130,10 @@ ruleTester.run('jsx-props-no-spreading', rule, {
         {
           custom: 'enforce',
           html: 'ignore',
-          exceptions: ['components.Group', 'Nav.Item']
-        }
-      ]
-    }
+          exceptions: ['components.Group', 'Nav.Item'],
+        },
+      ],
+    },
   ],
 
   invalid: [
@@ -141,19 +141,19 @@ ruleTester.run('jsx-props-no-spreading', rule, {
       code: `
         <App {...props}/>
       `,
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: `
         <div {...props}></div>
       `,
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: `
         <App {...props} some_other_prop={some_other_prop}/>
       `,
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: `
@@ -164,7 +164,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
         </App>
       `,
       options: [{exceptions: ['Image', 'img']}],
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: `
@@ -176,7 +176,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
         </App>
       `,
       options: [{custom: 'ignore'}],
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: `
@@ -188,7 +188,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
         </App>
       `,
       options: [{html: 'ignore', exceptions: ['Image', 'img']}],
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: `
@@ -201,7 +201,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
         </App>
       `,
       options: [{custom: 'ignore', html: 'ignore', exceptions: ['Image', 'img']}],
-      errors: [expectedError, expectedError]
+      errors: [expectedError, expectedError],
     },
     {
       code: `
@@ -213,7 +213,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
         </App>
       `,
       options: [{html: 'ignore'}],
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: `
@@ -221,7 +221,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
           <Foo {...{ prop1, prop2, prop3 }} />
         </App>
       `,
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: `
@@ -230,7 +230,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
         </App>
       `,
       options: [{explicitSpread: 'ignore'}],
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: `
@@ -239,7 +239,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
         </App>
       `,
       options: [{explicitSpread: 'ignore'}],
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: `
@@ -248,7 +248,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
         </App>
       `,
       options: [{explicitSpread: 'ignore'}],
-      errors: [expectedError]
+      errors: [expectedError],
     },
     {
       code: `
@@ -259,7 +259,7 @@ ruleTester.run('jsx-props-no-spreading', rule, {
         </App>
       `,
       options: [{exceptions: ['components.DropdownIndicator', 'Nav.Item']}],
-      errors: [expectedError]
-    }
-  ]
+      errors: [expectedError],
+    },
+  ],
 });

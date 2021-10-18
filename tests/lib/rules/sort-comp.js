@@ -18,8 +18,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ ruleTester.run('sort-comp', rule, {
             return <div>Hello</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -63,7 +63,7 @@ ruleTester.run('sort-comp', rule, {
             return <div>Hello</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -74,7 +74,7 @@ ruleTester.run('sort-comp', rule, {
             return <button onClick={this.onClick}>Hello</button>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -92,10 +92,10 @@ ruleTester.run('sort-comp', rule, {
           order: [
             'lifecycle',
             'render',
-            'everything-else'
-          ]
-        }
-      ]
+            'everything-else',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -123,7 +123,7 @@ ruleTester.run('sort-comp', rule, {
             return <div>Hello</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -143,7 +143,7 @@ ruleTester.run('sort-comp', rule, {
           testInstanceMethod() {}
           render() { return (<div>Hello</div>); }
         }
-      `
+      `,
     },
     {
       code: `
@@ -169,7 +169,7 @@ ruleTester.run('sort-comp', rule, {
           render = () => (<div>Hello</div>)
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -188,10 +188,10 @@ ruleTester.run('sort-comp', rule, {
             'lifecycle',
             'everything-else',
             'render',
-            '/on.*/'
-          ]
-        }
-      ]
+            '/on.*/',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -210,15 +210,15 @@ ruleTester.run('sort-comp', rule, {
             'lifecycle',
             'everything-else',
             'render',
-            'customGroup'
+            'customGroup',
           ],
           groups: {
             customGroup: [
-              '/on.*/'
-            ]
-          }
-        }
-      ]
+              '/on.*/',
+            ],
+          },
+        },
+      ],
     },
     {
       code: `
@@ -235,10 +235,10 @@ ruleTester.run('sort-comp', rule, {
           order: [
             '/on.*/',
             'render',
-            '/.*Click/'
-          ]
-        }
-      ]
+            '/.*Click/',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -257,10 +257,10 @@ ruleTester.run('sort-comp', rule, {
             'constructor',
             'lifecycle',
             'everything-else',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -269,7 +269,7 @@ ruleTester.run('sort-comp', rule, {
           return <div>Hello {props.name}</div>
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -278,7 +278,7 @@ ruleTester.run('sort-comp', rule, {
           <div>Hello {props.name}</div>
         )
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -290,7 +290,7 @@ ruleTester.run('sort-comp', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -311,10 +311,10 @@ ruleTester.run('sort-comp', rule, {
             'static-methods',
             'lifecycle',
             'everything-else',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -336,10 +336,10 @@ ruleTester.run('sort-comp', rule, {
             'static-methods',
             'lifecycle',
             'everything-else',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -354,7 +354,7 @@ ruleTester.run('sort-comp', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -369,7 +369,7 @@ ruleTester.run('sort-comp', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -390,10 +390,10 @@ ruleTester.run('sort-comp', rule, {
             'static-methods',
             'lifecycle',
             'everything-else',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -414,10 +414,10 @@ ruleTester.run('sort-comp', rule, {
             'static-methods',
             'lifecycle',
             'everything-else',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -439,10 +439,10 @@ ruleTester.run('sort-comp', rule, {
             'instance-methods',
             'lifecycle',
             'everything-else',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -464,10 +464,10 @@ ruleTester.run('sort-comp', rule, {
             'instance-variables',
             'lifecycle',
             'everything-else',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -488,10 +488,10 @@ ruleTester.run('sort-comp', rule, {
             'render',
             '/^get.+$/',
             '/^on.+$/',
-            '/^render.+$/'
-          ]
-        }
-      ]
+            '/^render.+$/',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -512,10 +512,10 @@ ruleTester.run('sort-comp', rule, {
             'render',
             '/^get.+$/',
             '/^on.+$/',
-            '/^render.+$/'
-          ]
-        }
-      ]
+            '/^render.+$/',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -524,7 +524,7 @@ ruleTester.run('sort-comp', rule, {
           static getDerivedStateFromProps() {}
           constructor() {}
         }
-      `
+      `,
     },
     {
       code: `
@@ -533,7 +533,7 @@ ruleTester.run('sort-comp', rule, {
           constructor() {}
           static getDerivedStateFromProps() {}
         }
-      `
+      `,
     },
     {
       code: `
@@ -556,10 +556,10 @@ ruleTester.run('sort-comp', rule, {
             'static-methods',
             'lifecycle',
             'render',
-            'everything-else'
-          ]
-        }
-      ]
+            'everything-else',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -577,10 +577,10 @@ ruleTester.run('sort-comp', rule, {
         {
           order: [
             'static-variables',
-            'static-methods'
-          ]
-        }
-      ]
+            'static-methods',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -598,10 +598,10 @@ ruleTester.run('sort-comp', rule, {
         {
           order: [
             'static-methods',
-            'static-variables'
-          ]
-        }
-      ]
+            'static-variables',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -621,10 +621,10 @@ ruleTester.run('sort-comp', rule, {
           order: [
             'instance-variables',
             'static-variables',
-            'static-methods'
-          ]
-        }
-      ]
+            'static-methods',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -644,10 +644,10 @@ ruleTester.run('sort-comp', rule, {
           order: [
             'static-variables',
             'instance-variables',
-            'static-methods'
-          ]
-        }
-      ]
+            'static-methods',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -667,10 +667,10 @@ ruleTester.run('sort-comp', rule, {
             'static-methods',
             'render',
             'static-variables',
-            'instance-variables'
-          ]
-        }
-      ]
+            'instance-variables',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -697,11 +697,11 @@ ruleTester.run('sort-comp', rule, {
             'instance-variables',
             'constructor',
             'everything-else',
-            'render'
-          ]
-        }
-      ]
-    }
+            'render',
+          ],
+        },
+      ],
+    },
   ],
 
   invalid: [
@@ -721,10 +721,10 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'render',
             position: 'after',
-            propB: 'displayName'
-          }
-        }
-      ]
+            propB: 'displayName',
+          },
+        },
+      ],
     },
     {
       code: `
@@ -742,10 +742,10 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'render',
             position: 'after',
-            propB: 'displayName'
-          }
-        }
-      ]
+            propB: 'displayName',
+          },
+        },
+      ],
     },
     {
       code: `
@@ -763,10 +763,10 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'render',
             position: 'after',
-            propB: 'onClick'
-          }
-        }
-      ]
+            propB: 'onClick',
+          },
+        },
+      ],
     },
     {
       code: `
@@ -787,10 +787,10 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'render',
             position: 'after',
-            propB: 'onClick'
-          }
-        }
-      ]
+            propB: 'onClick',
+          },
+        },
+      ],
     },
     {
       code: `
@@ -807,9 +807,9 @@ ruleTester.run('sort-comp', rule, {
         {
           order: [
             'lifecycle',
-            'render'
-          ]
-        }
+            'render',
+          ],
+        },
       ],
       errors: [
         {
@@ -817,10 +817,10 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'onClick',
             position: 'after',
-            propB: 'render'
-          }
-        }
-      ]
+            propB: 'render',
+          },
+        },
+      ],
     },
     {
       code: `
@@ -839,10 +839,10 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'render',
             position: 'after',
-            propB: 'displayName'
-          }
-        }
-      ]
+            propB: 'displayName',
+          },
+        },
+      ],
     },
     {
       code: `
@@ -863,10 +863,10 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'props',
             position: 'after',
-            propB: 'state'
-          }
-        }
-      ]
+            propB: 'state',
+          },
+        },
+      ],
     },
     {
       code: `
@@ -886,9 +886,9 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'constructor',
             position: 'after',
-            propB: 'props'
-          }
-        }
+            propB: 'props',
+          },
+        },
       ],
       options: [
         {
@@ -897,10 +897,10 @@ ruleTester.run('sort-comp', rule, {
             'static-methods',
             'lifecycle',
             'everything-else',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -921,9 +921,9 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'state',
             position: 'after',
-            propB: 'constructor'
-          }
-        }
+            propB: 'constructor',
+          },
+        },
       ],
       options: [
         {
@@ -932,10 +932,10 @@ ruleTester.run('sort-comp', rule, {
             'static-methods',
             'lifecycle',
             'everything-else',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -955,9 +955,9 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'componentDidMountOk',
             position: 'after',
-            propB: 'getA'
-          }
-        }
+            propB: 'getA',
+          },
+        },
       ],
       options: [
         {
@@ -968,10 +968,10 @@ ruleTester.run('sort-comp', rule, {
             '/^(get|set)(?!(InitialState$|DefaultProps$|ChildContext$)).+$/',
             'everything-else',
             '/^render.+$/',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -991,9 +991,9 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'constructor',
             position: 'after getter',
-            propB: 'functions'
-          }
-        }
+            propB: 'functions',
+          },
+        },
       ],
       options: [
         {
@@ -1002,10 +1002,10 @@ ruleTester.run('sort-comp', rule, {
             'static-methods',
             'lifecycle',
             'everything-else',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -1025,9 +1025,9 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'constructor',
             position: 'after setter',
-            propB: 'functions'
-          }
-        }
+            propB: 'functions',
+          },
+        },
       ],
       options: [
         {
@@ -1036,10 +1036,10 @@ ruleTester.run('sort-comp', rule, {
             'static-methods',
             'lifecycle',
             'everything-else',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -1061,9 +1061,9 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'foo',
             position: 'before',
-            propB: 'constructor'
-          }
-        }
+            propB: 'constructor',
+          },
+        },
       ],
       options: [
         {
@@ -1071,10 +1071,10 @@ ruleTester.run('sort-comp', rule, {
             'instance-methods',
             'lifecycle',
             'everything-else',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -1096,9 +1096,9 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'foo',
             position: 'before',
-            propB: 'constructor'
-          }
-        }
+            propB: 'constructor',
+          },
+        },
       ],
       options: [
         {
@@ -1106,10 +1106,10 @@ ruleTester.run('sort-comp', rule, {
             'instance-variables',
             'lifecycle',
             'everything-else',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -1126,19 +1126,19 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'setters',
             position: 'after',
-            propB: 'render'
-          }
-        }
+            propB: 'render',
+          },
+        },
       ],
       options: [
         {
           order: [
             'setters',
             'lifecycle',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -1154,18 +1154,18 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'render',
             position: 'after',
-            propB: 'foo'
-          }
-        }
+            propB: 'foo',
+          },
+        },
       ],
       options: [
         {
           order: [
             'foo',
-            'render'
-          ]
-        }
-      ]
+            'render',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -1184,19 +1184,19 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'getDerivedStateFromProps',
             position: 'after',
-            propB: 'foo'
-          }
-        }
+            propB: 'foo',
+          },
+        },
       ],
       parser: parsers.BABEL_ESLINT,
       options: [
         {
           order: [
             'static-variables',
-            'static-methods'
-          ]
-        }
-      ]
+            'static-methods',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -1216,9 +1216,9 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'foo',
             position: 'after',
-            propB: 'bar'
-          }
-        }
+            propB: 'bar',
+          },
+        },
       ],
       parser: parsers.BABEL_ESLINT,
       options: [
@@ -1226,10 +1226,10 @@ ruleTester.run('sort-comp', rule, {
           order: [
             'instance-variables',
             'static-variables',
-            'static-methods'
-          ]
-        }
-      ]
+            'static-methods',
+          ],
+        },
+      ],
     },
     {
       code: `
@@ -1249,9 +1249,9 @@ ruleTester.run('sort-comp', rule, {
           data: {
             propA: 'bar',
             position: 'after',
-            propB: 'render'
-          }
-        }
+            propB: 'render',
+          },
+        },
       ],
       options: [
         {
@@ -1259,10 +1259,10 @@ ruleTester.run('sort-comp', rule, {
             'static-methods',
             'render',
             'static-variables',
-            'instance-variables'
-          ]
-        }
-      ]
-    }
-  ]
+            'instance-variables',
+          ],
+        },
+      ],
+    },
+  ],
 });

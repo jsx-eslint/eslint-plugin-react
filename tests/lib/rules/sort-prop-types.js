@@ -20,8 +20,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // -----------------------------------------------------------------------------
@@ -38,7 +38,7 @@ ruleTester.run('sort-prop-types', rule, {
             return <div />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -48,7 +48,7 @@ ruleTester.run('sort-prop-types', rule, {
             return <div />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -63,7 +63,7 @@ ruleTester.run('sort-prop-types', rule, {
             return <div />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -79,7 +79,7 @@ ruleTester.run('sort-prop-types', rule, {
           }
         });
       `,
-      options: [{ignoreCase: true}]
+      options: [{ignoreCase: true}],
     },
     {
       code: `
@@ -101,7 +101,7 @@ ruleTester.run('sort-prop-types', rule, {
             return <div />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -115,7 +115,7 @@ ruleTester.run('sort-prop-types', rule, {
           z: PropTypes.string
         };
         First.propTypes.justforcheck = PropTypes.string;
-      `
+      `,
     },
     {
       code: `
@@ -131,7 +131,7 @@ ruleTester.run('sort-prop-types', rule, {
           Z: PropTypes.string
         };
       `,
-      options: [{ignoreCase: true}]
+      options: [{ignoreCase: true}],
     },
     {
       code: `
@@ -146,7 +146,7 @@ ruleTester.run('sort-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -159,7 +159,7 @@ ruleTester.run('sort-prop-types', rule, {
           "aria-controls": PropTypes.string
         };
       `,
-      options: [{ignoreCase: true}]
+      options: [{ignoreCase: true}],
     },
     semver.satisfies(babelEslintVersion, '< 9') ? {
       // Invalid code, should not be validated
@@ -175,7 +175,7 @@ ruleTester.run('sort-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     } : [],
     {
       code: `
@@ -186,7 +186,7 @@ ruleTester.run('sort-prop-types', rule, {
             return <div />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -200,7 +200,7 @@ ruleTester.run('sort-prop-types', rule, {
             return <div />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -216,7 +216,7 @@ ruleTester.run('sort-prop-types', rule, {
           }
         });
       `,
-      options: [{callbacksLast: true}]
+      options: [{callbacksLast: true}],
     },
     {
       code: `
@@ -233,7 +233,7 @@ ruleTester.run('sort-prop-types', rule, {
         }
       `,
       options: [{callbacksLast: true}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -249,7 +249,7 @@ ruleTester.run('sort-prop-types', rule, {
             onFoo: PropTypes.func
         };
       `,
-      options: [{callbacksLast: true}]
+      options: [{callbacksLast: true}],
     },
     {
       code: `
@@ -263,7 +263,7 @@ ruleTester.run('sort-prop-types', rule, {
             a: PropTypes.any
         };
       `,
-      options: [{requiredFirst: true}]
+      options: [{requiredFirst: true}],
     },
     {
       code: `
@@ -276,7 +276,7 @@ ruleTester.run('sort-prop-types', rule, {
             fooRequired: MyPropType,
         };
       `,
-      options: [{requiredFirst: true}]
+      options: [{requiredFirst: true}],
     },
     {
       code: `
@@ -297,9 +297,9 @@ ruleTester.run('sort-prop-types', rule, {
       options: [
         {
           requiredFirst: true,
-          callbacksLast: true
-        }
-      ]
+          callbacksLast: true,
+        },
+      ],
     },
     {
       code: `
@@ -311,7 +311,7 @@ ruleTester.run('sort-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -320,7 +320,7 @@ ruleTester.run('sort-prop-types', rule, {
           return <div />;
         };
         TextFieldLabel.propTypes = propTypes;
-      `
+      `,
     },
     {
       code: `
@@ -330,7 +330,7 @@ ruleTester.run('sort-prop-types', rule, {
             z: PropTypes.string,
         };
         First.propTypes = propTypes;
-      `
+      `,
     },
     {
       code: `
@@ -349,7 +349,7 @@ ruleTester.run('sort-prop-types', rule, {
             b: PropTypes.bool,
           }),
         };
-      `
+      `,
     },
     {
       code: `
@@ -369,7 +369,7 @@ ruleTester.run('sort-prop-types', rule, {
           }),
         };
       `,
-      options: [{sortShapeProp: true}]
+      options: [{sortShapeProp: true}],
     },
     {
       code: `
@@ -386,7 +386,7 @@ ruleTester.run('sort-prop-types', rule, {
           ),
         };
       `,
-      options: [{sortShapeProp: true}]
+      options: [{sortShapeProp: true}],
     },
     {
       code: `
@@ -400,7 +400,7 @@ ruleTester.run('sort-prop-types', rule, {
           z: PropTypes.any,
         };
       `,
-      options: [{noSortAlphabetically: true}]
+      options: [{noSortAlphabetically: true}],
     },
     {
       code: `
@@ -414,7 +414,7 @@ ruleTester.run('sort-prop-types', rule, {
           a: PropTypes.any,
         };
       `,
-      options: [{noSortAlphabetically: true}]
+      options: [{noSortAlphabetically: true}],
     },
     {
       code: `
@@ -428,7 +428,7 @@ ruleTester.run('sort-prop-types', rule, {
           1: PropTypes.any,
         };
       `,
-      options: [{ignoreCase: true}]
+      options: [{ignoreCase: true}],
     },
     {
       code: `
@@ -447,7 +447,7 @@ ruleTester.run('sort-prop-types', rule, {
         }
       `,
       options: [{sortShapeProp: true}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -465,7 +465,7 @@ ruleTester.run('sort-prop-types', rule, {
           x: PropTypes.shape(shape)
         };
       `,
-      options: [{sortShapeProp: true}]
+      options: [{sortShapeProp: true}],
     }
   ),
 
@@ -498,9 +498,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 5,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -535,9 +535,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 7,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -567,9 +567,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 5,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -600,9 +600,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 5,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -631,7 +631,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     }
       //   });
       // `,
-      errors: 2
+      errors: 2,
     },
     {
       code: `
@@ -674,7 +674,7 @@ ruleTester.run('sort-prop-types', rule, {
       //     }
       //   });
       // `,
-      errors: 2
+      errors: 2,
     },
     {
       code: `
@@ -717,7 +717,7 @@ ruleTester.run('sort-prop-types', rule, {
       //       aAA: PropTypes.any
       //   };
       // `,
-      errors: 2
+      errors: 2,
     },
     {
       code: `
@@ -745,7 +745,7 @@ ruleTester.run('sort-prop-types', rule, {
       //   }
       // `,
       parser: parsers.BABEL_ESLINT,
-      errors: 2
+      errors: 2,
     },
     {
       code: `
@@ -774,9 +774,9 @@ ruleTester.run('sort-prop-types', rule, {
       // `,
       parser: parsers.BABEL_ESLINT,
       settings: {
-        propWrapperFunctions: ['forbidExtraProps']
+        propWrapperFunctions: ['forbidExtraProps'],
       },
-      errors: 2
+      errors: 2,
     },
     {
       code: `
@@ -811,9 +811,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 7,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -849,9 +849,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 7,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -886,9 +886,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 11,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -919,16 +919,16 @@ ruleTester.run('sort-prop-types', rule, {
       // `,
       options: [{callbacksLast: true}],
       settings: {
-        propWrapperFunctions: ['forbidExtraProps']
+        propWrapperFunctions: ['forbidExtraProps'],
       },
       errors: [
         {
           messageId: 'propsNotSorted',
           line: 11,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -949,16 +949,16 @@ ruleTester.run('sort-prop-types', rule, {
       //   First.propTypes = forbidExtraProps(propTypes)
       // `,
       settings: {
-        propWrapperFunctions: ['forbidExtraProps']
+        propWrapperFunctions: ['forbidExtraProps'],
       },
       errors: [
         {
           messageId: 'propsNotSorted',
           line: 5,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -979,16 +979,16 @@ ruleTester.run('sort-prop-types', rule, {
       //   First.propTypes = propTypes;
       // `,
       settings: {
-        propWrapperFunctions: ['forbidExtraProps']
+        propWrapperFunctions: ['forbidExtraProps'],
       },
       errors: [
         {
           messageId: 'propsNotSorted',
           line: 5,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1023,9 +1023,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'callbackPropsLast',
           line: 6,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1058,9 +1058,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 5,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1093,9 +1093,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'requiredPropsFirst',
           line: 5,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1124,9 +1124,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 7,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1159,9 +1159,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 7,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1189,9 +1189,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 4,
           column: 11,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1232,15 +1232,15 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 12,
           column: 13,
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'propsNotSorted',
           line: 13,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1273,9 +1273,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 10,
           column: 11,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1308,9 +1308,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 10,
           column: 11,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1353,33 +1353,33 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 9,
           column: 11,
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'propsNotSorted',
           line: 10,
           column: 11,
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'propsNotSorted',
           line: 12,
           column: 13,
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'propsNotSorted',
           line: 13,
           column: 13,
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'propsNotSorted',
           line: 14,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1419,23 +1419,23 @@ ruleTester.run('sort-prop-types', rule, {
       options: [
         {
           sortShapeProp: true,
-          ignoreCase: true
-        }
+          ignoreCase: true,
+        },
       ],
       errors: [
         {
           messageId: 'propsNotSorted',
           line: 13,
           column: 13,
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'propsNotSorted',
           line: 14,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1475,17 +1475,17 @@ ruleTester.run('sort-prop-types', rule, {
       options: [
         {
           sortShapeProp: true,
-          requiredFirst: true
-        }
+          requiredFirst: true,
+        },
       ],
       errors: [
         {
           messageId: 'requiredPropsFirst',
           line: 12,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1527,23 +1527,23 @@ ruleTester.run('sort-prop-types', rule, {
       options: [
         {
           sortShapeProp: true,
-          callbacksLast: true
-        }
+          callbacksLast: true,
+        },
       ],
       errors: [
         {
           messageId: 'propsNotSorted',
           line: 13,
           column: 13,
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'callbackPropsLast',
           line: 14,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1590,15 +1590,15 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 13,
           column: 13,
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'propsNotSorted',
           line: 16,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1640,27 +1640,27 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 5,
           column: 13,
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'propsNotSorted',
           line: 6,
           column: 13,
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'propsNotSorted',
           line: 8,
           column: 15,
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'propsNotSorted',
           line: 9,
           column: 15,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1691,9 +1691,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 5,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1726,9 +1726,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 5,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1759,9 +1759,9 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 9,
           column: 11,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1803,15 +1803,15 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 4,
           column: 11,
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'propsNotSorted',
           line: 5,
           column: 11,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -1850,15 +1850,15 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 4,
           column: 11,
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'propsNotSorted',
           line: 5,
           column: 11,
-          type: 'Property'
-        }
-      ]
-    }
-  ]
+          type: 'Property',
+        },
+      ],
+    },
+  ],
 });

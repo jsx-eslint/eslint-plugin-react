@@ -16,8 +16,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -28,30 +28,30 @@ const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-max-props-per-line', rule, {
   valid: [
     {
-      code: '<App />'
+      code: '<App />',
     },
     {
-      code: '<App foo />'
-    },
-    {
-      code: '<App foo bar />',
-      options: [{maximum: 2}]
+      code: '<App foo />',
     },
     {
       code: '<App foo bar />',
-      options: [{when: 'multiline'}]
+      options: [{maximum: 2}],
+    },
+    {
+      code: '<App foo bar />',
+      options: [{when: 'multiline'}],
     },
     {
       code: '<App foo {...this.props} />',
-      options: [{when: 'multiline'}]
+      options: [{when: 'multiline'}],
     },
     {
       code: '<App foo bar baz />',
-      options: [{maximum: 2, when: 'multiline'}]
+      options: [{maximum: 2, when: 'multiline'}],
     },
     {
       code: '<App {...this.props} bar />',
-      options: [{maximum: 2}]
+      options: [{maximum: 2}],
     },
     {
       code: `
@@ -59,7 +59,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           foo
           bar
         />
-      `
+      `,
     },
     {
       code: `
@@ -68,7 +68,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           baz
         />
       `,
-      options: [{maximum: 2}]
+      options: [{maximum: 2}],
     },
     {
       code: `
@@ -77,7 +77,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           baz
         />
       `,
-      options: [{maximum: {multi: 2}}]
+      options: [{maximum: {multi: 2}}],
     },
     {
       code: `
@@ -86,15 +86,15 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           baz
         />
       `,
-      options: [{maximum: {multi: 2, single: 1}}]
+      options: [{maximum: {multi: 2, single: 1}}],
     },
     {
       code: '<App foo baz bar />',
-      options: [{maximum: {multi: 2, single: 3}}]
+      options: [{maximum: {multi: 2, single: 3}}],
     },
     {
       code: '<App {...this.props} bar />',
-      options: [{maximum: {single: 2}}]
+      options: [{maximum: {single: 2}}],
     },
     {
       code: `
@@ -103,11 +103,11 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           baz bor
         />
       `,
-      options: [{maximum: {multi: 2, single: 1}}]
+      options: [{maximum: {multi: 2, single: 1}}],
     },
     {
       code: '<App foo baz bar />',
-      options: [{maximum: {multi: 2}}]
+      options: [{maximum: {multi: 2}}],
     },
     {
       code: `
@@ -116,7 +116,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           baz bor
         />
       `,
-      options: [{maximum: {single: 1}}]
+      options: [{maximum: {single: 1}}],
     },
     {
       code: `
@@ -124,7 +124,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           baz bor
         />
       `,
-      options: [{maximum: {single: 2, multi: 2}}]
+      options: [{maximum: {single: 2, multi: 2}}],
     },
     {
       code: `
@@ -132,7 +132,7 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           baz bor
         />
       `,
-      options: [{maximum: 2}]
+      options: [{maximum: 2}],
     },
     {
       code: `
@@ -140,8 +140,8 @@ ruleTester.run('jsx-max-props-per-line', rule, {
           bar
         />
       `,
-      options: [{maximum: 1, when: 'multiline'}]
-    }
+      options: [{maximum: 1, when: 'multiline'}],
+    },
   ],
 
   invalid: [
@@ -157,10 +157,10 @@ baz />;
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'}
-        }
+          data: {prop: 'bar'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -174,9 +174,9 @@ baz />;
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'baz'}
-        }
-      ]
+          data: {prop: 'baz'},
+        },
+      ],
     },
     {
       code: `
@@ -189,10 +189,10 @@ bar />;
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'}
-        }
+          data: {prop: 'bar'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -205,10 +205,10 @@ bar />;
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'this.props'}
-        }
+          data: {prop: 'this.props'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -227,10 +227,10 @@ bar
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'}
-        }
+          data: {prop: 'bar'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -249,10 +249,10 @@ bar
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'this.props'}
-        }
+          data: {prop: 'this.props'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -271,10 +271,10 @@ bar
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'}
-        }
+          data: {prop: 'bar'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -289,10 +289,10 @@ bar />
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'}
-        }
+          data: {prop: 'bar'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -308,9 +308,9 @@ baz />
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'baz'}
-        }
-      ]
+          data: {prop: 'baz'},
+        },
+      ],
     },
     {
       code: `
@@ -325,10 +325,10 @@ baz />
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'rest'}
-        }
+          data: {prop: 'rest'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -345,10 +345,10 @@ bar />
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'}
-        }
+          data: {prop: 'bar'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -369,10 +369,10 @@ bar />
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'rest'}
-        }
+          data: {prop: 'rest'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -392,9 +392,9 @@ baz bor
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'baz'}
-        }
-      ]
+          data: {prop: 'baz'},
+        },
+      ],
     },
     {
       code: `
@@ -409,9 +409,9 @@ baz />
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'}
-        }
-      ]
+          data: {prop: 'bar'},
+        },
+      ],
     },
     {
       code: `
@@ -430,9 +430,9 @@ baz
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bar'}
-        }
-      ]
+          data: {prop: 'bar'},
+        },
+      ],
     },
     {
       code: `
@@ -450,9 +450,9 @@ baz
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'baz'}
-        }
-      ]
+          data: {prop: 'baz'},
+        },
+      ],
     },
     {
       code: `
@@ -470,9 +470,9 @@ bor
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bor'}
-        }
-      ]
+          data: {prop: 'bor'},
+        },
+      ],
     },
     {
       code: `
@@ -486,8 +486,8 @@ bor />
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'bor'}
-        }]
+          data: {prop: 'bor'},
+        }],
     },
     {
       code: `
@@ -507,9 +507,9 @@ baz bor
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'baz'}
-        }
-      ]
+          data: {prop: 'baz'},
+        },
+      ],
     },
     {
       code: `
@@ -529,8 +529,8 @@ baz bor
       errors: [
         {
           messageId: 'newLine',
-          data: {prop: 'baz'}
-        }
-      ]
-    }]
+          data: {prop: 'baz'},
+        },
+      ],
+    }],
 });

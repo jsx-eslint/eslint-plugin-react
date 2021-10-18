@@ -61,7 +61,7 @@ describe('Version', () => {
       assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
 
       expectedErrorArgs = [
-        ['Warning: React version was set to "detect" in eslint-plugin-react settings, but the "react" package is not installed. Assuming latest React version for linting.']
+        ['Warning: React version was set to "detect" in eslint-plugin-react settings, but the "react" package is not installed. Assuming latest React version for linting.'],
       ];
     });
 
@@ -72,7 +72,7 @@ describe('Version', () => {
       assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
 
       expectedErrorArgs = [
-        ['Warning: React version was set to "detect" in eslint-plugin-react settings, but the "react" package is not installed. Assuming latest React version for linting.']
+        ['Warning: React version was set to "detect" in eslint-plugin-react settings, but the "react" package is not installed. Assuming latest React version for linting.'],
       ];
     });
 
@@ -80,7 +80,7 @@ describe('Version', () => {
       assert.equal(versionUtil.testFlowVersion(context, '999.999.999'), true);
 
       expectedErrorArgs = [
-        ['Warning: Flow version was set to "detect" in eslint-plugin-react settings, but the "flow-bin" package is not installed. Assuming latest Flow version for linting.']
+        ['Warning: Flow version was set to "detect" in eslint-plugin-react settings, but the "flow-bin" package is not installed. Assuming latest Flow version for linting.'],
       ];
     });
 
@@ -128,7 +128,7 @@ describe('Version', () => {
       expectedErrorArgs = [
         ['Warning: React version specified in eslint-plugin-react-settings must be a string; got “number”'],
         ['Warning: React version specified in eslint-plugin-react-settings must be a string; got “number”'],
-        ['Warning: React version specified in eslint-plugin-react-settings must be a string; got “number”']
+        ['Warning: React version specified in eslint-plugin-react-settings must be a string; got “number”'],
       ];
     });
 
@@ -140,7 +140,7 @@ describe('Version', () => {
       expectedErrorArgs = [
         ['Warning: Flow version specified in eslint-plugin-react-settings must be a string; got “number”'],
         ['Warning: Flow version specified in eslint-plugin-react-settings must be a string; got “number”'],
-        ['Warning: Flow version specified in eslint-plugin-react-settings must be a string; got “number”']
+        ['Warning: Flow version specified in eslint-plugin-react-settings must be a string; got “number”'],
       ];
     });
   });

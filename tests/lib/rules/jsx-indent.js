@@ -18,8 +18,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -32,26 +32,26 @@ ruleTester.run('jsx-indent', rule, {
     {
       code: `
         <App></App>
-      `
+      `,
     },
     {
       code: `
         <></>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
         <App>
         </App>
-      `
+      `,
     },
     {
       code: `
         <>
         </>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -59,7 +59,7 @@ ruleTester.run('jsx-indent', rule, {
           <Foo />
         </App>
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -68,7 +68,7 @@ ruleTester.run('jsx-indent', rule, {
         </App>
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -77,7 +77,7 @@ ruleTester.run('jsx-indent', rule, {
         </>
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -85,7 +85,7 @@ ruleTester.run('jsx-indent', rule, {
         <Foo />
         </App>
       `,
-      options: [0]
+      options: [0],
     },
     {
       code: `
@@ -93,15 +93,15 @@ ruleTester.run('jsx-indent', rule, {
         <Foo />
           </App>
       `,
-      options: [-2]
+      options: [-2],
     },
     {
       code: [
         '<App>',
         '\t<Foo />',
-        '</App>'
+        '</App>',
       ].join('\n'),
-      options: ['tab']
+      options: ['tab'],
     },
     {
       code: `
@@ -111,7 +111,7 @@ ruleTester.run('jsx-indent', rule, {
           </App>;
         }
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -122,7 +122,7 @@ ruleTester.run('jsx-indent', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -132,7 +132,7 @@ ruleTester.run('jsx-indent', rule, {
           </App>);
         }
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -143,7 +143,7 @@ ruleTester.run('jsx-indent', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -155,7 +155,7 @@ ruleTester.run('jsx-indent', rule, {
           );
         }
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -168,7 +168,7 @@ ruleTester.run('jsx-indent', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -180,7 +180,7 @@ ruleTester.run('jsx-indent', rule, {
           )
         )
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -193,7 +193,7 @@ ruleTester.run('jsx-indent', rule, {
         )
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -205,7 +205,7 @@ ruleTester.run('jsx-indent', rule, {
           </div>)
         )
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -215,7 +215,7 @@ ruleTester.run('jsx-indent', rule, {
           </div>
         )
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -226,7 +226,7 @@ ruleTester.run('jsx-indent', rule, {
           </h1>
         }
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -238,7 +238,7 @@ ruleTester.run('jsx-indent', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -249,7 +249,7 @@ ruleTester.run('jsx-indent', rule, {
             </h1>
         }
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -260,7 +260,7 @@ ruleTester.run('jsx-indent', rule, {
           </h1>)
         }
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -272,7 +272,7 @@ ruleTester.run('jsx-indent', rule, {
           )
         }
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -281,7 +281,7 @@ ruleTester.run('jsx-indent', rule, {
           <div />
         ]
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -291,7 +291,7 @@ ruleTester.run('jsx-indent', rule, {
         ]
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -303,7 +303,7 @@ ruleTester.run('jsx-indent', rule, {
                 ]
             }
         </div>
-      `
+      `,
     },
     {
       code: `
@@ -315,7 +315,7 @@ ruleTester.run('jsx-indent', rule, {
                 ]
             }
         </div>
-      `
+      `,
     },
     {
       code: `
@@ -328,7 +328,7 @@ ruleTester.run('jsx-indent', rule, {
             }
         </div>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -338,7 +338,7 @@ ruleTester.run('jsx-indent', rule, {
                 bar {foo}
                 bar </div>
         </div>
-      `
+      `,
     },
     {
       code: `
@@ -349,7 +349,7 @@ ruleTester.run('jsx-indent', rule, {
                 bar </>
         </>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -358,7 +358,7 @@ ruleTester.run('jsx-indent', rule, {
         foo ?
             <Foo /> :
             <Bar />
-      `
+      `,
     },
     {
       code: `
@@ -366,7 +366,7 @@ ruleTester.run('jsx-indent', rule, {
             <></> :
             <></>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -375,7 +375,7 @@ ruleTester.run('jsx-indent', rule, {
         foo ?
             <Foo />
             : <Bar />
-      `
+      `,
     },
     {
       code: `
@@ -383,7 +383,7 @@ ruleTester.run('jsx-indent', rule, {
             <></>
             : <></>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -393,7 +393,7 @@ ruleTester.run('jsx-indent', rule, {
             <Foo />
         :
             <Bar />
-      `
+      `,
     },
     {
       code: `
@@ -402,7 +402,7 @@ ruleTester.run('jsx-indent', rule, {
         :
             <></>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -417,7 +417,7 @@ ruleTester.run('jsx-indent', rule, {
                 onClick={this.onClick}
             />
         }
-      `
+      `,
     },
     {
     // Multiline ternary
@@ -425,14 +425,14 @@ ruleTester.run('jsx-indent', rule, {
       code: `
         foo ? <Foo /> :
         <Bar />
-      `
+      `,
     },
     {
       code: `
         foo ? <></> :
         <></>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -440,14 +440,14 @@ ruleTester.run('jsx-indent', rule, {
       code: `
         foo ? <Foo />
         : <Bar />
-      `
+      `,
     },
     {
       code: `
         foo ? <></>
         : <></>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -456,7 +456,7 @@ ruleTester.run('jsx-indent', rule, {
         foo ? <Foo />
         :
         <Bar />
-      `
+      `,
     },
     {
       code: `
@@ -464,7 +464,7 @@ ruleTester.run('jsx-indent', rule, {
         :
         <></>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -474,7 +474,7 @@ ruleTester.run('jsx-indent', rule, {
             <Foo />
         ) :
             <Bar />
-      `
+      `,
     },
     {
       code: `
@@ -483,7 +483,7 @@ ruleTester.run('jsx-indent', rule, {
         ) :
             <></>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -493,7 +493,7 @@ ruleTester.run('jsx-indent', rule, {
             <Foo />
         )
             : <Bar />
-      `
+      `,
     },
     {
       code: `
@@ -502,7 +502,7 @@ ruleTester.run('jsx-indent', rule, {
         )
             : <></>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -513,7 +513,7 @@ ruleTester.run('jsx-indent', rule, {
         )
         :
             <Bar />
-      `
+      `,
     },
     {
       code: `
@@ -523,7 +523,7 @@ ruleTester.run('jsx-indent', rule, {
         :
             <></>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -533,7 +533,7 @@ ruleTester.run('jsx-indent', rule, {
             <Foo /> : (
                 <Bar />
             )
-      `
+      `,
     },
     {
       code: `
@@ -542,7 +542,7 @@ ruleTester.run('jsx-indent', rule, {
                 <></>
             )
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -553,7 +553,7 @@ ruleTester.run('jsx-indent', rule, {
         : (
             <Bar />
         )
-      `
+      `,
     },
     {
       code: `
@@ -563,7 +563,7 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -574,7 +574,7 @@ ruleTester.run('jsx-indent', rule, {
             : (
                 <Bar />
             )
-      `
+      `,
     },
     {
       code: `
@@ -584,7 +584,7 @@ ruleTester.run('jsx-indent', rule, {
                 <></>
             )
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -595,7 +595,7 @@ ruleTester.run('jsx-indent', rule, {
         ) : (
             <Bar />
         )
-      `
+      `,
     },
     {
       code: `
@@ -605,7 +605,7 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -617,7 +617,7 @@ ruleTester.run('jsx-indent', rule, {
         : (
             <Bar />
         )
-      `
+      `,
     },
     {
       code: `
@@ -628,7 +628,7 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -641,7 +641,7 @@ ruleTester.run('jsx-indent', rule, {
         (
             <Bar />
         )
-      `
+      `,
     },
     {
       code: `
@@ -653,7 +653,7 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -662,7 +662,7 @@ ruleTester.run('jsx-indent', rule, {
         foo ? <Foo /> : (
             <Bar />
         )
-      `
+      `,
     },
     {
       code: `
@@ -670,7 +670,7 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -678,14 +678,14 @@ ruleTester.run('jsx-indent', rule, {
       code: `
         foo ? <Foo />
         : (<Bar />)
-      `
+      `,
     },
     {
       code: `
         foo ? <></>
         : (<></>)
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
     // Multiline ternary
@@ -695,7 +695,7 @@ ruleTester.run('jsx-indent', rule, {
         : (
             <Bar />
         )
-      `
+      `,
     },
     {
       code: `
@@ -704,7 +704,7 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -717,7 +717,7 @@ ruleTester.run('jsx-indent', rule, {
           }
         </span>
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -730,7 +730,7 @@ ruleTester.run('jsx-indent', rule, {
           }
         </span>
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -745,7 +745,7 @@ ruleTester.run('jsx-indent', rule, {
           </span>
         }
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -761,7 +761,7 @@ ruleTester.run('jsx-indent', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -772,7 +772,7 @@ ruleTester.run('jsx-indent', rule, {
             }}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -783,7 +783,7 @@ ruleTester.run('jsx-indent', rule, {
             })}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -798,7 +798,7 @@ ruleTester.run('jsx-indent', rule, {
             }}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -813,7 +813,7 @@ ruleTester.run('jsx-indent', rule, {
             })}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -823,7 +823,7 @@ ruleTester.run('jsx-indent', rule, {
             }}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -833,7 +833,7 @@ ruleTester.run('jsx-indent', rule, {
             })}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -844,7 +844,7 @@ ruleTester.run('jsx-indent', rule, {
             }}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -855,7 +855,7 @@ ruleTester.run('jsx-indent', rule, {
             })}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -867,7 +867,7 @@ ruleTester.run('jsx-indent', rule, {
             }}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -879,7 +879,7 @@ ruleTester.run('jsx-indent', rule, {
             })}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -894,7 +894,7 @@ ruleTester.run('jsx-indent', rule, {
           }
         }
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -910,7 +910,7 @@ ruleTester.run('jsx-indent', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -937,7 +937,7 @@ ruleTester.run('jsx-indent', rule, {
           />
         );
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -964,7 +964,7 @@ const Component = () => (
 \t/>
 );
     `,
-      options: ['tab']
+      options: ['tab'],
     },
     {
       code: `
@@ -991,7 +991,7 @@ const Component = () => (
           />
         );
       `,
-      options: [2, {checkAttributes: false}]
+      options: [2, {checkAttributes: false}],
     },
     {
       code: `
@@ -1018,7 +1018,7 @@ const Component = () => (
 \t/>
 );
     `,
-      options: ['tab', {checkAttributes: false}]
+      options: ['tab', {checkAttributes: false}],
     },
     {
       code: `
@@ -1031,7 +1031,7 @@ const Component = () => (
           );
         }
       `,
-      options: [2, {checkAttributes: true}]
+      options: [2, {checkAttributes: true}],
     },
     {
       code: `
@@ -1045,14 +1045,14 @@ const Component = () => (
           );
         }
       `,
-      options: [2, {indentLogicalExpressions: true}]
+      options: [2, {indentLogicalExpressions: true}],
     },
     {
       code: `
         <App>
             text
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -1061,15 +1061,15 @@ const Component = () => (
             text
             text
         </App>
-      `
+      `,
     },
     {
       code: [
         '<App>',
         '\ttext',
-        '</App>'
+        '</App>',
       ].join('\n'),
-      options: ['tab']
+      options: ['tab'],
     },
     {
       code: [
@@ -1081,9 +1081,9 @@ const Component = () => (
         '\t{42}',
         '\t{NaN}',
         '\t{"foo"}',
-        '</App>'
+        '</App>',
       ].join('\n'),
-      options: ['tab']
+      options: ['tab'],
     },
     {
     // don't check literals not within JSX. See #2563
@@ -1092,8 +1092,8 @@ const Component = () => (
         const a = \`aa\`;
         const b = \`b\nb\`;
         }
-      `
-    }
+      `,
+    },
   ],
 
   invalid: [
@@ -1121,8 +1121,8 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
+            gotten: 8,
+          },
         },
         {
           messageId: 'wrongIndent',
@@ -1130,8 +1130,8 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 11
-          }
+            gotten: 11,
+          },
         },
         {
           messageId: 'wrongIndent',
@@ -1139,8 +1139,8 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 11
-          }
+            gotten: 11,
+          },
         },
         {
           messageId: 'wrongIndent',
@@ -1148,10 +1148,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 11
-          }
-        }
-      ]
+            gotten: 11,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1171,10 +1171,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 10
-          }
-        }
-      ]
+            gotten: 10,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1195,10 +1195,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 10
-          }
-        }
-      ]
+            gotten: 10,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1219,10 +1219,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 10
-          }
-        }
-      ]
+            gotten: 10,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1243,21 +1243,21 @@ const Component = () => (
             needed: 10,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
       code: [
         '<App>',
         '    <Foo />',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>',
         '\t<Foo />',
-        '</App>'
+        '</App>',
       ].join('\n'),
       options: ['tab'],
       errors: [
@@ -1267,10 +1267,10 @@ const Component = () => (
             needed: 1,
             type: 'tab',
             characters: 'character',
-            gotten: 0
-          }
-        }
-      ]
+            gotten: 0,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1295,10 +1295,10 @@ const Component = () => (
             needed: 10,
             type: 'space',
             characters: 'characters',
-            gotten: 17
-          }
-        }
-      ]
+            gotten: 17,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1323,10 +1323,10 @@ const Component = () => (
             needed: 10,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1359,10 +1359,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1382,10 +1382,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 11
-          }
-        }
-      ]
+            gotten: 11,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1413,21 +1413,21 @@ const Component = () => (
             needed: 20,
             type: 'space',
             characters: 'characters',
-            gotten: 19
-          }
-        }
-      ]
+            gotten: 19,
+          },
+        },
+      ],
     },
     {
       code: [
         '<App>',
         '{test}',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>',
         '\t{test}',
-        '</App>'
+        '</App>',
       ].join('\n'),
       options: ['tab'],
       errors: [
@@ -1437,10 +1437,10 @@ const Component = () => (
             needed: 1,
             type: 'tab',
             characters: 'character',
-            gotten: 0
-          }
-        }
-      ]
+            gotten: 0,
+          },
+        },
+      ],
     },
     {
       code: [
@@ -1450,7 +1450,7 @@ const Component = () => (
         '\t\t{option.name}',
         '\t\t</option>',
         '\t))}',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>',
@@ -1459,7 +1459,7 @@ const Component = () => (
         '\t\t\t{option.name}',
         '\t\t</option>',
         '\t))}',
-        '</App>'
+        '</App>',
       ].join('\n'),
       options: ['tab'],
       errors: [
@@ -1469,21 +1469,21 @@ const Component = () => (
             needed: 3,
             type: 'tab',
             characters: 'characters',
-            gotten: 2
-          }
-        }
-      ]
+            gotten: 2,
+          },
+        },
+      ],
     },
     {
       code: [
         '<App>\n',
         '<Foo />\n',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>\n',
         '\t<Foo />\n',
-        '</App>'
+        '</App>',
       ].join('\n'),
       options: ['tab'],
       errors: [
@@ -1493,10 +1493,10 @@ const Component = () => (
             needed: 1,
             type: 'tab',
             characters: 'character',
-            gotten: 0
-          }
-        }
-      ]
+            gotten: 0,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1519,10 +1519,10 @@ const Component = () => (
             needed: 10,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1546,21 +1546,21 @@ const Component = () => (
             needed: 10,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
       code: [
         '<App>\n',
         ' <Foo />\n',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>\n',
         '\t<Foo />\n',
-        '</App>'
+        '</App>',
       ].join('\n'),
       options: ['tab'],
       errors: [
@@ -1570,21 +1570,21 @@ const Component = () => (
             needed: 1,
             type: 'tab',
             characters: 'character',
-            gotten: 0
-          }
-        }
-      ]
+            gotten: 0,
+          },
+        },
+      ],
     },
     {
       code: [
         '<App>\n',
         '\t<Foo />\n',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>\n',
         '  <Foo />\n',
-        '</App>'
+        '</App>',
       ].join('\n'),
       options: [2],
       errors: [
@@ -1594,10 +1594,10 @@ const Component = () => (
             needed: 2,
             type: 'space',
             characters: 'characters',
-            gotten: 0
-          }
-        }
-      ]
+            gotten: 0,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1627,10 +1627,10 @@ const Component = () => (
             needed: 20,
             type: 'space',
             characters: 'characters',
-            gotten: 16
-          }
-        }
-      ]
+            gotten: 16,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1660,10 +1660,10 @@ const Component = () => (
             needed: 20,
             type: 'space',
             characters: 'characters',
-            gotten: 16
-          }
-        }
-      ]
+            gotten: 16,
+          },
+        },
+      ],
     },
     {
     // Multiline ternary
@@ -1685,10 +1685,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1709,10 +1709,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
     // Multiline ternary
@@ -1736,10 +1736,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
     // Multiline ternary
@@ -1759,10 +1759,10 @@ const Component = () => (
             needed: 8,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1785,10 +1785,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
     // Multiline ternary
@@ -1810,10 +1810,10 @@ const Component = () => (
             needed: 8,
             type: 'space',
             characters: 'characters',
-            gotten: 14
-          }
-        }
-      ]
+            gotten: 14,
+          },
+        },
+      ],
     },
     {
     // Multiline ternary
@@ -1837,10 +1837,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1863,10 +1863,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
     // Multiline ternary
@@ -1892,10 +1892,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
     // Multiline ternary
@@ -1919,10 +1919,10 @@ const Component = () => (
             needed: 16,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -1945,10 +1945,10 @@ const Component = () => (
             needed: 16,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
     // Multiline ternary
@@ -1974,10 +1974,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
     // Multiline ternary
@@ -2003,10 +2003,10 @@ const Component = () => (
             needed: 16,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2031,10 +2031,10 @@ const Component = () => (
             needed: 16,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
     // Multiline ternary
@@ -2060,8 +2060,8 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
+            gotten: 8,
+          },
         },
         {
           messageId: 'wrongIndent',
@@ -2069,10 +2069,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2097,8 +2097,8 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
+            gotten: 8,
+          },
         },
         {
           messageId: 'wrongIndent',
@@ -2106,10 +2106,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
     // Multiline ternary
@@ -2137,8 +2137,8 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
+            gotten: 8,
+          },
         },
         {
           messageId: 'wrongIndent',
@@ -2146,10 +2146,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
     // Multiline ternary
@@ -2179,8 +2179,8 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
+            gotten: 8,
+          },
         },
         {
           messageId: 'wrongIndent',
@@ -2188,10 +2188,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2220,8 +2220,8 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
+            gotten: 8,
+          },
         },
         {
           messageId: 'wrongIndent',
@@ -2229,10 +2229,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
     // Multiline ternary
@@ -2254,10 +2254,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2278,10 +2278,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
       // Multiline ternary
@@ -2305,10 +2305,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2331,10 +2331,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2358,10 +2358,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 10
-          }
-        }
-      ]
+            gotten: 10,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2396,10 +2396,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2434,10 +2434,10 @@ const Component = () => (
             needed: 2,
             type: 'tab',
             characters: 'characters',
-            gotten: 0
-          }
-        }
-      ]
+            gotten: 0,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2470,10 +2470,10 @@ const Component = () => (
             needed: 16,
             type: 'space',
             characters: 'characters',
-            gotten: 14
-          }
-        }
-      ]
+            gotten: 14,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2500,10 +2500,10 @@ const Component = () => (
             needed: 16,
             type: 'space',
             characters: 'characters',
-            gotten: 20
-          }
-        }
-      ]
+            gotten: 20,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2530,10 +2530,10 @@ const Component = () => (
             needed: 16,
             type: 'space',
             characters: 'characters',
-            gotten: 20
-          }
-        }
-      ]
+            gotten: 20,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2558,10 +2558,10 @@ const Component = () => (
             needed: 16,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2586,10 +2586,10 @@ const Component = () => (
             needed: 16,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2609,10 +2609,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2634,8 +2634,8 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 10
-          }
+            gotten: 10,
+          },
         },
         {
           messageId: 'wrongIndent',
@@ -2643,23 +2643,23 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
+            gotten: 8,
+          },
+        },
+      ],
     },
     {
       code: [
         '<div>',
         '\t  text',
         '  \t  text',
-        '</div>'
+        '</div>',
       ].join('\n'),
       output: [
         '<div>',
         '    text',
         '    text',
-        '</div>'
+        '</div>',
       ].join('\n'),
       errors: [
         {
@@ -2668,8 +2668,8 @@ const Component = () => (
             needed: 4,
             type: 'space',
             characters: 'characters',
-            gotten: 0
-          }
+            gotten: 0,
+          },
         },
         {
           messageId: 'wrongIndent',
@@ -2677,23 +2677,23 @@ const Component = () => (
             needed: 4,
             type: 'space',
             characters: 'characters',
-            gotten: 2
-          }
-        }
-      ]
+            gotten: 2,
+          },
+        },
+      ],
     },
     {
       code: [
         '<div>',
         '\t\ttext',
-        '</div>'
+        '</div>',
       ].join('\n'),
       parser: parsers.BABEL_ESLINT,
       options: ['tab'],
       output: [
         '<div>',
         '\ttext',
-        '</div>'
+        '</div>',
       ].join('\n'),
       errors: [
         {
@@ -2702,10 +2702,10 @@ const Component = () => (
             needed: 1,
             type: 'tab',
             characters: 'character',
-            gotten: 2
-          }
-        }
-      ]
+            gotten: 2,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -2726,10 +2726,10 @@ const Component = () => (
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 8
-          }
-        }
-      ]
-    }
-  ]
+            gotten: 8,
+          },
+        },
+      ],
+    },
+  ],
 });

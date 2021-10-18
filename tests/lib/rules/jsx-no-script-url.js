@@ -16,8 +16,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -35,34 +35,34 @@ ruleTester.run('jsx-no-script-url', rule, {
     {code: '<a name="foo"></a>'},
     {code: '<a href={"javascript:"}></a>'},
     {code: '<Foo href="javascript:"></Foo>'},
-    {code: '<a href />'}
+    {code: '<a href />'},
   ],
   invalid: [
     {
       code: '<a href="javascript:"></a>',
-      errors: [{messageId: 'noScriptURL'}]
+      errors: [{messageId: 'noScriptURL'}],
     },
     {
       code: '<a href="javascript:void(0)"></a>',
-      errors: [{messageId: 'noScriptURL'}]
+      errors: [{messageId: 'noScriptURL'}],
     },
     {
       code: '<a href="j\n\n\na\rv\tascript:"></a>',
-      errors: [{messageId: 'noScriptURL'}]
+      errors: [{messageId: 'noScriptURL'}],
     },
     {
       code: '<Foo to="javascript:"></Foo>',
       errors: [{messageId: 'noScriptURL'}],
       options: [
-        [{name: 'Foo', props: ['to', 'href']}]
-      ]
+        [{name: 'Foo', props: ['to', 'href']}],
+      ],
     },
     {
       code: '<Foo href="javascript:"></Foo>',
       errors: [{messageId: 'noScriptURL'}],
       options: [
-        [{name: 'Foo', props: ['to', 'href']}]
-      ]
+        [{name: 'Foo', props: ['to', 'href']}],
+      ],
     },
     {
       code: `
@@ -73,14 +73,14 @@ ruleTester.run('jsx-no-script-url', rule, {
     `,
       errors: [
         {messageId: 'noScriptURL'},
-        {messageId: 'noScriptURL'}
+        {messageId: 'noScriptURL'},
       ],
       options: [
         [
           {name: 'Foo', props: ['to', 'href']},
-          {name: 'Bar', props: ['link']}
-        ]
-      ]
-    }
-  ]
+          {name: 'Bar', props: ['link']},
+        ],
+      ],
+    },
+  ],
 });

@@ -20,8 +20,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -34,52 +34,52 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
     {
       code: `
         <App />
-      `
+      `,
     },
     {
       code: `
         <App foo />
-      `
+      `,
     },
     {
       code: `
         <App foo bar />
-      `
+      `,
     },
     {
       code: `
         <App foo="with  spaces   " bar />
-      `
+      `,
     },
     {
       code: `
         <App
           foo bar />
-      `
+      `,
     },
     {
       code: `
         <App
           foo
           bar />
-      `
+      `,
     },
     {
       code: `
         <App
           foo {...test}
           bar />
-      `
+      `,
     },
     {
       code: '<App<T> foo bar />',
-      parser: parsers.TYPESCRIPT_ESLINT
+      parser: parsers.TYPESCRIPT_ESLINT,
     },
     {
-      code: '<Foo.Bar baz="quux" />'
+      code: '<Foo.Bar baz="quux" />',
     },
     {
-      code: '<Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh xyzzy="thud" />'
+      code: '<Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh xyzzy="thud" />',
     },
     {
       code: `
@@ -87,7 +87,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
           title="Some button"
           type="button"
         />
-      `
+      `,
     },
     {
       code: `
@@ -98,7 +98,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
           }}
           type="button"
         />
-      `
+      `,
     }, (semver.satisfies(eslintPkg.version, '> 3') ? [
       {
         code: `
@@ -110,7 +110,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
             }}
             type="button"
           />
-        `
+        `,
       },
       {
         code: `
@@ -123,7 +123,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
             }}
             type="button"
           />
-        `
+        `,
       },
       {
         code: `
@@ -132,7 +132,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
             // comment
             bar=""
           />
-        `
+        `,
       },
       {
         code: `
@@ -146,8 +146,8 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
             }}
             type="button"
           />
-        `
-      }
+        `,
+      },
     ] : [])
   ),
 
@@ -162,9 +162,9 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'App', prop2: 'foo'}
-        }
-      ]
+          data: {prop1: 'App', prop2: 'foo'},
+        },
+      ],
     },
     {
       code: `
@@ -176,9 +176,9 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'foo', prop2: 'bar'}
-        }
-      ]
+          data: {prop1: 'foo', prop2: 'bar'},
+        },
+      ],
     },
     {
       code: `
@@ -190,9 +190,9 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'foo', prop2: 'bar'}
-        }
-      ]
+          data: {prop1: 'foo', prop2: 'bar'},
+        },
+      ],
     },
     {
       code: `
@@ -204,13 +204,13 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'App', prop2: 'foo'}
+          data: {prop1: 'App', prop2: 'foo'},
         },
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'foo', prop2: 'bar'}
-        }
-      ]
+          data: {prop1: 'foo', prop2: 'bar'},
+        },
+      ],
     },
     {
       code: `
@@ -222,13 +222,13 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'foo', prop2: 'test'}
+          data: {prop1: 'foo', prop2: 'test'},
         },
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'test', prop2: 'bar'}
-        }
-      ]
+          data: {prop1: 'test', prop2: 'bar'},
+        },
+      ],
     },
     {
       code: '<Foo.Bar  baz="quux" />',
@@ -236,9 +236,9 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'Foo.Bar', prop2: 'baz'}
-        }
-      ]
+          data: {prop1: 'Foo.Bar', prop2: 'baz'},
+        },
+      ],
     },
     {
       code: '<Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh  xyzzy="thud" />',
@@ -246,9 +246,9 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'onlyOneSpace',
-          data: {prop1: 'Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh', prop2: 'xyzzy'}
-        }
-      ]
+          data: {prop1: 'Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh', prop2: 'xyzzy'},
+        },
+      ],
     },
     {
       code: `
@@ -261,9 +261,9 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'noLineGap',
-          data: {prop1: 'title', prop2: 'type'}
-        }
-      ]
+          data: {prop1: 'title', prop2: 'type'},
+        },
+      ],
     },
     {
       code: `
@@ -280,13 +280,13 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       errors: [
         {
           messageId: 'noLineGap',
-          data: {prop1: 'title', prop2: 'onClick'}
+          data: {prop1: 'title', prop2: 'onClick'},
         },
         {
           messageId: 'noLineGap',
-          data: {prop1: 'onClick', prop2: 'type'}
-        }
-      ]
+          data: {prop1: 'onClick', prop2: 'type'},
+        },
+      ],
     }, (semver.satisfies(eslintPkg.version, '> 3') ? [
       {
         code: `
@@ -303,9 +303,9 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
         errors: [
           {
             messageId: 'noLineGap',
-            data: {prop1: 'onClick', prop2: 'type'}
-          }
-        ]
+            data: {prop1: 'onClick', prop2: 'type'},
+          },
+        ],
       },
       {
         code: `
@@ -324,13 +324,13 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
         errors: [
           {
             messageId: 'noLineGap',
-            data: {prop1: 'title', prop2: 'onClick'}
+            data: {prop1: 'title', prop2: 'onClick'},
           },
           {
             messageId: 'noLineGap',
-            data: {prop1: 'onClick', prop2: 'type'}
-          }
-        ]
+            data: {prop1: 'onClick', prop2: 'type'},
+          },
+        ],
       },
       {
         code: `
@@ -351,13 +351,13 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
         errors: [
           {
             messageId: 'noLineGap',
-            data: {prop1: 'title', prop2: 'onClick'}
+            data: {prop1: 'title', prop2: 'onClick'},
           },
           {
             messageId: 'noLineGap',
-            data: {prop1: 'onClick', prop2: 'type'}
-          }
-        ]
-      }
-    ] : []))
+            data: {prop1: 'onClick', prop2: 'type'},
+          },
+        ],
+      },
+    ] : [])),
 });

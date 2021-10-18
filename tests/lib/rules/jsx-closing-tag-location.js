@@ -18,8 +18,8 @@ const parserOptions = {
   sourceType: 'module',
   ecmaVersion: 2015,
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -34,12 +34,12 @@ ruleTester.run('jsx-closing-tag-location', rule, {
         <App>
           foo
         </App>
-      `
+      `,
     },
     {
       code: `
       <App>foo</App>
-    `
+    `,
     },
     {
       code: `
@@ -47,14 +47,14 @@ ruleTester.run('jsx-closing-tag-location', rule, {
           foo
         </>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
         <>foo</>
       `,
-      parser: parsers.BABEL_ESLINT
-    }
+      parser: parsers.BABEL_ESLINT,
+    },
   ],
 
   invalid: [
@@ -69,7 +69,7 @@ ruleTester.run('jsx-closing-tag-location', rule, {
           foo
         </App>
       `,
-      errors: [{messageId: 'matchIndent'}]
+      errors: [{messageId: 'matchIndent'}],
     },
     {
       code: `
@@ -81,7 +81,7 @@ ruleTester.run('jsx-closing-tag-location', rule, {
           foo
         </App>
       `,
-      errors: [{messageId: 'onOwnLine'}]
+      errors: [{messageId: 'onOwnLine'}],
     },
     {
       code: `
@@ -95,7 +95,7 @@ ruleTester.run('jsx-closing-tag-location', rule, {
           foo
         </>
       `,
-      errors: [{messageId: 'matchIndent'}]
+      errors: [{messageId: 'matchIndent'}],
     },
     {
       code: `
@@ -108,7 +108,7 @@ ruleTester.run('jsx-closing-tag-location', rule, {
           foo
         </>
       `,
-      errors: [{messageId: 'onOwnLine'}]
-    }
-  ]
+      errors: [{messageId: 'onOwnLine'}],
+    },
+  ],
 });

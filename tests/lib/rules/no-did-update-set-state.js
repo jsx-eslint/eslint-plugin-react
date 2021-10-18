@@ -18,8 +18,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -36,14 +36,14 @@ ruleTester.run('no-did-update-set-state', rule, {
             return <div>Hello {this.props.name}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
         var Hello = createReactClass({
           componentDidUpdate: function() {}
         });
-      `
+      `,
     },
     {
       code: `
@@ -53,7 +53,7 @@ ruleTester.run('no-did-update-set-state', rule, {
             this.someHandler = this.setState;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -66,7 +66,7 @@ ruleTester.run('no-did-update-set-state', rule, {
             })
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -81,8 +81,8 @@ ruleTester.run('no-did-update-set-state', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT
-    }
+      parser: parsers.BABEL_ESLINT,
+    },
   ],
 
   invalid: [
@@ -99,9 +99,9 @@ ruleTester.run('no-did-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidUpdate'}
-        }
-      ]
+          data: {name: 'componentDidUpdate'},
+        },
+      ],
     },
     {
       code: `
@@ -117,9 +117,9 @@ ruleTester.run('no-did-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidUpdate'}
-        }
-      ]
+          data: {name: 'componentDidUpdate'},
+        },
+      ],
     },
     {
       code: `
@@ -135,9 +135,9 @@ ruleTester.run('no-did-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidUpdate'}
-        }
-      ]
+          data: {name: 'componentDidUpdate'},
+        },
+      ],
     },
     {
       code: `
@@ -153,9 +153,9 @@ ruleTester.run('no-did-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidUpdate'}
-        }
-      ]
+          data: {name: 'componentDidUpdate'},
+        },
+      ],
     },
     {
       code: `
@@ -172,9 +172,9 @@ ruleTester.run('no-did-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidUpdate'}
-        }
-      ]
+          data: {name: 'componentDidUpdate'},
+        },
+      ],
     },
     {
       code: `
@@ -192,9 +192,9 @@ ruleTester.run('no-did-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidUpdate'}
-        }
-      ]
+          data: {name: 'componentDidUpdate'},
+        },
+      ],
     },
     {
       code: `
@@ -213,9 +213,9 @@ ruleTester.run('no-did-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidUpdate'}
-        }
-      ]
+          data: {name: 'componentDidUpdate'},
+        },
+      ],
     },
     {
       code: `
@@ -232,9 +232,9 @@ ruleTester.run('no-did-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidUpdate'}
-        }
-      ]
+          data: {name: 'componentDidUpdate'},
+        },
+      ],
     },
     {
       code: `
@@ -252,9 +252,9 @@ ruleTester.run('no-did-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidUpdate'}
-        }
-      ]
+          data: {name: 'componentDidUpdate'},
+        },
+      ],
     },
     {
       code: `
@@ -269,9 +269,9 @@ ruleTester.run('no-did-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidUpdate'}
-        }
-      ]
+          data: {name: 'componentDidUpdate'},
+        },
+      ],
     },
     {
       code: `
@@ -286,9 +286,9 @@ ruleTester.run('no-did-update-set-state', rule, {
       errors: [
         {
           messageId: 'noSetState',
-          data: {name: 'componentDidUpdate'}
-        }
-      ]
-    }
-  ]
+          data: {name: 'componentDidUpdate'},
+        },
+      ],
+    },
+  ],
 });

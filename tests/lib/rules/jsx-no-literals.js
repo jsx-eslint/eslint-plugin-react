@@ -19,8 +19,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true, allowedStrings: ['button', 'submit']}]
+      options: [{noStrings: true, allowedStrings: ['button', 'submit']}],
     },
     {
       code: `
@@ -57,7 +57,7 @@ ruleTester.run('jsx-no-literals', rule, {
         }
       `,
       options: [{noStrings: true, allowedStrings: ['button', 'submit']}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     }, parsers.TS([
       {
         code: `
@@ -72,7 +72,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         `,
         options: [{noStrings: true, allowedStrings: ['button', 'submit']}],
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -87,8 +87,8 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         `,
         options: [{noStrings: true, allowedStrings: ['button', 'submit']}],
-        parser: parsers['@TYPESCRIPT_ESLINT']
-      }
+        parser: parsers['@TYPESCRIPT_ESLINT'],
+      },
     ]),
     {
       code: `
@@ -102,7 +102,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -116,7 +116,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -126,7 +126,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -137,7 +137,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -148,7 +148,7 @@ ruleTester.run('jsx-no-literals', rule, {
           },
         });
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -164,7 +164,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -177,13 +177,13 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
         var foo = require('foo');
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -191,7 +191,7 @@ ruleTester.run('jsx-no-literals', rule, {
           {'blarg'}
         </Foo>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -200,7 +200,7 @@ ruleTester.run('jsx-no-literals', rule, {
         </Foo>
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{noStrings: true, ignoreProps: true}]
+      options: [{noStrings: true, ignoreProps: true}],
     },
     {
       code: `
@@ -209,7 +209,7 @@ ruleTester.run('jsx-no-literals', rule, {
         </Foo>
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{noStrings: true, ignoreProps: true}]
+      options: [{noStrings: true, ignoreProps: true}],
     },
     {
       code: `
@@ -217,7 +217,7 @@ ruleTester.run('jsx-no-literals', rule, {
           {intl.formatText(message)}
         </Foo>
       `,
-      options: [{noStrings: true, ignoreProps: true}]
+      options: [{noStrings: true, ignoreProps: true}],
     },
     {
       code: `
@@ -225,27 +225,27 @@ ruleTester.run('jsx-no-literals', rule, {
           {translate('my.translate.key')}
         </Foo>
       `,
-      options: [{noStrings: true, ignoreProps: true}]
+      options: [{noStrings: true, ignoreProps: true}],
     },
     {
       code: '<Foo bar={true} />',
-      options: [{noStrings: true}]
+      options: [{noStrings: true}],
     },
     {
       code: '<Foo bar={false} />',
-      options: [{noStrings: true}]
+      options: [{noStrings: true}],
     },
     {
       code: '<Foo bar={100} />',
-      options: [{noStrings: true}]
+      options: [{noStrings: true}],
     },
     {
       code: '<Foo bar={null} />',
-      options: [{noStrings: true}]
+      options: [{noStrings: true}],
     },
     {
       code: '<Foo bar={{}} />',
-      options: [{noStrings: true}]
+      options: [{noStrings: true}],
     },
     {
       code: `
@@ -256,7 +256,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true, ignoreProps: true}]
+      options: [{noStrings: true, ignoreProps: true}],
     },
     {
       code: `
@@ -267,7 +267,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true}]
+      options: [{noStrings: true}],
     },
     {
       code: `
@@ -277,7 +277,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{allowedStrings: ['asdf']}]
+      options: [{allowedStrings: ['asdf']}],
     },
     {
       code: `
@@ -287,7 +287,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: false, allowedStrings: ['asdf']}]
+      options: [{noStrings: false, allowedStrings: ['asdf']}],
     },
     {
       code: `
@@ -297,7 +297,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true, allowedStrings: ['&nbsp;']}]
+      options: [{noStrings: true, allowedStrings: ['&nbsp;']}],
     },
     {
       code: `
@@ -311,7 +311,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true, allowedStrings: ['&nbsp;']}]
+      options: [{noStrings: true, allowedStrings: ['&nbsp;']}],
     },
     {
       code: `
@@ -321,7 +321,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true, allowedStrings: ['foo: ', '*']}]
+      options: [{noStrings: true, allowedStrings: ['foo: ', '*']}],
     },
     {
       code: `
@@ -331,7 +331,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      options: [{noStrings: true, allowedStrings: ['   foo   ']}]
+      options: [{noStrings: true, allowedStrings: ['   foo   ']}],
     },
     {
       code: `
@@ -344,12 +344,12 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }      `,
       parser: parsers.BABEL_ESLINT,
-      options: [{noStrings: true, ignoreProps: false}]
+      options: [{noStrings: true, ignoreProps: false}],
     },
     {
       code: `
         <img alt='blank image'></img>
-      `
+      `,
     }
   ),
 
@@ -366,9 +366,9 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
-          data: {text: 'test'}
-        }
-      ]
+          data: {text: 'test'},
+        },
+      ],
     },
     {
       code: `
@@ -382,9 +382,9 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
-          data: {text: 'test'}
-        }
-      ]
+          data: {text: 'test'},
+        },
+      ],
     },
     {
       code: `
@@ -399,9 +399,9 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
-          data: {text: 'test'}
-        }
-      ]
+          data: {text: 'test'},
+        },
+      ],
     },
     {
       code: `
@@ -416,9 +416,9 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
-          data: {text: 'test'}
-        }
-      ]
+          data: {text: 'test'},
+        },
+      ],
     },
     {
       code: `
@@ -433,9 +433,9 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
-          data: {text: 'hello'}
-        }
-      ]
+          data: {text: 'hello'},
+        },
+      ],
     },
     {
       code: `
@@ -453,9 +453,9 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
-          data: {text: 'asdjfl'}
-        }
-      ]
+          data: {text: 'asdjfl'},
+        },
+      ],
     },
     {
       code: `
@@ -476,10 +476,10 @@ ruleTester.run('jsx-no-literals', rule, {
         {
           messageId: 'literalNotInJSXExpression',
           data: {
-            text: 'asdjfl\n                test\n                foo'
-          }
-        }
-      ]
+            text: 'asdjfl\n                test\n                foo',
+          },
+        },
+      ],
     },
     {
       code: `
@@ -499,9 +499,9 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
-          data: {text: 'test'}
-        }
-      ]
+          data: {text: 'test'},
+        },
+      ],
     },
     {
       code: `
@@ -513,13 +513,13 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'invalidPropValue',
-          data: {text: 'bar="test"'}
+          data: {text: 'bar="test"'},
         },
         {
           messageId: 'noStringsInJSX',
-          data: {text: '\'Test\''}
-        }
-      ]
+          data: {text: '\'Test\''},
+        },
+      ],
     },
     {
       code: `
@@ -531,13 +531,13 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'invalidPropValue',
-          data: {text: 'bar="test"'}
+          data: {text: 'bar="test"'},
         },
         {
           messageId: 'noStringsInJSX',
-          data: {text: '\'Test\''}
-        }
-      ]
+          data: {text: '\'Test\''},
+        },
+      ],
     },
     {
       code: `
@@ -549,13 +549,13 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'invalidPropValue',
-          data: {text: 'bar="test"'}
+          data: {text: 'bar="test"'},
         },
         {
           messageId: 'noStringsInJSX',
-          data: {text: 'Test'}
-        }
-      ]
+          data: {text: 'Test'},
+        },
+      ],
     },
     {
       code: `
@@ -567,9 +567,9 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`Test`'}
-        }
-      ]
+          data: {text: '`Test`'},
+        },
+      ],
     },
     {
       code: '<Foo bar={`Test`} />',
@@ -577,9 +577,9 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`Test`'}
-        }
-      ]
+          data: {text: '`Test`'},
+        },
+      ],
     },
     {
       code: '<Foo bar={`${baz}`} />',
@@ -587,9 +587,9 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`${baz}`'}
-        }
-      ]
+          data: {text: '`${baz}`'},
+        },
+      ],
     },
     {
       code: '<Foo bar={`Test ${baz}`} />',
@@ -597,9 +597,9 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`Test ${baz}`'}
-        }
-      ]
+          data: {text: '`Test ${baz}`'},
+        },
+      ],
     },
     {
       code: '<Foo bar={`foo` + \'bar\'} />',
@@ -607,13 +607,13 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`foo`'}
+          data: {text: '`foo`'},
         },
         {
           messageId: 'noStringsInJSX',
-          data: {text: '\'bar\''}
-        }
-      ]
+          data: {text: '\'bar\''},
+        },
+      ],
     },
     {
       code: '<Foo bar={`foo` + `bar`} />',
@@ -621,13 +621,13 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`foo`'}
+          data: {text: '`foo`'},
         },
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`bar`'}
-        }
-      ]
+          data: {text: '`bar`'},
+        },
+      ],
     },
     {
       code: '<Foo bar={\'foo\' + `bar`} />',
@@ -635,13 +635,13 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '\'foo\''}
+          data: {text: '\'foo\''},
         },
         {
           messageId: 'noStringsInJSX',
-          data: {text: '`bar`'}
-        }
-      ]
+          data: {text: '`bar`'},
+        },
+      ],
     },
     {
       code: `
@@ -655,13 +655,13 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '\'foo\''}
+          data: {text: '\'foo\''},
         },
         {
           messageId: 'noStringsInJSX',
-          data: {text: 'asdf'}
-        }
-      ]
+          data: {text: 'asdf'},
+        },
+      ],
     },
     {
       code: '<Foo bar={\'bar\'} />',
@@ -669,9 +669,9 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'noStringsInJSX',
-          data: {text: '\'bar\''}
-        }
-      ]
+          data: {text: '\'bar\''},
+        },
+      ],
     },
     {
       code: `
@@ -681,9 +681,9 @@ ruleTester.run('jsx-no-literals', rule, {
       errors: [
         {
           messageId: 'noStringsInAttributes',
-          data: {text: '\'blank image\''}
-        }
-      ]
-    }
-  ]
+          data: {text: '\'blank image\''},
+        },
+      ],
+    },
+  ],
 });

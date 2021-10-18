@@ -17,8 +17,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -49,7 +49,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return <button onClick={this.handleClick}>Text</button>;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -59,7 +59,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return <button onClick={this.handleClick}>Text</button>;
           },
         })
-      `
+      `,
     },
     {
       code: `
@@ -72,7 +72,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return null;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -85,7 +85,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return null;
           },
         })
-      `
+      `,
     },
     {
       code: `
@@ -99,7 +99,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return null;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -112,7 +112,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return null;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -123,7 +123,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -133,7 +133,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return <div>{this.renderContent()}</div>;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -147,7 +147,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             );
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -158,7 +158,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -172,7 +172,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -184,7 +184,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -196,7 +196,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -205,7 +205,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           anotherAction = () => this.action()
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -216,7 +216,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -229,7 +229,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -242,7 +242,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -255,7 +255,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -268,7 +268,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -280,7 +280,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return <SomeComponent foo={this.foo} />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -291,7 +291,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -302,7 +302,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -313,7 +313,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -324,7 +324,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -335,7 +335,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -346,7 +346,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -356,7 +356,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return <SomeComponent foo={this.foo} />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -366,7 +366,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return <SomeComponent foo={this.foo} />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -377,7 +377,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return <SomeComponent />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -388,7 +388,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return <SomeComponent />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -399,7 +399,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return <SomeComponent />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -410,7 +410,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return <SomeComponent />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -420,7 +420,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return <SomeComponent />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -445,7 +445,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return <SomeComponent />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -474,8 +474,8 @@ ruleTester.run('no-unused-class-component-methods', rule, {
             return <SomeComponent />;
           },
         })
-      `
-    }
+      `,
+    },
   ],
 
   invalid: [
@@ -492,9 +492,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
         {
           message: 'Unused method or property "getDerivedStateFromProps" of class "Foo"',
           line: 3,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -510,9 +510,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
         {
           message: 'Unused method or property "property" of class "Foo"',
           line: 3,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -527,9 +527,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
         {
           message: 'Unused method or property "handleClick" of class "Foo"',
           line: 3,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -544,9 +544,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
         {
           message: 'Unused method or property "handleClick"',
           line: 3,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -561,9 +561,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
         {
           message: 'Unused method or property "a"',
           line: 3,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -579,14 +579,14 @@ ruleTester.run('no-unused-class-component-methods', rule, {
         {
           message: 'Unused method or property "handleScroll" of class "Foo"',
           line: 3,
-          column: 11
+          column: 11,
         },
         {
           message: 'Unused method or property "handleClick" of class "Foo"',
           line: 4,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -602,9 +602,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
         {
           message: 'Unused method or property "handleClick" of class "Foo"',
           line: 3,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -620,9 +620,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
         {
           message: 'Unused method or property "action" of class "Foo"',
           line: 3,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -640,9 +640,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
         {
           message: 'Unused method or property "action" of class "Foo"',
           line: 3,
-          column: 17
-        }
-      ]
+          column: 17,
+        },
+      ],
     },
     {
       code: `
@@ -660,9 +660,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
         {
           message: 'Unused method or property "action" of class "Foo"',
           line: 3,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -680,9 +680,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
         {
           message: 'Unused method or property "action" of class "Foo"',
           line: 3,
-          column: 19
-        }
-      ]
+          column: 19,
+        },
+      ],
     },
     {
       code: `
@@ -698,9 +698,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
         {
           message: 'Unused method or property "getInitialState" of class "Foo"',
           line: 3,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -718,9 +718,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
         {
           message: 'Unused method or property "action" of class "Foo"',
           line: 3,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -736,8 +736,8 @@ ruleTester.run('no-unused-class-component-methods', rule, {
       errors: [{
         message: 'Unused method or property "foo" of class "ClassAssignPropertyInMethodTest"',
         line: 4,
-        column: 19
-      }]
+        column: 19,
+      }],
     },
     {
       code: `
@@ -751,9 +751,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
       errors: [{
         message: 'Unused method or property "foo" of class "Foo"',
         line: 3,
-        column: 12
+        column: 12,
       }],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -767,9 +767,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
       errors: [{
         message: 'Unused method or property "foo" of class "Foo"',
         line: 3,
-        column: 12
+        column: 12,
       }],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -783,9 +783,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
       errors: [{
         message: 'Unused method or property "foo" of class "Foo"',
         line: 3,
-        column: 13
+        column: 13,
       }],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -799,9 +799,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
       errors: [{
         message: 'Unused method or property "foo" of class "Foo"',
         line: 3,
-        column: 13
+        column: 13,
       }],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -815,9 +815,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
       errors: [{
         message: 'Unused method or property "foo" of class "Foo"',
         line: 3,
-        column: 12
+        column: 12,
       }],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -832,10 +832,10 @@ ruleTester.run('no-unused-class-component-methods', rule, {
         {
           message: 'Unused method or property "foo" of class "Foo"',
           line: 3,
-          column: 20
-        }
+          column: 20,
+        },
       ],
-      parser: parsers.TYPESCRIPT_ESLINT
+      parser: parsers.TYPESCRIPT_ESLINT,
     },
     {
       code: `
@@ -849,9 +849,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
       errors: [{
         message: 'Unused method or property "foo" of class "Foo"',
         line: 3,
-        column: 20
+        column: 20,
       }],
-      parser: parsers.TYPESCRIPT_ESLINT
+      parser: parsers.TYPESCRIPT_ESLINT,
     },
     {
       code: `
@@ -865,9 +865,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
       errors: [{
         message: 'Unused method or property "foo" of class "Foo"',
         line: 3,
-        column: 20
+        column: 20,
       }],
-      parser: parsers.TYPESCRIPT_ESLINT
-    }
-  ]
+      parser: parsers.TYPESCRIPT_ESLINT,
+    },
+  ],
 });

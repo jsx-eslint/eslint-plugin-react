@@ -19,9 +19,9 @@ const parsers = require('../../helpers/parsers');
 const parserOptions = {
   ecmaVersion: 2018,
   ecmaFeatures: {
-    jsx: true
+    jsx: true,
   },
-  sourceType: 'module'
+  sourceType: 'module',
 };
 
 // -----------------------------------------------------------------------------
@@ -45,7 +45,7 @@ ruleTester.run('no-typos', rule, {
           }
       `,
       parser: parsers.TYPESCRIPT_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -57,7 +57,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -67,7 +67,7 @@ ruleTester.run('no-typos', rule, {
         First.ChildContextTypes = {key: "myValue"};
         First.DefaultProps = {key: "myValue"};
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -79,7 +79,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -89,7 +89,7 @@ ruleTester.run('no-typos', rule, {
         First.childContextTypes = {key: "myValue"};
         First.defaultProps = {key: "myValue"};
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -101,7 +101,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -113,7 +113,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -125,7 +125,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -137,7 +137,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -149,7 +149,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -159,7 +159,7 @@ ruleTester.run('no-typos', rule, {
         MyClass.prototype.ChildContextTypes = function() {};
         MyClass.prototype.DefaultProps = function() {};
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -169,7 +169,7 @@ ruleTester.run('no-typos', rule, {
         MyClass.ChildContextTypes = function() {};
         MyClass.DefaultProps = function() {};
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -179,7 +179,7 @@ ruleTester.run('no-typos', rule, {
         MyRandomFunction.ChildContextTypes = {};
         MyRandomFunction.DefaultProps = {};
       `,
-      parserOptions
+      parserOptions,
     },
     {
       // This case is currently not supported
@@ -190,7 +190,7 @@ ruleTester.run('no-typos', rule, {
         First["childContext" + "Types"] = {};
         First["default" + "Props"] = {};
       `,
-      parserOptions
+      parserOptions,
     },
     {
       // This case is currently not supported
@@ -201,7 +201,7 @@ ruleTester.run('no-typos', rule, {
         First["CHILDCONTEXT" + "TYPES"] = {};
         First["DEFAULT" + "PROPS"] = {};
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -216,7 +216,7 @@ ruleTester.run('no-typos', rule, {
         First[childContextTypes] = {};
         First[defautProps] = {};
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -234,7 +234,7 @@ ruleTester.run('no-typos', rule, {
           }
         }
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -243,7 +243,7 @@ ruleTester.run('no-typos', rule, {
           "my-method"() { }
         }
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -258,7 +258,7 @@ ruleTester.run('no-typos', rule, {
           render() { }
         }
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -273,7 +273,7 @@ ruleTester.run('no-typos', rule, {
           render() { }
         }
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -288,7 +288,7 @@ ruleTester.run('no-typos', rule, {
           Render() { }
         }
       `,
-      parserOptions
+      parserOptions,
     },
     {
       // https://github.com/yannickcr/eslint-plugin-react/issues/1353
@@ -299,7 +299,7 @@ ruleTester.run('no-typos', rule, {
         function a() {}
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -310,7 +310,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -323,7 +323,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -339,7 +339,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -353,7 +353,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -367,7 +367,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -383,7 +383,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -398,7 +398,7 @@ ruleTester.run('no-typos', rule, {
           }).isRequired
         }
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -413,7 +413,7 @@ ruleTester.run('no-typos', rule, {
           }).isRequired
         }
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -426,7 +426,7 @@ ruleTester.run('no-typos', rule, {
           c: MyPropTypes.MYSTRING.isRequired,
         }
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -438,7 +438,7 @@ ruleTester.run('no-typos', rule, {
           a: MyPropTypes.MYSTRING,
         }
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -448,7 +448,7 @@ ruleTester.run('no-typos', rule, {
           b: CustomReact.PropTypes.string,
         }
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -464,7 +464,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -478,7 +478,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -491,7 +491,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -502,7 +502,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       // ensure that an absent arg to PropTypes.shape does not crash
@@ -515,7 +515,7 @@ ruleTester.run('no-typos', rule, {
           a: PropTypes.shape(),
         };
       `,
-      parserOptions
+      parserOptions,
     },
     {
       // ensure that an absent arg to PropTypes.shape does not crash
@@ -529,7 +529,7 @@ ruleTester.run('no-typos', rule, {
         };
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -538,7 +538,7 @@ ruleTester.run('no-typos', rule, {
           data.time = data.time || {};
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -550,7 +550,7 @@ ruleTester.run('no-typos', rule, {
           }).isRequired
         }
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -563,7 +563,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -578,7 +578,7 @@ ruleTester.run('no-typos', rule, {
           }
         });
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -594,7 +594,7 @@ ruleTester.run('no-typos', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -609,7 +609,7 @@ ruleTester.run('no-typos', rule, {
           }
         });
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -625,7 +625,7 @@ ruleTester.run('no-typos', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -646,7 +646,7 @@ ruleTester.run('no-typos', rule, {
           }
         });
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -668,7 +668,7 @@ ruleTester.run('no-typos', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -683,7 +683,7 @@ ruleTester.run('no-typos', rule, {
           body: element.isRequired
         };
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -697,14 +697,14 @@ ruleTester.run('no-typos', rule, {
           }
         }
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
         const MyComponent = React.forwardRef((props, ref) => <div />);
         MyComponent.defaultProps = { value: "" };
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -713,7 +713,7 @@ ruleTester.run('no-typos', rule, {
         const MyComponent = styled.div;
         MyComponent.defaultProps = { value: "" };
       `,
-      parserOptions
+      parserOptions,
     }, semver.satisfies(babelEslintVersion, '>= 9') ? {
       code: `
         class Editor extends React.Component {
@@ -735,10 +735,10 @@ ruleTester.run('no-typos', rule, {
       parser: parsers.BABEL_ESLINT,
       parserOptions: {
         babelOptions: {
-          classPrivateMethods: true
+          classPrivateMethods: true,
         },
-        shippedProposals: true
-      }
+        shippedProposals: true,
+      },
     } : []
   ),
 
@@ -752,8 +752,8 @@ ruleTester.run('no-typos', rule, {
       parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
-        {messageId: 'typoStaticClassProp', type: 'Identifier'}
-      ]
+        {messageId: 'typoStaticClassProp', type: 'Identifier'},
+      ],
     },
     {
       code: `
@@ -762,8 +762,8 @@ ruleTester.run('no-typos', rule, {
       `,
       parserOptions,
       errors: [
-        {messageId: 'typoStaticClassProp', type: 'Identifier'}
-      ]
+        {messageId: 'typoStaticClassProp', type: 'Identifier'},
+      ],
     },
     {
       code: `
@@ -772,8 +772,8 @@ ruleTester.run('no-typos', rule, {
       `,
       parserOptions,
       errors: [
-        {messageId: 'typoStaticClassProp', type: 'Identifier'}
-      ]
+        {messageId: 'typoStaticClassProp', type: 'Identifier'},
+      ],
     },
     {
       code: `
@@ -783,7 +783,7 @@ ruleTester.run('no-typos', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -791,7 +791,7 @@ ruleTester.run('no-typos', rule, {
         Component.proptypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -799,7 +799,7 @@ ruleTester.run('no-typos', rule, {
         MyComponent.proptypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -810,8 +810,8 @@ ruleTester.run('no-typos', rule, {
       parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
-        {messageId: 'typoStaticClassProp', type: 'Identifier'}
-      ]
+        {messageId: 'typoStaticClassProp', type: 'Identifier'},
+      ],
     },
     {
       code: `
@@ -819,7 +819,7 @@ ruleTester.run('no-typos', rule, {
         Component.ContextTypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -827,7 +827,7 @@ ruleTester.run('no-typos', rule, {
         MyComponent.ContextTypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -837,7 +837,7 @@ ruleTester.run('no-typos', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -845,7 +845,7 @@ ruleTester.run('no-typos', rule, {
         Component.contexttypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -853,7 +853,7 @@ ruleTester.run('no-typos', rule, {
         MyComponent.contexttypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -863,7 +863,7 @@ ruleTester.run('no-typos', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -871,7 +871,7 @@ ruleTester.run('no-typos', rule, {
         Component.ChildContextTypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -879,7 +879,7 @@ ruleTester.run('no-typos', rule, {
         MyComponent.ChildContextTypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -889,7 +889,7 @@ ruleTester.run('no-typos', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -897,7 +897,7 @@ ruleTester.run('no-typos', rule, {
         Component.childcontexttypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -905,7 +905,7 @@ ruleTester.run('no-typos', rule, {
         MyComponent.childcontexttypes = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -916,8 +916,8 @@ ruleTester.run('no-typos', rule, {
       parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
-        {messageId: 'typoStaticClassProp', type: 'Identifier'}
-      ]
+        {messageId: 'typoStaticClassProp', type: 'Identifier'},
+      ],
     },
     {
       code: `
@@ -926,8 +926,8 @@ ruleTester.run('no-typos', rule, {
       `,
       parserOptions,
       errors: [
-        {messageId: 'typoStaticClassProp', type: 'Identifier'}
-      ]
+        {messageId: 'typoStaticClassProp', type: 'Identifier'},
+      ],
     },
     {
       code: `
@@ -936,8 +936,8 @@ ruleTester.run('no-typos', rule, {
       `,
       parserOptions,
       errors: [
-        {messageId: 'typoStaticClassProp', type: 'Identifier'}
-      ]
+        {messageId: 'typoStaticClassProp', type: 'Identifier'},
+      ],
     },
     {
       code: `
@@ -947,7 +947,7 @@ ruleTester.run('no-typos', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -955,7 +955,7 @@ ruleTester.run('no-typos', rule, {
         Component.defaultprops = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -963,7 +963,7 @@ ruleTester.run('no-typos', rule, {
         MyComponent.defaultprops = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -971,7 +971,7 @@ ruleTester.run('no-typos', rule, {
         class Component extends React.Component {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -980,7 +980,7 @@ ruleTester.run('no-typos', rule, {
         MyComponent.PROPTYPES = {}
       `,
       parserOptions,
-      errors: [{messageId: 'typoStaticClassProp'}]
+      errors: [{messageId: 'typoStaticClassProp'}],
     },
     {
       code: `
@@ -1009,107 +1009,107 @@ ruleTester.run('no-typos', rule, {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'GetDerivedStateFromProps',
-            expected: 'getDerivedStateFromProps'
+            expected: 'getDerivedStateFromProps',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentWillMount',
-            expected: 'componentWillMount'
+            expected: 'componentWillMount',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'UNSAFE_ComponentWillMount',
-            expected: 'UNSAFE_componentWillMount'
+            expected: 'UNSAFE_componentWillMount',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentDidMount',
-            expected: 'componentDidMount'
+            expected: 'componentDidMount',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentWillReceiveProps',
-            expected: 'componentWillReceiveProps'
+            expected: 'componentWillReceiveProps',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'UNSAFE_ComponentWillReceiveProps',
-            expected: 'UNSAFE_componentWillReceiveProps'
+            expected: 'UNSAFE_componentWillReceiveProps',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ShouldComponentUpdate',
-            expected: 'shouldComponentUpdate'
+            expected: 'shouldComponentUpdate',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentWillUpdate',
-            expected: 'componentWillUpdate'
+            expected: 'componentWillUpdate',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'UNSAFE_ComponentWillUpdate',
-            expected: 'UNSAFE_componentWillUpdate'
+            expected: 'UNSAFE_componentWillUpdate',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'GetSnapshotBeforeUpdate',
-            expected: 'getSnapshotBeforeUpdate'
+            expected: 'getSnapshotBeforeUpdate',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentDidUpdate',
-            expected: 'componentDidUpdate'
+            expected: 'componentDidUpdate',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentDidCatch',
-            expected: 'componentDidCatch'
+            expected: 'componentDidCatch',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentWillUnmount',
-            expected: 'componentWillUnmount'
+            expected: 'componentWillUnmount',
           },
-          type: 'MethodDefinition'
-        }
-      ]
+          type: 'MethodDefinition',
+        },
+      ],
     },
     {
       code: `
@@ -1138,115 +1138,115 @@ ruleTester.run('no-typos', rule, {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'Getderivedstatefromprops',
-            expected: 'getDerivedStateFromProps'
+            expected: 'getDerivedStateFromProps',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'Componentwillmount',
-            expected: 'componentWillMount'
+            expected: 'componentWillMount',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'UNSAFE_Componentwillmount',
-            expected: 'UNSAFE_componentWillMount'
+            expected: 'UNSAFE_componentWillMount',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'Componentdidmount',
-            expected: 'componentDidMount'
+            expected: 'componentDidMount',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'Componentwillreceiveprops',
-            expected: 'componentWillReceiveProps'
+            expected: 'componentWillReceiveProps',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'UNSAFE_Componentwillreceiveprops',
-            expected: 'UNSAFE_componentWillReceiveProps'
+            expected: 'UNSAFE_componentWillReceiveProps',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'Shouldcomponentupdate',
-            expected: 'shouldComponentUpdate'
+            expected: 'shouldComponentUpdate',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'Componentwillupdate',
-            expected: 'componentWillUpdate'
+            expected: 'componentWillUpdate',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'UNSAFE_Componentwillupdate',
-            expected: 'UNSAFE_componentWillUpdate'
+            expected: 'UNSAFE_componentWillUpdate',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'Getsnapshotbeforeupdate',
-            expected: 'getSnapshotBeforeUpdate'
+            expected: 'getSnapshotBeforeUpdate',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'Componentdidupdate',
-            expected: 'componentDidUpdate'
+            expected: 'componentDidUpdate',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'Componentdidcatch',
-            expected: 'componentDidCatch'
+            expected: 'componentDidCatch',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'Componentwillunmount',
-            expected: 'componentWillUnmount'
+            expected: 'componentWillUnmount',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'Render',
-            expected: 'render'
+            expected: 'render',
           },
-          type: 'MethodDefinition'
-        }
-      ]
+          type: 'MethodDefinition',
+        },
+      ],
     },
     {
       code: `
@@ -1275,107 +1275,107 @@ ruleTester.run('no-typos', rule, {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'getderivedstatefromprops',
-            expected: 'getDerivedStateFromProps'
+            expected: 'getDerivedStateFromProps',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'componentwillmount',
-            expected: 'componentWillMount'
+            expected: 'componentWillMount',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'unsafe_componentwillmount',
-            expected: 'UNSAFE_componentWillMount'
+            expected: 'UNSAFE_componentWillMount',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'componentdidmount',
-            expected: 'componentDidMount'
+            expected: 'componentDidMount',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'componentwillreceiveprops',
-            expected: 'componentWillReceiveProps'
+            expected: 'componentWillReceiveProps',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'unsafe_componentwillreceiveprops',
-            expected: 'UNSAFE_componentWillReceiveProps'
+            expected: 'UNSAFE_componentWillReceiveProps',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'shouldcomponentupdate',
-            expected: 'shouldComponentUpdate'
+            expected: 'shouldComponentUpdate',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'componentwillupdate',
-            expected: 'componentWillUpdate'
+            expected: 'componentWillUpdate',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'unsafe_componentwillupdate',
-            expected: 'UNSAFE_componentWillUpdate'
+            expected: 'UNSAFE_componentWillUpdate',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'getsnapshotbeforeupdate',
-            expected: 'getSnapshotBeforeUpdate'
+            expected: 'getSnapshotBeforeUpdate',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'componentdidupdate',
-            expected: 'componentDidUpdate'
+            expected: 'componentDidUpdate',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'componentdidcatch',
-            expected: 'componentDidCatch'
+            expected: 'componentDidCatch',
           },
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'componentwillunmount',
-            expected: 'componentWillUnmount'
+            expected: 'componentWillUnmount',
           },
-          type: 'MethodDefinition'
-        }
-      ]
+          type: 'MethodDefinition',
+        },
+      ],
     },
     {
       code: `
@@ -1389,9 +1389,9 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'Number'}
-        }
-      ]
+          data: {name: 'Number'},
+        },
+      ],
     },
     {
       code: `
@@ -1405,9 +1405,9 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
-        }
-      ]
+          data: {name: 'isrequired'},
+        },
+      ],
     },
     {
       code: `
@@ -1423,9 +1423,9 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
-        }
-      ]
+          data: {name: 'isrequired'},
+        },
+      ],
     },
     {
       code: `
@@ -1441,9 +1441,9 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'Number'}
-        }
-      ]
+          data: {name: 'Number'},
+        },
+      ],
     },
     {
       code: `
@@ -1458,9 +1458,9 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'Number'}
-        }
-      ]
+          data: {name: 'Number'},
+        },
+      ],
     },
     {
       code: `
@@ -1478,9 +1478,9 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'String'}
-        }
-      ]
+          data: {name: 'String'},
+        },
+      ],
     },
     {
       code: `
@@ -1498,9 +1498,9 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'}
-        }
-      ]
+          data: {name: 'bools'},
+        },
+      ],
     },
     {
       code: `
@@ -1518,21 +1518,21 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'}
+          data: {name: 'bools'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'}
+          data: {name: 'Array'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'}
+          data: {name: 'function'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'}
-        }
-      ]
+          data: {name: 'objectof'},
+        },
+      ],
     },
     {
       code: `
@@ -1550,21 +1550,21 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'}
+          data: {name: 'bools'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'}
+          data: {name: 'Array'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'}
+          data: {name: 'function'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'}
-        }
-      ]
+          data: {name: 'objectof'},
+        },
+      ],
     },
     {
       code: `
@@ -1582,21 +1582,21 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'}
+          data: {name: 'bools'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'}
+          data: {name: 'Array'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'}
+          data: {name: 'function'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'}
-        }
-      ]
+          data: {name: 'objectof'},
+        },
+      ],
     },
     {
       code: `
@@ -1613,13 +1613,13 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
+          data: {name: 'isrequired'},
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
-        }
-      ]
+          data: {name: 'isrequired'},
+        },
+      ],
     },
     {
       code: `
@@ -1637,13 +1637,13 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
+          data: {name: 'isrequired'},
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
-        }
-      ]
+          data: {name: 'isrequired'},
+        },
+      ],
     },
     {
       code: `
@@ -1661,21 +1661,21 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'}
+          data: {name: 'bools'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'}
+          data: {name: 'Array'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'}
+          data: {name: 'function'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'}
-        }
-      ]
+          data: {name: 'objectof'},
+        },
+      ],
     },
     {
       code: `
@@ -1693,13 +1693,13 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
+          data: {name: 'isrequired'},
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
-        }
-      ]
+          data: {name: 'isrequired'},
+        },
+      ],
     },
     {
       code: `
@@ -1717,21 +1717,21 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'}
+          data: {name: 'bools'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'}
+          data: {name: 'Array'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'}
+          data: {name: 'function'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'}
-        }
-      ]
+          data: {name: 'objectof'},
+        },
+      ],
     },
     {
       code: `
@@ -1749,13 +1749,13 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
+          data: {name: 'isrequired'},
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
-        }
-      ]
+          data: {name: 'isrequired'},
+        },
+      ],
     },
     {
       code: `
@@ -1766,9 +1766,9 @@ ruleTester.run('no-typos', rule, {
       parserOptions,
       errors: [
         {
-          messageId: 'noReactBinding'
-        }
-      ]
+          messageId: 'noReactBinding',
+        },
+      ],
     },
     {
       code: `
@@ -1786,21 +1786,21 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'}
+          data: {name: 'bools'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'}
+          data: {name: 'Array'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'}
+          data: {name: 'function'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'}
-        }
-      ]
+          data: {name: 'objectof'},
+        },
+      ],
     },
     {
       code: `
@@ -1817,21 +1817,21 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'}
+          data: {name: 'bools'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'}
+          data: {name: 'Array'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'}
+          data: {name: 'function'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'}
-        }
-      ]
+          data: {name: 'objectof'},
+        },
+      ],
     },
     {
       code: `
@@ -1849,13 +1849,13 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
+          data: {name: 'isrequired'},
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
-        }
-      ]
+          data: {name: 'isrequired'},
+        },
+      ],
     },
     {
       code: `
@@ -1872,13 +1872,13 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
+          data: {name: 'isrequired'},
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
-        }
-      ]
+          data: {name: 'isrequired'},
+        },
+      ],
     },
     {
       code: `
@@ -1895,21 +1895,21 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'}
+          data: {name: 'bools'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'}
+          data: {name: 'Array'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'}
+          data: {name: 'function'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'}
-        }
-      ]
+          data: {name: 'objectof'},
+        },
+      ],
     },
     {
       code: `
@@ -1926,13 +1926,13 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
+          data: {name: 'isrequired'},
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
-        }
-      ]
+          data: {name: 'isrequired'},
+        },
+      ],
     },
     {
       code: `
@@ -1949,21 +1949,21 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'}
+          data: {name: 'bools'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'}
+          data: {name: 'Array'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'}
+          data: {name: 'function'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'}
-        }
-      ]
+          data: {name: 'objectof'},
+        },
+      ],
     },
     {
       code: `
@@ -1980,13 +1980,13 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
+          data: {name: 'isrequired'},
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
-        }
-      ]
+          data: {name: 'isrequired'},
+        },
+      ],
     },
     {
       code: `
@@ -2003,21 +2003,21 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'}
+          data: {name: 'bools'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'}
+          data: {name: 'Array'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'}
+          data: {name: 'function'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'}
-        }
-      ]
+          data: {name: 'objectof'},
+        },
+      ],
     },
     {
       code: `
@@ -2037,13 +2037,13 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
+          data: {name: 'isrequired'},
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
-        }
-      ]
+          data: {name: 'isrequired'},
+        },
+      ],
     },
     {
       code: `
@@ -2063,21 +2063,21 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'}
+          data: {name: 'bools'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'}
+          data: {name: 'Array'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'}
+          data: {name: 'function'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'}
-        }
-      ]
+          data: {name: 'objectof'},
+        },
+      ],
     },
     {
       code: `
@@ -2096,13 +2096,13 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
+          data: {name: 'isrequired'},
         },
         {
           messageId: 'typoPropTypeChain',
-          data: {name: 'isrequired'}
-        }
-      ]
+          data: {name: 'isrequired'},
+        },
+      ],
     },
     {
       code: `
@@ -2121,21 +2121,21 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropType',
-          data: {name: 'bools'}
+          data: {name: 'bools'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'Array'}
+          data: {name: 'Array'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'function'}
+          data: {name: 'function'},
         },
         {
           messageId: 'typoPropType',
-          data: {name: 'objectof'}
-        }
-      ]
+          data: {name: 'objectof'},
+        },
+      ],
     },
     {
       code: `
@@ -2163,97 +2163,97 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropDeclaration',
-          type: 'Identifier'
+          type: 'Identifier',
         },
         {
           messageId: 'typoPropDeclaration',
-          type: 'Identifier'
+          type: 'Identifier',
         },
         {
           messageId: 'typoPropDeclaration',
-          type: 'Identifier'
+          type: 'Identifier',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'getdefaultProps',
-            expected: 'getDefaultProps'
+            expected: 'getDefaultProps',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'getinitialState',
-            expected: 'getInitialState'
+            expected: 'getInitialState',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'getChildcontext',
-            expected: 'getChildContext'
+            expected: 'getChildContext',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentWillMount',
-            expected: 'componentWillMount'
+            expected: 'componentWillMount',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentDidMount',
-            expected: 'componentDidMount'
+            expected: 'componentDidMount',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentWillReceiveProps',
-            expected: 'componentWillReceiveProps'
+            expected: 'componentWillReceiveProps',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ShouldComponentUpdate',
-            expected: 'shouldComponentUpdate'
+            expected: 'shouldComponentUpdate',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentWillUpdate',
-            expected: 'componentWillUpdate'
+            expected: 'componentWillUpdate',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentDidUpdate',
-            expected: 'componentDidUpdate'
+            expected: 'componentDidUpdate',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentWillUnmount',
-            expected: 'componentWillUnmount'
+            expected: 'componentWillUnmount',
           },
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -2267,9 +2267,9 @@ ruleTester.run('no-typos', rule, {
         {
           messageId: 'staticLifecycleMethod',
           data: {method: 'getDerivedStateFromProps'},
-          type: 'MethodDefinition'
-        }
-      ]
+          type: 'MethodDefinition',
+        },
+      ],
     },
     {
       code: `
@@ -2283,17 +2283,17 @@ ruleTester.run('no-typos', rule, {
         {
           messageId: 'staticLifecycleMethod',
           data: {method: 'GetDerivedStateFromProps'},
-          type: 'MethodDefinition'
+          type: 'MethodDefinition',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'GetDerivedStateFromProps',
-            expected: 'getDerivedStateFromProps'
+            expected: 'getDerivedStateFromProps',
           },
-          type: 'MethodDefinition'
-        }
-      ]
+          type: 'MethodDefinition',
+        },
+      ],
     },
     {
       code: `
@@ -2322,97 +2322,97 @@ ruleTester.run('no-typos', rule, {
       errors: [
         {
           messageId: 'typoPropDeclaration',
-          type: 'Identifier'
+          type: 'Identifier',
         },
         {
           messageId: 'typoPropDeclaration',
-          type: 'Identifier'
+          type: 'Identifier',
         },
         {
           messageId: 'typoPropDeclaration',
-          type: 'Identifier'
+          type: 'Identifier',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'getdefaultProps',
-            expected: 'getDefaultProps'
+            expected: 'getDefaultProps',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'getinitialState',
-            expected: 'getInitialState'
+            expected: 'getInitialState',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'getChildcontext',
-            expected: 'getChildContext'
+            expected: 'getChildContext',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentWillMount',
-            expected: 'componentWillMount'
+            expected: 'componentWillMount',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentDidMount',
-            expected: 'componentDidMount'
+            expected: 'componentDidMount',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentWillReceiveProps',
-            expected: 'componentWillReceiveProps'
+            expected: 'componentWillReceiveProps',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ShouldComponentUpdate',
-            expected: 'shouldComponentUpdate'
+            expected: 'shouldComponentUpdate',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentWillUpdate',
-            expected: 'componentWillUpdate'
+            expected: 'componentWillUpdate',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentDidUpdate',
-            expected: 'componentDidUpdate'
+            expected: 'componentDidUpdate',
           },
-          type: 'Property'
+          type: 'Property',
         },
         {
           messageId: 'typoLifecycleMethod',
           data: {
             actual: 'ComponentWillUnmount',
-            expected: 'componentWillUnmount'
+            expected: 'componentWillUnmount',
           },
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
       /*
       // PropTypes declared on a component that is detected through JSDoc comments and is
       // declared AFTER the PropTypes assignment
@@ -2433,7 +2433,7 @@ ruleTester.run('no-typos', rule, {
         `,
         parser: parsers.TYPESCRIPT_ESLINT,
         parserOptions,
-        errors: [{messageId: 'noPropTypesBinding'}]
+        errors: [{messageId: 'noPropTypesBinding'}],
       },
       {
         code: `
@@ -2441,8 +2441,8 @@ ruleTester.run('no-typos', rule, {
         `,
         parser: parsers['@TYPESCRIPT_ESLINT'],
         parserOptions,
-        errors: [{messageId: 'noPropTypesBinding'}]
-      }
+        errors: [{messageId: 'noPropTypesBinding'}],
+      },
     ])
-  )
+  ),
 });

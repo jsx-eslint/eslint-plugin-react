@@ -19,21 +19,21 @@ module.exports = {
   eslintrc: {
     root: true,
     env: {
-      es6: true
+      es6: true,
     },
     parser: '@typescript-eslint/parser',
     parserOptions: {
       ecmaVersion: 2020,
       sourceType: 'module',
       ecmaFeatures: {
-        jsx: true
-      }
+        jsx: true,
+      },
     },
     settings: {
       react: {
-        version: '16.13.1'
-      }
+        version: '16.13.1',
+      },
     },
-    extends: ['plugin:react/all']
-  }
+    extends: ['plugin:react/all'],
+  },
 };

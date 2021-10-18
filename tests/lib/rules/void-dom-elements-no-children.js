@@ -18,8 +18,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // -----------------------------------------------------------------------------
@@ -30,52 +30,52 @@ const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('void-dom-elements-no-children', rule, {
   valid: [
     {
-      code: '<div>Foo</div>;'
+      code: '<div>Foo</div>;',
     },
     {
-      code: '<div children="Foo" />;'
+      code: '<div children="Foo" />;',
     },
     {
-      code: '<div dangerouslySetInnerHTML={{ __html: "Foo" }} />;'
+      code: '<div dangerouslySetInnerHTML={{ __html: "Foo" }} />;',
     },
     {
-      code: 'React.createElement("div", {}, "Foo");'
+      code: 'React.createElement("div", {}, "Foo");',
     },
     {
-      code: 'React.createElement("div", { children: "Foo" });'
+      code: 'React.createElement("div", { children: "Foo" });',
     },
     {
-      code: 'React.createElement("div", { dangerouslySetInnerHTML: { __html: "Foo" } });'
+      code: 'React.createElement("div", { dangerouslySetInnerHTML: { __html: "Foo" } });',
     },
     {
-      code: 'document.createElement("img");'
+      code: 'document.createElement("img");',
     },
     {
-      code: 'React.createElement("img");'
+      code: 'React.createElement("img");',
     },
     {
-      code: 'React.createElement();'
+      code: 'React.createElement();',
     },
     {
-      code: 'document.createElement();'
+      code: 'document.createElement();',
     },
     {
       code: `
         const props = {};
         React.createElement("img", props);
-      `
+      `,
     },
     {
       code: `
         import React, {createElement} from "react";
         createElement("div");
-      `
+      `,
     },
     {
       code: `
         import React, {createElement} from "react";
         createElement("img");
-      `
+      `,
     },
     {
       code: `
@@ -88,8 +88,8 @@ ruleTester.run('void-dom-elements-no-children', rule, {
             return <div onClick={this.handleClick}>Hello</div>;
           }
         }
-      `
-    }
+      `,
+    },
   ],
   invalid: [
     {
@@ -97,63 +97,63 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'br'}
-        }
-      ]
+          data: {element: 'br'},
+        },
+      ],
     },
     {
       code: '<br children="Foo" />;',
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'br'}
-        }
-      ]
+          data: {element: 'br'},
+        },
+      ],
     },
     {
       code: '<img {...props} children="Foo" />;',
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'img'}
-        }
-      ]
+          data: {element: 'img'},
+        },
+      ],
     },
     {
       code: '<br dangerouslySetInnerHTML={{ __html: "Foo" }} />;',
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'br'}
-        }
-      ]
+          data: {element: 'br'},
+        },
+      ],
     },
     {
       code: 'React.createElement("br", {}, "Foo");',
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'br'}
-        }
-      ]
+          data: {element: 'br'},
+        },
+      ],
     },
     {
       code: 'React.createElement("br", { children: "Foo" });',
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'br'}
-        }
-      ]
+          data: {element: 'br'},
+        },
+      ],
     },
     {
       code: 'React.createElement("br", { dangerouslySetInnerHTML: { __html: "Foo" } });',
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'br'}
-        }
-      ]
+          data: {element: 'br'},
+        },
+      ],
     },
     {
       code: `
@@ -163,10 +163,10 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'img'}
-        }
+          data: {element: 'img'},
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -176,10 +176,10 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'img'}
-        }
+          data: {element: 'img'},
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -189,10 +189,10 @@ ruleTester.run('void-dom-elements-no-children', rule, {
       errors: [
         {
           messageId: 'noChildrenInVoidEl',
-          data: {element: 'img'}
-        }
+          data: {element: 'img'},
+        },
       ],
-      parser: parsers.BABEL_ESLINT
-    }
-  ]
+      parser: parsers.BABEL_ESLINT,
+    },
+  ],
 });

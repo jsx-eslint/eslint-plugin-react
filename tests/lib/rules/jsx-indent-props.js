@@ -16,8 +16,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ ruleTester.run('jsx-indent-props', rule, {
       code: `
         <App foo
         />
-      `
+      `,
     },
     {
       code: `
@@ -39,7 +39,7 @@ ruleTester.run('jsx-indent-props', rule, {
           foo
         />
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -57,7 +57,7 @@ ruleTester.run('jsx-indent-props', rule, {
           />,
         ]);
       `,
-      options: [2]
+      options: [2],
     },
     {
       code: `
@@ -65,7 +65,7 @@ ruleTester.run('jsx-indent-props', rule, {
         foo
         />
       `,
-      options: [0]
+      options: [0],
     },
     {
       code: `
@@ -73,21 +73,21 @@ ruleTester.run('jsx-indent-props', rule, {
         foo
           />
       `,
-      options: [-2]
+      options: [-2],
     },
     {
       code: [
         '<App',
         '\tfoo',
-        '/>'
+        '/>',
       ].join('\n'),
-      options: ['tab']
+      options: ['tab'],
     },
     {
       code: `
         <App/>
       `,
-      options: ['first']
+      options: ['first'],
     },
     {
       code: `
@@ -96,7 +96,7 @@ ruleTester.run('jsx-indent-props', rule, {
              cc
         />
       `,
-      options: ['first']
+      options: ['first'],
     },
     {
       code: `
@@ -105,7 +105,7 @@ ruleTester.run('jsx-indent-props', rule, {
                cc
         />
       `,
-      options: ['first']
+      options: ['first'],
     },
     {
       code: `
@@ -114,7 +114,7 @@ ruleTester.run('jsx-indent-props', rule, {
                           cc
                      />
       `,
-      options: ['first']
+      options: ['first'],
     },
     {
       code: `
@@ -123,7 +123,7 @@ ruleTester.run('jsx-indent-props', rule, {
              cc
         />
       `,
-      options: ['first']
+      options: ['first'],
     },
     {
       code: `
@@ -132,7 +132,7 @@ ruleTester.run('jsx-indent-props', rule, {
                           cc
                      />
       `,
-      options: ['first']
+      options: ['first'],
     },
     {
       code: `
@@ -143,7 +143,7 @@ ruleTester.run('jsx-indent-props', rule, {
                    d/>
         </App>
       `,
-      options: ['first']
+      options: ['first'],
     },
     {
       code: `
@@ -158,7 +158,7 @@ ruleTester.run('jsx-indent-props', rule, {
           />
         </Fragment>
       `,
-      options: ['first']
+      options: ['first'],
     },
     {
       code: `
@@ -167,7 +167,7 @@ ruleTester.run('jsx-indent-props', rule, {
           b
         />
       `,
-      options: ['first']
+      options: ['first'],
     },
     {
       code: `
@@ -189,9 +189,9 @@ ruleTester.run('jsx-indent-props', rule, {
       options: [
         {
           indentMode: 2,
-          ignoreTernaryOperator: false
-        }
-      ]
+          ignoreTernaryOperator: false,
+        },
+      ],
     },
     {
       code: `
@@ -213,10 +213,10 @@ ruleTester.run('jsx-indent-props', rule, {
       options: [
         {
           indentMode: 2,
-          ignoreTernaryOperator: true
-        }
-      ]
-    }
+          ignoreTernaryOperator: true,
+        },
+      ],
+    },
   ],
 
   invalid: [
@@ -238,10 +238,10 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 12,
             type: 'space',
             characters: 'characters',
-            gotten: 10
-          }
-        }
-      ]
+            gotten: 10,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -262,10 +262,10 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 10,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -294,8 +294,8 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 14,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
+            gotten: 12,
+          },
         },
         {
           messageId: 'wrongIndent',
@@ -303,10 +303,10 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 14,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -335,10 +335,10 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 14,
             type: 'space',
             characters: 'characters',
-            gotten: 16
-          }
-        }
-      ]
+            gotten: 16,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -363,10 +363,10 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 14,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -393,8 +393,8 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 14,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
+            gotten: 12,
+          },
         },
         {
           messageId: 'wrongIndent',
@@ -402,10 +402,10 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 14,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -432,8 +432,8 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 14,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
+            gotten: 12,
+          },
         },
         {
           messageId: 'wrongIndent',
@@ -441,21 +441,21 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 14,
             type: 'space',
             characters: 'characters',
-            gotten: 12
-          }
-        }
-      ]
+            gotten: 12,
+          },
+        },
+      ],
     },
     {
       code: [
         '<App',
         '    foo',
-        '/>'
+        '/>',
       ].join('\n'),
       output: [
         '<App',
         '\tfoo',
-        '/>'
+        '/>',
       ].join('\n'),
       options: ['tab'],
       errors: [
@@ -465,21 +465,21 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 1,
             type: 'tab',
             characters: 'character',
-            gotten: 0
-          }
-        }
-      ]
+            gotten: 0,
+          },
+        },
+      ],
     },
     {
       code: [
         '<App',
         '\t\t\tfoo',
-        '/>'
+        '/>',
       ].join('\n'),
       output: [
         '<App',
         '\tfoo',
-        '/>'
+        '/>',
       ].join('\n'),
       options: ['tab'],
       errors: [
@@ -489,10 +489,10 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 1,
             type: 'tab',
             characters: 'character',
-            gotten: 3
-          }
-        }
-      ]
+            gotten: 3,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -513,10 +513,10 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 13,
             type: 'space',
             characters: 'characters',
-            gotten: 10
-          }
-        }
-      ]
+            gotten: 10,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -537,10 +537,10 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 14,
             type: 'space',
             characters: 'characters',
-            gotten: 11
-          }
-        }
-      ]
+            gotten: 11,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -563,10 +563,10 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 14,
             type: 'space',
             characters: 'characters',
-            gotten: 11
-          }
-        }
-      ]
+            gotten: 11,
+          },
+        },
+      ],
     },
     {
       code: `
@@ -591,8 +591,8 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 10,
             type: 'space',
             characters: 'characters',
-            gotten: 9
-          }
+            gotten: 9,
+          },
         },
         {
           messageId: 'wrongIndent',
@@ -600,10 +600,10 @@ ruleTester.run('jsx-indent-props', rule, {
             needed: 10,
             type: 'space',
             characters: 'characters',
-            gotten: 11
-          }
-        }
-      ]
-    }
-  ]
+            gotten: 11,
+          },
+        },
+      ],
+    },
+  ],
 });

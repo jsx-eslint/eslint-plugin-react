@@ -16,8 +16,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // -----------------------------------------------------------------------------
@@ -28,11 +28,11 @@ const ruleTester = new RuleTester({parserOptions});
 
 const expectedError = {
   messageId: 'noDuplicateProps',
-  type: 'JSXAttribute'
+  type: 'JSXAttribute',
 };
 
 const ignoreCaseArgs = [{
-  ignoreCase: true
+  ignoreCase: true,
 }];
 
 ruleTester.run('jsx-no-duplicate-props', rule, {
@@ -49,7 +49,7 @@ ruleTester.run('jsx-no-duplicate-props', rule, {
     {code: '<App A a />;'},
     {code: '<App A b a />;'},
     {code: '<App A="a" b="b" B="B" />;'},
-    {code: '<App a:b="c" />;', options: ignoreCaseArgs}
+    {code: '<App a:b="c" />;', options: ignoreCaseArgs},
   ],
   invalid: [
     {code: '<App a a />;', errors: [expectedError]},
@@ -57,6 +57,6 @@ ruleTester.run('jsx-no-duplicate-props', rule, {
     {code: '<App a="a" b="b" a="a" />;', errors: [expectedError]},
     {code: '<App A a />;', options: ignoreCaseArgs, errors: [expectedError]},
     {code: '<App a b c A />;', options: ignoreCaseArgs, errors: [expectedError]},
-    {code: '<App A="a" b="b" B="B" />;', options: ignoreCaseArgs, errors: [expectedError]}
-  ]
+    {code: '<App A="a" b="b" B="B" />;', options: ignoreCaseArgs, errors: [expectedError]},
+  ],
 });

@@ -19,8 +19,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // -----------------------------------------------------------------------------
@@ -33,68 +33,68 @@ ruleTester.run('jsx-no-bind', rule, {
   valid: [
     // Not covered by the rule
     {
-      code: '<div onClick={this._handleClick}></div>'
+      code: '<div onClick={this._handleClick}></div>',
     },
     {
       code: '<div onClick={this._handleClick}></div>',
-      options: [{}]
-    },
-    {
-      code: '<Foo onClick={this._handleClick} />'
+      options: [{}],
     },
     {
       code: '<Foo onClick={this._handleClick} />',
-      options: [{}]
     },
     {
-      code: '<div meaningOfLife={42}></div>'
+      code: '<Foo onClick={this._handleClick} />',
+      options: [{}],
     },
     {
-      code: '<div onClick={getHandler()}></div>'
+      code: '<div meaningOfLife={42}></div>',
+    },
+    {
+      code: '<div onClick={getHandler()}></div>',
     },
 
     // bind() and arrow functions in refs explicitly ignored
     {
       code: '<div ref={c => this._input = c}></div>',
-      options: [{ignoreRefs: true}]
+      options: [{ignoreRefs: true}],
     },
     {
       code: '<div ref={this._refCallback.bind(this)}></div>',
-      options: [{ignoreRefs: true}]
+      options: [{ignoreRefs: true}],
     },
     {
       code: '<div ref={function (c) {this._input = c}}></div>',
-      options: [{ignoreRefs: true}]
+      options: [{ignoreRefs: true}],
     },
 
     // bind() explicitly allowed
     {
       code: '<div onClick={this._handleClick.bind(this)}></div>',
-      options: [{allowBind: true}]
+      options: [{allowBind: true}],
     },
 
     // Arrow functions explicitly allowed
     {
       code: '<div onClick={() => alert("1337")}></div>',
-      options: [{allowArrowFunctions: true}]
+      options: [{allowArrowFunctions: true}],
     },
     {
       code: '<div onClick={async () => alert("1337")}></div>',
-      options: [{allowArrowFunctions: true}]
+      options: [{allowArrowFunctions: true}],
     },
 
     // Functions explicitly allowed
     {
       code: '<div onClick={function () { alert("1337") }}></div>',
-      options: [{allowFunctions: true}]
+      options: [{allowFunctions: true}],
     },
     {
       code: '<div onClick={function * () { alert("1337") }}></div>',
-      options: [{allowFunctions: true}]
+      options: [{allowFunctions: true}],
     },
     {
       code: '<div onClick={async function () { alert("1337") }}></div>',
-      options: [{allowFunctions: true}]
+      options: [{allowFunctions: true}],
     },
 
     // Redux connect
@@ -107,7 +107,7 @@ ruleTester.run('jsx-no-bind', rule, {
         }
         export default connect()(Hello);
       `,
-      options: [{allowBind: true}]
+      options: [{allowBind: true}],
     },
 
     // Backbone view with a bind
@@ -119,7 +119,7 @@ ruleTester.run('jsx-no-bind', rule, {
             this.onTap.bind(this);
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -129,7 +129,7 @@ ruleTester.run('jsx-no-bind', rule, {
             return true;
           }
         };
-      `
+      `,
     },
     {
       code: `
@@ -139,7 +139,7 @@ ruleTester.run('jsx-no-bind', rule, {
             return true;
           }
         };
-      `
+      `,
     },
 
     {
@@ -149,8 +149,8 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = this.onTap.bind(this);',
         '    return <div onClick={onClick}>Hello</div>;',
         '  }',
-        '};'
-      ].join('\n')
+        '};',
+      ].join('\n'),
     },
     {
       code: [
@@ -159,8 +159,8 @@ ruleTester.run('jsx-no-bind', rule, {
         '    foo.onClick = this.onTap.bind(this);',
         '    return <div onClick={onClick}>Hello</div>;',
         '  }',
-        '};'
-      ].join('\n')
+        '};',
+      ].join('\n'),
     },
     {
       code: [
@@ -170,8 +170,8 @@ ruleTester.run('jsx-no-bind', rule, {
         '      this.props.list.map(this.wrap.bind(this, "span"))',
         '    }</div>);',
         '  }',
-        '};'
-      ].join('\n')
+        '};',
+      ].join('\n'),
     },
     {
       code: [
@@ -180,8 +180,8 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = () => true;',
         '    return <div onClick={onClick}>Hello</div>;',
         '  }',
-        '};'
-      ].join('\n')
+        '};',
+      ].join('\n'),
     },
     {
       code: [
@@ -191,8 +191,8 @@ ruleTester.run('jsx-no-bind', rule, {
         '      this.props.list.map(item => <item hello="true"/>)',
         '    }</div>);',
         '  }',
-        '};'
-      ].join('\n')
+        '};',
+      ].join('\n'),
     },
     {
       code: [
@@ -201,9 +201,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = this.bar::baz',
         '    return <div onClick={onClick}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -213,9 +213,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '      this.props.list.map(this.bar::baz)',
         '    }</div>);',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -225,8 +225,8 @@ ruleTester.run('jsx-no-bind', rule, {
         '      this.props.list.map(this.wrap.bind(this, "span"))',
         '    }</div>);',
         '  }',
-        '});'
-      ].join('\n')
+        '});',
+      ].join('\n'),
     },
     {
       code: [
@@ -235,9 +235,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = this.bar::baz',
         '    return <div onClick={onClick}>Hello</div>;',
         '  }',
-        '});'
+        '});',
       ].join('\n'),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -246,8 +246,8 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = () => true',
         '    return <div onClick={onClick}>Hello</div>;',
         '  }',
-        '});'
-      ].join('\n')
+        '});',
+      ].join('\n'),
     },
     {
       code: [
@@ -256,9 +256,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const onClick = this.doSomething.bind(this, "no")',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -268,9 +268,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '      this.props.list.map(this.wrap.bind(this, "span"))',
         '    }</div>);',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // issue #1543: don't crash on uninitialized variables
@@ -280,27 +280,27 @@ ruleTester.run('jsx-no-bind', rule, {
         '    let click;',
         '    return <div onClick={onClick}>Hello</div>;',
         '  }',
-        '}'
-      ].join('\n')
+        '}',
+      ].join('\n'),
     },
 
     // ignore DOM components
     {
       code: '<div onClick={this._handleClick.bind(this)}></div>',
-      options: [{ignoreDOMComponents: true}]
+      options: [{ignoreDOMComponents: true}],
     },
     {
       code: '<div onClick={() => alert("1337")}></div>',
-      options: [{ignoreDOMComponents: true}]
+      options: [{ignoreDOMComponents: true}],
     },
     {
       code: '<div onClick={function () { alert("1337") }}></div>',
-      options: [{ignoreDOMComponents: true}]
+      options: [{ignoreDOMComponents: true}],
     },
     {
       code: '<div foo={::this.onChange} />',
       options: [{ignoreDOMComponents: true}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
 
     // Local function declaration
@@ -311,29 +311,29 @@ ruleTester.run('jsx-no-bind', rule, {
         '  renderDiv() {',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
-      errors: []
-    }
+      errors: [],
+    },
   ],
 
   invalid: [
     // .bind()
     {
       code: '<div onClick={this._handleClick.bind(this)}></div>',
-      errors: [{messageId: 'bindCall'}]
+      errors: [{messageId: 'bindCall'}],
     },
     {
       code: '<div onClick={someGlobalFunction.bind(this)}></div>',
-      errors: [{messageId: 'bindCall'}]
+      errors: [{messageId: 'bindCall'}],
     },
     {
       code: '<div onClick={window.lol.bind(this)}></div>',
-      errors: [{messageId: 'bindCall'}]
+      errors: [{messageId: 'bindCall'}],
     },
     {
       code: '<div ref={this._refCallback.bind(this)}></div>',
-      errors: [{messageId: 'bindCall'}]
+      errors: [{messageId: 'bindCall'}],
     },
     {
       code: `
@@ -344,7 +344,7 @@ ruleTester.run('jsx-no-bind', rule, {
           }
         });
       `,
-      errors: [{messageId: 'bindCall'}]
+      errors: [{messageId: 'bindCall'}],
     },
     {
       code: `
@@ -355,7 +355,7 @@ ruleTester.run('jsx-no-bind', rule, {
           }
         };
       `,
-      errors: [{messageId: 'bindCall'}]
+      errors: [{messageId: 'bindCall'}],
     },
     {
       code: [
@@ -364,9 +364,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = this.doSomething.bind(this, "no")',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
-      errors: [{messageId: 'bindCall'}]
+      errors: [{messageId: 'bindCall'}],
     },
     {
       code: [
@@ -375,10 +375,10 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = this.doSomething.bind(this, "no")',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [{messageId: 'bindCall'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -387,10 +387,10 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = this.doSomething.bind(this, "no")',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [{messageId: 'bindCall'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -400,7 +400,7 @@ ruleTester.run('jsx-no-bind', rule, {
           )
         };
       `,
-      errors: [{messageId: 'bindCall'}]
+      errors: [{messageId: 'bindCall'}],
     },
     {
       code: [
@@ -408,9 +408,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '  render: function() { ',
         '   return <div onClick={this.doSomething.bind(this, "hey")} />',
         '  }',
-        '});'
+        '});',
       ].join('\n'),
-      errors: [{messageId: 'bindCall'}]
+      errors: [{messageId: 'bindCall'}],
     },
     {
       code: [
@@ -419,9 +419,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const doThing = this.doSomething.bind(this, "hey")',
         '    return <div onClick={doThing} />',
         '  }',
-        '});'
+        '});',
       ].join('\n'),
-      errors: [{messageId: 'bindCall'}]
+      errors: [{messageId: 'bindCall'}],
     },
     {
       code: [
@@ -434,13 +434,13 @@ ruleTester.run('jsx-no-bind', rule, {
         '    }',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [
         {messageId: 'bindCall'},
-        {messageId: 'arrowFunc'}
+        {messageId: 'arrowFunc'},
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -450,7 +450,7 @@ ruleTester.run('jsx-no-bind', rule, {
           )
         };
       `,
-      errors: [{messageId: 'bindCall'}]
+      errors: [{messageId: 'bindCall'}],
     },
     {
       code: `
@@ -460,7 +460,7 @@ ruleTester.run('jsx-no-bind', rule, {
           )
         };
       `,
-      errors: [{messageId: 'bindCall'}]
+      errors: [{messageId: 'bindCall'}],
     },
     {
       code: `
@@ -470,7 +470,7 @@ ruleTester.run('jsx-no-bind', rule, {
           )
         };
       `,
-      errors: [{messageId: 'bindCall'}]
+      errors: [{messageId: 'bindCall'}],
     },
     {
       code: `
@@ -480,29 +480,29 @@ ruleTester.run('jsx-no-bind', rule, {
           )
         };
       `,
-      errors: [{messageId: 'bindCall'}]
+      errors: [{messageId: 'bindCall'}],
     },
 
     // Arrow functions
     {
       code: '<div onClick={() => alert("1337")}></div>',
-      errors: [{messageId: 'arrowFunc'}]
+      errors: [{messageId: 'arrowFunc'}],
     },
     {
       code: '<div onClick={async () => alert("1337")}></div>',
-      errors: [{messageId: 'arrowFunc'}]
+      errors: [{messageId: 'arrowFunc'}],
     },
     {
       code: '<div onClick={() => 42}></div>',
-      errors: [{messageId: 'arrowFunc'}]
+      errors: [{messageId: 'arrowFunc'}],
     },
     {
       code: '<div onClick={param => { first(); second(); }}></div>',
-      errors: [{messageId: 'arrowFunc'}]
+      errors: [{messageId: 'arrowFunc'}],
     },
     {
       code: '<div ref={c => this._input = c}></div>',
-      errors: [{messageId: 'arrowFunc'}]
+      errors: [{messageId: 'arrowFunc'}],
     },
     {
       code: [
@@ -511,10 +511,10 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = () => true',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [{messageId: 'arrowFunc'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -523,10 +523,10 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = () => true',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [{messageId: 'arrowFunc'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -535,10 +535,10 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = async () => true',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [{messageId: 'arrowFunc'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -546,9 +546,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '  render: function() { ',
         '   return <div onClick={() => true} />',
         '  }',
-        '});'
+        '});',
       ].join('\n'),
-      errors: [{messageId: 'arrowFunc'}]
+      errors: [{messageId: 'arrowFunc'}],
     },
     {
       code: [
@@ -556,9 +556,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '  render: function() { ',
         '   return <div onClick={async () => true} />',
         '  }',
-        '});'
+        '});',
       ].join('\n'),
-      errors: [{messageId: 'arrowFunc'}]
+      errors: [{messageId: 'arrowFunc'}],
     },
     {
       code: [
@@ -567,9 +567,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const doThing = () => true',
         '    return <div onClick={doThing} />',
         '  }',
-        '});'
+        '});',
       ].join('\n'),
-      errors: [{messageId: 'arrowFunc'}]
+      errors: [{messageId: 'arrowFunc'}],
     },
     {
       code: [
@@ -578,9 +578,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const doThing = async () => true',
         '    return <div onClick={doThing} />',
         '  }',
-        '});'
+        '});',
       ].join('\n'),
-      errors: [{messageId: 'arrowFunc'}]
+      errors: [{messageId: 'arrowFunc'}],
     },
     {
       code: [
@@ -593,31 +593,31 @@ ruleTester.run('jsx-no-bind', rule, {
         '    }',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [
         {messageId: 'arrowFunc'},
-        {messageId: 'bindExpression'}
+        {messageId: 'bindExpression'},
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
 
     // Functions
     {
       code: '<div onClick={function () { alert("1337") }}></div>',
-      errors: [{messageId: 'func'}]
+      errors: [{messageId: 'func'}],
     },
     {
       code: '<div onClick={function * () { alert("1337") }}></div>',
-      errors: [{messageId: 'func'}]
+      errors: [{messageId: 'func'}],
     },
     {
       code: '<div onClick={async function () { alert("1337") }}></div>',
-      errors: [{messageId: 'func'}]
+      errors: [{messageId: 'func'}],
     },
     {
       code: '<div ref={function (c) { this._input = c }}></div>',
-      errors: [{messageId: 'func'}]
+      errors: [{messageId: 'func'}],
     },
     {
       code: [
@@ -626,10 +626,10 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = function () { return true }',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [{messageId: 'func'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -638,10 +638,10 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = function * () { return true }',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [{messageId: 'func'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -650,10 +650,10 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = function () { return true }',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [{messageId: 'func'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -662,10 +662,10 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = async function () { return true }',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [{messageId: 'func'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -673,9 +673,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '  render: function() { ',
         '   return <div onClick={function () { return true }} />',
         '  }',
-        '});'
+        '});',
       ].join('\n'),
-      errors: [{messageId: 'func'}]
+      errors: [{messageId: 'func'}],
     },
     {
       code: [
@@ -683,9 +683,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '  render: function() { ',
         '   return <div onClick={function * () { return true }} />',
         '  }',
-        '});'
+        '});',
       ].join('\n'),
-      errors: [{messageId: 'func'}]
+      errors: [{messageId: 'func'}],
     },
     {
       code: [
@@ -693,9 +693,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '  render: function() { ',
         '   return <div onClick={async function () { return true }} />',
         '  }',
-        '});'
+        '});',
       ].join('\n'),
-      errors: [{messageId: 'func'}]
+      errors: [{messageId: 'func'}],
     },
     {
       code: [
@@ -704,9 +704,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const doThing = function () { return true }',
         '    return <div onClick={doThing} />',
         '  }',
-        '});'
+        '});',
       ].join('\n'),
-      errors: [{messageId: 'func'}]
+      errors: [{messageId: 'func'}],
     },
     {
       code: [
@@ -715,9 +715,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const doThing = async function () { return true }',
         '    return <div onClick={doThing} />',
         '  }',
-        '});'
+        '});',
       ].join('\n'),
-      errors: [{messageId: 'func'}]
+      errors: [{messageId: 'func'}],
     },
     {
       code: [
@@ -726,9 +726,9 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const doThing = function * () { return true }',
         '    return <div onClick={doThing} />',
         '  }',
-        '});'
+        '});',
       ].join('\n'),
-      errors: [{messageId: 'func'}]
+      errors: [{messageId: 'func'}],
     },
     {
       code: [
@@ -741,30 +741,30 @@ ruleTester.run('jsx-no-bind', rule, {
         '    }',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [
         {messageId: 'func'},
-        {messageId: 'bindExpression'}
+        {messageId: 'bindExpression'},
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
 
     // Bind expression
     {
       code: '<div foo={::this.onChange} />',
       errors: [{messageId: 'bindExpression'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: '<div foo={foo.bar::baz} />',
       errors: [{messageId: 'bindExpression'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: '<div foo={foo::bar} />',
       errors: [{messageId: 'bindExpression'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -773,10 +773,10 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = ::this.onChange',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [{messageId: 'bindExpression'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -785,10 +785,10 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = this.bar::baz',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [{messageId: 'bindExpression'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -797,10 +797,10 @@ ruleTester.run('jsx-no-bind', rule, {
         '    const click = this.bar::baz',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [{messageId: 'bindExpression'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
@@ -813,10 +813,10 @@ ruleTester.run('jsx-no-bind', rule, {
         '    }',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [{messageId: 'bindExpression'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
 
     // Local function declaration
@@ -827,18 +827,18 @@ ruleTester.run('jsx-no-bind', rule, {
         '    function click() { return true; }',
         '    return <div onClick={click}>Hello</div>;',
         '  }',
-        '};'
+        '};',
       ].join('\n'),
       errors: [
-        {messageId: 'func'}
-      ]
+        {messageId: 'func'},
+      ],
     },
 
     // ignore DOM components
     {
       code: '<Foo onClick={this._handleClick.bind(this)} />',
       options: [{ignoreDOMComponents: true}],
-      errors: [{messageId: 'bindCall'}]
-    }
-  ]
+      errors: [{messageId: 'bindCall'}],
+    },
+  ],
 });

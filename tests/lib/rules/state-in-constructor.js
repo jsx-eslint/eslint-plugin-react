@@ -20,9 +20,9 @@ const ruleTesterConfig = {
     ecmaVersion: 2018,
     sourceType: 'module',
     ecmaFeatures: {
-      jsx: true
-    }
-  }
+      jsx: true,
+    },
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ ruleTester.run('state-in-constructor', rule, {
             return <div>Foo</div>
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -49,20 +49,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      options: ['never']
-    },
-    {
-      code: `
-        class Foo extends React.Component {
-          constructor(props) {
-            super(props)
-            this.state = { bar: 0 }
-          }
-          render() {
-            return <div>Foo</div>
-          }
-        }
-      `
+      options: ['never'],
     },
     {
       code: `
@@ -76,7 +63,20 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      options: ['always']
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          constructor(props) {
+            super(props)
+            this.state = { bar: 0 }
+          }
+          render() {
+            return <div>Foo</div>
+          }
+        }
+      `,
+      options: ['always'],
     },
     {
       code: `
@@ -90,20 +90,7 @@ ruleTester.run('state-in-constructor', rule, {
             return <div>Foo</div>
           }
         }
-      `
-    },
-    {
-      code: `
-        class Foo extends React.Component {
-          constructor(props) {
-            super(props)
-            this.baz = { bar: 0 }
-          }
-          render() {
-            return <div>Foo</div>
-          }
-        }
-      `
+      `,
     },
     {
       code: `
@@ -117,7 +104,20 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      options: ['never']
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          constructor(props) {
+            super(props)
+            this.baz = { bar: 0 }
+          }
+          render() {
+            return <div>Foo</div>
+          }
+        }
+      `,
+      options: ['never'],
     },
     {
       code: `
@@ -127,7 +127,7 @@ ruleTester.run('state-in-constructor', rule, {
             return <div>Foo</div>
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -138,25 +138,18 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      options: ['never']
-    },
-    {
-      code: `
-        const Foo = () => <div>Foo</div>
-      `
+      options: ['never'],
     },
     {
       code: `
         const Foo = () => <div>Foo</div>
       `,
-      options: ['never']
     },
     {
       code: `
-        function Foo () {
-          return <div>Foo</div>
-        }
-      `
+        const Foo = () => <div>Foo</div>
+      `,
+      options: ['never'],
     },
     {
       code: `
@@ -164,7 +157,14 @@ ruleTester.run('state-in-constructor', rule, {
           return <div>Foo</div>
         }
       `,
-      options: ['never']
+    },
+    {
+      code: `
+        function Foo () {
+          return <div>Foo</div>
+        }
+      `,
+      options: ['never'],
     },
     {
       code: `
@@ -175,7 +175,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      options: ['never']
+      options: ['never'],
     },
     {
       code: `
@@ -187,7 +187,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      options: ['never']
+      options: ['never'],
     },
     {
       code: `
@@ -202,7 +202,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      options: ['never']
+      options: ['never'],
     },
     {
       code: `
@@ -217,20 +217,7 @@ ruleTester.run('state-in-constructor', rule, {
             return <div>Foo</div>
           }
         }
-      `
-    },
-    {
-      code: `
-        class Foo extends React.Component {
-          constructor(props) {
-            super(props)
-            foobar = { bar: 0 }
-          }
-          render() {
-            return <div>Foo</div>
-          }
-        }
-      `
+      `,
     },
     {
       code: `
@@ -244,8 +231,21 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      options: ['never']
-    }
+    },
+    {
+      code: `
+        class Foo extends React.Component {
+          constructor(props) {
+            super(props)
+            foobar = { bar: 0 }
+          }
+          render() {
+            return <div>Foo</div>
+          }
+        }
+      `,
+      options: ['never'],
+    },
   ],
 
   invalid: [
@@ -262,7 +262,7 @@ ruleTester.run('state-in-constructor', rule, {
         }
       `,
       options: ['never'],
-      errors: [{messageId: 'stateInitClassProp'}]
+      errors: [{messageId: 'stateInitClassProp'}],
     },
     {
       code: `
@@ -278,7 +278,7 @@ ruleTester.run('state-in-constructor', rule, {
         }
       `,
       options: ['never'],
-      errors: [{messageId: 'stateInitClassProp'}]
+      errors: [{messageId: 'stateInitClassProp'}],
     },
     {
       code: `
@@ -289,7 +289,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      errors: [{messageId: 'stateInitConstructor'}]
+      errors: [{messageId: 'stateInitConstructor'}],
     },
     {
       code: `
@@ -301,7 +301,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      errors: [{messageId: 'stateInitConstructor'}]
+      errors: [{messageId: 'stateInitConstructor'}],
     },
     {
       code: `
@@ -316,7 +316,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      errors: [{messageId: 'stateInitConstructor'}]
+      errors: [{messageId: 'stateInitConstructor'}],
     },
     {
       code: `
@@ -331,7 +331,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
-      errors: [{messageId: 'stateInitConstructor'}]
+      errors: [{messageId: 'stateInitConstructor'}],
     },
     {
       code: `
@@ -347,7 +347,7 @@ ruleTester.run('state-in-constructor', rule, {
         }
       `,
       options: ['never'],
-      errors: [{messageId: 'stateInitClassProp'}]
+      errors: [{messageId: 'stateInitClassProp'}],
     },
     {
       code: `
@@ -364,7 +364,7 @@ ruleTester.run('state-in-constructor', rule, {
         }
       `,
       options: ['never'],
-      errors: [{messageId: 'stateInitClassProp'}]
-    }
-  ]
+      errors: [{messageId: 'stateInitClassProp'}],
+    },
+  ],
 });

@@ -16,8 +16,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // -----------------------------------------------------------------------------
@@ -43,11 +43,11 @@ ruleTester.run('no-unknown-property', rule, {
     {code: '<div {...this.props} class="foo" is="my-elem"></div>;'},
     {code: '<atom-panel class="foo"></atom-panel>;'}, {
       code: '<div class="bar"></div>;',
-      options: [{ignore: ['class']}]
+      options: [{ignore: ['class']}],
     },
     {code: '<script crossOrigin />'},
     {code: '<audio crossOrigin />'},
-    {code: '<div hasOwnProperty="should not be allowed tag" />'}
+    {code: '<div hasOwnProperty="should not be allowed tag" />'},
   ],
   invalid: [
     {
@@ -58,10 +58,10 @@ ruleTester.run('no-unknown-property', rule, {
           messageId: 'unknownProp',
           data: {
             name: 'class',
-            standardName: 'className'
-          }
-        }
-      ]
+            standardName: 'className',
+          },
+        },
+      ],
     },
     {
       code: '<div for="bar"></div>;',
@@ -71,10 +71,10 @@ ruleTester.run('no-unknown-property', rule, {
           messageId: 'unknownProp',
           data: {
             name: 'for',
-            standardName: 'htmlFor'
-          }
-        }
-      ]
+            standardName: 'htmlFor',
+          },
+        },
+      ],
     },
     {
       code: '<div accept-charset="bar"></div>;',
@@ -84,10 +84,10 @@ ruleTester.run('no-unknown-property', rule, {
           messageId: 'unknownProp',
           data: {
             name: 'accept-charset',
-            standardName: 'acceptCharset'
-          }
-        }
-      ]
+            standardName: 'acceptCharset',
+          },
+        },
+      ],
     },
     {
       code: '<div http-equiv="bar"></div>;',
@@ -97,9 +97,9 @@ ruleTester.run('no-unknown-property', rule, {
           messageId: 'unknownProp',
           data: {
             name: 'http-equiv',
-            standardName: 'httpEquiv'
-          }
-        }]
+            standardName: 'httpEquiv',
+          },
+        }],
     },
     {
       code: '<div accesskey="bar"></div>;',
@@ -109,10 +109,10 @@ ruleTester.run('no-unknown-property', rule, {
           messageId: 'unknownProp',
           data: {
             name: 'accesskey',
-            standardName: 'accessKey'
-          }
-        }
-      ]
+            standardName: 'accessKey',
+          },
+        },
+      ],
     },
     {
       code: '<div onclick="bar"></div>;',
@@ -122,10 +122,10 @@ ruleTester.run('no-unknown-property', rule, {
           messageId: 'unknownProp',
           data: {
             name: 'onclick',
-            standardName: 'onClick'
-          }
-        }
-      ]
+            standardName: 'onClick',
+          },
+        },
+      ],
     },
     {
       code: '<div onmousedown="bar"></div>;',
@@ -135,10 +135,10 @@ ruleTester.run('no-unknown-property', rule, {
           messageId: 'unknownProp',
           data: {
             name: 'onmousedown',
-            standardName: 'onMouseDown'
-          }
-        }
-      ]
+            standardName: 'onMouseDown',
+          },
+        },
+      ],
     },
     {
       code: '<div onMousedown="bar"></div>;',
@@ -148,10 +148,10 @@ ruleTester.run('no-unknown-property', rule, {
           messageId: 'unknownProp',
           data: {
             name: 'onMousedown',
-            standardName: 'onMouseDown'
-          }
-        }
-      ]
+            standardName: 'onMouseDown',
+          },
+        },
+      ],
     },
     {
       code: '<use xlink:href="bar" />;',
@@ -161,10 +161,10 @@ ruleTester.run('no-unknown-property', rule, {
           messageId: 'unknownProp',
           data: {
             name: 'xlink:href',
-            standardName: 'xlinkHref'
-          }
-        }
-      ]
+            standardName: 'xlinkHref',
+          },
+        },
+      ],
     },
     {
       code: '<rect clip-path="bar" />;',
@@ -174,10 +174,10 @@ ruleTester.run('no-unknown-property', rule, {
           messageId: 'unknownProp',
           data: {
             name: 'clip-path',
-            standardName: 'clipPath'
-          }
-        }
-      ]
+            standardName: 'clipPath',
+          },
+        },
+      ],
     },
     {
       code: '<script crossorigin />',
@@ -186,11 +186,11 @@ ruleTester.run('no-unknown-property', rule, {
           messageId: 'unknownProp',
           data: {
             name: 'crossorigin',
-            standardName: 'crossOrigin'
-          }
-        }
+            standardName: 'crossOrigin',
+          },
+        },
       ],
-      output: '<script crossOrigin />'
+      output: '<script crossOrigin />',
     },
     {
       code: '<div crossorigin />',
@@ -199,11 +199,11 @@ ruleTester.run('no-unknown-property', rule, {
           messageId: 'unknownProp',
           data: {
             name: 'crossorigin',
-            standardName: 'crossOrigin'
-          }
-        }
+            standardName: 'crossOrigin',
+          },
+        },
       ],
-      output: '<div crossOrigin />'
+      output: '<div crossOrigin />',
     },
     {
       code: '<div crossOrigin />',
@@ -213,10 +213,10 @@ ruleTester.run('no-unknown-property', rule, {
           data: {
             name: 'crossOrigin',
             tagName: 'div',
-            allowedTags: 'script, img, video, audio, link'
-          }
-        }
-      ]
-    }
-  ]
+            allowedTags: 'script, img, video, audio, link',
+          },
+        },
+      ],
+    },
+  ],
 });

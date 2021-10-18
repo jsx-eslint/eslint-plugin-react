@@ -18,8 +18,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -34,7 +34,7 @@ ruleTester.run('no-set-state', rule, {
         var Hello = function() {
           this.setState({})
         };
-      `
+      `,
     },
     {
       code: `
@@ -43,7 +43,7 @@ ruleTester.run('no-set-state', rule, {
             return <div>Hello {this.props.name}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -56,8 +56,8 @@ ruleTester.run('no-set-state', rule, {
             return <div>Hello {this.props.name}</div>;
           }
         });
-      `
-    }
+      `,
+    },
   ],
 
   invalid: [
@@ -74,7 +74,7 @@ ruleTester.run('no-set-state', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noSetState'}]
+      errors: [{messageId: 'noSetState'}],
     },
     {
       code: `
@@ -89,7 +89,7 @@ ruleTester.run('no-set-state', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noSetState'}]
+      errors: [{messageId: 'noSetState'}],
     },
     {
       code: `
@@ -104,7 +104,7 @@ ruleTester.run('no-set-state', rule, {
           }
         };
       `,
-      errors: [{messageId: 'noSetState'}]
+      errors: [{messageId: 'noSetState'}],
     },
     {
       code: `
@@ -120,7 +120,7 @@ ruleTester.run('no-set-state', rule, {
         };
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'noSetState'}]
+      errors: [{messageId: 'noSetState'}],
     },
     {
       code: `
@@ -131,7 +131,7 @@ ruleTester.run('no-set-state', rule, {
         };
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'noSetState'}]
-    }
-  ]
+      errors: [{messageId: 'noSetState'}],
+    },
+  ],
 });

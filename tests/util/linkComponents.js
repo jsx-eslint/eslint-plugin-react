@@ -8,7 +8,7 @@ describe('linkComponentsFunctions', () => {
     it('returns a default map of components', () => {
       const context = {};
       assert.deepStrictEqual(linkComponentsUtil.getLinkComponents(context), new Map([
-        ['a', 'href']
+        ['a', 'href'],
       ]));
     });
 
@@ -17,18 +17,18 @@ describe('linkComponentsFunctions', () => {
         'Hyperlink',
         {
           name: 'Link',
-          linkAttribute: 'to'
-        }
+          linkAttribute: 'to',
+        },
       ];
       const context = {
         settings: {
-          linkComponents
-        }
+          linkComponents,
+        },
       };
       assert.deepStrictEqual(linkComponentsUtil.getLinkComponents(context), new Map([
         ['a', 'href'],
         ['Hyperlink', 'href'],
-        ['Link', 'to']
+        ['Link', 'to'],
       ]));
     });
   });

@@ -22,14 +22,14 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 const settings = {
   react: {
-    pragma: 'Foo'
-  }
+    pragma: 'Foo',
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -49,7 +49,7 @@ ruleTester.run('prop-types', rule, {
             return <div>Hello {this.props.name}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -61,7 +61,7 @@ ruleTester.run('prop-types', rule, {
             return <div>Hello {this.props.name.firstname}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -70,7 +70,7 @@ ruleTester.run('prop-types', rule, {
             return <div>Hello World</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -80,7 +80,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{ignore: ['children']}]
+      options: [{ignore: ['children']}],
     },
     {
       code: `
@@ -90,7 +90,7 @@ ruleTester.run('prop-types', rule, {
             return <div>Hello World</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -100,7 +100,7 @@ ruleTester.run('prop-types', rule, {
             return <div>Hello World {this.props[propName]}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -110,7 +110,7 @@ ruleTester.run('prop-types', rule, {
             return <div>Hello {this.props.name}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -120,7 +120,7 @@ ruleTester.run('prop-types', rule, {
             return <div>Hello {this.props.name}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -129,7 +129,7 @@ ruleTester.run('prop-types', rule, {
             return <div>Hello World</div>;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -142,7 +142,7 @@ ruleTester.run('prop-types', rule, {
           firstname: PropTypes.string
         };
         Hello.propTypes.lastname = PropTypes.string;
-      `
+      `,
     },
     {
       code: `
@@ -157,7 +157,7 @@ ruleTester.run('prop-types', rule, {
             return <div>Hello {user.name}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -166,7 +166,7 @@ ruleTester.run('prop-types', rule, {
             return 'Hello' + this.props.name;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -174,7 +174,7 @@ ruleTester.run('prop-types', rule, {
           method;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -188,7 +188,7 @@ ruleTester.run('prop-types', rule, {
             return <div>Hello {this.props.name}</div>;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -202,7 +202,7 @@ ruleTester.run('prop-types', rule, {
           firstname: PropTypes.string
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -212,7 +212,7 @@ ruleTester.run('prop-types', rule, {
             return <div>Hello {firstname}</div>;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -225,7 +225,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -237,7 +237,7 @@ ruleTester.run('prop-types', rule, {
         Hello.propTypes = {
           'firstname': PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -252,7 +252,7 @@ ruleTester.run('prop-types', rule, {
         Hello.propTypes = {
           'firstname': PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -266,7 +266,7 @@ ruleTester.run('prop-types', rule, {
         Hello.propTypes.a = PropTypes.shape({
           b: PropTypes.string
         });
-      `
+      `,
     },
     {
       code: `
@@ -283,7 +283,7 @@ ruleTester.run('prop-types', rule, {
           })
         };
         Hello.propTypes.a.b.c = PropTypes.number;
-      `
+      `,
     },
     {
       code: `
@@ -304,7 +304,7 @@ ruleTester.run('prop-types', rule, {
             })
           )
         };
-      `
+      `,
     },
     {
       code: `
@@ -327,7 +327,7 @@ ruleTester.run('prop-types', rule, {
             })
           )
         };
-      `
+      `,
     },
     {
       code: `
@@ -343,7 +343,7 @@ ruleTester.run('prop-types', rule, {
             PropTypes.string
           ])
         };
-      `
+      `,
     },
     {
       code: `
@@ -367,7 +367,7 @@ ruleTester.run('prop-types', rule, {
             )
           ])
         };
-      `
+      `,
     },
     {
       code: `
@@ -386,7 +386,7 @@ ruleTester.run('prop-types', rule, {
             })
           ])
         };
-      `
+      `,
     },
     {
       code: `
@@ -403,7 +403,7 @@ ruleTester.run('prop-types', rule, {
             PropTypes.instanceOf(Baz)
           ])
         };
-      `
+      `,
     },
     {
       code: `
@@ -415,7 +415,7 @@ ruleTester.run('prop-types', rule, {
         Component.propTypes = {
           foo: PropTypes.oneOf(['bar', 'baz'])
         };
-      `
+      `,
     },
     {
       code: `
@@ -429,7 +429,7 @@ ruleTester.run('prop-types', rule, {
         Hello.propTypes = {
           a: PropTypes.instanceOf(Hello)
         };
-      `
+      `,
     },
     {
       code: `
@@ -457,7 +457,7 @@ ruleTester.run('prop-types', rule, {
           numb: PropTypes.number,
           stri: PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -475,7 +475,7 @@ ruleTester.run('prop-types', rule, {
           "aria-controls": PropTypes.string
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -488,7 +488,7 @@ ruleTester.run('prop-types', rule, {
         Hello.propTypes = {
           "some.value": PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -501,7 +501,7 @@ ruleTester.run('prop-types', rule, {
         Hello.propTypes = {
           "arr": PropTypes.array
         };
-      `
+      `,
     },
     {
       code: `
@@ -516,7 +516,7 @@ ruleTester.run('prop-types', rule, {
             PropTypes.shape({"some.value": PropTypes.string})
           )
         };
-      `
+      `,
     },
     {
       code: `
@@ -531,7 +531,7 @@ ruleTester.run('prop-types', rule, {
         ArrayLengthTest.propTypes = {
           arr: PropTypes.array,
           arr2: PropTypes.arrayOf(PropTypes.number),
-        }`
+        }`,
     },
     {
       code: `
@@ -547,7 +547,7 @@ ruleTester.run('prop-types', rule, {
             return <div>{icons}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -558,7 +558,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{ignore: ['name']}]
+      options: [{ignore: ['name']}],
     },
     {
       code: `
@@ -575,7 +575,7 @@ ruleTester.run('prop-types', rule, {
           })
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -590,7 +590,7 @@ ruleTester.run('prop-types', rule, {
           name: PropTypes.shape(foo)
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -601,7 +601,7 @@ ruleTester.run('prop-types', rule, {
           }
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -614,7 +614,7 @@ ruleTester.run('prop-types', rule, {
             return <div>{nextPath}</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -627,7 +627,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{customValidators: ['CustomValidator']}]
+      options: [{customValidators: ['CustomValidator']}],
     },
     {
       code: `
@@ -642,7 +642,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{customValidators: ['CustomValidator']}]
+      options: [{customValidators: ['CustomValidator']}],
     },
     {
       code: `
@@ -657,7 +657,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{customValidators: ['CustomValidator']}]
+      options: [{customValidators: ['CustomValidator']}],
     },
     {
       code: `
@@ -672,7 +672,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{customValidators: ['CustomValidator']}]
+      options: [{customValidators: ['CustomValidator']}],
     },
     {
       code: `
@@ -685,7 +685,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{customValidators: ['CustomValidator']}]
+      options: [{customValidators: ['CustomValidator']}],
     },
     {
       code: `
@@ -706,7 +706,7 @@ ruleTester.run('prop-types', rule, {
           prop2: PropTypes.arrayOf(Comp1.propTypes.prop1)
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -727,7 +727,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -748,7 +748,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -756,7 +756,7 @@ ruleTester.run('prop-types', rule, {
           propTypes: SomeOtherComponent.propTypes
         });
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -767,7 +767,7 @@ ruleTester.run('prop-types', rule, {
             return <div />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -777,7 +777,7 @@ ruleTester.run('prop-types', rule, {
             return <div>Hello World</div>;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -791,7 +791,7 @@ ruleTester.run('prop-types', rule, {
         Hello.propTypes = {
           users: PropTypes.arrayOf(PropTypes.object)
         };
-      `
+      `,
     },
     {
       code: `
@@ -801,7 +801,7 @@ ruleTester.run('prop-types', rule, {
             return <div>Hello</div>;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -813,7 +813,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -827,7 +827,7 @@ ruleTester.run('prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -841,7 +841,7 @@ ruleTester.run('prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Should not be detected as a component
@@ -852,7 +852,7 @@ ruleTester.run('prop-types', rule, {
           });
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -867,7 +867,7 @@ ruleTester.run('prop-types', rule, {
         }
         module.exports = HelloComponent();
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -882,7 +882,7 @@ ruleTester.run('prop-types', rule, {
         }
         module.exports = HelloComponent();
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -906,7 +906,7 @@ ruleTester.run('prop-types', rule, {
           firstname: PropTypes.string,
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -921,7 +921,7 @@ ruleTester.run('prop-types', rule, {
           company: PropTypes.string
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -932,7 +932,7 @@ ruleTester.run('prop-types', rule, {
           }
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -946,7 +946,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -958,7 +958,7 @@ ruleTester.run('prop-types', rule, {
             );
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -971,7 +971,7 @@ ruleTester.run('prop-types', rule, {
         statelessComponent.propTypes = {
           someProp: PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -984,7 +984,7 @@ ruleTester.run('prop-types', rule, {
         statelessComponent.propTypes = {
           someProp: PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -997,7 +997,7 @@ ruleTester.run('prop-types', rule, {
         statelessComponent.propTypes = {
           someProp: PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -1010,28 +1010,28 @@ ruleTester.run('prop-types', rule, {
         statelessComponent.propTypes = {
           someProp: PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
         function notAComponent({ something }) {
           return something + 1;
         };
-      `
+      `,
     },
     {
       code: `
         const notAComponent = function({ something }) {
           return something + 1;
         };
-      `
+      `,
     },
     {
       code: `
         const notAComponent = ({ something }) => {
           return something + 1;
         };
-      `
+      `,
     },
     {
       // Validation is ignored on reassigned props object
@@ -1041,7 +1041,7 @@ ruleTester.run('prop-types', rule, {
           return <span>{newProps.someProp}</span>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1054,7 +1054,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1067,7 +1067,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1079,7 +1079,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1088,7 +1088,7 @@ ruleTester.run('prop-types', rule, {
           return <div data-action={dataAction} />;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1100,7 +1100,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1115,7 +1115,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1127,7 +1127,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1139,7 +1139,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1156,7 +1156,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1174,7 +1174,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1196,7 +1196,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1208,7 +1208,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1220,7 +1220,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1232,7 +1232,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1243,7 +1243,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Ignore component validation if propTypes are composed using spread
@@ -1260,7 +1260,7 @@ ruleTester.run('prop-types', rule, {
             ...otherPropTypes,
             firstName: PropTypes.string
         };
-      `
+      `,
     },
     {
       // Ignore destructured function arguments
@@ -1270,7 +1270,7 @@ ruleTester.run('prop-types', rule, {
             return ["string"].map(({length}) => <div>{length}</div>);
           }
         }
-      `
+      `,
     },
     {
       // Flow annotations on stateless components
@@ -1284,7 +1284,7 @@ ruleTester.run('prop-types', rule, {
           return <div>Hello {firstname} {lastname}</div>
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1297,7 +1297,7 @@ ruleTester.run('prop-types', rule, {
           return <div>Hello {firstname} {lastname}</div>
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1310,7 +1310,7 @@ ruleTester.run('prop-types', rule, {
           return <div>Hello {firstname} {lastname}</div>
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1321,7 +1321,7 @@ ruleTester.run('prop-types', rule, {
           return <div>{props['completed?']}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1336,7 +1336,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1359,7 +1359,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1371,7 +1371,7 @@ ruleTester.run('prop-types', rule, {
           options: Array<SelectOption>
         } & FieldProps
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Impossible intersection type
@@ -1386,7 +1386,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1400,7 +1400,7 @@ ruleTester.run('prop-types', rule, {
             <div/>
           )
         }
-      `
+      `,
     },
     {
       code: `
@@ -1414,7 +1414,7 @@ ruleTester.run('prop-types', rule, {
           jobs: PropTypes.array
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1425,7 +1425,7 @@ ruleTester.run('prop-types', rule, {
           return <div>Hello {firstname}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1433,7 +1433,7 @@ ruleTester.run('prop-types', rule, {
           return <div>{({name}) => <Hello name={name} />}</div>
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1441,7 +1441,7 @@ ruleTester.run('prop-types', rule, {
           return <div>{function({name}) { return <Hello name={name} />; }}</div>
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Should stop at the class when searching for a parent component
@@ -1450,7 +1450,7 @@ ruleTester.run('prop-types', rule, {
           someMethod = ({width}) => {}
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Should stop at the decorator when searching for a parent component
@@ -1460,7 +1460,7 @@ ruleTester.run('prop-types', rule, {
         }])
         class Something extends Component {}
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Should not find any used props
@@ -1469,7 +1469,7 @@ ruleTester.run('prop-types', rule, {
           const {...rest} = props;
           return <div>Hello</div>;
         }
-      `
+      `,
     },
     {
       code: `
@@ -1481,7 +1481,7 @@ ruleTester.run('prop-types', rule, {
         Greetings.propTypes = {
           name: PropTypes.string
         }
-      `
+      `,
     },
     {
       code: `
@@ -1495,7 +1495,7 @@ ruleTester.run('prop-types', rule, {
         Greetings.Hello.propTypes = {
           name: PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -1508,7 +1508,7 @@ ruleTester.run('prop-types', rule, {
         Greetings.Hello.propTypes = {
           name: PropTypes.string
         }
-      `
+      `,
     },
     {
       code: `
@@ -1518,7 +1518,7 @@ ruleTester.run('prop-types', rule, {
           });
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1533,7 +1533,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1545,17 +1545,7 @@ ruleTester.run('prop-types', rule, {
           foo: PropTypes.node
         }
       `,
-      parser: parsers.BABEL_ESLINT
-    },
-    {
-      code: `
-        var Hello = createReactClass({
-          render: function() {
-            return <div>{this.props.name}</div>;
-          }
-        });
-      `,
-      options: [{skipUndeclared: true}]
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1566,7 +1556,17 @@ ruleTester.run('prop-types', rule, {
         });
       `,
       options: [{skipUndeclared: true}],
-      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          render: function() {
+            return <div>{this.props.name}</div>;
+          }
+        });
+      `,
+      options: [{skipUndeclared: true}],
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1576,7 +1576,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      options: [{skipUndeclared: true}]
+      options: [{skipUndeclared: true}],
     },
     {
       code: `
@@ -1589,7 +1589,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{skipUndeclared: true}]
+      options: [{skipUndeclared: true}],
     },
     {
       code: `
@@ -1602,7 +1602,7 @@ ruleTester.run('prop-types', rule, {
           }
         });
       `,
-      options: [{skipUndeclared: false}]
+      options: [{skipUndeclared: false}],
     },
     {
       // Async functions can't be components.
@@ -1611,7 +1611,7 @@ ruleTester.run('prop-types', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Async functions can't be components.
@@ -1620,7 +1620,7 @@ ruleTester.run('prop-types', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Async functions can't be components.
@@ -1629,7 +1629,7 @@ ruleTester.run('prop-types', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Flow annotations with variance
@@ -1643,7 +1643,7 @@ ruleTester.run('prop-types', rule, {
           return <div>Hello {firstname} {lastname}</div>
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1655,7 +1655,7 @@ ruleTester.run('prop-types', rule, {
             return <Greeting onSelect={this.onSelect} />;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -1669,7 +1669,7 @@ ruleTester.run('prop-types', rule, {
           handleSubmit = async ({certificate, key}) => {};
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1684,7 +1684,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1699,7 +1699,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1714,7 +1714,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1730,7 +1730,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1746,7 +1746,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1764,7 +1764,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1782,7 +1782,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1794,7 +1794,7 @@ ruleTester.run('prop-types', rule, {
           return <p />;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1807,7 +1807,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1821,7 +1821,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.52'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1835,7 +1835,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1850,7 +1850,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.52'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1861,7 +1861,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1873,7 +1873,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.52'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1888,7 +1888,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.52'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1899,7 +1899,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1911,7 +1911,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.52'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1924,7 +1924,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1938,7 +1938,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.52'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1949,7 +1949,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1961,7 +1961,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.52'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1975,7 +1975,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1990,7 +1990,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.52'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2005,7 +2005,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.53'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2019,7 +2019,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2034,7 +2034,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       settings: {react: {flowVersion: '0.53'}},
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2050,7 +2050,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2067,7 +2067,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2084,7 +2084,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2102,7 +2102,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2120,7 +2120,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2133,7 +2133,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2145,7 +2145,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2161,7 +2161,7 @@ ruleTester.run('prop-types', rule, {
           }
         )
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
 
     // issue #1288
@@ -2199,7 +2199,7 @@ ruleTester.run('prop-types', rule, {
         ...SharedPropTypes // eslint-disable-line object-shorthand
       };
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2218,7 +2218,7 @@ ruleTester.run('prop-types', rule, {
         }
       }
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2227,7 +2227,7 @@ ruleTester.run('prop-types', rule, {
         );
 
         Slider.propTypes = RcSlider.propTypes;
-      `
+      `,
     },
     {
       code: `
@@ -2236,7 +2236,7 @@ ruleTester.run('prop-types', rule, {
         );
 
         Slider.propTypes = RcSlider.propTypes;
-      `
+      `,
     },
     {
       code: `
@@ -2252,7 +2252,7 @@ ruleTester.run('prop-types', rule, {
         Foo.propTypes = {
           current: PropTypes.number.isRequired,
         };
-      `
+      `,
     },
     {
       code: `
@@ -2263,7 +2263,7 @@ ruleTester.run('prop-types', rule, {
             });
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -2285,7 +2285,7 @@ ruleTester.run('prop-types', rule, {
           foo: PropTypes.func.isRequired,
         };
       `,
-      settings: {react: {version: '16.3.0'}}
+      settings: {react: {version: '16.3.0'}},
     },
     {
       code: `
@@ -2300,7 +2300,7 @@ ruleTester.run('prop-types', rule, {
         HeaderBalance.propTypes = {
           cryptoCurrency: PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -2316,7 +2316,7 @@ ruleTester.run('prop-types', rule, {
         HeaderBalance.propTypes = {
           cryptoCurrency: PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -2335,9 +2335,9 @@ ruleTester.run('prop-types', rule, {
       `,
       settings: {
         react: {
-          pragma: 'Foo'
-        }
-      }
+          pragma: 'Foo',
+        },
+      },
     },
     {
       code: `
@@ -2347,7 +2347,7 @@ ruleTester.run('prop-types', rule, {
         Label.propTypes = {
           text: PropTypes.string,
         };
-      `
+      `,
     },
     {
       code: `
@@ -2360,9 +2360,9 @@ ruleTester.run('prop-types', rule, {
       `,
       settings: {
         react: {
-          pragma: 'Foo'
-        }
-      }
+          pragma: 'Foo',
+        },
+      },
     },
     {
       code: `
@@ -2373,7 +2373,7 @@ ruleTester.run('prop-types', rule, {
         Label.propTypes = {
           text: PropTypes.string,
         };
-      `
+      `,
     },
     {
       code: `
@@ -2387,9 +2387,9 @@ ruleTester.run('prop-types', rule, {
       `,
       settings: {
         react: {
-          pragma: 'Foo'
-        }
-      }
+          pragma: 'Foo',
+        },
+      },
     },
     {
       code: `
@@ -2410,7 +2410,7 @@ ruleTester.run('prop-types', rule, {
         }
       }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2424,7 +2424,7 @@ ruleTester.run('prop-types', rule, {
           )
         }
       }
-      `
+      `,
     },
     {
       code: `
@@ -2440,7 +2440,7 @@ ruleTester.run('prop-types', rule, {
             return <div>hi</div>;
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -2466,7 +2466,7 @@ ruleTester.run('prop-types', rule, {
         list: PropTypes.array,
         query: PropTypes.string,
       };
-      `
+      `,
     },
     {
       code: `
@@ -2496,7 +2496,7 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2516,7 +2516,7 @@ ruleTester.run('prop-types', rule, {
 
         export const Unconnected = Foo;
         export default connect(Foo);
-      `
+      `,
     },
     {
       code: `
@@ -2524,7 +2524,7 @@ ruleTester.run('prop-types', rule, {
         function fn1() {}
         const b = a::fn1();
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // issue #2138
@@ -2548,9 +2548,9 @@ ruleTester.run('prop-types', rule, {
         {
           message: "'notOne' is missing in props validation",
           line: 8,
-          column: 34
-        }
-      ]
+          column: 34,
+        },
+      ],
     },
     {
       // issue #1259
@@ -2563,7 +2563,7 @@ ruleTester.run('prop-types', rule, {
         Hello.propTypes = {
           foo: PropTypes.number,
         }
-      `
+      `,
     },
     {
       // issue #2298
@@ -2576,13 +2576,13 @@ ruleTester.run('prop-types', rule, {
         return <div>Hello {firstname}</div>
       }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // issue #2326
       code: `
         for (const {result} of results) {}
-      `
+      `,
     },
     {
       // issue #2330
@@ -2602,7 +2602,7 @@ ruleTester.run('prop-types', rule, {
           );
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -2612,7 +2612,7 @@ ruleTester.run('prop-types', rule, {
         Label.propTypes = {
           text: PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -2623,7 +2623,7 @@ ruleTester.run('prop-types', rule, {
         Label.propTypes = {
           text: PropTypes.string
         };
-      `
+      `,
     },
     {
       code: `
@@ -2637,9 +2637,9 @@ ruleTester.run('prop-types', rule, {
       `,
       settings: {
         react: {
-          pragma: 'Foo'
-        }
-      }
+          pragma: 'Foo',
+        },
+      },
     },
     {
       code: `
@@ -2652,7 +2652,7 @@ ruleTester.run('prop-types', rule, {
           length: PropTypes.number,
           ordering: PropTypes.array
         };
-      `
+      `,
     },
     // shouldn't trigger this rule since functions stating with a lowercase
     // letter are not considered components
@@ -2664,7 +2664,7 @@ ruleTester.run('prop-types', rule, {
     {
       code: `
       export default function() {}
-      `
+      `,
     },
     {
       code: `
@@ -2678,7 +2678,7 @@ ruleTester.run('prop-types', rule, {
         Component.propTypes = {
           name: PropTypes.string.isRequired
         }
-      `
+      `,
     },
     {
       code: `
@@ -2697,8 +2697,8 @@ ruleTester.run('prop-types', rule, {
       }
       `,
       settings: {
-        componentWrapperFunctions: [{property: 'styled'}]
-      }
+        componentWrapperFunctions: [{property: 'styled'}],
+      },
     },
     parsers.TS([
       {
@@ -2714,7 +2714,7 @@ ruleTester.run('prop-types', rule, {
             return <div aria-label={ariaLabel} />
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -2731,7 +2731,7 @@ ruleTester.run('prop-types', rule, {
             return <div>{value}</div>;
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -2748,7 +2748,7 @@ ruleTester.run('prop-types', rule, {
             return null;
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -2762,7 +2762,7 @@ ruleTester.run('prop-types', rule, {
             return null;
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -2777,7 +2777,7 @@ ruleTester.run('prop-types', rule, {
             return <div aria-label={ariaLabel} />
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       // shouldn't trigger this rule for 'render' since functions stating with a lowercase
       // letter are not considered components
@@ -2793,7 +2793,7 @@ ruleTester.run('prop-types', rule, {
           hello: PropTypes.string.isRequired,
         };
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -2809,7 +2809,7 @@ ruleTester.run('prop-types', rule, {
             return <div>{value}</div>;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -2826,7 +2826,7 @@ ruleTester.run('prop-types', rule, {
             return null;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -2840,7 +2840,7 @@ ruleTester.run('prop-types', rule, {
             return null;
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -2862,7 +2862,7 @@ ruleTester.run('prop-types', rule, {
             return <>{createElement(props.text)}</>;
           };
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -2876,7 +2876,7 @@ ruleTester.run('prop-types', rule, {
             return null;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -2892,7 +2892,7 @@ ruleTester.run('prop-types', rule, {
             return <div></div>;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -2909,7 +2909,7 @@ ruleTester.run('prop-types', rule, {
             return <div><span>{props.username}</span></div>;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -2925,7 +2925,7 @@ ruleTester.run('prop-types', rule, {
             return <div></div>;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -2946,7 +2946,7 @@ ruleTester.run('prop-types', rule, {
             return <div></div>;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -2960,7 +2960,7 @@ ruleTester.run('prop-types', rule, {
             return <div></div>;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -2982,7 +2982,7 @@ ruleTester.run('prop-types', rule, {
             return <div></div>;
           };
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3002,7 +3002,7 @@ ruleTester.run('prop-types', rule, {
             return <div></div>;
           };
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3016,7 +3016,7 @@ ruleTester.run('prop-types', rule, {
             return <div></div>;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3028,7 +3028,7 @@ ruleTester.run('prop-types', rule, {
             return <div />;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3040,7 +3040,7 @@ ruleTester.run('prop-types', rule, {
             return <div />;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3060,7 +3060,7 @@ ruleTester.run('prop-types', rule, {
             return null;
           };
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3079,7 +3079,7 @@ ruleTester.run('prop-types', rule, {
             return null;
           };
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3098,7 +3098,7 @@ ruleTester.run('prop-types', rule, {
             }: ImplementationProps
           ) => (<div />)
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3165,7 +3165,7 @@ ruleTester.run('prop-types', rule, {
             );
           };
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3173,7 +3173,7 @@ ruleTester.run('prop-types', rule, {
             return <div>{bar}</div>;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       // Issue: #2795
       {
@@ -3201,7 +3201,7 @@ ruleTester.run('prop-types', rule, {
 
         type StateProps = ReturnType<typeof mapStateToProps>
         type DispatchProps = ReturnType<typeof mapDispatchToProps>`,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       // Issue: #2795
       {
@@ -3229,7 +3229,7 @@ ruleTester.run('prop-types', rule, {
 
         type StateProps = ReturnType<typeof mapStateToProps>
         type DispatchProps = ReturnType<typeof mapDispatchToProps>`,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       // Issue: #2795
       {
@@ -3256,7 +3256,7 @@ ruleTester.run('prop-types', rule, {
 
         type StateProps = ReturnType<typeof mapStateToProps>
         type DispatchProps = ReturnType<typeof mapDispatchToProps>`,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3290,7 +3290,7 @@ ruleTester.run('prop-types', rule, {
           )
         }
         export default InputField`,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3308,7 +3308,7 @@ ruleTester.run('prop-types', rule, {
             }
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3321,7 +3321,7 @@ ruleTester.run('prop-types', rule, {
               <div>{props.username}</div>
           );
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3331,7 +3331,7 @@ ruleTester.run('prop-types', rule, {
               <div>{props.username}</div>
           );
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3344,7 +3344,7 @@ ruleTester.run('prop-types', rule, {
               <div>{props.username}</div>
           );
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3353,7 +3353,7 @@ ruleTester.run('prop-types', rule, {
               <div>{props.username}</div>
           );
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3365,7 +3365,7 @@ ruleTester.run('prop-types', rule, {
               <div>{props.username}</div>
           );
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3378,7 +3378,7 @@ ruleTester.run('prop-types', rule, {
               <div>{props.username}</div>
           );
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3390,7 +3390,7 @@ ruleTester.run('prop-types', rule, {
               <div>{props.username}</div>
           );
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3402,7 +3402,7 @@ ruleTester.run('prop-types', rule, {
               <div>{props.username}</div>
           );
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3414,7 +3414,7 @@ ruleTester.run('prop-types', rule, {
               <div>{props.username}</div>
           );
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3426,7 +3426,7 @@ ruleTester.run('prop-types', rule, {
               <div>{props.username}</div>
           );
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         // issue: https://github.com/yannickcr/eslint-plugin-react/issues/2786
@@ -3441,7 +3441,7 @@ ruleTester.run('prop-types', rule, {
             return item ? <></> : <></>;
           };
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3453,7 +3453,7 @@ ruleTester.run('prop-types', rule, {
             return null;
           }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3464,7 +3464,7 @@ ruleTester.run('prop-types', rule, {
           };
 
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3477,7 +3477,7 @@ ruleTester.run('prop-types', rule, {
             return <button onClick={() => onClick(value)}>BUTTON</button>;
           };
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3492,7 +3492,7 @@ ruleTester.run('prop-types', rule, {
             return <div>Hello {age}</div>;
            }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -3507,8 +3507,8 @@ ruleTester.run('prop-types', rule, {
             return <div>Hello {age}</div>;
            }
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
-      }
+        parser: parsers['@TYPESCRIPT_ESLINT'],
+      },
     ]),
     {
       code: `
@@ -3521,7 +3521,7 @@ ruleTester.run('prop-types', rule, {
             }
           }
         }
-      `
+      `,
     }
   ),
 
@@ -3544,10 +3544,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'name'},
           line: 8,
           column: 31,
-          type: 'Identifier'
-        }
+          type: 'Identifier',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -3563,9 +3563,9 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'name'},
           line: 4,
           column: 62,
-          type: 'Identifier'
-        }
-      ]
+          type: 'Identifier',
+        },
+      ],
     },
     {
       code: `
@@ -3581,9 +3581,9 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'name'},
           line: 4,
           column: 43,
-          type: 'Identifier'
-        }
-      ]
+          type: 'Identifier',
+        },
+      ],
     },
     {
       code: `
@@ -3599,9 +3599,9 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'name'},
           line: 4,
           column: 43,
-          type: 'Identifier'
-        }
-      ]
+          type: 'Identifier',
+        },
+      ],
     },
     {
       code: `
@@ -3614,8 +3614,8 @@ ruleTester.run('prop-types', rule, {
       `,
       errors: [
         {message: "'foo' is missing in props validation"},
-        {message: "'foo.bar' is missing in props validation"}
-      ]
+        {message: "'foo.bar' is missing in props validation"},
+      ],
     },
     {
       code: `
@@ -3633,8 +3633,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'foo.bar' is missing in props validation"}
-      ]
+        {message: "'foo.bar' is missing in props validation"},
+      ],
     },
     {
       code: `
@@ -3644,8 +3644,8 @@ ruleTester.run('prop-types', rule, {
       `,
       errors: [
         {message: "'foo' is missing in props validation"},
-        {message: "'foo.bar' is missing in props validation"}
-      ]
+        {message: "'foo.bar' is missing in props validation"},
+      ],
     },
     {
       code: `
@@ -3660,8 +3660,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'a.nope' is missing in props validation"}
-      ]
+        {message: "'a.nope' is missing in props validation"},
+      ],
     },
     {
       code: `
@@ -3679,8 +3679,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'a.b.nope' is missing in props validation"}
-      ]
+        {message: "'a.b.nope' is missing in props validation"},
+      ],
     },
     {
       code: `
@@ -3696,8 +3696,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'a.nope' is missing in props validation"}
-      ]
+        {message: "'a.nope' is missing in props validation"},
+      ],
     },
     {
       code: `
@@ -3713,8 +3713,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'a.nope' is missing in props validation"}
-      ]
+        {message: "'a.nope' is missing in props validation"},
+      ],
     },
     {
       code: `
@@ -3726,8 +3726,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'cat' is missing in props validation"}
-      ]
+        {message: "'cat' is missing in props validation"},
+      ],
     },
     {
       code: `
@@ -3739,8 +3739,8 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       errors: [
-        {message: "'cat' is missing in props validation"}
-      ]
+        {message: "'cat' is missing in props validation"},
+      ],
     },
     {
       code: `
@@ -3757,9 +3757,9 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'name'},
           line: 4,
           column: 21,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -3779,9 +3779,9 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'title'},
           line: 4,
           column: 27,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -3802,9 +3802,9 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'name'},
           line: 4,
           column: 21,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -3821,9 +3821,9 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'name'},
           line: 5,
           column: 43,
-          type: 'Identifier'
-        }
-      ]
+          type: 'Identifier',
+        },
+      ],
     },
     {
       code: `
@@ -3839,9 +3839,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'}
-        }
-      ]
+          data: {name: 'lastname'},
+        },
+      ],
     },
     {
       code: `
@@ -3862,9 +3862,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -3885,13 +3885,13 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'propWithoutTypeDefinition'}
+          data: {name: 'propWithoutTypeDefinition'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -3908,9 +3908,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'}
-        }
-      ]
+          data: {name: 'lastname'},
+        },
+      ],
     },
     semver.satisfies(babelEslintVersion, '< 9') ? {
       code: `
@@ -3927,9 +3927,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'}
-        }
-      ]
+          data: {name: 'firstname'},
+        },
+      ],
     } : [],
     {
       code: `
@@ -3947,9 +3947,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'a.b'}
-        }
-      ]
+          data: {name: 'a.b'},
+        },
+      ],
     },
     {
       code: `
@@ -3969,9 +3969,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'a.b.c'}
-        }
-      ]
+          data: {name: 'a.b.c'},
+        },
+      ],
     },
     {
       code: `
@@ -3989,9 +3989,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'a.b.c'}
-        }
-      ]
+          data: {name: 'a.b.c'},
+        },
+      ],
     },
     {
       code: `
@@ -4013,21 +4013,21 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'a.b.c'}
+          data: {name: 'a.b.c'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a.__.d'}
+          data: {name: 'a.__.d'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a.__.d.length'}
+          data: {name: 'a.__.d.length'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a.anything.e'}
-        }
-      ]
+          data: {name: 'a.anything.e'},
+        },
+      ],
     },
     {
       code: `
@@ -4051,21 +4051,21 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'a[].c'}
+          data: {name: 'a[].c'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a[].d'}
+          data: {name: 'a[].d'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a[].d.length'}
+          data: {name: 'a[].d.length'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a[].e'}
-        }
-      ]
+          data: {name: 'a[].e'},
+        },
+      ],
     },
     {
       code: `
@@ -4092,13 +4092,13 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'a.length'}
+          data: {name: 'a.length'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a.b'}
-        }
-      ]
+          data: {name: 'a.b'},
+        },
+      ],
     },
     {
       code: `
@@ -4119,9 +4119,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'propX'}
-        }
-      ]
+          data: {name: 'propX'},
+        },
+      ],
     },
     {
       code: `
@@ -4137,9 +4137,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'some.value'}
-        }
-      ]
+          data: {name: 'some.value'},
+        },
+      ],
     },
     {
       code: `
@@ -4155,9 +4155,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'arr'}
-        }
-      ]
+          data: {name: 'arr'},
+        },
+      ],
     },
     {
       code: `
@@ -4176,9 +4176,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'arr[].some.value'}
-        }
-      ]
+          data: {name: 'arr[].some.value'},
+        },
+      ],
     },
     {
       code: `
@@ -4195,9 +4195,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'}
-        }
-      ]
+          data: {name: 'firstname'},
+        },
+      ],
     },
     {
       code: `
@@ -4212,9 +4212,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'}
-        }
-      ]
+          data: {name: 'firstname'},
+        },
+      ],
     },
     {
       code: `
@@ -4235,9 +4235,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'}
-        }
-      ]
+          data: {name: 'firstname'},
+        },
+      ],
     },
     {
       code: `
@@ -4249,9 +4249,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -4263,9 +4263,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -4277,9 +4277,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -4292,9 +4292,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -4306,9 +4306,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -4320,9 +4320,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -4334,9 +4334,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -4351,9 +4351,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'}
-        }
-      ]
+          data: {name: 'lastname'},
+        },
+      ],
     },
     {
       code: `
@@ -4368,9 +4368,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'source'}
-        }
-      ]
+          data: {name: 'source'},
+        },
+      ],
     },
     {
       code: `
@@ -4385,13 +4385,13 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'source'}
+          data: {name: 'source'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'source.uri'}
-        }
-      ]
+          data: {name: 'source.uri'},
+        },
+      ],
     },
     {
       code: `
@@ -4406,9 +4406,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'source'}
-        }
-      ]
+          data: {name: 'source'},
+        },
+      ],
     },
     {
       code: `
@@ -4423,13 +4423,13 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'source'}
+          data: {name: 'source'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'source.uri'}
-        }
-      ]
+          data: {name: 'source.uri'},
+        },
+      ],
     },
     {
       code: `
@@ -4447,9 +4447,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -4467,9 +4467,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -4491,13 +4491,13 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'}
+          data: {name: 'firstname'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -4512,17 +4512,17 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'names'}
+          data: {name: 'names'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'names.map'}
+          data: {name: 'names.map'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'company'}
-        }
-      ]
+          data: {name: 'company'},
+        },
+      ],
     },
     {
       code: `
@@ -4536,9 +4536,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'}
-        }
-      ]
+          data: {name: 'text'},
+        },
+      ],
     },
     {
       code: `
@@ -4554,9 +4554,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -4576,9 +4576,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'}
-        }
-      ]
+          data: {name: 'lastname'},
+        },
+      ],
     },
     {
       code: `
@@ -4598,9 +4598,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'}
-        }
-      ]
+          data: {name: 'lastname'},
+        },
+      ],
     },
     {
       code: `
@@ -4617,14 +4617,14 @@ ruleTester.run('prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       settings: Object.assign({}, settings, {
-        propWrapperFunctions: ['forbidExtraProps']
+        propWrapperFunctions: ['forbidExtraProps'],
       }),
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'}
-        }
-      ]
+          data: {name: 'lastname'},
+        },
+      ],
     },
     {
       code: `
@@ -4641,14 +4641,14 @@ ruleTester.run('prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       settings: Object.assign({}, settings, {
-        propWrapperFunctions: ['Object.freeze']
+        propWrapperFunctions: ['Object.freeze'],
       }),
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'}
-        }
-      ]
+          data: {name: 'lastname'},
+        },
+      ],
     },
     {
       code: `
@@ -4668,9 +4668,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'}
-        }
-      ]
+          data: {name: 'lastname'},
+        },
+      ],
     },
     {
       code: `
@@ -4685,9 +4685,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -4704,9 +4704,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'}
-        }
-      ]
+          data: {name: 'firstname'},
+        },
+      ],
     },
     {
       code: `
@@ -4722,9 +4722,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'}
-        }
-      ]
+          data: {name: 'firstname'},
+        },
+      ],
     },
     {
       code: `
@@ -4743,9 +4743,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name.lastname'}
-        }
-      ]
+          data: {name: 'name.lastname'},
+        },
+      ],
     },
     {
       code: `
@@ -4761,9 +4761,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name.lastname'}
-        }
-      ]
+          data: {name: 'name.lastname'},
+        },
+      ],
     },
     {
       code: `
@@ -4778,9 +4778,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'person.name.lastname'}
-        }
-      ]
+          data: {name: 'person.name.lastname'},
+        },
+      ],
     },
     {
       code: `
@@ -4796,9 +4796,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'person.name.lastname'}
-        }
-      ]
+          data: {name: 'person.name.lastname'},
+        },
+      ],
     },
     {
       code: `
@@ -4819,9 +4819,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'people[].name.lastname'}
-        }
-      ]
+          data: {name: 'people[].name.lastname'},
+        },
+      ],
     },
     {
       code: `
@@ -4843,9 +4843,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'people[].name.lastname'}
-        }
-      ]
+          data: {name: 'people[].name.lastname'},
+        },
+      ],
     },
     {
       code: `
@@ -4861,9 +4861,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'result.notok'}
-        }
-      ]
+          data: {name: 'result.notok'},
+        },
+      ],
     },
     {
       code: `
@@ -4877,9 +4877,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -4895,9 +4895,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -4912,9 +4912,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -4926,13 +4926,13 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'names'}
+          data: {name: 'names'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'names.map'}
-        }
-      ]
+          data: {name: 'names.map'},
+        },
+      ],
     },
     {
       code: `
@@ -4943,9 +4943,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'toggle'}
-        }
-      ]
+          data: {name: 'toggle'},
+        },
+      ],
     },
     {
       code: `
@@ -4954,9 +4954,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'test'}
-        }
-      ]
+          data: {name: 'test'},
+        },
+      ],
     },
     {
       code: `
@@ -4969,9 +4969,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'test'}
-        }
-      ]
+          data: {name: 'test'},
+        },
+      ],
     },
     {
       code: `
@@ -4986,9 +4986,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'}
-        }
-      ]
+          data: {name: 'lastname'},
+        },
+      ],
     },
     {
       code: `
@@ -5008,13 +5008,13 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'}
+          data: {name: 'firstname'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'}
-        }
-      ]
+          data: {name: 'lastname'},
+        },
+      ],
     },
     {
       code: `
@@ -5031,9 +5031,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name.constructor.firstname'}
-        }
-      ]
+          data: {name: 'name.constructor.firstname'},
+        },
+      ],
     },
     {
       code: `
@@ -5044,10 +5044,10 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'}
-        }
+          data: {name: 'foo'},
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5059,9 +5059,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bar'}
-        }
-      ]
+          data: {name: 'bar'},
+        },
+      ],
     },
     {
       code: `
@@ -5073,9 +5073,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bar'}
-        }
-      ]
+          data: {name: 'bar'},
+        },
+      ],
     },
     {
       code: `
@@ -5091,9 +5091,9 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'name'},
           line: 4,
           column: 43,
-          type: 'Identifier'
-        }
-      ]
+          type: 'Identifier',
+        },
+      ],
     },
     {
       code: `
@@ -5109,9 +5109,9 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'name'},
           line: 4,
           column: 43,
-          type: 'Identifier'
-        }
-      ]
+          type: 'Identifier',
+        },
+      ],
     },
     {
       code: `
@@ -5129,9 +5129,9 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'b'},
           line: 5,
           column: 35,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -5148,9 +5148,9 @@ ruleTester.run('prop-types', rule, {
           messageId: 'missingPropType',
           data: {name: 'firstname'},
           line: 5,
-          column: 37
-        }
-      ]
+          column: 37,
+        },
+      ],
     },
     {
       code: `
@@ -5165,9 +5165,9 @@ ruleTester.run('prop-types', rule, {
           messageId: 'missingPropType',
           data: {name: 'firstname'},
           line: 3,
-          column: 30
-        }
-      ]
+          column: 30,
+        },
+      ],
     },
     {
       code: `
@@ -5186,9 +5186,9 @@ ruleTester.run('prop-types', rule, {
           messageId: 'missingPropType',
           data: {name: 'firstname'},
           line: 7,
-          column: 37
-        }
-      ]
+          column: 37,
+        },
+      ],
     },
     {
       code: `
@@ -5205,9 +5205,9 @@ ruleTester.run('prop-types', rule, {
           messageId: 'missingPropType',
           data: {name: 'firstname'},
           line: 4,
-          column: 37
-        }
-      ]
+          column: 37,
+        },
+      ],
     },
     {
       code: `
@@ -5223,9 +5223,9 @@ ruleTester.run('prop-types', rule, {
           messageId: 'missingPropType',
           data: {name: 'firstname'},
           line: 4,
-          column: 37
-        }
-      ]
+          column: 37,
+        },
+      ],
     },
     {
       code: `
@@ -5243,9 +5243,9 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'b'},
           line: 5,
           column: 35,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -5263,9 +5263,9 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'b'},
           line: 5,
           column: 35,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -5281,9 +5281,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'firstname'}
-        }
-      ]
+          data: {name: 'firstname'},
+        },
+      ],
     },
     {
       code: `
@@ -5300,9 +5300,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'}
-        }
-      ]
+          data: {name: 'foo'},
+        },
+      ],
     },
     {
       code: `
@@ -5322,14 +5322,14 @@ ruleTester.run('prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       settings: Object.assign({}, settings, {
-        propWrapperFunctions: ['forbidExtraProps']
+        propWrapperFunctions: ['forbidExtraProps'],
       }),
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'}
-        }
-      ]
+          data: {name: 'foo'},
+        },
+      ],
     },
     {
       code: `
@@ -5351,9 +5351,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'}
-        }
-      ]
+          data: {name: 'foo'},
+        },
+      ],
     },
     {
       code: `
@@ -5376,9 +5376,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'}
-        }
-      ]
+          data: {name: 'foo'},
+        },
+      ],
     },
     {
       code: `
@@ -5400,9 +5400,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'}
-        }
-      ]
+          data: {name: 'foo'},
+        },
+      ],
     },
     {
       code: `
@@ -5423,9 +5423,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'}
-        }
-      ]
+          data: {name: 'foo'},
+        },
+      ],
     },
     {
       code: `
@@ -5445,14 +5445,14 @@ ruleTester.run('prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       settings: Object.assign({}, settings, {
-        propWrapperFunctions: ['forbidExtraProps']
+        propWrapperFunctions: ['forbidExtraProps'],
       }),
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'}
-        }
-      ]
+          data: {name: 'foo'},
+        },
+      ],
     },
     {
       code: `
@@ -5473,9 +5473,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo'}
-        }
-      ]
+          data: {name: 'foo'},
+        },
+      ],
     },
     {
       code: `
@@ -5493,9 +5493,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -5514,10 +5514,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'lastname'},
           line: 7,
           column: 43,
-          type: 'Identifier'
-        }
+          type: 'Identifier',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5537,10 +5537,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'lastname'},
           line: 7,
           column: 43,
-          type: 'Identifier'
-        }
+          type: 'Identifier',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5562,10 +5562,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'lastname'},
           line: 8,
           column: 15,
-          type: 'Property'
-        }
+          type: 'Property',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5588,10 +5588,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'lastname'},
           line: 8,
           column: 15,
-          type: 'Property'
-        }
+          type: 'Property',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5608,10 +5608,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'name.lastname'},
           line: 5,
           column: 48,
-          type: 'Identifier'
-        }
+          type: 'Identifier',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5629,10 +5629,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'name.lastname'},
           line: 5,
           column: 48,
-          type: 'Identifier'
-        }
+          type: 'Identifier',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5649,10 +5649,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'result.notok'},
           line: 5,
           column: 50,
-          type: 'Identifier'
-        }
+          type: 'Identifier',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5670,10 +5670,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'result.notok'},
           line: 5,
           column: 50,
-          type: 'Identifier'
-        }
+          type: 'Identifier',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5692,10 +5692,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'person.lastname'},
           line: 7,
           column: 50,
-          type: 'Identifier'
-        }
+          type: 'Identifier',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5715,10 +5715,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'person.lastname'},
           line: 7,
           column: 50,
-          type: 'Identifier'
-        }
+          type: 'Identifier',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5738,10 +5738,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'bar'},
           line: 8,
           column: 37,
-          type: 'Identifier'
-        }
+          type: 'Identifier',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5762,10 +5762,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'bar'},
           line: 8,
           column: 37,
-          type: 'Identifier'
-        }
+          type: 'Identifier',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5785,10 +5785,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'bar'},
           line: 8,
           column: 37,
-          type: 'Identifier'
-        }
+          type: 'Identifier',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5809,10 +5809,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'bar'},
           line: 8,
           column: 37,
-          type: 'Identifier'
-        }
+          type: 'Identifier',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5831,10 +5831,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'person.lastname'},
           line: 7,
           column: 50,
-          type: 'Identifier'
-        }
+          type: 'Identifier',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5854,10 +5854,10 @@ ruleTester.run('prop-types', rule, {
           data: {name: 'person.lastname'},
           line: 7,
           column: 50,
-          type: 'Identifier'
-        }
+          type: 'Identifier',
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -5873,10 +5873,10 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bar'}
-        }
+          data: {name: 'bar'},
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     (semver.satisfies(eslintPkg.version, '> 3') ? [
       {
@@ -5892,10 +5892,10 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'bar'}
-          }
+            data: {name: 'bar'},
+          },
         ],
-        parser: parsers.BABEL_ESLINT
+        parser: parsers.BABEL_ESLINT,
       },
       {
         code: `
@@ -5914,11 +5914,11 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'bar'}
-          }
+            data: {name: 'bar'},
+          },
         ],
-        parser: parsers.BABEL_ESLINT
-      }
+        parser: parsers.BABEL_ESLINT,
+      },
     ] : []),
     {
       code: `
@@ -5938,9 +5938,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'fooBar'}
-        }
-      ]
+          data: {name: 'fooBar'},
+        },
+      ],
     },
     {
       code: `
@@ -5961,9 +5961,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'fooBar'}
-        }
-      ]
+          data: {name: 'fooBar'},
+        },
+      ],
     },
     {
       code: `
@@ -5984,10 +5984,10 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'fooBar'}
-        }
+          data: {name: 'fooBar'},
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -6008,10 +6008,10 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'fooBar'}
-        }
+          data: {name: 'fooBar'},
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -6043,10 +6043,10 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bad'}
-        }
+          data: {name: 'bad'},
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -6066,9 +6066,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo.baz'}
-        }
-      ]
+          data: {name: 'foo.baz'},
+        },
+      ],
     },
     {
       code: `
@@ -6088,9 +6088,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bar'}
-        }
-      ]
+          data: {name: 'bar'},
+        },
+      ],
     },
     {
       code: `
@@ -6106,9 +6106,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'zoo'}
-        }
-      ]
+          data: {name: 'zoo'},
+        },
+      ],
     },
     {
       code: `
@@ -6134,9 +6134,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'bar'}
-        }
-      ]
+          data: {name: 'bar'},
+        },
+      ],
     },
     {
       code: `
@@ -6152,9 +6152,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'page'}
-        }
-      ]
+          data: {name: 'page'},
+        },
+      ],
     },
     {
       code: `
@@ -6170,9 +6170,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'cryptoCurrency'}
-        }
-      ]
+          data: {name: 'cryptoCurrency'},
+        },
+      ],
     },
     {
       code: `
@@ -6189,9 +6189,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'cryptoCurrency'}
-        }
-      ]
+          data: {name: 'cryptoCurrency'},
+        },
+      ],
     },
     {
       code: `
@@ -6206,15 +6206,15 @@ ruleTester.run('prop-types', rule, {
       `,
       settings: {
         react: {
-          pragma: 'Foo'
-        }
+          pragma: 'Foo',
+        },
       },
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'cryptoCurrency'}
-        }
-      ]
+          data: {name: 'cryptoCurrency'},
+        },
+      ],
     },
     {
       code: `
@@ -6230,15 +6230,15 @@ ruleTester.run('prop-types', rule, {
       `,
       settings: {
         react: {
-          pragma: 'Foo'
-        }
+          pragma: 'Foo',
+        },
       },
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'cryptoCurrency'}
-        }
-      ]
+          data: {name: 'cryptoCurrency'},
+        },
+      ],
     },
     {
       code: `
@@ -6249,9 +6249,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'}
-        }
-      ]
+          data: {name: 'text'},
+        },
+      ],
     },
     {
       code: `
@@ -6263,9 +6263,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'}
-        }
-      ]
+          data: {name: 'text'},
+        },
+      ],
     },
     {
       code: `
@@ -6275,15 +6275,15 @@ ruleTester.run('prop-types', rule, {
       `,
       settings: {
         react: {
-          pragma: 'Foo'
-        }
+          pragma: 'Foo',
+        },
       },
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'}
-        }
-      ]
+          data: {name: 'text'},
+        },
+      ],
     },
     {
       code: `
@@ -6294,15 +6294,15 @@ ruleTester.run('prop-types', rule, {
       `,
       settings: {
         react: {
-          pragma: 'Foo'
-        }
+          pragma: 'Foo',
+        },
       },
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'}
-        }
-      ]
+          data: {name: 'text'},
+        },
+      ],
     },
     {
       code: `
@@ -6323,9 +6323,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'usedProp'}
-        }
-      ]
+          data: {name: 'usedProp'},
+        },
+      ],
     },
     {
       code: `
@@ -6341,9 +6341,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -6364,17 +6364,17 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'a'}
+          data: {name: 'a'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a.b'}
+          data: {name: 'a.b'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'a.b.c'}
-        }
-      ]
+          data: {name: 'a.b.c'},
+        },
+      ],
     },
     {
       code: `
@@ -6403,9 +6403,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'initialValues'}
-        }
-      ]
+          data: {name: 'initialValues'},
+        },
+      ],
     },
     {
       // issue #2138
@@ -6429,9 +6429,9 @@ ruleTester.run('prop-types', rule, {
         {
           message: "'notOne' is missing in props validation",
           line: 12,
-          column: 42
-        }
-      ]
+          column: 42,
+        },
+      ],
     },
     {
       // issue #2298
@@ -6448,9 +6448,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'lastname'}
-        }
-      ]
+          data: {name: 'lastname'},
+        },
+      ],
     },
     {
       // issue #2330
@@ -6479,9 +6479,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'user.age'}
-        }
-      ]
+          data: {name: 'user.age'},
+        },
+      ],
     },
     {
       code: `
@@ -6492,9 +6492,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'}
-        }
-      ]
+          data: {name: 'text'},
+        },
+      ],
     },
     {
       code: `
@@ -6506,9 +6506,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'}
-        }
-      ]
+          data: {name: 'text'},
+        },
+      ],
     },
     {
       code: `
@@ -6519,15 +6519,15 @@ ruleTester.run('prop-types', rule, {
       `,
       settings: {
         react: {
-          pragma: 'Foo'
-        }
+          pragma: 'Foo',
+        },
       },
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'text'}
-        }
-      ]
+          data: {name: 'text'},
+        },
+      ],
     },
     {
       code: `
@@ -6549,9 +6549,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo.baz'}
-        }
-      ]
+          data: {name: 'foo.baz'},
+        },
+      ],
     },
     {
       code: `
@@ -6564,13 +6564,13 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'length'}
+          data: {name: 'length'},
         },
         {
           messageId: 'missingPropType',
-          data: {name: 'ordering'}
-        }
-      ]
+          data: {name: 'ordering'},
+        },
+      ],
     },
     {
       code: `
@@ -6591,7 +6591,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: "'first.name' is missing in props validation"}]
+      errors: [{message: "'first.name' is missing in props validation"}],
     },
     {
       code: `
@@ -6612,7 +6612,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: "'first.name' is missing in props validation"}]
+      errors: [{message: "'first.name' is missing in props validation"}],
     },
     {
       code: `
@@ -6633,7 +6633,7 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{message: "'first.name' is missing in props validation"}]
+      errors: [{message: "'first.name' is missing in props validation"}],
     },
     {
       code: `
@@ -6655,9 +6655,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo.baz'}
-        }
-      ]
+          data: {name: 'foo.baz'},
+        },
+      ],
     },
     {
       code: `
@@ -6679,9 +6679,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo.baz'}
-        }
-      ]
+          data: {name: 'foo.baz'},
+        },
+      ],
     },
     {
       code: `
@@ -6703,9 +6703,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'foo.baz'}
-        }
-      ]
+          data: {name: 'foo.baz'},
+        },
+      ],
     },
     {
       code: `
@@ -6719,9 +6719,9 @@ ruleTester.run('prop-types', rule, {
       errors: [
         {
           messageId: 'missingPropType',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -6736,9 +6736,9 @@ ruleTester.run('prop-types', rule, {
         ),
       );`,
       settings: {
-        componentWrapperFunctions: ['observer']
+        componentWrapperFunctions: ['observer'],
       },
-      errors: [{message: '\'componentId\' is missing in props validation'}]
+      errors: [{message: '\'componentId\' is missing in props validation'}],
     },
     {
       code: `
@@ -6754,9 +6754,9 @@ ruleTester.run('prop-types', rule, {
       );
       `,
       settings: {
-        componentWrapperFunctions: [{property: 'observer', object: 'Mobx'}]
+        componentWrapperFunctions: [{property: 'observer', object: 'Mobx'}],
       },
-      errors: [{message: '\'id\' is missing in props validation'}]
+      errors: [{message: '\'id\' is missing in props validation'}],
     },
     parsers.TS([
       {
@@ -6774,9 +6774,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'value'}
-          }
-        ]
+            data: {name: 'value'},
+          },
+        ],
       },
       {
         code: `
@@ -6793,9 +6793,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'value'}
-          }
-        ]
+            data: {name: 'value'},
+          },
+        ],
       },
       {
         code: `
@@ -6820,9 +6820,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'userId'}
-          }
-        ]
+            data: {name: 'userId'},
+          },
+        ],
       },
       {
         code: `
@@ -6847,9 +6847,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'userId'}
-          }
-        ]
+            data: {name: 'userId'},
+          },
+        ],
       },
       {
         code: `
@@ -6874,9 +6874,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'user'}
-          }
-        ]
+            data: {name: 'user'},
+          },
+        ],
       },
       {
         code: `
@@ -6901,9 +6901,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'user'}
-          }
-        ]
+            data: {name: 'user'},
+          },
+        ],
       },
       {
         code: `
@@ -6929,9 +6929,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'userId'}
-          }
-        ]
+            data: {name: 'userId'},
+          },
+        ],
       },
       {
         code: `
@@ -6957,9 +6957,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'userId'}
-          }
-        ]
+            data: {name: 'userId'},
+          },
+        ],
       },
       {
         code: `
@@ -6981,9 +6981,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'onClick'}
-          }
-        ]
+            data: {name: 'onClick'},
+          },
+        ],
       },
       {
         code: `
@@ -7005,9 +7005,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'onClick'}
-          }
-        ]
+            data: {name: 'onClick'},
+          },
+        ],
       },
       {
         code: `
@@ -7027,9 +7027,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'books'}
-          }
-        ]
+            data: {name: 'books'},
+          },
+        ],
       },
       {
         code: `
@@ -7049,9 +7049,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'books'}
-          }
-        ]
+            data: {name: 'books'},
+          },
+        ],
       },
       {
         code: `
@@ -7071,9 +7071,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'username'}
-          }
-        ]
+            data: {name: 'username'},
+          },
+        ],
       },
       {
         code: `
@@ -7093,9 +7093,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'username'}
-          }
-        ]
+            data: {name: 'username'},
+          },
+        ],
       },
       {
         code: `
@@ -7118,9 +7118,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'dateCreated'}
-          }
-        ]
+            data: {name: 'dateCreated'},
+          },
+        ],
       },
       {
         code: `
@@ -7143,9 +7143,9 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'dateCreated'}
-          }
-        ]
+            data: {name: 'dateCreated'},
+          },
+        ],
       },
       {
         code: `
@@ -7164,7 +7164,7 @@ ruleTester.run('prop-types', rule, {
             }),
           };
         `,
-        errors: [{message: "'foo.c' is missing in props validation"}]
+        errors: [{message: "'foo.c' is missing in props validation"}],
       },
       {
         code: `
@@ -7183,7 +7183,7 @@ ruleTester.run('prop-types', rule, {
             }),
           };
         `,
-        errors: [{message: "'foo.c' is missing in props validation"}]
+        errors: [{message: "'foo.c' is missing in props validation"}],
       },
       {
         code: `
@@ -7203,7 +7203,7 @@ ruleTester.run('prop-types', rule, {
           };
         `,
         settings,
-        errors: [{message: "'foo.c' is missing in props validation"}]
+        errors: [{message: "'foo.c' is missing in props validation"}],
       },
       {
         code: `
@@ -7213,7 +7213,7 @@ ruleTester.run('prop-types', rule, {
         `,
         settings,
         parser: parsers['@TYPESCRIPT_ESLINT'],
-        errors: [{message: "'bar' is missing in props validation"}]
+        errors: [{message: "'bar' is missing in props validation"}],
       },
       {
         code: `
@@ -7223,7 +7223,7 @@ ruleTester.run('prop-types', rule, {
         `,
         settings,
         parser: parsers['@TYPESCRIPT_ESLINT'],
-        errors: [{message: "'bar' is missing in props validation"}]
+        errors: [{message: "'bar' is missing in props validation"}],
       },
       // fix #2804
       {
@@ -7243,7 +7243,7 @@ ruleTester.run('prop-types', rule, {
           export default InputField;
         `,
         parser: parsers.BABEL_ESLINT,
-        errors: [{message: "'type' is missing in props validation"}]
+        errors: [{message: "'type' is missing in props validation"}],
       },
       {
         code: `
@@ -7254,10 +7254,10 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'bar'}
-          }
+            data: {name: 'bar'},
+          },
         ],
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -7268,10 +7268,10 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'foo'}
-          }
+            data: {name: 'foo'},
+          },
         ],
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -7282,10 +7282,10 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'bar'}
-          }
+            data: {name: 'bar'},
+          },
         ],
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -7296,10 +7296,10 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'bar'}
-          }
+            data: {name: 'bar'},
+          },
         ],
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -7314,10 +7314,10 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'username'}
-          }
+            data: {name: 'username'},
+          },
         ],
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -7332,10 +7332,10 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'test'}
-          }
+            data: {name: 'test'},
+          },
         ],
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -7350,10 +7350,10 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'test'}
-          }
+            data: {name: 'test'},
+          },
         ],
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -7367,10 +7367,10 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'username'}
-          }
+            data: {name: 'username'},
+          },
         ],
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -7384,10 +7384,10 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'username'}
-          }
+            data: {name: 'username'},
+          },
         ],
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -7401,10 +7401,10 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'username'}
-          }
+            data: {name: 'username'},
+          },
         ],
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -7422,10 +7422,10 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'test'}
-          }
+            data: {name: 'test'},
+          },
         ],
-        parser: parsers['@TYPESCRIPT_ESLINT']
+        parser: parsers['@TYPESCRIPT_ESLINT'],
       },
       {
         code: `
@@ -7443,11 +7443,11 @@ ruleTester.run('prop-types', rule, {
         errors: [
           {
             messageId: 'missingPropType',
-            data: {name: 'test'}
-          }
+            data: {name: 'test'},
+          },
         ],
-        parser: parsers['@TYPESCRIPT_ESLINT']
-      }
+        parser: parsers['@TYPESCRIPT_ESLINT'],
+      },
     ])
-  )
+  ),
 });

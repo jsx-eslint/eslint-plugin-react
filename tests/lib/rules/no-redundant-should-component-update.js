@@ -16,8 +16,8 @@ const parsers = require('../../helpers/parsers');
 const parserOptions = {
   ecmaVersion: 2018,
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // -----------------------------------------------------------------------------
@@ -35,7 +35,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -46,7 +46,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
         }
       `,
       parserOptions,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -57,7 +57,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -69,8 +69,8 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           };
         }
       `,
-      parserOptions
-    }
+      parserOptions,
+    },
   ],
 
   invalid: [
@@ -84,9 +84,9 @@ ruleTester.run('no-redundant-should-component-update', rule, {
       `,
       errors: [{
         messageId: 'noShouldCompUpdate',
-        data: {component: 'Foo'}
+        data: {component: 'Foo'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -98,9 +98,9 @@ ruleTester.run('no-redundant-should-component-update', rule, {
       `,
       errors: [{
         messageId: 'noShouldCompUpdate',
-        data: {component: 'Foo'}
+        data: {component: 'Foo'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -112,10 +112,10 @@ ruleTester.run('no-redundant-should-component-update', rule, {
       `,
       errors: [{
         messageId: 'noShouldCompUpdate',
-        data: {component: 'Foo'}
+        data: {component: 'Foo'},
       }],
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -129,9 +129,9 @@ ruleTester.run('no-redundant-should-component-update', rule, {
       `,
       errors: [{
         messageId: 'noShouldCompUpdate',
-        data: {component: 'Bar'}
+        data: {component: 'Bar'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -145,9 +145,9 @@ ruleTester.run('no-redundant-should-component-update', rule, {
       `,
       errors: [{
         messageId: 'noShouldCompUpdate',
-        data: {component: 'Bar'}
+        data: {component: 'Bar'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -159,9 +159,9 @@ ruleTester.run('no-redundant-should-component-update', rule, {
       `,
       errors: [{
         messageId: 'noShouldCompUpdate',
-        data: {component: 'Foo'}
+        data: {component: 'Foo'},
       }],
-      parserOptions
-    }
-  ]
+      parserOptions,
+    },
+  ],
 });

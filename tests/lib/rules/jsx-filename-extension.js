@@ -18,8 +18,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -39,47 +39,47 @@ ruleTester.run('jsx-filename-extension', rule, {
   valid: [
     {
       filename: '<text>',
-      code: withJSXElement
-    },
-    {
-      filename: 'MyComponent.jsx',
-      code: withJSXElement
-    },
-    {
-      filename: 'MyComponent.js',
-      code: withoutJSX,
-      options: [{allow: 'as-needed'}]
+      code: withJSXElement,
     },
     {
       filename: 'MyComponent.jsx',
       code: withJSXElement,
-      options: [{allow: 'as-needed'}]
+    },
+    {
+      filename: 'MyComponent.js',
+      code: withoutJSX,
+      options: [{allow: 'as-needed'}],
+    },
+    {
+      filename: 'MyComponent.jsx',
+      code: withJSXElement,
+      options: [{allow: 'as-needed'}],
     },
     {
       filename: 'MyComponent.js',
       options: [{extensions: ['.js', '.jsx']}],
-      code: withJSXElement
+      code: withJSXElement,
     },
     {
       filename: 'notAComponent.js',
-      code: withoutJSX
+      code: withoutJSX,
     },
     {
       filename: '<text>',
       code: withJSXFragment,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       filename: 'MyComponent.jsx',
       code: withJSXFragment,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       filename: 'MyComponent.js',
       options: [{extensions: ['.js', '.jsx']}],
       code: withJSXFragment,
-      parser: parsers.BABEL_ESLINT
-    }
+      parser: parsers.BABEL_ESLINT,
+    },
   ],
 
   invalid: [
@@ -89,9 +89,9 @@ ruleTester.run('jsx-filename-extension', rule, {
       errors: [
         {
           messageId: 'noJSXWithExtension',
-          data: {ext: '.js'}
-        }
-      ]
+          data: {ext: '.js'},
+        },
+      ],
     },
     {
       filename: 'MyComponent.jsx',
@@ -100,9 +100,9 @@ ruleTester.run('jsx-filename-extension', rule, {
       errors: [
         {
           messageId: 'extensionOnlyForJSX',
-          data: {ext: '.jsx'}
-        }
-      ]
+          data: {ext: '.jsx'},
+        },
+      ],
     },
     {
       filename: 'notAComponent.js',
@@ -111,9 +111,9 @@ ruleTester.run('jsx-filename-extension', rule, {
       errors: [
         {
           messageId: 'noJSXWithExtension',
-          data: {ext: '.js'}
-        }
-      ]
+          data: {ext: '.js'},
+        },
+      ],
     },
     {
       filename: 'MyComponent.jsx',
@@ -122,9 +122,9 @@ ruleTester.run('jsx-filename-extension', rule, {
       errors: [
         {
           messageId: 'noJSXWithExtension',
-          data: {ext: '.jsx'}
-        }
-      ]
+          data: {ext: '.jsx'},
+        },
+      ],
     },
     {
       filename: 'MyComponent.js',
@@ -133,9 +133,9 @@ ruleTester.run('jsx-filename-extension', rule, {
       errors: [
         {
           messageId: 'noJSXWithExtension',
-          data: {ext: '.js'}
-        }
-      ]
+          data: {ext: '.js'},
+        },
+      ],
     },
     {
       filename: 'MyComponent.jsx',
@@ -145,9 +145,9 @@ ruleTester.run('jsx-filename-extension', rule, {
       errors: [
         {
           messageId: 'noJSXWithExtension',
-          data: {ext: '.jsx'}
-        }
-      ]
-    }
-  ]
+          data: {ext: '.jsx'},
+        },
+      ],
+    },
+  ],
 });

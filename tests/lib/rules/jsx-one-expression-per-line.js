@@ -18,8 +18,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -30,62 +30,62 @@ const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('jsx-one-expression-per-line', rule, {
   valid: [
     {
-      code: '<App />'
+      code: '<App />',
     },
     {
       code: `
 \t\t<AllTabs>
 \t\t\tFail
 \t\t</AllTabs>
-    `
+    `,
     },
     {
       code: `
 \t\t<TagsWithTabs>
       Fail
 \t\t</TagsWithTabs>
-    `
+    `,
     },
     {
       code: `
     <ClosedTagWithTabs>
       Fail
 \t\t</ClosedTagWithTabs>
-    `
+    `,
     },
     {
       code: `
 \t\t<OpenTagWithTabs>
       OK
     </OpenTagWithTabs>
-    `
+    `,
     },
     {
       code: `
     <TextWithTabs>
 \t\t\tOK
     </TextWithTabs>
-    `
+    `,
     },
     {
       code: `
       <AllSpaces>
         OK
       </AllSpaces>
-      `
+      `,
     },
     {
-      code: '<App></App>'
+      code: '<App></App>',
     },
     {
-      code: '<App foo="bar" />'
+      code: '<App foo="bar" />',
     },
     {
       code: `
         <App>
           <Foo />
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -93,21 +93,21 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
           <Foo />
           <Bar />
         </App>
-      `
+      `,
     },
     {
       code: `
         <App>
           <Foo></Foo>
         </App>
-      `
+      `,
     },
     {
       code: `
         <App>
           foo bar baz  whatever  
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -115,7 +115,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
           <Foo>
           </Foo>
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -124,7 +124,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
         >
         <Foo />
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -137,35 +137,35 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
         </
         App
         >
-      `
+      `,
     },
     {
       code: '<App>foo</App>',
-      options: [{allow: 'literal'}]
+      options: [{allow: 'literal'}],
     },
     {
       code: '<App>123</App>',
-      options: [{allow: 'literal'}]
+      options: [{allow: 'literal'}],
     },
     {
       code: '<App>foo</App>',
-      options: [{allow: 'single-child'}]
+      options: [{allow: 'single-child'}],
     },
     {
       code: '<App>{"foo"}</App>',
-      options: [{allow: 'single-child'}]
+      options: [{allow: 'single-child'}],
     },
     {
       code: '<App>{foo && <Bar />}</App>',
-      options: [{allow: 'single-child'}]
+      options: [{allow: 'single-child'}],
     },
     {
       code: '<App><Foo /></App>',
-      options: [{allow: 'single-child'}]
+      options: [{allow: 'single-child'}],
     },
     {
       code: '<></>',
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -173,7 +173,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
           <Foo />
         </>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -182,8 +182,8 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
           <Bar />
         </>
       `,
-      parser: parsers.BABEL_ESLINT
-    }
+      parser: parsers.BABEL_ESLINT,
+    },
   ],
 
   invalid: [
@@ -199,10 +199,10 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{"foo"}'}
-        }
+          data: {descriptor: '{"foo"}'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -216,10 +216,10 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'foo'}
-        }
+          data: {descriptor: 'foo'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -237,10 +237,10 @@ foo
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{"bar"}'}
-        }
+          data: {descriptor: '{"bar"}'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -258,10 +258,10 @@ bar
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: ' bar        '}
-        }
+          data: {descriptor: ' bar        '},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -277,9 +277,9 @@ bar
       `,
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Bar'}
+        data: {descriptor: 'Bar'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -295,9 +295,9 @@ foo
       `,
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'foo        '}
+        data: {descriptor: 'foo        '},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -313,34 +313,34 @@ foo
       `,
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: '{"foo"}'}
+        data: {descriptor: '{"foo"}'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<div>',
         '  {"foo"} { I18n.t(\'baz\') }',
-        '</div>'
+        '</div>',
       ].join('\n'),
       output: [
         '<div>',
         '  {"foo"} ',
         '{\' \'}',
         '{ I18n.t(\'baz\') }',
-        '</div>'
+        '</div>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{ I18n.t(\'baz\') }'}
-        }
+          data: {descriptor: '{ I18n.t(\'baz\') }'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
-        '<Text style={styles.foo}>{ bar } <Text/> { I18n.t(\'baz\') }</Text>'
+        '<Text style={styles.foo}>{ bar } <Text/> { I18n.t(\'baz\') }</Text>',
       ].join('\n'),
       output: [
         '<Text style={styles.foo}>',
@@ -349,28 +349,28 @@ foo
         '<Text/> ',
         '{\' \'}',
         '{ I18n.t(\'baz\') }',
-        '</Text>'
+        '</Text>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{ bar }'}
+          data: {descriptor: '{ bar }'},
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Text'}
+          data: {descriptor: 'Text'},
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{ I18n.t(\'baz\') }'}
-        }
+          data: {descriptor: '{ I18n.t(\'baz\') }'},
+        },
       ],
-      parserOptions
+      parserOptions,
 
     },
     {
       code: [
-        '<Text style={styles.foo}> <Bar/> <Baz/></Text>'
+        '<Text style={styles.foo}> <Bar/> <Baz/></Text>',
       ].join('\n'),
       output: [
         '<Text style={styles.foo}> ',
@@ -378,23 +378,23 @@ foo
         '<Bar/> ',
         '{\' \'}',
         '<Baz/>',
-        '</Text>'
+        '</Text>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Bar'}
+          data: {descriptor: 'Bar'},
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Baz'}
-        }
+          data: {descriptor: 'Baz'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
-        '<Text style={styles.foo}> <Bar/> <Baz/> <Bunk/> <Bruno/> </Text>'
+        '<Text style={styles.foo}> <Bar/> <Baz/> <Bunk/> <Bruno/> </Text>',
       ].join('\n'),
       output: [
         '<Text style={styles.foo}> ',
@@ -407,521 +407,521 @@ foo
         '{\' \'}',
         '<Bruno/>',
         '{\' \'}',
-        ' </Text>'
+        ' </Text>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Bar'}
+          data: {descriptor: 'Bar'},
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Baz'}
+          data: {descriptor: 'Baz'},
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Bunk'}
+          data: {descriptor: 'Bunk'},
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Bruno'}
-        }
+          data: {descriptor: 'Bruno'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
-        '<Text style={styles.foo}> <Bar /></Text>'
+        '<Text style={styles.foo}> <Bar /></Text>',
       ].join('\n'),
       output: [
         '<Text style={styles.foo}> ',
         '{\' \'}',
         '<Bar />',
-        '</Text>'
+        '</Text>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Bar'}
-        }
+          data: {descriptor: 'Bar'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<Text style={styles.foo}> <Bar />',
-        '</Text>'
+        '</Text>',
       ].join('\n'),
       output: [
         '<Text style={styles.foo}> ',
         '{\' \'}',
         '<Bar />',
-        '</Text>'
+        '</Text>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Bar'}
-        }
+          data: {descriptor: 'Bar'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<Text style={styles.foo}>',
         '  <Bar /> <Baz />',
-        '</Text>'
+        '</Text>',
       ].join('\n'),
       output: [
         '<Text style={styles.foo}>',
         '  <Bar /> ',
         '{\' \'}',
         '<Baz />',
-        '</Text>'
+        '</Text>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'Baz'}
-        }
+          data: {descriptor: 'Baz'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<Text style={styles.foo}>',
         '  { bar } { I18n.t(\'baz\') }',
-        '</Text>'
+        '</Text>',
       ].join('\n'),
       output: [
         '<Text style={styles.foo}>',
         '  { bar } ',
         '{\' \'}',
         '{ I18n.t(\'baz\') }',
-        '</Text>'
+        '</Text>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{ I18n.t(\'baz\') }'}
-        }
+          data: {descriptor: '{ I18n.t(\'baz\') }'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<div>',
         '  foo<input />',
-        '</div>'
+        '</div>',
       ].join('\n'),
       output: [
         '<div>',
         '  foo',
         '<input />',
-        '</div>'
+        '</div>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'input'}
-        }
+          data: {descriptor: 'input'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<div>',
         '  {"foo"}<span />',
-        '</div>'
+        '</div>',
       ].join('\n'),
       output: [
         '<div>',
         '  {"foo"}',
         '<span />',
-        '</div>'
+        '</div>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'span'}
+        data: {descriptor: 'span'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<div>',
         '  foo <input />',
-        '</div>'
+        '</div>',
       ].join('\n'),
       output: [
         '<div>',
         '  foo ',
         '{\' \'}',
         '<input />',
-        '</div>'
+        '</div>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'input'}
+        data: {descriptor: 'input'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<div>',
         '  <input /> foo',
-        '</div>'
+        '</div>',
       ].join('\n'),
       output: [
         '<div>',
         '  <input />',
         '{\' \'}',
         'foo',
-        '</div>'
+        '</div>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: ' foo'}
+        data: {descriptor: ' foo'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<div>',
         '  <span /> <input />',
-        '</div>'
+        '</div>',
       ].join('\n'),
       output: [
         '<div>',
         '  <span /> ',
         '{\' \'}',
         '<input />',
-        '</div>'
+        '</div>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'input'}
-        }
+          data: {descriptor: 'input'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<div>',
         '  <span />',
         '{\' \'}<input />',
-        '</div>'
+        '</div>',
       ].join('\n'),
       output: [
         '<div>',
         '  <span />',
         '{\' \'}',
         '<input />',
-        '</div>'
+        '</div>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'input'}
-        }
+          data: {descriptor: 'input'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<div>',
         '  {"foo"} <input />',
-        '</div>'
+        '</div>',
       ].join('\n'),
       output: [
         '<div>',
         '  {"foo"} ',
         '{\' \'}',
         '<input />',
-        '</div>'
+        '</div>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'input'}
-        }
+          data: {descriptor: 'input'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<div>',
         '  {"foo"} bar',
-        '</div>'
+        '</div>',
       ].join('\n'),
       output: [
         '<div>',
         '  {"foo"}',
         '{\' \'}',
         'bar',
-        '</div>'
+        '</div>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: ' bar'}
+        data: {descriptor: ' bar'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<div>',
         '  <input /> {"foo"}',
-        '</div>'
+        '</div>',
       ].join('\n'),
       output: [
         '<div>',
         '  <input /> ',
         '{\' \'}',
         '{"foo"}',
-        '</div>'
+        '</div>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{"foo"}'}
-        }
+          data: {descriptor: '{"foo"}'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<App>',
         '  <Foo></Foo><Bar></Bar>',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>',
         '  <Foo></Foo>',
         '<Bar></Bar>',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Bar'}
+        data: {descriptor: 'Bar'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<App>',
-        '<Foo></Foo></App>'
+        '<Foo></Foo></App>',
       ].join('\n'),
       output: [
         '<App>',
         '<Foo></Foo>',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'}
+        data: {descriptor: 'Foo'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<App><Foo />',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>',
         '<Foo />',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'}
+        data: {descriptor: 'Foo'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<App>',
-        '<Foo/></App>'
+        '<Foo/></App>',
       ].join('\n'),
       output: [
         '<App>',
         '<Foo/>',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'}
+        data: {descriptor: 'Foo'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<App><Foo',
         '/>',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>',
         '<Foo',
         '/>',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'}
+        data: {descriptor: 'Foo'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<App',
         '>',
-        '<Foo /></App>'
+        '<Foo /></App>',
       ].join('\n'),
       output: [
         '<App',
         '>',
         '<Foo />',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'}
+        data: {descriptor: 'Foo'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<App',
         '>',
         '<Foo',
-        '/></App>'
+        '/></App>',
       ].join('\n'),
       output: [
         '<App',
         '>',
         '<Foo',
         '/>',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'}
+        data: {descriptor: 'Foo'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<App',
         '><Foo />',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App',
         '>',
         '<Foo />',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'}
+        data: {descriptor: 'Foo'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<App>',
         '  <Foo></Foo',
-        '></App>'
+        '></App>',
       ].join('\n'),
       output: [
         '<App>',
         '  <Foo></Foo',
         '>',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'}
-      }],
-      parserOptions
-    },
-    {
-      code: [
-        '<App>',
-        '  <Foo></',
-        'Foo></App>'
-      ].join('\n'),
-      output: [
-        '<App>',
-        '  <Foo></',
-        'Foo>',
-        '</App>'
-      ].join('\n'),
-      errors: [{
-        messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'}
-      }],
-      parserOptions
-    },
-    {
-      code: [
-        '<App>',
-        '  <Foo></',
-        'Foo></App>'
-      ].join('\n'),
-      output: [
-        '<App>',
-        '  <Foo></',
-        'Foo>',
-        '</App>'
-      ].join('\n'),
-      errors: [{
-        messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'}
+        data: {descriptor: 'Foo'},
       }],
       parserOptions,
-      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: [
+        '<App>',
+        '  <Foo></',
+        'Foo></App>',
+      ].join('\n'),
+      output: [
+        '<App>',
+        '  <Foo></',
+        'Foo>',
+        '</App>',
+      ].join('\n'),
+      errors: [{
+        messageId: 'moveToNewLine',
+        data: {descriptor: 'Foo'},
+      }],
+      parserOptions,
+    },
+    {
+      code: [
+        '<App>',
+        '  <Foo></',
+        'Foo></App>',
+      ].join('\n'),
+      output: [
+        '<App>',
+        '  <Foo></',
+        'Foo>',
+        '</App>',
+      ].join('\n'),
+      errors: [{
+        messageId: 'moveToNewLine',
+        data: {descriptor: 'Foo'},
+      }],
+      parserOptions,
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: [
         '<App>',
         '  <Foo></',
         'Foo><Bar />',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>',
         '  <Foo></',
         'Foo>',
         '<Bar />',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Bar'}
+        data: {descriptor: 'Bar'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<App>',
         '  <Foo>',
         '    <Bar /></Foo>',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>',
         '  <Foo>',
         '    <Bar />',
         '</Foo>',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Bar'}
+        data: {descriptor: 'Bar'},
       }],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
@@ -929,7 +929,7 @@ foo
         '  <Foo>',
         '    <Bar> baz </Bar>',
         '  </Foo>',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>',
@@ -940,63 +940,63 @@ foo
         '{\' \'}',
         '</Bar>',
         '  </Foo>',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: ' baz '}
-        }
+          data: {descriptor: ' baz '},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
     // Would be nice to handle in one pass, but multipass works fine.
       code: [
         '<App>',
         '  foo {"bar"} baz',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>',
         '  foo ',
         '{\' \'}',
         '{"bar"} baz',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{"bar"}'}
+          data: {descriptor: '{"bar"}'},
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: ' baz'}
-        }
+          data: {descriptor: ' baz'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
     // Would be nice to handle in one pass, but multipass works fine.
       code: [
         '<App>',
         '  foo {"bar"}',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>',
         '  foo ',
         '{\' \'}',
         '{"bar"}',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{"bar"}'}
-        }
+          data: {descriptor: '{"bar"}'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
     // Would be nice to handle in one pass, but multipass works fine.
@@ -1005,7 +1005,7 @@ foo
         '  foo ',
         '{\' \'}',
         '{"bar"} baz',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>',
@@ -1014,15 +1014,15 @@ foo
         '{"bar"}',
         '{\' \'}',
         'baz',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: ' baz'}
-        }
+          data: {descriptor: ' baz'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
     // Would be nice to handle in one pass, but multipass works fine.
@@ -1031,7 +1031,7 @@ foo
         '',
         '  foo {"bar"} baz',
         '',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>',
@@ -1040,19 +1040,19 @@ foo
         '{\' \'}',
         '{"bar"} baz',
         '',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{"bar"}'}
+          data: {descriptor: '{"bar"}'},
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: ' baz'}
-        }
+          data: {descriptor: ' baz'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
     // Would be nice to handle in one pass, but multipass works fine.
@@ -1063,7 +1063,7 @@ foo
         '{\' \'}',
         '{"bar"} baz',
         '',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>',
@@ -1074,42 +1074,42 @@ foo
         '{\' \'}',
         'baz',
         '',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: ' baz'}
-        }
+          data: {descriptor: ' baz'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<App>{',
         '  foo',
-        '}</App>'
+        '}</App>',
       ].join('\n'),
       output: [
         '<App>',
         '{',
         '  foo',
         '}',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{  foo}'}
-        }
+          data: {descriptor: '{  foo}'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<App> {',
         '  foo',
-        '} </App>'
+        '} </App>',
       ].join('\n'),
       output: [
         '<App> ',
@@ -1118,15 +1118,15 @@ foo
         '  foo',
         '}',
         '{\' \'}',
-        ' </App>'
+        ' </App>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{  foo}'}
-        }
+          data: {descriptor: '{  foo}'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: [
@@ -1134,7 +1134,7 @@ foo
         '{\' \'}',
         '{',
         '  foo',
-        '} </App>'
+        '} </App>',
       ].join('\n'),
       output: [
         '<App> ',
@@ -1143,15 +1143,15 @@ foo
         '  foo',
         '}',
         '{\' \'}',
-        ' </App>'
+        ' </App>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{  foo}'}
-        }
+          data: {descriptor: '{  foo}'},
+        },
       ],
-      parserOptions
+      parserOptions,
     },
     {
       code: '<App><Foo /></App>',
@@ -1159,12 +1159,12 @@ foo
       output: [
         '<App>',
         '<Foo />',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'}
-      }]
+        data: {descriptor: 'Foo'},
+      }],
     },
     {
       code: '<App>foo</App>',
@@ -1172,12 +1172,12 @@ foo
       output: [
         '<App>',
         'foo',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'foo'}
-      }]
+        data: {descriptor: 'foo'},
+      }],
     },
     {
       code: '<App>{"foo"}</App>',
@@ -1185,28 +1185,28 @@ foo
       output: [
         '<App>',
         '{"foo"}',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: '{"foo"}'}
-      }]
+        data: {descriptor: '{"foo"}'},
+      }],
     },
     {
       code: [
         '<App>foo',
-        '</App>'
+        '</App>',
       ].join('\n'),
       options: [{allow: 'literal'}],
       output: [
         '<App>',
         'foo',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'foo'}
-      }]
+        data: {descriptor: 'foo'},
+      }],
     },
     {
       code: '<App><Foo /></App>',
@@ -1214,19 +1214,19 @@ foo
       output: [
         '<App>',
         '<Foo />',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'}
-      }]
+        data: {descriptor: 'Foo'},
+      }],
     },
     {
       code: [
         '<App',
         '  foo="1"',
         '  bar="2"',
-        '>baz</App>'
+        '>baz</App>',
       ].join('\n'),
       options: [{allow: 'literal'}],
       output: [
@@ -1235,89 +1235,89 @@ foo
         '  bar="2"',
         '>',
         'baz',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'baz'}
-      }]
+        data: {descriptor: 'baz'},
+      }],
     },
     {
       code: [
         '<App>foo',
         'bar',
-        '</App>'
+        '</App>',
       ].join('\n'),
       options: [{allow: 'literal'}],
       output: [
         '<App>',
         'foo',
         'bar',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'foobar'}
-      }]
+        data: {descriptor: 'foobar'},
+      }],
     },
     {
       code: '<>{"foo"}</>',
       output: [
         '<>',
         '{"foo"}',
-        '</>'
+        '</>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: '{"foo"}'}
+        data: {descriptor: '{"foo"}'},
       }],
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<App>',
         '  <Foo /><></>',
-        '</App>'
+        '</App>',
       ].join('\n'),
       output: [
         '<App>',
         '  <Foo />',
         '<></>',
-        '</App>'
+        '</App>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: '<></>'}
+        data: {descriptor: '<></>'},
       }],
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<',
         '><Foo />',
-        '</>'
+        '</>',
       ].join('\n'),
       output: [
         '<',
         '>',
         '<Foo />',
-        '</>'
+        '</>',
       ].join('\n'),
       errors: [{
         messageId: 'moveToNewLine',
-        data: {descriptor: 'Foo'}
+        data: {descriptor: 'Foo'},
       }],
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: [
         '<div>',
         '<MyComponent>a</MyComponent>',
         '<MyOther>{a}</MyOther>',
-        '</div>'
+        '</div>',
       ].join('\n'),
       output: [
         '<div>',
@@ -1327,20 +1327,20 @@ foo
         '<MyOther>',
         '{a}',
         '</MyOther>',
-        '</div>'
+        '</div>',
       ].join('\n'),
       errors: [
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: 'a'}
+          data: {descriptor: 'a'},
         },
         {
           messageId: 'moveToNewLine',
-          data: {descriptor: '{a}'}
-        }
+          data: {descriptor: '{a}'},
+        },
       ],
       parser: parsers.BABEL_ESLINT,
-      parserOptions
-    }
-  ]
+      parserOptions,
+    },
+  ],
 });

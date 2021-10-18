@@ -18,8 +18,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Class component with typed props property
@@ -57,7 +57,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Functional component with typed props argument
@@ -66,7 +66,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Functional component with type intersection
@@ -79,7 +79,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return <div>Hello {firstName} {lastName}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Arrow function
@@ -88,7 +88,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           <div>Hello {props.name}</div>
         );
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Destructured props
@@ -97,7 +97,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           <div>Hello {props.name}</div>
         );
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // No error, because this is not a component
@@ -106,7 +106,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return props.n + 1;
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // No error, because there is no Props flow type
@@ -116,7 +116,7 @@ ruleTester.run('prefer-read-only-props', rule, {
             return <div>Hello {this.props.name}</div>;
           }
         }
-      `
+      `,
     },
     {
       // No error, because PropTypes do not support variance
@@ -129,7 +129,7 @@ ruleTester.run('prefer-read-only-props', rule, {
         Hello.propTypes = {
           name: PropTypes.string,
         };
-      `
+      `,
     },
     {
       // Class component with typed props argument
@@ -144,7 +144,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Class component with typed props argument
@@ -160,7 +160,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     parsers.TS([
       {
@@ -177,7 +177,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           
           export default MyComponent;
         `,
-        parser: parsers.TYPESCRIPT_ESLINT
+        parser: parsers.TYPESCRIPT_ESLINT,
       },
       {
         code: `
@@ -193,8 +193,8 @@ ruleTester.run('prefer-read-only-props', rule, {
           
           export default MyComponent;
         `,
-        parser: parsers['@TYPESCRIPT_ESLINT']
-      }
+        parser: parsers['@TYPESCRIPT_ESLINT'],
+      },
     ])
   ),
 
@@ -227,9 +227,9 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       // Props.name is contravariant
@@ -259,9 +259,9 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -290,9 +290,9 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -309,9 +309,9 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -328,9 +328,9 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -347,9 +347,9 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'name'}
-        }
-      ]
+          data: {name: 'name'},
+        },
+      ],
     },
     {
       code: `
@@ -374,13 +374,13 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'firstName'}
+          data: {name: 'firstName'},
         },
         {
           messageId: 'readOnlyProp',
-          data: {name: 'lastName'}
-        }
-      ]
+          data: {name: 'lastName'},
+        },
+      ],
     },
     {
       code: `
@@ -397,9 +397,9 @@ ruleTester.run('prefer-read-only-props', rule, {
       errors: [
         {
           messageId: 'readOnlyProp',
-          data: {name: 'name'}
-        }
-      ]
-    }
-  ]
+          data: {name: 'name'},
+        },
+      ],
+    },
+  ],
 });

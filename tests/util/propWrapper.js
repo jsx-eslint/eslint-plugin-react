@@ -9,20 +9,20 @@ describe('PropWrapperFunctions', () => {
       const propWrapperFunctions = [
         'Object.freeze',
         {
-          property: 'forbidExtraProps'
-        }
+          property: 'forbidExtraProps',
+        },
       ];
       const context = {
         settings: {
-          propWrapperFunctions
-        }
+          propWrapperFunctions,
+        },
       };
       assert.deepStrictEqual(propWrapperUtil.getPropWrapperFunctions(context), new Set(propWrapperFunctions));
     });
 
     it('returns empty set if no setting', () => {
       const context = {
-        settings: {}
+        settings: {},
       };
       assert.deepStrictEqual(propWrapperUtil.getPropWrapperFunctions(context), new Set([]));
     });
@@ -32,8 +32,8 @@ describe('PropWrapperFunctions', () => {
     it('with string', () => {
       const context = {
         settings: {
-          propWrapperFunctions: ['Object.freeze']
-        }
+          propWrapperFunctions: ['Object.freeze'],
+        },
       };
       assert.equal(propWrapperUtil.isPropWrapperFunction(context, 'Object.freeze'), true);
     });
@@ -44,10 +44,10 @@ describe('PropWrapperFunctions', () => {
           propWrapperFunctions: [
             {
               property: 'freeze',
-              object: 'Object'
-            }
-          ]
-        }
+              object: 'Object',
+            },
+          ],
+        },
       };
       assert.equal(propWrapperUtil.isPropWrapperFunction(context, 'Object.freeze'), true);
     });
@@ -57,10 +57,10 @@ describe('PropWrapperFunctions', () => {
         settings: {
           propWrapperFunctions: [
             {
-              property: 'forbidExtraProps'
-            }
-          ]
-        }
+              property: 'forbidExtraProps',
+            },
+          ],
+        },
       };
       assert.equal(propWrapperUtil.isPropWrapperFunction(context, 'forbidExtraProps'), true);
     });
@@ -72,17 +72,17 @@ describe('PropWrapperFunctions', () => {
         'Object.freeze',
         {
           property: 'forbidExtraProps',
-          exact: true
-        }
+          exact: true,
+        },
       ];
       const context = {
         settings: {
-          propWrapperFunctions
-        }
+          propWrapperFunctions,
+        },
       };
       assert.deepStrictEqual(propWrapperUtil.getExactPropWrapperFunctions(context), new Set([{
         property: 'forbidExtraProps',
-        exact: true
+        exact: true,
       }]));
     });
 
@@ -90,20 +90,20 @@ describe('PropWrapperFunctions', () => {
       const propWrapperFunctions = [
         'Object.freeze',
         {
-          property: 'forbidExtraProps'
-        }
+          property: 'forbidExtraProps',
+        },
       ];
       const context = {
         settings: {
-          propWrapperFunctions
-        }
+          propWrapperFunctions,
+        },
       };
       assert.deepStrictEqual(propWrapperUtil.getExactPropWrapperFunctions(context), new Set([]));
     });
 
     it('returns empty set if no setting', () => {
       const context = {
-        settings: {}
+        settings: {},
       };
       assert.deepStrictEqual(propWrapperUtil.getExactPropWrapperFunctions(context), new Set([]));
     });
@@ -113,8 +113,8 @@ describe('PropWrapperFunctions', () => {
     it('with string', () => {
       const context = {
         settings: {
-          propWrapperFunctions: ['Object.freeze']
-        }
+          propWrapperFunctions: ['Object.freeze'],
+        },
       };
       assert.equal(propWrapperUtil.isExactPropWrapperFunction(context, 'Object.freeze'), false);
     });
@@ -126,10 +126,10 @@ describe('PropWrapperFunctions', () => {
             {
               property: 'freeze',
               object: 'Object',
-              exact: true
-            }
-          ]
-        }
+              exact: true,
+            },
+          ],
+        },
       };
       assert.equal(propWrapperUtil.isExactPropWrapperFunction(context, 'Object.freeze'), true);
     });
@@ -140,10 +140,10 @@ describe('PropWrapperFunctions', () => {
           propWrapperFunctions: [
             {
               property: 'forbidExtraProps',
-              exact: true
-            }
-          ]
-        }
+              exact: true,
+            },
+          ],
+        },
       };
       assert.equal(propWrapperUtil.isExactPropWrapperFunction(context, 'forbidExtraProps'), true);
     });
@@ -160,12 +160,12 @@ describe('PropWrapperFunctions', () => {
         'Object.freeze',
         {
           property: 'exact',
-          exact: true
+          exact: true,
         },
         {
           property: 'bar',
-          object: 'foo'
-        }
+          object: 'foo',
+        },
       ]);
       assert.equal(propWrapperUtil.formatPropWrapperFunctions(propWrappers), '\'Object.freeze\', \'exact\', \'foo.bar\'');
     });

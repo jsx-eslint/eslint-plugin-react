@@ -28,8 +28,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ ruleTester.run('no-unescaped-entities', rule, {
             );
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -57,7 +57,7 @@ ruleTester.run('no-unescaped-entities', rule, {
             return <div>Here is some text!</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -66,7 +66,7 @@ ruleTester.run('no-unescaped-entities', rule, {
             return <div>I&rsquo;ve escaped some entities: &gt; &lt; &amp;</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -77,7 +77,7 @@ ruleTester.run('no-unescaped-entities', rule, {
             and here are some escaped entities: &gt; &lt; &amp;</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -86,7 +86,7 @@ ruleTester.run('no-unescaped-entities', rule, {
             return <div>{">" + "<" + "&" + '"'}</div>;
           },
         });
-      `
+      `,
     },
     {
       code: `
@@ -96,7 +96,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -106,7 +106,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -116,7 +116,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           },
         });
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     }
   ),
 
@@ -133,9 +133,9 @@ ruleTester.run('no-unescaped-entities', rule, {
         errors: [
           {
             messageId: 'unescapedEntityAlts',
-            data: {entity: '>', alts: '`&gt;`'}
-          }
-        ]
+            data: {entity: '>', alts: '`&gt;`'},
+          },
+        ],
       },
       {
         code: `
@@ -150,9 +150,9 @@ ruleTester.run('no-unescaped-entities', rule, {
         errors: [
           {
             messageId: 'unescapedEntityAlts',
-            data: {entity: '>', alts: '`&gt;`'}
-          }
-        ]
+            data: {entity: '>', alts: '`&gt;`'},
+          },
+        ],
       },
       {
         code: `
@@ -165,17 +165,17 @@ ruleTester.run('no-unescaped-entities', rule, {
         errors: [
           {
             messageId: 'unescapedEntityAlts',
-            data: {entity: '\'', alts: '`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`'}
+            data: {entity: '\'', alts: '`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`'},
           },
           {
             messageId: 'unescapedEntityAlts',
-            data: {entity: '>', alts: '`&gt;`'}
+            data: {entity: '>', alts: '`&gt;`'},
           },
           {
             messageId: 'unescapedEntityAlts',
-            data: {entity: '>', alts: '`&gt;`'}
-          }
-        ]
+            data: {entity: '>', alts: '`&gt;`'},
+          },
+        ],
       },
       {
         code: `
@@ -188,10 +188,10 @@ ruleTester.run('no-unescaped-entities', rule, {
         errors: [
           {
             messageId: 'unescapedEntityAlts',
-            data: {entity: '}', alts: '`&#125;`'}
-          }
-        ]
-      }
+            data: {entity: '}', alts: '`&#125;`'},
+          },
+        ],
+      },
     ] : [],
     {
       code: `
@@ -205,9 +205,9 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [
         {
           messageId: 'unescapedEntityAlts',
-          data: {entity: '>', alts: '`&gt;`'}
-        }
-      ]
+          data: {entity: '>', alts: '`&gt;`'},
+        },
+      ],
     },
     {
       code: `
@@ -223,9 +223,9 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [
         {
           messageId: 'unescapedEntityAlts',
-          data: {entity: '>', alts: '`&gt;`'}
-        }
-      ]
+          data: {entity: '>', alts: '`&gt;`'},
+        },
+      ],
     },
     {
       code: `
@@ -238,9 +238,9 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [
         {
           messageId: 'unescapedEntityAlts',
-          data: {entity: '\'', alts: '`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`'}
-        }
-      ]
+          data: {entity: '\'', alts: '`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`'},
+        },
+      ],
     },
     {
       code: `
@@ -254,9 +254,9 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [
         {
           messageId: 'unescapedEntityAlts',
-          data: {entity: '}', alts: '`&#125;`'}
-        }
-      ]
+          data: {entity: '}', alts: '`&#125;`'},
+        },
+      ],
     },
     {
       code: `
@@ -270,10 +270,10 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [
         {
           messageId: 'unescapedEntity',
-          data: {entity: '&'}
-        }
+          data: {entity: '&'},
+        },
       ],
-      options: [{forbid: ['&']}]
+      options: [{forbid: ['&']}],
     },
     {
       code: `
@@ -286,10 +286,10 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [
         {
           messageId: 'unescapedEntity',
-          data: {entity: '&'}
-        }
+          data: {entity: '&'},
+        },
       ],
-      options: [{forbid: ['&']}]
+      options: [{forbid: ['&']}],
     },
     {
       code: `
@@ -302,18 +302,18 @@ ruleTester.run('no-unescaped-entities', rule, {
       errors: [
         {
           messageId: 'unescapedEntityAlts',
-          data: {entity: '&', alts: '`&amp;`'}
+          data: {entity: '&', alts: '`&amp;`'},
         }],
       options: [
         {
           forbid: [
             {
               char: '&',
-              alternatives: ['&amp;']
-            }
-          ]
-        }
-      ]
+              alternatives: ['&amp;'],
+            },
+          ],
+        },
+      ],
     }
-  ).filter(Boolean)
+  ).filter(Boolean),
 });

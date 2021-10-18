@@ -16,14 +16,14 @@ const rule = require('../../../lib/rules/no-access-state-in-setstate');
 const parserOptions = {
   ecmaVersion: 2018,
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 const settings = {
   react: {
-    createClass: 'createClass'
-  }
+    createClass: 'createClass',
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -55,7 +55,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions
+      parserOptions,
     },
     {
     // issue 1559: don't crash
@@ -74,7 +74,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions
+      parserOptions,
     },
     {
     // issue 1604: allow this.state in callback
@@ -85,7 +85,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -95,7 +95,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -107,7 +107,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions
+      parserOptions,
     },
     {
       // https://github.com/yannickcr/eslint-plugin-react/pull/1611
@@ -115,7 +115,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         function testFunction({a, b}) {
         };
       `,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -133,7 +133,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -145,7 +145,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      parserOptions
+      parserOptions,
     },
     {
       code: `
@@ -155,8 +155,8 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         };
       `,
-      parserOptions
-    }
+      parserOptions,
+    },
   ],
 
   invalid: [
@@ -169,7 +169,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}]
+      errors: [{messageId: 'useCallback'}],
     },
     {
       code: `
@@ -180,7 +180,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}]
+      errors: [{messageId: 'useCallback'}],
     },
     {
       code: `
@@ -192,7 +192,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}]
+      errors: [{messageId: 'useCallback'}],
     },
     {
       code: `
@@ -204,7 +204,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}]
+      errors: [{messageId: 'useCallback'}],
     },
     {
       code: `
@@ -218,7 +218,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}]
+      errors: [{messageId: 'useCallback'}],
     },
     {
       code: `
@@ -229,7 +229,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}]
+      errors: [{messageId: 'useCallback'}],
     },
     {
       code: `
@@ -240,7 +240,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}]
+      errors: [{messageId: 'useCallback'}],
     },
     {
       code: `
@@ -254,7 +254,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         });
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}]
+      errors: [{messageId: 'useCallback'}],
     },
     {
       code: `
@@ -265,7 +265,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         }
       `,
       parserOptions,
-      errors: [{messageId: 'useCallback'}]
-    }
-  ]
+      errors: [{messageId: 'useCallback'}],
+    },
+  ],
 });

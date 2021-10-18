@@ -18,8 +18,8 @@ const parserOptions = {
   sourceType: 'module',
   ecmaVersion: 2015,
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -32,7 +32,7 @@ ruleTester.run('jsx-max-depth', rule, {
     {
       code: `
         <App />
-      `
+      `,
     },
     {
       code: `
@@ -40,16 +40,7 @@ ruleTester.run('jsx-max-depth', rule, {
           <foo />
         </App>
       `,
-      options: [{max: 1}]
-    },
-    {
-      code: `
-        <App>
-          <foo>
-            <bar />
-          </foo>
-        </App>
-      `
+      options: [{max: 1}],
     },
     {
       code: `
@@ -59,24 +50,33 @@ ruleTester.run('jsx-max-depth', rule, {
           </foo>
         </App>
       `,
-      options: [{max: 2}]
+    },
+    {
+      code: `
+        <App>
+          <foo>
+            <bar />
+          </foo>
+        </App>
+      `,
+      options: [{max: 2}],
     },
     {
       code: `
         const x = <div><em>x</em></div>;
         <div>{x}</div>
       `,
-      options: [{max: 2}]
+      options: [{max: 2}],
     },
     {
       code: 'const foo = (x) => <div><em>{x}</em></div>;',
-      options: [{max: 2}]
+      options: [{max: 2}],
     },
     {
       code: `
         <></>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -85,7 +85,7 @@ ruleTester.run('jsx-max-depth', rule, {
         </>
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{max: 1}]
+      options: [{max: 1}],
     },
     {
       code: `
@@ -93,7 +93,7 @@ ruleTester.run('jsx-max-depth', rule, {
         <>{x}</>
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{max: 2}]
+      options: [{max: 2}],
     },
     {
       code: `
@@ -107,7 +107,7 @@ ruleTester.run('jsx-max-depth', rule, {
           {x}
         </tbody>
       `,
-      options: [{max: 2}]
+      options: [{max: 2}],
     },
     {
       code: `
@@ -117,7 +117,7 @@ ruleTester.run('jsx-max-depth', rule, {
           }
         };
       `,
-      options: [{max: 1}]
+      options: [{max: 1}],
     },
     {
       code: `
@@ -125,7 +125,7 @@ ruleTester.run('jsx-max-depth', rule, {
           const A = <React.Fragment>{<div />}</React.Fragment>;
           return <div>{A}</div>;
         }
-      `
+      `,
     },
     {
     // Validates circular references don't get rule stuck
@@ -136,7 +136,7 @@ ruleTester.run('jsx-max-depth', rule, {
           first = second;
           return <div id={first} />;
         };
-      `
+      `,
     },
     {
     // Validates circular references are checked at multiple levels
@@ -153,8 +153,8 @@ ruleTester.run('jsx-max-depth', rule, {
           fourth = fifth;
           return <div id={first} />;
         };
-      `
-    }
+      `,
+    },
   ],
 
   invalid: [
@@ -168,9 +168,9 @@ ruleTester.run('jsx-max-depth', rule, {
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 0, found: 1}
-        }
-      ]
+          data: {needed: 0, found: 1},
+        },
+      ],
     },
     {
       code: `
@@ -182,9 +182,9 @@ ruleTester.run('jsx-max-depth', rule, {
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 0, found: 1}
-        }
-      ]
+          data: {needed: 0, found: 1},
+        },
+      ],
     },
     {
       code: `
@@ -198,9 +198,9 @@ ruleTester.run('jsx-max-depth', rule, {
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2}
-        }
-      ]
+          data: {needed: 1, found: 2},
+        },
+      ],
     },
     {
       code: `
@@ -211,9 +211,9 @@ ruleTester.run('jsx-max-depth', rule, {
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2}
-        }
-      ]
+          data: {needed: 1, found: 2},
+        },
+      ],
     },
     {
       code: `
@@ -225,9 +225,9 @@ ruleTester.run('jsx-max-depth', rule, {
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2}
-        }
-      ]
+          data: {needed: 1, found: 2},
+        },
+      ],
     },
     {
       code: `
@@ -239,13 +239,13 @@ ruleTester.run('jsx-max-depth', rule, {
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2}
+          data: {needed: 1, found: 2},
         },
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2}
-        }
-      ]
+          data: {needed: 1, found: 2},
+        },
+      ],
     },
     {
       code: `
@@ -257,9 +257,9 @@ ruleTester.run('jsx-max-depth', rule, {
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 2, found: 3}
-        }
-      ]
+          data: {needed: 2, found: 3},
+        },
+      ],
     },
     {
       code: `
@@ -272,9 +272,9 @@ ruleTester.run('jsx-max-depth', rule, {
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 0, found: 1}
-        }
-      ]
+          data: {needed: 0, found: 1},
+        },
+      ],
     },
     {
       code: `
@@ -289,9 +289,9 @@ ruleTester.run('jsx-max-depth', rule, {
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2}
-        }
-      ]
+          data: {needed: 1, found: 2},
+        },
+      ],
     },
     {
       code: `
@@ -304,13 +304,13 @@ ruleTester.run('jsx-max-depth', rule, {
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2}
+          data: {needed: 1, found: 2},
         },
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2}
-        }
-      ]
+          data: {needed: 1, found: 2},
+        },
+      ],
     },
     {
       code: `
@@ -328,13 +328,13 @@ ruleTester.run('jsx-max-depth', rule, {
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2}
+          data: {needed: 1, found: 2},
         },
         {
           messageId: 'wrongDepth',
-          data: {needed: 1, found: 2}
-        }
-      ]
+          data: {needed: 1, found: 2},
+        },
+      ],
     },
     {
       code: `
@@ -358,9 +358,9 @@ ruleTester.run('jsx-max-depth', rule, {
       errors: [
         {
           messageId: 'wrongDepth',
-          data: {needed: 4, found: 5}
-        }
-      ]
-    }
-  ]
+          data: {needed: 4, found: 5},
+        },
+      ],
+    },
+  ],
 });

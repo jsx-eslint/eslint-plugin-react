@@ -17,8 +17,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // -----------------------------------------------------------------------------
@@ -29,34 +29,34 @@ const ruleTester = new RuleTester({parserOptions});
 ruleTester.run('forbid-foreign-prop-types', rule, {
   valid: [
     {
-      code: 'import { propTypes } from "SomeComponent";'
+      code: 'import { propTypes } from "SomeComponent";',
     },
     {
-      code: 'import { propTypes as someComponentPropTypes } from "SomeComponent";'
+      code: 'import { propTypes as someComponentPropTypes } from "SomeComponent";',
     },
     {
-      code: 'const foo = propTypes'
+      code: 'const foo = propTypes',
     },
     {
-      code: 'foo(propTypes)'
+      code: 'foo(propTypes)',
     },
     {
-      code: 'foo + propTypes'
+      code: 'foo + propTypes',
     },
     {
-      code: 'const foo = [propTypes]'
+      code: 'const foo = [propTypes]',
     },
     {
-      code: 'const foo = { propTypes }'
+      code: 'const foo = { propTypes }',
     },
     {
-      code: 'Foo.propTypes = propTypes'
+      code: 'Foo.propTypes = propTypes',
     },
     {
-      code: 'Foo["propTypes"] = propTypes'
+      code: 'Foo["propTypes"] = propTypes',
     },
     {
-      code: 'const propTypes = "bar"; Foo[propTypes];'
+      code: 'const propTypes = "bar"; Foo[propTypes];',
     },
     {
       code: `
@@ -70,8 +70,8 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
         };
       `,
       options: [
-        {allowInPropTypes: true}
-      ]
+        {allowInPropTypes: true},
+      ],
     },
     {
       code: `
@@ -83,9 +83,9 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       options: [
-        {allowInPropTypes: true}
-      ]
-    }
+        {allowInPropTypes: true},
+      ],
+    },
   ],
 
   invalid: [
@@ -101,9 +101,9 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       errors: [
         {
           messageId: 'forbiddenPropType',
-          type: 'Identifier'
-        }
-      ]
+          type: 'Identifier',
+        },
+      ],
     },
     {
       code: `
@@ -117,9 +117,9 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       errors: [
         {
           messageId: 'forbiddenPropType',
-          type: 'Literal'
-        }
-      ]
+          type: 'Literal',
+        },
+      ],
     },
     {
       code: `
@@ -134,9 +134,9 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       errors: [
         {
           messageId: 'forbiddenPropType',
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -152,9 +152,9 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       errors: [
         {
           messageId: 'forbiddenPropType',
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -168,9 +168,9 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       errors: [
         {
           messageId: 'forbiddenPropType',
-          type: 'Identifier'
-        }
-      ]
+          type: 'Identifier',
+        },
+      ],
     },
     {
       code: `
@@ -185,9 +185,9 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       errors: [
         {
           messageId: 'forbiddenPropType',
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -202,15 +202,15 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       `,
       options: [
         {
-          allowInPropTypes: false
-        }
+          allowInPropTypes: false,
+        },
       ],
       errors: [
         {
           messageId: 'forbiddenPropType',
-          type: 'Identifier'
-        }
-      ]
+          type: 'Identifier',
+        },
+      ],
     },
     {
       code: `
@@ -223,15 +223,15 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
       parser: parsers.BABEL_ESLINT,
       options: [
         {
-          allowInPropTypes: false
-        }
+          allowInPropTypes: false,
+        },
       ],
       errors: [
         {
           messageId: 'forbiddenPropType',
-          type: 'Identifier'
-        }
-      ]
-    }
-  ]
+          type: 'Identifier',
+        },
+      ],
+    },
+  ],
 });

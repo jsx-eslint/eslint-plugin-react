@@ -18,8 +18,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -39,8 +39,8 @@ ruleTester.run('display-name', rule, {
       });
     `,
       options: [
-        {ignoreTranspilerName: true}
-      ]
+        {ignoreTranspilerName: true},
+      ],
     },
     {
       code: `
@@ -52,13 +52,13 @@ ruleTester.run('display-name', rule, {
       });
     `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
       settings: {
         react: {
-          createClass: 'createClass'
-        }
-      }
+          createClass: 'createClass',
+        },
+      },
     },
     {
       code: `
@@ -70,8 +70,8 @@ ruleTester.run('display-name', rule, {
       Hello.displayName = 'Hello'
     `,
       options: [
-        {ignoreTranspilerName: true}
-      ]
+        {ignoreTranspilerName: true},
+      ],
     },
     {
       code: `
@@ -80,7 +80,7 @@ ruleTester.run('display-name', rule, {
           return 'Hello World';
         }
       }
-    `
+    `,
     },
     {
       code: `
@@ -91,7 +91,7 @@ ruleTester.run('display-name', rule, {
         }
       }
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -99,7 +99,7 @@ ruleTester.run('display-name', rule, {
         method;
       }
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -113,8 +113,8 @@ ruleTester.run('display-name', rule, {
       }
     `,
       options: [
-        {ignoreTranspilerName: true}
-      ]
+        {ignoreTranspilerName: true},
+      ],
     },
     {
       code: `
@@ -126,9 +126,9 @@ ruleTester.run('display-name', rule, {
       }
     `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -137,7 +137,7 @@ ruleTester.run('display-name', rule, {
           return <div>Hello {this.props.name}</div>;
         }
       });
-    `
+    `,
     },
     {
       code: `
@@ -147,7 +147,7 @@ ruleTester.run('display-name', rule, {
         }
       }
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -157,7 +157,7 @@ ruleTester.run('display-name', rule, {
         }
       }
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -167,7 +167,7 @@ ruleTester.run('display-name', rule, {
           return <div>Hello {this.props.name}</div>;
         }
       });
-    `
+    `,
     },
     {
       code: `
@@ -177,7 +177,7 @@ ruleTester.run('display-name', rule, {
           return <div>Hello {this.props.name}</div>;
         }
       });
-    `
+    `,
     },
     {
       code: `
@@ -191,8 +191,8 @@ ruleTester.run('display-name', rule, {
       });
     `,
       options: [
-        {ignoreTranspilerName: true}
-      ]
+        {ignoreTranspilerName: true},
+      ],
     },
     {
       code: `
@@ -202,7 +202,7 @@ ruleTester.run('display-name', rule, {
         }
       }
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -210,7 +210,7 @@ ruleTester.run('display-name', rule, {
         return <p />;
       })
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -218,7 +218,7 @@ ruleTester.run('display-name', rule, {
         return <div>Hello {this.props.name}</div>;
       }
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -226,7 +226,7 @@ ruleTester.run('display-name', rule, {
         return <div>Hello {this.props.name}</div>;
       }
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -234,7 +234,7 @@ ruleTester.run('display-name', rule, {
         return <div>Hello {this.props.name}</div>;
       }
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -242,7 +242,7 @@ ruleTester.run('display-name', rule, {
         return <div>Hello {this.props.name}</div>;
       }
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -252,9 +252,9 @@ ruleTester.run('display-name', rule, {
       Hello.displayName = 'Hello';
     `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -264,9 +264,9 @@ ruleTester.run('display-name', rule, {
       Hello.displayName = 'Hello';
     `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -276,9 +276,9 @@ ruleTester.run('display-name', rule, {
       Hello.displayName = 'Hello';
     `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -292,9 +292,9 @@ ruleTester.run('display-name', rule, {
       Mixins.Greetings.Hello.displayName = 'Hello';
     `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -307,7 +307,7 @@ ruleTester.run('display-name', rule, {
         }
       });
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -322,9 +322,9 @@ ruleTester.run('display-name', rule, {
       });
     `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -336,7 +336,7 @@ ruleTester.run('display-name', rule, {
         }
       };
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -347,9 +347,9 @@ ruleTester.run('display-name', rule, {
       };
     `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -359,7 +359,7 @@ ruleTester.run('display-name', rule, {
         }
       };
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -370,7 +370,7 @@ ruleTester.run('display-name', rule, {
         }
       };
     `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -383,14 +383,14 @@ ruleTester.run('display-name', rule, {
       });
     `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
       settings: {
         react: {
-          createClass: 'createClass'
-        }
+          createClass: 'createClass',
+        },
       },
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -402,18 +402,7 @@ ruleTester.run('display-name', rule, {
       }
       module.exports = someDecorator;
     `,
-      parser: parsers.BABEL_ESLINT
-    },
-    {
-      code: `
-        import React, {createElement} from "react";
-        const SomeComponent = (props) => {
-          const {foo, bar} = props;
-          return someComponentFactory({
-            onClick: () => foo(bar("x"))
-          });
-        };
-      `
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -425,18 +414,18 @@ ruleTester.run('display-name', rule, {
           });
         };
       `,
-      parser: parsers.BABEL_ESLINT
     },
     {
       code: `
-        import React, {Component} from "react";
-        function someDecorator(ComposedComponent) {
-          return class MyDecorator extends Component {
-            render() {return <ComposedComponent {...this.props} />;}
-          };
-        }
-        module.exports = someDecorator;
-      `
+        import React, {createElement} from "react";
+        const SomeComponent = (props) => {
+          const {foo, bar} = props;
+          return someComponentFactory({
+            onClick: () => foo(bar("x"))
+          });
+        };
+      `,
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -448,7 +437,18 @@ ruleTester.run('display-name', rule, {
         }
         module.exports = someDecorator;
       `,
-      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        function someDecorator(ComposedComponent) {
+          return class MyDecorator extends Component {
+            render() {return <ComposedComponent {...this.props} />;}
+          };
+        }
+        module.exports = someDecorator;
+      `,
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -459,7 +459,7 @@ ruleTester.run('display-name', rule, {
           }}/>
         )
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -470,7 +470,7 @@ ruleTester.run('display-name', rule, {
           }}/>
         )
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -478,14 +478,14 @@ ruleTester.run('display-name', rule, {
           createElement: tagName => document.createElement(tagName)
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
         const { createElement } = document;
         createElement("a");
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -501,7 +501,7 @@ ruleTester.run('display-name', rule, {
         }
 
         export default React.memo(Component)
-      `
+      `,
     },
     {
       code: `
@@ -510,7 +510,7 @@ ruleTester.run('display-name', rule, {
         const ComponentWithMemo = React.memo(function Component({ world }) {
           return <div>Hello {world}</div>
         })
-      `
+      `,
     },
     {
       code: `
@@ -519,7 +519,7 @@ ruleTester.run('display-name', rule, {
         const Hello = React.memo(function Hello() {
           return;
         });
-      `
+      `,
     },
     {
       code: `
@@ -528,7 +528,7 @@ ruleTester.run('display-name', rule, {
         const ForwardRefComponentLike = React.forwardRef(function ComponentLike({ world }, ref) {
           return <div ref={ref}>Hello {world}</div>
         })
-      `
+      `,
     },
     {
       code: `
@@ -541,7 +541,7 @@ ruleTester.run('display-name', rule, {
           }
           return <div>{items}</div>;
         }
-      `
+      `,
     },
     {
       code: `
@@ -549,7 +549,7 @@ ruleTester.run('display-name', rule, {
         type LinkProps = {...{}};
         class Link extends Component<LinkProps> {}
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -564,14 +564,14 @@ ruleTester.run('display-name', rule, {
           )
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
         const renderer = a => function Component(listItem) {
           return <div>{a} {listItem}</div>;
         };
-      `
+      `,
     }],
 
   invalid: [
@@ -584,12 +584,12 @@ ruleTester.run('display-name', rule, {
         });
       `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
       errors: [
         {
-          messageId: 'noDisplayName'
-        }]
+          messageId: 'noDisplayName',
+        }],
     },
     {
       code: `
@@ -600,16 +600,16 @@ ruleTester.run('display-name', rule, {
         });
       `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
       settings: {
         react: {
-          createClass: 'createClass'
-        }
+          createClass: 'createClass',
+        },
       },
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -620,11 +620,11 @@ ruleTester.run('display-name', rule, {
         });
       `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -635,11 +635,11 @@ ruleTester.run('display-name', rule, {
         }
       `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -653,11 +653,11 @@ ruleTester.run('display-name', rule, {
         module.exports = HelloComponent();
       `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -667,8 +667,8 @@ ruleTester.run('display-name', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -678,8 +678,8 @@ ruleTester.run('display-name', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -691,8 +691,8 @@ ruleTester.run('display-name', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -706,12 +706,12 @@ ruleTester.run('display-name', rule, {
         });
       `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -725,18 +725,18 @@ ruleTester.run('display-name', rule, {
         });
       `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
       parser: parsers.BABEL_ESLINT,
       settings: {
         react: {
           pragma: 'Foo',
-          createClass: 'createClass'
-        }
+          createClass: 'createClass',
+        },
       },
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -751,17 +751,17 @@ ruleTester.run('display-name', rule, {
         });
       `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
       settings: {
         react: {
-          createClass: 'createClass'
-        }
+          createClass: 'createClass',
+        },
       },
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -774,12 +774,12 @@ ruleTester.run('display-name', rule, {
         };
       `,
       options: [
-        {ignoreTranspilerName: true}
+        {ignoreTranspilerName: true},
       ],
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -791,8 +791,8 @@ ruleTester.run('display-name', rule, {
     `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -803,8 +803,8 @@ ruleTester.run('display-name', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -815,8 +815,8 @@ ruleTester.run('display-name', rule, {
         })
       `,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -827,8 +827,8 @@ ruleTester.run('display-name', rule, {
         })
       `,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -839,8 +839,8 @@ ruleTester.run('display-name', rule, {
         })
       `,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -851,8 +851,8 @@ ruleTester.run('display-name', rule, {
         })
       `,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
     // Only trigger an error for the outer React.memo
@@ -867,8 +867,8 @@ ruleTester.run('display-name', rule, {
       `,
       errors: [
         {
-          messageId: 'noDisplayName'
-        }]
+          messageId: 'noDisplayName',
+        }],
     },
     {
     // Only trigger an error for the outer React.memo
@@ -882,8 +882,8 @@ ruleTester.run('display-name', rule, {
         )
       `,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
     // React does not handle the result of forwardRef being passed into memo
@@ -899,8 +899,8 @@ ruleTester.run('display-name', rule, {
         )
       `,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -912,8 +912,8 @@ ruleTester.run('display-name', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -925,8 +925,8 @@ ruleTester.run('display-name', rule, {
       `,
       parser: parsers.BABEL_ESLINT,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -945,8 +945,8 @@ ruleTester.run('display-name', rule, {
         }
       `,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -966,8 +966,8 @@ ruleTester.run('display-name', rule, {
         }
       `,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -988,8 +988,8 @@ ruleTester.run('display-name', rule, {
         }
       `,
       errors: [
-        {messageId: 'noDisplayName'}
-      ]
+        {messageId: 'noDisplayName'},
+      ],
     },
     {
       code: `
@@ -1009,14 +1009,14 @@ ruleTester.run('display-name', rule, {
         {
           messageId: 'noDisplayName',
           line: 2,
-          column: 24
+          column: 24,
         },
         {
           messageId: 'noDisplayName',
           line: 9,
-          column: 18
-        }
-      ]
+          column: 18,
+        },
+      ],
     },
     {
       code: `
@@ -1025,7 +1025,7 @@ ruleTester.run('display-name', rule, {
         );
       `,
       errors: [
-        {message: 'Component definition is missing display name'}
-      ]
-    }]
+        {message: 'Component definition is missing display name'},
+      ],
+    }],
 });

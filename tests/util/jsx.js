@@ -10,8 +10,8 @@ const isReturningJSX = jsxUtil.isReturningJSX;
 const DEFAULT_CONFIG = {
   ecmaVersion: 6,
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 const parseCode = (code) => {

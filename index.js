@@ -98,7 +98,7 @@ const allRules = {
   'state-in-constructor': require('./lib/rules/state-in-constructor'),
   'static-property-placement': require('./lib/rules/static-property-placement'),
   'style-prop-object': require('./lib/rules/style-prop-object'),
-  'void-dom-elements-no-children': require('./lib/rules/void-dom-elements-no-children')
+  'void-dom-elements-no-children': require('./lib/rules/void-dom-elements-no-children'),
 };
 /* eslint-enable */
 
@@ -121,12 +121,12 @@ module.exports = {
   configs: {
     recommended: {
       plugins: [
-        'react'
+        'react',
       ],
       parserOptions: {
         ecmaFeatures: {
-          jsx: true
-        }
+          jsx: true,
+        },
       },
       rules: {
         'react/display-name': 2,
@@ -150,34 +150,34 @@ module.exports = {
         'react/no-unsafe': 0,
         'react/prop-types': 2,
         'react/react-in-jsx-scope': 2,
-        'react/require-render-return': 2
-      }
+        'react/require-render-return': 2,
+      },
     },
     all: {
       plugins: [
-        'react'
+        'react',
       ],
       parserOptions: {
         ecmaFeatures: {
-          jsx: true
-        }
+          jsx: true,
+        },
       },
-      rules: activeRulesConfig
+      rules: activeRulesConfig,
     },
     'jsx-runtime': {
       plugins: [
-        'react'
+        'react',
       ],
       parserOptions: {
         ecmaFeatures: {
-          jsx: true
+          jsx: true,
         },
-        jsxPragma: null // for @typescript/eslint-parser
+        jsxPragma: null, // for @typescript/eslint-parser
       },
       rules: {
         'react/react-in-jsx-scope': 0,
-        'react/jsx-uses-react': 0
-      }
-    }
-  }
+        'react/jsx-uses-react': 0,
+      },
+    },
+  },
 };

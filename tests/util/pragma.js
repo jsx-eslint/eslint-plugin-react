@@ -11,20 +11,20 @@ const DEFAULT_CONFIG = {
   comment: true,
   tokens: true,
   range: true,
-  loc: true
+  loc: true,
 };
 
 const DEFAULT_SETTINGS = {
   react: {
-    pragma: 'React'
-  }
+    pragma: 'React',
+  },
 };
 
 const fakeContext = (code) => {
   const ast = espree.parse(code, DEFAULT_CONFIG);
   return {
     getSourceCode: () => new SourceCode(code, ast),
-    settings: DEFAULT_SETTINGS
+    settings: DEFAULT_SETTINGS,
   };
 };
 

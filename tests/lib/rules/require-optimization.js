@@ -14,8 +14,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 const ruleTester = new RuleTester({parserOptions});
@@ -24,7 +24,7 @@ ruleTester.run('react-require-optimization', rule, {
     {
       code: `
         class A {}
-      `
+      `,
     },
     {
       code: `
@@ -32,7 +32,7 @@ ruleTester.run('react-require-optimization', rule, {
         class YourComponent extends React.Component {
           shouldComponentUpdate () {}
         }
-      `
+      `,
     },
     {
       code: `
@@ -40,7 +40,7 @@ ruleTester.run('react-require-optimization', rule, {
         class YourComponent extends Component {
           shouldComponentUpdate () {}
         }
-      `
+      `,
     },
     {
       code: `
@@ -51,7 +51,7 @@ ruleTester.run('react-require-optimization', rule, {
           render() {}
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -59,7 +59,7 @@ ruleTester.run('react-require-optimization', rule, {
         createReactClass({
           shouldComponentUpdate: function () {}
         })
-      `
+      `,
     },
     {
       code: `
@@ -67,14 +67,14 @@ ruleTester.run('react-require-optimization', rule, {
         createReactClass({
           mixins: [PureRenderMixin]
         })
-      `
+      `,
     },
     {
       code: `
         @reactMixin.decorate(PureRenderMixin)
         class DecoratedComponent extends Component {}
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -82,7 +82,7 @@ ruleTester.run('react-require-optimization', rule, {
           return <div />;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -90,7 +90,7 @@ ruleTester.run('react-require-optimization', rule, {
           return <div />;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -98,7 +98,7 @@ ruleTester.run('react-require-optimization', rule, {
           return <div />;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -108,7 +108,7 @@ ruleTester.run('react-require-optimization', rule, {
         class DecoratedComponent extends Component {}
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{allowDecorators: ['renderPure', 'pureRender']}]
+      options: [{allowDecorators: ['renderPure', 'pureRender']}],
     },
     {
       code: `
@@ -116,7 +116,7 @@ ruleTester.run('react-require-optimization', rule, {
         class YourComponent extends React.PureComponent {}
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{allowDecorators: ['renderPure', 'pureRender']}]
+      options: [{allowDecorators: ['renderPure', 'pureRender']}],
     },
     {
       code: `
@@ -124,12 +124,12 @@ ruleTester.run('react-require-optimization', rule, {
         class YourComponent extends PureComponent {}
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{allowDecorators: ['renderPure', 'pureRender']}]
+      options: [{allowDecorators: ['renderPure', 'pureRender']}],
     },
     {
       code: `
         const obj = { prop: [,,,,,] }
-      `
+      `,
     },
     {
       code: `
@@ -145,8 +145,8 @@ ruleTester.run('react-require-optimization', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'noShouldComponentUpdate'}]
-    }
+      errors: [{messageId: 'noShouldComponentUpdate'}],
+    },
   ],
 
   invalid: [
@@ -155,7 +155,7 @@ ruleTester.run('react-require-optimization', rule, {
         import React from "react";
         class YourComponent extends React.Component {}
       `,
-      errors: [{messageId: 'noShouldComponentUpdate'}]
+      errors: [{messageId: 'noShouldComponentUpdate'}],
     },
     {
       code: `
@@ -168,7 +168,7 @@ ruleTester.run('react-require-optimization', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'noShouldComponentUpdate'}]
+      errors: [{messageId: 'noShouldComponentUpdate'}],
     },
     {
       code: `
@@ -181,21 +181,21 @@ ruleTester.run('react-require-optimization', rule, {
         }
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'noShouldComponentUpdate'}]
+      errors: [{messageId: 'noShouldComponentUpdate'}],
     },
     {
       code: `
         import React, {Component} from "react";
         class YourComponent extends Component {}
       `,
-      errors: [{messageId: 'noShouldComponentUpdate'}]
+      errors: [{messageId: 'noShouldComponentUpdate'}],
     },
     {
       code: `
         import React from "react";
         createReactClass({})
       `,
-      errors: [{messageId: 'noShouldComponentUpdate'}]
+      errors: [{messageId: 'noShouldComponentUpdate'}],
     },
     {
       code: `
@@ -204,7 +204,7 @@ ruleTester.run('react-require-optimization', rule, {
           mixins: [RandomMixin]
         })
       `,
-      errors: [{messageId: 'noShouldComponentUpdate'}]
+      errors: [{messageId: 'noShouldComponentUpdate'}],
     },
     {
       code: `
@@ -212,7 +212,7 @@ ruleTester.run('react-require-optimization', rule, {
         class DecoratedComponent extends Component {}
       `,
       errors: [{messageId: 'noShouldComponentUpdate'}],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -223,7 +223,7 @@ ruleTester.run('react-require-optimization', rule, {
       `,
       errors: [{messageId: 'noShouldComponentUpdate'}],
       parser: parsers.BABEL_ESLINT,
-      options: [{allowDecorators: ['renderPure', 'pureRender']}]
-    }
-  ]
+      options: [{allowDecorators: ['renderPure', 'pureRender']}],
+    },
+  ],
 });

@@ -21,8 +21,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // -----------------------------------------------------------------------------
@@ -39,7 +39,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
             return <div />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -62,7 +62,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
             return <div />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -86,7 +86,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
           }
         });
       `,
-      options: [{ignoreCase: true}]
+      options: [{ignoreCase: true}],
     },
     {
       code: `
@@ -120,7 +120,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
             return <div />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -139,7 +139,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
           z: z
         };
         First.defaultProps.justforcheck = "justforcheck";
-      `
+      `,
     },
     {
       code: `
@@ -161,7 +161,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
           Z: "Z"
         };
       `,
-      options: [{ignoreCase: true}]
+      options: [{ignoreCase: true}],
     },
     {
       code: `
@@ -181,7 +181,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -198,7 +198,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
         };
       `,
       parser: parsers.BABEL_ESLINT,
-      options: [{ignoreCase: true}]
+      options: [{ignoreCase: true}],
     }, semver.satisfies(babelEslintVersion, '< 9') ? {
     // Invalid code, should not be validated
       code: `
@@ -218,7 +218,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     } : [],
     {
       code: `
@@ -229,7 +229,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
             return <div />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -250,7 +250,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
             return <div />;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -267,7 +267,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -290,7 +290,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -312,7 +312,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
           a: "a"
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -323,7 +323,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
         };
         TextFieldLabel.propTypes = propTypes;
         TextFieldLabel.defaultProps = defaultProps;
-      `
+      `,
     },
     {
       code: `
@@ -338,7 +338,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
         };
         First.propTypes = propTypes;
         First.defaultProps = defaultProps;
-      `
+      `,
     },
     {
       code: `
@@ -358,7 +358,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
         };
         First.propTypes = propTypes;
         First.defaultProps = defaultProps;
-      `
+      `,
     }
   ),
 
@@ -387,9 +387,9 @@ ruleTester.run('jsx-sort-default-props', rule, {
           messageId: 'propsNotSorted',
           line: 11,
           column: 13,
-          type: 'Property'
-        }
-      ]/* ,
+          type: 'Property',
+        },
+      ], /* ,
       output: `
         class Component extends React.Component {
           static propTypes = {
@@ -444,7 +444,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
         }
       `, */
       parser: parsers.BABEL_ESLINT,
-      errors: 2
+      errors: 2,
     },
     {
       code: `
@@ -484,9 +484,9 @@ ruleTester.run('jsx-sort-default-props', rule, {
           messageId: 'propsNotSorted',
           line: 9,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -525,9 +525,9 @@ ruleTester.run('jsx-sort-default-props', rule, {
           messageId: 'propsNotSorted',
           line: 9,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -566,9 +566,9 @@ ruleTester.run('jsx-sort-default-props', rule, {
           messageId: 'propsNotSorted',
           line: 13,
           column: 11,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -606,7 +606,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
         };
       `, */
       parser: parsers.BABEL_ESLINT,
-      errors: 2
+      errors: 2,
     },
     {
       code: `
@@ -645,9 +645,9 @@ ruleTester.run('jsx-sort-default-props', rule, {
           messageId: 'propsNotSorted',
           line: 13,
           column: 11,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     // {
     // Disabled test for comments -- fails
@@ -733,9 +733,9 @@ ruleTester.run('jsx-sort-default-props', rule, {
           messageId: 'propsNotSorted',
           line: 13,
           column: 11,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -769,9 +769,9 @@ ruleTester.run('jsx-sort-default-props', rule, {
           messageId: 'propsNotSorted',
           line: 9,
           column: 11,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -808,9 +808,9 @@ ruleTester.run('jsx-sort-default-props', rule, {
           messageId: 'propsNotSorted',
           line: 10,
           column: 13,
-          type: 'Property'
-        }
-      ]
+          type: 'Property',
+        },
+      ],
     },
     {
       code: `
@@ -854,7 +854,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
         }
       `, */
       parser: parsers.BABEL_ESLINT,
-      errors: 2
+      errors: 2,
     },
     {
       code: `
@@ -901,9 +901,9 @@ ruleTester.run('jsx-sort-default-props', rule, {
           messageId: 'propsNotSorted',
           line: 16,
           column: 11,
-          type: 'Property'
-        }
-      ]
-    }
-  ]
+          type: 'Property',
+        },
+      ],
+    },
+  ],
 });

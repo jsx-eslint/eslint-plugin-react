@@ -9,8 +9,8 @@ const parserOptions = {
   sourceType: 'module',
   ecmaVersion: 2015,
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 const ruleTester = new RuleTester({parserOptions});
@@ -21,7 +21,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
         <App>
           foo
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -29,14 +29,14 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           foo
         </>
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
         <App>
           <a>bar</a>
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -45,7 +45,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
             <b>nested</b>
           </a>
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -53,14 +53,14 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           foo
           bar
         </App>
-      `
+      `,
     },
     {
       code: `
         <App>
           foo<a>bar</a>baz
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -71,7 +71,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           {' '}
           baz
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -80,7 +80,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           {' '}<a>bar</a>{' '}
           baz
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -89,7 +89,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           <a>bar</a>
           {' '}baz
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -98,14 +98,14 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           */}<a>bar</a>{/*
           */}baz
         </App>
-      `
+      `,
     },
     {
       code: `
         <App>
           Please take a look at <a href="https://js.org">this link</a>.
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -114,7 +114,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           {' '}
           <a href="https://js.org">this link</a>.
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -122,14 +122,14 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           <p>A</p>
           <p>B</p>
         </App>
-      `
+      `,
     },
     {
       code: `
         <App>
           <p>A</p><p>B</p>
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -137,7 +137,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           <a>foo</a>
           <a>bar</a>
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -147,7 +147,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
             <b>nested2</b>
           </a>
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -155,7 +155,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           A
           B
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -164,7 +164,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           <br/>
           B
         </App>
-      `
+      `,
     },
     {
       code: `
@@ -172,20 +172,20 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           A<br/>
           B
         </App>
-      `
+      `,
     },
     {
       code: `
         <App>
           A<br/>B
         </App>
-      `
+      `,
     },
     {
       code: `
         <App>A<br/>B</App>
-      `
-    }
+      `,
+    },
   ],
 
   invalid: [
@@ -201,9 +201,9 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           messageId: 'spacingBeforeNext',
           data: {element: 'a'},
           line: 4,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -218,9 +218,9 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           messageId: 'spacingBeforeNext',
           data: {element: 'a'},
           line: 4,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -234,9 +234,9 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           messageId: 'spacingAfterPrev',
           data: {element: 'a'},
           line: 3,
-          column: 21
-        }
-      ]
+          column: 21,
+        },
+      ],
     },
     {
       code: `
@@ -250,9 +250,9 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           messageId: 'spacingAfterPrev',
           data: {element: 'a'},
           line: 3,
-          column: 26
-        }
-      ]
+          column: 26,
+        },
+      ],
     },
     {
       code: `
@@ -266,9 +266,9 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           messageId: 'spacingBeforeNext',
           data: {element: 'a'},
           line: 4,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -282,9 +282,9 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           messageId: 'spacingBeforeNext',
           data: {element: 'code'},
           line: 4,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -299,15 +299,15 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           messageId: 'spacingBeforeNext',
           data: {element: 'a'},
           line: 4,
-          column: 11
+          column: 11,
         },
         {
           messageId: 'spacingBeforeNext',
           data: {element: 'a'},
           line: 5,
-          column: 11
-        }
-      ]
-    }
-  ]
+          column: 11,
+        },
+      ],
+    },
+  ],
 });

@@ -19,8 +19,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 const ruleTester = new RuleTester({parserOptions});
@@ -41,7 +41,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           foo: React.PropTypes.string.isRequired,
           bar: React.PropTypes.string.isRequired
         };
-      `
+      `,
     },
     {
       code: `
@@ -55,14 +55,14 @@ ruleTester.run('default-props-match-prop-types', rule, {
         MyStatelessComponent.defaultProps = {
           foo: "foo"
         };
-      `
+      `,
     },
     {
       code: `
         function MyStatelessComponent({ foo, bar }) {
           return <div>{foo}{bar}</div>;
         }
-      `
+      `,
     },
     {
       code: `
@@ -76,7 +76,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         MyStatelessComponent.defaultProps = {
           foo: "foo"
         };
-      `
+      `,
     },
     {
       code: `
@@ -91,8 +91,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
         };
       `,
       options: [
-        {allowRequiredDefaults: true}
-      ]
+        {allowRequiredDefaults: true},
+      ],
     },
     {
       code: `
@@ -105,7 +105,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         MyStatelessComponent.propTypes.foo = React.PropTypes.string;
         MyStatelessComponent.defaultProps = {};
         MyStatelessComponent.defaultProps.foo = "foo";
-      `
+      `,
     },
     {
       code: `
@@ -116,7 +116,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         MyStatelessComponent.propTypes.foo = React.PropTypes.string;
         MyStatelessComponent.defaultProps = {};
         MyStatelessComponent.defaultProps.foo = "foo";
-      `
+      `,
     },
     {
       code: `
@@ -132,7 +132,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         MyStatelessComponent.defaultProps = {
           foo: "foo"
         };
-      `
+      `,
     },
     {
       code: `
@@ -148,7 +148,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           bar: React.PropTypes.string.isRequired
         };
         MyStatelessComponent.defaultProps = defaults;
-      `
+      `,
     },
     {
       code: `
@@ -165,7 +165,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         }
         MyStatelessComponent.propTypes = types;
         MyStatelessComponent.defaultProps = defaults;
-      `
+      `,
     },
 
     // createReactClass components
@@ -180,7 +180,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
             bar: React.PropTypes.string.isRequired
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -198,7 +198,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
             };
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -217,7 +217,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
             };
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -226,7 +226,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
             return <div>Hello {this.props.foo} {this.props.bar}</div>;
           }
         });
-      `
+      `,
     },
 
     // ES6 class component
@@ -246,7 +246,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         Greeting.defaultProps = {
           foo: "foo"
         };
-      `
+      `,
     },
     {
       code: `
@@ -265,7 +265,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           foo: "foo"
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -276,7 +276,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
             );
           }
         }
-      `
+      `,
     },
     {
       code: `
@@ -294,7 +294,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         Greeting.defaultProps = {
           foo: "foo"
         };
-      `
+      `,
     },
     {
       code: `
@@ -311,7 +311,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         Greeting.propTypes.foo = React.PropTypes.string;
         Greeting.defaultProps = {};
         Greeting.defaultProps.foo = "foo";
-      `
+      `,
     },
     {
       code: `
@@ -326,7 +326,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         Greeting.propTypes.foo = React.PropTypes.string;
         Greeting.defaultProps = {};
         Greeting.defaultProps.foo = "foo";
-      `
+      `,
     },
 
     // edge cases
@@ -338,7 +338,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         NotAComponent.defaultProps = {
           bar: "bar"
         };
-      `
+      `,
     },
     {
       code: `
@@ -352,7 +352,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         Greeting.defaulProps = {
           bar: "bar"
         };
-      `
+      `,
     },
     // external references
     {
@@ -368,7 +368,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         }
         MyStatelessComponent.propTypes = types;
         MyStatelessComponent.defaultProps = defaults;
-      `
+      `,
     },
     {
       code: `
@@ -382,7 +382,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         }
         MyStatelessComponent.propTypes = types;
         MyStatelessComponent.defaultProps = defaults;
-      `
+      `,
     },
     {
       code: `
@@ -394,7 +394,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         function MyStatelessComponent({ foo, bar }) {
           return <div>{foo}{bar}</div>;
         }
-      `
+      `,
     },
     {
       code: `
@@ -407,7 +407,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         function MyStatelessComponent({ foo, bar }) {
           return <div>{foo}{bar}</div>;
         }
-      `
+      `,
     },
     {
       code: `
@@ -422,7 +422,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>{foo}{bar}</div>;
         }
       `,
-      parserOptions: Object.assign({sourceType: 'module'}, parserOptions)
+      parserOptions: Object.assign({sourceType: 'module'}, parserOptions),
     },
     {
       code: `
@@ -437,7 +437,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>{foo}{bar}</div>;
         }
       `,
-      parserOptions: Object.assign({sourceType: 'module'}, parserOptions)
+      parserOptions: Object.assign({sourceType: 'module'}, parserOptions),
     },
     // using spread operator
     {
@@ -446,7 +446,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
             ...rowData,
             onPress: () => ownProps.onPress(rowData.id),
         }));
-      `
+      `,
     },
     {
       code: `
@@ -460,7 +460,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         function MyStatelessComponent({ foo, bar }) {
           return <div>{foo}{bar}</div>;
         }
-      `
+      `,
     },
     {
       code: `
@@ -473,7 +473,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         function MyStatelessComponent({ foo, bar }) {
           return <div>{foo}{bar}</div>;
         }
-      `
+      `,
     },
     {
       code: `
@@ -488,26 +488,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           ...someProps,
           bar: React.PropTypes.string.isRequired
         };
-      `
-    },
-    {
-      code: `
-        class Greeting extends React.Component {
-          render() {
-            return (
-              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
-            );
-          }
-        }
-        Greeting.propTypes = {
-          foo: React.PropTypes.string,
-          bar: React.PropTypes.string.isRequired
-        };
-        Greeting.defaultProps = {
-          ...defaults,
-          bar: "bar"
-        };
-      `
+      `,
     },
     {
       code: `
@@ -527,7 +508,26 @@ ruleTester.run('default-props-match-prop-types', rule, {
           bar: "bar"
         };
       `,
-      parser: parsers.BABEL_ESLINT
+    },
+    {
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {
+          foo: React.PropTypes.string,
+          bar: React.PropTypes.string.isRequired
+        };
+        Greeting.defaultProps = {
+          ...defaults,
+          bar: "bar"
+        };
+      `,
+      parser: parsers.BABEL_ESLINT,
     },
 
     // with Flow annotations
@@ -545,7 +545,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -566,7 +566,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           bar: "bar"
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -585,7 +585,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           bar: "bar"
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -599,7 +599,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -609,7 +609,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
 
         Hello.defaultProps = { foo: "foo" };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -617,7 +617,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {foo}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -627,7 +627,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
 
         Hello.defaultProps = { foo: "foo" };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -635,7 +635,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {foo}</div>;
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -645,7 +645,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
 
         Hello.defaultProps = { foo: "foo" };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -653,7 +653,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {foo}</div>;
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -676,7 +676,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           baz: "baz"
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -695,7 +695,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -707,7 +707,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -717,7 +717,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {foo}</div>;
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -727,7 +727,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {props.name.firstname}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -752,7 +752,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           bar2: "bar2",
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -779,7 +779,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           bar2: "bar2",
         };
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     // don't error when variable is not in scope
     {
@@ -790,7 +790,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {props.name.firstname}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     // make sure error is not thrown with multiple assignments
     {
@@ -802,7 +802,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {props.name.firstname}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     // don't error when variable is not in scope with intersection
     {
@@ -815,8 +815,8 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {props.name.firstname}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT
-    }
+      parser: parsers.BABEL_ESLINT,
+    },
   ],
 
   invalid: [
@@ -839,9 +839,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'defaultHasNoType',
           data: {name: 'baz'},
           line: 10,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -861,10 +861,10 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'defaultHasNoType',
           data: {name: 'baz'},
           line: 10,
-          column: 11
-        }
+          column: 11,
+        },
       ],
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -880,16 +880,16 @@ ruleTester.run('default-props-match-prop-types', rule, {
         };
       `,
       settings: {
-        propWrapperFunctions: ['forbidExtraProps']
+        propWrapperFunctions: ['forbidExtraProps'],
       },
       errors: [
         {
           messageId: 'defaultHasNoType',
           data: {name: 'baz'},
           line: 10,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -906,16 +906,16 @@ ruleTester.run('default-props-match-prop-types', rule, {
         };
       `,
       settings: {
-        propWrapperFunctions: ['forbidExtraProps']
+        propWrapperFunctions: ['forbidExtraProps'],
       },
       errors: [
         {
           messageId: 'defaultHasNoType',
           data: {name: 'baz'},
           line: 11,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -935,10 +935,10 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'defaultHasNoType',
           data: {name: 'baz'},
           line: 10,
-          column: 11
-        }
+          column: 11,
+        },
       ],
-      options: [{allowRequiredDefaults: true}]
+      options: [{allowRequiredDefaults: true}],
     },
     {
       code: `
@@ -959,15 +959,15 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'bar'},
           line: 10,
-          column: 11
+          column: 11,
         },
         {
           messageId: 'defaultHasNoType',
           data: {name: 'baz'},
           line: 12,
-          column: 9
-        }
-      ]
+          column: 9,
+        },
+      ],
     },
     {
       code: `
@@ -989,9 +989,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'bar'},
           line: 12,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -1013,9 +1013,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 3,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -1038,9 +1038,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 3,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
 
     // createReactClass components
@@ -1066,9 +1066,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'defaultHasNoType',
           data: {name: 'baz'},
           line: 12,
-          column: 15
-        }
-      ]
+          column: 15,
+        },
+      ],
     },
     {
       code: `
@@ -1092,9 +1092,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 12,
-          column: 15
-        }
-      ]
+          column: 15,
+        },
+      ],
     },
 
     // ES6 class component
@@ -1120,9 +1120,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'defaultHasNoType',
           data: {name: 'baz'},
           line: 14,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -1146,9 +1146,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 14,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -1171,9 +1171,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 14,
-          column: 9
-        }
-      ]
+          column: 9,
+        },
+      ],
     },
     {
       code: `
@@ -1196,9 +1196,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'defaultHasNoType',
           data: {name: 'baz'},
           line: 14,
-          column: 9
-        }
-      ]
+          column: 9,
+        },
+      ],
     },
     {
       code: `
@@ -1219,9 +1219,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 12,
-          column: 9
-        }
-      ]
+          column: 9,
+        },
+      ],
     },
     {
       code: `
@@ -1247,9 +1247,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'bar'},
           line: 15,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -1275,9 +1275,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'defaultHasNoType',
           data: {name: 'baz'},
           line: 14,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
 
     // ES6 classes with static getter methods
@@ -1304,9 +1304,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'name'},
           line: 10,
-          column: 15
-        }
-      ]
+          column: 15,
+        },
+      ],
     },
     {
       code: `
@@ -1332,9 +1332,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'defaultHasNoType',
           data: {name: 'baz'},
           line: 11,
-          column: 15
-        }
-      ]
+          column: 15,
+        },
+      ],
     },
     {
       code: `
@@ -1362,9 +1362,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'defaultHasNoType',
           data: {name: 'baz'},
           line: 6,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -1392,9 +1392,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'bar'},
           line: 3,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
 
     // ES6 classes with property initializers
@@ -1421,9 +1421,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'bar'},
           line: 13,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -1448,9 +1448,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'defaultHasNoType',
           data: {name: 'baz'},
           line: 13,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -1477,9 +1477,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'bar'},
           line: 7,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -1506,9 +1506,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'defaultHasNoType',
           data: {name: 'baz'},
           line: 7,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
 
     // edge cases
@@ -1532,9 +1532,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 12,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -1553,9 +1553,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 9,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
 
     // with Flow annotations
@@ -1582,9 +1582,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 14,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -1601,9 +1601,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 6,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -1624,9 +1624,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 10,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -1641,9 +1641,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 5,
-          column: 32
-        }
-      ]
+          column: 32,
+        },
+      ],
     },
     {
       code: `
@@ -1668,15 +1668,15 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 15,
-          column: 32
+          column: 32,
         },
         {
           messageId: 'defaultHasNoType',
           data: {name: 'frob'},
           line: 15,
-          column: 44
-        }
-      ]
+          column: 44,
+        },
+      ],
     },
     {
       code: `
@@ -1700,13 +1700,13 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'defaultHasNoType',
-          data: {name: 'fooBar'}
+          data: {name: 'fooBar'},
         },
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'foo'}
-        }
-      ]
+          data: {name: 'foo'},
+        },
+      ],
     },
     {
       code: `
@@ -1726,9 +1726,9 @@ ruleTester.run('default-props-match-prop-types', rule, {
       errors: [
         {
           messageId: 'requiredHasDefault',
-          data: {name: 'firstProperty'}
-        }
-      ]
+          data: {name: 'firstProperty'},
+        },
+      ],
     },
     {
       code: `
@@ -1753,15 +1753,15 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 15,
-          column: 32
+          column: 32,
         },
         {
           messageId: 'defaultHasNoType',
           data: {name: 'frob'},
           line: 15,
-          column: 44
-        }
-      ]
+          column: 44,
+        },
+      ],
     },
     {
       code: `
@@ -1788,15 +1788,15 @@ ruleTester.run('default-props-match-prop-types', rule, {
           messageId: 'requiredHasDefault',
           data: {name: 'foo'},
           line: 17,
-          column: 32
+          column: 32,
         },
         {
           messageId: 'defaultHasNoType',
           data: {name: 'frob'},
           line: 17,
-          column: 44
-        }
-      ]
-    }
-  ]
+          column: 44,
+        },
+      ],
+    },
+  ],
 });

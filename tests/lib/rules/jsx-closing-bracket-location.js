@@ -16,8 +16,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 const MESSAGE_AFTER_PROPS = 'placed after the last prop';
@@ -41,44 +41,44 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     {
       code: `
          <App />
-       `
+       `,
     },
     {
       code: `
          <App foo />
-       `
+       `,
     },
     {
       code: `
          <App
            foo
          />
-       `
+       `,
     },
     {
       code: `
          <App foo />
        `,
-      options: [{location: 'after-props'}]
+      options: [{location: 'after-props'}],
     },
     {
       code: `
          <App foo />
        `,
-      options: [{location: 'tag-aligned'}]
+      options: [{location: 'tag-aligned'}],
     },
     {
       code: `
          <App foo />
        `,
-      options: [{location: 'line-aligned'}]
+      options: [{location: 'line-aligned'}],
     },
     {
       code: `
          <App
            foo />
        `,
-      options: ['after-props']
+      options: ['after-props'],
     },
     {
       code: `
@@ -86,14 +86,14 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            foo
            />
        `,
-      options: ['props-aligned']
+      options: ['props-aligned'],
     },
     {
       code: `
          <App
            foo />
        `,
-      options: [{location: 'after-props'}]
+      options: [{location: 'after-props'}],
     },
     {
       code: `
@@ -101,7 +101,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            foo
          />
        `,
-      options: [{location: 'tag-aligned'}]
+      options: [{location: 'tag-aligned'}],
     },
     {
       code: `
@@ -109,7 +109,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            foo
          />
        `,
-      options: [{location: 'line-aligned'}]
+      options: [{location: 'line-aligned'}],
     },
     {
       code: `
@@ -117,12 +117,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            foo
            />
        `,
-      options: [{location: 'props-aligned'}]
+      options: [{location: 'props-aligned'}],
     },
     {
       code: `
          <App foo></App>
-       `
+       `,
     },
     {
       code: `
@@ -130,7 +130,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            foo
          ></App>
        `,
-      options: [{location: 'tag-aligned'}]
+      options: [{location: 'tag-aligned'}],
     },
     {
       code: `
@@ -138,7 +138,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            foo
          ></App>
        `,
-      options: [{location: 'line-aligned'}]
+      options: [{location: 'line-aligned'}],
     },
     {
       code: `
@@ -146,7 +146,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            foo
            ></App>
        `,
-      options: [{location: 'props-aligned'}]
+      options: [{location: 'props-aligned'}],
     },
     {
       code: `
@@ -155,7 +155,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
              console.log('bar');
            }} />
        `,
-      options: [{location: 'after-props'}]
+      options: [{location: 'after-props'}],
     },
     {
       code: `
@@ -165,7 +165,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            }}
            />
        `,
-      options: [{location: 'props-aligned'}]
+      options: [{location: 'props-aligned'}],
     },
     {
       code: `
@@ -175,7 +175,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            }}
          />
        `,
-      options: [{location: 'tag-aligned'}]
+      options: [{location: 'tag-aligned'}],
     },
     {
       code: `
@@ -185,7 +185,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            }}
          />
        `,
-      options: [{location: 'line-aligned'}]
+      options: [{location: 'line-aligned'}],
     },
     {
       code: `
@@ -193,7 +193,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            console.log('bar');
          }}/>
        `,
-      options: [{location: 'after-props'}]
+      options: [{location: 'after-props'}],
     },
     {
       code: `
@@ -202,7 +202,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
               }}
               />
        `,
-      options: [{location: 'props-aligned'}]
+      options: [{location: 'props-aligned'}],
     },
     {
       code: `
@@ -211,7 +211,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
          }}
          />
        `,
-      options: [{location: 'tag-aligned'}]
+      options: [{location: 'tag-aligned'}],
     },
     {
       code: `
@@ -220,7 +220,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
          }}
          />
        `,
-      options: [{location: 'line-aligned'}]
+      options: [{location: 'line-aligned'}],
     },
     {
       code: `
@@ -229,7 +229,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
              foo />
          </Provider>
        `,
-      options: [{selfClosing: 'after-props'}]
+      options: [{selfClosing: 'after-props'}],
     },
     {
       code: `
@@ -240,7 +240,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
              foo />
          </Provider>
        `,
-      options: [{selfClosing: 'after-props'}]
+      options: [{selfClosing: 'after-props'}],
     },
     {
       code: `
@@ -251,7 +251,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            />
          </Provider>
        `,
-      options: [{nonEmpty: 'after-props'}]
+      options: [{nonEmpty: 'after-props'}],
     },
     {
       code: `
@@ -261,7 +261,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
              />
          </Provider>
        `,
-      options: [{selfClosing: 'props-aligned'}]
+      options: [{selfClosing: 'props-aligned'}],
     },
     {
       code: `
@@ -273,7 +273,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            />
          </Provider>
        `,
-      options: [{nonEmpty: 'props-aligned'}]
+      options: [{nonEmpty: 'props-aligned'}],
     },
     {
       code: `
@@ -285,7 +285,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
                   </App>
          }
        `,
-      options: [{location: 'tag-aligned'}]
+      options: [{location: 'tag-aligned'}],
     },
     {
       code: `
@@ -295,7 +295,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
                   />
          }
        `,
-      options: [{location: 'tag-aligned'}]
+      options: [{location: 'tag-aligned'}],
     },
     {
       code: `
@@ -303,7 +303,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            foo
                  />
        `,
-      options: [{location: 'tag-aligned'}]
+      options: [{location: 'tag-aligned'}],
     },
     {
       code: `
@@ -315,7 +315,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            />
          }
        `,
-      options: [{location: 'line-aligned'}]
+      options: [{location: 'line-aligned'}],
     },
     {
       code: `
@@ -325,7 +325,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            }}
          />
        `,
-      options: [{location: 'line-aligned'}]
+      options: [{location: 'line-aligned'}],
     },
     {
       code: `
@@ -339,7 +339,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            />
          </Provider>
        `,
-      options: [{location: 'line-aligned'}]
+      options: [{location: 'line-aligned'}],
     },
     {
       code: `
@@ -353,7 +353,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            />}
          </Provider>
        `,
-      options: [{location: 'line-aligned'}]
+      options: [{location: 'line-aligned'}],
     },
     {
       code: `
@@ -369,9 +369,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       options: [
         {
           nonEmpty: false,
-          selfClosing: 'after-props'
-        }
-      ]
+          selfClosing: 'after-props',
+        },
+      ],
     },
     {
       code: `
@@ -387,9 +387,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       options: [
         {
           nonEmpty: 'after-props',
-          selfClosing: false
-        }
-      ]
+          selfClosing: false,
+        },
+      ],
     },
     {
       code: `
@@ -401,7 +401,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
            Some text
          </div>
        `,
-      options: [{location: 'tag-aligned'}]
+      options: [{location: 'tag-aligned'}],
     },
     {
       code: `
@@ -410,8 +410,8 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
              }}
               />
        `,
-      options: [{location: 'props-aligned'}]
-    }
+      options: [{location: 'props-aligned'}],
+    },
   ],
 
   invalid: [
@@ -426,9 +426,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_TAG}
-        }
-      ]
+          data: {location: MESSAGE_AFTER_TAG},
+        },
+      ],
     },
     {
       code: `
@@ -441,9 +441,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS}
-        }
-      ]
+          data: {location: MESSAGE_AFTER_PROPS},
+        },
+      ],
     },
     {
       code: `
@@ -456,9 +456,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS}
-        }
-      ]
+          data: {location: MESSAGE_AFTER_PROPS},
+        },
+      ],
     },
     {
       code: `
@@ -476,12 +476,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_PROPS_ALIGNED,
-            details: details(11, true)
+            details: details(11, true),
           },
           line: 3,
-          column: 15
-        }
-      ]
+          column: 15,
+        },
+      ],
     },
     {
       code: `
@@ -499,12 +499,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(9, true)
+            details: details(9, true),
           },
           line: 3,
-          column: 15
-        }
-      ]
+          column: 15,
+        },
+      ],
     },
     {
       code: `
@@ -522,12 +522,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(9, true)
+            details: details(9, true),
           },
           line: 3,
-          column: 15
-        }
-      ]
+          column: 15,
+        },
+      ],
     },
     {
       code: `
@@ -543,9 +543,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS}
-        }
-      ]
+          data: {location: MESSAGE_AFTER_PROPS},
+        },
+      ],
     },
     {
       code: `
@@ -564,12 +564,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_PROPS_ALIGNED,
-            details: details(11, false)
+            details: details(11, false),
           },
           line: 4,
-          column: 9
-        }
-      ]
+          column: 9,
+        },
+      ],
     },
     {
       code: `
@@ -585,9 +585,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS}
-        }
-      ]
+          data: {location: MESSAGE_AFTER_PROPS},
+        },
+      ],
     },
     {
       code: `
@@ -606,12 +606,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(9, false)
+            details: details(9, false),
           },
           line: 4,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -630,12 +630,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(9, false)
+            details: details(9, false),
           },
           line: 4,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -651,9 +651,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS}
-        }
-      ]
+          data: {location: MESSAGE_AFTER_PROPS},
+        },
+      ],
     },
     {
       code: `
@@ -672,12 +672,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_PROPS_ALIGNED,
-            details: details(11, false)
+            details: details(11, false),
           },
           line: 4,
-          column: 9
-        }
-      ]
+          column: 9,
+        },
+      ],
     },
     {
       code: `
@@ -693,9 +693,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS}
-        }
-      ]
+          data: {location: MESSAGE_AFTER_PROPS},
+        },
+      ],
     },
     {
       code: `
@@ -714,12 +714,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(9, false)
+            details: details(9, false),
           },
           line: 4,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -738,12 +738,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(9, false)
+            details: details(9, false),
           },
           line: 4,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -769,12 +769,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(9, true)
+            details: details(9, true),
           },
           line: 3,
-          column: 16
-        }
-      ]
+          column: 16,
+        },
+      ],
     },
     {
       code: `
@@ -807,12 +807,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_PROPS_ALIGNED,
-            details: details(15, false)
+            details: details(15, false),
           },
           line: 7,
-          column: 45
-        }
-      ]
+          column: 45,
+        },
+      ],
     },
     {
       code: `
@@ -845,12 +845,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(13, false)
+            details: details(13, false),
           },
           line: 7,
-          column: 45
-        }
-      ]
+          column: 45,
+        },
+      ],
     },
     {
       code: `
@@ -883,12 +883,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(13, false)
+            details: details(13, false),
           },
           line: 7,
-          column: 45
-        }
-      ]
+          column: 45,
+        },
+      ],
     },
     {
       code: `
@@ -915,12 +915,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(11, false)
+            details: details(11, false),
           },
           line: 7,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -944,12 +944,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(9, true)
+            details: details(9, true),
           },
           line: 3,
-          column: 16
-        }
-      ]
+          column: 16,
+        },
+      ],
     },
     {
       code: `
@@ -974,12 +974,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(11, false)
+            details: details(11, false),
           },
           line: 6,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -1002,12 +1002,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(11, false)
+            details: details(11, false),
           },
           line: 5,
-          column: 17
-        }
-      ]
+          column: 17,
+        },
+      ],
     },
     {
       code: `
@@ -1026,12 +1026,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(9, false)
+            details: details(9, false),
           },
           line: 4,
-          column: 17
-        }
-      ]
+          column: 17,
+        },
+      ],
     },
     {
       code: `
@@ -1055,12 +1055,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(11, true)
+            details: details(11, true),
           },
           line: 5,
-          column: 24
-        }
-      ]
+          column: 24,
+        },
+      ],
     },
     {
       code: `
@@ -1082,12 +1082,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(11, true)
+            details: details(11, true),
           },
           line: 4,
-          column: 31
-        }
-      ]
+          column: 31,
+        },
+      ],
     },
     {
       code: `
@@ -1105,9 +1105,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_TAG}
-        }
-      ]
+          data: {location: MESSAGE_AFTER_TAG},
+        },
+      ],
     },
     {
       code: `
@@ -1133,12 +1133,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(9, true)
+            details: details(9, true),
           },
           line: 5,
-          column: 15
-        }
-      ]
+          column: 15,
+        },
+      ],
     },
     {
       code: `
@@ -1156,12 +1156,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_PROPS_ALIGNED,
-            details: details(6, true)
+            details: details(6, true),
           },
           line: 3,
-          column: 10
-        }
-      ]
+          column: 10,
+        },
+      ],
     },
     {
       code: `
@@ -1179,12 +1179,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(5, true)
+            details: details(5, true),
           },
           line: 3,
-          column: 10
-        }
-      ]
+          column: 10,
+        },
+      ],
     },
     {
       code: `
@@ -1202,12 +1202,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(5, true)
+            details: details(5, true),
           },
           line: 3,
-          column: 10
-        }
-      ]
+          column: 10,
+        },
+      ],
     },
     {
       code: `
@@ -1223,9 +1223,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS}
-        }
-      ]
+          data: {location: MESSAGE_AFTER_PROPS},
+        },
+      ],
     },
     {
       code: `
@@ -1244,12 +1244,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_PROPS_ALIGNED,
-            details: details(6, false)
+            details: details(6, false),
           },
           line: 4,
-          column: 5
-        }
-      ]
+          column: 5,
+        },
+      ],
     },
     {
       code: `
@@ -1265,9 +1265,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS}
-        }
-      ]
+          data: {location: MESSAGE_AFTER_PROPS},
+        },
+      ],
     },
     {
       code: `
@@ -1286,12 +1286,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(5, false)
+            details: details(5, false),
           },
           line: 4,
-          column: 6
-        }
-      ]
+          column: 6,
+        },
+      ],
     },
     {
       code: `
@@ -1310,12 +1310,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(5, false)
+            details: details(5, false),
           },
           line: 4,
-          column: 6
-        }
-      ]
+          column: 6,
+        },
+      ],
     },
     {
       code: `
@@ -1331,9 +1331,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS}
-        }
-      ]
+          data: {location: MESSAGE_AFTER_PROPS},
+        },
+      ],
     },
     {
       code: `
@@ -1352,12 +1352,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_PROPS_ALIGNED,
-            details: details(6, false)
+            details: details(6, false),
           },
           line: 4,
-          column: 5
-        }
-      ]
+          column: 5,
+        },
+      ],
     },
     {
       code: `
@@ -1373,9 +1373,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_PROPS}
-        }
-      ]
+          data: {location: MESSAGE_AFTER_PROPS},
+        },
+      ],
     },
     {
       code: `
@@ -1394,12 +1394,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(5, false)
+            details: details(5, false),
           },
           line: 4,
-          column: 6
-        }
-      ]
+          column: 6,
+        },
+      ],
     },
     {
       code: `
@@ -1418,12 +1418,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(5, false)
+            details: details(5, false),
           },
           line: 4,
-          column: 6
-        }
-      ]
+          column: 6,
+        },
+      ],
     },
     {
       code: `
@@ -1449,12 +1449,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(5, true)
+            details: details(5, true),
           },
           line: 3,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -1487,12 +1487,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_PROPS_ALIGNED,
-            details: details(8, false)
+            details: details(8, false),
           },
           line: 7,
-          column: 23
-        }
-      ]
+          column: 23,
+        },
+      ],
     },
     {
       code: `
@@ -1525,12 +1525,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(7, false)
+            details: details(7, false),
           },
           line: 7,
-          column: 23
-        }
-      ]
+          column: 23,
+        },
+      ],
     },
     {
       code: `
@@ -1563,12 +1563,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(7, false)
+            details: details(7, false),
           },
           line: 7,
-          column: 23
-        }
-      ]
+          column: 23,
+        },
+      ],
     },
     {
       code: `
@@ -1595,12 +1595,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(6, false)
+            details: details(6, false),
           },
           line: 7,
-          column: 7
-        }
-      ]
+          column: 7,
+        },
+      ],
     },
     {
       code: `
@@ -1624,12 +1624,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(5, true)
+            details: details(5, true),
           },
           line: 3,
-          column: 11
-        }
-      ]
+          column: 11,
+        },
+      ],
     },
     {
       code: `
@@ -1654,12 +1654,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(6, false)
+            details: details(6, false),
           },
           line: 6,
-          column: 7
-        }
-      ]
+          column: 7,
+        },
+      ],
     },
     {
       code: `
@@ -1682,12 +1682,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(6, false)
+            details: details(6, false),
           },
           line: 5,
-          column: 9
-        }
-      ]
+          column: 9,
+        },
+      ],
     },
     {
       code: `
@@ -1706,12 +1706,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(5, false)
+            details: details(5, false),
           },
           line: 4,
-          column: 9
-        }
-      ]
+          column: 9,
+        },
+      ],
     },
     {
       code: `
@@ -1735,12 +1735,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(6, true)
+            details: details(6, true),
           },
           line: 5,
-          column: 18
-        }
-      ]
+          column: 18,
+        },
+      ],
     },
     {
       code: `
@@ -1762,12 +1762,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_LINE_ALIGNED,
-            details: details(6, true)
+            details: details(6, true),
           },
           line: 4,
-          column: 25
-        }
-      ]
+          column: 25,
+        },
+      ],
     },
     {
       code: `
@@ -1785,9 +1785,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       errors: [
         {
           messageId: 'bracketLocation',
-          data: {location: MESSAGE_AFTER_TAG}
-        }
-      ]
+          data: {location: MESSAGE_AFTER_TAG},
+        },
+      ],
     },
     {
       code: `
@@ -1813,12 +1813,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(5, true)
+            details: details(5, true),
           },
           line: 5,
-          column: 10
-        }
-      ]
+          column: 10,
+        },
+      ],
     },
     {
       code: `
@@ -1841,12 +1841,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(8, false)
+            details: details(8, false),
           },
           line: 4,
-          column: 7
-        }
-      ]
+          column: 7,
+        },
+      ],
     },
     {
       code: `
@@ -1869,12 +1869,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(11, false)
+            details: details(11, false),
           },
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -1893,12 +1893,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(11, false)
+            details: details(11, false),
           },
           line: 4,
-          column: 13
-        }
-      ]
+          column: 13,
+        },
+      ],
     },
     {
       code: `
@@ -1917,12 +1917,12 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           messageId: 'bracketLocation',
           data: {
             location: MESSAGE_TAG_ALIGNED,
-            details: details(7, false)
+            details: details(7, false),
           },
           line: 4,
-          column: 6
-        }
-      ]
-    }
-  ]
+          column: 6,
+        },
+      ],
+    },
+  ],
 });

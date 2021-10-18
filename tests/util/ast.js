@@ -9,7 +9,7 @@ const ast = require('../../lib/util/ast');
 const traverseReturns = ast.traverseReturns;
 
 const DEFAULT_CONFIG = {
-  ecmaVersion: 6
+  ecmaVersion: 6,
 };
 
 const parseCode = (code) => {

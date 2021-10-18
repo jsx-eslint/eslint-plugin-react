@@ -18,8 +18,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ ruleTester.run('require-render-return', rule, {
             return <div>Hello {this.props.name}</div>;
           }
         }
-      `
+      `,
     },
     {
       // ES6 class with render property
@@ -48,7 +48,7 @@ ruleTester.run('require-render-return', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // ES6 class with render property (implicit return)
@@ -59,7 +59,7 @@ ruleTester.run('require-render-return', rule, {
           )
         }
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // ES5 class
@@ -70,7 +70,7 @@ ruleTester.run('require-render-return', rule, {
             return <div></div>
           }
         });
-      `
+      `,
     },
     {
       // Stateless function
@@ -78,7 +78,7 @@ ruleTester.run('require-render-return', rule, {
         function Hello() {
           return <div></div>;
         }
-      `
+      `,
     },
     {
       // Stateless arrow function
@@ -87,7 +87,7 @@ ruleTester.run('require-render-return', rule, {
           <div></div>
         );
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       // Return in a switch...case
@@ -102,7 +102,7 @@ ruleTester.run('require-render-return', rule, {
             }
           }
         });
-      `
+      `,
     },
     {
       // Return in a if...else
@@ -116,7 +116,7 @@ ruleTester.run('require-render-return', rule, {
             }
           }
         });
-      `
+      `,
     },
     {
       // Not a React component
@@ -124,15 +124,15 @@ ruleTester.run('require-render-return', rule, {
         class Hello {
           render() {}
         }
-      `
+      `,
     },
     {
       // ES6 class without a render method
-      code: 'class Hello extends React.Component {}'
+      code: 'class Hello extends React.Component {}',
     },
     {
       // ES5 class without a render method
-      code: 'var Hello = createReactClass({});'
+      code: 'var Hello = createReactClass({});',
     },
     {
       // ES5 class with an imported render method
@@ -141,7 +141,7 @@ ruleTester.run('require-render-return', rule, {
         var Hello = createReactClass({
           render
         });
-      `
+      `,
     },
     {
       // Invalid render method (but accepted by Babel)
@@ -150,8 +150,8 @@ ruleTester.run('require-render-return', rule, {
           render
         }
       `,
-      parser: parsers.BABEL_ESLINT
-    }
+      parser: parsers.BABEL_ESLINT,
+    },
   ],
 
   invalid: [
@@ -166,9 +166,9 @@ ruleTester.run('require-render-return', rule, {
       errors: [
         {
           messageId: 'noRenderReturn',
-          line: 4
-        }
-      ]
+          line: 4,
+        },
+      ],
     },
     {
       // Missing return in ES6 class
@@ -177,7 +177,7 @@ ruleTester.run('require-render-return', rule, {
           render() {}
         }
       `,
-      errors: [{messageId: 'noRenderReturn'}]
+      errors: [{messageId: 'noRenderReturn'}],
     },
     {
       // Missing return (but one is present in a sub-function)
@@ -193,9 +193,9 @@ ruleTester.run('require-render-return', rule, {
       errors: [
         {
           messageId: 'noRenderReturn',
-          line: 3
-        }
-      ]
+          line: 3,
+        },
+      ],
     },
     {
       // Missing return ES6 class render property
@@ -210,9 +210,9 @@ ruleTester.run('require-render-return', rule, {
       errors: [
         {
           messageId: 'noRenderReturn',
-          type: 'ClassProperty'
-        }
-      ]
-    }
-  ]
+          type: 'ClassProperty',
+        },
+      ],
+    },
+  ],
 });

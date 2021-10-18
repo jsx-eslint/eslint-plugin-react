@@ -18,8 +18,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ ruleTester.run('no-refs', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -50,7 +50,7 @@ ruleTester.run('no-refs', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT
+      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -60,8 +60,8 @@ ruleTester.run('no-refs', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT
-    }
+      parser: parsers.BABEL_ESLINT,
+    },
   ],
 
   invalid: [
@@ -77,7 +77,7 @@ ruleTester.run('no-refs', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'thisRefsDeprecated'}]
+      errors: [{messageId: 'thisRefsDeprecated'}],
     },
     {
       code: `
@@ -88,7 +88,7 @@ ruleTester.run('no-refs', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'stringInRefDeprecated'}]
+      errors: [{messageId: 'stringInRefDeprecated'}],
     },
     {
       code: `
@@ -99,7 +99,7 @@ ruleTester.run('no-refs', rule, {
         });
       `,
       parser: parsers.BABEL_ESLINT,
-      errors: [{messageId: 'stringInRefDeprecated'}]
+      errors: [{messageId: 'stringInRefDeprecated'}],
     },
     {
       code: `
@@ -115,8 +115,8 @@ ruleTester.run('no-refs', rule, {
       parser: parsers.BABEL_ESLINT,
       errors: [
         {messageId: 'thisRefsDeprecated'},
-        {messageId: 'stringInRefDeprecated'}
-      ]
+        {messageId: 'stringInRefDeprecated'},
+      ],
     },
     {
       code: `
@@ -133,8 +133,8 @@ ruleTester.run('no-refs', rule, {
       options: [{noTemplateLiterals: true}],
       errors: [
         {messageId: 'thisRefsDeprecated'},
-        {messageId: 'stringInRefDeprecated'}
-      ]
+        {messageId: 'stringInRefDeprecated'},
+      ],
     },
     {
       code: `
@@ -151,8 +151,8 @@ ruleTester.run('no-refs', rule, {
       options: [{noTemplateLiterals: true}],
       errors: [
         {messageId: 'thisRefsDeprecated'},
-        {messageId: 'stringInRefDeprecated'}
-      ]
-    }
-  ]
+        {messageId: 'stringInRefDeprecated'},
+      ],
+    },
+  ],
 });

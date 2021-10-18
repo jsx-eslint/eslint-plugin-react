@@ -16,8 +16,8 @@ const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   ecmaFeatures: {
-    jsx: true
-  }
+    jsx: true,
+  },
 };
 
 // ------------------------------------------------------------------------------
@@ -32,7 +32,7 @@ ruleTester.run('no-is-mounted', rule, {
       code: `
         var Hello = function() {
         };
-      `
+      `,
     },
     {
       code: `
@@ -41,7 +41,7 @@ ruleTester.run('no-is-mounted', rule, {
             return <div>Hello</div>;
           }
         });
-      `
+      `,
     },
     {
       code: `
@@ -54,8 +54,8 @@ ruleTester.run('no-is-mounted', rule, {
             return <div>Hello</div>;
           }
         });
-      `
-    }
+      `,
+    },
   ],
 
   invalid: [
@@ -72,7 +72,7 @@ ruleTester.run('no-is-mounted', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noIsMounted'}]
+      errors: [{messageId: 'noIsMounted'}],
     },
     {
       code: `
@@ -87,7 +87,7 @@ ruleTester.run('no-is-mounted', rule, {
           }
         });
       `,
-      errors: [{messageId: 'noIsMounted'}]
+      errors: [{messageId: 'noIsMounted'}],
     },
     {
       code: `
@@ -102,7 +102,7 @@ ruleTester.run('no-is-mounted', rule, {
           }
         };
       `,
-      errors: [{messageId: 'noIsMounted'}]
-    }
-  ]
+      errors: [{messageId: 'noIsMounted'}],
+    },
+  ],
 });
