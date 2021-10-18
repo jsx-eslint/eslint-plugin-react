@@ -2416,7 +2416,7 @@ ruleTester.run('no-typos', rule, {
       /*
       // PropTypes declared on a component that is detected through JSDoc comments and is
       // declared AFTER the PropTypes assignment
-      // Commented out since it only works with ESLint 5.
+      // Commented out since it only works with eslint 5.
         ,{
           code: `
             MyComponent.PROPTYPES = {}

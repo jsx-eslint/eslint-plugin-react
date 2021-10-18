@@ -6,7 +6,7 @@ Stateless functional components are simpler than class based components and will
 
 This rule will check your class based React components for
 
-* methods/properties other than `displayName`, `propTypes`, `contextTypes`, `defaultProps`, `render` and useless constructor (same detection as ESLint [no-useless-constructor rule](http://eslint.org/docs/rules/no-useless-constructor))
+* methods/properties other than `displayName`, `propTypes`, `contextTypes`, `defaultProps`, `render` and useless constructor (same detection as `eslint` [no-useless-constructor rule](http://eslint.org/docs/rules/no-useless-constructor))
 * instance property other than `this.props` and `this.context`
 * extension of `React.PureComponent` (if the `ignorePureComponents` flag is true)
 * presence of `ref` attribute in JSX

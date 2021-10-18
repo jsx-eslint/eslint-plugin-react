@@ -1,19 +1,19 @@
-ESLint-plugin-React
+`eslint-plugin-react`
 ===================
 
 [![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url] [![Code Climate][climate-image]][climate-url] [![Tidelift][tidelift-image]][tidelift-url]
 
-React specific linting rules for ESLint
+React specific linting rules for `eslint`
 
 # Installation
 
-Install [ESLint](https://www.github.com/eslint/eslint) either locally or globally. (Note that locally, per project, is strongly preferred)
+Install [`eslint`](https://www.github.com/eslint/eslint) either locally or globally. (Note that locally, per project, is strongly preferred)
 
 ```sh
 $ npm install eslint --save-dev
 ```
 
-If you installed `ESLint` globally, you have to install React plugin globally too. Otherwise, install it locally.
+If you installed `eslint` globally, you have to install React plugin globally too. Otherwise, install it locally.
 
 ```sh
 $ npm install eslint-plugin-react --save-dev
@@ -92,7 +92,7 @@ Add "react" to the plugins section.
 
 Enable JSX support.
 
-With ESLint 2+
+With `eslint` 2+
 
 ```json
 {
@@ -244,7 +244,7 @@ To enable this configuration use the `extends` property in your `.eslintrc` conf
 }
 ```
 
-See [ESLint documentation](https://eslint.org/docs/user-guide/configuring/configuration-files#extending-configuration-files) for more information about extending configuration files.
+See [`eslint` documentation](https://eslint.org/docs/user-guide/configuring/configuration-files#extending-configuration-files) for more information about extending configuration files.
 
 ## All
 
@@ -264,7 +264,7 @@ This pairs well with the `eslint:all` rule.
 
 # License
 
-ESLint-plugin-React is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+`eslint-plugin-react` is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
 
 
 [npm-url]: https://npmjs.org/package/eslint-plugin-react

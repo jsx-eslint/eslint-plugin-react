@@ -903,7 +903,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     ],
   },
   {
-    // Custom messages use ESLint string templating.
+    // Custom messages use eslint string templating.
     code: `
       class Hello extends React.Component {
         render () { return <div />; }
