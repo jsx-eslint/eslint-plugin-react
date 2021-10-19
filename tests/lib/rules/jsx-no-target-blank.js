@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-no-target-blank');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -28,7 +30,7 @@ const ruleTester = new RuleTester({ parserOptions });
 const defaultErrors = [{ messageId: 'noTargetBlankWithoutNoreferrer' }];
 
 ruleTester.run('jsx-no-target-blank', rule, {
-  valid: [
+  valid: parsers.all([
     { code: '<a href="foobar"></a>' },
     { code: '<a randomTag></a>' },
     { code: '<a target />' },
@@ -139,8 +141,8 @@ ruleTester.run('jsx-no-target-blank', rule, {
     {
       code: '<a href target="_blank"/>',
     },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: '<a target="_blank" href="http://example.com/1"></a>',
       output: '<a target="_blank" href="http://example.com/1" rel="noreferrer"></a>',
@@ -344,5 +346,5 @@ ruleTester.run('jsx-no-target-blank', rule, {
       options: [{ forms: true, links: false }],
       errors: defaultErrors,
     },
-  ],
+  ]),
 });

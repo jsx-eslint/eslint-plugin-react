@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-max-depth', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         <App />
@@ -76,7 +76,7 @@ ruleTester.run('jsx-max-depth', rule, {
       code: `
         <></>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: `
@@ -84,7 +84,7 @@ ruleTester.run('jsx-max-depth', rule, {
           <foo />
         </>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ max: 1 }],
     },
     {
@@ -92,7 +92,7 @@ ruleTester.run('jsx-max-depth', rule, {
         const x = <><em>x</em></>;
         <>{x}</>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ max: 2 }],
     },
     {
@@ -155,9 +155,9 @@ ruleTester.run('jsx-max-depth', rule, {
         };
       `,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         <App>
@@ -253,7 +253,6 @@ ruleTester.run('jsx-max-depth', rule, {
         {<div><div><span /></div></div>}
         </div>
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'wrongDepth',
@@ -267,7 +266,7 @@ ruleTester.run('jsx-max-depth', rule, {
           <foo />
         </>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ max: 0 }],
       errors: [
         {
@@ -284,7 +283,7 @@ ruleTester.run('jsx-max-depth', rule, {
           </>
         </>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ max: 1 }],
       errors: [
         {
@@ -299,7 +298,7 @@ ruleTester.run('jsx-max-depth', rule, {
         let y = x;
         <>{x}-{y}</>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ max: 1 }],
       errors: [
         {
@@ -362,5 +361,5 @@ ruleTester.run('jsx-max-depth', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

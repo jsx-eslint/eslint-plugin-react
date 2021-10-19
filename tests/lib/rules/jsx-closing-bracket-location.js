@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-closing-bracket-location');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -37,7 +39,7 @@ function details(expectedColumn, expectedNextLine) {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-closing-bracket-location', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         <App />
@@ -403,9 +405,9 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       `,
       options: [{ location: 'tag-aligned' }],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         <App
@@ -1915,5 +1917,5 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

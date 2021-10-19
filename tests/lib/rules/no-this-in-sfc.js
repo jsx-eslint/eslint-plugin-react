@@ -23,7 +23,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-this-in-sfc', rule, {
-  valid: [].concat(
+  valid: parsers.all([
     {
       code: `
         function Foo(props) {
@@ -139,7 +139,7 @@ ruleTester.run('no-this-in-sfc', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -152,7 +152,6 @@ ruleTester.run('no-this-in-sfc', rule, {
           };
         };
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -176,21 +175,20 @@ ruleTester.run('no-this-in-sfc', rule, {
           return this.a || null;
         };
       `,
-    }, parsers.TS([
-      {
-        code: `
-          $.fn.getValueAsStringWeak = function (): string | null {
-            const val = this.length === 1 ? this.val() : null;
-          
-            return typeof val === 'string' ? val : null;
-          };
-        `,
-        parser: parsers['@TYPESCRIPT_ESLINT'],
-      },
-    ])
-  ),
+    },
+    {
+      code: `
+        $.fn.getValueAsStringWeak = function (): string | null {
+          const val = this.length === 1 ? this.val() : null;
+        
+          return typeof val === 'string' ? val : null;
+        };
+      `,
+      features: ['types'],
+    },
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         function Foo(props) {
@@ -299,7 +297,7 @@ ruleTester.run('no-this-in-sfc', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove `no-ts-old` and fix
       errors: [{ messageId: 'noThisInSFC' }],
     },
     {
@@ -330,5 +328,5 @@ ruleTester.run('no-this-in-sfc', rule, {
       `,
       errors: [{ messageId: 'noThisInSFC' }],
     },
-  ],
+  ]),
 });

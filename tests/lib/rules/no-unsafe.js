@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-unsafe');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-unsafe', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         class Foo extends React.Component {
@@ -127,9 +129,9 @@ ruleTester.run('no-unsafe', rule, {
       `,
       settings: { react: { version: '16.2.0' } },
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     // React.Component
     {
       code: `
@@ -314,5 +316,5 @@ ruleTester.run('no-unsafe', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

@@ -44,10 +44,10 @@ const settingsOld = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-fragments', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<><Foo /></>',
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'],
       settings,
     },
     {
@@ -102,12 +102,12 @@ ruleTester.run('jsx-fragments', rule, {
       options: ['syntax'],
       settings,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: '<><Foo /></>',
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'],
       settings: settingsOld,
       errors: [
         { messageId: 'fragmentsNotSupported' },
@@ -130,7 +130,7 @@ ruleTester.run('jsx-fragments', rule, {
     {
       code: '<><Foo /></>',
       output: '<Act.Frag><Foo /></Act.Frag>',
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'],
       options: ['element'],
       settings,
       errors: [
@@ -272,5 +272,5 @@ ruleTester.run('jsx-fragments', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

@@ -27,7 +27,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-unused-class-component-methods', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         class SmockTestForTypeOfNullError extends React.Component {
@@ -39,7 +39,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -123,7 +123,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -158,7 +158,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -172,7 +172,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
     },
     {
       code: `
@@ -184,7 +184,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
     },
     {
       code: `
@@ -196,7 +196,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
     },
     {
       code: `
@@ -205,7 +205,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           anotherAction = () => this.action()
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -216,7 +216,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -229,7 +229,6 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -242,7 +241,6 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -255,7 +253,6 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -268,7 +265,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -291,7 +288,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -302,7 +299,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -313,7 +310,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -324,7 +321,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -335,7 +332,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -346,7 +343,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -476,9 +473,9 @@ ruleTester.run('no-unused-class-component-methods', rule, {
         })
       `,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         class Foo extends React.Component {
@@ -505,7 +502,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           message: 'Unused method or property "property" of class "Foo"',
@@ -597,7 +594,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           message: 'Unused method or property "handleClick" of class "Foo"',
@@ -615,7 +612,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           message: 'Unused method or property "action" of class "Foo"',
@@ -635,7 +632,6 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           message: 'Unused method or property "action" of class "Foo"',
@@ -655,7 +651,6 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           message: 'Unused method or property "action" of class "Foo"',
@@ -675,7 +670,6 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           message: 'Unused method or property "action" of class "Foo"',
@@ -693,7 +687,6 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           message: 'Unused method or property "getInitialState" of class "Foo"',
@@ -713,7 +706,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           message: 'Unused method or property "action" of class "Foo"',
@@ -757,7 +750,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           column: 12,
         },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -775,7 +768,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           column: 12,
         },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -793,7 +786,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           column: 13,
         },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -811,7 +804,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           column: 13,
         },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -829,7 +822,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           column: 12,
         },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -847,7 +840,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           column: 20,
         },
       ],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['ts', 'no-babel'],
     },
     {
       code: `
@@ -865,7 +858,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           column: 20,
         },
       ],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['ts', 'no-babel'],
     },
     {
       code: `
@@ -883,7 +876,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           column: 20,
         },
       ],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['ts', 'no-babel'],
     },
-  ],
+  ]),
 });

@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('display-name', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -85,7 +85,7 @@ ruleTester.run('display-name', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -93,7 +93,7 @@ ruleTester.run('display-name', rule, {
           method;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -118,7 +118,7 @@ ruleTester.run('display-name', rule, {
         }
       `,
       options: [{ ignoreTranspilerName: true }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -137,7 +137,6 @@ ruleTester.run('display-name', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -147,7 +146,6 @@ ruleTester.run('display-name', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -190,7 +188,6 @@ ruleTester.run('display-name', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -198,7 +195,6 @@ ruleTester.run('display-name', rule, {
           return <p />;
         })
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -206,7 +202,6 @@ ruleTester.run('display-name', rule, {
           return <div>Hello {this.props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -214,7 +209,6 @@ ruleTester.run('display-name', rule, {
           return <div>Hello {this.props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -222,7 +216,6 @@ ruleTester.run('display-name', rule, {
           return <div>Hello {this.props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -230,7 +223,6 @@ ruleTester.run('display-name', rule, {
           return <div>Hello {this.props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -240,7 +232,6 @@ ruleTester.run('display-name', rule, {
         Hello.displayName = 'Hello';
       `,
       options: [{ ignoreTranspilerName: true }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -250,7 +241,6 @@ ruleTester.run('display-name', rule, {
         Hello.displayName = 'Hello';
       `,
       options: [{ ignoreTranspilerName: true }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -260,7 +250,6 @@ ruleTester.run('display-name', rule, {
         Hello.displayName = 'Hello';
       `,
       options: [{ ignoreTranspilerName: true }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -274,7 +263,6 @@ ruleTester.run('display-name', rule, {
         Mixins.Greetings.Hello.displayName = 'Hello';
       `,
       options: [{ ignoreTranspilerName: true }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -287,7 +275,6 @@ ruleTester.run('display-name', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -302,7 +289,6 @@ ruleTester.run('display-name', rule, {
         });
       `,
       options: [{ ignoreTranspilerName: true }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -314,7 +300,6 @@ ruleTester.run('display-name', rule, {
           }
         };
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -325,7 +310,6 @@ ruleTester.run('display-name', rule, {
         };
       `,
       options: [{ ignoreTranspilerName: true }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -335,7 +319,6 @@ ruleTester.run('display-name', rule, {
           }
         };
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -346,7 +329,6 @@ ruleTester.run('display-name', rule, {
           }
         };
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -364,7 +346,6 @@ ruleTester.run('display-name', rule, {
           createClass: 'createClass',
         },
       },
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -376,7 +357,6 @@ ruleTester.run('display-name', rule, {
         }
         module.exports = someDecorator;
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -399,7 +379,17 @@ ruleTester.run('display-name', rule, {
           });
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        function someDecorator(ComposedComponent) {
+          return class MyDecorator extends Component {
+            render() {return <ComposedComponent {...this.props} />;}
+          };
+        }
+        module.exports = someDecorator;
+      `,
     },
     {
       code: `
@@ -421,7 +411,6 @@ ruleTester.run('display-name', rule, {
           }}/>
         )
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -432,7 +421,6 @@ ruleTester.run('display-name', rule, {
           }}/>
         )
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -440,14 +428,12 @@ ruleTester.run('display-name', rule, {
           createElement: tagName => document.createElement(tagName)
         };
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
         const { createElement } = document;
         createElement("a");
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -511,7 +497,7 @@ ruleTester.run('display-name', rule, {
         type LinkProps = {...{}};
         class Link extends Component<LinkProps> {}
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
     {
       code: `
@@ -526,7 +512,6 @@ ruleTester.run('display-name', rule, {
           )
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -535,9 +520,9 @@ ruleTester.run('display-name', rule, {
         };
       `,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -610,7 +595,6 @@ ruleTester.run('display-name', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [{ messageId: 'noDisplayName' }],
     },
     {
@@ -619,7 +603,6 @@ ruleTester.run('display-name', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [{ messageId: 'noDisplayName' }],
     },
     {
@@ -630,7 +613,6 @@ ruleTester.run('display-name', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [{ messageId: 'noDisplayName' }],
     },
     {
@@ -645,7 +627,6 @@ ruleTester.run('display-name', rule, {
         });
       `,
       options: [{ ignoreTranspilerName: true }],
-      parser: parsers.BABEL_ESLINT,
       errors: [{ messageId: 'noDisplayName' }],
     },
     {
@@ -660,7 +641,6 @@ ruleTester.run('display-name', rule, {
         });
       `,
       options: [{ ignoreTranspilerName: true }],
-      parser: parsers.BABEL_ESLINT,
       settings: {
         react: {
           pragma: 'Foo',
@@ -687,7 +667,6 @@ ruleTester.run('display-name', rule, {
           createClass: 'createClass',
         },
       },
-      parser: parsers.BABEL_ESLINT,
       errors: [{ messageId: 'noDisplayName' }],
     },
     {
@@ -701,7 +680,6 @@ ruleTester.run('display-name', rule, {
         };
       `,
       options: [{ ignoreTranspilerName: true }],
-      parser: parsers.BABEL_ESLINT,
       errors: [{ messageId: 'noDisplayName' }],
     },
     {
@@ -712,7 +690,6 @@ ruleTester.run('display-name', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [{ messageId: 'noDisplayName' }],
     },
     {
@@ -722,7 +699,6 @@ ruleTester.run('display-name', rule, {
           return createElement("div", {}, "hello");
         };
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [{ messageId: 'noDisplayName' }],
     },
     {
@@ -817,7 +793,6 @@ ruleTester.run('display-name', rule, {
           return createElement("div", {}, "hello");
         };
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [{ messageId: 'noDisplayName' }],
     },
     {
@@ -828,7 +803,6 @@ ruleTester.run('display-name', rule, {
           return createElement("div", {}, "hello");
         };
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [{ messageId: 'noDisplayName' }],
     },
     {
@@ -925,5 +899,5 @@ ruleTester.run('display-name', rule, {
         { message: 'Component definition is missing display name' },
       ],
     },
-  ],
+  ]),
 });

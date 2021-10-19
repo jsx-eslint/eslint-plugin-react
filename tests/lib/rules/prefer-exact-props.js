@@ -32,7 +32,7 @@ const FLOW_MESSAGE = 'Component flow props should be set with exact objects.';
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('prefer-exact-props', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         class Component extends React.Component {
@@ -53,7 +53,7 @@ ruleTester.run('prefer-exact-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       settings,
     },
     {
@@ -65,7 +65,7 @@ ruleTester.run('prefer-exact-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
       settings,
     },
     {
@@ -83,7 +83,7 @@ ruleTester.run('prefer-exact-props', rule, {
           return <div />;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -94,7 +94,7 @@ ruleTester.run('prefer-exact-props', rule, {
           return <div />;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
     {
       code: `
@@ -102,7 +102,7 @@ ruleTester.run('prefer-exact-props', rule, {
           return <div />;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
     {
       code: `
@@ -111,7 +111,7 @@ ruleTester.run('prefer-exact-props', rule, {
           return <div />;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -120,7 +120,7 @@ ruleTester.run('prefer-exact-props', rule, {
           return <div />;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -165,7 +165,7 @@ ruleTester.run('prefer-exact-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -238,10 +238,10 @@ ruleTester.run('prefer-exact-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: `
         class Component extends React.Component {
@@ -268,7 +268,7 @@ ruleTester.run('prefer-exact-props', rule, {
         }
       `,
       settings,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [{ message: PROP_TYPES_MESSAGE }],
     },
     {
@@ -282,7 +282,7 @@ ruleTester.run('prefer-exact-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [{ message: FLOW_MESSAGE }],
     },
     {
@@ -291,7 +291,7 @@ ruleTester.run('prefer-exact-props', rule, {
           return <div />;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [{ message: FLOW_MESSAGE }],
     },
     {
@@ -303,7 +303,7 @@ ruleTester.run('prefer-exact-props', rule, {
           return <div />;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [{ message: FLOW_MESSAGE }],
     },
     {
@@ -427,8 +427,8 @@ ruleTester.run('prefer-exact-props', rule, {
         }
       `,
       settings,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [{ message: 'Component propTypes should be exact by using \'exact\'.' }],
     },
-  ],
+  ]),
 });

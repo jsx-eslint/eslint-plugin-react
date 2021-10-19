@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-indent-props');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-indent-props', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         <App foo
@@ -217,9 +219,9 @@ ruleTester.run('jsx-indent-props', rule, {
         },
       ],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         <App
@@ -605,5 +607,5 @@ ruleTester.run('jsx-indent-props', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

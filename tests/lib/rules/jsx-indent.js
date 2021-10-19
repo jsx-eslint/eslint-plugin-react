@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-indent', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         <App></App>
@@ -38,7 +38,7 @@ ruleTester.run('jsx-indent', rule, {
       code: `
         <></>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: `
@@ -51,7 +51,7 @@ ruleTester.run('jsx-indent', rule, {
         <>
         </>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: `
@@ -67,7 +67,7 @@ ruleTester.run('jsx-indent', rule, {
           <></>
         </App>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [2],
     },
     {
@@ -76,7 +76,7 @@ ruleTester.run('jsx-indent', rule, {
           <Foo />
         </>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [2],
     },
     {
@@ -121,7 +121,7 @@ ruleTester.run('jsx-indent', rule, {
           </App>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [2],
     },
     {
@@ -142,7 +142,7 @@ ruleTester.run('jsx-indent', rule, {
           </App>);
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [2],
     },
     {
@@ -167,7 +167,7 @@ ruleTester.run('jsx-indent', rule, {
           );
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [2],
     },
     {
@@ -192,7 +192,7 @@ ruleTester.run('jsx-indent', rule, {
           )
         )
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [2],
     },
     {
@@ -237,7 +237,7 @@ ruleTester.run('jsx-indent', rule, {
           </>
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [2],
     },
     {
@@ -290,7 +290,7 @@ ruleTester.run('jsx-indent', rule, {
           <></>
         ]
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [2],
     },
     {
@@ -328,7 +328,7 @@ ruleTester.run('jsx-indent', rule, {
             }
         </div>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: `
@@ -349,7 +349,7 @@ ruleTester.run('jsx-indent', rule, {
                 bar </>
         </>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -366,7 +366,7 @@ ruleTester.run('jsx-indent', rule, {
             <></> :
             <></>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -383,7 +383,7 @@ ruleTester.run('jsx-indent', rule, {
             <></>
             : <></>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -402,7 +402,7 @@ ruleTester.run('jsx-indent', rule, {
         :
             <></>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -432,7 +432,7 @@ ruleTester.run('jsx-indent', rule, {
         foo ? <></> :
         <></>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
     },
     {
     // Multiline ternary
@@ -447,7 +447,7 @@ ruleTester.run('jsx-indent', rule, {
         foo ? <></>
         : <></>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
     },
     {
     // Multiline ternary
@@ -464,7 +464,7 @@ ruleTester.run('jsx-indent', rule, {
         :
         <></>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -483,7 +483,7 @@ ruleTester.run('jsx-indent', rule, {
         ) :
             <></>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -502,7 +502,7 @@ ruleTester.run('jsx-indent', rule, {
         )
             : <></>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -523,7 +523,7 @@ ruleTester.run('jsx-indent', rule, {
         :
             <></>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -542,7 +542,7 @@ ruleTester.run('jsx-indent', rule, {
                 <></>
             )
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -563,7 +563,7 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -584,7 +584,7 @@ ruleTester.run('jsx-indent', rule, {
                 <></>
             )
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -605,7 +605,7 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -628,7 +628,7 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -653,7 +653,7 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -670,7 +670,7 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -685,7 +685,7 @@ ruleTester.run('jsx-indent', rule, {
         foo ? <></>
         : (<></>)
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -704,7 +704,7 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: `
@@ -760,7 +760,7 @@ ruleTester.run('jsx-indent', rule, {
           </span>
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [2],
     },
     {
@@ -772,7 +772,7 @@ ruleTester.run('jsx-indent', rule, {
             }}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['do expressions'],
     },
     {
       code: `
@@ -783,7 +783,7 @@ ruleTester.run('jsx-indent', rule, {
             })}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['do expressions'],
     },
     {
       code: `
@@ -798,7 +798,7 @@ ruleTester.run('jsx-indent', rule, {
             }}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['do expressions'],
     },
     {
       code: `
@@ -813,7 +813,7 @@ ruleTester.run('jsx-indent', rule, {
             })}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['do expressions'],
     },
     {
       code: `
@@ -823,7 +823,7 @@ ruleTester.run('jsx-indent', rule, {
             }}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['do expressions'],
     },
     {
       code: `
@@ -833,7 +833,7 @@ ruleTester.run('jsx-indent', rule, {
             })}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['do expressions'],
     },
     {
       code: `
@@ -844,7 +844,7 @@ ruleTester.run('jsx-indent', rule, {
             }}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['do expressions'],
     },
     {
       code: `
@@ -855,7 +855,7 @@ ruleTester.run('jsx-indent', rule, {
             })}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['do expressions'],
     },
     {
       code: `
@@ -867,7 +867,7 @@ ruleTester.run('jsx-indent', rule, {
             }}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['do expressions'],
     },
     {
       code: `
@@ -879,7 +879,7 @@ ruleTester.run('jsx-indent', rule, {
             })}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['do expressions'],
     },
     {
       code: `
@@ -909,7 +909,7 @@ ruleTester.run('jsx-indent', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [2],
     },
     {
@@ -1094,9 +1094,9 @@ const Component = () => (
         }
       `,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         <div>
@@ -1182,7 +1182,7 @@ const Component = () => (
           <></>
         </App>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         <App>
             <></>
@@ -1206,7 +1206,7 @@ const Component = () => (
           <Foo />
         </>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: `
         <>
             <Foo />
@@ -1531,7 +1531,7 @@ const Component = () => (
             <></>
         ]
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         [
           <div />,
@@ -1704,7 +1704,7 @@ const Component = () => (
             <Foo /> :
         <></>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ?
             <Foo /> :
@@ -1779,7 +1779,7 @@ const Component = () => (
         :
         <></>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ?
             <Foo />
@@ -1857,7 +1857,7 @@ const Component = () => (
         ) :
         <></>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ? (
             <Foo />
@@ -1939,7 +1939,7 @@ const Component = () => (
             <></>
             )
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ?
             <Foo /> : (
@@ -2024,7 +2024,7 @@ const Component = () => (
             <></>
             )
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ?
             <Foo />
@@ -2090,7 +2090,7 @@ const Component = () => (
         <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ? (
             <></>
@@ -2211,7 +2211,7 @@ const Component = () => (
         <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ? (
             <></>
@@ -2273,7 +2273,7 @@ const Component = () => (
         <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ? <Foo /> : (
             <></>
@@ -2325,7 +2325,7 @@ const Component = () => (
         <></>
         )
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ? <Foo />
         : (
@@ -2500,7 +2500,7 @@ const Component = () => (
             }}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['do expressions'],
       errors: [
         {
           messageId: 'wrongIndent',
@@ -2530,7 +2530,7 @@ const Component = () => (
             })}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['do expressions'],
       errors: [
         {
           messageId: 'wrongIndent',
@@ -2551,7 +2551,7 @@ const Component = () => (
             }}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['do expressions'],
       output: `
         <span>
             {do {
@@ -2586,7 +2586,7 @@ const Component = () => (
             })}
         </span>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['do expressions'],
       errors: [
         {
           messageId: 'wrongIndent',
@@ -2696,7 +2696,6 @@ const Component = () => (
         \t\ttext
         </div>
       `,
-      parser: parsers.BABEL_ESLINT,
       options: ['tab'],
       output: `
         <div>
@@ -2721,7 +2720,7 @@ const Component = () => (
         aaa
         </>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: `
         <>
             aaa
@@ -2739,5 +2738,5 @@ const Component = () => (
         },
       ],
     },
-  ],
+  ]),
 });

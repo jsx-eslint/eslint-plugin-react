@@ -26,7 +26,7 @@ function getErrorMessages(unusedFields) {
 }
 
 eslintTester.run('no-unused-state', rule, {
-  valid: [].concat(
+  valid: parsers.all([
     {
       code: `
         function StatelessFnUnaffectedTest(props) {
@@ -337,23 +337,8 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
-    parsers.TS([
-      {
-        code: `
-          class OptionalChaining extends React.Component {
-            constructor() {
-              this.state = { foo: 0 };
-            }
-            render() {
-              return <SomeComponent foo={this.state?.foo} />;
-            }
-          }
-        `,
-        parser: parsers['@TYPESCRIPT_ESLINT'],
-      },
-    ]),
     {
       code: `
         class OptionalChaining extends React.Component {
@@ -365,7 +350,10 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['optional chaining'],
+      parserOptions: {
+        ecmaVersion: 2020,
+      },
     },
     {
       code: `
@@ -471,7 +459,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     // A cleverer analysis might recognize that the following should be errors,
     // but they're out of scope for this lint rule.
@@ -586,7 +574,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
     {
       code: `
@@ -606,7 +594,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -624,7 +612,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -642,7 +630,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -660,7 +648,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -674,7 +662,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -700,7 +688,6 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -724,7 +711,6 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -745,7 +731,6 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -768,7 +753,6 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -787,7 +771,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -809,7 +793,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -831,7 +815,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -868,6 +852,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         });
       `,
+      features: ['no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -885,7 +870,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -902,7 +887,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       // Don't error out
@@ -916,7 +901,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       // Don't error out
@@ -930,7 +915,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       // Don't error out
@@ -944,7 +929,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -997,11 +982,11 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.TYPESCRIPT_ESLINT,
-    }
-  ),
+      features: ['ts', 'no-babel'],
+    },
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var UnusedGetInitialStateTest = createReactClass({
@@ -1129,7 +1114,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['foo']),
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -1141,7 +1126,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['foo']),
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -1153,7 +1138,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['foo']),
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -1165,7 +1150,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['foo \\n bar']),
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -1177,7 +1162,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['true']),
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -1189,7 +1174,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['123']),
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -1201,7 +1186,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['123.12']),
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -1300,7 +1285,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['foo']),
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -1323,7 +1308,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['qux']),
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
     {
       code: `
@@ -1336,7 +1321,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['bar']),
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -1363,7 +1348,6 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['foo']),
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1385,7 +1369,6 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['foo']),
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1409,7 +1392,6 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       errors: getErrorMessages(['id']),
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1428,7 +1410,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: getErrorMessages(['initial']),
     },
     {
@@ -1439,7 +1421,7 @@ eslintTester.run('no-unused-state', rule, {
             };
         });
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: getErrorMessages(['dummy']),
     },
     {
@@ -1493,7 +1475,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['ts', 'no-babel'],
       errors: getErrorMessages([
         'thisStateAliasPropUnused',
         'thisStateAliasRestPropUnused',
@@ -1507,5 +1489,5 @@ eslintTester.run('no-unused-state', rule, {
         'thisDestructStateDestructPropUnused',
       ]),
     },
-  ],
+  ]),
 });

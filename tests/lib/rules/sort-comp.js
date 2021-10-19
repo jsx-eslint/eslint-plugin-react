@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('sort-comp', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         // Must validate a full class
@@ -169,7 +169,7 @@ ruleTester.run('sort-comp', rule, {
           render = () => (<div>Hello</div>)
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -269,7 +269,6 @@ ruleTester.run('sort-comp', rule, {
           return <div>Hello {props.name}</div>
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -278,7 +277,6 @@ ruleTester.run('sort-comp', rule, {
           <div>Hello {props.name}</div>
         )
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -290,7 +288,6 @@ ruleTester.run('sort-comp', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -303,7 +300,7 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
       options: [
         {
           order: [
@@ -328,7 +325,7 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
       options: [
         {
           order: [
@@ -353,7 +350,7 @@ ruleTester.run('sort-comp', rule, {
           state: Object = {};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
       parserOptions,
     },
     {
@@ -368,7 +365,7 @@ ruleTester.run('sort-comp', rule, {
           state: Object = {};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
       parserOptions,
     },
     {
@@ -382,7 +379,6 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       options: [
         {
           order: [
@@ -406,7 +402,6 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       options: [
         {
           order: [
@@ -432,7 +427,7 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [
         {
           order: [
@@ -457,7 +452,7 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [
         {
           order: [
@@ -547,7 +542,7 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [
         {
           order: [
@@ -572,7 +567,7 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [
         {
           order: [
@@ -593,7 +588,7 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [
         {
           order: [
@@ -615,7 +610,7 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [
         {
           order: [
@@ -638,7 +633,7 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [
         {
           order: [
@@ -660,7 +655,7 @@ ruleTester.run('sort-comp', rule, {
           foo = {};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [
         {
           order: [
@@ -689,7 +684,7 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [
         {
           order: [
@@ -702,9 +697,9 @@ ruleTester.run('sort-comp', rule, {
         },
       ],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         // Must force a lifecycle method to be placed before render
@@ -832,7 +827,7 @@ ruleTester.run('sort-comp', rule, {
           static displayName = 'Hello';
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'unsortedProps',
@@ -856,7 +851,7 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
       errors: [
         {
           messageId: 'unsortedProps',
@@ -879,7 +874,7 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
       errors: [
         {
           messageId: 'unsortedProps',
@@ -914,7 +909,7 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
       errors: [
         {
           messageId: 'unsortedProps',
@@ -948,7 +943,6 @@ ruleTester.run('sort-comp', rule, {
           render() {}
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'unsortedProps',
@@ -984,7 +978,6 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'unsortedProps',
@@ -1018,7 +1011,6 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'unsortedProps',
@@ -1054,7 +1046,7 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'unsortedProps',
@@ -1089,7 +1081,7 @@ ruleTester.run('sort-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'unsortedProps',
@@ -1188,7 +1180,7 @@ ruleTester.run('sort-comp', rule, {
           },
         },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [
         {
           order: [
@@ -1220,7 +1212,7 @@ ruleTester.run('sort-comp', rule, {
           },
         },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [
         {
           order: [
@@ -1242,7 +1234,7 @@ ruleTester.run('sort-comp', rule, {
           foo = {};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'unsortedProps',
@@ -1264,5 +1256,5 @@ ruleTester.run('sort-comp', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

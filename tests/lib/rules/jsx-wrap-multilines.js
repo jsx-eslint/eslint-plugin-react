@@ -626,20 +626,16 @@ function addNewLineSymbols(code) {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-wrap-multilines', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: RETURN_SINGLE_LINE,
     },
     {
       code: RETURN_SINGLE_LINE_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: RETURN_PAREN,
-    },
-    {
-      code: RETURN_PAREN,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: RETURN_SINGLE_LINE,
@@ -647,7 +643,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: RETURN_SINGLE_LINE_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ return: true }],
     },
     {
@@ -667,18 +663,13 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: DECLARATION_TERNARY_SINGLE_LINE_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: DECLARATION_TERNARY_PAREN,
     },
     {
       code: DECLARATION_TERNARY_SINGLE_LINE,
-      options: [{ declaration: true }],
-    },
-    {
-      code: DECLARATION_TERNARY_SINGLE_LINE,
-      parser: parsers.BABEL_ESLINT,
       options: [{ declaration: true }],
     },
     {
@@ -723,7 +714,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: DECLARATION_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: DECLARATION_SINGLE_LINE,
@@ -739,7 +730,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: DECLARATION_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ declaration: 'ignore' }],
     },
     {
@@ -759,7 +750,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ASSIGNMENT_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: ASSIGNMENT_PAREN,
@@ -771,7 +762,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ASSIGNMENT_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ assignment: 'ignore' }],
     },
     {
@@ -783,18 +774,13 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ARROW_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: ARROW_SINGLE_LINE,
     },
     {
       code: ARROW_PAREN,
-      options: [{ arrow: true }],
-    },
-    {
-      code: ARROW_PAREN,
-      parser: parsers.BABEL_ESLINT,
       options: [{ arrow: true }],
     },
     {
@@ -807,7 +793,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ARROW_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ arrow: 'ignore' }],
     },
     {
@@ -830,7 +816,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: CONDITION_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ condition: true }],
     },
     {
@@ -845,7 +831,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: LOGICAL_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ logical: true }],
     },
     {
@@ -860,7 +846,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ATTR_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ prop: true }],
     },
     {
@@ -869,7 +855,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: RETURN_PAREN_NEW_LINE_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ return: 'parens-new-line' }],
     },
     {
@@ -904,9 +890,9 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       code: ATTR_PAREN_NEW_LINE,
       options: [{ prop: 'parens-new-line' }],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: RETURN_NO_PAREN,
       output: RETURN_PAREN,
@@ -914,7 +900,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: RETURN_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: RETURN_PAREN_FRAGMENT,
       errors: [{ messageId: 'missingParens' }],
     },
@@ -926,7 +912,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: RETURN_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: RETURN_PAREN_FRAGMENT,
       options: [{ return: true }],
       errors: [{ messageId: 'missingParens' }],
@@ -941,7 +927,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: DECLARATION_TERNARY_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: DECLARATION_TERNARY_PAREN_FRAGMENT,
       errors: [
         { messageId: 'missingParens' },
@@ -959,7 +945,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: DECLARATION_TERNARY_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: DECLARATION_TERNARY_PAREN_FRAGMENT,
       options: [{ declaration: true }],
       errors: [
@@ -977,7 +963,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ASSIGNMENT_TERNARY_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: ASSIGNMENT_TERNARY_PAREN_FRAGMENT,
       errors: [
         { messageId: 'missingParens' },
@@ -995,7 +981,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ASSIGNMENT_TERNARY_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: ASSIGNMENT_TERNARY_PAREN_FRAGMENT,
       options: [{ assignment: true }],
       errors: [
@@ -1010,7 +996,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: DECLARATION_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: DECLARATION_PAREN_FRAGMENT,
       errors: [{ messageId: 'missingParens' }],
     },
@@ -1027,7 +1013,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ASSIGNMENT_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: ASSIGNMENT_PAREN_FRAGMENT,
       errors: [{ messageId: 'missingParens' }],
     },
@@ -1044,7 +1030,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ARROW_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: ARROW_PAREN_FRAGMENT,
       errors: [{ messageId: 'missingParens' }],
     },
@@ -1062,7 +1048,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: CONDITION_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: CONDITION_PAREN_FRAGMENT,
       options: [{ condition: 'parens' }],
       errors: [{ messageId: 'missingParens' }],
@@ -1081,7 +1067,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: LOGICAL_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: LOGICAL_PAREN_FRAGMENT,
       options: [{ logical: 'parens' }],
       errors: [{ messageId: 'missingParens' }],
@@ -1100,7 +1086,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ATTR_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: ATTR_PAREN_FRAGMENT,
       options: [{ prop: 'parens' }],
       errors: [{ messageId: 'missingParens' }],
@@ -1119,7 +1105,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: RETURN_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: addNewLineSymbols(RETURN_PAREN_FRAGMENT),
       options: [{ return: 'parens-new-line' }],
       errors: [{ messageId: 'missingParens' }],
@@ -1144,7 +1130,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: RETURN_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: addNewLineSymbols(RETURN_PAREN_FRAGMENT),
       options: [{ return: 'parens-new-line' }],
       errors: [{ messageId: 'parensOnNewLines' }],
@@ -1160,7 +1146,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: DECLARATION_TERNARY_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: addNewLineSymbols(DECLARATION_TERNARY_PAREN_FRAGMENT),
       options: [{ declaration: 'parens-new-line' }],
       errors: [
@@ -1170,7 +1156,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: DECLARATION_TERNARY_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: addNewLineSymbols(DECLARATION_TERNARY_PAREN_FRAGMENT),
       options: [{ declaration: 'parens-new-line' }],
       errors: [
@@ -1189,7 +1175,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: DECLARATION_TERNARY_PAREN_FRAGMENT,
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['fragment'],
       output: addNewLineSymbols(DECLARATION_TERNARY_PAREN_FRAGMENT),
       options: [{ declaration: 'parens-new-line' }],
       errors: [
@@ -1208,7 +1194,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ASSIGNMENT_TERNARY_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: addNewLineSymbols(ASSIGNMENT_TERNARY_PAREN_FRAGMENT),
       options: [{ assignment: 'parens-new-line' }],
       errors: [
@@ -1227,7 +1213,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ASSIGNMENT_TERNARY_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: addNewLineSymbols(ASSIGNMENT_TERNARY_PAREN_FRAGMENT),
       options: [{ assignment: 'parens-new-line' }],
       errors: [
@@ -1267,7 +1253,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ARROW_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: addNewLineSymbols(ARROW_PAREN_FRAGMENT),
       options: [{ arrow: 'parens-new-line' }],
       errors: [{ messageId: 'parensOnNewLines' }],
@@ -1280,7 +1266,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ARROW_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: addNewLineSymbols(ARROW_PAREN_FRAGMENT),
       options: [{ arrow: 'parens-new-line' }],
       errors: [{ messageId: 'missingParens' }],
@@ -1293,7 +1279,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: CONDITION_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: addNewLineSymbols(CONDITION_PAREN_FRAGMENT),
       options: [{ condition: 'parens-new-line' }],
       errors: [{ messageId: 'parensOnNewLines' }],
@@ -1306,7 +1292,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: CONDITION_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: addNewLineSymbols(CONDITION_PAREN_FRAGMENT),
       options: [{ condition: 'parens-new-line' }],
       errors: [{ messageId: 'missingParens' }],
@@ -1325,7 +1311,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: LOGICAL_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: LOGICAL_PAREN_NEW_LINE_AUTOFIX_FRAGMENT,
       options: [{ logical: 'parens-new-line' }],
       errors: [{ messageId: 'missingParens' }],
@@ -1338,7 +1324,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ATTR_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: addNewLineSymbols(ATTR_PAREN_FRAGMENT),
       options: [{ prop: 'parens-new-line' }],
       errors: [{ messageId: 'parensOnNewLines' }],
@@ -1351,7 +1337,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     },
     {
       code: ATTR_NO_PAREN_FRAGMENT,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       output: ATTR_PAREN_NEW_LINE_AUTOFIX_FRAGMENT,
       options: [{ prop: 'parens-new-line' }],
       errors: [{ messageId: 'missingParens' }],
@@ -1405,5 +1391,5 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       options: [{ declaration: 'parens-new-line' }],
       errors: [{ messageId: 'missingParens' }],
     },
-  ],
+  ]),
 });

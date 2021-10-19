@@ -29,7 +29,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-curly-spacing', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<App foo={bar} />;',
     },
@@ -488,7 +488,6 @@ ruleTester.run('jsx-curly-spacing', rule, {
         } />;
       `,
       options: [{ attributes: { when: 'never' } }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -764,7 +763,6 @@ ruleTester.run('jsx-curly-spacing', rule, {
         } />;
       `,
       options: ['always'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -830,15 +828,14 @@ ruleTester.run('jsx-curly-spacing', rule, {
     },
     {
       code: '<>{bar} {baz}</>;',
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: '<div onLayout={() => { /* dummy callback to fix android bug with component measuring */ }} />',
-      parser: parsers.BABEL_ESLINT,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: '<App foo={ bar }>{bar}</App>;',
       output: '<App foo={bar}>{bar}</App>;',
@@ -943,7 +940,7 @@ ruleTester.run('jsx-curly-spacing', rule, {
     {
       code: '<>{ bar }</>;',
       output: '<>{bar}</>;',
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ children: true }],
       errors: [
         {
@@ -3445,5 +3442,5 @@ ruleTester.run('jsx-curly-spacing', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

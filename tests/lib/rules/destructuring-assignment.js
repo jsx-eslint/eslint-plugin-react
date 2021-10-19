@@ -19,22 +19,13 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('destructuring-assignment', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         const MyComponent = ({ id, className }) => (
           <div id={id} className={className} />
         );
       `,
-    },
-    {
-      code: `
-        const MyComponent = (props) => {
-          const { id, className } = props;
-          return <div id={id} className={className} />
-        };
-      `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -135,37 +126,12 @@ ruleTester.run('destructuring-assignment', rule, {
     },
     {
       code: `
-        const Foo = class extends React.PureComponent {
-          render() {
-            const { foo } = this.props;
-            return <div>{foo}</div>;
-          }
-        };
-      `,
-      options: ['always'],
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-        const Foo = class extends React.PureComponent {
-          render() {
-            const { foo } = this.props;
-            return <div>{foo}</div>;
-          }
-        };
-      `,
-      options: ['always'],
-      parser: parsers.TYPESCRIPT_ESLINT,
-    },
-    {
-      code: `
         const MyComponent = (props) => {
           const { h, i } = hi;
           return <div id={props.id} className={props.className} />
         };
       `,
       options: ['never'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -193,7 +159,7 @@ ruleTester.run('destructuring-assignment', rule, {
           foo: context.bar
         });
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -220,7 +186,7 @@ ruleTester.run('destructuring-assignment', rule, {
         }
       `,
       options: ['always', { ignoreClassFields: true }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -232,7 +198,7 @@ ruleTester.run('destructuring-assignment', rule, {
         }
       `,
       options: ['always', { ignoreClassFields: true }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     // https://github.com/yannickcr/eslint-plugin-react/issues/2911
     {
@@ -243,7 +209,6 @@ ruleTester.run('destructuring-assignment', rule, {
         }
       `,
       options: ['always'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -322,10 +287,10 @@ ruleTester.run('destructuring-assignment', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-    }],
+    },
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         const MyComponent = (props) => {
@@ -504,7 +469,6 @@ ruleTester.run('destructuring-assignment', rule, {
         };
       `,
       options: ['never'],
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'noDestructAssignment',
@@ -520,7 +484,6 @@ ruleTester.run('destructuring-assignment', rule, {
         };
       `,
       options: ['never'],
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'noDestructAssignment',
@@ -538,7 +501,6 @@ ruleTester.run('destructuring-assignment', rule, {
         };
       `,
       options: ['never'],
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'noDestructAssignment',
@@ -563,7 +525,6 @@ ruleTester.run('destructuring-assignment', rule, {
           },
         ];
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'useDestructAssignment',
@@ -579,7 +540,6 @@ ruleTester.run('destructuring-assignment', rule, {
         }
       `,
       options: ['always'],
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'useDestructAssignment',
@@ -598,12 +558,12 @@ ruleTester.run('destructuring-assignment', rule, {
         };
       `,
       options: ['always'],
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'useDestructAssignment',
           data: { type: 'props' },
         },
       ],
-    }],
+    },
+  ]),
 });

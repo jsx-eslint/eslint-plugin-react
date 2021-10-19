@@ -29,7 +29,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-no-literals', rule, {
-  valid: [].concat(
+  valid: parsers.all([
     {
       code: `
         class Comp1 extends Component {
@@ -49,58 +49,6 @@ ruleTester.run('jsx-no-literals', rule, {
         },
       ],
     },
-    {
-      code: `
-        class Comp1 extends Component {
-          render() {
-            return (
-              <div>
-                <button type="button"></button>
-              </div>
-            );
-          }
-        }
-      `,
-      options: [
-        {
-          noStrings: true,
-          allowedStrings: ['button', 'submit'],
-        },
-      ],
-      parser: parsers.BABEL_ESLINT,
-    },
-    parsers.TS([
-      {
-        code: `
-          class Comp1 extends Component {
-            render() {
-              return (
-                <div>
-                  <button type="button"></button>
-                </div>
-              );
-            }
-          }
-        `,
-        options: [{ noStrings: true, allowedStrings: ['button', 'submit'] }],
-        parser: parsers.TYPESCRIPT_ESLINT,
-      },
-      {
-        code: `
-          class Comp2 extends Component {
-            render() {
-              return (
-                <div>
-                  <button type="button"></button>
-                </div>
-              );
-            }
-          }
-        `,
-        options: [{ noStrings: true, allowedStrings: ['button', 'submit'] }],
-        parser: parsers['@TYPESCRIPT_ESLINT'],
-      },
-    ]),
     {
       code: `
         class Comp2 extends Component {
@@ -113,7 +61,6 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -127,7 +74,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: `
@@ -137,7 +84,6 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -148,7 +94,6 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -159,7 +104,6 @@ ruleTester.run('jsx-no-literals', rule, {
           },
         });
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -175,7 +119,6 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -188,13 +131,11 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
         var foo = require('foo');
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -202,25 +143,6 @@ ruleTester.run('jsx-no-literals', rule, {
           {'blarg'}
         </Foo>
       `,
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-        <Foo bar="test">
-          {intl.formatText(message)}
-        </Foo>
-      `,
-      parser: parsers.BABEL_ESLINT,
-      options: [{ noStrings: true, ignoreProps: true }],
-    },
-    {
-      code: `
-        <Foo bar="test">
-          {translate('my.translate.key')}
-        </Foo>
-      `,
-      parser: parsers.BABEL_ESLINT,
-      options: [{ noStrings: true, ignoreProps: true }],
     },
     {
       code: `
@@ -353,18 +275,18 @@ ruleTester.run('jsx-no-literals', rule, {
 
             return <Foo bar={this.asdf} class={xx} />;
           }
-        }      `,
-      parser: parsers.BABEL_ESLINT,
+        }
+      `,
       options: [{ noStrings: true, ignoreProps: false }],
     },
     {
       code: `
         <img alt='blank image'></img>
       `,
-    }
-  ),
+    },
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         class Comp1 extends Component {
@@ -373,7 +295,6 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
@@ -389,7 +310,7 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
@@ -406,7 +327,6 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
@@ -423,7 +343,6 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
@@ -440,7 +359,6 @@ ruleTester.run('jsx-no-literals', rule, {
           },
         });
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
@@ -460,7 +378,6 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
@@ -482,7 +399,6 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
@@ -508,7 +424,6 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'literalNotInJSXExpression',
@@ -698,5 +613,5 @@ ruleTester.run('jsx-no-literals', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

@@ -11,6 +11,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-curly-newline');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -36,7 +38,7 @@ const MULTILINE_REQUIRE = [{ singleline: 'consistent', multiline: 'require' }];
 const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('jsx-curly-newline', rule, {
-  valid: [
+  valid: parsers.all([
     // consistent option (default)
     {
       code: '<div>{foo}</div>',
@@ -137,9 +139,9 @@ ruleTester.run('jsx-curly-newline', rule, {
       `,
       options: NEVER,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     // consistent option (default)
     {
       code: `
@@ -310,5 +312,5 @@ ruleTester.run('jsx-curly-newline', rule, {
       options: NEVER,
       errors: [RIGHT_UNEXPECTED_ERROR],
     },
-  ],
+  ]),
 });

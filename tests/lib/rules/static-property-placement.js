@@ -22,7 +22,6 @@ const rule = require('../../../lib/rules/static-property-placement');
 const parsers = require('../../helpers/parsers');
 
 const ruleTesterConfig = {
-  parser: parsers.BABEL_ESLINT,
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
@@ -43,7 +42,7 @@ const ruleTesterConfig = {
 
 const ruleTester = new RuleTester(ruleTesterConfig);
 ruleTester.run('static-property-placement', rule, {
-  valid: [
+  valid: parsers.all([
     // ------------------------------------------------------------------------------
     // Ignore creatClass/createReactClass and Static Functional Components
     // ------------------------------------------------------------------------------
@@ -198,6 +197,7 @@ ruleTester.run('static-property-placement', rule, {
           static propTypes = {}
         }
       `,
+      features: ['class fields'],
       options: [PROPERTY_ASSIGNMENT],
     },
 
@@ -223,6 +223,7 @@ ruleTester.run('static-property-placement', rule, {
           }
         }
       `,
+      features: ['class fields'],
     },
     {
       // Do not error if unchecked static properties defined and assignment rule enabled
@@ -233,6 +234,7 @@ ruleTester.run('static-property-placement', rule, {
           }
         }
       `,
+      features: ['class fields'],
       options: [PROPERTY_ASSIGNMENT],
     },
     {
@@ -276,6 +278,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
+      features: ['class fields'],
     },
     {
       // Do not error if childContextTypes correctly defined - static field
@@ -286,6 +289,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
+      features: ['class fields'],
       options: [PROPERTY_ASSIGNMENT, { childContextTypes: STATIC_PUBLIC_FIELD }],
     },
     // ------------------------------------------------------------------------------
@@ -362,6 +366,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
+      features: ['class fields'],
     },
     {
       // Do not error if contextTypes correctly defined - static field
@@ -372,6 +377,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
+      features: ['class fields'],
       options: [PROPERTY_ASSIGNMENT, { contextTypes: STATIC_PUBLIC_FIELD }],
     },
     // ------------------------------------------------------------------------------
@@ -446,6 +452,7 @@ ruleTester.run('static-property-placement', rule, {
           static contextType = MyContext;
         }
       `,
+      features: ['class fields'],
     },
     {
       // Do not error if contextType correctly defined - static field
@@ -455,6 +462,7 @@ ruleTester.run('static-property-placement', rule, {
         }
       `,
       options: [PROPERTY_ASSIGNMENT, { contextType: STATIC_PUBLIC_FIELD }],
+      features: ['class fields'],
     },
     // ------------------------------------------------------------------------------
     // contextType - static getter
@@ -520,6 +528,7 @@ ruleTester.run('static-property-placement', rule, {
           static displayName = "Hello";
         }
       `,
+      features: ['class fields'],
     },
     {
       // Do not error if displayName correctly defined - static field
@@ -528,6 +537,7 @@ ruleTester.run('static-property-placement', rule, {
           static displayName = "Hello";
         }
       `,
+      features: ['class fields'],
       options: [PROPERTY_ASSIGNMENT, { displayName: STATIC_PUBLIC_FIELD }],
     },
     // ------------------------------------------------------------------------------
@@ -596,6 +606,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
+      features: ['class fields'],
     },
     {
       // Do not error if defaultProps correctly defined - static field
@@ -606,6 +617,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
+      features: ['class fields'],
       options: [PROPERTY_ASSIGNMENT, { defaultProps: STATIC_PUBLIC_FIELD }],
     },
     // ------------------------------------------------------------------------------
@@ -682,6 +694,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
+      features: ['class fields'],
     },
     {
       // Do not error if propTypes correctly defined - static field
@@ -692,6 +705,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
+      features: ['class fields'],
       options: [PROPERTY_ASSIGNMENT, { propTypes: STATIC_PUBLIC_FIELD }],
     },
     // ------------------------------------------------------------------------------
@@ -784,6 +798,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
+      features: ['class fields'],
     },
     {
       // Do not error if multiple properties and match config - static field
@@ -810,6 +825,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
+      features: ['class fields'],
       options: [PROPERTY_ASSIGNMENT, {
         childContextTypes: STATIC_PUBLIC_FIELD,
         contextTypes: STATIC_PUBLIC_FIELD,
@@ -1002,6 +1018,7 @@ ruleTester.run('static-property-placement', rule, {
           name: PropTypes.string.isRequired
         }
       `,
+      features: ['class fields'],
       options: [STATIC_PUBLIC_FIELD, {
         displayName: STATIC_GETTER,
         defaultProps: PROPERTY_ASSIGNMENT,
@@ -1033,6 +1050,7 @@ ruleTester.run('static-property-placement', rule, {
           name: PropTypes.string.isRequired
         }
       `,
+      features: ['class fields'],
       options: [PROPERTY_ASSIGNMENT, {
         childContextTypes: STATIC_PUBLIC_FIELD,
         contextTypes: STATIC_PUBLIC_FIELD,
@@ -1067,6 +1085,7 @@ ruleTester.run('static-property-placement', rule, {
           name: PropTypes.string.isRequired
         }
       `,
+      features: ['class fields'],
     },
     {
       // Multiple components validated
@@ -1093,6 +1112,7 @@ ruleTester.run('static-property-placement', rule, {
           }
         }
       `,
+      features: ['class fields'],
     },
     // ------------------------------------------------------------------------------
     // edge cases
@@ -1108,6 +1128,7 @@ ruleTester.run('static-property-placement', rule, {
           }
         }
       `,
+      features: ['class fields'],
       options: [STATIC_PUBLIC_FIELD],
     },
     {
@@ -1121,11 +1142,12 @@ ruleTester.run('static-property-placement', rule, {
           }
         }
       `,
+      features: ['class fields'],
       options: [STATIC_PUBLIC_FIELD],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     // ------------------------------------------------------------------------------
     // expected static field when got property assigment
     // ------------------------------------------------------------------------------
@@ -1419,6 +1441,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
+      features: ['class fields'],
       options: [PROPERTY_ASSIGNMENT],
       errors: [
         {
@@ -1472,6 +1495,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
+      features: ['class fields'],
       options: [
         STATIC_PUBLIC_FIELD,
         {
@@ -1681,6 +1705,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
+      features: ['class fields'],
       options: [STATIC_GETTER],
       errors: [
         {
@@ -1734,6 +1759,7 @@ ruleTester.run('static-property-placement', rule, {
           };
         }
       `,
+      features: ['class fields'],
       options: [
         STATIC_PUBLIC_FIELD,
         {
@@ -1929,6 +1955,7 @@ ruleTester.run('static-property-placement', rule, {
           name: PropTypes.string.isRequired
         }
       `,
+      features: ['class fields'],
       options: [
         PROPERTY_ASSIGNMENT,
         {
@@ -1991,6 +2018,7 @@ ruleTester.run('static-property-placement', rule, {
           name: PropTypes.string.isRequired
         }
       `,
+      features: ['class fields'],
       options: [
         STATIC_GETTER,
         {
@@ -2059,6 +2087,7 @@ ruleTester.run('static-property-placement', rule, {
           name: PropTypes.string.isRequired
         }
       `,
+      features: ['class fields'],
       options: [
         PROPERTY_ASSIGNMENT,
         {
@@ -2120,6 +2149,7 @@ ruleTester.run('static-property-placement', rule, {
           }
         }
       `,
+      features: ['class fields'],
       options: [PROPERTY_ASSIGNMENT],
       errors: [
         {
@@ -2156,5 +2186,5 @@ ruleTester.run('static-property-placement', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

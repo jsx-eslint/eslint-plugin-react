@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-unstable-nested-components');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -30,7 +32,7 @@ const ERROR_MESSAGE_COMPONENT_AS_PROPS = `${ERROR_MESSAGE} If you want to allow 
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-unstable-nested-components', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         function ParentComponent() {
@@ -522,9 +524,9 @@ ruleTester.run('no-unstable-nested-components', rule, {
         `
     },
     */
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         function ParentComponent() {
@@ -1040,5 +1042,5 @@ ruleTester.run('no-unstable-nested-components', rule, {
       // Only a single error should be shown. This can get easily marked twice.
       errors: [{ message: ERROR_MESSAGE }],
     },
-  ],
+  ]),
 });

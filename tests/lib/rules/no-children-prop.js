@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-children-prop');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-children-prop', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<div />;',
     },
@@ -170,8 +172,8 @@ ruleTester.run('no-children-prop', rule, {
       code: 'React.createElement(MyComponent, {children: function* () {}});',
       options: [{ allowFunctions: true }],
     },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: '<div children />;', // not a valid use case but make sure we don't crash
       errors: [{ messageId: 'nestChildren' }],
@@ -272,5 +274,5 @@ ruleTester.run('no-children-prop', rule, {
       options: [{ allowFunctions: true }],
       errors: [{ messageId: 'passFunctionAsArgs' }],
     },
-  ],
+  ]),
 });

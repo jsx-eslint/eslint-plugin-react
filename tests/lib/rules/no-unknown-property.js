@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-unknown-property');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-unknown-property', rule, {
-  valid: [
+  valid: parsers.all([
     { code: '<App class="bar" />;' },
     { code: '<App for="bar" />;' },
     { code: '<Foo.bar for="bar" />;' },
@@ -34,7 +36,10 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<meta charset="utf-8" />;' },
     { code: '<meta charSet="utf-8" />;' },
     { code: '<App http-equiv="bar" />;' },
-    { code: '<App xlink:href="bar" />;' },
+    {
+      code: '<App xlink:href="bar" />;',
+      features: ['jsx namespace'],
+    },
     { code: '<App clip-path="bar" />;' },
     { code: '<div className="bar"></div>;' },
     { code: '<div onMouseDown={this._onMouseDown}></div>;' },
@@ -48,8 +53,8 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<script crossOrigin />' },
     { code: '<audio crossOrigin />' },
     { code: '<div hasOwnProperty="should not be allowed tag" />' },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: '<div class="bar"></div>;',
       output: '<div className="bar"></div>;',
@@ -157,6 +162,7 @@ ruleTester.run('no-unknown-property', rule, {
     {
       code: '<use xlink:href="bar" />;',
       output: '<use xlinkHref="bar" />;',
+      features: ['jsx namespace'],
       errors: [
         {
           messageId: 'unknownProp',
@@ -219,5 +225,5 @@ ruleTester.run('no-unknown-property', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

@@ -11,6 +11,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/forbid-elements');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -27,7 +29,7 @@ require('babel-eslint');
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('forbid-elements', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<button />',
       options: [],
@@ -80,9 +82,9 @@ ruleTester.run('forbid-elements', rule, {
       code: 'React.createElement(1)',
       options: [{ forbid: ['button'] }],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: '<button />',
       options: [{ forbid: ['button'] }],
@@ -311,5 +313,5 @@ ruleTester.run('forbid-elements', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

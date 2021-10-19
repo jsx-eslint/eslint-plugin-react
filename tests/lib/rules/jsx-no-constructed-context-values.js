@@ -29,7 +29,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('react-no-constructed-context-values', rule, {
-  valid: [].concat(
+  valid: parsers.all([
     {
       code: '<Context.Provider value={props}></Context.Provider>',
     },
@@ -62,7 +62,10 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           )
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['optional chaining'],
+      parserOptions: {
+        ecmaVersion: 2020,
+      },
     },
     {
       code: `
@@ -106,9 +109,8 @@ ruleTester.run('react-no-constructed-context-values', rule, {
         }
       `,
     },
-    parsers.TS([
-      {
-        code: `
+    {
+      code: `
           import React from 'react';
           import MyContext from './MyContext';
 
@@ -122,26 +124,8 @@ ruleTester.run('react-no-constructed-context-values', rule, {
               )
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT,
-      },
-      {
-        code: `
-          import React from 'react';
-          import MyContext from './MyContext';
-
-          const value = '';
-
-          function ContextProvider(props) {
-              return (
-                  <MyContext.Provider value={value as any}>
-                      {props.children}
-                  </MyContext.Provider>
-              )
-          }
-        `,
-        parser: parsers['@TYPESCRIPT_ESLINT'],
-      },
-    ]),
+      features: ['types', 'no-babel'],
+    },
     {
       code: `
         import React from 'react';
@@ -155,9 +139,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
             )
         }
       `,
-    }
-  ),
-  invalid: [
+    },
+  ]),
+  invalid: parsers.all([
     {
       // Invalid because object construction creates a new identity
       code: 'function Component() { const foo = {}; return (<Context.Provider value={foo}></Context.Provider>) }',
@@ -411,7 +395,6 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           },
         },
       ],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       // Invalid because inline object construction will create a new identity
@@ -478,5 +461,5 @@ ruleTester.run('react-no-constructed-context-values', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

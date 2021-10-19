@@ -15,7 +15,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-child-element-spacing', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         <App>
@@ -29,7 +29,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           foo
         </>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: `
@@ -186,9 +186,9 @@ ruleTester.run('jsx-child-element-spacing', rule, {
         <App>A<br/>B</App>
       `,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         <App>
@@ -212,7 +212,7 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           <a>bar</a>
         </>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       errors: [
         {
           messageId: 'spacingBeforeNext',
@@ -309,5 +309,5 @@ ruleTester.run('jsx-child-element-spacing', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

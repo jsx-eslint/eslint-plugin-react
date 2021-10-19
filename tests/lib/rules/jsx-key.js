@@ -35,7 +35,7 @@ const settings = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-key', rule, {
-  valid: [
+  valid: parsers.all([
     { code: 'fn()' },
     { code: '[1, 2, 3].map(function () {})' },
     { code: '<App />;' },
@@ -49,38 +49,25 @@ ruleTester.run('jsx-key', rule, {
     { code: 'foo(() => <div />);' },
     {
       code: 'foo(() => <></>);',
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: '<></>;',
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: '<App {...{}} />;',
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: '<App key="keyBeforeSpread" {...{}} />;',
-      parser: parsers.BABEL_ESLINT,
-      options: [{ checkKeyMustBeforeSpread: true }],
-    },
-    {
-      code: '<App key="keyBeforeSpread" {...{}} />;',
-      parser: parsers.TYPESCRIPT_ESLINT,
       options: [{ checkKeyMustBeforeSpread: true }],
     },
     {
       code: '<div key="keyBeforeSpread" {...{}} />;',
-      parser: parsers.BABEL_ESLINT,
       options: [{ checkKeyMustBeforeSpread: true }],
     },
-    {
-      code: '<div key="keyBeforeSpread" {...{}} />;',
-      parser: parsers.TYPESCRIPT_ESLINT,
-      options: [{ checkKeyMustBeforeSpread: true }],
-    },
-  ],
-  invalid: [].concat(
+  ]),
+  invalid: parsers.all([
     {
       code: '[<App />];',
       errors: [{ messageId: 'missingArrayKey' }],
@@ -107,19 +94,17 @@ ruleTester.run('jsx-key', rule, {
     },
     {
       code: '[1, 2, 3]?.map(x => <BabelEslintApp />)',
-      parser: parsers.BABEL_ESLINT,
+      features: ['no-default'],
       errors: [{ messageId: 'missingIterKey' }],
     },
-    parsers.TS([
-      {
-        code: '[1, 2, 3]?.map(x => <TypescriptEslintApp />)',
-        parser: parsers['@TYPESCRIPT_ESLINT'],
-        errors: [{ messageId: 'missingIterKey' }],
-      },
-    ]),
+    {
+      code: '[1, 2, 3]?.map(x => <TypescriptEslintApp />)',
+      features: ['ts'],
+      errors: [{ messageId: 'missingIterKey' }],
+    },
     {
       code: '[1, 2, 3].map(x => <>{x}</>);',
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ checkFragmentShorthand: true }],
       settings,
       errors: [
@@ -134,7 +119,7 @@ ruleTester.run('jsx-key', rule, {
     },
     {
       code: '[<></>];',
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ checkFragmentShorthand: true }],
       settings,
       errors: [
@@ -149,31 +134,15 @@ ruleTester.run('jsx-key', rule, {
     },
     {
       code: '[<App {...obj} key="keyAfterSpread" />];',
-      parser: parsers.BABEL_ESLINT,
-      options: [{ checkKeyMustBeforeSpread: true }],
-      settings,
-      errors: [{ messageId: 'keyBeforeSpread' }],
-    },
-    {
-      code: '[<App {...obj} key="keyAfterSpread" />];',
-      parser: parsers.TYPESCRIPT_ESLINT,
       options: [{ checkKeyMustBeforeSpread: true }],
       settings,
       errors: [{ messageId: 'keyBeforeSpread' }],
     },
     {
       code: '[<div {...obj} key="keyAfterSpread" />];',
-      parser: parsers.BABEL_ESLINT,
       options: [{ checkKeyMustBeforeSpread: true }],
       settings,
       errors: [{ messageId: 'keyBeforeSpread' }],
     },
-    {
-      code: '[<div {...obj} key="keyAfterSpread" />];',
-      parser: parsers.TYPESCRIPT_ESLINT,
-      options: [{ checkKeyMustBeforeSpread: true }],
-      settings,
-      errors: [{ messageId: 'keyBeforeSpread' }],
-    }
-  ),
+  ]),
 });

@@ -32,13 +32,9 @@ const linter = ruleTester.linter || eslint.linter;
 linter.defineRule('no-undef', require('eslint/lib/rules/no-undef'));
 
 ruleTester.run('jsx-no-undef', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);',
-    },
-    {
-      code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);',
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<img />);',
@@ -54,6 +50,7 @@ ruleTester.run('jsx-no-undef', rule, {
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<Apppp:Foo />);',
+      features: ['jsx namespace'],
     },
     {
       code: `
@@ -71,6 +68,7 @@ ruleTester.run('jsx-no-undef', rule, {
       globals: {
         Text: true,
       },
+      features: ['no-babel'], // TODO: FIXME: remove `no-babel` and fix
     },
     {
       code: `
@@ -83,11 +81,10 @@ ruleTester.run('jsx-no-undef', rule, {
       `,
       parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
       options: [{ allowGlobals: false }],
-      parser: parsers.BABEL_ESLINT,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<App />);',
       errors: [
@@ -141,7 +138,6 @@ ruleTester.run('jsx-no-undef', rule, {
         },
       ],
       options: [{ allowGlobals: false }],
-      parser: parsers.BABEL_ESLINT,
       globals: {
         Text: true,
       },
@@ -155,5 +151,5 @@ ruleTester.run('jsx-no-undef', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

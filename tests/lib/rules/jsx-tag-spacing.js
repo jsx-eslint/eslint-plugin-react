@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-tag-spacing');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -76,7 +78,7 @@ function beforeClosingOptions(option) {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-tag-spacing', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<App />',
     },
@@ -155,6 +157,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
     {
       code: '<App prop="foo">< /App>',
       options: closingSlashOptions('always'),
+      features: ['no-ts'],
     },
     {
       code: '<p/ >',
@@ -171,6 +174,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
     {
       code: '< App></ App>',
       options: afterOpeningOptions('always'),
+      features: ['no-ts'],
     },
     {
       code: '< App/>',
@@ -253,9 +257,9 @@ ruleTester.run('jsx-tag-spacing', rule, {
         },
       ],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: '<App/>',
       output: '<App />',
@@ -326,6 +330,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
       output: '<div className="bar"></div>;',
       errors: [{ messageId: 'closeSlashNoSpace' }],
       options: closingSlashOptions('never'),
+      features: ['no-ts'],
     },
     {
       code: `
@@ -337,12 +342,14 @@ ruleTester.run('jsx-tag-spacing', rule, {
       `,
       errors: [{ messageId: 'closeSlashNoSpace' }],
       options: closingSlashOptions('never'),
+      features: ['no-ts'],
     },
     {
       code: '<App prop="foo"></App>',
       output: '<App prop="foo">< /App>',
       errors: [{ messageId: 'closeSlashNeedSpace' }],
       options: closingSlashOptions('always'),
+      features: ['no-ts'],
     },
     {
       code: '<p/>',
@@ -477,5 +484,5 @@ ruleTester.run('jsx-tag-spacing', rule, {
       errors: [{ messageId: 'beforeCloseNeedSpace' }],
       options: beforeClosingOptions('always'),
     },
-  ],
+  ]),
 });

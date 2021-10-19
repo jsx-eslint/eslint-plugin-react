@@ -30,7 +30,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-props-no-multi-spaces', rule, {
-  valid: [].concat(
+  valid: parsers.all([].concat(
     {
       code: `
         <App />
@@ -73,7 +73,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
     },
     {
       code: '<App<T> foo bar />',
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['ts', 'no-babel'],
     },
     {
       code: '<Foo.Bar baz="quux" />',
@@ -150,9 +150,9 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
         `,
       },
     ] : [])
-  ),
+  )),
 
-  invalid: [].concat(
+  invalid: parsers.all([].concat(
     {
       code: `
         <App  foo />
@@ -250,6 +250,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
           data: { prop1: 'Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh', prop2: 'xyzzy' },
         },
       ],
+      features: ['no-ts-old'], // TODO: FIXME: remove `no-ts-old` and fix
     },
     {
       code: `
@@ -361,5 +362,6 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
           },
         ],
       },
-    ] : [])),
+    ] : [])
+  )),
 });

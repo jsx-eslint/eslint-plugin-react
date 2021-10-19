@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-sort-props');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -89,7 +91,7 @@ const reservedFirstAsEmptyArrayArgs = [{ reservedFirst: [] }];
 const reservedFirstAsInvalidArrayArgs = [{ reservedFirst: ['notReserved'] }];
 
 ruleTester.run('jsx-sort-props', rule, {
-  valid: [
+  valid: parsers.all([
     { code: '<App />;' },
     { code: '<App {...this.props} />;' },
     { code: '<App a b c />;' },
@@ -154,8 +156,8 @@ ruleTester.run('jsx-sort-props', rule, {
       code: '<App key="key" c="c" b />',
       options: reservedFirstWithShorthandLast,
     },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: '<App b a />;',
       errors: [expectedError],
@@ -481,5 +483,5 @@ ruleTester.run('jsx-sort-props', rule, {
       options: reservedFirstAsInvalidArrayArgs,
       errors: [expectedInvalidReservedFirstError],
     },
-  ],
+  ]),
 });

@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-multi-comp', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         var Hello = require('./components/Hello');
@@ -72,7 +72,6 @@ ruleTester.run('no-multi-comp', rule, {
           return <div>Hello again {props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       options: [{ ignoreStateless: true }],
     },
     {
@@ -202,11 +201,11 @@ ruleTester.run('no-multi-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -265,7 +264,6 @@ ruleTester.run('no-multi-comp', rule, {
           return <div>Hello again {props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -304,7 +302,6 @@ ruleTester.run('no-multi-comp', rule, {
           }
         };
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -324,7 +321,7 @@ ruleTester.run('no-multi-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -340,7 +337,6 @@ ruleTester.run('no-multi-comp', rule, {
         export default React.forwardRef((props, ref) => <div><StoreListItem {...props} forwardRef={ref} /></div>);
       `,
       options: [{ ignoreStateless: false }],
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -356,7 +352,6 @@ ruleTester.run('no-multi-comp', rule, {
         const HelloComponent2 = React.forwardRef((props, ref) => <div></div>);
       `,
       options: [{ ignoreStateless: false }],
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -372,7 +367,7 @@ ruleTester.run('no-multi-comp', rule, {
         const HelloComponent2 = React.forwardRef((props, ref) => <><HelloComponent></HelloComponent></>);
       `,
       options: [{ ignoreStateless: false }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -555,5 +550,5 @@ ruleTester.run('no-multi-comp', rule, {
       },
       errors: [{ messageId: 'onlyOneComponent' }],
     },
-  ],
+  ]),
 });

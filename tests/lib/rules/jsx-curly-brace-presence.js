@@ -32,13 +32,13 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-curly-brace-presence', rule, {
-  valid: [].concat(
+  valid: parsers.all([].concat(
     {
       code: '<App {...props}>foo</App>',
     },
     {
       code: '<>foo</>',
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: '<App {...props}>foo</App>',
@@ -100,7 +100,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
           <span>bar</span>
         </>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ children: 'never' }],
     },
     {
@@ -327,7 +327,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
           %
         </MyComponent>
       `,
-      parser: parsers.BABEL_ESLINT,
       options: [{ children: 'never' }],
     },
     {
@@ -338,7 +337,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
           { ' space before' }
         </MyComponent>
       `,
-      parser: parsers.BABEL_ESLINT,
       options: [{ children: 'never' }],
     },
     {
@@ -349,7 +347,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
           { \` space before\` }
         </MyComponent>
       `,
-      parser: parsers.BABEL_ESLINT,
       options: [{ children: 'never' }],
     },
     {
@@ -359,7 +356,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
           <div>bar</div>
         </MyComponent>
       `,
-      parser: parsers.BABEL_ESLINT,
       options: [{ children: 'never' }],
     },
     {
@@ -380,7 +376,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
           </div>
         </MyComponent>
       `,
-      parser: parsers.BABEL_ESLINT,
       options: [{ children: 'always' }],
     },
     {
@@ -398,6 +393,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
           return <span>/*</span>;
         };
       `,
+      features: ['no-ts-old'], // the old TS parser hangs forever on this one
     },
     {
       code: `
@@ -406,6 +402,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
         };
       `,
       options: [{ props: 'never', children: 'never' }],
+      features: ['no-ts-old'], // the old TS parser hangs forever on this one
     },
     {
       code: `
@@ -416,6 +413,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
         };
       `,
       options: [{ props: 'never', children: 'never' }],
+      features: ['no-ts-old'], // the old TS parser hangs forever on this one
     },
     {
       code: `<App>{/* comment */}</App>`,
@@ -441,9 +439,9 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
         `,
       },
     ] : [])
-  ),
+  )),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: '<App prop={`foo`} />',
       output: '<App prop="foo" />',
@@ -476,7 +474,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: '<>{`foo`}</>',
       output: '<>foo</>',
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ children: 'never' }],
       errors: [{ messageId: 'unnecessaryCurly' }],
     },
@@ -513,7 +511,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
           %
         </MyComponent>
       `,
-      parser: parsers.BABEL_ESLINT,
       options: [{ children: 'never' }],
       errors: [{ messageId: 'unnecessaryCurly' }],
     },
@@ -536,7 +533,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
           baz
         </MyComponent>
       `,
-      parser: parsers.BABEL_ESLINT,
       options: [{ children: 'never' }],
       errors: [
         { messageId: 'unnecessaryCurly' },
@@ -565,7 +561,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
           {'some-complicated-exp'}
         </MyComponent>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['no-default', 'no-ts-new'], // TODO: FIXME: remove no-default and no-ts-new and fix
       options: [{ children: 'never' }],
       errors: [{ messageId: 'unnecessaryCurly' }, { messageId: 'unnecessaryCurly' }],
     },
@@ -592,7 +588,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       output: `<MyComponent prop={"foo 'bar'"}>foo</MyComponent>`,
       options: [{ props: 'always' }],
       errors: [{ messageId: 'missingCurly' }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: '<MyComponent>foo bar </MyComponent>',
@@ -860,5 +855,5 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       errors: [{ messageId: 'unnecessaryCurly' }],
       options: ['never'],
     },
-  ],
+  ]),
 });

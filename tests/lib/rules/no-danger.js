@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-danger');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,12 +28,12 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-danger', rule, {
-  valid: [
+  valid: parsers.all([
     { code: '<App />;' },
     { code: '<App dangerouslySetInnerHTML={{ __html: "" }} />;' },
     { code: '<div className="bar"></div>;' },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: '<div dangerouslySetInnerHTML={{ __html: "" }}></div>;',
       errors: [
@@ -41,5 +43,5 @@ ruleTester.run('no-danger', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

@@ -34,7 +34,7 @@ const linter = ruleTester.linter || eslint.linter;
 linter.defineRule('jsx-uses-vars', require('../../../lib/rules/jsx-uses-vars'));
 
 ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         /* eslint jsx-uses-vars: 1 */
@@ -52,14 +52,6 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         var App;
         React.render(<App/>);
       `,
-    },
-    {
-      code: `
-        /* eslint jsx-uses-vars: 1 */
-        var App;
-        React.render(<App/>);
-      `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -140,8 +132,8 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         React.render(<object.tag />);
       `,
     },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: '/* eslint jsx-uses-vars: 1 */ var App;',
       errors: [{ message: '\'App\' is defined but never used.' }],
@@ -166,6 +158,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         { message: '\'App\' is defined but never used.' },
         { message: '\'Hello\' is defined but never used.' },
       ],
+      features: ['jsx namespace'],
     },
     {
       code: `
@@ -203,24 +196,6 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
     {
       code: `
         /* eslint jsx-uses-vars: 1 */
-        class HelloMessage {
-          render() {
-            var HelloMessage = <div>Hello</div>;
-            return HelloMessage;
-          }
-        }
-      `,
-      errors: [
-        {
-          message: '\'HelloMessage\' is defined but never used.',
-          line: 3,
-        },
-      ],
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-        /* eslint jsx-uses-vars: 1 */
         import {Hello} from 'Hello';
         function Greetings() {
           const Hello = require('Hello').default;
@@ -234,7 +209,6 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
           line: 3,
         },
       ],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -258,15 +232,14 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
           line: 3,
         },
       ],
-      parser: parsers.BABEL_ESLINT,
     },
-  ],
+  ]),
 });
 
 // Check compatibility with eslint prefer-const rule (#716)
 ruleTester.run('prefer-const', rulePreferConst, {
   valid: [],
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         /* eslint jsx-uses-vars:1 */
@@ -293,5 +266,5 @@ ruleTester.run('prefer-const', rulePreferConst, {
         <div>{filters}</div>;
       `,
     },
-  ],
+  ]),
 });

@@ -29,7 +29,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-no-bind', rule, {
-  valid: [
+  valid: parsers.all([
     // Not covered by the rule
     {
       code: '<div onClick={this._handleClick}></div>',
@@ -202,7 +202,7 @@ ruleTester.run('jsx-no-bind', rule, {
           }
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
       code: `
@@ -214,7 +214,7 @@ ruleTester.run('jsx-no-bind', rule, {
           }
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
       code: `
@@ -236,7 +236,7 @@ ruleTester.run('jsx-no-bind', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
       code: `
@@ -257,7 +257,7 @@ ruleTester.run('jsx-no-bind', rule, {
           }
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -269,7 +269,7 @@ ruleTester.run('jsx-no-bind', rule, {
           }
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       // issue #1543: don't crash on uninitialized variables
@@ -299,7 +299,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: '<div foo={::this.onChange} />',
       options: [{ ignoreDOMComponents: true }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
 
     // Local function declaration
@@ -314,9 +314,9 @@ ruleTester.run('jsx-no-bind', rule, {
       `,
       errors: [],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     // .bind()
     {
       code: '<div onClick={this._handleClick.bind(this)}></div>',
@@ -377,7 +377,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'bindCall' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -389,7 +389,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'bindCall' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -439,7 +439,7 @@ ruleTester.run('jsx-no-bind', rule, {
         { messageId: 'bindCall' },
         { messageId: 'arrowFunc' },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -513,7 +513,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'arrowFunc' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -525,7 +525,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'arrowFunc' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -537,7 +537,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'arrowFunc' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -598,7 +598,7 @@ ruleTester.run('jsx-no-bind', rule, {
         { messageId: 'arrowFunc' },
         { messageId: 'bindExpression' },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
 
     // Functions
@@ -628,7 +628,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'func' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -640,7 +640,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'func' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -652,7 +652,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'func' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -664,7 +664,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'func' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -746,24 +746,24 @@ ruleTester.run('jsx-no-bind', rule, {
         { messageId: 'func' },
         { messageId: 'bindExpression' },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
 
     // Bind expression
     {
       code: '<div foo={::this.onChange} />',
       errors: [{ messageId: 'bindExpression' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
       code: '<div foo={foo.bar::baz} />',
       errors: [{ messageId: 'bindExpression' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
       code: '<div foo={foo::bar} />',
       errors: [{ messageId: 'bindExpression' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
       code: `
@@ -775,7 +775,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'bindExpression' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
       code: `
@@ -787,7 +787,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'bindExpression' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
       code: `
@@ -799,7 +799,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'bindExpression' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
       code: `
@@ -815,7 +815,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'bindExpression' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
 
     // Local function declaration
@@ -839,5 +839,5 @@ ruleTester.run('jsx-no-bind', rule, {
       options: [{ ignoreDOMComponents: true }],
       errors: [{ messageId: 'bindCall' }],
     },
-  ],
+  ]),
 });

@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-closing-tag-location', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         <App>
@@ -47,17 +47,17 @@ ruleTester.run('jsx-closing-tag-location', rule, {
           foo
         </>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: `
         <>foo</>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         <App>
@@ -89,7 +89,7 @@ ruleTester.run('jsx-closing-tag-location', rule, {
           foo
           </>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         <>
           foo
@@ -102,7 +102,7 @@ ruleTester.run('jsx-closing-tag-location', rule, {
         <>
           foo</>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         <>
           foo
@@ -110,5 +110,5 @@ ruleTester.run('jsx-closing-tag-location', rule, {
       `,
       errors: [{ messageId: 'onOwnLine' }],
     },
-  ],
+  ]),
 });

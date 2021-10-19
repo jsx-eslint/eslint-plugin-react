@@ -36,7 +36,7 @@ const withoutJSX = 'module.exports = {}';
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-filename-extension', rule, {
-  valid: [
+  valid: parsers.all([
     {
       filename: '<text>',
       code: withJSXElement,
@@ -67,22 +67,22 @@ ruleTester.run('jsx-filename-extension', rule, {
     {
       filename: '<text>',
       code: withJSXFragment,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       filename: 'MyComponent.jsx',
       code: withJSXFragment,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       filename: 'MyComponent.js',
       options: [{ extensions: ['.js', '.jsx'] }],
       code: withJSXFragment,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       filename: 'MyComponent.js',
       code: withJSXElement,
@@ -129,7 +129,7 @@ ruleTester.run('jsx-filename-extension', rule, {
     {
       filename: 'MyComponent.js',
       code: withJSXFragment,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       errors: [
         {
           messageId: 'noJSXWithExtension',
@@ -140,7 +140,7 @@ ruleTester.run('jsx-filename-extension', rule, {
     {
       filename: 'MyComponent.jsx',
       code: withJSXFragment,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       options: [{ extensions: ['.js'] }],
       errors: [
         {
@@ -149,5 +149,5 @@ ruleTester.run('jsx-filename-extension', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

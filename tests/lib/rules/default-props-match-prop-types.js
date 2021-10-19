@@ -30,7 +30,7 @@ const ruleTester = new RuleTester({ parserOptions });
 // ------------------------------------------------------------------------------
 
 ruleTester.run('default-props-match-prop-types', rule, {
-  valid: [
+  valid: parsers.all([
     // stateless components
     {
       code: `
@@ -247,25 +247,6 @@ ruleTester.run('default-props-match-prop-types', rule, {
           foo: "foo"
         };
       `,
-    },
-    {
-      code: `
-        class Greeting extends React.Component {
-          render() {
-            return (
-              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
-            );
-          }
-        }
-        Greeting.propTypes = {
-          foo: React.PropTypes.string,
-          bar: React.PropTypes.string.isRequired
-        };
-        Greeting.defaultProps = {
-          foo: "foo"
-        };
-      `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -509,26 +490,6 @@ ruleTester.run('default-props-match-prop-types', rule, {
         };
       `,
     },
-    {
-      code: `
-        class Greeting extends React.Component {
-          render() {
-            return (
-              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
-            );
-          }
-        }
-        Greeting.propTypes = {
-          foo: React.PropTypes.string,
-          bar: React.PropTypes.string.isRequired
-        };
-        Greeting.defaultProps = {
-          ...defaults,
-          bar: "bar"
-        };
-      `,
-      parser: parsers.BABEL_ESLINT,
-    },
 
     // with Flow annotations
     {
@@ -545,7 +506,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -566,7 +527,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           bar: "bar"
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -585,7 +546,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           bar: "bar"
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -599,7 +560,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -609,7 +570,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
 
         Hello.defaultProps = { foo: "foo" };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -617,7 +578,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {foo}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -627,7 +588,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
 
         Hello.defaultProps = { foo: "foo" };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -635,7 +596,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {foo}</div>;
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -645,7 +606,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
 
         Hello.defaultProps = { foo: "foo" };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -653,7 +614,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {foo}</div>;
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -676,7 +637,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           baz: "baz"
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -695,7 +656,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -707,7 +668,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -717,7 +678,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {foo}</div>;
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -727,7 +688,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {props.name.firstname}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -752,7 +713,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           bar2: "bar2",
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
     {
       code: `
@@ -779,7 +740,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           bar2: "bar2",
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
     // don't error when variable is not in scope
     {
@@ -790,7 +751,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {props.name.firstname}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     // make sure error is not thrown with multiple assignments
     {
@@ -802,7 +763,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {props.name.firstname}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     // don't error when variable is not in scope with intersection
     {
@@ -815,11 +776,11 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>Hello {props.name.firstname}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     // stateless components
     {
       code: `
@@ -842,29 +803,6 @@ ruleTester.run('default-props-match-prop-types', rule, {
           column: 11,
         },
       ],
-    },
-    {
-      code: `
-        function MyStatelessComponent({ foo, bar }) {
-          return <div>{foo}{bar}</div>;
-        }
-        MyStatelessComponent.propTypes = {
-          foo: React.PropTypes.string,
-          bar: React.PropTypes.string.isRequired
-        };
-        MyStatelessComponent.defaultProps = {
-          baz: "baz"
-        };
-      `,
-      errors: [
-        {
-          messageId: 'defaultHasNoType',
-          data: { name: 'baz' },
-          line: 10,
-          column: 11,
-        },
-      ],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1415,7 +1353,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'requiredHasDefault',
@@ -1442,7 +1380,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'defaultHasNoType',
@@ -1471,7 +1409,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           static defaultProps = defaults;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'requiredHasDefault',
@@ -1500,7 +1438,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           static defaultProps = defaults;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'defaultHasNoType',
@@ -1576,7 +1514,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           foo: "foo"
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
       errors: [
         {
           messageId: 'requiredHasDefault',
@@ -1595,7 +1533,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           foo: "foo"
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
       errors: [
         {
           messageId: 'requiredHasDefault',
@@ -1618,7 +1556,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           foo: "foo"
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
       errors: [
         {
           messageId: 'requiredHasDefault',
@@ -1635,7 +1573,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         };
         Hello.defaultProps = { foo: "foo", bar: "bar" };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
       errors: [
         {
           messageId: 'requiredHasDefault',
@@ -1662,7 +1600,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         }
         Hello.defaultProps = { foo: "foo", frob: "frob" };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'], // TODO: FIXME: change to "types" and fix failures
       errors: [
         {
           messageId: 'requiredHasDefault',
@@ -1696,7 +1634,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
       errors: [
         {
           messageId: 'defaultHasNoType',
@@ -1747,7 +1685,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         }
         Hello.defaultProps = { foo: "foo", frob: "frob", baz: "bar" };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'requiredHasDefault',
@@ -1782,7 +1720,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
         }
         Hello.defaultProps = { foo: "foo", frob: "frob", baz: "bar" };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'requiredHasDefault',
@@ -1798,5 +1736,5 @@ ruleTester.run('default-props-match-prop-types', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

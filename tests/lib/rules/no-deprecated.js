@@ -44,7 +44,7 @@ function errorMessage(oldMethod, version, newMethod, refs, extraProps) {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-deprecated', rule, {
-  valid: [
+  valid: parsers.all([
     // Not deprecated
     'var element = React.createElement(\'p\', {}, null);',
     'var clone = React.cloneElement(element);',
@@ -119,9 +119,9 @@ ruleTester.run('no-deprecated', rule, {
         let { default: defaultReactExport, ...allReactExports } = React;
       `,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: 'React.renderComponent()',
       errors: [errorMessage('React.renderComponent', '0.12.0', 'React.render')],
@@ -182,12 +182,10 @@ ruleTester.run('no-deprecated', rule, {
     },
     {
       code: 'var {createClass} = require(\'react\');',
-      parser: parsers.BABEL_ESLINT,
       errors: [errorMessage('React.createClass', '15.5.0', 'the npm module create-react-class')],
     },
     {
       code: 'var {createClass, PropTypes} = require(\'react\');',
-      parser: parsers.BABEL_ESLINT,
       errors: [
         errorMessage('React.createClass', '15.5.0', 'the npm module create-react-class'),
         errorMessage('React.PropTypes', '15.5.0', 'the npm module prop-types'),
@@ -195,12 +193,10 @@ ruleTester.run('no-deprecated', rule, {
     },
     {
       code: 'import {createClass} from \'react\';',
-      parser: parsers.BABEL_ESLINT,
       errors: [errorMessage('React.createClass', '15.5.0', 'the npm module create-react-class')],
     },
     {
       code: 'import {createClass, PropTypes} from \'react\';',
-      parser: parsers.BABEL_ESLINT,
       errors: [
         errorMessage('React.createClass', '15.5.0', 'the npm module create-react-class'),
         errorMessage('React.PropTypes', '15.5.0', 'the npm module prop-types'),
@@ -211,7 +207,6 @@ ruleTester.run('no-deprecated', rule, {
       import React from 'react';
       const {createClass, PropTypes} = React;
     `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         errorMessage('React.createClass', '15.5.0', 'the npm module create-react-class'),
         errorMessage('React.PropTypes', '15.5.0', 'the npm module prop-types'),
@@ -219,7 +214,6 @@ ruleTester.run('no-deprecated', rule, {
     },
     {
       code: 'import {printDOM} from \'react-addons-perf\';',
-      parser: parsers.BABEL_ESLINT,
       errors: [errorMessage('ReactPerf.printDOM', '15.0.0', 'ReactPerf.printOperations')],
     },
     {
@@ -227,7 +221,6 @@ ruleTester.run('no-deprecated', rule, {
         import ReactPerf from 'react-addons-perf';
         const {printDOM} = ReactPerf;
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [errorMessage('ReactPerf.printDOM', '15.0.0', 'ReactPerf.printOperations')],
     },
     {
@@ -433,5 +426,5 @@ ruleTester.run('no-deprecated', rule, {
         ),
       ],
     },
-  ],
+  ]),
 });

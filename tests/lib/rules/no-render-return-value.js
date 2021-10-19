@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-render-return-value');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-render-return-value', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: 'ReactDOM.render(<div />, document.body);',
     },
@@ -58,9 +60,9 @@ ruleTester.run('no-render-return-value', rule, {
     {
       code: 'var foo = ReactDom.renderder(<div />, root)',
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: 'var Hello = ReactDOM.render(<div />, document.body);',
       errors: [
@@ -153,5 +155,5 @@ ruleTester.run('no-render-return-value', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

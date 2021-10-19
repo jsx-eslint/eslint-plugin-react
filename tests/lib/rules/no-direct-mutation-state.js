@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-direct-mutation-state');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-direct-mutation-state', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -96,9 +98,9 @@ ruleTester.run('no-direct-mutation-state', rule, {
         }
       `,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -262,19 +264,19 @@ ruleTester.run('no-direct-mutation-state', rule, {
       `,
       errors: [{ messageId: 'noDirectMutation' }],
     },
-  /**
-   * Would be nice to prevent this too
-  , {
-    code: `
-      var Hello = createReactClass({
-        render: function() {
-          var that = this;
-          that.state.person.name.first = "bar"
-          return <div>Hello</div>;
-        }
-      });
-    `,
-    errors: [{messageId: 'noDirectMutation'}]
-  } */
-  ],
+    /**
+     * Would be nice to prevent this too
+    {
+      code: `
+        var Hello = createReactClass({
+          render: function() {
+            var that = this;
+            that.state.person.name.first = "bar"
+            return <div>Hello</div>;
+          }
+        });
+      `,
+      errors: [{messageId: 'noDirectMutation'}]
+    } */
+  ]),
 });

@@ -11,6 +11,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/forbid-component-props');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -25,7 +27,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('forbid-component-props', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         var First = createReactClass({
@@ -153,10 +155,11 @@ ruleTester.run('forbid-component-props', rule, {
       code: `
         <fbt:param name="Total number of files" number={true} />
       `,
+      features: ['jsx namespace'],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var First = createReactClass({
@@ -374,5 +377,5 @@ ruleTester.run('forbid-component-props', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

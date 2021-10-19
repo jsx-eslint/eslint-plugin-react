@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-equals-spacing');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-equals-spacing', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<App />',
     },
@@ -82,9 +84,9 @@ ruleTester.run('jsx-equals-spacing', rule, {
       code: '<App {...props} />',
       options: ['always'],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: '<App foo = {bar} />',
       output: '<App foo={bar} />',
@@ -155,5 +157,5 @@ ruleTester.run('jsx-equals-spacing', rule, {
         { messageId: 'needSpaceAfter' },
       ],
     },
-  ],
+  ]),
 });

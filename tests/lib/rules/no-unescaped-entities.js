@@ -38,7 +38,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-unescaped-entities', rule, {
-  valid: [].concat(
+  valid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -96,7 +96,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: `
@@ -106,7 +106,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: `
@@ -116,11 +116,11 @@ ruleTester.run('no-unescaped-entities', rule, {
           },
         });
       `,
-      parser: parsers.BABEL_ESLINT,
-    }
-  ),
+      features: ['fragment'],
+    },
+  ]),
 
-  invalid: [].concat(
+  invalid: parsers.all([].concat(
     allowsInvalidJSX ? [
       {
         code: `
@@ -201,7 +201,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts', 'no-default'],
       errors: [
         {
           messageId: 'unescapedEntityAlts',
@@ -219,7 +219,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts', 'no-default'],
       errors: [
         {
           messageId: 'unescapedEntityAlts',
@@ -250,7 +250,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts', 'no-default'],
       errors: [
         {
           messageId: 'unescapedEntityAlts',
@@ -266,7 +266,7 @@ ruleTester.run('no-unescaped-entities', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       errors: [
         {
           messageId: 'unescapedEntity',
@@ -316,5 +316,5 @@ ruleTester.run('no-unescaped-entities', rule, {
         },
       ],
     }
-  ).filter(Boolean),
+  )),
 });

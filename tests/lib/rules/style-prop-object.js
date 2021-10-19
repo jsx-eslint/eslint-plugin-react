@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/style-prop-object');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('style-prop-object', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<div style={{ color: "red" }} />',
     },
@@ -194,8 +196,8 @@ ruleTester.run('style-prop-object', rule, {
       code: 'React.createElement(MyComponent, { style: "mySpecialStyle" })',
       options: [{ allow: ['MyComponent'] }],
     },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: '<div style="color: \'red\'" />',
       errors: [
@@ -301,5 +303,5 @@ ruleTester.run('style-prop-object', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('prefer-read-only-props', rule, {
-  valid: [].concat(
+  valid: parsers.all([
     {
       // Class component with type parameter
       code: `
@@ -42,7 +42,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
     {
       // Class component with typed props property
@@ -57,7 +57,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
     {
       // Functional component with typed props argument
@@ -66,7 +66,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
     {
       // Functional component with type intersection
@@ -79,7 +79,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return <div>Hello {firstName} {lastName}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
     {
       // Arrow function
@@ -88,7 +88,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           <div>Hello {props.name}</div>
         );
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
     {
       // Destructured props
@@ -97,7 +97,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           <div>Hello {props.name}</div>
         );
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
     {
       // No error, because this is not a component
@@ -106,7 +106,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return props.n + 1;
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
     {
       // No error, because there is no Props flow type
@@ -144,7 +144,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
     {
       // Class component with typed props argument
@@ -160,45 +160,27 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
-    parsers.TS([
-      {
-        code: `
-          import React from "react";
+    {
+      code: `
+        import React from "react";
 
-          interface Props {
-            name: string;
-          }
-          
-          const MyComponent: React.FC<Props> = ({ name }) => {
-            return <div>{name}</div>;
-          };
-          
-          export default MyComponent;
-        `,
-        parser: parsers.TYPESCRIPT_ESLINT,
-      },
-      {
-        code: `
-          import React from "react";
+        interface Props {
+          name: string;
+        }
+        
+        const MyComponent: React.FC<Props> = ({ name }) => {
+          return <div>{name}</div>;
+        };
+        
+        export default MyComponent;
+      `,
+      features: ['ts'],
+    },
+  ]),
 
-          interface Props {
-            name: string;
-          }
-          
-          const MyComponent: React.FC<Props> = ({ name }) => {
-            return <div>{name}</div>;
-          };
-          
-          export default MyComponent;
-        `,
-        parser: parsers['@TYPESCRIPT_ESLINT'],
-      },
-    ])
-  ),
-
-  invalid: [
+  invalid: parsers.all([
     {
       // Props.name is not read-only
       code: `
@@ -223,7 +205,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'readOnlyProp',
@@ -255,7 +237,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'readOnlyProp',
@@ -286,7 +268,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'readOnlyProp',
@@ -305,7 +287,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'readOnlyProp',
@@ -324,7 +306,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'readOnlyProp',
@@ -343,7 +325,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'readOnlyProp',
@@ -370,7 +352,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           return <div>Hello {firstName} {lastName}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'readOnlyProp',
@@ -393,7 +375,7 @@ ruleTester.run('prefer-read-only-props', rule, {
           <div>Hello {props.name}</div>
         );
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'readOnlyProp',
@@ -401,5 +383,5 @@ ruleTester.run('prefer-read-only-props', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

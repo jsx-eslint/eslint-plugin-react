@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-no-script-url');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -27,7 +29,7 @@ const parserOptions = {
 const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('jsx-no-script-url', rule, {
-  valid: [
+  valid: parsers.all([
     { code: '<a href="https://reactjs.org"></a>' },
     { code: '<a href="mailto:foo@bar.com"></a>' },
     { code: '<a href="#"></a>' },
@@ -36,8 +38,8 @@ ruleTester.run('jsx-no-script-url', rule, {
     { code: '<a href={"javascript:"}></a>' },
     { code: '<Foo href="javascript:"></Foo>' },
     { code: '<a href />' },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: '<a href="javascript:"></a>',
       errors: [{ messageId: 'noScriptURL' }],
@@ -82,5 +84,5 @@ ruleTester.run('jsx-no-script-url', rule, {
         ],
       ],
     },
-  ],
+  ]),
 });

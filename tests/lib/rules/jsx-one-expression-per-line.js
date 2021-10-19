@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-one-expression-per-line', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<App />',
     },
@@ -165,7 +165,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
     },
     {
       code: '<></>',
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     {
       code: `
@@ -173,7 +173,7 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
           <Foo />
         </>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
     },
     {
       code: `
@@ -182,11 +182,11 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
           <Bar />
         </>
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         <App>{"foo"}</App>
@@ -896,7 +896,6 @@ foo
         },
       ],
       parserOptions,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -1316,7 +1315,7 @@ foo
           data: { descriptor: '{"foo"}' },
         },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       parserOptions,
     },
     {
@@ -1337,7 +1336,7 @@ foo
           data: { descriptor: '<></>' },
         },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       parserOptions,
     },
     {
@@ -1358,7 +1357,7 @@ foo
           data: { descriptor: 'Foo' },
         },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'],
       parserOptions,
     },
     {
@@ -1388,8 +1387,7 @@ a
           data: { descriptor: '{a}' },
         },
       ],
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
     },
-  ],
+  ]),
 });

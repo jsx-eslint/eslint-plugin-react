@@ -30,7 +30,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('forbid-prop-types', rule, {
-  valid: [].concat(
+  valid: parsers.all([].concat(
     {
       code: `
         var First = createReactClass({
@@ -143,7 +143,6 @@ ruleTester.run('forbid-prop-types', rule, {
           "aria-controls": PropTypes.string
         };
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     semver.satisfies(babelEslintVersion, '< 9') ? {
       // Invalid code, should not be validated
@@ -195,7 +194,7 @@ ruleTester.run('forbid-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       // Proptypes declared with a spread property
@@ -330,7 +329,6 @@ ruleTester.run('forbid-prop-types', rule, {
           "aria-controls": PropTypes.string
         };
       `,
-      parser: parsers.BABEL_ESLINT,
       options: [{ checkContextTypes: true }],
     },
     semver.satisfies(babelEslintVersion, '< 9') ? {
@@ -386,7 +384,7 @@ ruleTester.run('forbid-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [{ checkContextTypes: true }],
     },
     {
@@ -523,7 +521,6 @@ ruleTester.run('forbid-prop-types', rule, {
           "aria-controls": PropTypes.string
         };
       `,
-      parser: parsers.BABEL_ESLINT,
       options: [{ checkChildContextTypes: true }],
     },
     semver.satisfies(babelEslintVersion, '< 9') ? {
@@ -579,7 +576,7 @@ ruleTester.run('forbid-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [{ checkChildContextTypes: true }],
     },
     {
@@ -607,7 +604,7 @@ ruleTester.run('forbid-prop-types', rule, {
           }();
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -631,9 +628,9 @@ ruleTester.run('forbid-prop-types', rule, {
         };
       `,
     }
-  ),
+  )),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var First = createReactClass({
@@ -901,7 +898,7 @@ ruleTester.run('forbid-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: 2,
     },
     {
@@ -932,7 +929,7 @@ ruleTester.run('forbid-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: 2,
       settings: {
         propWrapperFunctions: ['forbidExtraProps'],
@@ -1021,7 +1018,7 @@ ruleTester.run('forbid-prop-types', rule, {
         }
       `,
       options: [{ checkContextTypes: true }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'forbiddenPropType',
@@ -1130,7 +1127,7 @@ ruleTester.run('forbid-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: 2,
       options: [{ checkContextTypes: true }],
       settings: {
@@ -1239,7 +1236,7 @@ ruleTester.run('forbid-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [
         {
           forbid: ['instanceOf'],
@@ -1360,7 +1357,7 @@ ruleTester.run('forbid-prop-types', rule, {
         }
       `,
       options: [{ checkChildContextTypes: true }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'forbiddenPropType',
@@ -1469,7 +1466,7 @@ ruleTester.run('forbid-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: 2,
       options: [{ checkChildContextTypes: true }],
       settings: {
@@ -1578,7 +1575,7 @@ ruleTester.run('forbid-prop-types', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [
         {
           forbid: ['instanceOf'],
@@ -1722,5 +1719,5 @@ ruleTester.run('forbid-prop-types', rule, {
       `,
       errors: 1,
     },
-  ],
+  ]),
 });

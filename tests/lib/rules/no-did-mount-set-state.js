@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-did-mount-set-state', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -81,11 +81,10 @@ ruleTester.run('no-did-mount-set-state', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -113,7 +112,6 @@ ruleTester.run('no-did-mount-set-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'noSetState',
@@ -131,7 +129,7 @@ ruleTester.run('no-did-mount-set-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       errors: [
         {
           messageId: 'noSetState',
@@ -167,7 +165,6 @@ ruleTester.run('no-did-mount-set-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       options: ['disallow-in-func'],
       errors: [
         {
@@ -208,7 +205,6 @@ ruleTester.run('no-did-mount-set-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       options: ['disallow-in-func'],
       errors: [
         {
@@ -248,7 +244,6 @@ ruleTester.run('no-did-mount-set-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'noSetState',
@@ -264,7 +259,6 @@ ruleTester.run('no-did-mount-set-state', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
       options: ['disallow-in-func'],
       errors: [
         {
@@ -281,7 +275,6 @@ ruleTester.run('no-did-mount-set-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       options: ['disallow-in-func'],
       errors: [
         {
@@ -290,5 +283,5 @@ ruleTester.run('no-did-mount-set-state', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

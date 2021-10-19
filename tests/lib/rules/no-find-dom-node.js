@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-find-dom-node');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-find-dom-node', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         var Hello = function() {};
@@ -66,9 +68,9 @@ ruleTester.run('no-find-dom-node', rule, {
         });
       `,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -121,5 +123,5 @@ ruleTester.run('no-find-dom-node', rule, {
       `,
       errors: [{ messageId: 'noFindDOMNode' }],
     },
-  ],
+  ]),
 });

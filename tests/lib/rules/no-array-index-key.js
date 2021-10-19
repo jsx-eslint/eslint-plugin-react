@@ -27,7 +27,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-array-index-key', rule, {
-  valid: [].concat(
+  valid: parsers.all(
     { code: '<Foo key="foo" />;' },
     { code: '<Foo key={i} />;' },
     { code: '<Foo key />;' },
@@ -92,29 +92,16 @@ ruleTester.run('no-array-index-key', rule, {
         })
       `,
     },
-    parsers.ES2020(
-      {
-        code: 'foo?.map(child => <Foo key={child.i} />)',
-        parserOptions: {
-          ecmaVersion: 2020,
-        },
+    {
+      code: 'foo?.map(child => <Foo key={child.i} />)',
+      features: ['optional chaining'],
+      parserOptions: {
+        ecmaVersion: 2020,
       },
-      {
-        code: 'foo?.map(child => <Foo key={child.i} />)',
-        parser: parsers.BABEL_ESLINT,
-      },
-      {
-        code: 'foo?.map(child => <Foo key={child.i} />)',
-        parser: parsers.TYPESCRIPT_ESLINT,
-      },
-      {
-        code: 'foo?.map(child => <Foo key={child.i} />)',
-        parser: parsers['@TYPESCRIPT_ESLINT'],
-      }
-    )
+    }
   ),
 
-  invalid: [].concat(
+  invalid: parsers.all([].concat(
     {
       code: 'foo.map((bar, i) => <Foo key={i} />)',
       errors: [{ messageId: 'noArrayIndex' }],
@@ -257,29 +244,13 @@ ruleTester.run('no-array-index-key', rule, {
       `,
       errors: [{ messageId: 'noArrayIndex' }],
     },
-    parsers.ES2020(
-      {
-        code: 'foo?.map((child, i) => <Foo key={i} />)',
-        errors: [{ messageId: 'noArrayIndex' }],
-        parserOptions: {
-          ecmaVersion: 2020,
-        },
+    {
+      code: 'foo?.map((child, i) => <Foo key={i} />)',
+      errors: [{ messageId: 'noArrayIndex' }],
+      features: ['optional chaining'],
+      parserOptions: {
+        ecmaVersion: 2020,
       },
-      {
-        code: 'foo?.map((child, i) => <Foo key={i} />)',
-        errors: [{ messageId: 'noArrayIndex' }],
-        parser: parsers.BABEL_ESLINT,
-      },
-      {
-        code: 'foo?.map((child, i) => <Foo key={i} />)',
-        errors: [{ messageId: 'noArrayIndex' }],
-        parser: parsers.TYPESCRIPT_ESLINT,
-      },
-      {
-        code: 'foo?.map((child, i) => <Foo key={i} />)',
-        errors: [{ messageId: 'noArrayIndex' }],
-        parser: parsers['@TYPESCRIPT_ESLINT'],
-      }
-    )
-  ),
+    }
+  )),
 });

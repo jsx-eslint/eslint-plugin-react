@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('require-render-return', rule, {
-  valid: [
+  valid: parsers.all([
     {
       // ES6 class
       code: `
@@ -48,7 +48,7 @@ ruleTester.run('require-render-return', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
     },
     {
       // ES6 class with render property (implicit return)
@@ -59,7 +59,7 @@ ruleTester.run('require-render-return', rule, {
           )
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
     },
     {
       // ES5 class
@@ -87,7 +87,6 @@ ruleTester.run('require-render-return', rule, {
           <div></div>
         );
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       // Return in a switch...case
@@ -150,11 +149,11 @@ ruleTester.run('require-render-return', rule, {
           render
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       // Missing return in ES5 class
       code: `
@@ -206,7 +205,7 @@ ruleTester.run('require-render-return', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'noRenderReturn',
@@ -214,5 +213,5 @@ ruleTester.run('require-render-return', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

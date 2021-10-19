@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-handler-names', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<TestComponent onChange={this.handleChange} />',
     },
@@ -118,29 +118,29 @@ ruleTester.run('jsx-handler-names', rule, {
     },
     {
       code: '<TestComponent onChange={props::handleChange} />',
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
       code: '<TestComponent onChange={::props.onChange} />',
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
       code: '<TestComponent onChange={props.foo::handleChange} />',
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
       code: '<TestComponent onChange={() => props::handleChange()} />',
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
       options: [{ checkInlineFunction: true }],
     },
     {
       code: '<TestComponent onChange={() => ::props.onChange()} />',
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
       options: [{ checkInlineFunction: true }],
     },
     {
       code: '<TestComponent onChange={() => props.foo::handleChange()} />',
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
       options: [{ checkInlineFunction: true }],
     },
     {
@@ -181,9 +181,9 @@ ruleTester.run('jsx-handler-names', rule, {
       code: '<TestComponent someProp={props.onChange} />',
       options: [{ eventHandlerPropPrefix: false }],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: '<TestComponent onChange={this.doSomethingOnChange} />',
       errors: [
@@ -351,7 +351,7 @@ ruleTester.run('jsx-handler-names', rule, {
     },
     {
       code: '<TestComponent onChange={props::onChange} />',
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
       errors: [
         {
           messageId: 'badHandlerName',
@@ -361,7 +361,7 @@ ruleTester.run('jsx-handler-names', rule, {
     },
     {
       code: '<TestComponent onChange={props.foo::onChange} />',
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
       errors: [
         {
           messageId: 'badHandlerName',
@@ -369,5 +369,5 @@ ruleTester.run('jsx-handler-names', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

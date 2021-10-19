@@ -34,19 +34,18 @@ const settings = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('react-in-jsx-scope', rule, {
-  valid: [
+  valid: parsers.all([
     { code: 'var React, App; <App />;' },
     { code: 'var React; <img />;' },
     {
       code: 'var React; <>fragment</>;',
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
     },
     { code: 'var React; <x-gif />;' },
     { code: 'var React, App, a=1; <App attr={a} />;' },
     { code: 'var React, App, a=1; function elem() { return <App attr={a} />; }' },
     {
       code: 'var React, App; <App />;',
-      parser: parsers.BABEL_ESLINT,
     },
     { code: '/** @jsx Foo */ var Foo, App; <App />;' },
     { code: '/** @jsx Foo.Bar */ var Foo, App; <App />;' },
@@ -67,8 +66,8 @@ ruleTester.run('react-in-jsx-scope', rule, {
       code: 'var Foo, App; <App />;',
       settings,
     },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: 'var App, a = <App />;',
       errors: [
@@ -98,7 +97,7 @@ ruleTester.run('react-in-jsx-scope', rule, {
     },
     {
       code: 'var a = <>fragment</>;',
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       errors: [
         {
           messageId: 'notInScope',
@@ -134,5 +133,5 @@ ruleTester.run('react-in-jsx-scope', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

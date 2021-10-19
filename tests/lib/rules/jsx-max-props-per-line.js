@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-max-props-per-line');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-max-props-per-line', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<App />',
     },
@@ -142,9 +144,9 @@ ruleTester.run('jsx-max-props-per-line', rule, {
       `,
       options: [{ maximum: 1, when: 'multiline' }],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         <App foo bar baz />;
@@ -533,5 +535,5 @@ baz bor
         },
       ],
     },
-  ],
+  ]),
 });

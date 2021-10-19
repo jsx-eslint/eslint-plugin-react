@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-is-mounted');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-is-mounted', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         var Hello = function() {
@@ -55,9 +57,9 @@ ruleTester.run('no-is-mounted', rule, {
         });
       `,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -103,5 +105,5 @@ ruleTester.run('no-is-mounted', rule, {
       `,
       errors: [{ messageId: 'noIsMounted' }],
     },
-  ],
+  ]),
 });

@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-no-duplicate-props');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -36,7 +38,7 @@ const ignoreCaseArgs = [{
 }];
 
 ruleTester.run('jsx-no-duplicate-props', rule, {
-  valid: [
+  valid: parsers.all([
     { code: '<App />;' },
     { code: '<App {...this.props} />;' },
     { code: '<App a b c />;' },
@@ -52,9 +54,10 @@ ruleTester.run('jsx-no-duplicate-props', rule, {
     {
       code: '<App a:b="c" />;',
       options: ignoreCaseArgs,
+      features: ['jsx namespace'],
     },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: '<App a a />;',
       errors: [expectedError],
@@ -82,5 +85,5 @@ ruleTester.run('jsx-no-duplicate-props', rule, {
       options: ignoreCaseArgs,
       errors: [expectedError],
     },
-  ],
+  ]),
 });

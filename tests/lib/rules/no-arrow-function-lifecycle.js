@@ -24,7 +24,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-arrow-function-lifecycle', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -167,7 +167,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -177,7 +177,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -187,7 +187,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -197,7 +197,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -207,7 +207,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -217,7 +217,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -227,7 +227,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -237,7 +237,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -247,7 +247,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -257,7 +257,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -267,7 +267,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -277,7 +277,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -287,7 +287,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -297,7 +297,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -307,7 +307,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -317,7 +317,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -327,7 +327,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -338,7 +338,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -348,20 +348,17 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
         });
       `,
     },
-  ].concat(
-    parsers.TS([
-      {
-        code: `
-          class MyComponent extends React.Component {
-            onChange: () => void;
-          }
-        `,
-        parser: parsers['@TYPESCRIPT_ESLINT'],
-      },
-    ])
-  ),
+    {
+      code: `
+        class MyComponent extends React.Component {
+          onChange: () => void;
+        }
+      `,
+      features: ['types'],
+    },
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -607,7 +604,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         class Hello extends React.Component {
@@ -624,7 +621,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'getDefaultProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -645,7 +642,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'getInitialState is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -666,7 +663,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'getChildContext is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -687,7 +684,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'getDerivedStateFromProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -708,7 +705,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'componentWillMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -729,7 +726,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'UNSAFE_componentWillMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -750,7 +747,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'componentDidMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -771,7 +768,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'componentWillReceiveProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -792,7 +789,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'UNSAFE_componentWillReceiveProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -813,7 +810,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'shouldComponentUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -834,7 +831,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'componentWillUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -855,7 +852,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'UNSAFE_componentWillUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -876,7 +873,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'getSnapshotBeforeUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -897,7 +894,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'componentDidUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -918,7 +915,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'componentDidCatch is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -939,7 +936,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         { message: 'componentWillUnmount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
         { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
@@ -952,5 +949,5 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
         }
       `,
     },
-  ],
+  ]),
 });

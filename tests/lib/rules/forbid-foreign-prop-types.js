@@ -27,7 +27,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('forbid-foreign-prop-types', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: 'import { propTypes } from "SomeComponent";',
     },
@@ -79,12 +79,12 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [{ allowInPropTypes: true }],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var Foo = createReactClass({
@@ -144,7 +144,6 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'forbiddenPropType',
@@ -160,7 +159,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts'], // TODO: FIXME: remove "no-ts" and fix
       errors: [
         {
           messageId: 'forbiddenPropType',
@@ -212,7 +211,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts'], // TODO: FIXME: remove "no-ts" and fix
       options: [{ allowInPropTypes: false }],
       errors: [
         {
@@ -221,5 +220,5 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

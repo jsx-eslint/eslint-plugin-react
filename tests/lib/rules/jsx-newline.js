@@ -26,34 +26,79 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const tests = {
-  valid: [
-    `
-      <div>
-        <Button>{data.label}</Button>
+new RuleTester({ parserOptions }).run('jsx-newline', rule, {
+  valid: parsers.all([
+    {
+      code: `
+        <div>
+          <Button>{data.label}</Button>
 
-        <List />
+          <List />
 
-        <Button>
-          <IconPreview />
-          Button 2
+          <Button>
+            <IconPreview />
+            Button 2
 
-          <span></span>
-        </Button>
+            <span></span>
+          </Button>
 
-        {showSomething === true && <Something />}
+          {showSomething === true && <Something />}
 
-        <Button>Button 3</Button>
+          <Button>Button 3</Button>
 
-        {showSomethingElse === true ? (
-          <SomethingElse />
-        ) : (
-          <ErrorMessage />
-        )}
-      </div>
-    `,
-  ],
-  invalid: [
+          {showSomethingElse === true ? (
+            <SomethingElse />
+          ) : (
+            <ErrorMessage />
+          )}
+        </div>
+      `,
+    },
+    {
+      code: `
+        <div>
+          <Button>{data.label}</Button>
+          <List />
+          <Button>
+            <IconPreview />
+            Button 2
+            <span></span>
+          </Button>
+          {showSomething === true && <Something />}
+          <Button>Button 3</Button>
+          {showSomethingElse === true ? (
+            <SomethingElse />
+          ) : (
+            <ErrorMessage />
+          )}
+        </div>
+      `,
+      options: [{ prevent: true }],
+    },
+    {
+      code: `
+        <>
+          <Button>{data.label}</Button>
+          Test
+
+          <span>Should be in new line</span>
+        </>
+      `,
+      features: ['fragment'],
+    },
+    {
+      code: `
+        <>
+          <Button>{data.label}</Button>
+          Test
+          <span>Should be in new line</span>
+        </>
+      `,
+      options: [{ prevent: true }],
+      features: ['fragment'],
+    },
+  ]),
+  invalid: parsers.all([
     {
       code: `
         <div>
@@ -162,96 +207,6 @@ const tests = {
         { messageId: 'require' },
       ],
     },
-  ],
-};
-
-const advanceFeatTest = {
-  valid: [
-    {
-      code: `
-        <>
-          <Button>{data.label}</Button>
-          Test
-
-          <span>Should be in new line</span>
-        </>
-      `,
-    },
-  ],
-  invalid: [
-    {
-      code: `
-        <>
-          <Button>{data.label}</Button>
-          Test
-          <span>Should be in new line</span>
-        </>
-      `,
-      output: `
-        <>
-          <Button>{data.label}</Button>
-          Test
-
-          <span>Should be in new line</span>
-        </>
-      `,
-      errors: [{ messageId: 'require' }],
-    },
-  ],
-};
-
-// Run tests with default parser
-new RuleTester({ parserOptions }).run('jsx-newline', rule, tests);
-
-// Run tests with babel parser
-let ruleTester = new RuleTester({ parserOptions, parser: parsers.BABEL_ESLINT });
-ruleTester.run('jsx-newline', rule, tests);
-ruleTester.run('jsx-newline', rule, advanceFeatTest);
-
-// Run tests with typescript parser
-ruleTester = new RuleTester({ parserOptions, parser: parsers.TYPESCRIPT_ESLINT });
-ruleTester.run('jsx-newline', rule, tests);
-ruleTester.run('jsx-newline', rule, advanceFeatTest);
-
-ruleTester = new RuleTester({ parserOptions, parser: parsers['@TYPESCRIPT_ESLINT'] });
-ruleTester.run('jsx-newline', rule, {
-  valid: parsers.TS(tests.valid),
-  invalid: parsers.TS(tests.invalid),
-});
-ruleTester.run('jsx-newline', rule, {
-  valid: parsers.TS(advanceFeatTest.valid),
-  invalid: parsers.TS(advanceFeatTest.invalid),
-});
-
-// ------------------------------------------------------------------------------
-// Tests: { prevent: true }
-// --------- ---------------------------------------------------------------------
-
-const preventionTests = {
-  valid: [
-    {
-      code: `
-        <div>
-          <Button>{data.label}</Button>
-          <List />
-          <Button>
-            <IconPreview />
-            Button 2
-            <span></span>
-          </Button>
-          {showSomething === true && <Something />}
-          <Button>Button 3</Button>
-          {showSomethingElse === true ? (
-            <SomethingElse />
-          ) : (
-            <ErrorMessage />
-          )}
-        </div>
-      `,
-      options: [{ prevent: true }],
-    },
-  ],
-  invalid: [
     {
       output: `
         <div>
@@ -363,11 +318,6 @@ const preventionTests = {
       ],
       options: [{ prevent: true }],
     },
-  ],
-};
-
-const preventionAdvanceFeatTest = {
-  valid: [
     {
       code: `
         <>
@@ -376,10 +326,17 @@ const preventionAdvanceFeatTest = {
           <span>Should be in new line</span>
         </>
       `,
-      options: [{ prevent: true }],
+      output: `
+        <>
+          <Button>{data.label}</Button>
+          Test
+
+          <span>Should be in new line</span>
+        </>
+      `,
+      errors: [{ messageId: 'require' }],
+      features: ['fragment'],
     },
-  ],
-  invalid: [
     {
       output: `
         <>
@@ -398,29 +355,7 @@ const preventionAdvanceFeatTest = {
       `,
       errors: [{ messageId: 'prevent' }],
       options: [{ prevent: true }],
+      features: ['fragment'],
     },
-  ],
-};
-
-// // Run tests with default parser
-new RuleTester({ parserOptions }).run('jsx-newline', rule, preventionTests);
-
-// // Run tests with babel parser
-ruleTester = new RuleTester({ parserOptions, parser: parsers.BABEL_ESLINT });
-ruleTester.run('jsx-newline', rule, preventionTests);
-ruleTester.run('jsx-newline', rule, preventionAdvanceFeatTest);
-
-// // Run tests with typescript parser
-ruleTester = new RuleTester({ parserOptions, parser: parsers.TYPESCRIPT_ESLINT });
-ruleTester.run('jsx-newline', rule, preventionTests);
-ruleTester.run('jsx-newline', rule, preventionAdvanceFeatTest);
-
-ruleTester = new RuleTester({ parserOptions, parser: parsers['@TYPESCRIPT_ESLINT'] });
-ruleTester.run('jsx-newline', rule, {
-  valid: parsers.TS(preventionTests.valid),
-  invalid: parsers.TS(preventionTests.invalid),
-});
-ruleTester.run('jsx-newline', rule, {
-  valid: parsers.TS(preventionAdvanceFeatTest.valid),
-  invalid: parsers.TS(preventionAdvanceFeatTest.invalid),
+  ]),
 });
