@@ -183,7 +183,13 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       code: '<div><>{"a"}{"b"}</></div>',
       output: '<div>{"a"}{"b"}</div>',
       errors: [{ messageId: 'ChildOfHtmlElement' }],
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old
+      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and next test case
+    },
+    {
+      code: '<div><>{"a"}{"b"}</></div>',
+      output: '<div><>{"a"}{"b"}</></div>',
+      errors: [{ messageId: 'ChildOfHtmlElement' }],
+      features: ['fragment', 'ts-old', 'no-ts-new', 'no-babel', 'no-default'],
     },
     {
       code: `
