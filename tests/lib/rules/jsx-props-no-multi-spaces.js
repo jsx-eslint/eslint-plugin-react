@@ -242,15 +242,18 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       ],
     },
     {
-      code: '<Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh  xyzzy="thud" />',
-      output: '<Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh xyzzy="thud" />',
+      code: `
+        <Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh  xyzzy="thud" />
+      `,
+      output: `
+        <Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh xyzzy="thud" />
+      `,
       errors: [
         {
           messageId: 'onlyOneSpace',
           data: { prop1: 'Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh', prop2: 'xyzzy' },
         },
       ],
-      features: ['no-ts-old'], // TODO: FIXME: remove `no-ts-old` and fix
     },
     {
       code: `
