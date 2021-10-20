@@ -13,6 +13,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`propTypes`]: add `VoidFunctionComponent` to react generic list ([#3092][] @vedadeepta)
 * [`jsx-fragments`], [`jsx-no-useless-fragment`]: avoid a crash on fragment syntax in `typescript-eslint` parser (@ljharb)
 * [`jsx-props-no-multi-spaces`]: avoid a crash on long member chains in tag names in `typescript-eslint` parser (@ljharb)
+* [`no-unused-prop-types`], `usedPropTypes`: avoid crash with typescript-eslint parser (@ljharb)
 
 [#3092]: https://github.com/yannickcr/eslint-plugin-react/pull/3092
 [#2166]: https://github.com/yannickcr/eslint-plugin-react/pull/2166
