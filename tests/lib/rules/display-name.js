@@ -520,6 +520,21 @@ ruleTester.run('display-name', rule, {
         };
       `,
     },
+    {
+      // issue 3032
+      code: `
+        const Comp = React.forwardRef((props, ref) => <main />);
+        Comp.displayName = 'MyCompName';
+      `,
+    },
+    {
+      // issue 3032
+      code: `
+        const Comp = React.forwardRef((props, ref) => <main data-as="yes" />) as SomeComponent;
+        Comp.displayName = 'MyCompNameAs';
+      `,
+      features: ['ts', 'no-babel'],
+    },
   ]),
 
   invalid: parsers.all([
