@@ -3423,6 +3423,20 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
+    },
+    {
+      code: `
+        class Test extends React.Component {
+          static propTypes = {
+            value: PropTypes.string
+          };
+        
+          render() {
+            return <span>{this.props.value}</span>;
+          }
+        }
+      `,
+      features: ['class fields'],
     }
   )),
 
