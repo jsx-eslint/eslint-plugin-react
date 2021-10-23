@@ -385,6 +385,78 @@ ruleTester.run('no-unstable-nested-components', rule, {
     },
     {
       code: `
+      function ParentComponent() {
+        return (
+          <SomeComponent>
+            {
+              thing.match({
+                renderLoading: () => <div />,
+                renderSuccess: () => <div />,
+                renderFailure: () => <div />,
+              })
+            }
+          </SomeComponent>
+        )
+      }
+      `,
+    },
+    {
+      code: `
+      function ParentComponent() {
+        const thingElement = thing.match({
+          renderLoading: () => <div />,
+          renderSuccess: () => <div />,
+          renderFailure: () => <div />,
+        });
+        return (
+          <SomeComponent>
+            {thingElement}
+          </SomeComponent>
+        )
+      }
+      `,
+    },
+    {
+      code: `
+      function ParentComponent() {
+        return (
+          <SomeComponent>
+            {
+              thing.match({
+                loading: () => <div />,
+                success: () => <div />,
+                failure: () => <div />,
+              })
+            }
+          </SomeComponent>
+        )
+      }
+      `,
+      options: [{
+        allowAsProps: true,
+      }],
+    },
+    {
+      code: `
+      function ParentComponent() {
+        const thingElement = thing.match({
+          loading: () => <div />,
+          success: () => <div />,
+          failure: () => <div />,
+        });
+        return (
+          <SomeComponent>
+            {thingElement}
+          </SomeComponent>
+        )
+      }
+      `,
+      options: [{
+        allowAsProps: true,
+      }],
+    },
+    {
+      code: `
         function ParentComponent() {
           return (
             <ComponentForProps renderFooter={() => <div />} />
@@ -500,6 +572,9 @@ ruleTester.run('no-unstable-nested-components', rule, {
           return <Table rows={rows} />;
         }
       `,
+      options: [{
+        allowAsProps: true,
+      }],
     },
     /* TODO These minor cases are currently falsely marked due to component detection
     {
@@ -1041,6 +1116,64 @@ ruleTester.run('no-unstable-nested-components', rule, {
       `,
       // Only a single error should be shown. This can get easily marked twice.
       errors: [{ message: ERROR_MESSAGE }],
+    },
+    {
+      code: `
+      function ParentComponent() {
+        return (
+          <SomeComponent>
+            {
+              thing.match({
+                loading: () => <div />,
+                success: () => <div />,
+                failure: () => <div />,
+              })
+            }
+          </SomeComponent>
+        )
+      }
+      `,
+      errors: [
+        { message: ERROR_MESSAGE_COMPONENT_AS_PROPS },
+        { message: ERROR_MESSAGE_COMPONENT_AS_PROPS },
+        { message: ERROR_MESSAGE_COMPONENT_AS_PROPS },
+      ],
+    },
+    {
+      code: `
+      function ParentComponent() {
+        const thingElement = thing.match({
+          loading: () => <div />,
+          success: () => <div />,
+          failure: () => <div />,
+        });
+        return (
+          <SomeComponent>
+            {thingElement}
+          </SomeComponent>
+        )
+      }
+      `,
+      errors: [
+        { message: ERROR_MESSAGE_COMPONENT_AS_PROPS },
+        { message: ERROR_MESSAGE_COMPONENT_AS_PROPS },
+        { message: ERROR_MESSAGE_COMPONENT_AS_PROPS },
+      ],
+    },
+    {
+      code: `
+      function ParentComponent() {
+        const rows = [
+          {
+            name: 'A',
+            notPrefixedWithRender: (props) => <Row {...props} />
+          },
+        ];
+
+        return <Table rows={rows} />;
+      }
+      `,
+      errors: [{ message: ERROR_MESSAGE_COMPONENT_AS_PROPS }],
     },
   ]),
 });

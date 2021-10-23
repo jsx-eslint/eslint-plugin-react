@@ -16,7 +16,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`no-unused-prop-types`], `usedPropTypes`: avoid crash with typescript-eslint parser (@ljharb)
 * [`display-name`]: unwrap TS `as` expressions ([#3110][] @ljharb)
 * [`destructuring-assignment`]: detect refs nested in functions ([#3102] @ljharb)
+* [`no-unstable-components`]: improve handling of objects containing render function properties ([#3111] @fizwidget)
 
+[#3111]: https://github.com/yannickcr/eslint-plugin-react/pull/3111
 [#3110]: https://github.com/yannickcr/eslint-plugin-react/pull/3110
 [#3102]: https://github.com/yannickcr/eslint-plugin-react/issue/3102
 [#3092]: https://github.com/yannickcr/eslint-plugin-react/pull/3092
