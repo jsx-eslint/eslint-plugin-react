@@ -529,6 +529,17 @@ ruleTester.run('destructuring-assignment', rule, {
         {
           messageId: 'useDestructAssignment',
           data: { type: 'props' },
+          line: 5,
+        },
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+          line: 7,
+        },
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+          line: 8,
         },
       ],
     },
@@ -562,6 +573,45 @@ ruleTester.run('destructuring-assignment', rule, {
         {
           messageId: 'useDestructAssignment',
           data: { type: 'props' },
+        },
+      ],
+    },
+    {
+      code: `
+        import React from 'react';
+
+        const TestComp = (props) => {
+          props.onClick3102();
+        
+          return (
+            <div
+              onClick={(evt) => {
+                if (props.onClick3102) {
+                  props.onClick3102(evt);
+                }
+              }}
+            >
+              <div />
+            </div>
+          );
+        };
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+          line: 5,
+        },
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+          line: 10,
+        },
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+          line: 11,
         },
       ],
     },
