@@ -10,14 +10,16 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * add [`no-arrow-function-lifecycle`] ([#1980][] @ngtan)
 
 ### Fixed
-* [`propTypes`]: add `VoidFunctionComponent` to react generic list ([#3092][] @vedadeepta)
+* `propTypes`: add `VoidFunctionComponent` to react generic list ([#3092][] @vedadeepta)
 * [`jsx-fragments`], [`jsx-no-useless-fragment`]: avoid a crash on fragment syntax in `typescript-eslint` parser (@ljharb)
 * [`jsx-props-no-multi-spaces`]: avoid a crash on long member chains in tag names in `typescript-eslint` parser (@ljharb)
 * [`no-unused-prop-types`], `usedPropTypes`: avoid crash with typescript-eslint parser (@ljharb)
 * [`display-name`]: unwrap TS `as` expressions ([#3110][] @ljharb)
 * [`destructuring-assignment`]: detect refs nested in functions ([#3102] @ljharb)
 * [`no-unstable-components`]: improve handling of objects containing render function properties ([#3111] @fizwidget)
+* [`prop-types`], `propTypes`: add forwardRef<>, ForwardRefRenderFunction<> prop-types ([#3112] @vedadeepta)
 
+[#3112]: https://github.com/yannickcr/eslint-plugin-react/pull/3112
 [#3111]: https://github.com/yannickcr/eslint-plugin-react/pull/3111
 [#3110]: https://github.com/yannickcr/eslint-plugin-react/pull/3110
 [#3102]: https://github.com/yannickcr/eslint-plugin-react/issue/3102

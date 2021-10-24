@@ -462,9 +462,9 @@ ruleTester.run('prop-types', rule, {
       code: `
         class Hello extends React.Component {
           render() {
-            var { 
+            var {
               propX,
-              "aria-controls": ariaControls, 
+              "aria-controls": ariaControls,
               ...props } = this.props;
             return <div>Hello</div>;
           }
@@ -1346,7 +1346,7 @@ ruleTester.run('prop-types', rule, {
     {
       code: `
         import type { FieldProps } from "redux-form"
-        
+
         type Props = {
         label: string,
           type: string,
@@ -3413,6 +3413,111 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
+        import React, { ForwardRefRenderFunction  as X } from 'react'
+
+        type IfooProps = { e: string };
+          const Foo: X<HTMLDivElement, IfooProps> = function Foo (props, ref) {
+          const { e } = props;
+          return  <div ref={ref}>hello</div>;
+        };
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { ForwardRefRenderFunction } from 'react'
+
+        type IfooProps = { e: string };
+          const Foo: ForwardRefRenderFunction<HTMLDivElement, IfooProps> = function Foo (props, ref) {
+          const { e } = props;
+          return  <div ref={ref}>hello</div>;
+        };
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { ForwardRefRenderFunction } from 'react'
+
+        type IfooProps = { e: string };
+          const Foo: ForwardRefRenderFunction<HTMLDivElement, IfooProps> = (props, ref) => {
+          const { e } = props;
+          return  <div ref={ref}>hello</div>;
+        };
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from 'react'
+
+        type IfooProps = { e: string };
+        const Foo= React.forwardRef<HTMLDivElement, IfooProps>((props, ref) => {
+          const { e } = props;
+          return  <div ref={ref}>hello</div>;
+        });
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { forwardRef } from 'react'
+
+        type IfooProps = { e: string };
+        const Foo= forwardRef<HTMLDivElement, IfooProps>((props, ref) => {
+          const { e } = props;
+          return  <div ref={ref}>hello</div>;
+        });
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from 'react'
+        type IfooProps = { e: string };
+        const Foo= React.forwardRef<HTMLDivElement, IfooProps>(function Foo(props, ref) {
+          const { e } = props;
+          return  <div ref={ref}>hello</div>;
+        });
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from 'react'
+        interface IfooProps { e: string }
+        const Foo= React.forwardRef<HTMLDivElement, IfooProps>(function Foo(props, ref) {
+          const { e } = props;
+          return  <div ref={ref}>hello</div>;
+        });
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { forwardRef } from 'react'
+        interface IfooProps { e: string }
+        const Foo= forwardRef<HTMLDivElement, IfooProps>(function Foo(props, ref) {
+          const { e } = props;
+          return  <div ref={ref}>hello</div>;
+        });
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { forwardRef as X } from 'react'
+
+        type IfooProps = { e: string };
+        const Foo= X<HTMLDivElement, IfooProps>((props, ref) => {
+          const { e } = props;
+          return  <div ref={ref}>hello</div>;
+        });
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
         import React from 'react'
 
         class Factory {
@@ -3430,7 +3535,7 @@ ruleTester.run('prop-types', rule, {
           static propTypes = {
             value: PropTypes.string
           };
-        
+
           render() {
             return <span>{this.props.value}</span>;
           }
@@ -3830,7 +3935,7 @@ ruleTester.run('prop-types', rule, {
     semver.satisfies(babelEslintVersion, '< 9') ? {
       code: `
         class Hello extends React.Component {
-          static propTypes: { 
+          static propTypes: {
             firstname: PropTypes.string
           };
           render() {
@@ -4019,8 +4124,8 @@ ruleTester.run('prop-types', rule, {
       code: `
         class Hello extends React.Component {
           render() {
-            var { 
-              "aria-controls": ariaControls, 
+            var {
+              "aria-controls": ariaControls,
               propX,
               ...props } = this.props;
             return <div>Hello</div>;
@@ -7136,6 +7241,76 @@ ruleTester.run('prop-types', rule, {
         {
           messageId: 'missingPropType',
           data: { name: 'test' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from 'react'
+
+        type IfooProps = { e: string };
+          const Foo: React.ForwardRefRenderFunction<HTMLDivElement, IfooProps> = function Foo (props, ref) {
+          const { name } = props;
+          return  <div ref={ref}>{name}</div>;
+        };
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'name' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from 'react'
+        type IfooProps = { k: string, a: number }
+        const Foo= React.forwardRef<HTMLDivElement, IfooProps>((props, ref) => {
+          return  <div ref={ref}>{props.l}</div>;
+        });
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'l' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from 'react'
+
+        type IfooProps = { e: string };
+        const Foo= React.forwardRef<HTMLDivElement, IfooProps>(function Foo(props, ref) {
+          const { l } = props;
+          return  <div ref={ref}>hello</div>;
+        });
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'l' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { forwardRef } from 'react'
+
+        type IfooProps = { e: string };
+        const Foo= forwardRef<HTMLDivElement, IfooProps>(function Foo(props, ref) {
+          const { l } = props;
+          return  <div ref={ref}>hello</div>;
+        });
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'l' },
         },
       ],
       features: ['ts', 'no-babel'],
