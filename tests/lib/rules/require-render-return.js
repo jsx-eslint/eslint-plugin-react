@@ -209,7 +209,7 @@ ruleTester.run('require-render-return', rule, {
       errors: [
         {
           messageId: 'noRenderReturn',
-          type: 'ClassProperty',
+          line: 3,
         },
       ],
     },

@@ -8,6 +8,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Added
 * [`no-unused-class-component-methods`]: Handle unused class component methods ([#2166][] @jakeleventhal @pawelnvk)
 * add [`no-arrow-function-lifecycle`] ([#1980][] @ngtan)
+* add support for `@typescript-eslint/parser` v5 (@ljharb)
 
 ### Fixed
 * `propTypes`: add `VoidFunctionComponent` to react generic list ([#3092][] @vedadeepta)
