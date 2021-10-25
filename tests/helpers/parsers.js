@@ -4,6 +4,11 @@ const path = require('path');
 const semver = require('semver');
 const version = require('eslint/package.json').version;
 const flatMap = require('array.prototype.flatmap');
+const tsParserVersion = require('@typescript-eslint/parser/package.json').version;
+
+const disableNewTS = semver.satisfies(tsParserVersion, '>= 4.1') // this rule is not useful on v4.1+ of the TS parser
+  ? (x) => Object.assign({}, x, { features: [].concat(x.features, 'no-ts-new') })
+  : (x) => x;
 
 const NODE_MODULES = '../../node_modules';
 
@@ -12,6 +17,7 @@ const parsers = {
   '@BABEL_ESLINT': path.join(__dirname, NODE_MODULES, '@babel/eslint-parser'),
   TYPESCRIPT_ESLINT: path.join(__dirname, NODE_MODULES, 'typescript-eslint-parser'),
   '@TYPESCRIPT_ESLINT': path.join(__dirname, NODE_MODULES, '@typescript-eslint/parser'),
+  disableNewTS,
   babelParserOptions: function parserOptions(test, features) {
     return Object.assign({}, test.parserOptions, {
       requireConfigFile: false,

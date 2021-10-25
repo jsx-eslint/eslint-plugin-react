@@ -21,6 +21,7 @@ const parserOptions = {
   ecmaFeatures: {
     jsx: true,
   },
+  jsxPragma: null,
 };
 
 // -----------------------------------------------------------------------------
@@ -82,7 +83,7 @@ ruleTester.run('jsx-no-undef', rule, {
       parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
       options: [{ allowGlobals: false }],
     },
-  ]),
+  ].map(parsers.disableNewTS)),
 
   invalid: parsers.all([
     {
@@ -151,5 +152,5 @@ ruleTester.run('jsx-no-undef', rule, {
         },
       ],
     },
-  ]),
+  ].map(parsers.disableNewTS)),
 });

@@ -132,7 +132,7 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         React.render(<object.tag />);
       `,
     },
-  ]),
+  ].map(parsers.disableNewTS)),
   invalid: parsers.all([
     {
       code: '/* eslint jsx-uses-vars: 1 */ var App;',
@@ -266,5 +266,5 @@ ruleTester.run('prefer-const', rulePreferConst, {
         <div>{filters}</div>;
       `,
     },
-  ]),
+  ].map(parsers.disableNewTS)),
 });

@@ -56,7 +56,7 @@ ruleTester.run('no-unused-vars', rule, {
       code: '/*eslint jsx-uses-react:1*/ var React; <></>;',
       features: ['fragment', 'no-ts-old'], // TODO: FIXME: fix for typescript-eslint
     },
-  ]),
+  ].map(parsers.disableNewTS)),
   invalid: parsers.all([
     {
       code: '/*eslint jsx-uses-react:1*/ var React;',
@@ -83,5 +83,5 @@ ruleTester.run('no-unused-vars', rule, {
       errors: [{ message: '\'React\' is defined but never used.' }],
       settings,
     },
-  ]),
+  ].map(parsers.disableNewTS)),
 });
