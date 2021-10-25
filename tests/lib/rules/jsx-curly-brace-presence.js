@@ -441,7 +441,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     ] : [])
   )),
 
-  invalid: parsers.all([
+  invalid: parsers.all([].concat(
     {
       code: '<App prop={`foo`} />',
       output: '<App prop="foo" />',
@@ -561,10 +561,45 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
           {'some-complicated-exp'}
         </MyComponent>
       `,
-      features: ['no-default', 'no-ts-new'], // TODO: FIXME: remove no-default and no-ts-new and fix
+      features: ['no-default', 'no-ts-new', 'no-babel-new'], // TODO: FIXME: remove no-default and no-ts-new and fix
       options: [{ children: 'never' }],
-      errors: [{ messageId: 'unnecessaryCurly' }, { messageId: 'unnecessaryCurly' }],
+      errors: [
+        { messageId: 'unnecessaryCurly', line: 3 },
+        { messageId: 'unnecessaryCurly', line: 5 },
+      ],
     },
+    semver.satisfies(eslintPkg.version, '^7.5.0') ? { // require('@babel/eslint-parser/package.json').peerDependencies.eslint
+      // TODO: figure out how to make all other parsers work this well
+      code: `
+        <MyComponent>
+          {'foo'}
+          <div>
+            {'bar'}
+          </div>
+          {'baz'}
+          {'some-complicated-exp'}
+        </MyComponent>
+      `,
+      output: `
+        <MyComponent>
+          foo
+          <div>
+            bar
+          </div>
+          baz
+          some-complicated-exp
+        </MyComponent>
+      `,
+      parser: parsers['@BABEL_ESLINT'],
+      parserOptions: parsers.babelParserOptions({}, new Set()),
+      options: [{ children: 'never' }],
+      errors: [
+        { messageId: 'unnecessaryCurly', line: 3 },
+        { messageId: 'unnecessaryCurly', line: 5 },
+        { messageId: 'unnecessaryCurly', line: 7 },
+        { messageId: 'unnecessaryCurly', line: 8 },
+      ],
+    } : [],
     {
       code: `<MyComponent prop='bar'>foo</MyComponent>`,
       output: '<MyComponent prop={"bar"}>foo</MyComponent>',
@@ -854,6 +889,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       output: '<MyComponent prop="< style: true >">foo</MyComponent>',
       errors: [{ messageId: 'unnecessaryCurly' }],
       options: ['never'],
-    },
-  ]),
+    }
+  )),
 });

@@ -9,8 +9,33 @@ const NODE_MODULES = '../../node_modules';
 
 const parsers = {
   BABEL_ESLINT: path.join(__dirname, NODE_MODULES, 'babel-eslint'),
+  '@BABEL_ESLINT': path.join(__dirname, NODE_MODULES, '@babel/eslint-parser'),
   TYPESCRIPT_ESLINT: path.join(__dirname, NODE_MODULES, 'typescript-eslint-parser'),
   '@TYPESCRIPT_ESLINT': path.join(__dirname, NODE_MODULES, '@typescript-eslint/parser'),
+  babelParserOptions: function parserOptions(test, features) {
+    return Object.assign({}, test.parserOptions, {
+      requireConfigFile: false,
+      babelOptions: {
+        presets: [
+          '@babel/preset-react',
+        ],
+        plugins: [
+          '@babel/plugin-syntax-do-expressions',
+          '@babel/plugin-syntax-function-bind',
+          ['@babel/plugin-syntax-decorators', { legacy: true }],
+        ],
+      },
+      ecmaFeatures: Object.assign(
+        {},
+        test.parserOptions && test.parserOptions.ecmaFeatures,
+        {
+          jsx: true,
+          modules: true,
+          legacyDecorators: features.has('decorators'),
+        }
+      ),
+    });
+  },
   all: function all(tests) {
     const t = flatMap(tests, (test) => {
       if (typeof test === 'string') {
@@ -25,7 +50,7 @@ const parsers = {
       const es = test.parserOptions && test.parserOptions.ecmaVersion;
 
       function addComment(testObject, parser) {
-        const extraComment = `\n// features: [${Array.from(features).join(',')}], parser: ${parser}`;
+        const extraComment = `\n// features: [${Array.from(features).join(',')}], parser: ${parser}, parserOptions: ${testObject.parserOptions}`;
         return Object.assign(
           {},
           testObject,
@@ -46,9 +71,16 @@ const parsers = {
         || (features.has('fragment') && semver.satisfies(version, '< 5'));
 
       const skipBabel = features.has('no-babel');
-      const skipTS = semver.satisfies(version, '< 5')
+      const skipOldBabel = skipBabel || semver.satisfies(version, '>= 8');
+      const skipNewBabel = skipBabel
+        || features.has('no-babel-new')
+        || !semver.satisfies(version, '^7.5.0') // require('@babel/eslint-parser/package.json').peerDependencies.eslint
         || features.has('flow')
+        || features.has('types')
+        || features.has('ts');
+      const skipTS = semver.satisfies(version, '< 5')
         || features.has('no-ts')
+        || features.has('flow')
         || features.has('jsx namespace')
         || features.has('bind operator')
         || features.has('do expressions');
@@ -57,7 +89,11 @@ const parsers = {
 
       return [].concat(
         skipBase ? [] : addComment(test, 'default'),
-        skipBabel ? [] : addComment(Object.assign({}, test, { parser: parsers.BABEL_ESLINT }), 'babel-eslint'),
+        skipOldBabel ? [] : addComment(Object.assign({}, test, { parser: parsers.BABEL_ESLINT }), 'babel-eslint'),
+        skipNewBabel ? [] : addComment(Object.assign({}, test, {
+          parser: parsers['@BABEL_ESLINT'],
+          parserOptions: parsers.babelParserOptions(test, features),
+        }), '@babel/eslint-parser'),
         tsOld ? addComment(Object.assign({}, test, { parser: parsers.TYPESCRIPT_ESLINT }), 'typescript-eslint') : [],
         tsNew ? addComment(Object.assign({}, test, { parser: parsers['@TYPESCRIPT_ESLINT'] }), '@typescript/eslint') : []
       );

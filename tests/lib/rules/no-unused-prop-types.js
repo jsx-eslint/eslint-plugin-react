@@ -3227,7 +3227,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           }
         }
       `,
-      features: ['class fields'],
+      features: ['class fields', 'types'],
     },
     {
       code: `

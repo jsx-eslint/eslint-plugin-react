@@ -44,6 +44,12 @@
     "string.prototype.matchall": "^4.0.6"
   },
   "devDependencies": {
+    "@babel/core": "^7.15.8",
+    "@babel/eslint-parser": "^7.15.8",
+    "@babel/plugin-syntax-decorators": "^7.14.5",
+    "@babel/plugin-syntax-do-expressions": "^7.14.5",
+    "@babel/plugin-syntax-function-bind": "^7.14.5",
+    "@babel/preset-react": "^7.14.5",
     "@types/eslint": "=7.2.10",
     "@types/estree": "^0.0.50",
     "@types/node": "^14.17.27",
