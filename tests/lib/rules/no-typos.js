@@ -557,7 +557,7 @@ ruleTester.run('no-typos', rule, {
       `,
       parserOptions,
     },
-    semver.satisfies(babelEslintVersion, '>= 9') ? {
+    {
       code: `
         class Editor extends React.Component {
             #somethingPrivate() {
@@ -575,14 +575,14 @@ ruleTester.run('no-typos', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      parserOptions: {
+      features: [].concat('class fields', semver.satisfies(babelEslintVersion, '< 9') ? 'no-babel-old' : []),
+      parserOptions: Object.assign({}, parserOptions, {
         babelOptions: {
-          classPrivateMethods: true,
+          // classPrivateMethods: true,
         },
         shippedProposals: true,
-      },
-    } : []
+      }),
+    }
   )),
 
   invalid: parsers.all([].concat(

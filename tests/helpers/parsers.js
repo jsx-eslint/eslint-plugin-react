@@ -77,7 +77,7 @@ const parsers = {
         || (features.has('fragment') && semver.satisfies(version, '< 5'));
 
       const skipBabel = features.has('no-babel');
-      const skipOldBabel = skipBabel || semver.satisfies(version, '>= 8');
+      const skipOldBabel = skipBabel || features.has('no-babel-old') || semver.satisfies(version, '>= 8');
       const skipNewBabel = skipBabel
         || features.has('no-babel-new')
         || !semver.satisfies(version, '^7.5.0') // require('@babel/eslint-parser/package.json').peerDependencies.eslint

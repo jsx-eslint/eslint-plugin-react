@@ -19,6 +19,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`destructuring-assignment`]: detect refs nested in functions ([#3102] @ljharb)
 * [`no-unstable-components`]: improve handling of objects containing render function properties ([#3111] @fizwidget)
 * [`prop-types`], `propTypes`: add forwardRef<>, ForwardRefRenderFunction<> prop-types ([#3112] @vedadeepta)
+* [`no-typos`]: prevent a crash when using private methods (@ljharb)
 
 ### Changed
 * [Tests] test on the new babel eslint parser ([#3113] @ljharb)
