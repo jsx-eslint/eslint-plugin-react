@@ -6369,7 +6369,7 @@ ruleTester.run('prop-types', rule, {
     {
       code: `
         class Foo extends React.Component {
-          contructor(props) {
+          constructor(props) {
             super(props);
             this.initialValues = {
               test: '',
