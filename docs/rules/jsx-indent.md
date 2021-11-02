@@ -110,6 +110,6 @@ Examples of **correct** code for this rule:
 </App>
 ```
 
-## When not to use
+## When Not To Use It
 
 If you are not using JSX then you can disable this rule.

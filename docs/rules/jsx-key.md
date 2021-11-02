@@ -57,7 +57,7 @@ Examples of **incorrect** code for this rule:
 <span {...spread} key={"key-after-spread"} />;
 ```
 
-## When not to use
+## When Not To Use It
 
 If you are not using JSX then you can disable this rule.
 

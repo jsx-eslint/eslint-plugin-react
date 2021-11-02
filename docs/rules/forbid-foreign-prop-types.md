@@ -25,7 +25,7 @@ Examples of **correct** code for this rule:
 import SomeComponent, {propTypes as someComponentPropTypes} from './SomeComponent';
 ```
 
-## When not to use
+## When Not To Use It
 
 This rule aims to make a certain production optimization, removing prop types, less prone to error. This rule may not be relevant to you if you do not wish to make use of this optimization.
 

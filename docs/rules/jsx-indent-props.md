@@ -119,6 +119,6 @@ firstName="John"
 />
 ```
 
-## When not to use
+## When Not To Use It
 
 If you are not using JSX then you can disable this rule.

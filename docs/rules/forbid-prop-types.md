@@ -60,6 +60,6 @@ Whether or not to check `contextTypes` for forbidden prop types. The default val
 
 Whether or not to check `childContextTypes` for forbidden prop types. The default value is `false`.
 
-## When not to use
+## When Not To Use It
 
 This rule is a formatting/documenting preference and not following it won't negatively affect the quality of your code. This rule encourages prop types that more specifically document their usage.

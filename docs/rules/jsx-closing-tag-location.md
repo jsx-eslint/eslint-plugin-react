@@ -33,6 +33,6 @@ Examples of **correct** code for this rule:
 <Hello>marklar</Hello>
 ```
 
-## When not to use
+## When Not To Use It
 
 If you do not care about closing tag JSX alignment then you can disable this rule.

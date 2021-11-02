@@ -249,6 +249,6 @@ function getComponent() {
 
 ```
 
-## When not to use
+## When Not To Use It
 
 If you are not interested in consistent types of function components.
