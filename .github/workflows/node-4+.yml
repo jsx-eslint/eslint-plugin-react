@@ -81,6 +81,8 @@ jobs:
           skip-ls-check: ${{ matrix.node-version < 10 && true || false }}
         env:
           NPM_CONFIG_LEGACY_PEER_DEPS: true
+      - run: npx ls-engines
+        if: ${{ matrix.node-version >= 12 }}
       - run: npm run unit-test
       - uses: codecov/codecov-action@v1
 

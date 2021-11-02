@@ -65,6 +65,7 @@
     "eslint-scope": "^3.7.3",
     "espree": "^3.5.4",
     "istanbul": "^0.4.5",
+    "ls-engines": "^0.6.1",
     "markdown-magic": "^2.5.2",
     "mocha": "^5.2.0",
     "sinon": "^7.5.0",

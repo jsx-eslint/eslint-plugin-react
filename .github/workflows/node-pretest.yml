@@ -27,5 +27,6 @@ jobs:
           node-version: 'lts/*'
         env:
           NPM_CONFIG_LEGACY_PEER_DEPS: true
+      - run: npx ls-engines
       - run: echo 'legacy-peer-deps=true' >> .npmrc
       - run: npm run posttest
