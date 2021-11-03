@@ -30,6 +30,10 @@ const parsers = {
           '@babel/plugin-syntax-function-bind',
           ['@babel/plugin-syntax-decorators', { legacy: true }],
         ],
+        parserOpts: {
+          allowSuperOutsideMethod: false,
+          allowReturnOutsideFunction: false,
+        },
       },
       ecmaFeatures: Object.assign(
         {},
@@ -95,7 +99,10 @@ const parsers = {
 
       return [].concat(
         skipBase ? [] : addComment(test, 'default'),
-        skipOldBabel ? [] : addComment(Object.assign({}, test, { parser: parsers.BABEL_ESLINT }), 'babel-eslint'),
+        skipOldBabel ? [] : addComment(Object.assign({}, test, {
+          parser: parsers.BABEL_ESLINT,
+          parserOptions: parsers.babelParserOptions(test, features),
+        }), 'babel-eslint'),
         skipNewBabel ? [] : addComment(Object.assign({}, test, {
           parser: parsers['@BABEL_ESLINT'],
           parserOptions: parsers.babelParserOptions(test, features),
