@@ -22,6 +22,56 @@ ruleTester.run('destructuring-assignment', rule, {
   valid: parsers.all([
     {
       code: `
+        export const revisionStates2 = {
+            [A.b]: props => {
+              return props.editor !== null
+                ? 'xyz'
+                : 'abc'
+            },
+        };
+      `,
+    },
+    {
+      code: `
+        export function hof(namespace) {
+          const initialState = {
+            bounds: null,
+            search: false,
+          };
+          return (props) => {
+            const {x, y} = props
+            if (y) {
+              return <span>{y}</span>;
+            }
+            return <span>{x}</span>
+          };
+        }
+      `,
+    },
+    {
+      code: `
+        export function hof(namespace) {
+          const initialState = {
+            bounds: null,
+            search: false,
+          };
+
+          return (state = initialState, action) => {
+            if (action.type === 'ABC') {
+              return {...state, bounds: stuff ? action.x : null};
+            }
+
+            if (action.namespace !== namespace) {
+              return state;
+            }
+
+            return null
+          };
+        }
+      `,
+    },
+    {
+      code: `
         const MyComponent = ({ id, className }) => (
           <div id={id} className={className} />
         );
@@ -607,6 +657,64 @@ ruleTester.run('destructuring-assignment', rule, {
           messageId: 'useDestructAssignment',
           data: { type: 'props' },
           line: 10,
+        },
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+          line: 11,
+        },
+      ],
+    },
+    {
+      code: `
+        export const revisionStates2 = {
+            [A.b]: props => {
+              return props.editor !== null
+                ? <span>{props.editor}</span>
+                : null
+            },
+        };
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+          line: 4,
+        },
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+          line: 5,
+        },
+      ],
+    },
+    {
+      code: `
+        export function hof(namespace) {
+          const initialState = {
+            bounds: null,
+            search: false,
+          };
+          return (props) => {
+            if (props.y) {
+              return <span>{props.y}</span>;
+            }
+            return <span>{props.x}</span>
+          };
+        }
+      `,
+      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+          line: 8,
+        },
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+          line: 9,
         },
         {
           messageId: 'useDestructAssignment',

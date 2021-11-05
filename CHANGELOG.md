@@ -21,10 +21,12 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`no-unstable-components`]: improve handling of objects containing render function properties ([#3111] @fizwidget)
 * [`prop-types`], `propTypes`: add forwardRef<>, ForwardRefRenderFunction<> prop-types ([#3112] @vedadeepta)
 * [`no-typos`]: prevent a crash when using private methods (@ljharb)
+* [`destructuring-assignment`], component detection: improve component detection ([#3122] @vedadeepta)
 
 ### Changed
 * [Tests] test on the new babel eslint parser ([#3113] @ljharb)
 
+[#3122]: https://github.com/yannickcr/eslint-plugin-react/pull/3122
 [#3113]: https://github.com/yannickcr/eslint-plugin-react/pull/3113
 [#3112]: https://github.com/yannickcr/eslint-plugin-react/pull/3112
 [#3111]: https://github.com/yannickcr/eslint-plugin-react/pull/3111
