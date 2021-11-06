@@ -14,19 +14,19 @@ This rule aims to prevent user generated link hrefs and form actions from creati
 "react/jsx-no-target-blank": [<enabled>, {
   "allowReferrer": <allow-referrer>,
   "enforceDynamicLinks": <enforce>,
+  "warnOnSpreadAttributes": <warn>,
   "links": <boolean>,
   "forms": <boolean>,
 }]
 ...
 ```
 
-* `allowReferrer`: optional boolean. If `true` does not require `noreferrer` (i. e. `noopener` alone is enough, this leaves IE vulnerable). Defaults to `false`.
 * `enabled`: for enabling the rule.
-* `enforceDynamicLinks`: optional string, 'always' or 'never'
+* `allowReferrer`: optional boolean. If `true` does not require `noreferrer` (i. e. `noopener` alone is enough, this leaves IE vulnerable). Defaults to `false`.
+* `enforceDynamicLinks`: optional string, `'always'` or `'never'`.
 * `warnOnSpreadAttributes`: optional boolean. Defaults to `false`.
-* `enforceDynamicLinks` - enforce: optional string, 'always' or 'never'
-* `links` - Prevent usage of unsafe `target='_blank'` inside links, defaults to `true`
-* `forms` - Prevent usage of unsafe `target='_blank'` inside forms, defaults to `false`
+* `links`: prevent usage of unsafe `target='_blank'` inside links, defaults to `true`.
+* `forms`: prevent usage of unsafe `target='_blank'` inside forms, defaults to `false`.
 
 ### `enforceDynamicLinks`
 

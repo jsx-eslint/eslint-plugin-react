@@ -25,7 +25,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Changed
 * [Tests] test on the new babel eslint parser ([#3113] @ljharb)
+* [Docs] [`jsx-no-target-blank`]: adjust options description ([#3214] @gebsh)
 
+[#3214]: https://github.com/yannickcr/eslint-plugin-react/pull/3214
 [#3122]: https://github.com/yannickcr/eslint-plugin-react/pull/3122
 [#3113]: https://github.com/yannickcr/eslint-plugin-react/pull/3113
 [#3112]: https://github.com/yannickcr/eslint-plugin-react/pull/3112
