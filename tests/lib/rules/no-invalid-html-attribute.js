@@ -203,6 +203,14 @@ ruleTester.run('no-invalid-html-attribute', rule, {
     { code: '<a rel={{a: "noreferrer"}["b"]}></a>' },
     { code: '<Foo rel></Foo>' },
     { code: 'React.createElement("Foo", { rel: true })' },
+    {
+      code: `
+        React.createElement('a', {
+          ...rest,
+          href: to,
+        })
+      `,
+    },
   ],
   invalid: [
     {

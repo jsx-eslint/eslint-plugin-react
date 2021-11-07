@@ -22,12 +22,14 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`prop-types`], `propTypes`: add forwardRef<>, ForwardRefRenderFunction<> prop-types ([#3112] @vedadeepta)
 * [`no-typos`]: prevent a crash when using private methods (@ljharb)
 * [`destructuring-assignment`], component detection: improve component detection ([#3122] @vedadeepta)
+* [`no-invalid-html-attribute`]: avoid crash on spread props ([#3126] @ljharb)
 
 ### Changed
 * [Tests] test on the new babel eslint parser ([#3113] @ljharb)
-* [Docs] [`jsx-no-target-blank`]: adjust options description ([#3214] @gebsh)
+* [Docs] [`jsx-no-target-blank`]: adjust options description ([#3124] @gebsh)
 
-[#3214]: https://github.com/yannickcr/eslint-plugin-react/pull/3214
+[#3126]: https://github.com/yannickcr/eslint-plugin-react/issue/3126
+[#3124]: https://github.com/yannickcr/eslint-plugin-react/pull/3124
 [#3122]: https://github.com/yannickcr/eslint-plugin-react/pull/3122
 [#3113]: https://github.com/yannickcr/eslint-plugin-react/pull/3113
 [#3112]: https://github.com/yannickcr/eslint-plugin-react/pull/3112
