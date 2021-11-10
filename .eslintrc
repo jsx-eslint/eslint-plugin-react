@@ -30,9 +30,11 @@
         "prefer-object-spread": 0, // until node 8 is required
         "prefer-rest-params": 0, // until node 6 is required
         "prefer-spread": 0, // until node 6 is required
+        "function-call-argument-newline": 1, // TODO: enable
         "function-paren-newline": 0,
         "no-plusplus": 1,
         "no-param-reassign": 1,
+        "no-unreachable-loop": 1, // TODO: enable
         "no-restricted-syntax": [2, {
             "selector": "ObjectPattern",
             "message": "Object destructuring is not compatible with Node v4"
