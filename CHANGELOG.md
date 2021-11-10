@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.27.0] - 2021.11.09
+
 ### Added
 * support eslint 8.x ([#3059][] @MichaelDeBoey @ljharb)
 * [`no-unused-class-component-methods`]: Handle unused class component methods ([#2166][] @jakeleventhal @pawelnvk)
@@ -29,6 +31,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Tests] test on the new babel eslint parser ([#3113] @ljharb)
 * [Docs] [`jsx-no-target-blank`]: adjust options description ([#3124] @gebsh)
 
+[7.27.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.26.1...v7.27.0
 [#3126]: https://github.com/yannickcr/eslint-plugin-react/issue/3126
 [#3124]: https://github.com/yannickcr/eslint-plugin-react/pull/3124
 [#3122]: https://github.com/yannickcr/eslint-plugin-react/pull/3122
