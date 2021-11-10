@@ -60,7 +60,13 @@ const parsers = {
       const es = test.parserOptions && test.parserOptions.ecmaVersion;
 
       function addComment(testObject, parser) {
-        const extraComment = `\n// features: [${Array.from(features).join(',')}], parser: ${parser}, parserOptions: ${testObject.parserOptions}`;
+        const extras = [].concat(
+          `features: [${Array.from(features).join(',')}]`,
+          `parser: ${parser}`,
+          testObject.parserOptions ? `parserOptions: ${JSON.stringify(testObject.parserOptions)}` : [],
+          testObject.options ? `options: ${JSON.stringify(testObject.options)}` : []
+        );
+        const extraComment = `\n// ${extras.join(', ')}`;
         return Object.assign(
           {},
           testObject,
