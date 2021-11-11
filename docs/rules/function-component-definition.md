@@ -31,13 +31,15 @@ function getComponent() {
 
 ## Rule Options
 
-This rule takes an options object as a second parameter where the preferred function type for components can be specified. The first property of the options object is `"namedComponents"` which can be `"function-declaration"`, `"function-expression"`, or `"arrow-function"` and has `'function-declaration'` as its default. The second property is `"unnamedComponents"` that can be either `"function-expression"` or `"arrow-function"`, and has `'function-expression'` as its default.
+This rule takes an options object as a second parameter where the preferred function type for components can be specified.
+The first property of the options object is `"namedComponents"` which can be `"function-declaration"`, `"function-expression"`, `"arrow-function"`, or an array containing any of those, and has `'function-declaration'` as its default.
+The second property is `"unnamedComponents"` that can be either `"function-expression"`, `"arrow-function"`, or an array containing any of those, and has `'function-expression'` as its default.
 
 ```js
 ...
 "react/function-component-definition": [<enabled>, {
-  "namedComponents": "function-declaration" | "function-expression" | "arrow-function",
-  "unnamedComponents": "function-expression" | "arrow-function"
+  "namedComponents": "function-declaration" | "function-expression" | "arrow-function" | Array<"function-declaration" | "function-expression" | "arrow-function">,
+  "unnamedComponents": "function-expression" | "arrow-function" | Array<"function-expression" | "arrow-function">
 }]
 ...
 ```

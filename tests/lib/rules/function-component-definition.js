@@ -78,8 +78,8 @@ ruleTester.run('function-component-definition', rule, {
       options: [{ namedComponents: 'function-declaration' }],
     },
     {
-    // shouldn't trigger this rule since functions stating with a lowercase
-    // letter are not considered components
+      // shouldn't trigger this rule since functions stating with a lowercase
+      // letter are not considered components
       code: `
         const selectAvatarByUserId = (state, id) => {
           const user = selectUserById(state, id)
@@ -89,8 +89,8 @@ ruleTester.run('function-component-definition', rule, {
       options: [{ namedComponents: 'function-declaration' }],
     },
     {
-    // shouldn't trigger this rule since functions stating with a lowercase
-    // letter are not considered components
+      // shouldn't trigger this rule since functions stating with a lowercase
+      // letter are not considered components
       code: `
         function ensureValidSourceType(sourceType: string) {
           switch (sourceType) {
@@ -345,6 +345,54 @@ ruleTester.run('function-component-definition', rule, {
         };
       `,
       options: [{ unnamedComponents: 'function-expression' }],
+    },
+
+    {
+      code: 'function Hello(props) { return <div/> }',
+      options: [{ namedComponents: ['function-declaration', 'function-expression'] }],
+    },
+    {
+      code: 'var Hello = function(props) { return <div/> }',
+      options: [{ namedComponents: ['function-declaration', 'function-expression'] }],
+    },
+    {
+      code: 'var Foo = React.memo(function Foo() { return <p/> })',
+      options: [{ namedComponents: ['function-declaration', 'function-expression'] }],
+    },
+    {
+      code: 'function Hello(props: Test) { return <p/> }',
+      options: [{ namedComponents: ['function-declaration', 'function-expression'] }],
+      features: ['types'],
+    },
+    {
+      code: 'var Hello = function(props: Test) { return <p/> }',
+      options: [{ namedComponents: ['function-expression', 'function-expression'] }],
+      features: ['types'],
+    },
+    {
+      code: 'var Hello = (props: Test) => { return <p/> }',
+      options: [{ namedComponents: ['arrow-function', 'function-expression'] }],
+      features: ['types'],
+    },
+    {
+      code: `
+        function wrap(Component) {
+          return function(props) {
+            return <div><Component {...props}/></div>;
+          };
+        }
+      `,
+      options: [{ unnamedComponents: ['arrow-function', 'function-expression'] }],
+    },
+    {
+      code: `
+        function wrap(Component) {
+          return (props) => {
+            return <div><Component {...props}/></div>;
+          };
+        }
+      `,
+      options: [{ unnamedComponents: ['arrow-function', 'function-expression'] }],
     },
   ]),
 
@@ -878,6 +926,48 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ unnamedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
+    },
+    {
+      code: `
+        function Hello(props) {
+          return <div/>;
+        }
+      `,
+      output: `
+        var Hello = (props) => {
+          return <div/>;
+        }
+      `,
+      options: [{ namedComponents: ['arrow-function', 'function-expression'] }],
+      errors: [{ messageId: 'arrow-function' }],
+    },
+    {
+      code: `
+        var Hello = (props) => {
+          return <div/>;
+        };
+      `,
+      output: `
+        function Hello(props) {
+          return <div/>;
+        }
+      `,
+      options: [{ namedComponents: ['function-declaration', 'function-expression'] }],
+      errors: [{ messageId: 'function-declaration' }],
+    },
+    {
+      code: `
+        var Hello = (props) => {
+          return <div/>;
+        };
+      `,
+      output: `
+        var Hello = function(props) {
+          return <div/>;
+        }
+      `,
+      options: [{ namedComponents: ['function-expression', 'function-declaration'] }],
+      errors: [{ messageId: 'function-expression' }],
     },
   ]),
 });
