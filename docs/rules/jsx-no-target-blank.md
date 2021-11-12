@@ -37,7 +37,7 @@ This rule aims to prevent user generated link hrefs and form actions from creati
 Examples of **incorrect** code for this rule, when configured with `{ "enforceDynamicLinks": "always" }`:
 
 ```jsx
-var Hello = <a target='_blank' href="http://example.com/"></a>
+var Hello = <a target='_blank' href="https://example.com/"></a>
 var Hello = <a target='_blank' href={dynamicLink}></a>
 ```
 
@@ -45,8 +45,8 @@ Examples of **correct** code for this rule:
 
 ```jsx
 var Hello = <p target="_blank"></p>
-var Hello = <a target="_blank" rel="noreferrer" href="http://example.com"></a>
-var Hello = <a target="_blank" rel="noopener noreferrer" href="http://example.com"></a>
+var Hello = <a target="_blank" rel="noreferrer" href="https://example.com"></a>
+var Hello = <a target="_blank" rel="noopener noreferrer" href="https://example.com"></a>
 var Hello = <a target="_blank" href="relative/path/in/the/host"></a>
 var Hello = <a target="_blank" href="/absolute/path/in/the/host"></a>
 var Hello = <a></a>
@@ -68,7 +68,7 @@ Spread attributes are a handy way of passing programmatically-generated props to
 
 ```jsx
 const unsafeProps = {
-  href: "http://example.com",
+  href: "https://example.com",
   target: "_blank",
 };
 
@@ -88,13 +88,13 @@ Defaults to false. If false, this rule will ignore all spread attributes. If tru
 When option `forms` is set to `true`, the following is considered an error:
 
 ```jsx
-var Hello = <form target="_blank" action="http://example.com/"></form>;
+var Hello = <form target="_blank" action="https://example.com/"></form>;
 ```
 
 When option `links` is set to `true`, the following is considered an error:
 
 ```jsx
-var Hello = <a target='_blank' href="http://example.com/"></form>
+var Hello = <a target='_blank' href="https://example.com/"></form>
 ```
 
 ### Custom link components
@@ -104,14 +104,14 @@ This rule supports the ability to use custom components for links, such as `<Lin
 Examples of **incorrect** code for this rule:
 
 ```jsx
-var Hello = <Link target="_blank" to="http://example.com/"></Link>
+var Hello = <Link target="_blank" to="https://example.com/"></Link>
 var Hello = <Link target="_blank" to={dynamicLink}></Link>
 ```
 
 Examples of **correct** code for this rule:
 
 ```jsx
-var Hello = <Link target="_blank" rel="noopener noreferrer" to="http://example.com"></Link>
+var Hello = <Link target="_blank" rel="noopener noreferrer" to="https://example.com"></Link>
 var Hello = <Link target="_blank" to="relative/path/in/the/host"></Link>
 var Hello = <Link target="_blank" to="/absolute/path/in/the/host"></Link>
 var Hello = <Link />

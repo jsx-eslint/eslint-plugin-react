@@ -262,11 +262,11 @@ This pairs well with the `eslint:all` rule.
 }
 ```
 
-**Note**: These configurations will import `eslint-plugin-react` and enable JSX in [parser options](http://eslint.org/docs/user-guide/configuring#specifying-parser-options).
+**Note**: These configurations will import `eslint-plugin-react` and enable JSX in [parser options](https://eslint.org/docs/user-guide/configuring/language-options#specifying-parser-options).
 
 # License
 
-`eslint-plugin-react` is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+`eslint-plugin-react` is licensed under the [MIT License](https://opensource.org/licenses/mit-license.php).
 
 
 [npm-url]: https://npmjs.org/package/eslint-plugin-react

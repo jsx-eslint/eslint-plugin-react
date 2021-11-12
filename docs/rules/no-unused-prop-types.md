@@ -140,5 +140,5 @@ AComponent.propTypes = {
 ```
 
 [PropTypes]: https://reactjs.org/docs/typechecking-with-proptypes.html
-[TypeScript]: http://www.typescriptlang.org/
+[TypeScript]: https://www.typescriptlang.org/
 [Flow]: https://flow.org/

@@ -1,7 +1,7 @@
 # Change Log
 All notable changes to this project will be documented in this file.
-This project adheres to [Semantic Versioning](http://semver.org/).
-This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
+This project adheres to [Semantic Versioning](https://semver.org/).
+This change log adheres to standards from [Keep a CHANGELOG](https://keepachangelog.com).
 
 ## Unreleased
 
@@ -13,9 +13,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Changed
 * [readme] change [`jsx-runtime`] link from branch to sha ([#3160][] @tatsushitoji)
+* [Docs] HTTP => HTTPS ([#3133][] @Schweinepriester)
 
 [#3163]: https://github.com/yannickcr/eslint-plugin-react/pull/3163
 [#3160]: https://github.com/yannickcr/eslint-plugin-react/pull/3160
+[#3133]: https://github.com/yannickcr/eslint-plugin-react/pull/3133
 [#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
 
 ## [7.28.0] - 2021.12.22
@@ -2189,7 +2191,7 @@ React ([#1073][] @jomasti)
 * Add support for `PureComponent` in [`prefer-stateless-function`][] ([#781][] @tiemevanveen)
 
 ### Fixed
-* Fix [`jsx-uses-vars`][] to work better with [`prefer-const`](http://eslint.org/docs/rules/prefer-const). You'll need to upgrade to ESLint 3.4.0 to completely fix the compatibility issue ([#716][])
+* Fix [`jsx-uses-vars`][] to work better with [`prefer-const`](https://eslint.org/docs/rules/prefer-const). You'll need to upgrade to ESLint 3.4.0 to completely fix the compatibility issue ([#716][])
 * Fix [`require-render-return`][] crash ([#784][])
 * Fix related components detection in [`prop-types`][] ([#735][])
 * Fix component detection to ignore functions expression without a parent component

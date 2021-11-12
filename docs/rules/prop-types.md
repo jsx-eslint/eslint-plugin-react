@@ -176,5 +176,5 @@ For now we should detect components created with:
 * an ES6 class that inherit from `React.Component` or `Component`
 
 [PropTypes]: https://reactjs.org/docs/typechecking-with-proptypes.html
-[TypeScript]: http://www.typescriptlang.org/
+[TypeScript]: https://www.typescriptlang.org/
 [Flow]: https://flow.org/

@@ -118,5 +118,5 @@ This value is boolean. It tells if nested props should be validated as well. By 
 ```
 
 [PropTypes]: https://reactjs.org/docs/typechecking-with-proptypes.html
-[TypeScript]: http://www.typescriptlang.org/
+[TypeScript]: https://www.typescriptlang.org/
 [Flow]: https://flow.org/
