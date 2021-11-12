@@ -438,6 +438,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           componentDidUpdate() {}
           componentDidCatch() {}
           componentWillUnmount() {}
+          getChildContext() {}
           render() {
             return <SomeComponent />;
           }
@@ -467,6 +468,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           componentDidUpdate() {},
           componentDidCatch() {},
           componentWillUnmount() {},
+          getChildContext() {},
           render() {
             return <SomeComponent />;
           },
