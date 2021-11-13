@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Fixed
+* [`no-invalid-html-attribute`]: allow `link` `rel` to have `apple-touch-icon`, `mask-icon` ([#3132][] @ljharb)
+
+[#3132]: https://github.com/yannickcr/eslint-plugin-react/issue/3132
+
 ## [7.27.0] - 2021.11.09
 
 ### Added
