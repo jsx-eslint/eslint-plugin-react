@@ -4921,7 +4921,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             foo: PropTypes.string,
             bar: PropTypes.string,
           };
-        
+
           componentWillUpdate (nextProps) {
             if (nextProps.foo) {
               return true;
@@ -4994,7 +4994,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             foo: PropTypes.string,
             bar: PropTypes.string,
           };
-        
+
           shouldComponentUpdate (nextProps) {
             if (nextProps.foo) {
               return true;
@@ -5086,7 +5086,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             foo: PropTypes.string,
             bar: PropTypes.string,
           };
-        
+
           componentDidUpdate (nextProps) {
             if (nextProps.foo) {
               return true;
@@ -5319,7 +5319,7 @@ ruleTester.run('no-unused-prop-types', rule, {
     {
       // None of the props are used issue #1162
       code: `
-        import React from "react"; 
+        import React from "react";
         var Hello = React.createReactClass({
          propTypes: {
            name: React.PropTypes.string

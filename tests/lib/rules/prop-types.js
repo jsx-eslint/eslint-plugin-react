@@ -3542,6 +3542,28 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       features: ['class fields'],
+    },
+
+    // #2944
+    {
+      code: `
+        const styles = { width: 0 };
+
+        function Foo(props) {
+          const { styles: x } = props;
+          return (
+            <p>
+              {styles.width} {x._}
+            </p>
+          );
+        }
+
+        Foo.propTypes = {
+          styles: PropTypes.shape({
+            _: PropTypes.number,
+          }),
+        };
+      `,
     }
   )),
 
