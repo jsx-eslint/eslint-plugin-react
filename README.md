@@ -68,7 +68,7 @@ You should also specify settings that will be shared across all the plugin rules
       // Components used as alternatives to <form> for forms, eg. <Form endpoint={ url } />
       "CustomForm",
       {"name": "Form", "formAttribute": "endpoint"}
-    ]
+    ],
     "linkComponents": [
       // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
       "Hyperlink",
