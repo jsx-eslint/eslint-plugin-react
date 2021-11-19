@@ -5,7 +5,9 @@
 
 'use strict';
 
+const semver = require('semver');
 const RuleTester = require('eslint').RuleTester;
+const eslintPkg = require('eslint/package.json');
 const rule = require('../../../lib/rules/no-arrow-function-lifecycle');
 
 const parsers = require('../../helpers/parsers');
@@ -946,6 +948,42 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           handleEventMethods = () => {}
           componentWillUnmount() {}
           render() { return <div />; }
+        }
+      `,
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render = () => <div />
+        }
+      `,
+      features: ['class fields'],
+      errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: semver.satisfies(eslintPkg.version, '> 3') ? `
+        class Hello extends React.Component {
+          render() { return <div />; }
+        }
+      ` : `
+        class Hello extends React.Component {
+          render = () => <div />
+        }
+      `,
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render = () => /*first*/<div />/*second*/
+        }
+      `,
+      features: ['class fields'],
+      errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: semver.satisfies(eslintPkg.version, '> 3') ? `
+        class Hello extends React.Component {
+          render() { return /*first*/<div />/*second*/; }
+        }
+      ` : `
+        class Hello extends React.Component {
+          render = () => /*first*/<div />/*second*/
         }
       `,
     },
