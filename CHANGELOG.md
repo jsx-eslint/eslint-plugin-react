@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+## [7.27.1] - 2021.11.18
+
 ### Fixed
 * [`no-invalid-html-attribute`]: allow `link` `rel` to have `apple-touch-icon`, `mask-icon` ([#3132][] @ljharb)
 * [`no-unused-class-component-methods`]: add `getChildContext` lifecycle method ([#3136][] @yoyo837)
@@ -15,6 +17,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Changed
 * [readme] fix syntax typo ([#3141][] @moselhy)
 
+[7.27.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.27.0...v7.27.1
 [#3145]: https://github.com/yannickcr/eslint-plugin-react/issue/3145
 [#3144]: https://github.com/yannickcr/eslint-plugin-react/issue/3144
 [#3142]: https://github.com/yannickcr/eslint-plugin-react/pull/3142
