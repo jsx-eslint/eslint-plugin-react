@@ -10,11 +10,13 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [`no-unused-class-component-methods`]: add `getChildContext` lifecycle method ([#3136][] @yoyo837)
 * [`prop-types`]: fix false positives on renames in object destructuring ([#3142][] @golopot)
 * [`no-arrow-function-lifecycle`]: fix invalid autofix from a concise arrow method to a regular one ([#3145][] @ljharb)
+* [`display-name`]: avoid false positives on non-creatClass object expressions ([#3144] @ljharb)
 
 ### Changed
 * [readme] fix syntax typo ([#3141][] @moselhy)
 
 [#3145]: https://github.com/yannickcr/eslint-plugin-react/issue/3145
+[#3144]: https://github.com/yannickcr/eslint-plugin-react/issue/3144
 [#3142]: https://github.com/yannickcr/eslint-plugin-react/pull/3142
 [#3141]: https://github.com/yannickcr/eslint-plugin-react/pull/3141
 [#3136]: https://github.com/yannickcr/eslint-plugin-react/pull/3136

@@ -914,5 +914,32 @@ ruleTester.run('display-name', rule, {
         { message: 'Component definition is missing display name' },
       ],
     },
+    {
+      code: `
+        const processData = (options?: { value: string }) => options?.value || 'no data';
+
+        export const Component = observer(() => {
+          const data = processData({ value: 'data' });
+          return <div>{data}</div>;
+        });
+        
+        export const Component2 = observer(() => {
+          const data = processData();
+          return <div>{data}</div>;
+        });      
+      `,
+      features: ['optional chaining', 'types'],
+      settings: { componentWrapperFunctions: ['observer'] },
+      errors: [
+        {
+          message: 'Component definition is missing display name',
+          line: 4,
+        },
+        {
+          message: 'Component definition is missing display name',
+          line: 9,
+        },
+      ],
+    },
   ]),
 });
