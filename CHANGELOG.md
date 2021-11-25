@@ -5,6 +5,9 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ## Unreleased
 
+### Changed
+* [Refactor] [`no-arrow-function-lifecycle`], [`no-unused-class-component-methods`]: use report/messages convention (@ljharb)
+
 ## [7.27.1] - 2021.11.18
 
 ### Fixed
