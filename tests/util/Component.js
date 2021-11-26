@@ -76,5 +76,23 @@ describe('Components', () => {
         });
       });
     });
+
+    it('should detect React Imports', () => {
+      testComponentsDetect({
+        code: 'import React, { useCallback, useState } from \'react\'',
+      }, (_context, components) => {
+        assert.deepEqual(
+          components.getDefaultReactImports().map((specifier) => specifier.local.name),
+          ['React'],
+          'default React import identifier should be "React"'
+        );
+
+        assert.deepEqual(
+          components.getNamedReactImports().map((specifier) => specifier.local.name),
+          ['useCallback', 'useState'],
+          'named React import identifiers should be "useCallback" and "useState"'
+        );
+      });
+    });
   });
 });

@@ -8,6 +8,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Changed
 * [Refactor] [`no-arrow-function-lifecycle`], [`no-unused-class-component-methods`]: use report/messages convention (@ljharb)
 * [Tests] component detection: Add testing scaffolding ([#3149][] @duncanbeevers)
+* [New] component detection: track React imports ([#3149][] @duncanbeevers)
 
 [#3149]: https://github.com/yannickcr/eslint-plugin-react/pull/3149
 
