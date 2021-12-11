@@ -154,6 +154,7 @@ Enable the rules that you would like to use.
 | ✔ |  | [react/no-string-refs](docs/rules/no-string-refs.md) | Prevent string definitions for references and prevent referencing this.refs |
 |  |  | [react/no-this-in-sfc](docs/rules/no-this-in-sfc.md) | Report "this" being used in stateless components |
 |  |  | [react/no-typos](docs/rules/no-typos.md) | Prevent common typos |
+|  |  | [react/no-undefined-initial-state](docs/rules/no-undefined-initial-state.md) | Prevents initialising useState with undefined |
 | ✔ |  | [react/no-unescaped-entities](docs/rules/no-unescaped-entities.md) | Detect unescaped HTML entities, which might represent malformed tags |
 | ✔ | 🔧 | [react/no-unknown-property](docs/rules/no-unknown-property.md) | Prevent usage of unknown DOM property |
 |  |  | [react/no-unsafe](docs/rules/no-unsafe.md) | Prevent usage of unsafe lifecycle methods |
