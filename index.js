@@ -76,6 +76,7 @@ const allRules = {
   'no-render-return-value': require('./lib/rules/no-render-return-value'),
   'no-this-in-sfc': require('./lib/rules/no-this-in-sfc'),
   'no-typos': require('./lib/rules/no-typos'),
+  'no-undefined-initial-state': require('./lib/rules/no-undefined-initial-state'),
   'no-unescaped-entities': require('./lib/rules/no-unescaped-entities'),
   'no-unknown-property': require('./lib/rules/no-unknown-property'),
   'no-unsafe': require('./lib/rules/no-unsafe'),
