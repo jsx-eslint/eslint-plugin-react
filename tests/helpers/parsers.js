@@ -66,12 +66,52 @@ const parsers = {
           testObject.parserOptions ? `parserOptions: ${JSON.stringify(testObject.parserOptions)}` : [],
           testObject.options ? `options: ${JSON.stringify(testObject.options)}` : []
         );
+
         const extraComment = `\n// ${extras.join(', ')}`;
+
+        // Augment expected fix code output with extraComment
+        const nextCode = { code: testObject.code + extraComment };
+        const nextOutput = testObject.output && { output: testObject.output + extraComment };
+
+        // Augment expected suggestion outputs with extraComment
+        // `errors` may be a number (expected number of errors) or an array of
+        // error objects.
+        const nextErrors = testObject.errors
+          && typeof testObject.errors !== 'number'
+          && {
+            errors: testObject.errors.map(
+              (errorObject) => {
+                const nextSuggestions = errorObject.suggestions && {
+                  suggestions: errorObject.suggestions.map(
+                    (suggestion) => {
+                      const nextSuggestion = Object.assign(
+                        {},
+                        suggestion,
+                        { output: suggestion.output + extraComment }
+                      );
+
+                      return nextSuggestion;
+                    }
+                  ),
+                };
+
+                const nextErrorObject = Object.assign(
+                  {},
+                  errorObject,
+                  nextSuggestions
+                );
+
+                return nextErrorObject;
+              }
+            ),
+          };
+
         return Object.assign(
           {},
           testObject,
-          { code: testObject.code + extraComment },
-          testObject.output && { output: testObject.output + extraComment }
+          nextCode,
+          nextOutput,
+          nextErrors
         );
       }
 
