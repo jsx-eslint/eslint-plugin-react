@@ -82,26 +82,12 @@ const parsers = {
             errors: testObject.errors.map(
               (errorObject) => {
                 const nextSuggestions = errorObject.suggestions && {
-                  suggestions: errorObject.suggestions.map(
-                    (suggestion) => {
-                      const nextSuggestion = Object.assign(
-                        {},
-                        suggestion,
-                        { output: suggestion.output + extraComment }
-                      );
-
-                      return nextSuggestion;
-                    }
-                  ),
+                  suggestions: errorObject.suggestions.map((suggestion) => Object.assign({}, suggestion, {
+                    output: suggestion.output + extraComment,
+                  })),
                 };
 
-                const nextErrorObject = Object.assign(
-                  {},
-                  errorObject,
-                  nextSuggestions
-                );
-
-                return nextErrorObject;
+                return Object.assign({}, errorObject, nextSuggestions);
               }
             ),
           };
