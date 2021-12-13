@@ -7,6 +7,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 
 ### Added
 * [`function-component-definition`]: support namedComponents option being an array ([#3129][] @petersendidit)
+* component detection: add `util.isReactHookCall` ([#3156][] @duncanbeevers)
 
 ### Fixed
 * [`jsx-indent-props`]: Reset `line.isUsingOperator` correctly after ternary ([#3146][] @tobiaswaltl)
@@ -16,6 +17,7 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 * [Tests] component detection: Add testing scaffolding ([#3149][] @duncanbeevers)
 * [New] component detection: track React imports ([#3149][] @duncanbeevers)
 
+[#3156]: https://github.com/yannickcr/eslint-plugin-react/pull/3156
 [#3149]: https://github.com/yannickcr/eslint-plugin-react/pull/3149
 [#3146]: https://github.com/yannickcr/eslint-plugin-react/pull/3146
 [#3129]: https://github.com/yannickcr/eslint-plugin-react/pull/3129
