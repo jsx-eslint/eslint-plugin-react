@@ -11,7 +11,11 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Fixed
 * [`prop-types`], `propTypes`: add support for exported type inference ([#3163][] @vedadeepta)
 
+### Changed
+* [readme] change [`jsx-runtime`] link from branch to sha ([#3160][] @tatsushitoji)
+
 [#3163]: https://github.com/yannickcr/eslint-plugin-react/pull/3163
+[#3160]: https://github.com/yannickcr/eslint-plugin-react/pull/3160
 [#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
 
 ## [7.28.0] - 2021.12.22
