@@ -8,6 +8,10 @@ This change log adheres to standards from [Keep a CHANGELOG](http://keepachangel
 ### Added
 * add [`hook-use-state`] rule to enforce symmetric useState hook variable names ([#2921][] @duncanbeevers)
 
+### Fixed
+* [`prop-types`], `propTypes`: add support for exported type inference ([#3163][] @vedadeepta)
+
+[#3163]: https://github.com/yannickcr/eslint-plugin-react/pull/3163
 [#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
 
 ## [7.28.0] - 2021.12.22

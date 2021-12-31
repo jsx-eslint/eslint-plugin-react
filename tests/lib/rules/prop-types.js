@@ -3251,6 +3251,19 @@ ruleTester.run('prop-types', rule, {
     {
       code: `
         import React from 'react';
+
+        export interface PersonProps {
+            username: string;
+        }
+        const Person: React.FC<PersonProps> = (props): React.ReactElement => (
+            <div>{props.username}</div>
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from 'react';
         const Person: React.FunctionComponent<{ username: string }> = (props): React.ReactElement => (
             <div>{props.username}</div>
         );
@@ -3413,9 +3426,36 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
+          import React from 'react'
+
+          export interface Props {
+          age: number
+          }
+          const Hello: React.VoidFunctionComponent<Props> = function Hello(props) {
+          const { age } = props;
+
+          return <div>Hello {age}</div>;
+          }
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
         import React, { ForwardRefRenderFunction  as X } from 'react'
 
         type IfooProps = { e: string };
+          const Foo: X<HTMLDivElement, IfooProps> = function Foo (props, ref) {
+          const { e } = props;
+          return  <div ref={ref}>hello</div>;
+        };
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { ForwardRefRenderFunction  as X } from 'react'
+
+        export type IfooProps = { e: string };
           const Foo: X<HTMLDivElement, IfooProps> = function Foo (props, ref) {
           const { e } = props;
           return  <div ref={ref}>hello</div>;
@@ -3564,6 +3604,72 @@ ruleTester.run('prop-types', rule, {
           }),
         };
       `,
+    },
+    {
+      code: `
+        import React, { forwardRef } from "react";
+  
+        export type Props = { children: React.ReactNode; type: "submit" | "button" };
+
+        export const FancyButton = forwardRef<HTMLButtonElement, Props>((props, ref) => (
+          <button ref={ref} className="MyClassName" type={props.type}>
+            {props.children}
+          </button>
+        ));
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { forwardRef } from "react";
+
+        export type X = { num: number };
+        export type Props = { children: React.ReactNode; type: "submit" | "button" } & X;
+
+        export const FancyButton = forwardRef<HTMLButtonElement, Props>((props, ref) => (
+          <button ref={ref} className="MyClassName" type={props.type} num={props.num}>
+            {props.children}
+          </button>
+        ));
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { forwardRef } from "react";
+
+        export interface IProps {
+          children: React.ReactNode;
+          type: "submit" | "button"
+        }
+
+        export const FancyButton = forwardRef<HTMLButtonElement, IProps>((props, ref) => (
+          <button ref={ref} className="MyClassName" type={props.type}>
+            {props.children}
+          </button>
+        ));
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { forwardRef } from "react";
+
+        export interface X {
+          num: number
+        }
+        export interface IProps extends X {
+          children: React.ReactNode;
+          type: "submit" | "button"
+        }
+
+        export const FancyButton = forwardRef<HTMLButtonElement, IProps>((props, ref) => (
+          <button ref={ref} className="MyClassName" type={props.type} num={props.num}>
+            {props.children}
+          </button>
+        ));
+      `,
+      features: ['ts', 'no-babel'],
     }
   )),
 
@@ -7333,6 +7439,140 @@ ruleTester.run('prop-types', rule, {
         {
           messageId: 'missingPropType',
           data: { name: 'l' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { forwardRef } from "react";
+  
+        export type Props = { children: React.ReactNode; type: "submit" | "button" };
+
+        export const FancyButton = forwardRef<HTMLButtonElement, Props>((props, ref) => (
+          <button ref={ref} className="MyClassName" type={props.nonExistent}>
+            {props.children}
+          </button>
+        ));
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'nonExistent' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { forwardRef } from "react";
+  
+        export interface IProps { children: React.ReactNode; type: "submit" | "button" };
+
+        export const FancyButton = forwardRef<HTMLButtonElement, IProps>((props, ref) => (
+          <button ref={ref} className="MyClassName" type={props.nonExistent}>
+            {props.children}
+          </button>
+        ));
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'nonExistent' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from 'react';
+
+        export interface PersonProps {
+            username: string;
+        }
+        const Person: React.FC<PersonProps> = (props): React.ReactElement => (
+            <div>{props.nonExistent}</div>
+        );
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'nonExistent' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { FC } from 'react';
+
+        export interface PersonProps {
+            username: string;
+        }
+        const Person: FC<PersonProps> = (props): React.ReactElement => (
+            <div>{props.nonExistent}</div>
+        );
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'nonExistent' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { FC as X } from 'react';
+
+        export interface PersonProps {
+            username: string;
+        }
+        const Person: X<PersonProps> = (props): React.ReactElement => (
+            <div>{props.nonExistent}</div>
+        );
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'nonExistent' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { ForwardRefRenderFunction  as X } from 'react'
+
+        export type IfooProps = { e: string };
+        const Foo: X<HTMLDivElement, IfooProps> = function Foo (props, ref) {
+          const { nonExistent } = props;
+          return  <div ref={ref}>hello</div>;
+        };
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'nonExistent' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from 'react';
+
+        export interface PersonProps {
+            username: string;
+        }
+        const Person: React.VoidFunctionComponent<PersonProps> = (props): React.ReactElement => (
+            <div>{props.nonExistent}</div>
+        );
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'nonExistent' },
         },
       ],
       features: ['ts', 'no-babel'],
