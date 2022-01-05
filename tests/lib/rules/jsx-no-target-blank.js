@@ -248,8 +248,14 @@ ruleTester.run('jsx-no-target-blank', rule, {
       errors: defaultErrors,
     },
     {
+      code: '<a href="https://example.com/20" target="_blank" rel></a>',
+      output: '<a href="https://example.com/20" target="_blank" rel="noopener"></a>',
+      options: [{ allowReferrer: true }],
+      errors: [{ messageId: 'noTargetBlankWithoutNoopener' }],
+    },
+    {
       code: '<a href="https://example.com/20" target="_blank"></a>',
-      output: '<a href="https://example.com/20" target="_blank" rel="noreferrer"></a>',
+      output: '<a href="https://example.com/20" target="_blank" rel="noopener"></a>',
       options: [{ allowReferrer: true }],
       errors: [{ messageId: 'noTargetBlankWithoutNoopener' }],
     },

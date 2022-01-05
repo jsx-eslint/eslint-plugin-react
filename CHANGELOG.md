@@ -7,6 +7,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Added
 * add [`hook-use-state`] rule to enforce symmetric useState hook variable names ([#2921][] @duncanbeevers)
+* [`jsx-no-target-blank`]: Improve fixer with option `allowReferrer` ([#3167][] @apepper)
 
 ### Fixed
 * [`prop-types`], `propTypes`: add support for exported type inference ([#3163][] @vedadeepta)
@@ -17,6 +18,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] HTTP => HTTPS ([#3133][] @Schweinepriester)
 
 [#3174]: https://github.com/yannickcr/eslint-plugin-react/pull/3174
+[#3167]: https://github.com/yannickcr/eslint-plugin-react/pull/3167
 [#3163]: https://github.com/yannickcr/eslint-plugin-react/pull/3163
 [#3160]: https://github.com/yannickcr/eslint-plugin-react/pull/3160
 [#3133]: https://github.com/yannickcr/eslint-plugin-react/pull/3133
