@@ -123,6 +123,8 @@ This rule supports the ability to use custom components for forms. To enable thi
 
 ## When To Override It
 
+Modern browsers (Chrome ≥ 88, Edge ≥ 88, Firefox ≥ 79 and Safari ≥ 12.2) automatically imply `rel="noopener"`. Therefore this rule is no longer needed, if legacy browsers are not supported. See https://web.dev/external-anchors-use-rel-noopener/ and https://caniuse.com/mdn-html_elements_a_implicit_noopener for more details.
+
 For links to a trusted host (e.g. internal links to your own site, or links to a another host you control, where you can be certain this security vulnerability does not exist), you may want to keep the HTTP Referer header for analytics purposes.
 
 If you do not support Internet Explorer (any version), Chrome < 49, Opera < 36, Firefox < 52, desktop Safari < 10.1 or iOS Safari < 10.3, you may set `allowReferrer` to `true`, keep the HTTP Referer header and only add `rel="noopener"` to your links.
