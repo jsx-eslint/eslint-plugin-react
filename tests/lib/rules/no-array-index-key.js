@@ -49,6 +49,12 @@ ruleTester.run('no-array-index-key', rule, {
       code: 'foo.map((baz, i) => <Foo key={baz.id} />)',
     },
     {
+      code: 'foo.map((baz, i) => <Foo key={i + baz.id} />)',
+    },
+    {
+      code: 'foo.map((baz, i) => <Foo key={`${baz.id}${i}`} />)',
+    },
+    {
       code: 'foo.map((baz, i) => <Foo key={\'foo\' + baz.id} />)',
     },
     {
