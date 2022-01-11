@@ -130,6 +130,9 @@ ruleTester.run('no-invalid-html-attribute', rule, {
     { code: '<link rel="icon"></link>' },
     { code: 'React.createElement("link", { rel: "icon" })' },
     { code: 'React.createElement("link", { rel: ["icon"] })' },
+    { code: '<link rel="shortcut icon"></link>' },
+    { code: 'React.createElement("link", { rel: "shortcut icon" })' },
+    { code: 'React.createElement("link", { rel: ["shortcut icon"] })' },
     { code: '<link rel="license"></link>' },
     { code: 'React.createElement("link", { rel: "license" })' },
     { code: 'React.createElement("link", { rel: ["license"] })' },
@@ -451,6 +454,26 @@ ruleTester.run('no-invalid-html-attribute', rule, {
       ],
     },
     {
+      code: '<a rel="noreferrer        noopener"></a>',
+      output: '<a rel="noreferrer noopener"></a>',
+      errors: [
+        {
+          messageId: 'spaceDelimited',
+          data: { attributeName: 'rel' },
+        },
+      ],
+    },
+    {
+      code: '<a rel="noreferrer\xa0\xa0noopener"></a>',
+      output: '<a rel="noreferrer noopener"></a>',
+      errors: [
+        {
+          messageId: 'spaceDelimited',
+          data: { attributeName: 'rel' },
+        },
+      ],
+    },
+    {
       code: '<a rel={"noreferrer noopener foobar"}></a>',
       output: '<a rel={"noreferrer noopener "}></a>',
       errors: [
@@ -611,6 +634,73 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'a',
           },
+        },
+      ],
+    },
+    {
+      code: '<link rel="shortcut"></link>',
+      errors: [
+        {
+          messageId: 'notAlone',
+          data: {
+            reportingValue: 'shortcut',
+            missingValue: 'icon',
+          },
+        },
+      ],
+    },
+    {
+      code: '<link rel="shortcut foo"></link>',
+      output: '<link rel="shortcut "></link>',
+      errors: [
+        {
+          messageId: 'neverValid',
+          data: {
+            reportingValue: 'foo',
+            attributeName: 'rel',
+          },
+        },
+        {
+          messageId: 'notPaired',
+          data: {
+            reportingValue: 'shortcut',
+            secondValue: 'foo',
+            missingValue: 'icon',
+          },
+        },
+      ],
+    },
+    {
+      code: '<link rel="shortcut  icon"></link>',
+      output: '<link rel="shortcut icon"></link>',
+      errors: [
+        {
+          messageId: 'spaceDelimited',
+          data: { attributeName: 'rel' },
+        },
+      ],
+    },
+    {
+      code: '<link rel="shortcut  foo"></link>',
+      output: '<link rel="shortcut foo"></link>',
+      errors: [
+        {
+          messageId: 'neverValid',
+          data: {
+            reportingValue: 'foo',
+            attributeName: 'rel',
+          },
+        },
+        {
+          messageId: 'notAlone',
+          data: {
+            reportingValue: 'shortcut',
+            missingValue: 'icon',
+          },
+        },
+        {
+          messageId: 'spaceDelimited',
+          data: { attributeName: 'rel' },
         },
       ],
     },

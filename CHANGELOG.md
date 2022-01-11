@@ -10,11 +10,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Fixed
 * [`prop-types`], `propTypes`: add support for exported type inference ([#3163][] @vedadeepta)
+* [`no-invalid-html-attribute`]: allow 'shortcut icon' on `link` ([#3174][] @Primajin)
 
 ### Changed
 * [readme] change [`jsx-runtime`] link from branch to sha ([#3160][] @tatsushitoji)
 * [Docs] HTTP => HTTPS ([#3133][] @Schweinepriester)
 
+[#3174]: https://github.com/yannickcr/eslint-plugin-react/pull/3174
 [#3163]: https://github.com/yannickcr/eslint-plugin-react/pull/3163
 [#3160]: https://github.com/yannickcr/eslint-plugin-react/pull/3160
 [#3133]: https://github.com/yannickcr/eslint-plugin-react/pull/3133
