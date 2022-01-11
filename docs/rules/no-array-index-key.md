@@ -67,6 +67,14 @@ things.map((thing) => (
   <Hello key={thing.id} />
 ));
 
+things.map((thing, i) => (
+  <Hello key={thing.id + i} />
+));
+
+things.map((thing, i) => (
+  <Hello key={`${thing.id}${i}`} />
+));
+
 things.map((thing) => (
   React.cloneElement(thing, { key: thing.id })
 ));
