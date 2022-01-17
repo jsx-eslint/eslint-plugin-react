@@ -240,6 +240,10 @@ ruleTester.run('no-invalid-html-attribute', rule, {
       errors: [
         {
           messageId: 'neverValid',
+          data: {
+            reportingValue: 'alternatex',
+            attributeName: 'rel',
+          },
         },
       ],
     },
@@ -249,6 +253,10 @@ ruleTester.run('no-invalid-html-attribute', rule, {
       errors: [
         {
           messageId: 'neverValid',
+          data: {
+            reportingValue: 'alternatex',
+            attributeName: 'rel',
+          },
         },
       ],
     },
@@ -258,6 +266,10 @@ ruleTester.run('no-invalid-html-attribute', rule, {
       errors: [
         {
           messageId: 'neverValid',
+          data: {
+            reportingValue: 'alternatex',
+            attributeName: 'rel',
+          },
         },
       ],
     },
@@ -267,6 +279,10 @@ ruleTester.run('no-invalid-html-attribute', rule, {
       errors: [
         {
           messageId: 'neverValid',
+          data: {
+            reportingValue: 'alternatex',
+            attributeName: 'rel',
+          },
         },
       ],
     },
@@ -275,6 +291,10 @@ ruleTester.run('no-invalid-html-attribute', rule, {
       errors: [
         {
           messageId: 'neverValid',
+          data: {
+            reportingValue: 'alternatex alternate',
+            attributeName: 'rel',
+          },
         },
       ],
     },
@@ -283,6 +303,10 @@ ruleTester.run('no-invalid-html-attribute', rule, {
       errors: [
         {
           messageId: 'neverValid',
+          data: {
+            reportingValue: 'alternatex alternate',
+            attributeName: 'rel',
+          },
         },
       ],
     },
@@ -292,6 +316,10 @@ ruleTester.run('no-invalid-html-attribute', rule, {
       errors: [
         {
           messageId: 'neverValid',
+          data: {
+            reportingValue: 'alternatex',
+            attributeName: 'rel',
+          },
         },
       ],
     },
@@ -300,6 +328,10 @@ ruleTester.run('no-invalid-html-attribute', rule, {
       errors: [
         {
           messageId: 'neverValid',
+          data: {
+            reportingValue: 'alternate alternatex',
+            attributeName: 'rel',
+          },
         },
       ],
     },
@@ -308,6 +340,10 @@ ruleTester.run('no-invalid-html-attribute', rule, {
       errors: [
         {
           messageId: 'neverValid',
+          data: {
+            reportingValue: 'alternate alternatex',
+            attributeName: 'rel',
+          },
         },
       ],
     },
