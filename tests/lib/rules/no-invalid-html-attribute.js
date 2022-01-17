@@ -232,6 +232,83 @@ ruleTester.run('no-invalid-html-attribute', rule, {
   ],
   invalid: [
     {
+      code: '<a rel="alternatex"></a>',
+      output: '<a rel=""></a>',
+      errors: [
+        {
+          messageId: 'neverValid',
+        },
+      ],
+    },
+    {
+      code: 'React.createElement("a", { rel: "alternatex" })',
+      output: 'React.createElement("a", { rel: "alternatex" })',
+      errors: [
+        {
+          messageId: 'neverValid',
+        },
+      ],
+    },
+    {
+      code: 'React.createElement("a", { rel: ["alternatex"] })',
+      output: 'React.createElement("a", { rel: ["alternatex"] })',
+      errors: [
+        {
+          messageId: 'neverValid',
+        },
+      ],
+    },
+    {
+      code: '<a rel="alternatex alternate"></a>',
+      output: '<a rel=" alternate"></a>',
+      errors: [
+        {
+          messageId: 'neverValid',
+        },
+      ],
+    },
+    {
+      code: 'React.createElement("a", { rel: "alternatex alternate" })',
+      errors: [
+        {
+          messageId: 'neverValid',
+        },
+      ],
+    },
+    {
+      code: 'React.createElement("a", { rel: ["alternatex alternate"] })',
+      errors: [
+        {
+          messageId: 'neverValid',
+        },
+      ],
+    },
+    {
+      code: '<a rel="alternate alternatex"></a>',
+      output: '<a rel="alternate "></a>',
+      errors: [
+        {
+          messageId: 'neverValid',
+        },
+      ],
+    },
+    {
+      code: 'React.createElement("a", { rel: "alternate alternatex" })',
+      errors: [
+        {
+          messageId: 'neverValid',
+        },
+      ],
+    },
+    {
+      code: 'React.createElement("a", { rel: ["alternate alternatex"] })',
+      errors: [
+        {
+          messageId: 'neverValid',
+        },
+      ],
+    },
+    {
       code: '<html rel></html>',
       output: '<html ></html>',
       errors: [
