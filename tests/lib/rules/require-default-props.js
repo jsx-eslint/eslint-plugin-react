@@ -29,7 +29,7 @@ const ruleTester = new RuleTester({ parserOptions });
 // ------------------------------------------------------------------------------
 
 ruleTester.run('require-default-props', rule, {
-  valid: [].concat(
+  valid: parsers.all([
     // stateless components as function declarations
     {
       code: `
@@ -198,20 +198,6 @@ ruleTester.run('require-default-props', rule, {
         };
       `,
       options: [{ ignoreFunctionalComponents: true }],
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-        export function MyStatelessComponent({ foo, bar }) {
-          return <div>{foo}{bar}</div>;
-        }
-        MyStatelessComponent.propTypes = {
-          foo: PropTypes.string,
-          bar: PropTypes.string.isRequired
-        };
-      `,
-      options: [{ ignoreFunctionalComponents: true }],
-      parser: parsers.TYPESCRIPT_ESLINT,
     },
     {
       code: `
@@ -224,20 +210,6 @@ ruleTester.run('require-default-props', rule, {
         };
       `,
       options: [{ ignoreFunctionalComponents: true }],
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-        export default function MyStatelessComponent({ foo, bar }) {
-          return <div>{foo}{bar}</div>;
-        }
-        MyStatelessComponent.propTypes = {
-          foo: PropTypes.string,
-          bar: PropTypes.string.isRequired
-        };
-      `,
-      options: [{ ignoreFunctionalComponents: true }],
-      parser: parsers.TYPESCRIPT_ESLINT,
     },
 
     // stateless components as function expressions
@@ -274,24 +246,6 @@ ruleTester.run('require-default-props', rule, {
         };
       `,
       options: [{ ignoreFunctionalComponents: true }],
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-        import PropTypes from 'prop-types';
-        import React from 'react';
-
-        export const MyComponent = function({ foo, bar }) {
-          return <div>{foo}{bar}</div>;
-        };
-
-        MyComponent.propTypes = {
-          foo: PropTypes.string,
-          bar: PropTypes.string.isRequired
-        };
-      `,
-      options: [{ ignoreFunctionalComponents: true }],
-      parser: parsers.TYPESCRIPT_ESLINT,
     },
 
     // stateless components as arrow function expressions
@@ -330,26 +284,6 @@ ruleTester.run('require-default-props', rule, {
         export default MyComponent;
       `,
       options: [{ ignoreFunctionalComponents: true }],
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-        import PropTypes from 'prop-types';
-        import React from 'react';
-
-        export const MyComponent = ({ foo, bar }) => {
-          return <div>{foo}{bar}</div>;
-        };
-
-        MyComponent.propTypes = {
-          foo: PropTypes.string,
-          bar: PropTypes.string.isRequired
-        };
-
-        export default MyComponent;
-      `,
-      options: [{ ignoreFunctionalComponents: true }],
-      parser: parsers.TYPESCRIPT_ESLINT,
     },
 
     // createReactClass components
@@ -724,26 +658,6 @@ ruleTester.run('require-default-props', rule, {
         };
       `,
     },
-    {
-      code: `
-        class Greeting extends React.Component {
-          render() {
-            return (
-              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
-            );
-          }
-        }
-        Greeting.propTypes = {
-          foo: PropTypes.string,
-          bar: PropTypes.string.isRequired
-        };
-        Greeting.defaultProps = {
-          ...defaults,
-          bar: "bar"
-        };
-      `,
-      parser: parsers.BABEL_ESLINT,
-    },
 
     // with Flow annotations
     {
@@ -758,7 +672,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -776,7 +690,7 @@ ruleTester.run('require-default-props', rule, {
           bar: "bar"
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -793,7 +707,7 @@ ruleTester.run('require-default-props', rule, {
           bar: "bar"
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -806,7 +720,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -815,7 +729,7 @@ ruleTester.run('require-default-props', rule, {
         }
         Hello.defaultProps = { foo: "foo" };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -823,7 +737,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {foo}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -832,7 +746,7 @@ ruleTester.run('require-default-props', rule, {
         };
         Hello.defaultProps = { foo: "foo" };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -840,7 +754,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {foo}</div>;
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -849,7 +763,7 @@ ruleTester.run('require-default-props', rule, {
         };
         Hello.defaultProps = { foo: "foo" };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -857,7 +771,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {foo}</div>;
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -877,7 +791,7 @@ ruleTester.run('require-default-props', rule, {
           baz: "baz"
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -889,7 +803,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -898,7 +812,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {foo}</div>;
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -908,7 +822,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {props.name.firstname}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     // don't error when variable is not in scope
     {
@@ -919,7 +833,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {props.name.firstname}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     // make sure error is not thrown with multiple assignments
     {
@@ -931,7 +845,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {props.name.firstname}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['types'],
     },
     // make sure defaultProps are correctly detected with quoted properties
     {
@@ -946,7 +860,6 @@ ruleTester.run('require-default-props', rule, {
           "bar": "bar"
         };
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -959,7 +872,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [{ forbidDefaultForRequired: true }],
     },
     // test support for React PropTypes as Component's class generic
@@ -978,7 +891,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       options: [{ forbidDefaultForRequired: true }],
     },
     {
@@ -996,7 +909,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       options: [{ forbidDefaultForRequired: true }],
     },
     {
@@ -1017,7 +930,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       options: [{ forbidDefaultForRequired: true }],
     },
     {
@@ -1036,7 +949,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       options: [{ forbidDefaultForRequired: true }],
     },
     {
@@ -1051,45 +964,27 @@ ruleTester.run('require-default-props', rule, {
           name: 'foo'
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
     },
-    parsers.TS([
-      {
-        code: `
-          import React from "react";
+    {
+      code: `
+        import React from "react";
 
-          interface Props {
-            name: string;
-          }
+        interface Props {
+          name: string;
+        }
 
-          const MyComponent: React.FC<Props> = ({ name }) => {
-            return <div>{name}</div>;
-          };
+        const MyComponent: React.FC<Props> = ({ name }) => {
+          return <div>{name}</div>;
+        };
 
-          export default MyComponent;
-        `,
-        parser: parsers.TYPESCRIPT_ESLINT,
-      },
-      {
-        code: `
-          import React from "react";
+        export default MyComponent;
+      `,
+      features: ['ts'],
+    },
+  ]),
 
-          interface Props {
-            name: string;
-          }
-
-          const MyComponent: React.FC<Props> = ({ name }) => {
-            return <div>{name}</div>;
-          };
-
-          export default MyComponent;
-        `,
-        parser: parsers['@TYPESCRIPT_ESLINT'],
-      },
-    ])
-  ),
-
-  invalid: [
+  invalid: parsers.all([
     // stateless components
     {
       code: `
@@ -1660,7 +1555,7 @@ ruleTester.run('require-default-props', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -1684,7 +1579,7 @@ ruleTester.run('require-default-props', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [{ ignoreFunctionalComponents: true }],
       errors: [
         {
@@ -1712,7 +1607,7 @@ ruleTester.run('require-default-props', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -1737,7 +1632,7 @@ ruleTester.run('require-default-props', rule, {
           static propTypes = props;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -1766,7 +1661,7 @@ ruleTester.run('require-default-props', rule, {
           static defaultProps = defaults;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -1857,7 +1752,7 @@ ruleTester.run('require-default-props', rule, {
           foo: "foo"
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -1880,7 +1775,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -1903,7 +1798,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -1925,7 +1820,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -1947,7 +1842,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -1975,7 +1870,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2001,7 +1896,7 @@ ruleTester.run('require-default-props', rule, {
           foo: "foo"
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2028,7 +1923,7 @@ ruleTester.run('require-default-props', rule, {
           foo: "foo"
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2054,7 +1949,7 @@ ruleTester.run('require-default-props', rule, {
           foo: "foo"
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2070,7 +1965,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {props.foo}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2086,7 +1981,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {foo}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2103,7 +1998,7 @@ ruleTester.run('require-default-props', rule, {
         }
         Hello.defaultProps = { foo: "foo" };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2119,7 +2014,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {props.foo}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2144,7 +2039,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {props.foo}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2160,7 +2055,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {props.foo}</div>;
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2177,7 +2072,7 @@ ruleTester.run('require-default-props', rule, {
         };
         Hello.defaultProps = { foo: "foo" };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2193,7 +2088,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {props.foo}</div>;
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2210,7 +2105,7 @@ ruleTester.run('require-default-props', rule, {
         };
         Hello.defaultProps = { foo: "foo" };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2231,7 +2126,7 @@ ruleTester.run('require-default-props', rule, {
         }
         Hello.defaultProps = { foo: "foo" };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2249,7 +2144,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {props.foo}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2279,7 +2174,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {props.foo}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2312,7 +2207,7 @@ ruleTester.run('require-default-props', rule, {
           bar: "bar"
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2332,7 +2227,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {props.foo}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2358,7 +2253,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {props.foo}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2379,7 +2274,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2407,7 +2302,6 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2428,7 +2322,6 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2512,7 +2405,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       options: [{ forbidDefaultForRequired: true }],
       errors: [
         {
@@ -2560,7 +2453,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2580,7 +2473,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2603,7 +2496,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2623,7 +2516,7 @@ ruleTester.run('require-default-props', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2644,7 +2537,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>Hello {props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [
         {
           messageId: 'shouldHaveDefault',
@@ -2696,5 +2589,5 @@ ruleTester.run('require-default-props', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

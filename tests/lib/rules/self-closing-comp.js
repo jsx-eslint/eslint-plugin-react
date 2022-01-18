@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/self-closing-comp');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('self-closing-comp', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: 'var HelloJohn = <Hello name="John" />;',
     },
@@ -173,9 +175,9 @@ ruleTester.run('self-closing-comp', rule, {
       `,
       options: [{ html: true }],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: 'var contentContainer = <div className="content"></div>;',
       output: 'var contentContainer = <div className="content" />;',
@@ -243,5 +245,5 @@ ruleTester.run('self-closing-comp', rule, {
       options: [{ html: true }],
       errors: [{ messageId: 'notSelfClosing' }],
     },
-  ],
+  ]),
 });

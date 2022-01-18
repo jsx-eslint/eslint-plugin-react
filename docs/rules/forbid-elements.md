@@ -53,6 +53,6 @@ React.createElement(Namespaced.Element);
 React.createElement('div', {}, React.createElement('button', {}, React.createElement('input')));
 ```
 
-## When not to use
+## When Not To Use It
 
 If you don't want to forbid any elements.

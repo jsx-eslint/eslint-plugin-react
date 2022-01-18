@@ -11,6 +11,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/forbid-dom-props');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -25,7 +27,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('forbid-dom-props', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         var First = createReactClass({
@@ -83,6 +85,7 @@ ruleTester.run('forbid-dom-props', rule, {
         );
       `,
       options: [{ forbid: ['id'] }],
+      features: ['jsx namespace'],
     },
     {
       code: `
@@ -92,9 +95,9 @@ ruleTester.run('forbid-dom-props', rule, {
       `,
       options: [{ forbid: ['id'] }],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var First = createReactClass({
@@ -234,5 +237,5 @@ ruleTester.run('forbid-dom-props', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

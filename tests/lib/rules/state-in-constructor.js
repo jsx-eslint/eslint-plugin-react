@@ -15,7 +15,6 @@ const rule = require('../../../lib/rules/state-in-constructor');
 const parsers = require('../../helpers/parsers');
 
 const ruleTesterConfig = {
-  parser: parsers.BABEL_ESLINT,
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
@@ -31,7 +30,7 @@ const ruleTesterConfig = {
 
 const ruleTester = new RuleTester(ruleTesterConfig);
 ruleTester.run('state-in-constructor', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         class Foo extends React.Component {
@@ -63,6 +62,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
+      features: ['class fields'],
     },
     {
       code: `
@@ -76,6 +76,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
+      features: ['class fields'],
       options: ['always'],
     },
     {
@@ -91,6 +92,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
+      features: ['class fields'],
     },
     {
       code: `
@@ -128,6 +130,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
+      features: ['class fields'],
     },
     {
       code: `
@@ -138,6 +141,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
+      features: ['class fields'],
       options: ['never'],
     },
     {
@@ -175,6 +179,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
+      features: ['class fields'],
       options: ['never'],
     },
     {
@@ -187,6 +192,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
+      features: ['class fields'],
       options: ['never'],
     },
     {
@@ -202,6 +208,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
+      features: ['class fields'],
       options: ['never'],
     },
     {
@@ -246,9 +253,9 @@ ruleTester.run('state-in-constructor', rule, {
       `,
       options: ['never'],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         class Foo extends React.Component {
@@ -277,6 +284,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
+      features: ['class fields'],
       options: ['never'],
       errors: [{ messageId: 'stateInitClassProp' }],
     },
@@ -289,6 +297,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
+      features: ['class fields'],
       errors: [{ messageId: 'stateInitConstructor' }],
     },
     {
@@ -301,6 +310,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
+      features: ['class fields'],
       errors: [{ messageId: 'stateInitConstructor' }],
     },
     {
@@ -316,6 +326,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
+      features: ['class fields'],
       errors: [{ messageId: 'stateInitConstructor' }],
     },
     {
@@ -331,6 +342,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
+      features: ['class fields'],
       errors: [{ messageId: 'stateInitConstructor' }],
     },
     {
@@ -346,6 +358,7 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
+      features: ['class fields'],
       options: ['never'],
       errors: [{ messageId: 'stateInitClassProp' }],
     },
@@ -363,8 +376,9 @@ ruleTester.run('state-in-constructor', rule, {
           }
         }
       `,
+      features: ['class fields'],
       options: ['never'],
       errors: [{ messageId: 'stateInitClassProp' }],
     },
-  ],
+  ]),
 });

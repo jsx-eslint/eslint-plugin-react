@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-namespace');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-namespace', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<testcomponent />',
     },
@@ -108,72 +110,88 @@ ruleTester.run('no-namespace', rule, {
     {
       code: 'React.createElement({})',
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: '<ns:testcomponent />',
       errors: [{ message: 'React component ns:testcomponent must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
     {
       code: 'React.createElement("ns:testcomponent")',
       errors: [{ message: 'React component ns:testcomponent must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
     {
       code: '<ns:testComponent />',
       errors: [{ message: 'React component ns:testComponent must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
     {
       code: 'React.createElement("ns:testComponent")',
       errors: [{ message: 'React component ns:testComponent must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
     {
       code: '<ns:test_component />',
       errors: [{ message: 'React component ns:test_component must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
     {
       code: 'React.createElement("ns:test_component")',
       errors: [{ message: 'React component ns:test_component must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
     {
       code: '<ns:TestComponent />',
       errors: [{ message: 'React component ns:TestComponent must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
     {
       code: 'React.createElement("ns:TestComponent")',
       errors: [{ message: 'React component ns:TestComponent must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
     {
       code: '<Ns:testcomponent />',
       errors: [{ message: 'React component Ns:testcomponent must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
     {
       code: 'React.createElement("Ns:testcomponent")',
       errors: [{ message: 'React component Ns:testcomponent must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
     {
       code: '<Ns:testComponent />',
       errors: [{ message: 'React component Ns:testComponent must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
     {
       code: 'React.createElement("Ns:testComponent")',
       errors: [{ message: 'React component Ns:testComponent must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
     {
       code: '<Ns:test_component />',
       errors: [{ message: 'React component Ns:test_component must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
     {
       code: 'React.createElement("Ns:test_component")',
       errors: [{ message: 'React component Ns:test_component must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
     {
       code: '<Ns:TestComponent />',
       errors: [{ message: 'React component Ns:TestComponent must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
     {
       code: 'React.createElement("Ns:TestComponent")',
       errors: [{ message: 'React component Ns:TestComponent must not be in a namespace, as React does not support them' }],
+      features: ['jsx namespace'],
     },
-  ],
+  ]),
 });

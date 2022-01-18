@@ -1,6 +1,6 @@
-# Contributing to ESLint-plugin-React
+# Contributing to `eslint-plugin-react`
 
-## ESLint Rules
+## `eslint` Rules
 
 ### Markup
 

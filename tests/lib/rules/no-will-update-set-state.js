@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-will-update-set-state', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -81,7 +81,6 @@ ruleTester.run('no-will-update-set-state', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -95,9 +94,9 @@ ruleTester.run('no-will-update-set-state', rule, {
       `,
       settings: { react: { version: '16.2.0' } },
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -125,7 +124,6 @@ ruleTester.run('no-will-update-set-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'noSetState',
@@ -161,7 +159,6 @@ ruleTester.run('no-will-update-set-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       options: ['disallow-in-func'],
       errors: [
         {
@@ -202,7 +199,6 @@ ruleTester.run('no-will-update-set-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       options: ['disallow-in-func'],
       errors: [
         {
@@ -242,7 +238,6 @@ ruleTester.run('no-will-update-set-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'noSetState',
@@ -258,7 +253,6 @@ ruleTester.run('no-will-update-set-state', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
       options: ['disallow-in-func'],
       errors: [
         {
@@ -275,7 +269,6 @@ ruleTester.run('no-will-update-set-state', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       options: ['disallow-in-func'],
       errors: [
         {
@@ -320,5 +313,5 @@ ruleTester.run('no-will-update-set-state', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

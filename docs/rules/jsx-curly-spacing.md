@@ -219,7 +219,7 @@ Examples of **correct** code for this rule, when configured with `"never"` and `
 <App blah={3} foo={ {bar: true, baz: true} } />;
 ```
 
-Please note that spacing of the object literal curly braces themselves is controlled by the built-in [`object-curly-spacing`](http://eslint.org/docs/rules/object-curly-spacing) rule.
+Please note that spacing of the object literal curly braces themselves is controlled by the built-in [`object-curly-spacing`](https://eslint.org/docs/rules/object-curly-spacing) rule.
 
 ### Shorthand options
 

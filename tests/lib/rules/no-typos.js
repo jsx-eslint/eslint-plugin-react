@@ -10,6 +10,7 @@
 
 const babelEslintVersion = require('babel-eslint/package.json').version;
 const semver = require('semver');
+const version = require('eslint/package.json').version;
 const RuleTester = require('eslint').RuleTester;
 
 const rule = require('../../../lib/rules/no-typos');
@@ -30,7 +31,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester();
 ruleTester.run('no-typos', rule, {
-  valid: [].concat(
+  valid: parsers.all([].concat(
     {
       code: `
           import createReactClass from 'create-react-class'
@@ -44,8 +45,8 @@ ruleTester.run('no-typos', rule, {
             })
           }
       `,
-      parser: parsers.TYPESCRIPT_ESLINT,
       parserOptions,
+      features: ['no-babel'], // TODO: FIXME: remove no-babel and fix crash
     },
     {
       code: `
@@ -56,7 +57,7 @@ ruleTester.run('no-typos', rule, {
           static DefaultProps = {key: "myValue"};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
     },
     {
@@ -78,7 +79,7 @@ ruleTester.run('no-typos', rule, {
           static defaultProps = {key: "myValue"};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
     },
     {
@@ -100,7 +101,7 @@ ruleTester.run('no-typos', rule, {
           defaultProps = {key: "myValue"};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
     },
     {
@@ -112,7 +113,7 @@ ruleTester.run('no-typos', rule, {
           DefaultProps = {key: "myValue"};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
     },
     {
@@ -124,7 +125,7 @@ ruleTester.run('no-typos', rule, {
           defaultprops = {key: "myValue"};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
     },
     {
@@ -136,7 +137,6 @@ ruleTester.run('no-typos', rule, {
           static DefaultProps() {};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
     },
     {
@@ -148,7 +148,6 @@ ruleTester.run('no-typos', rule, {
           static defaultprops() {};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
     },
     {
@@ -298,7 +297,6 @@ ruleTester.run('no-typos', rule, {
         }
         function a() {}
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
     },
     {
@@ -309,7 +307,6 @@ ruleTester.run('no-typos', rule, {
           a: PropTypes.number.isRequired
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
     },
     {
@@ -322,7 +319,6 @@ ruleTester.run('no-typos', rule, {
           })
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
     },
     {
@@ -338,7 +334,6 @@ ruleTester.run('no-typos', rule, {
           }).isRequired
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
     },
     {
@@ -352,7 +347,6 @@ ruleTester.run('no-typos', rule, {
           ])
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
     },
     {
@@ -366,23 +360,6 @@ ruleTester.run('no-typos', rule, {
           ])
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      parserOptions,
-    },
-    {
-      code: `
-        import PropTypes from "prop-types";
-        class Component extends React.Component {};
-        Component.childContextTypes = {
-          a: PropTypes.string,
-          b: PropTypes.string.isRequired,
-          c: PropTypes.shape({
-            d: PropTypes.string,
-            e: PropTypes.number.isRequired,
-          }).isRequired
-        }
-      `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
     },
     {
@@ -451,60 +428,6 @@ ruleTester.run('no-typos', rule, {
       parserOptions,
     },
     {
-      code: `
-        import PropTypes from "prop-types";
-        class Component extends React.Component {};
-        Component.contextTypes = {
-          a: PropTypes.string,
-          b: PropTypes.string.isRequired,
-          c: PropTypes.shape({
-            d: PropTypes.string,
-            e: PropTypes.number.isRequired,
-          }).isRequired
-        }
-      `,
-      parser: parsers.BABEL_ESLINT,
-      parserOptions,
-    },
-    {
-      code: `
-        import PropTypes from 'prop-types'
-        import * as MyPropTypes from 'lib/my-prop-types'
-        class Component extends React.Component {};
-        Component.propTypes = {
-          a: PropTypes.string,
-          b: MyPropTypes.MYSTRING,
-          c: MyPropTypes.MYSTRING.isRequired,
-        }
-      `,
-      parser: parsers.BABEL_ESLINT,
-      parserOptions,
-    },
-    {
-      code: `
-        import PropTypes from "prop-types"
-        import * as MyPropTypes from 'lib/my-prop-types'
-        class Component extends React.Component {};
-        Component.propTypes = {
-          b: PropTypes.string,
-          a: MyPropTypes.MYSTRING,
-        }
-      `,
-      parser: parsers.BABEL_ESLINT,
-      parserOptions,
-    },
-    {
-      code: `
-        import CustomReact from "react"
-        class Component extends React.Component {};
-        Component.propTypes = {
-          b: CustomReact.PropTypes.string,
-        }
-      `,
-      parser: parsers.BABEL_ESLINT,
-      parserOptions,
-    },
-    {
       // ensure that an absent arg to PropTypes.shape does not crash
       code: `
         class Component extends React.Component {};
@@ -515,20 +438,6 @@ ruleTester.run('no-typos', rule, {
           a: PropTypes.shape(),
         };
       `,
-      parserOptions,
-    },
-    {
-      // ensure that an absent arg to PropTypes.shape does not crash
-      code: `
-        class Component extends React.Component {};
-        Component.propTypes = {
-          a: PropTypes.shape(),
-        };
-        Component.contextTypes = {
-          a: PropTypes.shape(),
-        };
-      `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
     },
     {
@@ -538,18 +447,6 @@ ruleTester.run('no-typos', rule, {
           data.time = data.time || {};
         };
       `,
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: `
-        class Component extends React.Component {};
-        Component.propTypes = {
-          b: string.isRequired,
-          c: PropTypes.shape({
-            d: number.isRequired,
-          }).isRequired
-        }
-      `,
       parserOptions,
     },
     {
@@ -562,7 +459,6 @@ ruleTester.run('no-typos', rule, {
           }).isRequired
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
     },
     {
@@ -585,64 +481,11 @@ ruleTester.run('no-typos', rule, {
         import React from 'react';
         import PropTypes from 'prop-types';
         const Component = React.createReactClass({
-          propTypes: {
-            a: PropTypes.string.isRequired,
-            b: PropTypes.shape({
-              c: PropTypes.number
-            }).isRequired
-          }
-        });
-      `,
-      parser: parsers.BABEL_ESLINT,
-      parserOptions,
-    },
-    {
-      code: `
-        import React from 'react';
-        import PropTypes from 'prop-types';
-        const Component = React.createReactClass({
           childContextTypes: {
             a: PropTypes.bool,
             b: PropTypes.array,
             c: PropTypes.func,
             d: PropTypes.object,
-          }
-        });
-      `,
-      parserOptions,
-    },
-    {
-      code: `
-        import React from 'react';
-        import PropTypes from 'prop-types';
-        const Component = React.createReactClass({
-          childContextTypes: {
-            a: PropTypes.bool,
-            b: PropTypes.array,
-            c: PropTypes.func,
-            d: PropTypes.object,
-          }
-        });
-      `,
-      parser: parsers.BABEL_ESLINT,
-      parserOptions,
-    },
-    {
-      code: `
-        import React from 'react';
-        const Component = React.createReactClass({
-          propTypes: {},
-          childContextTypes: {},
-          contextTypes: {},
-          componentWillMount() { },
-          componentDidMount() { },
-          componentWillReceiveProps() { },
-          shouldComponentUpdate() { },
-          componentWillUpdate() { },
-          componentDidUpdate() { },
-          componentWillUnmount() { },
-          render() {
-            return <div>Hello {this.props.name}</div>;
           }
         });
       `,
@@ -667,7 +510,6 @@ ruleTester.run('no-typos', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
     },
     {
@@ -714,7 +556,8 @@ ruleTester.run('no-typos', rule, {
         MyComponent.defaultProps = { value: "" };
       `,
       parserOptions,
-    }, semver.satisfies(babelEslintVersion, '>= 9') ? {
+    },
+    {
       code: `
         class Editor extends React.Component {
             #somethingPrivate() {
@@ -732,24 +575,24 @@ ruleTester.run('no-typos', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      parserOptions: {
+      features: [].concat('class fields', semver.satisfies(babelEslintVersion, '< 9') ? 'no-babel-old' : []),
+      parserOptions: Object.assign({}, parserOptions, {
         babelOptions: {
-          classPrivateMethods: true,
+          // classPrivateMethods: true,
         },
         shippedProposals: true,
-      },
-    } : []
-  ),
+      }),
+    }
+  )),
 
-  invalid: [].concat(
+  invalid: parsers.all([].concat(
     {
       code: `
         class Component extends React.Component {
           static PropTypes = {};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
       errors: [
         { messageId: 'typoStaticClassProp', type: 'Identifier' },
@@ -781,7 +624,7 @@ ruleTester.run('no-typos', rule, {
           static proptypes = {};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
@@ -807,7 +650,7 @@ ruleTester.run('no-typos', rule, {
           static ContextTypes = {};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
       errors: [
         { messageId: 'typoStaticClassProp', type: 'Identifier' },
@@ -835,7 +678,7 @@ ruleTester.run('no-typos', rule, {
           static contexttypes = {};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
@@ -861,7 +704,7 @@ ruleTester.run('no-typos', rule, {
           static ChildContextTypes = {};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
@@ -887,7 +730,7 @@ ruleTester.run('no-typos', rule, {
           static childcontexttypes = {};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
@@ -913,7 +756,7 @@ ruleTester.run('no-typos', rule, {
           static DefaultProps = {};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
       errors: [
         { messageId: 'typoStaticClassProp', type: 'Identifier' },
@@ -945,7 +788,7 @@ ruleTester.run('no-typos', rule, {
           static defaultprops = {};
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
@@ -1418,7 +1261,7 @@ ruleTester.run('no-typos', rule, {
           }
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
       errors: [
         {
@@ -1436,7 +1279,7 @@ ruleTester.run('no-typos', rule, {
           }
         };
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
       errors: [
         {
@@ -1453,7 +1296,6 @@ ruleTester.run('no-typos', rule, {
             a: PropTypes.Number
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
@@ -1473,7 +1315,6 @@ ruleTester.run('no-typos', rule, {
           })
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
@@ -1493,7 +1334,6 @@ ruleTester.run('no-typos', rule, {
           ])
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
@@ -1513,7 +1353,6 @@ ruleTester.run('no-typos', rule, {
           d: PropTypes.objectof,
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
@@ -1545,7 +1384,6 @@ ruleTester.run('no-typos', rule, {
           d: PropTypes.objectof,
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
@@ -1577,7 +1415,6 @@ ruleTester.run('no-typos', rule, {
           d: PropTypes.objectof,
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
@@ -1600,39 +1437,15 @@ ruleTester.run('no-typos', rule, {
     },
     {
       code: `
-      import PropTypes from 'prop-types';
-      class Component extends React.Component {};
-      Component.propTypes = {
-        a: PropTypes.string.isrequired,
-        b: PropTypes.shape({
-          c: PropTypes.number
-        }).isrequired
-      }
+        import PropTypes from 'prop-types';
+        class Component extends React.Component {};
+        Component.propTypes = {
+          a: PropTypes.string.isrequired,
+          b: PropTypes.shape({
+            c: PropTypes.number
+          }).isrequired
+        }
       `,
-      parserOptions,
-      errors: [
-        {
-          messageId: 'typoPropTypeChain',
-          data: { name: 'isrequired' },
-        },
-        {
-          messageId: 'typoPropTypeChain',
-          data: { name: 'isrequired' },
-        },
-      ],
-    },
-    {
-      code: `
-      import PropTypes from 'prop-types';
-      class Component extends React.Component {};
-      Component.propTypes = {
-        a: PropTypes.string.isrequired,
-        b: PropTypes.shape({
-          c: PropTypes.number
-        }).isrequired
-      }
-    `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
@@ -1656,7 +1469,6 @@ ruleTester.run('no-typos', rule, {
           d: RealPropTypes.objectof,
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
@@ -1688,7 +1500,6 @@ ruleTester.run('no-typos', rule, {
         }).isrequired
       }
     `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
@@ -1712,7 +1523,6 @@ ruleTester.run('no-typos', rule, {
           d: React.PropTypes.objectof,
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
@@ -1744,7 +1554,6 @@ ruleTester.run('no-typos', rule, {
         }).isrequired
       }
     `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
@@ -1762,7 +1571,6 @@ ruleTester.run('no-typos', rule, {
       import 'react';
       class Component extends React.Component {};
     `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
@@ -1781,38 +1589,6 @@ ruleTester.run('no-typos', rule, {
           d: PropTypes.objectof,
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      parserOptions,
-      errors: [
-        {
-          messageId: 'typoPropType',
-          data: { name: 'bools' },
-        },
-        {
-          messageId: 'typoPropType',
-          data: { name: 'Array' },
-        },
-        {
-          messageId: 'typoPropType',
-          data: { name: 'function' },
-        },
-        {
-          messageId: 'typoPropType',
-          data: { name: 'objectof' },
-        },
-      ],
-    },
-    {
-      code: `
-        import PropTypes from 'prop-types';
-        class Component extends React.Component {};
-        Component.childContextTypes = {
-          a: PropTypes.bools,
-          b: PropTypes.Array,
-          c: PropTypes.function,
-          d: PropTypes.objectof,
-        }
-      `,
       parserOptions,
       errors: [
         {
@@ -1844,7 +1620,6 @@ ruleTester.run('no-typos', rule, {
         }).isrequired
       }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
@@ -1877,205 +1652,6 @@ ruleTester.run('no-typos', rule, {
         {
           messageId: 'typoPropTypeChain',
           data: { name: 'isrequired' },
-        },
-      ],
-    },
-    {
-      code: `
-        import RealPropTypes from 'prop-types';
-        class Component extends React.Component {};
-        Component.childContextTypes = {
-          a: RealPropTypes.bools,
-          b: RealPropTypes.Array,
-          c: RealPropTypes.function,
-          d: RealPropTypes.objectof,
-        }
-      `,
-      parserOptions,
-      errors: [
-        {
-          messageId: 'typoPropType',
-          data: { name: 'bools' },
-        },
-        {
-          messageId: 'typoPropType',
-          data: { name: 'Array' },
-        },
-        {
-          messageId: 'typoPropType',
-          data: { name: 'function' },
-        },
-        {
-          messageId: 'typoPropType',
-          data: { name: 'objectof' },
-        },
-      ],
-    },
-    {
-      code: `
-      import React from 'react';
-      class Component extends React.Component {};
-      Component.propTypes = {
-        a: React.PropTypes.string.isrequired,
-        b: React.PropTypes.shape({
-          c: React.PropTypes.number
-        }).isrequired
-      }
-    `,
-      parserOptions,
-      errors: [
-        {
-          messageId: 'typoPropTypeChain',
-          data: { name: 'isrequired' },
-        },
-        {
-          messageId: 'typoPropTypeChain',
-          data: { name: 'isrequired' },
-        },
-      ],
-    },
-    {
-      code: `
-        import React from 'react';
-        class Component extends React.Component {};
-        Component.childContextTypes = {
-          a: React.PropTypes.bools,
-          b: React.PropTypes.Array,
-          c: React.PropTypes.function,
-          d: React.PropTypes.objectof,
-        }
-      `,
-      parserOptions,
-      errors: [
-        {
-          messageId: 'typoPropType',
-          data: { name: 'bools' },
-        },
-        {
-          messageId: 'typoPropType',
-          data: { name: 'Array' },
-        },
-        {
-          messageId: 'typoPropType',
-          data: { name: 'function' },
-        },
-        {
-          messageId: 'typoPropType',
-          data: { name: 'objectof' },
-        },
-      ],
-    },
-    {
-      code: `
-      import { PropTypes } from 'react';
-      class Component extends React.Component {};
-      Component.propTypes = {
-        a: PropTypes.string.isrequired,
-        b: PropTypes.shape({
-          c: PropTypes.number
-        }).isrequired
-      }
-    `,
-      parserOptions,
-      errors: [
-        {
-          messageId: 'typoPropTypeChain',
-          data: { name: 'isrequired' },
-        },
-        {
-          messageId: 'typoPropTypeChain',
-          data: { name: 'isrequired' },
-        },
-      ],
-    },
-    {
-      code: `
-        import { PropTypes } from 'react';
-        class Component extends React.Component {};
-        Component.childContextTypes = {
-          a: PropTypes.bools,
-          b: PropTypes.Array,
-          c: PropTypes.function,
-          d: PropTypes.objectof,
-        }
-      `,
-      parserOptions,
-      errors: [
-        {
-          messageId: 'typoPropType',
-          data: { name: 'bools' },
-        },
-        {
-          messageId: 'typoPropType',
-          data: { name: 'Array' },
-        },
-        {
-          messageId: 'typoPropType',
-          data: { name: 'function' },
-        },
-        {
-          messageId: 'typoPropType',
-          data: { name: 'objectof' },
-        },
-      ],
-    },
-    {
-      code: `
-        import React from 'react';
-        import PropTypes from 'prop-types';
-        const Component = React.createReactClass({
-          propTypes: {
-            a: PropTypes.string.isrequired,
-            b: PropTypes.shape({
-              c: PropTypes.number
-            }).isrequired
-          }
-        });
-      `,
-      parser: parsers.BABEL_ESLINT,
-      parserOptions,
-      errors: [
-        {
-          messageId: 'typoPropTypeChain',
-          data: { name: 'isrequired' },
-        },
-        {
-          messageId: 'typoPropTypeChain',
-          data: { name: 'isrequired' },
-        },
-      ],
-    },
-    {
-      code: `
-        import React from 'react';
-        import PropTypes from 'prop-types';
-        const Component = React.createReactClass({
-          childContextTypes: {
-            a: PropTypes.bools,
-            b: PropTypes.Array,
-            c: PropTypes.function,
-            d: PropTypes.objectof,
-          }
-        });
-      `,
-      parser: parsers.BABEL_ESLINT,
-      parserOptions,
-      errors: [
-        {
-          messageId: 'typoPropType',
-          data: { name: 'bools' },
-        },
-        {
-          messageId: 'typoPropType',
-          data: { name: 'Array' },
-        },
-        {
-          messageId: 'typoPropType',
-          data: { name: 'function' },
-        },
-        {
-          messageId: 'typoPropType',
-          data: { name: 'objectof' },
         },
       ],
     },
@@ -2261,7 +1837,6 @@ ruleTester.run('no-typos', rule, {
           getDerivedStateFromProps() { }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
@@ -2277,7 +1852,6 @@ ruleTester.run('no-typos', rule, {
           GetDerivedStateFromProps() { }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
@@ -2295,154 +1869,28 @@ ruleTester.run('no-typos', rule, {
         },
       ],
     },
-    {
+    semver.satisfies(version, '^5') ? {
+      // PropTypes declared on a component that is detected through JSDoc comments and is
+      // declared AFTER the PropTypes assignment
       code: `
-        import React from 'react';
-        const Component = React.createReactClass({
-          proptypes: {},
-          childcontexttypes: {},
-          contexttypes: {},
-          getdefaultProps() { },
-          getinitialState() { },
-          getChildcontext() { },
-          ComponentWillMount() { },
-          ComponentDidMount() { },
-          ComponentWillReceiveProps() { },
-          ShouldComponentUpdate() { },
-          ComponentWillUpdate() { },
-          ComponentDidUpdate() { },
-          ComponentWillUnmount() { },
-          render() {
-            return <div>Hello {this.props.name}</div>;
-          }
-        });
+        MyComponent.PROPTYPES = {}
+        /** @extends React.Component */
+        class MyComponent extends BaseComponent {}
       `,
-      parser: parsers.BABEL_ESLINT,
       parserOptions,
       errors: [
         {
-          messageId: 'typoPropDeclaration',
-          type: 'Identifier',
-        },
-        {
-          messageId: 'typoPropDeclaration',
-          type: 'Identifier',
-        },
-        {
-          messageId: 'typoPropDeclaration',
-          type: 'Identifier',
-        },
-        {
-          messageId: 'typoLifecycleMethod',
-          data: {
-            actual: 'getdefaultProps',
-            expected: 'getDefaultProps',
-          },
-          type: 'Property',
-        },
-        {
-          messageId: 'typoLifecycleMethod',
-          data: {
-            actual: 'getinitialState',
-            expected: 'getInitialState',
-          },
-          type: 'Property',
-        },
-        {
-          messageId: 'typoLifecycleMethod',
-          data: {
-            actual: 'getChildcontext',
-            expected: 'getChildContext',
-          },
-          type: 'Property',
-        },
-        {
-          messageId: 'typoLifecycleMethod',
-          data: {
-            actual: 'ComponentWillMount',
-            expected: 'componentWillMount',
-          },
-          type: 'Property',
-        },
-        {
-          messageId: 'typoLifecycleMethod',
-          data: {
-            actual: 'ComponentDidMount',
-            expected: 'componentDidMount',
-          },
-          type: 'Property',
-        },
-        {
-          messageId: 'typoLifecycleMethod',
-          data: {
-            actual: 'ComponentWillReceiveProps',
-            expected: 'componentWillReceiveProps',
-          },
-          type: 'Property',
-        },
-        {
-          messageId: 'typoLifecycleMethod',
-          data: {
-            actual: 'ShouldComponentUpdate',
-            expected: 'shouldComponentUpdate',
-          },
-          type: 'Property',
-        },
-        {
-          messageId: 'typoLifecycleMethod',
-          data: {
-            actual: 'ComponentWillUpdate',
-            expected: 'componentWillUpdate',
-          },
-          type: 'Property',
-        },
-        {
-          messageId: 'typoLifecycleMethod',
-          data: {
-            actual: 'ComponentDidUpdate',
-            expected: 'componentDidUpdate',
-          },
-          type: 'Property',
-        },
-        {
-          messageId: 'typoLifecycleMethod',
-          data: {
-            actual: 'ComponentWillUnmount',
-            expected: 'componentWillUnmount',
-          },
-          type: 'Property',
+          ruleId: 'no-typos',
+          messageId: 'typoStaticClassProp',
         },
       ],
-      /*
-      // PropTypes declared on a component that is detected through JSDoc comments and is
-      // declared AFTER the PropTypes assignment
-      // Commented out since it only works with ESLint 5.
-        ,{
-          code: `
-            MyComponent.PROPTYPES = {}
-            \/** @extends React.Component *\/
-            class MyComponent extends BaseComponent {}
-          `,
-          parserOptions: parserOptions
-        },
-      */
-    }, parsers.TS([
-      {
-        code: `
-          import 'prop-types'
-        `,
-        parser: parsers.TYPESCRIPT_ESLINT,
-        parserOptions,
-        errors: [{ messageId: 'noPropTypesBinding' }],
-      },
-      {
-        code: `
-          import 'prop-types'
-        `,
-        parser: parsers['@TYPESCRIPT_ESLINT'],
-        parserOptions,
-        errors: [{ messageId: 'noPropTypesBinding' }],
-      },
-    ])
-  ),
+    } : [],
+    {
+      code: `
+        import 'prop-types'
+      `,
+      parserOptions,
+      errors: [{ messageId: 'noPropTypesBinding' }],
+    }
+  )),
 });

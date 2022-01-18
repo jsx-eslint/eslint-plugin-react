@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/button-has-type');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('button-has-type', rule, {
-  valid: [
+  valid: parsers.all([
     { code: '<span/>' },
     { code: '<span type="foo"/>' },
     { code: '<button type="button"/>' },
@@ -71,8 +73,8 @@ ruleTester.run('button-has-type', rule, {
         },
       },
     },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: '<button/>',
       errors: [
@@ -285,5 +287,5 @@ ruleTester.run('button-has-type', rule, {
         { messageId: 'complexType' },
       ],
     },
-  ],
+  ]),
 });

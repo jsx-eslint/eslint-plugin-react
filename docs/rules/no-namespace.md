@@ -24,6 +24,6 @@ The following patterns are **not** considered warnings:
 <testComponent />
 ```
 
-## When not to use
+## When Not To Use It
 
 If you are not using React.

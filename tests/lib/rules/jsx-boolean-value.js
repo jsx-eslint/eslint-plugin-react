@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-boolean-value');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-boolean-value', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<App foo />;',
       options: ['never'],
@@ -46,8 +48,8 @@ ruleTester.run('jsx-boolean-value', rule, {
       code: '<App foo={true} bar />;',
       options: ['never', { always: ['foo'] }],
     },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: '<App foo={true} />;',
       output: '<App foo />;',
@@ -108,5 +110,5 @@ ruleTester.run('jsx-boolean-value', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

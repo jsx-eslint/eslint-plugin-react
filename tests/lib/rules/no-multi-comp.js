@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-multi-comp', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         var Hello = require('./components/Hello');
@@ -72,7 +72,6 @@ ruleTester.run('no-multi-comp', rule, {
           return <div>Hello again {props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       options: [{ ignoreStateless: true }],
     },
     {
@@ -202,11 +201,11 @@ ruleTester.run('no-multi-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -265,7 +264,6 @@ ruleTester.run('no-multi-comp', rule, {
           return <div>Hello again {props.name}</div>;
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -274,41 +272,40 @@ ruleTester.run('no-multi-comp', rule, {
       ],
     },
     {
-      code: [
-        'function Hello(props) {',
-        '  return <div>Hello {props.name}</div>;',
-        '}',
-        'class HelloJohn extends React.Component {',
-        '  render() {',
-        '    return <Hello name="John" />;',
-        '  }',
-        '}',
-      ].join('\r'),
+      code: `
+        function Hello(props) {
+          return <div>Hello {props.name}</div>;
+        }
+        class HelloJohn extends React.Component {
+          render() {
+            return <Hello name="John" />;
+          }
+        }
+      `,
       errors: [
         {
           messageId: 'onlyOneComponent',
-          line: 4,
+          line: 5,
         },
       ],
     },
     {
-      code: [
-        'export default {',
-        '  RenderHello(props) {',
-        '    let {name} = props;',
-        '    return <div>{name}</div>;',
-        '  },',
-        '  RenderHello2(props) {',
-        '    let {name} = props;',
-        '    return <div>{name}</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
+      code: `
+        export default {
+          RenderHello(props) {
+            let {name} = props;
+            return <div>{name}</div>;
+          },
+          RenderHello2(props) {
+            let {name} = props;
+            return <div>{name}</div>;
+          }
+        };
+      `,
       errors: [
         {
           messageId: 'onlyOneComponent',
-          line: 6,
+          line: 7,
         },
       ],
     },
@@ -324,7 +321,7 @@ ruleTester.run('no-multi-comp', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -340,7 +337,6 @@ ruleTester.run('no-multi-comp', rule, {
         export default React.forwardRef((props, ref) => <div><StoreListItem {...props} forwardRef={ref} /></div>);
       `,
       options: [{ ignoreStateless: false }],
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -356,7 +352,6 @@ ruleTester.run('no-multi-comp', rule, {
         const HelloComponent2 = React.forwardRef((props, ref) => <div></div>);
       `,
       options: [{ ignoreStateless: false }],
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -372,7 +367,7 @@ ruleTester.run('no-multi-comp', rule, {
         const HelloComponent2 = React.forwardRef((props, ref) => <><HelloComponent></HelloComponent></>);
       `,
       options: [{ ignoreStateless: false }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['fragment'],
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -411,7 +406,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         const {forwardRef} = React;
         const HelloComponent = (0, (props) => {
@@ -426,7 +422,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         const {memo} = React;
         const HelloComponent = (0, (props) => {
@@ -441,7 +438,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         import React, { memo } from 'react';
         const HelloComponent = (0, (props) => {
@@ -456,7 +454,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         import {forwardRef} from 'react';
         const HelloComponent = (0, (props) => {
@@ -471,7 +470,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         const { memo } = require('react');
         const HelloComponent = (0, (props) => {
@@ -486,7 +486,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         const {forwardRef} = require('react');
         const HelloComponent = (0, (props) => {
@@ -501,7 +502,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         const forwardRef = require('react').forwardRef;
         const HelloComponent = (0, (props) => {
@@ -516,7 +518,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         const memo = require('react').memo;
         const HelloComponent = (0, (props) => {
@@ -531,7 +534,8 @@ ruleTester.run('no-multi-comp', rule, {
           line: 6,
         },
       ],
-    }, {
+    },
+    {
       code: `
         import Foo, { memo, forwardRef } from 'foo';
         const Text = forwardRef(({ text }, ref) => {
@@ -546,5 +550,5 @@ ruleTester.run('no-multi-comp', rule, {
       },
       errors: [{ messageId: 'onlyOneComponent' }],
     },
-  ],
+  ]),
 });

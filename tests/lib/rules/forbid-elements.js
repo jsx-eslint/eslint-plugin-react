@@ -11,6 +11,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/forbid-elements');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -27,7 +29,7 @@ require('babel-eslint');
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('forbid-elements', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<button />',
       options: [],
@@ -80,9 +82,9 @@ ruleTester.run('forbid-elements', rule, {
       code: 'React.createElement(1)',
       options: [{ forbid: ['button'] }],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: '<button />',
       options: [{ forbid: ['button'] }],
@@ -109,9 +111,7 @@ ruleTester.run('forbid-elements', rule, {
     },
     {
       code: '<dotted.component />',
-      options: [
-        { forbid: ['dotted.component'] },
-      ],
+      options: [{ forbid: ['dotted.component'] }],
       errors: [
         {
           messageId: 'forbiddenElement',
@@ -156,7 +156,8 @@ ruleTester.run('forbid-elements', rule, {
       options: [
         {
           forbid: [
-            { element: 'button' }, { element: 'input' },
+            { element: 'button' },
+            { element: 'input' },
           ],
         },
       ],
@@ -173,12 +174,7 @@ ruleTester.run('forbid-elements', rule, {
     },
     {
       code: '<button><input /></button>',
-      options: [
-        {
-          forbid: [
-            { element: 'button' }, 'input'],
-        },
-      ],
+      options: [{ forbid: [{ element: 'button' }, 'input'] }],
       errors: [
         {
           messageId: 'forbiddenElement',
@@ -192,9 +188,7 @@ ruleTester.run('forbid-elements', rule, {
     },
     {
       code: '<button><input /></button>',
-      options: [
-        { forbid: ['input', { element: 'button' }] },
-      ],
+      options: [{ forbid: ['input', { element: 'button' }] }],
       errors: [
         {
           messageId: 'forbiddenElement',
@@ -225,9 +219,7 @@ ruleTester.run('forbid-elements', rule, {
     },
     {
       code: 'React.createElement("button", {}, child)',
-      options: [
-        { forbid: ['button'] },
-      ],
+      options: [{ forbid: ['button'] }],
       errors: [
         {
           messageId: 'forbiddenElement',
@@ -237,9 +229,7 @@ ruleTester.run('forbid-elements', rule, {
     },
     {
       code: '[React.createElement(Modal), React.createElement("button")]',
-      options: [
-        { forbid: ['button', 'Modal'] },
-      ],
+      options: [{ forbid: ['button', 'Modal'] }],
       errors: [
         {
           messageId: 'forbiddenElement',
@@ -269,9 +259,7 @@ ruleTester.run('forbid-elements', rule, {
     },
     {
       code: 'React.createElement(dotted.component)',
-      options: [
-        { forbid: ['dotted.component'] },
-      ],
+      options: [{ forbid: ['dotted.component'] }],
       errors: [
         {
           messageId: 'forbiddenElement',
@@ -281,9 +269,7 @@ ruleTester.run('forbid-elements', rule, {
     },
     {
       code: 'React.createElement(_comp)',
-      options: [
-        { forbid: ['_comp'] },
-      ],
+      options: [{ forbid: ['_comp'] }],
       errors: [
         {
           messageId: 'forbiddenElement',
@@ -327,5 +313,5 @@ ruleTester.run('forbid-elements', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-children-prop');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-children-prop', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<div />;',
     },
@@ -140,54 +142,38 @@ ruleTester.run('no-children-prop', rule, {
     },
     {
       code: '<MyComponent children={() => {}} />;',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
     },
     {
       code: '<MyComponent children={function() {}} />;',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
     },
     {
       code: '<MyComponent children={async function() {}} />;',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
     },
     {
       code: '<MyComponent children={function* () {}} />;',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
     },
     {
       code: 'React.createElement(MyComponent, {children: () => {}});',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
     },
     {
       code: 'React.createElement(MyComponent, {children: function() {}});',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
     },
     {
       code: 'React.createElement(MyComponent, {children: async function() {}});',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
     },
     {
       code: 'React.createElement(MyComponent, {children: function* () {}});',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
     },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: '<div children />;', // not a valid use case but make sure we don't crash
       errors: [{ messageId: 'nestChildren' }],
@@ -250,59 +236,43 @@ ruleTester.run('no-children-prop', rule, {
     },
     {
       code: '<MyComponent>{() => {}}</MyComponent>;',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
       errors: [{ messageId: 'nestFunction' }],
     },
     {
       code: '<MyComponent>{function() {}}</MyComponent>;',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
       errors: [{ messageId: 'nestFunction' }],
     },
     {
       code: '<MyComponent>{async function() {}}</MyComponent>;',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
       errors: [{ messageId: 'nestFunction' }],
     },
     {
       code: '<MyComponent>{function* () {}}</MyComponent>;',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
       errors: [{ messageId: 'nestFunction' }],
     },
     {
       code: 'React.createElement(MyComponent, {}, () => {});',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
       errors: [{ messageId: 'passFunctionAsArgs' }],
     },
     {
       code: 'React.createElement(MyComponent, {}, function() {});',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
       errors: [{ messageId: 'passFunctionAsArgs' }],
     },
     {
       code: 'React.createElement(MyComponent, {}, async function() {});',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
       errors: [{ messageId: 'passFunctionAsArgs' }],
     },
     {
       code: 'React.createElement(MyComponent, {}, function* () {});',
-      options: [{
-        allowFunctions: true,
-      }],
+      options: [{ allowFunctions: true }],
       errors: [{ messageId: 'passFunctionAsArgs' }],
     },
-  ],
+  ]),
 });

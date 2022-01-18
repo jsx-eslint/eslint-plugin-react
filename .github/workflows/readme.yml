@@ -12,7 +12,6 @@ jobs:
         name: 'nvm install lts/* && npm install'
         with:
           node-version: 'lts/*'
-          skip-ls-check: true
         env:
           NPM_CONFIG_LEGACY_PEER_DEPS: true
       - run: npm run generate-list-of-rules:check

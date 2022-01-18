@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-render-return-value');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,47 +28,31 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-render-return-value', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: 'ReactDOM.render(<div />, document.body);',
     },
     {
       code: `
-      let node;
-      ReactDOM.render(<div ref={ref => node = ref}/>, document.body);
-    `,
+        let node;
+        ReactDOM.render(<div ref={ref => node = ref}/>, document.body);
+      `,
     },
     {
       code: 'ReactDOM.render(<div ref={ref => this.node = ref}/>, document.body);',
-      settings: {
-        react: {
-          version: '0.14.0',
-        },
-      },
+      settings: { react: { version: '0.14.0' } },
     },
     {
       code: 'React.render(<div ref={ref => this.node = ref}/>, document.body);',
-      settings: {
-        react: {
-          version: '0.14.0',
-        },
-      },
+      settings: { react: { version: '0.14.0' } },
     },
     {
       code: 'React.render(<div ref={ref => this.node = ref}/>, document.body);',
-      settings: {
-        react: {
-          version: '0.13.0',
-        },
-      },
+      settings: { react: { version: '0.13.0' } },
     },
     {
       code: 'var foo = React.render(<div />, root);',
-      settings: {
-        react: {
-          version: '0.0.1',
-        },
-      },
+      settings: { react: { version: '0.0.1' } },
     },
     {
       code: 'var foo = render(<div />, root)',
@@ -74,9 +60,9 @@ ruleTester.run('no-render-return-value', rule, {
     {
       code: 'var foo = ReactDom.renderder(<div />, root)',
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: 'var Hello = ReactDOM.render(<div />, document.body);',
       errors: [
@@ -88,10 +74,10 @@ ruleTester.run('no-render-return-value', rule, {
     },
     {
       code: `
-      var o = {
-        inst: ReactDOM.render(<div />, document.body)
-      };
-    `,
+        var o = {
+          inst: ReactDOM.render(<div />, document.body)
+        };
+      `,
       errors: [
         {
           messageId: 'noReturnValue',
@@ -101,10 +87,10 @@ ruleTester.run('no-render-return-value', rule, {
     },
     {
       code: `
-      function render () {
-        return ReactDOM.render(<div />, document.body)
-      }
-    `,
+        function render () {
+          return ReactDOM.render(<div />, document.body)
+        }
+      `,
       errors: [
         {
           messageId: 'noReturnValue',
@@ -141,11 +127,7 @@ ruleTester.run('no-render-return-value', rule, {
     },
     {
       code: 'var inst = React.render(<div />, document.body);',
-      settings: {
-        react: {
-          version: '0.14.0',
-        },
-      },
+      settings: { react: { version: '0.14.0' } },
       errors: [
         {
           messageId: 'noReturnValue',
@@ -155,11 +137,7 @@ ruleTester.run('no-render-return-value', rule, {
     },
     {
       code: 'var inst = ReactDOM.render(<div />, document.body);',
-      settings: {
-        react: {
-          version: '0.14.0',
-        },
-      },
+      settings: { react: { version: '0.14.0' } },
       errors: [
         {
           messageId: 'noReturnValue',
@@ -169,11 +147,7 @@ ruleTester.run('no-render-return-value', rule, {
     },
     {
       code: 'var inst = React.render(<div />, document.body);',
-      settings: {
-        react: {
-          version: '0.13.0',
-        },
-      },
+      settings: { react: { version: '0.13.0' } },
       errors: [
         {
           messageId: 'noReturnValue',
@@ -181,5 +155,5 @@ ruleTester.run('no-render-return-value', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

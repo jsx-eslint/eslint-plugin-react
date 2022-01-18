@@ -1,18 +1,105 @@
 # Change Log
 All notable changes to this project will be documented in this file.
-This project adheres to [Semantic Versioning](http://semver.org/).
-This change log adheres to standards from [Keep a CHANGELOG](http://keepachangelog.com).
+This project adheres to [Semantic Versioning](https://semver.org/).
+This change log adheres to standards from [Keep a CHANGELOG](https://keepachangelog.com).
 
 ## Unreleased
 
 ### Added
-* [`no-unused-class-component-methods`]: Handle unused class component methods ([#2166][] @jakeleventhal @pawelnvk)
-* add [`no-arrow-function-lifecycle`] ([#1980][] @ngtan)
+* add [`hook-use-state`] rule to enforce symmetric useState hook variable names ([#2921][] @duncanbeevers)
 
 ### Fixed
-* [`propTypes`]: add `VoidFunctionComponent` to react generic list ([#3092][] @vedadeepta)
+* [`prop-types`], `propTypes`: add support for exported type inference ([#3163][] @vedadeepta)
+* [`no-invalid-html-attribute`]: allow 'shortcut icon' on `link` ([#3174][] @Primajin)
 
+### Changed
+* [readme] change [`jsx-runtime`] link from branch to sha ([#3160][] @tatsushitoji)
+* [Docs] HTTP => HTTPS ([#3133][] @Schweinepriester)
+
+[#3174]: https://github.com/yannickcr/eslint-plugin-react/pull/3174
+[#3163]: https://github.com/yannickcr/eslint-plugin-react/pull/3163
+[#3160]: https://github.com/yannickcr/eslint-plugin-react/pull/3160
+[#3133]: https://github.com/yannickcr/eslint-plugin-react/pull/3133
+[#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
+
+## [7.28.0] - 2021.12.22
+
+### Added
+* [`function-component-definition`]: support namedComponents option being an array ([#3129][] @petersendidit)
+
+### Fixed
+* [`jsx-indent-props`]: Reset `line.isUsingOperator` correctly after ternary ([#3146][] @tobiaswaltl)
+
+### Changed
+* [Refactor] [`no-arrow-function-lifecycle`], [`no-unused-class-component-methods`]: use report/messages convention (@ljharb)
+* [Tests] component detection: Add testing scaffolding ([#3149][] @duncanbeevers)
+* [New] component detection: track React imports ([#3149][] @duncanbeevers)
+* [New] component detection: add `util.isReactHookCall` ([#3156][] @duncanbeevers)
+
+[7.28.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.27.1...v7.28.0
+[#3156]: https://github.com/yannickcr/eslint-plugin-react/pull/3156
+[#3149]: https://github.com/yannickcr/eslint-plugin-react/pull/3149
+[#3146]: https://github.com/yannickcr/eslint-plugin-react/pull/3146
+[#3129]: https://github.com/yannickcr/eslint-plugin-react/pull/3129
+
+## [7.27.1] - 2021.11.18
+
+### Fixed
+* [`no-invalid-html-attribute`]: allow `link` `rel` to have `apple-touch-icon`, `mask-icon` ([#3132][] @ljharb)
+* [`no-unused-class-component-methods`]: add `getChildContext` lifecycle method ([#3136][] @yoyo837)
+* [`prop-types`]: fix false positives on renames in object destructuring ([#3142][] @golopot)
+* [`no-arrow-function-lifecycle`]: fix invalid autofix from a concise arrow method to a regular one ([#3145][] @ljharb)
+* [`display-name`]: avoid false positives on non-creatClass object expressions ([#3144] @ljharb)
+
+### Changed
+* [readme] fix syntax typo ([#3141][] @moselhy)
+
+[7.27.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.27.0...v7.27.1
+[#3145]: https://github.com/yannickcr/eslint-plugin-react/issue/3145
+[#3144]: https://github.com/yannickcr/eslint-plugin-react/issue/3144
+[#3142]: https://github.com/yannickcr/eslint-plugin-react/pull/3142
+[#3141]: https://github.com/yannickcr/eslint-plugin-react/pull/3141
+[#3136]: https://github.com/yannickcr/eslint-plugin-react/pull/3136
+[#3132]: https://github.com/yannickcr/eslint-plugin-react/issue/3132
+
+## [7.27.0] - 2021.11.09
+
+### Added
+* support eslint 8.x ([#3059][] @MichaelDeBoey @ljharb)
+* [`no-unused-class-component-methods`]: Handle unused class component methods ([#2166][] @jakeleventhal @pawelnvk)
+* add [`no-arrow-function-lifecycle`] ([#1980][] @ngtan)
+* add support for `@typescript-eslint/parser` v5 (@ljharb)
+* [`no-invalid-html-attribute`]: add rule ([#2863][] @Nokel81)
+
+### Fixed
+* `propTypes`: add `VoidFunctionComponent` to react generic list ([#3092][] @vedadeepta)
+* [`jsx-fragments`], [`jsx-no-useless-fragment`]: avoid a crash on fragment syntax in `typescript-eslint` parser (@ljharb)
+* [`jsx-props-no-multi-spaces`]: avoid a crash on long member chains in tag names in `typescript-eslint` parser (@ljharb)
+* [`no-unused-prop-types`], `usedPropTypes`: avoid crash with typescript-eslint parser (@ljharb)
+* [`display-name`]: unwrap TS `as` expressions ([#3110][] @ljharb)
+* [`destructuring-assignment`]: detect refs nested in functions ([#3102] @ljharb)
+* [`no-unstable-components`]: improve handling of objects containing render function properties ([#3111] @fizwidget)
+* [`prop-types`], `propTypes`: add forwardRef<>, ForwardRefRenderFunction<> prop-types ([#3112] @vedadeepta)
+* [`no-typos`]: prevent a crash when using private methods (@ljharb)
+* [`destructuring-assignment`], component detection: improve component detection ([#3122] @vedadeepta)
+* [`no-invalid-html-attribute`]: avoid crash on spread props ([#3126] @ljharb)
+
+### Changed
+* [Tests] test on the new babel eslint parser ([#3113] @ljharb)
+* [Docs] [`jsx-no-target-blank`]: adjust options description ([#3124] @gebsh)
+
+[7.27.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.26.1...v7.27.0
+[#3126]: https://github.com/yannickcr/eslint-plugin-react/issue/3126
+[#3124]: https://github.com/yannickcr/eslint-plugin-react/pull/3124
+[#3122]: https://github.com/yannickcr/eslint-plugin-react/pull/3122
+[#3113]: https://github.com/yannickcr/eslint-plugin-react/pull/3113
+[#3112]: https://github.com/yannickcr/eslint-plugin-react/pull/3112
+[#3111]: https://github.com/yannickcr/eslint-plugin-react/pull/3111
+[#3110]: https://github.com/yannickcr/eslint-plugin-react/pull/3110
+[#3102]: https://github.com/yannickcr/eslint-plugin-react/issue/3102
 [#3092]: https://github.com/yannickcr/eslint-plugin-react/pull/3092
+[#3059]: https://github.com/yannickcr/eslint-plugin-react/pull/3059
+[#2863]: https://github.com/yannickcr/eslint-plugin-react/pull/2863
 [#2166]: https://github.com/yannickcr/eslint-plugin-react/pull/2166
 [#1980]: https://github.com/yannickcr/eslint-plugin-react/pull/1980
 
@@ -2106,7 +2193,7 @@ React ([#1073][] @jomasti)
 * Add support for `PureComponent` in [`prefer-stateless-function`][] ([#781][] @tiemevanveen)
 
 ### Fixed
-* Fix [`jsx-uses-vars`][] to work better with [`prefer-const`](http://eslint.org/docs/rules/prefer-const). You'll need to upgrade to ESLint 3.4.0 to completely fix the compatibility issue ([#716][])
+* Fix [`jsx-uses-vars`][] to work better with [`prefer-const`](https://eslint.org/docs/rules/prefer-const). You'll need to upgrade to ESLint 3.4.0 to completely fix the compatibility issue ([#716][])
 * Fix [`require-render-return`][] crash ([#784][])
 * Fix related components detection in [`prop-types`][] ([#735][])
 * Fix component detection to ignore functions expression without a parent component
@@ -3428,6 +3515,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`forbid-foreign-prop-types`]: docs/rules/forbid-foreign-prop-types.md
 [`forbid-prop-types`]: docs/rules/forbid-prop-types.md
 [`function-component-definition`]: docs/rules/function-component-definition.md
+[`hook-use-state`]: docs/rules/hook-use-state.md
 [`jsx-boolean-value`]: docs/rules/jsx-boolean-value.md
 [`jsx-child-element-spacing`]: docs/rules/jsx-child-element-spacing.md
 [`jsx-closing-bracket-location`]: docs/rules/jsx-closing-bracket-location.md
@@ -3481,6 +3569,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`no-did-update-set-state`]: docs/rules/no-did-update-set-state.md
 [`no-direct-mutation-state`]: docs/rules/no-direct-mutation-state.md
 [`no-find-dom-node`]: docs/rules/no-find-dom-node.md
+[`no-invalid-html-attribute`]: docs/rules/no-invalid-html-attribute.md
 [`no-is-mounted`]: docs/rules/no-is-mounted.md
 [`no-multi-comp`]: docs/rules/no-multi-comp.md
 [`no-namespace`]: docs/rules/no-namespace.md

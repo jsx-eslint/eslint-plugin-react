@@ -1,19 +1,19 @@
-ESLint-plugin-React
+`eslint-plugin-react`
 ===================
 
 [![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url] [![Code Climate][climate-image]][climate-url] [![Tidelift][tidelift-image]][tidelift-url]
 
-React specific linting rules for ESLint
+React specific linting rules for `eslint`
 
 # Installation
 
-Install [ESLint](https://www.github.com/eslint/eslint) either locally or globally. (Note that locally, per project, is strongly preferred)
+Install [`eslint`](https://www.github.com/eslint/eslint) either locally or globally. (Note that locally, per project, is strongly preferred)
 
 ```sh
-$ npm install eslint --save-dev
+$ npm install eslint@7 --save-dev
 ```
 
-If you installed `ESLint` globally, you have to install React plugin globally too. Otherwise, install it locally.
+If you installed `eslint` globally, you have to install the React plugin globally too. Otherwise, install it locally (strongly preferred)
 
 ```sh
 $ npm install eslint-plugin-react --save-dev
@@ -31,7 +31,7 @@ Use [our preset](#recommended) to get reasonable defaults:
   ]
 ```
 
-If you are using the [new JSX transform from React 17](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#removing-unused-react-imports), extend [`react/jsx-runtime`](https://github.com/yannickcr/eslint-plugin-react/blob/HEAD/index.js#L163-L176) in your eslint config (add `"plugin:react/jsx-runtime"` to `"extends"`) to disable the relevant rules.
+If you are using the [new JSX transform from React 17](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#removing-unused-react-imports), extend [`react/jsx-runtime`](https://github.com/yannickcr/eslint-plugin-react/blob/c8917b0885094b5e4cc2a6f613f7fb6f16fe932e/index.js#L163-L176) in your eslint config (add `"plugin:react/jsx-runtime"` to `"extends"`) to disable the relevant rules.
 
 You should also specify settings that will be shared across all the plugin rules. ([More about eslint shared settings](https://eslint.org/docs/user-guide/configuring/configuration-files#adding-shared-settings))
 
@@ -68,7 +68,7 @@ You should also specify settings that will be shared across all the plugin rules
       // Components used as alternatives to <form> for forms, eg. <Form endpoint={ url } />
       "CustomForm",
       {"name": "Form", "formAttribute": "endpoint"}
-    ]
+    ],
     "linkComponents": [
       // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
       "Hyperlink",
@@ -92,7 +92,7 @@ Add "react" to the plugins section.
 
 Enable JSX support.
 
-With ESLint 2+
+With `eslint` 2+
 
 ```json
 {
@@ -132,6 +132,7 @@ Enable the rules that you would like to use.
 |  |  | [react/forbid-foreign-prop-types](docs/rules/forbid-foreign-prop-types.md) | Forbid using another component's propTypes |
 |  |  | [react/forbid-prop-types](docs/rules/forbid-prop-types.md) | Forbid certain propTypes |
 |  | 🔧 | [react/function-component-definition](docs/rules/function-component-definition.md) | Standardize the way function component get defined |
+|  |  | [react/hook-use-state](docs/rules/hook-use-state.md) | Ensure symmetric naming of useState hook value and setter variables |
 |  |  | [react/no-access-state-in-setstate](docs/rules/no-access-state-in-setstate.md) | Reports when this.state is accessed within setState |
 |  |  | [react/no-adjacent-inline-elements](docs/rules/no-adjacent-inline-elements.md) | Prevent adjacent inline elements not separated by whitespace. |
 |  |  | [react/no-array-index-key](docs/rules/no-array-index-key.md) | Prevent usage of Array index in keys |
@@ -144,6 +145,7 @@ Enable the rules that you would like to use.
 |  |  | [react/no-did-update-set-state](docs/rules/no-did-update-set-state.md) | Prevent usage of setState in componentDidUpdate |
 | ✔ |  | [react/no-direct-mutation-state](docs/rules/no-direct-mutation-state.md) | Prevent direct mutation of this.state |
 | ✔ |  | [react/no-find-dom-node](docs/rules/no-find-dom-node.md) | Prevent usage of findDOMNode |
+|  | 🔧 | [react/no-invalid-html-attribute](docs/rules/no-invalid-html-attribute.md) | Forbid attribute with an invalid values` |
 | ✔ |  | [react/no-is-mounted](docs/rules/no-is-mounted.md) | Prevent usage of isMounted |
 |  |  | [react/no-multi-comp](docs/rules/no-multi-comp.md) | Prevent multiple component definition per file |
 |  |  | [react/no-namespace](docs/rules/no-namespace.md) | Enforce that namespaces are not used in React elements |
@@ -244,7 +246,7 @@ To enable this configuration use the `extends` property in your `.eslintrc` conf
 }
 ```
 
-See [ESLint documentation](https://eslint.org/docs/user-guide/configuring/configuration-files#extending-configuration-files) for more information about extending configuration files.
+See [`eslint` documentation](https://eslint.org/docs/user-guide/configuring/configuration-files#extending-configuration-files) for more information about extending configuration files.
 
 ## All
 
@@ -260,11 +262,11 @@ This pairs well with the `eslint:all` rule.
 }
 ```
 
-**Note**: These configurations will import `eslint-plugin-react` and enable JSX in [parser options](http://eslint.org/docs/user-guide/configuring#specifying-parser-options).
+**Note**: These configurations will import `eslint-plugin-react` and enable JSX in [parser options](https://eslint.org/docs/user-guide/configuring/language-options#specifying-parser-options).
 
 # License
 
-ESLint-plugin-React is licensed under the [MIT License](http://www.opensource.org/licenses/mit-license.php).
+`eslint-plugin-react` is licensed under the [MIT License](https://opensource.org/licenses/mit-license.php).
 
 
 [npm-url]: https://npmjs.org/package/eslint-plugin-react

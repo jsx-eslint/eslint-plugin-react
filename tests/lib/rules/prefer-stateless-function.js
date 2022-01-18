@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('prefer-stateless-function', rule, {
-  valid: [
+  valid: parsers.all([
     {
       // Already a stateless function
       code: `
@@ -173,7 +173,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['no-default', 'no-babel'],
     },
     {
       // Use this.bar
@@ -184,7 +184,6 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       // Use this.bar (destructuring)
@@ -196,7 +195,6 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       // Use this[bar]
@@ -207,7 +205,6 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       // Use this['bar']
@@ -218,7 +215,6 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       // Can return null (ES6, React 0.14.0)
@@ -232,12 +228,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      settings: {
-        react: {
-          version: '0.14.0',
-        },
-      },
+      settings: { react: { version: '0.14.0' } },
     },
     {
       // Can return null (ES5, React 0.14.0)
@@ -251,11 +242,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         });
       `,
-      settings: {
-        react: {
-          version: '0.14.0',
-        },
-      },
+      settings: { react: { version: '0.14.0' } },
     },
     {
       // Can return null (shorthand if in return, React 0.14.0)
@@ -266,12 +253,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      settings: {
-        react: {
-          version: '0.14.0',
-        },
-      },
+      settings: { react: { version: '0.14.0' } },
     },
     {
       code: `
@@ -284,7 +266,6 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         );
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       // Has childContextTypes
@@ -298,7 +279,6 @@ ruleTester.run('prefer-stateless-function', rule, {
           color: PropTypes.string
         };
       `,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       // Uses a decorator
@@ -310,7 +290,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['decorators'],
     },
     {
       // Uses a called decorator
@@ -322,7 +302,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['decorators'],
     },
     {
       // Uses multiple decorators
@@ -335,7 +315,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['decorators'],
     },
     {
       code: `
@@ -347,9 +327,9 @@ ruleTester.run('prefer-stateless-function', rule, {
       `,
       options: [{ ignorePureComponents: true }],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       // Only use this.props
       code: `
@@ -402,7 +382,6 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
@@ -414,7 +393,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
@@ -430,7 +409,6 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
@@ -444,7 +422,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
@@ -458,7 +436,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['flow'],
       errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
@@ -472,7 +450,6 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
@@ -497,7 +474,6 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
@@ -535,7 +511,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
@@ -580,7 +556,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       errors: [{ messageId: 'componentShouldBePure' }],
     },
     {
@@ -613,5 +589,5 @@ ruleTester.run('prefer-stateless-function', rule, {
       `,
       errors: [{ messageId: 'componentShouldBePure' }],
     },
-  ],
+  ]),
 });

@@ -32,7 +32,7 @@ const settings = {
 
 const ruleTester = new RuleTester({ settings });
 ruleTester.run('no-access-state-in-setstate', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         var Hello = React.createClass({
@@ -133,7 +133,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -144,7 +144,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
     },
     {
@@ -157,9 +157,9 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       `,
       parserOptions,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var Hello = React.createClass({
@@ -267,5 +267,5 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       parserOptions,
       errors: [{ messageId: 'useCallback' }],
     },
-  ],
+  ]),
 });

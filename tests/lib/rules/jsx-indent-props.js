@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-indent-props');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-indent-props', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         <App foo
@@ -76,11 +78,11 @@ ruleTester.run('jsx-indent-props', rule, {
       options: [-2],
     },
     {
-      code: [
-        '<App',
-        '\tfoo',
-        '/>',
-      ].join('\n'),
+      code: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t/>
+\t\t\t`,
       options: ['tab'],
     },
     {
@@ -195,6 +197,90 @@ ruleTester.run('jsx-indent-props', rule, {
     },
     {
       code: `
+        const F = () => {
+          const foo = true
+            ? <div id="id">test</div>
+            : false;
+
+          return <div
+            id="id"
+          >
+            test
+          </div>
+        }
+      `,
+      options: [
+        {
+          indentMode: 2,
+          ignoreTernaryOperator: false,
+        },
+      ],
+    },
+    {
+      code: `
+        const F = () => {
+          const foo = true
+            ? <div id="id">test</div>
+            : false;
+
+          return <div
+            id="id"
+          >
+            test
+          </div>
+        }
+      `,
+      options: [
+        {
+          indentMode: 2,
+          ignoreTernaryOperator: true,
+        },
+      ],
+    },
+    {
+      code: `
+\t\t\t\tconst F = () => {
+\t\t\t\t\tconst foo = true
+\t\t\t\t\t\t? <div id="id">test</div>
+\t\t\t\t\t\t: false;
+
+\t\t\t\t\treturn <div
+\t\t\t\t\t\tid="id"
+\t\t\t\t\t>
+\t\t\t\t\t\ttest
+\t\t\t\t\t</div>
+\t\t\t\t}
+`,
+      options: [
+        {
+          indentMode: 'tab',
+          ignoreTernaryOperator: false,
+        },
+      ],
+    },
+    {
+      code: `
+\t\t\t\tconst F = () => {
+\t\t\t\t\tconst foo = true
+\t\t\t\t\t\t? <div id="id">test</div>
+\t\t\t\t\t\t: false;
+
+\t\t\t\t\treturn <div
+\t\t\t\t\t\tid="id"
+\t\t\t\t\t>
+\t\t\t\t\t\ttest
+\t\t\t\t\t</div>
+\t\t\t\t}
+`,
+      options: [
+        {
+          indentMode: 'tab',
+          ignoreTernaryOperator: true,
+        },
+      ],
+    },
+    {
+      code: `
         {this.props.ignoreTernaryOperatorTrue
           ? <span
             className="value"
@@ -217,9 +303,9 @@ ruleTester.run('jsx-indent-props', rule, {
         },
       ],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         <App
@@ -447,16 +533,16 @@ ruleTester.run('jsx-indent-props', rule, {
       ],
     },
     {
-      code: [
-        '<App',
-        '    foo',
-        '/>',
-      ].join('\n'),
-      output: [
-        '<App',
-        '\tfoo',
-        '/>',
-      ].join('\n'),
+      code: `
+        <App1
+            foo
+        />
+      `,
+      output: `
+        <App1
+\tfoo
+        />
+      `,
       options: ['tab'],
       errors: [
         {
@@ -471,25 +557,25 @@ ruleTester.run('jsx-indent-props', rule, {
       ],
     },
     {
-      code: [
-        '<App',
-        '\t\t\tfoo',
-        '/>',
-      ].join('\n'),
-      output: [
-        '<App',
-        '\tfoo',
-        '/>',
-      ].join('\n'),
+      code: `
+\t\t\t\t<App
+\t\t\t\t\t\t\tfoo
+\t\t\t\t/>
+\t\t\t`,
+      output: `
+\t\t\t\t<App
+\t\t\t\t\tfoo
+\t\t\t\t/>
+\t\t\t`,
       options: ['tab'],
       errors: [
         {
           messageId: 'wrongIndent',
           data: {
-            needed: 1,
+            needed: 5,
             type: 'tab',
-            characters: 'character',
-            gotten: 3,
+            characters: 'characters',
+            gotten: 7,
           },
         },
       ],
@@ -605,5 +691,185 @@ ruleTester.run('jsx-indent-props', rule, {
         },
       ],
     },
-  ],
+    {
+      code: `
+        const F = () => {
+          const foo = true
+            ? <div id="id">test</div>
+            : false;
+
+          return <div
+              id="id"
+          >
+            test
+          </div>
+        }
+      `,
+      output: `
+        const F = () => {
+          const foo = true
+            ? <div id="id">test</div>
+            : false;
+
+          return <div
+            id="id"
+          >
+            test
+          </div>
+        }
+      `,
+      options: [
+        {
+          indentMode: 2,
+          ignoreTernaryOperator: false,
+        },
+      ],
+      errors: [
+        {
+          messageId: 'wrongIndent',
+          data: {
+            needed: 12,
+            type: 'space',
+            characters: 'characters',
+            gotten: 14,
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        const F = () => {
+          const foo = true
+            ? <div id="id">test</div>
+            : false;
+
+          return <div
+              id="id"
+          >
+            test
+          </div>
+        }
+      `,
+      output: `
+        const F = () => {
+          const foo = true
+            ? <div id="id">test</div>
+            : false;
+
+          return <div
+            id="id"
+          >
+            test
+          </div>
+        }
+      `,
+      options: [
+        {
+          indentMode: 2,
+          ignoreTernaryOperator: true,
+        },
+      ],
+      errors: [
+        {
+          messageId: 'wrongIndent',
+          data: {
+            needed: 12,
+            type: 'space',
+            characters: 'characters',
+            gotten: 14,
+          },
+        },
+      ],
+    },
+    {
+      code: `
+\t\t\t\tconst F = () => {
+\t\t\t\t\tconst foo = true
+\t\t\t\t\t\t? <div id="id">test</div>
+\t\t\t\t\t\t: false;
+
+\t\t\t\t\treturn <div
+\t\t\t\t\t\t\tid="id"
+\t\t\t\t\t>
+\t\t\t\t\t\ttest
+\t\t\t\t\t</div>
+\t\t\t\t}
+`,
+      output: `
+\t\t\t\tconst F = () => {
+\t\t\t\t\tconst foo = true
+\t\t\t\t\t\t? <div id="id">test</div>
+\t\t\t\t\t\t: false;
+
+\t\t\t\t\treturn <div
+\t\t\t\t\t\tid="id"
+\t\t\t\t\t>
+\t\t\t\t\t\ttest
+\t\t\t\t\t</div>
+\t\t\t\t}
+`,
+      options: [
+        {
+          indentMode: 'tab',
+          ignoreTernaryOperator: false,
+        },
+      ],
+      errors: [
+        {
+          messageId: 'wrongIndent',
+          data: {
+            needed: 6,
+            type: 'tab',
+            characters: 'characters',
+            gotten: 7,
+          },
+        },
+      ],
+    },
+    {
+      code: `
+\t\t\t\tconst F = () => {
+\t\t\t\t\tconst foo = true
+\t\t\t\t\t\t? <div id="id">test</div>
+\t\t\t\t\t\t: false;
+
+\t\t\t\t\treturn <div
+\t\t\t\t\t\t\tid="id"
+\t\t\t\t\t>
+\t\t\t\t\t\ttest
+\t\t\t\t\t</div>
+\t\t\t\t}
+`,
+      output: `
+\t\t\t\tconst F = () => {
+\t\t\t\t\tconst foo = true
+\t\t\t\t\t\t? <div id="id">test</div>
+\t\t\t\t\t\t: false;
+
+\t\t\t\t\treturn <div
+\t\t\t\t\t\tid="id"
+\t\t\t\t\t>
+\t\t\t\t\t\ttest
+\t\t\t\t\t</div>
+\t\t\t\t}
+`,
+      options: [
+        {
+          indentMode: 'tab',
+          ignoreTernaryOperator: true,
+        },
+      ],
+      errors: [
+        {
+          messageId: 'wrongIndent',
+          data: {
+            needed: 6,
+            type: 'tab',
+            characters: 'characters',
+            gotten: 7,
+          },
+        },
+      ],
+    },
+  ]),
 });

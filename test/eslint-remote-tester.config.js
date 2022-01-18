@@ -21,7 +21,12 @@ module.exports = {
     env: {
       es6: true,
     },
-    parser: '@typescript-eslint/parser',
+    overrides: [
+      {
+        files: ['*.ts', '*.tsx', '*.mts', '*.cts'],
+        parser: '@typescript-eslint/parser',
+      },
+    ],
     parserOptions: {
       ecmaVersion: 2020,
       sourceType: 'module',

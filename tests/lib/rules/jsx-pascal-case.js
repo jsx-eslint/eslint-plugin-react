@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-pascal-case', rule, {
-  valid: [
+  valid: parsers.all([
     {
     // The rule must not warn on components that start with a lowercase
     // because they are interpreted as HTML elements by React
@@ -74,10 +74,6 @@ ruleTester.run('jsx-pascal-case', rule, {
       code: '<T />',
     },
     {
-      code: '<T />',
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
       code: '<YMCA />',
       options: [{ allowAllCaps: true }],
     },
@@ -93,6 +89,7 @@ ruleTester.run('jsx-pascal-case', rule, {
     },
     {
       code: '<Modal:Header />',
+      features: ['jsx namespace'],
     },
     {
       code: '<IGNORED />',
@@ -130,9 +127,9 @@ ruleTester.run('jsx-pascal-case', rule, {
       code: '<_TestComponent />',
       options: [{ allowLeadingUnderscore: true }],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: '<Test_component />',
       errors: [
@@ -267,5 +264,5 @@ ruleTester.run('jsx-pascal-case', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

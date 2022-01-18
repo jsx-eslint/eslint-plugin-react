@@ -30,7 +30,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-props-no-multi-spaces', rule, {
-  valid: [].concat(
+  valid: parsers.all([].concat(
     {
       code: `
         <App />
@@ -73,7 +73,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
     },
     {
       code: '<App<T> foo bar />',
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['ts', 'no-babel'],
     },
     {
       code: '<Foo.Bar baz="quux" />',
@@ -99,7 +99,8 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
           type="button"
         />
       `,
-    }, (semver.satisfies(eslintPkg.version, '> 3') ? [
+    },
+    (semver.satisfies(eslintPkg.version, '> 3') ? [
       {
         code: `
           <button
@@ -149,9 +150,9 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
         `,
       },
     ] : [])
-  ),
+  )),
 
-  invalid: [].concat(
+  invalid: parsers.all([].concat(
     {
       code: `
         <App  foo />
@@ -241,8 +242,12 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       ],
     },
     {
-      code: '<Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh  xyzzy="thud" />',
-      output: '<Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh xyzzy="thud" />',
+      code: `
+        <Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh  xyzzy="thud" />
+      `,
+      output: `
+        <Foobar.Foo.Bar.Baz.Qux.Quux.Quuz.Corge.Grault.Garply.Waldo.Fred.Plugh xyzzy="thud" />
+      `,
       errors: [
         {
           messageId: 'onlyOneSpace',
@@ -287,7 +292,8 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
           data: { prop1: 'onClick', prop2: 'type' },
         },
       ],
-    }, (semver.satisfies(eslintPkg.version, '> 3') ? [
+    },
+    (semver.satisfies(eslintPkg.version, '> 3') ? [
       {
         code: `
           <button
@@ -359,5 +365,6 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
           },
         ],
       },
-    ] : [])),
+    ] : [])
+  )),
 });

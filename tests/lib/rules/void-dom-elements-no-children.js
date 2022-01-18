@@ -28,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('void-dom-elements-no-children', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<div>Foo</div>;',
     },
@@ -90,8 +90,8 @@ ruleTester.run('void-dom-elements-no-children', rule, {
         }
       `,
     },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: '<br>Foo</br>;',
       errors: [
@@ -166,7 +166,6 @@ ruleTester.run('void-dom-elements-no-children', rule, {
           data: { element: 'img' },
         },
       ],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -179,7 +178,6 @@ ruleTester.run('void-dom-elements-no-children', rule, {
           data: { element: 'img' },
         },
       ],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -192,7 +190,6 @@ ruleTester.run('void-dom-elements-no-children', rule, {
           data: { element: 'img' },
         },
       ],
-      parser: parsers.BABEL_ESLINT,
     },
-  ],
+  ]),
 });

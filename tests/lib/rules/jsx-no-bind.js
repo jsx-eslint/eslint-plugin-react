@@ -29,8 +29,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-no-bind', rule, {
-
-  valid: [
+  valid: parsers.all([
     // Not covered by the rule
     {
       code: '<div onClick={this._handleClick}></div>',
@@ -143,145 +142,145 @@ ruleTester.run('jsx-no-bind', rule, {
     },
 
     {
-      code: [
-        'class Hello extends Component {',
-        '  render() {',
-        '    const click = this.onTap.bind(this);',
-        '    return <div onClick={onClick}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello extends Component {
+          render() {
+            const click = this.onTap.bind(this);
+            return <div onClick={onClick}>Hello</div>;
+          }
+        };
+      `,
     },
     {
-      code: [
-        'class Hello extends Component {',
-        '  render() {',
-        '    foo.onClick = this.onTap.bind(this);',
-        '    return <div onClick={onClick}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello extends Component {
+          render() {
+            foo.onClick = this.onTap.bind(this);
+            return <div onClick={onClick}>Hello</div>;
+          }
+        };
+      `,
     },
     {
-      code: [
-        'class Hello extends Component {',
-        '  render() {',
-        '    return (<div>{',
-        '      this.props.list.map(this.wrap.bind(this, "span"))',
-        '    }</div>);',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello extends Component {
+          render() {
+            return (<div>{
+              this.props.list.map(this.wrap.bind(this, "span"))
+            }</div>);
+          }
+        };
+      `,
     },
     {
-      code: [
-        'class Hello extends Component {',
-        '  render() {',
-        '    const click = () => true;',
-        '    return <div onClick={onClick}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello extends Component {
+          render() {
+            const click = () => true;
+            return <div onClick={onClick}>Hello</div>;
+          }
+        };
+      `,
     },
     {
-      code: [
-        'class Hello extends Component {',
-        '  render() {',
-        '    return (<div>{',
-        '      this.props.list.map(item => <item hello="true"/>)',
-        '    }</div>);',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello extends Component {
+          render() {
+            return (<div>{
+              this.props.list.map(item => <item hello="true"/>)
+            }</div>);
+          }
+        };
+      `,
     },
     {
-      code: [
-        'class Hello extends Component {',
-        '  render() {',
-        '    const click = this.bar::baz',
-        '    return <div onClick={onClick}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
+      code: `
+        class Hello extends Component {
+          render() {
+            const click = this.bar::baz
+            return <div onClick={onClick}>Hello</div>;
+          }
+        };
+      `,
+      features: ['bind operator'],
     },
     {
-      code: [
-        'class Hello extends Component {',
-        '  render() {',
-        '    return (<div>{',
-        '      this.props.list.map(this.bar::baz)',
-        '    }</div>);',
-        '  }',
-        '};',
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
+      code: `
+        class Hello extends Component {
+          render() {
+            return (<div>{
+              this.props.list.map(this.bar::baz)
+            }</div>);
+          }
+        };
+      `,
+      features: ['bind operator'],
     },
     {
-      code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '    return (<div>{',
-        '      this.props.list.map(this.wrap.bind(this, "span"))',
-        '    }</div>);',
-        '  }',
-        '});',
-      ].join('\n'),
+      code: `
+        var Hello = React.createClass({
+          render: function() { 
+            return (<div>{
+              this.props.list.map(this.wrap.bind(this, "span"))
+            }</div>);
+          }
+        });
+      `,
     },
     {
-      code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '    const click = this.bar::baz',
-        '    return <div onClick={onClick}>Hello</div>;',
-        '  }',
-        '});',
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
+      code: `
+        var Hello = React.createClass({
+          render: function() { 
+            const click = this.bar::baz
+            return <div onClick={onClick}>Hello</div>;
+          }
+        });
+      `,
+      features: ['bind operator'],
     },
     {
-      code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '    const click = () => true',
-        '    return <div onClick={onClick}>Hello</div>;',
-        '  }',
-        '});',
-      ].join('\n'),
+      code: `
+        var Hello = React.createClass({
+          render: function() { 
+            const click = () => true
+            return <div onClick={onClick}>Hello</div>;
+          }
+        });
+      `,
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = () => {',
-        '    const onClick = this.doSomething.bind(this, "no")',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = () => {
+            const onClick = this.doSomething.bind(this, "no")
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
+      features: ['class fields'],
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = async () => {',
-        '    return (<div>{',
-        '      this.props.list.map(this.wrap.bind(this, "span"))',
-        '    }</div>);',
-        '  }',
-        '};',
-      ].join('\n'),
-      parser: parsers.BABEL_ESLINT,
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = async () => {
+            return (<div>{
+              this.props.list.map(this.wrap.bind(this, "span"))
+            }</div>);
+          }
+        };
+      `,
+      features: ['class fields'],
     },
     {
       // issue #1543: don't crash on uninitialized variables
-      code: [
-        'class Hello extends Component {',
-        '  render() {',
-        '    let click;',
-        '    return <div onClick={onClick}>Hello</div>;',
-        '  }',
-        '}',
-      ].join('\n'),
+      code: `
+        class Hello extends Component {
+          render() {
+            let click;
+            return <div onClick={onClick}>Hello</div>;
+          }
+        }
+      `,
     },
 
     // ignore DOM components
@@ -300,24 +299,24 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: '<div foo={::this.onChange} />',
       options: [{ ignoreDOMComponents: true }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
 
     // Local function declaration
     {
-      code: [
-        'function click() { return true; }',
-        'class Hello23 extends React.Component {',
-        '  renderDiv() {',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        function click() { return true; }
+        class Hello23 extends React.Component {
+          renderDiv() {
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     // .bind()
     {
       code: '<div onClick={this._handleClick.bind(this)}></div>',
@@ -358,39 +357,39 @@ ruleTester.run('jsx-no-bind', rule, {
       errors: [{ messageId: 'bindCall' }],
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv() {',
-        '    const click = this.doSomething.bind(this, "no")',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv() {
+            const click = this.doSomething.bind(this, "no")
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [{ messageId: 'bindCall' }],
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = () => {',
-        '    const click = this.doSomething.bind(this, "no")',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = () => {
+            const click = this.doSomething.bind(this, "no")
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [{ messageId: 'bindCall' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = async () => {',
-        '    const click = this.doSomething.bind(this, "no")',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = async () => {
+            const click = this.doSomething.bind(this, "no")
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [{ messageId: 'bindCall' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -403,44 +402,44 @@ ruleTester.run('jsx-no-bind', rule, {
       errors: [{ messageId: 'bindCall' }],
     },
     {
-      code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '   return <div onClick={this.doSomething.bind(this, "hey")} />',
-        '  }',
-        '});',
-      ].join('\n'),
+      code: `
+        var Hello = React.createClass({
+          render: function() { 
+          return <div onClick={this.doSomething.bind(this, "hey")} />
+          }
+        });
+      `,
       errors: [{ messageId: 'bindCall' }],
     },
     {
-      code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '    const doThing = this.doSomething.bind(this, "hey")',
-        '    return <div onClick={doThing} />',
-        '  }',
-        '});',
-      ].join('\n'),
+      code: `
+        var Hello = React.createClass({
+          render: function() { 
+            const doThing = this.doSomething.bind(this, "hey")
+            return <div onClick={doThing} />
+          }
+        });
+      `,
       errors: [{ messageId: 'bindCall' }],
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = () => {',
-        '    const click = () => true',
-        '    const renderStuff = () => {',
-        '      const click = this.doSomething.bind(this, "hey")',
-        '      return <div onClick={click} />',
-        '    }',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = () => {
+            const click = () => true
+            const renderStuff = () => {
+              const click = this.doSomething.bind(this, "hey")
+              return <div onClick={click} />
+            }
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [
         { messageId: 'bindCall' },
         { messageId: 'arrowFunc' },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -505,101 +504,101 @@ ruleTester.run('jsx-no-bind', rule, {
       errors: [{ messageId: 'arrowFunc' }],
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = () => {',
-        '    const click = () => true',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = () => {
+            const click = () => true
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [{ messageId: 'arrowFunc' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = async () => {',
-        '    const click = () => true',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = async () => {
+            const click = () => true
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [{ messageId: 'arrowFunc' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = async () => {',
-        '    const click = async () => true',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = async () => {
+            const click = async () => true
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [{ messageId: 'arrowFunc' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
-      code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '   return <div onClick={() => true} />',
-        '  }',
-        '});',
-      ].join('\n'),
-      errors: [{ messageId: 'arrowFunc' }],
-    },
-    {
-      code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '   return <div onClick={async () => true} />',
-        '  }',
-        '});',
-      ].join('\n'),
+      code: `
+        var Hello = React.createClass({
+          render: function() { 
+          return <div onClick={() => true} />
+          }
+        });
+      `,
       errors: [{ messageId: 'arrowFunc' }],
     },
     {
-      code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '    const doThing = () => true',
-        '    return <div onClick={doThing} />',
-        '  }',
-        '});',
-      ].join('\n'),
+      code: `
+        var Hello = React.createClass({
+          render: function() { 
+          return <div onClick={async () => true} />
+          }
+        });
+      `,
       errors: [{ messageId: 'arrowFunc' }],
     },
     {
-      code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '    const doThing = async () => true',
-        '    return <div onClick={doThing} />',
-        '  }',
-        '});',
-      ].join('\n'),
+      code: `
+        var Hello = React.createClass({
+          render: function() { 
+            const doThing = () => true
+            return <div onClick={doThing} />
+          }
+        });
+      `,
       errors: [{ messageId: 'arrowFunc' }],
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = () => {',
-        '    const click = ::this.onChange',
-        '    const renderStuff = () => {',
-        '      const click = () => true',
-        '      return <div onClick={click} />',
-        '    }',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        var Hello = React.createClass({
+          render: function() { 
+            const doThing = async () => true
+            return <div onClick={doThing} />
+          }
+        });
+      `,
+      errors: [{ messageId: 'arrowFunc' }],
+    },
+    {
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = () => {
+            const click = ::this.onChange
+            const renderStuff = () => {
+              const click = () => true
+              return <div onClick={click} />
+            }
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [
         { messageId: 'arrowFunc' },
         { messageId: 'bindExpression' },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
 
     // Functions
@@ -620,215 +619,215 @@ ruleTester.run('jsx-no-bind', rule, {
       errors: [{ messageId: 'func' }],
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = () => {',
-        '    const click = function () { return true }',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = () => {
+            const click = function () { return true }
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [{ messageId: 'func' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = () => {',
-        '    const click = function * () { return true }',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = () => {
+            const click = function * () { return true }
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [{ messageId: 'func' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = async () => {',
-        '    const click = function () { return true }',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = async () => {
+            const click = function () { return true }
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [{ messageId: 'func' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = async () => {',
-        '    const click = async function () { return true }',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = async () => {
+            const click = async function () { return true }
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [{ messageId: 'func' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
-      code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '   return <div onClick={function () { return true }} />',
-        '  }',
-        '});',
-      ].join('\n'),
-      errors: [{ messageId: 'func' }],
-    },
-    {
-      code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '   return <div onClick={function * () { return true }} />',
-        '  }',
-        '});',
-      ].join('\n'),
+      code: `
+        var Hello = React.createClass({
+          render: function() { 
+          return <div onClick={function () { return true }} />
+          }
+        });
+      `,
       errors: [{ messageId: 'func' }],
     },
     {
-      code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '   return <div onClick={async function () { return true }} />',
-        '  }',
-        '});',
-      ].join('\n'),
+      code: `
+        var Hello = React.createClass({
+          render: function() { 
+          return <div onClick={function * () { return true }} />
+          }
+        });
+      `,
       errors: [{ messageId: 'func' }],
     },
     {
-      code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '    const doThing = function () { return true }',
-        '    return <div onClick={doThing} />',
-        '  }',
-        '});',
-      ].join('\n'),
+      code: `
+        var Hello = React.createClass({
+          render: function() { 
+          return <div onClick={async function () { return true }} />
+          }
+        });
+      `,
       errors: [{ messageId: 'func' }],
     },
     {
-      code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '    const doThing = async function () { return true }',
-        '    return <div onClick={doThing} />',
-        '  }',
-        '});',
-      ].join('\n'),
+      code: `
+        var Hello = React.createClass({
+          render: function() { 
+            const doThing = function () { return true }
+            return <div onClick={doThing} />
+          }
+        });
+      `,
       errors: [{ messageId: 'func' }],
     },
     {
-      code: [
-        'var Hello = React.createClass({',
-        '  render: function() { ',
-        '    const doThing = function * () { return true }',
-        '    return <div onClick={doThing} />',
-        '  }',
-        '});',
-      ].join('\n'),
+      code: `
+        var Hello = React.createClass({
+          render: function() { 
+            const doThing = async function () { return true }
+            return <div onClick={doThing} />
+          }
+        });
+      `,
       errors: [{ messageId: 'func' }],
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = () => {',
-        '    const click = ::this.onChange',
-        '    const renderStuff = () => {',
-        '      const click = function () { return true }',
-        '      return <div onClick={click} />',
-        '    }',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        var Hello = React.createClass({
+          render: function() { 
+            const doThing = function * () { return true }
+            return <div onClick={doThing} />
+          }
+        });
+      `,
+      errors: [{ messageId: 'func' }],
+    },
+    {
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = () => {
+            const click = ::this.onChange
+            const renderStuff = () => {
+              const click = function () { return true }
+              return <div onClick={click} />
+            }
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [
         { messageId: 'func' },
         { messageId: 'bindExpression' },
       ],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
 
     // Bind expression
     {
       code: '<div foo={::this.onChange} />',
       errors: [{ messageId: 'bindExpression' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
       code: '<div foo={foo.bar::baz} />',
       errors: [{ messageId: 'bindExpression' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
       code: '<div foo={foo::bar} />',
       errors: [{ messageId: 'bindExpression' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv() {',
-        '    const click = ::this.onChange',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv() {
+            const click = ::this.onChange
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [{ messageId: 'bindExpression' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv() {',
-        '    const click = this.bar::baz',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv() {
+            const click = this.bar::baz
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [{ messageId: 'bindExpression' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = async () => {',
-        '    const click = this.bar::baz',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = async () => {
+            const click = this.bar::baz
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [{ messageId: 'bindExpression' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv = () => {',
-        '    const click = true',
-        '    const renderStuff = () => {',
-        '      const click = this.bar::baz',
-        '      return <div onClick={click} />',
-        '    }',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv = () => {
+            const click = true
+            const renderStuff = () => {
+              const click = this.bar::baz
+              return <div onClick={click} />
+            }
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [{ messageId: 'bindExpression' }],
-      parser: parsers.BABEL_ESLINT,
+      features: ['bind operator'],
     },
 
     // Local function declaration
     {
-      code: [
-        'class Hello23 extends React.Component {',
-        '  renderDiv() {',
-        '    function click() { return true; }',
-        '    return <div onClick={click}>Hello</div>;',
-        '  }',
-        '};',
-      ].join('\n'),
+      code: `
+        class Hello23 extends React.Component {
+          renderDiv() {
+            function click() { return true; }
+            return <div onClick={click}>Hello</div>;
+          }
+        };
+      `,
       errors: [
         { messageId: 'func' },
       ],
@@ -840,5 +839,5 @@ ruleTester.run('jsx-no-bind', rule, {
       options: [{ ignoreDOMComponents: true }],
       errors: [{ messageId: 'bindCall' }],
     },
-  ],
+  ]),
 });

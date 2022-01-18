@@ -29,7 +29,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('react-no-constructed-context-values', rule, {
-  valid: [].concat(
+  valid: parsers.all([
     {
       code: '<Context.Provider value={props}></Context.Provider>',
     },
@@ -62,7 +62,10 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           )
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['optional chaining'],
+      parserOptions: {
+        ecmaVersion: 2020,
+      },
     },
     {
       code: `
@@ -106,9 +109,8 @@ ruleTester.run('react-no-constructed-context-values', rule, {
         }
       `,
     },
-    parsers.TS([
-      {
-        code: `
+    {
+      code: `
           import React from 'react';
           import MyContext from './MyContext';
 
@@ -122,26 +124,8 @@ ruleTester.run('react-no-constructed-context-values', rule, {
               )
           }
         `,
-        parser: parsers.TYPESCRIPT_ESLINT,
-      },
-      {
-        code: `
-          import React from 'react';
-          import MyContext from './MyContext';
-
-          const value = '';
-
-          function ContextProvider(props) {
-              return (
-                  <MyContext.Provider value={value as any}>
-                      {props.children}
-                  </MyContext.Provider>
-              )
-          }
-        `,
-        parser: parsers['@TYPESCRIPT_ESLINT'],
-      },
-    ]),
+      features: ['types', 'no-babel'],
+    },
     {
       code: `
         import React from 'react';
@@ -155,13 +139,12 @@ ruleTester.run('react-no-constructed-context-values', rule, {
             )
         }
       `,
-    }
-  ),
-  invalid: [
+    },
+  ]),
+  invalid: parsers.all([
     {
       // Invalid because object construction creates a new identity
-      code:
-        'function Component() { const foo = {}; return (<Context.Provider value={foo}></Context.Provider>) }',
+      code: 'function Component() { const foo = {}; return (<Context.Provider value={foo}></Context.Provider>) }',
       errors: [{
         messageId: 'withIdentifierMsg',
         data: {
@@ -174,129 +157,138 @@ ruleTester.run('react-no-constructed-context-values', rule, {
     },
     {
       // Invalid because array construction creates a new identity
-      code:
-        'function Component() { const foo = []; return (<Context.Provider value={foo}></Context.Provider>) }',
-      errors: [{
-        messageId: 'withIdentifierMsg',
-        data: {
-          variableName: 'foo',
-          type: 'array',
-          nodeLine: '1',
-          usageLine: '1',
+      code: 'function Component() { const foo = []; return (<Context.Provider value={foo}></Context.Provider>) }',
+      errors: [
+        {
+          messageId: 'withIdentifierMsg',
+          data: {
+            variableName: 'foo',
+            type: 'array',
+            nodeLine: '1',
+            usageLine: '1',
+          },
         },
-      }],
+      ],
     },
     {
       // Invalid because arrow Function creates a new identity
-      code:
-        'function Component() { const foo = () => {}; return (<Context.Provider value={foo}></Context.Provider>)}',
-      errors: [{
-        messageId: 'withIdentifierMsgFunc',
-        data: {
-          variableName: 'foo',
-          type: 'function expression',
-          nodeLine: '1',
-          usageLine: '1',
+      code: 'function Component() { const foo = () => {}; return (<Context.Provider value={foo}></Context.Provider>)}',
+      errors: [
+        {
+          messageId: 'withIdentifierMsgFunc',
+          data: {
+            variableName: 'foo',
+            type: 'function expression',
+            nodeLine: '1',
+            usageLine: '1',
+          },
         },
-      }],
+      ],
     },
     {
       // Invalid because function expression creates a new identity
-      code:
-        'function Component() { const foo = function bar(){}; return (<Context.Provider value={foo}></Context.Provider>)}',
-      errors: [{
-        messageId: 'withIdentifierMsgFunc',
-        data: {
-          variableName: 'foo',
-          type: 'function expression',
-          nodeLine: '1',
-          usageLine: '1',
+      code: 'function Component() { const foo = function bar(){}; return (<Context.Provider value={foo}></Context.Provider>)}',
+      errors: [
+        {
+          messageId: 'withIdentifierMsgFunc',
+          data: {
+            variableName: 'foo',
+            type: 'function expression',
+            nodeLine: '1',
+            usageLine: '1',
+          },
         },
-      }],
+      ],
     },
     {
       // Invalid because class expression creates a new identity
-      code:
-        'function Component() { const foo = class SomeClass{}; return (<Context.Provider value={foo}></Context.Provider>)}',
-      errors: [{
-        messageId: 'withIdentifierMsg',
-        data: {
-          variableName: 'foo',
-          type: 'class expression',
-          nodeLine: '1',
-          usageLine: '1',
+      code: 'function Component() { const foo = class SomeClass{}; return (<Context.Provider value={foo}></Context.Provider>)}',
+      errors: [
+        {
+          messageId: 'withIdentifierMsg',
+          data: {
+            variableName: 'foo',
+            type: 'class expression',
+            nodeLine: '1',
+            usageLine: '1',
+          },
         },
-      }],
+      ],
     },
     {
       // Invalid because new expression creates a new identity
-      code:
-        'function Component() { const foo = new SomeClass(); return (<Context.Provider value={foo}></Context.Provider>)}',
-      errors: [{
-        messageId: 'withIdentifierMsg',
-        data: {
-          variableName: 'foo',
-          type: 'new expression',
-          nodeLine: '1',
-          usageLine: '1',
+      code: 'function Component() { const foo = new SomeClass(); return (<Context.Provider value={foo}></Context.Provider>)}',
+      errors: [
+        {
+          messageId: 'withIdentifierMsg',
+          data: {
+            variableName: 'foo',
+            type: 'new expression',
+            nodeLine: '1',
+            usageLine: '1',
+          },
         },
-      }],
+      ],
     },
     {
       // // Invalid because function declaration creates a new identity
-      code:
-        'function Component() { function foo() {}; return (<Context.Provider value={foo}></Context.Provider>)}',
-      errors: [{
-        messageId: 'withIdentifierMsgFunc',
-        data: {
-          variableName: 'foo',
-          type: 'function declaration',
-          nodeLine: '1',
-          usageLine: '1',
+      code: 'function Component() { function foo() {}; return (<Context.Provider value={foo}></Context.Provider>)}',
+      errors: [
+        {
+          messageId: 'withIdentifierMsgFunc',
+          data: {
+            variableName: 'foo',
+            type: 'function declaration',
+            nodeLine: '1',
+            usageLine: '1',
+          },
         },
-      }],
+      ],
     },
     {
       // Invalid because the object value of the ternrary will create a new identity
-      code:
-        'function Component() { const foo = true ? {} : "fine"; return (<Context.Provider value={foo}></Context.Provider>)}',
-      errors: [{
-        messageId: 'withIdentifierMsg',
-        data: {
-          variableName: 'foo',
-          type: 'object',
-          nodeLine: '1',
-          usageLine: '1',
+      code: 'function Component() { const foo = true ? {} : "fine"; return (<Context.Provider value={foo}></Context.Provider>)}',
+      errors: [
+        {
+          messageId: 'withIdentifierMsg',
+          data: {
+            variableName: 'foo',
+            type: 'object',
+            nodeLine: '1',
+            usageLine: '1',
+          },
         },
-      }],
+      ],
     },
     {
       // Invalid because the object value of the logical OR will create a new identity
-      code:
-        'function Component() { const foo = bar || {}; return (<Context.Provider value={foo}></Context.Provider>)}',
-      errors: [{
-        messageId: 'withIdentifierMsg',
-        data: {
-          variableName: 'foo',
-          type: 'object',
-          nodeLine: '1',
-          usageLine: '1',
+      code: 'function Component() { const foo = bar || {}; return (<Context.Provider value={foo}></Context.Provider>)}',
+      errors: [
+        {
+          messageId: 'withIdentifierMsg',
+          data: {
+            variableName: 'foo',
+            type: 'object',
+            nodeLine: '1',
+            usageLine: '1',
+          },
         },
-      }],
+      ],
     },
     {
       // Invalid because the object value of the logical AND will create a new identity
-      code:
-        'function Component() { const foo = bar && {}; return (<Context.Provider value={foo}></Context.Provider>)}',
-      errors: [{
-        messageId: 'withIdentifierMsg',
-        data: {
-          variableName: 'foo',
-          type: 'object',
-          nodeLine: '1',
-          usageLine: '1',
+      code: 'function Component() { const foo = bar && {}; return (<Context.Provider value={foo}></Context.Provider>)}',
+      errors: [
+        {
+          messageId: 'withIdentifierMsg',
+          data: {
+            variableName: 'foo',
+            type: 'object',
+            nodeLine: '1',
+            usageLine: '1',
+          },
         },
-      }],
+      ],
     },
     {
       // Invalid because the object value of the nested ternary will create a new identity
@@ -314,31 +306,33 @@ ruleTester.run('react-no-constructed-context-values', rule, {
     },
     {
       // Invalid because the object value will create a new identity
-      code:
-        'function Component() { let foo = {}; return (<Context.Provider value={foo}></Context.Provider>) }',
-      errors: [{
-        messageId: 'withIdentifierMsg',
-        data: {
-          variableName: 'foo',
-          type: 'object',
-          nodeLine: '1',
-          usageLine: '1',
+      code: 'function Component() { let foo = {}; return (<Context.Provider value={foo}></Context.Provider>) }',
+      errors: [
+        {
+          messageId: 'withIdentifierMsg',
+          data: {
+            variableName: 'foo',
+            type: 'object',
+            nodeLine: '1',
+            usageLine: '1',
+          },
         },
-      }],
+      ],
     },
     {
       // Invalid because the object value will create a new identity
-      code:
-        'function Component() { var foo = {}; return (<Context.Provider value={foo}></Context.Provider>)}',
-      errors: [{
-        messageId: 'withIdentifierMsg',
-        data: {
-          variableName: 'foo',
-          type: 'object',
-          nodeLine: '1',
-          usageLine: '1',
+      code: 'function Component() { var foo = {}; return (<Context.Provider value={foo}></Context.Provider>)}',
+      errors: [
+        {
+          messageId: 'withIdentifierMsg',
+          data: {
+            variableName: 'foo',
+            type: 'object',
+            nodeLine: '1',
+            usageLine: '1',
+          },
         },
-      }],
+      ],
     },
     {
       // Valid, but currently not handled at the moment.
@@ -349,15 +343,17 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           return (<Context.Provider value={a}></Context.Provider>);
         }
       `,
-      errors: [{
-        messageId: 'withIdentifierMsg',
-        data: {
-          variableName: 'a',
-          type: 'object',
-          nodeLine: '3',
-          usageLine: '5',
+      errors: [
+        {
+          messageId: 'withIdentifierMsg',
+          data: {
+            variableName: 'a',
+            type: 'object',
+            nodeLine: '3',
+            usageLine: '5',
+          },
         },
-      }],
+      ],
     },
     {
       // Invalid variable reassignment from parameter because bar is an object identity
@@ -368,15 +364,17 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           return (<Context.Provider value={bar}></Context.Provider>);
         }
       `,
-      errors: [{
-        messageId: 'withIdentifierMsg',
-        data: {
-          variableName: 'bar',
-          type: 'object',
-          nodeLine: '3',
-          usageLine: '5',
+      errors: [
+        {
+          messageId: 'withIdentifierMsg',
+          data: {
+            variableName: 'bar',
+            type: 'object',
+            nodeLine: '3',
+            usageLine: '5',
+          },
         },
-      }],
+      ],
     },
     {
       // Invalid because the object expression possibly returned from the ternary will create a new identity
@@ -386,54 +384,61 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           return (<Context.Provider value={bar}></Context.Provider>);
         }
       `,
-      errors: [{
-        messageId: 'withIdentifierMsg',
-        data: {
-          variableName: 'bar',
-          type: 'object',
-          nodeLine: '3',
-          usageLine: '4',
+      errors: [
+        {
+          messageId: 'withIdentifierMsg',
+          data: {
+            variableName: 'bar',
+            type: 'object',
+            nodeLine: '3',
+            usageLine: '4',
+          },
         },
-      }],
-      parser: parsers.BABEL_ESLINT,
+      ],
     },
     {
       // Invalid because inline object construction will create a new identity
       code: 'function Component() { return (<Context.Provider value={{foo: "bar"}}></Context.Provider>);}',
-      errors: [{
-        messageId: 'defaultMsg',
-        data: {
-          type: 'object',
-          nodeLine: '1',
-          usageLine: '1',
+      errors: [
+        {
+          messageId: 'defaultMsg',
+          data: {
+            type: 'object',
+            nodeLine: '1',
+            usageLine: '1',
+          },
         },
-      }],
+      ],
     },
     {
       // Invalid because Wrapper returns JSX which has a new identity
       code: 'function Component() { const Wrapper = (<SomeComp />); return (<Context.Provider value={Wrapper}></Context.Provider>);}',
-      errors: [{
-        messageId: 'withIdentifierMsg',
-        data: {
-          variableName: 'Wrapper',
-          type: 'JSX element',
-          nodeLine: '1',
-          usageLine: '1',
+      errors: [
+        {
+          messageId: 'withIdentifierMsg',
+          data: {
+            variableName: 'Wrapper',
+            type: 'JSX element',
+            nodeLine: '1',
+            usageLine: '1',
+          },
         },
-      }],
+      ],
     },
     {
       // Invalid because RegEx returns a new object which has will be a new identity
       code: 'function Component() { const someRegex = /HelloWorld/; return (<Context.Provider value={someRegex}></Context.Provider>);}',
-      errors: [{
-        messageId: 'withIdentifierMsg',
-        data: {
-          variableName: 'someRegex',
-          type: 'regular expression',
-          nodeLine: '1',
-          usageLine: '1',
+      errors: [
+        {
+          messageId: 'withIdentifierMsg',
+          data: {
+            variableName: 'someRegex',
+            type: 'regular expression',
+            nodeLine: '1',
+            usageLine: '1',
+          },
         },
-      }],
+      ],
     },
     {
       // Invalid because the right hand side of the assignment expression contains a function which will create a new identity
@@ -444,15 +449,17 @@ ruleTester.run('react-no-constructed-context-values', rule, {
           return (<Context.Provider value={bar}></Context.Provider>);
         }
       `,
-      errors: [{
-        messageId: 'withIdentifierMsg',
-        data: {
-          variableName: 'bar',
-          type: 'assignment expression',
-          nodeLine: '4',
-          usageLine: '5',
+      errors: [
+        {
+          messageId: 'withIdentifierMsg',
+          data: {
+            variableName: 'bar',
+            type: 'assignment expression',
+            nodeLine: '4',
+            usageLine: '5',
+          },
         },
-      }],
+      ],
     },
-  ],
+  ]),
 });

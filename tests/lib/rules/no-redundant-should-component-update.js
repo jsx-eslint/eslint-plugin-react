@@ -26,7 +26,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester();
 ruleTester.run('no-redundant-should-component-update', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         class Foo extends React.Component {
@@ -46,7 +46,6 @@ ruleTester.run('no-redundant-should-component-update', rule, {
         }
       `,
       parserOptions,
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -56,7 +55,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
       parserOptions,
     },
     {
@@ -71,9 +70,9 @@ ruleTester.run('no-redundant-should-component-update', rule, {
       `,
       parserOptions,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         class Foo extends React.PureComponent {
@@ -82,10 +81,12 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'noShouldCompUpdate',
-        data: { component: 'Foo' },
-      }],
+      errors: [
+        {
+          messageId: 'noShouldCompUpdate',
+          data: { component: 'Foo' },
+        },
+      ],
       parserOptions,
     },
     {
@@ -96,10 +97,12 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'noShouldCompUpdate',
-        data: { component: 'Foo' },
-      }],
+      errors: [
+        {
+          messageId: 'noShouldCompUpdate',
+          data: { component: 'Foo' },
+        },
+      ],
       parserOptions,
     },
     {
@@ -110,11 +113,13 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'noShouldCompUpdate',
-        data: { component: 'Foo' },
-      }],
-      parser: parsers.BABEL_ESLINT,
+      errors: [
+        {
+          messageId: 'noShouldCompUpdate',
+          data: { component: 'Foo' },
+        },
+      ],
+      features: ['class fields'],
       parserOptions,
     },
     {
@@ -127,10 +132,12 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           };
         }
       `,
-      errors: [{
-        messageId: 'noShouldCompUpdate',
-        data: { component: 'Bar' },
-      }],
+      errors: [
+        {
+          messageId: 'noShouldCompUpdate',
+          data: { component: 'Bar' },
+        },
+      ],
       parserOptions,
     },
     {
@@ -143,10 +150,12 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           };
         }
       `,
-      errors: [{
-        messageId: 'noShouldCompUpdate',
-        data: { component: 'Bar' },
-      }],
+      errors: [
+        {
+          messageId: 'noShouldCompUpdate',
+          data: { component: 'Bar' },
+        },
+      ],
       parserOptions,
     },
     {
@@ -157,11 +166,13 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      errors: [{
-        messageId: 'noShouldCompUpdate',
-        data: { component: 'Foo' },
-      }],
+      errors: [
+        {
+          messageId: 'noShouldCompUpdate',
+          data: { component: 'Foo' },
+        },
+      ],
       parserOptions,
     },
-  ],
+  ]),
 });

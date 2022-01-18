@@ -11,6 +11,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-props-no-spreading');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -27,7 +29,7 @@ const ruleTester = new RuleTester({ parserOptions });
 const expectedError = { messageId: 'noSpreading' };
 
 ruleTester.run('jsx-props-no-spreading', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         const {one_prop, two_prop} = props;
@@ -134,9 +136,9 @@ ruleTester.run('jsx-props-no-spreading', rule, {
         },
       ],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         <App {...props}/>
@@ -261,5 +263,5 @@ ruleTester.run('jsx-props-no-spreading', rule, {
       options: [{ exceptions: ['components.DropdownIndicator', 'Nav.Item'] }],
       errors: [expectedError],
     },
-  ],
+  ]),
 });

@@ -26,102 +26,25 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const tests = {
-  valid: [
-    `
-    <div>
-      <Button>{data.label}</Button>
-
-      <List />
-
-      <Button>
-        <IconPreview />
-        Button 2
-
-        <span></span>
-      </Button>
-
-      {showSomething === true && <Something />}
-
-      <Button>Button 3</Button>
-
-      {showSomethingElse === true ? (
-        <SomethingElse />
-      ) : (
-        <ErrorMessage />
-      )}
-    </div>
-    `,
-  ],
-  invalid: [
+new RuleTester({ parserOptions }).run('jsx-newline', rule, {
+  valid: parsers.all([
     {
       code: `
-        <div>
-          <Button>{data.label}</Button>
-          <List />
-        </div>
-      `,
-      output: `
         <div>
           <Button>{data.label}</Button>
 
           <List />
-        </div>
-      `,
-      errors: [{
-        messageId: 'require',
-      }],
-    },
-    {
-      code: `
-        <div>
-          <Button>{data.label}</Button>
-          {showSomething === true && <Something />}
-        </div>
-      `,
-      output: `
-        <div>
-          <Button>{data.label}</Button>
+
+          <Button>
+            <IconPreview />
+            Button 2
+
+            <span></span>
+          </Button>
 
           {showSomething === true && <Something />}
-        </div>
-      `,
-      errors: [{
-        messageId: 'require',
-      }],
-    },
-    {
-      code: `
-        <div>
-          {showSomething === true && <Something />}
-          <Button>{data.label}</Button>
-        </div>
-      `,
-      output: `
-        <div>
-          {showSomething === true && <Something />}
 
-          <Button>{data.label}</Button>
-        </div>
-      `,
-      errors: [{
-        messageId: 'require',
-      }],
-    },
-    {
-      code: `
-        <div>
-          {showSomething === true && <Something />}
-          {showSomethingElse === true ? (
-            <SomethingElse />
-          ) : (
-            <ErrorMessage />
-          )}
-        </div>
-      `,
-      output: `
-        <div>
-          {showSomething === true && <Something />}
+          <Button>Button 3</Button>
 
           {showSomethingElse === true ? (
             <SomethingElse />
@@ -130,113 +53,7 @@ const tests = {
           )}
         </div>
       `,
-      errors: [{
-        messageId: 'require',
-      }],
     },
-    {
-      code: `
-        <div>
-          <div>
-            <button></button>
-            <button></button>
-          </div>
-          <div>
-            <span></span>
-            <span></span>
-          </div>
-        </div>
-      `,
-      output: `
-        <div>
-          <div>
-            <button></button>
-
-            <button></button>
-          </div>
-
-          <div>
-            <span></span>
-
-            <span></span>
-          </div>
-        </div>
-      `,
-      errors: [
-        { messageId: 'require' },
-        { messageId: 'require' },
-        { messageId: 'require' },
-      ],
-    },
-  ],
-};
-
-const advanceFeatTest = {
-  valid: [
-    {
-      code: `
-        <>
-          <Button>{data.label}</Button>
-          Test
-
-          <span>Should be in new line</span>
-        </>
-      `,
-    },
-  ],
-  invalid: [
-    {
-      code: `
-        <>
-          <Button>{data.label}</Button>
-          Test
-          <span>Should be in new line</span>
-        </>
-      `,
-      output: `
-        <>
-          <Button>{data.label}</Button>
-          Test
-
-          <span>Should be in new line</span>
-        </>
-      `,
-      errors: [
-        { messageId: 'require' },
-      ],
-    },
-  ],
-};
-
-// Run tests with default parser
-new RuleTester({ parserOptions }).run('jsx-newline', rule, tests);
-
-// Run tests with babel parser
-let ruleTester = new RuleTester({ parserOptions, parser: parsers.BABEL_ESLINT });
-ruleTester.run('jsx-newline', rule, tests);
-ruleTester.run('jsx-newline', rule, advanceFeatTest);
-
-// Run tests with typescript parser
-ruleTester = new RuleTester({ parserOptions, parser: parsers.TYPESCRIPT_ESLINT });
-ruleTester.run('jsx-newline', rule, tests);
-ruleTester.run('jsx-newline', rule, advanceFeatTest);
-
-ruleTester = new RuleTester({ parserOptions, parser: parsers['@TYPESCRIPT_ESLINT'] });
-ruleTester.run('jsx-newline', rule, {
-  valid: parsers.TS(tests.valid),
-  invalid: parsers.TS(tests.invalid),
-});
-ruleTester.run('jsx-newline', rule, {
-  valid: parsers.TS(advanceFeatTest.valid),
-  invalid: parsers.TS(advanceFeatTest.invalid),
-});
-
-// ------------------------------------------------------------------------------
-// Tests: { prevent: true }
-// --------- ---------------------------------------------------------------------
-
-const preventionTests = {
-  valid: [
     {
       code: `
         <div>
@@ -256,12 +73,140 @@ const preventionTests = {
           )}
         </div>
       `,
-      options: [{
-        prevent: true,
+      options: [{ prevent: true }],
+    },
+    {
+      code: `
+        <>
+          <Button>{data.label}</Button>
+          Test
+
+          <span>Should be in new line</span>
+        </>
+      `,
+      features: ['fragment'],
+    },
+    {
+      code: `
+        <>
+          <Button>{data.label}</Button>
+          Test
+          <span>Should be in new line</span>
+        </>
+      `,
+      options: [{ prevent: true }],
+      features: ['fragment'],
+    },
+  ]),
+  invalid: parsers.all([
+    {
+      code: `
+        <div>
+          <Button>{data.label}</Button>
+          <List />
+        </div>
+      `,
+      output: `
+        <div>
+          <Button>{data.label}</Button>
+
+          <List />
+        </div>
+      `,
+      errors: [{
+        messageId: 'require',
       }],
     },
-  ],
-  invalid: [
+    {
+      code: `
+        <div>
+          <Button>{data.label}</Button>
+          {showSomething === true && <Something />}
+        </div>
+      `,
+      output: `
+        <div>
+          <Button>{data.label}</Button>
+
+          {showSomething === true && <Something />}
+        </div>
+      `,
+      errors: [{ messageId: 'require' }],
+    },
+    {
+      code: `
+        <div>
+          {showSomething === true && <Something />}
+          <Button>{data.label}</Button>
+        </div>
+      `,
+      output: `
+        <div>
+          {showSomething === true && <Something />}
+
+          <Button>{data.label}</Button>
+        </div>
+      `,
+      errors: [{ messageId: 'require' }],
+    },
+    {
+      code: `
+        <div>
+          {showSomething === true && <Something />}
+          {showSomethingElse === true ? (
+            <SomethingElse />
+          ) : (
+            <ErrorMessage />
+          )}
+        </div>
+      `,
+      output: `
+        <div>
+          {showSomething === true && <Something />}
+
+          {showSomethingElse === true ? (
+            <SomethingElse />
+          ) : (
+            <ErrorMessage />
+          )}
+        </div>
+      `,
+      errors: [{ messageId: 'require' }],
+    },
+    {
+      code: `
+        <div>
+          <div>
+            <button></button>
+            <button></button>
+          </div>
+          <div>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      `,
+      output: `
+        <div>
+          <div>
+            <button></button>
+
+            <button></button>
+          </div>
+
+          <div>
+            <span></span>
+
+            <span></span>
+          </div>
+        </div>
+      `,
+      errors: [
+        { messageId: 'require' },
+        { messageId: 'require' },
+        { messageId: 'require' },
+      ],
+    },
     {
       output: `
         <div>
@@ -276,12 +221,8 @@ const preventionTests = {
           <List />
         </div>
       `,
-      errors: [{
-        messageId: 'prevent',
-      }],
-      options: [{
-        prevent: true,
-      }],
+      errors: [{ messageId: 'prevent' }],
+      options: [{ prevent: true }],
     },
     {
       output: `
@@ -297,12 +238,8 @@ const preventionTests = {
           {showSomething === true && <Something />}
         </div>
       `,
-      errors: [{
-        messageId: 'prevent',
-      }],
-      options: [{
-        prevent: true,
-      }],
+      errors: [{ messageId: 'prevent' }],
+      options: [{ prevent: true }],
     },
     {
       output: `
@@ -318,12 +255,8 @@ const preventionTests = {
           <Button>{data.label}</Button>
         </div>
       `,
-      errors: [{
-        messageId: 'prevent',
-      }],
-      options: [{
-        prevent: true,
-      }],
+      errors: [{ messageId: 'prevent' }],
+      options: [{ prevent: true }],
     },
     {
       output: `
@@ -347,12 +280,8 @@ const preventionTests = {
           )}
         </div>
       `,
-      errors: [{
-        messageId: 'prevent',
-      }],
-      options: [{
-        prevent: true,
-      }],
+      errors: [{ messageId: 'prevent' }],
+      options: [{ prevent: true }],
     },
     {
       output: `
@@ -387,15 +316,8 @@ const preventionTests = {
         { messageId: 'prevent' },
         { messageId: 'prevent' },
       ],
-      options: [{
-        prevent: true,
-      }],
+      options: [{ prevent: true }],
     },
-  ],
-};
-
-const preventionAdvanceFeatTest = {
-  valid: [
     {
       code: `
         <>
@@ -404,12 +326,17 @@ const preventionAdvanceFeatTest = {
           <span>Should be in new line</span>
         </>
       `,
-      options: [{
-        prevent: true,
-      }],
+      output: `
+        <>
+          <Button>{data.label}</Button>
+          Test
+
+          <span>Should be in new line</span>
+        </>
+      `,
+      errors: [{ messageId: 'require' }],
+      features: ['fragment'],
     },
-  ],
-  invalid: [
     {
       output: `
         <>
@@ -426,35 +353,9 @@ const preventionAdvanceFeatTest = {
           <span>Should be in new line</span>
         </>
       `,
-      errors: [
-        { messageId: 'prevent' },
-      ],
-      options: [{
-        prevent: true,
-      }],
+      errors: [{ messageId: 'prevent' }],
+      options: [{ prevent: true }],
+      features: ['fragment'],
     },
-  ],
-};
-
-// // Run tests with default parser
-new RuleTester({ parserOptions }).run('jsx-newline', rule, preventionTests);
-
-// // Run tests with babel parser
-ruleTester = new RuleTester({ parserOptions, parser: parsers.BABEL_ESLINT });
-ruleTester.run('jsx-newline', rule, preventionTests);
-ruleTester.run('jsx-newline', rule, preventionAdvanceFeatTest);
-
-// // Run tests with typescript parser
-ruleTester = new RuleTester({ parserOptions, parser: parsers.TYPESCRIPT_ESLINT });
-ruleTester.run('jsx-newline', rule, preventionTests);
-ruleTester.run('jsx-newline', rule, preventionAdvanceFeatTest);
-
-ruleTester = new RuleTester({ parserOptions, parser: parsers['@TYPESCRIPT_ESLINT'] });
-ruleTester.run('jsx-newline', rule, {
-  valid: parsers.TS(preventionTests.valid),
-  invalid: parsers.TS(preventionTests.invalid),
-});
-ruleTester.run('jsx-newline', rule, {
-  valid: parsers.TS(preventionAdvanceFeatTest.valid),
-  invalid: parsers.TS(preventionAdvanceFeatTest.invalid),
+  ]),
 });

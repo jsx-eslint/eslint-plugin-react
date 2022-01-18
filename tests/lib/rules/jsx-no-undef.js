@@ -21,6 +21,7 @@ const parserOptions = {
   ecmaFeatures: {
     jsx: true,
   },
+  jsxPragma: null,
 };
 
 // -----------------------------------------------------------------------------
@@ -28,17 +29,13 @@ const parserOptions = {
 // -----------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({ parserOptions });
-const linter = ruleTester.linter || eslint.linter;
-linter.defineRule('no-undef', require('eslint/lib/rules/no-undef'));
+const linter = ruleTester.linter || eslint.linter || eslint.Linter;
+linter.defineRule('no-undef', require('../../helpers/getESLintCoreRule')('no-undef'));
 
 ruleTester.run('jsx-no-undef', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);',
-    },
-    {
-      code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);',
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<img />);',
@@ -54,6 +51,7 @@ ruleTester.run('jsx-no-undef', rule, {
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<Apppp:Foo />);',
+      features: ['jsx namespace'],
     },
     {
       code: `
@@ -71,6 +69,7 @@ ruleTester.run('jsx-no-undef', rule, {
       globals: {
         Text: true,
       },
+      features: ['no-babel'], // TODO: FIXME: remove `no-babel` and fix
     },
     {
       code: `
@@ -82,41 +81,46 @@ ruleTester.run('jsx-no-undef', rule, {
         };
       `,
       parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
-      options: [
-        { allowGlobals: false },
-      ],
-      parser: parsers.BABEL_ESLINT,
+      options: [{ allowGlobals: false }],
     },
-  ],
+  ].map(parsers.disableNewTS)),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<App />);',
-      errors: [{
-        messageId: 'undefined',
-        data: { identifier: 'App' },
-      }],
+      errors: [
+        {
+          messageId: 'undefined',
+          data: { identifier: 'App' },
+        },
+      ],
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<Appp.Foo />);',
-      errors: [{
-        messageId: 'undefined',
-        data: { identifier: 'Appp' },
-      }],
+      errors: [
+        {
+          messageId: 'undefined',
+          data: { identifier: 'Appp' },
+        },
+      ],
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<appp.Foo />);',
-      errors: [{
-        messageId: 'undefined',
-        data: { identifier: 'appp' },
-      }],
+      errors: [
+        {
+          messageId: 'undefined',
+          data: { identifier: 'appp' },
+        },
+      ],
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<appp.foo.Bar />);',
-      errors: [{
-        messageId: 'undefined',
-        data: { identifier: 'appp' },
-      }],
+      errors: [
+        {
+          messageId: 'undefined',
+          data: { identifier: 'appp' },
+        },
+      ],
     },
     {
       code: `
@@ -128,14 +132,13 @@ ruleTester.run('jsx-no-undef', rule, {
         export default TextWrapper;
       `,
       parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
-      errors: [{
-        messageId: 'undefined',
-        data: { identifier: 'Text' },
-      }],
-      options: [
-        { allowGlobals: false },
+      errors: [
+        {
+          messageId: 'undefined',
+          data: { identifier: 'Text' },
+        },
       ],
-      parser: parsers.BABEL_ESLINT,
+      options: [{ allowGlobals: false }],
       globals: {
         Text: true,
       },
@@ -149,5 +152,5 @@ ruleTester.run('jsx-no-undef', rule, {
         },
       ],
     },
-  ],
+  ].map(parsers.disableNewTS)),
 });

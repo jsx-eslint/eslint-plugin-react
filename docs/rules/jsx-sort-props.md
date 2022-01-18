@@ -98,6 +98,6 @@ With `reservedFirst: ["key"]`, the following will **not** warn:
 <Hello key={'uuid'} name="John" ref="ref" />
 ```
 
-## When not to use
+## When Not To Use It
 
 This rule is a formatting preference and not following it won't negatively affect the quality of your code. If alphabetizing props isn't a part of your coding standards, then you can leave this rule off.

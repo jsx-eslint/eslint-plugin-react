@@ -29,288 +29,185 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-first-prop-new-line', rule, {
-
-  valid: [
+  valid: parsers.all([
     {
       code: '<Foo />',
       options: ['never'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: '<Foo prop="bar" />',
       options: ['never'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: '<Foo {...this.props} />',
       options: ['never'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: '<Foo a a a />',
       options: ['never'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
-      code: [
-        '<Foo a',
-        '  b ',
-        '/>',
-      ].join('\n'),
+      code: `
+        <Foo a
+          b 
+        />
+      `,
       options: ['never'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: '<Foo />',
       options: ['multiline'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: '<Foo prop="one" />',
       options: ['multiline'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: '<Foo {...this.props} />',
       options: ['multiline'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: '<Foo a a a />',
       options: ['multiline'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
-      code: [
-        '<Foo',
-        '  propOne="one"',
-        '  propTwo="two"',
-        '/>',
-      ].join('\n'),
+      code: `
+        <Foo
+          propOne="one"
+          propTwo="two"
+        />
+      `,
       options: ['multiline'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
-      code: [
-        '<Foo',
-        '  {...this.props}',
-        '  propTwo="two"',
-        '/>',
-      ].join('\n'),
+      code: `
+        <Foo
+          {...this.props}
+          propTwo="two"
+        />
+      `,
       options: ['multiline'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
-      code: [
-        '<Foo bar />',
-      ].join('\n'),
+      code: `
+        <Foo bar />
+      `,
       options: ['multiline-multiprop'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
-      code: [
-        '<Foo bar baz />',
-      ].join('\n'),
+      code: `
+        <Foo bar baz />
+      `,
       options: ['multiline-multiprop'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
-      code: [
-        '<Foo prop={{',
-        '}} />',
-      ].join('\n'),
+      code: `
+        <Foo prop={{
+        }} />
+      `,
       options: ['multiline-multiprop'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
-      code: [
-        '<Foo ',
-        '  foo={{',
-        '  }}',
-        '  bar',
-        '/>',
-      ].join('\n'),
+      code: `
+        <Foo 
+          foo={{
+          }}
+          bar
+        />
+      `,
       options: ['multiline-multiprop'],
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: [
-        '<Foo ',
-        '  foo={{',
-        '  }}',
-        '  bar',
-        '/>',
-      ].join('\n'),
-      options: ['multiline-multiprop'],
-      parser: parsers.TYPESCRIPT_ESLINT,
     },
     {
       code: '<Foo />',
       options: ['always'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
-      code: [
-        '<Foo',
-        '  propOne="one"',
-        '  propTwo="two"',
-        '/>',
-      ].join('\n'),
+      code: `
+        <Foo
+          propOne="one"
+          propTwo="two"
+        />
+      `,
       options: ['always'],
-      parser: parsers.BABEL_ESLINT,
     },
     {
-      code: [
-        '<Foo',
-        '  {...this.props}',
-        '  propTwo="two"',
-        '/>',
-      ].join('\n'),
+      code: `
+        <Foo
+          {...this.props}
+          propTwo="two"
+        />
+      `,
       options: ['always'],
-      parser: parsers.BABEL_ESLINT,
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
-      code: '<Foo propOne="one" propTwo="two" />',
-      output: [
-        '<Foo',
-        'propOne="one" propTwo="two" />',
-      ].join('\n'),
+      code: `
+        <Foo propOne="one" propTwo="two" />
+      `,
+      output: `
+        <Foo
+propOne="one" propTwo="two" />
+      `,
       options: ['always'],
       errors: [{ messageId: 'propOnNewLine' }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
-      code: '<Foo propOne="one" propTwo="two" />',
-      output: [
-        '<Foo',
-        'propOne="one" propTwo="two" />',
-      ].join('\n'),
+      code: `
+        <Foo propOne="one"
+          propTwo="two"
+        />
+      `,
+      output: `
+        <Foo
+propOne="one"
+          propTwo="two"
+        />
+      `,
       options: ['always'],
       errors: [{ messageId: 'propOnNewLine' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
     },
     {
-      code: [
-        '<Foo propOne="one"',
-        '  propTwo="two"',
-        '/>',
-      ].join('\n'),
-      output: [
-        '<Foo',
-        'propOne="one"',
-        '  propTwo="two"',
-        '/>',
-      ].join('\n'),
-      options: ['always'],
-      errors: [{ messageId: 'propOnNewLine' }],
-      parser: parsers.BABEL_ESLINT,
-    },
-    {
-      code: [
-        '<Foo propOne="one"',
-        '  propTwo="two"',
-        '/>',
-      ].join('\n'),
-      output: [
-        '<Foo',
-        'propOne="one"',
-        '  propTwo="two"',
-        '/>',
-      ].join('\n'),
-      options: ['always'],
-      errors: [{ messageId: 'propOnNewLine' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
-    },
-    {
-      code: [
-        '<Foo',
-        '  propOne="one"',
-        '  propTwo="two"',
-        '/>',
-      ].join('\n'),
-      output: [
-        '<Foo propOne="one"',
-        '  propTwo="two"',
-        '/>',
-      ].join('\n'),
+      code: `
+        <Foo
+          propOne="one"
+          propTwo="two"
+        />
+      `,
+      output: `
+        <Foo propOne="one"
+          propTwo="two"
+        />
+      `,
       options: ['never'],
       errors: [{ messageId: 'propOnSameLine' }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
-      code: [
-        '<Foo',
-        '  propOne="one"',
-        '  propTwo="two"',
-        '/>',
-      ].join('\n'),
-      output: [
-        '<Foo propOne="one"',
-        '  propTwo="two"',
-        '/>',
-      ].join('\n'),
-      options: ['never'],
-      errors: [{ messageId: 'propOnSameLine' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
-    },
-    {
-      code: [
-        '<Foo prop={{',
-        '}} />',
-      ].join('\n'),
-      output: [
-        '<Foo',
-        'prop={{',
-        '}} />',
-      ].join('\n'),
+      code: `
+        <Foo prop={{
+        }} />
+      `,
+      output: `
+        <Foo
+prop={{
+        }} />
+      `,
       options: ['multiline'],
       errors: [{ messageId: 'propOnNewLine' }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
-      code: [
-        '<Foo prop={{',
-        '}} />',
-      ].join('\n'),
-      output: [
-        '<Foo',
-        'prop={{',
-        '}} />',
-      ].join('\n'),
-      options: ['multiline'],
-      errors: [{ messageId: 'propOnNewLine' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
-    },
-    {
-      code: [
-        '<Foo bar={{',
-        '}} baz />',
-      ].join('\n'),
-      output: [
-        '<Foo',
-        'bar={{',
-        '}} baz />',
-      ].join('\n'),
+      code: `
+        <Foo bar={{
+        }} baz />
+      `,
+      output: `
+        <Foo
+bar={{
+        }} baz />
+      `,
       options: ['multiline-multiprop'],
       errors: [{ messageId: 'propOnNewLine' }],
-      parser: parsers.BABEL_ESLINT,
     },
-    {
-      code: [
-        '<Foo bar={{',
-        '}} baz />',
-      ].join('\n'),
-      output: [
-        '<Foo',
-        'bar={{',
-        '}} baz />',
-      ].join('\n'),
-      options: ['multiline-multiprop'],
-      errors: [{ messageId: 'propOnNewLine' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
-    },
-  ],
+  ]),
 });

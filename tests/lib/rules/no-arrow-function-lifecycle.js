@@ -5,7 +5,9 @@
 
 'use strict';
 
+const semver = require('semver');
 const RuleTester = require('eslint').RuleTester;
+const eslintPkg = require('eslint/package.json');
 const rule = require('../../../lib/rules/no-arrow-function-lifecycle');
 
 const parsers = require('../../helpers/parsers');
@@ -24,7 +26,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-arrow-function-lifecycle', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -167,7 +169,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -177,7 +179,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -187,7 +189,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -197,7 +199,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -207,7 +209,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -217,7 +219,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -227,7 +229,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -237,7 +239,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -247,7 +249,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -257,7 +259,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -267,7 +269,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -277,7 +279,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -287,7 +289,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -297,7 +299,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -307,7 +309,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -317,7 +319,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -327,7 +329,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -338,7 +340,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render() { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields'],
     },
     {
       code: `
@@ -348,29 +350,24 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
         });
       `,
     },
-  ].concat(
-    parsers.TS([
-      {
-        code: `
-          class MyComponent extends React.Component {
-            onChange: () => void;
-          }
-        `,
-        parser: parsers['@TYPESCRIPT_ESLINT'],
-      },
-    ])
-  ),
+    {
+      code: `
+        class MyComponent extends React.Component {
+          onChange: () => void;
+        }
+      `,
+      features: ['types'],
+    },
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
           render: () => { return <div />; }
         });
       `,
-      errors: [{
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           render: function() { return <div />; }
@@ -384,9 +381,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render: function() { return <div />; }
         });
       `,
-      errors: [{
-        message: 'getDefaultProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'getDefaultProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           getDefaultProps: function() { return {}; },
@@ -401,9 +396,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render: function() { return <div />; }
         });
       `,
-      errors: [{
-        message: 'getInitialState is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'getInitialState is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           getInitialState: function() { return {}; },
@@ -418,9 +411,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render: function() { return <div />; }
         });
       `,
-      errors: [{
-        message: 'getChildContext is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'getChildContext is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           getChildContext: function() { return {}; },
@@ -435,9 +426,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render: function() { return <div />; }
         });
       `,
-      errors: [{
-        message: 'componentWillMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'componentWillMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           componentWillMount: function() {},
@@ -452,9 +441,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render: function() { return <div />; }
         });
       `,
-      errors: [{
-        message: 'UNSAFE_componentWillMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'UNSAFE_componentWillMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           UNSAFE_componentWillMount: function() {},
@@ -469,9 +456,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render: function() { return <div />; }
         });
       `,
-      errors: [{
-        message: 'componentDidMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'componentDidMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           componentDidMount: function() {},
@@ -486,9 +471,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render: function() { return <div />; }
         });
       `,
-      errors: [{
-        message: 'componentWillReceiveProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'componentWillReceiveProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           componentWillReceiveProps: function() {},
@@ -503,9 +486,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render: function() { return <div />; }
         });
       `,
-      errors: [{
-        message: 'UNSAFE_componentWillReceiveProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'UNSAFE_componentWillReceiveProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           UNSAFE_componentWillReceiveProps: function() {},
@@ -520,9 +501,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render: function() { return <div />; }
         });
       `,
-      errors: [{
-        message: 'shouldComponentUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'shouldComponentUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           shouldComponentUpdate: function() { return true; },
@@ -537,9 +516,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render: function() { return <div />; }
         });
       `,
-      errors: [{
-        message: 'componentWillUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'componentWillUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           componentWillUpdate: function() {},
@@ -554,9 +531,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render: function() { return <div />; }
         });
       `,
-      errors: [{
-        message: 'UNSAFE_componentWillUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'UNSAFE_componentWillUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           UNSAFE_componentWillUpdate: function() {},
@@ -571,9 +546,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render: function() { return <div />; }
         });
       `,
-      errors: [{
-        message: 'getSnapshotBeforeUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'getSnapshotBeforeUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           getSnapshotBeforeUpdate: function() { return {}; },
@@ -588,9 +561,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render: function() { return <div />; }
         });
       `,
-      errors: [{
-        message: 'componentDidUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'componentDidUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           componentDidUpdate: function() {},
@@ -605,9 +576,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render: function() { return <div />; }
         });
       `,
-      errors: [{
-        message: 'componentDidCatch is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'componentDidCatch is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           componentDidCatch: function() {},
@@ -622,9 +591,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render: function() { return <div />; }
         });
       `,
-      errors: [{
-        message: 'componentWillUnmount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      errors: [{ message: 'componentWillUnmount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         var Hello = createReactClass({
           componentWillUnmount: function() {},
@@ -639,10 +606,8 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -658,13 +623,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'getDefaultProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'getDefaultProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -681,13 +644,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'getInitialState is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'getInitialState is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -704,13 +665,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'getChildContext is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'getChildContext is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -727,13 +686,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'getDerivedStateFromProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'getDerivedStateFromProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -750,13 +707,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'componentWillMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'componentWillMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -773,13 +728,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'UNSAFE_componentWillMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'UNSAFE_componentWillMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -796,13 +749,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'componentDidMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'componentDidMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -819,13 +770,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'componentWillReceiveProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'componentWillReceiveProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -842,13 +791,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'UNSAFE_componentWillReceiveProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'UNSAFE_componentWillReceiveProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -865,13 +812,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'shouldComponentUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'shouldComponentUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -888,13 +833,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'componentWillUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'componentWillUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -911,13 +854,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'UNSAFE_componentWillUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'UNSAFE_componentWillUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -934,13 +875,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'getSnapshotBeforeUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'getSnapshotBeforeUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -957,13 +896,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'componentDidUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'componentDidUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -980,13 +917,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'componentDidCatch is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'componentDidCatch is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -1003,13 +938,11 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
           render = () => { return <div />; }
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      errors: [{
-        message: 'componentWillUnmount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      },
-      {
-        message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.',
-      }],
+      features: ['class fields'],
+      errors: [
+        { message: 'componentWillUnmount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+        { message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' },
+      ],
       output: `
         class Hello extends React.Component {
           handleEventMethods = () => {}
@@ -1018,5 +951,41 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
         }
       `,
     },
-  ],
+    {
+      code: `
+        class Hello extends React.Component {
+          render = () => <div />
+        }
+      `,
+      features: ['class fields'],
+      errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: semver.satisfies(eslintPkg.version, '> 3') ? `
+        class Hello extends React.Component {
+          render() { return <div />; }
+        }
+      ` : `
+        class Hello extends React.Component {
+          render = () => <div />
+        }
+      `,
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render = () => /*first*/<div />/*second*/
+        }
+      `,
+      features: ['class fields'],
+      errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: semver.satisfies(eslintPkg.version, '> 3') ? `
+        class Hello extends React.Component {
+          render() { return /*first*/<div />/*second*/; }
+        }
+      ` : `
+        class Hello extends React.Component {
+          render = () => /*first*/<div />/*second*/
+        }
+      `,
+    },
+  ]),
 });

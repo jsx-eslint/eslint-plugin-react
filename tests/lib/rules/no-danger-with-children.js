@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-danger-with-children');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-danger-with-children', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<div>Children</div>',
     },
@@ -98,8 +100,8 @@ ruleTester.run('no-danger-with-children', rule, {
         const component = shallow(<TaskEditableTitle {...props} />);
       `,
     },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: `
         <div dangerouslySetInnerHTML={{ __html: "HTML" }}>
@@ -209,5 +211,5 @@ ruleTester.run('no-danger-with-children', rule, {
       `,
       errors: [{ messageId: 'dangerWithChildren' }],
     },
-  ],
+  ]),
 });

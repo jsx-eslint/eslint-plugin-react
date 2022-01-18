@@ -12,6 +12,8 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/prefer-es6-class');
 
+const parsers = require('../../helpers/parsers');
+
 const parserOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
@@ -26,7 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('prefer-es6-class', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         class Hello extends React.Component {
@@ -73,9 +75,9 @@ ruleTester.run('prefer-es6-class', rule, {
       `,
       options: ['always'],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var Hello = createReactClass({
@@ -109,5 +111,5 @@ ruleTester.run('prefer-es6-class', rule, {
       options: ['never'],
       errors: [{ messageId: 'shouldUseCreateClass' }],
     },
-  ],
+  ]),
 });

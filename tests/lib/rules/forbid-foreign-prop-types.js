@@ -27,7 +27,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('forbid-foreign-prop-types', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: 'import { propTypes } from "SomeComponent";',
     },
@@ -69,9 +69,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
           name: Message.propTypes.message
         };
       `,
-      options: [
-        { allowInPropTypes: true },
-      ],
+      options: [{ allowInPropTypes: true }],
     },
     {
       code: `
@@ -81,14 +79,12 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      options: [
-        { allowInPropTypes: true },
-      ],
+      features: ['class fields'],
+      options: [{ allowInPropTypes: true }],
     },
-  ],
+  ]),
 
-  invalid: [
+  invalid: parsers.all([
     {
       code: `
         var Foo = createReactClass({
@@ -148,7 +144,6 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
           }
         });
       `,
-      parser: parsers.BABEL_ESLINT,
       errors: [
         {
           messageId: 'forbiddenPropType',
@@ -164,7 +159,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
+      features: ['class fields', 'no-ts'], // TODO: FIXME: remove "no-ts" and fix
       errors: [
         {
           messageId: 'forbiddenPropType',
@@ -200,11 +195,7 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
           name: Message.propTypes.message
         };
       `,
-      options: [
-        {
-          allowInPropTypes: false,
-        },
-      ],
+      options: [{ allowInPropTypes: false }],
       errors: [
         {
           messageId: 'forbiddenPropType',
@@ -220,12 +211,8 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
           };
         }
       `,
-      parser: parsers.BABEL_ESLINT,
-      options: [
-        {
-          allowInPropTypes: false,
-        },
-      ],
+      features: ['class fields', 'no-ts'], // TODO: FIXME: remove "no-ts" and fix
+      options: [{ allowInPropTypes: false }],
       errors: [
         {
           messageId: 'forbiddenPropType',
@@ -233,5 +220,5 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
         },
       ],
     },
-  ],
+  ]),
 });

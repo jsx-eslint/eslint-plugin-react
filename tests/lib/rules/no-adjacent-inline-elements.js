@@ -11,6 +11,7 @@
 
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-adjacent-inline-elements');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 6,
@@ -26,7 +27,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester();
 ruleTester.run('no-adjacent-inline-elements', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: '<div />;',
       parserOptions,
@@ -46,6 +47,7 @@ ruleTester.run('no-adjacent-inline-elements', rule, {
     {
       code: '<div><a></a>&nbsp;<a></a></div>;',
       parserOptions,
+      features: ['no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
     },
     {
       code: '<div><a></a>&nbsp;some text &nbsp; <a></a></div>;',
@@ -72,8 +74,7 @@ ruleTester.run('no-adjacent-inline-elements', rule, {
       parserOptions,
     },
     {
-      code: ('React.createElement("div", undefined, [React.createElement("a"), '
-        + '" some text ", React.createElement("a")]);'),
+      code: ('React.createElement("div", undefined, [React.createElement("a"), " some text ", React.createElement("a")]);'),
       parserOptions,
     },
     {
@@ -84,8 +85,8 @@ ruleTester.run('no-adjacent-inline-elements', rule, {
       code: 'React.createElement(a, b);',
       parserOptions,
     },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: '<div><a></a><a></a></div>;',
       errors: [{ messageId: 'inlineElement' }],
@@ -101,5 +102,5 @@ ruleTester.run('no-adjacent-inline-elements', rule, {
       errors: [{ messageId: 'inlineElement' }],
       parserOptions,
     },
-  ],
+  ]),
 });

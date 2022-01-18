@@ -28,7 +28,7 @@ const parsers = require('../../helpers/parsers');
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('function-component-definition', rule, {
-  valid: [
+  valid: parsers.all([
     {
       code: `
         class Hello extends React.Component {
@@ -78,8 +78,8 @@ ruleTester.run('function-component-definition', rule, {
       options: [{ namedComponents: 'function-declaration' }],
     },
     {
-    // shouldn't trigger this rule since functions stating with a lowercase
-    // letter are not considered components
+      // shouldn't trigger this rule since functions stating with a lowercase
+      // letter are not considered components
       code: `
         const selectAvatarByUserId = (state, id) => {
           const user = selectUserById(state, id)
@@ -89,8 +89,8 @@ ruleTester.run('function-component-definition', rule, {
       options: [{ namedComponents: 'function-declaration' }],
     },
     {
-    // shouldn't trigger this rule since functions stating with a lowercase
-    // letter are not considered components
+      // shouldn't trigger this rule since functions stating with a lowercase
+      // letter are not considered components
       code: `
         function ensureValidSourceType(sourceType: string) {
           switch (sourceType) {
@@ -103,97 +103,97 @@ ruleTester.run('function-component-definition', rule, {
         }
       `,
       options: [{ namedComponents: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: 'function Hello(props: Test) { return <p/> }',
       options: [{ namedComponents: 'function-declaration' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: 'var Hello = function(props: Test) { return <p/> }',
       options: [{ namedComponents: 'function-expression' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: 'var Hello = (props: Test) => { return <p/> }',
       options: [{ namedComponents: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: 'var Hello: React.FC<Test> = function(props) { return <p/> }',
       options: [{ namedComponents: 'function-expression' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: 'var Hello: React.FC<Test> = (props) => { return <p/> }',
       options: [{ namedComponents: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: 'function Hello<Test>(props: Props<Test>) { return <p/> }',
       options: [{ namedComponents: 'function-declaration' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: 'function Hello<Test extends {}>(props: Props<Test>) { return <p/> }',
       options: [{ namedComponents: 'function-declaration' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types', 'no-babel'],
     },
     {
       code: 'var Hello = function<Test>(props: Props<Test>) { return <p/> }',
       options: [{ namedComponents: 'function-expression' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['ts'],
     },
     {
       code: 'var Hello = function<Test extends {}>(props: Props<Test>) { return <p/> }',
       options: [{ namedComponents: 'function-expression' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types', 'no-babel'],
     },
     {
       code: 'var Hello = <Test extends {}>(props: Props<Test>) => { return <p/> }',
       options: [{ namedComponents: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types', 'no-babel'],
     },
     {
       code: 'function wrapper() { return function<Test>(props: Props<Test>) { return <p/> } } ',
       options: [{ unnamedComponents: 'function-expression' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: 'function wrapper() { return function<Test extends {}>(props: Props<Test>) { return <p/> } } ',
       options: [{ unnamedComponents: 'function-expression' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types', 'no-babel'],
     },
     {
       code: 'function wrapper() { return<Test extends {}>(props: Props<Test>) => { return <p/> } } ',
       options: [{ unnamedComponents: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types', 'no-babel'],
     },
     {
       code: 'var Hello = function(props): ReactNode { return <p/> }',
       options: [{ namedComponents: 'function-expression' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: 'var Hello = (props): ReactNode => { return <p/> }',
       options: [{ namedComponents: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: 'function wrapper() { return function(props): ReactNode { return <p/> } }',
       options: [{ unnamedComponents: 'function-expression' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: 'function wrapper() { return (props): ReactNode => { return <p/> } }',
       options: [{ unnamedComponents: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: 'function Hello(props): ReactNode { return <p/> }',
       options: [{ namedComponents: 'function-declaration' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     // https://github.com/yannickcr/eslint-plugin-react/issues/2765
     {
@@ -346,9 +346,57 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ unnamedComponents: 'function-expression' }],
     },
-  ],
 
-  invalid: [
+    {
+      code: 'function Hello(props) { return <div/> }',
+      options: [{ namedComponents: ['function-declaration', 'function-expression'] }],
+    },
+    {
+      code: 'var Hello = function(props) { return <div/> }',
+      options: [{ namedComponents: ['function-declaration', 'function-expression'] }],
+    },
+    {
+      code: 'var Foo = React.memo(function Foo() { return <p/> })',
+      options: [{ namedComponents: ['function-declaration', 'function-expression'] }],
+    },
+    {
+      code: 'function Hello(props: Test) { return <p/> }',
+      options: [{ namedComponents: ['function-declaration', 'function-expression'] }],
+      features: ['types'],
+    },
+    {
+      code: 'var Hello = function(props: Test) { return <p/> }',
+      options: [{ namedComponents: ['function-expression', 'function-expression'] }],
+      features: ['types'],
+    },
+    {
+      code: 'var Hello = (props: Test) => { return <p/> }',
+      options: [{ namedComponents: ['arrow-function', 'function-expression'] }],
+      features: ['types'],
+    },
+    {
+      code: `
+        function wrap(Component) {
+          return function(props) {
+            return <div><Component {...props}/></div>;
+          };
+        }
+      `,
+      options: [{ unnamedComponents: ['arrow-function', 'function-expression'] }],
+    },
+    {
+      code: `
+        function wrap(Component) {
+          return (props) => {
+            return <div><Component {...props}/></div>;
+          };
+        }
+      `,
+      options: [{ unnamedComponents: ['arrow-function', 'function-expression'] }],
+    },
+  ]),
+
+  invalid: parsers.all([
     {
       code: `
         function Hello(props) {
@@ -362,7 +410,6 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -377,7 +424,6 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -392,7 +438,6 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-declaration' }],
       errors: [{ messageId: 'function-declaration' }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -421,7 +466,6 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-expression' }],
       errors: [{ messageId: 'function-expression' }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -472,7 +516,6 @@ ruleTester.run('function-component-definition', rule, {
       `,
       errors: [{ messageId: 'function-expression' }],
       options: [{ unnamedComponents: 'function-expression' }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -487,7 +530,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-declaration' }],
       errors: [{ messageId: 'function-declaration' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -502,7 +545,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-declaration' }],
       errors: [{ messageId: 'function-declaration' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -517,7 +560,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -532,7 +575,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -547,7 +590,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-expression' }],
       errors: [{ messageId: 'function-expression' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -562,7 +605,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-expression' }],
       errors: [{ messageId: 'function-expression' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -577,7 +620,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-expression' }],
       errors: [{ messageId: 'function-expression' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -592,7 +635,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -607,7 +650,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-declaration' }],
       errors: [{ messageId: 'function-declaration' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -622,7 +665,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-declaration' }],
       errors: [{ messageId: 'function-declaration' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -637,7 +680,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types', 'no-babel'],
     },
     {
       code: `
@@ -652,7 +695,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -667,7 +710,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-expression' }],
       errors: [{ messageId: 'function-expression' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types', 'no-babel'],
     },
     {
       code: `
@@ -682,7 +725,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-declaration' }],
       errors: [{ messageId: 'function-declaration' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types', 'no-babel'],
     },
     {
       code: `
@@ -697,7 +740,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-expression' }],
       errors: [{ messageId: 'function-expression' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types', 'no-babel'],
     },
     {
       code: `
@@ -712,7 +755,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types', 'no-babel'],
     },
     {
       code: `
@@ -727,7 +770,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-declaration' }],
       errors: [{ messageId: 'function-declaration' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types', 'no-babel'],
     },
     {
       code: `
@@ -746,7 +789,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       errors: [{ messageId: 'arrow-function' }],
       options: [{ unnamedComponents: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types', 'no-babel'],
     },
     {
       code: `
@@ -765,7 +808,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       errors: [{ messageId: 'arrow-function' }],
       options: [{ unnamedComponents: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -784,7 +827,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       errors: [{ messageId: 'function-expression' }],
       options: [{ unnamedComponents: 'function-expression' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types', 'no-babel'],
     },
     {
       code: `
@@ -803,7 +846,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       errors: [{ messageId: 'arrow-function' }],
       options: [{ unnamedComponents: 'arrow-function' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -822,7 +865,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       errors: [{ messageId: 'function-expression' }],
       options: [{ unnamedComponents: 'function-expression' }],
-      parser: parsers.TYPESCRIPT_ESLINT,
+      features: ['types'],
     },
     {
       code: `
@@ -837,7 +880,6 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -852,7 +894,6 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -867,7 +908,6 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-declaration' }],
       errors: [{ messageId: 'function-declaration' }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -877,7 +917,6 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
-      parser: parsers.BABEL_ESLINT,
     },
     {
       code: `
@@ -887,7 +926,48 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ unnamedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
-      parser: parsers.BABEL_ESLINT,
     },
-  ],
+    {
+      code: `
+        function Hello(props) {
+          return <div/>;
+        }
+      `,
+      output: `
+        var Hello = (props) => {
+          return <div/>;
+        }
+      `,
+      options: [{ namedComponents: ['arrow-function', 'function-expression'] }],
+      errors: [{ messageId: 'arrow-function' }],
+    },
+    {
+      code: `
+        var Hello = (props) => {
+          return <div/>;
+        };
+      `,
+      output: `
+        function Hello(props) {
+          return <div/>;
+        }
+      `,
+      options: [{ namedComponents: ['function-declaration', 'function-expression'] }],
+      errors: [{ messageId: 'function-declaration' }],
+    },
+    {
+      code: `
+        var Hello = (props) => {
+          return <div/>;
+        };
+      `,
+      output: `
+        var Hello = function(props) {
+          return <div/>;
+        }
+      `,
+      options: [{ namedComponents: ['function-expression', 'function-declaration'] }],
+      errors: [{ messageId: 'function-expression' }],
+    },
+  ]),
 });

@@ -105,6 +105,6 @@ Examples of **correct** code for this rule, when configured with `"multiline-mul
 "react/jsx-first-prop-new-line": `"always" | "never" | "multiline" | "multiline-multiprop"`
 ```
 
-## When not to use
+## When Not To Use It
 
 If you are not using JSX then you can disable this rule.
