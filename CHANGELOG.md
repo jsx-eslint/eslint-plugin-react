@@ -20,10 +20,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [readme] Some grammar fixes ([#3186][] @JJ)
 * [Docs] [`jsx-no-target-blank`]: Improve readme ([#3169][] @apepper)
 * [Docs] [`display-name`]: improve examples ([#3189][] @golopot)
+* [Refactor] [`no-invalid-html-attribute`]: sort HTML_ELEMENTS and messages ([#3182][] @Primajin)
 
 [#3190]: https://github.com/yannickcr/eslint-plugin-react/pull/3190
 [#3189]: https://github.com/yannickcr/eslint-plugin-react/pull/3189
 [#3186]: https://github.com/yannickcr/eslint-plugin-react/pull/3186
+[#3182]: https://github.com/yannickcr/eslint-plugin-react/pull/3182
 [#3174]: https://github.com/yannickcr/eslint-plugin-react/pull/3174
 [#3169]: https://github.com/yannickcr/eslint-plugin-react/pull/3169
 [#3167]: https://github.com/yannickcr/eslint-plugin-react/pull/3167
