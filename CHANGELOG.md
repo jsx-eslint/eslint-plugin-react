@@ -16,7 +16,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Changed
 * [readme] change [`jsx-runtime`] link from branch to sha ([#3160][] @tatsushitoji)
 * [Docs] HTTP => HTTPS ([#3133][] @Schweinepriester)
+* [readme] Some grammar fixes ([#3186][] @JJ)
 
+[#3186]: https://github.com/yannickcr/eslint-plugin-react/pull/3186
 [#3174]: https://github.com/yannickcr/eslint-plugin-react/pull/3174
 [#3167]: https://github.com/yannickcr/eslint-plugin-react/pull/3167
 [#3163]: https://github.com/yannickcr/eslint-plugin-react/pull/3163
