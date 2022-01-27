@@ -18,7 +18,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] HTTP => HTTPS ([#3133][] @Schweinepriester)
 * [readme] Some grammar fixes ([#3186][] @JJ)
 * [Docs] [`jsx-no-target-blank`]: Improve readme ([#3169][] @apepper)
+* [Docs] [`display-name`]: improve examples ([#3189][] @golopot)
 
+[#3189]: https://github.com/yannickcr/eslint-plugin-react/pull/3189
 [#3186]: https://github.com/yannickcr/eslint-plugin-react/pull/3186
 [#3174]: https://github.com/yannickcr/eslint-plugin-react/pull/3174
 [#3169]: https://github.com/yannickcr/eslint-plugin-react/pull/3169
