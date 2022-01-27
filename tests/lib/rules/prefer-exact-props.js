@@ -98,6 +98,18 @@ ruleTester.run('prefer-exact-props', rule, {
     },
     {
       code: `
+        type Props = {|
+          foo: string
+        |}
+        function Component(props: Props) {
+          let someVar: { foo: string };
+          return <div />;
+        }
+      `,
+      features: ['flow'],
+    },
+    {
+      code: `
         function Component(props: {| foo : string |}) {
           return <div />;
         }
