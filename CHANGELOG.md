@@ -8,6 +8,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Added
 * add [`hook-use-state`] rule to enforce symmetric useState hook variable names ([#2921][] @duncanbeevers)
 * [`jsx-no-target-blank`]: Improve fixer with option `allowReferrer` ([#3167][] @apepper)
+* [`jsx-curly-brace-presence`]: add "propElementValues" config option ([#3191][] @ljharb)
 
 ### Fixed
 * [`prop-types`], `propTypes`: add support for exported type inference ([#3163][] @vedadeepta)
@@ -22,6 +23,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`display-name`]: improve examples ([#3189][] @golopot)
 * [Refactor] [`no-invalid-html-attribute`]: sort HTML_ELEMENTS and messages ([#3182][] @Primajin)
 
+[#3191]: https://github.com/yannickcr/eslint-plugin-react/pull/3191
 [#3190]: https://github.com/yannickcr/eslint-plugin-react/pull/3190
 [#3189]: https://github.com/yannickcr/eslint-plugin-react/pull/3189
 [#3186]: https://github.com/yannickcr/eslint-plugin-react/pull/3186

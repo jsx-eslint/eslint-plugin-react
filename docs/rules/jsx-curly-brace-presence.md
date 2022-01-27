@@ -8,15 +8,17 @@ For situations where JSX expressions are unnecessary, please refer to [the React
 
 ## Rule Details
 
-By default, this rule will check for and warn about unnecessary curly braces in both JSX props and children.
+By default, this rule will check for and warn about unnecessary curly braces in both JSX props and children. For the sake of backwards compatibility, prop values that are JSX elements are not considered by default.
 
-You can pass in options to enforce the presence of curly braces on JSX props or children or both. The same options are available for not allowing unnecessary curly braces as well as ignoring the check.
+You can pass in options to enforce the presence of curly braces on JSX props, children, JSX prop values that are JSX elements, or any combination of the three. The same options are available for not allowing unnecessary curly braces as well as ignoring the check.
+
+**Note**: it is _highly recommended_ that you configure this rule with an object, and that you set "propElementValues" to "always". The ability to omit curly braces around prop values that are JSX elements is obscure, and intentionally undocumented, and should not be relied upon.
 
 ## Rule Options
 
 ```js
 ...
-"react/jsx-curly-brace-presence": [<enabled>, { "props": <string>, "children": <string> }]
+"react/jsx-curly-brace-presence": [<enabled>, { "props": <string>, "children": <string>, "propElementValues": <string> }]
 ...
 ```
 
@@ -32,9 +34,9 @@ or alternatively
 
 They are `always`, `never` and `ignore` for checking on JSX props and children.
 
-* `always`: always enforce curly braces inside JSX props or/and children
-* `never`: never allow unnecessary curly braces inside JSX props or/and children
-* `ignore`: ignore the rule for JSX props or/and children
+* `always`: always enforce curly braces inside JSX props, children, and/or JSX prop values that are JSX Elements
+* `never`: never allow unnecessary curly braces inside JSX props, children, and/or JSX prop values that are JSX Elements
+* `ignore`: ignore the rule for JSX props, children, and/or JSX prop values that are JSX Elements
 
 If passed in the option to fix, this is how a style violation will get fixed
 
@@ -73,9 +75,31 @@ They can be fixed to:
 <App prop="Hello world" attr="foo" />;
 ```
 
+Examples of **incorrect** code for this rule, when configured with `{ props: "always", children: "always", "propElementValues": "always" }`:
+```jsx
+<App prop=<div /> />;
+```
+
+They can be fixed to:
+
+```jsx
+<App prop={<div />} />;
+```
+
+Examples of **incorrect** code for this rule, when configured with `{ props: "never", children: "never", "propElementValues": "never" }`:
+```jsx
+<App prop={<div />} />;
+```
+
+They can be fixed to:
+
+```jsx
+<App prop=<div /> />;
+```
+
 ### Alternative syntax
 
-The options are also `always`, `never` and `ignore` for the same meanings.
+The options are also `always`, `never`, and `ignore` for the same meanings.
 
 In this syntax, only a string is provided and the default will be set to that option for checking on both JSX props and children.
 

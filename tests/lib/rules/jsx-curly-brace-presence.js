@@ -438,7 +438,23 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
           </App>
         `,
       },
-    ] : [])
+    ] : []),
+    {
+      code: `<App horror=<div /> />`,
+      features: ['no-ts'],
+    },
+    {
+      code: `<App horror={<div />} />`,
+    },
+    {
+      code: `<App horror=<div /> />`,
+      options: [{ propElementValues: 'ignore' }],
+      features: ['no-ts'],
+    },
+    {
+      code: `<App horror={<div />} />`,
+      options: [{ propElementValues: 'ignore' }],
+    }
   )),
 
   invalid: parsers.all([].concat(
@@ -851,9 +867,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
           &nbsp;
         </App>
       `,
-      errors: [
-        { messageId: 'missingCurly' },
-      ],
+      errors: [{ messageId: 'missingCurly' }],
       options: [{ children: 'always' }],
     },
     {
@@ -889,6 +903,20 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       output: '<MyComponent prop="< style: true >">foo</MyComponent>',
       errors: [{ messageId: 'unnecessaryCurly' }],
       options: ['never'],
+    },
+    {
+      code: `<App horror=<div /> />`,
+      output: `<App horror={<div />} />`,
+      errors: [{ messageId: 'missingCurly' }],
+      options: [{ props: 'always', children: 'always', propElementValues: 'always' }],
+      features: ['no-ts'],
+    },
+    {
+      code: `<App horror={<div />} />`,
+      output: `<App horror=<div /> />`,
+      errors: [{ messageId: 'unnecessaryCurly' }],
+      options: [{ props: 'never', children: 'never', propElementValues: 'never' }],
+      features: ['no-ts'],
     }
   )),
 });
