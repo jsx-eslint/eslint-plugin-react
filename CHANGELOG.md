@@ -14,6 +14,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`prop-types`], `propTypes`: add support for exported type inference ([#3163][] @vedadeepta)
 * [`no-invalid-html-attribute`]: allow 'shortcut icon' on `link` ([#3174][] @Primajin)
 * [`prefer-exact-props`] improve performance for `Identifier` visitor ([#3190][] @meowtec)
+* `propTypes`: Handle TSTypeReference in no-unused-prop-type ([#3195][] @niik)
 
 ### Changed
 * [readme] change [`jsx-runtime`] link from branch to sha ([#3160][] @tatsushitoji)
@@ -23,6 +24,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`display-name`]: improve examples ([#3189][] @golopot)
 * [Refactor] [`no-invalid-html-attribute`]: sort HTML_ELEMENTS and messages ([#3182][] @Primajin)
 
+[#3195]: https://github.com/yannickcr/eslint-plugin-react/pull/3195
 [#3191]: https://github.com/yannickcr/eslint-plugin-react/pull/3191
 [#3190]: https://github.com/yannickcr/eslint-plugin-react/pull/3190
 [#3189]: https://github.com/yannickcr/eslint-plugin-react/pull/3189

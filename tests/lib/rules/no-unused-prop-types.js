@@ -6486,6 +6486,23 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
       errors: [{ message: '\'foo\' PropType is defined but prop is never used' }],
+    },
+
+    {
+      code: `
+        interface Props {
+          readonly firstname: string;
+          readonly lastname: string;
+        }
+
+        class TestComponent extends React.Component<Props> {
+          public render() {
+            return <div>{this.props.firstname}</div>;
+          }
+        }
+      `,
+      features: ['ts', 'no-babel'],
+      errors: [{ message: '\'lastname\' PropType is defined but prop is never used' }],
     }
   )),
 });
