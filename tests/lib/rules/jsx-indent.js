@@ -2738,5 +2738,38 @@ const Component = () => (
         },
       ],
     },
+    {
+      code: `
+        const StatelessComponent = () => {
+          if (new Date() % 2) {
+              return (
+        <div>Hello</div>
+              );
+          }
+          return null;
+        };
+      `,
+      output: `
+        const StatelessComponent = () => {
+          if (new Date() % 2) {
+              return (
+                  <div>Hello</div>
+              );
+          }
+          return null;
+        };
+      `,
+      errors: [
+        {
+          messageId: 'wrongIndent',
+          data: {
+            needed: 18,
+            gotten: 8,
+            type: 'space',
+            characters: 'characters',
+          },
+        },
+      ],
+    },
   ]),
 });
