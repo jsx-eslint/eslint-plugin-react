@@ -1860,5 +1860,24 @@ ruleTester.run('sort-prop-types', rule, {
         },
       ],
     },
+    {
+      code: `
+        var Component = React.createClass({
+          propTypes: {
+            onChange: React.PropTypes.func,
+            a: React.PropTypes.string,
+            c: React.PropTypes.string,
+            b: React.PropTypes.string,
+          }
+        });
+      `,
+      options: [{ callbacksLast: true }],
+      errors: [
+        {
+          messageId: 'callbackPropsLast',
+          line: 4,
+        },
+      ],
+    },
   ]),
 });
