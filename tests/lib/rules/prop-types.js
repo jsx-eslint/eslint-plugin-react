@@ -3687,6 +3687,22 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       features: ['types'],
+    },
+    {
+      code: `
+        import React, {PropTypes} from 'react'
+
+        function Foo({bar}) {
+          const {baz} = Foo
+          return <div>{baz} {bar}</div>
+        }
+        
+        Foo.propTypes = {
+          bar: PropTypes.string.isRequired,
+        }
+        
+        Foo.baz = 'hi'
+      `,
     }
   )),
 
