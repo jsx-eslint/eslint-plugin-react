@@ -3670,6 +3670,23 @@ ruleTester.run('prop-types', rule, {
         ));
       `,
       features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        type ButtonProps = ({
+            children: React.Node,
+        } | {
+            icon: React.Element,
+        }) & {
+            label: string,
+            disabled?: boolean
+        } & {};
+        
+        const Button: React.FC<ButtonProps> = ({ children, icon, label, disabled }: ButtonProps) => {
+          return <div />;
+        }
+      `,
+      features: ['types'],
     }
   )),
 
