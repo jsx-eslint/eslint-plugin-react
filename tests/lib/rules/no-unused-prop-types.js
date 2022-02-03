@@ -4353,6 +4353,43 @@ ruleTester.run('no-unused-prop-types', rule, {
     },
     {
       code: `
+        /** @jsx Foo */
+        /** @jsx React */
+        class Test extends Foo.Component {
+          render() {
+            return (
+              <div>{this.props.firstname} {this.props.lastname}</div>
+            );
+          }
+        }
+        Test.propTypes = {
+          unused: PropTypes.string
+        };
+      `,
+      errors: [{ message: '\'unused\' PropType is defined but prop is never used' }],
+    },
+    {
+      code: `
+        /**
+         * Copyright ....
+         * @jsx Foo
+         */
+        /** @jsx React */
+        class Test extends Foo.Component {
+          render() {
+            return (
+              <div>{this.props.firstname} {this.props.lastname}</div>
+            );
+          }
+        }
+        Test.propTypes = {
+          unused: PropTypes.string
+        };
+      `,
+      errors: [{ message: '\'unused\' PropType is defined but prop is never used' }],
+    },
+    {
+      code: `
         class Hello extends React.Component {
           props: {
             unused: string
