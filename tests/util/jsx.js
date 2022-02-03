@@ -20,7 +20,16 @@ const parseCode = (code) => {
   return ASTnode.body[0];
 };
 
-const mockContext = {};
+const mockContext = {
+  getScope() {
+    return {
+      type: 'global',
+      upper: null,
+      childScopes: [],
+      variables: [],
+    };
+  },
+};
 
 describe('jsxUtil', () => {
   describe('isReturningJSX', () => {

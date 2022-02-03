@@ -18,6 +18,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * `propTypes`: Handle TSTypeReference in no-unused-prop-type ([#3195][] @niik)
 * [`sort-prop-types`]: avoid repeated warnings of the same node/reason ([#519][] @ljharb)
 * [`jsx-indent`]: Fix indent handling for closing parentheses ([#620][] @stefanbuck])
+* [`prop-types`/`propTypes`]: follow a returned identifier to see if it is JSX ([#1046][] @ljharb)
 
 ### Changed
 * [readme] change [`jsx-runtime`] link from branch to sha ([#3160][] @tatsushitoji)
@@ -41,6 +42,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3133]: https://github.com/yannickcr/eslint-plugin-react/pull/3133
 [#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
 [#2753]: https://github.com/yannickcr/eslint-plugin-react/pull/2753
+[#1046]: https://github.com/yannickcr/eslint-plugin-react/issues/1046
 [#620]: https://github.com/yannickcr/eslint-plugin-react/pull/620
 [#519]: https://github.com/yannickcr/eslint-plugin-react/issues/519
 

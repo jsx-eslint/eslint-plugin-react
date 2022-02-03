@@ -7624,6 +7624,33 @@ ruleTester.run('prop-types', rule, {
         },
       ],
       features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        const Foo = ({ foo }) => {
+          return <SomeJSX />;
+        }
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'foo' },
+        },
+      ],
+    },
+    {
+      code: `
+        const Foo = ({ foo }) => {
+          const returnValue = <SomeJSX />;
+          return returnValue;
+        }
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'foo' },
+        },
+      ],
     }
   )),
 });
