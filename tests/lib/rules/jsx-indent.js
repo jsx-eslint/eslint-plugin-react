@@ -1116,6 +1116,24 @@ const Component = () => (
       options: [2],
       parserOptions,
     },
+    {
+      code: `
+        const myFunction = () => (
+          [
+            <Tag
+              {...properties}
+            />,
+            <Tag
+              {...properties}
+            />,
+            <Tag
+              {...properties}
+            />,
+          ]
+        )
+      `,
+      options: [2],
+    },
   ]),
 
   invalid: parsers.all([
@@ -2852,6 +2870,41 @@ const Component = () => (
       options: [2],
       parserOptions,
       errors: [{ message: 'Expected indentation of 10 space characters but found 8.' }],
+    },
+    {
+      code: `
+        {condition && [
+            <Tag key="a" onClick={() => {
+              // some code
+            }} />,
+            <Tag key="b" onClick={() => {
+              // some code
+            }} />,
+          ]
+        }
+      `,
+      output: `
+        {condition && [
+          <Tag key="a" onClick={() => {
+              // some code
+            }} />,
+          <Tag key="b" onClick={() => {
+              // some code
+            }} />,
+          ]
+        }
+      `,
+      options: [2],
+      errors: [
+        {
+          message: 'Expected indentation of 10 space characters but found 12.',
+          line: 3,
+        },
+        {
+          message: 'Expected indentation of 10 space characters but found 12.',
+          line: 6,
+        },
+      ],
     },
   ]),
 });
