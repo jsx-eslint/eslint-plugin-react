@@ -3608,7 +3608,7 @@ ruleTester.run('prop-types', rule, {
     {
       code: `
         import React, { forwardRef } from "react";
-  
+
         export type Props = { children: React.ReactNode; type: "submit" | "button" };
 
         export const FancyButton = forwardRef<HTMLButtonElement, Props>((props, ref) => (
@@ -3681,7 +3681,7 @@ ruleTester.run('prop-types', rule, {
             label: string,
             disabled?: boolean
         } & {};
-        
+
         const Button: React.FC<ButtonProps> = ({ children, icon, label, disabled }: ButtonProps) => {
           return <div />;
         }
@@ -3696,11 +3696,11 @@ ruleTester.run('prop-types', rule, {
           const {baz} = Foo
           return <div>{baz} {bar}</div>
         }
-        
+
         Foo.propTypes = {
           bar: PropTypes.string.isRequired,
         }
-        
+
         Foo.baz = 'hi'
       `,
     },
@@ -3710,7 +3710,7 @@ ruleTester.run('prop-types', rule, {
         type Props = {
           'data-hover': string
         }
-        
+
         function MyComponent({
           'data-hover': dataHover
         }: Props) {
@@ -3718,6 +3718,34 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       features: ['types'],
+    },
+    {
+      code: `
+        import React, { PropTypes } from 'react';
+
+        function MyComponent({ name }) {
+          const someParams = {
+            userName: name,
+            greeting: 'Hi there',
+          };
+
+          function getMessage({ userName, greeting }) {
+            return <span>\`\${greeting} \${userName}\`</span>;
+          }
+
+          return (
+            <div>
+              { getMessage(someParams) }
+            </div>
+          );
+        }
+
+        MyComponent.propTypes = {
+          name: PropTypes.string.isRequired,
+        };
+
+        export default MyComponent;
+      `,
     }
   )),
 
@@ -7494,7 +7522,7 @@ ruleTester.run('prop-types', rule, {
     {
       code: `
         import React, { forwardRef } from "react";
-  
+
         export type Props = { children: React.ReactNode; type: "submit" | "button" };
 
         export const FancyButton = forwardRef<HTMLButtonElement, Props>((props, ref) => (
@@ -7514,7 +7542,7 @@ ruleTester.run('prop-types', rule, {
     {
       code: `
         import React, { forwardRef } from "react";
-  
+
         export interface IProps { children: React.ReactNode; type: "submit" | "button" };
 
         export const FancyButton = forwardRef<HTMLButtonElement, IProps>((props, ref) => (
