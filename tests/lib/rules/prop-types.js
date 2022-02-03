@@ -3703,6 +3703,21 @@ ruleTester.run('prop-types', rule, {
         
         Foo.baz = 'hi'
       `,
+    },
+
+    {
+      code: `
+        type Props = {
+          'data-hover': string
+        }
+        
+        function MyComponent({
+          'data-hover': dataHover
+        }: Props) {
+          return <span data-hover={dataHover} />
+        }
+      `,
+      features: ['types'],
     }
   )),
 
