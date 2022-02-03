@@ -327,6 +327,78 @@ ruleTester.run('prefer-stateless-function', rule, {
       `,
       options: [{ ignorePureComponents: true }],
     },
+    {
+      code: `
+        import React, {PureComponent, PropTypes} from 'react'
+
+        export default function errorDecorator (options) {
+          return WrappedComponent => {
+            class Wrapper extends PureComponent {
+              static propTypes = {
+                error: PropTypes.string
+              }
+              render () {
+                const {error, ...props} = this.props
+                if (error) {
+                  return <div>Error! {error}</div>
+                } else {
+                  return <WrappedComponent {...props} />
+                }
+              }
+            }
+            return Wrapper
+          }
+        }
+      `,
+      features: ['class fields'],
+      options: [{ ignorePureComponents: true }],
+    },
+    {
+      code: `
+        import React, {PureComponent, PropTypes} from 'react'
+
+        export default function errorDecorator (options) {
+          return WrappedComponent =>
+            class Wrapper extends PureComponent {
+              static propTypes = {
+                error: PropTypes.string
+              }
+              render () {
+                const {error, ...props} = this.props
+                if (error) {
+                  return <div>Error! {error}</div>
+                } else {
+                  return <WrappedComponent {...props} />
+                }
+              }
+            }
+        }
+      `,
+      features: ['class fields'],
+      options: [{ ignorePureComponents: true }],
+    },
+    {
+      code: `
+        export default function errorDecorator (options) {
+          return WrappedComponent =>
+            class Wrapper extends React.PureComponent {
+              static propTypes = {
+                error: PropTypes.string
+              }
+              render () {
+                const {error, ...props} = this.props
+                if (error) {
+                  return <div>Error! {error}</div>
+                } else {
+                  return <WrappedComponent {...props} />
+                }
+              }
+            }
+        }
+      `,
+      features: ['class fields'],
+      options: [{ ignorePureComponents: true }],
+    },
   ]),
 
   invalid: parsers.all([
