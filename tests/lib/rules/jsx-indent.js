@@ -10,6 +10,8 @@
 // ------------------------------------------------------------------------------
 
 const RuleTester = require('eslint').RuleTester;
+const semver = require('semver');
+const eslintVersion = require('eslint/package.json').version;
 const rule = require('../../../lib/rules/jsx-indent');
 
 const parsers = require('../../helpers/parsers');
@@ -1141,6 +1143,24 @@ const Component = () => (
         </div>;
       `,
       options: [2],
+    },
+    {
+      code: `
+        type Props = {
+          email: string,
+          password: string,
+          error: string,
+        }
+
+        const SomeFormComponent = ({
+          email,
+          password,
+          error,
+        }: Props) => (
+          // JSX
+        );
+      `,
+      features: ['flow'].concat(semver.satisfies(eslintVersion, '< 8') ? 'no-babel-old' : []),
     },
   ]),
 
