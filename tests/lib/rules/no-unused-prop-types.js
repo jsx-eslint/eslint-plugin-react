@@ -3859,6 +3859,29 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       features: ['types'],
     },
+    {
+      code: `
+        import React from 'react';
+
+        type Props = {
+          test: string,
+          callback: () => void,
+        };
+        
+        export default function Foo(props: Props) {
+          return (
+            <div>
+              {[1, 2, 3].map(e => (
+                <div key={e} onClick={() => props.callback()}>
+                  {props.test}
+                </div>
+              ))}
+            </div>
+          );
+        }
+      `,
+      features: ['types'],
+    },
   ]),
 
   invalid: parsers.all([].concat(
