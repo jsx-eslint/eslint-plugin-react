@@ -1134,6 +1134,14 @@ const Component = () => (
       `,
       options: [2],
     },
+    {
+      code: `
+        const Item = ({ id, name, onSelect }) => <div onClick={onSelect}>
+          {id}: {name}
+        </div>;
+      `,
+      options: [2],
+    },
   ]),
 
   invalid: parsers.all([
