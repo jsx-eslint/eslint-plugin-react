@@ -3775,6 +3775,27 @@ ruleTester.run('prop-types', rule, {
                     />
       `,
       features: ['flow'],
+    },
+    {
+      code: `
+        class App extends React.Component {
+          render() {
+            return (
+                <h1>Open the console</h1>
+            )
+          }
+        }
+
+        // does not work
+        App.propTypes = PropTypes.exact({
+          foo: PropTypes.object,
+        });
+      `,
+      settings: {
+        propWrapperFunctions: [
+          { object: 'PropTypes', property: 'exact', exact: true },
+        ],
+      },
     }
   )),
 
