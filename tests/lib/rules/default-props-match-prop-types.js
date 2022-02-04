@@ -1756,5 +1756,32 @@ ruleTester.run('default-props-match-prop-types', rule, {
         },
       ],
     },
+    {
+      code: `
+        export type SharedProps = {|
+            disabled: boolean,
+        |};
+        
+        type Props = {|
+            ...SharedProps,
+            focused?: boolean,
+        |};
+        
+        class Foo extends React.Component<Props> {
+            static defaultProps = {
+              disabled: false
+            };
+        };
+      `,
+      features: ['flow'],
+      errors: [
+        {
+          messageId: 'requiredHasDefault',
+          data: {
+            name: 'disabled',
+          },
+        },
+      ],
+    },
   ]),
 });
