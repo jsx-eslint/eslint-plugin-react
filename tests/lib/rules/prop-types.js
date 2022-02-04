@@ -3746,6 +3746,35 @@ ruleTester.run('prop-types', rule, {
 
         export default MyComponent;
       `,
+    },
+    {
+      code: `
+        type Field = {
+            value: string,
+            error: string,
+        }
+        
+        type Form = {
+            fields: {
+                [string]: Field,
+            },
+            formError: string,
+        }
+        
+        type Props = {
+            bankDetails: Form,
+            onBankDetailsUpdate: any => void,
+        }
+        
+        const Provider = (props:Props) =>
+                    <Input
+                        label={'Account Name'}
+                        value={props.bankDetails.fields.accountName.value}
+                        error={props.bankDetails.fields.accountName.error}
+                        onChange={newVal => props.onBankDetailsUpdate({ accountName: newVal })}
+                    />
+      `,
+      features: ['flow'],
     }
   )),
 
