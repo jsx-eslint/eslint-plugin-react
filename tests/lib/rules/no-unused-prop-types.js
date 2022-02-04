@@ -3882,6 +3882,27 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       features: ['types'],
     },
+    {
+      code: `
+        class Component extends Component <{}, {updateQueue: Array<string>}> {
+          debouncedUpdate = debounce((cellsetId, options) => {
+            this.setState((prevState, props) => {
+              const {updateQueue} = prevState;
+              const {updateCells} = props;
+              updateCells(cellsetId, updateQueue, options);
+              return {
+                updateQueue: [],
+              };
+            });
+          }, 2000);
+
+          render() {
+            return <div />
+          }
+        }
+      `,
+      features: ['class fields', 'types'],
+    },
   ]),
 
   invalid: parsers.all([].concat(
