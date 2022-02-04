@@ -3903,6 +3903,37 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       features: ['class fields', 'types'],
     },
+    {
+      code: `
+        class Test extends Component<{}, {selectedId: string}> {
+          constructor(props: *) {
+            super(props);
+            this.state = {
+              selectedId: '',
+            };
+          }
+        
+          onChange = ({id}: {id: string}) => { // This will say: 'id' PropType is defined but prop is never used (react/no-unused-prop-types)
+            this.setState({
+              selectedId: id,
+            });
+          };
+        
+          render() {
+            const {selectedId} = this.state;
+            return (
+              <div>
+                {selectedId}
+                <select onChange={() => this.onChange({id: '1'})}>
+                  <option value='1'>1</option>
+                </select>
+              </div>
+            );
+          }
+        }
+      `,
+      features: ['class fields', 'types'],
+    },
   ]),
 
   invalid: parsers.all([].concat(
