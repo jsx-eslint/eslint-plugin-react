@@ -2589,5 +2589,47 @@ ruleTester.run('require-default-props', rule, {
         },
       ],
     },
+    {
+      code: `
+        type Props = {
+          history: {
+            push: Function,
+          },
+          match?: {
+            params?: {
+              date?: string
+            },
+          },
+        };
+        
+        export const Daily = ({ history, match: {
+          params: {
+            date = moment().toISOString(),
+          } = {},
+        } = {} }: Props) => (
+              <div>
+                <div style={{ textAlign: 'right', paddingRight: '25px' }}>
+                  Show <DatePicker
+                    selected={moment(date)}
+                    className="datetime"
+                    onChange={d => history.push(\`./\${d.toISOString()}\`)}
+                  />
+                </div>
+                <WithData url="/payments/daily" body={{ date: moment(date).toISOString() }}>
+                  <Flashcards date={moment(date)} />
+                </WithData>
+              </div>
+        );
+      `,
+      features: ['types'],
+      errors: [
+        {
+          messageId: 'shouldHaveDefault',
+          data: {
+            name: 'match',
+          },
+        },
+      ],
+    },
   ]),
 });
