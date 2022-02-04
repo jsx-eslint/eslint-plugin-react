@@ -778,6 +778,26 @@ ruleTester.run('default-props-match-prop-types', rule, {
       `,
       features: ['types'],
     },
+    {
+      code: `
+        import type { FieldProps } from 'redux-form';
+
+        type Props = FieldProps & {
+          name: string,
+          type: string,
+          label?: string,
+          placeholder?: string,
+          disabled?: boolean,
+        };
+        
+        TextField.defaultProps = {
+          label: '',
+          placeholder: '',
+          disabled: false,
+        };
+      `,
+      features: ['types'],
+    },
   ]),
 
   invalid: parsers.all([
