@@ -1164,7 +1164,7 @@ const Component = () => (
     },
   ]),
 
-  invalid: parsers.all([
+  invalid: parsers.all([].concat(
     {
       code: `
         <div>
@@ -2934,5 +2934,39 @@ const Component = () => (
         },
       ],
     },
-  ]),
+    semver.satisfies(eslintVersion, '> 4') ? {
+      code: `
+        import React from 'react';
+
+        export default function () {
+            return (
+                <div>
+                            Test1
+
+                      <p>Test2</p>
+                </div>
+            );
+        }
+      `,
+      // TODO: remove two spaces from the Test2 output line
+      output: `
+        import React from 'react';
+
+        export default function () {
+            return (
+                <div>
+                    Test1
+
+                      <p>Test2</p>
+                </div>
+            );
+        }
+      `,
+      options: [4],
+      errors: [
+        { messageId: 'wrongIndent', line: 6 },
+        { messageId: 'wrongIndent', line: 9 },
+      ],
+    } : []
+  )),
 });
