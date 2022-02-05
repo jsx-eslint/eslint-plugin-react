@@ -26,9 +26,210 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
+const invalid = [
+  {
+    code: `
+      var Hello = createReactClass({
+        componentDidMount: function() {
+          this.setState({
+            data: data
+          });
+        }
+      });
+    `,
+    errors: [
+      {
+        messageId: 'noSetState',
+        data: { name: 'componentDidMount' },
+      },
+    ],
+  },
+  {
+    code: `
+      class Hello extends React.Component {
+        componentDidMount() {
+          this.setState({
+            data: data
+          });
+        }
+      }
+    `,
+    errors: [
+      {
+        messageId: 'noSetState',
+        data: { name: 'componentDidMount' },
+      },
+    ],
+  },
+  {
+    code: `
+      class Hello extends React.Component {
+        componentDidMount = () => {
+          this.setState({
+            data: data
+          });
+        }
+      }
+    `,
+    features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
+    errors: [
+      {
+        messageId: 'noSetState',
+        data: { name: 'componentDidMount' },
+      },
+    ],
+  },
+  {
+    code: `
+      var Hello = createReactClass({
+        componentDidMount: function() {
+          this.setState({
+            data: data
+          });
+        }
+      });
+    `,
+    options: ['disallow-in-func'],
+    errors: [
+      {
+        messageId: 'noSetState',
+        data: { name: 'componentDidMount' },
+      },
+    ],
+  },
+  {
+    code: `
+      class Hello extends React.Component {
+        componentDidMount() {
+          this.setState({
+            data: data
+          });
+        }
+      }
+    `,
+    options: ['disallow-in-func'],
+    errors: [
+      {
+        messageId: 'noSetState',
+        data: { name: 'componentDidMount' },
+      },
+    ],
+  },
+  {
+    code: `
+      var Hello = createReactClass({
+        componentDidMount: function() {
+          someClass.onSomeEvent(function(data) {
+            this.setState({
+              data: data
+            });
+          })
+        }
+      });
+    `,
+    options: ['disallow-in-func'],
+    errors: [
+      {
+        messageId: 'noSetState',
+        data: { name: 'componentDidMount' },
+      },
+    ],
+  },
+  {
+    code: `
+      class Hello extends React.Component {
+        componentDidMount() {
+          someClass.onSomeEvent(function(data) {
+            this.setState({
+              data: data
+            });
+          })
+        }
+      }
+    `,
+    options: ['disallow-in-func'],
+    errors: [
+      {
+        messageId: 'noSetState',
+        data: { name: 'componentDidMount' },
+      },
+    ],
+  },
+  {
+    code: `
+      var Hello = createReactClass({
+        componentDidMount: function() {
+          if (true) {
+            this.setState({
+              data: data
+            });
+          }
+        }
+      });
+    `,
+    errors: [
+      {
+        messageId: 'noSetState',
+        data: { name: 'componentDidMount' },
+      },
+    ],
+  },
+  {
+    code: `
+      class Hello extends React.Component {
+        componentDidMount() {
+          if (true) {
+            this.setState({
+              data: data
+            });
+          }
+        }
+      }
+    `,
+    errors: [
+      {
+        messageId: 'noSetState',
+        data: { name: 'componentDidMount' },
+      },
+    ],
+  },
+  {
+    code: `
+      var Hello = createReactClass({
+        componentDidMount: function() {
+          someClass.onSomeEvent((data) => this.setState({data: data}));
+        }
+      });
+    `,
+    options: ['disallow-in-func'],
+    errors: [
+      {
+        messageId: 'noSetState',
+        data: { name: 'componentDidMount' },
+      },
+    ],
+  },
+  {
+    code: `
+      class Hello extends React.Component {
+        componentDidMount() {
+          someClass.onSomeEvent((data) => this.setState({data: data}));
+        }
+      }
+    `,
+    options: ['disallow-in-func'],
+    errors: [
+      {
+        messageId: 'noSetState',
+        data: { name: 'componentDidMount' },
+      },
+    ],
+  },
+];
+
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-did-mount-set-state', rule, {
-  valid: parsers.all([
+  valid: parsers.all([].concat(
     {
       code: `
         var Hello = createReactClass({
@@ -82,206 +283,18 @@ ruleTester.run('no-did-mount-set-state', rule, {
         });
       `,
     },
-  ]),
+    invalid.map((test) => {
+      const newTest = Object.assign({}, test, {
+        settings: Object.assign({}, test.settings, {
+          react: {
+            version: '16.3.0',
+          },
+        }),
+      });
+      delete newTest.errors;
+      return newTest;
+    })
+  )),
 
-  invalid: parsers.all([
-    {
-      code: `
-        var Hello = createReactClass({
-          componentDidMount: function() {
-            this.setState({
-              data: data
-            });
-          }
-        });
-      `,
-      errors: [
-        {
-          messageId: 'noSetState',
-          data: { name: 'componentDidMount' },
-        },
-      ],
-    },
-    {
-      code: `
-        class Hello extends React.Component {
-          componentDidMount() {
-            this.setState({
-              data: data
-            });
-          }
-        }
-      `,
-      errors: [
-        {
-          messageId: 'noSetState',
-          data: { name: 'componentDidMount' },
-        },
-      ],
-    },
-    {
-      code: `
-        class Hello extends React.Component {
-          componentDidMount = () => {
-            this.setState({
-              data: data
-            });
-          }
-        }
-      `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
-      errors: [
-        {
-          messageId: 'noSetState',
-          data: { name: 'componentDidMount' },
-        },
-      ],
-    },
-    {
-      code: `
-        var Hello = createReactClass({
-          componentDidMount: function() {
-            this.setState({
-              data: data
-            });
-          }
-        });
-      `,
-      options: ['disallow-in-func'],
-      errors: [
-        {
-          messageId: 'noSetState',
-          data: { name: 'componentDidMount' },
-        },
-      ],
-    },
-    {
-      code: `
-        class Hello extends React.Component {
-          componentDidMount() {
-            this.setState({
-              data: data
-            });
-          }
-        }
-      `,
-      options: ['disallow-in-func'],
-      errors: [
-        {
-          messageId: 'noSetState',
-          data: { name: 'componentDidMount' },
-        },
-      ],
-    },
-    {
-      code: `
-        var Hello = createReactClass({
-          componentDidMount: function() {
-            someClass.onSomeEvent(function(data) {
-              this.setState({
-                data: data
-              });
-            })
-          }
-        });
-      `,
-      options: ['disallow-in-func'],
-      errors: [
-        {
-          messageId: 'noSetState',
-          data: { name: 'componentDidMount' },
-        },
-      ],
-    },
-    {
-      code: `
-        class Hello extends React.Component {
-          componentDidMount() {
-            someClass.onSomeEvent(function(data) {
-              this.setState({
-                data: data
-              });
-            })
-          }
-        }
-      `,
-      options: ['disallow-in-func'],
-      errors: [
-        {
-          messageId: 'noSetState',
-          data: { name: 'componentDidMount' },
-        },
-      ],
-    },
-    {
-      code: `
-        var Hello = createReactClass({
-          componentDidMount: function() {
-            if (true) {
-              this.setState({
-                data: data
-              });
-            }
-          }
-        });
-      `,
-      errors: [
-        {
-          messageId: 'noSetState',
-          data: { name: 'componentDidMount' },
-        },
-      ],
-    },
-    {
-      code: `
-        class Hello extends React.Component {
-          componentDidMount() {
-            if (true) {
-              this.setState({
-                data: data
-              });
-            }
-          }
-        }
-      `,
-      errors: [
-        {
-          messageId: 'noSetState',
-          data: { name: 'componentDidMount' },
-        },
-      ],
-    },
-    {
-      code: `
-        var Hello = createReactClass({
-          componentDidMount: function() {
-            someClass.onSomeEvent((data) => this.setState({data: data}));
-          }
-        });
-      `,
-      options: ['disallow-in-func'],
-      errors: [
-        {
-          messageId: 'noSetState',
-          data: { name: 'componentDidMount' },
-        },
-      ],
-    },
-    {
-      code: `
-        class Hello extends React.Component {
-          componentDidMount() {
-            someClass.onSomeEvent((data) => this.setState({data: data}));
-          }
-        }
-      `,
-      options: ['disallow-in-func'],
-      errors: [
-        {
-          messageId: 'noSetState',
-          data: { name: 'componentDidMount' },
-        },
-      ],
-    },
-  ]),
+  invalid: parsers.all(invalid),
 });

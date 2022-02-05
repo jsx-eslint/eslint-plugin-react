@@ -10,6 +10,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-no-target-blank`]: Improve fixer with option `allowReferrer` ([#3167][] @apepper)
 * [`jsx-curly-brace-presence`]: add "propElementValues" config option ([#3191][] @ljharb)
 * add [`iframe-missing-sandbox`] rule ([#2753][] @tosmolka @ljharb)
+* [`no-did-mount-set-state`], [`no-did-update-set-state`]: no-op with react >= 16.3 ([#1754][] @ljharb)
 
 ### Fixed
 * [`prop-types`], `propTypes`: add support for exported type inference ([#3163][] @vedadeepta)
@@ -42,6 +43,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3133]: https://github.com/yannickcr/eslint-plugin-react/pull/3133
 [#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
 [#2753]: https://github.com/yannickcr/eslint-plugin-react/pull/2753
+[#1754]: https://github.com/yannickcr/eslint-plugin-react/issues/1754
 [#1046]: https://github.com/yannickcr/eslint-plugin-react/issues/1046
 [#620]: https://github.com/yannickcr/eslint-plugin-react/pull/620
 [#519]: https://github.com/yannickcr/eslint-plugin-react/issues/519
