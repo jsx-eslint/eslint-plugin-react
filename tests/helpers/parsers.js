@@ -64,7 +64,8 @@ const parsers = {
           `features: [${Array.from(features).join(',')}]`,
           `parser: ${parser}`,
           testObject.parserOptions ? `parserOptions: ${JSON.stringify(testObject.parserOptions)}` : [],
-          testObject.options ? `options: ${JSON.stringify(testObject.options)}` : []
+          testObject.options ? `options: ${JSON.stringify(testObject.options)}` : [],
+          testObject.settings ? `settings: ${JSON.stringify(testObject.settings)}` : []
         );
 
         const extraComment = `\n// ${extras.join(', ')}`;
