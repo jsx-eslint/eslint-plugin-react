@@ -202,6 +202,7 @@ Enable the rules that you would like to use.
 | ✔ |  | [react/jsx-no-comment-textnodes](docs/rules/jsx-no-comment-textnodes.md) | Comments inside children section of tag should be placed inside braces |
 |  |  | [react/jsx-no-constructed-context-values](docs/rules/jsx-no-constructed-context-values.md) | Prevents JSX context provider values from taking values that will cause needless rerenders. |
 | ✔ |  | [react/jsx-no-duplicate-props](docs/rules/jsx-no-duplicate-props.md) | Enforce no duplicate props |
+|  | 🔧 | [react/jsx-no-leaked-render](docs/rules/jsx-no-leaked-render.md) | Prevent problematic leaked values from being rendered |
 |  |  | [react/jsx-no-literals](docs/rules/jsx-no-literals.md) | Prevent using string literals in React component definition |
 |  |  | [react/jsx-no-script-url](docs/rules/jsx-no-script-url.md) | Forbid `javascript:` URLs |
 | ✔ | 🔧 | [react/jsx-no-target-blank](docs/rules/jsx-no-target-blank.md) | Forbid `target="_blank"` attribute without `rel="noreferrer"` |

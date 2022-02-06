@@ -10,6 +10,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: Allow crossOrigin on image tag (SVG) ([#3251][] @zpao)
 * [`jsx-tag-spacing`]: Add `multiline-always` option ([#3260][] @Nokel81)
 * [`function-component-definition`]: replace `var` by `const` in certain situations ([#3248][] @JohnBerd @SimeonC)
+* add [`jsx-no-leaked-render`] ([#3203][] @Belco90)
 
 ### Fixed
 * [`hook-use-state`]: Allow UPPERCASE setState setter prefixes ([#3244][] @duncanbeevers)
@@ -3685,6 +3686,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`jsx-no-comment-textnodes`]: docs/rules/jsx-no-comment-textnodes.md
 [`jsx-no-constructed-context-values`]: docs/rules/jsx-no-constructed-context-values.md
 [`jsx-no-duplicate-props`]: docs/rules/jsx-no-duplicate-props.md
+[`jsx-no-leaked-render`]: docs/rules/jsx-no-leaked-render.md
 [`jsx-no-literals`]: docs/rules/jsx-no-literals.md
 [`jsx-no-script-url`]: docs/rules/jsx-no-script-url.md
 [`jsx-no-target-blank`]: docs/rules/jsx-no-target-blank.md
