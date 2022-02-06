@@ -44,6 +44,14 @@ const expectedShorthandLastError = {
   messageId: 'listShorthandLast',
   type: 'JSXIdentifier',
 };
+const expectedMultilineFirstError = {
+  messageId: 'listMultilineFirst',
+  type: 'JSXIdentifier',
+};
+const expectedMultilineLastError = {
+  messageId: 'listMultilineLast',
+  type: 'JSXIdentifier',
+};
 const expectedReservedFirstError = {
   messageId: 'listReservedPropsFirst',
   type: 'JSXIdentifier',
@@ -95,6 +103,21 @@ const reservedFirstWithShorthandLast = [
 ];
 const reservedFirstAsEmptyArrayArgs = [{ reservedFirst: [] }];
 const reservedFirstAsInvalidArrayArgs = [{ reservedFirst: ['notReserved'] }];
+const multilineFirstArgs = [{ multiline: 'first' }];
+const multilineAndShorthandFirstArgs = [
+  {
+    multiline: 'first',
+    shorthandFirst: true,
+  },
+];
+const multilineLastArgs = [{ multiline: 'last' }];
+const multilineAndShorthandAndCallbackLastArgs = [
+  {
+    multiline: 'last',
+    shorthandLast: true,
+    callbacksLast: true,
+  },
+];
 
 ruleTester.run('jsx-sort-props', rule, {
   valid: parsers.all([
@@ -129,6 +152,97 @@ ruleTester.run('jsx-sort-props', rule, {
     {
       code: '<App a="a" b="b" x y z onBar onFoo />;',
       options: shorthandAndCallbackLastArgs,
+    },
+    // Sorting multiline props before others
+    {
+      code: `
+        <App
+          a={{
+            aA: 1,
+          }}
+          b
+        />
+      `,
+      options: multilineFirstArgs,
+    },
+    {
+      code: `
+        <App
+          a={{
+            aA: 1,
+          }}
+          b={[
+            1,
+          ]}
+          c
+          d
+        />
+      `,
+      options: multilineFirstArgs,
+    },
+    {
+      code: `
+        <App
+          a
+          b
+          c={{
+            cC: 1,
+          }}
+          d={[
+            1,
+          ]}
+          e="1"
+        />
+      `,
+      options: multilineAndShorthandFirstArgs,
+    },
+    // Sorting multiline props after others
+    {
+      code: `
+        <App
+          a
+          b={{
+            bB: 1,
+          }}
+        />
+      `,
+      options: multilineLastArgs,
+    },
+    {
+      code: `
+        <App
+          a
+          b
+          c="1"
+          d={{
+            dD: 1,
+          }}
+          e={[
+            1,
+          ]}
+        />
+      `,
+      options: multilineLastArgs,
+    },
+    {
+      code: `
+        <App
+          a={1}
+          b="1"
+          c={{
+            cC: 1,
+          }}
+          d={() => (
+            1
+          )}
+          e
+          f
+          onClick={() => ({
+            gG: 1,
+          })}
+        />
+      `,
+      options: multilineAndShorthandAndCallbackLastArgs,
     },
     // noSortAlphabetically
     { code: '<App a b />;', options: noSortAlphabeticallyArgs },
@@ -494,6 +608,198 @@ ruleTester.run('jsx-sort-props', rule, {
       output: '<App z onBar />;',
       options: reservedFirstAndCallbacksLastArgs,
       errors: [expectedCallbackError],
+    // multiline first
+    },
+    {
+      code: `
+        <App
+          a
+          b={{
+            bB: 1,
+          }}
+        />
+      `,
+      options: multilineFirstArgs,
+      errors: [expectedMultilineFirstError],
+      output: `
+        <App
+          b={{
+            bB: 1,
+          }}
+          a
+        />
+      `,
+    },
+    {
+      code: `
+        <App
+          a={1}
+          b={{
+            bB: 1,
+          }}
+          c
+        />
+      `,
+      options: multilineAndShorthandFirstArgs,
+      errors: [expectedMultilineFirstError, expectedShorthandFirstError],
+      output: `
+        <App
+          c
+          b={{
+            bB: 1,
+          }}
+          a={1}
+        />
+      `,
+    },
+    // multiline last
+    {
+      code: `
+        <App
+          a={{
+            aA: 1,
+          }}
+          b
+        />
+      `,
+      options: multilineLastArgs,
+      errors: [expectedMultilineLastError],
+      output: `
+        <App
+          b
+          a={{
+            aA: 1,
+          }}
+        />
+      `,
+    },
+    {
+      code: `
+        <App
+          a={{
+            aA: 1,
+          }}
+          b
+          inline={1}
+          onClick={() => ({
+            c: 1
+          })}
+          d="dD"
+          e={() => ({
+            eE: 1
+          })}
+          f
+        />
+      `,
+      options: multilineAndShorthandAndCallbackLastArgs,
+      errors: [
+        {
+          messageId: 'listShorthandLast',
+          line: 6,
+        },
+        {
+          messageId: 'listCallbacksLast',
+          line: 8,
+        },
+      ],
+      output: `
+        <App
+          d="dD"
+          inline={1}
+          a={{
+            aA: 1,
+          }}
+          e={() => ({
+            eE: 1
+          })}
+          b
+          f
+          onClick={() => ({
+            c: 1
+          })}
+        />
+      `,
+    },
+    {
+      code: `
+        <Typography
+          float
+          className={classNames(classes.inputWidth, {
+            [classes.noBorder]: isActive === "values",
+          })}
+          disabled={isDisabled}
+          initialValue={computePercentage(number, count)}
+          InputProps={{
+            ...customInputProps,
+          }}
+          key={index}
+          isRequired
+          {...sharedTypographyProps}
+          ref={textRef}
+          min="0"
+          name="fieldName"
+          placeholder={getTranslation("field")}
+          onValidate={validate}
+          inputProps={{
+            className: inputClassName,
+          }}
+          outlined
+          {...rest}
+        />
+      `,
+      options: [
+        {
+          multiline: 'last',
+          shorthandFirst: true,
+          callbacksLast: true,
+          reservedFirst: true,
+          ignoreCase: true,
+        },
+      ],
+      output: `
+        <Typography
+          key={index}
+          float
+          isRequired
+          disabled={isDisabled}
+          initialValue={computePercentage(number, count)}
+          className={classNames(classes.inputWidth, {
+            [classes.noBorder]: isActive === "values",
+          })}
+          InputProps={{
+            ...customInputProps,
+          }}
+          {...sharedTypographyProps}
+          ref={textRef}
+          outlined
+          min="0"
+          name="fieldName"
+          placeholder={getTranslation("field")}
+          inputProps={{
+            className: inputClassName,
+          }}
+          onValidate={validate}
+          {...rest}
+        />
+      `,
+      errors: [
+        {
+          messageId: 'listMultilineLast',
+          line: 4,
+        },
+        {
+          messageId: 'listReservedPropsFirst',
+          line: 12,
+        },
+        {
+          messageId: 'listShorthandFirst',
+          line: 13,
+        },
+        {
+          messageId: 'listCallbacksLast',
+          line: 19,
+        },
+      ],
     },
   ]),
 });

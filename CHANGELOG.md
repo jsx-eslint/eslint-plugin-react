@@ -11,6 +11,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-curly-brace-presence`]: add "propElementValues" config option ([#3191][] @ljharb)
 * add [`iframe-missing-sandbox`] rule ([#2753][] @tosmolka @ljharb)
 * [`no-did-mount-set-state`], [`no-did-update-set-state`]: no-op with react >= 16.3 ([#1754][] @ljharb)
+* [`jsx-sort-props`]: support multiline prop groups ([#3198][] @duhamelgm)
 
 ### Fixed
 * [`prop-types`], `propTypes`: add support for exported type inference ([#3163][] @vedadeepta)
@@ -31,6 +32,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`forbid-foreign-prop-types`]: document `allowInPropTypes` option ([#1815][] @ljharb)
 * [Refactor] [`jsx-sort-default-props`]: remove unnecessary code ([#1817][] @ljharb)
 
+[#3198]: https://github.com/yannickcr/eslint-plugin-react/pull/3198
 [#3195]: https://github.com/yannickcr/eslint-plugin-react/pull/3195
 [#3191]: https://github.com/yannickcr/eslint-plugin-react/pull/3191
 [#3190]: https://github.com/yannickcr/eslint-plugin-react/pull/3190
