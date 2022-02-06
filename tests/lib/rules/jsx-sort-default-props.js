@@ -358,6 +358,22 @@ ruleTester.run('jsx-sort-default-props', rule, {
         First.propTypes = propTypes;
         First.defaultProps = defaultProps;
       `,
+    },
+    {
+      code: `
+        class First extends React.Component {
+          render() {
+            return <div />;
+          }
+        }
+        
+        First.defaultProps = {
+            a: PropTypes.any,
+            onBar: PropTypes.func,
+            onFoo: PropTypes.func,
+            z: PropTypes.string,
+        };
+      `,
     }
   )),
 
@@ -896,6 +912,26 @@ ruleTester.run('jsx-sort-default-props', rule, {
           column: 11,
           type: 'Property',
         },
+      ],
+    },
+    {
+      code: `
+        class First extends React.Component {
+          render() {
+            return <div />;
+          }
+        }
+        
+        First.defaultProps = {
+            a: PropTypes.any,
+            z: PropTypes.string,
+            onFoo: PropTypes.func,
+            onBar: PropTypes.func,
+        };
+      `,
+      errors: [
+        { messageId: 'propsNotSorted', line: 11 },
+        { messageId: 'propsNotSorted', line: 12 },
       ],
     },
   ]),

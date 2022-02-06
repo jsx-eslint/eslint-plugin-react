@@ -29,6 +29,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`display-name`]: improve examples ([#3189][] @golopot)
 * [Refactor] [`no-invalid-html-attribute`]: sort HTML_ELEMENTS and messages ([#3182][] @Primajin)
 * [Docs] [`forbid-foreign-prop-types`]: document `allowInPropTypes` option ([#1815][] @ljharb)
+* [Refactor] [`jsx-sort-default-props`]: remove unnecessary code ([#1817][] @ljharb)
 
 [#3195]: https://github.com/yannickcr/eslint-plugin-react/pull/3195
 [#3191]: https://github.com/yannickcr/eslint-plugin-react/pull/3191
@@ -44,6 +45,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3133]: https://github.com/yannickcr/eslint-plugin-react/pull/3133
 [#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
 [#2753]: https://github.com/yannickcr/eslint-plugin-react/pull/2753
+[#1817]: https://github.com/yannickcr/eslint-plugin-react/issues/1817
 [#1815]: https://github.com/yannickcr/eslint-plugin-react/issues/1815
 [#1754]: https://github.com/yannickcr/eslint-plugin-react/issues/1754
 [#1046]: https://github.com/yannickcr/eslint-plugin-react/issues/1046
