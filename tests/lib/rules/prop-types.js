@@ -3796,6 +3796,20 @@ ruleTester.run('prop-types', rule, {
           { object: 'PropTypes', property: 'exact', exact: true },
         ],
       },
+    },
+    {
+      code: `
+        class Test extends React.Component {
+          componentDidUpdate() {
+              const {bar} = this.state;
+              console.log(bar);
+          }
+      
+          render() {
+              return null;
+          }
+        }
+      `,
     }
   )),
 
