@@ -31,7 +31,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] [`no-invalid-html-attribute`]: sort HTML_ELEMENTS and messages ([#3182][] @Primajin)
 * [Docs] [`forbid-foreign-prop-types`]: document `allowInPropTypes` option ([#1815][] @ljharb)
 * [Refactor] [`jsx-sort-default-props`]: remove unnecessary code ([#1817][] @ljharb)
+* [Docs] [`jsx-no-target-blank`]: fix syntax highlighting ([#3199][] @shamrin)
 
+[#3199]: https://github.com/yannickcr/eslint-plugin-react/pull/3199
 [#3198]: https://github.com/yannickcr/eslint-plugin-react/pull/3198
 [#3195]: https://github.com/yannickcr/eslint-plugin-react/pull/3195
 [#3191]: https://github.com/yannickcr/eslint-plugin-react/pull/3191

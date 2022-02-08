@@ -9,7 +9,7 @@ This rule aims to prevent user generated link hrefs and form actions from creati
 
 ## Rule Options
 
-```json
+```js
 ...
 "react/jsx-no-target-blank": [<enabled>, {
   "allowReferrer": <allow-referrer>,
