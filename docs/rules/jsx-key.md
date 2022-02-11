@@ -22,7 +22,7 @@ Examples of **correct** code for this rule:
 ```jsx
 [<Hello key="first" />, <Hello key="second" />, <Hello key="third" />];
 
-data.map((x, i) => <Hello key={i}>{x}</Hello>);
+data.map((x) => <Hello key={x.id}>{x}</Hello>);
 
 <Hello key={id} {...{ id, caption }} />
 ```

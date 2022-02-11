@@ -32,7 +32,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`forbid-foreign-prop-types`]: document `allowInPropTypes` option ([#1815][] @ljharb)
 * [Refactor] [`jsx-sort-default-props`]: remove unnecessary code ([#1817][] @ljharb)
 * [Docs] [`jsx-no-target-blank`]: fix syntax highlighting ([#3199][] @shamrin)
+* [Docs] [`jsx-key`]: improve example ([#3202][] @chnakamura)
 
+[#3202]: https://github.com/yannickcr/eslint-plugin-react/pull/3202
 [#3199]: https://github.com/yannickcr/eslint-plugin-react/pull/3199
 [#3198]: https://github.com/yannickcr/eslint-plugin-react/pull/3198
 [#3195]: https://github.com/yannickcr/eslint-plugin-react/pull/3195
