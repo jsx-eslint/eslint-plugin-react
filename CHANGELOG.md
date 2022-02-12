@@ -21,6 +21,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`sort-prop-types`]: avoid repeated warnings of the same node/reason ([#519][] @ljharb)
 * [`jsx-indent`]: Fix indent handling for closing parentheses ([#620][] @stefanbuck])
 * [`prop-types`/`propTypes`]: follow a returned identifier to see if it is JSX ([#1046][] @ljharb)
+* [`no-unused-state`]: TS: support `getDerivedStateFromProps` as an arrow function ([#2061][] @ljharb)
 
 ### Changed
 * [readme] change [`jsx-runtime`] link from branch to sha ([#3160][] @tatsushitoji)
@@ -51,6 +52,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3133]: https://github.com/yannickcr/eslint-plugin-react/pull/3133
 [#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
 [#2753]: https://github.com/yannickcr/eslint-plugin-react/pull/2753
+[#2061]: https://github.com/yannickcr/eslint-plugin-react/issues/2061
 [#1817]: https://github.com/yannickcr/eslint-plugin-react/issues/1817
 [#1815]: https://github.com/yannickcr/eslint-plugin-react/issues/1815
 [#1754]: https://github.com/yannickcr/eslint-plugin-react/issues/1754

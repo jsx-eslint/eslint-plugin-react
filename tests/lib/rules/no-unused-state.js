@@ -4,7 +4,9 @@
 
 'use strict';
 
+const semver = require('semver');
 const RuleTester = require('eslint').RuleTester;
+const tsEslintVersion = require('@typescript-eslint/parser/package.json').version;
 const rule = require('../../../lib/rules/no-unused-state');
 
 const parsers = require('../../helpers/parsers');
@@ -26,7 +28,7 @@ function getErrorMessages(unusedFields) {
 }
 
 eslintTester.run('no-unused-state', rule, {
-  valid: parsers.all([
+  valid: parsers.all([].concat(
     {
       code: `
         function StatelessFnUnaffectedTest(props) {
@@ -984,7 +986,31 @@ eslintTester.run('no-unused-state', rule, {
       `,
       features: ['ts', 'no-babel'],
     },
-  ]),
+    semver.satisfies(tsEslintVersion, '>= 5') ? {
+      code: `
+        interface Props {}
+        
+        interface State {
+          flag: boolean;
+        }
+        
+        export default class RuleTest extends React.Component<Props, State> {
+          readonly state: State = {
+            flag: false,
+          };
+        
+          static getDerivedStateFromProps = (props: Props, state: State) => {
+            const newState: Partial<State> = {};
+            if (!state.flag) {
+              newState.flag = true;
+            }
+            return newState;
+          };
+        }
+      `,
+      features: ['ts', 'no-babel-old', 'no-ts-old'],
+    } : []
+  )),
 
   invalid: parsers.all([
     {
