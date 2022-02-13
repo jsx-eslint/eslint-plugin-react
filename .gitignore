@@ -20,6 +20,8 @@ node_modules
 npm-debug.log
 sftp-config.json
 eslint-remote-tester-results
+**/.vscode/*
+!**/.vscode/launch.template.json
 
 # Only apps should have lockfiles
 yarn.lock
