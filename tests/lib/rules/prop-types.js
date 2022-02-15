@@ -3810,6 +3810,21 @@ ruleTester.run('prop-types', rule, {
           }
         }
       `,
+    },
+    {
+      code: `
+        const DisplayName = (props) => {
+            const getNameDiv = () => {
+                return <div>{props.name}</div>;
+            };
+        
+            return getNameDiv();
+        };
+        
+        DisplayName.propTypes = {
+            name: PropTypes.string.isRequired,
+        };
+      `,
     }
   )),
 
