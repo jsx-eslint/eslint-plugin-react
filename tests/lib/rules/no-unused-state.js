@@ -1009,7 +1009,42 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       features: ['ts', 'no-babel-old', 'no-ts-old'],
-    } : []
+    } : [],
+    {
+      code: `
+        class Foo extends React.Component {
+          onCancel = (data) => {
+            console.log('Cancelled', data)
+            this.setState({ status: 'Cancelled. Try again?' })
+          }
+          render() {
+            const { status } = this.state;
+            return <div>{status}</div>
+          }
+        }
+      `,
+      features: ['class fields'],
+    },
+    {
+      code: `
+        class KarmaRefundPillComponent extends GenericPillComponent {
+          renderContent = () => {
+            const { action } = this.props
+        
+            return (
+              <Box fontSize={[1]} mx={[2]} minWidth="10px" minHeight="26px" alignItems="center">
+                <FormattedText
+                  fields={getKarmaClaimLevel1Fields(action)}
+                  i18nKey="pillTemplates.karmarefund.summary"
+                  fontSize={[1]}
+                />
+              </Box>
+            )
+          }
+        }
+      `,
+      features: ['ts'],
+    }
   )),
 
   invalid: parsers.all([
