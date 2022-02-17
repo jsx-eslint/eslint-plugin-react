@@ -23,6 +23,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`prop-types`/`propTypes`]: follow a returned identifier to see if it is JSX ([#1046][] @ljharb)
 * [`no-unused-state`]: TS: support `getDerivedStateFromProps` as an arrow function ([#2061][] @ljharb)
 * [`no-array-index-key`]: catch `.toString` and `String()` usage ([#2813][] @RedTn)
+* [`function-component-definition`]: do not break on dollar signs ([#3207][] @ljharb)
 
 ### Changed
 * [readme] change [`jsx-runtime`] link from branch to sha ([#3160][] @tatsushitoji)
@@ -36,6 +37,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`jsx-no-target-blank`]: fix syntax highlighting ([#3199][] @shamrin)
 * [Docs] [`jsx-key`]: improve example ([#3202][] @chnakamura)
 
+[#3207]: https://github.com/yannickcr/eslint-plugin-react/issues/3207
 [#3202]: https://github.com/yannickcr/eslint-plugin-react/pull/3202
 [#3199]: https://github.com/yannickcr/eslint-plugin-react/pull/3199
 [#3198]: https://github.com/yannickcr/eslint-plugin-react/pull/3198

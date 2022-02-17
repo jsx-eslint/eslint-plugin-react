@@ -969,5 +969,35 @@ ruleTester.run('function-component-definition', rule, {
       options: [{ namedComponents: ['function-expression', 'function-declaration'] }],
       errors: [{ messageId: 'function-expression' }],
     },
+    {
+      code: `
+        const genX = (symbol) => \`the symbol is \${symbol}\`;
+
+        const IndexPage = () => {
+          return (
+            <div>
+              Hello World.{genX('$')}
+            </div>
+          )
+        }
+        
+        export default IndexPage;
+      `,
+      output: `
+        const genX = (symbol) => \`the symbol is \${symbol}\`;
+
+        function IndexPage() {
+          return (
+            <div>
+              Hello World.{genX('$')}
+            </div>
+          )
+        }
+        
+        export default IndexPage;
+      `,
+      options: [{ namedComponents: ['function-declaration'] }],
+      errors: [{ messageId: 'function-declaration' }],
+    },
   ]),
 });
