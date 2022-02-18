@@ -3945,6 +3945,21 @@ ruleTester.run('no-unused-prop-types', rule, {
         }
       `,
     },
+    {
+      code: `
+        const Wrapper = featureToggle
+        ? ({ children }: { children: Node }) => (
+          <FeatureToggledComponent
+              featureToggle={featureToggle}
+              defaultValue
+          >
+              {children}
+          </FeatureToggledComponent>
+        )
+        : React.Fragment;
+      `,
+      features: ['types'],
+    },
   ]),
 
   invalid: parsers.all([].concat(
