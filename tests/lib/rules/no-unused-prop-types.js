@@ -3934,6 +3934,17 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       features: ['class fields', 'types'],
     },
+    {
+      code: `
+        function Foo (props) {
+          return <div>{ renderPhoto() }</div>;
+        
+          function renderPhoto () {
+            return <div>{ props.renderPhotoTools() }</div>;
+          }
+        }
+      `,
+    },
   ]),
 
   invalid: parsers.all([].concat(
