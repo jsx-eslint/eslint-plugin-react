@@ -3825,6 +3825,21 @@ ruleTester.run('prop-types', rule, {
             name: PropTypes.string.isRequired,
         };
       `,
+    },
+    {
+      code: `
+        const SomeComponent = (props) => {
+          function renderComponent() {
+            return <div>{props.name}</div>
+          }
+        
+          return renderComponent();
+        }
+        
+        SomeComponent.propTypes = {
+          name: PropTypes.string
+        }
+      `,
     }
   )),
 
