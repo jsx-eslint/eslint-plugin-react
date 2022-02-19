@@ -535,6 +535,50 @@ ruleTester.run('display-name', rule, {
       `,
       features: ['ts', 'no-babel'],
     },
+    {
+      code: `
+        function Test() {
+          const data = [
+            {
+              name: 'Bob',
+            },
+          ];
+        
+          const columns = [
+            {
+              Header: 'Name',
+              accessor: 'name',
+              Cell: ({ value }) => <div>{value}</div>,
+            },
+          ];
+        
+          return <ReactTable columns={columns} data={data} />;
+        }
+      `,
+    },
+    {
+      code: `
+        class Test {
+          render() {
+            const data = [
+              {
+                name: 'Bob',
+              },
+            ];
+        
+            const columns = [
+              {
+                Header: 'Name',
+                accessor: 'name',
+                Cell: ({ value }) => <div>{value}</div>,
+              },
+            ];
+        
+            return <ReactTable columns={columns} data={data} />;
+          }
+        }
+      `,
+    },
   ]),
 
   invalid: parsers.all([
