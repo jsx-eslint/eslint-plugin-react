@@ -57,6 +57,19 @@ Examples of **incorrect** code for this rule:
 <span {...spread} key={"key-after-spread"} />;
 ```
 
+### `warnOnDuplicates` (default: `false`)
+
+When `true` the rule will check for any duplicate key prop values.
+
+Examples of **incorrect** code for this rule:
+
+```jsx
+const spans = [
+    <span key="notunique"/>,
+    <span key="notunique"/>,
+];
+```
+
 ## When Not To Use It
 
 If you are not using JSX then you can disable this rule.

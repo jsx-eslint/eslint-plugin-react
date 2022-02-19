@@ -12,6 +12,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * add [`iframe-missing-sandbox`] rule ([#2753][] @tosmolka @ljharb)
 * [`no-did-mount-set-state`], [`no-did-update-set-state`]: no-op with react >= 16.3 ([#1754][] @ljharb)
 * [`jsx-sort-props`]: support multiline prop groups ([#3198][] @duhamelgm)
+* [`jsx-key`]: add `warnDuplicates` option to warn on duplicate jsx keys in an array ([#2614][] @ljharb)
 
 ### Fixed
 * [`prop-types`], `propTypes`: add support for exported type inference ([#3163][] @vedadeepta)
@@ -57,6 +58,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
 [#2813]: https://github.com/yannickcr/eslint-plugin-react/pull/2813
 [#2753]: https://github.com/yannickcr/eslint-plugin-react/pull/2753
+[#2614]: https://github.com/yannickcr/eslint-plugin-react/issues/2614
 [#2596]: https://github.com/yannickcr/eslint-plugin-react/issues/2596
 [#2061]: https://github.com/yannickcr/eslint-plugin-react/issues/2061
 [#1817]: https://github.com/yannickcr/eslint-plugin-react/issues/1817

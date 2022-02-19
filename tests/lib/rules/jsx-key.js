@@ -66,6 +66,14 @@ ruleTester.run('jsx-key', rule, {
       code: '<div key="keyBeforeSpread" {...{}} />;',
       options: [{ checkKeyMustBeforeSpread: true }],
     },
+    {
+      code: `
+        const spans = [
+          <span key="notunique"/>,
+          <span key="notunique"/>,
+        ];
+      `,
+    },
   ]),
   invalid: parsers.all([
     {
@@ -143,6 +151,19 @@ ruleTester.run('jsx-key', rule, {
       options: [{ checkKeyMustBeforeSpread: true }],
       settings,
       errors: [{ messageId: 'keyBeforeSpread' }],
+    },
+    {
+      code: `
+        const spans = [
+          <span key="notunique"/>,
+          <span key="notunique"/>,
+        ];
+      `,
+      options: [{ warnOnDuplicates: true }],
+      errors: [
+        { messageId: 'nonUniqueKeys', line: 3 },
+        { messageId: 'nonUniqueKeys', line: 4 },
+      ],
     },
   ]),
 });
