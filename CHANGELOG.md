@@ -24,6 +24,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unused-state`]: TS: support `getDerivedStateFromProps` as an arrow function ([#2061][] @ljharb)
 * [`no-array-index-key`]: catch `.toString` and `String()` usage ([#2813][] @RedTn)
 * [`function-component-definition`]: do not break on dollar signs ([#3207][] @ljharb)
+* [`prefer-stateless-function`]: avoid a crash inside `doctrine` ([#2596][] @ljharb)
 
 ### Changed
 * [readme] change [`jsx-runtime`] link from branch to sha ([#3160][] @tatsushitoji)
@@ -56,6 +57,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
 [#2813]: https://github.com/yannickcr/eslint-plugin-react/pull/2813
 [#2753]: https://github.com/yannickcr/eslint-plugin-react/pull/2753
+[#2596]: https://github.com/yannickcr/eslint-plugin-react/issues/2596
 [#2061]: https://github.com/yannickcr/eslint-plugin-react/issues/2061
 [#1817]: https://github.com/yannickcr/eslint-plugin-react/issues/1817
 [#1815]: https://github.com/yannickcr/eslint-plugin-react/issues/1815

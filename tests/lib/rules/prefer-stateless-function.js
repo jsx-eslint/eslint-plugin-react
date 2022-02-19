@@ -399,6 +399,16 @@ ruleTester.run('prefer-stateless-function', rule, {
       features: ['class fields'],
       options: [{ ignorePureComponents: true }],
     },
+    {
+      code: `
+        /**
+         * @param a.
+         */
+        function Comp() {
+          return <a></a>
+        }
+      `,
+    },
   ]),
 
   invalid: parsers.all([
