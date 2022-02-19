@@ -1162,6 +1162,21 @@ const Component = () => (
       `,
       features: ['flow'].concat(semver.satisfies(eslintVersion, '< 8') ? 'no-babel-old' : []),
     },
+    {
+      code: `
+        <a role={'button'}
+          className={\`navbar-burger \${open ? 'is-active' : ''}\`}
+          href={'#'}
+          aria-label={'menu'}
+          aria-expanded={false}
+          onClick={openMenu}>
+          <span aria-hidden={'true'}/>
+          <span aria-hidden={'true'}/>
+          <span aria-hidden={'true'}/>
+        </a>
+      `,
+      options: [2],
+    },
   ]),
 
   invalid: parsers.all([].concat(
