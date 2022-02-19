@@ -3840,6 +3840,37 @@ ruleTester.run('prop-types', rule, {
           name: PropTypes.string
         }
       `,
+    },
+    {
+      code: `
+        import React from 'react';
+        import { MyType } from './types';
+        
+        function Component(props: Props): JSX.Element | null {
+          const { array } = props;
+        
+          function renderFound(): JSX.Element | null {
+            const found = array.find(x => x.id === id); // issue here
+        
+            if (!found) {
+              return null;
+            }
+        
+            return (
+              <div>{found.id}</div>
+            );
+          }
+        
+          return renderFound();
+        }
+        
+        interface Props {
+          array: MyType[];
+        }
+        
+        export default Component;
+      `,
+      features: ['types'],
     }
   )),
 
