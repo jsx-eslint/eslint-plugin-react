@@ -3911,6 +3911,35 @@ ruleTester.run('prop-types', rule, {
         });
       `,
       features: ['types'],
+    },
+    {
+      code: `
+        import PropTypes from 'prop-types';
+        import React from 'react';
+        
+        import { Link } from '..';
+        
+        const LinkWrapper = ({ primaryLinks }) => (
+          <>
+            {primaryLinks.map((x, index) => (
+              <Link key={index} href={x.link}>
+                {x.text}
+              </Link>
+            ))}
+          </>
+        );
+        
+        LinkWrapper.propTypes = {
+          primaryLinks: PropTypes.arrayOf(
+            PropTypes.shape({
+              text: PropTypes.string,
+            })
+          ),
+        };
+        
+        export default LinkWrapper;
+      `,
+      features: ['fragment'],
     }
   )),
 
