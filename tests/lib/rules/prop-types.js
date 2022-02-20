@@ -3871,6 +3871,46 @@ ruleTester.run('prop-types', rule, {
         export default Component;
       `,
       features: ['types'],
+    },
+    {
+      code: `
+        export default React.memo(function AppIcon({
+          icon,
+          className,
+          title,
+          spinning,
+        }: {
+          icon: string | IconDefinition;
+          className?: string;
+          title?: string;
+          spinning?: boolean;
+        }) {
+          if (typeof icon === 'string') {
+            return (
+              <span
+                className={clsx(
+                  icon,
+                  'app-icon',
+                  'no-pointer-events',
+                  className,
+                  spinning ? 'fa-spin' : false
+                )}
+                title={title}
+              />
+            );
+          } else {
+            return (
+              <FontAwesomeIcon
+                className={className ? 'app-icon ' + className : 'app-icon'}
+                icon={icon}
+                title={title}
+                spin={spinning}
+              />
+            );
+          }
+        });
+      `,
+      features: ['types'],
     }
   )),
 
