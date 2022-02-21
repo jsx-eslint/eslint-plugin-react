@@ -97,6 +97,14 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
       options: [{ prevent: true }],
       features: ['fragment'],
     },
+    {
+      code: `
+        {/* fake-eslint-disable-next-line react/forbid-component-props */}
+        <Button popoverOpen='#settings-popover' style={{ width: 'fit-content' }}>
+          <Icon f7='gear' />
+        </Button>
+      `,
+    },
   ]),
   invalid: parsers.all([
     {
