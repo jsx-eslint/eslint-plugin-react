@@ -1719,5 +1719,55 @@ ruleTester.run('forbid-prop-types', rule, {
       `,
       errors: 1,
     },
+    {
+      code: `
+        import React from './React';
+
+        import { arrayOf, object } from 'prop-types';
+        
+        const App = ({ foo }) => (
+          <div>
+            Hello world {foo}
+          </div>
+        );
+        
+        App.propTypes = {
+          foo: arrayOf(object)
+        }
+        
+        export default App;
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenPropType',
+          data: { target: 'object' },
+        },
+      ],
+    },
+    {
+      code: `
+        import React from './React';
+
+        import PropTypes, { arrayOf } from 'prop-types';
+        
+        const App = ({ foo }) => (
+          <div>
+            Hello world {foo}
+          </div>
+        );
+        
+        App.propTypes = {
+          foo: arrayOf(PropTypes.object)
+        }
+        
+        export default App;
+      `,
+      errors: [
+        {
+          messageId: 'forbiddenPropType',
+          data: { target: 'object' },
+        },
+      ],
+    },
   ]),
 });

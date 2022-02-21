@@ -27,6 +27,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`function-component-definition`]: do not break on dollar signs ([#3207][] @ljharb)
 * [`prefer-stateless-function`]: avoid a crash inside `doctrine` ([#2596][] @ljharb)
 * [`prop-types`]: catch infinite loop ([#2861][] @ljharb)
+* [`forbid-prop-types`]: properly report name in error message; check undestructured arguments ([#2945][] @ljharb)
 
 ### Changed
 * [readme] change [`jsx-runtime`] link from branch to sha ([#3160][] @tatsushitoji)
@@ -56,6 +57,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3163]: https://github.com/yannickcr/eslint-plugin-react/pull/3163
 [#3160]: https://github.com/yannickcr/eslint-plugin-react/pull/3160
 [#3133]: https://github.com/yannickcr/eslint-plugin-react/pull/3133
+[#2945]: https://github.com/yannickcr/eslint-plugin-react/issues/2945
 [#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
 [#2861]: https://github.com/yannickcr/eslint-plugin-react/issues/2861
 [#2813]: https://github.com/yannickcr/eslint-plugin-react/pull/2813
