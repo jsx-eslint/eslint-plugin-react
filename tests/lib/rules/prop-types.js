@@ -3753,19 +3753,19 @@ ruleTester.run('prop-types', rule, {
             value: string,
             error: string,
         }
-        
+
         type Form = {
             fields: {
                 [string]: Field,
             },
             formError: string,
         }
-        
+
         type Props = {
             bankDetails: Form,
             onBankDetailsUpdate: any => void,
         }
-        
+
         const Provider = (props:Props) =>
                     <Input
                         label={'Account Name'}
@@ -3804,7 +3804,7 @@ ruleTester.run('prop-types', rule, {
               const {bar} = this.state;
               console.log(bar);
           }
-      
+
           render() {
               return null;
           }
@@ -3817,10 +3817,10 @@ ruleTester.run('prop-types', rule, {
             const getNameDiv = () => {
                 return <div>{props.name}</div>;
             };
-        
+
             return getNameDiv();
         };
-        
+
         DisplayName.propTypes = {
             name: PropTypes.string.isRequired,
         };
@@ -3832,10 +3832,10 @@ ruleTester.run('prop-types', rule, {
           function renderComponent() {
             return <div>{props.name}</div>
           }
-        
+
           return renderComponent();
         }
-        
+
         SomeComponent.propTypes = {
           name: PropTypes.string
         }
@@ -3845,29 +3845,29 @@ ruleTester.run('prop-types', rule, {
       code: `
         import React from 'react';
         import { MyType } from './types';
-        
+
         function Component(props: Props): JSX.Element | null {
           const { array } = props;
-        
+
           function renderFound(): JSX.Element | null {
             const found = array.find(x => x.id === id); // issue here
-        
+
             if (!found) {
               return null;
             }
-        
+
             return (
               <div>{found.id}</div>
             );
           }
-        
+
           return renderFound();
         }
-        
+
         interface Props {
           array: MyType[];
         }
-        
+
         export default Component;
       `,
       features: ['types'],
@@ -3916,9 +3916,9 @@ ruleTester.run('prop-types', rule, {
       code: `
         import PropTypes from 'prop-types';
         import React from 'react';
-        
+
         import { Link } from '..';
-        
+
         const LinkWrapper = ({ primaryLinks }) => (
           <>
             {primaryLinks.map((x, index) => (
@@ -3928,7 +3928,7 @@ ruleTester.run('prop-types', rule, {
             ))}
           </>
         );
-        
+
         LinkWrapper.propTypes = {
           primaryLinks: PropTypes.arrayOf(
             PropTypes.shape({
@@ -3936,10 +3936,36 @@ ruleTester.run('prop-types', rule, {
             })
           ),
         };
-        
+
         export default LinkWrapper;
       `,
       features: ['fragment'],
+    },
+    {
+      code: `
+        const projectType = PropTypes.shape({
+          id: PropTypes.string.isRequired,
+          name: PropTypes.string.isRequired,
+        });
+
+        const nodesType = PropTypes.arrayOf(
+          PropTypes.shape({ project: projectType, children: nodesType }),
+        );
+
+        class ProjectNode extends React.Component {
+          render() {
+            return <div />;
+          }
+        }
+
+        ProjectNode.propTypes = {
+          project: projectType.isRequired,
+          nodes: nodesType,
+          depth: PropTypes.number.isRequired,
+          setActiveProject: PropTypes.func.isRequired,
+          activeProject: projectType,
+        };
+      `,
     }
   )),
 

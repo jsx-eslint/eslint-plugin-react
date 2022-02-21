@@ -26,6 +26,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-array-index-key`]: catch `.toString` and `String()` usage ([#2813][] @RedTn)
 * [`function-component-definition`]: do not break on dollar signs ([#3207][] @ljharb)
 * [`prefer-stateless-function`]: avoid a crash inside `doctrine` ([#2596][] @ljharb)
+* [`prop-types`]: catch infinite loop ([#2861][] @ljharb)
 
 ### Changed
 * [readme] change [`jsx-runtime`] link from branch to sha ([#3160][] @tatsushitoji)
@@ -56,6 +57,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3160]: https://github.com/yannickcr/eslint-plugin-react/pull/3160
 [#3133]: https://github.com/yannickcr/eslint-plugin-react/pull/3133
 [#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
+[#2861]: https://github.com/yannickcr/eslint-plugin-react/issues/2861
 [#2813]: https://github.com/yannickcr/eslint-plugin-react/pull/2813
 [#2753]: https://github.com/yannickcr/eslint-plugin-react/pull/2753
 [#2614]: https://github.com/yannickcr/eslint-plugin-react/issues/2614
