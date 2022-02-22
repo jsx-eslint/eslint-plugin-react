@@ -3966,6 +3966,26 @@ ruleTester.run('prop-types', rule, {
           activeProject: projectType,
         };
       `,
+    },
+    {
+      code: `
+        import React from 'react';
+
+        interface SomeType<ContextType = any> {
+          renderValue: (context: ContextType) => React.ReactNode;
+        }
+        
+        interface DataObject {
+          id: string,
+          title: string,
+          value: string,
+        }
+        
+        const someType: SomeType<DataObject> = {
+          renderValue: ({title}) => <div>{title}</div>,
+        };
+      `,
+      features: ['types'],
     }
   )),
 
