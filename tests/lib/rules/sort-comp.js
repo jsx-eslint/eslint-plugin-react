@@ -697,6 +697,32 @@ ruleTester.run('sort-comp', rule, {
         },
       ],
     },
+    {
+      code: `
+        class ClassName extends React.Component {
+          static defaultProps = {};
+          static parseDateString(date?: Date) {}
+          state = {};
+          render() {
+            return <div />;
+          }
+        }
+      `,
+      features: ['types'],
+      options: [
+        {
+          order: [
+            'static-variables',
+            'static-methods',
+            'type-annotations',
+            'instance-variables',
+            'lifecycle',
+            'everything-else',
+            'render',
+          ],
+        },
+      ],
+    },
   ]),
 
   invalid: parsers.all([
