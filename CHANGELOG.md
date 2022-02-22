@@ -40,6 +40,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] [`jsx-sort-default-props`]: remove unnecessary code ([#1817][] @ljharb)
 * [Docs] [`jsx-no-target-blank`]: fix syntax highlighting ([#3199][] @shamrin)
 * [Docs] [`jsx-key`]: improve example ([#3202][] @chnakamura)
+* [Refactor] [`jsx-key`]: use more AST selectors (@ljharb)
 
 [#3207]: https://github.com/yannickcr/eslint-plugin-react/issues/3207
 [#3202]: https://github.com/yannickcr/eslint-plugin-react/pull/3202
