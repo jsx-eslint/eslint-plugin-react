@@ -3986,6 +3986,17 @@ ruleTester.run('prop-types', rule, {
         };
       `,
       features: ['types'],
+    },
+    {
+      code: `
+        <MyComponent
+          options={{
+            tabBarIcon: ({ color, size }) => (
+              <Icon name="dumbbell" size={size} color={color} />
+            )
+          }}
+        />
+      `,
     }
   )),
 
