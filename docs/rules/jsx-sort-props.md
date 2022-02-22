@@ -33,6 +33,7 @@ Examples of **correct** code for this rule:
   "ignoreCase": <boolean>,
   "noSortAlphabetically": <boolean>,
   "reservedFirst": <boolean>|<array<string>>,
+  "locale": "auto" | "any valid locale"
 }]
 ...
 ```
@@ -134,6 +135,12 @@ With `reservedFirst: ["key"]`, the following will **not** warn:
 ```jsx
 <Hello key={'uuid'} name="John" ref="ref" />
 ```
+
+### `locale`
+
+Defaults to `"auto"`, meaning, the locale of the current environment.
+
+Any other string provided here may be passed to `String.prototype.localeCompare` - note that an unknown or invalid locale may throw an exception and crash.
 
 ## When Not To Use It
 

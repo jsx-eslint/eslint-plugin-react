@@ -13,6 +13,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-did-mount-set-state`], [`no-did-update-set-state`]: no-op with react >= 16.3 ([#1754][] @ljharb)
 * [`jsx-sort-props`]: support multiline prop groups ([#3198][] @duhamelgm)
 * [`jsx-key`]: add `warnDuplicates` option to warn on duplicate jsx keys in an array ([#2614][] @ljharb)
+* [`jsx-sort-props`]: add `locale` option ([#3002][] @ljharb)
 
 ### Fixed
 * [`prop-types`], `propTypes`: add support for exported type inference ([#3163][] @vedadeepta)
@@ -58,6 +59,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3163]: https://github.com/yannickcr/eslint-plugin-react/pull/3163
 [#3160]: https://github.com/yannickcr/eslint-plugin-react/pull/3160
 [#3133]: https://github.com/yannickcr/eslint-plugin-react/pull/3133
+[#3002]: https://github.com/yannickcr/eslint-plugin-react/issues/3002
 [#2945]: https://github.com/yannickcr/eslint-plugin-react/issues/2945
 [#2921]: https://github.com/yannickcr/eslint-plugin-react/pull/2921
 [#2861]: https://github.com/yannickcr/eslint-plugin-react/issues/2861

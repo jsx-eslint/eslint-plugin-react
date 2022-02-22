@@ -10,6 +10,7 @@
 // -----------------------------------------------------------------------------
 
 const RuleTester = require('eslint').RuleTester;
+const semver = require('semver');
 const rule = require('../../../lib/rules/jsx-sort-props');
 
 const parsers = require('../../helpers/parsers');
@@ -120,7 +121,7 @@ const multilineAndShorthandAndCallbackLastArgs = [
 ];
 
 ruleTester.run('jsx-sort-props', rule, {
-  valid: parsers.all([
+  valid: parsers.all([].concat(
     { code: '<App />;' },
     { code: '<App {...this.props} />;' },
     { code: '<App a b c />;' },
@@ -276,7 +277,26 @@ ruleTester.run('jsx-sort-props', rule, {
       code: '<App key="key" c="c" b />',
       options: reservedFirstWithShorthandLast,
     },
-  ]),
+    {
+      code: `
+        <RawFileField
+          onChange={handleChange}
+          onFileRemove={asMedia ? null : handleRemove}
+          {...props}
+        />
+      `,
+    },
+    semver.satisfies(process.version, '>= 13') ? {
+      code: `
+        <RawFileField
+          onFileRemove={asMedia ? null : handleRemove}
+          onChange={handleChange}
+          {...props}
+        />
+      `,
+      options: [{ locale: 'sk-SK' }],
+    } : []
+  )),
   invalid: parsers.all([
     {
       code: '<App b a />;',
