@@ -165,5 +165,20 @@ ruleTester.run('jsx-key', rule, {
         { messageId: 'nonUniqueKeys', line: 4 },
       ],
     },
+    {
+      code: `
+        const div = (
+          <div>
+            <span key="notunique"/>
+            <span key="notunique"/>
+          </div>
+        );
+      `,
+      options: [{ warnOnDuplicates: true }],
+      errors: [
+        { messageId: 'nonUniqueKeys', line: 4 },
+        { messageId: 'nonUniqueKeys', line: 5 },
+      ],
+    },
   ]),
 });
