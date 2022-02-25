@@ -7,7 +7,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Fixed
 * [`jsx-curly-brace-presence`]: avoid warning on curlies containing quote characters ([#3214][] @ljharb)
+* [`jsx-indent`]: do not report on non-jsx-returning ternaries that contain null ([#3222][] @ljharb)
 
+[#3222]: https://github.com/yannickcr/eslint-plugin-react/issues/3222
 [#3214]: https://github.com/yannickcr/eslint-plugin-react/issues/3214
 
 ## [7.29.1] - 2022.02.25

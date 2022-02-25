@@ -1209,6 +1209,16 @@ const Component = () => (
       features: ['class fields'],
       options: [2],
     },
+    {
+      code: `
+        function test (foo) {
+          return foo != null
+            ? Math.max(0, Math.min(1, 10))
+            : 0
+        }
+      `,
+      options: [99],
+    },
   ]),
 
   invalid: parsers.all([].concat(
