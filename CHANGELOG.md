@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.29.0] - 2022.02.24
+
 ### Added
 * add [`hook-use-state`] rule to enforce symmetric useState hook variable names ([#2921][] @duncanbeevers)
 * [`jsx-no-target-blank`]: Improve fixer with option `allowReferrer` ([#3167][] @apepper)
@@ -43,6 +45,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`jsx-key`]: improve example ([#3202][] @chnakamura)
 * [Refactor] [`jsx-key`]: use more AST selectors (@ljharb)
 
+[7.29.0]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.28.0...v7.29.0
 [#3207]: https://github.com/yannickcr/eslint-plugin-react/issues/3207
 [#3202]: https://github.com/yannickcr/eslint-plugin-react/pull/3202
 [#3199]: https://github.com/yannickcr/eslint-plugin-react/pull/3199
