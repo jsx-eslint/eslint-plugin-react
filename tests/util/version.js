@@ -103,6 +103,7 @@ describe('Version', () => {
 
   describe('string version', () => {
     const context = { settings: { react: { version: '15.0', flowVersion: '1.2' } } };
+    const invalidContext = { settings: { react: { version: 'latest', flowVersion: 'not semver' } } };
 
     it('works with react', () => {
       assert.equal(versionUtil.testReactVersion(context, '>= 0.14.0'), true);
@@ -114,6 +115,20 @@ describe('Version', () => {
       assert.equal(versionUtil.testFlowVersion(context, '>= 1.1.0'), true);
       assert.equal(versionUtil.testFlowVersion(context, '>= 1.2.0'), true);
       assert.equal(versionUtil.testFlowVersion(context, '>= 1.3.0'), false);
+    });
+
+    it('fails nicely with an invalid react version', () => {
+      assert.equal(versionUtil.testReactVersion(invalidContext, '>= 15.0'), true);
+      expectedErrorArgs = [
+        ['Warning: React version specified in eslint-plugin-react-settings must be a valid semver version, or "detect"; got “latest”'],
+      ];
+    });
+
+    it('fails nicely with an invalid flow version', () => {
+      assert.equal(versionUtil.testFlowVersion(invalidContext, '>= 1.0'), true);
+      expectedErrorArgs = [
+        ['Warning: Flow version specified in eslint-plugin-react-settings must be a valid semver version, or "detect"; got “not semver”'],
+      ];
     });
   });
 
