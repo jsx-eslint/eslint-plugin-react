@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    if: github.event.repository.fork == false
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: step-security/harden-runner@v1
+        with:
+          allowed-endpoints:
+            api.github.com:443
+            github.com:443
+
+      - name: Get version from tag
+        id: tag_name
+        run: echo ::set-output name=current_version::${GITHUB_REF#refs/tags/v}
+        shell: bash
+
+      - uses: actions/checkout@v2
+
+      - uses: mindsers/changelog-reader-action@v2
+        id: changelog_reader
+        with:
+          version: ${{ steps.tag_name.outputs.current_version }}
+
+      - name: Get common links from changelog
+        id: changelog
+        run: |
+          # Parse the changelog for common links
+          _links="$(grep -P '^\[.*]:.+' ${GITHUB_WORKSPACE}/CHANGELOG.md | sort -u)"
+          _links="${_links//'%'/'%25'}"
+          _links="${_links//$'\n'/'%0A'}"
+          _links="${_links//$'\r'/'%0D'}"
+          # Set output 'links' to $_links
+          echo "::set-output name=links::${_links}"
+
+      - uses: softprops/action-gh-release@v1
+        with:
+          body: |
+            ${{ steps.changelog_reader.outputs.changes }}
+            ${{ steps.changelog.outputs.links }}
