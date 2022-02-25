@@ -1219,6 +1219,16 @@ const Component = () => (
       `,
       options: [99],
     },
+    {
+      code: `
+        function test (foo) {
+          return foo != null
+            ? <div>foo</div>
+            : <div>bar</div>
+        }
+      `,
+      options: [2],
+    },
   ]),
 
   invalid: parsers.all([].concat(
