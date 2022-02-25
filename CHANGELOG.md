@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`jsx-key`]: prevent false "missing array key" warning ([#3215][] @ljharb)
+
+[#3215]: https://github.com/yannickcr/eslint-plugin-react/issues/3215
+
 ## [7.29.0] - 2022.02.24
 
 ### Added
