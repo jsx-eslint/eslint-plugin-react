@@ -115,6 +115,15 @@ ruleTester.run('jsx-key', rule, {
       `,
       features: ['types'],
     },
+    {
+      code: `
+        // testrule.jsx
+        const trackLink = () => {};
+        const getAnalyticsUiElement = () => {};
+        
+        const onTextButtonClick = (e, item) => trackLink([, getAnalyticsUiElement(item), item.name], e);
+      `,
+    },
   ]),
   invalid: parsers.all([
     {
