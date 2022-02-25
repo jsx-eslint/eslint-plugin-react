@@ -1177,6 +1177,38 @@ const Component = () => (
       `,
       options: [2],
     },
+    {
+      code: `
+        export default class App extends React.Component {
+          state = {
+            name: '',
+          }
+        
+          componentDidMount() {
+            this.fetchName()
+              .then(name => {
+                this.setState({name})
+              });
+          }
+        
+          fetchName = () => {
+            const url = 'https://api.github.com/users/job13er'
+            return fetch(url)
+              .then(resp => resp.json())
+              .then(json => json.name)
+          }
+        
+          render() {
+            const {name} = this.state
+            return (
+              <h1>Hello, {name}</h1>
+            )
+          }
+        }
+      `,
+      features: ['class fields'],
+      options: [2],
+    },
   ]),
 
   invalid: parsers.all([].concat(
