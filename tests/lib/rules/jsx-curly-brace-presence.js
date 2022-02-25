@@ -454,6 +454,11 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: `<App horror={<div />} />`,
       options: [{ propElementValues: 'ignore' }],
+    },
+    {
+      code: `
+        <script>{\`window.foo = "bar"\`}</script>
+      `,
     }
   )),
 

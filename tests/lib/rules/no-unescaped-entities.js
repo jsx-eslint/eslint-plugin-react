@@ -315,6 +315,25 @@ ruleTester.run('no-unescaped-entities', rule, {
           ],
         },
       ],
+    },
+    {
+      code: `
+        <script>window.foo = "bar"</script>
+      `,
+      errors: [
+        {
+          messageId: 'unescapedEntityAlts',
+          data: { entity: '"', alts: '`&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`' },
+          line: 2,
+          column: 30,
+        },
+        {
+          messageId: 'unescapedEntityAlts',
+          data: { entity: '"', alts: '`&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`' },
+          line: 2,
+          column: 34,
+        },
+      ],
     }
   )),
 });

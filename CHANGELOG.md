@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`jsx-curly-brace-presence`]: avoid warning on curlies containing quote characters ([#3214][] @ljharb)
+
+[#3214]: https://github.com/yannickcr/eslint-plugin-react/issues/3214
+
 ## [7.29.1] - 2022.02.25
 
 ### Fixed
