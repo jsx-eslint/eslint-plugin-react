@@ -5,12 +5,15 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.29.1] - 2022.02.25
+
 ### Fixed
 * [`jsx-key`]: prevent false "missing array key" warning ([#3215][] @ljharb)
 * [`jsx-indent`]: avoid checking returns sans jsx ([#3218][] @ljharb)
 * [`jsx-key`]: avoid a crash ([#3220][] @ljharb)
 * version settings: avoid a crash with an invalid version ([#3219][] @ljharb)
 
+[7.29.1]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.29.0...v7.29.1
 [#3220]: https://github.com/yannickcr/eslint-plugin-react/issues/3220
 [#3219]: https://github.com/yannickcr/eslint-plugin-react/issues/3219
 [#3218]: https://github.com/yannickcr/eslint-plugin-react/issues/3218
