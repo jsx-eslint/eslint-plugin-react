@@ -55,9 +55,21 @@ ruleTester.run('no-array-index-key', rule, {
       code: 'foo.map((baz, i) => React.cloneElement(someChild, { ...someChild.props }))',
     },
     {
+      code: 'foo.map((baz, i) => cloneElement(someChild, { ...someChild.props }))',
+    },
+    {
       code: `
         foo.map((item, i) => {
           return React.cloneElement(someChild, {
+            key: item.id
+          })
+        })
+      `,
+    },
+    {
+      code: `
+        foo.map((item, i) => {
+          return cloneElement(someChild, {
             key: item.id
           })
         })
@@ -102,8 +114,22 @@ ruleTester.run('no-array-index-key', rule, {
     },
     {
       code: `
+        React.Children.map(this.props.children, (child, index, arr) => {
+          return cloneElement(child, { key: child.id });
+        })
+      `,
+    },
+    {
+      code: `
         Children.forEach(this.props.children, (child, index, arr) => {
           return React.cloneElement(child, { key: child.id });
+        })
+      `,
+    },
+    {
+      code: `
+        Children.forEach(this.props.children, (child, index, arr) => {
+          return cloneElement(child, { key: child.id });
         })
       `,
     },
@@ -147,8 +173,28 @@ ruleTester.run('no-array-index-key', rule, {
     },
     {
       code: `
+        import { cloneElement } from 'react';
+
+        foo.map((baz, i) => cloneElement(someChild, { ...someChild.props, key: i }))
+      `,
+      errors: [{ messageId: 'noArrayIndex' }],
+    },
+    {
+      code: `
         foo.map((item, i) => {
           return React.cloneElement(someChild, {
+            key: i
+          })
+        })
+      `,
+      errors: [{ messageId: 'noArrayIndex' }],
+    },
+    {
+      code: `
+        import { cloneElement } from 'react';
+
+        foo.map((item, i) => {
+          return cloneElement(someChild, {
             key: i
           })
         })
@@ -229,33 +275,73 @@ ruleTester.run('no-array-index-key', rule, {
     },
     {
       code: `
-      Children.map(this.props.children, (child, index) => {
-        return React.cloneElement(child, { key: index });
-      })
+        Children.map(this.props.children, (child, index) => {
+          return React.cloneElement(child, { key: index });
+        })
       `,
       errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: `
-      React.Children.map(this.props.children, (child, index) => {
-        return React.cloneElement(child, { key: index });
-      })
+        import { cloneElement } from 'react';
+
+        Children.map(this.props.children, (child, index) => {
+          return cloneElement(child, { key: index });
+        })
       `,
       errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: `
-      Children.forEach(this.props.children, (child, index) => {
-        return React.cloneElement(child, { key: index });
-      })
+        React.Children.map(this.props.children, (child, index) => {
+          return React.cloneElement(child, { key: index });
+        })
       `,
       errors: [{ messageId: 'noArrayIndex' }],
     },
     {
       code: `
-      React.Children.forEach(this.props.children, (child, index) => {
-        return React.cloneElement(child, { key: index });
-      })
+        import { cloneElement } from 'react';
+
+        React.Children.map(this.props.children, (child, index) => {
+          return cloneElement(child, { key: index });
+        })
+      `,
+      errors: [{ messageId: 'noArrayIndex' }],
+    },
+    {
+      code: `
+        Children.forEach(this.props.children, (child, index) => {
+          return React.cloneElement(child, { key: index });
+        })
+      `,
+      errors: [{ messageId: 'noArrayIndex' }],
+    },
+    {
+      code: `
+        import { cloneElement } from 'react';
+
+        Children.forEach(this.props.children, (child, index) => {
+          return cloneElement(child, { key: index });
+        })
+      `,
+      errors: [{ messageId: 'noArrayIndex' }],
+    },
+    {
+      code: `
+        React.Children.forEach(this.props.children, (child, index) => {
+          return React.cloneElement(child, { key: index });
+        })
+      `,
+      errors: [{ messageId: 'noArrayIndex' }],
+    },
+    {
+      code: `
+        import { cloneElement } from 'react';
+
+        React.Children.forEach(this.props.children, (child, index) => {
+          return cloneElement(child, { key: index });
+        })
       `,
       errors: [{ messageId: 'noArrayIndex' }],
     },
