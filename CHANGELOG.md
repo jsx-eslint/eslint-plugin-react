@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`no-unused-state`]: avoid a crash on type-only gDSFP declarations ([#3225][] @ljharb)
+
+[#3225]: https://github.com/yannickcr/eslint-plugin-react/issues/3225
+
 ## [7.29.2] - 2022.02.25
 
 ### Fixed

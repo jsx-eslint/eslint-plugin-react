@@ -1044,6 +1044,14 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       features: ['ts'],
+    },
+    {
+      code: `
+        class AutoControlledComponent<P = {}, S = {}> extends UIComponent<P, S> {
+          static getDerivedStateFromProps: React.GetDerivedStateFromProps<any, any>
+        }
+      `,
+      features: ['types'],
     }
   )),
 
