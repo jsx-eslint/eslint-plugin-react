@@ -7,7 +7,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Fixed
 * [`no-unused-state`]: avoid a crash on type-only gDSFP declarations ([#3225][] @ljharb)
+* [`jsx-curly-brace-presence`]: the string "never" defaults to `propElementValues` as `ignore` ([#3228][] @ljharb)
 
+[#3228]: https://github.com/yannickcr/eslint-plugin-react/issues/3228
 [#3225]: https://github.com/yannickcr/eslint-plugin-react/issues/3225
 
 ## [7.29.2] - 2022.02.25
