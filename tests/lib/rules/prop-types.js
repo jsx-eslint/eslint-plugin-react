@@ -7748,12 +7748,54 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
+        import React, { VFC } from 'react'
+
+        interface Props {
+        age: number
+        }
+        const Hello: VFC<Props> = function Hello(props) {
+        const { test } = props;
+
+        return <div>Hello {name}</div>;
+        }
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'test' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
         import React from 'react'
 
         interface Props {
         age: number
         }
         const Hello: React.VoidFunctionComponent<Props> = function Hello(props) {
+        const { test } = props;
+
+        return <div>Hello {name}</div>;
+        }
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'test' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from 'react'
+
+        interface Props {
+        age: number
+        }
+        const Hello: React.VFC<Props> = function Hello(props) {
         const { test } = props;
 
         return <div>Hello {name}</div>;
@@ -7960,6 +8002,25 @@ ruleTester.run('prop-types', rule, {
             username: string;
         }
         const Person: React.VoidFunctionComponent<PersonProps> = (props): React.ReactElement => (
+            <div>{props.nonExistent}</div>
+        );
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'nonExistent' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from 'react';
+
+        export interface PersonProps {
+            username: string;
+        }
+        const Person: React.VFC<PersonProps> = (props): React.ReactElement => (
             <div>{props.nonExistent}</div>
         );
       `,

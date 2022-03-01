@@ -8,7 +8,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`no-unused-state`]: avoid a crash on type-only gDSFP declarations ([#3225][] @ljharb)
 * [`jsx-curly-brace-presence`]: the string "never" defaults to `propElementValues` as `ignore` ([#3228][] @ljharb)
+* [`propTypes`]: add `VFC` to react generic list ([#3230][] @ljharb)
 
+[#3230]: https://github.com/yannickcr/eslint-plugin-react/issues/3230
 [#3228]: https://github.com/yannickcr/eslint-plugin-react/issues/3228
 [#3225]: https://github.com/yannickcr/eslint-plugin-react/issues/3225
 
