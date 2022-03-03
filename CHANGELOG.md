@@ -10,7 +10,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`no-unused-state`]: avoid a crash on type-only gDSFP declarations ([#3225][] @ljharb)
 * [`jsx-curly-brace-presence`]: the string "never" defaults to `propElementValues` as `ignore` ([#3228][] @ljharb)
-* [`propTypes`]: add `VFC` to react generic list ([#3230][] @ljharb)
+* `propTypes`: add `VFC` to react generic list ([#3230][] @ljharb)
 
 [7.29.3]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.29.2...v7.29.3
 [#3230]: https://github.com/yannickcr/eslint-plugin-react/issues/3230
@@ -63,7 +63,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * `propTypes`: Handle TSTypeReference in no-unused-prop-type ([#3195][] @niik)
 * [`sort-prop-types`]: avoid repeated warnings of the same node/reason ([#519][] @ljharb)
 * [`jsx-indent`]: Fix indent handling for closing parentheses ([#620][] @stefanbuck])
-* [`prop-types`/`propTypes`]: follow a returned identifier to see if it is JSX ([#1046][] @ljharb)
+* [`prop-types`]/`propTypes`: follow a returned identifier to see if it is JSX ([#1046][] @ljharb)
 * [`no-unused-state`]: TS: support `getDerivedStateFromProps` as an arrow function ([#2061][] @ljharb)
 * [`no-array-index-key`]: catch `.toString` and `String()` usage ([#2813][] @RedTn)
 * [`function-component-definition`]: do not break on dollar signs ([#3207][] @ljharb)
