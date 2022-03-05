@@ -46,6 +46,7 @@ You should also specify settings that will be shared across all the plugin rules
       "version": "detect", // React version. "detect" automatically picks the version you have installed.
                            // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
                            // It will default to "latest" and warn if missing, and to "detect" in the future
+                           // You can also use "ignore" to ignore the version check. This is useful for removing the warning when using preact.
       "flowVersion": "0.53" // Flow version
     },
     "propWrapperFunctions": [
