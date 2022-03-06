@@ -1052,6 +1052,18 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       features: ['types'],
+    },
+    {
+      code: `
+        export const commonMixinWrapper = ComposeComponent => class extends ComposeComponent {
+          static getDerivedStateFromProps = ComposeComponent.getDerivedStateFromProps;
+          render() { return <div />; }
+        }
+      `,
+      features: ['class fields'],
+      parserOptions: {
+        sourceType: 'module',
+      },
     }
   )),
 
