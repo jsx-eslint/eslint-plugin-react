@@ -91,7 +91,7 @@ const Foo = class extends React.PureComponent {
 
 ```js
 ...
-"react/destructuring-assignment": [<enabled>, "always", { "ignoreClassFields": <boolean> }]
+"react/destructuring-assignment": [<enabled>, "always", { "ignoreClassFields": <boolean>, "destructureInSignature": "always" | "ignore" }]
 ...
 ```
 
@@ -102,5 +102,35 @@ When configured with `true`, the rule will ignore class field declarations. Exam
 ```jsx
 class Foo extends React.PureComponent {
   bar = this.props.bar
+}
+```
+
+### `destructureInSignature` (default: "ignore")
+
+This option can be one of `always` or `ignore`. When configured with `always`, the rule will require props destructuring happens in the function signature.
+
+Examples of **incorrect** code for `destructureInSignature: 'always'` :
+
+```jsx
+function Foo(props) {
+  const {a} = props;
+  return <>{a}</>
+}
+```
+
+Examples of **correct** code for `destructureInSignature: 'always'` :
+
+```jsx
+function Foo({a}) {
+  return <>{a}</>
+}
+```
+
+```jsx
+// Ignores when props is used elsewhere
+function Foo(props) {
+  const {a} = props;
+  useProps(props); // NOTE: it is a bad practice to pass the props object anywhere else!
+  return <Goo a={a}/>
 }
 ```

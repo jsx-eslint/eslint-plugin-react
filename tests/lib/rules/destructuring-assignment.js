@@ -5,6 +5,8 @@
 'use strict';
 
 const RuleTester = require('eslint').RuleTester;
+const semver = require('semver');
+const eslintPkg = require('eslint/package.json');
 const rule = require('../../../lib/rules/destructuring-assignment');
 
 const parsers = require('../../helpers/parsers');
@@ -338,9 +340,27 @@ ruleTester.run('destructuring-assignment', rule, {
         }
       `,
     },
+    {
+      code: `
+        function Foo(props) {
+          const {a} = props;
+          return <Goo {...props}>{a}</Goo>;
+        }
+      `,
+      options: ['always', { destructureInSignature: 'always' }],
+    },
+    {
+      code: `
+        function Foo(props) {
+          const {a} = props;
+          return <Goo f={() => props}>{a}</Goo>;
+        }
+      `,
+      options: ['always', { destructureInSignature: 'always' }],
+    },
   ]),
 
-  invalid: parsers.all([
+  invalid: parsers.all([].concat(
     {
       code: `
         const MyComponent = (props) => {
@@ -632,7 +652,7 @@ ruleTester.run('destructuring-assignment', rule, {
 
         const TestComp = (props) => {
           props.onClick3102();
-        
+
           return (
             <div
               onClick={(evt) => {
@@ -720,5 +740,51 @@ ruleTester.run('destructuring-assignment', rule, {
         },
       ],
     },
-  ]),
+    // Ignore for ESLint < 4 because ESLint < 4 does not support array fixer.
+    semver.satisfies(eslintPkg.version, '>= 4') ? [
+      {
+        code: `
+          function Foo(props) {
+            const {a} = props;
+            return <p>{a}</p>;
+          }
+        `,
+        options: ['always', { destructureInSignature: 'always' }],
+        errors: [
+          {
+            messageId: 'destructureInSignature',
+            line: 3,
+          },
+        ],
+        output: `
+          function Foo({a}) {
+            
+            return <p>{a}</p>;
+          }
+        `,
+      },
+      {
+        code: `
+          function Foo(props: FooProps) {
+            const {a} = props;
+            return <p>{a}</p>;
+          }
+        `,
+        options: ['always', { destructureInSignature: 'always' }],
+        errors: [
+          {
+            messageId: 'destructureInSignature',
+            line: 3,
+          },
+        ],
+        output: `
+          function Foo({a}: FooProps) {
+            
+            return <p>{a}</p>;
+          }
+        `,
+        features: ['ts', 'no-babel'],
+      },
+    ] : []
+  )),
 });

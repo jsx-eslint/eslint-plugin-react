@@ -123,7 +123,7 @@ Enable the rules that you would like to use.
 |  |  | [react/boolean-prop-naming](docs/rules/boolean-prop-naming.md) | Enforces consistent naming for boolean props |
 |  |  | [react/button-has-type](docs/rules/button-has-type.md) | Forbid "button" element without an explicit "type" attribute |
 |  |  | [react/default-props-match-prop-types](docs/rules/default-props-match-prop-types.md) | Enforce all defaultProps are defined and not "required" in propTypes. |
-|  |  | [react/destructuring-assignment](docs/rules/destructuring-assignment.md) | Enforce consistent usage of destructuring assignment of props, state, and context |
+|  | 🔧 | [react/destructuring-assignment](docs/rules/destructuring-assignment.md) | Enforce consistent usage of destructuring assignment of props, state, and context |
 | ✔ |  | [react/display-name](docs/rules/display-name.md) | Prevent missing displayName in a React component definition |
 |  |  | [react/forbid-component-props](docs/rules/forbid-component-props.md) | Forbid certain props on components |
 |  |  | [react/forbid-dom-props](docs/rules/forbid-dom-props.md) | Forbid certain props on DOM Nodes |
