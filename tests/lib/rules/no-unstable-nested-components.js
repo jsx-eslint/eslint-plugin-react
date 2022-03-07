@@ -22,8 +22,8 @@ const parserOptions = {
   },
 };
 
-const ERROR_MESSAGE = 'Declare this component outside parent component "ParentComponent" or memoize it.';
-const ERROR_MESSAGE_WITHOUT_NAME = 'Declare this component outside parent component or memoize it.';
+const ERROR_MESSAGE = 'Do not define components during render. React will see a new component type on every render and destroy the entire subtree’s DOM nodes and state (https://reactjs.org/docs/reconciliation.html#elements-of-different-types). Instead, move this component definition out of the parent component “ParentComponent” and pass data as props.';
+const ERROR_MESSAGE_WITHOUT_NAME = 'Do not define components during render. React will see a new component type on every render and destroy the entire subtree’s DOM nodes and state (https://reactjs.org/docs/reconciliation.html#elements-of-different-types). Instead, move this component definition out of the parent component and pass data as props.';
 const ERROR_MESSAGE_COMPONENT_AS_PROPS = `${ERROR_MESSAGE} If you want to allow component creation in props, set allowAsProps option to true.`;
 
 // ------------------------------------------------------------------------------
@@ -1174,6 +1174,74 @@ ruleTester.run('no-unstable-nested-components', rule, {
       }
       `,
       errors: [{ message: ERROR_MESSAGE_COMPONENT_AS_PROPS }],
+    },
+    {
+      code: `
+        function ParentComponent() {
+          const UnstableNestedComponent = React.memo(() => {
+            return <div />;
+          });
+
+          return (
+            <div>
+              <UnstableNestedComponent />
+            </div>
+          );
+        }
+      `,
+      errors: [{ message: ERROR_MESSAGE }],
+    },
+    {
+      code: `
+        function ParentComponent() {
+          const UnstableNestedComponent = React.memo(
+            () => React.createElement("div", null),
+          );
+
+          return React.createElement(
+            "div",
+            null,
+            React.createElement(UnstableNestedComponent, null)
+          );
+        }
+      `,
+      errors: [{ message: ERROR_MESSAGE }],
+    },
+    {
+      code: `
+        function ParentComponent() {
+          const UnstableNestedComponent = React.memo(
+            function () {
+              return <div />;
+            }
+          );
+
+          return (
+            <div>
+              <UnstableNestedComponent />
+            </div>
+          );
+        }
+      `,
+      errors: [{ message: ERROR_MESSAGE }],
+    },
+    {
+      code: `
+        function ParentComponent() {
+          const UnstableNestedComponent = React.memo(
+            function () {
+              return React.createElement("div", null);
+            }
+          );
+
+          return React.createElement(
+            "div",
+            null,
+            React.createElement(UnstableNestedComponent, null)
+          );
+        }
+      `,
+      errors: [{ message: ERROR_MESSAGE }],
     },
   ]),
 });
