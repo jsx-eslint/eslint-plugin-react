@@ -417,6 +417,86 @@ ruleTester.run('boolean-prop-naming', rule, {
       features: ['ts'],
       errors: [],
     },
+    {
+      code: `
+        type Props = {
+          isEnabled: boolean
+        } & OtherProps
+        const HelloNew = (props: Props) => { return <div /> };
+      `,
+      options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types'],
+      errors: [],
+    },
+    {
+      code: `
+        type Props = {
+          isEnabled: boolean
+        } & {
+          hasLOL: boolean
+        } & OtherProps
+        const HelloNew = (props: Props) => { return <div /> };
+      `,
+      options: [{ rule: '(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types'],
+      errors: [],
+    },
+    {
+      code: `
+        type Props = {
+          isEnabled: boolean
+        }
+
+        const HelloNew: React.FC<Props> = (props) => { return <div /> };
+      `,
+      options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types'],
+      errors: [],
+    },
+    {
+      code: `
+        type Props = {
+          isEnabled: boolean
+        } & {
+          hasLOL: boolean
+        }
+
+        const HelloNew: React.FC<Props> = (props) => { return <div /> };
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types'],
+      errors: [],
+    },
+    {
+      code: `
+        type Props = {
+          isEnabled: boolean
+        } | {
+          hasLOL: boolean
+        }
+
+        const HelloNew = (props: Props) => { return <div /> };
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types'],
+      errors: [],
+    },
+    {
+      code: `
+        type Props = {
+          isEnabled: boolean
+        } & ({
+          hasLOL: boolean
+        } | {
+          isLOL: boolean
+        })
+
+        const HelloNew = (props: Props) => { return <div /> };
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types'],
+      errors: [],
+    },
   ]),
 
   invalid: parsers.all([
@@ -1047,6 +1127,115 @@ ruleTester.run('boolean-prop-naming', rule, {
       errors: [
         {
           message: 'Prop name (enabled) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)',
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          enabled: boolean
+        } & OtherProps
+
+        const HelloNew = (props: Props) => { return <div /> };
+      `,
+      options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          message: 'Prop name (enabled) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)',
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          enabled: boolean
+        } & {
+          hasLOL: boolean
+        } & OtherProps
+
+        const HelloNew = (props: Props) => { return <div /> };
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          message: 'Prop name (enabled) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          enabled: boolean
+        }
+
+        const HelloNew: React.FC<Props> = (props) => { return <div /> };
+      `,
+      options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          message: 'Prop name (enabled) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)',
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          enabled: boolean
+        } & {
+          hasLOL: boolean
+        }
+
+        const HelloNew: React.FC<Props> = (props) => { return <div /> };
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          message: 'Prop name (enabled) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          enabled: boolean
+        } | {
+          hasLOL: boolean
+        }
+
+        const HelloNew = (props: Props) => { return <div /> };
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          message: 'Prop name (enabled) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          enabled: boolean
+        } & ({
+          hasLOL: boolean
+        } | {
+          lol: boolean
+        })
+
+        const HelloNew = (props: Props) => { return <div /> };
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          message: 'Prop name (enabled) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
+        },
+        {
+          message: 'Prop name (lol) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
         },
       ],
     },
