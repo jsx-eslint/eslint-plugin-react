@@ -5,10 +5,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.29.4] - 2022.03.13
+
 ### Fixed
 * [`no-unused-state`]: avoid a crash on a class field gDSFP ([#3236][] @ljharb)
 * [`boolean-prop-naming`]: handle React.FC, intersection, union types ([#3241][] @ljharb)
 
+[7.29.4]: https://github.com/yannickcr/eslint-plugin-react/compare/v7.29.3...v7.29.4
 [#3241]: https://github.com/yannickcr/eslint-plugin-react/pull/3241
 [#3236]: https://github.com/yannickcr/eslint-plugin-react/issues/3236
 
