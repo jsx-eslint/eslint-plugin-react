@@ -38,6 +38,33 @@ const tests = {
     {
       code: `
         import { useState } from 'react'
+        function useRGB() {
+          const [rgb, setRGB] = useState()
+          return [rgb, setRGB]
+        }
+      `,
+    },
+    {
+      code: `
+        import { useState } from 'react'
+        function useRGBValue() {
+          const [rgbValue, setRGBValue] = useState()
+          return [rgbValue, setRGBValue]
+        }
+      `,
+    },
+    {
+      code: `
+        import { useState } from 'react'
+        function useCustomColorValue() {
+          const [customColorValue, setCustomColorValue] = useState()
+          return [customColorValue, setCustomColorValue]
+        }
+      `,
+    },
+    {
+      code: `
+        import { useState } from 'react'
         function useColor() {
           const [color, setColor] = useState('#ffffff')
           return [color, setColor]
