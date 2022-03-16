@@ -3441,6 +3441,51 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
+          import React, { VFC } from 'react'
+
+          interface Props {
+          age: number
+          }
+          const Hello: VFC<Props> = function Hello(props) {
+          const { age } = props;
+
+          return <div>Hello {age}</div>;
+          }
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+          import React from 'react'
+
+          interface Props {
+          age: number
+          }
+          const Hello: React.VFC<Props> = function Hello(props) {
+          const { age } = props;
+
+          return <div>Hello {age}</div>;
+          }
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+          import React from 'react'
+
+          export interface Props {
+          age: number
+          }
+          const Hello: React.VFC<Props> = function Hello(props) {
+          const { age } = props;
+
+          return <div>Hello {age}</div>;
+          }
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
         import React, { ForwardRefRenderFunction  as X } from 'react'
 
         type IfooProps = { e: string };
@@ -3974,13 +4019,13 @@ ruleTester.run('prop-types', rule, {
         interface SomeType<ContextType = any> {
           renderValue: (context: ContextType) => React.ReactNode;
         }
-        
+
         interface DataObject {
           id: string,
           title: string,
           value: string,
         }
-        
+
         const someType: SomeType<DataObject> = {
           renderValue: ({title}) => <div>{title}</div>,
         };
