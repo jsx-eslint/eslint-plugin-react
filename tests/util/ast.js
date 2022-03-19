@@ -7,6 +7,7 @@ const espree = require('espree');
 const ast = require('../../lib/util/ast');
 
 const traverseReturns = ast.traverseReturns;
+const isFunctionLike = ast.isFunctionLike;
 
 const DEFAULT_CONFIG = {
   ecmaVersion: 6,
@@ -99,6 +100,78 @@ describe('ast', () => {
       enterCalls.forEach((call, idx) => {
         assert.strictEqual(call.args[0].value, idx);
       });
+    });
+  });
+
+  describe('isFunctionLike()', () => {
+    it('FunctionDeclaration should return true', () => {
+      const node1 = parseCode(`
+        function foo(bar) {
+          const asdf = () => 'zxcv';
+          return asdf;
+        }
+      `);
+      assert.strictEqual(isFunctionLike(node1), true);
+
+      const node2 = parseCode(`
+        function foo({bar}) {
+          const asdf = () => 'zxcv';
+          console.log(bar);
+          return '5'
+        }
+      `);
+      assert.strictEqual(isFunctionLike(node2), true);
+    });
+
+    it('FunctionExpression should return true', () => {
+      const node1 = parseCode(`
+        const foo = function(bar) {
+          return () => 'zxcv';
+        }
+      `).declarations[0].init;
+      assert.strictEqual(isFunctionLike(node1), true);
+
+      const node2 = parseCode(`
+        const foo = function ({bar}) {
+          return '5';
+        }
+      `).declarations[0].init;
+      assert.strictEqual(isFunctionLike(node2), true);
+    });
+
+    it('ArrowFunctionExpression should return true', () => {
+      const node1 = parseCode(`
+        (bar) => {
+          return () => 'zxcv';
+        }
+      `).expression;
+      assert.strictEqual(isFunctionLike(node1), true);
+
+      const node2 = parseCode(`
+        ({bar}) => '5';
+      `).expression;
+      assert.strictEqual(isFunctionLike(node2), true);
+
+      const node3 = parseCode(`
+        bar => '5';
+      `).expression;
+      assert.strictEqual(isFunctionLike(node3), true);
+    });
+
+    it('Non-functions should return false', () => {
+      const node1 = parseCode(`
+        class bar {
+          a() {
+            return 'a';
+          }
+        }
+      `);
+      assert.strictEqual(isFunctionLike(node1), false);
+
+      const node2 = parseCode(`
+        const a = 5;
+      `);
+      assert.strictEqual(isFunctionLike(node2), false);
     });
   });
 });
