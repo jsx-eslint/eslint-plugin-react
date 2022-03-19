@@ -11,6 +11,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-tag-spacing`]: Add `multiline-always` option ([#3260][] @Nokel81)
 * [`function-component-definition`]: replace `var` by `const` in certain situations ([#3248][] @JohnBerd @SimeonC)
 * add [`jsx-no-leaked-render`] ([#3203][] @Belco90)
+* [`require-default-props`]: add option `functions` ([#3249][] @nix6839)
 
 ### Fixed
 * [`hook-use-state`]: Allow UPPERCASE setState setter prefixes ([#3244][] @duncanbeevers)
@@ -41,11 +42,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3258]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3258
 [#3254]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3254
 [#3251]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3251
-[#3203]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3203
+[#3249]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3249
 [#3248]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3248
 [#3244]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3244
 [#3235]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3235
 [#3230]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3230
+[#3203]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3203
 
 ## [7.29.4] - 2022.03.13
 

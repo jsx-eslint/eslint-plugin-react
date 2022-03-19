@@ -211,6 +211,84 @@ ruleTester.run('require-default-props', rule, {
       `,
       options: [{ ignoreFunctionalComponents: true }],
     },
+    {
+      code: `
+        function Hello(props) {
+          return <div>Hello {props.foo}</div>;
+        }
+        Hello.propTypes = {
+          foo: PropTypes.string
+        };
+        Hello.defaultProps = {
+          foo: 'bar;'
+        }
+      `,
+      options: [{ forbidDefaultForRequired: true }],
+    },
+    {
+      code: `
+        function Hello({ foo = 'asdf', bar }) {
+          return <div>Hello {foo} and {bar}</div>;
+        }
+        Hello.propTypes = {
+          foo: PropTypes.string,
+          bar: PropTypes.string.isRequired
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
+        function Hello({ foo = 'asdf', bar = 'qwer' }) {
+          return <div>Hello {foo} and {bar}</div>;
+        }
+        Hello.propTypes = {
+          foo: PropTypes.string,
+          bar: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
+        function Hello(props) {
+          return <div>Hello {foo} and {bar}</div>;
+        }
+        Hello.propTypes = {
+          foo: PropTypes.string.isRequired,
+          bar: PropTypes.string.isRequired,
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
+        function MyStatelessComponent({ foo, bar = 'asdf', ...props }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = {
+          foo: PropTypes.string.isRequired,
+          bar: PropTypes.string,
+          hello: PropTypes.string.isRequired,
+          world: PropTypes.string.isRequired
+        }
+      `,
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
+        function MyStatelessComponent({ foo, bar, ...props }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = {
+          foo: PropTypes.string.isRequired,
+          bar: PropTypes.string.isRequired,
+          hello: PropTypes.string.isRequired,
+          world: PropTypes.string.isRequired
+        }
+      `,
+      options: [{ functions: 'defaultArguments' }],
+    },
 
     // stateless components as function expressions
     {
@@ -246,6 +324,42 @@ ruleTester.run('require-default-props', rule, {
         };
       `,
       options: [{ ignoreFunctionalComponents: true }],
+    },
+    {
+      code: `
+        const Hello = function({ foo = 'asdf', bar = 'qwer' }) {
+          return <div>Hello {foo} and {bar}</div>;
+        }
+        Hello.propTypes = {
+          foo: PropTypes.string,
+          bar: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
+        const NoPropsComponent = function () {
+          return <div>Hello, world!</div>;
+        }
+      `,
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
+        function NoPropsComponent() {
+          return <div>Hello, world!</div>;
+        }
+      `,
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
+        const NoPropsComponent = () => {
+          return <div>Hello, world!</div>;
+        }
+      `,
+      options: [{ functions: 'defaultArguments' }],
     },
 
     // stateless components as arrow function expressions
@@ -284,6 +398,18 @@ ruleTester.run('require-default-props', rule, {
         export default MyComponent;
       `,
       options: [{ ignoreFunctionalComponents: true }],
+    },
+    {
+      code: `
+        const Hello = ({ foo = 'asdf', bar = 'qwer' }) => {
+          return <div>Hello {foo} and {bar}</div>;
+        }
+        Hello.propTypes = {
+          foo: PropTypes.string,
+          bar: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
     },
 
     // createReactClass components
@@ -365,6 +491,26 @@ ruleTester.run('require-default-props', rule, {
         });
       `,
       options: [{ ignoreFunctionalComponents: true }],
+    },
+    {
+      code: `
+        var Greeting = createReactClass({
+          render: function() {
+            return <div>Hello {this.props.foo} {this.props.bar}</div>;
+          },
+          propTypes: {
+            foo: PropTypes.string,
+            bar: PropTypes.string
+          },
+          getDefaultProps: function() {
+            return {
+              foo: "foo",
+              bar: "bar"
+            };
+          }
+        });
+      `,
+      options: [{ functions: 'defaultArguments' }],
     },
 
     // ES6 class component
@@ -484,6 +630,75 @@ ruleTester.run('require-default-props', rule, {
       `,
       options: [{ ignoreFunctionalComponents: true }],
     },
+    {
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {
+          foo: PropTypes.string,
+          bar: PropTypes.string.isRequired
+        };
+        Greeting.defaultProps = {
+          foo: "foo"
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {
+          foo: PropTypes.string,
+          bar: PropTypes.string.isRequired
+        };
+      `,
+      options: [{ classes: 'ignore' }],
+    },
+    {
+      code: `
+        class Greeting extends React.Component {
+          render() {
+            return (
+              <h1>Hello, {this.props.foo} {this.props.bar}</h1>
+            );
+          }
+        }
+        Greeting.propTypes = {
+          foo: PropTypes.string,
+          bar: PropTypes.string
+        };
+        Greeting.defaultProps = {
+          foo: "foo"
+        };
+      `,
+      options: [{ classes: 'ignore' }],
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          static get propTypes() {
+            return {
+              name: PropTypes.string
+            };
+          }
+          render() {
+            return <div>Hello {this.props.name}</div>;
+          }
+        }
+      `,
+      options: [{ classes: 'ignore' }],
+    },
 
     // edge cases
 
@@ -510,6 +725,20 @@ ruleTester.run('require-default-props', rule, {
           bar: PropTypes.string.isRequired
         };
       `,
+    },
+    {
+      code: `
+        let Greetings = {};
+        Greetings.Hello = class extends React.Component {
+          render () {
+            return <div>Hello {this.props.foo}</div>;
+          }
+        }
+        Greetings.Hello.propTypes = {
+          foo: PropTypes.string
+        };
+      `,
+      options: [{ classes: 'ignore' }],
     },
     // external references
     {
@@ -623,6 +852,18 @@ ruleTester.run('require-default-props', rule, {
           return <div>{foo}{bar}</div>;
         }
       `,
+    },
+    {
+      code: `
+        MyStatelessComponent.propTypes = {
+          ...stuff,
+          foo: PropTypes.string
+        };
+        function MyStatelessComponent({ foo = "foo", bar }) {
+          return <div>{foo}{bar}</div>;
+        }
+      `,
+      options: [{ functions: 'defaultArguments' }],
     },
     {
       code: `
@@ -955,6 +1196,32 @@ ruleTester.run('require-default-props', rule, {
     {
       code: `
         type Props = {
+          foo?: string,
+          bar?: string
+        }
+        function Hello({ foo = 'asdf', bar = 'qwer' }: Props) {
+          return <div>Hello {foo} and {bar}</div>;
+        }
+      `,
+      features: ['types'],
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
+        type Props = {
+          foo?: string,
+          bar: string
+        }
+        function Hello({ foo = 'asdf', bar }: Props) {
+          return <div>Hello {foo} and {bar}</div>;
+        }
+      `,
+      features: ['types'],
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
+        type Props = {
           +name?: string,
         };
         function Hello(props: Props) {
@@ -981,6 +1248,19 @@ ruleTester.run('require-default-props', rule, {
         export default MyComponent;
       `,
       features: ['ts'],
+    },
+    {
+      code: `
+        interface Props {
+          foo?: string,
+          bar?: string
+        }
+        const Hello: React.FC<Props> = ({ foo = 'asdf', bar = 'qwer' }) => {
+          return <div>Hello {foo} and {bar}</div>;
+        }
+      `,
+      features: ['ts'],
+      options: [{ functions: 'defaultArguments' }],
     },
   ]),
 
@@ -1140,6 +1420,68 @@ ruleTester.run('require-default-props', rule, {
           data: { name: 'bar' },
           line: 7,
           column: 11,
+        },
+      ],
+    },
+    {
+      code: `
+        const types = {
+          foo: PropTypes.string,
+          bar: PropTypes.string
+        };
+        function MyStatelessComponent({ foo, bar = "asdf" }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = types;
+      `,
+      options: [{ functions: 'defaultArguments' }],
+      errors: [
+        {
+          messageId: 'shouldAssignObjectDefault',
+          data: { name: 'foo' },
+          line: 6,
+          column: 41,
+        },
+      ],
+    },
+    {
+      code: `
+        const types = {
+          foo: PropTypes.string,
+        };
+        function MyStatelessComponent(props) {
+          return <div>{props.foo}</div>;
+        }
+        MyStatelessComponent.propTypes = types;
+      `,
+      options: [{ functions: 'defaultArguments' }],
+      errors: [
+        {
+          messageId: 'destructureInSignature',
+          line: 5,
+          column: 39,
+        },
+      ],
+    },
+    {
+      code: `
+        function MyStatelessComponent({ foo, bar, ...props }) {
+          return <div>{foo}{bar}</div>;
+        }
+        MyStatelessComponent.propTypes = {
+          foo: PropTypes.string,
+          bar: PropTypes.string.isRequired,
+          hello: PropTypes.string.isRequired,
+          world: PropTypes.string.isRequired
+        }
+      `,
+      options: [{ functions: 'defaultArguments' }],
+      errors: [
+        {
+          messageId: 'shouldAssignObjectDefault',
+          data: { name: 'foo' },
+          line: 2,
+          column: 41,
         },
       ],
     },
@@ -2440,6 +2782,43 @@ ruleTester.run('require-default-props', rule, {
         },
       ],
     },
+    {
+      code: `
+        function Hello(props) {
+          return <div>Hello {props.foo}</div>;
+        }
+        Hello.propTypes = {
+          foo: PropTypes.string.isRequired
+        };
+        Hello.defaultProps = {
+          foo: 'bar'
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+      errors: [
+        {
+          messageId: 'noDefaultPropsWithFunction',
+        },
+      ],
+    },
+    {
+      code: `
+        function Hello(props) {
+          return <div>Hello {props.foo} and {props.bar}</div>;
+        }
+        Hello.propTypes = {
+          foo: PropTypes.string.isRequired,
+          bar: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+      errors: [
+        {
+          messageId: 'destructureInSignature',
+        },
+      ],
+    },
+
     // test support for React PropTypes as Component's class generic
     {
       code: `
@@ -2601,7 +2980,7 @@ ruleTester.run('require-default-props', rule, {
             },
           },
         };
-        
+
         export const Daily = ({ history, match: {
           params: {
             date = moment().toISOString(),
