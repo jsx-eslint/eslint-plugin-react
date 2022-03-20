@@ -58,11 +58,19 @@ ruleTester.run('function-component-definition', rule, {
       options: [{ namedComponents: 'arrow-function' }],
     },
     {
+      code: 'const Hello = (props) => { return <div/> }',
+      options: [{ namedComponents: 'arrow-function' }],
+    },
+    {
       code: 'function Hello(props) { return <div/> }',
       options: [{ namedComponents: 'function-declaration' }],
     },
     {
       code: 'var Hello = function(props) { return <div/> }',
+      options: [{ namedComponents: 'function-expression' }],
+    },
+    {
+      code: 'const Hello = function(props) { return <div/> }',
       options: [{ namedComponents: 'function-expression' }],
     },
     {
@@ -75,6 +83,10 @@ ruleTester.run('function-component-definition', rule, {
     },
     {
       code: 'var Foo = React.memo(function Foo() { return <p/> })',
+      options: [{ namedComponents: 'function-declaration' }],
+    },
+    {
+      code: 'const Foo = React.memo(function Foo() { return <p/> })',
       options: [{ namedComponents: 'function-declaration' }],
     },
     {
@@ -404,7 +416,7 @@ ruleTester.run('function-component-definition', rule, {
         }
       `,
       output: `
-        var Hello = (props) => {
+        const Hello = (props) => {
           return <div/>;
         }
       `,
@@ -469,12 +481,62 @@ ruleTester.run('function-component-definition', rule, {
     },
     {
       code: `
+        let Hello = (props) => {
+          return <div/>;
+        }
+      `,
+      output: `
+        let Hello = function(props) {
+          return <div/>;
+        }
+      `,
+      options: [{ namedComponents: 'function-expression' }],
+      errors: [{ messageId: 'function-expression' }],
+    },
+    {
+      code: `
+        let Hello;
+        Hello = (props) => {
+          return <div/>;
+        }
+      `,
+      output: `
+        let Hello;
+        Hello = function(props) {
+          return <div/>;
+        }
+      `,
+      options: [{ namedComponents: 'function-expression' }],
+      errors: [{ messageId: 'function-expression' }],
+    },
+    {
+      code: `
+        let Hello = (props) => {
+          return <div/>;
+        }
+        Hello = function(props) {
+          return <span/>;
+        }
+      `,
+      output: `
+        let Hello = function(props) {
+          return <div/>;
+        }
+        Hello = function(props) {
+          return <span/>;
+        }
+      `,
+      options: [{ namedComponents: 'function-expression' }],
+      errors: [{ messageId: 'function-expression' }],
+    },
+    {
+      code: `
         function Hello(props) {
           return <div/>;
         }
       `,
       output: `
-        var Hello = function(props) {
+        const Hello = function(props) {
           return <div/>;
         }
       `,
@@ -554,7 +616,7 @@ ruleTester.run('function-component-definition', rule, {
         }
       `,
       output: `
-        var Hello = (props: Test) => {
+        const Hello = (props: Test) => {
           return <div/>;
         }
       `,
@@ -584,13 +646,76 @@ ruleTester.run('function-component-definition', rule, {
         }
       `,
       output: `
-        var Hello = function(props: Test) {
+        const Hello = function(props: Test) {
           return <div/>;
         }
       `,
       options: [{ namedComponents: 'function-expression' }],
       errors: [{ messageId: 'function-expression' }],
       features: ['types'],
+    },
+    {
+      code: `
+        function Hello(props: Test) {
+          return React.createElement('div');
+        }
+      `,
+      output: `
+        var Hello = function(props: Test) {
+          return React.createElement('div');
+        }
+      `,
+      options: [{ namedComponents: 'function-expression' }],
+      errors: [{ messageId: 'function-expression' }],
+      features: ['types'],
+    },
+    {
+      code: `
+        import * as React from 'react';
+        function Hello(props: Test) {
+          return React.createElement('div');
+        }
+      `,
+      output: `
+        import * as React from 'react';
+        const Hello = function(props: Test) {
+          return React.createElement('div');
+        }
+      `,
+      options: [{ namedComponents: 'function-expression' }],
+      errors: [{ messageId: 'function-expression' }],
+      features: ['types'],
+    },
+    {
+      code: `
+        export function Hello(props: Test) {
+          return React.createElement('div');
+        }
+      `,
+      output: `
+        export const Hello = function(props: Test) {
+          return React.createElement('div');
+        }
+      `,
+      options: [{ namedComponents: 'function-expression' }],
+      errors: [{ messageId: 'function-expression' }],
+      features: ['types'],
+    },
+    {
+      code: `
+        function Hello(props) {
+          return React.createElement('div');
+        }
+        export default Hello;
+      `,
+      output: `
+        const Hello = function(props) {
+          return React.createElement('div');
+        }
+        export default Hello;
+      `,
+      options: [{ namedComponents: 'function-expression' }],
+      errors: [{ messageId: 'function-expression' }],
     },
     {
       code: `
@@ -674,7 +799,7 @@ ruleTester.run('function-component-definition', rule, {
         }
       `,
       output: `
-        var Hello = <Test extends {}>(props: Test) => {
+        const Hello = <Test extends {}>(props: Test) => {
           return <div/>;
         }
       `,
@@ -704,7 +829,7 @@ ruleTester.run('function-component-definition', rule, {
         }
       `,
       output: `
-        var Hello = function<Test extends {}>(props: Test) {
+        const Hello = function<Test extends {}>(props: Test) {
           return <div/>;
         }
       `,
@@ -874,7 +999,7 @@ ruleTester.run('function-component-definition', rule, {
         }
       `,
       output: `
-        export var Hello = (props) => {
+        export const Hello = (props) => {
           return <div/>;
         }
       `,
@@ -934,7 +1059,7 @@ ruleTester.run('function-component-definition', rule, {
         }
       `,
       output: `
-        var Hello = (props) => {
+        const Hello = (props) => {
           return <div/>;
         }
       `,
