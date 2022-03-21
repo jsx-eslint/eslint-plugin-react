@@ -7,11 +7,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Added
 * [`destructuring-assignment`]: add option `destructureInSignature` ([#3235][] @golopot)
+* [`no-unknown-property`]: Allow crossOrigin on image tag (SVG) ([#3251][] @zpao)
 
 ### Fixed
 * [`hook-use-state`]: Allow UPPERCASE setState setter prefixes ([#3244][] @duncanbeevers)
 * `propTypes`: add `VFC` to react generic type param map ([#3230][] @dlech)
 
+[#3251]: https://github.com/yannickcr/eslint-plugin-react/pull/3251
 [#3244]: https://github.com/yannickcr/eslint-plugin-react/pull/3244
 [#3235]: https://github.com/yannickcr/eslint-plugin-react/pull/3235
 [#3230]: https://github.com/yannickcr/eslint-plugin-react/issues/3230

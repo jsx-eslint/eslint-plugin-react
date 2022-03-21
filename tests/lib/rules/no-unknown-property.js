@@ -53,6 +53,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<script crossOrigin />' },
     { code: '<audio crossOrigin />' },
     { code: '<div hasOwnProperty="should not be allowed tag" />' },
+    { code: '<svg><image crossOrigin /></svg>' },
   ]),
   invalid: parsers.all([
     {
@@ -220,7 +221,7 @@ ruleTester.run('no-unknown-property', rule, {
           data: {
             name: 'crossOrigin',
             tagName: 'div',
-            allowedTags: 'script, img, video, audio, link',
+            allowedTags: 'script, img, video, audio, link, image',
           },
         },
       ],
