@@ -13,6 +13,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`hook-use-state`]: Allow UPPERCASE setState setter prefixes ([#3244][] @duncanbeevers)
 * `propTypes`: add `VFC` to react generic type param map ([#3230][] @dlech)
 
+### Changed
+* [readme] remove global usage and eslint version from readme ([#3254][] @aladdin-add)
+
+[#3254]: https://github.com/yannickcr/eslint-plugin-react/pull/3254
 [#3251]: https://github.com/yannickcr/eslint-plugin-react/pull/3251
 [#3244]: https://github.com/yannickcr/eslint-plugin-react/pull/3244
 [#3235]: https://github.com/yannickcr/eslint-plugin-react/pull/3235
