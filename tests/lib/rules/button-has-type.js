@@ -180,6 +180,15 @@ ruleTester.run('button-has-type', rule, {
       ],
     },
     {
+      code: '<button type/>',
+      errors: [
+        {
+          messageId: 'invalidValue',
+          data: { value: true },
+        },
+      ],
+    },
+    {
       code: '<button type={condition ? "reset" : "button"}/>',
       options: [{ reset: false }],
       errors: [

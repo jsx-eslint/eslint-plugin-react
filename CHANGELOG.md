@@ -19,6 +19,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unused-state`]: avoid a crash ([#3258][] @WillyLiaoWH @ljharb)
 * [`jsx-no-useless-fragment`]: use proper apostrophe in error message ([#3266][] @develohpanda)
 * `propTypes`: handle imported types/interface in forwardRef generic ([#3280][] @vedadeepta)
+* [`button-has-type`]: fix exception for `<button type>` ([#3255][] @meowtec)
 
 ### Changed
 * [readme] remove global usage and eslint version from readme ([#3254][] @aladdin-add)
@@ -48,6 +49,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3260]: https://github.jsx-eslintckcr/eslint-plugin-react/pull/3260
 [#3259]: https://githubjsx-eslintickcr/eslint-plugin-react/pull/3259
 [#3258]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3258
+[#3255]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3255
 [#3254]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3254
 [#3251]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3251
 [#3249]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3249
