@@ -17,9 +17,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Changed
 * [readme] remove global usage and eslint version from readme ([#3254][] @aladdin-add)
 * [Refactor] fix linter errors ([#3261][] @golopot)
+* [Docs] [`no-unused-prop-types`]: fix syntax errors ([#3259][] @mrdulin)
 
 [#3261]: https://github.com/yannickcr/eslint-plugin-react/pull/3261
 [#3260]: https://github.com/yannickcr/eslint-plugin-react/pull/3260
+[#3259]: https://github.com/yannickcr/eslint-plugin-react/pull/3259
 [#3254]: https://github.com/yannickcr/eslint-plugin-react/pull/3254
 [#3251]: https://github.com/yannickcr/eslint-plugin-react/pull/3251
 [#3244]: https://github.com/yannickcr/eslint-plugin-react/pull/3244

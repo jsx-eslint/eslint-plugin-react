@@ -15,18 +15,18 @@ class Hello extends React.Component {
   render() {
     return <div>Hello Bob</div>;
   }
-});
+}
 
 Hello.propTypes = {
   name: PropTypes.string
-},
+};
 ```
 
 ```jsx
 type Props = {
-  firstname: string,
-  middlename: string, // middlename is never used by the Hello component
-  lastname: string
+  firstname: string;
+  middlename: string; // middlename is never used by the Hello component
+  lastname: string;
 }
 
 class Hello extends React.Component<Props> {
@@ -62,11 +62,11 @@ class Hello extends React.Component {
   render() {
     return <div>Hello {this.props.name}</div>;
   }
-};
+}
 
-Hello.propTypes: {
+Hello.propTypes = {
   name: PropTypes.string
-},
+};
 ```
 
 ## Rule Options
