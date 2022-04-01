@@ -115,6 +115,49 @@ ruleTester.run('jsx-tag-spacing', rule, {
       options: beforeSelfClosingOptions('never'),
     },
     {
+      code: '<App/>',
+      options: beforeSelfClosingOptions('multiline-always'),
+    },
+    {
+      code: '<App />',
+      options: beforeSelfClosingOptions('multiline-always'),
+    },
+    {
+      code: '<App foo/>',
+      options: beforeSelfClosingOptions('multiline-always'),
+    },
+    {
+      code: '<App foo />',
+      options: beforeSelfClosingOptions('multiline-always'),
+    },
+    {
+      code: `
+        <App
+          foo={bar}
+          blat
+        >
+          hello
+        </App>
+      `,
+      options: beforeClosingOptions('multiline-always'),
+    },
+    {
+      code: `
+        <App foo={bar}>
+          hello
+        </App>
+      `,
+      options: beforeClosingOptions('multiline-always'),
+    },
+    {
+      code: `
+        <App
+          foo={bar}
+        />
+      `,
+      options: beforeSelfClosingOptions('multiline-always'),
+    },
+    {
       code: '<App foo/>',
       options: beforeSelfClosingOptions('never'),
     },
@@ -301,6 +344,64 @@ ruleTester.run('jsx-tag-spacing', rule, {
       output: '<App foo={bar}/>',
       options: beforeSelfClosingOptions('never'),
       errors: [{ messageId: 'beforeSelfCloseNoSpace' }],
+    },
+    {
+      code: `
+        <App
+          foo={bar}/>`,
+      output: `
+        <App
+          foo={bar}
+/>`,
+      options: beforeSelfClosingOptions('multiline-always'),
+      errors: [{ messageId: 'beforeSelfCloseNeedNewline' }],
+    },
+    {
+      code: `
+        <App
+          foo={bar} />`,
+      output: `
+        <App
+          foo={bar}${' '}
+/>`,
+      options: beforeSelfClosingOptions('multiline-always'),
+      errors: [{ messageId: 'beforeSelfCloseNeedNewline' }],
+    },
+    {
+      code: `
+        <App
+          foo={bar}
+          blat >
+          hello
+        </App>
+      `,
+      output: `
+        <App
+          foo={bar}
+          blat${' '}
+>
+          hello
+        </App>
+      `,
+      options: beforeClosingOptions('multiline-always'),
+      errors: [{ messageId: 'beforeCloseNeedNewline' }],
+    },
+    {
+      code: `
+        <App
+          foo={bar}>
+          hello
+        </App>
+      `,
+      output: `
+        <App
+          foo={bar}
+>
+          hello
+        </App>
+      `,
+      options: beforeClosingOptions('multiline-always'),
+      errors: [{ messageId: 'beforeCloseNeedNewline' }],
     },
     {
       code: '<App {...props} />',

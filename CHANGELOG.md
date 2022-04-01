@@ -8,6 +8,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Added
 * [`destructuring-assignment`]: add option `destructureInSignature` ([#3235][] @golopot)
 * [`no-unknown-property`]: Allow crossOrigin on image tag (SVG) ([#3251][] @zpao)
+* [`jsx-tag-spacing`]: Add `multiline-always` option ([#3260][] @Nokel81)
 
 ### Fixed
 * [`hook-use-state`]: Allow UPPERCASE setState setter prefixes ([#3244][] @duncanbeevers)
@@ -18,6 +19,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] fix linter errors ([#3261][] @golopot)
 
 [#3261]: https://github.com/yannickcr/eslint-plugin-react/pull/3261
+[#3260]: https://github.com/yannickcr/eslint-plugin-react/pull/3260
 [#3254]: https://github.com/yannickcr/eslint-plugin-react/pull/3254
 [#3251]: https://github.com/yannickcr/eslint-plugin-react/pull/3251
 [#3244]: https://github.com/yannickcr/eslint-plugin-react/pull/3244
