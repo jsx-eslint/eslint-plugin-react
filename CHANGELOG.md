@@ -28,6 +28,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`jsx-no-useless-fragment`]: add more examples of correct code ([#3349][] @karlhorky)
 * [Docs] [`jsx-boolean-value`]: add jsdoc types for helper functions ([#3344][] @caroline223)
 * [readme] remove dead codeclimate badge, add actions badge (@ljharb)
+* [readme] Remove dead david-dm badge ([#3262][] @ddzz)
 
 [#3350]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3350
 [#3349]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3349
@@ -46,6 +47,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3315]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3315
 [#3314]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3314
 [#3311]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3311
+[#3262]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3262
 
 ## [7.30.1] - 2022.06.23
 

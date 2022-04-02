@@ -4,7 +4,6 @@
 [![github actions][actions-image]][actions-url]
 [![Maintenance Status][status-image]][status-url]
 [![NPM version][npm-image]][npm-url]
-[![Dependency Status][deps-image]][deps-url]
 [![Tidelift][tidelift-image]][tidelift-url]
 
 React specific linting rules for `eslint`
@@ -270,9 +269,6 @@ This pairs well with the `eslint:all` rule.
 
 [npm-url]: https://npmjs.org/package/eslint-plugin-react
 [npm-image]: https://img.shields.io/npm/v/eslint-plugin-react.svg
-
-[deps-url]: https://david-dm.org/jsx-eslint/eslint-plugin-react
-[deps-image]: https://img.shields.io/david/dev/jsx-eslint/eslint-plugin-react.svg
 
 [status-url]: https://github.com/jsx-eslint/eslint-plugin-react/pulse
 [status-image]: https://img.shields.io/github/last-commit/jsx-eslint/eslint-plugin-react.svg
