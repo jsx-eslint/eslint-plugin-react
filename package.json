@@ -5,7 +5,7 @@
   "description": "React specific linting rules for ESLint",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .",
+    "lint": "eslint --cache .",
     "postlint": "npm run type-check",
     "pretest": "npm run lint",
     "test": "npm run unit-test",
