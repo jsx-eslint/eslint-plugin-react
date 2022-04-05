@@ -8,7 +8,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Added
 * [`destructuring-assignment`]: add option `destructureInSignature` ([#3235][] @golopot)
 * [`no-unknown-property`]: Allow crossOrigin on image tag (SVG) ([#3251][] @zpao)
-* [`jsx-tag-spacing`]: Add `multiline-always` option ([#3260][] @Nokel81)
+* [`jsx-tag-spacing`]: Add `multiline-always` option ([#3260][], [#3264][] @Nokel81)
 * [`function-component-definition`]: replace `var` by `const` in certain situations ([#3248][] @JohnBerd @SimeonC)
 * add [`jsx-no-leaked-render`] ([#3203][] @Belco90)
 * [`require-default-props`]: add option `functions` ([#3249][] @nix6839)
@@ -45,6 +45,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3267]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3267
 [#3266]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3266
 [#3265]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3265
+[#3264]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3264
 [#3261]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3261
 [#3260]: https://github.jsx-eslintckcr/eslint-plugin-react/pull/3260
 [#3259]: https://githubjsx-eslintickcr/eslint-plugin-react/pull/3259

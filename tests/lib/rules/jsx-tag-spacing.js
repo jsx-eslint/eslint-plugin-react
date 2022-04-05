@@ -115,20 +115,12 @@ ruleTester.run('jsx-tag-spacing', rule, {
       options: beforeSelfClosingOptions('never'),
     },
     {
-      code: '<App/>',
-      options: beforeSelfClosingOptions('multiline-always'),
-    },
-    {
       code: '<App />',
-      options: beforeSelfClosingOptions('multiline-always'),
-    },
-    {
-      code: '<App foo/>',
-      options: beforeSelfClosingOptions('multiline-always'),
+      options: beforeSelfClosingOptions('proportional-always'),
     },
     {
       code: '<App foo />',
-      options: beforeSelfClosingOptions('multiline-always'),
+      options: beforeSelfClosingOptions('proportional-always'),
     },
     {
       code: `
@@ -139,7 +131,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
           hello
         </App>
       `,
-      options: beforeClosingOptions('multiline-always'),
+      options: beforeClosingOptions('proportional-always'),
     },
     {
       code: `
@@ -147,7 +139,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
           hello
         </App>
       `,
-      options: beforeClosingOptions('multiline-always'),
+      options: beforeClosingOptions('proportional-always'),
     },
     {
       code: `
@@ -155,7 +147,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
           foo={bar}
         />
       `,
-      options: beforeSelfClosingOptions('multiline-always'),
+      options: beforeSelfClosingOptions('proportional-always'),
     },
     {
       code: '<App foo/>',
@@ -346,6 +338,18 @@ ruleTester.run('jsx-tag-spacing', rule, {
       errors: [{ messageId: 'beforeSelfCloseNoSpace' }],
     },
     {
+      code: '<App/>',
+      output: '<App />',
+      options: beforeSelfClosingOptions('proportional-always'),
+      errors: [{ messageId: 'beforeSelfCloseNeedSpace' }],
+    },
+    {
+      code: '<App foo/>',
+      output: '<App foo />',
+      options: beforeSelfClosingOptions('proportional-always'),
+      errors: [{ messageId: 'beforeSelfCloseNeedSpace' }],
+    },
+    {
       code: `
         <App
           foo={bar}/>`,
@@ -353,7 +357,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
         <App
           foo={bar}
 />`,
-      options: beforeSelfClosingOptions('multiline-always'),
+      options: beforeSelfClosingOptions('proportional-always'),
       errors: [{ messageId: 'beforeSelfCloseNeedNewline' }],
     },
     {
@@ -364,7 +368,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
         <App
           foo={bar}${' '}
 />`,
-      options: beforeSelfClosingOptions('multiline-always'),
+      options: beforeSelfClosingOptions('proportional-always'),
       errors: [{ messageId: 'beforeSelfCloseNeedNewline' }],
     },
     {
@@ -383,7 +387,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
           hello
         </App>
       `,
-      options: beforeClosingOptions('multiline-always'),
+      options: beforeClosingOptions('proportional-always'),
       errors: [{ messageId: 'beforeCloseNeedNewline' }],
     },
     {
@@ -400,7 +404,7 @@ ruleTester.run('jsx-tag-spacing', rule, {
           hello
         </App>
       `,
-      options: beforeClosingOptions('multiline-always'),
+      options: beforeClosingOptions('proportional-always'),
       errors: [{ messageId: 'beforeCloseNeedNewline' }],
     },
     {
