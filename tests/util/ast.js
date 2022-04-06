@@ -96,8 +96,8 @@ describe('ast', () => {
 
       assert.strictEqual(enterCalls.length, 6);
 
-      enterCalls.forEach((node, idx) => {
-        assert.strictEqual(node.lastArg.argument.value, idx);
+      enterCalls.forEach((call, idx) => {
+        assert.strictEqual(call.args[0].value, idx);
       });
     });
   });
