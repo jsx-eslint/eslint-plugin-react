@@ -121,7 +121,7 @@ const parsers = {
         || features.has('flow')
         || features.has('types')
         || features.has('ts');
-      const skipTS = semver.satisfies(version, '< 5')
+      const skipTS = semver.satisfies(version, '<= 5') // TODO: make these pass on eslint 5
         || features.has('no-ts')
         || features.has('flow')
         || features.has('jsx namespace')
@@ -148,7 +148,7 @@ const parsers = {
           parserOptions: parsers.babelParserOptions(test, features),
         }), '@babel/eslint-parser'),
         tsOld ? addComment(Object.assign({}, test, { parser: parsers.TYPESCRIPT_ESLINT }), 'typescript-eslint') : [],
-        tsNew ? addComment(Object.assign({}, test, { parser: parsers['@TYPESCRIPT_ESLINT'] }), '@typescript/eslint') : []
+        tsNew ? addComment(Object.assign({}, test, { parser: parsers['@TYPESCRIPT_ESLINT'] }), '@typescript-eslint/parser') : []
       );
     });
     return t;
