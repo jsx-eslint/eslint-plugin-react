@@ -14,6 +14,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`hook-use-state`]: Allow UPPERCASE setState setter prefixes ([#3244][] @duncanbeevers)
 * `propTypes`: add `VFC` to react generic type param map ([#3230][] @dlech)
 * [`no-unused-state`]: avoid a crash ([#3258][] @WillyLiaoWH @ljharb)
+* [`jsx-no-useless-fragment`]: use proper apostrophe in error message ([#3266][] @develohpanda)
 
 ### Changed
 * [readme] remove global usage and eslint version from readme ([#3254][] @aladdin-add)
@@ -21,6 +22,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`no-unused-prop-types`]: fix syntax errors ([#3259][] @mrdulin)
 * [Refactor] improve performance for detecting function components ([#3265][] @golopot)
 
+[#3266]: https://github.com/yannickcr/eslint-plugin-react/pull/3266
 [#3265]: https://github.com/yannickcr/eslint-plugin-react/pull/3265
 [#3261]: https://github.com/yannickcr/eslint-plugin-react/pull/3261
 [#3260]: https://github.com/yannickcr/eslint-plugin-react/pull/3260
