@@ -21,7 +21,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] fix linter errors ([#3261][] @golopot)
 * [Docs] [`no-unused-prop-types`]: fix syntax errors ([#3259][] @mrdulin)
 * [Refactor] improve performance for detecting function components ([#3265][] @golopot)
+* [Refactor] improve performance for detecting class components ([#3267][] @golopot)
 
+[#3267]: https://github.com/yannickcr/eslint-plugin-react/pull/3267
 [#3266]: https://github.com/yannickcr/eslint-plugin-react/pull/3266
 [#3265]: https://github.com/yannickcr/eslint-plugin-react/pull/3265
 [#3261]: https://github.com/yannickcr/eslint-plugin-react/pull/3261
