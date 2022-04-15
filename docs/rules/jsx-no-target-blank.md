@@ -99,7 +99,7 @@ var Hello = <a target='_blank' href="https://example.com/"></form>
 
 ### Custom link components
 
-This rule supports the ability to use custom components for links, such as `<Link />` which is popular in libraries like `react-router`, `next.js` and `gatsby`. To enable this, define your custom link components in the global [shared settings](https://github.com/yannickcr/eslint-plugin-react/blob/master/README.md#configuration) under the `linkComponents` configuration area. Once configured, this rule will check those components as if they were `<a />` elements.
+This rule supports the ability to use custom components for links, such as `<Link />` which is popular in libraries like `react-router`, `next.js` and `gatsby`. To enable this, define your custom link components in the global [shared settings](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/README.md#configuration) under the `linkComponents` configuration area. Once configured, this rule will check those components as if they were `<a />` elements.
 
 Examples of **incorrect** code for this rule:
 
@@ -119,7 +119,7 @@ var Hello = <Link />
 
 ### Custom form components
 
-This rule supports the ability to use custom components for forms. To enable this, define your custom form components in the global [shared settings](https://github.com/yannickcr/eslint-plugin-react/blob/master/README.md#configuration) under the `formComponents` configuration area. Once configured, this rule will check those components as if they were `<form />` elements.
+This rule supports the ability to use custom components for forms. To enable this, define your custom form components in the global [shared settings](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/README.md#configuration) under the `formComponents` configuration area. Once configured, this rule will check those components as if they were `<form />` elements.
 
 ## When To Override It
 

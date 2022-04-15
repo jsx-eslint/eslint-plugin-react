@@ -23,10 +23,10 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/yannickcr/eslint-plugin-react"
+    "url": "https://github.com/jsx-eslint/eslint-plugin-react"
   },
-  "homepage": "https://github.com/yannickcr/eslint-plugin-react",
-  "bugs": "https://github.com/yannickcr/eslint-plugin-react/issues",
+  "homepage": "https://github.com/jsx-eslint/eslint-plugin-react",
+  "bugs": "https://github.com/jsx-eslint/eslint-plugin-react/issues",
   "dependencies": {
     "array-includes": "^3.1.4",
     "array.prototype.flatmap": "^1.2.5",

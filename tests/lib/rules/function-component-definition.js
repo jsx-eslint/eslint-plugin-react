@@ -195,7 +195,7 @@ ruleTester.run('function-component-definition', rule, {
       options: [{ namedComponents: 'function-declaration' }],
       features: ['types'],
     },
-    // https://github.com/yannickcr/eslint-plugin-react/issues/2765
+    // https://github.com/jsx-eslint/eslint-plugin-react/issues/2765
     {
       code: `
         const obj = {

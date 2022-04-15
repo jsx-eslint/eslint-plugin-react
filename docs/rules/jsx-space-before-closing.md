@@ -1,6 +1,6 @@
 # Validate spacing before closing bracket in JSX (react/jsx-space-before-closing)
 
-**Deprecation notice**: This rule is deprecated. Please use the `"beforeSelfClosing"` option of the [jsx-tag-spacing](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-tag-spacing.md) rule instead.
+**Deprecation notice**: This rule is deprecated. Please use the `"beforeSelfClosing"` option of the [jsx-tag-spacing](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-tag-spacing.md) rule instead.
 
 Enforce or forbid spaces before the closing bracket of self-closing JSX elements.
 

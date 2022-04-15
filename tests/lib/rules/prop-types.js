@@ -3344,7 +3344,7 @@ ruleTester.run('prop-types', rule, {
       features: ['ts', 'no-babel'],
     },
     {
-      // issue: https://github.com/yannickcr/eslint-plugin-react/issues/2786
+      // issue: https://github.com/jsx-eslint/eslint-plugin-react/issues/2786
       code: `
         import React from 'react';
 

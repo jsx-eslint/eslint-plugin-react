@@ -252,7 +252,7 @@ ruleTester.run('destructuring-assignment', rule, {
       options: ['always', { ignoreClassFields: true }],
       features: ['class fields'],
     },
-    // https://github.com/yannickcr/eslint-plugin-react/issues/2911
+    // https://github.com/jsx-eslint/eslint-plugin-react/issues/2911
     {
       code: `
         function Foo({ context }) {

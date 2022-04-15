@@ -106,4 +106,4 @@ things.reduceRight((collection, thing) => (
 
 ## When Not To Use It
 
-If there is nothing unique about the items, for example [you are breaking an array down in to chunks](https://github.com/yannickcr/eslint-plugin-react/issues/1123), then you may want to disable this rule with an override.
+If there is nothing unique about the items, for example [you are breaking an array down in to chunks](https://github.com/jsx-eslint/eslint-plugin-react/issues/1123), then you may want to disable this rule with an override.

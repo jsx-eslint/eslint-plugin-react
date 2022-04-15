@@ -1,7 +1,7 @@
 `eslint-plugin-react`
 ===================
 
-[![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][deps-image]][deps-url] [![Code Climate][climate-image]][climate-url] [![Tidelift][tidelift-image]][tidelift-url]
+[![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Dependency Status][deps-image]][deps-url] [![Code Climate][climate-image]][climate-url] [![Tidelift][tidelift-image]][tidelift-url]
 
 React specific linting rules for `eslint`
 
@@ -25,7 +25,7 @@ Use [our preset](#recommended) to get reasonable defaults:
   ]
 ```
 
-If you are using the [new JSX transform from React 17](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#removing-unused-react-imports), extend [`react/jsx-runtime`](https://github.com/yannickcr/eslint-plugin-react/blob/c8917b0885094b5e4cc2a6f613f7fb6f16fe932e/index.js#L163-L176) in your eslint config (add `"plugin:react/jsx-runtime"` to `"extends"`) to disable the relevant rules.
+If you are using the [new JSX transform from React 17](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#removing-unused-react-imports), extend [`react/jsx-runtime`](https://github.com/jsx-eslint/eslint-plugin-react/blob/c8917b0885094b5e4cc2a6f613f7fb6f16fe932e/index.js#L163-L176) in your eslint config (add `"plugin:react/jsx-runtime"` to `"extends"`) to disable the relevant rules.
 
 You should also specify settings that will be shared across all the plugin rules. ([More about eslint shared settings](https://eslint.org/docs/user-guide/configuring/configuration-files#adding-shared-settings))
 
@@ -266,17 +266,14 @@ This pairs well with the `eslint:all` rule.
 [npm-url]: https://npmjs.org/package/eslint-plugin-react
 [npm-image]: https://img.shields.io/npm/v/eslint-plugin-react.svg
 
-[travis-url]: https://travis-ci.org/yannickcr/eslint-plugin-react
-[travis-image]: https://img.shields.io/travis/yannickcr/eslint-plugin-react/master.svg
+[deps-url]: https://david-dm.org/jsx-eslint/eslint-plugin-react
+[deps-image]: https://img.shields.io/david/dev/jsx-eslint/eslint-plugin-react.svg
 
-[deps-url]: https://david-dm.org/yannickcr/eslint-plugin-react
-[deps-image]: https://img.shields.io/david/dev/yannickcr/eslint-plugin-react.svg
+[climate-url]: https://codeclimate.com/github/jsx-eslint/eslint-plugin-react
+[climate-image]: https://img.shields.io/codeclimate/maintainability/jsx-eslint/eslint-plugin-react.svg
 
-[climate-url]: https://codeclimate.com/github/yannickcr/eslint-plugin-react
-[climate-image]: https://img.shields.io/codeclimate/maintainability/yannickcr/eslint-plugin-react.svg
-
-[status-url]: https://github.com/yannickcr/eslint-plugin-react/pulse
-[status-image]: https://img.shields.io/github/last-commit/yannickcr/eslint-plugin-react.svg
+[status-url]: https://github.com/jsx-eslint/eslint-plugin-react/pulse
+[status-image]: https://img.shields.io/github/last-commit/jsx-eslint/eslint-plugin-react.svg
 
 [tidelift-url]: https://tidelift.com/subscription/pkg/npm-eslint-plugin-react?utm_source=npm-eslint-plugin-react&utm_medium=referral&utm_campaign=readme
-[tidelift-image]: https://tidelift.com/badges/github/yannickcr/eslint-plugin-react?style=flat
+[tidelift-image]: https://tidelift.com/badges/github/jsx-eslint/eslint-plugin-react?style=flat

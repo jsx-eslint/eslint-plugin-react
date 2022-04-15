@@ -7,7 +7,7 @@ on:
 
 jobs:
   smoke-test:
-    if: ${{ github.repository == 'yannickcr/eslint-plugin-react' || github.event_name == 'workflow_dispatch' }}
+    if: ${{ github.repository == 'jsx-eslint/eslint-plugin-react' || github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2

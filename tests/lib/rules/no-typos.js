@@ -290,7 +290,7 @@ ruleTester.run('no-typos', rule, {
       parserOptions,
     },
     {
-      // https://github.com/yannickcr/eslint-plugin-react/issues/1353
+      // https://github.com/jsx-eslint/eslint-plugin-react/issues/1353
       code: `
         function test(b) {
           return a.bind(b);

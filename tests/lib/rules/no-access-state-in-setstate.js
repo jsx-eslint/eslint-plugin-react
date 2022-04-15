@@ -110,7 +110,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
       parserOptions,
     },
     {
-      // https://github.com/yannickcr/eslint-plugin-react/pull/1611
+      // https://github.com/jsx-eslint/eslint-plugin-react/pull/1611
       code: `
         function testFunction({a, b}) {
         };
