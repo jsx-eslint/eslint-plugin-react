@@ -23,7 +23,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] improve performance for detecting function components ([#3265][] @golopot)
 * [Refactor] improve performance for detecting class components ([#3267][] @golopot)
 * [Refactor] [`no-deprecated`]: improve performance ([#3271][] @golopot)
+* [Refactor] [`no-did-mount-set-state`], [`no-did-update-set-state`], [`no-will-update-set-state`]: improve performance ([#3272][] @golopot)
 
+[#3272]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3272
 [#3271]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3271
 [#3267]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3267
 [#3266]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3266
