@@ -165,7 +165,7 @@ MyStatelessComponent.propTypes = {
 };
 
 MyStatelessComponent.defaultProps = {
-    bar: 'some default'
+  bar: 'some default'
 };
 ```
 
@@ -199,7 +199,7 @@ NotAComponent.propTypes = {
 ...
 "react/require-default-props": [<enabled>, {
   "forbidDefaultForRequired": <boolean>,
-  "classes": "defaultProps | "ignore",
+  "classes": "defaultProps" | "ignore",
   "functions": "defaultProps" | "defaultArguments" | "ignore"
   // @deprecated Use `functions` option instead.
   "ignoreFunctionalComponents": <boolean>,

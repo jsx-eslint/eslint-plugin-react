@@ -29,7 +29,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] [`no-did-mount-set-state`], [`no-did-update-set-state`], [`no-will-update-set-state`]: improve performance ([#3272][] @golopot)
 * [Refactor] improve performance by avoiding unnecessary `Components.detect` ([#3273][] @golopot)
 * [Refactor] add `isParenthesized` AST util ([#3203][] @Belco90)
+* [Docs] `default-props-match-prop-types`, `require-default-props`, `sort-prop-types`: fix typos ([#3279][] @nix6839)
 
+[#3279]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3279
 [#3273]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3273
 [#3272]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3272
 [#3271]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3271
