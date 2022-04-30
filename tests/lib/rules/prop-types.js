@@ -4042,6 +4042,102 @@ ruleTester.run('prop-types', rule, {
           }}
         />
       `,
+    },
+    {
+      code: `
+        import React, { forwardRef } from 'react';
+        import { ControlProps, NamedProps } from './ext';
+
+        type ButtonProps = ControlProps & NamedProps & {
+          onClick?: (() => void) | undefined;
+          onMouseDown?: (() => void) | undefined;
+          onMouseUp?: (() => void) | undefined;
+          disabled?: boolean | undefined;
+          width?: number;
+          type?: 'submit' | 'reset' | 'button' | undefined;
+        };
+
+        const BaseButton = forwardRef<HTMLButtonElement, ButtonProps>((
+          {
+            name,
+            className,
+            onClick,
+            onMouseDown,
+            onMouseUp,
+            children,
+            disabled,
+            width,
+            type,
+          },
+          ref,
+        ): JSX.Element => {
+          return <span>{width}</span>;
+        });
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { forwardRef } from 'react';
+        import { ControlProps, NamedProps } from './ext';
+
+        interface ButtonProps extends NamedProps {
+          onClick?: (() => void) | undefined;
+          onMouseDown?: (() => void) | undefined;
+          onMouseUp?: (() => void) | undefined;
+          disabled?: boolean | undefined;
+          width?: number;
+          type?: 'submit' | 'reset' | 'button' | undefined;
+        };
+
+        const BaseButton = forwardRef<HTMLButtonElement, ButtonProps>((
+          {
+            name,
+            className,
+            onClick,
+            onMouseDown,
+            onMouseUp,
+            children,
+            disabled,
+            width,
+            type,
+          },
+          ref,
+        ): JSX.Element => {
+          return <span>{width}</span>;
+        });
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { forwardRef } from 'react';
+        import { IExt1 } from './ext';
+
+        interface IProps extends IExt1 {
+          onClick?: (() => void) | undefined;
+          onMouseDown?: (() => void) | undefined;
+          onMouseUp?: (() => void) | undefined;
+          disabled?: boolean | undefined;
+          width?: number;
+          type?: 'submit' | 'reset' | 'button' | undefined;
+        };
+
+        const Button: React.FC<IProps> = ({
+          name,
+          className,
+          onClick,
+          onMouseDown,
+          onMouseUp,
+          children,
+          disabled,
+          width,
+          type,
+        }): JSX.Element => {
+          return <span>{width}</span>;
+        };
+      `,
+      features: ['ts', 'no-babel'],
     }
   )),
 

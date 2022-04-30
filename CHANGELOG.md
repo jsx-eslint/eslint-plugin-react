@@ -18,6 +18,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * `propTypes`: add `VFC` to react generic type param map ([#3230][] @dlech)
 * [`no-unused-state`]: avoid a crash ([#3258][] @WillyLiaoWH @ljharb)
 * [`jsx-no-useless-fragment`]: use proper apostrophe in error message ([#3266][] @develohpanda)
+* `propTypes`: handle imported types/interface in forwardRef generic ([#3280][] @vedadeepta)
 
 ### Changed
 * [readme] remove global usage and eslint version from readme ([#3254][] @aladdin-add)
@@ -31,6 +32,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] add `isParenthesized` AST util ([#3203][] @Belco90)
 * [Docs] `default-props-match-prop-types`, `require-default-props`, `sort-prop-types`: fix typos ([#3279][] @nix6839)
 
+[#3280]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3280
 [#3279]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3279
 [#3273]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3273
 [#3272]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3272
