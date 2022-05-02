@@ -31,7 +31,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] improve performance by avoiding unnecessary `Components.detect` ([#3273][] @golopot)
 * [Refactor] add `isParenthesized` AST util ([#3203][] @Belco90)
 * [Docs] `default-props-match-prop-types`, `require-default-props`, `sort-prop-types`: fix typos ([#3279][] @nix6839)
+* [Refactor] improve performance of rule merging ([#3281][] @golopot)
 
+[#3281]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3281
 [#3280]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3280
 [#3279]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3279
 [#3273]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3273
