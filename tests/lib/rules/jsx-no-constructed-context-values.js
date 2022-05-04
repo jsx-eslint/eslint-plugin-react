@@ -34,6 +34,9 @@ ruleTester.run('react-no-constructed-context-values', rule, {
       code: '<Context.Provider value={props}></Context.Provider>',
     },
     {
+      code: '<ContextProvider value={props}></ContextProvider>',
+    },
+    {
       code: '<Context.Provider value={100}></Context.Provider>',
     },
     {
@@ -145,6 +148,20 @@ ruleTester.run('react-no-constructed-context-values', rule, {
     {
       // Invalid because object construction creates a new identity
       code: 'function Component() { const foo = {}; return (<Context.Provider value={foo}></Context.Provider>) }',
+      errors: [{
+        messageId: 'withIdentifierMsg',
+        data: {
+          variableName: 'foo',
+          type: 'object',
+          nodeLine: '1',
+          usageLine: '1',
+        },
+      }],
+    },
+    {
+      // Invalid because object construction creates a new identity
+      // Duplicate of above test but using an identifier as the context provider name
+      code: 'function Component() { const foo = {}; return (<ContextProvider value={foo}></ContextProvider>) }',
       errors: [{
         messageId: 'withIdentifierMsg',
         data: {
