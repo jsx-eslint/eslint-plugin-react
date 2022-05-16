@@ -13,6 +13,10 @@
       },
       "sourceType": "script",
     },
+    "ignorePatterns": [
+      "coverage/",
+      ".nyc_output/",
+    ],
     "rules": {
         "comma-dangle": [2, "always-multiline"],
         "object-shorthand": [2, "always", {
