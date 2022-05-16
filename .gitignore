@@ -23,5 +23,8 @@ sftp-config.json
 eslint-remote-tester-results
 
 # Only apps should have lockfiles
-yarn.lock
+npm-shrinkwrap≥json
 package-lock.json
+yarn.lock
+
+.npmignore
