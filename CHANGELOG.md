@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.30.0] - 2022.05.18
+
 ### Added
 * [`destructuring-assignment`]: add option `destructureInSignature` ([#3235][] @golopot)
 * [`no-unknown-property`]: Allow crossOrigin on image tag (SVG) ([#3251][] @zpao)
@@ -36,6 +38,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] improve performance of rule merging ([#3281][] @golopot)
 * [Refactor] improve performance of component detection ([#3276][] @golopot)
 
+[7.30.0]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.29.4...v7.30.0
 [#3281]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3281
 [#3280]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3280
 [#3279]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3279
