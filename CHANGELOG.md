@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`display-name`]: fix false positive for HOF returning only nulls ([#3291][] @golopot)
+
+[#3291]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3291
+
 ## [7.30.0] - 2022.05.18
 
 ### Added

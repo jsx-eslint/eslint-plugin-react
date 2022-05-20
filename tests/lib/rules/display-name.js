@@ -579,6 +579,15 @@ ruleTester.run('display-name', rule, {
         }
       `,
     },
+    {
+      // issue #3289
+      code: `
+        export const demo = (a) => (b) => {
+          if (a == null) return null;
+          return b;
+        }
+      `,
+    },
   ]),
 
   invalid: parsers.all([
