@@ -10,8 +10,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Changed
 * [Docs] [`jsx-tag-spacing`]: rename option from [#3264][] ([#3294[] @ljharb)
+* [Docs] [`jsx-key`]: split the examples ([#3293][] @ioggstream)
 
 [#3294]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3294
+[#3293]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3293
 [#3291]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3291
 
 ## [7.30.0] - 2022.05.18
