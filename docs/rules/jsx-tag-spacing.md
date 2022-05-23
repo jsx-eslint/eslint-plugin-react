@@ -62,7 +62,7 @@ Examples of **correct** code for this rule, when configured with `{ "closingSlas
 
 ### `beforeSelfClosing`
 
-This check can be set to `"always"`, `"never"`, `"multiline-always"`, or `"allow"` (to disable it).
+This check can be set to `"always"`, `"never"`, `"proportional-always"`, or `"allow"` (to disable it).
 
 If it is `"always"`, the check warns whenever a space is missing before the closing bracket. If `"never"` then it warns if a space is present before the closing bracket. The default value of this check is `"always"`.
 
@@ -102,7 +102,7 @@ Examples of **correct** code for this rule, when configured with `{ "beforeSelfC
 />
 ```
 
-Examples of **incorrect** code for this rule, when configured with `{ "beforeSelfClosing": "multiline-always" }`:
+Examples of **incorrect** code for this rule, when configured with `{ "beforeSelfClosing": "proportional-always" }`:
 
 ```jsx
 <Hello
@@ -113,7 +113,7 @@ Examples of **incorrect** code for this rule, when configured with `{ "beforeSel
   lastName="Smith"/>
 ```
 
-Examples of **correct** code for this rule, when configured with `{ "beforeSelfClosing": "multiline-always" }`:
+Examples of **correct** code for this rule, when configured with `{ "beforeSelfClosing": "proportional-always" }`:
 
 ```jsx
 <Hello
@@ -199,7 +199,7 @@ Examples of **correct** code for this rule, when configured with `{ "afterOpenin
 
 ### `beforeClosing`
 
-This check can be set to `"always"`, `"never"`, `"multiline-always"`, or `"allow"` (to disable it).
+This check can be set to `"always"`, `"never"`, `"proportional-always"`, or `"allow"` (to disable it).
 
 If it is `"always"` the check warns whenever whitespace is missing before the closing bracket of a JSX opening element or whenever a space is missing before the closing bracket closing element. If `"never"`, then it warns if a space is present before the closing bracket of either a JSX opening element or closing element. This rule will never warn for self closing JSX elements. The default value of this check is `"allow"`.
 
@@ -239,7 +239,7 @@ Examples of **correct** code for this rule, when configured with `{ "beforeClosi
 </Hello>
 ```
 
-Examples of **incorrect** code for this rule, when configured with `{ "beforeClosing": "multiline-always" }`:
+Examples of **incorrect** code for this rule, when configured with `{ "beforeClosing": "proportional-always" }`:
 
 ```jsx
 <Hello
@@ -253,7 +253,7 @@ Examples of **incorrect** code for this rule, when configured with `{ "beforeClo
 </Hello>
 ```
 
-Examples of **correct** code for this rule, when configured with `{ "beforeClosing": "multiline-always" }`:
+Examples of **correct** code for this rule, when configured with `{ "beforeClosing": "proportional-always" }`:
 
 ```jsx
 <Hello
