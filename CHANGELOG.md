@@ -7,11 +7,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Fixed
 * [`display-name`]: fix false positive for HOF returning only nulls ([#3291][] @golopot)
+* [`jsx-no-leaked-render`]: avoid unnecessary negation operators and ternary branches deletion ([#3299][] @Belco90)
 
 ### Changed
 * [Docs] [`jsx-tag-spacing`]: rename option from [#3264][] ([#3294[] @ljharb)
 * [Docs] [`jsx-key`]: split the examples ([#3293][] @ioggstream)
 
+[#3299]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3299
 [#3294]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3294
 [#3293]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3293
 [#3291]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3291

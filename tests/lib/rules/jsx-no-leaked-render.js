@@ -93,36 +93,87 @@ ruleTester.run('jsx-no-leaked-render', rule, {
       `,
     },
     {
+      code: `
+        const Component = ({ elements, count }) => {
+          return <div>{count ? <List elements={elements}/> : null}</div>
+        }
+      `,
       options: [{ validStrategies: ['ternary'] }],
-      code: `
-        const Component = ({ elements, count }) => {
-          return <div>{count ? <List elements={elements}/> : null}</div>
-        }
-      `,
     },
     {
+      code: `
+        const Component = ({ elements, count }) => {
+          return <div>{!!count && <List elements={elements}/>}</div>
+        }
+      `,
       options: [{ validStrategies: ['coerce'] }],
-      code: `
-        const Component = ({ elements, count }) => {
-          return <div>{!!count && <List elements={elements}/>}</div>
-        }
-      `,
     },
     {
-      options: [{ validStrategies: ['coerce', 'ternary'] }],
       code: `
         const Component = ({ elements, count }) => {
           return <div>{count ? <List elements={elements}/> : null}</div>
         }
       `,
+      options: [{ validStrategies: ['coerce', 'ternary'] }],
     },
     {
-      options: [{ validStrategies: ['coerce', 'ternary'] }],
       code: `
         const Component = ({ elements, count }) => {
           return <div>{!!count && <List elements={elements}/>}</div>
         }
       `,
+      options: [{ validStrategies: ['coerce', 'ternary'] }],
+    },
+    {
+      code: `
+        const Component = ({ elements, count }) => {
+          return <div>{!!count && <List elements={elements}/>}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+    },
+
+    // Fixes for:
+    // - https://github.com/jsx-eslint/eslint-plugin-react/issues/3292
+    // - https://github.com/jsx-eslint/eslint-plugin-react/issues/3297
+    {
+      // It shouldn't delete valid alternate from ternary expressions when "coerce" is the only valid strategy
+      code: `
+        const Component = ({ elements, count }) => {
+          return (
+            <div>
+              <div> {direction ? (direction === "down" ? "▼" : "▲") : ""} </div>
+              <div>{ containerName.length > 0 ? "Loading several stuff" : "Loading" }</div>
+            </div>
+          )
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+    },
+    {
+      // It shouldn't delete valid branches from ternary expressions when ["coerce", "ternary"] are only valid strategies
+      code: `
+        const Component = ({ elements, count }) => {
+          return <div>{direction ? (direction === "down" ? "▼" : "▲") : ""}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce', 'ternary'] }],
+    },
+    {
+      // It shouldn't report nested logical expressions when "coerce" is the only valid strategy
+      code: `
+        const Component = ({ direction }) => {
+          return (
+            <div>
+              <div>{!!direction && direction === "down" && "▼"}</div>
+              <div>{direction === "down" && !!direction && "▼"}</div>
+              <div>{direction === "down" || !!direction && "▼"}</div>
+              <div>{(!display || display === DISPLAY.WELCOME) && <span>foo</span>}</div>
+            </div>
+          )
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
     },
   ]),
 
