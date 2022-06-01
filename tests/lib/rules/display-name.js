@@ -588,6 +588,19 @@ ruleTester.run('display-name', rule, {
         }
       `,
     },
+    {
+      // issue #3303
+      code: `
+        function MyComponent(props) {
+          return <b>{props.name}</b>;
+        }
+            
+        const MemoizedMyComponent = React.memo(
+          MyComponent,
+          (prevProps, nextProps) => prevProps.name === nextProps.name
+        )
+      `,
+    },
   ]),
 
   invalid: parsers.all([
