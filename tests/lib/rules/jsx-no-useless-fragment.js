@@ -85,13 +85,19 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       features: ['fragment'],
       options: [{ allowExpressions: true }],
     },
+    {
+      code: `
+        <></>
+      `,
+      features: ['fragment'],
+      options: [{ allowEmpty: true }],
+    },
   ]),
   invalid: parsers.all([
     {
       code: '<></>',
       output: null,
       errors: [{ messageId: 'NeedsMoreChildren', type: 'JSXFragment' }],
-      options: [{ allowEmpty: true }],
       features: ['fragment'],
     },
     {
