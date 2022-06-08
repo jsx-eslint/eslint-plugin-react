@@ -91,6 +91,7 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       code: '<></>',
       output: null,
       errors: [{ messageId: 'NeedsMoreChildren', type: 'JSXFragment' }],
+      options: [{ allowEmpty: true }],
       features: ['fragment'],
     },
     {

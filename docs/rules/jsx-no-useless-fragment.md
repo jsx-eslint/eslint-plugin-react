@@ -69,3 +69,15 @@ Examples of **correct** code for the rule, when `"allowExpressions"` is `true`:
   {foo}
 </>
 ```
+
+### `allowEmpty`
+
+When `true`, fragments with no children will be allowed. This is useful in
+places like Typescript where `null` is not accepted and the expected return type
+is `JSX.Element`. Passing <></> is common practice when an `JSX.Element` is being defined but is empty. 
+
+Examples of **correct** code for the rule, when `"allowEmpty"` is `true`:
+
+```jsx
+const myComponent = (bool) => bool ? <NotEmptyComponent /> : <></>;
+```
