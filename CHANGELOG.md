@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Added
+* [`jsx-newline`]: add `allowMultiline` option when prevent option is true ([#3311][] @TildaDares)
+
+[#3311]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3311
+
 ## [7.30.1] - 2022.06.23
 
 ### Fixed
@@ -32,6 +37,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`function-component-definition`]: replace `var` by `const` in certain situations ([#3248][] @JohnBerd @SimeonC)
 * add [`jsx-no-leaked-render`] ([#3203][] @Belco90)
 * [`require-default-props`]: add option `functions` ([#3249][] @nix6839)
+* [`jsx-newline`]: Add `allowMultilines` option ([#3311][] @TildaDares)
 
 ### Fixed
 * [`hook-use-state`]: Allow UPPERCASE setState setter prefixes ([#3244][] @duncanbeevers)
