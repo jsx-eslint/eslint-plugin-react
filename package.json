@@ -45,6 +45,7 @@
     "@babel/plugin-syntax-do-expressions": "^7.16.7",
     "@babel/plugin-syntax-function-bind": "^7.16.7",
     "@babel/preset-react": "^7.17.12",
+    "@technote-space/doctoc": "~2.4",
     "@types/eslint": "=7.2.10",
     "@types/estree": "0.0.51",
     "@types/node": "^16.11.35",
