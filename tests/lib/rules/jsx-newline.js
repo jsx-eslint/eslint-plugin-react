@@ -105,6 +105,48 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
         </Button>
       `,
     },
+    {
+      code: `
+        <>
+          <OneLineComponent />
+          <AnotherOneLineComponent prop={prop} />
+
+          <MultilineComponent
+            prop1={prop1}
+            prop2={prop2}
+          />
+
+          <OneLineComponent />
+        </>
+      `,
+      features: ['fragment'],
+      options: [{ prevent: true, allowMultilines: true }],
+    },
+    {
+      code: `
+        <div>
+          <Button>{data.label}</Button>
+          <List />
+
+          <Button>
+            <IconPreview />
+            Button 2
+            <span></span>
+          </Button>
+
+          {showSomething === true && <Something />}
+          <Button>Button 3</Button>
+
+          {showSomethingElse === true ? (
+            <SomethingElse />
+          ) : (
+            <ErrorMessage />
+          )}
+
+        </div>
+      `,
+      options: [{ prevent: true, allowMultilines: true }],
+    },
   ]),
   invalid: parsers.all([
     {
@@ -364,6 +406,98 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
       errors: [{ messageId: 'prevent' }],
       options: [{ prevent: true }],
       features: ['fragment'],
+    },
+    {
+      code: `
+        <>
+          <OneLineComponent />
+          <AnotherOneLineComponent prop={prop} />
+          <MultilineComponent
+            prop1={prop1}
+            prop2={prop2}
+          />
+          <OneLineComponent />
+        </>
+      `,
+      output: `
+        <>
+          <OneLineComponent />
+          <AnotherOneLineComponent prop={prop} />
+
+          <MultilineComponent
+            prop1={prop1}
+            prop2={prop2}
+          />
+
+          <OneLineComponent />
+        </>
+      `,
+      features: ['fragment'],
+      errors: [
+        { messageId: 'allowMultilines' },
+        { messageId: 'allowMultilines' },
+      ],
+      options: [{ prevent: true, allowMultilines: true }],
+    },
+    {
+      code: `
+        <div>
+          {showSomething === true && <Something />}
+          {showSomethingElse === true ? (
+            <SomethingElse />
+          ) : (
+            <ErrorMessage />
+          )}
+        </div>
+      `,
+      output: `
+        <div>
+          {showSomething === true && <Something />}
+
+          {showSomethingElse === true ? (
+            <SomethingElse />
+          ) : (
+            <ErrorMessage />
+          )}
+        </div>
+      `,
+      errors: [{ messageId: 'allowMultilines' }],
+      options: [{ prevent: true, allowMultilines: true }],
+    },
+    {
+      output: `
+        <div>
+          <div>
+            <button></button>
+            <button></button>
+          </div>
+
+          <div>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      `,
+      code: `
+        <div>
+          <div>
+            <button></button>
+
+            <button></button>
+          </div>
+          <div>
+            <span></span>
+
+            <span></span>
+          </div>
+        </div>
+      `,
+      errors: [
+        { messageId: 'prevent' },
+        { messageId: 'allowMultilines' },
+        { messageId: 'prevent' },
+      ],
+      options: [{ prevent: true, allowMultilines: true }],
     },
   ]),
 });
