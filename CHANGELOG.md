@@ -8,6 +8,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Added
 * [`jsx-newline`]: add `allowMultiline` option when prevent option is true ([#3311][] @TildaDares)
 
+### Fixed
+* [Refactor] [`jsx-indent-props`]: improved readability of the checkNodesIndent function ([#3315][] @caroline223)
+
+[#3315]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3315
 [#3311]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3311
 
 ## [7.30.1] - 2022.06.23
