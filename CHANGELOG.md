@@ -24,9 +24,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] `boolean-prop-naming`, `jsx-indent`: avoid assigning to arguments ([#3316][] @caroline223)
 * [Docs] [`sort-comp`]: add class component examples ([#3339][] @maurer2)
 * [Docs] [`jsx-no-useless-fragment`]: add more examples of correct code ([#3349][] @karlhorky)
+* [Docs] [`jsx-boolean-value`]: add jsdoc types for helper functions ([#3344][] @caroline223)
 
 [#3350]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3350
 [#3349]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3349
+[#3344]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3344
 [#3339]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3339
 [#3335]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3335
 [#3331]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3331
