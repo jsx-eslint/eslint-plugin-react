@@ -14,10 +14,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Changed
 * [Refactor] [`jsx-indent-props`]: improved readability of the checkNodesIndent function ([#3315][] @caroline223)
+* [Tests] [`jsx-indent`], [`jsx-one-expression-per-line`]: add passing test cases ([#3314][] @ROSSROSALES)
 
 [#3320]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3320
 [#3317]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3317
 [#3315]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3315
+[#3314]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3314
 [#3311]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3311
 
 ## [7.30.1] - 2022.06.23

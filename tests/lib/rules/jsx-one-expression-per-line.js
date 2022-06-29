@@ -1389,5 +1389,185 @@ a
       ],
       parserOptions,
     },
+    {
+    // TODO: handle in a single pass
+      code: `
+        const IndexPage = () => (
+          <h1>{"Hi people"}<button/></h1>
+        );
+      `,
+      output: `
+        const IndexPage = () => (
+          <h1>
+{"Hi people"}<button/></h1>
+        );
+      `,
+      errors: [
+        {
+          messageId: 'moveToNewLine',
+          data: { descriptor: '{"Hi people"}' },
+        },
+        {
+          messageId: 'moveToNewLine',
+          data: { descriptor: 'button' },
+        },
+      ],
+      parserOptions,
+    },
+    {
+      code: `
+        const IndexPage = () => (
+          <h1>
+{"Hi people"}<button/></h1>
+        );
+      `,
+      output: `
+        const IndexPage = () => (
+          <h1>
+{"Hi people"}
+<button/>
+</h1>
+        );
+      `,
+      errors: [
+        {
+          messageId: 'moveToNewLine',
+          data: { descriptor: 'button' },
+        },
+      ],
+      parserOptions,
+    },
+    // TODO: handle in a single pass (see above)
+    {
+      code: `
+        <Layout>
+        <p>Welcome to your new Gatsby site.</p>
+        <p>Now go build something great.</p>
+        <h1>Hi people<button/></h1>
+        </Layout>
+      `,
+      output: `
+        <Layout>
+        <p>
+Welcome to your new Gatsby site.
+</p>
+        <p>
+Now go build something great.
+</p>
+        <h1>
+Hi people<button/></h1>
+        </Layout>
+      `,
+      errors: [
+        {
+          messageId: 'moveToNewLine',
+          data: { descriptor: 'Welcome to your new Gatsby site.' },
+        },
+        {
+          messageId: 'moveToNewLine',
+          data: { descriptor: 'Now go build something great.' },
+        },
+        {
+          messageId: 'moveToNewLine',
+          data: { descriptor: 'Hi people' },
+        },
+        {
+          messageId: 'moveToNewLine',
+          data: { descriptor: 'button' },
+        },
+      ],
+      parserOptions,
+    },
+    {
+      code: `
+        <Layout>
+        <p>
+Welcome to your new Gatsby site.
+</p>
+        <p>
+Now go build something great.
+</p>
+        <h1>
+Hi people<button/></h1>
+        </Layout>
+      `,
+      output: `
+        <Layout>
+        <p>
+Welcome to your new Gatsby site.
+</p>
+        <p>
+Now go build something great.
+</p>
+        <h1>
+Hi people
+<button/>
+</h1>
+        </Layout>
+      `,
+      errors: [
+        {
+          messageId: 'moveToNewLine',
+          data: { descriptor: 'button' },
+        },
+      ],
+      parserOptions,
+    },
+    // TODO: handle in a single pass
+    {
+      code: `
+        <Layout>
+          <div style={{ maxWidth: \`300px\`, marginBottom: \`1.45rem\` }}>
+            <Image />
+          </div><Link to="/page-2/">Go to page 2</Link>
+        </Layout>
+      `,
+      output: `
+        <Layout>
+          <div style={{ maxWidth: \`300px\`, marginBottom: \`1.45rem\` }}>
+            <Image />
+          </div>
+<Link to="/page-2/">Go to page 2</Link>
+        </Layout>
+      `,
+      errors: [
+        {
+          messageId: 'moveToNewLine',
+          data: { descriptor: 'Link' },
+        },
+        {
+          messageId: 'moveToNewLine',
+          data: { descriptor: 'Go to page 2' },
+        },
+      ],
+      parserOptions,
+    },
+    {
+      code: `
+        <Layout>
+          <div style={{ maxWidth: \`300px\`, marginBottom: \`1.45rem\` }}>
+            <Image />
+          </div>
+<Link to="/page-2/">Go to page 2</Link>
+        </Layout>
+      `,
+      output: `
+        <Layout>
+          <div style={{ maxWidth: \`300px\`, marginBottom: \`1.45rem\` }}>
+            <Image />
+          </div>
+<Link to="/page-2/">
+Go to page 2
+</Link>
+        </Layout>
+      `,
+      errors: [
+        {
+          messageId: 'moveToNewLine',
+          data: { descriptor: 'Go to page 2' },
+        },
+      ],
+      parserOptions,
+    },
   ]),
 });
