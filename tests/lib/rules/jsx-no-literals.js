@@ -613,5 +613,43 @@ ruleTester.run('jsx-no-literals', rule, {
         },
       ],
     },
+    {
+      code: 'export const WithChildren = ({}) => <div>baz bob</div>;',
+      options: [{ noAttributeStrings: true }],
+      errors: [
+        {
+          messageId: 'literalNotInJSXExpression',
+          data: { text: 'baz bob' },
+        },
+      ],
+    },
+    {
+      code: 'export const WithAttributes = ({}) => <div title="foo bar" />;',
+      options: [{ noAttributeStrings: true }],
+      errors: [
+        {
+          messageId: 'noStringsInAttributes',
+          data: { text: '"foo bar"' },
+        },
+      ],
+    },
+    {
+      code: `
+        export const WithAttributesAndChildren = ({}) => (
+          <div title="foo bar">baz bob</div>
+        );
+      `,
+      options: [{ noAttributeStrings: true }],
+      errors: [
+        {
+          messageId: 'noStringsInAttributes',
+          data: { text: '"foo bar"' },
+        },
+        {
+          messageId: 'literalNotInJSXExpression',
+          data: { text: 'baz bob' },
+        },
+      ],
+    },
   ]),
 });
