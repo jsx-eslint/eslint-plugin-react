@@ -30,6 +30,7 @@ const allRules = {
   'jsx-handler-names': require('./lib/rules/jsx-handler-names'),
   'jsx-indent': require('./lib/rules/jsx-indent'),
   'jsx-indent-props': require('./lib/rules/jsx-indent-props'),
+  'jsx-inline-conditional': require('./lib/rules/jsx-inline-conditional'),
   'jsx-key': require('./lib/rules/jsx-key'),
   'jsx-max-depth': require('./lib/rules/jsx-max-depth'),
   'jsx-max-props-per-line': require('./lib/rules/jsx-max-props-per-line'),
@@ -124,9 +125,7 @@ module.exports = {
   rules: allRules,
   configs: {
     recommended: {
-      plugins: [
-        'react',
-      ],
+      plugins: ['react'],
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
@@ -134,6 +133,7 @@ module.exports = {
       },
       rules: {
         'react/display-name': 2,
+        'react/jsx-inline-conditional': 2,
         'react/jsx-key': 2,
         'react/jsx-no-comment-textnodes': 2,
         'react/jsx-no-duplicate-props': 2,
@@ -158,9 +158,7 @@ module.exports = {
       },
     },
     all: {
-      plugins: [
-        'react',
-      ],
+      plugins: ['react'],
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
@@ -169,9 +167,7 @@ module.exports = {
       rules: activeRulesConfig,
     },
     'jsx-runtime': {
-      plugins: [
-        'react',
-      ],
+      plugins: ['react'],
       parserOptions: {
         ecmaFeatures: {
           jsx: true,
