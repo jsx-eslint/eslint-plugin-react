@@ -230,5 +230,57 @@ ruleTester.run('jsx-key', rule, {
         { messageId: 'nonUniqueKeys', line: 5 },
       ],
     },
+    {
+      code: `
+        const Test = () => {
+          const list = [1, 2, 3, 4, 5];
+
+          return (
+            <div>
+              {list.map(item => {
+                if (item < 2) {
+                  return <div>{item}</div>;
+                }
+
+                return <div />;
+              })}
+            </div>
+          );
+        };
+      `,
+      errors: [
+        { messageId: 'missingIterKey' },
+        { messageId: 'missingIterKey' },
+      ],
+    },
+    {
+      code: `
+        const TestO = () => {
+          const list = [1, 2, 3, 4, 5];
+
+          return (
+            <div>
+              {list.map(item => {
+                if (item < 2) {
+                  return <div>{item}</div>;
+                } else if (item < 5) {
+                  return <div></div>
+                }  else {
+                  return <div></div>
+                }
+
+                return <div />;
+              })}
+            </div>
+          );
+        };
+      `,
+      errors: [
+        { messageId: 'missingIterKey' },
+        { messageId: 'missingIterKey' },
+        { messageId: 'missingIterKey' },
+        { messageId: 'missingIterKey' },
+      ],
+    },
   ]),
 });
