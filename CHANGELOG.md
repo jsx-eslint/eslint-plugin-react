@@ -35,6 +35,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [readme] Remove dead david-dm badge ([#3262][] @ddzz)
 * [Refactor] [`jsx-closing-bracket-location`], [`jsx-no-bind`]: fix eslint issues ([#3351][] @caroline223)
 * [Tests] [`function-component-definition`]: add passing test cases ([#3355][] @TildaDares)
+* [Docs] [`jsx-no-target-blank`]: Fix link to link-type-noreferrer ([#3319][] @Luccasoli)
 
 [#3355]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3355
 [#3353]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3353
@@ -53,6 +54,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3326]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3326
 [#3321]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3321
 [#3320]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3320
+[#3319]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3319
 [#3317]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3317
 [#3316]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3316
 [#3315]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3315

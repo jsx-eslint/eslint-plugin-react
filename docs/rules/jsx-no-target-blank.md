@@ -1,6 +1,6 @@
 # Prevent usage of unsafe `target='_blank'` (react/jsx-no-target-blank)
 
-When creating a JSX element that has an `a` tag, it is often desired to have the link open in a new tab using the `target='_blank'` attribute. Using this attribute unaccompanied by `rel='noreferrer'`, however, is a severe security vulnerability ([see here for more details](https://html.spec.whatwg.org/multipage/links.html#link-type-noopener))
+When creating a JSX element that has an `a` tag, it is often desired to have the link open in a new tab using the `target='_blank'` attribute. Using this attribute unaccompanied by `rel='noreferrer'`, however, is a severe security vulnerability (see [noreferrer docs](https://html.spec.whatwg.org/multipage/links.html#link-type-noreferrer) and [noopener docs](https://html.spec.whatwg.org/multipage/links.html#link-type-noopener) for more details)
 This rules requires that you accompany `target='_blank'` attributes with `rel='noreferrer'`.
 
 ## Rule Details
