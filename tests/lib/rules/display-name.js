@@ -601,6 +601,94 @@ ruleTester.run('display-name', rule, {
         )
       `,
     },
+    {
+      // Nested React.forwardRef should be accepted in React versions in the following range:
+      // ^0.14.10 || ^15.7.0 || >= 16.12.0
+      code: `
+        import React from 'react'
+
+        const MemoizedForwardRefComponentLike = React.memo(
+          React.forwardRef(function({ world }, ref) {
+            return <div ref={ref}>Hello {world}</div>
+        })
+        )
+      `,
+      settings: {
+        react: {
+          version: '16.14.0',
+        },
+      },
+    },
+    {
+      // Nested React.forwardRef should be accepted in React versions in the following range:
+      // ^0.14.10 || ^15.7.0 || >= 16.12.0
+      code: `
+        import React from 'react'
+
+        const MemoizedForwardRefComponentLike = React.memo(
+          React.forwardRef(({ world }, ref) => {
+            return <div ref={ref}>Hello {world}</div>
+          })
+        )
+      `,
+      settings: {
+        react: {
+          version: '15.7.0',
+        },
+      },
+    },
+    {
+      // Nested React.forwardRef should be accepted in React versions in the following range:
+      // ^0.14.10 || ^15.7.0 || >= 16.12.0
+      code: `
+        import React from 'react'
+
+        const MemoizedForwardRefComponentLike = React.memo(
+          React.forwardRef(function ComponentLike({ world }, ref) {
+            return <div ref={ref}>Hello {world}</div>
+          })
+        )
+      `,
+      settings: {
+        react: {
+          version: '16.12.1',
+        },
+      },
+    },
+    {
+      // Nested React.forwardRef should be accepted in React versions in the following range:
+      // ^0.14.10 || ^15.7.0 || >= 16.12.0
+      code: `
+        export const ComponentWithForwardRef = React.memo(
+          React.forwardRef(function Component({ world }) {
+            return <div>Hello {world}</div>
+          })
+        )
+      `,
+      settings: {
+        react: {
+          version: '0.14.11',
+        },
+      },
+    },
+    {
+      // Nested React.forwardRef should be accepted in React versions in the following range:
+      // ^0.14.10 || ^15.7.0 || >= 16.12.0
+      code: `
+        import React from 'react'
+
+        const MemoizedForwardRefComponentLike = React.memo(
+          React.forwardRef(function({ world }, ref) {
+            return <div ref={ref}>Hello {world}</div>
+          })
+        )
+      `,
+      settings: {
+        react: {
+          version: '15.7.1',
+        },
+      },
+    },
   ]),
 
   invalid: parsers.all([
@@ -823,7 +911,9 @@ ruleTester.run('display-name', rule, {
       errors: [{ messageId: 'noDisplayName' }],
     },
     {
-    // Only trigger an error for the outer React.memo
+    // Only trigger an error for the outer React.memo,
+    // if the React version is not in the following range:
+    // ^0.14.10 || ^15.7.0 || >= 16.12.0
       code: `
         import React from 'react'
 
@@ -837,19 +927,31 @@ ruleTester.run('display-name', rule, {
         {
           messageId: 'noDisplayName',
         }],
+      settings: {
+        react: {
+          version: '15.6.0',
+        },
+      },
     },
     {
-    // Only trigger an error for the outer React.memo
+    // Only trigger an error for the outer React.memo,
+    // if the React version is not in the following range:
+    // ^0.14.10 || ^15.7.0 || >= ^16.12.0
       code: `
         import React from 'react'
 
         const MemoizedForwardRefComponentLike = React.memo(
           React.forwardRef(function({ world }, ref) {
             return <div ref={ref}>Hello {world}</div>
-        })
+          })
         )
       `,
       errors: [{ messageId: 'noDisplayName' }],
+      settings: {
+        react: {
+          version: '0.14.2',
+        },
+      },
     },
     {
     // React does not handle the result of forwardRef being passed into memo
@@ -865,6 +967,11 @@ ruleTester.run('display-name', rule, {
         )
       `,
       errors: [{ messageId: 'noDisplayName' }],
+      settings: {
+        react: {
+          version: '15.0.1',
+        },
+      },
     },
     {
       code: `

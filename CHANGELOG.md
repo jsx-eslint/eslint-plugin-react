@@ -10,12 +10,14 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Fixed
 * [`jsx-no-literals`]: properly error on children with noAttributeStrings: true ([#3317][] @TildaDares)
-* [`jsx-key`]: catch key errors inside conditional statements ([#3320][] @TildaDates)
+* [`jsx-key`]: catch key errors inside conditional statements ([#3320][] @TildaDares)
+* [`display-name`]: Accept forwardRef and Memo nesting in newer React versions ([#3321][] @TildaDares)
 
 ### Changed
 * [Refactor] [`jsx-indent-props`]: improved readability of the checkNodesIndent function ([#3315][] @caroline223)
 * [Tests] [`jsx-indent`], [`jsx-one-expression-per-line`]: add passing test cases ([#3314][] @ROSSROSALES)
 
+[#3321]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3321
 [#3320]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3320
 [#3317]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3317
 [#3315]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3315
