@@ -19,6 +19,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`display-name`]: fix identifying `_` as a capital letter ([#3335][] @apbarrero)
 * [`require-default-props`]: avoid a crash when function has no props param ([#3350][] @noahnu)
 * [`display-name`], component detection: fix HOF returning null as Components ([#3347][] @jxm-math)
+* [`forbid-prop-types`]: Ignore objects that are not of type React.PropTypes ([#3326][] @TildaDares)
 
 ### Changed
 * [Refactor] [`jsx-indent-props`]: improved readability of the checkNodesIndent function ([#3315][] @caroline223)
@@ -40,6 +41,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3331]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3331
 [#3328]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3328
 [#3327]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3327
+[#3326]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3326
 [#3321]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3321
 [#3320]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3320
 [#3317]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3317
