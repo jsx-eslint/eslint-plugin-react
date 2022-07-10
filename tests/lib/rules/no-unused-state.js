@@ -353,9 +353,6 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       features: ['optional chaining'],
-      parserOptions: {
-        ecmaVersion: 2020,
-      },
     },
     {
       code: `

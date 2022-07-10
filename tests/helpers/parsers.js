@@ -130,11 +130,13 @@ const parsers = {
       const tsOld = !skipTS && !features.has('no-ts-old');
       const tsNew = !skipTS && !features.has('no-ts-new');
 
+      const minES = features.has('class fields') ? 2022 : (features.has('optional chaining') ? 2020 : 5); // eslint-disable-line no-nested-ternary
+
       return [].concat(
         skipBase ? [] : addComment(
-          Object.assign({}, test, features.has('class fields') && {
+          Object.assign({}, test, minES > 5 && {
             parserOptions: Object.assign({}, test.parserOptions, {
-              ecmaVersion: Math.max((test.parserOptions && test.parserOptions.ecmaVersion) || 0, 2022),
+              ecmaVersion: Math.max((test.parserOptions && test.parserOptions.ecmaVersion) || 0, minES),
             }),
           }),
           'default'

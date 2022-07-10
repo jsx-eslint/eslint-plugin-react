@@ -807,9 +807,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
       features: ['optional chaining'],
-      parserOptions: {
-        ecmaVersion: 2020,
-      },
     },
     {
       code: `
@@ -839,9 +836,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         module.exports = HelloComponent();
       `,
       features: ['optional chaining'],
-      parserOptions: {
-        ecmaVersion: 2020,
-      },
     },
     {
       code: `
@@ -871,9 +865,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         module.exports = HelloComponent();
       `,
       features: ['optional chaining'],
-      parserOptions: {
-        ecmaVersion: 2020,
-      },
     },
     {
       code: `
@@ -926,9 +917,6 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
       features: ['optional chaining'],
-      parserOptions: {
-        ecmaVersion: 2020,
-      },
     },
     {
       code: `
