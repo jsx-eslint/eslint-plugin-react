@@ -57,7 +57,8 @@ const parsers = {
       }
       const features = new Set([].concat(test.features || []));
       delete test.features;
-      const es = test.parserOptions && test.parserOptions.ecmaVersion;
+
+      const es = features.has('class fields') ? 2022 : (features.has('optional chaining') ? 2020 : (test.parserOptions && test.parserOptions.ecmaVersion) || undefined); // eslint-disable-line no-nested-ternary
 
       function addComment(testObject, parser) {
         const extras = [].concat(
@@ -130,13 +131,11 @@ const parsers = {
       const tsOld = !skipTS && !features.has('no-ts-old');
       const tsNew = !skipTS && !features.has('no-ts-new');
 
-      const minES = features.has('class fields') ? 2022 : (features.has('optional chaining') ? 2020 : 5); // eslint-disable-line no-nested-ternary
-
       return [].concat(
         skipBase ? [] : addComment(
-          Object.assign({}, test, minES > 5 && {
+          Object.assign({}, test, typeof es !== 'undefined' && {
             parserOptions: Object.assign({}, test.parserOptions, {
-              ecmaVersion: Math.max((test.parserOptions && test.parserOptions.ecmaVersion) || 0, minES),
+              ecmaVersion: Math.max((test.parserOptions && test.parserOptions.ecmaVersion) || 0, es),
             }),
           }),
           'default'
