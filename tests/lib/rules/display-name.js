@@ -589,6 +589,15 @@ ruleTester.run('display-name', rule, {
       `,
     },
     {
+      // issue #3329
+      code: `
+        let demo = null;
+        demo = (a) => {
+          if (a == null) return null;
+          return f(a);
+        };`,
+    },
+    {
       // issue #3303
       code: `
         function MyComponent(props) {

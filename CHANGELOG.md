@@ -14,12 +14,14 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`display-name`]: Accept forwardRef and Memo nesting in newer React versions ([#3321][] @TildaDares)
 * [`jsx-key`]: avoid a crash from optional chaining from [#3320][] ([#3327][] @ljharb)
 * [`jsx-key`]: avoid a crash on a non-array node.body from [#3320][] ([#3328][] @ljharb)
+* [`display-name`]: fix false positive for assignment of function returning null ([#3331][] @apbarrero)
 
 ### Changed
 * [Refactor] [`jsx-indent-props`]: improved readability of the checkNodesIndent function ([#3315][] @caroline223)
 * [Tests] [`jsx-indent`], [`jsx-one-expression-per-line`]: add passing test cases ([#3314][] @ROSSROSALES)
 * [Refactor] `boolean-prop-naming`, `jsx-indent`: avoid assigning to arguments ([#3316][] @caroline223)
 
+[#3331]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3331
 [#3328]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3328
 [#3327]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3327
 [#3321]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3321
