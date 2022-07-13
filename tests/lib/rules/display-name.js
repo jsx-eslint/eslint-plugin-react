@@ -598,6 +598,24 @@ ruleTester.run('display-name', rule, {
         };`,
     },
     {
+      // issue #3334
+      code: `
+        obj._property = (a) => {
+          if (a == null) return null;
+          return f(a);
+        };
+      `,
+    },
+    {
+      // issue #3334
+      code: `
+        _variable = (a) => {
+          if (a == null) return null;
+          return f(a);
+        };
+      `,
+    },
+    {
       // issue #3303
       code: `
         function MyComponent(props) {
