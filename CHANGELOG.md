@@ -21,6 +21,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`display-name`], component detection: fix HOF returning null as Components ([#3347][] @jxm-math)
 * [`forbid-prop-types`]: Ignore objects that are not of type React.PropTypes ([#3326][] @TildaDares)
 * [`display-name`], component detection: fix false positive for HOF returning only nulls and literals ([#3305][] @golopot)
+* [`jsx-no-target-blank`]: False negative when rel attribute is assigned using ConditionalExpression ([#3332][] @V2dha)
 
 ### Changed
 * [Refactor] [`jsx-indent-props`]: improved readability of the checkNodesIndent function ([#3315][] @caroline223)
@@ -39,6 +40,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3339]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3339
 [#3338]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3338
 [#3335]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3335
+[#3332]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3332
 [#3331]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3331
 [#3328]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3328
 [#3327]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3327
