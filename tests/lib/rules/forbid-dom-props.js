@@ -95,6 +95,23 @@ ruleTester.run('forbid-dom-props', rule, {
       `,
       options: [{ forbid: ['id'] }],
     },
+    {
+      code: `
+        const First = (props) => (
+          <div otherProp="bar" />
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'otherProp',
+              disallowedFor: ['span'],
+            },
+          ],
+        },
+      ],
+    },
   ]),
 
   invalid: parsers.all([
@@ -232,6 +249,76 @@ ruleTester.run('forbid-dom-props', rule, {
         {
           message: 'Avoid using otherProp',
           line: 4,
+          column: 18,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <form accept='file'>
+            <input type="file" id="videoFile" accept="video/*" />
+            <input type="hidden" name="fullname" />
+          </form>
+        );
+      `,
+      options: [
+        {
+          forbid: [{
+            propName: 'accept',
+            disallowedFor: ['form'],
+            message: 'Avoid using the accept attribute on <form>',
+          }],
+        },
+      ],
+      errors: [
+        {
+          message: 'Avoid using the accept attribute on <form>',
+          line: 3,
+          column: 17,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <div className="foo">
+            <input className="boo" />
+            <span className="foobar">Foobar</span>
+            <div otherProp="bar" />
+          </div>
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedFor: ['div', 'span'],
+              message: 'Please use class instead of ClassName',
+            },
+            { propName: 'otherProp', message: 'Avoid using otherProp' },
+          ],
+        },
+      ],
+      errors: [
+        {
+          message: 'Please use class instead of ClassName',
+          line: 3,
+          column: 16,
+          type: 'JSXAttribute',
+        },
+        {
+          message: 'Please use class instead of ClassName',
+          line: 5,
+          column: 19,
+          type: 'JSXAttribute',
+        },
+        {
+          message: 'Avoid using otherProp',
+          line: 6,
           column: 18,
           type: 'JSXAttribute',
         },

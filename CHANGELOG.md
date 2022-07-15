@@ -7,6 +7,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Added
 * [`jsx-newline`]: add `allowMultiline` option when prevent option is true ([#3311][] @TildaDares)
+* [`forbid-dom-props`]: add `disallowedFor` option ([#3338][] @TildaDares)
 
 ### Fixed
 * [`jsx-no-literals`]: properly error on children with noAttributeStrings: true ([#3317][] @TildaDares)
@@ -32,6 +33,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3347]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3347
 [#3344]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3344
 [#3339]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3339
+[#3338]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3338
 [#3335]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3335
 [#3331]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3331
 [#3328]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3328
