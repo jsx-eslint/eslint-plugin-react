@@ -616,6 +616,34 @@ ruleTester.run('display-name', rule, {
       `,
     },
     {
+      // issue #3346
+      code: `
+        demo = () => () => null;
+      `,
+    },
+    {
+      // issue #3346
+      code: `
+        demo = {
+          property: () => () => null
+        }
+      `,
+    },
+    {
+      // issue #3346
+      code: `
+        demo = function() {return function() {return null;};};
+      `,
+    },
+    {
+      // issue #3346
+      code: `
+        demo = {
+          property: function() {return function() {return null;};}
+        }
+      `,
+    },
+    {
       // issue #3303
       code: `
         function MyComponent(props) {
@@ -1140,6 +1168,34 @@ ruleTester.run('display-name', rule, {
           line: 9,
         },
       ],
+    },
+    {
+      code: `
+        Demo = () => () => null;
+      `,
+      errors: [{ messageId: 'noDisplayName' }],
+    },
+    {
+      code: `
+        demo = {
+          Property: () => () => null
+        }
+      `,
+      errors: [{ messageId: 'noDisplayName' }],
+    },
+    {
+      code: `
+        Demo = function() {return function() {return null;};};
+      `,
+      errors: [{ messageId: 'noDisplayName' }],
+    },
+    {
+      code: `
+        demo = {
+          Property: function() {return function() {return null;};}
+        }
+      `,
+      errors: [{ messageId: 'noDisplayName' }],
     },
   ]),
 });
