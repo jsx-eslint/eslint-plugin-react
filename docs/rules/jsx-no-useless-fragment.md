@@ -27,11 +27,17 @@ Examples of **incorrect** code for this rule:
     <div />
   </>
 </section>
+
+{showFullName ? <>{fullName}</> : <>{firstName}</>}
 ```
 
 Examples of **correct** code for this rule:
 
 ```jsx
+{foo}
+
+<Foo />
+
 <>
   <Foo />
   <Bar />
@@ -51,6 +57,8 @@ const cat = <>meow</>
 </SomeComponent>
 
 <Fragment key={item.id}>{item.value}</Fragment>
+
+{showFullName ? fullName : firstName}
 ```
 
 ### `allowExpressions`

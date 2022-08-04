@@ -22,9 +22,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] [`jsx-indent-props`]: improved readability of the checkNodesIndent function ([#3315][] @caroline223)
 * [Tests] [`jsx-indent`], [`jsx-one-expression-per-line`]: add passing test cases ([#3314][] @ROSSROSALES)
 * [Refactor] `boolean-prop-naming`, `jsx-indent`: avoid assigning to arguments ([#3316][] @caroline223)
-* [Docs] `sort-comp`: add class component examples ([#3339][] @maurer2)
+* [Docs] [`sort-comp`]: add class component examples ([#3339][] @maurer2)
+* [Docs] [`jsx-no-useless-fragment`]: add more examples of correct code ([#3349][] @karlhorky)
 
 [#3350]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3350
+[#3349]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3349
 [#3339]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3339
 [#3335]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3335
 [#3331]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3331
