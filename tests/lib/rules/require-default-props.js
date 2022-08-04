@@ -361,6 +361,15 @@ ruleTester.run('require-default-props', rule, {
       `,
       options: [{ functions: 'defaultArguments' }],
     },
+    {
+      code: `
+        const NoPropsComponent = function () {
+          return <div>Hello, world!</div>;
+        }
+        NoPropsComponent.propTypes = {};
+      `,
+      options: [{ functions: 'defaultArguments' }],
+    },
 
     // stateless components as arrow function expressions
     {

@@ -16,6 +16,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-key`]: avoid a crash on a non-array node.body from [#3320][] ([#3328][] @ljharb)
 * [`display-name`]: fix false positive for assignment of function returning null ([#3331][] @apbarrero)
 * [`display-name`]: fix identifying `_` as a capital letter ([#3335][] @apbarrero)
+* [`require-default-props`]: avoid a crash when function has no props param ([#3350][] @noahnu)
 
 ### Changed
 * [Refactor] [`jsx-indent-props`]: improved readability of the checkNodesIndent function ([#3315][] @caroline223)
@@ -23,6 +24,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] `boolean-prop-naming`, `jsx-indent`: avoid assigning to arguments ([#3316][] @caroline223)
 * [Docs] `sort-comp`: add class component examples ([#3339][] @maurer2)
 
+[#3350]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3350
 [#3339]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3339
 [#3335]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3335
 [#3331]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3331
