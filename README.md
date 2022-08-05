@@ -1,7 +1,11 @@
-`eslint-plugin-react`
+# `eslint-plugin-react` <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
 ===================
 
-[![Maintenance Status][status-image]][status-url] [![NPM version][npm-image]][npm-url] [![Dependency Status][deps-image]][deps-url] [![Code Climate][climate-image]][climate-url] [![Tidelift][tidelift-image]][tidelift-url]
+[![github actions][actions-image]][actions-url]
+[![Maintenance Status][status-image]][status-url]
+[![NPM version][npm-image]][npm-url]
+[![Dependency Status][deps-image]][deps-url]
+[![Tidelift][tidelift-image]][tidelift-url]
 
 React specific linting rules for `eslint`
 
@@ -270,11 +274,14 @@ This pairs well with the `eslint:all` rule.
 [deps-url]: https://david-dm.org/jsx-eslint/eslint-plugin-react
 [deps-image]: https://img.shields.io/david/dev/jsx-eslint/eslint-plugin-react.svg
 
-[climate-url]: https://codeclimate.com/github/jsx-eslint/eslint-plugin-react
-[climate-image]: https://img.shields.io/codeclimate/maintainability/jsx-eslint/eslint-plugin-react.svg
-
 [status-url]: https://github.com/jsx-eslint/eslint-plugin-react/pulse
 [status-image]: https://img.shields.io/github/last-commit/jsx-eslint/eslint-plugin-react.svg
 
 [tidelift-url]: https://tidelift.com/subscription/pkg/npm-eslint-plugin-react?utm_source=npm-eslint-plugin-react&utm_medium=referral&utm_campaign=readme
 [tidelift-image]: https://tidelift.com/badges/github/jsx-eslint/eslint-plugin-react?style=flat
+
+[package-url]: https://npmjs.org/package/eslint-plugin-react
+[npm-version-svg]: https://versionbadg.es/jsx-eslint/eslint-plugin-react.svg
+
+[actions-image]: https://img.shields.io/endpoint?url=https://github-actions-badge-u3jn4tfpocch.runkit.sh/jsx-eslint/eslint-plugin-react
+[actions-url]: https://github.com/jsx-eslint/eslint-plugin-react/actions

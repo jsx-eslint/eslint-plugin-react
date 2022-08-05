@@ -27,6 +27,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`sort-comp`]: add class component examples ([#3339][] @maurer2)
 * [Docs] [`jsx-no-useless-fragment`]: add more examples of correct code ([#3349][] @karlhorky)
 * [Docs] [`jsx-boolean-value`]: add jsdoc types for helper functions ([#3344][] @caroline223)
+* [readme] remove dead codeclimate badge, add actions badge (@ljharb)
 
 [#3350]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3350
 [#3349]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3349
