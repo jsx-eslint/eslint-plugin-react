@@ -557,6 +557,17 @@ ruleTester.run('display-name', rule, {
       `,
     },
     {
+      // issue #3300
+      code: `
+        const f = (a) => () => {
+          if (a) {
+            return null;
+          }
+          return 1;
+        };
+      `,
+    },
+    {
       code: `
         class Test {
           render() {
@@ -1168,34 +1179,6 @@ ruleTester.run('display-name', rule, {
           line: 9,
         },
       ],
-    },
-    {
-      code: `
-        Demo = () => () => null;
-      `,
-      errors: [{ messageId: 'noDisplayName' }],
-    },
-    {
-      code: `
-        demo = {
-          Property: () => () => null
-        }
-      `,
-      errors: [{ messageId: 'noDisplayName' }],
-    },
-    {
-      code: `
-        Demo = function() {return function() {return null;};};
-      `,
-      errors: [{ messageId: 'noDisplayName' }],
-    },
-    {
-      code: `
-        demo = {
-          Property: function() {return function() {return null;};}
-        }
-      `,
-      errors: [{ messageId: 'noDisplayName' }],
     },
   ]),
 });

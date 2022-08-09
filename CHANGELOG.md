@@ -20,6 +20,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`require-default-props`]: avoid a crash when function has no props param ([#3350][] @noahnu)
 * [`display-name`], component detection: fix HOF returning null as Components ([#3347][] @jxm-math)
 * [`forbid-prop-types`]: Ignore objects that are not of type React.PropTypes ([#3326][] @TildaDares)
+* [`display-name`], component detection: fix false positive for HOF returning only nulls and literals ([#3305][] @golopot)
 
 ### Changed
 * [Refactor] [`jsx-indent-props`]: improved readability of the checkNodesIndent function ([#3315][] @caroline223)
@@ -49,6 +50,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3315]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3315
 [#3314]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3314
 [#3311]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3311
+[#3305]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3305
 [#3262]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3262
 
 ## [7.30.1] - 2022.06.23
