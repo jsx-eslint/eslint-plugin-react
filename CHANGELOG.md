@@ -22,6 +22,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`forbid-prop-types`]: Ignore objects that are not of type React.PropTypes ([#3326][] @TildaDares)
 * [`display-name`], component detection: fix false positive for HOF returning only nulls and literals ([#3305][] @golopot)
 * [`jsx-no-target-blank`]: False negative when rel attribute is assigned using ConditionalExpression ([#3332][] @V2dha)
+* [`jsx-no-leaked-render`]: autofix nested "&&" logical expressions ([#3353][] @hduprat)
 
 ### Changed
 * [Refactor] [`jsx-indent-props`]: improved readability of the checkNodesIndent function ([#3315][] @caroline223)
@@ -33,6 +34,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [readme] remove dead codeclimate badge, add actions badge (@ljharb)
 * [readme] Remove dead david-dm badge ([#3262][] @ddzz)
 
+[#3353]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3353
 [#3350]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3350
 [#3349]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3349
 [#3347]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3347

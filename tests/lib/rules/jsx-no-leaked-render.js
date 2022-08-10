@@ -725,9 +725,51 @@ ruleTester.run('jsx-no-leaked-render', rule, {
       }],
       output: `
         const Component = ({ count, somethingElse, title }) => {
-          return <div>{!!count && somethingElse && title}</div>
+          return <div>{!!count && !!somethingElse && title}</div>
         }
       `,
+    },
+    {
+      code: `
+        const Component = ({ items, somethingElse, title }) => {
+          return <div>{items.length > 0 && somethingElse && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+      output: `
+        const Component = ({ items, somethingElse, title }) => {
+          return <div>{items.length > 0 && !!somethingElse && title}</div>
+        }
+      `,
+    },
+    {
+      code: `
+        const MyComponent = () => {
+          const items = []
+          const breakpoint = { phones: true }
+        
+          return <div>{items.length > 0 && breakpoint.phones && <span />}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce', 'ternary'] }],
+      output: `
+        const MyComponent = () => {
+          const items = []
+          const breakpoint = { phones: true }
+        
+          return <div>{items.length > 0 && !!breakpoint.phones && <span />}</div>
+        }
+      `,
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 6,
+        column: 24,
+      }],
     },
   ]),
 });
