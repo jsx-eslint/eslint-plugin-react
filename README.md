@@ -274,7 +274,7 @@ This pairs well with the `eslint:all` rule.
 [status-image]: https://img.shields.io/github/last-commit/jsx-eslint/eslint-plugin-react.svg
 
 [tidelift-url]: https://tidelift.com/subscription/pkg/npm-eslint-plugin-react?utm_source=npm-eslint-plugin-react&utm_medium=referral&utm_campaign=readme
-[tidelift-image]: https://tidelift.com/badges/github/jsx-eslint/eslint-plugin-react?style=flat
+[tidelift-image]: https://tidelift.com/badges/package/npm/eslint-plugin-react?style=flat
 
 [package-url]: https://npmjs.org/package/eslint-plugin-react
 [npm-version-svg]: https://versionbadg.es/jsx-eslint/eslint-plugin-react.svg
