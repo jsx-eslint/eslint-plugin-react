@@ -406,6 +406,45 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ unnamedComponents: ['arrow-function', 'function-expression'] }],
     },
+    {
+      // should not report non-jsx components
+      code: `
+        export default (key, subTree = {}) => {
+          return (state) => {
+            const dataInStore = getFromDataModel(key)(state);
+            const fullPaths = dataInStore.map((item, index) => {
+              return [key, index];
+            });
+
+            return {
+              key,
+              paths: fullPaths.map((p) => [p[1]]),
+              fullPaths,
+              subTree: Object.keys(subTree).length ? subTree : null,
+            }
+          };
+        }
+      `,
+    },
+    {
+      // should not report non-jsx components
+      code: `
+        function mapStateToProps() {
+          const internItems = makeInternArray();
+          const internClassList = makeInternArray();
+
+          return (state, props) => {
+            const { store, bucket, singleCharacter } = props;
+
+            return {
+              store: null,
+              destinyVersion: store.destinyVersion,
+              storeId: store.id,
+            }
+          }
+        }
+      `,
+    },
   ]),
 
   invalid: parsers.all([

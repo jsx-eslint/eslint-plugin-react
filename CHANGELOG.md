@@ -34,7 +34,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [readme] remove dead codeclimate badge, add actions badge (@ljharb)
 * [readme] Remove dead david-dm badge ([#3262][] @ddzz)
 * [Refactor] [`jsx-closing-bracket-location`], [`jsx-no-bind`]: fix eslint issues ([#3351][] @caroline223)
+* [Tests] [`function-component-definition`]: add passing test cases ([#3355][] @TildaDares)
 
+[#3355]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3355
 [#3353]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3353
 [#3351]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3351
 [#3350]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3350
