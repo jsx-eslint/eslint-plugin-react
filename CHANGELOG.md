@@ -33,8 +33,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`jsx-boolean-value`]: add jsdoc types for helper functions ([#3344][] @caroline223)
 * [readme] remove dead codeclimate badge, add actions badge (@ljharb)
 * [readme] Remove dead david-dm badge ([#3262][] @ddzz)
+* [Refactor] [`jsx-closing-bracket-location`], [`jsx-no-bind`]: fix eslint issues ([#3351][] @caroline223)
 
 [#3353]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3353
+[#3351]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3351
 [#3350]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3350
 [#3349]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3349
 [#3347]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3347
