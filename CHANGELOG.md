@@ -23,6 +23,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`display-name`], component detection: fix false positive for HOF returning only nulls and literals ([#3305][] @golopot)
 * [`jsx-no-target-blank`]: False negative when rel attribute is assigned using ConditionalExpression ([#3332][] @V2dha)
 * [`jsx-no-leaked-render`]: autofix nested "&&" logical expressions ([#3353][] @hduprat)
+* [`jsx-sort-props`]: sorted attributes now respect comments ([#3358][] @ROSSROSALES)
 
 ### Changed
 * [Refactor] [`jsx-indent-props`]: improved readability of the checkNodesIndent function ([#3315][] @caroline223)
@@ -50,6 +51,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3362]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3362
 [#3361]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3361
 [#3359]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3359
+[#3358]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3358
 [#3355]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3355
 [#3353]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3353
 [#3351]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3351
