@@ -1,8 +1,10 @@
 # Configure the position of the first property (react/jsx-first-prop-new-line)
 
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
+
 Ensure correct position of the first property.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line. However, fix does not include indentation. Please rerun lint to correct those errors.
+Note: The fixer does not include indentation. Please rerun lint to correct those errors.
 
 ## Rule Details
 

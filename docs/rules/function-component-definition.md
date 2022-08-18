@@ -1,8 +1,8 @@
 # Enforce a specific function type for function components (react/function-component-definition)
 
-This option enforces a specific function type for function components.
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+This option enforces a specific function type for function components.
 
 ## Rule Details
 

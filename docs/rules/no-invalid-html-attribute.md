@@ -1,5 +1,7 @@
 # Prevent usage of invalid attributes (react/no-invalid-html-attribute)
 
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
+
 Some HTML elements have a specific set of valid values for some attributes.
 For instance the elements: `a`, `area`, `link`, or `form` all have an attribute called `rel`.
 There is a fixed list of values that have any meaning for this attribute on these tags (see [MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel)).

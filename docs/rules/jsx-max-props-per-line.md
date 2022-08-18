@@ -1,8 +1,10 @@
 # Limit maximum of props on a single line in JSX (react/jsx-max-props-per-line)
 
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
+
 Limiting the maximum of props on a single line can improve readability.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line. However, fix does not include indentation. Please rerun lint to correct those errors.
+Note: The fixer does not include indentation. Please rerun lint to correct those errors.
 
 ## Rule Details
 

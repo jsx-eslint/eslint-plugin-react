@@ -1,8 +1,8 @@
 # Enforce or disallow spaces around equal signs in JSX attributes. (react/jsx-equals-spacing)
 
-Some style guides require or disallow spaces around equal signs.
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+Some style guides require or disallow spaces around equal signs.
 
 ## Rule Details
 

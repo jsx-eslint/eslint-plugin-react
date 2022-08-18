@@ -1,8 +1,8 @@
 # Validate props indentation in JSX (react/jsx-indent-props)
 
-This option validates a specific indentation style for props.
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+This option validates a specific indentation style for props.
 
 ## Rule Details
 

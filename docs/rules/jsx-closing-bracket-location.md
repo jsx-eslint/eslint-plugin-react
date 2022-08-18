@@ -1,8 +1,8 @@
 # Validate closing bracket location in JSX (react/jsx-closing-bracket-location)
 
-Enforce the closing bracket location for JSX multiline elements.
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+Enforce the closing bracket location for JSX multiline elements.
 
 ## Rule Details
 

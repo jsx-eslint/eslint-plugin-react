@@ -1,8 +1,8 @@
 # Enforce linebreaks in curly braces in JSX attributes and expressions. (react/jsx-curly-newline)
 
-Many style guides require or disallow newlines inside of jsx curly expressions.
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+Many style guides require or disallow newlines inside of jsx curly expressions.
 
 ## Rule Details
 

@@ -1,5 +1,7 @@
 # Prevent problematic leaked values from being rendered (react/jsx-no-leaked-render)
 
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
+
 Using the `&&` operator to render some element conditionally in JSX can cause unexpected values being rendered, or even crashing the rendering.
 
 
@@ -16,11 +18,11 @@ const Example = () => {
       {0 && <Something/>}
       {/* React: renders undesired 0 */}
       {/* React Native: crashes 💥 */}
-      
+
       {'' && <Something/>}
       {/* React: renders nothing */}
       {/* React Native: crashes 💥 */}
-      
+
       {NaN && <Something/>}
       {/* React: renders undesired NaN */}
       {/* React Native: crashes 💥 */}

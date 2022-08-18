@@ -22,6 +22,47 @@ describe('all rule files should be exported by the plugin', () => {
   });
 });
 
+describe('rule documentation files have the correct content', () => {
+  const MESSAGES = {
+    fixable: '🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.',
+    hasSuggestions: '💡 This rule provides editor [suggestions](https://eslint.org/docs/developer-guide/working-with-rules#providing-suggestions).',
+  };
+
+  ruleFiles.forEach((ruleName) => {
+    const rule = plugin.rules[ruleName];
+    const documentPath = path.join('docs', 'rules', `${ruleName}.md`);
+    const documentContents = fs.readFileSync(documentPath, 'utf8');
+    const documentLines = documentContents.split('\n');
+
+    // Decide which notices should be shown at the top of the doc.
+    const expectedNotices = [];
+    const unexpectedNotices = [];
+    if (rule.meta.fixable) {
+      expectedNotices.push('fixable');
+    } else {
+      unexpectedNotices.push('fixable');
+    }
+    if (rule.meta.hasSuggestions) {
+      expectedNotices.push('hasSuggestions');
+    } else {
+      unexpectedNotices.push('hasSuggestions');
+    }
+
+    // Ensure that expected notices are present in the correct order.
+    let currentLineNumber = 1;
+    expectedNotices.forEach((expectedNotice) => {
+      assert.strictEqual(documentLines[currentLineNumber], '', `${ruleName} includes blank line ahead of ${expectedNotice} notice`);
+      assert.strictEqual(documentLines[currentLineNumber + 1], MESSAGES[expectedNotice], `${ruleName} includes ${expectedNotice} notice`);
+      currentLineNumber += 2;
+    });
+
+    // Ensure that unexpected notices are not present.
+    unexpectedNotices.forEach((unexpectedNotice) => {
+      assert.ok(!documentContents.includes(MESSAGES[unexpectedNotice]), `${ruleName} does not include unexpected ${unexpectedNotice} notice`);
+    });
+  });
+});
+
 describe('deprecated rules', () => {
   it('marks all deprecated rules as deprecated', () => {
     ruleFiles.forEach((ruleName) => {

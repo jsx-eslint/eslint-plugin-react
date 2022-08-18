@@ -1,5 +1,7 @@
 # Lifecycle methods should be methods on the prototype, not class fields (react/no-arrow-function-lifecycle)
 
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
+
 It is not neccessary to use arrow function for lifecycle methods. This makes things harder to test, conceptually less performant (although in practice, performance will not be affected, since most engines will optimize efficiently), and can break hot reloading patterns.
 
 ## Rule Details

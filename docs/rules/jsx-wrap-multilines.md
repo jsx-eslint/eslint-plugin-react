@@ -1,8 +1,8 @@
 # Prevent missing parentheses around multiline JSX (react/jsx-wrap-multilines)
 
-Wrapping multiline JSX in parentheses can improve readability and/or convenience.
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+Wrapping multiline JSX in parentheses can improve readability and/or convenience.
 
 ## Rule Details
 
