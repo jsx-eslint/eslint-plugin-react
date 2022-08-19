@@ -1,5 +1,7 @@
 # Disallow duplicate properties in JSX (react/jsx-no-duplicate-props)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`, `recommended`.
+
 Creating JSX elements with duplicate props can cause unexpected behavior in your application.
 
 ## Rule Details

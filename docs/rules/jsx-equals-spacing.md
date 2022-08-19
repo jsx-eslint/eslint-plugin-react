@@ -1,5 +1,7 @@
 # Enforce or disallow spaces around equal signs in JSX attributes (react/jsx-equals-spacing)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 Some style guides require or disallow spaces around equal signs.

@@ -1,5 +1,7 @@
 # Enforce React components to have a shouldComponentUpdate method (react/require-optimization)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 This rule prevents you from creating React components without declaring a `shouldComponentUpdate` method.
 
 ## Rule Details

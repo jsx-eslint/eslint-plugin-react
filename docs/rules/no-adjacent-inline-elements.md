@@ -1,5 +1,7 @@
 # Disallow adjacent inline elements not separated by whitespace. (react/no-adjacent-inline-elements)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 Adjacent inline elements not separated by whitespace will bump up against each
 other when viewed in an unstyled manner, which usually isn't desirable.
 

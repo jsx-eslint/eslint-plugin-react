@@ -1,5 +1,7 @@
 # Enforces consistent naming for boolean props (react/boolean-prop-naming)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 Allows you to enforce a consistent naming pattern for props which expect a boolean value.
 
 > **Note**: You can provide types in runtime types using [PropTypes] and/or

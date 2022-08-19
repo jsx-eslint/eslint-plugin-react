@@ -1,5 +1,7 @@
 # Disallow usage of setState in componentWillUpdate (react/no-will-update-set-state)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 Updating the state during the componentWillUpdate step can lead to indeterminate component state and is not allowed.
 
 ## Rule Details

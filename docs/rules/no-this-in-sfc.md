@@ -1,5 +1,7 @@
 # Disallow `this` from being used in stateless functional components (react/no-this-in-sfc)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 In React, there are two styles of component. One is a class component: `class Foo extends React.Component {...}`, which accesses its props, context, and state as properties of `this`: `this.props.foo`, etc. The other are stateless functional components (SFCs): `function Foo(props, context) {...}`. As you can see, there's no `state` (hence the name - hooks do not change this), and the props and context are provided as its two functional arguments. In an SFC, state is usually best implements with a [React hook](https://reactjs.org/docs/hooks-overview.html) such as `React.useState()`.
 
 Attempting to access properties on `this` can sometimes be valid, but it's very commonly an error caused by unfamiliarity with the differences between the two styles of components, or a missed reference when converting a class component to an SFC.

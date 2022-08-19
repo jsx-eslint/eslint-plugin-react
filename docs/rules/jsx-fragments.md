@@ -1,5 +1,7 @@
 # Enforce shorthand or standard form for React fragments (react/jsx-fragments)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 In JSX, a React [fragment] is created either with `<React.Fragment>...</React.Fragment>`, or, using the shorthand syntax, `<>...</>`.

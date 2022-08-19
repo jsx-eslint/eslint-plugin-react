@@ -1,5 +1,7 @@
 # Disallow missing displayName in a React component definition (react/display-name)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`, `recommended`.
+
 DisplayName allows you to name your component. This name is used by React in debugging messages.
 
 ## Rule Details

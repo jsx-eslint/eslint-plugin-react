@@ -1,5 +1,7 @@
 # Disallow using another component's propTypes (react/forbid-foreign-prop-types)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 This rule forbids using another component's prop types unless they are explicitly imported/exported. This allows people who want to use [babel-plugin-transform-react-remove-prop-types](https://github.com/oliviertassinari/babel-plugin-transform-react-remove-prop-types) to remove propTypes from their components in production builds, to do so safely.
 
 In order to ensure that imports are explicitly exported it is recommended to use the ["named" rule in eslint-plugin-import](https://github.com/benmosher/eslint-plugin-import/blob/HEAD/docs/rules/named.md) in conjunction with this rule.

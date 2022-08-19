@@ -1,5 +1,7 @@
 # Enforce style prop value is an object (react/style-prop-object)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 Require that the value of the prop `style` be an object or a variable that is
 an object.
 

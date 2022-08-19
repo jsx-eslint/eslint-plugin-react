@@ -1,5 +1,7 @@
 # Disallow direct mutation of this.state (react/no-direct-mutation-state)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`, `recommended`.
+
 NEVER mutate `this.state` directly, as calling `setState()` afterwards may replace
 the mutation you made. Treat `this.state` as if it were immutable.
 

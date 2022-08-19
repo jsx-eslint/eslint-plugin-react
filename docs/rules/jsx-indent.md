@@ -1,5 +1,7 @@
 # Enforce JSX indentation (react/jsx-indent)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 This option validates a specific indentation style for JSX.

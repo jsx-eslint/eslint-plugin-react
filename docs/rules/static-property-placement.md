@@ -1,5 +1,7 @@
 # Enforces where React component static properties should be positioned. (react/static-property-placement)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 This rule allows you to enforce where `childContextTypes`, `contextTypes`, `contextType`, `defaultProps`, `displayName`,
 and `propTypes` are declared in an ES6 class.
 

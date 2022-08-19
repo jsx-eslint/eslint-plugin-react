@@ -1,5 +1,7 @@
 # Enforce class component state initialization style (react/state-in-constructor)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 ## Rule Details
 
 This rule will enforce the state initialization style to be either in a constructor or with a class property.

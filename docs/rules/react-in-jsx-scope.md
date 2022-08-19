@@ -1,5 +1,7 @@
 # Disallow missing React when using JSX (react/react-in-jsx-scope)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`, `recommended`. This rule is disabled in the following configs: `jsx-runtime`.
+
 When using JSX, `<a />` expands to `React.createElement("a")`. Therefore the `React` variable must be in scope.
 
 If you are using the @jsx pragma this rule will check the designated variable and not the `React` one.

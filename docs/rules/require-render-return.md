@@ -1,5 +1,7 @@
 # Enforce ES5 or ES6 class for returning value in render function (react/require-render-return)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`, `recommended`.
+
 When writing the `render` method in a component it is easy to forget to return the JSX content. This rule will warn if the `return` statement is missing.
 
 ## Rule Details

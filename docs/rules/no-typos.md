@@ -1,5 +1,7 @@
 # Disallow common typos (react/no-typos)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 Ensure no casing typos were made declaring static class properties and lifecycle methods.
 Checks that declared `propTypes`, `contextTypes` and `childContextTypes` is supported by [react-props](https://github.com/facebook/prop-types)
 

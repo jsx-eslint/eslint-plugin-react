@@ -1,5 +1,7 @@
 # Enforce or disallow spaces inside of curly braces in JSX attributes and expressions (react/jsx-child-element-spacing)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 ## Rule Details
 
 Since React removes extraneous new lines between elements when possible, it is possible to end up with inline elements that are not rendered with spaces between them and adjacent text. This is often indicative of an error, so this rule attempts to detect JSX markup with ambiguous spacing.

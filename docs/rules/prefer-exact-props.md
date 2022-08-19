@@ -1,5 +1,7 @@
 # Prefer exact proptype definitions (react/prefer-exact-props)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 Recommends options to ensure only exact prop definitions are used when writing components. This recommends solutions for PropTypes or for Flow types.
 
 In React, you can define prop types for components using propTypes. Such an example is below:

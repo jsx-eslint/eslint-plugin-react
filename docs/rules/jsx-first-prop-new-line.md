@@ -1,5 +1,7 @@
 # Enforce proper position of the first property in JSX (react/jsx-first-prop-new-line)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 Ensure correct position of the first property.

@@ -1,5 +1,7 @@
 # Disallow variables used in JSX to be incorrectly marked as unused (react/jsx-uses-vars)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`, `recommended`.
+
 Since 0.17.0 the `eslint` `no-unused-vars` rule does not detect variables used in JSX ([see details](https://eslint.org/blog/2015/03/eslint-0.17.0-released#changes-to-jsxreact-handling)). This rule will find variables used in JSX and mark them as used.
 
 This rule only has an effect when the `no-unused-vars` rule is enabled.

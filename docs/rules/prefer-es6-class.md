@@ -1,5 +1,7 @@
 # Enforce ES5 or ES6 class for React Components (react/prefer-es6-class)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 React offers you two ways to create traditional components: using the ES5 `create-react-class` module or the new ES6 class system.
 
 ## Rule Details

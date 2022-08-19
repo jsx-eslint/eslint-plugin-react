@@ -1,5 +1,7 @@
 # Disallow `target="_blank"` attribute without `rel="noreferrer"` (react/jsx-no-target-blank)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`, `recommended`.
+
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 When creating a JSX element that has an `a` tag, it is often desired to have the link open in a new tab using the `target='_blank'` attribute. Using this attribute unaccompanied by `rel='noreferrer'`, however, is a severe security vulnerability (see [noreferrer docs](https://html.spec.whatwg.org/multipage/links.html#link-type-noreferrer) and [noopener docs](https://html.spec.whatwg.org/multipage/links.html#link-type-noopener) for more details)

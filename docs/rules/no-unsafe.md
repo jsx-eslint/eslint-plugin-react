@@ -1,5 +1,7 @@
 # Disallow usage of unsafe lifecycle methods (react/no-unsafe)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`. This rule is disabled in the following configs: `recommended`.
+
 Certain legacy lifecycle methods are [unsafe for use in async React applications][async_rendering] and cause warnings in [_strict mode_][strict_mode]. These also happen to be the lifecycles that cause the most [confusion within the React community][component_lifecycle_changes].
 
 [async_rendering]: https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html

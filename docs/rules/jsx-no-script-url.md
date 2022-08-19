@@ -1,5 +1,7 @@
 # Disallow usage of `javascript:` URLs (react/jsx-no-script-url)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 **In React 16.9** any URLs starting with `javascript:` [scheme](https://wiki.whatwg.org/wiki/URL_schemes#javascript:_URLs) log a warning.
 React considers the pattern as a dangerous attack surface, see [details](https://reactjs.org/blog/2019/08/08/react-v16.9.0.html#deprecating-javascript-urls).
 **In a future major release**, React will throw an error if it encounters a `javascript:` URL.

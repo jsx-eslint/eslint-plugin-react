@@ -1,5 +1,7 @@
 # Disallow usage of invalid attributes (react/no-invalid-html-attribute)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 Some HTML elements have a specific set of valid values for some attributes.

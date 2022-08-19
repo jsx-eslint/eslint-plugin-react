@@ -1,5 +1,7 @@
 # Disallow passing of children as props (react/no-children-prop)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`, `recommended`.
+
 Children should always be actual children, not passed in as a prop.
 
 When using JSX, the children should be nested between the opening and closing

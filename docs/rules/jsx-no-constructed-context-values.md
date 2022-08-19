@@ -1,5 +1,7 @@
 # Disallows JSX context provider values from taking values that will cause needless rerenders (react/jsx-no-constructed-context-values)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 This rule prevents non-stable values (i.e. object identities) from being used as a value for `Context.Provider`.
 
 ## Rule Details
