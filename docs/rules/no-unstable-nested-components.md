@@ -1,4 +1,4 @@
-# Prevent creating unstable components inside components (react/no-unstable-nested-components)
+# Disallow creating unstable components inside components (react/no-unstable-nested-components)
 
 Creating components inside components without memoization leads to unstable components. The nested component and all its children are recreated during each re-render. Given stateful children of the nested component will lose their state on each re-render.
 

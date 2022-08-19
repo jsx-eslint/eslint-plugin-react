@@ -1,4 +1,4 @@
-# Prevent usage of `javascript:` URLs (react/jsx-no-script-url)
+# Disallow usage of `javascript:` URLs (react/jsx-no-script-url)
 
 **In React 16.9** any URLs starting with `javascript:` [scheme](https://wiki.whatwg.org/wiki/URL_schemes#javascript:_URLs) log a warning.
 React considers the pattern as a dangerous attack surface, see [details](https://reactjs.org/blog/2019/08/08/react-v16.9.0.html#deprecating-javascript-urls).

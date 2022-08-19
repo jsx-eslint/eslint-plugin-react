@@ -1,4 +1,4 @@
-# Prevent extra closing tags for components without children (react/self-closing-comp)
+# Disallow extra closing tags for components without children (react/self-closing-comp)
 
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 

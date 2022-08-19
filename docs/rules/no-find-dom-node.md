@@ -1,4 +1,4 @@
-# Prevent usage of findDOMNode (react/no-find-dom-node)
+# Disallow usage of findDOMNode (react/no-find-dom-node)
 
 Facebook will eventually deprecate `findDOMNode` as it blocks certain improvements in React in the future.
 

@@ -1,9 +1,14 @@
-# Prevent using this.state within a this.setState (react/no-access-state-in-setstate)
+# Disallow when this.state is accessed within setState (react/no-access-state-in-setstate)
+
+Usage of `this.state` inside `setState` calls might result in errors when two state calls are called in batch and thus referencing old state and not the current state.
+
+## Rule Details
 
 This rule should prevent usage of `this.state` inside `setState` calls.
-Such usage of `this.state` might result in errors when two state calls are
-called in batch and thus referencing old state and not the current
-state. An example can be an increment function:
+
+## Examples
+
+An example can be an increment function:
 
 ```javascript
 function increment() {

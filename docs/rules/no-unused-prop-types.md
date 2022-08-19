@@ -1,4 +1,4 @@
-# Prevent definitions of unused propTypes (react/no-unused-prop-types)
+# Disallow definitions of unused propTypes (react/no-unused-prop-types)
 
 Warns if a prop with a defined type isn't being used.
 

@@ -1,4 +1,4 @@
-# Prevent usage of unsafe `target='_blank'` (react/jsx-no-target-blank)
+# Disallow `target="_blank"` attribute without `rel="noreferrer"` (react/jsx-no-target-blank)
 
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 

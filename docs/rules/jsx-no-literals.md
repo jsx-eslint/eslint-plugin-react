@@ -1,4 +1,4 @@
-# Prevent usage of string literals in JSX (react/jsx-no-literals)
+# Disallow usage of string literals in JSX (react/jsx-no-literals)
 
 There are a few scenarios where you want to avoid string literals in JSX. You may want to enforce consistency, reduce syntax highlighting issues, or ensure that strings are part of a translation system.
 

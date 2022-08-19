@@ -124,7 +124,7 @@ MyComponent.defaultProps = { /*...*/ };
 MyComponent.propTypes = { /*...*/ };
 ```
 
-### Options
+## Rule Options
 
 ```
 ...

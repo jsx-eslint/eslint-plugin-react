@@ -1,4 +1,4 @@
-# Enforce or disallow spaces around equal signs in JSX attributes. (react/jsx-equals-spacing)
+# Enforce or disallow spaces around equal signs in JSX attributes (react/jsx-equals-spacing)
 
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
@@ -8,7 +8,7 @@ Some style guides require or disallow spaces around equal signs.
 
 This rule will enforce consistency of spacing around equal signs in JSX attributes, by requiring or disallowing one or more spaces before and after `=`.
 
-### Options
+## Rule Options
 
 There are two options for the rule:
 
@@ -21,7 +21,7 @@ Depending on your coding conventions, you can choose either option by specifying
 "react/jsx-equals-spacing": [2, "always"]
 ```
 
-#### never
+### never
 
 Examples of **incorrect** code for this rule, when configured with `"never"`:
 
@@ -39,7 +39,7 @@ Examples of **correct** code for this rule, when configured with `"never"`:
 <Hello {...props} />;
 ```
 
-#### always
+### always
 
 Examples of **incorrect** code for this rule, when configured with `"always"`:
 

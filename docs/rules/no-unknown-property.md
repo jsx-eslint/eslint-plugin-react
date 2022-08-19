@@ -1,4 +1,4 @@
-# Prevent usage of unknown DOM property (react/no-unknown-property)
+# Disallow usage of unknown DOM property (react/no-unknown-property)
 
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 

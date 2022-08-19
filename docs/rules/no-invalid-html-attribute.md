@@ -1,4 +1,4 @@
-# Prevent usage of invalid attributes (react/no-invalid-html-attribute)
+# Disallow usage of invalid attributes (react/no-invalid-html-attribute)
 
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 

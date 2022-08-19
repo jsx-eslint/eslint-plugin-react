@@ -1,4 +1,4 @@
-# Prevent missing parentheses around multiline JSX (react/jsx-wrap-multilines)
+# Disallow missing parentheses around multiline JSX (react/jsx-wrap-multilines)
 
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
@@ -21,6 +21,8 @@ This rule optionally takes a second parameter in the form of an object, containi
 ```
 
 Note: conditions are checked by default in declarations or assignments.
+
+## Rule Options
 
 Examples of **incorrect** code for this rule, when configured with `parens` or `parens-new-line`:
 

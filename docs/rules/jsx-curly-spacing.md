@@ -1,4 +1,4 @@
-# Enforce or disallow spaces inside of curly braces in JSX attributes and expressions. (react/jsx-curly-spacing)
+# Enforce or disallow spaces inside of curly braces in JSX attributes and expressions (react/jsx-curly-spacing)
 
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 

@@ -1,4 +1,4 @@
-# Validate JSX maximum depth (react/jsx-max-depth)
+# Enforce JSX maximum depth (react/jsx-max-depth)
 
 This option validates a specific depth for JSX.
 

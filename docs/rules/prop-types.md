@@ -1,4 +1,4 @@
-# Prevent missing props validation in a React component definition (react/prop-types)
+# Disallow missing props validation in a React component definition (react/prop-types)
 
 Defining types for component props improves reusability of your components by
 validating received data. It can warn other developers if they make a mistake while reusing the component with improper data type.

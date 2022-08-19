@@ -29,36 +29,57 @@ describe('rule documentation files have the correct content', () => {
   };
 
   ruleFiles.forEach((ruleName) => {
-    const rule = plugin.rules[ruleName];
-    const documentPath = path.join('docs', 'rules', `${ruleName}.md`);
-    const documentContents = fs.readFileSync(documentPath, 'utf8');
-    const documentLines = documentContents.split('\n');
+    it(ruleName, () => {
+      const rule = plugin.rules[ruleName];
+      const documentPath = path.join('docs', 'rules', `${ruleName}.md`);
+      const documentContents = fs.readFileSync(documentPath, 'utf8');
+      const documentLines = documentContents.split('\n');
 
-    // Decide which notices should be shown at the top of the doc.
-    const expectedNotices = [];
-    const unexpectedNotices = [];
-    if (rule.meta.fixable) {
-      expectedNotices.push('fixable');
-    } else {
-      unexpectedNotices.push('fixable');
-    }
-    if (rule.meta.hasSuggestions) {
-      expectedNotices.push('hasSuggestions');
-    } else {
-      unexpectedNotices.push('hasSuggestions');
-    }
+      // Check title.
+      const expectedTitle = `# ${rule.meta.docs.description} (react/${ruleName})`;
+      assert.strictEqual(documentLines[0], expectedTitle, 'includes the rule description and name in title');
 
-    // Ensure that expected notices are present in the correct order.
-    let currentLineNumber = 1;
-    expectedNotices.forEach((expectedNotice) => {
-      assert.strictEqual(documentLines[currentLineNumber], '', `${ruleName} includes blank line ahead of ${expectedNotice} notice`);
-      assert.strictEqual(documentLines[currentLineNumber + 1], MESSAGES[expectedNotice], `${ruleName} includes ${expectedNotice} notice`);
-      currentLineNumber += 2;
-    });
+      // Decide which notices should be shown at the top of the doc.
+      const expectedNotices = [];
+      const unexpectedNotices = [];
+      if (rule.meta.fixable) {
+        expectedNotices.push('fixable');
+      } else {
+        unexpectedNotices.push('fixable');
+      }
+      if (rule.meta.hasSuggestions) {
+        expectedNotices.push('hasSuggestions');
+      } else {
+        unexpectedNotices.push('hasSuggestions');
+      }
 
-    // Ensure that unexpected notices are not present.
-    unexpectedNotices.forEach((unexpectedNotice) => {
-      assert.ok(!documentContents.includes(MESSAGES[unexpectedNotice]), `${ruleName} does not include unexpected ${unexpectedNotice} notice`);
+      // Ensure that expected notices are present in the correct order.
+      let currentLineNumber = 1;
+      expectedNotices.forEach((expectedNotice) => {
+        assert.strictEqual(documentLines[currentLineNumber], '', `includes blank line ahead of ${expectedNotice} notice`);
+        assert.strictEqual(documentLines[currentLineNumber + 1], MESSAGES[expectedNotice], `includes ${expectedNotice} notice`);
+        currentLineNumber += 2;
+      });
+
+      // Ensure that unexpected notices are not present.
+      unexpectedNotices.forEach((unexpectedNotice) => {
+        assert.ok(!documentContents.includes(MESSAGES[unexpectedNotice]), `does not include unexpected ${unexpectedNotice} notice`);
+      });
+
+      // Check for Rule Details section.
+      assert.ok(documentContents.includes('## Rule Details'), 'should have a "## Rule Details" section');
+
+      // Check if the rule has configuration options.
+      if (
+        (Array.isArray(rule.meta.schema) && rule.meta.schema.length > 0)
+        || (typeof rule.meta.schema === 'object' && Object.keys(rule.meta.schema).length > 0)
+      ) {
+        // Should have an options section header:
+        assert.ok(documentContents.includes('## Rule Options'), 'should have a "## Rule Options" section');
+      } else {
+        // Should NOT have any options section header:
+        assert.ok(!documentContents.includes('## Rule Options'), 'should not have a "## Rule Options" section');
+      }
     });
   });
 });

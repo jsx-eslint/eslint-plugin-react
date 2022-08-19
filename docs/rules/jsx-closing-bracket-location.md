@@ -1,4 +1,4 @@
-# Validate closing bracket location in JSX (react/jsx-closing-bracket-location)
+# Enforce closing bracket location in JSX (react/jsx-closing-bracket-location)
 
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 

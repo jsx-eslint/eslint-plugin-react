@@ -1,4 +1,4 @@
-# One JSX Element Per Line (react/jsx-one-expression-per-line)
+# Require one JSX element per line (react/jsx-one-expression-per-line)
 
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 

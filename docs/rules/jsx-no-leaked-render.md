@@ -1,4 +1,4 @@
-# Prevent problematic leaked values from being rendered (react/jsx-no-leaked-render)
+# Disallow problematic leaked values from being rendered (react/jsx-no-leaked-render)
 
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
@@ -139,7 +139,7 @@ const Component = ({ elements }) => {
 }
 ```
 
-### Options
+## Rule Options
 
 The supported options are:
 

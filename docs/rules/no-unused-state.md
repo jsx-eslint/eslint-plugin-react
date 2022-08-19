@@ -1,4 +1,4 @@
-# Prevent definitions of unused state (react/no-unused-state)
+# Disallow definitions of unused state (react/no-unused-state)
 
 Warns you if you have defined a property on the state, but it is not being used anywhere.
 
