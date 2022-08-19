@@ -249,7 +249,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
     },
     {
       code: 'React.createElement("a", { rel: "alternatex" })',
-      output: 'React.createElement("a", { rel: "alternatex" })',
+      output: null,
       errors: [
         {
           messageId: 'neverValid',
@@ -262,7 +262,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
     },
     {
       code: 'React.createElement("a", { rel: ["alternatex"] })',
-      output: 'React.createElement("a", { rel: ["alternatex"] })',
+      output: null,
       errors: [
         {
           messageId: 'neverValid',
