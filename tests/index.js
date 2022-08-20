@@ -22,6 +22,18 @@ describe('all rule files should be exported by the plugin', () => {
   });
 });
 
+describe('rule implementation files have the correct content', () => {
+  ruleFiles.forEach((ruleName) => {
+    const TYPE_ANNOTATION = "/** @type {import('eslint').Rule.RuleModule} */";
+    it(ruleName, () => {
+      const rulePath = path.join('lib', 'rules', `${ruleName}.js`);
+      const ruleContents = fs.readFileSync(rulePath, 'utf8');
+
+      assert.ok(ruleContents.includes(TYPE_ANNOTATION), `includes type annotation on exported rule object: ${TYPE_ANNOTATION}`);
+    });
+  });
+});
+
 describe('rule documentation files have the correct content', () => {
   const MESSAGES = {
     fixable: '🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.',
