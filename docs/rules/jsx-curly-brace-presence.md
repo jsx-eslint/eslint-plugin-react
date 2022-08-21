@@ -6,8 +6,6 @@ This rule allows you to enforce curly braces or disallow unnecessary curly brace
 
 For situations where JSX expressions are unnecessary, please refer to [the React doc](https://facebook.github.io/react/docs/jsx-in-depth.html) and [this page about JSX gotchas](https://github.com/facebook/react/blob/v15.4.0-rc.3/docs/docs/02.3-jsx-gotchas.md#html-entities).
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line
-
 ## Rule Details
 
 By default, this rule will check for and warn about unnecessary curly braces in both JSX props and children. For the sake of backwards compatibility, prop values that are JSX elements are not considered by default.

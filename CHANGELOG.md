@@ -36,10 +36,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] [`jsx-closing-bracket-location`], [`jsx-no-bind`]: fix eslint issues ([#3351][] @caroline223)
 * [Tests] [`function-component-definition`]: add passing test cases ([#3355][] @TildaDares)
 * [Docs] [`jsx-no-target-blank`]: Fix link to link-type-noreferrer ([#3319][] @Luccasoli)
-* [Docs] document which rules provide suggestions ([#3359][] @bmish)
+* [Docs] document which rules provide suggestions ([#3359][], [#3365][] @bmish)
 * [Docs] Consistent rule descriptions and doc sections ([#3361][] @bmish)
 * [Docs] Standardize deprecated rule notice ([#3364][] @bmish)
 
+[#3365]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3365
 [#3364]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3364
 [#3361]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3361
 [#3359]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3359
