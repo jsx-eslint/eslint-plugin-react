@@ -2363,7 +2363,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       features: ['class fields'],
     },
     {
-      // Destrucuted props inside of async class method
+      // Destructured props inside of async class method
       code: `
         export class Example extends Component {
           static propTypes = {
@@ -3825,7 +3825,7 @@ ruleTester.run('no-unused-prop-types', rule, {
             },
           },
         };
-        
+
         export const Daily = ({ history, match: {
           params: {
             date = moment().toISOString(),
@@ -3855,7 +3855,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           test: string,
           callback: () => void,
         };
-        
+
         export default function Foo(props: Props) {
           return (
             <div>
@@ -3900,13 +3900,13 @@ ruleTester.run('no-unused-prop-types', rule, {
               selectedId: '',
             };
           }
-        
+
           onChange = ({id}: {id: string}) => { // This will say: 'id' PropType is defined but prop is never used (react/no-unused-prop-types)
             this.setState({
               selectedId: id,
             });
           };
-        
+
           render() {
             const {selectedId} = this.state;
             return (
@@ -3926,7 +3926,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       code: `
         function Foo (props) {
           return <div>{ renderPhoto() }</div>;
-        
+
           function renderPhoto () {
             return <div>{ props.renderPhotoTools() }</div>;
           }

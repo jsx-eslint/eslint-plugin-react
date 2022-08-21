@@ -68,7 +68,7 @@ Examples of **incorrect** code for this rule, when `custom` is set to `ignore`:
 
 ### explicitSpread
 
-`explicitSpread` set to `ignore` will ignore spread operators that are explicilty listing all object properties within that spread. Default is set to `enforce`.
+`explicitSpread` set to `ignore` will ignore spread operators that are explicitly listing all object properties within that spread. Default is set to `enforce`.
 
 Examples of **correct** code for this rule, when `explicitSpread` is set to `ignore`:
 

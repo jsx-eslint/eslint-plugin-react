@@ -39,7 +39,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] document which rules provide suggestions ([#3359][], [#3365][] @bmish)
 * [Docs] Consistent rule descriptions and doc sections ([#3361][] @bmish)
 * [Docs] Standardize deprecated rule notice ([#3364][] @bmish)
+* [Docs] Fix typos ([#3366][] @bmish)
 
+[#3366]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3366
 [#3365]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3365
 [#3364]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3364
 [#3361]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3361

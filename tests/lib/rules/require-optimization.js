@@ -47,7 +47,7 @@ ruleTester.run('react-require-optimization', rule, {
         import React, {Component} from "react";
         @reactMixin.decorate(PureRenderMixin)
         class YourComponent extends Component {
-          componetnDidMount () {}
+          componentDidMount () {}
           render() {}
         }
       `,

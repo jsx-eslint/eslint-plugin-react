@@ -79,7 +79,7 @@ Examples of **correct** code for this rule, when `allowLeadingUnderscore` is `tr
 </_AllowedComponent>
 ```
 
-**WARNING:** Adding a leading underscore to the name of a component does **NOT** affect the visibilty or accessibility of that component.  Attempting to use leading underscores to enforce privacy of your components is an error.
+**WARNING:** Adding a leading underscore to the name of a component does **NOT** affect the visibility or accessibility of that component.  Attempting to use leading underscores to enforce privacy of your components is an error.
 
 ## When Not To Use It
 
