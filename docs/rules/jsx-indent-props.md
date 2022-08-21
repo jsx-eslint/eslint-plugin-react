@@ -34,7 +34,6 @@ The indent mode can be `"tab"` for tab-based indentation, a positive number for 
 Note that using the `"first"` option allows very inconsistent indentation unless you also enable a rule that enforces the position of the first prop.
 If the second parameter is an object, it can be used to specify the indent mode as well as the option `ignoreTernaryOperator`, which causes the indent level not to be increased by a `?` or `:` operator (default is `false`).
 
-
 ```js
 ...
 "react/jsx-indent-props": [<enabled>, 'tab'|<number>|'first'|<object>]

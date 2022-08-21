@@ -192,7 +192,7 @@ If you don't care about stray `defaultsProps` in your components, you can disabl
 
 - [require-default-props](./require-default-props.md)
 
-# Resources
+## Resources
 
 - [Official React documentation on defaultProps](https://facebook.github.io/react/docs/typechecking-with-proptypes.html#default-prop-values)
 

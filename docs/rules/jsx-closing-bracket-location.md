@@ -56,10 +56,10 @@ The second form allows you to distinguish between non-empty and self-closing tag
 
 Enforced location for the closing bracket.
 
-* `tag-aligned`: must be aligned with the opening tag.
-* `line-aligned`: must be aligned with the line containing the opening tag.
-* `after-props`: must be placed right after the last prop.
-* `props-aligned`: must be aligned with the last prop.
+- `tag-aligned`: must be aligned with the opening tag.
+- `line-aligned`: must be aligned with the line containing the opening tag.
+- `after-props`: must be placed right after the last prop.
+- `props-aligned`: must be aligned with the last prop.
 
 Defaults to `tag-aligned`.
 

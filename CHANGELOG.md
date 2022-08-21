@@ -40,7 +40,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] Consistent rule descriptions and doc sections ([#3361][] @bmish)
 * [Docs] Standardize deprecated rule notice ([#3364][] @bmish)
 * [Docs] Fix typos ([#3366][] @bmish)
+* [Docs] Add markdownlint for documentation formatting consistency ([#3367][] @bmish)
 
+[#3367]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3367
 [#3366]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3366
 [#3365]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3365
 [#3364]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3364

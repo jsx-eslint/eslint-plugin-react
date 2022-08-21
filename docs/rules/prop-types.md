@@ -142,10 +142,10 @@ This rule can take one argument to ignore some specific props during validation.
 ...
 ```
 
-* `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
-* `ignore`: optional array of props name to ignore during validation.
-* `customValidators`: optional array of validators used for propTypes validation.
-* `skipUndeclared`: optional boolean to only error on components that have a propTypes block declared.
+- `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
+- `ignore`: optional array of props name to ignore during validation.
+- `customValidators`: optional array of validators used for propTypes validation.
+- `skipUndeclared`: optional boolean to only error on components that have a propTypes block declared.
 
 ### As for "exceptions"
 
@@ -171,9 +171,9 @@ For this rule to work we need to detect React components, this could be very har
 
 For now we should detect components created with:
 
-* a function that return JSX or the result of a `React.createElement` call.
-* `createReactClass()`
-* an ES6 class that inherit from `React.Component` or `Component`
+- a function that return JSX or the result of a `React.createElement` call.
+- `createReactClass()`
+- an ES6 class that inherit from `React.Component` or `Component`
 
 [PropTypes]: https://reactjs.org/docs/typechecking-with-proptypes.html
 [TypeScript]: https://www.typescriptlang.org/

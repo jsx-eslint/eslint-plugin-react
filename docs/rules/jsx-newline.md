@@ -7,15 +7,16 @@
 This is a stylistic rule intended to make JSX code more readable by requiring or preventing lines between adjacent JSX elements and expressions.
 
 ## Rule Options
+
 ```json
 ...
 "react/jsx-newline": [<enabled>, { "prevent": <boolean>, "allowMultilines": <boolean> }]
 ...
 ```
 
-* enabled: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
-* prevent: optional boolean. If `true` prevents empty lines between adjacent JSX elements and expressions. Defaults to `false`.
-* allowMultilines: optional boolean. If `true` and `prevent` is also equal to `true`, it allows newlines after multiline JSX elements and expressions. Defaults to `false`.
+- enabled: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
+- prevent: optional boolean. If `true` prevents empty lines between adjacent JSX elements and expressions. Defaults to `false`.
+- allowMultilines: optional boolean. If `true` and `prevent` is also equal to `true`, it allows newlines after multiline JSX elements and expressions. Defaults to `false`.
 
 ## Examples
 
@@ -74,7 +75,6 @@ Examples of **correct** code for this rule, when configured with `{ "prevent": f
 ```
 
 Examples of **incorrect** code for this rule, when configured with `{ "prevent": true }`:
-
 
 ```jsx
 <div>

@@ -12,8 +12,8 @@ This rule will enforce consistency of spacing around equal signs in JSX attribut
 
 There are two options for the rule:
 
-* `"always"` enforces spaces around the equal sign
-* `"never"` disallows spaces around the equal sign (default)
+- `"always"` enforces spaces around the equal sign
+- `"never"` disallows spaces around the equal sign (default)
 
 Depending on your coding conventions, you can choose either option by specifying it in your configuration:
 

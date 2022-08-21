@@ -30,18 +30,18 @@ or alternatively
 ...
 ```
 
-### Valid options for <string>
+### Valid options for `<string>`
 
 They are `always`, `never` and `ignore` for checking on JSX props and children.
 
-* `always`: always enforce curly braces inside JSX props, children, and/or JSX prop values that are JSX Elements
-* `never`: never allow unnecessary curly braces inside JSX props, children, and/or JSX prop values that are JSX Elements
-* `ignore`: ignore the rule for JSX props, children, and/or JSX prop values that are JSX Elements
+- `always`: always enforce curly braces inside JSX props, children, and/or JSX prop values that are JSX Elements
+- `never`: never allow unnecessary curly braces inside JSX props, children, and/or JSX prop values that are JSX Elements
+- `ignore`: ignore the rule for JSX props, children, and/or JSX prop values that are JSX Elements
 
 If passed in the option to fix, this is how a style violation will get fixed
 
-* `always`: wrap a JSX attribute in curly braces/JSX expression and/or a JSX child the same way but also with double quotes
-* `never`: get rid of curly braces from a JSX attribute and/or a JSX child
+- `always`: wrap a JSX attribute in curly braces/JSX expression and/or a JSX child the same way but also with double quotes
+- `never`: get rid of curly braces from a JSX attribute and/or a JSX child
 
 - All fixing operations use double quotes.
 
@@ -76,6 +76,7 @@ They can be fixed to:
 ```
 
 Examples of **incorrect** code for this rule, when configured with `{ props: "always", children: "always", "propElementValues": "always" }`:
+
 ```jsx
 <App prop=<div /> />;
 ```
@@ -87,6 +88,7 @@ They can be fixed to:
 ```
 
 Examples of **incorrect** code for this rule, when configured with `{ props: "never", children: "never", "propElementValues": "never" }`:
+
 ```jsx
 <App prop={<div />} />;
 ```
@@ -113,6 +115,7 @@ Examples of **incorrect** code for this rule, when configured with `"always"`:
 ```
 
 They can be fixed to:
+
 ```jsx
 <App>{"Hello world"}</App>;
 <App prop={"Hello world"} attr={"foo"}>{"Hello world"}</App>;
@@ -134,7 +137,7 @@ It can fixed to:
 
 The fix also deals with template literals, strings with quotes, and strings with escapes characters.
 
-* If the rule is set to get rid of unnecessary curly braces and the template literal inside a JSX expression has no expression, it will throw a warning and be fixed with double quotes. For example:
+- If the rule is set to get rid of unnecessary curly braces and the template literal inside a JSX expression has no expression, it will throw a warning and be fixed with double quotes. For example:
 
 ```jsx
 <App prop={`Hello world`}>{`Hello world`}</App>;
@@ -146,10 +149,9 @@ will be warned and fixed to:
 <App prop="Hello world">Hello world</App>;
 ```
 
-* If the rule is set to enforce curly braces and the strings have quotes, it will be fixed with double quotes for JSX children and the normal way for JSX attributes. Also, double quotes will be escaped in the fix.
+- If the rule is set to enforce curly braces and the strings have quotes, it will be fixed with double quotes for JSX children and the normal way for JSX attributes. Also, double quotes will be escaped in the fix.
 
 For example:
-
 
 ```jsx
 <App prop='Hello "foo" world'>Hello 'foo' "bar" world</App>;
@@ -161,7 +163,7 @@ will warned and fixed to:
 <App prop={"Hello \"foo\" world"}>{"Hello 'foo' \"bar\" world"}</App>;
 ```
 
-* If the rule is set to get rid of unnecessary curly braces(JSX expression) and there are characters that need to be escaped in its JSX form, such as quote characters, [forbidden JSX text characters](https://facebook.github.io/jsx/), escaped characters and anything that looks like HTML entity names, the code will not be warned because the fix may make the code less readable.
+- If the rule is set to get rid of unnecessary curly braces(JSX expression) and there are characters that need to be escaped in its JSX form, such as quote characters, [forbidden JSX text characters](https://facebook.github.io/jsx/), escaped characters and anything that looks like HTML entity names, the code will not be warned because the fix may make the code less readable.
 
 Examples of **correct** code for this rule, even when configured with `"never"`:
 

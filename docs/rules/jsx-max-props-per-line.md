@@ -77,16 +77,19 @@ Maximum can be specified as object `{ single: 1, multi: 1 }` to specify maximum 
  _when only applied if `maximum` is specified as number._
 
 Possible values:
+
 - `always` (default) - Always check for max props per line.
 - `multiline` - Only check for max props per line when jsx tag spans multiple lines.
 
 Examples of **incorrect** code for this rule:
+
 ```jsx
 // [1, { "when": "always" }]
 <Hello firstName="John" lastName="Smith" />
 ```
 
 Examples of **correct** code for this rule:
+
 ```jsx
 // [1, { "when": "multiline" }]
 <Hello firstName="John" lastName="Smith" />

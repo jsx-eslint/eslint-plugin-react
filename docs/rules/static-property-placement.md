@@ -3,14 +3,13 @@
 This rule allows you to enforce where `childContextTypes`, `contextTypes`, `contextType`, `defaultProps`, `displayName`,
 and `propTypes` are declared in an ES6 class.
 
-
 ## Rule Details
 
 By default, this rule will check for and warn about declaring any of the above properties outside of the class body.
 
 The three key options are `static public field`, `static getter`, and `property assignment`.
 
-### When `static public field` is enabled (default):
+### When `static public field` is enabled (default)
 
 Examples of **incorrect** code for this rule:
 
@@ -48,7 +47,7 @@ class MyComponent extends React.Component {
 }
 ```
 
-### When `static getter` is enabled:
+### When `static getter` is enabled
 
 Examples of **incorrect** code for this rule:
 
@@ -86,7 +85,7 @@ class MyComponent extends React.Component {
 }
 ```
 
-### When `property assignment` is enabled:
+### When `property assignment` is enabled
 
 Examples of **incorrect** code for this rule:
 
@@ -126,7 +125,7 @@ MyComponent.propTypes = { /*...*/ };
 
 ## Rule Options
 
-```
+```json
 ...
 "react/static-property-placement": [<enabled>]  // `static public field` enabled
 ...
@@ -134,7 +133,7 @@ MyComponent.propTypes = { /*...*/ };
 
 or alternatively:
 
-```
+```json
 ...
 "react/static-property-placement": [<enabled>, <string>]
 ...
@@ -142,7 +141,7 @@ or alternatively:
 
 or alternatively:
 
-```
+```json
 ...
 "react/static-property-placement": [<enabled>, <string>, {
   childContextTypes: <string>,
@@ -154,16 +153,20 @@ or alternatively:
 }]
 ...
 ```
+
 The `<string>` value must be one these options:
-* `static public field`
-* `static getter`
-* `property assignment`
+
+- `static public field`
+- `static getter`
+- `property assignment`
 
 The `options` schema defined above allows you to specify different rules for the different property fields available.
 
-##### Example configuration:
+### Example configuration
+
 _This is only an example, we do not recommend this as a configuration._
-```
+
+```json
 ...
 "react/static-property-placement": ["warn", "property assignment", {
   childContextTypes: "static getter",
@@ -175,11 +178,11 @@ _This is only an example, we do not recommend this as a configuration._
 ```
 
 Based on the above configuration:
-* `defaultProps` and `propTypes` will both enforce the `property assignment` rule.
-* `childContextTypes` will enforce the `static getter` rule.
-* `contextTypes`, `contextType`, and `displayName` will  enforce the `static public field` rule.
+
+- `defaultProps` and `propTypes` will both enforce the `property assignment` rule.
+- `childContextTypes` will enforce the `static getter` rule.
+- `contextTypes`, `contextType`, and `displayName` will  enforce the `static public field` rule.
 
 ## When Not To Use It
 
 If you have no placement preference for React's static class properties.
-

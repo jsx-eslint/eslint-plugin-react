@@ -21,23 +21,23 @@ Examples of **correct** code for this rule:
 
 ```js
 class YourComponent extends React.Component {
-	shouldComponentUpdate () {
-		return false;
-	}
+  shouldComponentUpdate () {
+    return false;
+  }
 }
 ```
 
 ```js
 createReactClass({
-	shouldComponentUpdate: function () {
-		return false;
-	}
+  shouldComponentUpdate: function () {
+    return false;
+  }
 });
 ```
 
 ```js
 createReactClass({
-	mixins: [PureRenderMixin]
+  mixins: [PureRenderMixin]
 });
 ```
 
@@ -56,9 +56,8 @@ createReactClass({
 ...
 ```
 
-* `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
-* `allowDecorators`: optional array of decorators names to allow validation.
-
+- `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
+- `allowDecorators`: optional array of decorators names to allow validation.
 
 ### `allowDecorators`
 

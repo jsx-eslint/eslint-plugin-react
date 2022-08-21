@@ -4,7 +4,6 @@
 
 Using the `&&` operator to render some element conditionally in JSX can cause unexpected values being rendered, or even crashing the rendering.
 
-
 ## Rule Details
 
 This rule aims to prevent dangerous leaked values from being rendered since they can cause unexpected values reaching the final DOM or even crashing your render method.
@@ -32,6 +31,7 @@ const Example = () => {
 ```
 
 This can be avoided by:
+
 - coercing the conditional to a boolean: `{!!someValue && <Something />}`
 - transforming the binary expression into a ternary expression which returns `null` for falsy values: `{someValue ? <Something /> : null}`
 
@@ -144,9 +144,11 @@ const Component = ({ elements }) => {
 The supported options are:
 
 ### `validStrategies`
+
 An array containing `"coerce"`, `"ternary"`, or both (default: `["ternary", "coerce"]`) - Decide which strategies are considered valid to prevent leaked renders (at least 1 is required). The "coerce" option will transform the conditional of the JSX expression to a boolean. The "ternary" option transforms the binary expression into a ternary expression returning `null` for falsy values. The first option from the array will be the strategy used when autofixing, so the order of the values matters.
 
 It can be set like:
+
 ```json5
 {
   // ...
@@ -158,6 +160,7 @@ It can be set like:
 Assuming the following options: `{ "validStrategies": ["ternary"] }`
 
 Examples of **incorrect** code for this rule, with the above configuration:
+
 ```jsx
 const Component = ({ count, title }) => {
   return <div>{count && title}</div>
@@ -171,6 +174,7 @@ const Component = ({ count, title }) => {
 ```
 
 Examples of **correct** code for this rule, with the above configuration:
+
 ```jsx
 const Component = ({ count, title }) => {
   return <div>{count ? title : null}</div>
@@ -180,6 +184,7 @@ const Component = ({ count, title }) => {
 Assuming the following options: `{ "validStrategies": ["coerce"] }`
 
 Examples of **incorrect** code for this rule, with the above configuration:
+
 ```jsx
 const Component = ({ count, title }) => {
   return <div>{count && title}</div>
@@ -193,6 +198,7 @@ const Component = ({ count, title }) => {
 ```
 
 Examples of **correct** code for this rule, with the above configuration:
+
 ```jsx
 const Component = ({ count, title }) => {
   return <div>{!!count && title}</div>

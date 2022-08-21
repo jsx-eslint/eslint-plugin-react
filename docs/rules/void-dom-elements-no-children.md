@@ -4,7 +4,6 @@ There are some HTML elements that are only self-closing (e.g. `img`, `br`, `hr`)
 
 > Invariant Violation: img is a void element tag and must neither have `children` nor use `dangerouslySetInnerHTML`.
 
-
 ## Rule Details
 
 Examples of **incorrect** code for this rule:

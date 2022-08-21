@@ -20,7 +20,6 @@ var Hello = React.createClass({
 module.exports = Hello;
 ```
 
-
 Examples of **correct** code for this rule:
 
 ```jsx

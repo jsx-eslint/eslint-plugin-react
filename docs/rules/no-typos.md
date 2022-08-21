@@ -10,28 +10,27 @@ This rule checks whether the declared static class properties and lifecycle meth
 It makes sure that the following class properties have
 no casing typos:
 
-* propTypes
-* contextTypes
-* childContextTypes
-* defaultProps
+- propTypes
+- contextTypes
+- childContextTypes
+- defaultProps
 
 and the following react lifecycle methods:
 
-* getDerivedStateFromProps
-* componentWillMount
-* UNSAFE_componentWillMount
-* componentDidMount
-* componentWillReceiveProps
-* UNSAFE_componentWillReceiveProps
-* shouldComponentUpdate
-* componentWillUpdate
-* UNSAFE_componentWillUpdate
-* getSnapshotBeforeUpdate
-* componentDidUpdate
-* componentDidCatch
-* componentWillUnmount
-* render
-
+- getDerivedStateFromProps
+- componentWillMount
+- UNSAFE_componentWillMount
+- componentDidMount
+- componentWillReceiveProps
+- UNSAFE_componentWillReceiveProps
+- shouldComponentUpdate
+- componentWillUpdate
+- UNSAFE_componentWillUpdate
+- getSnapshotBeforeUpdate
+- componentDidUpdate
+- componentDidCatch
+- componentWillUnmount
+- render
 
 Examples of **incorrect** code for this rule:
 

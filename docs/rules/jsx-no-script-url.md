@@ -22,6 +22,7 @@ Examples of **correct** code for this rule:
 ```
 
 ## Rule Options
+
 ```json
 {
   "react/jsx-no-script-url": [
@@ -43,9 +44,11 @@ Examples of **correct** code for this rule:
 Allows you to indicate a specific list of properties used by a custom component to be checked.
 
 ### name
+
 Component name.
 
 ### props
+
 List of properties that should be validated.
 
 Examples of **incorrect** code for this rule, when configured with the above options:

@@ -76,11 +76,11 @@ When `true`, short hand props must be listed after all other props (unless `call
 
 Enforced sorting for multiline props
 
-* `ignore`: Multiline props will not be taken in consideration for sorting.
+- `ignore`: Multiline props will not be taken in consideration for sorting.
 
-* `first`: Multiline props must be listed before all other props (unless `shorthandFirst` is set), but still respecting the alphabetical order.
+- `first`: Multiline props must be listed before all other props (unless `shorthandFirst` is set), but still respecting the alphabetical order.
 
-* `last`: Multiline props must be listed after all other props (unless either `callbacksLast` or `shorthandLast` are set), but still respecting the alphabetical order.
+- `last`: Multiline props must be listed after all other props (unless either `callbacksLast` or `shorthandLast` are set), but still respecting the alphabetical order.
 
 Defaults to `ignore`.
 

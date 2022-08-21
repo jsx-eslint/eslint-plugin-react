@@ -18,18 +18,19 @@ This rule accepts either an object option:
   singleline: "consistent" | "forbid" | "require", // default to 'consistent'
 }
 ```
+
 Option `multiline` takes effect when the jsx expression inside the curlies occupies multiple lines.
 
 Option `singleline` takes effect when the jsx expression inside the curlies occupies a single line.
 
-* `consistent` enforces either both curly braces have a line break directly inside them, or no line breaks are present.
-* `forbid` disallows linebreaks directly inside curly braces.
-* `require` enforces the presence of linebreaks directly inside curlies.
+- `consistent` enforces either both curly braces have a line break directly inside them, or no line breaks are present.
+- `forbid` disallows linebreaks directly inside curly braces.
+- `require` enforces the presence of linebreaks directly inside curlies.
 
 or a string option:
 
-* `consistent` (default) is an alias for `{ multiline: "consistent", singleline: "consistent" }`.
-* `never` is an alias for `{ multiline: "forbid", singleline: "forbid" }`
+- `consistent` (default) is an alias for `{ multiline: "consistent", singleline: "consistent" }`.
+- `never` is an alias for `{ multiline: "forbid", singleline: "forbid" }`
 
 or an
 
@@ -142,7 +143,6 @@ Examples of **correct** code for this rule:
   }
 </div>
 ```
-
 
 ## When Not To Use It
 

@@ -36,6 +36,7 @@ var Hello = createReactClass({
   render: function() { return <div />; };
 });
 ```
+
 ```jsx
 type Props = {
   isEnabled: boolean
@@ -94,8 +95,8 @@ The custom message to display upon failure to match the rule. This overrides the
 
 If you choose to use a custom message, you have access to two template variables.
 
-* `propName` – the name of the prop that does not match the pattern
-* `pattern` – the pattern against which all prop names are tested
+- `propName` – the name of the prop that does not match the pattern
+- `pattern` – the pattern against which all prop names are tested
 
 For example, if a prop is named `something`, and if the rule's pattern is set to `"^(is|has)[A-Z]([A-Za-z0-9]?)+"`, you could set the custom message as follows:
 
@@ -105,7 +106,7 @@ message: 'It is better if your prop ({{ propName }}) matches this pattern: ({{ p
 
 And the failure would look like so:
 
-```
+```plaintext
 It is better if your prop (something) matches this pattern: (^is[A-Z]([A-Za-z0-9]?)+)
 ```
 

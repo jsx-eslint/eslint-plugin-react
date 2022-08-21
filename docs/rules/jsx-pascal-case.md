@@ -44,11 +44,11 @@ Examples of **correct** code for this rule:
 ...
 ```
 
-* `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
-* `allowAllCaps`: optional boolean set to `true` to allow components name in all caps (default to `false`).
-* `allowLeadingUnderscore`: optional boolean set to `true` to allow components name with that starts with an underscore (default to `false`).
-* `allowNamespace`: optional boolean set to `true` to ignore namespaced components (default to `false`).
-* `ignore`: optional string-array of component names to ignore during validation (supports [minimatch](https://github.com/isaacs/minimatch)-style globs).
+- `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
+- `allowAllCaps`: optional boolean set to `true` to allow components name in all caps (default to `false`).
+- `allowLeadingUnderscore`: optional boolean set to `true` to allow components name with that starts with an underscore (default to `false`).
+- `allowNamespace`: optional boolean set to `true` to ignore namespaced components (default to `false`).
+- `ignore`: optional string-array of component names to ignore during validation (supports [minimatch](https://github.com/isaacs/minimatch)-style globs).
 
 ### `allowAllCaps`
 

@@ -7,6 +7,7 @@ Certain legacy lifecycle methods are [unsafe for use in async React applications
 [component_lifecycle_changes]: https://reactjs.org/blog/2018/03/29/react-v-16-3.html#component-lifecycle-changes
 
 The rule checks the following methods:
+
 - `componentWillMount` (and `UNSAFE_componentWillMount` alias)
 - `componentWillReceiveProps` (and `UNSAFE_componentWillReceiveProps` alias)
 - `componentWillUpdate` (and `UNSAFE_componentWillUpdate` alias)
@@ -50,6 +51,7 @@ const Foo = bar({
 ```
 
 ## Rule Options
+
 ```json
 ...
 "react/no-unsafe": [<enabled>, { "checkAliases": <boolean> }]

@@ -11,15 +11,18 @@ Examples of **incorrect** code for this rule:
 ```jsx
 <Foo onClick={this._handleClick.bind(this)}></Foo>
 ```
+
 ```jsx
 <Foo onClick={() => console.log('Hello!')}></Foo>
 ```
+
 ```jsx
 function onClick() { console.log('Hello!'); }
 <Foo onClick={onClick} />
 ```
 
 Examples of **correct** code for this rule:
+
 ```jsx
 <Foo onClick={this._handleClick}></Foo>
 ```

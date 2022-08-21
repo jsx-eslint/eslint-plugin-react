@@ -45,6 +45,7 @@ var Hello = createReactClass({
 ```js
 "react/no-string-refs": [<enabled>, {"noTemplateLiterals": <boolean>}]
 ```
+
 ### `noTemplateLiterals`
 
 When set to `true`, it will give warning when using template literals for refs.

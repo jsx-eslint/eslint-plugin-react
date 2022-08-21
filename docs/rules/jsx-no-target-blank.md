@@ -23,12 +23,12 @@ This rule aims to prevent user generated link hrefs and form actions from creati
 ...
 ```
 
-* `enabled`: for enabling the rule.
-* `allowReferrer`: optional boolean. If `true` does not require `noreferrer` (i. e. `noopener` alone is enough, this leaves IE vulnerable). Defaults to `false`.
-* `enforceDynamicLinks`: optional string, `'always'` or `'never'`.
-* `warnOnSpreadAttributes`: optional boolean. Defaults to `false`.
-* `links`: prevent usage of unsafe `target='_blank'` inside links, defaults to `true`.
-* `forms`: prevent usage of unsafe `target='_blank'` inside forms, defaults to `false`.
+- `enabled`: for enabling the rule.
+- `allowReferrer`: optional boolean. If `true` does not require `noreferrer` (i. e. `noopener` alone is enough, this leaves IE vulnerable). Defaults to `false`.
+- `enforceDynamicLinks`: optional string, `'always'` or `'never'`.
+- `warnOnSpreadAttributes`: optional boolean. Defaults to `false`.
+- `links`: prevent usage of unsafe `target='_blank'` inside links, defaults to `true`.
+- `forms`: prevent usage of unsafe `target='_blank'` inside forms, defaults to `false`.
 
 ### `enforceDynamicLinks`
 
@@ -125,7 +125,7 @@ This rule supports the ability to use custom components for forms. To enable thi
 
 ## When To Override It
 
-Modern browsers (Chrome ≥ 88, Edge ≥ 88, Firefox ≥ 79 and Safari ≥ 12.2) automatically imply `rel="noopener"`. Therefore this rule is no longer needed, if legacy browsers are not supported. See https://web.dev/external-anchors-use-rel-noopener/ and https://caniuse.com/mdn-html_elements_a_implicit_noopener for more details.
+Modern browsers (Chrome ≥ 88, Edge ≥ 88, Firefox ≥ 79 and Safari ≥ 12.2) automatically imply `rel="noopener"`. Therefore this rule is no longer needed, if legacy browsers are not supported. See <https://web.dev/external-anchors-use-rel-noopener/> and <https://caniuse.com/mdn-html_elements_a_implicit_noopener> for more details.
 
 For links to a trusted host (e.g. internal links to your own site, or links to a another host you control, where you can be certain this security vulnerability does not exist), you may want to keep the HTTP Referer header for analytics purposes.
 

@@ -70,7 +70,6 @@ class Foo extends React.Component {
 }
 ```
 
-
 ## When Not To Use It
 
 When the way a component state is being initialized doesn't matter.

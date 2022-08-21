@@ -30,8 +30,8 @@ var Hello = <div className="hello">Hello World</div>;
 ...
 ```
 
-* `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
-* `ignore`: optional array of property and attribute names to ignore during validation.
+- `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
+- `ignore`: optional array of property and attribute names to ignore during validation.
 
 ## When Not To Use It
 

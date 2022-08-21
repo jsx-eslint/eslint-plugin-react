@@ -12,6 +12,7 @@ To help with minimizing confusion while reading code, only the appropriate value
 This rule aims to remove invalid attribute values.
 
 ## Rule Options
+
 The options is a list of attributes to check. Defaults to `["rel"]`.
 
 ## When Not To Use It

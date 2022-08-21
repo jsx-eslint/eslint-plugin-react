@@ -2,7 +2,7 @@
 
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
-In JSX, a React fragment is created either with `<React.Fragment>...</React.Fragment>`, or, using the shorthand syntax, `<>...</>`.
+In JSX, a React [fragment] is created either with `<React.Fragment>...</React.Fragment>`, or, using the shorthand syntax, `<>...</>`.
 
 ## Rule Details
 
@@ -58,6 +58,6 @@ Examples of **correct** code for this rule:
 <React.Fragment key="key"><Foo /></React.Fragment>
 ```
 
-[fragments]: https://reactjs.org/docs/fragments.html
+[fragment]: https://reactjs.org/docs/fragments.html
 [shared_settings]: /README.md#configuration
 [short_syntax]: https://reactjs.org/docs/fragments.html#short-syntax

@@ -29,7 +29,6 @@ const styles = true;
 React.createElement("div", { style: styles });
 ```
 
-
 Examples of **correct** code for this rule:
 
 ```jsx
@@ -49,6 +48,7 @@ React.createElement("Hello", { style: { color: 'red' }});
 const styles = { height: '100px' };
 React.createElement("div", { style: styles });
 ```
+
 ## Rule Options
 
 ```js
@@ -60,21 +60,26 @@ React.createElement("div", { style: styles });
 ```
 
 ### `allow`
+
 A list of elements that are allowed to have a non-object value in their style attribute. The default value is `[]`.
 
 #### Example
+
 ```js
 {
   "allow": ["MyComponent"]
 }
 ```
+
 Examples of **incorrect** code for this rule:
+
 ```js
 <Hello style="a string">
 React.createElement(Hello, { style: "some styling" });
 ```
 
 Examples of **correct** code for this rule:
+
 ```js
 <MyComponent style="a string">
 React.createElement(MyComponent, { style: "some styling" });

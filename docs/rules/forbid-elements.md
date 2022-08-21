@@ -18,8 +18,8 @@ This rule checks all JSX elements and `React.createElement` calls and verifies t
 
 An array of strings and/or objects. An object in this array may have the following properties:
 
-* `element` (required): the name of the forbidden element (e.g. `'button'`, `'Modal'`)
-* `message`: additional message that gets reported
+- `element` (required): the name of the forbidden element (e.g. `'button'`, `'Modal'`)
+- `message`: additional message that gets reported
 
 A string item in the array is a shorthand for `{ element: string }`.
 

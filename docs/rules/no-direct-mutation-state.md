@@ -33,7 +33,6 @@ class Hello extends React.Component {
 }
 ```
 
-
 Examples of **correct** code for this rule:
 
 ```jsx

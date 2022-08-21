@@ -1,4 +1,5 @@
 # `eslint-plugin-react` <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
+
 ===================
 
 [![github actions][actions-image]][actions-url]
@@ -8,16 +9,15 @@
 
 React specific linting rules for `eslint`
 
-# Installation
+## Installation
 
 ```sh
-$ npm install eslint eslint-plugin-react --save-dev
+npm install eslint eslint-plugin-react --save-dev
 ```
 
 It is also possible to install ESLint globally rather than locally (using npm install eslint --global). However, this is not recommended, and any plugins or shareable configs that you use must be installed locally in either case.
 
-# Configuration
-
+## Configuration
 
 Use [our preset](#recommended) to get reasonable defaults:
 
@@ -109,7 +109,7 @@ Enable the rules that you would like to use.
   }
 ```
 
-# List of supported rules
+## List of supported rules
 
 ✔: Enabled in the [`recommended`](#recommended) configuration.\
 🔧: Fixable with [`eslint --fix`](https://eslint.org/docs/user-guide/command-line-interface#fixing-problems).\
@@ -179,7 +179,7 @@ Enable the rules that you would like to use.
 |  |  |  | [react/void-dom-elements-no-children](docs/rules/void-dom-elements-no-children.md) | Disallow void DOM elements (e.g. `<img />`, `<br />`) from receiving children |
 <!-- AUTO-GENERATED-CONTENT:END -->
 
-## JSX-specific rules
+### JSX-specific rules
 
 <!-- AUTO-GENERATED-CONTENT:START (JSX_RULES) -->
 | ✔ | 🔧 | 💡 | Rule | Description |
@@ -225,15 +225,15 @@ Enable the rules that you would like to use.
 |  | 🔧 |  | [react/jsx-wrap-multilines](docs/rules/jsx-wrap-multilines.md) | Disallow missing parentheses around multiline JSX |
 <!-- AUTO-GENERATED-CONTENT:END -->
 
-## Other useful plugins
+### Other useful plugins
 
 - Rules of Hooks: [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/master/packages/eslint-plugin-react-hooks)
 - JSX accessibility: [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y)
 - React Native: [eslint-plugin-react-native](https://github.com/Intellicode/eslint-plugin-react-native)
 
-# Shareable configurations
+## Shareable configurations
 
-## Recommended
+### Recommended
 
 This plugin exports a `recommended` configuration that enforces React good practices.
 
@@ -247,7 +247,7 @@ To enable this configuration use the `extends` property in your `.eslintrc` conf
 
 See [`eslint` documentation](https://eslint.org/docs/user-guide/configuring/configuration-files#extending-configuration-files) for more information about extending configuration files.
 
-## All
+### All
 
 This plugin also exports an `all` configuration that includes every available rule.
 This pairs well with the `eslint:all` rule.
@@ -263,10 +263,9 @@ This pairs well with the `eslint:all` rule.
 
 **Note**: These configurations will import `eslint-plugin-react` and enable JSX in [parser options](https://eslint.org/docs/user-guide/configuring/language-options#specifying-parser-options).
 
-# License
+## License
 
 `eslint-plugin-react` is licensed under the [MIT License](https://opensource.org/licenses/mit-license.php).
-
 
 [npm-url]: https://npmjs.org/package/eslint-plugin-react
 [npm-image]: https://img.shields.io/npm/v/eslint-plugin-react.svg

@@ -125,7 +125,6 @@ hello = <div>
 </div>;
 ```
 
-
 Examples of **correct** code for this rule, when configured with `{ assignment: "parens" }`.
 
 ```jsx
@@ -243,7 +242,6 @@ var hello = () => <div>
 </div>;
 ```
 
-
 Examples of **correct** code for this rule, when configured `{ arrow: "parens" }`.
 
 ```jsx
@@ -295,7 +293,6 @@ Examples of **incorrect** code for this rule, when configured with `{ condition:
     </div> : null}
 </div>
 ```
-
 
 Examples of **correct** code for this rule, when configured with `{ condition: "parens" }`.
 

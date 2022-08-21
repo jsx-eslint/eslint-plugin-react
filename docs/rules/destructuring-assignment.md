@@ -3,6 +3,7 @@
 🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 Rule can be set to either of `always` or `never`;
+
 ```js
 "react/destructuring-assignment": [<enabled>, 'always']
 ```

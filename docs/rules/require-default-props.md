@@ -472,7 +472,7 @@ MyStatelessComponent.propTypes = {
 
 If you don't care about using `defaultProps` for your component's props that are not required, you can disable this rule.
 
-# Resources
+## Resources
 
 - [Official React documentation on defaultProps](https://facebook.github.io/react/docs/typechecking-with-proptypes.html#default-prop-values)
 

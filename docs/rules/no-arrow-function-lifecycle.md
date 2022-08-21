@@ -38,6 +38,7 @@ var AnotherHello = createReactClass({
 });
 
 ```
+
 ## When Not To Use It
 
 If you don't care about performance of your application or conceptual correctness of class property placement, you can disable this rule.
