@@ -24,6 +24,7 @@ describe('all rule files should be exported by the plugin', () => {
 
 describe('rule documentation files have the correct content', () => {
   const MESSAGES = {
+    deprecated: '❌ This rule is deprecated.',
     fixable: '🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.',
     hasSuggestions: '💡 This rule provides editor [suggestions](https://eslint.org/docs/developer-guide/working-with-rules#providing-suggestions).',
   };
@@ -42,6 +43,11 @@ describe('rule documentation files have the correct content', () => {
       // Decide which notices should be shown at the top of the doc.
       const expectedNotices = [];
       const unexpectedNotices = [];
+      if (rule.meta.deprecated) {
+        expectedNotices.push('deprecated');
+      } else {
+        unexpectedNotices.push('deprecated');
+      }
       if (rule.meta.fixable) {
         expectedNotices.push('fixable');
       } else {
@@ -57,7 +63,13 @@ describe('rule documentation files have the correct content', () => {
       let currentLineNumber = 1;
       expectedNotices.forEach((expectedNotice) => {
         assert.strictEqual(documentLines[currentLineNumber], '', `includes blank line ahead of ${expectedNotice} notice`);
-        assert.strictEqual(documentLines[currentLineNumber + 1], MESSAGES[expectedNotice], `includes ${expectedNotice} notice`);
+        if (expectedNotice === 'deprecated' && documentLines[currentLineNumber + 1] !== MESSAGES[expectedNotice] && documentLines[currentLineNumber + 1].startsWith(MESSAGES[expectedNotice])) {
+          // Allow additional rule-specific information at the end of the deprecation notice line.
+          assert.ok(true, `includes ${expectedNotice} notice`);
+        } else {
+          // Otherwise, just check the whole line.
+          assert.strictEqual(documentLines[currentLineNumber + 1], MESSAGES[expectedNotice], `includes ${expectedNotice} notice`);
+        }
         currentLineNumber += 2;
       });
 

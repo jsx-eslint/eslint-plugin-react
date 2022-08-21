@@ -218,7 +218,7 @@ Enable the rules that you would like to use.
 |  |  |  | [react/jsx-props-no-spreading](docs/rules/jsx-props-no-spreading.md) | Disallow JSX prop spreading |
 |  |  |  | [react/jsx-sort-default-props](docs/rules/jsx-sort-default-props.md) | Enforce defaultProps declarations alphabetical sorting |
 |  | 🔧 |  | [react/jsx-sort-props](docs/rules/jsx-sort-props.md) | Enforce props alphabetical sorting |
-|  | 🔧 |  | [react/jsx-space-before-closing](docs/rules/jsx-space-before-closing.md) | Enforce spacing before closing bracket in JSX |
+|  | 🔧 |  | [react/jsx-space-before-closing](docs/rules/jsx-space-before-closing.md) | Enforce spacing before closing bracket in JSX. ❌ This rule is deprecated. |
 |  | 🔧 |  | [react/jsx-tag-spacing](docs/rules/jsx-tag-spacing.md) | Enforce whitespace in and around the JSX opening and closing brackets |
 | ✔ |  |  | [react/jsx-uses-react](docs/rules/jsx-uses-react.md) | Disallow React to be incorrectly marked as unused |
 | ✔ |  |  | [react/jsx-uses-vars](docs/rules/jsx-uses-vars.md) | Disallow variables used in JSX to be incorrectly marked as unused |

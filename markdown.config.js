@@ -14,7 +14,7 @@ const ruleTableRows = Object.keys(rules)
       fixable ? '🔧' : '',
       hasSuggestions ? '💡' : '',
       `[react/${id}](docs/rules/${id}.md)`,
-      docs.description,
+      `${docs.description}${meta.deprecated ? '. ❌ This rule is deprecated.' : ''}`,
     ].join(' | ');
   });
 
