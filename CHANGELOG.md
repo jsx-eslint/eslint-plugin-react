@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.31.0] - 2022.08.24
+
 ### Added
 * [`jsx-newline`]: add `allowMultiline` option when prevent option is true ([#3311][] @TildaDares)
 * [`forbid-dom-props`]: add `disallowedFor` option ([#3338][] @TildaDares)
@@ -44,6 +46,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] Add markdownlint for documentation formatting consistency ([#3367][] @bmish)
 * [Docs] Add config notice to rule docs ([#3362][] @bmish)
 
+[7.31.0]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.30.1...v7.31.0
 [#3367]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3367
 [#3366]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3366
 [#3365]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3365
