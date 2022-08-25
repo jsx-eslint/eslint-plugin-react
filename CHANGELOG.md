@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`jsx-key`]: fix detecting missing key in `Array.from`'s mapping function ([#3369][] @sjarva)
+
+[#3369]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3369
+
 ## [7.31.0] - 2022.08.24
 
 ### Added

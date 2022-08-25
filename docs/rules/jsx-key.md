@@ -21,6 +21,10 @@ data.map(x => <Hello>{x}</Hello>);
 <Hello {...{ key: id, id, caption }} />
 ```
 
+```jsx
+Array.from([1, 2, 3], (x) => <Hello>{x}</Hello>);
+```
+
 In the last example the key is being spread, which is currently possible, but discouraged in favor of the statically provided key.
 
 Examples of **correct** code for this rule:
@@ -35,6 +39,10 @@ data.map((x) => <Hello key={x.id}>{x}</Hello>);
 
 ```jsx
 <Hello key={id} {...{ id, caption }} />
+```
+
+```jsx
+Array.from([1, 2, 3], (x) => <Hello key={x.id}>{x}</Hello>);
 ```
 
 ## Rule Options
