@@ -141,6 +141,12 @@ const Component = ({ elements }) => {
 }
 ```
 
+```jsx
+const Component = ({ elements }) => {
+  return <div>{elements.length ? <List elements={elements}/> : <EmptyList />}</div>
+}
+```
+
 ## Rule Options
 
 The supported options are:
@@ -183,6 +189,12 @@ const Component = ({ count, title }) => {
 }
 ```
 
+```jsx
+const Component = ({ count, title, empty }) => {
+  return <div>{count ? title : empty}</div>
+}
+```
+
 Assuming the following options: `{ "validStrategies": ["coerce"] }`
 
 Examples of **incorrect** code for this rule, with the above configuration:
@@ -204,6 +216,12 @@ Examples of **correct** code for this rule, with the above configuration:
 ```jsx
 const Component = ({ count, title }) => {
   return <div>{!!count && title}</div>
+}
+```
+
+```jsx
+const Component = ({ count, title, empty }) => {
+  return <div>{count ? title : empty}</div>
 }
 ```
 
