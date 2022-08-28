@@ -5,6 +5,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`jsx-key`]: avoid a crash with optional chaining ([#3371][], @ljharb)
+
 ## [7.31.1] - 2022.08.26
 
 ### Fixed
@@ -12,6 +15,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-no-leaked-render`]: coerce strategy now allows a ternary ([#3370][], @sjarva)
 
 [7.31.1]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.0...v7.31.1
+[#3371]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3371
 [#3370]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3370
 [#3369]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3369
 

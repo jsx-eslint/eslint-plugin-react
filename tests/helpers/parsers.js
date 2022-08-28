@@ -15,6 +15,7 @@ function minEcmaVersion(features, parserOptions) {
   const minEcmaVersionForFeatures = {
     'class fields': 2022,
     'optional chaining': 2020,
+    'nullish coalescing': 2020,
   };
   const result = Math.max.apply(
     Math,
@@ -135,7 +136,10 @@ const parsers = {
         || (features.has('fragment') && semver.satisfies(version, '< 5'));
 
       const skipBabel = features.has('no-babel');
-      const skipOldBabel = skipBabel || features.has('no-babel-old') || semver.satisfies(version, '>= 8');
+      const skipOldBabel = skipBabel
+        || features.has('no-babel-old')
+        || features.has('optional chaining')
+        || semver.satisfies(version, '>= 8');
       const skipNewBabel = skipBabel
         || features.has('no-babel-new')
         || !semver.satisfies(version, '^7.5.0') // require('@babel/eslint-parser/package.json').peerDependencies.eslint

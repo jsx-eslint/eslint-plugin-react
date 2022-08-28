@@ -99,7 +99,7 @@ ruleTester.run('jsx-key', rule, {
 
         import './ResourceVideo.sass';
         import VimeoVideoPlayInModal from '../vimeoVideoPlayInModal/VimeoVideoPlayInModal';
-        
+
         type Props = {
           videoUrl: string;
           videoTitle: string;
@@ -115,7 +115,7 @@ ruleTester.run('jsx-key', rule, {
             </div>
           );
         };
-        
+
         export default ResourceVideo;
       `,
       features: ['types'],
@@ -125,7 +125,7 @@ ruleTester.run('jsx-key', rule, {
         // testrule.jsx
         const trackLink = () => {};
         const getAnalyticsUiElement = () => {};
-        
+
         const onTextButtonClick = (e, item) => trackLink([, getAnalyticsUiElement(item), item.name], e);
       `,
     },
@@ -152,6 +152,16 @@ ruleTester.run('jsx-key', rule, {
         }
       `,
       features: ['optional chaining'],
+    },
+    {
+      code: `
+        const baz = foo?.bar?.()?.[1] ?? 'qux';
+
+        qux()?.map()
+
+        const directiveRanges = comments?.map(tryParseTSDirective)
+      `,
+      features: ['optional chaining', 'nullish coalescing'],
     },
   ]),
   invalid: parsers.all([
