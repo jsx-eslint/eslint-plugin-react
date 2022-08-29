@@ -174,7 +174,7 @@ ruleTester.run('jsx-key', rule, {
 
         export const clusterFrameMap = observable.map<string, ClusterFrameInfo>();
       `,
-      features: ['types'],
+      features: ['types', 'no-babel-old'],
     },
   ]),
   invalid: parsers.all([
