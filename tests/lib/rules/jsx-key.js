@@ -163,6 +163,19 @@ ruleTester.run('jsx-key', rule, {
       `,
       features: ['optional chaining', 'nullish coalescing'],
     },
+    {
+      code: `
+        import { observable } from "mobx";
+
+        export interface ClusterFrameInfo {
+          frameId: number;
+          processId: number;
+        }
+
+        export const clusterFrameMap = observable.map<string, ClusterFrameInfo>();
+      `,
+      features: ['types'],
+    },
   ]),
   invalid: parsers.all([
     {
