@@ -125,8 +125,8 @@ This can be a boolean or an array option.
 When `reservedFirst` is defined, React reserved props (`children`, `dangerouslySetInnerHTML` - **only for DOM components**, `key`, and `ref`) must be listed before all other props, but still respecting the alphabetical order:
 
 ```jsx
-<Hello key={0} ref="John" name="John">
-  <div dangerouslySetInnerHTML={{__html: 'ESLint Plugin React!'}} ref="dangerDiv" />
+<Hello key={0} ref={johnRef} name="John">
+  <div dangerouslySetInnerHTML={{__html: 'ESLint Plugin React!'}} ref={dangerDivRef} />
 </Hello>
 ```
 
@@ -135,7 +135,7 @@ If given as an array, the array's values will override the default list of reser
 With `reservedFirst: ["key"]`, the following will **not** warn:
 
 ```jsx
-<Hello key={'uuid'} name="John" ref="ref" />
+<Hello key={'uuid'} name="John" ref={johnRef} />
 ```
 
 ### `locale`
