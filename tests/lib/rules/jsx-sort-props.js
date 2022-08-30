@@ -1047,6 +1047,32 @@ ruleTester.run('jsx-sort-props', rule, {
           line: 2,
         },
       ],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 3') ? {
+      code: `
+        <ReactJson src={rowResult} name="data" collapsed={4} collapseStringsAfterLength={60} onEdit={onEdit} /* onDelete={onEdit} */ />
+      `,
+      output: `
+        <ReactJson collapseStringsAfterLength={60} collapsed={4} name="data" src={rowResult} onEdit={onEdit} /* onDelete={onEdit} */ />
+      `,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 2,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 2,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 2,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 2,
+        },
+      ],
     } : []
   )),
 });
