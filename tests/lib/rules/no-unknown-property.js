@@ -29,40 +29,101 @@ const parserOptions = {
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-unknown-property', rule, {
   valid: parsers.all([
+    // React components and their props/attributes should be fine
     { code: '<App class="bar" />;' },
     { code: '<App for="bar" />;' },
+    { code: '<App someProp="bar" />;' },
     { code: '<Foo.bar for="bar" />;' },
     { code: '<App accept-charset="bar" />;' },
-    { code: '<meta charset="utf-8" />;' },
-    { code: '<meta charSet="utf-8" />;' },
     { code: '<App http-equiv="bar" />;' },
     {
       code: '<App xlink:href="bar" />;',
       features: ['jsx namespace'],
     },
     { code: '<App clip-path="bar" />;' },
+    // Some HTML/DOM elements with common attributes should work
     { code: '<div className="bar"></div>;' },
     { code: '<div onMouseDown={this._onMouseDown}></div>;' },
-    // data attributes should work
+    { code: '<a href="someLink">Read more</a>' },
+    { code: '<img src="cat_keyboard.jpeg" alt="A cat sleeping on a keyboard" />' },
+    { code: '<input type="password" required />' },
+    { code: '<input ref={this.input} type="radio" />' },
+    { code: '<button disabled>You cannot click me</button>;' },
+    // Case ignored attributes, for `charset` discussion see https://github.com/jsx-eslint/eslint-plugin-react/pull/1863
+    { code: '<meta charset="utf-8" />;' },
+    { code: '<meta charSet="utf-8" />;' },
+    // Some custom web components that are allowed to use `class` instead of `className`
+    { code: '<div class="foo" is="my-elem"></div>;' },
+    { code: '<div {...this.props} class="foo" is="my-elem"></div>;' },
+    { code: '<atom-panel class="foo"></atom-panel>;' },
+    // data-* attributes should work
     { code: '<div data-foo="bar"></div>;' },
     { code: '<div data-foo-bar="baz"></div>;' },
     { code: '<div data-parent="parent"></div>;' },
     { code: '<div data-index-number="1234"></div>;' },
-    { code: '<div class="foo" is="my-elem"></div>;' },
-    { code: '<div {...this.props} class="foo" is="my-elem"></div>;' },
-    { code: '<atom-panel class="foo"></atom-panel>;' }, {
+    // Ignoring should work
+    {
       code: '<div class="bar"></div>;',
       options: [{ ignore: ['class'] }],
     },
-    // aria attributes should work
+    {
+      code: '<div someProp="bar"></div>;',
+      options: [{ ignore: ['someProp'] }],
+    },
+
+    // aria-* attributes should work
     { code: '<button aria-haspopup="true">Click me to open pop up</button>;' },
     { code: '<button aria-label="Close" onClick={someThing.close} />;' },
+    // Attributes on allowed elements should work
     { code: '<script crossOrigin />' },
     { code: '<audio crossOrigin />' },
-    { code: '<div hasOwnProperty="should not be allowed tag" />' },
     { code: '<svg><image crossOrigin /></svg>' },
   ]),
   invalid: parsers.all([
+    {
+      code: '<div hasOwnProperty="should not be allowed property"></div>;',
+      errors: [
+        {
+          messageId: 'unknownProp',
+          data: {
+            name: 'hasOwnProperty',
+          },
+        },
+      ],
+    },
+    {
+      code: '<div abc="should not be allowed property"></div>;',
+      errors: [
+        {
+          messageId: 'unknownProp',
+          data: {
+            name: 'abc',
+          },
+        },
+      ],
+    },
+    {
+      code: '<div aria-fake="should not be allowed property"></div>;',
+      errors: [
+        {
+          messageId: 'unknownProp',
+          data: {
+            name: 'aria-fake',
+          },
+        },
+      ],
+    },
+    {
+      code: '<div someProp="bar"></div>;',
+      errors: [
+        {
+          messageId: 'unknownProp',
+          data: {
+            name: 'someProp',
+          },
+        },
+      ],
+    },
     {
       code: '<div class="bar"></div>;',
       output: '<div className="bar"></div>;',

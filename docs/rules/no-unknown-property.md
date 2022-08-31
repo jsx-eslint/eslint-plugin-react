@@ -15,6 +15,10 @@ Examples of **incorrect** code for this rule:
 var React = require('react');
 
 var Hello = <div class="hello">Hello World</div>;
+var Alphabet = <div abc="something">Alphabet</div>;
+
+// Invalid aria-* attribute
+var IconButton = <div aria-foo="bar" />;
 ```
 
 Examples of **correct** code for this rule:
@@ -23,13 +27,22 @@ Examples of **correct** code for this rule:
 var React = require('react');
 
 var Hello = <div className="hello">Hello World</div>;
+var Button = <button disabled>Cannot click me</button>;
+var Img = <img src={catImage} alt="A cat sleeping on a keyboard" />;
 
 // aria-* attributes
 var IconButton = <button aria-label="Close" onClick={this.close}>{closeIcon}</button>;
 
-
 // data-* attributes
 var Data = <div data-index={12}>Some data</div>;
+
+// React components are ignored
+var MyComponent = <App class="foo-bar"/>;
+var AnotherComponent = <Foo.bar for="bar" />;
+
+// Custom web components are ignored
+var MyElem = <div class="foo" is="my-elem"></div>;
+var AtomPanel = <atom-panel class="foo"></atom-panel>;
 
 ```
 
