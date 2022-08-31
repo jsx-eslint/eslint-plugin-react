@@ -1073,6 +1073,34 @@ ruleTester.run('jsx-sort-props', rule, {
           line: 2,
         },
       ],
-    } : []
+    } : [],
+    {
+      code: `
+        <Page
+          // Pass all the props to the Page component.
+          {...props}
+          // Use the platform specific props from the doc.ts file.
+          {...TemplatePageProps[platform]}
+          // Use the getSubTitle helper function to get the page header subtitle from the active platform.
+          subTitle={getSubTitle(platform)}
+          // You can define custom sections using the \`otherSections\` prop.
+          // Here it is using a method that takes the platform as an argument to return the correct array of section props.
+          otherSections={_otherSections(platform) as IPageSectionProps[]}
+
+          // You can hide the side rail by setting \`showSideRail\` to false.
+          // showSideRail={false}
+
+          // You can pass a custom className to the page wrapper if needed.
+          // className="customPageClassName"
+        />
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 11,
+        },
+      ],
+    }
   )),
 });

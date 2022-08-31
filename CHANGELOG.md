@@ -7,11 +7,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Fixed
 * [`jsx-key`]: avoid a crash with optional chaining ([#3371][] @ljharb)
-
+* [`jsx-sort-props`]: avoid a crash with spread props ([#3376][] @ljharb)
 
 ### Changed
 * [Docs] [`jsx-sort-propts`]: replace ref string with ref variable ([#3375][] @Luccasoli)
 
+[#3376]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3376
 [#3375]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3375
 [#3371]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3371
 
