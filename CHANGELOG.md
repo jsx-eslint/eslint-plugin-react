@@ -10,8 +10,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-sort-props`]: avoid a crash with spread props ([#3376][] @ljharb)
 
 ### Changed
-* [Docs] [`jsx-sort-propts`]: replace ref string with ref variable ([#3375][] @Luccasoli)
+* [Docs] [`jsx-sort-props`]: replace ref string with ref variable ([#3375][] @Luccasoli)
+* [Refactor] [`no-unknown-property`]: improve jsdoc; extract logic to separate functions ([#3377][] @sjarva)
 
+[#3377]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3377
 [#3376]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3376
 [#3375]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3375
 [#3371]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3371

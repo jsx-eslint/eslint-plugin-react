@@ -61,7 +61,7 @@ ruleTester.run('no-unknown-property', rule, {
       output: '<div className="bar"></div>;',
       errors: [
         {
-          messageId: 'unknownProp',
+          messageId: 'unknownPropWithStandardName',
           data: {
             name: 'class',
             standardName: 'className',
@@ -74,7 +74,7 @@ ruleTester.run('no-unknown-property', rule, {
       output: '<div htmlFor="bar"></div>;',
       errors: [
         {
-          messageId: 'unknownProp',
+          messageId: 'unknownPropWithStandardName',
           data: {
             name: 'for',
             standardName: 'htmlFor',
@@ -87,7 +87,7 @@ ruleTester.run('no-unknown-property', rule, {
       output: '<div acceptCharset="bar"></div>;',
       errors: [
         {
-          messageId: 'unknownProp',
+          messageId: 'unknownPropWithStandardName',
           data: {
             name: 'accept-charset',
             standardName: 'acceptCharset',
@@ -100,7 +100,7 @@ ruleTester.run('no-unknown-property', rule, {
       output: '<div httpEquiv="bar"></div>;',
       errors: [
         {
-          messageId: 'unknownProp',
+          messageId: 'unknownPropWithStandardName',
           data: {
             name: 'http-equiv',
             standardName: 'httpEquiv',
@@ -113,7 +113,7 @@ ruleTester.run('no-unknown-property', rule, {
       output: '<div accessKey="bar"></div>;',
       errors: [
         {
-          messageId: 'unknownProp',
+          messageId: 'unknownPropWithStandardName',
           data: {
             name: 'accesskey',
             standardName: 'accessKey',
@@ -126,7 +126,7 @@ ruleTester.run('no-unknown-property', rule, {
       output: '<div onClick="bar"></div>;',
       errors: [
         {
-          messageId: 'unknownProp',
+          messageId: 'unknownPropWithStandardName',
           data: {
             name: 'onclick',
             standardName: 'onClick',
@@ -139,7 +139,7 @@ ruleTester.run('no-unknown-property', rule, {
       output: '<div onMouseDown="bar"></div>;',
       errors: [
         {
-          messageId: 'unknownProp',
+          messageId: 'unknownPropWithStandardName',
           data: {
             name: 'onmousedown',
             standardName: 'onMouseDown',
@@ -152,7 +152,7 @@ ruleTester.run('no-unknown-property', rule, {
       output: '<div onMouseDown="bar"></div>;',
       errors: [
         {
-          messageId: 'unknownProp',
+          messageId: 'unknownPropWithStandardName',
           data: {
             name: 'onMousedown',
             standardName: 'onMouseDown',
@@ -166,7 +166,7 @@ ruleTester.run('no-unknown-property', rule, {
       features: ['jsx namespace'],
       errors: [
         {
-          messageId: 'unknownProp',
+          messageId: 'unknownPropWithStandardName',
           data: {
             name: 'xlink:href',
             standardName: 'xlinkHref',
@@ -179,7 +179,7 @@ ruleTester.run('no-unknown-property', rule, {
       output: '<rect clipPath="bar" />;',
       errors: [
         {
-          messageId: 'unknownProp',
+          messageId: 'unknownPropWithStandardName',
           data: {
             name: 'clip-path',
             standardName: 'clipPath',
@@ -191,7 +191,7 @@ ruleTester.run('no-unknown-property', rule, {
       code: '<script crossorigin />',
       errors: [
         {
-          messageId: 'unknownProp',
+          messageId: 'unknownPropWithStandardName',
           data: {
             name: 'crossorigin',
             standardName: 'crossOrigin',
@@ -204,7 +204,7 @@ ruleTester.run('no-unknown-property', rule, {
       code: '<div crossorigin />',
       errors: [
         {
-          messageId: 'unknownProp',
+          messageId: 'unknownPropWithStandardName',
           data: {
             name: 'crossorigin',
             standardName: 'crossOrigin',
