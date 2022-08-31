@@ -13,6 +13,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Changed
 * [Docs] [`jsx-sort-props`]: replace ref string with ref variable ([#3375][] @Luccasoli)
 * [Refactor] [`no-unknown-property`]: improve jsdoc; extract logic to separate functions ([#3377][] @sjarva)
+* [Refactor] [`no-unknown-property`]: update DOM properties to include also one word properties ([#3377][] @sjarva)
 
 [#3377]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3377
 [#3376]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3376
