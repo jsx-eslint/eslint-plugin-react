@@ -43,13 +43,20 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<App clip-path="bar" />;' },
     { code: '<div className="bar"></div>;' },
     { code: '<div onMouseDown={this._onMouseDown}></div>;' },
+    // data attributes should work
     { code: '<div data-foo="bar"></div>;' },
+    { code: '<div data-foo-bar="baz"></div>;' },
+    { code: '<div data-parent="parent"></div>;' },
+    { code: '<div data-index-number="1234"></div>;' },
     { code: '<div class="foo" is="my-elem"></div>;' },
     { code: '<div {...this.props} class="foo" is="my-elem"></div>;' },
     { code: '<atom-panel class="foo"></atom-panel>;' }, {
       code: '<div class="bar"></div>;',
       options: [{ ignore: ['class'] }],
     },
+    // aria attributes should work
+    { code: '<button aria-haspopup="true">Click me to open pop up</button>;' },
+    { code: '<button aria-label="Close" onClick={someThing.close} />;' },
     { code: '<script crossOrigin />' },
     { code: '<audio crossOrigin />' },
     { code: '<div hasOwnProperty="should not be allowed tag" />' },

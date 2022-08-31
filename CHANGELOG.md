@@ -8,6 +8,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`jsx-key`]: avoid a crash with optional chaining ([#3371][] @ljharb)
 * [`jsx-sort-props`]: avoid a crash with spread props ([#3376][] @ljharb)
+* [`no-unknown-property`]: properly recognize valid data- and aria- attributes ([#3377][] @sjarva)
 
 ### Changed
 * [Docs] [`jsx-sort-props`]: replace ref string with ref variable ([#3375][] @Luccasoli)
