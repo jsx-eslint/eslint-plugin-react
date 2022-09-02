@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.31.2] - 2022.09.02
+
 ### Fixed
 * [`jsx-key`]: avoid a crash with optional chaining ([#3371][] @ljharb)
 * [`jsx-sort-props`]: avoid a crash with spread props ([#3376][] @ljharb)
@@ -16,6 +18,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] [`no-unknown-property`]: improve jsdoc; extract logic to separate functions ([#3377][] @sjarva)
 * [Refactor] [`no-unknown-property`]: update DOM properties to include also one word properties ([#3377][] @sjarva)
 
+[7.31.2]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.1...v7.31.2
 [#3377]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3377
 [#3376]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3376
 [#3375]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3375
