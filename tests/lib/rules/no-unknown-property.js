@@ -51,8 +51,11 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<input key="bar" type="radio" />' },
     { code: '<button disabled>You cannot click me</button>;' },
     { code: '<svg key="lock" viewBox="box" fill={10} d="d" stroke={1} strokeWidth={2} strokeLinecap={3} strokeLinejoin={4} transform="something" clipRule="else" x1={5} x2="6" y1="7" y2="8"></svg>' },
+    { code: '<g fill="#7B82A0" fillRule="evenodd"></g>' },
     { code: '<meta property="og:type" content="website" />' },
     { code: '<input type="checkbox" checked={checked} disabled={disabled} id={id} onChange={onChange} />' },
+    // React related attributes
+    { code: '<div onPointerDown={this.onDown} onPointerUp={this.onUp} />' },
     // Case ignored attributes, for `charset` discussion see https://github.com/jsx-eslint/eslint-plugin-react/pull/1863
     { code: '<meta charset="utf-8" />;' },
     { code: '<meta charSet="utf-8" />;' },
@@ -82,6 +85,9 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<script crossOrigin />' },
     { code: '<audio crossOrigin />' },
     { code: '<svg><image crossOrigin /></svg>' },
+    { code: '<details onToggle={this.onToggle}>Some details</details>' },
+    { code: '<path fill="pink" d="M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 z"></path>' },
+    { code: '<link as="audio">Audio content</link>' },
   ]),
   invalid: parsers.all([
     {
@@ -294,6 +300,19 @@ ruleTester.run('no-unknown-property', rule, {
             name: 'crossOrigin',
             tagName: 'div',
             allowedTags: 'script, img, video, audio, link, image',
+          },
+        },
+      ],
+    },
+    {
+      code: '<div as="audio" />',
+      errors: [
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'as',
+            tagName: 'div',
+            allowedTags: 'link',
           },
         },
       ],

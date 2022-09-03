@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`no-unknown-property`]: add properties `onToggle`, `fill`, `as`, and pointer events ([#3385][] @sjarva)
+
+[#3385]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3385
+
 ## [7.31.4] - 2022.09.04
 
 ### Fixed
