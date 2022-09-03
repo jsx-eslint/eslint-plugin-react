@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`no-unknown-property`]: support `checked` on inputs ([#3383][] @ljharb)
+
+[#3383]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3383
+
 ## [7.31.3] - 2022.09.03
 
 ### Fixed
