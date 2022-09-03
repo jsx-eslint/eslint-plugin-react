@@ -56,6 +56,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<input type="checkbox" checked={checked} disabled={disabled} id={id} onChange={onChange} />' },
     // React related attributes
     { code: '<div onPointerDown={this.onDown} onPointerUp={this.onUp} />' },
+    { code: '<input type="checkbox" defaultChecked={this.state.checkbox} />' },
     // Case ignored attributes, for `charset` discussion see https://github.com/jsx-eslint/eslint-plugin-react/pull/1863
     { code: '<meta charset="utf-8" />;' },
     { code: '<meta charSet="utf-8" />;' },
