@@ -57,6 +57,7 @@ ruleTester.run('no-unknown-property', rule, {
     // React related attributes
     { code: '<div onPointerDown={this.onDown} onPointerUp={this.onUp} />' },
     { code: '<input type="checkbox" defaultChecked={this.state.checkbox} />' },
+    { code: '<div onTouchStart={this.startAnimation} onTouchEnd={this.stopAnimation} onTouchCancel={this.cancel} onTouchMove={this.move} />' },
     // Case ignored attributes, for `charset` discussion see https://github.com/jsx-eslint/eslint-plugin-react/pull/1863
     { code: '<meta charset="utf-8" />;' },
     { code: '<meta charSet="utf-8" />;' },
@@ -89,6 +90,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<details onToggle={this.onToggle}>Some details</details>' },
     { code: '<path fill="pink" d="M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 z"></path>' },
     { code: '<link as="audio">Audio content</link>' },
+    { code: '<audio onAbort={this.abort} onDurationChange={this.durationChange} onEmptied={this.emptied} onEnded={this.end} onError={this.error}></audio>' },
   ]),
   invalid: parsers.all([
     {
@@ -314,6 +316,51 @@ ruleTester.run('no-unknown-property', rule, {
             name: 'as',
             tagName: 'div',
             allowedTags: 'link',
+          },
+        },
+      ],
+    },
+    {
+      code: '<div onAbort={this.abort} onDurationChange={this.durationChange} onEmptied={this.emptied} onEnded={this.end} onError={this.error} />',
+      errors: [
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'onAbort',
+            tagName: 'div',
+            allowedTags: 'audio, video',
+          },
+        },
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'onDurationChange',
+            tagName: 'div',
+            allowedTags: 'audio, video',
+          },
+        },
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'onEmptied',
+            tagName: 'div',
+            allowedTags: 'audio, video',
+          },
+        },
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'onEnded',
+            tagName: 'div',
+            allowedTags: 'audio, video',
+          },
+        },
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'onError',
+            tagName: 'div',
+            allowedTags: 'audio, video',
           },
         },
       ],
