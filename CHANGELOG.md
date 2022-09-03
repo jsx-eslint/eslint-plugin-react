@@ -5,9 +5,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.31.3] - 2022.09.03
+
 ### Fixed
 * [`no-unknown-property`]: add SVG and meta properties ([#3381][] @AhmadMayo)
 
+[7.31.3]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.2...v7.31.3
 [#3381]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3381
 
 ## [7.31.2] - 2022.09.02
