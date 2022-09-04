@@ -112,6 +112,9 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<link as="audio">Audio content</link>' },
     { code: '<video controls={this.controls} loop={true} muted={false} src={this.videoSrc} playsInline={true}></video>' },
     { code: '<audio controls={this.controls} crossOrigin="anonymous" disableRemotePlayback loop muted preload="none" src="something" onAbort={this.abort} onDurationChange={this.durationChange} onEmptied={this.emptied} onEnded={this.end} onError={this.error}></audio>' },
+
+    // fbt
+    { code: '<fbt desc="foo" doNotExtract />;' },
   ]),
   invalid: parsers.all([
     {

@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`no-unknown-property`]: avoid warning on `fbt` nodes entirely ([#3391][] @ljharb)
+
+[#3391]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3391
+
 ## [7.31.6] - 2022.09.04
 
 ### Fixed
