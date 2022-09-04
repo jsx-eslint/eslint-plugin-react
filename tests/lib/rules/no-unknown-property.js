@@ -57,6 +57,12 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<meta property="og:type" content="website" />' },
     { code: '<input type="checkbox" checked={checked} disabled={disabled} id={id} onChange={onChange} />' },
     { code: '<video playsInline />' },
+    {
+      code: '<div allowTransparency="true" />',
+      settings: {
+        react: { version: '16.0.99' },
+      },
+    },
     // React related attributes
     { code: '<div onPointerDown={this.onDown} onPointerUp={this.onUp} />' },
     { code: '<input type="checkbox" defaultChecked={this.state.checkbox} />' },
@@ -96,6 +102,20 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<audio onAbort={this.abort} onDurationChange={this.durationChange} onEmptied={this.emptied} onEnded={this.end} onError={this.error}></audio>' },
   ]),
   invalid: parsers.all([
+    {
+      code: '<div allowTransparency="true" />',
+      settings: {
+        react: { version: '16.1.0' },
+      },
+      errors: [
+        {
+          messageId: 'unknownProp',
+          data: {
+            name: 'allowTransparency',
+          },
+        },
+      ],
+    },
     {
       code: '<div hasOwnProperty="should not be allowed property"></div>;',
       errors: [
