@@ -57,6 +57,8 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<meta property="og:type" content="website" />' },
     { code: '<input type="checkbox" checked={checked} disabled={disabled} id={id} onChange={onChange} />' },
     { code: '<video playsInline />' },
+    { code: '<img onError={foo} onLoad={bar} />' },
+    { code: '<script onLoad={bar} onError={foo} />' },
     {
       code: '<div allowTransparency="true" />',
       settings: {
@@ -383,7 +385,7 @@ ruleTester.run('no-unknown-property', rule, {
           data: {
             name: 'onError',
             tagName: 'div',
-            allowedTags: 'audio, video',
+            allowedTags: 'audio, video, img, script',
           },
         },
       ],

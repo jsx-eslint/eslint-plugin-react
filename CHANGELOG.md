@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`no-unknown-property`]: `onError` and `onLoad` both work on `img` and `script` ([#3388][] @ljharb)
+
+[#3388]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3388
+
 ## [7.31.5] - 2022.09.03
 
 ### Fixed
@@ -14,7 +19,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: `children` is always an acceptable prop; iframes have `scrolling`; video has `playsInline` ([#3385][] @ljharb)
 
 [7.31.5]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.4...v7.31.5
-[#3385]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3385
+[#3385]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3385
 
 ## [7.31.4] - 2022.09.03
 
