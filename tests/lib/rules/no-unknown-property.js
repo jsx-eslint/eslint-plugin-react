@@ -81,6 +81,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<div data-foo-bar="baz"></div>;' },
     { code: '<div data-parent="parent"></div>;' },
     { code: '<div data-index-number="1234"></div>;' },
+    { code: '<div data-e2e-id="5678"></div>;' },
     // Ignoring should work
     {
       code: '<div class="bar"></div>;',
