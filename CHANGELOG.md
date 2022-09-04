@@ -8,6 +8,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`no-unknown-property`]: `onError` and `onLoad` both work on `img` and `script` ([#3388][] @ljharb)
 * [`no-unknown-property`]: data-* attributes can have numbers ([#3390][] @sjarva)
+* [`no-unknown-property`]: add more audio/video attributes ([#3390][] @sjarva)
 
 [#3390]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3390
 [#3388]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3388
