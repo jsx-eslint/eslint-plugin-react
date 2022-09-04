@@ -11,7 +11,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: add properties `onToggle`, `fill`, `as`, and pointer events ([#3385][] @sjarva)
 * [`no-unknown-property`]: add `defaultChecked` property ([#3385][] @sjarva)
 * [`no-unknown-property`]: add touch and media event related properties ([#3385][] @sjarva)
-* [`no-unknown-property`]: `children` is always an acceptable prop; iframes have `scrolling`; ; video has `playsInline` ([#3385][] @ljharb)
+* [`no-unknown-property`]: `children` is always an acceptable prop; iframes have `scrolling`; video has `playsInline` ([#3385][] @ljharb)
 
 [7.31.5]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.4...v7.31.5
 [#3385]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3385
