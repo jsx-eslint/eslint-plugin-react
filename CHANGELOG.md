@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.31.6] - 2022.09.04
+
 ### Fixed
 * [`no-unknown-property`]: `onError` and `onLoad` both work on `img` and `script` ([#3388][] @ljharb)
 * [`no-unknown-property`]: data-* attributes can have numbers ([#3390][] @sjarva)
@@ -18,6 +20,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 * [Docs] [`no-unknown-property`]: add a mention about using ignores properties with libraries that add props ([#3390][] @sjarva)
 
+[7.31.6]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.5...v7.31.6
 [#3390]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3390
 [#3388]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3388
 
