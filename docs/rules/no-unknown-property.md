@@ -43,7 +43,6 @@ var AnotherComponent = <Foo.bar for="bar" />;
 // Custom web components are ignored
 var MyElem = <div class="foo" is="my-elem"></div>;
 var AtomPanel = <atom-panel class="foo"></atom-panel>;
-
 ```
 
 ## Rule Options
@@ -56,6 +55,23 @@ var AtomPanel = <atom-panel class="foo"></atom-panel>;
 
 - `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
 - `ignore`: optional array of property and attribute names to ignore during validation.
+
+If you are using a library that passes something as a prop to JSX elements, it is recommended to add those props to the ignored properties.
+
+For example, if you use [emotion](https://emotion.sh/docs/introduction) and its [`css` prop](https://emotion.sh/docs/css-prop)),
+add the following to your `.eslintrc` config file:
+
+```js
+...
+"react/no-unknown-property": ['error', { ignore: ['css'] }]
+...
+```
+
+Now, the following code passes:
+
+```jsx
+var StyledDiv = <div css={{ color: 'pink' }}></div>;
+```
 
 ## When Not To Use It
 

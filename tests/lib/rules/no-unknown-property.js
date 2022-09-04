@@ -94,6 +94,10 @@ ruleTester.run('no-unknown-property', rule, {
       code: '<div someProp="bar"></div>;',
       options: [{ ignore: ['someProp'] }],
     },
+    {
+      code: '<div css={{flex: 1}}></div>;',
+      options: [{ ignore: ['css'] }],
+    },
 
     // aria-* attributes should work
     { code: '<button aria-haspopup="true">Click me to open pop up</button>;' },
