@@ -5,15 +5,18 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.31.5] - 2022.09.03
+
 ### Fixed
 * [`no-unknown-property`]: add properties `onToggle`, `fill`, `as`, and pointer events ([#3385][] @sjarva)
 * [`no-unknown-property`]: add `defaultChecked` property ([#3385][] @sjarva)
 * [`no-unknown-property`]: add touch and media event related properties ([#3385][] @sjarva)
 * [`no-unknown-property`]: `children` is always an acceptable prop; iframes have `scrolling`; ; video has `playsInline` ([#3385][] @ljharb)
 
+[7.31.5]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.4...v7.31.5
 [#3385]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3385
 
-## [7.31.4] - 2022.09.04
+## [7.31.4] - 2022.09.03
 
 ### Fixed
 * [`no-unknown-property`]: support `checked` on inputs ([#3383][] @ljharb)
@@ -22,7 +25,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 [7.31.4]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.3...v7.31.4
 
-## [7.31.3] - 2022.09.03
+## [7.31.3] - 2022.09.02
 
 ### Fixed
 * [`no-unknown-property`]: add SVG and meta properties ([#3381][] @AhmadMayo)
