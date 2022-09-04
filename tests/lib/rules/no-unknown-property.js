@@ -60,6 +60,8 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<video playsInline />' },
     { code: '<img onError={foo} onLoad={bar} />' },
     { code: '<script onLoad={bar} onError={foo} />' },
+    { code: '<source onError={foo} />' },
+    { code: '<link onLoad={bar} onError={foo} />' },
     {
       code: '<div allowTransparency="true" />',
       settings: {
@@ -389,7 +391,20 @@ ruleTester.run('no-unknown-property', rule, {
           data: {
             name: 'onError',
             tagName: 'div',
-            allowedTags: 'audio, video, img, script',
+            allowedTags: 'audio, video, img, link, source, script',
+          },
+        },
+      ],
+    },
+    {
+      code: '<div onLoad={this.load} />',
+      errors: [
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'onLoad',
+            tagName: 'div',
+            allowedTags: 'script, img, link',
           },
         },
       ],

@@ -12,6 +12,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: move allowfullscreen to case ignored attributes ([#3390][] @sjarva)
 * [`no-unknown-property`]: fill works on line, mask, and use elements ([#3390][] @sjarva)
 * [`no-unknown-property`]: add onMouseMoveCapture as valid react-specific attribute ([#3390][] @sjarva)
+* [`no-unknown-property`]: make onLoad and onError be accepted on more elements ([#3390][] @sjarva)
 
 [#3390]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3390
 [#3388]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3388
