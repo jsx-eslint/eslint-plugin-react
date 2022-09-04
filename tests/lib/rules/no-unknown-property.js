@@ -393,7 +393,7 @@ ruleTester.run('no-unknown-property', rule, {
       ],
     },
     {
-      code: '<div controls={this.controls} loop={true} muted={false} src={this.videoSrc} playsInline={true}></div>',
+      code: '<div controls={this.controls} loop={true} muted={false} src={this.videoSrc} playsInline={true} allowFullScreen></div>',
       errors: [
         {
           messageId: 'invalidPropOnTag',
