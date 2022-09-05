@@ -44,7 +44,8 @@ ruleTester.run('no-unknown-property', rule, {
     // Some HTML/DOM elements with common attributes should work
     { code: '<div className="bar"></div>;' },
     { code: '<div onMouseDown={this._onMouseDown}></div>;' },
-    { code: '<a href="someLink">Read more</a>' },
+    { code: '<a href="someLink" download="foo">Read more</a>' },
+    { code: '<area download="foo" />' },
     { code: '<img src="cat_keyboard.jpeg" alt="A cat sleeping on a keyboard" />' },
     { code: '<input type="password" required />' },
     { code: '<input ref={this.input} type="radio" />' },
@@ -462,6 +463,19 @@ ruleTester.run('no-unknown-property', rule, {
             name: 'playsInline',
             tagName: 'div',
             allowedTags: 'video',
+          },
+        },
+      ],
+    },
+    {
+      code: '<div download="foo" />',
+      errors: [
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'download',
+            tagName: 'div',
+            allowedTags: 'a, area',
           },
         },
       ],
