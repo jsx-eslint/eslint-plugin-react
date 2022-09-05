@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.31.7] - 2022.09.05
+
 ### Fixed
 * [`no-unknown-property`]: avoid warning on `fbt` nodes entirely ([#3391][] @ljharb)
 * [`no-unknown-property`]: add `download` property support for `a` and `area` ([#3394][] @HJain13)
@@ -18,6 +20,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: React lowercases `data-` attrs ([#3395][] @ljharb)
 * [`no-unknown-property`]: add `valign` on table components ([#3389][] @ljharb)
 
+[7.31.7]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.6...v7.31.7
 [#3407]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3407
 [#3406]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3406
 [#3405]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3405
