@@ -73,7 +73,7 @@ ruleTester.run('no-unknown-property', rule, {
     // React related attributes
     { code: '<div onPointerDown={this.onDown} onPointerUp={this.onUp} />' },
     { code: '<input type="checkbox" defaultChecked={this.state.checkbox} />' },
-    { code: '<div onTouchStart={this.startAnimation} onTouchEnd={this.stopAnimation} onTouchCancel={this.cancel} onTouchMove={this.move} onMouseMoveCapture={this.capture} />' },
+    { code: '<div onTouchStart={this.startAnimation} onTouchEnd={this.stopAnimation} onTouchCancel={this.cancel} onTouchMove={this.move} onMouseMoveCapture={this.capture} onTouchCancelCapture={this.log} />' },
     // Case ignored attributes, for `charset` discussion see https://github.com/jsx-eslint/eslint-plugin-react/pull/1863
     { code: '<meta charset="utf-8" />;' },
     { code: '<meta charSet="utf-8" />;' },
