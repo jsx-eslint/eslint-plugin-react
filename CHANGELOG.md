@@ -13,7 +13,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: add more capture event properties ([#3402][] @sjarva)
 * [`no-unknown-property`]: Add more one word properties found in DefinitelyTyped's react/index.d.ts ([#3402][] @sjarva)
 * [`no-unknown-property`]: Mark onLoad/onError as supported on iframes ([#3398][] @maiis, [#3406][] @akx)
+* [`no-unknown-property`]: allow `imageSrcSet` and `imageSizes` attributes on `<link>` ([#3407][] @terrymun)
 
+[#3407]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3407
 [#3406]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3406
 [#3402]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3402
 [#3398]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3398

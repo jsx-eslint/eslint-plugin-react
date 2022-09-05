@@ -65,6 +65,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<script onLoad={bar} onError={foo} />' },
     { code: '<source onError={foo} />' },
     { code: '<link onLoad={bar} onError={foo} />' },
+    { code: '<link rel="preload" as="image" href="someHref" imageSrcSet="someImageSrcSet" imageSizes="someImageSizes" />' },
     { code: '<div allowFullScreen webkitAllowFullScreen mozAllowFullScreen />' },
     {
       code: '<div allowTransparency="true" />',
@@ -479,6 +480,32 @@ ruleTester.run('no-unknown-property', rule, {
             name: 'download',
             tagName: 'div',
             allowedTags: 'a, area',
+          },
+        },
+      ],
+    },
+    {
+      code: '<div imageSrcSet="someImageSrcSet" />',
+      errors: [
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'imageSrcSet',
+            tagName: 'div',
+            allowedTags: 'link',
+          },
+        },
+      ],
+    },
+    {
+      code: '<div imageSizes="someImageSizes" />',
+      errors: [
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'imageSizes',
+            tagName: 'div',
+            allowedTags: 'link',
           },
         },
       ],
