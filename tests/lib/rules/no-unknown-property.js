@@ -67,6 +67,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<link onLoad={bar} onError={foo} />' },
     { code: '<link rel="preload" as="image" href="someHref" imageSrcSet="someImageSrcSet" imageSizes="someImageSizes" />' },
     { code: '<div allowFullScreen webkitAllowFullScreen mozAllowFullScreen />' },
+    { code: '<table border="1" />' },
     {
       code: '<div allowTransparency="true" />',
       settings: {
@@ -110,7 +111,7 @@ ruleTester.run('no-unknown-property', rule, {
     // Attributes on allowed elements should work
     { code: '<script crossOrigin />' },
     { code: '<audio crossOrigin />' },
-    { code: '<svg><image crossOrigin /></svg>' },
+    { code: '<svg focusable><image crossOrigin /></svg>' },
     { code: '<details onToggle={this.onToggle}>Some details</details>' },
     { code: '<path fill="pink" d="M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 z"></path>' },
     { code: '<line fill="pink" x1="0" y1="80" x2="100" y2="20"></line>' },
