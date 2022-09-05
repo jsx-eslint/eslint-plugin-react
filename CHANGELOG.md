@@ -16,6 +16,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: allow `imageSrcSet` and `imageSizes` attributes on `<link>` ([#3407][] @terrymun)
 * [`no-unknown-property`]: add `border`; `focusable` on `<svg>` ([#3404][] [#3404][] @ljharb)
 * [`no-unknown-property`]: React lowercases `data-` attrs ([#3395][] @ljharb)
+* [`no-unknown-property`]: add `valign` on table components ([#3389][] @ljharb)
 
 [#3407]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3407
 [#3406]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3406
@@ -28,6 +29,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3395]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3395
 [#3394]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3394
 [#3391]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3391
+[#3389]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3389
 
 ## [7.31.6] - 2022.09.04
 
