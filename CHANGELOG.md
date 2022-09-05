@@ -11,6 +11,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: allow `webkitAllowFullScreen` and `mozAllowFullScreen` ([#3396][] @ljharb)
 * [`no-unknown-property`]: `controlsList`, not `controlList` ([#3397][] @ljharb)
 * [`no-unknown-property`]: add more capture event properties ([#3402][] @sjarva)
+* [`no-unknown-property`]: Add more one word properties found in DefinitelyTyped's react/index.d.ts ([#3402][] @sjarva)
 
 [#3402]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3402
 [#3397]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3397
