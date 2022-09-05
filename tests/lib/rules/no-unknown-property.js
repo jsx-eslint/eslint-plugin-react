@@ -91,6 +91,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<div data-parent="parent"></div>;' },
     { code: '<div data-index-number="1234"></div>;' },
     { code: '<div data-e2e-id="5678"></div>;' },
+    { code: '<div data-testID="bar" data-under_sCoRe="bar" />;' },
     // Ignoring should work
     {
       code: '<div class="bar"></div>;',
@@ -507,6 +508,17 @@ ruleTester.run('no-unknown-property', rule, {
             name: 'imageSizes',
             tagName: 'div',
             allowedTags: 'link',
+          },
+        },
+      ],
+    },
+    {
+      code: '<div data-xml-anything="invalid" />',
+      errors: [
+        {
+          messageId: 'unknownProp',
+          data: {
+            name: 'data-xml-anything',
           },
         },
       ],
