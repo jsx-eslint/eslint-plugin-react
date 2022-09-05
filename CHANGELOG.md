@@ -8,7 +8,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`no-unknown-property`]: avoid warning on `fbt` nodes entirely ([#3391][] @ljharb)
 * [`no-unknown-property`]: add `download` property support for `a` and `area` ([#3394][] @HJain13)
+* [`no-unknown-property`]: allow `webkitAllowFullScreen` and `mozAllowFullScreen` ([#3396][] @ljharb)
 
+[#3396]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3396
 [#3394]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3394
 [#3391]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3391
 

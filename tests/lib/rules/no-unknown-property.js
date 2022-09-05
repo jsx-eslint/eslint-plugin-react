@@ -63,6 +63,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<script onLoad={bar} onError={foo} />' },
     { code: '<source onError={foo} />' },
     { code: '<link onLoad={bar} onError={foo} />' },
+    { code: '<div allowFullScreen webkitAllowFullScreen mozAllowFullScreen />' },
     {
       code: '<div allowTransparency="true" />',
       settings: {
