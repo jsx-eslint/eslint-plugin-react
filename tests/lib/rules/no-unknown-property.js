@@ -112,8 +112,8 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<path fill="pink" d="M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 z"></path>' },
     { code: '<line fill="pink" x1="0" y1="80" x2="100" y2="20"></line>' },
     { code: '<link as="audio">Audio content</link>' },
-    { code: '<video controls={this.controls} loop={true} muted={false} src={this.videoSrc} playsInline={true}></video>' },
-    { code: '<audio controls={this.controls} crossOrigin="anonymous" disableRemotePlayback loop muted preload="none" src="something" onAbort={this.abort} onDurationChange={this.durationChange} onEmptied={this.emptied} onEnded={this.end} onError={this.error}></audio>' },
+    { code: '<video controlsList="nodownload" controls={this.controls} loop={true} muted={false} src={this.videoSrc} playsInline={true}></video>' },
+    { code: '<audio controlsList="nodownload" controls={this.controls} crossOrigin="anonymous" disableRemotePlayback loop muted preload="none" src="something" onAbort={this.abort} onDurationChange={this.durationChange} onEmptied={this.emptied} onEnded={this.end} onError={this.error}></audio>' },
 
     // fbt
     { code: '<fbt desc="foo" doNotExtract />;' },
