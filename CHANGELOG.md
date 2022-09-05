@@ -12,8 +12,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: `controlsList`, not `controlList` ([#3397][] @ljharb)
 * [`no-unknown-property`]: add more capture event properties ([#3402][] @sjarva)
 * [`no-unknown-property`]: Add more one word properties found in DefinitelyTyped's react/index.d.ts ([#3402][] @sjarva)
+* [`no-unknown-property`]: Mark onLoad/onError as supported on iframes ([#3398][] @maiis, [#3406][] @akx)
 
+[#3406]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3406
 [#3402]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3402
+[#3398]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3398
 [#3397]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3397
 [#3396]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3396
 [#3394]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3394
