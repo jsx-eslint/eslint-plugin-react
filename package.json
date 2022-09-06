@@ -95,7 +95,8 @@
       "*.config.js",
       ".eslintrc",
       ".editorconfig",
-      "tsconfig.json"
+      "tsconfig.json",
+      ".markdownlint*"
     ]
   }
 }
