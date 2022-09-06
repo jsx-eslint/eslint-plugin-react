@@ -66,6 +66,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<source onError={foo} />' },
     { code: '<link onLoad={bar} onError={foo} />' },
     { code: '<link rel="preload" as="image" href="someHref" imageSrcSet="someImageSrcSet" imageSizes="someImageSizes" />' },
+    { code: '<object onLoad={bar} />' },
     { code: '<div allowFullScreen webkitAllowFullScreen mozAllowFullScreen />' },
     { code: '<table border="1" />' },
     {
@@ -443,7 +444,7 @@ ruleTester.run('no-unknown-property', rule, {
           data: {
             name: 'onLoad',
             tagName: 'div',
-            allowedTags: 'script, img, link, picture, iframe',
+            allowedTags: 'script, img, link, picture, iframe, object',
           },
         },
       ],
