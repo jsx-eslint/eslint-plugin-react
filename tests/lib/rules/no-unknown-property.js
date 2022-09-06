@@ -119,6 +119,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<link as="audio">Audio content</link>' },
     { code: '<video controlsList="nodownload" controls={this.controls} loop={true} muted={false} src={this.videoSrc} playsInline={true}></video>' },
     { code: '<audio controlsList="nodownload" controls={this.controls} crossOrigin="anonymous" disableRemotePlayback loop muted preload="none" src="something" onAbort={this.abort} onDurationChange={this.durationChange} onEmptied={this.emptied} onEnded={this.end} onError={this.error}></audio>' },
+    { code: '<marker id={markerId} viewBox="0 0 2 2" refX="1" refY="1" markerWidth="1" markerHeight="1" orient="auto" />' },
     {
       code: `
         <table>
