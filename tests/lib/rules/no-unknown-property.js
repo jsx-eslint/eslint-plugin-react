@@ -110,7 +110,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<button aria-haspopup="true">Click me to open pop up</button>;' },
     { code: '<button aria-label="Close" onClick={someThing.close} />;' },
     // Attributes on allowed elements should work
-    { code: '<script crossOrigin />' },
+    { code: '<script crossOrigin noModule />' },
     { code: '<audio crossOrigin />' },
     { code: '<svg focusable><image crossOrigin /></svg>' },
     { code: '<details onToggle={this.onToggle}>Some details</details>' },
@@ -332,7 +332,7 @@ ruleTester.run('no-unknown-property', rule, {
       ],
     },
     {
-      code: '<script crossorigin />',
+      code: '<script crossorigin nomodule />',
       errors: [
         {
           messageId: 'unknownPropWithStandardName',
@@ -341,8 +341,15 @@ ruleTester.run('no-unknown-property', rule, {
             standardName: 'crossOrigin',
           },
         },
+        {
+          messageId: 'unknownPropWithStandardName',
+          data: {
+            name: 'nomodule',
+            standardName: 'noModule',
+          },
+        },
       ],
-      output: '<script crossOrigin />',
+      output: '<script crossOrigin noModule />',
     },
     {
       code: '<div crossorigin />',
