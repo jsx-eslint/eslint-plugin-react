@@ -153,9 +153,100 @@ ruleTester.run('forbid-component-props', rule, {
     },
     {
       code: `
+        const item = (<Foo className="foo" />);
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedFor: ['ReactModal'],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        const item = (<Foo className="foo" />);
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedFor: ['ReactModal'],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
         <fbt:param name="Total number of files" number={true} />
       `,
       features: ['jsx namespace'],
+    },
+    {
+      code: `
+        const item = (
+          <Foo className="bar">
+            <ReactModal style={{color: "red"}} />
+          </Foo>
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedFor: ['OtherModal', 'ReactModal'],
+            },
+            {
+              propName: 'style',
+              disallowedFor: ['Foo'],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        const item = (
+          <Foo className="bar">
+            <ReactModal style={{color: "red"}} />
+          </Foo>
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedFor: ['OtherModal', 'ReactModal'],
+            },
+            {
+              propName: 'style',
+              allowedFor: ['ReactModal'],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        const item = (<this.ReactModal className="foo" />);
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedFor: ['ReactModal'],
+            },
+          ],
+        },
+      ],
     },
   ]),
 
@@ -237,6 +328,34 @@ ruleTester.run('forbid-component-props', rule, {
     },
     {
       code: `
+        var First = createReactClass({
+          propTypes: externalPropTypes,
+          render: function() {
+            return <Foo style={{color: "red"}} />;
+          }
+        });
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'style',
+              disallowedFor: ['Foo'],
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'style' },
+          line: 5,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
         const item = (<Foo className="foo" />);
       `,
       options: [
@@ -278,6 +397,78 @@ ruleTester.run('forbid-component-props', rule, {
           data: { prop: 'className' },
           line: 2,
           column: 40,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const item = (<this.ReactModal className="foo" />);
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedFor: ['this.ReactModal'],
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'className' },
+          line: 2,
+          column: 40,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const item = (<ReactModal className="foo" />);
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedFor: ['ReactModal'],
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'className' },
+          line: 2,
+          column: 35,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const item = (<AntdLayout.Content className="antdFoo" />);
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedFor: ['AntdLayout.Content'],
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'className' },
+          line: 2,
+          column: 43,
           type: 'JSXAttribute',
         },
       ],

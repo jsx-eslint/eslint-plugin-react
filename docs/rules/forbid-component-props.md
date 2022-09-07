@@ -50,8 +50,18 @@ custom message, and a component allowlist:
 ```js
 {
   "propName": "someProp",
-  "allowedFor": [SomeComponent, AnotherComponent],
-  "message": "Avoid using someProp"
+  "allowedFor": ["SomeComponent", "AnotherComponent"],
+  "message": "Avoid using someProp except SomeComponent and AnotherComponent"
+}
+```
+
+Use `disallowedFor` as an exclusion list to warn on props for specific components. `disallowedFor` must have at least one item.
+
+```js
+{
+  "propName": "someProp",
+  "disallowedFor": ["SomeComponent", "AnotherComponent"],
+  "message": "Avoid using someProp for SomeComponent and AnotherComponent"
 }
 ```
 

@@ -9,6 +9,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`display-name`]: add `checkContextObjects` option ([#3529][] @JulesBlm)
 * [`jsx-first-prop-new-line`]: add `multiprop` option ([#3533][] @haydncomley)
 * [`no-deprecated`]: add React 18 deprecations ([#3548][] @sergei-startsev)
+* [`forbid-component-props`]: add `disallowedFor` option ([#3417][] @jacketwpbb)
 
 ### Fixed
 * [`no-array-index-key`]: consider flatMap ([#3530][] @k-yle)
@@ -26,6 +27,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3533]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3533
 [#3530]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3530
 [#3529]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3529
+[#3417]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3417
 
 ## [7.32.2] - 2023.01.28
 
