@@ -9,6 +9,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: add `viewBox` on `marker` ([#3416][] @ljharb)
 * [`no-unknown-property`]: add `noModule` on `script` ([#3414][] @ljharb)
 * [`no-unknown-property`]: allow `onLoad` on `<object>` ([#3415][] @OleksiiKachan)
+* [`no-multi-comp`]: do not detect a function property returning only null as a component ([#3412][] @ljharb)
 
 ### Changed
 
@@ -18,6 +19,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3415]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3415
 [#3414]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3414
 [#3413]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3413
+[#3412]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3412
 
 ## [7.31.7] - 2022.09.05
 
