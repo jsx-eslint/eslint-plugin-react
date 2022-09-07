@@ -10,11 +10,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: add `noModule` on `script` ([#3414][] @ljharb)
 * [`no-unknown-property`]: allow `onLoad` on `<object>` ([#3415][] @OleksiiKachan)
 * [`no-multi-comp`]: do not detect a function property returning only null as a component ([#3412][] @ljharb)
+* [`no-unknown-property`]: allow `abbr` on `<th>` and `<td>` ([#3419][] @OleksiiKachan)
 
 ### Changed
 
 * [Meta] npmignore markdownlint config ([#3413][] @jorrit)
 
+[#3419]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3419
 [#3416]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3416
 [#3415]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3415
 [#3414]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3414

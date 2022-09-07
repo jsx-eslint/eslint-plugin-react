@@ -69,6 +69,8 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<object onLoad={bar} />' },
     { code: '<div allowFullScreen webkitAllowFullScreen mozAllowFullScreen />' },
     { code: '<table border="1" />' },
+    { code: '<th abbr="abbr" />' },
+    { code: '<td abbr="abbr" />' },
     {
       code: '<div allowTransparency="true" />',
       settings: {
@@ -545,6 +547,19 @@ ruleTester.run('no-unknown-property', rule, {
           messageId: 'unknownProp',
           data: {
             name: 'data-xml-anything',
+          },
+        },
+      ],
+    },
+    {
+      code: '<div abbr="abbr" />',
+      errors: [
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'abbr',
+            tagName: 'div',
+            allowedTags: 'th, td',
           },
         },
       ],
