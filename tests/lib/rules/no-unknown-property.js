@@ -46,11 +46,11 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<div onMouseDown={this._onMouseDown}></div>;' },
     { code: '<a href="someLink" download="foo">Read more</a>' },
     { code: '<area download="foo" />' },
-    { code: '<img src="cat_keyboard.jpeg" alt="A cat sleeping on a keyboard" />' },
+    { code: '<img src="cat_keyboard.jpeg" alt="A cat sleeping on a keyboard" align="top" />' },
     { code: '<input type="password" required />' },
     { code: '<input ref={this.input} type="radio" />' },
     { code: '<div children="anything" />' },
-    { code: '<iframe scrolling="?" onLoad={a} onError={b} />' },
+    { code: '<iframe scrolling="?" onLoad={a} onError={b} align="top" />' },
     { code: '<input key="bar" type="radio" />' },
     { code: '<button disabled>You cannot click me</button>;' },
     { code: '<svg key="lock" viewBox="box" fill={10} d="d" stroke={1} strokeWidth={2} strokeLinecap={3} strokeLinejoin={4} transform="something" clipRule="else" x1={5} x2="6" y1="7" y2="8"></svg>' },
@@ -126,20 +126,23 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<pattern id="pattern" viewBox="0,0,10,10" width="10%" height="10%" />' },
     { code: '<symbol id="myDot" width="10" height="10" viewBox="0 0 2 2" />' },
     { code: '<view id="one" viewBox="0 0 100 100" />' },
+    { code: '<hr align="top" />' },
+    { code: '<applet align="top" />' },
     {
       code: `
-        <table>
-          <colgroup valign="top">
-            <col valign="top" />
+        <table align="top">
+          <caption align="top">Table Caption</caption>
+          <colgroup valign="top" align="top">
+            <col valign="top" align="top"/>
           </colgroup>
-          <thead valign="top">
-            <tr valign="top">
-              <th valign="top">Header</th>
-              <td valign="top">Cell</td>
+          <thead valign="top" align="top">
+            <tr valign="top" align="top">
+              <th valign="top" align="top">Header</th>
+              <td valign="top" align="top">Cell</td>
             </tr>
           </thead>
-          <tbody valign="top" />
-          <tfoot valign="top" />
+          <tbody valign="top" align="top" />
+          <tfoot valign="top" align="top" />
         </table>
       `,
     },

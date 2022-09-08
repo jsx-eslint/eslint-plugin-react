@@ -12,11 +12,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-multi-comp`]: do not detect a function property returning only null as a component ([#3412][] @ljharb)
 * [`no-unknown-property`]: allow `abbr` on `<th>` and `<td>` ([#3419][] @OleksiiKachan)
 * [`no-unknown-property`]: add `viewBox` for `pattern`, `symbol`, `view` ([#3424][] @MNBuyskih)
+* [`no-unknown-property`]: add `align` on all the tags that support it ([#3425][] @ljharb)
 
 ### Changed
 
 * [meta] npmignore markdownlint config ([#3413][] @jorrit)
 
+[#3425]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3425
 [#3424]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3424
 [#3419]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3419
 [#3416]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3416
