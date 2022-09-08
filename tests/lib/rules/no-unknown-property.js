@@ -123,6 +123,9 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<video controlsList="nodownload" controls={this.controls} loop={true} muted={false} src={this.videoSrc} playsInline={true}></video>' },
     { code: '<audio controlsList="nodownload" controls={this.controls} crossOrigin="anonymous" disableRemotePlayback loop muted preload="none" src="something" onAbort={this.abort} onDurationChange={this.durationChange} onEmptied={this.emptied} onEnded={this.end} onError={this.error}></audio>' },
     { code: '<marker id={markerId} viewBox="0 0 2 2" refX="1" refY="1" markerWidth="1" markerHeight="1" orient="auto" />' },
+    { code: '<pattern id="pattern" viewBox="0,0,10,10" width="10%" height="10%" />' },
+    { code: '<symbol id="myDot" width="10" height="10" viewBox="0 0 2 2" />' },
+    { code: '<view id="one" viewBox="0 0 100 100" />' },
     {
       code: `
         <table>
