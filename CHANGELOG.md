@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.31.8] - 2022.09.08
+
 ### Fixed
 * [`no-unknown-property`]: add `viewBox` on `marker` ([#3416][] @ljharb)
 * [`no-unknown-property`]: add `noModule` on `script` ([#3414][] @ljharb)
@@ -18,6 +20,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 * [meta] npmignore markdownlint config ([#3413][] @jorrit)
 
+[7.31.8]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.7...v7.31.8
 [#3425]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3425
 [#3424]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3424
 [#3419]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3419
