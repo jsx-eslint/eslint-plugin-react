@@ -6,10 +6,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ## Unreleased
 
 ### Added
+* support new config system ([#3429][] @jjangga0214)
 * [`hook-use-state`]: add `allowDestructuredState` option ([#3449][] @ljharb)
 * add [`sort-default-props`] and deprecate [`jsx-sort-default-props`] ([#1861][] @alexzherdev)
 
 [#3449]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3449
+[#3424]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3429
 [#1861]: https://github.com/jsx-eslint/eslint-plugin-react/pull/1861
 
 ## [7.31.9] - 2022.10.09

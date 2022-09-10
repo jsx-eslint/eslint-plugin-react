@@ -15,9 +15,9 @@ React specific linting rules for `eslint`
 npm install eslint eslint-plugin-react --save-dev
 ```
 
-It is also possible to install ESLint globally rather than locally (using npm install eslint --global). However, this is not recommended, and any plugins or shareable configs that you use must be installed locally in either case.
+It is also possible to install ESLint globally rather than locally (using `npm install -g eslint`). However, this is not recommended, and any plugins or shareable configs that you use must be installed locally in either case.
 
-## Configuration
+## Configuration (legacy: `.eslintrc*`)
 
 Use [our preset](#recommended) to get reasonable defaults:
 
@@ -107,6 +107,174 @@ Enable the rules that you would like to use.
     "react/jsx-uses-react": "error",
     "react/jsx-uses-vars": "error",
   }
+```
+
+### Shareable configs
+
+#### Recommended
+
+This plugin exports a `recommended` configuration that enforces React good practices.
+
+To enable this configuration use the `extends` property in your `.eslintrc` config file:
+
+```json
+{
+  "extends": ["eslint:recommended", "plugin:react/recommended"]
+}
+```
+
+See [`eslint` documentation](https://eslint.org/docs/user-guide/configuring/configuration-files#extending-configuration-files) for more information about extending configuration files.
+
+#### All
+
+This plugin also exports an `all` configuration that includes every available rule.
+This pairs well with the `eslint:all` rule.
+
+```json
+{
+  "plugins": [
+    "react"
+  ],
+  "extends": ["eslint:all", "plugin:react/all"]
+}
+```
+
+**Note**: These configurations will import `eslint-plugin-react` and enable JSX in [parser options](https://eslint.org/docs/user-guide/configuring/language-options#specifying-parser-options).
+
+## Configuration (new: `eslint.config.js`)
+
+From [`v8.21.0`](https://github.com/eslint/eslint/releases/tag/v8.21.0), eslint announced a new config system.
+In the new system, `.eslintrc*` is no longer used. `eslint.config.js` would be the default config file name.
+In eslint `v8`, the legacy system (`.eslintrc*`) would still be supported, while in eslint `v9`, only the new system would be supported.
+
+And from [`v8.23.0`](https://github.com/eslint/eslint/releases/tag/v8.23.0), eslint CLI starts to look up `eslint.config.js`.
+**So, if your eslint is `>=8.23.0`, you're 100% ready to use the new config system.**
+
+You might want to check out the official blog posts,
+
+- <https://eslint.org/blog/2022/08/new-config-system-part-1/>
+- <https://eslint.org/blog/2022/08/new-config-system-part-2/>
+- <https://eslint.org/blog/2022/08/new-config-system-part-3/>
+
+and the [official docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new).
+
+### Plugin
+
+The default export of `eslint-plugin-react` is a plugin object.
+
+```js
+const react = require('eslint-plugin-react');
+const globals = require('globals');
+
+module.exports = [
+  …
+  {
+    files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
+    plugins: {
+      react,
+    },
+    languageOptions: {
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+      globals: {
+        ...globals.browser,
+      },
+    },
+    rules: {
+      // ... any rules you want
+      'react/jsx-uses-react': 'error',
+      'react/jsx-uses-vars': 'error',
+     },
+    // ... others are omitted for brevity
+  },
+  …
+];
+```
+
+### Configuring shared settings
+
+Refer to the [official docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#configuring-shared-settings).
+
+The schema of the `settings.react` object would be identical to that of what's already described above in the legacy config section.
+
+<!-- markdownlint-disable-next-line no-duplicate-heading -->
+### Shareable configs
+
+There're also 3 shareable configs.
+
+- `eslint-plugin-react/configs/all`
+- `eslint-plugin-react/configs/recommended`
+- `eslint-plugin-react/configs/jsx-runtime`
+
+If your eslint.config.js is ESM, include the `.js` extension (e.g. `eslint-plugin-react/recommended.js`). Note that the next semver-major will require omitting the extension for these imports.
+
+**Note**: These configurations will import `eslint-plugin-react` and enable JSX in [`languageOptions.parserOptions`](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#configuration-objects).
+
+In the new config system, `plugin:` protocol(e.g. `plugin:react/recommended`) is no longer valid.
+As eslint does not automatically import the preset config (shareable config), you explicitly do it by yourself.
+
+```js
+const reactRecommended = require('eslint-plugin-react/configs/recommended');
+
+module.exports = [
+  …
+  reactRecommended, // This is not a plugin object, but a shareable config object
+  …
+];
+```
+
+You can of course add/override some properties.
+
+**Note**: Our shareable configs does not preconfigure `files` or [`languageOptions.globals`](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#configuration-objects).
+For most of the cases, you probably want to configure some properties by yourself.
+
+```js
+const reactRecommended = require('eslint-plugin-react/configs/recommended');
+const globals = require('globals');
+
+module.exports = [
+  …
+  {
+    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
+    ...reactRecommended,
+    languageOptions: {
+      ...reactRecommended.languageOptions,
+      globals: {
+        ...globals.serviceworker,
+        ...globals.browser;
+      },
+    },
+  },
+  …
+];
+```
+
+The above example is same as the example below, as the new config system is based on chaining.
+
+```js
+const reactRecommended = require('eslint-plugin-react/configs/recommended');
+const globals = require('globals');
+
+module.exports = [
+  …
+  {
+    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
+    ...reactRecommended,
+  },
+  {
+    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
+    languageOptions: {
+      globals: {
+        ...globals.serviceworker,
+        ...globals.browser,
+      },
+    },
+  },
+  …
+];
 ```
 
 ## List of supported rules
@@ -226,43 +394,11 @@ Enable the rules that you would like to use.
 |  | 🔧 |  | [react/jsx-wrap-multilines](docs/rules/jsx-wrap-multilines.md) | Disallow missing parentheses around multiline JSX |
 <!-- AUTO-GENERATED-CONTENT:END -->
 
-### Other useful plugins
+## Other useful plugins
 
 - Rules of Hooks: [eslint-plugin-react-hooks](https://github.com/facebook/react/tree/master/packages/eslint-plugin-react-hooks)
 - JSX accessibility: [eslint-plugin-jsx-a11y](https://github.com/evcohen/eslint-plugin-jsx-a11y)
 - React Native: [eslint-plugin-react-native](https://github.com/Intellicode/eslint-plugin-react-native)
-
-## Shareable configurations
-
-### Recommended
-
-This plugin exports a `recommended` configuration that enforces React good practices.
-
-To enable this configuration use the `extends` property in your `.eslintrc` config file:
-
-```json
-{
-  "extends": ["eslint:recommended", "plugin:react/recommended"]
-}
-```
-
-See [`eslint` documentation](https://eslint.org/docs/user-guide/configuring/configuration-files#extending-configuration-files) for more information about extending configuration files.
-
-### All
-
-This plugin also exports an `all` configuration that includes every available rule.
-This pairs well with the `eslint:all` rule.
-
-```json
-{
-  "plugins": [
-    "react"
-  ],
-  "extends": ["eslint:all", "plugin:react/all"]
-}
-```
-
-**Note**: These configurations will import `eslint-plugin-react` and enable JSX in [parser options](https://eslint.org/docs/user-guide/configuring/language-options#specifying-parser-options).
 
 ## License
 
