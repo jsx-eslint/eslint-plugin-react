@@ -7,6 +7,8 @@ module.exports = {
 
   pathIgnorePattern: eslintRemoteTesterRepositories.getPathIgnorePattern(),
 
+
+  // looking for TS ?? 
   extensions: ['js', 'jsx', 'ts', 'tsx'],
 
   concurrentTasks: 3,
