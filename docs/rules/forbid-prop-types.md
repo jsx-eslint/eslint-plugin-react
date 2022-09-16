@@ -1,4 +1,6 @@
-# Forbid certain propTypes (react/forbid-prop-types)
+# Disallow certain propTypes (react/forbid-prop-types)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
 
 By default this rule prevents vague prop types with more specific alternatives available (`any`, `array`, `object`), but any prop type can be disabled if desired. The defaults are chosen because they have obvious replacements. `any` should be replaced with, well, anything. `array` and `object` can be replaced with `arrayOf` and `shape`, respectively.
 

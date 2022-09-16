@@ -14,6 +14,8 @@ describe('isFirstLetterCapitalized', () => {
   it('should return false for uncapitalized string', () => {
     assert.equal(isFirstLetterCapitalized('isCapitalized'), false);
     assert.equal(isFirstLetterCapitalized('lowercase'), false);
+    assert.equal(isFirstLetterCapitalized('_startsWithUnderscore'), false);
+    assert.equal(isFirstLetterCapitalized('_StartsWithUnderscore'), false);
   });
 
   it('should return true for capitalized string', () => {

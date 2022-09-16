@@ -1,12 +1,16 @@
-# Validate whitespace in and around the JSX opening and closing brackets (react/jsx-tag-spacing)
+# Enforce whitespace in and around the JSX opening and closing brackets (react/jsx-tag-spacing)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 Enforce or forbid spaces after the opening bracket, before the closing bracket, before the closing bracket of self-closing elements, and between the angle bracket and slash of JSX closing or self-closing elements.
-
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
 
 ## Rule Details
 
 This rule checks the whitespace inside and surrounding the JSX syntactic elements.
+
+## Rule Options
 
 This rule takes one argument, an object with 4 possible keys: `closingSlash`, `beforeSelfClosing`, `afterOpening`, and `beforeClosing`. Each key can receive the value `"allow"` to disable that specific check.
 

@@ -1,4 +1,6 @@
-# Prevent definitions of unused propTypes (react/no-unused-prop-types)
+# Disallow definitions of unused propTypes (react/no-unused-prop-types)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
 
 Warns if a prop with a defined type isn't being used.
 
@@ -79,10 +81,10 @@ This rule can take one argument to ignore some specific props during validation.
 ...
 ```
 
-* `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
-* `ignore`: optional array of props name to ignore during validation.
-* `customValidators`: optional array of validators used for propTypes validation.
-* `skipShapeProps`: In some cases it is impossible to accurately detect whether or not a `PropTypes.shape`'s values are being used. Setting this option to `true` will skip validation of `PropTypes.shape` (`true` by default).
+- `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
+- `ignore`: optional array of props name to ignore during validation.
+- `customValidators`: optional array of validators used for propTypes validation.
+- `skipShapeProps`: In some cases it is impossible to accurately detect whether or not a `PropTypes.shape`'s values are being used. Setting this option to `true` will skip validation of `PropTypes.shape` (`true` by default).
 
 ## Known Issues/Limitations
 
@@ -115,6 +117,7 @@ AComponent.propTypes = {
   bProp: PropTypes.string // bProp is defined but never used
 };
 ```
+
 A suggested fix is to assign a bProp to a variable outside of the SFC.
 
 ```js

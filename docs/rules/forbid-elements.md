@@ -1,4 +1,6 @@
-# Forbid certain elements (react/forbid-elements)
+# Disallow certain elements (react/forbid-elements)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
 
 You may want to forbid usage of certain elements in favor of others, (e.g. forbid all `<div />` and use `<Box />` instead). This rule allows you to configure a list of forbidden elements and to specify their desired replacements.
 
@@ -18,8 +20,8 @@ This rule checks all JSX elements and `React.createElement` calls and verifies t
 
 An array of strings and/or objects. An object in this array may have the following properties:
 
-* `element` (required): the name of the forbidden element (e.g. `'button'`, `'Modal'`)
-* `message`: additional message that gets reported
+- `element` (required): the name of the forbidden element (e.g. `'button'`, `'Modal'`)
+- `message`: additional message that gets reported
 
 A string item in the array is a shorthand for `{ element: string }`.
 

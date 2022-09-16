@@ -1,8 +1,10 @@
 # Enforce sandbox attribute on iframe elements (react/iframe-missing-sandbox)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 The sandbox attribute enables an extra set of restrictions for the content in the iframe. Using sandbox attribute is considered a good security practice.
 
-See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-sandbox
+See <https://developer.mozilla.org/en-US/docs/Web/HTML/Element/iframe#attr-sandbox>
 
 ## Rule Details
 

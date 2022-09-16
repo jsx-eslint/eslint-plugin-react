@@ -28,6 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 const defaultErrors = [{ messageId: 'noTargetBlankWithoutNoreferrer' }];
+const allowReferrerErrors = [{ messageId: 'noTargetBlankWithoutNoopener' }];
 
 ruleTester.run('jsx-no-target-blank', rule, {
   valid: parsers.all([
@@ -141,6 +142,19 @@ ruleTester.run('jsx-no-target-blank', rule, {
     {
       code: '<a href target="_blank"/>',
     },
+    {
+      code: '<a href={href} target={isExternal ? "_blank" : undefined} rel="noopener noreferrer" />',
+    },
+    {
+      code: '<a href={href} target={isExternal ? undefined : "_blank"} rel={isExternal ? "noreferrer" : "noopener noreferrer"} />',
+    },
+    {
+      code: '<a href={href} target={isExternal ? undefined : "_blank"} rel={isExternal ? "noreferrer noopener" : "noreferrer"} />',
+    },
+    {
+      code: '<a href={href} target="_blank" rel={isExternal ? "noreferrer" : "noopener"} />',
+      options: [{ allowReferrer: true }],
+    },
   ]),
   invalid: parsers.all([
     {
@@ -251,13 +265,13 @@ ruleTester.run('jsx-no-target-blank', rule, {
       code: '<a href="https://example.com/20" target="_blank" rel></a>',
       output: '<a href="https://example.com/20" target="_blank" rel="noopener"></a>',
       options: [{ allowReferrer: true }],
-      errors: [{ messageId: 'noTargetBlankWithoutNoopener' }],
+      errors: allowReferrerErrors,
     },
     {
       code: '<a href="https://example.com/20" target="_blank"></a>',
       output: '<a href="https://example.com/20" target="_blank" rel="noopener"></a>',
       options: [{ allowReferrer: true }],
-      errors: [{ messageId: 'noTargetBlankWithoutNoopener' }],
+      errors: allowReferrerErrors,
     },
     {
       code: '<a target="_blank" href={ dynamicLink }></a>',
@@ -351,6 +365,39 @@ ruleTester.run('jsx-no-target-blank', rule, {
       code: '<form method="POST" action="https://example.com" rel="noopenernoreferrer" target="_blank"></form>',
       options: [{ forms: true, links: false }],
       errors: defaultErrors,
+    },
+    {
+      code: '<a href={href} target="_blank" rel={isExternal ? "undefined" : "undefined"} />',
+      errors: defaultErrors,
+    },
+    {
+      code: '<a href={href} target="_blank" rel={isExternal ? "noopener" : undefined} />',
+      errors: defaultErrors,
+    },
+    {
+      code: '<a href={href} target="_blank" rel={isExternal ? "undefined" : "noopener"} />',
+      errors: defaultErrors,
+    },
+    {
+      code: '<a href={href} target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined} />',
+      errors: defaultErrors,
+    },
+    {
+      code: '<a href={href} target={isExternal ? "_blank" : undefined} rel={isExternal ? undefined : "noopener noreferrer"} />',
+      errors: defaultErrors,
+    },
+    {
+      code: '<a href={href} target="_blank" rel={isExternal ? 3 : "noopener noreferrer"} />',
+      errors: defaultErrors,
+    },
+    {
+      code: '<a href={href} target="_blank" rel={isExternal ? "noopener noreferrer" : "3"} />',
+      errors: defaultErrors,
+    },
+    {
+      code: '<a href={href} target="_blank" rel={isExternal ? "noopener" : "2"} />',
+      options: [{ allowReferrer: true }],
+      errors: allowReferrerErrors,
     },
   ]),
 });

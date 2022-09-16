@@ -1,8 +1,10 @@
-# Enforce or disallow spaces inside of curly braces in JSX attributes and expressions. (react/jsx-curly-spacing)
+# Enforce or disallow spaces inside of curly braces in JSX attributes and expressions (react/jsx-curly-spacing)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 While formatting preferences are very personal, a number of style guides require or disallow spaces between curly braces.
-
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
 
 ## Rule Details
 
@@ -14,14 +16,14 @@ It either requires or disallows spaces between those braces and the values insid
 
 There are two main options for the rule:
 
-* `{"when": "always"}` enforces a space inside of curly braces
-* `{"when": "never"}` disallows spaces inside of curly braces (default)
+- `{"when": "always"}` enforces a space inside of curly braces
+- `{"when": "never"}` disallows spaces inside of curly braces (default)
 
 There are also two properties that allow specifying how the rule should work with the attributes (`attributes`) and the expressions (`children`). The possible values are:
 
-* `true` enables checking for the spacing using the options (default for `attributes`), e.g. `{"attributes": false}` disables checking the attributes
-* `false` disables checking for the spacing (default for `children`, for backward compatibility), e.g. `{"children": true}` enables checking the expressions
-* an object containing options that override the global options, e.g. `{"when": "always", "children": {"when": "never"}}` enforces a space inside attributes, but disallows spaces inside expressions
+- `true` enables checking for the spacing using the options (default for `attributes`), e.g. `{"attributes": false}` disables checking the attributes
+- `false` disables checking for the spacing (default for `children`, for backward compatibility), e.g. `{"children": true}` enables checking the expressions
+- an object containing options that override the global options, e.g. `{"when": "always", "children": {"when": "never"}}` enforces a space inside attributes, but disallows spaces inside expressions
 
 ### never
 
@@ -203,7 +205,7 @@ You can specify an additional `spacing` property that is an object with the foll
 }}]
 ```
 
-* `objectLiterals`: This controls different spacing requirements when the value inside the jsx curly braces is an object literal.
+- `objectLiterals`: This controls different spacing requirements when the value inside the jsx curly braces is an object literal.
 
 All spacing options accept either the string `"always"` or the string `"never"`. Note that the default value for all "spacing" options matches the first "always"/"never" option provided.
 

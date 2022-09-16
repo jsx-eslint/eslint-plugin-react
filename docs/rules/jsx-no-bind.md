@@ -1,4 +1,6 @@
-# No `.bind()` or Arrow Functions in JSX Props (react/jsx-no-bind)
+# Disallow `.bind()` or arrow functions in JSX props (react/jsx-no-bind)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
 
 A `bind` call or [arrow function](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions) in a JSX prop will create a brand new function on every single render. This is bad for performance, as it may cause unnecessary re-renders if a brand new function is passed as a prop to a component that uses reference equality check on the prop to determine if it should update.
 
@@ -11,15 +13,18 @@ Examples of **incorrect** code for this rule:
 ```jsx
 <Foo onClick={this._handleClick.bind(this)}></Foo>
 ```
+
 ```jsx
 <Foo onClick={() => console.log('Hello!')}></Foo>
 ```
+
 ```jsx
 function onClick() { console.log('Hello!'); }
 <Foo onClick={onClick} />
 ```
 
 Examples of **correct** code for this rule:
+
 ```jsx
 <Foo onClick={this._handleClick}></Foo>
 ```

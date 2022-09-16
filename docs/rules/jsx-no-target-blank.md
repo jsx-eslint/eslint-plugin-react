@@ -1,6 +1,10 @@
-# Prevent usage of unsafe `target='_blank'` (react/jsx-no-target-blank)
+# Disallow `target="_blank"` attribute without `rel="noreferrer"` (react/jsx-no-target-blank)
 
-When creating a JSX element that has an `a` tag, it is often desired to have the link open in a new tab using the `target='_blank'` attribute. Using this attribute unaccompanied by `rel='noreferrer'`, however, is a severe security vulnerability ([see here for more details](https://html.spec.whatwg.org/multipage/links.html#link-type-noopener))
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`, `recommended`.
+
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
+
+When creating a JSX element that has an `a` tag, it is often desired to have the link open in a new tab using the `target='_blank'` attribute. Using this attribute unaccompanied by `rel='noreferrer'`, however, is a severe security vulnerability (see [noreferrer docs](https://html.spec.whatwg.org/multipage/links.html#link-type-noreferrer) and [noopener docs](https://html.spec.whatwg.org/multipage/links.html#link-type-noopener) for more details)
 This rules requires that you accompany `target='_blank'` attributes with `rel='noreferrer'`.
 
 ## Rule Details
@@ -21,12 +25,12 @@ This rule aims to prevent user generated link hrefs and form actions from creati
 ...
 ```
 
-* `enabled`: for enabling the rule.
-* `allowReferrer`: optional boolean. If `true` does not require `noreferrer` (i. e. `noopener` alone is enough, this leaves IE vulnerable). Defaults to `false`.
-* `enforceDynamicLinks`: optional string, `'always'` or `'never'`.
-* `warnOnSpreadAttributes`: optional boolean. Defaults to `false`.
-* `links`: prevent usage of unsafe `target='_blank'` inside links, defaults to `true`.
-* `forms`: prevent usage of unsafe `target='_blank'` inside forms, defaults to `false`.
+- `enabled`: for enabling the rule.
+- `allowReferrer`: optional boolean. If `true` does not require `noreferrer` (i. e. `noopener` alone is enough, this leaves IE vulnerable). Defaults to `false`.
+- `enforceDynamicLinks`: optional string, `'always'` or `'never'`.
+- `warnOnSpreadAttributes`: optional boolean. Defaults to `false`.
+- `links`: prevent usage of unsafe `target='_blank'` inside links, defaults to `true`.
+- `forms`: prevent usage of unsafe `target='_blank'` inside forms, defaults to `false`.
 
 ### `enforceDynamicLinks`
 
@@ -123,7 +127,7 @@ This rule supports the ability to use custom components for forms. To enable thi
 
 ## When To Override It
 
-Modern browsers (Chrome ≥ 88, Edge ≥ 88, Firefox ≥ 79 and Safari ≥ 12.2) automatically imply `rel="noopener"`. Therefore this rule is no longer needed, if legacy browsers are not supported. See https://web.dev/external-anchors-use-rel-noopener/ and https://caniuse.com/mdn-html_elements_a_implicit_noopener for more details.
+Modern browsers (Chrome ≥ 88, Edge ≥ 88, Firefox ≥ 79 and Safari ≥ 12.2) automatically imply `rel="noopener"`. Therefore this rule is no longer needed, if legacy browsers are not supported. See <https://web.dev/external-anchors-use-rel-noopener/> and <https://caniuse.com/mdn-html_elements_a_implicit_noopener> for more details.
 
 For links to a trusted host (e.g. internal links to your own site, or links to a another host you control, where you can be certain this security vulnerability does not exist), you may want to keep the HTTP Referer header for analytics purposes.
 

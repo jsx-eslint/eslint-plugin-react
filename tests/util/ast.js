@@ -58,7 +58,7 @@ describe('ast', () => {
       spy.resetHistory();
 
       traverseReturns(parseCode(`
-        ({prop}) => 'someething'
+        ({prop}) => 'something'
       `).expression, mockContext, spy);
 
       assert(spy.calledOnce);

@@ -76,7 +76,7 @@ ruleTester.run('prefer-stateless-function', rule, {
       options: [{ ignorePureComponents: true }],
     },
     {
-      // Has a lifecyle method
+      // Has a lifecycle method
       code: `
         class Foo extends React.Component {
           shouldComponentUpdate() {

@@ -1,8 +1,10 @@
-# Enforce linebreaks in curly braces in JSX attributes and expressions. (react/jsx-curly-newline)
+# Enforce consistent linebreaks in curly braces in JSX attributes and expressions (react/jsx-curly-newline)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 Many style guides require or disallow newlines inside of jsx curly expressions.
-
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
 
 ## Rule Details
 
@@ -18,18 +20,19 @@ This rule accepts either an object option:
   singleline: "consistent" | "forbid" | "require", // default to 'consistent'
 }
 ```
+
 Option `multiline` takes effect when the jsx expression inside the curlies occupies multiple lines.
 
 Option `singleline` takes effect when the jsx expression inside the curlies occupies a single line.
 
-* `consistent` enforces either both curly braces have a line break directly inside them, or no line breaks are present.
-* `forbid` disallows linebreaks directly inside curly braces.
-* `require` enforces the presence of linebreaks directly inside curlies.
+- `consistent` enforces either both curly braces have a line break directly inside them, or no line breaks are present.
+- `forbid` disallows linebreaks directly inside curly braces.
+- `require` enforces the presence of linebreaks directly inside curlies.
 
 or a string option:
 
-* `consistent` (default) is an alias for `{ multiline: "consistent", singleline: "consistent" }`.
-* `never` is an alias for `{ multiline: "forbid", singleline: "forbid" }`
+- `consistent` (default) is an alias for `{ multiline: "consistent", singleline: "consistent" }`.
+- `never` is an alias for `{ multiline: "forbid", singleline: "forbid" }`
 
 or an
 
@@ -142,7 +145,6 @@ Examples of **correct** code for this rule:
   }
 </div>
 ```
-
 
 ## When Not To Use It
 

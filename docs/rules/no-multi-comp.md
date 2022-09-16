@@ -1,4 +1,6 @@
-# Prevent multiple component definition per file (react/no-multi-comp)
+# Disallow multiple component definition per file (react/no-multi-comp)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
 
 Declaring only one component per file improves readability and reusability of components.
 

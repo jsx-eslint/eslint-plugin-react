@@ -8,18 +8,19 @@ const ruleTableRows = Object.keys(rules)
   .sort()
   .map((id) => {
     const { meta } = rules[id];
-    const { fixable, docs } = meta;
+    const { fixable, docs, hasSuggestions } = meta;
     return [
       docs.recommended ? '✔' : '',
       fixable ? '🔧' : '',
+      hasSuggestions ? '💡' : '',
       `[react/${id}](docs/rules/${id}.md)`,
-      docs.description,
+      `${docs.description}${meta.deprecated ? '. ❌ This rule is deprecated.' : ''}`,
     ].join(' | ');
   });
 
 const buildRulesTable = (rows) => {
-  const header = '✔ | 🔧 | Rule | Description';
-  const separator = ':---: | :---: | :--- | :---';
+  const header = '✔ | 🔧 | 💡 | Rule | Description';
+  const separator = ':---: | :---: | :---: | :--- | :---';
 
   return [header, separator, ...rows]
     .map((row) => `| ${row} |`)

@@ -1,9 +1,12 @@
-# One JSX Element Per Line (react/jsx-one-expression-per-line)
+# Require one JSX element per line (react/jsx-one-expression-per-line)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 This option limits every line in JSX to one expression each.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
-Fixer will insert line breaks between any expression that are on the same line.
+Note: The fixer will insert line breaks between any expression that are on the same line.
 
 ## Rule Details
 

@@ -203,6 +203,68 @@ ruleTester.run('no-multi-comp', rule, {
       `,
       features: ['class fields'],
     },
+    {
+      code: `
+        const MenuList = forwardRef(({onClose, ...props}, ref) => {
+          const {t} = useTranslation();
+          const handleLogout = useLogoutHandler();
+
+          const onLogout = useCallback(() => {
+            onClose();
+            handleLogout();
+          }, [onClose, handleLogout]);
+
+          return (
+            <MuiMenuList ref={ref} {...props}>
+              <MuiMenuItem key="logout" onClick={onLogout}>
+                {t('global-logout')}
+              </MuiMenuItem>
+            </MuiMenuList>
+          );
+        });
+
+        MenuList.displayName = 'MenuList';
+
+        MenuList.propTypes = {
+          onClose: PropTypes.func,
+        };
+
+        MenuList.defaultProps = {
+          onClose: () => null,
+        };
+
+        export default MenuList;
+      `,
+    },
+    {
+      code: `
+        const MenuList = forwardRef(({ onClose, ...props }, ref) => {
+          const onLogout = useCallback(() => {
+            onClose()
+          }, [onClose])
+
+          return (
+            <BlnMenuList ref={ref} {...props}>
+              <BlnMenuItem key="logout" onClick={onLogout}>
+                Logout
+              </BlnMenuItem>
+            </BlnMenuList>
+          )
+        })
+
+        MenuList.displayName = 'MenuList'
+
+        MenuList.propTypes = {
+          onClose: PropTypes.func
+        }
+
+        MenuList.defaultProps = {
+          onClose: () => null
+        }
+
+        export default MenuList
+      `,
+    },
   ]),
 
   invalid: parsers.all([

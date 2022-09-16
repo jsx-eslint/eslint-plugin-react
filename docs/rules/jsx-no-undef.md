@@ -1,5 +1,7 @@
 # Disallow undeclared variables in JSX (react/jsx-no-undef)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`, `recommended`.
+
 This rule helps locate potential ReferenceErrors resulting from misspellings or missing components.
 
 ## Rule Details
@@ -19,7 +21,6 @@ var Hello = React.createClass({
 });
 module.exports = Hello;
 ```
-
 
 Examples of **correct** code for this rule:
 

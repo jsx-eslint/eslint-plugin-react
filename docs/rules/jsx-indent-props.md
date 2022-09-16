@@ -1,8 +1,10 @@
-# Validate props indentation in JSX (react/jsx-indent-props)
+# Enforce props indentation in JSX (react/jsx-indent-props)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 This option validates a specific indentation style for props.
-
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
 
 ## Rule Details
 
@@ -33,7 +35,6 @@ It takes an option as the second parameter which can either be the indent mode o
 The indent mode can be `"tab"` for tab-based indentation, a positive number for space indentations or `"first"` for aligning the first prop for each line with the tag's first prop.
 Note that using the `"first"` option allows very inconsistent indentation unless you also enable a rule that enforces the position of the first prop.
 If the second parameter is an object, it can be used to specify the indent mode as well as the option `ignoreTernaryOperator`, which causes the indent level not to be increased by a `?` or `:` operator (default is `false`).
-
 
 ```js
 ...

@@ -1,4 +1,6 @@
-# Disallow JSX props spreading (react/jsx-props-no-spreading)
+# Disallow JSX prop spreading (react/jsx-props-no-spreading)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
 
 Enforces that there is no spreading for any JSX attribute. This enhances readability of code by being more explicit about what props are received by the component. It is also good for maintainability by avoiding passing unintentional extra props and allowing react to emit warnings when invalid HTML props are passed to HTML elements.
 
@@ -68,7 +70,7 @@ Examples of **incorrect** code for this rule, when `custom` is set to `ignore`:
 
 ### explicitSpread
 
-`explicitSpread` set to `ignore` will ignore spread operators that are explicilty listing all object properties within that spread. Default is set to `enforce`.
+`explicitSpread` set to `ignore` will ignore spread operators that are explicitly listing all object properties within that spread. Default is set to `enforce`.
 
 Examples of **correct** code for this rule, when `explicitSpread` is set to `ignore`:
 

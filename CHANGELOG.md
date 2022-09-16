@@ -5,10 +5,211 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.31.8] - 2022.09.08
+
+### Fixed
+* [`no-unknown-property`]: add `viewBox` on `marker` ([#3416][] @ljharb)
+* [`no-unknown-property`]: add `noModule` on `script` ([#3414][] @ljharb)
+* [`no-unknown-property`]: allow `onLoad` on `<object>` ([#3415][] @OleksiiKachan)
+* [`no-multi-comp`]: do not detect a function property returning only null as a component ([#3412][] @ljharb)
+* [`no-unknown-property`]: allow `abbr` on `<th>` and `<td>` ([#3419][] @OleksiiKachan)
+* [`no-unknown-property`]: add `viewBox` for `pattern`, `symbol`, `view` ([#3424][] @MNBuyskih)
+* [`no-unknown-property`]: add `align` on all the tags that support it ([#3425][] @ljharb)
+
+### Changed
+
+* [meta] npmignore markdownlint config ([#3413][] @jorrit)
+
+[7.31.8]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.7...v7.31.8
+[#3425]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3425
+[#3424]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3424
+[#3419]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3419
+[#3416]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3416
+[#3415]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3415
+[#3414]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3414
+[#3413]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3413
+[#3412]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3412
+
+## [7.31.7] - 2022.09.05
+
+### Fixed
+* [`no-unknown-property`]: avoid warning on `fbt` nodes entirely ([#3391][] @ljharb)
+* [`no-unknown-property`]: add `download` property support for `a` and `area` ([#3394][] @HJain13)
+* [`no-unknown-property`]: allow `webkitAllowFullScreen` and `mozAllowFullScreen` ([#3396][] @ljharb)
+* [`no-unknown-property`]: `controlsList`, not `controlList` ([#3397][] @ljharb)
+* [`no-unknown-property`]: add more capture event properties ([#3402][] @sjarva)
+* [`no-unknown-property`]: Add more one word properties found in DefinitelyTyped's react/index.d.ts ([#3402][] @sjarva)
+* [`no-unknown-property`]: Mark onLoad/onError as supported on iframes ([#3398][] @maiis, [#3406][] @akx)
+* [`no-unknown-property`]: allow `imageSrcSet` and `imageSizes` attributes on `<link>` ([#3407][] @terrymun)
+* [`no-unknown-property`]: add `border`; `focusable` on `<svg>` ([#3404][] [#3404][] @ljharb)
+* [`no-unknown-property`]: React lowercases `data-` attrs ([#3395][] @ljharb)
+* [`no-unknown-property`]: add `valign` on table components ([#3389][] @ljharb)
+
+[7.31.7]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.6...v7.31.7
+[#3407]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3407
+[#3406]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3406
+[#3405]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3405
+[#3404]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3404
+[#3402]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3402
+[#3398]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3398
+[#3397]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3397
+[#3396]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3396
+[#3395]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3395
+[#3394]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3394
+[#3391]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3391
+[#3389]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3389
+
+## [7.31.6] - 2022.09.04
+
+### Fixed
+* [`no-unknown-property`]: `onError` and `onLoad` both work on `img` and `script` ([#3388][] @ljharb)
+* [`no-unknown-property`]: data-* attributes can have numbers ([#3390][] @sjarva)
+* [`no-unknown-property`]: add more audio/video attributes ([#3390][] @sjarva)
+* [`no-unknown-property`]: move allowfullscreen to case ignored attributes ([#3390][] @sjarva)
+* [`no-unknown-property`]: fill works on line, mask, and use elements ([#3390][] @sjarva)
+* [`no-unknown-property`]: add onMouseMoveCapture as valid react-specific attribute ([#3390][] @sjarva)
+* [`no-unknown-property`]: make onLoad and onError be accepted on more elements ([#3390][] @sjarva)
+
+### Changed
+
+* [Docs] [`no-unknown-property`]: add a mention about using ignores properties with libraries that add props ([#3390][] @sjarva)
+
+[7.31.6]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.5...v7.31.6
+[#3390]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3390
+[#3388]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3388
+
+## [7.31.5] - 2022.09.03
+
+### Fixed
+* [`no-unknown-property`]: add properties `onToggle`, `fill`, `as`, and pointer events ([#3385][] @sjarva)
+* [`no-unknown-property`]: add `defaultChecked` property ([#3385][] @sjarva)
+* [`no-unknown-property`]: add touch and media event related properties ([#3385][] @sjarva)
+* [`no-unknown-property`]: `children` is always an acceptable prop; iframes have `scrolling`; video has `playsInline` ([#3385][] @ljharb)
+
+[7.31.5]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.4...v7.31.5
+[#3385]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3385
+
+## [7.31.4] - 2022.09.03
+
+### Fixed
+* [`no-unknown-property`]: support `checked` on inputs ([#3383][] @ljharb)
+
+[#3383]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3383
+
+[7.31.4]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.3...v7.31.4
+
+## [7.31.3] - 2022.09.02
+
+### Fixed
+* [`no-unknown-property`]: add SVG and meta properties ([#3381][] @AhmadMayo)
+
+[7.31.3]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.2...v7.31.3
+[#3381]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3381
+
+## [7.31.2] - 2022.09.02
+
+### Fixed
+* [`jsx-key`]: avoid a crash with optional chaining ([#3371][] @ljharb)
+* [`jsx-sort-props`]: avoid a crash with spread props ([#3376][] @ljharb)
+* [`no-unknown-property`]: properly recognize valid data- and aria- attributes ([#3377][] @sjarva)
+* [`no-unknown-property`]: properly recognize unknown HTML/DOM attributes ([#3377][] @sjarva)
+
+### Changed
+* [Docs] [`jsx-sort-props`]: replace ref string with ref variable ([#3375][] @Luccasoli)
+* [Refactor] [`no-unknown-property`]: improve jsdoc; extract logic to separate functions ([#3377][] @sjarva)
+* [Refactor] [`no-unknown-property`]: update DOM properties to include also one word properties ([#3377][] @sjarva)
+
+[7.31.2]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.1...v7.31.2
+[#3377]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3377
+[#3376]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3376
+[#3375]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3375
+[#3371]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3371
+
+## [7.31.1] - 2022.08.26
+
+### Fixed
+* [`jsx-key`]: fix detecting missing key in `Array.from`'s mapping function ([#3369][] @sjarva)
+* [`jsx-no-leaked-render`]: coerce strategy now allows a ternary ([#3370][] @sjarva)
+
+[7.31.1]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.0...v7.31.1
+[#3370]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3370
+[#3369]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3369
+
+## [7.31.0] - 2022.08.24
+
 ### Added
 * [`jsx-newline`]: add `allowMultiline` option when prevent option is true ([#3311][] @TildaDares)
+* [`forbid-dom-props`]: add `disallowedFor` option ([#3338][] @TildaDares)
 
+### Fixed
+* [`jsx-no-literals`]: properly error on children with noAttributeStrings: true ([#3317][] @TildaDares)
+* [`jsx-key`]: catch key errors inside conditional statements ([#3320][] @TildaDares)
+* [`display-name`]: Accept forwardRef and Memo nesting in newer React versions ([#3321][] @TildaDares)
+* [`jsx-key`]: avoid a crash from optional chaining from [#3320][] ([#3327][] @ljharb)
+* [`jsx-key`]: avoid a crash on a non-array node.body from [#3320][] ([#3328][] @ljharb)
+* [`display-name`]: fix false positive for assignment of function returning null ([#3331][] @apbarrero)
+* [`display-name`]: fix identifying `_` as a capital letter ([#3335][] @apbarrero)
+* [`require-default-props`]: avoid a crash when function has no props param ([#3350][] @noahnu)
+* [`display-name`], component detection: fix HOF returning null as Components ([#3347][] @jxm-math)
+* [`forbid-prop-types`]: Ignore objects that are not of type React.PropTypes ([#3326][] @TildaDares)
+* [`display-name`], component detection: fix false positive for HOF returning only nulls and literals ([#3305][] @golopot)
+* [`jsx-no-target-blank`]: False negative when rel attribute is assigned using ConditionalExpression ([#3332][] @V2dha)
+* [`jsx-no-leaked-render`]: autofix nested "&&" logical expressions ([#3353][] @hduprat)
+* [`jsx-sort-props`]: sorted attributes now respect comments ([#3358][] @ROSSROSALES)
+
+### Changed
+* [Refactor] [`jsx-indent-props`]: improved readability of the checkNodesIndent function ([#3315][] @caroline223)
+* [Tests] [`jsx-indent`], [`jsx-one-expression-per-line`]: add passing test cases ([#3314][] @ROSSROSALES)
+* [Refactor] `boolean-prop-naming`, `jsx-indent`: avoid assigning to arguments ([#3316][] @caroline223)
+* [Docs] [`sort-comp`]: add class component examples ([#3339][] @maurer2)
+* [Docs] [`jsx-no-useless-fragment`]: add more examples of correct code ([#3349][] @karlhorky)
+* [Docs] [`jsx-boolean-value`]: add jsdoc types for helper functions ([#3344][] @caroline223)
+* [readme] remove dead codeclimate badge, add actions badge (@ljharb)
+* [readme] Remove dead david-dm badge ([#3262][] @ddzz)
+* [Refactor] [`jsx-closing-bracket-location`], [`jsx-no-bind`]: fix eslint issues ([#3351][] @caroline223)
+* [Tests] [`function-component-definition`]: add passing test cases ([#3355][] @TildaDares)
+* [Docs] [`jsx-no-target-blank`]: Fix link to link-type-noreferrer ([#3319][] @Luccasoli)
+* [Docs] document which rules provide suggestions ([#3359][], [#3365][] @bmish)
+* [Docs] Consistent rule descriptions and doc sections ([#3361][] @bmish)
+* [Docs] Standardize deprecated rule notice ([#3364][] @bmish)
+* [Docs] Fix typos ([#3366][] @bmish)
+* [Docs] Add markdownlint for documentation formatting consistency ([#3367][] @bmish)
+* [Docs] Add config notice to rule docs ([#3362][] @bmish)
+
+[7.31.0]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.30.1...v7.31.0
+[#3367]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3367
+[#3366]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3366
+[#3365]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3365
+[#3364]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3364
+[#3362]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3362
+[#3361]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3361
+[#3359]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3359
+[#3358]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3358
+[#3355]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3355
+[#3353]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3353
+[#3351]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3351
+[#3350]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3350
+[#3349]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3349
+[#3347]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3347
+[#3344]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3344
+[#3339]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3339
+[#3338]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3338
+[#3335]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3335
+[#3332]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3332
+[#3331]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3331
+[#3328]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3328
+[#3327]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3327
+[#3326]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3326
+[#3321]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3321
+[#3320]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3320
+[#3319]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3319
+[#3317]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3317
+[#3316]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3316
+[#3315]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3315
+[#3314]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3314
 [#3311]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3311
+[#3305]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3305
+[#3262]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3262
 
 ## [7.30.1] - 2022.06.23
 

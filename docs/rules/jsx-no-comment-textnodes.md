@@ -1,4 +1,6 @@
-# Prevent comments from being inserted as text nodes (react/jsx-no-comment-textnodes)
+# Disallow comments from being inserted as text nodes (react/jsx-no-comment-textnodes)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`, `recommended`.
 
 This rule prevents comment strings (e.g. beginning with `//` or `/*`) from being accidentally
 injected as a text node in JSX statements.

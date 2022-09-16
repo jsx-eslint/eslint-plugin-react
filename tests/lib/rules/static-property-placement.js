@@ -44,7 +44,7 @@ const ruleTester = new RuleTester(ruleTesterConfig);
 ruleTester.run('static-property-placement', rule, {
   valid: parsers.all([
     // ------------------------------------------------------------------------------
-    // Ignore creatClass/createReactClass and Static Functional Components
+    // Ignore createClass/createReactClass and Static Functional Components
     // ------------------------------------------------------------------------------
     {
       // Do not error on createReactClass pragma
@@ -1149,7 +1149,7 @@ ruleTester.run('static-property-placement', rule, {
 
   invalid: parsers.all([
     // ------------------------------------------------------------------------------
-    // expected static field when got property assigment
+    // expected static field when got property assignment
     // ------------------------------------------------------------------------------
     {
       // Error if multiple properties are incorrectly positioned according to config
@@ -1929,7 +1929,7 @@ ruleTester.run('static-property-placement', rule, {
     // combined - mixed
     // ------------------------------------------------------------------------------
     {
-      // Error if mixed property positions but dont match config
+      // Error if mixed property positions but don't match config
       code: `
         class MyComponent extends React.Component {
           static childContextTypes = {
@@ -1992,7 +1992,7 @@ ruleTester.run('static-property-placement', rule, {
       ],
     },
     {
-      // Error if mixed property positions but dont match config
+      // Error if mixed property positions but don't match config
       code: `
         class MyComponent extends React.Component {
           static childContextTypes = {

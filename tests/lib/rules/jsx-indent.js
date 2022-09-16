@@ -45,7 +45,7 @@ ruleTester.run('jsx-indent', rule, {
     {
       code: `
         <App>
-        </App>
+        </App> 
       `,
     },
     {
@@ -2998,6 +2998,135 @@ const Component = () => (
         {
           message: 'Expected indentation of 10 space characters but found 12.',
           line: 6,
+        },
+      ],
+    },
+    {
+      code: `
+        const IndexPage = () => (
+          <h1>
+        {"Hi people"}
+        <button/>
+        </h1>
+        );
+      `,
+      output: `
+        const IndexPage = () => (
+          <h1>
+            {"Hi people"}
+            <button/>
+          </h1>
+        );
+      `,
+      options: [2],
+      errors: [
+        {
+          messageId: 'wrongIndent',
+          data: {
+            needed: 12,
+            type: 'space',
+            characters: 'characters',
+            gotten: 8,
+          },
+        },
+        {
+          messageId: 'wrongIndent',
+          data: {
+            needed: 12,
+            type: 'space',
+            characters: 'characters',
+            gotten: 8,
+          },
+        },
+        {
+          messageId: 'wrongIndent',
+          data: {
+            needed: 10,
+            type: 'space',
+            characters: 'characters',
+            gotten: 8,
+          },
+        },
+      ],
+    },
+    // Would be nice to handle in one pass, but multipass works fine.
+    {
+      code: `
+        const IndexPage = () => (
+          <h1>
+        Hi people
+        <button/>
+        </h1>
+        );
+      `,
+
+      output: `
+        const IndexPage = () => (
+          <h1>
+            Hi people
+        <button/>
+          </h1>
+        );
+      `,
+      options: [2],
+      errors: [
+        {
+          messageId: 'wrongIndent',
+          data: {
+            needed: 12,
+            type: 'space',
+            characters: 'characters',
+            gotten: 8,
+          },
+        },
+        {
+          messageId: 'wrongIndent',
+          data: {
+            needed: 12,
+            type: 'space',
+            characters: 'characters',
+            gotten: 8,
+          },
+        },
+        {
+          messageId: 'wrongIndent',
+          data: {
+            needed: 10,
+            type: 'space',
+            characters: 'characters',
+            gotten: 8,
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        const IndexPage = () => (
+          <h1>
+            Hi people
+        <button/>
+          </h1>
+        );
+      `,
+
+      output: `
+        const IndexPage = () => (
+          <h1>
+            Hi people
+            <button/>
+          </h1>
+        );
+      `,
+      options: [2],
+      errors: [
+        {
+          messageId: 'wrongIndent',
+          data: {
+            needed: 12,
+            type: 'space',
+            characters: 'characters',
+            gotten: 8,
+          },
         },
       ],
     },

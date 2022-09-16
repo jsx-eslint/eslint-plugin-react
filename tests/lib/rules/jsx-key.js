@@ -43,6 +43,11 @@ ruleTester.run('jsx-key', rule, {
     { code: '[1, 2, 3].map(function(x) { return <App key={x} /> });' },
     { code: '[1, 2, 3].map(x => <App key={x} />);' },
     { code: '[1, 2, 3].map(x => { return <App key={x} /> });' },
+    { code: 'Array.from([1, 2, 3], function(x) { return <App key={x} /> });' },
+    { code: 'Array.from([1, 2, 3], (x => <App key={x} />));' },
+    { code: 'Array.from([1, 2, 3], (x => {return <App key={x} />}));' },
+    { code: 'Array.from([1, 2, 3], someFn);' },
+    { code: 'Array.from([1, 2, 3]);' },
     { code: '[1, 2, 3].foo(x => <App />);' },
     { code: 'var App = () => <div />;' },
     { code: '[1, 2, 3].map(function(x) { return; });' },
@@ -94,7 +99,7 @@ ruleTester.run('jsx-key', rule, {
 
         import './ResourceVideo.sass';
         import VimeoVideoPlayInModal from '../vimeoVideoPlayInModal/VimeoVideoPlayInModal';
-        
+
         type Props = {
           videoUrl: string;
           videoTitle: string;
@@ -110,7 +115,7 @@ ruleTester.run('jsx-key', rule, {
             </div>
           );
         };
-        
+
         export default ResourceVideo;
       `,
       features: ['types'],
@@ -120,9 +125,56 @@ ruleTester.run('jsx-key', rule, {
         // testrule.jsx
         const trackLink = () => {};
         const getAnalyticsUiElement = () => {};
-        
+
         const onTextButtonClick = (e, item) => trackLink([, getAnalyticsUiElement(item), item.name], e);
       `,
+    },
+    {
+      code: `
+        function Component({ allRatings }) {
+          return (
+            <RatingDetailsStyles>
+              {Object.entries(allRatings)?.map(([key, value], index) => {
+                const rate = value?.split(/(?=[%, /])/);
+
+                if (!rate) return null;
+
+                return (
+                  <li key={\`\${entertainment.tmdbId}\${index}\`}>
+                    <img src={\`/assets/rating/\${key}.png\`} />
+                    <span className="rating-details--rate">{rate?.[0]}</span>
+                    <span className="rating-details--rate-suffix">{rate?.[1]}</span>
+                  </li>
+                );
+              })}
+            </RatingDetailsStyles>
+          );
+        }
+      `,
+      features: ['optional chaining'],
+    },
+    {
+      code: `
+        const baz = foo?.bar?.()?.[1] ?? 'qux';
+
+        qux()?.map()
+
+        const directiveRanges = comments?.map(tryParseTSDirective)
+      `,
+      features: ['optional chaining', 'nullish coalescing'],
+    },
+    {
+      code: `
+        import { observable } from "mobx";
+
+        export interface ClusterFrameInfo {
+          frameId: number;
+          processId: number;
+        }
+
+        export const clusterFrameMap = observable.map<string, ClusterFrameInfo>();
+      `,
+      features: ['types', 'no-babel-old'],
     },
   ]),
   invalid: parsers.all([
@@ -148,6 +200,18 @@ ruleTester.run('jsx-key', rule, {
     },
     {
       code: '[1, 2 ,3].map(x => { return <App /> });',
+      errors: [{ messageId: 'missingIterKey' }],
+    },
+    {
+      code: 'Array.from([1, 2 ,3], function(x) { return <App /> });',
+      errors: [{ messageId: 'missingIterKey' }],
+    },
+    {
+      code: 'Array.from([1, 2 ,3], (x => { return <App /> }));',
+      errors: [{ messageId: 'missingIterKey' }],
+    },
+    {
+      code: 'Array.from([1, 2 ,3], (x => <App />));',
       errors: [{ messageId: 'missingIterKey' }],
     },
     {
@@ -228,6 +292,58 @@ ruleTester.run('jsx-key', rule, {
       errors: [
         { messageId: 'nonUniqueKeys', line: 4 },
         { messageId: 'nonUniqueKeys', line: 5 },
+      ],
+    },
+    {
+      code: `
+        const Test = () => {
+          const list = [1, 2, 3, 4, 5];
+
+          return (
+            <div>
+              {list.map(item => {
+                if (item < 2) {
+                  return <div>{item}</div>;
+                }
+
+                return <div />;
+              })}
+            </div>
+          );
+        };
+      `,
+      errors: [
+        { messageId: 'missingIterKey' },
+        { messageId: 'missingIterKey' },
+      ],
+    },
+    {
+      code: `
+        const TestO = () => {
+          const list = [1, 2, 3, 4, 5];
+
+          return (
+            <div>
+              {list.map(item => {
+                if (item < 2) {
+                  return <div>{item}</div>;
+                } else if (item < 5) {
+                  return <div></div>
+                }  else {
+                  return <div></div>
+                }
+
+                return <div />;
+              })}
+            </div>
+          );
+        };
+      `,
+      errors: [
+        { messageId: 'missingIterKey' },
+        { messageId: 'missingIterKey' },
+        { messageId: 'missingIterKey' },
+        { messageId: 'missingIterKey' },
       ],
     },
   ]),

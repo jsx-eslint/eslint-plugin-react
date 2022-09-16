@@ -1,8 +1,10 @@
 # Enforce props alphabetical sorting (react/jsx-sort-props)
 
-Some developers prefer to sort props names alphabetically to be able to find necessary props easier at the later time. Others feel that it adds complexity and becomes burden to maintain.
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
+
+Some developers prefer to sort props names alphabetically to be able to find necessary props easier at the later time. Others feel that it adds complexity and becomes burden to maintain.
 
 ## Rule Details
 
@@ -76,11 +78,11 @@ When `true`, short hand props must be listed after all other props (unless `call
 
 Enforced sorting for multiline props
 
-* `ignore`: Multiline props will not be taken in consideration for sorting.
+- `ignore`: Multiline props will not be taken in consideration for sorting.
 
-* `first`: Multiline props must be listed before all other props (unless `shorthandFirst` is set), but still respecting the alphabetical order.
+- `first`: Multiline props must be listed before all other props (unless `shorthandFirst` is set), but still respecting the alphabetical order.
 
-* `last`: Multiline props must be listed after all other props (unless either `callbacksLast` or `shorthandLast` are set), but still respecting the alphabetical order.
+- `last`: Multiline props must be listed after all other props (unless either `callbacksLast` or `shorthandLast` are set), but still respecting the alphabetical order.
 
 Defaults to `ignore`.
 
@@ -123,8 +125,8 @@ This can be a boolean or an array option.
 When `reservedFirst` is defined, React reserved props (`children`, `dangerouslySetInnerHTML` - **only for DOM components**, `key`, and `ref`) must be listed before all other props, but still respecting the alphabetical order:
 
 ```jsx
-<Hello key={0} ref="John" name="John">
-  <div dangerouslySetInnerHTML={{__html: 'ESLint Plugin React!'}} ref="dangerDiv" />
+<Hello key={0} ref={johnRef} name="John">
+  <div dangerouslySetInnerHTML={{__html: 'ESLint Plugin React!'}} ref={dangerDivRef} />
 </Hello>
 ```
 
@@ -133,7 +135,7 @@ If given as an array, the array's values will override the default list of reser
 With `reservedFirst: ["key"]`, the following will **not** warn:
 
 ```jsx
-<Hello key={'uuid'} name="John" ref="ref" />
+<Hello key={'uuid'} name="John" ref={johnRef} />
 ```
 
 ### `locale`

@@ -11,6 +11,7 @@
 
 const RuleTester = require('eslint').RuleTester;
 const semver = require('semver');
+const eslintPkg = require('eslint/package.json');
 const rule = require('../../../lib/rules/jsx-sort-props');
 
 const parsers = require('../../helpers/parsers');
@@ -297,7 +298,7 @@ ruleTester.run('jsx-sort-props', rule, {
       options: [{ locale: 'sk-SK' }],
     } : []
   )),
-  invalid: parsers.all([
+  invalid: parsers.all([].concat(
     {
       code: '<App b a />;',
       errors: [expectedError],
@@ -821,5 +822,285 @@ ruleTester.run('jsx-sort-props', rule, {
         },
       ],
     },
-  ]),
+    semver.satisfies(eslintPkg.version, '> 3') ? {
+      code: `
+        <foo
+          m={0}
+          n={0} // this is n
+          o={0}
+          c={0} // this is c
+          // fofof
+          f={0} // this is f
+          a={0}
+          b={0}
+          d={0}
+        />
+      `,
+      output: `
+        <foo
+          a={0}
+          b={0}
+          d={0}
+          m={0}
+          n={0} // this is n
+          o={0}
+          c={0} // this is c
+          // fofof
+          f={0} // this is f
+        />
+      `,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 6,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 8,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 9,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 10,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 11,
+        },
+      ],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 3') ? {
+      code: `
+        <foo
+          m={0}
+          n={0} // this is n
+          o={0}
+          c={0} // this is c
+          f={0} // this is f
+          e={0}
+          a={0}
+          b={0}
+          d={0}
+        />
+      `,
+      output: `
+        <foo
+          a={0}
+          b={0}
+          c={0} // this is c
+          d={0}
+          e={0}
+          f={0} // this is f
+          m={0}
+          n={0} // this is n
+          o={0}
+        />
+      `,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 6,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 7,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 8,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 9,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 10,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 11,
+        },
+      ],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 3') ? {
+      code: `
+        <foo
+          a1={0}
+          g={0}
+          d={0} // comment for d
+          // comment for d and aa
+          aa={0}
+          c={0} // comment for c
+          // comment for c and e
+          e={1}
+          ab={1} // comment for ab
+          f={0}
+        />
+      `,
+      output: `
+        <foo
+          a1={0}
+          ab={1} // comment for ab
+          f={0}
+          g={0}
+          c={0} // comment for c
+          // comment for c and e
+          e={1}
+          d={0} // comment for d
+          // comment for d and aa
+          aa={0}
+        />
+      `,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 5,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 7,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 8,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 10,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 11,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 12,
+        },
+      ],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 3') ? {
+      code: `
+        <foo
+          a1={0}
+          ab={1}
+          // comment for ab and f
+          f={0}
+          g={0}
+          c={0} // comment for c
+          // comment for c and e
+          e={1}
+          d={0}
+          aa={1} // comment for aa
+        />
+      `,
+      output: `
+        <foo
+          a1={0}
+          aa={1} // comment for aa
+          d={0}
+          g={0}
+          ab={1}
+          // comment for ab and f
+          f={0}
+          c={0} // comment for c
+          // comment for c and e
+          e={1}
+        />
+      `,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 8,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 10,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 11,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 12,
+        },
+      ],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 3') ? {
+      code: `
+        <foo a={0} b={1} /* comment for b and ab */ ab={1} aa={0} />
+      `,
+      output: `
+        <foo a={0} aa={0} b={1} /* comment for b and ab */ ab={1} />
+      `,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 2,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 2,
+        },
+      ],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 3') ? {
+      code: `
+        <ReactJson src={rowResult} name="data" collapsed={4} collapseStringsAfterLength={60} onEdit={onEdit} /* onDelete={onEdit} */ />
+      `,
+      output: `
+        <ReactJson collapseStringsAfterLength={60} collapsed={4} name="data" src={rowResult} onEdit={onEdit} /* onDelete={onEdit} */ />
+      `,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 2,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 2,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 2,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 2,
+        },
+      ],
+    } : [],
+    {
+      code: `
+        <Page
+          // Pass all the props to the Page component.
+          {...props}
+          // Use the platform specific props from the doc.ts file.
+          {...TemplatePageProps[platform]}
+          // Use the getSubTitle helper function to get the page header subtitle from the active platform.
+          subTitle={getSubTitle(platform)}
+          // You can define custom sections using the \`otherSections\` prop.
+          // Here it is using a method that takes the platform as an argument to return the correct array of section props.
+          otherSections={_otherSections(platform) as IPageSectionProps[]}
+
+          // You can hide the side rail by setting \`showSideRail\` to false.
+          // showSideRail={false}
+
+          // You can pass a custom className to the page wrapper if needed.
+          // className="customPageClassName"
+        />
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 11,
+        },
+      ],
+    }
+  )),
 });

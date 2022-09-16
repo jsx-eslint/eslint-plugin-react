@@ -284,6 +284,18 @@ ruleTester.run('jsx-no-literals', rule, {
         <img alt='blank image'></img>
       `,
     },
+    {
+      code: `
+        <div>&mdash;</div>
+      `,
+      options: [{ noStrings: true, allowedStrings: ['&mdash;', '—'] }],
+    },
+    {
+      code: `
+        <div>—</div>
+      `,
+      options: [{ noStrings: true, allowedStrings: ['&mdash;', '—'] }],
+    },
   ]),
 
   invalid: parsers.all([
@@ -610,6 +622,44 @@ ruleTester.run('jsx-no-literals', rule, {
         {
           messageId: 'noStringsInAttributes',
           data: { text: '\'blank image\'' },
+        },
+      ],
+    },
+    {
+      code: 'export const WithChildren = ({}) => <div>baz bob</div>;',
+      options: [{ noAttributeStrings: true }],
+      errors: [
+        {
+          messageId: 'literalNotInJSXExpression',
+          data: { text: 'baz bob' },
+        },
+      ],
+    },
+    {
+      code: 'export const WithAttributes = ({}) => <div title="foo bar" />;',
+      options: [{ noAttributeStrings: true }],
+      errors: [
+        {
+          messageId: 'noStringsInAttributes',
+          data: { text: '"foo bar"' },
+        },
+      ],
+    },
+    {
+      code: `
+        export const WithAttributesAndChildren = ({}) => (
+          <div title="foo bar">baz bob</div>
+        );
+      `,
+      options: [{ noAttributeStrings: true }],
+      errors: [
+        {
+          messageId: 'noStringsInAttributes',
+          data: { text: '"foo bar"' },
+        },
+        {
+          messageId: 'literalNotInJSXExpression',
+          data: { text: 'baz bob' },
         },
       ],
     },

@@ -207,13 +207,13 @@ ruleTester.run('no-typos', rule, {
         const propTypes = "PROPTYPES"
         const contextTypes = "CONTEXTTYPES"
         const childContextTypes = "CHILDCONTEXTTYPES"
-        const defautProps = "DEFAULTPROPS"
+        const defaultProps = "DEFAULTPROPS"
 
         class First extends React.Component {}
         First[propTypes] = {};
         First[contextTypes] = {};
         First[childContextTypes] = {};
-        First[defautProps] = {};
+        First[defaultProps] = {};
       `,
       parserOptions,
     },
@@ -563,10 +563,10 @@ ruleTester.run('no-typos', rule, {
             #somethingPrivate() {
               // ...
             }
-        
+
             render() {
             const { value = '' } = this.props;
-        
+
             return (
               <textarea>
                 {value}

@@ -1,6 +1,8 @@
 # Enforce propTypes declarations alphabetical sorting (react/sort-prop-types)
 
-Some developers prefer to sort prop type declaratioms alphabetically to be able to find necessary declaration easier at the later time. Others feel that it adds complexity and becomes burden to maintain.
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
+Some developers prefer to sort prop type declarations alphabetically to be able to find necessary declaration easier at the later time. Others feel that it adds complexity and becomes burden to maintain.
 
 ## Rule Details
 

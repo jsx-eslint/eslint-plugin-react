@@ -1,5 +1,9 @@
 # Ensure destructuring and symmetric naming of useState hook value and setter variables (react/hook-use-state)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
+💡 This rule provides editor [suggestions](https://eslint.org/docs/developer-guide/working-with-rules#providing-suggestions).
+
 ## Rule Details
 
 This rule checks whether the value and setter variables destructured from a `React.useState()` call are named symmetrically.

@@ -1,10 +1,16 @@
 # Enforce boolean attributes notation in JSX (react/jsx-boolean-value)
 
-[When using a boolean attribute in JSX](https://facebook.github.io/react/docs/jsx-in-depth.html#boolean-attributes), you can set the attribute value to `true` or omit the value. This rule will enforce one or the other to keep consistency in your code.
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
+
+[When using a boolean attribute in JSX](https://facebook.github.io/react/docs/jsx-in-depth.html#boolean-attributes), you can set the attribute value to `true` or omit the value.
 
 ## Rule Details
+
+This rule will enforce one or the other to keep consistency in your code.
+
+## Rule Options
 
 This rule takes two arguments. If the first argument is `"always"` then it warns whenever an attribute is missing its value. If `"never"` then it warns if an attribute has a `true` value. The default value of this option is `"never"`.
 

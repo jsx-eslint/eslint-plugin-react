@@ -1,4 +1,6 @@
-# Prevent passing of children as props (react/no-children-prop)
+# Disallow passing of children as props (react/no-children-prop)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`, `recommended`.
 
 Children should always be actual children, not passed in as a prop.
 

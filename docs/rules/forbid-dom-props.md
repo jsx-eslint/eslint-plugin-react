@@ -1,4 +1,6 @@
-# Forbid certain props on DOM Nodes (react/forbid-dom-props)
+# Disallow certain props on DOM Nodes (react/forbid-dom-props)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
 
 This rule prevents passing of props to elements. This rule only applies to DOM Nodes (e.g. `<div />`) and not Components (e.g. `<Component />`).
 The list of forbidden props can be customized with the `forbid` option.
@@ -43,12 +45,13 @@ Examples of **correct** code for this rule:
 ### `forbid`
 
 An array of strings, with the names of props that are forbidden. The default value of this option `[]`.
-Each array element can either be a string with the property name or object specifying the property name and an optional
-custom message:
+Each array element can either be a string with the property name or object specifying the property name, an optional
+custom message, and a DOM nodes disallowed list (e.g. `<div />`):
 
 ```js
 {
   "propName": "someProp",
+  "disallowedFor": ["DOMNode", "AnotherDOMNode"],
   "message": "Avoid using someProp"
 }
 ```

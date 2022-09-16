@@ -2112,7 +2112,7 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        const withOverlayState = <P: {foo: string}>(WrappedComponent: ComponentType<P>): CpmponentType<P> => (
+        const withOverlayState = <P: {foo: string}>(WrappedComponent: ComponentType<P>): ComponentType<P> => (
           class extends React.Component<P> {
             constructor(props) {
               super(props);
@@ -6552,7 +6552,7 @@ ruleTester.run('prop-types', rule, {
       },
       {
         code: `
-          const withOverlayState = <P: {foo: string}>(WrappedComponent: ComponentType<P>): CpmponentType<P> => (
+          const withOverlayState = <P: {foo: string}>(WrappedComponent: ComponentType<P>): ComponentType<P> => (
             class extends React.Component<P> {
               constructor(props) {
                 super(props);

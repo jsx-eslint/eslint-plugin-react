@@ -1,7 +1,10 @@
-# Prevent problematic leaked values from being rendered (react/jsx-no-leaked-render)
+# Disallow problematic leaked values from being rendered (react/jsx-no-leaked-render)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 Using the `&&` operator to render some element conditionally in JSX can cause unexpected values being rendered, or even crashing the rendering.
-
 
 ## Rule Details
 
@@ -16,11 +19,11 @@ const Example = () => {
       {0 && <Something/>}
       {/* React: renders undesired 0 */}
       {/* React Native: crashes 💥 */}
-      
+
       {'' && <Something/>}
       {/* React: renders nothing */}
       {/* React Native: crashes 💥 */}
-      
+
       {NaN && <Something/>}
       {/* React: renders undesired NaN */}
       {/* React Native: crashes 💥 */}
@@ -30,6 +33,7 @@ const Example = () => {
 ```
 
 This can be avoided by:
+
 - coercing the conditional to a boolean: `{!!someValue && <Something />}`
 - transforming the binary expression into a ternary expression which returns `null` for falsy values: `{someValue ? <Something /> : null}`
 
@@ -137,14 +141,22 @@ const Component = ({ elements }) => {
 }
 ```
 
-### Options
+```jsx
+const Component = ({ elements }) => {
+  return <div>{elements.length ? <List elements={elements}/> : <EmptyList />}</div>
+}
+```
+
+## Rule Options
 
 The supported options are:
 
 ### `validStrategies`
+
 An array containing `"coerce"`, `"ternary"`, or both (default: `["ternary", "coerce"]`) - Decide which strategies are considered valid to prevent leaked renders (at least 1 is required). The "coerce" option will transform the conditional of the JSX expression to a boolean. The "ternary" option transforms the binary expression into a ternary expression returning `null` for falsy values. The first option from the array will be the strategy used when autofixing, so the order of the values matters.
 
 It can be set like:
+
 ```json5
 {
   // ...
@@ -156,6 +168,7 @@ It can be set like:
 Assuming the following options: `{ "validStrategies": ["ternary"] }`
 
 Examples of **incorrect** code for this rule, with the above configuration:
+
 ```jsx
 const Component = ({ count, title }) => {
   return <div>{count && title}</div>
@@ -169,15 +182,23 @@ const Component = ({ count, title }) => {
 ```
 
 Examples of **correct** code for this rule, with the above configuration:
+
 ```jsx
 const Component = ({ count, title }) => {
   return <div>{count ? title : null}</div>
+}
+```
+
+```jsx
+const Component = ({ count, title, empty }) => {
+  return <div>{count ? title : empty}</div>
 }
 ```
 
 Assuming the following options: `{ "validStrategies": ["coerce"] }`
 
 Examples of **incorrect** code for this rule, with the above configuration:
+
 ```jsx
 const Component = ({ count, title }) => {
   return <div>{count && title}</div>
@@ -191,9 +212,16 @@ const Component = ({ count, title }) => {
 ```
 
 Examples of **correct** code for this rule, with the above configuration:
+
 ```jsx
 const Component = ({ count, title }) => {
   return <div>{!!count && title}</div>
+}
+```
+
+```jsx
+const Component = ({ count, title, empty }) => {
+  return <div>{count ? title : empty}</div>
 }
 ```
 

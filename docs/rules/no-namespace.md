@@ -1,5 +1,7 @@
 # Enforce that namespaces are not used in React elements (react/no-namespace)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 Enforces the absence of a namespace in React elements, such as with `svg:circle`, as they are not supported in React.
 
 ## Rule Details

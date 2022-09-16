@@ -1,17 +1,21 @@
-# Configure the position of the first property (react/jsx-first-prop-new-line)
+# Enforce proper position of the first property in JSX (react/jsx-first-prop-new-line)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 Ensure correct position of the first property.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line. However, fix does not include indentation. Please rerun lint to correct those errors.
+Note: The fixer does not include indentation. Please rerun lint to correct those errors.
 
 ## Rule Details
 
 This rule checks whether the first property of all JSX elements is correctly placed. There are the possible configurations:
 
-* `always`: The first property should always be placed on a new line.
-* `never` : The first property should never be placed on a new line, e.g. should always be on the same line as the Component opening tag.
-* `multiline`: The first property should always be placed on a new line when the JSX tag takes up multiple lines.
-* `multiline-multiprop`: The first property should always be placed on a new line if the JSX tag takes up multiple lines and there are multiple properties. This is the `default` value.
+- `always`: The first property should always be placed on a new line.
+- `never` : The first property should never be placed on a new line, e.g. should always be on the same line as the Component opening tag.
+- `multiline`: The first property should always be placed on a new line when the JSX tag takes up multiple lines.
+- `multiline-multiprop`: The first property should always be placed on a new line if the JSX tag takes up multiple lines and there are multiple properties. This is the `default` value.
 
 Examples of **incorrect** code for this rule, when configured with `"always"`:
 

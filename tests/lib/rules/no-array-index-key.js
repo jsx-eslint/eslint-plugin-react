@@ -136,9 +136,6 @@ ruleTester.run('no-array-index-key', rule, {
     {
       code: 'foo?.map(child => <Foo key={child.i} />)',
       features: ['optional chaining'],
-      parserOptions: {
-        ecmaVersion: 2020,
-      },
     }
   ),
 
@@ -349,9 +346,6 @@ ruleTester.run('no-array-index-key', rule, {
       code: 'foo?.map((child, i) => <Foo key={i} />)',
       errors: [{ messageId: 'noArrayIndex' }],
       features: ['optional chaining'],
-      parserOptions: {
-        ecmaVersion: 2020,
-      },
     },
     {
       code: `

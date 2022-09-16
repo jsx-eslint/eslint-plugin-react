@@ -1,14 +1,16 @@
-# Validate spacing before closing bracket in JSX (react/jsx-space-before-closing)
+# Enforce spacing before closing bracket in JSX (react/jsx-space-before-closing)
 
-**Deprecation notice**: This rule is deprecated. Please use the `"beforeSelfClosing"` option of the [jsx-tag-spacing](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-tag-spacing.md) rule instead.
+❌ This rule is deprecated. Please use the `"beforeSelfClosing"` option of the [jsx-tag-spacing](https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-tag-spacing.md) rule instead.
+
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 Enforce or forbid spaces before the closing bracket of self-closing JSX elements.
-
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
 
 ## Rule Details
 
 This rule checks if there is one or more spaces before the closing bracket of self-closing JSX elements.
+
+## Rule Options
 
 This rule takes one argument. If it is `"always"` then it warns whenever a space is missing before the closing bracket. If `"never"` then it warns if a space is present before the closing bracket. The default value of this option is `"always"`.
 

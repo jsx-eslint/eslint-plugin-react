@@ -19,7 +19,7 @@ jobs:
       - run: |
           npm link
           npm link eslint-plugin-react
-      - uses: AriPerkkio/eslint-remote-tester-run-action@v2
+      - uses: AriPerkkio/eslint-remote-tester-run-action@v3
         with:
           issue-title: 'Results of weekly scheduled smoke test'
           eslint-remote-tester-config: test/eslint-remote-tester.config.js

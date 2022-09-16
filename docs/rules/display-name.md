@@ -1,4 +1,6 @@
-# Prevent missing displayName in a React component definition (react/display-name)
+# Disallow missing displayName in a React component definition (react/display-name)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`, `recommended`.
 
 DisplayName allows you to name your component. This name is used by React in debugging messages.
 
@@ -130,6 +132,6 @@ For this rule to work we need to detect React components, this could be very har
 
 For now we should detect components created with:
 
-* `createReactClass()`
-* an ES6 class that inherit from `React.Component` or `Component`
-* a stateless function that return JSX or the result of a `React.createElement` call.
+- `createReactClass()`
+- an ES6 class that inherit from `React.Component` or `Component`
+- a stateless function that return JSX or the result of a `React.createElement` call.

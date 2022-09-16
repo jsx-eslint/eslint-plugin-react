@@ -1,8 +1,10 @@
-# Prevent creating unstable components inside components (react/no-unstable-nested-components)
+# Disallow creating unstable components inside components (react/no-unstable-nested-components)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
 
 Creating components inside components without memoization leads to unstable components. The nested component and all its children are recreated during each re-render. Given stateful children of the nested component will lose their state on each re-render.
 
-React reconcilation performs element type comparison with [reference equality](https://github.com/facebook/react/blob/v16.13.1/packages/react-reconciler/src/ReactChildFiber.js#L407). The reference to the same element changes on each re-render when defining components inside the render block. This leads to complete recreation of the current node and all its children. As a result the virtual DOM has to do extra unnecessary work and [possible bugs are introduced](https://codepen.io/ariperkkio/pen/vYLodLB).
+React reconciliation performs element type comparison with [reference equality](https://github.com/facebook/react/blob/v16.13.1/packages/react-reconciler/src/ReactChildFiber.js#L407). The reference to the same element changes on each re-render when defining components inside the render block. This leads to complete recreation of the current node and all its children. As a result the virtual DOM has to do extra unnecessary work and [possible bugs are introduced](https://codepen.io/ariperkkio/pen/vYLodLB).
 
 ## Rule Details
 

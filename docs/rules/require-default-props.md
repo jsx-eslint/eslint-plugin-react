@@ -1,5 +1,7 @@
 # Enforce a defaultProps definition for every prop that is not a required prop (react/require-default-props)
 
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
 This rule aims to ensure that any non-required prop types of a component has a
 corresponding `defaultProps` value.
 
@@ -472,7 +474,7 @@ MyStatelessComponent.propTypes = {
 
 If you don't care about using `defaultProps` for your component's props that are not required, you can disable this rule.
 
-# Resources
+## Resources
 
 - [Official React documentation on defaultProps](https://facebook.github.io/react/docs/typechecking-with-proptypes.html#default-prop-values)
 

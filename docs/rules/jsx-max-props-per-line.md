@@ -1,8 +1,12 @@
-# Limit maximum of props on a single line in JSX (react/jsx-max-props-per-line)
+# Enforce maximum of props on a single line in JSX (react/jsx-max-props-per-line)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 Limiting the maximum of props on a single line can improve readability.
 
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line. However, fix does not include indentation. Please rerun lint to correct those errors.
+Note: The fixer does not include indentation. Please rerun lint to correct those errors.
 
 ## Rule Details
 
@@ -75,16 +79,19 @@ Maximum can be specified as object `{ single: 1, multi: 1 }` to specify maximum 
  _when only applied if `maximum` is specified as number._
 
 Possible values:
+
 - `always` (default) - Always check for max props per line.
 - `multiline` - Only check for max props per line when jsx tag spans multiple lines.
 
 Examples of **incorrect** code for this rule:
+
 ```jsx
 // [1, { "when": "always" }]
 <Hello firstName="John" lastName="Smith" />
 ```
 
 Examples of **correct** code for this rule:
+
 ```jsx
 // [1, { "when": "multiline" }]
 <Hello firstName="John" lastName="Smith" />

@@ -1,9 +1,10 @@
-# Prevent void DOM elements (e.g. `<img />`, `<br />`) from receiving children (react/void-dom-elements-no-children)
+# Disallow void DOM elements (e.g. `<img />`, `<br />`) from receiving children (react/void-dom-elements-no-children)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
 
 There are some HTML elements that are only self-closing (e.g. `img`, `br`, `hr`). These are collectively known as void DOM elements. If you try to give these children, React will give you a warning like:
 
 > Invariant Violation: img is a void element tag and must neither have `children` nor use `dangerouslySetInnerHTML`.
-
 
 ## Rule Details
 

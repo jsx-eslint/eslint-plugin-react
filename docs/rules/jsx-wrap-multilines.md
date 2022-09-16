@@ -1,8 +1,10 @@
-# Prevent missing parentheses around multiline JSX (react/jsx-wrap-multilines)
+# Disallow missing parentheses around multiline JSX (react/jsx-wrap-multilines)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+
+🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
 
 Wrapping multiline JSX in parentheses can improve readability and/or convenience.
-
-**Fixable:** This rule is automatically fixable using the `--fix` flag on the command line.
 
 ## Rule Details
 
@@ -21,6 +23,8 @@ This rule optionally takes a second parameter in the form of an object, containi
 ```
 
 Note: conditions are checked by default in declarations or assignments.
+
+## Rule Options
 
 Examples of **incorrect** code for this rule, when configured with `parens` or `parens-new-line`:
 
@@ -122,7 +126,6 @@ hello = <div>
   <p>Hello</p>
 </div>;
 ```
-
 
 Examples of **correct** code for this rule, when configured with `{ assignment: "parens" }`.
 
@@ -241,7 +244,6 @@ var hello = () => <div>
 </div>;
 ```
 
-
 Examples of **correct** code for this rule, when configured `{ arrow: "parens" }`.
 
 ```jsx
@@ -293,7 +295,6 @@ Examples of **incorrect** code for this rule, when configured with `{ condition:
     </div> : null}
 </div>
 ```
-
 
 Examples of **correct** code for this rule, when configured with `{ condition: "parens" }`.
 

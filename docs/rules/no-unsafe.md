@@ -1,4 +1,6 @@
-# Prevent usage of unsafe lifecycle methods (react/no-unsafe)
+# Disallow usage of unsafe lifecycle methods (react/no-unsafe)
+
+💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`. This rule is disabled in the following configs: `recommended`.
 
 Certain legacy lifecycle methods are [unsafe for use in async React applications][async_rendering] and cause warnings in [_strict mode_][strict_mode]. These also happen to be the lifecycles that cause the most [confusion within the React community][component_lifecycle_changes].
 
@@ -7,6 +9,7 @@ Certain legacy lifecycle methods are [unsafe for use in async React applications
 [component_lifecycle_changes]: https://reactjs.org/blog/2018/03/29/react-v-16-3.html#component-lifecycle-changes
 
 The rule checks the following methods:
+
 - `componentWillMount` (and `UNSAFE_componentWillMount` alias)
 - `componentWillReceiveProps` (and `UNSAFE_componentWillReceiveProps` alias)
 - `componentWillUpdate` (and `UNSAFE_componentWillUpdate` alias)
@@ -50,6 +53,7 @@ const Foo = bar({
 ```
 
 ## Rule Options
+
 ```json
 ...
 "react/no-unsafe": [<enabled>, { "checkAliases": <boolean> }]

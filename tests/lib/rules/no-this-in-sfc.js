@@ -275,58 +275,5 @@ ruleTester.run('no-this-in-sfc', rule, {
         { messageId: 'noThisInSFC' },
       ],
     },
-    {
-      code: `
-        class Foo {
-          bar() {
-            return () => {
-              this.something();
-              return null;
-            }
-          }
-        }
-      `,
-      errors: [{ messageId: 'noThisInSFC' }],
-    },
-    {
-      code: `
-        class Foo {
-          bar = () => () => {
-            this.something();
-            return null;
-          };
-        }
-      `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove `no-ts-old` and fix
-      errors: [{ messageId: 'noThisInSFC' }],
-    },
-    {
-      code: `
-        class Foo {
-          bar() {
-            function Bar(){
-              return () => {
-                this.something();
-                return null;
-              }
-            }
-          }
-        }
-      `,
-      errors: [{ messageId: 'noThisInSFC' }],
-    },
-    {
-      code: `
-        class Foo {
-          bar() {
-            () => () => {
-              this.something();
-              return null;
-            };
-          }
-        }
-      `,
-      errors: [{ messageId: 'noThisInSFC' }],
-    },
   ]),
 });
