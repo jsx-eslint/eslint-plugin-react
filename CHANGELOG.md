@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`no-unknown-property`]: add `dialog` attributes ([#3436][] @ljharb)
+
+[#3436]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3436
+
 ## [7.31.8] - 2022.09.08
 
 ### Fixed

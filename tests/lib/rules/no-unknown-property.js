@@ -128,6 +128,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<view id="one" viewBox="0 0 100 100" />' },
     { code: '<hr align="top" />' },
     { code: '<applet align="top" />' },
+    { code: '<dialog onClose={handler} open id="dialog" returnValue="something" onCancel={handler2} />' },
     {
       code: `
         <table align="top">
