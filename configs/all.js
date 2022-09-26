@@ -12,6 +12,7 @@ const allRules = {
   'default-props-match-prop-types': require('../lib/rules/default-props-match-prop-types'),
   'destructuring-assignment': require('../lib/rules/destructuring-assignment'),
   'display-name': require('../lib/rules/display-name'),
+  'ensure-matching-remove-event-listener': require('../lib/rules/ensure-matching-remove-event-listener'),
   'forbid-component-props': require('../lib/rules/forbid-component-props'),
   'forbid-dom-props': require('../lib/rules/forbid-dom-props'),
   'forbid-elements': require('../lib/rules/forbid-elements'),
