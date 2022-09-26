@@ -9,6 +9,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Added
 * [`jsx-props-no-multi-spaces`]: improve autofix for multi-line ([#3930][] @justisb)
 * [`jsx-handler-names`]: support namespaced component names ([#3943][] @takuji)
+* [`jsx-no-leaked-render`]: add `ignoreAttributes` option ([#3441][] @aleclarson)
 
 ### Fixed
 * [`no-unknown-property`]: allow `onLoad` on `body` ([#3923][] @DerekStapleton)
@@ -26,6 +27,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3942]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3942
 [#3930]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3930
 [#3923]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3923
+[#3441]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3441
 
 ## [7.37.5] - 2025.04.03
 

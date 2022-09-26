@@ -153,6 +153,60 @@ const Component = ({ elements }) => {
 
 The supported options are:
 
+### `ignoreAttributes`
+
+Boolean. When set to `true`, this option ignores all attributes except for `children` during validation, preventing false positives in scenarios where these attributes are used safely or validated internally. Default is `false`.
+
+It can be set like:
+
+```jsonc
+{
+  // ...
+  "react/jsx-no-leaked-render": [<enabled>, { "ignoreAttributes": true }]
+  // ...
+}
+```
+
+Assuming the following options: `{ "ignoreAttributes": true }`
+
+Examples of **incorrect** code for this rule, with the above configuration:
+
+```jsx
+function MyComponent({ value }) {
+  return (
+    <MyChildComponent nonChildrenProp={value && 'default'}>
+      {value && <MyInnerChildComponent />}
+    </MyChildComponent>
+  );
+}
+```
+
+Even with `ignoreAttributes: true`, `children` expressions are still checked. In the example above, `{value && <MyInnerChildComponent />}` will still be flagged.
+
+Nested JSX children within attributes are also still checked:
+
+```jsx
+const Component = ({ enabled }) => {
+  return (
+    <Foo bar={
+      <Something>{enabled && <MuchWow />}</Something>
+    } />
+  )
+}
+```
+
+Here, even though `<Something>…</Something>` is inside an attribute of `<Foo>`, the `{enabled && <MuchWow />}` expression is children of `<Something>`, so it is still flagged.
+
+Examples of **correct** code for this rule, with the above configuration:
+
+```jsx
+const Component = ({ enabled, checked }) => {
+  return <CheckBox checked={enabled && checked} />
+}
+```
+
+With `ignoreAttributes: true`, logical expressions in non-children attributes like `checked` are not flagged.
+
 ### `validStrategies`
 
 An array containing `"coerce"`, `"ternary"`, or both (default: `["ternary", "coerce"]`) - Decide which strategies are considered valid to prevent leaked renders (at least 1 is required). The "coerce" option will transform the conditional of the JSX expression to a boolean. The "ternary" option transforms the binary expression into a ternary expression returning `null` for falsy values. The first option from the array will be the strategy used when autofixing, so the order of the values matters.
