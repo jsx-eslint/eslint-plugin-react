@@ -987,5 +987,59 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
         }
       `,
     },
+    {
+      code: `
+        export default class Root extends Component {
+          getInitialState = () => ({
+            errorImporting: null,
+            errorParsing: null,
+            errorUploading: null,
+            file: null,
+            fromExtension: false,
+            importSuccess: false,
+            isImporting: false,
+            isParsing: false,
+            isUploading: false,
+            parsedResults: null,
+            showLongRunningMessage: false,
+          });
+        }
+      `,
+      features: ['class fields'],
+      errors: [{ message: 'getInitialState is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: semver.satisfies(eslintPkg.version, '> 3') ? `
+        export default class Root extends Component {
+          getInitialState() { return {
+            errorImporting: null,
+            errorParsing: null,
+            errorUploading: null,
+            file: null,
+            fromExtension: false,
+            importSuccess: false,
+            isImporting: false,
+            isParsing: false,
+            isUploading: false,
+            parsedResults: null,
+            showLongRunningMessage: false,
+          }; }
+        }
+      ` : `
+        export default class Root extends Component {
+          getInitialState = () => ({
+            errorImporting: null,
+            errorParsing: null,
+            errorUploading: null,
+            file: null,
+            fromExtension: false,
+            importSuccess: false,
+            isImporting: false,
+            isParsing: false,
+            isUploading: false,
+            parsedResults: null,
+            showLongRunningMessage: false,
+          });
+        }
+      `,
+    },
   ]),
 });
