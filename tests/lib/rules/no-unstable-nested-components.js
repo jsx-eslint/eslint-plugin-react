@@ -78,6 +78,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
       `,
     },
     {
+      // false-negative.
       code: `
         function ParentComponent() {
           const MemoizedNestedComponent = React.useCallback(() => <div />, []);
@@ -91,6 +92,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
       `,
     },
     {
+      // false-negative.
       code: `
         function ParentComponent() {
           const MemoizedNestedComponent = React.useCallback(
@@ -107,6 +109,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
       `,
     },
     {
+      // false-negative.
       code: `
         function ParentComponent() {
           const MemoizedNestedFunctionComponent = React.useCallback(
@@ -125,6 +128,7 @@ ruleTester.run('no-unstable-nested-components', rule, {
       `,
     },
     {
+      // false-negative.
       code: `
         function ParentComponent() {
           const MemoizedNestedFunctionComponent = React.useCallback(
