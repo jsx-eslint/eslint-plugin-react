@@ -10,6 +10,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-arrow-function-lifecycle`]: when converting from an arrow, remove the semi and wrapping parens ([#3337][] @ljharb)
 * [`jsx-key`]: Ignore elements inside `React.Children.toArray()` ([#1591][] @silvenon)
 
+### Changed
+* [Docs] [`no-unknown-property`]: fix typo in link ([#3445][] @denkristoffer)
+
+[#3445]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3445
 [#3436]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3436
 [#3337]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3337
 [#1591]: https://github.com/jsx-eslint/eslint-plugin-react/pull/1591

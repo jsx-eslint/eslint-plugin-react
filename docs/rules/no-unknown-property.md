@@ -58,7 +58,7 @@ var AtomPanel = <atom-panel class="foo"></atom-panel>;
 
 If you are using a library that passes something as a prop to JSX elements, it is recommended to add those props to the ignored properties.
 
-For example, if you use [emotion](https://emotion.sh/docs/introduction) and its [`css` prop](https://emotion.sh/docs/css-prop)),
+For example, if you use [emotion](https://emotion.sh/docs/introduction) and its [`css` prop](https://emotion.sh/docs/css-prop),
 add the following to your `.eslintrc` config file:
 
 ```js
