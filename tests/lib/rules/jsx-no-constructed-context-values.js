@@ -31,13 +31,13 @@ const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('react-no-constructed-context-values', rule, {
   valid: parsers.all([
     {
-      code: '<Context.Provider value={props}></Context.Provider>',
+      code: 'const Component = () => <Context.Provider value={props}></Context.Provider>',
     },
     {
-      code: '<Context.Provider value={100}></Context.Provider>',
+      code: 'const Component = () => <Context.Provider value={100}></Context.Provider>',
     },
     {
-      code: '<Context.Provider value="Some string"></Context.Provider>',
+      code: 'const Component = () => <Context.Provider value="Some string"></Context.Provider>',
     },
     {
       code: 'function Component() { const foo = useMemo(() => { return {} }, []); return (<Context.Provider value={foo}></Context.Provider>)}',
@@ -135,6 +135,16 @@ ruleTester.run('react-no-constructed-context-values', rule, {
                 </BooleanContext.Provider>
             )
         }
+      `,
+    },
+    {
+      code: `
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(
+          <AppContext.Provider value={{}}>
+            <AppView />
+          </AppContext.Provider>
+        );
       `,
     },
   ]),
