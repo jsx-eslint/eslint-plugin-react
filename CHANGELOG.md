@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Added
+* [`hook-use-state`]: add `allowDestructuredState` option ([#3449][] @ljharb)
+
+[#3449]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3449
+
 ## [7.31.9] - 2022.10.09
 
 ### Fixed

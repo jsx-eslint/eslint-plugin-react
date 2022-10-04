@@ -48,3 +48,22 @@ export default function useColor() {
   return React.useState();
 }
 ```
+
+## Rule Options
+
+```js
+...
+"react/hook-use-state": [<enabled>, { "allowDestructuredState": <boolean> }]
+...
+```
+
+### `allowDestructuredState`
+
+When `true` the rule will ignore the name of the destructured value.
+
+Examples of **correct** code for this rule, when configured with `{ "allowDestructuredState": true }`:
+
+```jsx
+import React from 'react';
+const [{foo, bar, baz}, setFooBarBaz] = React.useState({foo: "bbb", bar: "aaa", baz: "qqq"})
+```

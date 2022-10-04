@@ -177,6 +177,22 @@ const tests = {
       `,
       features: ['ts'],
     },
+    {
+      code: `
+        import { useState } from 'react';
+
+        const [{foo, bar, baz}, setFooBarBaz] = useState({foo: "bbb", bar: "aaa", baz: "qqq"})
+      `,
+      options: [{ allowDestructuredState: true }],
+    },
+    {
+      code: `
+        import { useState } from 'react';
+
+        const [[index, value], setValueWithIndex] = useState([0, "hello"])
+      `,
+      options: [{ allowDestructuredState: true }],
+    },
   ]),
   invalid: parsers.all([
     {
@@ -495,6 +511,43 @@ const tests = {
       `,
             },
           ],
+        },
+      ],
+    },
+    {
+      code: `
+        import { useState } from 'react';
+
+        const [{foo, bar, baz}, setFooBarBaz] = useState({foo: "bbb", bar: "aaa", baz: "qqq"})
+      `,
+      errors: [
+        {
+          message: 'useState call is not destructured into value + setter pair (you can allow destructuring by enabling "allowDestructuredState" option)',
+        },
+      ],
+    },
+    {
+      code: `
+        import { useState } from 'react';
+
+        const [[index, value], setValueWithIndex] = useState([0, "hello"])
+      `,
+      errors: [
+        {
+          message: 'useState call is not destructured into value + setter pair (you can allow destructuring by enabling "allowDestructuredState" option)',
+        },
+      ],
+    },
+    {
+      code: `
+        import { useState } from 'react';
+
+        const [{foo, bar, baz}, {setFooBarBaz}] = useState({foo: "bbb", bar: "aaa", baz: "qqq"})
+      `,
+      options: [{ allowDestructuredState: true }],
+      errors: [
+        {
+          message: 'useState call is not destructured into value + setter pair',
         },
       ],
     },
