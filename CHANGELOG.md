@@ -13,7 +13,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Changed
 * [Docs] [`no-unknown-property`]: fix typo in link ([#3445][] @denkristoffer)
+* [Perf] component detection: improve performance by optimizing getId ([#3451][] @golopot)
 
+[#3451]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3451
 [#3448]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3448
 [#3445]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3445
 [#3436]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3436
