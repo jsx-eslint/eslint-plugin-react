@@ -2098,6 +2098,56 @@ ruleTester.run('sort-prop-types', rule, {
           type: 'Property',
         },
       ],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 3') ? {
+      code: `
+        var First = createReactClass({
+          propTypes: {
+            /* z */
+            /* z */
+            z: PropTypes.string /* z */,
+            /* a */
+            a: PropTypes.any /* a */
+            /* a */
+            /* a */,
+            b: PropTypes.any
+          },
+          render: function() {
+            return <div />;
+          }
+        });
+      `,
+      output: `
+        var First = createReactClass({
+          propTypes: {
+            /* a */
+            a: PropTypes.any /* a */
+            /* a */
+            /* a */,
+            b: PropTypes.any,
+            /* z */
+            /* z */
+            z: PropTypes.string /* z */
+          },
+          render: function() {
+            return <div />;
+          }
+        });
+      `,
+      errors: [
+        {
+          messageId: 'propsNotSorted',
+          line: 8,
+          column: 13,
+          type: 'Property',
+        },
+        {
+          messageId: 'propsNotSorted',
+          line: 11,
+          column: 13,
+          type: 'Property',
+        },
+      ],
     } : []
   )),
 });

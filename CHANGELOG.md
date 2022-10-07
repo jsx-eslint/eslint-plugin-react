@@ -13,7 +13,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Fixed
 * configs: avoid legacy config system error ([#3461][] @ljharb)
-* [`sort-prop-types`]: restore autofixing ([#3452][] @ROSSROSALES)
+* [`sort-prop-types`]: restore autofixing ([#3452][], [#3471][] @ROSSROSALES)
 * [`no-unknown-property`]: do not check `fbs` elements ([#3494][] @brianogilvie)
 * [`jsx-newline`]: No newline between comments and jsx elements ([#3493][] @justmejulian)
 * [`jsx-no-leaked-render`]: Don't report errors on empty strings if React >= v18 ([#3488][] @himanshu007-creator)
@@ -24,6 +24,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3494]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3494
 [#3493]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3493
 [#3488]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3488
+[#3471]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3471
 [#3468]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3468
 [#3461]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3461
 [#3452]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3452
