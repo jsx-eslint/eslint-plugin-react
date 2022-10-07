@@ -342,7 +342,7 @@ module.exports = [
 |  | 🔧 |  | [react/self-closing-comp](docs/rules/self-closing-comp.md) | Disallow extra closing tags for components without children |
 |  |  |  | [react/sort-comp](docs/rules/sort-comp.md) | Enforce component methods order |
 |  |  |  | [react/sort-default-props](docs/rules/sort-default-props.md) | Enforce defaultProps declarations alphabetical sorting |
-|  |  |  | [react/sort-prop-types](docs/rules/sort-prop-types.md) | Enforce propTypes declarations alphabetical sorting |
+|  | 🔧 |  | [react/sort-prop-types](docs/rules/sort-prop-types.md) | Enforce propTypes declarations alphabetical sorting |
 |  |  |  | [react/state-in-constructor](docs/rules/state-in-constructor.md) | Enforce class component state initialization style |
 |  |  |  | [react/static-property-placement](docs/rules/static-property-placement.md) | Enforces where React component static properties should be positioned. |
 |  |  |  | [react/style-prop-object](docs/rules/style-prop-object.md) | Enforce style prop value is an object |
