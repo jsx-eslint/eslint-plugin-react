@@ -11,6 +11,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-key`]: Ignore elements inside `React.Children.toArray()` ([#1591][] @silvenon)
 * [`jsx-no-constructed-context-values`]: fix false positive for usage in non-components ([#3448][] @golopot)
 * [`static-property-placement`]: warn on nonstatic expected-statics ([#2581][] @ljharb)
+* [`no-unknown-property`]: properly tag-restrict case-insensitive attributes (@ljharb)
 
 ### Changed
 * [Docs] [`no-unknown-property`]: fix typo in link ([#3445][] @denkristoffer)

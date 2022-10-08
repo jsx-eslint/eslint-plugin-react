@@ -67,7 +67,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<link onLoad={bar} onError={foo} />' },
     { code: '<link rel="preload" as="image" href="someHref" imageSrcSet="someImageSrcSet" imageSizes="someImageSizes" />' },
     { code: '<object onLoad={bar} />' },
-    { code: '<div allowFullScreen webkitAllowFullScreen mozAllowFullScreen />' },
+    { code: '<video allowFullScreen webkitAllowFullScreen mozAllowFullScreen />' },
     { code: '<table border="1" />' },
     { code: '<th abbr="abbr" />' },
     { code: '<td abbr="abbr" />' },
@@ -502,6 +502,14 @@ ruleTester.run('no-unknown-property', rule, {
           messageId: 'invalidPropOnTag',
           data: {
             name: 'playsInline',
+            tagName: 'div',
+            allowedTags: 'video',
+          },
+        },
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'allowFullScreen',
             tagName: 'div',
             allowedTags: 'video',
           },
