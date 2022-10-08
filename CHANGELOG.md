@@ -12,12 +12,14 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-no-constructed-context-values`]: fix false positive for usage in non-components ([#3448][] @golopot)
 * [`static-property-placement`]: warn on nonstatic expected-statics ([#2581][] @ljharb)
 * [`no-unknown-property`]: properly tag-restrict case-insensitive attributes (@ljharb)
+* [`no-unknown-property`]: allow `webkitDirectory` on `input`, case-insensitive ([#3454][] @ljharb)
 
 ### Changed
 * [Docs] [`no-unknown-property`]: fix typo in link ([#3445][] @denkristoffer)
 * [Perf] component detection: improve performance by optimizing getId ([#3451][] @golopot)
 * [Docs] [`no-unstable-nested-components`]: Warn about memoized, nested components ([#3444][] @eps1lon)
 
+[#3454]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3454
 [#3451]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3451
 [#3448]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3448
 [#3445]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3445

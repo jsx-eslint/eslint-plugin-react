@@ -49,6 +49,8 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<img src="cat_keyboard.jpeg" alt="A cat sleeping on a keyboard" align="top" />' },
     { code: '<input type="password" required />' },
     { code: '<input ref={this.input} type="radio" />' },
+    { code: '<input type="file" webkitdirectory="" />' },
+    { code: '<input type="file" webkitDirectory="" />' },
     { code: '<div children="anything" />' },
     { code: '<iframe scrolling="?" onLoad={a} onError={b} align="top" />' },
     { code: '<input key="bar" type="radio" />' },
@@ -575,6 +577,32 @@ ruleTester.run('no-unknown-property', rule, {
             name: 'abbr',
             tagName: 'div',
             allowedTags: 'th, td',
+          },
+        },
+      ],
+    },
+    {
+      code: '<div webkitDirectory="" />',
+      errors: [
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'webkitDirectory',
+            tagName: 'div',
+            allowedTags: 'input',
+          },
+        },
+      ],
+    },
+    {
+      code: '<div webkitdirectory="" />',
+      errors: [
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'webkitdirectory',
+            tagName: 'div',
+            allowedTags: 'input',
           },
         },
       ],
