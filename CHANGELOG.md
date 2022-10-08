@@ -10,6 +10,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-arrow-function-lifecycle`]: when converting from an arrow, remove the semi and wrapping parens ([#3337][] @ljharb)
 * [`jsx-key`]: Ignore elements inside `React.Children.toArray()` ([#1591][] @silvenon)
 * [`jsx-no-constructed-context-values`]: fix false positive for usage in non-components ([#3448][] @golopot)
+* [`static-property-placement`]: warn on nonstatic expected-statics ([#2581][] @ljharb)
 
 ### Changed
 * [Docs] [`no-unknown-property`]: fix typo in link ([#3445][] @denkristoffer)
@@ -22,6 +23,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3444]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3444
 [#3436]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3436
 [#3337]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3337
+[#2581]: https://github.com/jsx-eslint/eslint-plugin-react/issues/2581
 [#1591]: https://github.com/jsx-eslint/eslint-plugin-react/pull/1591
 
 ## [7.31.8] - 2022.09.08

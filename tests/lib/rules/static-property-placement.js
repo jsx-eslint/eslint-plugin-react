@@ -2186,5 +2186,20 @@ ruleTester.run('static-property-placement', rule, {
         },
       ],
     },
+    {
+      code: `
+        class MyComponent extends React.Component {
+          displayName = 'Foo';
+        }
+      `,
+      features: ['class fields'],
+      options: [STATIC_PUBLIC_FIELD],
+      errors: [
+        {
+          messageId: 'notStaticClassProp',
+          data: { name: 'displayName' },
+        },
+      ],
+    },
   ]),
 });
