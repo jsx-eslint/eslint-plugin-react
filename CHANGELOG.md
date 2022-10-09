@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.31.9] - 2022.10.09
+
 ### Fixed
 * [`no-unknown-property`]: add `dialog` attributes ([#3436][] @ljharb)
 * [`no-arrow-function-lifecycle`]: when converting from an arrow, remove the semi and wrapping parens ([#3337][] @ljharb)
@@ -19,6 +21,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Perf] component detection: improve performance by optimizing getId ([#3451][] @golopot)
 * [Docs] [`no-unstable-nested-components`]: Warn about memoized, nested components ([#3444][] @eps1lon)
 
+[7.31.9]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.8...v7.31.9
 [#3454]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3454
 [#3451]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3451
 [#3448]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3448
