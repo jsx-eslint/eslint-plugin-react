@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`no-unknown-property`]: allow `allowFullScreen` on `iframe` ([#3455][] @almeidx)
+
+[#3455]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3455
+
 ## [7.31.9] - 2022.10.09
 
 ### Fixed

@@ -70,6 +70,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<link rel="preload" as="image" href="someHref" imageSrcSet="someImageSrcSet" imageSizes="someImageSizes" />' },
     { code: '<object onLoad={bar} />' },
     { code: '<video allowFullScreen webkitAllowFullScreen mozAllowFullScreen />' },
+    { code: '<iframe allowFullScreen webkitAllowFullScreen mozAllowFullScreen />' },
     { code: '<table border="1" />' },
     { code: '<th abbr="abbr" />' },
     { code: '<td abbr="abbr" />' },
@@ -513,7 +514,7 @@ ruleTester.run('no-unknown-property', rule, {
           data: {
             name: 'allowFullScreen',
             tagName: 'div',
-            allowedTags: 'video',
+            allowedTags: 'iframe, video',
           },
         },
       ],
