@@ -198,7 +198,7 @@ ruleTester.run('jsx-no-target-blank', rule, {
       errors: defaultErrors,
     },
     {
-      code: '<a href="https://example.com/7a-run-on" target="_blank rel=noopener"></a>'
+      code: '<a href="https://example.com/7a-run-on" target="_blank rel=noopener"></a>',
       output: '<a target="_blank noopener" href="https://example.com/7a-run-on"></a>',
       errors: [{ messageId: 'noTargetBlankIntendedIneffective' }],
     },
