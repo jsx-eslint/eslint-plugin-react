@@ -10,6 +10,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`hook-use-state`]: add `allowDestructuredState` option ([#3449][] @ljharb)
 * add [`sort-default-props`] and deprecate [`jsx-sort-default-props`] ([#1861][] @alexzherdev)
 
+### Changed
+* [Perf] component detection: improve performance by avoiding traversing parents unnecessarily ([#3459][] @golopot)
+
+[#3459]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3459
 [#3449]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3449
 [#3424]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3429
 [#1861]: https://github.com/jsx-eslint/eslint-plugin-react/pull/1861
