@@ -459,7 +459,7 @@ ruleTester.run('destructuring-assignment', rule, {
     },
     {
       code: `
-        var Hello = React.createClass({
+        var Hello = createReactClass({
           render: function() {
             return <Text>{this.props.foo}</Text>;
           }
