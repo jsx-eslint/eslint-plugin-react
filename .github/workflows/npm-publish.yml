@@ -1,0 +1,125 @@
+name: Publish Package to npm
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "Tag to publish"
+        required: true
+
+permissions:
+  contents: read
+
+jobs:
+  check-version:
+    runs-on: ubuntu-latest
+    outputs:
+      is-new-version: ${{ steps.cpv.outputs.is-new-version }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.tag }}
+
+      - name: Validate semver pattern
+        run: npx semver ${{ inputs.tag }}
+
+      - name: Check package version
+        id: cpv
+        uses: PostHog/check-package-version@v2
+
+      - name: Validate package version
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const isNewVersion = `${{ steps.cpv.outputs.is-new-version }}`;
+            if (isNewVersion === 'true') {
+                console.log(`Version ${context.payload.inputs.tag} has not been published yet`);
+            } else {
+                core.setFailed(`Version ${context.payload.inputs.tag} is already published`);
+            }
+
+  check-status:
+    needs: check-version
+    if: needs.check-version.outputs.is-new-version == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Verify checks passed
+        uses: actions/github-script@v6
+        with:
+          result-encoding: string
+          retries: 3
+          script: |
+            const ref = context.payload.inputs.tag;
+
+            console.log(`Checking status checks for ${ref}`);
+
+            const { owner, repo } = context.repo;
+            const { default_branch: branch } = context.payload.repository;
+
+            const branch = github.rest.repos.getBranch({ owner, repo, branch });
+
+            const checkSuites = await github.rest.checks.listSuitesForRef({ owner, repo, ref });
+
+            if (checkSuites.some(({ status }) => 'completed')) {
+              core.setFailed(`Some workflows for ${context.payload.inputs.tag} are still in-progress`);
+            }
+
+            const { data: { check_runs: checkRuns } } = await Promise.all(
+              (await branch).data.protection.required_status_checks.checks.map(({ context }) => (
+                github.rest.checks.listForRef({
+                  owner,
+                  repo,
+                  ref,
+                  check_name: context
+                })
+              )
+            )
+
+            checkRuns.forEach(({ name, status, conclusion }) => {
+              if (status !== 'completed' || conclusion !== 'success') {
+                console.log(`${name} check failed`);
+                core.setFailed(`Required status check ${name} did not succeed`);
+              }
+              console.log(`${name} check passed`);
+            });
+
+  publish:
+    needs: [check-status]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: step-security/harden-runner@v1
+        with:
+          egress-policy: block
+          allowed-endpoints: >
+            github.com:443
+            nodejs.org:443
+            prod.api.stepsecurity.io:443
+            registry.npmjs.org:443
+
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.inputs.tag }}
+
+      - uses: ljharb/actions/node/install@main
+        name: "nvm install lts/* && npm install"
+        with:
+          node-version: "lts/*"
+        env:
+          NPM_CONFIG_LEGACY_PEER_DEPS: true
+
+      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NODE_AUTH_TOKEN }}" >> .npmrc
+
+      - run: npm publish --dry-run
+
+      - uses: step-security/wait-for-secrets@v1
+        id: wait-for-secrets
+        with:
+          slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
+          secrets: |
+            OTP:
+              name: 'OTP to publish package'
+              description: 'OTP from authenticator app'
+
+      - run: npm publish --access public --otp ${{ steps.wait-for-secrets.outputs.OTP }}
