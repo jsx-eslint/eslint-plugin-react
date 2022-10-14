@@ -3816,6 +3816,19 @@ ruleTester.run('no-unused-prop-types', rule, {
     {
       code: `
         type Props = {
+          username: string;
+        }
+    
+        const App: React.VFC<Props> = (props) => {
+          return <div></div>;
+        }
+      `,
+      features: ['types'],
+      errors: [{ message: '\'username\' PropType is defined but prop is never used' }],
+    },
+    {
+      code: `
+        type Props = {
           history: {
             push: Function,
           },
@@ -6343,7 +6356,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       ],
     },
     {
-    // test same name of interface should be merge
+      // test same name of interface should be merge
       code: `
         interface Foo {
           x: number;
@@ -6370,7 +6383,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       ],
     },
     {
-    // test extends
+      // test extends
       code: `
         interface Foo {
           x: number;
@@ -6392,7 +6405,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       ],
     },
     {
-    // test extends
+      // test extends
       code: `
         interface Foo {
           x: number;
@@ -6419,7 +6432,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       ],
     },
     {
-    // test same name merge and extends
+      // test same name merge and extends
       code: `
         interface Foo {
           x: number;
@@ -6446,7 +6459,7 @@ ruleTester.run('no-unused-prop-types', rule, {
       ],
     },
     {
-    // test same name merge and extends
+      // test same name merge and extends
       code: `
         interface Foo {
           x: number;
