@@ -155,6 +155,18 @@ ruleTester.run('jsx-no-target-blank', rule, {
       code: '<a href={href} target="_blank" rel={isExternal ? "noreferrer" : "noopener"} />',
       options: [{ allowReferrer: true }],
     },
+    {
+      code: '<a href={href} target={isExternal ? "_blank" : undefined} rel={isExternal ? "noreferrer" : undefined} />',
+    },
+    {
+      code: '<a href={href} target={isSelf ? "_self" : "_blank"} rel={isSelf ? undefined : "noreferrer"} />',
+    },
+    {
+      code: '<a href={href} target={isSelf ? "_self" : ""} rel={isSelf ? undefined : ""} />',
+    },
+    {
+      code: '<a href={href} target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined} />',
+    },
   ]),
   invalid: parsers.all([
     {
@@ -376,10 +388,6 @@ ruleTester.run('jsx-no-target-blank', rule, {
     },
     {
       code: '<a href={href} target="_blank" rel={isExternal ? "undefined" : "noopener"} />',
-      errors: defaultErrors,
-    },
-    {
-      code: '<a href={href} target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined} />',
       errors: defaultErrors,
     },
     {

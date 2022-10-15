@@ -13,10 +13,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Fixed
 * configs: avoid legacy config system error ([#3461][] @ljharb)
+* [`jsx-no-target-blank`]: allow ternaries with literals ([#3464][] @akulsr0)
 
 ### Changed
 * [Perf] component detection: improve performance by avoiding traversing parents unnecessarily ([#3459][] @golopot)
 
+[#3464]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3464
 [#3461]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3461
 [#3459]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3459
 [#3449]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3449
