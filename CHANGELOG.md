@@ -5,9 +5,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`jsx-no-target-blank`]: allow ternaries with literals ([#3464][] @akulsr0)
+
 ### Changed
 * [Perf] component detection: improve performance by avoiding traversing parents unnecessarily ([#3459][] @golopot)
 
+[#3464]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3464
 [#3459]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3459
 
 ## [7.31.10] - 2022.10.10
