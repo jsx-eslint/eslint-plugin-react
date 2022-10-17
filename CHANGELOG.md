@@ -11,9 +11,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * add [`sort-default-props`] and deprecate [`jsx-sort-default-props`] ([#1861][] @alexzherdev)
 * add [`no-object-type-as-default-prop`] rule ([#2848][] @cyan33 @fengkx)
 
+### Fixed
+* configs: avoid legacy config system error ([#3461][] @ljharb)
+
 ### Changed
 * [Perf] component detection: improve performance by avoiding traversing parents unnecessarily ([#3459][] @golopot)
 
+[#3461]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3461
 [#3459]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3459
 [#3449]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3449
 [#3424]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3429

@@ -13,3 +13,6 @@ module.exports = Object.assign({}, all, {
     'react/jsx-uses-react': 0,
   },
 });
+
+// this is so the `languageOptions` property won't be warned in the new config system
+Object.defineProperty(module.exports, 'languageOptions', { enumerable: false });

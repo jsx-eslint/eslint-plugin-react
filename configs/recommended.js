@@ -28,3 +28,6 @@ module.exports = Object.assign({}, all, {
     'react/require-render-return': 2,
   },
 });
+
+// this is so the `languageOptions` property won't be warned in the new config system
+Object.defineProperty(module.exports, 'languageOptions', { enumerable: false });
