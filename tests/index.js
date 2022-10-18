@@ -6,6 +6,8 @@ const assert = require('assert');
 const fs = require('fs');
 const path = require('path');
 const arrayIncludes = require('array-includes');
+const flatMap = require('array.prototype.flatmap');
+const toSorted = require('array.prototype.tosorted');
 
 const plugin = require('..');
 
@@ -33,16 +35,20 @@ describe('rule documentation files have the correct content', () => {
   };
 
   function getConfigsForRule(ruleName, checkForEnabled) {
-    const configNames = [];
-    Object.keys(plugin.configs).forEach((configName) => {
-      const value = plugin.configs[configName].rules[`react/${ruleName}`];
-      const isOn = arrayIncludes([2, 'error'], value);
-      const isOff = arrayIncludes([0, 'off'], value);
-      if (value !== undefined && ((checkForEnabled && isOn) || (!checkForEnabled && isOff))) {
-        configNames.push(configName);
-      }
-    });
-    return configNames.sort();
+    return toSorted(
+      flatMap(
+        Object.keys(plugin.configs),
+        (configName) => {
+          const value = plugin.configs[configName].rules[`react/${ruleName}`];
+          const isOn = arrayIncludes([2, 'error'], value);
+          const isOff = arrayIncludes([0, 'off'], value);
+          if (value !== undefined && ((checkForEnabled && isOn) || (!checkForEnabled && isOff))) {
+            return configName;
+          }
+          return [];
+        }
+      )
+    );
   }
 
   function configNamesToList(configNames) {
