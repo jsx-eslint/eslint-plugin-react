@@ -18,9 +18,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-newline`]: No newline between comments and jsx elements ([#3493][] @justmejulian)
 * [`jsx-no-leaked-render`]: Don't report errors on empty strings if React >= v18 ([#3488][] @himanshu007-creator)
 
+### Changed
+* [Docs] [`jsx-no-leaked-render`]: Remove mentions of empty strings for React 18 ([#3468][] @karlhorky)
+
 [#3494]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3494
 [#3493]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3493
 [#3488]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3488
+[#3468]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3468
 [#3461]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3461
 [#3452]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3452
 [#3449]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3449

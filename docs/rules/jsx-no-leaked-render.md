@@ -10,23 +10,23 @@ Using the `&&` operator to render some element conditionally in JSX can cause un
 
 This rule aims to prevent dangerous leaked values from being rendered since they can cause unexpected values reaching the final DOM or even crashing your render method.
 
-In React, you might end up rendering unexpected values like `0` or `NaN`. In React Native, your render method will crash if you render `0`, `''`, or `NaN`:
+In React, you might end up rendering unexpected values like `0` or `NaN`. In React Native, your render method will even crash if you render these values:
 
 ```jsx
 const Example = () => {
   return (
     <>
-      {0 && <Something/>}
+      {0 && <Something />}
       {/* React: renders undesired 0 */}
       {/* React Native: crashes 💥 */}
 
-      {'' && <Something/>}
-      {/* React: renders nothing */}
-      {/* React Native: crashes 💥 */}
-
-      {NaN && <Something/>}
+      {NaN && <Something />}
       {/* React: renders undesired NaN */}
       {/* React Native: crashes 💥 */}
+
+      {'' && <Something />}
+      {/* React: renders nothing */}
+      {/* React Native, with React < 18: crashes 💥 */}
     </>
   )
 }
@@ -55,7 +55,7 @@ const Component = ({ count }) => {
 
 ```jsx
 const Component = ({ elements }) => {
-  return <div>{elements.length && <List elements={elements}/>}</div>
+  return <div>{elements.length && <List elements={elements} />}</div>
 }
 ```
 
@@ -71,13 +71,13 @@ const Component = ({ nestedCollection }) => {
 
 ```jsx
 const Component = ({ elements }) => {
-  return <div>{elements[0] && <List elements={elements}/>}</div>
+  return <div>{elements[0] && <List elements={elements} />}</div>
 }
 ```
 
 ```jsx
 const Component = ({ numberA, numberB }) => {
-  return <div>{(numberA || numberB) && <Results>{numberA+numberB}</Results>}</div>
+  return <div>{(numberA || numberB) && <Results>{numberA + numberB}</Results>}</div>
 }
 ```
 
@@ -85,7 +85,7 @@ const Component = ({ numberA, numberB }) => {
 // If the condition is a boolean value, this rule will report the logical expression
 // since it can't infer the type of the condition.
 const Component = ({ someBool }) => {
-  return <div>{someBool && <Results>{numberA+numberB}</Results>}</div>
+  return <div>{someBool && <Results>{numberA + numberB}</Results>}</div>
 }
 ```
 
@@ -119,31 +119,31 @@ const Component = ({ elements, count }) => {
 
 ```jsx
 const Component = ({ elements }) => {
-  return <div>{!!elements.length && <List elements={elements}/>}</div>
+  return <div>{!!elements.length && <List elements={elements} />}</div>
 }
 ```
 
 ```jsx
 const Component = ({ elements }) => {
-  return <div>{Boolean(elements.length) && <List elements={elements}/>}</div>
+  return <div>{Boolean(elements.length) && <List elements={elements} />}</div>
 }
 ```
 
 ```jsx
 const Component = ({ elements }) => {
-  return <div>{elements.length > 0 && <List elements={elements}/>}</div>
+  return <div>{elements.length > 0 && <List elements={elements} />}</div>
 }
 ```
 
 ```jsx
 const Component = ({ elements }) => {
-  return <div>{elements.length ? <List elements={elements}/> : null}</div>
+  return <div>{elements.length ? <List elements={elements} /> : null}</div>
 }
 ```
 
 ```jsx
 const Component = ({ elements }) => {
-  return <div>{elements.length ? <List elements={elements}/> : <EmptyList />}</div>
+  return <div>{elements.length ? <List elements={elements} /> : <EmptyList />}</div>
 }
 ```
 
