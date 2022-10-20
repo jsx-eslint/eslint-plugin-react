@@ -1,6 +1,6 @@
-# Disallow usage of setState in componentDidMount (react/no-did-mount-set-state)
+# Disallow usage of setState in componentDidMount (`react/no-did-mount-set-state`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+<!-- end auto-generated rule header -->
 
 Updating the state after a component mount will trigger a second `render()` call and can lead to property/layout thrashing.
 

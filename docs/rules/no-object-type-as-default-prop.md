@@ -1,6 +1,6 @@
-# Disallow usage of referential-type variables as default param in functional component (react/no-object-type-as-default-prop)
+# Disallow usage of referential-type variables as default param in functional component (`react/no-object-type-as-default-prop`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+<!-- end auto-generated rule header -->
 
 Warns if in a functional component, an object type value (such as array/object literal/function/etc) is used as default prop, to prevent potential unnecessary rerenders, and performance regressions.
 

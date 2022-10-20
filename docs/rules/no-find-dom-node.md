@@ -1,6 +1,8 @@
-# Disallow usage of findDOMNode (react/no-find-dom-node)
+# Disallow usage of findDOMNode (`react/no-find-dom-node`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`, `recommended`.
+💼 This rule is enabled in the `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
+
+<!-- end auto-generated rule header -->
 
 Facebook will eventually deprecate `findDOMNode` as it blocks certain improvements in React in the future.
 

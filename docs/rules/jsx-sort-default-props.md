@@ -1,6 +1,8 @@
-# Enforce defaultProps declarations alphabetical sorting (react/jsx-sort-default-props)
+# Enforce defaultProps declarations alphabetical sorting (`react/jsx-sort-default-props`)
 
-❌ This rule is deprecated. Please use the [`sort-default-props`](./sort-default-props.md) rule instead.
+❌ This rule is deprecated. It was replaced by [`sort-default-props`](sort-default-props.md).
+
+<!-- end auto-generated rule header -->
 
 Some developers prefer to sort `defaultProps` declarations alphabetically to be able to find necessary declarations easier at a later time. Others feel that it adds complexity and becomes a burden to maintain.
 

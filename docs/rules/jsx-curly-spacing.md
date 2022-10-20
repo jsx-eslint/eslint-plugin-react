@@ -1,8 +1,8 @@
-# Enforce or disallow spaces inside of curly braces in JSX attributes and expressions (react/jsx-curly-spacing)
+# Enforce or disallow spaces inside of curly braces in JSX attributes and expressions (`react/jsx-curly-spacing`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
-🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
+<!-- end auto-generated rule header -->
 
 While formatting preferences are very personal, a number of style guides require or disallow spaces between curly braces.
 

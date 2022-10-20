@@ -1,6 +1,6 @@
-# Enforce defaultProps declarations alphabetical sorting (react/sort-default-props)
+# Enforce defaultProps declarations alphabetical sorting (`react/sort-default-props`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+<!-- end auto-generated rule header -->
 
 Some developers prefer to sort `defaultProps` declarations alphabetically to be able to find necessary declarations easier at a later time. Others feel that it adds complexity and becomes a burden to maintain.
 

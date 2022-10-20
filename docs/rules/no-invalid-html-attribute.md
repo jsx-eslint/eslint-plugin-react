@@ -1,8 +1,8 @@
-# Disallow usage of invalid attributes (react/no-invalid-html-attribute)
+# Disallow usage of invalid attributes (`react/no-invalid-html-attribute`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
-🔧 This rule is automatically fixable using the `--fix` [flag](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) on the command line.
+<!-- end auto-generated rule header -->
 
 Some HTML elements have a specific set of valid values for some attributes.
 For instance the elements: `a`, `area`, `link`, or `form` all have an attribute called `rel`.

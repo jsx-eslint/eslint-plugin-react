@@ -1,6 +1,6 @@
-# Enforce all defaultProps have a corresponding non-required PropType (react/default-props-match-prop-types)
+# Enforce all defaultProps have a corresponding non-required PropType (`react/default-props-match-prop-types`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+<!-- end auto-generated rule header -->
 
 This rule aims to ensure that any prop in `defaultProps` has a non-required type
 definition.
