@@ -1,6 +1,6 @@
-# Enforce or disallow spaces inside of curly braces in JSX attributes and expressions (react/jsx-child-element-spacing)
+# Enforce or disallow spaces inside of curly braces in JSX attributes and expressions (`react/jsx-child-element-spacing`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+<!-- end auto-generated rule header -->
 
 ## Rule Details
 

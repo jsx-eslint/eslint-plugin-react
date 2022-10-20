@@ -1,6 +1,6 @@
-# Disallow usage of dangerous JSX properties (react/no-danger)
+# Disallow usage of dangerous JSX properties (`react/no-danger`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+<!-- end auto-generated rule header -->
 
 Dangerous properties in React are those whose behavior is known to be a common source of application vulnerabilities. The properties names clearly indicate they are dangerous and should be avoided unless great care is taken.
 

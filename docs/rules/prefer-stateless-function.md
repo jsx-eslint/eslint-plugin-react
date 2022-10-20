@@ -1,6 +1,6 @@
-# Enforce stateless components to be written as a pure function (react/prefer-stateless-function)
+# Enforce stateless components to be written as a pure function (`react/prefer-stateless-function`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+<!-- end auto-generated rule header -->
 
 Stateless functional components are simpler than class based components and will benefit from future React performance optimizations specific to these components.
 

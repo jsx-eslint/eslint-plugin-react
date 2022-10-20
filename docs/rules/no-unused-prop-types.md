@@ -1,6 +1,6 @@
-# Disallow definitions of unused propTypes (react/no-unused-prop-types)
+# Disallow definitions of unused propTypes (`react/no-unused-prop-types`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+<!-- end auto-generated rule header -->
 
 Warns if a prop with a defined type isn't being used.
 

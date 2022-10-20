@@ -1,6 +1,6 @@
-# Disallow declaring unused methods of component class (react/no-unused-class-component-methods)
+# Disallow declaring unused methods of component class (`react/no-unused-class-component-methods`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+<!-- end auto-generated rule header -->
 
 Warns you if you have defined a method or property but it is never being used anywhere.
 

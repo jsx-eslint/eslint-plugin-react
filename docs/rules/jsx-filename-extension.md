@@ -1,6 +1,6 @@
-# Disallow file extensions that may contain JSX (react/jsx-filename-extension)
+# Disallow file extensions that may contain JSX (`react/jsx-filename-extension`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+<!-- end auto-generated rule header -->
 
 ## Rule Details
 

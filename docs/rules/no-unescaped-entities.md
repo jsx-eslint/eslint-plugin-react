@@ -1,6 +1,8 @@
-# Disallow unescaped HTML entities from appearing in markup (react/no-unescaped-entities)
+# Disallow unescaped HTML entities from appearing in markup (`react/no-unescaped-entities`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`, `recommended`.
+💼 This rule is enabled in the `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
+
+<!-- end auto-generated rule header -->
 
 This rule prevents characters that you may have meant as JSX escape characters
 from being accidentally injected as a text node in JSX statements.

@@ -1,6 +1,6 @@
-# Enforce a defaultProps definition for every prop that is not a required prop (react/require-default-props)
+# Enforce a defaultProps definition for every prop that is not a required prop (`react/require-default-props`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+<!-- end auto-generated rule header -->
 
 This rule aims to ensure that any non-required prop types of a component has a
 corresponding `defaultProps` value.

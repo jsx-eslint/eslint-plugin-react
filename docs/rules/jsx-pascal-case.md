@@ -1,6 +1,6 @@
-# Enforce PascalCase for user-defined JSX components (react/jsx-pascal-case)
+# Enforce PascalCase for user-defined JSX components (`react/jsx-pascal-case`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+<!-- end auto-generated rule header -->
 
 Enforces coding style that user-defined JSX components are defined and referenced in PascalCase.
 

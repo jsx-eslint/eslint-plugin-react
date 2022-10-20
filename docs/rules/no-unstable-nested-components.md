@@ -1,6 +1,6 @@
-# Disallow creating unstable components inside components (react/no-unstable-nested-components)
+# Disallow creating unstable components inside components (`react/no-unstable-nested-components`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+<!-- end auto-generated rule header -->
 
 Creating components inside components (nested components) will cause React to throw away the state of those nested components on each re-render of their parent.
 
@@ -122,7 +122,10 @@ function Component() {
 ...
 "react/no-unstable-nested-components": [
   "off" | "warn" | "error",
-  { "allowAsProps": true | false }
+  {
+    "allowAsProps": true | false,
+    "customValidators": [] /* optional array of validators used for propTypes validation */
+  }
 ]
 ...
 ```

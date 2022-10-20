@@ -1,6 +1,6 @@
-# Disallow usage of shouldComponentUpdate when extending React.PureComponent (react/no-redundant-should-component-update)
+# Disallow usage of shouldComponentUpdate when extending React.PureComponent (`react/no-redundant-should-component-update`)
 
-💼 This rule is enabled in the following [configs](https://github.com/jsx-eslint/eslint-plugin-react#shareable-configurations): `all`.
+<!-- end auto-generated rule header -->
 
 Warns if you have `shouldComponentUpdate` defined when defining a component that extends React.PureComponent.
 While having `shouldComponentUpdate` will still work, it becomes pointless to extend PureComponent.
