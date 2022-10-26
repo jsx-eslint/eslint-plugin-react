@@ -10,7 +10,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Changed
 * [Perf] component detection: improve performance by avoiding traversing parents unnecessarily ([#3459][] @golopot)
+* [Docs] `forbid-component-props`: inclusive language w/ allowlist ([#3473][] @AndersDJohnson)
 
+[#3473]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3473
 [#3464]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3464
 [#3459]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3459
 
