@@ -94,7 +94,7 @@ jobs:
             eslint: 5
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: ljharb/actions/node/install@main
         name: 'nvm install ${{ matrix.node-version }} && npm install'
         with:
@@ -107,7 +107,7 @@ jobs:
       - run: npx ls-engines
         if: ${{ matrix.node-version >= 12 }}
       - run: npm run unit-test
-      - uses: codecov/codecov-action@v1
+      - uses: codecov/codecov-action@v3
 
   node:
     name: 'node 4+'
