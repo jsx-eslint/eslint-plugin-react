@@ -11,6 +11,7 @@
 
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-invalid-html-attribute');
+const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   ecmaVersion: 2018,
@@ -27,7 +28,7 @@ const parserOptions = {
 const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('no-invalid-html-attribute', rule, {
-  valid: [
+  valid: parsers.all([
     { code: '<a rel="alternate"></a>' },
     { code: 'React.createElement("a", { rel: "alternate" })' },
     { code: 'React.createElement("a", { rel: ["alternate"] })' },
@@ -232,11 +233,10 @@ ruleTester.run('no-invalid-html-attribute', rule, {
     {
       code: '<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#fff" />',
     },
-  ],
-  invalid: [
+  ]),
+  invalid: parsers.all([
     {
       code: '<a rel="alternatex"></a>',
-      output: '<a rel=""></a>',
       errors: [
         {
           messageId: 'neverValid',
@@ -244,12 +244,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'alternatex',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel=""></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: 'React.createElement("a", { rel: "alternatex" })',
-      output: null,
       errors: [
         {
           messageId: 'neverValid',
@@ -257,12 +262,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'alternatex',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: 'React.createElement("a", { rel: "" })',
+            },
+          ],
         },
       ],
     },
     {
       code: 'React.createElement("a", { rel: ["alternatex"] })',
-      output: null,
       errors: [
         {
           messageId: 'neverValid',
@@ -270,12 +280,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'alternatex',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: 'React.createElement("a", { rel: [""] })',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="alternatex alternate"></a>',
-      output: '<a rel=" alternate"></a>',
       errors: [
         {
           messageId: 'neverValid',
@@ -283,6 +298,12 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'alternatex',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel=" alternate"></a>',
+            },
+          ],
         },
       ],
     },
@@ -295,6 +316,12 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'alternatex alternate',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: 'React.createElement("a", { rel: "" })',
+            },
+          ],
         },
       ],
     },
@@ -307,12 +334,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'alternatex alternate',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: 'React.createElement("a", { rel: [""] })',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="alternate alternatex"></a>',
-      output: '<a rel="alternate "></a>',
       errors: [
         {
           messageId: 'neverValid',
@@ -320,6 +352,12 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'alternatex',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel="alternate "></a>',
+            },
+          ],
         },
       ],
     },
@@ -332,6 +370,12 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'alternate alternatex',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: 'React.createElement("a", { rel: "" })',
+            },
+          ],
         },
       ],
     },
@@ -344,12 +388,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'alternate alternatex',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: 'React.createElement("a", { rel: [""] })',
+            },
+          ],
         },
       ],
     },
     {
       code: '<html rel></html>',
-      output: '<html ></html>',
       errors: [
         {
           messageId: 'onlyMeaningfulFor',
@@ -357,6 +406,12 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             tagNames: '"<link>", "<a>", "<area>", "<form>"',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveDefault',
+              output: '<html ></html>',
+            },
+          ],
         },
       ],
     },
@@ -369,16 +424,27 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             tagNames: '"<link>", "<a>", "<area>", "<form>"',
           },
+          // suggestions: [
+          //   {
+          //     messageId: 'suggestRemoveDefault',
+          //     output: 'React.createElement("html", { })',
+          //   },
+          // ],
         },
       ],
     },
     {
       code: '<a rel></a>',
-      output: '<a ></a>',
       errors: [
         {
           messageId: 'emptyIsMeaningless',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveEmpty',
+              output: '<a ></a>',
+            },
+          ],
         },
       ],
     },
@@ -391,6 +457,12 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             reportingValue: 1,
           },
+          // suggestions: [
+          //   {
+          //     messageId: 'suggestRemoveDefault',
+          //     output: 'React.createElement("a", { })',
+          //   },
+          // ],
         },
       ],
     },
@@ -405,7 +477,6 @@ ruleTester.run('no-invalid-html-attribute', rule, {
     },
     {
       code: '<span rel></span>',
-      output: '<span ></span>',
       errors: [
         {
           messageId: 'onlyMeaningfulFor',
@@ -413,62 +484,92 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             tagNames: '"<link>", "<a>", "<area>", "<form>"',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveDefault',
+              output: '<span ></span>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel={null}></a>',
-      output: '<a ></a>',
       errors: [
         {
           messageId: 'onlyStrings',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveNonString',
+              output: '<a ></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel={5}></a>',
-      output: '<a ></a>',
       errors: [
         {
           messageId: 'onlyStrings',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveNonString',
+              output: '<a ></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel={true}></a>',
-      output: '<a ></a>',
       errors: [
         {
           messageId: 'onlyStrings',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveNonString',
+              output: '<a ></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel={{}}></a>',
-      output: '<a ></a>',
       errors: [
         {
           messageId: 'onlyStrings',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveDefault',
+              output: '<a ></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel={undefined}></a>',
-      output: '<a ></a>',
       errors: [
         {
           messageId: 'onlyStrings',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveDefault',
+              output: '<a ></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="noreferrer noopener foobar"></a>',
-      output: '<a rel="noreferrer noopener "></a>',
       errors: [
         {
           messageId: 'neverValid',
@@ -476,42 +577,62 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             reportingValue: 'foobar',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel="noreferrer noopener "></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="noreferrer noopener   "></a>',
-      output: '<a rel="noreferrer noopener"></a>',
       errors: [
         {
           messageId: 'spaceDelimited',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveWhitespaces',
+              output: '<a rel="noreferrer noopener"></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="noreferrer        noopener"></a>',
-      output: '<a rel="noreferrer noopener"></a>',
       errors: [
         {
           messageId: 'spaceDelimited',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveWhitespaces',
+              output: '<a rel="noreferrer noopener"></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="noreferrer\xa0\xa0noopener"></a>',
-      output: '<a rel="noreferrer noopener"></a>',
       errors: [
         {
           messageId: 'spaceDelimited',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveWhitespaces',
+              output: '<a rel="noreferrer noopener"></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel={"noreferrer noopener foobar"}></a>',
-      output: '<a rel={"noreferrer noopener "}></a>',
       errors: [
         {
           messageId: 'neverValid',
@@ -519,6 +640,12 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'foobar',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel={"noreferrer noopener "}></a>',
+            },
+          ],
         },
       ],
     },
@@ -531,12 +658,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'foobar',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: 'React.createElement("a", { rel: ["noreferrer", "noopener", "" ] })',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel={"foobar noreferrer noopener"}></a>',
-      output: '<a rel={" noreferrer noopener"}></a>',
       errors: [
         {
           messageId: 'neverValid',
@@ -544,12 +676,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'foobar',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel={" noreferrer noopener"}></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel={"foobar batgo       noopener"}></a>',
-      output: '<a rel={"        noopener"}></a>',
       errors: [
         {
           messageId: 'neverValid',
@@ -557,6 +694,12 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'foobar',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel={" batgo       noopener"}></a>',
+            },
+          ],
         },
         {
           messageId: 'neverValid',
@@ -564,6 +707,12 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'batgo',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel={"foobar        noopener"}></a>',
+            },
+          ],
         },
         {
           messageId: 'spaceDelimited',
@@ -573,27 +722,36 @@ ruleTester.run('no-invalid-html-attribute', rule, {
     },
     {
       code: '<a rel={"        noopener"}></a>',
-      output: '<a rel={"noopener"}></a>',
       errors: [
         {
           messageId: 'spaceDelimited',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveWhitespaces',
+              output: '<a rel={"noopener"}></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel={"noopener        "}></a>',
-      output: '<a rel={"noopener"}></a>',
       errors: [
         {
           messageId: 'spaceDelimited',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveWhitespaces',
+              output: '<a rel={"noopener"}></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel={" batgo noopener"}></a>',
-      output: '<a rel={"batgo noopener"}></a>',
       errors: [
         {
           messageId: 'neverValid',
@@ -601,6 +759,12 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'batgo',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel={"  noopener"}></a>',
+            },
+          ],
         },
         {
           messageId: 'spaceDelimited',
@@ -610,7 +774,6 @@ ruleTester.run('no-invalid-html-attribute', rule, {
     },
     {
       code: '<a rel={"batgo noopener"}></a>',
-      output: '<a rel={" noopener"}></a>',
       errors: [
         {
           messageId: 'neverValid',
@@ -618,22 +781,32 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'batgo',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel={" noopener"}></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel={" noopener"}></a>',
-      output: '<a rel={"noopener"}></a>',
       errors: [
         {
           messageId: 'spaceDelimited',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveWhitespaces',
+              output: '<a rel={"noopener"}></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="canonical"></a>',
-      output: '<a rel=""></a>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -642,12 +815,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'a',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel=""></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="dns-prefetch"></a>',
-      output: '<a rel=""></a>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -656,12 +834,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'a',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel=""></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="icon"></a>',
-      output: '<a rel=""></a>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -670,6 +853,12 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'a',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel=""></a>',
+            },
+          ],
         },
       ],
     },
@@ -687,7 +876,6 @@ ruleTester.run('no-invalid-html-attribute', rule, {
     },
     {
       code: '<link rel="shortcut foo"></link>',
-      output: '<link rel="shortcut "></link>',
       errors: [
         {
           messageId: 'neverValid',
@@ -695,6 +883,12 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'foo',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<link rel="shortcut "></link>',
+            },
+          ],
         },
         {
           messageId: 'notPaired',
@@ -708,17 +902,21 @@ ruleTester.run('no-invalid-html-attribute', rule, {
     },
     {
       code: '<link rel="shortcut  icon"></link>',
-      output: '<link rel="shortcut icon"></link>',
       errors: [
         {
           messageId: 'spaceDelimited',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveWhitespaces',
+              output: '<link rel="shortcut icon"></link>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<link rel="shortcut  foo"></link>',
-      output: '<link rel="shortcut foo"></link>',
       errors: [
         {
           messageId: 'neverValid',
@@ -726,6 +924,12 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             reportingValue: 'foo',
             attributeName: 'rel',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<link rel="shortcut  "></link>',
+            },
+          ],
         },
         {
           messageId: 'notAlone',
@@ -737,12 +941,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         {
           messageId: 'spaceDelimited',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveWhitespaces',
+              output: '<link rel="shortcut foo"></link>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="manifest"></a>',
-      output: '<a rel=""></a>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -751,12 +960,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'a',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel=""></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="modulepreload"></a>',
-      output: '<a rel=""></a>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -765,12 +979,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'a',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel=""></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="pingback"></a>',
-      output: '<a rel=""></a>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -779,12 +998,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'a',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel=""></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="preconnect"></a>',
-      output: '<a rel=""></a>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -793,12 +1017,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'a',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel=""></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="prefetch"></a>',
-      output: '<a rel=""></a>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -807,12 +1036,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'a',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel=""></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="preload"></a>',
-      output: '<a rel=""></a>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -821,12 +1055,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'a',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel=""></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="prerender"></a>',
-      output: '<a rel=""></a>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -835,12 +1074,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'a',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel=""></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<a rel="stylesheet"></a>',
-      output: '<a rel=""></a>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -849,12 +1093,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'a',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<a rel=""></a>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<area rel="canonical"></area>',
-      output: '<area rel=""></area>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -863,12 +1112,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'area',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<area rel=""></area>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<area rel="dns-prefetch"></area>',
-      output: '<area rel=""></area>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -877,12 +1131,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'area',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<area rel=""></area>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<area rel="icon"></area>',
-      output: '<area rel=""></area>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -891,12 +1150,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'area',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<area rel=""></area>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<area rel="manifest"></area>',
-      output: '<area rel=""></area>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -905,12 +1169,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'area',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<area rel=""></area>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<area rel="modulepreload"></area>',
-      output: '<area rel=""></area>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -919,12 +1188,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'area',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<area rel=""></area>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<area rel="pingback"></area>',
-      output: '<area rel=""></area>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -933,12 +1207,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'area',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<area rel=""></area>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<area rel="preconnect"></area>',
-      output: '<area rel=""></area>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -947,12 +1226,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'area',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<area rel=""></area>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<area rel="prefetch"></area>',
-      output: '<area rel=""></area>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -961,12 +1245,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'area',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<area rel=""></area>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<area rel="preload"></area>',
-      output: '<area rel=""></area>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -975,12 +1264,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'area',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<area rel=""></area>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<area rel="prerender"></area>',
-      output: '<area rel=""></area>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -989,12 +1283,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'area',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<area rel=""></area>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<area rel="stylesheet"></area>',
-      output: '<area rel=""></area>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1003,12 +1302,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'area',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<area rel=""></area>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<link rel="bookmark"></link>',
-      output: '<link rel=""></link>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1017,12 +1321,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'link',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<link rel=""></link>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<link rel="external"></link>',
-      output: '<link rel=""></link>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1031,12 +1340,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'link',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<link rel=""></link>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<link rel="nofollow"></link>',
-      output: '<link rel=""></link>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1045,12 +1359,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'link',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<link rel=""></link>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<link rel="noopener"></link>',
-      output: '<link rel=""></link>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1059,12 +1378,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'link',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<link rel=""></link>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<link rel="noreferrer"></link>',
-      output: '<link rel=""></link>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1073,12 +1397,16 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'link',
           },
+          suggestions: [
+            {
+              output: '<link rel=""></link>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<link rel="opener"></link>',
-      output: '<link rel=""></link>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1087,12 +1415,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'link',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<link rel=""></link>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<link rel="tag"></link>',
-      output: '<link rel=""></link>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1101,12 +1434,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'link',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<link rel=""></link>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<form rel="alternate"></form>',
-      output: '<form rel=""></form>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1115,12 +1453,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'form',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<form rel=""></form>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<form rel="author"></form>',
-      output: '<form rel=""></form>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1129,12 +1472,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'form',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<form rel=""></form>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<form rel="bookmark"></form>',
-      output: '<form rel=""></form>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1143,12 +1491,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'form',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<form rel=""></form>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<form rel="canonical"></form>',
-      output: '<form rel=""></form>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1157,12 +1510,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'form',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<form rel=""></form>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<form rel="dns-prefetch"></form>',
-      output: '<form rel=""></form>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1171,12 +1529,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'form',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<form rel=""></form>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<form rel="icon"></form>',
-      output: '<form rel=""></form>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1185,12 +1548,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'form',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<form rel=""></form>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<form rel="manifest"></form>',
-      output: '<form rel=""></form>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1199,12 +1567,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'form',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<form rel=""></form>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<form rel="modulepreload"></form>',
-      output: '<form rel=""></form>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1213,12 +1586,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'form',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<form rel=""></form>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<form rel="pingback"></form>',
-      output: '<form rel=""></form>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1227,12 +1605,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'form',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<form rel=""></form>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<form rel="preconnect"></form>',
-      output: '<form rel=""></form>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1241,12 +1624,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'form',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<form rel=""></form>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<form rel="prefetch"></form>',
-      output: '<form rel=""></form>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1255,12 +1643,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'form',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<form rel=""></form>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<form rel="preload"></form>',
-      output: '<form rel=""></form>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1269,12 +1662,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'form',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<form rel=""></form>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<form rel="prerender"></form>',
-      output: '<form rel=""></form>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1283,12 +1681,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'form',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<form rel=""></form>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<form rel="stylesheet"></form>',
-      output: '<form rel=""></form>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1297,12 +1700,17 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'form',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<form rel=""></form>',
+            },
+          ],
         },
       ],
     },
     {
       code: '<form rel="tag"></form>',
-      output: '<form rel=""></form>',
       errors: [
         {
           messageId: 'notValidFor',
@@ -1311,8 +1719,33 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             elementName: 'form',
           },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveInvalid',
+              output: '<form rel=""></form>',
+            },
+          ],
         },
       ],
     },
-  ],
+    {
+      code: '<form rel=""></form>',
+      errors: [
+        {
+          messageId: 'noEmpty',
+          data: {
+            reportingValue: 'tag',
+            attributeName: 'rel',
+            elementName: 'form',
+          },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveEmpty',
+              output: '<form ></form>',
+            },
+          ],
+        },
+      ],
+    },
+  ]),
 });

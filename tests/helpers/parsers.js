@@ -174,6 +174,8 @@ const parsers = {
         tsNew ? addComment(Object.assign({}, test, { parser: parsers['@TYPESCRIPT_ESLINT'] }), '@typescript-eslint/parser') : []
       );
     });
+
+    // console.log(require('util').inspect(t, { depth: null }));
     return t;
   },
 };

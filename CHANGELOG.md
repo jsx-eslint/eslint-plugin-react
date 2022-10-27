@@ -17,6 +17,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: do not check `fbs` elements ([#3494][] @brianogilvie)
 * [`jsx-newline`]: No newline between comments and jsx elements ([#3493][] @justmejulian)
 * [`jsx-no-leaked-render`]: Don't report errors on empty strings if React >= v18 ([#3488][] @himanshu007-creator)
+* [`no-invalid-html-attribute`]: convert autofix to suggestion ([#3474][] @himanshu007-creator @ljharb)
 
 ### Changed
 * [Docs] [`jsx-no-leaked-render`]: Remove mentions of empty strings for React 18 ([#3468][] @karlhorky)
@@ -24,6 +25,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3494]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3494
 [#3493]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3493
 [#3488]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3488
+[#3474]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3474
 [#3471]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3471
 [#3468]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3468
 [#3461]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3461
