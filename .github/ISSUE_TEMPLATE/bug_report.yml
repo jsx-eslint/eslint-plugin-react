@@ -1,0 +1,81 @@
+name: Bug Report
+description: File a bug report
+title: "[Bug]: "
+labels: ["bug", "triage"]
+assignees: []
+body:
+  - type: checkboxes
+    attributes:
+      label: Is there an existing issue for this?
+      description: Please search to see if an issue already exists for the bug you encountered.
+      options:
+      - label: I have searched the existing issues and my issue is unique
+        required: true
+      - label: My issue appears in the command-line and not only in the text editor
+        required: true
+  - type: textarea
+    id: Code
+    attributes:
+      label: Description Overview
+      description: A clear and concise description of bug w/ examples
+      placeholder: |
+        Brief description here
+
+        Show example of your code (as text format), add images/videos/gifs to help explain example
+        and/or Link of repo to where issue is occurring
+
+        What is happening? / What is the error?
+
+        What command(s) did you run to reproduce issue?
+      value: |
+        <!--Brief description-->
+
+
+        <!--Show example of your code (as text format), add images/videos/gifs to help explain example-->
+        <!--and/or Link of repo to where issue is occurring-->
+
+
+        <!--What is happening? / What is the error?-->
+
+
+        <!--What command(s) did you run to reproduce issue?-->
+
+    validations:
+      required: true
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Behavior
+      description: A clear and concise description of what you expected to happen.
+      placeholder: |
+        Brief description here
+
+        Show example of code (as text format), add images/videos/gifs to help explain expected behavior
+      value: |
+        <!--Brief description-->
+
+
+        <!--Show example of code (as text format), add images/videos/gifs to help explain expected behavior-->
+    validations:
+      required: true
+  - type: input
+    id: eslint-plugin-react-version
+    attributes:
+      label: `eslint-plugin-react` version
+      placeholder: v7.31.11
+    validations:
+      required: true
+  - type: input
+    id: eslint-version
+    attributes:
+      label: `eslint` version
+      placeholder: v8.28.0
+    validations:
+      required: true
+  - type: input
+    id: node-version
+    attributes:
+      label: `node` version
+      placeholder: v8.19.2
+    validations:
+      required: true
