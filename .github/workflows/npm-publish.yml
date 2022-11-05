@@ -109,7 +109,7 @@ jobs:
         env:
           NPM_CONFIG_LEGACY_PEER_DEPS: true
 
-      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NODE_AUTH_TOKEN }}" >> .npmrc
+      - run: echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >> .npmrc
 
       - run: npm publish --dry-run
 
