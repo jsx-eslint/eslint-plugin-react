@@ -42,7 +42,7 @@
     "string.prototype.matchall": "^4.0.7"
   },
   "devDependencies": {
-    "@babel/core": "^7.19.3",
+    "@babel/core": "^7.20.2",
     "@babel/eslint-parser": "^7.19.1",
     "@babel/plugin-syntax-decorators": "^7.19.0",
     "@babel/plugin-syntax-do-expressions": "^7.18.6",
