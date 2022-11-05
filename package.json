@@ -48,6 +48,7 @@
     "@babel/plugin-syntax-do-expressions": "^7.18.6",
     "@babel/plugin-syntax-function-bind": "^7.18.6",
     "@babel/preset-react": "^7.18.6",
+    "@sinonjs/commons": "=1.8.3",
     "@types/eslint": "=7.2.10",
     "@types/estree": "0.0.52",
     "@types/node": "^4.9.5",
