@@ -48,39 +48,8 @@ jobs:
           result-encoding: string
           retries: 3
           script: |
-            const ref = context.payload.inputs.tag;
-
-            console.log(`Checking status checks for ${ref}`);
-
-            const { owner, repo } = context.repo;
-            const { default_branch: branch } = context.payload.repository;
-
-            const branch = github.rest.repos.getBranch({ owner, repo, branch });
-
-            const checkSuites = await github.rest.checks.listSuitesForRef({ owner, repo, ref });
-
-            if (checkSuites.some(({ status }) => 'completed')) {
-              core.setFailed(`Some workflows for ${context.payload.inputs.tag} are still in-progress`);
-            }
-
-            const { data: { check_runs: checkRuns } } = await Promise.all(
-              (await branch).data.protection.required_status_checks.checks.map(({ context }) => (
-                github.rest.checks.listForRef({
-                  owner,
-                  repo,
-                  ref,
-                  check_name: context
-                })
-              )
-            )
-
-            checkRuns.forEach(({ name, status, conclusion }) => {
-              if (status !== 'completed' || conclusion !== 'success') {
-                console.log(`${name} check failed`);
-                core.setFailed(`Required status check ${name} did not succeed`);
-              }
-              console.log(`${name} check passed`);
-            });
+            const script = require('./.github/workflows/publish');
+            console.log(await script({ github, context, core }));
 
   publish:
     needs: [check-status]
