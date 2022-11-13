@@ -217,65 +217,42 @@ In the new config system, `plugin:` protocol(e.g. `plugin:react/recommended`) is
 As eslint does not automatically import the preset config (shareable config), you explicitly do it by yourself.
 
 ```js
-const reactRecommended = require('eslint-plugin-react/configs/recommended');
+const react = require('eslint-plugin-react');
+const globals = require('globals');
 
 module.exports = [
   …
-  reactRecommended, // This is not a plugin object, but a shareable config object
+  'eslint:recommended',
+  react.configs.recommended, // <-- add the recommended config into the array
+  {
+    files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
+    plugins: {
+      react,
+    },
+    languageOptions: {
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+      globals: {
+        ...globals.browser,
+      },
+    },
+    rules: {
+      // ... any rules you want
+      'react/jsx-uses-react': 'error',
+      'react/jsx-uses-vars': 'error',
+    },
+    // ... others are omitted for brevity
+  },
   …
 ];
 ```
 
 You can of course add/override some properties.
 
-**Note**: Our shareable configs does not preconfigure `files` or [`languageOptions.globals`](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#configuration-objects).
-For most of the cases, you probably want to configure some properties by yourself.
-
-```js
-const reactRecommended = require('eslint-plugin-react/configs/recommended');
-const globals = require('globals');
-
-module.exports = [
-  …
-  {
-    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-    ...reactRecommended,
-    languageOptions: {
-      ...reactRecommended.languageOptions,
-      globals: {
-        ...globals.serviceworker,
-        ...globals.browser;
-      },
-    },
-  },
-  …
-];
-```
-
-The above example is same as the example below, as the new config system is based on chaining.
-
-```js
-const reactRecommended = require('eslint-plugin-react/configs/recommended');
-const globals = require('globals');
-
-module.exports = [
-  …
-  {
-    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-    ...reactRecommended,
-  },
-  {
-    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-    languageOptions: {
-      globals: {
-        ...globals.serviceworker,
-        ...globals.browser,
-      },
-    },
-  },
-  …
-];
-```
+**Note**: Our shareable configs do not preconfigure `files` or [`languageOptions.globals`](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#configuration-objects).
 
 ## List of supported rules
 
