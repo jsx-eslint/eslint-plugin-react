@@ -199,45 +199,85 @@ ruleTester.run('jsx-no-leaked-render', rule, {
     // Common invalid cases with default options
     {
       code: `
-      const Example = () => {
-        return (
-          <>
-            {0 && <Something/>}
-            {'' && <Something/>}
-            {NaN && <Something/>}
-          </>
-        )
-      }
+        const Example = () => {
+          return (
+            <>
+              {0 && <Something/>}
+              {'' && <Something/>}
+              {NaN && <Something/>}
+            </>
+          )
+        }
       `,
       features: ['fragment'],
       errors: [
         {
           message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
           line: 5,
-          column: 14,
+          column: 16,
         },
         {
           message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
           line: 6,
-          column: 14,
+          column: 16,
         },
         {
           message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
           line: 7,
-          column: 14,
+          column: 16,
         },
       ],
       output: `
-      const Example = () => {
-        return (
-          <>
-            {0 ? <Something/> : null}
-            {'' ? <Something/> : null}
-            {NaN ? <Something/> : null}
-          </>
-        )
-      }
+        const Example = () => {
+          return (
+            <>
+              {0 ? <Something/> : null}
+              {'' ? <Something/> : null}
+              {NaN ? <Something/> : null}
+            </>
+          )
+        }
       `,
+      settings: { react: { version: '17.999.999' } },
+    },
+
+    {
+      code: `
+        const Example = () => {
+          return (
+            <>
+              {0 && <Something/>}
+              {'' && <Something/>}
+              {NaN && <Something/>}
+            </>
+          )
+        }
+      `,
+      features: ['fragment'],
+      errors: [
+        {
+          message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+          line: 5,
+          column: 16,
+        },
+        {
+          message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+          line: 7,
+          column: 16,
+        },
+      ],
+      output: `
+        const Example = () => {
+          return (
+            <>
+              {0 ? <Something/> : null}
+              {'' && <Something/>}
+              {NaN ? <Something/> : null}
+            </>
+          )
+        }
+      `,
+      settings: { react: { version: '18.0.0' } },
     },
 
     // Invalid tests with both strategies enabled (default)
