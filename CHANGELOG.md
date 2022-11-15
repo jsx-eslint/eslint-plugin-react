@@ -16,12 +16,14 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-no-target-blank`]: allow ternaries with literals ([#3464][] @akulsr0)
 * [`sort-prop-types`]: restore autofixing ([#2574][] @ROSSROSALES)
 * [`no-unknown-property`]: add `inert` attribute ([#3484][] @ljharb)
+* [`jsx-key`]: detect keys in logical expression and conditional expression ([#3490][] @metreniuk)
 
 ### Changed
 * [Perf] component detection: improve performance by avoiding traversing parents unnecessarily ([#3459][] @golopot)
 * [Docs] `forbid-component-props`: inclusive language w/ allowlist ([#3473][] @AndersDJohnson)
 * [Docs] automate doc generation with `eslint-doc-generator` ([#3469][] @bmish)
 
+[#3490]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3490
 [#3484]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3484
 [#3473]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3473
 [#3469]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3469
