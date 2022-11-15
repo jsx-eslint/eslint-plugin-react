@@ -42,6 +42,8 @@ ruleTester.run('jsx-key', rule, {
     { code: '[<App key={0} />, <App key={1} />];' },
     { code: '[1, 2, 3].map(function(x) { return <App key={x} /> });' },
     { code: '[1, 2, 3].map(x => <App key={x} />);' },
+    { code: '[1, 2 ,3].map(x => x && <App x={x} key={x} />);' },
+    { code: '[1, 2 ,3].map(x => x ? <App x={x} key="1" /> : <OtherApp x={x} key="2" />);' },
     { code: '[1, 2, 3].map(x => { return <App key={x} /> });' },
     { code: 'Array.from([1, 2, 3], function(x) { return <App key={x} /> });' },
     { code: 'Array.from([1, 2, 3], (x => <App key={x} />));' },
@@ -188,10 +190,10 @@ ruleTester.run('jsx-key', rule, {
       code: `
         import Act from 'react';
         import { Children as ReactChildren } from 'react';
-        
+
         const { Children } = Act;
         const { toArray } = Children;
-        
+
         Act.Children.toArray([1, 2 ,3].map(x => <App />));
         Act.Children.toArray(Array.from([1, 2 ,3], x => <App />));
         Children.toArray([1, 2 ,3].map(x => <App />));
@@ -223,6 +225,18 @@ ruleTester.run('jsx-key', rule, {
     },
     {
       code: '[1, 2 ,3].map(x => <App />);',
+      errors: [{ messageId: 'missingIterKey' }],
+    },
+    {
+      code: '[1, 2 ,3].map(x => x && <App x={x} />);',
+      errors: [{ messageId: 'missingIterKey' }],
+    },
+    {
+      code: '[1, 2 ,3].map(x => x ? <App x={x} key="1" /> : <OtherApp x={x} />);',
+      errors: [{ messageId: 'missingIterKey' }],
+    },
+    {
+      code: '[1, 2 ,3].map(x => x ? <App x={x} /> : <OtherApp x={x} key="2" />);',
       errors: [{ messageId: 'missingIterKey' }],
     },
     {
