@@ -107,6 +107,44 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
     },
     {
       code: `
+        <Button popoverOpen='#settings-popover' style={{ width: 'fit-content' }}>
+          {/* fake-eslint-disable-next-line should also work inside a component */}
+          <Icon f7='gear' />
+        </Button>
+      `,
+    },
+    {
+      code: `
+        <Button popoverOpen='#settings-popover' style={{ width: 'fit-content' }}>
+          {/* should work inside a component */}
+          {/* and it should work when using multiple comments */}
+          <Icon f7='gear' />
+        </Button>
+      `,
+    },
+    {
+      code: `
+        <Button popoverOpen='#settings-popover' style={{ width: 'fit-content' }}>
+          {/* this is a multiline
+              block comment */}
+          <Icon f7='gear' />
+        </Button>
+      `,
+    },
+    {
+      code: `
+        <>
+          {/* does this */}
+          <Icon f7='gear' />
+
+          {/* also work with multiple components and inside a fragment? */}
+          <OneLineComponent />
+        </>
+      `,
+      features: ['fragment'],
+    },
+    {
+      code: `
         <>
           <OneLineComponent />
           <AnotherOneLineComponent prop={prop} />
@@ -120,6 +158,24 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
         </>
       `,
       features: ['fragment'],
+      options: [{ prevent: true, allowMultilines: true }],
+    },
+    {
+      code: `
+        <div>
+          {/* this does not have a newline */}
+          <Icon f7='gear' />
+          {/* neither does this */}
+          <OneLineComponent />
+
+          {/* but this one needs one */}
+          <Button>
+            <IconPreview />
+            Button 2
+            <span></span>
+          </Button>
+        </div>
+      `,
       options: [{ prevent: true, allowMultilines: true }],
     },
     {
@@ -222,6 +278,100 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
         </div>
       `,
       errors: [{ messageId: 'require' }],
+    },
+    {
+      code: `
+        <div>
+          {/* This should however still not work*/}
+          <Icon f7='gear' />
+
+          <OneLineComponent />
+          {/* Comments between components still need a newLine */}
+          <OneLineComponent />
+        </div>
+      `,
+      output: `
+        <div>
+          {/* This should however still not work*/}
+          <Icon f7='gear' />
+
+          <OneLineComponent />
+
+          {/* Comments between components still need a newLine */}
+          <OneLineComponent />
+        </div>
+      `,
+      errors: [{ messageId: 'require' }],
+    },
+    {
+      code: `
+        <div>
+          {/* this does not have a newline */}
+          <Icon f7='gear' />
+          {/* neither does this */}
+          <OneLineComponent />
+          {/* but this one needs one */}
+          <Button>
+            <IconPreview />
+            Button 2
+            <span></span>
+          </Button>
+        </div>
+      `,
+      output: `
+        <div>
+          {/* this does not have a newline */}
+          <Icon f7='gear' />
+          {/* neither does this */}
+          <OneLineComponent />
+
+          {/* but this one needs one */}
+          <Button>
+            <IconPreview />
+            Button 2
+            <span></span>
+          </Button>
+        </div>
+      `,
+      options: [{ prevent: true, allowMultilines: true }],
+      errors: [{ messageId: 'allowMultilines' }],
+    },
+    {
+      code: `
+        <div>
+          {/* this does not have a newline */}
+          <Icon f7='gear' />
+          {/* neither does this */}
+          <OneLineComponent />
+          {/* Multiline */}
+          {/* Block comments */}
+          {/* Stick to MultilineComponent */}
+          <Button>
+            <IconPreview />
+            Button 2
+            <span></span>
+          </Button>
+        </div>
+      `,
+      output: `
+        <div>
+          {/* this does not have a newline */}
+          <Icon f7='gear' />
+          {/* neither does this */}
+          <OneLineComponent />
+
+          {/* Multiline */}
+          {/* Block comments */}
+          {/* Stick to MultilineComponent */}
+          <Button>
+            <IconPreview />
+            Button 2
+            <span></span>
+          </Button>
+        </div>
+      `,
+      options: [{ prevent: true, allowMultilines: true }],
+      errors: [{ messageId: 'allowMultilines' }],
     },
     {
       code: `
