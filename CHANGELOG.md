@@ -14,7 +14,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * configs: avoid legacy config system error ([#3461][] @ljharb)
 * [`sort-prop-types`]: restore autofixing ([#3452][] @ROSSROSALES)
+* [`no-unknown-property`]: do not check `fbs` elements ([#3494][] @brianogilvie)
 
+[#3494]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3494
 [#3461]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3461
 [#3452]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3452
 [#3449]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3449
