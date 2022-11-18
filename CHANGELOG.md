@@ -13,8 +13,19 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Fixed
 * configs: avoid legacy config system error ([#3461][] @ljharb)
+* [`sort-prop-types`]: restore autofixing ([#3452][] @ROSSROSALES)
+
+[#3461]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3461
+[#3452]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3452
+[#3449]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3449
+[#3424]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3429
+[#2848]: https://github.com/jsx-eslint/eslint-plugin-react/pull/2848
+[#1861]: https://github.com/jsx-eslint/eslint-plugin-react/pull/1861
+
+## [7.31.11] - 2022.11.17
+
+### Fixed
 * [`jsx-no-target-blank`]: allow ternaries with literals ([#3464][] @akulsr0)
-* [`sort-prop-types`]: restore autofixing ([#2574][] @ROSSROSALES)
 * [`no-unknown-property`]: add `inert` attribute ([#3484][] @ljharb)
 * [`jsx-key`]: detect keys in logical expression and conditional expression ([#3490][] @metreniuk)
 
@@ -23,18 +34,15 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] `forbid-component-props`: inclusive language w/ allowlist ([#3473][] @AndersDJohnson)
 * [Docs] automate doc generation with `eslint-doc-generator` ([#3469][] @bmish)
 
+[7.31.11]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.10...v7.31.11
 [#3490]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3490
 [#3484]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3484
 [#3473]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3473
 [#3469]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3469
 [#3464]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3464
-[#3461]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3461
 [#3459]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3459
-[#3452]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3452
-[#3449]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3449
-[#3424]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3429
-[#2848]: https://github.com/jsx-eslint/eslint-plugin-react/pull/2848
-[#1861]: https://github.com/jsx-eslint/eslint-plugin-react/pull/1861
+
+## [7.31.10] - 2022.10.10
 
 ### Fixed
 * [`no-unknown-property`]: allow `allowFullScreen` on `iframe` ([#3455][] @almeidx)
