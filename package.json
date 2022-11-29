@@ -16,7 +16,7 @@
     "posttest": "aud --production",
     "type-check": "tsc",
     "unit-test": "istanbul cover node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js",
-    "update:eslint-docs": "eslint-doc-generator --ignore-config all --config-emoji recommended,💼 --url-configs \"https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs\""
+    "update:eslint-docs": "eslint-doc-generator --ignore-config all --config-emoji recommended,☑️ --url-configs \"https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs\""
   },
   "repository": {
     "type": "git",
@@ -56,7 +56,7 @@
     "babel-eslint": "^8 || ^9 || ^10.1.0",
     "eslint": "^3 || ^4 || ^5 || ^6 || ^7 || ^8",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-doc-generator": "^0.15.0",
+    "eslint-doc-generator": "^1.0.0",
     "eslint-plugin-eslint-plugin": "^2.3.0 || ^3.5.3 || ^4.0.1 || ^5.0.5",
     "eslint-plugin-import": "^2.26.0",
     "eslint-remote-tester": "^3.0.0",

@@ -1,6 +1,6 @@
 # Disallow missing React when using JSX (`react/react-in-jsx-scope`)
 
-💼 This rule is enabled in the `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs). This rule is _disabled_ in the `jsx-runtime` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
+💼🚫 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs). This rule is _disabled_ in the `jsx-runtime` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 
 <!-- end auto-generated rule header -->
 

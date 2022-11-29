@@ -21,7 +21,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Changed
 * [Docs] [`jsx-no-leaked-render`]: Remove mentions of empty strings for React 18 ([#3468][] @karlhorky)
+* [Docs] update `eslint-doc-generator` to v1.0.0 ([#3499][] @bmish)
 
+[#3499]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3499
 [#3494]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3494
 [#3493]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3493
 [#3488]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3488

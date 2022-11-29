@@ -1,6 +1,6 @@
 # Enforce ES5 or ES6 class for returning value in render function (`react/require-render-return`)
 
-💼 This rule is enabled in the `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
+💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 
 <!-- end auto-generated rule header -->
 

@@ -1,6 +1,6 @@
 # Disallow duplicate properties in JSX (`react/jsx-no-duplicate-props`)
 
-💼 This rule is enabled in the `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
+💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 
 <!-- end auto-generated rule header -->
 

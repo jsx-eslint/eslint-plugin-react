@@ -1,6 +1,6 @@
 # Disallow when a DOM element is using both children and dangerouslySetInnerHTML (`react/no-danger-with-children`)
 
-💼 This rule is enabled in the `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
+💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 
 <!-- end auto-generated rule header -->
 
