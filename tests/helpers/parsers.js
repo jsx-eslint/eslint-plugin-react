@@ -175,7 +175,6 @@ const parsers = {
       );
     });
 
-    // console.log(require('util').inspect(t, { depth: null }));
     return t;
   },
 };
