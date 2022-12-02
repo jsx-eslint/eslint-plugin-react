@@ -61,21 +61,21 @@ body:
   - type: input
     id: eslint-plugin-react-version
     attributes:
-      label: `eslint-plugin-react` version
+      label: eslint-plugin-react version
       placeholder: v7.31.11
     validations:
       required: true
   - type: input
     id: eslint-version
     attributes:
-      label: `eslint` version
+      label: eslint version
       placeholder: v8.28.0
     validations:
       required: true
   - type: input
     id: node-version
     attributes:
-      label: `node` version
+      label: node version
       placeholder: v8.19.2
     validations:
       required: true
