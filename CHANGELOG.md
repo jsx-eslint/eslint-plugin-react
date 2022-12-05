@@ -18,6 +18,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-newline`]: No newline between comments and jsx elements ([#3493][] @justmejulian)
 * [`jsx-no-leaked-render`]: Don't report errors on empty strings if React >= v18 ([#3488][] @himanshu007-creator)
 * [`no-invalid-html-attribute`]: convert autofix to suggestion ([#3474][] @himanshu007-creator @ljharb)
+ * [`jsx-no-leaked-render`]: fix removing parentheses for conditionals ([#3502][] @akulsr0)
 
 ### Changed
 * [Docs] [`jsx-no-leaked-render`]: Remove mentions of empty strings for React 18 ([#3468][] @karlhorky)

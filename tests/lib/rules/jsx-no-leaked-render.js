@@ -829,5 +829,23 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         column: 24,
       }],
     },
+    {
+      code: `
+        const MyComponent = () => {
+          return <div>{maybeObject && (isFoo ? <Aaa /> : <Bbb />)}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{!!maybeObject && (isFoo ? <Aaa /> : <Bbb />)}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    },
   ]),
 });
