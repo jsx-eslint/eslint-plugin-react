@@ -1,6 +1,6 @@
 # Disallow React to be incorrectly marked as unused (`react/jsx-uses-react`)
 
-💼🚫 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs). This rule is _disabled_ in the `jsx-runtime` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
+💼🚫 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs). This rule is _disabled_ in the 🏃 `jsx-runtime` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 
 <!-- end auto-generated rule header -->
 

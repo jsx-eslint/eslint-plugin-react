@@ -23,7 +23,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`jsx-no-leaked-render`]: Remove mentions of empty strings for React 18 ([#3468][] @karlhorky)
 * [Docs] update `eslint-doc-generator` to v1.0.0 ([#3499][] @bmish)
 * [meta] add issue template ([#3483][] @ROSSROSALES)
+* [Docs] Use emoji for jsx-runtime config and config file for eslint-doc-generator ([#3504][] @bmish)[
 
+[#3504]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3504
 [#3499]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3499
 [#3494]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3494
 [#3493]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3493

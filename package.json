@@ -16,7 +16,7 @@
     "posttest": "aud --production",
     "type-check": "tsc",
     "unit-test": "istanbul cover node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js",
-    "update:eslint-docs": "eslint-doc-generator --ignore-config all --config-emoji recommended,☑️ --url-configs \"https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs\""
+    "update:eslint-docs": "eslint-doc-generator"
   },
   "repository": {
     "type": "git",
@@ -94,6 +94,7 @@
       "tests/",
       "*.md",
       "*.config.js",
+      ".eslint-doc-generatorrc.js",
       ".eslintrc",
       ".editorconfig",
       "tsconfig.json",
