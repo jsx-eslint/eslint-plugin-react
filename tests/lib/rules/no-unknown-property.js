@@ -61,14 +61,10 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<meta property="og:type" content="website" />' },
     { code: '<input type="checkbox" checked={checked} disabled={disabled} id={id} onChange={onChange} />' },
     { code: '<video playsInline />' },
-    { code: '<img onError={foo} onLoad={bar} />' },
+    { code: '<div onError={foo} onLoad={bar} />' },
     { code: '<picture inert={false} onError={foo} onLoad={bar} />' },
-    { code: '<iframe onError={foo} onLoad={bar} />' },
-    { code: '<script onLoad={bar} onError={foo} />' },
-    { code: '<source onError={foo} />' },
     { code: '<link onLoad={bar} onError={foo} />' },
     { code: '<link rel="preload" as="image" href="someHref" imageSrcSet="someImageSrcSet" imageSizes="someImageSizes" />' },
-    { code: '<object onLoad={bar} />' },
     { code: '<video allowFullScreen webkitAllowFullScreen mozAllowFullScreen />' },
     { code: '<iframe allowFullScreen webkitAllowFullScreen mozAllowFullScreen />' },
     { code: '<table border="1" />' },
@@ -406,59 +402,14 @@ ruleTester.run('no-unknown-property', rule, {
       ],
     },
     {
-      code: '<div onAbort={this.abort} onDurationChange={this.durationChange} onEmptied={this.emptied} onEnded={this.end} onError={this.error} />',
+      code: '<body onError={this.error} />',
       errors: [
         {
-          messageId: 'invalidPropOnTag',
-          data: {
-            name: 'onAbort',
-            tagName: 'div',
-            allowedTags: 'audio, video',
-          },
-        },
-        {
-          messageId: 'invalidPropOnTag',
-          data: {
-            name: 'onDurationChange',
-            tagName: 'div',
-            allowedTags: 'audio, video',
-          },
-        },
-        {
-          messageId: 'invalidPropOnTag',
-          data: {
-            name: 'onEmptied',
-            tagName: 'div',
-            allowedTags: 'audio, video',
-          },
-        },
-        {
-          messageId: 'invalidPropOnTag',
-          data: {
-            name: 'onEnded',
-            tagName: 'div',
-            allowedTags: 'audio, video',
-          },
-        },
-        {
-          messageId: 'invalidPropOnTag',
+          messageId: 'invalidExclusivePropOnTag',
           data: {
             name: 'onError',
-            tagName: 'div',
-            allowedTags: 'audio, video, img, link, source, script, picture, iframe',
-          },
-        },
-      ],
-    },
-    {
-      code: '<div onLoad={this.load} />',
-      errors: [
-        {
-          messageId: 'invalidPropOnTag',
-          data: {
-            name: 'onLoad',
-            tagName: 'div',
-            allowedTags: 'script, img, link, picture, iframe, object',
+            tagName: 'body',
+            disallowedTags: 'body, frameset',
           },
         },
       ],

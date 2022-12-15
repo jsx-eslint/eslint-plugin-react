@@ -12,6 +12,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * add [`no-object-type-as-default-prop`] rule ([#2848][] @cyan33 @fengkx)
 
 ### Fixed
+* [`no-unknown-property`]: Added global event listeners ([#3505][] @axlemax)
 * configs: avoid legacy config system error ([#3461][] @ljharb)
 * [`sort-prop-types`]: restore autofixing ([#3452][], [#3471][] @ROSSROSALES)
 * [`no-unknown-property`]: do not check `fbs` elements ([#3494][] @brianogilvie)

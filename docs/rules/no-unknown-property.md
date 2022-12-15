@@ -7,7 +7,7 @@
 <!-- end auto-generated rule header -->
 
 In JSX most DOM properties and attributes should be camelCased to be consistent with standard JavaScript style. This can be a possible source of error if you are used to writing plain HTML.
-Only `data-*` and `aria-*` attributes are usings hyphens and lowercase letters in JSX.
+Only `data-*` and `aria-*` attributes use hyphens and lowercase letters in JSX. Some props that may appear valid in React will actually not be applied as expected, which this rule helps to avoid.
 
 ## Rule Details
 
