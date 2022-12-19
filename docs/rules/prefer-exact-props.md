@@ -40,7 +40,7 @@ In this case, one could instead enforce only the exact props being used by using
 class Foo extends React.Component {
   props: {|
     bar: string
-  }|
+  |}
 
   render() {
     return <p>{this.props.bar}</p>;

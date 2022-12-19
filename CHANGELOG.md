@@ -18,14 +18,16 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-newline`]: No newline between comments and jsx elements ([#3493][] @justmejulian)
 * [`jsx-no-leaked-render`]: Don't report errors on empty strings if React >= v18 ([#3488][] @himanshu007-creator)
 * [`no-invalid-html-attribute`]: convert autofix to suggestion ([#3474][] @himanshu007-creator @ljharb)
- * [`jsx-no-leaked-render`]: fix removing parentheses for conditionals ([#3502][] @akulsr0)
+* [`jsx-no-leaked-render`]: fix removing parentheses for conditionals ([#3502][] @akulsr0)
 
 ### Changed
 * [Docs] [`jsx-no-leaked-render`]: Remove mentions of empty strings for React 18 ([#3468][] @karlhorky)
 * [Docs] update `eslint-doc-generator` to v1.0.0 ([#3499][] @bmish)
 * [meta] add issue template ([#3483][] @ROSSROSALES)
 * [Docs] Use emoji for jsx-runtime config and config file for eslint-doc-generator ([#3504][] @bmish)[
+* [Docs] [`prefer-exact-props`]: fix example flow syntax ([#3510][] @smackfu)
 
+[#3510]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3510
 [#3504]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3504
 [#3499]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3499
 [#3494]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3494
