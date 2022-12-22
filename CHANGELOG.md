@@ -26,6 +26,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [meta] add issue template ([#3483][] @ROSSROSALES)
 * [Docs] Use emoji for jsx-runtime config and config file for eslint-doc-generator ([#3504][] @bmish)[
 * [Docs] [`prefer-exact-props`]: fix example flow syntax ([#3510][] @smackfu)
+* [Perf] use `anyOf` instead of `oneOf` (@ljharb @remcohaszing)
 
 [#3510]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3510
 [#3504]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3504
