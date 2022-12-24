@@ -19,6 +19,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-no-leaked-render`]: Don't report errors on empty strings if React >= v18 ([#3488][] @himanshu007-creator)
 * [`no-invalid-html-attribute`]: convert autofix to suggestion ([#3474][] @himanshu007-creator @ljharb)
 * [`jsx-no-leaked-render`]: fix removing parentheses for conditionals ([#3502][] @akulsr0)
+* [`jsx-no-leaked-render`]: invalid fixes in coerce mode ([#3511][] @akulsr0)
 
 ### Changed
 * [Docs] [`jsx-no-leaked-render`]: Remove mentions of empty strings for React 18 ([#3468][] @karlhorky)
@@ -28,6 +29,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`prefer-exact-props`]: fix example flow syntax ([#3510][] @smackfu)
 * [Perf] use `anyOf` instead of `oneOf` (@ljharb @remcohaszing)
 
+[#3511]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3511
 [#3510]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3510
 [#3504]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3504
 [#3502]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3502
