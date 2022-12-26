@@ -24,12 +24,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`jsx-no-leaked-render`]: Remove mentions of empty strings for React 18 ([#3468][] @karlhorky)
 * [Docs] update `eslint-doc-generator` to v1.0.0 ([#3499][] @bmish)
 * [meta] add issue template ([#3483][] @ROSSROSALES)
-* [Docs] Use emoji for jsx-runtime config and config file for eslint-doc-generator ([#3504][] @bmish)[
+* [Docs] Use emoji for jsx-runtime config and config file for eslint-doc-generator ([#3504][] @bmish)
 * [Docs] [`prefer-exact-props`]: fix example flow syntax ([#3510][] @smackfu)
 * [Perf] use `anyOf` instead of `oneOf` (@ljharb @remcohaszing)
 
 [#3510]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3510
 [#3504]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3504
+[#3502]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3502
 [#3499]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3499
 [#3494]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3494
 [#3493]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3493
@@ -41,7 +42,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3461]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3461
 [#3452]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3452
 [#3449]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3449
-[#3424]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3429
+[#3429]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3429
 [#2848]: https://github.com/jsx-eslint/eslint-plugin-react/pull/2848
 [#1861]: https://github.com/jsx-eslint/eslint-plugin-react/pull/1861
 
