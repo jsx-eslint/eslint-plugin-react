@@ -20,6 +20,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-invalid-html-attribute`]: convert autofix to suggestion ([#3474][] @himanshu007-creator @ljharb)
 * [`jsx-no-leaked-render`]: fix removing parentheses for conditionals ([#3502][] @akulsr0)
 * [`jsx-no-leaked-render`]: invalid fixes in coerce mode ([#3511][] @akulsr0)
+* [`destructuring-assignment`]: Handle destructuring of useContext in SFC ([#2797][] @Zinyon @ljharb)
 
 ### Changed
 * [Docs] [`jsx-no-leaked-render`]: Remove mentions of empty strings for React 18 ([#3468][] @karlhorky)
@@ -46,6 +47,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3449]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3449
 [#3429]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3429
 [#2848]: https://github.com/jsx-eslint/eslint-plugin-react/pull/2848
+[#2797]: https://github.com/jsx-eslint/eslint-plugin-react/pull/2797
 [#1861]: https://github.com/jsx-eslint/eslint-plugin-react/pull/1861
 
 ## [7.31.11] - 2022.11.17
