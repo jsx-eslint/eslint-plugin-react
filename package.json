@@ -60,7 +60,7 @@
     "eslint-plugin-eslint-plugin": "^2.3.0 || ^3.5.3 || ^4.0.1 || ^5.0.5",
     "eslint-plugin-import": "^2.26.0",
     "eslint-remote-tester": "^3.0.0",
-    "eslint-remote-tester-repositories": "^0.0.8",
+    "eslint-remote-tester-repositories": "^1.0.0",
     "eslint-scope": "^3.7.3",
     "espree": "^3.5.4",
     "istanbul": "^0.4.5",
