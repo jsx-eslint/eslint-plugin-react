@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.32.0] - 2023.01.10
+
 ### Added
 * support new config system ([#3429][] @jjangga0214)
 * [`hook-use-state`]: add `allowDestructuredState` option ([#3449][] @ljharb)
@@ -30,6 +32,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`prefer-exact-props`]: fix example flow syntax ([#3510][] @smackfu)
 * [Perf] use `anyOf` instead of `oneOf` (@ljharb @remcohaszing)
 
+[7.32.0]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.31.11...v7.32.0
 [#3511]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3511
 [#3510]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3510
 [#3504]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3504
