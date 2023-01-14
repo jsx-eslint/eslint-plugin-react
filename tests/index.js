@@ -7,9 +7,11 @@ const fs = require('fs');
 const path = require('path');
 
 const plugin = require('..');
+const index = require('../lib/rules');
 
 const ruleFiles = fs.readdirSync(path.resolve(__dirname, '../lib/rules/'))
-  .map((f) => path.basename(f, '.js'));
+  .map((f) => path.basename(f, '.js'))
+  .filter((f) => f !== 'index');
 
 describe('all rule files should be exported by the plugin', () => {
   ruleFiles.forEach((ruleName) => {
@@ -17,6 +19,13 @@ describe('all rule files should be exported by the plugin', () => {
       assert.equal(
         plugin.rules[ruleName],
         require(path.join('../lib/rules', ruleName)) // eslint-disable-line global-require, import/no-dynamic-require
+      );
+    });
+
+    it(`should export ${ruleName} from lib/rules/index`, () => {
+      assert.equal(
+        plugin.rules[ruleName],
+        index[ruleName]
       );
     });
   });
@@ -74,7 +83,7 @@ describe('configurations', () => {
     });
   });
 
-  it('should export a \'jsx-runtime\' configuration', () => {
+  it('should export a ‘jsx-runtime’ configuration', () => {
     const configName = 'jsx-runtime';
     assert(plugin.configs[configName]);
 

@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* prevent circular dependency in index and "all" config ([#3519][] @ljharb)
+
+[#3519]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3519
+
 ## [7.32.0] - 2023.01.10
 
 ### Added
