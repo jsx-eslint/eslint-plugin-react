@@ -7,7 +7,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Fixed
 * prevent circular dependency in index and "all" config ([#3519][] @ljharb)
+* [`destructuring-assignment`]: do not force destructuring of optionally chained properties ([#3520][] @ljharb)
 
+[#3520]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3520
 [#3519]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3519
 
 ## [7.32.0] - 2023.01.10

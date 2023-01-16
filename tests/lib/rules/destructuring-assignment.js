@@ -422,6 +422,17 @@ ruleTester.run('destructuring-assignment', rule, {
       options: ['never'],
       settings: { react: { version: '16.8.999' } },
     },
+    {
+      code: `
+        import { useContext } from 'react';
+
+        const MyComponent = (props) => {
+          const foo = useContext(aContext);
+          return <div>{foo?.test}</div>
+        };
+      `,
+      features: ['optional chaining'],
+    },
   ]),
 
   invalid: parsers.all([].concat(
