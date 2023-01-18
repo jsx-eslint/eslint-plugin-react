@@ -3,6 +3,7 @@
 const all = require('./all');
 
 module.exports = Object.assign({}, all, {
+  languageOptions: all.languageOptions,
   rules: {
     'react/display-name': 2,
     'react/jsx-key': 2,

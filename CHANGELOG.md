@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* configs: restore `parserOptions` in legacy configs ([#3523][] @ljharb)
+
+[#3520]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3523
+
 ## [7.32.1] - 2023.01.16
 
 ### Fixed
