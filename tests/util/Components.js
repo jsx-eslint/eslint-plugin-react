@@ -25,28 +25,30 @@ describe('Components', () => {
       const done = orDone || instructionsOrDone;
       const instructions = orDone ? instructionsOrDone : instructionsOrDone;
 
-      const rule = Components.detect((_context, components, util) => {
-        const instructionResults = [];
+      const rule = {
+        create: Components.detect((_context, components, util) => {
+          const instructionResults = [];
 
-        const augmentedInstructions = fromEntries(
-          entries(instructions || {}).map((nodeTypeAndHandler) => {
-            const nodeType = nodeTypeAndHandler[0];
-            const handler = nodeTypeAndHandler[1];
-            return [nodeType, (node) => {
-              instructionResults.push({ type: nodeType, result: handler(node, context, components, util) });
-            }];
-          })
-        );
+          const augmentedInstructions = fromEntries(
+            entries(instructions || {}).map((nodeTypeAndHandler) => {
+              const nodeType = nodeTypeAndHandler[0];
+              const handler = nodeTypeAndHandler[1];
+              return [nodeType, (node) => {
+                instructionResults.push({ type: nodeType, result: handler(node, context, components, util) });
+              }];
+            })
+          );
 
-        return Object.assign({}, augmentedInstructions, {
-          'Program:exit'(node) {
-            if (augmentedInstructions['Program:exit']) {
-              augmentedInstructions['Program:exit'](node, context, components, util);
-            }
-            done(components, instructionResults);
-          },
-        });
-      });
+          return Object.assign({}, augmentedInstructions, {
+            'Program:exit'(node) {
+              if (augmentedInstructions['Program:exit']) {
+                augmentedInstructions['Program:exit'](node, context, components, util);
+              }
+              done(components, instructionResults);
+            },
+          });
+        }),
+      };
 
       const tests = {
         valid: parsers.all([Object.assign({}, test, {
@@ -122,10 +124,12 @@ describe('Components', () => {
       describe('isReactHookCall', () => {
         it('should not identify hook-like call', () => {
           testComponentsDetect({
-            code: `import { useRef } from 'react'
-            function useColor() {
-              return useState()
-            }`,
+            code: `
+              import { useRef } from 'react'
+              function useColor() {
+                return useState()
+              }
+            `,
           }, {
             CallExpression: (node, _context, _components, util) => util.isReactHookCall(node),
           }, (_components, instructionResults) => {
@@ -135,10 +139,12 @@ describe('Components', () => {
 
         it('should identify hook call', () => {
           testComponentsDetect({
-            code: `import { useState } from 'react'
-            function useColor() {
-              return useState()
-            }`,
+            code: `
+              import { useState } from 'react'
+              function useColor() {
+                return useState()
+              }
+            `,
           }, {
             CallExpression: (node, _context, _components, util) => util.isReactHookCall(node),
           }, (_components, instructionResults) => {
@@ -148,10 +154,12 @@ describe('Components', () => {
 
         it('should identify aliased hook call', () => {
           testComponentsDetect({
-            code: `import { useState as useStateAlternative } from 'react'
-            function useColor() {
-              return useStateAlternative()
-            }`,
+            code: `
+              import { useState as useStateAlternative } from 'react'
+              function useColor() {
+                return useStateAlternative()
+              }
+            `,
           }, {
             CallExpression: (node, _context, _components, util) => util.isReactHookCall(node),
           }, (_components, instructionResults) => {
@@ -161,10 +169,12 @@ describe('Components', () => {
 
         it('should identify aliased present named hook call', () => {
           testComponentsDetect({
-            code: `import { useState as useStateAlternative } from 'react'
-            function useColor() {
-              return useStateAlternative()
-            }`,
+            code: `
+              import { useState as useStateAlternative } from 'react'
+              function useColor() {
+                return useStateAlternative()
+              }
+            `,
           }, {
             CallExpression: (node, _context, _components, util) => util.isReactHookCall(node, ['useState']),
           }, (_components, instructionResults) => {
@@ -174,13 +184,15 @@ describe('Components', () => {
 
         it('should not identify shadowed hook call', () => {
           testComponentsDetect({
-            code: `import { useState } from 'react'
-            function useColor() {
-              function useState() {
-                return null
+            code: `
+              import { useState } from 'react'
+              function useColor() {
+                function useState() {
+                  return null
+                }
+                return useState()
               }
-              return useState()
-            }`,
+            `,
           }, {
             CallExpression: (node, _context, _components, util) => util.isReactHookCall(node),
           }, (_components, instructionResults) => {
@@ -190,13 +202,15 @@ describe('Components', () => {
 
         it('should not identify shadowed aliased present named hook call', () => {
           testComponentsDetect({
-            code: `import { useState as useStateAlternative } from 'react'
-            function useColor() {
-              function useStateAlternative() {
-                return null
+            code: `
+              import { useState as useStateAlternative } from 'react'
+              function useColor() {
+                function useStateAlternative() {
+                  return null
+                }
+                return useStateAlternative()
               }
-              return useStateAlternative()
-            }`,
+            `,
           }, {
             CallExpression: (node, _context, _components, util) => util.isReactHookCall(node, ['useState']),
           }, (_components, instructionResults) => {
@@ -206,10 +220,12 @@ describe('Components', () => {
 
         it('should identify React hook call', () => {
           testComponentsDetect({
-            code: `import React from 'react'
-            function useColor() {
-              return React.useState()
-            }`,
+            code: `
+              import React from 'react'
+              function useColor() {
+                return React.useState()
+              }
+            `,
           }, {
             CallExpression: (node, _context, _components, util) => util.isReactHookCall(node),
           }, (_components, instructionResults) => {
@@ -219,10 +235,12 @@ describe('Components', () => {
 
         it('should identify aliased React hook call', () => {
           testComponentsDetect({
-            code: `import ReactAlternative from 'react'
-            function useColor() {
-              return ReactAlternative.useState()
-            }`,
+            code: `
+              import ReactAlternative from 'react'
+              function useColor() {
+                return ReactAlternative.useState()
+              }
+            `,
           }, {
             CallExpression: (node, _context, _components, util) => util.isReactHookCall(node),
           }, (_components, instructionResults) => {
@@ -232,13 +250,15 @@ describe('Components', () => {
 
         it('should not identify shadowed React hook call', () => {
           testComponentsDetect({
-            code: `import React from 'react'
-            function useColor() {
-              const React = {
-                useState: () => null
+            code: `
+              import React from 'react'
+              function useColor() {
+                const React = {
+                  useState: () => null
+                }
+                return React.useState()
               }
-              return React.useState()
-            }`,
+            `,
           }, {
             CallExpression: (node, _context, _components, util) => util.isReactHookCall(node),
           }, (_components, instructionResults) => {
@@ -248,10 +268,12 @@ describe('Components', () => {
 
         it('should identify present named hook call', () => {
           testComponentsDetect({
-            code: `import { useState } from 'react'
-            function useColor() {
-              return useState()
-            }`,
+            code: `
+              import { useState } from 'react'
+              function useColor() {
+                return useState()
+              }
+            `,
           }, {
             CallExpression: (node, _context, _components, util) => util.isReactHookCall(node, ['useState']),
           }, (_components, instructionResults) => {
@@ -261,10 +283,12 @@ describe('Components', () => {
 
         it('should identify present named React hook call', () => {
           testComponentsDetect({
-            code: `import React from 'react'
-            function useColor() {
-              return React.useState()
-            }`,
+            code: `
+              import React from 'react'
+              function useColor() {
+                return React.useState()
+              }
+            `,
           }, {
             CallExpression: (node, _context, _components, util) => util.isReactHookCall(node, ['useState']),
           }, (_components, instructionResults) => {
@@ -274,10 +298,12 @@ describe('Components', () => {
 
         it('should not identify missing named hook call', () => {
           testComponentsDetect({
-            code: `import { useState } from 'react'
-            function useColor() {
-              return useState()
-            }`,
+            code: `
+              import { useState } from 'react'
+              function useColor() {
+                return useState()
+              }
+            `,
           }, {
             CallExpression: (node, _context, _components, util) => util.isReactHookCall(node, ['useRef']),
           }, (_components, instructionResults) => {
