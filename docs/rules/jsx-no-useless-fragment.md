@@ -63,6 +63,8 @@ const cat = <>meow</>
 {showFullName ? fullName : firstName}
 ```
 
+## Rule Options
+
 ### `allowExpressions`
 
 When `true` single expressions in a fragment will be allowed. This is useful in

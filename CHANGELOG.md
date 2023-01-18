@@ -7,6 +7,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Fixed
 * configs: restore `parserOptions` in legacy configs ([#3523][] @ljharb)
+* [`jsx-no-constructed-context-values`], [`jsx-no-useless-fragment`]: add a rule schema (@ljharb)
 
 [#3520]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3523
 
