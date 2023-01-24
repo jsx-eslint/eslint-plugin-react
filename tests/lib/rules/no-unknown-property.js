@@ -131,6 +131,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<view id="one" viewBox="0 0 100 100" />' },
     { code: '<hr align="top" />' },
     { code: '<applet align="top" />' },
+    { code: '<marker fill="#000" />' },
     { code: '<dialog onClose={handler} open id="dialog" returnValue="something" onCancel={handler2} />' },
     {
       code: `
@@ -471,7 +472,7 @@ ruleTester.run('no-unknown-property', rule, {
           data: {
             name: 'fill',
             tagName: 'div',
-            allowedTags: 'altGlyph, circle, ellipse, g, line, mask, path, polygon, polyline, rect, svg, text, textPath, tref, tspan, use, animate, animateColor, animateMotion, animateTransform, set',
+            allowedTags: 'altGlyph, circle, ellipse, g, line, marker, mask, path, polygon, polyline, rect, svg, text, textPath, tref, tspan, use, animate, animateColor, animateMotion, animateTransform, set',
           },
         },
       ],
