@@ -5,11 +5,14 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.32.2] - 2023.01.28
+
 ### Fixed
 * configs: restore `parserOptions` in legacy configs ([#3523][] @ljharb)
 * [`jsx-no-constructed-context-values`], [`jsx-no-useless-fragment`]: add a rule schema (@ljharb)
 ( [`no-unknown-property`]: add `fill` for `<marker>` ([#3525][] @alexey-koran)
 
+[7.32.2]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.32.1...v7.32.2
 [#3525]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3525
 [#3520]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3523
 
