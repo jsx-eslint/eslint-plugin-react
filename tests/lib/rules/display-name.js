@@ -755,6 +755,129 @@ ruleTester.run('display-name', rule, {
         },
       },
     },
+    {
+      code: `
+        import React from 'react';
+
+        const Hello = React.createContext();
+        Hello.displayName = "HelloContext"
+      `,
+      options: [{ checkContextObjects: true }],
+    },
+    {
+      code: `
+        import { createContext } from 'react';
+
+        const Hello = createContext();
+        Hello.displayName = "HelloContext"
+      `,
+      options: [{ checkContextObjects: true }],
+    },
+    {
+      code: `
+        import { createContext } from 'react';
+
+        const Hello = createContext();
+
+        const obj = {};
+        obj.displayName = "False positive";
+
+        Hello.displayName = "HelloContext"
+      `,
+      options: [{ checkContextObjects: true }],
+    },
+    {
+      code: `
+        import * as React from 'react';
+
+        const Hello = React.createContext();
+
+        const obj = {};
+        obj.displayName = "False positive";
+
+        Hello.displayName = "HelloContext";
+      `,
+      options: [{ checkContextObjects: true }],
+    },
+    {
+      code: `
+        const obj = {};
+        obj.displayName = "False positive";
+      `,
+      options: [{ checkContextObjects: true }],
+    },
+    // React.createContext should be accepted in React versions in the following range:
+    // >= 16.13.0
+    {
+      code: `
+        import { createContext } from 'react';
+
+        const Hello = createContext();
+      `,
+      settings: {
+        react: {
+          version: '16.2.0',
+        },
+      },
+      options: [{ checkContextObjects: true }],
+    },
+    {
+      code: `
+        import { createContext } from 'react';
+
+        const Hello = createContext();
+        Hello.displayName = "HelloContext";
+      `,
+      settings: {
+        react: {
+          version: '>16.3.0',
+        },
+      },
+      options: [{ checkContextObjects: true }],
+    },
+    {
+      code: `
+        import { createContext } from 'react';
+
+        let Hello;
+        Hello = createContext();
+        Hello.displayName = "HelloContext";
+      `,
+      options: [{ checkContextObjects: true }],
+    },
+    {
+      code: `
+        import { createContext } from 'react';
+
+        const Hello = createContext();
+      `,
+      settings: {
+        react: {
+          version: '>16.3.0',
+        },
+      },
+      options: [{ checkContextObjects: false }],
+    },
+    {
+      code: `
+        import { createContext } from 'react';
+
+        var Hello;
+        Hello = createContext();
+        Hello.displayName = "HelloContext";
+      `,
+      options: [{ checkContextObjects: true }],
+    },
+    {
+      code: `
+        import { createContext } from 'react';
+
+        var Hello;
+        Hello = React.createContext();
+        Hello.displayName = "HelloContext";
+      `,
+      options: [{ checkContextObjects: true }],
+    },
   ]),
 
   invalid: parsers.all([
@@ -1179,6 +1302,78 @@ ruleTester.run('display-name', rule, {
           line: 9,
         },
       ],
+    },
+    {
+      code: `
+        import React from 'react';
+
+        const Hello = React.createContext();
+      `,
+      errors: [
+        {
+          messageId: 'noContextDisplayName',
+          line: 4,
+        },
+      ],
+      options: [{ checkContextObjects: true }],
+    },
+    {
+      code: `
+        import * as React from 'react';
+
+        const Hello = React.createContext();
+      `,
+      errors: [
+        {
+          messageId: 'noContextDisplayName',
+          line: 4,
+        },
+      ],
+      options: [{ checkContextObjects: true }],
+    },
+    {
+      code: `
+        import { createContext } from 'react';
+
+        const Hello = createContext();
+      `,
+      errors: [
+        {
+          messageId: 'noContextDisplayName',
+          line: 4,
+        },
+      ],
+      options: [{ checkContextObjects: true }],
+    },
+    {
+      code: `
+        import { createContext } from 'react';
+
+        var Hello;
+        Hello = createContext();
+      `,
+      errors: [
+        {
+          messageId: 'noContextDisplayName',
+          line: 5,
+        },
+      ],
+      options: [{ checkContextObjects: true }],
+    },
+    {
+      code: `
+        import { createContext } from 'react';
+
+        var Hello;
+        Hello = React.createContext();
+      `,
+      errors: [
+        {
+          messageId: 'noContextDisplayName',
+          line: 5,
+        },
+      ],
+      options: [{ checkContextObjects: true }],
     },
   ]),
 });

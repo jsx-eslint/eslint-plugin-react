@@ -45,7 +45,7 @@ const Hello = React.memo(function Hello({ a }) {
 
 ```js
 ...
-"react/display-name": [<enabled>, { "ignoreTranspilerName": <boolean> }]
+"react/display-name": [<enabled>, { "ignoreTranspilerName": <boolean>, "checkContextObjects": <boolean> }]
 ...
 ```
 
@@ -126,6 +126,33 @@ function HelloComponent() {
   });
 }
 module.exports = HelloComponent();
+```
+
+### checkContextObjects (default: `false`)
+
+`displayName` allows you to [name your context](https://reactjs.org/docs/context.html#contextdisplayname) object. This name is used in the React dev tools for the context's `Provider` and `Consumer`.
+When `true` this rule will warn on context objects without a `displayName`.
+
+Examples of **incorrect** code for this rule:
+
+```jsx
+const Hello = React.createContext();
+```
+
+```jsx
+const Hello = createContext();
+```
+
+Examples of **correct** code for this rule:
+
+```jsx
+const Hello = React.createContext();
+Hello.displayName = "HelloContext";
+```
+
+```jsx
+const Hello = createContext();
+Hello.displayName = "HelloContext";
 ```
 
 ## About component detection

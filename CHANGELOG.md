@@ -5,10 +5,14 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Added
+* [`display-name`]: add `checkContextObjects` option ([#3529][] @JulesBlm)
+
 ### Fixed
 * [`no-array-index-key`]: consider flatMap ([#3530][] @k-yle)
 
 [#3530]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3530
+[#3529]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3529
 
 ## [7.32.2] - 2023.01.28
 
