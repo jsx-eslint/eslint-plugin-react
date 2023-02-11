@@ -45,6 +45,10 @@ things.findIndex((thing, index) => {
   otherThings.push(<Hello key={index} />);
 });
 
+things.flatMap((thing, index) => (
+  <Hello key={index} />
+));
+
 things.reduce((collection, thing, index) => (
   collection.concat(<Hello key={index} />)
 ), []);

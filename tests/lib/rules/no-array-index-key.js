@@ -94,6 +94,9 @@ ruleTester.run('no-array-index-key', rule, {
       code: 'foo.map((bar, i) => <Foo key={String(baz)} />)',
     },
     {
+      code: 'foo.flatMap((a) => <Foo key={a} />)',
+    },
+    {
       code: 'foo.reduce((a, b) => a.concat(<Foo key={b.id} />), [])',
     },
     {
@@ -224,6 +227,10 @@ ruleTester.run('no-array-index-key', rule, {
     },
     {
       code: 'foo.reduce((a, b, i) => a.concat(<Foo key={i} />), [])',
+      errors: [{ messageId: 'noArrayIndex' }],
+    },
+    {
+      code: 'foo.flatMap((a, i) => <Foo key={i} />)',
       errors: [{ messageId: 'noArrayIndex' }],
     },
     {

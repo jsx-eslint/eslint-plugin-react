@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`no-array-index-key`]: consider flatMap ([#3530][] @k-yle)
+
+[#3530]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3530
+
 ## [7.32.2] - 2023.01.28
 
 ### Fixed
