@@ -139,6 +139,24 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
       `,
       options: ['always'],
     },
+    {
+      code: `
+        <Foo />
+      `,
+      options: ['multiprop'],
+    },
+    {
+      code: `
+        <Foo bar />
+      `,
+      options: ['multiprop'],
+    },
+    {
+      code: `
+        <Foo {...this.props} />
+      `,
+      options: ['multiprop'],
+    },
   ]),
 
   invalid: parsers.all([
@@ -208,6 +226,39 @@ bar={{
       `,
       options: ['multiline-multiprop'],
       errors: [{ messageId: 'propOnNewLine' }],
+    },
+    {
+      code: `
+      <Foo propOne="one" propTwo="two" />
+      `,
+      output: `
+      <Foo
+propOne="one" propTwo="two" />
+      `,
+      options: ['multiprop'],
+      errors: [{ messageId: 'propOnNewLine' }],
+    },
+    {
+      code: `
+      <Foo
+bar />
+      `,
+      output: `
+      <Foo bar />
+      `,
+      options: ['multiprop'],
+      errors: [{ messageId: 'propOnSameLine' }],
+    },
+    {
+      code: `
+      <Foo
+{...this.props} />
+      `,
+      output: `
+      <Foo {...this.props} />
+      `,
+      options: ['multiprop'],
+      errors: [{ messageId: 'propOnSameLine' }],
     },
   ]),
 });

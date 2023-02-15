@@ -7,6 +7,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Added
 * [`display-name`]: add `checkContextObjects` option ([#3529][] @JulesBlm)
+* [`jsx-first-prop-new-line`]: add `multiprop` option ([#3533][] @haydncomley)
 
 ### Fixed
 * [`no-array-index-key`]: consider flatMap ([#3530][] @k-yle)
@@ -14,6 +15,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: allow `onLoad` on `source` (@ljharb)
 
 [#3538]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3538
+[#3533]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3533
 [#3530]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3530
 [#3529]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3529
 
