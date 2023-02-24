@@ -468,6 +468,14 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       `,
       features: ['no-ts'],
       options: ['never'],
+    },
+    {
+      code: '<App label={`${label}${suffix}`} />',
+      options: [{ props: 'never' }],
+    },
+    {
+      code: '<App>{`${label}${suffix}`}</App>',
+      options: [{ children: 'never' }],
     }
   )),
 
@@ -931,6 +939,18 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       errors: [{ messageId: 'unnecessaryCurly' }],
       options: [{ props: 'never', children: 'never', propElementValues: 'never' }],
       features: ['no-ts'],
+    },
+    {
+      code: '<App label={`${label}`} />',
+      output: '<App label={label} />',
+      errors: [{ messageId: 'unnecessaryCurly' }],
+      options: [{ props: 'never', children: 'never', propElementValues: 'never' }],
+    },
+    {
+      code: '<App>{`${label}`}</App>',
+      output: '<App>{label}</App>',
+      errors: [{ messageId: 'unnecessaryCurly' }],
+      options: [{ props: 'never', children: 'never', propElementValues: 'never' }],
     }
   )),
 });
