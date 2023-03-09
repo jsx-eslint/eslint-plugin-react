@@ -230,6 +230,29 @@ ruleTester.run('no-unstable-nested-components', rule, {
     },
     {
       code: `
+        const messages = defineMessages({
+          testMessage: {
+            id: 'test-message',
+            defaultMessage: '<a>link</a>',
+            description: 'Message used to verify the no-unstable-nested-components rule'
+          }
+        })
+        function ParentComponent() {
+          const intl = useIntl()
+
+
+          return (
+            <SomeComponent>
+              {intl.formatMessage(messages.testMessage, {
+                a: (...chunks) => <a href="/">{chunks}</a>
+              })}
+            </SomeComponent>
+          )
+        }
+      `,
+    },
+    {
+      code: `
         function ParentComponent() {
           return (
             <ComplexRenderPropComponent
