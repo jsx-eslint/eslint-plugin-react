@@ -8,12 +8,14 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Added
 * [`display-name`]: add `checkContextObjects` option ([#3529][] @JulesBlm)
 * [`jsx-first-prop-new-line`]: add `multiprop` option ([#3533][] @haydncomley)
+* [`no-deprecated`]: add React 18 deprecations ([#3548][] @sergei-startsev)
 
 ### Fixed
 * [`no-array-index-key`]: consider flatMap ([#3530][] @k-yle)
 * [`jsx-curly-brace-presence`]: handle single and only expression template literals ([#3538][] @taozhou-glean)
 * [`no-unknown-property`]: allow `onLoad` on `source` (@ljharb)
 
+[#3548]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3548
 [#3538]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3538
 [#3533]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3533
 [#3530]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3530

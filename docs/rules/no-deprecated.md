@@ -36,14 +36,28 @@ import React, { PropTypes } from 'react';
 componentWillMount() { }
 componentWillReceiveProps() { }
 componentWillUpdate() { }
+
+// React 18 deprecations
+import { render } from 'react-dom';
+ReactDOM.render(<div></div>, container);
+
+import { hydrate } from 'react-dom';
+ReactDOM.hydrate(<div></div>, container);
+
+import {unmountComponentAtNode} from 'react-dom';
+ReactDOM.unmountComponentAtNode(container);
+
+import { renderToNodeStream } from 'react-dom/server';
+ReactDOMServer.renderToNodeStream(element);
 ```
 
 Examples of **correct** code for this rule:
 
 ```jsx
+// when React < 18
 ReactDOM.render(<MyComponent />, root);
 
-// When [1, {"react": "0.13.0"}]
+// when React is < 0.14
 ReactDOM.findDOMNode(this.refs.foo);
 
 import { PropTypes } from 'prop-types';
@@ -51,4 +65,13 @@ import { PropTypes } from 'prop-types';
 UNSAFE_componentWillMount() { }
 UNSAFE_componentWillReceiveProps() { }
 UNSAFE_componentWillUpdate() { }
+
+ReactDOM.createPortal(child, container);
+
+import { createRoot } from 'react-dom/client';
+const root = createRoot(container);
+root.unmount();
+
+import { hydrateRoot } from 'react-dom/client';
+const root = hydrateRoot(container, <App/>);
 ```
