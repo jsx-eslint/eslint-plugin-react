@@ -250,6 +250,9 @@ ruleTester.run('no-unstable-nested-components', rule, {
           )
         }
       `,
+      options: [{
+        ignoreFunctions: ['intl.formatMessage'],
+      }],
     },
     {
       code: `

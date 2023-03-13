@@ -124,6 +124,7 @@ function Component() {
   "off" | "warn" | "error",
   {
     "allowAsProps": true | false,
+    "ignoreFunctions': [] /* Ignore components found in these functions. Useful for intl.formatMessage */,
     "customValidators": [] /* optional array of validators used for propTypes validation */
   }
 ]
