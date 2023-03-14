@@ -11,6 +11,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`no-array-index-key`]: consider flatMap ([#3530][] @k-yle)
 * [`jsx-curly-brace-presence`]: handle single and only expression template literals ([#3538][] @taozhou-glean)
+* [`no-unknown-property`]: allow `onLoad` on `source` (@ljharb)
 
 [#3538]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3538
 [#3530]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3530

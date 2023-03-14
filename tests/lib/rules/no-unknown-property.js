@@ -65,7 +65,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<picture inert={false} onError={foo} onLoad={bar} />' },
     { code: '<iframe onError={foo} onLoad={bar} />' },
     { code: '<script onLoad={bar} onError={foo} />' },
-    { code: '<source onError={foo} />' },
+    { code: '<source onLoad={bar} onError={foo} />' },
     { code: '<link onLoad={bar} onError={foo} />' },
     { code: '<link rel="preload" as="image" href="someHref" imageSrcSet="someImageSrcSet" imageSizes="someImageSizes" />' },
     { code: '<object onLoad={bar} />' },
@@ -459,7 +459,7 @@ ruleTester.run('no-unknown-property', rule, {
           data: {
             name: 'onLoad',
             tagName: 'div',
-            allowedTags: 'script, img, link, picture, iframe, object',
+            allowedTags: 'script, img, link, picture, iframe, object, source',
           },
         },
       ],
