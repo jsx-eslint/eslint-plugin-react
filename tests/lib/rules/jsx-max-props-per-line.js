@@ -535,5 +535,63 @@ baz bor
         },
       ],
     },
+    {
+      code: `
+        <DataTable<Items> fullscreen keyField="id" items={items}
+          activeSortableColumn={sorting}
+          onSortClick={handleSortedClick}
+          rowActions={[
+          ]}
+        />
+      `,
+      features: ['ts'],
+      output: `
+        <DataTable<Items> fullscreen
+keyField="id"
+items={items}
+          activeSortableColumn={sorting}
+          onSortClick={handleSortedClick}
+          rowActions={[
+          ]}
+        />
+      `,
+      options: [{ maximum: { multi: 1, single: 1 } }],
+      errors: [
+        {
+          messageId: 'newLine',
+          data: { prop: 'keyField' },
+        },
+      ],
+    },
+    {
+      code: `
+        <DataTable<Items>
+fullscreen keyField="id" items={items}
+          activeSortableColumn={sorting}
+          onSortClick={handleSortedClick}
+          rowActions={[
+          ]}
+        />
+      `,
+      features: ['ts'],
+      output: `
+        <DataTable<Items>
+fullscreen
+keyField="id"
+items={items}
+          activeSortableColumn={sorting}
+          onSortClick={handleSortedClick}
+          rowActions={[
+          ]}
+        />
+      `,
+      options: [{ maximum: { multi: 1, single: 1 } }],
+      errors: [
+        {
+          messageId: 'newLine',
+          data: { prop: 'keyField' },
+        },
+      ],
+    },
   ]),
 });

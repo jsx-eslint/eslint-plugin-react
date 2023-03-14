@@ -260,5 +260,27 @@ bar />
       options: ['multiprop'],
       errors: [{ messageId: 'propOnSameLine' }],
     },
+    {
+      code: `
+        <DataTable<Items> fullscreen keyField="id" items={items}
+          activeSortableColumn={sorting}
+          onSortClick={handleSortedClick}
+          rowActions={[
+          ]}
+        />
+      `,
+      features: ['ts'],
+      output: `
+        <DataTable<Items>
+fullscreen keyField="id" items={items}
+          activeSortableColumn={sorting}
+          onSortClick={handleSortedClick}
+          rowActions={[
+          ]}
+        />
+      `,
+      options: ['multiline'],
+      errors: [{ messageId: 'propOnNewLine' }],
+    },
   ]),
 });
