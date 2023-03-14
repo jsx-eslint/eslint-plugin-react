@@ -544,7 +544,7 @@ baz bor
           ]}
         />
       `,
-      features: ['ts'],
+      features: ['ts', 'no-babel-old'],
       output: `
         <DataTable<Items> fullscreen
 keyField="id"
@@ -573,7 +573,7 @@ fullscreen keyField="id" items={items}
           ]}
         />
       `,
-      features: ['ts'],
+      features: ['ts', 'no-babel-old'],
       output: `
         <DataTable<Items>
 fullscreen
