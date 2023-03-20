@@ -58,6 +58,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<svg key="lock" viewBox="box" fill={10} d="d" stroke={1} strokeWidth={2} strokeLinecap={3} strokeLinejoin={4} transform="something" clipRule="else" x1={5} x2="6" y1="7" y2="8"></svg>' },
     { code: '<g fill="#7B82A0" fillRule="evenodd"></g>' },
     { code: '<mask fill="#7B82A0"></mask>' },
+    { code: '<symbol fill="#7B82A0"></symbol>' },
     { code: '<meta property="og:type" content="website" />' },
     { code: '<input type="checkbox" checked={checked} disabled={disabled} id={id} onChange={onChange} />' },
     { code: '<video playsInline />' },
@@ -472,7 +473,7 @@ ruleTester.run('no-unknown-property', rule, {
           data: {
             name: 'fill',
             tagName: 'div',
-            allowedTags: 'altGlyph, circle, ellipse, g, line, marker, mask, path, polygon, polyline, rect, svg, text, textPath, tref, tspan, use, animate, animateColor, animateMotion, animateTransform, set',
+            allowedTags: 'altGlyph, circle, ellipse, g, line, marker, mask, path, polygon, polyline, rect, svg, symbol, text, textPath, tref, tspan, use, animate, animateColor, animateMotion, animateTransform, set',
           },
         },
       ],
