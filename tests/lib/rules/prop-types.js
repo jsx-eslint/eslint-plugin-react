@@ -8199,6 +8199,55 @@ ruleTester.run('prop-types', rule, {
           data: { name: 'foo' },
         },
       ],
+    },
+    {
+      code: `
+        function _EventsList({ prop_ }) {
+            return (
+                <div>
+                    {prop_.events.map((event) => (
+                        <Event key={event.id} eventId={event.id} />
+                    ))}
+                </div>
+            );
+        }
+
+        function $EventsList({ prop$ }) {
+          return (
+              <div>
+                  {prop$.events.map((event) => (
+                      <Event key={event.id} eventId={event.id} />
+                  ))}
+              </div>
+          );
+      }
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'prop_' },
+        },
+        {
+          messageId: 'missingPropType',
+          data: { name: 'prop_.events' },
+        },
+        {
+          messageId: 'missingPropType',
+          data: { name: 'prop_.events.map' },
+        },
+        {
+          messageId: 'missingPropType',
+          data: { name: 'prop$' },
+        },
+        {
+          messageId: 'missingPropType',
+          data: { name: 'prop$.events' },
+        },
+        {
+          messageId: 'missingPropType',
+          data: { name: 'prop$.events.map' },
+        },
+      ],
     }
   )),
 });

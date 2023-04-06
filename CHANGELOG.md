@@ -16,7 +16,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: allow `onLoad` on `source` (@ljharb)
 * [`jsx-first-prop-new-line`]: ensure autofix preserves generics in component name ([#3546][] @ljharb)
 * [`no-unknown-property`]: allow `fill` prop on `<symbol>` ([#3555][] @stefanprobst)
+* [`display-name`], [`prop-types`]: when checking for a capitalized name, ignore underscores entirely ([#3560][] @ljharb)
 
+[#3560]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3560
 [#3555]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3555
 [#3548]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3548
 [#3546]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3546

@@ -15,11 +15,15 @@ describe('isFirstLetterCapitalized', () => {
     assert.equal(isFirstLetterCapitalized('isCapitalized'), false);
     assert.equal(isFirstLetterCapitalized('lowercase'), false);
     assert.equal(isFirstLetterCapitalized('_startsWithUnderscore'), false);
-    assert.equal(isFirstLetterCapitalized('_StartsWithUnderscore'), false);
+    assert.equal(isFirstLetterCapitalized('__startsWithUnderscore'), false);
   });
 
-  it('should return true for capitalized string', () => {
+  it('should return true for capitalized string, with or without leading underscores', () => {
     assert.equal(isFirstLetterCapitalized('IsCapitalized'), true);
+    assert.equal(isFirstLetterCapitalized('_IsCapitalized'), true);
+    assert.equal(isFirstLetterCapitalized('__IsCapitalized'), true);
     assert.equal(isFirstLetterCapitalized('UPPERCASE'), true);
+    assert.equal(isFirstLetterCapitalized('_UPPERCASE'), true);
+    assert.equal(isFirstLetterCapitalized('__UPPERCASE'), true);
   });
 });
