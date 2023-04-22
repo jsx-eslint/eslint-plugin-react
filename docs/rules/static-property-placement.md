@@ -127,7 +127,7 @@ MyComponent.propTypes = { /*...*/ };
 
 ## Rule Options
 
-```json
+```json5
 ...
 "react/static-property-placement": [<enabled>]  // `static public field` enabled
 ...
@@ -135,7 +135,7 @@ MyComponent.propTypes = { /*...*/ };
 
 or alternatively:
 
-```json
+```json5
 ...
 "react/static-property-placement": [<enabled>, <string>]
 ...
@@ -143,7 +143,7 @@ or alternatively:
 
 or alternatively:
 
-```json
+```json5
 ...
 "react/static-property-placement": [<enabled>, <string>, {
   childContextTypes: <string>,
@@ -168,7 +168,7 @@ The `options` schema defined above allows you to specify different rules for the
 
 _This is only an example, we do not recommend this as a configuration._
 
-```json
+```json5
 ...
 "react/static-property-placement": ["warn", "property assignment", {
   childContextTypes: "static getter",

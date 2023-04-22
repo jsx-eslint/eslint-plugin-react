@@ -56,7 +56,7 @@ const Foo = bar({
 
 ## Rule Options
 
-```json
+```json5
 ...
 "react/no-unsafe": [<enabled>, { "checkAliases": <boolean> }]
 ...

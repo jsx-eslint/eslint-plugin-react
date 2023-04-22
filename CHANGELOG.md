@@ -20,7 +20,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`display-name`], [`prop-types`]: when checking for a capitalized name, ignore underscores entirely ([#3560][] @ljharb)
 * [`no-unused-state`]: avoid crashing on a class field function with destructured state ([#3568][] @ljharb)
 
+### Changed
+* [Docs] [`jsx-newline`], [`no-unsafe`], [`static-property-placement`]: Fix code syntax highlighting ([#3563][] @nbsp1221)
+
 [#3568]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3568
+[#3563]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3563
 [#3560]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3560
 [#3555]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3555
 [#3548]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3548
