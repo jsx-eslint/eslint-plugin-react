@@ -14,7 +14,7 @@ jobs:
         with:
           versionsAsRoot: true
           type: majors
-          preset: '>=4'
+          preset: '>=4 < 18'
 
   latest:
     needs: [matrix]
@@ -110,7 +110,7 @@ jobs:
       - uses: codecov/codecov-action@v3
 
   node:
-    name: 'node 4+'
+    name: 'node 4 - 17'
     needs: [latest]
     runs-on: ubuntu-latest
     steps:
