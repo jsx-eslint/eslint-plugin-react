@@ -1095,6 +1095,21 @@ eslintTester.run('no-unused-state', rule, {
       parserOptions: {
         sourceType: 'module',
       },
+    },
+    {
+      code: `
+        class Component extends React.Component {
+          static getDerivedStateFromProps = ({value, disableAnimation}: ToggleProps, {isControlled, isOn}: ToggleState) => {
+            return { isControlled, isOn };
+          };
+
+          render() {
+            const { isControlled, isOn } = this.state;
+            return <div>{isControlled ? 'controlled' : ''}{isOn ? 'on' : ''}</div>;
+          }
+        }
+      `,
+      features: ['types', 'class fields'],
     }
   )),
 
