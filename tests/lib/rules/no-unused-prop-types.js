@@ -6689,6 +6689,26 @@ ruleTester.run('no-unused-prop-types', rule, {
         { message: '\'foo\' PropType is defined but prop is never used' },
         { message: '\'propTypes\' PropType is defined but prop is never used' },
       ],
+    },
+    {
+      code: `
+        import React from "react";
+
+        type props = {
+          foo: string;
+          bar: string;
+        };
+
+        const Demo: React.FC<props> = ({ foo }) => {
+          return <div {...{}}>{foo}</div>;
+        };
+
+        export default Demo;
+      `,
+      features: ['ts', 'no-babel'],
+      errors: [
+        { message: '\'bar\' PropType is defined but prop is never used' },
+      ],
     }
   )),
 });

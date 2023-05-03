@@ -19,10 +19,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: allow `fill` prop on `<symbol>` ([#3555][] @stefanprobst)
 * [`display-name`], [`prop-types`]: when checking for a capitalized name, ignore underscores entirely ([#3560][] @ljharb)
 * [`no-unused-state`]: avoid crashing on a class field function with destructured state ([#3568][] @ljharb)
+* [`no-unused-prop-types`]: allow using spread with object expression in jsx ([#3570][] @akulsr0)
 
 ### Changed
 * [Docs] [`jsx-newline`], [`no-unsafe`], [`static-property-placement`]: Fix code syntax highlighting ([#3563][] @nbsp1221)
 
+[#3570]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3570
 [#3568]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3568
 [#3563]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3563
 [#3560]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3560
