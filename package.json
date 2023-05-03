@@ -64,6 +64,7 @@
     "eslint-scope": "^3.7.3",
     "espree": "^3.5.4",
     "istanbul": "^0.4.5",
+    "jackspeak": "=2.1.1",
     "ls-engines": "^0.8.1",
     "markdownlint-cli": "^0.8.0 || ^0.32.2",
     "mocha": "^5.2.0",
