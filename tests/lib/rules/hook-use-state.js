@@ -193,6 +193,16 @@ const tests = {
       `,
       options: [{ allowDestructuredState: true }],
     },
+    {
+      code: `
+        import { useState } from 'react'
+        function useForceUpdate() {
+          const [, forceUpdate] = useState({})
+          return forceUpdate
+        }
+      `,
+      options: [{ allowNoValue: true }],
+    },
   ]),
   invalid: parsers.all([
     {
