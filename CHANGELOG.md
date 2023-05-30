@@ -25,9 +25,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Changed
 * [Docs] [`jsx-newline`], [`no-unsafe`], [`static-property-placement`]: Fix code syntax highlighting ([#3563][] @nbsp1221)
 * [readme] resore configuration URL ([#3582][] @gokaygurcan)
+* [Docs] [`jsx-no-bind`]: reword performance rationale ([#3581][] @gpoole)
 
 [#3583]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3583
 [#3582]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3582
+[#3581]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3581
 [#3570]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3570
 [#3568]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3568
 [#3563]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3563
