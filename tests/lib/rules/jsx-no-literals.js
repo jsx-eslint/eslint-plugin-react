@@ -281,7 +281,7 @@ ruleTester.run('jsx-no-literals', rule, {
     },
     {
       code: `
-        <img alt='blank image'></img>
+        <img alt="blank image"></img>
       `,
     },
     {
@@ -295,6 +295,23 @@ ruleTester.run('jsx-no-literals', rule, {
         <div>—</div>
       `,
       options: [{ noStrings: true, allowedStrings: ['&mdash;', '—'] }],
+    },
+    {
+      code: `
+        <img alt="blank image"></img>
+      `,
+      options: [{ noStrings: true, allowedProps: ['alt'] }],
+    },
+    {
+      code: `
+        class Comp1 extends Component {
+          asdf() {}
+          render() {
+            return <Foo bar={this.asdf} class="xx" />;
+          }
+        }
+      `,
+      options: [{ noStrings: true, allowedProps: ['class'] }],
     },
   ]),
 
