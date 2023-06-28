@@ -10,6 +10,8 @@ Using Flow, one can define types for props. This rule enforces that prop types a
 
 Examples of **incorrect** code for this rule:
 
+In Flow:
+
 ```jsx
 type Props = {
   name: string,
@@ -29,7 +31,31 @@ const Hello = (props: {|name: string|}) => (
 );
 ```
 
+In TypeScript:
+
+```tsx
+type Props = {
+  name: string;
+}
+class Hello extends React.Component<Props> {
+  render () {
+    return <div>Hello {this.props.name}</div>;
+  }
+}
+
+interface Props {
+  name: string;
+}
+class Hello extends React.Component<Props> {
+  render () {
+    return <div>Hello {this.props.name}</div>;
+  }
+}
+```
+
 Examples of **correct** code for this rule:
+
+In Flow:
 
 ```jsx
 type Props = {
@@ -48,4 +74,26 @@ function Hello(props: {+name: string}) {
 const Hello = (props: {|+name: string|}) => (
   <div>Hello {props.name}</div>
 );
+```
+
+In TypeScript:
+
+```tsx
+type Props = {
+  readonly name: string;
+}
+class Hello extends React.Component<Props> {
+  render () {
+    return <div>Hello {this.props.name}</div>;
+  }
+}
+
+interface Props {
+  readonly name: string;
+}
+class Hello extends React.Component<Props> {
+  render () {
+    return <div>Hello {this.props.name}</div>;
+  }
+}
 ```

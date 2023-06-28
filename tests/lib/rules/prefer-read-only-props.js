@@ -167,7 +167,7 @@ ruleTester.run('prefer-read-only-props', rule, {
         import React from "react";
 
         interface Props {
-          name: string;
+          readonly name: string;
         }
         
         const MyComponent: React.FC<Props> = ({ name }) => {
@@ -176,7 +176,62 @@ ruleTester.run('prefer-read-only-props', rule, {
         
         export default MyComponent;
       `,
-      features: ['ts'],
+      features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
+        import React from "react";
+        type Props = {
+          readonly firstName: string;
+          readonly lastName: string;
+        }
+        const MyComponent: React.FC<Props> = ({ name }) => {
+          return <div>{name}</div>;
+        };
+        export default MyComponent;
+      `,
+      features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
+        import React from "react";
+        type Props = {
+          readonly name: string;
+        }
+        const MyComponent: React.FC<Props> = ({ name }) => {
+          return <div>{name}</div>;
+        };
+        export default MyComponent;
+      `,
+      features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
+        import React from "react";
+        type Props = {
+          readonly name: string[];
+        }
+        const MyComponent: React.FC<Props> = ({ name }) => {
+          return <div>{name}</div>;
+        };
+        export default MyComponent;
+      `,
+      features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
+        import React from "react";
+        type Props = {
+          readonly person: {
+            name: string;
+          }
+        }
+        const MyComponent: React.FC<Props> = ({ name }) => {
+          return <div>{name}</div>;
+        };
+        export default MyComponent;
+      `,
+      features: ['ts', 'no-babel-old'],
     },
   ]),
 
@@ -380,6 +435,101 @@ ruleTester.run('prefer-read-only-props', rule, {
         {
           messageId: 'readOnlyProp',
           data: { name: 'name' },
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          name: string;
+        }
+
+        class Hello extends React.Component<Props> {
+          render () {
+            return <div>Hello {this.props.name}</div>;
+          }
+        }
+      `,
+      output: `
+        type Props = {
+          readonly name: string;
+        }
+
+        class Hello extends React.Component<Props> {
+          render () {
+            return <div>Hello {this.props.name}</div>;
+          }
+        }
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [
+        {
+          messageId: 'readOnlyProp',
+          data: { name: 'name' },
+        },
+      ],
+    },
+    {
+      code: `
+        interface Props {
+          name: string;
+        }
+
+        class Hello extends React.Component<Props> {
+          render () {
+            return <div>Hello {this.props.name}</div>;
+          }
+        }
+      `,
+      output: `
+        interface Props {
+          readonly name: string;
+        }
+
+        class Hello extends React.Component<Props> {
+          render () {
+            return <div>Hello {this.props.name}</div>;
+          }
+        }
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [
+        {
+          messageId: 'readOnlyProp',
+          data: { name: 'name' },
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          readonly firstName: string;
+          lastName: string;
+        }
+
+        class Hello extends React.Component<Props> {
+          render () {
+            return <div>Hello {this.props.name}</div>;
+          }
+        }
+      `,
+      output: `
+        type Props = {
+          readonly firstName: string;
+          readonly lastName: string;
+        }
+
+        class Hello extends React.Component<Props> {
+          render () {
+            return <div>Hello {this.props.name}</div>;
+          }
+        }
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [
+        {
+          messageId: 'readOnlyProp',
+          data: { name: 'lastName' },
         },
       ],
     },
