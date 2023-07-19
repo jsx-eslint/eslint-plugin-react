@@ -23,7 +23,7 @@ jobs:
 
       - name: Get version from tag
         id: tag_name
-        run: echo ::set-output name=current_version::${GITHUB_REF#refs/tags/v}
+        run: echo "current_version=${GITHUB_REF#refs/tags/v}" >> "$GITHUB_OUTPUT"
         shell: bash
 
       - uses: actions/checkout@v3
@@ -42,7 +42,10 @@ jobs:
           _links="${_links//$'\n'/'%0A'}"
           _links="${_links//$'\r'/'%0D'}"
           # Set output 'links' to $_links
-          echo "::set-output name=links::${_links}"
+          DELIMITER=$(uuidgen)
+          echo "links<<${DELIMITER}" >> "${GITHUB_OUTPUT}"
+          echo "$_links" >> "${GITHUB_OUTPUT}"
+          echo "${DELIMITER}" >> "${GITHUB_OUTPUT}"
 
       - uses: softprops/action-gh-release@v1
         with:
