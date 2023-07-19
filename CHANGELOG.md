@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.33.0] - 2023.07.19
+
 ### Added
 * [`display-name`]: add `checkContextObjects` option ([#3529][] @JulesBlm)
 * [`jsx-first-prop-new-line`]: add `multiprop` option ([#3533][] @haydncomley)
@@ -29,6 +31,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`jsx-no-bind`]: reword performance rationale ([#3581][] @gpoole)
 - [Docs] [`jsx-first-prop-new-line`]: add missing `multiprop` value ([#3598][] @dzek69)
 
+[7.33.0]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.32.2...v7.33.0
 [#3598]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3598
 [#3593]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3593
 [#3583]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3583
