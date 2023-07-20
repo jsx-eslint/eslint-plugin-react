@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`require-default-props`]: fix config schema ([#3605][] @controversial)
+
+[#3605]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3605
+
 ## [7.33.0] - 2023.07.19
 
 ### Added
