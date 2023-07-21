@@ -944,13 +944,17 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       code: '<App label={`${label}`} />',
       output: '<App label={label} />',
       errors: [{ messageId: 'unnecessaryCurly' }],
-      options: [{ props: 'never', children: 'never', propElementValues: 'never' }],
+      options: [{
+        props: 'never', children: 'never', propElementValues: 'never', unwrapTemplateLiterals: true,
+      }],
     },
     {
       code: '<App>{`${label}`}</App>',
       output: '<App>{label}</App>',
       errors: [{ messageId: 'unnecessaryCurly' }],
-      options: [{ props: 'never', children: 'never', propElementValues: 'never' }],
+      options: [{
+        props: 'never', children: 'never', propElementValues: 'never', unwrapTemplateLiterals: true,
+      }],
     }
   )),
 });

@@ -20,7 +20,7 @@ You can pass in options to enforce the presence of curly braces on JSX props, ch
 
 ```js
 ...
-"react/jsx-curly-brace-presence": [<enabled>, { "props": <string>, "children": <string>, "propElementValues": <string> }]
+"react/jsx-curly-brace-presence": [<enabled>, { "props": <string>, "children": <string>, "propElementValues": <string>, "unwrapTemplateLiterals": <boolean> }]
 ...
 ```
 
@@ -47,7 +47,13 @@ If passed in the option to fix, this is how a style violation will get fixed
 
 - All fixing operations use double quotes.
 
-For examples:
+### `unwrapTemplateLiterals`
+
+- `true`: unwrap template literals that only have a single expression inside of them.
+  Since template literals return strings, this may cause changes in semantics, or type errors.
+- `false` (default): do not unwrap template literals that only have a single expression inside of them.
+
+## Examples
 
 Examples of **incorrect** code for this rule, when configured with `{ props: "always", children: "always" }`:
 
