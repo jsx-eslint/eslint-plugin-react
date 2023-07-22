@@ -8,8 +8,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`require-default-props`]: fix config schema ([#3605][] @controversial)
 * [`jsx-curly-brace-presence`]: Revert [#3538][] due to issues with intended string type casting usage ([#3611][] @taozhou-glean)
+* [`sort-prop-types`]: ensure sort-prop-types respects noSortAlphabetically ([#3610][] @caesar1030)
 
 [#3611]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3611
+[#3610]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3610
 [#3605]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3605
 
 ## [7.33.0] - 2023.07.19

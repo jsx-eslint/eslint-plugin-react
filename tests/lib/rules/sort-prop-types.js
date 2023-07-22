@@ -467,6 +467,19 @@ ruleTester.run('sort-prop-types', rule, {
         };
       `,
       options: [{ sortShapeProp: true }],
+    },
+    {
+      code: `
+        var Component = createReactClass({
+          propTypes: {
+            a: React.PropTypes.string,
+            c: React.PropTypes.string,
+            b: React.PropTypes.string,
+            onChange: React.PropTypes.func,
+          }
+        });
+      `,
+      options: [{ callbacksLast: true, noSortAlphabetically: true }],
     }
   )),
   invalid: parsers.all([].concat(
@@ -1886,6 +1899,37 @@ ruleTester.run('sort-prop-types', rule, {
         },
       ],
     },
+    {
+      code: `
+        var Component = createReactClass({
+          propTypes: {
+            onChange: React.PropTypes.func,
+            a: React.PropTypes.string,
+            c: React.PropTypes.string,
+            b: React.PropTypes.string,
+          }
+        });
+      `,
+      output: `
+        var Component = createReactClass({
+          propTypes: {
+            a: React.PropTypes.string,
+            c: React.PropTypes.string,
+            b: React.PropTypes.string,
+            onChange: React.PropTypes.func,
+          }
+        });
+      `,
+      options: [{ callbacksLast: true, noSortAlphabetically: true }],
+      errors: [
+        {
+          messageId: 'callbackPropsLast',
+          line: 4,
+          column: 13,
+          type: 'Property',
+        },
+      ],
+    },
     semver.satisfies(eslintPkg.version, '> 3') ? {
       code: `
         var First = createReactClass({
@@ -2146,6 +2190,64 @@ ruleTester.run('sort-prop-types', rule, {
           line: 11,
           column: 13,
           type: 'Property',
+        },
+      ],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 3') ? {
+      code: `
+        var Component = createReactClass({
+          propTypes: {
+            /* onChange */ onChange: React.PropTypes.func,
+            /* a */ a: React.PropTypes.string,
+            /* c */ c: React.PropTypes.string,
+            /* b */ b: React.PropTypes.string,
+          }
+        });
+      `,
+      output: `
+        var Component = createReactClass({
+          propTypes: {
+            /* a */ a: React.PropTypes.string,
+            /* c */ c: React.PropTypes.string,
+            /* b */ b: React.PropTypes.string,
+            /* onChange */ onChange: React.PropTypes.func,
+          }
+        });
+      `,
+      options: [{ callbacksLast: true, noSortAlphabetically: true }],
+      errors: [
+        {
+          messageId: 'callbackPropsLast',
+          line: 4,
+        },
+      ],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 3') ? {
+      code: `
+        var Component = createReactClass({
+          propTypes: {
+            /* onChange */ onChange: React.PropTypes.func /* onChange */,
+            /* a */ a: React.PropTypes.string /* a */,
+            /* c */ c: React.PropTypes.string /* c */,
+            /* b */ b: React.PropTypes.string /* b */,
+          }
+        });
+      `,
+      output: `
+        var Component = createReactClass({
+          propTypes: {
+            /* a */ a: React.PropTypes.string /* a */,
+            /* c */ c: React.PropTypes.string /* c */,
+            /* b */ b: React.PropTypes.string /* b */,
+            /* onChange */ onChange: React.PropTypes.func /* onChange */,
+          }
+        });
+      `,
+      options: [{ callbacksLast: true, noSortAlphabetically: true }],
+      errors: [
+        {
+          messageId: 'callbackPropsLast',
+          line: 4,
         },
       ],
     } : []
