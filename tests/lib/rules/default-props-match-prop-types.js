@@ -789,7 +789,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           placeholder?: string,
           disabled?: boolean,
         };
-        
+
         TextField.defaultProps = {
           label: '',
           placeholder: '',
@@ -1761,12 +1761,12 @@ ruleTester.run('default-props-match-prop-types', rule, {
         export type SharedProps = {|
             disabled: boolean,
         |};
-        
+
         type Props = {|
             ...SharedProps,
             focused?: boolean,
         |};
-        
+
         class Foo extends React.Component<Props> {
             static defaultProps = {
               disabled: false

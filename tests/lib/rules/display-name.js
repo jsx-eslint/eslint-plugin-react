@@ -543,7 +543,7 @@ ruleTester.run('display-name', rule, {
               name: 'Bob',
             },
           ];
-        
+
           const columns = [
             {
               Header: 'Name',
@@ -551,7 +551,7 @@ ruleTester.run('display-name', rule, {
               Cell: ({ value }) => <div>{value}</div>,
             },
           ];
-        
+
           return <ReactTable columns={columns} data={data} />;
         }
       `,
@@ -576,7 +576,7 @@ ruleTester.run('display-name', rule, {
                 name: 'Bob',
               },
             ];
-        
+
             const columns = [
               {
                 Header: 'Name',
@@ -584,7 +584,7 @@ ruleTester.run('display-name', rule, {
                 Cell: ({ value }) => <div>{value}</div>,
               },
             ];
-        
+
             return <ReactTable columns={columns} data={data} />;
           }
         }
@@ -660,7 +660,7 @@ ruleTester.run('display-name', rule, {
         function MyComponent(props) {
           return <b>{props.name}</b>;
         }
-            
+
         const MemoizedMyComponent = React.memo(
           MyComponent,
           (prevProps, nextProps) => prevProps.name === nextProps.name
@@ -1284,11 +1284,11 @@ ruleTester.run('display-name', rule, {
           const data = processData({ value: 'data' });
           return <div>{data}</div>;
         });
-        
+
         export const Component2 = observer(() => {
           const data = processData();
           return <div>{data}</div>;
-        });      
+        });
       `,
       features: ['optional chaining', 'types'],
       settings: { componentWrapperFunctions: ['observer'] },

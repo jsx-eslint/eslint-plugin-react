@@ -857,7 +857,7 @@ ruleTester.run('destructuring-assignment', rule, {
         ],
         output: `
           function Foo({a}) {
-            
+${'            '}
             return <p>{a}</p>;
           }
         `,
@@ -878,7 +878,7 @@ ruleTester.run('destructuring-assignment', rule, {
         ],
         output: `
           function Foo({a}: FooProps) {
-            
+${'            '}
             return <p>{a}</p>;
           }
         `,

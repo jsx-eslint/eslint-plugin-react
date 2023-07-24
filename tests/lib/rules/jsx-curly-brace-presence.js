@@ -787,14 +787,14 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     },
     {
       code: `
-        <App prop="    
-           a     
+        <App prop="${'    '}
+           a${'     '}
              b      c
                 d
         ">
           a
-              b     c   
-                 d      
+              b     c${'   '}
+                 d${'      '}
         </App>
       `,
       errors: [
@@ -802,8 +802,8 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       ],
       options: ['always'],
       output: `
-        <App prop="    
-           a     
+        <App prop="${'    '}
+           a${'     '}
              b      c
                 d
         ">
@@ -815,14 +815,14 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     },
     {
       code: `
-        <App prop='    
-           a     
+        <App prop='${'    '}
+           a${'     '}
              b      c
                 d
         '>
           a
-              b     c   
-                 d      
+              b     c${'   '}
+                 d${'      '}
         </App>
       `,
       errors: [
@@ -830,8 +830,8 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       ],
       options: ['always'],
       output: `
-        <App prop='    
-           a     
+        <App prop='${'    '}
+           a${'     '}
              b      c
                 d
         '>

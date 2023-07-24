@@ -1144,7 +1144,7 @@ ruleTester.run('function-component-definition', rule, {
             </div>
           )
         }
-        
+
         export default IndexPage;
       `,
       output: `
@@ -1157,7 +1157,7 @@ ruleTester.run('function-component-definition', rule, {
             </div>
           )
         }
-        
+
         export default IndexPage;
       `,
       options: [{ namedComponents: ['function-declaration'] }],

@@ -169,11 +169,11 @@ ruleTester.run('prefer-read-only-props', rule, {
         interface Props {
           readonly name: string;
         }
-        
+
         const MyComponent: React.FC<Props> = ({ name }) => {
           return <div>{name}</div>;
         };
-        
+
         export default MyComponent;
       `,
       features: ['ts', 'no-babel-old'],

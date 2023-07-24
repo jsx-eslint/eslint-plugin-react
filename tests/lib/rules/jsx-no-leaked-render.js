@@ -812,7 +812,7 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         const MyComponent = () => {
           const items = []
           const breakpoint = { phones: true }
-        
+
           return <div>{items.length > 0 && breakpoint.phones && <span />}</div>
         }
       `,
@@ -821,7 +821,7 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         const MyComponent = () => {
           const items = []
           const breakpoint = { phones: true }
-        
+
           return <div>{items.length > 0 && !!breakpoint.phones && <span />}</div>
         }
       `,

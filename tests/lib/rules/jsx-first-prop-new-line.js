@@ -49,7 +49,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
     {
       code: `
         <Foo a
-          b 
+          b
         />
       `,
       options: ['never'],
@@ -109,7 +109,7 @@ ruleTester.run('jsx-first-prop-new-line', rule, {
     },
     {
       code: `
-        <Foo 
+        <Foo
           foo={{
           }}
           bar

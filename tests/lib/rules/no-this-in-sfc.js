@@ -180,7 +180,7 @@ ruleTester.run('no-this-in-sfc', rule, {
       code: `
         $.fn.getValueAsStringWeak = function (): string | null {
           const val = this.length === 1 ? this.val() : null;
-        
+
           return typeof val === 'string' ? val : null;
         };
       `,

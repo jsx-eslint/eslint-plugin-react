@@ -1373,7 +1373,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     {
       code: `
         import React from 'react';
-        
+
         const A =
         <div>
             B
@@ -1381,7 +1381,7 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       `,
       output: `
         import React from 'react';
-        
+
         const A = (
         <div>
             B

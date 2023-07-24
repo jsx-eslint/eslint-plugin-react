@@ -366,7 +366,7 @@ ruleTester.run('sort-default-props', rule, {
             return <div />;
           }
         }
-        
+
         First.defaultProps = {
             a: PropTypes.any,
             onBar: PropTypes.func,
@@ -921,7 +921,7 @@ ruleTester.run('sort-default-props', rule, {
             return <div />;
           }
         }
-        
+
         First.defaultProps = {
             a: PropTypes.any,
             z: PropTypes.string,

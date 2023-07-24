@@ -219,7 +219,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: `
         var Hello = React.createClass({
-          render: function() { 
+          render: function() {
             return (<div>{
               this.props.list.map(this.wrap.bind(this, "span"))
             }</div>);
@@ -230,7 +230,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: `
         var Hello = React.createClass({
-          render: function() { 
+          render: function() {
             const click = this.bar::baz
             return <div onClick={onClick}>Hello</div>;
           }
@@ -241,7 +241,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: `
         var Hello = React.createClass({
-          render: function() { 
+          render: function() {
             const click = () => true
             return <div onClick={onClick}>Hello</div>;
           }
@@ -404,7 +404,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: `
         var Hello = React.createClass({
-          render: function() { 
+          render: function() {
           return <div onClick={this.doSomething.bind(this, "hey")} />
           }
         });
@@ -414,7 +414,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: `
         var Hello = React.createClass({
-          render: function() { 
+          render: function() {
             const doThing = this.doSomething.bind(this, "hey")
             return <div onClick={doThing} />
           }
@@ -542,7 +542,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: `
         var Hello = React.createClass({
-          render: function() { 
+          render: function() {
           return <div onClick={() => true} />
           }
         });
@@ -552,7 +552,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: `
         var Hello = React.createClass({
-          render: function() { 
+          render: function() {
           return <div onClick={async () => true} />
           }
         });
@@ -562,7 +562,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: `
         var Hello = React.createClass({
-          render: function() { 
+          render: function() {
             const doThing = () => true
             return <div onClick={doThing} />
           }
@@ -573,7 +573,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: `
         var Hello = React.createClass({
-          render: function() { 
+          render: function() {
             const doThing = async () => true
             return <div onClick={doThing} />
           }
@@ -669,7 +669,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: `
         var Hello = React.createClass({
-          render: function() { 
+          render: function() {
           return <div onClick={function () { return true }} />
           }
         });
@@ -679,7 +679,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: `
         var Hello = React.createClass({
-          render: function() { 
+          render: function() {
           return <div onClick={function * () { return true }} />
           }
         });
@@ -689,7 +689,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: `
         var Hello = React.createClass({
-          render: function() { 
+          render: function() {
           return <div onClick={async function () { return true }} />
           }
         });
@@ -699,7 +699,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: `
         var Hello = React.createClass({
-          render: function() { 
+          render: function() {
             const doThing = function () { return true }
             return <div onClick={doThing} />
           }
@@ -710,7 +710,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: `
         var Hello = React.createClass({
-          render: function() { 
+          render: function() {
             const doThing = async function () { return true }
             return <div onClick={doThing} />
           }
@@ -721,7 +721,7 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: `
         var Hello = React.createClass({
-          render: function() { 
+          render: function() {
             const doThing = function * () { return true }
             return <div onClick={doThing} />
           }

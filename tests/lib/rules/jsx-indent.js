@@ -45,7 +45,7 @@ ruleTester.run('jsx-indent', rule, {
     {
       code: `
         <App>
-        </App> 
+        </App>
       `,
     },
     {
@@ -1183,21 +1183,21 @@ const Component = () => (
           state = {
             name: '',
           }
-        
+
           componentDidMount() {
             this.fetchName()
               .then(name => {
                 this.setState({name})
               });
           }
-        
+
           fetchName = () => {
             const url = 'https://api.github.com/users/job13er'
             return fetch(url)
               .then(resp => resp.json())
               .then(json => json.name)
           }
-        
+
           render() {
             const {name} = this.state
             return (
