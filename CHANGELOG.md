@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`no-deprecated`]: prevent false positive on commonjs import ([#3614][] @akulsr0)
+
+[#3614]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3614
+
 ## [7.33.1] - 2023.07.29
 
 ### Fixed

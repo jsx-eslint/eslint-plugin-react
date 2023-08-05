@@ -153,6 +153,16 @@ ruleTester.run('no-deprecated', rule, {
         renderToPipeableStream(<App />, {});
       `,
     },
+    {
+      code: `
+        import { renderToString } from 'react-dom/server';
+      `,
+    },
+    {
+      code: `
+        const { renderToString } = require('react-dom/server');
+      `,
+    },
   ]),
 
   invalid: parsers.all([
