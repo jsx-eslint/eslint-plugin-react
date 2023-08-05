@@ -33,12 +33,13 @@ The supported options are:
 - `noStrings` (default: `false`) - Enforces no string literals used as children, wrapped or unwrapped.
 - `allowedStrings` - An array of unique string values that would otherwise warn, but will be ignored.
 - `ignoreProps` (default: `false`) - When `true` the rule ignores literals used in props, wrapped or unwrapped.
+- `allowedProps` - An array of unique property names that would otherwise warn, but will be ignored.
 - `noAttributeStrings` (default: `false`) - Enforces no string literals used in attributes when set to `true`.
 
 To use, you can specify as follows:
 
 ```js
-"react/jsx-no-literals": [<enabled>, {"noStrings": true, "allowedStrings": ["allowed"], "ignoreProps": false, "noAttributeStrings": true }]
+"react/jsx-no-literals": [<enabled>, {"noStrings": true, "allowedStrings": ["allowed"], "ignoreProps": false, "allowedProps": ["allowed"], "noAttributeStrings": true }]
 ```
 
 Examples of **incorrect** code for this rule, with the above configuration:
@@ -64,7 +65,7 @@ var Hello = <div>
 ```
 
 ```jsx
-var Hello = <div class='xx' />;
+var Hello = <div class="xx" />;
 ```
 
 ```jsx
@@ -114,6 +115,11 @@ var Hello = <Text {...props} />
 ```jsx
 // use variable for prop values
 var Hello = <div class={xx} />
+```
+
+```jsx
+// an allowed property
+var Hello = <div allowed="foo">allowed</div>
 ```
 
 ```jsx
