@@ -480,6 +480,19 @@ ruleTester.run('sort-prop-types', rule, {
         });
       `,
       options: [{ callbacksLast: true, noSortAlphabetically: true }],
+    },
+    {
+      code: `
+        type Props = {
+          zzz: string;
+          aaa: string;
+        }
+        function Foo(props: Props) {
+          return null;
+        }
+      `,
+      features: ['types'],
+      options: [{ checkTypes: false }],
     }
   )),
   invalid: parsers.all([].concat(
@@ -2250,6 +2263,91 @@ ruleTester.run('sort-prop-types', rule, {
           line: 4,
         },
       ],
-    } : []
+    } : [],
+    {
+      code: `
+        type Props = {
+          zzz: string;
+          aaa: string;
+        }
+        function Foo(props: Props) {
+          return null;
+        }
+      `,
+      output: `
+        type Props = {
+          aaa: string;
+          zzz: string;
+        }
+        function Foo(props: Props) {
+          return null;
+        }
+      `,
+      features: ['types'],
+      options: [{ checkTypes: true }],
+      errors: [
+        {
+          messageId: 'propsNotSorted',
+          line: 4,
+          column: 11,
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          zzz: string;
+          aaa: string;
+        }
+        const Foo = (props: Props) => {
+          return null;
+        }
+      `,
+      output: `
+        type Props = {
+          aaa: string;
+          zzz: string;
+        }
+        const Foo = (props: Props) => {
+          return null;
+        }
+      `,
+      features: ['types'],
+      options: [{ checkTypes: true }],
+      errors: [
+        {
+          messageId: 'propsNotSorted',
+          line: 4,
+          column: 11,
+        },
+      ],
+    },
+    {
+      code: `
+        const Foo = (props: {
+          zzz: string,
+          aaa: string,
+        }) => {
+          return null;
+        }
+      `,
+      output: `
+        const Foo = (props: {
+          aaa: string,
+          zzz: string,
+        }) => {
+          return null;
+        }
+      `,
+      features: ['types'],
+      options: [{ checkTypes: true }],
+      errors: [
+        {
+          messageId: 'propsNotSorted',
+          line: 4,
+          column: 11,
+        },
+      ],
+    }
   )),
 });

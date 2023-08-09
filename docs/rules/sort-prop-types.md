@@ -95,7 +95,8 @@ class Component extends React.Component {
   "ignoreCase": <boolean>,
   "requiredFirst": <boolean>,
   "sortShapeProp": <boolean>,
-  "noSortAlphabetically": <boolean>
+  "noSortAlphabetically": <boolean>,
+  "checkTypes": <boolean>
 }]
 ...
 ```
@@ -169,6 +170,10 @@ var Component = createReactClass({
 ...
 });
 ```
+
+### `checkTypes`
+
+When `true`, the sorting of prop type definitions are checked.
 
 ## When Not To Use It
 

@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Added
+* [`sort-prop-types`]: give errors on TS types ([#3615][] @akulsr0)
+
+[#3615]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3615
+
 ## [7.33.2] - 2023.08.15
 
 ### Fixed
