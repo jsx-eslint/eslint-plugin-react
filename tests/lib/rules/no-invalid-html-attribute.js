@@ -234,7 +234,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
       code: '<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#fff" />',
     },
   ]),
-  invalid: parsers.all([
+  invalid: parsers.all([].concat(
     {
       code: '<a rel="alternatex"></a>',
       errors: [
@@ -713,7 +713,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         },
       ],
     },
-    {
+    parsers.skipDueToMultiErrorSorting ? [] : {
       code: '<a rel={"foobar batgo       noopener"}></a>',
       errors: [
         {
@@ -782,7 +782,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         },
       ],
     },
-    {
+    parsers.skipDueToMultiErrorSorting ? [] : {
       code: '<a rel={" batgo noopener"}></a>',
       errors: [
         {
@@ -913,7 +913,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         },
       ],
     },
-    {
+    parsers.skipDueToMultiErrorSorting ? [] : {
       code: '<link rel="shortcut foo"></link>',
       errors: [
         {
@@ -957,7 +957,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         },
       ],
     },
-    {
+    parsers.skipDueToMultiErrorSorting ? [] : {
       code: '<link rel="shortcut  foo"></link>',
       errors: [
         {
@@ -1832,6 +1832,6 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           type: 'Literal',
         },
       ],
-    },
-  ]),
+    }
+  )),
 });

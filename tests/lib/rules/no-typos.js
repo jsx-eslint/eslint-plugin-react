@@ -1873,7 +1873,7 @@ ruleTester.run('no-typos', rule, {
         },
       ],
     },
-    {
+    parsers.skipDueToMultiErrorSorting ? [] : {
       code: `
         class Hello extends React.Component {
           GetDerivedStateFromProps() { }

@@ -2779,7 +2779,7 @@ const Component = () => (
         },
       ],
     },
-    {
+    parsers.skipDueToMultiErrorSorting ? [] : {
       code: `
         <div>
           text
@@ -2813,7 +2813,7 @@ const Component = () => (
         },
       ],
     },
-    {
+    parsers.skipDueToMultiErrorSorting ? [] : {
       code: `
         <div>
         \t  text

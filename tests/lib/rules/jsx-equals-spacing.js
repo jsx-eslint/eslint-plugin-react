@@ -86,8 +86,8 @@ ruleTester.run('jsx-equals-spacing', rule, {
     },
   ]),
 
-  invalid: parsers.all([
-    {
+  invalid: parsers.all([].concat(
+    parsers.skipDueToMultiErrorSorting ? [] : {
       code: '<App foo = {bar} />',
       output: '<App foo={bar} />',
       errors: [
@@ -95,7 +95,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
         { messageId: 'noSpaceAfter', type: 'JSXAttribute' },
       ],
     },
-    {
+    parsers.skipDueToMultiErrorSorting ? [] : {
       code: '<App foo = {bar} />',
       output: '<App foo={bar} />',
       options: ['never'],
@@ -116,7 +116,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
       options: ['never'],
       errors: [{ messageId: 'noSpaceAfter', type: 'JSXAttribute' }],
     },
-    {
+    parsers.skipDueToMultiErrorSorting ? [] : {
       code: '<App foo= {bar} bar = {baz} />',
       output: '<App foo={bar} bar={baz} />',
       options: ['never'],
@@ -126,7 +126,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
         { messageId: 'noSpaceAfter', type: 'JSXAttribute' },
       ],
     },
-    {
+    parsers.skipDueToMultiErrorSorting ? [] : {
       code: '<App foo={bar} />',
       output: '<App foo = {bar} />',
       options: ['always'],
@@ -147,7 +147,7 @@ ruleTester.run('jsx-equals-spacing', rule, {
       options: ['always'],
       errors: [{ messageId: 'needSpaceBefore', type: 'JSXAttribute' }],
     },
-    {
+    parsers.skipDueToMultiErrorSorting ? [] : {
       code: '<App foo={bar} bar ={baz} />',
       output: '<App foo = {bar} bar = {baz} />',
       options: ['always'],
@@ -156,6 +156,6 @@ ruleTester.run('jsx-equals-spacing', rule, {
         { messageId: 'needSpaceAfter', type: 'JSXAttribute' },
         { messageId: 'needSpaceAfter', type: 'JSXAttribute' },
       ],
-    },
-  ]),
+    }
+  )),
 });

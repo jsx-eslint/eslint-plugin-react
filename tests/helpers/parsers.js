@@ -39,6 +39,7 @@ const parsers = {
   TYPESCRIPT_ESLINT: path.join(__dirname, NODE_MODULES, 'typescript-eslint-parser'),
   '@TYPESCRIPT_ESLINT': path.join(__dirname, NODE_MODULES, '@typescript-eslint/parser'),
   disableNewTS,
+  skipDueToMultiErrorSorting: semver.satisfies(process.versions.node, '^8 || ^9'),
   babelParserOptions: function parserOptions(test, features) {
     return Object.assign({}, test.parserOptions, {
       requireConfigFile: false,
