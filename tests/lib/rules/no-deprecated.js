@@ -231,8 +231,20 @@ ruleTester.run('no-deprecated', rule, {
     {
       code: 'var {createClass, PropTypes} = require(\'react\');',
       errors: [
-        errorMessage('React.createClass', '15.5.0', 'the npm module create-react-class'),
-        errorMessage('React.PropTypes', '15.5.0', 'the npm module prop-types'),
+        errorMessage(
+          'React.createClass',
+          '15.5.0',
+          'the npm module create-react-class',
+          null,
+          { type: 'VariableDeclarator', column: 5 }
+        ),
+        errorMessage(
+          'React.PropTypes',
+          '15.5.0',
+          'the npm module prop-types',
+          null,
+          { type: 'VariableDeclarator', column: 5 }
+        ),
       ],
     },
     {
@@ -252,8 +264,20 @@ ruleTester.run('no-deprecated', rule, {
       const {createClass, PropTypes} = React;
     `,
       errors: [
-        errorMessage('React.createClass', '15.5.0', 'the npm module create-react-class'),
-        errorMessage('React.PropTypes', '15.5.0', 'the npm module prop-types'),
+        errorMessage(
+          'React.createClass',
+          '15.5.0',
+          'the npm module create-react-class',
+          null,
+          { type: 'VariableDeclarator', line: 3, column: 13 }
+        ),
+        errorMessage(
+          'React.PropTypes',
+          '15.5.0',
+          'the npm module prop-types',
+          null,
+          { type: 'VariableDeclarator', line: 3, column: 13 }
+        ),
       ],
     },
     {
