@@ -533,7 +533,7 @@ ruleTester.run('no-deprecated', rule, {
           '18.0.0',
           'createRoot',
           'https://reactjs.org/link/switch-to-createroot',
-          { type: 'ImportDeclaration', line: 2, column: 9 }
+          { type: 'ImportSpecifier', line: 2, column: 18 }
         ),
         errorMessage(
           'ReactDOM.render',
@@ -555,7 +555,7 @@ ruleTester.run('no-deprecated', rule, {
           '18.0.0',
           'hydrateRoot',
           'https://reactjs.org/link/switch-to-createroot',
-          { type: 'ImportDeclaration', line: 2, column: 9 }
+          { type: 'ImportSpecifier', line: 2, column: 18 }
         ),
         errorMessage(
           'ReactDOM.hydrate',
@@ -577,7 +577,7 @@ ruleTester.run('no-deprecated', rule, {
           '18.0.0',
           'root.unmount',
           'https://reactjs.org/link/switch-to-createroot',
-          { type: 'ImportDeclaration', line: 2, column: 9 }
+          { type: 'ImportSpecifier', line: 2, column: 18 }
         ),
         errorMessage(
           'ReactDOM.unmountComponentAtNode',
@@ -599,7 +599,7 @@ ruleTester.run('no-deprecated', rule, {
           '18.0.0',
           'renderToPipeableStream',
           'https://reactjs.org/docs/react-dom-server.html#rendertonodestream',
-          { type: 'ImportDeclaration', line: 2, column: 9 }
+          { type: 'ImportSpecifier', line: 2, column: 18 }
         ),
         errorMessage(
           'ReactDOMServer.renderToNodeStream',
