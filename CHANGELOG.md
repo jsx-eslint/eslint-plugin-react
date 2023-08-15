@@ -10,6 +10,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unsafe`]: report on the method instead of the entire component (@ljharb)
 * [`no-deprecated`]: report on the destructured property instead of the entire variable declarator (@ljharb)
 * [`no-deprecated`]: report on the imported specifier instead of the entire import statement (@ljharb)
+* [`no-invalid-html-attribute`]: report more granularly (@ljharb)
 
 [#3614]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3614
 
