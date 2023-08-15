@@ -236,14 +236,14 @@ ruleTester.run('no-deprecated', rule, {
           '15.5.0',
           'the npm module create-react-class',
           null,
-          { type: 'VariableDeclarator', column: 5 }
+          { type: 'Property', column: 6 }
         ),
         errorMessage(
           'React.PropTypes',
           '15.5.0',
           'the npm module prop-types',
           null,
-          { type: 'VariableDeclarator', column: 5 }
+          { type: 'Property', column: 19 }
         ),
       ],
     },
@@ -269,14 +269,14 @@ ruleTester.run('no-deprecated', rule, {
           '15.5.0',
           'the npm module create-react-class',
           null,
-          { type: 'VariableDeclarator', line: 3, column: 13 }
+          { type: 'Property', line: 3, column: 14 }
         ),
         errorMessage(
           'React.PropTypes',
           '15.5.0',
           'the npm module prop-types',
           null,
-          { type: 'VariableDeclarator', line: 3, column: 13 }
+          { type: 'Property', line: 3, column: 27 }
         ),
       ],
     },
