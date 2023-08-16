@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.33.2] - 2023.08.15
+
 ### Fixed
 * [`no-deprecated`]: prevent false positive on commonjs import ([#3614][] @akulsr0)
 * [`no-unsafe`]: report on the method instead of the entire component (@ljharb)
@@ -12,6 +14,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-deprecated`]: report on the imported specifier instead of the entire import statement (@ljharb)
 * [`no-invalid-html-attribute`]: report more granularly (@ljharb)
 
+[7.33.2]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.33.1...v7.33.2
 [#3614]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3614
 
 ## [7.33.1] - 2023.07.29
