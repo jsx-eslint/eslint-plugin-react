@@ -8,6 +8,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Added
 * [`sort-prop-types`]: give errors on TS types ([#3615][] @akulsr0)
 
+### Fixed
+* [`jsx-no-leaked-render`]: preserve RHS parens for multiline jsx elements while fixing ([#3623][] @akulsr0)
+
+[#3623]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3623
 [#3615]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3615
 
 ## [7.33.2] - 2023.08.15

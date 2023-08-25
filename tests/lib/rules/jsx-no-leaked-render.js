@@ -884,6 +884,76 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         line: 3,
         column: 38,
       }],
-    }
+    },
+    semver.satisfies(eslintPkg.version, '> 4') ? {
+      code: `
+        const MyComponent = () => {
+          return (
+            <>
+              {someCondition && (
+                <div>
+                  <p>hello</p>
+                </div>
+              )}
+            </>
+          )
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return (
+            <>
+              {!!someCondition && (
+                <div>
+                  <p>hello</p>
+                </div>
+              )}
+            </>
+          )
+        }
+      `,
+      options: [{ validStrategies: ['coerce', 'ternary'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 5,
+        column: 16,
+      }],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 4') ? {
+      code: `
+        const MyComponent = () => {
+          return (
+            <>
+              {someCondition && (
+                <SomeComponent
+                  prop1={val1}
+                  prop2={val2}
+                />
+              )}
+            </>
+          )
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return (
+            <>
+              {!!someCondition && (
+                <SomeComponent
+                  prop1={val1}
+                  prop2={val2}
+                />
+              )}
+            </>
+          )
+        }
+      `,
+      options: [{ validStrategies: ['coerce', 'ternary'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 5,
+        column: 16,
+      }],
+    } : []
   )),
 });
