@@ -35,6 +35,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`jsx-key`]: fix correct example ([#3656][] @developer-bandi)
 * [Tests] `jsx-wrap-multilines`: passing tests ([#3545][] @burtek)
 * [Docs] [`iframe-missing-sandbox`]: fix link to iframe attribute on mdn ([#3690][] @nnmrts)
+* [Docs] [`hook-use-state`]: fix an undefined variable ([#3626][] @chentsulin)
 
 [#3690]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3690
 [#3680]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3680
@@ -54,6 +55,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3634]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3634
 [#3633]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3633
 [#3630]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3630
+[#3626]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3626
 [#3623]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3623
 [#3615]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3615
 [#3545]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3545

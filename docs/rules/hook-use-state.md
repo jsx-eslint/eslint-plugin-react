@@ -27,7 +27,7 @@ export default function useColor() {
   // useState call is destructured into value + setter pair, but identifier
   // names do not follow the [thing, setThing] naming convention
   const [color, updateColor] = React.useState();
-  return useStateResult;
+  return [color, updateColor];
 }
 ```
 
