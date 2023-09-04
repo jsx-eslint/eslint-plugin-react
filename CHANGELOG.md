@@ -1,4 +1,5 @@
 # Change Log
+
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](https://keepachangelog.com).
@@ -19,6 +20,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-key`]: detect conditional returns ([#3630][] @yialo)
 * [`jsx-newline`]: prevent a crash when `allowMultilines ([#3633][] @ljharb)
 * [`no-unknown-property`]: use a better regex to avoid a crash ([#3666][] @ljharb @SCH227)
+* [`function-component-definition`], [`boolean-prop-naming`], [`jsx-first-prop-new-line`], [`jsx-props-no-multi-spaces`], `propTypes`: use type args ([#3629][] @HenryBrown0)
 
 ### Changed
 * [Refactor] `propTypes`: extract type params to var ([#3634][] @HenryBrown0)
@@ -34,6 +36,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3654]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3654
 [#3652]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3652
 [#3645]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3645
+[#3629]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3629
 [#3638]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3638
 [#3634]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3634
 [#3633]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3633
