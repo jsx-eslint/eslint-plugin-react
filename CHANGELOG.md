@@ -1,4 +1,5 @@
 # Change Log
+
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](https://keepachangelog.com).
@@ -7,6 +8,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Added
 * [`no-string-refs`]: allow this.refs in > 18.3.0 ([#3807][] @henryqdineen)
+
+### Fixed
+* [`function-component-definition`], [`boolean-prop-naming`], [`jsx-first-prop-new-line`], [`jsx-props-no-multi-spaces`], `propTypes`: use type args ([#3629][] @HenryBrown0)
 
 ### Changed
 * [Tests] add @typescript-eslint/parser v6 ([#3629][] @HenryBrown0)
