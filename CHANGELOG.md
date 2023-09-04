@@ -1,4 +1,5 @@
 # Change Log
+
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](https://semver.org/).
 This change log adheres to standards from [Keep a CHANGELOG](https://keepachangelog.com).
@@ -8,8 +9,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`boolean-prop-naming`]: avoid a crash with a non-TSTypeReference type ([#3718][] @developer-bandi)
 * [`jsx-no-leaked-render`]: invalid report if left side is boolean ([#3746][] @akulsr0)
+* [`function-component-definition`], [`boolean-prop-naming`], [`jsx-first-prop-new-line`], [`jsx-props-no-multi-spaces`], `propTypes`: use type args ([#3629][] @HenryBrown0)
 
 [#3746]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3746
+[#3629]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3629
 [#3718]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3718
 
 ## [7.34.1] - 2024.03.15
