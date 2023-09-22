@@ -649,5 +649,76 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
       ],
       options: [{ prevent: true, allowMultilines: true }],
     },
+    {
+      code: `
+        const frag: DocumentFragment = (
+          <Fragment>
+            <sni-sequence-editor-tool
+              name="forward"
+              direction="forward"
+              type="control"
+              onClick={ () => this.onClickNavigate('forward') }
+            />
+            <sni-sequence-editor-tool
+              name="rotate"
+              direction="left"
+              type="control"
+              onClick={ () => this.onClickNavigate('left') }
+            />
+    
+            <sni-sequence-editor-tool
+              name="rotate"
+              direction="right"
+              type="control"
+              onClick={ (): void => this.onClickNavigate('right') }
+            />
+    
+            <div className="sni-sequence-editor-control-panel__delete" data-name="delete" onClick={ this.onDeleteCommand } />
+    
+            {
+              ...Array.from(this.children)
+            }
+          </Fragment>
+        )
+      `,
+      output: `
+        const frag: DocumentFragment = (
+          <Fragment>
+            <sni-sequence-editor-tool
+              name="forward"
+              direction="forward"
+              type="control"
+              onClick={ () => this.onClickNavigate('forward') }
+            />
+
+            <sni-sequence-editor-tool
+              name="rotate"
+              direction="left"
+              type="control"
+              onClick={ () => this.onClickNavigate('left') }
+            />
+${'    '}
+            <sni-sequence-editor-tool
+              name="rotate"
+              direction="right"
+              type="control"
+              onClick={ (): void => this.onClickNavigate('right') }
+            />
+    
+            <div className="sni-sequence-editor-control-panel__delete" data-name="delete" onClick={ this.onDeleteCommand } />
+    
+            {
+              ...Array.from(this.children)
+            }
+          </Fragment>
+        )
+      `,
+      features: ['types'],
+      options: [{ prevent: true, allowMultilines: true }],
+      errors: [
+        { messageId: 'allowMultilines', line: 10 },
+        { messageId: 'prevent', line: 26 },
+      ],
+    },
   ]),
 });

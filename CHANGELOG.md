@@ -11,7 +11,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`jsx-no-leaked-render`]: preserve RHS parens for multiline jsx elements while fixing ([#3623][] @akulsr0)
 * [`jsx-key`]: detect conditional returns ([#3630][] @yialo)
+* [`jsx-newline`]: prevent a crash when `allowMultilines ([#3633][] @ljharb)
 
+[#3633]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3633
 [#3630]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3630
 [#3623]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3623
 [#3615]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3615
