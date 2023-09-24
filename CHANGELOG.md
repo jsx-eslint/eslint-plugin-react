@@ -14,7 +14,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-key`]: detect conditional returns ([#3630][] @yialo)
 * [`jsx-newline`]: prevent a crash when `allowMultilines ([#3633][] @ljharb)
 
+### Changed
+* [Refactor] `propTypes`: extract type params to var ([#3634][] @HenryBrown0)
+
 [#3638]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3638
+[#3634]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3634
 [#3633]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3633
 [#3630]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3630
 [#3623]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3623
