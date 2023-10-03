@@ -231,6 +231,12 @@ ruleTester.run('no-invalid-html-attribute', rule, {
       code: '<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-180x180.png" />',
     },
     {
+      code: '<link rel="apple-touch-startup-image" href="launch.png" />',
+    },
+    {
+      code: '<link rel="apple-touch-startup-image" href="iphone5.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)" />',
+    },
+    {
       code: '<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#fff" />',
     },
   ]),
