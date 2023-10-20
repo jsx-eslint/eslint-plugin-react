@@ -51,12 +51,13 @@ var AtomPanel = <atom-panel class="foo"></atom-panel>;
 
 ```js
 ...
-"react/no-unknown-property": [<enabled>, { ignore: <ignore> }]
+"react/no-unknown-property": [<enabled>, { ignore: <ignore>, requireDataLowercase: <requireDataLowercase> }]
 ...
 ```
 
 - `enabled`: for enabling the rule. 0=off, 1=warn, 2=error. Defaults to 0.
 - `ignore`: optional array of property and attribute names to ignore during validation.
+- `requireDataLowercase`: optional (default: `false`), require data-\* attributes to contain only lowercase characters. React will issue a warning when data-\* attributes contain uppercase characters. In order to catch such attributes, set the `requireDataLowercase` option to `true`.
 
 If you are using a library that passes something as a prop to JSX elements, it is recommended to add those props to the ignored properties.
 

@@ -8,6 +8,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Added
 * [`sort-prop-types`]: give errors on TS types ([#3615][] @akulsr0)
 * [`no-invalid-html-attribute`]: add support for `apple-touch-startup-image` `rel` attributes in `link` tags ([#3638][] @thomashockaday)
+* [`no-unknown-property`]: add requireDataLowercase option ([#3645][] @HermanBilous)
 
 ### Fixed
 * [`jsx-no-leaked-render`]: preserve RHS parens for multiline jsx elements while fixing ([#3623][] @akulsr0)
@@ -20,6 +21,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] [`function-component-definition`]: exit early if no type params ([#3634][] @HenryBrown0)
 * [Refactor] [`jsx-props-no-multi-spaces`]: extract type parameters to var ([#3634][] @HenryBrown0)
 
+[#3645]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3645
 [#3638]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3638
 [#3634]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3634
 [#3633]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3633

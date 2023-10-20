@@ -99,6 +99,10 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<div data-index-number="1234"></div>;' },
     { code: '<div data-e2e-id="5678"></div>;' },
     { code: '<div data-testID="bar" data-under_sCoRe="bar" />;' },
+    {
+      code: '<div data-testID="bar" data-under_sCoRe="bar" />;',
+      options: [{ requireDataLowercase: false }],
+    },
     // Ignoring should work
     {
       code: '<div class="bar"></div>;',
@@ -572,6 +576,26 @@ ruleTester.run('no-unknown-property', rule, {
           },
         },
       ],
+    },
+    {
+      code: '<div data-testID="bar" data-under_sCoRe="bar" />;',
+      errors: [
+        {
+          messageId: 'dataLowercaseRequired',
+          data: {
+            name: 'data-testID',
+            lowerCaseName: 'data-testid',
+          },
+        },
+        {
+          messageId: 'dataLowercaseRequired',
+          data: {
+            name: 'data-under_sCoRe',
+            lowerCaseName: 'data-under_score',
+          },
+        },
+      ],
+      options: [{ requireDataLowercase: true }],
     },
     {
       code: '<div abbr="abbr" />',
