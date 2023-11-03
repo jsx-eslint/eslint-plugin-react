@@ -1,4 +1,4 @@
-name: 'Tests: node.js'
+name: 'Tests: node.js (18+)'
 
 on: [pull_request, push]
 
