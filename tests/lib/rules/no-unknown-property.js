@@ -161,6 +161,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<fbt desc="foo" doNotExtract />;' },
     // fbs
     { code: '<fbs desc="foo" doNotExtract />;' },
+    { code: '<math displaystyle="true" />;' },
   ]),
   invalid: parsers.all([
     {
