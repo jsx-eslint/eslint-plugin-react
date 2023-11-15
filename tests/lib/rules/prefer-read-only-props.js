@@ -222,6 +222,19 @@ ruleTester.run('prefer-read-only-props', rule, {
       code: `
         import React from "react";
         type Props = {
+          readonly name: string[];
+        }
+        const MyComponent: React.FC<Props> = async ({ name }) => {
+          return <div>{name}</div>;
+        };
+        export default MyComponent;
+      `,
+      features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
+        import React from "react";
+        type Props = {
           readonly person: {
             name: string;
           }
@@ -491,6 +504,35 @@ ruleTester.run('prefer-read-only-props', rule, {
             return <div>Hello {this.props.name}</div>;
           }
         }
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [
+        {
+          messageId: 'readOnlyProp',
+          data: { name: 'name' },
+        },
+      ],
+    },
+    {
+      code: `
+        import React from "react";
+        type Props = {
+          name: string[];
+        }
+        const MyComponent: React.FC<Props> = async ({ name }) => {
+          return <div>{name}</div>;
+        };
+        export default MyComponent;
+      `,
+      output: `
+        import React from "react";
+        type Props = {
+          readonly name: string[];
+        }
+        const MyComponent: React.FC<Props> = async ({ name }) => {
+          return <div>{name}</div>;
+        };
+        export default MyComponent;
       `,
       features: ['ts', 'no-babel-old'],
       errors: [

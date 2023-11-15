@@ -1571,25 +1571,28 @@ ruleTester.run('prop-types', rule, {
       options: [{ skipUndeclared: false }],
     },
     {
-      // Async functions can't be components.
+      // Async generator functions can't be components.
       code: `
-        var Hello = async function(props) {
+        var Hello = async function* (props) {
+          yield null;
           return <div>Hello {props.name}</div>;
         }
       `,
     },
     {
-      // Async functions can't be components.
+      // Async generator functions can't be components.
       code: `
-        async function Hello(props) {
+        async function* Hello(props) {
+          yield null;
           return <div>Hello {props.name}</div>;
         }
       `,
     },
     {
-      // Async functions can't be components.
+      // Async generator functions can't be components.
       code: `
-        var Hello = async (props) => {
+        var Hello = async function* (props) {
+          yield null;
           return <div>Hello {props.name}</div>;
         }
       `,

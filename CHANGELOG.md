@@ -10,6 +10,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-invalid-html-attribute`]: add support for `apple-touch-startup-image` `rel` attributes in `link` tags ([#3638][] @thomashockaday)
 * [`no-unknown-property`]: add requireDataLowercase option ([#3645][] @HermanBilous)
 * [`no-unknown-property`]: add `displaystyle` on `<math>` ([#3652][] @lounsbrough)
+* [`prefer-read-only-props`], [`prop-types`], component detection: allow components to be async functions ([#3654][] @pnodet)
 
 ### Fixed
 * [`jsx-no-leaked-render`]: preserve RHS parens for multiline jsx elements while fixing ([#3623][] @akulsr0)
@@ -22,6 +23,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] [`function-component-definition`]: exit early if no type params ([#3634][] @HenryBrown0)
 * [Refactor] [`jsx-props-no-multi-spaces`]: extract type parameters to var ([#3634][] @HenryBrown0)
 
+[#3654]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3654
 [#3652]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3652
 [#3645]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3645
 [#3638]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3638
