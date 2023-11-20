@@ -22,7 +22,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] [`boolean-prop-naming`]: invert if statement ([#3634][] @HenryBrown0)
 * [Refactor] [`function-component-definition`]: exit early if no type params ([#3634][] @HenryBrown0)
 * [Refactor] [`jsx-props-no-multi-spaces`]: extract type parameters to var ([#3634][] @HenryBrown0)
+* [Docs] [`jsx-key`]: fix correct example ([#3656][] @developer-bandi)
 
+[#3656]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3656
 [#3654]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3654
 [#3652]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3652
 [#3645]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3645

@@ -40,7 +40,7 @@ data.map((x) => <Hello key={x.id}>{x}</Hello>);
 ```
 
 ```jsx
-Array.from([1, 2, 3], (x) => <Hello key={x.id}>{x}</Hello>);
+Array.from([1, 2, 3], (x) => <Hello key={x}>{x}</Hello>);
 ```
 
 ```jsx
