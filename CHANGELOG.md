@@ -11,6 +11,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-no-leaked-render`]: invalid report if left side is boolean ([#3746][] @akulsr0)
 * [`function-component-definition`], [`boolean-prop-naming`], [`jsx-first-prop-new-line`], [`jsx-props-no-multi-spaces`], `propTypes`: use type args ([#3629][] @HenryBrown0)
 
+### Changed
+* [Tests] add @typescript-eslint/parser v6 ([#3629][] @HenryBrown0)
+
 [#3746]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3746
 [#3629]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3629
 [#3718]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3718
