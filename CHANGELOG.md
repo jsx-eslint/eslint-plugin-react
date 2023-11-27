@@ -28,6 +28,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] [`function-component-definition`]: exit early if no type params ([#3634][] @HenryBrown0)
 * [Refactor] [`jsx-props-no-multi-spaces`]: extract type parameters to var ([#3634][] @HenryBrown0)
 * [Docs] [`jsx-key`]: fix correct example ([#3656][] @developer-bandi)
+* [Tests] add @typescript-eslint/parser v6 ([#3629][] @HenryBrown0)
 
 [#3668]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3668
 [#3666]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3666
