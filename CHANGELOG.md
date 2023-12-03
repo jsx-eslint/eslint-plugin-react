@@ -11,6 +11,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: add requireDataLowercase option ([#3645][] @HermanBilous)
 * [`no-unknown-property`]: add `displaystyle` on `<math>` ([#3652][] @lounsbrough)
 * [`prefer-read-only-props`], [`prop-types`], component detection: allow components to be async functions ([#3654][] @pnodet)
+* [`no-unknown-property`]: support `onResize` on audio/video tags ([#3662][] @caesar1030)
 
 ### Fixed
 * [`jsx-no-leaked-render`]: preserve RHS parens for multiline jsx elements while fixing ([#3623][] @akulsr0)
@@ -24,6 +25,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] [`jsx-props-no-multi-spaces`]: extract type parameters to var ([#3634][] @HenryBrown0)
 * [Docs] [`jsx-key`]: fix correct example ([#3656][] @developer-bandi)
 
+[#3662]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3662
 [#3656]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3656
 [#3654]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3654
 [#3652]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3652
