@@ -162,6 +162,13 @@ ruleTester.run('no-unknown-property', rule, {
     // fbs
     { code: '<fbs desc="foo" doNotExtract />;' },
     { code: '<math displaystyle="true" />;' },
+    {
+      code: `
+        <div className="App" data-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash="customValue">
+          Hello, world!
+        </div>
+      `,
+    },
   ]),
   invalid: parsers.all([
     {
@@ -641,6 +648,22 @@ ruleTester.run('no-unknown-property', rule, {
             name: 'webkitdirectory',
             tagName: 'div',
             allowedTags: 'input',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        <div className="App" data-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash:c="customValue">
+          Hello, world!
+        </div>
+      `,
+      features: ['no-ts'],
+      errors: [
+        {
+          messageId: 'unknownProp',
+          data: {
+            name: 'data-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash-crash:c',
           },
         },
       ],
