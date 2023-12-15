@@ -9,6 +9,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Added
 * [`no-string-refs`]: allow this.refs in > 18.3.0 ([#3807][] @henryqdineen)
 * [`jsx-no-literals`] Add `elementOverrides` option and the ability to ignore this rule on specific elements ([#3812][] @Pearce-Ropion)
+* [`forward-ref-uses-ref`]: add rule for checking ref parameter is added ([#3667][] @NotWoods)
 
 ### Fixed
 * [`function-component-definition`], [`boolean-prop-naming`], [`jsx-first-prop-new-line`], [`jsx-props-no-multi-spaces`], `propTypes`: use type args ([#3629][] @HenryBrown0)
@@ -27,6 +28,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 [#3812]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3812
 [#3731]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3731
+[#3694]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3667
 [#3629]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3629
 [#3817]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3817
 [#3807]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3807
