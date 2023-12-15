@@ -50,7 +50,7 @@ var Hello = createReactClass({
 });
 ```
 
-Examples of **correct** code for this rule:
+Examples of **correct** code for this rule, when configured with either `parens` or `parens-new-line`:
 
 ```jsx
 var singleLineJSX = <p>Hello</p>
@@ -62,6 +62,36 @@ var Hello = createReactClass({
         <p>Hello {this.props.name}</p>
       </div>
     );
+  }
+});
+```
+
+Examples of **incorrect** code for this rule, when configured with `never`:
+
+```jsx
+var singleLineJSX = <p>Hello</p>
+
+var Hello = createReactClass({
+  render: function() {
+    return (
+      <div>
+        <p>Hello {this.props.name}</p>
+      </div>
+    );
+  }
+});
+```
+
+Examples of **correct** code for this rule, when configured with `never`:
+
+```jsx
+var singleLineJSX = <p>Hello</p>
+
+var Hello = createReactClass({
+  render: function() {
+    return <div>
+      <p>Hello {this.props.name}</p>
+    </div>;
   }
 });
 ```
@@ -114,6 +144,30 @@ var hello = (
     <p>Hello</p>
   </div>
 );
+```
+
+Examples of **incorrect** code for this rule, when configured with `{ declaration: "never" }`:
+
+```jsx
+var hello = (<div>
+  <p>Hello</p>
+</div>);
+```
+
+```jsx
+var hello = (
+  <div>
+    <p>Hello</p>
+  </div>
+);
+```
+
+Examples of **correct** code for this rule, when configured with `{ declaration: "never" }`.
+
+```jsx
+var hello = <div>
+  <p>Hello</p>
+</div>;
 ```
 
 ### `assignment`
@@ -170,6 +224,33 @@ hello = (
     <p>Hello</p>
   </div>
 );
+```
+
+Examples of **incorrect** code for this rule, when configured with `{ assignment: "never" }`.
+
+```jsx
+var hello;
+hello = (<div>
+  <p>Hello</p>
+</div>);
+```
+
+```jsx
+var hello;
+hello = (
+  <div>
+    <p>Hello</p>
+  </div>
+);
+```
+
+Examples of **correct** code for this rule, when configured with `{ assignment: "never" }`.
+
+```jsx
+var hello;
+hello = <div>
+  <p>Hello</p>
+</div>;
 ```
 
 ### `return`
@@ -234,6 +315,36 @@ function hello() {
 }
 ```
 
+Examples of **incorrect** code for this rule, when configured with `{ return: "never" }`.
+
+```jsx
+function hello() {
+  return (<div>
+    <p>Hello</p>
+  </div>);
+}
+```
+
+```jsx
+function hello() {
+  return (
+    <div>
+      <p>Hello</p>
+    </div>
+  );
+}
+```
+
+Examples of **correct** code for this rule, when configured with `{ return: "never" }`.
+
+```jsx
+function hello() {
+  return <div>
+    <p>Hello</p>
+  </div>;
+}
+```
+
 ### `arrow`
 
 Examples of **incorrect** code for this rule, when configured with `{ arrow: "parens" }`.
@@ -282,6 +393,30 @@ var hello = () => (
     <p>World</p>
   </div>
 );
+```
+
+Examples of **incorrect** code for this rule, when configured with `{ arrow: "never" }`.
+
+```jsx
+var hello = () => (<div>
+  <p>World</p>
+</div>);
+```
+
+```jsx
+var hello = () => (
+  <div>
+    <p>World</p>
+  </div>
+);
+```
+
+Examples of **correct** code for this rule, when configured with `{ arrow: "never" }`.
+
+```jsx
+var hello = () => <div>
+  <p>World</p>
+</div>;
 ```
 
 ### `condition`
@@ -343,6 +478,36 @@ Examples of **correct** code for this rule, when configured with `{ condition: "
       <p>Hello</p>
     </div>
   ): null}
+</div>
+```
+
+Examples of **incorrect** code for this rule, when configured with `{ condition: "never" }`.
+
+```jsx
+<div>
+  {foo ? (<div>
+      <p>Hello</p>
+  </div>) : null}
+</div>
+```
+
+```jsx
+<div>
+  {foo ? (
+    <div>
+      <p>Hello</p>
+    </div>
+  ): null}
+</div>
+```
+
+Examples of **correct** code for this rule, when configured with `{ condition: "never" }`.
+
+```jsx
+<div>
+  {foo ? <div>
+      <p>Hello</p>
+    </div> : null}
 </div>
 ```
 
@@ -416,6 +581,40 @@ Examples of **correct** code for this rule, when configured with `{ logical: "pa
 </div>
 ```
 
+Examples of **incorrect** code for this rule, when configured with `{ logical: "never" }`.
+
+```jsx
+<div>
+  {foo &&
+    (<div>
+      <p>Hello World</p>
+    </div>)
+  }
+</div>
+```
+
+```jsx
+<div>
+  {foo && (
+    <div>
+      <p>Hello World</p>
+    </div>
+  )}
+</div>
+```
+
+Examples of **correct** code for this rule, when configured with `{ logical: "never" }`.
+
+```jsx
+<div>
+  {foo &&
+    <div>
+      <p>Hello World</p>
+    </div>
+  }
+</div>
+```
+
 ### `prop`
 
 Examples of **incorrect** code for this rule, when configured with `{ prop: "parens" }`.
@@ -474,6 +673,36 @@ Examples of **correct** code for this rule, when configured with `{ prop: "paren
     <p>Hello</p>
   </div>
 )}>
+  <p>Hello</p>
+</div>;
+```
+
+Examples of **incorrect** code for this rule, when configured with `{ prop: "never" }`.
+
+```jsx
+<div foo={(<div>
+    <p>Hello</p>
+  </div>)}>
+  <p>Hello</p>
+</div>;
+```
+
+```jsx
+<div foo={(
+  <div>
+    <p>Hello</p>
+  </div>
+)}>
+  <p>Hello</p>
+</div>;
+```
+
+Examples of **correct** code for this rule, when configured with `{ prop: "never" }`.
+
+```jsx
+<div foo={<div>
+    <p>Hello</p>
+  </div>}>
   <p>Hello</p>
 </div>;
 ```
