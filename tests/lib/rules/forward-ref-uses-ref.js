@@ -30,68 +30,68 @@ const tests = {
       code: `
         import { forwardRef } from 'react'
         forwardRef((props, ref) => {
-          return null
-        })
+          return null;
+        });
       `,
     },
     {
       code: `
         import { forwardRef } from 'react'
-        forwardRef((props, ref) => null)
+        forwardRef((props, ref) => null);
       `,
     },
     {
       code: `
         import { forwardRef } from 'react'
         forwardRef(function (props, ref) {
-          return null
-        })
+          return null;
+        });
       `,
     },
     {
       code: `
         import { forwardRef } from 'react'
         forwardRef(function Component(props, ref) {
-          return null
-        })
+          return null;
+        });
       `,
     },
     {
       code: `
         import * as React from 'react'
         React.forwardRef((props, ref) => {
-          return null
-        })
+          return null;
+        });
       `,
     },
     {
       code: `
         import * as React from 'react'
-        React.forwardRef((props, ref) => null)
+        React.forwardRef((props, ref) => null);
       `,
     },
     {
       code: `
         import * as React from 'react'
         React.forwardRef(function (props, ref) {
-          return null
-        })
+          return null;
+        });
       `,
     },
     {
       code: `
         import * as React from 'react'
         React.forwardRef(function Component(props, ref) {
-          return null
-        })
+          return null;
+        });
       `,
     },
     {
       code: `
         import * as React from 'react'
         function Component(props) {
-          return null
-        }
+          return null;
+        };
       `,
     },
   ]),
@@ -100,21 +100,20 @@ const tests = {
       code: `
         import { forwardRef } from 'react'
         forwardRef((props) => {
-          return null
-        })
+          return null;
+        });
       `,
       errors: [
         {
-          message:
-            'forwardRef is used with this component but no ref parameter is set',
+          message: 'forwardRef is used with this component but no ref parameter is set',
           suggestions: [
             {
               messageId: 'addRefParameter',
               output: `
         import { forwardRef } from 'react'
         forwardRef((props, ref) => {
-          return null
-        })
+          return null;
+        });
       `,
             },
             {
@@ -122,8 +121,8 @@ const tests = {
               output: `
         import { forwardRef } from 'react'
         (props) => {
-          return null
-        }
+          return null;
+        };
       `,
             },
           ],
@@ -133,25 +132,24 @@ const tests = {
     {
       code: `
         import * as React from 'react'
-        React.forwardRef((props) => null)
+        React.forwardRef((props) => null);
       `,
       errors: [
         {
-          message:
-            'forwardRef is used with this component but no ref parameter is set',
+          message: 'forwardRef is used with this component but no ref parameter is set',
           suggestions: [
             {
               messageId: 'addRefParameter',
               output: `
         import * as React from 'react'
-        React.forwardRef((props, ref) => null)
+        React.forwardRef((props, ref) => null);
       `,
             },
             {
               messageId: 'removeForwardRef',
               output: `
         import * as React from 'react'
-        (props) => null
+        (props) => null;
       `,
             },
           ],
@@ -162,21 +160,20 @@ const tests = {
       code: `
         import { forwardRef } from 'react'
         forwardRef(function (props) {
-          return null
-        })
+          return null;
+        });
       `,
       errors: [
         {
-          message:
-            'forwardRef is used with this component but no ref parameter is set',
+          message: 'forwardRef is used with this component but no ref parameter is set',
           suggestions: [
             {
               messageId: 'addRefParameter',
               output: `
         import { forwardRef } from 'react'
         forwardRef(function (props, ref) {
-          return null
-        })
+          return null;
+        });
       `,
             },
             {
@@ -184,8 +181,8 @@ const tests = {
               output: `
         import { forwardRef } from 'react'
         function (props) {
-          return null
-        }
+          return null;
+        };
       `,
             },
           ],
@@ -196,21 +193,20 @@ const tests = {
       code: `
         import * as React from 'react'
         React.forwardRef(function Component(props) {
-          return null
-        })
+          return null;
+        });
       `,
       errors: [
         {
-          message:
-            'forwardRef is used with this component but no ref parameter is set',
+          message: 'forwardRef is used with this component but no ref parameter is set',
           suggestions: [
             {
               messageId: 'addRefParameter',
               output: `
         import * as React from 'react'
         React.forwardRef(function Component(props, ref) {
-          return null
-        })
+          return null;
+        });
       `,
             },
             {
@@ -218,8 +214,8 @@ const tests = {
               output: `
         import * as React from 'react'
         function Component(props) {
-          return null
-        }
+          return null;
+        };
       `,
             },
           ],
