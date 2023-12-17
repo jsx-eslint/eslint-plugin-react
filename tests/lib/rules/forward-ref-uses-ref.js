@@ -94,6 +94,12 @@ const tests = {
         };
       `,
     },
+    {
+      code: `
+        import * as React from 'react'
+        (props) => null;
+      `,
+    },
   ]),
   invalid: parsers.all([
     {
@@ -121,6 +127,39 @@ const tests = {
               output: `
         import { forwardRef } from 'react'
         (props) => {
+          return null;
+        };
+      `,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        import { forwardRef } from 'react'
+        forwardRef(props => {
+          return null;
+        });
+      `,
+      errors: [
+        {
+          message: 'forwardRef is used with this component but no ref parameter is set',
+          suggestions: [
+            {
+              messageId: 'addRefParameter',
+              output: `
+        import { forwardRef } from 'react'
+        forwardRef((props, ref) => {
+          return null;
+        });
+      `,
+            },
+            {
+              messageId: 'removeForwardRef',
+              output: `
+        import { forwardRef } from 'react'
+        props => {
           return null;
         };
       `,
