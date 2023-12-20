@@ -1,6 +1,6 @@
 /**
- * @fileoverview Ensure symmetric naming of setState hook value and setter variables
- * @author Duncan Beevers
+ * @fileoverview Require all forwardRef components include a ref parameter
+ * @author Tiger Oakes
  */
 
 'use strict';
