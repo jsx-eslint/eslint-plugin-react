@@ -15,6 +15,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-wrap-multilines`]: add `never` option to prohibit wrapping parens on multiline JSX ([#3668][] @reedws)
 * [`jsx-filename-extension`]: add `ignoreFilesWithoutCode` option to allow empty files ([#3674][] @burtek)
 * [`jsx-boolean-value`]: add `assumeUndefinedIsFalse` option ([#3675][] @developer-bandi)
+* `linkAttribute` setting, [`jsx-no-target-blank`]: support multiple properties ([#3673][] @burtek)
 
 ### Fixed
 * [`jsx-no-leaked-render`]: preserve RHS parens for multiline jsx elements while fixing ([#3623][] @akulsr0)
@@ -32,6 +33,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 [#3675]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3675
 [#3674]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3674
+[#3673]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3673
 [#3668]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3668
 [#3666]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3666
 [#3662]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3662

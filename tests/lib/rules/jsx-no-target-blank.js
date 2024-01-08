@@ -103,6 +103,11 @@ ruleTester.run('jsx-no-target-blank', rule, {
       settings: { linkComponents: { name: 'Link', linkAttribute: 'to' } },
     },
     {
+      code: '<Link target="_blank" to={ dynamicLink }></Link>',
+      options: [{ enforceDynamicLinks: 'never' }],
+      settings: { linkComponents: { name: 'Link', linkAttribute: ['to'] } },
+    },
+    {
       code: '<a href="foobar" target="_blank" rel="noopener"></a>',
       options: [{ allowReferrer: true }],
     },
@@ -166,6 +171,14 @@ ruleTester.run('jsx-no-target-blank', rule, {
     },
     {
       code: '<a href={href} target={isExternal ? "_blank" : undefined} rel={isExternal ? "noopener noreferrer" : undefined} />',
+    },
+    {
+      code: '<form action={action} />',
+      options: [{ forms: true }],
+    },
+    {
+      code: '<form action={action} {...spread} />',
+      options: [{ forms: true }],
     },
   ]),
   invalid: parsers.all([
@@ -406,6 +419,21 @@ ruleTester.run('jsx-no-target-blank', rule, {
       code: '<a href={href} target="_blank" rel={isExternal ? "noopener" : "2"} />',
       options: [{ allowReferrer: true }],
       errors: allowReferrerErrors,
+    },
+    {
+      code: '<form action={action} target="_blank" />',
+      options: [{ allowReferrer: true, forms: true }],
+      errors: allowReferrerErrors,
+    },
+    {
+      code: '<form action={action} target="_blank" />',
+      options: [{ forms: true }],
+      errors: defaultErrors,
+    },
+    {
+      code: '<form action={action} {...spread} />',
+      options: [{ forms: true, warnOnSpreadAttributes: true }],
+      errors: defaultErrors,
     },
   ]),
 });

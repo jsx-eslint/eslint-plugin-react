@@ -63,12 +63,14 @@ You should also specify settings that will be shared across all the plugin rules
     "formComponents": [
       // Components used as alternatives to <form> for forms, eg. <Form endpoint={ url } />
       "CustomForm",
-      {"name": "Form", "formAttribute": "endpoint"}
+      {"name": "SimpleForm", "formAttribute": "endpoint"},
+      {"name": "Form", "formAttribute": ["registerEndpoint", "loginEndpoint"]}, // allows specifying multiple properties if necessary
     ],
     "linkComponents": [
       // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
       "Hyperlink",
-      {"name": "Link", "linkAttribute": "to"}
+      {"name": "MyLink", "linkAttribute": "to"},
+      {"name": "Link", "linkAttribute": ["to", "href"]}, // allows specifying multiple properties if necessary
     ]
   }
 }
