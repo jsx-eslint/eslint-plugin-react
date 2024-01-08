@@ -16,6 +16,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-filename-extension`]: add `ignoreFilesWithoutCode` option to allow empty files ([#3674][] @burtek)
 * [`jsx-boolean-value`]: add `assumeUndefinedIsFalse` option ([#3675][] @developer-bandi)
 * `linkAttribute` setting, [`jsx-no-target-blank`]: support multiple properties ([#3673][] @burtek)
+* [`jsx-no-script-url`]: add `includeFromSettings` option to support `linkAttributes` setting ([#3673][] @burtek)
 
 ### Fixed
 * [`jsx-no-leaked-render`]: preserve RHS parens for multiline jsx elements while fixing ([#3623][] @akulsr0)
