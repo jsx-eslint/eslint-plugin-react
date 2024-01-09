@@ -48,6 +48,14 @@ ruleTester.run('jsx-boolean-value', rule, {
       code: '<App foo={true} bar />;',
       options: ['never', { always: ['foo'] }],
     },
+    {
+      code: '<App />;',
+      options: ['never', { assumeUndefinedIsFalse: true }],
+    },
+    {
+      code: '<App foo={false} />;',
+      options: ['never', { assumeUndefinedIsFalse: true, always: ['foo'] }],
+    },
   ]),
   invalid: parsers.all([
     {
@@ -107,6 +115,33 @@ ruleTester.run('jsx-boolean-value', rule, {
         {
           messageId: 'setBoolean',
           data: { exceptionsMessage: ' for the following props: `foo`, `bar`' },
+        },
+      ],
+    },
+    {
+      code: '<App foo={false} bak={false} />;',
+      output: '<App   />;',
+      options: ['never', { assumeUndefinedIsFalse: true }],
+      errors: [
+        { messageId: 'omitPropAndBoolean_noMessage' },
+        { messageId: 'omitPropAndBoolean_noMessage' },
+      ],
+    },
+    {
+      code: '<App foo={true} bar={false} baz={false} bak={false} />;',
+      output: '<App foo={true} bar={false}   />;',
+      options: [
+        'always',
+        { assumeUndefinedIsFalse: true, never: ['baz', 'bak'] },
+      ],
+      errors: [
+        {
+          messageId: 'omitPropAndBoolean',
+          data: { exceptionsMessage: ' for the following props: `baz`, `bak`' },
+        },
+        {
+          messageId: 'omitPropAndBoolean',
+          data: { exceptionsMessage: ' for the following props: `baz`, `bak`' },
         },
       ],
     },

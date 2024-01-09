@@ -14,6 +14,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: support `onResize` on audio/video tags ([#3662][] @caesar1030)
 * [`jsx-wrap-multilines`]: add `never` option to prohibit wrapping parens on multiline JSX ([#3668][] @reedws)
 * [`jsx-filename-extension`]: add `ignoreFilesWithoutCode` option to allow empty files ([#3674][] @burtek)
+* [`jsx-boolean-value`]: add `assumeUndefinedIsFalse` option ([#3675][] @developer-bandi)
 
 ### Fixed
 * [`jsx-no-leaked-render`]: preserve RHS parens for multiline jsx elements while fixing ([#3623][] @akulsr0)
@@ -29,6 +30,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`jsx-key`]: fix correct example ([#3656][] @developer-bandi)
 * [Tests] `jsx-wrap-multilines`: passing tests ([#3545][] @burtek)
 
+[#3675]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3675
 [#3674]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3674
 [#3668]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3668
 [#3666]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3666
