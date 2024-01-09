@@ -29,6 +29,13 @@ const parserOptions = {
 const withJSXElement = 'module.exports = function MyComponent() { return <div>\n<div />\n</div>; }';
 const withJSXFragment = 'module.exports = function MyComponent() { return <>\n</>; }';
 const withoutJSX = 'module.exports = {}';
+const onlyComments = [
+  '// some initial comment',
+  '',
+  '/* multiline',
+  ' * comment',
+  ' */',
+].join('\n');
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -79,6 +86,21 @@ ruleTester.run('jsx-filename-extension', rule, {
       options: [{ extensions: ['.js', '.jsx'] }],
       code: withJSXFragment,
       features: ['fragment'],
+    },
+    {
+      filename: 'MyComponent.js',
+      code: onlyComments,
+      options: [{ allow: 'as-needed' }],
+    },
+    {
+      filename: 'MyComponent.jsx',
+      code: onlyComments,
+      options: [{ allow: 'as-needed', ignoreFilesWithoutCode: true }],
+    },
+    {
+      filename: 'MyComponent.jsx',
+      code: '',
+      options: [{ allow: 'as-needed', ignoreFilesWithoutCode: true }],
     },
   ]),
 

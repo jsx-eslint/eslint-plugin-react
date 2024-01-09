@@ -13,6 +13,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`prefer-read-only-props`], [`prop-types`], component detection: allow components to be async functions ([#3654][] @pnodet)
 * [`no-unknown-property`]: support `onResize` on audio/video tags ([#3662][] @caesar1030)
 * [`jsx-wrap-multilines`]: add `never` option to prohibit wrapping parens on multiline JSX ([#3668][] @reedws)
+* [`jsx-filename-extension`]: add `ignoreFilesWithoutCode` option to allow empty files ([#3674][] @burtek)
 
 ### Fixed
 * [`jsx-no-leaked-render`]: preserve RHS parens for multiline jsx elements while fixing ([#3623][] @akulsr0)
@@ -27,6 +28,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] [`jsx-props-no-multi-spaces`]: extract type parameters to var ([#3634][] @HenryBrown0)
 * [Docs] [`jsx-key`]: fix correct example ([#3656][] @developer-bandi)
 
+[#3674]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3674
 [#3668]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3668
 [#3666]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3666
 [#3662]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3662
