@@ -1611,5 +1611,45 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       options: [{ declaration: 'parens-new-line' }],
       errors: [{ messageId: 'missingParens' }],
     },
+    {
+      code: `
+        export default () => <h1>
+            <span>
+                hello
+            </span>
+        </h1>;
+      `,
+      output: `
+        export default () => (
+<h1>
+            <span>
+                hello
+            </span>
+        </h1>
+);
+      `,
+      options: [{ arrow: 'parens-new-line' }],
+      errors: [{ messageId: 'missingParens' }],
+    },
+    {
+      code: `
+        export default () => (<h1>
+            <span>
+                hello
+            </span>
+        </h1>);
+      `,
+      output: `
+        export default () => (
+<h1>
+            <span>
+                hello
+            </span>
+        </h1>
+);
+      `,
+      options: [{ arrow: 'parens-new-line' }],
+      errors: [{ messageId: 'parensOnNewLines' }],
+    },
   ]),
 });
