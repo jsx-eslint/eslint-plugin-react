@@ -156,6 +156,22 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
       options: [{ allow: 'single-child' }],
     },
     {
+      code: '<App>123</App>',
+      options: [{ allow: 'non-jsx' }],
+    },
+    {
+      code: '<App>foo</App>',
+      options: [{ allow: 'non-jsx' }],
+    },
+    {
+      code: '<App>{"foo"}</App>',
+      options: [{ allow: 'non-jsx' }],
+    },
+    {
+      code: '<App>{<Bar />}</App>',
+      options: [{ allow: 'non-jsx' }],
+    },
+    {
       code: '<App>{foo && <Bar />}</App>',
       options: [{ allow: 'single-child' }],
     },
@@ -183,6 +199,38 @@ ruleTester.run('jsx-one-expression-per-line', rule, {
         </>
       `,
       features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
+    },
+    {
+      code: '<App>Hello {name}</App>',
+      options: [{ allow: 'non-jsx' }],
+    },
+    {
+      code: `
+        <App>
+          Hello {name} there!
+        </App>`,
+      options: [{ allow: 'non-jsx' }],
+    },
+    {
+      code: `
+        <App>
+          Hello {<Bar />} there!
+        </App>`,
+      options: [{ allow: 'non-jsx' }],
+    },
+    {
+      code: `
+        <App>
+          Hello {(<Bar />)} there!
+        </App>`,
+      options: [{ allow: 'non-jsx' }],
+    },
+    {
+      code: `
+        <App>
+          Hello {(() => <Bar />)()} there!
+        </App>`,
+      options: [{ allow: 'non-jsx' }],
     },
   ]),
 
@@ -491,6 +539,28 @@ foo
           data: { descriptor: 'Baz' },
         },
       ],
+      parserOptions,
+    },
+    {
+      code: `
+        <Text style={styles.foo}>
+          <Bar /> <Baz />
+        </Text>
+      `,
+      output: `
+        <Text style={styles.foo}>
+          <Bar />${' '/* intentional trailing space */}
+{' '}
+<Baz />
+        </Text>
+      `,
+      errors: [
+        {
+          messageId: 'moveToNewLine',
+          data: { descriptor: 'Baz' },
+        },
+      ],
+      options: [{ allow: 'non-jsx' }],
       parserOptions,
     },
     {
@@ -1250,6 +1320,23 @@ foo
 </App>
       `,
       options: [{ allow: 'literal' }],
+      errors: [
+        {
+          messageId: 'moveToNewLine',
+          data: { descriptor: 'Foo' },
+        },
+      ],
+    },
+    {
+      code: `
+        <App><Foo /></App>
+      `,
+      output: `
+        <App>
+<Foo />
+</App>
+      `,
+      options: [{ allow: 'non-jsx' }],
       errors: [
         {
           messageId: 'moveToNewLine',

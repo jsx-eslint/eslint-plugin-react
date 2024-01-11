@@ -133,3 +133,11 @@ Examples of **correct** code for this rule, when configured as `"single-child"`:
 
 <App><Hello /></App>
 ```
+
+Examples of **correct** code for this rule, when configured as `"non-jsx"`:
+
+```jsx
+<App>Hello {someVariable}</App>
+
+<App>Hello {<Hello />} there!</App>
+```

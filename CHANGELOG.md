@@ -17,6 +17,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-boolean-value`]: add `assumeUndefinedIsFalse` option ([#3675][] @developer-bandi)
 * `linkAttribute` setting, [`jsx-no-target-blank`]: support multiple properties ([#3673][] @burtek)
 * [`jsx-no-script-url`]: add `includeFromSettings` option to support `linkAttributes` setting ([#3673][] @burtek)
+* [`jsx-one-expression-per-line`]: add `non-jsx` option to allow non-JSX children in one line ([#3677][] @burtek)
 
 ### Fixed
 * [`jsx-no-leaked-render`]: preserve RHS parens for multiline jsx elements while fixing ([#3623][] @akulsr0)
@@ -32,6 +33,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`jsx-key`]: fix correct example ([#3656][] @developer-bandi)
 * [Tests] `jsx-wrap-multilines`: passing tests ([#3545][] @burtek)
 
+[#3677]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3677
 [#3675]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3675
 [#3674]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3674
 [#3673]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3673
