@@ -24,6 +24,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-key`]: detect conditional returns ([#3630][] @yialo)
 * [`jsx-newline`]: prevent a crash when `allowMultilines ([#3633][] @ljharb)
 * [`no-unknown-property`]: use a better regex to avoid a crash ([#3666][] @ljharb @SCH227)
+* [`prop-types`]: handle nested forwardRef + memo ([#3679][] @developer-bandi)
 
 ### Changed
 * [Refactor] `propTypes`: extract type params to var ([#3634][] @HenryBrown0)
@@ -33,6 +34,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`jsx-key`]: fix correct example ([#3656][] @developer-bandi)
 * [Tests] `jsx-wrap-multilines`: passing tests ([#3545][] @burtek)
 
+[#3679]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3679
 [#3677]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3677
 [#3675]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3675
 [#3674]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3674

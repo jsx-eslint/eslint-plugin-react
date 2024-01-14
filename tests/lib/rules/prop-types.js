@@ -4141,6 +4141,46 @@ ruleTester.run('prop-types', rule, {
         };
       `,
       features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { memo } from 'react';
+        interface Props1 {
+            age: number;
+        }
+        const HelloTemp = memo(({ age }: Props1) => {
+            return <div>Hello {age}</div>;
+        });
+        export const Hello = HelloTemp
+      `,
+      features: ['types'],
+    },
+    {
+      code: `
+        import React, { forwardRef, memo } from 'react';
+        interface Props1 {
+            age: number;
+        }
+        const HelloTemp = forwardRef(({ age }: Props1) => {
+            return <div>Hello {age}</div>;
+        });
+        export const Hello = memo(HelloTemp);
+      `,
+      features: ['types'],
+    },
+    {
+      code: `
+        import React, { forwardRef, memo } from 'react';
+        interface Props1 {
+            age: number;
+        }
+        export const Hello = memo(
+            forwardRef(({ age }: Props1) => {
+                return <div>Hello {age}</div>;
+            }),
+        );
+      `,
+      features: ['types'],
     }
   )),
 
