@@ -1,6 +1,5 @@
 'use strict';
 
-const path = require('path');
 const semver = require('semver');
 const entries = require('object.entries');
 const version = require('eslint/package.json').version;
@@ -31,13 +30,11 @@ function minEcmaVersion(features, parserOptions) {
   return Number.isFinite(result) ? result : undefined;
 }
 
-const NODE_MODULES = '../../node_modules';
-
 const parsers = {
-  BABEL_ESLINT: path.join(__dirname, NODE_MODULES, 'babel-eslint'),
-  '@BABEL_ESLINT': path.join(__dirname, NODE_MODULES, '@babel/eslint-parser'),
-  TYPESCRIPT_ESLINT: path.join(__dirname, NODE_MODULES, 'typescript-eslint-parser'),
-  '@TYPESCRIPT_ESLINT': path.join(__dirname, NODE_MODULES, '@typescript-eslint/parser'),
+  BABEL_ESLINT: require.resolve('babel-eslint'),
+  '@BABEL_ESLINT': require.resolve('@babel/eslint-parser'),
+  TYPESCRIPT_ESLINT: require.resolve('typescript-eslint-parser'),
+  '@TYPESCRIPT_ESLINT': require.resolve('@typescript-eslint/parser'),
   disableNewTS,
   skipDueToMultiErrorSorting: semver.satisfies(process.versions.node, '^8 || ^9'),
   babelParserOptions: function parserOptions(test, features) {
