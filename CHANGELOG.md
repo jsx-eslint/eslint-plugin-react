@@ -18,6 +18,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * `linkAttribute` setting, [`jsx-no-target-blank`]: support multiple properties ([#3673][] @burtek)
 * [`jsx-no-script-url`]: add `includeFromSettings` option to support `linkAttributes` setting ([#3673][] @burtek)
 * [`jsx-one-expression-per-line`]: add `non-jsx` option to allow non-JSX children in one line ([#3677][] @burtek)
+* add [`checked-requires-onchange-or-readonly`] rule ([#3680][] @jaesoekjjang)
 
 ### Fixed
 * [`jsx-no-leaked-render`]: preserve RHS parens for multiline jsx elements while fixing ([#3623][] @akulsr0)
@@ -36,6 +37,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`iframe-missing-sandbox`]: fix link to iframe attribute on mdn ([#3690][] @nnmrts)
 
 [#3690]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3690
+[#3680]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3680
 [#3679]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3679
 [#3677]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3677
 [#3675]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3675
@@ -4140,6 +4142,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 
 [`boolean-prop-naming`]: docs/rules/boolean-prop-naming.md
 [`button-has-type`]: docs/rules/button-has-type.md
+[`checked-requires-onchange-or-readonly`]: docs/rules/checked-requires-onchange-or-readonly.md
 [`default-props-match-prop-types`]: docs/rules/default-props-match-prop-types.md
 [`destructuring-assignment`]: docs/rules/destructuring-assignment.md
 [`display-name`]: docs/rules/display-name.md
