@@ -65,6 +65,24 @@ Use `disallowedFor` as an exclusion list to warn on props for specific component
 }
 ```
 
+You may also use a regex for either the allowList or disallowList:
+
+```js
+{
+  "propName": "someProp",
+  "allowedForRegex": "^Icon24[A-Z]",
+  "message": "Avoid using someProp except for Icons"
+}
+```
+
+```js
+{
+  "propName": "someProp",
+  "disallowedForRegex": "^Icon24[A-Z]",
+  "message": "Avoid using someProp for Icons"
+}
+```
+
 ### Related rules
 
 - [forbid-dom-props](./forbid-dom-props.md)
