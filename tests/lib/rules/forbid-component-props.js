@@ -248,6 +248,43 @@ ruleTester.run('forbid-component-props', rule, {
         },
       ],
     },
+    {
+      code: `
+        const item = (<Foo className="foo" />);
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              allowedForRegex: '^Fo{2}$',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        const item = (
+          <Parent className="foo">
+            <ThingOne className="bar">
+              <ThingTwo className="baz" />
+            </ThingOne>
+          </Parent>
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              allowedFor: ['Parent'],
+              allowedForRegex: '^Thing',
+            },
+          ],
+        },
+      ],
+    },
   ]),
 
   invalid: parsers.all([
@@ -562,6 +599,42 @@ ruleTester.run('forbid-component-props', rule, {
         },
         {
           message: 'Avoid using option',
+          line: 4,
+          column: 18,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const item = () => (
+          <Foo className="foo">
+            <Bar className="bar" />
+          </Foo>
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedFor: ['Foo'],
+              disallowedForRegex: '^B',
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'className' },
+          line: 3,
+          column: 16,
+          type: 'JSXAttribute',
+        },
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'className' },
           line: 4,
           column: 18,
           type: 'JSXAttribute',
