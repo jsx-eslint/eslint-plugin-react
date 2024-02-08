@@ -641,5 +641,33 @@ ruleTester.run('forbid-component-props', rule, {
         },
       ],
     },
+    {
+      code: `
+        const item = () => (
+          <Foo className="foo">
+            <Bar className="bar" />
+          </Foo>
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedForRegex: '^B',
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'className' },
+          line: 4,
+          column: 18,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
   ]),
 });
