@@ -33,7 +33,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] [`jsx-props-no-multi-spaces`]: extract type parameters to var ([#3634][] @HenryBrown0)
 * [Docs] [`jsx-key`]: fix correct example ([#3656][] @developer-bandi)
 * [Tests] `jsx-wrap-multilines`: passing tests ([#3545][] @burtek)
+* [Docs] [`iframe-missing-sandbox`]: fix link to iframe attribute on mdn ([#3690][] @nnmrts)
 
+[#3690]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3690
 [#3679]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3679
 [#3677]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3677
 [#3675]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3675
