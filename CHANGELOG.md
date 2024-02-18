@@ -30,6 +30,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`forbid-elements`]: prevent a crash on `createElement()` ([#3632][] @ljharb)
 
 ### Changed
+* [`jsx-boolean-value`]: make error messages clearer ([#3691][] @developer-bandi)
 * [Refactor] `propTypes`: extract type params to var ([#3634][] @HenryBrown0)
 * [Refactor] [`boolean-prop-naming`]: invert if statement ([#3634][] @HenryBrown0)
 * [Refactor] [`function-component-definition`]: exit early if no type params ([#3634][] @HenryBrown0)
@@ -40,6 +41,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`hook-use-state`]: fix an undefined variable ([#3626][] @chentsulin)
 
 [#3697]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3697
+[#3691]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3691
 [#3690]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3690
 [#3680]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3680
 [#3679]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3679
