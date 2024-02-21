@@ -4,7 +4,7 @@ const config = {
     ['jsx-runtime', '🏃'],
     ['recommended', '☑️'],
   ],
-  ignoreConfig: ['all'],
+  ignoreConfig: ['all', 'flat'],
   urlConfigs: 'https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs',
 };
 

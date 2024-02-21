@@ -1,18 +1,13 @@
 'use strict';
 
-const all = require('./all');
+const plugin = require('..');
 
-module.exports = Object.assign({}, all, {
-  languageOptions: Object.assign({}, all.languageOptions, {
-    parserOptions: Object.assign({}, all.languageOptions.parserOptions, {
-      jsxPragma: null, // for @typescript/eslint-parser
-    }),
-  }),
-  rules: {
-    'react/react-in-jsx-scope': 0,
-    'react/jsx-uses-react': 0,
-  },
-});
+const legacyConfig = plugin.configs['jsx-runtime'];
 
-// this is so the `languageOptions` property won't be warned in the new config system
+module.exports = {
+  plugins: { react: plugin },
+  rules: legacyConfig.rules,
+  languageOptions: { parserOptions: legacyConfig.parserOptions },
+};
+
 Object.defineProperty(module.exports, 'languageOptions', { enumerable: false });
