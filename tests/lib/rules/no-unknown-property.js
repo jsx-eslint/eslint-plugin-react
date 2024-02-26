@@ -46,7 +46,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<div onMouseDown={this._onMouseDown}></div>;' },
     { code: '<a href="someLink" download="foo">Read more</a>' },
     { code: '<area download="foo" />' },
-    { code: '<img src="cat_keyboard.jpeg" alt="A cat sleeping on a keyboard" align="top" />' },
+    { code: '<img src="cat_keyboard.jpeg" alt="A cat sleeping on a keyboard" align="top" fetchPriority="high" />' },
     { code: '<input type="password" required />' },
     { code: '<input ref={this.input} type="radio" />' },
     { code: '<input type="file" webkitdirectory="" />' },

@@ -26,6 +26,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-newline`]: prevent a crash when `allowMultilines ([#3633][] @ljharb)
 * [`no-unknown-property`]: use a better regex to avoid a crash ([#3666][] @ljharb @SCH227)
 * [`prop-types`]: handle nested forwardRef + memo ([#3679][] @developer-bandi)
+* [`no-unknown-property`]: add `fetchPriority` ([#3697][] @SevereCloud)
 
 ### Changed
 * [Refactor] `propTypes`: extract type params to var ([#3634][] @HenryBrown0)
@@ -37,6 +38,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`iframe-missing-sandbox`]: fix link to iframe attribute on mdn ([#3690][] @nnmrts)
 * [Docs] [`hook-use-state`]: fix an undefined variable ([#3626][] @chentsulin)
 
+[#3697]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3697
 [#3690]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3690
 [#3680]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3680
 [#3679]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3679
