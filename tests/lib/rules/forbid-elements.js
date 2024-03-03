@@ -82,6 +82,9 @@ ruleTester.run('forbid-elements', rule, {
       code: 'React.createElement(1)',
       options: [{ forbid: ['button'] }],
     },
+    {
+      code: 'React.createElement()',
+    },
   ]),
 
   invalid: parsers.all([

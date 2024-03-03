@@ -27,6 +27,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: use a better regex to avoid a crash ([#3666][] @ljharb @SCH227)
 * [`prop-types`]: handle nested forwardRef + memo ([#3679][] @developer-bandi)
 * [`no-unknown-property`]: add `fetchPriority` ([#3697][] @SevereCloud)
+* [`forbid-elements`]: prevent a crash on `createElement()` ([#3632][] @ljharb)
 
 ### Changed
 * [Refactor] `propTypes`: extract type params to var ([#3634][] @HenryBrown0)
@@ -56,6 +57,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3638]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3638
 [#3634]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3634
 [#3633]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3633
+[#3632]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3632
 [#3630]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3630
 [#3626]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3626
 [#3623]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3623
