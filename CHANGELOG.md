@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.34.0] - 2024.03.03
+
 ### Added
 * [`sort-prop-types`]: give errors on TS types ([#3615][] @akulsr0)
 * [`no-invalid-html-attribute`]: add support for `apple-touch-startup-image` `rel` attributes in `link` tags ([#3638][] @thomashockaday)
@@ -40,6 +42,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`iframe-missing-sandbox`]: fix link to iframe attribute on mdn ([#3690][] @nnmrts)
 * [Docs] [`hook-use-state`]: fix an undefined variable ([#3626][] @chentsulin)
 
+[7.34.0]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.33.2...v7.34.0
 [#3697]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3697
 [#3691]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3691
 [#3690]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3690
