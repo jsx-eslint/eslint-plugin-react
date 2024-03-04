@@ -39,7 +39,7 @@ jobs:
           - 8
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: ljharb/actions/node/install@main
         name: 'nvm install ${{ matrix.node-version }} && npm install'
         with:
@@ -50,7 +50,7 @@ jobs:
           NPM_CONFIG_LEGACY_PEER_DEPS: true
       - run: npx ls-engines
       - run: npm run unit-test
-      - uses: codecov/codecov-action@v3
+      - uses: codecov/codecov-action@v3.1.5
 
   node:
     name: 'node 18+'

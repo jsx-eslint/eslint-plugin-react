@@ -4,12 +4,6 @@ on: [pull_request_target]
 
 jobs:
   _:
-    name: "Automatic Rebase"
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    - uses: ljharb/rebase@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    uses: ljharb/actions/.github/workflows/rebase.yml@main
+    secrets:
+      token: ${{ secrets.GITHUB_TOKEN }}

@@ -15,7 +15,7 @@ jobs:
     outputs:
       is-new-version: ${{ steps.cpv.outputs.is-new-version }}
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.tag }}
 
@@ -103,7 +103,7 @@ jobs:
             prod.api.stepsecurity.io:443
             registry.npmjs.org:443
 
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.inputs.tag }}
 
