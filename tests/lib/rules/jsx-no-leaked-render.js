@@ -733,6 +733,24 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         }
       `,
     },
+    {
+      code: `
+        const Component = ({ connection, hasError, hasErrorUpdate}) => {
+          return <div>{connection && (hasError || hasErrorUpdate)}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+      output: `
+        const Component = ({ connection, hasError, hasErrorUpdate}) => {
+          return <div>{!!connection && (hasError || hasErrorUpdate)}</div>
+        }
+      `,
+    },
 
     // cases: ternary isn't valid if strategy is only "coerce"
     {
