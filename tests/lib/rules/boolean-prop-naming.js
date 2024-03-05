@@ -1239,5 +1239,20 @@ ruleTester.run('boolean-prop-naming', rule, {
         },
       ],
     },
+    {
+      code: `
+        interface TestFNType {
+          enabled: boolean
+        }
+        const HelloNew = (props: TestFNType) => { return <div /> };
+    `,
+      options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['ts', 'no-babel'],
+      errors: [
+        {
+          message: 'Prop name (enabled) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)',
+        },
+      ],
+    },
   ]),
 });
