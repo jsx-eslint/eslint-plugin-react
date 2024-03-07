@@ -1254,5 +1254,15 @@ ruleTester.run('boolean-prop-naming', rule, {
         },
       ],
     },
+    {
+      code: 'const Hello = (props: {enabled:boolean}) => <div />;',
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['ts', 'no-babel'],
+      errors: [
+        {
+          message: 'Prop name (enabled) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
+        },
+      ],
+    },
   ]),
 });

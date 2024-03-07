@@ -8,7 +8,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`jsx-no-leaked-render`]: prevent wrongly adding parens ([#3700][] @developer-bandi)
 * [`boolean-prop-naming`]: detect TS interfaces ([#3701][] @developer-bandi)
+* [`boolean-prop-naming`]: literalType error fix ([#3704][] @developer-bandi)
 
+[#3704]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3704
 [#3701]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3701
 [#3700]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3700
 
