@@ -1245,7 +1245,7 @@ ruleTester.run('boolean-prop-naming', rule, {
           enabled: boolean
         }
         const HelloNew = (props: TestFNType) => { return <div /> };
-    `,
+      `,
       options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
       features: ['ts', 'no-babel'],
       errors: [
@@ -1261,6 +1261,28 @@ ruleTester.run('boolean-prop-naming', rule, {
       errors: [
         {
           message: 'Prop name (enabled) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          enabled: boolean
+        }
+        type BaseProps = {
+          semi: boolean
+        }
+        
+        const Hello = (props: Props & BaseProps) => <div />;
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['ts', 'no-babel', 'no-ts-old'],
+      errors: [
+        {
+          message: 'Prop name (enabled) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
+        },
+        {
+          message: 'Prop name (semi) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
         },
       ],
     },
