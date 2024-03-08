@@ -1106,12 +1106,16 @@ ruleTester.run('boolean-prop-naming', rule, {
           enabled: boolean
         }
         const HelloNew = (props: TestConstType) => { return <div /> };
-    `,
+      `,
       options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
       features: ['ts', 'no-ts-old'],
       errors: [
         {
-          message: 'Prop name (enabled) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)',
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^is[A-Z]([A-Za-z0-9]?)+',
+          },
         },
       ],
     },
@@ -1121,12 +1125,16 @@ ruleTester.run('boolean-prop-naming', rule, {
           enabled: boolean
         }
         const HelloNew = (props: TestFNType) => { return <div /> };
-    `,
+      `,
       options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
       features: ['ts', 'no-ts-old'],
       errors: [
         {
-          message: 'Prop name (enabled) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)',
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^is[A-Z]([A-Za-z0-9]?)+',
+          },
         },
       ],
     },
@@ -1142,7 +1150,11 @@ ruleTester.run('boolean-prop-naming', rule, {
       features: ['types', 'no-ts-old'],
       errors: [
         {
-          message: 'Prop name (enabled) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)',
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^is[A-Z]([A-Za-z0-9]?)+',
+          },
         },
       ],
     },
@@ -1160,7 +1172,11 @@ ruleTester.run('boolean-prop-naming', rule, {
       features: ['types', 'no-ts-old'],
       errors: [
         {
-          message: 'Prop name (enabled) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
         },
       ],
     },
@@ -1176,7 +1192,11 @@ ruleTester.run('boolean-prop-naming', rule, {
       features: ['types', 'no-ts-old'],
       errors: [
         {
-          message: 'Prop name (enabled) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)',
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^is[A-Z]([A-Za-z0-9]?)+',
+          },
         },
       ],
     },
@@ -1194,7 +1214,11 @@ ruleTester.run('boolean-prop-naming', rule, {
       features: ['types', 'no-ts-old'],
       errors: [
         {
-          message: 'Prop name (enabled) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
         },
       ],
     },
@@ -1212,7 +1236,11 @@ ruleTester.run('boolean-prop-naming', rule, {
       features: ['types', 'no-ts-old'],
       errors: [
         {
-          message: 'Prop name (enabled) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
         },
       ],
     },
@@ -1232,10 +1260,18 @@ ruleTester.run('boolean-prop-naming', rule, {
       features: ['types', 'no-ts-old'],
       errors: [
         {
-          message: 'Prop name (enabled) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
         },
         {
-          message: 'Prop name (lol) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'lol',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
         },
       ],
     },
@@ -1250,7 +1286,11 @@ ruleTester.run('boolean-prop-naming', rule, {
       features: ['ts', 'no-babel'],
       errors: [
         {
-          message: 'Prop name (enabled) doesn\'t match rule (^is[A-Z]([A-Za-z0-9]?)+)',
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^is[A-Z]([A-Za-z0-9]?)+',
+          },
         },
       ],
     },
@@ -1260,7 +1300,11 @@ ruleTester.run('boolean-prop-naming', rule, {
       features: ['ts', 'no-babel'],
       errors: [
         {
-          message: 'Prop name (enabled) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
         },
       ],
     },
@@ -1272,17 +1316,25 @@ ruleTester.run('boolean-prop-naming', rule, {
         type BaseProps = {
           semi: boolean
         }
-        
+
         const Hello = (props: Props & BaseProps) => <div />;
       `,
       options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
       features: ['ts', 'no-babel', 'no-ts-old'],
       errors: [
         {
-          message: 'Prop name (enabled) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
         },
         {
-          message: 'Prop name (semi) doesn\'t match rule (^(is|has)[A-Z]([A-Za-z0-9]?)+)',
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'semi',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
         },
       ],
     },

@@ -11,6 +11,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`boolean-prop-naming`]: literalType error fix ([#3704][] @developer-bandi)
 * [`boolean-prop-naming`]: allow TSIntersectionType ([#3705][] @developer-bandi)
 
+### Changed
+* [`boolean-prop-naming`]: improve error message (@ljharb)
+
 [#3705]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3705
 [#3704]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3704
 [#3701]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3701
