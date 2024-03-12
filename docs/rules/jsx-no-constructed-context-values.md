@@ -8,7 +8,7 @@ This rule prevents non-stable values (i.e. object identities) from being used as
 
 One way to resolve this issue may be to wrap the value in a `useMemo()`. If it's a function then `useCallback()` can be used as well.
 
-If you _expect_ the context to be rerun on each render, then consider adding a comment/lint supression explaining why.
+If you _expect_ the context to be rerun on each render, then consider adding a comment/lint suppression explaining why.
 
 ## Examples
 
