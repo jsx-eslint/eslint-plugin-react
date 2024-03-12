@@ -10,10 +10,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`boolean-prop-naming`]: detect TS interfaces ([#3701][] @developer-bandi)
 * [`boolean-prop-naming`]: literalType error fix ([#3704][] @developer-bandi)
 * [`boolean-prop-naming`]: allow TSIntersectionType ([#3705][] @developer-bandi)
+* [`no-unknown-property`]: support `popover`, `popovertarget`, `popovertargetaction` attributes ([#3707][] @ljharb)
 
 ### Changed
 * [`boolean-prop-naming`]: improve error message (@ljharb)
 
+[#3707]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3707
 [#3705]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3705
 [#3704]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3704
 [#3701]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3701
