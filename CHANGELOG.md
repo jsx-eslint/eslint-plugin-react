@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.34.1] - 2024.03.15
+
 ### Fixed
 * [`jsx-no-leaked-render`]: prevent wrongly adding parens ([#3700][] @developer-bandi)
 * [`boolean-prop-naming`]: detect TS interfaces ([#3701][] @developer-bandi)
@@ -17,6 +19,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Changed
 * [`boolean-prop-naming`]: improve error message (@ljharb)
 
+[7.34.1]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.34.0...v7.34.1
 [#3715]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3715
 [#3713]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3713
 [#3707]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3707
