@@ -12,10 +12,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`boolean-prop-naming`]: allow TSIntersectionType ([#3705][] @developer-bandi)
 * [`no-unknown-property`]: support `popover`, `popovertarget`, `popovertargetaction` attributes ([#3707][] @ljharb)
 * [`no-unknown-property`]: only match `data-*` attributes containing `-` ([#3713][] @silverwind)
+* [`checked-requires-onchange-or-readonly`]: correct options that were behaving opposite ([#3715][] @jaesoekjjang)
 
 ### Changed
 * [`boolean-prop-naming`]: improve error message (@ljharb)
 
+[#3715]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3715
 [#3713]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3713
 [#3707]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3707
 [#3705]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3705

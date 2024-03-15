@@ -40,19 +40,23 @@ ruleTester.run('checked-requires-onchange-or-readonly', rule, {
     "React.createElement('input', { checked: foo, onChange: noop, readOnly: true })",
     {
       code: '<input type="checkbox" checked />',
-      options: [{ ignoreMissingProperties: false }],
+      options: [{ ignoreMissingProperties: true }],
     },
     {
       code: '<input type="checkbox" checked={true} />',
-      options: [{ ignoreMissingProperties: false }],
+      options: [{ ignoreMissingProperties: true }],
     },
     {
       code: '<input type="checkbox" onChange={noop} checked defaultChecked />',
-      options: [{ ignoreExclusiveCheckedAttribute: false }],
+      options: [{ ignoreExclusiveCheckedAttribute: true }],
     },
     {
       code: '<input type="checkbox" onChange={noop} checked={true} defaultChecked />',
-      options: [{ ignoreExclusiveCheckedAttribute: false }],
+      options: [{ ignoreExclusiveCheckedAttribute: true }],
+    },
+    {
+      code: '<input type="checkbox" onChange={noop} checked defaultChecked />',
+      options: [{ ignoreMissingProperties: true, ignoreExclusiveCheckedAttribute: true }],
     },
     '<span/>',
     "React.createElement('span')",
@@ -99,13 +103,21 @@ ruleTester.run('checked-requires-onchange-or-readonly', rule, {
     },
     {
       code: '<input type="checkbox" checked defaultChecked />',
-      options: [{ ignoreMissingProperties: false }],
+      options: [{ ignoreMissingProperties: true }],
       errors: [{ messageId: 'exclusiveCheckedAttribute' }],
     },
     {
       code: '<input type="checkbox" checked defaultChecked />',
-      options: [{ ignoreExclusiveCheckedAttribute: false }],
+      options: [{ ignoreExclusiveCheckedAttribute: true }],
       errors: [{ messageId: 'missingProperty' }],
+    },
+    {
+      code: '<input type="checkbox" checked defaultChecked />',
+      options: [{ ignoreMissingProperties: false, ignoreExclusiveCheckedAttribute: false }],
+      errors: [
+        { messageId: 'exclusiveCheckedAttribute' },
+        { messageId: 'missingProperty' },
+      ],
     },
   ]),
 });
