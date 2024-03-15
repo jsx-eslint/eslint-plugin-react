@@ -38,7 +38,7 @@ React.createElement('input', { type: 'checkbox', defaultChecked: true });
 
 ```js
 "react/checked-requires-onchange-or-readonly": [<enabled>, {
-  "ignoreMissingProperties": <boolean>,
-  "ignoreExclusiveCheckedAttribute": <boolean>
+  "noMissingProperties": <boolean>,
+  "noExclusiveCheckedAttribute": <boolean>
 }]
 ```

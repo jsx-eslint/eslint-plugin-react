@@ -40,19 +40,19 @@ ruleTester.run('checked-requires-onchange-or-readonly', rule, {
     "React.createElement('input', { checked: foo, onChange: noop, readOnly: true })",
     {
       code: '<input type="checkbox" checked />',
-      options: [{ ignoreMissingProperties: false }],
+      options: [{ noMissingProperties: false }],
     },
     {
       code: '<input type="checkbox" checked={true} />',
-      options: [{ ignoreMissingProperties: false }],
+      options: [{ noMissingProperties: false }],
     },
     {
       code: '<input type="checkbox" onChange={noop} checked defaultChecked />',
-      options: [{ ignoreExclusiveCheckedAttribute: false }],
+      options: [{ noExclusiveCheckedAttribute: false }],
     },
     {
       code: '<input type="checkbox" onChange={noop} checked={true} defaultChecked />',
-      options: [{ ignoreExclusiveCheckedAttribute: false }],
+      options: [{ noExclusiveCheckedAttribute: false }],
     },
     '<span/>',
     "React.createElement('span')",
@@ -99,12 +99,12 @@ ruleTester.run('checked-requires-onchange-or-readonly', rule, {
     },
     {
       code: '<input type="checkbox" checked defaultChecked />',
-      options: [{ ignoreMissingProperties: false }],
+      options: [{ noMissingProperties: false }],
       errors: [{ messageId: 'exclusiveCheckedAttribute' }],
     },
     {
       code: '<input type="checkbox" checked defaultChecked />',
-      options: [{ ignoreExclusiveCheckedAttribute: false }],
+      options: [{ noExclusiveCheckedAttribute: false }],
       errors: [{ messageId: 'missingProperty' }],
     },
   ]),
