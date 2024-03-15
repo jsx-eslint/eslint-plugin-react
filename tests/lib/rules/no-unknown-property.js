@@ -41,6 +41,10 @@ ruleTester.run('no-unknown-property', rule, {
       features: ['jsx namespace'],
     },
     { code: '<App clip-path="bar" />;' },
+    {
+      code: '<App dataNotAnDataAttribute="yes" />;',
+      options: [{ requireDataLowercase: true }],
+    },
     // Some HTML/DOM elements with common attributes should work
     { code: '<div className="bar"></div>;' },
     { code: '<div onMouseDown={this._onMouseDown}></div>;' },
@@ -603,7 +607,34 @@ ruleTester.run('no-unknown-property', rule, {
       ],
     },
     {
-      code: '<div data-testID="bar" data-under_sCoRe="bar" />;',
+      code: '<div data-testID="bar" data-under_sCoRe="bar" dataNotAnDataAttribute="yes" />;',
+      errors: [
+        {
+          messageId: 'dataLowercaseRequired',
+          data: {
+            name: 'data-testID',
+            lowerCaseName: 'data-testid',
+          },
+        },
+        {
+          messageId: 'dataLowercaseRequired',
+          data: {
+            name: 'data-under_sCoRe',
+            lowerCaseName: 'data-under_score',
+          },
+        },
+        {
+          messageId: 'unknownProp',
+          data: {
+            name: 'dataNotAnDataAttribute',
+            lowerCaseName: 'datanotandataattribute',
+          },
+        },
+      ],
+      options: [{ requireDataLowercase: true }],
+    },
+    {
+      code: '<App data-testID="bar" data-under_sCoRe="bar" dataNotAnDataAttribute="yes" />;',
       errors: [
         {
           messageId: 'dataLowercaseRequired',
