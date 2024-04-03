@@ -7,7 +7,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Added
 * export flat configs from plugin root and fix flat config crash ([#3694][] @bradzacher @mdjermanovic)
+* add [`jsx-props-no-spread-multi`] ([#3724][] @SimonSchick)
 
+[#3724]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3724
 [#3694]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3694
 
 ## [7.34.4] - 2024.07.13
@@ -4267,6 +4269,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`jsx-one-expression-per-line`]: docs/rules/jsx-one-expression-per-line.md
 [`jsx-pascal-case`]: docs/rules/jsx-pascal-case.md
 [`jsx-props-no-multi-spaces`]: docs/rules/jsx-props-no-multi-spaces.md
+[`jsx-props-no-spread-multi`]: docs/rules/jsx-props-no-spread-multi.md
 [`jsx-props-no-spreading`]: docs/rules/jsx-props-no-spreading.md
 [`jsx-props-no-spreading`]: docs/rules/jsx-props-no-spreading.md
 [`jsx-sort-default-props`]: docs/rules/jsx-sort-default-props.md
