@@ -5,12 +5,16 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## Added
+* add [`jsx-props-no-spread-multi`] ([#3724][] @SimonSchick)
+
 ### Fixed
 * [`prop-types`]: null-check rootNode before calling getScope ([#3762][] @crnhrv)
 * [`boolean-prop-naming`]: avoid a crash with a spread prop ([#3733][] @ljharb)
 * [`jsx-boolean-value`]: `assumeUndefinedIsFalse` with `never` must not allow explicit `true` value ([#3757][] @6uliver)
 * [`no-object-type-as-default-prop`]: enable rule for components with many parameters ([#3768][] @JulienR1)
 
+[#3724]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3724
 [#3768]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3768
 [#3762]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3762
 [#3757]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3757
@@ -4246,6 +4250,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`jsx-one-expression-per-line`]: docs/rules/jsx-one-expression-per-line.md
 [`jsx-pascal-case`]: docs/rules/jsx-pascal-case.md
 [`jsx-props-no-multi-spaces`]: docs/rules/jsx-props-no-multi-spaces.md
+[`jsx-props-no-spread-multi`]: docs/rules/jsx-props-no-spread-multi.md
 [`jsx-props-no-spreading`]: docs/rules/jsx-props-no-spreading.md
 [`jsx-props-no-spreading`]: docs/rules/jsx-props-no-spreading.md
 [`jsx-sort-default-props`]: docs/rules/jsx-sort-default-props.md
