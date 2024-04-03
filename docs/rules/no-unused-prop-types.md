@@ -1,5 +1,7 @@
 # Disallow definitions of unused propTypes (`react/no-unused-prop-types`)
 
+🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
+
 <!-- end auto-generated rule header -->
 
 Warns if a prop with a defined type isn't being used.
