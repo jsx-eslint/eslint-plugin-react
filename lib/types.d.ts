@@ -13,7 +13,10 @@ declare global {
   type JSXFragment = ASTNode;
   type JSXSpreadAttribute = ASTNode;
 
-  type Context = eslint.Rule.RuleContext
+  type SourceCode = eslint.SourceCode & {
+    getScope: (node: ASTNode) => Scope | null;
+  };
+  type Context = eslint.Rule.RuleContext & { sourceCode?: SourceCode };
 
   type TypeDeclarationBuilder = (annotation: ASTNode, parentName: string, seen: Set<typeof annotation>) => object;
 
