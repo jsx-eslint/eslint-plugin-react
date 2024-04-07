@@ -5,7 +5,18 @@ declare global {
   interface ASTNode extends estree.BaseNode {
     [_: string]: any; // TODO: fixme
   }
-  type Scope = eslint.Scope.Scope;
+  interface Reference extends eslint.Scope.Reference {
+    identifier: eslint.Scope.Reference['identifier'] & { parent?: ASTNode };
+  }
+  interface Variable extends eslint.Scope.Variable {
+    references: Reference[]
+  }
+  interface Scope extends eslint.Scope.Scope {
+    block: estree.Node & ASTNode;
+    variableScope: Scope
+    childScopes: Scope[]
+    variables: Variable[]
+  }
   type Token = eslint.AST.Token;
   type Fixer = eslint.Rule.RuleFixer;
   type JSXAttribute = ASTNode;
