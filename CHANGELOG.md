@@ -7,6 +7,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ## Unreleased
 
 ### Added
+* [`async-server-action`]: add rule ([#3729][] @jorgezreik)
 * [`jsx-props-no-multi-spaces`]: improve autofix for multi-line ([#3930][] @justisb)
 * [`jsx-handler-names`]: support namespaced component names ([#3943][] @takuji)
 * [`jsx-no-leaked-render`]: add `ignoreAttributes` option ([#3441][] @aleclarson)
@@ -34,6 +35,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3928]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3928
 [#3923]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3923
 [#3441]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3441
+[#3729]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3729
 
 ## [7.37.5] - 2025.04.03
 
@@ -265,6 +267,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: support `popover`, `popovertarget`, `popovertargetaction` attributes ([#3707][] @ljharb)
 * [`no-unknown-property`]: only match `data-*` attributes containing `-` ([#3713][] @silverwind)
 * [`checked-requires-onchange-or-readonly`]: correct options that were behaving opposite ([#3715][] @jaesoekjjang)
+* [`boolean-prop-naming`]: avoid a crash with a non-TSTypeReference type ([#3718][] @developer-bandi)
 
 ### Changed
 * [`boolean-prop-naming`]: improve error message (@ljharb)
