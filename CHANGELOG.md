@@ -19,6 +19,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Tests] add @typescript-eslint/parser v7 and v8 ([#3629][] @hampustagerud)
 * [Docs] [`no-danger`]: update broken link ([#3817][] @lucasrmendonca)
 * [types] add jsdoc type annotations ([#3731][] @y-hsgw)
+* [Tests] `button-has-type`: add test case with spread ([#3731][] @y-hsgw)
 
 [#3632]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3632
 

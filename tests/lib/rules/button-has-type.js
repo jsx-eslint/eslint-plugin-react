@@ -305,6 +305,12 @@ ruleTester.run('button-has-type', rule, {
       ],
     },
     {
+      code: 'React.createElement("button", {...extraProps})',
+      errors: [
+        { messageId: 'missingType' },
+      ],
+    },
+    {
       code: 'Foo.createElement("button")',
       errors: [
         { messageId: 'missingType' },
