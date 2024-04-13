@@ -1312,12 +1312,41 @@ ruleTester.run('boolean-prop-naming', rule, {
       code: `
         type Props = {
           enabled: boolean
-        }
+        };
         type BaseProps = {
           semi: boolean
-        }
+        };
 
         const Hello = (props: Props & BaseProps) => <div />;
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['ts', 'no-babel', 'no-ts-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
+        },
+        {
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'semi',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          enabled: boolean
+        };
+
+        const Hello = (props: Props & {
+          semi: boolean
+        }) => <div />;
       `,
       options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
       features: ['ts', 'no-babel', 'no-ts-old'],
