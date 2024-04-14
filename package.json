@@ -78,7 +78,7 @@
     "typescript-eslint-parser": "^20.1.1"
   },
   "peerDependencies": {
-    "eslint": "^3 || ^4 || ^5 || ^6 || ^7 || ^8"
+    "eslint": "^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9"
   },
   "engines": {
     "node": ">=4"
