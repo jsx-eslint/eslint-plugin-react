@@ -16,6 +16,7 @@ declare global {
     variableScope: Scope
     childScopes: Scope[]
     variables: Variable[]
+    upper: Scope | null
   }
   type Token = eslint.AST.Token;
   type Fixer = eslint.Rule.RuleFixer;
@@ -26,6 +27,7 @@ declare global {
 
   type SourceCode = eslint.SourceCode & {
     getScope: (node: ASTNode) => Scope | null;
+    getAncestors: (node: ASTNode) => ASTNode[];
   };
   type Context = eslint.Rule.RuleContext & { sourceCode?: SourceCode };
 
