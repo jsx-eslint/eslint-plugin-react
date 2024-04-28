@@ -12,11 +12,13 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/function-component-definition');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -26,7 +28,7 @@ const parsers = require('../../helpers/parsers');
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('function-component-definition', rule, {
   valid: parsers.all([
     {

@@ -11,14 +11,16 @@ const rule = require('../../../lib/rules/no-unused-state');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
-const eslintTester = new RuleTester({ parserOptions });
+const eslintTester = new RuleTester({ languageOptions });
 
 function getErrorMessages(unusedFields) {
   return unusedFields.map((field) => ({
@@ -1058,7 +1060,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions: {
+      languageOptions: {
         sourceType: 'module',
       },
     },
@@ -1092,7 +1094,7 @@ eslintTester.run('no-unused-state', rule, {
         export default TestNoUnusedState;
       `,
       features: ['class fields'],
-      parserOptions: {
+      languageOptions: {
         sourceType: 'module',
       },
     },

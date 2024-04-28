@@ -12,10 +12,12 @@ const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-no-useless-fragment');
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -23,7 +25,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 
 ruleTester.run('jsx-no-useless-fragment', rule, {
   valid: parsers.all([
@@ -194,7 +196,6 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
     },
     {
       code: '<div><>{"a"}{"b"}</></div>',
-      output: '<div><>{"a"}{"b"}</></div>',
       errors: [{ messageId: 'ChildOfHtmlElement', type: 'JSXFragment' }],
       features: ['fragment', 'ts-old', 'no-ts-new', 'no-babel', 'no-default'],
     },

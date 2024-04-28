@@ -14,11 +14,13 @@ const rule = require('../../../lib/rules/jsx-first-prop-new-line');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   jsx: true,
 };
@@ -27,7 +29,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('jsx-first-prop-new-line', rule, {
   valid: parsers.all([
     {

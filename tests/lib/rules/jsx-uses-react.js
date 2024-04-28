@@ -16,11 +16,13 @@ const RuleTester = eslint.RuleTester;
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -34,7 +36,7 @@ const settings = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 const linter = ruleTester.linter || eslint.linter || eslint.Linter;
 linter.defineRule('jsx-uses-react', require('../../../lib/rules/jsx-uses-react'));
 

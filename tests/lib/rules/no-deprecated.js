@@ -16,11 +16,13 @@ const rule = require('../../../lib/rules/no-deprecated');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -42,7 +44,7 @@ function errorMessage(oldMethod, version, newMethod, refs, extraProps) {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('no-deprecated', rule, {
   valid: parsers.all([
     // Not deprecated

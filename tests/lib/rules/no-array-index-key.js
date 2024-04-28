@@ -13,11 +13,13 @@ const RuleTester = require('eslint').RuleTester;
 const parsers = require('../../helpers/parsers');
 const rule = require('../../../lib/rules/no-array-index-key');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -25,7 +27,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('no-array-index-key', rule, {
   valid: parsers.all(
     { code: '<Foo key="foo" />;' },

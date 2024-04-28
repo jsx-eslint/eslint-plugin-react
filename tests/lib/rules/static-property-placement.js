@@ -19,7 +19,7 @@ const PROPERTY_ASSIGNMENT = 'property assignment';
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/static-property-placement');
 
-const parsers = require('../../helpers/parsers');
+const parsers = require('../../helpers/parsers-old');
 
 const ruleTesterConfig = {
   parserOptions: {

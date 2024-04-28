@@ -5,15 +5,17 @@ const rule = require('../../../lib/rules/jsx-child-element-spacing');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   sourceType: 'module',
   ecmaVersion: 2015,
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('jsx-child-element-spacing', rule, {
   valid: parsers.all([
     {

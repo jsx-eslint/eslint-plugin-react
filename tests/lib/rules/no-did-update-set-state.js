@@ -14,11 +14,13 @@ const rule = require('../../../lib/rules/no-did-update-set-state');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -228,7 +230,7 @@ const invalid = [
   },
 ];
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('no-did-update-set-state', rule, {
   valid: parsers.all([].concat(
     {

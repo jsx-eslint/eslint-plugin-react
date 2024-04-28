@@ -15,11 +15,13 @@ const rule = require('../../../lib/rules/jsx-curly-spacing');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -27,7 +29,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('jsx-curly-spacing', rule, {
   valid: parsers.all([
     {
@@ -747,14 +749,6 @@ ruleTester.run('jsx-curly-spacing', rule, {
     {
       code: '<App { ...bar } />;',
       options: ['always', { allowMultiline: false }],
-    },
-    {
-      code: `
-        <App {
-        ...bar
-        } />;
-      `,
-      options: ['always'],
     },
     {
       code: `

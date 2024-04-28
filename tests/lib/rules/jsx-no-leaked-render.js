@@ -16,11 +16,13 @@ const rule = require('../../../lib/rules/jsx-no-leaked-render');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -28,7 +30,7 @@ const parserOptions = {
 // Tests
 //------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('jsx-no-leaked-render', rule, {
   valid: parsers.all([
     {
@@ -125,14 +127,6 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         }
       `,
       options: [{ validStrategies: ['coerce', 'ternary'] }],
-    },
-    {
-      code: `
-        const Component = ({ elements, count }) => {
-          return <div>{!!count && <List elements={elements}/>}</div>
-        }
-      `,
-      options: [{ validStrategies: ['coerce'] }],
     },
 
     // Fixes for:

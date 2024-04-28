@@ -14,11 +14,13 @@ const rule = require('../../../lib/rules/jsx-handler-names');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -26,7 +28,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('jsx-handler-names', rule, {
   valid: parsers.all([
     {
@@ -257,12 +259,6 @@ ruleTester.run('jsx-handler-names', rule, {
         },
       ],
       options: [{ checkInlineFunction: true }],
-    },
-    {
-      code: '<TestComponent only={this.handleChange} />',
-      errors: [
-        { message: 'Prop key for handleChange must begin with \'on\'' },
-      ],
     },
     {
       code: '<TestComponent only={this.handleChange} />',

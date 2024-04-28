@@ -16,10 +16,12 @@ const RuleTester = eslint.RuleTester;
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   jsxPragma: null,
 };
@@ -28,7 +30,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 const linter = ruleTester.linter || eslint.linter || eslint.Linter;
 linter.defineRule('no-undef', require('../../helpers/getESLintCoreRule')('no-undef'));
 
@@ -80,7 +82,7 @@ ruleTester.run('jsx-no-undef', rule, {
           );
         };
       `,
-      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
+      languageOptions: Object.assign({ sourceType: 'module' }, languageOptions),
       options: [{ allowGlobals: false }],
     },
   ].map(parsers.disableNewTS)),
@@ -131,7 +133,7 @@ ruleTester.run('jsx-no-undef', rule, {
         };
         export default TextWrapper;
       `,
-      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
+      languageOptions: Object.assign({ sourceType: 'module' }, languageOptions),
       errors: [
         {
           messageId: 'undefined',

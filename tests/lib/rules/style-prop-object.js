@@ -14,11 +14,13 @@ const rule = require('../../../lib/rules/style-prop-object');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -26,7 +28,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('style-prop-object', rule, {
   valid: parsers.all([
     {
@@ -95,7 +97,7 @@ ruleTester.run('style-prop-object', rule, {
         const styles = Object.assign({ color: 'red' }, mystyles);
         React.createElement("div", { style: styles });
       `,
-      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
+      languageOptions: Object.assign({ sourceType: 'module' }, languageOptions),
     },
     {
       code: '<div style></div>',

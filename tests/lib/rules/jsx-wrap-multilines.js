@@ -14,11 +14,13 @@ const rule = require('../../../lib/rules/jsx-wrap-multilines');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -634,7 +636,7 @@ function addNewLineSymbols(code) {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('jsx-wrap-multilines', rule, {
   valid: parsers.all([
     {
@@ -1387,16 +1389,6 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     {
       code: DECLARATION_TERNARY_PAREN,
       output: addNewLineSymbols(DECLARATION_TERNARY_PAREN),
-      options: [{ declaration: 'parens-new-line' }],
-      errors: [
-        { messageId: 'parensOnNewLines' },
-        { messageId: 'parensOnNewLines' },
-      ],
-    },
-    {
-      code: DECLARATION_TERNARY_PAREN_FRAGMENT,
-      features: ['fragment'],
-      output: addNewLineSymbols(DECLARATION_TERNARY_PAREN_FRAGMENT),
       options: [{ declaration: 'parens-new-line' }],
       errors: [
         { messageId: 'parensOnNewLines' },

@@ -20,11 +20,13 @@ const rule = require('../../../lib/rules/no-unused-prop-types');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -38,7 +40,7 @@ const settings = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('no-unused-prop-types', rule, {
   valid: parsers.all([
     {
@@ -2509,7 +2511,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           bar: PropTypes.func,
         }
       `,
-      parserOptions: Object.assign({}, parserOptions, { ecmaVersion: 2017 }),
+      languageOptions: Object.assign({}, languageOptions, { ecmaVersion: 2017 }),
     },
     {
       // Multiple props used inside of an async function
@@ -2528,7 +2530,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           bar: PropTypes.func,
         }
       `,
-      parserOptions: Object.assign({}, parserOptions, { ecmaVersion: 2017 }),
+      languageOptions: Object.assign({}, languageOptions, { ecmaVersion: 2017 }),
     },
     {
       // Multiple props used inside of an async arrow function
@@ -2547,7 +2549,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           bar: PropTypes.func,
         }
       `,
-      parserOptions: Object.assign({}, parserOptions, { ecmaVersion: 2017 }),
+      languageOptions: Object.assign({}, languageOptions, { ecmaVersion: 2017 }),
     },
     {
       // Destructured assignment with Shape propTypes issue #816
@@ -5438,7 +5440,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           baz: PropTypes.func,
         }
       `,
-      parserOptions: Object.assign({}, parserOptions, { ecmaVersion: 2017 }),
+      languageOptions: Object.assign({}, languageOptions, { ecmaVersion: 2017 }),
       errors: [
         {
           messageId: 'unusedPropType',
@@ -5466,7 +5468,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           baz: PropTypes.func,
         }
       `,
-      parserOptions: Object.assign({}, parserOptions, { ecmaVersion: 2017 }),
+      languageOptions: Object.assign({}, languageOptions, { ecmaVersion: 2017 }),
       errors: [
         {
           messageId: 'unusedPropType',

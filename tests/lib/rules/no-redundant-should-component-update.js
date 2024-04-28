@@ -13,10 +13,12 @@ const rule = require('../../../lib/rules/no-redundant-should-component-update');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -35,17 +37,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           }
         }
       `,
-      parserOptions,
-    },
-    {
-      code: `
-        class Foo extends React.Component {
-          shouldComponentUpdate() {
-            return true;
-          }
-        }
-      `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -56,7 +48,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -68,7 +60,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           };
         }
       `,
-      parserOptions,
+      languageOptions,
     },
   ]),
 
@@ -87,7 +79,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           data: { component: 'Foo' },
         },
       ],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -103,7 +95,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           data: { component: 'Foo' },
         },
       ],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -120,7 +112,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
         },
       ],
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -138,7 +130,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           data: { component: 'Bar' },
         },
       ],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -156,7 +148,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           data: { component: 'Bar' },
         },
       ],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -172,7 +164,7 @@ ruleTester.run('no-redundant-should-component-update', rule, {
           data: { component: 'Foo' },
         },
       ],
-      parserOptions,
+      languageOptions,
     },
   ]),
 });

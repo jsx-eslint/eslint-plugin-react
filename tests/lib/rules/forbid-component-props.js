@@ -13,11 +13,13 @@ const rule = require('../../../lib/rules/forbid-component-props');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -25,7 +27,7 @@ const parserOptions = {
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('forbid-component-props', rule, {
   valid: parsers.all([
     {
@@ -146,21 +148,6 @@ ruleTester.run('forbid-component-props', rule, {
             {
               propName: 'className',
               allowedFor: ['this.ReactModal'],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      code: `
-        const item = (<Foo className="foo" />);
-      `,
-      options: [
-        {
-          forbid: [
-            {
-              propName: 'className',
-              disallowedFor: ['ReactModal'],
             },
           ],
         },

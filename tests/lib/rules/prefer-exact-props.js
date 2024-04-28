@@ -12,12 +12,14 @@ const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/prefer-exact-props');
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 8,
   sourceType: 'module',
-  ecmaFeatures: {
-    experimentalObjectRestSpread: true,
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true,
+      jsx: true,
+    },
   },
 };
 
@@ -30,7 +32,7 @@ const settings = {
 const PROP_TYPES_MESSAGE = 'Component propTypes should be exact by using \'exact\'.';
 const FLOW_MESSAGE = 'Component flow props should be set with exact objects.';
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('prefer-exact-props', rule, {
   valid: parsers.all([
     {

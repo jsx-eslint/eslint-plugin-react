@@ -13,11 +13,13 @@ const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/no-adjacent-inline-elements');
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 6,
-  ecmaFeatures: {
-    experimentalObjectRestSpread: true,
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true,
+      jsx: true,
+    },
   },
 };
 
@@ -30,77 +32,77 @@ ruleTester.run('no-adjacent-inline-elements', rule, {
   valid: parsers.all([
     {
       code: '<div />;',
-      parserOptions,
+      languageOptions,
     },
     {
       code: '<div><div></div><div></div></div>;',
-      parserOptions,
+      languageOptions,
     },
     {
       code: '<div><p></p><div></div></div>;',
-      parserOptions,
+      languageOptions,
     },
     {
       code: '<div><p></p><a></a></div>;',
-      parserOptions,
+      languageOptions,
     },
     {
       code: '<div><a></a>&nbsp;<a></a></div>;',
-      parserOptions,
+      languageOptions,
       features: ['no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
     },
     {
       code: '<div><a></a>&nbsp;some text &nbsp; <a></a></div>;',
-      parserOptions,
+      languageOptions,
     },
     {
       code: '<div><a></a>&nbsp;some text <a></a></div>;',
-      parserOptions,
+      languageOptions,
     },
     {
       code: '<div><a></a> <a></a></div>;',
-      parserOptions,
+      languageOptions,
     },
     {
       code: '<div><ul><li><a></a></li><li><a></a></li></ul></div>;',
-      parserOptions,
+      languageOptions,
     },
     {
       code: '<div><a></a> some text <a></a></div>;',
-      parserOptions,
+      languageOptions,
     },
     {
       code: 'React.createElement("div", null, "some text");',
-      parserOptions,
+      languageOptions,
     },
     {
       code: ('React.createElement("div", undefined, [React.createElement("a"), " some text ", React.createElement("a")]);'),
-      parserOptions,
+      languageOptions,
     },
     {
       code: 'React.createElement("div", undefined, [React.createElement("a"), " ", React.createElement("a")]);',
-      parserOptions,
+      languageOptions,
     },
     {
       code: 'React.createElement(a, b);',
-      parserOptions,
+      languageOptions,
     },
   ]),
   invalid: parsers.all([
     {
       code: '<div><a></a><a></a></div>;',
       errors: [{ messageId: 'inlineElement' }],
-      parserOptions,
+      languageOptions,
     },
     {
       code: '<div><a></a><span></span></div>;',
       errors: [{ messageId: 'inlineElement' }],
-      parserOptions,
+      languageOptions,
     },
     {
       code: 'React.createElement("div", undefined, [React.createElement("a"), React.createElement("span")]);',
       errors: [{ messageId: 'inlineElement' }],
-      parserOptions,
+      languageOptions,
     },
   ]),
 });
