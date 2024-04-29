@@ -17,12 +17,14 @@ const rule = require('../../../lib/rules/no-typos');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
-  ecmaFeatures: {
-    jsx: true,
-  },
   sourceType: 'module',
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
 };
 
 // -----------------------------------------------------------------------------
@@ -45,7 +47,7 @@ ruleTester.run('no-typos', rule, {
             })
           }
       `,
-      parserOptions,
+      languageOptions,
       features: ['no-babel'], // TODO: FIXME: remove no-babel and fix crash
     },
     {
@@ -58,7 +60,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -68,7 +70,7 @@ ruleTester.run('no-typos', rule, {
         First.ChildContextTypes = {key: "myValue"};
         First.DefaultProps = {key: "myValue"};
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -80,7 +82,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -90,7 +92,7 @@ ruleTester.run('no-typos', rule, {
         First.childContextTypes = {key: "myValue"};
         First.defaultProps = {key: "myValue"};
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -102,7 +104,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -114,7 +116,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -126,7 +128,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -137,7 +139,7 @@ ruleTester.run('no-typos', rule, {
           static DefaultProps() {};
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -148,7 +150,7 @@ ruleTester.run('no-typos', rule, {
           static defaultprops() {};
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -158,7 +160,7 @@ ruleTester.run('no-typos', rule, {
         MyClass.prototype.ChildContextTypes = function() {};
         MyClass.prototype.DefaultProps = function() {};
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -168,7 +170,7 @@ ruleTester.run('no-typos', rule, {
         MyClass.ChildContextTypes = function() {};
         MyClass.DefaultProps = function() {};
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -178,7 +180,7 @@ ruleTester.run('no-typos', rule, {
         MyRandomFunction.ChildContextTypes = {};
         MyRandomFunction.DefaultProps = {};
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       // This case is currently not supported
@@ -189,7 +191,7 @@ ruleTester.run('no-typos', rule, {
         First["childContext" + "Types"] = {};
         First["default" + "Props"] = {};
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       // This case is currently not supported
@@ -200,7 +202,7 @@ ruleTester.run('no-typos', rule, {
         First["CHILDCONTEXT" + "TYPES"] = {};
         First["DEFAULT" + "PROPS"] = {};
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -215,7 +217,7 @@ ruleTester.run('no-typos', rule, {
         First[childContextTypes] = {};
         First[defaultProps] = {};
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -233,7 +235,7 @@ ruleTester.run('no-typos', rule, {
           }
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -242,7 +244,7 @@ ruleTester.run('no-typos', rule, {
           "my-method"() { }
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -257,7 +259,7 @@ ruleTester.run('no-typos', rule, {
           render() { }
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -272,7 +274,7 @@ ruleTester.run('no-typos', rule, {
           render() { }
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -287,7 +289,7 @@ ruleTester.run('no-typos', rule, {
           Render() { }
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       // https://github.com/jsx-eslint/eslint-plugin-react/issues/1353
@@ -297,7 +299,7 @@ ruleTester.run('no-typos', rule, {
         }
         function a() {}
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -307,7 +309,7 @@ ruleTester.run('no-typos', rule, {
           a: PropTypes.number.isRequired
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -319,7 +321,7 @@ ruleTester.run('no-typos', rule, {
           })
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -334,7 +336,7 @@ ruleTester.run('no-typos', rule, {
           }).isRequired
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -347,7 +349,7 @@ ruleTester.run('no-typos', rule, {
           ])
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -360,7 +362,7 @@ ruleTester.run('no-typos', rule, {
           ])
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -375,7 +377,7 @@ ruleTester.run('no-typos', rule, {
           }).isRequired
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -390,7 +392,7 @@ ruleTester.run('no-typos', rule, {
           }).isRequired
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -403,7 +405,7 @@ ruleTester.run('no-typos', rule, {
           c: MyPropTypes.MYSTRING.isRequired,
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -415,7 +417,7 @@ ruleTester.run('no-typos', rule, {
           a: MyPropTypes.MYSTRING,
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -425,7 +427,7 @@ ruleTester.run('no-typos', rule, {
           b: CustomReact.PropTypes.string,
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       // ensure that an absent arg to PropTypes.shape does not crash
@@ -438,7 +440,7 @@ ruleTester.run('no-typos', rule, {
           a: PropTypes.shape(),
         };
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -447,7 +449,7 @@ ruleTester.run('no-typos', rule, {
           data.time = data.time || {};
         };
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -459,7 +461,7 @@ ruleTester.run('no-typos', rule, {
           }).isRequired
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -474,7 +476,7 @@ ruleTester.run('no-typos', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -489,7 +491,7 @@ ruleTester.run('no-typos', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -510,7 +512,7 @@ ruleTester.run('no-typos', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -525,7 +527,7 @@ ruleTester.run('no-typos', rule, {
           body: element.isRequired
         };
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -539,14 +541,14 @@ ruleTester.run('no-typos', rule, {
           }
         }
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
         const MyComponent = React.forwardRef((props, ref) => <div />);
         MyComponent.defaultProps = { value: "" };
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -555,7 +557,7 @@ ruleTester.run('no-typos', rule, {
         const MyComponent = styled.div;
         MyComponent.defaultProps = { value: "" };
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -576,11 +578,13 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       features: [].concat('class fields', semver.satisfies(babelEslintVersion, '< 9') ? 'no-babel-old' : []),
-      parserOptions: Object.assign({}, parserOptions, {
-        babelOptions: {
-          // classPrivateMethods: true,
+      languageOptions: Object.assign({}, languageOptions, {
+        parserOptions: {
+          babelOptions: {
+            // classPrivateMethods: true,
+          },
+          shippedProposals: true,
         },
-        shippedProposals: true,
       }),
     }
   )),
@@ -593,7 +597,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
       errors: [
         { messageId: 'typoStaticClassProp', type: 'Identifier' },
       ],
@@ -603,7 +607,7 @@ ruleTester.run('no-typos', rule, {
         class Component extends React.Component {}
         Component.PropTypes = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         { messageId: 'typoStaticClassProp', type: 'Identifier' },
       ],
@@ -613,7 +617,7 @@ ruleTester.run('no-typos', rule, {
         function MyComponent() { return (<div>{this.props.myProp}</div>) }
         MyComponent.PropTypes = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         { messageId: 'typoStaticClassProp', type: 'Identifier' },
       ],
@@ -625,7 +629,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -633,7 +637,7 @@ ruleTester.run('no-typos', rule, {
         class Component extends React.Component {}
         Component.proptypes = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -641,7 +645,7 @@ ruleTester.run('no-typos', rule, {
         function MyComponent() { return (<div>{this.props.myProp}</div>) }
         MyComponent.proptypes = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -651,7 +655,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
       errors: [
         { messageId: 'typoStaticClassProp', type: 'Identifier' },
       ],
@@ -661,7 +665,7 @@ ruleTester.run('no-typos', rule, {
         class Component extends React.Component {}
         Component.ContextTypes = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -669,7 +673,7 @@ ruleTester.run('no-typos', rule, {
         function MyComponent() { return (<div>{this.props.myProp}</div>) }
         MyComponent.ContextTypes = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -679,7 +683,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -687,7 +691,7 @@ ruleTester.run('no-typos', rule, {
         class Component extends React.Component {}
         Component.contexttypes = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -695,7 +699,7 @@ ruleTester.run('no-typos', rule, {
         function MyComponent() { return (<div>{this.props.myProp}</div>) }
         MyComponent.contexttypes = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -705,7 +709,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -713,7 +717,7 @@ ruleTester.run('no-typos', rule, {
         class Component extends React.Component {}
         Component.ChildContextTypes = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -721,7 +725,7 @@ ruleTester.run('no-typos', rule, {
         function MyComponent() { return (<div>{this.props.myProp}</div>) }
         MyComponent.ChildContextTypes = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -731,7 +735,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -739,7 +743,7 @@ ruleTester.run('no-typos', rule, {
         class Component extends React.Component {}
         Component.childcontexttypes = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -747,7 +751,7 @@ ruleTester.run('no-typos', rule, {
         function MyComponent() { return (<div>{this.props.myProp}</div>) }
         MyComponent.childcontexttypes = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -757,7 +761,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
       errors: [
         { messageId: 'typoStaticClassProp', type: 'Identifier' },
       ],
@@ -767,7 +771,7 @@ ruleTester.run('no-typos', rule, {
         class Component extends React.Component {}
         Component.DefaultProps = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         { messageId: 'typoStaticClassProp', type: 'Identifier' },
       ],
@@ -777,7 +781,7 @@ ruleTester.run('no-typos', rule, {
         function MyComponent() { return (<div>{this.props.myProp}</div>) }
         MyComponent.DefaultProps = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         { messageId: 'typoStaticClassProp', type: 'Identifier' },
       ],
@@ -789,7 +793,7 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -797,7 +801,7 @@ ruleTester.run('no-typos', rule, {
         class Component extends React.Component {}
         Component.defaultprops = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -805,7 +809,7 @@ ruleTester.run('no-typos', rule, {
         function MyComponent() { return (<div>{this.props.myProp}</div>) }
         MyComponent.defaultprops = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -813,7 +817,7 @@ ruleTester.run('no-typos', rule, {
         Component.defaultprops = {}
         class Component extends React.Component {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -822,7 +826,7 @@ ruleTester.run('no-typos', rule, {
         class MyComponent extends BaseComponent {}
         MyComponent.PROPTYPES = {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'typoStaticClassProp' }],
     },
     {
@@ -846,7 +850,7 @@ ruleTester.run('no-typos', rule, {
           }
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoLifecycleMethod',
@@ -988,7 +992,7 @@ ruleTester.run('no-typos', rule, {
           }
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoLifecycleMethod',
@@ -1139,7 +1143,7 @@ ruleTester.run('no-typos', rule, {
           }
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoLifecycleMethod',
@@ -1255,7 +1259,7 @@ ruleTester.run('no-typos', rule, {
             a: PropTypes.Number.isRequired
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropType',
@@ -1271,7 +1275,7 @@ ruleTester.run('no-typos', rule, {
             a: PropTypes.number.isrequired
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropTypeChain',
@@ -1289,7 +1293,7 @@ ruleTester.run('no-typos', rule, {
         };
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropTypeChain',
@@ -1307,7 +1311,7 @@ ruleTester.run('no-typos', rule, {
         };
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropType',
@@ -1323,7 +1327,7 @@ ruleTester.run('no-typos', rule, {
             a: PropTypes.Number
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropType',
@@ -1342,7 +1346,7 @@ ruleTester.run('no-typos', rule, {
           })
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropType',
@@ -1361,7 +1365,7 @@ ruleTester.run('no-typos', rule, {
           ])
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropType',
@@ -1380,7 +1384,7 @@ ruleTester.run('no-typos', rule, {
           d: PropTypes.objectof,
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropType',
@@ -1411,7 +1415,7 @@ ruleTester.run('no-typos', rule, {
           d: PropTypes.objectof,
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropType',
@@ -1442,7 +1446,7 @@ ruleTester.run('no-typos', rule, {
           d: PropTypes.objectof,
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropType',
@@ -1473,7 +1477,7 @@ ruleTester.run('no-typos', rule, {
           }).isrequired
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropTypeChain',
@@ -1496,7 +1500,7 @@ ruleTester.run('no-typos', rule, {
           d: RealPropTypes.objectof,
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropType',
@@ -1527,7 +1531,7 @@ ruleTester.run('no-typos', rule, {
         }).isrequired
       }
     `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropTypeChain',
@@ -1550,7 +1554,7 @@ ruleTester.run('no-typos', rule, {
           d: React.PropTypes.objectof,
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropType',
@@ -1581,7 +1585,7 @@ ruleTester.run('no-typos', rule, {
         }).isrequired
       }
     `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropTypeChain',
@@ -1598,7 +1602,7 @@ ruleTester.run('no-typos', rule, {
       import 'react';
       class Component extends React.Component {};
     `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'noReactBinding',
@@ -1616,7 +1620,7 @@ ruleTester.run('no-typos', rule, {
           d: PropTypes.objectof,
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropType',
@@ -1647,7 +1651,7 @@ ruleTester.run('no-typos', rule, {
         }).isrequired
       }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropTypeChain',
@@ -1670,7 +1674,7 @@ ruleTester.run('no-typos', rule, {
         }).isrequired
       }
     `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropTypeChain',
@@ -1695,7 +1699,7 @@ ruleTester.run('no-typos', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropTypeChain',
@@ -1720,7 +1724,7 @@ ruleTester.run('no-typos', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropType',
@@ -1762,7 +1766,7 @@ ruleTester.run('no-typos', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'typoPropDeclaration',
@@ -1864,7 +1868,7 @@ ruleTester.run('no-typos', rule, {
           getDerivedStateFromProps() { }
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'staticLifecycleMethod',
@@ -1879,7 +1883,7 @@ ruleTester.run('no-typos', rule, {
           GetDerivedStateFromProps() { }
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           messageId: 'staticLifecycleMethod',
@@ -1904,7 +1908,7 @@ ruleTester.run('no-typos', rule, {
         /** @extends React.Component */
         class MyComponent extends BaseComponent {}
       `,
-      parserOptions,
+      languageOptions,
       errors: [
         {
           ruleId: 'no-typos',
@@ -1916,7 +1920,7 @@ ruleTester.run('no-typos', rule, {
       code: `
         import 'prop-types'
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'noPropTypesBinding' }],
     }
   )),

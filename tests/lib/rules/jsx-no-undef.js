@@ -22,17 +22,20 @@ const languageOptions = {
     ecmaFeatures: {
       jsx: true,
     },
+    jsxPragma: null,
   },
-  jsxPragma: null,
 };
 
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ languageOptions });
-const linter = ruleTester.linter || eslint.linter || eslint.Linter;
-linter.defineRule('no-undef', require('../../helpers/getESLintCoreRule')('no-undef'));
+const ruleTester = new RuleTester({
+  languageOptions,
+  rules: {
+    'no-undef': 'error',
+  },
+});
 
 ruleTester.run('jsx-no-undef', rule, {
   valid: parsers.all([
@@ -68,10 +71,13 @@ ruleTester.run('jsx-no-undef', rule, {
     },
     {
       code: 'var React; React.render(<Text />);',
-      globals: {
-        Text: true,
+      languageOptions: {
+        globals: {
+          Text: "readonly",
+        }
       },
       features: ['no-babel'], // TODO: FIXME: remove `no-babel` and fix
+      options: [{ allowGlobals: true }],
     },
     {
       code: `
@@ -83,7 +89,6 @@ ruleTester.run('jsx-no-undef', rule, {
         };
       `,
       languageOptions: Object.assign({ sourceType: 'module' }, languageOptions),
-      options: [{ allowGlobals: false }],
     },
   ].map(parsers.disableNewTS)),
 
@@ -140,9 +145,10 @@ ruleTester.run('jsx-no-undef', rule, {
           data: { identifier: 'Text' },
         },
       ],
-      options: [{ allowGlobals: false }],
-      globals: {
-        Text: true,
+      languageOptions: {
+        globals: {
+          Text: true,
+        }
       },
     },
     {
