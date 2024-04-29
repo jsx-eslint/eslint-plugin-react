@@ -14,11 +14,13 @@ const rule = require('../../../lib/rules/no-unstable-nested-components');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -30,7 +32,7 @@ const ERROR_MESSAGE_COMPONENT_AS_PROPS = `${ERROR_MESSAGE} If you want to allow 
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('no-unstable-nested-components', rule, {
   valid: parsers.all([
     {

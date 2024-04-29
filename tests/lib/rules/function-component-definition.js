@@ -12,11 +12,13 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/function-component-definition');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -26,7 +28,7 @@ const parsers = require('../../helpers/parsers');
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('function-component-definition', rule, {
   valid: parsers.all([
     {
@@ -807,22 +809,12 @@ ruleTester.run('function-component-definition', rule, {
           return <div/>;
         }
       `,
-      output: `
-        var Hello: React.FC<Test> = function(props) {
-          return <div/>;
-        }
-      `,
       options: [{ namedComponents: 'function-declaration' }],
       errors: [{ messageId: 'function-declaration' }],
       features: ['types'],
     },
     {
       code: `
-        var Hello: React.FC<Test> = (props) => {
-          return <div/>;
-        };
-      `,
-      output: `
         var Hello: React.FC<Test> = (props) => {
           return <div/>;
         };
@@ -848,11 +840,6 @@ ruleTester.run('function-component-definition', rule, {
     },
     {
       code: `
-        function Hello<Test>(props: Test) {
-          return <div/>;
-        }
-      `,
-      output: `
         function Hello<Test>(props: Test) {
           return <div/>;
         }
@@ -957,13 +944,6 @@ ruleTester.run('function-component-definition', rule, {
     },
     {
       code: `
-        function wrap(Component) {
-          return function<Test>(props) {
-            return <div><Component {...props}/></div>
-          }
-        }
-      `,
-      output: `
         function wrap(Component) {
           return function<Test>(props) {
             return <div><Component {...props}/></div>

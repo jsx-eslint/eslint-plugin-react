@@ -13,11 +13,13 @@ const rule = require('../../../lib/rules/jsx-curly-newline');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -35,7 +37,7 @@ const CONSISTENT = ['consistent'];
 const NEVER = ['never'];
 const MULTILINE_REQUIRE = [{ singleline: 'consistent', multiline: 'require' }];
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 
 ruleTester.run('jsx-curly-newline', rule, {
   valid: parsers.all([

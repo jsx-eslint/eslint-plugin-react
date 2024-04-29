@@ -14,15 +14,17 @@ const rule = require('../../../lib/rules/require-default-props');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -811,7 +813,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>{foo}{bar}</div>;
         }
       `,
-      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
+      languageOptions: Object.assign({ sourceType: 'module' }, languageOptions),
     },
     {
       code: `
@@ -824,7 +826,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>{foo}{bar}</div>;
         }
       `,
-      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
+      languageOptions: Object.assign({ sourceType: 'module' }, languageOptions),
     },
     // using spread operator
     {
@@ -3019,31 +3021,6 @@ ruleTester.run('require-default-props', rule, {
         },
       ],
     },
-    {
-      code: `
-        function MyStatelessComponent({ foo, bar }) {
-          return <div>{foo}{bar}</div>;
-        }
-        MyStatelessComponent.propTypes = {
-          foo: PropTypes.string,
-          bar: PropTypes.string.isRequired
-        };
-        MyStatelessComponent.propTypes.baz = React.propTypes.string;
-      `,
-      errors: [
-        {
-          messageId: 'shouldHaveDefault',
-          data: { name: 'foo' },
-          line: 6,
-        },
-        {
-          messageId: 'shouldHaveDefault',
-          data: { name: 'baz' },
-          line: 9,
-        },
-      ],
-    },
-
     {
       code: `
         function MyStatelessComponent({ foo, bar }) {

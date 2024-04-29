@@ -15,11 +15,13 @@ const rule = require('../../../lib/rules/state-in-constructor');
 const parsers = require('../../helpers/parsers');
 
 const ruleTesterConfig = {
-  parserOptions: {
+  languageOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      },
     },
   },
 };

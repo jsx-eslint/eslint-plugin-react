@@ -14,11 +14,13 @@ const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/jsx-newline');
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -26,7 +28,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-new RuleTester({ parserOptions }).run('jsx-newline', rule, {
+new RuleTester({ languageOptions }).run('jsx-newline', rule, {
   valid: parsers.all([
     {
       code: `

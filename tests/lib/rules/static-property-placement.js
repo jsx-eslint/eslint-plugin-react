@@ -22,11 +22,13 @@ const rule = require('../../../lib/rules/static-property-placement');
 const parsers = require('../../helpers/parsers');
 
 const ruleTesterConfig = {
-  parserOptions: {
+  languageOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
+    parserOptions: {
+      ecmaFeatures: {
+        jsx: true,
+      },
     },
   },
   settings: {

@@ -16,21 +16,26 @@ const RuleTester = eslint.RuleTester;
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
+    jsxPragma: null,
   },
-  jsxPragma: null,
 };
 
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
-const linter = ruleTester.linter || eslint.linter || eslint.Linter;
-linter.defineRule('no-undef', require('../../helpers/getESLintCoreRule')('no-undef'));
+const ruleTester = new RuleTester({
+  languageOptions,
+  rules: {
+    'no-undef': 'error',
+  },
+});
 
 ruleTester.run('jsx-no-undef', rule, {
   valid: parsers.all([
@@ -66,10 +71,13 @@ ruleTester.run('jsx-no-undef', rule, {
     },
     {
       code: 'var React; React.render(<Text />);',
-      globals: {
-        Text: true,
+      languageOptions: {
+        globals: {
+          Text: "readonly",
+        }
       },
       features: ['no-babel'], // TODO: FIXME: remove `no-babel` and fix
+      options: [{ allowGlobals: true }],
     },
     {
       code: `
@@ -80,8 +88,7 @@ ruleTester.run('jsx-no-undef', rule, {
           );
         };
       `,
-      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
-      options: [{ allowGlobals: false }],
+      languageOptions: Object.assign({ sourceType: 'module' }, languageOptions),
     },
   ].map(parsers.disableNewTS)),
 
@@ -131,16 +138,17 @@ ruleTester.run('jsx-no-undef', rule, {
         };
         export default TextWrapper;
       `,
-      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
+      languageOptions: Object.assign({ sourceType: 'module' }, languageOptions),
       errors: [
         {
           messageId: 'undefined',
           data: { identifier: 'Text' },
         },
       ],
-      options: [{ allowGlobals: false }],
-      globals: {
-        Text: true,
+      languageOptions: {
+        globals: {
+          Text: true,
+        }
       },
     },
     {

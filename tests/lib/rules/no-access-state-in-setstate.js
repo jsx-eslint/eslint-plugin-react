@@ -13,10 +13,12 @@ const RuleTester = require('eslint').RuleTester;
 const parsers = require('../../helpers/parsers');
 const rule = require('../../../lib/rules/no-access-state-in-setstate');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -41,7 +43,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -55,7 +57,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
     },
     {
     // issue 1559: don't crash
@@ -74,7 +76,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
     },
     {
     // issue 1604: allow this.state in callback
@@ -85,7 +87,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -95,7 +97,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -107,7 +109,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       // https://github.com/jsx-eslint/eslint-plugin-react/pull/1611
@@ -115,7 +117,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         function testFunction({a, b}) {
         };
       `,
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -145,7 +147,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
         }
       `,
       features: ['class fields'],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -155,7 +157,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         };
       `,
-      parserOptions,
+      languageOptions,
     },
   ]),
 
@@ -168,7 +170,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'useCallback' }],
     },
     {
@@ -179,7 +181,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'useCallback' }],
     },
     {
@@ -191,7 +193,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'useCallback' }],
     },
     {
@@ -203,7 +205,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'useCallback' }],
     },
     {
@@ -217,7 +219,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'useCallback' }],
     },
     {
@@ -228,7 +230,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'useCallback' }],
     },
     {
@@ -239,7 +241,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'useCallback' }],
     },
     {
@@ -253,7 +255,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         });
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'useCallback' }],
     },
     {
@@ -264,7 +266,7 @@ ruleTester.run('no-access-state-in-setstate', rule, {
           }
         }
       `,
-      parserOptions,
+      languageOptions,
       errors: [{ messageId: 'useCallback' }],
     },
   ]),

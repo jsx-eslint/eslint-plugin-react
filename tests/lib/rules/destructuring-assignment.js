@@ -11,15 +11,17 @@ const rule = require('../../../lib/rules/destructuring-assignment');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('destructuring-assignment', rule, {
   valid: parsers.all([
     {
@@ -357,18 +359,6 @@ ruleTester.run('destructuring-assignment', rule, {
         }
       `,
       options: ['always', { destructureInSignature: 'always' }],
-    },
-    {
-      code: `
-        import { useContext } from 'react';
-
-        const MyComponent = (props) => {
-          const {foo} = useContext(aContext);
-          return <div>{foo}</div>
-        };
-      `,
-      options: ['always'],
-      settings: { react: { version: '16.9.0' } },
     },
     {
       code: `

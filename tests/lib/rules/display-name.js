@@ -14,11 +14,13 @@ const rule = require('../../../lib/rules/display-name');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -26,7 +28,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('display-name', rule, {
   valid: parsers.all([
     {
@@ -367,39 +369,6 @@ ruleTester.run('display-name', rule, {
             onClick: () => foo(bar("x"))
           });
         };
-      `,
-    },
-    {
-      code: `
-        import React, {createElement} from "react";
-        const SomeComponent = (props) => {
-          const {foo, bar} = props;
-          return someComponentFactory({
-            onClick: () => foo(bar("x"))
-          });
-        };
-      `,
-    },
-    {
-      code: `
-        import React, {Component} from "react";
-        function someDecorator(ComposedComponent) {
-          return class MyDecorator extends Component {
-            render() {return <ComposedComponent {...this.props} />;}
-          };
-        }
-        module.exports = someDecorator;
-      `,
-    },
-    {
-      code: `
-        import React, {Component} from "react";
-        function someDecorator(ComposedComponent) {
-          return class MyDecorator extends Component {
-            render() {return <ComposedComponent {...this.props} />;}
-          };
-        }
-        module.exports = someDecorator;
       `,
     },
     {

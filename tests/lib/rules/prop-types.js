@@ -18,11 +18,13 @@ const rule = require('../../../lib/rules/prop-types');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -36,7 +38,7 @@ const settings = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('prop-types', rule, {
   valid: parsers.all([].concat(
     {
@@ -1583,15 +1585,6 @@ ruleTester.run('prop-types', rule, {
       // Async generator functions can't be components.
       code: `
         async function* Hello(props) {
-          yield null;
-          return <div>Hello {props.name}</div>;
-        }
-      `,
-    },
-    {
-      // Async generator functions can't be components.
-      code: `
-        var Hello = async function* (props) {
           yield null;
           return <div>Hello {props.name}</div>;
         }
@@ -5276,27 +5269,6 @@ ruleTester.run('prop-types', rule, {
         }
         Test.propTypes = propTypes;
       `,
-      errors: [
-        {
-          messageId: 'missingPropType',
-          data: { name: 'lastname' },
-        },
-      ],
-    },
-    {
-      code: `
-        class Test extends Foo.Component {
-          render() {
-            return (
-              <div>{this.props.firstname} {this.props.lastname}</div>
-            );
-          }
-        }
-        Test.propTypes = {
-          firstname: PropTypes.string
-        };
-      `,
-      settings,
       errors: [
         {
           messageId: 'missingPropType',

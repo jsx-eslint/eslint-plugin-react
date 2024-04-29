@@ -14,11 +14,13 @@ const rule = require('../../../lib/rules/jsx-max-props-per-line');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -26,7 +28,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('jsx-max-props-per-line', rule, {
   valid: parsers.all([
     {
@@ -162,7 +164,7 @@ baz />;
           data: { prop: 'bar' },
         },
       ],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -194,7 +196,7 @@ bar />;
           data: { prop: 'bar' },
         },
       ],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -210,7 +212,7 @@ bar />;
           data: { prop: 'this.props' },
         },
       ],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -232,7 +234,7 @@ bar
           data: { prop: 'bar' },
         },
       ],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -254,7 +256,7 @@ bar
           data: { prop: 'this.props' },
         },
       ],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -276,7 +278,7 @@ bar
           data: { prop: 'bar' },
         },
       ],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -294,7 +296,7 @@ bar />
           data: { prop: 'bar' },
         },
       ],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -330,7 +332,7 @@ baz />
           data: { prop: 'rest' },
         },
       ],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -350,7 +352,7 @@ bar />
           data: { prop: 'bar' },
         },
       ],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `
@@ -374,7 +376,7 @@ bar />
           data: { prop: 'rest' },
         },
       ],
-      parserOptions,
+      languageOptions,
     },
     {
       code: `

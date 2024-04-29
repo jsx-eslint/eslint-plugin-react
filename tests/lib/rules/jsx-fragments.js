@@ -14,11 +14,13 @@ const rule = require('../../../lib/rules/jsx-fragments');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -42,7 +44,7 @@ const settingsOld = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('jsx-fragments', rule, {
   valid: parsers.all([
     {
@@ -142,7 +144,6 @@ ruleTester.run('jsx-fragments', rule, {
     },
     {
       code: '<><Foo /></>',
-      output: '<><Foo /></>', // should get '<Act.Frag><Foo /></Act.Frag>', but the old TS parser lacks opening/closing Fragment info
       features: ['fragment', 'no-babel', 'ts', 'no-ts-new'],
       options: ['element'],
       settings,

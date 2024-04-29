@@ -29,6 +29,13 @@ const mockContext = {
       variables: [],
     };
   },
+  getSourceCode() {
+    return {
+      getText() {
+        return '';
+      },
+    };
+  },
 };
 
 describe('jsxUtil', () => {

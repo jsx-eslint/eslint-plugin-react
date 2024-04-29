@@ -18,11 +18,13 @@ const rule = require('../../../lib/rules/jsx-curly-brace-presence');
 
 const parsers = require('../../helpers/parsers');
 
-const parserOptions = {
+const languageOptions = {
   sourceType: 'module',
   ecmaVersion: 2015,
-  ecmaFeatures: {
-    jsx: true,
+  parserOptions: {
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
 };
 
@@ -30,7 +32,7 @@ const parserOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ parserOptions });
+const ruleTester = new RuleTester({ languageOptions });
 ruleTester.run('jsx-curly-brace-presence', rule, {
   valid: parsers.all([].concat(
     {
@@ -629,8 +631,10 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
           some-complicated-exp
         </MyComponent>
       `,
-      parser: parsers['@BABEL_ESLINT'],
-      parserOptions: parsers.babelParserOptions({}, new Set()),
+      languageOptions: {
+        parser: parsers['@BABEL_ESLINT'],
+        parserOptions: parsers.babelParserOptions({}, new Set()),
+      },
       options: [{ children: 'never' }],
       errors: [
         { messageId: 'unnecessaryCurly', line: 3 },
@@ -654,12 +658,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: `<MyComponent prop='foo "bar"'>foo</MyComponent>`,
       output: `<MyComponent prop={"foo \\"bar\\""}>foo</MyComponent>`,
-      options: [{ props: 'always' }],
-      errors: [{ messageId: 'missingCurly' }],
-    },
-    {
-      code: `<MyComponent prop="foo 'bar'">foo</MyComponent>`,
-      output: `<MyComponent prop={"foo 'bar'"}>foo</MyComponent>`,
       options: [{ props: 'always' }],
       errors: [{ messageId: 'missingCurly' }],
     },
