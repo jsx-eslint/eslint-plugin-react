@@ -12,7 +12,7 @@
 const RuleTester = require('eslint').RuleTester;
 const rule = require('../../../lib/rules/void-dom-elements-no-children');
 
-const parsers = require('../../helpers/parsers-old');
+const parsers = require('../../helpers/parsers');
 
 const languageOptions = {
   ecmaVersion: 2018,

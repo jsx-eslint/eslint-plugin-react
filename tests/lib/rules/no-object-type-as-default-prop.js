@@ -13,7 +13,7 @@ const RuleTester = require('eslint').RuleTester;
 const parsers = require('../../helpers/parsers');
 const rule = require('../../../lib/rules/no-object-type-as-default-prop');
 
-const langugeOptions = {
+const languageOptions = {
   ecmaVersion: 2018,
   sourceType: 'module',
   parserOptions: {
@@ -27,7 +27,7 @@ const langugeOptions = {
 // Tests
 // ------------------------------------------------------------------------------
 
-const ruleTester = new RuleTester({ langugeOptions });
+const ruleTester = new RuleTester({ languageOptions });
 const MESSAGE_ID = 'forbiddenTypeDefaultParam';
 
 const expectedViolations = [

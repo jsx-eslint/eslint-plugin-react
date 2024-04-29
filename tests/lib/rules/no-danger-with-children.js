@@ -36,8 +36,10 @@ ruleTester.run('no-danger-with-children', rule, {
     },
     {
       code: '<div {...props} />',
-      globals: {
-        props: true,
+      languageOptions: {
+        globals: {
+          props: true,
+        },
       },
     },
     {
