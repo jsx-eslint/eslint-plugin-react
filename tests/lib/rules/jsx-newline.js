@@ -203,6 +203,19 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
       `,
       options: [{ prevent: true, allowMultilines: true }],
     },
+    {
+      code: `
+        function Test() {
+          return (
+            <div>
+              <div />
+              {/* a comment */}
+            </div>
+          );
+        }
+      `,
+      options: [{ prevent: true, allowMultilines: true }],
+    },
   ]),
   invalid: parsers.all([
     {
