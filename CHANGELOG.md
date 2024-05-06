@@ -5,16 +5,20 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Added
+* [`no-danger`]: add `customComponentNames` option ([#3748][] @akulsr0)
+
 ### Fixed
 * [`prop-types`]: null-check rootNode before calling getScope ([#3762][] @crnhrv)
 
 [#3762]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3762
+[#3748]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3748
 
 ## [7.34.2] - 2024.05.24
 
 ### Fixed
 * [`boolean-prop-naming`]: avoid a crash with a non-TSTypeReference type ([#3718][] @developer-bandi)
-* [`jsx-no-leaked-render`]: invalid report if left side is boolean ([#3746][] @akulsr0)
+* [`jsx-no-leaked-render`]: invalid report if left eside is boolean ([#3746][] @akulsr0)
 * [`jsx-closing-bracket-location`]: message shows `{{details}}` when there are no details ([#3759][] @mdjermanovic)
 * [`no-invalid-html-attribute`]: ensure error messages are correct ([#3759][] @mdjermanovic, @ljharb)
 
