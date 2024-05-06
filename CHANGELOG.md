@@ -13,16 +13,18 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-handler-names`]: support ignoring component names ([#3772][] @akulsr0)
 * version settings: Allow react defaultVersion to be configurable ([#3771][] @onlywei)
 * [`jsx-closing-tag-location`]: add `line-aligned` option ([#3777] @kimtaejin3)
+* [`no-danger`]: add `customComponentNames` option ([#3748][] @akulsr0)
 
 ### Changed
 * [Refactor] `variableUtil`: Avoid creating a single flat variable scope for each lookup ([#3782][] @DanielRosenwasser)
 
-e[#3782]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3782
+[#3782]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3782
 [#3777]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3777
 [#3774]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3774
 [#3772]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3772
 [#3771]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3771
 [#3759]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3759
+[#3748]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3748
 [#3724]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3724
 [#3694]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3694
 
@@ -60,7 +62,7 @@ e[#3782]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3782
 
 ### Fixed
 * [`boolean-prop-naming`]: avoid a crash with a non-TSTypeReference type ([#3718][] @developer-bandi)
-* [`jsx-no-leaked-render`]: invalid report if left side is boolean ([#3746][] @akulsr0)
+* [`jsx-no-leaked-render`]: invalid report if left eside is boolean ([#3746][] @akulsr0)
 * [`jsx-closing-bracket-location`]: message shows `{{details}}` when there are no details ([#3759][] @mdjermanovic)
 * [`no-invalid-html-attribute`]: ensure error messages are correct ([#3759][] @mdjermanovic, @ljharb)
 
