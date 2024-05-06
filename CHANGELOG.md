@@ -5,6 +5,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+
+* [`prop-types`]: fix `className` missing in prop validation false negative ([#3749] @akulsr0)
+
+[#3749]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3749
+
 ## [7.34.3] - 2024.06.18
 
 ### Fixed

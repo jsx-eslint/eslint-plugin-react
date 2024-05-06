@@ -4195,6 +4195,29 @@ ruleTester.run('prop-types', rule, {
         );
       `,
       features: ['types'],
+    },
+    {
+      code: `
+        import React from "react"
+
+        export function Heading({ className, ...props }: React.HTMLAttributes<HTMLDivElement>) {
+          return <div className={cn("font-semibold text-lg", className)} {...props} />
+        }
+      `,
+      features: ['types'],
+    },
+    {
+      code: `
+        import React from 'react';
+        type TDelIconProps = React.HTMLProps<HTMLDivElement>;
+
+        const DelIcon: React.FC<TDelIconProps> = ({className, ...rest}) => (
+            <div className={classNames('del flex-center', className)} {...rest}>
+                <i className="iconfont icon-del f12" />
+            </div>
+        );
+      `,
+      features: ['types'],
     }
   )),
 
