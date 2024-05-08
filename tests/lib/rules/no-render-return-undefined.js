@@ -1,6 +1,6 @@
 /**
  * @fileoverview Tests for no-danger
- * @author Scott Andrews
+ * @author Akul Srivastava
  */
 
 'use strict';
@@ -118,6 +118,13 @@ ruleTester.run('no-render-return-undefined', rule, {
             }
         `,
     },
+    {
+      code: `
+            function App() {
+                return [<div/>, <span/>];
+            }
+        `,
+    },
   ]),
   invalid: parsers.all([
     {
@@ -231,6 +238,50 @@ ruleTester.run('no-render-return-undefined', rule, {
 
             function App() {
                 return foo();
+            }
+          `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+            function App() {
+                return
+                <div />
+            }
+          `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+            function App() {
+                return
+                []
+            }
+          `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+            function App() {
+                return
+                123
+            }
+          `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+            function App() {
+                return
+                "abc"
+            }
+          `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+            function App() {
+                return; <div />;
             }
           `,
       errors: [{ messageId: 'returnsUndefined' }],
