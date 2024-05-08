@@ -38,6 +38,13 @@ ruleTester.run('no-render-return-undefined', rule, {
     },
     {
       code: `
+              const App = () => {
+                  return 123;
+              }
+          `,
+    },
+    {
+      code: `
             function App() {
                 return 'Hello World';
             }
@@ -85,6 +92,32 @@ ruleTester.run('no-render-return-undefined', rule, {
             }
         `,
     },
+    {
+      code: `
+            function App() {
+                return <Component></Component>;
+            }
+        `,
+    },
+    {
+      code: `
+            function App() {
+                return (
+                  <Component>
+                    <ABC />
+                  </Component>
+                );
+            }
+        `,
+    },
+    {
+      code: `
+            const ui = <Component />;
+            function App() {
+                return ui;
+            }
+        `,
+    },
   ]),
   invalid: parsers.all([
     {
@@ -95,8 +128,38 @@ ruleTester.run('no-render-return-undefined', rule, {
     },
     {
       code: `
+            const App = () => {}
+        `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+            function App() {
+                return;
+            }
+        `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+            const App = () => {
+              return;
+            }
+        `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
             function App() {
                 return undefined;
+            }
+        `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+            const App = () => {
+              return undefined;
             }
         `,
       errors: [{ messageId: 'returnsUndefined' }],
@@ -148,9 +211,27 @@ ruleTester.run('no-render-return-undefined', rule, {
     },
     {
       code: `
-              function App() {
-                  return [undefined];
-              }
+            function App() {
+                return [undefined];
+            }
+          `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+            function App() {
+                return [undefined, undefined];
+            }
+          `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+            function foo() {}
+
+            function App() {
+                return foo();
+            }
           `,
       errors: [{ messageId: 'returnsUndefined' }],
     },
