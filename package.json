@@ -11,11 +11,11 @@
     "postlint:docs": "npm run update:eslint-docs -- --check",
     "lint": "eslint .",
     "postlint": "npm run type-check",
-    "pretest": "npm run lint",
+    "pretest": "ESLINT_USE_FLAT_CONFIG=false npm run lint",
     "test": "npm run unit-test",
     "posttest": "aud --production",
     "type-check": "tsc",
-    "unit-test": "istanbul cover node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js",
+    "unit-test": "ESLINT_USE_FLAT_CONFIG=false istanbul cover node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js",
     "update:eslint-docs": "eslint-doc-generator"
   },
   "repository": {
@@ -57,7 +57,7 @@
     "@typescript-eslint/parser": "^2.34.0 || ^3.10.1 || ^4.0.0 || ^5.0.0",
     "aud": "^2.0.4",
     "babel-eslint": "^8 || ^9 || ^10.1.0",
-    "eslint": "^3 || ^4 || ^5 || ^6 || ^7 || ^8",
+    "eslint": "^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-doc-generator": "^1.7.0",
     "eslint-plugin-eslint-plugin": "^2.3.0 || ^3.5.3 || ^4.0.1 || ^5.0.5",
@@ -78,7 +78,7 @@
     "typescript-eslint-parser": "^20.1.1"
   },
   "peerDependencies": {
-    "eslint": "^3 || ^4 || ^5 || ^6 || ^7 || ^8"
+    "eslint": "^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9"
   },
   "engines": {
     "node": ">=4"

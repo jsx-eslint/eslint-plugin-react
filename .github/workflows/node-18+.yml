@@ -26,6 +26,7 @@ jobs:
       matrix:
         node-version: ${{ fromJson(needs.matrix.outputs.latest) }}
         eslint:
+          - 9
           - 8
           - 7
           - 6
@@ -48,6 +49,7 @@ jobs:
             npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@5" "babel-eslint@${{ matrix.babel-eslint }}"
         env:
           NPM_CONFIG_LEGACY_PEER_DEPS: true
+          ESLINT_USE_FLAT_CONFIG: false
       - run: npx ls-engines
       - run: npm run unit-test
       - uses: codecov/codecov-action@v3.1.5
