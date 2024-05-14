@@ -8,8 +8,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`prop-types`]: null-check rootNode before calling getScope ([#3762][] @crnhrv)
 * [`boolean-prop-naming`]: avoid a crash with a spread prop ([#3733][] @ljharb)
+* [`jsx-boolean-value`]: `assumeUndefinedIsFalse` with `never` must not allow explicit `true` value ([#3757][] @6uliver)
 
 [#3762]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3762
+[#3757]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3757
 [#3733]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3733
 
 ## [7.34.2] - 2024.05.24
