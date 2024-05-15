@@ -126,6 +126,112 @@ ruleTester.run('no-render-return-undefined', rule, {
             }
         `,
     },
+    {
+      code: `
+            function App() {
+              function getUI() {
+                return 1;
+              }
+              return getUI();
+            }
+        `,
+    },
+    {
+      code: `
+            function getFoo() {
+              return 1;
+            }
+
+            function App() {
+              function getUI() {
+                return getFoo();
+              }
+              return getUI();
+            }
+        `,
+    },
+    {
+      code: `
+            const getFoo = () => 1;
+
+            function App() {
+              function getUI() {
+                return getFoo();
+              }
+              return getUI();
+            }
+        `,
+    },
+    {
+      code: `
+            function getFoo() {
+              return 1;
+            };
+
+            function App() {
+              function getUI() {
+                return getFoo();
+              }
+              return getUI();
+            }
+        `,
+    },
+    {
+      code: `
+            function getA() {
+              return <A />;
+            };
+            function getB() {
+              return <B />;
+            };
+
+            function App() {
+              function getUI() {
+                return condition ? getA() : getB();
+              }
+              return getUI();
+            }
+        `,
+    },
+    {
+      code: `
+            const getA = () => <A />;
+            const getB = () => <B />;
+
+            function App() {
+              function getUI() {
+                return condition ? getA() : getB();
+              }
+              return getUI();
+            }
+        `,
+    },
+    {
+      code: `
+            const getNum = () => 123;
+            const getString = () => "ABC";
+
+            function App() {
+              function getUI() {
+                return condition ? getNum() : getString();
+              }
+              return getUI();
+            }
+        `,
+    },
+    {
+      code: `
+            const getA = () => null;
+            const getB = () => [12, "Hello"];
+
+            function App() {
+              function getUI() {
+                return condition ? getA() : getB();
+              }
+              return getUI();
+            }
+        `,
+    },
 
     // Class Components
     {
@@ -143,7 +249,7 @@ ruleTester.run('no-render-return-undefined', rule, {
           render() {
             return 1;
           }
-        }      
+        }
       `,
     },
     {
@@ -170,7 +276,7 @@ ruleTester.run('no-render-return-undefined', rule, {
           render() {
             return "Hello World";
           }
-        }      
+        }
       `,
     },
     {
@@ -197,7 +303,7 @@ ruleTester.run('no-render-return-undefined', rule, {
           render() {
             return <div />;
           }
-        }      
+        }
       `,
     },
     {
@@ -407,6 +513,78 @@ ruleTester.run('no-render-return-undefined', rule, {
           `,
       errors: [{ messageId: 'returnsUndefined' }],
     },
+    {
+      code: `
+            function App() {
+              function getUI() {
+                return undefined;
+              }
+              return getUI();
+            }
+        `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+            function getFoo() {
+              return undefined;
+            }
+
+            function App() {
+              function getUI() {
+                return getFoo();
+              }
+              return getUI();
+            }
+        `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+            const getFoo = () => undefined;
+
+            function App() {
+              function getUI() {
+                return getFoo();
+              }
+              return getUI();
+            }
+        `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+            function getA() {
+              return undefined;
+            };
+            function getB() {
+              return <B />;
+            };
+
+            function App() {
+              function getUI() {
+                return condition ? getA() : getB();
+              }
+              return getUI();
+            }
+        `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+            const getA = () => undefined;
+            const getB = () => <B />;
+
+            function App() {
+              function getUI() {
+                return condition ? getA() : getB();
+              }
+              return getUI();
+            }
+        `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+
     // Class Components
     {
       code: `
@@ -430,7 +608,7 @@ ruleTester.run('no-render-return-undefined', rule, {
       code: `
         const App = class {
           render() {}
-        }      
+        }
       `,
       errors: [{ messageId: 'returnsUndefined' }],
     },
