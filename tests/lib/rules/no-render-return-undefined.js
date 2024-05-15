@@ -28,6 +28,7 @@ const parserOptions = {
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-render-return-undefined', rule, {
+  // Valid Cases
   valid: parsers.all([
     {
       code: `
@@ -125,7 +126,128 @@ ruleTester.run('no-render-return-undefined', rule, {
             }
         `,
     },
+
+    // Class Components
+    {
+      code: `
+        class App {
+          render() {
+            return 1;
+          }
+        }
+      `,
+    },
+    {
+      code: `
+        const App = class {
+          render() {
+            return 1;
+          }
+        }      
+      `,
+    },
+    {
+      code: `
+        class App extends React.Component {
+          render() {
+            return 1;
+          }
+        }
+      `,
+    },
+    {
+      code: `
+        class App {
+          render() {
+            return "Hello World";
+          }
+        }
+      `,
+    },
+    {
+      code: `
+        const App = class {
+          render() {
+            return "Hello World";
+          }
+        }      
+      `,
+    },
+    {
+      code: `
+        class App extends React.Component {
+          render() {
+            return "Hello World";
+          }
+        }
+      `,
+    },
+    {
+      code: `
+        class App {
+          render() {
+            return <div />;
+          }
+        }
+      `,
+    },
+    {
+      code: `
+        const App = class {
+          render() {
+            return <div />;
+          }
+        }      
+      `,
+    },
+    {
+      code: `
+        class App extends React.Component {
+          render() {
+            return <div />;
+          }
+        }
+      `,
+    },
+    {
+      code: `
+        class App {
+          render() {
+            return [1, "Hello", <div />];
+          }
+        }
+      `,
+    },
+    {
+      code: `
+        class App extends React.Component {
+          render() {
+            return [1, "Hello", <div />];
+          }
+        }
+      `,
+    },
+    {
+      code: `
+        class App {
+          render() {
+            return null;
+          }
+        }
+      `,
+    },
+    {
+      code: `
+        class App extends React.Component {
+          render() {
+            return null;
+          }
+        }
+      `,
+    },
   ]),
+
+  // Invalid Cases
   invalid: parsers.all([
     {
       code: `
@@ -235,7 +357,6 @@ ruleTester.run('no-render-return-undefined', rule, {
     {
       code: `
             function foo() {}
-
             function App() {
                 return foo();
             }
@@ -284,6 +405,113 @@ ruleTester.run('no-render-return-undefined', rule, {
                 return; <div />;
             }
           `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    // Class Components
+    {
+      code: `
+        class App {
+          render() {
+          }
+        }
+      `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        class App extends React.Component {
+          render() {
+          }
+        }
+      `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        const App = class {
+          render() {}
+        }      
+      `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        class App {
+          render() {
+            return;
+          }
+        }
+      `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        class App extends React.Component {
+          render() {
+            return;
+          }
+        }
+      `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        class App {
+          render() {
+            return undefined;
+          }
+        }
+      `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        class App extends React.Component {
+          render() {
+            return undefined;
+          }
+        }
+      `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        class App {
+          render() {
+            return [undefined];
+          }
+        }
+      `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        class App extends React.Component {
+          render() {
+            return [undefined];
+          }
+        }
+      `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        class App {
+          render() {
+            return [1, undefined];
+          }
+        }
+      `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        class App extends React.Component {
+          render() {
+            return [1, undefined];
+          }
+        }
+      `,
       errors: [{ messageId: 'returnsUndefined' }],
     },
   ]),
