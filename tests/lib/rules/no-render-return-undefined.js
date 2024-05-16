@@ -260,6 +260,25 @@ ruleTester.run('no-render-return-undefined', rule, {
     },
     {
       code: `
+            let ui = <Component />;
+            function App() {
+                return ui;
+            }
+      `,
+    },
+    {
+      code: `
+        function getUI() {
+            if(condition) return <h1>Hello</h1>;
+            return null;
+        }
+        function App() {
+            return getUI();
+        }
+      `,
+    },
+    {
+      code: `
             function App() {
               function getUI() {
                 return 1;
@@ -667,6 +686,38 @@ ruleTester.run('no-render-return-undefined', rule, {
                 return; <div />;
             }
           `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        let ui;
+        function App() {
+            return ui;
+        }
+      `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        let ui;
+        function App() {
+            if(cond) {
+              ui = <div />;
+            }
+            return ui;
+        }
+      `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        function getUI() {
+            if(condition) return <h1>Hello</h1>;
+        }
+        function App() {
+            return getUI();
+        }
+      `,
       errors: [{ messageId: 'returnsUndefined' }],
     },
     {
