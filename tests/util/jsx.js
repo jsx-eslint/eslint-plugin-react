@@ -35,7 +35,7 @@ const mockContext = {
 describe('jsxUtil', () => {
   describe('isReturningJSX', () => {
     const assertValid = (codeStr) => assert(
-      isReturningJSX(parseCode(codeStr), mockContext)
+      isReturningJSX(mockContext, parseCode(codeStr))
     );
 
     it('Works when returning JSX', () => {
