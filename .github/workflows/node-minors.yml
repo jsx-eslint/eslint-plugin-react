@@ -100,7 +100,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           after_install: |
-            npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.node-version >= 14 && '5' || (matrix.node-version >= 12 && '4' || (matrix.node-version >= 10 && '4.0' || (matrix.node-version >= 8 && '3' || '2'))) }}" "babel-eslint@${{ matrix.babel-eslint }}"
+            npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.node-version >= 16 && '6' || matrix.node-version >= 14 && '5' || (matrix.node-version >= 12 && '4' || (matrix.node-version >= 10 && '4.0' || (matrix.node-version >= 8 && '3' || '2'))) }}" "babel-eslint@${{ matrix.babel-eslint }}"
           skip-ls-check: ${{ matrix.node-version < 10 && true || false }}
         env:
           NPM_CONFIG_LEGACY_PEER_DEPS: true
