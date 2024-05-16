@@ -417,6 +417,42 @@ ruleTester.run('no-render-return-undefined', rule, {
             }
         `,
     },
+    {
+      code: `
+        const data = ['John', 'Ram' , 'Akul'];
+        function App() {
+          return data.map(name => <h1>{name}</h1>);
+        }
+      `,
+    },
+    {
+      code: `
+        const data = ['John', 'Ram' , 'Akul'];
+        function App() {
+          return data.map(name => {
+            return <h1>{name}</h1>;
+          });
+        }
+      `,
+    },
+    {
+      code: `
+        const data = ['John', 'Ram' , 'Akul'];
+        function App() {
+          return cond && data.map(name => {
+            return <h1>{name}</h1>;
+          });
+        }
+      `,
+    },
+    {
+      code: `
+        const data = ['John', 'Ram' , 'Akul'];
+        function App() {
+          return cond ? data.map(name => <h1>{name}</h1>) : null;
+        }
+      `,
+    },
   ]),
 
   // Invalid Cases
@@ -843,6 +879,49 @@ ruleTester.run('no-render-return-undefined', rule, {
               return condition || getFoo();
             }
         `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        const data = ['John', 'Ram' , 'Akul'];
+        function App() {
+          return cond ? data.map(name => <h1>{name}</h1>) : undefined;
+        }
+      `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        const data = ['John', 'Ram' , 'Akul'];
+        function App() {
+          return data.map(name => {
+            if(cond) return <h1>{name}</h1>;
+          });
+        }
+      `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        const data = ['John', 'Ram' , 'Akul'];
+        function App() {
+          if(cond) {
+            return data.map(name => <h1>{name}</h1>);
+          }
+        }
+      `,
+      errors: [{ messageId: 'returnsUndefined' }],
+    },
+    {
+      code: `
+        let x;
+        const data = ['John', 'Ram' , 'Akul'];
+        function App() {
+          return cond ? data.map(name => {
+            return <h1>{name}</h1>;
+          }) : x;
+        }
+      `,
       errors: [{ messageId: 'returnsUndefined' }],
     },
   ]),
