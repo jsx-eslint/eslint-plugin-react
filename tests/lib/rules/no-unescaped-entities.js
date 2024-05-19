@@ -20,7 +20,7 @@ try {
   allowsInvalidJSX = semver.satisfies(require(resolve.sync('acorn-jsx/package.json', { basedir: path.dirname(require.resolve('eslint')) })).version, '< 5.2');
 } catch (e) { /**/ }
 
-const RuleTester = require('eslint').RuleTester;
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/no-unescaped-entities');
 
 const parsers = require('../../helpers/parsers');

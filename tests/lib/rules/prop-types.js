@@ -12,7 +12,7 @@
 const semver = require('semver');
 const eslintPkg = require('eslint/package.json').version;
 const babelEslintVersion = require('babel-eslint/package.json').version;
-const RuleTester = require('eslint').RuleTester;
+const RuleTester = require('../../helpers/ruleTester');
 
 const rule = require('../../../lib/rules/prop-types');
 

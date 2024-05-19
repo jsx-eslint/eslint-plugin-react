@@ -4,9 +4,9 @@
 
 'use strict';
 
-const RuleTester = require('eslint').RuleTester;
 const semver = require('semver');
 const eslintPkg = require('eslint/package.json');
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/destructuring-assignment');
 
 const parsers = require('../../helpers/parsers');
