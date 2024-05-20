@@ -762,14 +762,6 @@ ruleTester.run('jsx-curly-spacing', rule, {
         ...bar
         } />;
       `,
-      options: ['always'],
-    },
-    {
-      code: `
-        <App {
-        ...bar
-        } />;
-      `,
       options: ['never'],
     },
     {

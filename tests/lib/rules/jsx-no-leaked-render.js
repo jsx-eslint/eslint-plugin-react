@@ -126,14 +126,6 @@ ruleTester.run('jsx-no-leaked-render', rule, {
       `,
       options: [{ validStrategies: ['coerce', 'ternary'] }],
     },
-    {
-      code: `
-        const Component = ({ elements, count }) => {
-          return <div>{!!count && <List elements={elements}/>}</div>
-        }
-      `,
-      options: [{ validStrategies: ['coerce'] }],
-    },
 
     // Fixes for:
     // - https://github.com/jsx-eslint/eslint-plugin-react/issues/3292

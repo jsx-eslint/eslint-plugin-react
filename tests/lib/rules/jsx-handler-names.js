@@ -265,7 +265,7 @@ ruleTester.run('jsx-handler-names', rule, {
       ],
     },
     {
-      code: '<TestComponent only={this.handleChange} />',
+      code: '<TestComponent2 only={this.handleChange} />',
       errors: [
         {
           messageId: 'badPropKey',

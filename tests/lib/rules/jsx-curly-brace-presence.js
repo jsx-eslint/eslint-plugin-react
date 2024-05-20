@@ -658,12 +658,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       errors: [{ messageId: 'missingCurly' }],
     },
     {
-      code: `<MyComponent prop="foo 'bar'">foo</MyComponent>`,
-      output: `<MyComponent prop={"foo 'bar'"}>foo</MyComponent>`,
-      options: [{ props: 'always' }],
-      errors: [{ messageId: 'missingCurly' }],
-    },
-    {
       code: '<MyComponent>foo bar </MyComponent>',
       output: `<MyComponent>{"foo bar "}</MyComponent>`,
       options: [{ children: 'always' }],

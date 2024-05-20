@@ -371,39 +371,6 @@ ruleTester.run('display-name', rule, {
     },
     {
       code: `
-        import React, {createElement} from "react";
-        const SomeComponent = (props) => {
-          const {foo, bar} = props;
-          return someComponentFactory({
-            onClick: () => foo(bar("x"))
-          });
-        };
-      `,
-    },
-    {
-      code: `
-        import React, {Component} from "react";
-        function someDecorator(ComposedComponent) {
-          return class MyDecorator extends Component {
-            render() {return <ComposedComponent {...this.props} />;}
-          };
-        }
-        module.exports = someDecorator;
-      `,
-    },
-    {
-      code: `
-        import React, {Component} from "react";
-        function someDecorator(ComposedComponent) {
-          return class MyDecorator extends Component {
-            render() {return <ComposedComponent {...this.props} />;}
-          };
-        }
-        module.exports = someDecorator;
-      `,
-    },
-    {
-      code: `
         const element = (
           <Media query={query} render={() => {
             renderWasCalled = true

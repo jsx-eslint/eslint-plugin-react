@@ -168,21 +168,6 @@ ruleTester.run('forbid-component-props', rule, {
     },
     {
       code: `
-        const item = (<Foo className="foo" />);
-      `,
-      options: [
-        {
-          forbid: [
-            {
-              propName: 'className',
-              disallowedFor: ['ReactModal'],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      code: `
         <fbt:param name="Total number of files" number={true} />
       `,
       features: ['jsx namespace'],

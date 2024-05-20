@@ -375,18 +375,6 @@ ruleTester.run('destructuring-assignment', rule, {
         import { useContext } from 'react';
 
         const MyComponent = (props) => {
-          const {foo} = useContext(aContext);
-          return <div>{foo}</div>
-        };
-      `,
-      options: ['always'],
-      settings: { react: { version: '16.9.0' } },
-    },
-    {
-      code: `
-        import { useContext } from 'react';
-
-        const MyComponent = (props) => {
           const foo = useContext(aContext);
           return <div>{foo.test}</div>
         };

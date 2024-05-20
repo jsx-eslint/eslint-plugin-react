@@ -1589,15 +1589,6 @@ ruleTester.run('prop-types', rule, {
       `,
     },
     {
-      // Async generator functions can't be components.
-      code: `
-        var Hello = async function* (props) {
-          yield null;
-          return <div>Hello {props.name}</div>;
-        }
-      `,
-    },
-    {
       // Flow annotations with variance
       code: `
         type Props = {
@@ -5313,27 +5304,6 @@ ruleTester.run('prop-types', rule, {
         }
         Test.propTypes = propTypes;
       `,
-      errors: [
-        {
-          messageId: 'missingPropType',
-          data: { name: 'lastname' },
-        },
-      ],
-    },
-    {
-      code: `
-        class Test extends Foo.Component {
-          render() {
-            return (
-              <div>{this.props.firstname} {this.props.lastname}</div>
-            );
-          }
-        }
-        Test.propTypes = {
-          firstname: PropTypes.string
-        };
-      `,
-      settings,
       errors: [
         {
           messageId: 'missingPropType',

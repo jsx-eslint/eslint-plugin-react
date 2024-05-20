@@ -951,26 +951,6 @@ foo
       code: `
         <App>
           <Foo></
-        Foo></App>
-      `,
-      output: `
-        <App>
-          <Foo></
-        Foo>
-</App>
-      `,
-      errors: [
-        {
-          messageId: 'moveToNewLine',
-          data: { descriptor: 'Foo' },
-        },
-      ],
-      parserOptions,
-    },
-    {
-      code: `
-        <App>
-          <Foo></
         Foo><Bar />
         </App>
       `,

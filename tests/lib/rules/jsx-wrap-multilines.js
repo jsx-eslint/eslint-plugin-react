@@ -1394,16 +1394,6 @@ ruleTester.run('jsx-wrap-multilines', rule, {
       ],
     },
     {
-      code: DECLARATION_TERNARY_PAREN_FRAGMENT,
-      features: ['fragment'],
-      output: addNewLineSymbols(DECLARATION_TERNARY_PAREN_FRAGMENT),
-      options: [{ declaration: 'parens-new-line' }],
-      errors: [
-        { messageId: 'parensOnNewLines' },
-        { messageId: 'parensOnNewLines' },
-      ],
-    },
-    {
       code: ASSIGNMENT_TERNARY_NO_PAREN,
       output: addNewLineSymbols(ASSIGNMENT_TERNARY_PAREN),
       options: [{ assignment: 'parens-new-line' }],
