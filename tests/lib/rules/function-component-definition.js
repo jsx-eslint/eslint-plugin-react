@@ -807,11 +807,7 @@ ruleTester.run('function-component-definition', rule, {
           return <div/>;
         }
       `,
-      output: `
-        var Hello: React.FC<Test> = function(props) {
-          return <div/>;
-        }
-      `,
+      output: null,
       options: [{ namedComponents: 'function-declaration' }],
       errors: [{ messageId: 'function-declaration' }],
       features: ['types'],
@@ -822,11 +818,7 @@ ruleTester.run('function-component-definition', rule, {
           return <div/>;
         };
       `,
-      output: `
-        var Hello: React.FC<Test> = (props) => {
-          return <div/>;
-        };
-      `,
+      output: null,
       options: [{ namedComponents: 'function-declaration' }],
       errors: [{ messageId: 'function-declaration' }],
       features: ['types'],
@@ -852,11 +844,7 @@ ruleTester.run('function-component-definition', rule, {
           return <div/>;
         }
       `,
-      output: `
-        function Hello<Test>(props: Test) {
-          return <div/>;
-        }
-      `,
+      output: null,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
       features: ['types'],
@@ -963,13 +951,7 @@ ruleTester.run('function-component-definition', rule, {
           }
         }
       `,
-      output: `
-        function wrap(Component) {
-          return function<Test>(props) {
-            return <div><Component {...props}/></div>
-          }
-        }
-      `,
+      output: null,
       errors: [{ messageId: 'arrow-function' }],
       options: [{ unnamedComponents: 'arrow-function' }],
       features: ['types'],
