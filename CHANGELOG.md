@@ -14,6 +14,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3724]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3724
 [#3694]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3694
 
+### Fixed
+* [`no-invalid-html-attribute`]: substitute placeholders in suggestion messages ([#3759][] @mdjermanovic)
+
 ## [7.34.4] - 2024.07.13
 
 ### Fixed
