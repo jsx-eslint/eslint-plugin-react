@@ -9,11 +9,11 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const eslint = require('eslint');
 const ruleNoUnusedVars = require('../../helpers/getESLintCoreRule')('no-unused-vars');
 const rulePreferConst = require('../../helpers/getESLintCoreRule')('prefer-const');
 
 const RuleTester = require('../../helpers/ruleTester');
+const getRuleDefiner = require('../../helpers/getRuleDefiner');
 
 const parsers = require('../../helpers/parsers');
 
@@ -30,7 +30,7 @@ const parserOptions = {
 // -----------------------------------------------------------------------------
 
 const ruleTester = new RuleTester({ parserOptions });
-const ruleDefiner = ruleTester[Symbol.for('react.RuleTester.RuleDefiner')] || ruleTester.linter || eslint.linter || eslint.Linter;
+const ruleDefiner = getRuleDefiner(ruleTester);
 ruleDefiner.defineRule('react/jsx-uses-vars', require('../../../lib/rules/jsx-uses-vars'));
 
 ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
