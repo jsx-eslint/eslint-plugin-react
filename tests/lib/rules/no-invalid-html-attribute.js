@@ -247,12 +247,13 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         {
           messageId: 'neverValid',
           data: {
-            reportingValue: 'alternatex',
             attributeName: 'rel',
+            reportingValue: 'alternatex',
           },
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'alternatex' },
               output: '<a rel=""></a>',
             },
           ],
@@ -266,12 +267,13 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         {
           messageId: 'neverValid',
           data: {
-            reportingValue: 'alternatex',
             attributeName: 'rel',
+            reportingValue: 'alternatex',
           },
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'alternatex' },
               output: 'React.createElement("a", { rel: "" })',
             },
           ],
@@ -291,6 +293,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'alternatex' },
               output: 'React.createElement("a", { rel: [""] })',
             },
           ],
@@ -304,12 +307,13 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         {
           messageId: 'neverValid',
           data: {
-            reportingValue: 'alternatex',
             attributeName: 'rel',
+            reportingValue: 'alternatex',
           },
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'alternatex' },
               output: '<a rel=" alternate"></a>',
             },
           ],
@@ -323,12 +327,13 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         {
           messageId: 'neverValid',
           data: {
-            reportingValue: 'alternatex alternate',
             attributeName: 'rel',
+            reportingValue: 'alternatex alternate',
           },
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'alternatex alternate' },
               output: 'React.createElement("a", { rel: "" })',
             },
           ],
@@ -348,6 +353,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'alternatex alternate' },
               output: 'React.createElement("a", { rel: [""] })',
             },
           ],
@@ -367,6 +373,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'alternatex' },
               output: '<a rel="alternate "></a>',
             },
           ],
@@ -386,6 +393,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'alternate alternatex' },
               output: 'React.createElement("a", { rel: "" })',
             },
           ],
@@ -405,6 +413,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'alternate alternatex' },
               output: 'React.createElement("a", { rel: [""] })',
             },
           ],
@@ -424,6 +433,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveDefault',
+              data: { attributeName: 'rel' },
               output: '<html ></html>',
             },
           ],
@@ -443,6 +453,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           // suggestions: [
           //   {
           //     messageId: 'suggestRemoveDefault',
+          //     data: { attributeName: 'rel' },
           //     output: 'React.createElement("html", { })',
           //   },
           // ],
@@ -460,6 +471,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveEmpty',
+              data: { attributeName: 'rel' },
               output: '<a ></a>',
             },
           ],
@@ -508,6 +520,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveDefault',
+              data: { attributeName: 'rel' },
               output: '<span ></span>',
             },
           ],
@@ -524,6 +537,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveNonString',
+              data: { attributeName: 'rel' },
               output: '<a ></a>',
             },
           ],
@@ -540,6 +554,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveNonString',
+              data: { attributeName: 'rel' },
               output: '<a ></a>',
             },
           ],
@@ -552,10 +567,11 @@ ruleTester.run('no-invalid-html-attribute', rule, {
       errors: [
         {
           messageId: 'onlyStrings',
-          data: { attributeName: 'rel' },
+          data: { attributeName: 'rel', reportingValue: 'true' },
           suggestions: [
             {
               messageId: 'suggestRemoveNonString',
+              data: { attributeName: 'rel', reportingValue: 'true' },
               output: '<a ></a>',
             },
           ],
@@ -572,6 +588,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveDefault',
+              data: { attributeName: 'rel' },
               output: '<a ></a>',
             },
           ],
@@ -588,6 +605,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveDefault',
+              data: { attributeName: 'rel' },
               output: '<a ></a>',
             },
           ],
@@ -607,6 +625,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'foobar' },
               output: '<a rel="noreferrer noopener "></a>',
             },
           ],
@@ -623,6 +642,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveWhitespaces',
+              data: { attributeName: 'rel' },
               output: '<a rel="noreferrer noopener"></a>',
             },
           ],
@@ -639,6 +659,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveWhitespaces',
+              data: { attributeName: 'rel' },
               output: '<a rel="noreferrer noopener"></a>',
             },
           ],
@@ -655,6 +676,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveWhitespaces',
+              data: { attributeName: 'rel' },
               output: '<a rel="noreferrer noopener"></a>',
             },
           ],
@@ -674,6 +696,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'foobar' },
               output: '<a rel={"noreferrer noopener "}></a>',
             },
           ],
@@ -693,6 +716,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'foobar' },
               output: 'React.createElement("a", { rel: ["noreferrer", "noopener", "" ] })',
             },
           ],
@@ -712,6 +736,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'foobar' },
               output: '<a rel={" noreferrer noopener"}></a>',
             },
           ],
@@ -731,6 +756,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'foobar' },
               output: '<a rel={" batgo       noopener"}></a>',
             },
           ],
@@ -745,6 +771,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'batgo' },
               output: '<a rel={"foobar        noopener"}></a>',
             },
           ],
@@ -753,6 +780,13 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         {
           messageId: 'spaceDelimited',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveWhitespaces',
+              data: { attributeName: 'rel' },
+              output: '<a rel={"foobar batgo noopener"}></a>',
+            },
+          ],
         },
       ],
     },
@@ -765,6 +799,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveWhitespaces',
+              data: { attributeName: 'rel' },
               output: '<a rel={"noopener"}></a>',
             },
           ],
@@ -781,6 +816,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveWhitespaces',
+              data: { attributeName: 'rel' },
               output: '<a rel={"noopener"}></a>',
             },
           ],
@@ -800,6 +836,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'batgo' },
               output: '<a rel={"  noopener"}></a>',
             },
           ],
@@ -808,6 +845,13 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         {
           messageId: 'spaceDelimited',
           data: { attributeName: 'rel' },
+          suggestions: [
+            {
+              messageId: 'suggestRemoveWhitespaces',
+              data: { attributeName: 'rel' },
+              output: '<a rel={"batgo noopener"}></a>',
+            },
+          ],
         },
       ],
     },
@@ -823,6 +867,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'batgo' },
               output: '<a rel={" noopener"}></a>',
             },
           ],
@@ -839,6 +884,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveWhitespaces',
+              data: { attributeName: 'rel' },
               output: '<a rel={"noopener"}></a>',
             },
           ],
@@ -859,6 +905,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'canonical' },
               output: '<a rel=""></a>',
             },
           ],
@@ -879,6 +926,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'dns-prefetch' },
               output: '<a rel=""></a>',
             },
           ],
@@ -899,6 +947,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'icon' },
               output: '<a rel=""></a>',
             },
           ],
@@ -925,12 +974,16 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         {
           messageId: 'neverValid',
           data: {
-            reportingValue: 'foo',
             attributeName: 'rel',
+            reportingValue: 'foo',
           },
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: {
+                attributeName: 'rel',
+                reportingValue: 'foo',
+              },
               output: '<link rel="shortcut "></link>',
             },
           ],
@@ -956,6 +1009,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveWhitespaces',
+              data: { attributeName: 'rel' },
               output: '<link rel="shortcut icon"></link>',
             },
           ],
@@ -969,12 +1023,16 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         {
           messageId: 'neverValid',
           data: {
-            reportingValue: 'foo',
             attributeName: 'rel',
+            reportingValue: 'foo',
           },
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: {
+                attributeName: 'rel',
+                reportingValue: 'foo',
+              },
               output: '<link rel="shortcut  "></link>',
             },
           ],
@@ -983,6 +1041,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         {
           messageId: 'notAlone',
           data: {
+            attributeName: 'rel',
             reportingValue: 'shortcut',
             missingValue: 'icon',
           },
@@ -993,6 +1052,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveWhitespaces',
+              data: { attributeName: 'rel' },
               output: '<link rel="shortcut foo"></link>',
             },
           ],
@@ -1013,6 +1073,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'manifest' },
               output: '<a rel=""></a>',
             },
           ],
@@ -1033,6 +1094,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'modulepreload' },
               output: '<a rel=""></a>',
             },
           ],
@@ -1053,6 +1115,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'pingback' },
               output: '<a rel=""></a>',
             },
           ],
@@ -1073,6 +1136,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'preconnect' },
               output: '<a rel=""></a>',
             },
           ],
@@ -1093,6 +1157,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'prefetch' },
               output: '<a rel=""></a>',
             },
           ],
@@ -1113,6 +1178,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'preload' },
               output: '<a rel=""></a>',
             },
           ],
@@ -1133,6 +1199,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'prerender' },
               output: '<a rel=""></a>',
             },
           ],
@@ -1153,6 +1220,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'stylesheet' },
               output: '<a rel=""></a>',
             },
           ],
@@ -1173,6 +1241,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'canonical' },
               output: '<area rel=""></area>',
             },
           ],
@@ -1193,6 +1262,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'dns-prefetch' },
               output: '<area rel=""></area>',
             },
           ],
@@ -1213,6 +1283,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'icon' },
               output: '<area rel=""></area>',
             },
           ],
@@ -1233,6 +1304,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'manifest' },
               output: '<area rel=""></area>',
             },
           ],
@@ -1253,6 +1325,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'modulepreload' },
               output: '<area rel=""></area>',
             },
           ],
@@ -1273,6 +1346,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'pingback' },
               output: '<area rel=""></area>',
             },
           ],
@@ -1293,6 +1367,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'preconnect' },
               output: '<area rel=""></area>',
             },
           ],
@@ -1313,6 +1388,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'prefetch' },
               output: '<area rel=""></area>',
             },
           ],
@@ -1333,6 +1409,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'preload' },
               output: '<area rel=""></area>',
             },
           ],
@@ -1353,6 +1430,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'prerender' },
               output: '<area rel=""></area>',
             },
           ],
@@ -1373,6 +1451,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'stylesheet' },
               output: '<area rel=""></area>',
             },
           ],
@@ -1393,6 +1472,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'bookmark' },
               output: '<link rel=""></link>',
             },
           ],
@@ -1413,6 +1493,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'external' },
               output: '<link rel=""></link>',
             },
           ],
@@ -1433,6 +1514,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'nofollow' },
               output: '<link rel=""></link>',
             },
           ],
@@ -1453,6 +1535,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'noopener' },
               output: '<link rel=""></link>',
             },
           ],
@@ -1472,6 +1555,8 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           },
           suggestions: [
             {
+              messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'noreferrer' },
               output: '<link rel=""></link>',
             },
           ],
@@ -1492,6 +1577,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'opener' },
               output: '<link rel=""></link>',
             },
           ],
@@ -1512,6 +1598,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'tag' },
               output: '<link rel=""></link>',
             },
           ],
@@ -1532,6 +1619,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'alternate' },
               output: '<form rel=""></form>',
             },
           ],
@@ -1552,6 +1640,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'author' },
               output: '<form rel=""></form>',
             },
           ],
@@ -1572,6 +1661,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'bookmark' },
               output: '<form rel=""></form>',
             },
           ],
@@ -1592,6 +1682,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'canonical' },
               output: '<form rel=""></form>',
             },
           ],
@@ -1612,6 +1703,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'dns-prefetch' },
               output: '<form rel=""></form>',
             },
           ],
@@ -1632,6 +1724,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'icon' },
               output: '<form rel=""></form>',
             },
           ],
@@ -1652,6 +1745,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'manifest' },
               output: '<form rel=""></form>',
             },
           ],
@@ -1672,6 +1766,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'modulepreload' },
               output: '<form rel=""></form>',
             },
           ],
@@ -1692,6 +1787,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'pingback' },
               output: '<form rel=""></form>',
             },
           ],
@@ -1712,6 +1808,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'preconnect' },
               output: '<form rel=""></form>',
             },
           ],
@@ -1732,6 +1829,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'prefetch' },
               output: '<form rel=""></form>',
             },
           ],
@@ -1752,6 +1850,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'preload' },
               output: '<form rel=""></form>',
             },
           ],
@@ -1772,6 +1871,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'prerender' },
               output: '<form rel=""></form>',
             },
           ],
@@ -1792,6 +1892,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'stylesheet' },
               output: '<form rel=""></form>',
             },
           ],
@@ -1812,6 +1913,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveInvalid',
+              data: { reportingValue: 'tag' },
               output: '<form rel=""></form>',
             },
           ],
@@ -1832,6 +1934,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           suggestions: [
             {
               messageId: 'suggestRemoveEmpty',
+              data: { attributeName: 'rel' },
               output: '<form ></form>',
             },
           ],
