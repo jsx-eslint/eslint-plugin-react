@@ -45,12 +45,12 @@
     "string.prototype.matchall": "^4.0.10"
   },
   "devDependencies": {
-    "@babel/core": "^7.24.0",
-    "@babel/eslint-parser": "^7.23.10",
-    "@babel/plugin-syntax-decorators": "^7.24.0",
-    "@babel/plugin-syntax-do-expressions": "^7.23.3",
-    "@babel/plugin-syntax-function-bind": "^7.23.3",
-    "@babel/preset-react": "^7.23.3",
+    "@babel/core": "^7.24.6",
+    "@babel/eslint-parser": "^7.24.6",
+    "@babel/plugin-syntax-decorators": "^7.24.6",
+    "@babel/plugin-syntax-do-expressions": "^7.24.6",
+    "@babel/plugin-syntax-function-bind": "^7.24.6",
+    "@babel/preset-react": "^7.24.6",
     "@types/eslint": "=7.2.10",
     "@types/estree": "0.0.52",
     "@types/node": "^4.9.5",
