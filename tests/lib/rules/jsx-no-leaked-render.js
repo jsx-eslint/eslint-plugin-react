@@ -195,6 +195,24 @@ ruleTester.run('jsx-no-leaked-render', rule, {
       `,
       options: [{ validStrategies: ['coerce'] }],
     },
+    {
+      code: `
+        const isOpen = true;
+        const Component = () => {
+          return <Popover open={isOpen && items.length > 0} />
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+    },
+    {
+      code: `
+        const isOpen = false;
+        const Component = () => {
+          return <Popover open={isOpen && items.length > 0} />
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+    },
   ]) || [],
 
   invalid: parsers.all([].concat(
@@ -972,6 +990,26 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         line: 5,
         column: 16,
       }],
-    } : []
+    } : [],
+    {
+      code: `
+        const isOpen = 0;
+        const Component = () => {
+          return <Popover open={isOpen && items.length > 0} />
+        }
+      `,
+      output: `
+        const isOpen = 0;
+        const Component = () => {
+          return <Popover open={!!isOpen && items.length > 0} />
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 4,
+        column: 33,
+      }],
+    }
   )),
 });
