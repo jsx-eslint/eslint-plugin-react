@@ -5,12 +5,18 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.34.2] - 2024.05.24
+
 ### Fixed
 * [`boolean-prop-naming`]: avoid a crash with a non-TSTypeReference type ([#3718][] @developer-bandi)
 * [`jsx-no-leaked-render`]: invalid report if left side is boolean ([#3746][] @akulsr0)
 * [`jsx-closing-bracket-location`]: message shows `{{details}}` when there are no details ([#3759][] @mdjermanovic)
 * [`no-invalid-html-attribute`]: ensure error messages are correct ([#3759][] @mdjermanovic, @ljharb)
 
+### Changed
+ * [Refactor] create various eslint utils to fix eslint deprecations ([#3759][] @mdjermanovic, @ljharb)
+
+[7.34.2]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.34.1...v7.34.2
 [#3759]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3759
 [#3746]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3746
 [#3718]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3718
