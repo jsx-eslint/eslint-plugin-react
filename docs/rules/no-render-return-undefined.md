@@ -4,7 +4,7 @@
 
 <!-- end auto-generated rule header -->
 
-> Starting in React 18, components may render undefined, and React will render nothing to the DOM instead of throwing an error. However, accidentally rendering nothing in a component could still cause surprises. This rule will warn if the `return` statement in a React Component returns `undefined`.
+> Starting in React 18, components may render `undefined`, and React will render nothing to the DOM instead of throwing an error. However, accidentally rendering nothing in a component could still cause surprises. This rule will warn if the `return` statement in a React Component returns `undefined`.
 
 ## Rule Details
 
