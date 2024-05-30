@@ -3363,6 +3363,20 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
+        import React from "react";
+
+        const returnTypeProp = (someProp: any) => ({ someProp });
+
+        const SomeComponent: React.FunctionComponent<
+          ReturnType<typeof returnTypeProp>
+        > = ({ someProp }) => {
+          return <div>{someProp}</div>;
+        };
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
         export const EuiSuperSelectControl: <T extends string>(
           props: EuiSuperSelectControlProps<T>
         ) => ReturnType<FunctionComponent<EuiSuperSelectControlProps<T>>> = ({
@@ -7836,6 +7850,26 @@ ruleTester.run('prop-types', rule, {
         {
           messageId: 'missingPropType',
           data: { name: 'test' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from "react";
+
+        const returnTypeProp = (someProp: any) => ({ someProp });
+
+        const SomeComponent: React.FunctionComponent<
+          ReturnType<typeof returnTypeProp>
+        > = ({ someIncorrectProp }) => {
+          return <div>{someProp}</div>;
+        };
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'someIncorrectProp' },
         },
       ],
       features: ['ts', 'no-babel'],

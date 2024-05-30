@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`prop-types`]: null-check rootNode before calling getScope ([#3762][] @crnhrv)
+
+[#3762]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3762
+
 ## [7.34.2] - 2024.05.24
 
 ### Fixed
