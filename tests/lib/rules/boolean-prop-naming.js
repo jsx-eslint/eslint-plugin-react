@@ -415,7 +415,6 @@ ruleTester.run('boolean-prop-naming', rule, {
       `,
       options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
       features: ['ts'],
-      errors: [],
     },
     {
       code: `
@@ -426,7 +425,6 @@ ruleTester.run('boolean-prop-naming', rule, {
       `,
       options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
       features: ['types'],
-      errors: [],
     },
     {
       code: `
@@ -439,7 +437,6 @@ ruleTester.run('boolean-prop-naming', rule, {
       `,
       options: [{ rule: '(is|has)[A-Z]([A-Za-z0-9]?)+' }],
       features: ['types'],
-      errors: [],
     },
     {
       code: `
@@ -451,7 +448,6 @@ ruleTester.run('boolean-prop-naming', rule, {
       `,
       options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
       features: ['types'],
-      errors: [],
     },
     {
       code: `
@@ -465,7 +461,6 @@ ruleTester.run('boolean-prop-naming', rule, {
       `,
       options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
       features: ['types'],
-      errors: [],
     },
     {
       code: `
@@ -479,7 +474,6 @@ ruleTester.run('boolean-prop-naming', rule, {
       `,
       options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
       features: ['types'],
-      errors: [],
     },
     {
       code: `
@@ -495,7 +489,21 @@ ruleTester.run('boolean-prop-naming', rule, {
       `,
       options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
       features: ['types'],
-      errors: [],
+    },
+    {
+      code: `
+        export const DataRow = (props: { label: string; value: string; } & React.HTMLAttributes<HTMLDivElement>) => {
+            const { label, value, ...otherProps } = props;
+            return (
+                <div {...otherProps}>
+                    <span>{label}</span>
+                    <span>{value}</span>
+                </div>
+            );
+        };
+      `,
+      options: [{ rule: '(^(is|has|should|without)[A-Z]([A-Za-z0-9]?)+|disabled|required|checked|defaultChecked)' }],
+      features: ['types'],
     },
   ]),
 
