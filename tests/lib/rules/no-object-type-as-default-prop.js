@@ -144,6 +144,11 @@ ruleTester.run('no-object-type-as-default-prop', rule, {
       };
     `,
     `
+      const Foo = ({bar = 1}, context) => {
+        return null;
+      };
+    `,
+    `
       export default function NotAComponent({foo = {}}) {}
     `
   )),
@@ -179,6 +184,24 @@ ruleTester.run('no-object-type-as-default-prop', rule, {
           h = <Thing />,
           i = Symbol('foo')
         }) => {
+          return null;
+        }
+      `,
+      errors: expectedViolations,
+    },
+    {
+      code: `
+        const Foo = ({
+          a = {},
+          b = ['one', 'two'],
+          c = /regex/i,
+          d = () => {},
+          e = function() {},
+          f = class {},
+          g = new Thing(),
+          h = <Thing />,
+          i = Symbol('foo')
+        }, context) => {
           return null;
         }
       `,
