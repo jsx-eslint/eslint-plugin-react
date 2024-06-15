@@ -11,9 +11,10 @@ declare global {
   type JSXAttribute = ASTNode;
   type JSXElement = ASTNode;
   type JSXFragment = ASTNode;
+  type JSXOpeningElement = ASTNode;
   type JSXSpreadAttribute = ASTNode;
 
-  type Context = eslint.Rule.RuleContext
+  type Context = eslint.Rule.RuleContext;
 
   type TypeDeclarationBuilder = (annotation: ASTNode, parentName: string, seen: Set<typeof annotation>) => object;
 
