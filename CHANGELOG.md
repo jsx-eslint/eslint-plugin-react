@@ -10,7 +10,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`boolean-prop-naming`]: avoid a crash with a spread prop ([#3733][] @ljharb)
 * [`jsx-boolean-value`]: `assumeUndefinedIsFalse` with `never` must not allow explicit `true` value ([#3757][] @6uliver)
 * [`no-object-type-as-default-prop`]: enable rule for components with many parameters ([#3768][] @JulienR1)
+* [`jsx-key`]: incorrect behavior for checkKeyMustBeforeSpread with map callbacks ([#3769][] @akulsr0)
 
+[#3769]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3769
 [#3768]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3768
 [#3762]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3762
 [#3757]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3757
