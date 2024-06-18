@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.34.3] - 2024.06.18
+
 ### Fixed
 * [`prop-types`]: null-check rootNode before calling getScope ([#3762][] @crnhrv)
 * [`boolean-prop-naming`]: avoid a crash with a spread prop ([#3733][] @ljharb)
@@ -12,6 +14,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-object-type-as-default-prop`]: enable rule for components with many parameters ([#3768][] @JulienR1)
 * [`jsx-key`]: incorrect behavior for checkKeyMustBeforeSpread with map callbacks ([#3769][] @akulsr0)
 
+[7.34.3]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.34.2...v7.34.3
 [#3769]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3769
 [#3768]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3768
 [#3762]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3762
