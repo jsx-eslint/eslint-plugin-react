@@ -14,6 +14,7 @@ describe('Version', () => {
     expectedErrorArgs = [];
     versionUtil.resetWarningFlag();
     versionUtil.resetDetectedVersion();
+    versionUtil.resetDefaultVersion();
   });
 
   afterEach(() => {
@@ -63,6 +64,33 @@ describe('Version', () => {
       expectedErrorArgs = [
         ['Warning: React version was set to "detect" in eslint-plugin-react settings, but the "react" package is not installed. Assuming latest React version for linting.'],
       ];
+    });
+
+    it('uses default version from settings if provided and react is not installed', () => {
+      context.settings.react.defaultVersion = '16.14.0';
+      sinon.stub(context, 'getFilename').callsFake(() => path.resolve(base, 'detect-version-missing', 'test.js'));
+
+      assert.equal(versionUtil.testReactVersion(context, '16.14.0'), true);
+
+      expectedErrorArgs = [
+        ['Warning: React version was set to "detect" in eslint-plugin-react settings, but the "react" package is not installed. Assuming default React version for linting: "16.14.0".'],
+      ];
+
+      delete context.settings.react.defaultVersion;
+    });
+
+    it('fails nicely with an invalid default version of react', () => {
+      context.settings.react.defaultVersion = 'not semver';
+      sinon.stub(context, 'getFilename').callsFake(() => path.resolve(base, 'detect-version-missing', 'test.js'));
+
+      assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
+
+      expectedErrorArgs = [
+        ['Warning: React version specified in eslint-plugin-react-settings must be a valid semver version, or "detect"; got “not semver”. Falling back to latest version as default.'],
+        ['Warning: React version was set to "detect" in eslint-plugin-react settings, but the "react" package is not installed. Assuming latest React version for linting.'],
+      ];
+
+      delete context.settings.react.defaultVersion;
     });
 
     it('warns only once for failure to detect react ', () => {

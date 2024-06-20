@@ -11,6 +11,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * add [`jsx-props-no-spread-multi`] ([#3724][] @SimonSchick)
 * [`forbid-component-props`]: add `propNamePattern` to allow / disallow prop name patterns ([#3774][] @akulsr0)
 * [`jsx-handler-names`]: support ignoring component names ([#3772][] @akulsr0)
+* version settings: Allow react defaultVersion to be configurable ([#3771][] @onlywei)
 
 ### Changed
 * [Refactor] `variableUtil`: Avoid creating a single flat variable scope for each lookup ([#3782][] @DanielRosenwasser)
@@ -18,6 +19,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3782]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3782
 [#3774]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3774
 [#3772]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3772
+[#3771]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3771
 [#3759]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3759
 [#3724]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3724
 [#3694]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3694
