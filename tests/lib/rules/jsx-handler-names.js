@@ -181,6 +181,24 @@ ruleTester.run('jsx-handler-names', rule, {
       code: '<TestComponent someProp={props.onChange} />',
       options: [{ eventHandlerPropPrefix: false }],
     },
+    {
+      code: '<ComponentFromOtherLibraryBar customPropNameBar={handleSomething} />;',
+      options: [{ checkLocalVariables: true, ignoreComponentNames: ['ComponentFromOtherLibraryBar'] }],
+    },
+    {
+      code: `
+        function App() {
+          return (
+            <div>
+              <MyLibInput customPropNameBar={handleSomething} />;
+              <MyLibCheckbox customPropNameBar={handleSomething} />;
+              <MyLibButtom customPropNameBar={handleSomething} />;
+            </div>
+          )
+        }
+      `,
+      options: [{ checkLocalVariables: true, ignoreComponentNames: ['MyLib*'] }],
+    },
   ]),
 
   invalid: parsers.all([
@@ -366,6 +384,34 @@ ruleTester.run('jsx-handler-names', rule, {
         {
           messageId: 'badHandlerName',
           data: { propKey: 'onChange', handlerPrefix: 'handle' },
+        },
+      ],
+    },
+    {
+      code: `
+        function App() {
+          return (
+            <div>
+              <MyLibInput customPropNameBar={handleInput} />;
+              <MyLibCheckbox customPropNameBar={handleCheckbox} />;
+              <MyLibButtom customPropNameBar={handleButton} />;
+            </div>
+          )
+        }
+      `,
+      options: [{ checkLocalVariables: true, ignoreComponentNames: ['MyLibrary*'] }],
+      errors: [
+        {
+          messageId: 'badPropKey',
+          data: { propValue: 'handleInput', handlerPropPrefix: 'on' },
+        },
+        {
+          messageId: 'badPropKey',
+          data: { propValue: 'handleCheckbox', handlerPropPrefix: 'on' },
+        },
+        {
+          messageId: 'badPropKey',
+          data: { propValue: 'handleButton', handlerPropPrefix: 'on' },
         },
       ],
     },
