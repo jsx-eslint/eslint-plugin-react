@@ -189,11 +189,11 @@ ruleTester.run('jsx-handler-names', rule, {
       code: `
         function App() {
           return (
-            <>
+            <div>
               <MyLibInput customPropNameBar={handleSomething} />;
               <MyLibCheckbox customPropNameBar={handleSomething} />;
               <MyLibButtom customPropNameBar={handleSomething} />;
-            </>
+            </div>
           )
         }
       `,
@@ -391,11 +391,11 @@ ruleTester.run('jsx-handler-names', rule, {
       code: `
         function App() {
           return (
-            <>
+            <div>
               <MyLibInput customPropNameBar={handleInput} />;
               <MyLibCheckbox customPropNameBar={handleCheckbox} />;
               <MyLibButtom customPropNameBar={handleButton} />;
-            </>
+            </div>
           )
         }
       `,
