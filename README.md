@@ -203,27 +203,22 @@ Refer to the [official docs](https://eslint.org/docs/latest/user-guide/configuri
 The schema of the `settings.react` object would be identical to that of what's already described above in the legacy config section.
 
 <!-- markdownlint-disable-next-line no-duplicate-heading -->
-### Shareable configs
+### Flat Configs
 
-There're also 3 shareable configs.
+This plugin exports 3 flat configs.
 
-- `eslint-plugin-react/configs/all`
-- `eslint-plugin-react/configs/recommended`
-- `eslint-plugin-react/configs/jsx-runtime`
+- `flat/all`
+- `flat/recommended`
+- `flat/jsx-runtime`
 
-If your eslint.config.js is ESM, include the `.js` extension (e.g. `eslint-plugin-react/recommended.js`). Note that the next semver-major will require omitting the extension for these imports.
-
-**Note**: These configurations will import `eslint-plugin-react` and enable JSX in [`languageOptions.parserOptions`](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#configuration-objects).
-
-In the new config system, `plugin:` protocol(e.g. `plugin:react/recommended`) is no longer valid.
-As eslint does not automatically import the preset config (shareable config), you explicitly do it by yourself.
+The flat configs are available via the root plugin import. They will configure the plugin under the `react/` namespace and enable JSX in [`languageOptions.parserOptions`](https://eslint.org/docs/latest/use/configure/language-options#specifying-parser-options).
 
 ```js
-const reactRecommended = require('eslint-plugin-react/configs/recommended');
+const reactPlugin = require('eslint-plugin-react');
 
 module.exports = [
   …
-  reactRecommended, // This is not a plugin object, but a shareable config object
+  reactPlugin.configs['flat/recommended'], // This is not a plugin object, but a shareable config object
   …
 ];
 ```
@@ -234,16 +229,16 @@ You can of course add/override some properties.
 For most of the cases, you probably want to configure some properties by yourself.
 
 ```js
-const reactRecommended = require('eslint-plugin-react/configs/recommended');
+const reactPlugin = require('eslint-plugin-react');
 const globals = require('globals');
 
 module.exports = [
   …
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-    ...reactRecommended,
+    ...reactPlugin.configs['flat/recommended'],
     languageOptions: {
-      ...reactRecommended.languageOptions,
+      ...reactPlugin.configs['flat/recommended'].languageOptions,
       globals: {
         ...globals.serviceworker,
         ...globals.browser,
@@ -257,14 +252,14 @@ module.exports = [
 The above example is same as the example below, as the new config system is based on chaining.
 
 ```js
-const reactRecommended = require('eslint-plugin-react/configs/recommended');
+const reactPlugin = require('eslint-plugin-react');
 const globals = require('globals');
 
 module.exports = [
   …
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-    ...reactRecommended,
+    ...reactPlugin.configs['flat/recommended'],
   },
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],

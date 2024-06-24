@@ -16,6 +16,7 @@
 	"ignorePatterns": [
 		"coverage/",
 		".nyc_output/",
+		"tests/fixtures/flat-config/"
 	],
 	"rules": {
 		"comma-dangle": [2, "always-multiline"],

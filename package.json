@@ -15,7 +15,7 @@
     "test": "npm run unit-test",
     "posttest": "aud --production",
     "type-check": "tsc",
-    "unit-test": "istanbul cover node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js",
+    "unit-test": "istanbul cover node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js tests/flat-config.js",
     "update:eslint-docs": "eslint-doc-generator"
   },
   "repository": {
