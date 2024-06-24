@@ -2,14 +2,14 @@
 
 const assert = require('assert');
 const entries = require('object.entries');
-const eslint = require('eslint');
 const fromEntries = require('object.fromentries');
 const values = require('object.values');
 
+const RuleTester = require('../helpers/ruleTester');
 const Components = require('../../lib/util/Components');
 const parsers = require('../helpers/parsers');
 
-const ruleTester = new eslint.RuleTester({
+const ruleTester = new RuleTester({
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',

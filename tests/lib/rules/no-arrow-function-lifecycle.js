@@ -6,8 +6,8 @@
 'use strict';
 
 const semver = require('semver');
-const RuleTester = require('eslint').RuleTester;
 const eslintPkg = require('eslint/package.json');
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/no-arrow-function-lifecycle');
 
 const parsers = require('../../helpers/parsers');

@@ -9,7 +9,9 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const RuleTester = require('eslint').RuleTester;
+const semver = require('semver');
+const eslintPkg = require('eslint/package.json');
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/no-invalid-html-attribute');
 const parsers = require('../../helpers/parsers');
 
@@ -488,12 +490,19 @@ ruleTester.run('no-invalid-html-attribute', rule, {
             attributeName: 'rel',
             reportingValue: 1,
           },
-          // suggestions: [
-          //   {
-          //     messageId: 'suggestRemoveDefault',
-          //     output: 'React.createElement("a", { })',
-          //   },
-          // ],
+
+          // FIXME: this suggestion produces invalid code
+          // In ESLint > 9, RuleTester doesn't allow suggestions with parsing errors.
+          suggestions: semver.major(eslintPkg.version) < 9
+            ? [
+              {
+                messageId: 'suggestRemoveInvalid',
+                data: { reportingValue: '1' },
+                output: 'React.createElement("a", { rel:  })',
+              },
+            ]
+            : 1,
+
           type: 'Literal',
         },
       ],

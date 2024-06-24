@@ -11,9 +11,9 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const RuleTester = require('eslint').RuleTester;
 const semver = require('semver');
 const eslintPkg = require('eslint/package.json');
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/jsx-curly-brace-presence');
 
 const parsers = require('../../helpers/parsers');
@@ -654,12 +654,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: `<MyComponent prop='foo "bar"'>foo</MyComponent>`,
       output: `<MyComponent prop={"foo \\"bar\\""}>foo</MyComponent>`,
-      options: [{ props: 'always' }],
-      errors: [{ messageId: 'missingCurly' }],
-    },
-    {
-      code: `<MyComponent prop="foo 'bar'">foo</MyComponent>`,
-      output: `<MyComponent prop={"foo 'bar'"}>foo</MyComponent>`,
       options: [{ props: 'always' }],
       errors: [{ messageId: 'missingCurly' }],
     },

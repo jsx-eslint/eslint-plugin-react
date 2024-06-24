@@ -9,7 +9,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const RuleTester = require('eslint').RuleTester;
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/require-default-props');
 
 const parsers = require('../../helpers/parsers');
@@ -3016,30 +3016,6 @@ ruleTester.run('require-default-props', rule, {
           data: {
             name: 'match',
           },
-        },
-      ],
-    },
-    {
-      code: `
-        function MyStatelessComponent({ foo, bar }) {
-          return <div>{foo}{bar}</div>;
-        }
-        MyStatelessComponent.propTypes = {
-          foo: PropTypes.string,
-          bar: PropTypes.string.isRequired
-        };
-        MyStatelessComponent.propTypes.baz = React.propTypes.string;
-      `,
-      errors: [
-        {
-          messageId: 'shouldHaveDefault',
-          data: { name: 'foo' },
-          line: 6,
-        },
-        {
-          messageId: 'shouldHaveDefault',
-          data: { name: 'baz' },
-          line: 9,
         },
       ],
     },

@@ -5,7 +5,7 @@
 
 'use strict';
 
-const RuleTester = require('eslint').RuleTester;
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/checked-requires-onchange-or-readonly');
 
 const parsers = require('../../helpers/parsers');

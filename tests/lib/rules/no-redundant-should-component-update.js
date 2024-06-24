@@ -8,7 +8,7 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const RuleTester = require('eslint').RuleTester;
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/no-redundant-should-component-update');
 
 const parsers = require('../../helpers/parsers');
@@ -27,16 +27,6 @@ const parserOptions = {
 const ruleTester = new RuleTester();
 ruleTester.run('no-redundant-should-component-update', rule, {
   valid: parsers.all([
-    {
-      code: `
-        class Foo extends React.Component {
-          shouldComponentUpdate() {
-            return true;
-          }
-        }
-      `,
-      parserOptions,
-    },
     {
       code: `
         class Foo extends React.Component {

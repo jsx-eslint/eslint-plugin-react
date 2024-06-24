@@ -11,7 +11,7 @@
 
 const semver = require('semver');
 const eslintPkg = require('eslint/package.json');
-const RuleTester = require('eslint').RuleTester;
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/jsx-no-leaked-render');
 
 const parsers = require('../../helpers/parsers');
@@ -125,14 +125,6 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         }
       `,
       options: [{ validStrategies: ['coerce', 'ternary'] }],
-    },
-    {
-      code: `
-        const Component = ({ elements, count }) => {
-          return <div>{!!count && <List elements={elements}/>}</div>
-        }
-      `,
-      options: [{ validStrategies: ['coerce'] }],
     },
 
     // Fixes for:

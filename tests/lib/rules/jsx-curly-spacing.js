@@ -10,7 +10,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const RuleTester = require('eslint').RuleTester;
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/jsx-curly-spacing');
 
 const parsers = require('../../helpers/parsers');
@@ -747,14 +747,6 @@ ruleTester.run('jsx-curly-spacing', rule, {
     {
       code: '<App { ...bar } />;',
       options: ['always', { allowMultiline: false }],
-    },
-    {
-      code: `
-        <App {
-        ...bar
-        } />;
-      `,
-      options: ['always'],
     },
     {
       code: `

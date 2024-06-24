@@ -12,7 +12,7 @@
 const semver = require('semver');
 const eslintPkg = require('eslint/package.json').version;
 const babelEslintVersion = require('babel-eslint/package.json').version;
-const RuleTester = require('eslint').RuleTester;
+const RuleTester = require('../../helpers/ruleTester');
 
 const rule = require('../../../lib/rules/prop-types');
 
@@ -1583,15 +1583,6 @@ ruleTester.run('prop-types', rule, {
       // Async generator functions can't be components.
       code: `
         async function* Hello(props) {
-          yield null;
-          return <div>Hello {props.name}</div>;
-        }
-      `,
-    },
-    {
-      // Async generator functions can't be components.
-      code: `
-        var Hello = async function* (props) {
           yield null;
           return <div>Hello {props.name}</div>;
         }
@@ -5313,27 +5304,6 @@ ruleTester.run('prop-types', rule, {
         }
         Test.propTypes = propTypes;
       `,
-      errors: [
-        {
-          messageId: 'missingPropType',
-          data: { name: 'lastname' },
-        },
-      ],
-    },
-    {
-      code: `
-        class Test extends Foo.Component {
-          render() {
-            return (
-              <div>{this.props.firstname} {this.props.lastname}</div>
-            );
-          }
-        }
-        Test.propTypes = {
-          firstname: PropTypes.string
-        };
-      `,
-      settings,
       errors: [
         {
           messageId: 'missingPropType',

@@ -4,9 +4,9 @@
 
 'use strict';
 
-const RuleTester = require('eslint').RuleTester;
 const semver = require('semver');
 const eslintPkg = require('eslint/package.json');
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/destructuring-assignment');
 
 const parsers = require('../../helpers/parsers');
@@ -357,18 +357,6 @@ ruleTester.run('destructuring-assignment', rule, {
         }
       `,
       options: ['always', { destructureInSignature: 'always' }],
-    },
-    {
-      code: `
-        import { useContext } from 'react';
-
-        const MyComponent = (props) => {
-          const {foo} = useContext(aContext);
-          return <div>{foo}</div>
-        };
-      `,
-      options: ['always'],
-      settings: { react: { version: '16.9.0' } },
     },
     {
       code: `
