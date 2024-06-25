@@ -213,6 +213,16 @@ ruleTester.run('jsx-no-leaked-render', rule, {
       `,
       options: [{ validStrategies: ['coerce'] }],
     },
+
+    // See #3292
+    {
+      code: `
+        const Component = ({ enabled, checked }) => {
+          return <CheckBox checked={enabled && checked} />
+        }
+      `,
+      options: [{ ignoreAttributes: true }],
+    },
   ]) || [],
 
   invalid: parsers.all([].concat(
@@ -885,6 +895,25 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         column: 24,
       }],
     },
+
+    // See #3292
+    {
+      code: `
+        const Component = ({ enabled, checked }) => {
+          return <CheckBox checked={enabled && checked} />
+        }
+      `,
+      output: `
+        const Component = ({ enabled, checked }) => {
+          return <CheckBox checked={enabled ? checked : null} />
+        }
+      `,
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 37,
+      }],
+    },
     {
       code: `
         const MyComponent = () => {
@@ -1009,6 +1038,32 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
         line: 4,
         column: 33,
+      }],
+    },
+    {
+      code: `
+        const Component = ({ enabled }) => {
+          return (
+            <Foo bar={
+              <Something>{enabled && <MuchWow />}</Something>
+            } />
+          )
+        }
+      `,
+      output: `
+        const Component = ({ enabled }) => {
+          return (
+            <Foo bar={
+              <Something>{enabled ? <MuchWow /> : null}</Something>
+            } />
+          )
+        }
+      `,
+      options: [{ ignoreAttributes: true }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 5,
+        column: 27,
       }],
     }
   )),
