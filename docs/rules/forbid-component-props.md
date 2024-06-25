@@ -55,13 +55,39 @@ custom message, and a component allowlist:
 }
 ```
 
-Use `disallowedFor` as an exclusion list to warn on props for specific components. `disallowedFor` must have at least one item.
+```js
+{
+  "propName": "someProp",
+  "allowedFor": ["SomeComponent", "AnotherComponent"],
+  "allowedForRegex": "^Icon\d+[A-Z]",
+  "message": "Avoid using someProp except SomeComponent, AnotherComponent, and Icons"
+}
+```
+
+Use `disallowedFor` as an exclusion list to warn on props for specific components. `disallowedFor` must have at least one item, or use  `disallowedForRegex`. The two may also be combined.
 
 ```js
 {
   "propName": "someProp",
   "disallowedFor": ["SomeComponent", "AnotherComponent"],
   "message": "Avoid using someProp for SomeComponent and AnotherComponent"
+}
+```
+
+```js
+{
+  "propName": "someProp",
+  "disallowedForRegex": "^Icon\d+[A-Z]",
+  "message": "Avoid using someProp for Icons"
+}
+```
+
+```js
+{
+  "propName": "someProp",
+  "disallowedFor": ["SomeComponent"],
+  "disallowedForRegex": "^Icon\d+[A-Z]",
+  "message": "Avoid using someProp for SomeComponent and Icons"
 }
 ```
 
