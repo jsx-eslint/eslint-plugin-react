@@ -9,7 +9,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * support eslint v9 ([#3759][] @mdjermanovic)
 * export flat configs from plugin root and fix flat config crash ([#3694][] @bradzacher @mdjermanovic)
 * add [`jsx-props-no-spread-multi`] ([#3724][] @SimonSchick)
+* [`forbid-component-props`]: add `propNamePattern` to allow / disallow prop name patterns ([#3774][] @akulsr0)
 
+[#3774]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3774
 [#3759]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3759
 [#3724]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3724
 [#3694]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3694

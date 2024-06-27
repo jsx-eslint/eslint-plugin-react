@@ -44,7 +44,7 @@ Examples of **correct** code for this rule:
 ### `forbid`
 
 An array specifying the names of props that are forbidden. The default value of this option is `['className', 'style']`.
-Each array element can either be a string with the property name or object specifying the property name, an optional
+Each array element can either be a string with the property name or object specifying the property name or glob string, an optional
 custom message, and a component allowlist:
 
 ```js
@@ -55,6 +55,16 @@ custom message, and a component allowlist:
 }
 ```
 
+For glob string patterns:
+
+```js
+{
+  "propNamePattern": '**-**',
+  "allowedFor": ['div'],
+  "message": "Avoid using kebab-case except div"
+}
+```
+
 Use `disallowedFor` as an exclusion list to warn on props for specific components. `disallowedFor` must have at least one item.
 
 ```js
@@ -62,6 +72,16 @@ Use `disallowedFor` as an exclusion list to warn on props for specific component
   "propName": "someProp",
   "disallowedFor": ["SomeComponent", "AnotherComponent"],
   "message": "Avoid using someProp for SomeComponent and AnotherComponent"
+}
+```
+
+For glob string patterns:
+
+```js
+{
+  "propNamePattern": "**-**",
+  "disallowedFor": ["MyComponent"],
+  "message": "Avoid using kebab-case for MyComponent"
 }
 ```
 
