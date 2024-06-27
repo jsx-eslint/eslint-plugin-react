@@ -248,6 +248,23 @@ ruleTester.run('forbid-component-props', rule, {
         },
       ],
     },
+    {
+      code: `
+        const MyComponent = () => (
+          <div aria-label="welcome" />
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propNameRegex: '.-.',
+              allowedFor: ['div'],
+            },
+          ],
+        },
+      ],
+    },
   ]),
 
   invalid: parsers.all([
@@ -563,6 +580,115 @@ ruleTester.run('forbid-component-props', rule, {
         {
           message: 'Avoid using option',
           line: 4,
+          column: 18,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const MyComponent = () => (
+          <Foo kebab-case-prop={123} />
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propNameRegex: '.-.',
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'kebab-case-prop' },
+          line: 3,
+          column: 16,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const MyComponent = () => (
+          <Foo kebab-case-prop={123} />
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propNameRegex: '.-.',
+              message: 'Avoid using kebab-case',
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          message: 'Avoid using kebab-case',
+          line: 3,
+          column: 16,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const MyComponent = () => (
+          <div>
+            <div aria-label="Hello Akul" />
+            <Foo kebab-case-prop={123} />
+          </div>
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propNameRegex: '.-.',
+              allowedFor: ['div'],
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'kebab-case-prop' },
+          line: 5,
+          column: 18,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const MyComponent = () => (
+          <div>
+            <div aria-label="Hello Akul" />
+            <h1 data-id="my-heading" />
+            <Foo kebab-case-prop={123} />
+          </div>
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propNameRegex: '.-.',
+              disallowedFor: ['Foo'],
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'kebab-case-prop' },
+          line: 6,
           column: 18,
           type: 'JSXAttribute',
         },
