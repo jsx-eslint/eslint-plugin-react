@@ -54,6 +54,10 @@ ruleTester.run('jsx-boolean-value', rule, {
     },
     {
       code: '<App foo={false} />;',
+      options: ['never', { assumeUndefinedIsFalse: false }],
+    },
+    {
+      code: '<App foo={false} />;',
       options: ['never', { assumeUndefinedIsFalse: true, always: ['foo'] }],
     },
   ]),
@@ -137,6 +141,21 @@ ruleTester.run('jsx-boolean-value', rule, {
       errors: [
         {
           messageId: 'omitPropAndBoolean',
+          data: { propName: 'foo' },
+        },
+        {
+          messageId: 'omitPropAndBoolean',
+          data: { propName: 'bak' },
+        },
+      ],
+    },
+    {
+      code: '<App foo={true} bak={false} />;',
+      output: '<App foo  />;',
+      options: ['never', { assumeUndefinedIsFalse: true }],
+      errors: [
+        {
+          messageId: 'omitBoolean',
           data: { propName: 'foo' },
         },
         {

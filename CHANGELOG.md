@@ -6,11 +6,39 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ## Unreleased
 
 ### Fixed
+
+* [`prop-types`]: fix `className` missing in prop validation false negative ([#3749] @akulsr0)
+
+[#3749]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3749
+
+## [7.34.3] - 2024.06.18
+
+### Fixed
+* [`prop-types`]: null-check rootNode before calling getScope ([#3762][] @crnhrv)
+* [`boolean-prop-naming`]: avoid a crash with a spread prop ([#3733][] @ljharb)
+* [`jsx-boolean-value`]: `assumeUndefinedIsFalse` with `never` must not allow explicit `true` value ([#3757][] @6uliver)
+* [`no-object-type-as-default-prop`]: enable rule for components with many parameters ([#3768][] @JulienR1)
+* [`jsx-key`]: incorrect behavior for checkKeyMustBeforeSpread with map callbacks ([#3769][] @akulsr0)
+
+[7.34.3]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.34.2...v7.34.3
+[#3769]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3769
+[#3768]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3768
+[#3762]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3762
+[#3757]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3757
+[#3733]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3733
+
+## [7.34.2] - 2024.05.24
+
+### Fixed
 * [`boolean-prop-naming`]: avoid a crash with a non-TSTypeReference type ([#3718][] @developer-bandi)
 * [`jsx-no-leaked-render`]: invalid report if left side is boolean ([#3746][] @akulsr0)
 * [`jsx-closing-bracket-location`]: message shows `{{details}}` when there are no details ([#3759][] @mdjermanovic)
 * [`no-invalid-html-attribute`]: ensure error messages are correct ([#3759][] @mdjermanovic, @ljharb)
 
+### Changed
+ * [Refactor] create various eslint utils to fix eslint deprecations ([#3759][] @mdjermanovic, @ljharb)
+
+[7.34.2]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.34.1...v7.34.2
 [#3759]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3759
 [#3746]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3746
 [#3718]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3718
