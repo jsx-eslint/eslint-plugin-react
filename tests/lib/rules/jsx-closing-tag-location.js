@@ -31,10 +31,77 @@ ruleTester.run('jsx-closing-tag-location', rule, {
   valid: parsers.all([
     {
       code: `
+        const foo = () => {
+          return <App>
+       bar</App>
+        }
+      `,
+      options: [{ location: 'line-aligned' }],
+    },
+    {
+      code: `
+        const foo = () => {
+          return <App>
+              bar</App>
+        }
+      `,
+    },
+    {
+      code: `
+        const foo = () => {
+          return <App>
+              bar
+          </App>
+        }
+      `,
+      options: ['line-aligned'],
+    },
+    {
+      code: `
+        const foo = <App>
+              bar
+        </App>
+      `,
+      options: ['line-aligned'],
+    },
+    {
+      code: `
+        const x = <App>
+              foo
+                  </App>
+      `,
+    },
+    {
+      code: `
+        const foo =
+          <App>
+              bar
+          </App>
+      `,
+      options: ['line-aligned'],
+    },
+    {
+      code: `
+        const foo =
+          <App>
+              bar
+          </App>
+      `,
+    },
+    {
+      code: `
         <App>
           foo
         </App>
       `,
+    },
+    {
+      code: `
+        <App>
+          foo
+        </App>
+      `,
+      options: ['line-aligned'],
     },
     {
       code: `
@@ -109,6 +176,37 @@ ruleTester.run('jsx-closing-tag-location', rule, {
         </>
       `,
       errors: [{ messageId: 'onOwnLine' }],
+    },
+    {
+      code: `
+        const x = () => {
+          return <App>
+              foo</App>
+        }
+      `,
+      output: `
+        const x = () => {
+          return <App>
+              foo
+          </App>
+        }
+      `,
+      errors: [{ messageId: 'onOwnLine' }],
+      options: ['line-aligned'],
+    },
+    {
+      code: `
+        const x = <App>
+              foo
+                  </App>
+      `,
+      output: `
+        const x = <App>
+              foo
+        </App>
+      `,
+      errors: [{ messageId: 'alignWithOpening' }],
+      options: ['line-aligned'],
     },
   ]),
 });
