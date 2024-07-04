@@ -5,6 +5,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Added
+
+- [`async-server-action`]: add rule ([#3729][] @jorgezreik)
+
+[#3729]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3729
+
 ### Fixed
 
 * [`prop-types`]: fix `className` missing in prop validation false negative ([#3749] @akulsr0)
@@ -53,6 +59,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: support `popover`, `popovertarget`, `popovertargetaction` attributes ([#3707][] @ljharb)
 * [`no-unknown-property`]: only match `data-*` attributes containing `-` ([#3713][] @silverwind)
 * [`checked-requires-onchange-or-readonly`]: correct options that were behaving opposite ([#3715][] @jaesoekjjang)
+* [`boolean-prop-naming`]: avoid a crash with a non-TSTypeReference type ([#3718][] @developer-bandi)
 
 ### Changed
 * [`boolean-prop-naming`]: improve error message (@ljharb)
