@@ -493,6 +493,14 @@ ruleTester.run('sort-prop-types', rule, {
       `,
       features: ['types'],
       options: [{ checkTypes: false }],
+    },
+    {
+      code: `
+        function Foo() {
+          return <div />;
+        }
+      `,
+      options: [{ checkTypes: true }],
     }
   )),
   invalid: parsers.all([].concat(
