@@ -5,11 +5,14 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.34.4] - 2024.07.13
+
 ### Fixed
 
 * [`prop-types`]: fix `className` missing in prop validation false negative ([#3749] @akulsr0)
 * [`sort-prop-types`]: Check for undefined before accessing `node.typeAnnotation.typeAnnotation` ([#3779] @tylerlaprade)
 
+[7.34.4]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.34.3...v7.34.4
 [#3779]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3779
 [#3749]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3749
 
