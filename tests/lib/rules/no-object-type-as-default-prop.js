@@ -9,7 +9,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const RuleTester = require('eslint').RuleTester;
+const RuleTester = require('../../helpers/ruleTester');
 const parsers = require('../../helpers/parsers');
 const rule = require('../../../lib/rules/no-object-type-as-default-prop');
 

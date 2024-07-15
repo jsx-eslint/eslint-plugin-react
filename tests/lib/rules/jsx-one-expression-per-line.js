@@ -9,7 +9,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const RuleTester = require('eslint').RuleTester;
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/jsx-one-expression-per-line');
 
 const parsers = require('../../helpers/parsers');
@@ -917,26 +917,6 @@ foo
         <App>
           <Foo></Foo
         >
-</App>
-      `,
-      errors: [
-        {
-          messageId: 'moveToNewLine',
-          data: { descriptor: 'Foo' },
-        },
-      ],
-      parserOptions,
-    },
-    {
-      code: `
-        <App>
-          <Foo></
-        Foo></App>
-      `,
-      output: `
-        <App>
-          <Foo></
-        Foo>
 </App>
       `,
       errors: [

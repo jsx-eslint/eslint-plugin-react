@@ -9,7 +9,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const RuleTester = require('eslint').RuleTester;
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/hook-use-state');
 const parsers = require('../../helpers/parsers');
 
@@ -311,6 +311,7 @@ const tests = {
           message: 'useState call is not destructured into value + setter pair',
           suggestions: [
             {
+              messageId: 'suggestPair',
               output: `
         import { useState } from 'react'
         function useColor() {
@@ -334,7 +335,7 @@ const tests = {
           message: 'useState call is not destructured into value + setter pair',
           suggestions: [
             {
-              desc: 'Replace useState call with useMemo',
+              messageId: 'suggestMemo',
               output: `
         import { useState, useMemo } from 'react'
         function useColor(initialColor) {
@@ -343,7 +344,7 @@ const tests = {
       `,
             },
             {
-              desc: 'Destructure useState call into value + setter pair',
+              messageId: 'suggestPair',
               output: `
         import { useState } from 'react'
         function useColor(initialColor) {
@@ -366,7 +367,7 @@ const tests = {
         message: 'useState call is not destructured into value + setter pair',
         suggestions: [
           {
-            desc: 'Replace useState call with useMemo',
+            messageId: 'suggestMemo',
             output: `
         import { useState, useMemo as useMemoAlternative } from 'react'
         function useColor(initialColor) {
@@ -375,7 +376,7 @@ const tests = {
       `,
           },
           {
-            desc: 'Destructure useState call into value + setter pair',
+            messageId: 'suggestPair',
             output: `
         import { useState, useMemo as useMemoAlternative } from 'react'
         function useColor(initialColor) {
@@ -398,7 +399,7 @@ const tests = {
           message: 'useState call is not destructured into value + setter pair',
           suggestions: [
             {
-              desc: 'Replace useState call with useMemo',
+              messageId: 'suggestMemo',
               output: `
         import React from 'react'
         function useColor(initialColor) {
@@ -407,7 +408,7 @@ const tests = {
       `,
             },
             {
-              desc: 'Destructure useState call into value + setter pair',
+              messageId: 'suggestPair',
               output: `
         import React from 'react'
         function useColor(initialColor) {
@@ -432,6 +433,7 @@ const tests = {
           message: 'useState call is not destructured into value + setter pair',
           suggestions: [
             {
+              messageId: 'suggestPair',
               output: `
         import { useState } from 'react'
         function useColor() {
@@ -457,6 +459,7 @@ const tests = {
           message: 'useState call is not destructured into value + setter pair',
           suggestions: [
             {
+              messageId: 'suggestPair',
               output: `
         import { useState } from 'react'
         function useColor() {
@@ -486,6 +489,7 @@ const tests = {
           message: 'useState call is not destructured into value + setter pair',
           suggestions: [
             {
+              messageId: 'suggestPair',
               output: `
         import { useState } from 'react'
         const [color, setColor] = useState()
@@ -505,6 +509,7 @@ const tests = {
           message: 'useState call is not destructured into value + setter pair',
           suggestions: [
             {
+              messageId: 'suggestPair',
               output: `
         import { useState } from 'react'
         const [color, setColor] = useState()
@@ -561,6 +566,7 @@ const tests = {
           message: 'useState call is not destructured into value + setter pair',
           suggestions: [
             {
+              messageId: 'suggestPair',
               output: `
         import { useState } from 'react'
         const [color, setColor] = useState<string>()
@@ -584,6 +590,7 @@ const tests = {
           message: 'useState call is not destructured into value + setter pair',
           suggestions: [
             {
+              messageId: 'suggestPair',
               output: `
         import { useState } from 'react'
         function useColor() {
@@ -610,6 +617,7 @@ const tests = {
           message: 'useState call is not destructured into value + setter pair',
           suggestions: [
             {
+              messageId: 'suggestPair',
               output: `
         import React from 'react'
         function useColor() {

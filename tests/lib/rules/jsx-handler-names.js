@@ -9,7 +9,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const RuleTester = require('eslint').RuleTester;
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/jsx-handler-names');
 
 const parsers = require('../../helpers/parsers');
@@ -265,7 +265,7 @@ ruleTester.run('jsx-handler-names', rule, {
       ],
     },
     {
-      code: '<TestComponent only={this.handleChange} />',
+      code: '<TestComponent2 only={this.handleChange} />',
       errors: [
         {
           messageId: 'badPropKey',

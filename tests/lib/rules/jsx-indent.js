@@ -9,9 +9,9 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const RuleTester = require('eslint').RuleTester;
 const semver = require('semver');
 const eslintVersion = require('eslint/package.json').version;
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/jsx-indent');
 
 const parsers = require('../../helpers/parsers');

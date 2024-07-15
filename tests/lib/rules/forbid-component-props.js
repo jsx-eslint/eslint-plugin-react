@@ -8,7 +8,7 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const RuleTester = require('eslint').RuleTester;
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/forbid-component-props');
 
 const parsers = require('../../helpers/parsers');
@@ -146,21 +146,6 @@ ruleTester.run('forbid-component-props', rule, {
             {
               propName: 'className',
               allowedFor: ['this.ReactModal'],
-            },
-          ],
-        },
-      ],
-    },
-    {
-      code: `
-        const item = (<Foo className="foo" />);
-      `,
-      options: [
-        {
-          forbid: [
-            {
-              propName: 'className',
-              disallowedFor: ['ReactModal'],
             },
           ],
         },

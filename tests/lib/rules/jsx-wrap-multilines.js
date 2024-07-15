@@ -9,7 +9,7 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const RuleTester = require('eslint').RuleTester;
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/jsx-wrap-multilines');
 
 const parsers = require('../../helpers/parsers');
@@ -1387,16 +1387,6 @@ ruleTester.run('jsx-wrap-multilines', rule, {
     {
       code: DECLARATION_TERNARY_PAREN,
       output: addNewLineSymbols(DECLARATION_TERNARY_PAREN),
-      options: [{ declaration: 'parens-new-line' }],
-      errors: [
-        { messageId: 'parensOnNewLines' },
-        { messageId: 'parensOnNewLines' },
-      ],
-    },
-    {
-      code: DECLARATION_TERNARY_PAREN_FRAGMENT,
-      features: ['fragment'],
-      output: addNewLineSymbols(DECLARATION_TERNARY_PAREN_FRAGMENT),
       options: [{ declaration: 'parens-new-line' }],
       errors: [
         { messageId: 'parensOnNewLines' },

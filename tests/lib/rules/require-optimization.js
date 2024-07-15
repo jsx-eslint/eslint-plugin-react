@@ -5,7 +5,7 @@
 
 'use strict';
 
-const RuleTester = require('eslint').RuleTester;
+const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/require-optimization');
 
 const parsers = require('../../helpers/parsers');

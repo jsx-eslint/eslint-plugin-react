@@ -105,7 +105,7 @@ const parsers = {
           && {
             errors: testObject.errors.map(
               (errorObject) => {
-                const nextSuggestions = errorObject.suggestions && {
+                const nextSuggestions = errorObject.suggestions && typeof errorObject.suggestions !== 'number' && {
                   suggestions: errorObject.suggestions.map((suggestion) => Object.assign({}, suggestion, {
                     output: suggestion.output + extraComment,
                   })),
