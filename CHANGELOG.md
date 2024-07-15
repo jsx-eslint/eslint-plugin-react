@@ -12,6 +12,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`forbid-component-props`]: add `propNamePattern` to allow / disallow prop name patterns ([#3774][] @akulsr0)
 * [`jsx-handler-names`]: support ignoring component names ([#3772][] @akulsr0)
 
+### Changed
+* [Refactor] `variableUtil`: Avoid creating a single flat variable scope for each lookup ([#3782][] @DanielRosenwasser)
+
+[#3782]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3782
 [#3774]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3774
 [#3772]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3772
 [#3759]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3759
