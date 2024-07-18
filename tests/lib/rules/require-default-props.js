@@ -3042,5 +3042,47 @@ ruleTester.run('require-default-props', rule, {
         propWrapperFunctions: ['forbidExtraProps'],
       },
     },
+    {
+      code: `
+      function MyStatelessComponent({ foo = 'foo' }) {
+        return <div>{foo}{bar}</div>;
+      }
+      MyStatelessComponent.propTypes = {
+        foo: PropTypes.string.isRequired,
+      };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+      errors: [
+        {
+          messageId: 'noDefaultWithRequired',
+          data: { name: 'foo' },
+          line: 2,
+        },
+      ],
+    },
+    {
+      code: `
+      function MyStatelessComponent({ foo = 'foo', bar }) {
+        return <div>{foo}{bar}</div>;
+      }
+      MyStatelessComponent.propTypes = {
+        foo: PropTypes.string.isRequired,
+        bar: PropTypes.string
+      };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+      errors: [
+        {
+          messageId: 'noDefaultWithRequired',
+          data: { name: 'foo' },
+          line: 2,
+        },
+        {
+          messageId: 'shouldAssignObjectDefault',
+          data: { name: 'bar' },
+          line: 2,
+        },
+      ],
+    },
   ]),
 });

@@ -18,10 +18,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`no-invalid-html-attribute`]: substitute placeholders in suggestion messages ([#3759][] @mdjermanovic)
 * [`sort-prop-types`]: single line type ending without semicolon ([#3784][] @akulsr0)
+* [`require-default-props`]: report when required props have default value ([#3785][] @akulsr0)
 
 ### Changed
 * [Refactor] `variableUtil`: Avoid creating a single flat variable scope for each lookup ([#3782][] @DanielRosenwasser)
 
+[#3785]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3785
 [#3784]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3784
 [#3782]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3782
 [#3777]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3777
