@@ -501,6 +501,18 @@ ruleTester.run('sort-prop-types', rule, {
         }
       `,
       options: [{ checkTypes: true }],
+    },
+    {
+      code: `
+        const Foo = (props: {
+          aaa: string,
+          zzz: string
+        }) => {
+          return null;
+        }
+      `,
+      features: ['types'],
+      options: [{ checkTypes: true }],
     }
   )),
   invalid: parsers.all([].concat(
@@ -2354,6 +2366,52 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 4,
           column: 11,
+        },
+      ],
+    },
+    {
+      code: `
+        type CustomProps = { onChange: () => void; name: string };
+        const Foo = (props: CustomProps) => {
+          return null;
+        }
+      `,
+      output: `
+        type CustomProps = { name: string; onChange: () => void };
+        const Foo = (props: CustomProps) => {
+          return null;
+        }
+      `,
+      features: ['types'],
+      options: [{ checkTypes: true }],
+      errors: [
+        {
+          messageId: 'propsNotSorted',
+          line: 2,
+          column: 52,
+        },
+      ],
+    },
+    {
+      code: `
+        type CustomProps = { onChange: (event: { target: { name: string; value: string } }) => void; name: string };
+        const Foo = (props: CustomProps) => {
+          return null;
+        }
+      `,
+      output: `
+        type CustomProps = { name: string; onChange: (event: { target: { name: string; value: string } }) => void };
+        const Foo = (props: CustomProps) => {
+          return null;
+        }
+      `,
+      features: ['types'],
+      options: [{ checkTypes: true }],
+      errors: [
+        {
+          messageId: 'propsNotSorted',
+          line: 2,
+          column: 102,
         },
       ],
     }

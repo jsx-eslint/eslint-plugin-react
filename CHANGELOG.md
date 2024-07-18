@@ -15,9 +15,14 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-closing-tag-location`]: add `line-aligned` option ([#3777] @kimtaejin3)
 * [`no-danger`]: add `customComponentNames` option ([#3748][] @akulsr0)
 
+### Fixed
+* [`no-invalid-html-attribute`]: substitute placeholders in suggestion messages ([#3759][] @mdjermanovic)
+* [`sort-prop-types`]: single line type ending without semicolon ([#3784][] @akulsr0)
+
 ### Changed
 * [Refactor] `variableUtil`: Avoid creating a single flat variable scope for each lookup ([#3782][] @DanielRosenwasser)
 
+[#3784]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3784
 [#3782]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3782
 [#3777]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3777
 [#3774]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3774
@@ -27,9 +32,6 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3748]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3748
 [#3724]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3724
 [#3694]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3694
-
-### Fixed
-* [`no-invalid-html-attribute`]: substitute placeholders in suggestion messages ([#3759][] @mdjermanovic)
 
 ## [7.34.4] - 2024.07.13
 
