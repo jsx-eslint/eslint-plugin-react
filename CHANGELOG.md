@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.35.0] - 2024.07.19
+
 ### Added
 * support eslint v9 ([#3759][] @mdjermanovic)
 * export flat configs from plugin root and fix flat config crash ([#3694][] @bradzacher @mdjermanovic)
@@ -23,6 +25,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Changed
 * [Refactor] `variableUtil`: Avoid creating a single flat variable scope for each lookup ([#3782][] @DanielRosenwasser)
 
+[7.35.0]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.34.4...v7.35.0
 [#3785]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3785
 [#3784]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3784
 [#3782]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3782
