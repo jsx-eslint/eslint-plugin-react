@@ -34,7 +34,7 @@ describe('all rule files should be exported by the plugin', () => {
 describe('deprecated rules', () => {
   it('marks all deprecated rules as deprecated', () => {
     ruleFiles.forEach((ruleName) => {
-      const inDeprecatedRules = Boolean(plugin.deprecatedRules[ruleName]);
+      const inDeprecatedRules = !!plugin.deprecatedRules[ruleName];
       const isDeprecated = plugin.rules[ruleName].meta.deprecated;
       if (inDeprecatedRules) {
         assert(isDeprecated, `${ruleName} metadata should mark it as deprecated`);
@@ -77,7 +77,7 @@ describe('configurations', () => {
     });
 
     ruleFiles.forEach((ruleName) => {
-      const inDeprecatedRules = Boolean(plugin.deprecatedRules[ruleName]);
+      const inDeprecatedRules = !!plugin.deprecatedRules[ruleName];
       const inConfig = typeof plugin.configs[configName].rules[`react/${ruleName}`] !== 'undefined';
       assert(inDeprecatedRules ^ inConfig); // eslint-disable-line no-bitwise
     });
@@ -91,7 +91,7 @@ describe('configurations', () => {
       assert.ok(ruleName.startsWith('react/'));
       assert.equal(plugin.configs[configName].rules[ruleName], 0);
 
-      const inDeprecatedRules = Boolean(plugin.deprecatedRules[ruleName]);
+      const inDeprecatedRules = !!plugin.deprecatedRules[ruleName];
       const inConfig = typeof plugin.configs[configName].rules[ruleName] !== 'undefined';
       assert(inDeprecatedRules ^ inConfig); // eslint-disable-line no-bitwise
     });
