@@ -34,47 +34,47 @@ You should also specify settings that will be shared across all the plugin rules
 
 ```json5
 {
-  "settings": {
-    "react": {
-      "createClass": "createReactClass", // Regex for Component Factory to use,
-                                         // default to "createReactClass"
-      "pragma": "React",  // Pragma to use, default to "React"
-      "fragment": "Fragment",  // Fragment to use (may be a property of <pragma>), default to "Fragment"
-      "version": "detect", // React version. "detect" automatically picks the version you have installed.
-                           // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
-                           // Defaults to the "defaultVersion" setting and warns if missing, and to "detect" in the future
-      "defaultVersion": "", // Default React version to use when the version you have installed cannot be detected.
-                            // If not provided, defaults to the latest React version.
-      "flowVersion": "0.53" // Flow version
+  settings: {
+    react: {
+      createClass: 'createReactClass', // Regex for Component Factory to use,
+      // default to "createReactClass"
+      pragma: 'React', // Pragma to use, default to "React"
+      fragment: 'Fragment', // Fragment to use (may be a property of <pragma>), default to "Fragment"
+      version: 'detect', // React version. "detect" automatically picks the version you have installed.
+      // You can also use `16.0`, `16.3`, etc, if you want to override the detected value.
+      // Defaults to the "defaultVersion" setting and warns if missing, and to "detect" in the future
+      defaultVersion: '', // Default React version to use when the version you have installed cannot be detected.
+      // If not provided, defaults to the latest React version.
+      flowVersion: '0.53', // Flow version
     },
-    "propWrapperFunctions": [
-        // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
-        "forbidExtraProps",
-        {"property": "freeze", "object": "Object"},
-        {"property": "myFavoriteWrapper"},
-        // for rules that check exact prop wrappers
-        {"property": "forbidExtraProps", "exact": true}
+    propWrapperFunctions: [
+      // The names of any function used to wrap propTypes, e.g. `forbidExtraProps`. If this isn't set, any propTypes wrapped in a function will be skipped.
+      'forbidExtraProps',
+      { property: 'freeze', object: 'Object' },
+      { property: 'myFavoriteWrapper' },
+      // for rules that check exact prop wrappers
+      { property: 'forbidExtraProps', exact: true },
     ],
-    "componentWrapperFunctions": [
-        // The name of any function used to wrap components, e.g. Mobx `observer` function. If this isn't set, components wrapped by these functions will be skipped.
-        "observer", // `property`
-        {"property": "styled"}, // `object` is optional
-        {"property": "observer", "object": "Mobx"},
-        {"property": "observer", "object": "<pragma>"} // sets `object` to whatever value `settings.react.pragma` is set to
+    componentWrapperFunctions: [
+      // The name of any function used to wrap components, e.g. Mobx `observer` function. If this isn't set, components wrapped by these functions will be skipped.
+      'observer', // `property`
+      { property: 'styled' }, // `object` is optional
+      { property: 'observer', object: 'Mobx' },
+      { property: 'observer', object: '<pragma>' }, // sets `object` to whatever value `settings.react.pragma` is set to
     ],
-    "formComponents": [
+    formComponents: [
       // Components used as alternatives to <form> for forms, eg. <Form endpoint={ url } />
-      "CustomForm",
-      {"name": "SimpleForm", "formAttribute": "endpoint"},
-      {"name": "Form", "formAttribute": ["registerEndpoint", "loginEndpoint"]}, // allows specifying multiple properties if necessary
+      'CustomForm',
+      { name: 'SimpleForm', formAttribute: 'endpoint' },
+      { name: 'Form', formAttribute: ['registerEndpoint', 'loginEndpoint'] }, // allows specifying multiple properties if necessary
     ],
-    "linkComponents": [
+    linkComponents: [
       // Components used as alternatives to <a> for linking, eg. <Link to={ url } />
-      "Hyperlink",
-      {"name": "MyLink", "linkAttribute": "to"},
-      {"name": "Link", "linkAttribute": ["to", "href"]}, // allows specifying multiple properties if necessary
-    ]
-  }
+      'Hyperlink',
+      { name: 'MyLink', linkAttribute: 'to' },
+      { name: 'Link', linkAttribute: ['to', 'href'] }, // allows specifying multiple properties if necessary
+    ],
+  },
 }
 ```
 
@@ -84,9 +84,7 @@ Add "react" to the plugins section.
 
 ```json
 {
-  "plugins": [
-    "react"
-  ]
+  "plugins": ["react"]
 }
 ```
 
@@ -136,9 +134,7 @@ This pairs well with the `eslint:all` rule.
 
 ```json
 {
-  "plugins": [
-    "react"
-  ],
+  "plugins": ["react"],
   "extends": ["eslint:all", "plugin:react/all"]
 }
 ```
@@ -205,6 +201,7 @@ Refer to the [official docs](https://eslint.org/docs/latest/user-guide/configuri
 The schema of the `settings.react` object would be identical to that of what's already described above in the legacy config section.
 
 <!-- markdownlint-disable-next-line no-duplicate-heading -->
+
 ### Flat Configs
 
 This plugin exports 3 flat configs:
@@ -375,6 +372,7 @@ module.exports = [
 | [no-unused-prop-types](docs/rules/no-unused-prop-types.md)                                   | Disallow definitions of unused propTypes                                                                                                     |    |    |    |    |    |
 | [no-unused-state](docs/rules/no-unused-state.md)                                             | Disallow definitions of unused state                                                                                                         |    |    |    |    |    |
 | [no-will-update-set-state](docs/rules/no-will-update-set-state.md)                           | Disallow usage of setState in componentWillUpdate                                                                                            |    |    |    |    |    |
+| [padding-lines-between-tags](docs/rules/padding-lines-between-tags.md)                       | Enforce no padding lines between tags for React Components                                                                                   |    |    | 🔧 |    |    |
 | [prefer-es6-class](docs/rules/prefer-es6-class.md)                                           | Enforce ES5 or ES6 class for React Components                                                                                                |    |    |    |    |    |
 | [prefer-exact-props](docs/rules/prefer-exact-props.md)                                       | Prefer exact proptype definitions                                                                                                            |    |    |    |    |    |
 | [prefer-read-only-props](docs/rules/prefer-read-only-props.md)                               | Enforce that props are read-only                                                                                                             |    |    | 🔧 |    |    |
@@ -407,15 +405,11 @@ module.exports = [
 
 [npm-url]: https://npmjs.org/package/eslint-plugin-react
 [npm-image]: https://img.shields.io/npm/v/eslint-plugin-react.svg
-
 [status-url]: https://github.com/jsx-eslint/eslint-plugin-react/pulse
 [status-image]: https://img.shields.io/github/last-commit/jsx-eslint/eslint-plugin-react.svg
-
 [tidelift-url]: https://tidelift.com/subscription/pkg/npm-eslint-plugin-react?utm_source=npm-eslint-plugin-react&utm_medium=referral&utm_campaign=readme
 [tidelift-image]: https://tidelift.com/badges/package/npm/eslint-plugin-react?style=flat
-
 [package-url]: https://npmjs.org/package/eslint-plugin-react
 [npm-version-svg]: https://versionbadg.es/jsx-eslint/eslint-plugin-react.svg
-
 [actions-image]: https://img.shields.io/endpoint?url=https://github-actions-badge-u3jn4tfpocch.runkit.sh/jsx-eslint/eslint-plugin-react
 [actions-url]: https://github.com/jsx-eslint/eslint-plugin-react/actions
