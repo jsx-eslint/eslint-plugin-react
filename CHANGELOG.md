@@ -16,6 +16,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * version settings: Allow react defaultVersion to be configurable ([#3771][] @onlywei)
 * [`jsx-closing-tag-location`]: add `line-aligned` option ([#3777] @kimtaejin3)
 * [`no-danger`]: add `customComponentNames` option ([#3748][] @akulsr0)
+* [`forward-ref-uses-ref`]: add rule for checking ref parameter is added ([#3667][] @NotWoods)
 
 ### Fixed
 * [`no-invalid-html-attribute`]: substitute placeholders in suggestion messages ([#3759][] @mdjermanovic)
@@ -37,6 +38,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3748]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3748
 [#3724]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3724
 [#3694]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3694
+[#3694]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3667
 
 ## [7.34.4] - 2024.07.13
 
