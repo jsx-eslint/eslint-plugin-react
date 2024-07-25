@@ -46,7 +46,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           after_install: |
-            npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@5" "babel-eslint@${{ matrix.babel-eslint }}"
+            npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@6" "babel-eslint@${{ matrix.babel-eslint }}"
         env:
           NPM_CONFIG_LEGACY_PEER_DEPS: true
       - run: npx ls-engines

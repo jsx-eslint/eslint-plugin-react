@@ -37,7 +37,7 @@ const parsers = {
   BABEL_ESLINT: path.join(__dirname, NODE_MODULES, 'babel-eslint'),
   '@BABEL_ESLINT': path.join(__dirname, NODE_MODULES, '@babel/eslint-parser'),
   TYPESCRIPT_ESLINT: path.join(__dirname, NODE_MODULES, 'typescript-eslint-parser'),
-  '@TYPESCRIPT_ESLINT': path.join(__dirname, NODE_MODULES, '@typescript-eslint/parser'),
+  '@TYPESCRIPT_ESLINT': path.join(__dirname, NODE_MODULES, '@typescript-eslint/parser/dist'),
   disableNewTS,
   skipDueToMultiErrorSorting: semver.satisfies(process.versions.node, '^8 || ^9'),
   babelParserOptions: function parserOptions(test, features) {
