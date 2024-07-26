@@ -19,7 +19,7 @@ Require or disallow newlines between sibling tags in React.
 
 This rule requires blank lines between each sibling HTML tag by default.
 
-A configuration is an object which has 3 properties; `blankLine`, `prev` and `next`. For example, `{ blankLine: "always", prev: "br", next: "div" }` means “one or more blank lines are required between a `br` tag and a `div` tag.” You can supply any number of configurations. If a tag pair matches multiple configurations, the last matched configuration will be used.
+A configuration is an object which has 3 properties; `blankLine`, `prev`, and `next`. For example, `{ blankLine: "always", prev: "br", next: "div" }` means “one or more blank lines are required between a `br` tag and a `div` tag.” You can supply any number of configurations. If a tag pair matches multiple configurations, the last matched configuration will be used.
 
 - `blankLine` is one of the following:
   - `always` requires one or more blank lines.
@@ -32,11 +32,7 @@ A configuration is an object which has 3 properties; `blankLine`, `prev` and `ne
 
 `{ blankLine: 'never', prev: '*', next: '*' }`
 
-<eslint-code-block fix :rules="{'padding-line-between-tags': ['error', [
-  { blankLine: 'never', prev: '*', next: '*' }
-]]}">
-
-```react
+```jsx
 <App>
   <div>
     <div></div>
@@ -47,17 +43,11 @@ A configuration is an object which has 3 properties; `blankLine`, `prev` and `ne
 </App>
 ```
 
-</eslint-code-block>
-
 ### Require newlines after `<br>`
 
 `{ blankLine: 'always', prev: 'br', next: '*' }`
 
-<eslint-code-block fix :rules="{'react/padding-line-between-tags': ['error', [
-  { blankLine: 'always', prev: 'br', next: '*' }
-]]}">
-
-```react
+```jsx
 <App>
   <div>
     <ul>
@@ -71,19 +61,12 @@ A configuration is an object which has 3 properties; `blankLine`, `prev` and `ne
   </div>
 </App>
 ```
-
-</eslint-code-block>
 
 ### Require newlines between `<br>` and `<img>`
 
 `{ blankLine: 'always', prev: 'br', next: 'img' }`
 
-<eslint-code-block fix :rules="{'react/padding-line-between-tags': ['error', [
-{ blankLine: 'always', prev: 'br', next: 'img' },
-{ blankLine: 'always', prev: 'li', next: 'li' },
-]]}">
-
-```react
+```jsx
 <App>
   <div>
     <ul>
@@ -100,7 +83,7 @@ A configuration is an object which has 3 properties; `blankLine`, `prev` and `ne
 </App>
 ```
 
-```react [Fixed]
+```jsx [Fixed]
 <App>
   <div>
     <ul>
@@ -118,18 +101,12 @@ A configuration is an object which has 3 properties; `blankLine`, `prev` and `ne
   </div>
 </App>
 ```
-
-</eslint-code-block>
 
 ### Require consistent newlines
 
 `{ blankLine: 'consistent', prev: '*', next: '*' }`
 
-<eslint-code-block fix :rules="{'react/padding-line-between-tags': ['error', [
-  { blankLine: 'consistent', prev: '*', next: '*' }
-]]}">
-
-```react
+```jsx
 <App>
   <div>
     <ul>
@@ -145,8 +122,6 @@ A configuration is an object which has 3 properties; `blankLine`, `prev` and `ne
 </App>
 ```
 
-</eslint-code-block>
-
 ## When Not To Use It
 
-If you are not using React.
+If you are not using jsx.
