@@ -934,6 +934,12 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       errors: [{ messageId: 'unnecessaryCurly' }],
       options: [{ props: 'never', children: 'never', propElementValues: 'never' }],
       features: ['no-ts'],
+    },
+    {
+      code: `<Foo bar={"'"} />`,
+      output: `<Foo bar="'" />`,
+      errors: [{ messageId: 'unnecessaryCurly' }],
+      options: [{ props: 'never', children: 'never', propElementValues: 'never' }],
     }
   )),
 });
