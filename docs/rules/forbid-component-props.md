@@ -55,16 +55,6 @@ custom message, and a component allowlist:
 }
 ```
 
-For glob string patterns:
-
-```js
-{
-  "propNamePattern": '**-**',
-  "allowedFor": ['div'],
-  "message": "Avoid using kebab-case except div"
-}
-```
-
 Use `disallowedFor` as an exclusion list to warn on props for specific components. `disallowedFor` must have at least one item.
 
 ```js
@@ -75,13 +65,52 @@ Use `disallowedFor` as an exclusion list to warn on props for specific component
 }
 ```
 
-For glob string patterns:
+For `propNamePattern` glob string patterns:
 
 ```js
 {
-  "propNamePattern": "**-**",
-  "disallowedFor": ["MyComponent"],
-  "message": "Avoid using kebab-case for MyComponent"
+  "propNamePattern": '**-**',
+  "allowedFor": ['div'],
+  "message": "Avoid using kebab-case except div"
+}
+```
+
+```js
+{
+  "propNamePattern": '**-**',
+  "allowedForPatterns": ["*Component"],
+  "message": "Avoid using kebab-case except components that match the `*Component` pattern"
+}
+```
+
+Use `allowedForPatterns` for glob string patterns:
+
+```js
+{
+  "propName": "someProp",
+  "allowedForPatterns": ["*Component"],
+  "message": "Avoid using `someProp` except components that match the `*Component` pattern"
+}
+```
+
+Use `disallowedForPatterns` for glob string patterns:
+
+```js
+{
+  "propName": "someProp",
+  "disallowedForPatterns": ["*Component"],
+  "message": "Avoid using `someProp` for components that match the `*Component` pattern"
+}
+```
+
+Combine several properties to cover more cases:
+
+```js
+{
+  "propName": "someProp",
+  "allowedFor": ['div'],
+  "allowedForPatterns": ["*Component"],
+  "message": "Avoid using `someProp` except `div` and components that match the `*Component` pattern"
 }
 ```
 

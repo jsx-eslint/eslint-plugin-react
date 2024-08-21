@@ -9,9 +9,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Added
 * add type generation ([#3830][] @voxpelli)
 * [`no-unescaped-entities`]: add suggestions ([#3831][] @StyleShit)
+* [`forbid-component-props`]: add `allowedForPatterns`/`disallowedForPatterns` options ([#3805][] @Efimenko)
 
 [#3831]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3831
 [#3830]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3830
+[#3805]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3805
 
 ## [7.36.1] - 2024.09.12
 
