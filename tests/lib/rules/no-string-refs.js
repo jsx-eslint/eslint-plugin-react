@@ -59,6 +59,19 @@ ruleTester.run('no-refs', rule, {
         });
       `,
     },
+    {
+      code: `
+        var Hello = createReactClass({
+          componentDidMount: function() {
+            var component = this.refs.hello;
+          },
+          render: function() {
+            return <div>Hello {this.props.name}</div>;
+          }
+        });
+      `,
+      settings: { react: { version: '18.3.0' } },
+    },
   ]),
 
   invalid: parsers.all([
@@ -73,6 +86,7 @@ ruleTester.run('no-refs', rule, {
           }
         });
       `,
+      settings: { react: { version: '18.2.0' } },
       errors: [{ messageId: 'thisRefsDeprecated' }],
     },
     {
@@ -83,6 +97,7 @@ ruleTester.run('no-refs', rule, {
           }
         });
       `,
+      settings: { react: { version: '18.2.0' } },
       errors: [{ messageId: 'stringInRefDeprecated' }],
     },
     {
@@ -93,6 +108,7 @@ ruleTester.run('no-refs', rule, {
           }
         });
       `,
+      settings: { react: { version: '18.2.0' } },
       errors: [{ messageId: 'stringInRefDeprecated' }],
     },
     {
@@ -106,6 +122,7 @@ ruleTester.run('no-refs', rule, {
           }
         });
       `,
+      settings: { react: { version: '18.2.0' } },
       errors: [
         { messageId: 'thisRefsDeprecated' },
         { messageId: 'stringInRefDeprecated' },
@@ -123,6 +140,7 @@ ruleTester.run('no-refs', rule, {
         });
       `,
       options: [{ noTemplateLiterals: true }],
+      settings: { react: { version: '18.2.0' } },
       errors: [
         { messageId: 'thisRefsDeprecated' },
         { messageId: 'stringInRefDeprecated' },
@@ -140,8 +158,26 @@ ruleTester.run('no-refs', rule, {
         });
       `,
       options: [{ noTemplateLiterals: true }],
+      settings: { react: { version: '18.2.0' } },
       errors: [
         { messageId: 'thisRefsDeprecated' },
+        { messageId: 'stringInRefDeprecated' },
+      ],
+    },
+    {
+      code: `
+        var Hello = createReactClass({
+          componentDidMount: function() {
+          var component = this.refs.hello;
+          },
+          render: function() {
+            return <div ref={\`hello\${index}\`}>Hello {this.props.name}</div>;
+          }
+        });
+      `,
+      options: [{ noTemplateLiterals: true }],
+      settings: { react: { version: '18.3.0' } },
+      errors: [
         { messageId: 'stringInRefDeprecated' },
       ],
     },
