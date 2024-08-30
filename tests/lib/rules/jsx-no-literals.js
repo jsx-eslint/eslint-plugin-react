@@ -296,6 +296,186 @@ ruleTester.run('jsx-no-literals', rule, {
       `,
       options: [{ noStrings: true, allowedStrings: ['&mdash;', '—'] }],
     },
+    {
+      code: `
+        <T>foo</T>
+      `,
+      options: [{ elementOverrides: { T: { allowElement: true } } }],
+    },
+    {
+      code: `
+        <T>foo <div>bar</div></T>
+      `,
+      options: [{ elementOverrides: { T: { allowElement: true } } }],
+    },
+    {
+      code: `
+        <T>foo <div>{'bar'}</div></T>
+      `,
+      options: [{ elementOverrides: { T: { allowElement: true, applyToNestedElements: false } } }],
+    },
+    {
+      code: `
+        <div>
+          <div>{'foo'}</div>
+          <T>{2}</T>
+        </div>
+      `,
+      options: [{ elementOverrides: { T: { noStrings: true } } }],
+    },
+    {
+      code: `
+        <T>{2}<div>{2}</div></T>
+      `,
+      options: [{ elementOverrides: { T: { noStrings: true } } }],
+    },
+    {
+      code: `
+        <T>{2}<div>{'foo'}</div></T>
+      `,
+      options: [{ elementOverrides: { T: { noStrings: true, applyToNestedElements: false } } }],
+    },
+    {
+      code: `
+        <div>
+          <div>{'foo'}</div>
+          <T>foo</T>
+        </div>
+      `,
+      options: [{ elementOverrides: { T: { allowedStrings: ['foo'] } } }],
+    },
+    {
+      code: `
+        <T>foo<div>foo</div></T>
+      `,
+      options: [{ elementOverrides: { T: { allowedStrings: ['foo'] } } }],
+    },
+    {
+      code: `
+        <T>foo<div>{'foo'}</div></T>
+      `,
+      options: [{ elementOverrides: { T: { allowedStrings: ['foo'], applyToNestedElements: false } } }],
+    },
+    {
+      code: `
+        <div>
+          <div foo={2} />
+          <T foo="bar" />
+        </div>
+      `,
+      options: [{ noStrings: true, elementOverrides: { T: { noStrings: true, ignoreProps: true } } }],
+    },
+    {
+      code: `
+        <T foo="bar"><div foo="bar" /></T>
+      `,
+      options: [{ noStrings: true, elementOverrides: { T: { noStrings: true, ignoreProps: true } } }],
+    },
+    {
+      code: `
+        <T foo="bar"><div foo={2} /></T>
+      `,
+      options: [{ noStrings: true, elementOverrides: { T: { noStrings: true, ignoreProps: true, applyToNestedElements: false } } }],
+    },
+    {
+      code: `
+        <div>
+          <div foo="foo" />
+          <T foo={2} />
+        </div>
+      `,
+      options: [{ elementOverrides: { T: { noAttributeStrings: true } } }],
+    },
+    {
+      code: `
+        <T foo={2}><div foo={2} /></T>
+      `,
+      options: [{ elementOverrides: { T: { noAttributeStrings: true } } }],
+    },
+    {
+      code: `
+        <T foo={2}><div foo="foo" /></T>
+      `,
+      options: [{ elementOverrides: { T: { noAttributeStrings: true, applyToNestedElements: false } } }],
+    },
+    {
+      code: `
+        <T>foo<U>foo</U></T>
+      `,
+      options: [{ elementOverrides: { T: { allowedStrings: ['foo'] }, U: { allowedStrings: ['foo'] } } }],
+    },
+    {
+      code: `
+        import { T } from 'foo';
+        <T>{'foo'}</T>
+      `,
+    },
+    {
+      code: `
+        import { T as U } from 'foo';
+        <U>foo</U>
+      `,
+      options: [{ elementOverrides: { T: { allowElement: true } } }],
+    },
+    {
+      code: `
+        const { T: U } = require('foo');
+        <U>foo</U>
+      `,
+      options: [{ elementOverrides: { T: { allowElement: true } } }],
+    },
+    {
+      code: `
+        const { T: U } = require('foo').Foo;
+        <U>foo</U>
+      `,
+      options: [{ elementOverrides: { T: { allowElement: true } } }],
+    },
+    {
+      code: `
+        const { T: U } = require('foo').Foo.Foo;
+        <U>foo</U>
+      `,
+      options: [{ elementOverrides: { T: { allowElement: true } } }],
+    },
+    {
+      code: `
+        const foo = 2;
+        <T>foo</T>
+      `,
+      options: [{ elementOverrides: { T: { allowElement: true } } }],
+    },
+    {
+      code: `
+        <T.U>foo</T.U>
+      `,
+      options: [{ elementOverrides: { 'T.U': { allowElement: true } } }],
+    },
+    {
+      code: `
+        import { T as U } from 'foo';
+        <U.U>foo</U.U>
+      `,
+      options: [{ elementOverrides: { 'T.U': { allowElement: true } } }],
+    },
+    {
+      code: `
+        <React.Fragment>foo</React.Fragment>
+      `,
+      options: [{ elementOverrides: { Fragment: { allowElement: true } } }],
+    },
+    {
+      code: `
+        <React.Fragment>foo</React.Fragment>
+      `,
+      options: [{ elementOverrides: { 'React.Fragment': { allowElement: true } } }],
+    },
+    {
+      code: `
+        <div>{'foo'}</div>
+      `,
+      options: [{ elementOverrides: { div: { allowElement: true } } }],
+    },
   ]),
 
   invalid: parsers.all([
@@ -521,6 +701,7 @@ ruleTester.run('jsx-no-literals', rule, {
         },
       ],
     },
+    /* eslint-disable no-template-curly-in-string */
     {
       code: '<Foo bar={`${baz}`} />',
       options: [{ noStrings: true, ignoreProps: false }],
@@ -541,6 +722,7 @@ ruleTester.run('jsx-no-literals', rule, {
         },
       ],
     },
+    /* eslint-enable no-template-curly-in-string */
     {
       code: '<Foo bar={`foo` + \'bar\'} />',
       options: [{ noStrings: true, ignoreProps: false }],
@@ -662,6 +844,330 @@ ruleTester.run('jsx-no-literals', rule, {
           data: { text: 'baz bob' },
         },
       ],
+    },
+    {
+      code: `
+        <div>
+          <div>foo</div>
+          <T>bar</T>
+        </div>
+      `,
+      options: [{ elementOverrides: { T: {} } }],
+      errors: [
+        { messageId: 'literalNotInJSXExpression', data: { text: 'foo' } },
+        { messageId: 'literalNotInJSXExpressionInElement', data: { text: 'bar', element: 'T' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div>foo</div>
+          <T>bar</T>
+        </div>
+      `,
+      options: [{ elementOverrides: { T: { allowElement: true } } }],
+      errors: [
+        { messageId: 'literalNotInJSXExpression', data: { text: 'foo' } },
+      ],
+    },
+    {
+      code: `
+        <T>foo <div>bar</div></T>
+      `,
+      options: [{ elementOverrides: { T: { allowElement: true, applyToNestedElements: false } } }],
+      errors: [{ messageId: 'literalNotInJSXExpression', data: { text: 'bar' } }],
+    },
+    {
+      code: `
+        <div>
+          <div>foo</div>
+          <T>{'bar'}</T>
+        </div>
+      `,
+      options: [{ elementOverrides: { T: { noStrings: true } } }],
+      errors: [
+        { messageId: 'literalNotInJSXExpression', data: { text: 'foo' } },
+        { messageId: 'noStringsInJSXInElement', data: { text: '\'bar\'', element: 'T' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div>foo</div>
+          <T>{'bar'}<div>{'baz'}</div></T>
+        </div>
+      `,
+      options: [{ elementOverrides: { T: { noStrings: true } } }],
+      errors: [
+        { messageId: 'literalNotInJSXExpression', data: { text: 'foo' } },
+        { messageId: 'noStringsInJSXInElement', data: { text: '\'bar\'', element: 'T' } },
+        { messageId: 'noStringsInJSXInElement', data: { text: '\'baz\'', element: 'T' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div>foo</div>
+          <T>{'bar'}<div>{'baz'}</div></T>
+        </div>
+      `,
+      options: [{ elementOverrides: { T: { noStrings: true, applyToNestedElements: false } } }],
+      errors: [
+        { messageId: 'literalNotInJSXExpression', data: { text: 'foo' } },
+        { messageId: 'noStringsInJSXInElement', data: { text: '\'bar\'', element: 'T' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div>{'foo'}</div>
+          <T>{'foo'}</T>
+        </div>
+      `,
+      options: [{ noStrings: true, elementOverrides: { T: { noStrings: true, allowedStrings: ['foo'] } } }],
+      errors: [
+        { messageId: 'noStringsInJSX', data: { text: '\'foo\'' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div>{'foo'}</div>
+          <T>{'foo'}<div>{'foo'}</div></T>
+        </div>
+      `,
+      options: [{ noStrings: true, elementOverrides: { T: { noStrings: true, allowedStrings: ['foo'] } } }],
+      errors: [
+        { messageId: 'noStringsInJSX', data: { text: '\'foo\'' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div>{'foo'}</div>
+          <T>{'foo'}<div>{'foo'}</div></T>
+        </div>
+      `,
+      options: [{ noStrings: true, elementOverrides: { T: { noStrings: true, allowedStrings: ['foo'], applyToNestedElements: false } } }],
+      errors: [
+        { messageId: 'noStringsInJSX', data: { text: '\'foo\'' } },
+        { messageId: 'noStringsInJSX', data: { text: '\'foo\'' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div foo1="bar" />
+          <T foo2="bar" />
+        </div>
+      `,
+      options: [{ noStrings: true, elementOverrides: { T: { noStrings: true, ignoreProps: true } } }],
+      errors: [
+        { messageId: 'invalidPropValue', data: { text: 'foo1="bar"' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div foo1="bar" />
+          <T foo2="bar"><div foo3="bar" /></T>
+        </div>
+      `,
+      options: [{ noStrings: true, elementOverrides: { T: { noStrings: true, ignoreProps: true } } }],
+      errors: [
+        { messageId: 'invalidPropValue', data: { text: 'foo1="bar"' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div foo1="bar" />
+          <T foo2="bar"><div foo3="bar" /></T>
+        </div>
+      `,
+      options: [{ noStrings: true, elementOverrides: { T: { noStrings: true, ignoreProps: true, applyToNestedElements: false } } }],
+      errors: [
+        { messageId: 'invalidPropValue', data: { text: 'foo1="bar"' } },
+        { messageId: 'invalidPropValue', data: { text: 'foo3="bar"' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div foo1="bar1" />
+          <T foo2="bar2" />
+        </div>
+      `,
+      options: [{ elementOverrides: { T: { noAttributeStrings: true } } }],
+      errors: [
+        { messageId: 'noStringsInAttributesInElement', data: { text: '"bar2"', element: 'T' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div foo1="bar1" />
+          <T foo2="bar2"><div foo3="bar3" /></T>
+        </div>
+      `,
+      options: [{ elementOverrides: { T: { noAttributeStrings: true } } }],
+      errors: [
+        { messageId: 'noStringsInAttributesInElement', data: { text: '"bar2"', element: 'T' } },
+        { messageId: 'noStringsInAttributesInElement', data: { text: '"bar3"', element: 'T' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div foo1="bar1" />
+          <T foo2="bar2"><div foo3="bar3" /></T>
+        </div>
+      `,
+      options: [{ elementOverrides: { T: { noAttributeStrings: true, applyToNestedElements: false } } }],
+      errors: [
+        { messageId: 'noStringsInAttributesInElement', data: { text: '"bar2"', element: 'T' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div>{'foo'}</div>
+          <T>{'bar'}</T>
+        </div>
+      `,
+      options: [{ noStrings: true, elementOverrides: { T: {} } }],
+      errors: [
+        { messageId: 'noStringsInJSX', data: { text: '\'foo\'' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div>foo</div>
+          <T>foo</T>
+        </div>
+      `,
+      options: [{ allowedStrings: ['foo'], elementOverrides: { T: {} } }],
+      errors: [
+        { messageId: 'literalNotInJSXExpressionInElement', data: { text: 'foo', element: 'T' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div>foo</div>
+          <T>foo</T>
+          <T>bar</T>
+          <T>baz</T>
+        </div>
+      `,
+      options: [{ allowedStrings: ['foo'], elementOverrides: { T: { allowedStrings: ['bar'] } } }],
+      errors: [
+        { messageId: 'literalNotInJSXExpressionInElement', data: { text: 'foo', element: 'T' } },
+        { messageId: 'literalNotInJSXExpressionInElement', data: { text: 'baz', element: 'T' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div foo1="bar1" />
+          <T foo2="bar2" />
+        </div>
+      `,
+      options: [{ noStrings: true, ignoreProps: true, elementOverrides: { T: { noStrings: true } } }],
+      errors: [
+        { messageId: 'invalidPropValueInElement', data: { text: 'foo2="bar2"', element: 'T' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div foo1="bar1" />
+          <T foo2="bar2" />
+        </div>
+      `,
+      options: [{ noAttributeStrings: true, elementOverrides: { T: {} } }],
+      errors: [
+        { messageId: 'noStringsInAttributes', data: { text: '"bar1"' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <T>foo</T>
+          <U>bar</U>
+        </div>
+      `,
+      options: [{ elementOverrides: { T: {}, U: {} } }],
+      errors: [
+        { messageId: 'literalNotInJSXExpressionInElement', data: { text: 'foo', element: 'T' } },
+        { messageId: 'literalNotInJSXExpressionInElement', data: { text: 'bar', element: 'U' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <T>foo</T>
+          <U>bar</U>
+        </div>
+      `,
+      options: [{ elementOverrides: { T: {}, U: { allowElement: true } } }],
+      errors: [
+        { messageId: 'literalNotInJSXExpressionInElement', data: { text: 'foo', element: 'T' } },
+      ],
+    },
+    {
+      code: `
+        <T>foo <U>bar</U></T>
+      `,
+      options: [{ elementOverrides: { T: {}, U: { allowElement: true } } }],
+      errors: [
+        { messageId: 'literalNotInJSXExpressionInElement', data: { text: 'foo', element: 'T' } },
+      ],
+    },
+    {
+      code: `
+        <T>{'foo'}<U>{'bar'}</U></T>
+      `,
+      options: [{ elementOverrides: { T: { noStrings: true }, U: {} } }],
+      errors: [
+        { messageId: 'noStringsInJSXInElement', data: { text: '\'foo\'', element: 'T' } },
+      ],
+    },
+    {
+      code: `
+        <T>foo<U>foo</U></T>
+      `,
+      options: [{ elementOverrides: { T: { allowedStrings: ['foo'] }, U: {} } }],
+      errors: [
+        { messageId: 'literalNotInJSXExpressionInElement', data: { text: 'foo', element: 'U' } },
+      ],
+    },
+    {
+      code: `
+        <T>foo<U>foo</U></T>
+      `,
+      options: [{ elementOverrides: { T: {}, U: { allowedStrings: ['foo'] } } }],
+      errors: [
+        { messageId: 'literalNotInJSXExpressionInElement', data: { text: 'foo', element: 'T' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <Fragment>foo</Fragment>
+          <React.Fragment>foo</React.Fragment>
+        </div>
+      `,
+      options: [{ elementOverrides: { 'React.Fragment': { allowElement: true } } }],
+      errors: [{ messageId: 'literalNotInJSXExpression', data: { text: 'foo' } }],
+    },
+    {
+      code: `
+        <div>foo</div>
+      `,
+      options: [{ elementOverrides: { div: { allowElement: true } } }],
+      errors: [{ messageId: 'literalNotInJSXExpression', data: { text: 'foo' } }],
     },
   ]),
 });
