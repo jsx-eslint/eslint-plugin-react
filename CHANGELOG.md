@@ -5,9 +5,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.35.1] - 2024.09.02
+
 ### Fixed
 * [`jsx-curly-brace-presence`]: do not trigger on strings containing a quote character ([#3798][] @akulsr0)
 
+[7.35.1]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.35.0...v7.35.1
 [#3798]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3798
 
 ## [7.35.0] - 2024.07.19
