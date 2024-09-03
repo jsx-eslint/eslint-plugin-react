@@ -5,6 +5,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.35.2] - 2024.09.03
+
 ### Fixed
 * [`jsx-curly-brace-presence`]: avoid autofixing attributes with double quotes to a double quoted attribute ([#3814][] @ljharb)
 
