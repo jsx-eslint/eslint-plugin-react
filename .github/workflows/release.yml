@@ -37,9 +37,9 @@ jobs:
         id: changelog
         run: |
           # Parse the changelog for common links
-          _links="$(grep -P '^\[.*]:.+' ${GITHUB_WORKSPACE}/CHANGELOG.md | sort -u)"
+          _links="$(egrep '^\[.*]:.+' ${GITHUB_WORKSPACE:-.}/CHANGELOG.md | sort -u)"
           _links="${_links//'%'/'%25'}"
-          _links="${_links//$'\n'/'%0A'}"
+          # _links="${_links//$'\n'/'%0A'}"
           _links="${_links//$'\r'/'%0D'}"
           # Set output 'links' to $_links
           DELIMITER=$(uuidgen)
@@ -47,8 +47,16 @@ jobs:
           echo "$_links" >> "${GITHUB_OUTPUT}"
           echo "${DELIMITER}" >> "${GITHUB_OUTPUT}"
 
-      - uses: softprops/action-gh-release@v1
+      - id: prune-footnotes
+        run: |
+          tmp.md < "${{ steps.changelog_reader.outputs.changes }}"
+          tmp.md << ${{ steps.changelog.outputs.links }}
+          DELIMITER=$(uuidgen)
+          echo "body<<${DELIMITER}" >> "${GITHUB_OUTPUT}"
+          npx gfm-footnotes -i tmp.md > "${GITHUB_OUTPUT}"
+          echo "${DELIMITER}" >> "${GITHUB_OUTPUT}"
+
+      - uses: softprops/action-gh-release@v2
         with:
           body: |
-            ${{ steps.changelog_reader.outputs.changes }}
-            ${{ steps.changelog.outputs.links }}
+            ${{ steps.prune-footnotes.outputs.body }}

@@ -65,6 +65,7 @@
     "eslint-remote-tester-repositories": "^1.0.1",
     "eslint-scope": "^3.7.3",
     "espree": "^3.5.4",
+    "gfm-footnotes": "^1.0.0",
     "glob": "=10.3.7",
     "istanbul": "^0.4.5",
     "jackspeak": "=2.1.1",
