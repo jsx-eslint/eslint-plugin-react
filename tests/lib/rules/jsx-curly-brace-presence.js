@@ -945,5 +945,15 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       output: `<Foo bar="'" />`,
       errors: [{ messageId: 'unnecessaryCurly' }],
     },
+    {
+      code: `
+        <Foo help={'The maximum time range for searches. (i.e. "P30D" for 30 days, "PT24H" for 24 hours)'} />
+      `,
+      options: ['never'],
+      output: `
+        <Foo help='The maximum time range for searches. (i.e. "P30D" for 30 days, "PT24H" for 24 hours)' />
+      `,
+      errors: [{ messageId: 'unnecessaryCurly' }],
+    }
   )),
 });

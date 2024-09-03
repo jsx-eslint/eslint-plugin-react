@@ -8,6 +8,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Added
 * [`no-string-refs`]: allow this.refs in > 18.3.0 ([#3807][] @henryqdineen)
 
+### Fixed
+* [`jsx-curly-brace-presence`]: avoid autofixing attributes with double quotes to a double quoted attribute ([#3814][] @ljharb)
+
+[#3814]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3814
 [#3807]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3807
 
 ## [7.35.1] - 2024.09.02
