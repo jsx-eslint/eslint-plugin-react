@@ -5,6 +5,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`jsx-curly-brace-presence`]: avoid autofixing attributes with double quotes to a double quoted attribute ([#3814][] @ljharb)
+
+[#3814]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3814
+
 ## [7.35.1] - 2024.09.02
 
 ### Fixed
