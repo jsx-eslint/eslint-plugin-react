@@ -15,8 +15,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Changed
 * [Tests] add @typescript-eslint/parser v6 ([#3629][] @HenryBrown0)
 * [Tests] add @typescript-eslint/parser v7 and v8 ([#3629][] @hampustagerud)
+* [Docs] [`no-danger`]: update broken link ([#3817][] @lucasrmendonca)
 
 [#3629]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3629
+[#3817]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3817
 [#3807]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3807
 
 ## [7.35.2] - 2024.09.03
