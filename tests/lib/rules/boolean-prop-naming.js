@@ -505,6 +505,14 @@ ruleTester.run('boolean-prop-naming', rule, {
       options: [{ rule: '(^(is|has|should|without)[A-Z]([A-Za-z0-9]?)+|disabled|required|checked|defaultChecked)' }],
       features: ['types'],
     },
+    {
+      code: `
+        // Strip @jsx comments, see https://github.com/microsoft/fluentui/issues/29126
+        const resultCode = result.code
+          .replace('/** @jsxRuntime automatic */', '')
+          .replace('/** @jsxImportSource @fluentui/react-jsx-runtime */', '');
+      `,
+    },
   ]),
 
   invalid: parsers.all([

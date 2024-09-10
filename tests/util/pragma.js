@@ -56,9 +56,9 @@ describe('pragma', () => {
       );
     });
 
-    it('throws an error if the pragma is invalid', () => {
+    it('returns React if the pragma is invalid', () => {
       const code = '/* @jsx invalid-jsx-pragma */';
-      assert.throws(() => getFromContext(fakeContext(code)));
+      assert.equal(getFromContext(fakeContext(code)), 'React');
     });
   });
 });

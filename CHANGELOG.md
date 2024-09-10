@@ -11,11 +11,14 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Fixed
 * [`function-component-definition`], [`boolean-prop-naming`], [`jsx-first-prop-new-line`], [`jsx-props-no-multi-spaces`], `propTypes`: use type args ([#3629][] @HenryBrown0)
+* JSX pragma: fail gracefully ([#3632][] @ljharb)
 
 ### Changed
 * [Tests] add @typescript-eslint/parser v6 ([#3629][] @HenryBrown0)
 * [Tests] add @typescript-eslint/parser v7 and v8 ([#3629][] @hampustagerud)
 * [Docs] [`no-danger`]: update broken link ([#3817][] @lucasrmendonca)
+
+[#3632]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3632
 
 [#3629]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3629
 [#3817]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3817
