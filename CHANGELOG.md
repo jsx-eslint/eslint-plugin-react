@@ -13,6 +13,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`function-component-definition`], [`boolean-prop-naming`], [`jsx-first-prop-new-line`], [`jsx-props-no-multi-spaces`], `propTypes`: use type args ([#3629][] @HenryBrown0)
 * JSX pragma: fail gracefully ([#3632][] @ljharb)
+* [`jsx-props-no-spreading`]: add `explicitSpread` option to schema ([#3799][] @ljharb)
 
 ### Changed
 * [Tests] add @typescript-eslint/parser v6 ([#3629][] @HenryBrown0)
@@ -21,6 +22,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [types] add jsdoc type annotations ([#3731][] @y-hsgw)
 * [Tests] `button-has-type`: add test case with spread ([#3731][] @y-hsgw)
 
+[#3799]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3799
 [#3632]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3632
 
 [#3812]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3812
