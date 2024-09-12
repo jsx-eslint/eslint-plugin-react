@@ -6,6 +6,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.36.0] - 2024.09.12
+
 ### Added
 * [`no-string-refs`]: allow this.refs in > 18.3.0 ([#3807][] @henryqdineen)
 * [`jsx-no-literals`] Add `elementOverrides` option and the ability to ignore this rule on specific elements ([#3812][] @Pearce-Ropion)
@@ -23,9 +25,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [types] add jsdoc type annotations ([#3731][] @y-hsgw)
 * [Tests] `button-has-type`: add test case with spread ([#3731][] @y-hsgw)
 
+[7.36.0]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.35.2...v7.36.0
 [#3799]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3799
 [#3632]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3632
-
 [#3812]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3812
 [#3731]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3731
 [#3694]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3667
@@ -38,6 +40,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`jsx-curly-brace-presence`]: avoid autofixing attributes with double quotes to a double quoted attribute ([#3814][] @ljharb)
 
+[7.35.2]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.35.1...v7.35.2
 [#3814]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3814
 
 ## [7.35.1] - 2024.09.02
