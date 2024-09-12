@@ -8,7 +8,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Fixed
 * [`no-is-mounted`]: fix logic in method name check ([#3821][] @Mathias-S)
+* [`jsx-no-literals`]: Avoid crashing on valueless boolean props ([#3823][] @reosarevok)
 
+[#3823]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3823
 [#3821]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3821
 
 ## [7.36.0] - 2024.09.12
