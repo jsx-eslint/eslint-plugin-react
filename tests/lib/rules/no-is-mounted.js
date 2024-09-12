@@ -57,6 +57,17 @@ ruleTester.run('no-is-mounted', rule, {
         });
       `,
     },
+    {
+      code: `
+        class Hello extends React.Component {
+          notIsMounted() {}
+          render() {
+            this.notIsMounted();
+            return <div>Hello</div>;
+          }
+        };
+      `,
+    },
   ]),
 
   invalid: parsers.all([
