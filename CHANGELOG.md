@@ -4307,6 +4307,7 @@ If you're still not using React 15 you can keep the old behavior by setting the 
 [`forbid-elements`]: docs/rules/forbid-elements.md
 [`forbid-foreign-prop-types`]: docs/rules/forbid-foreign-prop-types.md
 [`forbid-prop-types`]: docs/rules/forbid-prop-types.md
+[`forward-ref-uses-ref`]: docs/rules/forward-ref-uses-ref.md
 [`function-component-definition`]: docs/rules/function-component-definition.md
 [`hook-use-state`]: docs/rules/hook-use-state.md
 [`iframe-missing-sandbox`]: docs/rules/iframe-missing-sandbox.md
