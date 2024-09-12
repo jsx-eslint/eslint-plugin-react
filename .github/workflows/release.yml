@@ -49,8 +49,11 @@ jobs:
 
       - id: prune-footnotes
         run: |
-          tmp.md < echo "${{ steps.changelog_reader.outputs.changes }}"
-          tmp.md << echo "${{ steps.changelog.outputs.links }}"
+          cat << 'EOF' > tmp.md
+          ${{ steps.changelog_reader.outputs.changes }}
+          ${{ steps.changelog.outputs.links }}
+          EOF
+
           DELIMITER=$(uuidgen)
           echo "body<<${DELIMITER}" >> "${GITHUB_OUTPUT}"
           npx gfm-footnotes -i tmp.md > "${GITHUB_OUTPUT}"
