@@ -12,9 +12,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`forbid-component-props`]: add `allowedForPatterns`/`disallowedForPatterns` options ([#3805][] @Efimenko)
 * [`no-unstable-nested-components`]: add `propNamePattern` to support custom render prop naming conventions ([#3826][] @danreeves)
 
+### Changed
+* [readme] flat config example for react 17+ ([#3824][] @GabenGar)
+
 [#3831]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3831
 [#3830]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3830
 [#3826]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3826
+[#3824]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3824
 [#3805]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3805
 
 ## [7.36.1] - 2024.09.12
