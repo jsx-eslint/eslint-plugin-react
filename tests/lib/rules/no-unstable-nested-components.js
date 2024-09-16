@@ -580,6 +580,18 @@ ruleTester.run('no-unstable-nested-components', rule, {
         allowAsProps: true,
       }],
     },
+    {
+      code: `
+        function ParentComponent() {
+          return <Table
+            rowRenderer={(rowData) => <Row data={data} />}
+          />
+        }
+      `,
+      options: [{
+        propNamePattern: '*Renderer',
+      }],
+    },
     /* TODO These minor cases are currently falsely marked due to component detection
     {
       code: `

@@ -125,6 +125,7 @@ function Component() {
   {
     "allowAsProps": true | false,
     "customValidators": [] /* optional array of validators used for propTypes validation */
+    "propNamePattern": string
   }
 ]
 ...
@@ -146,6 +147,16 @@ function Component() {
     </div>
   );
 }
+```
+
+You can allow other render prop naming conventions by setting the `propNamePattern` option. By default this option is `"render*"`.
+
+For example, if `propNamePattern` is set to `"*Renderer"` the following pattern is **not** considered warnings:
+
+```jsx
+<Table
+  rowRenderer={(rowData) => <Row data={rowData} />}
+/>
 ```
 
 ## When Not To Use It
