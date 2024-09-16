@@ -8,6 +8,19 @@ The `key` is used by React to [identify which items have changed, are added, or 
 
 It's a bad idea to use the array index since it doesn't uniquely identify your elements. In cases where the array is sorted or an element is added to the beginning of the array, the index will be changed even though the element representing that index may be the same. This results in unnecessary renders.
 
+## Example
+
+Add to your eslint configuration file (usually `.estlintrc`)
+
+```
+{
+	"rules": {
+		"react/no-array-index-key": 0 // 0 = off, 1 = warn, 2 = error
+	}
+}
+
+```
+
 ## Rule Details
 
 Examples of **incorrect** code for this rule:
