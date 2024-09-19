@@ -10,6 +10,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Fixed
 * [`no-danger`]: avoid a crash on a nested component name ([#3833][] @ljharb)
 * [Fix] types: correct generated type declaration ([#3840][] @ocavue)
+* [`no-unknown-property`]: support `precedence` prop in react 19 ([#3829][] @acusti)
 
 ### Changed
 * [Tests] [`jsx-no-script-url`]: Improve tests ([#3849][] @radu2147)
@@ -19,6 +20,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3841]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3841
 [#3840]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3840
 [#3833]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3833
+[#3829]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3829
 
 ## [7.37.2] - 2024.10.22
 
