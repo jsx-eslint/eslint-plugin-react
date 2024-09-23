@@ -6,6 +6,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Added
+* add type generation ([#3830][] @voxpelli)
+
+[#3830]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3830
+
 ## [7.36.1] - 2024.09.12
 
 ### Fixed

@@ -1,0 +1,12 @@
+{
+  "extends": "../tsconfig.json",
+
+  "files": [
+    "index.js"
+  ],
+
+  "compilerOptions": {
+    "lib": ["esnext"],
+    "types": ["node"]
+  }
+}

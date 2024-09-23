@@ -1,0 +1,61 @@
+name: "Types: check published types"
+
+on: [pull_request, push]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: TS ${{ matrix.ts_version }}, "${{ matrix.ts_lib }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        ts_version:
+          # The official ESLint types are not compatible with TS 3.9
+          # - 3.9
+          - '4.0'
+          - 4.1
+          - 4.2
+          - 4.3
+          - 4.4
+          - 4.5
+          - '5.0'
+          - 5.5
+          - 5.6
+        ts_lib:
+          - es2015
+          - es2015,dom
+          - es2020
+          - esnext
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          show-progress: false
+
+      - uses: ljharb/actions/node/install@main
+        name: 'nvm install lts/* && npm install'
+        with:
+          node-version: 'lts/*'
+          skip-ls-check: true
+
+      - name: build types
+        run: npm run build-types
+
+      - name: npm install working directory
+        run: npm install
+        working-directory: test-published-types
+
+      - name: install typescript version ${{ matrix.ts_version }}
+        run: npm install --no-save typescript@${{ matrix.ts_version }}
+        working-directory: test-published-types
+
+      - name: show installed typescript version
+        run: npm list typescript --depth=0
+        working-directory: test-published-types
+
+      - name: check types with lib "${{ matrix.ts_lib }}"
+        run: npx tsc --lib ${{ matrix.ts_lib }}
+        working-directory: test-published-types
