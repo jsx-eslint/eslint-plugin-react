@@ -872,6 +872,41 @@ ${'            '}
         `,
         features: ['ts', 'no-babel'],
       },
-    ] : []
+    ] : [],
+    {
+      code: `
+        type Props = { text: string };
+        export const MyComponent: React.FC<Props> = (props) => {
+          type MyType = typeof props.text;
+          return <div>{props.text as MyType}</div>;
+        };
+      `,
+      options: ['always', { destructureInSignature: 'always' }],
+      features: ['types'],
+      errors: [
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = { text: string };
+        export const MyOtherComponent: React.FC<Props> = (props) => {
+          const { text } = props;
+          type MyType = typeof props.text;
+          return <div>{text as MyType}</div>;
+        };
+      `,
+      options: ['always', { destructureInSignature: 'always' }],
+      features: ['types'],
+      errors: [
+        {
+          messageId: 'destructureInSignature',
+          data: { type: 'props' },
+        },
+      ],
+    }
   )),
 });
