@@ -135,6 +135,19 @@ ruleTester.run('no-unescaped-entities', rule, {
           {
             messageId: 'unescapedEntityAlts',
             data: { entity: '>', alts: '`&gt;`' },
+            suggestions: [
+              {
+                messageId: 'replaceWithAlt',
+                data: { alt: '&gt;' },
+                output: `
+          var Hello = createReactClass({
+            render: function() {
+              return <div>&gt; default parser</div>;
+            }
+          });
+        `,
+              },
+            ],
           },
         ],
       },
@@ -152,6 +165,21 @@ ruleTester.run('no-unescaped-entities', rule, {
           {
             messageId: 'unescapedEntityAlts',
             data: { entity: '>', alts: '`&gt;`' },
+            suggestions: [
+              {
+                messageId: 'replaceWithAlt',
+                data: { alt: '&gt;' },
+                output: `
+          var Hello = createReactClass({
+            render: function() {
+              return <div>first line is ok
+              so is second
+              and here are some bad entities: &gt;</div>
+            }
+          });
+        `,
+              },
+            ],
           },
         ],
       },
@@ -167,14 +195,86 @@ ruleTester.run('no-unescaped-entities', rule, {
           {
             messageId: 'unescapedEntityAlts',
             data: { entity: '\'', alts: '`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`' },
+            suggestions: [
+              {
+                messageId: 'replaceWithAlt',
+                data: { alt: '&apos;' },
+                output: `
+          var Hello = createReactClass({
+            render: function() {
+              return <div>Multiple errors: &apos;>> default parser</div>;
+            }
+          });
+        `,
+              },
+              {
+                messageId: 'replaceWithAlt',
+                data: { alt: '&lsquo;' },
+                output: `
+          var Hello = createReactClass({
+            render: function() {
+              return <div>Multiple errors: &lsquo;>> default parser</div>;
+            }
+          });
+        `,
+              },
+              {
+                messageId: 'replaceWithAlt',
+                data: { alt: '&#39;' },
+                output: `
+          var Hello = createReactClass({
+            render: function() {
+              return <div>Multiple errors: &#39;>> default parser</div>;
+            }
+          });
+        `,
+              },
+              {
+                messageId: 'replaceWithAlt',
+                data: { alt: '&rsquo;' },
+                output: `
+          var Hello = createReactClass({
+            render: function() {
+              return <div>Multiple errors: &rsquo;>> default parser</div>;
+            }
+          });
+        `,
+              },
+            ],
           },
           {
             messageId: 'unescapedEntityAlts',
             data: { entity: '>', alts: '`&gt;`' },
+            suggestions: [
+              {
+                messageId: 'replaceWithAlt',
+                data: { alt: '&gt;' },
+                output: `
+          var Hello = createReactClass({
+            render: function() {
+              return <div>Multiple errors: '&gt;> default parser</div>;
+            }
+          });
+        `,
+              },
+            ],
           },
           {
             messageId: 'unescapedEntityAlts',
             data: { entity: '>', alts: '`&gt;`' },
+            suggestions: [
+              {
+                messageId: 'replaceWithAlt',
+                data: { alt: '&gt;' },
+                output: `
+          var Hello = createReactClass({
+            render: function() {
+              return <div>Multiple errors: '>&gt; default parser</div>;
+            }
+          });
+        `,
+              },
+            ],
           },
         ],
       },
@@ -190,6 +290,19 @@ ruleTester.run('no-unescaped-entities', rule, {
           {
             messageId: 'unescapedEntityAlts',
             data: { entity: '}', alts: '`&#125;`' },
+            suggestions: [
+              {
+                messageId: 'replaceWithAlt',
+                data: { alt: '&#125;' },
+                output: `
+          var Hello = createReactClass({
+            render: function() {
+              return <div>{"Unbalanced braces - default parser"}&#125;</div>;
+            }
+          });
+        `,
+              },
+            ],
           },
         ],
       },
@@ -207,6 +320,19 @@ ruleTester.run('no-unescaped-entities', rule, {
         {
           messageId: 'unescapedEntityAlts',
           data: { entity: '>', alts: '`&gt;`' },
+          suggestions: [
+            {
+              messageId: 'replaceWithAlt',
+              data: { alt: '&gt;' },
+              output: `
+        var Hello = createReactClass({
+          render: function() {
+            return <>&gt; babel-eslint</>;
+          }
+        });
+      `,
+            },
+          ],
         },
       ],
     },
@@ -225,6 +351,19 @@ ruleTester.run('no-unescaped-entities', rule, {
         {
           messageId: 'unescapedEntityAlts',
           data: { entity: '>', alts: '`&gt;`' },
+          suggestions: [{
+            messageId: 'replaceWithAlt',
+            data: { alt: '&gt;' },
+            output: `
+        var Hello = createReactClass({
+          render: function() {
+            return <>first line is ok
+            so is second
+            and here are some bad entities: &gt;</>
+          }
+        });
+      `,
+          }],
         },
       ],
     },
@@ -240,6 +379,52 @@ ruleTester.run('no-unescaped-entities', rule, {
         {
           messageId: 'unescapedEntityAlts',
           data: { entity: '\'', alts: '`&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`' },
+          suggestions: [
+            {
+              messageId: 'replaceWithAlt',
+              data: { alt: '&apos;' },
+              output: `
+        var Hello = createReactClass({
+          render: function() {
+            return <div>&apos;</div>;
+          }
+        });
+      `,
+            },
+            {
+              messageId: 'replaceWithAlt',
+              data: { alt: '&lsquo;' },
+              output: `
+        var Hello = createReactClass({
+          render: function() {
+            return <div>&lsquo;</div>;
+          }
+        });
+      `,
+            },
+            {
+              messageId: 'replaceWithAlt',
+              data: { alt: '&#39;' },
+              output: `
+        var Hello = createReactClass({
+          render: function() {
+            return <div>&#39;</div>;
+          }
+        });
+      `,
+            },
+            {
+              messageId: 'replaceWithAlt',
+              data: { alt: '&rsquo;' },
+              output: `
+        var Hello = createReactClass({
+          render: function() {
+            return <div>&rsquo;</div>;
+          }
+        });
+      `,
+            },
+          ],
         },
       ],
     },
@@ -256,6 +441,17 @@ ruleTester.run('no-unescaped-entities', rule, {
         {
           messageId: 'unescapedEntityAlts',
           data: { entity: '}', alts: '`&#125;`' },
+          suggestions: [{
+            messageId: 'replaceWithAlt',
+            data: { alt: '&#125;' },
+            output: `
+        var Hello = createReactClass({
+          render: function() {
+            return <>{"Unbalanced braces - babel-eslint"}&#125;</>;
+          }
+        });
+      `,
+          }],
         },
       ],
     },
@@ -304,6 +500,17 @@ ruleTester.run('no-unescaped-entities', rule, {
         {
           messageId: 'unescapedEntityAlts',
           data: { entity: '&', alts: '`&amp;`' },
+          suggestions: [{
+            messageId: 'replaceWithAlt',
+            data: { alt: '&amp;' },
+            output: `
+        var Hello = createReactClass({
+          render: function() {
+            return <span>foo &amp; bar</span>;
+          }
+        });
+      `,
+          }],
         },
       ],
       options: [
@@ -327,12 +534,72 @@ ruleTester.run('no-unescaped-entities', rule, {
           data: { entity: '"', alts: '`&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`' },
           line: 2,
           column: 30,
+          suggestions: [
+            {
+              messageId: 'replaceWithAlt',
+              data: { alt: '&quot;' },
+              output: `
+        <script>window.foo = &quot;bar"</script>
+      `,
+            },
+            {
+              messageId: 'replaceWithAlt',
+              data: { alt: '&ldquo;' },
+              output: `
+        <script>window.foo = &ldquo;bar"</script>
+      `,
+            },
+            {
+              messageId: 'replaceWithAlt',
+              data: { alt: '&#34;' },
+              output: `
+        <script>window.foo = &#34;bar"</script>
+      `,
+            },
+            {
+              messageId: 'replaceWithAlt',
+              data: { alt: '&rdquo;' },
+              output: `
+        <script>window.foo = &rdquo;bar"</script>
+      `,
+            },
+          ],
         },
         {
           messageId: 'unescapedEntityAlts',
           data: { entity: '"', alts: '`&quot;`, `&ldquo;`, `&#34;`, `&rdquo;`' },
           line: 2,
           column: 34,
+          suggestions: [
+            {
+              messageId: 'replaceWithAlt',
+              data: { alt: '&quot;' },
+              output: `
+        <script>window.foo = "bar&quot;</script>
+      `,
+            },
+            {
+              messageId: 'replaceWithAlt',
+              data: { alt: '&ldquo;' },
+              output: `
+        <script>window.foo = "bar&ldquo;</script>
+      `,
+            },
+            {
+              messageId: 'replaceWithAlt',
+              data: { alt: '&#34;' },
+              output: `
+        <script>window.foo = "bar&#34;</script>
+      `,
+            },
+            {
+              messageId: 'replaceWithAlt',
+              data: { alt: '&rdquo;' },
+              output: `
+        <script>window.foo = "bar&rdquo;</script>
+      `,
+            },
+          ],
         },
       ],
     }
