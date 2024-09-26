@@ -6,6 +6,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.37.0] - 2024.09.26
+
 ### Added
 * add type generation ([#3830][] @voxpelli)
 * [`no-unescaped-entities`]: add suggestions ([#3831][] @StyleShit)
@@ -15,6 +17,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Changed
 * [readme] flat config example for react 17+ ([#3824][] @GabenGar)
 
+[7.36.2]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.36.1...v7.36.2
 [#3831]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3831
 [#3830]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3830
 [#3826]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3826
