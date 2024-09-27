@@ -28,6 +28,12 @@ jobs:
 
       - uses: actions/checkout@v4
 
+      - uses: ljharb/actions/node/install@main
+        with:
+          node-version: node
+          skip-install: true
+          skip-ls-check: true
+
       - uses: mindsers/changelog-reader-action@v2
         id: changelog_reader
         with:
@@ -47,16 +53,20 @@ jobs:
           echo "$_links" >> "${GITHUB_OUTPUT}"
           echo "${DELIMITER}" >> "${GITHUB_OUTPUT}"
 
-      - id: prune-footnotes
+      - name: 'concat data > tmp.md'
         run: |
           cat << 'EOF' > tmp.md
           ${{ steps.changelog_reader.outputs.changes }}
           ${{ steps.changelog.outputs.links }}
           EOF
 
+      - run: cat tmp.md
+
+      - id: prune-footnotes
+        run: |
           DELIMITER=$(uuidgen)
           echo "body<<${DELIMITER}" >> "${GITHUB_OUTPUT}"
-          npx gfm-footnotes -i tmp.md > "${GITHUB_OUTPUT}"
+          npx gfm-footnotes -i tmp.md >> "${GITHUB_OUTPUT}"
           echo "${DELIMITER}" >> "${GITHUB_OUTPUT}"
 
       - uses: softprops/action-gh-release@v2
