@@ -6,6 +6,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Changed
+* [readme] Fix shared settings link ([#3834][] @MgenGlder)
+
+[#3834]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3834
+
 ## [7.37.0] - 2024.09.26
 
 ### Added
