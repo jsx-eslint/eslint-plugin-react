@@ -6,6 +6,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`destructuring-assignment`]: fix false negative when using `typeof props.a` ([#3835][] @golopot)
+
 ### Changed
 * [Refactor] [`destructuring-assignment`]: use `getParentStatelessComponent` ([#3835][] @golopot)
 
