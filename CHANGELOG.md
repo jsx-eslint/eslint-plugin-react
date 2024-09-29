@@ -6,6 +6,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Changed
+* [Refactor] [`destructuring-assignment`]: use `getParentStatelessComponent` ([#3835][] @golopot)
+
+[#3835]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3835
+
 ## [7.37.1] - 2024.10.01
 
 ### Fixed
