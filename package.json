@@ -1,9 +1,10 @@
 {
   "name": "eslint-plugin-react",
-  "version": "7.37.0",
+  "version": "7.37.1",
   "author": "Yannick Croissant <yannick.croissant+npm@gmail.com>",
   "description": "React specific linting rules for ESLint",
   "main": "index.js",
+  "types": "index.d.ts",
   "scripts": {
     "clean-built-types": "rm -f $(find . -maxdepth 1 -type f -name '*.d.ts*') $(find lib -type f -name '*.d.ts*' ! -name 'types.d.ts')",
     "prebuild-types": "npm run clean-built-types",

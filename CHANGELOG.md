@@ -6,6 +6,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.37.1] - 2024.10.01
+
 ### Fixed
 * [meta] do not npmignore `d.ts` files ([#3836][] @ljharb)
 
