@@ -109,7 +109,9 @@
       "tsconfig.json",
       "build.tsconfig.json",
       ".markdownlint*",
-      "types"
+      "types",
+      "!*.d.ts",
+      "!*.d.ts.map"
     ]
   }
 }

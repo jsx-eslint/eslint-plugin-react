@@ -6,9 +6,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [meta] do not npmignore `d.ts` files ([#3836][] @ljharb)
+
 ### Changed
 * [readme] Fix shared settings link ([#3834][] @MgenGlder)
 
+[#3836]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3836
 [#3834]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3834
 
 ## [7.37.0] - 2024.09.26
