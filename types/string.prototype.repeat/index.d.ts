@@ -1,3 +1,4 @@
 declare module 'string.prototype.repeat' {
-  export = typeof Function.call.bind(String.prototype.repeat);
+  function repeat(text: string, count: number): string;
+  export = repeat;
 }

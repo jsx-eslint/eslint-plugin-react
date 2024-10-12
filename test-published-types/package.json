@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "dependencies": {
-    "eslint": "^9.11.1",
-    "eslint-plugin-react": "file:.."
+    "eslint": "^9.11.1"
   }
 }
