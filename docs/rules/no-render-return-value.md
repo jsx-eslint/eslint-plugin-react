@@ -4,9 +4,9 @@
 
 <!-- end auto-generated rule header -->
 
-> `ReactDOM.render()` currently returns a reference to the root `ReactComponent` instance. However, using this return value is legacy and should be avoided because future versions of React may render components asynchronously in some cases. If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a [callback ref](https://reactjs.org/docs/refs-and-the-dom.html#callback-refs) to the root element.
+> `ReactDOM.render()` currently returns a reference to the root `ReactComponent` instance. However, using this return value is legacy and should be avoided because future versions of React may render components asynchronously in some cases. If you need a reference to the root `ReactComponent` instance, the preferred solution is to attach a [callback ref](https://legacy.reactjs.org/docs/refs-and-the-dom.html#callback-refs) to the root element.
 
-Source: [ReactDOM documentation](https://facebook.github.io/react/docs/react-dom.html#render)
+Source: [ReactDOM documentation](https://legacy.reactjs.org/docs/react-dom.html#render)
 
 ## Rule Details
 

@@ -1,3 +1,4 @@
+
 # Change Log
 
 All notable changes to this project will be documented in this file.
@@ -12,8 +13,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Changed
 * [Tests] [`jsx-no-script-url`]: Improve tests ([#3849][] @radu2147)
+* [Docs] fix broken links: [`default-props-match-prop-types`], [`jsx-boolean-value`], [`jsx-curly-brace-presence`], [`jsx-no-bind`], [`no-array-index-key`], [`no-is-mounted`], [`no-render-return-value`], [`require-default-props`] ([#3841][] @bastiendmt)
 
 [#3849]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3849
+[#3841]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3841
 [#3840]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3840
 [#3833]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3833
 
