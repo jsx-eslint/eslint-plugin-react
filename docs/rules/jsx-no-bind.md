@@ -153,7 +153,7 @@ This will speed up rendering, as it avoids the need to create new functions (thr
 
 ### ES6 Classes
 
-Unfortunately [React ES6 classes](https://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#es6-classes) do not autobind their methods like components created with the older `createReactClass` syntax. There are several approaches to binding methods for ES6 classes. A basic approach is to just manually bind the methods in the constructor:
+Unfortunately [React ES6 classes](https://legacy.reactjs.org/blog/2015/01/27/react-v0.13.0-beta-1.html#es6-classes) do not autobind their methods like components created with the older `createReactClass` syntax. There are several approaches to binding methods for ES6 classes. A basic approach is to just manually bind the methods in the constructor:
 
 ```jsx
 class Foo extends React.Component {
@@ -174,7 +174,7 @@ class Foo extends React.Component {
 }
 ```
 
-A more sophisticated approach would be to use something like an [autobind ES7 decorator](https://www.npmjs.com/package/core-decorators#autobind) or [property initializers](https://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#autobinding).
+A more sophisticated approach would be to use something like an [autobind ES7 decorator](https://www.npmjs.com/package/core-decorators#autobind) or [property initializers](https://legacy.reactjs.org/blog/2015/01/27/react-v0.13.0-beta-1.html#autobinding).
 
 ### React Hooks
 
@@ -191,7 +191,7 @@ const Button = () => {
 };
 ```
 
-Otherwise, the idiomatic way to avoid redefining callbacks on every render would be to memoize them using the [`useCallback`](https://reactjs.org/docs/hooks-reference.html#usecallback) hook:
+Otherwise, the idiomatic way to avoid redefining callbacks on every render would be to memoize them using the [`useCallback`](https://legacy.reactjs.org/docs/hooks-reference.html#usecallback) hook:
 
 ```jsx
 const Button = () => {
