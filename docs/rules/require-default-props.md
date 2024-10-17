@@ -476,7 +476,7 @@ If you don't care about using `defaultProps` for your component's props that are
 
 ## Resources
 
-- [Official React documentation on defaultProps](https://facebook.github.io/react/docs/typechecking-with-proptypes.html#default-prop-values)
+- [Official React documentation on defaultProps](https://legacy.reactjs.org/docs/typechecking-with-proptypes.html#default-prop-values)
 
 [PropTypes]: https://reactjs.org/docs/typechecking-with-proptypes.html
 [TypeScript]: https://www.typescriptlang.org/
