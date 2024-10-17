@@ -44,17 +44,33 @@ jobs:
       - name: build types
         run: npm run build-types
 
+      # Pack the lib into a tarball so that when we install the lib later in the
+      # test-published-types directory, it's only install `dependencies` of the
+      # lib.
+      - name: pack the lib
+        run: npm pack --pack-destination /tmp/
+
+      - name: find the packed lib
+        run: echo "ESLINT_PLUGIN_REACT_PATH=$(ls /tmp/eslint-plugin-react*.tgz | tail -n 1)" >> $GITHUB_ENV
+
+      - name: show the path to the packed lib
+        run: echo "$ESLINT_PLUGIN_REACT_PATH"
+
       - name: npm install working directory
         run: npm install
         working-directory: test-published-types
 
-      - name: install typescript version ${{ matrix.ts_version }}
-        run: npm install --no-save typescript@${{ matrix.ts_version }}
+      - name: install eslint-plugin-react and typescript version ${{ matrix.ts_version }}
+        run: npm install --no-save "$ESLINT_PLUGIN_REACT_PATH" typescript@${{ matrix.ts_version }}
         working-directory: test-published-types
 
       - name: show installed typescript version
         run: npm list typescript --depth=0
         working-directory: test-published-types
+
+      - name: show installed eslint-plugin-react version
+        run: npm list eslint-plugin-react --depth=0
+        working-directory: test-published-types        
 
       - name: check types with lib "${{ matrix.ts_lib }}"
         run: npx tsc --lib ${{ matrix.ts_lib }}
