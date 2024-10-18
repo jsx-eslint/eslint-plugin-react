@@ -265,6 +265,150 @@ ruleTester.run('no-multi-comp', rule, {
         export default MenuList
       `,
     },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        export const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        module.exports = { ComponentOne };
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        export default ComponentOne;
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        function ComponentOne() { return <></> };
+        const ComponentTwo = () => <></>;
+        export default ComponentOne;
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        function ComponentOne() { return <></> };
+        function ComponentTwo() { return <></> };
+        export default ComponentOne;
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        export class ComponentOne extends Component() { render() { return <></>; }};
+        function ComponentTwo() { return <></> };
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        class ComponentOne extends Component() { render() { return <></>; }};
+        function ComponentTwo() { return <></> };
+        export default ComponentOne;
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        export { ComponentOne };
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        export function ComponentOne() { return <></>; }
+        function ComponentTwo() { return <></>; }
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        module.exports = ComponentOne;
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        export default function() { return <ComponentOne />; }
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        function ComponentOne() { return <></>; }
+        const ComponentTwo = () => <></>;
+        export { ComponentOne as default };
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        import React from 'react';
+        export default class ComponentOne extends React.Component {
+          render() { return <></>; }
+        }
+        class ComponentTwo extends React.Component {
+          render() { return <></>; }
+        }
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        import React from 'react';
+        class ComponentOne extends React.Component {
+          render() { return <></>; }
+        }
+        class ComponentTwo extends React.Component {
+          render() { return <></>; }
+        }
+        export { ComponentOne };
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        import React, { memo } from 'react';
+        const ComponentOne = memo(() => <></>);
+        const ComponentTwo = () => <></>;
+        export default ComponentOne;
+      `,
+      options: [{ ignorePrivate: true }],
+    },
+    {
+      code: `
+        import React from "react";
+        export default function Component(props) { return <div>{props.children}</div>; }
+        function ComponentTwo(props) { return <div>{props.children}</div>; }
+      `,
+      options: [{ ignorePrivate: true }],
+    },
   ]),
 
   invalid: parsers.all([
@@ -611,6 +755,178 @@ ruleTester.run('no-multi-comp', rule, {
         },
       },
       errors: [{ messageId: 'onlyOneComponent' }],
+    },
+    {
+      code: `
+        export const ComponentOne = () => <></>;
+        export const ComponentTwo = () => <></>;
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        module.exports = { ComponentOne, ComponentTwo };
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        export const ComponentTwo = () => <></>;
+        export default ComponentOne;
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        export function ComponentOne() { return <></> };
+        export const ComponentTwo = () => <></>;
+        export default ComponentTwo;
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        function ComponentOne() { return <></> };
+        export function ComponentTwo() { return <></> };
+        export default ComponentOne;
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        export class ComponentOne extends Component() { render() { return <></>; }};
+        export function ComponentTwo() { return <></> };
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        class ComponentOne extends Component() { render() { return <></>; }};
+        export function ComponentTwo() { return <></> };
+        export default ComponentOne;
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        class ComponentOne extends Component() { render() { return <></>; }};
+        function ComponentTwo() { return <></> };
+        export default ComponentOne;
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        export { ComponentOne };
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        export function ComponentOne() { return <></>; }
+        function ComponentTwo() { return <></>; }
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        module.exports = ComponentOne;
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        export default function() { return <ComponentOne />; }
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        function ComponentOne() { return <></>; }
+        const ComponentTwo = () => <></>;
+        export { ComponentOne as default };
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React from 'react';
+        export default class ComponentOne extends React.Component {
+          render() { return <></>; }
+        }
+        class ComponentTwo extends React.Component {
+          render() { return <></>; }
+        }
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React from 'react';
+        class ComponentOne extends React.Component {
+          render() { return <></>; }
+        }
+        class ComponentTwo extends React.Component {
+          render() { return <></>; }
+        }
+        export { ComponentOne };
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React, { memo } from 'react';
+        const ComponentOne = memo(() => <></>);
+        const ComponentTwo = () => <></>;
+        export default ComponentOne;
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React from "react";
+        export default function Component(props) { return <div>{props.children}</div>; }
+        export function ComponentTwo(props) { return <div>{props.children}</div>; }
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React from "react";
+        export function componentOne(props) { return <div>{props.children}</div>; }
+        export function ComponentOne(props) { return <div>{props.children}</div>; }
+      `,
+      options: [{ ignorePrivate: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
   ]),
 });
