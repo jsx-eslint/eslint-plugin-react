@@ -267,64 +267,145 @@ ruleTester.run('no-multi-comp', rule, {
     },
     {
       code: `
-        const componentOne = () => <></>;
-        const componentTwo = () => <></>;
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
       `,
       options: [{ exportOnly: true }],
     },
     {
       code: `
-        export const componentOne = () => <></>;
-        const componentTwo = () => <></>;
+        export const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
       `,
       options: [{ exportOnly: true }],
     },
     {
       code: `
-        const componentOne = () => <></>;
-        const componentTwo = () => <></>;
-        module.exports = { componentOne };
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        module.exports = { ComponentOne };
       `,
       options: [{ exportOnly: true }],
     },
     {
       code: `
-        const componentOne = () => <></>;
-        const componentTwo = () => <></>;
-        export default componentOne;
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        export default ComponentOne;
       `,
       options: [{ exportOnly: true }],
     },
     {
       code: `
-        function componentOne() { return <></> };
-        const componentTwo = () => <></>;
-        export default componentOne;
+        function ComponentOne() { return <></> };
+        const ComponentTwo = () => <></>;
+        export default ComponentOne;
       `,
       options: [{ exportOnly: true }],
     },
     {
       code: `
-        function componentOne() { return <></> };
-        function componentTwo() { return <></> };
-        export default componentOne;
-      `,
-      options: [{ exportOnly: true }],
-    },
-    {
-      code: `
-        import React, {Component} from "react";
-        export class componentOne extends Component() { render() { return <></>; }};
-        function componentTwo() { return <></> };
+        function ComponentOne() { return <></> };
+        function ComponentTwo() { return <></> };
+        export default ComponentOne;
       `,
       options: [{ exportOnly: true }],
     },
     {
       code: `
         import React, {Component} from "react";
-        class componentOne extends Component() { render() { return <></>; }};
-        function componentTwo() { return <></> };
-        export default componentOne;
+        export class ComponentOne extends Component() { render() { return <></>; }};
+        function ComponentTwo() { return <></> };
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        class ComponentOne extends Component() { render() { return <></>; }};
+        function ComponentTwo() { return <></> };
+        export default ComponentOne;
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        export { ComponentOne };
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        export function ComponentOne() { return <></>; }
+        function ComponentTwo() { return <></>; }
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        module.exports = ComponentOne;
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        export default function() { return <ComponentOne />; }
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        function ComponentOne() { return <></>; }
+        const ComponentTwo = () => <></>;
+        export { ComponentOne as default };
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        import React from 'react';
+        export default class ComponentOne extends React.Component {
+          render() { return <></>; }
+        }
+        class ComponentTwo extends React.Component {
+          render() { return <></>; }
+        }
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        import React from 'react';
+        class ComponentOne extends React.Component {
+          render() { return <></>; }
+        }
+        class ComponentTwo extends React.Component {
+          render() { return <></>; }
+        }
+        export { ComponentOne };
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        import React, { memo } from 'react';
+        const ComponentOne = memo(() => <></>);
+        const ComponentTwo = () => <></>;
+        export default ComponentOne;
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        import React from "react";
+        export default function Component(props) { return <div>{props.children}</div>; }
+        function ComponentTwo(props) { return <div>{props.children}</div>; }
       `,
       options: [{ exportOnly: true }],
     },
@@ -677,53 +758,44 @@ ruleTester.run('no-multi-comp', rule, {
     },
     {
       code: `
-        export const componentOne = () => <></>;
-        export const componentTwo = () => <></>;
+        export const ComponentOne = () => <></>;
+        export const ComponentTwo = () => <></>;
       `,
       options: [{ exportOnly: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
       code: `
-        const componentOne = () => <></>;
-        const componentTwo = () => <></>;
-        module.exports = { componentOne, componentTwo };
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        module.exports = { ComponentOne, ComponentTwo };
       `,
       options: [{ exportOnly: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
       code: `
-        const componentOne = () => <></>;
-        export const componentTwo = () => <></>;
-        export default componentOne;
+        const ComponentOne = () => <></>;
+        export const ComponentTwo = () => <></>;
+        export default ComponentOne;
       `,
       options: [{ exportOnly: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
       code: `
-        export function componentOne() { return <></> };
-        export const componentTwo = () => <></>;
-        export default componentTwo;
+        export function ComponentOne() { return <></> };
+        export const ComponentTwo = () => <></>;
+        export default ComponentTwo;
       `,
       options: [{ exportOnly: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
       code: `
-        function componentOne() { return <></> };
-        export function componentTwo() { return <></> };
-        export default componentOne;
-      `,
-      options: [{ exportOnly: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        import React, {Component} from "react";
-        export class componentOne extends Component() { render() { return <></>; }};
-        export function componentTwo() { return <></> };
+        function ComponentOne() { return <></> };
+        export function ComponentTwo() { return <></> };
+        export default ComponentOne;
       `,
       options: [{ exportOnly: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
@@ -731,9 +803,127 @@ ruleTester.run('no-multi-comp', rule, {
     {
       code: `
         import React, {Component} from "react";
-        class componentOne extends Component() { render() { return <></>; }};
-        export function componentTwo() { return <></> };
-        export default componentOne;
+        export class ComponentOne extends Component() { render() { return <></>; }};
+        export function ComponentTwo() { return <></> };
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        class ComponentOne extends Component() { render() { return <></>; }};
+        export function ComponentTwo() { return <></> };
+        export default ComponentOne;
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        class ComponentOne extends Component() { render() { return <></>; }};
+        function ComponentTwo() { return <></> };
+        export default ComponentOne;
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        export { ComponentOne };
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        export function ComponentOne() { return <></>; }
+        function ComponentTwo() { return <></>; }
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        module.exports = ComponentOne;
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        const ComponentOne = () => <></>;
+        const ComponentTwo = () => <></>;
+        export default function() { return <ComponentOne />; }
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        function ComponentOne() { return <></>; }
+        const ComponentTwo = () => <></>;
+        export { ComponentOne as default };
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React from 'react';
+        export default class ComponentOne extends React.Component {
+          render() { return <></>; }
+        }
+        class ComponentTwo extends React.Component {
+          render() { return <></>; }
+        }
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React from 'react';
+        class ComponentOne extends React.Component {
+          render() { return <></>; }
+        }
+        class ComponentTwo extends React.Component {
+          render() { return <></>; }
+        }
+        export { ComponentOne };
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React, { memo } from 'react';
+        const ComponentOne = memo(() => <></>);
+        const ComponentTwo = () => <></>;
+        export default ComponentOne;
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React from "react";
+        export default function Component(props) { return <div>{props.children}</div>; }
+        export function ComponentTwo(props) { return <div>{props.children}</div>; }
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React from "react";
+        export function componentOne(props) { return <div>{props.children}</div>; }
+        export function ComponentOne(props) { return <div>{props.children}</div>; }
       `,
       options: [{ exportOnly: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],

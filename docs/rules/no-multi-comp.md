@@ -73,6 +73,51 @@ module.exports = HelloJohn;
 
 When `true` the rule will ignore components which are not exported, which allows you to define components as long as they are only used within a private scope.
 
+Examples of **correct** code for this rule:
+
+```jsx
+export function Hello(props) {
+  return <div>Hello {props.name}</div>;
+}
+function HelloAgain(props) {
+  return <div>Hello again {props.name}</div>;
+}
+```
+
+```jsx
+function Hello(props) {
+  return <div>Hello {props.name}</div>;
+}
+class HelloJohn extends React.Component {
+  render() {
+    return <Hello name="John" />;
+  }
+}
+module.exports = HelloJohn;
+```
+
+Examples of **incorrect** code for this rule:
+
+```jsx
+export function Hello(props) {
+  return <div>Hello {props.name}</div>;
+}
+export function HelloAgain(props) {
+  return <div>Hello again {props.name}</div>;
+}
+```
+
+```jsx
+function Hello(props) {
+  return <div>Hello {props.name}</div>;
+}
+function HelloAgain(props) {
+  return <div>Hello again {props.name}</div>;
+}
+module.exports = {Hello, HelloAgain}
+```
+
+
 ## When Not To Use It
 
 If you prefer to declare multiple components per file you can disable this rule.
