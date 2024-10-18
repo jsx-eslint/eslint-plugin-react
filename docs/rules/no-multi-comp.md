@@ -69,6 +69,10 @@ class HelloJohn extends React.Component {
 module.exports = HelloJohn;
 ```
 
+### `exportOnly`
+
+When `true` the rule will ignore components which are not exported, which allows you to define components as long as they are only used within a private scope.
+
 ## When Not To Use It
 
 If you prefer to declare multiple components per file you can disable this rule.

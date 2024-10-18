@@ -265,6 +265,69 @@ ruleTester.run('no-multi-comp', rule, {
         export default MenuList
       `,
     },
+    {
+      code: `
+        const componentOne = () => <></>;
+        const componentTwo = () => <></>;
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        export const componentOne = () => <></>;
+        const componentTwo = () => <></>;
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        const componentOne = () => <></>;
+        const componentTwo = () => <></>;
+        module.exports = { componentOne };
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        const componentOne = () => <></>;
+        const componentTwo = () => <></>;
+        export default componentOne;
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        function componentOne() { return <></> };
+        const componentTwo = () => <></>;
+        export default componentOne;
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        function componentOne() { return <></> };
+        function componentTwo() { return <></> };
+        export default componentOne;
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        export class componentOne extends Component() { render() { return <></>; }};
+        function componentTwo() { return <></> };
+      `,
+      options: [{ exportOnly: true }],
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        class componentOne extends Component() { render() { return <></>; }};
+        function componentTwo() { return <></> };
+        export default componentOne;
+      `,
+      options: [{ exportOnly: true }],
+    },
   ]),
 
   invalid: parsers.all([
@@ -611,6 +674,69 @@ ruleTester.run('no-multi-comp', rule, {
         },
       },
       errors: [{ messageId: 'onlyOneComponent' }],
+    },
+    {
+      code: `
+        export const componentOne = () => <></>;
+        export const componentTwo = () => <></>;
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        const componentOne = () => <></>;
+        const componentTwo = () => <></>;
+        module.exports = { componentOne, componentTwo };
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        const componentOne = () => <></>;
+        export const componentTwo = () => <></>;
+        export default componentOne;
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        export function componentOne() { return <></> };
+        export const componentTwo = () => <></>;
+        export default componentTwo;
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        function componentOne() { return <></> };
+        export function componentTwo() { return <></> };
+        export default componentOne;
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        export class componentOne extends Component() { render() { return <></>; }};
+        export function componentTwo() { return <></> };
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
+    },
+    {
+      code: `
+        import React, {Component} from "react";
+        class componentOne extends Component() { render() { return <></>; }};
+        export function componentTwo() { return <></> };
+        export default componentOne;
+      `,
+      options: [{ exportOnly: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
   ]),
 });
