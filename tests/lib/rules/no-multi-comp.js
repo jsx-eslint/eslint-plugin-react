@@ -270,14 +270,14 @@ ruleTester.run('no-multi-comp', rule, {
         const ComponentOne = () => <></>;
         const ComponentTwo = () => <></>;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
         export const ComponentOne = () => <></>;
         const ComponentTwo = () => <></>;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
@@ -285,7 +285,7 @@ ruleTester.run('no-multi-comp', rule, {
         const ComponentTwo = () => <></>;
         module.exports = { ComponentOne };
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
@@ -293,7 +293,7 @@ ruleTester.run('no-multi-comp', rule, {
         const ComponentTwo = () => <></>;
         export default ComponentOne;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
@@ -301,7 +301,7 @@ ruleTester.run('no-multi-comp', rule, {
         const ComponentTwo = () => <></>;
         export default ComponentOne;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
@@ -309,7 +309,7 @@ ruleTester.run('no-multi-comp', rule, {
         function ComponentTwo() { return <></> };
         export default ComponentOne;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
@@ -317,7 +317,7 @@ ruleTester.run('no-multi-comp', rule, {
         export class ComponentOne extends Component() { render() { return <></>; }};
         function ComponentTwo() { return <></> };
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
@@ -326,7 +326,7 @@ ruleTester.run('no-multi-comp', rule, {
         function ComponentTwo() { return <></> };
         export default ComponentOne;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
@@ -334,14 +334,14 @@ ruleTester.run('no-multi-comp', rule, {
         const ComponentTwo = () => <></>;
         export { ComponentOne };
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
         export function ComponentOne() { return <></>; }
         function ComponentTwo() { return <></>; }
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
@@ -349,7 +349,7 @@ ruleTester.run('no-multi-comp', rule, {
         const ComponentTwo = () => <></>;
         module.exports = ComponentOne;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
@@ -357,7 +357,7 @@ ruleTester.run('no-multi-comp', rule, {
         const ComponentTwo = () => <></>;
         export default function() { return <ComponentOne />; }
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
@@ -365,7 +365,7 @@ ruleTester.run('no-multi-comp', rule, {
         const ComponentTwo = () => <></>;
         export { ComponentOne as default };
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
@@ -377,7 +377,7 @@ ruleTester.run('no-multi-comp', rule, {
           render() { return <></>; }
         }
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
@@ -390,7 +390,7 @@ ruleTester.run('no-multi-comp', rule, {
         }
         export { ComponentOne };
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
@@ -399,7 +399,7 @@ ruleTester.run('no-multi-comp', rule, {
         const ComponentTwo = () => <></>;
         export default ComponentOne;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
     {
       code: `
@@ -407,7 +407,7 @@ ruleTester.run('no-multi-comp', rule, {
         export default function Component(props) { return <div>{props.children}</div>; }
         function ComponentTwo(props) { return <div>{props.children}</div>; }
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
     },
   ]),
 
@@ -761,7 +761,7 @@ ruleTester.run('no-multi-comp', rule, {
         export const ComponentOne = () => <></>;
         export const ComponentTwo = () => <></>;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -770,7 +770,7 @@ ruleTester.run('no-multi-comp', rule, {
         const ComponentTwo = () => <></>;
         module.exports = { ComponentOne, ComponentTwo };
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -779,7 +779,7 @@ ruleTester.run('no-multi-comp', rule, {
         export const ComponentTwo = () => <></>;
         export default ComponentOne;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -788,7 +788,7 @@ ruleTester.run('no-multi-comp', rule, {
         export const ComponentTwo = () => <></>;
         export default ComponentTwo;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -797,7 +797,7 @@ ruleTester.run('no-multi-comp', rule, {
         export function ComponentTwo() { return <></> };
         export default ComponentOne;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -806,7 +806,7 @@ ruleTester.run('no-multi-comp', rule, {
         export class ComponentOne extends Component() { render() { return <></>; }};
         export function ComponentTwo() { return <></> };
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -816,7 +816,7 @@ ruleTester.run('no-multi-comp', rule, {
         export function ComponentTwo() { return <></> };
         export default ComponentOne;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -826,7 +826,7 @@ ruleTester.run('no-multi-comp', rule, {
         function ComponentTwo() { return <></> };
         export default ComponentOne;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -835,7 +835,7 @@ ruleTester.run('no-multi-comp', rule, {
         const ComponentTwo = () => <></>;
         export { ComponentOne };
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -843,7 +843,7 @@ ruleTester.run('no-multi-comp', rule, {
         export function ComponentOne() { return <></>; }
         function ComponentTwo() { return <></>; }
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -852,7 +852,7 @@ ruleTester.run('no-multi-comp', rule, {
         const ComponentTwo = () => <></>;
         module.exports = ComponentOne;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -861,7 +861,7 @@ ruleTester.run('no-multi-comp', rule, {
         const ComponentTwo = () => <></>;
         export default function() { return <ComponentOne />; }
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -870,7 +870,7 @@ ruleTester.run('no-multi-comp', rule, {
         const ComponentTwo = () => <></>;
         export { ComponentOne as default };
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -883,7 +883,7 @@ ruleTester.run('no-multi-comp', rule, {
           render() { return <></>; }
         }
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -897,7 +897,7 @@ ruleTester.run('no-multi-comp', rule, {
         }
         export { ComponentOne };
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -907,7 +907,7 @@ ruleTester.run('no-multi-comp', rule, {
         const ComponentTwo = () => <></>;
         export default ComponentOne;
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -916,7 +916,7 @@ ruleTester.run('no-multi-comp', rule, {
         export default function Component(props) { return <div>{props.children}</div>; }
         export function ComponentTwo(props) { return <div>{props.children}</div>; }
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
     {
@@ -925,7 +925,7 @@ ruleTester.run('no-multi-comp', rule, {
         export function componentOne(props) { return <div>{props.children}</div>; }
         export function ComponentOne(props) { return <div>{props.children}</div>; }
       `,
-      options: [{ exportOnly: true }],
+      options: [{ ignorePrivate: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
   ]),

@@ -69,9 +69,10 @@ class HelloJohn extends React.Component {
 module.exports = HelloJohn;
 ```
 
-### `exportOnly`
+### `ignorePrivate`
 
-When `true` the rule will ignore components which are not exported, which allows you to define components as long as they are only used within a private scope.
+When `true` the rule will ignore components which are not exported, which allows you to define components that are consumed only within the same file.
+This ensures there is only one entry point for a React component without limiting the structural content of the file.
 
 Examples of **correct** code for this rule:
 
@@ -116,7 +117,6 @@ function HelloAgain(props) {
 }
 module.exports = {Hello, HelloAgain}
 ```
-
 
 ## When Not To Use It
 
