@@ -115,7 +115,7 @@ function Hello(props) {
 function HelloAgain(props) {
   return <div>Hello again {props.name}</div>;
 }
-module.exports = {Hello, HelloAgain}
+module.exports = { Hello, HelloAgain };
 ```
 
 ## When Not To Use It
