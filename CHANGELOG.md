@@ -6,12 +6,15 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.37.2] - 2024.10.22
+
 ### Fixed
 * [`destructuring-assignment`]: fix false negative when using `typeof props.a` ([#3835][] @golopot)
 
 ### Changed
 * [Refactor] [`destructuring-assignment`]: use `getParentStatelessComponent` ([#3835][] @golopot)
 
+[7.37.2]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.37.1...v7.37.2
 [#3835]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3835
 
 ## [7.37.1] - 2024.10.01
@@ -22,6 +25,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Changed
 * [readme] Fix shared settings link ([#3834][] @MgenGlder)
 
+[7.37.1]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.37.0...v7.37.1
 [#3836]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3836
 [#3834]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3834
 
@@ -36,7 +40,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Changed
 * [readme] flat config example for react 17+ ([#3824][] @GabenGar)
 
-[7.36.2]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.36.1...v7.36.2
+[7.37.0]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.36.1...v7.37.0
 [#3831]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3831
 [#3830]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3830
 [#3826]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3826
