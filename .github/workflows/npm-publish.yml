@@ -63,7 +63,10 @@ jobs:
             const pending = checkSuites.filter(({ status }) => status !== 'completed')
 
             if (pending.length > 0) {
-              core.setFailed(`Some workflows for ${context.payload.inputs.tag} are still in-progress: ${JSON.stringify(pending)}`);
+              core.setFailed(`Some workflows for ${context.payload.inputs.tag} are still in-progress`);
+              pending.forEach(({ pull_requests, ...x }) => {
+                core.debug(JSON.stringify(x));
+              });
             }
 
             const result = await Promise.all(
