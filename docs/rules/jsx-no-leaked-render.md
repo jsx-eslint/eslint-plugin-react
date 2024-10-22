@@ -151,6 +151,36 @@ const Component = ({ elements }) => {
 
 The supported options are:
 
+### `ignoreAttributes`
+
+Boolean. When set to `true`, this option ignores all attributes except for `children` during validation, preventing false positives in scenarios where these attributes are used safely or validated internally. Default is `false`.
+
+It can be set like:
+
+```jsonc
+{
+  // ...
+  "react/jsx-no-leaked-render": [<enabled>, { "ignoreAttributes": true }]
+  // ...
+}
+```
+
+Example of incorrect usage with default setting (`ignoreAttributes: false`) and the rule enabled (consider `value` might be undefined):
+
+```jsx
+function MyComponent({ value }) {
+  return (
+    <MyChildComponent nonChildrenProp={value && 'default'}>
+      {value && <MyInnerChildComponent />}
+   </MyChildComponent>
+  );
+}
+```
+
+This would trigger a warning in both `nonChildrenProp` and `children` props because `value` might be undefined.
+
+By setting `ignoreAttributes` to `true`, the rule will not flag this scenario in `nonChildrenProp`, reducing false positives, **but will keep the warning of `children` being leaked**.
+
 ### `validStrategies`
 
 An array containing `"coerce"`, `"ternary"`, or both (default: `["ternary", "coerce"]`) - Decide which strategies are considered valid to prevent leaked renders (at least 1 is required). The "coerce" option will transform the conditional of the JSX expression to a boolean. The "ternary" option transforms the binary expression into a ternary expression returning `null` for falsy values. The first option from the array will be the strategy used when autofixing, so the order of the values matters.

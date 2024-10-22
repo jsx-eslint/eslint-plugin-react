@@ -6,6 +6,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Added
+* [`jsx-no-leaked-render`]: add `ignoreAttributes` option ([#3441][] @aleclarson)
+
+[#3441]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3441
+
 ## [7.37.2] - 2024.10.22
 
 ### Fixed
