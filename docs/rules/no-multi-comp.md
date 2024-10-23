@@ -69,7 +69,7 @@ class HelloJohn extends React.Component {
 module.exports = HelloJohn;
 ```
 
-### `ignorePrivate`
+### `ignoreInternal`
 
 When `true` the rule will ignore components which are not exported, which allows you to define components that are consumed only within the same file.
 This ensures there is only one entry point for a React component without limiting the structural content of the file.
