@@ -92,7 +92,7 @@ const EXPORT_TYPES_VALID = [
   (compOne, compOneName, compTwo, compTwoName) => `
     ${compOne(compOneName)}
     ${compTwo(compTwoName)}
-    export ${compOneName}`, //  export, post declaration
+    export { ${compOneName} }`, //  export, post declaration
   (compOne, compOneName, compTwo, compTwoName) => `
     ${compOne(compOneName)}
     ${compTwo(compTwoName)}
@@ -134,12 +134,16 @@ const EXPORT_TYPES_INVALID = [
     ${compOne(compOneName)}
     ${compTwo(compTwoName)}
     export default ${compOneName}
-    export ${compTwoName}`, // default export, post declaration
+    export { ${compTwoName} }`, // default export, post declaration
   (compOne, compOneName, compTwo, compTwoName) => `
     ${compOne(compOneName)}
     ${compTwo(compTwoName)}
-    export ${compOneName}
-    export ${compTwoName}`, //  export, post declaration
+    export { ${compOneName} }
+    export { ${compTwoName} }`, //  export, post declaration
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    export { ${compOneName}, ${compTwoName} }`, //  export, post declaration
   (compOne, compOneName, compTwo, compTwoName) => `
     ${compOne(compOneName)}
     ${compTwo(compTwoName)}
