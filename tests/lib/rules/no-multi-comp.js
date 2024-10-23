@@ -82,7 +82,7 @@ const EXPORT_TYPES_VALID = [
   (compOne, compOneName, compTwo, compTwoName, exportRename) => `
     ${compOne(compOneName)}
     ${compTwo(compTwoName)}
-    module.exports = { ${compOneName} as ${exportRename} }`, // module export with rename, post declaration
+    module.exports = { ${exportRename} : ${compOneName} }`, // module export with rename, post declaration
   // nb: module export at declaration time will be handled separately
   // POST DECLARATION EXPORTS
   (compOne, compOneName, compTwo, compTwoName) => `
@@ -100,7 +100,7 @@ const EXPORT_TYPES_VALID = [
   (compOne, compOneName, compTwo, compTwoName, exportRename) => `
     ${compOne(compOneName)}
     ${compTwo(compTwoName)}
-    module.exports = { ${compOneName} as ${exportRename} }`, // module export with rename, post declaration
+    module.exports = { ${exportRename} : ${compOneName} }`, // module export with rename, post declaration
   (compOne, compOneName, compTwo, compTwoName) => `
     ${compOne(compOneName)}
     ${compTwo(compTwoName)}
