@@ -23,6 +23,143 @@ const parserOptions = {
 };
 
 // ------------------------------------------------------------------------------
+// Combinatorial test generation for ignoreInvalid
+// ------------------------------------------------------------------------------
+// eslint-disable-next-line valid-jsdoc
+/**
+ * @typedef {Function} ComponentGenerator
+ * @param {string} name - The name of the component to be generated.
+ * @returns {string} - The component declaration.
+ */
+
+// eslint-disable-next-line valid-jsdoc
+/**
+ * @type {ComponentGenerator[]} Array of different ways to output valid code for instantiating a React component with the given name.
+ */
+const COMPONENT_TYPES = [
+  (name) => `const ${name} = () => <></>;`, // arrow function component
+  (name) => `let ${name} = () => <></>;`, // arrow function component (with let)
+  (name) => `var ${name} = () => <></>;`, // arrow function component (with var)
+  (name) => `function ${name}() { return <></>; }`, // standard function component
+  (name) => `class ${name} extends React.Component {
+    render() { return <></>; }
+  }`, // class component
+  (name) => `const ${name} = memo(() => <></>);`, // memoized anonymous component
+  (name) => `const ${name} = async () => <></>;`, // async component (react server components)
+];
+
+/**
+ * Helper function for combinatorial testing of no-multi-comp ignoreInternal rule.
+ *
+ * @typedef {Function} ComponentExportGenerator
+ * @param {ComponentGenerator} compOne - Generator function for the first component to export.
+ * @param {string} compOneName - The name of the first component, which will typically be exported.
+ * @param {ComponentGenerator} compTwo - Generator function for the second component to export.
+ * @param {string} compTwoName - The name of the second component. This will be exported in invalid scenarios.
+ * @param {string} exportRename - A potential rename of the export for the first component, used by some scenarios.
+ * @returns {string} - A (nearly) complete test case - although we also prepend a generic import string.
+ */
+
+// eslint-disable-next-line valid-jsdoc
+/**
+ * @type {ComponentExportGenerator[]}
+ */
+const EXPORT_TYPES_VALID = [
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}`, // no export at all
+  // DECLARATION TIME EXPORTS
+  (compOne, compOneName, compTwo, compTwoName) => `
+    export ${compOne(compOneName)}
+    ${compTwo(compTwoName)}`, // standard export
+  (compOne, compOneName, compTwo, compTwoName) => `
+    export default ${compOne(compOneName)}
+    ${compTwo(compTwoName)}`, // default export
+  (compOne, compOneName, compTwo, compTwoName, exportRename) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    module.exports = { ${compOneName} as ${exportRename} }`, // module export with rename, post declaration
+  // nb: module export at declaration time will be handled separately
+  // POST DECLARATION EXPORTS
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    export default ${compOneName}`, // default export, post declaration
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    export ${compOneName}`, //  export, post declaration
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    module.exports = { ${compOneName} }`, // module export, post declaration
+  (compOne, compOneName, compTwo, compTwoName, exportRename) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    module.exports = { ${compOneName} as ${exportRename} }`, // module export with rename, post declaration
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    export default function() { return <${compOneName} />; }`, // exporting component with indirection
+];
+
+// eslint-disable-next-line valid-jsdoc
+/**
+ * @type {ComponentExportGenerator[]}
+ */
+const EXPORT_TYPES_INVALID = [
+  // DECLARATION TIME EXPORTS
+  (compOne, compOneName, compTwo, compTwoName) => `
+    export ${compOne(compOneName)}
+    export ${compTwo(compTwoName)}`, // standard export
+  (compOne, compOneName, compTwo, compTwoName) => `
+    export default ${compOne(compOneName)}
+    export ${compTwo(compTwoName)}`, // default export
+  // nb: module export at declaration time will be handled separately
+  // POST DECLARATION EXPORTS
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    export default ${compOneName}
+    export ${compTwoName}`, // default export, post declaration
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    export ${compOneName}
+    export ${compTwoName}`, //  export, post declaration
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    module.exports = { ${compOneName} ${compTwoName} }`, // module export, post declaration
+];
+
+/**
+ * @param {ComponentExportGenerator[]} scenarioArray array of scenario generator functions which we will now convert into strings
+ * @param {boolean} [invalid] whether generated scenarios should expect to fail
+ * @returns {{code: string, options: object[], errors: object[]}[]}
+ */
+const generateScenarios = (scenarioArray, invalid = false) => {
+  const result = [];
+  for (const scenario of scenarioArray) {
+    for (const first of COMPONENT_TYPES) {
+      for (const second of COMPONENT_TYPES) {
+        result.push({
+          code: `
+        import React, { memo, Component } from 'react';
+        ${scenario(first, 'ComponentOne', second, 'ComponentTwo', 'RenamedComponent')}`,
+          options: [{ ignoreInternal: true }],
+          errors: invalid ? [{ messageId: 'onlyOneExportedComponent' }] : undefined,
+        });
+      }
+    }
+  }
+  return result;
+};
+
+const ignoreInternalValidScenarios = generateScenarios(EXPORT_TYPES_VALID);
+const ignoreInternalInvalidScenarios = generateScenarios(EXPORT_TYPES_INVALID);
+
+// ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
 
@@ -265,147 +402,13 @@ ruleTester.run('no-multi-comp', rule, {
         export default MenuList
       `,
     },
-    {
+    ...ignoreInternalValidScenarios,
+    { // special case: components declared inside of module export block
       code: `
         const ComponentOne = () => <></>;
-        const ComponentTwo = () => <></>;
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        export const ComponentOne = () => <></>;
-        const ComponentTwo = () => <></>;
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        const ComponentOne = () => <></>;
-        const ComponentTwo = () => <></>;
-        module.exports = { ComponentOne };
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        const ComponentOne = () => <></>;
-        const ComponentTwo = () => <></>;
-        export default ComponentOne;
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        function ComponentOne() { return <></> };
-        const ComponentTwo = () => <></>;
-        export default ComponentOne;
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        function ComponentOne() { return <></> };
-        function ComponentTwo() { return <></> };
-        export default ComponentOne;
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        import React, {Component} from "react";
-        export class ComponentOne extends Component() { render() { return <></>; }};
-        function ComponentTwo() { return <></> };
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        import React, {Component} from "react";
-        class ComponentOne extends Component() { render() { return <></>; }};
-        function ComponentTwo() { return <></> };
-        export default ComponentOne;
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        const ComponentOne = () => <></>;
-        const ComponentTwo = () => <></>;
-        export { ComponentOne };
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        export function ComponentOne() { return <></>; }
-        function ComponentTwo() { return <></>; }
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        const ComponentOne = () => <></>;
-        const ComponentTwo = () => <></>;
-        module.exports = ComponentOne;
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        const ComponentOne = () => <></>;
-        const ComponentTwo = () => <></>;
-        export default function() { return <ComponentOne />; }
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        function ComponentOne() { return <></>; }
-        const ComponentTwo = () => <></>;
-        export { ComponentOne as default };
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        import React from 'react';
-        export default class ComponentOne extends React.Component {
-          render() { return <></>; }
-        }
-        class ComponentTwo extends React.Component {
-          render() { return <></>; }
-        }
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        import React from 'react';
-        class ComponentOne extends React.Component {
-          render() { return <></>; }
-        }
-        class ComponentTwo extends React.Component {
-          render() { return <></>; }
-        }
-        export { ComponentOne };
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        import React, { memo } from 'react';
-        const ComponentOne = memo(() => <></>);
-        const ComponentTwo = () => <></>;
-        export default ComponentOne;
-      `,
-      options: [{ ignoreInternal: true }],
-    },
-    {
-      code: `
-        import React from "react";
-        export default function Component(props) { return <div>{props.children}</div>; }
-        function ComponentTwo(props) { return <div>{props.children}</div>; }
+        module.exports = {
+          ComponentTwo() { return <></>; }
+        };
       `,
       options: [{ ignoreInternal: true }],
     },
@@ -756,174 +759,13 @@ ruleTester.run('no-multi-comp', rule, {
       },
       errors: [{ messageId: 'onlyOneComponent' }],
     },
-    {
+    ...ignoreInternalInvalidScenarios,
+    { // special case: components declared inside of module export block
       code: `
-        export const ComponentOne = () => <></>;
-        export const ComponentTwo = () => <></>;
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        const ComponentOne = () => <></>;
-        const ComponentTwo = () => <></>;
-        module.exports = { ComponentOne, ComponentTwo };
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        const ComponentOne = () => <></>;
-        export const ComponentTwo = () => <></>;
-        export default ComponentOne;
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        export function ComponentOne() { return <></> };
-        export const ComponentTwo = () => <></>;
-        export default ComponentTwo;
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        function ComponentOne() { return <></> };
-        export function ComponentTwo() { return <></> };
-        export default ComponentOne;
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        import React, {Component} from "react";
-        export class ComponentOne extends Component() { render() { return <></>; }};
-        export function ComponentTwo() { return <></> };
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        import React, {Component} from "react";
-        class ComponentOne extends Component() { render() { return <></>; }};
-        export function ComponentTwo() { return <></> };
-        export default ComponentOne;
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        import React, {Component} from "react";
-        class ComponentOne extends Component() { render() { return <></>; }};
-        function ComponentTwo() { return <></> };
-        export default ComponentOne;
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        const ComponentOne = () => <></>;
-        const ComponentTwo = () => <></>;
-        export { ComponentOne };
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        export function ComponentOne() { return <></>; }
-        function ComponentTwo() { return <></>; }
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        const ComponentOne = () => <></>;
-        const ComponentTwo = () => <></>;
-        module.exports = ComponentOne;
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        const ComponentOne = () => <></>;
-        const ComponentTwo = () => <></>;
-        export default function() { return <ComponentOne />; }
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        function ComponentOne() { return <></>; }
-        const ComponentTwo = () => <></>;
-        export { ComponentOne as default };
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        import React from 'react';
-        export default class ComponentOne extends React.Component {
-          render() { return <></>; }
-        }
-        class ComponentTwo extends React.Component {
-          render() { return <></>; }
-        }
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        import React from 'react';
-        class ComponentOne extends React.Component {
-          render() { return <></>; }
-        }
-        class ComponentTwo extends React.Component {
-          render() { return <></>; }
-        }
-        export { ComponentOne };
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        import React, { memo } from 'react';
-        const ComponentOne = memo(() => <></>);
-        const ComponentTwo = () => <></>;
-        export default ComponentOne;
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        import React from "react";
-        export default function Component(props) { return <div>{props.children}</div>; }
-        export function ComponentTwo(props) { return <div>{props.children}</div>; }
-      `,
-      options: [{ ignoreInternal: true }],
-      errors: [{ messageId: 'onlyOneExportedComponent' }],
-    },
-    {
-      code: `
-        import React from "react";
-        export function componentOne(props) { return <div>{props.children}</div>; }
-        export function ComponentOne(props) { return <div>{props.children}</div>; }
+        module.exports = {
+          ComponentOne() { return <></>; }
+          ComponentTwo() { return <></>; }
+        };
       `,
       options: [{ ignoreInternal: true }],
       errors: [{ messageId: 'onlyOneExportedComponent' }],
