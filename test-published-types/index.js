@@ -3,10 +3,12 @@
 const react = require('eslint-plugin-react');
 
 /** @type {import('eslint').Linter.Config[]} */
-module.exports = [
+const config = [
   {
     plugins: {
       react,
     },
   },
 ];
+
+module.exports = config;

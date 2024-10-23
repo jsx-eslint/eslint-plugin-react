@@ -19,5 +19,5 @@
     "alwaysStrict": false,                 /* Parse in strict mode and emit "use strict" for each source file. */
     "resolveJsonModule": true
   },
-  "include": ["lib"],
+  "include": ["lib", "types"],
 }
