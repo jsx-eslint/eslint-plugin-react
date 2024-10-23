@@ -129,5 +129,49 @@ ruleTester.run('no-danger', rule, {
         },
       ],
     },
+    {
+      code: `
+        import type { ComponentProps } from "react";
+
+        const Comp = "div";
+        const Component = () => <></>;
+
+        const NestedComponent = (_props: ComponentProps<"div">) => <></>;
+
+        Component.NestedComponent = NestedComponent;
+
+        function App() {
+          return (
+            <>
+              <div dangerouslySetInnerHTML={{ __html: "<div>aaa</div>" }} />
+              <Comp dangerouslySetInnerHTML={{ __html: "<div>aaa</div>" }} />
+
+              <Component.NestedComponent
+                dangerouslySetInnerHTML={{ __html: '<div>aaa</div>' }}
+              />
+            </>
+          );
+        }
+      `,
+      features: ['fragment', 'types'],
+      options: [{ customComponentNames: ['*'] }],
+      errors: [
+        {
+          messageId: 'dangerousProp',
+          data: { name: 'dangerouslySetInnerHTML' },
+          line: 14,
+        },
+        {
+          messageId: 'dangerousProp',
+          data: { name: 'dangerouslySetInnerHTML' },
+          line: 15,
+        },
+        {
+          messageId: 'dangerousProp',
+          data: { name: 'dangerouslySetInnerHTML' },
+          line: 18,
+        },
+      ],
+    },
   ]),
 });

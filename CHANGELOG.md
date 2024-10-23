@@ -6,6 +6,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`no-danger`]: avoid a crash on a nested component name ([#3833][] @ljharb)
+
+[#3833]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3833
+
 ## [7.37.2] - 2024.10.22
 
 ### Fixed
