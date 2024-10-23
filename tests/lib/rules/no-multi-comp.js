@@ -36,16 +36,23 @@ const parserOptions = {
 /**
  * @type {ComponentGenerator[]} Array of different ways to output valid code for instantiating a React component with the given name.
  */
-const COMPONENT_TYPES = [
+const SIMPLE_COMPONENT_TYPES = [
   (name) => `const ${name} = () => <></>;`, // arrow function component
   (name) => `let ${name} = () => <></>;`, // arrow function component (with let)
   (name) => `var ${name} = () => <></>;`, // arrow function component (with var)
+  (name) => `const ${name} = memo(() => <></>);`, // memoized anonymous component
+  (name) => `const ${name} = async () => <></>;`, // async component (react server components)
+];
+
+// eslint-disable-next-line valid-jsdoc
+/**
+ * @type {ComponentGenerator[]} Array of different ways to output valid code for instantiating a React component with the given name.
+ */
+const COMPLEX_COMPONENT_TYPES = [
   (name) => `function ${name}() { return <></>; }`, // standard function component
   (name) => `class ${name} extends React.Component {
     render() { return <></>; }
   }`, // class component
-  (name) => `const ${name} = memo(() => <></>);`, // memoized anonymous component
-  (name) => `const ${name} = async () => <></>;`, // async component (react server components)
 ];
 
 /**
@@ -72,9 +79,6 @@ const EXPORT_TYPES_VALID = [
   (compOne, compOneName, compTwo, compTwoName) => `
     export ${compOne(compOneName)}
     ${compTwo(compTwoName)}`, // standard export
-  (compOne, compOneName, compTwo, compTwoName) => `
-    export default ${compOne(compOneName)}
-    ${compTwo(compTwoName)}`, // default export
   (compOne, compOneName, compTwo, compTwoName, exportRename) => `
     ${compOne(compOneName)}
     ${compTwo(compTwoName)}
@@ -105,6 +109,18 @@ const EXPORT_TYPES_VALID = [
 
 // eslint-disable-next-line valid-jsdoc
 /**
+ * Special case: inline `export default` syntax cannot be followed by `const, let, var`
+ *
+ * @type {ComponentExportGenerator[]}
+ */
+const EXPORT_TYPES_VALID_COMPLEX = [
+  (compOne, compOneName, compTwo, compTwoName) => `
+    export default ${compOne(compOneName)}
+    ${compTwo(compTwoName)}`, // default export
+];
+
+// eslint-disable-next-line valid-jsdoc
+/**
  * @type {ComponentExportGenerator[]}
  */
 const EXPORT_TYPES_INVALID = [
@@ -112,9 +128,6 @@ const EXPORT_TYPES_INVALID = [
   (compOne, compOneName, compTwo, compTwoName) => `
     export ${compOne(compOneName)}
     export ${compTwo(compTwoName)}`, // standard export
-  (compOne, compOneName, compTwo, compTwoName) => `
-    export default ${compOne(compOneName)}
-    export ${compTwo(compTwoName)}`, // default export
   // nb: module export at declaration time will be handled separately
   // POST DECLARATION EXPORTS
   (compOne, compOneName, compTwo, compTwoName) => `
@@ -133,16 +146,28 @@ const EXPORT_TYPES_INVALID = [
     module.exports = { ${compOneName} ${compTwoName} }`, // module export, post declaration
 ];
 
+// eslint-disable-next-line valid-jsdoc
+/**
+ * @type {ComponentExportGenerator[]}
+ */
+const EXPORT_TYPES_INVALID_COMPLEX = [
+  // DECLARATION TIME EXPORTS
+  (compOne, compOneName, compTwo, compTwoName) => `
+    export default ${compOne(compOneName)}
+    export ${compTwo(compTwoName)}`, // default export
+];
+
 /**
  * @param {ComponentExportGenerator[]} scenarioArray array of scenario generator functions which we will now convert into strings
+ * @param {ComponentGenerator[]} componentTypes array of components to generate on
  * @param {boolean} [invalid] whether generated scenarios should expect to fail
  * @returns {{code: string, options: object[], errors: object[]}[]}
  */
-const generateScenarios = (scenarioArray, invalid = false) => {
+const generateScenarios = (scenarioArray, componentTypes, invalid = false) => {
   const result = [];
   for (const scenario of scenarioArray) {
-    for (const first of COMPONENT_TYPES) {
-      for (const second of COMPONENT_TYPES) {
+    for (const first of componentTypes) {
+      for (const second of SIMPLE_COMPONENT_TYPES) {
         result.push({
           code: `
         import React, { memo, Component } from 'react';
@@ -156,8 +181,14 @@ const generateScenarios = (scenarioArray, invalid = false) => {
   return result;
 };
 
-const ignoreInternalValidScenarios = generateScenarios(EXPORT_TYPES_VALID);
-const ignoreInternalInvalidScenarios = generateScenarios(EXPORT_TYPES_INVALID);
+const ignoreInternalValidScenarios = [
+  ...generateScenarios(EXPORT_TYPES_VALID, [...SIMPLE_COMPONENT_TYPES, ...COMPLEX_COMPONENT_TYPES]),
+  ...generateScenarios(EXPORT_TYPES_VALID_COMPLEX, COMPLEX_COMPONENT_TYPES),
+];
+const ignoreInternalInvalidScenarios = [
+  ...generateScenarios(EXPORT_TYPES_INVALID, [...SIMPLE_COMPONENT_TYPES, ...COMPLEX_COMPONENT_TYPES]),
+  ...generateScenarios(EXPORT_TYPES_INVALID_COMPLEX, COMPLEX_COMPONENT_TYPES),
+];
 
 // ------------------------------------------------------------------------------
 // Tests
@@ -411,6 +442,26 @@ ruleTester.run('no-multi-comp', rule, {
         };
       `,
       options: [{ ignoreInternal: true }],
+    },
+    { // basic testing for intersection of ignoreStateless and ignoreInternal
+      code: `
+        export function Hello(props) {
+          return <div>Hello {props.name}</div>;
+        }
+        export function HelloAgain(props) {
+          return <div>Hello again {props.name}</div>;
+        }
+      `,
+      options: [{ ignoreStateless: true, ignoreInternal: true }],
+    },
+    {
+      code: `
+        export const HelloComponent = (props) => {
+          return <div></div>;
+        }
+        export default React.memo((props, ref) => <HelloComponent {...props} />);
+      `,
+      options: [{ ignoreStateless: true, ignoreInternal: true }],
     },
   ]),
 
