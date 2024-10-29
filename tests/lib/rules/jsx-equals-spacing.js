@@ -15,7 +15,7 @@ const rule = require('../../../lib/rules/jsx-equals-spacing');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
@@ -156,6 +156,6 @@ ruleTester.run('jsx-equals-spacing', rule, {
         { messageId: 'needSpaceAfter', type: 'JSXAttribute' },
         { messageId: 'needSpaceAfter', type: 'JSXAttribute' },
       ],
-    }
+    },
   )),
 });
