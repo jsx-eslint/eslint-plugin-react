@@ -15,7 +15,7 @@ const rule = require('../../../lib/rules/prefer-read-only-props');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,

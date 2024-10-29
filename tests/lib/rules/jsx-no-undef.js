@@ -19,7 +19,7 @@ const rule = require('../../../lib/rules/jsx-no-undef');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   ecmaFeatures: {
     jsx: true,
   },
@@ -86,7 +86,7 @@ ruleTester.run('jsx-no-undef', rule, {
           );
         };
       `,
-      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
+      parserOptions: { sourceType: 'module', ...parserOptions },
       options: [{ allowGlobals: false }],
     },
   ].map(parsers.disableNewTS)),
@@ -137,7 +137,7 @@ ruleTester.run('jsx-no-undef', rule, {
         };
         export default TextWrapper;
       `,
-      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
+      parserOptions: { sourceType: 'module', ...parserOptions },
       errors: [
         {
           messageId: 'undefined',
