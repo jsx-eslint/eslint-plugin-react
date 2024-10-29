@@ -27,13 +27,9 @@ jobs:
         node-version: ${{ fromJson(needs.matrix.outputs.latest) }}
         eslint:
           - 9
+          - 9.0.0
           - 8
-          - 7
-          - 6
-          - 5
-          - 4
-          - 4.14 # last version without messageId
-          - 3
+          - 8.57.0
         babel-eslint:
           - 10
           - 9
@@ -44,54 +40,10 @@ jobs:
           - 7
           - 8
         exclude:
-          - eslint: 3
-            babel-eslint: 10
-          - eslint: 3
-            typescript-eslint: 5
-          - eslint: 4
-            typescript-eslint: 5
-          - eslint: 4.14
-            typescript-eslint: 5
-          - eslint: 5
-            typescript-eslint: 5
-          - eslint: 3
-            typescript-eslint: 6
-          - eslint: 4
-            typescript-eslint: 6
-          - eslint: 4.14
-            typescript-eslint: 6
-          - eslint: 5
-            typescript-eslint: 6
-          - eslint: 6
-            typescript-eslint: 6
           - eslint: 9
             typescript-eslint: 6
-          - eslint: 3
-            typescript-eslint: 7
-          - eslint: 4
-            typescript-eslint: 7
-          - eslint: 4.14
-            typescript-eslint: 7
-          - eslint: 5
-            typescript-eslint: 7
-          - eslint: 6
-            typescript-eslint: 7
-          - eslint: 7
-            typescript-eslint: 7
           - eslint: 9
             typescript-eslint: 7
-          - eslint: 3
-            typescript-eslint: 8
-          - eslint: 4
-            typescript-eslint: 8
-          - eslint: 4.14
-            typescript-eslint: 8
-          - eslint: 5
-            typescript-eslint: 8
-          - eslint: 6
-            typescript-eslint: 8
-          - eslint: 7
-            typescript-eslint: 8
           - eslint: 9
             typescript-eslint: 5
           - node-version: 19
