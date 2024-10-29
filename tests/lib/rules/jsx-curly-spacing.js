@@ -16,7 +16,7 @@ const rule = require('../../../lib/rules/jsx-curly-spacing');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,

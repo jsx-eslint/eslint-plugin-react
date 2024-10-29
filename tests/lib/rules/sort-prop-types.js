@@ -18,7 +18,7 @@ const rule = require('../../../lib/rules/sort-prop-types');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
@@ -513,7 +513,7 @@ ruleTester.run('sort-prop-types', rule, {
       `,
       features: ['types'],
       options: [{ checkTypes: true }],
-    }
+    },
   )),
   invalid: parsers.all([].concat(
     {
@@ -2414,6 +2414,6 @@ ruleTester.run('sort-prop-types', rule, {
           column: 102,
         },
       ],
-    }
+    },
   )),
 });

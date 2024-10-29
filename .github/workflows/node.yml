@@ -1,4 +1,4 @@
-name: 'Tests: node.js (18+)'
+name: 'Tests: node.js'
 
 on: [pull_request, push]
 
@@ -14,7 +14,7 @@ jobs:
         with:
           versionsAsRoot: true
           type: majors
-          preset: '>=18'
+          preset: '^18.18.0 || ^20.9.0 || >=21.1.0'
 
   latest:
     needs: [matrix]
