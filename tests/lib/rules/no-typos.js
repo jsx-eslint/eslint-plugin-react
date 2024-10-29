@@ -18,7 +18,7 @@ const rule = require('../../../lib/rules/no-typos');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   ecmaFeatures: {
     jsx: true,
   },
@@ -576,13 +576,14 @@ ruleTester.run('no-typos', rule, {
         }
       `,
       features: [].concat('class fields', semver.satisfies(babelEslintVersion, '< 9') ? 'no-babel-old' : []),
-      parserOptions: Object.assign({}, parserOptions, {
+      parserOptions: {
+        ...parserOptions,
         babelOptions: {
-          // classPrivateMethods: true,
+        // classPrivateMethods: true,
         },
         shippedProposals: true,
-      }),
-    }
+      },
+    },
   )),
 
   invalid: parsers.all([].concat(
@@ -1918,6 +1919,6 @@ ruleTester.run('no-typos', rule, {
       `,
       parserOptions,
       errors: [{ messageId: 'noPropTypesBinding' }],
-    }
+    },
   )),
 });
