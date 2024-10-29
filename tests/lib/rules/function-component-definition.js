@@ -13,7 +13,7 @@ const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/function-component-definition');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
