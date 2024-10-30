@@ -1,9 +1,6 @@
 'use strict';
 
 const assert = require('assert');
-const entries = require('object.entries');
-const fromEntries = require('object.fromentries');
-const values = require('object.values');
 
 const RuleTester = require('../helpers/ruleTester');
 const Components = require('../../lib/util/Components');
@@ -29,8 +26,8 @@ describe('Components', () => {
         create: Components.detect((_context, components, util) => {
           const instructionResults = [];
 
-          const augmentedInstructions = fromEntries(
-            entries(instructions || {}).map((nodeTypeAndHandler) => {
+          const augmentedInstructions = Object.fromEntries(
+            Object.entries(instructions || {}).map((nodeTypeAndHandler) => {
               const nodeType = nodeTypeAndHandler[0];
               const handler = nodeTypeAndHandler[1];
               return [nodeType, (node) => {
@@ -74,7 +71,7 @@ describe('Components', () => {
           }`,
       }, (components) => {
         assert.equal(components.length(), 1, 'MyStatelessComponent should be detected component');
-        values(components.list()).forEach((component) => {
+        Object.values(components.list()).forEach((component) => {
           assert.equal(
             component.node.id.name,
             'MyStatelessComponent',
@@ -94,7 +91,7 @@ describe('Components', () => {
         }`,
       }, (components) => {
         assert(components.length() === 1, 'MyClassComponent should be detected component');
-        values(components.list()).forEach((component) => {
+        Object.values(components.list()).forEach((component) => {
           assert.equal(
             component.node.id.name,
             'MyClassComponent',
