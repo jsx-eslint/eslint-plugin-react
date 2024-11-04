@@ -39,6 +39,10 @@ ruleTester.run('jsx-no-script-url', rule, {
     { code: '<Foo href="javascript:"></Foo>' },
     { code: '<a href />' },
     {
+      code: '<Foo other="javascript:"></Foo>',
+      options: [[{ name: 'Foo', props: ['to', 'href'] }]],
+    },
+    {
       code: '<Foo href="javascript:"></Foo>',
       settings: {
         linkComponents: [{ name: 'Foo', linkAttribute: ['to', 'href'] }],
@@ -47,6 +51,13 @@ ruleTester.run('jsx-no-script-url', rule, {
     {
       code: '<Foo href="javascript:"></Foo>',
       options: [[], { includeFromSettings: false }],
+      settings: {
+        linkComponents: [{ name: 'Foo', linkAttribute: ['to', 'href'] }],
+      },
+    },
+    {
+      code: '<Foo other="javascript:"></Foo>',
+      options: [[], { includeFromSettings: true }],
       settings: {
         linkComponents: [{ name: 'Foo', linkAttribute: ['to', 'href'] }],
       },
