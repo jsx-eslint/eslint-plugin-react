@@ -122,7 +122,7 @@ When `true`, alphabetical order is **not** enforced:
 
 This can be a boolean or an array option.
 
-When `reservedFirst` is defined, React reserved props (`children`, `dangerouslySetInnerHTML` - **only for DOM components**, `key`, and `ref`) must be listed before all other props, but still respecting the alphabetical order:
+When `reservedFirst` is defined, React reserved props (`children`, `dangerouslySetInnerHTML` - **only for DOM components**, `key`, and `ref`) or `className` must be listed before all other props, but still respecting the alphabetical order:
 
 ```jsx
 <Hello key={0} ref={johnRef} name="John">
@@ -130,7 +130,7 @@ When `reservedFirst` is defined, React reserved props (`children`, `dangerouslyS
 </Hello>
 ```
 
-If given as an array, the array's values will override the default list of reserved props. **Note**: the values in the array may only be a **subset** of React reserved props.
+If given as an array, the array's values will override the default list of reserved props. **Note**: the values in the array may only be a **subset** of React reserved props or `className`.
 
 With `reservedFirst: ["key"]`, the following will **not** warn:
 
