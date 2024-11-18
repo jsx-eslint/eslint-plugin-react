@@ -59,11 +59,18 @@ const expectedReservedFirstError = {
   type: 'JSXIdentifier',
 };
 const expectedEmptyReservedFirstError = {
-  messageId: 'listIsEmpty',
+  messageId: 'reservedListIsEmpty',
 };
 const expectedInvalidReservedFirstError = {
   messageId: 'noUnreservedProps',
   data: { unreservedWords: 'notReserved' },
+};
+const expectedCustomPropsFirstError = {
+  messageId: 'listCustomPropsFirst',
+  type: 'JSXIdentifier',
+};
+const expectedEmptyCustomPropsFirstError = {
+  messageId: 'customPropsListIsEmpty',
 };
 const callbacksLastArgs = [{ callbacksLast: true }];
 const ignoreCaseAndCallbackLastArgs = [
@@ -105,6 +112,11 @@ const reservedFirstWithShorthandLast = [
 ];
 const reservedFirstAsEmptyArrayArgs = [{ reservedFirst: [] }];
 const reservedFirstAsInvalidArrayArgs = [{ reservedFirst: ['notReserved'] }];
+const customPropsFirstArgs = [{ customPropsFirst: ['className', 'theme'] }];
+const customPropsFirstWithNoSortAlphabeticallyArgs = [{ noSortAlphabetically: true, customPropsFirst: ['className', 'theme'] }];
+const customPropsFirstWithShorthandLast = [{ customPropsFirst: ['className', 'theme'], shorthandLast: true }];
+const customPropsFirstWithReservedFirst = [{ reservedFirst: true, customPropsFirst: ['className', 'theme'] }];
+const customPropsFirstAsEmptyArrayArgs = [{ customPropsFirst: [] }];
 const multilineFirstArgs = [{ multiline: 'first' }];
 const multilineAndShorthandFirstArgs = [
   {
@@ -277,6 +289,23 @@ ruleTester.run('jsx-sort-props', rule, {
     {
       code: '<App key="key" c="c" b />',
       options: reservedFirstWithShorthandLast,
+    },
+    // customPropsFirst
+    {
+      code: '<App className="flex" theme="light" a b c />',
+      options: customPropsFirstArgs,
+    },
+    {
+      code: '<App theme="light" className="flex" c b a />',
+      options: customPropsFirstWithNoSortAlphabeticallyArgs,
+    },
+    {
+      code: '<App className="flex" theme="light" c="c" b />',
+      options: customPropsFirstWithShorthandLast,
+    },
+    {
+      code: '<App key={0} ref={ref} className="flex" theme="light" a b c />',
+      options: customPropsFirstWithReservedFirst,
     },
     {
       code: `
@@ -629,8 +658,56 @@ ruleTester.run('jsx-sort-props', rule, {
       output: '<App z onBar />;',
       options: reservedFirstAndCallbacksLastArgs,
       errors: [expectedCallbackError],
-    // multiline first
     },
+    // customPropsFirst
+    {
+      code: '<App a className="flex" />',
+      options: customPropsFirstArgs,
+      errors: [expectedCustomPropsFirstError],
+      output: '<App className="flex" a />',
+    },
+    {
+      code: '<App theme="light" a className="flex" />',
+      options: customPropsFirstArgs,
+      errors: [expectedCustomPropsFirstError],
+      output: '<App className="flex" theme="light" a />',
+    },
+    {
+      code: '<App b a />',
+      options: customPropsFirstArgs,
+      output: '<App a b />',
+      errors: [expectedError],
+    },
+    {
+      code: '<App className="flex" b a />',
+      options: customPropsFirstArgs,
+      output: '<App className="flex" a b />',
+      errors: [expectedError],
+    },
+    {
+      code: '<App theme="light" className="flex" b />',
+      options: customPropsFirstArgs,
+      errors: [expectedError],
+      output: '<App className="flex" theme="light" b />',
+    },
+    {
+      code: '<App theme="light" a className="flex" />',
+      options: customPropsFirstWithNoSortAlphabeticallyArgs,
+      errors: [expectedCustomPropsFirstError],
+      output: '<App theme="light" className="flex" a />',
+    },
+    {
+      code: '<App className="flex" key={0} />',
+      options: customPropsFirstWithReservedFirst,
+      errors: [expectedReservedFirstError],
+      output: '<App key={0} className="flex" />',
+    },
+    {
+      code: '<App className="flex" />',
+      options: customPropsFirstAsEmptyArrayArgs,
+      errors: [expectedEmptyCustomPropsFirstError],
+    },
+    // multiline first
     {
       code: `
         <App
