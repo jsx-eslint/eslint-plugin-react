@@ -21,12 +21,14 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Fixed
 * [`destructuring-assignment`]: fix false negative when using `typeof props.a` ([#3835][] @golopot)
+* [`no-unknown-property`]: support `precedence` prop ([#3829][] @acusti)
 
 ### Changed
 * [Refactor] [`destructuring-assignment`]: use `getParentStatelessComponent` ([#3835][] @golopot)
 
 [7.37.2]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.37.1...v7.37.2
 [#3835]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3835
+[#3829]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3829
 
 ## [7.37.1] - 2024.10.01
 
