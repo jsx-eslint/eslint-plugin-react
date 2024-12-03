@@ -12,7 +12,7 @@ const rule = require('../../../lib/rules/no-unused-state');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   ecmaFeatures: {
     jsx: true,
   },
@@ -1110,7 +1110,7 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       features: ['types', 'class fields'],
-    }
+    },
   )),
 
   invalid: parsers.all([
