@@ -11,11 +11,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-danger`]: avoid a crash on a nested component name ([#3833][] @ljharb)
 * [Fix] types: correct generated type declaration ([#3840][] @ocavue)
 * [`no-unknown-property`]: support `precedence` prop in react 19 ([#3829][] @acusti)
+* [`prop-types`]: props missing in validation when using generic types from a namespace import ([#3859][] @rbondoc96)
 
 ### Changed
 * [Tests] [`jsx-no-script-url`]: Improve tests ([#3849][] @radu2147)
 * [Docs] fix broken links: [`default-props-match-prop-types`], [`jsx-boolean-value`], [`jsx-curly-brace-presence`], [`jsx-no-bind`], [`no-array-index-key`], [`no-is-mounted`], [`no-render-return-value`], [`require-default-props`] ([#3841][] @bastiendmt)
 
+[#3859]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3859
 [#3849]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3849
 [#3841]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3841
 [#3840]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3840
