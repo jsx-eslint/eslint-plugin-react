@@ -4,7 +4,7 @@
 
 <!-- end auto-generated rule header -->
 
-[When using a boolean attribute in JSX](https://facebook.github.io/react/docs/jsx-in-depth.html#boolean-attributes), you can set the attribute value to `true` or omit the value.
+When using a [boolean attribute in JSX](https://web.archive.org/web/20160607204033/http://facebook.github.io/react/docs/jsx-in-depth.html#boolean-attributes), you can set the attribute value to `true` or omit the value.
 
 ## Rule Details
 
