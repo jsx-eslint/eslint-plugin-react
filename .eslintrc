@@ -17,7 +17,8 @@
 		"coverage/",
 		".nyc_output/",
 		"test-published-types/",
-		"tests/fixtures/flat-config/"
+		"tests/fixtures/flat-config/",
+		"**/*/*.d.ts",
 	],
 	"rules": {
 		"comma-dangle": [2, "always-multiline"],
