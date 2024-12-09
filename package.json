@@ -54,7 +54,7 @@
     "@babel/plugin-syntax-decorators": "^7.25.9",
     "@babel/plugin-syntax-do-expressions": "^7.25.9",
     "@babel/plugin-syntax-function-bind": "^7.25.9",
-    "@babel/preset-react": "^7.25.9",
+    "@babel/preset-react": "^7.26.3",
     "@types/eslint": "=7.2.10",
     "@types/estree": "0.0.52",
     "@types/node": "^4.9.5",
