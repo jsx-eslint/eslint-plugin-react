@@ -182,11 +182,14 @@ ruleTester.run('no-unknown-property', rule, {
     {
       code: `
         <div>
-          <button popovertarget="my-popover" popovertargetaction="toggle">Open Popover</button>
+          <button popoverTarget="my-popover" popoverTargetAction="toggle">Open Popover</button>
 
-          <div popover id="my-popover">Greetings, one and all!</div>
+          <div id="my-popover" onBeforeToggle={this.onBeforeToggle} popover>Greetings, one and all!</div>
         </div>
       `,
+      settings: {
+        react: { version: '19.0.0' },
+      },
     },
   ]),
   invalid: parsers.all([
