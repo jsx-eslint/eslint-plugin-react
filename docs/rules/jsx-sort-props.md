@@ -35,6 +35,7 @@ Examples of **correct** code for this rule:
   "ignoreCase": <boolean>,
   "noSortAlphabetically": <boolean>,
   "reservedFirst": <boolean>|<array<string>>,
+  "customPropsFirst": <array<string>>,
   "locale": "auto" | "any valid locale"
 }]
 ...
@@ -136,6 +137,24 @@ With `reservedFirst: ["key"]`, the following will **not** warn:
 
 ```jsx
 <Hello key={'uuid'} name="John" ref={johnRef} />
+```
+
+### `customPropsFirst`
+
+This can only be an array option.
+
+When `customPropsFirst` is defined, the specified custom props must be listed before all other props, but still respecting the alphabetical order:
+
+```jsx
+// 'jsx-sort-props': [1, { customPropsFirst: ["className", 'theme'] }]
+<Hello className="flex" theme="light" name="John" />
+```
+
+If both `reservedFirst` and `customPropsFirst` are defined, reserved props are listed first, followed by custom props, and then all other props, but still respecting the alphabetical order:
+
+```jsx
+// 'jsx-sort-props': [1, { reservedFirst: true, customPropsFirst: ["className", 'theme'] }]
+<Hello key={0} ref={johnRef} className="flex" theme="light" name="John" />
 ```
 
 ### `locale`
