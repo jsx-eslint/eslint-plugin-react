@@ -12,6 +12,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Fix] types: correct generated type declaration ([#3840][] @ocavue)
 * [`no-unknown-property`]: support `precedence` prop in react 19 ([#3829][] @acusti)
 * [`prop-types`]: props missing in validation when using generic types from a namespace import ([#3859][] @rbondoc96)
+* [`no-unknown-property`]: support `onBeforeToggle`, `popoverTarget`, `popoverTargetAction` attributes ([#3865][] @acusti)
 
 ### Changed
 * [Tests] [`jsx-no-script-url`]: Improve tests ([#3849][] @radu2147)
@@ -23,6 +24,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3840]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3840
 [#3833]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3833
 [#3829]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3829
+[#3865]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3865
 
 ## [7.37.2] - 2024.10.22
 
