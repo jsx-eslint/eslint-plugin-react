@@ -26,6 +26,9 @@
     "type": "git",
     "url": "https://github.com/jsx-eslint/eslint-plugin-react"
   },
+  "directories": {
+    "test": ["test", "tests", "test-published-types"]
+  },
   "homepage": "https://github.com/jsx-eslint/eslint-plugin-react",
   "bugs": "https://github.com/jsx-eslint/eslint-plugin-react/issues",
   "dependencies": {
