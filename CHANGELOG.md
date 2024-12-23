@@ -7,6 +7,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.37.3] - 2024.12.23
+
 ### Fixed
 * [`no-danger`]: avoid a crash on a nested component name ([#3833][] @ljharb)
 * [Fix] types: correct generated type declaration ([#3840][] @ocavue)
@@ -17,6 +19,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Tests] [`jsx-no-script-url`]: Improve tests ([#3849][] @radu2147)
 * [Docs] fix broken links: [`default-props-match-prop-types`], [`jsx-boolean-value`], [`jsx-curly-brace-presence`], [`jsx-no-bind`], [`no-array-index-key`], [`no-is-mounted`], [`no-render-return-value`], [`require-default-props`] ([#3841][] @bastiendmt)
 
+[7.37.3]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.37.2...v7.37.3
 [#3859]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3859
 [#3849]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3849
 [#3841]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3841
