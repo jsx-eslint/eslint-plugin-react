@@ -10,6 +10,7 @@
 // -----------------------------------------------------------------------------
 
 const ruleNoUnusedVars = require('../../helpers/getESLintCoreRule')('no-unused-vars');
+
 const rulePreferConst = require('../../helpers/getESLintCoreRule')('prefer-const');
 
 const RuleTester = require('../../helpers/ruleTester');
@@ -136,7 +137,13 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
   invalid: parsers.all([
     {
       code: '/* eslint react/jsx-uses-vars: 1 */ var App;',
-      errors: [{ message: '\'App\' is defined but never used.' }],
+      errors: [{
+        message: '\'App\' is defined but never used.',
+        suggestions: [{
+          messageId: 'removeVar',
+          output: '/* eslint react/jsx-uses-vars: 1 */ ',
+        }],
+      }],
     },
     {
       code: `
@@ -145,7 +152,18 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         var unused;
         React.render(<App unused=""/>);
       `,
-      errors: [{ message: '\'unused\' is defined but never used.' }],
+      errors: [{
+        message: '\'unused\' is defined but never used.',
+        suggestions: [{
+          messageId: 'removeVar',
+          output: `
+        /* eslint react/jsx-uses-vars: 1 */
+        var App;
+        ${''}
+        React.render(<App unused=""/>);
+      `,
+        }],
+      }],
     },
     {
       code: `
@@ -155,8 +173,30 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         React.render(<App:Hello/>);
       `,
       errors: [
-        { message: '\'App\' is defined but never used.' },
-        { message: '\'Hello\' is defined but never used.' },
+        {
+          message: '\'App\' is defined but never used.',
+          suggestions: [{
+            messageId: 'removeVar',
+            output: `
+        /* eslint react/jsx-uses-vars: 1 */
+        ${''}
+        var Hello;
+        React.render(<App:Hello/>);
+      `,
+          }],
+        },
+        {
+          message: '\'Hello\' is defined but never used.',
+          suggestions: [{
+            messageId: 'removeVar',
+            output: `
+        /* eslint react/jsx-uses-vars: 1 */
+        var App;
+        ${''}
+        React.render(<App:Hello/>);
+      `,
+          }],
+        },
       ],
       features: ['jsx namespace'],
     },
@@ -167,14 +207,34 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         var Input;
         React.render(<Button.Input unused=""/>);
       `,
-      errors: [{ message: '\'Input\' is defined but never used.' }],
+      errors: [{
+        message: '\'Input\' is defined but never used.',
+        suggestions: [{
+          messageId: 'removeVar',
+          output: `
+        /* eslint react/jsx-uses-vars: 1 */
+        var Button;
+        ${''}
+        React.render(<Button.Input unused=""/>);
+      `,
+        }],
+      }],
     },
     {
       code: `
         /* eslint react/jsx-uses-vars: 1 */
         class unused {}
       `,
-      errors: [{ message: '\'unused\' is defined but never used.' }],
+      errors: [{
+        message: '\'unused\' is defined but never used.',
+        suggestions: [{
+          messageId: 'removeVar',
+          output: `
+        /* eslint react/jsx-uses-vars: 1 */
+        ${''}
+      `,
+        }],
+      }],
     },
     {
       code: `
@@ -190,6 +250,13 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         {
           message: '\'HelloMessage\' is defined but never used.',
           line: 3,
+          suggestions: [{
+            messageId: 'removeVar',
+            output: `
+        /* eslint react/jsx-uses-vars: 1 */
+        ${''}
+      `,
+          }],
         },
       ],
     },
@@ -207,6 +274,18 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         {
           message: '\'Hello\' is defined but never used.',
           line: 3,
+          suggestions: [{
+            messageId: 'removeVar',
+            output: `
+        /* eslint react/jsx-uses-vars: 1 */
+        ${''}
+        function Greetings() {
+          const Hello = require('Hello').default;
+          return <Hello />;
+        }
+        Greetings();
+      `,
+          }],
         },
       ],
     },
@@ -216,7 +295,17 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         var lowercase;
         React.render(<lowercase />);
       `,
-      errors: [{ message: '\'lowercase\' is defined but never used.' }],
+      errors: [{
+        message: '\'lowercase\' is defined but never used.',
+        suggestions: [{
+          messageId: 'removeVar',
+          output: `
+        /* eslint react/jsx-uses-vars: 1 */
+        ${''}
+        React.render(<lowercase />);
+      `,
+        }],
+      }],
     },
     {
       code: `
@@ -230,10 +319,29 @@ ruleTester.run('no-unused-vars', ruleNoUnusedVars, {
         {
           message: '\'div\' is defined but never used.',
           line: 3,
+          suggestions: [{
+            messageId: 'removeVar',
+            output: `
+        /* eslint react/jsx-uses-vars: 1 */
+        function Greetings() {
+          return <div />;
+        }
+        Greetings();
+      `,
+          }],
         },
       ],
     },
-  ]),
+  ].map((test) => {
+    if (!ruleNoUnusedVars.meta.hasSuggestions) {
+      test.errors = test.errors.map((error) => {
+        // https://github.com/eslint/eslint/pull/18352 added suggestions to no-unused-vars in eslint v9.17.0
+        delete error.suggestions;
+        return error;
+      });
+    }
+    return test;
+  })),
 });
 
 // Check compatibility with eslint prefer-const rule (#716)

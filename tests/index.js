@@ -10,6 +10,7 @@ const plugin = require('..');
 const index = require('../lib/rules');
 
 const ruleFiles = fs.readdirSync(path.resolve(__dirname, '../lib/rules/'))
+  .filter((f) => f.endsWith('.js'))
   .map((f) => path.basename(f, '.js'))
   .filter((f) => f !== 'index');
 
