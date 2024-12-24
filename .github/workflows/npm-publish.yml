@@ -105,6 +105,7 @@ jobs:
             nodejs.org:443
             prod.api.stepsecurity.io:443
             registry.npmjs.org:443
+            raw.githubusercontent.com:443
 
       - uses: actions/checkout@v4
         with:
