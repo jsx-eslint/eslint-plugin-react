@@ -4133,6 +4133,20 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
+        import {ComponentPropsWithRef, forwardRef} from "react";
+
+        export const FancyButton = forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
+          ({ className, children, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+              {children}
+            </button>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
         import {ComponentProps, forwardRef} from "react";
 
         export const FancyButton = forwardRef<HTMLButtonElement, ComponentProps<"button">>(
@@ -4158,6 +4172,28 @@ ruleTester.run('prop-types', rule, {
         );
 
         export const FancyButton = forwardRef<ElementRef<typeof BaseButton>, ComponentPropsWithoutRef<typeof BaseButton>>(
+          ({ children, className, ...props }, ref) => (
+            <BaseButton ref={ref} className={className} {...props}>
+              {children}
+            </BaseButton>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import {ComponentPropsWithRef, ElementRef, forwardRef} from "react";
+
+        const BaseButton = forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
+          ({ children, className, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+                {children}
+            </button>
+          ),
+        );
+
+        export const FancyButton = forwardRef<ElementRef<typeof BaseButton>, ComponentPropsWithRef<typeof BaseButton>>(
           ({ children, className, ...props }, ref) => (
             <BaseButton ref={ref} className={className} {...props}>
               {children}
@@ -4235,9 +4271,67 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
+        import {ComponentProps, ComponentPropsWithRef, ElementRef, forwardRef} from "react";
+
+        const BaseButton = forwardRef<HTMLButtonElement, ComponentProps<"button">>(
+          ({ children, className, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+                {children}
+            </button>
+          ),
+        );
+
+        export const FancyButton = forwardRef<ElementRef<typeof BaseButton>, ComponentPropsWithRef<typeof BaseButton>>(
+          ({ children, className, ...props }, ref) => (
+            <BaseButton ref={ref} className={className} {...props}>
+              {children}
+            </BaseButton>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import {ComponentProps, ComponentPropsWithRef, ElementRef, forwardRef} from "react";
+
+        const BaseButton = forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
+          ({ children, className, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+                {children}
+            </button>
+          ),
+        );
+
+        export const FancyButton = forwardRef<ElementRef<typeof BaseButton>, ComponentProps<typeof BaseButton>>(
+          ({ children, className, ...props }, ref) => (
+            <BaseButton ref={ref} className={className} {...props}>
+              {children}
+            </BaseButton>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
         import React from "react";
 
         export const FancyButton = React.forwardRef<HTMLButtonElement, React.ComponentProps<"button">>(
+          ({ className, children, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+              {children}
+            </button>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from "react";
+
+        export const FancyButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithRef<"button">>(
           ({ className, children, ...props }, ref) => (
             <button ref={ref} className={className} {...props}>
               {children}
@@ -4287,6 +4381,28 @@ ruleTester.run('prop-types', rule, {
       code: `
         import React from "react";
 
+        const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithRef<"button">>(
+          ({ children, className, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+                {children}
+            </button>
+          ),
+        );
+
+        export const FancyButton = React.forwardRef<React.ElementRef<typeof BaseButton>, React.ComponentPropsWithRef<typeof BaseButton>>(
+          ({ children, className, ...props }, ref) => (
+            <BaseButton ref={ref} className={className} {...props}>
+              {children}
+            </BaseButton>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from "react";
+
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithoutRef<"button">>(
           ({ children, className, ...props }, ref) => (
             <button ref={ref} className={className} {...props}>
@@ -4296,6 +4412,50 @@ ruleTester.run('prop-types', rule, {
         );
 
         export const FancyButton = React.forwardRef<React.ElementRef<typeof BaseButton>, React.ComponentPropsWithoutRef<typeof BaseButton>>(
+          ({ children, className, ...props }, ref) => (
+            <BaseButton ref={ref} className={className} {...props}>
+              {children}
+            </BaseButton>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from "react";
+
+        const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentProps<"button">>(
+          ({ children, className, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+                {children}
+            </button>
+          ),
+        );
+
+        export const FancyButton = React.forwardRef<React.ElementRef<typeof BaseButton>, React.ComponentPropsWithRef<typeof BaseButton>>(
+          ({ children, className, ...props }, ref) => (
+            <BaseButton ref={ref} className={className} {...props}>
+              {children}
+            </BaseButton>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from "react";
+
+        const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithRef<"button">>(
+          ({ children, className, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+                {children}
+            </button>
+          ),
+        );
+
+        export const FancyButton = React.forwardRef<React.ElementRef<typeof BaseButton>, React.ComponentProps<typeof BaseButton>>(
           ({ children, className, ...props }, ref) => (
             <BaseButton ref={ref} className={className} {...props}>
               {children}
@@ -4367,6 +4527,20 @@ ruleTester.run('prop-types', rule, {
       code: `
         import * as React from "react";
 
+        export const FancyButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithRef<"button">>(
+          ({ className, children, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+              {children}
+            </button>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import * as React from "react";
+
         export const FancyButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithoutRef<"button">>(
           ({ className, children, ...props }, ref) => (
             <button ref={ref} className={className} {...props}>
@@ -4403,6 +4577,28 @@ ruleTester.run('prop-types', rule, {
       code: `
         import * as React from "react";
 
+        const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithRef<"button">>(
+          ({ children, className, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+                {children}
+            </button>
+          ),
+        );
+
+        export const FancyButton = React.forwardRef<React.ElementRef<typeof BaseButton>, React.ComponentPropsWithRef<typeof BaseButton>>(
+          ({ children, className, ...props }, ref) => (
+            <BaseButton ref={ref} className={className} {...props}>
+              {children}
+            </BaseButton>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import * as React from "react";
+
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithoutRef<"button">>(
           ({ children, className, ...props }, ref) => (
             <button ref={ref} className={className} {...props}>
@@ -4448,6 +4644,50 @@ ruleTester.run('prop-types', rule, {
         import * as React from "react";
 
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithoutRef<"button">>(
+          ({ children, className, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+                {children}
+            </button>
+          ),
+        );
+
+        export const FancyButton = React.forwardRef<React.ElementRef<typeof BaseButton>, React.ComponentProps<typeof BaseButton>>(
+          ({ children, className, ...props }, ref) => (
+            <BaseButton ref={ref} className={className} {...props}>
+              {children}
+            </BaseButton>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import * as React from "react";
+
+        const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentProps<"button">>(
+          ({ children, className, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+                {children}
+            </button>
+          ),
+        );
+
+        export const FancyButton = React.forwardRef<React.ElementRef<typeof BaseButton>, React.ComponentPropsWithRef<typeof BaseButton>>(
+          ({ children, className, ...props }, ref) => (
+            <BaseButton ref={ref} className={className} {...props}>
+              {children}
+            </BaseButton>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import * as React from "react";
+
+        const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithRef<"button">>(
           ({ children, className, ...props }, ref) => (
             <button ref={ref} className={className} {...props}>
                 {children}
@@ -4470,6 +4710,20 @@ ruleTester.run('prop-types', rule, {
         import React, {ComponentPropsWithoutRef} from "react";
 
         export const FancyButton = React.forwardRef<HTMLButtonElement, ComponentPropsWithoutRef<"button">>(
+          ({ className, children, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+              {children}
+            </button>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, {ComponentPropsWithRef} from "react";
+
+        export const FancyButton = React.forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
           ({ className, children, ...props }, ref) => (
             <button ref={ref} className={className} {...props}>
               {children}
@@ -4506,6 +4760,28 @@ ruleTester.run('prop-types', rule, {
         );
 
         export const FancyButton = React.forwardRef<ElementRef<typeof BaseButton>, ComponentPropsWithoutRef<typeof BaseButton>>(
+          ({ children, className, ...props }, ref) => (
+            <BaseButton ref={ref} className={className} {...props}>
+              {children}
+            </BaseButton>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, {ComponentPropsWithRef, ElementRef} from "react";
+
+        const BaseButton = React.forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
+          ({ children, className, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+                {children}
+            </button>
+          ),
+        );
+
+        export const FancyButton = React.forwardRef<ElementRef<typeof BaseButton>, ComponentPropsWithRef<typeof BaseButton>>(
           ({ children, className, ...props }, ref) => (
             <BaseButton ref={ref} className={className} {...props}>
               {children}
@@ -4572,6 +4848,50 @@ ruleTester.run('prop-types', rule, {
         );
 
         export const FancyButton = React.forwardRef<ElementRef<typeof BaseButton>, ComponentPropsWithoutRef<typeof BaseButton>>(
+          ({ children, className, ...props }, ref) => (
+            <BaseButton ref={ref} className={className} {...props}>
+              {children}
+            </BaseButton>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, {ComponentProps, ComponentPropsWithRef, ElementRef} from "react";
+
+        const BaseButton = React.forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
+          ({ children, className, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+                {children}
+            </button>
+          ),
+        );
+
+        export const FancyButton = React.forwardRef<ElementRef<typeof BaseButton>, ComponentProps<typeof BaseButton>>(
+          ({ children, className, ...props }, ref) => (
+            <BaseButton ref={ref} className={className} {...props}>
+              {children}
+            </BaseButton>
+          ),
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, {ComponentProps, ComponentPropsWithRef, ElementRef} from "react";
+
+        const BaseButton = React.forwardRef<HTMLButtonElement, ComponentProps<"button">>(
+          ({ children, className, ...props }, ref) => (
+            <button ref={ref} className={className} {...props}>
+                {children}
+            </button>
+          ),
+        );
+
+        export const FancyButton = React.forwardRef<ElementRef<typeof BaseButton>, ComponentPropsWithRef<typeof BaseButton>>(
           ({ children, className, ...props }, ref) => (
             <BaseButton ref={ref} className={className} {...props}>
               {children}
