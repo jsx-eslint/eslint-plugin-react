@@ -90,19 +90,21 @@ const configs = {
       'react/jsx-uses-react': SEVERITY_OFF,
     },
   },
+  flat: /** @type {Record<string, ReactFlatConfig>} */ ({
+    __proto__: null,
+  }),
 };
 
 /** @typedef {{ plugins: { react: typeof plugin }, rules: import('eslint').Linter.RulesRecord, languageOptions: { parserOptions: import('eslint').Linter.ParserOptions } }} ReactFlatConfig */
 
-/** @type {{ deprecatedRules: typeof deprecatedRules, rules: typeof allRules, configs: typeof configs & { flat?: Record<string, ReactFlatConfig> }}} */
+/** @type {{ deprecatedRules: typeof deprecatedRules, rules: typeof allRules, configs: typeof configs & { flat: Record<string, ReactFlatConfig> }}} */
 const plugin = {
   deprecatedRules,
   rules: allRules,
   configs,
 };
 
-/** @type {Record<string, ReactFlatConfig>} */
-configs.flat = {
+Object.assign(configs.flat, {
   recommended: {
     plugins: { react: plugin },
     rules: configs.recommended.rules,
@@ -118,6 +120,6 @@ configs.flat = {
     rules: configs['jsx-runtime'].rules,
     languageOptions: { parserOptions: configs['jsx-runtime'].parserOptions },
   },
-};
+});
 
 module.exports = plugin;
