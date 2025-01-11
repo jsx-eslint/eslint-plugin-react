@@ -11,6 +11,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: support `onBeforeToggle`, `popoverTarget`, `popoverTargetAction` attributes ([#3865][] @acusti)
 * [types] fix types of flat configs ([#3874][] @ljharb)
 
+### Added
+* [`forbid-dom-props`]: Add `valueRegex` option for forbidden props ([#3876][] @makxca)
+
+[#3876]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3876
 [#3874]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3874
 [#3865]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3865
 

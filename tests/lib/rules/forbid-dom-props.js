@@ -112,6 +112,58 @@ ruleTester.run('forbid-dom-props', rule, {
         },
       ],
     },
+    {
+      code: `
+        const First = (props) => (
+          <Foo someProp="someValue" />
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'someProp',
+              valueRegex: '^someValue$',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <div someProp="value" />
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'someProp',
+              valueRegex: '^someValue$',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <div someProp="someValue" />
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'someProp',
+              valueRegex: '^someValue$',
+              disallowedFor: ['span'],
+            },
+          ],
+        },
+      ],
+    },
   ]),
 
   invalid: parsers.all([
@@ -185,6 +237,58 @@ ruleTester.run('forbid-dom-props', rule, {
       errors: [
         {
           message: 'Please use class instead of ClassName',
+          line: 3,
+          column: 16,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <span otherProp="bar" />
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'otherProp',
+              disallowedFor: ['span'],
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'otherProp' },
+          line: 3,
+          column: 17,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <div someProp="someValue" />
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'someProp',
+              valueRegex: '^someValue$',
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          messageId: 'propIsForbiddenWithValue',
+          data: { prop: 'someProp', propValue: 'someValue' },
           line: 3,
           column: 16,
           type: 'JSXAttribute',
@@ -320,6 +424,64 @@ ruleTester.run('forbid-dom-props', rule, {
           message: 'Avoid using otherProp',
           line: 6,
           column: 18,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <div className="foo">
+            <input className="boo" />
+            <span className="foobar">Foobar</span>
+            <div otherProp="bar" />
+            <p thirdProp="bar" />
+            <div thirdProp="baz" />
+            <p thirdProp="baz" />
+          </div>
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedFor: ['div', 'span'],
+              message: 'Please use class instead of ClassName',
+            },
+            { propName: 'otherProp', message: 'Avoid using otherProp' },
+            {
+              propName: 'thirdProp',
+              disallowedFor: ['p'],
+              valueRegex: '^baz$',
+              message: 'Do not use thirdProp with value baz on p',
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          message: 'Please use class instead of ClassName',
+          line: 3,
+          column: 16,
+          type: 'JSXAttribute',
+        },
+        {
+          message: 'Please use class instead of ClassName',
+          line: 5,
+          column: 19,
+          type: 'JSXAttribute',
+        },
+        {
+          message: 'Avoid using otherProp',
+          line: 6,
+          column: 18,
+          type: 'JSXAttribute',
+        },
+        {
+          message: 'Do not use thirdProp with value baz on p',
+          line: 9,
+          column: 16,
           type: 'JSXAttribute',
         },
       ],
