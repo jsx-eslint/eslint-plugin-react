@@ -13,6 +13,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-no-leaked-render`]: add `ignoreAttributes` option ([#3441][] @aleclarson)
 * [`jsx-sort-props`]: add `sortFirst` option ([#3965][] @loderunner)
 * [`jsx-no-literals`]: add `restrictedAttributes` option ([#3950][] @ushiboy)
+* [`forbid-dom-props`]: Add `disallowedValues` option for forbidden props ([#3877][] @makxca)
 
 ### Fixed
 * [`no-unknown-property`]: allow `onLoad` on `body` ([#3923][] @DerekStapleton)
@@ -34,8 +35,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3930]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3930
 [#3928]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3928
 [#3923]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3923
-[#3441]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3441
+[#3877]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3877
 [#3729]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3729
+[#3441]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3441
 
 ## [7.37.5] - 2025.04.03
 
