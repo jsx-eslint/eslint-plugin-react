@@ -7,10 +7,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.37.4] - 2025.01.12
+
 ### Fixed
 * [`no-unknown-property`]: support `onBeforeToggle`, `popoverTarget`, `popoverTargetAction` attributes ([#3865][] @acusti)
 * [types] fix types of flat configs ([#3874][] @ljharb)
 
+[7.37.4]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.37.3...v7.37.4
 [#3874]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3874
 [#3865]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3865
 
