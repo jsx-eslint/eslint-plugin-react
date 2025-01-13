@@ -7,6 +7,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Added
+* [`forbid-dom-props`]: Add `disallowedValues` option for forbidden props ([#3876][] @makxca)
+
+[#3876]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3876
+
 ## [7.37.4] - 2025.01.12
 
 ### Fixed
