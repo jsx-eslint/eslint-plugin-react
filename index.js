@@ -90,7 +90,7 @@ const configs = {
       'react/jsx-uses-react': SEVERITY_OFF,
     },
   },
-  flat: /** @type {{Record<AvailableFlatConfigs, ReactFlatConfig>}} */ ({}),
+  flat: /** @type {{ [k in AvailableFlatConfigs]: ReactFlatConfig }} */ ({}),
 };
 
 /** @typedef {{plugins: {react: typeof plugin}, rules: import('eslint').Linter.RulesRecord, languageOptions: {parserOptions: import('eslint').Linter.ParserOptions}}} ReactFlatConfig */
@@ -102,6 +102,7 @@ const plugin = {
   configs,
 };
 
+/** @type {{ [k in AvailableFlatConfigs]: ReactFlatConfig }} */
 configs.flat = {
   recommended: {
     plugins: { react: plugin },
