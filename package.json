@@ -1,6 +1,6 @@
 {
   "name": "eslint-plugin-react",
-  "version": "7.37.3",
+  "version": "7.37.4",
   "author": "Yannick Croissant <yannick.croissant+npm@gmail.com>",
   "description": "React specific linting rules for ESLint",
   "main": "index.js",
@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
-    "@babel/eslint-parser": "^7.25.9",
+    "@babel/eslint-parser": "^7.26.5",
     "@babel/plugin-syntax-decorators": "^7.25.9",
     "@babel/plugin-syntax-do-expressions": "^7.25.9",
     "@babel/plugin-syntax-function-bind": "^7.25.9",
