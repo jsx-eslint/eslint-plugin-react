@@ -2,8 +2,8 @@
 
 <!-- end auto-generated rule header -->
 
-The default value of `type` attribute for `button` HTML element is `"submit"` which is often not the desired behavior and may lead to unexpected page reloads.
-This rules enforces an explicit `type` attribute for all the `button` elements and checks that its value is valid per spec (i.e., is one of `"button"`, `"submit"`, and `"reset"`).
+The default value of the `type` attribute for HTML `button` elements is `"submit"`. This is often not the desired behavior and may lead to unexpected page reloads.
+This rules enforces an explicit `type` attribute for all `button` elements and checks that its value is valid per the spec (i.e., is one of `"button"`, `"submit"`, and `"reset"`).
 
 ## Rule Details
 

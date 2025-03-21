@@ -7,6 +7,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Changed
+* [Docs] [`button-has-type`]: clean up phrasing ([#3909][] @hamirmahal)
+
+[#3909]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3909
+
 ## [7.37.4] - 2025.01.12
 
 ### Fixed
