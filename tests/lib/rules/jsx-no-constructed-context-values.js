@@ -147,6 +147,44 @@ ruleTester.run('react-no-constructed-context-values', rule, {
         );
       `,
     },
+    {
+      code: `
+        // Passes because the context is not a provider
+        function Component() {
+          return <MyContext.Consumer value={{ foo: 'bar' }} />;
+        }
+      `,
+    },
+    {
+      code: `
+        import React from 'react';
+
+        const MyContext = React.createContext();
+        const Component = () => <MyContext value={props}></MyContext>;
+      `,
+    },
+    {
+      code: `
+        import React from 'react';
+
+        const MyContext = React.createContext();
+        const Component = () => <MyContext value={100}></MyContext>;
+      `,
+    },
+    {
+      code: `
+        const SomeContext = createContext();
+        const Component = () => <SomeContext value="Some string"></SomeContext>;
+      `,
+    },
+    {
+      code: `
+        // Passes because MyContext is not a variable declarator
+        function Component({ MyContext }) {
+          return <MyContext value={{ foo: "bar" }} />;
+        }
+      `,
+    },
   ]),
   invalid: parsers.all([
     {
@@ -464,6 +502,64 @@ ruleTester.run('react-no-constructed-context-values', rule, {
             type: 'assignment expression',
             nodeLine: '4',
             usageLine: '5',
+          },
+        },
+      ],
+    },
+    {
+      // Invalid because function declaration creates a new identity
+      code: `
+        import React from 'react';
+
+        const Context = React.createContext();
+        function Component() {
+          function foo() {};
+          return (<Context value={foo}></Context>)
+        }
+      `,
+      errors: [
+        {
+          messageId: 'withIdentifierMsgFunc',
+          data: {
+            variableName: 'foo',
+            type: 'function declaration',
+            nodeLine: '6',
+            usageLine: '7',
+          },
+        },
+      ],
+    },
+    {
+      // Invalid because the object value will create a new identity
+      code: `
+        const MyContext = createContext();
+        function Component() { const foo = {}; return (<MyContext value={foo}></MyContext>) }
+      `,
+      errors: [
+        {
+          messageId: 'withIdentifierMsg',
+          data: {
+            variableName: 'foo',
+            type: 'object',
+            nodeLine: '3',
+            usageLine: '3',
+          },
+        },
+      ],
+    },
+    {
+      // Invalid because inline object construction will create a new identity
+      code: `
+        const MyContext = createContext();
+        function Component() { return (<MyContext value={{foo: "bar"}}></MyContext>); }
+      `,
+      errors: [
+        {
+          messageId: 'defaultMsg',
+          data: {
+            type: 'object',
+            nodeLine: '3',
+            usageLine: '3',
           },
         },
       ],

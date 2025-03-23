@@ -22,6 +22,16 @@ return (
 )
 ```
 
+```jsx
+import React from 'react';
+
+const MyContext = React.createContext();
+function Component() {
+    function foo() {}
+    return (<MyContext value={foo}></MyContext>);
+}
+```
+
 Examples of **correct** code for this rule:
 
 ```jsx
@@ -31,6 +41,11 @@ return (
         ...
     </SomeContext.Provider>
 )
+```
+
+```jsx
+const SomeContext = createContext();
+const Component = () => <SomeContext value="Some string"><SomeContext>;
 ```
 
 ## Legitimate Uses
