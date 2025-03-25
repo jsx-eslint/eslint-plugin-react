@@ -1623,7 +1623,7 @@ ruleTester.run('prop-types', rule, {
           handleDeleteConfirm = () => {
             this.props.onDelete();
           };
-          handleSubmit = async ({certificate, key}) => {};
+          handleSubmit = async ({ certificate, key }) => {};
         }
       `,
       features: ['class fields'],
@@ -1675,7 +1675,7 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import type {Data} from './Data'
+        import type { Data } from './Data'
         type Person = {
           ...Data,
           lastname: string
@@ -1691,7 +1691,7 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import type {Data} from 'some-libdef-like-flow-typed-provides'
+        import type { Data } from 'some-libdef-like-flow-typed-provides'
         type Person = {
           ...Data,
           lastname: string
@@ -1707,7 +1707,7 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import type {BasePerson} from './types'
+        import type { BasePerson } from './types'
         type Props = {
           person: {
            ...$Exact<BasePerson>,
@@ -1811,7 +1811,7 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        type Props = {name: {firstname: string;};};
+        type Props = { name: { firstname: string; }; };
         class Hello extends React.Component<void, Props, void> {
           render () {
             return <div>Hello {this.props.name.firstname}</div>;
@@ -1822,7 +1822,7 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        type Props = {name: {firstname: string;};};
+        type Props = { name: { firstname: string; }; };
         class Hello extends React.Component<void, Props, void> {
           render () {
             return <div>Hello {this.props.name.firstname}</div>;
@@ -1834,7 +1834,7 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        type Note = {text: string, children?: Note[]};
+        type Note = { text: string, children?: Note[] };
         type Props = {
           notes: Note[];
         };
@@ -1899,7 +1899,7 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        type Props = {result?: {ok?: ?string | boolean;}|{ok?: ?number | Array}};
+        type Props = { result?: { ok?: ?string | boolean; } | { ok?: ?number | Array } };
         class Hello extends React.Component<void, Props, void> {
           render () {
             return <div>Hello {this.props.result.ok}</div>;
@@ -1910,7 +1910,7 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        type Props = {result?: {ok?: ?string | boolean;}|{ok?: ?number | Array}};
+        type Props = { result?: { ok?: ?string | boolean;} | { ok?: ?number | Array } };
         class Hello extends React.Component<void, Props, void> {
           render () {
             return <div>Hello {this.props.result.ok}</div>;
@@ -2106,14 +2106,14 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        const withOverlayState = <P: {foo: string}>(WrappedComponent: ComponentType<P>): ComponentType<P> => (
+        const withOverlayState = <P: { foo: string }>(WrappedComponent: ComponentType<P>): ComponentType<P> => (
           class extends React.Component<P> {
             constructor(props) {
               super(props);
-              this.state = {foo: props.foo}
+              this.state = { foo: props.foo };
             }
             render() {
-              return <div>Hello World</div>
+              return <div>Hello World</div>;
             }
           }
         )
@@ -2123,9 +2123,9 @@ ruleTester.run('prop-types', rule, {
 
     // issue #1288
     `function Foo() {
-      const props = {}
-      props.bar = 'bar'
-      return <div {...props} />
+      const props = {};
+      props.bar = 'bar';
+      return <div {...props} />;
     }`,
     // issue #1288
     `function Foo(props) {
@@ -2161,19 +2161,19 @@ ruleTester.run('prop-types', rule, {
     {
       code: `
       // @flow
-      import * as React from 'react'
+      import * as React from 'react';
 
-      type Props = {}
+      type Props = {};
 
-      const func = <OP: *>(arg) => arg
+      const func = <OP: *>(arg) => arg;
 
       const hoc = <OP>() => () => {
         class Inner extends React.Component<Props & OP> {
           render() {
-            return <div />
+            return <div />;
           }
         }
-      }
+      };
     `,
       features: ['flow'],
     },
@@ -2216,7 +2216,7 @@ ruleTester.run('prop-types', rule, {
         class Foo extends React.Component {
           bar() {
             this.setState((state, props) => {
-              function f(_, {aaaaaaa}) {}
+              function f(_, { aaaaaaa }) {}
             });
           }
         }
@@ -2459,7 +2459,7 @@ ruleTester.run('prop-types', rule, {
       code: `
         import React from 'react';
         import PropTypes from 'prop-types';
-        import {connect} from 'react-redux';
+        import { connect } from 'react-redux';
 
         class Foo extends React.Component {
           render() {
@@ -2538,7 +2538,7 @@ ruleTester.run('prop-types', rule, {
     {
       // issue #2326
       code: `
-        for (const {result} of results) {}
+        for (const { result } of results) {}
       `,
     },
     {
@@ -2600,7 +2600,7 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        const Foo = ({length, ordering}) => (
+        const Foo = ({ length, ordering }) => (
           length > 0 && (
             <Paginator items={ordering} pageSize={10} />
           )
@@ -3085,7 +3085,7 @@ ruleTester.run('prop-types', rule, {
       }
 
       const mapDispatchToProps = (dispatch: ThunkDispatch<State, null, Action>) => ({
-        ...bindActionCreators<{prop1: ()=>void,prop2: ()=>string}>(
+        ...bindActionCreators<{ prop1: ()=>void, prop2: ()=>string }>(
           { prop1: importedAction, prop2: anotherImportedAction },
           dispatch,
         ),
@@ -3141,7 +3141,7 @@ ruleTester.run('prop-types', rule, {
       }
 
       const mapDispatchToProps = (dispatch: ThunkDispatch<State, null, Action>) =>
-        bindActionCreators<{prop1: ()=>void,prop2: ()=>string}>(
+        bindActionCreators<{ prop1: () => void, prop2: () => string }>(
           { prop1: importedAction, prop2: anotherImportedAction },
           dispatch,
         )
@@ -3397,7 +3397,7 @@ ruleTester.run('prop-types', rule, {
         };
 
         const Button = <T,>({ onClick, value }: Props<T>) => {
-          return <button onClick={() => onClick(value)}>BUTTON</button>;
+          return <button type="button" onClick={() => onClick(value)}>BUTTON</button>;
         };
       `,
       features: ['ts', 'no-babel'],
@@ -3665,7 +3665,7 @@ ruleTester.run('prop-types', rule, {
         export type Props = { children: React.ReactNode; type: "submit" | "button" };
 
         export const FancyButton = forwardRef<HTMLButtonElement, Props>((props, ref) => (
-          <button ref={ref} className="MyClassName" type={props.type}>
+          <button type="button" ref={ref} className="MyClassName" type={props.type}>
             {props.children}
           </button>
         ));
@@ -3680,7 +3680,7 @@ ruleTester.run('prop-types', rule, {
         export type Props = { children: React.ReactNode; type: "submit" | "button" } & X;
 
         export const FancyButton = forwardRef<HTMLButtonElement, Props>((props, ref) => (
-          <button ref={ref} className="MyClassName" type={props.type} num={props.num}>
+          <button type="button" ref={ref} className="MyClassName" type={props.type} num={props.num}>
             {props.children}
           </button>
         ));
@@ -3697,7 +3697,7 @@ ruleTester.run('prop-types', rule, {
         }
 
         export const FancyButton = forwardRef<HTMLButtonElement, IProps>((props, ref) => (
-          <button ref={ref} className="MyClassName" type={props.type}>
+          <button type="button" ref={ref} className="MyClassName" type={props.type}>
             {props.children}
           </button>
         ));
@@ -3717,7 +3717,7 @@ ruleTester.run('prop-types', rule, {
         }
 
         export const FancyButton = forwardRef<HTMLButtonElement, IProps>((props, ref) => (
-          <button ref={ref} className="MyClassName" type={props.type} num={props.num}>
+          <button type="button" ref={ref} className="MyClassName" type={props.type} num={props.num}>
             {props.children}
           </button>
         ));
@@ -3743,18 +3743,18 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import React, {PropTypes} from 'react'
+        import React, { PropTypes } from 'react'
 
-        function Foo({bar}) {
-          const {baz} = Foo
+        function Foo({ bar }) {
+          const { baz } = Foo;
           return <div>{baz} {bar}</div>
         }
 
         Foo.propTypes = {
           bar: PropTypes.string.isRequired,
-        }
+        };
 
-        Foo.baz = 'hi'
+        Foo.baz = 'hi';
       `,
     },
 
@@ -3854,7 +3854,7 @@ ruleTester.run('prop-types', rule, {
       code: `
         class Test extends React.Component {
           componentDidUpdate() {
-              const {bar} = this.state;
+              const { bar } = this.state;
               console.log(bar);
           }
 
@@ -4035,7 +4035,7 @@ ruleTester.run('prop-types', rule, {
         }
 
         const someType: SomeType<DataObject> = {
-          renderValue: ({title}) => <div>{title}</div>,
+          renderValue: ({ title }) => <div>{title}</div>,
         };
       `,
       features: ['types'],
@@ -4119,11 +4119,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import {ComponentPropsWithoutRef, forwardRef} from "react";
+        import { ComponentPropsWithoutRef, forwardRef } from 'react';
 
         export const FancyButton = forwardRef<HTMLButtonElement, ComponentPropsWithoutRef<"button">>(
           ({ className, children, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
               {children}
             </button>
           ),
@@ -4133,11 +4133,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import {ComponentPropsWithRef, forwardRef} from "react";
+        import { ComponentPropsWithRef, forwardRef } from "react";
 
         export const FancyButton = forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
           ({ className, children, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
               {children}
             </button>
           ),
@@ -4147,11 +4147,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import {ComponentProps, forwardRef} from "react";
+        import { ComponentProps, forwardRef } from "react";
 
         export const FancyButton = forwardRef<HTMLButtonElement, ComponentProps<"button">>(
           ({ className, children, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
               {children}
             </button>
           ),
@@ -4161,11 +4161,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import {ComponentPropsWithoutRef, ElementRef, forwardRef} from "react";
+        import { ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 
         const BaseButton = forwardRef<HTMLButtonElement, ComponentPropsWithoutRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4183,11 +4183,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import {ComponentPropsWithRef, ElementRef, forwardRef} from "react";
+        import { ComponentPropsWithRef, ElementRef, forwardRef } from "react";
 
         const BaseButton = forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4205,11 +4205,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import {ComponentProps, ElementRef, forwardRef} from "react";
+        import { ComponentProps, ElementRef, forwardRef } from "react";
 
         const BaseButton = forwardRef<HTMLButtonElement, ComponentProps<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4227,11 +4227,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import {ComponentProps, ComponentPropsWithoutRef, ElementRef, forwardRef} from "react";
+        import { ComponentProps, ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 
         const BaseButton = forwardRef<HTMLButtonElement, ComponentProps<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4249,11 +4249,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import {ComponentProps, ComponentPropsWithoutRef, ElementRef, forwardRef} from "react";
+        import { ComponentProps, ComponentPropsWithoutRef, ElementRef, forwardRef } from "react";
 
         const BaseButton = forwardRef<HTMLButtonElement, ComponentPropsWithoutRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4271,11 +4271,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import {ComponentProps, ComponentPropsWithRef, ElementRef, forwardRef} from "react";
+        import { ComponentProps, ComponentPropsWithRef, ElementRef, forwardRef } from "react";
 
         const BaseButton = forwardRef<HTMLButtonElement, ComponentProps<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4293,11 +4293,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import {ComponentProps, ComponentPropsWithRef, ElementRef, forwardRef} from "react";
+        import { ComponentProps, ComponentPropsWithRef, ElementRef, forwardRef } from 'react';
 
         const BaseButton = forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4319,7 +4319,7 @@ ruleTester.run('prop-types', rule, {
 
         export const FancyButton = React.forwardRef<HTMLButtonElement, React.ComponentProps<"button">>(
           ({ className, children, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
               {children}
             </button>
           ),
@@ -4333,7 +4333,7 @@ ruleTester.run('prop-types', rule, {
 
         export const FancyButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithRef<"button">>(
           ({ className, children, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
               {children}
             </button>
           ),
@@ -4347,7 +4347,7 @@ ruleTester.run('prop-types', rule, {
 
         export const FancyButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithoutRef<"button">>(
           ({ className, children, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
               {children}
             </button>
           ),
@@ -4361,7 +4361,7 @@ ruleTester.run('prop-types', rule, {
 
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentProps<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4383,7 +4383,7 @@ ruleTester.run('prop-types', rule, {
 
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4405,7 +4405,7 @@ ruleTester.run('prop-types', rule, {
 
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithoutRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4427,7 +4427,7 @@ ruleTester.run('prop-types', rule, {
 
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentProps<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4449,7 +4449,7 @@ ruleTester.run('prop-types', rule, {
 
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4471,7 +4471,7 @@ ruleTester.run('prop-types', rule, {
 
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentProps<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4493,7 +4493,7 @@ ruleTester.run('prop-types', rule, {
 
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithoutRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4515,7 +4515,7 @@ ruleTester.run('prop-types', rule, {
 
         export const FancyButton = React.forwardRef<HTMLButtonElement, React.ComponentProps<"button">>(
           ({ className, children, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
               {children}
             </button>
           ),
@@ -4529,7 +4529,7 @@ ruleTester.run('prop-types', rule, {
 
         export const FancyButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithRef<"button">>(
           ({ className, children, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
               {children}
             </button>
           ),
@@ -4543,7 +4543,7 @@ ruleTester.run('prop-types', rule, {
 
         export const FancyButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithoutRef<"button">>(
           ({ className, children, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
               {children}
             </button>
           ),
@@ -4557,7 +4557,7 @@ ruleTester.run('prop-types', rule, {
 
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentProps<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4579,7 +4579,7 @@ ruleTester.run('prop-types', rule, {
 
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4601,7 +4601,7 @@ ruleTester.run('prop-types', rule, {
 
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithoutRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4623,7 +4623,7 @@ ruleTester.run('prop-types', rule, {
 
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentProps<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4645,7 +4645,7 @@ ruleTester.run('prop-types', rule, {
 
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithoutRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4667,7 +4667,7 @@ ruleTester.run('prop-types', rule, {
 
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentProps<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4689,7 +4689,7 @@ ruleTester.run('prop-types', rule, {
 
         const BaseButton = React.forwardRef<HTMLButtonElement, React.ComponentPropsWithRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4707,11 +4707,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import React, {ComponentPropsWithoutRef} from "react";
+        import React, {ComponentPropsWithoutRef } from 'react';
 
         export const FancyButton = React.forwardRef<HTMLButtonElement, ComponentPropsWithoutRef<"button">>(
           ({ className, children, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
               {children}
             </button>
           ),
@@ -4721,11 +4721,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import React, {ComponentPropsWithRef} from "react";
+        import React, { ComponentPropsWithRef } from 'react';
 
         export const FancyButton = React.forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
           ({ className, children, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
               {children}
             </button>
           ),
@@ -4735,11 +4735,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import React, {ComponentProps} from "react";
+        import React, { ComponentProps } from 'react';
 
         export const FancyButton = React.forwardRef<HTMLButtonElement, ComponentProps<"button">>(
           ({ className, children, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
               {children}
             </button>
           ),
@@ -4749,11 +4749,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import React, {ComponentPropsWithoutRef, ElementRef} from "react";
+        import React, { ComponentPropsWithoutRef, ElementRef } from 'react';
 
         const BaseButton = React.forwardRef<HTMLButtonElement, ComponentPropsWithoutRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4771,11 +4771,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import React, {ComponentPropsWithRef, ElementRef} from "react";
+        import React, { ComponentPropsWithRef, ElementRef } from 'react';
 
         const BaseButton = React.forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4793,11 +4793,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import React, {ComponentProps, ElementRef} from "react";
+        import React, { ComponentProps, ElementRef } from 'react';
 
         const BaseButton = React.forwardRef<HTMLButtonElement, ComponentProps<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4815,11 +4815,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import React, {ComponentProps, ComponentPropsWithoutRef, ElementRef} from "react";
+        import React, { ComponentProps, ComponentPropsWithoutRef, ElementRef } from 'react';
 
         const BaseButton = React.forwardRef<HTMLButtonElement, ComponentPropsWithoutRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4837,11 +4837,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import React, {ComponentProps, ComponentPropsWithoutRef, ElementRef} from "react";
+        import React, { ComponentProps, ComponentPropsWithoutRef, ElementRef } from 'react';
 
         const BaseButton = React.forwardRef<HTMLButtonElement, ComponentProps<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4859,11 +4859,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import React, {ComponentProps, ComponentPropsWithRef, ElementRef} from "react";
+        import React, { ComponentProps, ComponentPropsWithRef, ElementRef } from 'react';
 
         const BaseButton = React.forwardRef<HTMLButtonElement, ComponentPropsWithRef<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4881,11 +4881,11 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        import React, {ComponentProps, ComponentPropsWithRef, ElementRef} from "react";
+        import React, { ComponentProps, ComponentPropsWithRef, ElementRef } from 'react';
 
         const BaseButton = React.forwardRef<HTMLButtonElement, ComponentProps<"button">>(
           ({ children, className, ...props }, ref) => (
-            <button ref={ref} className={className} {...props}>
+            <button type="button" ref={ref} className={className} {...props}>
                 {children}
             </button>
           ),
@@ -4986,7 +4986,7 @@ ruleTester.run('prop-types', rule, {
         import React from 'react';
         type TDelIconProps = React.HTMLProps<HTMLDivElement>;
 
-        const DelIcon: React.FC<TDelIconProps> = ({className, ...rest}) => (
+        const DelIcon: React.FC<TDelIconProps> = ({ className, ...rest }) => (
             <div className={classNames('del flex-center', className)} {...rest}>
                 <i className="iconfont icon-del f12" />
             </div>
@@ -5204,8 +5204,8 @@ ruleTester.run('prop-types', rule, {
       code: `
         class Foo extends Component {
           render() {
-            const {props} = this
-            return <div>{props.cat}</div>
+            const { props } = this;
+            return <div>{props.cat}</div>;
           }
         }
       `,
@@ -5265,7 +5265,7 @@ ruleTester.run('prop-types', rule, {
             this.renderStuff()
           }
         }
-        Hello.propTypes = {}
+        Hello.propTypes = {};
       `,
       errors: [
         {
@@ -5656,7 +5656,7 @@ ruleTester.run('prop-types', rule, {
           render() {
             var text;
             text = 'Hello ';
-            let {props: {firstname}} = this;
+            let { props: { firstname } } = this;
             return <div>{text} {firstname}</div>;
           }
         }
@@ -5672,7 +5672,7 @@ ruleTester.run('prop-types', rule, {
       code: `
         class Hello extends React.Component {
           render() {
-            var {'props': {firstname}} = this;
+            var { 'props': { firstname } } = this;
             return <div>Hello {firstname}</div>;
           }
         }
@@ -5748,7 +5748,7 @@ ruleTester.run('prop-types', rule, {
     {
       code: `
         var Hello = (props) => {
-          const {name} = props;
+          const { name } = props;
           return <div>Hello {name}</div>;
         }
       `,
@@ -5869,7 +5869,7 @@ ruleTester.run('prop-types', rule, {
       code: `
         class Hello extends React.Component {
           render() {
-            var props = {firstname: 'John'};
+            var props = { firstname: 'John' };
             return <div>Hello {props.firstname} {this.props.lastname}</div>;
           }
         }
@@ -5995,14 +5995,14 @@ ruleTester.run('prop-types', rule, {
       code: `
         class DynamicHello extends Component {
           render() {
-            const {firstname} = this.props;
+            const { firstname } = this.props;
             class Hello extends Component {
               render() {
-                const {name} = this.props;
+                const { name } = this.props;
                 return <div>Hello {name}</div>;
               }
             }
-            Hello = connectReduxForm({name: firstname})(Hello);
+            Hello = connectReduxForm({ name: firstname })(Hello);
             return <Hello />;
           }
         }
@@ -6200,7 +6200,7 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        type Props = {name: Object;};
+        type Props = { name: Object; };
         class Hello extends React.Component {
           props: Props;
           render () {
@@ -6239,7 +6239,7 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        type Props = {name: {firstname: string;};};
+        type Props = { name: { firstname: string; }; };
         class Hello extends React.Component {
           props: Props;
           render () {
@@ -6258,7 +6258,7 @@ ruleTester.run('prop-types', rule, {
     {
       code: `
         class Hello extends React.Component {
-          props: {person: {name: {firstname: string;};};};
+          props: { person: { name: { firstname: string; }; }; };
           render () {
             return <div>Hello {this.props.person.name.lastname}</div>;
           }
@@ -6274,7 +6274,7 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        type Props = {person: {name: {firstname: string;};};};
+        type Props = { person: { name: { firstname: string; }; }; };
         class Hello extends React.Component {
           props: Props;
           render () {
@@ -6292,9 +6292,9 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        type Person = {name: {firstname: string;}};
+        type Person = { name: { firstname: string; } };
         class Hello extends React.Component {
-          props: {people: Person[];};
+          props: { people: Person[]; };
           render () {
             var names = [];
             for (var i = 0; i < this.props.people.length; i++) {
@@ -6315,8 +6315,8 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        type Person = {name: {firstname: string;}};
-        type Props = {people: Person[];};
+        type Person = { name: { firstname: string } };
+        type Props = { people: Person[] };
         class Hello extends React.Component {
           props: Props;
           render () {
@@ -6339,7 +6339,7 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        type Props = {result?: {ok: string | boolean;}|{ok: number | Array}};
+        type Props = { result?: { ok: string | boolean; } | { ok: number | Array } };
         class Hello extends React.Component {
           props: Props;
           render () {
@@ -6408,8 +6408,8 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
-        function Greetings({names}) {
-          names = names.map(({firstname, lastname}) => <div>{firstname} {lastname}</div>);
+        function Greetings({ names }) {
+          names = names.map(({ firstname, lastname }) => <div>{firstname} {lastname}</div>);
           return <Hello>{names}</Hello>;
         }
       `,
@@ -6468,7 +6468,7 @@ ruleTester.run('prop-types', rule, {
         type Props = {
           firstname: ?string,
         };
-        function Hello({firstname, lastname}: Props): React$Element {
+        function Hello({ firstname, lastname }: Props): React$Element {
           return <div>Hello {firstname} {lastname}</div>;
         }
       `,
@@ -6486,7 +6486,7 @@ ruleTester.run('prop-types', rule, {
           constructor(props, context) {
             super(props, context)
             const firstname = props.firstname;
-            const {lastname} = props;
+            const { lastname } = props;
             this.state = {
               firstname,
               lastname
@@ -8881,7 +8881,7 @@ ruleTester.run('prop-types', rule, {
         export type Props = { children: React.ReactNode; type: "submit" | "button" };
 
         export const FancyButton = forwardRef<HTMLButtonElement, Props>((props, ref) => (
-          <button ref={ref} className="MyClassName" type={props.nonExistent}>
+          <button type="button" ref={ref} className="MyClassName" type={props.nonExistent}>
             {props.children}
           </button>
         ));
@@ -8901,7 +8901,7 @@ ruleTester.run('prop-types', rule, {
         export interface IProps { children: React.ReactNode; type: "submit" | "button" };
 
         export const FancyButton = forwardRef<HTMLButtonElement, IProps>((props, ref) => (
-          <button ref={ref} className="MyClassName" type={props.nonExistent}>
+          <button type="button" ref={ref} className="MyClassName" type={props.nonExistent}>
             {props.children}
           </button>
         ));
