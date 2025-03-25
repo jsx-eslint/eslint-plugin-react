@@ -79,6 +79,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<table border="1" />' },
     { code: '<th abbr="abbr" />' },
     { code: '<td abbr="abbr" />' },
+    { code: '<template shadowrootmode="open" shadowrootclonable shadowrootdelegatesfocus shadowrootserializable />' },
     {
       code: '<div allowTransparency="true" />',
       settings: {

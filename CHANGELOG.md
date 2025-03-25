@@ -7,9 +7,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`no-unknown-property`]: allow shadow root attrs on `<template>` ([#3912][] @ljharb)
+
 ### Changed
 * [Docs] [`button-has-type`]: clean up phrasing ([#3909][] @hamirmahal)
 
+[#3912]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3912
 [#3909]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3909
 
 ## [7.37.4] - 2025.01.12
