@@ -26,7 +26,7 @@ const rule = require('../../../lib/rules/no-unescaped-entities');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
@@ -602,6 +602,6 @@ ruleTester.run('no-unescaped-entities', rule, {
           ],
         },
       ],
-    }
+    },
   )),
 });

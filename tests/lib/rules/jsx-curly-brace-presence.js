@@ -20,7 +20,7 @@ const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
   sourceType: 'module',
-  ecmaVersion: 2015,
+  ecmaVersion: 2022,
   ecmaFeatures: {
     jsx: true,
   },
@@ -477,7 +477,7 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     {
       code: '<App>{`${label}`}</App>',
       options: ['never'],
-    }
+    },
   )),
 
   invalid: parsers.all([].concat(
@@ -954,6 +954,6 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
         <Foo help='The maximum time range for searches. (i.e. "P30D" for 30 days, "PT24H" for 24 hours)' />
       `,
       errors: [{ messageId: 'unnecessaryCurly' }],
-    }
+    },
   )),
 });
