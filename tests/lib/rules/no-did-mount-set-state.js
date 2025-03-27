@@ -15,7 +15,7 @@ const rule = require('../../../lib/rules/no-did-mount-set-state');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
@@ -284,16 +284,18 @@ ruleTester.run('no-did-mount-set-state', rule, {
       `,
     },
     invalid.map((test) => {
-      const newTest = Object.assign({}, test, {
-        settings: Object.assign({}, test.settings, {
+      const newTest = {
+        ...test,
+        settings: {
+          ...test.settings,
           react: {
             version: '16.3.0',
           },
-        }),
-      });
+        },
+      };
       delete newTest.errors;
       return newTest;
-    })
+    }),
   )),
 
   invalid: parsers.all(invalid),
