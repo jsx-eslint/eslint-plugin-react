@@ -6,6 +6,8 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+## [7.37.5] - 2025.04.03
+
 ### Fixed
 * [`no-unknown-property`]: allow shadow root attrs on `<template>` ([#3912][] @ljharb)
 * [`prop-types`]: support `ComponentPropsWithRef` from a namespace import ([#3651][] @corydeppen)
@@ -15,6 +17,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 ### Changed
 * [Docs] [`button-has-type`]: clean up phrasing ([#3909][] @hamirmahal)
 
+[7.37.5]: https://github.com/jsx-eslint/eslint-plugin-react/compare/v7.37.4...v7.37.5
 [#3914]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3914
 [#3912]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3912
 [#3910]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3910
