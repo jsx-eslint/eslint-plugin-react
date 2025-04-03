@@ -377,8 +377,8 @@ ruleTester.run('no-unknown-property', rule, {
       ],
     },
     {
-      code: '<rect clip-path="bar" />;',
-      output: '<rect clipPath="bar" />;',
+      code: '<rect clip-path="bar" transform-origin="center" />;',
+      output: '<rect clipPath="bar" transform-origin="center" />;',
       errors: [
         {
           messageId: 'unknownPropWithStandardName',

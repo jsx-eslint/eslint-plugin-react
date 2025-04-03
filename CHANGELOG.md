@@ -10,10 +10,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: allow shadow root attrs on `<template>` ([#3912][] @ljharb)
 * [`prop-types`]: support `ComponentPropsWithRef` from a namespace import ([#3651][] @corydeppen)
 * [`jsx-no-constructed-context-values`]: detect constructed context values in React 19 `<Context>` usage ([#3910][] @TildaDares)
+* [`no-unknown-property`]: allow `transform-origin` on `rect` ([#3914][] @ljharb)
 
 ### Changed
 * [Docs] [`button-has-type`]: clean up phrasing ([#3909][] @hamirmahal)
 
+[#3914]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3914
 [#3912]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3912
 [#3910]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3910
 [#3909]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3909
