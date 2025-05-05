@@ -6,6 +6,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Fixed
+* [`no-unknown-property`]: allow `onLoad` on `body` ([#3923][] @DerekStapleton)
+
+[#3923]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3923
+
 ## [7.37.5] - 2025.04.03
 
 ### Fixed
