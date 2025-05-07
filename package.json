@@ -56,12 +56,12 @@
     "string.prototype.repeat": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.26.10",
-    "@babel/eslint-parser": "^7.27.0",
-    "@babel/plugin-syntax-decorators": "^7.25.9",
-    "@babel/plugin-syntax-do-expressions": "^7.25.9",
-    "@babel/plugin-syntax-function-bind": "^7.25.9",
-    "@babel/preset-react": "^7.26.3",
+    "@babel/core": "^7.27.1",
+    "@babel/eslint-parser": "^7.27.1",
+    "@babel/plugin-syntax-decorators": "^7.27.1",
+    "@babel/plugin-syntax-do-expressions": "^7.27.1",
+    "@babel/plugin-syntax-function-bind": "^7.27.1",
+    "@babel/preset-react": "^7.27.1",
     "@types/eslint": "=7.2.10",
     "@types/estree": "0.0.52",
     "@types/node": "^4.9.5",
