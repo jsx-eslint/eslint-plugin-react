@@ -14,7 +14,7 @@ const rule = require('../../../lib/rules/no-adjacent-inline-elements');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 6,
+  ecmaVersion: 2022,
   ecmaFeatures: {
     experimentalObjectRestSpread: true,
     jsx: true,

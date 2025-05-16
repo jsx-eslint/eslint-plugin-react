@@ -16,7 +16,7 @@ const rule = require('../../../lib/rules/no-invalid-html-attribute');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
@@ -1950,6 +1950,6 @@ ruleTester.run('no-invalid-html-attribute', rule, {
           type: 'Literal',
         },
       ],
-    }
+    },
   )),
 });
