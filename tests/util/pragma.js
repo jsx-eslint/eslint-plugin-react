@@ -7,7 +7,7 @@ const espree = require('espree');
 const getFromContext = require('../../lib/util/pragma').getFromContext;
 
 const DEFAULT_CONFIG = {
-  ecmaVersion: 6,
+  ecmaVersion: 2022,
   comment: true,
   tokens: true,
   range: true,
@@ -44,7 +44,7 @@ describe('pragma', () => {
       const code = '// @jsx jsx';
       assert.strictEqual(
         getFromContext(fakeContext(code)),
-        'jsx'
+        'jsx',
       );
     });
 
@@ -52,7 +52,7 @@ describe('pragma', () => {
       const code = '';
       assert.strictEqual(
         getFromContext(fakeContext(code)),
-        DEFAULT_SETTINGS.react.pragma
+        DEFAULT_SETTINGS.react.pragma,
       );
     });
 
