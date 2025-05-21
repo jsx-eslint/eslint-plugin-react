@@ -21,7 +21,7 @@ const rule = require('../../../lib/rules/no-unused-prop-types');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
@@ -2509,7 +2509,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           bar: PropTypes.func,
         }
       `,
-      parserOptions: Object.assign({}, parserOptions, { ecmaVersion: 2017 }),
+      parserOptions: { ...parserOptions, ecmaVersion: 2022 },
     },
     {
       // Multiple props used inside of an async function
@@ -2528,7 +2528,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           bar: PropTypes.func,
         }
       `,
-      parserOptions: Object.assign({}, parserOptions, { ecmaVersion: 2017 }),
+      parserOptions: { ...parserOptions, ecmaVersion: 2022 },
     },
     {
       // Multiple props used inside of an async arrow function
@@ -2547,7 +2547,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           bar: PropTypes.func,
         }
       `,
-      parserOptions: Object.assign({}, parserOptions, { ecmaVersion: 2017 }),
+      parserOptions: { ...parserOptions, ecmaVersion: 2022 },
     },
     {
       // Destructured assignment with Shape propTypes issue #816
@@ -5438,7 +5438,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           baz: PropTypes.func,
         }
       `,
-      parserOptions: Object.assign({}, parserOptions, { ecmaVersion: 2017 }),
+      parserOptions: { ...parserOptions, ecmaVersion: 2022 },
       errors: [
         {
           messageId: 'unusedPropType',
@@ -5466,7 +5466,7 @@ ruleTester.run('no-unused-prop-types', rule, {
           baz: PropTypes.func,
         }
       `,
-      parserOptions: Object.assign({}, parserOptions, { ecmaVersion: 2017 }),
+      parserOptions: { ...parserOptions, ecmaVersion: 2022 },
       errors: [
         {
           messageId: 'unusedPropType',
@@ -6709,6 +6709,6 @@ ruleTester.run('no-unused-prop-types', rule, {
       errors: [
         { message: '\'bar\' PropType is defined but prop is never used' },
       ],
-    }
+    },
   )),
 });
