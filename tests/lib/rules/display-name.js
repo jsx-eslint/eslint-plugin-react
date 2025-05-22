@@ -31,6 +31,56 @@ ruleTester.run('display-name', rule, {
   valid: parsers.all([
     {
       code: `
+        import React, { forwardRef } from 'react'
+        
+        const TestComponent = function () {
+          const { forwardRef } = { forwardRef: () => null }
+          
+          const OtherComp = forwardRef((props, ref) => \`\${props} \${ref}\`)
+          
+          return OtherComp
+        }
+      `,
+    },
+    {
+      code: `
+        import React, { memo } from 'react'
+        
+        const TestComponent = function () {
+          const memo = (cb) => cb()
+          
+          const Comp = memo(() => {
+            return <div>shadowed</div>
+          })
+          
+          return Comp
+        }
+      `,
+    },
+    {
+      code: `
+        import React, { memo, forwardRef } from 'react'
+
+        const MixedShadowed = function () {
+          const memo = (cb) => cb()
+          const { forwardRef } = { forwardRef: () => null }
+          const [React] = [{ memo, forwardRef }]
+
+          const Comp = memo(() => {
+            return <div>shadowed</div>
+          })
+          const ReactMemo = React.memo(() => null)
+          const ReactForward = React.forwardRef((props, ref) => {
+            return \`\${props} \${ref}\`
+          })
+          const OtherComp = forwardRef((props, ref) => \`\${props} \${ref}\`)
+
+          return [Comp, ReactMemo, ReactForward, OtherComp]
+        }
+      `,
+    },
+    {
+      code: `
         var Hello = createReactClass({
           displayName: 'Hello',
           render: function() {
@@ -850,6 +900,66 @@ ruleTester.run('display-name', rule, {
   invalid: parsers.all([
     {
       code: `
+        import React from 'react'
+
+        const Comp = React.forwardRef((props, ref) => {
+        return <div>test</div>
+        })
+      `,
+      errors: [
+        {
+          messageId: 'noDisplayName',
+          line: 4,
+        },
+      ],
+    },
+    {
+      code: `
+        import {forwardRef} from 'react'
+
+        const Comp = forwardRef((props, ref) => {
+        return <div>test</div>
+        })
+      `,
+      errors: [
+        {
+          messageId: 'noDisplayName',
+          line: 4,
+        },
+      ],
+    },
+    {
+      code: `
+        import React from 'react'
+        
+        const Comp = React.memo(() => {
+          return <div>test</div>
+        })
+      `,
+      errors: [
+        {
+          messageId: 'noDisplayName',
+          line: 4,
+        },
+      ],
+    },
+    {
+      code: `
+        import { memo } from 'react'
+        
+        const Comp = memo(() => {
+          return <div>test</div>
+        })
+      `,
+      errors: [
+        {
+          messageId: 'noDisplayName',
+          line: 4,
+        },
+      ],
+    },
+    {
+      code: `
         var Hello = createReactClass({
           render: function() {
             return React.createElement("div", {}, "text content");
@@ -860,7 +970,8 @@ ruleTester.run('display-name', rule, {
       errors: [
         {
           messageId: 'noDisplayName',
-        }],
+        },
+      ],
     },
     {
       code: `
@@ -1067,9 +1178,9 @@ ruleTester.run('display-name', rule, {
       errors: [{ messageId: 'noDisplayName' }],
     },
     {
-    // Only trigger an error for the outer React.memo,
-    // if the React version is not in the following range:
-    // ^0.14.10 || ^15.7.0 || >= 16.12.0
+      // Only trigger an error for the outer React.memo,
+      // if the React version is not in the following range:
+      // ^0.14.10 || ^15.7.0 || >= 16.12.0
       code: `
         import React from 'react'
 
@@ -1082,7 +1193,8 @@ ruleTester.run('display-name', rule, {
       errors: [
         {
           messageId: 'noDisplayName',
-        }],
+        },
+      ],
       settings: {
         react: {
           version: '15.6.0',
@@ -1090,9 +1202,9 @@ ruleTester.run('display-name', rule, {
       },
     },
     {
-    // Only trigger an error for the outer React.memo,
-    // if the React version is not in the following range:
-    // ^0.14.10 || ^15.7.0 || >= ^16.12.0
+      // Only trigger an error for the outer React.memo,
+      // if the React version is not in the following range:
+      // ^0.14.10 || ^15.7.0 || >= ^16.12.0
       code: `
         import React from 'react'
 
@@ -1110,9 +1222,9 @@ ruleTester.run('display-name', rule, {
       },
     },
     {
-    // React does not handle the result of forwardRef being passed into memo
-    // ComponentWithMemoAndForwardRef gets shown as Memo(Anonymous)
-    // See https://github.com/facebook/react/issues/16722
+      // React does not handle the result of forwardRef being passed into memo
+      // ComponentWithMemoAndForwardRef gets shown as Memo(Anonymous)
+      // See https://github.com/facebook/react/issues/16722
       code: `
         import React from 'react'
 
@@ -1239,9 +1351,7 @@ ruleTester.run('display-name', rule, {
           <div>{a} {listItem}</div>
         );
       `,
-      errors: [
-        { message: 'Component definition is missing display name' },
-      ],
+      errors: [{ message: 'Component definition is missing display name' }],
     },
     {
       code: `
