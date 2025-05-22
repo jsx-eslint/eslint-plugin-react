@@ -970,8 +970,7 @@ ruleTester.run('display-name', rule, {
       errors: [
         {
           messageId: 'noDisplayName',
-        },
-      ],
+        }],
     },
     {
       code: `
@@ -1178,9 +1177,9 @@ ruleTester.run('display-name', rule, {
       errors: [{ messageId: 'noDisplayName' }],
     },
     {
-      // Only trigger an error for the outer React.memo,
-      // if the React version is not in the following range:
-      // ^0.14.10 || ^15.7.0 || >= 16.12.0
+    // Only trigger an error for the outer React.memo,
+    // if the React version is not in the following range:
+    // ^0.14.10 || ^15.7.0 || >= 16.12.0
       code: `
         import React from 'react'
 
@@ -1193,8 +1192,7 @@ ruleTester.run('display-name', rule, {
       errors: [
         {
           messageId: 'noDisplayName',
-        },
-      ],
+        }],
       settings: {
         react: {
           version: '15.6.0',
@@ -1202,9 +1200,9 @@ ruleTester.run('display-name', rule, {
       },
     },
     {
-      // Only trigger an error for the outer React.memo,
-      // if the React version is not in the following range:
-      // ^0.14.10 || ^15.7.0 || >= ^16.12.0
+    // Only trigger an error for the outer React.memo,
+    // if the React version is not in the following range:
+    // ^0.14.10 || ^15.7.0 || >= ^16.12.0
       code: `
         import React from 'react'
 
@@ -1222,9 +1220,9 @@ ruleTester.run('display-name', rule, {
       },
     },
     {
-      // React does not handle the result of forwardRef being passed into memo
-      // ComponentWithMemoAndForwardRef gets shown as Memo(Anonymous)
-      // See https://github.com/facebook/react/issues/16722
+    // React does not handle the result of forwardRef being passed into memo
+    // ComponentWithMemoAndForwardRef gets shown as Memo(Anonymous)
+    // See https://github.com/facebook/react/issues/16722
       code: `
         import React from 'react'
 
@@ -1351,7 +1349,9 @@ ruleTester.run('display-name', rule, {
           <div>{a} {listItem}</div>
         );
       `,
-      errors: [{ message: 'Component definition is missing display name' }],
+      errors: [
+        { message: 'Component definition is missing display name' },
+      ],
     },
     {
       code: `
