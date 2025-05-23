@@ -903,7 +903,7 @@ ruleTester.run('display-name', rule, {
         import React from 'react'
 
         const Comp = React.forwardRef((props, ref) => {
-        return <div>test</div>
+          return <div>test</div>
         })
       `,
       errors: [
