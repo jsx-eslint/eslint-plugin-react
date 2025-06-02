@@ -84,7 +84,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
     {
       code: `
         <button
-          title="Some button"
+          title="Some button 8"
           type="button"
         />
       `,
@@ -92,7 +92,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
     {
       code: `
         <button
-          title="Some button"
+          title="Some button 8"
           onClick={(value) => {
             console.log(value);
           }}
@@ -104,7 +104,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       {
         code: `
           <button
-            title="Some button"
+            title="Some button 2"
             // this is a comment
             onClick={(value) => {
               console.log(value);
@@ -116,7 +116,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       {
         code: `
           <button
-            title="Some button"
+            title="Some button 2"
             // this is a comment
             // this is a second comment
             onClick={(value) => {
@@ -129,7 +129,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       {
         code: `
           <App
-            foo="Some button" // comment
+            foo="Some button 3" // comment
             // comment
             bar=""
           />
@@ -138,7 +138,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       {
         code: `
           <button
-            title="Some button"
+            title="Some button 3"
             /* this is a multiline comment
                 ...
                 ... */
@@ -263,6 +263,12 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
           type="button"
         />
       `,
+      output: `
+        <button
+          title='Some button'${semver.satisfies(eslintPkg.version, '> 3') ? '' : '\n'}
+          type="button"
+        />
+      `,
       errors: [
         {
           messageId: 'noLineGap',
@@ -273,12 +279,21 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
     {
       code: `
         <button
-          title="Some button"
+          title="Some button 4"
 
           onClick={(value) => {
             console.log(value);
           }}
 
+          type="button"
+        />
+      `,
+      output: `
+        <button
+          title="Some button 4"${semver.satisfies(eslintPkg.version, '> 3') ? '' : '\n'}
+          onClick={(value) => {
+            console.log(value);
+          }}${semver.satisfies(eslintPkg.version, '> 3') ? '' : '\n'}
           type="button"
         />
       `,
@@ -297,12 +312,22 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       {
         code: `
           <button
-            title="Some button"
+            title="Some button 5"
             // this is a comment
             onClick={(value) => {
               console.log(value);
             }}
 
+            type="button"
+          />
+        `,
+        output: `
+          <button
+            title="Some button 5"
+            // this is a comment
+            onClick={(value) => {
+              console.log(value);
+            }}
             type="button"
           />
         `,
@@ -316,7 +341,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       {
         code: `
           <button
-            title="Some button"
+            title="Some button 6"
             // this is a comment
             // second comment
 
@@ -324,6 +349,17 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
               console.log(value);
             }}
 
+            type="button"
+          />
+        `,
+        output: `
+          <button
+            title="Some button 6"
+            // this is a comment
+            // second comment
+            onClick={(value) => {
+              console.log(value);
+            }}
             type="button"
           />
         `,
@@ -341,7 +377,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       {
         code: `
           <button
-            title="Some button"
+            title="Some button 7"
             /*this is a
               multiline
               comment
@@ -351,6 +387,19 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
               console.log(value);
             }}
 
+            type="button"
+          />
+        `,
+        output: `
+          <button
+            title="Some button 7"
+            /*this is a
+              multiline
+              comment
+            */
+            onClick={(value) => {
+              console.log(value);
+            }}
             type="button"
           />
         `,
