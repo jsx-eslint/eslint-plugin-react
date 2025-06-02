@@ -263,6 +263,12 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
           type="button"
         />
       `,
+      output: `
+        <button
+          title='Some button'
+          type="button"
+        />
+      `,
       errors: [
         {
           messageId: 'noLineGap',
@@ -279,6 +285,15 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
             console.log(value);
           }}
 
+          type="button"
+        />
+      `,
+      output: `
+        <button
+          title="Some button"
+          onClick={(value) => {
+            console.log(value);
+          }}
           type="button"
         />
       `,
@@ -306,6 +321,16 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
             type="button"
           />
         `,
+        output: `
+          <button
+            title="Some button"
+            // this is a comment
+            onClick={(value) => {
+              console.log(value);
+            }}
+            type="button"
+          />
+        `,
         errors: [
           {
             messageId: 'noLineGap',
@@ -324,6 +349,17 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
               console.log(value);
             }}
 
+            type="button"
+          />
+        `,
+        output: `
+          <button
+            title="Some button"
+            // this is a comment
+            // second comment
+            onClick={(value) => {
+              console.log(value);
+            }}
             type="button"
           />
         `,
@@ -351,6 +387,19 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
               console.log(value);
             }}
 
+            type="button"
+          />
+        `,
+        output: `
+          <button
+            title="Some button"
+            /*this is a
+              multiline
+              comment
+            */
+            onClick={(value) => {
+              console.log(value);
+            }}
             type="button"
           />
         `,
