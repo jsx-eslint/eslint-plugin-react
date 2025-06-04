@@ -13,7 +13,7 @@ const rule = require('../../../lib/rules/prefer-exact-props');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 8,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     experimentalObjectRestSpread: true,

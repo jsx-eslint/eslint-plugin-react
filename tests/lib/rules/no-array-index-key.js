@@ -14,7 +14,7 @@ const parsers = require('../../helpers/parsers');
 const rule = require('../../../lib/rules/no-array-index-key');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
@@ -374,6 +374,6 @@ ruleTester.run('no-array-index-key', rule, {
         ))
       `,
       errors: [{ messageId: 'noArrayIndex' }],
-    }
+    },
   )),
 });

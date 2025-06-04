@@ -15,7 +15,7 @@ const rule = require('../../../lib/rules/jsx-newline');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
@@ -665,16 +665,16 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
               type="control"
               onClick={ () => this.onClickNavigate('left') }
             />
-    
+
             <sni-sequence-editor-tool
               name="rotate"
               direction="right"
               type="control"
               onClick={ (): void => this.onClickNavigate('right') }
             />
-    
+
             <div className="sni-sequence-editor-control-panel__delete" data-name="delete" onClick={ this.onDeleteCommand } />
-    
+
             {
               ...Array.from(this.children)
             }
@@ -704,9 +704,9 @@ ${'    '}
               type="control"
               onClick={ (): void => this.onClickNavigate('right') }
             />
-    
+
             <div className="sni-sequence-editor-control-panel__delete" data-name="delete" onClick={ this.onDeleteCommand } />
-    
+
             {
               ...Array.from(this.children)
             }
