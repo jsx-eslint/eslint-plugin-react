@@ -17,7 +17,7 @@ const rule = require('../../../lib/rules/jsx-props-no-multi-spaces');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
@@ -149,7 +149,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
           />
         `,
       },
-    ] : [])
+    ] : []),
   )),
 
   invalid: parsers.all([].concat(
@@ -414,6 +414,6 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
           },
         ],
       },
-    ] : [])
+    ] : []),
   )),
 });

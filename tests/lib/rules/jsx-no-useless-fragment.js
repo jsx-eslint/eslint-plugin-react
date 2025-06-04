@@ -13,7 +13,7 @@ const rule = require('../../../lib/rules/jsx-no-useless-fragment');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   ecmaFeatures: {
     jsx: true,
   },
@@ -274,6 +274,6 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       errors: [{ messageId: 'NeedsMoreChildren', type: 'JSXFragment' }],
       output: '<Foo>{moo}</Foo>',
       features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old
-    }
+    },
   )),
 });
