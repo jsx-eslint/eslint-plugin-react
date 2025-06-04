@@ -14,7 +14,7 @@ function convertToFlat(item, plugins) {
     throw new TypeError('Invalid value for "item" option. Expected an object or a string.');
   }
 
-  const newItem = Object.assign({}, item, { languageOptions: {} });
+  const newItem = { ...item, languageOptions: {} };
 
   if (newItem.parserOptions) {
     newItem.languageOptions.parserOptions = newItem.parserOptions;
