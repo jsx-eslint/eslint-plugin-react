@@ -410,7 +410,7 @@ module.exports = [
 [npm-url]: https://npmjs.org/package/eslint-plugin-react
 [npm-image]: https://img.shields.io/npm/v/eslint-plugin-react.svg
 
-[status-url]: https://github.com/jsx-eslint/eslint-plugin-react/pulse
+[status-url]: https://github.com/jsx-eslint/eslint-plugin-react/commits/master
 [status-image]: https://img.shields.io/github/last-commit/jsx-eslint/eslint-plugin-react.svg
 
 [tidelift-url]: https://tidelift.com/subscription/pkg/npm-eslint-plugin-react?utm_source=npm-eslint-plugin-react&utm_medium=referral&utm_campaign=readme
