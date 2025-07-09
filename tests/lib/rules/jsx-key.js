@@ -205,6 +205,12 @@ ruleTester.run('jsx-key', rule, {
       `,
       settings,
     },
+    {
+      code: 'arr.push(<App key="key" />);',
+    },
+    {
+      code: 'arr.push(<React.Fragment key="key" />);',
+    },
   ]),
   invalid: parsers.all([
     {
@@ -423,6 +429,14 @@ ruleTester.run('jsx-key', rule, {
       `,
       options: [{ checkKeyMustBeforeSpread: true }],
       errors: [{ messageId: 'keyBeforeSpread' }],
+    },
+    {
+      code: 'arr.push(<App />);',
+      errors: [{ messageId: 'missingArrayKey' }],
+    },
+    {
+      code: 'arr.push(<></>);',
+      errors: [{ messageId: 'missingArrayKeyUsePrag' }],
     },
   ]),
 });
