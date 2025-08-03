@@ -58,4 +58,4 @@ module.exports = Hello;
 
 ## When Not To Use It
 
-If you are not using JSX then you can disable this rule.
+If you are not using JSX, or if you're using [`typescript-eslint` with `no-undef`](https://typescript-eslint.io/play/#ts=5.7.2&fileType=.jsx&code=DwCQpgNhD2AEB2BDAtmAvAIgFLQBbw1gHoA%2BAbiA&eslintrc=N4KABGBEBOCuA2BTAzpAXGUEKQHYHsBaWXAE0QDN0pFpp9pJwwBfEFoA&tsconfig=N4KABGBEDGD2C2AHAlgGwKYCcDyiAuysAdgM6QBcYoEEkJemy0eAcgK6qoDCAFutAGsylBm3TgwAXxCSgA&tokens=false), then you can disable this rule.
