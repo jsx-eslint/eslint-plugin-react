@@ -58,4 +58,8 @@ module.exports = Hello;
 
 ## When Not To Use It
 
-If you are not using JSX, or if you're using [`typescript-eslint` with `no-undef`](https://typescript-eslint.io/play/#ts=5.7.2&fileType=.tsx&code=DwCQpgNhD2AEB2BDAtmAvAIgFLQBbw1gHoA%2BAbgCgg&eslintrc=N4KABGBEBOCuA2BTAzpAXGUEKQHYHsBaWXAE0QDN0pFpp9pJwwBfEFoA&tsconfig=N4KABGBEDGD2C2AHAlgGwKYCcDyiAuysAdgM6QBcYoEEkJemy0eAcgK6qoDCAFutAGsylBm3TgwAXxCSgA&tokens=false), then you can disable this rule.
+It's recommended to avoid this rule if your project:
+
+1. does not use JSX
+2. uses TypeScript, which [automatically enables better checks than ESLint `no-undef` rules](https://typescript-eslint.io/troubleshooting/faqs/eslint/#i-get-errors-from-the-no-undef-rule-about-global-variables-not-being-defined-even-though-there-are-no-typescript-errors)
+3. uses [`typescript-eslint` with `no-undef`](https://typescript-eslint.io/play/#ts=5.7.2&fileType=.tsx&code=DwCQpgNhD2AEB2BDAtmAvAIgFLQBbw1gHoA%2BAbgCgg&eslintrc=N4KABGBEBOCuA2BTAzpAXGUEKQHYHsBaWXAE0QDN0pFpp9pJwwBfEFoA&tsconfig=N4KABGBEDGD2C2AHAlgGwKYCcDyiAuysAdgM6QBcYoEEkJemy0eAcgK6qoDCAFutAGsylBm3TgwAXxCSgA&tokens=false)
