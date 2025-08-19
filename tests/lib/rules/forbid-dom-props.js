@@ -324,5 +324,22 @@ ruleTester.run('forbid-dom-props', rule, {
         },
       ],
     },
+    {
+      code: `
+        const First = (props) => (
+          <html.div id="foo" />
+        );
+      `,
+      options: [{ forbid: ['id'] }],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'id' },
+          line: 3,
+          column: 16,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
   ]),
 });
