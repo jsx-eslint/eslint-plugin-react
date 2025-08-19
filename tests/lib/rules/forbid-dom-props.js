@@ -112,6 +112,17 @@ ruleTester.run('forbid-dom-props', rule, {
         },
       ],
     },
+    {
+      code: `
+        const First = (props) => (
+          <html.span name="foo" />
+        );
+        const Second = (props) => (
+          <h.span name="foo" />
+        );
+      `,
+      options: [{ forbid: ['id'] }],
+    },
   ]),
 
   invalid: parsers.all([
@@ -329,6 +340,9 @@ ruleTester.run('forbid-dom-props', rule, {
         const First = (props) => (
           <html.div id="foo" />
         );
+        const Second = (props) => (
+          <h.div id="foo" />
+        );
       `,
       options: [{ forbid: ['id'] }],
       errors: [
@@ -336,6 +350,13 @@ ruleTester.run('forbid-dom-props', rule, {
           messageId: 'propIsForbidden',
           data: { prop: 'id' },
           line: 3,
+          column: 16,
+          type: 'JSXAttribute',
+        },
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'id' },
+          line: 6,
           column: 16,
           type: 'JSXAttribute',
         },
