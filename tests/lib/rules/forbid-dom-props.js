@@ -54,7 +54,7 @@ ruleTester.run('forbid-dom-props', rule, {
         var First = createReactClass({
           propTypes: externalPropTypes,
           render: function() {
-            return <this.foo bar="baz" />;
+            return <this.Foo bar="baz" />;
           }
         });
       `,
@@ -73,7 +73,7 @@ ruleTester.run('forbid-dom-props', rule, {
     {
       code: `
         const First = (props) => (
-          <this.foo {...props} />
+          <this.Foo {...props} />
         );
       `,
       options: [{ forbid: ['id'] }],
