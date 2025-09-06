@@ -298,6 +298,35 @@ ruleTester.run('jsx-no-literals', rule, {
     },
     {
       code: `
+        <img src="image.jpg" alt="text" />
+      `,
+      options: [{ restrictedAttributes: ['className', 'id'] }],
+    },
+    {
+      code: `
+        <div className="allowed" />
+      `,
+      options: [{ restrictedAttributes: ['className'], allowedStrings: ['allowed'] }],
+    },
+    {
+      code: `
+        <div className="test" title="hello" />
+      `,
+      options: [{
+        noStrings: true,
+        ignoreProps: true,
+        restrictedAttributes: ['className'],
+        allowedStrings: ['test'],
+      }],
+    },
+    {
+      code: `
+        <div className="test" id="foo" />
+      `,
+      options: [{ restrictedAttributes: [] }],
+    },
+    {
+      code: `
         <T>foo</T>
       `,
       options: [{ elementOverrides: { T: { allowElement: true } } }],
@@ -475,6 +504,45 @@ ruleTester.run('jsx-no-literals', rule, {
         <div>{'foo'}</div>
       `,
       options: [{ elementOverrides: { div: { allowElement: true } } }],
+    },
+    {
+      code: `
+        <div>
+          <Input type="text" />
+          <Button className="primary" />
+          <Image src="photo.jpg" />
+        </div>
+      `,
+      options: [{
+        elementOverrides: {
+          Input: { restrictedAttributes: ['placeholder'] },
+          Button: { restrictedAttributes: ['type'] },
+        },
+      }],
+    },
+    {
+      code: `
+        <div title="container">
+          <Button className="btn" />
+        </div>
+      `,
+      options: [{
+        restrictedAttributes: ['className'],
+        elementOverrides: {
+          Button: { restrictedAttributes: ['disabled'] },
+        },
+      }],
+    },
+    {
+      code: `
+        <Button className="btn" />
+      `,
+      options: [{
+        noAttributeStrings: true,
+        elementOverrides: {
+          Button: { restrictedAttributes: ['type'] },
+        },
+      }],
     },
   ]),
 
@@ -847,6 +915,68 @@ ruleTester.run('jsx-no-literals', rule, {
     },
     {
       code: `
+        <div className="test" />
+      `,
+      options: [{ restrictedAttributes: ['className'] }],
+      errors: [{
+        messageId: 'restrictedAttributeString',
+        data: { text: '"test"', attribute: 'className' },
+      }],
+    },
+    {
+      code: `
+        <div className="test" id="foo" title="bar" />
+      `,
+      options: [{ restrictedAttributes: ['className', 'id'] }],
+      errors: [
+        { messageId: 'restrictedAttributeString', data: { text: '"test"', attribute: 'className' } },
+        { messageId: 'restrictedAttributeString', data: { text: '"foo"', attribute: 'id' } },
+      ],
+    },
+    {
+      code: `
+        <div src="image.jpg" />
+      `,
+      options: [{
+        noAttributeStrings: true,
+        restrictedAttributes: ['className'],
+      }],
+      errors: [{ messageId: 'noStringsInAttributes', data: { text: '"image.jpg"' } }],
+    },
+    {
+      code: `
+        <div title="text">test</div>
+      `,
+      options: [{
+        restrictedAttributes: ['title'],
+        noStrings: true,
+      }],
+      errors: [
+        { messageId: 'restrictedAttributeString', data: { text: '"text"', attribute: 'title' } },
+        { messageId: 'noStringsInJSX', data: { text: 'test' } },
+      ],
+    },
+    {
+      code: `
+        <div className="test" title="hello" />
+      `,
+      options: [{ noStrings: true, ignoreProps: false, restrictedAttributes: ['className'] }],
+      errors: [
+        { messageId: 'restrictedAttributeString', data: { text: '"test"', attribute: 'className' } },
+        { messageId: 'invalidPropValue', data: { text: 'title="hello"' } },
+      ],
+    },
+    {
+      code: `
+        <div className="test" title="hello" />
+      `,
+      options: [{ noStrings: true, ignoreProps: true, restrictedAttributes: ['className'] }],
+      errors: [
+        { messageId: 'restrictedAttributeString', data: { text: '"test"', attribute: 'className' } },
+      ],
+    },
+    {
+      code: `
         <div>
           <div>foo</div>
           <T>bar</T>
@@ -1168,6 +1298,76 @@ ruleTester.run('jsx-no-literals', rule, {
       `,
       options: [{ elementOverrides: { div: { allowElement: true } } }],
       errors: [{ messageId: 'literalNotInJSXExpression', data: { text: 'foo' } }],
+    },
+    {
+      code: `
+        <div>
+          <div type="text" />
+          <Button type="submit" />
+        </div>
+      `,
+      options: [{
+        elementOverrides: {
+          Button: { restrictedAttributes: ['type'] },
+        },
+      }],
+      errors: [
+        { messageId: 'restrictedAttributeStringInElement', data: { text: '"submit"', attribute: 'type', element: 'Button' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <Input placeholder="Enter text" type="password" />
+          <Button type="submit" disabled="true" />
+        </div>
+      `,
+      options: [{
+        elementOverrides: {
+          Input: { restrictedAttributes: ['placeholder'] },
+          Button: { restrictedAttributes: ['disabled'] },
+        },
+      }],
+      errors: [
+        { messageId: 'restrictedAttributeStringInElement', data: { text: '"Enter text"', attribute: 'placeholder', element: 'Input' } },
+        { messageId: 'restrictedAttributeStringInElement', data: { text: '"true"', attribute: 'disabled', element: 'Button' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div className="wrapper" id="main" />
+          <Button className="btn" id="submit-btn" />
+        </div>
+      `,
+      options: [{
+        restrictedAttributes: ['className'],
+        elementOverrides: {
+          Button: { restrictedAttributes: ['id'] },
+        },
+      }],
+      errors: [
+        { messageId: 'restrictedAttributeString', data: { text: '"wrapper"', attribute: 'className' } },
+        { messageId: 'restrictedAttributeStringInElement', data: { text: '"submit-btn"', attribute: 'id', element: 'Button' } },
+      ],
+    },
+    {
+      code: `
+        <div>
+          <div foo1="bar1" />
+          <T foo2="bar2" />
+        </div>
+      `,
+      options: [{
+        noAttributeStrings: true,
+        elementOverrides: {
+          T: { restrictedAttributes: ['foo2'] },
+        },
+      }],
+      errors: [
+        { messageId: 'noStringsInAttributes', data: { text: '"bar1"' } },
+        { messageId: 'restrictedAttributeStringInElement', data: { text: '"bar2"', attribute: 'foo2', element: 'T' } },
+      ],
     },
   ]),
 });

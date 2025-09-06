@@ -36,6 +36,7 @@ The supported options are:
 - `allowedStrings` - An array of unique string values that would otherwise warn, but will be ignored.
 - `ignoreProps` (default: `false`) - When `true` the rule ignores literals used in props, wrapped or unwrapped.
 - `noAttributeStrings` (default: `false`) - Enforces no string literals used in attributes when set to `true`.
+- `restrictedAttributes` - An array of unique attribute names where string literals should be restricted. Only the specified attributes will be checked for string literals when this option is used. **Note**: When `noAttributeStrings` is `true`, this option is ignored at the root level.
 - `elementOverrides` - An object where the keys are the element names and the values are objects with the same options as above. This allows you to specify different options for different elements.
 
 ### `elementOverrides`

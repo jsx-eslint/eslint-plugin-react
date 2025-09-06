@@ -3,6 +3,7 @@ type RawElementConfig = {
   allowedStrings?: string[];
   ignoreProps?: boolean;
   noAttributeStrings?: boolean;
+  restrictedAttributes?: string[];
 };
 
 type RawOverrideConfig = {
@@ -25,6 +26,7 @@ interface ElementConfigProperties {
   allowedStrings: Set<string>;
   ignoreProps: boolean;
   noAttributeStrings: boolean;
+  restrictedAttributes: Set<string>;
 }
 
 interface OverrideConfigProperties {
