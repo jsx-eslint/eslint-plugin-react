@@ -933,10 +933,24 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       errors: [{ messageId: 'missingCurly' }],
     },
     {
+      code: `<App horror=<><div /></> />`,
+      options: [{ props: 'always', children: 'always', propElementValues: 'always' }],
+      features: ['no-ts'],
+      output: `<App horror={<><div /></>} />`,
+      errors: [{ messageId: 'missingCurly' }],
+    },
+    {
       code: `<App horror={<div />} />`,
       options: [{ props: 'never', children: 'never', propElementValues: 'never' }],
       features: ['no-ts'],
       output: `<App horror=<div /> />`,
+      errors: [{ messageId: 'unnecessaryCurly' }],
+    },
+    {
+      code: `<App horror={<><div /></>} />`,
+      options: [{ props: 'never', children: 'never', propElementValues: 'never' }],
+      features: ['no-ts'],
+      output: `<App horror=<><div /></> />`,
       errors: [{ messageId: 'unnecessaryCurly' }],
     },
     {
