@@ -23,6 +23,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-key`]: detect missing keys in return statement with ternary operator ([#3928][] @hyeonbinHur)
 * [`jsx-key`]: detect missing keys in logical expressions ([#3986][] @yalperg)
 * [`display-name`]: avoid false positive when React is shadowed ([#3926][] @hyeonbinHur)
+* [`no-unused-prop-types`]: detect used props in nested components ([#3955][] @avaice)
 
 ### Changed
 * [Docs] [`no-array-index-key`]: add template literal examples ([#3978][] @akahoshi1421)
@@ -32,6 +33,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3958]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3958
 [#3980]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3980
 [#3965]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3965
+[#3955]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3955
 [#3950]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3950
 [#3943]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3943
 [#3942]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3942
