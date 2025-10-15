@@ -424,5 +424,19 @@ ruleTester.run('jsx-key', rule, {
       options: [{ checkKeyMustBeforeSpread: true }],
       errors: [{ messageId: 'keyBeforeSpread' }],
     },
+    {
+      code: `
+        const TestCase = () => {
+          const keyLessItems = [];
+
+          for (let i = 0; i < 4; i++) {
+            keyLessItems.push(<li>No Key!</li>);
+          }
+
+          return <ul>{keyLessItems}</ul>;
+        }
+      `,
+      errors: [{ messageId: 'missingArrayKey' }],
+    },
   ]),
 });
