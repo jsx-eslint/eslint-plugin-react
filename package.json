@@ -77,7 +77,7 @@
     "eslint-scope": "^3.7.3",
     "espree": "^3.5.4",
     "gfm-footnotes": "^1.0.1",
-    "glob": "=10.3.7",
+    "glob": "=10.5.0",
     "istanbul": "^0.4.5",
     "jackspeak": "=2.1.1",
     "ls-engines": "^0.8.1",
