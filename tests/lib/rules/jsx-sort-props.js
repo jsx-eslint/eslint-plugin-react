@@ -58,6 +58,10 @@ const expectedReservedFirstError = {
   messageId: 'listReservedPropsFirst',
   type: 'JSXIdentifier',
 };
+const expectedSortFirstError = {
+  messageId: 'listSortFirstPropsFirst',
+  type: 'JSXIdentifier',
+};
 const expectedEmptyReservedFirstError = {
   messageId: 'listIsEmpty',
 };
@@ -118,6 +122,33 @@ const multilineAndShorthandAndCallbackLastArgs = [
     multiline: 'last',
     shorthandLast: true,
     callbacksLast: true,
+  },
+];
+const sortFirstArgs = [{ sortFirst: ['className'] }];
+const sortFirstMultipleArgs = [{ sortFirst: ['className', 'id'] }];
+const sortFirstWithIgnoreCaseArgs = [{ sortFirst: ['className'], ignoreCase: true }];
+const sortFirstWithReservedFirstArgs = [
+  {
+    sortFirst: ['className'],
+    reservedFirst: true,
+  },
+];
+const sortFirstWithShorthandFirstArgs = [
+  {
+    sortFirst: ['className'],
+    shorthandFirst: true,
+  },
+];
+const sortFirstWithCallbacksLastArgs = [
+  {
+    sortFirst: ['className'],
+    callbacksLast: true,
+  },
+];
+const sortFirstWithMultilineFirstArgs = [
+  {
+    sortFirst: ['className'],
+    multiline: 'first',
   },
 ];
 
@@ -296,7 +327,29 @@ ruleTester.run('jsx-sort-props', rule, {
         />
       `,
       options: [{ locale: 'sk-SK' }],
-    } : []
+    } : [],
+    // sortFirst
+    { code: '<App className="test" name="John" />;', options: sortFirstArgs },
+    { code: '<App className="test" id="test" name="John" />;', options: sortFirstMultipleArgs },
+    { code: '<App className="test" id="test" />;', options: sortFirstMultipleArgs },
+    { code: '<App className="test" a b c />;', options: sortFirstArgs },
+    { code: '<App className="test" id="test" a b c />;', options: sortFirstMultipleArgs },
+    { code: '<App className="test" key={0} name="John" />;', options: sortFirstWithReservedFirstArgs },
+    { code: '<App className="test" a name="John" />;', options: sortFirstWithShorthandFirstArgs },
+    { code: '<App className="test" name="John" onClick={handleClick} />;', options: sortFirstWithCallbacksLastArgs },
+    {
+      code: `
+        <App
+          className="test"
+          data={{
+            test: 1,
+          }}
+          name="John"
+        />
+      `,
+      options: sortFirstWithMultilineFirstArgs,
+    },
+    { code: '<App classname="test" a="test2" />;', options: sortFirstWithIgnoreCaseArgs }
   )),
   invalid: parsers.all([].concat(
     {
@@ -1101,6 +1154,83 @@ ruleTester.run('jsx-sort-props', rule, {
           line: 11,
         },
       ],
+    },
+    // sortFirst
+    {
+      code: '<App name="John" className="test" />;',
+      options: sortFirstArgs,
+      errors: [expectedSortFirstError],
+      output: '<App className="test" name="John" />;',
+    },
+    {
+      code: '<App id="test" className="test" name="John" />;',
+      options: sortFirstMultipleArgs,
+      errors: [expectedSortFirstError],
+      output: '<App className="test" id="test" name="John" />;',
+    },
+    {
+      code: '<App a className="test" b />;',
+      options: sortFirstArgs,
+      errors: [expectedSortFirstError],
+      output: '<App className="test" a b />;',
+    },
+    {
+      code: '<App key={0} className="test" name="John" />;',
+      options: sortFirstWithReservedFirstArgs,
+      errors: [expectedSortFirstError],
+      output: '<App className="test" key={0} name="John" />;',
+    },
+    {
+      code: '<App a className="test" name="John" />;',
+      options: sortFirstWithShorthandFirstArgs,
+      errors: [expectedSortFirstError],
+      output: '<App className="test" a name="John" />;',
+    },
+    {
+      code: '<App name="John" onClick={handleClick} className="test" />;',
+      options: sortFirstWithCallbacksLastArgs,
+      errors: [expectedSortFirstError],
+      output: '<App className="test" name="John" onClick={handleClick} />;',
+    },
+    {
+      code: `
+        <App
+          name="John"
+          className="test"
+          data={{
+            test: 1,
+          }}
+        />
+      `,
+      options: sortFirstWithMultilineFirstArgs,
+      errors: [expectedSortFirstError, expectedMultilineFirstError],
+      output: `
+        <App
+          className="test"
+          data={{
+            test: 1,
+          }}
+          name="John"
+        />
+      `,
+    },
+    {
+      code: '<App name="John" classname="test" />;',
+      options: sortFirstWithIgnoreCaseArgs,
+      errors: [expectedSortFirstError],
+      output: '<App classname="test" name="John" />;',
+    },
+    {
+      code: '<App className="test" id="test" tel={5555555} name="John" />;',
+      options: sortFirstMultipleArgs,
+      errors: [expectedError],
+      output: '<App className="test" id="test" name="John" tel={5555555} />;',
+    },
+    {
+      code: '<App id="test" className="test" id="test2" />;',
+      options: sortFirstMultipleArgs,
+      errors: [expectedSortFirstError],
+      output: '<App className="test" id="test" id="test2" />;',
     }
   )),
 });
