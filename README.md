@@ -419,5 +419,5 @@ module.exports = [
 [package-url]: https://npmjs.org/package/eslint-plugin-react
 [npm-version-svg]: https://versionbadg.es/jsx-eslint/eslint-plugin-react.svg
 
-[actions-image]: https://img.shields.io/endpoint?url=https://github-actions-badge-u3jn4tfpocch.runkit.sh/jsx-eslint/eslint-plugin-react
+[actions-image]: https://img.shields.io/github/check-runs/jsx-eslint/eslint-plugin-react/master
 [actions-url]: https://github.com/jsx-eslint/eslint-plugin-react/actions
