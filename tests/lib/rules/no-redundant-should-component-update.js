@@ -14,7 +14,7 @@ const rule = require('../../../lib/rules/no-redundant-should-component-update');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   ecmaFeatures: {
     jsx: true,
   },
