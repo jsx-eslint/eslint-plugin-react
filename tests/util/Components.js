@@ -1,9 +1,6 @@
 'use strict';
 
 const assert = require('assert');
-const entries = require('object.entries');
-const fromEntries = require('object.fromentries');
-const values = require('object.values');
 
 const RuleTester = require('../helpers/ruleTester');
 const Components = require('../../lib/util/Components');
@@ -11,7 +8,7 @@ const parsers = require('../helpers/parsers');
 
 const ruleTester = new RuleTester({
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2022,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
@@ -29,35 +26,37 @@ describe('Components', () => {
         create: Components.detect((_context, components, util) => {
           const instructionResults = [];
 
-          const augmentedInstructions = fromEntries(
-            entries(instructions || {}).map((nodeTypeAndHandler) => {
+          const augmentedInstructions = Object.fromEntries(
+            Object.entries(instructions || {}).map((nodeTypeAndHandler) => {
               const nodeType = nodeTypeAndHandler[0];
               const handler = nodeTypeAndHandler[1];
               return [nodeType, (node) => {
                 instructionResults.push({ type: nodeType, result: handler(node, context, components, util) });
               }];
-            })
+            }),
           );
 
-          return Object.assign({}, augmentedInstructions, {
+          return {
+            ...augmentedInstructions,
             'Program:exit'(node) {
               if (augmentedInstructions['Program:exit']) {
                 augmentedInstructions['Program:exit'](node, context, components, util);
               }
               done(components, instructionResults);
             },
-          });
+          };
         }),
       };
 
       const tests = {
-        valid: parsers.all([Object.assign({}, test, {
+        valid: parsers.all([{
+          ...test,
           settings: {
             react: {
               version: 'detect',
             },
           },
-        })]),
+        }]),
         invalid: [],
       };
 
@@ -72,11 +71,11 @@ describe('Components', () => {
           }`,
       }, (components) => {
         assert.equal(components.length(), 1, 'MyStatelessComponent should be detected component');
-        values(components.list()).forEach((component) => {
+        Object.values(components.list()).forEach((component) => {
           assert.equal(
             component.node.id.name,
             'MyStatelessComponent',
-            'MyStatelessComponent should be detected component'
+            'MyStatelessComponent should be detected component',
           );
         });
       });
@@ -92,11 +91,11 @@ describe('Components', () => {
         }`,
       }, (components) => {
         assert(components.length() === 1, 'MyClassComponent should be detected component');
-        values(components.list()).forEach((component) => {
+        Object.values(components.list()).forEach((component) => {
           assert.equal(
             component.node.id.name,
             'MyClassComponent',
-            'MyClassComponent should be detected component'
+            'MyClassComponent should be detected component',
           );
         });
       });
@@ -109,13 +108,13 @@ describe('Components', () => {
         assert.deepEqual(
           components.getDefaultReactImports().map((specifier) => specifier.local.name),
           ['React'],
-          'default React import identifier should be "React"'
+          'default React import identifier should be "React"',
         );
 
         assert.deepEqual(
           components.getNamedReactImports().map((specifier) => specifier.local.name),
           ['useCallback', 'useState'],
-          'named React import identifiers should be "useCallback" and "useState"'
+          'named React import identifiers should be "useCallback" and "useState"',
         );
       });
     });

@@ -16,7 +16,7 @@ const rule = require('../../../lib/rules/default-props-match-prop-types');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
@@ -403,7 +403,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>{foo}{bar}</div>;
         }
       `,
-      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
+      parserOptions: { sourceType: 'module', ...parserOptions },
     },
     {
       code: `
@@ -418,7 +418,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
           return <div>{foo}{bar}</div>;
         }
       `,
-      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
+      parserOptions: { sourceType: 'module', ...parserOptions },
     },
     // using spread operator
     {

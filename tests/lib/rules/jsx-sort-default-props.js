@@ -18,7 +18,7 @@ const rule = require('../../../lib/rules/jsx-sort-default-props');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
@@ -374,7 +374,7 @@ ruleTester.run('jsx-sort-default-props', rule, {
             z: PropTypes.string,
         };
       `,
-    }
+    },
   )),
 
   invalid: parsers.all([

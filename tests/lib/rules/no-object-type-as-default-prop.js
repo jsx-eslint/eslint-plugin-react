@@ -14,7 +14,7 @@ const parsers = require('../../helpers/parsers');
 const rule = require('../../../lib/rules/no-object-type-as-default-prop');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
@@ -150,7 +150,7 @@ ruleTester.run('no-object-type-as-default-prop', rule, {
     `,
     `
       export default function NotAComponent({foo = {}}) {}
-    `
+    `,
   )),
   invalid: parsers.all([].concat(
     {
@@ -206,6 +206,6 @@ ruleTester.run('no-object-type-as-default-prop', rule, {
         }
       `,
       errors: expectedViolations,
-    }
+    },
   )),
 });
