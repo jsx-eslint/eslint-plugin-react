@@ -20,7 +20,15 @@ things.map((thing, index) => (
 ));
 
 things.map((thing, index) => (
+  <Hello key={`hello-${index}`} />
+));
+
+things.map((thing, index) => (
   React.cloneElement(thing, { key: index })
+));
+
+things.map((thing, index) => (
+  React.cloneElement(thing, { key: `hello-${index}` })
 ));
 
 things.forEach((thing, index) => {
@@ -76,7 +84,15 @@ things.map((thing) => (
 ));
 
 things.map((thing) => (
+  <Hello key={`hello-${thing.id}`} />
+));
+
+things.map((thing) => (
   React.cloneElement(thing, { key: thing.id })
+));
+
+things.map((thing) => (
+  React.cloneElement(thing, { key: `hello-${thing.id}` })
 ));
 
 things.forEach((thing) => {
