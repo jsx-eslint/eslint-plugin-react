@@ -1,4 +1,6 @@
-# Enforce a defaultProps definition for every prop that is not a required prop (`react/require-default-props`)
+# react/require-default-props
+
+📝 Enforce a defaultProps definition for every prop that is not a required prop.
 
 <!-- end auto-generated rule header -->
 

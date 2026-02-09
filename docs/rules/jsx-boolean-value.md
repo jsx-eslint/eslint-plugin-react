@@ -1,4 +1,6 @@
-# Enforce boolean attributes notation in JSX (`react/jsx-boolean-value`)
+# react/jsx-boolean-value
+
+📝 Enforce boolean attributes notation in JSX.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

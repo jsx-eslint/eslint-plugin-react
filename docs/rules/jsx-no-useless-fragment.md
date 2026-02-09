@@ -1,4 +1,6 @@
-# Disallow unnecessary fragments (`react/jsx-no-useless-fragment`)
+# react/jsx-no-useless-fragment
+
+📝 Disallow unnecessary fragments.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

@@ -1,4 +1,6 @@
-# Disallow usage of `javascript:` URLs (`react/jsx-no-script-url`)
+# react/jsx-no-script-url
+
+📝 Disallow usage of `javascript:` URLs.
 
 <!-- end auto-generated rule header -->
 

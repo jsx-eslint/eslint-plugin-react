@@ -1,4 +1,6 @@
-# Disallow `this` from being used in stateless functional components (`react/no-this-in-sfc`)
+# react/no-this-in-sfc
+
+📝 Disallow `this` from being used in stateless functional components.
 
 <!-- end auto-generated rule header -->
 

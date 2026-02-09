@@ -1,4 +1,6 @@
-# Disallow definitions of unused propTypes (`react/no-unused-prop-types`)
+# react/no-unused-prop-types
+
+📝 Disallow definitions of unused propTypes.
 
 <!-- end auto-generated rule header -->
 

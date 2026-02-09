@@ -1,4 +1,6 @@
-# Disallow usage of setState in componentDidMount (`react/no-did-mount-set-state`)
+# react/no-did-mount-set-state
+
+📝 Disallow usage of setState in componentDidMount.
 
 <!-- end auto-generated rule header -->
 

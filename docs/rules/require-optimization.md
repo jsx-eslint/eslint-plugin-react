@@ -1,4 +1,6 @@
-# Enforce React components to have a shouldComponentUpdate method (`react/require-optimization`)
+# react/require-optimization
+
+📝 Enforce React components to have a shouldComponentUpdate method.
 
 <!-- end auto-generated rule header -->
 

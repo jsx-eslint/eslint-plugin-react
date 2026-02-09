@@ -1,4 +1,6 @@
-# Disallow usage of setState in componentWillUpdate (`react/no-will-update-set-state`)
+# react/no-will-update-set-state
+
+📝 Disallow usage of setState in componentWillUpdate.
 
 <!-- end auto-generated rule header -->
 

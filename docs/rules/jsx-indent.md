@@ -1,4 +1,6 @@
-# Enforce JSX indentation (`react/jsx-indent`)
+# react/jsx-indent
+
+📝 Enforce JSX indentation.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

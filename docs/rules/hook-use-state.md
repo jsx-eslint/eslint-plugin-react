@@ -1,4 +1,6 @@
-# Ensure destructuring and symmetric naming of useState hook value and setter variables (`react/hook-use-state`)
+# react/hook-use-state
+
+📝 Ensure destructuring and symmetric naming of useState hook value and setter variables.
 
 💡 This rule is manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
 

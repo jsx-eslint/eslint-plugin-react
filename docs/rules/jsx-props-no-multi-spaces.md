@@ -1,4 +1,6 @@
-# Disallow multiple spaces between inline JSX props (`react/jsx-props-no-multi-spaces`)
+# react/jsx-props-no-multi-spaces
+
+📝 Disallow multiple spaces between inline JSX props.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

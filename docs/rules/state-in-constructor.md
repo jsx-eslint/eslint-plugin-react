@@ -1,4 +1,6 @@
-# Enforce class component state initialization style (`react/state-in-constructor`)
+# react/state-in-constructor
+
+📝 Enforce class component state initialization style.
 
 <!-- end auto-generated rule header -->
 

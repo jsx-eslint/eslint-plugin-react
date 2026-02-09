@@ -1,4 +1,6 @@
-# Enforce that namespaces are not used in React elements (`react/no-namespace`)
+# react/no-namespace
+
+📝 Enforce that namespaces are not used in React elements.
 
 <!-- end auto-generated rule header -->
 

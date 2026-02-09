@@ -1,4 +1,6 @@
-# Disallow void DOM elements (e.g. `<img />`, `<br />`) from receiving children (`react/void-dom-elements-no-children`)
+# react/void-dom-elements-no-children
+
+📝 Disallow void DOM elements (e.g. `<img />`, `<br />`) from receiving children.
 
 <!-- end auto-generated rule header -->
 

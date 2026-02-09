@@ -1,4 +1,6 @@
-# Disallow common typos (`react/no-typos`)
+# react/no-typos
+
+📝 Disallow common typos.
 
 <!-- end auto-generated rule header -->
 

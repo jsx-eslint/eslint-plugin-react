@@ -1,4 +1,6 @@
-# Lifecycle methods should be methods on the prototype, not class fields (`react/no-arrow-function-lifecycle`)
+# react/no-arrow-function-lifecycle
+
+📝 Lifecycle methods should be methods on the prototype, not class fields.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

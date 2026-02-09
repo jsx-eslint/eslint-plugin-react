@@ -1,4 +1,6 @@
-# Disallow direct mutation of this.state (`react/no-direct-mutation-state`)
+# react/no-direct-mutation-state
+
+📝 Disallow direct mutation of this.state.
 
 💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 

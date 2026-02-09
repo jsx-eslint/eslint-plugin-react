@@ -1,4 +1,6 @@
-# Enforces consistent naming for boolean props (`react/boolean-prop-naming`)
+# react/boolean-prop-naming
+
+📝 Enforces consistent naming for boolean props.
 
 <!-- end auto-generated rule header -->
 

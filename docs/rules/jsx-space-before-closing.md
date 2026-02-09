@@ -1,4 +1,6 @@
-# Enforce spacing before closing bracket in JSX (`react/jsx-space-before-closing`)
+# react/jsx-space-before-closing
+
+📝 Enforce spacing before closing bracket in JSX.
 
 ❌ This rule is deprecated. It was replaced by [`react/jsx-tag-spacing`](jsx-tag-spacing.md).
 

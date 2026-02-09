@@ -1,4 +1,6 @@
-# Enforce stateless components to be written as a pure function (`react/prefer-stateless-function`)
+# react/prefer-stateless-function
+
+📝 Enforce stateless components to be written as a pure function.
 
 <!-- end auto-generated rule header -->
 

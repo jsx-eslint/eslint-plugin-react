@@ -1,4 +1,6 @@
-# Enforce component methods order (`react/sort-comp`)
+# react/sort-comp
+
+📝 Enforce component methods order.
 
 <!-- end auto-generated rule header -->
 

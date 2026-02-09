@@ -1,4 +1,6 @@
-# Enforce consistent linebreaks in curly braces in JSX attributes and expressions (`react/jsx-curly-newline`)
+# react/jsx-curly-newline
+
+📝 Enforce consistent linebreaks in curly braces in JSX attributes and expressions.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

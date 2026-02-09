@@ -1,4 +1,6 @@
-# Disallow usage of setState in componentDidUpdate (`react/no-did-update-set-state`)
+# react/no-did-update-set-state
+
+📝 Disallow usage of setState in componentDidUpdate.
 
 <!-- end auto-generated rule header -->
 

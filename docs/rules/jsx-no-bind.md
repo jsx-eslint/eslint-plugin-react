@@ -1,4 +1,6 @@
-# Disallow `.bind()` or arrow functions in JSX props (`react/jsx-no-bind`)
+# react/jsx-no-bind
+
+📝 Disallow `.bind()` or arrow functions in JSX props.
 
 <!-- end auto-generated rule header -->
 

@@ -1,4 +1,6 @@
-# Enforce sandbox attribute on iframe elements (`react/iframe-missing-sandbox`)
+# react/iframe-missing-sandbox
+
+📝 Enforce sandbox attribute on iframe elements.
 
 <!-- end auto-generated rule header -->
 

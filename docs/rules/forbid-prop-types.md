@@ -1,4 +1,6 @@
-# Disallow certain propTypes (`react/forbid-prop-types`)
+# react/forbid-prop-types
+
+📝 Disallow certain propTypes.
 
 <!-- end auto-generated rule header -->
 

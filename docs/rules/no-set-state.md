@@ -1,4 +1,6 @@
-# Disallow usage of setState (`react/no-set-state`)
+# react/no-set-state
+
+📝 Disallow usage of setState.
 
 <!-- end auto-generated rule header -->
 

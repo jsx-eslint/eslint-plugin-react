@@ -1,4 +1,6 @@
-# Disallow usage of unknown DOM property (`react/no-unknown-property`)
+# react/no-unknown-property
+
+📝 Disallow usage of unknown DOM property.
 
 💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 

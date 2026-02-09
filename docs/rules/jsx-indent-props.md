@@ -1,4 +1,6 @@
-# Enforce props indentation in JSX (`react/jsx-indent-props`)
+# react/jsx-indent-props
+
+📝 Enforce props indentation in JSX.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

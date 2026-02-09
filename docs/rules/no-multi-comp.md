@@ -1,4 +1,6 @@
-# Disallow multiple component definition per file (`react/no-multi-comp`)
+# react/no-multi-comp
+
+📝 Disallow multiple component definition per file.
 
 <!-- end auto-generated rule header -->
 

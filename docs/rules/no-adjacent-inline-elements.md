@@ -1,4 +1,6 @@
-# Disallow adjacent inline elements not separated by whitespace (`react/no-adjacent-inline-elements`)
+# react/no-adjacent-inline-elements
+
+📝 Disallow adjacent inline elements not separated by whitespace.
 
 <!-- end auto-generated rule header -->
 

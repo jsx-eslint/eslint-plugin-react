@@ -1,4 +1,6 @@
-# Enforce that props are read-only (`react/prefer-read-only-props`)
+# react/prefer-read-only-props
+
+📝 Enforce that props are read-only.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

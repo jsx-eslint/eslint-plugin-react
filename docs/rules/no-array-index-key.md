@@ -1,4 +1,6 @@
-# Disallow usage of Array index in keys (`react/no-array-index-key`)
+# react/no-array-index-key
+
+📝 Disallow usage of Array index in keys.
 
 <!-- end auto-generated rule header -->
 

@@ -1,4 +1,6 @@
-# Disallow using string references (`react/no-string-refs`)
+# react/no-string-refs
+
+📝 Disallow using string references.
 
 💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 

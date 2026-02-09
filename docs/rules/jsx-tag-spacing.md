@@ -1,4 +1,6 @@
-# Enforce whitespace in and around the JSX opening and closing brackets (`react/jsx-tag-spacing`)
+# react/jsx-tag-spacing
+
+📝 Enforce whitespace in and around the JSX opening and closing brackets.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

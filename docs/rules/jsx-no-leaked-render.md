@@ -1,4 +1,6 @@
-# Disallow problematic leaked values from being rendered (`react/jsx-no-leaked-render`)
+# react/jsx-no-leaked-render
+
+📝 Disallow problematic leaked values from being rendered.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

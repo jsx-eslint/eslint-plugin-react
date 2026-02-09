@@ -1,4 +1,6 @@
-# Disallow certain elements (`react/forbid-elements`)
+# react/forbid-elements
+
+📝 Disallow certain elements.
 
 <!-- end auto-generated rule header -->
 

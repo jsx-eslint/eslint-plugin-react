@@ -1,4 +1,6 @@
-# Disallow usage of unsafe lifecycle methods (`react/no-unsafe`)
+# react/no-unsafe
+
+📝 Disallow usage of unsafe lifecycle methods.
 
 🚫 This rule is _disabled_ in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 

@@ -1,4 +1,6 @@
-# Enforce event handler naming conventions in JSX (`react/jsx-handler-names`)
+# react/jsx-handler-names
+
+📝 Enforce event handler naming conventions in JSX.
 
 <!-- end auto-generated rule header -->
 

@@ -1,4 +1,6 @@
-# Disallow usage of deprecated methods (`react/no-deprecated`)
+# react/no-deprecated
+
+📝 Disallow usage of deprecated methods.
 
 💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 

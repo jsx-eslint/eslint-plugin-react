@@ -1,4 +1,6 @@
-# Enforce props alphabetical sorting (`react/jsx-sort-props`)
+# react/jsx-sort-props
+
+📝 Enforce props alphabetical sorting.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

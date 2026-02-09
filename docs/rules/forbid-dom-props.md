@@ -1,4 +1,6 @@
-# Disallow certain props on DOM Nodes (`react/forbid-dom-props`)
+# react/forbid-dom-props
+
+📝 Disallow certain props on DOM Nodes.
 
 <!-- end auto-generated rule header -->
 

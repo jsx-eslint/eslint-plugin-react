@@ -1,4 +1,6 @@
-# Disallow when this.state is accessed within setState (`react/no-access-state-in-setstate`)
+# react/no-access-state-in-setstate
+
+📝 Disallow when this.state is accessed within setState.
 
 <!-- end auto-generated rule header -->
 

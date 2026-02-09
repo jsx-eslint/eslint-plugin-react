@@ -1,4 +1,6 @@
-# Disallow `target="_blank"` attribute without `rel="noreferrer"` (`react/jsx-no-target-blank`)
+# react/jsx-no-target-blank
+
+📝 Disallow `target="_blank"` attribute without `rel="noreferrer"`.
 
 💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 

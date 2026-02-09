@@ -1,4 +1,6 @@
-# Disallow certain props on components (`react/forbid-component-props`)
+# react/forbid-component-props
+
+📝 Disallow certain props on components.
 
 <!-- end auto-generated rule header -->
 

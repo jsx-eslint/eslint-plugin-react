@@ -1,4 +1,6 @@
-# Disallow usage of string literals in JSX (`react/jsx-no-literals`)
+# react/jsx-no-literals
+
+📝 Disallow usage of string literals in JSX.
 
 <!-- end auto-generated rule header -->
 

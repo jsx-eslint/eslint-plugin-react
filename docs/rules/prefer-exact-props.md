@@ -1,4 +1,6 @@
-# Prefer exact proptype definitions (`react/prefer-exact-props`)
+# react/prefer-exact-props
+
+📝 Prefer exact proptype definitions.
 
 <!-- end auto-generated rule header -->
 

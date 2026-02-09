@@ -1,4 +1,6 @@
-# Disallow using another component's propTypes (`react/forbid-foreign-prop-types`)
+# react/forbid-foreign-prop-types
+
+📝 Disallow using another component's propTypes.
 
 <!-- end auto-generated rule header -->
 

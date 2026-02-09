@@ -1,4 +1,6 @@
-# Enforce propTypes declarations alphabetical sorting (`react/sort-prop-types`)
+# react/sort-prop-types
+
+📝 Enforce propTypes declarations alphabetical sorting.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

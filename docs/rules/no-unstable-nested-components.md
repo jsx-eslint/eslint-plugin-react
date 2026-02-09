@@ -1,4 +1,6 @@
-# Disallow creating unstable components inside components (`react/no-unstable-nested-components`)
+# react/no-unstable-nested-components
+
+📝 Disallow creating unstable components inside components.
 
 <!-- end auto-generated rule header -->
 

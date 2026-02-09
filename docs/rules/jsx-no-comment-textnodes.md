@@ -1,4 +1,6 @@
-# Disallow comments from being inserted as text nodes (`react/jsx-no-comment-textnodes`)
+# react/jsx-no-comment-textnodes
+
+📝 Disallow comments from being inserted as text nodes.
 
 💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 

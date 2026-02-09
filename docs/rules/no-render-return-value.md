@@ -1,4 +1,6 @@
-# Disallow usage of the return value of ReactDOM.render (`react/no-render-return-value`)
+# react/no-render-return-value
+
+📝 Disallow usage of the return value of ReactDOM.render.
 
 💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 

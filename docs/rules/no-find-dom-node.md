@@ -1,4 +1,6 @@
-# Disallow usage of findDOMNode (`react/no-find-dom-node`)
+# react/no-find-dom-node
+
+📝 Disallow usage of findDOMNode.
 
 💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 

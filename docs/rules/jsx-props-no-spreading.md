@@ -1,4 +1,6 @@
-# Disallow JSX prop spreading (`react/jsx-props-no-spreading`)
+# react/jsx-props-no-spreading
+
+📝 Disallow JSX prop spreading.
 
 <!-- end auto-generated rule header -->
 

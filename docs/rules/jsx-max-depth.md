@@ -1,4 +1,6 @@
-# Enforce JSX maximum depth (`react/jsx-max-depth`)
+# react/jsx-max-depth
+
+📝 Enforce JSX maximum depth.
 
 <!-- end auto-generated rule header -->
 

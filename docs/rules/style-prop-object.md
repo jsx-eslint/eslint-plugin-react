@@ -1,4 +1,6 @@
-# Enforce style prop value is an object (`react/style-prop-object`)
+# react/style-prop-object
+
+📝 Enforce style prop value is an object.
 
 <!-- end auto-generated rule header -->
 

@@ -1,4 +1,6 @@
-# Enforce a specific function type for function components (`react/function-component-definition`)
+# react/function-component-definition
+
+📝 Enforce a specific function type for function components.
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 

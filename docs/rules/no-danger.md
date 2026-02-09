@@ -1,4 +1,6 @@
-# Disallow usage of dangerous JSX properties (`react/no-danger`)
+# react/no-danger
+
+📝 Disallow usage of dangerous JSX properties.
 
 <!-- end auto-generated rule header -->
 

@@ -1,4 +1,6 @@
-# Disallow usage of isMounted (`react/no-is-mounted`)
+# react/no-is-mounted
+
+📝 Disallow usage of isMounted.
 
 💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 

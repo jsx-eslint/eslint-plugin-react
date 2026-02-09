@@ -1,4 +1,6 @@
-# Disallow undeclared variables in JSX (`react/jsx-no-undef`)
+# react/jsx-no-undef
+
+📝 Disallow undeclared variables in JSX.
 
 💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 

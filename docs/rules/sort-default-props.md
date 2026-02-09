@@ -1,4 +1,6 @@
-# Enforce defaultProps declarations alphabetical sorting (`react/sort-default-props`)
+# react/sort-default-props
+
+📝 Enforce defaultProps declarations alphabetical sorting.
 
 <!-- end auto-generated rule header -->
 

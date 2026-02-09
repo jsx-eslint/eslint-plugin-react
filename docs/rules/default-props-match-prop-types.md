@@ -1,4 +1,6 @@
-# Enforce all defaultProps have a corresponding non-required PropType (`react/default-props-match-prop-types`)
+# react/default-props-match-prop-types
+
+📝 Enforce all defaultProps have a corresponding non-required PropType.
 
 <!-- end auto-generated rule header -->
 

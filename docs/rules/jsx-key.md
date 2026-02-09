@@ -1,4 +1,6 @@
-# Disallow missing `key` props in iterators/collection literals (`react/jsx-key`)
+# react/jsx-key
+
+📝 Disallow missing `key` props in iterators/collection literals.
 
 💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 
