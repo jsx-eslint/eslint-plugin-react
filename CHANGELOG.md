@@ -11,7 +11,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Fixed
 * [`no-unknown-property`]: allow `onLoad` on `body` ([#3923][] @DerekStapleton)
+* [`no-unknown-property`]: allow `closedBy` on `dialog` ([#3980][] @ljharb)
 
+[#3980]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3980
 [#3930]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3930
 [#3923]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3923
 
