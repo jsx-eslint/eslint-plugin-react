@@ -212,6 +212,46 @@ ruleTester.run('jsx-key', rule, {
       errors: [{ messageId: 'missingArrayKey' }],
     },
     {
+      code: '[<App />];',
+      errors: [{
+        messageId: 'missingArrayKey',
+        suggestions: [{
+          messageId: 'addKeyProp',
+          output: '[<App key={TODO} />];',
+        }],
+      }],
+    },
+    {
+      code: '[<App foo={bar} />];',
+      errors: [{
+        messageId: 'missingArrayKey',
+        suggestions: [{
+          messageId: 'addKeyProp',
+          output: '[<App key={TODO} foo={bar} />];',
+        }],
+      }],
+    },
+    {
+      code: '[1, 2, 3].map(x => <App />);',
+      errors: [{
+        messageId: 'missingIterKey',
+        suggestions: [{
+          messageId: 'addKeyProp',
+          output: '[1, 2, 3].map(x => <App key={TODO} />);',
+        }],
+      }],
+    },
+    {
+      code: '[1, 2, 3].map(x => <App foo={x} />);',
+      errors: [{
+        messageId: 'missingIterKey',
+        suggestions: [{
+          messageId: 'addKeyProp',
+          output: '[1, 2, 3].map(x => <App key={TODO} foo={x} />);',
+        }],
+      }],
+    },
+    {
       code: '[<App {...key} />];',
       errors: [{ messageId: 'missingArrayKey' }],
     },
