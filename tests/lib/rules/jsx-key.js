@@ -209,10 +209,6 @@ ruleTester.run('jsx-key', rule, {
   invalid: parsers.all([
     {
       code: '[<App />];',
-      errors: [{ messageId: 'missingArrayKey' }],
-    },
-    {
-      code: '[<App />];',
       errors: [{
         messageId: 'missingArrayKey',
         suggestions: [{
@@ -253,57 +249,57 @@ ruleTester.run('jsx-key', rule, {
     },
     {
       code: '[<App {...key} />];',
-      errors: [{ messageId: 'missingArrayKey' }],
+      errors: [{ messageId: 'missingArrayKey', suggestions: [{ messageId: 'addKeyProp', output: '[<App key={TODO} {...key} />];' }] }],
     },
     {
       code: '[<App key={0}/>, <App />];',
-      errors: [{ messageId: 'missingArrayKey' }],
+      errors: [{ messageId: 'missingArrayKey', suggestions: [{ messageId: 'addKeyProp', output: '[<App key={0}/>, <App key={TODO} />];' }] }],
     },
     {
       code: '[1, 2 ,3].map(function(x) { return <App /> });',
-      errors: [{ messageId: 'missingIterKey' }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(function(x) { return <App key={TODO} /> });' }] }],
     },
     {
       code: '[1, 2 ,3].map(x => <App />);',
-      errors: [{ messageId: 'missingIterKey' }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(x => <App key={TODO} />);' }] }],
     },
     {
       code: '[1, 2 ,3].map(x => x && <App x={x} />);',
-      errors: [{ messageId: 'missingIterKey' }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(x => x && <App key={TODO} x={x} />);' }] }],
     },
     {
       code: '[1, 2 ,3].map(x => x ? <App x={x} key="1" /> : <OtherApp x={x} />);',
-      errors: [{ messageId: 'missingIterKey' }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(x => x ? <App x={x} key="1" /> : <OtherApp key={TODO} x={x} />);' }] }],
     },
     {
       code: '[1, 2 ,3].map(x => x ? <App x={x} /> : <OtherApp x={x} key="2" />);',
-      errors: [{ messageId: 'missingIterKey' }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(x => x ? <App key={TODO} x={x} /> : <OtherApp x={x} key="2" />);' }] }],
     },
     {
       code: '[1, 2 ,3].map(x => { return <App /> });',
-      errors: [{ messageId: 'missingIterKey' }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(x => { return <App key={TODO} /> });' }] }],
     },
     {
       code: 'Array.from([1, 2 ,3], function(x) { return <App /> });',
-      errors: [{ messageId: 'missingIterKey' }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: 'Array.from([1, 2 ,3], function(x) { return <App key={TODO} /> });' }] }],
     },
     {
       code: 'Array.from([1, 2 ,3], (x => { return <App /> }));',
-      errors: [{ messageId: 'missingIterKey' }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: 'Array.from([1, 2 ,3], (x => { return <App key={TODO} /> }));' }] }],
     },
     {
       code: 'Array.from([1, 2 ,3], (x => <App />));',
-      errors: [{ messageId: 'missingIterKey' }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: 'Array.from([1, 2 ,3], (x => <App key={TODO} />));' }] }],
     },
     {
       code: '[1, 2, 3]?.map(x => <BabelEslintApp />)',
       features: ['no-default'],
-      errors: [{ messageId: 'missingIterKey' }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2, 3]?.map(x => <BabelEslintApp key={TODO} />)' }] }],
     },
     {
       code: '[1, 2, 3]?.map(x => <TypescriptEslintApp />)',
       features: ['ts'],
-      errors: [{ messageId: 'missingIterKey' }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2, 3]?.map(x => <TypescriptEslintApp key={TODO} />)' }] }],
     },
     {
       code: '[1, 2, 3].map(x => <>{x}</>);',
@@ -394,8 +390,52 @@ ruleTester.run('jsx-key', rule, {
         };
       `,
       errors: [
-        { messageId: 'missingIterKey' },
-        { messageId: 'missingIterKey' },
+        {
+          messageId: 'missingIterKey',
+          suggestions: [{
+            messageId: 'addKeyProp',
+            output: `
+        const Test = () => {
+          const list = [1, 2, 3, 4, 5];
+
+          return (
+            <div>
+              {list.map(item => {
+                if (item < 2) {
+                  return <div key={TODO}>{item}</div>;
+                }
+
+                return <div />;
+              })}
+            </div>
+          );
+        };
+      `,
+          }],
+        },
+        {
+          messageId: 'missingIterKey',
+          suggestions: [{
+            messageId: 'addKeyProp',
+            output: `
+        const Test = () => {
+          const list = [1, 2, 3, 4, 5];
+
+          return (
+            <div>
+              {list.map(item => {
+                if (item < 2) {
+                  return <div>{item}</div>;
+                }
+
+                return <div key={TODO} />;
+              })}
+            </div>
+          );
+        };
+      `,
+          }],
+        },
       ],
     },
     {
@@ -421,10 +461,114 @@ ruleTester.run('jsx-key', rule, {
         };
       `,
       errors: [
-        { messageId: 'missingIterKey' },
-        { messageId: 'missingIterKey' },
-        { messageId: 'missingIterKey' },
-        { messageId: 'missingIterKey' },
+        {
+          messageId: 'missingIterKey',
+          suggestions: [{
+            messageId: 'addKeyProp',
+            output: `
+        const TestO = () => {
+          const list = [1, 2, 3, 4, 5];
+
+          return (
+            <div>
+              {list.map(item => {
+                if (item < 2) {
+                  return <div key={TODO}>{item}</div>;
+                } else if (item < 5) {
+                  return <div></div>
+                }  else {
+                  return <div></div>
+                }
+
+                return <div />;
+              })}
+            </div>
+          );
+        };
+      `,
+          }],
+        },
+        {
+          messageId: 'missingIterKey',
+          suggestions: [{
+            messageId: 'addKeyProp',
+            output: `
+        const TestO = () => {
+          const list = [1, 2, 3, 4, 5];
+
+          return (
+            <div>
+              {list.map(item => {
+                if (item < 2) {
+                  return <div>{item}</div>;
+                } else if (item < 5) {
+                  return <div key={TODO}></div>
+                }  else {
+                  return <div></div>
+                }
+
+                return <div />;
+              })}
+            </div>
+          );
+        };
+      `,
+          }],
+        },
+        {
+          messageId: 'missingIterKey',
+          suggestions: [{
+            messageId: 'addKeyProp',
+            output: `
+        const TestO = () => {
+          const list = [1, 2, 3, 4, 5];
+
+          return (
+            <div>
+              {list.map(item => {
+                if (item < 2) {
+                  return <div>{item}</div>;
+                } else if (item < 5) {
+                  return <div></div>
+                }  else {
+                  return <div key={TODO}></div>
+                }
+
+                return <div />;
+              })}
+            </div>
+          );
+        };
+      `,
+          }],
+        },
+        {
+          messageId: 'missingIterKey',
+          suggestions: [{
+            messageId: 'addKeyProp',
+            output: `
+        const TestO = () => {
+          const list = [1, 2, 3, 4, 5];
+
+          return (
+            <div>
+              {list.map(item => {
+                if (item < 2) {
+                  return <div>{item}</div>;
+                } else if (item < 5) {
+                  return <div></div>
+                }  else {
+                  return <div></div>
+                }
+
+                return <div key={TODO} />;
+              })}
+            </div>
+          );
+        };
+      `,
+          }],
+        },
       ],
     },
     {
@@ -444,9 +588,69 @@ ruleTester.run('jsx-key', rule, {
         };
       `,
       errors: [
-        { messageId: 'missingIterKey' },
-        { messageId: 'missingIterKey' },
-        { messageId: 'missingIterKey' },
+        {
+          messageId: 'missingIterKey',
+          suggestions: [{
+            messageId: 'addKeyProp',
+            output: `
+        const TestCase = () => {
+          const list = [1, 2, 3, 4, 5];
+
+          return (
+            <div>
+              {list.map(item => {
+                if (item < 2) return <div key={TODO}>{item}</div>;
+                else if (item < 5) return <div />;
+                else return <div />;
+              })}
+            </div>
+          );
+        };
+      `,
+          }],
+        },
+        {
+          messageId: 'missingIterKey',
+          suggestions: [{
+            messageId: 'addKeyProp',
+            output: `
+        const TestCase = () => {
+          const list = [1, 2, 3, 4, 5];
+
+          return (
+            <div>
+              {list.map(item => {
+                if (item < 2) return <div>{item}</div>;
+                else if (item < 5) return <div key={TODO} />;
+                else return <div />;
+              })}
+            </div>
+          );
+        };
+      `,
+          }],
+        },
+        {
+          messageId: 'missingIterKey',
+          suggestions: [{
+            messageId: 'addKeyProp',
+            output: `
+        const TestCase = () => {
+          const list = [1, 2, 3, 4, 5];
+
+          return (
+            <div>
+              {list.map(item => {
+                if (item < 2) return <div>{item}</div>;
+                else if (item < 5) return <div />;
+                else return <div key={TODO} />;
+              })}
+            </div>
+          );
+        };
+      `,
+          }],
+        },
       ],
     },
     {
