@@ -26,6 +26,7 @@ jobs:
       matrix:
         node-version: ${{ fromJson(needs.matrix.outputs.latest) }}
         eslint:
+          - 10
           - 9
           - 8
           - 7
