@@ -67,7 +67,7 @@
     "@types/node": "^4.9.5",
     "@typescript-eslint/parser": "^2.34.0 || ^3.10.1 || ^4 || ^5 || ^6.20 || ^7.14.1 || 8.4 - 8.17",
     "babel-eslint": "^8 || ^9 || ^10.1.0",
-    "eslint": "^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7",
+    "eslint": "^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7 || ^10.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-doc-generator": "^3.0.2",
     "eslint-plugin-eslint-plugin": "^2.3.0 || ^3.5.3 || ^4.0.1 || ^5.0.5",
