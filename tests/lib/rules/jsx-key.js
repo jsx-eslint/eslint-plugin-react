@@ -213,7 +213,7 @@ ruleTester.run('jsx-key', rule, {
         messageId: 'missingArrayKey',
         suggestions: [{
           messageId: 'addKeyProp',
-          output: '[<App key={TODO} />];',
+          output: '[<App key={false} />];',
         }],
       }],
     },
@@ -223,7 +223,7 @@ ruleTester.run('jsx-key', rule, {
         messageId: 'missingArrayKey',
         suggestions: [{
           messageId: 'addKeyProp',
-          output: '[<App key={TODO} foo={bar} />];',
+          output: '[<App key={false} foo={bar} />];',
         }],
       }],
     },
@@ -233,7 +233,7 @@ ruleTester.run('jsx-key', rule, {
         messageId: 'missingIterKey',
         suggestions: [{
           messageId: 'addKeyProp',
-          output: '[1, 2, 3].map(x => <App key={TODO} />);',
+          output: '[1, 2, 3].map(x => <App key={false} />);',
         }],
       }],
     },
@@ -243,63 +243,63 @@ ruleTester.run('jsx-key', rule, {
         messageId: 'missingIterKey',
         suggestions: [{
           messageId: 'addKeyProp',
-          output: '[1, 2, 3].map(x => <App key={TODO} foo={x} />);',
+          output: '[1, 2, 3].map(x => <App key={false} foo={x} />);',
         }],
       }],
     },
     {
       code: '[<App {...key} />];',
-      errors: [{ messageId: 'missingArrayKey', suggestions: [{ messageId: 'addKeyProp', output: '[<App key={TODO} {...key} />];' }] }],
+      errors: [{ messageId: 'missingArrayKey', suggestions: [{ messageId: 'addKeyProp', output: '[<App key={false} {...key} />];' }] }],
     },
     {
       code: '[<App key={0}/>, <App />];',
-      errors: [{ messageId: 'missingArrayKey', suggestions: [{ messageId: 'addKeyProp', output: '[<App key={0}/>, <App key={TODO} />];' }] }],
+      errors: [{ messageId: 'missingArrayKey', suggestions: [{ messageId: 'addKeyProp', output: '[<App key={0}/>, <App key={false} />];' }] }],
     },
     {
       code: '[1, 2 ,3].map(function(x) { return <App /> });',
-      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(function(x) { return <App key={TODO} /> });' }] }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(function(x) { return <App key={false} /> });' }] }],
     },
     {
       code: '[1, 2 ,3].map(x => <App />);',
-      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(x => <App key={TODO} />);' }] }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(x => <App key={false} />);' }] }],
     },
     {
       code: '[1, 2 ,3].map(x => x && <App x={x} />);',
-      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(x => x && <App key={TODO} x={x} />);' }] }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(x => x && <App key={false} x={x} />);' }] }],
     },
     {
       code: '[1, 2 ,3].map(x => x ? <App x={x} key="1" /> : <OtherApp x={x} />);',
-      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(x => x ? <App x={x} key="1" /> : <OtherApp key={TODO} x={x} />);' }] }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(x => x ? <App x={x} key="1" /> : <OtherApp key={false} x={x} />);' }] }],
     },
     {
       code: '[1, 2 ,3].map(x => x ? <App x={x} /> : <OtherApp x={x} key="2" />);',
-      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(x => x ? <App key={TODO} x={x} /> : <OtherApp x={x} key="2" />);' }] }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(x => x ? <App key={false} x={x} /> : <OtherApp x={x} key="2" />);' }] }],
     },
     {
       code: '[1, 2 ,3].map(x => { return <App /> });',
-      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(x => { return <App key={TODO} /> });' }] }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2 ,3].map(x => { return <App key={false} /> });' }] }],
     },
     {
       code: 'Array.from([1, 2 ,3], function(x) { return <App /> });',
-      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: 'Array.from([1, 2 ,3], function(x) { return <App key={TODO} /> });' }] }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: 'Array.from([1, 2 ,3], function(x) { return <App key={false} /> });' }] }],
     },
     {
       code: 'Array.from([1, 2 ,3], (x => { return <App /> }));',
-      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: 'Array.from([1, 2 ,3], (x => { return <App key={TODO} /> }));' }] }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: 'Array.from([1, 2 ,3], (x => { return <App key={false} /> }));' }] }],
     },
     {
       code: 'Array.from([1, 2 ,3], (x => <App />));',
-      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: 'Array.from([1, 2 ,3], (x => <App key={TODO} />));' }] }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: 'Array.from([1, 2 ,3], (x => <App key={false} />));' }] }],
     },
     {
       code: '[1, 2, 3]?.map(x => <BabelEslintApp />)',
       features: ['no-default'],
-      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2, 3]?.map(x => <BabelEslintApp key={TODO} />)' }] }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2, 3]?.map(x => <BabelEslintApp key={false} />)' }] }],
     },
     {
       code: '[1, 2, 3]?.map(x => <TypescriptEslintApp />)',
       features: ['ts'],
-      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2, 3]?.map(x => <TypescriptEslintApp key={TODO} />)' }] }],
+      errors: [{ messageId: 'missingIterKey', suggestions: [{ messageId: 'addKeyProp', output: '[1, 2, 3]?.map(x => <TypescriptEslintApp key={false} />)' }] }],
     },
     {
       code: '[1, 2, 3].map(x => <>{x}</>);',
@@ -402,7 +402,7 @@ ruleTester.run('jsx-key', rule, {
             <div>
               {list.map(item => {
                 if (item < 2) {
-                  return <div key={TODO}>{item}</div>;
+                  return <div key={false}>{item}</div>;
                 }
 
                 return <div />;
@@ -428,7 +428,7 @@ ruleTester.run('jsx-key', rule, {
                   return <div>{item}</div>;
                 }
 
-                return <div key={TODO} />;
+                return <div key={false} />;
               })}
             </div>
           );
@@ -473,7 +473,7 @@ ruleTester.run('jsx-key', rule, {
             <div>
               {list.map(item => {
                 if (item < 2) {
-                  return <div key={TODO}>{item}</div>;
+                  return <div key={false}>{item}</div>;
                 } else if (item < 5) {
                   return <div></div>
                 }  else {
@@ -502,7 +502,7 @@ ruleTester.run('jsx-key', rule, {
                 if (item < 2) {
                   return <div>{item}</div>;
                 } else if (item < 5) {
-                  return <div key={TODO}></div>
+                  return <div key={false}></div>
                 }  else {
                   return <div></div>
                 }
@@ -531,7 +531,7 @@ ruleTester.run('jsx-key', rule, {
                 } else if (item < 5) {
                   return <div></div>
                 }  else {
-                  return <div key={TODO}></div>
+                  return <div key={false}></div>
                 }
 
                 return <div />;
@@ -561,7 +561,7 @@ ruleTester.run('jsx-key', rule, {
                   return <div></div>
                 }
 
-                return <div key={TODO} />;
+                return <div key={false} />;
               })}
             </div>
           );
@@ -599,7 +599,7 @@ ruleTester.run('jsx-key', rule, {
           return (
             <div>
               {list.map(item => {
-                if (item < 2) return <div key={TODO}>{item}</div>;
+                if (item < 2) return <div key={false}>{item}</div>;
                 else if (item < 5) return <div />;
                 else return <div />;
               })}
@@ -621,7 +621,7 @@ ruleTester.run('jsx-key', rule, {
             <div>
               {list.map(item => {
                 if (item < 2) return <div>{item}</div>;
-                else if (item < 5) return <div key={TODO} />;
+                else if (item < 5) return <div key={false} />;
                 else return <div />;
               })}
             </div>
@@ -643,7 +643,7 @@ ruleTester.run('jsx-key', rule, {
               {list.map(item => {
                 if (item < 2) return <div>{item}</div>;
                 else if (item < 5) return <div />;
-                else return <div key={TODO} />;
+                else return <div key={false} />;
               })}
             </div>
           );
