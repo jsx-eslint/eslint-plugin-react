@@ -33,9 +33,19 @@ jobs:
           - es2020
           - esnext
         exclude:
-          # ESLint 10 types require TS >= 4.1 (mapped type `as`).
+          # ESLint 10 jobs are only run with TS >= 5.0.
           - eslint_version: '10'
             ts_version: '4.0'
+          - eslint_version: '10'
+            ts_version: 4.1
+          - eslint_version: '10'
+            ts_version: 4.2
+          - eslint_version: '10'
+            ts_version: 4.3
+          - eslint_version: '10'
+            ts_version: 4.4
+          - eslint_version: '10'
+            ts_version: 4.5
     steps:
       - uses: actions/checkout@v4
         with:
