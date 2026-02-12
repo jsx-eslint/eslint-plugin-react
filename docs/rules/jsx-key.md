@@ -8,8 +8,9 @@
 
 <!-- end auto-generated rule header -->
 
-Warn if an element that likely requires a `key` prop--namely, one present in an
-array literal or an arrow function expression.
+Warn if an element that likely requires a `key` prop--namely, one present in an array literal or an arrow function expression.
+
+The suggestion for this rule inserts `key={null}` as a placeholder. This is intentionally flagged by [`react/jsx-no-nullish-key`](./jsx-no-nullish-key.md), so you will still get a warning until a real key is supplied.
 
 ## Rule Details
 
