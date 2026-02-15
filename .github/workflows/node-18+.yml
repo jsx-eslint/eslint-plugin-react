@@ -45,6 +45,11 @@ jobs:
           - 7
           - 8
         exclude:
+          # ESLint 10 supports Node.js 20+.
+          - eslint: 10
+            node-version: 18
+          - eslint: 10
+            node-version: 19
           - eslint: 3
             babel-eslint: 10
           - eslint: 3
