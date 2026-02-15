@@ -33,6 +33,7 @@ const plugins = [
 
 // TODO: with TS 4.5+, inline this
 const SEVERITY_ERROR = /** @type {2} */ (2);
+const SEVERITY_WARN = /** @type {1} */ (1);
 const SEVERITY_OFF = /** @type {0} */ (0);
 
 const configs = {
@@ -46,6 +47,7 @@ const configs = {
     rules: {
       'react/display-name': SEVERITY_ERROR,
       'react/jsx-key': SEVERITY_ERROR,
+      'react/jsx-no-nullish-key': SEVERITY_WARN,
       'react/jsx-no-comment-textnodes': SEVERITY_ERROR,
       'react/jsx-no-duplicate-props': SEVERITY_ERROR,
       'react/jsx-no-target-blank': SEVERITY_ERROR,
