@@ -50,6 +50,8 @@ jobs:
             node-version: 18
           - eslint: 10
             node-version: 19
+          - eslint: 10
+            babel-eslint: 8
           - eslint: 3
             babel-eslint: 10
           - eslint: 3
