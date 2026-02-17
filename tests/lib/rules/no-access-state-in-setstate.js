@@ -14,7 +14,7 @@ const parsers = require('../../helpers/parsers');
 const rule = require('../../../lib/rules/no-access-state-in-setstate');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   ecmaFeatures: {
     jsx: true,
   },

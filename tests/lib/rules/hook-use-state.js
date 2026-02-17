@@ -19,7 +19,7 @@ const parsers = require('../../helpers/parsers');
 
 const ruleTester = new RuleTester({
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2022,
     sourceType: 'module',
   },
 });

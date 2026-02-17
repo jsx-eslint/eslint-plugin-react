@@ -8,7 +8,7 @@ const jsxUtil = require('../../lib/util/jsx');
 const isReturningJSX = jsxUtil.isReturningJSX;
 
 const DEFAULT_CONFIG = {
-  ecmaVersion: 6,
+  ecmaVersion: 2022,
   ecmaFeatures: {
     jsx: true,
   },
@@ -35,7 +35,7 @@ const mockContext = {
 describe('jsxUtil', () => {
   describe('isReturningJSX', () => {
     const assertValid = (codeStr) => assert(
-      isReturningJSX(mockContext, parseCode(codeStr))
+      isReturningJSX(mockContext, parseCode(codeStr)),
     );
 
     it('Works when returning JSX', () => {
