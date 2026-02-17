@@ -48,6 +48,8 @@ ruleTester.run('no-unknown-property', rule, {
     // Some HTML/DOM elements with common attributes should work
     { code: '<div className="bar"></div>;' },
     { code: '<div onMouseDown={this._onMouseDown}></div>;' },
+    { code: '<div onScrollEnd={this._onScrollEnd}></div>;' },
+    { code: '<div onScrollEndCapture={this._onScrollEndCapture}></div>;' },
     { code: '<a href="someLink" download="foo">Read more</a>' },
     { code: '<area download="foo" />' },
     { code: '<img src="cat_keyboard.jpeg" alt="A cat sleeping on a keyboard" align="top" fetchPriority="high" />' },
