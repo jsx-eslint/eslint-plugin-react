@@ -46,7 +46,7 @@ Examples of **correct** code for this rule:
 - `eventHandlerPropPrefix`: Prefix for props that are used as event handlers. Defaults to `on`
 - `checkLocalVariables`: Determines whether event handlers stored as local variables are checked. Defaults to `false`
 - `checkInlineFunction`: Determines whether event handlers set as inline functions are checked. Defaults to `false`
-- `ignoreComponentNames`: Array of glob strings, when matched with component name, ignores the rule on that component. Defaults to `[]`
+- `ignoreComponentNames`: Array of glob strings, when matched with component name, ignores the rule on that component. Defaults to `[]`. Supports namespaced component names (e.g., `A.TestComponent`, `A.MyLib*`)
 
 ## When Not To Use It
 
