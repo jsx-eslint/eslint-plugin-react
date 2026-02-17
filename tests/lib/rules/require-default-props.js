@@ -15,7 +15,7 @@ const rule = require('../../../lib/rules/require-default-props');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2022,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
@@ -811,7 +811,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>{foo}{bar}</div>;
         }
       `,
-      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
+      parserOptions: { sourceType: 'module', ...parserOptions },
     },
     {
       code: `
@@ -824,7 +824,7 @@ ruleTester.run('require-default-props', rule, {
           return <div>{foo}{bar}</div>;
         }
       `,
-      parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
+      parserOptions: { sourceType: 'module', ...parserOptions },
     },
     // using spread operator
     {

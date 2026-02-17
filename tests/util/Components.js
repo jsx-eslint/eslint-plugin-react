@@ -11,7 +11,7 @@ const parsers = require('../helpers/parsers');
 
 const ruleTester = new RuleTester({
   parserOptions: {
-    ecmaVersion: 2018,
+    ecmaVersion: 2022,
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
@@ -36,28 +36,30 @@ describe('Components', () => {
               return [nodeType, (node) => {
                 instructionResults.push({ type: nodeType, result: handler(node, context, components, util) });
               }];
-            })
+            }),
           );
 
-          return Object.assign({}, augmentedInstructions, {
+          return {
+            ...augmentedInstructions,
             'Program:exit'(node) {
               if (augmentedInstructions['Program:exit']) {
                 augmentedInstructions['Program:exit'](node, context, components, util);
               }
               done(components, instructionResults);
             },
-          });
+          };
         }),
       };
 
       const tests = {
-        valid: parsers.all([Object.assign({}, test, {
+        valid: parsers.all([{
+          ...test,
           settings: {
             react: {
               version: 'detect',
             },
           },
-        })]),
+        }]),
         invalid: [],
       };
 
@@ -76,7 +78,7 @@ describe('Components', () => {
           assert.equal(
             component.node.id.name,
             'MyStatelessComponent',
-            'MyStatelessComponent should be detected component'
+            'MyStatelessComponent should be detected component',
           );
         });
       });
@@ -96,7 +98,7 @@ describe('Components', () => {
           assert.equal(
             component.node.id.name,
             'MyClassComponent',
-            'MyClassComponent should be detected component'
+            'MyClassComponent should be detected component',
           );
         });
       });
@@ -109,13 +111,13 @@ describe('Components', () => {
         assert.deepEqual(
           components.getDefaultReactImports().map((specifier) => specifier.local.name),
           ['React'],
-          'default React import identifier should be "React"'
+          'default React import identifier should be "React"',
         );
 
         assert.deepEqual(
           components.getNamedReactImports().map((specifier) => specifier.local.name),
           ['useCallback', 'useState'],
-          'named React import identifiers should be "useCallback" and "useState"'
+          'named React import identifiers should be "useCallback" and "useState"',
         );
       });
     });
