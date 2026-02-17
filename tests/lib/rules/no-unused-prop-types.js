@@ -3948,6 +3948,22 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       features: ['types'],
     },
+    {
+      code: `
+        interface SlideProps {
+          isActive: boolean;
+        }
+
+        function App(){
+            return (
+              <div>
+              {({ isActive }: SlideProps) => <button doo = {isActive} />}
+          </div>
+          )
+        }
+      `,
+      features: ['types'],
+    },
   ]),
 
   invalid: parsers.all([].concat(
