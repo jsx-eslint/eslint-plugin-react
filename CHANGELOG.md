@@ -15,9 +15,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ### Changed
 * [Docs] [`no-array-index-key`]: add template literal examples ([#3978][] @akahoshi1421)
+* [Refactor] [`jsx-key`]: use isJSX util function instead of shouldCheckNode ([#3932][] @yalperg)
 
 [#3978]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3978
 [#3980]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3980
+[#3932]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3932
 [#3930]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3930
 [#3923]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3923
 
