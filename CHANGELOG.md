@@ -16,6 +16,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: allow `closedby` on `dialog` ([#3980][] @ljharb)
 * [`no-unknown-property`]: add `onScrollEnd` and `onScrollEndCapture` events as known properties ([#3958][] @xfeeefeee)
 * Remove extra space from CLI warning ([#3942][] @junaidkbr)
+* [`jsx-key`]: detect missing keys in return statement with ternary operator ([#3928][] @hyeonbinHur)
 
 ### Changed
 * [Docs] [`no-array-index-key`]: add template literal examples ([#3978][] @akahoshi1421)
@@ -26,6 +27,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3943]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3943
 [#3942]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3942
 [#3930]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3930
+[#3928]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3928
 [#3923]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3923
 [#3441]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3441
 
