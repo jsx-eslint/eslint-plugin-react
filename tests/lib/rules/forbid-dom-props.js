@@ -64,11 +64,11 @@ ruleTester.run('forbid-dom-props', rule, {
       code: `
         class First extends createReactClass {
           render() {
-            return <this.foo id="bar" />;
+            return <this.foo className="bar" />;
           }
         }
       `,
-      options: [{ forbid: ['id'] }],
+      options: [{ forbid: ['style'] }],
     },
     {
       code: `
@@ -111,6 +111,17 @@ ruleTester.run('forbid-dom-props', rule, {
           ],
         },
       ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <html.span name="foo" />
+        );
+        const Second = (props) => (
+          <h.span name="foo" />
+        );
+      `,
+      options: [{ forbid: ['id'] }],
     },
   ]),
 
@@ -318,6 +329,33 @@ ruleTester.run('forbid-dom-props', rule, {
         },
         {
           message: 'Avoid using otherProp',
+          line: 6,
+          column: 18,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <html.div id="foo" />
+        );
+        const Second = (props) => (
+          <h.div id="foo" />
+        );
+      `,
+      options: [{ forbid: ['id'] }],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'id' },
+          line: 3,
+          column: 21,
+          type: 'JSXAttribute',
+        },
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'id' },
           line: 6,
           column: 18,
           type: 'JSXAttribute',
