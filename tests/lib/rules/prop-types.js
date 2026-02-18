@@ -6097,6 +6097,19 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
+        var thePropsTypes = {a: PropTypes.string.isRequired};
+        var Foo = function (props) { return <div>{props.a}{props.b}</div>; };
+        Foo.propTypes = thePropsTypes;
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'b' },
+        },
+      ],
+    },
+    {
+      code: `
         class Test extends Foo.Component {
           render() {
             return (
