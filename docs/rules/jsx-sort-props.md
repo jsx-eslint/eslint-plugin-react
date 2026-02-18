@@ -15,7 +15,7 @@ This rule checks all JSX components and verifies that all props are sorted alpha
 Examples of **incorrect** code for this rule:
 
 ```jsx
-<Hello lastName="Smith" firstName="John" />;
+<Hello lastName="Smith" firstName="John" />
 ```
 
 Examples of **correct** code for this rule:
@@ -37,6 +37,7 @@ Examples of **correct** code for this rule:
   "ignoreCase": <boolean>,
   "noSortAlphabetically": <boolean>,
   "reservedFirst": <boolean>|<array<string>>,
+  "sortFirst": <array<string>>,
   "locale": "auto" | "any valid locale"
 }]
 ...
@@ -49,7 +50,7 @@ When `true` the rule ignores the case-sensitivity of the props order.
 Examples of **correct** code for this rule
 
 ```jsx
-<Hello name="John" Number="2" />;
+<Hello name="John" Number="2" />
 ```
 
 ### `callbacksLast`
@@ -138,6 +139,32 @@ With `reservedFirst: ["key"]`, the following will **not** warn:
 
 ```jsx
 <Hello key={'uuid'} name="John" ref={johnRef} />
+```
+
+### `sortFirst`
+
+When `sortFirst` is defined as an array of prop names, those props must be listed before all other props, maintaining the exact order specified in the array. This option has the highest priority and takes precedence over all other sorting options (including `reservedFirst`, `shorthandFirst`, `callbacksLast`, and `multiline`).
+
+The prop names in the array are matched case-sensitively by default, but respect the `ignoreCase` option when enabled.
+
+Examples of **incorrect** code for this rule:
+
+```jsx
+// 'jsx-sort-props': [1, { sortFirst: ['className'] }]
+<Hello name="John" className="test" />
+```
+
+Examples of **correct** code for this rule:
+
+```jsx
+// 'jsx-sort-props': [1, { sortFirst: ['className'] }]
+<Hello className="test" name="John" />
+
+// 'jsx-sort-props': [1, { sortFirst: ['className', 'id'] }]
+<Hello className="test" id="test" name="John" />
+
+// 'jsx-sort-props': [1, { sortFirst: ['className'], ignoreCase: true }]
+<Hello classname="test" name="John" />
 ```
 
 ### `locale`
