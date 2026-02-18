@@ -4,10 +4,13 @@
 
 💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
 
+💡 This rule is manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
+
 <!-- end auto-generated rule header -->
 
-Warn if an element that likely requires a `key` prop--namely, one present in an
-array literal or an arrow function expression.
+Warn if an element that likely requires a `key` prop--namely, one present in an array literal or an arrow function expression.
+
+The suggestion for this rule inserts `key={null}` as a placeholder. This is intentionally flagged by [`react/jsx-no-nullish-key`](./jsx-no-nullish-key.md), so you will still get a warning until a real key is supplied.
 
 ## Rule Details
 
