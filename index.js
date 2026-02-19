@@ -27,13 +27,13 @@ const deprecatedRules = filterRules(allRules, (rule) => rule.meta.deprecated);
 
 /** @type {['react']} */
 // for legacy config system
-const plugins = [
-  'react',
-];
+const plugins = ['react'];
 
 // TODO: with TS 4.5+, inline this
 const SEVERITY_ERROR = /** @type {2} */ (2);
 const SEVERITY_OFF = /** @type {0} */ (0);
+
+/** @typedef {'recommended' | 'all' | 'jsx-runtime'} AvailableFlatConfigs */
 
 const configs = {
   recommended: {
@@ -90,21 +90,20 @@ const configs = {
       'react/jsx-uses-react': SEVERITY_OFF,
     },
   },
-  flat: /** @type {Record<string, ReactFlatConfig>} */ ({
-    __proto__: null,
-  }),
+  flat: /** @type {{ [k in AvailableFlatConfigs]: ReactFlatConfig }} */ ({}),
 };
 
-/** @typedef {{ plugins: { react: typeof plugin }, rules: import('eslint').Linter.RulesRecord, languageOptions: { parserOptions: import('eslint').Linter.ParserOptions } }} ReactFlatConfig */
+/** @typedef {{plugins: {react: typeof plugin}, rules: import('eslint').Linter.RulesRecord, languageOptions: {parserOptions: import('eslint').Linter.ParserOptions}}} ReactFlatConfig */
 
-/** @type {{ deprecatedRules: typeof deprecatedRules, rules: typeof allRules, configs: typeof configs & { flat: Record<string, ReactFlatConfig> }}} */
+/** @type {{deprecatedRules: typeof deprecatedRules, rules: typeof allRules, configs: typeof configs}}} */
 const plugin = {
   deprecatedRules,
   rules: allRules,
   configs,
 };
 
-Object.assign(configs.flat, {
+/** @type {{ [k in AvailableFlatConfigs]: ReactFlatConfig }} */
+configs.flat = {
   recommended: {
     plugins: { react: plugin },
     rules: configs.recommended.rules,
@@ -120,6 +119,6 @@ Object.assign(configs.flat, {
     rules: configs['jsx-runtime'].rules,
     languageOptions: { parserOptions: configs['jsx-runtime'].parserOptions },
   },
-});
+};
 
 module.exports = plugin;
