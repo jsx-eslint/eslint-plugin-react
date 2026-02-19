@@ -1,0 +1,69 @@
+name: 'Tests: ESLint (9+)'
+
+on: [pull_request, push]
+
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      latest: ${{ steps.set-matrix.outputs.requireds }}
+      minors: ${{ steps.set-matrix.outputs.optionals }}
+    steps:
+      - uses: ljharb/actions/node/matrix@main
+        id: set-matrix
+        with:
+          versionsAsRoot: true
+          type: majors
+          preset: '>=18'
+
+  latest:
+    needs: [matrix]
+    name: 'latest majors'
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: ${{ fromJson(needs.matrix.outputs.latest) }}
+        eslint:
+          - 10
+          - 9
+        babel-eslint:
+          - 10
+          - 9
+          - 8
+        typescript-eslint:
+          - 5
+          - 6
+          - 7
+          - 8
+        exclude:
+          # ESLint 10 supports Node.js 20+.
+          - eslint: 10
+            node-version: 18
+          - eslint: 10
+            node-version: 19
+          - eslint: 10
+            babel-eslint: 8
+          - eslint: 9
+            typescript-eslint: 5
+          - eslint: 9
+            typescript-eslint: 6
+          - eslint: 9
+            typescript-eslint: 7
+          - node-version: 19
+            typescript-eslint: 7
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ljharb/actions/node/install@main
+        name: 'nvm install ${{ matrix.node-version }} && npm install'
+        with:
+          node-version: ${{ matrix.node-version }}
+          after_install: |
+            npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.eslint == 10 && 'canary' || matrix.typescript-eslint }}" "babel-eslint@${{ matrix.babel-eslint }}"
+        env:
+          NPM_CONFIG_LEGACY_PEER_DEPS: "${{ matrix.typescript-eslint >= 6 && 'false' || 'true' }}"
+      - run: npx ls-engines
+      - run: npm run unit-test
+      - uses: codecov/codecov-action@v3.1.5
