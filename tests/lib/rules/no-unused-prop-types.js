@@ -3964,6 +3964,18 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       features: ['types'],
     },
+    {
+      code: `
+        const Demo = React.memo(
+          React.forwardRef(({ used }, ref) => {
+            return <div ref={ref}>{used}</div>
+          })
+        );
+        Demo.propTypes = {
+          used: PropTypes.string,
+        };
+      `,
+    },
   ]),
 
   invalid: parsers.all([].concat(
@@ -6742,6 +6754,22 @@ ruleTester.run('no-unused-prop-types', rule, {
         );
       `,
       features: ['ts', 'no-babel'],
+      errors: [
+        { message: '\'unused\' PropType is defined but prop is never used' },
+      ],
+    },
+    {
+      code: `
+        const Demo = React.memo(
+          React.forwardRef(({ used }, ref) => {
+            return <div ref={ref}>{used}</div>
+          })
+        );
+        Demo.propTypes = {
+          used: PropTypes.string,
+          unused: PropTypes.string,
+        };
+      `,
       errors: [
         { message: '\'unused\' PropType is defined but prop is never used' },
       ],
