@@ -26,8 +26,6 @@ jobs:
       matrix:
         node-version: ${{ fromJson(needs.matrix.outputs.latest) }}
         eslint:
-          - 10
-          - 9
           - 8
           - 7
           - 6
@@ -45,13 +43,6 @@ jobs:
           - 7
           - 8
         exclude:
-          # ESLint 10 supports Node.js 20+.
-          - eslint: 10
-            node-version: 18
-          - eslint: 10
-            node-version: 19
-          - eslint: 10
-            babel-eslint: 8
           - eslint: 3
             babel-eslint: 10
           - eslint: 3
@@ -72,8 +63,6 @@ jobs:
             typescript-eslint: 6
           - eslint: 6
             typescript-eslint: 6
-          - eslint: 9
-            typescript-eslint: 6
           - eslint: 3
             typescript-eslint: 7
           - eslint: 4
@@ -85,8 +74,6 @@ jobs:
           - eslint: 6
             typescript-eslint: 7
           - eslint: 7
-            typescript-eslint: 7
-          - eslint: 9
             typescript-eslint: 7
           - eslint: 3
             typescript-eslint: 8
@@ -100,8 +87,6 @@ jobs:
             typescript-eslint: 8
           - eslint: 7
             typescript-eslint: 8
-          - eslint: 9
-            typescript-eslint: 5
           - node-version: 19
             typescript-eslint: 7
 
@@ -112,7 +97,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           after_install: |
-            npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.eslint == 10 && 'canary' || (matrix.typescript-eslint == 8 && '8.17' || matrix.typescript-eslint) }}" "babel-eslint@${{ matrix.babel-eslint }}"
+            npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.typescript-eslint == 8 && 8.17 || matrix.typescript-eslint }}" "babel-eslint@${{ matrix.babel-eslint }}"
         env:
           NPM_CONFIG_LEGACY_PEER_DEPS: "${{ matrix.typescript-eslint >= 6 && 'false' || 'true' }}"
       - run: npx ls-engines
