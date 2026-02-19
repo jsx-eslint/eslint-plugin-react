@@ -1110,6 +1110,58 @@ eslintTester.run('no-unused-state', rule, {
         }
       `,
       features: ['types', 'class fields'],
+    },
+    {
+      code: `
+        var UnusedGetInitialStateTest = createReactClass({
+          getInitialState: function() {
+            return { foo: 0 };
+          },
+          render: function() {
+            return <SomeComponent />;
+          }
+        })
+      `,
+      options: [{ ignore: ['foo'] }],
+    },
+    {
+      code: `
+        var UnusedComputedStringLiteralKeyStateTest = createReactClass({
+          getInitialState: function() {
+            return { ['foo']: 0 };
+          },
+          render: function() {
+            return <SomeComponent />;
+          }
+        })
+      `,
+      options: [{ ignore: ['foo'] }],
+    },
+    {
+      code: `
+        class UnusedCtorStateTest extends React.Component {
+          constructor() {
+            this.state = { foo: 0 };
+          }
+          render() {
+            return <SomeComponent />;
+          }
+        }
+      `,
+      options: [{ ignore: ['foo'] }],
+    },
+    {
+      code: `
+        class UnusedCtorStateTest extends React.Component {
+          constructor() {
+            this.state = { ['foo']: 0 };
+          }
+          render() {
+            return <SomeComponent />;
+          }
+        }
+      `,
+      options: [{ ignore: ['foo'] }],
     }
   )),
 
@@ -1615,6 +1667,62 @@ eslintTester.run('no-unused-state', rule, {
         'thisStateDestructPropUnused',
         'thisDestructStateDestructPropUnused',
       ]),
+    },
+    {
+      code: `
+        var UnusedGetInitialStateTest = createReactClass({
+          getInitialState: function() {
+            return { foo: 0, dummy: 0 };
+          },
+          render: function() {
+            return <SomeComponent />;
+          }
+        })
+      `,
+      options: [{ ignore: ['foo'] }],
+      errors: getErrorMessages(['dummy']),
+    },
+    {
+      code: `
+        var UnusedGetInitialStateTest = createReactClass({
+          getInitialState: function() {
+            return { ['foo']: 0, ['dummy']: 0 };
+          },
+          render: function() {
+            return <SomeComponent />;
+          }
+        })
+      `,
+      options: [{ ignore: ['foo'] }],
+      errors: getErrorMessages(['dummy']),
+    },
+    {
+      code: `
+        class UnusedCtorStateTest extends React.Component {
+          constructor() {
+            this.state = { foo: 0, dummy: 0 };
+          }
+          render() {
+            return <SomeComponent />;
+          }
+        }
+      `,
+      options: [{ ignore: ['foo'] }],
+      errors: getErrorMessages(['dummy']),
+    },
+    {
+      code: `
+        class UnusedCtorStateTest extends React.Component {
+          constructor() {
+            this.state = { ['foo']: 0, ['dummy']: 0 };
+          }
+          render() {
+            return <SomeComponent />;
+          }
+        }
+      `,
+      options: [{ ignore: ['foo'] }],
+      errors: getErrorMessages(['dummy']),
     },
   ]),
 });
