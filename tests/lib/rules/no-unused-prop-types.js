@@ -3948,6 +3948,34 @@ ruleTester.run('no-unused-prop-types', rule, {
       `,
       features: ['types'],
     },
+    {
+      code: `
+        type Props = {
+          used: string;
+        };
+
+        const Demo = React.memo<Props>(
+          React.forwardRef<HTMLDivElement, Props>(
+            ({ used }, ref) => {
+              return <div>{used}</div>
+            }
+          )
+        );
+      `,
+      features: ['types'],
+    },
+    {
+      code: `
+        const Demo = React.memo(
+          React.forwardRef(({ used }, ref) => {
+            return <div ref={ref}>{used}</div>
+          })
+        );
+        Demo.propTypes = {
+          used: PropTypes.string,
+        };
+      `,
+    },
   ]),
 
   invalid: parsers.all([].concat(
@@ -6708,6 +6736,42 @@ ruleTester.run('no-unused-prop-types', rule, {
       features: ['ts', 'no-babel'],
       errors: [
         { message: '\'bar\' PropType is defined but prop is never used' },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          used: string;
+          unused: string;
+        };
+
+        const Demo = React.memo<Props>(
+          React.forwardRef<HTMLDivElement, Props>(
+            ({ used }, ref) => {
+              return <div>{used}</div>
+            }
+          )
+        );
+      `,
+      features: ['ts', 'no-babel'],
+      errors: [
+        { message: '\'unused\' PropType is defined but prop is never used' },
+      ],
+    },
+    {
+      code: `
+        const Demo = React.memo(
+          React.forwardRef(({ used }, ref) => {
+            return <div ref={ref}>{used}</div>
+          })
+        );
+        Demo.propTypes = {
+          used: PropTypes.string,
+          unused: PropTypes.string,
+        };
+      `,
+      errors: [
+        { message: '\'unused\' PropType is defined but prop is never used' },
       ],
     }
   )),
