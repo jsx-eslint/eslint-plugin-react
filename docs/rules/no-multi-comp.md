@@ -71,6 +71,55 @@ class HelloJohn extends React.Component {
 module.exports = HelloJohn;
 ```
 
+### `ignoreInternal`
+
+When `true` the rule will ignore components which are not exported, which allows you to define components that are consumed only within the same file.
+This ensures there is only one entry point for a React component without limiting the structural content of the file.
+
+Examples of **correct** code for this rule:
+
+```jsx
+export function Hello(props) {
+  return <div>Hello {props.name}</div>;
+}
+function HelloAgain(props) {
+  return <div>Hello again {props.name}</div>;
+}
+```
+
+```jsx
+function Hello(props) {
+  return <div>Hello {props.name}</div>;
+}
+class HelloJohn extends React.Component {
+  render() {
+    return <Hello name="John" />;
+  }
+}
+module.exports = HelloJohn;
+```
+
+Examples of **incorrect** code for this rule:
+
+```jsx
+export function Hello(props) {
+  return <div>Hello {props.name}</div>;
+}
+export function HelloAgain(props) {
+  return <div>Hello again {props.name}</div>;
+}
+```
+
+```jsx
+function Hello(props) {
+  return <div>Hello {props.name}</div>;
+}
+function HelloAgain(props) {
+  return <div>Hello again {props.name}</div>;
+}
+module.exports = { Hello, HelloAgain };
+```
+
 ## When Not To Use It
 
 If you prefer to declare multiple components per file you can disable this rule.
