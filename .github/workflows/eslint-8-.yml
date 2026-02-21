@@ -1,4 +1,4 @@
-name: 'Tests: node.js (18+)'
+name: 'Tests: ESLint (8-)'
 
 on: [pull_request, push]
 
