@@ -33,9 +33,6 @@ jobs:
           - 9
           - 8
         typescript-eslint:
-          - 5
-          - 6
-          - 7
           - 8
         exclude:
           # ESLint 10 supports Node.js 20+.
@@ -45,14 +42,6 @@ jobs:
             node-version: 19
           - eslint: 10
             babel-eslint: 8
-          - eslint: 9
-            typescript-eslint: 5
-          - eslint: 9
-            typescript-eslint: 6
-          - eslint: 9
-            typescript-eslint: 7
-          - node-version: 19
-            typescript-eslint: 7
 
     steps:
       - uses: actions/checkout@v4
