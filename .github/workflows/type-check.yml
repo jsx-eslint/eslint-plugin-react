@@ -7,11 +7,14 @@ permissions:
 
 jobs:
   test:
-    name: TS ${{ matrix.ts_version }}, "${{ matrix.ts_lib }}"
+    name: ESLint ${{ matrix.eslint_version }}, TS ${{ matrix.ts_version }}, "${{ matrix.ts_lib }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
+        eslint_version:
+          - '7'
+          - '10'
         ts_version:
           # The official ESLint types are not compatible with TS 3.9
           # - 3.9
@@ -29,6 +32,20 @@ jobs:
           - es2015,dom
           - es2020
           - esnext
+        exclude:
+          # ESLint 10 jobs are only run with TS >= 5.0.
+          - eslint_version: '10'
+            ts_version: '4.0'
+          - eslint_version: '10'
+            ts_version: 4.1
+          - eslint_version: '10'
+            ts_version: 4.2
+          - eslint_version: '10'
+            ts_version: 4.3
+          - eslint_version: '10'
+            ts_version: 4.4
+          - eslint_version: '10'
+            ts_version: 4.5
     steps:
       - uses: actions/checkout@v4
         with:
@@ -40,6 +57,17 @@ jobs:
         with:
           node-version: 'lts/*'
           skip-ls-check: true
+
+      - name: select eslint types
+        run: |
+          if [ "${{ matrix.eslint_version }}" = "10" ]; then
+            # Avoid dev dependency peer conflicts with eslint@10.
+            npm prune --omit=dev
+            npm uninstall --no-save @types/eslint
+            npm install --no-save --legacy-peer-deps eslint@^10 typescript@^5
+          else
+            npm install --no-save eslint@^7 @types/eslint@7.2.10
+          fi
 
       - name: build types
         run: npm run build-types
@@ -58,6 +86,15 @@ jobs:
 
       - name: npm install working directory
         run: npm install
+        working-directory: test-published-types
+
+      - name: select eslint for published types
+        run: |
+          if [ "${{ matrix.eslint_version }}" = "10" ]; then
+            npm install --no-save eslint@^10
+          else
+            npm install --no-save eslint@^7
+          fi
         working-directory: test-published-types
 
       - name: install eslint-plugin-react and typescript version ${{ matrix.ts_version }}

@@ -1,4 +1,4 @@
-name: 'Tests: node.js (18+)'
+name: 'Tests: ESLint (8-)'
 
 on: [pull_request, push]
 
@@ -26,7 +26,6 @@ jobs:
       matrix:
         node-version: ${{ fromJson(needs.matrix.outputs.latest) }}
         eslint:
-          - 9
           - 8
           - 7
           - 6
@@ -64,8 +63,6 @@ jobs:
             typescript-eslint: 6
           - eslint: 6
             typescript-eslint: 6
-          - eslint: 9
-            typescript-eslint: 6
           - eslint: 3
             typescript-eslint: 7
           - eslint: 4
@@ -77,8 +74,6 @@ jobs:
           - eslint: 6
             typescript-eslint: 7
           - eslint: 7
-            typescript-eslint: 7
-          - eslint: 9
             typescript-eslint: 7
           - eslint: 3
             typescript-eslint: 8
@@ -92,8 +87,6 @@ jobs:
             typescript-eslint: 8
           - eslint: 7
             typescript-eslint: 8
-          - eslint: 9
-            typescript-eslint: 5
           - node-version: 19
             typescript-eslint: 7
 
@@ -112,7 +105,7 @@ jobs:
       - uses: codecov/codecov-action@v3.1.5
 
   node:
-    name: 'node 18+'
+    name: 'eslint 8-'
     needs: [latest]
     runs-on: ubuntu-latest
     steps:
