@@ -105,7 +105,7 @@ jobs:
       - uses: codecov/codecov-action@v3.1.5
 
   node:
-    name: 'node 18+'
+    name: 'eslint 8-'
     needs: [latest]
     runs-on: ubuntu-latest
     steps:
