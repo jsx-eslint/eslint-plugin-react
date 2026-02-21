@@ -50,7 +50,14 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           after_install: |
-            npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.eslint == 10 && 'canary' || matrix.typescript-eslint }}" "babel-eslint@${{ matrix.babel-eslint }}" "typescript@5"
+            # Temporary: with ESLint 10 + @typescript-eslint/parser@canary,
+            # TypeScript 5.9.x currently causes parser incompatibilities in CI.
+            # Pin to 5.8.x for stability, and remove this pin once we move off canary.
+            npm install --no-save \
+              "eslint@${{ matrix.eslint }}" \
+              "@typescript-eslint/parser@${{ matrix.eslint == 10 && 'canary' || matrix.typescript-eslint }}" \
+              "babel-eslint@${{ matrix.babel-eslint }}" \
+              "typescript@5.8.3"
           skip-ls-check: true  
       - run: npx ls-engines
       - run: npm run unit-test
