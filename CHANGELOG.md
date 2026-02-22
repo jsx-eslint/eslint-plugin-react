@@ -21,10 +21,12 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: add `onScrollEnd` and `onScrollEndCapture` events as known properties ([#3958][] @xfeeefeee)
 * Remove extra space from CLI warning ([#3942][] @junaidkbr)
 * [`jsx-key`]: detect missing keys in return statement with ternary operator ([#3928][] @hyeonbinHur)
+* [`jsx-key`]: detect missing keys in logical expressions ([#3986][] @yalperg)
 
 ### Changed
 * [Docs] [`no-array-index-key`]: add template literal examples ([#3978][] @akahoshi1421)
 
+[#3986]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3986
 [#3978]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3978
 [#3958]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3958
 [#3980]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3980

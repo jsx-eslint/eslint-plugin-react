@@ -211,6 +211,9 @@ ruleTester.run('jsx-key', rule, {
       `,
       settings,
     },
+    { code: '[1, 2, 3].map(x => { return x && <App key={x} />; });' },
+    { code: '[1, 2, 3].map(x => { return x && y && <App key={x} />; });' },
+    { code: '[1, 2, 3].map(x => { return x && foo(); });' },
   ]),
   invalid: parsers.all([
     {
@@ -480,6 +483,14 @@ ruleTester.run('jsx-key', rule, {
       `,
       options: [{ checkKeyMustBeforeSpread: true }],
       errors: [{ messageId: 'keyBeforeSpread' }],
+    },
+    {
+      code: '[1, 2, 3].map(x => { return x && <App />; });',
+      errors: [{ messageId: 'missingIterKey' }],
+    },
+    {
+      code: '[1, 2, 3].map(x => { return x || y || <App />; });',
+      errors: [{ messageId: 'missingIterKey' }],
     },
   ]),
 });
