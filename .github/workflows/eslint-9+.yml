@@ -1,0 +1,64 @@
+name: 'Tests: ESLint (9+)'
+
+on: [pull_request, push]
+
+jobs:
+  matrix:
+    runs-on: ubuntu-latest
+    outputs:
+      latest: ${{ steps.set-matrix.outputs.requireds }}
+      minors: ${{ steps.set-matrix.outputs.optionals }}
+    steps:
+      - uses: ljharb/actions/node/matrix@main
+        id: set-matrix
+        with:
+          versionsAsRoot: true
+          type: majors
+          preset: '>=18'
+
+  latest:
+    needs: [matrix]
+    name: 'latest majors'
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node-version: ${{ fromJson(needs.matrix.outputs.latest) }}
+        eslint:
+          - 10
+          - 9
+        babel-eslint:
+          - 10
+          - 9
+          - 8
+        typescript-eslint:
+          - 8
+        exclude:
+          # ESLint 10 supports Node.js 20+.
+          - eslint: 10
+            node-version: 18
+          - eslint: 10
+            node-version: 19
+          - eslint: 10
+            babel-eslint: 8
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ljharb/actions/node/install@main
+        name: 'nvm install ${{ matrix.node-version }} && npm install'
+        with:
+          node-version: ${{ matrix.node-version }}
+          after_install: |
+            # Temporary: with ESLint 10 + @typescript-eslint/parser@canary,
+            # TypeScript 5.9.x currently causes parser incompatibilities in CI.
+            # Pin to 5.8.x for stability, and remove this pin once we move off canary.
+            npm install --no-save \
+              "eslint@${{ matrix.eslint }}" \
+              "@typescript-eslint/parser@${{ matrix.eslint == 10 && 'canary' || matrix.typescript-eslint }}" \
+              "babel-eslint@${{ matrix.babel-eslint }}" \
+              "typescript@5.8.3"
+          skip-ls-check: true  
+      - run: npx ls-engines
+      - run: npm run unit-test
+      - uses: codecov/codecov-action@v3.1.5
