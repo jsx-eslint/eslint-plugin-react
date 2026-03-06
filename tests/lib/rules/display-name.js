@@ -31,6 +31,72 @@ ruleTester.run('display-name', rule, {
   valid: parsers.all([
     {
       code: `
+        import React, { memo, forwardRef } from 'react'
+        
+        const TestComponent = function () {
+          {
+            const memo = (cb) => cb()
+            const forwardRef = (cb) => cb()
+            const React = { memo, forwardRef }
+            
+            const BlockMemo = memo(() => <div>shadowed</div>)
+            const BlockForwardRef = forwardRef(() => <div>shadowed</div>)
+            const BlockReactMemo = React.memo(() => <div>shadowed</div>)
+          }
+          return null
+        }
+      `,
+    },
+    {
+      code: `
+        import React, { memo, forwardRef } from 'react'
+        
+        const Test1 = function (memo) {
+          return memo(() => <div>param shadowed</div>)
+        }
+        
+        const Test2 = function ({ forwardRef }) {
+          return forwardRef(() => <div>destructured param</div>)
+        }
+      `,
+    },
+    {
+      code: `
+        import React, { memo, forwardRef } from 'react'
+        
+        const TestComponent = function () {
+          function innerFunction() {
+            const memo = (cb) => cb()
+            const React = { forwardRef }
+            
+            const Comp = memo(() => <div>nested</div>)
+            const ForwardComp = React.forwardRef(() => <div>nested</div>)
+            return [Comp, ForwardComp]
+          }
+          return innerFunction()
+        }
+      `,
+    },
+    {
+      code: `
+        import React, { memo, forwardRef } from 'react'
+
+        const MixedShadowed = function () {
+          const memo = (cb) => cb()
+          const { forwardRef } = { forwardRef: () => null }
+          const [React] = [{ memo, forwardRef }]
+
+          const Comp = memo(() => <div>shadowed</div>)
+          const ReactMemo = React.memo(() => null)
+          const ReactForward = React.forwardRef((props, ref) => \`\${props} \${ref}\`)
+          const OtherComp = forwardRef((props, ref) => \`\${props} \${ref}\`)
+
+          return [Comp, ReactMemo, ReactForward, OtherComp]
+        }
+      `,
+    },
+    {
+      code: `
         var Hello = createReactClass({
           displayName: 'Hello',
           render: function() {
@@ -848,6 +914,82 @@ ruleTester.run('display-name', rule, {
   ]),
 
   invalid: parsers.all([
+    {
+      code: `
+        import React, { memo, forwardRef } from 'react'
+
+        const TestComponent = function () {
+          {
+            const BlockReactMemo = React.memo(() => {
+              return <div>not shadowed</div>
+            })
+        
+            const BlockMemo = memo(() => {
+              return <div>not shadowed</div>
+            })
+        
+            const BlockForwardRef = forwardRef((props, ref) => {
+              return \`\${props} \${ref}\`
+            })
+          }
+      
+          return null
+        }
+      `,
+      errors: [
+        { messageId: 'noDisplayName' },
+        { messageId: 'noDisplayName' },
+        { messageId: 'noDisplayName' }
+      ],
+    },
+    {
+      code: `
+        import React, { memo, forwardRef } from 'react'
+
+        const Test1 = function () {
+          const Comp = memo(() => <div>not param shadowed</div>)
+          return Comp
+        }
+
+        const Test2 = function () {
+          function innerFunction() {
+            const Comp = memo(() => <div>nested not shadowed</div>)
+            const ForwardComp = React.forwardRef(() => <div>nested</div>)
+            return [Comp, ForwardComp]
+          }
+          return innerFunction()
+        }
+      `,
+      errors: [
+        { messageId: 'noDisplayName' },
+        { messageId: 'noDisplayName' },
+        { messageId: 'noDisplayName' }
+      ],
+    },
+    {
+      code: `
+        import React, { memo, forwardRef } from 'react'
+
+        const MixedNotShadowed = function () {
+          const Comp = memo(() => {
+            return <div>not shadowed</div>
+          })
+          const ReactMemo = React.memo(() => null)
+          const ReactForward = React.forwardRef((props, ref) => {
+            return \`\${props} \${ref}\`
+          })
+          const OtherComp = forwardRef((props, ref) => \`\${props} \${ref}\`)
+
+          return [Comp, ReactMemo, ReactForward, OtherComp]
+        }
+      `,
+      errors: [
+        { messageId: 'noDisplayName' },
+        { messageId: 'noDisplayName' },
+        { messageId: 'noDisplayName' },
+        { messageId: 'noDisplayName' }
+      ],
+    },
     {
       code: `
         var Hello = createReactClass({
