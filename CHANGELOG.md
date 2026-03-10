@@ -22,6 +22,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * Remove extra space from CLI warning ([#3942][] @junaidkbr)
 * [`jsx-key`]: detect missing keys in return statement with ternary operator ([#3928][] @hyeonbinHur)
 * [`jsx-key`]: detect missing keys in logical expressions ([#3986][] @yalperg)
+* [`display-name`]: avoid false positive when React is shadowed ([#3926][] @hyeonbinHur)
 
 ### Changed
 * [Docs] [`no-array-index-key`]: add template literal examples ([#3978][] @akahoshi1421)
@@ -36,6 +37,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3942]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3942
 [#3930]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3930
 [#3928]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3928
+[#3926]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3926
 [#3923]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3923
 [#3877]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3877
 [#3729]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3729
