@@ -26,6 +26,7 @@ jobs:
       matrix:
         node-version: ${{ fromJson(needs.matrix.outputs.latest) }}
         eslint:
+          - 10
           - 9
         babel-eslint:
           - 10
@@ -33,6 +34,14 @@ jobs:
           - 8
         typescript-eslint:
           - 8
+        exclude:
+          # ESLint 10 supports Node.js 20+.
+          - eslint: 10
+            node-version: 18
+          - eslint: 10
+            node-version: 19
+          - eslint: 10
+            babel-eslint: 8
 
     steps:
       - uses: actions/checkout@v4
@@ -41,7 +50,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           after_install: |
-            npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.typescript-eslint }}" "babel-eslint@${{ matrix.babel-eslint }}" "typescript@5"
+            npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.eslint == 10 && 'canary' || matrix.typescript-eslint }}" "babel-eslint@${{ matrix.babel-eslint }}" "typescript@5"
           skip-ls-check: true
       - run: npx ls-engines
       - run: npm run unit-test
