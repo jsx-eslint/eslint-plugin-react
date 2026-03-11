@@ -16,6 +16,7 @@ jobs:
           - '7'
           - '8'
           - '9'
+          - '10'
         ts_version:
           # The official ESLint types are not compatible with TS 3.9
           # - 3.9
@@ -34,7 +35,7 @@ jobs:
           - es2020
           - esnext
         exclude:
-          # ESLint 9 ships types via @eslint/core which requires TS >= 5.0
+          # ESLint 9+ ships types via @eslint/core which requires TS >= 5.0
           - eslint_version: '9'
             ts_version: '4.0'
           - eslint_version: '9'
@@ -46,6 +47,18 @@ jobs:
           - eslint_version: '9'
             ts_version: 4.4
           - eslint_version: '9'
+            ts_version: 4.5
+          - eslint_version: '10'
+            ts_version: '4.0'
+          - eslint_version: '10'
+            ts_version: 4.1
+          - eslint_version: '10'
+            ts_version: 4.2
+          - eslint_version: '10'
+            ts_version: 4.3
+          - eslint_version: '10'
+            ts_version: 4.4
+          - eslint_version: '10'
             ts_version: 4.5
     steps:
       - uses: actions/checkout@v4
@@ -61,7 +74,12 @@ jobs:
 
       - name: select eslint types
         run: |
-          if [ "${{ matrix.eslint_version }}" = "9" ]; then
+          if [ "${{ matrix.eslint_version }}" = "10" ]; then
+            # Avoid dev dependency peer conflicts with eslint@10.
+            npm prune --omit=dev
+            npm uninstall --no-save @types/eslint
+            npm install --no-save --legacy-peer-deps eslint@^10 typescript@^5
+          elif [ "${{ matrix.eslint_version }}" = "9" ]; then
             npm uninstall --no-save @types/eslint
             npm install --no-save eslint@^9 typescript@^5
           elif [ "${{ matrix.eslint_version }}" = "7" ]; then
