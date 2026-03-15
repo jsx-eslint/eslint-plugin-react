@@ -67,11 +67,17 @@ jobs:
             npm prune --omit=dev
             npm uninstall --no-save @types/eslint
             npm install --no-save --legacy-peer-deps eslint@^10 typescript@^5
+          elif [ "${{ matrix.eslint_version }}" = "9" ]; then
+            npm uninstall --no-save @types/eslint
+            npm install --no-save eslint@^9 typescript@^5
+          elif [ "${{ matrix.eslint_version }}" = "8" ]; then
+            npm uninstall --no-save @types/eslint
+            npm install --no-save eslint@^8
           elif [ "${{ matrix.eslint_version }}" = "7" ]; then
             npm install --no-save eslint@^7 @types/eslint@7.2.10
           else
-            npm uninstall --no-save @types/eslint
-            npm install --no-save eslint@^${{ matrix.eslint_version }}
+            echo "unknown eslint_version: ${{ matrix.eslint_version }}"
+            exit 1
           fi
 
       - name: build types
