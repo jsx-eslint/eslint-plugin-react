@@ -3,6 +3,7 @@
 const ESLintRuleTester = require('eslint').RuleTester;
 const semver = require('semver');
 const eslintPkg = require('eslint/package.json');
+const eslintMajor = semver.major(eslintPkg.version);
 
 // `item` can be a config passed to the constructor, or a test case object/string
 function convertToFlat(item, plugins) {
@@ -47,9 +48,38 @@ function convertToFlat(item, plugins) {
   return newItem;
 }
 
+function convertInvalidTest(item, plugins) {
+  const newItem = convertToFlat(item, plugins);
+
+  if (eslintMajor >= 10 && Array.isArray(newItem.errors)) {
+    newItem.errors = newItem.errors.map((error) => {
+      if (!error || typeof error !== 'object' || !Object.prototype.hasOwnProperty.call(error, 'type')) {
+        return error;
+      }
+
+      const newError = Object.assign({}, error);
+      delete newError.type;
+      return newError;
+    });
+  }
+
+  return newItem;
+}
+
+function convertValidTest(item, plugins) {
+  const newItem = convertToFlat(item, plugins);
+
+  if (eslintMajor >= 10 && newItem && typeof newItem === 'object') {
+    delete newItem.errors;
+    delete newItem.output;
+  }
+
+  return newItem;
+}
+
 let RuleTester = ESLintRuleTester;
 
-if (semver.major(eslintPkg.version) >= 9) {
+if (eslintMajor >= 9) {
   const PLUGINS = Symbol('eslint-plugin-react plugins');
   const RULE_DEFINER = Symbol.for('react.RuleTester.RuleDefiner');
 
@@ -97,8 +127,8 @@ if (semver.major(eslintPkg.version) >= 9) {
 
     run(ruleName, rule, tests) {
       const newTests = {
-        valid: tests.valid.map((test) => convertToFlat(test, this[PLUGINS])),
-        invalid: tests.invalid.map((test) => convertToFlat(test, this[PLUGINS])),
+        valid: tests.valid.map((test) => convertValidTest(test, this[PLUGINS])),
+        invalid: tests.invalid.map((test) => convertInvalidTest(test, this[PLUGINS])),
       };
 
       super.run(ruleName, rule, newTests);
