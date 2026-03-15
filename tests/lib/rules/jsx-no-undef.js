@@ -26,6 +26,24 @@ const parserOptions = {
   jsxPragma: null,
 };
 
+function expectedErrors(identifier) {
+  const errors = [{
+    messageId: 'undefined',
+    data: { identifier },
+  }];
+
+  // In ESLint 10, the core no-undef rule also reports these JSX references in
+  // addition to react/jsx-no-undef, so the combined RuleTester output has two
+  // errors for the overlapping cases below.
+  if (semver.major(eslintPkg.version) >= 10) {
+    errors.push({
+      message: `'${identifier}' is not defined.`,
+    });
+  }
+
+  return errors;
+}
+
 // -----------------------------------------------------------------------------
 // Tests
 // -----------------------------------------------------------------------------
@@ -94,39 +112,19 @@ ruleTester.run('jsx-no-undef', rule, {
   invalid: parsers.all([
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<App />);',
-      errors: [
-        {
-          messageId: 'undefined',
-          data: { identifier: 'App' },
-        },
-      ],
+      errors: expectedErrors('App'),
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<Appp.Foo />);',
-      errors: [
-        {
-          messageId: 'undefined',
-          data: { identifier: 'Appp' },
-        },
-      ],
+      errors: expectedErrors('Appp'),
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<appp.Foo />);',
-      errors: [
-        {
-          messageId: 'undefined',
-          data: { identifier: 'appp' },
-        },
-      ],
+      errors: expectedErrors('appp'),
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<appp.foo.Bar />);',
-      errors: [
-        {
-          messageId: 'undefined',
-          data: { identifier: 'appp' },
-        },
-      ],
+      errors: expectedErrors('appp'),
     },
     {
       code: `
@@ -151,12 +149,7 @@ ruleTester.run('jsx-no-undef', rule, {
     },
     {
       code: '/*eslint no-undef:1*/ var React; React.render(<Foo />);',
-      errors: [
-        {
-          messageId: 'undefined',
-          data: { identifier: 'Foo' },
-        },
-      ],
+      errors: expectedErrors('Foo'),
     },
   ].map(parsers.disableNewTS)),
 });
