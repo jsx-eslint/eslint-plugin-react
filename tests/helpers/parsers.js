@@ -6,7 +6,9 @@ const version = require('eslint/package.json').version;
 const flatMap = require('array.prototype.flatmap');
 const tsParserVersion = require('@typescript-eslint/parser/package.json').version;
 
-const disableNewTS = semver.satisfies(tsParserVersion, '>= 4.1') // this rule is not useful on v4.1+ of the TS parser
+// `canary` releases use prerelease versions like `8.57.1-alpha.2`, which `satisfies`
+// does not treat as matching plain `>= 4.1` without coercion.
+const disableNewTS = semver.satisfies(semver.coerce(tsParserVersion), '>= 4.1') // this rule is not useful on v4.1+ of the TS parser
   ? (x) => Object.assign({}, x, { features: [].concat(x.features, 'no-ts-new') })
   : (x) => x;
 
