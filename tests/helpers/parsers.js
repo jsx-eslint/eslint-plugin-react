@@ -150,7 +150,8 @@ const parsers = {
         || features.has('jsx namespace')
         || features.has('bind operator')
         || features.has('do expressions');
-      const tsOld = !skipTS && !features.has('no-ts-old');
+      // Legacy typescript-eslint-parser does not work with the ESLint 10 test setup.
+      const tsOld = !skipTS && !features.has('no-ts-old') && !semver.satisfies(version, '>= 10');
       const tsNew = !skipTS && !features.has('no-ts-new');
 
       return [].concat(
