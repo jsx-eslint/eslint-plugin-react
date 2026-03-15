@@ -50,7 +50,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           after_install: |
-            npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.eslint == 10 && 'canary' || matrix.typescript-eslint }}" "babel-eslint@${{ matrix.babel-eslint }}" "typescript@5"
+            npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.eslint == 10 && 'canary' || matrix.typescript-eslint }}" "babel-eslint@${{ matrix.babel-eslint }}"${{ matrix.eslint == 10 && ' "typescript@5"' || '' }}
           skip-ls-check: true
       - run: npx ls-engines
       - run: npm run unit-test
