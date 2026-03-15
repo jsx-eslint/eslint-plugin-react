@@ -7,11 +7,15 @@ permissions:
 
 jobs:
   test:
-    name: TS ${{ matrix.ts_version }}, "${{ matrix.ts_lib }}"
+    name: ESLint ${{ matrix.eslint_version }}, TS ${{ matrix.ts_version }}, "${{ matrix.ts_lib }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
+        eslint_version:
+          - '7'
+          - '8'
+          - '9'
         ts_version:
           # The official ESLint types are not compatible with TS 3.9
           # - 3.9
@@ -41,6 +45,15 @@ jobs:
           node-version: 'lts/*'
           skip-ls-check: true
 
+      - name: select eslint types
+        run: |
+          if [ "${{ matrix.eslint_version }}" = "7" ]; then
+            npm install --no-save eslint@^7 @types/eslint@7.2.10
+          else
+            npm uninstall --no-save @types/eslint
+            npm install --no-save eslint@^${{ matrix.eslint_version }}
+          fi
+
       - name: build types
         run: npm run build-types
 
@@ -58,6 +71,15 @@ jobs:
 
       - name: npm install working directory
         run: npm install
+        working-directory: test-published-types
+
+      - name: select eslint for published types
+        run: |
+          if [ "${{ matrix.eslint_version }}" = "7" ]; then
+            npm install --no-save eslint@^7
+          else
+            npm install --no-save eslint@^${{ matrix.eslint_version }}
+          fi
         working-directory: test-published-types
 
       - name: install eslint-plugin-react and typescript version ${{ matrix.ts_version }}
