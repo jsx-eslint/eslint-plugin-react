@@ -3,6 +3,7 @@
 const ESLintRuleTester = require('eslint').RuleTester;
 const semver = require('semver');
 const eslintPkg = require('eslint/package.json');
+
 const eslintMajor = semver.major(eslintPkg.version);
 
 // `item` can be a config passed to the constructor, or a test case object/string
