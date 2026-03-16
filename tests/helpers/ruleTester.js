@@ -52,6 +52,7 @@ function convertToFlat(item, plugins) {
 function convertInvalidTest(item, plugins) {
   const newItem = convertToFlat(item, plugins);
 
+  // ESLint 10 no longer accepts `type` in expected error objects.
   if (eslintMajor >= 10 && Array.isArray(newItem.errors)) {
     newItem.errors = newItem.errors.map((error) => {
       if (!error || typeof error !== 'object' || !Object.prototype.hasOwnProperty.call(error, 'type')) {
@@ -70,6 +71,7 @@ function convertInvalidTest(item, plugins) {
 function convertValidTest(item, plugins) {
   const newItem = convertToFlat(item, plugins);
 
+  // ESLint 10 rejects legacy valid-test extras that older RuleTester versions tolerated.
   if (eslintMajor >= 10 && newItem && typeof newItem === 'object') {
     delete newItem.errors;
     delete newItem.output;
