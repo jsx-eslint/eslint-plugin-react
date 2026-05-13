@@ -76,6 +76,33 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
       code: '<App>{\'        \'}</App>',
       options: [{ children: 'always' }],
     },
+    /*
+     * Empty string expressions in JSX children must not be flagged:
+     * removing {""} changes the JSX tree and can affect whitespace rendering.
+     * Autofixes must not introduce semantic changes.
+     */
+    {
+      code: '<App>{""}</App>',
+    },
+    {
+      code: "<App>{''}</App>",
+    },
+    {
+      code: '<App>{""}</App>',
+      options: [{ children: 'never' }],
+    },
+    {
+      code: "<App>{''}</App>",
+      options: [{ children: 'never' }],
+    },
+    {
+      code: '<App>foo{""}</App>',
+      options: [{ children: 'never' }],
+    },
+    {
+      code: '<App>{""}foo</App>',
+      options: [{ children: 'never' }],
+    },
     {
       code: '<App {...props}>foo</App>',
       options: [{ props: 'always' }],
