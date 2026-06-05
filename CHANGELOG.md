@@ -32,6 +32,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`sort-prop-types`]: keep comments on the opening brace's line in place when autofixing (@ljharb)
 * [`sort-prop-types`]: preserve comments and separators in autofix ([#4029][] @raisulchowdhury)
 * [`jsx-no-leaked-render`]: autofix `cond ? false : alternate` to `!cond && alternate` with correct negation and parentheses (@ljharb)
+* [`jsx-no-leaked-render`]: preserve ternary alternates when autofixing to coerce ([#4017][] @morgan-coded)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -43,6 +44,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#4043]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4043
 [#4029]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4029
 [#4028]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4028
+[#4017]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4017
 [#4001]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4001
 [#3986]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3986
 [#3978]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3978
