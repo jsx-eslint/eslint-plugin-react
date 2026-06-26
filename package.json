@@ -71,7 +71,6 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-doc-generator": "^3.3.2",
     "eslint-plugin-eslint-plugin": "^2.3.0 || ^3.5.3 || ^4.0.1 || ^5.0.5",
-    "eslint-plugin-import": "^2.32.0",
     "eslint-remote-tester": "^3.0.1",
     "eslint-remote-tester-repositories": "^1.0.1",
     "eslint-scope": "^3.7.3",
