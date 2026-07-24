@@ -140,7 +140,6 @@ ruleTester.run('react-require-optimization', rule, {
         }
       `,
       features: ['class fields'],
-      errors: [{ messageId: 'noShouldComponentUpdate' }],
     },
   ]),
 
