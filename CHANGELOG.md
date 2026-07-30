@@ -30,6 +30,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-closing-bracket-location`]: keep TS type arguments when autofixing (@ljharb)
 * [`jsx-closing-bracket-location`]: say "on the next line" when a comment shares the closing bracket's line (@ljharb)
 * [`sort-prop-types`]: keep comments on the opening brace's line in place when autofixing (@ljharb)
+* [`sort-prop-types`]: preserve comments and separators in autofix ([#4029][] @raisulchowdhury)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -38,6 +39,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 [#4044]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4044
 [#4043]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4043
+[#4029]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4029
 [#4028]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4028
 [#4001]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4001
 [#3986]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3986
