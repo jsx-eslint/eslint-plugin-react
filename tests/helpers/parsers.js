@@ -6,8 +6,8 @@ const version = require('eslint/package.json').version;
 const flatMap = require('array.prototype.flatmap');
 const tsParserVersion = require('@typescript-eslint/parser/package.json').version;
 
-const disableNewTS = semver.satisfies(tsParserVersion, '>= 4.1') // this rule is not useful on v4.1+ of the TS parser
-  ? (x) => Object.assign({}, x, { features: [].concat(x.features, 'no-ts-new') })
+const disableNewTS = semver.satisfies(tsParserVersion, '>= 4.1', { includePrerelease: true }) // this rule is not useful on v4.1+ of the TS parser
+  ? (x) => Object.assign({}, x, { features: [].concat(x.features || [], 'no-ts-new') })
   : (x) => x;
 
 function minEcmaVersion(features, parserOptions) {

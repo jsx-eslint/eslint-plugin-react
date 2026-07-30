@@ -38,6 +38,15 @@ if (semver.major(eslintPkg.version) < 9) {
   ruleDefiner.defineRule('no-undef', getESLintCoreRule('no-undef'));
 }
 
+function mapTestCode(testCase) {
+  if (semver.major(eslintPkg.version) >= 10 && typeof testCase.code === 'string') {
+    return Object.assign({}, testCase, {
+      code: testCase.code.replace('/*eslint no-undef:1*/', '/*eslint no-undef:0*/'),
+    });
+  }
+  return testCase;
+}
+
 ruleTester.run('jsx-no-undef', rule, {
   valid: parsers.all([
     {
@@ -89,7 +98,7 @@ ruleTester.run('jsx-no-undef', rule, {
       parserOptions: Object.assign({ sourceType: 'module' }, parserOptions),
       options: [{ allowGlobals: false }],
     },
-  ].map(parsers.disableNewTS)),
+  ].map(mapTestCode).map(parsers.disableNewTS)),
 
   invalid: parsers.all([
     {
@@ -158,5 +167,5 @@ ruleTester.run('jsx-no-undef', rule, {
         },
       ],
     },
-  ].map(parsers.disableNewTS)),
+  ].map(mapTestCode).map(parsers.disableNewTS)),
 });
