@@ -98,7 +98,13 @@
     "@typescript-eslint/parser": {
       "eslint": "^5 || ^6 || ^7 || ^8 || ^9.7 || ^10"
     },
-    "@typescript-eslint/utils": "^5.62.0",
+    "eslint-config-airbnb-base": {
+      "eslint": "^5 || ^6 || ^7 || ^8 || ^9.7 || ^10"
+    },
+    "@typescript-eslint/utils": {
+      "eslint": "^5 || ^6 || ^7 || ^8 || ^9.7 || ^10",
+      ".": "^5.62.0"
+    },
     "ts-api-utils": {
       "typescript": "^5"
     }
