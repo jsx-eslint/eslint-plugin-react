@@ -10,7 +10,7 @@
 
 ## Rule Details
 
-This rule checks whether the value and setter variables destructured from a `React.useState()` call are named symmetrically.
+This rule checks whether the result of a `React.useState()` call, when assigned to a variable, is destructured into a value and setter pair, and whether those variables are named symmetrically.
 
 Examples of **incorrect** code for this rule:
 

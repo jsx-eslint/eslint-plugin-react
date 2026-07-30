@@ -36,6 +36,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
 * [Docs] [`no-array-index-key`]: add template literal examples ([#3978][] @akahoshi1421)
 * [`jsx-filename-extension`]: include allowed extensions in message ([#4043][] @aduth)
+* [Docs] [`hook-use-state`]: clarify destructuring requirement ([#4030][] @raisulchowdhury)
 
 [#4044]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4044
 [#4043]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4043
