@@ -39,11 +39,15 @@ jobs:
         typescript-eslint:
           - 8
         exclude:
-          # ESLint 10 supports Node.js 20+.
+          # ESLint 10 supports Node.js ^20.19.0 || ^22.13.0 || >=24
           - eslint: 10
-            node-version: 18
+            node-version: "18"
           - eslint: 10
-            node-version: 19
+            node-version: "19"
+          - eslint: 10
+            node-version: "21"
+          - eslint: 10
+            node-version: "23"
           - eslint: 10
             babel-eslint: 8
 
@@ -54,6 +58,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           after_install: |
+            npm remove --no-save eslint-doc-generator
             npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.eslint == 10 && 'canary' || (matrix.typescript-eslint == 8 && 8.17 || matrix.typescript-eslint) }}" "babel-eslint@${{ matrix.babel-eslint }}" "typescript@5"
           skip-ls-check: true
       - run: npx ls-engines
