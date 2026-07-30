@@ -37,7 +37,21 @@ function convertToFlat(item, plugins) {
         parseForESLint(code, options) {
           const result = parser.parseForESLint(code, options);
           if (result && result.scopeManager && typeof result.scopeManager.addGlobals !== 'function') {
-            result.scopeManager.addGlobals = function () {};
+            result.scopeManager.addGlobals = function addGlobals(globalNames) {
+              const globalScope = this.scopes[0]; // eslint-disable-line no-invalid-this
+              if (!globalScope || !globalScope.set) { return; }
+              for (let i = 0; i < globalNames.length; i++) {
+                if (!globalScope.set.has(globalNames[i])) {
+                  globalScope.set.set(globalNames[i], {
+                    name: globalNames[i],
+                    identifiers: [],
+                    references: [],
+                    defs: [],
+                    scope: globalScope,
+                  });
+                }
+              }
+            };
           }
           return result;
         },
