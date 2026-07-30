@@ -89,6 +89,15 @@
     "typescript-eslint-parser": "^20.1.1"
   },
   "overrides": {
+    "@babel/eslint-parser": {
+      "eslint": "^5 || ^6 || ^7 || ^8 || ^9.7 || ^10"
+    },
+    "eslint-plugin-import": {
+      "eslint": "^5 || ^6 || ^7 || ^8 || ^9.7 || ^10"
+    },
+    "@typescript-eslint/parser": {
+      "eslint": "^5 || ^6 || ^7 || ^8 || ^9.7 || ^10"
+    },
     "@typescript-eslint/utils": "^5.62.0",
     "ts-api-utils": {
       "typescript": "^5"
