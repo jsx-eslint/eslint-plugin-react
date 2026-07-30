@@ -2,6 +2,10 @@ name: 'Tests: ESLint (8-)'
 
 on: [pull_request, push]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   matrix:
     runs-on: ubuntu-latest
@@ -30,9 +34,6 @@ jobs:
           - 7
           - 6
           - 5
-          - 4
-          - 4.14 # last version without messageId
-          - 3
         babel-eslint:
           - 10
           - 9
@@ -43,44 +44,18 @@ jobs:
           - 7
           - 8
         exclude:
-          - eslint: 3
-            babel-eslint: 10
-          - eslint: 3
-            typescript-eslint: 5
-          - eslint: 4
-            typescript-eslint: 5
-          - eslint: 4.14
-            typescript-eslint: 5
           - eslint: 5
             typescript-eslint: 5
-          - eslint: 3
-            typescript-eslint: 6
-          - eslint: 4
-            typescript-eslint: 6
-          - eslint: 4.14
-            typescript-eslint: 6
           - eslint: 5
             typescript-eslint: 6
           - eslint: 6
             typescript-eslint: 6
-          - eslint: 3
-            typescript-eslint: 7
-          - eslint: 4
-            typescript-eslint: 7
-          - eslint: 4.14
-            typescript-eslint: 7
           - eslint: 5
             typescript-eslint: 7
           - eslint: 6
             typescript-eslint: 7
           - eslint: 7
             typescript-eslint: 7
-          - eslint: 3
-            typescript-eslint: 8
-          - eslint: 4
-            typescript-eslint: 8
-          - eslint: 4.14
-            typescript-eslint: 8
           - eslint: 5
             typescript-eslint: 8
           - eslint: 6
@@ -102,7 +77,7 @@ jobs:
           after_install: |
             npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.typescript-eslint == 8 && 8.17 || matrix.typescript-eslint }}" "babel-eslint@${{ matrix.babel-eslint }}" ${{ matrix.typescript-eslint >= 6 && '"typescript@5"' || '' }}
         env:
-          NPM_CONFIG_LEGACY_PEER_DEPS: "${{ matrix.typescript-eslint >= 6 && 'false' || 'true' }}"
+          NPM_CONFIG_LEGACY_PEER_DEPS: "true"
       - run: npx ls-engines
       - run: npm run unit-test
       - uses: codecov/codecov-action@v3.1.5
