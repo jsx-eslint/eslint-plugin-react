@@ -31,7 +31,27 @@ function convertToFlat(item, plugins) {
   }
 
   if (newItem.parser) {
-    newItem.languageOptions.parser = require(newItem.parser); // eslint-disable-line global-require, import/no-dynamic-require
+    const parser = require(newItem.parser); // eslint-disable-line global-require, import/no-dynamic-require
+    if (parser && parser.parseForESLint) {
+      newItem.languageOptions.parser = {
+        parseForESLint(code, options) {
+          const result = parser.parseForESLint(code, options);
+          if (result && result.scopeManager && typeof result.scopeManager.addGlobals !== 'function') {
+            result.scopeManager.addGlobals = function () {};
+          }
+          return result;
+        },
+        parse(code, options) {
+          if (parser.parse) {
+            return parser.parse(code, options);
+          }
+          return undefined; // satisfy consistent-return
+        },
+        meta: parser.meta,
+      };
+    } else {
+      newItem.languageOptions.parser = parser;
+    }
     delete newItem.parser;
   }
 
