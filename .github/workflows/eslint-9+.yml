@@ -54,13 +54,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: strip eslint-doc-generator and typescript to avoid peer conflicts
-        run: echo "$(jq 'del(.devDependencies["eslint-doc-generator"], .devDependencies["typescript"])' package.json)" > package.json
+        run: jq 'del(.devDependencies["eslint-doc-generator"], .devDependencies["typescript"])' package.json > package.json.tmp && mv package.json.tmp package.json
       - uses: ljharb/actions/node/install@main
         name: 'nvm install ${{ matrix.node-version }} && npm install'
         with:
           node-version: ${{ matrix.node-version }}
           after_install: |
-            npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.eslint == 10 && 'canary' || (matrix.typescript-eslint == 8 && 8.17 || matrix.typescript-eslint) }}" "babel-eslint@${{ matrix.babel-eslint }}" "typescript@5" --legacy-peer-deps
+            npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.typescript-eslint == 8 && '8.17' || matrix.typescript-eslint }}" "babel-eslint@${{ matrix.babel-eslint }}" "typescript@5" --legacy-peer-deps
           skip-ls-check: true
       - run: npx ls-engines
       - run: npm run unit-test
