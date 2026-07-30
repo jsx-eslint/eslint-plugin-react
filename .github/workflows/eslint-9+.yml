@@ -41,13 +41,13 @@ jobs:
         exclude:
           # ESLint 10 supports Node.js ^20.19.0 || ^22.13.0 || >=24
           - eslint: 10
-            node-version: "18"
+            node-version: 18
           - eslint: 10
-            node-version: "19"
+            node-version: 19
           - eslint: 10
-            node-version: "21"
+            node-version: 21
           - eslint: 10
-            node-version: "23"
+            node-version: 23
           - eslint: 10
             babel-eslint: 8
 
