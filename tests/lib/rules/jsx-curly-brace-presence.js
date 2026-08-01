@@ -95,6 +95,40 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
     },
     {
       code: `
+        <span>
+          <span>The braces</span>
+          {""} matter here.
+        </span>
+      `,
+      options: [{ children: 'never' }],
+    },
+    {
+      code: `
+        <span>
+          <span>The braces</span>
+          {\`\`} matter here.
+        </span>
+      `,
+      options: [{ children: 'never' }],
+    },
+    {
+      code: "<span>\n  The braces {\"\"}\n  <span>matter here.</span>\n</span>",
+      options: [{ children: 'never' }],
+    },
+    {
+      code: "<span>\n  The braces {``}\n  <span>matter here.</span>\n</span>",
+      options: [{ children: 'never' }],
+    },
+    {
+      code: "<span>\n  {\"\"} matter here.\n</span>",
+      options: [{ children: 'never' }],
+    },
+    {
+      code: "<span>\n  <span>The braces</span>\n  {\"\"}\tmatter here.\n</span>",
+      options: [{ children: 'never' }],
+    },
+    {
+      code: `
         <>
           foo{' '}
           <span>bar</span>
@@ -481,6 +515,42 @@ ruleTester.run('jsx-curly-brace-presence', rule, {
   )),
 
   invalid: parsers.all([].concat(
+    {
+      code: '<span><span>The braces</span>{""}matter here.</span>',
+      options: [{ children: 'never' }],
+      output: '<span><span>The braces</span>matter here.</span>',
+      errors: [{ messageId: 'unnecessaryCurly' }],
+    },
+    {
+      code: '<span><span>The braces</span>{``}matter here.</span>',
+      options: [{ children: 'never' }],
+      output: '<span><span>The braces</span>matter here.</span>',
+      errors: [{ messageId: 'unnecessaryCurly' }],
+    },
+    {
+      code: "<span>\n  <span>The braces</span>\n  {\"\"}\n  matter here.\n</span>",
+      options: [{ children: 'never' }],
+      output: "<span>\n  <span>The braces</span>\n  \n  matter here.\n</span>",
+      errors: [{ messageId: 'unnecessaryCurly' }],
+    },
+    {
+      code: "<span>\n  <span>The braces</span>x\n  {\"\"} matter here.\n</span>",
+      options: [{ children: 'never' }],
+      output: "<span>\n  <span>The braces</span>x\n   matter here.\n</span>",
+      errors: [{ messageId: 'unnecessaryCurly' }],
+    },
+    {
+      code: "<span>\n  <span>The braces</span>\n  {\"\"} \n  <span>matter here.</span>\n</span>",
+      options: [{ children: 'never' }],
+      output: "<span>\n  <span>The braces</span>\n   \n  <span>matter here.</span>\n</span>",
+      errors: [{ messageId: 'unnecessaryCurly' }],
+    },
+    {
+      code: "<span>\n  <span>The braces</span>\n  {\"\"}\u00A0matter here.\n</span>",
+      options: [{ children: 'never' }],
+      output: "<span>\n  <span>The braces</span>\n  \u00A0matter here.\n</span>",
+      errors: [{ messageId: 'unnecessaryCurly' }],
+    },
     {
       code: '<App prop={`foo`} />',
       options: [{ props: 'never' }],
