@@ -5,9 +5,12 @@ const componentUtil = require('../../lib/util/componentUtil');
 
 const isExplicitComponent = componentUtil.isExplicitComponent;
 
-
 /**
  * Helper to build a minimal AST node stub with `loc` and `parent` properties.
+ * @param {string} type The AST node type
+ * @param {string} [parentType] The parent node type
+ * @param {string} [parentParentType] The grandparent node type
+ * @returns {object} A minimal AST node stub
  */
 function makeNode(type, parentType, parentParentType) {
   const node = {
@@ -34,14 +37,6 @@ const REACT_COMPONENT_JSDOC = {
   type: 'Block',
   value: '*\n * @extends React.Component\n ',
 };
-const NOT_JSDOC = {
-  type: 'Block',
-  value: ' Not a JSDoc comment ',
-};
-const LINE_COMMENT = {
-  type: 'Line',
-  value: ' just a line comment',
-};
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Mock context helper
@@ -57,7 +52,6 @@ function makeContext(sourceCode) {
 // =============================================================================
 describe('componentUtil', () => {
   describe('isExplicitComponent', () => {
-
     // ─── ESLint 9 path (getJSDocComment is available) ──────────────────────
     describe('ESLint 9 path (getJSDocComment available)', () => {
       it('returns true when getJSDocComment returns a valid @extends comment', () => {
@@ -89,7 +83,6 @@ describe('componentUtil', () => {
 
     // ─── ESLint 10+ fallback path ───────────────────────────────────────────
     describe('ESLint 10+ fallback (getJSDocComment absent)', () => {
-
       // ── ClassDeclaration (plain) ──────────────────────────────────────────
       describe('ClassDeclaration', () => {
         it('returns true when JSDoc is directly adjacent (gap = 0 lines)', () => {
@@ -348,9 +341,7 @@ describe('componentUtil', () => {
           // Even though a JSDoc is adjacent, Identifier is not a handled case
           assert.equal(isExplicitComponent(node, makeContext(sourceCode)), false);
         });
-      });
-
+      }); // unknown node type
     }); // ESLint 10+ fallback
-
   }); // isExplicitComponent
 }); // componentUtil
