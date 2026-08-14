@@ -57,6 +57,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-sort-props`]: do not autofix props next to an ambiguous comment, on its own line or a block comment ([#4035][] @adarshx01)
 * [`no-danger-with-children`]: report children when the JSX spans lines (@ljharb)
 * [`no-children-prop`]: report a function child when the JSX spans lines ([#4033][] @ckarnell)
+* [`prop-types`]: do not treat an inline callback's own `props` parameter as component props ([#4034][] @ckarnell)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -85,6 +86,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#4044]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4044
 [#4043]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4043
 [#4035]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4035
+[#4034]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4034
 [#4033]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4033
 [#4029]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4029
 [#4028]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4028
