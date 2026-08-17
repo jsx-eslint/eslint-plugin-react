@@ -17,7 +17,7 @@ const rule = require('../../../lib/rules/jsx-sort-props');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2023,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
@@ -349,7 +349,7 @@ ruleTester.run('jsx-sort-props', rule, {
       `,
       options: sortFirstWithMultilineFirstArgs,
     },
-    { code: '<App classname="test" a="test2" />;', options: sortFirstWithIgnoreCaseArgs }
+    { code: '<App classname="test" a="test2" />;', options: sortFirstWithIgnoreCaseArgs },
   )),
   invalid: parsers.all([].concat(
     {
@@ -1231,6 +1231,6 @@ ruleTester.run('jsx-sort-props', rule, {
       options: sortFirstMultipleArgs,
       errors: [expectedSortFirstError],
       output: '<App className="test" id="test" id="test2" />;',
-    }
+    },
   )),
 });
