@@ -888,19 +888,7 @@ ruleTester.run('jsx-sort-props', rule, {
           d={0}
         />
       `,
-      output: `
-        <foo
-          a={0}
-          b={0}
-          d={0}
-          m={0}
-          n={0} // this is n
-          o={0}
-          c={0} // this is c
-          // fofof
-          f={0} // this is f
-        />
-      `,
+      output: null,
       errors: [
         {
           messageId: 'sortPropsByAlpha',
@@ -993,20 +981,7 @@ ruleTester.run('jsx-sort-props', rule, {
           f={0}
         />
       `,
-      output: `
-        <foo
-          a1={0}
-          ab={1} // comment for ab
-          f={0}
-          g={0}
-          c={0} // comment for c
-          // comment for c and e
-          e={1}
-          d={0} // comment for d
-          // comment for d and aa
-          aa={0}
-        />
-      `,
+      output: null,
       errors: [
         {
           messageId: 'sortPropsByAlpha',
@@ -1049,20 +1024,7 @@ ruleTester.run('jsx-sort-props', rule, {
           aa={1} // comment for aa
         />
       `,
-      output: `
-        <foo
-          a1={0}
-          aa={1} // comment for aa
-          d={0}
-          g={0}
-          ab={1}
-          // comment for ab and f
-          f={0}
-          c={0} // comment for c
-          // comment for c and e
-          e={1}
-        />
-      `,
+      output: null,
       errors: [
         {
           messageId: 'sortPropsByAlpha',
@@ -1086,9 +1048,7 @@ ruleTester.run('jsx-sort-props', rule, {
       code: `
         <foo a={0} b={1} /* comment for b and ab */ ab={1} aa={0} />
       `,
-      output: `
-        <foo a={0} aa={0} b={1} /* comment for b and ab */ ab={1} />
-      `,
+      output: null,
       errors: [
         {
           messageId: 'sortPropsByAlpha',
@@ -1104,9 +1064,7 @@ ruleTester.run('jsx-sort-props', rule, {
       code: `
         <ReactJson src={rowResult} name="data" collapsed={4} collapseStringsAfterLength={60} onEdit={onEdit} /* onDelete={onEdit} */ />
       `,
-      output: `
-        <ReactJson collapseStringsAfterLength={60} collapsed={4} name="data" src={rowResult} onEdit={onEdit} /* onDelete={onEdit} */ />
-      `,
+      output: null,
       errors: [
         {
           messageId: 'sortPropsByAlpha',
@@ -1123,6 +1081,71 @@ ruleTester.run('jsx-sort-props', rule, {
         {
           messageId: 'sortPropsByAlpha',
           line: 2,
+        },
+      ],
+    },
+    {
+      // https://github.com/jsx-eslint/eslint-plugin-react/issues/3966
+      code: `
+        <Column
+          visible
+          allowHeaderFiltering={false}
+          caption="country"
+          dataField="CountryCode"
+          name="country"
+          width={300}
+          cellRender={() => null}
+          // setCellValue={setCountryStateValue}
+          dataType="string"
+        />
+      `,
+      options: [{
+        callbacksLast: true,
+        shorthandFirst: true,
+        ignoreCase: true,
+        multiline: 'last',
+      }],
+      output: null,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 9,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 11,
+        },
+      ],
+    },
+    {
+      code: `
+        <App
+          {...spread}
+          b={1}
+          // comment
+          a={0}
+        />
+      `,
+      output: null,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+        },
+      ],
+    },
+    {
+      // a prop sharing its line could end up next to a trailing comment that isn't its own
+      code: `
+        <App
+          b={1} c={1} // about c
+          a={0}
+        />
+      `,
+      output: null,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 4,
         },
       ],
     },

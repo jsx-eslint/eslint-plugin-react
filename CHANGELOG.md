@@ -54,6 +54,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`boolean-prop-naming`]: report a prop once, when components share its props type (@ljharb)
 * [`boolean-prop-naming`]: check props typed with a `memo`/`forwardRef` type argument, like `forwardRef<Ref, Props>` (@ljharb)
 * [`jsx-no-leaked-render`]: only treat `Boolean()` calls, comparisons, and boolean unary operators as coerced, not other calls or arithmetic that can render `0` (@ljharb)
+* [`jsx-sort-props`]: do not autofix props next to an ambiguous comment, on its own line or a block comment ([#4035][] @adarshx01)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -78,6 +79,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#4046]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4046
 [#4044]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4044
 [#4043]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4043
+[#4035]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4035
 [#4029]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4029
 [#4028]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4028
 [#4017]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4017
