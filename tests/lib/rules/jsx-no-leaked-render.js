@@ -17,7 +17,7 @@ const rule = require('../../../lib/rules/jsx-no-leaked-render');
 const parsers = require('../../helpers/parsers');
 
 const parserOptions = {
-  ecmaVersion: 2018,
+  ecmaVersion: 2023,
   sourceType: 'module',
   ecmaFeatures: {
     jsx: true,
@@ -1057,6 +1057,6 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         line: 5,
         column: 27,
       }],
-    }
+    },
   )),
 });

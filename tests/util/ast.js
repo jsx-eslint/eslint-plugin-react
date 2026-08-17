@@ -10,7 +10,7 @@ const traverseReturns = ast.traverseReturns;
 const isFunctionLike = ast.isFunctionLike;
 
 const DEFAULT_CONFIG = {
-  ecmaVersion: 6,
+  ecmaVersion: 2023,
 };
 
 const parseCode = (code) => {
