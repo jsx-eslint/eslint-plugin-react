@@ -1098,7 +1098,27 @@ ruleTester.run('jsx-sort-props', rule, {
       errors: [
         {
           messageId: 'sortPropsByAlpha',
-          line: 10,
+          line: 9,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 11,
+        },
+      ],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 3') ? {
+      code: `
+        <App
+          {...spread}
+          b={1}
+          // comment
+          a={0}
+        />
+      `,
+      output: null,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
         },
       ],
     } : [],
