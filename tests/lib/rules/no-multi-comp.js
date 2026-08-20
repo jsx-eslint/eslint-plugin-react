@@ -23,6 +23,178 @@ const parserOptions = {
 };
 
 // ------------------------------------------------------------------------------
+// Combinatorial test generation for ignoreInvalid
+// ------------------------------------------------------------------------------
+// eslint-disable-next-line valid-jsdoc
+/**
+ * @typedef {Function} ComponentGenerator
+ * @param {string} name - The name of the component to be generated.
+ * @returns {string} - The component declaration.
+ */
+
+// eslint-disable-next-line valid-jsdoc
+/**
+ * @type {ComponentGenerator[]} Array of different ways to output valid code for instantiating a React component with the given name.
+ */
+const SIMPLE_COMPONENT_TYPES = [
+  (name) => `const ${name} = () => <></>;`, // arrow function component
+  (name) => `let ${name} = () => <></>;`, // arrow function component (with let)
+  (name) => `var ${name} = () => <></>;`, // arrow function component (with var)
+  (name) => `const ${name} = memo(() => <></>);`, // memoized anonymous component
+  (name) => `const ${name} = async () => <></>;`, // async component (react server components)
+];
+
+// eslint-disable-next-line valid-jsdoc
+/**
+ * @type {ComponentGenerator[]} Array of different ways to output valid code for instantiating a React component with the given name.
+ */
+const COMPLEX_COMPONENT_TYPES = [
+  (name) => `function ${name}() { return <></>; }`, // standard function component
+  (name) => `class ${name} extends React.Component {
+    render() { return <></>; }
+  }`, // class component
+];
+
+/**
+ * Helper function for combinatorial testing of no-multi-comp ignoreInternal rule.
+ *
+ * @typedef {Function} ComponentExportGenerator
+ * @param {ComponentGenerator} compOne - Generator function for the first component to export.
+ * @param {string} compOneName - The name of the first component, which will typically be exported.
+ * @param {ComponentGenerator} compTwo - Generator function for the second component to export.
+ * @param {string} compTwoName - The name of the second component. This will be exported in invalid scenarios.
+ * @param {string} exportRename - A potential rename of the export for the first component, used by some scenarios.
+ * @returns {string} - A (nearly) complete test case - although we also prepend a generic import string.
+ */
+
+// eslint-disable-next-line valid-jsdoc
+/**
+ * @type {ComponentExportGenerator[]}
+ */
+const EXPORT_TYPES_VALID = [
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}`, // no export at all
+  // DECLARATION TIME EXPORTS
+  (compOne, compOneName, compTwo, compTwoName) => `
+    export ${compOne(compOneName)}
+    ${compTwo(compTwoName)}`, // standard export
+  (compOne, compOneName, compTwo, compTwoName, exportRename) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    module.exports = { ${exportRename} : ${compOneName} }`, // module export with rename, post declaration
+  // nb: module export at declaration time will be handled separately
+  // POST DECLARATION EXPORTS
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    export default ${compOneName}`, // default export, post declaration
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    export { ${compOneName} }`, //  export, post declaration
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    module.exports = { ${compOneName} }`, // module export, post declaration
+  (compOne, compOneName, compTwo, compTwoName, exportRename) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    module.exports = { ${exportRename} : ${compOneName} }`, // module export with rename, post declaration
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    export default function() { return <${compOneName} />; }`, // exporting component with indirection
+];
+
+// eslint-disable-next-line valid-jsdoc
+/**
+ * Special case: inline `export default` syntax cannot be followed by `const, let, var`
+ *
+ * @type {ComponentExportGenerator[]}
+ */
+const EXPORT_TYPES_VALID_COMPLEX = [
+  (compOne, compOneName, compTwo, compTwoName) => `
+    export default ${compOne(compOneName)}
+    ${compTwo(compTwoName)}`, // default export
+];
+
+// eslint-disable-next-line valid-jsdoc
+/**
+ * @type {ComponentExportGenerator[]}
+ */
+const EXPORT_TYPES_INVALID = [
+  // DECLARATION TIME EXPORTS
+  (compOne, compOneName, compTwo, compTwoName) => `
+    export ${compOne(compOneName)}
+    export ${compTwo(compTwoName)}`, // standard export
+  // nb: module export at declaration time will be handled separately
+  // POST DECLARATION EXPORTS
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    export default ${compOneName}
+    export { ${compTwoName} }`, // default export, post declaration
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    export { ${compOneName} }
+    export { ${compTwoName} }`, //  export, post declaration
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    export { ${compOneName}, ${compTwoName} }`, //  export, post declaration
+  (compOne, compOneName, compTwo, compTwoName) => `
+    ${compOne(compOneName)}
+    ${compTwo(compTwoName)}
+    module.exports = { ${compOneName} ${compTwoName} }`, // module export, post declaration
+];
+
+// eslint-disable-next-line valid-jsdoc
+/**
+ * @type {ComponentExportGenerator[]}
+ */
+const EXPORT_TYPES_INVALID_COMPLEX = [
+  // DECLARATION TIME EXPORTS
+  (compOne, compOneName, compTwo, compTwoName) => `
+    export default ${compOne(compOneName)}
+    export ${compTwo(compTwoName)}`, // default export
+];
+
+/**
+ * @param {ComponentExportGenerator[]} scenarioArray array of scenario generator functions which we will now convert into strings
+ * @param {ComponentGenerator[]} componentTypes array of components to generate on
+ * @param {boolean} [invalid] whether generated scenarios should expect to fail
+ * @returns {{code: string, options: object[], errors: object[]}[]}
+ */
+const generateScenarios = (scenarioArray, componentTypes, invalid = false) => {
+  const result = [];
+  for (const scenario of scenarioArray) {
+    for (const first of componentTypes) {
+      for (const second of SIMPLE_COMPONENT_TYPES) {
+        result.push({
+          code: `
+        import React, { memo, Component } from 'react';
+        ${scenario(first, 'ComponentOne', second, 'ComponentTwo', 'RenamedComponent')}`,
+          options: [{ ignoreInternal: true }],
+          errors: invalid ? [{ messageId: 'onlyOneExportedComponent' }] : undefined,
+        });
+      }
+    }
+  }
+  return result;
+};
+
+const ignoreInternalValidScenarios = [
+  ...generateScenarios(EXPORT_TYPES_VALID, [...SIMPLE_COMPONENT_TYPES, ...COMPLEX_COMPONENT_TYPES]),
+  ...generateScenarios(EXPORT_TYPES_VALID_COMPLEX, COMPLEX_COMPONENT_TYPES),
+];
+const ignoreInternalInvalidScenarios = [
+  ...generateScenarios(EXPORT_TYPES_INVALID, [...SIMPLE_COMPONENT_TYPES, ...COMPLEX_COMPONENT_TYPES]),
+  ...generateScenarios(EXPORT_TYPES_INVALID_COMPLEX, COMPLEX_COMPONENT_TYPES),
+];
+
+// ------------------------------------------------------------------------------
 // Tests
 // ------------------------------------------------------------------------------
 
@@ -264,6 +436,36 @@ ruleTester.run('no-multi-comp', rule, {
 
         export default MenuList
       `,
+    },
+    ...ignoreInternalValidScenarios,
+    { // special case: components declared inside of module export block
+      code: `
+        const ComponentOne = () => <></>;
+        module.exports = {
+          ComponentTwo() { return <></>; }
+        };
+      `,
+      options: [{ ignoreInternal: true }],
+    },
+    { // basic testing for intersection of ignoreStateless and ignoreInternal
+      code: `
+        export function Hello(props) {
+          return <div>Hello {props.name}</div>;
+        }
+        export function HelloAgain(props) {
+          return <div>Hello again {props.name}</div>;
+        }
+      `,
+      options: [{ ignoreStateless: true, ignoreInternal: true }],
+    },
+    {
+      code: `
+        export const HelloComponent = (props) => {
+          return <div></div>;
+        }
+        export default React.memo((props, ref) => <HelloComponent {...props} />);
+      `,
+      options: [{ ignoreStateless: true, ignoreInternal: true }],
     },
   ]),
 
@@ -611,6 +813,17 @@ ruleTester.run('no-multi-comp', rule, {
         },
       },
       errors: [{ messageId: 'onlyOneComponent' }],
+    },
+    ...ignoreInternalInvalidScenarios,
+    { // special case: components declared inside of module export block
+      code: `
+        module.exports = {
+          ComponentOne() { return <></>; }
+          ComponentTwo() { return <></>; }
+        };
+      `,
+      options: [{ ignoreInternal: true }],
+      errors: [{ messageId: 'onlyOneExportedComponent' }],
     },
   ]),
 });
