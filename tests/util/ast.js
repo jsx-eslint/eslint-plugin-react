@@ -8,6 +8,7 @@ const ast = require('../../lib/util/ast');
 
 const traverseReturns = ast.traverseReturns;
 const isFunctionLike = ast.isFunctionLike;
+const getPropertyName = ast.getPropertyName;
 
 const DEFAULT_CONFIG = {
   ecmaVersion: 6,
@@ -172,6 +173,36 @@ describe('ast', () => {
         const a = 5;
       `);
       assert.strictEqual(isFunctionLike(node2), false);
+    });
+  });
+
+  describe('getPropertyName()', () => {
+    it('returns static identifier and string property names', () => {
+      const properties = parseCode(`
+        const value = { foo: 1, ['bar']: 2 };
+      `).declarations[0].init.properties;
+
+      assert.strictEqual(getPropertyName(properties[0]), 'foo');
+      assert.strictEqual(getPropertyName(properties[1]), 'bar');
+    });
+
+    it('ignores dynamic computed and non-string property names', () => {
+      const properties = parseCode(`
+        const value = { [key]: 1, 3: 2 };
+      `).declarations[0].init.properties;
+
+      assert.strictEqual(getPropertyName(properties[0]), '');
+      assert.strictEqual(getPropertyName(properties[1]), '');
+    });
+
+    it('returns static member names and ignores dynamic members', () => {
+      const staticMember = parseCode('value.foo;').expression;
+      const computedMember = parseCode('value["bar"];').expression;
+      const dynamicMember = parseCode('value[key];').expression;
+
+      assert.strictEqual(getPropertyName(staticMember), 'foo');
+      assert.strictEqual(getPropertyName(computedMember), 'bar');
+      assert.strictEqual(getPropertyName(dynamicMember), '');
     });
   });
 });
