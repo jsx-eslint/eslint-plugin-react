@@ -86,7 +86,21 @@ describe('Version', () => {
       assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
 
       expectedErrorArgs = [
-        ['Warning: React version specified in eslint-plugin-react settings must be a valid semver version, or “detect”; got “not semver”. Falling back to latest version as default.'],
+        ['Warning: default React version specified in eslint-plugin-react settings must be a valid semver version; got “not semver”. Falling back to latest version as default.'],
+        ['Warning: React version was set to “detect” in eslint-plugin-react settings, but the “react” package is not installed. Assuming latest React version for linting.'],
+      ];
+
+      delete context.settings.react.defaultVersion;
+    });
+
+    it('suggests setting `version` when the default version is set to "detect"', () => {
+      context.settings.react.defaultVersion = 'detect';
+      sinon.stub(context, 'getFilename').callsFake(() => path.resolve(base, 'detect-version-missing', 'test.js'));
+
+      assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
+
+      expectedErrorArgs = [
+        ['Warning: default React version specified in eslint-plugin-react settings must be a valid semver version; got “detect”. To detect the installed React version, set “version”, not “defaultVersion”, to “detect”. Falling back to latest version as default.'],
         ['Warning: React version was set to “detect” in eslint-plugin-react settings, but the “react” package is not installed. Assuming latest React version for linting.'],
       ];
 
