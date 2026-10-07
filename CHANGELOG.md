@@ -16,6 +16,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`forbid-dom-props`]: Add `disallowedValues` option for forbidden props ([#3877][] @makxca)
 
 ### Fixed
+* [chore(audit)]: handle npm audit errors explicitly with descriptive logging ([#4026][] @aipd506)
 * [`no-unknown-property`]: allow `onLoad` on `body` ([#3923][] @DerekStapleton)
 * [`no-unknown-property`]: allow `closedby` on `dialog` ([#3980][] @ljharb)
 * [`no-unknown-property`]: add `onScrollEnd` and `onScrollEndCapture` events as known properties ([#3958][] @xfeeefeee)
@@ -29,6 +30,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
 * [Docs] [`no-array-index-key`]: add template literal examples ([#3978][] @akahoshi1421)
 
+[#4026]: https://github.com/jsx-eslint/eslint-plugin-react/issues/4026
 [#3986]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3986
 [#3978]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3978
 [#3958]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3958

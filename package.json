@@ -17,7 +17,7 @@
     "postlint": "npm run type-check",
     "pretest": "npm run lint",
     "test": "npm run unit-test",
-    "posttest": "npx npm@'>= 10.2' audit --production",
+    "posttest": "node scripts/audit.js",
     "type-check": "tsc",
     "unit-test": "istanbul cover node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js tests/flat-config.js",
     "update:eslint-docs": "eslint-doc-generator"
