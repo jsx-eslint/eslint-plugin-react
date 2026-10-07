@@ -17,7 +17,7 @@
     "postlint": "npm run type-check",
     "pretest": "npm run lint",
     "test": "npm run unit-test",
-    "posttest": "npx npm@'>= 10.2' audit --production",
+    "posttest": "node scripts/audit.js",
     "type-check": "tsc",
     "unit-test": "istanbul cover node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js tests/flat-config.js",
     "update:eslint-docs": "eslint-doc-generator"
@@ -67,7 +67,7 @@
     "@types/node": "^4.9.5",
     "@typescript-eslint/parser": "^2.34.0 || ^3.10.1 || ^4 || ^5 || ^6.20 || ^7.14.1 || 8.4 - 8.17",
     "babel-eslint": "^8 || ^9 || ^10.1.0",
-    "eslint": "^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7",
+    "eslint": "^5 || ^6 || ^7 || ^8",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-doc-generator": "^3.7.1",
     "eslint-plugin-eslint-plugin": "^2.3.0 || ^3.5.3 || ^4.0.1 || ^5.0.5",
@@ -89,10 +89,10 @@
     "typescript-eslint-parser": "^20.1.1"
   },
   "peerDependencies": {
-    "eslint": "^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7"
+    "eslint": "^5 || ^6 || ^7 || ^8 || ^9.7 || ^10"
   },
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "keywords": [
     "eslint",
@@ -121,5 +121,22 @@
       "!*.d.ts",
       "!*.d.ts.map"
     ]
+  },
+  "overrides": {
+    "@babel/eslint-parser": {
+      "eslint": "^5 || ^6 || ^7 || ^8 || ^9.7 || ^10"
+    },
+    "eslint-plugin-import": {
+      "eslint": "^5 || ^6 || ^7 || ^8 || ^9.7 || ^10"
+    },
+    "@typescript-eslint/parser": {
+      "eslint": "^5 || ^6 || ^7 || ^8 || ^9.7 || ^10"
+    },
+    "eslint-config-airbnb-base": {
+      "eslint": "^5 || ^6 || ^7 || ^8 || ^9.7 || ^10"
+    },
+    "@typescript-eslint/utils": {
+      "eslint": "^5 || ^6 || ^7 || ^8 || ^9.7 || ^10"
+    }
   }
 }

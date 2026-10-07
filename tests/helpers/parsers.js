@@ -6,8 +6,8 @@ const version = require('eslint/package.json').version;
 const flatMap = require('array.prototype.flatmap');
 const tsParserVersion = require('@typescript-eslint/parser/package.json').version;
 
-const disableNewTS = semver.satisfies(tsParserVersion, '>= 4.1') // this rule is not useful on v4.1+ of the TS parser
-  ? (x) => Object.assign({}, x, { features: [].concat(x.features, 'no-ts-new') })
+const disableNewTS = semver.satisfies(tsParserVersion, '>= 4.1', { includePrerelease: true }) // this rule is not useful on v4.1+ of the TS parser
+  ? (x) => Object.assign({}, x, { features: [].concat(x.features || [], 'no-ts-new') })
   : (x) => x;
 
 function minEcmaVersion(features, parserOptions) {
@@ -150,8 +150,11 @@ const parsers = {
         || features.has('jsx namespace')
         || features.has('bind operator')
         || features.has('do expressions');
-      // typescript-eslint-parser (deprecated) cannot parse a TS 5 tsconfig, used by the eslint 10 matrix.
-      const tsOld = !skipTS && !features.has('no-ts-old') && !semver.satisfies(version, '>= 10');
+      // typescript-eslint-parser (deprecated) cannot parse the TS 5 tsconfig used with modern TS parsers.
+      const tsOld = !skipTS
+        && !features.has('no-ts-old')
+        && !semver.satisfies(version, '>= 10')
+        && !semver.satisfies(tsParserVersion, '>= 6');
       const tsNew = !skipTS && !features.has('no-ts-new');
 
       return [].concat(

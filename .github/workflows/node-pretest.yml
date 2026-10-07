@@ -2,6 +2,10 @@ name: 'Tests: pretest/posttest'
 
 on: [pull_request, push]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   pretest:
     runs-on: ubuntu-latest
