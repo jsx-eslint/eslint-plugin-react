@@ -88,6 +88,11 @@
     "typescript": "^3.9.9",
     "typescript-eslint-parser": "^20.1.1"
   },
+  "overrides": {
+    "ts-api-utils": {
+      "typescript": "^5"
+    }
+  },
   "peerDependencies": {
     "eslint": "^3 || ^4 || ^5 || ^6 || ^7 || ^8 || ^9.7"
   },
