@@ -27,6 +27,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unused-prop-types`]: detect used props in nested components ([#3955][] @avaice)
 * [`no-unknown-property`]: add missing CSS transition event handlers ([#4001][] @baevm)
 * [`jsx-closing-bracket-location`]: preserve comments in autofix ([#4028][] @raisulchowdhury)
+* [`jsx-closing-bracket-location`]: keep TS type arguments when autofixing (@ljharb)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)

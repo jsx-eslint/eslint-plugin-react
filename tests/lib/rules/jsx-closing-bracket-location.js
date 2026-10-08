@@ -444,6 +444,43 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     },
     {
       code: `
+        <App<string>
+        />
+      `,
+      output: `
+        <App<string> />
+      `,
+      features: ['ts', 'no-babel'],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_AFTER_TAG,
+            details: '',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        <App<string>
+          // foo={bar}
+        />
+      `,
+      output: null,
+      features: ['ts', 'no-babel'],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_AFTER_TAG,
+            details: '',
+          },
+        },
+      ],
+    },
+    {
+      code: `
         <App foo
         />
       `,
