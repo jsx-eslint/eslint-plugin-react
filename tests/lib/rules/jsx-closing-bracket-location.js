@@ -655,6 +655,29 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     },
     {
       code: `
+        <App
+          foo
+          /* bar */ />
+      `,
+      output: `
+        <App
+          foo
+          /* bar */
+          />
+      `,
+      options: [{ location: 'props-aligned' }],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_PROPS_ALIGNED,
+            details: details(11, true),
+          },
+        },
+      ],
+    },
+    {
+      code: `
         var x = <App
           foo
           // bar

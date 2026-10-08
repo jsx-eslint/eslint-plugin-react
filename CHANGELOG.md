@@ -28,6 +28,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: add missing CSS transition event handlers ([#4001][] @baevm)
 * [`jsx-closing-bracket-location`]: preserve comments in autofix ([#4028][] @raisulchowdhury)
 * [`jsx-closing-bracket-location`]: keep TS type arguments when autofixing (@ljharb)
+* [`jsx-closing-bracket-location`]: say "on the next line" when a comment shares the closing bracket's line (@ljharb)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
