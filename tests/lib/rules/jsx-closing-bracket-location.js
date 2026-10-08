@@ -47,6 +47,22 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
     },
     {
       code: `
+        <App
+          foo /* bar */ />
+      `,
+      options: [{ location: 'after-props' }],
+    },
+    {
+      code: `
+        <App
+          foo
+          // bar
+        />
+      `,
+      options: [{ location: 'tag-aligned' }],
+    },
+    {
+      code: `
         <App foo />
       `,
     },
@@ -440,6 +456,204 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           data: {
             location: MESSAGE_AFTER_PROPS,
             details: '',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        <App
+          foo
+          // baz */
+        />
+      `,
+      output: null,
+      options: [{ location: 'after-props' }],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_AFTER_PROPS,
+            details: '',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        <App
+          foo
+          // bar
+          // baz
+        />
+      `,
+      output: null,
+      options: [{ location: 'after-props' }],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_AFTER_PROPS,
+            details: '',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        <App
+          foo
+          // bar
+          // baz
+        ></App>
+      `,
+      output: null,
+      options: [{ location: 'after-props' }],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_AFTER_PROPS,
+            details: '',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        <App
+          // foo={bar}
+        />
+      `,
+      output: null,
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_AFTER_TAG,
+            details: '',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        <App
+          // foo={bar}
+        ></App>
+      `,
+      output: null,
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_AFTER_TAG,
+            details: '',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        <App
+          foo
+          /* bar */ />
+      `,
+      output: null,
+      options: [{ location: 'after-props' }],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_AFTER_PROPS,
+            details: '',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        <App
+          foo
+          // bar
+            />
+      `,
+      output: `
+        <App
+          foo
+          // bar
+        />
+      `,
+      options: [{ location: 'tag-aligned' }],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(9, false),
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        <App
+          foo /* bar */ />
+      `,
+      output: `
+        <App
+          foo /* bar */
+          />
+      `,
+      options: [{ location: 'props-aligned' }],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_PROPS_ALIGNED,
+            details: details(11, true),
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        var x = <App
+          foo
+          // bar
+            ></App>
+      `,
+      output: `
+        var x = <App
+          foo
+          // bar
+        ></App>
+      `,
+      options: [{ location: 'line-aligned' }],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_LINE_ALIGNED,
+            details: details(9, false),
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        <App
+          foo
+            / /* bar */>
+      `,
+      output: null,
+      options: [{ location: 'tag-aligned' }],
+      errors: [
+        {
+          messageId: 'bracketLocation',
+          data: {
+            location: MESSAGE_TAG_ALIGNED,
+            details: details(9, false),
           },
         },
       ],

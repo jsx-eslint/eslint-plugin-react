@@ -26,6 +26,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`display-name`]: avoid false positive when React is shadowed ([#3926][] @hyeonbinHur)
 * [`no-unused-prop-types`]: detect used props in nested components ([#3955][] @avaice)
 * [`no-unknown-property`]: add missing CSS transition event handlers ([#4001][] @baevm)
+* [`jsx-closing-bracket-location`]: preserve comments in autofix ([#4028][] @raisulchowdhury)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -34,6 +35,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 [#4044]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4044
 [#4043]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4043
+[#4028]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4028
 [#4001]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4001
 [#3986]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3986
 [#3978]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3978
