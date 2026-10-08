@@ -1127,6 +1127,46 @@ ruleTester.run('jsx-sort-props', rule, {
         },
       ],
     } : [],
+    semver.satisfies(eslintPkg.version, '> 3') ? {
+      code: `
+        <div
+          onClick={() => console.log()} // Comment
+          className="flex"
+        >
+          <span>Problematic Component</span>
+        </div>
+      `,
+      output: `
+        <div
+          className="flex"
+          onClick={() => console.log()} // Comment
+        >
+          <span>Problematic Component</span>
+        </div>
+      `,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 4,
+        },
+      ],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 3') ? {
+      code: `
+        <div
+          onClick={() => console.log()} // Comment
+          id="root">
+          <span>Problematic Component</span>
+        </div>
+      `,
+      output: null,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 4,
+        },
+      ],
+    } : [],
     {
       code: `
         <Page
