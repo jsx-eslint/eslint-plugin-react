@@ -10,7 +10,6 @@
 
 const babelEslintVersion = require('babel-eslint/package.json').version;
 const semver = require('semver');
-const eslintPkg = require('eslint/package.json');
 const RuleTester = require('../../helpers/ruleTester');
 
 const rule = require('../../../lib/rules/sort-prop-types');
@@ -548,7 +547,7 @@ ruleTester.run('sort-prop-types', rule, {
         },
       ],
     },
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    {
       code: `
         var First = createReactClass({
           propTypes: {
@@ -583,7 +582,7 @@ ruleTester.run('sort-prop-types', rule, {
           type: 'Property',
         },
       ],
-    } : [],
+    },
     {
       code: `
         var First = createReactClass({
@@ -1963,7 +1962,7 @@ ruleTester.run('sort-prop-types', rule, {
         },
       ],
     },
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    {
       code: `
         var First = createReactClass({
           propTypes: {
@@ -2002,8 +2001,8 @@ ruleTester.run('sort-prop-types', rule, {
           type: 'Property',
         },
       ],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    },
+    {
       code: `
         var First = createReactClass({
           propTypes: {
@@ -2042,8 +2041,8 @@ ruleTester.run('sort-prop-types', rule, {
           type: 'Property',
         },
       ],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    },
+    {
       code: `
         var First = createReactClass({
           propTypes: {
@@ -2082,8 +2081,8 @@ ruleTester.run('sort-prop-types', rule, {
           type: 'Property',
         },
       ],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    },
+    {
       code: `
         var First = createReactClass({
           propTypes: {
@@ -2118,8 +2117,8 @@ ruleTester.run('sort-prop-types', rule, {
           type: 'Property',
         },
       ],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    },
+    {
       code: `
         class Component extends React.Component {
           render() {
@@ -2175,8 +2174,8 @@ ruleTester.run('sort-prop-types', rule, {
           type: 'Property',
         },
       ],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    },
+    {
       code: `
         var First = createReactClass({
           propTypes: {
@@ -2225,8 +2224,8 @@ ruleTester.run('sort-prop-types', rule, {
           type: 'Property',
         },
       ],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    },
+    {
       code: `
         var Component = createReactClass({
           propTypes: {
@@ -2254,8 +2253,8 @@ ruleTester.run('sort-prop-types', rule, {
           line: 4,
         },
       ],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    },
+    {
       code: `
         var Component = createReactClass({
           propTypes: {
@@ -2283,7 +2282,7 @@ ruleTester.run('sort-prop-types', rule, {
           line: 4,
         },
       ],
-    } : [],
+    },
     {
       code: `
         type Props = {
