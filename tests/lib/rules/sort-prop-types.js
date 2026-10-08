@@ -2413,6 +2413,27 @@ ruleTester.run('sort-prop-types', rule, {
           column: 102,
         },
       ],
+    },
+    {
+      code: `
+        Foo.propTypes = { // eslint-disable-line no-restricted-syntax
+          b: PropTypes.string,
+          a: PropTypes.number,
+        };
+      `,
+      output: `
+        Foo.propTypes = { // eslint-disable-line no-restricted-syntax
+          a: PropTypes.number,
+          b: PropTypes.string,
+        };
+      `,
+      errors: [
+        {
+          messageId: 'propsNotSorted',
+          line: 4,
+          column: 11,
+        },
+      ],
     }
   )),
 });
