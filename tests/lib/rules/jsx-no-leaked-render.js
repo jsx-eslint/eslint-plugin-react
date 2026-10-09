@@ -912,11 +912,11 @@ ruleTester.run('jsx-no-leaked-render', rule, {
           return <Something checked={isIndeterminate ? false : isChecked} />
         }
       `,
-      output: semver.satisfies(eslintPkg.version, '> 4') ? `
+      output: `
         const MyComponent = () => {
           return <Something checked={!isIndeterminate && isChecked} />
         }
-      ` : null,
+      `,
       options: [{ validStrategies: ['coerce'] }],
       errors: [{
         message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
@@ -930,16 +930,124 @@ ruleTester.run('jsx-no-leaked-render', rule, {
           return <Something checked={cond && isIndeterminate ? false : isChecked} />
         }
       `,
-      output: semver.satisfies(eslintPkg.version, '> 4') ? `
+      output: `
         const MyComponent = () => {
-          return <Something checked={!!cond && !!isIndeterminate ? false : isChecked} />
+          return <Something checked={!(cond && isIndeterminate) && isChecked} />
         }
-      ` : null,
+      `,
       options: [{ validStrategies: ['coerce'] }],
       errors: [{
         message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
         line: 3,
         column: 38,
+      }],
+    },
+    {
+      code: `
+        const MyComponent = () => {
+          return <div>{a === b ? false : c}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{!(a === b) && c}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    },
+    {
+      code: `
+        const MyComponent = () => {
+          return <div>{!c ? false : b}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{!!c && b}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    },
+    {
+      code: `
+        const MyComponent = () => {
+          return <div>{f() ? false : b}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{!f() && b}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    },
+    {
+      code: `
+        const MyComponent = () => {
+          return <div>{a || b ? false : c}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{!(a || b) && c}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    },
+    {
+      code: `
+        const MyComponent = () => {
+          return <div>{a ? false : () => b}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{!a && (() => b)}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    },
+    {
+      code: `
+        const MyComponent = () => {
+          return <div>{a ? false : b || c}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{!a && (b || c)}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
       }],
     },
     semver.satisfies(eslintPkg.version, '> 4') ? {
