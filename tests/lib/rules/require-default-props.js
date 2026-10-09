@@ -239,6 +239,39 @@ ruleTester.run('require-default-props', rule, {
     },
     {
       code: `
+        const Hello = React.memo(({ foo = 'asdf' }) => {
+          return <div>Hello {foo}</div>;
+        });
+        Hello.propTypes = {
+          foo: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
+        const Hello = React.memo(({ foo }) => {
+          return <div>Hello {foo}</div>;
+        });
+        Hello.propTypes = {
+          foo: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'ignore' }],
+    },
+    {
+      code: `
+        const Hello = React.forwardRef(({ foo = 'asdf' }, ref) => {
+          return <div ref={ref}>Hello {foo}</div>;
+        });
+        Hello.propTypes = {
+          foo: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
         function Hello({ foo = 'asdf', bar = 'qwer' }) {
           return <div>Hello {foo} and {bar}</div>;
         }
@@ -2824,6 +2857,23 @@ ruleTester.run('require-default-props', rule, {
       errors: [
         {
           messageId: 'destructureInSignature',
+        },
+      ],
+    },
+    {
+      code: `
+        const Hello = React.memo(({ foo }) => {
+          return <div>Hello {foo}</div>;
+        });
+        Hello.propTypes = {
+          foo: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+      errors: [
+        {
+          messageId: 'shouldAssignObjectDefault',
+          data: { name: 'foo' },
         },
       ],
     },
