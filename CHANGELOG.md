@@ -34,6 +34,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-no-leaked-render`]: autofix `cond ? false : alternate` to `!cond && alternate` with correct negation and parentheses (@ljharb)
 * [`jsx-no-leaked-render`]: preserve ternary alternates when autofixing to coerce ([#4017][] @morgan-coded)
 * [`require-default-props`]: handle function components wrapped in `memo`/`forwardRef` ([#4046][] @badukucuk)
+* [`no-unknown-property`]: allow `transform-origin` on all transformable SVG elements ([#4047][] @ozenyunus35)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -42,6 +43,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`hook-use-state`]: clarify destructuring requirement ([#4030][] @raisulchowdhury)
 * [Refactor] `Components`: add `getWrappedComponentNode` util (@ljharb)
 
+[#4047]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4047
 [#4046]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4046
 [#4044]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4044
 [#4043]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4043

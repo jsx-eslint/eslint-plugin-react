@@ -142,6 +142,9 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<details onToggle={this.onToggle}>Some details</details>' },
     { code: '<path fill="pink" d="M 10,30 A 20,20 0,0,1 50,30 A 20,20 0,0,1 90,30 Q 90,60 50,90 Q 10,60 10,30 z"></path>' },
     { code: '<line fill="pink" x1="0" y1="80" x2="100" y2="20"></line>' },
+    { code: '<svg transform-origin="center"><g transform-origin="center"><circle transform-origin="center" /><ellipse transform-origin="center" /><path transform-origin="center" /><polygon transform-origin="center" /><text transform-origin="center" /><use transform-origin="center" /></g></svg>' },
+    { code: '<svg><clipPath transform-origin="center" /><linearGradient transform-origin="center" /><radialGradient transform-origin="center" /><pattern transform-origin="center" /></svg>' },
+    { code: '<svg><symbol transform-origin="center" /><switch transform-origin="center"><a transform-origin="center"><image transform-origin="center" /><line transform-origin="center" /><polyline transform-origin="center" /></a><foreignObject transform-origin="center" /></switch></svg>' },
     { code: '<link as="audio">Audio content</link>' },
     { code: '<video controlsList="nodownload" controls={this.controls} loop={true} muted={false} src={this.videoSrc} playsInline={true} onResize={this.onResize}></video>' },
     { code: '<audio controlsList="nodownload" controls={this.controls} crossOrigin="anonymous" disableRemotePlayback loop muted preload="none" src="something" onAbort={this.abort} onDurationChange={this.durationChange} onEmptied={this.emptied} onEnded={this.end} onError={this.error} onResize={this.onResize}></audio>' },
@@ -435,6 +438,32 @@ ruleTester.run('no-unknown-property', rule, {
             name: 'crossOrigin',
             tagName: 'div',
             allowedTags: 'script, img, video, audio, link, image',
+          },
+        },
+      ],
+    },
+    {
+      code: '<div transform-origin="center" />',
+      errors: [
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'transform-origin',
+            tagName: 'div',
+            allowedTags: 'a, circle, ellipse, foreignObject, g, image, line, path, polygon, polyline, rect, svg, switch, symbol, text, use, clipPath, linearGradient, pattern, radialGradient',
+          },
+        },
+      ],
+    },
+    {
+      code: '<text><tspan transform-origin="center" /></text>',
+      errors: [
+        {
+          messageId: 'invalidPropOnTag',
+          data: {
+            name: 'transform-origin',
+            tagName: 'tspan',
+            allowedTags: 'a, circle, ellipse, foreignObject, g, image, line, path, polygon, polyline, rect, svg, switch, symbol, text, use, clipPath, linearGradient, pattern, radialGradient',
           },
         },
       ],
