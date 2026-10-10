@@ -115,6 +115,10 @@ ruleTester.run('no-danger-with-children', rule, {
       errors: [{ messageId: 'dangerWithChildren' }],
     },
     {
+      code: '<div {...{ dangerouslySetInnerHTML: { __html: "HTML" }, children: "Children" }} />',
+      errors: [{ messageId: 'dangerWithChildren' }],
+    },
+    {
       code: `
         const props = { dangerouslySetInnerHTML: { __html: "HTML" } };
         <div {...props}>Children</div>
@@ -150,6 +154,18 @@ ruleTester.run('no-danger-with-children', rule, {
           "div",
           { dangerouslySetInnerHTML: { __html: "HTML" } },
           "Children"
+        );
+      `,
+      errors: [{ messageId: 'dangerWithChildren' }],
+    },
+    {
+      code: `
+        React.createElement(
+          "div",
+          {
+            ...{ dangerouslySetInnerHTML: { __html: "HTML" } },
+            children: "Children",
+          }
         );
       `,
       errors: [{ messageId: 'dangerWithChildren' }],
