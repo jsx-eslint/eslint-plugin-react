@@ -2,8 +2,11 @@
 
 const fromEntries = require('object.fromentries');
 const entries = require('object.entries');
-
+const packageMeta = require('./package.json');
 const allRules = require('./lib/rules');
+
+const name = packageMeta.name;
+const version = packageMeta.version;
 
 function filterRules(rules, predicate) {
   return fromEntries(entries(rules).filter((entry) => predicate(entry[1])));
@@ -27,9 +30,7 @@ const deprecatedRules = filterRules(allRules, (rule) => rule.meta.deprecated);
 
 /** @type {['react']} */
 // for legacy config system
-const plugins = [
-  'react',
-];
+const plugins = ['react'];
 
 // TODO: with TS 4.5+, inline this
 const SEVERITY_ERROR = /** @type {2} */ (2);
@@ -90,6 +91,9 @@ const configs = {
       'react/jsx-uses-react': SEVERITY_OFF,
     },
   },
+  /**
+   * @deprecated Use reactPlugin.flatConfigs instead
+   */
   flat: /** @type {Record<string, ReactFlatConfig>} */ ({
     __proto__: null,
   }),
@@ -122,4 +126,33 @@ Object.assign(configs.flat, {
   },
 });
 
-module.exports = plugin;
+/** @type {{ meta: {name: string, version: string}, rules: typeof allRules}} */
+const reactPlugin = {
+  meta: { name, version },
+  rules: allRules,
+};
+
+/** @typedef {'recommended' | 'all' | 'jsx-runtime'} AvailableFlatConfigs */
+/** @type {Record<AvailableFlatConfigs, {name: string, plugins: { react: typeof reactPlugin }, rules: import('eslint').Linter.RulesRecord, languageOptions: { parserOptions: import('eslint').Linter.ParserOptions }}>} */
+const flatConfigs = {
+  recommended: {
+    name: 'react/recommended',
+    plugins: { react: reactPlugin },
+    rules: configs.recommended.rules,
+    languageOptions: { parserOptions: configs.recommended.parserOptions },
+  },
+  all: {
+    name: 'react/all',
+    plugins: { react: reactPlugin },
+    rules: configs.all.rules,
+    languageOptions: { parserOptions: configs.all.parserOptions },
+  },
+  'jsx-runtime': {
+    name: 'react/jsx-runtime',
+    plugins: { react: reactPlugin },
+    rules: configs['jsx-runtime'].rules,
+    languageOptions: { parserOptions: configs['jsx-runtime'].parserOptions },
+  },
+};
+
+module.exports = Object.assign(plugin, { flatConfigs });
