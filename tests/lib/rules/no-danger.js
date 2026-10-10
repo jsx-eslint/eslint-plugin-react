@@ -52,6 +52,20 @@ ruleTester.run('no-danger', rule, {
       `,
       options: [{ customComponentNames: ['MUI*'] }],
     },
+    {
+      code: 'React.createElement("div", { className: "bar" });',
+    },
+    {
+      code: 'React.createElement(App, { dangerouslySetInnerHTML: { __html: "" } });',
+    },
+    {
+      code: `
+        function App() {
+          return React.createElement(Title, { dangerouslySetInnerHTML: { __html: "<span>hello</span>" } });
+        }
+      `,
+      options: [{ customComponentNames: ['Home'] }],
+    },
   ]),
   invalid: parsers.all([
     {
@@ -170,6 +184,73 @@ ruleTester.run('no-danger', rule, {
           messageId: 'dangerousProp',
           data: { name: 'dangerouslySetInnerHTML' },
           line: 18,
+        },
+      ],
+    },
+    {
+      code: 'React.createElement("div", { dangerouslySetInnerHTML: { __html: "" } });',
+      errors: [
+        {
+          messageId: 'dangerousProp',
+          data: { name: 'dangerouslySetInnerHTML' },
+        },
+      ],
+    },
+    {
+      code: 'React.createElement("div", { "dangerouslySetInnerHTML": { __html: "" } });',
+      errors: [
+        {
+          messageId: 'dangerousProp',
+          data: { name: 'dangerouslySetInnerHTML' },
+        },
+      ],
+    },
+    {
+      code: 'React.createElement(App, { dangerouslySetInnerHTML: { __html: "" } });',
+      options: [{ customComponentNames: ['*'] }],
+      errors: [
+        {
+          messageId: 'dangerousProp',
+          data: { name: 'dangerouslySetInnerHTML' },
+        },
+      ],
+    },
+    {
+      code: `
+        function App() {
+          return React.createElement(Title, { dangerouslySetInnerHTML: { __html: "<span>hello</span>" } });
+        }
+      `,
+      options: [{ customComponentNames: ['Title'] }],
+      errors: [
+        {
+          messageId: 'dangerousProp',
+          data: { name: 'dangerouslySetInnerHTML' },
+        },
+      ],
+    },
+    {
+      code: `
+        const props = { dangerouslySetInnerHTML: { __html: "" } };
+        React.createElement("div", props);
+      `,
+      errors: [
+        {
+          messageId: 'dangerousProp',
+          data: { name: 'dangerouslySetInnerHTML' },
+        },
+      ],
+    },
+    {
+      code: `
+        const props = { dangerouslySetInnerHTML: { __html: "" } };
+        React.createElement(App, props);
+      `,
+      options: [{ customComponentNames: ['*'] }],
+      errors: [
+        {
+          messageId: 'dangerousProp',
+          data: { name: 'dangerouslySetInnerHTML' },
         },
       ],
     },
