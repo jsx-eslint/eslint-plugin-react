@@ -4993,6 +4993,53 @@ ruleTester.run('prop-types', rule, {
         );
       `,
       features: ['types'],
+    },
+    {
+      code: `
+        function Comp({ episodeId }) {
+          const query = useQuery({ id: episodeId }, { select: (props) => props.isError ? null : props });
+          return <div>{query}</div>;
+        }
+        Comp.propTypes = {
+          episodeId: PropTypes.string,
+        };
+      `,
+    },
+    {
+      code: `
+        function Comp({ episodeId }) {
+          const query = useQuery({ id: episodeId }, {
+            select: (props) => {
+              const { isError } = props;
+              return isError;
+            },
+          });
+          return <div>{query}</div>;
+        }
+        Comp.propTypes = {
+          episodeId: PropTypes.string,
+        };
+      `,
+    },
+    {
+      code: `
+        function Comp({ items }) {
+          return <List data={items} renderItem={(props) => <div>{props.label}</div>} />;
+        }
+        Comp.propTypes = {
+          items: PropTypes.array,
+        };
+      `,
+    },
+    {
+      code: `
+        function Comp({ ids }) {
+          return <div>{ids.map((props) => props.value)}</div>;
+        }
+        Comp.propTypes = {
+          ids: PropTypes.array,
+        };
+      `,
     }
   )),
 
@@ -9113,6 +9160,48 @@ ruleTester.run('prop-types', rule, {
         {
           messageId: 'missingPropType',
           data: { name: 'prop$.events.map' },
+        },
+      ],
+    },
+    {
+      code: `
+        function Comp(props) {
+          const onClick = () => props.missing;
+          return <div onClick={onClick} />;
+        }
+        Comp.propTypes = {};
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'missing' },
+        },
+      ],
+    },
+    {
+      code: `
+        function Comp(props) {
+          const renderHeader = (props) => <h1>{props.title}</h1>;
+          return <div>{renderHeader(props)}</div>;
+        }
+        Comp.propTypes = {};
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'title' },
+        },
+      ],
+    },
+    {
+      code: `
+        const Comp = React.memo((props) => <div>{props.missing}</div>);
+        Comp.propTypes = {};
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'missing' },
         },
       ],
     }
