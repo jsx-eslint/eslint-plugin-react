@@ -8,8 +8,8 @@
 
 <!-- end auto-generated rule header -->
 
-When creating a JSX element that has an `a` tag, it is often desired to have the link open in a new tab using the `target='_blank'` attribute. Using this attribute unaccompanied by `rel='noreferrer'`, however, is a severe security vulnerability (see [noreferrer docs](https://html.spec.whatwg.org/multipage/links.html#link-type-noreferrer) and [noopener docs](https://html.spec.whatwg.org/multipage/links.html#link-type-noopener) for more details)
-This rules requires that you accompany `target='_blank'` attributes with `rel='noreferrer'`.
+When creating a JSX element with an `a` tag, the link is often desired to open in a new tab using the `target='_blank'` attribute. Using this attribute unaccompanied by `rel='noreferrer'`, however, is a severe security vulnerability (see [noreferrer docs](https://html.spec.whatwg.org/multipage/links.html#link-type-noreferrer) and [noopener docs](https://html.spec.whatwg.org/multipage/links.html#link-type-noopener) for more details).
+This rule requires that you accompany `target='_blank'` attributes with `rel='noreferrer'`.
 
 ## Rule Details
 
@@ -131,12 +131,12 @@ This rule supports the ability to use custom components for forms. To enable thi
 
 ## When To Override It
 
-Modern browsers (Chrome ≥ 88, Edge ≥ 88, Firefox ≥ 79 and Safari ≥ 12.2) automatically imply `rel="noopener"`. Therefore this rule is no longer needed, if legacy browsers are not supported. See <https://web.dev/external-anchors-use-rel-noopener/> and <https://caniuse.com/mdn-html_elements_a_implicit_noopener> for more details.
+Modern browsers (Chrome ≥ 88, Edge ≥ 88, Firefox ≥ 79 and Safari ≥ 12.2) automatically imply `rel="noopener"`. Therefore, this rule is no longer needed if legacy browsers are not supported. See <https://web.dev/external-anchors-use-rel-noopener/> and <https://caniuse.com/mdn-html_elements_a_implicit_noopener> for more details.
 
-For links to a trusted host (e.g. internal links to your own site, or links to a another host you control, where you can be certain this security vulnerability does not exist), you may want to keep the HTTP Referer header for analytics purposes.
+For links to a trusted host (e.g. internal links to your own site, or links to another host you control, where you can be certain this security vulnerability does not exist), you may want to keep the HTTP Referer header for analytics purposes.
 
 If you do not support Internet Explorer (any version), Chrome < 49, Opera < 36, Firefox < 52, desktop Safari < 10.1 or iOS Safari < 10.3, you may set `allowReferrer` to `true`, keep the HTTP Referer header and only add `rel="noopener"` to your links.
 
 ## When Not To Use It
 
-If you do not have any external links or forms, you can disable this rule.
+You can disable this rule if you do not have any external links or forms.
