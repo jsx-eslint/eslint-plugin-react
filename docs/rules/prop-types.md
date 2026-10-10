@@ -144,7 +144,7 @@ This rule can take one argument to ignore some specific props during validation.
 
 ```js
 ...
-"react/prop-types": [<enabled>, { ignore: <ignore>, customValidators: <customValidator>, skipUndeclared: <skipUndeclared> }]
+"react/prop-types": [<enabled>, { ignore: <ignore>, customValidators: <customValidator>, skipUndeclared: <skipUndeclared>, skipUnexported: <skipUnexported> }]
 ...
 ```
 
@@ -152,6 +152,7 @@ This rule can take one argument to ignore some specific props during validation.
 - `ignore`: optional array of props name to ignore during validation.
 - `customValidators`: optional array of validators used for propTypes validation.
 - `skipUndeclared`: optional boolean to only error on components that have a propTypes block declared.
+- `skipUnexported`: optional boolean to skip validation for components that are not exported from the module. This is useful when you have helper components or render functions that are only used internally within a file and do not need their own prop types.
 
 ### As for "exceptions"
 

@@ -1571,6 +1571,102 @@ ruleTester.run('prop-types', rule, {
       options: [{ skipUndeclared: false }],
     },
     {
+      code: `
+        function Hello(props) {
+          return <div>{props.name}</div>;
+        }
+      `,
+      options: [{ skipUnexported: true }],
+    },
+    {
+      code: `
+        const Hello = (props) => {
+          return <div>{props.name}</div>;
+        };
+      `,
+      options: [{ skipUnexported: true }],
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            return <div>{this.props.name}</div>;
+          }
+        }
+      `,
+      options: [{ skipUnexported: true }],
+    },
+    {
+      code: `
+        export function Hello(props) {
+          return <div>{props.name}</div>;
+        }
+        Hello.propTypes = {
+          name: PropTypes.string.isRequired
+        };
+      `,
+      options: [{ skipUnexported: true }],
+    },
+    {
+      code: `
+        export default function Hello(props) {
+          return <div>{props.name}</div>;
+        }
+        Hello.propTypes = {
+          name: PropTypes.string.isRequired
+        };
+      `,
+      options: [{ skipUnexported: true }],
+    },
+    {
+      code: `
+        function Hello(props) {
+          return <div>{props.name}</div>;
+        }
+        Hello.propTypes = {
+          name: PropTypes.string.isRequired
+        };
+        export default Hello;
+      `,
+      options: [{ skipUnexported: true }],
+    },
+    {
+      code: `
+        const Hello = (props) => {
+          return <div>{props.name}</div>;
+        };
+        Hello.propTypes = {
+          name: PropTypes.string.isRequired
+        };
+        export { Hello };
+      `,
+      options: [{ skipUnexported: true }],
+    },
+    {
+      code: `
+        function Hello(props) {
+          return <div>{props.name}</div>;
+        }
+        Hello.propTypes = {
+          name: PropTypes.string.isRequired
+        };
+        module.exports = Hello;
+      `,
+      options: [{ skipUnexported: true }],
+    },
+    {
+      code: `
+        function Hello(props) {
+          return <div>{props.name}</div>;
+        }
+        Hello.propTypes = {
+          name: PropTypes.string.isRequired
+        };
+        exports.Hello = Hello;
+      `,
+      options: [{ skipUnexported: true }],
+    },
+    {
       // Async generator functions can't be components.
       code: `
         var Hello = async function* (props) {
@@ -6724,6 +6820,122 @@ ruleTester.run('prop-types', rule, {
           data: { name: 'firstname' },
           line: 4,
           column: 37,
+        },
+      ],
+    },
+    {
+      code: `
+        export function Hello(props) {
+          return <div>{props.name}</div>;
+        }
+      `,
+      options: [{ skipUnexported: true }],
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'name' },
+        },
+      ],
+    },
+    {
+      code: `
+        export default function Hello(props) {
+          return <div>{props.name}</div>;
+        }
+      `,
+      options: [{ skipUnexported: true }],
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'name' },
+        },
+      ],
+    },
+    {
+      code: `
+        export const Hello = (props) => {
+          return <div>{props.name}</div>;
+        };
+      `,
+      options: [{ skipUnexported: true }],
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'name' },
+        },
+      ],
+    },
+    {
+      code: `
+        function Hello(props) {
+          return <div>{props.name}</div>;
+        }
+        export default Hello;
+      `,
+      options: [{ skipUnexported: true }],
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'name' },
+        },
+      ],
+    },
+    {
+      code: `
+        const Hello = (props) => {
+          return <div>{props.name}</div>;
+        };
+        export { Hello };
+      `,
+      options: [{ skipUnexported: true }],
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'name' },
+        },
+      ],
+    },
+    {
+      code: `
+        function Hello(props) {
+          return <div>{props.name}</div>;
+        }
+        module.exports = Hello;
+      `,
+      options: [{ skipUnexported: true }],
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'name' },
+        },
+      ],
+    },
+    {
+      code: `
+        function Hello(props) {
+          return <div>{props.name}</div>;
+        }
+        exports.Hello = Hello;
+      `,
+      options: [{ skipUnexported: true }],
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'name' },
+        },
+      ],
+    },
+    {
+      code: `
+        function Hello(props) {
+          return <div>{props.name}</div>;
+        }
+      `,
+      options: [{ skipUnexported: false }],
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'name' },
         },
       ],
     },
