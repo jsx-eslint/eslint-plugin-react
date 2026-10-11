@@ -39,6 +39,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`no-array-index-key`]: add template literal examples ([#3978][] @akahoshi1421)
 * [`jsx-filename-extension`]: include allowed extensions in message ([#4043][] @aduth)
 * [Docs] [`hook-use-state`]: clarify destructuring requirement ([#4030][] @raisulchowdhury)
+* [Refactor] `Components`: add `getWrappedComponentNode` util (@ljharb)
 
 [#4044]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4044
 [#4043]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4043
