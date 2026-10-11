@@ -445,6 +445,73 @@ ruleTester.run('destructuring-assignment', rule, {
       `,
       features: ['optional chaining'],
     },
+    {
+      code: `
+        import { forwardRef } from 'react';
+        const MyComponent = forwardRef(function MyComponent({ day }, ref) {
+          return <div ref={ref}>{day}</div>;
+        });
+      `,
+    },
+    {
+      code: `
+        const MyComponent = React.forwardRef(({ day }, ref) => <div ref={ref}>{day}</div>);
+      `,
+    },
+    {
+      code: `
+        import { memo } from 'react';
+        const MyComponent = memo(function MyComponent({ day }) {
+          return <div>{day}</div>;
+        });
+      `,
+    },
+    {
+      code: `
+        const MyComponent = React.memo(({ day }) => <div>{day}</div>);
+      `,
+    },
+    {
+      code: `
+        const MyComponent = React.forwardRef((props, ref) => <div ref={ref}>{props.day}</div>);
+      `,
+      options: ['never'],
+    },
+    {
+      code: `
+        const MyComponent = React.forwardRef(({ day }, ref) => (
+          <div onClick={() => ref.current.focus()}>{day}</div>
+        ));
+      `,
+      options: ['always'],
+    },
+    {
+      code: `
+        const MyComponent = React.forwardRef((props, { current }) => <div>{props.day}{current}</div>);
+      `,
+      options: ['never'],
+    },
+    {
+      code: `
+        const MyComponent = React.memo(
+          (props) => <div>{props.day}</div>,
+          ({ day }, { day: nextDay }) => day === nextDay
+        );
+      `,
+      options: ['never'],
+    },
+    {
+      code: `
+        const MyComponent = React.memo(
+          (props) => <div>{props.day}</div>,
+          (props, nextProps) => {
+            const { day } = props;
+            return day === nextProps.day;
+          }
+        );
+      `,
+      options: ['never'],
+    },
   ]),
 
   invalid: parsers.all([].concat(
@@ -935,6 +1002,119 @@ ${'            '}
           data: { type: 'props' },
         },
       ],
-    }
+    },
+    {
+      code: `
+        import { forwardRef } from 'react';
+        const MyComponent = forwardRef(function MyComponent(props, ref) {
+          return <div ref={ref}>{props.day}</div>;
+        });
+      `,
+      errors: [
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+        },
+      ],
+    },
+    {
+      code: `
+        const MyComponent = React.forwardRef((props, ref) => <div ref={ref}>{props.day}</div>);
+      `,
+      errors: [
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+        },
+      ],
+    },
+    {
+      code: `
+        import { memo } from 'react';
+        const MyComponent = memo(function MyComponent(props) {
+          return <div>{props.day}</div>;
+        });
+      `,
+      errors: [
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+        },
+      ],
+    },
+    {
+      code: `
+        const MyComponent = React.memo((props) => <div>{props.day}</div>);
+      `,
+      errors: [
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+        },
+      ],
+    },
+    {
+      code: `
+        const MyComponent = React.forwardRef(({ day }, ref) => <div ref={ref}>{day}</div>);
+      `,
+      options: ['never'],
+      errors: [
+        { messageId: 'noDestructPropsInSFCArg' },
+      ],
+    },
+    {
+      code: `
+        const MyComponent = React.memo((props) => {
+          const { day } = props;
+          return <div>{day}</div>;
+        });
+      `,
+      options: ['never'],
+      errors: [
+        {
+          messageId: 'noDestructAssignment',
+          data: { type: 'props' },
+        },
+      ],
+    },
+    // Ignore for ESLint < 4 because ESLint < 4 does not support array fixer.
+    semver.satisfies(eslintPkg.version, '>= 4') ? [
+      {
+        code: `
+          const MyComponent = React.memo((props) => {
+            const { day } = props;
+            return <div>{day}</div>;
+          });
+        `,
+        output: `
+          const MyComponent = React.memo(({ day }) => {
+${'            '}
+            return <div>{day}</div>;
+          });
+        `,
+        options: ['always', { destructureInSignature: 'always' }],
+        errors: [
+          { messageId: 'destructureInSignature' },
+        ],
+      },
+      {
+        code: `
+          const MyComponent = React.forwardRef((props, ref) => {
+            const { day } = props;
+            return <div ref={ref}>{day}</div>;
+          });
+        `,
+        output: `
+          const MyComponent = React.forwardRef(({ day }, ref) => {
+${'            '}
+            return <div ref={ref}>{day}</div>;
+          });
+        `,
+        options: ['always', { destructureInSignature: 'always' }],
+        errors: [
+          { messageId: 'destructureInSignature' },
+        ],
+      },
+    ] : []
   )),
 });
