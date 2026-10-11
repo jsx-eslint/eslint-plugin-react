@@ -445,6 +445,38 @@ ruleTester.run('destructuring-assignment', rule, {
       `,
       features: ['optional chaining'],
     },
+    {
+      code: `
+        import { forwardRef } from 'react';
+        const MyComponent = forwardRef(function MyComponent({ day }, ref) {
+          return <div ref={ref}>{day}</div>;
+        });
+      `,
+    },
+    {
+      code: `
+        const MyComponent = React.forwardRef(({ day }, ref) => <div ref={ref}>{day}</div>);
+      `,
+    },
+    {
+      code: `
+        import { memo } from 'react';
+        const MyComponent = memo(function MyComponent({ day }) {
+          return <div>{day}</div>;
+        });
+      `,
+    },
+    {
+      code: `
+        const MyComponent = React.memo(({ day }) => <div>{day}</div>);
+      `,
+    },
+    {
+      code: `
+        const MyComponent = React.forwardRef((props, ref) => <div ref={ref}>{props.day}</div>);
+      `,
+      options: ['never'],
+    },
   ]),
 
   invalid: parsers.all([].concat(
@@ -932,6 +964,80 @@ ${'            '}
         },
         {
           messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+        },
+      ],
+    },
+    {
+      code: `
+        import { forwardRef } from 'react';
+        const MyComponent = forwardRef(function MyComponent(props, ref) {
+          return <div ref={ref}>{props.day}</div>;
+        });
+      `,
+      errors: [
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+        },
+      ],
+    },
+    {
+      code: `
+        const MyComponent = React.forwardRef((props, ref) => <div ref={ref}>{props.day}</div>);
+      `,
+      errors: [
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+        },
+      ],
+    },
+    {
+      code: `
+        import { memo } from 'react';
+        const MyComponent = memo(function MyComponent(props) {
+          return <div>{props.day}</div>;
+        });
+      `,
+      errors: [
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+        },
+      ],
+    },
+    {
+      code: `
+        const MyComponent = React.memo((props) => <div>{props.day}</div>);
+      `,
+      errors: [
+        {
+          messageId: 'useDestructAssignment',
+          data: { type: 'props' },
+        },
+      ],
+    },
+    {
+      code: `
+        const MyComponent = React.forwardRef(({ day }, ref) => <div ref={ref}>{day}</div>);
+      `,
+      options: ['never'],
+      errors: [
+        { messageId: 'noDestructPropsInSFCArg' },
+      ],
+    },
+    {
+      code: `
+        const MyComponent = React.memo((props) => {
+          const { day } = props;
+          return <div>{day}</div>;
+        });
+      `,
+      options: ['never'],
+      errors: [
+        {
+          messageId: 'noDestructAssignment',
           data: { type: 'props' },
         },
       ],

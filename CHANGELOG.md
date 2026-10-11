@@ -33,6 +33,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`sort-prop-types`]: preserve comments and separators in autofix ([#4029][] @raisulchowdhury)
 * [`jsx-no-leaked-render`]: autofix `cond ? false : alternate` to `!cond && alternate` with correct negation and parentheses (@ljharb)
 * [`jsx-no-leaked-render`]: preserve ternary alternates when autofixing to coerce ([#4017][] @morgan-coded)
+* [`destructuring-assignment`]: detect props usage in components wrapped in `forwardRef` or `memo` ([#3631][] @fredrikblau)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -61,6 +62,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3923]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3923
 [#3877]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3877
 [#3729]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3729
+[#3631]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3631
 [#3441]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3441
 
 ## [7.37.5] - 2025.04.03
