@@ -10,7 +10,6 @@
 
 const babelEslintVersion = require('babel-eslint/package.json').version;
 const semver = require('semver');
-const eslintPkg = require('eslint/package.json');
 const RuleTester = require('../../helpers/ruleTester');
 
 const rule = require('../../../lib/rules/sort-prop-types');
@@ -548,7 +547,7 @@ ruleTester.run('sort-prop-types', rule, {
         },
       ],
     },
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    {
       code: `
         var First = createReactClass({
           propTypes: {
@@ -583,7 +582,7 @@ ruleTester.run('sort-prop-types', rule, {
           type: 'Property',
         },
       ],
-    } : [],
+    },
     {
       code: `
         var First = createReactClass({
@@ -1963,7 +1962,7 @@ ruleTester.run('sort-prop-types', rule, {
         },
       ],
     },
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    {
       code: `
         var First = createReactClass({
           propTypes: {
@@ -2002,8 +2001,8 @@ ruleTester.run('sort-prop-types', rule, {
           type: 'Property',
         },
       ],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    },
+    {
       code: `
         var First = createReactClass({
           propTypes: {
@@ -2042,8 +2041,8 @@ ruleTester.run('sort-prop-types', rule, {
           type: 'Property',
         },
       ],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    },
+    {
       code: `
         var First = createReactClass({
           propTypes: {
@@ -2082,8 +2081,8 @@ ruleTester.run('sort-prop-types', rule, {
           type: 'Property',
         },
       ],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    },
+    {
       code: `
         var First = createReactClass({
           propTypes: {
@@ -2118,8 +2117,8 @@ ruleTester.run('sort-prop-types', rule, {
           type: 'Property',
         },
       ],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    },
+    {
       code: `
         class Component extends React.Component {
           render() {
@@ -2175,8 +2174,8 @@ ruleTester.run('sort-prop-types', rule, {
           type: 'Property',
         },
       ],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    },
+    {
       code: `
         var First = createReactClass({
           propTypes: {
@@ -2225,8 +2224,8 @@ ruleTester.run('sort-prop-types', rule, {
           type: 'Property',
         },
       ],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    },
+    {
       code: `
         var Component = createReactClass({
           propTypes: {
@@ -2254,8 +2253,8 @@ ruleTester.run('sort-prop-types', rule, {
           line: 4,
         },
       ],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 3') ? {
+    },
+    {
       code: `
         var Component = createReactClass({
           propTypes: {
@@ -2283,7 +2282,7 @@ ruleTester.run('sort-prop-types', rule, {
           line: 4,
         },
       ],
-    } : [],
+    },
     {
       code: `
         type Props = {
@@ -2310,6 +2309,183 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 4,
           column: 11,
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          onClose: () => void; // closes the dialog
+          onSave?: () => void; // saves the dialog
+          id: string; // identifies the dialog
+        };
+        function Dialog(props: Props) {
+          return <div />;
+        }
+      `,
+      output: `
+        type Props = {
+          id: string; // identifies the dialog
+          onClose: () => void; // closes the dialog
+          onSave?: () => void; // saves the dialog
+        };
+        function Dialog(props: Props) {
+          return <div />;
+        }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      options: [{
+        callbacksLast: true,
+        noSortAlphabetically: true,
+        checkTypes: true,
+      }],
+      errors: [
+        {
+          messageId: 'callbackPropsLast',
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          onClose: () => void;
+          // identifies the dialog
+          id: string;
+        };
+        function Dialog(props: Props) {
+          return <div />;
+        }
+      `,
+      output: `
+        type Props = {
+          // identifies the dialog
+          id: string;
+          onClose: () => void;
+        };
+        function Dialog(props: Props) {
+          return <div />;
+        }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      options: [{
+        callbacksLast: true,
+        noSortAlphabetically: true,
+        checkTypes: true,
+      }],
+      errors: [
+        {
+          messageId: 'callbackPropsLast',
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          onClose: () => void; // closes the dialog
+          // identifies the dialog
+          id: string;
+        };
+        function Dialog(props: Props) {
+          return <div />;
+        }
+      `,
+      output: `
+        type Props = {
+          // identifies the dialog
+          id: string;
+          onClose: () => void; // closes the dialog
+        };
+        function Dialog(props: Props) {
+          return <div />;
+        }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      options: [{
+        callbacksLast: true,
+        noSortAlphabetically: true,
+        checkTypes: true,
+      }],
+      errors: [
+        {
+          messageId: 'callbackPropsLast',
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          onClose: () => void; /* closes the dialog */
+          /* identifies the dialog */
+          id: string;
+        };
+        function Dialog(props: Props) {
+          return <div />;
+        }
+      `,
+      output: `
+        type Props = {
+          /* identifies the dialog */
+          id: string;
+          onClose: () => void; /* closes the dialog */
+        };
+        function Dialog(props: Props) {
+          return <div />;
+        }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      options: [{
+        callbacksLast: true,
+        noSortAlphabetically: true,
+        checkTypes: true,
+      }],
+      errors: [
+        {
+          messageId: 'callbackPropsLast',
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          onClose: () => void;
+          onSave?: () => void;
+          initialContractInfo?: ContractInfo; // used to pre-populate the form just for our tests
+          contractVersionTraceId?: TraceId; // used when editing an existing contract
+          contractContainerId: TraceId;
+          wizardStartIndex?: number;
+          contractStatus?: BackendContractStatus;
+          contractVersion?: BackendContractVersion;
+        };
+        function ContractVersionWizard(props: Props) {
+          return <div />;
+        }
+      `,
+      output: `
+        type Props = {
+          initialContractInfo?: ContractInfo; // used to pre-populate the form just for our tests
+          contractVersionTraceId?: TraceId; // used when editing an existing contract
+          contractContainerId: TraceId;
+          wizardStartIndex?: number;
+          contractStatus?: BackendContractStatus;
+          contractVersion?: BackendContractVersion;
+          onClose: () => void;
+          onSave?: () => void;
+        };
+        function ContractVersionWizard(props: Props) {
+          return <div />;
+        }
+      `,
+      parser: parsers.TYPESCRIPT_ESLINT,
+      options: [{
+        callbacksLast: true,
+        requiredFirst: true,
+        sortShapeProp: true,
+        noSortAlphabetically: true,
+        checkTypes: true,
+      }],
+      errors: [
+        {
+          messageId: 'callbackPropsLast',
         },
       ],
     },
@@ -2412,6 +2588,191 @@ ruleTester.run('sort-prop-types', rule, {
           messageId: 'propsNotSorted',
           line: 2,
           column: 102,
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          b: string; // bee
+          a: string // ay
+        };
+        const Foo = (props: Props) => null;
+      `,
+      output: `
+        type Props = {
+          a: string; // ay
+          b: string // bee
+        };
+        const Foo = (props: Props) => null;
+      `,
+      features: ['types'],
+      options: [{ checkTypes: true }],
+      errors: [
+        {
+          messageId: 'propsNotSorted',
+          line: 4,
+          column: 11,
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          onClose: () => void;
+          id: string;
+          // more props to come
+        };
+        const Foo = (props: Props) => null;
+      `,
+      output: `
+        type Props = {
+          id: string;
+          onClose: () => void;
+          // more props to come
+        };
+        const Foo = (props: Props) => null;
+      `,
+      features: ['types'],
+      options: [{ callbacksLast: true, checkTypes: true }],
+      errors: [
+        {
+          messageId: 'callbackPropsLast',
+          line: 3,
+          column: 11,
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = { onClose: () => void; id: string /* x */ };
+        const Foo = (props: Props) => null;
+      `,
+      output: `
+        type Props = { id: string /* x */; onClose: () => void };
+        const Foo = (props: Props) => null;
+      `,
+      features: ['types'],
+      options: [{ callbacksLast: true, checkTypes: true }],
+      errors: [
+        {
+          messageId: 'callbackPropsLast',
+          line: 2,
+          column: 24,
+        },
+      ],
+    },
+    {
+      code: `
+        Foo.propTypes = {
+          onClose: PropTypes.func, // closes
+          id: PropTypes.string, // identifies
+        };
+      `,
+      output: `
+        Foo.propTypes = {
+          id: PropTypes.string, // identifies
+          onClose: PropTypes.func, // closes
+        };
+      `,
+      options: [{ callbacksLast: true }],
+      errors: [
+        {
+          messageId: 'callbackPropsLast',
+          line: 3,
+          column: 11,
+        },
+      ],
+    },
+    {
+      code: `
+        Foo.propTypes = {
+          b: PropTypes.string,
+          // about a
+          a: PropTypes.shape({ y: PropTypes.string, x: PropTypes.string }),
+        };
+      `,
+      output: `
+        Foo.propTypes = {
+          // about a
+          a: PropTypes.shape({ x: PropTypes.string, y: PropTypes.string }),
+          b: PropTypes.string,
+        };
+      `,
+      options: [{ sortShapeProp: true }],
+      errors: [
+        {
+          messageId: 'propsNotSorted',
+          line: 5,
+          column: 11,
+        },
+        {
+          messageId: 'propsNotSorted',
+          line: 5,
+          column: 53,
+        },
+      ],
+    },
+    {
+      code: `
+        Foo.propTypes = {
+          b: PropTypes.string // about b
+          , a: PropTypes.number // about a
+        };
+      `,
+      output: `
+        Foo.propTypes = {
+          a: PropTypes.number // about a
+          , b: PropTypes.string // about b
+        };
+      `,
+      errors: [
+        {
+          messageId: 'propsNotSorted',
+          line: 4,
+          column: 13,
+        },
+      ],
+    },
+    {
+      code: `
+        Foo.propTypes = {
+          c: PropTypes.string, b: PropTypes.number,
+          a: PropTypes.bool, // a
+        };
+      `,
+      output: null,
+      errors: [
+        {
+          messageId: 'propsNotSorted',
+          line: 3,
+          column: 32,
+        },
+        {
+          messageId: 'propsNotSorted',
+          line: 4,
+          column: 11,
+        },
+      ],
+    },
+    {
+      code: `
+        Foo.propTypes = { // eslint-disable-line no-restricted-syntax
+          b: PropTypes.string,
+          a: PropTypes.number,
+        };
+      `,
+      output: `
+        Foo.propTypes = { // eslint-disable-line no-restricted-syntax
+          a: PropTypes.number,
+          b: PropTypes.string,
+        };
+      `,
+      errors: [
+        {
+          messageId: 'propsNotSorted',
+          line: 4,
+          column: 11,
         },
       ],
     }

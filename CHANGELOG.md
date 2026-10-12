@@ -16,6 +16,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`forbid-dom-props`]: Add `disallowedValues` option for forbidden props ([#3877][] @makxca)
 
 ### Fixed
+* [`jsx-no-literals`]: avoid crash on variable declarations without an initializer ([#4044][] @Aryan007-dev)
 * [`no-unknown-property`]: allow `onLoad` on `body` ([#3923][] @DerekStapleton)
 * [`no-unknown-property`]: allow `closedby` on `dialog` ([#3980][] @ljharb)
 * [`no-unknown-property`]: add `onScrollEnd` and `onScrollEndCapture` events as known properties ([#3958][] @xfeeefeee)
@@ -24,11 +25,30 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-key`]: detect missing keys in logical expressions ([#3986][] @yalperg)
 * [`display-name`]: avoid false positive when React is shadowed ([#3926][] @hyeonbinHur)
 * [`no-unused-prop-types`]: detect used props in nested components ([#3955][] @avaice)
+* [`no-unknown-property`]: add missing CSS transition event handlers ([#4001][] @baevm)
+* [`jsx-closing-bracket-location`]: preserve comments in autofix ([#4028][] @raisulchowdhury)
+* [`jsx-closing-bracket-location`]: keep TS type arguments when autofixing (@ljharb)
+* [`jsx-closing-bracket-location`]: say "on the next line" when a comment shares the closing bracket's line (@ljharb)
+* [`sort-prop-types`]: keep comments on the opening brace's line in place when autofixing (@ljharb)
+* [`sort-prop-types`]: preserve comments and separators in autofix ([#4029][] @raisulchowdhury)
+* [`jsx-no-leaked-render`]: autofix `cond ? false : alternate` to `!cond && alternate` with correct negation and parentheses (@ljharb)
+* [`jsx-no-leaked-render`]: preserve ternary alternates when autofixing to coerce ([#4017][] @morgan-coded)
+* [`require-default-props`]: handle function components wrapped in `memo`/`forwardRef` ([#4046][] @badukucuk)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
 * [Docs] [`no-array-index-key`]: add template literal examples ([#3978][] @akahoshi1421)
+* [`jsx-filename-extension`]: include allowed extensions in message ([#4043][] @aduth)
+* [Docs] [`hook-use-state`]: clarify destructuring requirement ([#4030][] @raisulchowdhury)
+* [Refactor] `Components`: add `getWrappedComponentNode` util (@ljharb)
 
+[#4046]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4046
+[#4044]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4044
+[#4043]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4043
+[#4029]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4029
+[#4028]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4028
+[#4017]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4017
+[#4001]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4001
 [#3986]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3986
 [#3978]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3978
 [#3958]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3958

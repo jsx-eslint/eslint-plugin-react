@@ -126,6 +126,14 @@ ruleTester.run('jsx-no-leaked-render', rule, {
       `,
       options: [{ validStrategies: ['coerce', 'ternary'] }],
     },
+    {
+      code: `
+        function Component({ count, title }, undefined) {
+          return <div>{count ? title : undefined}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+    },
 
     // Fixes for:
     // - https://github.com/jsx-eslint/eslint-plugin-react/issues/3292
@@ -165,6 +173,34 @@ ruleTester.run('jsx-no-leaked-render', rule, {
               <div>{(!display || display === DISPLAY.WELCOME) && <span>foo</span>}</div>
             </div>
           )
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+    },
+    {
+      // It shouldn't delete valid alternate branches from ternary expressions when "coerce" is the only valid strategy
+      code: `
+        const Component = ({ filteredOptions, selectVal, options }) => {
+          return (
+            <Select
+              options={
+                filteredOptions.length
+                  ? groupedOptions(filteredOptions)
+                  : selectVal
+                    ? []
+                    : groupedOptions(options)
+              }
+            />
+          )
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+    },
+    {
+      // It shouldn't drop side effects from ternary alternate branches when "coerce" is the only valid strategy
+      code: `
+        const Component = ({ count, title }) => {
+          return <div>{count ? title : void sideEffect()}</div>
         }
       `,
       options: [{ validStrategies: ['coerce'] }],
@@ -214,6 +250,14 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         }
       `,
       options: [{ ignoreAttributes: true }],
+    },
+    {
+      code: `
+        const Component = ({ enabled, checked }) => {
+          return <CheckBox checked={enabled ? checked : null} />
+        }
+      `,
+      options: [{ validStrategies: ['coerce'], ignoreAttributes: true }],
     },
   ]) || [],
 
@@ -794,6 +838,62 @@ ruleTester.run('jsx-no-leaked-render', rule, {
     {
       code: `
         const Component = ({ count, title }) => {
+          return <div>{count ? title : undefined}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+      output: `
+        const Component = ({ count, title }) => {
+          return <div>{!!count && title}</div>
+        }
+      `,
+    },
+    {
+      code: `
+        function Component({ count, title }) {
+          function unrelated(undefined) {}
+          return <div>{count ? title : undefined}</div>
+        }
+      `,
+      output: `
+        function Component({ count, title }) {
+          function unrelated(undefined) {}
+          return <div>{!!count && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 4,
+        column: 24,
+      }],
+    },
+    {
+      code: `
+        const Component = ({ count, title }) => {
+          return <div>{count ? title : void 0}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+      output: `
+        const Component = ({ count, title }) => {
+          return <div>{!!count && title}</div>
+        }
+      `,
+    },
+    {
+      code: `
+        const Component = ({ count, title }) => {
           return <div>{!count ? title : null}</div>
         }
       `,
@@ -912,11 +1012,137 @@ ruleTester.run('jsx-no-leaked-render', rule, {
           return <Something checked={isIndeterminate ? false : isChecked} />
         }
       `,
-      output: semver.satisfies(eslintPkg.version, '> 4') ? `
+      output: `
         const MyComponent = () => {
           return <Something checked={!isIndeterminate && isChecked} />
         }
-      ` : null,
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 38,
+      }],
+    },
+    semver.satisfies(eslintPkg.version, '> 4') ? {
+      code: `
+        const MyComponent = ({ Empty }) => {
+          return <div>{isIndeterminate ? false : <Empty />}</div>
+        }
+      `,
+      output: `
+        const MyComponent = ({ Empty }) => {
+          return <div>{!isIndeterminate && <Empty />}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 4') ? {
+      code: `
+        const MyComponent = () => {
+          return <div>{isIndeterminate ? false : getContent()}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{!isIndeterminate && getContent()}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 4') ? {
+      code: `
+        const MyComponent = ({ isFoo }) => {
+          return <div>{isIndeterminate ? false : isFoo ? <Aaa /> : <Bbb />}</div>
+        }
+      `,
+      output: `
+        const MyComponent = ({ isFoo }) => {
+          return <div>{!isIndeterminate && (isFoo ? <Aaa /> : <Bbb />)}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 4') ? {
+      code: `
+        const MyComponent = ({ fallback }) => {
+          return <div>{isIndeterminate ? false : fallback || <Empty />}</div>
+        }
+      `,
+      output: `
+        const MyComponent = ({ fallback }) => {
+          return <div>{!isIndeterminate && (fallback || <Empty />)}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 4') ? {
+      code: `
+        const MyComponent = ({ fallback }) => {
+          return <div>{ready && isIndeterminate ? false : fallback || <Empty />}</div>
+        }
+      `,
+      output: `
+        const MyComponent = ({ fallback }) => {
+          return <div>{!(ready && isIndeterminate) && (fallback || <Empty />)}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 4') ? {
+      code: `
+        const MyComponent = () => {
+          return <div>{ready && isIndeterminate ? false : (track(), <Empty />)}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{!(ready && isIndeterminate) && (track(), <Empty />)}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    } : [],
+    {
+      code: `
+        const MyComponent = () => {
+          return <Something checked={cond && isIndeterminate ? false : isChecked} />
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <Something checked={!(cond && isIndeterminate) && isChecked} />
+        }
+      `,
       options: [{ validStrategies: ['coerce'] }],
       errors: [{
         message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
@@ -927,19 +1153,109 @@ ruleTester.run('jsx-no-leaked-render', rule, {
     {
       code: `
         const MyComponent = () => {
-          return <Something checked={cond && isIndeterminate ? false : isChecked} />
+          return <div>{a === b ? false : c}</div>
         }
       `,
-      output: semver.satisfies(eslintPkg.version, '> 4') ? `
+      output: `
         const MyComponent = () => {
-          return <Something checked={!!cond && !!isIndeterminate ? false : isChecked} />
+          return <div>{!(a === b) && c}</div>
         }
-      ` : null,
+      `,
       options: [{ validStrategies: ['coerce'] }],
       errors: [{
         message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
         line: 3,
-        column: 38,
+        column: 24,
+      }],
+    },
+    {
+      code: `
+        const MyComponent = () => {
+          return <div>{!c ? false : b}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{!!c && b}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    },
+    {
+      code: `
+        const MyComponent = () => {
+          return <div>{f() ? false : b}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{!f() && b}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    },
+    {
+      code: `
+        const MyComponent = () => {
+          return <div>{a || b ? false : c}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{!(a || b) && c}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    },
+    {
+      code: `
+        const MyComponent = () => {
+          return <div>{a ? false : () => b}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{!a && (() => b)}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    },
+    {
+      code: `
+        const MyComponent = () => {
+          return <div>{a ? false : b || c}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{!a && (b || c)}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
       }],
     },
     semver.satisfies(eslintPkg.version, '> 4') ? {

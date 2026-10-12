@@ -111,7 +111,7 @@ ruleTester.run('jsx-filename-extension', rule, {
       errors: [
         {
           messageId: 'noJSXWithExtension',
-          data: { ext: '.js' },
+          data: { ext: '.js', extensions: "'.jsx'" },
         },
       ],
     },
@@ -133,7 +133,7 @@ ruleTester.run('jsx-filename-extension', rule, {
       errors: [
         {
           messageId: 'noJSXWithExtension',
-          data: { ext: '.js' },
+          data: { ext: '.js', extensions: "'.jsx'" },
         },
       ],
     },
@@ -144,7 +144,7 @@ ruleTester.run('jsx-filename-extension', rule, {
       errors: [
         {
           messageId: 'noJSXWithExtension',
-          data: { ext: '.jsx' },
+          data: { ext: '.jsx', extensions: "'.js'" },
         },
       ],
     },
@@ -155,7 +155,7 @@ ruleTester.run('jsx-filename-extension', rule, {
       errors: [
         {
           messageId: 'noJSXWithExtension',
-          data: { ext: '.js' },
+          data: { ext: '.js', extensions: "'.jsx'" },
         },
       ],
     },
@@ -167,7 +167,17 @@ ruleTester.run('jsx-filename-extension', rule, {
       errors: [
         {
           messageId: 'noJSXWithExtension',
-          data: { ext: '.jsx' },
+          data: { ext: '.jsx', extensions: "'.js'" },
+        },
+      ],
+    },
+    {
+      filename: 'MyComponent.jsx',
+      code: withJSXElement,
+      options: [{ extensions: ['.js', '.tsx'] }],
+      errors: [
+        {
+          message: 'JSX not allowed in files with extension \'.jsx\'. Allowed extensions: \'.js\', \'.tsx\'',
         },
       ],
     },

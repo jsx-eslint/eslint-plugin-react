@@ -239,6 +239,70 @@ ruleTester.run('require-default-props', rule, {
     },
     {
       code: `
+        const Hello = React.memo(({ foo = 'asdf' }) => {
+          return <div>Hello {foo}</div>;
+        });
+        Hello.propTypes = {
+          foo: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
+        const Hello = React.memo(({ foo }) => {
+          return <div>Hello {foo}</div>;
+        });
+        Hello.propTypes = {
+          foo: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'ignore' }],
+    },
+    {
+      code: `
+        const Hello = React.forwardRef(({ foo = 'asdf' }, ref) => {
+          return <div ref={ref}>Hello {foo}</div>;
+        });
+        Hello.propTypes = {
+          foo: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
+        const Hello = React.memo(React.forwardRef(({ foo = 'asdf' }, ref) => {
+          return <div ref={ref}>Hello {foo}</div>;
+        }));
+        Hello.propTypes = {
+          foo: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
+        const Hello = React.forwardRef(({ foo }, ref) => {
+          return <div ref={ref}>Hello {foo}</div>;
+        });
+        Hello.propTypes = {
+          foo: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'ignore' }],
+    },
+    {
+      code: `
+        import * as React from 'react';
+        type Props = { a?: string };
+        const A = React.memo(({ a = 'x' }: Props) => <div>{a}</div>);
+      `,
+      features: ['types'],
+      options: [{ functions: 'defaultArguments' }],
+    },
+    {
+      code: `
         function Hello({ foo = 'asdf', bar = 'qwer' }) {
           return <div>Hello {foo} and {bar}</div>;
         }
@@ -2818,6 +2882,79 @@ ruleTester.run('require-default-props', rule, {
         Hello.propTypes = {
           foo: PropTypes.string.isRequired,
           bar: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+      errors: [
+        {
+          messageId: 'destructureInSignature',
+        },
+      ],
+    },
+    {
+      code: `
+        const Hello = React.memo(({ foo }) => {
+          return <div>Hello {foo}</div>;
+        });
+        Hello.propTypes = {
+          foo: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+      errors: [
+        {
+          messageId: 'shouldAssignObjectDefault',
+          data: { name: 'foo' },
+        },
+      ],
+    },
+    {
+      code: `
+        const Hello = React.forwardRef(({ foo }, ref) => {
+          return <div ref={ref}>Hello {foo}</div>;
+        });
+        Hello.propTypes = {
+          foo: PropTypes.string
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+      errors: [
+        {
+          messageId: 'shouldAssignObjectDefault',
+          data: { name: 'foo' },
+        },
+      ],
+    },
+    {
+      code: `
+        const Hello = React.memo(({ foo }) => {
+          return <div>Hello {foo}</div>;
+        });
+        Hello.propTypes = {
+          foo: PropTypes.string
+        };
+        Hello.defaultProps = {
+          foo: 'asdf'
+        };
+      `,
+      options: [{ functions: 'defaultArguments' }],
+      errors: [
+        {
+          messageId: 'noDefaultPropsWithFunction',
+        },
+        {
+          messageId: 'shouldAssignObjectDefault',
+          data: { name: 'foo' },
+        },
+      ],
+    },
+    {
+      code: `
+        const Hello = React.memo((props) => {
+          return <div>Hello {props.foo}</div>;
+        });
+        Hello.propTypes = {
+          foo: PropTypes.string
         };
       `,
       options: [{ functions: 'defaultArguments' }],

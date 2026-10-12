@@ -311,6 +311,55 @@ describe('Components', () => {
           });
         });
       });
+
+      describe('getWrappedComponentNode', () => {
+        // the type of the node wrapped by the last variable declaration's initializer
+        function testWrappedType(code, expectedType) {
+          testComponentsDetect({ code }, {
+            'Program:exit': (node, _context, _components, util) => {
+              const lastStatement = node.body[node.body.length - 1];
+              return util.getWrappedComponentNode(lastStatement.declarations[0].init).type;
+            },
+          }, (_components, instructionResults) => {
+            assert.deepEqual(instructionResults, [{ type: 'Program:exit', result: expectedType }]);
+          });
+        }
+
+        it('should unwrap memo', () => {
+          testWrappedType(`
+            import React from 'react'
+            const Hello = React.memo(() => <div />)
+          `, 'ArrowFunctionExpression');
+        });
+
+        it('should unwrap nested memo and forwardRef', () => {
+          testWrappedType(`
+            import React from 'react'
+            const Hello = React.memo(React.forwardRef((props, ref) => <div ref={ref} />))
+          `, 'ArrowFunctionExpression');
+        });
+
+        it('should unwrap a destructured memo', () => {
+          testWrappedType(`
+            import { memo } from 'react'
+            const Hello = memo(function Hello() { return <div /> })
+          `, 'FunctionExpression');
+        });
+
+        it('should not unwrap other calls', () => {
+          testWrappedType(`
+            import React from 'react'
+            const Hello = withStyles(styles)(() => <div />)
+          `, 'CallExpression');
+        });
+
+        it('should not unwrap a wrapper without arguments', () => {
+          testWrappedType(`
+            import React from 'react'
+            const Hello = React.memo()
+          `, 'CallExpression');
+        });
+      });
     });
 
     describe('testComponentsDetect', () => {

@@ -100,7 +100,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
         />
       `,
     },
-    (semver.satisfies(eslintPkg.version, '> 3') ? [
+    [
       {
         code: `
           <button
@@ -149,7 +149,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
           />
         `,
       },
-    ] : [])
+    ]
   )),
 
   invalid: parsers.all([].concat(

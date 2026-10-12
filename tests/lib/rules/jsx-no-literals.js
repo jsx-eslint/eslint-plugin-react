@@ -366,6 +366,14 @@ ruleTester.run('jsx-no-literals', rule, {
     },
     {
       code: `
+        for (const item of items) {}
+        let value;
+        <T>foo</T>
+      `,
+      options: [{ elementOverrides: { T: { allowElement: true } } }],
+    },
+    {
+      code: `
         <div>
           <div>{'foo'}</div>
           <T>foo</T>
