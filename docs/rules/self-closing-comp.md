@@ -13,6 +13,8 @@ Components without children can be self-closed to avoid unnecessary extra closin
 Examples of **incorrect** code for this rule:
 
 ```jsx
+var contentContainer = <div className="content"></div>;
+
 var HelloJohn = <Hello name="John"></Hello>;
 
 var HelloJohnCompound = <Hello.Compound name="John"></Hello.Compound>;
@@ -21,8 +23,6 @@ var HelloJohnCompound = <Hello.Compound name="John"></Hello.Compound>;
 Examples of **correct** code for this rule:
 
 ```jsx
-var contentContainer = <div className="content"></div>;
-
 var intentionalSpace = <div>{' '}</div>;
 
 var HelloJohn = <Hello name="John" />;

@@ -42,7 +42,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-filename-extension`]: include allowed extensions in message ([#4043][] @aduth)
 * [Docs] [`hook-use-state`]: clarify destructuring requirement ([#4030][] @raisulchowdhury)
 * [Refactor] `Components`: add `getWrappedComponentNode` util (@ljharb)
+* [Docs] [`self-closing-comp`]: list empty DOM elements as incorrect ([#4049][] @ColumbusLabs)
 
+[#4049]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4049
 [#4047]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4047
 [#4046]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4046
 [#4044]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4044
