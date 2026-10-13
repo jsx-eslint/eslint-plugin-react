@@ -30,6 +30,9 @@ const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('require-render-return', rule, {
   valid: parsers.all([
     {
+      code: 'const render = "render"; class Hello extends React.Component { [render]() {} render() { return <div />; } }',
+    },
+    {
       // ES6 class
       code: `
         class Hello extends React.Component {
@@ -154,6 +157,10 @@ ruleTester.run('require-render-return', rule, {
   ]),
 
   invalid: parsers.all([
+    {
+      code: 'class Hello extends React.Component { ["render"]() {} }',
+      errors: [{ messageId: 'noRenderReturn' }],
+    },
     {
       // Missing return in ES5 class
       code: `

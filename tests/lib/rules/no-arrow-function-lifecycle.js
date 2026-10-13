@@ -28,6 +28,10 @@ const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-arrow-function-lifecycle', rule, {
   valid: parsers.all([
     {
+      code: 'const render = "render"; class Foo extends React.Component { [render] = () => <div />; }',
+      features: ['class fields', 'no-ts'],
+    },
+    {
       code: `
         var Hello = createReactClass({
           render: function() { return <div />; }
@@ -361,6 +365,12 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
   ]),
 
   invalid: parsers.all([
+    {
+      code: 'class Foo extends React.Component { ["render"] = () => <div />; }',
+      features: ['class fields', 'no-ts'],
+      errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: 'class Foo extends React.Component { ["render"]() { return <div />; } }',
+    },
     {
       code: `
         var Hello = createReactClass({

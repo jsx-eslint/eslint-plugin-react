@@ -30,6 +30,12 @@ const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-danger-with-children', rule, {
   valid: parsers.all([
     {
+      code: '<div dangerouslySetInnerHTML={{ __html: "" }}>{/* comment */}</div>',
+    },
+    {
+      code: '<div dangerouslySetInnerHTML={html}>{}</div>',
+    },
+    {
       code: '<div>Children</div>',
     },
     {
@@ -103,6 +109,14 @@ ruleTester.run('no-danger-with-children', rule, {
   ]),
   invalid: parsers.all([
     {
+      code: '<div dangerouslySetInnerHTML={{ __html: "x" }}>\n  {child}\n</div>',
+      errors: [{ messageId: 'dangerWithChildren' }],
+    },
+    {
+      code: '<div {...{ ["dangerouslySetInnerHTML"]: { __html: "x" }, ["children"]: child }} />',
+      errors: [{ messageId: 'dangerWithChildren' }],
+    },
+    {
       code: `
         <div dangerouslySetInnerHTML={{ __html: "HTML" }}>
           Children
@@ -112,6 +126,10 @@ ruleTester.run('no-danger-with-children', rule, {
     },
     {
       code: '<div dangerouslySetInnerHTML={{ __html: "HTML" }} children="Children" />',
+      errors: [{ messageId: 'dangerWithChildren' }],
+    },
+    {
+      code: '<div {...{ dangerouslySetInnerHTML: { __html: "HTML" }, children: "Children" }} />',
       errors: [{ messageId: 'dangerWithChildren' }],
     },
     {
@@ -150,6 +168,18 @@ ruleTester.run('no-danger-with-children', rule, {
           "div",
           { dangerouslySetInnerHTML: { __html: "HTML" } },
           "Children"
+        );
+      `,
+      errors: [{ messageId: 'dangerWithChildren' }],
+    },
+    {
+      code: `
+        React.createElement(
+          "div",
+          {
+            ...{ dangerouslySetInnerHTML: { __html: "HTML" } },
+            children: "Children",
+          }
         );
       `,
       errors: [{ messageId: 'dangerWithChildren' }],
