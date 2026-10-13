@@ -31,6 +31,10 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('default-props-match-prop-types', rule, {
   valid: parsers.all([
+    {
+      code: 'const key = "defaultProps"; class Hello extends React.Component { static [key] = { extra: 1 }; render() { return null; } }',
+      features: ['class fields', 'no-ts'],
+    },
     // stateless components
     {
       code: `
@@ -801,6 +805,11 @@ ruleTester.run('default-props-match-prop-types', rule, {
   ]),
 
   invalid: parsers.all([
+    {
+      code: 'class Hello extends React.Component { static ["propTypes"] = { foo: PropTypes.string }; static ["defaultProps"] = { extra: 1 }; render() { return null; } }',
+      features: ['class fields', 'no-ts'],
+      errors: [{ messageId: 'defaultHasNoType' }],
+    },
     // stateless components
     {
       code: `

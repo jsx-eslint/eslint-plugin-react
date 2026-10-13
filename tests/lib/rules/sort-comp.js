@@ -727,6 +727,10 @@ ruleTester.run('sort-comp', rule, {
 
   invalid: parsers.all([
     {
+      code: 'class Foo extends React.Component { render() { return <div />; } [foo]() {} }',
+      errors: [{ messageId: 'unsortedProps', data: { propA: 'render', position: 'after', propB: 'foo' } }],
+    },
+    {
       code: `
         // Must force a lifecycle method to be placed before render
         var Hello = createReactClass({
