@@ -193,8 +193,63 @@ const tests = {
       `,
       options: [{ allowDestructuredState: true }],
     },
+    {
+      code: `
+        import { useState } from 'react';
+
+        const [eventBus] = useState(() => new EventEmitter())
+      `,
+      options: [{ allowMissingSetter: true }],
+    },
+    {
+      code: `
+        import { useState } from 'react';
+
+        const [{ foo, bar }] = useState({ foo: 1, bar: 2 })
+      `,
+      options: [{ allowMissingSetter: true, allowDestructuredState: true }],
+    },
   ]),
   invalid: parsers.all([
+    {
+      code: `
+        import { useState } from 'react';
+
+        const [eventBus, setBus] = useState(() => new EventEmitter())
+      `,
+      options: [{ allowMissingSetter: true }],
+      errors: [
+        {
+          message: 'useState call is not destructured into value + setter pair',
+        },
+      ],
+    },
+    {
+      code: `
+        import { useState } from 'react';
+
+        const [{ foo, bar }] = useState({ foo: 1, bar: 2 })
+      `,
+      options: [{ allowMissingSetter: true }],
+      errors: [
+        {
+          message: 'useState call is not destructured into value + setter pair (you can allow destructuring by enabling "allowDestructuredState" option)',
+        },
+      ],
+    },
+    {
+      code: `
+        import { useState } from 'react';
+
+        const eventBus = useState(() => new EventEmitter())
+      `,
+      options: [{ allowMissingSetter: true }],
+      errors: [
+        {
+          message: 'useState call is not destructured into value + setter pair',
+        },
+      ],
+    },
     {
       code: `
         import { useState } from 'react';
