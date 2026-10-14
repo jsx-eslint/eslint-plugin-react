@@ -592,6 +592,25 @@ ruleTester.run('no-unstable-nested-components', rule, {
         propNamePattern: '*Renderer',
       }],
     },
+    {
+      code: `
+        function _createTestComponent(props) {
+          return (
+            <div />
+          );
+        }
+      `,
+    },
+    {
+      code: `
+        function _createTestComponent() {
+          function Nested() {
+            return <div />;
+          }
+          return <Nested />;
+        }
+      `,
+    },
     /* TODO These minor cases are currently falsely marked due to component detection
     {
       code: `
@@ -1258,6 +1277,34 @@ ruleTester.run('no-unstable-nested-components', rule, {
         }
       `,
       errors: [{ message: ERROR_MESSAGE }],
+    },
+    {
+      code: `
+        function _ParentComponent() {
+          function UnstableNestedComponent() {
+            return <div />;
+          }
+
+          return <UnstableNestedComponent />
+        }
+      `,
+      errors: [{ message: ERROR_MESSAGE.replace('ParentComponent', '_ParentComponent') }],
+    },
+    {
+      code: `
+        const _ParentComponent = () => {
+          function UnstableNestedComponent() {
+            return <div />;
+          }
+
+          return (
+            <div>
+              <UnstableNestedComponent />
+            </div>
+          );
+        }
+      `,
+      errors: [{ message: ERROR_MESSAGE.replace('ParentComponent', '_ParentComponent') }],
     },
   ]),
 });
