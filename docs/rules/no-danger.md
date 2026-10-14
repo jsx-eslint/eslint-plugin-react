@@ -18,12 +18,20 @@ var React = require('react');
 var Hello = <div dangerouslySetInnerHTML={{ __html: "Hello World" }}></div>;
 ```
 
+```js
+React.createElement('div', { dangerouslySetInnerHTML: { __html: 'Hello World' } });
+```
+
 Examples of **correct** code for this rule:
 
 ```jsx
 var React = require('react');
 
 var Hello = <div>Hello World</div>;
+```
+
+```js
+React.createElement('div', { className: 'bar' });
 ```
 
 ## Rule Options
