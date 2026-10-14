@@ -30,6 +30,10 @@ const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('prefer-stateless-function', rule, {
   valid: parsers.all([
     {
+      code: 'class Foo extends React.Component { [extra] = 1; render() { return <div />; } }',
+      features: ['class fields', 'no-ts'],
+    },
+    {
       // Already a stateless function
       code: `
         const Foo = function(props) {
@@ -412,6 +416,11 @@ ruleTester.run('prefer-stateless-function', rule, {
   ]),
 
   invalid: parsers.all([
+    {
+      code: 'class Foo extends React.Component { ["propTypes"] = {}; render() { return <div />; } }',
+      features: ['class fields', 'no-ts'],
+      errors: [{ messageId: 'componentShouldBePure' }],
+    },
     {
       // Only use this.props
       code: `

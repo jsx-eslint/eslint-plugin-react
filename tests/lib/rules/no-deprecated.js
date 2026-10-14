@@ -45,6 +45,10 @@ function errorMessage(oldMethod, version, newMethod, refs, extraProps) {
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-deprecated', rule, {
   valid: parsers.all([
+    {
+      code: 'class Foo extends React.Component { [componentWillMount]() {} }',
+      settings: { react: { version: '16.9.0' } },
+    },
     // Not deprecated
     'var element = React.createElement(\'p\', {}, null);',
     'var clone = React.cloneElement(element);',
@@ -166,6 +170,10 @@ ruleTester.run('no-deprecated', rule, {
   ]),
 
   invalid: parsers.all([
+    {
+      code: 'class Foo extends React.Component { ["componentWillMount"]() {} }',
+      errors: [errorMessage('componentWillMount', '16.9.0', 'UNSAFE_componentWillMount', 'https://reactjs.org/docs/react-component.html#unsafe_componentwillmount. Use https://github.com/reactjs/react-codemod#rename-unsafe-lifecycles to automatically update your components.')],
+    },
     {
       code: 'React.renderComponent()',
       errors: [errorMessage('React.renderComponent', '0.12.0', 'React.render')],

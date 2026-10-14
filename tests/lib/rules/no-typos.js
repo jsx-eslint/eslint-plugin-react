@@ -33,6 +33,10 @@ const ruleTester = new RuleTester();
 ruleTester.run('no-typos', rule, {
   valid: parsers.all([].concat(
     {
+      code: 'const PropTypes = "propTypes"; createReactClass({ [PropTypes]: {}, render() { return null; } });',
+      parserOptions,
+    },
+    {
       code: `
           import createReactClass from 'create-react-class'
           function hello (extra = {}) {
@@ -586,6 +590,11 @@ ruleTester.run('no-typos', rule, {
   )),
 
   invalid: parsers.all([].concat(
+    {
+      code: 'createReactClass({ "PropTypes": {}, render() { return null; } });',
+      parserOptions,
+      errors: [{ messageId: 'typoPropDeclaration' }],
+    },
     {
       code: `
         class Component extends React.Component {
