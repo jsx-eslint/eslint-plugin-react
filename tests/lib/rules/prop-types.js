@@ -3302,6 +3302,51 @@ ruleTester.run('prop-types', rule, {
       features: ['ts', 'no-babel'],
     },
     {
+      // issue: https://github.com/jsx-eslint/eslint-plugin-react/issues/3159
+      code: `
+        import { FC } from 'react';
+
+        interface BlockProps {
+          title: string;
+        }
+
+        interface ColumnsProps {
+          label: string;
+        }
+
+        const Block: FC<BlockProps> = ({ title }) => <div>{title}</div>;
+
+        interface ColumnsComponent extends FC<ColumnsProps> {
+          Block: typeof Block;
+        }
+
+        const Columns: ColumnsComponent = ({ label }) => <section>{label}</section>;
+        Columns.Block = Block;
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      // issue: https://github.com/jsx-eslint/eslint-plugin-react/issues/3159
+      code: `
+        import { FC } from 'react';
+
+        interface BlockProps {
+          title: string;
+        }
+
+        interface ColumnsProps {
+          label: string;
+        }
+
+        const Block: FC<BlockProps> = ({ title }) => <div>{title}</div>;
+        const Columns: FC<ColumnsProps> & { Block: typeof Block } = ({ label }) => (
+          <section>{label}</section>
+        );
+        Columns.Block = Block;
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
       code: `
         import type { FC } from 'react';
         type PersonProps = {
