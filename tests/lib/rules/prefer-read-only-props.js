@@ -246,9 +246,150 @@ ruleTester.run('prefer-read-only-props', rule, {
       `,
       features: ['ts', 'no-babel-old'],
     },
+    {
+      code: `
+        namespace Foo {
+          export interface Props {
+            readonly name: string;
+          }
+        }
+        const MyComponent = ({ name }: Foo.Props) => {
+          return <div>{name}</div>;
+        };
+      `,
+      features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
+        interface Base {
+          other: string;
+        }
+        namespace Foo {
+          interface Base {
+            readonly age: number;
+          }
+          export interface Props extends Base {
+            readonly name: string;
+          }
+        }
+        const MyComponent = ({ name, age }: Foo.Props) => {
+          return <div>{name} {age}</div>;
+        };
+      `,
+      features: ['ts', 'no-babel-old'],
+    },
   ]),
 
   invalid: parsers.all([
+    {
+      code: `
+        declare namespace Foo {
+          interface Props {
+            name: string;
+          }
+        }
+        const MyComponent = ({ name }: Foo.Props) => {
+          return <div>{name}</div>;
+        };
+      `,
+      output: `
+        declare namespace Foo {
+          interface Props {
+            readonly name: string;
+          }
+        }
+        const MyComponent = ({ name }: Foo.Props) => {
+          return <div>{name}</div>;
+        };
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [{ messageId: 'readOnlyProp', data: { name: 'name' } }],
+    },
+    {
+      code: `
+        namespace Foo.Bar {
+          export interface Props {
+            name: string;
+          }
+        }
+        const MyComponent = ({ name }: Foo.Bar.Props) => {
+          return <div>{name}</div>;
+        };
+      `,
+      output: `
+        namespace Foo.Bar {
+          export interface Props {
+            readonly name: string;
+          }
+        }
+        const MyComponent = ({ name }: Foo.Bar.Props) => {
+          return <div>{name}</div>;
+        };
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [{ messageId: 'readOnlyProp', data: { name: 'name' } }],
+    },
+    {
+      code: `
+        namespace ItemsListElementSkeleton {
+          export interface Props {
+            hasImage?: boolean;
+            name: string;
+          }
+        }
+        const ItemsListElementSkeleton = ({ hasImage, name }: ItemsListElementSkeleton.Props) => {
+          return <div>{name}</div>;
+        };
+      `,
+      output: `
+        namespace ItemsListElementSkeleton {
+          export interface Props {
+            readonly hasImage?: boolean;
+            readonly name: string;
+          }
+        }
+        const ItemsListElementSkeleton = ({ hasImage, name }: ItemsListElementSkeleton.Props) => {
+          return <div>{name}</div>;
+        };
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [
+        { messageId: 'readOnlyProp', data: { name: 'hasImage' } },
+        { messageId: 'readOnlyProp', data: { name: 'name' } },
+      ],
+    },
+    {
+      code: `
+        export namespace Foo {
+          export namespace Bar {
+            export type Props = {
+              name: string;
+            };
+          }
+        }
+        class Hello extends React.Component<Foo.Bar.Props> {
+          render() {
+            return <div>Hello {this.props.name}</div>;
+          }
+        }
+      `,
+      output: `
+        export namespace Foo {
+          export namespace Bar {
+            export type Props = {
+              readonly name: string;
+            };
+          }
+        }
+        class Hello extends React.Component<Foo.Bar.Props> {
+          render() {
+            return <div>Hello {this.props.name}</div>;
+          }
+        }
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [{ messageId: 'readOnlyProp', data: { name: 'name' } }],
+    },
     {
       // Props.name is not read-only
       code: `

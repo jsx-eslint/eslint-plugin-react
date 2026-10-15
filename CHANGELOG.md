@@ -46,6 +46,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`forbid-dom-props`]: match `disallowedValues` against string, number, and template literal values in braces (@ljharb)
 * [`forbid-dom-props`]: allow forbidding namespaced props, like `xlink:href` (@ljharb)
 * [`forbid-dom-props`]: treat a prop with no value as `true` for `disallowedValues` (@ljharb)
+* [`prefer-read-only-props`], [`prop-types`]: resolve props typed with a qualified name declared in a namespace ([#4052][] @HawkForge)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -58,6 +59,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
 [#4059]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4059
+[#4052]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4052
 [#4049]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4049
 [#4048]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4048
 [#4047]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4047

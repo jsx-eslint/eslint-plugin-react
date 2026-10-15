@@ -4993,6 +4993,38 @@ ruleTester.run('prop-types', rule, {
         );
       `,
       features: ['types'],
+    },
+    {
+      code: `
+        namespace Foo {
+          export interface Props {
+            name: string;
+          }
+        }
+        function Hello({ name }: Foo.Props) {
+          return <div>{name}</div>;
+        }
+      `,
+      features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
+        interface Base {
+          other: string;
+        }
+        namespace Foo {
+          interface Base {
+            age: number;
+          }
+          export interface Props extends Base {
+            name: string;
+          }
+        }
+        function Hello({ name, age }: Foo.Props) {
+          return <div>{name} {age}</div>;
+        }
+      `,
+      features: ['ts', 'no-babel-old'],
     }
   )),
 
@@ -9113,6 +9145,90 @@ ruleTester.run('prop-types', rule, {
         {
           messageId: 'missingPropType',
           data: { name: 'prop$.events.map' },
+        },
+      ],
+    },
+    {
+      code: `
+        namespace Foo {
+          export interface Props {
+            name: string;
+          }
+        }
+        function Hello({ name, age }: Foo.Props) {
+          return <div>{name} {age}</div>;
+        }
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'age' },
+        },
+      ],
+    },
+    {
+      code: `
+        namespace Foo {
+          type Base = {
+            age: number;
+          };
+          export type Props = Base & {
+            name: string;
+          };
+        }
+        function Hello({ name, age, size }: Foo.Props) {
+          return <div>{name} {age} {size}</div>;
+        }
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'size' },
+        },
+      ],
+    },
+    {
+      code: `
+        namespace Foo.Bar {
+          export interface Props {
+            name: string;
+          }
+        }
+        function Hello({ name, age }: Foo.Bar.Props) {
+          return <div>{name} {age}</div>;
+        }
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'age' },
+        },
+      ],
+    },
+    {
+      code: `
+        namespace Foo {
+          export interface Props {
+            name: string;
+          }
+        }
+        namespace Foo {
+          export interface Props {
+            age: number;
+          }
+        }
+        function Hello({ name, age, size }: Foo.Props) {
+          return <div>{name} {age} {size}</div>;
+        }
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'size' },
         },
       ],
     }
