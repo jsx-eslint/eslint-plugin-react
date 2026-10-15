@@ -9115,6 +9115,25 @@ ruleTester.run('prop-types', rule, {
           data: { name: 'prop$.events.map' },
         },
       ],
+    },
+    {
+      code: `
+        namespace Foo {
+          export interface Props {
+            name: string;
+          }
+        }
+        function Hello({ name, age }: Foo.Props) {
+          return <div>{name} {age}</div>;
+        }
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'age' },
+        },
+      ],
     }
   )),
 });
