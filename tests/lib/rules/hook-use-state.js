@@ -221,6 +221,16 @@ const tests = {
       errors: [
         {
           message: 'useState call is not destructured into value + setter pair',
+          suggestions: [
+            {
+              messageId: 'suggestPair',
+              output: `
+        import { useState } from 'react';
+
+        const [eventBus, setEventBus] = useState(() => new EventEmitter())
+      `,
+            },
+          ],
         },
       ],
     },
