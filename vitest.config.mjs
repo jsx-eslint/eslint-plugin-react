@@ -5,6 +5,7 @@ export default defineConfig({
     include: [
       'tests/lib/**/*.js',
       'tests/util/**/*.js',
+      'tests/util/**/*-test.mjs',
       'tests/index.js',
       'tests/flat-config.js',
     ],
