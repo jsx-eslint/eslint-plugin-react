@@ -15,7 +15,6 @@
 	},
 	"ignorePatterns": [
 		"coverage/",
-		".nyc_output/",
 		"test-published-types/",
 		"tests/fixtures/flat-config/",
 		"**/*/*.d.ts",

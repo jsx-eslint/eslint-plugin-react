@@ -39,7 +39,6 @@ jobs:
           skip-ls-check: true
       - run: npx ls-engines
       - run: npm run unit-test
-      - uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
 
   node:
     name: 'eslint 9+'

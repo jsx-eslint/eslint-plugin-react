@@ -19,7 +19,7 @@
     "test": "npm run unit-test",
     "posttest": "npx npm@'>= 10.2' audit --production",
     "type-check": "tsc",
-    "unit-test": "istanbul cover node_modules/mocha/bin/_mocha tests/lib/**/*.js tests/util/**/*.js tests/index.js tests/flat-config.js",
+    "unit-test": "vitest run --coverage",
     "update:eslint-docs": "eslint-doc-generator"
   },
   "repository": {
@@ -60,6 +60,7 @@
     "@types/estree": "0.0.52",
     "@types/node": "^22",
     "@typescript-eslint/parser": "^8.58.0",
+    "@vitest/coverage-v8": "^5.0.3",
     "eslint": "^9.7",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-doc-generator": "^3.7.1",
@@ -70,15 +71,12 @@
     "eslint-scope": "^3.7.3",
     "espree": "^3.5.4",
     "gfm-footnotes": "^2.0.0",
-    "glob": "=10.3.7",
-    "istanbul": "^0.4.5",
-    "jackspeak": "=2.1.1",
     "ls-engines": "^0.8.1",
     "markdownlint-cli": "^0.8.0 || ^0.32.2",
-    "mocha": "^5.2.0",
     "npmignore": "^0.3.5",
     "sinon": "^7.5.0",
-    "typescript": "^6.0.3"
+    "typescript": "^6.0.3",
+    "vitest": "^5.0.3"
   },
   "peerDependencies": {
     "eslint": "^9.7"
@@ -103,6 +101,8 @@
       "tests/",
       "*.md",
       "*.config.js",
+      "*.config.mjs",
+      "pnpm-workspace.yaml",
       ".eslint-doc-generatorrc.js",
       ".eslintrc",
       ".editorconfig",

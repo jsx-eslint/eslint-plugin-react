@@ -5,7 +5,7 @@ const config = {
     ['recommended', '☑️'],
   ],
   ignoreConfig: ['all', 'flat'],
-  urlConfigs: 'https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs',
+  urlConfigs: 'https://github.com/ouka-lab/eslint-plugin-react/#shareable-configs',
 };
 
 module.exports = config;

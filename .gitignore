@@ -14,7 +14,6 @@ pids
 logs
 reports
 coverage
-.nyc_output/
 build
 node_modules
 !tests/**/node_modules

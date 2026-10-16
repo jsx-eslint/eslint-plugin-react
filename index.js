@@ -3,6 +3,7 @@
 const fromEntries = require('object.fromentries');
 const entries = require('object.entries');
 
+const pkg = require('./package.json');
 const allRules = require('./lib/rules');
 
 function filterRules(rules, predicate) {
@@ -97,8 +98,14 @@ const configs = {
 
 /** @typedef {{ plugins: { react: typeof plugin }, rules: import('eslint').Linter.RulesRecord, languageOptions: { parserOptions: import('eslint').Linter.ParserOptions } }} ReactFlatConfig */
 
-/** @type {{ deprecatedRules: typeof deprecatedRules, rules: typeof allRules, configs: typeof configs & { flat: Record<string, ReactFlatConfig> }}} */
+/** @type {{ meta: { name: string, version: string, namespace: string }, deprecatedRules: typeof deprecatedRules, rules: typeof allRules, configs: typeof configs & { flat: Record<string, ReactFlatConfig> }}} */
 const plugin = {
+  meta: {
+    name: pkg.name,
+    version: pkg.version,
+    // rules are used as `react/<rule>`, same as the original eslint-plugin-react
+    namespace: 'react',
+  },
   deprecatedRules,
   rules: allRules,
   configs,

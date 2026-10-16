@@ -1,0 +1,14 @@
+diff --git a/dist/lib/context.js b/dist/lib/context.js
+index 867fbe09d6df6c0a1e600a6ba91f02b7b2ce53c7..ca2b820add8411c4416c7cda49ed4118e826b19d 100644
+--- a/dist/lib/context.js
++++ b/dist/lib/context.js
+@@ -5,7 +5,8 @@ import { getPluginPrefix } from './plugin-prefix.js';
+ import { resolveConfigsToRules } from './plugin-config-resolution.js';
+ export async function getContext(path, userOptions, useMockPlugin = false) {
+     const plugin = useMockPlugin ? mockPlugin : await loadPlugin(path);
+-    const pluginPrefix = getPluginPrefix(plugin.meta?.name ?? (await getPluginName(path)));
++    // Prefer `meta.namespace` (the namespace ESLint itself uses for the plugin) over a prefix derived from the name
++    const pluginPrefix = plugin.meta?.namespace ?? getPluginPrefix(plugin.meta?.name ?? (await getPluginName(path)));
+     const configsToRules = await resolveConfigsToRules(plugin);
+     const options = getResolvedOptions(plugin, userOptions);
+     return {

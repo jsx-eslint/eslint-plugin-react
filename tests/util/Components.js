@@ -5,19 +5,34 @@ const entries = require('object.entries');
 const fromEntries = require('object.fromentries');
 const values = require('object.values');
 
-const RuleTester = require('../helpers/ruleTester');
+const Linter = require('eslint').Linter;
+
 const Components = require('../../lib/util/Components');
 const parsers = require('../helpers/parsers');
 
-const ruleTester = new RuleTester({
-  parserOptions: {
-    ecmaVersion: 2018,
-    sourceType: 'module',
-    ecmaFeatures: {
-      jsx: true,
-    },
-  },
-});
+const linter = new Linter();
+
+// Runs `rule` on every parser variant of `test` synchronously (RuleTester can not be used inside `it`)
+function runRule(test, rule) {
+  parsers.all([test]).forEach((variant) => {
+    const languageOptions = {
+      ecmaVersion: 2018,
+      sourceType: 'module',
+      parserOptions: Object.assign({ ecmaFeatures: { jsx: true } }, variant.parserOptions),
+    };
+    if (variant.parser) {
+      languageOptions.parser = require(variant.parser); // eslint-disable-line global-require, import/no-dynamic-require
+    }
+    const messages = linter.verify(variant.code, {
+      plugins: { test: { rules: { detect: rule } } },
+      rules: { 'test/detect': 'error' },
+      languageOptions,
+      settings: { react: { version: 'detect' } },
+    });
+    const fatal = messages.filter((message) => message.fatal);
+    assert.deepEqual(fatal, [], 'should parse without errors');
+  });
+}
 
 describe('Components', () => {
   describe('static detect', () => {
@@ -26,7 +41,7 @@ describe('Components', () => {
       const instructions = orDone ? instructionsOrDone : instructionsOrDone;
 
       const rule = {
-        create: Components.detect((_context, components, util) => {
+        create: Components.detect((context, components, util) => {
           const instructionResults = [];
 
           const augmentedInstructions = fromEntries(
@@ -50,18 +65,7 @@ describe('Components', () => {
         }),
       };
 
-      const tests = {
-        valid: parsers.all([Object.assign({}, test, {
-          settings: {
-            react: {
-              version: 'detect',
-            },
-          },
-        })]),
-        invalid: [],
-      };
-
-      ruleTester.run(test.code, rule, tests);
+      runRule(test, rule);
     }
 
     it('should detect Stateless Function Component', () => {
