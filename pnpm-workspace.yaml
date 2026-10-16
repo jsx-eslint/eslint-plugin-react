@@ -1,5 +1,7 @@
-# bench/ is a separate package, so that its dependencies (e.g. the original eslint-plugin-react) stay out of this package
+# bench/ is a separate package, so that its dependencies (e.g. the original eslint-plugin-react) stay out of this package.
+# The root (.) is listed too: otherwise Changesets treats only the listed packages as versionable.
 packages:
+  - .
   - bench
 
 # Only install package versions that have been published for at least 2 weeks (in minutes)
