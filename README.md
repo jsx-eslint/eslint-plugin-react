@@ -334,14 +334,26 @@ pnpm lint:fix  # format with @stylistic/eslint-plugin (eslint --fix)
 pnpm test      # vitest with coverage
 ```
 
-After changing a rule's docs or meta, run `pnpm update:eslint-docs` to regenerate the docs.
+After changing a rule's docs or meta, run `pnpm update:eslint-docs` to regenerate the docs (CI also regenerates them on PRs).
+
+Every PR needs a [changeset](.changeset/README.md), which becomes the release note in `CHANGELOG.md` (CI checks it):
+
+```sh
+pnpm changeset          # choose major / minor / patch and write the summary
+pnpm changeset --empty  # for a PR that should not appear in the release notes
+```
 
 ## Release
 
 The JavaScript sources are published as they are. Only the type declarations are built: `pnpm pack` runs `prepack`, which runs `build-types` (removes old `*.d.ts`, then `tsc -p build.tsconfig.json` emits `index.d.ts` and `lib/**/*.d.ts`).
 The published files are listed in `files` of `package.json`.
 
-1. Update `version` in `package.json`, and move the `Unreleased` entries of `CHANGELOG.md` to a `## [x.y.z] - yyyy.mm.dd` section.
+1. Apply the changesets: this bumps `version` in `package.json`, writes the `## x.y.z` section of `CHANGELOG.md` and deletes the used changesets. Review and commit the result.
+
+   ```sh
+   pnpm changeset version
+   ```
+
 1. Check that everything passes:
 
    ```sh

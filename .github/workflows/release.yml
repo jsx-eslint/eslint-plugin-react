@@ -5,10 +5,11 @@ on:
     tags:
       - "v*.*.*"
 
+permissions:
+  contents: read
+
 jobs:
   release:
-    if: github.event.repository.fork == false
-
     runs-on: ubuntu-latest
 
     permissions:
@@ -20,59 +21,28 @@ jobs:
           allowed-endpoints:
             api.github.com:443
             github.com:443
-            raw.githubusercontent.com:443
-            nodejs.org:443
-            registry.npmjs.org:443
-
-      - name: Get version from tag
-        id: tag_name
-        run: echo "current_version=${GITHUB_REF#refs/tags/v}" >> "$GITHUB_OUTPUT"
-        shell: bash
+            uploads.github.com:443
 
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-
-      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
-      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
-          node-version: 'lts/*'
-      - run: pnpm install --frozen-lockfile
+          persist-credentials: false
+          show-progress: false
 
-      - uses: mindsers/changelog-reader-action@1faaf50aa09d5793d9a100819973df801febfb31 # v2.4.0
-        id: changelog_reader
-        with:
-          version: ${{ steps.tag_name.outputs.current_version }}
-
-      - name: Get common links from changelog
-        id: changelog
+      # CHANGELOG.md is written by `changeset version`: take the `## <version>` section as the release notes
+      - name: extract the release notes from CHANGELOG.md
         run: |
-          # Parse the changelog for common links
-          _links="$(egrep '^\[.*]:.+' ${GITHUB_WORKSPACE:-.}/CHANGELOG.md | sort -u)"
-          _links="${_links//'%'/'%25'}"
-          # _links="${_links//$'\n'/'%0A'}"
-          _links="${_links//$'\r'/'%0D'}"
-          # Set output 'links' to $_links
-          DELIMITER=$(uuidgen)
-          echo "links<<${DELIMITER}" >> "${GITHUB_OUTPUT}"
-          echo "$_links" >> "${GITHUB_OUTPUT}"
-          echo "${DELIMITER}" >> "${GITHUB_OUTPUT}"
-
-      - name: 'concat data > tmp.md'
-        run: |
-          cat << 'EOF' > tmp.md
-          ${{ steps.changelog_reader.outputs.changes }}
-          ${{ steps.changelog.outputs.links }}
-          EOF
-
-      - run: cat tmp.md
-
-      - id: prune-footnotes
-        run: |
-          DELIMITER=$(uuidgen)
-          echo "body<<${DELIMITER}" >> "${GITHUB_OUTPUT}"
-          pnpm exec gfm-footnotes -i tmp.md >> "${GITHUB_OUTPUT}"
-          echo "${DELIMITER}" >> "${GITHUB_OUTPUT}"
+          version="${GITHUB_REF_NAME#v}"
+          awk -v heading="## ${version}" '
+            $0 == heading { found = 1; next }
+            found && /^## / { exit }
+            found { print }
+          ' CHANGELOG.md > "$RUNNER_TEMP/release-notes.md"
+          if [ ! -s "$RUNNER_TEMP/release-notes.md" ]; then
+            echo "::error::no \"## ${version}\" section in CHANGELOG.md"
+            exit 1
+          fi
+          cat "$RUNNER_TEMP/release-notes.md"
 
       - uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         with:
-          body: |
-            ${{ steps.prune-footnotes.outputs.body }}
+          body_path: ${{ runner.temp }}/release-notes.md
