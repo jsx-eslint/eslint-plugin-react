@@ -1,8 +1,5 @@
 'use strict';
 
-const entries = require('object.entries');
-const flatMap = require('array.prototype.flatmap');
-
 // this rule is not useful on v4.1+ of the TS parser
 const disableNewTS = (x) => Object.assign({}, x, { features: [].concat(x.features, 'no-ts-new') });
 
@@ -16,7 +13,7 @@ function minEcmaVersion(features, parserOptions) {
     Math,
     [].concat(
       (parserOptions && parserOptions.ecmaVersion) || [],
-      flatMap(entries(minEcmaVersionForFeatures), (entry) => {
+      Object.entries(minEcmaVersionForFeatures).flatMap((entry) => {
         const f = entry[0];
         const y = entry[1];
         return features.has(f) ? y : [];
@@ -30,7 +27,7 @@ const parsers = {
   '@TYPESCRIPT_ESLINT': require.resolve('@typescript-eslint/parser'),
   disableNewTS,
   all: function all(tests) {
-    const t = flatMap(tests, (test) => {
+    const t = tests.flatMap((test) => {
       if (typeof test === 'string') {
         test = { code: test };
       }

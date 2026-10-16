@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "target": "ES2015",       /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019' or 'ESNEXT'. */
+    "target": "ES2024",       /* Node.js 22+ */
     "module": "nodenext",     /* Specify module code generation. 'nodenext' treats these .js files as CommonJS (no "type": "module"). */
-    // "lib": ["es2015"],        /* Specify library files to be included in the compilation. */
+    "lib": ["ES2024", "ESNext.Iterator"], /* ES2024 + the iterator helpers (`Iterator.from`, `.map()`, ...), all available in Node.js 22+ */
     "allowJs": true,          /* Allow javascript files to be compiled. */
     "checkJs": true,          /* Report errors in .js files. */
     "noEmit": true,           /* Do not emit outputs. */

@@ -1,13 +1,10 @@
 'use strict';
 
-const fromEntries = require('object.fromentries');
-const entries = require('object.entries');
-
 const pkg = require('./package.json');
 const allRules = require('./lib/rules');
 
 function filterRules(rules, predicate) {
-  return fromEntries(entries(rules).filter((entry) => predicate(entry[1])));
+  return Object.fromEntries(Object.entries(rules).filter((entry) => predicate(entry[1])));
 }
 
 /**
@@ -15,7 +12,7 @@ function filterRules(rules, predicate) {
  * @returns {Record<string, SEVERITY_ERROR | 'error'>}
  */
 function configureAsError(rules) {
-  return fromEntries(Object.keys(rules).map((key) => [`react/${key}`, 2]));
+  return Object.fromEntries(Object.keys(rules).map((key) => [`react/${key}`, 2]));
 }
 
 /** @type {Partial<typeof allRules>} */

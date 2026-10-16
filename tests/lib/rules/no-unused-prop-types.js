@@ -11,7 +11,7 @@
 
 const RuleTester = require('../../helpers/ruleTester');
 
-require('object.entries/auto'); // for node 6, eslint 5, new TS parser, `function Hello({firstname}: Props): React$Element {` cases
+// for node 6, eslint 5, new TS parser, `function Hello({firstname}: Props): React$Element {` cases
 
 const rule = require('../../../lib/rules/no-unused-prop-types');
 

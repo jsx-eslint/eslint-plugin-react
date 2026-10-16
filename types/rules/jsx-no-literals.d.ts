@@ -6,7 +6,7 @@ type RawElementConfig = {
   restrictedAttributes?: string[];
 };
 
-type RawOverrideConfig = {
+type RawOverrideConfig = RawElementConfig & {
   allowElement?: boolean;
   applyToNestedElements?: boolean;
 };
