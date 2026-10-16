@@ -34,7 +34,7 @@
   - Polyfills (`array-includes`, `array.prototype.findlast`, `array.prototype.flatmap`, `array.prototype.tosorted`, `es-iterator-helpers`, `hasown`, `object.entries`, `object.fromentries`, `object.values`, `string.prototype.matchall`, `string.prototype.repeat`) are replaced with the native APIs of Node.js 22.
   - The needed part of `jsx-ast-utils` is included in the plugin (MIT, with its tests), without its polyfills.
   - `resolve` is replaced with `require.resolve()`, the archived `doctrine` with a small parser of the `@extends` / `@augments` JSDoc tags, and `prop-types` with the list of its validator names.
-- The published package is smaller than the original (unpacked: 920 KB instead of 938 KB): declaration maps and internal type declarations are not published anymore.
+- The published package is smaller than the original (unpacked: 923 KB instead of 938 KB): declaration maps and internal type declarations are not published anymore.
 
 #### Supply chain security
 
