@@ -41,7 +41,7 @@ Higher is better. The numbers vary between runs and machines: run `pnpm bench up
 | Runtime dependencies | 3 | 18 |
 | Installed packages (including the plugin itself, without `eslint`) | 7 | 124 |
 | Install size (total size of the installed files) | 1.07 MB | 7.32 MB |
-| Unpacked size of the package | 920 KB | 938 KB |
+| Unpacked size of the package | 923 KB | 938 KB |
 
 ## About this fork
 

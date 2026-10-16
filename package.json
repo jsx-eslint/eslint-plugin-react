@@ -6,11 +6,12 @@
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
-    "index.js",
-    "index.d.ts",
-    "index.d.ts.map",
+    "/index.js",
+    "/index.d.ts",
     "configs/",
-    "lib/"
+    "lib/",
+    "!lib/util/**/*.d.ts",
+    "!lib/types.d.ts"
   ],
   "scripts": {
     "clean-built-types": "rm -f $(find . -maxdepth 1 -type f -name '*.d.ts*') $(find lib -type f -name '*.d.ts*' ! -name 'types.d.ts')",
