@@ -1,4 +1,7 @@
 # Only install package versions that have been published for at least 2 weeks (in minutes)
 minimumReleaseAge: 20160
+
+engineStrict: true
+
 patchedDependencies:
   eslint-doc-generator@3.7.1: patches/eslint-doc-generator@3.7.1.patch

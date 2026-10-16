@@ -59,8 +59,6 @@ jobs:
           node-version: 'lts/*'
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      # the `engines` of this package must be satisfiable by all its dependencies
-      - run: pnpm exec ls-engines
       # `prepack` builds the type declarations
       - run: pnpm pack --pack-destination "$RUNNER_TEMP"
       - name: show the package contents

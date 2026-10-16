@@ -1,7 +1,6 @@
 'use strict';
 
 const assert = require('assert');
-const sinon = require('sinon');
 const espree = require('espree');
 
 const ast = require('../../lib/util/ast');
@@ -24,48 +23,48 @@ const mockContext = {};
 describe('ast', () => {
   describe('traverseReturnStatements', () => {
     it('Correctly traverses function declarations', () => {
-      const spy = sinon.spy();
+      const spy = vi.fn();
       traverseReturns(parseCode(`
         function foo({prop}) {
           return;
         }
       `), mockContext, spy);
 
-      assert(spy.calledOnce);
+      assert.strictEqual(spy.mock.calls.length, 1);
     });
 
     it('Correctly traverses function expressions', () => {
-      const spy = sinon.spy();
+      const spy = vi.fn();
       traverseReturns(parseCode(`
         const foo = function({prop}) {
           return;
         }
       `).declarations[0].init, mockContext, spy);
 
-      assert(spy.calledOnce);
+      assert.strictEqual(spy.mock.calls.length, 1);
     });
 
     it('Correctly traverses arrow functions', () => {
-      const spy = sinon.spy();
+      const spy = vi.fn();
       traverseReturns(parseCode(`
         ({prop}) => {
           return;
         }
       `).expression, mockContext, spy);
 
-      assert(spy.calledOnce);
+      assert.strictEqual(spy.mock.calls.length, 1);
 
-      spy.resetHistory();
+      spy.mockClear();
 
       traverseReturns(parseCode(`
         ({prop}) => 'something'
       `).expression, mockContext, spy);
 
-      assert(spy.calledOnce);
+      assert.strictEqual(spy.mock.calls.length, 1);
     });
 
     it('Correctly traverses inside control flow expressions', () => {
-      const spy = sinon.spy();
+      const spy = vi.fn();
       traverseReturns(parseCode(`
         function foo({prop}) {
           if (prop) {
@@ -93,12 +92,12 @@ describe('ast', () => {
         }
       `), mockContext, spy);
 
-      const enterCalls = spy.getCalls();
+      const enterCalls = spy.mock.calls;
 
       assert.strictEqual(enterCalls.length, 6);
 
       enterCalls.forEach((call, idx) => {
-        assert.strictEqual(call.args[0].value, idx);
+        assert.strictEqual(call[0].value, idx);
       });
     });
   });
