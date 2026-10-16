@@ -32,5 +32,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      - run: pnpm add --save-dev "eslint@${{ matrix.eslint }}"
+      # -w: the root is the plugin itself (bench/ is the other package of the workspace)
+      - run: pnpm add -w --save-dev "eslint@${{ matrix.eslint }}"
       - run: pnpm test
