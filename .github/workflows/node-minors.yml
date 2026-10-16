@@ -94,7 +94,7 @@ jobs:
             eslint: 5
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - name: strip eslint-doc-generator to avoid peer conflicts
         if: ${{ matrix.node-version < 6 || (matrix.node-version >= 16 && matrix.eslint >= 7) }}
         run: echo "$(jq 'del(.devDependencies["eslint-doc-generator"])' package.json)" > package.json
@@ -110,7 +110,7 @@ jobs:
       - run: npx ls-engines
         if: ${{ matrix.node-version >= 12 }}
       - run: npm run unit-test
-      - uses: codecov/codecov-action@v3.1.5
+      - uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
 
   node:
     name: 'node 4 - 17'

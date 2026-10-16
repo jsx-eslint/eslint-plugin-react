@@ -35,7 +35,7 @@ jobs:
           - 8
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: ljharb/actions/node/install@main
         name: 'nvm install ${{ matrix.node-version }} && npm install'
         with:
@@ -45,7 +45,7 @@ jobs:
           skip-ls-check: true
       - run: npx ls-engines
       - run: npm run unit-test
-      - uses: codecov/codecov-action@v3.1.5
+      - uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7.1.1
 
   node:
     name: 'eslint 9+'

@@ -15,7 +15,7 @@ jobs:
     outputs:
       is-new-version: ${{ steps.cpv.outputs.is-new-version }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.inputs.tag }}
 
@@ -24,10 +24,10 @@ jobs:
 
       - name: Check package version
         id: cpv
-        uses: PostHog/check-package-version@v2
+        uses: PostHog/check-package-version@f540540cb12d45ec3c58d42dbf1d60070ed2d268 # v2.1.1
 
       - name: Validate package version
-        uses: actions/github-script@v6
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           script: |
             const isNewVersion = `${{ steps.cpv.outputs.is-new-version }}`;
@@ -43,7 +43,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Verify checks passed
-        uses: actions/github-script@v6
+        uses: actions/github-script@3a2844b7e9c422d3c10d287c895573f7108da1b3 # v9.0.0
         with:
           result-encoding: string
           retries: 3
@@ -97,7 +97,7 @@ jobs:
       contents: read
       id-token: write
     steps:
-      - uses: step-security/harden-runner@v2
+      - uses: step-security/harden-runner@ccd8616d44fd3846e67624a50d5aad6d37bf2d25 # v2.22.1
         with:
           egress-policy: block
           allowed-endpoints: >
@@ -107,7 +107,7 @@ jobs:
             registry.npmjs.org:443
             raw.githubusercontent.com:443
 
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           ref: ${{ github.event.inputs.tag }}
 
@@ -122,7 +122,7 @@ jobs:
 
       - run: npm publish --dry-run
 
-      - uses: step-security/wait-for-secrets@v1
+      - uses: step-security/wait-for-secrets@084b3ae774c0e0003a9307ae4f487c10f1f998fe # v1.2.1
         id: wait-for-secrets
         with:
           slack-webhook-url: ${{ secrets.SLACK_WEBHOOK_URL }}
