@@ -2,7 +2,7 @@
 
 📝 Disallow missing `key` props in iterators/collection literals.
 
-💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
+💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/ouka-lab/eslint-plugin-react/#shareable-configs).
 
 <!-- end auto-generated rule header -->
 

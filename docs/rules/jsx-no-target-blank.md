@@ -2,7 +2,7 @@
 
 📝 Disallow `target="_blank"` attribute without `rel="noreferrer"`.
 
-💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/jsx-eslint/eslint-plugin-react/#shareable-configs).
+💼 This rule is enabled in the ☑️ `recommended` [config](https://github.com/ouka-lab/eslint-plugin-react/#shareable-configs).
 
 🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
 
