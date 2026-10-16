@@ -28,7 +28,6 @@ const settings = {
 };
 
 const PROP_TYPES_MESSAGE = 'Component propTypes should be exact by using \'exact\'.';
-const FLOW_MESSAGE = 'Component flow props should be set with exact objects.';
 
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('prefer-exact-props', rule, {

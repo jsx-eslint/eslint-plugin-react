@@ -10,8 +10,6 @@
 // -----------------------------------------------------------------------------
 
 const RuleTester = require('../../helpers/ruleTester');
-const getRuleDefiner = require('../../helpers/getRuleDefiner');
-const getESLintCoreRule = require('../../helpers/getESLintCoreRule');
 const rule = require('../../../lib/rules/jsx-no-undef');
 
 const parsers = require('../../helpers/parsers');
