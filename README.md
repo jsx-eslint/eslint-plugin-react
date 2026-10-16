@@ -4,12 +4,48 @@
 [![Maintenance Status][status-image]][status-url]
 [![NPM version][npm-image]][npm-url]
 
-React specific linting rules for `eslint`
+React specific linting rules for `eslint`, as a maintained fork of [`eslint-plugin-react`](https://github.com/jsx-eslint/eslint-plugin-react).
+
+## Why this fork
+
+| | What you get | Details |
+| --- | --- | --- |
+| 🔁 Drop-in | Same rules, same results | The rules are registered under the same `react/` namespace (e.g. `react/jsx-key`), and report exactly the same problems as the original (checked on every PR, see [Benchmarks](#benchmarks)) |
+| ⚡ Performance | Faster than the original | ~12% faster with the `all` config, and about the same with `recommended` (CI checks that it is not more than 5% slower) (see [Benchmarks](#benchmarks)) |
+| ⚡ Performance | Regression check in CI | [Vitest Bench](https://vitest.dev/guide/benchmarking) runs on every PR: it fails when the PR is more than 5% slower than the baseline or not faster than the original, and the comparison with the base branch is commented on the PR |
+| 🧩 Compatibility | ESLint 10 | Supports ESLint `^9.7` and `^10`, tested on both in CI (the original does not support ESLint 10: e.g. its `all` config throws there) |
+| 🧩 Compatibility | Current Node.js | Node.js 22 or later, tested on 22, 24 and 26 in CI |
+| 📦 Dependencies | Only 3 runtime dependencies | Polyfills are replaced with native APIs, and the needed part of `jsx-ast-utils` is included: 7 installed packages instead of 124, ~85% smaller install (see [Package size](#package-size)) |
+| 📦 Dependencies | Kept up to date | [Dependabot](https://docs.github.com/en/code-security/dependabot) updates the npm packages and the GitHub Actions every week |
+| 🔒 Supply chain security | Cooldown | New versions of dependencies are installed only after 2 weeks (pnpm `minimumReleaseAge`, Dependabot `cooldown`), to avoid freshly published malicious versions |
+| 🔒 Supply chain security | Pinned GitHub Actions | Every action is pinned to a full commit SHA, CI installs with a frozen lockfile, and the release workflow runs with [harden-runner](https://github.com/step-security/harden-runner) |
+| 🔒 Supply chain security | Staged publishing | Releases are published with npm [staged publishing](https://docs.npmjs.com/staged-publishing/): a staged package goes live only after it is approved with 2FA |
+| 🛠️ Contributing | Modern toolchain | pnpm, TypeScript 6, ESLint 10 with flat config, [`@stylistic/eslint-plugin`](https://eslint.style/) as the formatter, Vitest 5 and [Changesets](https://github.com/changesets/changesets) |
+| 🛠️ Contributing | Automated chores | On PRs, CI applies `pnpm lint:fix`, regenerates the rule docs, comments the test coverage and the benchmark results, and checks that a changeset is included |
+
+### Benchmarks
+
+Linting the React code in [`bench/fixtures/`](bench/fixtures) with each shareable config ([`bench/upstream.bench.mjs`](bench/upstream.bench.mjs)), on ESLint 9.39.5, Node.js 22.23.3 and Apple M2 (the original does not support ESLint 10).
+Higher is better. The numbers vary between runs and machines: run `pnpm bench upstream` in `bench/` to measure them yourself.
+
+| Config | This fork (ops/sec) | eslint-plugin-react 7.37.5 (ops/sec) | Difference |
+| --- | ---: | ---: | ---: |
+| `recommended` | 192.1 | 184.9 | +3.9% (within the noise) |
+| `all` | 72.3 | 64.5 | +12.1% |
+| `all` (TypeScript) | 144.8 | 132.6 | +9.2% |
+
+### Package size
+
+| | This fork | eslint-plugin-react 7.37.5 |
+| --- | ---: | ---: |
+| Runtime dependencies | 3 | 18 |
+| Installed packages (including the plugin itself, without `eslint`) | 7 | 124 |
+| Install size (total size of the installed files) | 1.07 MB | 7.32 MB |
+| Unpacked size of the package | 920 KB | 938 KB |
 
 ## About this fork
 
 This package is a fork of [`jsx-eslint/eslint-plugin-react`](https://github.com/jsx-eslint/eslint-plugin-react).
-Its main purpose is to keep the dependencies up to date.
 The rules themselves come from the original project, and all credit for them goes to its authors and contributors.
 
 Supported versions:
