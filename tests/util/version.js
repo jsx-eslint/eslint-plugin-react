@@ -23,16 +23,14 @@ describe('Version', () => {
   });
 
   describe('Detect version', () => {
-    const context = { settings: { react: { version: 'detect', flowVersion: 'detect' } }, getFilename: () => path.resolve(base, 'test.js') };
+    const context = { settings: { react: { version: 'detect', flowVersion: 'detect' } }, filename: path.resolve(base, 'test.js') };
 
     afterEach(() => {
-      if (context.getFilename.mockRestore) {
-        context.getFilename.mockRestore();
-      }
+      context.filename = path.resolve(base, 'test.js');
     });
 
     it('matches detected version', () => {
-      vi.spyOn(context, 'getFilename').mockImplementation(() => path.resolve(base, 'detect-version', 'test.js'));
+      context.filename = path.resolve(base, 'detect-version', 'test.js');
 
       assert.equal(versionUtil.testReactVersion(context, '>= 1.2.3'), true);
       assert.equal(versionUtil.testReactVersion(context, '>= 1.2.4'), false);
@@ -40,7 +38,7 @@ describe('Version', () => {
     });
 
     it('matches detected version in sibling project', () => {
-      vi.spyOn(context, 'getFilename').mockImplementation(() => path.resolve(base, 'detect-version-sibling', 'test.js'));
+      context.filename = path.resolve(base, 'detect-version-sibling', 'test.js');
 
       assert.equal(versionUtil.testReactVersion(context, '>= 2.3.4'), true);
       assert.equal(versionUtil.testReactVersion(context, '>= 2.3.5'), false);
@@ -48,7 +46,7 @@ describe('Version', () => {
     });
 
     it('matches detected version in child project', () => {
-      vi.spyOn(context, 'getFilename').mockImplementation(() => path.resolve(base, 'detect-version', 'detect-version-child', 'test.js'));
+      context.filename = path.resolve(base, 'detect-version', 'detect-version-child', 'test.js');
 
       assert.equal(versionUtil.testReactVersion(context, '>= 3.4.5'), true);
       assert.equal(versionUtil.testReactVersion(context, '>= 3.4.6'), false);
@@ -56,7 +54,7 @@ describe('Version', () => {
     });
 
     it('assumes latest version if react is not installed', () => {
-      vi.spyOn(context, 'getFilename').mockImplementation(() => path.resolve(base, 'detect-version-missing', 'test.js'));
+      context.filename = path.resolve(base, 'detect-version-missing', 'test.js');
 
       assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
 
@@ -67,7 +65,7 @@ describe('Version', () => {
 
     it('uses default version from settings if provided and react is not installed', () => {
       context.settings.react.defaultVersion = '16.14.0';
-      vi.spyOn(context, 'getFilename').mockImplementation(() => path.resolve(base, 'detect-version-missing', 'test.js'));
+      context.filename = path.resolve(base, 'detect-version-missing', 'test.js');
 
       assert.equal(versionUtil.testReactVersion(context, '16.14.0'), true);
 
@@ -80,7 +78,7 @@ describe('Version', () => {
 
     it('fails nicely with an invalid default version of react', () => {
       context.settings.react.defaultVersion = 'not semver';
-      vi.spyOn(context, 'getFilename').mockImplementation(() => path.resolve(base, 'detect-version-missing', 'test.js'));
+      context.filename = path.resolve(base, 'detect-version-missing', 'test.js');
 
       assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
 
@@ -93,7 +91,7 @@ describe('Version', () => {
     });
 
     it('warns only once for failure to detect react ', () => {
-      vi.spyOn(context, 'getFilename').mockImplementation(() => path.resolve(base, 'detect-version-missing', 'test.js'));
+      context.filename = path.resolve(base, 'detect-version-missing', 'test.js');
 
       assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
       assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
@@ -112,7 +110,7 @@ describe('Version', () => {
     });
 
     it('works with virtual filename', () => {
-      vi.spyOn(context, 'getFilename').mockImplementation(() => path.resolve(base, 'detect-version-sibling', 'test.js/0_fake.js'));
+      context.filename = path.resolve(base, 'detect-version-sibling', 'test.js/0_fake.js');
 
       assert.equal(versionUtil.testReactVersion(context, '>= 2.3.4'), true);
       assert.equal(versionUtil.testReactVersion(context, '>= 2.3.5'), false);
@@ -120,7 +118,7 @@ describe('Version', () => {
     });
 
     it('works with recursive virtual filename', () => {
-      vi.spyOn(context, 'getFilename').mockImplementation(() => path.resolve(base, 'detect-version-sibling', 'test.js/0_fake.md/1_fake.js'));
+      context.filename = path.resolve(base, 'detect-version-sibling', 'test.js/0_fake.md/1_fake.js');
 
       assert.equal(versionUtil.testReactVersion(context, '>= 2.3.4'), true);
       assert.equal(versionUtil.testReactVersion(context, '>= 2.3.5'), false);

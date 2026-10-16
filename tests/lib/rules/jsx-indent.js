@@ -775,18 +775,6 @@ ruleTester.run('jsx-indent', rule, {
           />
         );
       `,
-      output: `
-        const Component = () => (
-          <View
-            ListFooterComponent={(
-              <View
-                rowSpan={3}
-                placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-              />
-            )}
-          />
-        );
-      `,
       options: [2],
     },
     {
@@ -799,18 +787,6 @@ const Component = () => (
 \t\t\t\tplaceholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
 \t\t\t/>
 )}
-\t/>
-);
-    `,
-      output: `
-const Component = () => (
-\t<View
-\t\tListFooterComponent={(
-\t\t\t<View
-\t\t\t\trowSpan={3}
-\t\t\t\tplaceholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-\t\t\t/>
-\t\t)}
 \t/>
 );
     `,
@@ -829,18 +805,6 @@ const Component = () => (
           />
         );
       `,
-      output: `
-        const Component = () => (
-          <View
-            ListFooterComponent={(
-              <View
-                rowSpan={3}
-                placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-              />
-            )}
-          />
-        );
-      `,
       options: [2, { checkAttributes: false }],
     },
     {
@@ -853,18 +817,6 @@ const Component = () => (
 \t\t\t\tplaceholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
 \t\t\t/>
 )}
-\t/>
-);
-    `,
-      output: `
-const Component = () => (
-\t<View
-\t\tListFooterComponent={(
-\t\t\t<View
-\t\t\t\trowSpan={3}
-\t\t\t\tplaceholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do"
-\t\t\t/>
-\t\t)}
 \t/>
 );
     `,

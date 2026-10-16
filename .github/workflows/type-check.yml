@@ -7,12 +7,15 @@ permissions:
 
 jobs:
   test:
-    name: TS ${{ matrix.ts_version }}, "${{ matrix.ts_lib }}"
+    name: ESLint ${{ matrix.eslint_version }}, TS ${{ matrix.ts_version }}, "${{ matrix.ts_lib }}"
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
-        # ESLint 9 ships types via @eslint/core which requires TS >= 5.0
+        eslint_version:
+          - 9
+          - 10
+        # ESLint 9+ ships types via @eslint/core which requires TS >= 5.0
         ts_version:
           - '5.0'
           - 5.5
@@ -44,8 +47,8 @@ jobs:
         run: echo "ESLINT_PLUGIN_REACT_PATH=$(ls "$RUNNER_TEMP"/ysknsid25-eslint-plugin-react-*.tgz | tail -n 1)" >> "$GITHUB_ENV"
 
       # test-published-types is a separate package, not part of this repository's pnpm workspace
-      - name: install @ysknsid25/eslint-plugin-react and typescript version ${{ matrix.ts_version }}
-        run: pnpm add --ignore-workspace "$ESLINT_PLUGIN_REACT_PATH" "typescript@${{ matrix.ts_version }}"
+      - name: install @ysknsid25/eslint-plugin-react, eslint ${{ matrix.eslint_version }} and typescript ${{ matrix.ts_version }}
+        run: pnpm add --ignore-workspace "$ESLINT_PLUGIN_REACT_PATH" "eslint@^${{ matrix.eslint_version }}" "typescript@${{ matrix.ts_version }}"
         working-directory: test-published-types
 
       - name: show installed versions

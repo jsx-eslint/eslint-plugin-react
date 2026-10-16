@@ -48,14 +48,14 @@
   },
   "devDependencies": {
     "@changesets/cli": "^3.0.3",
-    "@eslint/core": "^0.17.0",
-    "@eslint/js": "^9.39.5",
+    "@eslint/core": "^1.2.1",
+    "@eslint/js": "^10.0.1",
     "@stylistic/eslint-plugin": "^5.10.0",
     "@types/estree": "^1.0.9",
     "@types/node": "^22.20.5",
     "@typescript-eslint/parser": "^8.71.0",
     "@vitest/coverage-v8": "^5.0.3",
-    "eslint": "^9.7",
+    "eslint": "^10.11.0",
     "eslint-doc-generator": "^3.7.1",
     "eslint-plugin-eslint-plugin": "^7.6.2",
     "espree": "^11.2.0",
@@ -65,7 +65,7 @@
     "vitest": "^5.0.3"
   },
   "peerDependencies": {
-    "eslint": "^9.7"
+    "eslint": "^9.7 || ^10"
   },
   "engines": {
     "node": ">=22"

@@ -12,6 +12,11 @@ This package is a fork of [`jsx-eslint/eslint-plugin-react`](https://github.com/
 Its main purpose is to keep the dependencies up to date.
 The rules themselves come from the original project, and all credit for them goes to its authors and contributors.
 
+Supported versions:
+
+- ESLint: `^9.7` and `^10`
+- Node.js: 22 or later
+
 Differences from the original package:
 
 - The package is published as `@ysknsid25/eslint-plugin-react`.

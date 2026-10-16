@@ -33,22 +33,22 @@ const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('jsx-no-undef', rule, {
   valid: parsers.all([
     {
-      code: '/*eslint no-undef:1*/ var React, App; React.render(<App />);',
+      code: 'var React, App; React.render(<App />);',
     },
     {
-      code: '/*eslint no-undef:1*/ var React; React.render(<img />);',
+      code: 'var React; React.render(<img />);',
     },
     {
-      code: '/*eslint no-undef:1*/ var React; React.render(<x-gif />);',
+      code: 'var React; React.render(<x-gif />);',
     },
     {
-      code: '/*eslint no-undef:1*/ var React, app; React.render(<app.Foo />);',
+      code: 'var React, app; React.render(<app.Foo />);',
     },
     {
-      code: '/*eslint no-undef:1*/ var React, app; React.render(<app.foo.Bar />);',
+      code: 'var React, app; React.render(<app.foo.Bar />);',
     },
     {
-      code: '/*eslint no-undef:1*/ var React; React.render(<Apppp:Foo />);',
+      code: 'var React; React.render(<Apppp:Foo />);',
       features: ['jsx namespace'],
     },
     {
@@ -84,7 +84,7 @@ ruleTester.run('jsx-no-undef', rule, {
 
   invalid: parsers.all([
     {
-      code: '/*eslint no-undef:1*/ var React; React.render(<App />);',
+      code: 'var React; React.render(<App />);',
       errors: [
         {
           messageId: 'undefined',
@@ -93,7 +93,7 @@ ruleTester.run('jsx-no-undef', rule, {
       ],
     },
     {
-      code: '/*eslint no-undef:1*/ var React; React.render(<Appp.Foo />);',
+      code: 'var React; React.render(<Appp.Foo />);',
       errors: [
         {
           messageId: 'undefined',
@@ -102,7 +102,7 @@ ruleTester.run('jsx-no-undef', rule, {
       ],
     },
     {
-      code: '/*eslint no-undef:1*/ var React; React.render(<appp.Foo />);',
+      code: 'var React; React.render(<appp.Foo />);',
       errors: [
         {
           messageId: 'undefined',
@@ -111,7 +111,7 @@ ruleTester.run('jsx-no-undef', rule, {
       ],
     },
     {
-      code: '/*eslint no-undef:1*/ var React; React.render(<appp.foo.Bar />);',
+      code: 'var React; React.render(<appp.foo.Bar />);',
       errors: [
         {
           messageId: 'undefined',
@@ -141,7 +141,7 @@ ruleTester.run('jsx-no-undef', rule, {
       },
     },
     {
-      code: '/*eslint no-undef:1*/ var React; React.render(<Foo />);',
+      code: 'var React; React.render(<Foo />);',
       errors: [
         {
           messageId: 'undefined',

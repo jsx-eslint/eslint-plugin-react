@@ -21,14 +21,15 @@ const parseCode = (code) => {
 };
 
 const mockContext = {
-  getSourceCode() { return { getScope: mockContext.getScope }; },
-  getScope() {
-    return {
-      type: 'global',
-      upper: null,
-      childScopes: [],
-      variables: [],
-    };
+  sourceCode: {
+    getScope() {
+      return {
+        type: 'global',
+        upper: null,
+        childScopes: [],
+        variables: [],
+      };
+    },
   },
 };
 
