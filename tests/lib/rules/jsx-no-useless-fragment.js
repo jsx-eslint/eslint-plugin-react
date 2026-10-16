@@ -229,7 +229,7 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       output: `
         const Comp = () => (
           <html>
-            ${/* eslint-disable-line template-curly-spacing *//* the trailing whitespace here is intentional */ ''}
+            ${/* the trailing whitespace here is intentional */ ''}
           </html>
         );
       `,

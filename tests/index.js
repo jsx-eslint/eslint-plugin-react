@@ -17,7 +17,7 @@ describe('all rule files should be exported by the plugin', () => {
     it(`should export ${ruleName}`, () => {
       assert.equal(
         plugin.rules[ruleName],
-        require(path.join('../lib/rules', ruleName)) // eslint-disable-line global-require
+        require(path.join('../lib/rules', ruleName))
       );
     });
 
@@ -78,7 +78,7 @@ describe('configurations', () => {
     ruleFiles.forEach((ruleName) => {
       const inDeprecatedRules = !!plugin.deprecatedRules[ruleName];
       const inConfig = typeof plugin.configs[configName].rules[`react/${ruleName}`] !== 'undefined';
-      assert(inDeprecatedRules ^ inConfig); // eslint-disable-line no-bitwise
+      assert(inDeprecatedRules ^ inConfig);
     });
   });
 
@@ -92,7 +92,7 @@ describe('configurations', () => {
 
       const inDeprecatedRules = !!plugin.deprecatedRules[ruleName];
       const inConfig = typeof plugin.configs[configName].rules[ruleName] !== 'undefined';
-      assert(inDeprecatedRules ^ inConfig); // eslint-disable-line no-bitwise
+      assert(inDeprecatedRules ^ inConfig);
     });
   });
 });

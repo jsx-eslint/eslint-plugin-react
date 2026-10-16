@@ -31,7 +31,7 @@ function convertToFlat(item, plugins) {
   }
 
   if (newItem.parser) {
-    newItem.languageOptions.parser = require(newItem.parser); // eslint-disable-line global-require
+    newItem.languageOptions.parser = require(newItem.parser);
     delete newItem.parser;
   }
 

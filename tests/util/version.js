@@ -18,8 +18,8 @@ describe('Version', () => {
   });
 
   afterEach(() => {
-    const actualArgs = console.error.args; // eslint-disable-line no-console
-    console.error.restore(); // eslint-disable-line no-console
+    const actualArgs = console.error.args;
+    console.error.restore();
     assert.deepEqual(actualArgs, expectedErrorArgs);
   });
 

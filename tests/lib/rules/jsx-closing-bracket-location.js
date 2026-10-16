@@ -1245,7 +1245,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
           store>
           <App
             foo
-            />${''/* <--*/}
+            />${''/* <-- */}
         </Provider>
       `,
       output: `

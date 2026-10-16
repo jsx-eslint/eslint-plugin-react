@@ -30,7 +30,6 @@ const ruleTester = new RuleTester({ parserOptions });
 
 // In ESLint >= 9, it isn't possible to redefine a core rule, but it isn't necessary anyway since the core rules are certainly already available in the RuleTester/Linter
 
-
 ruleTester.run('jsx-no-undef', rule, {
   valid: parsers.all([
     {

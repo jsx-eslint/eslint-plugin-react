@@ -21,7 +21,7 @@ function runRule(test, rule) {
       parserOptions: Object.assign({ ecmaFeatures: { jsx: true } }, variant.parserOptions),
     };
     if (variant.parser) {
-      languageOptions.parser = require(variant.parser); // eslint-disable-line global-require
+      languageOptions.parser = require(variant.parser);
     }
     const messages = linter.verify(variant.code, {
       plugins: { test: { rules: { detect: rule } } },
