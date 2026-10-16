@@ -1,8 +1,13 @@
 # `@ysknsid25/eslint-plugin-react`
 
-[![github actions][actions-image]][actions-url]
-[![Maintenance Status][status-image]][status-url]
-[![NPM version][npm-image]][npm-url]
+[![npm version](https://img.shields.io/npm/v/@ysknsid25/eslint-plugin-react.svg)](https://www.npmjs.com/package/@ysknsid25/eslint-plugin-react)
+[![npm downloads](https://img.shields.io/npm/dm/@ysknsid25/eslint-plugin-react.svg)](https://www.npmjs.com/package/@ysknsid25/eslint-plugin-react)
+[![GitHub last commit](https://img.shields.io/github/last-commit/ouka-lab/eslint-plugin-react)](https://github.com/ouka-lab/eslint-plugin-react/commits/master)
+[![Tests: ESLint](https://github.com/ouka-lab/eslint-plugin-react/actions/workflows/eslint.yml/badge.svg)](https://github.com/ouka-lab/eslint-plugin-react/actions/workflows/eslint.yml)
+[![CI: lint & build](https://github.com/ouka-lab/eslint-plugin-react/actions/workflows/lint-build.yml/badge.svg)](https://github.com/ouka-lab/eslint-plugin-react/actions/workflows/lint-build.yml)
+[![Types](https://github.com/ouka-lab/eslint-plugin-react/actions/workflows/type-check.yml/badge.svg)](https://github.com/ouka-lab/eslint-plugin-react/actions/workflows/type-check.yml)
+[![License: MIT](https://img.shields.io/npm/l/@ysknsid25/eslint-plugin-react.svg)](https://github.com/ouka-lab/eslint-plugin-react/blob/master/LICENSE)
+![CodeRabbit Pull Request Reviews](https://img.shields.io/coderabbit/prs/github/ouka-lab/eslint-plugin-react?utm_source=oss&utm_medium=github&utm_campaign=ouka-lab%2Feslint-plugin-react&labelColor=171717&color=FF570A&link=https%3A%2F%2Fcoderabbit.ai&label=CodeRabbit+Reviews)
 
 React specific linting rules for `eslint`, as a maintained fork of [`eslint-plugin-react`](https://github.com/jsx-eslint/eslint-plugin-react).
 
@@ -435,12 +440,3 @@ The published files are listed in `files` of `package.json`.
 
 Licensed under the [MIT License](LICENSE).
 Copyright (c) 2014 Yannick Croissant (original `eslint-plugin-react`), Copyright (c) 2026 Kanon (this fork).
-
-[npm-url]: https://www.npmjs.com/package/@ysknsid25/eslint-plugin-react
-[npm-image]: https://img.shields.io/npm/v/@ysknsid25/eslint-plugin-react.svg
-
-[status-url]: https://github.com/ouka-lab/eslint-plugin-react/pulse
-[status-image]: https://img.shields.io/github/last-commit/ouka-lab/eslint-plugin-react.svg
-
-[actions-image]: https://img.shields.io/github/check-runs/ouka-lab/eslint-plugin-react/master
-[actions-url]: https://github.com/ouka-lab/eslint-plugin-react/actions
