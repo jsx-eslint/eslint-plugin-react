@@ -16,6 +16,9 @@ export default defineConfig({
       // json-summary / json are read by davelosert/vitest-coverage-report-action to comment on PRs
       reporter: ['text-summary', 'lcov', 'json-summary', 'json'],
       reportOnFailure: true,
+      thresholds: {
+        statements: 93,
+      },
     },
   },
 });
