@@ -1,8 +1,8 @@
 {
   "name": "@ysknsid25/eslint-plugin-react",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "author": "ysknsid25",
-  "description": "Fork from `jsx-eslint/eslint-plugin-react`. Main propose is maintaining dependencie updates. React-specific linting rules for ESLint",
+  "description": "Fork from `jsx-eslint/eslint-plugin-react`. Main purpose is maintaining dependency updates. React-specific linting rules for ESLint",
   "main": "index.js",
   "types": "index.d.ts",
   "files": [
