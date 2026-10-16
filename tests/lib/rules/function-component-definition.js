@@ -450,6 +450,153 @@ ruleTester.run('function-component-definition', rule, {
   invalid: parsers.all([
     {
       code: `
+        export default memo(Item);
+        function Item() {
+          return <li />;
+        }
+      `,
+      output: null,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [{ messageId: 'arrow-function' }],
+    },
+    {
+      code: `
+        export default memo(Item);
+        function Item() {
+          return <li />;
+        }
+      `,
+      output: null,
+      options: [{ namedComponents: 'function-expression' }],
+      errors: [{ messageId: 'function-expression' }],
+    },
+    {
+      code: `
+        render(Item);
+        function Item() {
+          return <li />;
+        }
+      `,
+      output: null,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [{ messageId: 'arrow-function' }],
+    },
+    {
+      code: `
+        function wrapper() {
+          render(Item);
+          function Item() {
+            return <li />;
+          }
+        }
+      `,
+      output: null,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [{ messageId: 'arrow-function' }],
+    },
+    {
+      code: `
+        function Item() {
+          return <li />;
+        }
+        export default memo(Item);
+      `,
+      output: `
+        const Item = () => {
+          return <li />;
+        }
+        export default memo(Item);
+      `,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [{ messageId: 'arrow-function' }],
+    },
+    {
+      code: `
+        function Item() {
+          return <li />;
+        }
+        export default memo(Item);
+      `,
+      output: `
+        const Item = function() {
+          return <li />;
+        }
+        export default memo(Item);
+      `,
+      options: [{ namedComponents: 'function-expression' }],
+      errors: [{ messageId: 'function-expression' }],
+    },
+    {
+      code: `
+        render(<Item />, root);
+        function Item() {
+          return <li />;
+        }
+      `,
+      output: null,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [{ messageId: 'arrow-function' }],
+    },
+    {
+      code: `
+        function App() {
+          return <Item />;
+        }
+        function Item() {
+          return <li />;
+        }
+      `,
+      output: `
+        const App = () => {
+          return <Item />;
+        }
+        const Item = () => {
+          return <li />;
+        }
+      `,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [{ messageId: 'arrow-function' }, { messageId: 'arrow-function' }],
+    },
+    {
+      code: `
+        const getItem = () => Item;
+        function Item() {
+          return <li />;
+        }
+      `,
+      output: `
+        const getItem = () => Item;
+        const Item = () => {
+          return <li />;
+        }
+      `,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [{ messageId: 'arrow-function' }],
+    },
+    {
+      code: `
+        {
+          const Item = () => <b />;
+          render(<Item />, root);
+        }
+        function Item() {
+          return <li />;
+        }
+      `,
+      output: `
+        {
+          const Item = () => <b />;
+          render(<Item />, root);
+        }
+        const Item = () => {
+          return <li />;
+        }
+      `,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [{ messageId: 'arrow-function' }],
+    },
+    {
+      code: `
         function Hello(props) {
           return <div/>;
         }
