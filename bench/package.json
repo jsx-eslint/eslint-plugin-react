@@ -1,0 +1,16 @@
+{
+  "name": "@ysknsid25/eslint-plugin-react-bench",
+  "private": true,
+  "description": "Benchmarks of @ysknsid25/eslint-plugin-react",
+  "scripts": {
+    "bench": "vitest bench --run"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^8.71.0",
+    "@ysknsid25/eslint-plugin-react": "workspace:*",
+    "eslint": "^10.11.0",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-v9": "npm:eslint@^9.39.5",
+    "vitest": "^5.0.3"
+  }
+}

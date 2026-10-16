@@ -1,0 +1,42 @@
+name: 'Benchmark: update baseline'
+
+# Measures the benchmarks of this plugin (bench/lint.bench.mjs) on the selected branch and commits the result to bench/baseline/.
+# Run it after a change that is expected to change the performance (e.g. adding a rule).
+on: workflow_dispatch
+
+permissions:
+  contents: read
+
+jobs:
+  baseline:
+    # the same runner and Node.js as the `Benchmark` workflow, so that the numbers are comparable
+    runs-on: ubuntu-latest
+    permissions:
+      # to push the baseline
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          show-progress: false
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 'lts/*'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm exec vitest bench --run lint
+        working-directory: bench
+        env:
+          BENCH_WRITE_BASELINE: 1
+
+      - name: commit the baseline
+        run: |
+          git add bench/baseline
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit --message 'chore: update the benchmark baseline'
+          git push

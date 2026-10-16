@@ -1,0 +1,48 @@
+name: 'Benchmark'
+
+on: [pull_request]
+
+permissions:
+  contents: read
+
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      # to comment the comparison with the base branch
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # vitest-bench-compare checks out the base commit too
+          fetch-depth: 0
+          persist-credentials: false
+          show-progress: false
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 'lts/*'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      # fails when
+      # - the PR is more than 5% slower than the committed baseline (bench/baseline/), or the rules changed since it was measured
+      # - this fork is not faster than the original eslint-plugin-react
+      - run: pnpm bench
+        working-directory: bench
+
+      - name: compare with the base branch and comment on the PR
+        if: always()
+        uses: ouka-lab/vitest-bench-compare@9ca40c72c887ddc94fb44873d0a63cefa04efc0c # v1.1.0
+        env:
+          # only measure: the action compares the base branch and the PR by itself
+          BENCH_NO_ASSERT: 1
+        with:
+          dir: ${{ runner.temp }}/bench
+          source: bench/results
+          working-directory: bench
+          install: pnpm install --frozen-lockfile
+          run: pnpm exec vitest bench --run
+          # PRs from forks can not be commented on
+          dry-run: ${{ github.event.pull_request.head.repo.full_name != github.repository }}
