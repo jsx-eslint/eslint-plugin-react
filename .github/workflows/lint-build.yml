@@ -18,8 +18,6 @@ jobs:
           ref: ${{ github.head_ref || github.ref_name }}
           show-progress: false
       - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
-        with:
-          version: 11.3.0
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 'lts/*'
@@ -43,7 +41,7 @@ jobs:
       - name: check that there is nothing left for `pnpm lint:fix`
         run: git diff --exit-code
 
-      # markdownlint, eslint-doc-generator --check, eslint and tsc (via the pre/post scripts)
+      # markdownlint, eslint-doc-generator --check, eslint and tsc
       - run: pnpm lint
 
   build:
@@ -54,29 +52,14 @@ jobs:
           persist-credentials: false
           show-progress: false
       - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
-        with:
-          version: 11.3.0
       - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
         with:
           node-version: 'lts/*'
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      # `prepack` builds the type declarations and the `.npmignore`
+      # the `engines` of this package must be satisfiable by all its dependencies
+      - run: pnpm exec ls-engines
+      # `prepack` builds the type declarations
       - run: pnpm pack --pack-destination "$RUNNER_TEMP"
       - name: show the package contents
         run: tar -tzf "$RUNNER_TEMP"/*.tgz
-
-  posttest:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-      - uses: ljharb/actions/node/install@main
-        name: 'nvm install lts/* && npm install'
-        with:
-          node-version: 'lts/*'
-        env:
-          NPM_CONFIG_LEGACY_PEER_DEPS: true
-      - run: npx ls-engines
-      - run: echo 'legacy-peer-deps=true' >> .npmrc
-      - run: npm run posttest

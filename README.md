@@ -323,6 +323,61 @@ Add a `settings` property like below to a config object in your `eslint.config.j
 - JSX accessibility: [eslint-plugin-jsx-a11y](https://github.com/jsx-eslint/eslint-plugin-jsx-a11y)
 - React Native: [eslint-plugin-react-native](https://github.com/Intellicode/eslint-plugin-react-native)
 
+## Development
+
+This repository uses [pnpm](https://pnpm.io/) only (the version is pinned in `devEngines.packageManager` of `package.json`, and `npm install` / `npm run` fail on purpose).
+
+```sh
+pnpm install
+pnpm lint      # markdownlint, eslint-doc-generator --check, eslint, tsc
+pnpm lint:fix  # format with @stylistic/eslint-plugin (eslint --fix)
+pnpm test      # vitest with coverage
+```
+
+After changing a rule's docs or meta, run `pnpm update:eslint-docs` to regenerate the docs.
+
+## Release
+
+The JavaScript sources are published as they are. Only the type declarations are built: `pnpm pack` runs `prepack`, which runs `build-types` (removes old `*.d.ts`, then `tsc -p build.tsconfig.json` emits `index.d.ts` and `lib/**/*.d.ts`).
+The published files are listed in `files` of `package.json`.
+
+1. Update `version` in `package.json`, and move the `Unreleased` entries of `CHANGELOG.md` to a `## [x.y.z] - yyyy.mm.dd` section.
+1. Check that everything passes:
+
+   ```sh
+   pnpm install --frozen-lockfile
+   pnpm lint
+   pnpm test
+   ```
+
+1. Build the package and check its contents:
+
+   ```sh
+   pnpm pack
+   tar -tzf ysknsid25-eslint-plugin-react-x.y.z.tgz
+   ```
+
+1. Stage the tarball on npm ([staged publishing](https://docs.npmjs.com/staged-publishing/)). Staging does not ask for 2FA.
+
+   ```sh
+   pnpm stage publish ysknsid25-eslint-plugin-react-x.y.z.tgz --access public
+   ```
+
+1. Check the staged package, then approve it (asks for 2FA). This publishes it to npm.
+
+   ```sh
+   pnpm stage list @ysknsid25/eslint-plugin-react
+   pnpm stage view <stage-id>
+   pnpm stage approve <stage-id>
+   ```
+
+1. Push the tag. The `Release` workflow creates a GitHub Release from the `CHANGELOG.md` section of that version.
+
+   ```sh
+   git tag vx.y.z
+   git push origin vx.y.z
+   ```
+
 ## License
 
 Licensed under the [MIT License](LICENSE).

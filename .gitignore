@@ -26,7 +26,6 @@ npm-shrinkwrap≥json
 package-lock.json
 yarn.lock
 
-.npmignore
 
 /lib/**/*.d.ts
 /lib/**/*.d.ts.map
