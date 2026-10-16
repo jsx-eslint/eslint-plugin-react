@@ -1,0 +1,82 @@
+name: 'CI: lint & build'
+
+on: [pull_request, push]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    permissions:
+      # to push the `pnpm lint:fix` result to the PR branch
+      contents: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          # check out the PR branch itself (not the merge commit) so that the fix can be pushed back
+          ref: ${{ github.head_ref || github.ref_name }}
+          show-progress: false
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          version: 11.3.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 'lts/*'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+
+      - run: pnpm lint:fix
+
+      - name: commit the `pnpm lint:fix` result
+        # only for PRs from this repository: the token can not push to forks
+        if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+        run: |
+          if git diff --quiet; then
+            exit 0
+          fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit --all --message 'style: apply `pnpm lint:fix`'
+          git push
+
+      - name: check that there is nothing left for `pnpm lint:fix`
+        run: git diff --exit-code
+
+      # markdownlint, eslint-doc-generator --check, eslint and tsc (via the pre/post scripts)
+      - run: pnpm lint
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          show-progress: false
+      - uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          version: 11.3.0
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 'lts/*'
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # `prepack` builds the type declarations and the `.npmignore`
+      - run: pnpm pack --pack-destination "$RUNNER_TEMP"
+      - name: show the package contents
+        run: tar -tzf "$RUNNER_TEMP"/*.tgz
+
+  posttest:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: ljharb/actions/node/install@main
+        name: 'nvm install lts/* && npm install'
+        with:
+          node-version: 'lts/*'
+        env:
+          NPM_CONFIG_LEGACY_PEER_DEPS: true
+      - run: npx ls-engines
+      - run: echo 'legacy-peer-deps=true' >> .npmrc
+      - run: npm run posttest
