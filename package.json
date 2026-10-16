@@ -1,8 +1,8 @@
 {
-  "name": "eslint-plugin-react",
-  "version": "7.37.5",
-  "author": "Yannick Croissant <yannick.croissant+npm@gmail.com>",
-  "description": "React specific linting rules for ESLint",
+  "name": "@ysknsid25/eslint-plugin-react",
+  "version": "1.0.0",
+  "author": "ysknsid25",
+  "description": "Fork from `jsx-eslint/eslint-plugin-react`. Main propose is maintaining dependencie updates. React-specific linting rules for ESLint",
   "main": "index.js",
   "types": "index.d.ts",
   "scripts": {
@@ -24,7 +24,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jsx-eslint/eslint-plugin-react"
+    "url": "https://github.com/ouka-lab/eslint-plugin-react"
   },
   "directories": {
     "test": [
@@ -33,8 +33,8 @@
       "test-published-types"
     ]
   },
-  "homepage": "https://github.com/jsx-eslint/eslint-plugin-react",
-  "bugs": "https://github.com/jsx-eslint/eslint-plugin-react/issues",
+  "homepage": "https://github.com/ouka-lab/eslint-plugin-react",
+  "bugs": "https://github.com/ouka-lab/eslint-plugin-react/issues",
   "dependencies": {
     "array-includes": "^3.2.0",
     "array.prototype.findlast": "^1.2.5",
