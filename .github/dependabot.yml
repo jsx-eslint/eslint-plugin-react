@@ -7,6 +7,8 @@ updates:
       day: saturday
       time: "10:00"
       timezone: Asia/Tokyo
+    cooldown:
+      default-days: 14
 
   - package-ecosystem: github-actions
     directory: /
@@ -15,3 +17,5 @@ updates:
       day: saturday
       time: "10:00"
       timezone: Asia/Tokyo
+    cooldown:
+      default-days: 14
