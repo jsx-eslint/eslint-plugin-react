@@ -195,29 +195,6 @@ ruleTester.run('jsx-no-bind', rule, {
     },
     {
       code: `
-        class Hello extends Component {
-          render() {
-            const click = this.bar::baz
-            return <div onClick={onClick}>Hello</div>;
-          }
-        };
-      `,
-      features: ['bind operator'],
-    },
-    {
-      code: `
-        class Hello extends Component {
-          render() {
-            return (<div>{
-              this.props.list.map(this.bar::baz)
-            }</div>);
-          }
-        };
-      `,
-      features: ['bind operator'],
-    },
-    {
-      code: `
         var Hello = React.createClass({
           render: function() {
             return (<div>{
@@ -226,17 +203,6 @@ ruleTester.run('jsx-no-bind', rule, {
           }
         });
       `,
-    },
-    {
-      code: `
-        var Hello = React.createClass({
-          render: function() {
-            const click = this.bar::baz
-            return <div onClick={onClick}>Hello</div>;
-          }
-        });
-      `,
-      features: ['bind operator'],
     },
     {
       code: `
@@ -295,11 +261,6 @@ ruleTester.run('jsx-no-bind', rule, {
     {
       code: '<div onClick={function () { alert("1337") }}></div>',
       options: [{ ignoreDOMComponents: true }],
-    },
-    {
-      code: '<div foo={::this.onChange} />',
-      options: [{ ignoreDOMComponents: true }],
-      features: ['bind operator'],
     },
 
     // Local function declaration
@@ -377,7 +338,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'bindCall' }],
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -389,7 +350,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'bindCall' }],
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -439,7 +400,7 @@ ruleTester.run('jsx-no-bind', rule, {
         { messageId: 'bindCall' },
         { messageId: 'arrowFunc' },
       ],
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -513,7 +474,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'arrowFunc' }],
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -525,7 +486,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'arrowFunc' }],
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -537,7 +498,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'arrowFunc' }],
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -581,25 +542,6 @@ ruleTester.run('jsx-no-bind', rule, {
       `,
       errors: [{ messageId: 'arrowFunc' }],
     },
-    {
-      code: `
-        class Hello23 extends React.Component {
-          renderDiv = () => {
-            const click = ::this.onChange
-            const renderStuff = () => {
-              const click = () => true
-              return <div onClick={click} />
-            }
-            return <div onClick={click}>Hello</div>;
-          }
-        };
-      `,
-      errors: [
-        { messageId: 'arrowFunc' },
-        { messageId: 'bindExpression' },
-      ],
-      features: ['bind operator'],
-    },
 
     // Functions
     {
@@ -628,7 +570,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'func' }],
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -640,7 +582,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'func' }],
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -652,7 +594,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'func' }],
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -664,7 +606,7 @@ ruleTester.run('jsx-no-bind', rule, {
         };
       `,
       errors: [{ messageId: 'func' }],
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -729,94 +671,8 @@ ruleTester.run('jsx-no-bind', rule, {
       `,
       errors: [{ messageId: 'func' }],
     },
-    {
-      code: `
-        class Hello23 extends React.Component {
-          renderDiv = () => {
-            const click = ::this.onChange
-            const renderStuff = () => {
-              const click = function () { return true }
-              return <div onClick={click} />
-            }
-            return <div onClick={click}>Hello</div>;
-          }
-        };
-      `,
-      errors: [
-        { messageId: 'func' },
-        { messageId: 'bindExpression' },
-      ],
-      features: ['bind operator'],
-    },
 
     // Bind expression
-    {
-      code: '<div foo={::this.onChange} />',
-      errors: [{ messageId: 'bindExpression' }],
-      features: ['bind operator'],
-    },
-    {
-      code: '<div foo={foo.bar::baz} />',
-      errors: [{ messageId: 'bindExpression' }],
-      features: ['bind operator'],
-    },
-    {
-      code: '<div foo={foo::bar} />',
-      errors: [{ messageId: 'bindExpression' }],
-      features: ['bind operator'],
-    },
-    {
-      code: `
-        class Hello23 extends React.Component {
-          renderDiv() {
-            const click = ::this.onChange
-            return <div onClick={click}>Hello</div>;
-          }
-        };
-      `,
-      errors: [{ messageId: 'bindExpression' }],
-      features: ['bind operator'],
-    },
-    {
-      code: `
-        class Hello23 extends React.Component {
-          renderDiv() {
-            const click = this.bar::baz
-            return <div onClick={click}>Hello</div>;
-          }
-        };
-      `,
-      errors: [{ messageId: 'bindExpression' }],
-      features: ['bind operator'],
-    },
-    {
-      code: `
-        class Hello23 extends React.Component {
-          renderDiv = async () => {
-            const click = this.bar::baz
-            return <div onClick={click}>Hello</div>;
-          }
-        };
-      `,
-      errors: [{ messageId: 'bindExpression' }],
-      features: ['bind operator'],
-    },
-    {
-      code: `
-        class Hello23 extends React.Component {
-          renderDiv = () => {
-            const click = true
-            const renderStuff = () => {
-              const click = this.bar::baz
-              return <div onClick={click} />
-            }
-            return <div onClick={click}>Hello</div>;
-          }
-        };
-      `,
-      errors: [{ messageId: 'bindExpression' }],
-      features: ['bind operator'],
-    },
 
     // Local function declaration
     {

@@ -173,7 +173,7 @@ ruleTester.run('prefer-stateless-function', rule, {
           }
         }
       `,
-      features: ['no-default', 'no-babel'],
+      features: ['no-default'],
     },
     {
       // Use this.bar
@@ -505,20 +505,6 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
       features: ['class fields'],
-      errors: [{ messageId: 'componentShouldBePure' }],
-    },
-    {
-      code: `
-        class Foo extends React.Component {
-          props: {
-            name: string;
-          };
-          render() {
-            return <div>{this.props.foo}</div>;
-          }
-        }
-      `,
-      features: ['flow'],
       errors: [{ messageId: 'componentShouldBePure' }],
     },
     {

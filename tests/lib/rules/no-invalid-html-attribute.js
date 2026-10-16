@@ -9,8 +9,6 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const semver = require('semver');
-const eslintPkg = require('eslint/package.json');
 const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/no-invalid-html-attribute');
 const parsers = require('../../helpers/parsers');
@@ -493,15 +491,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
 
           // FIXME: this suggestion produces invalid code
           // In ESLint > 9, RuleTester doesn't allow suggestions with parsing errors.
-          suggestions: semver.major(eslintPkg.version) < 9
-            ? [
-              {
-                messageId: 'suggestRemoveInvalid',
-                data: { reportingValue: '1' },
-                output: 'React.createElement("a", { rel:  })',
-              },
-            ]
-            : 1,
+          suggestions: 1,
 
           type: 'Literal',
         },
@@ -753,7 +743,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         },
       ],
     },
-    parsers.skipDueToMultiErrorSorting ? [] : {
+    {
       code: '<a rel={"foobar batgo       noopener"}></a>',
       errors: [
         {
@@ -833,7 +823,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         },
       ],
     },
-    parsers.skipDueToMultiErrorSorting ? [] : {
+    {
       code: '<a rel={" batgo noopener"}></a>',
       errors: [
         {
@@ -977,7 +967,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         },
       ],
     },
-    parsers.skipDueToMultiErrorSorting ? [] : {
+    {
       code: '<link rel="shortcut foo"></link>',
       errors: [
         {
@@ -1026,7 +1016,7 @@ ruleTester.run('no-invalid-html-attribute', rule, {
         },
       ],
     },
-    parsers.skipDueToMultiErrorSorting ? [] : {
+    {
       code: '<link rel="shortcut  foo"></link>',
       errors: [
         {

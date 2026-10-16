@@ -96,7 +96,7 @@ ruleTester.run('button-has-type', rule, {
           </>;
         }
       `,
-      features: ['fragment', 'types'],
+      features: ['types'],
     },
   ]),
   invalid: parsers.all([

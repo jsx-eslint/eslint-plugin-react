@@ -117,33 +117,6 @@ ruleTester.run('jsx-handler-names', rule, {
       ],
     },
     {
-      code: '<TestComponent onChange={props::handleChange} />',
-      features: ['bind operator'],
-    },
-    {
-      code: '<TestComponent onChange={::props.onChange} />',
-      features: ['bind operator'],
-    },
-    {
-      code: '<TestComponent onChange={props.foo::handleChange} />',
-      features: ['bind operator'],
-    },
-    {
-      code: '<TestComponent onChange={() => props::handleChange()} />',
-      features: ['bind operator'],
-      options: [{ checkInlineFunction: true }],
-    },
-    {
-      code: '<TestComponent onChange={() => ::props.onChange()} />',
-      features: ['bind operator'],
-      options: [{ checkInlineFunction: true }],
-    },
-    {
-      code: '<TestComponent onChange={() => props.foo::handleChange()} />',
-      features: ['bind operator'],
-      options: [{ checkInlineFunction: true }],
-    },
-    {
       code: '<TestComponent only={this.only} />',
     },
     {
@@ -378,26 +351,6 @@ ruleTester.run('jsx-handler-names', rule, {
     },
     {
       code: '<TestComponent onChange={this.onChange} />',
-      errors: [
-        {
-          messageId: 'badHandlerName',
-          data: { propKey: 'onChange', handlerPrefix: 'handle' },
-        },
-      ],
-    },
-    {
-      code: '<TestComponent onChange={props::onChange} />',
-      features: ['bind operator'],
-      errors: [
-        {
-          messageId: 'badHandlerName',
-          data: { propKey: 'onChange', handlerPrefix: 'handle' },
-        },
-      ],
-    },
-    {
-      code: '<TestComponent onChange={props.foo::onChange} />',
-      features: ['bind operator'],
       errors: [
         {
           messageId: 'badHandlerName',

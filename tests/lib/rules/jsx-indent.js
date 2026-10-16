@@ -9,8 +9,6 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const semver = require('semver');
-const eslintVersion = require('eslint/package.json').version;
 const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/jsx-indent');
 
@@ -40,7 +38,6 @@ ruleTester.run('jsx-indent', rule, {
       code: `
         <></>
       `,
-      features: ['fragment'],
     },
     {
       code: `
@@ -53,7 +50,6 @@ ruleTester.run('jsx-indent', rule, {
         <>
         </>
       `,
-      features: ['fragment'],
     },
     {
       code: `
@@ -69,7 +65,6 @@ ruleTester.run('jsx-indent', rule, {
           <></>
         </App>
       `,
-      features: ['fragment'],
       options: [2],
     },
     {
@@ -78,7 +73,6 @@ ruleTester.run('jsx-indent', rule, {
           <Foo />
         </>
       `,
-      features: ['fragment'],
       options: [2],
     },
     {
@@ -123,7 +117,6 @@ ruleTester.run('jsx-indent', rule, {
           </App>;
         }
       `,
-      features: ['fragment'],
       options: [2],
     },
     {
@@ -144,7 +137,6 @@ ruleTester.run('jsx-indent', rule, {
           </App>);
         }
       `,
-      features: ['fragment'],
       options: [2],
     },
     {
@@ -169,7 +161,6 @@ ruleTester.run('jsx-indent', rule, {
           );
         }
       `,
-      features: ['fragment'],
       options: [2],
     },
     {
@@ -194,7 +185,6 @@ ruleTester.run('jsx-indent', rule, {
           )
         )
       `,
-      features: ['fragment'],
       options: [2],
     },
     {
@@ -239,7 +229,6 @@ ruleTester.run('jsx-indent', rule, {
           </>
         }
       `,
-      features: ['fragment'],
       options: [2],
     },
     {
@@ -292,7 +281,6 @@ ruleTester.run('jsx-indent', rule, {
           <></>
         ]
       `,
-      features: ['fragment'],
       options: [2],
     },
     {
@@ -330,7 +318,6 @@ ruleTester.run('jsx-indent', rule, {
             }
         </div>
       `,
-      features: ['fragment'],
     },
     {
       code: `
@@ -351,7 +338,6 @@ ruleTester.run('jsx-indent', rule, {
                 bar </>
         </>
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -368,7 +354,6 @@ ruleTester.run('jsx-indent', rule, {
             <></> :
             <></>
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -385,7 +370,6 @@ ruleTester.run('jsx-indent', rule, {
             <></>
             : <></>
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -404,7 +388,6 @@ ruleTester.run('jsx-indent', rule, {
         :
             <></>
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -434,7 +417,6 @@ ruleTester.run('jsx-indent', rule, {
         foo ? <></> :
         <></>
       `,
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
     },
     {
     // Multiline ternary
@@ -449,7 +431,6 @@ ruleTester.run('jsx-indent', rule, {
         foo ? <></>
         : <></>
       `,
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
     },
     {
     // Multiline ternary
@@ -466,7 +447,6 @@ ruleTester.run('jsx-indent', rule, {
         :
         <></>
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -485,7 +465,6 @@ ruleTester.run('jsx-indent', rule, {
         ) :
             <></>
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -504,7 +483,6 @@ ruleTester.run('jsx-indent', rule, {
         )
             : <></>
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -525,7 +503,6 @@ ruleTester.run('jsx-indent', rule, {
         :
             <></>
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -544,7 +521,6 @@ ruleTester.run('jsx-indent', rule, {
                 <></>
             )
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -565,7 +541,6 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -586,7 +561,6 @@ ruleTester.run('jsx-indent', rule, {
                 <></>
             )
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -607,7 +581,6 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -630,7 +603,6 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -655,7 +627,6 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -672,7 +643,6 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -687,7 +657,6 @@ ruleTester.run('jsx-indent', rule, {
         foo ? <></>
         : (<></>)
       `,
-      features: ['fragment'],
     },
     {
     // Multiline ternary
@@ -706,7 +675,6 @@ ruleTester.run('jsx-indent', rule, {
             <></>
         )
       `,
-      features: ['fragment'],
     },
     {
       code: `
@@ -762,126 +730,7 @@ ruleTester.run('jsx-indent', rule, {
           </span>
         }
       `,
-      features: ['fragment'],
       options: [2],
-    },
-    {
-      code: `
-        <span>
-            {do {
-                const num = rollDice();
-                <Thing num={num} />;
-            }}
-        </span>
-      `,
-      features: ['do expressions'],
-    },
-    {
-      code: `
-        <span>
-            {(do {
-                const num = rollDice();
-                <Thing num={num} />;
-            })}
-        </span>
-      `,
-      features: ['do expressions'],
-    },
-    {
-      code: `
-        <span>
-            {do {
-                const purposeOfLife = getPurposeOfLife();
-                if (purposeOfLife == 42) {
-                    <Thing />;
-                } else {
-                    <AnotherThing />;
-                }
-            }}
-        </span>
-      `,
-      features: ['do expressions'],
-    },
-    {
-      code: `
-        <span>
-            {(do {
-                const purposeOfLife = getPurposeOfLife();
-                if (purposeOfLife == 42) {
-                    <Thing />;
-                } else {
-                    <AnotherThing />;
-                }
-            })}
-        </span>
-      `,
-      features: ['do expressions'],
-    },
-    {
-      code: `
-        <span>
-            {do {
-                <Thing num={rollDice()} />;
-            }}
-        </span>
-      `,
-      features: ['do expressions'],
-    },
-    {
-      code: `
-        <span>
-            {(do {
-                <Thing num={rollDice()} />;
-            })}
-        </span>
-      `,
-      features: ['do expressions'],
-    },
-    {
-      code: `
-        <span>
-            {do {
-                <Thing num={rollDice()} />;
-                <Thing num={rollDice()} />;
-            }}
-        </span>
-      `,
-      features: ['do expressions'],
-    },
-    {
-      code: `
-        <span>
-            {(do {
-                <Thing num={rollDice()} />;
-                <Thing num={rollDice()} />;
-            })}
-        </span>
-      `,
-      features: ['do expressions'],
-    },
-    {
-      code: `
-        <span>
-            {do {
-                const purposeOfLife = 42;
-                <Thing num={purposeOfLife} />;
-                <Thing num={purposeOfLife} />;
-            }}
-        </span>
-      `,
-      features: ['do expressions'],
-    },
-    {
-      code: `
-        <span>
-            {(do {
-                const purposeOfLife = 42;
-                <Thing num={purposeOfLife} />;
-                <Thing num={purposeOfLife} />;
-            })}
-        </span>
-      `,
-      features: ['do expressions'],
     },
     {
       code: `
@@ -911,7 +760,6 @@ ruleTester.run('jsx-indent', rule, {
           }
         }
       `,
-      features: ['fragment'],
       options: [2],
     },
     {
@@ -1146,24 +994,6 @@ const Component = () => (
     },
     {
       code: `
-        type Props = {
-          email: string,
-          password: string,
-          error: string,
-        }
-
-        const SomeFormComponent = ({
-          email,
-          password,
-          error,
-        }: Props) => (
-          // JSX
-        );
-      `,
-      features: ['flow'].concat(semver.satisfies(eslintVersion, '< 8') ? 'no-babel-old' : []),
-    },
-    {
-      code: `
         <a role={'button'}
           className={\`navbar-burger \${open ? 'is-active' : ''}\`}
           href={'#'}
@@ -1317,7 +1147,6 @@ const Component = () => (
           <></>
         </App>
       `,
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         <App>
             <></>
@@ -1341,7 +1170,6 @@ const Component = () => (
           <Foo />
         </>
       `,
-      features: ['fragment'],
       output: `
         <>
             <Foo />
@@ -1688,7 +1516,6 @@ const Component = () => (
             <></>
         ]
       `,
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         [
           <div />,
@@ -1861,7 +1688,6 @@ const Component = () => (
             <Foo /> :
         <></>
       `,
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ?
             <Foo /> :
@@ -1936,7 +1762,6 @@ const Component = () => (
         :
         <></>
       `,
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ?
             <Foo />
@@ -2014,7 +1839,6 @@ const Component = () => (
         ) :
         <></>
       `,
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ? (
             <Foo />
@@ -2096,7 +1920,6 @@ const Component = () => (
             <></>
             )
       `,
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ?
             <Foo /> : (
@@ -2181,7 +2004,6 @@ const Component = () => (
             <></>
             )
       `,
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ?
             <Foo />
@@ -2247,7 +2069,6 @@ const Component = () => (
         <></>
         )
       `,
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ? (
             <></>
@@ -2368,7 +2189,6 @@ const Component = () => (
         <></>
         )
       `,
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ? (
             <></>
@@ -2430,7 +2250,6 @@ const Component = () => (
         <></>
         )
       `,
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ? <Foo /> : (
             <></>
@@ -2482,7 +2301,6 @@ const Component = () => (
         <></>
         )
       `,
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         foo ? <Foo />
         : (
@@ -2642,122 +2460,6 @@ const Component = () => (
     },
     {
       code: `
-        <span>
-            {do {
-                const num = rollDice();
-                    <Thing num={num} />;
-            }}
-        </span>
-      `,
-      output: `
-        <span>
-            {do {
-                const num = rollDice();
-                <Thing num={num} />;
-            }}
-        </span>
-      `,
-      features: ['do expressions'],
-      errors: [
-        {
-          messageId: 'wrongIndent',
-          data: {
-            needed: 16,
-            type: 'space',
-            characters: 'characters',
-            gotten: 20,
-          },
-        },
-      ],
-    },
-    {
-      code: `
-        <span>
-            {(do {
-                const num = rollDice();
-                    <Thing num={num} />;
-            })}
-        </span>
-      `,
-      output: `
-        <span>
-            {(do {
-                const num = rollDice();
-                <Thing num={num} />;
-            })}
-        </span>
-      `,
-      features: ['do expressions'],
-      errors: [
-        {
-          messageId: 'wrongIndent',
-          data: {
-            needed: 16,
-            type: 'space',
-            characters: 'characters',
-            gotten: 20,
-          },
-        },
-      ],
-    },
-    {
-      code: `
-        <span>
-            {do {
-            <Thing num={getPurposeOfLife()} />;
-            }}
-        </span>
-      `,
-      features: ['do expressions'],
-      output: `
-        <span>
-            {do {
-                <Thing num={getPurposeOfLife()} />;
-            }}
-        </span>
-      `,
-      errors: [
-        {
-          messageId: 'wrongIndent',
-          data: {
-            needed: 16,
-            type: 'space',
-            characters: 'characters',
-            gotten: 12,
-          },
-        },
-      ],
-    },
-    {
-      code: `
-        <span>
-            {(do {
-            <Thing num={getPurposeOfLife()} />;
-            })}
-        </span>
-      `,
-      output: `
-        <span>
-            {(do {
-                <Thing num={getPurposeOfLife()} />;
-            })}
-        </span>
-      `,
-      features: ['do expressions'],
-      errors: [
-        {
-          messageId: 'wrongIndent',
-          data: {
-            needed: 16,
-            type: 'space',
-            characters: 'characters',
-            gotten: 12,
-          },
-        },
-      ],
-    },
-    {
-      code: `
         <div>
         text
         </div>
@@ -2779,7 +2481,7 @@ const Component = () => (
         },
       ],
     },
-    parsers.skipDueToMultiErrorSorting ? [] : {
+    {
       code: `
         <div>
           text
@@ -2813,7 +2515,7 @@ const Component = () => (
         },
       ],
     },
-    parsers.skipDueToMultiErrorSorting ? [] : {
+    {
       code: `
         <div>
         \t  text
@@ -2877,7 +2579,6 @@ const Component = () => (
         aaa
         </>
       `,
-      features: ['fragment'],
       output: `
         <>
             aaa
@@ -3130,7 +2831,7 @@ const Component = () => (
         },
       ],
     },
-    semver.satisfies(eslintVersion, '> 4') ? {
+    {
       code: `
         import React from 'react';
 
@@ -3163,6 +2864,6 @@ const Component = () => (
         { messageId: 'wrongIndent', line: 6 },
         { messageId: 'wrongIndent', line: 9 },
       ],
-    } : []
+    }
   )),
 });

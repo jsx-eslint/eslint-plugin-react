@@ -47,7 +47,6 @@ ruleTester.run('jsx-fragments', rule, {
   valid: parsers.all([
     {
       code: '<><Foo /></>',
-      features: ['fragment', 'no-ts-old'],
       settings,
     },
     {
@@ -107,7 +106,6 @@ ruleTester.run('jsx-fragments', rule, {
   invalid: parsers.all([
     {
       code: '<><Foo /></>',
-      features: ['fragment', 'no-ts-old'],
       settings: settingsOld,
       errors: [
         { messageId: 'fragmentsNotSupported' },
@@ -130,20 +128,6 @@ ruleTester.run('jsx-fragments', rule, {
     {
       code: '<><Foo /></>',
       output: '<Act.Frag><Foo /></Act.Frag>',
-      features: ['fragment', 'no-ts-old'],
-      options: ['element'],
-      settings,
-      errors: [
-        {
-          messageId: 'preferPragma',
-          data: { react: 'Act', fragment: 'Frag' },
-        },
-      ],
-    },
-    {
-      code: '<><Foo /></>',
-      output: null, // should get '<Act.Frag><Foo /></Act.Frag>', but the old TS parser lacks opening/closing Fragment info
-      features: ['fragment', 'no-babel', 'ts', 'no-ts-new'],
       options: ['element'],
       settings,
       errors: [

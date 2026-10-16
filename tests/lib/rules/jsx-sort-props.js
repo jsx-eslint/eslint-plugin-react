@@ -9,7 +9,6 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const semver = require('semver');
 const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/jsx-sort-props');
 
@@ -317,7 +316,7 @@ ruleTester.run('jsx-sort-props', rule, {
         />
       `,
     },
-    semver.satisfies(process.version, '>= 13') ? {
+    {
       code: `
         <RawFileField
           onFileRemove={asMedia ? null : handleRemove}
@@ -326,7 +325,7 @@ ruleTester.run('jsx-sort-props', rule, {
         />
       `,
       options: [{ locale: 'sk-SK' }],
-    } : [],
+    },
     // sortFirst
     { code: '<App className="test" name="John" />;', options: sortFirstArgs },
     { code: '<App className="test" id="test" name="John" />;', options: sortFirstMultipleArgs },
@@ -1146,7 +1145,7 @@ ruleTester.run('jsx-sort-props', rule, {
           // className="customPageClassName"
         />
       `,
-      features: ['ts', 'no-babel-old'],
+      features: ['ts'],
       errors: [
         {
           messageId: 'sortPropsByAlpha',

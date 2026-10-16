@@ -62,11 +62,9 @@ ruleTester.run('jsx-key', rule, {
     { code: 'foo(() => <div />);' },
     {
       code: 'foo(() => <></>);',
-      features: ['fragment'],
     },
     {
       code: '<></>;',
-      features: ['fragment'],
     },
     {
       code: '<App {...{}} />;',
@@ -182,7 +180,7 @@ ruleTester.run('jsx-key', rule, {
 
         export const clusterFrameMap = observable.map<string, ClusterFrameInfo>();
       `,
-      features: ['types', 'no-babel-old'],
+      features: ['types'],
     },
     { code: 'React.Children.toArray([1, 2 ,3].map(x => <App />));' },
     {
@@ -327,7 +325,6 @@ ruleTester.run('jsx-key', rule, {
     },
     {
       code: '[1, 2, 3].map(x => <>{x}</>);',
-      features: ['fragment'],
       options: [{ checkFragmentShorthand: true }],
       settings,
       errors: [
@@ -342,7 +339,6 @@ ruleTester.run('jsx-key', rule, {
     },
     {
       code: '[<></>];',
-      features: ['fragment'],
       options: [{ checkFragmentShorthand: true }],
       settings,
       errors: [

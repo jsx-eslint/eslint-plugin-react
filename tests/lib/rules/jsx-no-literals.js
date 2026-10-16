@@ -74,7 +74,6 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      features: ['fragment'],
     },
     {
       code: `
@@ -578,7 +577,6 @@ ruleTester.run('jsx-no-literals', rule, {
           }
         }
       `,
-      features: ['fragment'],
       errors: [
         {
           messageId: 'literalNotInJSXExpression',

@@ -48,7 +48,7 @@ ruleTester.run('require-render-return', rule, {
           }
         }
       `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
+      features: ['class fields'],
     },
     {
       // ES6 class with render property (implicit return)
@@ -59,7 +59,7 @@ ruleTester.run('require-render-return', rule, {
           )
         }
       `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
+      features: ['class fields'],
     },
     {
       // ES5 class

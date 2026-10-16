@@ -114,13 +114,11 @@ ruleTester.run('jsx-closing-tag-location', rule, {
           foo
         </>
       `,
-      features: ['fragment'],
     },
     {
       code: `
         <>foo</>
       `,
-      features: ['fragment'],
     },
   ]),
 
@@ -156,7 +154,6 @@ ruleTester.run('jsx-closing-tag-location', rule, {
           foo
           </>
       `,
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         <>
           foo
@@ -169,7 +166,6 @@ ruleTester.run('jsx-closing-tag-location', rule, {
         <>
           foo</>
       `,
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       output: `
         <>
           foo

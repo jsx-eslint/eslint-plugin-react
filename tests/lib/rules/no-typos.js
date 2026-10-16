@@ -8,8 +8,6 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const babelEslintVersion = require('babel-eslint/package.json').version;
-const semver = require('semver');
 const version = require('eslint/package.json').version;
 const RuleTester = require('../../helpers/ruleTester');
 
@@ -46,7 +44,6 @@ ruleTester.run('no-typos', rule, {
           }
       `,
       parserOptions,
-      features: ['no-babel'], // TODO: FIXME: remove no-babel and fix crash
     },
     {
       code: `
@@ -575,13 +572,8 @@ ruleTester.run('no-typos', rule, {
           }
         }
       `,
-      features: [].concat('class fields', semver.satisfies(babelEslintVersion, '< 9') ? 'no-babel-old' : []),
-      parserOptions: Object.assign({}, parserOptions, {
-        babelOptions: {
-          // classPrivateMethods: true,
-        },
-        shippedProposals: true,
-      }),
+      features: ['class fields'],
+      parserOptions,
     }
   )),
 
@@ -1873,7 +1865,7 @@ ruleTester.run('no-typos', rule, {
         },
       ],
     },
-    parsers.skipDueToMultiErrorSorting ? [] : {
+    {
       code: `
         class Hello extends React.Component {
           GetDerivedStateFromProps() { }
@@ -1896,22 +1888,6 @@ ruleTester.run('no-typos', rule, {
         },
       ],
     },
-    semver.satisfies(version, '^5') ? {
-      // PropTypes declared on a component that is detected through JSDoc comments and is
-      // declared AFTER the PropTypes assignment
-      code: `
-        MyComponent.PROPTYPES = {}
-        /** @extends React.Component */
-        class MyComponent extends BaseComponent {}
-      `,
-      parserOptions,
-      errors: [
-        {
-          ruleId: 'no-typos',
-          messageId: 'typoStaticClassProp',
-        },
-      ],
-    } : [],
     {
       code: `
         import 'prop-types'

@@ -820,7 +820,6 @@ ruleTester.run('jsx-curly-spacing', rule, {
     },
     {
       code: '<>{bar} {baz}</>;',
-      features: ['fragment'],
     },
     {
       code: '<div onLayout={() => { /* dummy callback to fix android bug with component measuring */ }} />',
@@ -932,7 +931,6 @@ ruleTester.run('jsx-curly-spacing', rule, {
     {
       code: '<>{ bar }</>;',
       output: '<>{bar}</>;',
-      features: ['fragment'],
       options: [{ children: true }],
       errors: [
         {

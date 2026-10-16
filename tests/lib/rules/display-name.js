@@ -526,14 +526,6 @@ ruleTester.run('display-name', rule, {
     },
     {
       code: `
-        import {Component} from "react";
-        type LinkProps = {...{}};
-        class Link extends Component<LinkProps> {}
-      `,
-      features: ['flow'],
-    },
-    {
-      code: `
         const x = {
           title: "URL",
           dataIndex: "url",
@@ -566,7 +558,7 @@ ruleTester.run('display-name', rule, {
         const Comp = React.forwardRef((props, ref) => <main data-as="yes" />) as SomeComponent;
         Comp.displayName = 'MyCompNameAs';
       `,
-      features: ['ts', 'no-babel'],
+      features: ['ts'],
     },
     {
       code: `

@@ -74,18 +74,15 @@ ruleTester.run('jsx-filename-extension', rule, {
     {
       filename: '<text>',
       code: withJSXFragment,
-      features: ['fragment'],
     },
     {
       filename: 'MyComponent.jsx',
       code: withJSXFragment,
-      features: ['fragment'],
     },
     {
       filename: 'MyComponent.js',
       options: [{ extensions: ['.js', '.jsx'] }],
       code: withJSXFragment,
-      features: ['fragment'],
     },
     {
       filename: 'MyComponent.js',
@@ -151,7 +148,6 @@ ruleTester.run('jsx-filename-extension', rule, {
     {
       filename: 'MyComponent.js',
       code: withJSXFragment,
-      features: ['fragment'],
       errors: [
         {
           messageId: 'noJSXWithExtension',
@@ -162,7 +158,6 @@ ruleTester.run('jsx-filename-extension', rule, {
     {
       filename: 'MyComponent.jsx',
       code: withJSXFragment,
-      features: ['fragment'],
       options: [{ extensions: ['.js'] }],
       errors: [
         {

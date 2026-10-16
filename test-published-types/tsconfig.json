@@ -1,7 +1,6 @@
 {
-  // Standalone (does not extend ../tsconfig.json): this checks the published types
-  // with old TypeScript versions too (see the type-check workflow matrix),
-  // which do not understand the options the root tsconfig needs for TS 6.
+  // Standalone (does not extend ../tsconfig.json): checks the published types the way a consumer would,
+  // with every TypeScript version in the type-check workflow matrix, independent of this repo's own compiler settings.
   "files": [
     "index.js"
   ],

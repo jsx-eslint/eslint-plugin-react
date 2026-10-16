@@ -8,8 +8,6 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const babelEslintVersion = require('babel-eslint/package.json').version;
-const semver = require('semver');
 const RuleTester = require('../../helpers/ruleTester');
 
 const rule = require('../../../lib/rules/forbid-prop-types');
@@ -144,22 +142,6 @@ ruleTester.run('forbid-prop-types', rule, {
         };
       `,
     },
-    semver.satisfies(babelEslintVersion, '< 9') ? {
-      // Invalid code, should not be validated
-      code: `
-        class Component extends React.Component {
-          propTypes: {
-            a: PropTypes.any,
-            c: PropTypes.any,
-            b: PropTypes.any
-          };
-          render() {
-            return <div />;
-          }
-        }
-      `,
-      parser: parsers.BABEL_ESLINT,
-    } : [],
     {
       code: `
         var Hello = createReactClass({
@@ -331,23 +313,6 @@ ruleTester.run('forbid-prop-types', rule, {
       `,
       options: [{ checkContextTypes: true }],
     },
-    semver.satisfies(babelEslintVersion, '< 9') ? {
-      // Invalid code, should not be validated
-      code: `
-        class Component extends React.Component {
-          childContextTypes: {
-            a: PropTypes.any,
-            c: PropTypes.any,
-            b: PropTypes.any
-          };
-          render() {
-            return <div />;
-          }
-        }
-      `,
-      parser: parsers.BABEL_ESLINT,
-      options: [{ checkContextTypes: true }],
-    } : [],
     {
       code: `
         var Hello = createReactClass({
@@ -523,23 +488,6 @@ ruleTester.run('forbid-prop-types', rule, {
       `,
       options: [{ checkChildContextTypes: true }],
     },
-    semver.satisfies(babelEslintVersion, '< 9') ? {
-      // Invalid code, should not be validated
-      code: `
-        class Component extends React.Component {
-          childContextTypes: {
-            a: PropTypes.any,
-            c: PropTypes.any,
-            b: PropTypes.any
-          };
-          render() {
-            return <div />;
-          }
-        }
-      `,
-      parser: parsers.BABEL_ESLINT,
-      options: [{ checkChildContextTypes: true }],
-    } : [],
     {
       code: `
         var Hello = createReactClass({

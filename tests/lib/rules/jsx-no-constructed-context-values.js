@@ -121,7 +121,7 @@ ruleTester.run('react-no-constructed-context-values', rule, {
               )
           }
         `,
-      features: ['types', 'no-babel'],
+      features: ['types'],
     },
     {
       code: `

@@ -54,11 +54,9 @@ ruleTester.run('no-unused-vars', rule, {
     {
       code: '/*eslint react/jsx-uses-react:1*/ var Frag; <></>;',
       settings: { react: { fragment: 'Frag', version: '18' } },
-      features: ['fragment'],
     },
     {
       code: '/*eslint react/jsx-uses-react:1*/ var React; <></>;',
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: fix for typescript-eslint
     },
   ].map(parsers.disableNewTS)),
   invalid: parsers.all([
@@ -113,12 +111,10 @@ ruleTester.run('no-unused-vars', rule, {
           output: '/*eslint react/jsx-uses-react:1*/  <></>;',
         }],
       }],
-      features: ['fragment'],
       settings: { react: { fragment: 'Fragment', version: '18' } },
     },
     {
       code: '/*eslint react/jsx-uses-react:1*/ var React; <></>;',
-      features: ['fragment'],
       errors: [{
         message: '\'React\' is defined but never used.',
         suggestions: [{

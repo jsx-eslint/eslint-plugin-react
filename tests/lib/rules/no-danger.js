@@ -153,7 +153,7 @@ ruleTester.run('no-danger', rule, {
           );
         }
       `,
-      features: ['fragment', 'types'],
+      features: ['types'],
       options: [{ customComponentNames: ['*'] }],
       errors: [
         {

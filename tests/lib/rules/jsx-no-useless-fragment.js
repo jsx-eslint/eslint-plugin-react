@@ -29,19 +29,15 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
   valid: parsers.all([
     {
       code: '<><Foo /><Bar /></>',
-      features: ['fragment'],
     },
     {
       code: '<>foo<div /></>',
-      features: ['fragment'],
     },
     {
       code: '<> <div /></>',
-      features: ['fragment'],
     },
     {
       code: '<>{"moo"} </>',
-      features: ['fragment'],
     },
     {
       code: '<NotFragment />',
@@ -54,26 +50,21 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
     },
     {
       code: '<Foo><><div /><div /></></Foo>',
-      features: ['fragment'],
     },
     {
       code: '<div p={<>{"a"}{"b"}</>} />',
-      features: ['fragment'],
     },
     {
       code: '<Fragment key={item.id}>{item.value}</Fragment>',
     },
     {
       code: '<Fooo content={<>eeee ee eeeeeee eeeeeeee</>} />',
-      features: ['fragment'],
     },
     {
       code: '<>{foos.map(foo => foo)}</>',
-      features: ['fragment'],
     },
     {
       code: '<>{moo}</>',
-      features: ['fragment'],
       options: [{ allowExpressions: true }],
     },
     {
@@ -82,7 +73,6 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
           {moo}
         </>
       `,
-      features: ['fragment'],
       options: [{ allowExpressions: true }],
     },
   ]),
@@ -91,43 +81,37 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       code: '<></>',
       output: null,
       errors: [{ messageId: 'NeedsMoreChildren', type: 'JSXFragment' }],
-      features: ['fragment'],
     },
     {
       code: '<>{}</>',
       output: null,
       errors: [{ messageId: 'NeedsMoreChildren', type: 'JSXFragment' }],
-      features: ['fragment'],
     },
-    parsers.skipDueToMultiErrorSorting ? [] : {
+    {
       code: '<p>moo<>foo</></p>',
       output: '<p>moofoo</p>',
       errors: [
         { messageId: 'NeedsMoreChildren', type: 'JSXFragment' },
         { messageId: 'ChildOfHtmlElement', type: 'JSXFragment' },
       ],
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old
     },
     {
       code: '<>{meow}</>',
       output: null,
       errors: [{ messageId: 'NeedsMoreChildren' }],
-      features: ['fragment'],
     },
-    parsers.skipDueToMultiErrorSorting ? [] : {
+    {
       code: '<p><>{meow}</></p>',
       output: '<p>{meow}</p>',
       errors: [
         { messageId: 'NeedsMoreChildren', type: 'JSXFragment' },
         { messageId: 'ChildOfHtmlElement', type: 'JSXFragment' },
       ],
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old
     },
     {
       code: '<><div/></>',
       output: '<div/>',
       errors: [{ messageId: 'NeedsMoreChildren', type: 'JSXFragment' }],
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old
     },
     {
       code: `
@@ -139,7 +123,6 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
         <div/>
       `,
       errors: [{ messageId: 'NeedsMoreChildren', type: 'JSXFragment' }],
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old
     },
     {
       code: '<Fragment />',
@@ -175,28 +158,19 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       code: '<Eeee><>foo</></Eeee>',
       output: null,
       errors: [{ messageId: 'NeedsMoreChildren', type: 'JSXFragment' }],
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old
     },
-    parsers.skipDueToMultiErrorSorting ? [] : {
+    {
       code: '<div><>foo</></div>',
       output: '<div>foo</div>',
       errors: [
         { messageId: 'NeedsMoreChildren', type: 'JSXFragment' },
         { messageId: 'ChildOfHtmlElement', type: 'JSXFragment' },
       ],
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old
     },
     {
       code: '<div><>{"a"}{"b"}</></div>',
       output: '<div>{"a"}{"b"}</div>',
       errors: [{ messageId: 'ChildOfHtmlElement', type: 'JSXFragment' }],
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and next test case
-    },
-    {
-      code: '<div><>{"a"}{"b"}</></div>',
-      output: null,
-      errors: [{ messageId: 'ChildOfHtmlElement', type: 'JSXFragment' }],
-      features: ['fragment', 'ts-old', 'no-ts-new', 'no-babel', 'no-default'],
     },
     {
       code: `
@@ -212,7 +186,6 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
           {"a"}{"b"}
         </section>`,
       errors: [{ messageId: 'ChildOfHtmlElement', type: 'JSXFragment' }],
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old
     },
     {
       code: '<div><Fragment>{"a"}{"b"}</Fragment></div>',
@@ -239,15 +212,13 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
         { messageId: 'ChildOfHtmlElement', type: 'JSXFragment', line: 3 },
         { messageId: 'ChildOfHtmlElement', type: 'JSXFragment', line: 7 },
       ],
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old
     },
     {
       code: '<div>a <>{""}{""}</> a</div>',
       output: '<div>a {""}{""} a</div>',
       errors: [{ messageId: 'ChildOfHtmlElement', type: 'JSXFragment' }],
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old
     },
-    parsers.skipDueToMultiErrorSorting ? [] : {
+    {
       code: `
         const Comp = () => (
           <html>
@@ -273,7 +244,6 @@ ruleTester.run('jsx-no-useless-fragment', rule, {
       options: [{ allowExpressions: true }],
       errors: [{ messageId: 'NeedsMoreChildren', type: 'JSXFragment' }],
       output: '<Foo>{moo}</Foo>',
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old
     }
   )),
 });

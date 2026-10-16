@@ -690,58 +690,6 @@ ruleTester.run('default-props-match-prop-types', rule, {
       `,
       features: ['types'],
     },
-    {
-      code: `
-        type DefaultProps1 = {|
-          bar1?: string
-        |};
-        type DefaultProps2 = {|
-          ...DefaultProps1,
-          bar2?: string
-        |};
-        type Props = {
-          foo: string,
-          ...DefaultProps2
-        };
-
-        function Hello(props: Props) {
-          return <div>Hello {props.foo}</div>;
-        }
-
-        Hello.defaultProps = {
-          bar1: "bar1",
-          bar2: "bar2",
-        };
-      `,
-      features: ['flow'],
-    },
-    {
-      code: `
-        type DefaultProps1 = {|
-          bar1?: string
-        |};
-        type DefaultProps2 = {|
-          ...DefaultProps1,
-          bar2?: string
-        |};
-        type Props = {
-          foo: string,
-          ...DefaultProps2
-        };
-
-        class Hello extends React.Component<Props> {
-          render() {
-            return <div>Hello {props.foo}</div>;
-          }
-        }
-
-        Hello.defaultProps = {
-          bar1: "bar1",
-          bar2: "bar2",
-        };
-      `,
-      features: ['flow'],
-    },
     // don't error when variable is not in scope
     {
       code: `
@@ -1605,39 +1553,6 @@ ruleTester.run('default-props-match-prop-types', rule, {
     },
     {
       code: `
-        type Props = {
-          foo: string,
-          bar?: string
-        };
-
-        type Props2 = {
-          foo: string,
-          baz?: string
-        }
-
-        function Hello(props: Props | Props2) {
-          return <div>Hello {props.foo}</div>;
-        }
-        Hello.defaultProps = { foo: "foo", frob: "frob" };
-      `,
-      features: ['flow'], // TODO: FIXME: change to "types" and fix failures
-      errors: [
-        {
-          messageId: 'requiredHasDefault',
-          data: { name: 'foo' },
-          line: 15,
-          column: 32,
-        },
-        {
-          messageId: 'defaultHasNoType',
-          data: { name: 'frob' },
-          line: 15,
-          column: 44,
-        },
-      ],
-    },
-    {
-      code: `
         type PropsA = { foo: string };
         type PropsB = { bar: string };
         type Props = PropsA & PropsB;
@@ -1685,101 +1600,6 @@ ruleTester.run('default-props-match-prop-types', rule, {
         {
           messageId: 'requiredHasDefault',
           data: { name: 'firstProperty' },
-        },
-      ],
-    },
-    {
-      code: `
-        type DefaultProps = {
-          baz?: string,
-          bar?: string
-        };
-
-        type Props = {
-          foo: string,
-          ...DefaultProps
-        }
-
-        function Hello(props: Props) {
-          return <div>Hello {props.foo}</div>;
-        }
-        Hello.defaultProps = { foo: "foo", frob: "frob", baz: "bar" };
-      `,
-      features: ['flow'],
-      errors: [
-        {
-          messageId: 'requiredHasDefault',
-          data: { name: 'foo' },
-          line: 15,
-          column: 32,
-        },
-        {
-          messageId: 'defaultHasNoType',
-          data: { name: 'frob' },
-          line: 15,
-          column: 44,
-        },
-      ],
-    },
-    {
-      code: `
-        type DefaultProps = {
-          baz?: string,
-          bar?: string
-        };
-
-        type Props = {
-          foo: string,
-          ...DefaultProps
-        }
-
-        class Hello extends React.Component<Props> {
-          render() {
-            return <div>Hello {props.foo}</div>;
-          }
-        }
-        Hello.defaultProps = { foo: "foo", frob: "frob", baz: "bar" };
-      `,
-      features: ['flow'],
-      errors: [
-        {
-          messageId: 'requiredHasDefault',
-          data: { name: 'foo' },
-          line: 17,
-          column: 32,
-        },
-        {
-          messageId: 'defaultHasNoType',
-          data: { name: 'frob' },
-          line: 17,
-          column: 44,
-        },
-      ],
-    },
-    {
-      code: `
-        export type SharedProps = {|
-            disabled: boolean,
-        |};
-
-        type Props = {|
-            ...SharedProps,
-            focused?: boolean,
-        |};
-
-        class Foo extends React.Component<Props> {
-            static defaultProps = {
-              disabled: false
-            };
-        };
-      `,
-      features: ['flow'],
-      errors: [
-        {
-          messageId: 'requiredHasDefault',
-          data: {
-            name: 'disabled',
-          },
         },
       ],
     },

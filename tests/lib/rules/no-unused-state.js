@@ -4,8 +4,6 @@
 
 'use strict';
 
-const semver = require('semver');
-const tsEslintVersion = require('@typescript-eslint/parser/package.json').version;
 const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/no-unused-state');
 
@@ -564,19 +562,6 @@ eslintTester.run('no-unused-state', rule, {
     `,
     {
       code: `
-        class TypeCastExpressionSpreadFalseNegativeTest extends React.Component {
-          constructor() {
-            this.state = { foo: 0 };
-          }
-          render() {
-            return <SomeComponent {...(this.state: any)} />;
-          }
-        }
-      `,
-      features: ['flow'],
-    },
-    {
-      code: `
         class ArrowFunctionClassMethodDestructuringFalseNegativeTest extends React.Component {
           constructor() {
             this.state = { foo: 0 };
@@ -593,7 +578,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -611,7 +596,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -629,7 +614,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -647,7 +632,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -770,7 +755,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -792,7 +777,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -814,7 +799,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -851,7 +836,6 @@ eslintTester.run('no-unused-state', rule, {
           }
         });
       `,
-      features: ['no-ts-old'], // TODO: FIXME: remove "no-ts-old"
     },
     {
       code: `
@@ -869,7 +853,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       code: `
@@ -886,7 +870,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove "no-ts-old"
+      features: ['class fields'],
     },
     {
       // Don't error out
@@ -981,9 +965,9 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      features: ['ts', 'no-babel'],
+      features: ['ts'],
     },
-    semver.satisfies(tsEslintVersion, '>= 5') ? {
+    {
       code: `
         interface Props {}
 
@@ -1005,8 +989,8 @@ eslintTester.run('no-unused-state', rule, {
           };
         }
       `,
-      features: ['ts', 'no-babel-old', 'no-ts-old'],
-    } : [],
+      features: ['ts'],
+    },
     {
       code: `
         class Foo extends React.Component {
@@ -1416,29 +1400,6 @@ eslintTester.run('no-unused-state', rule, {
     },
     {
       code: `
-        class TypeCastExpressionTest extends React.Component {
-          constructor() {
-            this.state = {
-              foo: 0,
-              bar: 1,
-              baz: 2,
-              qux: 3,
-            };
-          }
-          render() {
-            const foo = ((this: any).state: any).foo;
-            const {bar, ...others} = (this.state: any);
-            let baz;
-            baz = (others: any)['baz'];
-            return <SomeComponent foo={foo} bar={bar} baz={baz} />;
-          }
-        }
-      `,
-      errors: getErrorMessages(['qux']),
-      features: ['flow'],
-    },
-    {
-      code: `
         class UnusedDeepDestructuringTest extends React.Component {
           state = { foo: 0, bar: 0 };
           render() {
@@ -1602,7 +1563,7 @@ eslintTester.run('no-unused-state', rule, {
           }
         }
       `,
-      features: ['ts', 'no-babel'],
+      features: ['ts'],
       errors: getErrorMessages([
         'thisStateAliasPropUnused',
         'thisStateAliasRestPropUnused',

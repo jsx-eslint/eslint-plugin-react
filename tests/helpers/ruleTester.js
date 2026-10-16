@@ -65,65 +65,61 @@ function stripTypeOnEslint10(test) {
   });
 }
 
-let RuleTester = ESLintRuleTester;
+const PLUGINS = Symbol('eslint-plugin-react plugins');
+const RULE_DEFINER = Symbol.for('react.RuleTester.RuleDefiner');
 
-if (semver.major(eslintPkg.version) >= 9) {
-  const PLUGINS = Symbol('eslint-plugin-react plugins');
-  const RULE_DEFINER = Symbol.for('react.RuleTester.RuleDefiner');
-
-  RuleTester = class extends ESLintRuleTester {
-    constructor(config) {
-      if ((typeof config !== 'object' && typeof config !== 'undefined') || config === null) {
-        throw new TypeError('Invalid value for "config" option. Expected an object or undefined.');
-      }
-
-      const newConfig = convertToFlat(config || {});
-
-      if (!newConfig.languageOptions.ecmaVersion) {
-        newConfig.languageOptions.ecmaVersion = 5; // old default
-      }
-
-      if (!newConfig.languageOptions.sourceType) {
-        newConfig.languageOptions.sourceType = 'script'; // old default
-      }
-
-      super(newConfig);
-
-      this[RULE_DEFINER] = {
-        defineRule: (ruleId, rule) => {
-          if (!this[PLUGINS]) {
-            this[PLUGINS] = {};
-          }
-
-          const ruleIdSplit = ruleId.split('/');
-
-          if (ruleIdSplit.length !== 2) {
-            throw new Error('ruleId should be in the format: plugin-name/rule-name');
-          }
-
-          const pluginName = ruleIdSplit[0];
-          const ruleName = ruleIdSplit[1];
-
-          if (!this[PLUGINS][pluginName]) {
-            this[PLUGINS][pluginName] = { rules: {} };
-          }
-
-          this[PLUGINS][pluginName].rules[ruleName] = rule;
-        },
-      };
+const RuleTester = class extends ESLintRuleTester {
+  constructor(config) {
+    if ((typeof config !== 'object' && typeof config !== 'undefined') || config === null) {
+      throw new TypeError('Invalid value for "config" option. Expected an object or undefined.');
     }
 
-    run(ruleName, rule, tests) {
-      const newTests = {
-        valid: tests.valid.map((test) => convertToFlat(test, this[PLUGINS])),
-        invalid: tests.invalid
-          .map(stripTypeOnEslint10)
-          .map((test) => convertToFlat(test, this[PLUGINS])),
-      };
+    const newConfig = convertToFlat(config || {});
 
-      super.run(ruleName, rule, newTests);
+    if (!newConfig.languageOptions.ecmaVersion) {
+      newConfig.languageOptions.ecmaVersion = 5; // old default
     }
-  };
-}
+
+    if (!newConfig.languageOptions.sourceType) {
+      newConfig.languageOptions.sourceType = 'script'; // old default
+    }
+
+    super(newConfig);
+
+    this[RULE_DEFINER] = {
+      defineRule: (ruleId, rule) => {
+        if (!this[PLUGINS]) {
+          this[PLUGINS] = {};
+        }
+
+        const ruleIdSplit = ruleId.split('/');
+
+        if (ruleIdSplit.length !== 2) {
+          throw new Error('ruleId should be in the format: plugin-name/rule-name');
+        }
+
+        const pluginName = ruleIdSplit[0];
+        const ruleName = ruleIdSplit[1];
+
+        if (!this[PLUGINS][pluginName]) {
+          this[PLUGINS][pluginName] = { rules: {} };
+        }
+
+        this[PLUGINS][pluginName].rules[ruleName] = rule;
+      },
+    };
+  }
+
+  run(ruleName, rule, tests) {
+    const newTests = {
+      valid: tests.valid.map((test) => convertToFlat(test, this[PLUGINS])),
+      invalid: tests.invalid
+        .map(stripTypeOnEslint10)
+        .map((test) => convertToFlat(test, this[PLUGINS])),
+    };
+
+    super.run(ruleName, rule, newTests);
+  }
+};
 
 module.exports = RuleTester;

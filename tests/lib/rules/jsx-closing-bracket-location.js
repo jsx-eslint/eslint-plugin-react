@@ -450,7 +450,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
       output: `
         <App<string> />
       `,
-      features: ['ts', 'no-babel'],
+      features: ['ts'],
       errors: [
         {
           messageId: 'bracketLocation',
@@ -468,7 +468,7 @@ ruleTester.run('jsx-closing-bracket-location', rule, {
         />
       `,
       output: null,
-      features: ['ts', 'no-babel'],
+      features: ['ts'],
       errors: [
         {
           messageId: 'bracketLocation',

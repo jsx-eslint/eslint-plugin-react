@@ -43,7 +43,6 @@ ruleTester.run('react-in-jsx-scope', rule, {
     { code: 'var React; <img />;' },
     {
       code: 'var React; <>fragment</>;',
-      features: ['fragment'],
     },
     { code: 'var React; <x-gif />;' },
     { code: 'var React, App, a=1; <App attr={a} />;' },
@@ -81,7 +80,6 @@ ruleTester.run('react-in-jsx-scope', rule, {
     },
     {
       code: 'var a = <>fragment</>;',
-      features: ['fragment'],
       settings: { react: { version: '19.0.0' } },
     },
   ]),
@@ -115,7 +113,6 @@ ruleTester.run('react-in-jsx-scope', rule, {
     },
     {
       code: 'var a = <>fragment</>;',
-      features: ['fragment', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
       errors: [
         {
           messageId: 'notInScope',

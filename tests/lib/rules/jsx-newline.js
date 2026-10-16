@@ -84,7 +84,6 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
           <span>Should be in new line</span>
         </>
       `,
-      features: ['fragment'],
     },
     {
       code: `
@@ -95,7 +94,6 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
         </>
       `,
       options: [{ prevent: true }],
-      features: ['fragment'],
     },
     {
       code: `
@@ -141,7 +139,6 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
           <OneLineComponent />
         </>
       `,
-      features: ['fragment'],
     },
     {
       code: `
@@ -157,7 +154,6 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
           <OneLineComponent />
         </>
       `,
-      features: ['fragment'],
       options: [{ prevent: true, allowMultilines: true }],
     },
     {
@@ -535,7 +531,6 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
         </>
       `,
       errors: [{ messageId: 'require' }],
-      features: ['fragment'],
     },
     {
       output: `
@@ -555,7 +550,6 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
       `,
       errors: [{ messageId: 'prevent' }],
       options: [{ prevent: true }],
-      features: ['fragment'],
     },
     {
       code: `
@@ -582,7 +576,6 @@ new RuleTester({ parserOptions }).run('jsx-newline', rule, {
           <OneLineComponent />
         </>
       `,
-      features: ['fragment'],
       errors: [
         { messageId: 'allowMultilines' },
         { messageId: 'allowMultilines' },

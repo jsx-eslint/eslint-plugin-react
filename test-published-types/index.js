@@ -1,6 +1,6 @@
 'use strict';
 
-const react = require('eslint-plugin-react');
+const react = require('@ysknsid25/eslint-plugin-react');
 
 /** @type {import('eslint').Linter.Config[]} */
 const config = [

@@ -119,7 +119,7 @@ ruleTester.run('no-set-state', rule, {
           }
         };
       `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove `no-ts-old` and fix
+      features: ['class fields'],
       errors: [{ messageId: 'noSetState' }],
     },
     {

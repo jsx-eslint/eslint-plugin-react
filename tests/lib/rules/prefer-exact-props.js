@@ -87,37 +87,6 @@ ruleTester.run('prefer-exact-props', rule, {
     },
     {
       code: `
-        type Props = {|
-          foo: string
-        |}
-        function Component(props: Props) {
-          return <div />;
-        }
-      `,
-      features: ['flow'],
-    },
-    {
-      code: `
-        type Props = {|
-          foo: string
-        |}
-        function Component(props: Props) {
-          let someVar: { foo: string };
-          return <div />;
-        }
-      `,
-      features: ['flow'],
-    },
-    {
-      code: `
-        function Component(props: {| foo : string |}) {
-          return <div />;
-        }
-      `,
-      features: ['flow'],
-    },
-    {
-      code: `
         type Props = {}
         function Component(props: Props) {
           return <div />;
@@ -282,41 +251,6 @@ ruleTester.run('prefer-exact-props', rule, {
       settings,
       features: ['class fields'],
       errors: [{ message: PROP_TYPES_MESSAGE }],
-    },
-    {
-      code: `
-        class Component extends React.Component {
-          props: {
-            foo: string
-          }
-          render() {
-            return <div />;
-          }
-        }
-      `,
-      features: ['flow'],
-      errors: [{ message: FLOW_MESSAGE }],
-    },
-    {
-      code: `
-        function Component(props: { foo: string }) {
-          return <div />;
-        }
-      `,
-      features: ['flow'],
-      errors: [{ message: FLOW_MESSAGE }],
-    },
-    {
-      code: `
-        type Props = {
-          foo: string
-        }
-        function Component(props: Props) {
-          return <div />;
-        }
-      `,
-      features: ['flow'],
-      errors: [{ message: FLOW_MESSAGE }],
     },
     {
       code: `

@@ -14,7 +14,7 @@ jobs:
         with:
           versionsAsRoot: true
           type: majors
-          preset: '>=18'
+          preset: '>=22'
 
   latest:
     needs: [matrix]
@@ -27,12 +27,6 @@ jobs:
         node-version: ${{ fromJson(needs.matrix.outputs.latest) }}
         eslint:
           - 9
-        babel-eslint:
-          - 10
-          - 9
-          - 8
-        typescript-eslint:
-          - 8
 
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -41,7 +35,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           after_install: |
-            npm install --no-save "eslint@${{ matrix.eslint }}" "@typescript-eslint/parser@${{ matrix.typescript-eslint == 8 && 8.58 || matrix.typescript-eslint }}" "babel-eslint@${{ matrix.babel-eslint }}"
+            npm install --no-save "eslint@${{ matrix.eslint }}"
           skip-ls-check: true
       - run: npx ls-engines
       - run: npm run unit-test

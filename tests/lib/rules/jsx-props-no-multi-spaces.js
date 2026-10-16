@@ -9,8 +9,6 @@
 // Requirements
 // ------------------------------------------------------------------------------
 
-const semver = require('semver');
-const eslintPkg = require('eslint/package.json');
 const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/jsx-props-no-multi-spaces');
 
@@ -73,7 +71,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
     },
     {
       code: '<App<T> foo bar />',
-      features: ['ts', 'no-babel'],
+      features: ['ts'],
     },
     {
       code: '<Foo.Bar baz="quux" />',
@@ -265,7 +263,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       `,
       output: `
         <button
-          title='Some button'${semver.satisfies(eslintPkg.version, '> 3') ? '' : '\n'}
+          title='Some button'
           type="button"
         />
       `,
@@ -290,10 +288,10 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
       `,
       output: `
         <button
-          title="Some button 4"${semver.satisfies(eslintPkg.version, '> 3') ? '' : '\n'}
+          title="Some button 4"
           onClick={(value) => {
             console.log(value);
-          }}${semver.satisfies(eslintPkg.version, '> 3') ? '' : '\n'}
+          }}
           type="button"
         />
       `,
@@ -308,7 +306,7 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
         },
       ],
     },
-    (semver.satisfies(eslintPkg.version, '> 3') ? [
+    [
       {
         code: `
           <button
@@ -414,6 +412,6 @@ ruleTester.run('jsx-props-no-multi-spaces', rule, {
           },
         ],
       },
-    ] : [])
+    ]
   )),
 });

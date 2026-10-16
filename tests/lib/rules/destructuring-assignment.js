@@ -4,8 +4,6 @@
 
 'use strict';
 
-const semver = require('semver');
-const eslintPkg = require('eslint/package.json');
 const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/destructuring-assignment');
 
@@ -828,7 +826,7 @@ ruleTester.run('destructuring-assignment', rule, {
       ],
     },
     // Ignore for ESLint < 4 because ESLint < 4 does not support array fixer.
-    semver.satisfies(eslintPkg.version, '>= 4') ? [
+    [
       {
         code: `
           function Foo(props) {
@@ -870,9 +868,9 @@ ${'            '}
             return <p>{a}</p>;
           }
         `,
-        features: ['ts', 'no-babel'],
+        features: ['ts'],
       },
-    ] : [],
+    ],
     {
       code: `
         type Props = { text: string };
@@ -882,7 +880,7 @@ ${'            '}
         };
       `,
       options: ['always', { destructureInSignature: 'always' }],
-      features: ['types', 'no-babel'],
+      features: ['types'],
       errors: [
         {
           messageId: 'useDestructAssignment',
@@ -906,7 +904,7 @@ ${'            '}
         };
       `,
       options: ['always', { destructureInSignature: 'always' }],
-      features: ['types', 'no-babel'],
+      features: ['types'],
       errors: [
         {
           messageId: 'useDestructAssignment',

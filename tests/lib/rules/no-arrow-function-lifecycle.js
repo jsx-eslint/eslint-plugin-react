@@ -5,8 +5,6 @@
 
 'use strict';
 
-const semver = require('semver');
-const eslintPkg = require('eslint/package.json');
 const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/no-arrow-function-lifecycle');
 
@@ -959,13 +957,9 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
       `,
       features: ['class fields'],
       errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
-      output: semver.satisfies(eslintPkg.version, '> 3') ? `
+      output: `
         class Hello extends React.Component {
           render() { return <div />; }
-        }
-      ` : `
-        class Hello extends React.Component {
-          render = () => <div />
         }
       `,
     },
@@ -977,13 +971,9 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
       `,
       features: ['class fields'],
       errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
-      output: semver.satisfies(eslintPkg.version, '> 3') ? `
+      output: `
         class Hello extends React.Component {
           render() { return /*first*/<div />/*second*/; }
-        }
-      ` : `
-        class Hello extends React.Component {
-          render = () => /*first*/<div />/*second*/
         }
       `,
     },
@@ -1007,7 +997,7 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
       `,
       features: ['class fields'],
       errors: [{ message: 'getInitialState is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
-      output: semver.satisfies(eslintPkg.version, '> 3') ? `
+      output: `
         export default class Root extends Component {
           getInitialState() { return {
             errorImporting: null,
@@ -1022,22 +1012,6 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
             parsedResults: null,
             showLongRunningMessage: false,
           }; }
-        }
-      ` : `
-        export default class Root extends Component {
-          getInitialState = () => ({
-            errorImporting: null,
-            errorParsing: null,
-            errorUploading: null,
-            file: null,
-            fromExtension: false,
-            importSuccess: false,
-            isImporting: false,
-            isParsing: false,
-            isUploading: false,
-            parsedResults: null,
-            showLongRunningMessage: false,
-          });
         }
       `,
     },

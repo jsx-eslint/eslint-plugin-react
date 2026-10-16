@@ -9,8 +9,6 @@
 // Requirements
 //------------------------------------------------------------------------------
 
-const semver = require('semver');
-const eslintPkg = require('eslint/package.json');
 const RuleTester = require('../../helpers/ruleTester');
 const rule = require('../../../lib/rules/jsx-no-leaked-render');
 
@@ -275,7 +273,6 @@ ruleTester.run('jsx-no-leaked-render', rule, {
           )
         }
       `,
-      features: ['fragment'],
       errors: [
         {
           message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
@@ -319,7 +316,6 @@ ruleTester.run('jsx-no-leaked-render', rule, {
           )
         }
       `,
-      features: ['fragment'],
       errors: [
         {
           message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
@@ -1024,7 +1020,7 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         column: 38,
       }],
     },
-    semver.satisfies(eslintPkg.version, '> 4') ? {
+    {
       code: `
         const MyComponent = ({ Empty }) => {
           return <div>{isIndeterminate ? false : <Empty />}</div>
@@ -1041,8 +1037,8 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         line: 3,
         column: 24,
       }],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 4') ? {
+    },
+    {
       code: `
         const MyComponent = () => {
           return <div>{isIndeterminate ? false : getContent()}</div>
@@ -1059,8 +1055,8 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         line: 3,
         column: 24,
       }],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 4') ? {
+    },
+    {
       code: `
         const MyComponent = ({ isFoo }) => {
           return <div>{isIndeterminate ? false : isFoo ? <Aaa /> : <Bbb />}</div>
@@ -1077,8 +1073,8 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         line: 3,
         column: 24,
       }],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 4') ? {
+    },
+    {
       code: `
         const MyComponent = ({ fallback }) => {
           return <div>{isIndeterminate ? false : fallback || <Empty />}</div>
@@ -1095,8 +1091,8 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         line: 3,
         column: 24,
       }],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 4') ? {
+    },
+    {
       code: `
         const MyComponent = ({ fallback }) => {
           return <div>{ready && isIndeterminate ? false : fallback || <Empty />}</div>
@@ -1113,8 +1109,8 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         line: 3,
         column: 24,
       }],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 4') ? {
+    },
+    {
       code: `
         const MyComponent = () => {
           return <div>{ready && isIndeterminate ? false : (track(), <Empty />)}</div>
@@ -1131,7 +1127,7 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         line: 3,
         column: 24,
       }],
-    } : [],
+    },
     {
       code: `
         const MyComponent = () => {
@@ -1258,7 +1254,7 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         column: 24,
       }],
     },
-    semver.satisfies(eslintPkg.version, '> 4') ? {
+    {
       code: `
         const MyComponent = () => {
           return (
@@ -1291,8 +1287,8 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         line: 5,
         column: 16,
       }],
-    } : [],
-    semver.satisfies(eslintPkg.version, '> 4') ? {
+    },
+    {
       code: `
         const MyComponent = () => {
           return (
@@ -1327,7 +1323,7 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         line: 5,
         column: 16,
       }],
-    } : [],
+    },
     {
       code: `
         const isOpen = 0;

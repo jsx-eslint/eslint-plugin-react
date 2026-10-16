@@ -29,7 +29,6 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           foo
         </>
       `,
-      features: ['fragment'],
     },
     {
       code: `
@@ -212,7 +211,6 @@ ruleTester.run('jsx-child-element-spacing', rule, {
           <a>bar</a>
         </>
       `,
-      features: ['fragment'],
       errors: [
         {
           messageId: 'spacingBeforeNext',

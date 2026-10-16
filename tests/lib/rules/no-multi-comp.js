@@ -383,7 +383,6 @@ ruleTester.run('no-multi-comp', rule, {
           }
         }
       `,
-      features: ['fragment'],
       errors: [
         {
           messageId: 'onlyOneComponent',
@@ -429,7 +428,6 @@ ruleTester.run('no-multi-comp', rule, {
         const HelloComponent2 = React.forwardRef((props, ref) => <><HelloComponent></HelloComponent></>);
       `,
       options: [{ ignoreStateless: false }],
-      features: ['fragment'],
       errors: [
         {
           messageId: 'onlyOneComponent',

@@ -71,7 +71,7 @@ const invalid = [
         }
       }
     `,
-    features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
+    features: ['class fields'],
 
     errors: [
       {

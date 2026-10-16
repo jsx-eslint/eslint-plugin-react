@@ -8,8 +8,6 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const babelEslintVersion = require('babel-eslint/package.json').version;
-const semver = require('semver');
 const RuleTester = require('../../helpers/ruleTester');
 
 const rule = require('../../../lib/rules/sort-prop-types');
@@ -161,22 +159,6 @@ ruleTester.run('sort-prop-types', rule, {
       `,
       options: [{ ignoreCase: true }],
     },
-    semver.satisfies(babelEslintVersion, '< 9') ? {
-      // Invalid code, should not be validated
-      code: `
-        class Component extends React.Component {
-          propTypes: {
-            a: PropTypes.any,
-            c: PropTypes.any,
-            b: PropTypes.any
-          };
-          render() {
-            return <div />;
-          }
-        }
-      `,
-      parser: parsers.BABEL_ESLINT,
-    } : [],
     {
       code: `
         var Hello = createReactClass({
@@ -1676,7 +1658,7 @@ ruleTester.run('sort-prop-types', rule, {
         }
       `,
       options: [{ sortShapeProp: true }],
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
+      features: ['class fields'],
       errors: [
         {
           messageId: 'propsNotSorted',
@@ -1839,7 +1821,7 @@ ruleTester.run('sort-prop-types', rule, {
         }
       `,
       options: [{ sortShapeProp: true }],
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
+      features: ['class fields'],
       errors: [
         {
           messageId: 'propsNotSorted',

@@ -9,8 +9,6 @@
 // Requirements
 // -----------------------------------------------------------------------------
 
-const babelEslintVersion = require('babel-eslint/package.json').version;
-const semver = require('semver');
 const RuleTester = require('../../helpers/ruleTester');
 
 const rule = require('../../../lib/rules/jsx-sort-default-props');
@@ -199,27 +197,6 @@ ruleTester.run('jsx-sort-default-props', rule, {
       `,
       options: [{ ignoreCase: true }],
     },
-    semver.satisfies(babelEslintVersion, '< 9') ? {
-    // Invalid code, should not be validated
-      code: `
-        class Component extends React.Component {
-          propTypes: {
-            a: PropTypes.any,
-            c: PropTypes.any,
-            b: PropTypes.any
-          };
-          defaultProps: {
-            a: "a",
-            c: "c",
-            b: "b"
-          };
-          render() {
-            return <div />;
-          }
-        }
-      `,
-      parser: parsers.BABEL_ESLINT,
-    } : [],
     {
       code: `
         var Hello = createReactClass({

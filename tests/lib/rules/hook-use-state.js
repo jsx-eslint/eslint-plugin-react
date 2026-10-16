@@ -165,7 +165,7 @@ const tests = {
           return [color, setColor]
         }
       `,
-      features: ['ts', 'no-babel-old'],
+      features: ['ts'],
     },
     {
       code: `
@@ -575,7 +575,7 @@ const tests = {
           ],
         },
       ],
-      features: ['ts', 'no-babel-old'],
+      features: ['ts'],
     },
     {
       code: `
@@ -602,7 +602,7 @@ const tests = {
           ],
         },
       ],
-      features: ['ts', 'no-babel-old'],
+      features: ['ts'],
     },
     {
       code: `
@@ -629,7 +629,7 @@ const tests = {
           ],
         },
       ],
-      features: ['ts', 'no-babel-old'],
+      features: ['ts'],
     },
   ]),
 };

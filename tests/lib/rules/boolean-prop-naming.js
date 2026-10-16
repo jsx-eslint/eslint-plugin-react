@@ -184,45 +184,12 @@ ruleTester.run('boolean-prop-naming', rule, {
       features: ['class fields'],
     },
     {
-      // ES6 components and Flowtype booleans
-      code: `
-        class Hello extends React.Component {
-          props: {isSomething: boolean};
-          render () { return <div />; }
-        }
-      `,
-      options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['class fields', 'flow'],
-    },
-    {
-      // ES6 components and Flowtype non-booleans
-      code: `
-        class Hello extends React.Component {
-          props: {something: any};
-          render () { return <div />; }
-        }
-      `,
-      options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['flow'],
-    },
-    {
       // Stateless components
       code: `
         var Hello = ({isSomething}) => { return <div /> }
         Hello.propTypes = {isSomething: PropTypes.bool};
       `,
       options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-    },
-    {
-      // Functional components and Flowtype booleans
-      code: `
-        type Props = {
-          isSomething: boolean;
-        };
-        function Hello(props: Props): React.Element { return <div /> }
-      `,
-      options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['flow'],
     },
     {
       // Custom `propTypeNames` option
@@ -269,17 +236,6 @@ ruleTester.run('boolean-prop-naming', rule, {
         var y = {...x}
       `,
       options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-    },
-    {
-      // Ensure rule doesn't crash on on components reference old-style Flow props
-      code: `
-        class Hello extends PureComponent {
-          props: PropsType;
-          render () { return <div /> }
-        }
-      `,
-      options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['flow'],
     },
     {
       // No propWrapperFunctions setting
@@ -345,22 +301,6 @@ ruleTester.run('boolean-prop-naming', rule, {
         });
       `,
       options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-    },
-    {
-      // inline Flow type
-      code: `
-        function SomeComponent({
-            isSomething,
-        }: {
-            isSomething: boolean,
-        }) {
-            return (
-                <span>{isSomething}</span>
-            );
-        }
-      `,
-      options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['flow'],
     },
     {
       code: `
@@ -654,23 +594,6 @@ ruleTester.run('boolean-prop-naming', rule, {
       ],
     },
     {
-      // ES6 components as React.Component with non-boolean PropTypes
-      code: `
-        class Hello extends React.Component {
-          props: {something: boolean};
-          render () { return <div />; }
-        }
-      `,
-      options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['flow'],
-      errors: [
-        {
-          messageId: 'patternMismatch',
-          data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
-        },
-      ],
-    },
-    {
       code: `
         var Hello = ({something}) => { return <div /> }
         Hello.propTypes = {something: PropTypes.bool};
@@ -691,29 +614,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         function Hello(props: Props): React.Element { return <div /> }
       `,
       options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['types', 'no-ts-old'],
-      errors: [
-        {
-          messageId: 'patternMismatch',
-          data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
-        },
-      ],
-    },
-    {
-      // ES6 components and Flowtype non-booleans
-      code: `
-        class Hello extends React.Component {
-          static propTypes = {something: PropTypes.mutuallyExclusiveTrueProps};
-          render () { return <div />; }
-        }
-      `,
-      options: [
-        {
-          propTypeNames: ['bool', 'mutuallyExclusiveTrueProps'],
-          rule: '^is[A-Z]([A-Za-z0-9]?)+',
-        },
-      ],
-      features: ['flow'],
+      features: ['types'],
       errors: [
         {
           messageId: 'patternMismatch',
@@ -1012,28 +913,6 @@ ruleTester.run('boolean-prop-naming', rule, {
       ],
     },
     {
-      // inline Flow type
-      code: `
-        function SomeComponent({
-            something,
-        }: {
-            something: boolean,
-        }) {
-            return (
-                <span>{something}</span>
-            );
-        }
-      `,
-      options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['flow'],
-      errors: [
-        {
-          messageId: 'patternMismatch',
-          data: { propName: 'something', pattern: '^is[A-Z]([A-Za-z0-9]?)+' },
-        },
-      ],
-    },
-    {
       code: `
         class Hello extends React.Component {
           render() {
@@ -1124,7 +1003,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         const HelloNew = (props: TestConstType) => { return <div /> };
       `,
       options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['ts', 'no-ts-old'],
+      features: ['ts'],
       errors: [
         {
           messageId: 'patternMismatch',
@@ -1143,7 +1022,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         const HelloNew = (props: TestFNType) => { return <div /> };
       `,
       options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['ts', 'no-ts-old'],
+      features: ['ts'],
       errors: [
         {
           messageId: 'patternMismatch',
@@ -1163,7 +1042,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         const HelloNew = (props: Props) => { return <div /> };
       `,
       options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['types', 'no-ts-old'],
+      features: ['types'],
       errors: [
         {
           messageId: 'patternMismatch',
@@ -1185,7 +1064,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         const HelloNew = (props: Props) => { return <div /> };
       `,
       options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['types', 'no-ts-old'],
+      features: ['types'],
       errors: [
         {
           messageId: 'patternMismatch',
@@ -1205,7 +1084,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         const HelloNew: React.FC<Props> = (props) => { return <div /> };
       `,
       options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['types', 'no-ts-old'],
+      features: ['types'],
       errors: [
         {
           messageId: 'patternMismatch',
@@ -1227,7 +1106,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         const HelloNew: React.FC<Props> = (props) => { return <div /> };
       `,
       options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['types', 'no-ts-old'],
+      features: ['types'],
       errors: [
         {
           messageId: 'patternMismatch',
@@ -1249,7 +1128,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         const HelloNew = (props: Props) => { return <div /> };
       `,
       options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['types', 'no-ts-old'],
+      features: ['types'],
       errors: [
         {
           messageId: 'patternMismatch',
@@ -1273,7 +1152,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         const HelloNew = (props: Props) => { return <div /> };
       `,
       options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['types', 'no-ts-old'],
+      features: ['types'],
       errors: [
         {
           messageId: 'patternMismatch',
@@ -1299,7 +1178,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         const HelloNew = (props: TestFNType) => { return <div /> };
       `,
       options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['ts', 'no-babel'],
+      features: ['ts'],
       errors: [
         {
           messageId: 'patternMismatch',
@@ -1313,7 +1192,7 @@ ruleTester.run('boolean-prop-naming', rule, {
     {
       code: 'const Hello = (props: {enabled:boolean}) => <div />;',
       options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['ts', 'no-babel'],
+      features: ['ts'],
       errors: [
         {
           messageId: 'patternMismatch',
@@ -1336,7 +1215,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         const Hello = (props: Props & BaseProps) => <div />;
       `,
       options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['ts', 'no-babel', 'no-ts-old'],
+      features: ['ts'],
       errors: [
         {
           messageId: 'patternMismatch',
@@ -1365,7 +1244,7 @@ ruleTester.run('boolean-prop-naming', rule, {
         }) => <div />;
       `,
       options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
-      features: ['ts', 'no-babel', 'no-ts-old'],
+      features: ['ts'],
       errors: [
         {
           messageId: 'patternMismatch',

@@ -76,7 +76,6 @@ ruleTester.run('jsx-max-depth', rule, {
       code: `
         <></>
       `,
-      features: ['fragment'],
     },
     {
       code: `
@@ -84,7 +83,6 @@ ruleTester.run('jsx-max-depth', rule, {
           <foo />
         </>
       `,
-      features: ['fragment'],
       options: [{ max: 1 }],
     },
     {
@@ -92,7 +90,6 @@ ruleTester.run('jsx-max-depth', rule, {
         const x = <><em>x</em></>;
         <>{x}</>
       `,
-      features: ['fragment'],
       options: [{ max: 2 }],
     },
     {
@@ -266,7 +263,6 @@ ruleTester.run('jsx-max-depth', rule, {
           <foo />
         </>
       `,
-      features: ['fragment'],
       options: [{ max: 0 }],
       errors: [
         {
@@ -283,7 +279,6 @@ ruleTester.run('jsx-max-depth', rule, {
           </>
         </>
       `,
-      features: ['fragment'],
       options: [{ max: 1 }],
       errors: [
         {
@@ -298,7 +293,6 @@ ruleTester.run('jsx-max-depth', rule, {
         let y = x;
         <>{x}-{y}</>
       `,
-      features: ['fragment'],
       options: [{ max: 1 }],
       errors: [
         {

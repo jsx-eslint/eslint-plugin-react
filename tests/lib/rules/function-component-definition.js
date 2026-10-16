@@ -150,7 +150,7 @@ ruleTester.run('function-component-definition', rule, {
     {
       code: 'function Hello<Test extends {}>(props: Props<Test>) { return <p/> }',
       options: [{ namedComponents: 'function-declaration' }],
-      features: ['types', 'no-babel'],
+      features: ['types'],
     },
     {
       code: 'var Hello = function<Test>(props: Props<Test>) { return <p/> }',
@@ -160,12 +160,12 @@ ruleTester.run('function-component-definition', rule, {
     {
       code: 'var Hello = function<Test extends {}>(props: Props<Test>) { return <p/> }',
       options: [{ namedComponents: 'function-expression' }],
-      features: ['types', 'no-babel'],
+      features: ['types'],
     },
     {
       code: 'var Hello = <Test extends {}>(props: Props<Test>) => { return <p/> }',
       options: [{ namedComponents: 'arrow-function' }],
-      features: ['types', 'no-babel'],
+      features: ['types'],
     },
     {
       code: 'function wrapper() { return function<Test>(props: Props<Test>) { return <p/> } } ',
@@ -175,12 +175,12 @@ ruleTester.run('function-component-definition', rule, {
     {
       code: 'function wrapper() { return function<Test extends {}>(props: Props<Test>) { return <p/> } } ',
       options: [{ unnamedComponents: 'function-expression' }],
-      features: ['types', 'no-babel'],
+      features: ['types'],
     },
     {
       code: 'function wrapper() { return<Test extends {}>(props: Props<Test>) => { return <p/> } } ',
       options: [{ unnamedComponents: 'arrow-function' }],
-      features: ['types', 'no-babel'],
+      features: ['types'],
     },
     {
       code: 'var Hello = function(props): ReactNode { return <p/> }',
@@ -836,7 +836,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
-      features: ['types', 'no-babel'],
+      features: ['types'],
     },
     {
       code: `
@@ -862,7 +862,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-expression' }],
       errors: [{ messageId: 'function-expression' }],
-      features: ['types', 'no-babel'],
+      features: ['types'],
     },
     {
       code: `
@@ -877,7 +877,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-declaration' }],
       errors: [{ messageId: 'function-declaration' }],
-      features: ['types', 'no-babel'],
+      features: ['types'],
     },
     {
       code: `
@@ -892,7 +892,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-expression' }],
       errors: [{ messageId: 'function-expression' }],
-      features: ['types', 'no-babel'],
+      features: ['types'],
     },
     {
       code: `
@@ -907,7 +907,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
-      features: ['types', 'no-babel'],
+      features: ['types'],
     },
     {
       code: `
@@ -922,7 +922,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'function-declaration' }],
       errors: [{ messageId: 'function-declaration' }],
-      features: ['types', 'no-babel'],
+      features: ['types'],
     },
     {
       code: `
@@ -941,7 +941,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       errors: [{ messageId: 'arrow-function' }],
       options: [{ unnamedComponents: 'arrow-function' }],
-      features: ['types', 'no-babel'],
+      features: ['types'],
     },
     {
       code: `
@@ -973,7 +973,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       errors: [{ messageId: 'function-expression' }],
       options: [{ unnamedComponents: 'function-expression' }],
-      features: ['types', 'no-babel'],
+      features: ['types'],
     },
     {
       code: `

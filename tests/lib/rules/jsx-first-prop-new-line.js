@@ -269,7 +269,7 @@ bar />
           ]}
         />
       `,
-      features: ['ts', 'no-babel-old'],
+      features: ['ts'],
       output: `
         <DataTable<Items>
 fullscreen keyField="id" items={items}

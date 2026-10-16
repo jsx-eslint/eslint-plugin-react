@@ -172,7 +172,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
+      features: ['class fields'],
     },
     {
       code: `
@@ -184,7 +184,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
+      features: ['class fields'],
     },
     {
       code: `
@@ -196,7 +196,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           }
         }
       `,
-      features: ['class fields', 'no-ts-old'], // TODO: FIXME: remove no-ts-old and fix
+      features: ['class fields'],
     },
     {
       code: `
@@ -842,7 +842,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           column: 20,
         },
       ],
-      features: ['ts', 'no-babel'],
+      features: ['ts'],
     },
     {
       code: `
@@ -860,7 +860,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           column: 20,
         },
       ],
-      features: ['ts', 'no-babel'],
+      features: ['ts'],
     },
     {
       code: `
@@ -878,7 +878,7 @@ ruleTester.run('no-unused-class-component-methods', rule, {
           column: 20,
         },
       ],
-      features: ['ts', 'no-babel'],
+      features: ['ts'],
     },
   ]),
 });
