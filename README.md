@@ -1,36 +1,154 @@
-# `eslint-plugin-react` <sup>[![Version Badge][npm-version-svg]][package-url]</sup>
-
-===================
+# `@ysknsid25/eslint-plugin-react`
 
 [![github actions][actions-image]][actions-url]
 [![Maintenance Status][status-image]][status-url]
 [![NPM version][npm-image]][npm-url]
-[![Tidelift][tidelift-image]][tidelift-url]
 
 React specific linting rules for `eslint`
+
+## About this fork
+
+This package is a fork of [`jsx-eslint/eslint-plugin-react`](https://github.com/jsx-eslint/eslint-plugin-react).
+Its main purpose is to keep the dependencies up to date.
+The rules themselves come from the original project, and all credit for them goes to its authors and contributors.
+
+Differences from the original package:
+
+- The package is published as `@ysknsid25/eslint-plugin-react`.
+- Only the flat config (`eslint.config.js`) is supported. The legacy `.eslintrc*` configs of this plugin refer to the plugin as `react`, which resolves to the original `eslint-plugin-react` package instead of this one.
+
+Inside your config, the plugin is still registered under the `react` namespace, so rule names are the same as in the original package (e.g. `react/jsx-key`).
+Do not install this package together with the original `eslint-plugin-react` in the same config, since both use the `react` namespace.
 
 ## Installation
 
 ```sh
-npm install eslint eslint-plugin-react --save-dev
+pnpm add -D eslint @ysknsid25/eslint-plugin-react
 ```
 
-It is also possible to install ESLint globally rather than locally (using `npm install -g eslint`). However, this is not recommended, and any plugins or shareable configs that you use must be installed locally in either case.
+or
 
-## Configuration (legacy: `.eslintrc*`) <a id="configuration"></a>
-
-Use [our preset](#recommended) to get reasonable defaults:
-
-```json
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended"
-  ]
+```sh
+npm install --save-dev eslint @ysknsid25/eslint-plugin-react
 ```
 
-If you are using the [new JSX transform from React 17](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#removing-unused-react-imports), extend [`react/jsx-runtime`](https://github.com/jsx-eslint/eslint-plugin-react/blob/c8917b0885094b5e4cc2a6f613f7fb6f16fe932e/index.js#L163-L176) in your eslint config (add `"plugin:react/jsx-runtime"` to `"extends"`) to disable the relevant rules.
+## Configuration
+
+See the [official docs](https://eslint.org/docs/latest/use/configure/configuration-files) for the flat config system (`eslint.config.js`).
+
+### Shareable configs
+
+This plugin exports 3 flat configs:
+
+- `flat.recommended`: enforces React good practices
+- `flat['jsx-runtime']`: disables rules that are not needed with the [new JSX transform from React 17](https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html#removing-unused-react-imports)
+- `flat.all`: includes every available rule
+
+The flat configs are available via the root plugin import. They will configure the plugin under the `react/` namespace and enable JSX in [`languageOptions.parserOptions`](https://eslint.org/docs/latest/use/configure/language-options#specifying-parser-options).
+
+```js
+const reactPlugin = require('@ysknsid25/eslint-plugin-react');
+
+module.exports = [
+  …
+  reactPlugin.configs.flat.recommended, // This is not a plugin object, but a shareable config object
+  reactPlugin.configs.flat['jsx-runtime'], // Add this if you are using React 17+
+  …
+];
+```
+
+You can of course add/override some properties.
+
+**Note**: Our shareable configs does not preconfigure `files` or [`languageOptions.globals`](https://eslint.org/docs/latest/use/configure/configuration-files#configuration-objects).
+For most of the cases, you probably want to configure some properties by yourself.
+
+```js
+const reactPlugin = require('@ysknsid25/eslint-plugin-react');
+const globals = require('globals');
+
+module.exports = [
+  …
+  {
+    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
+    ...reactPlugin.configs.flat.recommended,
+    languageOptions: {
+      ...reactPlugin.configs.flat.recommended.languageOptions,
+      globals: {
+        ...globals.serviceworker,
+        ...globals.browser,
+      },
+    },
+  },
+  …
+];
+```
+
+The above example is same as the example below, as the new config system is based on chaining.
+
+```js
+const reactPlugin = require('@ysknsid25/eslint-plugin-react');
+const globals = require('globals');
+
+module.exports = [
+  …
+  {
+    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
+    ...reactPlugin.configs.flat.recommended,
+  },
+  {
+    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
+    languageOptions: {
+      globals: {
+        ...globals.serviceworker,
+        ...globals.browser,
+      },
+    },
+  },
+  …
+];
+```
+
+### Plugin
+
+If you do not use a shareable config, you will need to register the plugin, enable JSX support and specify individual rules.
+The default export of `@ysknsid25/eslint-plugin-react` is a plugin object.
+
+```js
+const react = require('@ysknsid25/eslint-plugin-react');
+const globals = require('globals');
+
+module.exports = [
+  …
+  {
+    files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
+    plugins: {
+      react,
+    },
+    languageOptions: {
+      parserOptions: {
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+      globals: {
+        ...globals.browser,
+      },
+    },
+    rules: {
+      // ... any rules you want
+      'react/jsx-uses-react': 'error',
+      'react/jsx-uses-vars': 'error',
+     },
+    // ... others are omitted for brevity
+  },
+  …
+];
+```
+
+### Configuring shared settings
 
 You should also specify settings that will be shared across all the plugin rules. ([More about eslint shared settings](https://eslint.org/docs/latest/use/configure/configuration-files#configuring-shared-settings))
+Add a `settings` property like below to a config object in your `eslint.config.js`.
 
 ```json5
 {
@@ -76,205 +194,6 @@ You should also specify settings that will be shared across all the plugin rules
     ]
   }
 }
-```
-
-If you do not use a preset you will need to specify individual rules and add extra configuration.
-
-Add "react" to the plugins section.
-
-```json
-{
-  "plugins": [
-    "react"
-  ]
-}
-```
-
-Enable JSX support.
-
-With `eslint` 2+
-
-```json
-{
-  "parserOptions": {
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  }
-}
-```
-
-Enable the rules that you would like to use.
-
-```json
-  "rules": {
-    "react/jsx-uses-react": "error",
-    "react/jsx-uses-vars": "error",
-  }
-```
-
-### Shareable configs
-
-#### Recommended
-
-This plugin exports a `recommended` configuration that enforces React good practices.
-
-To enable this configuration use the `extends` property in your `.eslintrc` config file:
-
-```json
-{
-  "extends": ["eslint:recommended", "plugin:react/recommended"]
-}
-```
-
-See [`eslint` documentation](https://eslint.org/docs/user-guide/configuring/configuration-files#extending-configuration-files) for more information about extending configuration files.
-
-#### All
-
-This plugin also exports an `all` configuration that includes every available rule.
-This pairs well with the `eslint:all` rule.
-
-```json
-{
-  "plugins": [
-    "react"
-  ],
-  "extends": ["eslint:all", "plugin:react/all"]
-}
-```
-
-**Note**: These configurations will import `eslint-plugin-react` and enable JSX in [parser options](https://eslint.org/docs/user-guide/configuring/language-options#specifying-parser-options).
-
-## Configuration (new: `eslint.config.js`)
-
-From [`v8.21.0`](https://github.com/eslint/eslint/releases/tag/v8.21.0), eslint announced a new config system.
-In the new system, `.eslintrc*` is no longer used. `eslint.config.js` would be the default config file name.
-In eslint `v8`, the legacy system (`.eslintrc*`) would still be supported, while in eslint `v9`, only the new system would be supported.
-
-And from [`v8.23.0`](https://github.com/eslint/eslint/releases/tag/v8.23.0), eslint CLI starts to look up `eslint.config.js`.
-**So, if your eslint is `>=8.23.0`, you're 100% ready to use the new config system.**
-
-You might want to check out the official blog posts,
-
-- <https://eslint.org/blog/2022/08/new-config-system-part-1/>
-- <https://eslint.org/blog/2022/08/new-config-system-part-2/>
-- <https://eslint.org/blog/2022/08/new-config-system-part-3/>
-
-and the [official docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new).
-
-### Plugin
-
-The default export of `eslint-plugin-react` is a plugin object.
-
-```js
-const react = require('eslint-plugin-react');
-const globals = require('globals');
-
-module.exports = [
-  …
-  {
-    files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
-    plugins: {
-      react,
-    },
-    languageOptions: {
-      parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-      globals: {
-        ...globals.browser,
-      },
-    },
-    rules: {
-      // ... any rules you want
-      'react/jsx-uses-react': 'error',
-      'react/jsx-uses-vars': 'error',
-     },
-    // ... others are omitted for brevity
-  },
-  …
-];
-```
-
-### Configuring shared settings
-
-Refer to the [official docs](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#configuring-shared-settings).
-
-The schema of the `settings.react` object would be identical to that of what's already described above in the legacy config section.
-
-<!-- markdownlint-disable-next-line no-duplicate-heading -->
-### Flat Configs
-
-This plugin exports 3 flat configs:
-
-- `flat.all`
-- `flat.recommended`
-- `flat['jsx-runtime']`
-
-The flat configs are available via the root plugin import. They will configure the plugin under the `react/` namespace and enable JSX in [`languageOptions.parserOptions`](https://eslint.org/docs/latest/use/configure/language-options#specifying-parser-options).
-
-```js
-const reactPlugin = require('eslint-plugin-react');
-
-module.exports = [
-  …
-  reactPlugin.configs.flat.recommended, // This is not a plugin object, but a shareable config object
-  reactPlugin.configs.flat['jsx-runtime'], // Add this if you are using React 17+
-  …
-];
-```
-
-You can of course add/override some properties.
-
-**Note**: Our shareable configs does not preconfigure `files` or [`languageOptions.globals`](https://eslint.org/docs/latest/user-guide/configuring/configuration-files-new#configuration-objects).
-For most of the cases, you probably want to configure some properties by yourself.
-
-```js
-const reactPlugin = require('eslint-plugin-react');
-const globals = require('globals');
-
-module.exports = [
-  …
-  {
-    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-    ...reactPlugin.configs.flat.recommended,
-    languageOptions: {
-      ...reactPlugin.configs.flat.recommended.languageOptions,
-      globals: {
-        ...globals.serviceworker,
-        ...globals.browser,
-      },
-    },
-  },
-  …
-];
-```
-
-The above example is same as the example below, as the new config system is based on chaining.
-
-```js
-const reactPlugin = require('eslint-plugin-react');
-const globals = require('globals');
-
-module.exports = [
-  …
-  {
-    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-    ...reactPlugin.configs.flat.recommended,
-  },
-  {
-    files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-    languageOptions: {
-      globals: {
-        ...globals.serviceworker,
-        ...globals.browser,
-      },
-    },
-  },
-  …
-];
 ```
 
 ## List of supported rules
@@ -406,19 +325,14 @@ module.exports = [
 
 ## License
 
-`eslint-plugin-react` is licensed under the [MIT License](https://opensource.org/licenses/mit-license.php).
+Licensed under the [MIT License](LICENSE).
+Copyright (c) 2014 Yannick Croissant (original `eslint-plugin-react`), Copyright (c) 2026 Kanon (this fork).
 
-[npm-url]: https://npmjs.org/package/eslint-plugin-react
-[npm-image]: https://img.shields.io/npm/v/eslint-plugin-react.svg
+[npm-url]: https://www.npmjs.com/package/@ysknsid25/eslint-plugin-react
+[npm-image]: https://img.shields.io/npm/v/@ysknsid25/eslint-plugin-react.svg
 
-[status-url]: https://github.com/jsx-eslint/eslint-plugin-react/pulse
-[status-image]: https://img.shields.io/github/last-commit/jsx-eslint/eslint-plugin-react.svg
+[status-url]: https://github.com/ouka-lab/eslint-plugin-react/pulse
+[status-image]: https://img.shields.io/github/last-commit/ouka-lab/eslint-plugin-react.svg
 
-[tidelift-url]: https://tidelift.com/subscription/pkg/npm-eslint-plugin-react?utm_source=npm-eslint-plugin-react&utm_medium=referral&utm_campaign=readme
-[tidelift-image]: https://tidelift.com/badges/package/npm/eslint-plugin-react?style=flat
-
-[package-url]: https://npmjs.org/package/eslint-plugin-react
-[npm-version-svg]: https://versionbadg.es/jsx-eslint/eslint-plugin-react.svg
-
-[actions-image]: https://img.shields.io/github/check-runs/jsx-eslint/eslint-plugin-react/master
-[actions-url]: https://github.com/jsx-eslint/eslint-plugin-react/actions
+[actions-image]: https://img.shields.io/github/check-runs/ouka-lab/eslint-plugin-react/master
+[actions-url]: https://github.com/ouka-lab/eslint-plugin-react/actions
