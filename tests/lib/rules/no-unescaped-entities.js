@@ -17,7 +17,9 @@ const resolve = require('resolve');
 let allowsInvalidJSX = false;
 try {
   // eslint-disable-next-line import/no-extraneous-dependencies, global-require, import/no-dynamic-require
-  allowsInvalidJSX = semver.satisfies(require(resolve.sync('acorn-jsx/package.json', { basedir: path.dirname(require.resolve('eslint')) })).version, '< 5.2');
+  // resolve via the espree that eslint uses: acorn-jsx is espree's dependency, not eslint's (matters with pnpm's non-flat node_modules)
+  const espreeDir = path.dirname(resolve.sync('espree/package.json', { basedir: path.dirname(require.resolve('eslint')) }));
+  allowsInvalidJSX = semver.satisfies(require(resolve.sync('acorn-jsx/package.json', { basedir: espreeDir })).version, '< 5.2');
 } catch (e) { /**/ }
 
 const RuleTester = require('../../helpers/ruleTester');

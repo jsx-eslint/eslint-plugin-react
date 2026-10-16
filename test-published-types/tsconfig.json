@@ -1,13 +1,22 @@
 {
-  "extends": "../tsconfig.json",
-
+  // Standalone (does not extend ../tsconfig.json): this checks the published types
+  // with old TypeScript versions too (see the type-check workflow matrix),
+  // which do not understand the options the root tsconfig needs for TS 6.
   "files": [
     "index.js"
   ],
 
   "compilerOptions": {
+    "target": "ES2015",
+    "module": "commonjs",
     "lib": ["esnext"],
-    "types": ["node"],
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    // index.js only uses CommonJS, which TS understands without @types/node
+    "types": [],
     "skipLibCheck": true
   }
 }

@@ -2333,7 +2333,7 @@ ruleTester.run('sort-prop-types', rule, {
           return <div />;
         }
       `,
-      parser: parsers.TYPESCRIPT_ESLINT,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
       options: [{
         callbacksLast: true,
         noSortAlphabetically: true,
@@ -2366,7 +2366,7 @@ ruleTester.run('sort-prop-types', rule, {
           return <div />;
         }
       `,
-      parser: parsers.TYPESCRIPT_ESLINT,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
       options: [{
         callbacksLast: true,
         noSortAlphabetically: true,
@@ -2399,7 +2399,7 @@ ruleTester.run('sort-prop-types', rule, {
           return <div />;
         }
       `,
-      parser: parsers.TYPESCRIPT_ESLINT,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
       options: [{
         callbacksLast: true,
         noSortAlphabetically: true,
@@ -2432,7 +2432,7 @@ ruleTester.run('sort-prop-types', rule, {
           return <div />;
         }
       `,
-      parser: parsers.TYPESCRIPT_ESLINT,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
       options: [{
         callbacksLast: true,
         noSortAlphabetically: true,
@@ -2475,7 +2475,7 @@ ruleTester.run('sort-prop-types', rule, {
           return <div />;
         }
       `,
-      parser: parsers.TYPESCRIPT_ESLINT,
+      parser: parsers['@TYPESCRIPT_ESLINT'],
       options: [{
         callbacksLast: true,
         requiredFirst: true,
