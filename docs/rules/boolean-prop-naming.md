@@ -122,6 +122,8 @@ This value is boolean. It tells if nested props should be validated as well. By 
 "react/boolean-prop-naming": ["error", { "validateNested": true }]
 ```
 
+Nested props are those declared with `PropTypes.shape`, and those of object type literals in TypeScript or Flow prop types, such as `{ nested: { enabled: boolean } }`.
+
 [PropTypes]: https://reactjs.org/docs/typechecking-with-proptypes.html
 [TypeScript]: https://www.typescriptlang.org/
 [Flow]: https://flow.org/

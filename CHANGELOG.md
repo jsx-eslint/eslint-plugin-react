@@ -35,6 +35,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-no-leaked-render`]: preserve ternary alternates when autofixing to coerce ([#4017][] @morgan-coded)
 * [`require-default-props`]: handle function components wrapped in `memo`/`forwardRef` ([#4046][] @badukucuk)
 * [`no-unknown-property`]: allow `transform-origin` on all transformable SVG elements ([#4047][] @ozenyunus35)
+* [`boolean-prop-naming`]: `validateNested`: check props of nested TypeScript and Flow object types ([#3856][] @ybai08)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -65,6 +66,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3926]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3926
 [#3923]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3923
 [#3877]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3877
+[#3856]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3856
 [#3729]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3729
 [#3441]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3441
 
