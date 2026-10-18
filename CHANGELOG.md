@@ -50,6 +50,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`function-component-definition`]: do not autofix declarations used before they are defined ([#4054][] @devtechedge)
 * [`function-component-definition`]: suggest, rather than autofix, converting function declarations exported with a live binding, which can break import cycles (@ljharb)
 * [`function-component-definition`]: suggest, rather than autofix, converting function declarations used inside other functions that may run before them (@ljharb)
+* [`boolean-prop-naming`]: check type-annotated props of function components wrapped in `memo`/`forwardRef`, and of function expressions ([#4055][] @ybai08)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -63,6 +64,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
 [#4059]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4059
+[#4055]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4055
 [#4052]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4052
 [#4049]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4049
 [#4048]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4048
