@@ -53,6 +53,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`boolean-prop-naming`]: check type-annotated props of function components wrapped in `memo`/`forwardRef`, and of function expressions ([#4055][] @ybai08)
 * [`boolean-prop-naming`]: report a prop once, when components share its props type (@ljharb)
 * [`boolean-prop-naming`]: check props typed with a `memo`/`forwardRef` type argument, like `forwardRef<Ref, Props>` (@ljharb)
+* [`boolean-prop-naming`]: `validateNested`: check props of nested TypeScript and Flow object types ([#3856][] @ybai08)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -94,6 +95,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3926]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3926
 [#3923]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3923
 [#3877]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3877
+[#3856]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3856
 [#3729]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3729
 [#3441]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3441
 

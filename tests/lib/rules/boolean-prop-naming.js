@@ -534,6 +534,35 @@ ruleTester.run('boolean-prop-naming', rule, {
       options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
       features: ['ts', 'no-ts-old', 'no-babel-old'],
     },
+    {
+      code: `
+        type Props = {
+          isEnabled: boolean,
+          nested: {
+            enabled: boolean
+          }
+        };
+        const Hello = (props: Props) => <div />;
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types'],
+    },
+    {
+      code: `
+        type Props = {
+          isEnabled: boolean,
+          nested: {
+            isEnabled: boolean,
+            deeper: {
+              hasValue: boolean
+            }
+          }
+        };
+        const Hello = (props: Props) => <div />;
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+', validateNested: true }],
+      features: ['types'],
+    },
   ]),
 
   invalid: parsers.all([
@@ -1660,6 +1689,86 @@ ruleTester.run('boolean-prop-naming', rule, {
             propName: 'enabled',
             pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
           },
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          nested: {
+            enabled: boolean
+          },
+          visible: boolean
+        };
+        const Hello = (props: Props) => <div />;
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+', validateNested: true }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: { propName: 'enabled', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
+        },
+        {
+          messageId: 'patternMismatch',
+          data: { propName: 'visible', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
+        },
+      ],
+    },
+    {
+      code: `
+        interface Props {
+          nested: {
+            enabled: boolean
+          };
+          visible: boolean;
+        }
+        const Hello = (props: Props) => <div />;
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+', validateNested: true }],
+      features: ['ts', 'no-babel'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: { propName: 'enabled', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
+        },
+        {
+          messageId: 'patternMismatch',
+          data: { propName: 'visible', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
+        },
+      ],
+    },
+    {
+      code: `
+        type Props = {
+          nested: {
+            isEnabled: boolean,
+            deeper: {
+              value: boolean
+            }
+          }
+        };
+        const Hello = (props: Props) => <div />;
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+', validateNested: true }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: { propName: 'value', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
+        },
+      ],
+    },
+    {
+      code: `
+        const Hello = (props: { nested: { enabled: boolean } }) => <div />;
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+', validateNested: true }],
+      features: ['types'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: { propName: 'enabled', pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+' },
         },
       ],
     },
