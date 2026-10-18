@@ -4993,6 +4993,59 @@ ruleTester.run('prop-types', rule, {
         );
       `,
       features: ['types'],
+    },
+    {
+      // https://github.com/jsx-eslint/eslint-plugin-react/issues/3696
+      code: `
+        import React, { useEffect } from 'react';
+
+        export const MainComponent = ({ dummy }) => {
+          const widgets = [];
+          useEffect(() => {});
+
+          const SubComponent = ({ widget }) => <>{widget.id}</>;
+          SubComponent.propTypes = { widget: PropTypes.shape({ id: PropTypes.number }) };
+
+          return (
+            <>
+              {widgets.map((widget, jIdx) => (
+                <span key={jIdx}>{widget.id}</span>
+              ))}
+            </>
+          );
+        };
+        MainComponent.propTypes = { dummy: PropTypes.string };
+      `,
+      features: ['fragment'],
+    },
+    {
+      // https://github.com/jsx-eslint/eslint-plugin-react/issues/3696
+      code: `
+        import React, { FunctionComponent, useEffect } from 'react';
+
+        type Widget = { id: number };
+        type MainComponentProps = { dummy: string };
+
+        export const MainComponent: FunctionComponent<MainComponentProps> = ({ dummy }) => {
+          const widgets: Widget[] = [];
+          useEffect(() => {});
+
+          type SubComponentProps = { widget: Widget };
+
+          const SubComponent: FunctionComponent<SubComponentProps> = ({ widget }) => {
+            return <>{widget.id}</>;
+          };
+
+          return (
+            <>
+              {widgets.map((widget, jIdx) => (
+                <span key={jIdx}>{widget.id}</span>
+              ))}
+            </>
+          );
+        };
+      `,
+      features: ['ts', 'no-babel', 'fragment'],
     }
   )),
 
