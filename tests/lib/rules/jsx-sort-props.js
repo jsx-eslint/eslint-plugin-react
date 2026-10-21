@@ -1230,6 +1230,64 @@ ruleTester.run('jsx-sort-props', rule, {
       options: sortFirstMultipleArgs,
       errors: [expectedSortFirstError],
       output: '<App className="test" id="test" id="test2" />;',
+    },
+    {
+      code: `
+        <App
+          onClick={() => {
+          }} // handles clicks
+          b="2"
+          a="1"
+        />
+      `,
+      output: `
+        <App
+          a="1"
+          b="2"
+          onClick={() => {
+          }} // handles clicks
+        />
+      `,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 5,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 6,
+        },
+      ],
+    },
+    {
+      code: `
+        <App
+          onClick={() => {
+            track();
+          }} // handles clicks
+          b="2"
+          a="1"
+        />
+      `,
+      output: `
+        <App
+          a="1"
+          b="2"
+          onClick={() => {
+            track();
+          }} // handles clicks
+        />
+      `,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 6,
+        },
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 7,
+        },
+      ],
     }
   )),
 });

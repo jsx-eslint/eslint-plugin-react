@@ -41,6 +41,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-arrow-function-lifecycle`]: keep `async`, type parameters, the parameter list, and the return type in autofix (@ljharb)
 * [`no-arrow-function-lifecycle`]: keep comments before the body in autofix (@ljharb)
 * [`no-arrow-function-lifecycle`]: avoid a stray paren in autofix of a parenthesized body ([#4061][] @nk-batman21)
+* [`jsx-sort-props`]: treat a comment after a multi-line prop as trailing that prop (@ljharb)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
