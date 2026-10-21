@@ -13,7 +13,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-no-leaked-render`]: add `ignoreAttributes` option ([#3441][] @aleclarson)
 * [`jsx-sort-props`]: add `sortFirst` option ([#3965][] @loderunner)
 * [`jsx-no-literals`]: add `restrictedAttributes` option ([#3950][] @ushiboy)
-* [`forbid-dom-props`]: Add `disallowedValues` option for forbidden props ([#3877][] @makxca)
+* [`forbid-dom-props`]: Add `disallowedValues` option for forbidden props ([#3877][] @makxca, [#4059][] @nk-batman21)
 
 ### Fixed
 * [`jsx-no-literals`]: avoid crash on variable declarations without an initializer ([#4044][] @Aryan007-dev)
@@ -53,6 +53,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Perf] `jsx-sort-props`: build the autofix once per element (@ljharb)
 
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
+[#4059]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4059
 [#4048]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4048
 [#4047]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4047
 [#4046]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4046

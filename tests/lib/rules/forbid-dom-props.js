@@ -181,6 +181,31 @@ ruleTester.run('forbid-dom-props', rule, {
         },
       ],
     },
+    {
+      code: `
+        const First = (props) => (
+          <input disabled />
+        );
+      `,
+      options: [{ forbid: ['id'] }],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <div someProp />
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'someProp',
+              disallowedValues: ['someValue'],
+            },
+          ],
+        },
+      ],
+    },
   ]),
 
   invalid: parsers.all([
@@ -506,6 +531,74 @@ ruleTester.run('forbid-dom-props', rule, {
           message: 'Do not use thirdProp with values bar and baz on p',
           line: 10,
           column: 16,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <input disabled />
+        );
+      `,
+      options: [{ forbid: ['disabled'] }],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'disabled' },
+          line: 3,
+          column: 18,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <input disabled />
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'disabled',
+              disallowedFor: ['input'],
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'disabled' },
+          line: 3,
+          column: 18,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <input disabled />
+        );
+      `,
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'disabled',
+              message: 'Avoid using disabled',
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          message: 'Avoid using disabled',
+          line: 3,
+          column: 18,
           type: 'JSXAttribute',
         },
       ],
