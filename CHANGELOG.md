@@ -49,6 +49,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-filename-extension`]: include allowed extensions in message ([#4043][] @aduth)
 * [Docs] [`hook-use-state`]: clarify destructuring requirement ([#4030][] @raisulchowdhury)
 * [Refactor] `Components`: add `getWrappedComponentNode` util (@ljharb)
+* [Perf] `jsx-sort-props`: build the autofix once per element (@ljharb)
 
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
 [#4048]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4048
