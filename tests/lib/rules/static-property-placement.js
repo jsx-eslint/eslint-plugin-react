@@ -465,6 +465,39 @@ ruleTester.run('static-property-placement', rule, {
       features: ['class fields'],
     },
     // ------------------------------------------------------------------------------
+    // a typed `context` instance field is not a contextTypes declaration
+    // ------------------------------------------------------------------------------
+    {
+      code: `
+        class MyComponent extends React.Component {
+          static contextType = MyContext;
+          declare context: React.ContextType<typeof MyContext>;
+        }
+      `,
+      features: ['ts'],
+    },
+    {
+      code: `
+        class MyComponent extends React.Component {
+          static contextTypes = {
+            something: PropTypes.bool
+          };
+          declare context: MyContext;
+        }
+      `,
+      options: [STATIC_PUBLIC_FIELD],
+      features: ['ts'],
+    },
+    {
+      code: `
+        class MyComponent extends React.Component {
+          static contextType = MyContext;
+          context: MyContextValue;
+        }
+      `,
+      features: ['types'],
+    },
+    // ------------------------------------------------------------------------------
     // contextType - static getter
     // ------------------------------------------------------------------------------
     {
