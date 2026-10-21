@@ -37,6 +37,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: allow `transform-origin` on all transformable SVG elements ([#4047][] @ozenyunus35)
 * [`destructuring-assignment`]: detect props usage in components wrapped in `forwardRef` or `memo` ([#4048][] @fredrikblau)
 * [`no-arrow-function-lifecycle`]: keep line comments from breaking the autofix (@ljharb)
+* [`no-arrow-function-lifecycle`]: remove the closing parens of a parenthesized arrow function in autofix (@ljharb)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)

@@ -1102,5 +1102,59 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
         }
       `,
     },
+    {
+      code: `
+        class Hello extends React.Component {
+          render = (() => <div />);
+        }
+      `,
+      features: ['class fields'],
+      errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: semver.satisfies(eslintPkg.version, '> 3') ? `
+        class Hello extends React.Component {
+          render() { return <div />; }
+        }
+      ` : `
+        class Hello extends React.Component {
+          render = (() => <div />);
+        }
+      `,
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render = ((() => <div />));
+        }
+      `,
+      features: ['class fields'],
+      errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: semver.satisfies(eslintPkg.version, '> 3') ? `
+        class Hello extends React.Component {
+          render() { return <div />; }
+        }
+      ` : `
+        class Hello extends React.Component {
+          render = ((() => <div />));
+        }
+      `,
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render = (() => {
+            return <div />;
+          });
+        }
+      `,
+      features: ['class fields'],
+      errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: `
+        class Hello extends React.Component {
+          render() {
+            return <div />;
+          };
+        }
+      `,
+    },
   ]),
 });
