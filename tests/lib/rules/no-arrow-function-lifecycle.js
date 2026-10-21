@@ -1041,5 +1041,66 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
         }
       `,
     },
+    {
+      code: `
+        class Hello extends React.Component {
+          render = () => <div /> // the body
+        }
+      `,
+      features: ['class fields'],
+      errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: semver.satisfies(eslintPkg.version, '> 3') ? `
+        class Hello extends React.Component {
+          render() { return <div />; // the body
+          }
+        }
+      ` : `
+        class Hello extends React.Component {
+          render = () => <div /> // the body
+        }
+      `,
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render = () => // the body
+            <div />;
+        }
+      `,
+      features: ['class fields'],
+      errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: semver.satisfies(eslintPkg.version, '> 3') ? `
+        class Hello extends React.Component {
+          render() { // the body
+          return <div />; }
+        }
+      ` : `
+        class Hello extends React.Component {
+          render = () => // the body
+            <div />;
+        }
+      `,
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render = () => /* the
+            body */ <div />;
+        }
+      `,
+      features: ['class fields'],
+      errors: [{ message: 'render is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: semver.satisfies(eslintPkg.version, '> 3') ? `
+        class Hello extends React.Component {
+          render() { /* the
+            body */ return <div />; }
+        }
+      ` : `
+        class Hello extends React.Component {
+          render = () => /* the
+            body */ <div />;
+        }
+      `,
+    },
   ]),
 });

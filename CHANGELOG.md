@@ -36,6 +36,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`require-default-props`]: handle function components wrapped in `memo`/`forwardRef` ([#4046][] @badukucuk)
 * [`no-unknown-property`]: allow `transform-origin` on all transformable SVG elements ([#4047][] @ozenyunus35)
 * [`destructuring-assignment`]: detect props usage in components wrapped in `forwardRef` or `memo` ([#4048][] @fredrikblau)
+* [`no-arrow-function-lifecycle`]: keep line comments from breaking the autofix (@ljharb)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
