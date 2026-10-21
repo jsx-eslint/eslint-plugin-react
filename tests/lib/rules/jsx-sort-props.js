@@ -1128,6 +1128,46 @@ ruleTester.run('jsx-sort-props', rule, {
     },
     {
       code: `
+        <div
+          onClick={() => console.log()} // Comment
+          className="flex"
+        >
+          <span>Problematic Component</span>
+        </div>
+      `,
+      output: `
+        <div
+          className="flex"
+          onClick={() => console.log()} // Comment
+        >
+          <span>Problematic Component</span>
+        </div>
+      `,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 4,
+        },
+      ],
+    },
+    {
+      code: `
+        <div
+          onClick={() => console.log()} // Comment
+          id="root">
+          <span>Problematic Component</span>
+        </div>
+      `,
+      output: null,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 4,
+        },
+      ],
+    },
+    {
+      code: `
         <Page
           // Pass all the props to the Page component.
           {...props}
@@ -1286,6 +1326,53 @@ ruleTester.run('jsx-sort-props', rule, {
         {
           messageId: 'sortPropsByAlpha',
           line: 7,
+        },
+      ],
+    },
+    {
+      code: `
+        <App
+          b="1" // the b prop
+          a="2" c="3"
+        />
+      `,
+      output: null,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 4,
+        },
+      ],
+    },
+    {
+      code: `
+        <App
+          b="1" // the b prop
+          a="2" {...rest}
+        />
+      `,
+      output: null,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 4,
+        },
+      ],
+    },
+    {
+      code: `
+        <div
+          onClick={() => {
+          }} // handles clicks
+          className="flex">
+          x
+        </div>
+      `,
+      output: null,
+      errors: [
+        {
+          messageId: 'sortPropsByAlpha',
+          line: 5,
         },
       ],
     }

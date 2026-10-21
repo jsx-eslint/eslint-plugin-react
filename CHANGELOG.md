@@ -42,6 +42,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-arrow-function-lifecycle`]: keep comments before the body in autofix (@ljharb)
 * [`no-arrow-function-lifecycle`]: avoid a stray paren in autofix of a parenthesized body ([#4061][] @nk-batman21)
 * [`jsx-sort-props`]: treat a comment after a multi-line prop as trailing that prop (@ljharb)
+* [`jsx-sort-props`]: skip the autofix when a moved line comment would comment out code ([#4011][] @sjh9714)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -60,6 +61,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#4029]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4029
 [#4028]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4028
 [#4017]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4017
+[#4011]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4011
 [#4001]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4001
 [#3986]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3986
 [#3978]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3978
