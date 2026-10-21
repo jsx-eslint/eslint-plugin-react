@@ -1156,5 +1156,95 @@ ruleTester.run('no-arrow-function-lifecycle', rule, {
         }
       `,
     },
+    {
+      code: `
+        class Hello extends React.Component {
+          static getDerivedStateFromProps = ({ a }, state) => ({ b: a });
+        }
+      `,
+      features: ['class fields'],
+      errors: [{ message: 'getDerivedStateFromProps is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: semver.satisfies(eslintPkg.version, '> 3') ? `
+        class Hello extends React.Component {
+          static getDerivedStateFromProps({ a }, state) { return { b: a }; }
+        }
+      ` : `
+        class Hello extends React.Component {
+          static getDerivedStateFromProps = ({ a }, state) => ({ b: a });
+        }
+      `,
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          shouldComponentUpdate = (nextProps = {}) => true;
+        }
+      `,
+      features: ['class fields'],
+      errors: [{ message: 'shouldComponentUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: semver.satisfies(eslintPkg.version, '> 3') ? `
+        class Hello extends React.Component {
+          shouldComponentUpdate(nextProps = {}) { return true; }
+        }
+      ` : `
+        class Hello extends React.Component {
+          shouldComponentUpdate = (nextProps = {}) => true;
+        }
+      `,
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          componentDidUpdate = (...args) => {
+            this.update(args);
+          };
+        }
+      `,
+      features: ['class fields'],
+      errors: [{ message: 'componentDidUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: `
+        class Hello extends React.Component {
+          componentDidUpdate(...args) {
+            this.update(args);
+          };
+        }
+      `,
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          componentDidMount = async () => {
+            await this.load();
+          };
+        }
+      `,
+      features: ['class fields'],
+      errors: [{ message: 'componentDidMount is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: `
+        class Hello extends React.Component {
+          async componentDidMount() {
+            await this.load();
+          };
+        }
+      `,
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          componentDidUpdate = (prevProps: Props): void => {
+            this.update(prevProps);
+          };
+        }
+      `,
+      features: ['types'],
+      errors: [{ message: 'componentDidUpdate is a React lifecycle method, and should not be an arrow function or in a class field. Use an instance method instead.' }],
+      output: `
+        class Hello extends React.Component {
+          componentDidUpdate(prevProps: Props): void {
+            this.update(prevProps);
+          };
+        }
+      `,
+    },
   ]),
 });
