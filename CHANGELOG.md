@@ -40,6 +40,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-arrow-function-lifecycle`]: remove the closing parens of a parenthesized arrow function in autofix (@ljharb)
 * [`no-arrow-function-lifecycle`]: keep `async`, type parameters, the parameter list, and the return type in autofix (@ljharb)
 * [`no-arrow-function-lifecycle`]: keep comments before the body in autofix (@ljharb)
+* [`no-arrow-function-lifecycle`]: avoid a stray paren in autofix of a parenthesized body ([#4061][] @nk-batman21)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -48,6 +49,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`hook-use-state`]: clarify destructuring requirement ([#4030][] @raisulchowdhury)
 * [Refactor] `Components`: add `getWrappedComponentNode` util (@ljharb)
 
+[#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
 [#4048]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4048
 [#4047]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4047
 [#4046]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4046
