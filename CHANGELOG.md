@@ -63,6 +63,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * version settings: clarify the error for an invalid `defaultVersion`, and suggest setting `version` to “detect” ([#4041][] @Manya72)
 * [`prop-types`]: do not treat a nested component's destructured props as the enclosing component's props ([#4057][] @imove0n)
 * [`static-property-placement`]: do not report a type-annotated `props` instance field as `propTypes` (@ljharb)
+* [`static-property-placement`]: do not report a type-annotated `context` instance field as `contextTypes` ([#4060][] @b84330808)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -81,6 +82,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 [#4064]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4064
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
+[#4060]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4060
 [#4059]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4059
 [#4057]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4057
 [#4055]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4055
