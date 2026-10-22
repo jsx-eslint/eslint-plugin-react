@@ -54,9 +54,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`hook-use-state`]: clarify destructuring requirement ([#4030][] @raisulchowdhury)
 * [Refactor] `Components`: add `getWrappedComponentNode` util (@ljharb)
 * [Perf] `jsx-sort-props`: build the autofix once per element (@ljharb)
+* [Docs] [`self-closing-comp`]: list empty DOM elements as incorrect ([#4049][] @ColumbusLabs)
 
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
 [#4059]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4059
+[#4049]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4049
 [#4048]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4048
 [#4047]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4047
 [#4046]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4046
