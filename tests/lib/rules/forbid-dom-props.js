@@ -239,6 +239,14 @@ ruleTester.run('forbid-dom-props', rule, {
       options: [{ forbid: ['href'] }],
       features: ['jsx namespace'],
     },
+    {
+      code: `
+        const First = (props) => (
+          <input disabled />
+        );
+      `,
+      options: [{ forbid: [{ propName: 'disabled', disallowedValues: ['false'] }] }],
+    },
   ]),
 
   invalid: parsers.all([
@@ -719,6 +727,23 @@ ruleTester.run('forbid-dom-props', rule, {
           data: { prop: 'xlink:href', propValue: '#a' },
           line: 3,
           column: 16,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <input disabled />
+        );
+      `,
+      options: [{ forbid: [{ propName: 'disabled', disallowedValues: ['true'] }] }],
+      errors: [
+        {
+          messageId: 'propIsForbiddenWithValue',
+          data: { prop: 'disabled', propValue: 'true' },
+          line: 3,
+          column: 18,
           type: 'JSXAttribute',
         },
       ],

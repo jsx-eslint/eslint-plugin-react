@@ -59,6 +59,8 @@ custom message, DOM nodes disallowed list (e.g. `<div />`), and a list of prohib
 }
 ```
 
+A prop with no value, like `<input disabled />`, has the value `"true"`.
+
 Example of **incorrect** code for this rule, when configured with `{ forbid: [{ propName: 'someProp', disallowedFor: ['span'] }] }`.
 
 ```jsx
