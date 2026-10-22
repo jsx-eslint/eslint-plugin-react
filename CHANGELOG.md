@@ -53,6 +53,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`boolean-prop-naming`]: check type-annotated props of function components wrapped in `memo`/`forwardRef`, and of function expressions ([#4055][] @ybai08)
 * [`boolean-prop-naming`]: report a prop once, when components share its props type (@ljharb)
 * [`boolean-prop-naming`]: check props typed with a `memo`/`forwardRef` type argument, like `forwardRef<Ref, Props>` (@ljharb)
+* [`jsx-fragments`]: only treat a destructured `Fragment` as a fragment, not other components destructured from React ([#4062][] @nk-batman21)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -64,6 +65,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`self-closing-comp`]: list empty DOM elements as incorrect ([#4049][] @ColumbusLabs)
 * [Refactor] add `getDeclaredVariables` util, and use it in [`no-unused-state`] (@ljharb)
 
+[#4062]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4062
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
 [#4059]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4059
 [#4055]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4055
