@@ -206,6 +206,30 @@ ruleTester.run('forbid-dom-props', rule, {
         },
       ],
     },
+    {
+      code: `
+        const First = (props) => (
+          <button type={buttonType} />
+        );
+      `,
+      options: [{ forbid: [{ propName: 'type', disallowedValues: ['submit'] }] }],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <button type={\`a\${b}\`} />
+        );
+      `,
+      options: [{ forbid: [{ propName: 'type', disallowedValues: ['a{b}'] }] }],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <button type={null} />
+        );
+      `,
+      options: [{ forbid: [{ propName: 'type', disallowedValues: ['null'] }] }],
+    },
   ]),
 
   invalid: parsers.all([
@@ -597,6 +621,57 @@ ruleTester.run('forbid-dom-props', rule, {
       errors: [
         {
           message: 'Avoid using disabled',
+          line: 3,
+          column: 18,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <button type={'submit'} />
+        );
+      `,
+      options: [{ forbid: [{ propName: 'type', disallowedValues: ['submit'] }] }],
+      errors: [
+        {
+          messageId: 'propIsForbiddenWithValue',
+          data: { prop: 'type', propValue: 'submit' },
+          line: 3,
+          column: 19,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <button type={\`submit\`} />
+        );
+      `,
+      options: [{ forbid: [{ propName: 'type', disallowedValues: ['submit'] }] }],
+      errors: [
+        {
+          messageId: 'propIsForbiddenWithValue',
+          data: { prop: 'type', propValue: 'submit' },
+          line: 3,
+          column: 19,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <input size={1} />
+        );
+      `,
+      options: [{ forbid: [{ propName: 'size', disallowedValues: ['1'] }] }],
+      errors: [
+        {
+          messageId: 'propIsForbiddenWithValue',
+          data: { prop: 'size', propValue: '1' },
           line: 3,
           column: 18,
           type: 'JSXAttribute',
