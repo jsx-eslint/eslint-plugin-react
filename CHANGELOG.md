@@ -50,6 +50,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`function-component-definition`]: do not autofix declarations used before they are defined ([#4054][] @devtechedge)
 * [`function-component-definition`]: suggest, rather than autofix, converting function declarations exported with a live binding, which can break import cycles (@ljharb)
 * [`function-component-definition`]: suggest, rather than autofix, converting function declarations used inside other functions that may run before them (@ljharb)
+* [`jsx-fragments`]: only treat a destructured `Fragment` as a fragment, not other components destructured from React ([#4062][] @nk-batman21)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -61,6 +62,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`self-closing-comp`]: list empty DOM elements as incorrect ([#4049][] @ColumbusLabs)
 * [Refactor] add `getDeclaredVariables` util, and use it in [`no-unused-state`] (@ljharb)
 
+[#4062]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4062
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
 [#4059]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4059
 [#4052]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4052
