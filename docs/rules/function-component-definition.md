@@ -165,9 +165,21 @@ export default var getComponent = function () {
 
 These patterns have to be manually fixed.
 
-## Exported function declarations
+## Function declarations that may be used before they run
 
-A function declaration that is exported with a live binding is not autofixed. The conversion is offered as a suggestion instead:
+A function declaration is initialized before any code in the module runs, but a variable is not initialized until its declaration runs. So converting a function declaration that is used before its declaration runs would make that use throw.
+
+A function declaration that is used directly before it is defined is not autofixed:
+
+```js
+render(<Component />, root);
+
+function Component() {
+  return <div />;
+}
+```
+
+A function declaration that is exported with a live binding is not autofixed either. The conversion is offered as a suggestion instead:
 
 ```js
 export function Component() {
@@ -180,7 +192,21 @@ function OtherComponent() {
 export { OtherComponent };
 ```
 
-A function declaration is initialized before any code in the module runs, so a module that imports it in an import cycle can call it before this module's code has run. A variable is not initialized until its declaration runs, so the converted code throws in that case. Only apply the suggestion if no import cycle uses the component before this module runs.
+A module that imports it in an import cycle can call it before this module's code has run.
+
+The same goes for a function declaration that is used inside another function that may run before it: a function declaration that is exported with a live binding, or a function or class that is used before the declaration.
+
+```js
+function Item() {
+  return <li />;
+}
+
+export function List() {
+  return <ul><Item /></ul>;
+}
+```
+
+Only apply the suggestion if nothing, including an import cycle, uses the component before its declaration runs.
 
 ## Heads up, TypeScript users
 

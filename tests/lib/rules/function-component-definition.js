@@ -1274,6 +1274,267 @@ ruleTester.run('function-component-definition', rule, {
     },
     {
       code: `
+        function Foo() {
+          return <div />;
+        }
+        export function Bar() {
+          return <Foo />;
+        }
+      `,
+      output: null,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [
+        {
+          messageId: 'arrow-function',
+          suggestions: [
+            {
+              messageId: 'suggest-arrow-function',
+              output: `
+        const Foo = () => {
+          return <div />;
+        }
+        export function Bar() {
+          return <Foo />;
+        }
+      `,
+            },
+          ],
+        },
+        {
+          messageId: 'arrow-function',
+          suggestions: [
+            {
+              messageId: 'suggest-arrow-function',
+              output: `
+        function Foo() {
+          return <div />;
+        }
+        export const Bar = () => {
+          return <Foo />;
+        }
+      `,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        function bar() {
+          return <Foo />;
+        }
+        const el = bar();
+        function Foo() {
+          return <div />;
+        }
+      `,
+      output: null,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [
+        {
+          messageId: 'arrow-function',
+          suggestions: [
+            {
+              messageId: 'suggest-arrow-function',
+              output: `
+        function bar() {
+          return <Foo />;
+        }
+        const el = bar();
+        const Foo = () => {
+          return <div />;
+        }
+      `,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        const App = () => <Foo />;
+        render(<App />, root);
+        function Foo() {
+          return <div />;
+        }
+      `,
+      output: null,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [
+        {
+          messageId: 'arrow-function',
+          suggestions: [
+            {
+              messageId: 'suggest-arrow-function',
+              output: `
+        const App = () => <Foo />;
+        render(<App />, root);
+        const Foo = () => {
+          return <div />;
+        }
+      `,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        const App = () => <Foo />;
+        function Foo() {
+          return <div />;
+        }
+        render(<App />, root);
+      `,
+      output: `
+        const App = () => <Foo />;
+        const Foo = () => {
+          return <div />;
+        }
+        render(<App />, root);
+      `,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [
+        { messageId: 'arrow-function' },
+      ],
+    },
+    {
+      code: `
+        [1].map(() => <Foo />);
+        function Foo() {
+          return <div />;
+        }
+      `,
+      output: null,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [
+        {
+          messageId: 'arrow-function',
+          suggestions: [
+            {
+              messageId: 'suggest-arrow-function',
+              output: `
+        [1].map(() => <Foo />);
+        const Foo = () => {
+          return <div />;
+        }
+      `,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        class App extends React.Component {
+          render() {
+            return <Foo />;
+          }
+        }
+        function Foo() {
+          return <div />;
+        }
+        render(<App />, root);
+      `,
+      output: `
+        class App extends React.Component {
+          render() {
+            return <Foo />;
+          }
+        }
+        const Foo = () => {
+          return <div />;
+        }
+        render(<App />, root);
+      `,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [
+        { messageId: 'arrow-function' },
+      ],
+    },
+    {
+      code: `
+        class App extends React.Component {
+          render() {
+            return <Foo />;
+          }
+        }
+        render(<App />, root);
+        function Foo() {
+          return <div />;
+        }
+      `,
+      output: null,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [
+        {
+          messageId: 'arrow-function',
+          suggestions: [
+            {
+              messageId: 'suggest-arrow-function',
+              output: `
+        class App extends React.Component {
+          render() {
+            return <Foo />;
+          }
+        }
+        render(<App />, root);
+        const Foo = () => {
+          return <div />;
+        }
+      `,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        class App {
+          static el = <Foo />;
+        }
+        function Foo() {
+          return <div />;
+        }
+      `,
+      output: null,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [{ messageId: 'arrow-function', suggestions: [] }],
+      // typescript-eslint-parser does not traverse class field values
+      features: ['class fields', 'no-ts-old'],
+    },
+    {
+      code: `
+        class App extends React.Component {
+          el = <Foo />;
+          render() {
+            return this.el;
+          }
+        }
+        function Foo() {
+          return <div />;
+        }
+        render(<App />, root);
+      `,
+      output: `
+        class App extends React.Component {
+          el = <Foo />;
+          render() {
+            return this.el;
+          }
+        }
+        const Foo = () => {
+          return <div />;
+        }
+        render(<App />, root);
+      `,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [{ messageId: 'arrow-function' }],
+      // babel-eslint has no scope for class field initializers, so this conservatively skips the autofix
+      features: ['class fields', 'no-babel-old'],
+    },
+    {
+      code: `
         function Hello(props) {
           return <div/>;
         }
