@@ -44,6 +44,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-sort-props`]: treat a comment after a multi-line prop as trailing that prop (@ljharb)
 * [`jsx-sort-props`]: skip the autofix when a moved line comment would comment out code ([#4011][] @sjh9714)
 * [`forbid-dom-props`]: match `disallowedValues` against string, number, and template literal values in braces (@ljharb)
+* [`forbid-dom-props`]: allow forbidding namespaced props, like `xlink:href` (@ljharb)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)

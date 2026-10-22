@@ -230,6 +230,15 @@ ruleTester.run('forbid-dom-props', rule, {
       `,
       options: [{ forbid: [{ propName: 'type', disallowedValues: ['null'] }] }],
     },
+    {
+      code: `
+        const First = (props) => (
+          <use xlink:href="#a" />
+        );
+      `,
+      options: [{ forbid: ['href'] }],
+      features: ['jsx namespace'],
+    },
   ]),
 
   invalid: parsers.all([
@@ -674,6 +683,42 @@ ruleTester.run('forbid-dom-props', rule, {
           data: { prop: 'size', propValue: '1' },
           line: 3,
           column: 18,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <use xlink:href="#a" />
+        );
+      `,
+      options: [{ forbid: ['xlink:href'] }],
+      features: ['jsx namespace'],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'xlink:href' },
+          line: 3,
+          column: 16,
+          type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: `
+        const First = (props) => (
+          <use xlink:href="#a" />
+        );
+      `,
+      options: [{ forbid: [{ propName: 'xlink:href', disallowedFor: ['use'], disallowedValues: ['#a'] }] }],
+      features: ['jsx namespace'],
+      errors: [
+        {
+          messageId: 'propIsForbiddenWithValue',
+          data: { prop: 'xlink:href', propValue: '#a' },
+          line: 3,
+          column: 16,
           type: 'JSXAttribute',
         },
       ],
