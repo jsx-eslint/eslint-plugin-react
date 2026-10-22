@@ -56,6 +56,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] `Components`: add `getWrappedComponentNode` util (@ljharb)
 * [Perf] `jsx-sort-props`: build the autofix once per element (@ljharb)
 * [Docs] [`self-closing-comp`]: list empty DOM elements as incorrect ([#4049][] @ColumbusLabs)
+* [Refactor] add `getDeclaredVariables` util, and use it in [`no-unused-state`] (@ljharb)
 
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
 [#4059]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4059
