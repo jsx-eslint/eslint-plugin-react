@@ -2,7 +2,7 @@
 
 📝 Enforce a specific function type for function components.
 
-🔧 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix).
+🔧💡 This rule is automatically fixable by the [`--fix` CLI option](https://eslint.org/docs/latest/user-guide/command-line-interface#--fix) and manually fixable by [editor suggestions](https://eslint.org/docs/latest/use/core-concepts#rule-suggestions).
 
 <!-- end auto-generated rule header -->
 
@@ -164,6 +164,23 @@ export default var getComponent = function () {
 ```
 
 These patterns have to be manually fixed.
+
+## Exported function declarations
+
+A function declaration that is exported with a live binding is not autofixed. The conversion is offered as a suggestion instead:
+
+```js
+export function Component() {
+  return <div />;
+}
+
+function OtherComponent() {
+  return <div />;
+}
+export { OtherComponent };
+```
+
+A function declaration is initialized before any code in the module runs, so a module that imports it in an import cycle can call it before this module's code has run. A variable is not initialized until its declaration runs, so the converted code throws in that case. Only apply the suggestion if no import cycle uses the component before this module runs.
 
 ## Heads up, TypeScript users
 

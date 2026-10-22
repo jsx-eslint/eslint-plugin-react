@@ -878,13 +878,23 @@ ruleTester.run('function-component-definition', rule, {
           return React.createElement('div');
         }
       `,
-      output: `
+      output: null,
+      options: [{ namedComponents: 'function-expression' }],
+      errors: [
+        {
+          messageId: 'function-expression',
+          suggestions: [
+            {
+              messageId: 'suggest-function-expression',
+              output: `
         export const Hello = function(props: Test) {
           return React.createElement('div');
         }
       `,
-      options: [{ namedComponents: 'function-expression' }],
-      errors: [{ messageId: 'function-expression' }],
+            },
+          ],
+        },
+      ],
       features: ['types'],
     },
     {
@@ -1166,10 +1176,114 @@ ruleTester.run('function-component-definition', rule, {
           return <div/>;
         }
       `,
-      output: `
+      output: null,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [
+        {
+          messageId: 'arrow-function',
+          suggestions: [
+            {
+              messageId: 'suggest-arrow-function',
+              output: `
         export const Hello = (props) => {
           return <div/>;
         }
+      `,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        function Hello(props) {
+          return <div/>;
+        }
+        export { Hello };
+      `,
+      output: null,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [
+        {
+          messageId: 'arrow-function',
+          suggestions: [
+            {
+              messageId: 'suggest-arrow-function',
+              output: `
+        const Hello = (props) => {
+          return <div/>;
+        }
+        export { Hello };
+      `,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        export { Hello };
+        function Hello(props) {
+          return <div/>;
+        }
+      `,
+      output: null,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [
+        {
+          messageId: 'arrow-function',
+          suggestions: [
+            {
+              messageId: 'suggest-arrow-function',
+              output: `
+        export { Hello };
+        const Hello = (props) => {
+          return <div/>;
+        }
+      `,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        function Hello(props) {
+          return <div/>;
+        }
+        export { Hello as default };
+      `,
+      output: null,
+      options: [{ namedComponents: 'arrow-function' }],
+      errors: [
+        {
+          messageId: 'arrow-function',
+          suggestions: [
+            {
+              messageId: 'suggest-arrow-function',
+              output: `
+        const Hello = (props) => {
+          return <div/>;
+        }
+        export { Hello as default };
+      `,
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: `
+        function Hello(props) {
+          return <div/>;
+        }
+        export default Hello;
+      `,
+      output: `
+        const Hello = (props) => {
+          return <div/>;
+        }
+        export default Hello;
       `,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
