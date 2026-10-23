@@ -523,6 +523,17 @@ ruleTester.run('boolean-prop-naming', rule, {
           .replace('/** @jsxImportSource @fluentui/react-jsx-runtime */', '');
       `,
     },
+    {
+      code: `
+        import React, { forwardRef } from 'react';
+        type Props = {
+          isEnabled: boolean
+        };
+        const Hello = forwardRef<HTMLDivElement, Props>((props, ref) => <div ref={ref} />);
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['ts', 'no-ts-old', 'no-babel-old'],
+    },
   ]),
 
   invalid: parsers.all([
@@ -1565,6 +1576,83 @@ ruleTester.run('boolean-prop-naming', rule, {
       `,
       options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
       features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        import React, { forwardRef } from 'react';
+        type Props = {
+          enabled: boolean
+        };
+        const Hello = forwardRef<HTMLDivElement, Props>((props, ref) => <div ref={ref} />);
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['ts', 'no-ts-old', 'no-babel-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        import React from 'react';
+        type Props = {
+          enabled: boolean
+        };
+        const Hello = React.memo<Props>((props) => <div />);
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['ts', 'no-ts-old', 'no-babel-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        import React, { forwardRef, memo } from 'react';
+        type Props = {
+          enabled: boolean
+        };
+        const Hello = memo(forwardRef<HTMLDivElement, Props>((props, ref) => <div ref={ref} />));
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['ts', 'no-ts-old', 'no-babel-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        import React, { memo } from 'react';
+        const Hello = memo<{ enabled: boolean }>((props) => <div />);
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['ts', 'no-ts-old', 'no-babel-old'],
       errors: [
         {
           messageId: 'patternMismatch',
