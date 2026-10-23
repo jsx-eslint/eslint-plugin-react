@@ -51,6 +51,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`function-component-definition`]: suggest, rather than autofix, converting function declarations exported with a live binding, which can break import cycles (@ljharb)
 * [`function-component-definition`]: suggest, rather than autofix, converting function declarations used inside other functions that may run before them (@ljharb)
 * [`boolean-prop-naming`]: check type-annotated props of function components wrapped in `memo`/`forwardRef`, and of function expressions ([#4055][] @ybai08)
+* [`boolean-prop-naming`]: report a prop once, when components share its props type (@ljharb)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)

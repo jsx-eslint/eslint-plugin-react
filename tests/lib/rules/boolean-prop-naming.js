@@ -1534,5 +1534,46 @@ ruleTester.run('boolean-prop-naming', rule, {
         },
       ],
     },
+    {
+      code: `
+        type Props = {
+          enabled: boolean
+        };
+        const Hello = (props: Props) => <div />;
+        const Goodbye = (props: Props) => <div />;
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        import React, { memo } from 'react';
+        type Props = {
+          enabled: boolean
+        };
+        const Hello = memo((props: Props) => <div />);
+        const Goodbye = memo((props: Props) => <div />);
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
+        },
+      ],
+    },
   ]),
 });
