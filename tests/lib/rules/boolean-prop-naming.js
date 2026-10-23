@@ -420,6 +420,16 @@ ruleTester.run('boolean-prop-naming', rule, {
       code: `
         type Props = {
           isEnabled: boolean
+        }
+        const HelloNew = React.memo((props: Props) => <div />);
+      `,
+      options: [{ rule: '^is[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types'],
+    },
+    {
+      code: `
+        type Props = {
+          isEnabled: boolean
         } & OtherProps
         const HelloNew = (props: Props) => { return <div /> };
       `,
@@ -1378,6 +1388,147 @@ ruleTester.run('boolean-prop-naming', rule, {
           messageId: 'patternMismatch',
           data: {
             propName: 'semi',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        import React, { memo } from 'react';
+        type Props = {
+          enabled: boolean
+        };
+        const Hello = memo((props: Props) => <div />);
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        import React from 'react';
+        type Props = {
+          enabled: boolean
+        };
+        const Hello = React.memo((props: Props) => <div />);
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        import React, { forwardRef } from 'react';
+        type Props = {
+          enabled: boolean
+        };
+        const Hello = forwardRef((props: Props, ref) => <div ref={ref} />);
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        import React from 'react';
+        type Props = {
+          enabled: boolean
+        };
+        const Hello = React.memo(React.forwardRef((props: Props, ref) => <div ref={ref} />));
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        import React, { memo } from 'react';
+        type Props = {
+          enabled: boolean
+        };
+        const Hello = memo(function Hello(props: Props) { return <div />; });
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        import React from 'react';
+        type Props = {
+          enabled: boolean
+        };
+        const Hello = function (props: Props) { return <div />; };
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
+            pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
+          },
+        },
+      ],
+    },
+    {
+      code: `
+        import React, { memo } from 'react';
+        type Props = {
+          enabled: boolean
+        };
+        function Hello(props: Props) { return <div />; }
+        export default memo(Hello);
+      `,
+      options: [{ rule: '^(is|has)[A-Z]([A-Za-z0-9]?)+' }],
+      features: ['types', 'no-ts-old'],
+      errors: [
+        {
+          messageId: 'patternMismatch',
+          data: {
+            propName: 'enabled',
             pattern: '^(is|has)[A-Z]([A-Za-z0-9]?)+',
           },
         },
