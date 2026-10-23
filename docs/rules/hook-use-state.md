@@ -57,7 +57,7 @@ export default function useColor() {
 
 ```js
 ...
-"react/hook-use-state": [<enabled>, { "allowDestructuredState": <boolean> }]
+"react/hook-use-state": [<enabled>, { "allowDestructuredState": <boolean>, "allowMissingSetter": <boolean> }]
 ...
 ```
 
@@ -70,4 +70,15 @@ Examples of **correct** code for this rule, when configured with `{ "allowDestru
 ```jsx
 import React from 'react';
 const [{foo, bar, baz}, setFooBarBaz] = React.useState({foo: "bbb", bar: "aaa", baz: "qqq"})
+```
+
+### `allowMissingSetter`
+
+When `true` the rule will allow a `useState` call destructured into a value only, without a setter. This is useful for state that is initialized once and never updated, where `useMemo` is not an option because React may discard its cached value.
+
+Examples of **correct** code for this rule, when configured with `{ "allowMissingSetter": true }`:
+
+```jsx
+import React from 'react';
+const [eventBus] = React.useState(() => new EventEmitter())
 ```

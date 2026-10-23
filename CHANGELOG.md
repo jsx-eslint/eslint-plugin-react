@@ -14,6 +14,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-sort-props`]: add `sortFirst` option ([#3965][] @loderunner)
 * [`jsx-no-literals`]: add `restrictedAttributes` option ([#3950][] @ushiboy)
 * [`forbid-dom-props`]: Add `disallowedValues` option for forbidden props ([#3877][] @makxca, [#4059][] @nk-batman21)
+* [`hook-use-state`]: add `allowMissingSetter` option ([#3871][] @ozenyunus35)
 
 ### Fixed
 * [`jsx-no-literals`]: avoid crash on variable declarations without an initializer ([#4044][] @Aryan007-dev)
@@ -90,6 +91,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3926]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3926
 [#3923]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3923
 [#3877]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3877
+[#3871]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3871
 [#3729]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3729
 [#3441]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3441
 
