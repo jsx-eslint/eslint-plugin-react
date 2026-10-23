@@ -1530,8 +1530,7 @@ ruleTester.run('function-component-definition', rule, {
       `,
       options: [{ namedComponents: 'arrow-function' }],
       errors: [{ messageId: 'arrow-function' }],
-      // babel-eslint has no scope for class field initializers, so this conservatively skips the autofix
-      features: ['class fields', 'no-babel-old'],
+      features: ['class fields'],
     },
     {
       code: `
