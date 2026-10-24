@@ -50,6 +50,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`function-component-definition`]: do not autofix declarations used before they are defined ([#4054][] @devtechedge)
 * [`function-component-definition`]: suggest, rather than autofix, converting function declarations exported with a live binding, which can break import cycles (@ljharb)
 * [`function-component-definition`]: suggest, rather than autofix, converting function declarations used inside other functions that may run before them (@ljharb)
+* [`static-property-placement`]: do not report a type-annotated `context` instance field as `contextTypes` ([#3467][] @b84330808)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -91,6 +92,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3923]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3923
 [#3877]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3877
 [#3729]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3729
+[#3467]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3467
 [#3441]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3441
 
 ## [7.37.5] - 2025.04.03
