@@ -474,7 +474,7 @@ ruleTester.run('static-property-placement', rule, {
           declare context: React.ContextType<typeof MyContext>;
         }
       `,
-      features: ['ts'],
+      features: ['ts', 'no-babel'],
     },
     {
       code: `
@@ -486,7 +486,7 @@ ruleTester.run('static-property-placement', rule, {
         }
       `,
       options: [STATIC_PUBLIC_FIELD],
-      features: ['ts'],
+      features: ['ts', 'no-babel'],
     },
     {
       code: `
