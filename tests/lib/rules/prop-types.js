@@ -3611,6 +3611,60 @@ ruleTester.run('prop-types', rule, {
     },
     {
       code: `
+        import React, { memo } from 'react'
+
+        type IfooProps = { e: string, f: number };
+        const Foo = memo<IfooProps>(({ e, f }) => {
+          return <div>{e} {f}</div>;
+        });
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from 'react'
+
+        interface IfooProps { e: string }
+        const Foo = React.memo<IfooProps>((props) => {
+          return <div>{props.e}</div>;
+        });
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { memo } from 'react'
+
+        type IfooProps = { e: string };
+        const Foo = memo<IfooProps>(function Foo({ e }) {
+          return <div>{e}</div>;
+        });
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { memo } from 'react'
+
+        type IfooProps = { e: string };
+        const Foo = memo<IfooProps>(({ e }) => <div>{e}</div>, (prev, next) => prev.e === next.e);
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { memo } from 'react'
+
+        type IfooProps = { e: string };
+        function Bar({ l }: { l: string }) {
+          const Foo = memo<IfooProps>(Baz, (prev, next) => prev.e === next.e);
+          return <div>{l}</div>;
+        }
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
         import React from 'react'
 
         class Factory {
@@ -8910,6 +8964,72 @@ ruleTester.run('prop-types', rule, {
           const { l } = props;
           return  <div ref={ref}>hello</div>;
         });
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'l' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { memo } from 'react'
+
+        type IfooProps = { e: string };
+        const Foo = memo<IfooProps>(({ e, l }) => {
+          return <div>{e} {l}</div>;
+        });
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'l' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from 'react'
+
+        interface IfooProps { e: string }
+        const Foo = React.memo<IfooProps>((props) => {
+          return <div>{props.e} {props.l}</div>;
+        });
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'l' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { memo } from 'react'
+
+        type IfooProps = { e: string };
+        const Foo = memo<IfooProps>(function Foo({ e, l }) {
+          return <div>{e} {l}</div>;
+        });
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'l' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React, { memo } from 'react'
+
+        type IfooProps = { e: string };
+        const Foo = memo<IfooProps>(({ e, l }) => <div>{e} {l}</div>, (prev, next) => prev.e === next.e);
       `,
       errors: [
         {
