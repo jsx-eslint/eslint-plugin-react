@@ -14,7 +14,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-sort-props`]: add `sortFirst` option ([#3965][] @loderunner)
 * [`jsx-no-literals`]: add `restrictedAttributes` option ([#3950][] @ushiboy)
 * [`forbid-dom-props`]: Add `disallowedValues` option for forbidden props ([#3877][] @makxca, [#4059][] @nk-batman21)
-* [`prop-types`]: support `memo<Props>` type arguments ([#NNNN][] @dgesteves)
+* [`prop-types`]: support `memo<Props>` type arguments ([#4063][] @dgesteves)
 
 ### Fixed
 * [`jsx-no-literals`]: avoid crash on variable declarations without an initializer ([#4044][] @Aryan007-dev)
@@ -68,7 +68,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`jsx-no-leaked-render`]: document `Boolean()` as a valid coercion ([#4064][] @dgesteves)
 
 [#4064]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4064
-[#NNNN]: https://github.com/jsx-eslint/eslint-plugin-react/pull/NNNN
+[#4063]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4063
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
 [#4059]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4059
 [#4055]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4055
