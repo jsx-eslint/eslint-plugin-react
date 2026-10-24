@@ -36,7 +36,7 @@ const Example = () => {
 
 This can be avoided by:
 
-- coercing the conditional to a boolean: `{!!someValue && <Something />}`
+- coercing the conditional to a boolean: `{!!someValue && <Something />}` or `{Boolean(someValue) && <Something />}`
 - transforming the binary expression into a ternary expression which returns `null` for falsy values: `{someValue ? <Something /> : null}`
 
 This rule is autofixable; check the Options section to read more about the different strategies available.
@@ -209,7 +209,7 @@ With `ignoreAttributes: true`, logical expressions in non-children attributes li
 
 ### `validStrategies`
 
-An array containing `"coerce"`, `"ternary"`, or both (default: `["ternary", "coerce"]`) - Decide which strategies are considered valid to prevent leaked renders (at least 1 is required). The "coerce" option will transform the conditional of the JSX expression to a boolean. The "ternary" option transforms the binary expression into a ternary expression returning `null` for falsy values. The first option from the array will be the strategy used when autofixing, so the order of the values matters.
+An array containing `"coerce"`, `"ternary"`, or both (default: `["ternary", "coerce"]`) - Decide which strategies are considered valid to prevent leaked renders (at least 1 is required). The "coerce" option will transform the conditional of the JSX expression to a boolean; `!!value` and `Boolean(value)` are both accepted, and autofixing uses `!!`. The "ternary" option transforms the binary expression into a ternary expression returning `null` for falsy values. The first option from the array will be the strategy used when autofixing, so the order of the values matters.
 
 It can be set like:
 
@@ -234,6 +234,12 @@ const Component = ({ count, title }) => {
 ```jsx
 const Component = ({ count, title }) => {
   return <div>{!!count && title}</div>
+}
+```
+
+```jsx
+const Component = ({ count, title }) => {
+  return <div>{Boolean(count) && title}</div>
 }
 ```
 
@@ -272,6 +278,12 @@ Examples of **correct** code for this rule, with the above configuration:
 ```jsx
 const Component = ({ count, title }) => {
   return <div>{!!count && title}</div>
+}
+```
+
+```jsx
+const Component = ({ count, title }) => {
+  return <div>{Boolean(count) && title}</div>
 }
 ```
 

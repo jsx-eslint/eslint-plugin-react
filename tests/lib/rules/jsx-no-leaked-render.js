@@ -113,6 +113,22 @@ ruleTester.run('jsx-no-leaked-render', rule, {
     {
       code: `
         const Component = ({ elements, count }) => {
+          return <div>{Boolean(count) && <List elements={elements}/>}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+    },
+    {
+      code: `
+        const Component = ({ count, somethingElse, title }) => {
+          return <div>{Boolean(count) && Boolean(somethingElse) && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+    },
+    {
+      code: `
+        const Component = ({ elements, count }) => {
           return <div>{count ? <List elements={elements}/> : null}</div>
         }
       `,
@@ -618,6 +634,24 @@ ruleTester.run('jsx-no-leaked-render', rule, {
     {
       code: `
         const Component = ({ count, title }) => {
+          return <div>{Boolean(count) && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['ternary'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+      output: `
+        const Component = ({ count, title }) => {
+          return <div>{Boolean(count) ? title : null}</div>
+        }
+      `,
+    },
+    {
+      code: `
+        const Component = ({ count, title }) => {
           return <div>{count > 0 && title}</div>
         }
       `,
@@ -911,6 +945,24 @@ ruleTester.run('jsx-no-leaked-render', rule, {
     },
     {
       code: `
+        const Component = ({ count, title }) => {
+          return <div>{Boolean(count) ? title : null}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+      output: `
+        const Component = ({ count, title }) => {
+          return <div>{Boolean(count) && title}</div>
+        }
+      `,
+    },
+    {
+      code: `
         const Component = ({ count, somethingElse, title }) => {
           return <div>{count && somethingElse ? title : null}</div>
         }
@@ -942,6 +994,24 @@ ruleTester.run('jsx-no-leaked-render', rule, {
       output: `
         const Component = ({ items, somethingElse, title }) => {
           return <div>{items.length > 0 && !!somethingElse && title}</div>
+        }
+      `,
+    },
+    {
+      code: `
+        const Component = ({ count, somethingElse, title }) => {
+          return <div>{Boolean(count) && somethingElse && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+      output: `
+        const Component = ({ count, somethingElse, title }) => {
+          return <div>{Boolean(count) && !!somethingElse && title}</div>
         }
       `,
     },
