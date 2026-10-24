@@ -60,9 +60,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Perf] `jsx-sort-props`: build the autofix once per element (@ljharb)
 * [Docs] [`self-closing-comp`]: list empty DOM elements as incorrect ([#4049][] @ColumbusLabs)
 * [Refactor] add `getDeclaredVariables` util, and use it in [`no-unused-state`] (@ljharb)
-* [Docs] [`jsx-no-leaked-render`]: document `Boolean()` as a valid coercion ([#NNNN][] @dgesteves)
+* [Docs] [`jsx-no-leaked-render`]: document `Boolean()` as a valid coercion ([#4064][] @dgesteves)
 
-[#NNNN]: https://github.com/jsx-eslint/eslint-plugin-react/pull/NNNN
+[#4064]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4064
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
 [#4059]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4059
 [#4052]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4052
