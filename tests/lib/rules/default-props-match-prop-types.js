@@ -808,7 +808,7 @@ ruleTester.run('default-props-match-prop-types', rule, {
     {
       code: 'class Hello extends React.Component { static ["propTypes"] = { foo: PropTypes.string }; static ["defaultProps"] = { extra: 1 }; render() { return null; } }',
       features: ['class fields', 'no-ts'],
-      errors: [{ messageId: 'defaultHasNoType' }],
+      errors: [{ messageId: 'defaultHasNoType', data: { name: 'extra' } }],
     },
     // stateless components
     {
