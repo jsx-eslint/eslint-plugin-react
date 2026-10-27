@@ -275,6 +275,38 @@ ruleTester.run('jsx-no-leaked-render', rule, {
       `,
       options: [{ validStrategies: ['coerce'], ignoreAttributes: true }],
     },
+    {
+      code: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{typeof x && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+    },
+    {
+      code: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{void x && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+    },
+    {
+      code: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{'a' in obj && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+    },
+    {
+      code: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{x instanceof Map && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+    },
   ]) || [],
 
   invalid: parsers.all([].concat(
@@ -1443,6 +1475,152 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         line: 5,
         column: 27,
       }],
+    },
+    {
+      code: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{getCount() && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+      output: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{!!getCount() && title}</div>
+        }
+      `,
+    },
+    {
+      code: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{Number(count) && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+      output: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{!!Number(count) && title}</div>
+        }
+      `,
+    },
+    {
+      code: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{String(x) && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+      output: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{!!String(x) && title}</div>
+        }
+      `,
+    },
+    {
+      code: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{-count && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+      output: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{!!-count && title}</div>
+        }
+      `,
+    },
+    {
+      code: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{count + 1 && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+      output: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{!!(count + 1) && title}</div>
+        }
+      `,
+    },
+    {
+      code: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{a | count && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+      output: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{!!(a | count) && title}</div>
+        }
+      `,
+    },
+    {
+      code: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{Boolean(a) && getCount() && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+      output: `
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{Boolean(a) && !!getCount() && title}</div>
+        }
+      `,
+    },
+    {
+      code: `
+        const Boolean = (value) => value;
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{Boolean(count) && title}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 4,
+        column: 24,
+      }],
+      output: `
+        const Boolean = (value) => value;
+        const Component = ({ count, title, x, a, obj }) => {
+          return <div>{!!Boolean(count) && title}</div>
+        }
+      `,
     }
   )),
 });

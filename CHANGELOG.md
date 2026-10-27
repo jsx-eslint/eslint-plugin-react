@@ -53,6 +53,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`boolean-prop-naming`]: check type-annotated props of function components wrapped in `memo`/`forwardRef`, and of function expressions ([#4055][] @ybai08)
 * [`boolean-prop-naming`]: report a prop once, when components share its props type (@ljharb)
 * [`boolean-prop-naming`]: check props typed with a `memo`/`forwardRef` type argument, like `forwardRef<Ref, Props>` (@ljharb)
+* [`jsx-no-leaked-render`]: only treat `Boolean()` calls, comparisons, and boolean unary operators as coerced, not other calls or arithmetic that can render `0` (@ljharb)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)

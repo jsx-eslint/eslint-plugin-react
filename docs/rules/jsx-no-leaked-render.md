@@ -209,7 +209,7 @@ With `ignoreAttributes: true`, logical expressions in non-children attributes li
 
 ### `validStrategies`
 
-An array containing `"coerce"`, `"ternary"`, or both (default: `["ternary", "coerce"]`) - Decide which strategies are considered valid to prevent leaked renders (at least 1 is required). The "coerce" option will transform the conditional of the JSX expression to a boolean; `!!value` and `Boolean(value)` are both accepted. Autofixing uses `!!`: since it is syntax, unlike `Boolean`, it cannot be shadowed or overwritten, which makes it much more robust. The "ternary" option transforms the binary expression into a ternary expression returning `null` for falsy values. The first option from the array will be the strategy used when autofixing, so the order of the values matters.
+An array containing `"coerce"`, `"ternary"`, or both (default: `["ternary", "coerce"]`) - Decide which strategies are considered valid to prevent leaked renders (at least 1 is required). The "coerce" option will transform the conditional of the JSX expression to a boolean; `!!value` and `Boolean(value)` are both accepted. Other function calls, like `Number(value)`, and arithmetic, like `value + 1`, are not, since they can produce a value like `0` that would be rendered. Autofixing uses `!!`: since it is syntax, unlike `Boolean`, it cannot be shadowed or overwritten, which makes it much more robust. The "ternary" option transforms the binary expression into a ternary expression returning `null` for falsy values. The first option from the array will be the strategy used when autofixing, so the order of the values matters.
 
 It can be set like:
 
