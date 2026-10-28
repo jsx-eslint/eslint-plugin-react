@@ -86,7 +86,7 @@ describe('Version', () => {
       assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
 
       expectedErrorArgs = [
-        ['Warning: React version specified in eslint-plugin-react-settings must be a valid semver version, or "detect"; got “not semver”. Falling back to latest version as default.'],
+        ['Warning: default React version specified in eslint-plugin-react-settings must be a valid semver version; got "not semver". Falling back to latest version as default.'],
         ['Warning: React version was set to "detect" in eslint-plugin-react settings, but the "react" package is not installed. Assuming latest React version for linting.'],
       ];
 
