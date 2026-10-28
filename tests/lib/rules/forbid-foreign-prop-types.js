@@ -29,6 +29,19 @@ const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('forbid-foreign-prop-types', rule, {
   valid: parsers.all([
     {
+      code: 'Foo["propTypes"] = { a: Bar["propTypes"].a };',
+      options: [{ allowInPropTypes: true }],
+    },
+    {
+      code: 'class Foo extends React.Component { static ["propTypes"] = { a: Bar["propTypes"].a }; }',
+      features: ['class fields', 'no-ts'],
+      options: [{ allowInPropTypes: true }],
+    },
+    {
+      code: 'const name = "propTypes"; Foo[name] = { a: Bar[name].a };',
+      options: [{ allowInPropTypes: true }],
+    },
+    {
       code: 'import { propTypes } from "SomeComponent";',
     },
     {
@@ -85,6 +98,10 @@ ruleTester.run('forbid-foreign-prop-types', rule, {
   ]),
 
   invalid: parsers.all([
+    {
+      code: 'const value = Bar["propTypes"];',
+      errors: [{ messageId: 'forbiddenPropType', type: 'Literal' }],
+    },
     {
       code: `
         var Foo = createReactClass({

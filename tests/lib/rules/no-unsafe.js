@@ -30,6 +30,10 @@ const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-unsafe', rule, {
   valid: parsers.all([
     {
+      code: 'class Foo extends React.Component { [UNSAFE_componentWillMount]() {} }',
+      settings: { react: { version: '16.3.0' } },
+    },
+    {
       code: `
         class Foo extends React.Component {
           componentDidUpdate() {}
@@ -132,6 +136,18 @@ ruleTester.run('no-unsafe', rule, {
   ]),
 
   invalid: parsers.all([
+    {
+      code: 'class Foo extends React.Component { ["UNSAFE_componentWillMount"]() {} }',
+      settings: { react: { version: '16.3.0' } },
+      errors: [{
+        messageId: 'unsafeMethod',
+        data: {
+          method: 'UNSAFE_componentWillMount',
+          newMethod: 'componentDidMount',
+          details: 'See https://reactjs.org/blog/2018/03/27/update-on-async-rendering.html.',
+        },
+      }],
+    },
     // React.Component
     {
       code: `
