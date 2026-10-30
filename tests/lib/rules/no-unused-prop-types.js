@@ -3976,6 +3976,35 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
     },
+    {
+      // https://github.com/jsx-eslint/eslint-plugin-react/issues/3403
+      code: `
+        const App = React.memo(({ showFirst }) => {
+          const renderFirst = () => <div>First</div>;
+          const renderSecond = () => <div>Second</div>;
+
+          return showFirst ? renderFirst() : renderSecond();
+        });
+        App.propTypes = {
+          showFirst: PropTypes.bool.isRequired,
+        };
+      `,
+    },
+    {
+      code: `
+        import { memo } from 'react';
+
+        const App = memo(({ showFirst }) => {
+          const renderFirst = () => <div>First</div>;
+          const renderSecond = () => <div>Second</div>;
+
+          return showFirst ? renderFirst() : renderSecond();
+        });
+        App.propTypes = {
+          showFirst: PropTypes.bool.isRequired,
+        };
+      `,
+    },
   ]),
 
   invalid: parsers.all([].concat(
