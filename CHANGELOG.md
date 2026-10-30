@@ -63,7 +63,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Perf] `jsx-sort-props`: build the autofix once per element (@ljharb)
 * [Docs] [`self-closing-comp`]: list empty DOM elements as incorrect ([#4049][] @ColumbusLabs)
 * [Refactor] add `getDeclaredVariables` util, and use it in [`no-unused-state`] (@ljharb)
+* [Tests] [`no-unused-prop-types`]: add regression tests for `memo` components ([#4065][] @SwastikTripathi)
 
+[#4065]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4065
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
 [#4059]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4059
 [#4055]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4055
