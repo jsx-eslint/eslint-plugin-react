@@ -312,7 +312,6 @@ ruleTester.run('jsx-no-bind', rule, {
           }
         };
       `,
-      errors: [],
     },
   ]),
 
