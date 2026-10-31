@@ -72,6 +72,9 @@ const parsers = {
       }
       if ('parser' in test) {
         delete test.features;
+        if (test.parser === parsers.TYPESCRIPT_ESLINT && (semver.satisfies(version, '>= 10') || semver.satisfies(tsParserVersion, '>= 6'))) {
+          return [];
+        }
         return test;
       }
       const features = new Set([].concat(test.features || []));
