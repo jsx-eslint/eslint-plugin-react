@@ -66,6 +66,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`self-closing-comp`]: list empty DOM elements as incorrect ([#4049][] @ColumbusLabs)
 * [Refactor] add `getDeclaredVariables` util, and use it in [`no-unused-state`] (@ljharb)
 * [Docs] [`jsx-no-leaked-render`]: document `Boolean()` as a valid coercion ([#4064][] @dgesteves)
+* [Refactor] [`jsx-sort-props`]: remove the comment handling that ambiguous comments no longer reach (@ljharb)
 
 [#4064]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4064
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
