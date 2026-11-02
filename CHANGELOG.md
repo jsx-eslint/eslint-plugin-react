@@ -58,6 +58,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-danger-with-children`]: report children when the JSX spans lines (@ljharb)
 * [`no-children-prop`]: report a function child when the JSX spans lines ([#4033][] @ckarnell)
 * [`prop-types`]: do not treat an inline callback's own `props` parameter as component props ([#4034][] @ckarnell)
+* [`no-unknown-property`]: allow `onAnimationIterationCapture` (@ljharb)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
