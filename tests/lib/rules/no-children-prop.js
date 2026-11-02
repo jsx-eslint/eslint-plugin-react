@@ -172,6 +172,25 @@ ruleTester.run('no-children-prop', rule, {
       code: 'React.createElement(MyComponent, {children: function* () {}});',
       options: [{ allowFunctions: true }],
     },
+    {
+      code: '<MyComponent>\n  {data}\n</MyComponent>;',
+      options: [{ allowFunctions: true }],
+    },
+    {
+      code: '<MyComponent>\n  Text\n  {() => {}}\n</MyComponent>;',
+      options: [{ allowFunctions: true }],
+    },
+    {
+      code: '<MyComponent>\n  {() => {}}\n  {() => {}}\n</MyComponent>;',
+      options: [{ allowFunctions: true }],
+    },
+    {
+      code: '<MyComponent> {() => {}}</MyComponent>;',
+      options: [{ allowFunctions: true }],
+    },
+    {
+      code: '<MyComponent>\n  {() => {}}\n</MyComponent>;',
+    },
   ]),
   invalid: parsers.all([
     {
@@ -251,6 +270,31 @@ ruleTester.run('no-children-prop', rule, {
     },
     {
       code: '<MyComponent>{function* () {}}</MyComponent>;',
+      options: [{ allowFunctions: true }],
+      errors: [{ messageId: 'nestFunction' }],
+    },
+    {
+      code: '<MyComponent>\n  {data => data.value}\n</MyComponent>;',
+      options: [{ allowFunctions: true }],
+      errors: [{ messageId: 'nestFunction' }],
+    },
+    {
+      code: '<MyComponent>\n  {/* a comment */}\n  {() => {}}\n</MyComponent>;',
+      options: [{ allowFunctions: true }],
+      errors: [{ messageId: 'nestFunction' }],
+    },
+    {
+      code: '<MyComponent>\n  {() => {}}</MyComponent>;',
+      options: [{ allowFunctions: true }],
+      errors: [{ messageId: 'nestFunction' }],
+    },
+    {
+      code: '<MyComponent>{() => {}}\n</MyComponent>;',
+      options: [{ allowFunctions: true }],
+      errors: [{ messageId: 'nestFunction' }],
+    },
+    {
+      code: '<MyComponent>\n  {function() {}}\n</MyComponent>;',
       options: [{ allowFunctions: true }],
       errors: [{ messageId: 'nestFunction' }],
     },
