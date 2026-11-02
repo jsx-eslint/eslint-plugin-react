@@ -102,4 +102,28 @@ describe('jsxUtil', () => {
       assert(!isReturningJSX(() => false, arrowFunctionExpression, mockContext));
     });
   });
+
+  describe('isLineBreak', () => {
+    const getChildren = (code) => espree.parse(code, Object.assign({}, DEFAULT_CONFIG, { loc: true })).body[0].expression.children;
+
+    it('is true for whitespace that spans lines', () => {
+      const children = getChildren('<div>\n  {a}\n</div>');
+      assert.deepStrictEqual(children.map(jsxUtil.isLineBreak), [true, false, true]);
+    });
+
+    it('is false for whitespace on one line', () => {
+      const children = getChildren('<div> {a}</div>');
+      assert.deepStrictEqual(children.map(jsxUtil.isLineBreak), [false, false]);
+    });
+
+    it('is false for text that spans lines', () => {
+      const children = getChildren('<div>\n  text\n</div>');
+      assert.deepStrictEqual(children.map(jsxUtil.isLineBreak), [false]);
+    });
+
+    it('is false for elements', () => {
+      const children = getChildren('<div><span /></div>');
+      assert.deepStrictEqual(children.map(jsxUtil.isLineBreak), [false]);
+    });
+  });
 });

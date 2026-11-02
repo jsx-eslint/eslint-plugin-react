@@ -67,6 +67,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] add `getDeclaredVariables` util, and use it in [`no-unused-state`] (@ljharb)
 * [Docs] [`jsx-no-leaked-render`]: document `Boolean()` as a valid coercion ([#4064][] @dgesteves)
 * [Refactor] [`jsx-sort-props`]: remove the comment handling that ambiguous comments no longer reach (@ljharb)
+* [Refactor] add `isLineBreak` jsx util, and use it in [`no-danger-with-children`] (@ljharb)
 
 [#4064]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4064
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
