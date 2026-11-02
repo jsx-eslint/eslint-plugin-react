@@ -126,4 +126,18 @@ describe('jsxUtil', () => {
       assert.deepStrictEqual(children.map(jsxUtil.isLineBreak), [false]);
     });
   });
+
+  describe('isEmptyExpressionContainer', () => {
+    const getChildren = (code) => espree.parse(code, Object.assign({}, DEFAULT_CONFIG, { comment: true })).body[0].expression.children;
+
+    it('is true for a JSX comment, and an empty expression', () => {
+      const children = getChildren('<div>{/* comment */}{}</div>');
+      assert.deepStrictEqual(children.map(jsxUtil.isEmptyExpressionContainer), [true, true]);
+    });
+
+    it('is false for an expression, text, and an element', () => {
+      const children = getChildren('<div>{a}text<span /></div>');
+      assert.deepStrictEqual(children.map(jsxUtil.isEmptyExpressionContainer), [false, false, false]);
+    });
+  });
 });

@@ -100,6 +100,20 @@ ruleTester.run('no-danger-with-children', rule, {
         const component = shallow(<TaskEditableTitle {...props} />);
       `,
     },
+    {
+      code: `
+        <div dangerouslySetInnerHTML={{ __html: "HTML" }}>
+          {/* a comment */}
+        </div>
+      `,
+    },
+    {
+      code: `
+        <div dangerouslySetInnerHTML={{ __html: "HTML" }}>
+          {}
+        </div>
+      `,
+    },
   ]),
   invalid: parsers.all([
     {
@@ -208,6 +222,31 @@ ruleTester.run('no-danger-with-children', rule, {
         const otherProps = { ...moreProps };
         const props = { ...otherProps, dangerouslySetInnerHTML: { __html: "HTML" } };
         React.createElement("div", props);
+      `,
+      errors: [{ messageId: 'dangerWithChildren' }],
+    },
+    {
+      code: `
+        <div dangerouslySetInnerHTML={{ __html: "HTML" }}>
+          {children}
+        </div>
+      `,
+      errors: [{ messageId: 'dangerWithChildren' }],
+    },
+    {
+      code: `
+        <div dangerouslySetInnerHTML={{ __html: "HTML" }}>
+          <span />
+        </div>
+      `,
+      errors: [{ messageId: 'dangerWithChildren' }],
+    },
+    {
+      code: `
+        <div dangerouslySetInnerHTML={{ __html: "HTML" }}>
+          {/* a comment */}
+          {children}
+        </div>
       `,
       errors: [{ messageId: 'dangerWithChildren' }],
     },
