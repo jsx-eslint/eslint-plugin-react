@@ -62,6 +62,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * version settings: use curly quotes, and name the plugin's settings consistently, in warnings (@ljharb)
 * version settings: clarify the error for an invalid `defaultVersion`, and suggest setting `version` to “detect” ([#4041][] @Manya72)
 * [`prop-types`]: do not treat a nested component's destructured props as the enclosing component's props ([#4057][] @imove0n)
+* [`static-property-placement`]: do not report a type-annotated `props` instance field as `propTypes` (@ljharb)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
