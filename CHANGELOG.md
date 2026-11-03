@@ -61,6 +61,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-unknown-property`]: allow `onAnimationIterationCapture` (@ljharb)
 * version settings: use curly quotes, and name the plugin's settings consistently, in warnings (@ljharb)
 * version settings: clarify the error for an invalid `defaultVersion`, and suggest setting `version` to “detect” ([#4041][] @Manya72)
+* [`prop-types`]: do not treat a nested component's destructured props as the enclosing component's props ([#4057][] @imove0n)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -79,6 +80,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#4064]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4064
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
 [#4059]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4059
+[#4057]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4057
 [#4055]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4055
 [#4052]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4052
 [#4049]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4049
