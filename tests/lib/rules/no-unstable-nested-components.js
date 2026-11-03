@@ -359,6 +359,17 @@ ruleTester.run('no-unstable-nested-components', rule, {
     },
     {
       code: `
+        function _createTestComponent() {
+          function TestComponent() {
+            return <div />;
+          }
+
+          return <TestComponent />;
+        }
+      `,
+    },
+    {
+      code: `
         function ParentComponent() {
           return (
             <ComponentWithProps footer={() => <div />} />
@@ -633,6 +644,30 @@ ruleTester.run('no-unstable-nested-components', rule, {
         }
       `,
       errors: [{ message: ERROR_MESSAGE }],
+    },
+    {
+      code: `
+        function _ParentComponent() {
+          function UnstableNestedFunctionComponent() {
+            return <div />;
+          }
+
+          return <UnstableNestedFunctionComponent />;
+        }
+      `,
+      errors: [{ message: ERROR_MESSAGE.replace('“ParentComponent”', '“_ParentComponent”') }],
+    },
+    {
+      code: `
+        const __ParentComponent = () => {
+          function UnstableNestedFunctionComponent() {
+            return <div />;
+          }
+
+          return <UnstableNestedFunctionComponent />;
+        };
+      `,
+      errors: [{ message: ERROR_MESSAGE.replace('“ParentComponent”', '“__ParentComponent”') }],
     },
     {
       code: `

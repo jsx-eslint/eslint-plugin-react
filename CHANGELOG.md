@@ -59,6 +59,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-children-prop`]: report a function child when the JSX spans lines ([#4033][] @ckarnell)
 * [`prop-types`]: do not treat an inline callback's own `props` parameter as component props ([#4034][] @ckarnell)
 * [`no-unknown-property`]: allow `onAnimationIterationCapture` (@ljharb)
+* [`no-unstable-nested-components`]: detect components nested in parents whose name starts with an underscore ([#4069][] [#4002][])
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -74,6 +75,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] add `isLineBreak` jsx util, and use it in [`no-danger-with-children`] (@ljharb)
 * [Refactor] `function-component-definition`/`jsx-no-constructed-context-values`: add `resolveVariable` util, and use it (@ljharb)
 
+[#4069]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4069
 [#4064]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4064
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
 [#4059]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4059
@@ -93,6 +95,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#4028]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4028
 [#4017]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4017
 [#4011]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4011
+[#4002]: https://github.com/jsx-eslint/eslint-plugin-react/issues/4002
 [#4001]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4001
 [#3986]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3986
 [#3978]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3978
