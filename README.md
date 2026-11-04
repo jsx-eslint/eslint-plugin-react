@@ -209,9 +209,9 @@ The schema of the `settings.react` object would be identical to that of what's a
 
 This plugin exports 3 flat configs:
 
-- `flat.all`
-- `flat.recommended`
-- `flat['jsx-runtime']`
+- `flatConfigs.all`
+- `flatConfigs.recommended`
+- `flatConfigs['jsx-runtime']`
 
 The flat configs are available via the root plugin import. They will configure the plugin under the `react/` namespace and enable JSX in [`languageOptions.parserOptions`](https://eslint.org/docs/latest/use/configure/language-options#specifying-parser-options).
 
@@ -220,8 +220,8 @@ const reactPlugin = require('eslint-plugin-react');
 
 module.exports = [
   …
-  reactPlugin.configs.flat.recommended, // This is not a plugin object, but a shareable config object
-  reactPlugin.configs.flat['jsx-runtime'], // Add this if you are using React 17+
+  reactPlugin.flatConfigs.recommended, // This is not a plugin object, but a shareable config object
+  reactPlugin.flatConfigs['jsx-runtime'], // Add this if you are using React 17+
   …
 ];
 ```
@@ -239,9 +239,9 @@ module.exports = [
   …
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-    ...reactPlugin.configs.flat.recommended,
+    ...reactPlugin.flatConfigs.recommended,
     languageOptions: {
-      ...reactPlugin.configs.flat.recommended.languageOptions,
+      ...reactPlugin.flatConfigs.recommended.languageOptions,
       globals: {
         ...globals.serviceworker,
         ...globals.browser,
@@ -262,7 +262,7 @@ module.exports = [
   …
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
-    ...reactPlugin.configs.flat.recommended,
+    ...reactPlugin.flatConfigs.recommended,
   },
   {
     files: ['**/*.{js,mjs,cjs,jsx,mjsx,ts,tsx,mtsx}'],
