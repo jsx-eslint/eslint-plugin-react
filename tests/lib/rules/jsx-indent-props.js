@@ -180,14 +180,6 @@ ruleTester.run('jsx-indent-props', rule, {
             />
           : null}
       `,
-      output: `
-        {this.props.ignoreTernaryOperatorFalse
-          ? <span
-            className="value"
-            some={{aaa}}
-          />
-          : null}
-      `,
       options: [
         {
           indentMode: 2,
@@ -286,14 +278,6 @@ ruleTester.run('jsx-indent-props', rule, {
             className="value"
             some={{aaa}}
             />
-          : null}
-      `,
-      output: `
-        {this.props.ignoreTernaryOperatorTrue
-          ? <span
-            className="value"
-            some={{aaa}}
-          />
           : null}
       `,
       options: [
