@@ -59,6 +59,11 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`no-children-prop`]: report a function child when the JSX spans lines ([#4033][] @ckarnell)
 * [`prop-types`]: do not treat an inline callback's own `props` parameter as component props ([#4034][] @ckarnell)
 * [`no-unknown-property`]: allow `onAnimationIterationCapture` (@ljharb)
+* version settings: use curly quotes, and name the plugin's settings consistently, in warnings (@ljharb)
+* version settings: clarify the error for an invalid `defaultVersion`, and suggest setting `version` to “detect” ([#4041][] @Manya72)
+* [`prop-types`]: do not treat a nested component's destructured props as the enclosing component's props ([#4057][] @imove0n)
+* [`static-property-placement`]: do not report a type-annotated `props` instance field as `propTypes` (@ljharb)
+* [`static-property-placement`]: do not report a type-annotated `context` instance field as `contextTypes` ([#4060][] @b84330808)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -73,10 +78,13 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] [`jsx-sort-props`]: remove the comment handling that ambiguous comments no longer reach (@ljharb)
 * [Refactor] add `isLineBreak` jsx util, and use it in [`no-danger-with-children`] (@ljharb)
 * [Refactor] `function-component-definition`/`jsx-no-constructed-context-values`: add `resolveVariable` util, and use it (@ljharb)
+* [Perf] `usedPropTypes`: copy a scope's prop variables only on its first write (@ljharb)
 
 [#4064]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4064
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
+[#4060]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4060
 [#4059]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4059
+[#4057]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4057
 [#4055]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4055
 [#4052]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4052
 [#4049]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4049
@@ -86,6 +94,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#4046]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4046
 [#4044]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4044
 [#4043]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4043
+[#4041]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4041
 [#4035]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4035
 [#4034]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4034
 [#4033]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4033
