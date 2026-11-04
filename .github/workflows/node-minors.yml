@@ -1,4 +1,4 @@
-name: 'Tests: node.js (4 - 18)'
+name: 'Tests: node.js (20+)'
 
 on: [pull_request, push]
 
@@ -14,7 +14,7 @@ jobs:
         with:
           versionsAsRoot: true
           type: majors
-          preset: '>=4 < 18'
+          preset: '20 || >=22'
 
   latest:
     needs: [matrix]
@@ -113,7 +113,7 @@ jobs:
       - uses: codecov/codecov-action@v3.1.5
 
   node:
-    name: 'node 4 - 17'
+    name: 'node 20+'
     needs: [latest]
     runs-on: ubuntu-latest
     steps:
