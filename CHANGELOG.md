@@ -55,6 +55,17 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`boolean-prop-naming`]: report a prop once, when components share its props type (@ljharb)
 * [`boolean-prop-naming`]: check props typed with a `memo`/`forwardRef` type argument, like `forwardRef<Ref, Props>` (@ljharb)
 * [`jsx-no-leaked-render`]: only treat `Boolean()` calls, comparisons, and boolean unary operators as coerced, not other calls or arithmetic that can render `0` (@ljharb)
+* [`jsx-sort-props`]: do not autofix props next to an ambiguous comment, on its own line or a block comment ([#4035][] @adarshx01)
+* [`no-danger-with-children`]: report children when the JSX spans lines (@ljharb)
+* [`no-children-prop`]: report a function child when the JSX spans lines ([#4033][] @ckarnell)
+* [`prop-types`]: do not treat an inline callback's own `props` parameter as component props ([#4034][] @ckarnell)
+* [`no-unknown-property`]: allow `onAnimationIterationCapture` (@ljharb)
+* version settings: use curly quotes, and name the plugin's settings consistently, in warnings (@ljharb)
+* version settings: clarify the error for an invalid `defaultVersion`, and suggest setting `version` to “detect” ([#4041][] @Manya72)
+* [`prop-types`]: do not treat a nested component's destructured props as the enclosing component's props ([#4057][] @imove0n)
+* [`static-property-placement`]: do not report a type-annotated `props` instance field as `propTypes` (@ljharb)
+* [`static-property-placement`]: do not report a type-annotated `context` instance field as `contextTypes` ([#4060][] @b84330808)
+* [`jsx-fragments`]: only treat a destructured `Fragment` as a fragment, not other components destructured from React ([#4062][] @nk-batman21)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -66,11 +77,18 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Docs] [`self-closing-comp`]: list empty DOM elements as incorrect ([#4049][] @ColumbusLabs)
 * [Refactor] add `getDeclaredVariables` util, and use it in [`no-unused-state`] (@ljharb)
 * [Docs] [`jsx-no-leaked-render`]: document `Boolean()` as a valid coercion ([#4064][] @dgesteves)
+* [Refactor] [`jsx-sort-props`]: remove the comment handling that ambiguous comments no longer reach (@ljharb)
+* [Refactor] add `isLineBreak` jsx util, and use it in [`no-danger-with-children`] (@ljharb)
+* [Refactor] `function-component-definition`/`jsx-no-constructed-context-values`: add `resolveVariable` util, and use it (@ljharb)
+* [Perf] `usedPropTypes`: copy a scope's prop variables only on its first write (@ljharb)
 
 [#4064]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4064
 [#4063]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4063
+[#4062]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4062
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
+[#4060]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4060
 [#4059]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4059
+[#4057]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4057
 [#4055]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4055
 [#4052]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4052
 [#4049]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4049
@@ -80,6 +98,10 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#4046]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4046
 [#4044]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4044
 [#4043]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4043
+[#4041]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4041
+[#4035]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4035
+[#4034]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4034
+[#4033]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4033
 [#4029]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4029
 [#4028]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4028
 [#4017]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4017

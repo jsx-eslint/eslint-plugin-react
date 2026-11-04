@@ -12,6 +12,11 @@ Some developers prefer to sort props names alphabetically to be able to find nec
 
 This rule checks all JSX components and verifies that all props are sorted alphabetically. A spread attribute resets the verification. The default configuration of the rule is case-sensitive.
 
+A `//` comment at the end of the line a prop ends on belongs to that prop, and moves with it when autofixing, as long as each prop is on its own line.
+Autofix is skipped when any other comment is next to a prop, like a comment on its own line, or a block comment.
+Those comments may belong to the line above or the line below, so moving props automatically could detach them from what they describe, or cause circular `--fix` loops.
+The props are still reported; reorder them by hand.
+
 Examples of **incorrect** code for this rule:
 
 ```jsx

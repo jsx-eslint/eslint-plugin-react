@@ -50,6 +50,7 @@ ruleTester.run('no-unknown-property', rule, {
     { code: '<div onMouseDown={this._onMouseDown}></div>;' },
     { code: '<div onScrollEnd={this._onScrollEnd}></div>;' },
     { code: '<div onScrollEndCapture={this._onScrollEndCapture}></div>;' },
+    { code: '<div onAnimationIteration={this._onAnimationIteration} onAnimationIterationCapture={this._onAnimationIterationCapture}></div>;' },
     { code: '<div onTransitionCancel={this._onTransitionCancel} onTransitionEnd={this._onTransitionEnd} onTransitionRun={this._onTransitionRun} onTransitionStart={this._onTransitionStart} onTransitionCancelCapture={this._onTransitionCancelCapture} onTransitionEndCapture={this._onTransitionEndCapture} onTransitionRunCapture={this._onTransitionRunCapture} onTransitionStartCapture={this._onTransitionStartCapture}></div>;' },
     { code: '<a href="someLink" download="foo">Read more</a>' },
     { code: '<area download="foo" />' },

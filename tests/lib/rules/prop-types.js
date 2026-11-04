@@ -5079,6 +5079,106 @@ ruleTester.run('prop-types', rule, {
         }
       `,
       features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
+        function Comp({ episodeId }) {
+          const query = useQuery({ id: episodeId }, { select: (props) => props.isError ? null : props });
+          return <div>{query}</div>;
+        }
+        Comp.propTypes = {
+          episodeId: PropTypes.string,
+        };
+      `,
+    },
+    {
+      code: `
+        function Comp({ episodeId }) {
+          const query = useQuery({ id: episodeId }, {
+            select: (props) => {
+              const { isError } = props;
+              return isError;
+            },
+          });
+          return <div>{query}</div>;
+        }
+        Comp.propTypes = {
+          episodeId: PropTypes.string,
+        };
+      `,
+    },
+    {
+      code: `
+        function Comp({ items }) {
+          return <List data={items} renderItem={(props) => <div>{props.label}</div>} />;
+        }
+        Comp.propTypes = {
+          items: PropTypes.array,
+        };
+      `,
+    },
+    {
+      code: `
+        function Comp({ ids }) {
+          return <div>{ids.map((props) => props.value)}</div>;
+        }
+        Comp.propTypes = {
+          ids: PropTypes.array,
+        };
+      `,
+    },
+    {
+      // https://github.com/jsx-eslint/eslint-plugin-react/issues/3696
+      code: `
+        import React, { useEffect } from 'react';
+
+        export const MainComponent = ({ dummy }) => {
+          const widgets = [];
+          useEffect(() => {});
+
+          const SubComponent = ({ widget }) => <>{widget.id}</>;
+          SubComponent.propTypes = { widget: PropTypes.shape({ id: PropTypes.number }) };
+
+          return (
+            <>
+              {widgets.map((widget, jIdx) => (
+                <span key={jIdx}>{widget.id}</span>
+              ))}
+            </>
+          );
+        };
+        MainComponent.propTypes = { dummy: PropTypes.string };
+      `,
+      features: ['fragment'],
+    },
+    {
+      // https://github.com/jsx-eslint/eslint-plugin-react/issues/3696
+      code: `
+        import React, { FunctionComponent, useEffect } from 'react';
+
+        type Widget = { id: number };
+        type MainComponentProps = { dummy: string };
+
+        export const MainComponent: FunctionComponent<MainComponentProps> = ({ dummy }) => {
+          const widgets: Widget[] = [];
+          useEffect(() => {});
+
+          type SubComponentProps = { widget: Widget };
+
+          const SubComponent: FunctionComponent<SubComponentProps> = ({ widget }) => {
+            return <>{widget.id}</>;
+          };
+
+          return (
+            <>
+              {widgets.map((widget, jIdx) => (
+                <span key={jIdx}>{widget.id}</span>
+              ))}
+            </>
+          );
+        };
+      `,
+      features: ['ts', 'no-babel', 'fragment'],
     }
   )),
 
@@ -9349,6 +9449,48 @@ ruleTester.run('prop-types', rule, {
         {
           messageId: 'missingPropType',
           data: { name: 'size' },
+        },
+      ],
+    },
+    {
+      code: `
+        function Comp(props) {
+          const onClick = () => props.missing;
+          return <div onClick={onClick} />;
+        }
+        Comp.propTypes = {};
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'missing' },
+        },
+      ],
+    },
+    {
+      code: `
+        function Comp(props) {
+          const renderHeader = (props) => <h1>{props.title}</h1>;
+          return <div>{renderHeader(props)}</div>;
+        }
+        Comp.propTypes = {};
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'title' },
+        },
+      ],
+    },
+    {
+      code: `
+        const Comp = React.memo((props) => <div>{props.missing}</div>);
+        Comp.propTypes = {};
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'missing' },
         },
       ],
     }

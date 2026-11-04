@@ -62,7 +62,7 @@ describe('Version', () => {
       assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
 
       expectedErrorArgs = [
-        ['Warning: React version was set to "detect" in eslint-plugin-react settings, but the "react" package is not installed. Assuming latest React version for linting.'],
+        ['Warning: React version was set to “detect” in eslint-plugin-react settings, but the “react” package is not installed. Assuming latest React version for linting.'],
       ];
     });
 
@@ -73,7 +73,7 @@ describe('Version', () => {
       assert.equal(versionUtil.testReactVersion(context, '16.14.0'), true);
 
       expectedErrorArgs = [
-        ['Warning: React version was set to "detect" in eslint-plugin-react settings, but the "react" package is not installed. Assuming default React version for linting: "16.14.0".'],
+        ['Warning: React version was set to “detect” in eslint-plugin-react settings, but the “react” package is not installed. Assuming default React version for linting: “16.14.0”.'],
       ];
 
       delete context.settings.react.defaultVersion;
@@ -86,8 +86,22 @@ describe('Version', () => {
       assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
 
       expectedErrorArgs = [
-        ['Warning: React version specified in eslint-plugin-react-settings must be a valid semver version, or "detect"; got “not semver”. Falling back to latest version as default.'],
-        ['Warning: React version was set to "detect" in eslint-plugin-react settings, but the "react" package is not installed. Assuming latest React version for linting.'],
+        ['Warning: default React version specified in eslint-plugin-react settings must be a valid semver version; got “not semver”. Falling back to latest version as default.'],
+        ['Warning: React version was set to “detect” in eslint-plugin-react settings, but the “react” package is not installed. Assuming latest React version for linting.'],
+      ];
+
+      delete context.settings.react.defaultVersion;
+    });
+
+    it('suggests setting `version` when the default version is set to "detect"', () => {
+      context.settings.react.defaultVersion = 'detect';
+      sinon.stub(context, 'getFilename').callsFake(() => path.resolve(base, 'detect-version-missing', 'test.js'));
+
+      assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
+
+      expectedErrorArgs = [
+        ['Warning: default React version specified in eslint-plugin-react settings must be a valid semver version; got “detect”. To detect the installed React version, set “version”, not “defaultVersion”, to “detect”. Falling back to latest version as default.'],
+        ['Warning: React version was set to “detect” in eslint-plugin-react settings, but the “react” package is not installed. Assuming latest React version for linting.'],
       ];
 
       delete context.settings.react.defaultVersion;
@@ -100,7 +114,7 @@ describe('Version', () => {
       assert.equal(versionUtil.testReactVersion(context, '999.999.999'), true);
 
       expectedErrorArgs = [
-        ['Warning: React version was set to "detect" in eslint-plugin-react settings, but the "react" package is not installed. Assuming latest React version for linting.'],
+        ['Warning: React version was set to “detect” in eslint-plugin-react settings, but the “react” package is not installed. Assuming latest React version for linting.'],
       ];
     });
 
@@ -108,7 +122,7 @@ describe('Version', () => {
       assert.equal(versionUtil.testFlowVersion(context, '999.999.999'), true);
 
       expectedErrorArgs = [
-        ['Warning: Flow version was set to "detect" in eslint-plugin-react settings, but the "flow-bin" package is not installed. Assuming latest Flow version for linting.'],
+        ['Warning: Flow version was set to “detect” in eslint-plugin-react settings, but the “flow-bin” package is not installed. Assuming latest Flow version for linting.'],
       ];
     });
 
@@ -148,14 +162,14 @@ describe('Version', () => {
     it('fails nicely with an invalid react version', () => {
       assert.equal(versionUtil.testReactVersion(invalidContext, '>= 15.0'), true);
       expectedErrorArgs = [
-        ['Warning: React version specified in eslint-plugin-react-settings must be a valid semver version, or "detect"; got “latest”'],
+        ['Warning: React version specified in eslint-plugin-react settings must be a valid semver version, or “detect”; got “latest”'],
       ];
     });
 
     it('fails nicely with an invalid flow version', () => {
       assert.equal(versionUtil.testFlowVersion(invalidContext, '>= 1.0'), true);
       expectedErrorArgs = [
-        ['Warning: Flow version specified in eslint-plugin-react-settings must be a valid semver version, or "detect"; got “not semver”'],
+        ['Warning: Flow version specified in eslint-plugin-react settings must be a valid semver version, or “detect”; got “not semver”'],
       ];
     });
   });
@@ -169,9 +183,9 @@ describe('Version', () => {
       assert.equal(versionUtil.testReactVersion(context, '>= 16.0.0'), false, '>= 16.0.0');
 
       expectedErrorArgs = [
-        ['Warning: React version specified in eslint-plugin-react-settings must be a string; got “number”'],
-        ['Warning: React version specified in eslint-plugin-react-settings must be a string; got “number”'],
-        ['Warning: React version specified in eslint-plugin-react-settings must be a string; got “number”'],
+        ['Warning: React version specified in eslint-plugin-react settings must be a string; got “number”'],
+        ['Warning: React version specified in eslint-plugin-react settings must be a string; got “number”'],
+        ['Warning: React version specified in eslint-plugin-react settings must be a string; got “number”'],
       ];
     });
 
@@ -181,9 +195,9 @@ describe('Version', () => {
       assert.equal(versionUtil.testFlowVersion(context, '>= 1.3.0'), false);
 
       expectedErrorArgs = [
-        ['Warning: Flow version specified in eslint-plugin-react-settings must be a string; got “number”'],
-        ['Warning: Flow version specified in eslint-plugin-react-settings must be a string; got “number”'],
-        ['Warning: Flow version specified in eslint-plugin-react-settings must be a string; got “number”'],
+        ['Warning: Flow version specified in eslint-plugin-react settings must be a string; got “number”'],
+        ['Warning: Flow version specified in eslint-plugin-react settings must be a string; got “number”'],
+        ['Warning: Flow version specified in eslint-plugin-react settings must be a string; got “number”'],
       ];
     });
   });
