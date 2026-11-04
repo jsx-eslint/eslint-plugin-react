@@ -14,6 +14,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-sort-props`]: add `sortFirst` option ([#3965][] @loderunner)
 * [`jsx-no-literals`]: add `restrictedAttributes` option ([#3950][] @ushiboy)
 * [`forbid-dom-props`]: Add `disallowedValues` option for forbidden props ([#3877][] @makxca, [#4059][] @nk-batman21)
+* [`prop-types`]: support `memo<Props>` type arguments ([#4063][] @dgesteves)
 
 ### Fixed
 * [`jsx-no-literals`]: avoid crash on variable declarations without an initializer ([#4044][] @Aryan007-dev)
@@ -82,6 +83,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Perf] `usedPropTypes`: copy a scope's prop variables only on its first write (@ljharb)
 
 [#4064]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4064
+[#4063]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4063
 [#4062]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4062
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
 [#4060]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4060
