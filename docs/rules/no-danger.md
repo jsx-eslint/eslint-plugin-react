@@ -1,6 +1,6 @@
 # react/no-danger
 
-📝 Disallow usage of dangerous JSX properties.
+📝 Disallow usage of dangerous React properties.
 
 <!-- end auto-generated rule header -->
 
@@ -16,6 +16,10 @@ Examples of **incorrect** code for this rule:
 var React = require('react');
 
 var Hello = <div dangerouslySetInnerHTML={{ __html: "Hello World" }}></div>;
+
+var HelloWithoutJSX = React.createElement('div', {
+  dangerouslySetInnerHTML: { __html: 'Hello World' }
+});
 ```
 
 Examples of **correct** code for this rule:
@@ -24,6 +28,8 @@ Examples of **correct** code for this rule:
 var React = require('react');
 
 var Hello = <div>Hello World</div>;
+
+var HelloWithoutJSX = React.createElement('div', null, 'Hello World');
 ```
 
 ## Rule Options
