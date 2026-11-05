@@ -29,6 +29,20 @@ const parserOptions = {
 const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('no-danger', rule, {
   valid: parsers.all([
+    { code: 'React.createElement();' },
+    { code: 'React.createElement("div");' },
+    { code: 'React.createElement("div", null);' },
+    { code: 'React.createElement("div", props);' },
+    { code: 'React.createElement("div", { className: "hello" });' },
+    { code: 'React.createElement(App, { dangerouslySetInnerHTML: { __html: "hello" } });' },
+    { code: 'Other.createElement("div", { dangerouslySetInnerHTML: { __html: "hello" } });' },
+    { code: 'createElement("div", { dangerouslySetInnerHTML: { __html: "hello" } });' },
+    { code: 'React.createElement("div", { [dangerouslySetInnerHTML]: { __html: "hello" } });' },
+    { code: 'React.createElement("div", { ...props });' },
+    {
+      code: 'React.createElement(Title, { dangerouslySetInnerHTML: { __html: "hello" } });',
+      options: [{ customComponentNames: ['Home'] }],
+    },
     { code: '<App />;' },
     { code: '<App dangerouslySetInnerHTML={{ __html: "" }} />;' },
     { code: '<div className="bar"></div>;' },
@@ -54,6 +68,51 @@ ruleTester.run('no-danger', rule, {
     },
   ]),
   invalid: parsers.all([
+    {
+      code: 'React.createElement("div", { dangerouslySetInnerHTML: { __html: "hello" } });',
+      errors: [{ messageId: 'dangerousProp', data: { name: 'dangerouslySetInnerHTML' } }],
+    },
+    {
+      code: 'React.createElement("div", { "dangerouslySetInnerHTML": { __html: "hello" } });',
+      errors: [{ messageId: 'dangerousProp', data: { name: 'dangerouslySetInnerHTML' } }],
+    },
+    {
+      code: 'React.createElement("div", { ["dangerouslySetInnerHTML"]: { __html: "hello" } });',
+      errors: [{ messageId: 'dangerousProp', data: { name: 'dangerouslySetInnerHTML' } }],
+    },
+    {
+      code: 'import { createElement } from "react"; createElement("div", { dangerouslySetInnerHTML: { __html: "hello" } });',
+      errors: [{ messageId: 'dangerousProp', data: { name: 'dangerouslySetInnerHTML' } }],
+    },
+    {
+      code: 'const { createElement } = require("react"); createElement("div", { dangerouslySetInnerHTML: { __html: "hello" } });',
+      errors: [{ messageId: 'dangerousProp', data: { name: 'dangerouslySetInnerHTML' } }],
+    },
+    {
+      code: 'Preact.createElement("div", { dangerouslySetInnerHTML: { __html: "hello" } });',
+      settings: { react: { pragma: 'Preact' } },
+      errors: [{ messageId: 'dangerousProp', data: { name: 'dangerouslySetInnerHTML' } }],
+    },
+    {
+      code: 'React.createElement(App, { dangerouslySetInnerHTML: { __html: "hello" } });',
+      options: [{ customComponentNames: ['*'] }],
+      errors: [{ messageId: 'dangerousProp', data: { name: 'dangerouslySetInnerHTML' } }],
+    },
+    {
+      code: 'React.createElement(Title, { dangerouslySetInnerHTML: { __html: "hello" } });',
+      options: [{ customComponentNames: ['Title'] }],
+      errors: [{ messageId: 'dangerousProp', data: { name: 'dangerouslySetInnerHTML' } }],
+    },
+    {
+      code: 'React.createElement(UI.Title, { dangerouslySetInnerHTML: { __html: "hello" } });',
+      options: [{ customComponentNames: ['UI.*'] }],
+      errors: [{ messageId: 'dangerousProp', data: { name: 'dangerouslySetInnerHTML' } }],
+    },
+    {
+      code: 'React.createElement(UI /* comment */ . Title, { dangerouslySetInnerHTML: { __html: "hello" } });',
+      options: [{ customComponentNames: ['UI.Title'] }],
+      errors: [{ messageId: 'dangerousProp', data: { name: 'dangerouslySetInnerHTML' } }],
+    },
     {
       code: '<div dangerouslySetInnerHTML={{ __html: "" }}></div>;',
       errors: [
