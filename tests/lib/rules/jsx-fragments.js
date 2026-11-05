@@ -102,6 +102,22 @@ ruleTester.run('jsx-fragments', rule, {
       options: ['syntax'],
       settings,
     },
+    {
+      code: `
+        const { StrictMode } = Act;
+        <StrictMode><Foo /></StrictMode>;
+      `,
+      options: ['syntax'],
+      settings,
+    },
+    {
+      code: `
+        const { Suspense } = require('react');
+        <Suspense><Foo /></Suspense>;
+      `,
+      options: ['syntax'],
+      settings,
+    },
   ]),
 
   invalid: parsers.all([
@@ -274,6 +290,24 @@ ruleTester.run('jsx-fragments', rule, {
       `,
       output: `
         const { Frag } = require('react');
+        <><Foo /></>;
+      `,
+      options: ['syntax'],
+      settings,
+      errors: [
+        {
+          messageId: 'preferFragment',
+          data: { react: 'Act', fragment: 'Frag' },
+        },
+      ],
+    },
+    {
+      code: `
+        const { Frag: F } = Act;
+        <F><Foo /></F>;
+      `,
+      output: `
+        const { Frag: F } = Act;
         <><Foo /></>;
       `,
       options: ['syntax'],
