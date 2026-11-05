@@ -87,6 +87,10 @@ ruleTester.run('jsx-handler-names', rule, {
       code: '<TestComponent onChange={() => 42} />',
     },
     {
+      code: '<TestComponent onChange={() => handleChange} />',
+      options: [{ checkInlineFunction: true, checkLocalVariables: true }],
+    },
+    {
       code: '<TestComponent onChange={this.props.onFoo} />',
     },
     {
@@ -220,6 +224,36 @@ ruleTester.run('jsx-handler-names', rule, {
   ]),
 
   invalid: parsers.all([
+    {
+      code: 'handleFoo(<TestComponent onChange={() => takeCareOfChange} />)',
+      options: [{ checkInlineFunction: true, checkLocalVariables: true }],
+      errors: [
+        {
+          messageId: 'badHandlerName',
+          data: { propKey: 'onChange', handlerPrefix: 'handle' },
+        },
+      ],
+    },
+    {
+      code: '<TestComponent onChange={() => 42} />',
+      options: [{ checkInlineFunction: true, checkLocalVariables: true }],
+      errors: [
+        {
+          messageId: 'badHandlerName',
+          data: { propKey: 'onChange', handlerPrefix: 'handle' },
+        },
+      ],
+    },
+    {
+      code: '<TestComponent onChange={() => { doSomething(); }} />',
+      options: [{ checkInlineFunction: true, checkLocalVariables: true }],
+      errors: [
+        {
+          messageId: 'badHandlerName',
+          data: { propKey: 'onChange', handlerPrefix: 'handle' },
+        },
+      ],
+    },
     {
       code: '<TestComponent onChange={this.doSomethingOnChange} />',
       errors: [
