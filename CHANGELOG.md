@@ -65,6 +65,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`static-property-placement`]: do not report a type-annotated `props` instance field as `propTypes` (@ljharb)
 * [`static-property-placement`]: do not report a type-annotated `context` instance field as `contextTypes` ([#4060][] @b84330808)
 * [`jsx-fragments`]: only treat a destructured `Fragment` as a fragment, not other components destructured from React ([#4062][] @nk-batman21)
+* [`jsx-handler-names`]: with `checkInlineFunction`, check the body of an inline handler that isn't a call instead of the whole file's text ([#3858][] @thelastbackspace)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -81,6 +82,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] `function-component-definition`/`jsx-no-constructed-context-values`: add `resolveVariable` util, and use it (@ljharb)
 * [Perf] `usedPropTypes`: copy a scope's prop variables only on its first write (@ljharb)
 
+[#3858]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3858
 [#4064]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4064
 [#4062]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4062
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
