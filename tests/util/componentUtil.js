@@ -4,6 +4,7 @@ const assert = require('assert'); // NOSONAR - `node:assert` requires Node 14.18
 const componentUtil = require('../../lib/util/componentUtil');
 
 const isExplicitComponent = componentUtil.isExplicitComponent;
+const isES5Component = componentUtil.isES5Component;
 
 /**
  * Helper to build a minimal AST node stub with `loc` and `parent` properties.
@@ -41,9 +42,10 @@ const REACT_COMPONENT_JSDOC = {
 // ─────────────────────────────────────────────────────────────────────────────
 // Mock context helper
 // ─────────────────────────────────────────────────────────────────────────────
-function makeContext(sourceCode) {
+function makeContext(sourceCode, settings) {
   return {
     getSourceCode() { return sourceCode; },
+    settings: settings || {},
     // ESLint 9 flat-config compat shim
     sourceCode,
   };
@@ -64,6 +66,20 @@ describe('componentUtil', () => {
         assert.equal(isExplicitComponent(node, makeContext(mockSourceCode)), true);
       });
 
+      it('returns true when getJSDocComment returns an @extends React.PureComponent comment', () => {
+        const node = makeNode('ClassDeclaration');
+        const mockSourceCode = {
+          getJSDocComment() {
+            return {
+              type: 'Block',
+              value: '*\n * @extends React.PureComponent\n ',
+              loc: { start: { line: 1 }, end: { line: 3 } },
+            };
+          },
+        };
+        assert.equal(isExplicitComponent(node, makeContext(mockSourceCode)), true);
+      });
+
       it('returns false when getJSDocComment returns null', () => {
         const node = makeNode('ClassDeclaration');
         const mockSourceCode = {
@@ -76,6 +92,22 @@ describe('componentUtil', () => {
         const node = makeNode('ClassDeclaration');
         const mockSourceCode = {
           getJSDocComment() { throw new Error('not yet parsed'); },
+        };
+        assert.equal(isExplicitComponent(node, makeContext(mockSourceCode)), false);
+      });
+
+      it('returns false when doctrine fails to parse the JSDoc comment', () => {
+        const node = makeNode('ClassDeclaration');
+        const mockSourceCode = {
+          getJSDocComment() {
+            return {
+              type: 'Block',
+              value: {
+                charAt() { return '*'; },
+                replace() { throw new Error('doctrine parse error'); },
+              },
+            };
+          },
         };
         assert.equal(isExplicitComponent(node, makeContext(mockSourceCode)), false);
       });
@@ -320,6 +352,357 @@ describe('componentUtil', () => {
 
           assert.equal(isExplicitComponent(node, makeContext(sourceCode)), false);
         });
+
+        it('returns true when JSDoc is directly on ClassExpression if parent is null', () => {
+          const node = makeNode('ClassExpression');
+          node.loc = { start: { line: 11 } };
+          node.parent = null;
+
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore(target) {
+              if (target === node) {
+                return {
+                  type: 'Block',
+                  value: '* @extends React.Component\n ',
+                  loc: { end: { line: 10 } },
+                };
+              }
+              return null;
+            },
+            getCommentsBefore() { return []; },
+          };
+
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), true);
+        });
+      });
+
+      // ── FunctionDeclaration ──────────────────────────────────────────────
+      describe('FunctionDeclaration', () => {
+        it('returns true when JSDoc is directly adjacent', () => {
+          const node = makeNode('FunctionDeclaration');
+          node.loc = { start: { line: 11 } };
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore() {
+              return {
+                type: 'Block',
+                value: '* @extends React.Component\n ',
+                loc: { end: { line: 10 } },
+              };
+            },
+            getCommentsBefore() { return []; },
+          };
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), true);
+        });
+
+        it('returns true when exported via ExportNamedDeclaration', () => {
+          const exportNode = {
+            type: 'ExportNamedDeclaration',
+            loc: { start: { line: 11 } },
+            parent: null,
+          };
+          const node = makeNode('FunctionDeclaration');
+          node.loc = { start: { line: 11 } };
+          node.parent = exportNode;
+
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore(target) {
+              if (target === exportNode) {
+                return {
+                  type: 'Block',
+                  value: '* @extends React.Component\n ',
+                  loc: { end: { line: 10 } },
+                };
+              }
+              return null;
+            },
+            getCommentsBefore() { return []; },
+          };
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), true);
+        });
+
+        it('returns true when exported via ExportDefaultDeclaration', () => {
+          const exportNode = {
+            type: 'ExportDefaultDeclaration',
+            loc: { start: { line: 11 } },
+            parent: null,
+          };
+          const node = makeNode('FunctionDeclaration');
+          node.loc = { start: { line: 11 } };
+          node.parent = exportNode;
+
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore(target) {
+              if (target === exportNode) {
+                return {
+                  type: 'Block',
+                  value: '* @extends React.Component\n ',
+                  loc: { end: { line: 10 } },
+                };
+              }
+              return null;
+            },
+            getCommentsBefore() { return []; },
+          };
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), true);
+        });
+
+        it('returns true when exported via ExportAllDeclaration', () => {
+          const exportNode = {
+            type: 'ExportAllDeclaration',
+            loc: { start: { line: 11 } },
+            parent: null,
+          };
+          const node = makeNode('FunctionDeclaration');
+          node.loc = { start: { line: 11 } };
+          node.parent = exportNode;
+
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore(target) {
+              if (target === exportNode) {
+                return {
+                  type: 'Block',
+                  value: '* @extends React.Component\n ',
+                  loc: { end: { line: 10 } },
+                };
+              }
+              return null;
+            },
+            getCommentsBefore() { return []; },
+          };
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), true);
+        });
+      });
+
+      // ── FunctionExpression ────────────────────────────────────────────────
+      describe('FunctionExpression', () => {
+        it('returns true when JSDoc is adjacent to VariableDeclaration ancestor', () => {
+          const varDecl = {
+            type: 'VariableDeclaration',
+            loc: { start: { line: 11 } },
+            parent: null,
+          };
+          const varDeclarator = { type: 'VariableDeclarator', parent: varDecl };
+          const node = makeNode('FunctionExpression');
+          node.parent = varDeclarator;
+
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore(target) {
+              if (target === varDecl) {
+                return {
+                  type: 'Block',
+                  value: '* @extends React.Component\n ',
+                  loc: { end: { line: 10 } },
+                };
+              }
+              return null;
+            },
+            getCommentsBefore(target) { return target === varDecl ? [{ type: 'Block' }] : []; },
+          };
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), true);
+        });
+
+        it('returns true when ancestor has comments before it', () => {
+          const declarator = {
+            type: 'VariableDeclarator',
+            loc: { start: { line: 11 } },
+            parent: null,
+          };
+          const node = makeNode('FunctionExpression');
+          node.parent = declarator;
+
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore(target) {
+              if (target === declarator) {
+                return {
+                  type: 'Block',
+                  value: '* @extends React.Component\n ',
+                  loc: { end: { line: 10 } },
+                };
+              }
+              return null;
+            },
+            getCommentsBefore(target) {
+              return target === declarator ? [{ type: 'Block' }] : [];
+            },
+          };
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), true);
+        });
+
+        it('returns true when parent is MethodDefinition', () => {
+          const methodDef = {
+            type: 'MethodDefinition',
+            loc: { start: { line: 11 } },
+            parent: null,
+          };
+          const node = makeNode('FunctionExpression');
+          node.parent = methodDef;
+
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore(target) {
+              if (target === methodDef) {
+                return {
+                  type: 'Block',
+                  value: '* @extends React.Component\n ',
+                  loc: { end: { line: 10 } },
+                };
+              }
+              return null;
+            },
+            getCommentsBefore() { return []; },
+          };
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), true);
+        });
+
+        it('returns true when parent is Property', () => {
+          const prop = {
+            type: 'Property',
+            loc: { start: { line: 11 } },
+            parent: null,
+          };
+          const node = makeNode('FunctionExpression');
+          node.parent = prop;
+
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore(target) {
+              if (target === prop) {
+                return {
+                  type: 'Block',
+                  value: '* @extends React.Component\n ',
+                  loc: { end: { line: 10 } },
+                };
+              }
+              return null;
+            },
+            getCommentsBefore() { return []; },
+          };
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), true);
+        });
+
+        it('returns false when parent is CallExpression', () => {
+          const callExpr = { type: 'CallExpression', parent: null };
+          const node = makeNode('FunctionExpression');
+          node.parent = callExpr;
+
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore() { return null; },
+            getCommentsBefore() { return []; },
+          };
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), false);
+        });
+
+        it('returns false when parent is NewExpression', () => {
+          const newExpr = { type: 'NewExpression', parent: null };
+          const node = makeNode('FunctionExpression');
+          node.parent = newExpr;
+
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore() { return null; },
+            getCommentsBefore() { return []; },
+          };
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), false);
+        });
+
+        it('returns false when parent is null', () => {
+          const node = makeNode('FunctionExpression');
+          node.parent = null;
+
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore() { return null; },
+            getCommentsBefore() { return []; },
+          };
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), false);
+        });
+
+        it('returns false when ancestor chain reaches FunctionDeclaration', () => {
+          const fnDecl = { type: 'FunctionDeclaration', parent: null };
+          const node = makeNode('FunctionExpression');
+          node.parent = fnDecl;
+
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore() { return null; },
+            getCommentsBefore() { return []; },
+          };
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), false);
+        });
+
+        it('returns false when ancestor chain reaches Program', () => {
+          const program = { type: 'Program', parent: null };
+          const node = makeNode('FunctionExpression');
+          node.parent = program;
+
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore() { return null; },
+            getCommentsBefore() { return []; },
+          };
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), false);
+        });
+      });
+
+      // ── ArrowFunctionExpression ───────────────────────────────────────────
+      describe('ArrowFunctionExpression', () => {
+        it('returns true when JSDoc is adjacent to VariableDeclaration (parent.parent)', () => {
+          const varDecl = {
+            type: 'VariableDeclaration',
+            loc: { start: { line: 11 } },
+            parent: null,
+          };
+          const varDeclarator = { type: 'VariableDeclarator', parent: varDecl };
+          const node = makeNode('ArrowFunctionExpression');
+          node.parent = varDeclarator;
+
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore(target) {
+              if (target === varDecl) {
+                return {
+                  type: 'Block',
+                  value: '* @extends React.Component\n ',
+                  loc: { end: { line: 10 } },
+                };
+              }
+              return null;
+            },
+            getCommentsBefore(target) { return target === varDecl ? [{ type: 'Block' }] : []; },
+          };
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), true);
+        });
+
+        it('returns true when JSDoc is directly on ArrowFunctionExpression if fnTarget is null', () => {
+          const callExpr = { type: 'CallExpression', parent: null };
+          const node = makeNode('ArrowFunctionExpression');
+          node.loc = { start: { line: 11 } };
+          node.parent = callExpr;
+
+          const sourceCode = {
+            getJSDocComment: undefined,
+            getTokenBefore(target) {
+              if (target === node) {
+                return {
+                  type: 'Block',
+                  value: '* @extends React.Component\n ',
+                  loc: { end: { line: 10 } },
+                };
+              }
+              return null;
+            },
+            getCommentsBefore() { return []; },
+          };
+          assert.equal(isExplicitComponent(node, makeContext(sourceCode)), true);
+        });
       });
 
       // ── Unknown / default node type ───────────────────────────────────────
@@ -344,4 +727,73 @@ describe('componentUtil', () => {
       }); // unknown node type
     }); // ESLint 10+ fallback
   }); // isExplicitComponent
+
+  describe('isES5Component', () => {
+    it('returns false when node.parent is null', () => {
+      const mockContext = {
+        settings: {},
+        getSourceCode() {
+          return { getAllComments() { return []; } };
+        },
+      };
+      assert.equal(isES5Component({ parent: null }, mockContext), false);
+    });
+
+    it('returns false when node.parent.callee is null', () => {
+      const mockContext = {
+        settings: {},
+        getSourceCode() {
+          return { getAllComments() { return []; } };
+        },
+      };
+      assert.equal(isES5Component({ parent: { callee: null } }, mockContext), false);
+    });
+
+    it('returns false when callee is not a matching component', () => {
+      const mockContext = {
+        settings: {},
+        getSourceCode() {
+          return { getAllComments() { return []; } };
+        },
+      };
+      assert.equal(isES5Component({ parent: { callee: { name: 'other' } } }, mockContext), false);
+    });
+
+    it('returns true when callee is a MemberExpression matching React.createClass', () => {
+      const mockContext = {
+        settings: { react: { createClass: 'createClass' } },
+        getSourceCode() {
+          return { getAllComments() { return []; } };
+        },
+      };
+      const node = {
+        parent: {
+          callee: {
+            type: 'MemberExpression',
+            object: { name: 'React' },
+            property: { name: 'createClass' },
+          },
+        },
+      };
+      assert.equal(isES5Component(node, mockContext), true);
+    });
+
+    it('returns true when callee is an Identifier matching createReactClass', () => {
+      const mockContext = {
+        settings: { react: { createClass: 'createReactClass' } },
+        getSourceCode() {
+          return { getAllComments() { return []; } };
+        },
+      };
+      const node = {
+        parent: {
+          callee: {
+            type: 'Identifier',
+            name: 'createReactClass',
+          },
+        },
+      };
+      assert.equal(isES5Component(node, mockContext), true);
+    });
+  });
 }); // componentUtil
