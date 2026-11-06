@@ -16,18 +16,18 @@ if (!npmCli) {
   process.exit(1);
 }
 
+let lsOutput = '';
 try {
   // Check if brace-expansion@1.x is in the dependency tree
   // Using execFileSync with absolute paths prevents PATH-hijacking (SonarQube javascript:S4036)
-  const ls = execFileSync(node, [npmCli, 'ls', 'brace-expansion'], { encoding: 'utf8' });
-  if (ls.includes('brace-expansion@1.')) {
-    // FIXME: remove this conditional when brace-expansion@1.x is no longer in the dependency tree // NOSONAR
-    level = 'critical';
-  }
-} catch (e) {
-  // FIXME: remove this exclusion when we no longer need to swallow missing peer dep errors from npm ls
-  // Ignore errors from npm ls
-  // NOSONAR
+  lsOutput = execFileSync(node, [npmCli, 'ls', 'brace-expansion'], { encoding: 'utf8', stdio: ['pipe', 'pipe', 'ignore'] });
+} catch (err) {
+  // npm ls exits non-zero if optional peer dependencies are missing in the tree
+  lsOutput = err.stdout ? err.stdout.toString() : '';
+}
+
+if (lsOutput.includes('brace-expansion@1.')) {
+  level = 'critical';
 }
 
 // Run the npm audit with the calculated severity level
@@ -35,6 +35,5 @@ try {
   const env = Object.assign({}, process.env, { npm_config_legacy_peer_deps: 'true' });
   execFileSync(node, [npmCli, 'exec', '--yes', '--', 'npm@>= 10.2', 'audit', '--production', `--audit-level=${level}`], { stdio: 'inherit', env });
 } catch (e) {
-  // FIXME: remove this exclusion when we no longer need to silently exit without handling the error object
-  process.exit(1); // NOSONAR
+  process.exit(typeof e.status === 'number' ? e.status : 1);
 }
