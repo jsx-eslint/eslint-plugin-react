@@ -80,7 +80,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] add `isLineBreak` jsx util, and use it in [`no-danger-with-children`] (@ljharb)
 * [Refactor] `function-component-definition`/`jsx-no-constructed-context-values`: add `resolveVariable` util, and use it (@ljharb)
 * [Perf] `usedPropTypes`: copy a scope's prop variables only on its first write (@ljharb)
+* [Perf] component detection: skip rebuilding the component list for each `memo`/`forwardRef` call ([#4072][] @tycrimm)
 
+[#4072]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4072
 [#4064]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4064
 [#4062]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4062
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061

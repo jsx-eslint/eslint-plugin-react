@@ -360,6 +360,56 @@ describe('Components', () => {
           `, 'CallExpression');
         });
       });
+
+      describe('isPragmaComponentWrapper', () => {
+        function testIsWrapper(code, expected) {
+          testComponentsDetect({ code }, {
+            CallExpression: (node, _context, _components, util) => util.isPragmaComponentWrapper(node),
+          }, (_components, instructionResults) => {
+            assert.deepEqual(instructionResults, [{ type: 'CallExpression', result: expected }]);
+          });
+        }
+
+        it('should identify memo creating a new component', () => {
+          testIsWrapper(`
+            import React from 'react'
+            const Hello = React.memo(function Hello(props) { return <div>{props.a}</div> })
+          `, true);
+        });
+
+        it('should identify forwardRef rendering a DOM element', () => {
+          testIsWrapper(`
+            import React from 'react'
+            const Icon = React.forwardRef((props, ref) => <svg ref={ref} {...props} />)
+          `, true);
+        });
+
+        it('should identify memo of an identifier', () => {
+          testIsWrapper(`
+            import React from 'react'
+            const Hello = (props) => <div>{props.a}</div>
+            const MemoHello = React.memo(Hello)
+          `, true);
+        });
+
+        it('should not identify forwardRef rendering an existing arrow function component', () => {
+          testIsWrapper(`
+            import React from 'react'
+            const Hello = (props) => <div>{props.a}</div>
+            const RefHello = React.forwardRef((props, ref) => <Hello {...props} innerRef={ref} />)
+          `, false);
+        });
+
+        it('should not identify memo rendering an existing class component', () => {
+          testIsWrapper(`
+            import React from 'react'
+            class Hello extends React.Component {
+              render() { return <div /> }
+            }
+            const MemoHello = React.memo((props) => { return <Hello {...props} /> })
+          `, false);
+        });
+      });
     });
 
     describe('testComponentsDetect', () => {
