@@ -43,6 +43,47 @@ ruleTester.run('no-unused-prop-types', rule, {
   valid: parsers.all([
     {
       code: `
+        class Hello extends React.Component {
+          render() {
+            const { props: forwarded } = this;
+            return <SomeOtherComp {...forwarded} />;
+          }
+        }
+        Hello.propTypes = { forwarded: PropTypes.string };
+      `,
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            return <SomeOtherComp {...this['props']} />;
+          }
+        }
+        Hello.propTypes = { forwarded: PropTypes.string };
+      `,
+    },
+    {
+      code: `
+        function Hello(input) {
+          const forwarded = input;
+          return <div><SomeOtherComp {...forwarded} /><div {...{ value: 619 }} /></div>;
+        }
+        Hello.propTypes = { forwarded: PropTypes.string };
+      `,
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const forwarded = this.props;
+            return <div><SomeOtherComp {...forwarded} /><div {...{ value: 619 }} /></div>;
+          }
+        }
+        Hello.propTypes = { forwarded: PropTypes.string };
+      `,
+    },
+    {
+      code: `
         var Hello = createReactClass({
           propTypes: {
             name: PropTypes.string.isRequired
@@ -3979,6 +4020,28 @@ ruleTester.run('no-unused-prop-types', rule, {
   ]),
 
   invalid: parsers.all([].concat(
+    {
+      code: `
+        const Hello = (props) => {
+          const other = { value: 619 };
+          return <SomeOtherComp {...other} />;
+        };
+        Hello.propTypes = { unused: PropTypes.string };
+      `,
+      errors: [{ messageId: 'unusedPropType', data: { name: 'unused' } }],
+    },
+    {
+      code: `
+        class Hello extends React.Component {
+          render() {
+            const other = { value: 619 };
+            return <SomeOtherComp {...other} />;
+          }
+        }
+        Hello.propTypes = { unused: PropTypes.string };
+      `,
+      errors: [{ messageId: 'unusedPropType', data: { name: 'unused' } }],
+    },
     {
       code: `
         var Hello = createReactClass({
