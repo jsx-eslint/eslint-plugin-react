@@ -217,6 +217,72 @@ ruleTester.run('jsx-handler-names', rule, {
       `,
       options: [{ checkLocalVariables: true, ignoreComponentNames: ['A.MyLib*'] }],
     },
+    {
+      // a conditional handler is checked branch by branch; `undefined` is not a handler
+      code: '<TestComponent onChange={isDisabled ? undefined : this.handleChange} />',
+    },
+    {
+      code: '<TestComponent onChange={isDisabled ? null : this.handleChange} />',
+    },
+    {
+      code: '<TestComponent onChange={isDisabled ? void 0 : this.handleChange} />',
+    },
+    {
+      code: '<TestComponent onChange={isDisabled ? this.handleDisabledChange : this.handleChange} />',
+    },
+    {
+      code: '<TestComponent onChange={isDisabled ? undefined : this.props.onChange} />',
+    },
+    {
+      code: `
+        <TestComponent
+          onChange={
+            isDisabled
+              ? undefined
+              : this.handleChange
+          } />
+      `,
+    },
+    {
+      // nested conditionals are walked too
+      code: '<TestComponent onChange={isDisabled ? undefined : isAdmin ? this.handleAdminChange : this.handleChange} />',
+    },
+    {
+      // local variables are still only checked with `checkLocalVariables`
+      code: '<TestComponent onChange={isDisabled ? undefined : takeCareOfChange} />',
+    },
+    {
+      code: '<TestComponent onChange={isDisabled ? undefined : handleChange} />',
+      options: [{ checkLocalVariables: true }],
+    },
+    {
+      // inline functions are still only checked with `checkInlineFunction`
+      code: '<TestComponent onChange={isDisabled ? undefined : () => this.takeCareOfChange()} />',
+    },
+    {
+      code: '<TestComponent onChange={isDisabled ? undefined : () => this.handleChange()} />',
+      options: [{ checkInlineFunction: true }],
+    },
+    {
+      code: '<TestComponent onChange={isDisabled ? undefined : (event) => handleChange(event)} />',
+      options: [{ checkInlineFunction: true, checkLocalVariables: true }],
+    },
+    {
+      code: '<TestComponent onChange={isDisabled ? undefined : this.onChange} />',
+      options: [{ eventHandlerPrefix: 'on' }],
+    },
+    {
+      code: '<TestComponent whenChange={isDisabled ? undefined : this.handleChange} />',
+      options: [{ eventHandlerPropPrefix: 'when' }],
+    },
+    {
+      // `ref` and ignored components are skipped for conditional handlers as well
+      code: '<TestComponent ref={isDisabled ? undefined : this.someRef} />',
+    },
+    {
+      code: '<MyLibInput onChange={isDisabled ? undefined : this.takeCareOfChange} />',
+      options: [{ ignoreComponentNames: ['MyLib*'] }],
+    },
   ]),
 
   invalid: parsers.all([
@@ -440,6 +506,104 @@ ruleTester.run('jsx-handler-names', rule, {
         {
           messageId: 'badHandlerName',
           data: { propKey: 'onChange', handlerPrefix: 'handle' },
+        },
+      ],
+    },
+    {
+      // a badly named handler is reported even when it sits in a conditional branch
+      code: '<TestComponent onChange={isDisabled ? undefined : this.takeCareOfChange} />',
+      errors: [
+        {
+          messageId: 'badHandlerName',
+          data: { propKey: 'onChange', handlerPrefix: 'handle' },
+          line: 1,
+          column: 51,
+        },
+      ],
+    },
+    {
+      code: '<TestComponent onChange={isDisabled ? this.takeCareOfChange : this.handleChange} />',
+      errors: [
+        {
+          messageId: 'badHandlerName',
+          data: { propKey: 'onChange', handlerPrefix: 'handle' },
+          column: 39,
+        },
+      ],
+    },
+    {
+      // every offending branch is reported on its own
+      code: '<TestComponent onChange={isDisabled ? this.doNothing : this.doSomething} />',
+      errors: [
+        {
+          messageId: 'badHandlerName',
+          data: { propKey: 'onChange', handlerPrefix: 'handle' },
+          column: 39,
+        },
+        {
+          messageId: 'badHandlerName',
+          data: { propKey: 'onChange', handlerPrefix: 'handle' },
+          column: 56,
+        },
+      ],
+    },
+    {
+      code: '<TestComponent onChange={isDisabled ? undefined : isAdmin ? this.handleAdminChange : this.changed} />',
+      errors: [
+        {
+          messageId: 'badHandlerName',
+          data: { propKey: 'onChange', handlerPrefix: 'handle' },
+          column: 86,
+        },
+      ],
+    },
+    {
+      code: '<TestComponent onChange={isDisabled ? undefined : takeCareOfChange} />',
+      options: [{ checkLocalVariables: true }],
+      errors: [
+        {
+          messageId: 'badHandlerName',
+          data: { propKey: 'onChange', handlerPrefix: 'handle' },
+        },
+      ],
+    },
+    {
+      code: '<TestComponent onChange={isDisabled ? undefined : () => this.takeCareOfChange()} />',
+      options: [{ checkInlineFunction: true }],
+      errors: [
+        {
+          messageId: 'badHandlerName',
+          data: { propKey: 'onChange', handlerPrefix: 'handle' },
+        },
+      ],
+    },
+    {
+      code: '<TestComponent onChange={isDisabled ? undefined : this.handleChange} />',
+      options: [{ eventHandlerPrefix: 'on' }],
+      errors: [
+        {
+          messageId: 'badHandlerName',
+          data: { propKey: 'onChange', handlerPrefix: 'on' },
+        },
+      ],
+    },
+    {
+      // a correctly named handler on a non-`on*` prop is reported from inside a conditional, too
+      code: '<TestComponent change={isDisabled ? undefined : this.handleChange} />',
+      errors: [
+        {
+          messageId: 'badPropKey',
+          data: { propValue: 'handleChange', handlerPropPrefix: 'on' },
+        },
+      ],
+    },
+    {
+      code: '<TestComponent change={isDisabled ? undefined : handleChange} />',
+      options: [{ checkLocalVariables: true }],
+      errors: [
+        {
+          messageId: 'badPropKey',
+          data: { propValue: 'handleChange', handlerPropPrefix: 'on' },
         },
       ],
     },
