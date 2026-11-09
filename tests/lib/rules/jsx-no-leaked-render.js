@@ -1430,6 +1430,170 @@ ruleTester.run('jsx-no-leaked-render', rule, {
         column: 16,
       }],
     } : [],
+    semver.satisfies(eslintPkg.version, '> 4') ? {
+      code: `
+        const MyComponent = ({ item }) => {
+          return (
+            <>
+              {item.validateResult && item.validateResult.error && (
+                <ErrorWrapper>
+                  <Text>{item.validateResult.error.message}</Text>
+                </ErrorWrapper>
+              )}
+            </>
+          )
+        }
+      `,
+      output: `
+        const MyComponent = ({ item }) => {
+          return (
+            <>
+              {item.validateResult && item.validateResult.error ? (
+                <ErrorWrapper>
+                  <Text>{item.validateResult.error.message}</Text>
+                </ErrorWrapper>
+              ) : null}
+            </>
+          )
+        }
+      `,
+      options: [{ validStrategies: ['ternary'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 5,
+        column: 16,
+      }],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 4') ? {
+      code: `
+        const MyComponent = () => {
+            return (
+                <>
+                    {someCondition && (
+                        <div>
+                            <p>hello</p>
+                        </div>
+                    )}
+                </>
+            )
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+            return (
+                <>
+                    {!!someCondition && (
+                        <div>
+                            <p>hello</p>
+                        </div>
+                    )}
+                </>
+            )
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 5,
+        column: 22,
+      }],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 4') ? {
+      code: `
+        const MyComponent = () => {
+          return (
+            <>
+              {someCondition ? (
+                <SomeComponent />
+              ) : null}
+            </>
+          )
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return (
+            <>
+              {!!someCondition && (
+                <SomeComponent />
+              )}
+            </>
+          )
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 5,
+        column: 16,
+      }],
+    } : [],
+    semver.satisfies(eslintPkg.version, '> 4') ? {
+      code: `
+        const MyComponent = () => {
+          return (
+            <>
+              {isIndeterminate ? false : (
+                <SomeComponent />
+              )}
+            </>
+          )
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return (
+            <>
+              {!isIndeterminate && (
+                <SomeComponent />
+              )}
+            </>
+          )
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 5,
+        column: 16,
+      }],
+    } : [],
+    {
+      code: `
+        const MyComponent = () => {
+          return <div>{someCondition && (track(), <Empty />)}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{someCondition ? (track(), <Empty />) : null}</div>
+        }
+      `,
+      options: [{ validStrategies: ['ternary'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    },
+    {
+      code: `
+        const MyComponent = () => {
+          return <div>{someCondition && (track(), <Empty />)}</div>
+        }
+      `,
+      output: `
+        const MyComponent = () => {
+          return <div>{!!someCondition && (track(), <Empty />)}</div>
+        }
+      `,
+      options: [{ validStrategies: ['coerce'] }],
+      errors: [{
+        message: 'Potential leaked value that might cause unintentionally rendered values or rendering crashes',
+        line: 3,
+        column: 24,
+      }],
+    },
     {
       code: `
         const isOpen = 0;

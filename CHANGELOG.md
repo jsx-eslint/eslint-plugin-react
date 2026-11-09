@@ -65,6 +65,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`static-property-placement`]: do not report a type-annotated `props` instance field as `propTypes` (@ljharb)
 * [`static-property-placement`]: do not report a type-annotated `context` instance field as `contextTypes` ([#4060][] @b84330808)
 * [`jsx-fragments`]: only treat a destructured `Fragment` as a fragment, not other components destructured from React ([#4062][] @nk-batman21)
+* [`jsx-no-leaked-render`]: keep the parentheses around the rendered value when autofixing ([#3357][] @Enesuygurs)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -121,6 +122,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 [#3877]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3877
 [#3729]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3729
 [#3441]: https://github.com/jsx-eslint/eslint-plugin-react/pull/3441
+[#3357]: https://github.com/jsx-eslint/eslint-plugin-react/issues/3357
 
 ## [7.37.5] - 2025.04.03
 
