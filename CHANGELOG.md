@@ -14,6 +14,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-sort-props`]: add `sortFirst` option ([#3965][] @loderunner)
 * [`jsx-no-literals`]: add `restrictedAttributes` option ([#3950][] @ushiboy)
 * [`forbid-dom-props`]: Add `disallowedValues` option for forbidden props ([#3877][] @makxca, [#4059][] @nk-batman21)
+* [`jsx-handler-names`]: check the branches of a conditional (ternary) handler ([#4076][] @Kartikay123)
 
 ### Fixed
 * [`jsx-no-literals`]: avoid crash on variable declarations without an initializer ([#4044][] @Aryan007-dev)
@@ -81,6 +82,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] `function-component-definition`/`jsx-no-constructed-context-values`: add `resolveVariable` util, and use it (@ljharb)
 * [Perf] `usedPropTypes`: copy a scope's prop variables only on its first write (@ljharb)
 
+[#4076]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4076
 [#4064]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4064
 [#4062]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4062
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061

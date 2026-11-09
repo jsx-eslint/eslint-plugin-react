@@ -18,6 +18,10 @@ Examples of **incorrect** code for this rule:
 <MyComponent onChange={this.componentChanged} />
 ```
 
+```jsx
+<MyComponent onChange={isDisabled ? undefined : this.componentChanged} />
+```
+
 Examples of **correct** code for this rule:
 
 ```jsx
@@ -27,6 +31,12 @@ Examples of **correct** code for this rule:
 ```jsx
 <MyComponent onChange={this.props.onFoo} />
 ```
+
+```jsx
+<MyComponent onChange={isDisabled ? undefined : this.handleChange} />
+```
+
+When the handler is a conditional (ternary) expression, every branch it can resolve to is checked on its own; branches that can't be a handler, such as `undefined`, `null` or other literals, are ignored.
 
 ## Rule Options
 
