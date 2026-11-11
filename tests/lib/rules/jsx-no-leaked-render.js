@@ -9,6 +9,7 @@
 // Requirements
 //------------------------------------------------------------------------------
 
+const path = require('path');
 const semver = require('semver');
 const eslintPkg = require('eslint/package.json');
 const RuleTester = require('../../helpers/ruleTester');
@@ -1624,3 +1625,129 @@ ruleTester.run('jsx-no-leaked-render', rule, {
     }
   )),
 });
+
+// Type information needs a real TypeScript project, so these tests use one parser instead of `parsers.all`.
+if (semver.major(eslintPkg.version) > 5) {
+  const projectDir = path.join(__dirname, '../../fixtures/typescript-project');
+  const typed = (test) => Object.assign({
+    parser: parsers['@TYPESCRIPT_ESLINT'],
+    parserOptions: Object.assign({}, parserOptions, {
+      project: './tsconfig.json',
+      tsconfigRootDir: projectDir,
+    }),
+    filename: path.join(projectDir, 'component.tsx'),
+  }, test);
+
+  ruleTester.run('jsx-no-leaked-render with type information', rule, {
+    valid: [
+      {
+        code: `
+          const Component = ({ isShown }: { isShown: boolean }) => {
+            return <div>{isShown && <span />}</div>
+          }
+        `,
+      },
+      {
+        code: `
+          const Component = ({ isDeveloper }: { isDeveloper?: boolean }) => {
+            return <div>{isDeveloper && <span />}</div>
+          }
+        `,
+      },
+      {
+        code: `
+          const Component = ({ flag }: { flag: true | null }) => {
+            return <div>{flag && <span />}</div>
+          }
+        `,
+      },
+      {
+        code: `
+          const Component = ({ a, b }: { a: boolean, b: boolean }) => {
+            return <div>{a && b && <span />}</div>
+          }
+        `,
+      },
+      {
+        code: `
+          const Component = ({ list }: { list: { isEmpty(): boolean } }) => {
+            return <div>{list.isEmpty() && <span />}</div>
+          }
+        `,
+        options: [{ validStrategies: ['coerce'] }],
+      },
+    ].map(typed),
+    invalid: [
+      {
+        code: `
+          const Component = ({ count }: { count: number }) => {
+            return <div>{count && <span />}</div>
+          }
+        `,
+        options: [{ validStrategies: ['coerce'] }],
+        errors: [{ messageId: 'noPotentialLeakedRender', line: 3, column: 26 }],
+        output: `
+          const Component = ({ count }: { count: number }) => {
+            return <div>{!!count && <span />}</div>
+          }
+        `,
+      },
+      {
+        code: `
+          const Component = ({ value }: { value: boolean | number }) => {
+            return <div>{value && <span />}</div>
+          }
+        `,
+        errors: [{ messageId: 'noPotentialLeakedRender', line: 3, column: 26 }],
+        output: `
+          const Component = ({ value }: { value: boolean | number }) => {
+            return <div>{value ? <span /> : null}</div>
+          }
+        `,
+      },
+      {
+        code: `
+          const Component = ({ a, title }: { a: boolean, title: string }) => {
+            return <div>{a && title && <span />}</div>
+          }
+        `,
+        options: [{ validStrategies: ['coerce'] }],
+        errors: [{ messageId: 'noPotentialLeakedRender', line: 3, column: 26 }],
+        output: `
+          const Component = ({ a, title }: { a: boolean, title: string }) => {
+            return <div>{!!a && !!title && <span />}</div>
+          }
+        `,
+      },
+      {
+        code: `
+          const Component = ({ value }: { value: any }) => {
+            return <div>{value && <span />}</div>
+          }
+        `,
+        options: [{ validStrategies: ['coerce'] }],
+        errors: [{ messageId: 'noPotentialLeakedRender', line: 3, column: 26 }],
+        output: `
+          const Component = ({ value }: { value: any }) => {
+            return <div>{!!value && <span />}</div>
+          }
+        `,
+      },
+      {
+        // with only the ternary strategy, a boolean condition is still reported
+        code: `
+          const Component = ({ isShown }: { isShown: boolean }) => {
+            return <div>{isShown && <span />}</div>
+          }
+        `,
+        options: [{ validStrategies: ['ternary'] }],
+        errors: [{ messageId: 'noPotentialLeakedRender', line: 3, column: 26 }],
+        output: `
+          const Component = ({ isShown }: { isShown: boolean }) => {
+            return <div>{isShown ? <span /> : null}</div>
+          }
+        `,
+      },
+    ].map(typed),
+  });
+}
