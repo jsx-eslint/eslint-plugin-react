@@ -85,7 +85,7 @@ const Component = ({ numberA, numberB }) => {
 
 ```jsx
 // If the condition is a boolean value, this rule will report the logical expression
-// since it can't infer the type of the condition.
+// since it can't infer the type of the condition, unless type information is available (see below).
 const Component = ({ someBool }) => {
   return <div>{someBool && <Results>{numberA + numberB}</Results>}</div>
 }
@@ -290,6 +290,34 @@ const Component = ({ count, title }) => {
 ```jsx
 const Component = ({ count, title, empty }) => {
   return <div>{count ? title : empty}</div>
+}
+```
+
+### Type information
+
+When the code is linted with type information (`@typescript-eslint/parser` with `parserOptions.project` or `parserOptions.projectService`), the "coerce" strategy also accepts a condition whose type is only `boolean`, `null`, or `undefined`, since it can never render a value. Without type information, these conditions are still reported.
+
+Assuming the following options: `{ "validStrategies": ["coerce"] }`, and type information:
+
+Examples of **correct** code for this rule:
+
+```tsx
+const Component = ({ isShown, title }: { isShown: boolean, title: string }) => {
+  return <div>{isShown && title}</div>
+}
+```
+
+```tsx
+const Component = ({ isDeveloper }: { isDeveloper?: boolean }) => {
+  return <div>{isDeveloper && <span>Developer</span>}</div>
+}
+```
+
+Examples of **incorrect** code for this rule:
+
+```tsx
+const Component = ({ count, title }: { count: number, title: string }) => {
+  return <div>{count && title}</div>
 }
 ```
 
