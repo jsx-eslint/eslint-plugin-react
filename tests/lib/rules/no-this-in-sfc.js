@@ -186,6 +186,51 @@ ruleTester.run('no-this-in-sfc', rule, {
       `,
       features: ['types'],
     },
+    {
+      code: `
+        const MyComponent = () => {
+          class Internal {
+            constructor() {
+              this.value = 10;
+            }
+
+            getValue() {
+              return this.value;
+            }
+          }
+
+          doMagik(new Internal());
+
+          return <div />;
+        };
+      `,
+    },
+    {
+      code: `
+        const MyComponent = () => {
+          function doMagik(arg) {
+            this.value = arg;
+          }
+
+          doMagik(10);
+
+          return <div />;
+        };
+      `,
+    },
+    {
+      code: `
+        const MyComponent = () => {
+          const doMagik = function (arg) {
+            this.value = arg;
+          };
+
+          doMagik(10);
+
+          return <div />;
+        };
+      `,
+    },
   ]),
 
   invalid: parsers.all([
@@ -271,7 +316,6 @@ ruleTester.run('no-this-in-sfc', rule, {
         }
       `,
       errors: [
-        { messageId: 'noThisInSFC' },
         { messageId: 'noThisInSFC' },
       ],
     },
