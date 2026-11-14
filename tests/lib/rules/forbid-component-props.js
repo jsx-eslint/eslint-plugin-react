@@ -137,6 +137,62 @@ ruleTester.run('forbid-component-props', rule, {
       ],
     },
     {
+      code: '<Foo.Bar.Baz className="foo" />;',
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              allowedFor: ['Foo.Bar.Baz'],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: '<Foo.Bar.Baz className="foo" />;',
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              allowedForPatterns: ['Foo.*.Baz'],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: '<this.Foo.Bar className="foo" />;',
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              allowedFor: ['this.Foo.Bar'],
+            },
+          ],
+        },
+      ],
+    },
+    {
+      code: '<foo.bar className="foo" />;',
+    },
+    {
+      features: ['jsx namespace'],
+      code: '<svg:rect className="foo" />;',
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedForPatterns: ['svg:*'],
+            },
+          ],
+        },
+      ],
+    },
+    {
       code: `
         const item = (<this.ReactModal className="foo" />);
       `,
@@ -544,6 +600,64 @@ ruleTester.run('forbid-component-props', rule, {
           line: 2,
           column: 43,
           type: 'JSXAttribute',
+        },
+      ],
+    },
+    {
+      code: '<Foo.Bar.Baz className="foo" />;',
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedFor: ['Foo.Bar.Baz'],
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'className' },
+        },
+      ],
+    },
+    {
+      code: '<Foo.Bar.Baz className="foo" />;',
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedForPatterns: ['Foo.*.Baz'],
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'className' },
+        },
+      ],
+    },
+    {
+      features: ['jsx namespace'],
+      code: '<svg:Rect className="foo" />;',
+      options: [
+        {
+          forbid: [
+            {
+              propName: 'className',
+              disallowedFor: ['svg:Rect'],
+            },
+          ],
+        },
+      ],
+      errors: [
+        {
+          messageId: 'propIsForbidden',
+          data: { prop: 'className' },
         },
       ],
     },
