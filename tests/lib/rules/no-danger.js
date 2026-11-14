@@ -52,6 +52,23 @@ ruleTester.run('no-danger', rule, {
       `,
       options: [{ customComponentNames: ['MUI*'] }],
     },
+    {
+      code: '<Foo.Bar className="bar" />;',
+      options: [{ customComponentNames: ['Foo.Bar'] }],
+    },
+    {
+      code: '<Foo.Bar.Baz className="bar" />;',
+      options: [{ customComponentNames: ['Foo.Bar'] }],
+    },
+    {
+      code: '<Foo dangerouslySetInnerHTML={{ __html: "" }} />;',
+      options: [{ customComponentNames: ['Foo.Bar.Baz'] }],
+    },
+    {
+      features: ['jsx namespace'],
+      code: '<svg:rect className="bar" />;',
+      options: [{ customComponentNames: ['svg:*'] }],
+    },
   ]),
   invalid: parsers.all([
     {
@@ -170,6 +187,47 @@ ruleTester.run('no-danger', rule, {
           messageId: 'dangerousProp',
           data: { name: 'dangerouslySetInnerHTML' },
           line: 18,
+        },
+      ],
+    },
+    {
+      code: '<Foo.Bar.Baz dangerouslySetInnerHTML={{ __html: "" }} />;',
+      options: [{ customComponentNames: ['Foo.Bar.Baz'] }],
+      errors: [
+        {
+          messageId: 'dangerousProp',
+          data: { name: 'dangerouslySetInnerHTML' },
+        },
+      ],
+    },
+    {
+      code: '<Foo.Bar.Baz dangerouslySetInnerHTML={{ __html: "" }} />;',
+      options: [{ customComponentNames: ['Foo.*.Baz'] }],
+      errors: [
+        {
+          messageId: 'dangerousProp',
+          data: { name: 'dangerouslySetInnerHTML' },
+        },
+      ],
+    },
+    {
+      code: '<A.B.C.D dangerouslySetInnerHTML={{ __html: "" }} />;',
+      options: [{ customComponentNames: ['A.B.C.D'] }],
+      errors: [
+        {
+          messageId: 'dangerousProp',
+          data: { name: 'dangerouslySetInnerHTML' },
+        },
+      ],
+    },
+    {
+      features: ['jsx namespace'],
+      code: '<svg:rect dangerouslySetInnerHTML={{ __html: "" }} />;',
+      options: [{ customComponentNames: ['svg:*'] }],
+      errors: [
+        {
+          messageId: 'dangerousProp',
+          data: { name: 'dangerouslySetInnerHTML' },
         },
       ],
     },

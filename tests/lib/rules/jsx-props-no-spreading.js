@@ -111,6 +111,19 @@ ruleTester.run('jsx-props-no-spreading', rule, {
       options: [{ exceptions: ['components.Group', 'Nav.Item'] }],
     },
     {
+      code: '<Foo.Bar.Baz {...props} />;',
+      options: [{ exceptions: ['Foo.Bar.Baz'] }],
+    },
+    {
+      code: '<Foo.Bar.Baz {...props} />;',
+      options: [{ custom: 'enforce', html: 'ignore', exceptions: ['Foo.Bar.Baz'] }],
+    },
+    {
+      features: ['jsx namespace'],
+      code: '<svg:Rect {...props} />;',
+      options: [{ exceptions: ['svg:Rect'] }],
+    },
+    {
       code: `
         const props = {};
         <App>
@@ -261,6 +274,16 @@ ruleTester.run('jsx-props-no-spreading', rule, {
         </App>
       `,
       options: [{ exceptions: ['components.DropdownIndicator', 'Nav.Item'] }],
+      errors: [expectedError],
+    },
+    {
+      code: '<Foo.Bar.Baz {...props} />;',
+      options: [{ exceptions: ['Foo.Bar'] }],
+      errors: [expectedError],
+    },
+    {
+      code: '<A.B.C.D {...props} />;',
+      options: [{ exceptions: ['A.B.C'] }],
       errors: [expectedError],
     },
   ]),

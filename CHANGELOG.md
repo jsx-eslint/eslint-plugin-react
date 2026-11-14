@@ -16,6 +16,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`forbid-dom-props`]: Add `disallowedValues` option for forbidden props ([#3877][] @makxca, [#4059][] @nk-batman21)
 
 ### Fixed
+* [`no-danger`], [`forbid-component-props`], [`jsx-props-no-spreading`]: handle nested member and namespaced element names ([#NNNN][] @yuyongyan29-dev)
 * [`jsx-no-literals`]: avoid crash on variable declarations without an initializer ([#4044][] @Aryan007-dev)
 * [`no-unknown-property`]: allow `onLoad` on `body` ([#3923][] @DerekStapleton)
 * [`no-unknown-property`]: allow `closedby` on `dialog` ([#3980][] @ljharb)
