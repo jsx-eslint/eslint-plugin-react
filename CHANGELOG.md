@@ -80,7 +80,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] add `isLineBreak` jsx util, and use it in [`no-danger-with-children`] (@ljharb)
 * [Refactor] `function-component-definition`/`jsx-no-constructed-context-values`: add `resolveVariable` util, and use it (@ljharb)
 * [Perf] `usedPropTypes`: copy a scope's prop variables only on its first write (@ljharb)
+* [Docs] [`jsx-curly-brace-presence`]: fix dead JSX spec link ([#4084][] @farisbasha)
 
+[#4084]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4084
 [#4064]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4064
 [#4062]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4062
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
