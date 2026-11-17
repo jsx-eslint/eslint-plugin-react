@@ -4060,6 +4060,14 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
     },
+    {
+      code: `
+        const Foo = (props) => <div {...someObj} />;
+        Foo.propTypes = {
+          a: PropTypes.string,
+        };
+      `,
+    },
   ]),
 
   invalid: parsers.all([].concat(
