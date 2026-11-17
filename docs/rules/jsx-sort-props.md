@@ -43,7 +43,8 @@ Examples of **correct** code for this rule:
   "noSortAlphabetically": <boolean>,
   "reservedFirst": <boolean>|<array<string>>,
   "sortFirst": <array<string>>,
-  "locale": "auto" | "any valid locale"
+  "locale": "auto" | "any valid locale",
+  "minProps": <integer>
 }]
 ...
 ```
@@ -177,6 +178,25 @@ Examples of **correct** code for this rule:
 Defaults to `"auto"`, meaning, the locale of the current environment.
 
 Any other string provided here may be passed to `String.prototype.localeCompare` - note that an unknown or invalid locale may throw an exception and crash.
+
+### `minProps`
+
+The minimum number of props (attributes, including spread attributes) an element must have for the rule to check it. Defaults to `2`, and must be at least `2`.
+Elements with fewer props are **not** checked at all, so the other ordering options (like `reservedFirst`, `sortFirst`, and `callbacksLast`) do **not** apply to them either. This mirrors the `minKeys` option of ESLint's `sort-keys` rule.
+
+Examples of **incorrect** code for this rule:
+
+```jsx
+// 'jsx-sort-props': [1, { minProps: 3 }]
+<Hello lastName="Smith" firstName="John" age={42} />
+```
+
+Examples of **correct** code for this rule:
+
+```jsx
+// 'jsx-sort-props': [1, { minProps: 3 }]
+<Hello lastName="Smith" firstName="John" />
+```
 
 ## When Not To Use It
 

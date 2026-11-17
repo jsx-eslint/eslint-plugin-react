@@ -348,7 +348,10 @@ ruleTester.run('jsx-sort-props', rule, {
       `,
       options: sortFirstWithMultilineFirstArgs,
     },
-    { code: '<App classname="test" a="test2" />;', options: sortFirstWithIgnoreCaseArgs }
+    { code: '<App classname="test" a="test2" />;', options: sortFirstWithIgnoreCaseArgs },
+    // minProps
+    { code: '<App c b a />;', options: [{ minProps: 4 }] },
+    { code: '<App {...this.props} b a />;', options: [{ minProps: 4 }] }
   )),
   invalid: parsers.all([].concat(
     {
@@ -1293,6 +1296,25 @@ ruleTester.run('jsx-sort-props', rule, {
       options: sortFirstMultipleArgs,
       errors: [expectedSortFirstError],
       output: '<App className="test" id="test" id="test2" />;',
+    },
+    // minProps
+    {
+      code: '<App c b a />;',
+      options: [{ minProps: 3 }],
+      errors: [expectedError, expectedError],
+      output: '<App a b c />;',
+    },
+    {
+      code: '<App {...this.props} b a />;',
+      options: [{ minProps: 3 }],
+      errors: [expectedError],
+      output: '<App {...this.props} a b />;',
+    },
+    {
+      code: '<App b a />;',
+      options: [{ minProps: 2 }],
+      errors: [expectedError],
+      output: '<App a b />;',
     },
     {
       code: `
