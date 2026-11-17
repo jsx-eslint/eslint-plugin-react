@@ -3976,6 +3976,98 @@ ruleTester.run('no-unused-prop-types', rule, {
         };
       `,
     },
+    {
+      code: `
+        const Foo = (props) => {
+          const p = props;
+          return <div {...p} />;
+        };
+        Foo.propTypes = {
+          a: PropTypes.string,
+        };
+      `,
+    },
+    {
+      code: `
+        const Foo = (props) => {
+          const p = { ...props };
+          return <div {...p} />;
+        };
+        Foo.propTypes = {
+          a: PropTypes.string,
+        };
+      `,
+    },
+    {
+      code: `
+        const Foo = (props) => {
+          let p = {};
+          p = props;
+          return <div {...p} />;
+        };
+        Foo.propTypes = {
+          a: PropTypes.string,
+        };
+      `,
+    },
+    {
+      code: `
+        const Foo = (props) => (
+          <div>
+            <A {...props} />
+            <B {...{ b: 1 }} />
+          </div>
+        );
+        Foo.propTypes = {
+          a: PropTypes.string,
+        };
+      `,
+    },
+    {
+      code: `
+        const Foo = (props) => {
+          const p = getProps(props);
+          return <div {...p} />;
+        };
+        Foo.propTypes = {
+          a: PropTypes.string,
+        };
+      `,
+    },
+    {
+      code: `
+        const Foo = (props) => {
+          const o = {};
+          Object.assign(o, props);
+          return <div {...o} />;
+        };
+        Foo.propTypes = {
+          a: PropTypes.string,
+        };
+      `,
+    },
+    {
+      code: `
+        const Foo = (props) => {
+          const o = {};
+          Object.keys(props).forEach((k) => {
+            o[k] = props[k];
+          });
+          return <div {...o} />;
+        };
+        Foo.propTypes = {
+          a: PropTypes.string,
+        };
+      `,
+    },
+    {
+      code: `
+        const Foo = (props) => <div {...someObj} />;
+        Foo.propTypes = {
+          a: PropTypes.string,
+        };
+      `,
+    },
   ]),
 
   invalid: parsers.all([].concat(
@@ -6767,6 +6859,69 @@ ruleTester.run('no-unused-prop-types', rule, {
         );
         Demo.propTypes = {
           used: PropTypes.string,
+          unused: PropTypes.string,
+        };
+      `,
+      errors: [
+        { message: '\'unused\' PropType is defined but prop is never used' },
+      ],
+    },
+    {
+      code: `
+        const DumbComponent = props => {
+          const someObj = { value: 619 };
+          return <SomeOtherComp {...someObj} />;
+        };
+        DumbComponent.propTypes = {
+          unused_prop: PropTypes.string,
+        };
+      `,
+      errors: [
+        { message: '\'unused_prop\' PropType is defined but prop is never used' },
+      ],
+    },
+    {
+      code: `
+        class TestCase extends React.Component {
+          render() {
+            const foo = { bar: this.props.bar };
+            return <div {...foo} />;
+          }
+        }
+        TestCase.propTypes = {
+          bar: PropTypes.string,
+          unused: PropTypes.string,
+        };
+      `,
+      errors: [
+        { message: '\'unused\' PropType is defined but prop is never used' },
+      ],
+    },
+    {
+      code: `
+        function Tag({ onClick, children }) {
+          const rest = { onClick, children };
+          return <div {...rest} />;
+        }
+        Tag.propTypes = {
+          onClick: PropTypes.func,
+          children: PropTypes.node,
+          unused: PropTypes.string,
+        };
+      `,
+      errors: [
+        { message: '\'unused\' PropType is defined but prop is never used' },
+      ],
+    },
+    {
+      code: `
+        function Tag({ onClick, children }) {
+          const props = { onClick, children };
+          return <div {...props} />;
+        }
+        Tag.propTypes = {
+          onClick: PropTypes.func,
+          children: PropTypes.node,
           unused: PropTypes.string,
         };
       `,
