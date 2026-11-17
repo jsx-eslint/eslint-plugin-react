@@ -65,7 +65,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`static-property-placement`]: do not report a type-annotated `props` instance field as `propTypes` (@ljharb)
 * [`static-property-placement`]: do not report a type-annotated `context` instance field as `contextTypes` ([#4060][] @b84330808)
 * [`jsx-fragments`]: only treat a destructured `Fragment` as a fragment, not other components destructured from React ([#4062][] @nk-batman21)
-* [`no-unused-prop-types`]: keep checking components that spread a local object literal in JSX ([#4080][] @cleoanka)
+* [`no-unused-prop-types`]: keep checking components that spread a local object literal in JSX ([#4081][] @cleoanka)
 
 ### Changed
 * [`react-in-jsx-scope`], [`jsx-uses-react`]: automatically disable when React >= 19 is detected ([#XXXX][] @jonkoops)
@@ -82,7 +82,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [Refactor] `function-component-definition`/`jsx-no-constructed-context-values`: add `resolveVariable` util, and use it (@ljharb)
 * [Perf] `usedPropTypes`: copy a scope's prop variables only on its first write (@ljharb)
 
-[#4080]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4080
+[#4081]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4081
 [#4064]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4064
 [#4062]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4062
 [#4061]: https://github.com/jsx-eslint/eslint-plugin-react/pull/4061
