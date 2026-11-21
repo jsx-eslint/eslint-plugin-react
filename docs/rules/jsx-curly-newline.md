@@ -12,6 +12,8 @@ Many style guides require or disallow newlines inside of jsx curly expressions.
 
 This rule enforces consistent linebreaks inside of curlies of jsx curly expressions.
 
+Containers without an expression, such as JSX comments, are ignored.
+
 ## Rule Options
 
 This rule accepts either an object option:

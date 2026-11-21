@@ -39,6 +39,40 @@ const ruleTester = new RuleTester({ parserOptions });
 
 ruleTester.run('jsx-curly-newline', rule, {
   valid: parsers.all([
+    // Comments do not contain an expression to pad.
+    {
+      code: `
+        <div>
+          {/* <FormGroup
+            helperTextInvalid={helperText}
+            inputProps={inputProps}
+            type="password"
+          /> */}
+        </div>
+      `,
+      options: [{ multiline: 'forbid', singleline: 'forbid' }],
+    },
+    {
+      code: '<div>{/* multiline\ncomment */}</div>',
+      options: NEVER,
+    },
+    {
+      code: '<div>{// comment\n}</div>',
+      options: NEVER,
+    },
+    {
+      code: '<div>{/* comment */}</div>',
+      options: [{ multiline: 'require', singleline: 'require' }],
+    },
+    {
+      code: '<div>{\n/* comment */}</div>',
+      options: CONSISTENT,
+    },
+    {
+      code: '<div>{}</div>',
+      options: [{ multiline: 'require', singleline: 'require' }],
+    },
+
     // consistent option (default)
     {
       code: '<div>{foo}</div>',
