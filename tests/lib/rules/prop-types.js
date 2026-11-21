@@ -41,6 +41,13 @@ ruleTester.run('prop-types', rule, {
   valid: parsers.all([].concat(
     {
       code: `
+        interface Props { name: string; }
+        const Component: React.FC<Props> = ({ name }) => <div>{name}</div>;
+      `,
+      features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
         var Hello = createReactClass({
           propTypes: {
             name: PropTypes.string.isRequired
@@ -5129,6 +5136,14 @@ ruleTester.run('prop-types', rule, {
   )),
 
   invalid: parsers.all([].concat(
+    {
+      code: `
+        interface Props { name: string; }
+        const Component: React.FC<Props> = ({ name, extra }) => <div>{name}{extra}</div>;
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [{ messageId: 'missingPropType', data: { name: 'extra' } }],
+    },
     {
       code: `
         type Props = {

@@ -30,6 +30,74 @@ const ruleTester = new RuleTester({ parserOptions });
 ruleTester.run('prefer-read-only-props', rule, {
   valid: parsers.all([
     {
+      code: `
+        interface Props { readonly name: string; }
+        const Component: React.FC<Props> = ({ name }) => <div>{name}</div>;
+      `,
+      features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
+        interface Props { name: string; }
+        const Component: React.FC<Props> = ({ name }) => <div>{name}</div>;
+      `,
+      globals: { React: 'readonly' },
+      features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
+        /* global React */
+        interface Props { name: string; }
+        const Component: React.FunctionComponent<Props> = ({ name }) => <div>{name}</div>;
+      `,
+      features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
+        import React from 'other-library';
+        interface Props { name: string; }
+        const Component: React.FC<Props> = ({ name }) => <div>{name}</div>;
+      `,
+      features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
+        namespace React {
+          export type FC<P> = (props: P) => JSX.Element;
+        }
+        interface Props { name: string; }
+        const Component: React.FC<Props> = ({ name }) => <div>{name}</div>;
+      `,
+      features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
+        function factory(React) {
+          interface Props { name: string; }
+          const Component: React.FC<Props> = ({ name }) => <div>{name}</div>;
+          return Component;
+        }
+      `,
+      features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
+        namespace Container {
+          namespace React {}
+          interface Props { name: string; }
+          const Component: React.FC<Props> = ({ name }) => <div>{name}</div>;
+        }
+      `,
+      features: ['ts', 'no-babel-old'],
+    },
+    {
+      code: `
+        interface Props { name: string; }
+        const Component: Other.FC<Props> = ({ name }) => <div>{name}</div>;
+      `,
+      features: ['ts', 'no-babel-old'],
+    },
+    {
       // Class component with type parameter
       code: `
         type Props = {
@@ -281,6 +349,61 @@ ruleTester.run('prefer-read-only-props', rule, {
   ]),
 
   invalid: parsers.all([
+    {
+      code: `
+        namespace Unrelated {
+          namespace React {}
+        }
+        interface Props { name: string; }
+        const Component: React.FC<Props> = ({ name }) => <div>{name}</div>;
+      `,
+      output: `
+        namespace Unrelated {
+          namespace React {}
+        }
+        interface Props { readonly name: string; }
+        const Component: React.FC<Props> = ({ name }) => <div>{name}</div>;
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [{ messageId: 'readOnlyProp', data: { name: 'name' } }],
+    },
+    {
+      code: `
+        interface ChipProps {
+          chipColor: string;
+          label: string;
+        }
+        const Chip: React.FC<ChipProps> = ({ chipColor, label }) => (
+          <div style={{ backgroundColor: chipColor }}>{label}</div>
+        );
+      `,
+      output: `
+        interface ChipProps {
+          readonly chipColor: string;
+          readonly label: string;
+        }
+        const Chip: React.FC<ChipProps> = ({ chipColor, label }) => (
+          <div style={{ backgroundColor: chipColor }}>{label}</div>
+        );
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [
+        { messageId: 'readOnlyProp', data: { name: 'chipColor' } },
+        { messageId: 'readOnlyProp', data: { name: 'label' } },
+      ],
+    },
+    {
+      code: `
+        type Props = { name: string };
+        const Component: React.FunctionComponent<Props> = ({ name }) => <div>{name}</div>;
+      `,
+      output: `
+        type Props = { readonly name: string };
+        const Component: React.FunctionComponent<Props> = ({ name }) => <div>{name}</div>;
+      `,
+      features: ['ts', 'no-babel-old'],
+      errors: [{ messageId: 'readOnlyProp', data: { name: 'name' } }],
+    },
     {
       code: `
         declare namespace Foo {
