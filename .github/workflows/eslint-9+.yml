@@ -48,8 +48,6 @@ jobs:
             node-version: 21
           - eslint: 10
             node-version: 23
-          - eslint: 10
-            babel-eslint: 8
 
     steps:
       - uses: actions/checkout@v4
