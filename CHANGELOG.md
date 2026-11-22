@@ -6,6 +6,9 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 
 ## Unreleased
 
+### Breaking
+* Drop support for Node 4 and ESLint 3 and 4 ([#3979][] @plthomasva)
+
 ### Added
 * [`async-server-action`]: add rule ([#3729][] @jorgezreik)
 * [`jsx-props-no-multi-spaces`]: improve autofix for multi-line ([#3930][] @justisb)
@@ -25,6 +28,7 @@ This change log adheres to standards from [Keep a CHANGELOG](https://keepachange
 * [`jsx-key`]: detect missing keys in logical expressions ([#3986][] @yalperg)
 * [`display-name`]: avoid false positive when React is shadowed ([#3926][] @hyeonbinHur)
 * [`no-unused-prop-types`]: detect used props in nested components ([#3955][] @avaice)
+* Support ESLint v10 by migrating off deprecated AST properties ([#3979][] @plthomasva)
 * [`no-unknown-property`]: add missing CSS transition event handlers ([#4001][] @baevm)
 * [`jsx-closing-bracket-location`]: preserve comments in autofix ([#4028][] @raisulchowdhury)
 * [`jsx-closing-bracket-location`]: keep TS type arguments when autofixing (@ljharb)
