@@ -3338,6 +3338,35 @@ ruleTester.run('prop-types', rule, {
       features: ['ts', 'no-babel'],
     },
     {
+      // issue: https://github.com/jsx-eslint/eslint-plugin-react/issues/3873
+      code: `
+        import { FC } from 'react';
+
+        type XFC = FC<{ user: string }>;
+
+        export const MyComponent: XFC = ({ user }) => {
+          return <div>{user}</div>;
+        };
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import React from 'react';
+
+        interface PersonProps {
+          username: string;
+        }
+        type PersonFC = React.FC<PersonProps>;
+        type PersonComponent = PersonFC;
+
+        const Person: PersonComponent = (props) => (
+          <div>{props.username}</div>
+        );
+      `,
+      features: ['ts', 'no-babel'],
+    },
+    {
       // issue: https://github.com/jsx-eslint/eslint-plugin-react/issues/2786
       code: `
         import React from 'react';
@@ -8827,6 +8856,60 @@ ruleTester.run('prop-types', rule, {
         {
           messageId: 'missingPropType',
           data: { name: 'username' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        import { FC } from 'react';
+
+        interface Props {
+          user: string;
+        }
+        type XFC = FC<Props>;
+
+        export const MyComponent: XFC = ({ name }) => {
+          return <div>{name}</div>;
+        };
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'name' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        type A = B;
+        type B = A;
+
+        export const MyComponent: A = ({ user }) => {
+          return <div>{user}</div>;
+        };
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'user' },
+        },
+      ],
+      features: ['ts', 'no-babel'],
+    },
+    {
+      code: `
+        type XFC = Wrapper<{ user: string }>;
+
+        export const MyComponent: XFC = ({ user }) => {
+          return <div>{user}</div>;
+        };
+      `,
+      errors: [
+        {
+          messageId: 'missingPropType',
+          data: { name: 'user' },
         },
       ],
       features: ['ts', 'no-babel'],
