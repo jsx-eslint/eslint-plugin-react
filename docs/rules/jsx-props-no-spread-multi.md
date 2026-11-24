@@ -25,4 +25,4 @@ Examples of **correct** code for this rule:
 
 ## When Not To Use It
 
-When spreading the same expression multiple times yields different results.
+You can disable this rule if [`react/jsx-props-no-spreading`](./jsx-props-no-spreading.md) already disallows all JSX prop spreading in your project.
