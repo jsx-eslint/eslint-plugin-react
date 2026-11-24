@@ -409,6 +409,22 @@ ruleTester.run('prefer-stateless-function', rule, {
         }
       `,
     },
+    {
+      // Ambient class declarations have no implementation
+      code: `
+        declare class Foo extends React.Component<Props> {}
+        export default Foo;
+      `,
+      features: ['ts', 'no-babel', 'no-ts-old'],
+    },
+    {
+      code: `
+        export declare class Foo extends React.Component<Props> {
+          render(): JSX.Element;
+        }
+      `,
+      features: ['ts', 'no-babel', 'no-ts-old'],
+    },
   ]),
 
   invalid: parsers.all([
